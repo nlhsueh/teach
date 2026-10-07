@@ -1,0 +1,53 @@
+/-hidden/
+**/SQASlide2020.pdf
+/exam/
+/hw/
+/SQA quiz/
+/DemoSQA
+
+**/*.zip
+
+# Ignore Maven target directories in any sub-directory
+**/target
+**/target/
+**/tmp
+**/.mvn/   
+
+# Ignore IDE directories and project files
+**/.idea/
+**/*.iml
+**/.project
+**/.classpath
+**/.settings/
+**/.vscode/
+
+# Ignore OS-specific files
+**/.DS_Store
+**/Thumbs.db
+
+# Ignore log files
+**/*.log
+
+# Ignore Maven wrapper files
+**/mvnw
+**/mvnw.cmd
+
+# Ignore environment configuration files
+**/.env
+
+# Ignore agent configurations and GitHub workflows
+.agents/
+.github/
+AGENTS.md
+agents.md
+
+# Ignore scripts and video directories
+/scripts/
+/MP4/
+**/*.mp4
+__pycache__/
+*.py[cod]
+
+
+# Ignore flattened temporary build directories from IDE/Maven
+.._*

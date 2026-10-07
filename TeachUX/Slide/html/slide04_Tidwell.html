@@ -1,0 +1,1091 @@
+<!DOCTYPE html><html lang="C"><head><title>Tidwell 經典網頁與介面設計模式</title><meta property="og:title" content="Tidwell 經典網頁與介面設計模式"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=overview] button.bespoke-marp-overview-close,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{appearance:none;background-color:initial;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;transition:opacity .2s linear;-webkit-tap-highlight-color:transparent}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=overview] button.bespoke-marp-overview-close:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:disabled{cursor:not-allowed;opacity:.15!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=overview] button.bespoke-marp-overview-close:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover{opacity:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=overview] button.bespoke-marp-overview-close:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:active{opacity:.6}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=overview] button.bespoke-marp-overview-close:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTAgMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJtMzIgOTAgNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgeD0iMTAiIHk9IjIwIiBjbGFzcz0iYSIgcng9IjUuNjciLz48cGF0aCBkPSJNNDAgNzBIMjBWNTBtMjAgMEwyMCA3MG00MC00MGgyMHYyMG0tMjAgMCAyMC0yMCIgY2xhc3M9ImEiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgeD0iMTAiIHk9IjIwIiBjbGFzcz0iYSIgcng9IjUuNjciLz48cGF0aCBkPSJNMjAgNTBoMjB2MjBtLTIwIDAgMjAtMjBtNDAgMEg2MFYzMG0yMCAwTDYwIDUwIiBjbGFzcz0iYSIvPjwvc3ZnPg==")}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNODcuOCA0Ny41Qzg5IDUwIDg3LjcgNTIgODUgNTJIMzVhOC43IDguNyAwIDAgMS03LjItNC41bC0xNS42LTMxQzExIDE0IDEyLjIgMTIgMTUgMTJoNTBhOC44IDguOCAwIDAgMSA3LjIgNC41ek02MCA1MnYzNm0tMTAgMGgyME00NSA0MmgyMCIvPjwvc3ZnPg==") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=overview] button.bespoke-marp-overview-close,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-bigger{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNMTIgNTBoODBNNTIgOTBWMTAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-smaller{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNMTIgNTBoODAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=overview]{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4O3J4OjVweDtyeTo1cHg7d2lkdGg6MjVweDtoZWlnaHQ6MjVweH08L3N0eWxlPjwvZGVmcz48cmVjdCB4PSIyMCIgeT0iMjAiIGNsYXNzPSJhIi8+PHJlY3QgeD0iNTUiIHk9IjIwIiBjbGFzcz0iYSIvPjxyZWN0IHg9IjIwIiB5PSI1NSIgY2xhc3M9ImEiLz48cmVjdCB4PSI1NSIgeT0iNTUiIGNsYXNzPSJhIi8+PC9zdmc+") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}}@keyframes __bespoke_marp_transition_reduced_outgoing__{0%{opacity:1}to{opacity:0}}@keyframes __bespoke_marp_transition_reduced_incoming__{0%{mix-blend-mode:plus-lighter;opacity:0}to{mix-blend-mode:plus-lighter;opacity:1}}.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{::view-transition-group(*){animation-duration:var(--marp-bespoke-transition-animation-duration,.5s);animation-timing-function:ease}::view-transition-new(*),::view-transition-old(*){animation-delay:0s;animation-direction:var(--marp-bespoke-transition-animation-direction,normal);animation-duration:var(--marp-bespoke-transition-animation-duration,.5s);animation-fill-mode:both;animation-name:var(--marp-bespoke-transition-animation-name,var(--marp-bespoke-transition-animation-name-fallback,__bespoke_marp_transition_no_animation__));mix-blend-mode:normal}::view-transition-old(*){--marp-bespoke-transition-animation-name-fallback:__bespoke_marp_transition_reduced_outgoing__;animation-timing-function:ease}::view-transition-new(*){--marp-bespoke-transition-animation-name-fallback:__bespoke_marp_transition_reduced_incoming__;animation-timing-function:ease}::view-transition-new(root),::view-transition-old(root){animation-timing-function:linear}::view-transition-new(__bespoke_marp_transition_osc__),::view-transition-old(__bespoke_marp_transition_osc__){animation-duration:0s!important;animation-name:__bespoke_marp_transition_osc__!important}::view-transition-new(__bespoke_marp_transition_osc__){opacity:0!important}.bespoke-marp-transition-warming-up::view-transition-group(*),.bespoke-marp-transition-warming-up::view-transition-new(*),.bespoke-marp-transition-warming-up::view-transition-old(*){animation-play-state:paused!important}body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;interactivity:inert;opacity:0;pointer-events:none;z-index:-1}svg.bespoke-marp-slide:not(.bespoke-marp-active) *{view-transition-name:none!important}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;interactivity:auto;opacity:1;pointer-events:auto;z-index:0}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}}@media screen and (prefers-reduced-motion:reduce){svg.bespoke-marp-slide *{view-transition-name:none!important}}@media screen{[data-bespoke-marp-fragment=inactive]{visibility:hidden}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent{inset:0;position:absolute}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc{background:#000000a6;border-radius:7px;bottom:50px;color:#fff;contain:paint;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;user-select:none;view-transition-name:__bespoke_marp_transition_osc__;white-space:nowrap;will-change:transform;z-index:1}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>:where(*){margin-left:6px}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>:where(*):where(:first-child){margin-left:0}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=overview],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+:where(.bespoke-marp-parent){top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{background:#0288d1;flex:0 0 0;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:#0000}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{display:grid;font-family:Helvetica,Arial,sans-serif;grid-template:"current dragbar next" minmax(140px,1fr) "current dragbar note" 2fr "info    dragbar note" 3em;grid-template-columns:minmax(3px,var(--bespoke-marp-presenter-split-ratio,66%)) 0 minmax(3px,1fr);height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container :where(.bespoke-marp-parent){grid-area:current;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container :where(.bespoke-marp-parent) :where(svg.bespoke-marp-slide){height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container :where(.bespoke-marp-parent) :where(svg.bespoke-marp-slide).bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container{background:#0288d1;cursor:col-resize;grid-area:dragbar;margin-left:-3px;opacity:0;position:relative;transition:opacity .4s linear .1s;width:6px;z-index:10}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container:hover{opacity:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container.active{opacity:1;transition-delay:0s}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:#0000;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;interactivity:inert;top:20px;-webkit-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note;position:relative;z-index:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper{display:block;inset:0;position:absolute}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons{background:#000000a6;border-radius:4px;bottom:0;display:flex;gap:4px;margin:12px;opacity:0;padding:6px;pointer-events:none;position:absolute;right:0;transition:opacity .2s linear}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons:focus-within,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper:focus-within+.bespoke-marp-presenter-note-buttons,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container:hover .bespoke-marp-presenter-note-buttons{opacity:1;pointer-events:auto}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{box-sizing:border-box;font-size:calc(1.1em*var(--bespoke-marp-note-font-scale, 1));height:calc(100% - 40px);margin:20px;overflow:auto;padding-right:3px;white-space:pre-wrap;width:calc(100% - 40px);word-wrap:break-word;scrollbar-color:#eeeeee80 #0000;scrollbar-width:thin}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:#0000}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:#eeeeee80;border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;overflow:hidden;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container :is(.bespoke-marp-presenter-info-page-area,.bespoke-marp-presenter-info-time,.bespoke-marp-presenter-info-timer){box-sizing:border-box;display:block;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer:hover{cursor:pointer}body[data-bespoke-view=overview]{background:#161616;overflow:auto}body[data-bespoke-view=overview] [data-bespoke-marp-fragment=inactive]{visibility:visible}body[data-bespoke-view=overview] .bespoke-marp-overview-header{backdrop-filter:blur(4px);background:#222222d9;box-shadow:0 3px 10px #00000080;box-sizing:border-box;display:flex;height:48px;inset:0 0 auto;justify-content:flex-end;padding:10px;position:fixed;z-index:1}body[data-bespoke-view=overview] button.bespoke-marp-overview-close{height:28px;line-height:28px;transform:rotate(45deg);width:28px}body[data-bespoke-view=overview] .bespoke-marp-parent{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(0,240px));justify-content:space-around;padding:30px}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide{--bov-selected:#0000;--bov-focus:#161616;--bov-focus-outline:#0000;background-image:conic-gradient(#161616 0 0),conic-gradient(var(--bov-focus) 0 0),conic-gradient(var(--bov-focus-outline) 0 0),conic-gradient(var(--bov-selected) 0 0);background-position:5px 5px,3px 3px,2px 2px,0 0;background-repeat:no-repeat;background-size:calc(100% - 10px) calc(100% - 10px),calc(100% - 6px) calc(100% - 6px),calc(100% - 4px) calc(100% - 4px),100% 100%;content-visibility:visible;cursor:pointer;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));margin:-6px;padding:6px;interactivity:auto;opacity:1;outline:0;pointer-events:auto;scroll-margin-block:30px;width:100%;z-index:0}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide *,body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active *{pointer-events:none;interactivity:inert}body[data-bespoke-view=overview] .bespoke-marp-parent :is(svg.bespoke-marp-slide:active,svg.bespoke-marp-slide:focus-visible,svg.bespoke-marp-slide:hover){--bov-focus-outline:#161616}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide:focus-visible,body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide:hover{--bov-focus:#999}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide:active{--bov-focus:#eee}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{--bov-selected:#0288d1}body[data-bespoke-view=overview]:has(.bespoke-marp-overview-header) .bespoke-marp-parent{padding-top:78px}body[data-bespoke-view=overview]:has(.bespoke-marp-overview-header) .bespoke-marp-parent svg.bespoke-marp-slide{scroll-margin-top:78px}.bespoke-marp-overview{background:#000000a6;inset:0;opacity:0;pointer-events:none;position:fixed;transition:opacity .1s ease;z-index:10}.bespoke-marp-overview iframe{background:#222;border:0;display:block;height:100%;left:0;position:absolute;top:0;width:100%}.bespoke-marp-overview[data-open="1"]{opacity:1;pointer-events:auto}}@media print{.bespoke-marp-overview,.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>@keyframes marp-outgoing-transition-__builtin__fade{0%{opacity:1}to{opacity:0}}@keyframes marp-incoming-transition-__builtin__fade{0%{mix-blend-mode:plus-lighter;opacity:0}to{mix-blend-mode:plus-lighter;opacity:1}}</style><style>div#\:\$p > svg > foreignObject > section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center;-webkit-text-size-adjust:100%;text-size-adjust:100%}div#\:\$p > svg > foreignObject > section::after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#\:\$p > svg > foreignObject > section:not([data-marpit-pagination])::after{display:none}div#\:\$p > svg > foreignObject > section :where(:is(h1, marp-h1)){font-size:2em;margin-block:0.67em}div#\:\$p > svg > foreignObject > section section:where(:is(h1, marp-h1)){--marpit-root-font-size: 2em}div#\:\$p > svg > foreignObject > section video::-webkit-media-controls{will-change:transform}@page {size:1280px 720px;margin:0}@media print{html, body{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#\:\$p > svg > foreignObject > section{page-break-before:always;break-before:page}div#\:\$p > svg > foreignObject > section, div#\:\$p > svg > foreignObject > section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;print-color-adjust:exact!important;transition:none!important}div#\:\$p > svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}div#\:\$p > svg > foreignObject > section{--fgColor-danger:light-dark(#d1242f, #f85149);--bgColor-attention-muted:light-dark(#fff8c5, #bb800926);--bgColor-muted:light-dark(#f6f8fa, #151b23);--bgColor-neutral-muted:light-dark(#818b981f, #656c7633);--borderColor-accent-emphasis:light-dark(#0969da, #1f6feb);--borderColor-attention-emphasis:light-dark(#9a6700, #9e6a03);--borderColor-danger-emphasis:light-dark(#cf222e, #da3633);--borderColor-default:light-dark(#d1d9e0, #3d444d);--borderColor-done-emphasis:light-dark(#8250df, #8957e5);--borderColor-success-emphasis:light-dark(#1a7f37, #238636);--color-prettylights-syntax-brackethighlighter-angle:light-dark(#59636e, #9198a1);--color-prettylights-syntax-brackethighlighter-unmatched:light-dark(#82071e, #f85149);--color-prettylights-syntax-carriage-return-bg:light-dark(#cf222e, #b62324);--color-prettylights-syntax-carriage-return-text:light-dark(#f6f8fa, #f0f6fc);--color-prettylights-syntax-comment:light-dark(#59636e, #9198a1);--color-prettylights-syntax-constant:light-dark(#0550ae, #79c0ff);--color-prettylights-syntax-constant-other-reference-link:light-dark(#0a3069, #a5d6ff);--color-prettylights-syntax-entity:light-dark(#6639ba, #d2a8ff);--color-prettylights-syntax-entity-tag:light-dark(#0550ae, #7ee787);--color-prettylights-syntax-invalid-illegal-text:light-dark(var(--fgColor-danger), var(--fgColor-danger));--color-prettylights-syntax-keyword:light-dark(#cf222e, #ff7b72);--color-prettylights-syntax-markup-changed-bg:light-dark(#ffd8b5, #5a1e02);--color-prettylights-syntax-markup-changed-text:light-dark(#953800, #ffdfb6);--color-prettylights-syntax-markup-deleted-bg:light-dark(#ffebe9, #67060c);--color-prettylights-syntax-markup-deleted-text:light-dark(#82071e, #ffdcd7);--color-prettylights-syntax-markup-heading:light-dark(#0550ae, #1f6feb);--color-prettylights-syntax-markup-ignored-bg:light-dark(#0550ae, #1158c7);--color-prettylights-syntax-markup-ignored-text:light-dark(#d1d9e0, #f0f6fc);--color-prettylights-syntax-markup-inserted-bg:light-dark(#dafbe1, #033a16);--color-prettylights-syntax-markup-inserted-text:light-dark(#116329, #aff5b4);--color-prettylights-syntax-markup-list:light-dark(#3b2300, #f2cc60);--color-prettylights-syntax-meta-diff-range:light-dark(#8250df, #d2a8ff);--color-prettylights-syntax-string:light-dark(#0a3069, #a5d6ff);--color-prettylights-syntax-string-regexp:light-dark(#116329, #7ee787);--color-prettylights-syntax-sublimelinter-gutter-mark:light-dark(#818b98, #3d444d);--color-prettylights-syntax-variable:light-dark(#953800, #ffa657);--fgColor-accent:light-dark(#0969da, #4493f8);--fgColor-attention:light-dark(#9a6700, #d29922);--fgColor-done:light-dark(#8250df, #ab7df8);--fgColor-muted:light-dark(#59636e, #9198a1);--fgColor-success:light-dark(#1a7f37, #3fb950);--bgColor-default:light-dark(#fff, #0d1117);--borderColor-muted:light-dark(#d1d9e0b3, #3d444db3);--color-prettylights-syntax-invalid-illegal-bg:light-dark(var(--bgColor-danger-muted), var(--bgColor-danger-muted));--color-prettylights-syntax-markup-bold:light-dark(#1f2328, #f0f6fc);--color-prettylights-syntax-markup-italic:light-dark(#1f2328, #f0f6fc);--color-prettylights-syntax-storage-modifier-import:light-dark(#1f2328, #f0f6fc);--fgColor-default:light-dark(#1f2328, #f0f6fc);--focus-outlineColor:light-dark(var(--borderColor-accent-emphasis), var(--borderColor-accent-emphasis));--borderColor-neutral-muted:light-dark(var(--borderColor-muted), var(--borderColor-muted));--base-size-16:calc(var(--marpit-root-font-size, 1rem) * 1);--base-size-24:calc(var(--marpit-root-font-size, 1rem) * 1.5);--base-size-4:calc(var(--marpit-root-font-size, 1rem) * 0.25);--base-size-40:calc(var(--marpit-root-font-size, 1rem) * 2.5);--base-size-8:calc(var(--marpit-root-font-size, 1rem) * 0.5);--base-text-weight-medium:500;--base-text-weight-normal:400;--base-text-weight-semibold:600;--fontStack-monospace:ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;--fontStack-sansSerif:-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";}/*!
+ * Marp default theme.
+ *
+ * @theme default
+ * @author Yuki Hattori
+ *
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */div#\:\$p > svg > foreignObject > section [data-theme=light],div#\:\$p > svg > foreignObject > section{color-scheme:light}div#\:\$p > svg > foreignObject > section [data-theme=dark],div#\:\$p > svg > foreignObject > section:where(.invert){color-scheme:dark}div#\:\$p > svg > foreignObject > section{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;font-weight:var(--base-text-weight-normal, 400);color:var(--fgColor-default);background-color:var(--bgColor-default);font-family:var(--fontStack-sansSerif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji");font-size:16px;line-height:1.5;word-wrap:break-word}div#\:\$p > svg > foreignObject > section{--marpit-root-font-size:16px}div#\:\$p > svg > foreignObject > section a{text-decoration:underline;text-underline-offset:calc(var(--marpit-root-font-size, 1rem) * .2)}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1):hover .anchor .octicon-link:before,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2):hover .anchor .octicon-link:before,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3):hover .anchor .octicon-link:before,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4):hover .anchor .octicon-link:before,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5):hover .anchor .octicon-link:before,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6):hover .anchor .octicon-link:before{width:16px;height:16px;content:" ";display:inline-block;background-color:currentColor;-webkit-mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0"/></svg>');mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0"/></svg>')}div#\:\$p > svg > foreignObject > section details,div#\:\$p > svg > foreignObject > section figcaption,div#\:\$p > svg > foreignObject > section figure{display:block}div#\:\$p > svg > foreignObject > section summary{display:list-item}div#\:\$p > svg > foreignObject > section [hidden]{display:none!important}div#\:\$p > svg > foreignObject > section a{background-color:transparent;color:var(--fgColor-accent);text-decoration:none}div#\:\$p > svg > foreignObject > section abbr[title]{border-bottom:none;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}div#\:\$p > svg > foreignObject > section b,div#\:\$p > svg > foreignObject > section strong{font-weight:var(--base-text-weight-semibold, 600)}div#\:\$p > svg > foreignObject > section dfn{font-style:italic}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1){margin:.67em 0;font-weight:var(--base-text-weight-semibold, 600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--borderColor-muted)}div#\:\$p > svg > foreignObject > section mark{background-color:var(--bgColor-attention-muted);color:var(--fgColor-default)}div#\:\$p > svg > foreignObject > section small{font-size:90%}div#\:\$p > svg > foreignObject > section sub,div#\:\$p > svg > foreignObject > section sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}div#\:\$p > svg > foreignObject > section sub{bottom:-.25em}div#\:\$p > svg > foreignObject > section sup{top:-.5em}div#\:\$p > svg > foreignObject > section img{border-style:none;max-width:100%;box-sizing:content-box}div#\:\$p > svg > foreignObject > section code,div#\:\$p > svg > foreignObject > section kbd,div#\:\$p > svg > foreignObject > section :is(pre, marp-pre),div#\:\$p > svg > foreignObject > section samp{font-family:monospace;font-size:1em}div#\:\$p > svg > foreignObject > section figure{margin:1em var(--base-size-40)}div#\:\$p > svg > foreignObject > section hr{box-sizing:content-box;overflow:hidden;background:transparent;height:.25em;padding:0;margin:var(--base-size-24) 0;background-color:var(--borderColor-default);border:0}div#\:\$p > svg > foreignObject > section input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}div#\:\$p > svg > foreignObject > section [type=button],div#\:\$p > svg > foreignObject > section [type=reset],div#\:\$p > svg > foreignObject > section [type=submit]{-webkit-appearance:button;-moz-appearance:button;appearance:button}div#\:\$p > svg > foreignObject > section [type=checkbox],div#\:\$p > svg > foreignObject > section [type=radio]{box-sizing:border-box;padding:0}div#\:\$p > svg > foreignObject > section [type=number]::-webkit-inner-spin-button,div#\:\$p > svg > foreignObject > section [type=number]::-webkit-outer-spin-button{height:auto}div#\:\$p > svg > foreignObject > section [type=search]::-webkit-search-cancel-button,div#\:\$p > svg > foreignObject > section [type=search]::-webkit-search-decoration{-webkit-appearance:none;appearance:none}div#\:\$p > svg > foreignObject > section ::-webkit-input-placeholder{color:inherit;opacity:.54}div#\:\$p > svg > foreignObject > section ::-webkit-file-upload-button{-webkit-appearance:button;appearance:button;font:inherit}div#\:\$p > svg > foreignObject > section a:hover{text-decoration:underline}div#\:\$p > svg > foreignObject > section ::-moz-placeholder{color:var(--fgColor-muted);opacity:1}div#\:\$p > svg > foreignObject > section ::placeholder{color:var(--fgColor-muted);opacity:1}div#\:\$p > svg > foreignObject > section hr:after,div#\:\$p > svg > foreignObject > section hr:before{display:table;content:""}div#\:\$p > svg > foreignObject > section hr:after{clear:both}div#\:\$p > svg > foreignObject > section table{border-spacing:0;border-collapse:collapse;display:block;width:-moz-max-content;width:max-content;max-width:100%;overflow:auto;font-variant:tabular-nums}div#\:\$p > svg > foreignObject > section td,div#\:\$p > svg > foreignObject > section th{padding:0}div#\:\$p > svg > foreignObject > section details summary{cursor:pointer}div#\:\$p > svg > foreignObject > section [role=button]:focus,div#\:\$p > svg > foreignObject > section a:focus,div#\:\$p > svg > foreignObject > section input[type=checkbox]:focus,div#\:\$p > svg > foreignObject > section input[type=radio]:focus{outline:2px solid var(--focus-outlineColor);outline-offset:-2px;box-shadow:none}div#\:\$p > svg > foreignObject > section [role=button]:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section a:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section input[type=checkbox]:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section input[type=radio]:focus:not(:focus-visible){outline:1px solid transparent}div#\:\$p > svg > foreignObject > section [role=button]:focus-visible,div#\:\$p > svg > foreignObject > section a:focus-visible,div#\:\$p > svg > foreignObject > section input[type=checkbox]:focus-visible,div#\:\$p > svg > foreignObject > section input[type=radio]:focus-visible{outline:2px solid var(--focus-outlineColor);outline-offset:-2px;box-shadow:none}div#\:\$p > svg > foreignObject > section a:not([class]):focus,div#\:\$p > svg > foreignObject > section a:not([class]):focus-visible,div#\:\$p > svg > foreignObject > section input[type=checkbox]:focus,div#\:\$p > svg > foreignObject > section input[type=checkbox]:focus-visible,div#\:\$p > svg > foreignObject > section input[type=radio]:focus,div#\:\$p > svg > foreignObject > section input[type=radio]:focus-visible{outline-offset:0}div#\:\$p > svg > foreignObject > section kbd{display:inline-block;padding:var(--base-size-4);font:11px var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);line-height:10px;color:var(--fgColor-default);vertical-align:middle;background-color:var(--bgColor-muted);border-bottom-color:var(--borderColor-neutral-muted);border:1px solid var(--borderColor-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--borderColor-neutral-muted)}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section :is(h2, marp-h2),div#\:\$p > svg > foreignObject > section :is(h3, marp-h3),div#\:\$p > svg > foreignObject > section :is(h4, marp-h4),div#\:\$p > svg > foreignObject > section :is(h5, marp-h5),div#\:\$p > svg > foreignObject > section :is(h6, marp-h6){margin-top:var(--base-size-24);margin-bottom:var(--base-size-16);font-weight:var(--base-text-weight-semibold, 600);line-height:1.25}div#\:\$p > svg > foreignObject > section :is(h2, marp-h2){padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--borderColor-muted)}div#\:\$p > svg > foreignObject > section :is(h2, marp-h2),div#\:\$p > svg > foreignObject > section :is(h3, marp-h3){font-weight:var(--base-text-weight-semibold, 600)}div#\:\$p > svg > foreignObject > section :is(h3, marp-h3){font-size:1.25em}div#\:\$p > svg > foreignObject > section :is(h4, marp-h4){font-size:1em}div#\:\$p > svg > foreignObject > section :is(h4, marp-h4),div#\:\$p > svg > foreignObject > section :is(h5, marp-h5){font-weight:var(--base-text-weight-semibold, 600)}div#\:\$p > svg > foreignObject > section :is(h5, marp-h5){font-size:.875em}div#\:\$p > svg > foreignObject > section :is(h6, marp-h6){font-weight:var(--base-text-weight-semibold, 600);font-size:.85em;color:var(--fgColor-muted)}div#\:\$p > svg > foreignObject > section p{margin-top:0;margin-bottom:10px}div#\:\$p > svg > foreignObject > section blockquote{margin:0;padding:0 1em;color:var(--fgColor-muted);border-left:.25em solid var(--borderColor-default)}div#\:\$p > svg > foreignObject > section ol,div#\:\$p > svg > foreignObject > section ul{margin-top:0;margin-bottom:0;padding-left:2em}div#\:\$p > svg > foreignObject > section ol ol,div#\:\$p > svg > foreignObject > section ul ol{list-style-type:lower-roman}div#\:\$p > svg > foreignObject > section ol ol ol,div#\:\$p > svg > foreignObject > section ol ul ol,div#\:\$p > svg > foreignObject > section ul ol ol,div#\:\$p > svg > foreignObject > section ul ul ol{list-style-type:lower-alpha}div#\:\$p > svg > foreignObject > section dd{margin-left:0}div#\:\$p > svg > foreignObject > section code,div#\:\$p > svg > foreignObject > section :is(pre, marp-pre),div#\:\$p > svg > foreignObject > section samp,div#\:\$p > svg > foreignObject > section tt{font-family:var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);font-size:12px}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre){margin-top:0;margin-bottom:0;word-wrap:normal}div#\:\$p > svg > foreignObject > section .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}div#\:\$p > svg > foreignObject > section input::-webkit-inner-spin-button,div#\:\$p > svg > foreignObject > section input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}div#\:\$p > svg > foreignObject > section .mr-2{margin-right:var(--base-size-8, 8px)!important}div#\:\$p > svg > foreignObject > section:after,div#\:\$p > svg > foreignObject > section:before{display:table}div#\:\$p > svg > foreignObject > section:after{clear:both}div#\:\$p > svg > foreignObject > section>:first-child{margin-top:0!important}div#\:\$p > svg > foreignObject > section>:last-child{margin-bottom:0!important}div#\:\$p > svg > foreignObject > section a:not([href]){color:inherit;text-decoration:none}div#\:\$p > svg > foreignObject > section .absent{color:var(--fgColor-danger)}div#\:\$p > svg > foreignObject > section .anchor{float:left;padding-right:var(--base-size-4);margin-left:-20px;line-height:1}div#\:\$p > svg > foreignObject > section .anchor:focus{outline:none}div#\:\$p > svg > foreignObject > section blockquote,div#\:\$p > svg > foreignObject > section details,div#\:\$p > svg > foreignObject > section dl,div#\:\$p > svg > foreignObject > section ol,div#\:\$p > svg > foreignObject > section p,div#\:\$p > svg > foreignObject > section :is(pre, marp-pre),div#\:\$p > svg > foreignObject > section table,div#\:\$p > svg > foreignObject > section ul{margin-top:0;margin-bottom:var(--base-size-16)}div#\:\$p > svg > foreignObject > section blockquote>:first-child{margin-top:0}div#\:\$p > svg > foreignObject > section blockquote>:last-child{margin-bottom:0}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1) .octicon-link,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2) .octicon-link,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3) .octicon-link,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4) .octicon-link,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5) .octicon-link,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6) .octicon-link{color:var(--fgColor-default);vertical-align:middle;visibility:hidden}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1):hover .anchor,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2):hover .anchor,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3):hover .anchor,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4):hover .anchor,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5):hover .anchor,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6):hover .anchor{text-decoration:none}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1):hover .anchor .octicon-link,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2):hover .anchor .octicon-link,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3):hover .anchor .octicon-link,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4):hover .anchor .octicon-link,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5):hover .anchor .octicon-link,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6):hover .anchor .octicon-link{visibility:visible}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1) code,div#\:\$p > svg > foreignObject > section :is(h1, marp-h1) tt,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2) code,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2) tt,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3) code,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3) tt,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4) code,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4) tt,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5) code,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5) tt,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6) code,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6) tt{padding:0 .2em;font-size:inherit}div#\:\$p > svg > foreignObject > section summary :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section summary :is(h2, marp-h2),div#\:\$p > svg > foreignObject > section summary :is(h3, marp-h3),div#\:\$p > svg > foreignObject > section summary :is(h4, marp-h4),div#\:\$p > svg > foreignObject > section summary :is(h5, marp-h5),div#\:\$p > svg > foreignObject > section summary :is(h6, marp-h6){display:inline-block}div#\:\$p > svg > foreignObject > section summary :is(h1, marp-h1) .anchor,div#\:\$p > svg > foreignObject > section summary :is(h2, marp-h2) .anchor,div#\:\$p > svg > foreignObject > section summary :is(h3, marp-h3) .anchor,div#\:\$p > svg > foreignObject > section summary :is(h4, marp-h4) .anchor,div#\:\$p > svg > foreignObject > section summary :is(h5, marp-h5) .anchor,div#\:\$p > svg > foreignObject > section summary :is(h6, marp-h6) .anchor{margin-left:-40px}div#\:\$p > svg > foreignObject > section summary :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section summary :is(h2, marp-h2){padding-bottom:0;border-bottom:0}div#\:\$p > svg > foreignObject > section ol.no-list,div#\:\$p > svg > foreignObject > section ul.no-list{padding:0;list-style-type:none}div#\:\$p > svg > foreignObject > section ol[type="a s"]{list-style-type:lower-alpha}div#\:\$p > svg > foreignObject > section ol[type="A s"]{list-style-type:upper-alpha}div#\:\$p > svg > foreignObject > section ol[type="i s"]{list-style-type:lower-roman}div#\:\$p > svg > foreignObject > section ol[type="I s"]{list-style-type:upper-roman}div#\:\$p > svg > foreignObject > section div>ol:not([type]),div#\:\$p > svg > foreignObject > section ol[type="1"]{list-style-type:decimal}div#\:\$p > svg > foreignObject > section ol ol,div#\:\$p > svg > foreignObject > section ol ul,div#\:\$p > svg > foreignObject > section ul ol,div#\:\$p > svg > foreignObject > section ul ul{margin-top:0;margin-bottom:0}div#\:\$p > svg > foreignObject > section li>p{margin-top:var(--base-size-16)}div#\:\$p > svg > foreignObject > section li+li{margin-top:.25em}div#\:\$p > svg > foreignObject > section dl{padding:0}div#\:\$p > svg > foreignObject > section dl dt{padding:0;margin-top:var(--base-size-16);font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold, 600)}div#\:\$p > svg > foreignObject > section dl dd{padding:0 var(--base-size-16);margin-bottom:var(--base-size-16)}div#\:\$p > svg > foreignObject > section table th{font-weight:var(--base-text-weight-semibold, 600)}div#\:\$p > svg > foreignObject > section table td,div#\:\$p > svg > foreignObject > section table th{padding:6px 13px;border:1px solid var(--borderColor-default)}div#\:\$p > svg > foreignObject > section table td>:last-child{margin-bottom:0}div#\:\$p > svg > foreignObject > section table tr{background-color:var(--bgColor-default);border-top:1px solid var(--borderColor-muted)}div#\:\$p > svg > foreignObject > section table tr:nth-child(2n){background-color:var(--bgColor-muted)}div#\:\$p > svg > foreignObject > section table img{background-color:transparent}div#\:\$p > svg > foreignObject > section img[align=right]{padding-left:20px}div#\:\$p > svg > foreignObject > section img[align=left]{padding-right:20px}div#\:\$p > svg > foreignObject > section .emoji{max-width:none;vertical-align:text-top;background-color:transparent}div#\:\$p > svg > foreignObject > section :is(span, marp-span).frame,div#\:\$p > svg > foreignObject > section :is(span, marp-span).frame>:is(span, marp-span){display:block;overflow:hidden}div#\:\$p > svg > foreignObject > section :is(span, marp-span).frame>:is(span, marp-span){float:left;width:auto;padding:7px;margin:13px 0 0;border:1px solid var(--borderColor-default)}div#\:\$p > svg > foreignObject > section :is(span, marp-span).frame :is(span, marp-span) img{display:block;float:left}div#\:\$p > svg > foreignObject > section :is(span, marp-span).frame :is(span, marp-span) :is(span, marp-span){display:block;padding:5px 0 0;clear:both;color:var(--fgColor-default)}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-center{display:block;overflow:hidden;clear:both}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-center>:is(span, marp-span){display:block;margin:13px auto 0;overflow:hidden;text-align:center}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-center :is(span, marp-span) img{margin:0 auto;text-align:center}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-right{display:block;overflow:hidden;clear:both}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-right>:is(span, marp-span){display:block;margin:13px 0 0;overflow:hidden;text-align:right}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-right :is(span, marp-span) img{margin:0;text-align:right}div#\:\$p > svg > foreignObject > section :is(span, marp-span).float-left{display:block;float:left;margin-right:13px;overflow:hidden}div#\:\$p > svg > foreignObject > section :is(span, marp-span).float-left :is(span, marp-span){margin:13px 0 0}div#\:\$p > svg > foreignObject > section :is(span, marp-span).float-right{display:block;float:right;margin-left:13px;overflow:hidden}div#\:\$p > svg > foreignObject > section :is(span, marp-span).float-right>:is(span, marp-span){display:block;margin:13px auto 0;overflow:hidden;text-align:right}div#\:\$p > svg > foreignObject > section code,div#\:\$p > svg > foreignObject > section tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--bgColor-neutral-muted);border-radius:6px}div#\:\$p > svg > foreignObject > section code br,div#\:\$p > svg > foreignObject > section tt br{display:none}div#\:\$p > svg > foreignObject > section del code{text-decoration:inherit}div#\:\$p > svg > foreignObject > section samp{font-size:85%}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) code{font-size:100%}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre)>code{padding:0;margin:0;word-break:normal;white-space:pre;background:transparent;border:0}div#\:\$p > svg > foreignObject > section .highlight{margin-bottom:var(--base-size-16)}div#\:\$p > svg > foreignObject > section .highlight :is(pre, marp-pre){margin-bottom:0;word-break:normal}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre){padding:var(--base-size-16);overflow:auto;font-size:85%;line-height:1.45;color:var(--fgColor-default);background-color:var(--bgColor-muted);border-radius:6px}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) code,div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) tt{display:inline;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}div#\:\$p > svg > foreignObject > section .csv-data td,div#\:\$p > svg > foreignObject > section .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}div#\:\$p > svg > foreignObject > section .csv-data .blob-num{padding:10px var(--base-size-8) 9px;text-align:right;background:var(--bgColor-default);border:0}div#\:\$p > svg > foreignObject > section .csv-data tr{border-top:0}div#\:\$p > svg > foreignObject > section .csv-data th{font-weight:var(--base-text-weight-semibold, 600);background:var(--bgColor-muted);border-top:0}div#\:\$p > svg > foreignObject > section [data-footnote-ref]:before{content:"["}div#\:\$p > svg > foreignObject > section [data-footnote-ref]:after{content:"]"}div#\:\$p > svg > foreignObject > section .footnotes{font-size:12px;color:var(--fgColor-muted);border-top:1px solid var(--borderColor-default)}div#\:\$p > svg > foreignObject > section div#\:\$p > svg > foreignObject > section section.footnotes{--marpit-root-font-size:12px}div#\:\$p > svg > foreignObject > section .footnotes ol,div#\:\$p > svg > foreignObject > section .footnotes ol ul{padding-left:var(--base-size-16)}div#\:\$p > svg > foreignObject > section .footnotes ol ul{display:inline-block;margin-top:var(--base-size-16)}div#\:\$p > svg > foreignObject > section .footnotes li{position:relative}div#\:\$p > svg > foreignObject > section .footnotes li:target:before{position:absolute;top:calc(var(--base-size-8)*-1);right:calc(var(--base-size-8)*-1);bottom:calc(var(--base-size-8)*-1);left:calc(var(--base-size-24)*-1);pointer-events:none;content:"";border:2px solid var(--borderColor-accent-emphasis);border-radius:6px}div#\:\$p > svg > foreignObject > section .footnotes li:target{color:var(--fgColor-default)}div#\:\$p > svg > foreignObject > section .footnotes .data-footnote-backref g-emoji{font-family:monospace}div#\:\$p > svg > foreignObject > section .pl-c{color:var(--color-prettylights-syntax-comment)}div#\:\$p > svg > foreignObject > section .pl-c1,div#\:\$p > svg > foreignObject > section .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}div#\:\$p > svg > foreignObject > section .pl-e,div#\:\$p > svg > foreignObject > section .pl-en{color:var(--color-prettylights-syntax-entity)}div#\:\$p > svg > foreignObject > section .pl-s .pl-s1,div#\:\$p > svg > foreignObject > section .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}div#\:\$p > svg > foreignObject > section .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}div#\:\$p > svg > foreignObject > section .pl-k{color:var(--color-prettylights-syntax-keyword)}div#\:\$p > svg > foreignObject > section .pl-pds,div#\:\$p > svg > foreignObject > section .pl-s,div#\:\$p > svg > foreignObject > section .pl-s .pl-pse .pl-s1,div#\:\$p > svg > foreignObject > section .pl-sr,div#\:\$p > svg > foreignObject > section .pl-sr .pl-cce,div#\:\$p > svg > foreignObject > section .pl-sr .pl-sra,div#\:\$p > svg > foreignObject > section .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}div#\:\$p > svg > foreignObject > section .pl-smw,div#\:\$p > svg > foreignObject > section .pl-v{color:var(--color-prettylights-syntax-variable)}div#\:\$p > svg > foreignObject > section .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}div#\:\$p > svg > foreignObject > section .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}div#\:\$p > svg > foreignObject > section .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}div#\:\$p > svg > foreignObject > section .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}div#\:\$p > svg > foreignObject > section .pl-ml{color:var(--color-prettylights-syntax-markup-list)}div#\:\$p > svg > foreignObject > section .pl-mh,div#\:\$p > svg > foreignObject > section .pl-mh .pl-en,div#\:\$p > svg > foreignObject > section .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}div#\:\$p > svg > foreignObject > section .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}div#\:\$p > svg > foreignObject > section .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}div#\:\$p > svg > foreignObject > section .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}div#\:\$p > svg > foreignObject > section .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}div#\:\$p > svg > foreignObject > section .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}div#\:\$p > svg > foreignObject > section .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}div#\:\$p > svg > foreignObject > section .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}div#\:\$p > svg > foreignObject > section .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}div#\:\$p > svg > foreignObject > section .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}div#\:\$p > svg > foreignObject > section .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}div#\:\$p > svg > foreignObject > section [role=button]:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section [role=tabpanel][tabindex="0"]:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section a:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section button:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section summary:focus:not(:focus-visible){outline:none;box-shadow:none}div#\:\$p > svg > foreignObject > section [tabindex="0"]:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section details-dialog:focus:not(:focus-visible){outline:none}div#\:\$p > svg > foreignObject > section g-emoji{display:inline-block;min-width:1ch;font-family:Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal, 400);line-height:1;vertical-align:-.075em}div#\:\$p > svg > foreignObject > section g-emoji img{width:1em;height:1em}div#\:\$p > svg > foreignObject > section a:has(>p,>div,>:is(pre, marp-pre),>blockquote){display:block}div#\:\$p > svg > foreignObject > section a:has(>p,>div,>:is(pre, marp-pre),>blockquote):not(:has(.snippet-clipboard-content,>:is(pre, marp-pre))){width:-moz-fit-content;width:fit-content}div#\:\$p > svg > foreignObject > section a:has(>p,>div,>:is(pre, marp-pre),>blockquote):has(.snippet-clipboard-content,>:is(pre, marp-pre)):focus-visible{outline:2px solid var(--focus-outlineColor);outline-offset:2px}div#\:\$p > svg > foreignObject > section .task-list-item{list-style-type:none}div#\:\$p > svg > foreignObject > section .task-list-item label{font-weight:var(--base-text-weight-normal, 400)}div#\:\$p > svg > foreignObject > section .task-list-item.enabled label{cursor:pointer}div#\:\$p > svg > foreignObject > section .task-list-item+.task-list-item{margin-top:var(--base-size-4)}div#\:\$p > svg > foreignObject > section .task-list-item .handle{display:none}div#\:\$p > svg > foreignObject > section .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}div#\:\$p > svg > foreignObject > section ul:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}div#\:\$p > svg > foreignObject > section ol:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}div#\:\$p > svg > foreignObject > section .contains-task-list:focus-within .task-list-item-convert-container,div#\:\$p > svg > foreignObject > section .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip-path:none}div#\:\$p > svg > foreignObject > section ::-webkit-calendar-picker-indicator{filter:invert(50%)}div#\:\$p > svg > foreignObject > section .markdown-alert{padding:var(--base-size-8) var(--base-size-16);margin-bottom:var(--base-size-16);color:inherit;border-left:.25em solid var(--borderColor-default)}div#\:\$p > svg > foreignObject > section .markdown-alert>:first-child{margin-top:0}div#\:\$p > svg > foreignObject > section .markdown-alert>:last-child{margin-bottom:0}div#\:\$p > svg > foreignObject > section .markdown-alert .markdown-alert-title{display:flex;font-weight:var(--base-text-weight-medium, 500);align-items:center;line-height:1}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-note{border-left-color:var(--borderColor-accent-emphasis)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-note .markdown-alert-title{color:var(--fgColor-accent)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-important{border-left-color:var(--borderColor-done-emphasis)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-important .markdown-alert-title{color:var(--fgColor-done)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-warning{border-left-color:var(--borderColor-attention-emphasis)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-warning .markdown-alert-title{color:var(--fgColor-attention)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-tip{border-left-color:var(--borderColor-success-emphasis)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-tip .markdown-alert-title{color:var(--fgColor-success)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-caution{border-left-color:var(--borderColor-danger-emphasis)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-caution .markdown-alert-title{color:var(--fgColor-danger)}div#\:\$p > svg > foreignObject > section>:first-child>.heading-element:first-child{margin-top:0!important}div#\:\$p > svg > foreignObject > section .highlight :is(pre, marp-pre):has(+.zeroclipboard-container){min-height:52px}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1){color:var(--h1-color);font-size:1.6em}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section :is(h2, marp-h2){border-bottom:none}div#\:\$p > svg > foreignObject > section :is(h2, marp-h2){font-size:1.3em}div#\:\$p > svg > foreignObject > section :is(h3, marp-h3){font-size:1.1em}div#\:\$p > svg > foreignObject > section :is(h4, marp-h4){font-size:1.05em}div#\:\$p > svg > foreignObject > section :is(h5, marp-h5){font-size:1em}div#\:\$p > svg > foreignObject > section :is(h6, marp-h6){font-size:.9em}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1) strong,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2) strong,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3) strong,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4) strong,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5) strong,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6) strong{font-weight:inherit;color:var(--heading-strong-color)}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h2, marp-h2)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h3, marp-h3)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h4, marp-h4)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h5, marp-h5)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h6, marp-h6)::part(auto-scaling){max-height:563px}div#\:\$p > svg > foreignObject > section hr{height:0;padding-top:.25em}div#\:\$p > svg > foreignObject > section img{background-color:transparent}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre){border:1px solid var(--borderColor-default);line-height:1.15;overflow:visible}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre)::part(auto-scaling){max-height:529px}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs){color:var(--color-prettylights-syntax-storage-modifier-import)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-doctag),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-keyword),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-meta .hljs-keyword),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-template-tag),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-template-variable),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-type),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-variable.language_){color:var(--color-prettylights-syntax-keyword)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title.class_),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title.class_.inherited__),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title.function_){color:var(--color-prettylights-syntax-entity)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-attr),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-attribute),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-literal),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-meta),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-number),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-operator),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-attr),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-class),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-id),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-variable){color:var(--color-prettylights-syntax-constant)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-meta .hljs-string),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-regexp),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-string){color:var(--color-prettylights-syntax-string)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-built_in),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-symbol){color:var(--color-prettylights-syntax-variable)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-code),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-comment),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-formula){color:var(--color-prettylights-syntax-comment)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-name),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-quote),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-pseudo),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-tag){color:var(--color-prettylights-syntax-entity-tag)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-subst){color:var(--color-prettylights-syntax-storage-modifier-import)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-section){font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-bullet){color:var(--color-prettylights-syntax-markup-list)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-emphasis){font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-strong){font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-addition){color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-deletion){color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}div#\:\$p > svg > foreignObject > section footer,div#\:\$p > svg > foreignObject > section header{margin:0;position:absolute;left:30px;color:var(--header-footer-color);font-size:18px}div#\:\$p > svg > foreignObject > section header{top:21px}div#\:\$p > svg > foreignObject > section footer{bottom:21px}div#\:\$p > svg > foreignObject > section{--h1-color:light-dark(#246, #cee7ff);--header-footer-color:light-dark(hsla(0,0%,40%,.75), hsla(0,0%,60%,.75));--heading-strong-color:light-dark(#48c, #7bf);--paginate-color:light-dark(#777, #999);--base-size-4:4px;--base-size-8:8px;--base-size-16:16px;--base-size-24:24px;--base-size-40:40px;display:block;font-size:29px;height:720px;padding:78.5px;place-content:safe center center;width:1280px;flex-flow:column nowrap;align-items:stretch}div#\:\$p > svg > foreignObject > section{--marpit-root-font-size:29px}div#\:\$p > svg > foreignObject > section>:last-child,div#\:\$p > svg > foreignObject > section[data-footer]>:nth-last-child(2){margin-bottom:0}div#\:\$p > svg > foreignObject > section>:first-child,div#\:\$p > svg > foreignObject > section>header:first-child+*{margin-top:0}div#\:\$p > svg > foreignObject > section:after{position:absolute;padding:0;right:30px;bottom:21px;font-size:24px;color:var(--paginate-color)}div#\:\$p > svg > foreignObject > section:after{--marpit-root-font-size:24px}div#\:\$p > svg > foreignObject > section[data-color] :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section[data-color] :is(h2, marp-h2),div#\:\$p > svg > foreignObject > section[data-color] :is(h3, marp-h3),div#\:\$p > svg > foreignObject > section[data-color] :is(h4, marp-h4),div#\:\$p > svg > foreignObject > section[data-color] :is(h5, marp-h5),div#\:\$p > svg > foreignObject > section[data-color] :is(h6, marp-h6){color:currentcolor}div#\:\$p > svg > foreignObject > :where(section){container-type:size}div#\:\$p > svg > foreignObject > section img[data-marp-twemoji]{background:transparent;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;width:1em}div#\:\$p > svg > foreignObject > section{font-family:'PingFang SC', 'PingFang TC', 'Noto Sans CJK TC', 'Microsoft JhengHei', sans-serif;font-size:24px;padding:40px 50px;background-color:#f8fafc;color:#1e293b;justify-content:flex-start}div#\:\$p > svg > foreignObject > section{--marpit-root-font-size: 24px}div#\:\$p > svg > foreignObject > section.lead, div#\:\$p > svg > foreignObject > section .lead, div#\:\$p > svg > foreignObject > section.part-cover, div#\:\$p > svg > foreignObject > section .part-cover{justify-content:center}div#\:\$p > svg > foreignObject > section header{position:absolute;left:auto!important;right:50px!important;top:18px;font-size:14px;color:#64748b;text-align:right;z-index:1000}div#\:\$p > svg > foreignObject > section .header-nav-wrapper{position:relative;display:inline-block}div#\:\$p > svg > foreignObject > section .header-nav-title{display:inline-flex;align-items:center;cursor:pointer;padding:3px 8px;border-radius:6px;font-weight:500;color:#475569;transition:background 0.15s ease, color 0.15s ease}div#\:\$p > svg > foreignObject > section .header-nav-wrapper:hover .header-nav-title, div#\:\$p > svg > foreignObject > section .header-nav-wrapper.is-open .header-nav-title{background:#e0f2fe;color:#0369a1}div#\:\$p > svg > foreignObject > section .nav-caret{font-size:10px;margin-left:4px;opacity:0.6;transition:transform 0.2s ease;display:inline-block}div#\:\$p > svg > foreignObject > section section.nav-caret{--marpit-root-font-size: 10px}div#\:\$p > svg > foreignObject > section .header-nav-wrapper:hover .nav-caret, div#\:\$p > svg > foreignObject > section .header-nav-wrapper.is-open .nav-caret{transform:rotate(180deg);opacity:1}div#\:\$p > svg > foreignObject > section .nav-dropdown{display:none;position:absolute;right:0;top:100%;margin-top:4px;width:560px;max-height:480px;background:rgba(255, 255, 255, 0.98);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid #cbd5e1;border-radius:12px;box-shadow:0 16px 36px -4px rgba(15, 23, 42, 0.18), 0 6px 12px -2px rgba(15, 23, 42, 0.08);padding:12px 14px;text-align:left;z-index:99999;overflow-y:auto;box-sizing:border-box}div#\:\$p > svg > foreignObject > section .nav-dropdown::before{content:'';position:absolute;top:-14px;left:0;right:0;height:14px;background:transparent}div#\:\$p > svg > foreignObject > section .header-nav-wrapper:hover .nav-dropdown, div#\:\$p > svg > foreignObject > section .header-nav-wrapper.is-open .nav-dropdown{display:block;animation:navFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1)}@keyframes navFadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}div#\:\$p > svg > foreignObject > section .nav-dropdown-header{font-size:13px;font-weight:700;color:#1e293b;border-bottom:1px solid #e2e8f0;padding-bottom:8px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}div#\:\$p > svg > foreignObject > section section.nav-dropdown-header{--marpit-root-font-size: 13px}div#\:\$p > svg > foreignObject > section .nav-dropdown-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px}div#\:\$p > svg > foreignObject > section .nav-dropdown-item{display:flex;align-items:center;padding:6px 8px;border-radius:6px;text-decoration:none;color:#334155!important;font-size:12px;line-height:1.3;transition:all 0.12s ease;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}div#\:\$p > svg > foreignObject > section section.nav-dropdown-item{--marpit-root-font-size: 12px}div#\:\$p > svg > foreignObject > section .nav-dropdown-item:hover{background:#eff6ff!important;color:#1d4ed8!important;font-weight:600;transform:translateX(2px)}div#\:\$p > svg > foreignObject > section .nav-dropdown-item.active{background:#dbeafe!important;color:#1e40af!important;font-weight:700}div#\:\$p > svg > foreignObject > section .nav-dropdown-item .badge{display:inline-block;font-size:11px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;font-weight:600;color:#64748b;background:#f1f5f9;padding:1px 5px;border-radius:4px;margin-right:6px;flex-shrink:0}div#\:\$p > svg > foreignObject > section .nav-dropdown-item div#\:\$p > svg > foreignObject > section section.badge{--marpit-root-font-size: 11px}div#\:\$p > svg > foreignObject > section .nav-dropdown-item:hover .badge{background:#bfdbfe;color:#1e40af}div#\:\$p > svg > foreignObject > section .nav-dropdown-item.active .badge{background:#3b82f6;color:#ffffff}div#\:\$p > svg > foreignObject > section .nav-dropdown-item .item-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media print{div#\:\$p > svg > foreignObject > section .nav-dropdown, div#\:\$p > svg > foreignObject > section .nav-caret{display:none!important}div#\:\$p > svg > foreignObject > section header{z-index:auto!important}}div#\:\$p > svg > foreignObject > section.part-cover header, div#\:\$p > svg > foreignObject > section .part-cover header{color:#cbd5e1}div#\:\$p > svg > foreignObject > section.part-cover header a, div#\:\$p > svg > foreignObject > section .part-cover header a{color:#ffffff!important;background:rgba(255, 255, 255, 0.15);border-color:rgba(255, 255, 255, 0.3)}div#\:\$p > svg > foreignObject > section.part-cover header a:hover, div#\:\$p > svg > foreignObject > section .part-cover header a:hover{background:#3b82f6!important;border-color:#3b82f6!important}div#\:\$p > svg > foreignObject > section footer{font-size:14px;color:#64748b}div#\:\$p > svg > foreignObject > section::after{font-size:12px;color:#64748b}div#\:\$p > svg > foreignObject > section::after{--marpit-root-font-size: 12px}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1){color:#0f172a;font-size:42px;margin-bottom:20px;border-bottom:3px solid #3b82f6;padding-bottom:10px}div#\:\$p > svg > foreignObject > section :is(h2, marp-h2){color:#1e40af;font-size:32px;margin-top:5px;margin-bottom:16px;border-bottom:2px solid #93c5fd;padding-bottom:6px}div#\:\$p > svg > foreignObject > section :is(h3, marp-h3){color:#0369a1;font-size:24px;margin-top:8px;margin-bottom:8px}div#\:\$p > svg > foreignObject > section p, div#\:\$p > svg > foreignObject > section li{line-height:1.6}div#\:\$p > svg > foreignObject > section ul, div#\:\$p > svg > foreignObject > section ol{margin-top:6px;margin-bottom:10px}div#\:\$p > svg > foreignObject > section blockquote{background:#e0f2fe;border-left:6px solid #0284c7;padding:10px 18px;border-radius:4px;margin:12px 0;color:#0369a1;font-style:italic}div#\:\$p > svg > foreignObject > section ul:has(> li > blockquote), div#\:\$p > svg > foreignObject > section li:has(> blockquote){list-style:none!important;padding-left:0!important;margin-left:0!important;margin-top:0!important;margin-bottom:0!important}div#\:\$p > svg > foreignObject > section code{background:#f1f5f9;color:#b91c1c;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono', 'Fira Code', Consolas, monospace;font-size:0.9em}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre){background:#f1f5f9;color:#1e293b;border:1px solid #cbd5e1;padding:14px;border-radius:8px;font-size:18px;line-height:1.4}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) code{background:transparent;color:inherit;padding:0}div#\:\$p > svg > foreignObject > section table{display:table!important;width:95%;max-width:1100px;border-collapse:collapse;margin:16px auto!important;align-self:center!important;font-size:19px}div#\:\$p > svg > foreignObject > section th{background-color:#1e40af;color:white;padding:10px 14px;text-align:left}div#\:\$p > svg > foreignObject > section td{padding:8px 14px;border-bottom:1px solid #cbd5e1;vertical-align:middle}div#\:\$p > svg > foreignObject > section tr:nth-child(even){background-color:#f1f5f9}div#\:\$p > svg > foreignObject > section .badge-good{background-color:#10b981;color:white;padding:3px 8px;border-radius:4px;font-weight:bold;font-size:0.85em}div#\:\$p > svg > foreignObject > section section.badge-good{--marpit-root-font-size: 0.85em}div#\:\$p > svg > foreignObject > section .badge-bad{background-color:#ef4444;color:white;padding:3px 8px;border-radius:4px;font-weight:bold;font-size:0.85em}div#\:\$p > svg > foreignObject > section section.badge-bad{--marpit-root-font-size: 0.85em}div#\:\$p > svg > foreignObject > section .prompt-box{background-color:#f0fdf4;border:2px solid #86efac;border-radius:8px;padding:12px 16px;margin-top:10px;font-size:21px}div#\:\$p > svg > foreignObject > section section.prompt-box{--marpit-root-font-size: 21px}div#\:\$p > svg > foreignObject > section .prompt-box :is(h3, marp-h3){font-size:25px;margin-top:0;margin-bottom:8px}div#\:\$p > svg > foreignObject > section .lead{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)}div#\:\$p > svg > foreignObject > section .lead :is(h1, marp-h1){font-size:50px;border-bottom:none;color:#1e3a8a;margin-bottom:12px}div#\:\$p > svg > foreignObject > section .lead :is(h2, marp-h2){font-size:30px;color:#2563eb;font-weight:normal;border-bottom:none}div#\:\$p > svg > foreignObject > section .part-cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);color:#ffffff}div#\:\$p > svg > foreignObject > section .part-cover :is(h1, marp-h1){color:#ffffff;font-size:52px;border-bottom:4px solid #60a5fa;padding-bottom:16px;margin-bottom:16px}div#\:\$p > svg > foreignObject > section .part-cover :is(h2, marp-h2){color:#93c5fd;font-size:30px;border-bottom:none;font-weight:normal}div#\:\$p > svg > foreignObject > section .two-columns{display:grid;grid-template-columns:1fr 1fr;gap:20px}div#\:\$p > svg > foreignObject > section .two-columns-64{display:grid;grid-template-columns:6fr 4fr;gap:20px}div#\:\$p > svg > foreignObject > section .two-columns-73{display:grid;grid-template-columns:7fr 3fr;gap:20px}div#\:\$p > svg > foreignObject > section .three-columns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}div#\:\$p > svg > foreignObject > section .card{background:white;padding:16px 18px;border-radius:8px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.08);border:1px solid #e2e8f0}div#\:\$p > svg > foreignObject > section .card :is(h3, marp-h3){font-size:26px;margin-top:0;margin-bottom:8px}div#\:\$p > svg > foreignObject > section .full-img{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 50px}div#\:\$p > svg > foreignObject > section .full-img p{display:flex;justify-content:center;align-items:center;width:100%;height:100%;margin:0}div#\:\$p > svg > foreignObject > section .full-img img, div#\:\$p > svg > foreignObject > section img.full-img{max-width:95%;max-height:540px;object-fit:contain;border-radius:8px;box-shadow:0 4px 12px rgba(0, 0, 0, 0.08)}div#\:\$p > svg > foreignObject > section .img-container{display:flex;justify-content:center;align-items:center;width:100%;height:480px}div#\:\$p > svg > foreignObject > section .img-container img{max-width:95%;max-height:100%;object-fit:contain;border-radius:8px;box-shadow:0 4px 12px rgba(0, 0, 0, 0.08)}div#\:\$p > svg > foreignObject > section .card-img{display:flex;justify-content:center;align-items:center;background:transparent;border:none;box-shadow:none;padding:0}div#\:\$p > svg > foreignObject > section .card-img img{max-width:100%;max-height:440px;object-fit:contain;border-radius:8px;border:none;box-shadow:none}div#\:\$p > svg > foreignObject > section{width:1280px;height:720px}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"]{columns:initial!important;display:block!important;padding:0!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"]::before, div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"]::after, div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="content"]::before, div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="content"]::after{display:none!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction="vertical"]{flex-direction:column}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split] > div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split, 50%)}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split="right"] > div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure > figcaption{position:absolute;border:0;clip:rect(0, 0, 0, 0);height:1px;margin:-1px;overflow:hidden;padding:0;white-space:nowrap;width:1px}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="content"], div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="pseudo"]{background:transparent!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="pseudo"], div#\:\$p > svg[data-marpit-svg] > foreignObject[data-marpit-advanced-background="pseudo"]{pointer-events:none!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background-split]{width:100%;height:100%}
+</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="overview" tabindex="-1" title="Toggle overview view (o)">Toggle overview view</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id=":$p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-class="lead" data-theme="ux-theme" lang="C" class="lead" data-marpit-pagination="1" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--class:lead;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<h1 id="tidwell-%E7%B6%93%E5%85%B8%E7%B6%B2%E9%A0%81%E8%88%87%E4%BB%8B%E9%9D%A2%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F">Tidwell 經典網頁與介面設計模式</h1>
+<h2 id="designing-interfaces-patterns-for-effective-interaction-design">Designing Interfaces: Patterns for Effective Interaction Design</h2>
+<p><strong>薛念林 教授</strong><br />
+逢甲大學 資訊工程學系</p>
+<p><span style="font-size: 14px; color: #64748b; margin-top: 24px; display: block;">（本講義與 Gemini AI 共同協作編製）</span></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Tidwell UX 設計模式 9 大核心分類" data-theme="ux-theme" lang="C" data-marpit-pagination="2" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Tidwell UX 設計模式 9 大核心分類;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Tidwell UX 設計模式 9 大核心分類</header>
+
+<h2 id="tidwell-ux-%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F-9-%E5%A4%A7%E6%A0%B8%E5%BF%83%E5%88%86%E9%A1%9E">Tidwell UX 設計模式 9 大核心分類</h2>
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+<p><strong>1. 一般性互動</strong><br />
+(General Interaction)</p>
+<ul>
+<li>安全探索</li>
+<li>立即喜悅</li>
+<li>空間記憶</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<p><strong>2. 組織內容</strong><br />
+(Organizing Content)</p>
+<ul>
+<li>凸顯/搜尋/瀏覽</li>
+<li>儀表板</li>
+<li>精靈模式</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<p><strong>3. 到處走走：導覽</strong><br />
+(Navigation)</p>
+<ul>
+<li>逃生門</li>
+<li>麵包屑</li>
+<li>深連接</li>
+</ul>
+</div>
+</div>
+<div class="three-columns" style="margin-top: 16px;">
+<div class="card" data-marpit-fragment>
+<p><strong>4. 網頁元素排版</strong><br />
+(Layout of Elements)</p>
+<ul>
+<li>中央舞台</li>
+<li>手風琴</li>
+<li>模組化分頁</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<p><strong>5. 行動裝置介面</strong><br />
+(Mobile Interfaces)</p>
+<ul>
+<li>垂直堆疊</li>
+<li>底部導航</li>
+<li>無限清單</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<p><strong>6. 清單展示</strong><br />
+(Lists)</p>
+<ul>
+<li>雙面板選擇器</li>
+<li>卡片</li>
+<li>輪播轉盤</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 1: 一般性模式 (General Patterns)" data-theme="ux-theme" lang="C" data-marpit-pagination="3" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 1: 一般性模式 (General Patterns);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 1: 一般性模式 (General Patterns)</header>
+
+<h2 id="chapter-1-%E4%B8%80%E8%88%AC%E6%80%A7%E6%A8%A1%E5%BC%8F-general-patterns">Chapter 1: 一般性模式 (General Patterns)</h2>
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="%E6%8E%A2%E7%B4%A2%E8%88%87%E5%BD%88%E6%80%A7%E6%A8%A1%E5%BC%8F-part-1">探索與彈性模式 (Part 1)</h3>
+<ul>
+<li><strong>TW1.1 安全探索 (Safe Exploration)</strong></li>
+<li><strong>TW1.2 立即喜悅 (Instant Gratification)</strong></li>
+<li><strong>TW1.3 足夠滿足 (Satisficing)</strong></li>
+<li><strong>TW1.4 中途改變 (Changes in Midstream)</strong></li>
+<li><strong>TW1.5 延遲選擇 (Deferred Choice)</strong></li>
+<li><strong>TW1.6 漸進建構 (Incremental Construction)</strong></li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%E7%BF%92%E6%85%A3%E8%88%87%E6%95%88%E7%8E%87%E6%A8%A1%E5%BC%8F-part-2">習慣與效率模式 (Part 2)</h3>
+<ul>
+<li><strong>TW1.7 習慣就好 (Habituation)</strong></li>
+<li><strong>TW1.8 零碎空檔 (Microbreaks)</strong></li>
+<li><strong>TW1.9 空間記憶 (Spatial Memory)</strong></li>
+<li><strong>TW1.10 預期記憶 (Prospective Memory)</strong></li>
+<li><strong>TW1.11 流暢重複 (Streamlined Repetition)</strong></li>
+<li><strong>TW1.12 只用鍵盤 (Keyboard Only)</strong></li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 1: 一般性模式 (General Patterns)" data-theme="ux-theme" lang="C" data-marpit-pagination="4" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 1: 一般性模式 (General Patterns);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 1: 一般性模式 (General Patterns)</header>
+<h2 id="tw11--tw13%E6%8E%A2%E7%B4%A2%E5%8D%B3%E6%99%82%E8%88%87%E6%BB%BF%E8%B6%B3">TW1.1 ~ TW1.3：探索、即時與滿足</h2>
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="tw11-%E5%AE%89%E5%85%A8%E6%8E%A2%E7%B4%A2">TW1.1 安全探索</h3>
+<ul>
+<li><strong>「讓我放心探索，不會迷路也不會搞砸」</strong></li>
+<li>提供隨時可用的返回與撤銷鍵，避免不可逆的阻撓畫面。</li>
+<li>對應 NS01, NS03, NS09。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw12-%E7%AB%8B%E5%8D%B3%E5%96%9C%E6%82%85">TW1.2 立即喜悅</h3>
+<ul>
+<li><strong>「我想現在立刻完成任務，而不是等很久」</strong></li>
+<li>第一畫面保持極簡，不要在第一個動作前塞入冗長說明或強制廣告。</li>
+<li>對應 NS07。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw13-%E8%B6%B3%E5%A4%A0%E6%BB%BF%E8%B6%B3">TW1.3 足夠滿足</h3>
+<ul>
+<li><strong>「看得懂、能用就好，不要強迫我詳讀」</strong></li>
+<li>提示字精簡，以顏色與形狀傳達含義，直覺點擊即可完成。</li>
+<li>對應 NS08。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 1: 一般性模式 (General Patterns)" data-theme="ux-theme" lang="C" data-marpit-pagination="5" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 1: 一般性模式 (General Patterns);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 1: 一般性模式 (General Patterns)</header>
+<h2 id="tw14--tw16%E5%BD%88%E6%80%A7%E5%BB%B6%E9%81%B2%E8%88%87%E6%BC%B8%E9%80%B2">TW1.4 ~ TW1.6：彈性、延遲與漸進</h2>
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="tw14-%E4%B8%AD%E9%80%94%E6%94%B9%E8%AE%8A">TW1.4 中途改變</h3>
+<ul>
+<li><strong>「我改主意了，讓我隨時調整」</strong></li>
+<li>高鐵查詢結果頁上方直接保留搜尋列，可立即更換時段。</li>
+<li>對應 NS03, NS07。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw15-%E5%BB%B6%E9%81%B2%E9%81%B8%E6%93%87">TW1.5 延遲選擇</h3>
+<ul>
+<li><strong>「我現在不想填這個，讓我先用」</strong></li>
+<li>降低註冊門檻，必填欄位降到最低，提供「稍後再設定」。</li>
+<li>對應 NS08。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw16-%E6%BC%B8%E9%80%B2%E5%BB%BA%E6%A7%8B">TW1.6 漸進建構</h3>
+<ul>
+<li><strong>「改一點、看一下，逐步完善」</strong></li>
+<li>即時反應變化，自動暫存草稿，提供即時預覽反饋。</li>
+<li>對應 NS01。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 1: 一般性模式 (General Patterns)" data-theme="ux-theme" lang="C" data-marpit-pagination="6" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 1: 一般性模式 (General Patterns);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 1: 一般性模式 (General Patterns)</header>
+<h2 id="tw17--tw112%E7%BF%92%E6%85%A3%E7%A9%BA%E9%96%93%E8%88%87%E9%8D%B5%E7%9B%A4">TW1.7 ~ TW1.12：習慣、空間與鍵盤</h2>
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="tw17-%E7%BF%92%E6%85%A3%E5%B0%B1%E5%A5%BD">TW1.7 習慣就好</h3>
+<ul>
+<li>遵循使用者的肌肉記憶（<code>Ctrl+C</code>、儲存圖示）。</li>
+<li>確認鍵位置切勿頻繁變換。</li>
+<li>對應 NS04。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw19-%E7%A9%BA%E9%96%93%E8%A8%98%E6%86%B6">TW1.9 空間記憶</h3>
+<ul>
+<li><strong>「別幫我亂移桌上的東西」</strong></li>
+<li>常用功能固定在相同位置，避免選單位置動態亂跳。</li>
+<li>對應 NS04, NS06。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw112-%E5%8F%AA%E7%94%A8%E9%8D%B5%E7%9B%A4">TW1.12 只用鍵盤</h3>
+<ul>
+<li>專家使用者不希望手離開鍵盤。</li>
+<li>支援完整 Tab 切換與快速鍵，Enter 鍵設定安全預設。</li>
+<li>對應 NS07。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 2: 組織內容 (Organizing Content)" data-theme="ux-theme" lang="C" data-marpit-pagination="7" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 2: 組織內容 (Organizing Content);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 2: 組織內容 (Organizing Content)</header>
+
+<h2 id="chapter-2-%E7%B5%84%E7%B9%94%E5%85%A7%E5%AE%B9-organizing-content">Chapter 2: 組織內容 (Organizing Content)</h2>
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="%E5%85%A7%E5%AE%B9%E7%99%BC%E7%8F%BE%E8%88%87%E7%95%AB%E5%B8%83-part-1">內容發現與畫布 (Part 1)</h3>
+<ul>
+<li><strong>TW2.1 凸顯、搜尋與瀏覽 (Feature, Search, Browse)</strong></li>
+<li><strong>TW2.2 行動裝置快速反應 (Mobile Direct Access)</strong></li>
+<li><strong>TW2.3 持續及時的訊息供給 (Streams and Feeds)</strong></li>
+<li><strong>TW2.4 媒體瀏覽器 (Media Browser)</strong></li>
+<li><strong>TW2.5 儀表板 (Dashboard)</strong></li>
+<li><strong>TW2.6 畫布加工具盤 (Canvas plus Palette)</strong></li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%E5%BC%95%E5%B0%8E%E8%88%87%E9%80%B2%E9%9A%8E%E7%AE%A1%E7%90%86-part-2">引導與進階管理 (Part 2)</h3>
+<ul>
+<li><strong>TW2.7 精靈模式 (Wizard)</strong></li>
+<li><strong>TW2.8 設定編輯器 (Settings Editor)</strong></li>
+<li><strong>TW2.9 備擇檢視 (Alternative Views)</strong></li>
+<li><strong>TW2.10 多工作空間 (Multiple Workspaces)</strong></li>
+<li><strong>TW2.11 協助系統 (Help Systems)</strong></li>
+<li><strong>TW2.12 標記分類 (Tagging)</strong></li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 2: 組織內容 (Organizing Content)" data-theme="ux-theme" lang="C" data-marpit-pagination="8" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 2: 組織內容 (Organizing Content);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 2: 組織內容 (Organizing Content)</header>
+<h2 id="tw21-%E5%87%B8%E9%A1%AF%E6%90%9C%E5%B0%8B%E8%88%87%E7%80%8F%E8%A6%BD-feature-search-browse">TW2.1 凸顯、搜尋與瀏覽 (Feature, Search, Browse)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E7%8F%BE%E4%BB%A3%E5%85%A7%E5%AE%B9%E7%99%BC%E7%8F%BE%E7%9A%84%E4%B8%89%E5%A4%A7%E6%94%AF%E6%9F%B1">現代內容發現的三大支柱</h3>
+<ul>
+<li><strong>凸顯 (Feature)</strong> ：在首頁核心視覺區推薦最重要、最吸引人的焦點內容或即時活動。</li>
+<li><strong>搜尋 (Search)</strong> ：針對目標明確的使用者，提供自動補全搜尋框與多維度篩選器 (Facets)。</li>
+<li><strong>瀏覽 (Browse)</strong> ：針對探索型使用者，提供圖文分類網格與清晰目錄。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：電商首頁 (Momo, Amazon)、串流影音 (Netflix)、新聞入口。</li>
+<li><strong>核心價值</strong> ：同時滿足「隨意逛逛」與「精準找尋」兩種截然不同的使用者意圖。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 2: 組織內容 (Organizing Content)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="9" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 2: 組織內容 (Organizing Content);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 2: 組織內容 (Organizing Content)</header>
+
+<p><img src="../../img/tw_2_1_feature_search_browse.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 2: 組織內容 (Organizing Content)" data-theme="ux-theme" lang="C" data-marpit-pagination="10" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 2: 組織內容 (Organizing Content);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 2: 組織內容 (Organizing Content)</header>
+<h2 id="%E5%85%A7%E5%AE%B9%E7%B5%84%E7%B9%94%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%BC%8F%E7%B2%BE%E9%9D%88%E5%84%80%E8%A1%A8%E6%9D%BF%E8%88%87%E6%BC%B8%E9%80%B2%E6%8F%AD%E9%9C%B2">內容組織核心模式：精靈、儀表板與漸進揭露</h2>
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="tw25-%E5%84%80%E8%A1%A8%E6%9D%BF-dashboard">TW2.5 儀表板 (Dashboard)</h3>
+<ul>
+<li>以豐富圖表視覺化呈現關鍵 KPI 與即時數據。</li>
+<li>定期自動更新，支援點擊鑽取 (Drilldown)。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw27-%E7%B2%BE%E9%9D%88-wizard">TW2.7 精靈 (Wizard)</h3>
+<ul>
+<li>針對複雜任務，拆解為 <code>Step 1 ➔ 2 ➔ 3</code> 的線性引導。</li>
+<li>降低使用者的認知負擔。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%E6%BC%B8%E9%80%B2%E5%BC%8F%E6%8F%AD%E9%9C%B2-progressive-disclosure">漸進式揭露 (Progressive Disclosure)</h3>
+<ul>
+<li><strong>回應式生效 (Responsive Enabling)</strong> ：勾選某選項後才啟用相關子欄位。</li>
+<li>預設隱藏進階參數。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 2: 組織內容 (Organizing Content)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="11" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 2: 組織內容 (Organizing Content);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 2: 組織內容 (Organizing Content)</header>
+
+<p><img src="../../img/tw_2_5_dashboard.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 2: 組織內容 (Organizing Content)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="12" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 2: 組織內容 (Organizing Content);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 2: 組織內容 (Organizing Content)</header>
+
+<p><img src="../../img/tw_2_7_wizard.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 2: 組織內容 (Organizing Content)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="13" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 2: 組織內容 (Organizing Content);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 2: 組織內容 (Organizing Content)</header>
+
+<p><img src="../../img/tw_2_progressive_disclosure.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 2: 組織內容 (Organizing Content)" data-theme="ux-theme" lang="C" data-marpit-pagination="14" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 2: 組織內容 (Organizing Content);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 2: 組織內容 (Organizing Content)</header>
+<h2 id="tw28-%E8%A8%AD%E5%AE%9A%E7%B7%A8%E8%BC%AF%E5%99%A8-settings-editor">TW2.8 設定編輯器 (Settings Editor)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E9%9B%86%E4%B8%AD%E5%BC%8F%E5%8F%83%E6%95%B8%E8%88%87%E5%80%8B%E4%BA%BA%E5%8C%96%E5%81%8F%E5%A5%BD%E7%AE%A1%E7%90%86">集中式參數與個人化偏好管理</h3>
+<ul>
+<li><strong>分類分群</strong> ：將繁雜設定依模組分類（帳號、隱私安全、外觀、API 整合），避免單頁過長。</li>
+<li><strong>即時反饋 (Auto-save)</strong> ：首選即時儲存並在頂部顯示狀態提示（如「已自動儲存」），減少額外點擊儲存按鈕。</li>
+<li><strong>防呆警示 (Danger Zone)</strong> ：將敏感或破壞性操作（如刪除帳號）隔離於底部並以紅色標註二次確認。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83-1"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：SaaS 控制台、系統偏好設定、VS Code 設定頁。</li>
+<li><strong>核心價值</strong> ：提供清晰的控制權（NS03），降低誤觸風險（NS05）。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 2: 組織內容 (Organizing Content)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="15" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 2: 組織內容 (Organizing Content);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 2: 組織內容 (Organizing Content)</header>
+
+<p><img src="../../img/tw_2_8_settings_editor.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 2: 組織內容 (Organizing Content)" data-theme="ux-theme" lang="C" data-marpit-pagination="16" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 2: 組織內容 (Organizing Content);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 2: 組織內容 (Organizing Content)</header>
+<h2 id="tw29-%E5%82%99%E6%93%87%E6%AA%A2%E8%A6%96-alternative-views">TW2.9 備擇檢視 (Alternative Views)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E5%90%8C%E4%B8%80%E8%B3%87%E6%96%99%E7%9A%84%E5%A4%9A%E7%B6%AD%E5%BA%A6%E8%A6%96%E8%A7%92%E5%88%87%E6%8F%9B">同一資料的多維度視角切換</h3>
+<ul>
+<li><strong>模式本質</strong> ：底層資料模型完全相同，但在介面上提供多種呈現維度以滿足不同工作情境。</li>
+<li><strong>常見檢視類型</strong> ：
+<ul>
+<li><img class="emoji" draggable="false" alt="📋" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4cb.svg" data-marp-twemoji=""/> <strong>表格清單 (Table List)</strong> ：適合批次檢視、排序與精確欄位比對。</li>
+<li><img class="emoji" draggable="false" alt="🗂️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f5c2.svg" data-marp-twemoji=""/> <strong>看板模式 (Kanban Board)</strong> ：強調工作流程與狀態推進。</li>
+<li><img class="emoji" draggable="false" alt="📅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4c5.svg" data-marp-twemoji=""/> <strong>行事曆 / 時間軸 (Calendar &amp; Timeline)</strong> ：聚焦死線與時程依賴關係。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83-2"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：Notion 數據庫、Jira 專案看板、Airtable。</li>
+<li><strong>核心價值</strong> ：大幅提升專業工作效率與彈性（NS07）。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 2: 組織內容 (Organizing Content)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="17" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 2: 組織內容 (Organizing Content);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 2: 組織內容 (Organizing Content)</header>
+
+<p><img src="../../img/tw_2_9_alternative_views.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 3: 到處走走（導航與路標）" data-theme="ux-theme" lang="C" data-marpit-pagination="18" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 3: 到處走走（導航與路標）;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 3: 到處走走（導航與路標）</header>
+
+<h2 id="chapter-3-%E5%88%B0%E8%99%95%E8%B5%B0%E8%B5%B0%E5%B0%8E%E8%88%AA%E8%88%87%E8%B7%AF%E6%A8%99">Chapter 3: 到處走走（導航與路標）</h2>
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="%E7%B5%90%E6%A7%8B%E8%88%87%E9%80%B2%E5%85%A5%E9%BB%9E-part-1">結構與進入點 (Part 1)</h3>
+<ul>
+<li><strong>TW3.1 清楚的進入點 (Clear Entry Points)</strong></li>
+<li><strong>TW3.2 選單頁面 (Menu Page)</strong></li>
+<li><strong>TW3.3 金字塔結構 (Pyramid)</strong></li>
+<li><strong>TW3.4 強制回應面板 (Modal Panel)</strong></li>
+<li><strong>TW3.5 深連接 (Deep Links)</strong></li>
+<li><strong>TW3.6 逃生門 (Escape Hatch)</strong></li>
+<li><strong>TW3.7 寬選單 (Fat Menus / Mega Menus)</strong></li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%E8%B7%AF%E6%A8%99%E8%88%87%E8%BC%94%E5%8A%A9%E5%B7%A5%E5%85%B7-part-2">路標與輔助工具 (Part 2)</h3>
+<ul>
+<li><strong>TW3.8 網站地圖頁尾 (Sitemap Footer)</strong></li>
+<li><strong>TW3.9 登入工具 (Sign-in Tools)</strong></li>
+<li><strong>TW3.10 進度指示器 (Progress Indicator)</strong></li>
+<li><strong>TW3.11 麵包屑記號 (Breadcrumbs)</strong></li>
+<li><strong>TW3.12 註解式捲軸 (Annotated Scrollbar)</strong></li>
+<li><strong>TW3.13 動畫轉場效果 (Animated Transition)</strong></li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 3: 到處走走（導航與路標）" data-theme="ux-theme" lang="C" data-marpit-pagination="19" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 3: 到處走走（導航與路標）;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 3: 到處走走（導航與路標）</header>
+<h2 id="%E9%97%9C%E9%8D%B5%E5%B0%8E%E8%88%AA%E6%A8%A1%E5%BC%8F%E8%A7%A3%E6%9E%90%E9%80%83%E7%94%9F%E9%96%80%E8%88%87%E7%B6%B2%E7%AB%99%E5%9C%B0%E5%9C%96">關鍵導航模式解析：逃生門與網站地圖</h2>
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="tw36-%E9%80%83%E7%94%9F%E9%96%80-escape-hatch">TW3.6 逃生門 (Escape Hatch)</h3>
+<ul>
+<li>清楚醒目的退出按鈕，讓使用者隨時跳出當前流程，回到首頁或安全區。</li>
+<li>如客服電話：「按 0 由專人服務」。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw38-%E7%B6%B2%E7%AB%99%E5%9C%B0%E5%9C%96%E9%A0%81%E5%B0%BE-sitemap-footer">TW3.8 網站地圖頁尾 (Sitemap Footer)</h3>
+<ul>
+<li>在網頁最底部以分類展開完整連結目錄。</li>
+<li>釋放 Header 負擔，善用無限垂直空間。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 3: 到處走走（導航與路標）" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="20" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 3: 到處走走（導航與路標）;--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 3: 到處走走（導航與路標）</header>
+
+<p><img src="../../img/tw_3_8_sitemap_footer.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 3: 到處走走（導航與路標）" data-theme="ux-theme" lang="C" data-marpit-pagination="21" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 3: 到處走走（導航與路標）;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 3: 到處走走（導航與路標）</header>
+<h2 id="tw35-%E6%B7%B1%E9%80%A3%E6%8E%A5-deep-links">TW3.5 深連接 (Deep Links)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E7%9B%B4%E9%81%94%E5%85%A7%E5%AE%B9%E6%A0%B8%E5%BF%83%E7%9A%84%E7%B2%BE%E7%A2%BA%E5%B0%8E%E8%88%AA">直達內容核心的精確導航</h3>
+<ul>
+<li><strong>模式本質</strong> ：為特定頁面中的「特定區塊、標題、評論或項目」提供獨立可分享的專屬 URL。</li>
+<li><strong>核心互動</strong> ：
+<ul>
+<li>懸浮於段落或標題時出現 <img class="emoji" draggable="false" alt="🔗" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f517.svg" data-marp-twemoji=""/> 錨點圖示。</li>
+<li>提供「複製特定段落連結 (Copy Deep Link)」與一鍵分享。</li>
+<li>點擊進入時，頁面自動平滑捲動至目標位置並以高亮提示。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83-3"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：Figma 畫布定位連結、Notion 區塊連結、Google Docs 評論錨點。</li>
+<li><strong>核心價值</strong> ：消除「進去首頁後找不到在哪」的溝通摩擦，團隊協作效率倍增。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 3: 到處走走（導航與路標）" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="22" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 3: 到處走走（導航與路標）;--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 3: 到處走走（導航與路標）</header>
+
+<p><img src="../../img/tw_3_5_deep_links.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 3: 到處走走（導航與路標）" data-theme="ux-theme" lang="C" data-marpit-pagination="23" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 3: 到處走走（導航與路標）;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 3: 到處走走（導航與路標）</header>
+<h2 id="tw37-%E5%AF%AC%E9%81%B8%E5%96%AE--%E8%B6%85%E7%B4%9A%E9%81%B8%E5%96%AE-fat-menus--mega-menus">TW3.7 寬選單 / 超級選單 (Fat Menus / Mega Menus)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E4%B8%80%E8%A6%BD%E7%84%A1%E9%81%BA%E7%9A%84%E4%BA%8C%E7%B6%AD%E5%85%A8%E7%AB%99%E6%9E%B6%E6%A7%8B%E5%B0%8E%E8%88%AA">一覽無遺的二維全站架構導航</h3>
+<ul>
+<li><strong>突破傳統下拉限制</strong> ：將傳統單欄長下拉選單展開為橫跨畫面的多欄二維資訊矩陣。</li>
+<li><strong>架構要素</strong> ：
+<ul>
+<li><img class="emoji" draggable="false" alt="🗂️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f5c2.svg" data-marp-twemoji=""/> <strong>分欄分類</strong> ：依產品線或服務類型分欄，搭配圖示與簡短副標。</li>
+<li><img class="emoji" draggable="false" alt="🌟" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f31f.svg" data-marp-twemoji=""/> <strong>特色推薦</strong> ：在選單右側嵌入精選產品圖卡或行銷 Banner。</li>
+<li><img class="emoji" draggable="false" alt="⚡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/26a1.svg" data-marp-twemoji=""/> <strong>視覺階層</strong> ：粗體主類別 + 易讀子連結，讓視線一秒掃描全貌。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83-4"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：大型電商 (Amazon, ASOS)、企業雲端官網 (Microsoft, AWS)。</li>
+<li><strong>核心價值</strong> ：將 3 層點擊縮短為 1 次懸停，降低架構迷航率。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 3: 到處走走（導航與路標）" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="24" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 3: 到處走走（導航與路標）;--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 3: 到處走走（導航與路標）</header>
+
+<p><img src="../../img/tw_3_7_mega_menus.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 3: 到處走走（導航與路標）" data-theme="ux-theme" lang="C" data-marpit-pagination="25" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 3: 到處走走（導航與路標）;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 3: 到處走走（導航與路標）</header>
+<h2 id="tw311-%E9%BA%B5%E5%8C%85%E5%B1%91%E8%A8%98%E8%99%9F-breadcrumbs">TW3.11 麵包屑記號 (Breadcrumbs)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E6%B8%85%E6%A5%9A%E6%A8%99%E7%A4%BA%E8%BA%AB%E5%9C%A8%E4%BD%95%E8%99%95%E7%9A%84%E9%9A%8E%E5%B1%A4%E8%B7%AF%E6%A8%99">清楚標示「身在何處」的階層路標</h3>
+<ul>
+<li><strong>模式本質</strong> ：以水平文字鏈展示當前頁面在網站樹狀階層中的相對位置。</li>
+<li><strong>路徑格式</strong> ：<code>首頁 &gt; 3C 數位 &gt; 耳機音響 &gt; 無線降噪耳機</code></li>
+<li><strong>設計規範</strong> ：
+<ul>
+<li>末端項目為當前頁面（不設超連結並加粗顯示）。</li>
+<li>每個父層級均可點擊，方便使用者一鍵回溯至上一層或根節點。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83-5"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：深層電商商品頁、大型知識庫與說明文件。</li>
+<li><strong>核心價值</strong> ：增強空間認知與安全感，大幅降低跳出率。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 3: 到處走走（導航與路標）" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="26" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 3: 到處走走（導航與路標）;--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 3: 到處走走（導航與路標）</header>
+
+<p><img src="../../img/tw_3_11_breadcrumbs.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 4: 網頁元素的排版 (Layout)" data-theme="ux-theme" lang="C" data-marpit-pagination="27" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 4: 網頁元素的排版 (Layout);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 4: 網頁元素的排版 (Layout)</header>
+
+<h2 id="chapter-4-%E7%B6%B2%E9%A0%81%E5%85%83%E7%B4%A0%E7%9A%84%E6%8E%92%E7%89%88-layout">Chapter 4: 網頁元素的排版 (Layout)</h2>
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="%E6%8E%92%E7%89%88%E6%A8%A1%E5%BC%8F%E6%B8%85%E5%96%AE">排版模式清單</h3>
+<ul>
+<li><strong>TW4.1 視覺框架 (Visual Framework)</strong></li>
+<li><strong>TW4.2 中央舞台 (Center Stage)</strong></li>
+<li><strong>TW4.3 同質性網格 (Grid of Equals)</strong></li>
+<li><strong>TW4.4 標題分區 (Titled Sections)</strong></li>
+<li><strong>TW4.5 模組化分頁 (Module Tabs)</strong></li>
+<li><strong>TW4.6 手風琴模式 (Accordion)</strong></li>
+<li><strong>TW4.7 可折疊面板 (Collapsible Panels)</strong></li>
+<li><strong>TW4.8 可移動面板 (Movable Panels)</strong></li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%E6%A0%B8%E5%BF%83%E5%8E%9F%E5%89%87">核心原則</h3>
+<ul>
+<li><strong>階層分明</strong> ：利用標題、格線與負空間明確劃分資訊權重。</li>
+<li><strong>節省空間</strong> ：在有限視窗內，利用 Tab 分頁與手風琴摺疊隱藏次要內容。</li>
+<li><strong>直覺對齊</strong> ：保持網格對齊，消除視覺混亂。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 4: 網頁元素的排版 (Layout)" data-theme="ux-theme" lang="C" data-marpit-pagination="28" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 4: 網頁元素的排版 (Layout);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 4: 網頁元素的排版 (Layout)</header>
+<h2 id="%E6%8E%92%E7%89%88%E6%A8%A1%E5%BC%8F%E5%B0%8D%E6%AF%94%E6%A8%99%E9%A1%8C%E5%88%86%E5%8D%80-vs-%E6%A8%A1%E7%B5%84%E5%8C%96%E5%88%86%E9%A0%81-vs-%E6%89%8B%E9%A2%A8%E7%90%B4%E6%A8%A1%E5%BC%8F">排版模式對比：標題分區 vs 模組化分頁 vs 手風琴模式</h2>
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="tw44-%E6%A8%99%E9%A1%8C%E5%88%86%E5%8D%80-titled-sections">TW4.4 標題分區 (Titled Sections)</h3>
+<ul>
+<li><strong>垂直全展開</strong> ：所有章節與內容一覽無遺，靠標題與空白區隔。</li>
+<li><strong>適用</strong> ：內容長度適中、需連續閱讀或整體掃描的長頁面（如產品介紹、文章）。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw45-%E6%A8%A1%E7%B5%84%E5%8C%96%E5%88%86%E9%A0%81-module-tabs">TW4.5 模組化分頁 (Module Tabs)</h3>
+<ul>
+<li><strong>同容器互斥切換</strong> ：多個關聯模組共用同一空間，點擊 Tab 水平切換。</li>
+<li><strong>適用</strong> ：平行獨立視圖、固定長度卡片，極致節省垂直空間（如設定頁、商品評價）。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw46-%E6%89%8B%E9%A2%A8%E7%90%B4%E6%A8%A1%E5%BC%8F-accordion">TW4.6 手風琴模式 (Accordion)</h3>
+<ul>
+<li><strong>垂直堆疊按需折疊</strong> ：標題垂直排列，點擊原地向下展開/收合。</li>
+<li><strong>適用</strong> ：多段長度不一、使用者僅需挑選特定項目閱讀（如 FAQ、行動端篩選器）。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 4: 網頁元素的排版 (Layout)" data-theme="ux-theme" lang="C" data-marpit-pagination="29" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 4: 網頁元素的排版 (Layout);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 4: 網頁元素的排版 (Layout)</header>
+<h2 id="tw45-%E6%A8%A1%E7%B5%84%E5%8C%96%E5%88%86%E9%A0%81-module-tabs-1">TW4.5 模組化分頁 (Module Tabs)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E5%9C%A8%E6%9C%89%E9%99%90%E7%A9%BA%E9%96%93%E5%88%87%E6%8F%9B%E5%90%8C%E4%B8%80%E5%AE%B9%E5%99%A8%E7%9A%84%E5%85%A7%E5%AE%B9%E6%A8%A1%E7%B5%84">在有限空間切換同一容器的內容模組</h3>
+<ul>
+<li><strong>模式本質</strong> ：將同一卡片或容器內的多組關聯資料，透過頂部分頁標籤進行切換顯示。</li>
+<li><strong>互動設計重點</strong> ：
+<ul>
+<li><strong>當前狀態明顯</strong> ：以底線、背景色反差或顏色高亮標記目前作用中的分頁。</li>
+<li><strong>即時載入</strong> ：切換時無需重新整理整個網頁，保持流暢體驗。</li>
+<li><strong>資訊計數</strong> ：分頁標籤可附帶數字徽章（如 <code>錯誤 (3)</code>、<code>待審核 (12)</code>）。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83-6"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：開發者控制台、產品規格/評價頁籤、個人檔案設定。</li>
+<li><strong>核心價值</strong> ：極致利用垂直空間，維持頁面視覺清爽（NS08）。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 4: 網頁元素的排版 (Layout)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="30" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 4: 網頁元素的排版 (Layout);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 4: 網頁元素的排版 (Layout)</header>
+
+<p><img src="../../img/tw_4_5_module_tabs.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 4: 網頁元素的排版 (Layout)" data-theme="ux-theme" lang="C" data-marpit-pagination="31" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 4: 網頁元素的排版 (Layout);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 4: 網頁元素的排版 (Layout)</header>
+<h2 id="tw46-%E6%89%8B%E9%A2%A8%E7%90%B4%E6%A8%A1%E5%BC%8F-accordion-1">TW4.6 手風琴模式 (Accordion)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E5%9E%82%E7%9B%B4%E5%A0%86%E7%96%8A%E8%88%87%E6%8C%89%E9%9C%80%E5%B1%95%E9%96%8B%E7%9A%84%E6%8A%98%E7%96%8A%E6%B8%85%E5%96%AE">垂直堆疊與按需展開的折疊清單</h3>
+<ul>
+<li><strong>模式本質</strong> ：垂直排列的標題面板，點擊可向下展開詳細內容；展開新項目時可選擇自動收合其餘項目。</li>
+<li><strong>關鍵視覺要素</strong> ：
+<ul>
+<li>右側提供明確的展開/收合狀態圖示（<code>+ / −</code> 或 <code>⌵ / ⌃</code>）。</li>
+<li>平滑的高度過渡動畫，避免畫面突兀跳動。</li>
+<li>適合內容長短不一、使用者僅需挑選特定項目閱讀的情境。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83-7"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：常見問答 (FAQ)、多步驟購物結帳表單、行動端篩選器。</li>
+<li><strong>核心價值</strong> ：漸進式揭露資訊，避免超長頁面造成滾動疲勞。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 4: 網頁元素的排版 (Layout)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="32" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 4: 網頁元素的排版 (Layout);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 4: 網頁元素的排版 (Layout)</header>
+
+<p><img src="../../img/tw_4_6_accordion.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 4: 網頁元素的排版 (Layout)" data-theme="ux-theme" lang="C" data-marpit-pagination="33" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 4: 網頁元素的排版 (Layout);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 4: 網頁元素的排版 (Layout)</header>
+<h2 id="tw47-%E5%8F%AF%E6%8A%98%E7%96%8A%E9%9D%A2%E6%9D%BF-collapsible-panels">TW4.7 可折疊面板 (Collapsible Panels)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E5%BD%88%E6%80%A7%E4%BC%B8%E7%B8%AE%E7%9A%84%E5%B0%88%E6%A5%AD%E5%B7%A5%E4%BD%9C%E5%8D%80%E5%81%B4%E9%82%8A%E6%AC%84">彈性伸縮的專業工作區側邊欄</h3>
+<ul>
+<li><strong>模式本質</strong> ：將輔助功能（如檔案樹、屬性檢查器、AI 助理）置於可折疊收納的側邊欄。</li>
+<li><strong>核心機制</strong> ：
+<ul>
+<li><img class="emoji" draggable="false" alt="👈" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f448.svg" data-marp-twemoji=""/> <strong>一鍵收折</strong> ：點擊側欄切換按鈕或邊界圖示，側欄滑入/收合為緊湊圖示列。</li>
+<li><img class="emoji" draggable="false" alt="↔️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2194.svg" data-marp-twemoji=""/> <strong>邊界拖曳</strong> ：支援拖曳邊界自訂寬度，適應不同螢幕大小。</li>
+<li><img class="emoji" draggable="false" alt="💻" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4bb.svg" data-marp-twemoji=""/> <strong>聚焦畫布</strong> ：需要專注時收合兩側面板，最大化中央主要工作舞台。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83-8"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：VS Code / Cursor 編輯器、Figma 設計介面、Notion 側邊導航。</li>
+<li><strong>核心價值</strong> ：兼顧工具完整度與主要任務專注度（NS07, NS08）。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 4: 網頁元素的排版 (Layout)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="34" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 4: 網頁元素的排版 (Layout);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 4: 網頁元素的排版 (Layout)</header>
+
+<p><img src="../../img/tw_4_7_collapsible_panels.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 7: 清單展示模式 (Lists)" data-theme="ux-theme" lang="C" data-marpit-pagination="35" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 7: 清單展示模式 (Lists);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 7: 清單展示模式 (Lists)</header>
+
+<h2 id="chapter-7-%E6%B8%85%E5%96%AE%E5%B1%95%E7%A4%BA%E6%A8%A1%E5%BC%8F-lists">Chapter 7: 清單展示模式 (Lists)</h2>
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="%E8%A6%96%E5%9C%96%E8%88%87%E4%BD%88%E5%B1%80%E6%A8%A1%E5%BC%8F-part-1">視圖與佈局模式 (Part 1)</h3>
+<ul>
+<li><strong>TW7.1 雙面板選擇器 (Two-Panel Selector / Split View)</strong></li>
+<li><strong>TW7.2 單視窗深入 (One-Window Drilldown)</strong></li>
+<li><strong>TW7.3 清單嵌板 (List Inlay，如 Google Map 路線詳情)</strong></li>
+<li><strong>TW7.4 卡片化設計 (Cards，圖像、文字與操作合一)</strong></li>
+<li><strong>TW7.5 縮圖網格 (Thumbnail Grid)</strong></li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%E5%B0%8E%E8%A6%BD%E8%88%87%E6%8E%A7%E5%88%B6%E6%A8%A1%E5%BC%8F-part-2">導覽與控制模式 (Part 2)</h3>
+<ul>
+<li><strong>TW7.6 旋轉木馬 / 輪播 (Carousel)</strong></li>
+<li><strong>TW7.7 分頁標註 (Pagination，長清單拆頁載入)</strong></li>
+<li><strong>TW7.8 跳至項目 (Jump to Item)</strong></li>
+<li><strong>TW7.9 字母/數字索引捲軸 (Alpha/Numeric Scroller)</strong></li>
+<li><strong>TW7.10 新項目預備列 (New-Item Row)</strong></li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 7: 清單展示模式 (Lists)" data-theme="ux-theme" lang="C" data-marpit-pagination="36" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 7: 清單展示模式 (Lists);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 7: 清單展示模式 (Lists)</header>
+<h2 id="%E6%B8%85%E5%96%AE%E6%A8%A1%E5%BC%8F%E5%B0%8D%E6%AF%94%E9%9B%99%E9%9D%A2%E6%9D%BF-vs-%E5%8D%A1%E7%89%87-vs-%E5%B5%8C%E6%9D%BF">清單模式對比：雙面板 vs 卡片 vs 嵌板</h2>
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+<h3 id="tw71-%E9%9B%99%E9%9D%A2%E6%9D%BF%E9%81%B8%E6%93%87%E5%99%A8">TW7.1 雙面板選擇器</h3>
+<ul>
+<li>左側為項目清單，右側為詳細內容。</li>
+<li>適合寬螢幕桌面端 (如 Email 客戶端、檔案管理器)。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw74-%E5%8D%A1%E7%89%87-cards">TW7.4 卡片 (Cards)</h3>
+<ul>
+<li>將圖文、標籤與操作封裝在獨立矩形卡片中。</li>
+<li>響應式佈局極佳，適合手機與跨裝置呈現。</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="tw73-%E6%B8%85%E5%96%AE%E5%B5%8C%E6%9D%BF-list-inlay">TW7.3 清單嵌板 (List Inlay)</h3>
+<ul>
+<li>點擊清單項目後，在原地向下展開詳細資訊。</li>
+<li>無需跳轉頁面，保持上下文連貫。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 7: 清單展示模式 (Lists)" data-theme="ux-theme" lang="C" data-marpit-pagination="37" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 7: 清單展示模式 (Lists);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 7: 清單展示模式 (Lists)</header>
+<h2 id="tw73-%E6%B8%85%E5%96%AE%E5%B5%8C%E6%9D%BF-list-inlay-1">TW7.3 清單嵌板 (List Inlay)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E6%B8%85%E5%96%AE%E9%A0%85%E7%9B%AE%E5%8E%9F%E5%9C%B0%E4%B8%8B%E6%8B%89%E5%B1%95%E9%96%8B%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E5%BB%B6%E7%BA%8C">清單項目原地下拉展開的上下文延續</h3>
+<ul>
+<li><strong>模式本質</strong> ：點擊清單中的某一列時，直接在該列下方原地「嵌入展開」詳細資訊區塊。</li>
+<li><strong>設計優勢</strong> ：
+<ul>
+<li><img class="emoji" draggable="false" alt="🚫" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f6ab.svg" data-marp-twemoji=""/> <strong>無需跳轉頁面</strong> ：完全避免進入新頁面再按返回的繁瑣流程。</li>
+<li><img class="emoji" draggable="false" alt="🧭" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f9ed.svg" data-marp-twemoji=""/> <strong>保持上下文</strong> ：展開時使用者依然能看到清單前後的相鄰項目。</li>
+<li><img class="emoji" draggable="false" alt="📈" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4c8.svg" data-marp-twemoji=""/> <strong>階層式詳情</strong> ：適合呈現時間軸軌跡、配送站點、訂單明細。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83-9"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：Google Maps 路線轉乘詳情、物流行程追蹤、銀行交易明細。</li>
+<li><strong>核心價值</strong> ：保持空間記憶與任務連貫性，大幅提升瀏覽效率。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 7: 清單展示模式 (Lists)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="38" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 7: 清單展示模式 (Lists);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 7: 清單展示模式 (Lists)</header>
+
+<p><img src="../../img/tw_7_3_list_inlay.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 7: 清單展示模式 (Lists)" data-theme="ux-theme" lang="C" data-marpit-pagination="39" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 7: 清單展示模式 (Lists);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 7: 清單展示模式 (Lists)</header>
+<h2 id="tw74-%E5%8D%A1%E7%89%87%E5%8C%96%E8%A8%AD%E8%A8%88-cards">TW7.4 卡片化設計 (Cards)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E7%95%B0%E8%B3%AA%E8%B3%87%E8%A8%8A%E7%9A%84%E7%8D%A8%E7%AB%8B%E6%A8%A1%E7%B5%84%E5%8C%96%E5%B0%81%E8%A3%9D">異質資訊的獨立模組化封裝</h3>
+<ul>
+<li><strong>模式本質</strong> ：將圖片、標題、標籤、摘要、作者資訊與操作按鈕封裝在獨立的矩形卡片中。</li>
+<li><strong>設計要素</strong> ：
+<ul>
+<li><img class="emoji" draggable="false" alt="🖼️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f5bc.svg" data-marp-twemoji=""/> <strong>視覺錨點</strong> ：頂部特色封面圖吸引第一眼注意力。</li>
+<li><img class="emoji" draggable="false" alt="🏷️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3f7.svg" data-marp-twemoji=""/> <strong>分類晶片 (Chips)</strong> ：彩色標籤標示類別與狀態。</li>
+<li><img class="emoji" draggable="false" alt="🖱️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f5b1.svg" data-marp-twemoji=""/> <strong>清晰邊界與懸浮反饋</strong> ：卡片具備微陰影與 Hover 浮起動效，暗示可點擊性。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83-10"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：社群動態 (Pinterest)、文章列表 (Medium)、儀表板小工具。</li>
+<li><strong>核心價值</strong> ：極佳的響應式適配能力，在手機與電腦間無縫重排。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 7: 清單展示模式 (Lists)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="40" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 7: 清單展示模式 (Lists);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 7: 清單展示模式 (Lists)</header>
+
+<p><img src="../../img/tw_7_4_cards.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 7: 清單展示模式 (Lists)" data-theme="ux-theme" lang="C" data-marpit-pagination="41" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 7: 清單展示模式 (Lists);--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 7: 清單展示模式 (Lists)</header>
+<h2 id="tw76-%E6%97%8B%E8%BD%89%E6%9C%A8%E9%A6%AC--%E8%BC%AA%E6%92%AD-carousel">TW7.6 旋轉木馬 / 輪播 (Carousel)</h2>
+<div class="two-columns-64">
+<div class="card" data-marpit-fragment>
+<h3 id="%E6%A9%AB%E5%90%91%E6%BB%91%E5%8B%95%E7%9A%84%E5%A4%9A%E9%A0%85%E7%9B%AE%E6%8E%A2%E7%B4%A2%E5%B1%95%E7%A4%BA">橫向滑動的多項目探索展示</h3>
+<ul>
+<li><strong>模式本質</strong> ：在固定寬度區域內，以橫向排列卡片或橫幅，支援左右滑動切換。</li>
+<li><strong>必備互動指引</strong> ：
+<ul>
+<li>左右兩側提供清晰的箭頭切換按鈕。</li>
+<li>底部提供當前頁數指示圓點（Pagination Dots）。</li>
+<li>兩側邊緣卡片「稍微露出一角（Peek-a-boo）」，視覺暗示右側還有更多內容。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="card" data-marpit-fragment>
+<h3 id="%F0%9F%92%A1-%E8%A8%AD%E8%A8%88%E5%BF%83%E6%B3%95%E8%88%87%E9%81%A9%E7%94%A8%E6%83%85%E5%A2%83-11"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 設計心法與適用情境</h3>
+<ul>
+<li><strong>經典範例</strong> ：Netflix 影集分類推薦、App Store 精選輪播、課程平台熱門推薦。</li>
+<li><strong>核心價值</strong> ：在有限第一屏展示多個推薦項目，引導手勢橫向探索。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="Chapter 7: 清單展示模式 (Lists)" data-class="full-img" data-theme="ux-theme" lang="C" class="full-img" data-marpit-pagination="42" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:Chapter 7: 清單展示模式 (Lists);--class:full-img;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Chapter 7: 清單展示模式 (Lists)</header>
+
+<p><img src="../../img/tw_7_6_carousel.jpg" alt="" /></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="課堂遊戲：Tidwell 設計模式實戰闖關" data-theme="ux-theme" lang="C" data-marpit-pagination="43" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:課堂遊戲：Tidwell 設計模式實戰闖關;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>課堂遊戲：Tidwell 設計模式實戰闖關</header>
+
+<h2 id="%F0%9F%8E%AE-%E8%AA%B2%E5%A0%82%E9%81%8A%E6%88%B2tidwell-%E4%BB%8B%E9%9D%A2%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F%E9%97%96%E9%97%9C%E6%8C%91%E6%88%B0-game"><img class="emoji" draggable="false" alt="🎮" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3ae.svg" data-marp-twemoji=""/> 課堂遊戲：Tidwell 介面設計模式闖關挑戰 (Game)</h2>
+<div class="card">
+<h3 id="%F0%9F%8F%86-%E9%81%8A%E6%88%B2%E4%BB%BB%E5%8B%99%E8%AA%AA%E6%98%8E"><img class="emoji" draggable="false" alt="🏆" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3c6.svg" data-marp-twemoji=""/> 遊戲任務說明</h3>
+<ul>
+<li><strong>挑戰目標</strong> ：快速判別 6 個經典軟體與 Web 介面情境對應的 Tidwell 互動設計模式 (Tidwell Design Patterns) 。</li>
+<li><strong>作答規則</strong> ：共 <strong>6 道實戰單選題</strong> ，限時搶答！請選出最精準適配的介面模式。</li>
+<li><strong>涵蓋範疇</strong> ：一般性模式 (Ch1)、內容組織 (Ch2)、導航與路標 (Ch3)、網頁排版 (Ch4) 與清單展示 (Ch7)。</li>
+</ul>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="課堂遊戲：Tidwell 設計模式實戰闖關" data-theme="ux-theme" lang="C" data-marpit-pagination="44" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:課堂遊戲：Tidwell 設計模式實戰闖關;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>課堂遊戲：Tidwell 設計模式實戰闖關</header>
+<h3 id="%F0%9F%8E%AE-%E9%97%96%E9%97%9C%E7%AC%AC-01-%E9%97%9C%E9%AB%98%E9%90%B5%E8%B3%BC%E7%A5%A8%E6%99%82%E6%AE%B5%E5%BD%88%E6%80%A7%E6%9B%B4%E6%8F%9B"><img class="emoji" draggable="false" alt="🎮" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3ae.svg" data-marp-twemoji=""/> 闖關第 01 關：【高鐵購票時段彈性更換】</h3>
+<div class="card">
+<p><strong>情境描述</strong> ：<br />
+使用者在高鐵訂票 App 查詢「台北到左營」班次後，發現想搭的車次已客滿。查詢結果頁頂部直接保留「出發地、目的地、日期與時段下拉選單」，讓使用者不需點擊「回上頁」重新填寫，即可就地切換時段。</p>
+<p><strong>請問這項設計最直接體現了 Tidwell 的哪一項一般性互動模式？</strong></p>
+<ul>
+<li><strong>(A)</strong> TW1.1 安全探索 (Safe Exploration)</li>
+<li><strong>(B)</strong> TW1.4 中途改變 (Changes in Midstream)</li>
+<li><strong>(C)</strong> TW1.7 習慣就好 (Habituation)</li>
+<li><strong>(D)</strong> TW1.12 只用鍵盤 (Keyboard Only)</li>
+</ul>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="課堂遊戲：Tidwell 設計模式實戰闖關" data-theme="ux-theme" lang="C" data-marpit-pagination="45" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:課堂遊戲：Tidwell 設計模式實戰闖關;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>課堂遊戲：Tidwell 設計模式實戰闖關</header>
+<h3 id="%F0%9F%8E%AE-%E9%97%96%E9%97%9C%E7%AC%AC-02-%E9%97%9C%E7%B7%9A%E4%B8%8A%E5%A0%B1%E7%A8%85%E8%88%87%E5%B8%B3%E8%99%9F%E8%A8%BB%E5%86%8A%E9%80%90%E6%AD%A5%E5%BC%95%E5%B0%8E"><img class="emoji" draggable="false" alt="🎮" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3ae.svg" data-marp-twemoji=""/> 闖關第 02 關：【線上報稅與帳號註冊逐步引導】</h3>
+<div class="card">
+<p><strong>情境描述</strong> ：<br />
+在線上報稅或雲端伺服器建置系統中，將包含數十個欄位的複雜流程拆解為「1. 身分驗證 ➔ 2. 所得明細確認 ➔ 3. 扣除額計算 ➔ 4. 繳退稅方式 ➔ 5. 申報完成」等 5 個線性步驟，每步均有明確的進度條與「上一步/下一步」按鈕。</p>
+<p><strong>請問這項設計最直接採用了哪一項 Tidwell 內容組織模式？</strong></p>
+<ul>
+<li><strong>(A)</strong> TW2.1 凸顯、搜尋與瀏覽 (Feature, Search, Browse)</li>
+<li><strong>(B)</strong> TW2.7 精靈模式 (Wizard)</li>
+<li><strong>(C)</strong> TW2.8 設定編輯器 (Settings Editor)</li>
+<li><strong>(D)</strong> TW2.9 備擇檢視 (Alternative Views)</li>
+</ul>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="課堂遊戲：Tidwell 設計模式實戰闖關" data-theme="ux-theme" lang="C" data-marpit-pagination="46" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:課堂遊戲：Tidwell 設計模式實戰闖關;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>課堂遊戲：Tidwell 設計模式實戰闖關</header>
+<h3 id="%F0%9F%8E%AE-%E9%97%96%E9%97%9C%E7%AC%AC-03-%E9%97%9C%E8%B7%A8%E5%B1%A4%E7%B4%9A%E5%A4%A7%E5%9E%8B%E7%9F%A5%E8%AD%98%E5%BA%AB%E7%B2%BE%E7%A2%BA%E5%88%86%E4%BA%AB"><img class="emoji" draggable="false" alt="🎮" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3ae.svg" data-marp-twemoji=""/> 闖關第 03 關：【跨層級大型知識庫精確分享】</h3>
+<div class="card">
+<p><strong>情境描述</strong> ：<br />
+在 Figma、Notion 或 Google Docs 中，使用者滑鼠懸停於特定標題或評論時，可點擊「<img class="emoji" draggable="false" alt="🔗" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f517.svg" data-marp-twemoji=""/> 複製段落連結」，將該專屬 URL 傳送給同事；同事點擊後，網頁會直接自動平滑捲動至該具體章節並點亮高亮提示。</p>
+<p><strong>請問這項設計最直接採用了哪一項 Tidwell 導覽模式？</strong></p>
+<ul>
+<li><strong>(A)</strong> TW3.5 深連接 (Deep Links)</li>
+<li><strong>(B)</strong> TW3.6 逃生門 (Escape Hatch)</li>
+<li><strong>(C)</strong> TW3.7 寬選單 (Fat Menus / Mega Menus)</li>
+<li><strong>(D)</strong> TW3.8 網站地圖頁尾 (Sitemap Footer)</li>
+</ul>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="課堂遊戲：Tidwell 設計模式實戰闖關" data-theme="ux-theme" lang="C" data-marpit-pagination="47" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:課堂遊戲：Tidwell 設計模式實戰闖關;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>課堂遊戲：Tidwell 設計模式實戰闖關</header>
+<h3 id="%F0%9F%8E%AE-%E9%97%96%E9%97%9C%E7%AC%AC-04-%E9%97%9C%E8%A8%AD%E5%AE%9A%E9%A0%81%E9%9D%A2%E5%9E%82%E7%9B%B4%E7%A9%BA%E9%96%93%E6%A5%B5%E8%87%B4%E6%94%B6%E7%B4%8D"><img class="emoji" draggable="false" alt="🎮" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3ae.svg" data-marp-twemoji=""/> 闖關第 04 關：【設定頁面垂直空間極致收納】</h3>
+<div class="card">
+<p><strong>情境描述</strong> ：<br />
+SaaS 系統的專案設定面板包含「一般設定」、「成員權限」、「帳務發票」與「API 密鑰」4 大區塊。設計師將這 4 組內容置於同一個白色卡片容器內，並在頂部提供 4 個按鈕標籤供使用者水平切換，切換時無需重新整理頁面。</p>
+<p><strong>請問這項設計最直接採用了哪一項 Tidwell 排版模式？</strong></p>
+<ul>
+<li><strong>(A)</strong> TW4.1 視覺框架 (Visual Framework)</li>
+<li><strong>(B)</strong> TW4.3 同質性網格 (Grid of Equals)</li>
+<li><strong>(C)</strong> TW4.5 模組化分頁 (Module Tabs)</li>
+<li><strong>(D)</strong> TW4.6 手風琴模式 (Accordion)</li>
+</ul>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="課堂遊戲：Tidwell 設計模式實戰闖關" data-theme="ux-theme" lang="C" data-marpit-pagination="48" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:課堂遊戲：Tidwell 設計模式實戰闖關;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>課堂遊戲：Tidwell 設計模式實戰闖關</header>
+<h3 id="%F0%9F%8E%AE-%E9%97%96%E9%97%9C%E7%AC%AC-05-%E9%97%9C%E7%A4%BE%E7%BE%A4%E5%8B%95%E6%85%8B%E8%88%87%E5%A4%9A%E6%A8%A3%E5%8C%96%E5%8D%A1%E7%89%87%E5%B1%95%E7%A4%BA"><img class="emoji" draggable="false" alt="🎮" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3ae.svg" data-marp-twemoji=""/> 闖關第 05 關：【社群動態與多樣化卡片展示】</h3>
+<div class="card">
+<p><strong>情境描述</strong> ：<br />
+在 Pinterest 與 Medium 首頁，每一篇推薦文章均封裝在獨立的矩形區塊內，整合了首圖、標題、作者頭像、讚數與分享按鈕，且卡片在 Hover 懸停時會微微浮起帶有柔和陰影，暗示其可點擊性。</p>
+<p><strong>請問這項設計最直接採用了哪一項 Tidwell 清單展示模式？</strong></p>
+<ul>
+<li><strong>(A)</strong> TW7.1 雙面板選擇器 (Two-Panel Selector)</li>
+<li><strong>(B)</strong> TW7.3 清單嵌板 (List Inlay)</li>
+<li><strong>(C)</strong> TW7.4 卡片化設計 (Cards)</li>
+<li><strong>(D)</strong> TW7.6 旋轉木馬 / 輪播 (Carousel)</li>
+</ul>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="課堂遊戲：Tidwell 設計模式實戰闖關" data-theme="ux-theme" lang="C" data-marpit-pagination="49" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:課堂遊戲：Tidwell 設計模式實戰闖關;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>課堂遊戲：Tidwell 設計模式實戰闖關</header>
+<h3 id="%F0%9F%8E%AE-%E9%97%96%E9%97%9C%E7%AC%AC-06-%E9%97%9C%E9%9B%BB%E5%95%86%E9%9A%8E%E5%B1%A4%E6%8E%A2%E7%B4%A2%E8%88%87%E5%85%A8%E7%AB%99%E5%B0%8E%E8%88%AA%E7%B5%90%E5%90%88"><img class="emoji" draggable="false" alt="🎮" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3ae.svg" data-marp-twemoji=""/> 闖關第 06 關：【電商階層探索與全站導航結合】</h3>
+<div class="card">
+<p><strong>情境描述</strong> ：<br />
+使用者在電商網站選購耳機時，商品頁頂部顯示 <code>首頁 &gt; 3C 數位 &gt; 耳機音響 &gt; 無線降噪耳機</code> ，讓使用者清楚當前位置並可一鍵回溯至任一上層目錄；同時頁面最底部展開多欄完整分類連結。這項設計結合了哪兩項導覽模式？</p>
+<p><strong>請問這項設計結合了哪兩項 Tidwell 導覽模式？</strong></p>
+<ul>
+<li><strong>(A)</strong> TW3.11 麵包屑 (Breadcrumbs) 與 TW3.8 網站地圖頁尾 (Sitemap Footer)</li>
+<li><strong>(B)</strong> TW3.5 深連接 (Deep Links) 與 TW3.6 逃生門 (Escape Hatch)</li>
+<li><strong>(C)</strong> TW3.7 寬選單 (Fat Menus) 與 TW3.4 強制回應面板 (Modal Panel)</li>
+<li><strong>(D)</strong> TW3.2 選單頁面 (Menu Page) 與 TW3.10 進度指示器 (Progress Indicator)</li>
+</ul>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-header="課堂遊戲：Tidwell 設計模式實戰闖關" data-theme="ux-theme" lang="C" data-marpit-pagination="50" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--header:課堂遊戲：Tidwell 設計模式實戰闖關;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>課堂遊戲：Tidwell 設計模式實戰闖關</header>
+<h3 id="%F0%9F%8E%AF-%E9%97%96%E9%97%9C%E6%8C%91%E6%88%B0-6-%E9%A1%8C%E5%AE%8C%E6%95%B4%E8%A7%A3%E7%AD%94%E8%88%87%E6%A0%B8%E5%BF%83%E8%A7%A3%E6%9E%90"><img class="emoji" draggable="false" alt="🎯" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3af.svg" data-marp-twemoji=""/> 闖關挑戰 6 題完整解答與核心解析</h3>
+<div class="two-columns">
+<div class="card" style="font-size: 19px;" data-marpit-fragment>
+<ul>
+<li><strong>第 01 題 (B)</strong> ： <strong>TW1.4 中途改變</strong> —— 查詢結果頁保留搜尋條件，隨時調整無需重來。</li>
+<li><strong>第 02 題 (B)</strong> ： <strong>TW2.7 精靈模式</strong> —— 線性分步導引，將龐大複雜表單拆解為逐步完成。</li>
+<li><strong>第 03 題 (A)</strong> ： <strong>TW3.5 深連接</strong> —— 提供直接定位到段落/評論的 URL 錨點，團隊溝通零摩擦。</li>
+</ul>
+</div>
+<div class="card" style="font-size: 19px;" data-marpit-fragment>
+<ul>
+<li><strong>第 04 題 (C)</strong> ： <strong>TW4.5 模組化分頁</strong> —— 同一容器頂部切換 Tab，極致收納垂直空間。</li>
+<li><strong>第 05 題 (C)</strong> ： <strong>TW7.4 卡片化設計</strong> —— 圖文、標籤與操作合一的獨立矩形封裝，響應式絕佳。</li>
+<li><strong>第 06 題 (A)</strong> ： <strong>TW3.11 麵包屑 + TW3.8 頁尾</strong> —— 樹狀階層路標與全站完整導航互補。</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-class="lead" data-theme="ux-theme" lang="C" class="lead" data-marpit-pagination="51" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--class:lead;--theme:ux-theme;" data-marpit-pagination-total="51" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<h1 id="thank-you">Thank You!</h1>
+<h2 id="%E6%89%93%E9%80%A0%E4%BB%A5%E4%BA%BA%E7%82%BA%E6%9C%AC%E6%B5%81%E6%9A%A2%E5%84%AA%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97">打造以人為本、流暢優雅的使用者體驗</h2>
+<p><strong>Q &amp; A / 交流討論</strong></p>
+<script>
+(function() {
+  function initHeaderDropdown() {
+    const sections = [];
+    const seenTitles = new Set();
+    const slideSections = document.querySelectorAll('section[id]');
+    
+    // 1. Scan unique section titles and their slide IDs
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header) return;
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title || seenTitles.has(title)) return;
+      
+      seenTitles.add(title);
+      sections.push({
+        id: sec.id,
+        title: title
+      });
+    });
+
+    if (sections.length === 0) return;
+
+    // Helper to create the dropdown DOM
+    function createDropdownWrapper(currentTitle) {
+      const wrapper = document.createElement('span');
+      wrapper.className = 'header-nav-wrapper';
+      
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'header-nav-title';
+      titleSpan.title = '點擊固定或懸停查看所有章節快速跳轉';
+      titleSpan.innerHTML = currentTitle + '<span class="nav-caret"> ▾</span>';
+      
+      titleSpan.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const wasOpen = wrapper.classList.contains('is-open');
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+        if (!wasOpen) {
+          wrapper.classList.add('is-open');
+        }
+      });
+      
+      const dropdown = document.createElement('div');
+      dropdown.className = 'nav-dropdown';
+      
+      dropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      const dropHeader = document.createElement('div');
+      dropHeader.className = 'nav-dropdown-header';
+      dropHeader.innerHTML = '<span>📑 快速跳轉章節目錄</span><span style="font-size:11px;font-weight:normal;color:#64748b;">共 ' + sections.length + ' 個章節</span>';
+      dropdown.appendChild(dropHeader);
+      
+      const grid = document.createElement('div');
+      grid.className = 'nav-dropdown-grid';
+      
+      sections.forEach(s => {
+        const item = document.createElement('a');
+        const isActive = (s.title === currentTitle);
+        item.className = 'nav-dropdown-item' + (isActive ? ' active' : '');
+        item.href = '#' + s.id;
+        item.innerHTML = '<span class="badge">#' + s.id.padStart(2, '0') + '</span><span class="item-text" title="' + s.title + '">' + s.title + '</span>';
+        
+        item.addEventListener('click', function(e) {
+          wrapper.classList.remove('is-open');
+          dropdown.style.display = 'none';
+          window.location.hash = '#' + s.id;
+          setTimeout(() => { dropdown.style.display = ''; }, 350);
+        });
+        
+        grid.appendChild(item);
+      });
+      
+      dropdown.appendChild(grid);
+      wrapper.appendChild(titleSpan);
+      wrapper.appendChild(dropdown);
+      return wrapper;
+    }
+
+    // Close any pinned dropdown when clicking anywhere outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.header-nav-wrapper')) {
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+      }
+    });
+
+    // 2. Enhance each header element across all slides
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header || header.dataset.navEnhanced) return;
+      header.dataset.navEnhanced = 'true';
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title) return;
+      
+      header.innerHTML = '';
+      const wrapper = createDropdownWrapper(title);
+      header.appendChild(wrapper);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderDropdown);
+  } else {
+    initHeaderDropdown();
+  }
+  setTimeout(initHeaderDropdown, 400);
+})();
+</script>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+<script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{container;containerSize;containerObserver;svg;svgComputedStyle;svgPreserveAspectRatio="xMinYMid meet";wrapper;wrapperSize;wrapperObserver;constructor(){super();const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=this.shadowRoot.querySelector(`div[${e}]`)??void 0;const t=this.svg;this.svg=this.wrapper?.querySelector(`svg[${i}]`)??void 0,this.svg!==t&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=this.svg?.querySelector(`span[${n}]`)??void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame(()=>{t.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){let t=Math.ceil(this.containerSize?.width??0);const e=Math.ceil(this.containerSize?.height??0);void 0!==this.dataset.downscaleOnly&&(t=Math.max(t,this.wrapperSize?.width??0));const i=this.svg?.querySelector(":scope > foreignObject");if(i?.setAttribute("width",`${t}`),i?.setAttribute("height",`${e}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${t} ${e}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=t<=0||e<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const r=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this._shadow()}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_shadow(){if(!this.shadowRoot)try{this.attachShadow({mode:"open"})}catch(t){if(!(t instanceof Error&&"NotSupportedError"===t.name))throw t}return this.shadowRoot}_update(){const t=this._shadow();if(t){const e=i?`<style>:host { ${i} }</style>`:"";let n="<slot></slot>";const{autoScaling:s}=this.dataset;if(void 0!==s){n=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===s?"data-downscale-only":""}>${n}</marp-auto-scaling>`}t.innerHTML=e+n}}};let o;const a=()=>o??(o=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is"),o),l=Symbol();let c;const d="marpitSVGPolyfill:setZoomFactor,",h=Symbol(),g=Symbol();const p=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[v]:[],i={then:e=>(t?(async()=>{if(void 0===c){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise(t=>{i.addEventListener("load",()=>t())});i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),c=e.getImageData(5,5,1,1).data[3]<128}return c})().then(t=>{null==e||e(t?[v]:[])}):null==e||e([]),i)};return Object.assign(e,i)};let m,u;function v(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[g]||(Object.defineProperty(window,g,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(d)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(u=i)}}catch(t){console.error(t)}}));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),t=>{var e,s,r,o;t.style.transform||(t.style.transform="translateZ(0)");const a=i||u||t.currentScale||1;m!==a&&(m=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(o=null===(r=n.y)||void 0===r?void 0:r.baseVal.value)&&void 0!==o?o:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}}),!1!==n&&Array.from(e.querySelectorAll("iframe"),({contentWindow:t})=>{null==t||t.postMessage(`${d}${n}`,"null"===window.origin?"*":window.origin)})}function w({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[h])return t[h];let e=!0;const i=()=>{e=!1,delete t[h]};Object.defineProperty(t,h,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await p()}finally{s=!0}})();const r=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(r)};return r(),i}(e);return t?(i(),()=>{}):i}m=1,u=void 0;const b=Symbol(),y=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[l];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,o=t[n].proto();a()&&o!==HTMLElement?i||customElements.define(s,r(o,{style:t[n].style}),{extends:n}):(i||customElements.define(s,r(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach(t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)}))}window[l]=!0})(e),e[b])return e[b];const i=w({target:e}),n=()=>{i(),delete e[b]},o=Object.assign(n,{cleanup:n,update:()=>y(e)});return Object.defineProperty(e,b,{configurable:!0,value:o}),o},f=document.currentScript;y(f?f.getRootNode():document)}();
+</script></foreignObject></svg></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@4.5.1/lib/bespoke.js.LICENSE.txt */
+!function(){"use strict";function e(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}var t,n,r=(n||(n=1,t={from:function(e,t){var n,r=1===(e.parent||e).nodeType?e.parent||e:document.querySelector(e.parent||e),o=[].filter.call("string"==typeof e.slides?r.querySelectorAll(e.slides):e.slides||r.children,function(e){return"SCRIPT"!==e.nodeName}),i={},a=function(e,t){return(t=t||{}).index=o.indexOf(e),t.slide=e,t},s=function(e,t){i[e]=(i[e]||[]).filter(function(e){return e!==t})},l=function(e,t){return(i[e]||[]).reduce(function(e,n){return e&&!1!==n(t)},!0)},c=function(e,t){o[e]&&(n&&l("deactivate",a(n,t)),n=o[e],l("activate",a(n,t)))},d=function(e,t){var r=o.indexOf(n)+e;l(e>0?"next":"prev",a(n,t))&&c(r,t)},u={off:s,on:function(e,t){return(i[e]||(i[e]=[])).push(t),s.bind(null,e,t)},fire:l,slide:function(e,t){if(!arguments.length)return o.indexOf(n);l("slide",a(o[e],t))&&c(e,t)},next:d.bind(null,1),prev:d.bind(null,-1),parent:r,slides:o,destroy:function(e){l("destroy",a(n,e)),i={}}};return(t||[]).forEach(function(e){e(u)}),n||c(0),u}}),t),o=e(r);const i=document.body,a=(...e)=>history.replaceState(...e),s="",l="presenter",c="next",d="overview",u=["",l,d,c],f="bespoke-marp-",m=`data-${f}`,g=(e,{protocol:t,host:n,pathname:r,hash:o}=location)=>{const i=e.toString();return`${t}//${n}${r}${i?"?":""}${i}${o}`},p=()=>i.dataset.bespokeView,v=e=>new URLSearchParams(location.search).get(e),h=(e,t={})=>{const n={location,setter:a,...t},r=new URLSearchParams(n.location.search);for(const t of Object.keys(e)){const n=e[t];"string"==typeof n?r.set(t,n):r.delete(t)}try{n.setter({...window.history.state??{}},"",g(r,n.location))}catch(e){console.error(e)}},w=(()=>{const e="bespoke-marp";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch{return!1}})(),y=e=>{try{return localStorage.getItem(e)}catch{return null}},b=(e,t)=>{try{return localStorage.setItem(e,t),!0}catch{return!1}},k=e=>{try{return localStorage.removeItem(e),!0}catch{return!1}},x=(e,t)=>{const n="aria-hidden";t?e.setAttribute(n,"true"):e.removeAttribute(n)},E=e=>{e.parent.classList.add(`${f}parent`),e.slides.forEach(e=>e.classList.add(`${f}slide`)),e.on("activate",t=>{const n=`${f}active`,r=t.slide,o=r.classList,i=!o.contains(n);if(e.slides.forEach(e=>{e.classList.remove(n),x(e,!0)}),o.add(n),x(r,!1),i){const e=`${n}-ready`;o.add(e),document.body.clientHeight,o.remove(e)}})},$=e=>{let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map(e=>[null,...e.querySelectorAll("[data-marpit-fragment]")])});const r=r=>void 0!==e.fragments[t][n+r],o=(r,o)=>{t=r,n=o,e.fragments.forEach((e,t)=>{e.forEach((e,n)=>{if(null==e)return;const i=t<r||t===r&&n<=o;e.setAttribute(`${m}fragment`,(i?"":"in")+"active");const a=`${m}current-fragment`;t===r&&n===o?e.setAttribute(a,"current"):e.removeAttribute(a)})}),e.fragmentIndex=o;const i={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:o};e.fire("fragment",i)};e.on("next",({fragment:i=!0})=>{if(i){if(r(1))return o(t,n+1),!1;const i=t+1;e.fragments[i]&&o(i,0)}else{const r=e.fragments[t].length;if(n+1<r)return o(t,r-1),!1;const i=e.fragments[t+1];i&&o(t+1,i.length-1)}}),e.on("prev",({fragment:i=!0})=>{if(r(-1)&&i)return o(t,n-1),!1;const a=t-1;e.fragments[a]&&o(a,e.fragments[a].length-1)}),e.on("slide",({index:t,fragment:n})=>{let r=0;if(void 0!==n){const o=e.fragments[t];if(o){const{length:e}=o;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}o(t,r)}),o(0,0)},L=document,S=()=>!(!L.fullscreenEnabled&&!L.webkitFullscreenEnabled),P=()=>!(!L.fullscreenElement&&!L.webkitFullscreenElement),_=e=>{e.fullscreen=()=>{S()&&(async()=>{P()?(L.exitFullscreen||L.webkitExitFullscreen)?.call(L):((e=L.body)=>{(e.requestFullscreen||e.webkitRequestFullscreen)?.call(e)})()})()},document.addEventListener("keydown",t=>{"f"!==t.key&&"F11"!==t.key||t.altKey||t.ctrlKey||t.metaKey||!S()||(e.fullscreen(),t.preventDefault())})},O=`${f}inactive`,T=(e=2e3)=>({parent:t,fire:n})=>{const r=t.classList,o=e=>n(`marp-${e?"":"in"}active`);let i;const a=()=>{i&&clearTimeout(i),i=setTimeout(()=>{r.add(O),o()},e),r.contains(O)&&(r.remove(O),o(!0))};for(const e of["mousedown","mousemove","touchend"])document.addEventListener(e,a);setTimeout(a,0)},I=["AUDIO","BUTTON","INPUT","SELECT","TEXTAREA","VIDEO"],M=e=>{e.parent.addEventListener("keydown",e=>{if(!e.target)return;const t=e.target;(I.includes(t.nodeName)||"true"===t.contentEditable)&&e.stopPropagation()})},A=e=>{window.addEventListener("load",()=>{for(const t of e.slides){const e=t.querySelector("marp-auto-scaling, [data-auto-scaling], [data-marp-fitting]");t.setAttribute(`${m}load`,e?"":"hideable")}})},C=({interval:e=250}={})=>t=>{document.addEventListener("keydown",e=>{if(" "===e.key&&e.shiftKey)t.prev();else if("ArrowLeft"===e.key||"ArrowUp"===e.key||"PageUp"===e.key)t.prev({fragment:!e.shiftKey});else if(" "!==e.key||e.shiftKey)if("ArrowRight"===e.key||"ArrowDown"===e.key||"PageDown"===e.key)t.next({fragment:!e.shiftKey});else if("End"===e.key)t.slide(t.slides.length-1,{fragment:-1});else{if("Home"!==e.key)return;t.slide(0)}else t.next();e.preventDefault()});let n,r,o=0;t.parent.addEventListener("wheel",i=>{let a=!1;const s=(e,t)=>{e&&(a=a||((e,t)=>((e,t)=>{const n="X"===t?"Width":"Height";return e[`client${n}`]<e[`scroll${n}`]})(e,t)&&((e,t)=>{const{overflow:n}=e,r=e[`overflow${t}`];return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r})(getComputedStyle(e),t))(e,t)),e?.parentElement&&s(e.parentElement,t)};if(0!==i.deltaX&&s(i.target,"X"),0!==i.deltaY&&s(i.target,"Y"),a)return;i.preventDefault();const l=Math.sqrt(i.deltaX**2+i.deltaY**2);if(void 0!==i.wheelDelta){if(void 0===i.webkitForce&&Math.abs(i.wheelDelta)<40)return;if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<4)return}else if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<12)return;r&&clearTimeout(r),r=setTimeout(()=>{n=0},e);const c=Date.now()-o<e,d=l<=n;if(n=l,c||d)return;let u;(i.deltaX>0||i.deltaY>0)&&(u="next"),(i.deltaX<0||i.deltaY<0)&&(u="prev"),u&&(t[u](),o=Date.now())})},D=(e=`.${f}osc`)=>{const t=document.querySelector(e);if(!t)return()=>{};const n=(e,n)=>{t.querySelectorAll(`[${m}osc=${JSON.stringify(e)}]`).forEach(n)};if(S()||n("fullscreen",e=>e.style.display="none"),!w){const e=(e,t)=>{e.disabled=!0,e.title=`${t} is disabled due to restricted localStorage.`};n("presenter",t=>e(t,"Presenter view")),n("overview",t=>e(t,"Overview view"))}return e=>{t.addEventListener("click",t=>{if(t.target instanceof HTMLElement){const{bespokeMarpOsc:n}=t.target.dataset;n&&t.target.blur();const r={fragment:!t.shiftKey};"next"===n?e.next(r):"prev"===n?e.prev(r):"fullscreen"===n?e?.fullscreen():"presenter"===n?e.openPresenterView():"overview"===n&&e.toggleOverviewView()}}),e.parent.appendChild(t),e.on("activate",({index:t})=>{n("page",n=>n.textContent=`Page ${t+1} of ${e.slides.length}`)}),e.on("fragment",({index:t,fragments:r,fragmentIndex:o})=>{n("prev",e=>e.disabled=0===t&&0===o),n("next",n=>n.disabled=t===e.slides.length-1&&o===r.length-1)}),e.on("marp-active",()=>x(t,!1)),e.on("marp-inactive",()=>x(t,!0)),S()&&(e=>{for(const t of["","webkit"])L.addEventListener(t+"fullscreenchange",e)})(()=>n("fullscreen",e=>e.classList.toggle("exit",S()&&P())))}},N=e=>{if(e.syncKey&&"string"==typeof e.syncKey)return!0;throw new Error("The current instance of Bespoke.js is incompatible with Marp bespoke sync plugin.")},B=(e={})=>{const t=e.key||window.history.state?.marpBespokeSyncKey||Math.random().toString(36).slice(2),n=`bespoke-marp-sync-${t}`;var r;r={marpBespokeSyncKey:t},h({},{setter:(e,...t)=>a({...e,...r},...t)});const o=()=>{const e=y(n);return e?JSON.parse(e):Object.create(null)},i=e=>{const t=o(),r={...t,...e(t)};return b(n,JSON.stringify(r)),r},s=()=>{window.removeEventListener("pageshow",s),i(e=>({reference:(e.reference||0)+1}))};return e=>{s(),Object.defineProperty(e,"syncKey",{value:t,enumerable:!0});let r=!0;setTimeout(()=>{e.on("fragment",e=>{r&&i(()=>({index:e.index,fragmentIndex:e.fragmentIndex}))})},0),window.addEventListener("storage",t=>{if(t.key===n&&t.oldValue&&t.newValue){const n=JSON.parse(t.oldValue),o=JSON.parse(t.newValue);if(n.index!==o.index||n.fragmentIndex!==o.fragmentIndex)try{r=!1,e.slide(o.index,{fragment:o.fragmentIndex,forSync:!0})}finally{r=!0}}});const a=()=>{const{reference:e}=o();void 0===e||e<=1?k(n):i(()=>({reference:e-1}))};window.addEventListener("pagehide",e=>{e.persisted&&window.addEventListener("pageshow",s),a()}),e.on("destroy",a)}},K=e=>{w&&document.addEventListener("keydown",t=>{("o"!==t.key||t.altKey||t.ctrlKey||t.metaKey)&&"Escape"!==t.key||(t.preventDefault(),e())})};let q=null;const V=({closeOnSelect:e=!0}={})=>t=>{N(t);const n=n=>{const r=(()=>{if(!q||!q.isConnected){q=document.createElement("div"),q.className=`${f}overview`,q.inert=!0;const n=document.createElement("iframe");n.src=(()=>{const n=new URLSearchParams(location.search);return n.set("view","overview"),n.set("sync",t.syncKey),e&&n.set("closeOnSelect","1"),g(n)})(),q.append(n),document.body.append(q)}return q})(),o=n??!r.dataset.open;setTimeout(()=>{if(r.dataset.open=o?"1":"",r.inert=!o,t.skipTransition=o,o){const e=r.querySelector("iframe");try{e?.contentWindow?.focus()}catch{e?.focus()}}else window.focus()},0)};Object.defineProperties(t,{toggleOverviewView:{enumerable:!0,value:n}}),window.addEventListener("message",e=>{e.origin===window.origin&&"closeOverview"===e.data&&n(!1)}),K(n)},j=e=>{const{title:t}=document;document.title="[Overview]"+(t?` - ${t}`:"");const n=!!v("closeOnSelect"),r=()=>{window.parent.postMessage("closeOverview","null"===window.origin?"*":window.origin)};if(e.slides.forEach((t,o)=>{t.tabIndex=0;const i=()=>{e.slide(o,{fragment:-1}),n&&r()};t.addEventListener("click",i),t.addEventListener("keydown",e=>{"Enter"!==e.key&&" "!==e.key||(e.preventDefault(),i())})}),window.addEventListener("keydown",t=>{const n=e.slide(),r=t=>{const r=t=>{const n=e.slides[t].getBoundingClientRect();return[Math.round((n.left+n.right)/2),Math.round((n.top+n.bottom)/2)]};let o=null,i=n;do{const e=r(i);if(o){if(Math.abs(e[0]-o[0])<2)return i}else o=e;i+=t}while(i>=0&&i<e.slides.length);return n};if("ArrowLeft"===t.key)e.slide(Math.max(n-1,0),{fragment:-1});else if("ArrowRight"===t.key)e.slide(Math.min(n+1,e.slides.length-1),{fragment:-1});else if("ArrowUp"===t.key)e.slide(r(-1),{fragment:-1});else if("ArrowDown"===t.key)e.slide(r(1),{fragment:-1});else if("End"===t.key)e.slide(e.slides.length-1,{fragment:-1});else{if("Home"!==t.key)return;e.slide(0,{fragment:-1})}t.preventDefault();const o=e.slide();e.slides[o]?.focus?.(),e.slides[o]?.scrollIntoView?.({behavior:"smooth",block:"nearest"})}),e.on("slide",({index:t})=>{e.slides[t]?.scrollIntoView?.({behavior:"smooth",block:"nearest"})}),window.parent!==window){K(r);const e=document.createElement("header");e.className=`${f}overview-header`;const t=document.createElement("button");t.className=`${f}overview-close`,t.type="button",t.title="Close overview",t.textContent=t.title,t.addEventListener("click",r),e.append(t),document.body.prepend(e)}},F=()=>{const e=p();return{[s]:V(),[l]:V({closeOnSelect:!1}),[d]:j}[e]},U=e=>{window.addEventListener("message",t=>{if(t.origin!==window.origin)return;const[n,r]=t.data.split(":");if("navigate"===n){const[t,n]=r.split(",");let o=Number.parseInt(t,10),i=Number.parseInt(n,10)+1;i>=e.fragments[o].length&&(o+=1,i=0),e.slide(o,{fragment:i})}})};var R,X,H,W,J,Y,z,G={exports:{}},Q=(R||(R=1,G.exports=(X=["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"],H=function(e){return String(e).replace(/[&<>"']/g,function(e){return"&"+W[e]+";"})},W={"&":"amp","<":"lt",">":"gt",'"':"quot","'":"apos"},J="dangerouslySetInnerHTML",Y={className:"class",htmlFor:"for"},z={},function(e,t){var n=[],r="";t=t||{};for(var o=arguments.length;o-- >2;)n.push(arguments[o]);if("function"==typeof e)return t.children=n.reverse(),e(t);if(e){if(r+="<"+e,t)for(var i in t)!1!==t[i]&&null!=t[i]&&i!==J&&(r+=" "+(Y[i]?Y[i]:H(i))+'="'+H(t[i])+'"');r+=">"}if(-1===X.indexOf(e)){if(t[J])r+=t[J].__html;else for(;n.length;){var a=n.pop();if(a)if(a.pop)for(var s=a.length;s--;)n.push(a[s]);else r+=!0===z[a]?a:H(a)}r+=e?"</"+e+">":""}return z[r]=!0,r})),G.exports),Z=e(Q);const ee=({children:e})=>Z(null,null,...e),te=`${f}presenter-`,ne={container:`${te}container`,dragbar:`${te}dragbar-container`,next:`${te}next`,nextContainer:`${te}next-container`,noteContainer:`${te}note-container`,noteWrapper:`${te}note-wrapper`,noteButtons:`${te}note-buttons`,infoContainer:`${te}info-container`,infoPageArea:`${te}info-page-area`,infoPage:`${te}info-page`,infoPagePrev:`${te}info-page-prev`,infoPageNext:`${te}info-page-next`,noteButtonsBigger:`${te}note-bigger`,noteButtonsSmaller:`${te}note-smaller`,infoTime:`${te}info-time`,infoTimer:`${te}info-timer`},re=e=>{const{title:t}=document;document.title="[Presenter view]"+(t?` - ${t}`:"");const n={},r=e=>(n[e]=n[e]||document.querySelector(`.${e}`),n[e]);document.body.appendChild((e=>{const t=document.createElement("div");return t.className=ne.container,t.appendChild(e),t.insertAdjacentHTML("beforeend",Z(ee,null,Z("div",{class:ne.nextContainer},Z("iframe",{class:ne.next,src:"?view=next"})),Z("div",{class:ne.dragbar}),Z("div",{class:ne.noteContainer},Z("div",{class:ne.noteWrapper}),Z("div",{class:ne.noteButtons},Z("button",{class:ne.noteButtonsSmaller,tabindex:"-1",title:"Smaller notes font size"},"Smaller notes font size"),Z("button",{class:ne.noteButtonsBigger,tabindex:"-1",title:"Bigger notes font size"},"Bigger notes font size"))),Z("div",{class:ne.infoContainer},Z("div",{class:ne.infoPageArea},Z("button",{class:ne.infoPagePrev,tabindex:"-1",title:"Previous"},"Previous"),Z("button",{class:ne.infoPage}),Z("button",{class:ne.infoPageNext,tabindex:"-1",title:"Next"},"Next")),Z("time",{class:ne.infoTime,title:"Current time"}),Z("time",{class:ne.infoTimer,title:"Timer"})))),t})(e.parent)),(e=>{let t=!1;r(ne.dragbar).addEventListener("mousedown",()=>{t=!0,r(ne.dragbar).classList.add("active")}),window.addEventListener("mouseup",()=>{t=!1,r(ne.dragbar).classList.remove("active")}),window.addEventListener("mousemove",e=>{if(!t)return;const n=e.clientX/document.documentElement.clientWidth*100;r(ne.container).style.setProperty("--bespoke-marp-presenter-split-ratio",`${Math.max(0,Math.min(100,n))}%`)}),r(ne.nextContainer).addEventListener("click",()=>e.next());const n=r(ne.next),o=(i=n,(e,t)=>i.contentWindow?.postMessage(`navigate:${e},${t}`,"null"===window.origin?"*":window.origin));var i;n.addEventListener("load",()=>{r(ne.nextContainer).classList.add("active"),o(e.slide(),e.fragmentIndex),e.on("fragment",({index:e,fragmentIndex:t})=>o(e,t))});const a=document.querySelectorAll(".bespoke-marp-note");a.forEach(e=>{e.addEventListener("keydown",e=>e.stopPropagation()),r(ne.noteWrapper).appendChild(e)}),e.on("activate",()=>a.forEach(t=>t.classList.toggle("active",t.dataset.index==e.slide())));let s=0;const l=e=>{s=Math.max(-5,s+e),r(ne.noteContainer).style.setProperty("--bespoke-marp-note-font-scale",(1.2**s).toFixed(4))},c=()=>l(1),d=()=>l(-1),u=r(ne.noteButtonsBigger),f=r(ne.noteButtonsSmaller);u.addEventListener("click",()=>{u.blur(),c()}),f.addEventListener("click",()=>{f.blur(),d()}),document.addEventListener("keydown",e=>{"+"===e.key&&c(),"-"===e.key&&d()},!0);const m=r(ne.infoPage);e.on("activate",({index:t})=>{m.textContent=`${t+1} / ${e.slides.length}`}),m.addEventListener("click",()=>{m.blur(),e.toggleOverviewView()});const g=r(ne.infoPagePrev),p=r(ne.infoPageNext);g.addEventListener("click",t=>{g.blur(),e.prev({fragment:!t.shiftKey})}),p.addEventListener("click",t=>{p.blur(),e.next({fragment:!t.shiftKey})}),e.on("fragment",({index:t,fragments:n,fragmentIndex:r})=>{g.disabled=0===t&&0===r,p.disabled=t===e.slides.length-1&&r===n.length-1});let v=new Date;const h=()=>{const e=new Date,t=e=>`${Math.floor(e)}`.padStart(2,"0"),n=e.getTime()-v.getTime(),o=t(n/1e3%60),i=t(n/1e3/60%60),a=t(n/36e5%24);r(ne.infoTime).textContent=e.toLocaleTimeString(),r(ne.infoTimer).textContent=`${a}:${i}:${o}`};h(),setInterval(h,250),r(ne.infoTimer).addEventListener("click",()=>{v=new Date})})(e)},oe=e=>{N(e),Object.defineProperties(e,{openPresenterView:{enumerable:!0,value:ie},presenterUrl:{enumerable:!0,get:ae}}),w&&document.addEventListener("keydown",t=>{"p"!==t.key||t.altKey||t.ctrlKey||t.metaKey||(t.preventDefault(),e.openPresenterView())})};function ie(){const{max:e,floor:t}=Math,n=e(t(.85*window.innerWidth),640),r=e(t(.85*window.innerHeight),360);return window.open(this.presenterUrl,te+this.syncKey,`width=${n},height=${r},menubar=no,toolbar=no`)}function ae(){const e=new URLSearchParams(location.search);return e.set("view","presenter"),e.set("sync",this.syncKey),g(e)}const se=e=>{const t=p();return t===c&&e.appendChild(document.createElement("span")),{[s]:oe,[l]:re,[c]:U}[t]},le=e=>{e.on("activate",t=>{document.querySelectorAll(".bespoke-progress-parent > .bespoke-progress-bar").forEach(n=>{n.style.flexBasis=100*t.index/(e.slides.length-1)+"%"})})},ce=e=>{const t=Number.parseInt(e,10);return Number.isNaN(t)?null:t},de=(e={})=>{const t={history:!0,...e};return e=>{let n=!0;const r=e=>{const t=n;try{return n=!0,e()}finally{n=t}},o=(t={fragment:!0})=>{let n=t.fragment?ce(v("f")||""):null;((t,n)=>{const{min:r,max:o}=Math,{fragments:i,slides:a}=e,s=o(0,r(t,a.length-1)),l=o(0,r(n||0,i[s].length-1));s===e.slide()&&l===e.fragmentIndex||e.slide(s,{fragment:l})})((()=>{if(location.hash){const[t]=location.hash.slice(1).split(":~:");if(/^\d+$/.test(t))return(ce(t)??1)-1;const r=document.getElementById(t)||document.querySelector(`a[name="${CSS.escape(t)}"]`);if(r){const{length:t}=e.slides;for(let o=0;o<t;o+=1)if(e.slides[o].contains(r)){const t=e.fragments?.[o],i=r.closest("[data-marpit-fragment]");if(t&&i){const e=t.indexOf(i);e>=0&&(n=e)}return o}}}return 0})(),n)};e.on("fragment",({index:e,fragmentIndex:r})=>{n||h({f:0===r||r.toString()},{location:{...location,hash:`#${e+1}`},setter:(...e)=>t.history?history.pushState(...e):history.replaceState(...e)})}),setTimeout(()=>{o(),window.addEventListener("hashchange",()=>r(()=>{o({fragment:!1}),h({f:void 0})})),window.addEventListener("popstate",()=>{n||r(()=>o())}),n=!1},0)}},{PI:ue,abs:fe,sqrt:me,atan2:ge}=Math,pe={passive:!0},ve=({slope:e=-.7,swipeThreshold:t=30}={})=>n=>{let r;const o=n.parent,i=e=>{const t=o.getBoundingClientRect();return{x:e.pageX-(t.left+t.right)/2,y:e.pageY-(t.top+t.bottom)/2}};o.addEventListener("touchstart",({touches:e})=>{r=1===e.length?i(e[0]):void 0},pe),o.addEventListener("touchmove",e=>{if(r)if(1===e.touches.length){e.preventDefault();const t=i(e.touches[0]),n=t.x-r.x,o=t.y-r.y;r.delta=me(fe(n)**2+fe(o)**2),r.radian=ge(n,o)}else r=void 0}),o.addEventListener("touchend",o=>{if(r){if(r.delta&&r.delta>=t&&r.radian){const t=(r.radian-e+ue)%(2*ue)-ue;n[t<0?"next":"prev"](),o.stopPropagation()}r=void 0}},pe)},he=new Map;he.clear(),he.set("none",{backward:{both:void 0,incoming:void 0,outgoing:void 0},forward:{both:void 0,incoming:void 0,outgoing:void 0}});const we={both:"",outgoing:"outgoing-",incoming:"incoming-"},ye={forward:"",backward:"-backward"},be=e=>`--marp-bespoke-transition-animation-${e}`,ke=e=>`--marp-transition-${e}`,xe=be("name"),Ee=be("duration"),$e=e=>new Promise(t=>{const n={},r=document.createElement("div"),o=e=>{r.remove(),t(e)};r.addEventListener("animationstart",()=>o(n)),Object.assign(r.style,{animationName:e,animationDuration:"1s",animationFillMode:"both",animationPlayState:"paused",position:"absolute",pointerEvents:"none"}),document.body.appendChild(r);const i=getComputedStyle(r).getPropertyValue(ke("duration"));i&&Number.parseFloat(i)>=0&&(n.defaultDuration=i),((e,t)=>{requestAnimationFrame(()=>{e.style.animationPlayState="running",requestAnimationFrame(()=>t(void 0))})})(r,o)}),Le=async e=>he.has(e)?he.get(e):(e=>{const t={},n=[];for(const[r,o]of Object.entries(we))for(const[i,a]of Object.entries(ye)){const s=`marp-${o}transition${a}-${e}`;n.push($e(s).then(e=>{t[i]=t[i]||{},t[i][r]=e?{...e,name:s}:void 0}))}return Promise.all(n).then(()=>t)})(e).then(t=>(he.set(e,t),t)),Se=e=>Object.values(e).flatMap(Object.values).every(e=>!e),Pe=(e,{type:t,backward:n})=>{const r=e[n?"backward":"forward"],o=(()=>{const e=r[t],n=e=>({[xe]:e.name});if(e)return n(e);if(r.both){const e=n(r.both);return"incoming"===t&&(e[be("direction")]="reverse"),e}})();return!o&&n?Pe(e,{type:t,backward:!1}):o||{[xe]:"__bespoke_marp_transition_no_animation__"}},_e=e=>{if(e)try{const t=JSON.parse(e);if((e=>{if("object"!=typeof e)return!1;const t=e;return"string"==typeof t.name&&(void 0===t.duration||"string"==typeof t.duration)})(t))return t}catch{}},Oe="_tSId",Te="_tA",Ie="bespoke-marp-transition-warming-up",Me=window.matchMedia("(prefers-reduced-motion: reduce)"),Ae="__bespoke_marp_transition_reduced_outgoing__",Ce="__bespoke_marp_transition_reduced_incoming__",De={forward:{both:void 0,incoming:{name:Ce},outgoing:{name:Ae}},backward:{both:void 0,incoming:{name:Ce},outgoing:{name:Ae}}},Ne=e=>{if(!document.startViewTransition)return;const t=t=>(void 0!==t&&(e._tD=t),e._tD);let n;t(!1),((...e)=>{CSS.registerProperty({name:ke("duration"),syntax:"<time>",inherits:!0,initialValue:"-1s"});const t=[...new Set(e).values()];return Promise.all(t.map(e=>Le(e))).then()})(...Array.from(document.querySelectorAll("section[data-transition], section[data-transition-back]")).flatMap(e=>[e.dataset.transition,e.dataset.transitionBack].flatMap(e=>{const t=_e(e);return[t?.name,t?.builtinFallback?`__builtin__${t.name}`:void 0]}).filter(e=>!!e))).then(()=>{document.querySelectorAll("style").forEach(e=>{e.innerHTML=e.innerHTML.replace(/--marp-transition-duration:[^;}]*[;}]/g,e=>e.slice(0,-1)+"!important"+e.slice(-1))})});const r=(n,{back:r,cond:o})=>i=>{const a=t();if(a)return!!i[Te]||!("object"!=typeof a||(a.skipTransition(),!i.forSync));if(e.skipTransition)return!0;if(!o(i))return!0;const s=e.slides[e.slide()],l=()=>i.back??r,c="data-transition"+(l()?"-back":""),d=s.querySelector(`section[${c}]`);if(!d)return!0;const u=_e(d.getAttribute(c)??void 0);return!u||((async(e,{builtinFallback:t=!0}={})=>{let n=await Le(e);if(Se(n)){if(!t)return;return n=await Le(`__builtin__${e}`),Se(n)?void 0:n}return n})(u.name,{builtinFallback:u.builtinFallback}).then(e=>{if(!e){t(!0);try{n(i)}finally{t(!1)}return}let r=e;Me.matches&&(console.warn("Use a constant animation to transition because preferring reduced motion by viewer has detected."),r=De);const o=document.getElementById(Oe);o&&o.remove();const a=document.createElement("style");a.id=Oe,document.head.appendChild(a),((e,t)=>{const n=[`:root{${ke("direction")}:${t.backward?-1:1};}`,":root:has(.bespoke-marp-inactive){cursor:none;}"],r=t=>{const n=e[t].both?.defaultDuration||e[t].outgoing?.defaultDuration||e[t].incoming?.defaultDuration;return"forward"===t?n:n||r("forward")},o=t.duration||r(t.backward?"backward":"forward");void 0!==o&&n.push(`::view-transition-group(*){${Ee}:${o};}`);const i=e=>Object.entries(e).map(([e,t])=>`${e}:${t};`).join("");return n.push(`::view-transition-old(root){${i(Pe(e,{...t,type:"outgoing"}))}}`,`::view-transition-new(root){${i(Pe(e,{...t,type:"incoming"}))}}`),n})(r,{backward:l(),duration:u.duration}).forEach(e=>a.sheet?.insertRule(e));const s=document.documentElement.classList;s.add(Ie);let c=!1;const d=()=>{c||(n(i),c=!0,s.remove(Ie))},f=()=>{t(!1),a.remove(),s.remove(Ie)};try{t(!0);const e=document.startViewTransition(d);t(e),e.finished.finally(f)}catch(e){console.error(e),d(),f()}}),!1)};e.on("prev",r(t=>e.prev({...t,[Te]:!0}),{back:!0,cond:e=>e.index>0&&!((e.fragment??1)&&n.fragmentIndex>0)})),e.on("next",r(t=>e.next({...t,[Te]:!0}),{cond:t=>t.index+1<e.slides.length&&!(n.fragmentIndex+1<n.fragments.length)})),setTimeout(()=>{e.on("slide",r(t=>e.slide(t.index,{...t,[Te]:!0}),{cond:t=>{const n=e.slide();return t.index!==n&&(t.back=t.index<n,!0)}}))},0),e.on("fragment",e=>{n=e})};let Be;const Ke=()=>(void 0===Be&&(Be="wakeLock"in navigator&&navigator.wakeLock),Be),qe=async()=>{const e=Ke();if(e)try{return await e.request("screen")}catch(e){console.warn(e)}return null},Ve=async()=>{if(!Ke())return;let e;const t=()=>{e&&"visible"===document.visibilityState&&qe()};for(const e of["visibilitychange","fullscreenchange"])document.addEventListener(e,t);return e=await qe(),e};((e=document.getElementById(":$p"))=>{(()=>{const e=v("view");i.dataset.bespokeView=u.some(t=>t&&t===e)?e:""})();const t=(e=>{const t=v(e);return h({[e]:void 0}),t})("sync")||void 0;o.from(e,((...e)=>{const t=u.findIndex(e=>p()===e);return e.map(([e,n])=>e[t]&&n).filter(e=>e)})([[1,1,1,0],B({key:t})],[[1,1,0,1],se(e)],[[1,1,0,0],M],[[1,1,1,1],E],[[1,0,0,0],T()],[[1,1,1,1],A],[[1,1,1,1],de({history:!1})],[[1,1,0,0],C()],[[1,1,1,0],_],[[1,0,0,0],le],[[1,1,0,0],ve()],[[1,0,0,0],D()],[[1,1,1,0],F()],[[1,0,0,0],Ne],[[1,1,1,1],$],[[1,1,1,0],Ve]))})()}();</script></body></html>

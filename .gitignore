@@ -1,0 +1,46 @@
+# OS-specific files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+**/Thumbs.db
+
+# IDE directories and project files
+.idea/
+**/.idea/
+.vscode/
+**/.vscode/
+*.iml
+**/*.iml
+.project
+**/.project
+.classpath
+**/.classpath
+.settings/
+**/.settings/
+
+# Build artifacts and Maven target
+**/target/
+**/target
+**/tmp/
+**/tmp
+**/.mvn/
+.._*
+
+# Logs and environment
+*.log
+**/*.log
+.env
+**/.env
+
+# Temporary and backup files
+img_backup/
+**/img_backup/
+__pycache__/
+*.py[cod]
+
+# Large media or private materials
+**/*.mp4
+**/*.zip
+/-hidden/
+/exam/
+/hw/

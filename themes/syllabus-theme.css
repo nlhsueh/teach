@@ -1,0 +1,506 @@
+/**
+ * @theme syllabus-theme
+ * @auto-scaling true
+ * @author Nien-Lin Hsueh
+ * @description Shared Syllabus & Curriculum Roadmap Theme for gTEACH Courses
+ * Flat, elegant academic typography with distinct warm amber & deep slate accents. No gradients.
+ */
+
+@import 'gaia';
+
+/* ==========================================================================
+   1. Base Section & Global Typography
+   ========================================================================== */
+section {
+  font-family: 'Plus Jakarta Sans', 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', -apple-system, sans-serif;
+  padding: 44px 104px;
+  font-size: 20px;
+  line-height: 1.5;
+  background-color: #f6f3ee;
+  color: #1f2937;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Headings: Deep Slate & Warm Amber */
+h1 {
+  color: #0f2742;
+  font-size: 1.85em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+h2 {
+  color: #0f2742;
+  font-size: 1.25em;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #e0d8cb;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+h3 {
+  color: #b45309;
+  font-size: 1.05em;
+  font-weight: 700;
+  margin-top: 8px;
+  margin-bottom: 6px;
+}
+
+strong {
+  color: #0a1e36;
+  font-weight: 700;
+}
+
+p {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  line-height: 1.5;
+}
+
+/* Lists & Hierarchy Color Differentiation */
+ul, ol {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 26px;
+}
+
+/* Level 1: Deep Slate & Warm Amber Marker */
+ul > li, ol > li {
+  margin-bottom: 9px;
+  line-height: 1.45;
+  color: #0f2742;
+  font-weight: 550;
+  font-size: 1em;
+}
+
+ul > li::marker {
+  color: #b45309;
+}
+
+/* Level 2: Charcoal Slate & Warm Olive Marker */
+li > ul, li > ol {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-left: 22px;
+}
+
+li > ul > li, li > ol > li {
+  margin-bottom: 4px;
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: #475569;
+  font-weight: normal;
+}
+
+li > ul > li::marker {
+  color: #854d0e;
+}
+
+li > ul > li strong {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* Level 3: Soft Slate & Muted Marker */
+li > ul > li > ul > li, li > ol > li > ol > li {
+  margin-bottom: 3px;
+  font-size: 0.85em;
+  line-height: 1.35;
+  color: #64748b;
+  font-weight: normal;
+}
+
+li > ul > li > ul > li::marker {
+  color: #a16207;
+}
+
+li > ul > li > ul > li strong {
+  color: #334155;
+  font-weight: 600;
+}
+
+/* Header & Footer */
+header {
+  position: absolute;
+  top: 20px;
+  right: 104px !important;
+  left: auto !important;
+  text-align: right;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #78716c;
+  margin: 0;
+  padding: 0 !important;
+  height: auto !important;
+}
+
+footer,
+section::after {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.6em;
+  line-height: 1;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  color: #78716c;
+}
+
+footer {
+  left: 104px;
+  text-align: left;
+}
+
+section::after {
+  right: 104px;
+  text-align: right;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   2. Lead Slide Layout (Cover / Module Title - Centered)
+   ========================================================================== */
+section.lead,
+section.cover,
+section.center {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  background-color: #f3efe6 !important;
+  border-left: none !important;
+  padding: 40px !important;
+}
+
+section.lead > *,
+section.cover > *,
+section.center > * {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+  max-width: 960px !important;
+}
+
+section.lead h1,
+section.cover h1 {
+  margin: 0 auto 12px auto !important;
+  font-size: 2.1em !important;
+  color: #0f2742 !important;
+  text-align: center !important;
+}
+
+section.lead h2,
+section.cover h2 {
+  margin: 0 auto 12px auto !important;
+  border-bottom: none !important;
+  color: #b45309 !important;
+  text-align: center !important;
+}
+
+section.lead h3,
+section.cover h3 {
+  margin: 0 auto 16px auto !important;
+  font-size: 1.15em !important;
+  color: #b45309 !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+}
+
+section.lead p,
+section.cover p,
+section.lead div,
+section.cover div {
+  margin: 4px auto !important;
+  font-size: 0.95em !important;
+  line-height: 1.6 !important;
+  color: #44403c !important;
+  text-align: center !important;
+}
+
+section.lead blockquote,
+section.cover blockquote {
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin-top: 16px;
+  padding: 8px 20px;
+  text-align: left;
+  display: inline-block;
+  background-color: #ffffff;
+  border-left: 4px solid #b45309;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+section.lead header,
+section.lead footer,
+section.lead::after,
+section.cover header,
+section.cover footer,
+section.cover::after {
+  display: none !important;
+}
+
+/* ==========================================================================
+   3. Blockquotes & Callouts
+   ========================================================================== */
+blockquote {
+  background: #ffffff;
+  border-left: 4px solid #b45309;
+  margin: 12px 0;
+  padding: 10px 18px;
+  font-size: 0.92em;
+  font-style: normal;
+  color: #44403c;
+  border-radius: 0 6px 6px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+blockquote::before,
+blockquote::after {
+  content: none !important;
+}
+
+/* ==========================================================================
+   4. Multi-Column, Split73 & Card Components (Flat, No Gradients)
+   ========================================================================== */
+.two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.three-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Split 7:3 Layout (Content 70% + Symbolic Logo 30%) */
+.split73,
+.split-73 {
+  display: grid;
+  grid-template-columns: 7.2fr 2.8fr;
+  gap: 28px;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.split73 > *:first-child,
+.split-73 > *:first-child {
+  min-width: 0;
+}
+
+.split73 > *:last-child,
+.split-73 > *:last-child {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Symbolic Logo Card for Split73 */
+.symbol-card {
+  width: 100%;
+  max-width: 250px;
+  background: #ffffff;
+  border: 1px solid #e2dad0;
+  border-top: 4px solid #b45309;
+  border-radius: 12px;
+  padding: 20px 14px;
+  box-shadow: 0 3px 10px rgba(15, 39, 66, 0.05);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  box-sizing: border-box;
+}
+
+.symbol-card .icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #fef3c7;
+  border: 2px solid #fde68a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.symbol-card .icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.symbol-card .title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f2742;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.symbol-card .desc {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.35;
+}
+
+.symbol-card .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  margin-top: 4px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e4ded3;
+  border-top: 3px solid #b45309;
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-size: 0.94em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* Flat Solid Buttons */
+.btn-primary {
+  background: #b45309;
+  color: #ffffff !important;
+  padding: 7px 16px;
+  border-radius: 6px;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-block;
+  border: 1px solid #92400e;
+  transition: all 0.15s ease;
+}
+.btn-primary:hover {
+  background: #92400e;
+}
+
+.btn-secondary {
+  background: #f3efe6;
+  color: #0f2742 !important;
+  padding: 7px 16px;
+  border-radius: 6px;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid #e0d8cb;
+  display: inline-block;
+  transition: all 0.15s ease;
+}
+.btn-secondary:hover {
+  background: #e0d8cb;
+}
+
+/* ==========================================================================
+   5. Tables (Syllabus Grading & Schedule Tables)
+   ========================================================================== */
+table {
+  margin: 14px auto;
+  border-collapse: collapse;
+  font-size: 16px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e7e2d8;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+th {
+  border-bottom: 2px solid #0f2742;
+  padding: 9px 14px;
+  text-align: left;
+  background-color: #f5f0e8;
+  color: #0f2742;
+  font-weight: 700;
+  font-size: 0.95em;
+}
+
+td {
+  padding: 8px 14px;
+  border-bottom: 1px solid #ede8de;
+  vertical-align: top;
+  color: #292524;
+  line-height: 1.4;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) {
+  background-color: #faf8f5;
+}
+
+/* ==========================================================================
+   6. Title-Image Slides (e.g. Panel Discussion Photo)
+   ========================================================================== */
+section.title-image-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+section.title-image-slide h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+section.title-image-slide div.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  height: 480px;
+}
+
+section.title-image-slide div.image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #e7e2d8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}

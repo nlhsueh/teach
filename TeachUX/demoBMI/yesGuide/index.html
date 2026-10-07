@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI 學生健康體位管理系統 | Nielsen UX 實踐版</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 頂部 Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <span class="brand-icon">⚖️</span>
+        <div>
+          <h1 class="brand-title">BMI 學生健康體位分析系統</h1>
+          <span class="brand-badge">✨ Nielsen 10 大易用性準則典範實踐 (yesGuide)</span>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button type="button" class="btn btn-outline" id="btn-show-heuristics" title="檢視系統如何具體落地尼爾森 10 大原則">
+          🎯 尼爾森 10 大原則對照走查
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 頂部通知 Toast 容器 (NS01 狀態能見度 / NS03 自由控制) -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- 上半部：主輸入表單 (左) + 班級即時健康儀表板 (右) -->
+    <div class="top-grid">
+      
+      <!-- 連續高速輸入表單卡片 (NS05 錯誤預防 / NS07 高效連續輸入) -->
+      <section class="card form-card">
+        <div class="card-header">
+          <div>
+            <h2>📝 新增學生體檢資料</h2>
+            <p class="card-subtitle">支援純鍵盤極速連續鍵入，自動聚焦切換</p>
+          </div>
+          <span class="accelerator-tag" title="NS07 效率加速器：鍵盤快捷">⌨️ 快捷鍵：Enter 連續錄入</span>
+        </div>
+
+        <form id="bmi-form" autocomplete="off" novalidate>
+          <div class="form-group">
+            <label for="student-name">
+              學生姓名 <span class="req">*</span>
+              <span class="label-hint">（支援中文或英文）</span>
+            </label>
+            <div class="input-wrapper">
+              <input type="text" id="student-name" placeholder="例如：陳大明" required autofocus>
+              <span class="clear-input-icon" id="clear-name" title="清除欄位">✕</span>
+            </div>
+            <div class="field-error" id="err-name"></div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="student-height">
+                身高 (公分 cm) <span class="req">*</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="number" id="student-height" placeholder="例如：175.5" min="50" max="250" step="0.1" required>
+                <span class="input-unit">cm</span>
+              </div>
+              <div class="field-error" id="err-height"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="student-weight">
+                體重 (公斤 kg) <span class="req">*</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="number" id="student-weight" placeholder="例如：68.0" min="15" max="300" step="0.1" required>
+                <span class="input-unit">kg</span>
+              </div>
+              <div class="field-error" id="err-weight"></div>
+            </div>
+          </div>
+
+          <!-- 即時動態計算預覽條 (NS01 系統狀態能見度) -->
+          <div class="live-preview-box" id="live-preview-box">
+            <div class="preview-title">
+              <span>⚡ 即時預覽：</span>
+              <span id="preview-bmi-text">輸入身高與體重即時試算</span>
+            </div>
+            <div id="preview-badge-container"></div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="btn-submit">
+              <span>➕ 計算並加入記錄</span>
+              <kbd>Enter</kbd>
+            </button>
+            <button type="button" class="btn btn-secondary" id="btn-reset" title="NS03: 清空當前欄位">
+              🔄 重設輸入
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- 班級即時健康儀表板 (NS01 狀態能見度 / NS02 真實世界標準) -->
+      <section class="card dashboard-card">
+        <div class="card-header">
+          <div>
+            <h2>📊 全班健康體位即時儀表板</h2>
+            <p class="card-subtitle">依衛福部國民健康署最新成人切點即時彙整</p>
+          </div>
+          <span class="total-badge" id="total-badge">0 位學生</span>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-title">班級平均 BMI</span>
+            <div class="kpi-num" id="kpi-avg-bmi">--</div>
+            <div class="kpi-sub" id="kpi-avg-status">尚無記錄</div>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-title">健康體位達標率</span>
+            <div class="kpi-num" id="kpi-normal-rate">--%</div>
+            <div class="kpi-sub" id="kpi-normal-ratio">0 / 0 人</div>
+          </div>
+        </div>
+
+        <!-- 體位分佈長條圖 (NS04 一致色彩 / NS06 易於識別) -->
+        <div class="distribution-section">
+          <div class="dist-header">
+            <span>體位分佈統計比例</span>
+            <span class="dist-hint">點擊分類可快速篩選表格</span>
+          </div>
+
+          <div class="stacked-bar-container" id="stacked-bar">
+            <div class="bar-segment seg-underweight" id="seg-underweight" style="width: 0%;" title="體重過輕"></div>
+            <div class="bar-segment seg-normal" id="seg-normal" style="width: 0%;" title="健康體位"></div>
+            <div class="bar-segment seg-overweight" id="seg-overweight" style="width: 0%;" title="體重過重"></div>
+            <div class="bar-segment seg-obese" id="seg-obese" style="width: 0%;" title="肥胖體位"></div>
+          </div>
+
+          <div class="legend-grid">
+            <button type="button" class="legend-btn" data-filter="underweight">
+              <span class="dot dot-underweight"></span>
+              <span class="legend-label">過輕 (&lt;18.5)</span>
+              <span class="legend-count" id="count-underweight">0</span>
+            </button>
+            <button type="button" class="legend-btn active" data-filter="all">
+              <span class="dot dot-all"></span>
+              <span class="legend-label">全部</span>
+              <span class="legend-count" id="count-all">0</span>
+            </button>
+            <button type="button" class="legend-btn" data-filter="normal">
+              <span class="dot dot-normal"></span>
+              <span class="legend-label">正常 (18.5-24)</span>
+              <span class="legend-count" id="count-normal">0</span>
+            </button>
+            <button type="button" class="legend-btn" data-filter="overweight">
+              <span class="dot dot-overweight"></span>
+              <span class="legend-label">過重 (24-27)</span>
+              <span class="legend-count" id="count-overweight">0</span>
+            </button>
+            <button type="button" class="legend-btn" data-filter="obese">
+              <span class="dot dot-obese"></span>
+              <span class="legend-label">肥胖 (≥27)</span>
+              <span class="legend-count" id="count-obese">0</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 下半部：學生記錄表格與操作工具列 (NS03 控制權 / NS07 效率 / NS08 簡約) -->
+    <section class="card table-card">
+      <div class="table-toolbar">
+        <div class="toolbar-left">
+          <h2>📋 學生健康體位明細記錄</h2>
+          <!-- 搜尋框 (NS06 易於識別) -->
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" placeholder="搜尋學生姓名或體位狀態...">
+          </div>
+        </div>
+
+        <div class="toolbar-right">
+          <button type="button" class="btn btn-outline" id="btn-sample-data" title="NS07: 一鍵快速載入班級範例資料進行測試">
+            🎲 載入示範資料
+          </button>
+          <button type="button" class="btn btn-outline" id="btn-export-csv" title="NS03: 匯出全班資料為 CSV 格式">
+            📥 匯出 CSV
+          </button>
+          <button type="button" class="btn btn-danger-outline" id="btn-clear-all" title="NS03: 清空全部記錄（附二次確認）">
+            🗑️ 清空所有記錄
+          </button>
+        </div>
+      </div>
+
+      <!-- 表格主體 -->
+      <div class="table-responsive">
+        <table class="data-table" id="data-table">
+          <thead>
+            <tr>
+              <th style="width: 50px;">#</th>
+              <th>學生姓名</th>
+              <th>身高 (cm)</th>
+              <th>體重 (kg)</th>
+              <th>BMI 數值</th>
+              <th>體位判定</th>
+              <th>衛教指引與生活建議 (NS10)</th>
+              <th style="width: 120px; text-align: center;">操作 (NS03)</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- 動態插入內容 -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-footer-info" id="table-footer-info">
+        顯示 <span id="shown-count">0</span> 筆記錄（共 <span id="total-records-count">0</span> 筆）
+      </div>
+    </section>
+
+    <!-- 底部衛教與標準對照說明 (NS06 辨識取代記憶 / NS10 說明與指引) -->
+    <section class="card standard-card">
+      <div class="card-header">
+        <div>
+          <h3>📖 衛生福利部成人 BMI 判讀標準與健康指引對照</h3>
+          <p class="card-subtitle">依據國健署體重管理手冊規範制定，公式：BMI = 體重(kg) / 身高(m)²</p>
+        </div>
+      </div>
+      <div class="standard-chips">
+        <div class="chip-item chip-underweight">
+          <div class="chip-header">
+            <span class="tag tag-underweight">體重過輕</span>
+            <span class="chip-bmi">BMI &lt; 18.5</span>
+          </div>
+          <p class="chip-desc">易有免疫力低與骨質疏鬆風險。建議適度提高蛋白質熱量攝取，搭配阻力運動增肌。</p>
+        </div>
+
+        <div class="chip-item chip-normal">
+          <div class="chip-header">
+            <span class="tag tag-normal">健康體位</span>
+            <span class="chip-bmi">18.5 ≤ BMI &lt; 24</span>
+          </div>
+          <p class="chip-desc">標準健康區間！請維持均衡三餐飲食、充足睡眠與每週至少 150 分鐘中度有氧運動。</p>
+        </div>
+
+        <div class="chip-item chip-overweight">
+          <div class="chip-header">
+            <span class="tag tag-overweight">體重過重</span>
+            <span class="chip-bmi">24 ≤ BMI &lt; 27</span>
+          </div>
+          <p class="chip-desc">代謝綜合徵潛在警戒區。建議避免含糖手搖飲，多走樓梯，每週進行 3 次以上燃脂運動。</p>
+        </div>
+
+        <div class="chip-item chip-obese-mild">
+          <div class="chip-header">
+            <span class="tag tag-obese-mild">輕度肥胖</span>
+            <span class="chip-bmi">27 ≤ BMI &lt; 30</span>
+          </div>
+          <p class="chip-desc">已落入肥胖初期。建議每日減少 300~500 大卡熱量攝取，定時規律量測體重自我監控。</p>
+        </div>
+
+        <div class="chip-item chip-obese-mod">
+          <div class="chip-header">
+            <span class="tag tag-obese-mod">中度肥胖</span>
+            <span class="chip-bmi">30 ≤ BMI &lt; 35</span>
+          </div>
+          <p class="chip-desc">心血管疾病風險提升。建議尋求家醫科或營養師專業規劃，進行結構性減重管理。</p>
+        </div>
+
+        <div class="chip-item chip-obese-sev">
+          <div class="chip-header">
+            <span class="tag tag-obese-sev">重度肥胖</span>
+            <span class="chip-bmi">BMI ≥ 35</span>
+          </div>
+          <p class="chip-desc">高風險族群。建議至大型醫療院所減重門診進行全方位代謝檢查與積極醫療介入。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 尼爾森 10 大原則落地對照走查 Modal (教學展示核心亮點) -->
+  <div class="modal-overlay" id="heuristics-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-icon">🎯</span>
+          <div>
+            <h3>本系統落實「尼爾森 10 大易用性原則 (Nielsen's 10 Heuristics)」全對照表</h3>
+            <p class="modal-subtitle">由逢甲大學資工系 使用者體驗設計 課程架構精心實作</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close" id="modal-close">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="heuristics-table-wrapper">
+          <table class="heuristics-table">
+            <thead>
+              <tr>
+                <th style="width: 140px;">尼爾森準則</th>
+                <th style="width: 220px;">易用性核心心法</th>
+                <th>本 BMI 系統之具體工程設計與落實</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>NS01 狀態能見度</strong><br><small>Visibility of Status</small></td>
+                <td>在合理時間內提供即時反饋，讓使用者隨時掌握系統狀態。</td>
+                <td>
+                  <ul>
+                    <li>鍵入身高體重即刻浮現「⚡ 即時預覽卡片」，無需等待點擊送出。</li>
+                    <li>新增/刪除時立即在右上角觸發 Toast 提示與全班總人數動態徽章。</li>
+                    <li>即時更新「體位分佈長條圖」與平均 BMI 儀表。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>NS02 真實世界對應</strong><br><small>Match Real World</small></td>
+                <td>說使用者聽得懂的語言，符合真實世界心理模型與慣例。</td>
+                <td>
+                  <ul>
+                    <li>採用衛生福利部國民健康署標準衛教體位分級（健康體位、過重、肥胖）。</li>
+                    <li>使用大眾熟悉的單位標示（身高 cm、體重 kg、BMI 數值保留 1 位小數）。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>NS03 控制權與自由</strong><br><small>User Control & Freedom</small></td>
+                <td>提供清晰的緊急出口與反悔救援機制，不強制阻斷。</td>
+                <td>
+                  <ul>
+                    <li><strong>刪除防呆救援 (Undo)</strong>：刪除學生時立即浮現帶有「復原 (Undo)」按鈕的 Toast，隨時可一鍵還原誤刪數據。</li>
+                    <li>提供「重設輸入」按鈕隨時清空草稿；提供 CSV 匯出備份資料。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>NS04 一致性與標準</strong><br><small>Consistency & Standards</small></td>
+                <td>遵循既定規範與設計系統，色彩與樣式語意一致。</td>
+                <td>
+                  <ul>
+                    <li>全站統一 Design System 語意色彩：正常(綠)、過輕(藍)、過重(橙)、肥胖(紅)。</li>
+                    <li>主要動作按鈕一律使用 Theme Blue，危險動作一律使用 Danger Red。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>NS05 錯誤預防</strong><br><small>Error Prevention</small></td>
+                <td>防範錯誤於未然，透過前端約束與智慧防呆降低出錯率。</td>
+                <td>
+                  <ul>
+                    <li><strong>單位智慧防呆</strong>：若身高輸入小於 50（如誤鍵 1.75 公尺），即時溫馨提醒「單位為公分 cm，是否應為 175 cm？」。</li>
+                    <li>HTML5 數值範圍約束 (`min/max/step`)，嚴防空值與負數。</li>
+                    <li>避免警示疲勞：不使用阻斷式 `confirm`，改用非阻斷 Toast + Undo。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>NS06 辨識取代記憶</strong><br><small>Recognition vs Recall</small></td>
+                <td>將物件與指引直接陳列在眼前，無需憑空死記。</td>
+                <td>
+                  <ul>
+                    <li>輸入框提供清晰範例 Placeholder（如「例如：175.5」）。</li>
+                    <li>常駐陳列衛福部 6 大體位標準切點對照卡片，隨時一眼即查。</li>
+                    <li>提供即時關鍵字搜尋框與體位點選篩選。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>NS07 彈性與使用效率</strong><br><small>Efficiency of Use</small></td>
+                <td>兼顧新手與資深使用者，提供高頻操作加速器。</td>
+                <td>
+                  <ul>
+                    <li><strong>純鍵盤極速連續錄入</strong>：姓名 ➔ <kbd>Enter</kbd> ➔ 身高 ➔ <kbd>Enter</kbd> ➔ 體重 ➔ <kbd>Enter</kbd> 自動計算並瞬間回彈聚焦回姓名，雙手不離鍵盤即可錄完全班。</li>
+                    <li>提供「🎲 載入示範資料」按鈕加速測試與演示。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>NS08 美學與簡約設計</strong><br><small>Minimalist Design</small></td>
+                <td>去除無關視覺雜訊，聚焦關鍵高價值指標。</td>
+                <td>
+                  <ul>
+                    <li>雙欄卡片佈局，核心 KPI（平均 BMI、達標率）大字突出。</li>
+                    <li>充足留白與文字對比度，全面遵循 WCAG AA 無障礙標準。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>NS09 協助診斷與復原</strong><br><small>Error Recovery</small></td>
+                <td>錯誤訊息白話精準指出問題，並給予建設性指引。</td>
+                <td>
+                  <ul>
+                    <li>輸入不合理時，欄位微震動 (Shake) 標紅，並就地以白話中文指出哪裡有誤。</li>
+                    <li>自動將游標聚焦到出錯欄位，方便就地修正。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>NS10 說明文件與輔助</strong><br><small>Help & Documentation</small></td>
+                <td>在必要位置提供情境微說明與具體行動指南。</td>
+                <td>
+                  <ul>
+                    <li>各體位分類均附有專屬「衛教指引與生活改善建議」。</li>
+                    <li>提供計算公式說明與本對照表指引。</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="btn-modal-ok">我瞭解了</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

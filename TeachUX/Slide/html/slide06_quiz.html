@@ -1,0 +1,892 @@
+<!DOCTYPE html><html lang="C"><head><title>全課程易用性與互動設計實戰題庫</title><meta property="og:title" content="全課程易用性與互動設計實戰題庫"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=overview] button.bespoke-marp-overview-close,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{appearance:none;background-color:initial;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;transition:opacity .2s linear;-webkit-tap-highlight-color:transparent}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=overview] button.bespoke-marp-overview-close:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:disabled{cursor:not-allowed;opacity:.15!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=overview] button.bespoke-marp-overview-close:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover{opacity:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=overview] button.bespoke-marp-overview-close:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:active{opacity:.6}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=overview] button.bespoke-marp-overview-close:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTAgMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJtMzIgOTAgNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgeD0iMTAiIHk9IjIwIiBjbGFzcz0iYSIgcng9IjUuNjciLz48cGF0aCBkPSJNNDAgNzBIMjBWNTBtMjAgMEwyMCA3MG00MC00MGgyMHYyMG0tMjAgMCAyMC0yMCIgY2xhc3M9ImEiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgeD0iMTAiIHk9IjIwIiBjbGFzcz0iYSIgcng9IjUuNjciLz48cGF0aCBkPSJNMjAgNTBoMjB2MjBtLTIwIDAgMjAtMjBtNDAgMEg2MFYzMG0yMCAwTDYwIDUwIiBjbGFzcz0iYSIvPjwvc3ZnPg==")}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNODcuOCA0Ny41Qzg5IDUwIDg3LjcgNTIgODUgNTJIMzVhOC43IDguNyAwIDAgMS03LjItNC41bC0xNS42LTMxQzExIDE0IDEyLjIgMTIgMTUgMTJoNTBhOC44IDguOCAwIDAgMSA3LjIgNC41ek02MCA1MnYzNm0tMTAgMGgyME00NSA0MmgyMCIvPjwvc3ZnPg==") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=overview] button.bespoke-marp-overview-close,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-bigger{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNMTIgNTBoODBNNTIgOTBWMTAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-smaller{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNMTIgNTBoODAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=overview]{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4O3J4OjVweDtyeTo1cHg7d2lkdGg6MjVweDtoZWlnaHQ6MjVweH08L3N0eWxlPjwvZGVmcz48cmVjdCB4PSIyMCIgeT0iMjAiIGNsYXNzPSJhIi8+PHJlY3QgeD0iNTUiIHk9IjIwIiBjbGFzcz0iYSIvPjxyZWN0IHg9IjIwIiB5PSI1NSIgY2xhc3M9ImEiLz48cmVjdCB4PSI1NSIgeT0iNTUiIGNsYXNzPSJhIi8+PC9zdmc+") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}}@keyframes __bespoke_marp_transition_reduced_outgoing__{0%{opacity:1}to{opacity:0}}@keyframes __bespoke_marp_transition_reduced_incoming__{0%{mix-blend-mode:plus-lighter;opacity:0}to{mix-blend-mode:plus-lighter;opacity:1}}.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{::view-transition-group(*){animation-duration:var(--marp-bespoke-transition-animation-duration,.5s);animation-timing-function:ease}::view-transition-new(*),::view-transition-old(*){animation-delay:0s;animation-direction:var(--marp-bespoke-transition-animation-direction,normal);animation-duration:var(--marp-bespoke-transition-animation-duration,.5s);animation-fill-mode:both;animation-name:var(--marp-bespoke-transition-animation-name,var(--marp-bespoke-transition-animation-name-fallback,__bespoke_marp_transition_no_animation__));mix-blend-mode:normal}::view-transition-old(*){--marp-bespoke-transition-animation-name-fallback:__bespoke_marp_transition_reduced_outgoing__;animation-timing-function:ease}::view-transition-new(*){--marp-bespoke-transition-animation-name-fallback:__bespoke_marp_transition_reduced_incoming__;animation-timing-function:ease}::view-transition-new(root),::view-transition-old(root){animation-timing-function:linear}::view-transition-new(__bespoke_marp_transition_osc__),::view-transition-old(__bespoke_marp_transition_osc__){animation-duration:0s!important;animation-name:__bespoke_marp_transition_osc__!important}::view-transition-new(__bespoke_marp_transition_osc__){opacity:0!important}.bespoke-marp-transition-warming-up::view-transition-group(*),.bespoke-marp-transition-warming-up::view-transition-new(*),.bespoke-marp-transition-warming-up::view-transition-old(*){animation-play-state:paused!important}body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;interactivity:inert;opacity:0;pointer-events:none;z-index:-1}svg.bespoke-marp-slide:not(.bespoke-marp-active) *{view-transition-name:none!important}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;interactivity:auto;opacity:1;pointer-events:auto;z-index:0}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}}@media screen and (prefers-reduced-motion:reduce){svg.bespoke-marp-slide *{view-transition-name:none!important}}@media screen{[data-bespoke-marp-fragment=inactive]{visibility:hidden}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent{inset:0;position:absolute}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc{background:#000000a6;border-radius:7px;bottom:50px;color:#fff;contain:paint;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;user-select:none;view-transition-name:__bespoke_marp_transition_osc__;white-space:nowrap;will-change:transform;z-index:1}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>:where(*){margin-left:6px}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>:where(*):where(:first-child){margin-left:0}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=overview],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+:where(.bespoke-marp-parent){top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{background:#0288d1;flex:0 0 0;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:#0000}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{display:grid;font-family:Helvetica,Arial,sans-serif;grid-template:"current dragbar next" minmax(140px,1fr) "current dragbar note" 2fr "info    dragbar note" 3em;grid-template-columns:minmax(3px,var(--bespoke-marp-presenter-split-ratio,66%)) 0 minmax(3px,1fr);height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container :where(.bespoke-marp-parent){grid-area:current;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container :where(.bespoke-marp-parent) :where(svg.bespoke-marp-slide){height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container :where(.bespoke-marp-parent) :where(svg.bespoke-marp-slide).bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container{background:#0288d1;cursor:col-resize;grid-area:dragbar;margin-left:-3px;opacity:0;position:relative;transition:opacity .4s linear .1s;width:6px;z-index:10}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container:hover{opacity:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container.active{opacity:1;transition-delay:0s}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:#0000;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;interactivity:inert;top:20px;-webkit-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note;position:relative;z-index:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper{display:block;inset:0;position:absolute}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons{background:#000000a6;border-radius:4px;bottom:0;display:flex;gap:4px;margin:12px;opacity:0;padding:6px;pointer-events:none;position:absolute;right:0;transition:opacity .2s linear}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons:focus-within,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper:focus-within+.bespoke-marp-presenter-note-buttons,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container:hover .bespoke-marp-presenter-note-buttons{opacity:1;pointer-events:auto}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{box-sizing:border-box;font-size:calc(1.1em*var(--bespoke-marp-note-font-scale, 1));height:calc(100% - 40px);margin:20px;overflow:auto;padding-right:3px;white-space:pre-wrap;width:calc(100% - 40px);word-wrap:break-word;scrollbar-color:#eeeeee80 #0000;scrollbar-width:thin}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:#0000}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:#eeeeee80;border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;overflow:hidden;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container :is(.bespoke-marp-presenter-info-page-area,.bespoke-marp-presenter-info-time,.bespoke-marp-presenter-info-timer){box-sizing:border-box;display:block;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer:hover{cursor:pointer}body[data-bespoke-view=overview]{background:#161616;overflow:auto}body[data-bespoke-view=overview] [data-bespoke-marp-fragment=inactive]{visibility:visible}body[data-bespoke-view=overview] .bespoke-marp-overview-header{backdrop-filter:blur(4px);background:#222222d9;box-shadow:0 3px 10px #00000080;box-sizing:border-box;display:flex;height:48px;inset:0 0 auto;justify-content:flex-end;padding:10px;position:fixed;z-index:1}body[data-bespoke-view=overview] button.bespoke-marp-overview-close{height:28px;line-height:28px;transform:rotate(45deg);width:28px}body[data-bespoke-view=overview] .bespoke-marp-parent{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(0,240px));justify-content:space-around;padding:30px}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide{--bov-selected:#0000;--bov-focus:#161616;--bov-focus-outline:#0000;background-image:conic-gradient(#161616 0 0),conic-gradient(var(--bov-focus) 0 0),conic-gradient(var(--bov-focus-outline) 0 0),conic-gradient(var(--bov-selected) 0 0);background-position:5px 5px,3px 3px,2px 2px,0 0;background-repeat:no-repeat;background-size:calc(100% - 10px) calc(100% - 10px),calc(100% - 6px) calc(100% - 6px),calc(100% - 4px) calc(100% - 4px),100% 100%;content-visibility:visible;cursor:pointer;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));margin:-6px;padding:6px;interactivity:auto;opacity:1;outline:0;pointer-events:auto;scroll-margin-block:30px;width:100%;z-index:0}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide *,body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active *{pointer-events:none;interactivity:inert}body[data-bespoke-view=overview] .bespoke-marp-parent :is(svg.bespoke-marp-slide:active,svg.bespoke-marp-slide:focus-visible,svg.bespoke-marp-slide:hover){--bov-focus-outline:#161616}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide:focus-visible,body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide:hover{--bov-focus:#999}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide:active{--bov-focus:#eee}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{--bov-selected:#0288d1}body[data-bespoke-view=overview]:has(.bespoke-marp-overview-header) .bespoke-marp-parent{padding-top:78px}body[data-bespoke-view=overview]:has(.bespoke-marp-overview-header) .bespoke-marp-parent svg.bespoke-marp-slide{scroll-margin-top:78px}.bespoke-marp-overview{background:#000000a6;inset:0;opacity:0;pointer-events:none;position:fixed;transition:opacity .1s ease;z-index:10}.bespoke-marp-overview iframe{background:#222;border:0;display:block;height:100%;left:0;position:absolute;top:0;width:100%}.bespoke-marp-overview[data-open="1"]{opacity:1;pointer-events:auto}}@media print{.bespoke-marp-overview,.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>@keyframes marp-outgoing-transition-__builtin__fade{0%{opacity:1}to{opacity:0}}@keyframes marp-incoming-transition-__builtin__fade{0%{mix-blend-mode:plus-lighter;opacity:0}to{mix-blend-mode:plus-lighter;opacity:1}}</style><style>@charset "UTF-8";@import "https://fonts.bunny.net/css?family=Lato:400,900|Roboto+Mono:400,700&display=swap";div#\:\$p > svg > foreignObject > section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center;-webkit-text-size-adjust:100%;text-size-adjust:100%}div#\:\$p > svg > foreignObject > section::after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#\:\$p > svg > foreignObject > section:not([data-marpit-pagination])::after{display:none}div#\:\$p > svg > foreignObject > section :where(:is(h1, marp-h1)){font-size:2em;margin-block:0.67em}div#\:\$p > svg > foreignObject > section section:where(:is(h1, marp-h1)){--marpit-root-font-size: 2em}div#\:\$p > svg > foreignObject > section video::-webkit-media-controls{will-change:transform}@page {size:1280px 720px;margin:0}@media print{html, body{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#\:\$p > svg > foreignObject > section{page-break-before:always;break-before:page}div#\:\$p > svg > foreignObject > section, div#\:\$p > svg > foreignObject > section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;print-color-adjust:exact!important;transition:none!important}div#\:\$p > svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}/*!
+ * Marp / Marpit Gaia theme.
+ *
+ * @theme gaia
+ * @author Yuki Hattori
+ *
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) code.hljs{display:block;overflow-x:auto;padding:1em}div#\:\$p > svg > foreignObject > section code.hljs{padding:3px 5px}div#\:\$p > svg > foreignObject > section .hljs{background:#000;color:#f8f8f8}div#\:\$p > svg > foreignObject > section .hljs-comment,div#\:\$p > svg > foreignObject > section .hljs-quote{color:#aeaeae;font-style:italic}div#\:\$p > svg > foreignObject > section .hljs-keyword,div#\:\$p > svg > foreignObject > section .hljs-selector-tag,div#\:\$p > svg > foreignObject > section .hljs-type{color:#e28964}div#\:\$p > svg > foreignObject > section .hljs-string{color:#65b042}div#\:\$p > svg > foreignObject > section .hljs-subst{color:#daefa3}div#\:\$p > svg > foreignObject > section .hljs-link,div#\:\$p > svg > foreignObject > section .hljs-regexp{color:#e9c062}div#\:\$p > svg > foreignObject > section .hljs-name,div#\:\$p > svg > foreignObject > section .hljs-section,div#\:\$p > svg > foreignObject > section .hljs-tag,div#\:\$p > svg > foreignObject > section .hljs-title{color:#89bdff}div#\:\$p > svg > foreignObject > section .hljs-class .hljs-title,div#\:\$p > svg > foreignObject > section .hljs-doctag,div#\:\$p > svg > foreignObject > section .hljs-title.class_{text-decoration:underline}div#\:\$p > svg > foreignObject > section .hljs-bullet,div#\:\$p > svg > foreignObject > section .hljs-number,div#\:\$p > svg > foreignObject > section .hljs-symbol{color:#3387cc}div#\:\$p > svg > foreignObject > section .hljs-params,div#\:\$p > svg > foreignObject > section .hljs-template-variable,div#\:\$p > svg > foreignObject > section .hljs-variable{color:#3e87e3}div#\:\$p > svg > foreignObject > section .hljs-attribute{color:#cda869}div#\:\$p > svg > foreignObject > section .hljs-meta{color:#8996a8}div#\:\$p > svg > foreignObject > section .hljs-formula{background-color:#0e2231;color:#f8f8f8;font-style:italic}div#\:\$p > svg > foreignObject > section .hljs-addition{background-color:#253b22;color:#f8f8f8}div#\:\$p > svg > foreignObject > section .hljs-deletion{background-color:#420e09;color:#f8f8f8}div#\:\$p > svg > foreignObject > section .hljs-selector-class{color:#9b703f}div#\:\$p > svg > foreignObject > section .hljs-selector-id{color:#8b98ab}div#\:\$p > svg > foreignObject > section .hljs-emphasis{font-style:italic}div#\:\$p > svg > foreignObject > section .hljs-strong{font-weight:700}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section :is(h2, marp-h2),div#\:\$p > svg > foreignObject > section :is(h3, marp-h3),div#\:\$p > svg > foreignObject > section :is(h4, marp-h4),div#\:\$p > svg > foreignObject > section :is(h5, marp-h5),div#\:\$p > svg > foreignObject > section :is(h6, marp-h6){margin:.5em 0 0}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1) strong,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2) strong,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3) strong,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4) strong,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5) strong,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6) strong{font-weight:inherit}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h2, marp-h2)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h3, marp-h3)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h4, marp-h4)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h5, marp-h5)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h6, marp-h6)::part(auto-scaling){max-height:580px}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1){font-size:1.8em}div#\:\$p > svg > foreignObject > section :is(h2, marp-h2){font-size:1.5em}div#\:\$p > svg > foreignObject > section :is(h3, marp-h3){font-size:1.3em}div#\:\$p > svg > foreignObject > section :is(h4, marp-h4){font-size:1.1em}div#\:\$p > svg > foreignObject > section :is(h5, marp-h5){font-size:1em}div#\:\$p > svg > foreignObject > section :is(h6, marp-h6){font-size:.9em}div#\:\$p > svg > foreignObject > section blockquote,div#\:\$p > svg > foreignObject > section p{margin:1em 0 0}div#\:\$p > svg > foreignObject > section ol>li,div#\:\$p > svg > foreignObject > section ul>li{margin:.3em 0 0}div#\:\$p > svg > foreignObject > section ol>li>p,div#\:\$p > svg > foreignObject > section ul>li>p{margin:.6em 0 0}div#\:\$p > svg > foreignObject > section code{display:inline-block;font-family:Roboto Mono,monospace;font-size:.8em;letter-spacing:0;margin:-.1em .15em;padding:.1em .2em;vertical-align:baseline}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre){display:block;margin:1em 0 0;overflow:visible}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) code{box-sizing:border-box;margin:0;min-width:100%;padding:.5em;font-size:.7em}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre)::part(auto-scaling){max-height:calc(580px - 1em)}div#\:\$p > svg > foreignObject > section blockquote{margin:1em 0 0;padding:0 1em;position:relative}div#\:\$p > svg > foreignObject > section blockquote:after,div#\:\$p > svg > foreignObject > section blockquote:before{content:"“";display:block;font-family:Times New Roman,serif;font-weight:700;position:absolute}div#\:\$p > svg > foreignObject > section blockquote:before{top:0;left:0}div#\:\$p > svg > foreignObject > section blockquote:after{right:0;bottom:0;transform:rotate(180deg)}div#\:\$p > svg > foreignObject > section blockquote>:first-child{margin-top:0}div#\:\$p > svg > foreignObject > section mark{background:transparent}div#\:\$p > svg > foreignObject > section table{border-spacing:0;border-collapse:collapse;margin:1em 0 0}div#\:\$p > svg > foreignObject > section table td,div#\:\$p > svg > foreignObject > section table th{padding:.2em .4em;border-width:1px;border-style:solid}div#\:\$p > svg > foreignObject > section footer,div#\:\$p > svg > foreignObject > section header,div#\:\$p > svg > foreignObject > section:after{box-sizing:border-box;font-size:66%;height:70px;line-height:50px;overflow:hidden;padding:10px 25px;position:absolute}div#\:\$p > svg > foreignObject > section:after{--marpit-root-font-size:66%}div#\:\$p > svg > foreignObject > section header{top:0}div#\:\$p > svg > foreignObject > section footer,div#\:\$p > svg > foreignObject > section header{left:0;right:0}div#\:\$p > svg > foreignObject > section footer{bottom:0}div#\:\$p > svg > foreignObject > section{--color-background:light-dark(#fff8e1, #455a64);--color-background-stripe:light-dark(
+    rgba(69,90,100,.1),
+    rgba(255,248,225,.1)
+  );--color-foreground:light-dark(#455a64, #fff8e1);--color-dimmed:light-dark(
+    #6a7a7d,
+    #dad8c8
+  );--color-highlight:light-dark(#0288d1, #81d4fa);color-scheme:light;background-color:var(--color-background);background-image:linear-gradient(135deg, var(--color-background), color-mix(in srgb, var(--color-background) 98%, #888 2%) 50%, var(--color-background) 50%, color-mix(in srgb, var(--color-background) 95%, #fff 5%));color:var(--color-foreground);font-size:35px;font-family:Lato,Avenir Next,Avenir,Trebuchet MS,Segoe UI,sans-serif;height:720px;line-height:1.35;letter-spacing:1.25px;padding:70px;width:1280px;overflow-wrap:break-word}div#\:\$p > svg > foreignObject > section{--marpit-root-font-size:35px}div#\:\$p > svg > foreignObject > section:after{right:0;bottom:0;font-size:80%}div#\:\$p > svg > foreignObject > section:after{--marpit-root-font-size:80%}div#\:\$p > svg > foreignObject > section a,div#\:\$p > svg > foreignObject > section mark{color:var(--color-highlight)}div#\:\$p > svg > foreignObject > section code{background:var(--color-dimmed);color:var(--color-background)}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1) strong,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2) strong,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3) strong,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4) strong,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5) strong,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6) strong{color:var(--color-highlight)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre){background:var(--color-foreground)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre)>code{background:transparent}div#\:\$p > svg > foreignObject > section blockquote:after,div#\:\$p > svg > foreignObject > section blockquote:before,div#\:\$p > svg > foreignObject > section footer,div#\:\$p > svg > foreignObject > section header,div#\:\$p > svg > foreignObject > section section:after{color:var(--color-dimmed)}div#\:\$p > svg > foreignObject > section table td,div#\:\$p > svg > foreignObject > section table th{border-color:var(--color-foreground)}div#\:\$p > svg > foreignObject > section table thead th{background:var(--color-foreground);color:var(--color-background)}div#\:\$p > svg > foreignObject > section table tbody>tr:nth-child(odd) td,div#\:\$p > svg > foreignObject > section table tbody>tr:nth-child(odd) th{background:var(--color-background-stripe, transparent)}div#\:\$p > svg > foreignObject > section>:first-child,div#\:\$p > svg > foreignObject > section>header:first-child+*{margin-top:0}div#\:\$p > svg > foreignObject > section:where(.invert){color-scheme:dark}div#\:\$p > svg > foreignObject > section:where(.gaia){--color-background:#0288d1;--color-background-stripe:rgba(255,248,225,.1);--color-foreground:#fff8e1;--color-dimmed:#cce2de;--color-highlight:#81d4fa;}div#\:\$p > svg > foreignObject > section:where(.lead){place-content:safe center center;flex-flow:column nowrap;align-items:stretch}div#\:\$p > svg > foreignObject > section:where(.lead) :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section:where(.lead) :is(h2, marp-h2),div#\:\$p > svg > foreignObject > section:where(.lead) :is(h3, marp-h3),div#\:\$p > svg > foreignObject > section:where(.lead) :is(h4, marp-h4),div#\:\$p > svg > foreignObject > section:where(.lead) :is(h5, marp-h5),div#\:\$p > svg > foreignObject > section:where(.lead) :is(h6, marp-h6){text-align:center}div#\:\$p > svg > foreignObject > section:where(.lead) p{text-align:center}div#\:\$p > svg > foreignObject > section:where(.lead) blockquote>:is(h1, marp-h1),div#\:\$p > svg > foreignObject > section:where(.lead) blockquote>:is(h2, marp-h2),div#\:\$p > svg > foreignObject > section:where(.lead) blockquote>:is(h3, marp-h3),div#\:\$p > svg > foreignObject > section:where(.lead) blockquote>:is(h4, marp-h4),div#\:\$p > svg > foreignObject > section:where(.lead) blockquote>:is(h5, marp-h5),div#\:\$p > svg > foreignObject > section:where(.lead) blockquote>:is(h6, marp-h6),div#\:\$p > svg > foreignObject > section:where(.lead) blockquote>p{text-align:left}div#\:\$p > svg > foreignObject > section:where(.lead) ol>li>p,div#\:\$p > svg > foreignObject > section:where(.lead) ul>li>p{text-align:left}div#\:\$p > svg > foreignObject > section:where(.lead) table{margin-left:auto;margin-right:auto}div#\:\$p > svg > foreignObject > :where(section){container-type:size}div#\:\$p > svg > foreignObject > section img[data-marp-twemoji]{background:transparent;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;width:1em}div#\:\$p > svg > foreignObject > section{font-family:'Helvetica Neue', Arial, 'PingFang TC', 'Microsoft JhengHei', sans-serif;padding:40px;font-size:24px;line-height:1.55;background-color:#f5f5f5;color:#333}div#\:\$p > svg > foreignObject > section{--marpit-root-font-size: 24px}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1){color:#0b3c5d}div#\:\$p > svg > foreignObject > section :is(h2, marp-h2){color:#0b3c5d;font-size:1.3em;margin-top:0;margin-bottom:20px}div#\:\$p > svg > foreignObject > section :is(h3, marp-h3){color:#328cc1;font-size:1.05em;margin-top:10px;margin-bottom:8px}div#\:\$p > svg > foreignObject > section header{position:absolute;top:18px;right:40px!important;left:auto!important;text-align:right;font-size:14px;line-height:1.4!important;color:#64748b;margin:0;padding:0!important;height:auto!important;overflow:visible!important;z-index:10000}div#\:\$p > svg > foreignObject > section .header-nav-wrapper{position:relative;display:inline-block}div#\:\$p > svg > foreignObject > section .header-nav-title{display:inline-flex;align-items:center;cursor:pointer;padding:3px 8px;border-radius:6px;font-weight:500;color:#475569;transition:background 0.15s ease, color 0.15s ease}div#\:\$p > svg > foreignObject > section .header-nav-wrapper:hover .header-nav-title, div#\:\$p > svg > foreignObject > section .header-nav-wrapper.is-open .header-nav-title{background:#e0f2fe;color:#0369a1}div#\:\$p > svg > foreignObject > section .nav-caret{font-size:10px;margin-left:4px;opacity:0.6;transition:transform 0.2s ease;display:inline-block}div#\:\$p > svg > foreignObject > section section.nav-caret{--marpit-root-font-size: 10px}div#\:\$p > svg > foreignObject > section .header-nav-wrapper:hover .nav-caret, div#\:\$p > svg > foreignObject > section .header-nav-wrapper.is-open .nav-caret{transform:rotate(180deg);opacity:1}div#\:\$p > svg > foreignObject > section .nav-dropdown{display:none!important;position:absolute;right:0;top:100%;margin-top:4px;width:560px;max-height:480px;background:rgba(255, 255, 255, 0.98);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid #cbd5e1;border-radius:12px;box-shadow:0 16px 36px -4px rgba(15, 23, 42, 0.18), 0 6px 12px -2px rgba(15, 23, 42, 0.08);padding:12px 14px;text-align:left;z-index:99999;overflow-y:auto;box-sizing:border-box}div#\:\$p > svg > foreignObject > section .nav-dropdown::before{content:'';position:absolute;top:-14px;left:0;right:0;height:14px;background:transparent}div#\:\$p > svg > foreignObject > section .header-nav-wrapper:hover .nav-dropdown, div#\:\$p > svg > foreignObject > section .header-nav-wrapper.is-open .nav-dropdown{display:block!important;animation:navFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1)}@keyframes navFadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}div#\:\$p > svg > foreignObject > section .nav-dropdown-header{font-size:13px;font-weight:700;color:#1e293b;border-bottom:1px solid #e2e8f0;padding-bottom:8px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}div#\:\$p > svg > foreignObject > section section.nav-dropdown-header{--marpit-root-font-size: 13px}div#\:\$p > svg > foreignObject > section .nav-dropdown-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px}div#\:\$p > svg > foreignObject > section .nav-dropdown-item{display:flex;align-items:center;padding:6px 8px;border-radius:6px;text-decoration:none;color:#334155!important;font-size:12px;line-height:1.3;transition:all 0.12s ease;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}div#\:\$p > svg > foreignObject > section section.nav-dropdown-item{--marpit-root-font-size: 12px}div#\:\$p > svg > foreignObject > section .nav-dropdown-item:hover{background:#eff6ff!important;color:#1d4ed8!important;font-weight:600;transform:translateX(2px)}div#\:\$p > svg > foreignObject > section .nav-dropdown-item.active{background:#dbeafe!important;color:#1e40af!important;font-weight:700}div#\:\$p > svg > foreignObject > section .nav-dropdown-item .badge{display:inline-block;font-size:11px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;font-weight:600;color:#64748b;background:#f1f5f9;padding:1px 5px;border-radius:4px;margin-right:6px;flex-shrink:0}div#\:\$p > svg > foreignObject > section .nav-dropdown-item div#\:\$p > svg > foreignObject > section section.badge{--marpit-root-font-size: 11px}div#\:\$p > svg > foreignObject > section .nav-dropdown-item:hover .badge{background:#bfdbfe;color:#1e40af}div#\:\$p > svg > foreignObject > section .nav-dropdown-item.active .badge{background:#3b82f6;color:#ffffff}div#\:\$p > svg > foreignObject > section .nav-dropdown-item .item-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media print{div#\:\$p > svg > foreignObject > section .nav-dropdown, div#\:\$p > svg > foreignObject > section .nav-caret{display:none!important}div#\:\$p > svg > foreignObject > section header{z-index:auto!important}}div#\:\$p > svg > foreignObject > section footer, div#\:\$p > svg > foreignObject > section::after{position:absolute;bottom:20px;font-size:0.5em;line-height:1;height:auto;margin:0;padding:0}div#\:\$p > svg > foreignObject > section::after{--marpit-root-font-size: 0.5em}div#\:\$p > svg > foreignObject > section footer{left:40px;text-align:left;color:#777}div#\:\$p > svg > foreignObject > section::after{right:40px;text-align:right;color:#777}div#\:\$p > svg > foreignObject > section.lead{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}div#\:\$p > svg > foreignObject > section.lead :is(h1, marp-h1){margin:0 0 16px 0}div#\:\$p > svg > foreignObject > section.lead :is(h2, marp-h2){margin:0 0 16px 0}div#\:\$p > svg > foreignObject > section.lead blockquote{font-size:1.1em;line-height:1.5;margin-top:20px;padding:10px 24px;text-align:left;display:inline-block}div#\:\$p > svg > foreignObject > section.lead footer, div#\:\$p > svg > foreignObject > section.lead::after{display:none!important}div#\:\$p > svg > foreignObject > section .two-columns{display:grid;grid-template-columns:repeat(2, 1fr);gap:20px;align-items:stretch;width:100%;box-sizing:border-box}div#\:\$p > svg > foreignObject > section .three-columns{display:grid;grid-template-columns:repeat(3, 1fr);gap:16px;align-items:stretch;width:100%;box-sizing:border-box}div#\:\$p > svg > foreignObject > section .card{background:rgba(255, 255, 255, 0.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #cbd5e1;border-radius:12px;padding:16px 20px;box-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.05);box-sizing:border-box}div#\:\$p > svg > foreignObject > section .badge{display:inline-block;font-size:11px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;font-weight:600;color:#64748b;background:#f1f5f9;padding:1px 5px;border-radius:4px;margin-right:4px;vertical-align:middle}div#\:\$p > svg > foreignObject > section section.badge{--marpit-root-font-size: 11px}div#\:\$p > svg > foreignObject > section .btn-primary{background:#0284c7;color:#ffffff!important;padding:6px 14px;border-radius:6px;text-decoration:none!important;font-weight:600;font-size:14px;display:inline-block;transition:all 0.15s ease}div#\:\$p > svg > foreignObject > section section.btn-primary{--marpit-root-font-size: 14px}div#\:\$p > svg > foreignObject > section .btn-primary:hover{background:#0369a1}div#\:\$p > svg > foreignObject > section .btn-secondary{background:#f1f5f9;color:#334155!important;padding:6px 14px;border-radius:6px;text-decoration:none!important;font-weight:600;font-size:14px;border:1px solid #cbd5e1;display:inline-block;transition:all 0.15s ease}div#\:\$p > svg > foreignObject > section section.btn-secondary{--marpit-root-font-size: 14px}div#\:\$p > svg > foreignObject > section .btn-secondary:hover{background:#e2e8f0}div#\:\$p > svg > foreignObject > section:has(.quiz-layout){display:flex;flex-direction:column;justify-content:center;padding:24px 40px}div#\:\$p > svg > foreignObject > section .quiz-layout{display:grid;grid-template-columns:1.15fr 0.85fr;grid-template-rows:auto auto 1fr;grid-template-areas:"meta meta" "qbox fb" "grid fb";gap:12px 24px;max-width:1200px;width:100%;margin:0 auto;align-items:stretch}div#\:\$p > svg > foreignObject > section .quiz-meta{grid-area:meta;display:flex;justify-content:space-between;align-items:center;margin-bottom:0}div#\:\$p > svg > foreignObject > section .quiz-tag{display:inline-flex;align-items:center;gap:8px;background:#e0f2fe;color:#0369a1;font-size:14.5px;font-weight:700;padding:3px 14px;border-radius:999px;border:1px solid #bae6fd;letter-spacing:0.3px}div#\:\$p > svg > foreignObject > section section.quiz-tag{--marpit-root-font-size: 14.5px}div#\:\$p > svg > foreignObject > section .quiz-prog{font-size:14.5px;color:#475569;font-weight:600}div#\:\$p > svg > foreignObject > section section.quiz-prog{--marpit-root-font-size: 14.5px}div#\:\$p > svg > foreignObject > section .quiz-qbox{grid-area:qbox;background:#ffffff;border:1.5px solid #cbd5e1;border-left:6px solid #0284c7;border-radius:10px;padding:13px 18px;font-size:17.5px;font-weight:600;color:#0f172a;line-height:1.42;box-shadow:0 2px 5px rgba(0,0,0,0.03)}div#\:\$p > svg > foreignObject > section section.quiz-qbox{--marpit-root-font-size: 17.5px}div#\:\$p > svg > foreignObject > section .quiz-grid{grid-area:grid;display:flex;flex-direction:column;gap:8px}div#\:\$p > svg > foreignObject > section .quiz-choice{display:flex;align-items:flex-start;gap:12px;background:#ffffff;border:1.5px solid #e2e8f0;border-radius:8px;padding:9px 14px;cursor:pointer;font-size:15.5px;line-height:1.38;color:#334155;transition:all 0.16s ease-in-out;box-sizing:border-box;user-select:none;min-height:50px}div#\:\$p > svg > foreignObject > section section.quiz-choice{--marpit-root-font-size: 15.5px}div#\:\$p > svg > foreignObject > section .quiz-choice:hover{border-color:#0284c7;background:#f0f9ff;transform:translateX(4px);box-shadow:0 3px 10px rgba(2, 132, 199, 0.12)}div#\:\$p > svg > foreignObject > section .q-badge{width:25px;height:25px;border-radius:50%;background:#f1f5f9;color:#1e293b;font-weight:800;font-size:13px;display:inline-flex;justify-content:center;align-items:center;flex-shrink:0;margin-top:1px;border:1.5px solid #cbd5e1;transition:all 0.16s ease}div#\:\$p > svg > foreignObject > section section.q-badge{--marpit-root-font-size: 13px}div#\:\$p > svg > foreignObject > section .quiz-choice:hover .q-badge{background:#0284c7;color:#ffffff;border-color:#0284c7}div#\:\$p > svg > foreignObject > section .q-text{flex:1;font-weight:500}div#\:\$p > svg > foreignObject > section .quiz-choice.is-correct{background:#ecfdf5!important;border-color:#10b981!important;color:#065f46!important;font-weight:600;box-shadow:0 0 0 2px #10b981, 0 3px 8px rgba(16, 185, 129, 0.16)!important}div#\:\$p > svg > foreignObject > section .quiz-choice.is-correct .q-badge{background:#10b981!important;color:#ffffff!important;border-color:#10b981!important}div#\:\$p > svg > foreignObject > section .quiz-choice.is-wrong{background:#fef2f2!important;border-color:#ef4444!important;color:#991b1b!important;opacity:0.75;box-shadow:0 0 0 1.5px #ef4444, 0 3px 8px rgba(239, 68, 68, 0.12)!important;animation:quizShake 0.35s ease-in-out}div#\:\$p > svg > foreignObject > section .quiz-choice.is-wrong .q-badge{background:#ef4444!important;color:#ffffff!important;border-color:#ef4444!important}div#\:\$p > svg > foreignObject > section .quiz-choice.is-revealed{background:#f0fdf4!important;border:2px dashed #22c55e!important;color:#166534!important}div#\:\$p > svg > foreignObject > section .quiz-choice.is-revealed .q-badge{background:#22c55e!important;color:#ffffff!important;border-color:#22c55e!important}@keyframes quizShake{0%, 100%{transform:translateX(0)}20%, 60%{transform:translateX(-5px)}40%, 80%{transform:translateX(5px)}}@keyframes quizFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}div#\:\$p > svg > foreignObject > section .quiz-fb{grid-area:fb;display:flex;flex-direction:column;justify-content:flex-start;border-radius:10px;padding:16px 20px;background:#f8fafc;border:1.5px dashed #cbd5e1;font-size:15.5px;line-height:1.55;box-sizing:border-box;transition:all 0.2s ease}div#\:\$p > svg > foreignObject > section section.quiz-fb{--marpit-root-font-size: 15.5px}div#\:\$p > svg > foreignObject > section .quiz-fb.state-idle{border:1.5px dashed #cbd5e1;background:#f8fafc}div#\:\$p > svg > foreignObject > section .quiz-fb.state-idle .fb-head{display:none!important}div#\:\$p > svg > foreignObject > section .quiz-fb.state-idle .fb-body{display:none!important}div#\:\$p > svg > foreignObject > section .quiz-fb.state-wrong{background:#fef2f2;border:1.5px solid #fca5a5}div#\:\$p > svg > foreignObject > section .quiz-fb.state-wrong .fb-body{display:none}div#\:\$p > svg > foreignObject > section .quiz-fb.state-correct{background:#f0fdf4;border:1.5px solid #86efac}div#\:\$p > svg > foreignObject > section .quiz-fb.state-correct .fb-body{display:block!important;animation:quizFadeIn 0.25s ease-out}div#\:\$p > svg > foreignObject > section .fb-head{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:16px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.06)}div#\:\$p > svg > foreignObject > section section.fb-head{--marpit-root-font-size: 16px}div#\:\$p > svg > foreignObject > section .fb-body{font-size:14.8px;color:#334155;line-height:1.55;flex:1}div#\:\$p > svg > foreignObject > section section.fb-body{--marpit-root-font-size: 14.8px}div#\:\$p > svg > foreignObject > section .fb-guide{font-size:14.8px;color:#64748b;line-height:1.55}div#\:\$p > svg > foreignObject > section section.fb-guide{--marpit-root-font-size: 14.8px}div#\:\$p > svg > foreignObject > section .quiz-fb.state-correct .fb-guide{display:none!important}div#\:\$p > svg > foreignObject > section .btn-retry, div#\:\$p > svg > foreignObject > section .btn-nav-action{font-size:13px;font-weight:700;padding:3px 12px;border-radius:5px;border:1px solid #cbd5e1;background:#ffffff;color:#334155;cursor:pointer;transition:all 0.15s ease}div#\:\$p > svg > foreignObject > section section.btn-retry, div#\:\$p > svg > foreignObject > section section.btn-nav-action{--marpit-root-font-size: 13px}div#\:\$p > svg > foreignObject > section .btn-retry:hover, div#\:\$p > svg > foreignObject > section .btn-nav-action:hover{background:#f1f5f9;border-color:#94a3b8}div#\:\$p > svg > foreignObject > section .quiz-nav-hub{display:flex;flex-direction:column;gap:8px;width:600px;max-width:90vw}div#\:\$p > svg > foreignObject > section .quiz-ch-tabs{display:flex;gap:6px;border-bottom:1px solid #e2e8f0;padding-bottom:6px}div#\:\$p > svg > foreignObject > section .quiz-ch-tab{font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;cursor:pointer;background:#f1f5f9;color:#475569;border:1px solid #cbd5e1;transition:all 0.15s ease}div#\:\$p > svg > foreignObject > section section.quiz-ch-tab{--marpit-root-font-size: 12px}div#\:\$p > svg > foreignObject > section .quiz-ch-tab.active, div#\:\$p > svg > foreignObject > section .quiz-ch-tab:hover{background:#0284c7;color:#ffffff;border-color:#0284c7}div#\:\$p > svg > foreignObject > section .quiz-chips-grid{display:grid;grid-template-columns:repeat(7, 1fr);gap:6px}div#\:\$p > svg > foreignObject > section .quiz-q-chip{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;padding:5px 4px;border-radius:6px;background:#ffffff;border:1px solid #cbd5e1;text-decoration:none;color:#1e293b;font-size:11px;font-weight:700;transition:all 0.15s ease}div#\:\$p > svg > foreignObject > section section.quiz-q-chip{--marpit-root-font-size: 11px}div#\:\$p > svg > foreignObject > section .quiz-q-chip:hover{border-color:#0284c7;background:#f0f9ff;color:#0284c7;transform:scale(1.05)}div#\:\$p > svg > foreignObject > section .quiz-q-chip.current{background:#0284c7!important;color:#ffffff!important;border-color:#0284c7!important;box-shadow:0 2px 6px rgba(2, 132, 199, 0.3)}div#\:\$p > svg > foreignObject > section .quiz-q-chip .chip-sub{font-size:9px;font-weight:500;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60px}div#\:\$p > svg > foreignObject > section .quiz-q-chip div#\:\$p > svg > foreignObject > section section.chip-sub{--marpit-root-font-size: 9px}div#\:\$p > svg > foreignObject > section .quiz-q-chip.current .chip-sub{color:#e0f2fe}@media print{div#\:\$p > svg > foreignObject > section:has(.quiz-layout){justify-content:center!important;padding:24px 40px!important}div#\:\$p > svg > foreignObject > section .quiz-fb{display:flex!important;border:1.5px solid #86efac!important;background:#f0fdf4!important}div#\:\$p > svg > foreignObject > section .quiz-fb .fb-head{display:flex!important}div#\:\$p > svg > foreignObject > section .quiz-fb .fb-body{display:block!important}div#\:\$p > svg > foreignObject > section .fb-guide{display:none!important}div#\:\$p > svg > foreignObject > section .btn-retry{display:none!important}div#\:\$p > svg > foreignObject > section .quiz-choice[data-correct="true"]{border:2px solid #10b981!important;background:#f0fdf4!important}div#\:\$p > svg > foreignObject > section .quiz-choice[data-correct="true"] .q-badge{background:#10b981!important;color:#ffffff!important}}div#\:\$p > svg > foreignObject > section{width:1280px;height:720px}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"]{columns:initial!important;display:block!important;padding:0!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"]::before, div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"]::after, div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="content"]::before, div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="content"]::after{display:none!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction="vertical"]{flex-direction:column}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split] > div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split, 50%)}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split="right"] > div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure > figcaption{position:absolute;border:0;clip:rect(0, 0, 0, 0);height:1px;margin:-1px;overflow:hidden;padding:0;white-space:nowrap;width:1px}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="content"], div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="pseudo"]{background:transparent!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="pseudo"], div#\:\$p > svg[data-marpit-svg] > foreignObject[data-marpit-advanced-background="pseudo"]{pointer-events:none!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background-split]{width:100%;height:100%}
+</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="overview" tabindex="-1" title="Toggle overview view (o)">Toggle overview view</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id=":$p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-class="lead" data-theme="quiz-theme" lang="C" class="lead" data-marpit-pagination="1" style="--paginate:true;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--class:lead;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<h1 id="%E5%85%A8%E8%AA%B2%E7%A8%8B%E6%98%93%E7%94%A8%E6%80%A7%E8%88%87%E4%BA%92%E5%8B%95%E8%A8%AD%E8%A8%88%E5%AF%A6%E6%88%B0%E9%A1%8C%E5%BA%AB">全課程易用性與互動設計實戰題庫</h1>
+<h2 id="24-%E9%A1%8C%E5%8D%B3%E6%99%82%E4%BA%92%E5%8B%95%E6%B8%AC%E9%A9%97%E4%BD%9C%E7%AD%94%E5%9B%9E%E9%A5%8B%E8%88%87%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90">24 題即時互動測驗、作答回饋與深度解析</h2>
+<p><strong>薛念林 教授</strong><br />
+逢甲大學 資訊工程學系</p>
+<p><em>涵蓋 UCD 導論、尼爾森 10 大原則、AI for UX、UX for AI 與 Tidwell 設計模式</em></p>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-header="本題庫大綱 (Outline)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="2" style="--paginate:true;--header:本題庫大綱 (Outline);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>本題庫大綱 (Outline)</header>
+
+<h2 id="%E6%9C%AC%E9%A1%8C%E5%BA%AB%E5%A4%A7%E7%B6%B1-outline">本題庫大綱 (Outline)</h2>
+<div class="two-columns">
+<div class="card">
+<h3 id="%F0%9F%93%98-%E5%89%8D%E5%8D%8A%E9%83%A8%E5%9F%BA%E7%A4%8E%E6%A6%82%E5%BF%B5%E8%88%87%E5%B0%BC%E7%88%BE%E6%A3%AE%E5%8E%9F%E5%89%87"><img class="emoji" draggable="false" alt="📘" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4d8.svg" data-marp-twemoji=""/> 前半部：基礎概念與尼爾森原則</h3>
+<ul>
+<li><strong><a href="#4">Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)</a></strong>
+<ul>
+<li>UX vs UI 界線、UCD 核心心法、雙鑽石設計模型</li>
+</ul>
+</li>
+<li><strong><a href="#8">Part 2: 尼爾森 10 大原則與 AI-UX 測驗 (Q04 ~ Q13)</a></strong>
+<ul>
+<li>NS01 狀態能見度 ~ NS09 錯誤復原全情境題</li>
+<li>1-10-100 品質成本法則與 RTCF 提示框架</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="card">
+<h3 id="%F0%9F%9A%80-%E5%BE%8C%E5%8D%8A%E9%83%A8ai-%E9%AB%94%E9%A9%97%E8%88%87%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F"><img class="emoji" draggable="false" alt="🚀" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f680.svg" data-marp-twemoji=""/> 後半部：AI 體驗與設計模式</h3>
+<ul>
+<li><strong><a href="#19">Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)</a></strong>
+<ul>
+<li>上下文孤島、Planning Mode、閉環驗證、信心度與優雅降級</li>
+</ul>
+</li>
+<li><strong><a href="#25">Part 4: Tidwell 介面設計模式精選 (Q19 ~ Q24)</a></strong>
+<ul>
+<li>Wizard 精靈、Deep Linking、Accordion、Breadcrumbs、Card List 等實戰題</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-header="Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-class="part-cover" data-theme="quiz-theme" lang="C" class="part-cover" data-marpit-pagination="3" style="--paginate:true;--header:Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--class:part-cover;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)</header>
+
+<h1 id="part-1-%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97%E5%B0%8E%E8%AB%96%E5%AF%A6%E6%88%B0%E6%B8%AC%E9%A9%97-q01--q03">Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)</h1>
+<h2 id="%E5%BE%9E-ux-%E5%9F%BA%E7%A4%8E%E5%BF%83%E6%B3%95%E5%88%B0%E4%BD%BF%E7%94%A8%E8%80%85%E4%B8%AD%E5%BF%83%E8%A8%AD%E8%A8%88-ucd-%E9%9B%99%E9%91%BD%E7%9F%B3%E6%9E%B6%E6%A7%8B">從 UX 基礎心法到使用者中心設計 (UCD) 雙鑽石架構</h2>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-header="Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="4" style="--paginate:true;--header:Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)</header>
+
+<h2 id="%E2%9D%93-part-1--%E7%AC%AC-01-%E9%A1%8Cux-%E8%88%87-ui-%E7%9A%84%E6%A0%B8%E5%BF%83%E7%95%8C%E7%B7%9A"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 1 · 第 01 題：【UX 與 UI 的核心界線】</h2>
+<p>某新創團隊在開發一款智慧健康管理 App。前端工程師認為只要套用最時髦的 UI 視覺元件庫、漸層色與微動畫，就能保證使用者擁有極佳的產品體驗。 依據本課程對 UX (User Experience) 與 UI (User Interface) 的本質定義，下列哪一項敘述最為正確？</p>
+<ul>
+<li>(A) UI 設計優美即等於卓越的 UX，兩者本質完全相同</li>
+<li>(B) UI 聚焦於外觀視覺與互動觸點，UX 則涵蓋使用者在使用全過程中的整體感受、易用性與價值實現</li>
+<li>(C) UX 僅屬於後端工程師與產品經理的責任，UI 設計師不必涉入</li>
+<li>(D) UX 只能透過大量的 A/B 測試來定義，無法在前期進行使用者研究</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+UI (User Interface) 是介面外觀、色彩、排版與按鈕樣式等具體視覺與互動觸點；而 UX (User Experience) 則是使用者在與系統互動全程所感受到的整體滿意度、認知摩擦與問題解決程度。漂亮的 UI 若流程繁瑣或無法解決使用者問題，仍是糟糕的 UX。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-header="Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="5" style="--paginate:true;--header:Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)</header>
+
+<h2 id="%E2%9D%93-part-1--%E7%AC%AC-02-%E9%A1%8C%E4%BD%BF%E7%94%A8%E8%80%85%E4%B8%AD%E5%BF%83%E8%A8%AD%E8%A8%88-ucd-%E6%A0%B8%E5%BF%83%E5%BF%83%E6%B3%95"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 1 · 第 02 題：【使用者中心設計 (UCD) 核心心法】</h2>
+<p>傳統軟體工程中常發生的「溝通代溝」，多半源於工程團隊直接依據數十頁文字規格書 (PRD) 埋頭開發，數月後交付時才發現與客戶期望大相逕庭，修改成本極高。 使用者中心設計 (User-Centered Design, UCD) 主張的核心做法為何？</p>
+<ul>
+<li>(A) 嚴格禁止客戶在交付驗收前查看任何開發中的半成品與原型</li>
+<li>(B) 盡可能在專案前期透過訪談、雛形 (Prototypes) 與可用性測試讓真實使用者參與，並進行快速迭代</li>
+<li>(C) 全權交由資深軟體架構師憑工程直覺定義使用者的最佳操作流程</li>
+<li>(D) 將所有心力放在後端資料庫的正規化，介面待上線後再交給外包修改</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+UCD 強調「以人為本」，主張在軟體生命週期早期就必須引進真實使用者的回饋，透過低保真 (Low-fi) 與高保真 (High-fi) 雛形走查驗證需求，早期發現問題，避免在後期付出高昂的修改成本。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-header="Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="6" style="--paginate:true;--header:Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 1: 使用者體驗導論實戰測驗 (Q01 ~ Q03)</header>
+
+<h2 id="%E2%9D%93-part-1--%E7%AC%AC-03-%E9%A1%8C%E9%9B%99%E9%91%BD%E7%9F%B3%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%9E%8B-double-diamond"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 1 · 第 03 題：【雙鑽石設計模型 (Double Diamond)】</h2>
+<p>英國設計委員會 (Design Council) 提出的雙鑽石設計模型 (Double Diamond) 是 UX 與軟體工程創新極為推崇的架構，強調「發散 (Diverge)」與「收斂 (Converge)」的交替運用。 請問雙鑽石模型的四個核心階段依序為何？</p>
+<ul>
+<li>(A) 發想 (Discover) ➔ 定義 (Define) ➔ 開發 (Develop) ➔ 交付 (Deliver)</li>
+<li>(B) 編碼 (Code) ➔ 測試 (Test) ➔ 部署 (Deploy) ➔ 監控 (Monitor)</li>
+<li>(C) 需求 (PRD) ➔ 繪製 (Figma) ➔ 切版 (HTML) ➔ 上線 (Launch)</li>
+<li>(D) 訪談 (Interview) ➔ 繪圖 (Sketch) ➔ 會議 (Meeting) ➔ 結案 (Close)</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(A)</strong><br />
+雙鑽石由兩個鑽石組成：第一個鑽石「做對的事情」(Discover 發散探索問題領域 ➔ Define 收斂定義真實痛點)；第二個鑽石「把事情做好」(Develop 發散探索解決方案 ➔ Deliver 收斂交付測試驗證)。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-header="Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-class="part-cover" data-theme="quiz-theme" lang="C" class="part-cover" data-marpit-pagination="7" style="--paginate:true;--header:Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--class:part-cover;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</header>
+
+<h1 id="part-2-%E5%B0%BC%E7%88%BE%E6%A3%AE-10-%E5%A4%A7%E5%8E%9F%E5%89%87%E8%88%87-ai-%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B-q04--q13">Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</h1>
+<h2 id="%E5%95%9F%E7%99%BC%E5%BC%8F%E8%A9%95%E4%BC%B0%E5%8D%81%E6%BA%96%E5%89%87ai-%E4%BB%8B%E9%9D%A2%E9%98%B2%E5%91%86%E8%88%87%E7%B4%84%E6%9D%9F%E5%BC%8F%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B">啟發式評估十準則、AI 介面防呆與約束式提示工程</h2>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-header="Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="8" style="--paginate:true;--header:Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</header>
+
+<h2 id="%E2%9D%93-part-2--%E7%AC%AC-04-%E9%A1%8Cns01-%E7%B3%BB%E7%B5%B1%E7%8B%80%E6%85%8B%E8%83%BD%E8%A6%8B%E5%BA%A6-visibility-of-system-status"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 2 · 第 04 題：【NS01 系統狀態能見度 (Visibility of System Status)】</h2>
+<p>某雲端硬碟在使用者上傳 100 張高清相片時，介面不僅顯示「已完成 42/100 張 (42%)」，還以微步進進度條即時提示預估剩餘時間與上傳速率，而非只有靜態的等待圖示。 請問這項設計最直接符合哪一項尼爾森原則？</p>
+<ul>
+<li>(A) NS01 系統狀態能見度 (Visibility of System Status)</li>
+<li>(B) NS02 真實世界與系統對應 (Match Between System and the Real World)</li>
+<li>(C) NS04 一致性與標準 (Consistency and Standards)</li>
+<li>(D) NS08 美學與簡約設計 (Aesthetic and Minimalist Design)</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(A)</strong><br />
+NS01 要求系統應在合理時間內，透過適當的反饋（如進度條、完成百分比、剩餘時間），隨時讓使用者清楚掌握目前狀態，消除等待時「是否當機或斷線」的未知焦慮。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-header="Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="9" style="--paginate:true;--header:Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</header>
+
+<h2 id="%E2%9D%93-part-2--%E7%AC%AC-05-%E9%A1%8Cns02-%E7%9C%9F%E5%AF%A6%E4%B8%96%E7%95%8C%E8%88%87%E7%B3%BB%E7%B5%B1%E5%B0%8D%E6%87%89-match-between-system-and-real-world"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 2 · 第 05 題：【NS02 真實世界與系統對應 (Match Between System and Real World)】</h2>
+<p>電子書閱讀 App 在翻頁時模擬紙本書籍的翻頁動畫與紙張摩擦音效，並將收藏書籍的分類介面設計成木質書架，刪除檔案則使用「丟入桌面垃圾桶」的動作。 請問這項設計最能體現哪一項原則？</p>
+<ul>
+<li>(A) NS01 系統狀態能見度 (Visibility of System Status)</li>
+<li>(B) NS02 真實世界與系統對應 (Match Between System and the Real World)</li>
+<li>(C) NS06 易於識別而非記憶 (Recognition Rather than Recall)</li>
+<li>(D) NS07 彈性與使用效率 (Flexibility and Efficiency of Use)</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+NS02 要求系統說使用者的日常語言，使用通俗熟悉詞彙，並遵循真實世界的物理習慣與邏輯隱喻（如木質書架、翻頁效果與實體垃圾桶），降低使用者的心智轉譯負擔。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-header="Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="10" style="--paginate:true;--header:Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</header>
+
+<h2 id="%E2%9D%93-part-2--%E7%AC%AC-06-%E9%A1%8Cns03-%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%A7%E5%88%B6%E8%88%87%E8%87%AA%E7%94%B1-user-control-and-freedom"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 2 · 第 06 題：【NS03 使用者控制與自由 (User Control and Freedom)】</h2>
+<p>使用者在郵件軟體中誤將 50 封重要信件整批選取並點擊「刪除」。系統立即在底部浮現橫幅：「已將 50 封郵件移至垃圾桶 [復原 (Undo)]」，並持續顯示 10 秒供隨時點擊復原。 請問這項設計符合哪一項原則？</p>
+<ul>
+<li>(A) NS03 使用者控制與自由 (User Control and Freedom)</li>
+<li>(B) NS05 錯誤預防 (Error Prevention)</li>
+<li>(C) NS08 美學與簡約設計 (Aesthetic and Minimalist Design)</li>
+<li>(D) NS10 說明文件與輔助 (Help and Documentation)</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(A)</strong><br />
+NS03 指出使用者常會因誤觸功能而出錯，系統必須提供清晰標記的「緊急出口」（Emergency Exit）與支援 Undo/Redo 的反悔機制，讓使用者能自主掌控全局而不致恐慌。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-header="Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="11" style="--paginate:true;--header:Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</header>
+
+<h2 id="%E2%9D%93-part-2--%E7%AC%AC-07-%E9%A1%8Cns04-%E4%B8%80%E8%87%B4%E6%80%A7%E8%88%87%E6%A8%99%E6%BA%96-consistency-and-standards"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 2 · 第 07 題：【NS04 一致性與標準 (Consistency and Standards)】</h2>
+<p>某跨平台系統在 iOS App 遵循蘋果 HIG 將主導覽列置於底部，在桌面 Web 遵循頂部 Header 導航；全站無論在哪個頁面，「加入購物車」一律是深橘色按鈕、「立即結帳」一律是綠色按鈕，危險操作一律是紅色文字。 請問這項設計主要符合哪一項原則？</p>
+<ul>
+<li>(A) NS03 使用者控制與自由 (User Control and Freedom)</li>
+<li>(B) NS04 一致性與標準 (Consistency and Standards)</li>
+<li>(C) NS06 易於識別而非記憶 (Recognition Rather than Recall)</li>
+<li>(D) NS09 協助辨識與復原錯誤 (Help Users Recover from Errors)</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+NS04 要求系統遵循平台的既定慣例（如 iOS 與 Web 的標準）與全站統一的視覺規範（Design System）。相同的文字、色彩與按鈕在不同頁面具備一致意義，能有效降低使用者的學習門檻。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-header="Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="12" style="--paginate:true;--header:Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</header>
+
+<h2 id="%E2%9D%93-part-2--%E7%AC%AC-08-%E9%A1%8Cns05-%E9%8C%AF%E8%AA%A4%E9%A0%90%E9%98%B2-error-prevention"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 2 · 第 08 題：【NS05 錯誤預防 (Error Prevention)】</h2>
+<p>在訂房系統的表單中，當使用者選擇「入住日期：2026/10/15」後，系統會自動將「退房日期」選擇器中早於 10/15 的所有日期設為灰色反灰且不可點選狀態。 請問這項設計的核心價值為何？</p>
+<ul>
+<li>(A) 屬於 NS05 錯誤預防，防範不合理的輸入與操作於未然</li>
+<li>(B) 屬於 NS09 錯誤復原，在使用者輸入錯誤後跳出警告視窗</li>
+<li>(C) 屬於 NS10 說明文件，教導使用者如何正確看懂日曆</li>
+<li>(D) 屬於 NS01 狀態能見度，告知使用者目前資料庫的空房數量</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(A)</strong><br />
+NS05 主張「預防勝於治療」。比起在使用者送出非法日期後拋出錯誤對話框，更好的設計是在輸入時直接透過介面約束 (Constraints) 將錯誤發生的機會消除於萌芽階段。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-header="Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="13" style="--paginate:true;--header:Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</header>
+
+<h2 id="%E2%9D%93-part-2--%E7%AC%AC-09-%E9%A1%8Cns06-%E6%98%93%E6%96%BC%E8%AD%98%E5%88%A5%E8%80%8C%E9%9D%9E%E8%A8%98%E6%86%B6-recognition-rather-than-recall"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 2 · 第 09 題：【NS06 易於識別而非記憶 (Recognition Rather than Recall)】</h2>
+<p>在電商網站搜尋時，輸入框下方自動列出使用者「最近搜尋過的關鍵字」與「最近瀏覽過的 5 件商品」，且在比較多款筆電時提供並排規格比較表。 請問這項設計主要符合哪一項原則？</p>
+<ul>
+<li>(A) NS02 真實世界與系統對應</li>
+<li>(B) NS06 易於識別而非記憶 (Recognition Rather than Recall)</li>
+<li>(C) NS07 彈性與使用效率</li>
+<li>(D) NS04 一致性與標準</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+人類大腦擅長辨識 (Recognition) 而不擅長憑空回憶 (Recall)。將選項、動作與歷史紀錄直接呈現在眼前，使用者「看見就能點選」，可大幅減輕記憶負擔。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-header="Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="14" style="--paginate:true;--header:Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</header>
+
+<h2 id="%E2%9D%93-part-2--%E7%AC%AC-10-%E9%A1%8Cns07-%E5%BD%88%E6%80%A7%E8%88%87%E4%BD%BF%E7%94%A8%E6%95%88%E7%8E%87-flexibility-and-efficiency-of-use"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 2 · 第 10 題：【NS07 彈性與使用效率 (Flexibility and Efficiency of Use)】</h2>
+<p>圖形設計工具為新手提供視覺化圖示工具列與步驟指引精靈，同時為資深專家提供大量的單鍵快捷鍵（如 V 選擇、B 筆刷、Cmd+J 複製圖層）與自訂批次巨集功能。 請問這項設計符合哪一項原則？</p>
+<ul>
+<li>(A) NS03 使用者控制與自由</li>
+<li>(B) NS07 彈性與使用效率 (Flexibility and Efficiency of Use)</li>
+<li>(C) NS08 美學與簡約設計</li>
+<li>(D) NS05 錯誤預防</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+NS07 要求系統兼顧新手與專家的不同步調。新手可以循序漸進點選按鈕，而高頻資深專家則能透過快捷加速器 (Accelerators) 實現極致的操作效率。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-header="Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="15" style="--paginate:true;--header:Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</header>
+
+<h2 id="%E2%9D%93-part-2--%E7%AC%AC-11-%E9%A1%8Cns08-%E7%BE%8E%E5%AD%B8%E8%88%87%E7%B0%A1%E7%B4%84%E8%A8%AD%E8%A8%88-aesthetic-and-minimalist-design"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 2 · 第 11 題：【NS08 美學與簡約設計 (Aesthetic and Minimalist Design)】</h2>
+<p>某資訊看板將數百條未分類的各類數據無差別全部堆砌在首頁，充斥五顏六色的圖表與閃爍字體，使用者難以找到重點。依據 NS08 原則，最佳改善方案為何？ 下列哪一項改善策略最符合 NS08 美學與簡約設計？</p>
+<ul>
+<li>(A) 在頁面頂部加上一個搜尋框即可，首頁內容保持不變</li>
+<li>(B) 建立明確的資訊層級，預設僅展示 3 個核心指標卡片與精簡摘要，其餘細節提供「展開查看完整推演」</li>
+<li>(C) 增加更多跳轉連結與側邊欄廣告以塞滿留白空間</li>
+<li>(D) 將字體全部改為超小字級以塞下更多圖表</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+NS08 指出介面不應包含無關或極少需要的資訊。每一個額外的雜訊都會與真正重要的資訊競爭注意力。適當留白、預設折疊與清楚的層級收納是簡約美學的核心。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-header="Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="16" style="--paginate:true;--header:Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</header>
+
+<h2 id="%E2%9D%93-part-2--%E7%AC%AC-12-%E9%A1%8Cns09-%E5%8D%94%E5%8A%A9%E8%BE%A8%E8%AD%98%E8%A8%BA%E6%96%B7%E8%88%87%E5%BE%9E%E9%8C%AF%E8%AA%A4%E4%B8%AD%E5%BE%A9%E5%8E%9F"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 2 · 第 12 題：【NS09 協助辨識、診斷與從錯誤中復原】</h2>
+<p>使用者在註冊網站填寫密碼時若長度不足，下列哪一種介面反饋方式最符合 NS09 的優良設計實踐？ 下列哪一種錯誤反饋方式最符合 NS09 原則？</p>
+<ul>
+<li>(A) 彈出警示對話框顯示：Error Code: 0x8004005 Validation Failure</li>
+<li>(B) 僅在輸入框周圍亮紅框，但不給予任何文字說明</li>
+<li>(C) 在密碼框下方即時以紅字清晰提示：「密碼長度不足，至少需包含 8 個字元與 1 個數字」，並標出尚缺條件</li>
+<li>(D) 靜默重設整個表單，強迫使用者從姓名重新填寫</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(C)</strong><br />
+NS09 要求錯誤訊息必須以清楚淺白的日常語言呈現，嚴禁直接拋出底層錯誤碼；更重要的是必須精確指出問題所在，並建設性地給予復原指引，引導使用者完成正確操作。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-header="Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="17" style="--paginate:true;--header:Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 2: 尼爾森 10 大原則與 AI 提示工程 (Q04 ~ Q13)</header>
+
+<h2 id="%E2%9D%93-part-2--%E7%AC%AC-13-%E9%A1%8C1-10-100-%E6%B3%95%E5%89%87%E8%88%87-rtcf-%E6%8F%90%E7%A4%BA%E6%A1%86%E6%9E%B6"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 2 · 第 13 題：【1-10-100 法則與 RTCF 提示框架】</h2>
+<p>軟體工程中的「1-10-100 品質成本法則」強調前期預防的重要性。而在運用 AI 生成符合 UX 規範的組件時，RTCF 框架能確保輸出品質。 關於 1-10-100 法則與 RTCF 提示詞架構，下列哪一項敘述正確？</p>
+<ul>
+<li>(A) 1-10-100 代表開發速度需提升 100 倍；RTCF 代表 Run, Test, Code, Fix</li>
+<li>(B) 1-10-100 指在需求/UX 階段修正花 1 元，後期修改成本呈指數劇增；RTCF 為 Role（角色）、Task（任務）、Constraint（約束）、Few-shots（少樣本）</li>
+<li>(C) 1-10-100 指預算分配比例；RTCF 指 React, TypeScript, CSS, Figma</li>
+<li>(D) 1-10-100 指 A/B 測試人數；RTCF 代表 Return, Throw, Catch, Finally</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+1-10-100 法則證明了前期 UX 確認的極高價值（前期改花 1 元，上線後改花 100 元）；而在使用 AI 協同設計 UI 時，透過 RTCF 框架定義明確的約束 (Constraint) 能確保 AI 生成程式碼符合可用性標準。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-header="Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-class="part-cover" data-theme="quiz-theme" lang="C" class="part-cover" data-marpit-pagination="18" style="--paginate:true;--header:Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--class:part-cover;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)</header>
+
+<h1 id="part-3-ux-for-ai-%E9%AB%94%E9%A9%97%E8%A8%AD%E8%A8%88%E8%88%87-agent-%E8%BD%89%E7%A7%BB-q14--q18">Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)</h1>
+<h2 id="%E5%BE%9E%E9%BB%91%E7%9B%92%E5%AD%90%E8%B5%B0%E5%90%91%E9%80%8F%E6%98%8E%E4%BA%BA%E6%A9%9F%E5%8D%94%E5%90%8Cagentic-%E9%96%89%E7%92%B0%E8%88%87%E5%84%AA%E9%9B%85%E9%99%8D%E7%B4%9A">從黑盒子走向透明人機協同，Agentic 閉環與優雅降級</h2>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-header="Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="19" style="--paginate:true;--header:Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)</header>
+
+<h2 id="%E2%9D%93-part-3--%E7%AC%AC-14-%E9%A1%8C%E5%82%B3%E7%B5%B1%E5%B0%8D%E8%A9%B1%E5%9E%8B-prompting-%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E5%AD%A4%E5%B3%B6"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 3 · 第 14 題：【傳統對話型 Prompting 的上下文孤島】</h2>
+<p>在複雜軟體開發中，傳統「在網頁對話框 (Chat UI) 反覆複製貼上 Prompt」的協同模式，常讓開發者感到效率低落且繁瑣。 請問這最能說明傳統對話型 Prompting 的哪一項核心局限？</p>
+<ul>
+<li>(A) 大型語言模型的推理速度過慢</li>
+<li>(B) 上下文孤島 (Context Silo) 與缺乏全專案視野，AI 無法主動調用工具驗證成果</li>
+<li>(C) 模型欠缺基本的程式碼語法檢查能力</li>
+<li>(D) 對話介面無法輸出超過 50 行的文字</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+傳統 Chat Prompting 的 AI 被困在單一對話框中，無法直接感知整個專案的目錄架構、相依性與執行環境，且無法自主驗證修改是否引發編譯報錯，迫使工程師成為人工搬運工。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-header="Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="20" style="--paginate:true;--header:Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)</header>
+
+<h2 id="%E2%9D%93-part-3--%E7%AC%AC-15-%E9%A1%8Cagent-%E8%A6%8F%E5%8A%83%E5%84%AA%E5%85%88%E5%8E%9F%E5%89%87-planning-mode"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 3 · 第 15 題：【Agent 規劃優先原則 (Planning Mode)】</h2>
+<p>Google Antigravity IDE 等現代 Agentic AI 開發環境在處理大型任務時，提倡「Planning Mode（規劃審查模式）」。 請問 Planning Mode 的核心人機協同優勢為何？</p>
+<ul>
+<li>(A) 讓 AI 在完全不通知使用者的情況下直接覆寫所有程式碼</li>
+<li>(B) 在動手修改前，先梳理架構脈絡並生成多步驟實施藍圖供工程師審查審核，確保方向正確後再執行</li>
+<li>(C) 強制將所有後端邏輯轉寫為 Python 腳本</li>
+<li>(D) 限制 AI 每次只能修改一行程式碼以節省 Token</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+Planning Mode 體現了以人為本的人機協同：在進入破壞性執行前，先產出清晰的步驟藍圖與風險評估，讓人類具備充分的知情權與控制權（Approve/Reject/Edit），避免失控修改。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-header="Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="21" style="--paginate:true;--header:Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)</header>
+
+<h2 id="%E2%9D%93-part-3--%E7%AC%AC-16-%E9%A1%8C%E9%96%89%E7%92%B0%E9%A9%97%E8%AD%89%E8%88%87%E8%87%AA%E4%B8%BB%E8%B5%B0%E6%9F%A5-feedback-loop"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 3 · 第 16 題：【閉環驗證與自主走查 (Feedback Loop)】</h2>
+<p>Agentic 軟體工程強調 AI 的自主執行能力與自我修正機制。 下列哪一項行為最能說明 Agentic 模式的「閉環驗證 (Feedback Loop)」？</p>
+<ul>
+<li>(A) AI 生成程式碼後直接向使用者宣布任務完成，不進行任何測試</li>
+<li>(B) AI 生成修改後，自主調用終端機執行編譯與單元測試，若遇錯誤則讀取堆疊日誌自我修正，直至測試全數通過</li>
+<li>(C) AI 隨機挑選檔案刪除以測試系統的容錯能力</li>
+<li>(D) 遇到錯誤時直接終止任務並要求使用者重新開新對話</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+閉環驗證是 Agent 區別於傳統單向輸出的關鍵。 Agent 具備工具調用能力（Tool Use），能在沙盒中自動執行編譯指令或單元測試，遇到錯誤自主修復，形成「生成 ➔ 驗證 ➔ 診斷 ➔ 修正」的自治閉環。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-header="Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="22" style="--paginate:true;--header:Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)</header>
+
+<h2 id="%E2%9D%93-part-3--%E7%AC%AC-17-%E9%A1%8Cai-%E4%BF%A1%E5%BF%83%E5%BA%A6-confidence-score-%E8%88%87%E9%98%B2%E5%91%86%E4%BF%A1%E4%BB%BB"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 3 · 第 17 題：【AI 信心度 (Confidence Score) 與防呆信任】</h2>
+<p>在醫療輔助診斷、財務風控或法律諮詢等高風險 AI 系統中，介面設計應如何處理 AI 的分析結果，以防範使用者「過度信任 (Over-reliance)」？ 下列哪一項設計最符合 UX for AI 的防呆信任架構？</p>
+<ul>
+<li>(A) 一律以 100% 絕對篤定的語氣宣稱診斷無誤，以建立使用者無條件的信任</li>
+<li>(B) 呈現結果時附帶信心度指標（如：信心度 72%）、備選方案與推論依據，並提醒使用者進行專業交叉核對</li>
+<li>(C) 隱藏所有推論過程，只顯示最後的處方籤</li>
+<li>(D) 強制使用者在 3 秒內接受 AI 的建議否則鎖定系統</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+過度信任是 AI 互動設計的重大隱憂。透過誠實揭露信心水準、列出替代解釋並提醒人類審查，能保持使用者批判性思維，避免因盲信 AI 幻覺而釀成重大事故。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-header="Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="23" style="--paginate:true;--header:Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 3: UX for AI 體驗設計與 Agent 轉移 (Q14 ~ Q18)</header>
+
+<h2 id="%E2%9D%93-part-3--%E7%AC%AC-18-%E9%A1%8Cai-%E6%9C%8D%E5%8B%99%E7%95%B0%E5%B8%B8%E7%9A%84%E5%84%AA%E9%9B%85%E9%99%8D%E7%B4%9A-graceful-degradation"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 3 · 第 18 題：【AI 服務異常的優雅降級 (Graceful Degradation)】</h2>
+<p>當大型語言模型處理長文本發生網路連線超時 (Timeout) 或 API 額度過載時，介面應如何向使用者反饋？ 下列哪一種設計最符合 UX for AI 的優雅降級 (Graceful Degradation)？</p>
+<ul>
+<li>(A) 畫面直接崩潰變白，並在控制台拋出 HTTP 504 Gateway Timeout</li>
+<li>(B) 白話告知連線超時、自動暫存使用者已輸入的 Prompt 與上傳文件，並提供「一鍵重試」與「自動分段處理」建議按鈕</li>
+<li>(C) 彈出警示框責備使用者的網路環境不佳</li>
+<li>(D) 自動刪除所有對話紀錄以釋放記憶體</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+優雅降級在 AI 服務中至關重要。當底層 API 斷線或過載，系統應妥善保護使用者輸入的資料資產，並以建設性的行動選項協助復原，絕不可拋出未經包裝的底層狀態碼。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-header="Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-class="part-cover" data-theme="quiz-theme" lang="C" class="part-cover" data-marpit-pagination="24" style="--paginate:true;--header:Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--class:part-cover;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)</header>
+
+<h1 id="part-4-tidwell-%E4%BB%8B%E9%9D%A2%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F%E7%B2%BE%E9%81%B8%E6%B8%AC%E9%A9%97-q19--q24">Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)</h1>
+<h2 id="%E7%B6%93%E5%85%B8-ui-%E6%A8%A1%E5%BC%8F%E5%BA%AB%E5%B0%8E%E8%A6%BD%E6%9E%B6%E6%A7%8B%E5%A4%9A%E6%AD%A5%E9%A9%9F%E8%A1%A8%E5%96%AE%E8%88%87%E7%A9%BA%E9%96%93%E6%94%B6%E7%B4%8D">經典 UI 模式庫：導覽架構、多步驟表單與空間收納</h2>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-header="Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="25" style="--paginate:true;--header:Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)</header>
+
+<h2 id="%E2%9D%93-part-4--%E7%AC%AC-19-%E9%A1%8Cwizard-%E6%AD%A5%E9%A9%9F%E7%B2%BE%E9%9D%88%E6%A8%A1%E5%BC%8F"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 4 · 第 19 題：【Wizard 步驟精靈模式】</h2>
+<p>依據 Tidwell 介面設計模式，當使用者面對線上綜合所得稅申報、複雜帳號註冊等具備高認知負擔且具嚴格先後順序的多步驟任務時。 請問最推薦採用的模式為何？</p>
+<ul>
+<li>(A) Accordion (手風琴)</li>
+<li>(B) Wizard (步驟精靈模式)</li>
+<li>(C) Deep Linking (深層連結)</li>
+<li>(D) Infinite Scroll (無限滾動)</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+Wizard 模式將複雜龐大的長表單拆解成數個邏輯連貫的線性步驟（如：身分驗證 ➔ 收入確認 ➔ 扣除額計算 ➔ 繳稅確認），並搭配進度步進器，大幅降低使用者的認知負荷與出錯率。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-header="Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="26" style="--paginate:true;--header:Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)</header>
+
+<h2 id="%E2%9D%93-part-4--%E7%AC%AC-20-%E9%A1%8Cdeep-linking-%E6%B7%B1%E5%B1%A4%E9%80%A3%E7%B5%90%E6%A8%A1%E5%BC%8F"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 4 · 第 20 題：【Deep Linking 深層連結模式】</h2>
+<p>某企業知識庫系統包含數百篇長篇技術文件與多層級 API 規範。工程師希望能直接將文件中某個具體章節或特定程式碼區塊的 URL 複製分享給同事，點擊後頁面能自動精準滾動至該段落。 請問這體現了哪種 Tidwell 模式？</p>
+<ul>
+<li>(A) Deep Linking (深層連結)</li>
+<li>(B) Modal Dialog (強制對話框)</li>
+<li>(C) Carousels (輪播卡片)</li>
+<li>(D) Breadcrumbs (麵包屑)</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(A)</strong><br />
+Deep Linking（深層連結）為頁面內的特定錨點、狀態或子內容提供唯一的 URL。使用者點擊後能直接精準抵達該特定內容，極大促進協同合作與知識分享效率。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-header="Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="27" style="--paginate:true;--header:Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)</header>
+
+<h2 id="%E2%9D%93-part-4--%E7%AC%AC-21-%E9%A1%8Caccordion-%E6%89%8B%E9%A2%A8%E7%90%B4%E6%A8%A1%E5%BC%8F"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 4 · 第 21 題：【Accordion 手風琴模式】</h2>
+<p>在行動端或空間受限的設定頁面中，若有 10 個互不干擾的偏好設定項目（如：隱私設定、通知頻率、主題色彩等），設計師希望使用者能在單一視窗中瀏覽所有項目大綱，並僅在需要時就地展開細節。 請問最合適的模式為？</p>
+<ul>
+<li>(A) Accordion (手風琴 / 折疊卡片)</li>
+<li>(B) Wizard (步驟精靈)</li>
+<li>(C) Splash Screen (啟動閃屏)</li>
+<li>(D) Pagination (多頁分頁)</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(A)</strong><br />
+Accordion 模式透過垂直堆疊的標題欄，允許使用者點擊「就地展開/收攏」感興趣的內容區塊，在極度節省垂直螢幕空間的同時，維持宏觀概覽與微觀細節的兼顧。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-header="Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="28" style="--paginate:true;--header:Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)</header>
+
+<h2 id="%E2%9D%93-part-4--%E7%AC%AC-22-%E9%A1%8Cbreadcrumbs-%E9%BA%B5%E5%8C%85%E5%B1%91%E5%B0%8E%E8%88%AA"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 4 · 第 22 題：【Breadcrumbs 麵包屑導航】</h2>
+<p>在多層級大型電商網站（如：首頁 &gt; 3C 數位 &gt; 筆記型電腦 &gt; 輕薄商務筆電）中，使用者常常在深層商品頁面迷失方向。在標題上方常駐提供階層路徑的模式稱為什麼？ 請問這項設計模式稱為什麼？</p>
+<ul>
+<li>(A) Breadcrumbs (麵包屑導航)</li>
+<li>(B) Tree View (樹狀目錄)</li>
+<li>(C) Hamburger Menu (漢堡選單)</li>
+<li>(D) Toast Notification (吐司提示)</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(A)</strong><br />
+Breadcrumbs（麵包屑導航，源自童話《糖果屋》灑麵包屑認路）清晰顯示使用者在全站階層樹狀架構中所處的精確位置，並提供各父層級的一鍵回溯路徑，是層級導航的經典模式。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-header="Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="29" style="--paginate:true;--header:Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)</header>
+
+<h2 id="%E2%9D%93-part-4--%E7%AC%AC-23-%E9%A1%8Ccard-list-%E5%8D%A1%E7%89%87%E6%B8%85%E5%96%AE%E6%A8%A1%E5%BC%8F"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 4 · 第 23 題：【Card List 卡片清單模式】</h2>
+<p>現代社群平台（如 Instagram、Pinterest、Facebook 動態消息）與專案看板（Trello），普遍採用「Card（卡片）」樣式來呈現單元內容。 請問卡片模式 (Card List) 廣受青睞的核心優勢為何？</p>
+<ul>
+<li>(A) 因為卡片樣式強制只能容納文字，不可放置圖片或影片</li>
+<li>(B) 因為卡片將異質資訊（圖片、標題、作者、點讚數、留言）封裝成一個自給自足的獨立視覺單元，便於在不同螢幕尺寸間靈活重組排版</li>
+<li>(C) 因為卡片樣式無法點擊，能防止使用者誤觸</li>
+<li>(D) 因為卡片樣式只適用於橫向列印</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(B)</strong><br />
+Card（卡片）是現代響應式設計 (RWD) 的基石。它將異質且相關的資訊封裝為一體，具有極高的模組化特性，在多欄網格、單欄滾動或瀑布流中皆能完美適應。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-header="Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="30" style="--paginate:true;--header:Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24);--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>Part 4: Tidwell 介面設計模式精選測驗 (Q19 ~ Q24)</header>
+
+<h2 id="%E2%9D%93-part-4--%E7%AC%AC-24-%E9%A1%8Ctime-slot-picker--data-sheet-%E6%95%B8%E6%93%9A%E8%A1%A8%E6%A0%BC%E6%A8%A1%E5%BC%8F"><img class="emoji" draggable="false" alt="❓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2753.svg" data-marp-twemoji=""/> Part 4 · 第 24 題：【Time-Slot Picker / Data Sheet 數據表格模式】</h2>
+<p>台灣高鐵購票系統在查詢某日車次時，呈現矩陣清單標明「車次、出發時間、抵達時間、自由座餘額、早鳥折扣」，並允許使用者直接點選切換前一班或後一班車次。 這最直接體現了 Tidwell 的哪種設計心法？</p>
+<ul>
+<li>(A) 透過直覺的數據表格 (Data Sheet) 與時間時段選擇器 (Time-Slot Picker) 消除認知負荷，讓使用者在單一脈絡下進行多維度方案比對與決策</li>
+<li>(B) 強迫使用者記憶每一班車的列車編號才能輸入訂票</li>
+<li>(C) 隱藏票價資訊，直到使用者輸入信用卡付款後才揭示</li>
+<li>(D) 限制使用者每次查詢只能查看一班列車</li>
+</ul>
+<blockquote>
+<p><strong><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 正確答案：(A)</strong><br />
+數據表格與時段選擇器將繁雜的多維度選項（班次、時間、票價、餘額）平鋪並置，使用者不必反覆跳出頁面，即可在同一個畫面上比較優劣並做出最佳決策，顯著提升操作效率與體驗。</p>
+</blockquote>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-header="題庫完成與學習成效自我檢視" data-footer="薛念林 教授 | 逢甲大學資訊工程學系" data-theme="quiz-theme" lang="C" data-marpit-pagination="31" style="--paginate:true;--header:題庫完成與學習成效自我檢視;--footer:薛念林 教授 | 逢甲大學資訊工程學系;--theme:quiz-theme;" data-marpit-pagination-total="31" data-transition-back="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;fade&quot;,&quot;builtinFallback&quot;:true}" data-size="16:9">
+<header>題庫完成與學習成效自我檢視</header>
+
+<h2 id="%F0%9F%8E%93-%E9%A1%8C%E5%BA%AB%E5%AE%8C%E6%88%90%E8%88%87%E5%AD%B8%E7%BF%92%E6%88%90%E6%95%88%E8%87%AA%E6%88%91%E6%AA%A2%E8%A6%96"><img class="emoji" draggable="false" alt="🎓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f393.svg" data-marp-twemoji=""/> 題庫完成與學習成效自我檢視</h2>
+<h3 id="%F0%9F%93%8A-%E8%87%AA%E6%88%91%E6%B8%AC%E9%A9%97%E6%88%90%E6%95%88%E8%A9%95%E4%BC%B0"><img class="emoji" draggable="false" alt="📊" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4ca.svg" data-marp-twemoji=""/> 自我測驗成效評估</h3>
+<ul>
+<li><strong>21 ~ 24 題正確 (卓越 / 專家級)</strong> ：
+<ul>
+<li>徹底融會貫通 UX 原理、尼爾森 10 大原則與 AI 工具實務，具備優秀的軟體產品架構與評估能力！</li>
+</ul>
+</li>
+<li><strong>16 ~ 20 題正確 (良好 / 穩健級)</strong> ：
+<ul>
+<li>掌握絕大多數核心觀念，建議複習答錯的題目並回顧 Unit 02 與 Unit 03 的案例對照。</li>
+</ul>
+</li>
+<li><strong>15 題以下 (需加強 / 觀念釐清)</strong> ：
+<ul>
+<li>建議重溫 Unit 01 ~ Unit 04 投影片，加強體會「以人為本」的人機協同理念。</li>
+</ul>
+</li>
+</ul>
+<h3 id="%F0%9F%92%A1-%E5%AD%B8%E7%BF%92%E4%B8%89%E5%A4%A7%E9%97%9C%E9%8D%B5%E8%A6%81%E8%A8%A3"><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 學習三大關鍵要訣</h3>
+<ol>
+<li><strong>不要只看美觀 (UI)</strong> ：時刻牢記 1-10-100 法則，前期做好 UX 規劃價值百倍。</li>
+<li><strong>永遠給予控制權 (NS03/NS09)</strong> ：AI 與系統充滿不確定性，緊急出口與白話復原是信任基石。</li>
+<li><strong>動手實作閉環 (Agentic)</strong> ：善用 Google Antigravity IDE、Planning Mode 與設計樣式庫，將理論落實於真實工程專案中！</li>
+</ol>
+<script>
+(function() {
+  function initHeaderDropdown() {
+    const sections = [];
+    const seenTitles = new Set();
+    const slideSections = document.querySelectorAll('section[id]');
+    
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header) return;
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title || seenTitles.has(title)) return;
+      seenTitles.add(title);
+      sections.push({ id: sec.id, title: title });
+    });
+
+    if (sections.length === 0) return;
+
+    function createDropdownWrapper(currentTitle) {
+      const wrapper = document.createElement('span');
+      wrapper.className = 'header-nav-wrapper';
+      
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'header-nav-title';
+      titleSpan.title = '點擊固定或懸停查看題庫章節目錄';
+      titleSpan.innerHTML = currentTitle + '<span class="nav-caret"> ▾</span>';
+      
+      titleSpan.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const wasOpen = wrapper.classList.contains('is-open');
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+        if (!wasOpen) wrapper.classList.add('is-open');
+      });
+      
+      const dropdown = document.createElement('div');
+      dropdown.className = 'nav-dropdown';
+      dropdown.addEventListener('click', function(e) { e.stopPropagation(); });
+      
+      const dropHeader = document.createElement('div');
+      dropHeader.className = 'nav-dropdown-header';
+      dropHeader.innerHTML = '<span>📑 題庫章節目錄</span><span style="font-size:11px;font-weight:normal;color:#64748b;">共 ' + sections.length + ' 個單元</span>';
+      dropdown.appendChild(dropHeader);
+      
+      const grid = document.createElement('div');
+      grid.className = 'nav-dropdown-grid';
+      sections.forEach(s => {
+        const item = document.createElement('a');
+        const isActive = (s.title === currentTitle);
+        item.className = 'nav-dropdown-item' + (isActive ? ' active' : '');
+        item.href = '#' + s.id;
+        item.innerHTML = '<span class="badge">#' + s.id.padStart(2, '0') + '</span><span class="item-text" title="' + s.title + '">' + s.title + '</span>';
+        item.addEventListener('click', function() {
+          wrapper.classList.remove('is-open');
+        });
+        grid.appendChild(item);
+      });
+      
+      dropdown.appendChild(grid);
+      wrapper.appendChild(titleSpan);
+      wrapper.appendChild(dropdown);
+      return wrapper;
+    }
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.header-nav-wrapper')) {
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+      }
+    });
+
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header || header.dataset.navEnhanced) return;
+      header.dataset.navEnhanced = 'true';
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title) return;
+      header.innerHTML = '';
+      const wrapper = createDropdownWrapper(title);
+      header.appendChild(wrapper);
+    });
+  }
+
+  function initQuizInteractions() {
+    const slideSections = document.querySelectorAll('section[id]');
+    slideSections.forEach(sec => {
+      if (sec.dataset.quizInit) return;
+      const ul = sec.querySelector('ul');
+      const bq = sec.querySelector('blockquote');
+      const h2 = sec.querySelector('h2');
+      if (!ul || !bq) return;
+      
+      const bqText = bq.textContent || '';
+      const ansMatch = bqText.match(/正確答案\s*[:：]?\s*\(?([A-D])\)?/i);
+      if (!ansMatch) return;
+      
+      sec.dataset.quizInit = 'true';
+      sec.classList.add('has-quiz');
+      const correctOpt = ansMatch[1].toUpperCase();
+
+      const qPs = [];
+      let curr = h2 ? h2.nextElementSibling : sec.firstElementChild;
+      while (curr && curr !== ul && curr !== bq) {
+        if (curr.tagName === 'P') qPs.push(curr);
+        curr = curr.nextElementSibling;
+      }
+
+      const quizLayout = document.createElement('div');
+      quizLayout.className = 'quiz-layout';
+
+      const metaDiv = document.createElement('div');
+      metaDiv.className = 'quiz-meta';
+      let rawTitle = h2 ? h2.textContent.trim() : '';
+      let tagText = '隨堂測驗';
+      let progText = '';
+      const titleMatch = rawTitle.match(/(?:❓\s*)?(.*?)[：:](.*)/);
+      if (titleMatch) {
+        tagText = titleMatch[1].trim();
+        progText = titleMatch[2].replace(/[【】]/g, '').trim();
+      } else {
+        tagText = rawTitle;
+      }
+      metaDiv.innerHTML = '<span class="quiz-tag">' + tagText + '</span>' + 
+        (progText ? '<span class="quiz-prog">單元：' + progText + '</span>' : '');
+      quizLayout.appendChild(metaDiv);
+
+      const qbox = document.createElement('div');
+      qbox.className = 'quiz-qbox';
+      qPs.forEach(p => { qbox.innerHTML += p.innerHTML; });
+      quizLayout.appendChild(qbox);
+
+      const grid = document.createElement('div');
+      grid.className = 'quiz-grid';
+      const items = ul.querySelectorAll(':scope > li');
+      const choices = [];
+
+      items.forEach(li => {
+        const text = li.textContent.trim();
+        const m = text.match(/^\s*\(?([A-D])\)?[.、\s]?(.*)$/i);
+        const opt = m ? m[1].toUpperCase() : '';
+        const choiceText = m ? m[2].trim() : text;
+        const isCorrect = (opt === correctOpt);
+
+        const choiceDiv = document.createElement('div');
+        choiceDiv.className = 'quiz-choice';
+        choiceDiv.dataset.opt = opt;
+        choiceDiv.dataset.correct = isCorrect ? 'true' : 'false';
+        choiceDiv.innerHTML = '<span class="q-badge">' + opt + '</span><span class="q-text">' + choiceText + '</span>';
+        grid.appendChild(choiceDiv);
+        choices.push(choiceDiv);
+      });
+      quizLayout.appendChild(grid);
+
+      const fbBox = document.createElement('div');
+      fbBox.className = 'quiz-fb state-idle';
+      const fbHead = document.createElement('div');
+      fbHead.className = 'fb-head';
+      const fbMsg = document.createElement('span');
+      fbMsg.className = 'fb-msg';
+      fbMsg.textContent = '👉 請點選左側選項進行自我檢測';
+      const btnRetry = document.createElement('span');
+      btnRetry.className = 'btn-retry';
+      btnRetry.textContent = '↺ 重新作答';
+      btnRetry.style.display = 'none';
+      fbHead.appendChild(fbMsg);
+      fbHead.appendChild(btnRetry);
+
+      const fbBody = document.createElement('div');
+      fbBody.className = 'fb-body';
+      let cleanExp = bq.innerHTML.replace(/<strong[^>]*>.*?正確答案.*?<\/strong>\s*(?:<br\s*\/?>|[—\-:]\s*)?/i, '');
+      fbBody.innerHTML = '<strong>💡 正確答案：(' + correctOpt + ')</strong> — ' + cleanExp.trim();
+      fbBox.appendChild(fbHead);
+      fbBox.appendChild(fbBody);
+      quizLayout.appendChild(fbBox);
+
+      if (h2) h2.style.display = 'none';
+      qPs.forEach(p => p.style.display = 'none');
+      ul.style.display = 'none';
+      bq.style.display = 'none';
+      sec.appendChild(quizLayout);
+
+      choices.forEach(choice => {
+        choice.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const opt = choice.dataset.opt;
+          const isCorrect = choice.dataset.correct === 'true';
+          if (isCorrect) {
+            choices.forEach(c => {
+              c.classList.remove('is-wrong');
+              c.style.pointerEvents = 'none';
+            });
+            choice.classList.add('is-correct');
+            fbBox.className = 'quiz-fb state-correct';
+            fbMsg.innerHTML = '<span style="color:#15803d;font-weight:700;">🎉 太棒了，完全答對！👏</span>';
+            btnRetry.style.display = 'inline-block';
+          } else {
+            choice.classList.add('is-wrong');
+            choice.style.animation = 'none';
+            choice.offsetHeight;
+            choice.style.animation = 'quizShake 0.35s ease-in-out';
+            fbBox.className = 'quiz-fb state-wrong';
+            fbMsg.innerHTML = '<span style="color:#dc2626;font-weight:700;">❌ 選項 (' + opt + ') 不太對喔，再換個選項試試看！💪</span>';
+            btnRetry.style.display = 'inline-block';
+          }
+        });
+      });
+
+      btnRetry.addEventListener('click', function(e) {
+        e.stopPropagation();
+        choices.forEach(c => {
+          c.classList.remove('is-wrong', 'is-correct');
+          c.style.pointerEvents = '';
+          c.style.animation = '';
+        });
+        fbBox.className = 'quiz-fb state-idle';
+        fbMsg.textContent = '👉 請點選左側選項進行自我檢測';
+        btnRetry.style.display = 'none';
+      });
+    });
+  }
+
+  function initNumberQuickJump() {
+    let inputBuffer = '';
+    let timer = null;
+    let hud = null;
+
+    function getOrCreateHud() {
+      if (!hud) {
+        hud = document.createElement('div');
+        hud.id = 'slide-quick-jump-hud';
+        hud.style.cssText = [
+          'position: fixed',
+          'bottom: 36px',
+          'left: 50%',
+          'transform: translateX(-50%)',
+          'background: rgba(15, 23, 42, 0.94)',
+          'color: #ffffff',
+          'padding: 8px 18px',
+          'border-radius: 28px',
+          'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif',
+          'font-size: 14px',
+          'font-weight: 500',
+          'box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15)',
+          'backdrop-filter: blur(16px)',
+          '-webkit-backdrop-filter: blur(16px)',
+          'z-index: 999999',
+          'display: none',
+          'align-items: center',
+          'gap: 8px',
+          'pointer-events: none',
+          'opacity: 0',
+          'transition: opacity 0.15s ease, transform 0.15s ease'
+        ].join(';');
+        const targetParent = document.fullscreenElement || document.body;
+        targetParent.appendChild(hud);
+      }
+      const parent = document.fullscreenElement || document.body;
+      if (hud.parentElement !== parent) {
+        parent.appendChild(hud);
+      }
+      return hud;
+    }
+
+    function getTotalSlides() {
+      return document.querySelectorAll('section[id]').length || 1;
+    }
+
+    function showHud() {
+      const el = getOrCreateHud();
+      const total = getTotalSlides();
+      el.innerHTML = '<span style="color: #38bdf8; font-weight: 700; font-size: 16px;">⮞ 跳至頁碼: ' + inputBuffer + '</span><span style="color: #94a3b8; font-size: 13px;"> / ' + total + ' (Enter 確認)</span>';
+      el.style.display = 'flex';
+      el.style.opacity = '1';
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(clearInput, 2500);
+    }
+
+    function clearInput() {
+      inputBuffer = '';
+      if (hud) {
+        hud.style.opacity = '0';
+        setTimeout(() => { if (hud) hud.style.display = 'none'; }, 150);
+      }
+      if (timer) { clearTimeout(timer); timer = null; }
+    }
+
+    function jumpToSlide(num) {
+      const total = getTotalSlides();
+      const target = Math.max(1, Math.min(num, total));
+      const targetHash = '#' + target;
+      const el = getOrCreateHud();
+      el.innerHTML = '<span style="color: #34d399; font-weight: 700; font-size: 15px;">✓ 第 ' + target + ' 頁</span>';
+      el.style.display = 'flex';
+      el.style.opacity = '1';
+      setTimeout(clearInput, 500);
+
+      if (window.location.hash === targetHash) {
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
+      } else {
+        window.location.hash = targetHash;
+      }
+    }
+
+    window.addEventListener('keydown', function(e) {
+      const active = document.activeElement;
+      if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT' || active.isContentEditable)) return;
+      if (e.ctrlKey || e.altKey || e.metaKey) return;
+
+      let digit = null;
+      if (e.key >= '0' && e.key <= '9') {
+        digit = e.key;
+      } else if (/^(?:Digit|Numpad)([0-9])$/.test(e.key)) {
+        digit = e.key.replace(/^(?:Digit|Numpad)/, '');
+      } else if (/^(?:Digit|Numpad)([0-9])$/.test(e.code || '')) {
+        digit = (e.code || '').replace(/^(?:Digit|Numpad)/, '');
+      }
+
+      if (digit !== null) {
+        inputBuffer += digit;
+        if (inputBuffer.length > 4) inputBuffer = inputBuffer.slice(-4);
+        showHud();
+        return;
+      }
+
+      if ((e.key === 'Backspace' || e.code === 'Backspace') && inputBuffer.length > 0) {
+        e.preventDefault();
+        inputBuffer = inputBuffer.slice(0, -1);
+        if (inputBuffer.length === 0) clearInput(); else showHud();
+        return;
+      }
+
+      if ((e.key === 'Escape' || e.code === 'Escape') && inputBuffer.length > 0) {
+        e.preventDefault();
+        clearInput();
+        return;
+      }
+
+      if ((e.key === 'Enter' || e.code === 'Enter' || e.code === 'NumpadEnter') && inputBuffer.length > 0) {
+        e.preventDefault();
+        const targetPage = parseInt(inputBuffer, 10);
+        if (!isNaN(targetPage)) jumpToSlide(targetPage); else clearInput();
+      }
+    }, true);
+  }
+
+  function initAll() {
+    initHeaderDropdown();
+    initQuizInteractions();
+    initNumberQuickJump();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
+  }
+  setTimeout(initAll, 400);
+  window.addEventListener('hashchange', () => setTimeout(initAll, 100));
+})();
+</script>
+<footer>薛念林 教授 | 逢甲大學資訊工程學系</footer>
+</section>
+<script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{container;containerSize;containerObserver;svg;svgComputedStyle;svgPreserveAspectRatio="xMinYMid meet";wrapper;wrapperSize;wrapperObserver;constructor(){super();const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=this.shadowRoot.querySelector(`div[${e}]`)??void 0;const t=this.svg;this.svg=this.wrapper?.querySelector(`svg[${i}]`)??void 0,this.svg!==t&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=this.svg?.querySelector(`span[${n}]`)??void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame(()=>{t.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){let t=Math.ceil(this.containerSize?.width??0);const e=Math.ceil(this.containerSize?.height??0);void 0!==this.dataset.downscaleOnly&&(t=Math.max(t,this.wrapperSize?.width??0));const i=this.svg?.querySelector(":scope > foreignObject");if(i?.setAttribute("width",`${t}`),i?.setAttribute("height",`${e}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${t} ${e}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=t<=0||e<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const r=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this._shadow()}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_shadow(){if(!this.shadowRoot)try{this.attachShadow({mode:"open"})}catch(t){if(!(t instanceof Error&&"NotSupportedError"===t.name))throw t}return this.shadowRoot}_update(){const t=this._shadow();if(t){const e=i?`<style>:host { ${i} }</style>`:"";let n="<slot></slot>";const{autoScaling:s}=this.dataset;if(void 0!==s){n=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===s?"data-downscale-only":""}>${n}</marp-auto-scaling>`}t.innerHTML=e+n}}};let o;const a=()=>o??(o=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is"),o),l=Symbol();let c;const d="marpitSVGPolyfill:setZoomFactor,",h=Symbol(),g=Symbol();const p=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[v]:[],i={then:e=>(t?(async()=>{if(void 0===c){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise(t=>{i.addEventListener("load",()=>t())});i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),c=e.getImageData(5,5,1,1).data[3]<128}return c})().then(t=>{null==e||e(t?[v]:[])}):null==e||e([]),i)};return Object.assign(e,i)};let m,u;function v(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[g]||(Object.defineProperty(window,g,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(d)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(u=i)}}catch(t){console.error(t)}}));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),t=>{var e,s,r,o;t.style.transform||(t.style.transform="translateZ(0)");const a=i||u||t.currentScale||1;m!==a&&(m=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(o=null===(r=n.y)||void 0===r?void 0:r.baseVal.value)&&void 0!==o?o:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}}),!1!==n&&Array.from(e.querySelectorAll("iframe"),({contentWindow:t})=>{null==t||t.postMessage(`${d}${n}`,"null"===window.origin?"*":window.origin)})}function w({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[h])return t[h];let e=!0;const i=()=>{e=!1,delete t[h]};Object.defineProperty(t,h,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await p()}finally{s=!0}})();const r=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(r)};return r(),i}(e);return t?(i(),()=>{}):i}m=1,u=void 0;const b=Symbol(),y=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[l];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,o=t[n].proto();a()&&o!==HTMLElement?i||customElements.define(s,r(o,{style:t[n].style}),{extends:n}):(i||customElements.define(s,r(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach(t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)}))}window[l]=!0})(e),e[b])return e[b];const i=w({target:e}),n=()=>{i(),delete e[b]},o=Object.assign(n,{cleanup:n,update:()=>y(e)});return Object.defineProperty(e,b,{configurable:!0,value:o}),o},f=document.currentScript;y(f?f.getRootNode():document)}();
+</script></foreignObject></svg></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@4.5.1/lib/bespoke.js.LICENSE.txt */
+!function(){"use strict";function e(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}var t,n,r=(n||(n=1,t={from:function(e,t){var n,r=1===(e.parent||e).nodeType?e.parent||e:document.querySelector(e.parent||e),o=[].filter.call("string"==typeof e.slides?r.querySelectorAll(e.slides):e.slides||r.children,function(e){return"SCRIPT"!==e.nodeName}),i={},a=function(e,t){return(t=t||{}).index=o.indexOf(e),t.slide=e,t},s=function(e,t){i[e]=(i[e]||[]).filter(function(e){return e!==t})},l=function(e,t){return(i[e]||[]).reduce(function(e,n){return e&&!1!==n(t)},!0)},c=function(e,t){o[e]&&(n&&l("deactivate",a(n,t)),n=o[e],l("activate",a(n,t)))},d=function(e,t){var r=o.indexOf(n)+e;l(e>0?"next":"prev",a(n,t))&&c(r,t)},u={off:s,on:function(e,t){return(i[e]||(i[e]=[])).push(t),s.bind(null,e,t)},fire:l,slide:function(e,t){if(!arguments.length)return o.indexOf(n);l("slide",a(o[e],t))&&c(e,t)},next:d.bind(null,1),prev:d.bind(null,-1),parent:r,slides:o,destroy:function(e){l("destroy",a(n,e)),i={}}};return(t||[]).forEach(function(e){e(u)}),n||c(0),u}}),t),o=e(r);const i=document.body,a=(...e)=>history.replaceState(...e),s="",l="presenter",c="next",d="overview",u=["",l,d,c],f="bespoke-marp-",m=`data-${f}`,g=(e,{protocol:t,host:n,pathname:r,hash:o}=location)=>{const i=e.toString();return`${t}//${n}${r}${i?"?":""}${i}${o}`},p=()=>i.dataset.bespokeView,v=e=>new URLSearchParams(location.search).get(e),h=(e,t={})=>{const n={location,setter:a,...t},r=new URLSearchParams(n.location.search);for(const t of Object.keys(e)){const n=e[t];"string"==typeof n?r.set(t,n):r.delete(t)}try{n.setter({...window.history.state??{}},"",g(r,n.location))}catch(e){console.error(e)}},w=(()=>{const e="bespoke-marp";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch{return!1}})(),y=e=>{try{return localStorage.getItem(e)}catch{return null}},b=(e,t)=>{try{return localStorage.setItem(e,t),!0}catch{return!1}},k=e=>{try{return localStorage.removeItem(e),!0}catch{return!1}},x=(e,t)=>{const n="aria-hidden";t?e.setAttribute(n,"true"):e.removeAttribute(n)},E=e=>{e.parent.classList.add(`${f}parent`),e.slides.forEach(e=>e.classList.add(`${f}slide`)),e.on("activate",t=>{const n=`${f}active`,r=t.slide,o=r.classList,i=!o.contains(n);if(e.slides.forEach(e=>{e.classList.remove(n),x(e,!0)}),o.add(n),x(r,!1),i){const e=`${n}-ready`;o.add(e),document.body.clientHeight,o.remove(e)}})},$=e=>{let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map(e=>[null,...e.querySelectorAll("[data-marpit-fragment]")])});const r=r=>void 0!==e.fragments[t][n+r],o=(r,o)=>{t=r,n=o,e.fragments.forEach((e,t)=>{e.forEach((e,n)=>{if(null==e)return;const i=t<r||t===r&&n<=o;e.setAttribute(`${m}fragment`,(i?"":"in")+"active");const a=`${m}current-fragment`;t===r&&n===o?e.setAttribute(a,"current"):e.removeAttribute(a)})}),e.fragmentIndex=o;const i={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:o};e.fire("fragment",i)};e.on("next",({fragment:i=!0})=>{if(i){if(r(1))return o(t,n+1),!1;const i=t+1;e.fragments[i]&&o(i,0)}else{const r=e.fragments[t].length;if(n+1<r)return o(t,r-1),!1;const i=e.fragments[t+1];i&&o(t+1,i.length-1)}}),e.on("prev",({fragment:i=!0})=>{if(r(-1)&&i)return o(t,n-1),!1;const a=t-1;e.fragments[a]&&o(a,e.fragments[a].length-1)}),e.on("slide",({index:t,fragment:n})=>{let r=0;if(void 0!==n){const o=e.fragments[t];if(o){const{length:e}=o;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}o(t,r)}),o(0,0)},L=document,S=()=>!(!L.fullscreenEnabled&&!L.webkitFullscreenEnabled),P=()=>!(!L.fullscreenElement&&!L.webkitFullscreenElement),_=e=>{e.fullscreen=()=>{S()&&(async()=>{P()?(L.exitFullscreen||L.webkitExitFullscreen)?.call(L):((e=L.body)=>{(e.requestFullscreen||e.webkitRequestFullscreen)?.call(e)})()})()},document.addEventListener("keydown",t=>{"f"!==t.key&&"F11"!==t.key||t.altKey||t.ctrlKey||t.metaKey||!S()||(e.fullscreen(),t.preventDefault())})},O=`${f}inactive`,T=(e=2e3)=>({parent:t,fire:n})=>{const r=t.classList,o=e=>n(`marp-${e?"":"in"}active`);let i;const a=()=>{i&&clearTimeout(i),i=setTimeout(()=>{r.add(O),o()},e),r.contains(O)&&(r.remove(O),o(!0))};for(const e of["mousedown","mousemove","touchend"])document.addEventListener(e,a);setTimeout(a,0)},I=["AUDIO","BUTTON","INPUT","SELECT","TEXTAREA","VIDEO"],M=e=>{e.parent.addEventListener("keydown",e=>{if(!e.target)return;const t=e.target;(I.includes(t.nodeName)||"true"===t.contentEditable)&&e.stopPropagation()})},A=e=>{window.addEventListener("load",()=>{for(const t of e.slides){const e=t.querySelector("marp-auto-scaling, [data-auto-scaling], [data-marp-fitting]");t.setAttribute(`${m}load`,e?"":"hideable")}})},C=({interval:e=250}={})=>t=>{document.addEventListener("keydown",e=>{if(" "===e.key&&e.shiftKey)t.prev();else if("ArrowLeft"===e.key||"ArrowUp"===e.key||"PageUp"===e.key)t.prev({fragment:!e.shiftKey});else if(" "!==e.key||e.shiftKey)if("ArrowRight"===e.key||"ArrowDown"===e.key||"PageDown"===e.key)t.next({fragment:!e.shiftKey});else if("End"===e.key)t.slide(t.slides.length-1,{fragment:-1});else{if("Home"!==e.key)return;t.slide(0)}else t.next();e.preventDefault()});let n,r,o=0;t.parent.addEventListener("wheel",i=>{let a=!1;const s=(e,t)=>{e&&(a=a||((e,t)=>((e,t)=>{const n="X"===t?"Width":"Height";return e[`client${n}`]<e[`scroll${n}`]})(e,t)&&((e,t)=>{const{overflow:n}=e,r=e[`overflow${t}`];return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r})(getComputedStyle(e),t))(e,t)),e?.parentElement&&s(e.parentElement,t)};if(0!==i.deltaX&&s(i.target,"X"),0!==i.deltaY&&s(i.target,"Y"),a)return;i.preventDefault();const l=Math.sqrt(i.deltaX**2+i.deltaY**2);if(void 0!==i.wheelDelta){if(void 0===i.webkitForce&&Math.abs(i.wheelDelta)<40)return;if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<4)return}else if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<12)return;r&&clearTimeout(r),r=setTimeout(()=>{n=0},e);const c=Date.now()-o<e,d=l<=n;if(n=l,c||d)return;let u;(i.deltaX>0||i.deltaY>0)&&(u="next"),(i.deltaX<0||i.deltaY<0)&&(u="prev"),u&&(t[u](),o=Date.now())})},D=(e=`.${f}osc`)=>{const t=document.querySelector(e);if(!t)return()=>{};const n=(e,n)=>{t.querySelectorAll(`[${m}osc=${JSON.stringify(e)}]`).forEach(n)};if(S()||n("fullscreen",e=>e.style.display="none"),!w){const e=(e,t)=>{e.disabled=!0,e.title=`${t} is disabled due to restricted localStorage.`};n("presenter",t=>e(t,"Presenter view")),n("overview",t=>e(t,"Overview view"))}return e=>{t.addEventListener("click",t=>{if(t.target instanceof HTMLElement){const{bespokeMarpOsc:n}=t.target.dataset;n&&t.target.blur();const r={fragment:!t.shiftKey};"next"===n?e.next(r):"prev"===n?e.prev(r):"fullscreen"===n?e?.fullscreen():"presenter"===n?e.openPresenterView():"overview"===n&&e.toggleOverviewView()}}),e.parent.appendChild(t),e.on("activate",({index:t})=>{n("page",n=>n.textContent=`Page ${t+1} of ${e.slides.length}`)}),e.on("fragment",({index:t,fragments:r,fragmentIndex:o})=>{n("prev",e=>e.disabled=0===t&&0===o),n("next",n=>n.disabled=t===e.slides.length-1&&o===r.length-1)}),e.on("marp-active",()=>x(t,!1)),e.on("marp-inactive",()=>x(t,!0)),S()&&(e=>{for(const t of["","webkit"])L.addEventListener(t+"fullscreenchange",e)})(()=>n("fullscreen",e=>e.classList.toggle("exit",S()&&P())))}},N=e=>{if(e.syncKey&&"string"==typeof e.syncKey)return!0;throw new Error("The current instance of Bespoke.js is incompatible with Marp bespoke sync plugin.")},B=(e={})=>{const t=e.key||window.history.state?.marpBespokeSyncKey||Math.random().toString(36).slice(2),n=`bespoke-marp-sync-${t}`;var r;r={marpBespokeSyncKey:t},h({},{setter:(e,...t)=>a({...e,...r},...t)});const o=()=>{const e=y(n);return e?JSON.parse(e):Object.create(null)},i=e=>{const t=o(),r={...t,...e(t)};return b(n,JSON.stringify(r)),r},s=()=>{window.removeEventListener("pageshow",s),i(e=>({reference:(e.reference||0)+1}))};return e=>{s(),Object.defineProperty(e,"syncKey",{value:t,enumerable:!0});let r=!0;setTimeout(()=>{e.on("fragment",e=>{r&&i(()=>({index:e.index,fragmentIndex:e.fragmentIndex}))})},0),window.addEventListener("storage",t=>{if(t.key===n&&t.oldValue&&t.newValue){const n=JSON.parse(t.oldValue),o=JSON.parse(t.newValue);if(n.index!==o.index||n.fragmentIndex!==o.fragmentIndex)try{r=!1,e.slide(o.index,{fragment:o.fragmentIndex,forSync:!0})}finally{r=!0}}});const a=()=>{const{reference:e}=o();void 0===e||e<=1?k(n):i(()=>({reference:e-1}))};window.addEventListener("pagehide",e=>{e.persisted&&window.addEventListener("pageshow",s),a()}),e.on("destroy",a)}},K=e=>{w&&document.addEventListener("keydown",t=>{("o"!==t.key||t.altKey||t.ctrlKey||t.metaKey)&&"Escape"!==t.key||(t.preventDefault(),e())})};let q=null;const V=({closeOnSelect:e=!0}={})=>t=>{N(t);const n=n=>{const r=(()=>{if(!q||!q.isConnected){q=document.createElement("div"),q.className=`${f}overview`,q.inert=!0;const n=document.createElement("iframe");n.src=(()=>{const n=new URLSearchParams(location.search);return n.set("view","overview"),n.set("sync",t.syncKey),e&&n.set("closeOnSelect","1"),g(n)})(),q.append(n),document.body.append(q)}return q})(),o=n??!r.dataset.open;setTimeout(()=>{if(r.dataset.open=o?"1":"",r.inert=!o,t.skipTransition=o,o){const e=r.querySelector("iframe");try{e?.contentWindow?.focus()}catch{e?.focus()}}else window.focus()},0)};Object.defineProperties(t,{toggleOverviewView:{enumerable:!0,value:n}}),window.addEventListener("message",e=>{e.origin===window.origin&&"closeOverview"===e.data&&n(!1)}),K(n)},j=e=>{const{title:t}=document;document.title="[Overview]"+(t?` - ${t}`:"");const n=!!v("closeOnSelect"),r=()=>{window.parent.postMessage("closeOverview","null"===window.origin?"*":window.origin)};if(e.slides.forEach((t,o)=>{t.tabIndex=0;const i=()=>{e.slide(o,{fragment:-1}),n&&r()};t.addEventListener("click",i),t.addEventListener("keydown",e=>{"Enter"!==e.key&&" "!==e.key||(e.preventDefault(),i())})}),window.addEventListener("keydown",t=>{const n=e.slide(),r=t=>{const r=t=>{const n=e.slides[t].getBoundingClientRect();return[Math.round((n.left+n.right)/2),Math.round((n.top+n.bottom)/2)]};let o=null,i=n;do{const e=r(i);if(o){if(Math.abs(e[0]-o[0])<2)return i}else o=e;i+=t}while(i>=0&&i<e.slides.length);return n};if("ArrowLeft"===t.key)e.slide(Math.max(n-1,0),{fragment:-1});else if("ArrowRight"===t.key)e.slide(Math.min(n+1,e.slides.length-1),{fragment:-1});else if("ArrowUp"===t.key)e.slide(r(-1),{fragment:-1});else if("ArrowDown"===t.key)e.slide(r(1),{fragment:-1});else if("End"===t.key)e.slide(e.slides.length-1,{fragment:-1});else{if("Home"!==t.key)return;e.slide(0,{fragment:-1})}t.preventDefault();const o=e.slide();e.slides[o]?.focus?.(),e.slides[o]?.scrollIntoView?.({behavior:"smooth",block:"nearest"})}),e.on("slide",({index:t})=>{e.slides[t]?.scrollIntoView?.({behavior:"smooth",block:"nearest"})}),window.parent!==window){K(r);const e=document.createElement("header");e.className=`${f}overview-header`;const t=document.createElement("button");t.className=`${f}overview-close`,t.type="button",t.title="Close overview",t.textContent=t.title,t.addEventListener("click",r),e.append(t),document.body.prepend(e)}},F=()=>{const e=p();return{[s]:V(),[l]:V({closeOnSelect:!1}),[d]:j}[e]},U=e=>{window.addEventListener("message",t=>{if(t.origin!==window.origin)return;const[n,r]=t.data.split(":");if("navigate"===n){const[t,n]=r.split(",");let o=Number.parseInt(t,10),i=Number.parseInt(n,10)+1;i>=e.fragments[o].length&&(o+=1,i=0),e.slide(o,{fragment:i})}})};var R,X,H,W,J,Y,z,G={exports:{}},Q=(R||(R=1,G.exports=(X=["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"],H=function(e){return String(e).replace(/[&<>"']/g,function(e){return"&"+W[e]+";"})},W={"&":"amp","<":"lt",">":"gt",'"':"quot","'":"apos"},J="dangerouslySetInnerHTML",Y={className:"class",htmlFor:"for"},z={},function(e,t){var n=[],r="";t=t||{};for(var o=arguments.length;o-- >2;)n.push(arguments[o]);if("function"==typeof e)return t.children=n.reverse(),e(t);if(e){if(r+="<"+e,t)for(var i in t)!1!==t[i]&&null!=t[i]&&i!==J&&(r+=" "+(Y[i]?Y[i]:H(i))+'="'+H(t[i])+'"');r+=">"}if(-1===X.indexOf(e)){if(t[J])r+=t[J].__html;else for(;n.length;){var a=n.pop();if(a)if(a.pop)for(var s=a.length;s--;)n.push(a[s]);else r+=!0===z[a]?a:H(a)}r+=e?"</"+e+">":""}return z[r]=!0,r})),G.exports),Z=e(Q);const ee=({children:e})=>Z(null,null,...e),te=`${f}presenter-`,ne={container:`${te}container`,dragbar:`${te}dragbar-container`,next:`${te}next`,nextContainer:`${te}next-container`,noteContainer:`${te}note-container`,noteWrapper:`${te}note-wrapper`,noteButtons:`${te}note-buttons`,infoContainer:`${te}info-container`,infoPageArea:`${te}info-page-area`,infoPage:`${te}info-page`,infoPagePrev:`${te}info-page-prev`,infoPageNext:`${te}info-page-next`,noteButtonsBigger:`${te}note-bigger`,noteButtonsSmaller:`${te}note-smaller`,infoTime:`${te}info-time`,infoTimer:`${te}info-timer`},re=e=>{const{title:t}=document;document.title="[Presenter view]"+(t?` - ${t}`:"");const n={},r=e=>(n[e]=n[e]||document.querySelector(`.${e}`),n[e]);document.body.appendChild((e=>{const t=document.createElement("div");return t.className=ne.container,t.appendChild(e),t.insertAdjacentHTML("beforeend",Z(ee,null,Z("div",{class:ne.nextContainer},Z("iframe",{class:ne.next,src:"?view=next"})),Z("div",{class:ne.dragbar}),Z("div",{class:ne.noteContainer},Z("div",{class:ne.noteWrapper}),Z("div",{class:ne.noteButtons},Z("button",{class:ne.noteButtonsSmaller,tabindex:"-1",title:"Smaller notes font size"},"Smaller notes font size"),Z("button",{class:ne.noteButtonsBigger,tabindex:"-1",title:"Bigger notes font size"},"Bigger notes font size"))),Z("div",{class:ne.infoContainer},Z("div",{class:ne.infoPageArea},Z("button",{class:ne.infoPagePrev,tabindex:"-1",title:"Previous"},"Previous"),Z("button",{class:ne.infoPage}),Z("button",{class:ne.infoPageNext,tabindex:"-1",title:"Next"},"Next")),Z("time",{class:ne.infoTime,title:"Current time"}),Z("time",{class:ne.infoTimer,title:"Timer"})))),t})(e.parent)),(e=>{let t=!1;r(ne.dragbar).addEventListener("mousedown",()=>{t=!0,r(ne.dragbar).classList.add("active")}),window.addEventListener("mouseup",()=>{t=!1,r(ne.dragbar).classList.remove("active")}),window.addEventListener("mousemove",e=>{if(!t)return;const n=e.clientX/document.documentElement.clientWidth*100;r(ne.container).style.setProperty("--bespoke-marp-presenter-split-ratio",`${Math.max(0,Math.min(100,n))}%`)}),r(ne.nextContainer).addEventListener("click",()=>e.next());const n=r(ne.next),o=(i=n,(e,t)=>i.contentWindow?.postMessage(`navigate:${e},${t}`,"null"===window.origin?"*":window.origin));var i;n.addEventListener("load",()=>{r(ne.nextContainer).classList.add("active"),o(e.slide(),e.fragmentIndex),e.on("fragment",({index:e,fragmentIndex:t})=>o(e,t))});const a=document.querySelectorAll(".bespoke-marp-note");a.forEach(e=>{e.addEventListener("keydown",e=>e.stopPropagation()),r(ne.noteWrapper).appendChild(e)}),e.on("activate",()=>a.forEach(t=>t.classList.toggle("active",t.dataset.index==e.slide())));let s=0;const l=e=>{s=Math.max(-5,s+e),r(ne.noteContainer).style.setProperty("--bespoke-marp-note-font-scale",(1.2**s).toFixed(4))},c=()=>l(1),d=()=>l(-1),u=r(ne.noteButtonsBigger),f=r(ne.noteButtonsSmaller);u.addEventListener("click",()=>{u.blur(),c()}),f.addEventListener("click",()=>{f.blur(),d()}),document.addEventListener("keydown",e=>{"+"===e.key&&c(),"-"===e.key&&d()},!0);const m=r(ne.infoPage);e.on("activate",({index:t})=>{m.textContent=`${t+1} / ${e.slides.length}`}),m.addEventListener("click",()=>{m.blur(),e.toggleOverviewView()});const g=r(ne.infoPagePrev),p=r(ne.infoPageNext);g.addEventListener("click",t=>{g.blur(),e.prev({fragment:!t.shiftKey})}),p.addEventListener("click",t=>{p.blur(),e.next({fragment:!t.shiftKey})}),e.on("fragment",({index:t,fragments:n,fragmentIndex:r})=>{g.disabled=0===t&&0===r,p.disabled=t===e.slides.length-1&&r===n.length-1});let v=new Date;const h=()=>{const e=new Date,t=e=>`${Math.floor(e)}`.padStart(2,"0"),n=e.getTime()-v.getTime(),o=t(n/1e3%60),i=t(n/1e3/60%60),a=t(n/36e5%24);r(ne.infoTime).textContent=e.toLocaleTimeString(),r(ne.infoTimer).textContent=`${a}:${i}:${o}`};h(),setInterval(h,250),r(ne.infoTimer).addEventListener("click",()=>{v=new Date})})(e)},oe=e=>{N(e),Object.defineProperties(e,{openPresenterView:{enumerable:!0,value:ie},presenterUrl:{enumerable:!0,get:ae}}),w&&document.addEventListener("keydown",t=>{"p"!==t.key||t.altKey||t.ctrlKey||t.metaKey||(t.preventDefault(),e.openPresenterView())})};function ie(){const{max:e,floor:t}=Math,n=e(t(.85*window.innerWidth),640),r=e(t(.85*window.innerHeight),360);return window.open(this.presenterUrl,te+this.syncKey,`width=${n},height=${r},menubar=no,toolbar=no`)}function ae(){const e=new URLSearchParams(location.search);return e.set("view","presenter"),e.set("sync",this.syncKey),g(e)}const se=e=>{const t=p();return t===c&&e.appendChild(document.createElement("span")),{[s]:oe,[l]:re,[c]:U}[t]},le=e=>{e.on("activate",t=>{document.querySelectorAll(".bespoke-progress-parent > .bespoke-progress-bar").forEach(n=>{n.style.flexBasis=100*t.index/(e.slides.length-1)+"%"})})},ce=e=>{const t=Number.parseInt(e,10);return Number.isNaN(t)?null:t},de=(e={})=>{const t={history:!0,...e};return e=>{let n=!0;const r=e=>{const t=n;try{return n=!0,e()}finally{n=t}},o=(t={fragment:!0})=>{let n=t.fragment?ce(v("f")||""):null;((t,n)=>{const{min:r,max:o}=Math,{fragments:i,slides:a}=e,s=o(0,r(t,a.length-1)),l=o(0,r(n||0,i[s].length-1));s===e.slide()&&l===e.fragmentIndex||e.slide(s,{fragment:l})})((()=>{if(location.hash){const[t]=location.hash.slice(1).split(":~:");if(/^\d+$/.test(t))return(ce(t)??1)-1;const r=document.getElementById(t)||document.querySelector(`a[name="${CSS.escape(t)}"]`);if(r){const{length:t}=e.slides;for(let o=0;o<t;o+=1)if(e.slides[o].contains(r)){const t=e.fragments?.[o],i=r.closest("[data-marpit-fragment]");if(t&&i){const e=t.indexOf(i);e>=0&&(n=e)}return o}}}return 0})(),n)};e.on("fragment",({index:e,fragmentIndex:r})=>{n||h({f:0===r||r.toString()},{location:{...location,hash:`#${e+1}`},setter:(...e)=>t.history?history.pushState(...e):history.replaceState(...e)})}),setTimeout(()=>{o(),window.addEventListener("hashchange",()=>r(()=>{o({fragment:!1}),h({f:void 0})})),window.addEventListener("popstate",()=>{n||r(()=>o())}),n=!1},0)}},{PI:ue,abs:fe,sqrt:me,atan2:ge}=Math,pe={passive:!0},ve=({slope:e=-.7,swipeThreshold:t=30}={})=>n=>{let r;const o=n.parent,i=e=>{const t=o.getBoundingClientRect();return{x:e.pageX-(t.left+t.right)/2,y:e.pageY-(t.top+t.bottom)/2}};o.addEventListener("touchstart",({touches:e})=>{r=1===e.length?i(e[0]):void 0},pe),o.addEventListener("touchmove",e=>{if(r)if(1===e.touches.length){e.preventDefault();const t=i(e.touches[0]),n=t.x-r.x,o=t.y-r.y;r.delta=me(fe(n)**2+fe(o)**2),r.radian=ge(n,o)}else r=void 0}),o.addEventListener("touchend",o=>{if(r){if(r.delta&&r.delta>=t&&r.radian){const t=(r.radian-e+ue)%(2*ue)-ue;n[t<0?"next":"prev"](),o.stopPropagation()}r=void 0}},pe)},he=new Map;he.clear(),he.set("none",{backward:{both:void 0,incoming:void 0,outgoing:void 0},forward:{both:void 0,incoming:void 0,outgoing:void 0}});const we={both:"",outgoing:"outgoing-",incoming:"incoming-"},ye={forward:"",backward:"-backward"},be=e=>`--marp-bespoke-transition-animation-${e}`,ke=e=>`--marp-transition-${e}`,xe=be("name"),Ee=be("duration"),$e=e=>new Promise(t=>{const n={},r=document.createElement("div"),o=e=>{r.remove(),t(e)};r.addEventListener("animationstart",()=>o(n)),Object.assign(r.style,{animationName:e,animationDuration:"1s",animationFillMode:"both",animationPlayState:"paused",position:"absolute",pointerEvents:"none"}),document.body.appendChild(r);const i=getComputedStyle(r).getPropertyValue(ke("duration"));i&&Number.parseFloat(i)>=0&&(n.defaultDuration=i),((e,t)=>{requestAnimationFrame(()=>{e.style.animationPlayState="running",requestAnimationFrame(()=>t(void 0))})})(r,o)}),Le=async e=>he.has(e)?he.get(e):(e=>{const t={},n=[];for(const[r,o]of Object.entries(we))for(const[i,a]of Object.entries(ye)){const s=`marp-${o}transition${a}-${e}`;n.push($e(s).then(e=>{t[i]=t[i]||{},t[i][r]=e?{...e,name:s}:void 0}))}return Promise.all(n).then(()=>t)})(e).then(t=>(he.set(e,t),t)),Se=e=>Object.values(e).flatMap(Object.values).every(e=>!e),Pe=(e,{type:t,backward:n})=>{const r=e[n?"backward":"forward"],o=(()=>{const e=r[t],n=e=>({[xe]:e.name});if(e)return n(e);if(r.both){const e=n(r.both);return"incoming"===t&&(e[be("direction")]="reverse"),e}})();return!o&&n?Pe(e,{type:t,backward:!1}):o||{[xe]:"__bespoke_marp_transition_no_animation__"}},_e=e=>{if(e)try{const t=JSON.parse(e);if((e=>{if("object"!=typeof e)return!1;const t=e;return"string"==typeof t.name&&(void 0===t.duration||"string"==typeof t.duration)})(t))return t}catch{}},Oe="_tSId",Te="_tA",Ie="bespoke-marp-transition-warming-up",Me=window.matchMedia("(prefers-reduced-motion: reduce)"),Ae="__bespoke_marp_transition_reduced_outgoing__",Ce="__bespoke_marp_transition_reduced_incoming__",De={forward:{both:void 0,incoming:{name:Ce},outgoing:{name:Ae}},backward:{both:void 0,incoming:{name:Ce},outgoing:{name:Ae}}},Ne=e=>{if(!document.startViewTransition)return;const t=t=>(void 0!==t&&(e._tD=t),e._tD);let n;t(!1),((...e)=>{CSS.registerProperty({name:ke("duration"),syntax:"<time>",inherits:!0,initialValue:"-1s"});const t=[...new Set(e).values()];return Promise.all(t.map(e=>Le(e))).then()})(...Array.from(document.querySelectorAll("section[data-transition], section[data-transition-back]")).flatMap(e=>[e.dataset.transition,e.dataset.transitionBack].flatMap(e=>{const t=_e(e);return[t?.name,t?.builtinFallback?`__builtin__${t.name}`:void 0]}).filter(e=>!!e))).then(()=>{document.querySelectorAll("style").forEach(e=>{e.innerHTML=e.innerHTML.replace(/--marp-transition-duration:[^;}]*[;}]/g,e=>e.slice(0,-1)+"!important"+e.slice(-1))})});const r=(n,{back:r,cond:o})=>i=>{const a=t();if(a)return!!i[Te]||!("object"!=typeof a||(a.skipTransition(),!i.forSync));if(e.skipTransition)return!0;if(!o(i))return!0;const s=e.slides[e.slide()],l=()=>i.back??r,c="data-transition"+(l()?"-back":""),d=s.querySelector(`section[${c}]`);if(!d)return!0;const u=_e(d.getAttribute(c)??void 0);return!u||((async(e,{builtinFallback:t=!0}={})=>{let n=await Le(e);if(Se(n)){if(!t)return;return n=await Le(`__builtin__${e}`),Se(n)?void 0:n}return n})(u.name,{builtinFallback:u.builtinFallback}).then(e=>{if(!e){t(!0);try{n(i)}finally{t(!1)}return}let r=e;Me.matches&&(console.warn("Use a constant animation to transition because preferring reduced motion by viewer has detected."),r=De);const o=document.getElementById(Oe);o&&o.remove();const a=document.createElement("style");a.id=Oe,document.head.appendChild(a),((e,t)=>{const n=[`:root{${ke("direction")}:${t.backward?-1:1};}`,":root:has(.bespoke-marp-inactive){cursor:none;}"],r=t=>{const n=e[t].both?.defaultDuration||e[t].outgoing?.defaultDuration||e[t].incoming?.defaultDuration;return"forward"===t?n:n||r("forward")},o=t.duration||r(t.backward?"backward":"forward");void 0!==o&&n.push(`::view-transition-group(*){${Ee}:${o};}`);const i=e=>Object.entries(e).map(([e,t])=>`${e}:${t};`).join("");return n.push(`::view-transition-old(root){${i(Pe(e,{...t,type:"outgoing"}))}}`,`::view-transition-new(root){${i(Pe(e,{...t,type:"incoming"}))}}`),n})(r,{backward:l(),duration:u.duration}).forEach(e=>a.sheet?.insertRule(e));const s=document.documentElement.classList;s.add(Ie);let c=!1;const d=()=>{c||(n(i),c=!0,s.remove(Ie))},f=()=>{t(!1),a.remove(),s.remove(Ie)};try{t(!0);const e=document.startViewTransition(d);t(e),e.finished.finally(f)}catch(e){console.error(e),d(),f()}}),!1)};e.on("prev",r(t=>e.prev({...t,[Te]:!0}),{back:!0,cond:e=>e.index>0&&!((e.fragment??1)&&n.fragmentIndex>0)})),e.on("next",r(t=>e.next({...t,[Te]:!0}),{cond:t=>t.index+1<e.slides.length&&!(n.fragmentIndex+1<n.fragments.length)})),setTimeout(()=>{e.on("slide",r(t=>e.slide(t.index,{...t,[Te]:!0}),{cond:t=>{const n=e.slide();return t.index!==n&&(t.back=t.index<n,!0)}}))},0),e.on("fragment",e=>{n=e})};let Be;const Ke=()=>(void 0===Be&&(Be="wakeLock"in navigator&&navigator.wakeLock),Be),qe=async()=>{const e=Ke();if(e)try{return await e.request("screen")}catch(e){console.warn(e)}return null},Ve=async()=>{if(!Ke())return;let e;const t=()=>{e&&"visible"===document.visibilityState&&qe()};for(const e of["visibilitychange","fullscreenchange"])document.addEventListener(e,t);return e=await qe(),e};((e=document.getElementById(":$p"))=>{(()=>{const e=v("view");i.dataset.bespokeView=u.some(t=>t&&t===e)?e:""})();const t=(e=>{const t=v(e);return h({[e]:void 0}),t})("sync")||void 0;o.from(e,((...e)=>{const t=u.findIndex(e=>p()===e);return e.map(([e,n])=>e[t]&&n).filter(e=>e)})([[1,1,1,0],B({key:t})],[[1,1,0,1],se(e)],[[1,1,0,0],M],[[1,1,1,1],E],[[1,0,0,0],T()],[[1,1,1,1],A],[[1,1,1,1],de({history:!1})],[[1,1,0,0],C()],[[1,1,1,0],_],[[1,0,0,0],le],[[1,1,0,0],ve()],[[1,0,0,0],D()],[[1,1,1,0],F()],[[1,0,0,0],Ne],[[1,1,1,1],$],[[1,1,1,0],Ve]))})()}();</script></body></html>

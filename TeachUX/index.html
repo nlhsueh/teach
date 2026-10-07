@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用者體驗設計 (UX Design) | 課程教材與簡報入口</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #dbeafe;
+      --surface: #ffffff;
+      --background: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+      background-color: var(--background);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 0 0 60px 0;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+      color: white;
+      padding: 60px 24px 50px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #bfdbfe;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: -24px auto 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Bottom Guide Card */
+    .guide-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+    }
+
+    @media (max-width: 800px) {
+      .guide-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    .guide-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .guide-section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e3a8a;
+    }
+
+    .guide-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .guide-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.4;
+    }
+
+    .guide-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      padding: 2px 7px;
+      border-radius: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .shortcuts-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .shortcut-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #475569;
+      background: #f8fafc;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+
+    kbd {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-bottom: 2px solid #94a3b8;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    /* Modules Grid */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 22px;
+      justify-content: center;
+    }
+
+    .module-card {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .module-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: #93c5fd;
+    }
+
+    .card-top {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .card-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .module-card h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .module-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-secondary {
+      background-color: #f8fafc;
+      color: #334155;
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      border-color: #cbd5e1;
+    }
+
+    .btn-disabled {
+      background-color: #f1f5f9;
+      color: #94a3b8;
+      border: 1px dashed #cbd5e1;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .module-card.disabled {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      opacity: 0.65;
+      box-shadow: none;
+    }
+
+    .module-card.disabled:hover {
+      transform: none;
+      box-shadow: none;
+      border-color: #e2e8f0;
+    }
+
+    .module-card.disabled h2 {
+      color: #64748b;
+    }
+
+    .module-card.disabled .card-tag {
+      color: #94a3b8;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <span class="hero-badge">軟體工程實務 課程教材</span>
+    <h1>使用者體驗設計 (UX Design)</h1>
+    <p>整合 Nielsen 10 大易用性準則、AI for UX、UX for AI 與 Tidwell 設計樣式</p>
+  </header>
+
+  <div class="container">
+    <!-- Modules Grid (Content on Top) -->
+    <div class="modules-grid">
+
+      <!-- Unit 01 -->
+      <div class="module-card">
+        <div class="card-top">
+          <div class="card-tag">Unit 01</div>
+          <h2>使用者體驗設計導論</h2>
+          <p>UX 核心概念、使用者中心設計 (UCD) 流程、雙鑽石設計模型與工程思維整合。</p>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/slide01_intro.html?transition=fade" class="btn btn-primary" target="_blank">
+            🖥️ 開啟簡報 (HTML 互動模式)
+          </a>
+          <a href="Slide/pdf/slide01_intro.pdf" class="btn btn-secondary" target="_blank">
+            📄 下載簡報 (PDF)
+          </a>
+        </div>
+      </div>
+
+      <!-- Unit 02 -->
+      <div class="module-card" style="border-color: #93c5fd; box-shadow: 0 4px 12px rgba(37,99,235,0.08);">
+        <div class="card-top">
+          <div class="card-tag" style="color: #2563eb;">Unit 02 ★ 核心單元</div>
+          <h2>AI for UX 與尼爾森 10 大原則</h2>
+          <p>Nielsen 10 大易用性原則、約束式 Prompt 架構、Antigravity Agentic 實務與互動題庫闖關。</p>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/slide02_AI4UX.html?transition=fade" class="btn btn-primary" target="_blank">
+            🖥️ 開啟簡報 (HTML 互動模式)
+          </a>
+          <a href="Slide/pdf/slide02_AI4UX.pdf" class="btn btn-secondary" target="_blank">
+            📄 下載簡報 (PDF)
+          </a>
+        </div>
+      </div>
+
+      <!-- Unit 03 -->
+      <div class="module-card">
+        <div class="card-top">
+          <div class="card-tag">Unit 03</div>
+          <h2>UX for AI 體驗設計</h2>
+          <p>以使用者為中心的 AI 系統介面設計、可解釋性、狀態透明度與防呆信任架構。</p>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/slide03_UX4AI.html?transition=fade" class="btn btn-primary" target="_blank">
+            🖥️ 開啟簡報 (HTML 互動模式)
+          </a>
+          <a href="Slide/pdf/slide03_UX4AI.pdf" class="btn btn-secondary" target="_blank">
+            📄 下載簡報 (PDF)
+          </a>
+        </div>
+      </div>
+
+      <!-- Unit 04 -->
+      <div class="module-card">
+        <div class="card-top">
+          <div class="card-tag">Unit 04</div>
+          <h2>Tidwell 介面設計模式</h2>
+          <p>經典 UI/UX 設計模式庫（導覽、搜尋、資料呈現、操作流）與現代前端組件實踐。</p>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/slide04_Tidwell.html?transition=fade" class="btn btn-primary" target="_blank">
+            🖥️ 開啟簡報 (HTML 互動模式)
+          </a>
+          <a href="Slide/pdf/slide04_Tidwell.pdf" class="btn btn-secondary" target="_blank">
+            📄 下載簡報 (PDF)
+          </a>
+        </div>
+      </div>
+
+      <!-- Unit 05 (Disabled) -->
+      <div class="module-card disabled">
+        <div class="card-top">
+          <div class="card-tag">Unit 05 🔒 暫未開放</div>
+          <h2>AI 驅動的系統雛形設計與前期確認</h2>
+          <p>AI 雛形生成工具深度盤點（v0, Lovable, Uizard）、1-10-100 成本法則與高保真前期走查實踐。</p>
+        </div>
+        <div class="card-actions">
+          <span class="btn btn-disabled">
+            🔒 敬請期待 (即將推出)
+          </span>
+        </div>
+      </div>
+
+      <!-- Unit 06 (Quiz & Practice) -->
+      <div class="module-card" style="border-color: #86efac; box-shadow: 0 4px 12px rgba(22, 101, 52, 0.08);">
+        <div class="card-top">
+          <div class="card-tag" style="color: #15803d;">Unit 06 🎯 全觀念自我測驗</div>
+          <h2>全課程易用性實戰練習題庫</h2>
+          <p>集結全章節 24 題實戰情境測驗（含尼爾森原則、AI-UX、Agentic 與 Tidwell 模式），附完整答案與深度解析。</p>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/slide06_quiz.html?transition=fade" class="btn btn-primary" style="background-color: #16a34a; border-color: #16a34a;" target="_blank">
+            🖥️ 開始自我測驗 (HTML 模式)
+          </a>
+          <a href="Slide/pdf/slide06_quiz.pdf" class="btn btn-secondary" target="_blank">
+            📄 下載測驗題庫 (PDF)
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Guide: Header Navigation & Keyboard Shortcuts -->
+    <div class="guide-card">
+      <div class="guide-grid">
+        <!-- Section 1: Header Navigation -->
+        <div class="guide-section">
+          <div class="guide-section-header">
+            <span>🧭</span>
+            <span>頂部導覽列 (Header) 操作指南</span>
+          </div>
+          <ul class="guide-list">
+            <li>
+              <span class="guide-badge">◄ / ►</span>
+              <span>點擊左右箭頭快速跳轉至「上一章節」或「下一章節」起始頁。</span>
+            </li>
+            <li>
+              <span class="guide-badge">懸停章節名</span>
+              <span>滑鼠移至頂部章節文字上方，即刻展開「全簡報章節目錄清單」可直達各節。</span>
+            </li>
+            <li>
+              <span class="guide-badge">點擊章節名</span>
+              <span>釘選固定目錄面板，便於瀏覽選擇；點擊任一章節或點擊外部任意處即可關閉。</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Section 2: Marp Keyboard Guide -->
+        <div class="guide-section">
+          <div class="guide-section-header">
+            <span>⌨️</span>
+            <span>簡報互動模式快捷鍵 (Keyboard Shortcuts)</span>
+          </div>
+          <div class="shortcuts-list">
+            <span class="shortcut-badge"><kbd>F</kbd> 全螢幕模式</span>
+            <span class="shortcut-badge"><kbd>→</kbd> / <kbd>Space</kbd> 下一頁</span>
+            <span class="shortcut-badge"><kbd>←</kbd> 上一頁</span>
+            <span class="shortcut-badge"><kbd>P</kbd> 簡報者講稿</span>
+            <span class="shortcut-badge"><kbd>數字</kbd>+<kbd>Enter</kbd> 指定跳頁</span>
+            <span class="shortcut-badge"><kbd>Esc</kbd> 退出全螢幕</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>授課教師：薛念林 教授 | 逢甲大學資訊工程學系</p>
+    </footer>
+  </div>
+
+</body>
+
+</html>
