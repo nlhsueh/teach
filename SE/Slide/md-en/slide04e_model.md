@@ -36,7 +36,7 @@ To summarize this slide, remember this key takeaway: System modeling creates the
     <h3>Part 1: Foundations & Functional Models</h3>
     <ul>
       <li><b>4.1 Foundations of Modeling & UML:</b> What is modeling, 4 perspectives, 5 essential diagrams, method wars, and Three Amigos name cards.</li>
-      <li><b>4.2 Context & Process Models:</b> System boundaries, external partners, and activity workflows.</li>
+      <li><b>4.2 System Context Diagram (SCD):</b> Kossiakoff black-box boundaries, 4 external entity taxonomies (Wikipedia), DFD to C4 evolution, and activity workflows.</li>
       <li><b>4.3 Functional & Use Case Models:</b> Jacobson's legacy, include vs. extend, structured specifications.</li>
     </ul>
   </div>
@@ -430,55 +430,177 @@ To summarize this slide, remember this key takeaway: Ivar Jacobson invented Use 
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '4.2 Context & Process Models' -->
+<!-- header: '4.2 System Context Diagram & Architecture Boundaries' -->
 
-# **4.2 Context & Process Models**
+# **4.2 System Context Diagram (SCD)**
 
-> "Architecture is the decisions that you wish you could get right early in a project."
-> — *Ralph Johnson*
+> "Such a diagram pictures the system at the center, with no details of its interior structure, surrounded by all its interacting systems, environments and activities."  
+> — *Alexander Kossiakoff & William Sweet (Systems Engineering Principles and Practice)*
 
 <!--
-We now transition to Module 4.2: Context and Process Models.
+We now transition to Module 4.2: System Context Diagram and Architectural Boundaries.
 
-We will begin by defining architectural perimeters using a Context Model, and then trace end-to-end multi-party workflows using UML Activity Diagrams.
+In modern software and systems engineering, before writing any code or detailing internal classes, the single most critical architectural task is drafting the System Context Diagram.
 
-To summarize this slide, remember this key takeaway: Context models define system perimeters, while activity diagrams capture multi-stakeholder business processes.
+In this module, we will explore the engineering philosophy of context diagrams, examine the authoritative 4-part taxonomy of external entities from Wikipedia, trace its evolution from DFD Level 0 to the C4 Model, and analyze our food delivery case study.
+
+To summarize this slide, remember this key takeaway: A system context diagram defines high-level architectural perimeters and external entities, serving as the first line of defense against scope creep.
 -->
 ---
-## What is a Context Model?
+## What is a System Context Diagram?
 
-> "Context models define the operational perimeter of a system, specifying which external systems, human roles, and external entities interact with the target software." — *Ian Sommerville*
+> "A system context diagram defines the boundary between the system, or part of a system, and its environment, showing the entities that interact with it." — *Wikipedia / Systems Engineering Standard*
 
 <div class="two-columns">
 <div>
 
-### 🎯 Core Architectural Nature
-- **External Perspective:** Provides the highest-level architectural bird's-eye view.
-- **Bounded Container:** Treats the entire software system as a single black box focusing on external boundaries.
-- **Inter-System Protocol Focus:** Explicitly documents network interfaces and dependencies across organizations.
+### 🏛️ Definition & Black-Box Principle
+- **Highest-Level View:** Provides the top-level architectural bird's-eye view, similar to a high-level block diagram.
+- **Strict Black-Box Abstraction:** Pictures the system at the center, with **no details of its interior structure, modules, or code**.
+- **Plain Language Medium:** Intentionally drafted in accessible language so all technical and non-technical stakeholders can read and validate it.
 
 </div>
 <div>
 
-### 🛡️ Why Context Modeling Matters
-- **1. Establish System Boundaries:** Demarcates **In-Scope** from **Out-of-Scope**, preventing **Scope Creep**.
-- **2. Identify External Dependencies:** Surfaces APIs (Stripe, Maps, Firebase) early to assess SLAs and isolate compliance (PCI-DSS).
-- **3. Align Stakeholders:** Clear visual contract aligning PMs, architects, and external partners.
+### 🛡️ Two Core Engineering Missions
+- **1. Early Scope Agreement:** Strictly demarcates **In-Scope (what we build)** from **Out-of-Scope (environment/partners)**, preventing catastrophic **Scope Creep**.
+- **2. Identify Dependencies & Constraints:** Surfaces third-party APIs, SLAs, communication protocols, and legal/regulatory constraints (PCI-DSS, GDPR) early.
 
 </div>
 </div>
 
 <!--
-Before analyzing our practical case study, let us define what a Context Model actually is and why experienced software architects always draw it before writing code.
+What is a system context diagram? According to Wikipedia and systems engineering standards, it defines the operational boundary between the system under design and its environment.
 
-Ian Sommerville defines context models as defining the boundaries of a system within its operating environment.
+Notice the black-box principle: the system in the center is a closed container. We never show internal database tables, microservices, or class hierarchies here! The purpose of a context diagram is to step back and examine external interactions.
 
-Why is this essential?
-First, establishing boundaries. Countless projects fail from scope creep because boundaries are vague. A context diagram provides an unambiguous line of responsibility.
-Second, identifying dependencies and risks. Rather than building our own banking infrastructure or navigation satellites, we delegate to Stripe and Google Maps. This also insulates us from PCI-DSS regulatory liabilities.
-Third, aligning stakeholders to ensure full consensus across technical and business teams.
+Furthermore, context diagrams are written in plain, accessible language because they appear at the very beginning of a Software Requirements Specification (SRS), ensuring business executives, clients, and engineers share a single unambiguous mental model.
 
-To summarize this slide, remember this key takeaway: Context models define architectural boundaries, isolate external dependencies, and act as the first line of defense against scope creep.
+To summarize this slide, remember this key takeaway: The system context diagram uses a black-box view to establish early scope consensus and prevent project scope creep.
+-->
+---
+## Core Building Blocks of a Context Diagram
+
+> 🧩 **Minimalist yet Rigorous:** Systems engineering defines that every context diagram consists of two fundamental building blocks: Entities and Relationships.
+
+<div class="two-columns">
+<div>
+
+### 1. Entities (Actors / Terminators)
+- **Central System Entity:**
+  - Located at the center of the canvas; represents the target software under design.
+  - Rendered as a prominent single container box or circle.
+- **External Entities (Terminators):**
+  - Surrounding the central system; represents all external factors.
+  - Includes human user roles (stick figures), partner enterprise systems, cloud services, and hardware devices.
+
+</div>
+<div>
+
+### 2. Relationships (Labeled Flows)
+- **Directed Dependency Links:**
+  - Connect external entities with the central system, indicating interaction triggers and data directionality.
+- **Semantic Business Labeling:**
+  - Every line must carry a descriptive business action or data noun (e.g., "Submit food order", "Authorize card charge", "Stream GPS coordinates").
+  - Emphasizes **Information Flow**, not technical procedure call signatures.
+
+</div>
+</div>
+
+<!--
+The visual grammar of a context diagram relies on two basic building blocks: Entities and Relationships.
+
+First, Entities: at the center is the system we are building. Surrounding it are external entities (historically termed terminators in structured analysis), representing human roles, cloud APIs, and physical devices.
+
+Second, Relationships: directed lines connecting entities with the center. Crucially, these lines must be labeled with meaningful business actions or information flows. Never draw unlabeled lines!
+
+To summarize this slide, remember this key takeaway: Context diagrams consist of a central system surrounded by external entities, interconnected by labeled information flows.
+-->
+---
+## Taxonomy of External Entities: 4 Interactive Roles
+
+> 🧭 **Categorizing Environmental Dependencies:** Wikipedia establishes a classic taxonomy classifying external entities into four distinct operational categories.
+
+<div class="two-columns">
+<div>
+
+### ⚡ 1. Active Entities
+- **Definition:** Dynamic actors initiating interactions to achieve a specific goal or purpose.
+- **Examples:** End-user App Customers, Delivery Couriers, Restaurant Managers.
+- **Role:** High interaction frequency; drives core business transactions.
+
+### 🛡️ 2. Passive Entities
+- **Definition:** Static external entities that infrequently interact with the system.
+- **Examples:** System Administrators, Database Administrators (DBAs), Compliance Auditors.
+- **Role:** Maintenance, configuration, and periodic compliance verification.
+
+</div>
+<div>
+
+### 🤝 3. Cooperative Entities
+- **Definition:** Predictable external systems utilized by the system to achieve desired business outcomes.
+- **Examples:** Stripe Payment Gateway, Google Maps API, Firebase Push Cloud.
+- **Role:** Governed by vendor SLAs; requires fallback degradation strategies.
+
+### ⚖️ 4. Autonomous / Independent Entities
+- **Definition:** Entities separated from the system that impose indirect constraints or regulations.
+- **Examples:** Financial Regulatory Commissions, Standards Groups, PCI-DSS, GDPR.
+- **Role:** Dictates architecture boundaries without invoking runtime APIs.
+
+</div>
+</div>
+
+<!--
+Wikipedia highlights an authoritative taxonomy classifying external entities into four distinct types:
+
+First, Active Entities: these are primary goal-driven users, such as customers placing orders or couriers accepting dispatch missions.
+Second, Passive Entities: low-frequency maintainers, such as database administrators and security auditors.
+Third, Cooperative Entities: third-party platforms like Stripe or Google Maps that cooperate predictably to achieve our business goals. These require strict SLA monitoring and fallback plans.
+Fourth, Autonomous Entities: external regulatory bodies like the PCI Security Standards Council or GDPR authorities. While they don't invoke our APIs directly, their legal and compliance rules dictate our architectural boundaries—such as forcing us to outsource credit card storage to external gateways.
+
+To summarize this slide, remember this key takeaway: External entities are categorized into Active, Passive, Cooperative, and Autonomous entities, each imposing distinct architectural considerations.
+-->
+---
+## Evolution & Alternatives: From DFD Level 0 to C4 Model
+
+> 🔄 **From Structured Analysis to Modern Cloud Architectures:** System context modeling remains the bedrock of software architecture across decades.
+
+<div class="two-columns">
+<div>
+
+### 📜 Historical Evolution & Modeling Equivalents
+- **Structured Analysis (DFD Level 0):**
+  - Pioneered by Edward Yourdon & Tom DeMarco in the 1970s. Single "Process Bubble 0" represents the entire system scope.
+- **UML's Pragmatic Approach:**
+  - While UML lacks a dedicated "Context Diagram", architects use **High-Level Use Case Diagrams (with System Boundary)** or **Component Diagrams**.
+- **Modern C4 Model (Simon Brown):**
+  - The gold standard in modern microservices: **Level 1 is explicitly the System Context Diagram**.
+
+</div>
+<div>
+
+### 📐 Design Heuristics (Rule of Thumb)
+- **Interconnect Limit (Wikipedia Heuristic):**
+  - Keep connecting links **under 15 to 20 lines**.
+  - Beyond 20 connections, cognitive overload degrades clarity, resulting in an unreadable "spaghetti diagram".
+- **Preserve Black-Box Purity:**
+  - Resist the temptation to expose internal databases or microservices; focus strictly on external perimeters.
+
+</div>
+</div>
+
+<!--
+Let us review the historical evolution of context diagrams and how different methodologies approach them:
+
+In the 1970s, Edward Yourdon and Tom DeMarco introduced Structured Analysis and Data Flow Diagrams (DFDs). The highest level, DFD Level 0, was specifically named the Context Diagram, using a single central bubble to represent the entire system.
+
+In the UML era, while the OMG did not create a single standalone diagram named 'Context Diagram', software engineers routinely implement it using Use Case Diagrams with system boundaries or high-level Component Diagrams.
+
+In modern cloud architecture, Simon Brown created the C4 Model, where Level 1 is explicitly the System Context Diagram—the universal starting point for any microservice architecture.
+
+Finally, remember Wikipedia's golden heuristic: keep interconnects under 15 to 20 lines. If you have more than 20 lines, abstract or group them to avoid visual clutter.
+
+To summarize this slide, remember this key takeaway: Context diagrams evolved from DFD Level 0 to C4 Level 1; maintain under 20 interconnects for architectural clarity.
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -521,25 +643,33 @@ On the right are external enterprise clouds: Payment Gateways like Apple Pay and
 To summarize this slide, remember this key takeaway: The context diagram establishes the strict perimeter dividing internal software components from external actors and cloud services.
 -->
 ---
-## Explaining the Context Model & Architectural Boundaries
+## Food Delivery Context Diagram: Boundary & Entity Mapping
 
-> 🛡️ **Operational Boundary:** Clearly demarcates **internal core services** (Order Engine, Catalog, Tracking) from **external entities** to prevent scope creep.
+> 🛡️ **Operational Boundary & Entity Mapping:** Applying the 4-part external entity taxonomy to evaluate architecture scope and responsibilities.
 
 <div class="two-columns">
 <div>
 
-### 👤 Human Stakeholder Touchpoints
-- **Customer (Mobile App):** Queries menus, customizes dishes, places orders, and tracks delivery live.
-- **Restaurant Partner (Merchant Portal):** Confirms orders, updates kitchen prep status, and manages menu availability.
-- **Delivery Courier (Driver App):** Receives dispatch missions, navigates routes, and streams real-time GPS telemetry.
+### 🧭 Applying the 4 Entity Types
+- **Active Entities (End-Users):**
+  - **Customer (Mobile App):** Queries menus, places orders, tracks delivery.
+  - **Courier (Driver App):** Receives dispatches, streams GPS telemetry.
+  - **Restaurant (Portal):** Confirms tickets, updates cooking status.
+- **Cooperative Entities (Third-Party Cloud):**
+  - **Stripe / Apple Pay:** Authorizes and captures credit charges.
+  - **Google Maps API:** Calculates distance, route geometry, courier ETA.
+  - **Firebase:** Cross-platform asynchronous push and SMS alerts.
 
 </div>
 <div>
 
-### ☁️ External Cloud Dependencies
-- **Payment Gateway (Stripe / Apple Pay):** Executes charges; isolates internal databases from burdensome PCI-DSS audits.
-- **Navigation Service (Google Maps API):** Computes routing distance, courier ETAs, and road network geometry.
-- **Notification Cloud (Firebase / Twilio):** Dispatches asynchronous push alerts and SMS verification tokens.
+### 🛡️ Architectural Benefits & SLA Fallback
+- **Autonomous Compliance Isolation (PCI-DSS):**
+  - Credit card handling is outsourced, keeping internal DBs completely outside burdensome PCI-DSS audit scopes.
+- **Clear Responsibility Perimeter (Anti-Scope Creep):**
+  - Internal engineers build proprietary matching and dispatching engines without reinventing map or banking infrastructure.
+- **Graceful SLA Degradation:**
+  - If Google Maps encounters downtime or rate limits, the system falls back to straight-line distance estimates without halting.
 
 </div>
 </div>
@@ -552,6 +682,47 @@ First, it establishes what our engineering team is actually responsible for buil
 Second, it reveals the security perimeter: sensitive financial transactions must flow through external payment gateways, ensuring our internal databases stay outside burdensome PCI-DSS audit scopes.
 
 To summarize this slide, remember this key takeaway: Context diagrams eliminate architectural ambiguity by defining external APIs, actor roles, and security boundaries.
+-->
+---
+## Bridging from Context to Process Modeling: UML Activity Diagrams
+
+> 🌉 **From "Outer Boundary" to "Internal Collaboration":** The Context Diagram defines "who is outside", while Activity Diagrams detail "how multi-stakeholder workflows execute".
+
+<div class="two-columns">
+<div>
+
+### 🌐 1. System Context Diagram
+- **Perspective:** External static boundary (Where & Who).
+- **Granularity:** Highest-level black-box perspective.
+- **Core Role:**
+  - Establishes scope boundary; prevents scope creep.
+  - Categorizes external entities (Active, Passive, Cooperative, Autonomous).
+  - Catalogs cross-organizational network APIs and contracts.
+
+</div>
+<div>
+
+### ⚡ 2. UML Activity Diagram
+- **Perspective:** Dynamic behavioral workflows (How & When).
+- **Granularity:** Step-by-step actions and decision logic.
+- **Core Role:**
+  - Partitions operational responsibilities via Swimlanes.
+  - Models sequential steps, branching conditions, concurrency, and aborts.
+  - Traces the end-to-end operational lifecycle across actors.
+
+</div>
+</div>
+
+<!--
+Once the System Context Diagram defines our external boundary and identifies all participating entities, our next question is: How do these entities interact sequentially and concurrently to accomplish business goals?
+
+This marks the transition from Context Modeling to Process Modeling.
+
+The Context Diagram defines the operational boundary (Where & Who), and the UML Activity Diagram explains the dynamic workflow orchestration (How & When).
+
+Next, we examine two comprehensive activity diagrams for our food delivery platform: Order Placement & Kitchen Prep, followed by Courier Dispatch & Delivery.
+
+To summarize this slide, remember this key takeaway: Context diagrams define system perimeters, while activity diagrams specify end-to-end multi-party workflows.
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -579,12 +750,12 @@ To summarize this slide, remember this key takeaway: Activity swimlanes divide o
 ---
 ## Explaining Stage 1 Activity Flow & Notations
 
-* **Core Notation Elements in Activity Modeling:**
+- **Core Notation Elements in Activity Modeling:**
   - **Rounded Rectangles:** Operational action states (e.g., `Browse menu & select dishes`, `Kitchen starts cooking meal`).
   - **Swimlanes (Partitions):** Assign direct organizational ownership to Customer, Platform Core, and Restaurant Partner.
   - **Decision Diamonds:** Branching logic based on boolean guard conditions (`[Payment Authorized?]`, `[Accept Order?]`).
   - **Detach Node / Terminal Exit:** Represents an abnormal branch termination (e.g., payment decline or restaurant rejection).
-* **Engineering Rationale for Decoupling:**
+- **Engineering Rationale for Decoupling:**
   - Notice that Customer interaction ends at order submission; subsequent steps are managed asynchronously by the Platform and Merchant.
   - If a restaurant rejects an order, the Platform Core autonomously triggers an instant automated refund.
 
@@ -626,11 +797,11 @@ To summarize this slide, remember this key takeaway: Concurrency is modeled usin
 ---
 ## Explaining Stage 2 Activity Flow: Concurrency & Fork/Join
 
-* **Fork and Join Synchronization Bars (Thick Horizontal Bars):**
+- **Fork and Join Synchronization Bars (Thick Horizontal Bars):**
   - **Fork Bar (Concurrency Generator):** Splits a single control thread into **parallel concurrent activities**.
     - *Example:* The platform concurrently alerts the customer AND dispatches the courier. Neither branch blocks the other!
   - **Join Bar (Synchronization Barrier):** Recombines concurrent threads; execution proceeds only after *all* incoming parallel branches complete.
-* **Real-World Fulfillment Mechanics:**
+- **Real-World Fulfillment Mechanics:**
   - **Physical-to-Digital Handshake:** The courier scans a QR code receipt to atomically confirm meal pickup.
   - **Financial Settlement Trigger:** Final credit card charges and merchant/courier payouts are captured *only upon verified physical delivery*.
   - **Customer Feedback Loop:** Completing dropoff immediately triggers the rating and tipping prompt.
@@ -689,13 +860,13 @@ To summarize this slide, remember this key takeaway: Balancing actors on both si
 ---
 ## Explaining the Use Case Model & Actor Roles
 
-* **Primary vs. Supporting Actors:**
+- **Primary vs. Supporting Actors:**
   - **Primary Actors (Customer, Restaurant, Courier):** Human users who actively initiate use cases to achieve a personal business goal (e.g., eat food, earn revenue, deliver meals).
   - **Supporting / Secondary Actors (Payment Gateway):** External services invoked by the system to assist in fulfilling a use case (e.g., authenticating credit cards).
-* **System Boundary Demarcation:**
+- **System Boundary Demarcation:**
   - All use case ovals reside **inside** the boundary; actors reside **outside**.
   - A line connecting an actor to an oval indicates that the actor participates in that functional interaction.
-* **Granularity Rule of Thumb:**
+- **Granularity Rule of Thumb:**
   - A use case must represent a **complete, value-delivering transaction**.
   - *Bad:* "Enter Password", "Click Submit Button" (These are trivial UI actions, not use cases!).
   - *Good:* "Place Food Order", "Manage Restaurant Menu" (Delivers measurable business value).
@@ -867,11 +1038,11 @@ To summarize this slide, remember this key takeaway: Sequence diagrams trace tim
 ---
 ## Explaining the Sequence Flow & BCE Architecture
 
-* **The Boundary–Control–Entity (BCE) Architectural Pattern:**
+- **The Boundary–Control–Entity (BCE) Architectural Pattern:**
   - **Boundary Objects (`<<Boundary>>`):** Handle communication with actors and external APIs (e.g., `CheckoutUI`, `PaymentGatewayAPI`).
   - **Control Objects (`<<Control>>`):** Orchestrate transaction workflows and business rules (e.g., `OrderController`, `DispatchService`).
   - **Entity Objects (`<<Entity>>`):** Encapsulate persistent domain state and business data (e.g., `Order`, `Restaurant`).
-* **The Non-Negotiable Engineering Rule of BCE:**
+- **The Non-Negotiable Engineering Rule of BCE:**
   - External actors and UI boundaries must **never interact directly with Entity data objects**!
   - Interactions must flow strictly: **Actor &rarr; Boundary &rarr; Control &rarr; Entity**.
   - *Why?* Decouples the UI from the database schema. If the database schema changes, UI code remains completely unaffected.
@@ -988,15 +1159,15 @@ To summarize this slide, remember this key takeaway: Domain class diagrams synth
 ---
 ## Explaining the Domain Class Structure & Object Lifecycles
 
-* **Generalization Hierarchy (Inheritance):**
+- **Generalization Hierarchy (Inheritance):**
   - `User` is an abstract superclass defining shared attributes (`userId`, `phone`, `email`) and methods (`login()`).
   - `Customer` and `Courier` specialize `User`, inheriting core identity while adding role-specific fields (e.g., delivery address vs. vehicle type and live GPS).
-* **Composition (`◆` Solid Diamond) — Strong Whole-Part Ownership:**
+- **Composition (`◆` Solid Diamond) — Strong Whole-Part Ownership:**
   - `Order "1" *-- "1..*" OrderItem`: An `OrderItem` (e.g., 2 Spicy Burgers) has no independent existence outside its parent `Order`. If an order is deleted, all its `OrderItem` instances are cascade-deleted!
   - `Restaurant "1" *-- "1..*" MenuItem`: Menu dishes belong strictly to their publishing restaurant.
-* **Aggregation (`◇` Hollow Diamond) — Weak Whole-Part Relationship:**
+- **Aggregation (`◇` Hollow Diamond) — Weak Whole-Part Relationship:**
   - `DeliveryTask "0..*" o-- "1" Courier`: A delivery task is assigned to a courier, but the `Courier` **exists independently**. If the task is completed or cancelled, the courier does not vanish!
-* **Association vs. Catalog Independence:**
+- **Association vs. Catalog Independence:**
   - `OrderItem` references `MenuItem` with `0..* --> 1`. An order item captures the historical purchase price at checkout time, decoupling it from future restaurant menu price adjustments.
 
 <!--
@@ -1014,16 +1185,16 @@ To summarize this slide, remember this key takeaway: Distinguish composition (sh
 ---
 ## Class Diagram Notations: Compartments, Visibility & Multiplicity
 
-* **The Standard Three-Compartment Class Box:**
+- **The Standard Three-Compartment Class Box:**
   - **Top Compartment:** Class Name in `PascalCase` (italics denote an `abstract` class).
   - **Middle Compartment:** Typed Attributes: `[visibility] name: Type [= defaultValue]`.
   - **Bottom Compartment:** Operations: `[visibility] name(parameter: Type): ReturnType`.
-* **Visibility Modifiers (Encapsulation Grammar):**
+- **Visibility Modifiers (Encapsulation Grammar):**
   - `+` **Public:** Accessible by any class in the codebase.
   - `-` **Private:** Strictly encapsulated within this class declaration.
   - `#` **Protected:** Accessible within this class and derived subclasses.
   - `~` **Package:** Accessible within the same module/namespace.
-* **Association Multiplicities:**
+- **Association Multiplicities:**
   - `1`: Exactly one instance required.
   - `0..1`: Optional; zero or one instance.
   - `0..*` (or `*`): Zero or many instances.
@@ -1117,15 +1288,15 @@ To summarize this slide, remember this key takeaway: State machines model discre
 ---
 ## Explaining the Statechart & Transition Mechanics
 
-* **Finite State Machine (FSM) Principles:**
+- **Finite State Machine (FSM) Principles:**
   - At any single point in runtime execution, an `Order` instance resides in **exactly one** discrete state.
   - The order's response to an incoming event depends entirely on its **current active state**.
-* **The Formal Transition Label Grammar:**
+- **The Formal Transition Label Grammar:**
   $$\text{Trigger Event} \; [\text{Guard Condition}] \; / \; \text{Action Effect}$$
   - **Trigger Event:** The stimulus that initiates the transition (e.g., `chefStartsCooking()`, `courierScansPickup()`).
   - **Guard Condition (`[...]`):** A boolean condition that must evaluate to `true` for the transition to fire (e.g., `[within 5 min]`, `[time < 2 min]`).
   - **Action Effect (`/ ...`):** An atomic computational operation executed during the transition (e.g., `/ refundCharge()`, `/ startLiveGPSTracking()`).
-* **State Entry Actions:**
+- **State Entry Actions:**
   - An internal action executed automatically upon entering a state (e.g., `Placed: Entry / startRestaurantAcceptTimer()`).
 
 <!--
@@ -1191,7 +1362,7 @@ To summarize this slide, remember this key takeaway: AI tools accelerate diagram
 ---
 ## AI in System Modeling: The Visual Copilot
 
-* **The Text-to-Diagram Revolution:**
+- **The Text-to-Diagram Revolution:**
   - Large Language Models convert unstructured software requirements directly into **declarative diagram markup** (PlantUML, Mermaid.js, Graphviz).
   - Bridges natural language user stories and formal graphical architecture models in seconds.
 
@@ -1199,7 +1370,7 @@ To summarize this slide, remember this key takeaway: AI tools accelerate diagram
   <img src="../../img/ch05/ai_in_system_modeling.svg" style="max-height: 280px; width: auto;" alt="AI in System Modeling Workflow" />
 </div>
 
-* **Core Efficiency Leap:** Eliminates tedious manual formatting, allowing engineers to focus on architectural reasoning rather than visual layout.
+- **Core Efficiency Leap:** Eliminates tedious manual formatting, allowing engineers to focus on architectural reasoning rather than visual layout.
 
 <!--
 Generative AI has sparked a revolution in software modeling.
@@ -1213,13 +1384,13 @@ To summarize this slide, remember this key takeaway: AI-powered text-to-UML gene
 ---
 ## 4 Core AI Applications in System Modeling
 
-* **1. Text-to-UML Generation:**
+- **1. Text-to-UML Generation:**
   - Automatically generates Sequence, Class, and Activity diagrams directly from agile user stories and Given-When-Then criteria.
-* **2. Domain Entity Extraction:**
+- **2. Domain Entity Extraction:**
   - Analyzes raw requirements documents to extract domain nouns (classes, attributes) and verbs (methods, associations).
-* **3. Cross-Diagram Consistency Validation:**
+- **3. Cross-Diagram Consistency Validation:**
   - Scans Use Case actors, Class diagrams, and Sequence lifelines to detect mismatched naming conventions and unmapped components.
-* **4. Code-to-Model Reverse Engineering:**
+- **4. Code-to-Model Reverse Engineering:**
   - Ingests legacy codebases (Java/TypeScript/Python) to auto-generate class hierarchies and dependency graphs for developer onboarding.
 
 <!--
@@ -1235,11 +1406,11 @@ To summarize this slide, remember this key takeaway: AI enhances modeling throug
 ---
 ## Human-in-the-Loop: Modeling Risks & Best Practices
 
-* **Risks of Unchecked AI in System Modeling:**
+- **Risks of Unchecked AI in System Modeling:**
   - **Hallucinated Associations:** Inventing fictitious inheritance or composition links that do not match business reality.
   - **Architectural Bloat:** Over-engineering class hierarchies with unnecessary design patterns instead of clean abstractions.
   - **Ghost Lifelines:** Inventing non-existent microservice endpoints in sequence diagrams.
-* **The Golden Engineering Principle:**
+- **The Golden Engineering Principle:**
   > **AI Drafts the Diagram; The Human Architect Validates the Semantics!**
   > Software architects must critically inspect generated models to ensure they reflect true domain boundaries and operational constraints.
 
@@ -1333,13 +1504,13 @@ To summarize this slide, remember this key takeaway: These core modeling concept
 ---
 ## References & Further Reading
 
-* **Foundational Textbooks & Standards:**
+- **Foundational Textbooks & Standards:**
   - Sommerville, I. (2016). *Software Engineering* (10th ed.). Chapter 5: System Modeling. Pearson.
   - Booch, G., Rumbaugh, J., & Jacobson, I. (2005). *The Unified Modeling Language User Guide* (2nd ed.). Addison-Wesley.
   - Fowler, M. (2003). *UML Distilled: A Brief Guide to the Standard Object Modeling Language* (3rd ed.). Addison-Wesley.
   - Cockburn, A. (2000). *Writing Effective Use Cases*. Addison-Wesley.
   - Object Management Group (OMG). (2017). *OMG Unified Modeling Language (OMG UML) Specification*, Version 2.5.1.
-* **Modern Declarative Diagramming & AI Tooling:**
+- **Modern Declarative Diagramming & AI Tooling:**
   - PlantUML Open-Source Standard: [plantuml.com](https://plantuml.com)
   - Mermaid.js JavaScript Diagramming Documentation: [mermaid.js.org](https://mermaid.js.org)
 
