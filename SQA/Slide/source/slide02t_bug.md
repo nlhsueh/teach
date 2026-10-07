@@ -44,7 +44,7 @@ footer: 'Ch02 錯與除錯'
 <div class="card" data-marpit-fragment>
 
 ### 🛡️ 防禦架構與缺陷管理
-- **2.5 防禦編程與契約**：Meyer 契約三大法則、斷言 vs. 例外
+- **2.5 防禦編程與契約**：Meyer 契約三大法則、斷言、例外架構與 BubbleSort 實戰
 - **2.6 缺陷管理 (BTS)**：大樓的燈寓言、生命週期與 2x2 決策矩陣
 - **2.7 綜合練習與實戰**：因果辨析、邏輯排查與 MaxHeap 實作
 
@@ -1116,35 +1116,135 @@ public class BankAccount {
 
 ## 2.5.3 例外處理機制 (Exception Handling)
 
-- 🌲 **Java `Throwable` 核心層次結構**：
-  - **1. Checked Exception (受檢例外)**：
-    - 繼承自 `Exception`（非 RuntimeException），如 `IOException`, `SQLException`。
-    - 外部環境可能發生但程式無法完全預防；**編譯器強制要求必須處理，否則編譯錯誤**。
-  - **2. Unchecked Exception (未檢例外 / 執行期例外)**：
-    - 繼承自 `RuntimeException`，如 `NullPointerException`, `IllegalArgumentException`。
-    - 通常源於**程式設計師的邏輯缺陷**；編譯期不強制捕捉，但未處理會造成程式中斷。
-  - **3. Error (嚴重錯誤)**：
-    - 如 `OutOfMemoryError`, `StackOverflowError`，代表 JVM 底層硬體或記憶體崩潰，應用層不應捕捉。
-- 📜 **捕捉或宣告原則 (Catch or Declare Rule - CDR)**：
-  - 對於受檢例外只有兩種選擇：**要嘛用 `try-catch` 妥善處理，要嘛用 `throws` 宣告交給呼叫者處理**！
+<div class="card-deck">
+
+* > 🌲 程式難免面臨異常，建立清晰的 `Throwable` 階層意識是撰寫強固軟體的基石。
+
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+
+### ⚠️ 1. Unchecked (未檢例外)
+- **類別繼承**：
+  - 繼承自 `RuntimeException`。
+- **根本成因**：
+  - 通常源於**程式設計師的邏輯缺陷**（如邊界算錯、指標未判空）。
+- **處理原則**：
+  - 編譯期不強制捕捉；應從代碼邏輯根除，或作為 API 前置條件主動防禦。
+- **代表案例**：
+  - `NullPointerException`
+  - `ArrayIndexOutOfBoundsException`
+  - `IllegalArgumentException`
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🛡️ 2. Checked (受檢例外)
+- **類別繼承**：
+  - 繼承自 `Exception`（非 RuntimeException）。
+- **根本成因**：
+  - 外部環境不可控事件（檔案遺失、網路中斷）或業務領域合約失敗。
+- **處理原則 (CDR)**：
+  - **捕捉或宣告原則 (Catch or Declare)**：編譯器強制要求必須 `try-catch` 或用 `throws` 向上宣告！
+- **代表案例**：
+  - `FileNotFoundException`, `IOException`
+  - 自訂業務例外（如 `SortingException`）
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 💥 3. Error (嚴重錯誤)
+- **類別繼承**：
+  - 繼承自 `Throwable`。
+- **根本成因**：
+  - JVM 執行期底層資源耗盡、硬體故障或不可恢復之嚴重災難。
+- **處理原則**：
+  - **應用程式絕不應嘗試捕捉**；應任其崩潰並由系統監控發出警報。
+- **代表案例**：
+  - `StackOverflowError`（無窮遞迴）
+  - `OutOfMemoryError`（記憶體枯竭）
+
+</div>
+</div>
+</div>
+
+---
+
+## 2.5.3 實戰示範：BubbleSortExceptionDemo 例外全景
+
+<div class="card-deck">
+
+> 💡 貫徹氣泡排序主題：在同一個排序演算法中，全方位體驗各類例外的真實發生與防禦場景。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🧪 未檢例外 vs. 致命錯誤 (Bug 示範)
+- **未判空直接存取 ➔ `NullPointerException`**：
+  ```java
+  public static void unshieldedSort(int[] data) {
+      int length = data.length; // 💥 data 為 null 瞬間拋錯
+  }
+  ```
+- **雙層迴圈邊界越界 ➔ `ArrayIndexOutOfBoundsException`**：
+  ```java
+  for (int i = 0; i < length; i++) {
+      if (data[i] > data[i + 1]) { ... } // 💥 存取 i+1 越界
+  }
+  ```
+- **無窮遞迴堆疊耗盡 ➔ `StackOverflowError`**：
+  - 遞迴氣泡排序若忘記將規模減 1（如誤傳 $n$ 而非 $n-1$），無窮壓棧引發 JVM 呼叫堆疊崩潰！
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🛡️ 受檢例外 vs. 主動防禦 (強固架構)
+- **前置條件主動防衛 ➔ `IllegalArgumentException`**：
+  - `if (data == null) throw new IllegalArgumentException("陣列不可為 null");`
+- **後置合約驗證 ➔ 自訂受檢例外 `SortingException`**：
+  - 排序演算法結束後自動檢驗順序；若發現缺陷，主動拋出並**攜帶錯誤索引與現場資料**，精確通報上下文！
+- **外部檔案載入 ➔ `FileNotFoundException` / `IOException`**：
+  - 從檔案讀取測資，編譯器強制落實 CDR 原則，由呼叫端明確處理缺失狀況。
+
+</div>
+</div>
+</div>
 
 ---
 
 ## 2.5.3 現代例外實務：資源管理與反模式
 
-- 🛡️ **`try-with-resources` 自動資源釋放 (Java 7+)**：
-  - 實作 `AutoCloseable` 介面的資源（如檔案串流、資料庫連線），離開區塊時自動關閉，杜絕記憶體與系統資源控柄 (File Handles) 外洩：
+<div class="card-deck">
+
+* > 💡 良好的例外處理應遵循 Clean-Diagnose-Recover (CDR) 原則，避免資源外洩與隱藏缺陷。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🛡️ try-with-resources 與多重捕捉 (Multi-Catch)
+- **自動釋放資源 (Java 7+)**：
+  - 實作 `AutoCloseable` 的串流或連線，離開區塊時**保證自動關閉**，杜絕 File Handles 耗盡：
   ```java
-  try (FileReader reader = new FileReader("config.json")) {
-      // 讀取設定檔，結束後自動調用 reader.close()
-  } catch (IOException e) {
-      logger.error("讀取設定檔失敗: {}", e.getMessage(), e);
+  try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+      while ((line = reader.readLine()) != null) { ... }
   }
   ```
-- 🚫 **例外處理三大反模式 (Anti-Patterns)**：
-  - ❌ **生吞例外 (Swallowing)**：`catch (Exception e) {}` 空區塊導致錯誤徹底無聲消失。
-  - ❌ **僅印控制台**：僅寫 `e.printStackTrace()`，在正式環境無法持久化日誌與通報監控告警。
-  - ❌ **濫用捕捉根類別**：隨意 catch `Throwable`，反而攔截了系統崩潰的致命 Error。
+- **多重捕捉 (Multi-Catch)**：
+  - 用單一 catch 分支處理多個互斥例外（如 `catch (IOException | SortingException e)`），代碼精簡不重複。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🚫 例外處理三大惡劣反模式 (Anti-Patterns)
+- ❌ **生吞例外 (Swallowing)**：
+  - `catch (Exception e) {}` 空區塊導致錯誤徹底無聲消失，系統在資料已損壞狀態下繼續盲目運行。
+- ❌ **僅印控制台**：
+  - 只寫 `e.printStackTrace()`，在正式環境既無持久化日誌、亦無法觸發告警通知。
+- ❌ **濫用捕捉根類別**：
+  - 隨意 `catch (Throwable t)`，反而攔截了本應讓系統重啟的 `OutOfMemoryError`。
+
+</div>
+</div>
+</div>
 
 ---
 
