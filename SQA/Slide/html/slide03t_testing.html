@@ -99,7 +99,7 @@
 <p><img class="emoji" draggable="false" alt="📚" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4da.svg" data-marp-twemoji=""/> 依據 ISTQB CTFL v4.0 與 Myers《軟體測試的藝術》：測試是一門基於風險取樣的經驗科學，理解 7 大原則能避免盲目測試。</p>
 </blockquote>
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%A7%AD-%E5%8E%9F%E5%89%87-1--3%E6%B8%AC%E8%A9%A6%E6%9C%AC%E8%B3%AA%E8%88%87%E5%B7%A6%E7%A7%BB%E6%88%B0%E7%95%A5"><img class="emoji" draggable="false" alt="🧭" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f9ed.svg" data-marp-twemoji=""/> 原則 1 ～ 3：測試本質與左移戰略</h3>
 <ul>
 <li><strong>1. 測試顯示缺陷存在，而非不存在</strong>：測試能證明系統有錯，但無論執行多少測試，皆無法證明「絕對零缺陷」</li>
@@ -107,7 +107,7 @@
 <li><strong>3. 及早測試 / 測試左移 (Shift-Left)</strong>：靜態與動態測試應在需求與架構初期介入，1:10:100 定律防患於未然</li>
 </ul>
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%8E%AF-%E5%8E%9F%E5%89%87-4--7%E7%BC%BA%E9%99%B7%E8%A6%8F%E5%BE%8B%E8%88%87%E5%B7%A5%E7%A8%8B%E7%9B%B2%E9%BB%9E"><img class="emoji" draggable="false" alt="🎯" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3af.svg" data-marp-twemoji=""/> 原則 4 ～ 7：缺陷規律與工程盲點</h3>
 <ul>
 <li><strong>4. 缺陷群聚效應 (Defect Clustering)</strong>：80/20 法則，絕大多數重大缺陷高度集中於少數複雜度最高的核心模組</li>
@@ -414,7 +414,7 @@
 <p><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 驗證著重「是否正確地建造軟體」，確認著重「是否建造了正確的軟體」。</p>
 </blockquote>
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%94%8D-%E9%A9%97%E8%AD%89-verification---%E8%A3%BD%E7%A8%8B%E8%88%87%E8%A6%8F%E6%A0%BC%E5%B0%8E%E5%90%91"><img class="emoji" draggable="false" alt="🔍" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f50d.svg" data-marp-twemoji=""/> 驗證 (Verification) - 製程與規格導向</h3>
 <ul>
 <li><strong>核心哉問</strong>：「Are we building the product right?（我們是否正確地建造軟體？）」</li>
@@ -423,7 +423,7 @@
 <li><strong>常見失敗樣態</strong>：程式碼無任何編譯或邏輯錯誤，測試全數綠燈，卻完全不符合終端使用者真正所需</li>
 </ul>
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%8E%AF-%E7%A2%BA%E8%AA%8D-validation---%E7%94%A2%E5%93%81%E8%88%87%E5%83%B9%E5%80%BC%E5%B0%8E%E5%90%91"><img class="emoji" draggable="false" alt="🎯" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3af.svg" data-marp-twemoji=""/> 確認 (Validation) - 產品與價值導向</h3>
 <ul>
 <li><strong>核心哉問</strong>：「Are we building the right product?（我們是否建造了正確的軟體？）」</li>
@@ -451,7 +451,7 @@
 <p><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 測試維度涵蓋尋找缺陷與確認功能，且包含靜態原始碼審查與動態執行比對。</p>
 </blockquote>
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%92%A5-%E7%BC%BA%E5%A4%B1%E6%B8%AC%E8%A9%A6-vs-%E7%A2%BA%E8%AA%8D%E6%B8%AC%E8%A9%A6"><img class="emoji" draggable="false" alt="💥" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a5.svg" data-marp-twemoji=""/> 缺失測試 vs 確認測試</h3>
 <ul>
 <li><strong>缺失測試 (Defect Testing)</strong>：心態為「搞壞系統」，採極端邊界值、注入髒資料與逆向操作逼出 Bug</li>
@@ -460,7 +460,7 @@
 <li><strong>工程平衡</strong>：確認測試保證基本功能可用性；缺失測試則確立系統在高壓異常情境下的韌性與邊界強固度</li>
 </ul>
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%E2%9A%A1-%E9%9D%9C%E6%85%8B%E6%B8%AC%E8%A9%A6-vs-%E5%8B%95%E6%85%8B%E6%B8%AC%E8%A9%A6"><img class="emoji" draggable="false" alt="⚡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/26a1.svg" data-marp-twemoji=""/> 靜態測試 vs 動態測試</h3>
 <ul>
 <li><strong>靜態測試 (Static Testing)</strong>：<strong>不執行程式碼</strong>，透過同儕審查、規格檢驗與 AST 語法樹靜態分析</li>
@@ -481,7 +481,7 @@
 <p><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 黑箱測試從需求規格出發驗證外部行為；白箱測試深入程式碼邏輯追求高涵蓋率。</p>
 </blockquote>
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%93%A6-%E9%BB%91%E7%AE%B1%E5%8A%9F%E8%83%BD%E6%B8%AC%E8%A9%A6-black-box-testing"><img class="emoji" draggable="false" alt="📦" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4e6.svg" data-marp-twemoji=""/> 黑箱功能測試 (Black-Box Testing)</h3>
 <ul>
 <li><strong>視角與特性</strong>：受測系統視為不透明黑盒子，測試者完全不檢視內部原始碼與架構實作細節</li>
@@ -490,7 +490,7 @@
 <li><strong>最大優勢與盲點</strong>：測試者獨立不受實作偏見干擾；但無法檢測未被規格涵蓋的隱蔽死碼與安全後門</li>
 </ul>
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%94%AC-%E7%99%BD%E7%AE%B1%E7%B5%90%E6%A7%8B%E6%B8%AC%E8%A9%A6-white-box-testing"><img class="emoji" draggable="false" alt="🔬" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f52c.svg" data-marp-twemoji=""/> 白箱結構測試 (White-Box Testing)</h3>
 <ul>
 <li><strong>視角與特性</strong>：受測系統視為透明玻璃盒子，測試者深入檢視控制流程圖 (CFG) 與內部資料結構</li>
@@ -670,7 +670,7 @@
 <p><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 雙向追溯連結需求合約與測試案例，防止實作後測試偏誤與功能遺漏。</p>
 </blockquote>
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%94%97-%E6%B0%B4%E5%B9%B3%E5%B0%8D%E7%A8%B1%E8%BF%BD%E6%BA%AF%E5%B7%A5%E7%A8%8B%E5%83%B9%E5%80%BC"><img class="emoji" draggable="false" alt="🔗" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f517.svg" data-marp-twemoji=""/> 水平對稱追溯工程價值</h3>
 <ul>
 <li><strong>測試設計前置同步產出</strong>：需求與架構拍板當下，驗收測試案例與整合測試架構即已同步就緒</li>
@@ -679,7 +679,7 @@
 <li><strong>跨團隊共同理解語言</strong>：促成商業分析師 (BA)、架構師、開發者與測試工程師對系統驗收標準達成共識</li>
 </ul>
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%93%8A-%E9%9B%99%E5%90%91%E9%9C%80%E6%B1%82%E8%BF%BD%E6%BA%AF%E7%9F%A9%E9%99%A3-rtm"><img class="emoji" draggable="false" alt="📊" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4ca.svg" data-marp-twemoji=""/> 雙向需求追溯矩陣 (RTM)</h3>
 <ul>
 <li><strong>正向追溯（Forward - 確保無遺漏）</strong>：從需求出發確保每一條 SRS 都有對應測試案例，杜絕覆蓋盲區</li>
@@ -739,7 +739,7 @@
 <p><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 理想軟體追求規格、實作與測試高度重合，避免潛伏未驗證的後門與隱蔽 Bug。</p>
 </blockquote>
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%E2%AD%95-%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E8%A1%8C%E7%82%BA%E9%9B%86%E5%90%88"><img class="emoji" draggable="false" alt="⭕" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2b55.svg" data-marp-twemoji=""/> 三大核心行為集合</h3>
 <ul>
 <li><strong><img class="emoji" draggable="false" alt="📋" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4cb.svg" data-marp-twemoji=""/> 規劃的行為 (Specified)</strong>：需求規格書中明確定義的預期功能與約束</li>
@@ -748,7 +748,7 @@
 <li><strong>工程偏離警訊</strong>：三者若未高度重合，將衍生規格遺漏、幽靈功能或隱蔽資安後門</li>
 </ul>
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%8E%AF-%E4%BA%A4%E9%9B%86%E5%8D%80%E5%9F%9F%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90"><img class="emoji" draggable="false" alt="🎯" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3af.svg" data-marp-twemoji=""/> 交集區域深度解析</h3>
 <ul>
 <li><strong>區域 1 (黃金核心)</strong>：有規格、有實作且經測試驗證（健康交付目標！）</li>
@@ -778,7 +778,7 @@
 <p><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 測試案例是驗證邏輯與規格的整體規劃，測試資料則是代入執行的具體數值與 Fixture。</p>
 </blockquote>
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%93%8B-%E6%B8%AC%E8%A9%A6%E6%A1%88%E4%BE%8B-test-case"><img class="emoji" draggable="false" alt="📋" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4cb.svg" data-marp-twemoji=""/> 測試案例 (Test Case)</h3>
 <ul>
 <li><strong>本質定義</strong>：測試架構與邏輯分流的<strong>整體規劃規格書</strong></li>
@@ -787,7 +787,7 @@
 <li><strong>工程價值</strong>：對應功能需求與等價類別，維持測試套件的規格完整度</li>
 </ul>
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%94%A2-%E6%B8%AC%E8%A9%A6%E8%B3%87%E6%96%99-test-data"><img class="emoji" draggable="false" alt="🔢" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f522.svg" data-marp-twemoji=""/> 測試資料 (Test Data)</h3>
 <ul>
 <li><strong>本質定義</strong>：具體代入受測方法執行的<strong>數值元組與環境 Fixture</strong></li>
@@ -807,7 +807,7 @@
 <blockquote>
 <p><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 以除法運算 <code>divide(a, b)</code> 為例：測試案例是樹狀邏輯規格，測試資料是葉節點上的具體實例數值。</p>
 </blockquote>
-<div class="image-wrapper">
+<div class="image-wrapper" style="height: 430px; margin-top: auto; margin-bottom: auto;">
   <img src="../../img/ch03/testcase_testdata_mindmap.png" alt="Test Case vs Test Data 心智圖" />
 </div>
 <footer>Ch03 軟體測試基礎</footer>
@@ -820,14 +820,14 @@
 <p><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 健全的測試案例必須清楚載明識別、前置環境、輸入數值、預期判定與後置狀態。</p>
 </blockquote>
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%86%94-%E8%AD%98%E5%88%A5%E8%88%87%E7%92%B0%E5%A2%83%E5%89%8D%E7%BD%AE-%E8%A6%81%E4%BB%B6-1--2"><img class="emoji" draggable="false" alt="🆔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f194.svg" data-marp-twemoji=""/> 識別與環境前置 (要件 1 &amp; 2)</h3>
 <ul>
 <li><strong>Component 1 (Test ID &amp; Summary)</strong>：唯一識別碼（如 <code>TC-AUTH-001</code>）與簡明測試目的</li>
 <li><strong>Component 2 (Preconditions)</strong>：執行前系統初始狀態、登入權限與資料庫 Fixtures</li>
 </ul>
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%8E%AF-%E8%BC%B8%E5%85%A5%E9%A0%90%E6%9C%9F%E8%88%87%E5%88%A4%E5%AE%9A-%E8%A6%81%E4%BB%B6-3-4-5"><img class="emoji" draggable="false" alt="🎯" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3af.svg" data-marp-twemoji=""/> 輸入、預期與判定 (要件 3, 4, 5)</h3>
 <ul>
 <li><strong>Component 3 (Inputs)</strong>：傳入受測方法之具體參數、Payload 或事件</li>
@@ -1155,7 +1155,7 @@
 <p><img class="emoji" draggable="false" alt="💡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4a1.svg" data-marp-twemoji=""/> 傳統軟體具確定性答案，而現代 AI 與推薦系統則需仰賴變質測試與跨模型差分對比。</p>
 </blockquote>
 <div class="two-columns">
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%93%90-%E5%82%B3%E7%B5%B1%E7%A2%BA%E5%AE%9A%E6%80%A7%E8%BB%9F%E9%AB%94-deterministic"><img class="emoji" draggable="false" alt="📐" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f4d0.svg" data-marp-twemoji=""/> 傳統確定性軟體 (Deterministic)</h3>
 <ul>
 <li><strong>明確輸入輸出對映</strong>：<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="8.927ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 3945.6 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="mo" transform="translate(550,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(939,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(1511,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(2177.8,0)"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(3455.6,0)"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container>（例如計算稅率、轉帳交易、加密雜湊等）</li>
@@ -1164,7 +1164,7 @@
 <li><strong>計算複雜度挑戰</strong>：若演算法極度龐大（如氣候模擬），即使邏輯確定，人類也難以預先手算標準值</li>
 </ul>
 </div>
-<div class="card">
+<div class="card" data-marpit-fragment>
 <h3 id="%F0%9F%A4%96-%E7%8F%BE%E4%BB%A3-ai-%E8%88%87%E8%A4%87%E9%9B%9C%E7%B3%BB%E7%B5%B1%E5%9B%B0%E5%A2%83"><img class="emoji" draggable="false" alt="🤖" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f916.svg" data-marp-twemoji=""/> 現代 AI 與複雜系統困境</h3>
 <ul>
 <li><strong>無唯一標準解答</strong>：搜尋推薦或開放問答（如「最受歡迎的資工選修」），難以定義絕對客觀真理</li>
@@ -1281,19 +1281,19 @@
 </ul>
 </li>
 </ul>
-&lt;script&gt;
+<script>
 (function() {
   function initHeaderDropdown() {
-    const sections = [];
-    const seenTitles = new Set();
-    const slideSections = document.querySelectorAll("section[id]");
+    var sections = [];
+    var seenTitles = new Set();
+    var slideSections = document.querySelectorAll("section[id]");
     
     // 1. Scan unique section titles and their slide IDs
-    slideSections.forEach(sec =&gt; {
-      const header = sec.querySelector("header");
+    slideSections.forEach(function(sec) {
+      var header = sec.querySelector("header");
       if (!header) return;
       
-      let title = header.textContent.trim();
+      var title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, "").replace(/\s*[►▶]$/, "").trim();
       if (!title || seenTitles.has(title)) return;
       
@@ -1308,50 +1308,77 @@
 
     // Helper to create the dropdown DOM
     function createDropdownWrapper(currentTitle) {
-      const wrapper = document.createElement("span");
+      var wrapper = document.createElement("span");
       wrapper.className = "header-nav-wrapper";
       
-      const titleSpan = document.createElement("span");
+      var titleSpan = document.createElement("span");
       titleSpan.className = "header-nav-title";
       titleSpan.title = "點擊固定或懸停查看所有章節快速跳轉";
-      titleSpan.innerHTML = currentTitle + "<span class="\&quot;nav-caret\&quot;"> ▾</span>";
+      
+      var textNode = document.createTextNode(currentTitle);
+      var caretSpan = document.createElement("span");
+      caretSpan.className = "nav-caret";
+      caretSpan.textContent = " ▾";
+      titleSpan.appendChild(textNode);
+      titleSpan.appendChild(caretSpan);
       
       titleSpan.addEventListener("click", function(e) {
         e.stopPropagation();
-        const wasOpen = wrapper.classList.contains("is-open");
-        document.querySelectorAll(".header-nav-wrapper.is-open").forEach(w =&gt; w.classList.remove("is-open"));
+        var wasOpen = wrapper.classList.contains("is-open");
+        document.querySelectorAll(".header-nav-wrapper.is-open").forEach(function(w) {
+          w.classList.remove("is-open");
+        });
         if (!wasOpen) {
           wrapper.classList.add("is-open");
         }
       });
       
-      const dropdown = document.createElement("div");
+      var dropdown = document.createElement("div");
       dropdown.className = "nav-dropdown";
       
       dropdown.addEventListener("click", function(e) {
         e.stopPropagation();
       });
       
-      const dropHeader = document.createElement("div");
+      var dropHeader = document.createElement("div");
       dropHeader.className = "nav-dropdown-header";
-      dropHeader.innerHTML = "<span>📑 快速跳轉章節目錄</span><span>共 " + sections.length + " 個章節</span>";
+      var titlePart = document.createElement("span");
+      titlePart.textContent = "📑 快速跳轉章節目錄";
+      var countPart = document.createElement("span");
+      countPart.style.fontSize = "11px";
+      countPart.style.fontWeight = "normal";
+      countPart.style.color = "#64748b";
+      countPart.textContent = "共 " + sections.length + " 個章節";
+      dropHeader.appendChild(titlePart);
+      dropHeader.appendChild(countPart);
       dropdown.appendChild(dropHeader);
       
-      const grid = document.createElement("div");
+      var grid = document.createElement("div");
       grid.className = "nav-dropdown-grid";
       
-      sections.forEach(s =&gt; {
-        const item = document.createElement("a");
-        const isActive = (s.title === currentTitle);
+      sections.forEach(function(s) {
+        var item = document.createElement("a");
+        var isActive = (s.title === currentTitle);
         item.className = "nav-dropdown-item" + (isActive ? " active" : "");
         item.href = "#" + s.id;
-        item.innerHTML = "<span class="\&quot;badge\&quot;">#" + s.id.padStart(2, "0") + "</span><span class="\&quot;item-text\&quot;" title="\&quot;&quot;">" + s.title + "</span>";
+        
+        var badge = document.createElement("span");
+        badge.className = "badge";
+        badge.textContent = "#" + s.id.padStart(2, "0");
+        
+        var itemText = document.createElement("span");
+        itemText.className = "item-text";
+        itemText.title = s.title;
+        itemText.textContent = s.title;
+        
+        item.appendChild(badge);
+        item.appendChild(itemText);
         
         item.addEventListener("click", function(e) {
           wrapper.classList.remove("is-open");
           dropdown.style.display = "none";
           window.location.hash = "#" + s.id;
-          setTimeout(() =&gt; { dropdown.style.display = ""; }, 350);
+          setTimeout(function() { dropdown.style.display = ""; }, 350);
         });
         
         grid.appendChild(item);
@@ -1366,22 +1393,24 @@
     // Close any pinned dropdown when clicking anywhere outside
     document.addEventListener("click", function(e) {
       if (!e.target.closest(".header-nav-wrapper")) {
-        document.querySelectorAll(".header-nav-wrapper.is-open").forEach(w =&gt; w.classList.remove("is-open"));
+        document.querySelectorAll(".header-nav-wrapper.is-open").forEach(function(w) {
+          w.classList.remove("is-open");
+        });
       }
     });
 
     // 2. Enhance each header element across all slides
-    slideSections.forEach(sec =&gt; {
-      const header = sec.querySelector("header");
+    slideSections.forEach(function(sec) {
+      var header = sec.querySelector("header");
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = "true";
       
-      let title = header.textContent.trim();
+      var title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, "").replace(/\s*[►▶]$/, "").trim();
       if (!title) return;
       
       header.innerHTML = "";
-      const wrapper = createDropdownWrapper(title);
+      var wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
     });
   }
@@ -1393,7 +1422,7 @@
   }
   setTimeout(initHeaderDropdown, 400);
 })();
-&lt;/script&gt;
+</script>
 <footer>Ch03 軟體測試基礎</footer>
 </section>
 <script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{container;containerSize;containerObserver;svg;svgComputedStyle;svgPreserveAspectRatio="xMinYMid meet";wrapper;wrapperSize;wrapperObserver;constructor(){super();const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=this.shadowRoot.querySelector(`div[${e}]`)??void 0;const t=this.svg;this.svg=this.wrapper?.querySelector(`svg[${i}]`)??void 0,this.svg!==t&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=this.svg?.querySelector(`span[${n}]`)??void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame(()=>{t.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){let t=Math.ceil(this.containerSize?.width??0);const e=Math.ceil(this.containerSize?.height??0);void 0!==this.dataset.downscaleOnly&&(t=Math.max(t,this.wrapperSize?.width??0));const i=this.svg?.querySelector(":scope > foreignObject");if(i?.setAttribute("width",`${t}`),i?.setAttribute("height",`${e}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${t} ${e}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=t<=0||e<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const r=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this._shadow()}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_shadow(){if(!this.shadowRoot)try{this.attachShadow({mode:"open"})}catch(t){if(!(t instanceof Error&&"NotSupportedError"===t.name))throw t}return this.shadowRoot}_update(){const t=this._shadow();if(t){const e=i?`<style>:host { ${i} }</style>`:"";let n="<slot></slot>";const{autoScaling:s}=this.dataset;if(void 0!==s){n=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===s?"data-downscale-only":""}>${n}</marp-auto-scaling>`}t.innerHTML=e+n}}};let o;const a=()=>o??(o=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is"),o),l=Symbol();let c;const d="marpitSVGPolyfill:setZoomFactor,",h=Symbol(),g=Symbol();const p=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[v]:[],i={then:e=>(t?(async()=>{if(void 0===c){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise(t=>{i.addEventListener("load",()=>t())});i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),c=e.getImageData(5,5,1,1).data[3]<128}return c})().then(t=>{null==e||e(t?[v]:[])}):null==e||e([]),i)};return Object.assign(e,i)};let m,u;function v(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[g]||(Object.defineProperty(window,g,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(d)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(u=i)}}catch(t){console.error(t)}}));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),t=>{var e,s,r,o;t.style.transform||(t.style.transform="translateZ(0)");const a=i||u||t.currentScale||1;m!==a&&(m=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(o=null===(r=n.y)||void 0===r?void 0:r.baseVal.value)&&void 0!==o?o:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}}),!1!==n&&Array.from(e.querySelectorAll("iframe"),({contentWindow:t})=>{null==t||t.postMessage(`${d}${n}`,"null"===window.origin?"*":window.origin)})}function w({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[h])return t[h];let e=!0;const i=()=>{e=!1,delete t[h]};Object.defineProperty(t,h,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await p()}finally{s=!0}})();const r=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(r)};return r(),i}(e);return t?(i(),()=>{}):i}m=1,u=void 0;const b=Symbol(),y=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[l];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,o=t[n].proto();a()&&o!==HTMLElement?i||customElements.define(s,r(o,{style:t[n].style}),{extends:n}):(i||customElements.define(s,r(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach(t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)}))}window[l]=!0})(e),e[b])return e[b];const i=w({target:e}),n=()=>{i(),delete e[b]},o=Object.assign(n,{cleanup:n,update:()=>y(e)});return Object.defineProperty(e,b,{configurable:!0,value:o}),o},f=document.currentScript;y(f?f.getRootNode():document)}();

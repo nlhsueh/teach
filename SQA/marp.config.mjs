@@ -6,4 +6,5 @@ export default {
     '../themes/academic-theme.css'
   ],
   allowLocalFiles: true,
+  html: true,
 };

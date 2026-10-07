@@ -1449,16 +1449,16 @@ public class BankAccount {
 <script>
 (function() {
   function initHeaderDropdown() {
-    const sections = [];
-    const seenTitles = new Set();
-    const slideSections = document.querySelectorAll("section[id]");
+    var sections = [];
+    var seenTitles = new Set();
+    var slideSections = document.querySelectorAll("section[id]");
     
     // 1. Scan unique section titles and their slide IDs
-    slideSections.forEach(sec => {
-      const header = sec.querySelector("header");
+    slideSections.forEach(function(sec) {
+      var header = sec.querySelector("header");
       if (!header) return;
       
-      let title = header.textContent.trim();
+      var title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, "").replace(/\s*[►▶]$/, "").trim();
       if (!title || seenTitles.has(title)) return;
       
@@ -1473,50 +1473,77 @@ public class BankAccount {
 
     // Helper to create the dropdown DOM
     function createDropdownWrapper(currentTitle) {
-      const wrapper = document.createElement("span");
+      var wrapper = document.createElement("span");
       wrapper.className = "header-nav-wrapper";
       
-      const titleSpan = document.createElement("span");
+      var titleSpan = document.createElement("span");
       titleSpan.className = "header-nav-title";
       titleSpan.title = "點擊固定或懸停查看所有章節快速跳轉";
-      titleSpan.innerHTML = currentTitle + "<span class=\"nav-caret\"> ▾</span>";
+      
+      var textNode = document.createTextNode(currentTitle);
+      var caretSpan = document.createElement("span");
+      caretSpan.className = "nav-caret";
+      caretSpan.textContent = " ▾";
+      titleSpan.appendChild(textNode);
+      titleSpan.appendChild(caretSpan);
       
       titleSpan.addEventListener("click", function(e) {
         e.stopPropagation();
-        const wasOpen = wrapper.classList.contains("is-open");
-        document.querySelectorAll(".header-nav-wrapper.is-open").forEach(w => w.classList.remove("is-open"));
+        var wasOpen = wrapper.classList.contains("is-open");
+        document.querySelectorAll(".header-nav-wrapper.is-open").forEach(function(w) {
+          w.classList.remove("is-open");
+        });
         if (!wasOpen) {
           wrapper.classList.add("is-open");
         }
       });
       
-      const dropdown = document.createElement("div");
+      var dropdown = document.createElement("div");
       dropdown.className = "nav-dropdown";
       
       dropdown.addEventListener("click", function(e) {
         e.stopPropagation();
       });
       
-      const dropHeader = document.createElement("div");
+      var dropHeader = document.createElement("div");
       dropHeader.className = "nav-dropdown-header";
-      dropHeader.innerHTML = "<span>📑 快速跳轉章節目錄</span><span style=\"font-size:11px;font-weight:normal;color:#64748b;\">共 " + sections.length + " 個章節</span>";
+      var titlePart = document.createElement("span");
+      titlePart.textContent = "📑 快速跳轉章節目錄";
+      var countPart = document.createElement("span");
+      countPart.style.fontSize = "11px";
+      countPart.style.fontWeight = "normal";
+      countPart.style.color = "#64748b";
+      countPart.textContent = "共 " + sections.length + " 個章節";
+      dropHeader.appendChild(titlePart);
+      dropHeader.appendChild(countPart);
       dropdown.appendChild(dropHeader);
       
-      const grid = document.createElement("div");
+      var grid = document.createElement("div");
       grid.className = "nav-dropdown-grid";
       
-      sections.forEach(s => {
-        const item = document.createElement("a");
-        const isActive = (s.title === currentTitle);
+      sections.forEach(function(s) {
+        var item = document.createElement("a");
+        var isActive = (s.title === currentTitle);
         item.className = "nav-dropdown-item" + (isActive ? " active" : "");
         item.href = "#" + s.id;
-        item.innerHTML = "<span class=\"badge\">#" + s.id.padStart(2, "0") + "</span><span class=\"item-text\" title=\"" + s.title + "\">" + s.title + "</span>";
+        
+        var badge = document.createElement("span");
+        badge.className = "badge";
+        badge.textContent = "#" + s.id.padStart(2, "0");
+        
+        var itemText = document.createElement("span");
+        itemText.className = "item-text";
+        itemText.title = s.title;
+        itemText.textContent = s.title;
+        
+        item.appendChild(badge);
+        item.appendChild(itemText);
         
         item.addEventListener("click", function(e) {
           wrapper.classList.remove("is-open");
           dropdown.style.display = "none";
           window.location.hash = "#" + s.id;
-          setTimeout(() => { dropdown.style.display = ""; }, 350);
+          setTimeout(function() { dropdown.style.display = ""; }, 350);
         });
         
         grid.appendChild(item);
@@ -1531,22 +1558,24 @@ public class BankAccount {
     // Close any pinned dropdown when clicking anywhere outside
     document.addEventListener("click", function(e) {
       if (!e.target.closest(".header-nav-wrapper")) {
-        document.querySelectorAll(".header-nav-wrapper.is-open").forEach(w => w.classList.remove("is-open"));
+        document.querySelectorAll(".header-nav-wrapper.is-open").forEach(function(w) {
+          w.classList.remove("is-open");
+        });
       }
     });
 
     // 2. Enhance each header element across all slides
-    slideSections.forEach(sec => {
-      const header = sec.querySelector("header");
+    slideSections.forEach(function(sec) {
+      var header = sec.querySelector("header");
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = "true";
       
-      let title = header.textContent.trim();
+      var title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, "").replace(/\s*[►▶]$/, "").trim();
       if (!title) return;
       
       header.innerHTML = "";
-      const wrapper = createDropdownWrapper(title);
+      var wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
     });
   }
