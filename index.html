@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>薛念林教授 課程教學教材庫 | Course Materials Portal</title>
-  <meta name="description" content="薛念林教授開設之使用者體驗設計 (UX Design) 與軟體品質保證 (SQA) 課程教材、互動簡報與實作範例總入口">
+  <meta name="description" content="薛念林教授開設之軟體工程 (SE)、使用者體驗設計 (UX Design) 與軟體品質保證 (SQA) 課程教材、互動簡報與實作範例總入口">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -13,15 +13,18 @@
     rel="stylesheet">
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --primary-light: #eff6ff;
-      --sqa-color: #0f766e;
-      --sqa-dark: #115e59;
-      --sqa-light: #f0fdfa;
+      --primary: #0b3c5d;
+      --primary-dark: #07263d;
+      --primary-light: #e0f2fe;
+      --se-color: #0b3c5d;
+      --se-dark: #07263d;
+      --se-light: #f0f9ff;
       --ux-color: #4f46e5;
       --ux-dark: #4338ca;
       --ux-light: #eef2ff;
+      --sqa-color: #0f766e;
+      --sqa-dark: #115e59;
+      --sqa-light: #f0fdfa;
       --surface: #ffffff;
       --background: #f8fafc;
       --text-main: #0f172a;
@@ -51,7 +54,7 @@
 
     /* Top Navigation */
     .navbar {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       position: sticky;
@@ -75,7 +78,7 @@
       width: 36px;
       height: 36px;
       border-radius: 10px;
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      background: linear-gradient(135deg, #0b3c5d, #2563eb);
       color: white;
       display: flex;
       align-items: center;
@@ -92,7 +95,7 @@
 
     .nav-links {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       align-items: center;
     }
 
@@ -113,7 +116,7 @@
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, #09122C 0%, #172554 50%, #1e3a8a 100%);
+      background: linear-gradient(135deg, #06152b 0%, #0b2545 45%, #134074 100%);
       color: white;
       padding: 70px 24px 60px 24px;
       text-align: center;
@@ -128,7 +131,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -158,14 +161,14 @@
     .hero p {
       font-size: 1.05rem;
       color: #cbd5e1;
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
       line-height: 1.6;
     }
 
     /* Course Cards Container */
     .container {
-      max-width: 1140px;
+      max-width: 1200px;
       margin: -40px auto 60px auto;
       padding: 0 24px;
       position: relative;
@@ -175,7 +178,7 @@
 
     .courses-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 28px;
     }
 
@@ -200,6 +203,10 @@
       padding: 24px 28px;
       color: white;
       position: relative;
+    }
+
+    .banner-se {
+      background: linear-gradient(135deg, #07263d 0%, #0b3c5d 100%);
     }
 
     .banner-ux {
@@ -296,6 +303,15 @@
       transition: all 0.2s ease;
     }
 
+    .btn-se {
+      background: var(--se-color);
+      color: white;
+    }
+
+    .btn-se:hover {
+      background: var(--se-dark);
+    }
+
     .btn-ux {
       background: var(--ux-color);
       color: white;
@@ -365,8 +381,9 @@
       <span class="brand-title">薛念林教授 課程教學教材庫</span>
     </a>
     <div class="nav-links">
-      <a href="./ux/" class="nav-link">🎨 UX Design</a>
-      <a href="./sqa/" class="nav-link">🛡️ SQA</a>
+      <a href="./SE/" class="nav-link">🏗️ SE</a>
+      <a href="./UX/" class="nav-link">🎨 UX</a>
+      <a href="./SQA/" class="nav-link">🛡️ SQA</a>
       <a href="https://github.com/nlhsueh/teach" target="_blank" rel="noopener" class="nav-link">GitHub</a>
     </div>
   </nav>
@@ -385,11 +402,41 @@
   <main class="container">
     <div class="courses-grid">
 
+      <!-- SE (Software Engineering) Course Card -->
+      <article class="course-card">
+        <div class="card-banner banner-se">
+          <div class="card-meta">
+            <span class="card-tag">架構與工程方法論</span>
+            <span class="card-icon">🏗️</span>
+          </div>
+          <h2 class="card-title">軟體工程</h2>
+          <div class="card-subtitle">Software Engineering (SE)</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">
+            涵蓋軟體生命週期、敏捷開發 (Scrum/Kanban)、需求工程、UML 塑模、軟體架構模式、DevOps 與 AI 規格驅動開發，提供中英雙語簡報與互動測驗。
+          </p>
+          <div class="topics-list">
+            <span class="topic-pill">敏捷 Scrum / XP</span>
+            <span class="topic-pill">需求工程 / NFR</span>
+            <span class="topic-pill">架構設計 & UML</span>
+            <span class="topic-pill">AI 規格驅動開發</span>
+          </div>
+          <div class="card-actions">
+            <a href="./SE/" class="btn-main btn-se">
+              <span>進入 SE 課程門戶</span>
+              <span>→</span>
+            </a>
+            <a href="./SE/index.html" class="btn-secondary" title="直接前往教材目錄">教材目錄</a>
+          </div>
+        </div>
+      </article>
+
       <!-- UX Design Course Card -->
       <article class="course-card">
         <div class="card-banner banner-ux">
           <div class="card-meta">
-            <span class="card-tag">UX & AI 設計</span>
+            <span class="card-tag">人機互動 & 體驗設計</span>
             <span class="card-icon">🎨</span>
           </div>
           <h2 class="card-title">使用者體驗設計</h2>
@@ -397,7 +444,7 @@
         </div>
         <div class="card-body">
           <p class="card-desc">
-            探討人機互動核心哲理，結合 Nielsen 十大啟發式原則與 Tidwell 介面模式。並導入現代化 AI 協作思維（AI for UX / UX for AI），帶領學生實戰打造直覺、優雅的互動系統。
+            探討人機互動核心哲理，結合 Nielsen 十大易用性原則與 Tidwell 介面模式。並導入現代化 AI 協作思維（AI for UX / UX for AI），打造直覺且優雅的互動系統。
           </p>
           <div class="topics-list">
             <span class="topic-pill">Nielsen 10 原則</span>
@@ -406,11 +453,11 @@
             <span class="topic-pill">即時隨堂測驗</span>
           </div>
           <div class="card-actions">
-            <a href="./ux/" class="btn-main btn-ux">
+            <a href="./UX/" class="btn-main btn-ux">
               <span>進入 UX 課程門戶</span>
               <span>→</span>
             </a>
-            <a href="./TeachUX/index.html" class="btn-secondary" title="直接前往教材目錄">教材目錄</a>
+            <a href="./UX/index.html" class="btn-secondary" title="直接前往教材目錄">教材目錄</a>
           </div>
         </div>
       </article>
@@ -419,7 +466,7 @@
       <article class="course-card">
         <div class="card-banner banner-sqa">
           <div class="card-meta">
-            <span class="card-tag">測試與軟體品管</span>
+            <span class="card-tag">測試與品質保證</span>
             <span class="card-icon">🛡️</span>
           </div>
           <h2 class="card-title">軟體品質保證</h2>
@@ -436,11 +483,11 @@
             <span class="topic-pill">上機實習 (LabDemo)</span>
           </div>
           <div class="card-actions">
-            <a href="./sqa/" class="btn-main btn-sqa">
+            <a href="./SQA/" class="btn-main btn-sqa">
               <span>進入 SQA 課程門戶</span>
               <span>→</span>
             </a>
-            <a href="./TeachSQA/index.html" class="btn-secondary" title="直接前往教材目錄">教材目錄</a>
+            <a href="./SQA/index.html" class="btn-secondary" title="直接前往教材目錄">教材目錄</a>
           </div>
         </div>
       </article>

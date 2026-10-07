@@ -1,0 +1,1900 @@
+<!DOCTYPE html><html lang="C"><head><title>**進階軟體工程 (Advanced Software Engineering)**</title><meta property="og:title" content="**進階軟體工程 (Advanced Software Engineering)**"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=overview] button.bespoke-marp-overview-close,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{appearance:none;background-color:initial;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;transition:opacity .2s linear;-webkit-tap-highlight-color:transparent}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=overview] button.bespoke-marp-overview-close:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:disabled{cursor:not-allowed;opacity:.15!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=overview] button.bespoke-marp-overview-close:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover{opacity:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=overview] button.bespoke-marp-overview-close:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:active{opacity:.6}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=overview] button.bespoke-marp-overview-close:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTAgMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJtMzIgOTAgNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgeD0iMTAiIHk9IjIwIiBjbGFzcz0iYSIgcng9IjUuNjciLz48cGF0aCBkPSJNNDAgNzBIMjBWNTBtMjAgMEwyMCA3MG00MC00MGgyMHYyMG0tMjAgMCAyMC0yMCIgY2xhc3M9ImEiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgeD0iMTAiIHk9IjIwIiBjbGFzcz0iYSIgcng9IjUuNjciLz48cGF0aCBkPSJNMjAgNTBoMjB2MjBtLTIwIDAgMjAtMjBtNDAgMEg2MFYzMG0yMCAwTDYwIDUwIiBjbGFzcz0iYSIvPjwvc3ZnPg==")}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNODcuOCA0Ny41Qzg5IDUwIDg3LjcgNTIgODUgNTJIMzVhOC43IDguNyAwIDAgMS03LjItNC41bC0xNS42LTMxQzExIDE0IDEyLjIgMTIgMTUgMTJoNTBhOC44IDguOCAwIDAgMSA3LjIgNC41ek02MCA1MnYzNm0tMTAgMGgyME00NSA0MmgyMCIvPjwvc3ZnPg==") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=overview] button.bespoke-marp-overview-close,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-bigger{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNMTIgNTBoODBNNTIgOTBWMTAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-smaller{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNMTIgNTBoODAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=overview]{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4O3J4OjVweDtyeTo1cHg7d2lkdGg6MjVweDtoZWlnaHQ6MjVweH08L3N0eWxlPjwvZGVmcz48cmVjdCB4PSIyMCIgeT0iMjAiIGNsYXNzPSJhIi8+PHJlY3QgeD0iNTUiIHk9IjIwIiBjbGFzcz0iYSIvPjxyZWN0IHg9IjIwIiB5PSI1NSIgY2xhc3M9ImEiLz48cmVjdCB4PSI1NSIgeT0iNTUiIGNsYXNzPSJhIi8+PC9zdmc+") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}}@keyframes __bespoke_marp_transition_reduced_outgoing__{0%{opacity:1}to{opacity:0}}@keyframes __bespoke_marp_transition_reduced_incoming__{0%{mix-blend-mode:plus-lighter;opacity:0}to{mix-blend-mode:plus-lighter;opacity:1}}.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{::view-transition-group(*){animation-duration:var(--marp-bespoke-transition-animation-duration,.5s);animation-timing-function:ease}::view-transition-new(*),::view-transition-old(*){animation-delay:0s;animation-direction:var(--marp-bespoke-transition-animation-direction,normal);animation-duration:var(--marp-bespoke-transition-animation-duration,.5s);animation-fill-mode:both;animation-name:var(--marp-bespoke-transition-animation-name,var(--marp-bespoke-transition-animation-name-fallback,__bespoke_marp_transition_no_animation__));mix-blend-mode:normal}::view-transition-old(*){--marp-bespoke-transition-animation-name-fallback:__bespoke_marp_transition_reduced_outgoing__;animation-timing-function:ease}::view-transition-new(*){--marp-bespoke-transition-animation-name-fallback:__bespoke_marp_transition_reduced_incoming__;animation-timing-function:ease}::view-transition-new(root),::view-transition-old(root){animation-timing-function:linear}::view-transition-new(__bespoke_marp_transition_osc__),::view-transition-old(__bespoke_marp_transition_osc__){animation-duration:0s!important;animation-name:__bespoke_marp_transition_osc__!important}::view-transition-new(__bespoke_marp_transition_osc__){opacity:0!important}.bespoke-marp-transition-warming-up::view-transition-group(*),.bespoke-marp-transition-warming-up::view-transition-new(*),.bespoke-marp-transition-warming-up::view-transition-old(*){animation-play-state:paused!important}body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;interactivity:inert;opacity:0;pointer-events:none;z-index:-1}svg.bespoke-marp-slide:not(.bespoke-marp-active) *{view-transition-name:none!important}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;interactivity:auto;opacity:1;pointer-events:auto;z-index:0}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}}@media screen and (prefers-reduced-motion:reduce){svg.bespoke-marp-slide *{view-transition-name:none!important}}@media screen{[data-bespoke-marp-fragment=inactive]{visibility:hidden}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent{inset:0;position:absolute}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc{background:#000000a6;border-radius:7px;bottom:50px;color:#fff;contain:paint;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;user-select:none;view-transition-name:__bespoke_marp_transition_osc__;white-space:nowrap;will-change:transform;z-index:1}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>:where(*){margin-left:6px}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>:where(*):where(:first-child){margin-left:0}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=overview],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}:is(body[data-bespoke-view=""],body[data-bespoke-view=next]) svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+:where(.bespoke-marp-parent){top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{background:#0288d1;flex:0 0 0;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:#0000}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{display:grid;font-family:Helvetica,Arial,sans-serif;grid-template:"current dragbar next" minmax(140px,1fr) "current dragbar note" 2fr "info    dragbar note" 3em;grid-template-columns:minmax(3px,var(--bespoke-marp-presenter-split-ratio,66%)) 0 minmax(3px,1fr);height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container :where(.bespoke-marp-parent){grid-area:current;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container :where(.bespoke-marp-parent) :where(svg.bespoke-marp-slide){height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container :where(.bespoke-marp-parent) :where(svg.bespoke-marp-slide).bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container{background:#0288d1;cursor:col-resize;grid-area:dragbar;margin-left:-3px;opacity:0;position:relative;transition:opacity .4s linear .1s;width:6px;z-index:10}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container:hover{opacity:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container.active{opacity:1;transition-delay:0s}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:#0000;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;interactivity:inert;top:20px;-webkit-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note;position:relative;z-index:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper{display:block;inset:0;position:absolute}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons{background:#000000a6;border-radius:4px;bottom:0;display:flex;gap:4px;margin:12px;opacity:0;padding:6px;pointer-events:none;position:absolute;right:0;transition:opacity .2s linear}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons:focus-within,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper:focus-within+.bespoke-marp-presenter-note-buttons,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container:hover .bespoke-marp-presenter-note-buttons{opacity:1;pointer-events:auto}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{box-sizing:border-box;font-size:calc(1.1em*var(--bespoke-marp-note-font-scale, 1));height:calc(100% - 40px);margin:20px;overflow:auto;padding-right:3px;white-space:pre-wrap;width:calc(100% - 40px);word-wrap:break-word;scrollbar-color:#eeeeee80 #0000;scrollbar-width:thin}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:#0000}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:#eeeeee80;border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;overflow:hidden;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container :is(.bespoke-marp-presenter-info-page-area,.bespoke-marp-presenter-info-time,.bespoke-marp-presenter-info-timer){box-sizing:border-box;display:block;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page-area .bespoke-marp-presenter-info-page{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer:hover{cursor:pointer}body[data-bespoke-view=overview]{background:#161616;overflow:auto}body[data-bespoke-view=overview] [data-bespoke-marp-fragment=inactive]{visibility:visible}body[data-bespoke-view=overview] .bespoke-marp-overview-header{backdrop-filter:blur(4px);background:#222222d9;box-shadow:0 3px 10px #00000080;box-sizing:border-box;display:flex;height:48px;inset:0 0 auto;justify-content:flex-end;padding:10px;position:fixed;z-index:1}body[data-bespoke-view=overview] button.bespoke-marp-overview-close{height:28px;line-height:28px;transform:rotate(45deg);width:28px}body[data-bespoke-view=overview] .bespoke-marp-parent{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(0,240px));justify-content:space-around;padding:30px}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide{--bov-selected:#0000;--bov-focus:#161616;--bov-focus-outline:#0000;background-image:conic-gradient(#161616 0 0),conic-gradient(var(--bov-focus) 0 0),conic-gradient(var(--bov-focus-outline) 0 0),conic-gradient(var(--bov-selected) 0 0);background-position:5px 5px,3px 3px,2px 2px,0 0;background-repeat:no-repeat;background-size:calc(100% - 10px) calc(100% - 10px),calc(100% - 6px) calc(100% - 6px),calc(100% - 4px) calc(100% - 4px),100% 100%;content-visibility:visible;cursor:pointer;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));margin:-6px;padding:6px;interactivity:auto;opacity:1;outline:0;pointer-events:auto;scroll-margin-block:30px;width:100%;z-index:0}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide *,body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active *{pointer-events:none;interactivity:inert}body[data-bespoke-view=overview] .bespoke-marp-parent :is(svg.bespoke-marp-slide:active,svg.bespoke-marp-slide:focus-visible,svg.bespoke-marp-slide:hover){--bov-focus-outline:#161616}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide:focus-visible,body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide:hover{--bov-focus:#999}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide:active{--bov-focus:#eee}body[data-bespoke-view=overview] .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{--bov-selected:#0288d1}body[data-bespoke-view=overview]:has(.bespoke-marp-overview-header) .bespoke-marp-parent{padding-top:78px}body[data-bespoke-view=overview]:has(.bespoke-marp-overview-header) .bespoke-marp-parent svg.bespoke-marp-slide{scroll-margin-top:78px}.bespoke-marp-overview{background:#000000a6;inset:0;opacity:0;pointer-events:none;position:fixed;transition:opacity .1s ease;z-index:10}.bespoke-marp-overview iframe{background:#222;border:0;display:block;height:100%;left:0;position:absolute;top:0;width:100%}.bespoke-marp-overview[data-open="1"]{opacity:1;pointer-events:auto}}@media print{.bespoke-marp-overview,.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>div#\:\$p > svg > foreignObject > section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center;-webkit-text-size-adjust:100%;text-size-adjust:100%}div#\:\$p > svg > foreignObject > section::after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#\:\$p > svg > foreignObject > section:not([data-marpit-pagination])::after{display:none}div#\:\$p > svg > foreignObject > section :where(:is(h1, marp-h1)){font-size:2em;margin-block:0.67em}div#\:\$p > svg > foreignObject > section section:where(:is(h1, marp-h1)){--marpit-root-font-size: 2em}div#\:\$p > svg > foreignObject > section video::-webkit-media-controls{will-change:transform}@page {size:1280px 720px;margin:0}@media print{html, body{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#\:\$p > svg > foreignObject > section{page-break-before:always;break-before:page}div#\:\$p > svg > foreignObject > section, div#\:\$p > svg > foreignObject > section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;print-color-adjust:exact!important;transition:none!important}div#\:\$p > svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}div#\:\$p > svg > foreignObject > :where(section){container-type:size}div#\:\$p > svg > foreignObject > section img[data-marp-twemoji]{background:transparent;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;width:1em}div#\:\$p > svg > foreignObject > section{--fgColor-danger:light-dark(#d1242f, #f85149);--bgColor-attention-muted:light-dark(#fff8c5, #bb800926);--bgColor-muted:light-dark(#f6f8fa, #151b23);--bgColor-neutral-muted:light-dark(#818b981f, #656c7633);--borderColor-accent-emphasis:light-dark(#0969da, #1f6feb);--borderColor-attention-emphasis:light-dark(#9a6700, #9e6a03);--borderColor-danger-emphasis:light-dark(#cf222e, #da3633);--borderColor-default:light-dark(#d1d9e0, #3d444d);--borderColor-done-emphasis:light-dark(#8250df, #8957e5);--borderColor-success-emphasis:light-dark(#1a7f37, #238636);--color-prettylights-syntax-brackethighlighter-angle:light-dark(#59636e, #9198a1);--color-prettylights-syntax-brackethighlighter-unmatched:light-dark(#82071e, #f85149);--color-prettylights-syntax-carriage-return-bg:light-dark(#cf222e, #b62324);--color-prettylights-syntax-carriage-return-text:light-dark(#f6f8fa, #f0f6fc);--color-prettylights-syntax-comment:light-dark(#59636e, #9198a1);--color-prettylights-syntax-constant:light-dark(#0550ae, #79c0ff);--color-prettylights-syntax-constant-other-reference-link:light-dark(#0a3069, #a5d6ff);--color-prettylights-syntax-entity:light-dark(#6639ba, #d2a8ff);--color-prettylights-syntax-entity-tag:light-dark(#0550ae, #7ee787);--color-prettylights-syntax-invalid-illegal-text:light-dark(var(--fgColor-danger), var(--fgColor-danger));--color-prettylights-syntax-keyword:light-dark(#cf222e, #ff7b72);--color-prettylights-syntax-markup-changed-bg:light-dark(#ffd8b5, #5a1e02);--color-prettylights-syntax-markup-changed-text:light-dark(#953800, #ffdfb6);--color-prettylights-syntax-markup-deleted-bg:light-dark(#ffebe9, #67060c);--color-prettylights-syntax-markup-deleted-text:light-dark(#82071e, #ffdcd7);--color-prettylights-syntax-markup-heading:light-dark(#0550ae, #1f6feb);--color-prettylights-syntax-markup-ignored-bg:light-dark(#0550ae, #1158c7);--color-prettylights-syntax-markup-ignored-text:light-dark(#d1d9e0, #f0f6fc);--color-prettylights-syntax-markup-inserted-bg:light-dark(#dafbe1, #033a16);--color-prettylights-syntax-markup-inserted-text:light-dark(#116329, #aff5b4);--color-prettylights-syntax-markup-list:light-dark(#3b2300, #f2cc60);--color-prettylights-syntax-meta-diff-range:light-dark(#8250df, #d2a8ff);--color-prettylights-syntax-string:light-dark(#0a3069, #a5d6ff);--color-prettylights-syntax-string-regexp:light-dark(#116329, #7ee787);--color-prettylights-syntax-sublimelinter-gutter-mark:light-dark(#818b98, #3d444d);--color-prettylights-syntax-variable:light-dark(#953800, #ffa657);--fgColor-accent:light-dark(#0969da, #4493f8);--fgColor-attention:light-dark(#9a6700, #d29922);--fgColor-done:light-dark(#8250df, #ab7df8);--fgColor-muted:light-dark(#59636e, #9198a1);--fgColor-success:light-dark(#1a7f37, #3fb950);--bgColor-default:light-dark(#fff, #0d1117);--borderColor-muted:light-dark(#d1d9e0b3, #3d444db3);--color-prettylights-syntax-invalid-illegal-bg:light-dark(var(--bgColor-danger-muted), var(--bgColor-danger-muted));--color-prettylights-syntax-markup-bold:light-dark(#1f2328, #f0f6fc);--color-prettylights-syntax-markup-italic:light-dark(#1f2328, #f0f6fc);--color-prettylights-syntax-storage-modifier-import:light-dark(#1f2328, #f0f6fc);--fgColor-default:light-dark(#1f2328, #f0f6fc);--focus-outlineColor:light-dark(var(--borderColor-accent-emphasis), var(--borderColor-accent-emphasis));--borderColor-neutral-muted:light-dark(var(--borderColor-muted), var(--borderColor-muted));--base-size-16:calc(var(--marpit-root-font-size, 1rem) * 1);--base-size-24:calc(var(--marpit-root-font-size, 1rem) * 1.5);--base-size-4:calc(var(--marpit-root-font-size, 1rem) * 0.25);--base-size-40:calc(var(--marpit-root-font-size, 1rem) * 2.5);--base-size-8:calc(var(--marpit-root-font-size, 1rem) * 0.5);--base-text-weight-medium:500;--base-text-weight-normal:400;--base-text-weight-semibold:600;--fontStack-monospace:ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;--fontStack-sansSerif:-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";}/*!
+ * Marp default theme.
+ *
+ * @theme default
+ * @author Yuki Hattori
+ *
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */div#\:\$p > svg > foreignObject > section [data-theme=light],div#\:\$p > svg > foreignObject > section{color-scheme:light}div#\:\$p > svg > foreignObject > section [data-theme=dark],div#\:\$p > svg > foreignObject > section:where(.invert){color-scheme:dark}div#\:\$p > svg > foreignObject > section{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;font-weight:var(--base-text-weight-normal, 400);color:var(--fgColor-default);background-color:var(--bgColor-default);font-family:var(--fontStack-sansSerif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji");font-size:16px;line-height:1.5;word-wrap:break-word}div#\:\$p > svg > foreignObject > section{--marpit-root-font-size:16px}div#\:\$p > svg > foreignObject > section a{text-decoration:underline;text-underline-offset:calc(var(--marpit-root-font-size, 1rem) * .2)}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1):hover .anchor .octicon-link:before,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2):hover .anchor .octicon-link:before,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3):hover .anchor .octicon-link:before,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4):hover .anchor .octicon-link:before,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5):hover .anchor .octicon-link:before,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6):hover .anchor .octicon-link:before{width:16px;height:16px;content:" ";display:inline-block;background-color:currentColor;-webkit-mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0"/></svg>');mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0"/></svg>')}div#\:\$p > svg > foreignObject > section details,div#\:\$p > svg > foreignObject > section figcaption,div#\:\$p > svg > foreignObject > section figure{display:block}div#\:\$p > svg > foreignObject > section summary{display:list-item}div#\:\$p > svg > foreignObject > section [hidden]{display:none!important}div#\:\$p > svg > foreignObject > section a{background-color:transparent;color:var(--fgColor-accent);text-decoration:none}div#\:\$p > svg > foreignObject > section abbr[title]{border-bottom:none;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}div#\:\$p > svg > foreignObject > section b,div#\:\$p > svg > foreignObject > section strong{font-weight:var(--base-text-weight-semibold, 600)}div#\:\$p > svg > foreignObject > section dfn{font-style:italic}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1){margin:.67em 0;font-weight:var(--base-text-weight-semibold, 600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--borderColor-muted)}div#\:\$p > svg > foreignObject > section mark{background-color:var(--bgColor-attention-muted);color:var(--fgColor-default)}div#\:\$p > svg > foreignObject > section small{font-size:90%}div#\:\$p > svg > foreignObject > section sub,div#\:\$p > svg > foreignObject > section sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}div#\:\$p > svg > foreignObject > section sub{bottom:-.25em}div#\:\$p > svg > foreignObject > section sup{top:-.5em}div#\:\$p > svg > foreignObject > section img{border-style:none;max-width:100%;box-sizing:content-box}div#\:\$p > svg > foreignObject > section code,div#\:\$p > svg > foreignObject > section kbd,div#\:\$p > svg > foreignObject > section :is(pre, marp-pre),div#\:\$p > svg > foreignObject > section samp{font-family:monospace;font-size:1em}div#\:\$p > svg > foreignObject > section figure{margin:1em var(--base-size-40)}div#\:\$p > svg > foreignObject > section hr{box-sizing:content-box;overflow:hidden;background:transparent;height:.25em;padding:0;margin:var(--base-size-24) 0;background-color:var(--borderColor-default);border:0}div#\:\$p > svg > foreignObject > section input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}div#\:\$p > svg > foreignObject > section [type=button],div#\:\$p > svg > foreignObject > section [type=reset],div#\:\$p > svg > foreignObject > section [type=submit]{-webkit-appearance:button;-moz-appearance:button;appearance:button}div#\:\$p > svg > foreignObject > section [type=checkbox],div#\:\$p > svg > foreignObject > section [type=radio]{box-sizing:border-box;padding:0}div#\:\$p > svg > foreignObject > section [type=number]::-webkit-inner-spin-button,div#\:\$p > svg > foreignObject > section [type=number]::-webkit-outer-spin-button{height:auto}div#\:\$p > svg > foreignObject > section [type=search]::-webkit-search-cancel-button,div#\:\$p > svg > foreignObject > section [type=search]::-webkit-search-decoration{-webkit-appearance:none;appearance:none}div#\:\$p > svg > foreignObject > section ::-webkit-input-placeholder{color:inherit;opacity:.54}div#\:\$p > svg > foreignObject > section ::-webkit-file-upload-button{-webkit-appearance:button;appearance:button;font:inherit}div#\:\$p > svg > foreignObject > section a:hover{text-decoration:underline}div#\:\$p > svg > foreignObject > section ::-moz-placeholder{color:var(--fgColor-muted);opacity:1}div#\:\$p > svg > foreignObject > section ::placeholder{color:var(--fgColor-muted);opacity:1}div#\:\$p > svg > foreignObject > section hr:after,div#\:\$p > svg > foreignObject > section hr:before{display:table;content:""}div#\:\$p > svg > foreignObject > section hr:after{clear:both}div#\:\$p > svg > foreignObject > section table{border-spacing:0;border-collapse:collapse;display:block;width:-moz-max-content;width:max-content;max-width:100%;overflow:auto;font-variant:tabular-nums}div#\:\$p > svg > foreignObject > section td,div#\:\$p > svg > foreignObject > section th{padding:0}div#\:\$p > svg > foreignObject > section details summary{cursor:pointer}div#\:\$p > svg > foreignObject > section [role=button]:focus,div#\:\$p > svg > foreignObject > section a:focus,div#\:\$p > svg > foreignObject > section input[type=checkbox]:focus,div#\:\$p > svg > foreignObject > section input[type=radio]:focus{outline:2px solid var(--focus-outlineColor);outline-offset:-2px;box-shadow:none}div#\:\$p > svg > foreignObject > section [role=button]:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section a:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section input[type=checkbox]:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section input[type=radio]:focus:not(:focus-visible){outline:1px solid transparent}div#\:\$p > svg > foreignObject > section [role=button]:focus-visible,div#\:\$p > svg > foreignObject > section a:focus-visible,div#\:\$p > svg > foreignObject > section input[type=checkbox]:focus-visible,div#\:\$p > svg > foreignObject > section input[type=radio]:focus-visible{outline:2px solid var(--focus-outlineColor);outline-offset:-2px;box-shadow:none}div#\:\$p > svg > foreignObject > section a:not([class]):focus,div#\:\$p > svg > foreignObject > section a:not([class]):focus-visible,div#\:\$p > svg > foreignObject > section input[type=checkbox]:focus,div#\:\$p > svg > foreignObject > section input[type=checkbox]:focus-visible,div#\:\$p > svg > foreignObject > section input[type=radio]:focus,div#\:\$p > svg > foreignObject > section input[type=radio]:focus-visible{outline-offset:0}div#\:\$p > svg > foreignObject > section kbd{display:inline-block;padding:var(--base-size-4);font:11px var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);line-height:10px;color:var(--fgColor-default);vertical-align:middle;background-color:var(--bgColor-muted);border-bottom-color:var(--borderColor-neutral-muted);border:1px solid var(--borderColor-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--borderColor-neutral-muted)}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section :is(h2, marp-h2),div#\:\$p > svg > foreignObject > section :is(h3, marp-h3),div#\:\$p > svg > foreignObject > section :is(h4, marp-h4),div#\:\$p > svg > foreignObject > section :is(h5, marp-h5),div#\:\$p > svg > foreignObject > section :is(h6, marp-h6){margin-top:var(--base-size-24);margin-bottom:var(--base-size-16);font-weight:var(--base-text-weight-semibold, 600);line-height:1.25}div#\:\$p > svg > foreignObject > section :is(h2, marp-h2){padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--borderColor-muted)}div#\:\$p > svg > foreignObject > section :is(h2, marp-h2),div#\:\$p > svg > foreignObject > section :is(h3, marp-h3){font-weight:var(--base-text-weight-semibold, 600)}div#\:\$p > svg > foreignObject > section :is(h3, marp-h3){font-size:1.25em}div#\:\$p > svg > foreignObject > section :is(h4, marp-h4){font-size:1em}div#\:\$p > svg > foreignObject > section :is(h4, marp-h4),div#\:\$p > svg > foreignObject > section :is(h5, marp-h5){font-weight:var(--base-text-weight-semibold, 600)}div#\:\$p > svg > foreignObject > section :is(h5, marp-h5){font-size:.875em}div#\:\$p > svg > foreignObject > section :is(h6, marp-h6){font-weight:var(--base-text-weight-semibold, 600);font-size:.85em;color:var(--fgColor-muted)}div#\:\$p > svg > foreignObject > section p{margin-top:0;margin-bottom:10px}div#\:\$p > svg > foreignObject > section blockquote{margin:0;padding:0 1em;color:var(--fgColor-muted);border-left:.25em solid var(--borderColor-default)}div#\:\$p > svg > foreignObject > section ol,div#\:\$p > svg > foreignObject > section ul{margin-top:0;margin-bottom:0;padding-left:2em}div#\:\$p > svg > foreignObject > section ol ol,div#\:\$p > svg > foreignObject > section ul ol{list-style-type:lower-roman}div#\:\$p > svg > foreignObject > section ol ol ol,div#\:\$p > svg > foreignObject > section ol ul ol,div#\:\$p > svg > foreignObject > section ul ol ol,div#\:\$p > svg > foreignObject > section ul ul ol{list-style-type:lower-alpha}div#\:\$p > svg > foreignObject > section dd{margin-left:0}div#\:\$p > svg > foreignObject > section code,div#\:\$p > svg > foreignObject > section :is(pre, marp-pre),div#\:\$p > svg > foreignObject > section samp,div#\:\$p > svg > foreignObject > section tt{font-family:var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);font-size:12px}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre){margin-top:0;margin-bottom:0;word-wrap:normal}div#\:\$p > svg > foreignObject > section .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}div#\:\$p > svg > foreignObject > section input::-webkit-inner-spin-button,div#\:\$p > svg > foreignObject > section input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}div#\:\$p > svg > foreignObject > section .mr-2{margin-right:var(--base-size-8, 8px)!important}div#\:\$p > svg > foreignObject > section:after,div#\:\$p > svg > foreignObject > section:before{display:table}div#\:\$p > svg > foreignObject > section:after{clear:both}div#\:\$p > svg > foreignObject > section>:first-child{margin-top:0!important}div#\:\$p > svg > foreignObject > section>:last-child{margin-bottom:0!important}div#\:\$p > svg > foreignObject > section a:not([href]){color:inherit;text-decoration:none}div#\:\$p > svg > foreignObject > section .absent{color:var(--fgColor-danger)}div#\:\$p > svg > foreignObject > section .anchor{float:left;padding-right:var(--base-size-4);margin-left:-20px;line-height:1}div#\:\$p > svg > foreignObject > section .anchor:focus{outline:none}div#\:\$p > svg > foreignObject > section blockquote,div#\:\$p > svg > foreignObject > section details,div#\:\$p > svg > foreignObject > section dl,div#\:\$p > svg > foreignObject > section ol,div#\:\$p > svg > foreignObject > section p,div#\:\$p > svg > foreignObject > section :is(pre, marp-pre),div#\:\$p > svg > foreignObject > section table,div#\:\$p > svg > foreignObject > section ul{margin-top:0;margin-bottom:var(--base-size-16)}div#\:\$p > svg > foreignObject > section blockquote>:first-child{margin-top:0}div#\:\$p > svg > foreignObject > section blockquote>:last-child{margin-bottom:0}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1) .octicon-link,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2) .octicon-link,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3) .octicon-link,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4) .octicon-link,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5) .octicon-link,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6) .octicon-link{color:var(--fgColor-default);vertical-align:middle;visibility:hidden}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1):hover .anchor,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2):hover .anchor,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3):hover .anchor,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4):hover .anchor,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5):hover .anchor,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6):hover .anchor{text-decoration:none}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1):hover .anchor .octicon-link,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2):hover .anchor .octicon-link,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3):hover .anchor .octicon-link,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4):hover .anchor .octicon-link,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5):hover .anchor .octicon-link,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6):hover .anchor .octicon-link{visibility:visible}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1) code,div#\:\$p > svg > foreignObject > section :is(h1, marp-h1) tt,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2) code,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2) tt,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3) code,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3) tt,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4) code,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4) tt,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5) code,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5) tt,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6) code,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6) tt{padding:0 .2em;font-size:inherit}div#\:\$p > svg > foreignObject > section summary :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section summary :is(h2, marp-h2),div#\:\$p > svg > foreignObject > section summary :is(h3, marp-h3),div#\:\$p > svg > foreignObject > section summary :is(h4, marp-h4),div#\:\$p > svg > foreignObject > section summary :is(h5, marp-h5),div#\:\$p > svg > foreignObject > section summary :is(h6, marp-h6){display:inline-block}div#\:\$p > svg > foreignObject > section summary :is(h1, marp-h1) .anchor,div#\:\$p > svg > foreignObject > section summary :is(h2, marp-h2) .anchor,div#\:\$p > svg > foreignObject > section summary :is(h3, marp-h3) .anchor,div#\:\$p > svg > foreignObject > section summary :is(h4, marp-h4) .anchor,div#\:\$p > svg > foreignObject > section summary :is(h5, marp-h5) .anchor,div#\:\$p > svg > foreignObject > section summary :is(h6, marp-h6) .anchor{margin-left:-40px}div#\:\$p > svg > foreignObject > section summary :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section summary :is(h2, marp-h2){padding-bottom:0;border-bottom:0}div#\:\$p > svg > foreignObject > section ol.no-list,div#\:\$p > svg > foreignObject > section ul.no-list{padding:0;list-style-type:none}div#\:\$p > svg > foreignObject > section ol[type="a s"]{list-style-type:lower-alpha}div#\:\$p > svg > foreignObject > section ol[type="A s"]{list-style-type:upper-alpha}div#\:\$p > svg > foreignObject > section ol[type="i s"]{list-style-type:lower-roman}div#\:\$p > svg > foreignObject > section ol[type="I s"]{list-style-type:upper-roman}div#\:\$p > svg > foreignObject > section div>ol:not([type]),div#\:\$p > svg > foreignObject > section ol[type="1"]{list-style-type:decimal}div#\:\$p > svg > foreignObject > section ol ol,div#\:\$p > svg > foreignObject > section ol ul,div#\:\$p > svg > foreignObject > section ul ol,div#\:\$p > svg > foreignObject > section ul ul{margin-top:0;margin-bottom:0}div#\:\$p > svg > foreignObject > section li>p{margin-top:var(--base-size-16)}div#\:\$p > svg > foreignObject > section li+li{margin-top:.25em}div#\:\$p > svg > foreignObject > section dl{padding:0}div#\:\$p > svg > foreignObject > section dl dt{padding:0;margin-top:var(--base-size-16);font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold, 600)}div#\:\$p > svg > foreignObject > section dl dd{padding:0 var(--base-size-16);margin-bottom:var(--base-size-16)}div#\:\$p > svg > foreignObject > section table th{font-weight:var(--base-text-weight-semibold, 600)}div#\:\$p > svg > foreignObject > section table td,div#\:\$p > svg > foreignObject > section table th{padding:6px 13px;border:1px solid var(--borderColor-default)}div#\:\$p > svg > foreignObject > section table td>:last-child{margin-bottom:0}div#\:\$p > svg > foreignObject > section table tr{background-color:var(--bgColor-default);border-top:1px solid var(--borderColor-muted)}div#\:\$p > svg > foreignObject > section table tr:nth-child(2n){background-color:var(--bgColor-muted)}div#\:\$p > svg > foreignObject > section table img{background-color:transparent}div#\:\$p > svg > foreignObject > section img[align=right]{padding-left:20px}div#\:\$p > svg > foreignObject > section img[align=left]{padding-right:20px}div#\:\$p > svg > foreignObject > section .emoji{max-width:none;vertical-align:text-top;background-color:transparent}div#\:\$p > svg > foreignObject > section :is(span, marp-span).frame,div#\:\$p > svg > foreignObject > section :is(span, marp-span).frame>:is(span, marp-span){display:block;overflow:hidden}div#\:\$p > svg > foreignObject > section :is(span, marp-span).frame>:is(span, marp-span){float:left;width:auto;padding:7px;margin:13px 0 0;border:1px solid var(--borderColor-default)}div#\:\$p > svg > foreignObject > section :is(span, marp-span).frame :is(span, marp-span) img{display:block;float:left}div#\:\$p > svg > foreignObject > section :is(span, marp-span).frame :is(span, marp-span) :is(span, marp-span){display:block;padding:5px 0 0;clear:both;color:var(--fgColor-default)}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-center{display:block;overflow:hidden;clear:both}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-center>:is(span, marp-span){display:block;margin:13px auto 0;overflow:hidden;text-align:center}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-center :is(span, marp-span) img{margin:0 auto;text-align:center}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-right{display:block;overflow:hidden;clear:both}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-right>:is(span, marp-span){display:block;margin:13px 0 0;overflow:hidden;text-align:right}div#\:\$p > svg > foreignObject > section :is(span, marp-span).align-right :is(span, marp-span) img{margin:0;text-align:right}div#\:\$p > svg > foreignObject > section :is(span, marp-span).float-left{display:block;float:left;margin-right:13px;overflow:hidden}div#\:\$p > svg > foreignObject > section :is(span, marp-span).float-left :is(span, marp-span){margin:13px 0 0}div#\:\$p > svg > foreignObject > section :is(span, marp-span).float-right{display:block;float:right;margin-left:13px;overflow:hidden}div#\:\$p > svg > foreignObject > section :is(span, marp-span).float-right>:is(span, marp-span){display:block;margin:13px auto 0;overflow:hidden;text-align:right}div#\:\$p > svg > foreignObject > section code,div#\:\$p > svg > foreignObject > section tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--bgColor-neutral-muted);border-radius:6px}div#\:\$p > svg > foreignObject > section code br,div#\:\$p > svg > foreignObject > section tt br{display:none}div#\:\$p > svg > foreignObject > section del code{text-decoration:inherit}div#\:\$p > svg > foreignObject > section samp{font-size:85%}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) code{font-size:100%}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre)>code{padding:0;margin:0;word-break:normal;white-space:pre;background:transparent;border:0}div#\:\$p > svg > foreignObject > section .highlight{margin-bottom:var(--base-size-16)}div#\:\$p > svg > foreignObject > section .highlight :is(pre, marp-pre){margin-bottom:0;word-break:normal}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre){padding:var(--base-size-16);overflow:auto;font-size:85%;line-height:1.45;color:var(--fgColor-default);background-color:var(--bgColor-muted);border-radius:6px}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) code,div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) tt{display:inline;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}div#\:\$p > svg > foreignObject > section .csv-data td,div#\:\$p > svg > foreignObject > section .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}div#\:\$p > svg > foreignObject > section .csv-data .blob-num{padding:10px var(--base-size-8) 9px;text-align:right;background:var(--bgColor-default);border:0}div#\:\$p > svg > foreignObject > section .csv-data tr{border-top:0}div#\:\$p > svg > foreignObject > section .csv-data th{font-weight:var(--base-text-weight-semibold, 600);background:var(--bgColor-muted);border-top:0}div#\:\$p > svg > foreignObject > section [data-footnote-ref]:before{content:"["}div#\:\$p > svg > foreignObject > section [data-footnote-ref]:after{content:"]"}div#\:\$p > svg > foreignObject > section .footnotes{font-size:12px;color:var(--fgColor-muted);border-top:1px solid var(--borderColor-default)}div#\:\$p > svg > foreignObject > section div#\:\$p > svg > foreignObject > section section.footnotes{--marpit-root-font-size:12px}div#\:\$p > svg > foreignObject > section .footnotes ol,div#\:\$p > svg > foreignObject > section .footnotes ol ul{padding-left:var(--base-size-16)}div#\:\$p > svg > foreignObject > section .footnotes ol ul{display:inline-block;margin-top:var(--base-size-16)}div#\:\$p > svg > foreignObject > section .footnotes li{position:relative}div#\:\$p > svg > foreignObject > section .footnotes li:target:before{position:absolute;top:calc(var(--base-size-8)*-1);right:calc(var(--base-size-8)*-1);bottom:calc(var(--base-size-8)*-1);left:calc(var(--base-size-24)*-1);pointer-events:none;content:"";border:2px solid var(--borderColor-accent-emphasis);border-radius:6px}div#\:\$p > svg > foreignObject > section .footnotes li:target{color:var(--fgColor-default)}div#\:\$p > svg > foreignObject > section .footnotes .data-footnote-backref g-emoji{font-family:monospace}div#\:\$p > svg > foreignObject > section .pl-c{color:var(--color-prettylights-syntax-comment)}div#\:\$p > svg > foreignObject > section .pl-c1,div#\:\$p > svg > foreignObject > section .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}div#\:\$p > svg > foreignObject > section .pl-e,div#\:\$p > svg > foreignObject > section .pl-en{color:var(--color-prettylights-syntax-entity)}div#\:\$p > svg > foreignObject > section .pl-s .pl-s1,div#\:\$p > svg > foreignObject > section .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}div#\:\$p > svg > foreignObject > section .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}div#\:\$p > svg > foreignObject > section .pl-k{color:var(--color-prettylights-syntax-keyword)}div#\:\$p > svg > foreignObject > section .pl-pds,div#\:\$p > svg > foreignObject > section .pl-s,div#\:\$p > svg > foreignObject > section .pl-s .pl-pse .pl-s1,div#\:\$p > svg > foreignObject > section .pl-sr,div#\:\$p > svg > foreignObject > section .pl-sr .pl-cce,div#\:\$p > svg > foreignObject > section .pl-sr .pl-sra,div#\:\$p > svg > foreignObject > section .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}div#\:\$p > svg > foreignObject > section .pl-smw,div#\:\$p > svg > foreignObject > section .pl-v{color:var(--color-prettylights-syntax-variable)}div#\:\$p > svg > foreignObject > section .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}div#\:\$p > svg > foreignObject > section .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}div#\:\$p > svg > foreignObject > section .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}div#\:\$p > svg > foreignObject > section .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}div#\:\$p > svg > foreignObject > section .pl-ml{color:var(--color-prettylights-syntax-markup-list)}div#\:\$p > svg > foreignObject > section .pl-mh,div#\:\$p > svg > foreignObject > section .pl-mh .pl-en,div#\:\$p > svg > foreignObject > section .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}div#\:\$p > svg > foreignObject > section .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}div#\:\$p > svg > foreignObject > section .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}div#\:\$p > svg > foreignObject > section .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}div#\:\$p > svg > foreignObject > section .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}div#\:\$p > svg > foreignObject > section .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}div#\:\$p > svg > foreignObject > section .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}div#\:\$p > svg > foreignObject > section .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}div#\:\$p > svg > foreignObject > section .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}div#\:\$p > svg > foreignObject > section .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}div#\:\$p > svg > foreignObject > section .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}div#\:\$p > svg > foreignObject > section [role=button]:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section [role=tabpanel][tabindex="0"]:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section a:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section button:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section summary:focus:not(:focus-visible){outline:none;box-shadow:none}div#\:\$p > svg > foreignObject > section [tabindex="0"]:focus:not(:focus-visible),div#\:\$p > svg > foreignObject > section details-dialog:focus:not(:focus-visible){outline:none}div#\:\$p > svg > foreignObject > section g-emoji{display:inline-block;min-width:1ch;font-family:Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal, 400);line-height:1;vertical-align:-.075em}div#\:\$p > svg > foreignObject > section g-emoji img{width:1em;height:1em}div#\:\$p > svg > foreignObject > section a:has(>p,>div,>:is(pre, marp-pre),>blockquote){display:block}div#\:\$p > svg > foreignObject > section a:has(>p,>div,>:is(pre, marp-pre),>blockquote):not(:has(.snippet-clipboard-content,>:is(pre, marp-pre))){width:-moz-fit-content;width:fit-content}div#\:\$p > svg > foreignObject > section a:has(>p,>div,>:is(pre, marp-pre),>blockquote):has(.snippet-clipboard-content,>:is(pre, marp-pre)):focus-visible{outline:2px solid var(--focus-outlineColor);outline-offset:2px}div#\:\$p > svg > foreignObject > section .task-list-item{list-style-type:none}div#\:\$p > svg > foreignObject > section .task-list-item label{font-weight:var(--base-text-weight-normal, 400)}div#\:\$p > svg > foreignObject > section .task-list-item.enabled label{cursor:pointer}div#\:\$p > svg > foreignObject > section .task-list-item+.task-list-item{margin-top:var(--base-size-4)}div#\:\$p > svg > foreignObject > section .task-list-item .handle{display:none}div#\:\$p > svg > foreignObject > section .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}div#\:\$p > svg > foreignObject > section ul:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}div#\:\$p > svg > foreignObject > section ol:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}div#\:\$p > svg > foreignObject > section .contains-task-list:focus-within .task-list-item-convert-container,div#\:\$p > svg > foreignObject > section .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip-path:none}div#\:\$p > svg > foreignObject > section ::-webkit-calendar-picker-indicator{filter:invert(50%)}div#\:\$p > svg > foreignObject > section .markdown-alert{padding:var(--base-size-8) var(--base-size-16);margin-bottom:var(--base-size-16);color:inherit;border-left:.25em solid var(--borderColor-default)}div#\:\$p > svg > foreignObject > section .markdown-alert>:first-child{margin-top:0}div#\:\$p > svg > foreignObject > section .markdown-alert>:last-child{margin-bottom:0}div#\:\$p > svg > foreignObject > section .markdown-alert .markdown-alert-title{display:flex;font-weight:var(--base-text-weight-medium, 500);align-items:center;line-height:1}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-note{border-left-color:var(--borderColor-accent-emphasis)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-note .markdown-alert-title{color:var(--fgColor-accent)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-important{border-left-color:var(--borderColor-done-emphasis)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-important .markdown-alert-title{color:var(--fgColor-done)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-warning{border-left-color:var(--borderColor-attention-emphasis)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-warning .markdown-alert-title{color:var(--fgColor-attention)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-tip{border-left-color:var(--borderColor-success-emphasis)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-tip .markdown-alert-title{color:var(--fgColor-success)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-caution{border-left-color:var(--borderColor-danger-emphasis)}div#\:\$p > svg > foreignObject > section .markdown-alert.markdown-alert-caution .markdown-alert-title{color:var(--fgColor-danger)}div#\:\$p > svg > foreignObject > section>:first-child>.heading-element:first-child{margin-top:0!important}div#\:\$p > svg > foreignObject > section .highlight :is(pre, marp-pre):has(+.zeroclipboard-container){min-height:52px}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1){color:var(--h1-color);font-size:1.6em}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section :is(h2, marp-h2){border-bottom:none}div#\:\$p > svg > foreignObject > section :is(h2, marp-h2){font-size:1.3em}div#\:\$p > svg > foreignObject > section :is(h3, marp-h3){font-size:1.1em}div#\:\$p > svg > foreignObject > section :is(h4, marp-h4){font-size:1.05em}div#\:\$p > svg > foreignObject > section :is(h5, marp-h5){font-size:1em}div#\:\$p > svg > foreignObject > section :is(h6, marp-h6){font-size:.9em}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1) strong,div#\:\$p > svg > foreignObject > section :is(h2, marp-h2) strong,div#\:\$p > svg > foreignObject > section :is(h3, marp-h3) strong,div#\:\$p > svg > foreignObject > section :is(h4, marp-h4) strong,div#\:\$p > svg > foreignObject > section :is(h5, marp-h5) strong,div#\:\$p > svg > foreignObject > section :is(h6, marp-h6) strong{font-weight:inherit;color:var(--heading-strong-color)}div#\:\$p > svg > foreignObject > section :is(h1, marp-h1)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h2, marp-h2)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h3, marp-h3)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h4, marp-h4)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h5, marp-h5)::part(auto-scaling),div#\:\$p > svg > foreignObject > section :is(h6, marp-h6)::part(auto-scaling){max-height:563px}div#\:\$p > svg > foreignObject > section hr{height:0;padding-top:.25em}div#\:\$p > svg > foreignObject > section img{background-color:transparent}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre){border:1px solid var(--borderColor-default);line-height:1.15;overflow:visible}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre)::part(auto-scaling){max-height:529px}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs){color:var(--color-prettylights-syntax-storage-modifier-import)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-doctag),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-keyword),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-meta .hljs-keyword),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-template-tag),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-template-variable),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-type),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-variable.language_){color:var(--color-prettylights-syntax-keyword)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title.class_),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title.class_.inherited__),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title.function_){color:var(--color-prettylights-syntax-entity)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-attr),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-attribute),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-literal),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-meta),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-number),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-operator),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-attr),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-class),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-id),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-variable){color:var(--color-prettylights-syntax-constant)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-meta .hljs-string),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-regexp),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-string){color:var(--color-prettylights-syntax-string)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-built_in),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-symbol){color:var(--color-prettylights-syntax-variable)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-code),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-comment),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-formula){color:var(--color-prettylights-syntax-comment)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-name),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-quote),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-pseudo),div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-tag){color:var(--color-prettylights-syntax-entity-tag)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-subst){color:var(--color-prettylights-syntax-storage-modifier-import)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-section){font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-bullet){color:var(--color-prettylights-syntax-markup-list)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-emphasis){font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-strong){font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-addition){color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}div#\:\$p > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-deletion){color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}div#\:\$p > svg > foreignObject > section footer,div#\:\$p > svg > foreignObject > section header{margin:0;position:absolute;left:30px;color:var(--header-footer-color);font-size:18px}div#\:\$p > svg > foreignObject > section header{top:21px}div#\:\$p > svg > foreignObject > section footer{bottom:21px}div#\:\$p > svg > foreignObject > section{--h1-color:light-dark(#246, #cee7ff);--header-footer-color:light-dark(hsla(0,0%,40%,.75), hsla(0,0%,60%,.75));--heading-strong-color:light-dark(#48c, #7bf);--paginate-color:light-dark(#777, #999);--base-size-4:4px;--base-size-8:8px;--base-size-16:16px;--base-size-24:24px;--base-size-40:40px;display:block;font-size:29px;height:720px;padding:78.5px;place-content:safe center center;width:1280px;flex-flow:column nowrap;align-items:stretch}div#\:\$p > svg > foreignObject > section{--marpit-root-font-size:29px}div#\:\$p > svg > foreignObject > section>:last-child,div#\:\$p > svg > foreignObject > section[data-footer]>:nth-last-child(2){margin-bottom:0}div#\:\$p > svg > foreignObject > section>:first-child,div#\:\$p > svg > foreignObject > section>header:first-child+*{margin-top:0}div#\:\$p > svg > foreignObject > section:after{position:absolute;padding:0;right:30px;bottom:21px;font-size:24px;color:var(--paginate-color)}div#\:\$p > svg > foreignObject > section:after{--marpit-root-font-size:24px}div#\:\$p > svg > foreignObject > section[data-color] :is(h1, marp-h1),div#\:\$p > svg > foreignObject > section[data-color] :is(h2, marp-h2),div#\:\$p > svg > foreignObject > section[data-color] :is(h3, marp-h3),div#\:\$p > svg > foreignObject > section[data-color] :is(h4, marp-h4),div#\:\$p > svg > foreignObject > section[data-color] :is(h5, marp-h5),div#\:\$p > svg > foreignObject > section[data-color] :is(h6, marp-h6){color:currentcolor}div#\:\$p > svg > foreignObject > section{width:1280px;height:720px}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"]{columns:initial!important;display:block!important;padding:0!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"]::before, div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"]::after, div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="content"]::before, div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="content"]::after{display:none!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction="vertical"]{flex-direction:column}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split] > div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split, 50%)}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split="right"] > div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure > figcaption{position:absolute;border:0;clip:rect(0, 0, 0, 0);height:1px;margin:-1px;overflow:hidden;padding:0;white-space:nowrap;width:1px}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="content"], div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="pseudo"]{background:transparent!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background="pseudo"], div#\:\$p > svg[data-marpit-svg] > foreignObject[data-marpit-advanced-background="pseudo"]{pointer-events:none!important}div#\:\$p > svg > foreignObject > section[data-marpit-advanced-background-split]{width:100%;height:100%}
+</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="overview" tabindex="-1" title="Toggle overview view (o)">Toggle overview view</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id=":$p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-class="lead" lang="C" class="lead" style="--class:lead;" data-size="16:9">
+<h1 id="%E9%80%B2%E9%9A%8E%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B-advanced-software-engineering"><strong>進階軟體工程 (Advanced Software Engineering)</strong></h1>
+<h2 id="%E6%A0%B8%E5%BF%83%E8%A7%80%E5%BF%B5%E8%87%AA%E5%AD%B8%E6%B8%AC%E9%A9%97%E9%A1%8C%E5%BA%AB-chapters-1%E2%80%933">核心觀念自學測驗題庫 (Chapters 1–3)</h2>
+<blockquote>
+<p>「不聞不若聞之，聞之不若見之，見之不若知之，知之不若行之。」 —— 《荀子·儒效》</p>
+</blockquote>
+<div style="display: flex; justify-content: center; gap: 14px; margin-top: 24px;">
+  <span class="quiz-tag" style="font-size: 14px; padding: 6px 16px;">📘 3 大核心章節</span>
+  <span class="quiz-tag" style="font-size: 14px; padding: 6px 16px;">🎯 31 道經典觀念題</span>
+  <span class="quiz-tag" style="font-size: 14px; padding: 6px 16px;">💡 即時檢測與詳解</span>
+  <span class="quiz-tag" style="font-size: 14px; padding: 6px 16px;">⚡ 自主節奏隨選作答</span>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-header="自學測驗題庫 ▾ | 題項目錄與章節導覽" lang="C" data-marpit-pagination="2" style="--paginate:true;--header:自學測驗題庫 ▾ | 題項目錄與章節導覽;" data-marpit-pagination-total="37" data-size="16:9">
+<header>自學測驗題庫 ▾ | 題項目錄與章節導覽</header>
+
+<h2 id="%E7%9F%A5%E8%AD%98%E5%9C%B0%E5%9C%96%E8%88%87%E7%AB%A0%E7%AF%80%E5%96%AE%E5%85%83%E5%B0%8E%E8%A6%BD-table-of-contents">知識地圖與章節單元導覽 (Table of Contents)</h2>
+<blockquote>
+<p>點選下方任一章節卡片即可直接跳轉作答；亦可於各題頁面點選右上角 Header 隨時展開題項目錄。</p>
+</blockquote>
+<div class="three-columns" style="margin-top: 15px;">
+<div class="card">
+  <h3 style="color: #0284c7; margin-bottom: 6px;">📘 第一章</h3>
+  <h4 style="font-size: 15px; margin-bottom: 8px;">軟體工程導論</h4>
+  <p style="font-size: 13px; color: #64748b; line-height: 1.4;">軟體危機、IEEE 定義、核心活動、布魯克斯法則、職責分離、ISO 25010、倫理與 AI 挑戰。</p>
+  <ul style="font-size: 13.5px; line-height: 1.4; margin-top: 6px;">
+    <li><strong>題數：</strong> 第 01 題 ～ 第 09 題 (共 9 題)</li>
+    <li><strong>核心目標：</strong> 建立軟體工程思維基石</li>
+  </ul>
+  <div style="margin-top: 12px; text-align: center;">
+    <a href="#4" class="btn-primary" style="display: inline-block; padding: 4px 14px; font-size: 13px; text-decoration: none; border-radius: 6px; background: #0284c7; color: #fff; font-weight: 700;">開始第一章測驗 ➔</a>
+  </div>
+</div>
+<div class="card">
+  <h3 style="color: #0284c7; margin-bottom: 6px;">⚙️ 第二章</h3>
+  <h4 style="font-size: 15px; margin-bottom: 8px;">軟體開發流程</h4>
+  <p style="font-size: 13px; color: #64748b; line-height: 1.4;">瀑布模型、V-模型、MVP、敏捷宣言、看板 WIP、Scrum、技術債、結對編程與 CI/CD。</p>
+  <ul style="font-size: 13.5px; line-height: 1.4; margin-top: 6px;">
+    <li><strong>題數：</strong> 第 10 題 ～ 第 23 題 (共 14 題)</li>
+    <li><strong>核心目標：</strong> 掌握敏捷流程與工程實踐</li>
+  </ul>
+  <div style="margin-top: 12px; text-align: center;">
+    <a href="#14" class="btn-primary" style="display: inline-block; padding: 4px 14px; font-size: 13px; text-decoration: none; border-radius: 6px; background: #0284c7; color: #fff; font-weight: 700;">開始第二章測驗 ➔</a>
+  </div>
+</div>
+<div class="card">
+  <h3 style="color: #0284c7; margin-bottom: 6px;">📋 第三章</h3>
+  <h4 style="font-size: 15px; margin-bottom: 8px;">需求工程</h4>
+  <p style="font-size: 13px; color: #64748b; line-height: 1.4;">使用者 vs 系統需求、領域需求、可量化 NFR、五個為什麼、內隱知識、使用案例與 AI 幻覺。</p>
+  <ul style="font-size: 13.5px; line-height: 1.4; margin-top: 6px;">
+    <li><strong>題數：</strong> 第 24 題 ～ 第 31 題 (共 8 題)</li>
+    <li><strong>核心目標：</strong> 需求獲取、規格化與驗證</li>
+  </ul>
+  <div style="margin-top: 12px; text-align: center;">
+    <a href="#29" class="btn-primary" style="display: inline-block; padding: 4px 14px; font-size: 13px; text-decoration: none; border-radius: 6px; background: #0284c7; color: #fff; font-weight: 700;">開始第三章測驗 ➔</a>
+  </div>
+</div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-header="第一章 軟體工程導論 | 章節導讀 ▾" data-class="lead" lang="C" class="lead" data-marpit-pagination="3" style="--paginate:true;--header:第一章 軟體工程導論 | 章節導讀 ▾;--class:lead;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第一章 軟體工程導論 | 章節導讀 ▾</header>
+
+<h1 id="%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B0%8E%E8%AB%96"><strong>第一章 軟體工程導論</strong></h1>
+<h2 id="%E5%9F%BA%E7%A4%8E%E8%A7%80%E5%BF%B5%E6%9C%AC%E8%B3%AA%E8%A4%87%E9%9B%9C%E5%BA%A6%E5%B0%88%E6%A5%AD%E5%80%AB%E7%90%86%E8%88%87-ai-%E8%A1%9D%E6%93%8A">基礎觀念、本質複雜度、專業倫理與 AI 衝擊</h2>
+<blockquote>
+<p>「軟體危機的根本原因，在於我們嘗試建造超越人類智力掌握極限的巨大軟體系統。」 —— 艾茲赫爾·戴克斯特拉 (Edsger W. Dijkstra)</p>
+</blockquote>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-header="第 1 章 | 第 01 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="4" style="--paginate:true;--header:第 1 章 | 第 01 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 1 章 | 第 01 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 1. 軟體工程導論 · 第 01 題</span>
+    <span class="quiz-prog">單元：軟體危機與複雜度</span>
+  </div>
+  <div class="quiz-qbox">
+    為什麼 1968 年的「軟體危機」無法單純透過購買運算速度更快、記憶體容量更大的電腦硬體來解決？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">1960 年代末期電腦硬體製造與記憶體製程完全停滯，無法提供實質的運算效能提升。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">危機本質上是系統規模與智力管理帶來的組織複雜度挑戰，更強大的硬體反而刺激並放大了系統規模。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">當時的高階程式語言完全缺乏數學計算基底與編譯器記憶體動態配置能力。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">早期的真空管與主機架構在物理特性上無法支援多終端機與遠端通訊網絡的共用協定。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 危機本質上是系統規模與智力管理帶來的組織複雜度挑戰。單純提升硬體運算能力與記憶體容量，反而會刺激建造更大規模的系統，使人腦使用非正式、隨意編程方法無法應對。更快的 CPU 無法解決需求遺漏、混亂的相依關係或介面溝通失誤等核心軟體問題。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-header="第 1 章 | 第 02 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="5" style="--paginate:true;--header:第 1 章 | 第 02 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 1 章 | 第 02 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 1. 軟體工程導論 · 第 02 題</span>
+    <span class="quiz-prog">單元：IEEE 軟體定義與範疇</span>
+  </div>
+  <div class="quiz-qbox">
+    依據 IEEE 對「軟體 (Software)」的標準定義，下列何者不屬於軟體的範疇？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">可執行的電腦程式與原始碼檔案。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">系統資料庫綱要與組態設定檔。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="true">
+      <span class="q-badge">C</span>
+      <span class="q-text">CPU 運算處理器與實體記憶體硬體模組。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">軟體安裝步驟與自動化維運部署程序。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：C</strong> — 依據 IEEE 610.12 標準定義，軟體包含電腦程式、作業程序、相關文件與系統資料。CPU 運算處理器與記憶體屬於執行軟體的「實體電子硬體設備」，本身並非軟體組成要素。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-header="第 1 章 | 第 03 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="6" style="--paginate:true;--header:第 1 章 | 第 03 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 1 章 | 第 03 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 1. 軟體工程導論 · 第 03 題</span>
+    <span class="quiz-prog">單元：軟體工程通用核心活動</span>
+  </div>
+  <div class="quiz-qbox">
+    下列哪一組選項正確地將具體的軟體工程實踐行為，對應到其所屬的四大通用核心活動？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">與利害關係人進行訪談以梳理使用者故事 → 軟體規格說明 (Specification)</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">撰寫自動化單元測試以模擬資料庫回應 → 軟體設計與實作 (Design & Implementation)</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">重構資料庫綱要以提升查詢執行效能 → 軟體驗證 (Validation)</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">將老舊的第三方支付 API 抽換為全新閘道服務 → 軟體規格說明 (Specification)</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 與利害關係人訪談並梳理使用者故事是「軟體規格說明 (Specification)」的直接實踐；單元測試屬於「驗證 (Validation)」；資料庫重構屬於「軟體演進 (Evolution)」；抽換第三方 API 屬於「設計與實作」或「演進」。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-header="第 1 章 | 第 04 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="7" style="--paginate:true;--header:第 1 章 | 第 04 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 1 章 | 第 04 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 1. 軟體工程導論 · 第 04 題</span>
+    <span class="quiz-prog">單元：布魯克斯法則與團隊規模</span>
+  </div>
+  <div class="quiz-qbox">
+    某個軟體專案目前落後進度 3 週，距離正式交付期限僅剩 2 週。專案經理決定緊急招募 4 位初階程式設計師加入以期加速進度。根據「布魯克斯法則 (Brooks's Law)」，最可能的結果是什麼？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">專案將因此提前 1 週順利交付。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">專案進度將進一步嚴重延宕，因為資深工程師必須耗費寶貴時間來指導與培訓新人。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">既有開發人員的產出效率將立刻提升一倍。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">團隊內部的溝通複雜度將維持不變。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 佛瑞德·布魯克斯在《人月神話》中指出：軟體開發是複雜的智力活動，無法像體力勞動般任意分割。向落後的專案增加人手，團隊通訊路徑會依 $n(n-1)/2$ 呈二次方暴增，且資深工程師必須暫停手邊開發來指導新人，導致專案更加落後。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-header="第 1 章 | 第 05 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="8" style="--paginate:true;--header:第 1 章 | 第 05 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 1 章 | 第 05 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 1. 軟體工程導論 · 第 05 題</span>
+    <span class="quiz-prog">單元：單一職責原則 (SRP)</span>
+  </div>
+  <div class="quiz-qbox">
+    一個電商「訂單處理模組」同時直接處理 HTTP 請求解析、執行信用卡交易、執行 SQL 資料庫查詢，並動態組裝 HTML 收據郵件。此設計最嚴重違反了哪項核心設計原則？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">關注點分離 (Separation of Concerns)：多項互不相干的業務職責緊密糾纏在單一模組中。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">YAGNI 原則：在客戶尚未提出明確商業需求前，過早實作臆測的未來擴充功能。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">布魯克斯法則 (Brooks's Law)：對該訂單模組增加工程人手導致團隊溝通成本呈指數上升。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">預應變更 (Anticipation of Change)：系統設定與業務規則被硬編碼寫死在編譯二進位檔中。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 一個模組同時負責網路通訊、金流扣款、資料庫存取與郵件生成，承擔了過多截然不同的業務邏輯，嚴重違反「單一職責原則 (Single Responsibility Principle, SRP)」，應拆分為各自獨立的高內聚模組。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-header="第 1 章 | 第 06 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="9" style="--paginate:true;--header:第 1 章 | 第 06 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 1 章 | 第 06 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 1. 軟體工程導論 · 第 06 題</span>
+    <span class="quiz-prog">單元：ISO 25010 軟體品質特徵</span>
+  </div>
+  <div class="quiz-qbox">
+    下列哪一個選項正確地將真實世界發生的軟體問題，對應到其所屬的 ISO 25010 品質特徵？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">資料庫查詢需要耗費 15 秒才能返回結果 → 可維護性 (Maintainability · 可測試性)</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">當第三方外部 API 離線時，整個系統瞬間全面崩潰停擺 → 可靠性 (Reliability · 容錯性)</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">由於模組間強烈緊密耦合，開發者極難為其撰寫單元測試 → 可移植性 (Portability · 適應性)</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">未加密的 Session Cookie 導致惡意攻擊者輕易竊取身分登入他人帳號 → 易用性 (Usability · 易操作性)</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 當支付閘道或子服務逾時時，訂單核心系統應能維持降級運作而非全盤崩潰，此能力屬於「可靠性 (Reliability)」維度下的「容錯性 (Fault Tolerance)」或「可用性 (Availability)」。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-header="第 1 章 | 第 07 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="10" style="--paginate:true;--header:第 1 章 | 第 07 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 1 章 | 第 07 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 1. 軟體工程導論 · 第 07 題</span>
+    <span class="quiz-prog">單元：ACM/IEEE 軟體工程倫理守則</span>
+  </div>
+  <div class="quiz-qbox">
+    依據 ACM/IEEE 軟體工程倫理守則，若雇主或主管強烈指示工程師撰寫一段偽造安全合規報告、隱匿系統危險的演算法時，工程師的最高倫理義務為何？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">服從指示實作，因為雇主支付了工程師薪資，商業利益高於一切。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">堅定拒絕並向上呈報，因為保護公眾利益與社會安全的責任絕對高於對雇主的盲目忠誠。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">照常撰寫該段偽造邏輯，但刻意省略所有程式碼文檔與註解。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">將該段具爭議的代碼偷偷外包給第三方廠商執行以規避內部責任。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — ACM/IEEE 軟體工程倫理守則第一條明確規範：公眾的健康、安全與福祉高於雇主或客戶的利益。面對會威脅人命或法規的安全隱患，工程師有道德與法定責任拒絕違規指示並向上級或主管機關通報。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-header="第 1 章 | 第 08 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="11" style="--paginate:true;--header:第 1 章 | 第 08 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 1 章 | 第 08 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 1. 軟體工程導論 · 第 08 題</span>
+    <span class="quiz-prog">單元：AI 編程與代碼流失率 (Code Churn)</span>
+  </div>
+  <div class="quiz-qbox">
+    在評估 AI 輔助開發的實證研究中（如 GitClear 分析 1.5 億行代碼），「程式碼流失率 (Code Churn)」是關鍵品質指標。高 Code Churn 在 AI 開發環境中反映出何種核心問題？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">新提交的程式碼在極短時間內就被頻繁修改、刪除或推翻重寫，反映出 AI 代碼看似產出快速但本質脆弱且未經深思。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">編譯器與打包工具在持續部署管線中，主動且有效率地從發布二進位檔案中自動剔除未引用的死碼。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">軟體開發團隊因為具備多語言自動轉譯工具，而在專案中頻繁更換底層核心程式語言與技術架構。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">自動化測試案例執行速度過快，導致雲端 CI/CD 伺服器的虛擬機器運算配額在短時間內迅速耗盡。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 代碼在寫入後兩週內即被大量重寫或廢棄刪除，稱為「代碼流失率 (Code Churn)」。這代表開發者雖然能快速產出代碼，但程式碼品質欠佳、架構缺乏深思熟慮，是 Vibe Coding 累積技術債的典型徵兆。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-header="第 1 章 | 第 09 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="12" style="--paginate:true;--header:第 1 章 | 第 09 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 1 章 | 第 09 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 1. 軟體工程導論 · 第 09 題</span>
+    <span class="quiz-prog">單元：AI 驗證與同溫層測試陷阱</span>
+  </div>
+  <div class="quiz-qbox">
+    工程師請 AI 生成一套複雜的計費結帳模組，並在未提供形式化規格契約下，直接請同一個 AI 自動生成單元測試。測試全部綠燈通過。此時最大的工程風險為何？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">同溫層盲點驗證：AI 生成的測試僅是在驗證自身有缺陷的錯誤假設，無法證明符合真實的業務規格。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">執行效能瓶頸：AI 生成的測試斷言在執行期需要耗費比人類手寫測試多出數十倍的記憶體運算資源。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">編譯語法失敗：既有的主流自動化測試框架無法成功解析大型語言模型所合成的 Mock 假資料結構。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">技術版本鎖定：該測試套件會與特定單一雲端供應商的執行時期環境產生強烈且無法抽換的緊密耦合。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 當測試程式與實作程式碼皆由同一個 AI 模型在未經外部客觀規格定義下生成時，測試只會順著錯誤的生成邏輯進行驗證，形成「同溫層測試 (Echo Chamber Testing)」，產生虛假的安全感。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-header="第二章 軟體開發流程 | 章節導讀 ▾" data-class="lead" lang="C" class="lead" data-marpit-pagination="13" style="--paginate:true;--header:第二章 軟體開發流程 | 章節導讀 ▾;--class:lead;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第二章 軟體開發流程 | 章節導讀 ▾</header>
+
+<h1 id="%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E6%B5%81%E7%A8%8B"><strong>第二章 軟體開發流程</strong></h1>
+<h2 id="%E6%B5%81%E7%A8%8B%E6%A8%A1%E5%9E%8B%E6%95%8F%E6%8D%B7%E5%93%B2%E5%AD%B8%E6%A5%B5%E9%99%90%E7%B7%A8%E7%A8%8B%E8%88%87%E5%B7%A5%E7%A8%8B%E7%B4%80%E5%BE%8B">流程模型、敏捷哲學、極限編程與工程紀律</h2>
+<blockquote>
+<p>「沒有任何單一的技術或管理突破，能在十年內讓軟體的生產力、可靠度或簡易性提升一個數量級。」 —— 佛瑞德·布魯克斯 (Fred Brooks)</p>
+</blockquote>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-header="第 2 章 | 第 10 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="14" style="--paginate:true;--header:第 2 章 | 第 10 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 10 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 10 題</span>
+    <span class="quiz-prog">單元：傳統瀑布模型的本質缺點</span>
+  </div>
+  <div class="quiz-qbox">
+    傳統瀑布模型在實務運作上最主要的核心缺點是什麼？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">為外部法規合規性與稽核所產生的工程文檔過度匱乏。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">一旦專案啟動進行，極難且成本高昂去因應與調適變更的需求。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">在執行過程中完全消除了元件測試與系統整合測試的需求。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">無法在跨國多據點的大型軟體工程組織中進行團隊協同。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 瀑布模型將開發切分為嚴格依序進行的階段，並假設前期需求能夠完全凍結。一旦專案進入後期的編程或測試階段，任何需求變更都將導致跨階段的骨牌式連鎖重工，付出極為高昂的代價。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-header="第 2 章 | 第 11 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="15" style="--paginate:true;--header:第 2 章 | 第 11 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 11 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 11 題</span>
+    <span class="quiz-prog">單元：V-模型與測試左移</span>
+  </div>
+  <div class="quiz-qbox">
+    相較於傳統瀑布模型，V-模型在工程實務上最主要的核心優勢是什麼？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">在為期兩週的短週期衝刺疊代中持續交付可運行軟體增量。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">強制在早期的規格分析階段，即同步進行測試規劃與驗收準則設計。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">完全消除了對詳細架構設計文件與介面合約的依賴。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">允許客戶在實作編程階段隨意動態變更需求且完全不衍生額外成本。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — V-模型的最大貢獻在於「測試左移 (Shift-Left Testing)」：在專案初期的需求分析階段就同步規劃驗收測試計畫，在系統架構設計時即規劃整合測試，提早揭露各層級的潛在缺陷。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-header="第 2 章 | 第 12 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="16" style="--paginate:true;--header:第 2 章 | 第 12 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 12 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 12 題</span>
+    <span class="quiz-prog">單元：增量 (Incremental) 與疊代 (Iterative)</span>
+  </div>
+  <div class="quiz-qbox">
+    在軟體流程工程中，「增量 (Incremental)」與「疊代 (Iterative)」開發的根本觀念差異是什麼？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">增量專注於自動化測試；疊代專注於 UI 介面視覺設計。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">增量分階段交付完整可運行的垂直功能切片；疊代在重複循環中深化打磨系統的整體初稿。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">增量由專案經理負責主導；疊代完全由客戶端工程師自行決策。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">增量嚴格遵循瀑布規範；疊代完全不產生任何程式碼文檔。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 增量開發 (Incremental) 是按功能模組一塊一塊交付（如搭拼圖般垂直切片）；疊代開發 (Iterative) 則是在一輪輪回圈中逐步深化打磨整體系統（如雕刻塑像般逐漸精細）。敏捷方法通常同時結合兩者。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-header="第 2 章 | 第 13 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="17" style="--paginate:true;--header:第 2 章 | 第 13 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 13 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 13 題</span>
+    <span class="quiz-prog">單元：最小可行產品 (MVP) 演進模式</span>
+  </div>
+  <div class="quiz-qbox">
+    在 Henrik Kniberg 著名的最小可行產品 (MVP) 隱喻中（從滑板到汽車），為什麼在第一期交付「一顆孤立的汽車輪子」被視為嚴重的反模式 (Anti-Pattern)？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">因為單獨製造一顆輪子的生產成本遠高於組裝滑板。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">因為單獨一顆輪子無法提供任何端到端的交通位移價值，使用者完全無法藉其驗證核心痛點。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">因為在現代工業設計中汽車輪子無法直接升級為機車輪胎。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">因為軟體工程標準禁止團隊在第一期專案中開發圓形幾何物件。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 軟體的價值在於「解決使用者痛點」。單一顆輪子無法提供任何位移功能，是不可運作的內部組件；而滑板雖然簡陋，卻能立刻提供位移價值並蒐集真實使用者反饋，這才是 MVP 的核心真諦。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-header="第 2 章 | 第 14 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="18" style="--paginate:true;--header:第 2 章 | 第 14 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 14 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 14 題</span>
+    <span class="quiz-prog">單元：敏捷宣言核心價值</span>
+  </div>
+  <div class="quiz-qbox">
+    敏捷宣言宣稱：*「可運行的軟體重於詳盡的文檔。」* 這項價值在實務工程中主要倡導何種行為？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">嚴格禁止工程團隊撰寫任何架構設計文件或 API 規格合約。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">雖然文檔具有其輔助價值，但團隊應將交付可點擊執行的軟體系統置於最優先級。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">專案進度完全不需要撰寫程式碼，只需由客戶口頭認可即可。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">將所有軟體文檔直接替換為行銷部門的投影片。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 敏捷宣言主張「可執行的軟體高於詳盡的文件」，意在強調文件應以支援可運行軟體的交付為目的，避免過度官僚形式主義阻礙實際價值的快速交付，並非完全放棄規格與架構文檔。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-header="第 2 章 | 第 15 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="19" style="--paginate:true;--header:第 2 章 | 第 15 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 15 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 15 題</span>
+    <span class="quiz-prog">單元：敏捷原則之可持續開發步調</span>
+  </div>
+  <div class="quiz-qbox">
+    敏捷原則第八條指出：*「敏捷流程提倡可持續的開發步調。發起人、開發者和使用者應能長期維持恆常穩定的步調。」* 其最核心的工程動機為何？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">避免因長時間過勞導致代碼品質劣化、累積致命缺陷以及工程團隊耗竭流失。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">強制工程師每週必須提交超過一百次無意義的 Git Commit 記錄。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">限制開發團隊每天最多只能撰寫五十行以內的原始碼。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">確保軟體永遠不需要在生產環境中進行重大版本發行。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 敏捷原則提倡「可持續的開發步調 (Sustainable Pace)」。長期加班與通宵開發會耗盡工程師心力，使代碼缺陷率急遽飆升，後續修復臭蟲的時間往往數倍於加班搶出的進度，反而拖垮整體產能。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-header="第 2 章 | 第 16 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="20" style="--paginate:true;--header:第 2 章 | 第 16 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 16 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 16 題</span>
+    <span class="quiz-prog">單元：看板方法與半成品限制 (WIP Limit)</span>
+  </div>
+  <div class="quiz-qbox">
+    在看板 (Kanban) 流程框架中，對看板欄位強制設定嚴格的「在製品數量上限 (WIP Limits)」主要工程目的為何？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">限制工程師每日能夠修改的程式碼檔案總數。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">消除多工切換耗損、暴露出流程瓶頸，並迫使團隊在開啟新工作前先將既有任務推進至完成。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">迫使軟體團隊必須恢復傳統瀑布模型的年度驗收測試。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">確保軟體專案的所有架構設計皆由外部顧問獨立完成。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 看板限制在製品 (WIP) 的核心精神是「停止開始，開始完成 (Stop starting, start finishing)」。限制平行進行中的任務數量，能顯著降低上下文切換 (Context Switching) 的認知損耗，並能迅速暴露流水線中的阻塞瓶頸。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-header="第 2 章 | 第 17 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="21" style="--paginate:true;--header:第 2 章 | 第 17 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 17 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 17 題</span>
+    <span class="quiz-prog">單元：衝刺回顧會議 (Sprint Retrospective)</span>
+  </div>
+  <div class="quiz-qbox">
+    在 Scrum 框架中，每個衝刺末期召開的「衝刺回顧會議 (Sprint Retrospective)」其最主要的核心目標是什麼？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">向外界利益關係人正式演示可運行的軟體增量以獲取商業反饋。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">審視團隊內部的人際協同、工程流程與工具實踐，並制定具體的行動改善方案。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">針對落後進度的工程師個人進行公開績效檢討與懲處。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">將整個軟體專案的所有產品待辦清單全面銷毀重來。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 衝刺回顧會議 (Retrospective) 是團隊內部的閉門自省會議，聚焦於「人、流程、工具與協同機制」的檢討與調適，並共同承諾在下一個衝刺具體落實改進行動。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-header="第 2 章 | 第 18 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="22" style="--paginate:true;--header:第 2 章 | 第 18 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 18 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 18 題</span>
+    <span class="quiz-prog">單元：軟體技術債與利息代價</span>
+  </div>
+  <div class="quiz-qbox">
+    依據 Ward Cunningham 提出的「技術債 (Technical Debt)」金融隱喻，下列何者代表軟體組織在未來所必須支付的「複利利息 (Interest)」？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">每年向公有雲端供應商支付的伺服器虛擬機器租賃費用。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">因架構混亂耦合與缺乏測試，導致後續每次新增或修改功能時額外耗費的摸索、除錯與修補代價。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">發放給全體資深軟體架構師的年度專案分紅獎金。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">購買商業專利編譯器軟體授權的固定折舊費用。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 當初為了求快而欠下的架構債務是「本金」；而因為劣質代碼存在，導致後續每次開發與維護時額外付出的摸索、除錯與修補代價，就是必須不斷償還的「利息」。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-header="第 2 章 | 第 19 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="23" style="--paginate:true;--header:第 2 章 | 第 19 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 19 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 19 題</span>
+    <span class="quiz-prog">單元：疲軟 Scrum (Flaccid Scrum)</span>
+  </div>
+  <div class="quiz-qbox">
+    Martin Fowler 提出著名的**「疲軟 Scrum (Flaccid Scrum)」**一詞，是用來針砭軟體工程實務中的哪項重大失衡？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">全面導入 Scrum 的管理儀式與表象名詞，卻徹底拋棄了 TDD、持續重構與 CI 等技術工程實踐。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">拒絕使用昂貴的商業 Jira 專案追蹤軟體，堅持使用物理實體白板與紙本便利貼。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">允許產品負責人在衝刺規劃會議進行期間微調待辦清單的排序。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">強制在每一次 Git Commit 提交時必須由自動化 CI 流水線執行單元測試。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 「疲軟 Scrum (Flaccid Scrum)」指的是團隊僅導入站立會議、衝刺等專案管理儀式，卻忽視了極限編程 (XP) 中的自動化測試、重構、持續整合等嚴謹技術實踐，導致底層代碼逐漸腐爛。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-header="第 2 章 | 第 20 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="24" style="--paginate:true;--header:第 2 章 | 第 20 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 20 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 20 題</span>
+    <span class="quiz-prog">單元：結對編程之領航員角色</span>
+  </div>
+  <div class="quiz-qbox">
+    在極限編程 (XP) 的結對編程 (Pair Programming) 實踐中，「領航員 (Navigator)」的最主要核心職責是什麼？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">專注於敲擊鍵盤語法並在本地終端機執行指令編譯。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">退後一步進行宏觀戰略思考，即時審閱代碼結構、推敲極端邊界條件並把關系統架構。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">擔任專屬的 Scrum 敏捷教練並負責在 Jira 系統中拖動任務卡片。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">負責與客戶進行法律合約協商並審批團隊年度工程預算。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 在結對編程 (Pair Programming) 中，領航員 (Navigator) 的職責是抽離鍵盤細節，站在更高的戰略視野：審視整體演算法方向、考量邊界與極端狀況、預防架構腐爛，並確保代碼符合設計模式。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-header="第 2 章 | 第 21 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="25" style="--paginate:true;--header:第 2 章 | 第 21 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 21 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 21 題</span>
+    <span class="quiz-prog">單元：TDD 測試驅動開發與重構</span>
+  </div>
+  <div class="quiz-qbox">
+    在極限編程的「測試驅動開發 (TDD)」紅綠重構循環中，「重構 (Refactor)」階段的特定工程目標是什麼？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">為模組增添全新的業務功能並擴展其對外的公共 API 介面合約。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">在確保所有既有自動化測試持續維持綠燈通過的前提下，改善程式碼的內部架構、消除重複並提升可讀性。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">徹底刪除所有執行時間超過一秒的自動化單元測試以加速 CI 構建。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">將應用系統從物件導向語言強行全盤改寫為純函式語言。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 重構 (Refactoring) 的定義是在「不改變外在可觀察行為」的前提下，改善代碼的內部結構與可維護性。在重構期間必須確保所有自動化測試皆維持綠燈（通過狀態）。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-header="第 2 章 | 第 22 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="26" style="--paginate:true;--header:第 2 章 | 第 22 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 22 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 22 題</span>
+    <span class="quiz-prog">單元：持續交付 (CD) vs. 持續部署</span>
+  </div>
+  <div class="quiz-qbox">
+    在現代 DevOps 實務中，「持續交付 (Continuous Delivery)」與「持續部署 (Continuous Deployment)」在實務維運上的根本決定性差異為何？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">持續交付需要仰賴人工編譯原始碼；持續部署則實現編譯自動化。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">持續交付在預發環境中暫停並需經由人工商業決策審批發行；持續部署則在通過全套自動化測試後直接自動推上生產環境。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">持續交付專門用於行動 App 開發；持續部署專門用於關聯式資料庫。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">持續交付完全不需單元測試；持續部署強制要求結對編程。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 持續交付 (Continuous Delivery) 確保每版代碼皆產出經過嚴密驗證、可隨時上線的製品，但由人工業務決策決定何時釋出；持續部署 (Continuous Deployment) 則拿掉人工審批，自動化直通生產環境。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-header="第 2 章 | 第 23 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="27" style="--paginate:true;--header:第 2 章 | 第 23 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 2 章 | 第 23 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 2. 軟體開發流程 · 第 23 題</span>
+    <span class="quiz-prog">單元：AI 代理人與自動化驗證守門員</span>
+  </div>
+  <div class="quiz-qbox">
+    在現代「AI 規格驅動開發 (AI Specification-Driven)」實務中，自動化 CI/CD 驗證守門員的最主要核心角色是什麼？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">阻止人類開發者親自審閱人工智慧所生成的代碼產物。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">在 AI 生成的程式碼合入生產環境前，強制執行確定性品質檢查、測試合規性驗證與缺陷防堵。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">將自然語言提示詞直接轉換為公有雲端供應商的月度扣款帳單。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">全面廢除傳統軟體規格書，改以未經驗證的龐雜聊天歷史紀錄替代。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — AI 代理人能以驚人速度產出大量代碼，但極易混雜幻覺、不符規範的寫法或未知漏洞。嚴密的自動化編譯、靜態分析與單元測試守門員，是確保主幹分支品質不受污染的關鍵防線。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-header="第三章 需求工程 | 章節導讀 ▾" data-class="lead" lang="C" class="lead" data-marpit-pagination="28" style="--paginate:true;--header:第三章 需求工程 | 章節導讀 ▾;--class:lead;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第三章 需求工程 | 章節導讀 ▾</header>
+
+<h1 id="%E7%AC%AC%E4%B8%89%E7%AB%A0-%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B"><strong>第三章 需求工程</strong></h1>
+<h2 id="%E9%9C%80%E6%B1%82%E6%8E%A2%E7%B4%A2%E8%A6%8F%E6%A0%BC%E5%A5%91%E7%B4%84%E5%8F%AF%E9%87%8F%E5%8C%96%E6%8C%87%E6%A8%99%E8%88%87%E4%BA%BA%E6%A9%9F%E5%8D%94%E5%90%8C">需求探索、規格契約、可量化指標與人機協同</h2>
+<blockquote>
+<p>「在建造軟體系統的所有環節中，最困難的單一任務，莫過於精準決定究竟要建造什麼。」 —— 佛瑞德·布魯克斯 (Fred Brooks)</p>
+</blockquote>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-header="第 3 章 | 第 24 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="29" style="--paginate:true;--header:第 3 章 | 第 24 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 3 章 | 第 24 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 3. 需求工程 · 第 24 題</span>
+    <span class="quiz-prog">單元：使用者需求 vs. 系統需求</span>
+  </div>
+  <div class="quiz-qbox">
+    在需求工程中，「使用者需求 (User Requirements)」與「系統需求 (System Requirements)」最關鍵的實務運作差異為何？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">使用者需求是利害關係人的高階目標；系統需求則是供開發者實作的精確功能合約。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">使用者需求限定於 UI 線框圖；系統需求則專指後端資料庫的資料表綱要設計。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">使用者需求簽署後絕不可變更；系統需求則需在每日站立會議中持續進行重構。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">使用者需求來自外部法規稽核團隊；系統需求則由編譯器工具自動解析產生。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 使用者需求 (User Requirements) 以高階自然語言與圖表描繪系統需提供之服務與業務約束，主要面向客戶與主管；系統需求 (System Requirements) 則詳細規範系統功能、介面與操作約束，作為工程師實作與驗收的合約。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-header="第 3 章 | 第 25 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="30" style="--paginate:true;--header:第 3 章 | 第 25 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 3 章 | 第 25 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 3. 需求工程 · 第 25 題</span>
+    <span class="quiz-prog">單元：領域需求 (Domain Requirements)</span>
+  </div>
+  <div class="quiz-qbox">
+    請參考 UberEats 外送平台的這段需求規格說明：
+&gt; *「因應市政食品衛生安全法規，易腐熟食的外送運送時間不得超過 45 分鐘，且運送容器全程須維持在 60°C 以上。」*
+<p>請問上述敘述屬於哪一種軟體需求類別？</p>
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">領域需求 (Domain Requirement，由運作環境、產業法規或物理定律所施加的強制約束)</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">功能性需求 (Functional Requirement，指定系統必須執行的主動計算、特定功能或服務)</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">非功能性需求 (Non-Functional Requirement，針對效能、擴充性或可用性等整體系統品質特性)</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">使用者需求 (User Requirement，由終端消費者所提出之高階自然語言願景或業務目標)</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 源自外部法規、主管機關監管標準、特定產業合約或實體物理環境法則的強制性約束，在軟體工程中歸類為「領域需求 (Domain Requirements)」。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-header="第 3 章 | 第 26 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="31" style="--paginate:true;--header:第 3 章 | 第 26 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 3 章 | 第 26 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 3. 需求工程 · 第 26 題</span>
+    <span class="quiz-prog">單元：可驗證的非功能性需求指標</span>
+  </div>
+  <div class="quiz-qbox">
+    客戶提出了一個模糊的非功能性目標：*「訂單結帳系統必須具備極致速度與極高可靠度。」* 下列哪一項敘述正確地將此模糊目標轉化為**可驗證、可測試的工程量化指標**？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">99% 的結帳交易回應時間須 $\le 500$ 毫秒，且尖峰時段系統可用性須達 $\ge 99.95\%$。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">結帳使用者介面應採用滑順流暢的過場動畫，使顧客在心理層面感受最極致的速度。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">所有結帳微服務皆須採用記憶體安全程式語言開發，以百分之百確保程式零缺陷執行。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">雲端資料庫應於尖峰交易負載攀升時，自動配置無上限的隨機存取記憶體 (RAM)。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 非功能性需求必須具備「客觀可量化與可驗證性」。選項 A 明確定義了 99 百分位延遲低於 500ms、尖峰可用性達 99.95%，使測試團隊能依此設計壓力測試並得出明確判定。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-header="第 3 章 | 第 27 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="32" style="--paginate:true;--header:第 3 章 | 第 27 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 3 章 | 第 27 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 3. 需求工程 · 第 27 題</span>
+    <span class="quiz-prog">單元：訪談啟發技術與五個為什麼</span>
+  </div>
+  <div class="quiz-qbox">
+    在需求訪談過程中，一位醫院主管堅持要求：*「我們的臨床資訊系統必須導入區塊鏈帳本來記錄病患的生理生命徵象。」* 此時軟體工程師最應採用的專業訪談啟發法為何？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">運用「五個為什麼 (5 Whys)」探詢其背後的資料防竄改與稽核痛點，而非過早鎖定特定技術。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">立即針對客戶指定的區塊鏈功能，著手撰寫智慧合約與關聯式資料庫對應綱要。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">當場直接駁回該主管的要求，因為非技術利害關係人不得主動指定系統的實作架構。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">禮貌性終止本次訪談流程，並將後續需求擷取工作完全轉向被動的工作場所觀察法。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 利害關係人往往提出表面技術解法（如區塊鏈），工程師應運用「五個為什麼 (5 Whys)」深掘其背後真正的商業痛點（如稽核紀錄不可篡改），進而給出最適當的工程架構。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-header="第 3 章 | 第 28 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="33" style="--paginate:true;--header:第 3 章 | 第 28 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 3 章 | 第 28 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 3. 需求工程 · 第 28 題</span>
+    <span class="quiz-prog">單元：民族誌觀察法與內隱知識挖掘</span>
+  </div>
+  <div class="quiz-qbox">
+    在需求工程中，當分析急診室或飛航管制等複雜且高壓的運作環境時，為何**民族誌觀察法 (Ethnography / 職場觀察)** 具備無可取代的關鍵價值？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">能發掘內隱知識——即使用者已習以為常且視為當然，因而在正式訪談中鮮少主動提及的工作細節與非正式捷徑。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">能自動將利害關係人的自然語言需求，在完全無須人工介入的情況下直接編譯為可執行的驗收測試套件。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">能完全消除後續的軟體架構設計、關聯式資料庫建模以及同儕程式碼審查 (Code Review) 等開發階段。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">能確保所產出的軟體需求規格書在專案的第一個開發衝刺期 (Sprint) 即達成 100% 的數學完全性。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 現場人員在長期高壓環境下累積的大量工作直覺、非正式流程與緊急捷徑，屬於「內隱知識 (Tacit Knowledge)」，在會議室訪談中極難被主動表述，必須透過實地民族誌觀察法才能發掘。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-header="第 3 章 | 第 29 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="34" style="--paginate:true;--header:第 3 章 | 第 29 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 3 章 | 第 29 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 3. 需求工程 · 第 29 題</span>
+    <span class="quiz-prog">單元：使用案例圖與詳細說明書</span>
+  </div>
+  <div class="quiz-qbox">
+    軟體工程團隊繪製了一份 UML 使用案例圖，標註使用者與「提領現金」使用案例相連。為何工程師除了使用案例圖外，還必須撰寫詳盡的文字型**使用案例說明書 (Use Case Description)**？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">圖形僅呈現高階系統範疇；文字說明才能完整定義循序步驟、前置條件、後置條件與例外處理流程。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">現行現代網頁瀏覽器若缺乏伴隨的 Markdown 純文字描述，將完全無法正確渲染 UML 向量圖形。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">現代編譯器與虛擬機器需要文字型使用案例說明，以便在執行階段預先為角色執行緒配置堆積記憶體。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">文字型使用案例說明的核心目的，是將非功能性需求自動轉化為前端圖形使用者介面的高傳真原型。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — UML 使用案例圖僅提供宏觀視角展示參與者與功能之關聯；工程師在實作與編寫測試案例時，必須仰賴文字型說明書中所定義的前置條件、主要成功流程與例外處理路徑。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-header="第 3 章 | 第 30 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="35" style="--paginate:true;--header:第 3 章 | 第 30 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 3 章 | 第 30 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 3. 需求工程 · 第 30 題</span>
+    <span class="quiz-prog">單元：後期需求變更與骨牌效應代價</span>
+  </div>
+  <div class="quiz-qbox">
+    為何在軟體系統交付上線後才修正需求錯誤，其耗費的成本會遠高於在早期開發階段修正？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="false">
+      <span class="q-badge">A</span>
+      <span class="q-text">需求規格文件一旦由客戶簽署核准後，在法律上便具有合約鎖定效力而嚴格禁止進行任何修改。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="true">
+      <span class="q-badge">B</span>
+      <span class="q-text">後期修正必須耗費大量成本重新設計架構、重寫程式碼、重測並重新部署基於錯誤前提建立的連鎖元件。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">雲端程式碼儲存庫的自動化編譯器，在軟體發布至正式生產環境後會自動鎖定並阻止程式碼變更。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">自動化單元測試套件在程式碼封裝並部署至雲端微服務叢集後，將會完全失去其工程驗證的有效性。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：B</strong> — 當需求缺陷逃逸至正式生產環境後，建築於該錯誤之上的架構設計、資料庫綱要、API 介面合約、前端視角與測試套件全都必須打掉重做，引發百倍的骨牌式重工成本。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-header="第 3 章 | 第 31 題 / 共 31 題 ▾" lang="C" data-marpit-pagination="36" style="--paginate:true;--header:第 3 章 | 第 31 題 / 共 31 題 ▾;" data-marpit-pagination-total="37" data-size="16:9">
+<header>第 3 章 | 第 31 題 / 共 31 題 ▾</header>
+<div class="quiz-layout">
+  <div class="quiz-meta">
+    <span class="quiz-tag">Ch 3. 需求工程 · 第 31 題</span>
+    <span class="quiz-prog">單元：生成式 AI 在需求工程中的幻覺風險</span>
+  </div>
+  <div class="quiz-qbox">
+    當軟體工程團隊運用大型語言模型 (LLM) 從利害關係人的訪談逐字稿中自動生成需求規格書時，最需要透過「人機協同 (Human-in-the-Loop)」進行驗證的核心風險是什麼？
+  </div>
+  <div class="quiz-grid">
+    <div class="quiz-choice" data-opt="A" data-correct="true">
+      <span class="q-badge">A</span>
+      <span class="q-text">LLM 可能產生聽起來合理但完全虛構的商業邏輯、遺漏關鍵的邊界約束，或捏造不存在的外部 API 串接。</span>
+    </div>
+    <div class="quiz-choice" data-opt="B" data-correct="false">
+      <span class="q-badge">B</span>
+      <span class="q-text">LLM 完全無法產出以 Markdown 清單格式或標準使用者故事 Given-When-Then 語法結構編排的規格文字。</span>
+    </div>
+    <div class="quiz-choice" data-opt="C" data-correct="false">
+      <span class="q-badge">C</span>
+      <span class="q-text">LLM 在生成文字時會消耗過量伺服器記憶體，進而導致正式環境中微服務叢集的資料庫發生死結錯誤。</span>
+    </div>
+    <div class="quiz-choice" data-opt="D" data-correct="false">
+      <span class="q-badge">D</span>
+      <span class="q-text">LLM 嚴格遵循傳統瀑布式開發流程，因此會堅決拒絕為敏捷疊代衝刺週期生成增量式的需求項目。</span>
+    </div>
+  </div>
+  <div class="quiz-fb state-idle">
+    <div class="fb-head">
+      <span class="fb-msg">👉 請點選左側選項進行自我檢測</span>
+      <span class="btn-retry" style="display: none;">↺ 重新作答</span>
+    </div>
+    <div class="fb-body">
+      <strong>💡 正確答案：A</strong> — 大型語言模型 (LLM) 本質為機率文字預測器而非領域專家，極易產生虛構商業邏輯或遺漏邊界限制的「幻覺 (Hallucination)」，因此在將其產生的規格投入實作前，必須有人類工程師進行嚴謹驗證。
+    </div>
+  </div>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-header="自學測驗題庫 ▾ | 測驗圓滿完成" data-class="lead" lang="C" class="lead" data-marpit-pagination="37" style="--paginate:true;--header:自學測驗題庫 ▾ | 測驗圓滿完成;--class:lead;" data-marpit-pagination-total="37" data-size="16:9">
+<header>自學測驗題庫 ▾ | 測驗圓滿完成</header>
+
+<h1 id="%F0%9F%8E%89-%E6%81%AD%E5%96%9C%E5%B7%B2%E5%AE%8C%E6%88%90%E5%85%A8%E9%83%A8-31-%E9%81%93%E6%A0%B8%E5%BF%83%E8%A7%80%E5%BF%B5%E6%B8%AC%E9%A9%97"><strong><img class="emoji" draggable="false" alt="🎉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f389.svg" data-marp-twemoji=""/> 恭喜！已完成全部 31 道核心觀念測驗</strong></h1>
+<h2 id="%E6%88%90%E5%8A%9F%E6%AA%A2%E8%A6%96%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B0%8E%E8%AB%96%E6%B5%81%E7%A8%8B%E6%A8%A1%E5%9E%8B%E8%88%87%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B%E5%85%A8%E8%B2%8C">成功檢視軟體工程導論、流程模型與需求工程全貌</h2>
+<blockquote>
+<p>「日日行，不怕千萬里；常常做，不怕千萬事。」 —— 《格言聯璧》</p>
+</blockquote>
+<div class="three-columns" style="margin-top: 25px;">
+<div class="card">
+  <h3 style="color: #0284c7; margin-bottom: 6px;">📘 複習第一章</h3>
+  <p style="font-size: 13.5px; color: #475569;">回顧軟體危機、職責分離、ISO 25010 與工程倫理核心概念。</p>
+  <div style="margin-top: 10px;">
+    <a href="#4" class="btn-secondary" style="display: inline-block; padding: 4px 12px; font-size: 12.5px; text-decoration: none; border-radius: 4px; border: 1px solid #cbd5e1; background: #fff; color: #0284c7; font-weight: 700;">跳轉至第 01 題 ➔</a>
+  </div>
+</div>
+<div class="card">
+  <h3 style="color: #0284c7; margin-bottom: 6px;">⚙️ 複習第二章</h3>
+  <p style="font-size: 13.5px; color: #475569;">回顧敏捷宣言、Scrum 儀式、看板 WIP 限制與 TDD 重構回圈。</p>
+  <div style="margin-top: 10px;">
+    <a href="#14" class="btn-secondary" style="display: inline-block; padding: 4px 12px; font-size: 12.5px; text-decoration: none; border-radius: 4px; border: 1px solid #cbd5e1; background: #fff; color: #0284c7; font-weight: 700;">跳轉至第 10 題 ➔</a>
+  </div>
+</div>
+<div class="card">
+  <h3 style="color: #0284c7; margin-bottom: 6px;">📋 複習第三章</h3>
+  <p style="font-size: 13.5px; color: #475569;">回顧需求獲取方法、可量化 NFR、使用案例與 AI 幻覺防範。</p>
+  <div style="margin-top: 10px;">
+    <a href="#29" class="btn-secondary" style="display: inline-block; padding: 4px 12px; font-size: 12.5px; text-decoration: none; border-radius: 4px; border: 1px solid #cbd5e1; background: #fff; color: #0284c7; font-weight: 700;">跳轉至第 24 題 ➔</a>
+  </div>
+</div>
+</div>
+<script>
+(function() {
+  // =========================================================================
+  // 1. Header Dropdown (Table of Contents / Outline)
+  // =========================================================================
+  function initHeaderDropdown() {
+    const sections = [];
+    const seenTitles = new Set();
+    const slideSections = document.querySelectorAll('section[id]');
+    
+    // 1. Scan unique section titles and their slide IDs
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header) return;
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title || seenTitles.has(title)) return;
+      
+      seenTitles.add(title);
+      sections.push({
+        id: sec.id,
+        title: title
+      });
+    });
+
+    if (sections.length === 0) return;
+
+    // Detect language: if slide titles don't have Chinese characters, use English
+    const allTitles = sections.map(s => s.title).join('');
+    const isEn = !/[\u4e00-\u9fa5]/.test(allTitles);
+    const txtOutline = isEn ? '📑 Table of Contents' : '📑 章節目錄';
+    const txtTitleTooltip = isEn ? 'Click to pin or hover to view outline' : '點擊固定或懸停查看章節目錄';
+    const txtPrev = isEn ? 'Previous Section' : '上一章節';
+    const txtNext = isEn ? 'Next Section' : '下一章節';
+
+    // Helper to create the dropdown DOM
+    function createDropdownWrapper(currentTitle) {
+      const wrapper = document.createElement('span');
+      wrapper.className = 'header-nav-wrapper';
+      
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'header-nav-title';
+      titleSpan.title = txtTitleTooltip;
+      titleSpan.innerHTML = currentTitle + '<span class="nav-caret"> ▾</span>';
+      
+      titleSpan.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const wasOpen = wrapper.classList.contains('is-open');
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+        if (!wasOpen) {
+          wrapper.classList.add('is-open');
+        }
+      });
+      
+      const dropdown = document.createElement('div');
+      dropdown.className = 'nav-dropdown';
+      
+      dropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      const dropHeader = document.createElement('div');
+      dropHeader.className = 'nav-dropdown-header';
+      dropHeader.innerHTML = '<span>' + txtOutline + '</span>';
+      dropdown.appendChild(dropHeader);
+      
+      const grid = document.createElement('div');
+      grid.className = 'nav-dropdown-grid';
+      
+      sections.forEach(s => {
+        const item = document.createElement('a');
+        const isActive = (s.title === currentTitle);
+        item.className = 'nav-dropdown-item' + (isActive ? ' active' : '');
+        item.href = '#' + s.id;
+        item.innerHTML = '<span class="badge">#' + s.id.padStart(2, '0') + '</span><span class="item-text" title="' + s.title + '">' + s.title + '</span>';
+        
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          wrapper.classList.remove('is-open');
+          dropdown.style.display = 'none';
+          const targetHash = '#' + s.id;
+          if (window.location.hash === targetHash) {
+            window.dispatchEvent(new HashChangeEvent('hashchange'));
+          } else {
+            window.location.hash = targetHash;
+          }
+          setTimeout(() => { dropdown.style.display = ''; }, 350);
+        });
+        
+        grid.appendChild(item);
+      });
+      
+      dropdown.appendChild(grid);
+      wrapper.appendChild(titleSpan);
+      wrapper.appendChild(dropdown);
+      return wrapper;
+    }
+
+    // Close any pinned dropdown when clicking anywhere outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.header-nav-wrapper')) {
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+      }
+    });
+
+    // 2. Enhance each header element across all slides
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header || header.dataset.navEnhanced) return;
+      header.dataset.navEnhanced = 'true';
+      
+      const links = header.querySelectorAll('a');
+      let prevLink = null;
+      let nextLink = null;
+      
+      links.forEach(a => {
+        const txt = a.textContent.trim();
+        if (txt === '◄' || txt === '◀') prevLink = a;
+        if (txt === '►' || txt === '▶') nextLink = a;
+      });
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title) return;
+      
+      header.innerHTML = '';
+      if (prevLink) {
+        prevLink.className = 'header-nav-arrow';
+        prevLink.title = txtPrev;
+        header.appendChild(prevLink);
+        header.appendChild(document.createTextNode(' '));
+      }
+      
+      const wrapper = createDropdownWrapper(title);
+      header.appendChild(wrapper);
+      
+      if (nextLink) {
+        header.appendChild(document.createTextNode(' '));
+        nextLink.className = 'header-nav-arrow';
+        nextLink.title = txtNext;
+        header.appendChild(nextLink);
+      }
+    });
+  }
+
+  // =========================================================================
+  // 2. Number Quick Jump (<kbd>Num</kbd> + <kbd>Enter</kbd>)
+  // =========================================================================
+  function initNumberQuickJump() {
+    let inputBuffer = '';
+    let timer = null;
+    let hud = null;
+
+    // Detect language: check titles or body text
+    const slideSections = document.querySelectorAll('section[id]');
+    let hasZh = false;
+    slideSections.forEach(s => {
+      if (/[\u4e00-\u9fa5]/.test(s.textContent || '')) hasZh = true;
+    });
+    const isEn = !hasZh;
+
+    function getOrCreateHud() {
+      if (!hud) {
+        hud = document.createElement('div');
+        hud.id = 'slide-quick-jump-hud';
+        hud.style.cssText = [
+          'position: fixed',
+          'bottom: 36px',
+          'left: 50%',
+          'transform: translateX(-50%)',
+          'background: rgba(15, 23, 42, 0.94)',
+          'color: #ffffff',
+          'padding: 8px 18px',
+          'border-radius: 28px',
+          'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif',
+          'font-size: 14px',
+          'font-weight: 500',
+          'box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15)',
+          'backdrop-filter: blur(16px)',
+          '-webkit-backdrop-filter: blur(16px)',
+          'z-index: 999999',
+          'display: none',
+          'align-items: center',
+          'gap: 8px',
+          'pointer-events: none',
+          'opacity: 0',
+          'transition: opacity 0.15s ease, transform 0.15s ease'
+        ].join(';');
+        const targetParent = document.fullscreenElement || document.body;
+        targetParent.appendChild(hud);
+      }
+      const parent = document.fullscreenElement || document.body;
+      if (hud.parentElement !== parent) {
+        parent.appendChild(hud);
+      }
+      return hud;
+    }
+
+    function getTotalSlides() {
+      const secs = document.querySelectorAll('section[id]');
+      return secs.length || 1;
+    }
+
+    function showHud() {
+      const el = getOrCreateHud();
+      const total = getTotalSlides();
+      const label = isEn ? 'Go to slide:' : '跳至頁碼:';
+      const enterHint = isEn ? 'Enter ↵' : 'Enter 確認 ↵';
+      el.innerHTML = '<span>🧭 ' + label + '</span> ' +
+        '<strong style="color: #38bdf8; font-size: 20px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 1px;">' + inputBuffer + '</strong> ' +
+        '<span style="opacity: 0.6; font-size: 13px;">/ ' + total + '</span> ' +
+        '<span style="background: rgba(255,255,255,0.18); padding: 2px 7px; border-radius: 6px; font-size: 11px; margin-left: 2px; font-weight: 600;">' + enterHint + '</span>';
+      el.style.display = 'flex';
+      el.style.opacity = '1';
+
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(clearInput, 2800);
+    }
+
+    function clearInput() {
+      inputBuffer = '';
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      if (hud) {
+        hud.style.opacity = '0';
+        setTimeout(() => {
+          if (inputBuffer === '' && hud) hud.style.display = 'none';
+        }, 150);
+      }
+    }
+
+    function jumpToSlide(num) {
+      const total = getTotalSlides();
+      const target = Math.max(1, Math.min(num, total));
+      const targetHash = '#' + target;
+      
+      // Visual flash confirmation
+      const el = getOrCreateHud();
+      const confirmedMsg = isEn ? ('✓ Slide ' + target) : ('✓ 第 ' + target + ' 頁');
+      el.innerHTML = '<span style="color: #34d399; font-weight: 700; font-size: 15px;">' + confirmedMsg + '</span>';
+      el.style.display = 'flex';
+      el.style.opacity = '1';
+      setTimeout(clearInput, 500);
+
+      if (window.location.hash === targetHash) {
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
+      } else {
+        window.location.hash = targetHash;
+      }
+    }
+
+    window.addEventListener('keydown', function(e) {
+      // Don't intercept when focusing editable form elements
+      const active = document.activeElement;
+      if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT' || active.isContentEditable)) {
+        return;
+      }
+
+      // Ignore if modifier keys are pressed
+      if (e.ctrlKey || e.altKey || e.metaKey) {
+        return;
+      }
+
+      // Resolve digit from key or code (supports '2', 'Digit2', 'Numpad2')
+      let digit = null;
+      if (e.key >= '0' && e.key <= '9') {
+        digit = e.key;
+      } else if (/^(?:Digit|Numpad)([0-9])$/.test(e.key)) {
+        digit = e.key.replace(/^(?:Digit|Numpad)/, '');
+      } else if (/^(?:Digit|Numpad)([0-9])$/.test(e.code || '')) {
+        digit = (e.code || '').replace(/^(?:Digit|Numpad)/, '');
+      }
+
+      if (digit !== null) {
+        inputBuffer += digit;
+        if (inputBuffer.length > 4) inputBuffer = inputBuffer.slice(-4);
+        showHud();
+        return;
+      }
+
+      // Backspace
+      if ((e.key === 'Backspace' || e.code === 'Backspace') && inputBuffer.length > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        inputBuffer = inputBuffer.slice(0, -1);
+        if (inputBuffer.length === 0) {
+          clearInput();
+        } else {
+          showHud();
+        }
+        return;
+      }
+
+      // Escape
+      if ((e.key === 'Escape' || e.code === 'Escape') && inputBuffer.length > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        clearInput();
+        return;
+      }
+
+      // Enter key confirms numeric jump
+      if ((e.key === 'Enter' || e.code === 'Enter' || e.code === 'NumpadEnter') && inputBuffer.length > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        const targetPage = parseInt(inputBuffer, 10);
+        if (!isNaN(targetPage)) {
+          jumpToSlide(targetPage);
+        } else {
+          clearInput();
+        }
+      }
+    }, true);
+  }
+
+  // Initialize both features
+  function init() {
+    initHeaderDropdown();
+    initNumberQuickJump();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  setTimeout(init, 400);
+})();
+
+</script>
+</section>
+<script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{container;containerSize;containerObserver;svg;svgComputedStyle;svgPreserveAspectRatio="xMinYMid meet";wrapper;wrapperSize;wrapperObserver;constructor(){super();const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=this.shadowRoot.querySelector(`div[${e}]`)??void 0;const t=this.svg;this.svg=this.wrapper?.querySelector(`svg[${i}]`)??void 0,this.svg!==t&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=this.svg?.querySelector(`span[${n}]`)??void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame(()=>{t.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){let t=Math.ceil(this.containerSize?.width??0);const e=Math.ceil(this.containerSize?.height??0);void 0!==this.dataset.downscaleOnly&&(t=Math.max(t,this.wrapperSize?.width??0));const i=this.svg?.querySelector(":scope > foreignObject");if(i?.setAttribute("width",`${t}`),i?.setAttribute("height",`${e}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${t} ${e}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=t<=0||e<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const r=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this._shadow()}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_shadow(){if(!this.shadowRoot)try{this.attachShadow({mode:"open"})}catch(t){if(!(t instanceof Error&&"NotSupportedError"===t.name))throw t}return this.shadowRoot}_update(){const t=this._shadow();if(t){const e=i?`<style>:host { ${i} }</style>`:"";let n="<slot></slot>";const{autoScaling:s}=this.dataset;if(void 0!==s){n=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===s?"data-downscale-only":""}>${n}</marp-auto-scaling>`}t.innerHTML=e+n}}};let o;const a=()=>o??(o=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is"),o),l=Symbol();let c;const d="marpitSVGPolyfill:setZoomFactor,",h=Symbol(),g=Symbol();const p=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[v]:[],i={then:e=>(t?(async()=>{if(void 0===c){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise(t=>{i.addEventListener("load",()=>t())});i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),c=e.getImageData(5,5,1,1).data[3]<128}return c})().then(t=>{null==e||e(t?[v]:[])}):null==e||e([]),i)};return Object.assign(e,i)};let m,u;function v(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[g]||(Object.defineProperty(window,g,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(d)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(u=i)}}catch(t){console.error(t)}}));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),t=>{var e,s,r,o;t.style.transform||(t.style.transform="translateZ(0)");const a=i||u||t.currentScale||1;m!==a&&(m=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(o=null===(r=n.y)||void 0===r?void 0:r.baseVal.value)&&void 0!==o?o:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}}),!1!==n&&Array.from(e.querySelectorAll("iframe"),({contentWindow:t})=>{null==t||t.postMessage(`${d}${n}`,"null"===window.origin?"*":window.origin)})}function w({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[h])return t[h];let e=!0;const i=()=>{e=!1,delete t[h]};Object.defineProperty(t,h,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await p()}finally{s=!0}})();const r=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(r)};return r(),i}(e);return t?(i(),()=>{}):i}m=1,u=void 0;const b=Symbol(),y=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[l];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,o=t[n].proto();a()&&o!==HTMLElement?i||customElements.define(s,r(o,{style:t[n].style}),{extends:n}):(i||customElements.define(s,r(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach(t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)}))}window[l]=!0})(e),e[b])return e[b];const i=w({target:e}),n=()=>{i(),delete e[b]},o=Object.assign(n,{cleanup:n,update:()=>y(e)});return Object.defineProperty(e,b,{configurable:!0,value:o}),o},f=document.currentScript;y(f?f.getRootNode():document)}();
+</script></foreignObject></svg></div><div class="bespoke-marp-note" data-index="0" tabindex="0"><p>歡迎使用《進階軟體工程》核心觀念自學互動題庫！
+
+本測驗集結了前三章（導論、開發流程與需求工程）共 31 道精選觀念檢測題 (CCQ)。
+
+不同於課堂即時投票，本投影片專為學生課後自學與複習設計。在 HTML 互動簡報中，你可以隨時點選選項進行作答，系統將提供即時的答題反饋與深入的工程原理解析。
+
+總結這張投影片，請記住這個核心觀念：主動檢測與回想是固化軟體工程思維模型最有效的方法。</p></div><div class="bespoke-marp-note" data-index="1" tabindex="0"><p>這裡是全部 31 道題目的總覽地圖。
+
+你可以依序從第 1 題作答至第 31 題，也可以透過上方的卡片直接跳入特定章節。
+
+請留意右上角的頁首標題（Header）帶有互動下拉選單。在測驗的任何時候點選或滑過它，都能隨時展開完整題庫矩陣，自由跳轉到任何一題。
+
+總結這張投影片，請記住這個核心觀念：根據自己的學習進度靈活調配複習重點，針對較不熟悉的領域進行深度檢驗。</p></div><div class="bespoke-marp-note" data-index="2" tabindex="0"><p>進入第一章：軟體工程導論。
+
+本單元包含 9 道觀念檢測題，檢驗你對軟體本質、危機成因、核心活動與專業倫理的掌握。
+
+請仔細閱讀題目情境，點選選項或使用鍵盤快速鍵作答，並研讀解析確認思維模型是否正確。
+
+總結這張投影片，請記住這個核心觀念：在點擊答案前先進行批判性思考，確認自己能清楚說出為什麼其他選項是錯誤的。</p></div><div class="bespoke-marp-note" data-index="3" tabindex="0"><p>我們來檢視第 1 題：軟體危機與複雜度。
+
+核心問題：為什麼 1968 年的「軟體危機」無法單純透過購買運算速度更快、記憶體容量更大的電腦硬體來解決？
+
+正確答案是選項 B：危機本質上是系統規模與智力管理帶來的組織複雜度挑戰。單純提升硬體運算能力與記憶體容量，反而會刺激建造更大規模的系統，使人腦使用非正式、隨意編程方法無法應對。更快的 CPU 無法解決需求遺漏、混亂的相依關係或介面溝通失誤等核心軟體問題。
+
+總結這張投影片，請記住這個核心觀念：軟體危機與複雜度 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="4" tabindex="0"><p>我們來檢視第 2 題：IEEE 軟體定義與範疇。
+
+核心問題：依據 IEEE 對「軟體 (Software)」的標準定義，下列何者不屬於軟體的範疇？
+
+正確答案是選項 C：依據 IEEE 610.12 標準定義，軟體包含電腦程式、作業程序、相關文件與系統資料。CPU 運算處理器與記憶體屬於執行軟體的「實體電子硬體設備」，本身並非軟體組成要素。
+
+總結這張投影片，請記住這個核心觀念：IEEE 軟體定義與範疇 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="5" tabindex="0"><p>我們來檢視第 3 題：軟體工程通用核心活動。
+
+核心問題：下列哪一組選項正確地將具體的軟體工程實踐行為，對應到其所屬的四大通用核心活動？
+
+正確答案是選項 A：與利害關係人訪談並梳理使用者故事是「軟體規格說明 (Specification)」的直接實踐；單元測試屬於「驗證 (Validation)」；資料庫重構屬於「軟體演進 (Evolution)」；抽換第三方 API 屬於「設計與實作」或「演進」。
+
+總結這張投影片，請記住這個核心觀念：軟體工程通用核心活動 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="6" tabindex="0"><p>我們來檢視第 4 題：布魯克斯法則與團隊規模。
+
+核心問題：某個軟體專案目前落後進度 3 週，距離正式交付期限僅剩 2 週。專案經理決定緊急招募 4 位初階程式設計師加入以期加速進度。根據「布魯克斯法則 (Brooks's Law)」，最可能的結果是什麼？
+
+正確答案是選項 B：佛瑞德·布魯克斯在《人月神話》中指出：軟體開發是複雜的智力活動，無法像體力勞動般任意分割。向落後的專案增加人手，團隊通訊路徑會依 $n(n-1)/2$ 呈二次方暴增，且資深工程師必須暫停手邊開發來指導新人，導致專案更加落後。
+
+總結這張投影片，請記住這個核心觀念：布魯克斯法則與團隊規模 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="7" tabindex="0"><p>我們來檢視第 5 題：單一職責原則 (SRP)。
+
+核心問題：一個電商「訂單處理模組」同時直接處理 HTTP 請求解析、執行信用卡交易、執行 SQL 資料庫查詢，並動態組裝 HTML 收據郵件。此設計最嚴重違反了哪項核心設計原則？
+
+正確答案是選項 A：一個模組同時負責網路通訊、金流扣款、資料庫存取與郵件生成，承擔了過多截然不同的業務邏輯，嚴重違反「單一職責原則 (Single Responsibility Principle, SRP)」，應拆分為各自獨立的高內聚模組。
+
+總結這張投影片，請記住這個核心觀念：單一職責原則 (SRP) 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="8" tabindex="0"><p>我們來檢視第 6 題：ISO 25010 軟體品質特徵。
+
+核心問題：下列哪一個選項正確地將真實世界發生的軟體問題，對應到其所屬的 ISO 25010 品質特徵？
+
+正確答案是選項 B：當支付閘道或子服務逾時時，訂單核心系統應能維持降級運作而非全盤崩潰，此能力屬於「可靠性 (Reliability)」維度下的「容錯性 (Fault Tolerance)」或「可用性 (Availability)」。
+
+總結這張投影片，請記住這個核心觀念：ISO 25010 軟體品質特徵 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="9" tabindex="0"><p>我們來檢視第 7 題：ACM/IEEE 軟體工程倫理守則。
+
+核心問題：依據 ACM/IEEE 軟體工程倫理守則，若雇主或主管強烈指示工程師撰寫一段偽造安全合規報告、隱匿系統危險的演算法時，工程師的最高倫理義務為何？
+
+正確答案是選項 B：ACM/IEEE 軟體工程倫理守則第一條明確規範：公眾的健康、安全與福祉高於雇主或客戶的利益。面對會威脅人命或法規的安全隱患，工程師有道德與法定責任拒絕違規指示並向上級或主管機關通報。
+
+總結這張投影片，請記住這個核心觀念：ACM/IEEE 軟體工程倫理守則 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="10" tabindex="0"><p>我們來檢視第 8 題：AI 編程與代碼流失率 (Code Churn)。
+
+核心問題：在評估 AI 輔助開發的實證研究中（如 GitClear 分析 1.5 億行代碼），「程式碼流失率 (Code Churn)」是關鍵品質指標。高 Code Churn 在 AI 開發環境中反映出何種核心問題？
+
+正確答案是選項 A：代碼在寫入後兩週內即被大量重寫或廢棄刪除，稱為「代碼流失率 (Code Churn)」。這代表開發者雖然能快速產出代碼，但程式碼品質欠佳、架構缺乏深思熟慮，是 Vibe Coding 累積技術債的典型徵兆。
+
+總結這張投影片，請記住這個核心觀念：AI 編程與代碼流失率 (Code Churn) 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="11" tabindex="0"><p>我們來檢視第 9 題：AI 驗證與同溫層測試陷阱。
+
+核心問題：工程師請 AI 生成一套複雜的計費結帳模組，並在未提供形式化規格契約下，直接請同一個 AI 自動生成單元測試。測試全部綠燈通過。此時最大的工程風險為何？
+
+正確答案是選項 A：當測試程式與實作程式碼皆由同一個 AI 模型在未經外部客觀規格定義下生成時，測試只會順著錯誤的生成邏輯進行驗證，形成「同溫層測試 (Echo Chamber Testing)」，產生虛假的安全感。
+
+總結這張投影片，請記住這個核心觀念：AI 驗證與同溫層測試陷阱 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="12" tabindex="0"><p>進入第二章：軟體開發流程與模型。
+
+本單元包含 14 道觀念檢測題，深入探討傳統瀑布模型、V-模型、敏捷宣言價值、看板 WIP 限制、技術債本利和與 CI/CD 實踐。
+
+作答時請將自己置身於敏捷團隊的工程情境中，判斷哪項決策才能為使用者帶來最健康的長期價值。
+
+總結這張投影片，請記住這個核心觀念：流程模型的選擇必須與專案的變更容忍度、風險特徵與團隊成熟度相匹配。</p></div><div class="bespoke-marp-note" data-index="13" tabindex="0"><p>我們來檢視第 10 題：傳統瀑布模型的本質缺點。
+
+核心問題：傳統瀑布模型在實務運作上最主要的核心缺點是什麼？
+
+正確答案是選項 B：瀑布模型將開發切分為嚴格依序進行的階段，並假設前期需求能夠完全凍結。一旦專案進入後期的編程或測試階段，任何需求變更都將導致跨階段的骨牌式連鎖重工，付出極為高昂的代價。
+
+總結這張投影片，請記住這個核心觀念：傳統瀑布模型的本質缺點 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="14" tabindex="0"><p>我們來檢視第 11 題：V-模型與測試左移。
+
+核心問題：相較於傳統瀑布模型，V-模型在工程實務上最主要的核心優勢是什麼？
+
+正確答案是選項 B：V-模型的最大貢獻在於「測試左移 (Shift-Left Testing)」：在專案初期的需求分析階段就同步規劃驗收測試計畫，在系統架構設計時即規劃整合測試，提早揭露各層級的潛在缺陷。
+
+總結這張投影片，請記住這個核心觀念：V-模型與測試左移 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="15" tabindex="0"><p>我們來檢視第 12 題：增量 (Incremental) 與疊代 (Iterative)。
+
+核心問題：在軟體流程工程中，「增量 (Incremental)」與「疊代 (Iterative)」開發的根本觀念差異是什麼？
+
+正確答案是選項 B：增量開發 (Incremental) 是按功能模組一塊一塊交付（如搭拼圖般垂直切片）；疊代開發 (Iterative) 則是在一輪輪回圈中逐步深化打磨整體系統（如雕刻塑像般逐漸精細）。敏捷方法通常同時結合兩者。
+
+總結這張投影片，請記住這個核心觀念：增量 (Incremental) 與疊代 (Iterative) 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="16" tabindex="0"><p>我們來檢視第 13 題：最小可行產品 (MVP) 演進模式。
+
+核心問題：在 Henrik Kniberg 著名的最小可行產品 (MVP) 隱喻中（從滑板到汽車），為什麼在第一期交付「一顆孤立的汽車輪子」被視為嚴重的反模式 (Anti-Pattern)？
+
+正確答案是選項 B：軟體的價值在於「解決使用者痛點」。單一顆輪子無法提供任何位移功能，是不可運作的內部組件；而滑板雖然簡陋，卻能立刻提供位移價值並蒐集真實使用者反饋，這才是 MVP 的核心真諦。
+
+總結這張投影片，請記住這個核心觀念：最小可行產品 (MVP) 演進模式 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="17" tabindex="0"><p>我們來檢視第 14 題：敏捷宣言核心價值。
+
+核心問題：敏捷宣言宣稱：*「可運行的軟體重於詳盡的文檔。」* 這項價值在實務工程中主要倡導何種行為？
+
+正確答案是選項 B：敏捷宣言主張「可執行的軟體高於詳盡的文件」，意在強調文件應以支援可運行軟體的交付為目的，避免過度官僚形式主義阻礙實際價值的快速交付，並非完全放棄規格與架構文檔。
+
+總結這張投影片，請記住這個核心觀念：敏捷宣言核心價值 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="18" tabindex="0"><p>我們來檢視第 15 題：敏捷原則之可持續開發步調。
+
+核心問題：敏捷原則第八條指出：*「敏捷流程提倡可持續的開發步調。發起人、開發者和使用者應能長期維持恆常穩定的步調。」* 其最核心的工程動機為何？
+
+正確答案是選項 A：敏捷原則提倡「可持續的開發步調 (Sustainable Pace)」。長期加班與通宵開發會耗盡工程師心力，使代碼缺陷率急遽飆升，後續修復臭蟲的時間往往數倍於加班搶出的進度，反而拖垮整體產能。
+
+總結這張投影片，請記住這個核心觀念：敏捷原則之可持續開發步調 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="19" tabindex="0"><p>我們來檢視第 16 題：看板方法與半成品限制 (WIP Limit)。
+
+核心問題：在看板 (Kanban) 流程框架中，對看板欄位強制設定嚴格的「在製品數量上限 (WIP Limits)」主要工程目的為何？
+
+正確答案是選項 B：看板限制在製品 (WIP) 的核心精神是「停止開始，開始完成 (Stop starting, start finishing)」。限制平行進行中的任務數量，能顯著降低上下文切換 (Context Switching) 的認知損耗，並能迅速暴露流水線中的阻塞瓶頸。
+
+總結這張投影片，請記住這個核心觀念：看板方法與半成品限制 (WIP Limit) 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="20" tabindex="0"><p>我們來檢視第 17 題：衝刺回顧會議 (Sprint Retrospective)。
+
+核心問題：在 Scrum 框架中，每個衝刺末期召開的「衝刺回顧會議 (Sprint Retrospective)」其最主要的核心目標是什麼？
+
+正確答案是選項 B：衝刺回顧會議 (Retrospective) 是團隊內部的閉門自省會議，聚焦於「人、流程、工具與協同機制」的檢討與調適，並共同承諾在下一個衝刺具體落實改進行動。
+
+總結這張投影片，請記住這個核心觀念：衝刺回顧會議 (Sprint Retrospective) 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="21" tabindex="0"><p>我們來檢視第 18 題：軟體技術債與利息代價。
+
+核心問題：依據 Ward Cunningham 提出的「技術債 (Technical Debt)」金融隱喻，下列何者代表軟體組織在未來所必須支付的「複利利息 (Interest)」？
+
+正確答案是選項 B：當初為了求快而欠下的架構債務是「本金」；而因為劣質代碼存在，導致後續每次開發與維護時額外付出的摸索、除錯與修補代價，就是必須不斷償還的「利息」。
+
+總結這張投影片，請記住這個核心觀念：軟體技術債與利息代價 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="22" tabindex="0"><p>我們來檢視第 19 題：疲軟 Scrum (Flaccid Scrum)。
+
+核心問題：Martin Fowler 提出著名的**「疲軟 Scrum (Flaccid Scrum)」**一詞，是用來針砭軟體工程實務中的哪項重大失衡？
+
+正確答案是選項 A：「疲軟 Scrum (Flaccid Scrum)」指的是團隊僅導入站立會議、衝刺等專案管理儀式，卻忽視了極限編程 (XP) 中的自動化測試、重構、持續整合等嚴謹技術實踐，導致底層代碼逐漸腐爛。
+
+總結這張投影片，請記住這個核心觀念：疲軟 Scrum (Flaccid Scrum) 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="23" tabindex="0"><p>我們來檢視第 20 題：結對編程之領航員角色。
+
+核心問題：在極限編程 (XP) 的結對編程 (Pair Programming) 實踐中，「領航員 (Navigator)」的最主要核心職責是什麼？
+
+正確答案是選項 B：在結對編程 (Pair Programming) 中，領航員 (Navigator) 的職責是抽離鍵盤細節，站在更高的戰略視野：審視整體演算法方向、考量邊界與極端狀況、預防架構腐爛，並確保代碼符合設計模式。
+
+總結這張投影片，請記住這個核心觀念：結對編程之領航員角色 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="24" tabindex="0"><p>我們來檢視第 21 題：TDD 測試驅動開發與重構。
+
+核心問題：在極限編程的「測試驅動開發 (TDD)」紅綠重構循環中，「重構 (Refactor)」階段的特定工程目標是什麼？
+
+正確答案是選項 B：重構 (Refactoring) 的定義是在「不改變外在可觀察行為」的前提下，改善代碼的內部結構與可維護性。在重構期間必須確保所有自動化測試皆維持綠燈（通過狀態）。
+
+總結這張投影片，請記住這個核心觀念：TDD 測試驅動開發與重構 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="25" tabindex="0"><p>我們來檢視第 22 題：持續交付 (CD) vs. 持續部署。
+
+核心問題：在現代 DevOps 實務中，「持續交付 (Continuous Delivery)」與「持續部署 (Continuous Deployment)」在實務維運上的根本決定性差異為何？
+
+正確答案是選項 B：持續交付 (Continuous Delivery) 確保每版代碼皆產出經過嚴密驗證、可隨時上線的製品，但由人工業務決策決定何時釋出；持續部署 (Continuous Deployment) 則拿掉人工審批，自動化直通生產環境。
+
+總結這張投影片，請記住這個核心觀念：持續交付 (CD) vs. 持續部署 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="26" tabindex="0"><p>我們來檢視第 23 題：AI 代理人與自動化驗證守門員。
+
+核心問題：在現代「AI 規格驅動開發 (AI Specification-Driven)」實務中，自動化 CI/CD 驗證守門員的最主要核心角色是什麼？
+
+正確答案是選項 B：AI 代理人能以驚人速度產出大量代碼，但極易混雜幻覺、不符規範的寫法或未知漏洞。嚴密的自動化編譯、靜態分析與單元測試守門員，是確保主幹分支品質不受污染的關鍵防線。
+
+總結這張投影片，請記住這個核心觀念：AI 代理人與自動化驗證守門員 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="27" tabindex="0"><p>進入第三章：需求工程。
+
+本單元包含 8 道觀念檢測題，涵蓋使用者需求與系統需求的分工、領域需求的辨識、非功能性需求之客觀可驗證性、民族誌挖掘內隱知識與大語言模型幻覺防範。
+
+這是軟體工程中失敗代價最高昂的階段，請謹慎思考每一個需求問題背後的真實意圖。
+
+總結這張投影片，請記住這個核心觀念：唯有正確定義問題，才能打造出真正滿足真實世界需求的正確系統。</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p>我們來檢視第 24 題：使用者需求 vs. 系統需求。
+
+核心問題：在需求工程中，「使用者需求 (User Requirements)」與「系統需求 (System Requirements)」最關鍵的實務運作差異為何？
+
+正確答案是選項 A：使用者需求 (User Requirements) 以高階自然語言與圖表描繪系統需提供之服務與業務約束，主要面向客戶與主管；系統需求 (System Requirements) 則詳細規範系統功能、介面與操作約束，作為工程師實作與驗收的合約。
+
+總結這張投影片，請記住這個核心觀念：使用者需求 vs. 系統需求 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="29" tabindex="0"><p>我們來檢視第 25 題：領域需求 (Domain Requirements)。
+
+核心問題：請參考 UberEats 外送平台的這段需求規格說明：
+&gt; *「因應市政食品衛生安全法規，易腐熟食的外送運送時間不得超過 45 分鐘，且運送容器全程須維持在 60°C 以上。」*
+
+請問上述敘述屬於哪一種軟體需求類別？
+
+正確答案是選項 A：源自外部法規、主管機關監管標準、特定產業合約或實體物理環境法則的強制性約束，在軟體工程中歸類為「領域需求 (Domain Requirements)」。
+
+總結這張投影片，請記住這個核心觀念：領域需求 (Domain Requirements) 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="30" tabindex="0"><p>我們來檢視第 26 題：可驗證的非功能性需求指標。
+
+核心問題：客戶提出了一個模糊的非功能性目標：*「訂單結帳系統必須具備極致速度與極高可靠度。」* 下列哪一項敘述正確地將此模糊目標轉化為**可驗證、可測試的工程量化指標**？
+
+正確答案是選項 A：非功能性需求必須具備「客觀可量化與可驗證性」。選項 A 明確定義了 99 百分位延遲低於 500ms、尖峰可用性達 99.95%，使測試團隊能依此設計壓力測試並得出明確判定。
+
+總結這張投影片，請記住這個核心觀念：可驗證的非功能性需求指標 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="31" tabindex="0"><p>我們來檢視第 27 題：訪談啟發技術與五個為什麼。
+
+核心問題：在需求訪談過程中，一位醫院主管堅持要求：*「我們的臨床資訊系統必須導入區塊鏈帳本來記錄病患的生理生命徵象。」* 此時軟體工程師最應採用的專業訪談啟發法為何？
+
+正確答案是選項 A：利害關係人往往提出表面技術解法（如區塊鏈），工程師應運用「五個為什麼 (5 Whys)」深掘其背後真正的商業痛點（如稽核紀錄不可篡改），進而給出最適當的工程架構。
+
+總結這張投影片，請記住這個核心觀念：訪談啟發技術與五個為什麼 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="32" tabindex="0"><p>我們來檢視第 28 題：民族誌觀察法與內隱知識挖掘。
+
+核心問題：在需求工程中，當分析急診室或飛航管制等複雜且高壓的運作環境時，為何**民族誌觀察法 (Ethnography / 職場觀察)** 具備無可取代的關鍵價值？
+
+正確答案是選項 A：現場人員在長期高壓環境下累積的大量工作直覺、非正式流程與緊急捷徑，屬於「內隱知識 (Tacit Knowledge)」，在會議室訪談中極難被主動表述，必須透過實地民族誌觀察法才能發掘。
+
+總結這張投影片，請記住這個核心觀念：民族誌觀察法與內隱知識挖掘 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="33" tabindex="0"><p>我們來檢視第 29 題：使用案例圖與詳細說明書。
+
+核心問題：軟體工程團隊繪製了一份 UML 使用案例圖，標註使用者與「提領現金」使用案例相連。為何工程師除了使用案例圖外，還必須撰寫詳盡的文字型**使用案例說明書 (Use Case Description)**？
+
+正確答案是選項 A：UML 使用案例圖僅提供宏觀視角展示參與者與功能之關聯；工程師在實作與編寫測試案例時，必須仰賴文字型說明書中所定義的前置條件、主要成功流程與例外處理路徑。
+
+總結這張投影片，請記住這個核心觀念：使用案例圖與詳細說明書 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="34" tabindex="0"><p>我們來檢視第 30 題：後期需求變更與骨牌效應代價。
+
+核心問題：為何在軟體系統交付上線後才修正需求錯誤，其耗費的成本會遠高於在早期開發階段修正？
+
+正確答案是選項 B：當需求缺陷逃逸至正式生產環境後，建築於該錯誤之上的架構設計、資料庫綱要、API 介面合約、前端視角與測試套件全都必須打掉重做，引發百倍的骨牌式重工成本。
+
+總結這張投影片，請記住這個核心觀念：後期需求變更與骨牌效應代價 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="35" tabindex="0"><p>我們來檢視第 31 題：生成式 AI 在需求工程中的幻覺風險。
+
+核心問題：當軟體工程團隊運用大型語言模型 (LLM) 從利害關係人的訪談逐字稿中自動生成需求規格書時，最需要透過「人機協同 (Human-in-the-Loop)」進行驗證的核心風險是什麼？
+
+正確答案是選項 A：大型語言模型 (LLM) 本質為機率文字預測器而非領域專家，極易產生虛構商業邏輯或遺漏邊界限制的「幻覺 (Hallucination)」，因此在將其產生的規格投入實作前，必須有人類工程師進行嚴謹驗證。
+
+總結這張投影片，請記住這個核心觀念：生成式 AI 在需求工程中的幻覺風險 提醒我們，軟體工程需要嚴謹的思維定義與客觀驗證，切勿流於盲目猜測。</p></div><div class="bespoke-marp-note" data-index="36" tabindex="0"><p>恭喜你完成《進階軟體工程》全部 31 道核心觀念題的自學挑戰！
+
+你已經完整檢驗了導論、軟體流程模型與需求工程三大模組的核心精髓。
+
+若在剛才的作答中有任何題目經過多次嘗試才答對，強烈建議點選上方卡片返回該題再次複習，直到能純熟解構背後的工程原理。
+
+總結這張投影片，請記住這個核心觀念：主動的自我檢驗所建立的強韌直覺，將在未來的專案架構與系統開發中成為你最強大的工程後盾。</p></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@4.5.0/lib/bespoke.js.LICENSE.txt */
+!function(){"use strict";function e(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}var t,n,r=(n||(n=1,t={from:function(e,t){var n,r=1===(e.parent||e).nodeType?e.parent||e:document.querySelector(e.parent||e),o=[].filter.call("string"==typeof e.slides?r.querySelectorAll(e.slides):e.slides||r.children,function(e){return"SCRIPT"!==e.nodeName}),i={},a=function(e,t){return(t=t||{}).index=o.indexOf(e),t.slide=e,t},s=function(e,t){i[e]=(i[e]||[]).filter(function(e){return e!==t})},l=function(e,t){return(i[e]||[]).reduce(function(e,n){return e&&!1!==n(t)},!0)},c=function(e,t){o[e]&&(n&&l("deactivate",a(n,t)),n=o[e],l("activate",a(n,t)))},d=function(e,t){var r=o.indexOf(n)+e;l(e>0?"next":"prev",a(n,t))&&c(r,t)},u={off:s,on:function(e,t){return(i[e]||(i[e]=[])).push(t),s.bind(null,e,t)},fire:l,slide:function(e,t){if(!arguments.length)return o.indexOf(n);l("slide",a(o[e],t))&&c(e,t)},next:d.bind(null,1),prev:d.bind(null,-1),parent:r,slides:o,destroy:function(e){l("destroy",a(n,e)),i={}}};return(t||[]).forEach(function(e){e(u)}),n||c(0),u}}),t),o=e(r);const i=document.body,a=(...e)=>history.replaceState(...e),s="",l="presenter",c="next",d="overview",u=["",l,d,c],f="bespoke-marp-",m=`data-${f}`,g=(e,{protocol:t,host:n,pathname:r,hash:o}=location)=>{const i=e.toString();return`${t}//${n}${r}${i?"?":""}${i}${o}`},p=()=>i.dataset.bespokeView,v=e=>new URLSearchParams(location.search).get(e),h=(e,t={})=>{const n={location,setter:a,...t},r=new URLSearchParams(n.location.search);for(const t of Object.keys(e)){const n=e[t];"string"==typeof n?r.set(t,n):r.delete(t)}try{n.setter({...window.history.state??{}},"",g(r,n.location))}catch(e){console.error(e)}},w=(()=>{const e="bespoke-marp";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch{return!1}})(),y=e=>{try{return localStorage.getItem(e)}catch{return null}},b=(e,t)=>{try{return localStorage.setItem(e,t),!0}catch{return!1}},k=e=>{try{return localStorage.removeItem(e),!0}catch{return!1}},x=(e,t)=>{const n="aria-hidden";t?e.setAttribute(n,"true"):e.removeAttribute(n)},E=e=>{e.parent.classList.add(`${f}parent`),e.slides.forEach(e=>e.classList.add(`${f}slide`)),e.on("activate",t=>{const n=`${f}active`,r=t.slide,o=r.classList,i=!o.contains(n);if(e.slides.forEach(e=>{e.classList.remove(n),x(e,!0)}),o.add(n),x(r,!1),i){const e=`${n}-ready`;o.add(e),document.body.clientHeight,o.remove(e)}})},$=e=>{let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map(e=>[null,...e.querySelectorAll("[data-marpit-fragment]")])});const r=r=>void 0!==e.fragments[t][n+r],o=(r,o)=>{t=r,n=o,e.fragments.forEach((e,t)=>{e.forEach((e,n)=>{if(null==e)return;const i=t<r||t===r&&n<=o;e.setAttribute(`${m}fragment`,(i?"":"in")+"active");const a=`${m}current-fragment`;t===r&&n===o?e.setAttribute(a,"current"):e.removeAttribute(a)})}),e.fragmentIndex=o;const i={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:o};e.fire("fragment",i)};e.on("next",({fragment:i=!0})=>{if(i){if(r(1))return o(t,n+1),!1;const i=t+1;e.fragments[i]&&o(i,0)}else{const r=e.fragments[t].length;if(n+1<r)return o(t,r-1),!1;const i=e.fragments[t+1];i&&o(t+1,i.length-1)}}),e.on("prev",({fragment:i=!0})=>{if(r(-1)&&i)return o(t,n-1),!1;const a=t-1;e.fragments[a]&&o(a,e.fragments[a].length-1)}),e.on("slide",({index:t,fragment:n})=>{let r=0;if(void 0!==n){const o=e.fragments[t];if(o){const{length:e}=o;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}o(t,r)}),o(0,0)},L=document,S=()=>!(!L.fullscreenEnabled&&!L.webkitFullscreenEnabled),P=()=>!(!L.fullscreenElement&&!L.webkitFullscreenElement),_=e=>{e.fullscreen=()=>{S()&&(async()=>{P()?(L.exitFullscreen||L.webkitExitFullscreen)?.call(L):((e=L.body)=>{(e.requestFullscreen||e.webkitRequestFullscreen)?.call(e)})()})()},document.addEventListener("keydown",t=>{"f"!==t.key&&"F11"!==t.key||t.altKey||t.ctrlKey||t.metaKey||!S()||(e.fullscreen(),t.preventDefault())})},O=`${f}inactive`,T=(e=2e3)=>({parent:t,fire:n})=>{const r=t.classList,o=e=>n(`marp-${e?"":"in"}active`);let i;const a=()=>{i&&clearTimeout(i),i=setTimeout(()=>{r.add(O),o()},e),r.contains(O)&&(r.remove(O),o(!0))};for(const e of["mousedown","mousemove","touchend"])document.addEventListener(e,a);setTimeout(a,0)},I=["AUDIO","BUTTON","INPUT","SELECT","TEXTAREA","VIDEO"],M=e=>{e.parent.addEventListener("keydown",e=>{if(!e.target)return;const t=e.target;(I.includes(t.nodeName)||"true"===t.contentEditable)&&e.stopPropagation()})},A=e=>{window.addEventListener("load",()=>{for(const t of e.slides){const e=t.querySelector("marp-auto-scaling, [data-auto-scaling], [data-marp-fitting]");t.setAttribute(`${m}load`,e?"":"hideable")}})},C=({interval:e=250}={})=>t=>{document.addEventListener("keydown",e=>{if(" "===e.key&&e.shiftKey)t.prev();else if("ArrowLeft"===e.key||"ArrowUp"===e.key||"PageUp"===e.key)t.prev({fragment:!e.shiftKey});else if(" "!==e.key||e.shiftKey)if("ArrowRight"===e.key||"ArrowDown"===e.key||"PageDown"===e.key)t.next({fragment:!e.shiftKey});else if("End"===e.key)t.slide(t.slides.length-1,{fragment:-1});else{if("Home"!==e.key)return;t.slide(0)}else t.next();e.preventDefault()});let n,r,o=0;t.parent.addEventListener("wheel",i=>{let a=!1;const s=(e,t)=>{e&&(a=a||((e,t)=>((e,t)=>{const n="X"===t?"Width":"Height";return e[`client${n}`]<e[`scroll${n}`]})(e,t)&&((e,t)=>{const{overflow:n}=e,r=e[`overflow${t}`];return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r})(getComputedStyle(e),t))(e,t)),e?.parentElement&&s(e.parentElement,t)};if(0!==i.deltaX&&s(i.target,"X"),0!==i.deltaY&&s(i.target,"Y"),a)return;i.preventDefault();const l=Math.sqrt(i.deltaX**2+i.deltaY**2);if(void 0!==i.wheelDelta){if(void 0===i.webkitForce&&Math.abs(i.wheelDelta)<40)return;if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<4)return}else if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<12)return;r&&clearTimeout(r),r=setTimeout(()=>{n=0},e);const c=Date.now()-o<e,d=l<=n;if(n=l,c||d)return;let u;(i.deltaX>0||i.deltaY>0)&&(u="next"),(i.deltaX<0||i.deltaY<0)&&(u="prev"),u&&(t[u](),o=Date.now())})},D=(e=`.${f}osc`)=>{const t=document.querySelector(e);if(!t)return()=>{};const n=(e,n)=>{t.querySelectorAll(`[${m}osc=${JSON.stringify(e)}]`).forEach(n)};if(S()||n("fullscreen",e=>e.style.display="none"),!w){const e=(e,t)=>{e.disabled=!0,e.title=`${t} is disabled due to restricted localStorage.`};n("presenter",t=>e(t,"Presenter view")),n("overview",t=>e(t,"Overview view"))}return e=>{t.addEventListener("click",t=>{if(t.target instanceof HTMLElement){const{bespokeMarpOsc:n}=t.target.dataset;n&&t.target.blur();const r={fragment:!t.shiftKey};"next"===n?e.next(r):"prev"===n?e.prev(r):"fullscreen"===n?e?.fullscreen():"presenter"===n?e.openPresenterView():"overview"===n&&e.toggleOverviewView()}}),e.parent.appendChild(t),e.on("activate",({index:t})=>{n("page",n=>n.textContent=`Page ${t+1} of ${e.slides.length}`)}),e.on("fragment",({index:t,fragments:r,fragmentIndex:o})=>{n("prev",e=>e.disabled=0===t&&0===o),n("next",n=>n.disabled=t===e.slides.length-1&&o===r.length-1)}),e.on("marp-active",()=>x(t,!1)),e.on("marp-inactive",()=>x(t,!0)),S()&&(e=>{for(const t of["","webkit"])L.addEventListener(t+"fullscreenchange",e)})(()=>n("fullscreen",e=>e.classList.toggle("exit",S()&&P())))}},N=e=>{if(e.syncKey&&"string"==typeof e.syncKey)return!0;throw new Error("The current instance of Bespoke.js is incompatible with Marp bespoke sync plugin.")},B=(e={})=>{const t=e.key||window.history.state?.marpBespokeSyncKey||Math.random().toString(36).slice(2),n=`bespoke-marp-sync-${t}`;var r;r={marpBespokeSyncKey:t},h({},{setter:(e,...t)=>a({...e,...r},...t)});const o=()=>{const e=y(n);return e?JSON.parse(e):Object.create(null)},i=e=>{const t=o(),r={...t,...e(t)};return b(n,JSON.stringify(r)),r},s=()=>{window.removeEventListener("pageshow",s),i(e=>({reference:(e.reference||0)+1}))};return e=>{s(),Object.defineProperty(e,"syncKey",{value:t,enumerable:!0});let r=!0;setTimeout(()=>{e.on("fragment",e=>{r&&i(()=>({index:e.index,fragmentIndex:e.fragmentIndex}))})},0),window.addEventListener("storage",t=>{if(t.key===n&&t.oldValue&&t.newValue){const n=JSON.parse(t.oldValue),o=JSON.parse(t.newValue);if(n.index!==o.index||n.fragmentIndex!==o.fragmentIndex)try{r=!1,e.slide(o.index,{fragment:o.fragmentIndex,forSync:!0})}finally{r=!0}}});const a=()=>{const{reference:e}=o();void 0===e||e<=1?k(n):i(()=>({reference:e-1}))};window.addEventListener("pagehide",e=>{e.persisted&&window.addEventListener("pageshow",s),a()}),e.on("destroy",a)}},K=e=>{w&&document.addEventListener("keydown",t=>{("o"!==t.key||t.altKey||t.ctrlKey||t.metaKey)&&"Escape"!==t.key||(t.preventDefault(),e())})};let q=null;const V=({closeOnSelect:e=!0}={})=>t=>{N(t);const n=n=>{const r=(()=>{if(!q||!q.isConnected){q=document.createElement("div"),q.className=`${f}overview`,q.inert=!0;const n=document.createElement("iframe");n.src=(()=>{const n=new URLSearchParams(location.search);return n.set("view","overview"),n.set("sync",t.syncKey),e&&n.set("closeOnSelect","1"),g(n)})(),q.append(n),document.body.append(q)}return q})(),o=n??!r.dataset.open;setTimeout(()=>{if(r.dataset.open=o?"1":"",r.inert=!o,t.skipTransition=o,o){const e=r.querySelector("iframe");try{e?.contentWindow?.focus()}catch{e?.focus()}}else window.focus()},0)};Object.defineProperties(t,{toggleOverviewView:{enumerable:!0,value:n}}),window.addEventListener("message",e=>{e.origin===window.origin&&"closeOverview"===e.data&&n(!1)}),K(n)},j=e=>{const{title:t}=document;document.title="[Overview]"+(t?` - ${t}`:"");const n=!!v("closeOnSelect"),r=()=>{window.parent.postMessage("closeOverview","null"===window.origin?"*":window.origin)};if(e.slides.forEach((t,o)=>{t.tabIndex=0;const i=()=>{e.slide(o,{fragment:-1}),n&&r()};t.addEventListener("click",i),t.addEventListener("keydown",e=>{"Enter"!==e.key&&" "!==e.key||(e.preventDefault(),i())})}),window.addEventListener("keydown",t=>{const n=e.slide(),r=t=>{const r=t=>{const n=e.slides[t].getBoundingClientRect();return[Math.round((n.left+n.right)/2),Math.round((n.top+n.bottom)/2)]};let o=null,i=n;do{const e=r(i);if(o){if(Math.abs(e[0]-o[0])<2)return i}else o=e;i+=t}while(i>=0&&i<e.slides.length);return n};if("ArrowLeft"===t.key)e.slide(Math.max(n-1,0),{fragment:-1});else if("ArrowRight"===t.key)e.slide(Math.min(n+1,e.slides.length-1),{fragment:-1});else if("ArrowUp"===t.key)e.slide(r(-1),{fragment:-1});else if("ArrowDown"===t.key)e.slide(r(1),{fragment:-1});else if("End"===t.key)e.slide(e.slides.length-1,{fragment:-1});else{if("Home"!==t.key)return;e.slide(0,{fragment:-1})}t.preventDefault();const o=e.slide();e.slides[o]?.focus?.(),e.slides[o]?.scrollIntoView?.({behavior:"smooth",block:"nearest"})}),e.on("slide",({index:t})=>{e.slides[t]?.scrollIntoView?.({behavior:"smooth",block:"nearest"})}),window.parent!==window){K(r);const e=document.createElement("header");e.className=`${f}overview-header`;const t=document.createElement("button");t.className=`${f}overview-close`,t.type="button",t.title="Close overview",t.textContent=t.title,t.addEventListener("click",r),e.append(t),document.body.prepend(e)}},F=()=>{const e=p();return{[s]:V(),[l]:V({closeOnSelect:!1}),[d]:j}[e]},U=e=>{window.addEventListener("message",t=>{if(t.origin!==window.origin)return;const[n,r]=t.data.split(":");if("navigate"===n){const[t,n]=r.split(",");let o=Number.parseInt(t,10),i=Number.parseInt(n,10)+1;i>=e.fragments[o].length&&(o+=1,i=0),e.slide(o,{fragment:i})}})};var R,X,H,W,J,Y,z,G={exports:{}},Q=(R||(R=1,G.exports=(X=["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"],H=function(e){return String(e).replace(/[&<>"']/g,function(e){return"&"+W[e]+";"})},W={"&":"amp","<":"lt",">":"gt",'"':"quot","'":"apos"},J="dangerouslySetInnerHTML",Y={className:"class",htmlFor:"for"},z={},function(e,t){var n=[],r="";t=t||{};for(var o=arguments.length;o-- >2;)n.push(arguments[o]);if("function"==typeof e)return t.children=n.reverse(),e(t);if(e){if(r+="<"+e,t)for(var i in t)!1!==t[i]&&null!=t[i]&&i!==J&&(r+=" "+(Y[i]?Y[i]:H(i))+'="'+H(t[i])+'"');r+=">"}if(-1===X.indexOf(e)){if(t[J])r+=t[J].__html;else for(;n.length;){var a=n.pop();if(a)if(a.pop)for(var s=a.length;s--;)n.push(a[s]);else r+=!0===z[a]?a:H(a)}r+=e?"</"+e+">":""}return z[r]=!0,r})),G.exports),Z=e(Q);const ee=({children:e})=>Z(null,null,...e),te=`${f}presenter-`,ne={container:`${te}container`,dragbar:`${te}dragbar-container`,next:`${te}next`,nextContainer:`${te}next-container`,noteContainer:`${te}note-container`,noteWrapper:`${te}note-wrapper`,noteButtons:`${te}note-buttons`,infoContainer:`${te}info-container`,infoPageArea:`${te}info-page-area`,infoPage:`${te}info-page`,infoPagePrev:`${te}info-page-prev`,infoPageNext:`${te}info-page-next`,noteButtonsBigger:`${te}note-bigger`,noteButtonsSmaller:`${te}note-smaller`,infoTime:`${te}info-time`,infoTimer:`${te}info-timer`},re=e=>{const{title:t}=document;document.title="[Presenter view]"+(t?` - ${t}`:"");const n={},r=e=>(n[e]=n[e]||document.querySelector(`.${e}`),n[e]);document.body.appendChild((e=>{const t=document.createElement("div");return t.className=ne.container,t.appendChild(e),t.insertAdjacentHTML("beforeend",Z(ee,null,Z("div",{class:ne.nextContainer},Z("iframe",{class:ne.next,src:"?view=next"})),Z("div",{class:ne.dragbar}),Z("div",{class:ne.noteContainer},Z("div",{class:ne.noteWrapper}),Z("div",{class:ne.noteButtons},Z("button",{class:ne.noteButtonsSmaller,tabindex:"-1",title:"Smaller notes font size"},"Smaller notes font size"),Z("button",{class:ne.noteButtonsBigger,tabindex:"-1",title:"Bigger notes font size"},"Bigger notes font size"))),Z("div",{class:ne.infoContainer},Z("div",{class:ne.infoPageArea},Z("button",{class:ne.infoPagePrev,tabindex:"-1",title:"Previous"},"Previous"),Z("button",{class:ne.infoPage}),Z("button",{class:ne.infoPageNext,tabindex:"-1",title:"Next"},"Next")),Z("time",{class:ne.infoTime,title:"Current time"}),Z("time",{class:ne.infoTimer,title:"Timer"})))),t})(e.parent)),(e=>{let t=!1;r(ne.dragbar).addEventListener("mousedown",()=>{t=!0,r(ne.dragbar).classList.add("active")}),window.addEventListener("mouseup",()=>{t=!1,r(ne.dragbar).classList.remove("active")}),window.addEventListener("mousemove",e=>{if(!t)return;const n=e.clientX/document.documentElement.clientWidth*100;r(ne.container).style.setProperty("--bespoke-marp-presenter-split-ratio",`${Math.max(0,Math.min(100,n))}%`)}),r(ne.nextContainer).addEventListener("click",()=>e.next());const n=r(ne.next),o=(i=n,(e,t)=>i.contentWindow?.postMessage(`navigate:${e},${t}`,"null"===window.origin?"*":window.origin));var i;n.addEventListener("load",()=>{r(ne.nextContainer).classList.add("active"),o(e.slide(),e.fragmentIndex),e.on("fragment",({index:e,fragmentIndex:t})=>o(e,t))});const a=document.querySelectorAll(".bespoke-marp-note");a.forEach(e=>{e.addEventListener("keydown",e=>e.stopPropagation()),r(ne.noteWrapper).appendChild(e)}),e.on("activate",()=>a.forEach(t=>t.classList.toggle("active",t.dataset.index==e.slide())));let s=0;const l=e=>{s=Math.max(-5,s+e),r(ne.noteContainer).style.setProperty("--bespoke-marp-note-font-scale",(1.2**s).toFixed(4))},c=()=>l(1),d=()=>l(-1),u=r(ne.noteButtonsBigger),f=r(ne.noteButtonsSmaller);u.addEventListener("click",()=>{u.blur(),c()}),f.addEventListener("click",()=>{f.blur(),d()}),document.addEventListener("keydown",e=>{"+"===e.key&&c(),"-"===e.key&&d()},!0);const m=r(ne.infoPage);e.on("activate",({index:t})=>{m.textContent=`${t+1} / ${e.slides.length}`}),m.addEventListener("click",()=>{m.blur(),e.toggleOverviewView()});const g=r(ne.infoPagePrev),p=r(ne.infoPageNext);g.addEventListener("click",t=>{g.blur(),e.prev({fragment:!t.shiftKey})}),p.addEventListener("click",t=>{p.blur(),e.next({fragment:!t.shiftKey})}),e.on("fragment",({index:t,fragments:n,fragmentIndex:r})=>{g.disabled=0===t&&0===r,p.disabled=t===e.slides.length-1&&r===n.length-1});let v=new Date;const h=()=>{const e=new Date,t=e=>`${Math.floor(e)}`.padStart(2,"0"),n=e.getTime()-v.getTime(),o=t(n/1e3%60),i=t(n/1e3/60%60),a=t(n/36e5%24);r(ne.infoTime).textContent=e.toLocaleTimeString(),r(ne.infoTimer).textContent=`${a}:${i}:${o}`};h(),setInterval(h,250),r(ne.infoTimer).addEventListener("click",()=>{v=new Date})})(e)},oe=e=>{N(e),Object.defineProperties(e,{openPresenterView:{enumerable:!0,value:ie},presenterUrl:{enumerable:!0,get:ae}}),w&&document.addEventListener("keydown",t=>{"p"!==t.key||t.altKey||t.ctrlKey||t.metaKey||(t.preventDefault(),e.openPresenterView())})};function ie(){const{max:e,floor:t}=Math,n=e(t(.85*window.innerWidth),640),r=e(t(.85*window.innerHeight),360);return window.open(this.presenterUrl,te+this.syncKey,`width=${n},height=${r},menubar=no,toolbar=no`)}function ae(){const e=new URLSearchParams(location.search);return e.set("view","presenter"),e.set("sync",this.syncKey),g(e)}const se=e=>{const t=p();return t===c&&e.appendChild(document.createElement("span")),{[s]:oe,[l]:re,[c]:U}[t]},le=e=>{e.on("activate",t=>{document.querySelectorAll(".bespoke-progress-parent > .bespoke-progress-bar").forEach(n=>{n.style.flexBasis=100*t.index/(e.slides.length-1)+"%"})})},ce=e=>{const t=Number.parseInt(e,10);return Number.isNaN(t)?null:t},de=(e={})=>{const t={history:!0,...e};return e=>{let n=!0;const r=e=>{const t=n;try{return n=!0,e()}finally{n=t}},o=(t={fragment:!0})=>{let n=t.fragment?ce(v("f")||""):null;((t,n)=>{const{min:r,max:o}=Math,{fragments:i,slides:a}=e,s=o(0,r(t,a.length-1)),l=o(0,r(n||0,i[s].length-1));s===e.slide()&&l===e.fragmentIndex||e.slide(s,{fragment:l})})((()=>{if(location.hash){const[t]=location.hash.slice(1).split(":~:");if(/^\d+$/.test(t))return(ce(t)??1)-1;const r=document.getElementById(t)||document.querySelector(`a[name="${CSS.escape(t)}"]`);if(r){const{length:t}=e.slides;for(let o=0;o<t;o+=1)if(e.slides[o].contains(r)){const t=e.fragments?.[o],i=r.closest("[data-marpit-fragment]");if(t&&i){const e=t.indexOf(i);e>=0&&(n=e)}return o}}}return 0})(),n)};e.on("fragment",({index:e,fragmentIndex:r})=>{n||h({f:0===r||r.toString()},{location:{...location,hash:`#${e+1}`},setter:(...e)=>t.history?history.pushState(...e):history.replaceState(...e)})}),setTimeout(()=>{o(),window.addEventListener("hashchange",()=>r(()=>{o({fragment:!1}),h({f:void 0})})),window.addEventListener("popstate",()=>{n||r(()=>o())}),n=!1},0)}},{PI:ue,abs:fe,sqrt:me,atan2:ge}=Math,pe={passive:!0},ve=({slope:e=-.7,swipeThreshold:t=30}={})=>n=>{let r;const o=n.parent,i=e=>{const t=o.getBoundingClientRect();return{x:e.pageX-(t.left+t.right)/2,y:e.pageY-(t.top+t.bottom)/2}};o.addEventListener("touchstart",({touches:e})=>{r=1===e.length?i(e[0]):void 0},pe),o.addEventListener("touchmove",e=>{if(r)if(1===e.touches.length){e.preventDefault();const t=i(e.touches[0]),n=t.x-r.x,o=t.y-r.y;r.delta=me(fe(n)**2+fe(o)**2),r.radian=ge(n,o)}else r=void 0}),o.addEventListener("touchend",o=>{if(r){if(r.delta&&r.delta>=t&&r.radian){const t=(r.radian-e+ue)%(2*ue)-ue;n[t<0?"next":"prev"](),o.stopPropagation()}r=void 0}},pe)},he=new Map;he.clear(),he.set("none",{backward:{both:void 0,incoming:void 0,outgoing:void 0},forward:{both:void 0,incoming:void 0,outgoing:void 0}});const we={both:"",outgoing:"outgoing-",incoming:"incoming-"},ye={forward:"",backward:"-backward"},be=e=>`--marp-bespoke-transition-animation-${e}`,ke=e=>`--marp-transition-${e}`,xe=be("name"),Ee=be("duration"),$e=e=>new Promise(t=>{const n={},r=document.createElement("div"),o=e=>{r.remove(),t(e)};r.addEventListener("animationstart",()=>o(n)),Object.assign(r.style,{animationName:e,animationDuration:"1s",animationFillMode:"both",animationPlayState:"paused",position:"absolute",pointerEvents:"none"}),document.body.appendChild(r);const i=getComputedStyle(r).getPropertyValue(ke("duration"));i&&Number.parseFloat(i)>=0&&(n.defaultDuration=i),((e,t)=>{requestAnimationFrame(()=>{e.style.animationPlayState="running",requestAnimationFrame(()=>t(void 0))})})(r,o)}),Le=async e=>he.has(e)?he.get(e):(e=>{const t={},n=[];for(const[r,o]of Object.entries(we))for(const[i,a]of Object.entries(ye)){const s=`marp-${o}transition${a}-${e}`;n.push($e(s).then(e=>{t[i]=t[i]||{},t[i][r]=e?{...e,name:s}:void 0}))}return Promise.all(n).then(()=>t)})(e).then(t=>(he.set(e,t),t)),Se=e=>Object.values(e).flatMap(Object.values).every(e=>!e),Pe=(e,{type:t,backward:n})=>{const r=e[n?"backward":"forward"],o=(()=>{const e=r[t],n=e=>({[xe]:e.name});if(e)return n(e);if(r.both){const e=n(r.both);return"incoming"===t&&(e[be("direction")]="reverse"),e}})();return!o&&n?Pe(e,{type:t,backward:!1}):o||{[xe]:"__bespoke_marp_transition_no_animation__"}},_e=e=>{if(e)try{const t=JSON.parse(e);if((e=>{if("object"!=typeof e)return!1;const t=e;return"string"==typeof t.name&&(void 0===t.duration||"string"==typeof t.duration)})(t))return t}catch{}},Oe="_tSId",Te="_tA",Ie="bespoke-marp-transition-warming-up",Me=window.matchMedia("(prefers-reduced-motion: reduce)"),Ae="__bespoke_marp_transition_reduced_outgoing__",Ce="__bespoke_marp_transition_reduced_incoming__",De={forward:{both:void 0,incoming:{name:Ce},outgoing:{name:Ae}},backward:{both:void 0,incoming:{name:Ce},outgoing:{name:Ae}}},Ne=e=>{if(!document.startViewTransition)return;const t=t=>(void 0!==t&&(e._tD=t),e._tD);let n;t(!1),((...e)=>{CSS.registerProperty({name:ke("duration"),syntax:"<time>",inherits:!0,initialValue:"-1s"});const t=[...new Set(e).values()];return Promise.all(t.map(e=>Le(e))).then()})(...Array.from(document.querySelectorAll("section[data-transition], section[data-transition-back]")).flatMap(e=>[e.dataset.transition,e.dataset.transitionBack].flatMap(e=>{const t=_e(e);return[t?.name,t?.builtinFallback?`__builtin__${t.name}`:void 0]}).filter(e=>!!e))).then(()=>{document.querySelectorAll("style").forEach(e=>{e.innerHTML=e.innerHTML.replace(/--marp-transition-duration:[^;}]*[;}]/g,e=>e.slice(0,-1)+"!important"+e.slice(-1))})});const r=(n,{back:r,cond:o})=>i=>{const a=t();if(a)return!!i[Te]||!("object"!=typeof a||(a.skipTransition(),!i.forSync));if(e.skipTransition)return!0;if(!o(i))return!0;const s=e.slides[e.slide()],l=()=>i.back??r,c="data-transition"+(l()?"-back":""),d=s.querySelector(`section[${c}]`);if(!d)return!0;const u=_e(d.getAttribute(c)??void 0);return!u||((async(e,{builtinFallback:t=!0}={})=>{let n=await Le(e);if(Se(n)){if(!t)return;return n=await Le(`__builtin__${e}`),Se(n)?void 0:n}return n})(u.name,{builtinFallback:u.builtinFallback}).then(e=>{if(!e){t(!0);try{n(i)}finally{t(!1)}return}let r=e;Me.matches&&(console.warn("Use a constant animation to transition because preferring reduced motion by viewer has detected."),r=De);const o=document.getElementById(Oe);o&&o.remove();const a=document.createElement("style");a.id=Oe,document.head.appendChild(a),((e,t)=>{const n=[`:root{${ke("direction")}:${t.backward?-1:1};}`,":root:has(.bespoke-marp-inactive){cursor:none;}"],r=t=>{const n=e[t].both?.defaultDuration||e[t].outgoing?.defaultDuration||e[t].incoming?.defaultDuration;return"forward"===t?n:n||r("forward")},o=t.duration||r(t.backward?"backward":"forward");void 0!==o&&n.push(`::view-transition-group(*){${Ee}:${o};}`);const i=e=>Object.entries(e).map(([e,t])=>`${e}:${t};`).join("");return n.push(`::view-transition-old(root){${i(Pe(e,{...t,type:"outgoing"}))}}`,`::view-transition-new(root){${i(Pe(e,{...t,type:"incoming"}))}}`),n})(r,{backward:l(),duration:u.duration}).forEach(e=>a.sheet?.insertRule(e));const s=document.documentElement.classList;s.add(Ie);let c=!1;const d=()=>{c||(n(i),c=!0,s.remove(Ie))},f=()=>{t(!1),a.remove(),s.remove(Ie)};try{t(!0);const e=document.startViewTransition(d);t(e),e.finished.finally(f)}catch(e){console.error(e),d(),f()}}),!1)};e.on("prev",r(t=>e.prev({...t,[Te]:!0}),{back:!0,cond:e=>e.index>0&&!((e.fragment??1)&&n.fragmentIndex>0)})),e.on("next",r(t=>e.next({...t,[Te]:!0}),{cond:t=>t.index+1<e.slides.length&&!(n.fragmentIndex+1<n.fragments.length)})),setTimeout(()=>{e.on("slide",r(t=>e.slide(t.index,{...t,[Te]:!0}),{cond:t=>{const n=e.slide();return t.index!==n&&(t.back=t.index<n,!0)}}))},0),e.on("fragment",e=>{n=e})};let Be;const Ke=()=>(void 0===Be&&(Be="wakeLock"in navigator&&navigator.wakeLock),Be),qe=async()=>{const e=Ke();if(e)try{return await e.request("screen")}catch(e){console.warn(e)}return null},Ve=async()=>{if(!Ke())return;let e;const t=()=>{e&&"visible"===document.visibilityState&&qe()};for(const e of["visibilitychange","fullscreenchange"])document.addEventListener(e,t);return e=await qe(),e};((e=document.getElementById(":$p"))=>{(()=>{const e=v("view");i.dataset.bespokeView=u.some(t=>t&&t===e)?e:""})();const t=(e=>{const t=v(e);return h({[e]:void 0}),t})("sync")||void 0;o.from(e,((...e)=>{const t=u.findIndex(e=>p()===e);return e.map(([e,n])=>e[t]&&n).filter(e=>e)})([[1,1,1,0],B({key:t})],[[1,1,0,1],se(e)],[[1,1,0,0],M],[[1,1,1,1],E],[[1,0,0,0],T()],[[1,1,1,1],A],[[1,1,1,1],de({history:!1})],[[1,1,0,0],C()],[[1,1,1,0],_],[[1,0,0,0],le],[[1,1,0,0],ve()],[[1,0,0,0],D()],[[1,1,1,0],F()],[[1,0,0,0],Ne],[[1,1,1,1],$],[[1,1,1,0],Ve]))})()}();</script></body></html>

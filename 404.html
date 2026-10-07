@@ -16,23 +16,31 @@
         repoPrefix = '/teach';
       }
 
-      // 檢查是否為 SQA 相關路徑
-      if (path.match(/\/sqa(\/|$)/)) {
-        var sub = fullPath.replace(/.*\/sqa\/?/i, '');
-        var target = repoPrefix + '/TeachSQA/' + (sub ? sub : 'index.html') + searchAndHash;
+      // 檢查是否為 SE (軟體工程) 相關路徑
+      if (path.match(/\/(se|gteachase)(\/|$)/)) {
+        var sub = fullPath.replace(/.*?\/(se|gteachase)\/?/i, '');
+        var target = repoPrefix + '/SE/' + (sub ? sub : 'index.html') + searchAndHash;
         window.location.replace(target);
         return;
       }
 
-      // 檢查是否為 UX 相關路徑
-      if (path.match(/\/ux(\/|$)/)) {
-        var sub = fullPath.replace(/.*\/ux\/?/i, '');
-        var target = repoPrefix + '/TeachUX/' + (sub ? sub : 'index.html') + searchAndHash;
+      // 檢查是否為 SQA (軟體品管) 相關路徑
+      if (path.match(/\/(sqa|teachsqa|gteachsqa)(\/|$)/)) {
+        var sub = fullPath.replace(/.*?\/(sqa|teachsqa|gteachsqa)\/?/i, '');
+        var target = repoPrefix + '/SQA/' + (sub ? sub : 'index.html') + searchAndHash;
         window.location.replace(target);
         return;
       }
 
-      // 預設跳轉回教材門戶首頁
+      // 檢查是否為 UX (使用者體驗) 相關路徑
+      if (path.match(/\/(ux|teachux|gteachux)(\/|$)/)) {
+        var sub = fullPath.replace(/.*?\/(ux|teachux|gteachux)\/?/i, '');
+        var target = repoPrefix + '/UX/' + (sub ? sub : 'index.html') + searchAndHash;
+        window.location.replace(target);
+        return;
+      }
+
+      // 預設跳轉回教材門戶總首頁
       window.location.replace((repoPrefix || '') + '/index.html' + searchAndHash);
     })();
   </script>
@@ -54,7 +62,7 @@
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
       border: 1px solid #e2e8f0;
       text-align: center;
-      max-width: 480px;
+      max-width: 500px;
       width: 90%;
     }
     h2 {
@@ -81,12 +89,19 @@
       font-size: 0.95rem;
       transition: all 0.2s ease;
     }
+    .btn-se {
+      background: #0b3c5d;
+      color: #ffffff;
+    }
+    .btn-se:hover {
+      background: #07263d;
+    }
     .btn-ux {
-      background: #2563eb;
+      background: #4f46e5;
       color: #ffffff;
     }
     .btn-ux:hover {
-      background: #1d4ed8;
+      background: #4338ca;
     }
     .btn-sqa {
       background: #0f766e;
@@ -110,8 +125,9 @@
     <h2>正在為您轉導至教材頁面...</h2>
     <p>如果瀏覽器未能在數秒內自動跳轉，請點擊下方入口進入課程：</p>
     <div class="links">
-      <a href="./ux/" class="btn btn-ux">🎨 使用者體驗設計 (UX Design) 入口</a>
-      <a href="./sqa/" class="btn btn-sqa">🛡️ 軟體品質保證 (SQA) 入口</a>
+      <a href="./SE/" class="btn btn-se">🏗️ 軟體工程 (SE) 課程入口</a>
+      <a href="./UX/" class="btn btn-ux">🎨 使用者體驗設計 (UX) 課程入口</a>
+      <a href="./SQA/" class="btn btn-sqa">🛡️ 軟體品質保證 (SQA) 課程入口</a>
       <a href="./index.html" class="btn btn-home">🏠 回教學門戶總首頁</a>
     </div>
   </div>
