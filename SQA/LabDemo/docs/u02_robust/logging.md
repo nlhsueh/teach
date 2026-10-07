@@ -356,7 +356,140 @@ public class LoggingExample {
 
 ---
 
-## Exercise (學生自主練習)
+## 3. 🧠 觀念核對問答 (CCQ - Concept Check Questions)
+
+在開始自主動手練習前，請透過以下 3 道精選自我測驗題目檢核自己對 **日誌架構 (Log4j 2/SLF4J)、配置除錯、效能防衛與 MDC 鏈路追蹤** 的掌握度。請先自行思考，再點開摺疊區塊核對！
+
+---
+
+### ❓ CCQ 1：日誌重複打印與事件傳播 (additivity) 踩坑（除錯實戰題）
+**情境**：一位新同仁在設定 `log4j2.xml` 時，為了將氣泡排序的除錯日誌印在終端機螢幕上，寫下了如下配置：
+```xml
+<Loggers>
+    <!-- 全域大保底 -->
+    <Root level="INFO">
+        <AppenderRef ref="ConsoleAppender"/>
+    </Root>
+    
+    <!-- 氣泡排序專屬日誌器 -->
+    <Logger name="u02_robust.log.BubbleSortLoggingDemo" level="DEBUG">
+        <AppenderRef ref="ConsoleAppender"/>
+    </Logger>
+</Loggers>
+```
+**問題**：
+當他執行程式時，發現所有來自 `BubbleSortLoggingDemo` 的日誌，在終端機上竟然**連續印出兩次一模一樣的訊息**！
+1. 請問造成這種「靈異雙倍打印」的底層原因是什麼？
+2. 在 `log4j2.xml` 中應該如何修正？
+
+<details>
+<summary>💡 點擊展開：CCQ 1 答案與深度解析</summary>
+
+#### ✅ 參考答案：
+1. **底層原因（日誌事件傳播機制 - Additivity）**：
+   - Log4j 2 / Logback 的 Logger 具有階層繼承樹結構，所有自訂 Logger 的根節點皆為 `<Root>`。
+   - 預設情況下，Logger 的 **`additivity` 屬性值為 `true`**。這意味著：當 `BubbleSortLoggingDemo` 收到日誌事件時，它會先送到自己的 `ConsoleAppender` 印出第 1 次，**接著自動將該事件向上冒泡傳遞給父節點 `<Root>`**。
+   - 而 `<Root>` 本身也配置了 `ConsoleAppender`，於是同一條訊息又被印了第 2 次！
+2. **正確修正方式**：
+   在自訂 `<Logger>` 標籤加上 **`additivity="false"`**，告知日誌框架「這條訊息在我這裡處理完即可，不可再向上一層 Root 傳遞」：
+   ```xml
+   <Logger name="u02_robust.log.BubbleSortLoggingDemo" level="DEBUG" additivity="false">
+       <AppenderRef ref="ConsoleAppender"/>
+   </Logger>
+   ```
+</details>
+
+---
+
+### ❓ CCQ 2：效能防衛 (Guard Statement) 與字串序列化代價（效能架構題）
+**情境**：現代日誌框架（SLF4J / Log4j 2）都支援參數化佔位符（`{}`），例如 `logger.debug("目前進度: {}", count);`，可以避免手動字串拼接。但是，在排序演算法迴圈中，有位工程師寫了這行：
+```java
+// largeArray 包含 100 萬筆整數資料
+logger.debug("第 {} 輪排序後陣列狀態: {}", pass, Arrays.toString(largeArray));
+```
+**問題**：
+當這套系統上線部署到生產伺服器，日誌層級被設定為 `INFO`（即 `DEBUG` 等級被關閉）時：
+1. 這行日誌明明不會被印出來，但為什麼系統的 CPU 使用率依然飆高，甚至頻繁引發 JVM 垃圾回收暫停（GC Stop-The-World）？
+2. 針對這種高開銷運算，正確的防衛寫法（Guard Statement）應該如何編寫？
+
+<details>
+<summary>💡 點擊展開：CCQ 2 答案與深度解析</summary>
+
+#### ✅ 參考答案：
+1. **效能元兇（Java 引數求值早於方法呼叫）**：
+   - 雖然 `logger.debug(...)` 內部在日誌等級不符合時確實會直接 return，**但 Java 語言在呼叫任何方法前，必須先計算所有傳入引數（Arguments）的值**！
+   - 因此，JVM 在呼叫 `logger.debug` 之前，就已經先在記憶體中將含有 100 萬筆資料的陣列完整遍歷，並在 Heap 記憶體中建立了長達數 MB 的巨大字串（`Arrays.toString(...)`）。
+   - 雖然日誌框架最後看了一眼發現不需輸出並將該字串拋棄，但短時間內在 Heap 製造海量垃圾物件，導致 JVM GC 負擔極度沉重、系統發生嚴重延遲！
+2. **正確防衛實踐（Guard Statement）**：
+   在執行任何耗時、大量記憶體配置或複雜序列化運算前，必須先以 `isDebugEnabled()` 進行門檻防衛：
+   ```java
+   // 效能最佳實踐：只有當 DEBUG 等級真正開啟時，才付出序列化代價
+   if (logger.isDebugEnabled()) {
+       logger.debug("第 {} 輪排序後陣列狀態: {}", pass, Arrays.toString(largeArray));
+   }
+   ```
+</details>
+
+---
+
+### ❓ CCQ 3：多執行緒鏈路追蹤與 MDC 資源清理（程式填空題）
+**情境**：在後端高併發服務中，若多個執行緒同時處理外送訂單，控制台輸出的日誌會交織混亂，難以分辨哪行日誌屬於哪筆訂單。為了將日誌串接追蹤，我們會使用 SLF4J 的 **MDC (Mapped Diagnostic Context)**。
+
+**題目**：請閱讀下方的訂單處理方法，在程式碼中的 `【空格 A】`、`【空格 B】` 與 `【空格 C】` 填入正確的程式碼：
+
+```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
+
+public class OrderDeliveryService {
+    private static final Logger logger = LoggerFactory.getLogger(OrderDeliveryService.class);
+
+    public void processOrder(String orderId) {
+        // 【空格 A】：將訂單編號放入 MDC 上下文，供 PatternLayout %X{orderId} 自動輸出
+        __________________________________________________;
+
+        try {
+            logger.info("外送訂單處理流程啟動");
+            // 執行庫存檢查與派送邏輯...
+            logger.info("外送訂單配送成功");
+
+        } catch (Exception e) {
+            // 【空格 B】：使用 ERROR 等級記錄日誌，並將例外堆疊 trace 完整傳入記錄
+            __________________________________________________;
+            throw e;
+
+        } finally {
+            // 【空格 C】：在執行緒池環境下，任務結束後必須清理 MDC，避免執行緒污染
+            __________________________________________________;
+        }
+    }
+}
+```
+
+<details>
+<summary>💡 點擊展開：CCQ 3 答案與深度解析</summary>
+
+#### ✅ 參考答案：
+- **【空格 A】**：
+  ```java
+  MDC.put("orderId", orderId);
+  ```
+- **【空格 B】**：
+  ```java
+  logger.error("訂單處理遭遇嚴重異常: {}", e.getMessage(), e);
+  ```
+  *(說明：最後一個參數傳入 `e`，日誌框架會自動打印完整 Stack Trace；切勿手動印 `e.printStackTrace()`)*
+- **【空格 C】**：
+  ```java
+  MDC.clear(); // 或者 MDC.remove("orderId");
+  ```
+  *(說明：Web 伺服器普遍採用執行緒池 ThreadPool 重複利用執行緒，若不在 `finally` 清除 MDC，下一個借用該執行緒的請求日誌將會殘留上一個請求的 `orderId`，造成致命的追蹤污染！)*
+</details>
+
+---
+
+## 4. Exercise (學生自主練習)
 
 > 💡 **自主學習流程**：
 > 1. 打開練習程式碼，依據 `TODO` 註解動手實作。

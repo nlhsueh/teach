@@ -634,7 +634,142 @@ Finally 執行，x 改為 99
 
 ---
 
-## 8. Exercise (學生自主練習)
+## 8. 🧠 觀念核對問答 (CCQ - Concept Check Questions)
+
+在開始動手寫練習前，請透過以下 3 道自我測驗題目檢核自己對 **Java 例外體系、資源管理與自訂例外設計** 的掌握度。請先自行思考，再點開摺疊區塊對照詳細解析！
+
+---
+
+### ❓ CCQ 1：Checked vs. Unchecked Exception 的根本差異與設計哲學（架構觀念題）
+**問題**：
+1. 在 Java 的 `Throwable` 階層中，為什麼 `NullPointerException` 與 `ArrayIndexOutOfBoundsException` 被設計為 `RuntimeException`（未檢例外），而 `IOException` 卻被設計為 Checked Exception（受檢例外）？
+2. 對於身為軟體工程師的你，在面對這兩種類型的例外時，在編寫程式碼的防禦思維與因應策略上有何根本上的不同？
+
+<details>
+<summary>💡 點擊展開：CCQ 1 答案與深度解析</summary>
+
+#### ✅ 參考答案：
+1. **設計哲學本質差異**：
+   - **Checked Exception（受檢例外，繼承自 `Exception` 但非 `RuntimeException`）**：
+     - **可預期的外部環境異常**：代表程式邏輯本身可能完全正確，但受制於不可控的外部環境（如檔案不存在、硬碟滿了、網路斷線、資料庫連線逾時）。
+     - **編譯器強制介入**：Java 設計師認為這些異常呼叫端「有能力且應該要擬定應對方案（例如提示重試、切換備用節點）」，因此強制要求捕捉或宣告（CDR 原則）。
+   - **Unchecked Exception（未檢例外，繼承自 `RuntimeException`）**：
+     - **程式碼邏輯缺陷（Programming Bug）**：代表程式設計師的疏忽（例如未檢查 null 便呼叫方法、陣列邊界計算錯誤、傳入非法格式參數）。
+     - **編譯器不強制介入**：這類錯誤可以在任何一行程式碼發生，若每個 NPE 都強制要求 try-catch，程式碼將變得極度臃腫且毫無意義。
+2. **工程師的因應策略差異**：
+   - **面對 Unchecked**：最佳做法是**事前防禦性檢查與修復程式碼缺陷**（如加入 `if (data == null) throw new IllegalArgumentException(...)` 或修復迴圈終止條件），而不是在錯誤發生處到處寫 `try-catch` 來掩耳盜鈴。
+   - **面對 Checked**：呼叫端必須思考**降級處理與錯誤恢復**（例如：若是檔案找不到，是否讀取預設設定？若是遠端連線中斷，是否執行重試或回傳友善錯誤代碼？）。
+</details>
+
+---
+
+### ❓ CCQ 2：生吞例外 (Swallowing Exception) 與資源外洩（程式除錯題）
+**情境**：一位實習生提交了以下讀取設定檔的程式碼：
+```java
+public static String readFirstLine(String filePath) {
+    try {
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        return reader.readLine();
+    } catch (Exception e) {
+        // 為了避免伺服器因錯誤中斷崩潰，先回傳 null
+        return null; 
+    }
+}
+```
+**問題**：
+請指出這段程式碼中潛藏的 **兩大嚴重軟體品質與架構缺陷**，並使用現代 Java（Java 7+）標準語法將其完整改寫。
+
+<details>
+<summary>💡 點擊展開：CCQ 2 答案與深度解析</summary>
+
+#### ✅ 參考答案：
+1. **缺陷 1：資源洩漏 (Resource Leak)**：
+   - `FileReader` 與 `BufferedReader` 佔用了作業系統的**檔案描述符（File Descriptor）**。
+   - 程式碼未在 `finally` 中呼叫 `close()`，也未使用 `try-with-resources`。若在高併發或頻繁呼叫情境下，系統的檔案控制代碼會被迅速耗盡，導致整個作業系統報出 `Too many open files` 致命錯誤。
+2. **缺陷 2：生吞例外與資訊淹沒 (Swallowing Exception)**：
+   - `catch (Exception e) { return null; }` 捕捉了所有廣義例外，卻**未記錄任何日誌（No logging）、未保留呼叫堆疊（No stack trace）**。
+   - 一旦發生錯誤，除錯人員完全無從得知是「路徑不存在 (FileNotFoundException)」、「硬碟壞軌 (IOException)」還是「權限不足 (AccessControlException)」。
+   - 同時回傳 `null` 會將定時炸彈丟給下游呼叫者，極易引發下游連鎖的 `NullPointerException`！
+
+#### 現代 Java 正確改寫示範：
+```java
+public static String readFirstLine(String filePath) throws IOException {
+    // 1. 使用 try-with-resources 保證自動關閉檔案資源
+    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        return reader.readLine();
+    } catch (IOException e) {
+        // 2. 正確記錄日誌或將 Checked Exception 重新包裝向上拋出，保留因果鏈 (Cause)
+        logger.error("讀取設定檔失敗，路徑: {}", filePath, e);
+        throw e; // 或 throw new ConfigReadException("無法載入配置", e);
+    }
+}
+```
+</details>
+
+---
+
+### ❓ CCQ 3：BubbleSort 的後置條件驗證與自訂受檢例外（程式填空題）
+**題目**：在氣泡排序的驗證防線中，排序執行完成後我們執行 `isSorted(data)` 後置檢查。若演算法發生瑕疵導致陣列未正確排列，我們希望拋出自訂受檢例外 `SortingException`，請填空完成以下程式碼中的 `【空格 A】`、`【空格 B】` 與 `【空格 C】`：
+
+```java
+// 【空格 A】：設計為自訂受檢例外（Checked Exception），必須繼承哪一個類別？
+public class SortingException extends ____________________ {
+    private final int failedIndex;
+
+    public SortingException(String message, int failedIndex) {
+        super(message);
+        this.failedIndex = failedIndex;
+    }
+
+    public int getFailedIndex() {
+        return failedIndex;
+    }
+}
+
+public class BubbleSortRobustDemo {
+    // 【空格 B】：依據 CDR 原則，在方法簽名中宣告向上拋出
+    public static void robustSort(int[] data) ____________________________ {
+        if (data == null) {
+            throw new IllegalArgumentException("待排序陣列不可為 null");
+        }
+
+        // 執行氣泡排序演算法...
+
+        // 後置條件驗證
+        for (int i = 0; i < data.length - 1; i++) {
+            if (data[i] > data[i + 1]) {
+                // 【空格 C】：主動建立並拋出例外物件，附帶錯誤訊息與違規索引
+                __________________________________________________________________________;
+            }
+        }
+    }
+}
+```
+
+<details>
+<summary>💡 點擊展開：CCQ 3 答案與深度解析</summary>
+
+#### ✅ 參考答案：
+- **【空格 A】**：
+  ```java
+  Exception
+  ```
+  *(說明：若要設計為 Checked Exception，直接繼承 `java.lang.Exception`；若繼承 `RuntimeException` 則會變成 Unchecked Exception)*
+- **【空格 B】**：
+  ```java
+  throws SortingException
+  ```
+  *(說明：依據捕捉或宣告原則 (CDR)，受檢例外若未在方法內部 try-catch，必須在簽名以 `throws` 宣告交給呼叫者處理)*
+- **【空格 C】**：
+  ```java
+  throw new SortingException("排序後置驗證失敗：元素未依遞增排列", i)
+  ```
+  *(說明：使用 `throw new` 關鍵字主動實例化並拋出例外)*
+</details>
+
+---
+
+## 9. Exercise (學生自主練習)
 
 > 💡 **自主學習流程**：
 > 1. 打開練習程式碼，依據 `TODO` 註解動手實作。

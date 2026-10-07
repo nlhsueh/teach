@@ -187,9 +187,153 @@ VS Code 與 Antigravity IDE 執行 Java 程式碼時，可透過以下兩種方�
   - 類別不變量 (Class Invariant)：身高、體重 > 0，出生年介於 1900 與今年之間。
   - 內部狀態計算斷言：BMI 範圍必須落在人體生理極限 [5.0, 150.0] 區間。
 
+
 ---
 
-## 學生自主練習 (Exercises)
+## 6. 🧠 觀念核對問答 (CCQ - Concept Check Questions)
+
+在開始自主動手練習前，請透過以下自我測驗題檢驗自己對**防禦性程式設計與斷言機制**的掌握度。先自行思考或在草稿紙寫下答案，再點開摺疊區塊核對！
+
+---
+
+### ❓ CCQ 1：公開 API 參數檢查 vs. 斷言陷阱（觀念辨析）
+**情境**：一位新進工程師在負責轉帳模組的公開函式庫時，寫了如下程式碼：
+```java
+public class BankTransferService {
+    // 供外部前端或外部系統調用的公開轉帳 API
+    public void transferMoney(Account from, Account to, double amount) {
+        assert from != null && to != null : "帳戶物件不可為 null";
+        assert amount > 0 : "轉帳金額必須大於 0";
+
+        // 執行轉帳業務邏輯...
+    }
+}
+```
+**問題**：
+1. 當這段程式碼部署到正式營運（Production）的伺服器時，最嚴重的安全隱患是什麼？為什麼？
+2. 針對公開方法（Public API）的防衛性檢查，業界標準的最佳實踐是什麼？
+
+<details>
+<summary>💡 點擊展開：CCQ 1 答案與深度解析</summary>
+
+#### ✅ 參考答案：
+1. **安全隱患**：Java 在正式生產環境下預設**關閉斷言 (`-da`)**。若未顯式加上 `-ea` 參數，所有 `assert` 敘述會被 JVM 直接忽略跳過。此時若外部呼叫端傳入 `amount = -50000` 或 `null` 帳戶，斷言完全無法阻擋，會直接穿透並引發非預期的業務嚴重錯誤（如帳戶被倒扣）或非受檢的崩潰 (`NullPointerException`)！
+2. **最佳實踐**：
+   - **公開方法（Public API）**：必須使用**例外處理**來進行前置條件驗證（如主動拋出 `IllegalArgumentException` 或 `NullPointerException`），因為無論 JVM 參數為何，例外檢查**保證 100% 執行**。
+   - **斷言（Assertions）**：僅適用於**私有方法、內部演算法狀態、類別不變量或後置條件**，用來捕捉「程式設計師自己寫出來的內部 Bug」，而非防禦外部惡意輸入。
+
+```java
+// 正確重構做法：
+public void transferMoney(Account from, Account to, double amount) {
+    if (from == null || to == null) {
+        throw new IllegalArgumentException("來源與目的帳戶皆不可為 null");
+    }
+    if (amount <= 0) {
+        throw new IllegalArgumentException("轉帳金額必須大於 0，目前傳入: " + amount);
+    }
+    // 轉帳執行...
+}
+```
+</details>
+
+---
+
+### ❓ CCQ 2：斷言內部具副作用 (Side Effects) 的致命 Bug（程式辨析）
+**情境**：請觀察以下這段管理在線名單的程式碼：
+```java
+public class SessionManager {
+    private List<User> activeUsers = new ArrayList<>();
+
+    public void logout(User targetUser) {
+        // 工程師希望移除使用者，同時斷言移除必定成功
+        assert activeUsers.remove(targetUser) : "登出失敗：該使用者原本就不在線上清單中！";
+
+        System.out.println("使用者登出流程完成，目前在線人數: " + activeUsers.size());
+    }
+}
+```
+**問題**：
+在開發測試環境（已開 `-ea`）測試時一切正常，但當程式碼發布到正式環境（未開 `-ea`）執行時，這段程式碼會發生什麼不可思議的 Bug？
+
+<details>
+<summary>💡 點擊展開：CCQ 2 答案與深度解析</summary>
+
+#### ✅ 參考答案：
+- **致命 Bug**：在正式環境中，**`targetUser` 根本沒有被從 `activeUsers` 清單中移除！**
+- **深度原因**：
+  - `activeUsers.remove(targetUser)` 是一個**具副作用（Side Effect）**的方法呼叫，它會改變物件內部狀態。
+  - 當 `-ea` 關閉時，JVM 在字節碼層級會將整個 `assert <expr>;` 略過不執行。因此 `remove()` 方法連被呼叫都沒有！
+  - 結果就是：記憶體洩漏（Memory Leak）、線上人數統計失真、已登出的使用者依然留在清單中。
+- **鐵律原則**：**斷言條件運算式必須是純函數（Pure Expression），絕對不能包含任何修改狀態的副作用邏輯**！
+
+```java
+// 正確做法：先執行具副作用的操作，再斷言結果
+boolean removed = activeUsers.remove(targetUser);
+assert removed : "登出失敗：該使用者原本就不在線上清單中！";
+```
+</details>
+
+---
+
+### ❓ CCQ 3：控制流程不變量與狀態斷言（程式填空題）
+**題目**：請閱讀下方的訂單狀態處理器，在程式碼中的 `【空格 A】` 與 `【空格 B】` 填入正確且符合防禦性規範的程式碼：
+
+```java
+public enum OrderStatus { CREATED, PAID, SHIPPED, CANCELLED }
+
+public class OrderWorkflow {
+    public void processDiscount(OrderStatus status, double originalTotal, double discountRate) {
+        // 公開方法前置防衛
+        if (originalTotal < 0 || discountRate < 0 || discountRate > 1.0) {
+            throw new IllegalArgumentException("折扣率或原始金額非法");
+        }
+
+        double finalTotal = originalTotal * (1.0 - discountRate);
+
+        // 【空格 A】：請在此撰寫斷言，驗證折扣後的實付金額必須大於等於 0 且不可超過原價
+        __________________________________________________________________________________
+
+        switch (status) {
+            case CREATED:
+                notifyCustomerToPay();
+                break;
+            case PAID:
+                dispatchWarehouse();
+                break;
+            case SHIPPED:
+            case CANCELLED:
+                archiveOrder();
+                break;
+            default:
+                // 【空格 B】：所有列舉值均已於上面列出，正常情況下絕不可能執行到此處（控制流程不變量）
+                __________________________________________________________________________
+        }
+    }
+}
+```
+
+<details>
+<summary>💡 點擊展開：CCQ 3 答案與深度解析</summary>
+
+#### ✅ 參考答案：
+- **【空格 A】**：
+  ```java
+  assert (finalTotal >= 0 && finalTotal <= originalTotal) : 
+      String.format("金額計算異常！原價: %.2f, 實付: %.2f", originalTotal, finalTotal);
+  ```
+- **【空格 B】**：
+  ```java
+  assert false : "未知的訂單狀態: " + status;
+  // 或者：throw new AssertionError("未知的訂單狀態: " + status);
+  ```
+
+#### 深度解析：
+1. **空格 A**：屬於典型「內部數值不變量」，原價經由合法折扣率計算後，結果必定座落在 `[0, originalTotal]` 區間內。若違反，代表背後有負數乘積溢位或邏輯錯誤。
+2. **空格 B**：屬於「控制流程不變量（Control-Flow Invariant）」。在 `switch` 中即使所有 `enum` 值都已覆蓋，加上 `default: assert false;` 可以在未來有同事新增了新的 enum 常數（例如 `REFUNDING`）卻忘記修改此處時，第一時間在測試階段報警中斷，避免產生靜默缺陷。
+</details>
+
+---
+
 
 > 💡 **自主學習流程**：
 > 1. 打開練習程式碼，依據 `TODO` 註解動手實作。
