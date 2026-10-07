@@ -44,3 +44,10 @@ __pycache__/
 /-hidden/
 /exam/
 /hw/
+
+# Private credentials and presentation binaries
+*.pptx
+client_secret*.json
+token.pickle
+**/-hidden/
+**/scratch/
