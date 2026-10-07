@@ -23,7 +23,7 @@ footer: 'Ch03 軟體測試基礎'
 ---
 
 <!-- _class: outline-slide -->
-<!-- header: '[◄](#1) 本章大綱 (Outline) [►](#3)' -->
+<!-- header: '本章大綱 (Outline)' -->
 
 ## 本章重點導讀 (Key Highlights)
 
@@ -60,7 +60,7 @@ footer: 'Ch03 軟體測試基礎'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#2) 3.1 ISTQB 軟體測試 7 大經典原則 [►](#17)' -->
+<!-- header: '3.1 ISTQB 軟體測試 7 大經典原則' -->
 
 # **3.1 ISTQB 軟體測試 7 大經典原則**
 
@@ -303,7 +303,7 @@ footer: 'Ch03 軟體測試基礎'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#3) 3.2 測試的多維度分類體系 [►](#28)' -->
+<!-- header: '3.2 測試的多維度分類體系' -->
 
 # **3.2 測試的多維度分類體系**
 
@@ -500,7 +500,7 @@ double div(double x, double y) {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#17) 3.3 V 開發模型與雙向追溯 [►](#33)' -->
+<!-- header: '3.3 V 開發模型與雙向追溯' -->
 
 # **3.3 V 開發模型與雙向追溯 (The V-Model)**
 
@@ -585,7 +585,7 @@ double div(double x, double y) {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#28) 3.4 測試案例設計與 AI 協同 [►](#41)' -->
+<!-- header: '3.4 測試案例設計與 AI 協同' -->
 
 # **3.4 測試案例設計與 AI 協同**
 
@@ -722,7 +722,7 @@ double div(double x, double y) {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#33) 3.5 測試全景 3W2H 與 Test Oracle [►](#53)' -->
+<!-- header: '3.5 測試全景 3W2H 與 Test Oracle' -->
 
 # **3.5 測試全景 3W2H 與 Test Oracle**
 
@@ -934,7 +934,7 @@ double div(double x, double y) {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#41) 3.6 綜合練習與實戰思維 [►](#56)' -->
+<!-- header: '3.6 綜合練習與實戰思維' -->
 
 # **3.6 綜合練習與實戰思維**
 
@@ -969,7 +969,7 @@ double div(double x, double y) {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#53) 附錄：課堂互動參考解答 [►](#1)' -->
+<!-- header: '附錄：課堂互動參考解答' -->
 
 # **附錄：課堂互動參考解答**
 
@@ -1083,37 +1083,13 @@ double div(double x, double y) {
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = "true";
       
-      const links = header.querySelectorAll("a");
-      let prevLink = null;
-      let nextLink = null;
-      
-      links.forEach(a => {
-        const txt = a.textContent.trim();
-        if (txt === "◄" || txt === "◀") prevLink = a;
-        if (txt === "►" || txt === "▶") nextLink = a;
-      });
-      
       let title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, "").replace(/\s*[►▶]$/, "").trim();
       if (!title) return;
       
       header.innerHTML = "";
-      if (prevLink) {
-        prevLink.className = "header-nav-arrow";
-        prevLink.title = "上一章節";
-        header.appendChild(prevLink);
-        header.appendChild(document.createTextNode(" "));
-      }
-      
       const wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
-      
-      if (nextLink) {
-        header.appendChild(document.createTextNode(" "));
-        nextLink.className = "header-nav-arrow";
-        nextLink.title = "下一章節";
-        header.appendChild(nextLink);
-      }
     });
   }
 

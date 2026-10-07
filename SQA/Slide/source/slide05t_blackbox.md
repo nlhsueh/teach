@@ -22,7 +22,7 @@ footer: 'Ch05 黑箱測試'
 ---
 
 <!-- _class: outline-slide -->
-<!-- header: '[◄](#1) 本章大綱 (Outline) [►](#3)' -->
+<!-- header: '本章大綱 (Outline)' -->
 
 ## 本章重點導讀 (Key Highlights)
 
@@ -60,7 +60,7 @@ footer: 'Ch05 黑箱測試'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#2) 5.1 黑箱測試概念與 JUnit 5 斷言 [►](#8)' -->
+<!-- header: '5.1 黑箱測試概念與 JUnit 5 斷言' -->
 
 # **5.1 黑箱測試概念與 JUnit 5 斷言**
 
@@ -69,7 +69,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.1 黑箱測試概念與 JUnit 5 斷言 [►](#8)' -->
+<!-- header: '5.1 黑箱測試概念與 JUnit 5 斷言' -->
 
 ## 黑箱測試 (Black-Box Testing) 概念架構
 
@@ -99,7 +99,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.1 黑箱測試概念與 JUnit 5 斷言 [►](#8)' -->
+<!-- header: '5.1 黑箱測試概念與 JUnit 5 斷言' -->
 
 ## 軟體測試之父：Glenford J. Myers
 
@@ -134,7 +134,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.1 黑箱測試概念與 JUnit 5 斷言 [►](#8)' -->
+<!-- header: '5.1 黑箱測試概念與 JUnit 5 斷言' -->
 
 ## JUnit 5 單元測試基礎與斷言機制
 
@@ -180,7 +180,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.1 黑箱測試概念與 JUnit 5 斷言 [►](#8)' -->
+<!-- header: '5.1 黑箱測試概念與 JUnit 5 斷言' -->
 
 ## 概念核對問答 (CCQ 1)
 
@@ -209,7 +209,7 @@ footer: 'Ch05 黑箱測試'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#2) 5.2 邊界值分析 (BVA) [►](#16)' -->
+<!-- header: '5.2 邊界值分析 (BVA)' -->
 
 # **5.2 邊界值分析 (BVA)**
 
@@ -218,7 +218,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.2 邊界值分析 (BVA) [►](#16)' -->
+<!-- header: '5.2 邊界值分析 (BVA)' -->
 
 ## 邊界值分析 (BVA) 核心哲學
 
@@ -259,7 +259,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.2 邊界值分析 (BVA) [►](#16)' -->
+<!-- header: '5.2 邊界值分析 (BVA)' -->
 
 ## 獨立型邊界測試：4n + 1 公式
 
@@ -297,7 +297,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.2 邊界值分析 (BVA) [►](#16)' -->
+<!-- header: '5.2 邊界值分析 (BVA)' -->
 
 ## 獨立型強固邊界測試：6n + 1 公式
 
@@ -329,7 +329,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.2 邊界值分析 (BVA) [►](#16)' -->
+<!-- header: '5.2 邊界值分析 (BVA)' -->
 
 ## 非獨立型邊界測試 (最壞情況邊界測試)
 
@@ -359,7 +359,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.2 邊界值分析 (BVA) [►](#16)' -->
+<!-- header: '5.2 邊界值分析 (BVA)' -->
 
 ## 邊界值測試方法全景總結
 
@@ -395,7 +395,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.2 邊界值分析 (BVA) [►](#16)' -->
+<!-- header: '5.2 邊界值分析 (BVA)' -->
 
 ## 概念核對問答 (CCQ 2)
 
@@ -426,7 +426,7 @@ footer: 'Ch05 黑箱測試'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#2) 5.3 等價類分割測試 (EP) [►](#23)' -->
+<!-- header: '5.3 等價類分割測試 (EP)' -->
 
 # **5.3 等價類分割測試 (EP)**
 
@@ -435,7 +435,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.3 等價類分割測試 (EP) [►](#23)' -->
+<!-- header: '5.3 等價類分割測試 (EP)' -->
 
 ## 等價類分割測試 (Equivalence Partitioning)
 
@@ -469,7 +469,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.3 等價類分割測試 (EP) [►](#23)' -->
+<!-- header: '5.3 等價類分割測試 (EP)' -->
 
 ## 弱涵蓋 vs. 強涵蓋等價測試
 
@@ -499,7 +499,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.3 等價類分割測試 (EP) [►](#23)' -->
+<!-- header: '5.3 等價類分割測試 (EP)' -->
 
 ## Binary Search 實戰等價劃分案例
 
@@ -540,7 +540,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.3 等價類分割測試 (EP) [►](#23)' -->
+<!-- header: '5.3 等價類分割測試 (EP)' -->
 
 ## 領域規則導向等價分割：NextDate()
 
@@ -578,7 +578,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.3 等價類分割測試 (EP) [►](#23)' -->
+<!-- header: '5.3 等價類分割測試 (EP)' -->
 
 ## 概念核對問答 (CCQ 3)
 
@@ -609,7 +609,7 @@ footer: 'Ch05 黑箱測試'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#2) 5.4 全成對組合測試 (Pairwise) [►](#30)' -->
+<!-- header: '5.4 全成對組合測試 (Pairwise)' -->
 
 # **5.4 全成對組合測試 (Pairwise)**
 
@@ -618,7 +618,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.4 全成對組合測試 (Pairwise) [►](#30)' -->
+<!-- header: '5.4 全成對組合測試 (Pairwise)' -->
 
 ## 組合爆炸難題與 2-Way 交互作用理論
 
@@ -652,7 +652,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.4 全成對組合測試 (Pairwise) [►](#30)' -->
+<!-- header: '5.4 全成對組合測試 (Pairwise)' -->
 
 ## 游泳池收費系統：全成對實戰對照
 
@@ -690,7 +690,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.4 全成對組合測試 (Pairwise) [►](#30)' -->
+<!-- header: '5.4 全成對組合測試 (Pairwise)' -->
 
 ## 全成對測試工具與放款計算案例
 
@@ -720,7 +720,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.4 全成對組合測試 (Pairwise) [►](#30)' -->
+<!-- header: '5.4 全成對組合測試 (Pairwise)' -->
 
 ## 概念核對問答 (CCQ 4)
 
@@ -751,7 +751,7 @@ footer: 'Ch05 黑箱測試'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#2) 5.5 案例優化與 5.6 決策表測試 [►](#38)' -->
+<!-- header: '5.5 案例優化與 5.6 決策表測試' -->
 
 # **5.5 案例優化與 5.6 決策表測試**
 
@@ -760,7 +760,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.5 案例優化與 5.6 決策表測試 [►](#38)' -->
+<!-- header: '5.5 案例優化與 5.6 決策表測試' -->
 
 ## 測試案例精實化四大策略
 
@@ -792,7 +792,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.5 案例優化與 5.6 決策表測試 [►](#38)' -->
+<!-- header: '5.5 案例優化與 5.6 決策表測試' -->
 
 ## 概念核對問答 (CCQ 5)
 
@@ -822,7 +822,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.5 案例優化與 5.6 決策表測試 [►](#38)' -->
+<!-- header: '5.5 案例優化與 5.6 決策表測試' -->
 
 ## 決策表測試 (Decision Table Testing) 架構
 
@@ -859,7 +859,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.5 案例優化與 5.6 決策表測試 [►](#38)' -->
+<!-- header: '5.5 案例優化與 5.6 決策表測試' -->
 
 ## 三角形判斷決策表 (CAR Table) 實戰
 
@@ -884,7 +884,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.5 案例優化與 5.6 決策表測試 [►](#38)' -->
+<!-- header: '5.5 案例優化與 5.6 決策表測試' -->
 
 ## 概念核對問答 (CCQ 6)
 
@@ -915,7 +915,7 @@ footer: 'Ch05 黑箱測試'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#2) 5.7 狀態轉換測試 [►](#44)' -->
+<!-- header: '5.7 狀態轉換測試' -->
 
 # **5.7 狀態轉換測試**
 
@@ -924,7 +924,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.7 狀態轉換測試 [►](#44)' -->
+<!-- header: '5.7 狀態轉換測試' -->
 
 ## 事件驅動與狀態機 (State Machine) 測試
 
@@ -953,7 +953,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.7 狀態轉換測試 [►](#44)' -->
+<!-- header: '5.7 狀態轉換測試' -->
 
 ## 狀態測試覆蓋準則與測試路徑設計
 
@@ -988,7 +988,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '[◄](#2) 5.7 狀態轉換測試 [►](#44)' -->
+<!-- header: '5.7 狀態轉換測試' -->
 
 ## 物件狀態測試：Stack 實戰
 
@@ -1016,7 +1016,7 @@ assertThrows(StackFullException.class, () -> s.push(400));
 
 ---
 
-<!-- header: '[◄](#2) 5.7 狀態轉換測試 [►](#44)' -->
+<!-- header: '5.7 狀態轉換測試' -->
 
 ## 概念核對問答 (CCQ 7)
 
@@ -1047,7 +1047,7 @@ assertThrows(StackFullException.class, () -> s.push(400));
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#2) 5.8 屬性基礎測試 (PBT) [►](#49)' -->
+<!-- header: '5.8 屬性基礎測試 (PBT)' -->
 
 # **5.8 屬性基礎測試 (PBT)**
 
@@ -1056,7 +1056,7 @@ assertThrows(StackFullException.class, () -> s.push(400));
 
 ---
 
-<!-- header: '[◄](#2) 5.8 屬性基礎測試 (PBT) [►](#49)' -->
+<!-- header: '5.8 屬性基礎測試 (PBT)' -->
 
 ## 範例測試 (EBT) vs. 屬性測試 (PBT) 典範轉移
 
@@ -1091,7 +1091,7 @@ assertThrows(StackFullException.class, () -> s.push(400));
 
 ---
 
-<!-- header: '[◄](#2) 5.8 屬性基礎測試 (PBT) [►](#49)' -->
+<!-- header: '5.8 屬性基礎測試 (PBT)' -->
 
 ## 屬性基礎測試 (PBT) 先驅：John Hughes
 
@@ -1128,7 +1128,7 @@ assertThrows(StackFullException.class, () -> s.push(400));
 
 ---
 
-<!-- header: '[◄](#2) 5.8 屬性基礎測試 (PBT) [►](#49)' -->
+<!-- header: '5.8 屬性基礎測試 (PBT)' -->
 
 ## jqwik 實戰與測資收縮 (Shrinking) 機制
 
@@ -1163,7 +1163,7 @@ public class AdditionProperties {
 
 ---
 
-<!-- header: '[◄](#2) 5.8 屬性基礎測試 (PBT) [►](#49)' -->
+<!-- header: '5.8 屬性基礎測試 (PBT)' -->
 
 ## 概念核對問答 (CCQ 8)
 
@@ -1191,7 +1191,7 @@ public class AdditionProperties {
 
 ---
 
-<!-- header: '[◄](#2) 本章重點導讀 [►](#1)' -->
+<!-- header: '本章重點導讀' -->
 
 ## 附錄：課堂互動參考解答
 
@@ -1316,37 +1316,13 @@ public class AdditionProperties {
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = "true";
       
-      const links = header.querySelectorAll("a");
-      let prevLink = null;
-      let nextLink = null;
-      
-      links.forEach(a => {
-        const txt = a.textContent.trim();
-        if (txt === "◄" || txt === "◀") prevLink = a;
-        if (txt === "►" || txt === "▶") nextLink = a;
-      });
-      
       let title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, "").replace(/\s*[►▶]$/, "").trim();
       if (!title) return;
       
       header.innerHTML = "";
-      if (prevLink) {
-        prevLink.className = "header-nav-arrow";
-        prevLink.title = "上一章節";
-        header.appendChild(prevLink);
-        header.appendChild(document.createTextNode(" "));
-      }
-      
       const wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
-      
-      if (nextLink) {
-        header.appendChild(document.createTextNode(" "));
-        nextLink.className = "header-nav-arrow";
-        nextLink.title = "下一章節";
-        header.appendChild(nextLink);
-      }
     });
   }
 

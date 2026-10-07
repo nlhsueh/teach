@@ -20,7 +20,7 @@ footer: 'Ch01 軟體品質導論'
 
 ---
 
-<!-- header: '[◄](#1) 本章大綱 (Outline) [►](#4)' -->
+<!-- header: '本章大綱 (Outline)' -->
 
 ## 本章重點導讀 (Key Highlights)
 
@@ -52,7 +52,7 @@ footer: 'Ch01 軟體品質導論'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#3) 1.1 軟體危機的歷史與輪迴 [►](#14)' -->
+<!-- header: '1.1 軟體危機的歷史與輪迴' -->
 
 # **1.1 軟體危機的歷史與 AI 時代的輪迴**
 
@@ -271,7 +271,7 @@ footer: 'Ch01 軟體品質導論'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#4) 1.2 AI 能拯救軟體危機嗎？ [►](#20)' -->
+<!-- header: '1.2 AI 能拯救軟體危機嗎？' -->
 
 # **1.2 AI 能拯救軟體危機嗎？**
 
@@ -402,7 +402,7 @@ footer: 'Ch01 軟體品質導論'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#14) 1.3 軟體的本質與品質維度 [►](#32)' -->
+<!-- header: '1.3 軟體的本質與品質維度' -->
 
 # **1.3 軟體的本質與品質維度**
 
@@ -651,7 +651,7 @@ footer: 'Ch01 軟體品質導論'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#20) 1.4 V&V、品質成本與測試左移 [►](#37)' -->
+<!-- header: '1.4 V&V、品質成本與測試左移' -->
 
 # **1.4 軟體品質工程核心概念**
 
@@ -762,7 +762,7 @@ footer: 'Ch01 軟體品質導論'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#32) 1.5 生命週期品質把關與 CI/CD [►](#43)' -->
+<!-- header: '1.5 生命週期品質把關與 CI/CD' -->
 
 # **1.5 軟體生命週期中的品質把關**
 
@@ -875,7 +875,7 @@ footer: 'Ch01 軟體品質導論'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#37) 1.6 現代軟體品質模型 ISO 25010 [►](#54)' -->
+<!-- header: '1.6 現代軟體品質模型 ISO 25010' -->
 
 # **1.6 現代軟體品質模型 (ISO 25010)**
 
@@ -1150,7 +1150,7 @@ footer: 'Ch01 軟體品質導論'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#43) 1.7 綜合練習與思維激盪 [►](#56)' -->
+<!-- header: '1.7 綜合練習與思維激盪' -->
 
 # **1.7 綜合練習與思維激盪**
 
@@ -1187,7 +1187,7 @@ footer: 'Ch01 軟體品質導論'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#54) 附錄：課堂互動參考解答 [►](#1)' -->
+<!-- header: '附錄：課堂互動參考解答' -->
 
 # **附錄：課堂互動參考解答**
 
@@ -1324,37 +1324,13 @@ footer: 'Ch01 軟體品質導論'
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = "true";
       
-      const links = header.querySelectorAll("a");
-      let prevLink = null;
-      let nextLink = null;
-      
-      links.forEach(a => {
-        const txt = a.textContent.trim();
-        if (txt === "◄" || txt === "◀") prevLink = a;
-        if (txt === "►" || txt === "▶") nextLink = a;
-      });
-      
       let title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, "").replace(/\s*[►▶]$/, "").trim();
       if (!title) return;
       
       header.innerHTML = "";
-      if (prevLink) {
-        prevLink.className = "header-nav-arrow";
-        prevLink.title = "上一章節";
-        header.appendChild(prevLink);
-        header.appendChild(document.createTextNode(" "));
-      }
-      
       const wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
-      
-      if (nextLink) {
-        header.appendChild(document.createTextNode(" "));
-        nextLink.className = "header-nav-arrow";
-        nextLink.title = "下一章節";
-        header.appendChild(nextLink);
-      }
     });
   }
 

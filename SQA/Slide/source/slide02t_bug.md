@@ -22,7 +22,7 @@ footer: 'Ch02 錯與除錯'
 
 ---
 
-<!-- header: '[◄](#1) 本章大綱 (Outline) [►](#4)' -->
+<!-- header: '本章大綱 (Outline)' -->
 
 ## 本章重點導讀 (Key Highlights)
 
@@ -56,7 +56,7 @@ footer: 'Ch02 錯與除錯'
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#3) 2.1 臭蟲與錯誤 [►](#15)' -->
+<!-- header: '2.1 臭蟲與錯誤' -->
 
 # **2.1 臭蟲與錯誤 (Bugs & Faults)**
 
@@ -298,7 +298,7 @@ pre code {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#4) 2.2 整潔程式碼 (Clean Code) [►](#29)' -->
+<!-- header: '2.2 整潔程式碼 (Clean Code)' -->
 
 # **2.2 整潔程式碼 (Clean Code)**
 
@@ -650,7 +650,7 @@ public void processOrder(Order order) {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#15) 2.3 除錯思維與方法 [►](#40)' -->
+<!-- header: '2.3 除錯思維與方法' -->
 
 # **2.3 除錯思維與方法 (Debugging)**
 
@@ -841,7 +841,7 @@ public void processOrder(Order order) {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#29) 2.4 除錯工具實務 [►](#42)' -->
+<!-- header: '2.4 除錯工具實務' -->
 
 # **2.4 除錯工具實務 (Debuggers)**
 
@@ -950,7 +950,7 @@ public void processOrder(Order order) {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#40) 2.5 防禦性編程與契約式設計 [►](#56)' -->
+<!-- header: '2.5 防禦性編程與契約式設計' -->
 
 # **2.5 防禦性編程與契約式設計 (DbC)**
 
@@ -1203,7 +1203,7 @@ public class BankAccount {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#42) 2.6 缺陷管理與議題追蹤 [►](#65)' -->
+<!-- header: '2.6 缺陷管理與議題追蹤' -->
 
 # **2.6 缺陷管理與議題追蹤 (Defect Management & BTS)**
 
@@ -1353,7 +1353,7 @@ public class BankAccount {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#56) 2.7 綜合練習與實戰思維 [►](#68)' -->
+<!-- header: '2.7 綜合練習與實戰思維' -->
 
 # **2.7 綜合練習與實戰思維**
 
@@ -1398,7 +1398,7 @@ public class BankAccount {
 ---
 
 <!-- _class: lead -->
-<!-- header: '[◄](#65) 附錄：課堂互動參考解答 [►](#1)' -->
+<!-- header: '附錄：課堂互動參考解答' -->
 
 # **附錄：課堂互動參考解答**
 
@@ -1541,37 +1541,13 @@ public class BankAccount {
       if (!header || header.dataset.navEnhanced) return;
       header.dataset.navEnhanced = "true";
       
-      const links = header.querySelectorAll("a");
-      let prevLink = null;
-      let nextLink = null;
-      
-      links.forEach(a => {
-        const txt = a.textContent.trim();
-        if (txt === "◄" || txt === "◀") prevLink = a;
-        if (txt === "►" || txt === "▶") nextLink = a;
-      });
-      
       let title = header.textContent.trim();
       title = title.replace(/^[◄◀]\s*/, "").replace(/\s*[►▶]$/, "").trim();
       if (!title) return;
       
       header.innerHTML = "";
-      if (prevLink) {
-        prevLink.className = "header-nav-arrow";
-        prevLink.title = "上一章節";
-        header.appendChild(prevLink);
-        header.appendChild(document.createTextNode(" "));
-      }
-      
       const wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
-      
-      if (nextLink) {
-        header.appendChild(document.createTextNode(" "));
-        nextLink.className = "header-nav-arrow";
-        nextLink.title = "下一章節";
-        header.appendChild(nextLink);
-      }
     });
   }
 
