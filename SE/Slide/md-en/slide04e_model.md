@@ -105,7 +105,7 @@ To summarize this slide, remember this key takeaway: System modeling creates pur
 ## The Parable of the Elephant & Multiple Perspectives
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/blind_men_elephant.svg" alt="Blind Men and Elephant: Multi-Perspective Modeling" />
+  <img src="../../img/ch05/blind_men_elephant_en.svg" alt="Blind Men and Elephant: Multi-Perspective Modeling" />
 </div>
 
 <!--
@@ -176,10 +176,10 @@ To summarize this slide, remember this key takeaway: Mastering these core UML di
 ---
 ## The Need for Standardization: The 1990s "Method Wars"
 
-* **The Rise of Object-Oriented Programming (Late 1980s – Early 1990s):**
+- **The Rise of Object-Oriented Programming (Late 1980s – Early 1990s):**
   - The software industry transitioned from procedural code (C, Pascal) to object-oriented paradigms (C++, Smalltalk).
   - Software engineers urgently needed visual notations to represent classes, objects, and relationships.
-* **The "Method Wars" Era:**
+- **The "Method Wars" Era:**
   - Over **50 competing OO modeling notations** flooded the commercial market.
   - Engineers argued fiercely over whether classes should be clouds, rectangles, or ovals; whether inheritance should be an open triangle, filled arrow, or dashed line.
   - **Severe Industry Fragmentation:** Companies could not exchange models, CASE tools were incompatible, and developers had to relearn notation whenever they switched jobs.
@@ -201,13 +201,13 @@ To summarize this slide, remember this key takeaway: The 1990s Method Wars fragm
 <div class="content-columns">
 <div class="content-text">
 
-* **1994 – Unification Begins at Rational Software:**
+- **1994 – Unification Begins at Rational Software:**
   - Jim Rumbaugh joined Grady Booch at Rational to merge the Booch Method and OMT into the "Unified Method" (v0.8).
-* **1995 – The Three Amigos Assemble:**
+- **1995 – The Three Amigos Assemble:**
   - Ivar Jacobson joined Rational, bringing his revolutionary **Use Case** methodology (OOSE).
-* **1997 – OMG International Standardization:**
+- **1997 – OMG International Standardization:**
   - Submitted to the **Object Management Group (OMG)**; unanimously adopted as **UML 1.1** in November 1997.
-* **2005 – UML 2.0 Major Architecture Overhaul:**
+- **2005 – UML 2.0 Major Architecture Overhaul:**
   - Expanded from 9 to 13 (and later 14) diagram types with formal execution metamodels.
 
 </div>
@@ -447,21 +447,26 @@ To summarize this slide, remember this key takeaway: Context models define syste
 ---
 ## What is a Context Model?
 
-> "Context models define the operational perimeter of a system, specifying which external systems, human user roles, and organizational actors interact with the target software."
-> — *Ian Sommerville, Software Engineering (10th ed.)*
+> "Context models define the operational perimeter of a system, specifying which external systems, human roles, and external entities interact with the target software." — *Ian Sommerville*
 
-- **Core Architectural Nature:**
-  - Belongs to the **External Perspective**, serving as the highest-level architectural bird's-eye view.
-  - Treats the entire software system as a single high-level subsystem or bounded cluster, focusing strictly on its interfaces with the outside world.
-- **Three Irreplaceable Reasons Why Context Modeling Matters:**
-  - **1. Establishing Explicit System Boundaries:**
-    - Strictly demarcates **In-Scope** (internal services designed and maintained by our team) from **Out-of-Scope** (third-party external services).
-    - Prevents the single most common cause of project failure: **Scope Creep**.
-  - **2. Identifying External Dependencies & Risk Isolation:**
-    - Identifies all required external APIs (Payment Gateways, Mapping, SMS/Push) before writing code.
-    - Enables early risk assessment of external SLAs, API quotas, pricing models, and security boundaries (e.g., PCI-DSS compliance isolation).
-  - **3. Aligning Cross-Functional Stakeholders:**
-    - Serves as the primary visual contract between Product Managers, Lead Architects, external vendors, and executives regarding what the system does and does not do.
+<div class="two-columns">
+<div>
+
+### 🎯 Core Architectural Nature
+- **External Perspective:** Provides the highest-level architectural bird's-eye view.
+- **Bounded Container:** Treats the entire software system as a single black box focusing on external boundaries.
+- **Inter-System Protocol Focus:** Explicitly documents network interfaces and dependencies across organizations.
+
+</div>
+<div>
+
+### 🛡️ Why Context Modeling Matters
+- **1. Establish System Boundaries:** Demarcates **In-Scope** from **Out-of-Scope**, preventing **Scope Creep**.
+- **2. Identify External Dependencies:** Surfaces APIs (Stripe, Maps, Firebase) early to assess SLAs and isolate compliance (PCI-DSS).
+- **3. Align Stakeholders:** Clear visual contract aligning PMs, architects, and external partners.
+
+</div>
+</div>
 
 <!--
 Before analyzing our practical case study, let us define what a Context Model actually is and why experienced software architects always draw it before writing code.
@@ -481,7 +486,7 @@ To summarize this slide, remember this key takeaway: Context models define archi
 ## Context Model Notation & Element Semantics
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/context_model_notation.svg" alt="Context Model Notation & Semantics Reference" />
+  <img src="../../img/ch05/context_model_notation_en.svg" alt="Context Model Notation & Semantics Reference" />
 </div>
 
 <!--
@@ -518,17 +523,26 @@ To summarize this slide, remember this key takeaway: The context diagram establi
 ---
 ## Explaining the Context Model & Architectural Boundaries
 
-* **The Primary Operational Boundary:**
-  - Clearly demarcates what is **internal** (our software platform: Order Engine, Catalog, Tracking) versus what is **external** (third-party systems and human actors).
-  - Eliminates "scope creep" by defining external dependencies early in the architectural lifecycle.
-* **Human Stakeholder Interfaces:**
-  - **Customer:** Interacts via native iOS/Android mobile apps to query menus and submit orders.
-  - **Restaurant Partner:** Interacts via merchant web/tablet portals to accept orders and manage food availability.
-  - **Delivery Courier:** Interacts via courier mobile apps to receive dispatch missions and stream GPS coordinates.
-* **External Third-Party Service Dependencies:**
-  - **Payment Gateway (Stripe/ApplePay):** Handles PCI-compliant financial transactions without storing raw card data internally.
-  - **Navigation Service (Google Maps API):** Computes live routing distances, courier ETAs, and road geometry.
-  - **Notification Cloud (Firebase / Twilio):** Dispatches asynchronous push alerts and SMS verification tokens.
+> 🛡️ **Operational Boundary:** Clearly demarcates **internal core services** (Order Engine, Catalog, Tracking) from **external entities** to prevent scope creep.
+
+<div class="two-columns">
+<div>
+
+### 👤 Human Stakeholder Touchpoints
+- **Customer (Mobile App):** Queries menus, customizes dishes, places orders, and tracks delivery live.
+- **Restaurant Partner (Merchant Portal):** Confirms orders, updates kitchen prep status, and manages menu availability.
+- **Delivery Courier (Driver App):** Receives dispatch missions, navigates routes, and streams real-time GPS telemetry.
+
+</div>
+<div>
+
+### ☁️ External Cloud Dependencies
+- **Payment Gateway (Stripe / Apple Pay):** Executes charges; isolates internal databases from burdensome PCI-DSS audits.
+- **Navigation Service (Google Maps API):** Computes routing distance, courier ETAs, and road network geometry.
+- **Notification Cloud (Firebase / Twilio):** Dispatches asynchronous push alerts and SMS verification tokens.
+
+</div>
+</div>
 
 <!--
 Let's analyze why this context diagram is vital for software architects.

@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="headerGradEn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0b3c5d" />
+      <stop offset="100%" stop-color="#1d5f8a" />
+    </linearGradient>
+    <linearGradient id="rowAltEn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <filter id="rowShadowEn" x="-2%" y="-2%" width="104%" height="108%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0b3c5d" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="960" height="480" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <rect x="0" y="0" width="960" height="54" rx="14" fill="url(#headerGradEn)" />
+  <rect x="0" y="38" width="960" height="16" fill="url(#headerGradEn)" />
+  <text x="480" y="34" fill="#ffffff" font-family="'Helvetica Neue', Arial, sans-serif" font-size="17" font-weight="700" text-anchor="middle" letter-spacing="0.5">
+    📐 System Context Diagram: Core Notation &amp; Element Semantics
+  </text>
+
+  <!-- Table Headers -->
+  <g transform="translate(20, 64)">
+    <rect x="0" y="0" width="920" height="34" rx="6" fill="#0b3c5d" opacity="0.9" />
+    <text x="110" y="22" fill="#ffffff" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="700" text-anchor="middle">Visual Notation</text>
+    <text x="310" y="22" fill="#ffffff" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="700" text-anchor="middle">Element Name</text>
+    <text x="650" y="22" fill="#ffffff" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="700" text-anchor="middle">Engineering Semantics &amp; Architectural Role</text>
+  </g>
+
+  <!-- ==================== ROW 1: System Boundary ==================== -->
+  <g transform="translate(20, 105)" filter="url(#rowShadowEn)">
+    <rect x="0" y="0" width="920" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+    
+    <g transform="translate(20, 10)">
+      <path d="M 0,0 L 110,0 A 4,4 0 0 1 114,4 L 118,12 L 175,12 A 4,4 0 0 1 179,16 L 179,44 A 4,4 0 0 1 175,48 L 0,48 A 4,4 0 0 1 -4,44 L -4,4 A 4,4 0 0 1 0,0" fill="#e8eff5" stroke="#0b3c5d" stroke-width="1.8" />
+      <line x1="-4" y1="12" x2="118" y2="12" stroke="#0b3c5d" stroke-width="1.5" />
+      <text x="5" y="9" fill="#0b3c5d" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" font-weight="700">System Boundary</text>
+      <rect x="30" y="20" width="115" height="20" rx="3" fill="#ffffff" stroke="#328cc1" stroke-width="1" />
+      <text x="87" y="34" fill="#1e293b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" font-weight="600" text-anchor="middle">Internal Core System</text>
+    </g>
+
+    <text x="310" y="30" fill="#0b3c5d" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">System Boundary Box</text>
+    <text x="310" y="48" fill="#64748b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" text-anchor="middle">(Subsystem Cluster)</text>
+
+    <text x="440" y="28" fill="#1e293b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600">
+      • <tspan fill="#0b3c5d">Defines In-Scope:</tspan> Contains software designed, deployed, and maintained by our team.
+    </text>
+    <text x="440" y="48" fill="#475569" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11.5">
+      • External actors and cloud APIs remain outside; prevents Scope Creep and clarifies delivery liabilities.
+    </text>
+  </g>
+
+  <!-- ==================== ROW 2: Human Actor ==================== -->
+  <g transform="translate(20, 178)" filter="url(#rowShadowEn)">
+    <rect x="0" y="0" width="920" height="66" rx="8" fill="url(#rowAltEn)" stroke="#e2e8f0" stroke-width="1" />
+    
+    <g transform="translate(70, 8)">
+      <ellipse cx="40" cy="9" rx="7" ry="7" fill="#d9b310" stroke="#0b3c5d" stroke-width="1.2" />
+      <path d="M 40,16 L 40,32 M 28,22 L 52,22 M 40,32 L 30,46 M 40,32 L 50,46" stroke="#0b3c5d" stroke-width="1.4" fill="none" />
+      <text x="40" y="56" fill="#0b3c5d" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">Customer</text>
+    </g>
+
+    <text x="310" y="30" fill="#0b3c5d" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">Human User Roles</text>
+    <text x="310" y="48" fill="#64748b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" text-anchor="middle">Human Actor (Stick Figure)</text>
+
+    <text x="440" y="28" fill="#1e293b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600">
+      • <tspan fill="#0b3c5d">Real-World Users:</tspan> Direct human roles interacting with the system (Customer, Courier, Merchant).
+    </text>
+    <text x="440" y="48" fill="#475569" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11.5">
+      • Connects via dedicated client touchpoints (iOS/Android mobile apps or responsive merchant web portals).
+    </text>
+  </g>
+
+  <!-- ==================== ROW 3: External Cloud / Partner System ==================== -->
+  <g transform="translate(20, 251)" filter="url(#rowShadowEn)">
+    <rect x="0" y="0" width="920" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+    
+    <g transform="translate(70, 8)">
+      <ellipse cx="40" cy="9" rx="7" ry="7" fill="#38bdf8" stroke="#0b3c5d" stroke-width="1.2" />
+      <path d="M 40,16 L 40,32 M 28,22 L 52,22 M 40,32 L 30,46 M 40,32 L 50,46" stroke="#0b3c5d" stroke-width="1.4" fill="none" />
+      <text x="40" y="56" fill="#0b3c5d" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">Payment Gateway</text>
+    </g>
+
+    <text x="310" y="30" fill="#0b3c5d" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">External Cloud APIs</text>
+    <text x="310" y="48" fill="#64748b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" text-anchor="middle">External System / Cloud Actor</text>
+
+    <text x="440" y="28" fill="#1e293b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600">
+      • <tspan fill="#0b3c5d">Third-Party Capabilities:</tspan> External platforms integrated via REST/gRPC (Stripe, Maps, Firebase).
+    </text>
+    <text x="440" y="48" fill="#475569" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11.5">
+      • Enables early risk mitigation: evaluates external SLAs, operational costs, and security compliance (PCI-DSS).
+    </text>
+  </g>
+
+  <!-- ==================== ROW 4: Internal Subsystem / Component ==================== -->
+  <g transform="translate(20, 324)" filter="url(#rowShadowEn)">
+    <rect x="0" y="0" width="920" height="66" rx="8" fill="url(#rowAltEn)" stroke="#e2e8f0" stroke-width="1" />
+    
+    <g transform="translate(30, 14)">
+      <rect x="0" y="0" width="160" height="38" rx="4" fill="#ffffff" stroke="#328cc1" stroke-width="1.5" />
+      <rect x="142" y="5" width="12" height="8" fill="#ffffff" stroke="#328cc1" stroke-width="1.2" />
+      <rect x="140" y="7" width="4" height="2" fill="#328cc1" />
+      <rect x="140" y="10" width="4" height="2" fill="#328cc1" />
+      <text x="70" y="18" fill="#0b3c5d" font-family="'Helvetica Neue', Arial, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Order Engine</text>
+      <text x="70" y="30" fill="#64748b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" text-anchor="middle">(Core Microservice)</text>
+    </g>
+
+    <text x="310" y="30" fill="#0b3c5d" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">Internal Components</text>
+    <text x="310" y="48" fill="#64748b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" text-anchor="middle">Internal Component / Service</text>
+
+    <text x="440" y="28" fill="#1e293b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600">
+      • <tspan fill="#0b3c5d">Core Business Logic:</tspan> Independent internal subsystems (Catalog, Order Engine, Live Tracking).
+    </text>
+    <text x="440" y="48" fill="#475569" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11.5">
+      • Marked with the standard UML component icon (two tabs) denoting a modular, deployable unit.
+    </text>
+  </g>
+
+  <!-- ==================== ROW 5: Dependency Link / Communication Arrow ==================== -->
+  <g transform="translate(20, 397)" filter="url(#rowShadowEn)">
+    <rect x="0" y="0" width="920" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+    
+    <g transform="translate(25, 20)">
+      <line x1="5" y1="12" x2="155" y2="12" stroke="#0b3c5d" stroke-width="1.8" />
+      <polygon points="162,12 152,7 155,12 152,17" fill="#0b3c5d" />
+      <rect x="18" y="0" width="130" height="15" rx="3" fill="#e0f2fe" opacity="0.9" />
+      <text x="83" y="11" fill="#0369a1" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">1. Browse menu &amp; order</text>
+    </g>
+
+    <text x="310" y="30" fill="#0b3c5d" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">Communication Link</text>
+    <text x="310" y="48" fill="#64748b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" text-anchor="middle">Directed Dependency Arrow</text>
+
+    <text x="440" y="28" fill="#1e293b" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600">
+      • <tspan fill="#0b3c5d">Invocation &amp; Data Flow:</tspan> Directed arrows explicitly indicate who initiates requests to whom.
+    </text>
+    <text x="440" y="48" fill="#475569" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11.5">
+      • Annotated with numbered verb phrases clarifying the specific transaction protocol and data payload.
+    </text>
+  </g>
+</svg>
