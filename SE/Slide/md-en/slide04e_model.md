@@ -82,7 +82,7 @@ To summarize this slide, remember this key takeaway: System modeling provides pu
 > "System modeling is the process of developing abstract models of a system, with each model presenting a different view or perspective of that system."
 > — *Ian Sommerville, Software Engineering (10th ed.)*
 
-* **Essential Principles of Modeling:**
+- **Essential Principles of Modeling:**
   - **Abstraction:** Hides non-essential implementation details to highlight critical architectural structures, data flows, and dependencies.
   - **Multiple Perspectives:** No single diagram can explain a complex software system. Different stakeholders require different views.
   - **Communication & Verification:** Serves as a universal visual grammar between product managers, system architects, software developers, and QA engineers.
@@ -100,16 +100,41 @@ Similarly, in software engineering, no single diagram can represent an entire sy
 To summarize this slide, remember this key takeaway: System modeling creates purposeful abstractions across multiple complementary perspectives to master software complexity.
 -->
 ---
+<!-- _class: title-image-slide -->
+
+## The Parable of the Elephant & Multiple Perspectives
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/blind_men_elephant.svg" alt="Blind Men and Elephant: Multi-Perspective Modeling" />
+</div>
+
+<!--
+This diagram captures one of the most famous philosophical lessons in software engineering: The Blind Men and the Elephant.
+
+In the ancient parable, the blind man feeling the trunk insists the elephant is like a water pipe or snake. The one feeling the leg insists it is a solid tree trunk or pillar. The one touching the body claims it is a wall, and the one feeling the tail claims it is a rope. Each touches an undeniable local truth, yet all fall victim to the fallacy of composition.
+
+Software systems are just like the elephant: invisible, vast, and complex.
+If you only look at Class Diagrams, you only feel the legs—you know the static attributes and associations, but have no idea how data moves over time.
+If you only look at Sequence Diagrams, you only touch the trunk—you see message interactions, but miss boundary perimeters and data schemas.
+If you only look at State Diagrams, you only feel the tail—you see event reactions, but miss domain relationships.
+
+This is why we cannot use a single diagram to describe an entire system!
+Software engineering requires four complementary perspectives: External (Context), Interaction, Structural, and Behavioral.
+Only by synthesizing multiple models can we see the true, complete architecture of the software.
+
+To summarize this slide, remember this key takeaway: Any single model is merely a dimensional projection of the system; only multi-perspective modeling reveals the full architectural reality.
+-->
+---
 ## 4 Core System Modeling Perspectives
 
-* **1. External Perspective:**
+- **1. External Perspective:**
   - Models the environment, external partners, and operational context of the system.
   - Defines the strict system perimeter: what is built internally vs. what is delegated to third parties.
-* **2. Interaction Perspective:**
+- **2. Interaction Perspective:**
   - Models dynamic communications between external actors and the system, or message exchanges between internal collaborating objects.
-* **3. Structural Perspective:**
+- **3. Structural Perspective:**
   - Models the static architecture of system data, object classes, attributes, methods, and relationships independent of runtime execution order.
-* **4. Behavioral Perspective:**
+- **4. Behavioral Perspective:**
   - Models the dynamic execution behavior, sequential business workflows, and reactive discrete state transitions in response to external events.
 
 <!--
@@ -216,14 +241,14 @@ To summarize this slide, remember this key takeaway: Rational Software unified t
 <div class="content-columns">
 <div class="content-text">
 
-* **Role & Distinctions:**
+- **Role & Distinctions:**
   - Chief Scientist, Rational Software; IBM Fellow; ACM Fellow.
-* **Pioneered Methodology:**
+- **Pioneered Methodology:**
   - **The Booch Method** and seminal text: *Object-Oriented Analysis and Design with Applications*.
-* **Core Contribution to UML:**
+- **Core Contribution to UML:**
   - Focused heavily on **concrete software design**, module decomposition, class abstractions, and architectural patterns.
   - Championed visual expressiveness for implementation-level object structures and code mapping.
-* **Famous Architectural Maxim:**
+- **Famous Architectural Maxim:**
   > *"Clean code always looks like it was written by someone who cares."*
 
 </div>
@@ -255,14 +280,14 @@ To summarize this slide, remember this key takeaway: Grady Booch championed obje
 <div class="content-columns">
 <div class="content-text">
 
-* **Role & Distinctions:**
+- **Role & Distinctions:**
   - Lead Researcher, General Electric (GE) Global R&D; Rational Software; IBM.
-* **Pioneered Methodology:**
+- **Pioneered Methodology:**
   - **Object Modeling Technique (OMT)** and book: *Object-Oriented Modeling and Design*.
-* **Core Contribution to UML:**
+- **Core Contribution to UML:**
   - Emphasized rigorous **domain analysis**, semantic data modeling, and entity-relationship mapping.
   - Pioneered the synthesis of object structure with David Harel's **Statecharts** to model dynamic reactive systems.
-* **Famous Architectural Maxim:**
+- **Famous Architectural Maxim:**
   > *"You cannot build great software without understanding domain truth."*
 
 </div>
@@ -294,14 +319,14 @@ To summarize this slide, remember this key takeaway: James Rumbaugh established 
 <div class="content-columns">
 <div class="content-text">
 
-* **Role & Distinctions:**
+- **Role & Distinctions:**
   - Lead Architect, Ericsson; Founder, Objectory AB; Rational Software; SEMAT Pioneer.
-* **Pioneered Methodology:**
+- **Pioneered Methodology:**
   - **Object-Oriented Software Engineering (OOSE)**.
-* **Core Contribution to UML:**
+- **Core Contribution to UML:**
   - **Inventor of Use Cases (1986):** Revolutionized requirements by anchoring system architecture to measurable user goals.
   - Introduced the **Boundary–Control–Entity (BCE)** robustness analysis pattern and component-based architecture.
-* **Famous Architectural Maxim:**
+- **Famous Architectural Maxim:**
   > *"A system that has no users has no reason to exist. Model user goals first."*
 
 </div>
@@ -420,9 +445,60 @@ We will begin by defining architectural perimeters using a Context Model, and th
 To summarize this slide, remember this key takeaway: Context models define system perimeters, while activity diagrams capture multi-stakeholder business processes.
 -->
 ---
+## What is a Context Model?
+
+> "Context models define the operational perimeter of a system, specifying which external systems, human user roles, and organizational actors interact with the target software."
+> — *Ian Sommerville, Software Engineering (10th ed.)*
+
+- **Core Architectural Nature:**
+  - Belongs to the **External Perspective**, serving as the highest-level architectural bird's-eye view.
+  - Treats the entire software system as a single high-level subsystem or bounded cluster, focusing strictly on its interfaces with the outside world.
+- **Three Irreplaceable Reasons Why Context Modeling Matters:**
+  - **1. Establishing Explicit System Boundaries:**
+    - Strictly demarcates **In-Scope** (internal services designed and maintained by our team) from **Out-of-Scope** (third-party external services).
+    - Prevents the single most common cause of project failure: **Scope Creep**.
+  - **2. Identifying External Dependencies & Risk Isolation:**
+    - Identifies all required external APIs (Payment Gateways, Mapping, SMS/Push) before writing code.
+    - Enables early risk assessment of external SLAs, API quotas, pricing models, and security boundaries (e.g., PCI-DSS compliance isolation).
+  - **3. Aligning Cross-Functional Stakeholders:**
+    - Serves as the primary visual contract between Product Managers, Lead Architects, external vendors, and executives regarding what the system does and does not do.
+
+<!--
+Before analyzing our practical case study, let us define what a Context Model actually is and why experienced software architects always draw it before writing code.
+
+Ian Sommerville defines context models as defining the boundaries of a system within its operating environment.
+
+Why is this essential?
+First, establishing boundaries. Countless projects fail from scope creep because boundaries are vague. A context diagram provides an unambiguous line of responsibility.
+Second, identifying dependencies and risks. Rather than building our own banking infrastructure or navigation satellites, we delegate to Stripe and Google Maps. This also insulates us from PCI-DSS regulatory liabilities.
+Third, aligning stakeholders to ensure full consensus across technical and business teams.
+
+To summarize this slide, remember this key takeaway: Context models define architectural boundaries, isolate external dependencies, and act as the first line of defense against scope creep.
+-->
+---
 <!-- _class: title-image-slide -->
 
-## Food Delivery Platform: System Context Model
+## Context Model Notation & Element Semantics
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/context_model_notation.svg" alt="Context Model Notation & Semantics Reference" />
+</div>
+
+<!--
+Before reviewing the case study, familiarize yourself with the five core visual elements of system context diagrams:
+
+1. System Boundary Box: Large container defining internal scope and team responsibility.
+2. Human Actors: Stick figures representing real-world users interacting via specific client devices (Customer, Courier, Restaurant).
+3. External Systems & Cloud Services: Third-party capabilities integrated via Web APIs (Stripe, Google Maps, Firebase).
+4. Internal Components: Core microservices running within the boundary, marked with component tabs.
+5. Dependency Links: Directed arrows showing communication protocols, call directions, and data streams.
+
+To summarize this slide, remember this key takeaway: Mastering the boundary box, actors, external clouds, internal components, and dependency arrows allows you to interpret and draft any context model with precision.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## Case Study: Food Delivery System Context Model
 
 <div class="image-wrapper">
   <img src="../../img/ch05/food_delivery_context.svg" alt="Food Delivery Platform Context Diagram" />

@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#edf2f7" />
+    </linearGradient>
+    <linearGradient id="elephantGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#64748b" />
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f0f9ff" />
+    </linearGradient>
+    <linearGradient id="primaryHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0b3c5d" />
+      <stop offset="100%" stop-color="#1d5f8a" />
+    </linearGradient>
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0b3c5d" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="960" height="460" rx="16" fill="url(#bgGrad)" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <!-- Title Banner -->
+  <rect x="0" y="0" width="960" height="54" rx="16" fill="url(#primaryHeader)" />
+  <rect x="0" y="38" width="960" height="16" fill="url(#primaryHeader)" />
+  <text x="480" y="34" fill="#ffffff" font-family="'Noto Sans TC', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="1">
+    🐘 寓言啟示：盲人摸象與系統塑模的「多重視角」必要性
+  </text>
+
+  <!-- Central Stylized Elephant Silhouette -->
+  <g transform="translate(350, 110)">
+    <!-- Elephant Ground Shadow -->
+    <ellipse cx="130" cy="220" rx="135" ry="14" fill="#cbd5e1" opacity="0.6" />
+
+    <!-- Elephant Body -->
+    <path d="M 60,180 
+             L 60,110 
+             C 60,60 120,40 180,50 
+             C 210,55 240,80 245,110
+             C 248,125 245,160 245,180
+             L 230,180 L 230,125
+             C 220,120 200,120 190,125
+             L 190,180 L 165,180
+             L 165,120 L 115,120
+             L 115,180 L 90,180
+             L 90,125 L 80,125
+             L 80,180 Z" 
+          fill="url(#elephantGrad)" opacity="0.9" />
+
+    <!-- Elephant Head & Ear & Trunk -->
+    <path d="M 65,85 
+             C 45,70 15,90 20,125 
+             C 22,145 35,160 50,155
+             C 40,165 25,185 20,205
+             C 17,215 26,220 32,212
+             C 38,198 48,180 58,168
+             C 65,160 70,140 70,115 Z" 
+          fill="#64748b" />
+
+    <!-- Elephant Ear Overlay -->
+    <ellipse cx="72" cy="100" rx="18" ry="24" fill="#475569" opacity="0.5" />
+
+    <!-- Eye -->
+    <circle cx="52" cy="94" r="3" fill="#ffffff" />
+
+    <!-- Elephant Tail -->
+    <path d="M 245,120 C 255,135 258,155 254,170" stroke="#64748b" stroke-width="4" stroke-linecap="round" fill="none" />
+    <path d="M 254,170 C 256,175 258,180 256,183" stroke="#475569" stroke-width="3" stroke-linecap="round" fill="none" />
+
+    <!-- Elephant Label in center -->
+    <rect x="95" y="75" width="85" height="26" rx="6" fill="#0b3c5d" opacity="0.85" />
+    <text x="137" y="93" fill="#ffffff" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+      複雜軟體系統
+    </text>
+  </g>
+
+  <!-- ==================== PERSPECTIVE 1: Interaction (Trunk) ==================== -->
+  <g transform="translate(30, 80)" filter="url(#shadow)">
+    <!-- Card Frame -->
+    <rect x="0" y="0" width="280" height="150" rx="10" fill="url(#cardGrad1)" stroke="#328cc1" stroke-width="1.5" />
+    <rect x="0" y="0" width="280" height="32" rx="10" fill="#328cc1" />
+    <rect x="0" y="22" width="280" height="10" fill="#328cc1" />
+    <text x="14" y="22" fill="#ffffff" font-family="'Noto Sans TC', sans-serif" font-size="13" font-weight="700">
+      ① 摸到象鼻：「像一條巨蟒 / 水管！」
+    </text>
+    
+    <!-- Body Content -->
+    <text x="14" y="55" fill="#0b3c5d" font-family="'Noto Sans TC', sans-serif" font-size="13" font-weight="700">
+      🎯 互動視角 (Interaction Perspective)
+    </text>
+    <text x="14" y="76" fill="#475569" font-family="'Noto Sans TC', sans-serif" font-size="12">
+      • 關注：訊息傳遞順序、呼叫流向與動態協同
+    </text>
+    <text x="14" y="96" fill="#475569" font-family="'Noto Sans TC', sans-serif" font-size="12">
+      • 盲點：忽視靜態資料結構與內部持久化
+    </text>
+    <rect x="14" y="112" width="252" height="24" rx="4" fill="#e0f2fe" />
+    <text x="140" y="128" fill="#0369a1" font-family="'Noto Sans TC', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">
+      對應 UML：循序圖 (Sequence Diagram)
+    </text>
+  </g>
+  <!-- Connector 1 -->
+  <path d="M 310,150 C 340,150 350,180 375,200" stroke="#328cc1" stroke-width="2" stroke-dasharray="4 3" fill="none" />
+  <circle cx="375" cy="200" r="4" fill="#328cc1" />
+
+  <!-- ==================== PERSPECTIVE 2: Structural (Legs) ==================== -->
+  <g transform="translate(30, 260)" filter="url(#shadow)">
+    <!-- Card Frame -->
+    <rect x="0" y="0" width="280" height="150" rx="10" fill="url(#cardGrad1)" stroke="#0b3c5d" stroke-width="1.5" />
+    <rect x="0" y="0" width="280" height="32" rx="10" fill="#0b3c5d" />
+    <rect x="0" y="22" width="280" height="10" fill="#0b3c5d" />
+    <text x="14" y="22" fill="#ffffff" font-family="'Noto Sans TC', sans-serif" font-size="13" font-weight="700">
+      ② 摸到象腿：「像一根堅硬巨柱！」
+    </text>
+    
+    <!-- Body Content -->
+    <text x="14" y="55" fill="#0b3c5d" font-family="'Noto Sans TC', sans-serif" font-size="13" font-weight="700">
+      🏛️ 結構視角 (Structural Perspective)
+    </text>
+    <text x="14" y="76" fill="#475569" font-family="'Noto Sans TC', sans-serif" font-size="12">
+      • 關注：實體資料屬性、關聯、組合與靜態骨幹
+    </text>
+    <text x="14" y="96" fill="#475569" font-family="'Noto Sans TC', sans-serif" font-size="12">
+      • 盲點：看不出系統隨時間演進的動態行為
+    </text>
+    <rect x="14" y="112" width="252" height="24" rx="4" fill="#e2e8f0" />
+    <text x="140" y="128" fill="#1e293b" font-family="'Noto Sans TC', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">
+      對應 UML：類別圖 (Class Diagram)
+    </text>
+  </g>
+  <!-- Connector 2 -->
+  <path d="M 310,335 C 360,335 410,310 440,270" stroke="#0b3c5d" stroke-width="2" stroke-dasharray="4 3" fill="none" />
+  <circle cx="440" cy="270" r="4" fill="#0b3c5d" />
+
+  <!-- ==================== PERSPECTIVE 3: External / Context (Body) ==================== -->
+  <g transform="translate(650, 80)" filter="url(#shadow)">
+    <!-- Card Frame -->
+    <rect x="0" y="0" width="280" height="150" rx="10" fill="url(#cardGrad1)" stroke="#d97706" stroke-width="1.5" />
+    <rect x="0" y="0" width="280" height="32" rx="10" fill="#d97706" />
+    <rect x="0" y="22" width="280" height="10" fill="#d97706" />
+    <text x="14" y="22" fill="#ffffff" font-family="'Noto Sans TC', sans-serif" font-size="13" font-weight="700">
+      ③ 摸到象身：「像一面高大磚牆！」
+    </text>
+    
+    <!-- Body Content -->
+    <text x="14" y="55" fill="#92400e" font-family="'Noto Sans TC', sans-serif" font-size="13" font-weight="700">
+      🛡️ 外部視角 (External / Context)
+    </text>
+    <text x="14" y="76" fill="#475569" font-family="'Noto Sans TC', sans-serif" font-size="12">
+      • 關注：系統邊界、運行環境與外部第三方 API
+    </text>
+    <text x="14" y="96" fill="#475569" font-family="'Noto Sans TC', sans-serif" font-size="12">
+      • 盲點：無法得知內部核心邏輯如何拆解實現
+    </text>
+    <rect x="14" y="112" width="252" height="24" rx="4" fill="#fef3c7" />
+    <text x="140" y="128" fill="#b45309" font-family="'Noto Sans TC', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">
+      對應 UML：環境圖 (Context Diagram)
+    </text>
+  </g>
+  <!-- Connector 3 -->
+  <path d="M 650,150 C 600,150 560,170 520,180" stroke="#d97706" stroke-width="2" stroke-dasharray="4 3" fill="none" />
+  <circle cx="520" cy="180" r="4" fill="#d97706" />
+
+  <!-- ==================== PERSPECTIVE 4: Behavioral (Tail) ==================== -->
+  <g transform="translate(650, 260)" filter="url(#shadow)">
+    <!-- Card Frame -->
+    <rect x="0" y="0" width="280" height="150" rx="10" fill="url(#cardGrad1)" stroke="#059669" stroke-width="1.5" />
+    <rect x="0" y="0" width="280" height="32" rx="10" fill="#059669" />
+    <rect x="0" y="22" width="280" height="10" fill="#059669" />
+    <text x="14" y="22" fill="#ffffff" font-family="'Noto Sans TC', sans-serif" font-size="13" font-weight="700">
+      ④ 摸到象尾：「像一條擺動細繩！」
+    </text>
+    
+    <!-- Body Content -->
+    <text x="14" y="55" fill="#065f46" font-family="'Noto Sans TC', sans-serif" font-size="13" font-weight="700">
+      ⚡ 行為視角 (Behavioral Perspective)
+    </text>
+    <text x="14" y="76" fill="#475569" font-family="'Noto Sans TC', sans-serif" font-size="12">
+      • 關注：業務流程流轉、外在事件刺激與狀態轉換
+    </text>
+    <text x="14" y="96" fill="#475569" font-family="'Noto Sans TC', sans-serif" font-size="12">
+      • 盲點：無法單獨反映靜態物件職責與系統邊界
+    </text>
+    <rect x="14" y="112" width="252" height="24" rx="4" fill="#d1fae5" />
+    <text x="140" y="128" fill="#047857" font-family="'Noto Sans TC', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">
+      對應 UML：活動圖 / 狀態圖 (Activity / State)
+    </text>
+  </g>
+  <!-- Connector 4 -->
+  <path d="M 650,335 C 620,335 610,290 595,250" stroke="#059669" stroke-width="2" stroke-dasharray="4 3" fill="none" />
+  <circle cx="595" cy="250" r="4" fill="#059669" />
+
+  <!-- Bottom Takeaway Bar -->
+  <g transform="translate(180, 420)">
+    <rect x="0" y="0" width="600" height="30" rx="15" fill="#0b3c5d" />
+    <text x="300" y="20" fill="#f8fafc" font-family="'Noto Sans TC', sans-serif" font-size="12.5" font-weight="600" text-anchor="middle">
+      💡 結論：任何單一模型皆為「局部投影」；唯有綜合不同視角，才能完整還原軟體架構全貌！
+    </text>
+  </g>
+</svg>
