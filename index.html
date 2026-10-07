@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>薛念林教授 課程教學教材庫 | Course Materials Portal</title>
+  <meta name="description" content="薛念林教授開設之使用者體驗設計 (UX Design) 與軟體品質保證 (SQA) 課程教材、互動簡報與實作範例總入口">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --sqa-color: #0f766e;
+      --sqa-dark: #115e59;
+      --sqa-light: #f0fdfa;
+      --ux-color: #4f46e5;
+      --ux-dark: #4338ca;
+      --ux-light: #eef2ff;
+      --surface: #ffffff;
+      --background: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+      background-color: var(--background);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation */
+    .navbar {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+      background: #f1f5f9;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #09122C 0%, #172554 50%, #1e3a8a 100%);
+      color: white;
+      padding: 70px 24px 60px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .badge-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Course Cards Container */
+    .container {
+      max-width: 1140px;
+      margin: -40px auto 60px auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 10;
+      flex: 1;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 28px;
+    }
+
+    .course-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .course-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+      border-color: #cbd5e1;
+    }
+
+    .card-banner {
+      padding: 24px 28px;
+      color: white;
+      position: relative;
+    }
+
+    .banner-ux {
+      background: linear-gradient(135deg, #3730a3 0%, #4f46e5 100%);
+    }
+
+    .banner-sqa {
+      background: linear-gradient(135deg, #115e59 0%, #0f766e 100%);
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .card-icon {
+      font-size: 1.75rem;
+    }
+
+    .card-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+
+    .card-body {
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      flex: 1;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .topics-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .topic-pill {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: #334155;
+    }
+
+    .card-actions {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-main {
+      flex: 1;
+      text-align: center;
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-ux {
+      background: var(--ux-color);
+      color: white;
+    }
+
+    .btn-ux:hover {
+      background: var(--ux-dark);
+    }
+
+    .btn-sqa {
+      background: var(--sqa-color);
+      color: white;
+    }
+
+    .btn-sqa:hover {
+      background: var(--sqa-dark);
+    }
+
+    .btn-secondary {
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+
+    /* Footer */
+    footer {
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar">
+    <a href="./" class="brand">
+      <div class="brand-icon">T</div>
+      <span class="brand-title">薛念林教授 課程教學教材庫</span>
+    </a>
+    <div class="nav-links">
+      <a href="./ux/" class="nav-link">🎨 UX Design</a>
+      <a href="./sqa/" class="nav-link">🛡️ SQA</a>
+      <a href="https://github.com/nlhsueh/teach" target="_blank" rel="noopener" class="nav-link">GitHub</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="badge-hero">
+      <span>🎓</span>
+      <span>114 學年度 大學部與研究所課程門戶</span>
+    </div>
+    <h1>探索現代化軟體設計與工程品質</h1>
+    <p>提供完整且即時更新的投影片簡報、手冊講義、互動自我測驗與上機實作專案</p>
+  </header>
+
+  <!-- Courses Container -->
+  <main class="container">
+    <div class="courses-grid">
+
+      <!-- UX Design Course Card -->
+      <article class="course-card">
+        <div class="card-banner banner-ux">
+          <div class="card-meta">
+            <span class="card-tag">UX & AI 設計</span>
+            <span class="card-icon">🎨</span>
+          </div>
+          <h2 class="card-title">使用者體驗設計</h2>
+          <div class="card-subtitle">User Experience Design (UX)</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">
+            探討人機互動核心哲理，結合 Nielsen 十大啟發式原則與 Tidwell 介面模式。並導入現代化 AI 協作思維（AI for UX / UX for AI），帶領學生實戰打造直覺、優雅的互動系統。
+          </p>
+          <div class="topics-list">
+            <span class="topic-pill">Nielsen 10 原則</span>
+            <span class="topic-pill">Tidwell 模式</span>
+            <span class="topic-pill">AI 原型設計</span>
+            <span class="topic-pill">即時隨堂測驗</span>
+          </div>
+          <div class="card-actions">
+            <a href="./ux/" class="btn-main btn-ux">
+              <span>進入 UX 課程門戶</span>
+              <span>→</span>
+            </a>
+            <a href="./TeachUX/index.html" class="btn-secondary" title="直接前往教材目錄">教材目錄</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SQA Course Card -->
+      <article class="course-card">
+        <div class="card-banner banner-sqa">
+          <div class="card-meta">
+            <span class="card-tag">測試與軟體品管</span>
+            <span class="card-icon">🛡️</span>
+          </div>
+          <h2 class="card-title">軟體品質保證</h2>
+          <div class="card-subtitle">Software Quality Assurance (SQA)</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">
+            從 Bug 因果鏈與契約式設計（DbC）出發，全面覆蓋黑箱測試、白箱涵蓋度、整合測試、防禦性編程與 Maven 自動化測試。搭配完整 Java Lab 上機實機演練。
+          </p>
+          <div class="topics-list">
+            <span class="topic-pill">黑箱 / 白箱測試</span>
+            <span class="topic-pill">Java 21 / Maven</span>
+            <span class="topic-pill">JUnit & Mockito</span>
+            <span class="topic-pill">上機實習 (LabDemo)</span>
+          </div>
+          <div class="card-actions">
+            <a href="./sqa/" class="btn-main btn-sqa">
+              <span>進入 SQA 課程門戶</span>
+              <span>→</span>
+            </a>
+            <a href="./TeachSQA/index.html" class="btn-secondary" title="直接前往教材目錄">教材目錄</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      &copy; 薛念林教授 (Prof. Nien-Lin Hsueh) | 逢甲大學 資訊工程學系
+    </p>
+    <p style="margin-top: 6px; font-size: 0.82rem;">
+      教材原始碼託管於 <a href="https://github.com/nlhsueh/teach" target="_blank" rel="noopener">GitHub (nlhsueh/teach)</a>
+      &bull; 透過 Marp 與 GitHub Pages 技術自動構建
+    </p>
+  </footer>
+
+</body>
+
+</html>

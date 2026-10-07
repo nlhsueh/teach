@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正在轉導至課程教材 | 薛念林教授教學教材庫</title>
+  <script>
+    (function () {
+      var fullPath = window.location.pathname;
+      var path = fullPath.toLowerCase();
+      var searchAndHash = window.location.search + window.location.hash;
+
+      // Extract repository base prefix if hosted on GitHub Pages (e.g. /teach)
+      var repoPrefix = '';
+      if (path.indexOf('/teach') === 0) {
+        repoPrefix = '/teach';
+      }
+
+      // 檢查是否為 SQA 相關路徑
+      if (path.match(/\/sqa(\/|$)/)) {
+        var sub = fullPath.replace(/.*\/sqa\/?/i, '');
+        var target = repoPrefix + '/TeachSQA/' + (sub ? sub : 'index.html') + searchAndHash;
+        window.location.replace(target);
+        return;
+      }
+
+      // 檢查是否為 UX 相關路徑
+      if (path.match(/\/ux(\/|$)/)) {
+        var sub = fullPath.replace(/.*\/ux\/?/i, '');
+        var target = repoPrefix + '/TeachUX/' + (sub ? sub : 'index.html') + searchAndHash;
+        window.location.replace(target);
+        return;
+      }
+
+      // 預設跳轉回教材門戶首頁
+      window.location.replace((repoPrefix || '') + '/index.html' + searchAndHash);
+    })();
+  </script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+    .card {
+      background: #ffffff;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+      max-width: 480px;
+      width: 90%;
+    }
+    h2 {
+      font-size: 1.3rem;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .btn {
+      display: block;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+    .btn-ux {
+      background: #2563eb;
+      color: #ffffff;
+    }
+    .btn-ux:hover {
+      background: #1d4ed8;
+    }
+    .btn-sqa {
+      background: #0f766e;
+      color: #ffffff;
+    }
+    .btn-sqa:hover {
+      background: #115e59;
+    }
+    .btn-home {
+      background: #f1f5f9;
+      color: #475569;
+    }
+    .btn-home:hover {
+      background: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🧭</div>
+    <h2>正在為您轉導至教材頁面...</h2>
+    <p>如果瀏覽器未能在數秒內自動跳轉，請點擊下方入口進入課程：</p>
+    <div class="links">
+      <a href="./ux/" class="btn btn-ux">🎨 使用者體驗設計 (UX Design) 入口</a>
+      <a href="./sqa/" class="btn btn-sqa">🛡️ 軟體品質保證 (SQA) 入口</a>
+      <a href="./index.html" class="btn btn-home">🏠 回教學門戶總首頁</a>
+    </div>
+  </div>
+</body>
+</html>
