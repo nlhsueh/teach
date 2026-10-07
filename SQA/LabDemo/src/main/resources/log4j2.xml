@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  status="WARN" 表示 Log4j2 框架本身的內部初始化訊息只在 WARN/ERROR 時輸出，避免干擾應用程式
+-->
 <Configuration status="WARN">
     <Appenders>
+        <!-- 1. 控制台輸出：開發階段肉眼即時觀察 -->
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} %X - %msg%n"/>
         </Console>
 
+        <!-- 2. 本地一般檔案輸出：持續記錄 -->
         <File name="FileAppender" fileName="logs/app.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} %X - %msg%n"/>
         </File>
     </Appenders>
 
     <Loggers>
+        <!-- 全域大保底規則：未特別指定類別一律遵循 INFO 等級 -->
         <Root level="INFO">
             <AppenderRef ref="ConsoleAppender"/>
             <AppenderRef ref="FileAppender"/>
         </Root>
+
+        <!-- 
+          氣泡排序演算法展示專屬規則：
+          - level="INFO"：標準模式（只看開始、耗時度量與結果）
+          - 若想在除錯時觀察每輪排序中繼狀態，可隨時改為 level="DEBUG"
+          - additivity="false"：關鍵設定！避免日誌向上交給 Root 再次輸出而重複印兩次
+        -->
+        <Logger name="u02_robust.log.BubbleSortLoggingDemo" level="INFO" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
 
         <Logger name="demo.log4j.OrderValidator" level="INFO" additivity="false">
             <AppenderRef ref="FileAppender"/>
@@ -22,10 +39,6 @@
 
         <Logger name="demo.log4j.OrderProcessor" level="WARN" additivity="false">
             <AppenderRef ref="FileAppender"/>
-            <AppenderRef ref="ConsoleAppender"/>
-        </Logger>
-
-        <Logger name="a.b.c" level="INFO" additivity="false">
             <AppenderRef ref="ConsoleAppender"/>
         </Logger>
     </Loggers>

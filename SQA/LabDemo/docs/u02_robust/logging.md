@@ -79,56 +79,110 @@ public class LoggingExample {
 
 #### **第二步：撰寫 Log4j 2 配置文件 (log4j2.xml)**
 
-Log4j 2 啟動時會自動在 **Classpath** 中尋找名為 `log4j2.xml`、`log4j2.json`、`log4j2.yaml` 或 `log4j2.properties` 的文件。
+Log4j 2 啟動時會自動在 **Classpath** 中尋找名為 `log4j2.xml` 的檔案（位於 Maven 專案的 **`src/main/resources`** 目錄下）。
 
-在 Maven 專案中，通常是將配置文件放在 **`src/main/resources`** 目錄下。
+許多初學者覺得 XML 標籤很多、難以理解，但只要抓住**「郵件物流系統」**的白話比喻，整個架構其實非常單純直觀：
 
-以下是一個簡單的 **`log4j2.xml`** 範例，它會將 `INFO` 級別及以上的日誌輸出到控制台 (`Console`) 和一個日誌文件 (`File`)：
+```
++--------------------------------------------------------------------------+
+|  [Java 程式碼發出日誌]  logger.info("排序開始")                               |
++--------------------------------------------------------------------------+
+                                    │
+                                    ▼
+       ┌────────────────────────────────────────────────────────┐
+       │ 1. <Loggers> (安檢門檻)                                  │
+       │    這行日誌是誰發的？等級夠不夠高？達標才放行！                 │
+       └────────────────────────────────────────────────────────┘
+                                    │ (放行通過)
+                                    ▼
+       ┌────────────────────────────────────────────────────────┐
+       │ 2. <Appenders> (郵差與郵筒)                              │
+       │    - 寄到哪裡去？ (Console 螢幕 / 檔案 / 遠端伺服器)       │
+       │    - 信封格式長怎樣？ (<PatternLayout> 時間、等級、內容)   │
+       └────────────────────────────────────────────────────────┘
+```
+
+以下是專案中標準的 **`log4j2.xml`** 範例：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Appenders>
+        <!-- 終點 1：控制台輸出 (終端機螢幕) -->
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} %X - %msg%n"/>
         </Console>
         
+        <!-- 終點 2：持久化檔案輸出 -->
         <File name="FileAppender" fileName="logs/app.log">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} %X - %msg%n"/>
         </File>
     </Appenders>
     
     <Loggers>
-        <Root level="info">
+        <!-- 全域大保底 (Root)：未特別指定的類別一律遵循此門檻 (INFO) -->
+        <Root level="INFO">
             <AppenderRef ref="ConsoleAppender"/>
             <AppenderRef ref="FileAppender"/>
         </Root>
         
-        <Logger name="com.yourpackage.dao" level="debug" additivity="false">
+        <!-- 針對氣泡排序類別設置專屬規則 -->
+        <Logger name="u02_robust.log.BubbleSortLoggingDemo" level="DEBUG" additivity="false">
+             <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+
+        <!-- 針對特定業務模組拉高門檻為 WARN (降噪) -->
+        <Logger name="demo.log4j.OrderProcessor" level="WARN" additivity="false">
              <AppenderRef ref="ConsoleAppender"/>
         </Logger>
     </Loggers>
 </Configuration>
 ```
 
-**配置說明**
+---
 
-1.  `Appenders` 設定所有輸出，`Loggers` 設定所有對象，透過 `AppenderRef` 來設定不同 `Logger` 採用不同的 `Appender`。
-2.  **`<Configuration status="WARN">`**：設定 Log4j 內部日誌的級別。`WARN` 表示只輸出 Log4j 框架本身的警告及錯誤訊息。級別目的與用途:
-    * `TRACE`: 最詳細的日誌，用於追蹤程式碼的細微流程。
-    * `DEBUG`: 僅供開發人員調試，顯示變數狀態和流程細節。
-    * `INFO`: 重要的里程碑事件，例如應用程式啟動、請求開始/結束。
-    * `WARN`: 潛在的問題或非預期狀況，但應用程式可以從中恢復。
-    * `ERROR`: 執行期錯誤，通常是例外被捕捉，影響到部分功能。
-    * `FATAL`: 致命錯誤，導致應用程式無法繼續運作而必須關閉。
-3.  **`<Appenders>`**：定義日誌輸出的目的地。
-      * `ConsoleAppender`: 輸出到控制台 (`SYSTEM_OUT`)。
-      * `FileAppender`: 輸出到指定路徑的檔案 (`logs/app.log`)。
-      * `PatternLayout`: 定義日誌的格式。例如 `%d` 是日期，`%-5level` 是日誌級別，`%msg%n` 是日誌內容與換行。
-4.  **`<Loggers>`**：定義日誌記錄器。
-    * `Logger` 這一行: 「針對所有 `com.yourpackage.dao` 套件下的程式碼，請確保記錄所有 `DEBUG` 級別或更高的日誌，並將它們輸出到`控制台`。請不要將這些日誌事件傳遞給 Root Logger 或任何其他父級紀錄器，以避免重複記錄。(`additivity="false"`)」
-    * **`<Root level="info">`**：這是預設的根紀錄器。將日誌級別設定為 `info`，表示 `info`、`warn`、`error`、`fatal` 級別的日誌都會被記錄。
-    * **`<AppenderRef ref="...">`**：將 Appenders 綁定到 Logger 上。
+### **核心標籤白話通俗解讀**
+
+#### 1. `<Appenders>`：信件送去哪？信封格式長怎樣？
+* **`<Console>`**：直接印在終端機或 IDE 的 Run 視窗上，方便開發者肉眼觀看。
+* **`<File>`**：持續寫入本地檔案（如 `logs/app.log`），關閉程式後紀錄依然存在。
+* **`<RollingFile>`**（生產必備）：自動依「日期」或「容量大小」滾動封存並自動壓縮成 `.log.gz`，避免單一檔案無限膨脹塞爆硬碟。
+* **`<PatternLayout>`**：自訂每一行日誌的輸出格式排版：
+  | 符號標籤 | 代表意義 | 範例輸出 |
+  | :--- | :--- | :--- |
+  | `%d{HH:mm:ss.SSS}` | 毫秒級時間戳記 | `15:10:16.790` |
+  | `[%t]` | 當前執行緒名稱 (Thread) | `[main]` |
+  | `%-5level` | 日誌等級（靠左對齊，佔 5 格寬） | `INFO `, `DEBUG`, `ERROR` |
+  | `%logger{36}` | 輸出日誌的 Class 類別縮寫 | `u02_robust.log.BubbleSortLoggingDemo` |
+  | `%X` | **MDC 上下文標籤**（分散式追蹤必備） | `{operator=Prof.Hsueh, taskId=TASK-01}` |
+  | `%msg` | 程式碼中真正傳入的訊息本文 | `開始執行氣泡排序演算法...` |
+  | `%n` | 跨平台換行符號 | `\n` |
+
+#### 2. `<Loggers>` 與 `<Root>`：誰能發送？審查門檻多高？
+* **`<Root level="INFO">`**：
+  - **白話：「全域總管大保底」**。若程式碼中的類別沒有特別在下方配置個別 `<Logger>`，就一律遵循 Root 的等級門檻（只有 `INFO`、`WARN`、`ERROR`、`FATAL` 會被記錄，`DEBUG` 與 `TRACE` 會被默默丟棄）。
+* **`<Logger name="..." level="..." additivity="false">`**：
+  - **白話：「特權貴賓通行道」**。針對特定的 Package 或 Class 指定更寬鬆（如 `DEBUG`）或更嚴格（如 `WARN`）的放行門檻。
+
+#### 3. ⚠️ 必考避坑點：什麼是 `additivity="false"`？
+* **初學者最常見的困惑**：*「為什麼我的控制台每行日誌都被重複印了兩遍？？」*
+* **原因剖析**：
+  - Log4j 2 預設採取「事件向上傳播（Bubbling）」機制。如果沒有寫 `additivity="false"`（預設為 `true`），當自訂 Logger 印完之後，會將這條日誌**再往上傳遞給它的父層（Root Logger）**，導致 Root 的 Appender 又印了一次！
+* **黃金口訣**：
+  - **「自訂 Logger 只要有綁定自己的 Appender，一律務必加上 `additivity="false"`！」**（白話：*到我這裡處理完就結案，別再往上呈報了！*）
+
+---
+
+### **企業級 log4j2.xml 設定策略指引**
+
+| 維度觀點 | 🛠️ 開發除錯階段 (Dev) | 🚀 正式生產環境 (Prod) |
+| :--- | :--- | :--- |
+| **核心目標** | 追求**透明度**，方便肉眼即時追蹤 | 追求**高吞吐量**、**磁碟防爆**與**問題可追溯** |
+| **Root 等級門檻** | `DEBUG`（全景可視） | `INFO` 或 `WARN`（杜絕雜訊干擾） |
+| **終端機輸出** | 開啟 `ConsoleAppender` | **嚴格關閉或僅留 WARN/ERROR**（終端機同步 I/O 會嚴重阻塞在高並發線程） |
+| **檔案輸出策略** | 簡單的單一 `FileAppender` 即可 | 必須使用 **`RollingRandomAccessFile`**（非同步高效緩衝寫入） |
+| **磁碟容量防爆** | 無特殊要求 | **日誌輪轉策略**：每天切檔自動壓縮（`.log.gz`），單檔上限 50MB，設定最多保留 30 天，逾期自動清理！ |
+| **第三方函式庫** | 保持預設 | **降噪處置**：將 Spring、Hibernate、Netty 等框架 logger 明確設為 `WARN` |
 
 #### **第三步：在程式碼中使用 Log4j**
 
@@ -256,6 +310,49 @@ public class LoggingExample {
 * 現代企業級 `Log4j 2` / `SLF4J` 實務：
   - 參數化日誌 (`logger.info("使用者 {} 付款", user)`)。
   - 多等級策略與連線異常記錄。
+
+### 示範 03: [BubbleSortLoggingDemo.java](../../src/main/java/u02_robust/log/BubbleSortLoggingDemo.java) (★ 重點推薦)
+* **演算法生命週期日誌與 MDC 鏈路追蹤實戰**：
+  - **日誌等級分工**：
+    - `TRACE`：每一次相鄰元素比對與數值交換細節。
+    - `DEBUG`：每輪 pass 完成狀態與提早結束旗標 (`earlyTerminated`)。
+    - `INFO`：排序開始（陣列長度、複雜度）與完成度量（耗時 ms、總比對與交換次數）。
+    - `WARN`：輸入邊界警訊（長度 $\le 1$ 無須排序直接返回）。
+    - `ERROR`：後置條件合約檢查失敗，記錄並傳入 `Throwable` 印出完整 Call Stack。
+  - **效能防衛 (Guard Statement)**：
+    ```java
+    // 只有在 DEBUG 等級開啟時，才執行昂貴的 Arrays.toString(data)
+    if (logger.isDebugEnabled()) {
+        logger.debug("第 {} 輪排序完成 | 當前陣列: {}", pass + 1, Arrays.toString(data));
+    }
+    ```
+  - **MDC 任務鏈路追蹤 (Mapped Diagnostic Context)**：
+    ```java
+    try {
+        MDC.put("taskId", taskId);
+        MDC.put("operator", operator);
+        logger.info("開始執行排序任務"); // 日誌自動附帶 {operator=..., taskId=...}
+        sortWithLogging(data);
+    } finally {
+        MDC.clear(); // ⚠️ 務必在 finally 清理，避免線程池污染
+    }
+    ```
+  - **在 `log4j2.xml` 中切換模式**：
+    ```xml
+    <!-- 開發除錯時設為 DEBUG 觀察中繼步驟；生產環境改回 INFO 僅保留度量 -->
+    <Logger name="u02_robust.log.BubbleSortLoggingDemo" level="DEBUG" additivity="false">
+        <AppenderRef ref="ConsoleAppender"/>
+        <AppenderRef ref="FileAppender"/>
+    </Logger>
+    ```
+  - **執行與測試指令**：
+    ```bash
+    # 執行展示主程式
+    mvn exec:java -Dexec.mainClass="u02_robust.log.BubbleSortLoggingDemo" -q
+
+    # 執行單元測試
+    mvn test -Dtest=BubbleSortLoggingDemoTest
+    ```
 
 ---
 

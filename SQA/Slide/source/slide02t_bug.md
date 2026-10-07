@@ -1372,6 +1372,96 @@ public class BankAccount {
 
 ---
 
+## 2.5.4 白話解密 log4j2.xml：三大核心元件生活比喻
+
+<div class="card-deck">
+
+> 💡 不懂 XML 語法沒關係！用「郵局送信體系」的白話比喻，一眼看懂三大核心元件。
+
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+
+### 📮 1. Appenders
+- **白話意義**：
+  - **「信件要送到哪裡？信封格式長怎樣？」**
+- **三大常用終點**：
+  - `Console`：螢幕控制台
+  - `File`：固定單一文字檔案
+  - `RollingFile`：按日期/容量自動封存壓縮 (`.gz`)
+- **PatternLayout 信封格式**：
+  - `%d` 時間、`%t` 執行緒、`%-5level` 等級、`%logger` 類別、`%X` MDC 標籤、`%msg` 內容
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 👮 2. Loggers
+- **白話意義**：
+  - **「誰要寄信？審查門檻多高？」**
+- **套件精準狙擊**：
+  - 為特定 Package 定義專屬規則（如演算法套件放行 `DEBUG`，第三方函式庫拉高至 `WARN` 降噪）。
+- **⚠️ additivity="false"**：
+  - **白話：「到我為止，別再往上呈報！」**
+  - 預設 `true` 會交給父層（Root）再印一次，導致**同一行訊息重複印兩次**！
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 👑 3. Root Logger
+- **白話意義**：
+  - **「全域總管大保底」**
+- **預設兜底防線**：
+  - 當某個類別沒有在 `<Loggers>` 裡特別設專門規則，就一律走 Root 的門檻與 Appender。
+- **標準設定範例**：
+  - `<Root level="INFO">`，預設只放行重要業務節點與錯誤。
+
+</div>
+</div>
+</div>
+
+---
+
+## 2.5.4 log4j2.xml 實務設定策略指引 (Best Practices)
+
+<div class="card-deck">
+
+* > 💡 軟體在不同生命週期對日誌的需求截然不同：開發求「透明度」，生產求「高吞吐與不爆碟」。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🛠️ 開發環境 (Dev) 設定策略
+- **核心目標：即時肉眼排查**
+  - **Root 等級**：設為 `DEBUG`，讓每一次運算中繼狀態無所遁形。
+  - **輸出通道**：啟用 `ConsoleAppender`，直接在 IDE 終端機即時除錯。
+  - **BubbleSort 實例**：
+    ```xml
+    <!-- 開發階段：專門放行氣泡排序演算法 DEBUG -->
+    <Logger name="u02_robust.log.BubbleSortLoggingDemo" 
+            level="DEBUG" additivity="false">
+        <AppenderRef ref="ConsoleAppender"/>
+    </Logger>
+    ```
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🚀 生產環境 (Prod) 設定策略
+- **核心目標：防阻塞、降雜訊、防爆碟**
+  - **關閉同步 Console**：終端機 I/O 會嚴重阻塞並發；改用 `RollingRandomAccessFile`。
+  - **日誌自動輪轉 (Rolling)**：
+    - 設定容量上限（如單檔 50MB）與時間（如每日壓縮為 `.log.gz`），並配置 `DefaultRolloverStrategy max="30"` 自動刪除 30 天前舊檔！
+  - **第三方套件降噪**：
+    ```xml
+    <!-- 抑制 Spring/Hibernate 雜訊，僅報警訊 -->
+    <Logger name="org.springframework" level="WARN"/>
+    ```
+
+</div>
+</div>
+</div>
+
+---
+
 <!-- _class: title-image-slide -->
 ## 2.5.5 防禦三大防線漫畫圖解：斷言、例外與日誌
 
