@@ -31,28 +31,30 @@ footer: 'Ch05 黑箱測試'
 
 ### 🧭 輸入域劃分與經典方法
 - **5.1 黑箱測試概念與 JUnit 5 斷言**：
-  - 黑箱測試概念架構：輸入、受測系統 (SUT) 與輸出驗證
-  - JUnit 5 斷言陷阱：`assertEquals` (內容) vs. `assertSame` (參照)
+  - 黑箱架構、Glenford Myers 測試哲學、`assertEquals` vs. `assertSame`
 - **5.2 邊界值分析 (Boundary Value Analysis, BVA)**：
-  - 「錯誤隱藏在角落」：單一錯誤假設與邊界點選取
-  - 獨立型 (4n+1 / 6n+1) vs. 非獨立最壞情況 (5ⁿ / 7ⁿ)
+  - 「錯誤隱藏在角落」、單一錯誤假設、獨立 (4n+1/6n+1) 與最壞情況
 - **5.3 等價類分割測試 (Equivalence Partitioning, EP)**：
-  - 有效等價類與無效等價類；輸入劃分與輸出反推
-  - 弱一般/弱強固 (Weak) vs. 強一般/強強固 (Strong 笛卡爾積)
+  - 有效/無效等價類、弱/強涵蓋、**單一無效原則與錯誤遮蔽 (Masking)**
+- **5.4 全成對組合測試 (Pairwise / All-Pairs)**：
+  - 2-Way 交互作用（NIST 研究）、正交表 (OATS) vs. Pairwise (PICT)
+- **5.5 案例優化與分類樹方法 (CTM)**：
+  - 案例精實化四大策略、Daimler-Benz 分類樹與測試矩陣
 
 </div>
 <div>
 
-### 📐 組合優化與前沿測試
-- **5.4 全成對組合測試 (Pairwise / All-Pairs)**：
-  - 2-Way 交互作用理論（NIST 研究）與交錯法推導
-  - 正交表 (OATS) vs. Pairwise 工具 (PICT / ACTS)
-- **5.5 測試案例優化與 5.6 決策表測試 (CAR)**：
-  - 條件樁、動作樁、規則展開與布林邏輯規則化簡
+### 📐 邏輯、情境與前沿測試
+- **5.6 因果圖法與決策表測試 (Cause-Effect & Decision Table)**：
+  - 布林邏輯網絡、5 大約束條件 ($E, I, O, R, M$)、CAR 表規則化簡
 - **5.7 狀態轉換測試 (State Transition Testing)**：
-  - 事件驅動狀態機、狀態覆蓋 vs. 轉移覆蓋、物件狀態斷言
+  - 狀態機模型、狀態覆蓋 vs. 轉移覆蓋 (0-switch)、Stack 狀態斷言
 - **5.8 屬性基礎測試 (Property-Based Testing, PBT)**：
-  - 典範轉移：數學不變量、jqwik 自動隨機測資與測資收縮 (Shrinking)
+  - 數學不變量規格、jqwik 隨機測資與極簡收縮 (Shrinking)
+- **5.9 使用案例與情境測試 (Use Case Testing)**：
+  - 端對端黑箱、基本流 (Happy Path)、替代流與例外流測試矩陣
+- **5.10 經驗基礎測試：錯誤猜測與探索性測試**：
+  - 缺陷分類與防禦清單、探索性測試 (ET)、任務段管理 (SBTM)
 
 </div>
 </div>
@@ -580,6 +582,41 @@ footer: 'Ch05 黑箱測試'
 
 <!-- header: '5.3 等價類分割測試 (EP)' -->
 
+## 實務關鍵法則：單一無效原則與錯誤遮蔽 (Fault Masking)
+
+<div class="card-deck">
+
+> 💡 設計無效等價類測試案例時的鐵律：**每次測試只允許包含一個無效等價類，其餘欄位必須全部合法！**
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🎭 為什麼禁止多個無效值同時輸入？
+- **錯誤遮蔽效應 (Fault Masking Effect)**：
+  - 現代軟體通常採取「防禦性早退 (Early Exit)」或短路評估。
+  - 當系統遇到第一個非法欄位時，往往立即中斷執行或拋出例外，不再檢查後續欄位。
+- **後果：缺陷被遮蔽隱藏**：
+  - 若「密碼過短」與「信箱格式錯誤」同時輸入，程式在檢查密碼時拋錯中斷，後面的「信箱驗證 Bug」就永遠無法被觸發！
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 📐 有效類 vs. 無效類測試策略對比
+- **有效等價類 (Valid Classes) —— 盡量合併**：
+  - 目標是驗證系統的正常運作路徑。
+  - 每個測試案例應盡可能**涵蓋多個尚未測試的有效等價類**，以最小案例數獲得最高覆蓋。
+- **無效等價類 (Invalid Classes) —— 嚴格隔離**：
+  - 目標是驗證各別錯誤防護與例外處理邏輯。
+  - 每個測試案例**只能包含一個無效等價類**，其餘輸入條件一律設為已知合法值（單一缺陷原則）。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.3 等價類分割測試 (EP)' -->
+
 ## 概念核對問答 (CCQ 3)
 
 <div class="ccq-columns">
@@ -792,7 +829,42 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '5.5 案例優化與 5.6 決策表測試' -->
+<!-- header: '5.5 案例優化與分類樹方法 (CTM)' -->
+
+## 工業界視覺化等價組合：分類樹方法 (CTM)
+
+<div class="card-deck">
+
+> 💡 Classification Tree Method (CTM) 由 Daimler-Benz 研發，現為 ISO/IEC/IEEE 29119-4 認可的圖形化黑箱測試設計標準。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🌳 1. 分類樹架構 (Classification Tree)
+- **分類 (Classifications)**：
+  - 將輸入域依據測試觀點分解為若干互斥維度（例如：身分、支付方式、訂單金額）。
+- **類別 (Classes)**：
+  - 每個分類維度下，劃分出互斥且完整的等價子集（例如：VIP / 一般會員 / 訪客）。
+- **視覺化階層分解**：
+  - 支援子分類（Sub-classifications），可清晰呈現複雜前置依賴關係。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 📊 2. 測試規格組合表格 (Combination Table)
+- **下方規格矩陣 (Matrix)**：
+  - 表格的欄對應樹狀葉節點（類別），每一列代表一個具體的測試案例（Test Case）。
+- **打點勾選設計**：
+  - 測試人員只需在每一列的各分類中**勾選一個代表類別**（落實弱涵蓋、強涵蓋或 Pairwise）。
+- **實務優勢**：直觀易讀、自動防漏、極利於向利害關係人與稽核員審查測試完整性。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.5 案例優化與分類樹方法 (CTM)' -->
 
 ## 概念核對問答 (CCQ 5)
 
@@ -822,7 +894,95 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '5.5 案例優化與 5.6 決策表測試' -->
+<!-- _class: lead -->
+<!-- header: '5.6 因果圖與決策表測試' -->
+
+# **5.6 因果圖與決策表測試**
+
+> 「從規格描述的邏輯網絡中，  
+> 理清所有原因、結果與制約條件，系統化導出精準決策。」
+
+---
+
+<!-- header: '5.6 因果圖與決策表測試' -->
+
+## 邏輯相依規格建模：因果圖法 (Cause-Effect Graphing)
+
+<div class="card-deck">
+
+> 💡 Glenford Myers 提出因果圖法：將自然語言規格轉譯為布林邏輯電路網絡，作為推導決策表的正規工具。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### ⚡ 核心構成要件
+- **原因 (Causes, $C_i$)**：
+  - 系統的輸入條件或前置狀態（取值 0 或 1）。
+- **結果 (Effects, $E_j$)**：
+  - 系統產生的輸出動作或狀態改變（取值 0 或 1）。
+- **4 大基本布林邏輯關係**：
+  - **恆等 (Identity)**：若 $C_1=1$ 則 $E_1=1$；否則 $E_1=0$。
+  - **非 (NOT, $\sim$)**：若 $C_1=1$ 則 $E_1=0$；否則 $E_1=1$。
+  - **或 (OR, $\lor$)**：若任一 $C_i=1$ 則 $E=1$。
+  - **與 (AND, $\land$)**：若所有 $C_i=1$ 則 $E=1$。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🎯 因果圖 5 大約束條件 (Constraints)
+- **輸入端約束 (Causes Constraints)**：
+  - **$E$ (Exclusive 互斥)**：最多只有一個為 1（$C_1 + C_2 \le 1$）。
+  - **$I$ (Inclusive 包含)**：至少有一個為 1（$C_1 + C_2 \ge 1$）。
+  - **$O$ (One and only one 唯一)**：恰好只有一個為 1（$C_1 + C_2 = 1$）。
+  - **$R$ (Requires 要求)**：若 $C_1=1$，則 $C_2$ 必須為 1（$C_1 \implies C_2$）。
+- **輸出端約束 (Effects Constraints)**：
+  - **$M$ (Masks 遮蔽)**：若 $E_1=1$，則 $E_2$ 強制被抑制為 0。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.6 因果圖與決策表測試' -->
+
+## 從因果圖到決策表 (CAR) 的轉換流程
+
+<div class="card-deck">
+
+> 💡 因果圖是橋樑，決策表是成果：四步驟消除規格盲區與邏輯矛盾。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🔄 系統化 4 步轉換程序
+- **Step 1：拆解因果因子**：
+  - 分析規格，為每個輸入條件與輸出動作編號命名（$C_1..C_n, E_1..E_m$）。
+- **Step 2：繪製邏輯網絡與標註約束**：
+  - 用邏輯閘連接原因與結果，加上 $E, I, O, R, M$ 約束。
+- **Step 3：由結果倒推條件組合**：
+  - 針對每個輸出 $E_j=1$ 的狀態，倒推需要哪些輸入組合；排除違反約束的非法組合。
+- **Step 4：生成並化簡決策表 (CAR)**：
+  - 將合法因果組合填入決策表作為規則（Rules），合併等效條件項。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 💎 因果圖法核心價值
+- **打破自然語言模糊性**：
+  - 規格書中常見的「如果...而且...除非...否則...」常常語意含混，因果圖能第一時間揪出規格矛盾或遺漏。
+- **防止無效組合爆炸**：
+  - 藉由互斥 ($E$) 與唯一 ($O$) 約束，在初期就剪除數十種不可能發生的輸入組合，大幅減輕後續測試成本。
+- **全自動化生成潛力**：
+  - 現代 SAT/SMT Solver 可直接將因果圖轉換為最簡可滿足解與測試案例。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.6 因果圖與決策表測試' -->
 
 ## 決策表測試 (Decision Table Testing) 架構
 
@@ -859,7 +1019,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '5.5 案例優化與 5.6 決策表測試' -->
+<!-- header: '5.6 因果圖與決策表測試' -->
 
 ## 三角形判斷決策表 (CAR Table) 實戰
 
@@ -884,7 +1044,7 @@ footer: 'Ch05 黑箱測試'
 
 ---
 
-<!-- header: '5.5 案例優化與 5.6 決策表測試' -->
+<!-- header: '5.6 因果圖與決策表測試' -->
 
 ## 概念核對問答 (CCQ 6)
 
@@ -1191,7 +1351,149 @@ public class AdditionProperties {
 
 ---
 
-<!-- header: '本章重點導讀' -->
+<!-- _class: lead -->
+<!-- header: '5.9 使用案例與情境測試' -->
+
+# **5.9 使用案例與情境測試**
+
+> 「跳出單一欄位與單元函數的微觀視角，  
+> 從真實使用者的業務場景，驗證端對端 (End-to-End) 系統行為。」
+
+---
+
+<!-- header: '5.9 使用案例與情境測試' -->
+
+## 系統層級黑箱核心：使用案例測試 (Use Case Testing)
+
+<div class="card-deck">
+
+> 💡 ISTQB 國際認證五大黑箱技術之一：基於需求規格中的 Use Case / User Story，驗證跨元件的端對端業務流。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🛣️ 三大關鍵業務流程路徑
+- **基本流 (Basic Flow / Happy Path)**：
+  - 系統在最理想、無任何錯誤狀況下，使用者順利達成目標的主成功流程。
+- **替代流 (Alternative Flows)**：
+  - 使用者達成相同目標的合法次要分支路徑（如：使用折價券付款、更換取件超商）。
+- **例外流 (Exception Flows)**：
+  - 發生錯誤或中斷導致目標無法達成的防禦路徑（如：卡片過期、庫存不足、網路斷線）。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🎯 覆蓋準則與測試設計原則
+- **1. 最低覆蓋 (Minimum)**：
+  - 必須至少設計 1 個測試案例完整執行「基本流 (Happy Path)」。
+- **2. 完整業務覆蓋 (Full Coverage)**：
+  - 每個替代流與每個例外流，均至少有 1 個測試案例走過。
+- **3. 組合情境測試 (Scenario Testing)**：
+  - 將多個替代流與例外流按真實用戶行為序列組合（例如：密碼錯一次後成功登入、取消又重新下單）。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.9 使用案例與情境測試' -->
+
+## 使用案例測試矩陣實戰：ATM 提款流程
+
+<div class="card-deck">
+
+> 💡 以典型 ATM 提款使用案例，推導系統級端對端黑箱測試案例矩陣。
+
+| 測試案例 ID | 測試情境說明 | 流程路徑類型 | 輸入資料與前置條件 | 預期系統反應 |
+| :---: | :--- | :---: | :--- | :--- |
+| **TC-01** | 正常提款成功 | **基本流 (Happy Path)** | 帳戶餘額 5000，提款 1000，密碼正確 | 出鈔 1000、扣款成功、列印明細退卡 |
+| **TC-02** | 提款前先查詢餘額 | **替代流 (Alternative)** | 插入晶片卡 ➔ 查詢餘額 ➔ 再提款 1000 | 顯示餘額無誤、順利出鈔退卡 |
+| **TC-03** | 提款金額超出單次上限 | **例外流 (Exception 1)** | 提款輸入 30000（上限為 20000） | 螢幕提示「超出單筆上限」、拒絕出鈔 |
+| **TC-04** | 帳戶餘額不足 | **例外流 (Exception 2)** | 帳戶餘額 500，請求提款 1000 | 提示「可用餘額不足」、退卡 |
+| **TC-05** | 連續輸錯密碼 3 次 | **例外流 (Exception 3)** | 故意連續輸入 3 次錯誤 PIN 碼 | 第三次錯誤時吞卡、通報行內風控防盜 |
+
+</div>
+
+---
+
+<!-- _class: lead -->
+<!-- header: '5.10 錯誤猜測與探索性測試' -->
+
+# **5.10 經驗基礎測試：錯誤猜測與探索性測試**
+
+> 「規格書永遠寫不完所有現實的混亂。  
+> 頂尖測試者的直覺、歷史缺陷經驗與即時探索，是抓出致命漏洞的終極防線。」
+
+---
+
+<!-- header: '5.10 錯誤猜測與探索性測試' -->
+
+## 經驗基礎測試 (Experience-based) 與錯誤猜測法
+
+<div class="card-deck">
+
+> 💡 Glenford Myers 黑箱三大基石之三：基於過往 Defect 統計、工程師易犯錯誤與防禦性思維的「直覺性攻擊」。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🎯 錯誤猜測法 (Error Guessing) 核心哲學
+- **並非盲目碰運氣**：
+  - 它是根據**缺陷分類庫 (Defect Taxonomy)**、架構弱點與工程師盲區所進行的高效能「故障注入 (Fault Injection)」。
+- **與規格基礎技術的共生關係**：
+  - 規格測試 (EP/BVA) 確保「功能如期運作」；錯誤猜測則主動尋找「規格未提及但實務必爆的死角」。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 💣 實務經典攻擊清單 (Fault Injection Checklist)
+- **空值與邊界**：`null`、未初始化、空字串 `""`、全空格、超長字串 (Buffer Overflow)。
+- **特殊字元與編碼**：全形半形、Emoji、換行符 (`\r\n`)、SQL 跳脫符 (`' OR 1=1--`)、XSS (`<script>`)。
+- **數值極端運算**：除以零 (`1/0`)、整數溢位 (`Integer.MAX_VALUE + 1`)、浮點數精度誤差 (`0.1 + 0.2`)。
+- **時間與併發**：跨時區夏令時間、閏秒、快點兩下造成的重複扣款 (Race Condition)。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.10 錯誤猜測與探索性測試' -->
+
+## 敏捷時代的利器：探索性測試 (Exploratory Testing)
+
+<div class="card-deck">
+
+> 💡 Cem Kaner & James Bach 發揚：**測試學習 (Learning)、測試設計 (Design) 與測試執行 (Execution) 同步交織進行**。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### ⚖️ 探索性測試 vs. 腳本化測試 (Scripted)
+- **腳本化測試 (Scripted Testing)**：
+  - 事先撰寫精確步驟 ➔ 盲目按步就班執行 ➔ 適合自動化回歸測試，但易受「殺蟲劑悖論 (Pesticide Paradox)」鈍化。
+- **探索性測試 (Exploratory Testing)**：
+  - 根據受測系統的最新即時反饋，靈活調整下一個測試策略，主動追擊可疑異狀，抓蟲效率極高。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ⏱️ 基於任務段的測試管理 (SBTM 架構)
+- **測試任務書 (Charter)**：
+  - 明確探索範圍與啟發點（探索什麼目標？使用什麼工具？尋找哪類弱點？）。
+- **時間盒 (Time-box)**：
+  - 設定 60 ~ 90 分鐘專注衝刺，不被打擾，維持高敏銳度。
+- **任務紀錄 (Session Log)**：
+  - 產出結構化紀錄：測試覆蓋軌跡、發現的 Bugs、未解疑點與後續測試建議。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '附錄：課堂互動參考解答' -->
 
 ## 附錄：課堂互動參考解答
 
