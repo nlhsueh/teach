@@ -147,8 +147,7 @@ footer: 'Ch02 錯與除錯'
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq1"><img src="../../img/ch02/sqa-ch02-ccq1.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq1">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq1" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq1.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -253,8 +252,7 @@ footer: 'Ch02 錯與除錯'
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq2"><img src="../../img/ch02/sqa-ch02-ccq2.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq2">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq2" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq2.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -587,8 +585,7 @@ public void processOrder(Order order) {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq3"><img src="../../img/ch02/sqa-ch02-ccq3.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq3">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq3" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq3.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -642,8 +639,7 @@ public void processOrder(Order order) {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq4"><img src="../../img/ch02/sqa-ch02-ccq4.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq4">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq4" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq4.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -833,8 +829,7 @@ public void processOrder(Order order) {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq5"><img src="../../img/ch02/sqa-ch02-ccq5.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq5">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq5" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq5.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -1129,7 +1124,8 @@ public class BankAccount {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/assertion.md#6--ccq---concept-check-questions">[上機手冊解析]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq6a" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq6a.png" alt="QR Code" /></a>
+    <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/assertion.md#6--ccq---concept-check-questions">[上機手冊解析]</a>
     <br><small>2.5.2 斷言防線</small>
   </div>
 </div>
@@ -1152,7 +1148,8 @@ public class BankAccount {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/assertion.md#6--ccq---concept-check-questions">[上機手冊解析]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq6b" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq6b.png" alt="QR Code" /></a>
+    <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/assertion.md#6--ccq---concept-check-questions">[上機手冊解析]</a>
     <br><small>副作用禁忌</small>
   </div>
 </div>
@@ -1308,7 +1305,8 @@ public class BankAccount {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/exception.md#8--ccq---concept-check-questions">[上機手冊解析]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq7a" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq7a.png" alt="QR Code" /></a>
+    <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/exception.md#8--ccq---concept-check-questions">[上機手冊解析]</a>
     <br><small>2.5.3 例外體系</small>
   </div>
 </div>
@@ -1332,7 +1330,8 @@ public class BankAccount {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/exception.md#8--ccq---concept-check-questions">[上機手冊解析]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq7b" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq7b.png" alt="QR Code" /></a>
+    <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/exception.md#8--ccq---concept-check-questions">[上機手冊解析]</a>
     <br><small>CDR 與資源管理</small>
   </div>
 </div>
@@ -1569,7 +1568,8 @@ public class BankAccount {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/logging.md#3--ccq---concept-check-questions">[上機手冊解析]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq8a" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq8a.png" alt="QR Code" /></a>
+    <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/logging.md#3--ccq---concept-check-questions">[上機手冊解析]</a>
     <br><small>2.5.4 日誌除錯</small>
   </div>
 </div>
@@ -1593,7 +1593,8 @@ public class BankAccount {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/logging.md#3--ccq---concept-check-questions">[上機手冊解析]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq8b" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq8b.png" alt="QR Code" /></a>
+    <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/logging.md#3--ccq---concept-check-questions">[上機手冊解析]</a>
     <br><small>效能與 MDC</small>
   </div>
 </div>
@@ -1808,8 +1809,7 @@ public class BankAccount {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-game"><img src="../../img/ch02/sqa-ch02-game.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-game">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-game" target="_blank"><img src="../../img/ch02/sqa-ch02-game.png" alt="QR Code" /></a>
   </div>
 </div>
 

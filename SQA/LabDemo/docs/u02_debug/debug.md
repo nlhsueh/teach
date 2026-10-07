@@ -34,7 +34,9 @@
 
 ---
 
+<!-- id: sqa-u02-debug-ccq1 -->
 ## 🖥️ Demo
+
 設計一個程式，要求使用者輸入一個直徑，然後輸出其面積：
 
 ```java
@@ -60,7 +62,6 @@ public class BreakpointDemo {
 大家覺得上面的程式有沒有問題？請用中斷點來除錯。
 
 ---
-
 ### 🚌 實作練習
 
 * **Lab01: Bubble Sort**：利用 [BubbleSort](../../src/main/java/xdemo/BubbleSort.java) 操作 Breakpoint，使用 Watch 觀察索引變化，並透過 Conditional Breakpoint 觀察特定迴圈次數。
@@ -75,10 +76,6 @@ public class BreakpointDemo {
 <!-- id: sqa-u01-debug-ccq1 -->
 #### 🙋 **概念核對問答 (CCQ 1)：中斷點暫停時機與變數狀態**
 
-
-
-
-
 **問題**
 
 在 Java 程式碼中：
@@ -91,7 +88,9 @@ a = a + 1; // 👈 在此行設定中斷點
 A) `100`  
 B) `101`  
 C) `0`  
-D) 尚未宣告，無法查看  
+D) 尚未宣告，無法查看
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-debug-ccq1)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -107,14 +106,8 @@ D) 尚未宣告，無法查看
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-debug-ccq1)
-
 <!-- id: sqa-u01-debug-ccq2 -->
 #### 🙋 **概念核對問答 (CCQ 2)：單步執行操作（Step Over vs. Step Into）**
-
-
-
-
 
 **問題**
 
@@ -127,7 +120,9 @@ computeArea(); // 👈 目前停在這一行
 A) **Step Over (單步跳過 / F10)**：直接執行完該行並跳到下一行指令  
 B) **Step Into (單步進入 / F11)**：進入被呼叫函式內部追蹤  
 C) **Step Out (單步跳出 / Shift + F11)**：跳出當前函式返回呼叫端  
-D) **Resume / Continue (繼續執行 / F5)**：忽略所有中斷點執行到程式結束  
+D) **Resume / Continue (繼續執行 / F5)**：忽略所有中斷點執行到程式結束
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-debug-ccq2)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -144,14 +139,8 @@ D) **Resume / Continue (繼續執行 / F5)**：忽略所有中斷點執行到程
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-debug-ccq2)
-
 <!-- id: sqa-u01-debug-ccq3 -->
 #### 🙋 **概念核對問答 (CCQ 3)：整數除法截斷缺陷分析**
-
-
-
-
 
 **問題**
 
@@ -165,7 +154,9 @@ double area = Math.PI * Math.pow(diameter / 2, 2);
 A) `Math.pow()` 只支援整數運算，不支援小數運算  
 B) `Math.PI` 精度遺失導致截斷  
 C) `diameter / 2` 屬於整數除法（Integer Division），小數部分在運算當下被強制捨去截斷  
-D) `Scanner.nextInt()` 無法讀取大於 4 的數值  
+D) `Scanner.nextInt()` 無法讀取大於 4 的數值
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-debug-ccq3)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -177,5 +168,3 @@ D) `Scanner.nextInt()` 無法讀取大於 4 的數值
   * **選項 A/B/D 錯誤**：皆非引發此問題的原因。
 
 </details>
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-debug-ccq3)

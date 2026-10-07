@@ -240,13 +240,11 @@ footer: 'Ch01 軟體品質導論'
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq1"><img src="../../img/ch01/sqa-ch01-ccq1.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq1">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq1" target="_blank"><img src="../../img/ch01/sqa-ch01-ccq1.png" alt="QR Code" /></a>
   </div>
 </div>
 
 ---
-
 <!-- id: sqa-ch01-pair1 -->
 ## 🙋 雙人課堂討論 (Pair Discussion)
 
@@ -263,10 +261,13 @@ footer: 'Ch01 軟體品質導論'
 
   </div>
   <div class="discussion-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-pair1"><img src="../../img/ch01/sqa-ch01-pair1.png" alt="QR Code" /></a>
     <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-pair1">[課堂互動]</a>
   </div>
 </div>
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-pair1)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-pair1" target="_blank"><img src="../../img/ch01/sqa-ch01-pair1.png" width="120"></a>
 
 ---
 
@@ -394,8 +395,7 @@ footer: 'Ch01 軟體品質導論'
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq2"><img src="../../img/ch01/sqa-ch01-ccq2.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq2">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq2" target="_blank"><img src="../../img/ch01/sqa-ch01-ccq2.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -602,7 +602,6 @@ footer: 'Ch01 軟體品質導論'
 | **價值觀點**　 | 商業價值與性價比 (ROI)　　　　 | 商業產出 > 開發維運成本 (MVP)　 | 開發成本失控超支，商業不可行　 |
 
 ---
-
 <!-- id: sqa-ch01-wordcloud1 -->
 ## 🙋 文字雲互動：品質觀點
 
@@ -621,10 +620,13 @@ footer: 'Ch01 軟體品質導論'
 
   </div>
   <div class="discussion-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-wordcloud1"><img src="../../img/ch01/sqa-ch01-wordcloud1.png" alt="QR Code" /></a>
     <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-wordcloud1">[課堂互動]</a>
   </div>
 </div>
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-wordcloud1)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-wordcloud1" target="_blank"><img src="../../img/ch01/sqa-ch01-wordcloud1.png" width="120"></a>
 
 ---
 
@@ -643,8 +645,7 @@ footer: 'Ch01 軟體品質導論'
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq3"><img src="../../img/ch01/sqa-ch01-ccq3.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq3">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq3" target="_blank"><img src="../../img/ch01/sqa-ch01-ccq3.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -710,8 +711,7 @@ footer: 'Ch01 軟體品質導論'
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq4"><img src="../../img/ch01/sqa-ch01-ccq4.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq4">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq4" target="_blank"><img src="../../img/ch01/sqa-ch01-ccq4.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -867,8 +867,7 @@ footer: 'Ch01 軟體品質導論'
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ordering1"><img src="../../img/ch01/sqa-ch01-ordering1.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ordering1">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ordering1" target="_blank"><img src="../../img/ch01/sqa-ch01-ordering1.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -1142,8 +1141,7 @@ footer: 'Ch01 軟體品質導論'
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-game"><img src="../../img/ch01/sqa-ch01-game.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-game">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-game" target="_blank"><img src="../../img/ch01/sqa-ch01-game.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -1194,6 +1192,7 @@ footer: 'Ch01 軟體品質導論'
 > 各題答案與關鍵解析
 
 ---
+<!-- id: sqa-ch01-ccq1 -->
 
 ## 課堂互動參考解答 (1/2)
 
@@ -1209,6 +1208,10 @@ footer: 'Ch01 軟體品質導論'
 - **CCQ 4（Verification vs. Validation）**：
   - **正確答案：A**
   - 系統符合規格且通過測試（Verification 成功），但無法滿足急診臨床真實節奏需求（Validation 失敗）。
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq1)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch01-ccq1" target="_blank"><img src="../../img/ch01/sqa-ch01-ccq1.png" width="120"></a>
 
 ---
 

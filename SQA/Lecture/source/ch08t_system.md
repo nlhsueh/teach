@@ -218,17 +218,14 @@ public class BMICalculatorStepDefs {
 <!-- id: sqa-ch08-ccq1 -->
 ### 🙋 **8.2.4 概念核對問答 (CCQ 1)**
 
-
-
-
-
-
 **問題**
 
 在 Cucumber (Gherkin 語法) 中，若要使用同一套測試步驟來測試多組不同的輸入值與預期輸出值，應該使用 `Scenario` (情境) 搭配 `Background` (背景) 來撰寫。
 
 A) 是 (True)
 B) 否 (False)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch08-ccq1)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -246,8 +243,6 @@ B) 否 (False)
 
 Record and replay tool
 * [Rapi recorder](https://github.com/RapiTest/rapi)
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch08-ccq1)
 
 ## 8.3 微服務契約測試、現代 E2E 與 AI 畫面模擬
 
@@ -374,14 +369,14 @@ AI 原生代理人操作 (Antigravity Browser Subagent):
 <!-- id: sqa-ch08-ccq1 -->
 #### 🙋 **8.3.5 概念核對問答 (CCQ 2)：AI 畫面模擬與無頭瀏覽器技術本質**
 
-
-
 在現代 E2E 系統測試架構中，關於無頭瀏覽器 (Headless Browser)、桌面端自動化框架 (Spectron) 與 AI 瀏覽器代理人 (Browser Subagent) 的技術原理，下列敘述何者**最正確**？
 
 A. 無頭瀏覽器因為沒有圖形介面 (No GUI)，因此在執行測試時不會載入 CSS 與排版引擎 (Layout Engine)，僅執行純粹的 JavaScript 邏輯運算以加快速度  
 B. Spectron 框架主要用於純 Web 應用的效能壓測，無法直接跨入 Electron 的主行程 (Main Process) 控制桌面原生對話框  
 C. Google Antigravity 的 Browser Subagent 結合了視覺語言模型 (VLM) 與 DOM 語意感知，能以人類視覺意圖辨識畫面元素，大幅改善傳統自動化測試因前端 class 或 DOM 結構調整所造成的脆弱定位器 (Brittle Locators) 斷裂問題  
-D. AI 瀏覽器代理人執行測試時必須在實體顯示器上有頭 (Headed) 視窗中逐幀顯示，無法整合至 Linux CI/CD 容器中輸出 WebP 測試錄影工件  
+D. AI 瀏覽器代理人執行測試時必須在實體顯示器上有頭 (Headed) 視窗中逐幀顯示，無法整合至 Linux CI/CD 容器中輸出 WebP 測試錄影工件
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch08-ccq1)
 
 <details>
 <summary>👉 點擊展開查看答案與詳細解析</summary>
@@ -397,8 +392,6 @@ D. AI 瀏覽器代理人執行測試時必須在實體顯示器上有頭 (Headed
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch08-ccq1)
 
 ## 8.4 可用性測試 (Usability Testing)
 

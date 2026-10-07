@@ -162,11 +162,6 @@ Ch03 知識架構全景：
 <!-- id: sqa-ch03-ccq2 -->
 #### 🙋 **概念核對問答 (CCQ 2)**
 
-
-
-
-
-
 **問題**
 
 某工程師使用 AI 秒速生成了一套複雜的利息計算演算法，並隨即讓同一個 AI 幫忙生成單元測試。測試跑出 100% 覆蓋率全綠燈通過，但在實際上線後卻被金融主管機關判定年息計算公式違反法規。依據 ISTQB 軟體測試 7 大原則，這最主要反映了何種問題？
@@ -175,6 +170,8 @@ A) 測試工程師未安裝最新的 JDK 執行環境
 B) AI 測試陷入「殺蟲劑悖論（自我印證盲區）」與「原則 7：無錯謬誤（程式碼無語法錯誤但偏離法規與真實業務需求）」  
 C) 只要測試覆蓋率達到 100%，系統必然在法律上具備合規性  
 D) 這是硬體浮點數運算器的製造缺陷
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq2)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -187,8 +184,6 @@ D) 這是硬體浮點數運算器的製造缺陷
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq2)
 
 ## 3.2 測試的多維度分類體系
 
@@ -239,7 +234,9 @@ D) 這是硬體浮點數運算器的製造缺陷
 2.  **2. Integration Testing (整合測試)**：驗證跨模組介面、微服務 API 與資料庫之間的通訊協定與資料傳遞。
 3.  **3. System Testing (系統測試)**：在完整模擬或真實環境中執行端到端 (E2E) 使用者工作流程與非功能需求驗證。
 
+<!-- id: sqa-ch03-ccq1 -->
 #### 💡 單元模組的可測試性 (Testability)
+
 模組設計應遵循「邏輯與 UI 分離」：
 
 ```java
@@ -261,7 +258,6 @@ double div(double x, double y) {
 ```
 
 ---
-
 ### 6. 現代測試金字塔 (The Practical Test Pyramid)
 
 <img src="../../img/ch03/practical_test_pyramid.jpg" width="650">
@@ -294,11 +290,6 @@ double div(double x, double y) {
 <!-- id: sqa-ch03-ccq3 -->
 #### 🙋 **概念核對問答 (CCQ 3)**
 
-
-
-
-
-
 **問題**
 
 在標準 V 開發模型中，依據「高階架構設計文件 (ADD)」所定義的模組介面與通訊協定，所對應執行的測試層級為何？
@@ -307,6 +298,8 @@ A) 單元測試 (Unit Testing)
 B) 整合測試 (Integration Testing)  
 C) 驗收測試 (Acceptance Testing)  
 D) 靜態程式碼檢視 (Code Review)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq3)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -319,8 +312,6 @@ D) 靜態程式碼檢視 (Code Review)
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq3)
 
 ## 3.4 測試案例設計：規格、程式與驗證行為
 
@@ -489,13 +480,13 @@ D) 靜態程式碼檢視 (Code Review)
 
 [課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-short1)
 
+<!-- id: sqa-ch03-ccq1 -->
 ## ✍️ 3.6 綜合練習
 
 ### 一、測試原則與理論辨析
 1. 為了確保軟體絕對正確，我們是否應該進行窮盡式測試（Exhaustive Testing）？為什麼？
 2. 說明何謂測試的「殺蟲劑效應（Pesticide Paradox）」？當使用 AI 輔助生成測試時，為什麼更容易產生殺蟲劑效應？
 3. 比較 Verification 與 Validation 的核心差異。
-
 ### 二、V 模型與追溯
 4. 依據 V 開發模型，需求規格書 (SRS) 確定後，應同步規劃哪一項測試計畫？
 5. 試以 V 模型說明「規格設計在前、測試準備在先」如何避免實作後測試偏差。

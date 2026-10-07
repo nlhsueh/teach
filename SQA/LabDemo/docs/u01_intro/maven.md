@@ -250,10 +250,6 @@ verify               <--- 綁定 --- jacoco-maven-plugin:report
 <!-- id: sqa-u01-maven-ccq1 -->
 #### 🙋 **概念核對問答 (CCQ 1)：Maven 生命週期執行順序**
 
-
-
-
-
 **問題**
 
 工程師在終端機輸入 `mvn package` 指令試圖將專案打包成 JAR 檔。依據 Maven 預設的建置生命週期（Default Lifecycle），下列敘述何者正確？
@@ -261,7 +257,9 @@ verify               <--- 綁定 --- jacoco-maven-plugin:report
 A) Maven 會直接將程式碼打包成 JAR，不會編譯也不會執行單元測試  
 B) Maven 會依序執行 `compile` ➔ `test-compile` ➔ `test`，只有在所有單元測試皆通過（綠燈）的情況下，才會進入 `package` 打包產出 JAR  
 C) `package` 階段會在 `test` 階段之前執行，以確保打包失敗時不會浪費時間跑測試  
-D) 只有手動執行 `mvn test` 才會跑測試，`mvn package` 預設完全跳過測試  
+D) 只有手動執行 `mvn test` 才會跑測試，`mvn package` 預設完全跳過測試
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-maven-ccq1)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -276,14 +274,8 @@ D) 只有手動執行 `mvn test` 才會跑測試，`mvn package` 預設完全跳
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-maven-ccq1)
-
 <!-- id: sqa-u01-maven-ccq2 -->
 #### 🙋 **概念核對問答 (CCQ 2)：依賴範圍（Scope）與發行環境安全**
-
-
-
-
 
 **問題**
 
@@ -292,7 +284,9 @@ D) 只有手動執行 `mvn test` 才會跑測試，`mvn package` 預設完全跳
 A) 專案完全無法編譯，Maven 會回傳語法錯誤  
 B) 測試程式碼無法引用 JUnit 的 `@Test` 註解  
 C) 測試用程式庫會被打包進正式生產環境（Production）的發行 JAR 檔中，徒增成品體積並擴大潛在資安攻擊面  
-D) CI 伺服器在執行 `mvn test` 時會找不到測試類別  
+D) CI 伺服器在執行 `mvn test` 時會找不到測試類別
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-maven-ccq2)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -307,14 +301,8 @@ D) CI 伺服器在執行 `mvn test` 時會找不到測試類別
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-maven-ccq2)
-
 <!-- id: sqa-u01-maven-ccq3 -->
 #### 🙋 **概念核對問答 (CCQ 3)：跳過測試指令的品質風險**
-
-
-
-
 
 **問題**
 
@@ -323,7 +311,9 @@ D) CI 伺服器在執行 `mvn test` 時會找不到測試類別
 A) 這是業界推薦的最佳實務，因為生產環境只需要可執行檔，不需要測試程式碼  
 B) `-DskipTests` 會編譯測試程式但跳過執行，這代表人為繞過了自動化回歸測試防線，可能將未察覺的回歸缺陷（Regression Bug）直接推上線  
 C) `-DskipTests` 會自動將測試報告全部標記為 100% 通過，並產出完美的 JaCoCo 覆蓋率報告  
-D) `-DskipTests` 會強制刪除所有測試原始碼以節省雲端伺服器磁碟空間  
+D) `-DskipTests` 會強制刪除所有測試原始碼以節省雲端伺服器磁碟空間
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-maven-ccq3)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -339,14 +329,8 @@ D) `-DskipTests` 會強制刪除所有測試原始碼以節省雲端伺服器磁
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-maven-ccq3)
-
 <!-- id: sqa-u01-maven-ccq4 -->
 #### 🙋 **概念核對問答 (CCQ 4)：JaCoCo 覆蓋率外掛與品質守門員（Build Breaker）**
-
-
-
-
 
 **問題**
 
@@ -355,7 +339,9 @@ D) `-DskipTests` 會強制刪除所有測試原始碼以節省雲端伺服器磁
 A) `clean`（清除階段）  
 B) `compile`（主程式編譯階段）  
 C) `verify`（驗證階段，於 `test` 之後執行）  
-D) `deploy`（遠端倉庫部署階段）  
+D) `deploy`（遠端倉庫部署階段）
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-maven-ccq4)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -368,5 +354,3 @@ D) `deploy`（遠端倉庫部署階段）
   * **選項 D 錯誤**：`deploy` 是最後發布階段，此時才檢查為時已晚。
 
 </details>
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-maven-ccq4)

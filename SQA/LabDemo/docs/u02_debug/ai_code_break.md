@@ -175,10 +175,6 @@ void launchFloatingPointAttack() {
 <!-- id: sqa-u01-codebreak-ccq1 -->
 #### 🙋 **概念核對問答 (CCQ 1)：AI 寫程式與單元測試的「自我印證盲區」**
 
-
-
-
-
 **問題**
 
 工程師使用 LLM 快速生成了電子錢包扣款邏輯，接著又請同一個 AI 為該方法生成單元測試。測試執行結果呈現 100% 綠燈通過，且涵蓋率高達 100%。然而一上線面對促銷搶購的高並發情境，帳戶卻瞬間被超賣穿透、餘額變成負數破產。依據軟體測試與 SQA 原則，這主要體現了何種核心問題？
@@ -186,7 +182,9 @@ void launchFloatingPointAttack() {
 A) 殺蟲劑悖論與 Happy Path 偏誤：AI 依據自身單執行緒、循序的靜態語意設計測試，導致測試案例與被測程式碼「共同錯在同一個並發與時間交錯盲區」，帶來極度危險的假安全感  
 B) 測試原則宣告「窮盡測試是不可能的」，因此線上故障純屬無法預防的偶發機率  
 C) 單元測試執行次數太少，若在單執行緒環境下重複跑 10 萬次 Happy Path 就必定能測出並發問題  
-D) 這是作業系統與 CPU 硬體的暫存器故障，與軟體測試品質無關  
+D) 這是作業系統與 CPU 硬體的暫存器故障，與軟體測試品質無關
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-codebreak-ccq1)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -201,14 +199,8 @@ D) 這是作業系統與 CPU 硬體的暫存器故障，與軟體測試品質無
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-codebreak-ccq1)
-
 <!-- id: sqa-u01-codebreak-ccq2 -->
 #### 🙋 **概念核對問答 (CCQ 2)：並發防禦順序（Check-Then-Act 與 TOCTOU 漏洞）**
-
-
-
-
 
 **問題**
 
@@ -230,7 +222,9 @@ public boolean withdraw(double amount) {
 A) 可以，因為 `balance -= amount` 已經被 `synchronized` 區塊保護，保證了記憶體寫入的原子性  
 B) 不能，因為「檢查餘額」發生在取得鎖定之前，多個執行緒仍可同時通過 `balance >= amount` 的檢查，隨後依序排隊進去把餘額扣成負數（典型 TOCTOU 漏洞）  
 C) 可以，因為 JVM 會自動將外層的 `if` 條件與內層的 `synchronized` 區塊智慧合併鎖定  
-D) 不能，因為 `synchronized` 只能修飾整個方法，不能以程式碼區塊（Block）形式使用  
+D) 不能，因為 `synchronized` 只能修飾整個方法，不能以程式碼區塊（Block）形式使用
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-codebreak-ccq2)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -246,14 +240,8 @@ D) 不能，因為 `synchronized` 只能修飾整個方法，不能以程式碼�
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-codebreak-ccq2)
-
 <!-- id: sqa-u01-codebreak-ccq3 -->
 #### 🙋 **概念核對問答 (CCQ 3)：金融數值精度與型別防禦**
-
-
-
-
 
 **問題**
 
@@ -262,7 +250,9 @@ D) 不能，因為 `synchronized` 只能修飾整個方法，不能以程式碼�
 A) 因為 `double` 只能儲存正數，無法表示扣款後的負數餘額  
 B) 因為 IEEE 754 二進位浮點數無法精確表示 `0.1` 等十進位小數，頻繁累加會產生微小截斷偏差導致帳目不平；應全面改採 `BigDecimal`（且須使用字串建構子 `new BigDecimal("0.1")`）或以最小貨幣單位（如整數分、厘）的 `long` 儲存  
 C) 因為 `double` 運算需要龐大 CPU 浮點數處理單元，在高並發時會導致作業系統當機  
-D) 因為主流關聯式資料庫（如 PostgreSQL、MySQL）不支援儲存任何小數型別  
+D) 因為主流關聯式資料庫（如 PostgreSQL、MySQL）不支援儲存任何小數型別
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-codebreak-ccq3)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -274,5 +264,3 @@ D) 因為主流關聯式資料庫（如 PostgreSQL、MySQL）不支援儲存任�
   * **選項 A/C/D 錯誤**：皆非禁止使用浮點數的真實原因。
 
 </details>
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u01-codebreak-ccq3)

@@ -18,31 +18,36 @@
 
 ---
 
-## 2. 目前已完成的遷移與目錄結構
+## 2. 雙機多工作區架構 (nTeach / oTeach) 與目錄結構
 
-目錄實體路徑：`/Users/nick-mini-26/oTeach/`
+* **家裡電腦 (Home)**：`/Users/nlh/homeTeach/`
+  * `~/homeTeach/nTeach/` (本機教材 Git 倉儲)
+  * `~/homeTeach/nickedupocket/` (互動題庫系統 Git 倉儲)
+* **辦公室電腦 (Office)**：`~/oTeach/`
+  * 同層並列 `nickedupocket/`，完全透過 GitHub 雙向同步。
 
 ```
-~/oTeach/
+<工作區根目錄 (nTeach 或 oTeach)>/
+  ├── scripts/                     <-- ★ 自動化腳本庫
+  │     ├── sync_iActivity.py      (互動題目 CCQ、QR Code 與 nickedupocket 同步)
+  │     ├── generate_lecture_pdf.js(講義手冊 PDF 編譯)
+  │     └── zip_labdemo.sh         (LabDemo 打包至 Google Drive 腳本)
+  │
   ├── themes/                      <-- ★ 跨課程共用主題庫
   │     ├── quiz-theme.css         (全章節即時互動自我測驗樣式)
   │     ├── syllabus-theme.css     (課程大綱與導覽樣式)
   │     └── academic-theme.css     (學術簡報樣式)
   │
-  ├── TeachUX/                    <-- 使用者體驗設計 (UX Design) 課程工作區
+  ├── SQA/                         <-- 軟體品質保證 (SQA) 課程工作區
   │     ├── Slide/                 (投影片 Markdown、HTML、PDF)
   │     ├── Lecture/               (講義)
-  │     ├── img/                   (教學圖檔)
-  │     ├── index.html             (UX 課程門戶入口)
+  │     ├── LabDemo/               (Java 實作範例程式碼與實習手冊)
+  │     ├── img/                   (教學圖檔與自動產生之 CCQ QR Code)
+  │     ├── index.html / lab.html  (SQA 課程門戶入口)
   │     └── .marprc.json           (配置引入 ../themes/)
   │
-  └── TeachSQA/                   <-- 軟體品質保證 (SQA) 課程工作區
-        ├── Slide/                 (投影片 Markdown、HTML、PDF)
-        ├── Lecture/               (講義)
-        ├── LabDemo/               (Java 實作範例程式碼)
-        ├── img/                   (教學圖檔)
-        ├── index.html / lab.html  (SQA 課程門戶入口)
-        └── .marprc.json           (配置引入 ../themes/)
+  ├── UX/                          <-- 使用者體驗設計 (UX) 課程工作區
+  └── SE/                          <-- 軟體工程 (SE / ASE) 課程工作區
 ```
 
 ---
@@ -53,9 +58,13 @@
    * 題庫與隨堂測驗一律使用 **100% 純 Markdown 格式**（禁止手寫 `<div class="quiz-layout">` 等 HTML 標籤），由主題腳本透過 Progressive Enhancement 自動原地增強為即時點擊作答回饋與解析展開。
    * 選項清單一律直接顯示（使用 `-` 符號，不使用 `*` 漸進逐條淡入）。
    * 投影片頂部 Header 導覽一律採用純目錄下拉選單（`nav-dropdown`），預設隱藏，hover/click 時展開。
-2. **日常工作流程 SOP**：
-   * **開工**：`cd ~/oTeach/<課程> && git pull`
-   * **開發**：在本機 SSD 快速編輯 Markdown、編譯投影片。
+   * 編譯投影片時必須在課程目錄下執行（例如 `cd SQA && npx @marp-team/marp-cli ...`）或帶入 `--config .marprc.json`，以確保 `sqa-theme.css` 與全套樣式正確注入。
+2. **互動題目 (CCQ) 生命週期與同步 SOP**：
+   * **執行同步**：`python3 scripts/sync_iActivity.py -c sqa`（亦可指定 `ux`、`se`、`python` 或 `--all`）。
+   * **自適應機制**：腳本會自動尋找同層或相鄰的 `nickedupocket` 專案，自動解析 Lecture、Slide 與 LabDemo 手冊中的題目，產出 QR Code 圖檔，更新 `nickedupocket/public/courses/` 題庫，並自動完成 `git push` 到 GitHub Pages。
+3. **日常工作流程 SOP**：
+   * **開工**：`git pull`
+   * **開發**：在本機 SSD 快速編輯 Markdown、編譯投影片、同步 CCQ。
    * **收工**：`git add . && git commit -m "..." && git push`
 3. **教材封裝與自動化指令 (Custom Triggers)**：
    * **觸發語句**：當使用者指示 **`zip the LabDemo`**、**`打包 LabDemo`** 或類似語句時：

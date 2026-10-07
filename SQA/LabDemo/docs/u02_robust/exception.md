@@ -634,16 +634,23 @@ Finally 執行，x 改為 99
 
 ---
 
+<!-- id: sqa-u02-exception-ccq1 -->
 ## 8. 🧠 觀念核對問答 (CCQ - Concept Check Questions)
 
 在開始動手寫練習前，請透過以下 3 道自我測驗題目檢核自己對 **Java 例外體系、資源管理與自訂例外設計** 的掌握度。請先自行思考，再點開摺疊區塊對照詳細解析！
 
 ---
 
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-exception-ccq1)
+
+<!-- id: sqa-u02-exception-ccq2 -->
 ### ❓ CCQ 1：Checked vs. Unchecked Exception 的根本差異與設計哲學（架構觀念題）
+
 **問題**：
 1. 在 Java 的 `Throwable` 階層中，為什麼 `NullPointerException` 與 `ArrayIndexOutOfBoundsException` 被設計為 `RuntimeException`（未檢例外），而 `IOException` 卻被設計為 Checked Exception（受檢例外）？
 2. 對於身為軟體工程師的你，在面對這兩種類型的例外時，在編寫程式碼的防禦思維與因應策略上有何根本上的不同？
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-exception-ccq2)
 
 <details>
 <summary>💡 點擊展開：CCQ 1 答案與深度解析</summary>
@@ -663,7 +670,9 @@ Finally 執行，x 改為 99
 
 ---
 
+<!-- id: sqa-u02-exception-ccq3 -->
 ### ❓ CCQ 2：生吞例外 (Swallowing Exception) 與資源外洩（程式除錯題）
+
 **情境**：一位實習生提交了以下讀取設定檔的程式碼：
 ```java
 public static String readFirstLine(String filePath) {
@@ -678,6 +687,8 @@ public static String readFirstLine(String filePath) {
 ```
 **問題**：
 請指出這段程式碼中潛藏的 **兩大嚴重軟體品質與架構缺陷**，並使用現代 Java（Java 7+）標準語法將其完整改寫。
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-exception-ccq3)
 
 <details>
 <summary>💡 點擊展開：CCQ 2 答案與深度解析</summary>
@@ -708,7 +719,9 @@ public static String readFirstLine(String filePath) throws IOException {
 
 ---
 
+<!-- id: sqa-u02-exception-ccq4 -->
 ### ❓ CCQ 3：BubbleSort 的後置條件驗證與自訂受檢例外（程式填空題）
+
 **題目**：在氣泡排序的驗證防線中，排序執行完成後我們執行 `isSorted(data)` 後置檢查。若演算法發生瑕疵導致陣列未正確排列，我們希望拋出自訂受檢例外 `SortingException`，請填空完成以下程式碼中的 `【空格 A】`、`【空格 B】` 與 `【空格 C】`：
 
 ```java
@@ -745,6 +758,8 @@ public class BubbleSortRobustDemo {
     }
 }
 ```
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-exception-ccq4)
 
 <details>
 <summary>💡 點擊展開：CCQ 3 答案與深度解析</summary>

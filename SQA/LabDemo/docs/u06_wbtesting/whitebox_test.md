@@ -157,7 +157,9 @@ void testInvalidGradeTriggersElseBranch() {
 
 # 🛠️ 附錄：JaCoCo Maven 配置與生命週期指引
 
+<!-- id: sqa-u06-whiteboxtest-ccq1 -->
 ## ⚙️ A. POM.xml 設定 (`jacoco-maven-plugin`)
+
 若要自動化產生覆蓋度 HTML 報告，請在專案的 `pom.xml` 中加入以下插件配置：
 
 ```xml
@@ -182,7 +184,6 @@ void testInvalidGradeTriggersElseBranch() {
     </executions>
 </plugin>
 ```
-
 ### 執行步驟：
 1.  在專案根目錄下，開啟終端機執行：
     ```bash

@@ -81,13 +81,14 @@ export default function () {
 k6 run load_test.js
 ```
 
+<!-- id: sqa-u10-k6loadtesting-ccq1 -->
 ### 📊 終端分析指標解讀：
+
 * `http_req_duration`: 包含 `avg`, `min`, `med`, `max`, `p(90)`, `p(95)`, `p(99)` 響應時間。
 * `http_req_failed`: 失敗率百分比（高並發下若發生連線池耗盡會飆高）。
 * `iterations`: 總共成功執行的交易次數。
 
 ---
-
 ## 📋 實習成果驗收標準
 1. [ ] 撰寫一份 `k6` 壓測腳本，包含至少 2 個 stages 與明確的 `thresholds` 門檻。
 2. [ ] 對本機 Spring Boot 服務發動至少 50 VUs 並發壓測。

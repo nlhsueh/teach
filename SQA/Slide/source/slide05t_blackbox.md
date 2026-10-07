@@ -201,9 +201,7 @@ footer: 'Ch05 黑箱測試'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch05/sqa-ch05-ccq1.png" alt="CCQ1 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq1.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -418,9 +416,7 @@ footer: 'Ch05 黑箱測試'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch05/sqa-ch05-ccq2.png" alt="CCQ2 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq2)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq2" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq2.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -636,9 +632,7 @@ footer: 'Ch05 黑箱測試'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch05/sqa-ch05-ccq3.png" alt="CCQ3 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq3)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq3" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq3.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -778,9 +772,7 @@ footer: 'Ch05 黑箱測試'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch05/sqa-ch05-ccq4.png" alt="CCQ4 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq4)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq4" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq4.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -885,9 +877,7 @@ footer: 'Ch05 黑箱測試'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch05/sqa-ch05-ccq5.png" alt="CCQ5 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq5)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq5" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq5.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -1065,9 +1055,7 @@ footer: 'Ch05 黑箱測試'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch05/sqa-ch05-ccq6.png" alt="CCQ6 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq6)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq6" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq6.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -1197,9 +1185,7 @@ assertThrows(StackFullException.class, () -> s.push(400));
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch05/sqa-ch05-ccq7.png" alt="CCQ7 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq7)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq7" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq7.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -1342,9 +1328,7 @@ public class AdditionProperties {
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch05/sqa-ch05-ccq8.png" alt="CCQ8 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq8.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -1492,6 +1476,7 @@ public class AdditionProperties {
 </div>
 
 ---
+<!-- id: sqa-ch05-ccq1 -->
 
 <!-- header: '附錄：課堂互動參考解答' -->
 
@@ -1665,3 +1650,7 @@ public class AdditionProperties {
   setTimeout(initHeaderDropdown, 400);
 })();
 </script>
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq1.png" width="120"></a>

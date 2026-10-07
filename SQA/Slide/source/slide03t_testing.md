@@ -295,8 +295,7 @@ footer: 'Ch03 軟體測試基礎'
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq2"><img src="../../img/ch03/sqa-ch03-ccq2.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq2">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq2" target="_blank"><img src="../../img/ch03/sqa-ch03-ccq2.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -577,8 +576,7 @@ double div(double x, double y) {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq3"><img src="../../img/ch03/sqa-ch03-ccq3.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq3">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq3" target="_blank"><img src="../../img/ch03/sqa-ch03-ccq3.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -926,8 +924,7 @@ double div(double x, double y) {
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-short1"><img src="../../img/ch03/sqa-ch03-short1.png" alt="QR Code" /></a>
-    <br><a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-short1">[課堂互動]</a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-short1" target="_blank"><img src="../../img/ch03/sqa-ch03-short1.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -976,6 +973,7 @@ double div(double x, double y) {
 > 各題答案與關鍵解析
 
 ---
+<!-- id: sqa-ch03-ccq2 -->
 
 ## 課堂互動參考解答
 
@@ -1130,3 +1128,7 @@ double div(double x, double y) {
   setTimeout(initHeaderDropdown, 400);
 })();
 </script>
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq2)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq2" target="_blank"><img src="../../img/ch03/sqa-ch03-ccq2.png" width="120"></a>

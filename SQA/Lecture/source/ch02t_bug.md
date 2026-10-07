@@ -67,11 +67,6 @@ Ch02 知識架構全景：
 <!-- id: sqa-ch02-ccq1 -->
 #### 🙋 **概念核對問答 (CCQ 1)**
 
-
-
-
-
-
 **問題**
 
 工程師在撰寫銀行轉帳演算法時，誤將手續費計算公式的減號寫成加號，並將程式碼編譯部署到伺服器。但在當天的日常營運中，所有客戶轉帳金額均未達到觸發扣除手續費的門檻，因此沒有任何客戶發現轉帳異常。依據 IEEE 軟體工程定義，此時系統處於何種狀態？
@@ -80,6 +75,8 @@ A) 系統已發生失效 (Failure)
 B) 程式碼中存在缺陷 (Fault/Defect)，但尚未表現為系統失效 (Failure)  
 C) 工程師並未犯錯 (Mistake)，因為系統正常運作  
 D) 該程式碼完全符合軟體品質的正確性定義
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq1)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -94,8 +91,6 @@ D) 該程式碼完全符合軟體品質的正確性定義
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq1)
 
 ### 2.1.2 規格導致的缺陷
 
@@ -132,11 +127,6 @@ D) 該程式碼完全符合軟體品質的正確性定義
 <!-- id: sqa-ch02-ccq2 -->
 #### 🙋 **概念核對問答 (CCQ 2)**
 
-
-
-
-
-
 **問題**
 
 某專案經理向客戶抱怨：「使用者輸入了負數的年齡導致伺服器當機，這是使用者的操作錯誤，不是我們程式的 Bug，因為規格書上根本沒寫年齡可以是負數！」從現代軟體工程與 SQA 的角度，下列評述何者最為正確？
@@ -144,7 +134,9 @@ D) 該程式碼完全符合軟體品質的正確性定義
 A) 經理說法完全合理，合約規格未載明的邊界輸入，團隊無防禦義務  
 B) 資料庫欄位只要設為整數，程式遭遇任何數值當機皆屬於環境問題  
 C) 此屬典型規格遺漏與防禦缺失，系統應驗證非法輸入並優雅回報錯誤  
-D) 未明訂之規格只能當作新需求變更，驗收前不應要求修復當機異常  
+D) 未明訂之規格只能當作新需求變更，驗收前不應要求修復當機異常
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq2)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -157,8 +149,6 @@ D) 未明訂之規格只能當作新需求變更，驗收前不應要求修復�
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq2)
 
 ### 2.1.3 常見編碼錯誤分類
 
@@ -330,11 +320,6 @@ Uncle Bob 在書中訪談了多位軟體工程界的傳奇大師，每位大師�
 <!-- id: sqa-ch02-ccq3 -->
 #### 🙋 **概念核對問答 (CCQ 3)**
 
-
-
-
-
-
 **問題**
 
 資深工程師在進行 Code Review 時，發現後輩工程師寫了一段 150 行的付款結帳方法 `checkout()`，裡面充斥著 5 層 if-else 巢狀判斷，並且作者在旁邊寫了 40 行詳細的註解解釋每一層判斷的用途。根據 Clean Code 與軟體品質設計原則，下列哪一項重構建議最為恰當？
@@ -343,6 +328,8 @@ A) 只要註解寫得夠詳細且測試有過，150 行與 5 層巢狀是完全�
 B) 應利用「提早回傳 (Guard Clauses)」減少巢狀層級，並運用「萃取方法 (Extract Method)」將驗證、計算折扣、扣款等子邏輯拆分成具備自我解釋能力的小函式，進而刪除冗餘的解釋性註解  
 C) 應將註解全部翻譯成英文以提升國際化品質，其餘邏輯保持不變  
 D) 應把所有 150 行程式碼壓縮成一行 Lambda 表達式以減少行數
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq3)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -358,8 +345,6 @@ D) 應把所有 150 行程式碼壓縮成一行 Lambda 表達式以減少行數
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq3)
 
 ### 2.2.6 重大迷思辨析：Clean Code 等於沒有 Bug 嗎？
 
@@ -385,11 +370,6 @@ D) 應把所有 150 行程式碼壓縮成一行 Lambda 表達式以減少行數
 <!-- id: sqa-ch02-ccq4 -->
 #### 🙋 **概念核對問答 (CCQ 4)**
 
-
-
-
-
-
 **問題**
 
 某新進工程師向研發主管報告：「這段金融交易模組的程式碼經過徹底重構，完全符合 Clean Code 原則——變數命名精準、每個函式不超過 10 行、無任何深層巢狀、且完全消除了重複程式碼。因此我可以 100% 保證這段模組上線後絕對不會有任何 Bug！」從軟體品質保證 (SQA) 與軟體工程的角度，下列評述何者最為精準？
@@ -398,6 +378,8 @@ A) 該工程師的說法完全正確，因為 Clean Code 的核心定義就是�
 B) 該工程師混淆了「內部品質」與「外部品質」；Clean Code 雖然極大化了程式碼的可讀性與可維護性，但無法保證業務規則理解正確或算式毫無漏洞，仍需仰賴自動化測試與規格驗證來確保無 Bug  
 C) 只要函式行數在 10 行以內，現代 IDE 與編譯器就會自動進行形式化邏輯證明，確保無邏輯錯誤  
 D) Clean Code 主要是針對前端 UI 介面的規範，後端核心交易模組的重構並不會帶來實質品質效益
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq4)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -413,8 +395,6 @@ D) Clean Code 主要是針對前端 UI 介面的規範，後端核心交易模�
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq4)
 
 ## 2.3 除錯思維與方法 (Debugging)
 
@@ -464,7 +444,9 @@ $$(p \lor q) \implies (r \land s)$$
 A) 系統此時既沒有發生記憶體流失，也沒有發生資料庫連線池耗盡 ($\neg p \land \neg q$)  
 B) 系統可能正在發生記憶體流失，但因連線池未耗盡，所以尚未觸發警報  
 C) 只要確認沒有寫入崩潰日誌，就能推斷伺服器必定發生了資料庫連線池耗盡  
-D) 只要重新啟動資料庫以確保連線池正常 ($\neg q$)，系統日後就絕對不可能再觸發警報  
+D) 只要重新啟動資料庫以確保連線池正常 ($\neg q$)，系統日後就絕對不可能再觸發警報
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq-logic)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -489,7 +471,9 @@ D) 只要重新啟動資料庫以確保連線池正常 ($\neg q$)，系統日後
 
 在 2026 年，大三學生幾乎天天都在使用 LLM（ChatGPT, Claude, Copilot）來幫忙找 Bug。然而，**AI 輔助除錯存在巨大的陷阱與正確的使用 SOP**：
 
+<!-- id: sqa-ch02-ccq1 -->
 #### ⚠️ AI 除錯的兩大常見陷阱
+
 1. 「**膠帶式修復 (Band-aid / Patch Fix)**」：
    * 當你把 `NullPointerException` 的錯誤訊息貼給 AI，AI 往往會給出 `if (obj != null) { ... }` 這種表面修復。
    * **問題**：這只是掩蓋了錯誤，`obj` 為 null 的根本原因（如上游初始化失敗、資料庫查詢為空）完全沒有被解決，錯誤只是被延遲推遲到更難查的地方！
@@ -501,13 +485,10 @@ D) 只要重新啟動資料庫以確保連線池正常 ($\neg q$)，系統日後
 2. **要求根因解釋而非直接給程式碼**：Prompt：「*請分析引發此 Exception 的 3 個可能根本原因，並指出此修復是否會破壞任何前置條件。*」
 3. **先寫測試再修復 (Test-First Bug Fix)**：利用 AI 生成一個「**專門重現該 Bug 的失敗單元測試**」，修復後測試轉綠，並跑完整體 CI 測試確認無回歸。
 
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq1)
+
 <!-- id: sqa-ch02-ccq5 -->
 #### 🙋 **概念核對問答 (CCQ 5)**
-
-
-
-
-
 
 **問題**
 
@@ -517,6 +498,8 @@ A) 這是絕佳的快速修復方案，因為系統再也不會拋出例外中�
 B) 這是危險的「治標不治本（Swallowing Exception）」，雖然表象不報錯，但底層多執行緒並發衝突與資料不一致依然存在，日後會引發更嚴重的資料損壞  
 C) 只要 AI 給出的程式碼能通過編譯，就代表已經通過軟體品質驗證  
 D) 只有在 Java 8 以前才會有並發問題，現代 Java 框架不需要理會此例外
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq5)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -529,8 +512,6 @@ D) 只有在 Java 8 以前才會有並發問題，現代 Java 框架不需要理
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq5)
 
 ## 2.4 除錯工具實務 (Debuggers)
 
@@ -605,6 +586,136 @@ D) 只有在 Java 8 以前才會有並發問題，現代 Java 框架不需要理
 > * 例外架構：[`LabDemo/docs/u02_robust/exception.md`](../../LabDemo/docs/u02_robust/exception.md)
 > * 結構化日誌：[`LabDemo/docs/u02_robust/logging.md`](../../LabDemo/docs/u02_robust/logging.md)
 
+<!-- id: sqa-ch02-ccq6a -->
+#### 🙋 **概念核對問答 (CCQ 6A：斷言最佳時機)**
+
+**問題**：在以下關於 Java 斷言（`assert`）的實務作法中，哪一項是**最危險的嚴重錯誤（Anti-Pattern）**？
+
+- A. 在私有排序演算法結束前，斷言 `assert isSorted(data);` 確保演算法無後置邏輯缺陷
+- B. 在公開 API 入口使用 `assert amount > 0;` 來校驗外部呼叫端傳入的轉帳金額
+- C. 在 `switch-case` 處理完所有枚舉狀態後，在 `default:` 加上 `assert false;` 防範未列舉狀態
+- D. 在 Maven Surefire 設定 `<enableAssertions>true</enableAssertions>` 以便在 CI/CD 捕捉不變量違規
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq6a)
+
+<details>
+<summary>點擊查看答案與解析</summary>
+
+**正確答案**：B
+**解析**：公開 API 在生產環境因預設關閉斷言 (`-da`)，`assert` 會被直接跳過導致非法參數直接穿透！公開方法必須拋出例外（如 `IllegalArgumentException`，保證 100% 執行）。
+</details>
+
+---
+
+<!-- id: sqa-ch02-ccq6b -->
+#### 🙋 **概念核對問答 (CCQ 6B：斷言副作用陷阱)**
+
+**情境**：一位工程師寫下了 `assert activeUsers.remove(targetUser) : "找不到欲登出的使用者";`。  
+**問題**：當這套系統在正式營運環境以預設 JVM 參數（未開啟 `-ea`）執行時，會引發什麼最嚴重的問題？
+
+- A. 程式在執行該行時拋出 `AssertionError` 並異常中斷
+- B. `remove()` 仍然會被呼叫，只是如果找不到使用者時不會拋出警告訊息
+- C. 整行敘述直接被 JVM 跳過忽略，`targetUser` **完全沒有被從名單中移除**，引發記憶體洩漏與狀態混亂！
+- D. JVM 會自動將 `assert` 轉譯為 `IllegalArgumentException` 進行前置攔截
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq6b)
+
+<details>
+<summary>點擊查看答案與解析</summary>
+
+**正確答案**：C
+**解析**：斷言條件式必須是 Pure Expression；當 `-ea` 關閉時整個表達式不被執行，導致 `remove()` 根本未呼叫，產生記憶體洩漏與狀態混亂。
+</details>
+
+---
+
+<!-- id: sqa-ch02-ccq7a -->
+#### 🙋 **概念核對問答 (CCQ 7A：受檢與未檢例外)**
+
+**問題**：Java 將 `NullPointerException` 歸為 `RuntimeException`（未檢例外），而將 `IOException` 歸為 Checked Exception（受檢例外）。這背後的核心軟體架構思維為何？
+
+- A. Checked Exception 代表可預期的外部環境異常，編譯器強制呼叫端擬定降級或因應方案 (遵循 CDR 原則)
+- B. Unchecked Exception 代表系統底層硬體損毀，應用程式絕不應進行處理
+- C. 面對 `NullPointerException` 最佳做法是在每一處呼叫外層加上 `try-catch` 予以掩飾
+- D. 兩者僅是命名風格差異，編譯器在編譯時期的檢查行為完全相同
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq7a)
+
+<details>
+<summary>點擊查看答案與解析</summary>
+
+**正確答案**：A
+**解析**：Checked Exception 代表可預期外部環境異常，編譯器強制要求呼叫端提供因應降級（CDR 原則）；Unchecked 代表內部程式邏輯瑕疵。
+</details>
+
+---
+
+<!-- id: sqa-ch02-ccq7b -->
+#### 🙋 **概念核對問答 (CCQ 7B：生吞例外與資源洩漏)**
+
+**情境**：工程師寫了如下讀檔代碼：  
+`try { var r = new BufferedReader(...); return r.readLine(); } catch (Exception e) { return null; }`  
+**問題**：這段程式碼包含哪兩大嚴重軟體品質缺陷？
+
+- A. 缺乏泛型安全檢查，且未將變數宣告為 `final`
+- B. 未釋放作業系統檔案控制代碼造成資源洩漏；生吞例外遮蔽真兇並引發下游連鎖 NPE
+- C. 應將 `catch (Exception e)` 擴大改為 `catch (Throwable t)`
+- D. `BufferedReader` 效率過低，應全面改用 `Scanner`
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq7b)
+
+<details>
+<summary>點擊查看答案與解析</summary>
+
+**正確答案**：B
+**解析**：未用 `try-with-resources` 導致 OS 檔案描述符耗盡；`catch(Exception) return null` 生吞例外遮蔽故障根因並在下游連鎖觸發 NPE。
+</details>
+
+---
+
+<!-- id: sqa-ch02-ccq8a -->
+#### 🙋 **概念核對問答 (CCQ 8A：日誌傳播與 additivity)**
+
+**情境**：在 `log4j2.xml` 中為某個業務類別配置了獨立的 `<Logger>` 與 `ConsoleAppender`。執行時發現終端機上的每一行日誌都**連續印出兩次一模一樣的訊息**！  
+**問題**：造成此問題的底層機制是什麼？在 XML 中應如何修正？
+
+- A. JVM 啟動了雙執行緒通道；應在 VM options 設定 `-Dlog.threads=1`
+- B. 日誌事件向上冒泡至 `<Root>` 造成重複打印；應在 `<Logger>` 加上 `additivity="false"`
+- C. PatternLayout 格式重複宣告；應從 pattern 移除 `%msg`
+- D. Log4j 2 缺少 SLF4J 橋接器依賴；應在 `pom.xml` 加入轉接層
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq8a)
+
+<details>
+<summary>點擊查看答案與解析</summary>
+
+**正確答案**：B
+**解析**：Log4j2 預設將日誌事件向上冒泡至 Root 造成重複打印；應在 Logger 加上 `additivity="false"`。
+</details>
+
+---
+
+<!-- id: sqa-ch02-ccq8b -->
+#### 🙋 **概念核對問答 (CCQ 8B：效能防衛與鏈路追蹤)**
+
+**程式填空題**：請選出在日誌效能防衛與多執行緒鏈路追蹤中，最符合工業級標準的代碼組合：  
+① 輸出大型陣列日誌前防衛門檻：`if (__________) logger.debug("...", Arrays.toString(huge));`  
+② 執行緒任務結束後清理 MDC 避免污染：`finally { __________; }`
+
+- A. ① `logger.isDebugEnabled()` | ② `MDC.clear()`
+- B. ① `logger.isInfoEnabled()` | ② `System.gc()`
+- C. ① `huge.length > 0` | ② `logger.flush()`
+- D. ① `assert huge != null` | ② `Thread.yield()`
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq8b)
+
+<details>
+<summary>點擊查看答案與解析</summary>
+
+**正確答案**：A
+**解析**：即使關閉 DEBUG，方法參數仍會先執行字串序列化導致 GC 飆高，需用 `isDebugEnabled()` 防衛；執行緒池任務結束後必須在 `finally` 呼叫 `MDC.clear()` 防止污染。
+</details>
+
 ---
 
 ## 2.6 缺陷管理與議題追蹤 (Defect Management & BTS)
@@ -667,7 +778,9 @@ D) 只有在 Java 8 以前才會有並發問題，現代 Java 框架不需要理
 3. **IBM 正交缺陷分類法 (ODC, Orthogonal Defect Classification)**：
    * 由 IBM 院士 Ram Chillarege 提出，將缺陷依語意根因正交劃分（如 Function, Assignment, Interface, Checking, Timing/Serialization），並依發現時機（Inspection, Unit Test, System Test）追溯缺陷逃逸原因，是量化評估測試完整性的大師級理論。
 
+<!-- id: sqa-ch02-ccq2 -->
 #### 📊 實證研究與行業報告 (Empirical Studies & Industry Reports)
+
 1. **Boehm / NIST 指數級修復成本定律**：
    * 軟體工程大師 Barry Boehm 與美國國家標準技術研究所 (NIST) 實證指出：缺陷越晚被發現，其修復成本呈**指數級非線性暴增**：
      * 需求分析階段發現：**1x** 成本基準。
@@ -693,7 +806,6 @@ D) 只有在 Java 8 以前才會有並發問題，現代 Java 框架不需要理
 | **GitHub Issues** | 商業/雲端 (原生整合)| 與 Git 原始碼庫、Pull Request、GitHub Actions CI/CD 原生深度整合 | 開發者中心、開源社群與雲原生團隊 |
 
 ---
-
 ### 2.6.3 現代以 GitHub 為核心的版本與議題管理 (GitHub Issues, PR & Branching)
 
 在現代軟體工程中，缺陷追蹤系統 (BTS) 不再是孤立的工單軟體，而是與**版本控制系統 (Git)** 及 **持續整合 (CI/CD)** 深度融為一體的協同工作流。以 **GitHub** 為代表的平台已成為現代工程團隊的標配實務。
@@ -773,6 +885,7 @@ D) 只有在 Java 8 以前才會有並發問題，現代 Java 框架不需要理
 
 ---
 
+<!-- id: sqa-ch02-ccq3 -->
 ## ✍️ 2.7 綜合練習
 
 1. **Bug / Fault / Failure 辨析**：
@@ -830,6 +943,8 @@ public class MaxHeap {
 
 ---
 
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq3)
+
 <!-- id: sqa-ch02-fill1 -->
 #### 🙋 **4. 核心概念填空挑戰 (一)：缺陷因果與契約防禦**
 
@@ -840,6 +955,8 @@ public class MaxHeap {
 
 1. **錯的因果鏈** (2.1 臭蟲因果理論)：工程師心智思維中的人為失誤稱為 **[ ① ______ ]**，反映在程式碼中成為靜態的 **[ ② ______ ]**；當該行程式碼被執行，會引發記憶體內部的 **[ ③ ______ ]**，最終造成外部可見的行為偏離，稱為 **[ ④ ______ ]**。
 2. **契約式設計** (2.5 契約防禦 DbC)：呼叫端必須負責滿足的是 **[ ⑤ ______ ]**；方法保證在執行完畢後達成的狀態是 **[ ⑥ ______ ]**；類別在任何公開方法執行前後皆必須恆成立的條件是 **[ ⑦ ______ ]**。
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-fill1)
 
 <details>
 <summary>點擊查看【核心概念填空挑戰 (一)】答案與解析</summary>
@@ -867,6 +984,8 @@ public class MaxHeap {
 1. **缺陷管理二維度** (2.6 團隊治理)：衡量缺陷對系統架構破壞深淺程度的是 **[ ① ______ ]**；決定開發團隊排程修復順序的是 **[ ② ______ ]**。
 2. **整潔程式碼與防錯設計** (2.2 源頭預防)：提早判斷無效條件並直接回傳、消除多層巢狀結構的重構技巧是 **[ ③ ______ ]**；程式碼中雖能正常運作但暗示結構不良、日後難以維護的特徵稱為 **[ ④ ______ ]**。
 3. **科學除錯與工具實務** (2.3 科學排查 ＆ 2.4 IDE 工具)：排查問題的第一步是穩定且完全 **[ ⑤ ______ ]** 臭蟲；在 IDE 中僅在特定表達式成立時才中斷程式的工具是 **[ ⑥ ______ ]**；修復後執行既有測試以確保未破壞其他功能的程序稱為 **[ ⑦ ______ ]**。
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-fill2)
 
 <details>
 <summary>點擊查看【核心概念填空挑戰 (二)】答案與解析</summary>
@@ -899,6 +1018,8 @@ public class MaxHeap {
 * **案件 6【不痛不癢但商譽暴跌】**：跨國金融公司官網首頁正中央的主視覺，將英文單字 `Security` 拼錯為 `Securty`，系統一切運行正常無崩潰。
 * **案件 7【修好了 A 卻弄壞了 B】**：工程師修復登入頁面排版並關閉 Ticket，上線後忘記密碼功能卻因此損毀，測試團隊緊急重啟該 Ticket。
 
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-game)
+
 <details>
 <summary>點擊查看【除錯偵探所 Game 挑戰】答案與解析</summary>
 
@@ -911,5 +1032,3 @@ public class MaxHeap {
 * **案件 7：G (迴歸缺陷導致回開)** —— 修復 A 卻弄壞 B，缺乏迴歸測試導致已關閉的 Ticket 需被 Reopen。
 
 </details>
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-game)

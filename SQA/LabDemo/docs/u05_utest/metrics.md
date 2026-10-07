@@ -83,6 +83,7 @@ Install `Cyclomatic Complexity` metric to your Intellij
 
 ---
 
+<!-- id: sqa-u05-metrics-ccq1 -->
 ## 📊 總結與關聯性
 
 MetricsReloaded 提供的這些指標通常需要**結合起來**看，才能全面評估程式碼品質：

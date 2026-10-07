@@ -184,9 +184,7 @@ footer: 'Ch04 軟體檢視'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch04/sqa-ch04-ccq1.png" alt="CCQ1 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq1)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq1" target="_blank"><img src="../../img/ch04/sqa-ch04-ccq1.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -390,9 +388,7 @@ footer: 'Ch04 軟體檢視'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch04/sqa-ch04-ccq2.png" alt="CCQ2 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq2)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq2" target="_blank"><img src="../../img/ch04/sqa-ch04-ccq2.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -559,9 +555,7 @@ footer: 'Ch04 軟體檢視'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch04/sqa-ch04-ccq3.png" alt="CCQ3 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq3)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq3" target="_blank"><img src="../../img/ch04/sqa-ch04-ccq3.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -733,9 +727,7 @@ footer: 'Ch04 軟體檢視'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch04/sqa-ch04-ccq4.png" alt="CCQ4 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq4)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq4" target="_blank"><img src="../../img/ch04/sqa-ch04-ccq4.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -1020,9 +1012,7 @@ footer: 'Ch04 軟體檢視'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch04/sqa-ch04-ccq5.png" alt="CCQ5 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq5)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq5" target="_blank"><img src="../../img/ch04/sqa-ch04-ccq5.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -1129,14 +1119,13 @@ footer: 'Ch04 軟體檢視'
 </div>
 <div class="ccq-logo">
 
-<img src="../../img/ch04/sqa-ch04-ccq6.png" alt="CCQ6 QR Code" />
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq6)
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq6" target="_blank"><img src="../../img/ch04/sqa-ch04-ccq6.png" alt="QR Code" /></a>
 
 </div>
 </div>
 
 ---
+<!-- id: sqa-ch04-ccq1 -->
 
 <!-- header: '本章重點導讀' -->
 
@@ -1308,3 +1297,7 @@ footer: 'Ch04 軟體檢視'
   setTimeout(initHeaderDropdown, 400);
 })();
 </script>
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq1)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq1" target="_blank"><img src="../../img/ch04/sqa-ch04-ccq1.png" width="120"></a>

@@ -190,13 +190,18 @@ VS Code 與 Antigravity IDE 執行 Java 程式碼時，可透過以下兩種方�
 
 ---
 
+<!-- id: sqa-u02-assertion-ccq1 -->
 ## 6. 🧠 觀念核對問答 (CCQ - Concept Check Questions)
 
 在開始自主動手練習前，請透過以下自我測驗題檢驗自己對**防禦性程式設計與斷言機制**的掌握度。先自行思考或在草稿紙寫下答案，再點開摺疊區塊核對！
 
 ---
 
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-assertion-ccq1)
+
+<!-- id: sqa-u02-assertion-ccq2 -->
 ### ❓ CCQ 1：公開 API 參數檢查 vs. 斷言陷阱（觀念辨析）
+
 **情境**：一位新進工程師在負責轉帳模組的公開函式庫時，寫了如下程式碼：
 ```java
 public class BankTransferService {
@@ -212,6 +217,8 @@ public class BankTransferService {
 **問題**：
 1. 當這段程式碼部署到正式營運（Production）的伺服器時，最嚴重的安全隱患是什麼？為什麼？
 2. 針對公開方法（Public API）的防衛性檢查，業界標準的最佳實踐是什麼？
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-assertion-ccq2)
 
 <details>
 <summary>💡 點擊展開：CCQ 1 答案與深度解析</summary>
@@ -238,7 +245,9 @@ public void transferMoney(Account from, Account to, double amount) {
 
 ---
 
+<!-- id: sqa-u02-assertion-ccq3 -->
 ### ❓ CCQ 2：斷言內部具副作用 (Side Effects) 的致命 Bug（程式辨析）
+
 **情境**：請觀察以下這段管理在線名單的程式碼：
 ```java
 public class SessionManager {
@@ -254,6 +263,8 @@ public class SessionManager {
 ```
 **問題**：
 在開發測試環境（已開 `-ea`）測試時一切正常，但當程式碼發布到正式環境（未開 `-ea`）執行時，這段程式碼會發生什麼不可思議的 Bug？
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-assertion-ccq3)
 
 <details>
 <summary>💡 點擊展開：CCQ 2 答案與深度解析</summary>
@@ -275,7 +286,9 @@ assert removed : "登出失敗：該使用者原本就不在線上清單中！";
 
 ---
 
+<!-- id: sqa-u02-assertion-ccq4 -->
 ### ❓ CCQ 3：控制流程不變量與狀態斷言（程式填空題）
+
 **題目**：請閱讀下方的訂單狀態處理器，在程式碼中的 `【空格 A】` 與 `【空格 B】` 填入正確且符合防禦性規範的程式碼：
 
 ```java
@@ -311,6 +324,8 @@ public class OrderWorkflow {
     }
 }
 ```
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-assertion-ccq4)
 
 <details>
 <summary>💡 點擊展開：CCQ 3 答案與深度解析</summary>

@@ -12,7 +12,9 @@
 * **【中央】受測系統 (System Under Test, SUT)**：系統內部程式碼、資料結構與演算法細節對測試人員隱藏不透明（黑盒子），聚焦於系統「做什麼 (What)」，而非「如何做 (How)」。
 * **【右側】輸出驗證 (Expected vs. Actual Output)**：比對受測系統實際產出的行為 (Actual Output) 是否完全符合需求規格所定義的預期結果 (Expected Output)。	
 
-> ### 💡 軟體測試之父：Glenford J. Myers
+> <!-- id: sqa-ch05-ccq1 -->
+### 💡 軟體測試之父：Glenford J. Myers
+
 > 1979 年，美國電腦科學家 **Glenford J. Myers** 出版了軟體工程史上的奠基經典巨著 **《The Art of Software Testing》（軟體測試的藝術）**。
 > Myers 提出了一句徹底顛覆軟體業界的革命性名言：
 > **「測試是為了發現錯誤而執行程式的過程，而不是為了證明程式沒有錯誤。」**  
@@ -20,7 +22,6 @@
 > 他破除了「測試全部通過 = 系統毫無瑕疵」的盲目樂觀，率先將黑箱測試三大核心技術——**等價類分割 (Equivalence Partitioning)**、**邊界值分析 (Boundary Value Analysis)** 與 **錯誤猜測 (Error Guessing)** 系統化。書中所提出的「經典三角形分類問題 (The Triangle Problem)」更成為五十年來全球資訊界檢驗黑箱測試案例完整性的教科書級標竿。
 
 ---
-
 ## 📌 本章目錄與重點導讀 (Table of Contents & Highlights)
 
 黑箱測試（Black-Box Testing）是從使用者與規格角度出發的行為驗證技術。本章完整涵蓋軟體工程最經典的輸入劃分、組合優化、邏輯決策與現代屬性測試：
@@ -55,15 +56,12 @@ Ch05 知識架構全景：
 [JUnit on GitHub](
 https://github.com/nlhsueh/sw-testing24/blob/main/lab/u05_utest/intro_junit.md)
 
-<!-- id: sqa-ch05-ccq1 -->
+<!-- id: sqa-ch05-ccq2 -->
 #### 🙋 概念核對問答 (CCQ 1)
 
-
-
-
-
-
 * **是非題**：在 JUnit 中，`assertSame(a, b)` 斷言的作用與 `assertEquals(a, b)` 完全相同，都是在驗證兩個物件的內容值是否相等（即比對 `a.equals(b)`）。
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq2)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -76,8 +74,6 @@ https://github.com/nlhsueh/sw-testing24/blob/main/lab/u05_utest/intro_junit.md)
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1)
 
 ## 5.2 邊界測試
 
@@ -256,19 +252,16 @@ FIG: 三角形程式：非獨立型一般邊界測試
 * [游泳池測試案例](https://docs.google.com/spreadsheets/d/1aE21HM1CCYPJtRBcb2hvYnHtOtqTdbzhQizSfn26hPk/edit?gid=0#gid=0)
 * [三角形測試案例](https://docs.google.com/spreadsheets/d/1fIEwtWf-MoXyBnr1eCET8lsrLSKQgCnYiq6w9WGZOMQ/edit?gid=1805558459#gid=1805558459)
 
-<!-- id: sqa-ch05-ccq2 -->
+<!-- id: sqa-ch05-ccq3 -->
 #### 🙋 概念核對問答 (CCQ 2)
-
-
-
-
-
 
 * **單選題**：假設某個受測方法接受 3 個彼此獨立的輸入參數。若採用「獨立型強固邊界測試 (Independent Robust BVA)」，其設計出的測試案例數量應為多少？
   A) 13  
   B) 19  
   C) 125  
   D) 343
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq3)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -282,8 +275,6 @@ FIG: 三角形程式：非獨立型一般邊界測試
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq2)
 
 ## 5.3 等價分割測試
 
@@ -449,19 +440,16 @@ FIG: Binary Search 的等價分割測試（*k*: key; *a*: array; *f*: found; *c*
 
 事實上，等價分割是為種觀念，在每個測試活動中都可應用。
 
-<!-- id: sqa-ch05-ccq3 -->
+<!-- id: sqa-ch05-ccq4 -->
 #### 🙋 概念核對問答 (CCQ 3)
-
-
-
-
-
 
 * **單選題**：在等價分割測試 (Equivalence Partitioning) 中，「弱 (Weak)」與「強 (Strong)」分類法的主要區別是什麼？
   A) 「弱」只涵蓋有效等價類，而「強」同時涵蓋有效與無效等價類  
   B) 「弱」基於單一錯誤假設（每個測試案例只測試一個區間的代表值），而「強」則基於多重錯誤假設（測試參數間代表值的笛卡爾積組合）  
   C) 「弱」不需要程式碼規格書，而「強」必須完全依照 SRS  
   D) 「弱」的測試案例數量一定比「強」多
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq4)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -474,8 +462,6 @@ FIG: Binary Search 的等價分割測試（*k*: key; *a*: array; *f*: found; *c*
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq3)
 
 ## 5.4 全成對組合測試
 
@@ -595,19 +581,16 @@ All pair testing 工具的開發：
 * **Allpairs Generator**, 容易取得，免費, Perl 腳本, 無原生的 Java 版本,Perl 寫成的腳本，需要在系統中安裝 Perl 環境。
 * ACTS (NIST), 容易取得，免費, Java (JAR 檔案), 由美國國家標準與技術研究院 (NIST) 開發的，是 Java 寫成的, 功能強大，支援更高的強度 (t-way)，且為 Java 使用者設計。
 
-<!-- id: sqa-ch05-ccq4 -->
+<!-- id: sqa-ch05-ccq5 -->
 #### 🙋 概念核對問答 (CCQ 4)
-
-
-
-
-
 
 * **單選題**：全成對測試 (Pairwise / All-Pairs Testing) 能夠大幅縮減測試案例數量，其在工程上的核心理論依據是什麼？
   A) 軟體系統中的缺陷通常需要至少三個以上的參數交互作用才會觸發  
   B) 絕大多數的軟體缺陷都是由「單一變數」或「任意兩個變數之間的交互作用 (2-way Interaction)」所引起的  
   C) 配對測試是白箱測試的一種，可以直接涵蓋所有的程式碼分支路徑  
   D) 成對測試可以保證 100% 涵蓋多變數系統的所有笛卡爾積組合
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq5)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -620,8 +603,6 @@ All pair testing 工具的開發：
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq4)
 
 ## 5.5 測試案例的優化
 
@@ -654,19 +635,16 @@ Failure Mode and Effects Analysis, FMEA
     * **高風險優先：** 識別出那些**最可能**出錯或一旦出錯會造成**最嚴重影響**的因子和類別。
     * **低風險簡化：** 對於那些幾乎不可能出錯、或者其錯誤影響很小的因子，可以將其測試降級為**僅進行有效類別的組合測試**，甚至只進行**單個有效值**的測試。
 
-<!-- id: sqa-ch05-ccq5 -->
+<!-- id: sqa-ch05-ccq6 -->
 #### 🙋 概念核對問答 (CCQ 5)
-
-
-
-
-
 
 * **單選題**：關於「正交表測試 (Orthogonal Array Testing)」與一般「成對測試 (Pairwise Testing)」的比較，下列敘述何者正確？
   A) 正交表測試是隨機產生的，而 Pairwise 必須透過數學嚴格推導  
   B) 兩者都關注參數間的配對，但正交表更強調各因子組合的「均勻平衡性（正交性）」，而 Pairwise 僅要求任意兩因子的組合至少出現一次，因此 Pairwise 的案例數量通常更少且更有彈性  
   C) 只要變數的個數相同，正交表與 Pairwise 產生的測試案例清單必定完全一致  
   D) 正交表測試只能處理二分值（True/False）的變數組合
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq6)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -679,8 +657,6 @@ Failure Mode and Effects Analysis, FMEA
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq5)
 
 ## 5.6 決策表測試
 
@@ -763,19 +739,16 @@ FIG: 應用決策表測試法於 nextDay()
 
 ❓ 透過上述的決策表我們發現有些地方是無法確定的（打X的部份），因此分割需要再細一些，怎麼做呢？有需要修改分割嗎？
 
-<!-- id: sqa-ch05-ccq6 -->
+<!-- id: sqa-ch05-ccq7 -->
 #### 🙋 概念核對問答 (CCQ 6)
-
-
-
-
-
 
 * **單選題**：在軟體測試實務中，下列哪一種受測情境最適合優先採用「決策表測試 (Decision Table Testing)」來設計案例？
   A) 系統輸入參數彼此完全獨立，且有連續性數值邊界  
   B) 輸入參數之間存在複雜的商務邏輯與制約關係，不同的條件組合會觸發不同的系統動作或輸出結果  
   C) 系統的輸出僅與目前輸入值有關，與輸入條件的組合邏輯無涉  
   D) 系統的運作強烈依賴時間序列與物件歷史狀態的轉移
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq7)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -788,8 +761,6 @@ FIG: 應用決策表測試法於 nextDay()
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq6)
 
 ## 5.7 狀態測試
 
@@ -899,19 +870,16 @@ assertTrue(s.isEmpty());
 
 See [DemoJUnit](https://github.com/nlhsueh/sw-testing24/tree/main/Intellij/DemoJunit) 下 `state/Stack` 的完整程式碼與測試碼。
 
-<!-- id: sqa-ch05-ccq7 -->
+<!-- id: sqa-ch05-ccq8 -->
 #### 🙋 概念核對問答 (CCQ 7)
-
-
-
-
-
 
 * **單選題**：在狀態測試 (State Testing) 中，關於「狀態覆蓋 (State Coverage)」與「轉移覆蓋 (Transition Coverage)」的強度關係，下列敘述何者正確？
   A) 達到狀態覆蓋必定代表同時達到了轉移覆蓋  
   B) 轉移覆蓋的強度大於狀態覆蓋；若測試案例達到了轉移覆蓋（驗證了所有可能的轉移路徑），則必定已涵蓋了所有狀態（達到狀態覆蓋）  
   C) 兩者互相獨立，沒有任何包含或強弱關係  
   D) 狀態測試不需要考慮無效轉移（即在某狀態下輸入非法事件的反應）
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -925,20 +893,19 @@ See [DemoJUnit](https://github.com/nlhsueh/sw-testing24/tree/main/Intellij/DemoJ
 
 ---
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq7)
-
 ## 5.8 屬性基礎測試 (Property-Based Testing)
 
 在傳統的單元測試中，我們習慣採用 **範例基礎測試 (Example-Based Testing, EBT)**。我們手動挑選幾組具代表性的輸入資料（如邊界值、等價區間內的數值），然後寫出對應的預期輸出，並使用 `assertEquals` 等斷言進行驗證。然而，這種做法高度依賴測試工程師的經驗，容易漏掉那些難以預料的極端輸入（Edge Cases）。
 
 **屬性基礎測試 (Property-Based Testing, PBT)** 則是另一種典範轉移：它要求我們不去定義「具體的測試資料與預期輸出」，而是定義**「程式碼應該永遠滿足的數學屬性或狀態不變量 (Class/Algorithmic Invariants)」**。接著由測試框架自動生成成千上萬組不同的極端隨機測資，來試圖找出讓這個屬性失敗的反例。
 
-> ### 💡 屬性基礎測試先驅：John Hughes 與 QuickCheck
+> <!-- id: sqa-ch05-ccq9 -->
+### 💡 屬性基礎測試先驅：John Hughes 與 QuickCheck
+
 > **屬性基礎測試 (PBT)** 最初由瑞典查爾摩斯工學院教授、ACM Fellow **John Hughes** 與 Koen Claessen 於 2000 年共同提出，並發表了劃時代的函式庫 **QuickCheck**（榮獲 ACM SIGPLAN 最具影響力論文獎）。
 > 
 > John Hughes 的核心倡議是：**「不要手寫測試案例，定義程式屬性！(Don't write tests, specify properties!)」**  
 > 他認為傳統範例測試讓工程師浪費過多時間在思考個別測資，卻依然無法防範極端情境；PBT 讓人類回歸高層次的抽象規格思考，並交由電腦自動生成萬組隨機輸入。更關鍵的是，Hughes 發明了**「測資收縮 (Shrinking)」** 演算法，當隨機測資中觸發錯誤時，框架會自動二分逼近並縮減成最小反例（例如將長度 100 的亂碼陣列縮減至 `[0, -1]`），讓工程師能在數秒內抓出缺陷根本原因。現代主流生態系中的 Java `jqwik`、Python `Hypothesis` 與 TypeScript `fast-check`，皆源於 QuickCheck 的設計哲學。
-
 ### 5.8.1 核心概念：不變量與隨機測資
 
 1. **屬性 (Property) / 不變量 (Invariant)**：
@@ -984,18 +951,15 @@ public class AdditionProperties {
 > 🛠️ **實習手冊連結**：
 > * Property-Based Testing 實戰：[`../../LabDemo/docs/u04_utest/jqwik_property_based.md`](../../LabDemo/docs/u04_utest/jqwik_property_based.md)
 
-<!-- id: sqa-ch05-ccq8 -->
+<!-- id: sqa-ch05-ccq10 -->
 #### 🙋 概念核對問答 (CCQ 8)
-
-
-
-
-
 
 在屬性基礎測試 (Property-Based Testing) 中，我們不需要手動為每一組測試寫出確切的預期輸出數值，而是定義程式執行時必須永遠維持的「屬性或不變量」，並交由測試框架隨機生成大量測資來尋找反例。
 
 A) 正確 (True)
 B) 錯誤 (False)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq10)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -1008,8 +972,6 @@ B) 錯誤 (False)
 </details>
 
 ---
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8)
 
 ## ✨ Check
   
@@ -1047,6 +1009,7 @@ B) 錯誤 (False)
    - 狀態涵蓋度百分百，則事件涵蓋度必定百分百。
    - 對於 Stack 而言，push 是一個事件，full 是一個狀態。
 
+<!-- id: sqa-ch05-ccq11 -->
 ## ✍️ 練習
 
 ### 5.ex.spec 設計規格
@@ -1055,8 +1018,7 @@ B) 錯誤 (False)
 1. 由一群陣列中找出最大的值回傳
 2. 針對一個陣列做由小到大的排序
 3. 輸入一段文字和一個單字，回傳該單字在該文字出現的位置
-4. 輸入兩個字串型態的實數，回傳其相加的結果 
-
+4. 輸入兩個字串型態的實數，回傳其相加的結果
 ### 5.ex.pool 游泳池收費
 以下是一個游泳池收費系統的規則：(1) 一般票價 200 (2) 星期六日250元,除會員以外不打折 (3) 12歲以下、60歲（含）以上打八折 (4) 七點以前八折▫  (5) 團體打七折 (6) 會員打五折 (7) 各打折不得重疊使用。請依據以下方法進行測試，請先估算有多少測試案例，在把測試資料寫出來。	
 1. 強固邊界測試

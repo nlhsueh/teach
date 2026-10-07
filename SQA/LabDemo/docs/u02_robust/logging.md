@@ -164,7 +164,9 @@ Log4j 2 啟動時會自動在 **Classpath** 中尋找名為 `log4j2.xml` 的檔�
 * **`<Logger name="..." level="..." additivity="false">`**：
   - **白話：「特權貴賓通行道」**。針對特定的 Package 或 Class 指定更寬鬆（如 `DEBUG`）或更嚴格（如 `WARN`）的放行門檻。
 
+<!-- id: sqa-u02-logging-ccq1 -->
 #### 3. ⚠️ 必考避坑點：什麼是 `additivity="false"`？
+
 * **初學者最常見的困惑**：*「為什麼我的控制台每行日誌都被重複印了兩遍？？」*
 * **原因剖析**：
   - Log4j 2 預設採取「事件向上傳播（Bubbling）」機制。如果沒有寫 `additivity="false"`（預設為 `true`），當自訂 Logger 印完之後，會將這條日誌**再往上傳遞給它的父層（Root Logger）**，導致 Root 的 Appender 又印了一次！
@@ -172,7 +174,6 @@ Log4j 2 啟動時會自動在 **Classpath** 中尋找名為 `log4j2.xml` 的檔�
   - **「自訂 Logger 只要有綁定自己的 Appender，一律務必加上 `additivity="false"`！」**（白話：*到我這裡處理完就結案，別再往上呈報了！*）
 
 ---
-
 ### **企業級 log4j2.xml 設定策略指引**
 
 | 維度觀點 | 🛠️ 開發除錯階段 (Dev) | 🚀 正式生產環境 (Prod) |
@@ -356,13 +357,18 @@ public class LoggingExample {
 
 ---
 
+<!-- id: sqa-u02-logging-ccq2 -->
 ## 3. 🧠 觀念核對問答 (CCQ - Concept Check Questions)
 
 在開始自主動手練習前，請透過以下 3 道精選自我測驗題目檢核自己對 **日誌架構 (Log4j 2/SLF4J)、配置除錯、效能防衛與 MDC 鏈路追蹤** 的掌握度。請先自行思考，再點開摺疊區塊核對！
 
 ---
 
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-logging-ccq2)
+
+<!-- id: sqa-u02-logging-ccq3 -->
 ### ❓ CCQ 1：日誌重複打印與事件傳播 (additivity) 踩坑（除錯實戰題）
+
 **情境**：一位新同仁在設定 `log4j2.xml` 時，為了將氣泡排序的除錯日誌印在終端機螢幕上，寫下了如下配置：
 ```xml
 <Loggers>
@@ -381,6 +387,8 @@ public class LoggingExample {
 當他執行程式時，發現所有來自 `BubbleSortLoggingDemo` 的日誌，在終端機上竟然**連續印出兩次一模一樣的訊息**！
 1. 請問造成這種「靈異雙倍打印」的底層原因是什麼？
 2. 在 `log4j2.xml` 中應該如何修正？
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-logging-ccq3)
 
 <details>
 <summary>💡 點擊展開：CCQ 1 答案與深度解析</summary>
@@ -401,7 +409,9 @@ public class LoggingExample {
 
 ---
 
+<!-- id: sqa-u02-logging-ccq4 -->
 ### ❓ CCQ 2：效能防衛 (Guard Statement) 與字串序列化代價（效能架構題）
+
 **情境**：現代日誌框架（SLF4J / Log4j 2）都支援參數化佔位符（`{}`），例如 `logger.debug("目前進度: {}", count);`，可以避免手動字串拼接。但是，在排序演算法迴圈中，有位工程師寫了這行：
 ```java
 // largeArray 包含 100 萬筆整數資料
@@ -411,6 +421,8 @@ logger.debug("第 {} 輪排序後陣列狀態: {}", pass, Arrays.toString(largeA
 當這套系統上線部署到生產伺服器，日誌層級被設定為 `INFO`（即 `DEBUG` 等級被關閉）時：
 1. 這行日誌明明不會被印出來，但為什麼系統的 CPU 使用率依然飆高，甚至頻繁引發 JVM 垃圾回收暫停（GC Stop-The-World）？
 2. 針對這種高開銷運算，正確的防衛寫法（Guard Statement）應該如何編寫？
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-logging-ccq4)
 
 <details>
 <summary>💡 點擊展開：CCQ 2 答案與深度解析</summary>
@@ -432,7 +444,9 @@ logger.debug("第 {} 輪排序後陣列狀態: {}", pass, Arrays.toString(largeA
 
 ---
 
+<!-- id: sqa-u02-logging-ccq5 -->
 ### ❓ CCQ 3：多執行緒鏈路追蹤與 MDC 資源清理（程式填空題）
+
 **情境**：在後端高併發服務中，若多個執行緒同時處理外送訂單，控制台輸出的日誌會交織混亂，難以分辨哪行日誌屬於哪筆訂單。為了將日誌串接追蹤，我們會使用 SLF4J 的 **MDC (Mapped Diagnostic Context)**。
 
 **題目**：請閱讀下方的訂單處理方法，在程式碼中的 `【空格 A】`、`【空格 B】` 與 `【空格 C】` 填入正確的程式碼：
@@ -466,6 +480,8 @@ public class OrderDeliveryService {
     }
 }
 ```
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-u02-logging-ccq5)
 
 <details>
 <summary>💡 點擊展開：CCQ 3 答案與深度解析</summary>
