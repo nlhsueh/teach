@@ -1250,35 +1250,125 @@ public class BankAccount {
 
 ## 2.5.4 系統日誌機制 (Logging as Defense)
 
-- 💡 **為什麼需要日誌框架？（日誌 vs `System.err.println`）**：
-  - **1. 日誌等級過濾 (Level Filtering)**：
-    - 正式生產環境只記錄 `WARN` / `ERROR`，開發與除錯期動態開啟 `DEBUG`，無須改動任何程式碼。
-  - **2. 多目標靈活輸出 (Appenders)**：
-    - 透過配置可同時輸出至 Console 控制台、滾動日誌檔案 (`logs/app.log`) 或遠端 ELK / Grafana 監控中心。
-  - **3. 豐富結構化格式 (PatternLayout)**：
-    - 自動附加精確時間戳、執行緒名稱、來源類別與行號，事後排查一目了然。
-  - **4. 外部動態設定**：
-    - 透過 `log4j2.xml` 配置文件熱更新日誌行為，免重新編譯部署。
+<div class="card-deck">
+
+* > 💡 日誌是系統的「黑盒子記錄器」：在毫不知情的生產故障中，它是唯一的時光倒流工具。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### ⚖️ 為什麼絕不用 System.out / err？
+- **1. 無法動態過濾等級**：
+  - `println` 寫入程式碼後無法按環境（開發/生產）動態開啟或隱藏。
+- **2. 欠缺關鍵上下文**：
+  - 缺乏執行緒名稱、毫秒級時間戳、所屬類別與行號，多執行緒時訊息混亂穿插。
+- **3. 阻塞效能極差**：
+  - 終端機 I/O 是同步阻塞操作，高併發環境下直接成為系統效能瓶頸。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🛡️ 企業級日誌框架四大核心能力
+- **等級過濾 (Level Filtering)**：
+  - 生產環境只開 `INFO` / `WARN` / `ERROR`；排查時動態開啟 `DEBUG`。
+- **多目標輸送 (Appenders)**：
+  - 同時輸出至 Console、本地滾動檔案 (`logs/app.log`) 與遠端 ELK / Grafana。
+- **外部配置熱更新**：
+  - 透過 `log4j2.xml` 修改配置，**免重新編譯、免重新發布**。
+- **非同步日誌 (AsyncAppender)**：
+  - RingBuffer 記憶體隊列非同步寫入，降低業務吞吐量損耗。
+
+</div>
+</div>
+</div>
 
 ---
 
 ## 2.5.4 現代日誌框架架構：SLF4J + Log4j 2
 
-- 🏗️ **業界黃金架構：門面 (Facade) 與實作分離**：
-  - **SLF4J** 作為日誌介面門面（解耦），**Log4j 2** 作為高性能實作引擎。
-- 📊 **標準日誌等級階梯 (由低至高)**：
-  - `TRACE`（極細微流程） $\rightarrow$ `DEBUG`（開發偵錯） $\rightarrow$ `INFO`（正常里程碑） $\rightarrow$ `WARN`（潛在非預期） $\rightarrow$ `ERROR`（功能受損） $\rightarrow$ `FATAL`（系統崩潰）
-- ⚡ **結構化佔位符高效寫法**：
+<div class="card-deck">
+
+> 🏗️ 業界黃金標準：**SLF4J 介面門面 (Facade)** ＋ **Log4j 2 高效實作引擎**。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 📊 標準日誌等級階梯 (Log Levels)
+- `TRACE`：極微小流程（每一次相鄰元素比對與數值交換）
+- `DEBUG`：內部演算狀態轉換（每輪 pass 完成、提早結束旗標）
+- `INFO`：正常業務里程碑（開始排序、完成耗時度量）
+- `WARN`：潛在非預期但可容忍之警訊（空陣列、已排序輸入）
+- `ERROR`：功能受損或失敗（合約校驗失敗，需附帶完整堆疊）
+- `FATAL`：系統核心崩潰（資料庫斷線、磁碟空間爆滿）
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ⚡ 結構化佔位符與例外堆疊寫法
+- **❌ 劣質：字串拼接造成無謂浪費**：
   ```java
-  // ❌ 劣質：字串拼接在日誌等級未啟用時仍浪費 CPU 與記憶體
-  logger.debug("Processing order " + orderId + " for user " + userId);
-
-  // ✅ 優質：使用 {} 佔位符，按需延遲求值與格式化
-  logger.info("使用者 {} 成功完成訂單 {}，金額: ${}", userId, orderId, amount);
-
-  // ✅ 記錄例外堆疊：傳入 Throwable 物件自動列印完整 Call Stack
-  logger.error("金流扣款失敗，訂單編號: {}", orderId, e);
+  logger.debug("第 " + p + " 輪陣列: " + Arrays.toString(arr));
+  // 即使 DEBUG 等級關閉，字串拼接與 toString 仍白白執行！
   ```
+- **✅ 優質：使用 `{}` 佔位符按需替換**：
+  ```java
+  logger.info("排序完成！耗時: {} ms，交換: {} 次", cost, swaps);
+  ```
+- **✅ 完整堆疊：最後一個參數傳入 Throwable**：
+  ```java
+  logger.error("氣泡排序後置合約遭破壞: {}", msg, exception);
+  ```
+
+</div>
+</div>
+</div>
+
+---
+
+## 2.5.4 實戰示範：BubbleSortLoggingDemo 日誌全景
+
+<div class="card-deck">
+
+> 💡 貫徹氣泡排序主題：在演算法執行生命週期中，實踐等級分工、Guard 守衛防護與 MDC 鏈路追蹤。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🛡️ 效能防衛：Guard Statement
+- **大陣列序列化的記憶體隱患**：
+  - 呼叫 `Arrays.toString(data)` 會建立大量暫存字串，若每輪 pass 都呼叫，會造成極大的 GC 負擔。
+- **守衛條件 (Guard) 最佳實務**：
+  ```java
+  // 只有 DEBUG 開啟時才執行昂貴的字串序列化
+  if (logger.isDebugEnabled()) {
+      logger.debug("第 {} 輪排序完成 | 當前陣列: {}",
+                   pass + 1, Arrays.toString(data));
+  }
+  ```
+- **警訊與邊界提示 (WARN)**：
+  - 若 `data.length <= 1`，記錄 `logger.warn("長度 <= 1 無須排序");`
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🌐 鏈路追蹤：MDC 上下文標註
+- **分散式與多執行緒排查難題**：
+  - 數十個使用者同時送出排序任務時，日誌穿插交織，無法分辨是哪一個任務產生的輸出。
+- **MDC (Mapped Diagnostic Context) 實踐**：
+  ```java
+  try {
+      MDC.put("taskId", "TASK-8f12");
+      MDC.put("operator", "Prof.Hsueh");
+      logger.info("開始執行排序任務"); // 日誌自動掛載 taskId
+      sortWithLogging(data);
+  } finally {
+      MDC.clear(); // ⚠️ 必須在 finally 清理，避免執行緒池污染
+  }
+  ```
+
+</div>
+</div>
+</div>
 
 ---
 
