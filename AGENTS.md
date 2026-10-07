@@ -57,6 +57,12 @@
    * **開工**：`cd ~/oTeach/<課程> && git pull`
    * **開發**：在本機 SSD 快速編輯 Markdown、編譯投影片。
    * **收工**：`git add . && git commit -m "..." && git push`
+3. **教材封裝與自動化指令 (Custom Triggers)**：
+   * **觸發語句**：當使用者指示 **`zip the LabDemo`**、**`打包 LabDemo`** 或類似語句時：
+     - **自動執行動作**：立即執行腳本 `/Users/nick-mini-26/oTeach/scripts/zip_labdemo.sh`。
+     - **背景機制**：該腳本會將 `oTeach/SQA/LabDemo` 排除 `target/`、`.DS_Store`、`logs/*` 與 macOS `._*` 隱藏元資料，打包成最乾淨的 `LabDemo.zip`，並自動原子性更新至 Google Drive：
+       `~/Library/CloudStorage/GoogleDrive-nlhsueh@gmail.com/我的雲端硬碟/gTEACH/gTeachSQA/LabDemo-zip/LabDemo.zip`。
+     - **結果反饋**：執行完成後立即回報檔案大小與完整性檢查結果。
 
 ---
 
