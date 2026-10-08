@@ -1824,7 +1824,7 @@ public class BankAccount {
 
 ---
 
-## 課堂互動參考解答 (1/4)
+## 課堂互動參考解答 (1/5)
 
 - **CCQ 1（銀行轉帳公式與未觸發失效）**：
   - **正確答案：B**
@@ -1838,7 +1838,7 @@ public class BankAccount {
 
 ---
 
-## 課堂互動參考解答 (2/4)
+## 課堂互動參考解答 (2/5)
 
 - **CCQ 4（Clean Code 是否等於無 Bug）**：
   - **正確答案：B**
@@ -1849,7 +1849,7 @@ public class BankAccount {
 
 ---
 
-## 課堂互動參考解答 (3/4)：穩健性防禦 (斷言、例外、日誌)
+## 課堂互動參考解答 (3/5)：斷言與例外處理 (CCQ 6 & 7)
 
 - **CCQ 6A（斷言最佳時機）：正確答案 B**
   - 公開 API 在生產環境因預設關閉斷言 (`-da`)，`assert` 會被直接跳過導致非法參數直接穿透！公開方法必須拋出例外（保證 100% 執行）。
@@ -1859,6 +1859,11 @@ public class BankAccount {
   - Checked Exception 代表可預期外部環境異常，編譯器強制要求呼叫端提供因應降級（CDR 原則）；Unchecked 代表內部邏輯瑕疵。
 - **CCQ 7B（生吞例外與資源洩漏）：正確答案 B**
   - 未用 `try-with-resources` 導致 OS 檔案描述符耗盡；`catch(Exception) return null` 遮蔽故障根因並在下游連鎖觸發 NPE。
+
+---
+
+## 課堂互動參考解答 (4/5)：日誌系統與效能防衛 (CCQ 8)
+
 - **CCQ 8A（日誌傳播與 additivity）：正確答案 B**
   - Log4j2 預設將日誌事件向上冒泡至 Root 造成重複打印；應在 Logger 加上 `additivity="false"`。
 - **CCQ 8B（效能防衛與 MDC 鏈路追蹤）：正確答案 A**
@@ -1866,7 +1871,7 @@ public class BankAccount {
 
 ---
 
-## 課堂互動參考解答 (4/4)：2.7 填空與 Game 挑戰
+## 課堂互動參考解答 (5/5)：2.7 填空與 Game 挑戰
 
 - **2.7 填空挑戰參考答案**：
   - ① `Mistake`（人為失誤）、② `Fault / Defect`（靜態缺陷）、③ `Error State`（內部錯誤狀態）、④ `Failure`（系統失效）
