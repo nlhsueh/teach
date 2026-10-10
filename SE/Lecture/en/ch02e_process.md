@@ -276,6 +276,7 @@ Explanation: The V-Model's definitive breakthrough is horizontal symmetry: test 
 
 ---
 
+<!-- id: ase-ch02-pair1 -->
 ### 🗣️ Classroom Interactive Activity 1 — Process Model Matchmaker (Pair Discussion)
 
 > 💡 **Pair Discussion Scenario: Selecting the Right Software Process Model**
@@ -292,7 +293,6 @@ Explanation: The V-Model's definitive breakthrough is horizontal symmetry: test 
 > 3. **Hybrid Strategies**: For System C, how can a team blend plan-driven rigor (for the core tax calculation logic) with agile delivery (for the taxpayer web portal and accountant UI)?
 
 ---
-
 ## 2.3 The Mechanics of Change — Incremental and Iterative Development
 
 As the software industry entered the 1980s and 1990s, the fatal integration risks of plan-driven sequential models sparked a fundamental engineering re-evaluation. Software systems were growing too dynamic, and commercial markets too volatile, to tolerate 18-month sequential delivery schedules.
@@ -459,6 +459,7 @@ Explanation: An MVP must deliver standalone, end-to-end usable value that solves
 
 ---
 
+<!-- id: ase-ch02-pair2 -->
 ### 🗣️ Classroom Interactive Activity 2 — Slicing a Chess App (Group Discussion)
 
 > 💡 **Group Discussion Scenario: Incremental Delivery vs. Iterative Refinement**
@@ -481,7 +482,6 @@ Explanation: An MVP must deliver standalone, end-to-end usable value that solves
 >    * Explain why a team that spends 8 weeks building a photorealistic 3D piece rendering engine before the board can even calculate a valid Pawn move has committed the "standalone car wheel" anti-pattern.
 
 ---
-
 ## 2.4 The Mindset Shift — Agile Philosophy
 
 By the late 1990s, the software industry had reached an inflection point. Corporate software development was paralyzed by **heavyweight methodologies** (such as Rational Unified Process, SSADM, and military standard documentation).
@@ -839,6 +839,7 @@ Explanation: Flaccid Scrum occurs when organizations adopt agile project managem
 
 ---
 
+<!-- id: ase-ch02-pair3 -->
 ### 🗣️ Classroom Interactive Activity 3 — The Technical Debt Dilemma (Pair Discussion)
 
 > 💡 **Pair Discussion Scenario: Balancing Commercial Velocity with Engineering Rigor**
@@ -856,7 +857,6 @@ Explanation: Flaccid Scrum occurs when organizations adopt agile project managem
 > 2. **Martin Fowler's Debt Quadrant**: Does incurring technical debt under these circumstances represent *Prudent & Deliberate Debt* or *Reckless Debt*? What engineering practices prevent deliberate debt from turning into permanent "Flaccid Scrum"?
 
 ---
-
 ## 2.7 Technical Rigor — Extreme Programming (XP)
 
 To defeat technical debt and prevent Flaccid Scrum, software teams must look beyond project management to **software engineering discipline**.

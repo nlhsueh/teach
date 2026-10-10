@@ -137,15 +137,30 @@ const htmlContent = `<!DOCTYPE html>
       background-color: #f6f8fa;
       border-radius: 8px;
       border: 1px solid #e1e4e8;
-      padding: 14px;
-      font-size: 13px;
+      padding: 12px 14px;
+      font-size: 11.5px;
+      line-height: 1.45;
       page-break-inside: avoid;
+      break-inside: avoid;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .markdown-body pre code {
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 11.5px;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
     }
     .markdown-body table {
       border-collapse: collapse;
       width: 100%;
       margin: 16px 0;
       page-break-inside: avoid;
+      break-inside: avoid;
+      font-size: 13.5px;
     }
     .markdown-body table th {
       background-color: #f0f4f8;
@@ -157,6 +172,7 @@ const htmlContent = `<!DOCTYPE html>
     .markdown-body table td {
       padding: 8px 12px;
       border: 1px solid #d0d7de;
+      word-break: break-word;
     }
     .markdown-body table tr:nth-child(2n) {
       background-color: #f9fafb;
@@ -168,6 +184,7 @@ const htmlContent = `<!DOCTYPE html>
       display: block;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       page-break-inside: avoid;
+      break-inside: avoid;
     }
     .katex {
       font-size: 1.05em;
@@ -185,6 +202,31 @@ const htmlContent = `<!DOCTYPE html>
       margin: 28px 0;
       border: 0;
       border-top: 1px solid #e1e4e8;
+    }
+    @media print {
+      body {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .markdown-body pre {
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+      .markdown-body table {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      .markdown-body img {
+        max-width: 100% !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      h1, h2, h3, h4 {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
     }
   </style>
 </head>
@@ -247,20 +289,36 @@ async function printPdfWithPageNumbers() {
     'about:blank'
   ]);
 
-  // Wait for Chrome remote debugging port to start
-  await new Promise(r => setTimeout(r, 1000));
+  // Wait for Chrome remote debugging port to start with retry polling
+  let tabs = null;
+  for (let attempt = 0; attempt < 15; attempt++) {
+    await new Promise(r => setTimeout(r, 300));
+    try {
+      const data = await new Promise((resFn, rejFn) => {
+        const req = http.get(`http://127.0.0.1:${port}/json/list`, (res) => {
+          let body = '';
+          res.on('data', chunk => body += chunk);
+          res.on('end', () => resFn(body));
+        });
+        req.on('error', rejFn);
+      });
+      tabs = JSON.parse(data);
+      if (tabs && tabs.length > 0) break;
+    } catch (_) {}
+  }
+
+  if (!tabs || tabs.length === 0) {
+    try { chromeProc.kill(); } catch (_) {}
+    throw new Error('Chrome failed to start or remote debugging port unreachable');
+  }
 
   return new Promise((resolve, reject) => {
-    http.get(`http://127.0.0.1:${port}/json/list`, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', async () => {
-        try {
-          const tabs = JSON.parse(data);
-          const pageTab = tabs.find(t => t.type === 'page') || tabs[0];
-          if (!pageTab || !pageTab.webSocketDebuggerUrl) {
-            throw new Error('Could not find active Chrome tab debugger URL');
-          }
+    (async () => {
+      try {
+        const pageTab = tabs.find(t => t.type === 'page') || tabs[0];
+        if (!pageTab || !pageTab.webSocketDebuggerUrl) {
+          throw new Error('Could not find active Chrome tab debugger URL');
+        }
 
           const ws = new WebSocket(pageTab.webSocketDebuggerUrl);
 
@@ -365,13 +423,9 @@ async function printPdfWithPageNumbers() {
           try { chromeProc.kill(); } catch (_) {}
           reject(err);
         }
-      });
-    }).on('error', (err) => {
-      try { chromeProc.kill(); } catch (_) {}
-      reject(err);
+      })();
     });
-  });
-}
+  }
 
 (async () => {
   try {

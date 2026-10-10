@@ -72,6 +72,10 @@
      - **背景機制**：該腳本會將 `oTeach/SQA/LabDemo` 排除 `target/`、`.DS_Store`、`logs/*` 與 macOS `._*` 隱藏元資料，打包成最乾淨的 `LabDemo.zip`，並自動原子性更新至 Google Drive：
        `~/Library/CloudStorage/GoogleDrive-nlhsueh@gmail.com/我的雲端硬碟/gTEACH/gTeachSQA/LabDemo-zip/LabDemo.zip`。
      - **結果反饋**：執行完成後立即回報檔案大小與完整性檢查結果。
+4. **講義手冊 (Lecture PDF) 排版與防橫向溢出規範 (Anti-Overflow Rules)**：
+   * 結構化表格一律使用標準 GitHub Flavored Markdown 表格語法（`| ... |`），由瀏覽器自動依據欄寬折行，嚴禁用 ASCII 框線拼製表格置於程式碼區塊中。
+   * 程式碼區塊、AI 提示詞與文字架構圖單行長度上限嚴格控制在 60–65 字元以內。
+   * 講義編譯一律調用 `scripts/generate_lecture_pdf.js`，確保 `white-space: pre-wrap`、目錄書籤與印刷防溢出樣式生效。
 
 ---
 

@@ -4,6 +4,8 @@ theme: ase-theme
 paginate: true
 header: '軟體工程 | 第四章：系統塑模'
 footer: '薛念林 教授 · 逢甲大學資訊工程學系'
+
+
 ---
 
 <!-- _class: lead -->
@@ -26,7 +28,9 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 
 總結這張投影片，請記住這個核心觀念：系統塑模在人類的模糊需求與可執行的軟體程式碼之間，建立了正式且精確的觀念橋樑。
 -->
+
 ---
+
 <!-- _class: outline-slide -->
 
 ## 第四章：課程藍圖與核心架構
@@ -36,18 +40,19 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 <h3>第一部分：塑模基礎與核心靜態模型</h3>
 <ul>
 <li><b>4.1 系統塑模基礎：</b> 塑模本質、四大核心視角、五大必備圖表與盲人摸象寓言。</li>
-<li><b>4.2 統一塑模語言 (UML)：</b> 1990 年代方法論之戰、UML 三巨頭三位一體分工與 OMG 標準化。</li>
-<li><b>4.3 功能塑模與使用案例：</b> 參與者目標、系統邊界、include 與 extend 關聯及規格書。</li>
-<li><b>4.4 結構塑模與領域類別圖：</b> 領域實體、可見度符號、關聯重數與聚合/組合生命週期。</li>
+<li><b>4.2 統一塑模語言 (UML)：</b> 1990 年代方法論之戰、三巨頭三位一體分工與 OMG 標準化。</li>
+<li><b>4.3 功能塑模與使用案例：</b> 參與者目標、系統邊界、include/extend 關聯與 AI 提示詞指引。</li>
+<li><b>4.4 結構塑模與領域類別圖：</b> 領域實體、可見度符號、關聯重數、整體與部分及 AI 提示詞。</li>
+<li><b>4.5 互動塑模與循序圖：</b> 訊息傳遞時序、生命線、啟動條、BCE 模式與 AI 提示詞指引。</li>
 </ul>
 </div>
 <div>
-<h3>第二部分：互動時序、狀態機與 AI 輔助塑模</h3>
+<h3>第二部分：工作流程、行為狀態與文字塑模</h3>
 <ul>
-<li><b>4.5 互動塑模與循序圖：</b> 訊息傳遞時序、生命線、啟動條與 BCE 穩健性架構模式。</li>
-<li><b>4.6 行為塑模與有限狀態機：</b> 反應型系統、訂單生命週期狀態機、事件觸發、守衛條件與動作。</li>
-<li><b>4.7 AI 輔助系統塑模：</b> 文字轉圖視覺副駕駛、PlantUML/Mermaid 宣告式語法與人機協同審查。</li>
-<li><b>4.8 核心複習與統整：</b> 重點回顧、概念填空測驗與經典權威文獻。</li>
+<li><b>4.6 流程塑模與活動圖：</b> 並行流程、決策分支、分岔/結合、泳道職責與 AI 提示詞。</li>
+<li><b>4.7 行為塑模與有限狀態機：</b> 反應型系統、訂單生命週期狀態機、事件觸發、守衛條件與 AI 提示詞。</li>
+<li><b>4.8 PlantUML 宣告式文字塑模：</b> 架構即代碼 (Code-as-Architecture)、語法速查與多圖管線。</li>
+<li><b>4.9 概念複習與統整：</b> 核心工程原則回顧、填空小測驗與經典文獻。</li>
 </ul>
 </div>
 </div>
@@ -55,19 +60,23 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 <!--
 這裡是第四章全新調整後的完整學習藍圖。
 
-在左側的第一部分，我們從系統塑模的哲學本質與四大視角出發，見證 UML 的歷史誕生與三巨頭整合，接著探討以使用者目標為導向的使用案例模型，並定義系統的靜態領域類別結構。
+在左側的第一部分，我們從系統塑模的哲學本質與四大視角出發，見證 UML 的歷史誕生與三巨頭整合，接著探討以使用者目標為導向的使用案例模型，並定義系統的靜態領域類別結構與動態循序圖。
 
-在右側的第二部分，我們進入動態物件互動時序與 BCE 循序圖，分析反應型系統的有限狀態機轉換，掌握現代 AI 輔助文字生成圖表技術，最後進行全面性的概念統整與測驗。
+在右側的第二部分，我們深入探討活動圖的並行流程與泳道分配、分析反應型系統的有限狀態機轉換，掌握現代 PlantUML 宣告式文字塑模技術，最後進行全面性的概念統整與測驗。
+
+每個核心模型皆深度整合專屬的 AI 提示詞指南與外送平台實戰範例！
 
 總結這張投影片，請記住這個核心觀念：本章帶領大家建立從需求意圖、架構設計到 AI 輔助落地的全方位系統塑模思維。
 -->
+
 ---
+
 <!-- _class: lead -->
 <!-- header: '4.1 系統塑模基礎' -->
 
 # **4.1 系統塑模基礎**
 
-> "A language that doesn't affect the way you think about programming is not worth knowing."
+> "A language that doesn't affect the way you think about programming is not worth knowing."  
 > — *Alan Perlis*
 
 <!--
@@ -77,7 +86,9 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 
 總結這張投影片，請記住這個核心觀念：系統塑模是透過有目的的抽象化與多重視角投影，掌控軟體複雜度的核心工程方法。
 -->
+
 ---
+
 ## 什麼是系統塑模？ (What is System Modeling?)
 
 > "系統塑模是為系統開發抽象模型的過程，每個模型代表該系統不同的視角或觀點。"  
@@ -100,13 +111,15 @@ Ian Sommerville 教授將塑模定義為建立抽象模型的過程，每個模�
 
 總結這張投影片，請記住這個核心觀念：系統塑模透過多重視角的有目的抽象化，幫助軟體工程師全面駕馭軟體系統的複雜度。
 -->
+
 ---
+
 <!-- _class: title-image-slide -->
 
 ## 盲人摸象與多重視角模型 (The Parable of the Elephant & Multiple Perspectives)
 
 <div class="image-wrapper">
-<img src="../../img/ch05/blind_men_elephant.svg" alt="盲人摸象與多重視角模型" />
+<img src="../../img/ch04/concept/blind_men_elephant.svg" alt="盲人摸象與多重視角模型" />
 </div>
 
 <!--
@@ -124,7 +137,9 @@ Ian Sommerville 教授將塑模定義為建立抽象模型的過程，每個模�
 
 總結這張投影片，請記住這個核心觀念：任何單一模型都是系統在特定維度的局部投影，唯有綜合多重視角，才能建構完整且無盲點的軟體架構。
 -->
+
 ---
+
 ## 系統塑模的 4 大核心視角 (4 Core Perspectives)
 
 - **1. 外部視角 (External Perspective)：**
@@ -149,32 +164,39 @@ Ian Sommerville 教授將塑模定義為建立抽象模型的過程，每個模�
 
 總結這張投影片，請記住這個核心觀念：四大核心塑模視角分別為外部、互動、結構與行為視角。
 -->
----
-## 現代實務必備的 5 大 UML 核心圖表
 
-| 圖表類型 | 所屬視角 | 動態 / 靜態 | 主要軟體工程職責 |
-| :--- | :--- | :--- | :--- |
-| **1. 環境圖 (Context Diagram)** | 外部視角 | 靜態邊界 | 劃定系統邊界與外部夥伴系統的相依關係 |
-| **2. 活動圖 (Activity Diagram)** | 行為視角 | 動態流程 | 視覺化呈現連續業務工作流程與平行並行邏輯 |
-| **3. 使用案例圖 (Use Case Diagram)** | 互動視角 | 靜態契約 | 界定使用者目標與系統功能範疇邊界 |
-| **4. 循序圖 (Sequence Diagram)** | 互動視角 | 動態時間 | 沿著時間生命線追蹤物件之間的循序訊息傳遞 |
-| **5. 類別圖 (Class Diagram)** | 結構視角 | 靜態骨幹 | 定義領域實體、資料屬性、操作方法與物件關聯 |
-| *(加分必學) 狀態機圖 (State Diagram)* | 行為視角 | 動態反應 | 塑模離散狀態、事件觸發與反應式生命週期 |
+---
+
+## 現代實務必備的 5 大 UML 核心模型
+
+| 模型 / 圖表 | 對應章節 | 所屬視角 | 動態 / 靜態本質 | 主要軟體工程職責 |
+| :--- | :---: | :--- | :--- | :--- |
+| **1. 使用案例模型** | 4.3 | 互動視角 | 功能契約 | 界定系統邊界、參與者目標與系統功能範疇 |
+| **2. 領域類別圖** | 4.4 | 結構視角 | 靜態骨幹 | 定義領域實體、屬性、方法與整體/部分關聯 |
+| **3. 物件循序圖** | 4.5 | 互動視角 | 動態時序 | 沿時間軸追蹤訊息傳遞與 BCE 強韌性職責劃分 |
+| **4. 業務活動圖** | 4.6 | 行為視角 | 動態流程 | 塑模業務流程、並行分岔/結合與跨角色泳道 |
+| **5. 有限狀態機圖** | 4.7 | 行為視角 | 反應生命週期 | 捕捉事件驅動的離散狀態流轉、守衛與不變量 |
+
+> **落實與加速：** 透過 **4.8 PlantUML** (架構即代碼) 統一實踐，各章節深度整合專屬 **AI 提示詞指引**。
 
 <!--
-在 UML 2.5 定義的 14 種圖表中，這五種（加上狀態圖）構成了職業軟體工程師最常用的核心二八工具包：
+在 UML 2.5 定義的 14 種圖表中，本章聚焦於構成現代軟體架構骨幹的五大不可或缺核心模型：
 
-環境圖劃定系統周邊範圍。
-活動圖勾勒業務工作流程。
-使用案例圖界定功能範圍與使用者目標。
-循序圖描繪運行時隨時間發生的物件溝通。
-類別圖作為物件導向程式碼與資料庫結構的靜態建築骨幹。
-而狀態機圖則掌管事件驅動的離散反應邏輯。
+第一，第 4.3 節探討使用案例模型，確立功能邊界與利害關係人契約。
+第二，第 4.4 節深入類別模型，定義靜態領域實體、屬性與物件關聯。
+第三，第 4.5 節分析循序圖，追蹤執行期跨時間的訊息交換與邊界–控制–實體 (BCE) 分工。
+第四，第 4.6 節研究活動圖，視覺化呈現業務流程、分岔/結合並行與泳道責任分配。
+第五，第 4.7 節剖析狀態機圖，塑模反應式物件生命週期、離散狀態與守衛不變量。
 
-總結這張投影片，請記住這個核心觀念：精通這五大核心 UML 圖表，就能以精確且無歧義的視覺文法表達任何軟體架構。
+每個模型皆深度整合專屬的 AI 提示詞指引與外送平台實戰範例，並於第 4.8 節透過 PlantUML 架構即代碼進行統整。
+
+總結這張投影片，請記住這個核心觀念：精通這五大核心 UML 模型，即可從外部、互動、結構與行為四大維度全面具備規格化、設計與驗證複雜軟體的能力。
 -->
+
 ---
+
 ### 觀念檢核測驗 1 (CCQ 1)
+<!-- id: ase-ch04-ccq1 -->
 <div class="ccq-columns">
 <div class="ccq-text">
 
@@ -187,8 +209,8 @@ Ian Sommerville 教授將塑模定義為建立抽象模型的過程，每個模�
 
 </div>
 <div class="ccq-logo">
-<img src="../../img/ch05/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
-</div>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq1" target="_blank"><img src="../../img/ch04/ase-ch04-ccq1.png" alt="QR Code" /></a>
+  </div>
 </div>
 
 <!--
@@ -204,7 +226,9 @@ Ian Sommerville 教授將塑模定義為建立抽象模型的過程，每個模�
 
 總結這張投影片，請記住這個核心觀念：結構模型專注於捕捉軟體靜態架構與實體關聯，不受執行時序變動影響。
 -->
+
 ---
+
 <!-- _class: lead -->
 <!-- header: '4.2 統一塑模語言 (UML)' -->
 
@@ -219,7 +243,9 @@ Ian Sommerville 教授將塑模定義為建立抽象模型的過程，每個模�
 
 總結這張投影片，請記住這個核心觀念：UML 為物件導向軟體工程提供了統一且無可替代的視覺標準。
 -->
+
 ---
+
 ## 標準化的迫切需求：1990 年代「方法論之戰」
 
 - **物件導向程式設計的崛起 (1980 年代末至 1990 年代初)：**
@@ -231,77 +257,61 @@ Ian Sommerville 教授將塑模定義為建立抽象模型的過程，每個模�
   - **嚴重的產業割裂碎片化：** 各公司之間無法交換架構模型，CASE 塑模軟體彼此互不相容，工程師換工作就得被迫重新學習一套新符號。
 
 <!--
-既然塑模如此不可或缺，軟體產業究竟是如何整合出一套共同標準的呢？
+回到 1990 年代初期的軟體工程世界。當時軟體界正面臨嚴重的「方法論之戰」。
 
-在 1980 年代末到 1990 年代初，C++ 與 Smalltalk 掀起物件導向狂潮，但隨之而來的是一場大混亂——所謂的「方法論之戰」。
+當時有超過 50 種記號相互廝殺：Booch 方法用雲朵表示類別，OMT 用矩形，OOSE 又是另一套。
+每家公司、每套 CASE 工具都互不相容。工程師只要換一家公司，就得把以前學的繪圖記號全部作廢、從頭學起！
 
-當時市場上湧現了 50 多種互相競爭的塑模符號！Grady Booch 用雲朵表示類別；James Rumbaugh 用整齊的矩形；Ivar Jacobson 提出了使用案例；還有 Coad-Yourdon 等各派學說。
+這種嚴重的產業內耗，催生了市場對單一、標準化視覺語言的迫切渴望。
 
-這造成了架構上的通天塔。你在 IBM 畫雲朵，換到 GE 得畫方塊。塑模工具彼此無法流通，軟體設計被鎖死在封閉規格中。
-
-總結這張投影片，請記住這個核心觀念：1990 年代的方法論之戰以 50 多種互不相容的符號割裂了軟體產業，催生了標準化的迫切需求。
+總結這張投影片，請記住這個核心觀念：1990 年代的方法論之戰造成產業嚴重割裂，促成了 UML 標準化統一運動的誕生。
 -->
+
 ---
+
 ## 統一與標準化：從 Rational 到 OMG
 
-<div class="content-columns">
-<div class="content-text">
-
-- **1994 年 – Rational 展開統一整合：**
-  - Jim Rumbaugh 離開奇異（GE）加入 Rational Software 與 Grady Booch 攜手，將 Booch 方法與 OMT 融合成「統一方法」(Unified Method v0.8)。
-- **1995 年 – 「三巨頭 (Three Amigos)」合體：**
-  - Ivar Jacobson 加入 Rational，帶來革命性的**使用案例 (Use Case)** 與 OOSE 架構思維。
-- **1997 年 – OMG 國際標準正式誕生：**
-  - 提交給**物件管理組織 (OMG)**，於 1997 年 11 月獲全票通過，成為全球公認的 **UML 1.1** 國際標準。
-- **2005 年 – UML 2.0 架構大改版：**
-  - 擴充至 13 種（後續擴增為 14 種）圖表類型，並具備嚴謹的可執行元模型 (Metamodel)。
-
-</div>
-<div class="content-figure">
-
-<div class="name-card">
-<img class="contain-fit" src="../../img/ch05/uml_logo.svg" alt="OMG 統一塑模語言" />
-<div class="name-card-caption">
-<span class="name-card-name">Unified Modeling Language</span>
-<span class="name-card-cc"><a href="https://www.omg.org/uml/" target="_blank">Object Management Group (OMG)</a></span>
-</div>
-</div>
-
-</div>
-</div>
+- **歷史性的大整合 (1994–1996)：**
+  - Rational Software 公司做出重大戰略決策，先後延攬 James Rumbaugh 與 Ivar Jacobson，促成三巨頭合體。
+  - 整合 Booch 方法、OMT 與 OOSE 三大主流學派，誕生 Unified Method 0.8 與 UML 0.9。
+- **國際組織 OMG 官方標準化 (1997)：**
+  - 1997 年 11 月，物件管理組織 (OMG, Object Management Group) 正式採納 **UML 1.1** 為國際產業標準。
+  - 終結長達十年的方法論之戰，確立全球軟體架構設計的共通世界語。
+- **演進至 UML 2.5 (2005–至今)：**
+  - 現代 UML 2.5 包含 14 種正式圖表，分為結構圖 (Structure Diagrams) 與行為圖 (Behavior Diagrams)。
 
 <!--
-這場危機是如何化解的？正是透過在 Rational Software 上演的傳奇智識大融合。
+UML 的歷史轉捩點發生在 Rational Software 公司。
 
-1994 年，Jim Rumbaugh 離開奇異加入 Rational，與 Grady Booch 合力融合理論分析與實務設計。隔年，Ivar Jacobson 也帶著使用案例方法加入。
+1994 年，Jim Rumbaugh 加入 Rational 與 Grady Booch 聯手；1995 年，Ivar Jacobson 也攜帶他的 Objectory 團隊加入。這三位原先在市場上激烈競爭的泰斗，決定放下門戶之見，合力打造一套統一的塑模語言。
 
-這三位大師在軟體界被親切尊稱為「UML 三巨頭 (The Three Amigos)」。
+1997 年，國際物件管理組織 OMG 正式將 UML 採納為全球軟體產業標準，徹底平息了混亂的方法論之戰。
 
-值得稱許的是，Rational 並沒有把 UML 當成自家的私有封閉規格，而是將其無私捐贈給國際開放標準組織 OMG。1997 年 11 月，UML 1.1 成為全球通用的軟體塑模國際標準。
-
-總結這張投影片，請記住這個核心觀念：Rational 公司匯聚了三巨頭的智慧，並由 OMG 正式確立 UML 為全球統一的軟體塑模語言標準。
+總結這張投影片，請記住這個核心觀念：UML 的誕生是產業界放下紛爭、走向開放標準化的重大勝利。
 -->
+
 ---
+
 ## UML 奠基先驅：Grady Booch
 
 <div class="content-columns">
 <div class="content-text">
 
 - **角色與學術榮譽：**
-  - Rational Software 首席科學家、IBM 院士 (Fellow)、ACM 院士。
+  - ACM Fellow、IEEE Fellow、IBM 院士、Rational 共同創辦人兼首席科學家。
 - **開創經典方法論：**
-  - **Booch 方法**與劃時代著作：《物件導向分析與設計》(Object-Oriented Analysis and Design with Applications)。
+  - **Booch 方法 (Booch Method)** 與重量級專書：《物件導向分析與設計》。
 - **對 UML 的核心貢獻：**
-  - 極度專注於**具體軟體設計**、模組拆解、類別抽象化與架構模式。
-  - 提倡為實作層級的物件結構與程式碼對應關係提供高度的視覺表現力。
+  - 專精於**物件導向實作設計 (Design & Implementation)**，精確定義微觀物件協同與宏觀系統架構。
+  - 賦予 UML 精準對應至 C++、Java 等 OOP 程式語言的實作直譯能力。
 - **著名軟體工程箴言：**
-  > *"乾淨的程式碼讀起來，永遠就像是由深具責任心與熱忱的人所撰寫。"*
+  > *"良好的架構，是讓未來的重大決策顯得容易且自然的藝術。"*
 
 </div>
 <div class="content-figure">
 
 <div class="name-card">
-<img src="../../img/ch05/grady_booch.jpg" alt="Grady Booch" />
+<img src="../../img/ch04/portraits/grady_booch.jpg" alt="Grady Booch" />
 <div class="name-card-caption">
 <span class="name-card-name">Grady Booch</span>
 <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Grady_Booch" target="_blank">Rational Software / IBM Fellow</a></span>
@@ -312,15 +322,17 @@ Ian Sommerville 教授將塑模定義為建立抽象模型的過程，每個模�
 </div>
 
 <!--
-讓我們認識三巨頭中的第一位：Grady Booch。
+讓我們認識第一位靈魂人物：Grady Booch。
 
-Grady Booch 是 IBM 院士，曾任 Rational Software 首席科學家。他所著的《物件導向分析與設計》是軟體工程領域的殿堂級經典。
+Booch 是軟體架構領域的傳奇大師。他在 1980 年代推動 Ada 與 C++ 的物件導向設計，他的著作是無數架構師的案頭聖經。
 
-Booch 的獨特強項在於「具體軟體設計」——類別、繼承、多型與模組如何直接對應到可執行的程式碼架構。他早期著名的雲朵形狀類別記號，後來演變為 UML 標準的三格矩形。
+Booch 的核心貢獻在於「微觀設計與實作對應」：他確保 UML 上的每一個符號、每一個關聯，都能夠直接對應到 C++ 或 Java 的真實程式碼結構。
 
-總結這張投影片，請記住這個核心觀念：Grady Booch 奠定了物件導向設計抽象化與程式碼具體架構對應的基石。
+總結這張投影片，請記住這個核心觀念：Grady Booch 為 UML 注入了與物件導向程式碼深度對齊的微觀設計與架構哲學。
 -->
+
 ---
+
 ## UML 奠基先驅：James Rumbaugh
 
 <div class="content-columns">
@@ -340,7 +352,7 @@ Booch 的獨特強項在於「具體軟體設計」——類別、繼承、多�
 <div class="content-figure">
 
 <div class="name-card">
-<img src="../../img/ch05/james_rumbaugh.jpg" alt="James Rumbaugh" />
+<img src="../../img/ch04/portraits/james_rumbaugh.jpg" alt="James Rumbaugh" />
 <div class="name-card-caption">
 <span class="name-card-name">James Rumbaugh</span>
 <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/James_Rumbaugh" target="_blank">GE Research / Rational Software</a></span>
@@ -359,7 +371,9 @@ Rumbaugh 的天才在於領域分析——精確捕捉真實世界的實體、�
 
 總結這張投影片，請記住這個核心觀念：James Rumbaugh 為 UML 奠定了嚴謹的領域分析、資料關聯與狀態圖塑模根基。
 -->
+
 ---
+
 ## UML 奠基先驅：Ivar Jacobson
 
 <div class="content-columns">
@@ -379,7 +393,7 @@ Rumbaugh 的天才在於領域分析——精確捕捉真實世界的實體、�
 <div class="content-figure">
 
 <div class="name-card">
-<img src="../../img/ch05/ivar_jacobson.jpg" alt="Ivar Jacobson" />
+<img src="../../img/ch04/portraits/ivar_jacobson.jpg" alt="Ivar Jacobson" />
 <div class="name-card-caption">
 <span class="name-card-name">Ivar Jacobson</span>
 <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Ivar_Jacobson" target="_blank">Ericsson / Objectory / Rational</a></span>
@@ -398,7 +412,9 @@ Jacobson 早年在愛立信研發龐大的電話交換機系統，後來創立 O
 
 總結這張投影片，請記住這個核心觀念：Ivar Jacobson 發明了使用案例與 BCE 模式，讓軟體架構真正以使用者目標為依歸。
 -->
+
 ---
+
 ## UML 三巨頭：軟體塑模的三位一體 (The Trinity of Modeling)
 
 <div class="three-columns">
@@ -444,8 +460,11 @@ Grady Booch 規劃軟體架構，回答了這些元件在程式碼中如何高�
 
 總結這張投影片，請記住這個核心觀念：UML 完美融合了使用者目標 (Why)、領域資料 (What) 與程式架構 (How) 的三位一體。
 -->
+
 ---
+
 ### 觀念檢核測驗 2 (CCQ 2)
+<!-- id: ase-ch04-ccq2 -->
 <div class="ccq-columns">
 <div class="ccq-text">
 
@@ -458,12 +477,12 @@ Grady Booch 規劃軟體架構，回答了這些元件在程式碼中如何高�
 
 </div>
 <div class="ccq-logo">
-<img src="../../img/ch05/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
-</div>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq2" target="_blank"><img src="../../img/ch04/ase-ch04-ccq2.png" alt="QR Code" /></a>
+  </div>
 </div>
 
 <!--
-讓我們透過觀念測驗 1 來檢驗對 UML 發展史的理解。
+讓我們透過觀念測驗 2 來檢驗對 UML 發展史的理解。
 
 檢視各個選項：
 Grady Booch 開創了 Booch 方法，主攻物件導向設計與程式碼映射。
@@ -474,1332 +493,2184 @@ Martin Fowler 則是撰寫《UML 精華 (UML Distilled)》與《重構》的大�
 
 總結這張投影片，請記住這個核心觀念：Ivar Jacobson 發明了使用案例，將需求與架構聚焦於使用者具體目標。
 -->
+
 ---
+
 <!-- _class: lead -->
-<!-- header: '4.3 功能塑模與使用案例模型' -->
+<!-- header: '4.3 功能與使用案例模型' -->
 
-# **4.3 功能塑模與使用案例模型**
+# **4.3 功能與使用案例模型**
 
-> "使用案例是系統與其參與者之間為了達成可衡量業務目標所簽署的行為契約。"
+> "使用案例是系統與其參與者之間為了達成可衡量業務目標所簽署的行為契約。"  
 > — *Alistair Cockburn*
 
 <!--
-我們現在進入第 4.3 節：功能塑模與使用案例模型。
+我們現在進入第 4.3 節：功能與使用案例模型。
 
-由 Ivar Jacobson 於 1986 年發明的使用案例，是業界界定功能範疇的黃金標準。它打破過去散落、非結構化的文字需求，將軟體功能緊密圍繞在「參與者」與「可衡量的商業目標」周圍。
+在物件導向分析中，使用案例圖是系統對外部世界的「功能性契約」。它定義了系統的邊界：誰會使用系統？他們試圖達成什麼商業目標？哪些功能是內部開發的，哪些功能委託給第三方外部服務？
 
-讓我們透過美食外送平台案例，深入解析使用案例塑模的精髓。
+在這一節中，我們將透過精緻的視覺圖解，逐步掌握參與者、系統邊界、include 與 extend 關聯的正確用法，並學習如何撰寫正式的使用案例規格書與 AI 提示詞。
 
-總結本頁核心：使用案例定義了外部參與者與受測系統之間的黑箱功能契約。
+總結這張投影片，請記住這個核心觀念：使用案例模型是連結非技術利害關係人與工程團隊之間最關鍵的高階功能視覺契約。
 -->
+
 ---
-## 使用案例塑模：核心定義與工程價值
 
-> 「使用案例捕捉了外部參與者與系統之間的行為契約，旨在交付可衡量的業務價值。」
+<!-- _class: full-image-slide -->
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-<h3>核心定義與抽象層次 (What It Is)</h3>
-<ul>
-<li><b>契約型功能範疇：</b> 採取外部黑箱視角，精確界定系統為使用者提供「什麼 (What)」服務，不涉及內部程式細節。</li>
-<li><b>目標導向的核心：</b> 將軟體需求錨定在人類使用者或外部系統所欲達成的離散商業目標。</li>
-<li><b>劃定系統邊界周界：</b> 明確區隔哪些責任屬於軟體內部，哪些屬於外部使用者或第三方平台。</li>
-</ul>
-</div>
-<div class="card" data-marpit-fragment>
-<h3>工程價值與防範風險 (Why It Is Important)</h3>
-<ul>
-<li><b>根除需求描述的模糊性：</b> 取代散落各處、語意不清的文字條列，整合成目標一致的交易流程。</li>
-<li><b>防止範疇蔓延 (Scope Creep)：</b> 嚴謹的系統邊界方框，為衝刺開發與版本發布建立明確的交付承諾。</li>
-<li><b>驗收測試 (UAT) 的直接依據：</b> 主要成功情境與例外分支，可 100% 轉譯為端到端系統整合測試案例。</li>
-</ul>
-</div>
+<div class="centered-image">
+  <img src="../../img/ch04/nb_use_case/01_anatomy_of_use_case_modeling.jpg" alt="The Anatomy of Use-Case Diagram Modeling" />
 </div>
 
 <!--
-首先讓我們在 4.3 節深入理解：什麼是使用案例模型？為什麼軟體工程師必須建立它？
+為什麼需要視覺模型？
 
-第一，核心定義：使用案例是一份行為契約。它從系統外圍看進來——系統是一個黑箱。它回答了：外部參與者透過與系統互動，獲得了什麼具體價值？
+純文字規格書往往充滿模糊與歧義，每位工程師閱讀同一段文字可能產生完全不同的架構想像。使用案例模型透過直觀的幾何圖形與邊界框，將抽象的文字需求轉化為團隊一致認可的視覺契約。
 
-第二，工程價值：若缺乏使用案例，需求規格往往淪為數百條雜亂無章的願望清單。使用案例將互動凝聚為具備商業價值的交易，並直接作為驗收測試的唯一真理來源。
-
-總結本頁核心：使用案例模型界定了以參與者為核心的功能邊界與合約承諾。
+總結這張投影片，請記住這個核心觀念：視覺模型能夠消除文字歧義，建立利害關係人之間一致的心理模型。
 -->
+
 ---
-## 使用案例塑模：四步標準工程流程
 
-> 「使用案例塑模絕不只是在圖上畫圈圈；結構化的使用案例規格敘述書，才是真正的行為契約。」
+<!-- _class: full-image-slide -->
 
-<div style="display: flex; align-items: stretch; justify-content: space-between; gap: 12px; margin-top: 14px;">
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #0284c7; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #0284c7; text-transform: uppercase;">步驟 1</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">識別參與者<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(Identify Actors)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li><b>主要參與者：</b> 主動使用者（顧客、外送員）。</li>
-<li><b>支援參與者：</b> 外部 API（金流系統）。</li>
-<li>定義人與系統在邊界外角色。</li>
-</ul>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #0284c7; font-weight: bold;">→</div>
-
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #0ea5e9; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #0ea5e9; text-transform: uppercase;">步驟 2</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">界定使用案例<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(Identify Use Cases)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li><b>目標驅動：</b> 鎖定完整交易（如訂餐）。</li>
-<li><b>控制粒度：</b> 排除瑣碎 UI 點擊動作。</li>
-<li>交付可衡量實質業務價值。</li>
-</ul>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #0ea5e9; font-weight: bold;">→</div>
-
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #38bdf8; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #38bdf8; text-transform: uppercase;">步驟 3</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">繪製案例圖與關係<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(Model Diagram)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li><b>系統邊界：</b> 劃定系統範疇方框。</li>
-<li><b><code>&lt;&lt;include&gt;&gt;</code>：</b> 抽取共用強制子程序。</li>
-<li><b><code>&lt;&lt;extend&gt;&gt;</code>：</b> 隔離條件擴充功能。</li>
-</ul>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #38bdf8; font-weight: bold;">→</div>
-
-<div class="card" style="flex: 1.1; padding: 14px 12px; background: #f0fdf4; border: 1.5px solid #22c55e; border-top: 4px solid #16a34a; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 800; color: #15803d; text-transform: uppercase;">步驟 4 ★ 核心工程產出</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #14532d;">撰寫案例規格敘述<br><span style="font-size: 12px; color: #166534; font-weight: normal;">(Write UC Description)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0; color: #14532d;">
-<li><b>前置 / 後置條件：</b> 系統狀態契約。</li>
-<li><b>主要成功情境：</b> 雙向互動步驟。</li>
-<li><b>例外替代分支：</b> 錯誤處理規格。</li>
-</ul>
-</div>
-</div>
-
-> 📌 **工程洞見：** 使用案例圖只是一張視覺化的目錄索引，**使用案例規格敘述書 (Use Case Description)** 才是指導工程師實作與品保人員驗收測試的真正契約。
-
-<!--
-這張概念圖完整呈現了使用案例塑模的四步標準工程流程。
-
-請觀察橫向管線的遞進：
-步驟 1：識別所有人類角色與外部系統參與者。
-步驟 2：界定目標導向的使用案例，避免瑣碎按鈕動作。
-步驟 3：劃定系統邊界方框，透過 include 與 extend 梳理共用與擴充邏輯。
-步驟 4：撰寫結構化使用案例規格敘述書！
-
-請特別記住步驟 4：許多初學者以為畫出橢圓形就大功告成，事實上，圖形只是索引，詳盡的文字規格敘述書才是軟體工程的真正基石！
-
-總結本頁核心：使用案例塑模遵循參與者、目標、圖形關係到規格敘述書的四步工程流程。
--->
----
-## 步驟 1 & 2：識別參與者與界定目標導向的使用案例
-
-- **主要參與者 vs. 支援參與者：**
-  - **主要參與者 (Primary Actors，顧客、餐廳、外送員)：** 主動發起使用案例以達成個人業務目標的人類使用者。
-  - **支援參與者 (Supporting Actors，第三方金流閘道)：** 由系統在背後呼叫以協助完成交易的外部服務系統。
-- **系統邊界與參與關聯：**
-  - 邊界矩形方框劃定「軟體系統內部」與「外部世界」的權責界線。
-  - 實線關聯將參與者與其參與的案例橢圓相連。
-- **案例粒度黃金法則 (Granularity Rule of Thumb)：**
-  - 使用案例必須代表一項**完整的、能交付實質價值的業務交易**。
-  - *反模式 (Anti-Pattern)：* 「點擊登入按鈕」、「輸入密碼」（此為微小 UI 動作，絕非使用案例！）。
-  - *最佳實踐：* 「美食訂餐下單」、「管理餐廳菜單」（交付具體業務價值）。
-
-<!--
-依照我們的流程，首先看步驟 1 與步驟 2：識別參與者與使用案例。
-
-第一，區分主要與支援參與者。顧客要吃飯，所以是發起案例的主要參與者；Stripe 金流是被系統呼叫幫忙扣款的支援參與者。
-
-第二，嚴守粒度控制！初學者常犯的錯誤是將按鈕點擊寫成使用案例。使用案例必須交付端到端、對使用者有實質意義的業務價值。
-
-總結本頁核心：塑模完整的價值交易，絕不拆解成瑣碎的 UI 操作。
--->
----
-<!-- _class: title-image-slide -->
-
-## 步驟 3：美食外送平台完整使用案例圖
-
-<div class="image-wrapper">
-<img src="../../img/ch05/food_delivery_usecase.svg" alt="美食外送平台完整使用案例圖" />
+<div class="centered-image">
+  <img src="../../img/ch04/nb_use_case/02_business_value_and_user_goals.jpg" alt="Focus: Business Value & User Goals" />
 </div>
 
 <!--
-進入步驟 3：繪製使用案例圖。
+到底什麼是使用案例？
 
-請觀察橫向平衡的構圖：
-左側配置發起業務的顧客與餐廳夥伴；
-右側配置外送員以及第三方的金流處理系統。
-左右平衡佈局讓寬螢幕閱覽一目了然。
+使用案例代表外部參與者使用系統所要達成的一個完整、有價值的商業目標。它不是單一的函式調用或按鈕點擊，而是由一系列事件與互動構成的完整業務情境。
 
-顧客發起「瀏覽菜單」、「美食訂餐下單」、「追蹤外送」與「取消訂單」；
-餐廳管理菜單並接單；外送員接單並完成配送；
-而「美食訂餐下單」透過 include 引入了「處理金流付款」，進而呼叫外部金流閘道。
-
-總結本頁核心：兩側分流參與者與清晰邊界，構建出高可讀性的使用案例架構圖。
+總結這張投影片，請記住這個核心觀念：使用案例聚焦於為參與者交付完整的端到端商業價值。
 -->
----
-## 步驟 3：符號深解：`<<include>>` 與 `<<extend>>` 的關鍵差異
 
-<div class="two-columns">
-<div class="card">
-<h3>&lt;&lt;include&gt;&gt; 包含關係（強制執行）</h3>
-<ul>
-<li><b>語意本質：</b> 基礎案例<b>若未執行被包含案例，則無法成功完成</b>。</li>
-<li><b>箭頭方向：</b> <b>由基礎案例指向被包含案例</b>（<code>基礎 ..&gt; 被包含</code>）。</li>
-<li><b>工程目的：</b> 抽取多個案例共用的強制性子程序（例如：外送下單與會員訂閱皆需<i>處理金流付款</i>）。</li>
-</ul>
-</div>
-<div class="card">
-<h3>&lt;&lt;extend&gt;&gt; 擴充關係（條件觸發）</h3>
-<ul>
-<li><b>語意本質：</b> 基礎案例本身已可獨立完成；僅在<b>特定觸發條件</b>滿足時才插入額外行為。</li>
-<li><b>箭頭方向：</b> <b>由擴充案例指回基礎案例</b>（<code>擴充 ..&gt; 基礎</code>）。</li>
-<li><b>工程目的：</b> 隔離非核心的可選邏輯（如套用優惠券），避免污染基礎情境。</li>
-</ul>
-</div>
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_use_case/03_actor_taxonomy.jpg" alt="Actor Taxonomy" />
 </div>
 
 <!--
-繼續步驟 3，我們必須徹底釐清 UML 最常考也最常被誤用的兩大關係：Include 與 Extend。
+接著探討參與者 (Actor) 的觀念。
 
-Include 代表強制共用：箭頭由主案例指向子案例。下單買餐絕對必須付款，不能略過！
-Extend 代表可選擴充：箭頭由擴充案例倒指回主案例！只有在顧客持有折價券時才觸發，基礎下單就算不折價也能獨立完成。
+在 UML 中，參與者可以是人類使用者，也可以是與系統對接的外部軟體系統或硬體設備。請特別注意：參與者代表的是一種「角色 (Role)」，而非具體的「個人姓名」或「內部組織部門」。
 
-總結本頁核心：Include 指向強制共用模組；Extend 由可選功能指回基礎案例。
+總結這張投影片，請記住這個核心觀念：參與者代表與系統互動的外部角色，而非內部人員或特定職稱。
 -->
+
 ---
-<!-- _class: title-image-slide -->
 
-## 步驟 3：Include 與 Extend 視覺語法语意解析
+<!-- _class: full-image-slide -->
 
-<div class="image-wrapper">
-<img src="../../img/ch05/food_delivery_include_extend.svg" alt="Include 與 Extend 機制對比圖" />
+<div class="centered-image">
+  <img src="../../img/ch04/nb_use_case/04_relationship_matrix.jpg" alt="Relationship Matrix: Association, Include, Extend, Generalization" />
 </div>
 
 <!--
-這張對比圖清晰展示了兩者的語法差異：
+使用案例圖中存在四種基本關聯。
 
-上方：「美食訂餐下單」實線箭頭指向「處理金流付款」，標註 include。因為付款是下單必經的強制環節。
-下方：「套用促銷優惠券」由外側指回「美食訂餐下單」，標註 extend。因為優惠券純屬可選擴充，只有在結帳前輸入有效代碼才會生效。
+第一是參與者與使用案例之間的關聯線；第二是使用案例之間的包含關聯 (Include)；第三是擴充關聯 (Extend)；第四是參與者之間的泛化繼承 (Generalization)。掌握這四種關聯，就能精確表達所有業務互動。
 
-請特別注意箭頭的方向性：Include 向前指，Extend 往回指！
-
-總結本頁核心：Include 指向必經子程序，Extend 由條件擴充倒指回主案例。
+總結這張投影片，請記住這個核心觀念：熟練運用包含、擴充與泛化，能讓複雜的功能模型具備清晰的層次與模組化架構。
 -->
+
 ---
-## 步驟 4：撰寫使用案例規格敘述書 (系統的行為契約)
 
-> 「沒有書面規格敘述的使用案例，只是一個沒有故事的標題而已。」— *Alistair Cockburn*
+<!-- _class: full-image-slide -->
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-<h3>使用案例規格敘述書的核心結構</h3>
-<ul>
-<li><b>識別碼與名稱：</b> 唯一編號 (如 <code>UC-01</code>) 與動賓片語標題 (如 <code>美食訂餐下單</code>)。</li>
-<li><b>主要參與者與觸發事件：</b> 誰發起此流程？何種商業事件促成互動開始？</li>
-<li><b>前置條件 (Preconditions)：</b> 流程開始前系統<b>必須滿足</b>的真值狀態（如：顧客已認證、餐廳營業中）。</li>
-<li><b>後置條件 (Postconditions)：</b> 成功完成後系統保證達成的狀態（如：訂單處於 <code>PAID</code> 狀態、廚房接獲通知）。</li>
-</ul>
-</div>
-<div class="card" data-marpit-fragment>
-<h3>情境流程劃分與驗收角色</h3>
-<ul>
-<li><b>主要成功情境 (Main Flow)：</b> 編號條列的雙向對話：使用者操作步驟 → 系統驗證與回饋。</li>
-<li><b>替代與例外情境 (Alternative Flows)：</b> 錯誤處理、卡號失效或可選擴充（如 <code>3a. 信用卡授權遭拒</code>）。</li>
-<li><b>驗收測試 (UAT) 的基石：</b> 規格書中的每一條例外分支，直接對應至一組端到端自動化測試案例！</li>
-<li><b>軟體架構的腳本：</b> 主要成功情境直接作為循序圖 (4.5) 物件互動的設計腳本。</li>
-</ul>
-</div>
+<div class="centered-image">
+  <img src="../../img/ch04/nb_use_case/05_clear_naming_semantics.jpg" alt="Clear Semantics: Strong Verbs & Singular Roles" />
 </div>
 
 <!--
-現在我們邁入步驟 4：撰寫使用案例規格敘述書。這是需求轉化為工程合約的關鍵產出。
+使用案例的命名語意標準：
 
-請看左側卡片：一份專業的規格書必定具備前置條件與後置條件，定義系統在執行前後的狀態契約。
+每個使用案例必須使用『主動動詞 + 名詞受詞』命名，例如『下單訂餐』、『查詢課表』。嚴禁使用模糊名詞（如『訂單管理』）或系統內部技術詞彙（如『SQL 查詢』）。
 
-請看右側卡片：主要成功情境描寫最順暢的正常路徑。但真實世界中 80% 的臭蟲都在例外狀況！透過擴充情境記錄付款失敗、菜品售罄，每一條分支都能直接寫成自動化測試案例。
-
-總結本頁核心：規格敘述書詳盡規範前置/後置條件、主情境與替代分支，是軟體實作與測試的基石。
+總結這張投影片，請記住這個核心觀念：使用案例一律以主動動詞受詞命名，聚焦於參與者的具體目標。
 -->
----
-## 步驟 4：結構化使用案例規格書：美食訂餐下單 (UC-01)
 
-| 規格書欄位 | 具體技術說明與規格定義 |
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_use_case/07_safe_nesting_limits.jpg" alt="Safe Nesting Limits: Avoid Over-Engineering" />
+</div>
+
+<!--
+防止包含與擴充的過度嵌套：
+
+使用案例不是流程圖，切勿進行多層 Include 巢狀鏈結（如 A 包含 B、B 又包含 C、C 又包含 D）。過度嵌套會徹底摧毀模型的高階抽象性，使其淪為低階演算法虛擬代碼。
+
+總結這張投影片，請記住這個核心觀念：限制關聯嵌套深度在兩層以內，維持高階商業溝通合約的清晰度。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_use_case/08_case_study_enrollment_system.jpg" alt="Case Study: University Enrollment System" />
+</div>
+
+<!--
+檢視經典案例：大學選課系統 (University Course Enrollment System)。
+
+學生可執行『選修課程』，系統強制 include『驗證先修科目』；若遇課程額滿，則 extend『加入等候候補名單』。教務處註冊組人員則負責『維護開課清單』。
+
+總結這張投影片，請記住這個核心觀念：真實的系統模型透過邊界框將不同參與者的目標職責優雅隔離。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_use_case/09_actor_generalization.jpg" alt="Actor Generalization: Specializing Roles in Hierarchies" />
+</div>
+
+<!--
+參與者之間的泛化 (Generalization) 關聯。
+
+當多個參與者角色擁有共用權限，但某些特定角色擁有進階專屬能力時，我們可以使用空心三角箭頭表示繼承。例如全職學生與兼任學生都繼承自『學生』基礎角色。
+
+總結這張投影片，請記住這個核心觀念：參與者泛化能有效重用共用角色權限，消除模型中多餘的重複連線。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_use_case/10_common_anti_patterns.jpg" alt="Common Anti-Patterns in Use Case Modeling" />
+</div>
+
+<!--
+檢視初學者最容易掉入的四大反模式：
+
+第一，功能分解陷阱：把使用案例當成循序流程圖，把「點擊按鈕」、「輸入密碼」畫成一顆顆小泡泡；第二，蜘蛛網混亂：使用案例之間畫滿了毫無意義的箭頭；第三，邊界消失：把外部資料庫或 API 畫在系統邊界裡面。
+
+總結這張投影片，請記住這個核心觀念：避免過度細化的功能分解，維持高階商業目標導向。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_use_case/11_best_practices_checklist.jpg" alt="Best Practices Checklist" />
+</div>
+
+<!--
+工程師必備的最佳實踐檢核清單：
+
+1. 每個使用案例名稱必須是動詞加受詞。
+2. 參與者必須代表明確角色，而非內部組織部門。
+3. 系統邊界框清晰劃分系統責任範圍。
+4. 正確區分強制 Include 與條件 Extend。
+
+總結這張投影片，請記住這個核心觀念：遵循嚴謹的語法標準與命名規範，確保模型具備高度可讀性與合約效力。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_use_case/12_communication_first_mindset.jpg" alt="Communication-First Mindset: Bridges Between Stakeholders and Engineers" />
+</div>
+
+<!--
+總結 4.3 節核心精神：擁抱「溝通優先 (Communication-First)」的心態。
+
+使用案例圖是強大的溝通橋樑，而非孤芳自賞的技術藍圖！它的最大超能力在於連接非技術的業務經理與後端工程團隊。如果一張圖不能讓業務人員在三十秒內看懂，它就是過度設計！
+
+總結這張投影片，請記住這個核心觀念：使用案例模型本質上是凝聚業務目標與工程共識的視覺溝通契約。
+-->
+
+---
+
+## 使用案例規格書：UC-01 學生選課 (Enroll Student)
+
+| 欄位名稱 | 規格細節說明 |
 | :--- | :--- |
-| **案例代號與名稱** | **UC-01: 美食訂餐下單 (Place Food Order)** |
-| **主要參與者** | 顧客 (已註冊並通過認證之 FoodieGo App 會員) |
-| **前置條件 (Pre)** | 顧客處於已登入狀態；購物車內至少有 1 項有效餐點，且該餐廳處於營業接單狀態。 |
-| **後置條件 (Post)** | 訂單建立並標記為 `PAID` 狀態；通知廚房接單；外送排程佇列已建立；收據寄發顧客。 |
-| **主要成功情境 (Main Flow)** | 1. 顧客於購物車結帳頁面點擊「確認送出訂單」。<br>2. 系統進行即時庫存校驗，並精算餐點小計、外送費與應付總額。<br>3. 系統執行 `<<include>>` **UC-02: 處理金流付款**，向外部第三方金流驗證扣款。<br>4. 系統寫入持久化資料庫，產生唯一訂單編號 `orderId`。<br>5. 系統向餐廳端管理儀表板推播即時訂單製備通知。<br>6. 系統建立 GPS 外送追蹤通訊工作階段，並回傳預估抵達時間。 |
-| **擴充例外情境 (Extensions)** | **3a. 信用卡扣款授權遭拒：**<br>&nbsp;&nbsp;&nbsp;&nbsp;3a1. 系統即時提示顧客卡號失效，訂單暫存保留為 `DRAFT` 待付狀態。<br>**4a. `<<extend>>` 套用促銷優惠券：**<br>&nbsp;&nbsp;&nbsp;&nbsp;4a1. 顧客於結帳前輸入有效代碼，系統於步驟 3 扣款前扣抵折扣金額。 |
+| **使用案例代號 / 名稱** | **UC-01：學生選課 (Enroll Student in Course)** |
+| **主要參與者 (Actor)** | 學生 (透過學校單一登入 SSO 驗證身分) |
+| **前置條件 (Preconditions)** | 學生具備有效學籍在學狀態；當前處於選課開放時段內 |
+| **後置條件 (Postconditions)** | 學生正式納入該課程名冊；該課程剩餘修課名額自動扣減 1 |
+| **主要成功路徑 (Main Flow)** | **1.** 學生依學系代碼或開課課號搜尋開放修習的課程清單。<br>**2.** 系統回傳並展示符合條件的班級資訊、上課時間表與剩餘名額。<br>**3.** 學生選定目標課程，向系統提出正式加選請求。<br>**4.** 系統執行 `<<include>> 檢查先修科目資格`，比對學生歷史歷年成績單。<br>**5.** 系統鎖定保留名額，寫入選課交易紀錄，並產生成員確認通知單。<br>**6.** 學生即時檢視個人更新後的課表，並收到選課成功通知信。 |
+| **例外與擴充路徑 (Extensions)** | **4a. 先修科目未通過：** 系統提示未修畢之必要擋修科目代碼，中斷選課流程。<br>**4b. 上課時間衝堂：** 系統發出警告，提示與已選課程時間重疊，放棄本次加選。<br>**5a. 課程名額已滿：** 系統觸發 `<<extend>> 加入候補等候名單` 流程。 |
 
 <!--
-這就是步驟 4 的具體工程產出：UC-01 美食訂餐下單的結構化規格書。
+使用案例圖只是一張高階目錄，真正嚴謹的行為合約完整記錄在使用案例規格書中！
 
-請看這份契約的嚴密性：
-前置條件確保購物車與餐廳狀態合法；
-主要成功情境明確交代了 6 步交易對話；
-第 3 步透過 include 引入付款；
-而例外分支 3a 清楚交代扣款失敗時回到 DRAFT 狀態，4a 則銜接優惠券 extend 邏輯。
+大家請看「UC-01 學生選課」的標準 Cockburn 規格書結構：
+主要參與者是通過驗證的學生。
+前置條件確保學籍有效且選課系統開放。
+後置條件保證交易成功後名額扣減並登記在冊。
 
-工程師與品保團隊完全可以依此規格開發與撰寫測試，不留任何瞎猜空間。
+請特別注意主要成功路徑的第 4 步：它正式宣告並調用了被包含的子使用案例「檢查先修科目資格」。
+在例外路徑中，清楚規範了擋修、衝堂與額滿時的處理方式。
 
-總結本頁核心：結構化表格詳盡規範了案例的步驟、包含關係與例外處理機制。
+總結這張投影片，請記住這個核心觀念：使用案例規格書以條理化的對話步驟、前置後置條件與例外處理，賦予圖表實質的工程合約約束力。
 -->
+
 ---
-## 使用案例模型：與其他 UML 模型的協同關係
 
-> 「使用案例規格敘述書是軟體開發的單一事實來源，驅動結構、動態與狀態模型的建立。」
+## AI 輔助指南：使用案例塑模 (Use Case Modeling)
 
-<div style="display: flex; gap: 16px; align-items: stretch; margin-top: 14px;">
-<!-- Left: Use Case Anchor -->
-<div class="card" style="flex: 32%; background: #f8fafc; border: 2px solid #0284c7; border-radius: 8px; padding: 16px 14px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-<div style="background: #0284c7; color: #ffffff; font-weight: 700; font-size: 12px; padding: 3px 8px; border-radius: 4px; display: inline-block; margin: 0 auto 8px auto;">需求單一事實來源</div>
-<h3 style="margin: 0 0 6px 0; color: #0b3c5d; font-size: 19px;">4.3 使用案例模型</h3>
-<p style="font-size: 13.5px; line-height: 1.4; color: #334155; margin: 0 0 10px 0;">定義外部黑箱行為契約與端到端價值情境。</p>
-<div style="background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 6px; padding: 8px; font-size: 12.5px; color: #0369a1; text-align: left;">
-      • 參與者與邊界劃定<br>
-      • 目標導向使用案例<br>
-      • 結構化規格敘述書
+- **1. 角色設定與系統邊界約束 (Persona & Boundary Priming)：**
+  - 指示 AI 扮演「精通 UML 2.5 國際標準的資深需求分析師」。
+  - **嚴格要求宣告邊界：** 必須先定義 `rectangle "System Name"`，禁止 AI 將外部雲端服務混入內部邊界。
+- **2. 參與者與關聯性嚴格語義規範：**
+  - **參與者分類：** 要求 AI 區分「主要參與者 (人)」與「次要外部支援服務 (金流 API、簡訊服務)」。
+  - **`<<include>>` 規則：** 僅用於「每次下單必執行的強制共用子流程」。
+  - **`<<extend>>` 規則：** 僅用於「具備特定觸發條件的可選附加行為」，並指明擴充點。
+  - **反模式防護：** 嚴禁功能分解（禁止產生「點擊按鈕」、「輸入密碼」等瑣碎泡泡）。
+- **3. 架構師人工審查清單 (Verification Checklist)：**
+  - [ ] 每個使用案例是否皆以「動詞 + 受詞」命名（如 `下單訂購`、`追蹤外送`）？
+  - [ ] 第三方基礎設施（金流閘道、簡訊）是否正確置於系統邊界外側？
+  - [ ] include 箭頭是否正確指向被包含的共用功能？
+
+<!--
+使用生成式 AI 輔助產生使用案例圖時，精確的 Prompt 約束是成敗關鍵。
+
+大型語言模型在沒有足夠指引時，最容易犯三個經典錯誤：
+第一，功能分解過細，把按鈕點擊畫成使用案例；
+第二，混淆 include 與 extend，把可選的功能畫成強制包含；
+第三，把外部系統（如綠界金流）畫在系統邊界裡面。
+
+透過設定專業角色、強制劃定矩形邊界與關聯語義規則，能讓 AI 在秒級內產出專業合規的模型代碼。
+
+總結這張投影片，請記住這個核心觀念：引導 AI 產生使用案例圖時，必須嚴格約束系統邊界、動詞命名與 include/extend 語義邊界。
+-->
+
+---
+
+## AI 提示詞範例：外送平台使用案例模型
+
+<div class="two-columns">
+<div>
+
+**1. 角色設定與任務指令：**
+```text
+你是一位資深系統分析架構師。
+請根據以下需求描述，產生合規且簡練的
+PlantUML 使用案例圖與使用案例規格書。
+```
+
+**2. 塑模約束條件：**
+- 使用 `<<extends>>` 與 `<<includes>>` 建構模組化關係。
+- 嚴禁功能分解（禁止出現「點擊按鈕」、「輸入密碼」等瑣碎用例）。
+- 以 `rectangle "校園外送平台"` 劃定系統邊界。
+- 外部金流閘道與簡訊服務置於邊界外作為次要參與者。
+
 </div>
-</div>
-<!-- Middle: Connective arrows -->
-<div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: 24px; font-size: 20px; color: #0284c7; font-weight: bold;">
-<div>→</div>
-<div>→</div>
-<div>→</div>
-</div>
-<!-- Right: 3 Dependent Models -->
-<div style="flex: 64%; display: flex; flex-direction: column; gap: 8px;">
-<!-- To Class Model -->
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #3b82f6; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.4 領域類別模型 (結構骨幹)</h4>
-<span style="background: #eff6ff; color: #1d4ed8; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">名詞分析法</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        使用案例步驟中的<b>領域名詞</b>（Customer, Order, Dish）直接提取為領域實體類別、資料屬性與持久化關聯。
-      </p>
-</div>
-<!-- To Sequence Diagram -->
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #8b5cf6; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.5 互動循序圖 (動態交互)</h4>
-<span style="background: #f5f3ff; color: #6d28d9; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">場景動態實現</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        使用案例的<b>主要情境與例外分支</b>，直接轉譯為循序圖的時間序列腳本，由 BCE 物件協同實踐該案例。
-      </p>
-</div>
-<!-- To State Machine -->
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #10b981; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.6 有限狀態機 (生命週期)</h4>
-<span style="background: #ecfdf5; color: #047857; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">觸發事件與前置守衛</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        使用案例中的操作是激發實體<b>狀態躍遷</b>的外部事件（如付款使訂單轉為 PAID）；狀態機狀態亦守衛使用案例前置條件。
-      </p>
-</div>
+<div>
+
+**3. 輸入需求敘述 (Requirements Statement)：**
+> 「顧客可以在平台瀏覽餐廳菜單、將餐點加入購物車並進行結帳下單。
+> 顧客下單時，系統必須強制連線外部**金流閘道**授權扣款，並驗證外送地址有效性。
+> 結帳時，顧客可以自由選擇是否套用優惠券代碼 (`套用折扣優惠`)，或勾選放置門口的無接觸配送。
+> **餐廳員工**可接收並審核進單、更新廚房備餐進度。
+> **外送員**可承接外送任務、回報餐點取件與最終送達。
+> 當訂單狀態變更時，系統會自動呼叫外部**簡訊服務**向顧客發送即時通知。」
+
 </div>
 </div>
 
 <!--
-在結束 4.3 節前，請看這張跨模型協同概念圖。
+這是一個標準的工業級 AI 提示詞範例。
 
-左側是使用案例模型——整個軟體架構的需求單一事實來源。
-看右側的三大對接：
-1. 類別模型：案例文字裡的名詞，直接成為 4.4 的類別。
-2. 循序圖：案例裡的對話步驟，直接成為 4.5 的動態訊息呼叫。
-3. 狀態機：使用者的操作觸發了 4.6 的狀態跳轉，而當前狀態更是案例能不能執行的前置守衛！
+在左側，我們給予 AI 明確的工程角色、輸出格式約束以及嚴格的語義規則：
+要求必須用矩形宣告系統邊界，把金流與簡訊放在邊界外側，並明確指派 include 與 extend 的使用場景。
 
-使用案例成功串接了需求、結構、互動與生命週期。
+在右側，我們輸入一段結構化的外送平台商業需求。
 
-總結本頁核心：使用案例規格書是整個系統塑模的母體，驅動類別、循序與狀態機的誕生。
+AI 接收到這份提示詞後，即可直接輸出標準的 PlantUML 代碼，完全不需要人工反覆除錯。
+
+總結這張投影片，請記住這個核心觀念：提供明確的邊界規則、參與者角色與關聯語意約束，能讓 AI 精準產出符合企業規範的使用案例圖。
 -->
+
 ---
+
+### 課堂互動討論：外送平台使用案例邊界 (雙人同儕討論)
+
+<div class="discussion-columns">
+  <div class="discussion-text">
+
+  **雙人同儕討論：外送平台範疇界定與使用案例關聯**
+  - **工程情境：** 團隊正在為外送平台（如 UberEats/Foodpanda）設計功能使用案例模型。
+  - **參與角色：** 顧客、餐廳廚房人員、外送員、第三方金流閘道。
+  - **與鄰座同學討論（限時 3 分鐘）：**
+    1. 找出 2 個具備 `<<include>>` 關聯的使用案例（例如：*結帳下單* 必然包含 *處理信用卡支付*）。
+    2. 找出 1 個適合使用 `<<extend>>` 關聯的情境，並說明其擴充點（例如：*套用促銷折扣碼* 或 *選擇無接觸送餐*）。
+    3. 外部「金流閘道 (Payment Gateway)」應放在系統邊界框內部還是外部？為什麼？
+
+  </div>
+  <div class="discussion-logo">
+    <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
+  </div>
+</div>
+
+<!--
+讓我們在此進行 Section 4.3 的雙人同儕討論：外送平台的使用案例邊界！請轉頭與身旁的同學組成架構諮詢小組。
+
+請看螢幕上的三個討論題目：
+第一，找出兩個必然包含的 include 關聯。例如：只要顧客按下確認下單，系統就必須強制處理付款與地址驗證。
+第二，找出一個 extend 擴充情境。什麼時候行為是選擇性或條件觸發的？例如套用折扣券。
+第三，探討系統邊界：金流閘道應該畫在框內還是框外？
+
+花三分鐘與你的夥伴討論這三個問題。
+
+參考解答與架構復盤：
+1. Include：『結帳下單』include『授權扣款處理』與『驗證購物車清單』，因為缺少這兩者訂單無法合法成立。
+2. Extend：『套用優惠碼』extend『結帳下單』，僅在顧客主動輸入優惠代碼時觸發。
+3. 系統邊界：金流閘道屬於第三方外部服務，由銀行或 Stripe 維運，非內部開發程式碼，必須明確置於邊界框外。
+
+總結這張投影片，請記住這個核心觀念：使用案例模型劃定系統責任範圍，並清晰分離基底核心邏輯與選擇性擴充行為。
+-->
+
+---
+
 ### 觀念檢核測驗 3 (CCQ 3)
+<!-- id: ase-ch04-ccq3 -->
 
 <div class="ccq-columns">
 <div class="ccq-text">
 
-在美食外送使用案例模型中，為何「套用優惠折扣碼」使用 `<<extend>>` 指向「美食訂餐下單」，而「美食訂餐下單」卻使用 `<<include>>` 指向「處理信用卡扣款」？
+在 UML 使用案例模型中，若使用案例 A 與使用案例 B 之間存在 **`<<include>>`** 關聯（A 指向 B），這在軟體架構上代表什麼意義？
 
-- **A.** 折扣碼是每筆訂單強制必填的欄位；而扣款則是自由選填的項目。
-- **B.** 折扣碼為特定條件下的選用行為；而扣款則是結帳必定執行的共用程序。
-- **C.** 折扣碼由次要參與者發起執行；而扣款則由主要參與者獨立完成。
-- **D.** 折扣碼代表類別層級的繼承關係；而扣款代表物件層級的組合關係。
-
-</div>
-<div class="ccq-logo">
-<img src="../../img/ch05/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
-</div>
-</div>
-
-<!--
-讓我們透過觀念測驗 2 來檢驗對使用案例關係的理解。
-
-分析選項：
-選項 A 完全顛倒了業務邏輯。
-選項 C 混淆了參與者角色與關聯構造型（Stereotypes）。
-選項 D 混淆了類別圖與使用案例圖的箭頭概念。
-
-正確答案是 B！套用優惠碼是有條件且非強制的選用行為——沒有折價券也能順利下單。相對地，處理扣款是每筆結帳必經的共用子流程。
-
-總結這張投影片，請記住這個核心觀念：Include 代表必定執行的共用功能，Extend 則代表有條件觸發的選用行為。
--->
----
-<!-- _class: lead -->
-<!-- header: '4.4 結構塑模與領域類別圖' -->
-
-# **4.4 結構塑模與領域類別圖**
-
-> "Classes are the static building blocks; objects are the living runtime instances."  
-> *(類別是系統的靜態積木；物件是運作時的鮮活實例。)*
-
-<!--
-我們現在轉進 4.4 節：結構塑模與領域類別圖（Class Diagrams）。
-
-循序圖展現了特定場景下的動態訊息傳遞，但我們同樣需要精確定義軟體的靜態組織——包含有哪些類別、各自具備哪些欄位與方法，以及不受時間流逝影響的物件關聯。
-
-讓我們檢視美食外送平台的領域類別模型。
-
-總結這張投影片，請記住這個核心觀念：類別圖定義了物件導向系統的靜態架構骨幹與領域實體關聯。
--->
----
-## 領域類別塑模：核心定義與工程價值
-
-> 「類別圖定義了物件導向系統的靜態架構骨幹、領域實體關聯與資料封裝防線。」
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-<h3>何謂類別模型 (Definition & Abstraction)</h3>
-<ul>
-<li><b>靜態結構藍圖：</b> 一種完全獨立於執行時序的模型，定義軟體型別、內部封裝狀態（屬性）與操作責任（方法）。</li>
-<li><b>領域實體映射：</b> 將真實世界問題領域的商業概念、實體與規則，精準轉化為物件導向軟體的抽象表示。</li>
-<li><b>結構關聯分類學：</b> 形式化定義關聯 (Association)、聚合 (◇)、組合 (◆) 與一般化繼承 (Generalization)。</li>
-</ul>
-</div>
-<div class="card" data-marpit-fragment>
-<h3>為何至關重要 (Engineering Value)</h3>
-<ul>
-<li><b>程式碼與資料庫的直接映射：</b> 標準三格矩形（類別名稱、屬性、方法）可 1:1 直接轉換為 OOP 原始碼與關聯式資料表架構。</li>
-<li><b>精確控制物件生命週期耦合：</b> 嚴格區分「同生共死」的強擁有關係（組合）與「彼此獨立」的弱擁有關係（聚合）。</li>
-<li><b>資料封裝與語意完整性防線：</b> 透過可見度符號（<code>+</code>、<code>-</code>、<code>#</code>）保護內部狀態不變量，防範外部任意篡改。</li>
-</ul>
-</div>
-</div>
-
-<!--
-讓我們進入 4.4 節，探討領域類別模型的核心本質與工程重要性。
-
-首先，何謂類別模型：類別圖是系統的靜態結構藍圖。它完全不受時間先後影響，定義了軟體中的類別、欄位、方法，以及實體之間的關聯與繼承關係。
-
-其次，為什麼它至關重要：如果不先建立類別模型就貿然寫程式碼，往往會寫出高度耦合、難以維護的爛代碼。類別圖貫徹物件導向封裝原則，並清楚區分物件生命週期的強弱耦合。
-
-總結這張投影片，請記住這個核心觀念：類別圖定義了物件導向系統的靜態骨幹、封裝界限與資料綱要。
--->
----
-## 領域類別塑模：四步標準工程流程
-
-> 「領域塑模將真實世界中混亂的概念名詞，轉化為高內聚、低偶合的物件導向結構架構。」
-
-<div style="display: flex; align-items: stretch; justify-content: space-between; gap: 12px; margin-top: 14px;">
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #3b82f6; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #3b82f6; text-transform: uppercase;">步驟 1</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">名詞分析法<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(Extract Nouns)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li>從使用案例規格敘述中提取候選實體。</li>
-<li>排除短暫 UI 暫存值與無意義純量。</li>
-</ul>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #3b82f6; font-weight: bold;">→</div>
-
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #2563eb; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #2563eb; text-transform: uppercase;">步驟 2</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">指派屬性與操作<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(Attributes & Methods)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li>定義資料狀態與可見度 (+, -, #)。</li>
-<li>依照單一職責指派核心業務操作。</li>
-</ul>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #2563eb; font-weight: bold;">→</div>
-
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #1d4ed8; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #1d4ed8; text-transform: uppercase;">步驟 3</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">建立關聯與重數<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(Multiplicities)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li>繪製物件間的結構連線與角色名稱。</li>
-<li>標註嚴格基數上下限 (1, 0..1, 1..*)。</li>
-</ul>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #1d4ed8; font-weight: bold;">→</div>
-
-<div class="card" style="flex: 1.1; padding: 14px 12px; background: #eff6ff; border: 1.5px solid #3b82f6; border-top: 4px solid #1e40af; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 800; color: #1e40af; text-transform: uppercase;">步驟 4 ★ 生命週期控制</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #1e3a8a;">重構生命週期<br><span style="font-size: 12px; color: #1d4ed8; font-weight: normal;">(聚合 ◇ vs 組合 ◆)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0; color: #1e3a8a;">
-<li><b>聚合 (◇)：</b> 獨立共享生命週期（餐廳與餐點）。</li>
-<li><b>組合 (◆)：</b> 級聯銷毀所有權（訂單與明細項目）。</li>
-</ul>
-</div>
-</div>
-
-> 📌 **工程洞見：** 類別塑模的核心在於**定義物件責任邊界與生命週期偶合度**——在撰寫任何 SQL 或 OOP 程式碼前，徹底杜絕記憶體洩漏與孤兒資料風險。
----
-<!-- _class: title-image-slide -->
-
-## 美食外送領域：類別圖架構藍圖
-
-<div class="image-wrapper">
-<img src="../../img/ch05/food_delivery_class.svg" alt="美食外送領域類別圖" />
-</div>
-
-<!--
-請看這張完整的美食外送平台領域類別圖。
-
-觀察所有結構元素的精確整合：
-最上方是抽象父類別 `User`，由 `Customer` 與 `Courier` 繼承泛化。
-正中央核心實體是 `Order`。
-請注意實心黑菱形：`Restaurant` 組合了 `MenuItem`，而 `Order` 組合了 `OrderItem`。
-請注意空心白菱形：`DeliveryTask` 聚合了 `Courier`。
-再注意每條關聯線兩端的重數（Multiplicity）：`1`、`1..*`、`0..*` 與 `0..1`。
-
-接下來我們逐一拆解這張圖背後的軟體工程決策。
-
-總結這張投影片，請記住這個核心觀念：領域類別圖將類別、繼承、整體部分生命週期與重數綜合成完整的資料藍圖。
--->
----
-## 領域類別結構與物件生命週期關聯解析
-
-- **泛化繼承階層 (Generalization / Inheritance)：**
-  - `User` 為抽象父類別，定義共用屬性（`userId`, `phone`, `email`）與方法（`login()`）。
-  - `Customer` 與 `Courier` 特化繼承 `User`，共享帳號身分同時擴充專屬欄位（如送餐地址 vs. 載具型態與 GPS 座標）。
-- **組合 (`◆` 實心菱形，Composition) — 強整體–部分擁有關係：**
-  - `Order "1" *-- "1..*" OrderItem`：`OrderItem`（例如兩份辣味漢堡）脫離父層 `Order` 便無獨立存在的意義。若訂單被刪除，其下的訂單明細必須連帶被串聯刪除（Cascade Delete）！
-  - `Restaurant "1" *-- "1..*" MenuItem`：菜單料理嚴格附屬於該發布餐廳。
-- **聚合 (`◇` 空心菱形，Aggregation) — 弱整體–部分擁有關係：**
-  - `DeliveryTask "0..*" o-- "1" Courier`：外送任務分派給外送員，但外送員具備**完全獨立的生命週期**。外送任務結束或被取消時，外送員依然留在系統中！
-- **關聯與價格歷史快照去耦合：**
-  - `OrderItem` 以 `0..* --> 1` 關聯 `MenuItem`。`OrderItem` 獨立記錄下單當下的歷史成交單價，未來餐廳調漲漢堡價格時，過去的歷史訂單金額絕不會受到波及。
-
-<!--
-深入剖析類別關聯背後的工程考量：
-
-請大家務必釐清「組合」與「聚合」的重大差異：
-`OrderItem` 指向 `Order` 是實心菱形（組合）！如果訂單刪除，裡面的明細項目隨之消失，不可能單獨飄在記憶體裡。
-
-但 `DeliveryTask` 指向 `Courier` 是空心菱形（聚合）！任務包含了一位外送員，但外送員是獨立個體。送完這單，外送員繼續在線等待下一單。
-
-另外，`OrderItem` 獨立保存單價快照，能避免商家下個月調漲菜單時，上個月已結算訂單金額跟著跳動的嚴重財務災難！
-
-總結這張投影片，請記住這個核心觀念：在塑模整體部分關係時，務必區分組合（生命週期綁定）與聚合（具備獨立生命週期）。
--->
----
-## 類別圖標準語法：三格矩形、可見度與關聯重數
-
-- **標準三格類別方塊 (Three-Compartment Box)：**
-  - **頂層方格：** 類別名稱，採 `PascalCase`（斜體代表 `abstract` 抽象類別）。
-  - **中層方格：** 屬性欄位：`[可見度] 名稱 : 型別 [= 預設值]`。
-  - **底層方格：** 操作方法：`[可見度] 名稱(參數 : 型別) : 回傳型別`。
-- **可見度修飾詞 (Visibility Modifiers，封裝文法)：**
-  - `+` **Public (公有)：** 整個系統任何類別皆可公開存取。
-  - `-` **Private (私有)：** 嚴格封裝於本類別宣告內部。
-  - `#` **Protected (保護)：** 僅限本類別與其衍生子類別存取。
-  - `~` **Package (套件私有)：** 僅限同模組或命名空間內存取。
-- **關聯端重數標示 (Multiplicity)：**
-  - `1`：剛好精確 1 個實例。
-  - `0..1`：選用；0 個或 1 個實例。
-  - `0..*` (或 `*`)：0 個至多個實例。
-  - `1..*`：至少 1 個實例（上不封頂）。
-
-<!--
-這是類別圖語法的快速參考手冊：
-
-每個類別矩形分為三格：名稱、屬性與操作方法。
-可見度符號落實物件導向封裝精神：加號代表 public，減號代表 private，井號代表 protected。
-
-關聯兩端的重數宣示了系統的關鍵業務規則：
-`1` 代表恰好一個。
-`0..1` 代表選用。
-`1..*` 代表至少一個。
-例如，我們宣告 `Order` 必須包含 `1..*` 筆 `OrderItem`，意味著商業邏輯禁止建立 0 項商品的空訂單！
-
-總結這張投影片，請記住這個核心觀念：類別方格定義名稱、屬性與操作，並透過嚴格的可見度與重數語義落實物件導向設計。
--->
----
-## 領域類別模型：與其他 UML 模型的協同關係
-
-> 「領域類別模型構築了軟體系統的靜態結構骨幹，為動態互動與生命週期跳轉提供載體。」
-
-<div style="display: flex; gap: 16px; align-items: stretch; margin-top: 14px;">
-<div class="card" style="flex: 32%; background: #f8fafc; border: 2px solid #3b82f6; border-radius: 8px; padding: 16px 14px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-<div style="background: #3b82f6; color: #ffffff; font-weight: 700; font-size: 12px; padding: 3px 8px; border-radius: 4px; display: inline-block; margin: 0 auto 8px auto;">靜態結構核心</div>
-<h3 style="margin: 0 0 6px 0; color: #0b3c5d; font-size: 19px;">4.4 領域類別模型</h3>
-<p style="font-size: 13.5px; line-height: 1.4; color: #334155; margin: 0 0 10px 0;">定義領域實體概念、屬性狀態與生命週期偶合結構。</p>
-<div style="background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 6px; padding: 8px; font-size: 12.5px; color: #1d4ed8; text-align: left;">
-• 實體類別與資料型別<br>
-• 關聯重數與基數限制<br>
-• 聚合 (◇) 與組合 (◆)
-</div>
-</div>
-
-<div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: 24px; font-size: 20px; color: #3b82f6; font-weight: bold;">
-<div>→</div>
-<div>→</div>
-<div>→</div>
-</div>
-
-<div style="flex: 64%; display: flex; flex-direction: column; gap: 8px;">
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #0284c7; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.3 使用案例模型 (功能合約)</h4>
-<span style="background: #e0f2fe; color: #0369a1; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">實體資料載體</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        類別模型提供持久化資料結構與領域實體，支撐使用案例流程中各步驟的資料儲存與狀態維護。
-</p>
-</div>
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #8b5cf6; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.5 互動循序圖 (動態交互)</h4>
-<span style="background: #f5f3ff; color: #6d28d9; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">生命線型別與 API</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        類別模型定義了循序圖中各個生命線物件的所屬型別，並嚴格限制水平訊息呼叫必須對應類別中的合法方法簽章。
-</p>
-</div>
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #10b981; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.6 有限狀態機 (生命週期)</h4>
-<span style="background: #ecfdf5; color: #047857; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">內部狀態空間</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        狀態機深入刻畫類別圖中特定實體類別（如 FoodOrder）的內部狀態變遷；狀態機的屬性即直接對應類別的 status 列舉或 State Pattern。
-</p>
-</div>
-</div>
-</div>
----
-### 觀念檢核測驗 4 (CCQ 4)
-<div class="ccq-columns">
-<div class="ccq-text">
-
-在美食外送類別圖中，為何「訂單 (Order)」與「訂單明細 (OrderItem)」之間採用**組合 (`◆`)**，而「外送任務 (DeliveryTask)」與「外送員 (Courier)」之間卻採用**聚合 (`◇`)**？
-
-- **A.** 訂單明細可脫離訂單獨立存在；但外送員失去任務就無法存活。
-- **B.** 訂單明細隨訂單銷毀而連帶消失；外送員則具備完全獨立的生命週期。
-- **C.** 組合代表類別層級的繼承；聚合代表執行時的方法調用。
-- **D.** 組合強制規定零對一重數；聚合強制規定一對多重數。
+- **A.** 使用案例 B 是選擇性的，僅在特定異常狀況下才會由 A 觸發執行。
+- **B.** 每當使用案例 A 執行時，使用案例 B 所定義的行為「必定且強制」會被納入執行。
+- **C.** 使用案例 A 繼承了使用案例 B 的所有屬性與操作方法。
+- **D.** 使用案例 B 是外部第三方系統，不屬於軟體邊界範疇。
 
 </div>
 <div class="ccq-logo">
-<img src="../../img/ch05/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
-</div>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq3" target="_blank"><img src="../../img/ch04/ase-ch04-ccq3.png" alt="QR Code" /></a>
+  </div>
 </div>
 
 <!--
-讓我們透過觀念測驗 4 來檢核對物件生命週期耦合的理解。
+讓我們透過觀念檢核測驗 3 來驗收對使用案例關聯的理解。
 
+題目問的是：A include B 代表什麼？
 檢視各選項：
-選項 A 完全顛倒了兩者的生命週期。
-選項 C 混淆了整體與部分關聯與類別繼承。
-選項 D 混淆了重數與關聯種類。
+選項 A 是 extend 的定義（選擇性條件觸發）。
+選項 C 是泛化繼承的觀念。
+選項 D 混淆了外部參與者的概念。
 
-正確答案是 B！`OrderItem` 在商業邏輯上無法脫離父層 `Order` 獨立存在——訂單被刪除，明細必然連帶銷毀（組合）。相反地，外送員是獨立個體，任務完成或取消都不影響外送員的存在（聚合）。
+正確答案是 B！當 A 包含 B 時，代表 B 是 A 不可分割且必然會執行的共用子程序。
 
-總結這張投影片，請記住這個核心觀念：組合將組件生命週期與父層緊密綁定，而聚合則保有組件獨立的生命週期。
+總結這張投影片，請記住這個核心觀念：Include 關聯代表強制執行的共用子流程，而 Extend 則是條件式的擴充行為。
 -->
+
 ---
+
 <!-- _class: lead -->
-<!-- header: '4.5 互動塑模與循序圖' -->
+<!-- header: '4.4 結構與類別模型' -->
 
-# **4.5 互動塑模與循序圖**
+# **4.4 結構與領域類別模型**
 
-> "Interaction modeling shows how objects collaborate over time to fulfill the promise of a use case."  
-> *(互動塑模展示了物件如何在時間維度上協同運作，以實現使用案例的承諾。)*
+> "類別圖是軟體系統的靜態建築骨幹；如果骨幹畸形，任何敏捷開發都拯救不了系統的崩潰。"
 
 <!--
-現在推進到 4.4 節：動態互動塑模與循序圖（Sequence Diagrams）。
+我們現在進入第 4.4 節：結構與領域類別模型。
 
-如果說使用案例規格書是用表格文字描繪流程，那麼真實軟體世界則是由記憶體與網路中相互傳遞訊息的協同物件所驅動。
+如果說使用案例回答了系統「為了什麼目標而存在」，那麼類別圖回答的就是系統「由哪些靜態實體與資料結構所構成」。
+類別圖是物件導向程式碼與關聯式資料庫結構的直接投影。
 
-在此節中，我們將學習 UML 循序圖，追蹤美食外送的結帳訊息流，並掌握經典的邊界-控制-實體（BCE）架構模式。
+在這一節中，我們將深入剖析類別的三格解剖結構、可見度資訊隱藏、多種關聯性、整體與部分（聚合與組合）的生命週期相依，以及如何引導 AI 精確產生領域模型。
 
-總結這張投影片，請記住這個核心觀念：循序圖沿著時間軸精確刻畫參與物件之間的訊息互動傳遞。
+總結這張投影片，請記住這個核心觀念：類別圖奠定系統靜態物件導向架構與資料實體的堅實骨幹。
 -->
----
-## 循序圖塑模：核心定義與工程價值
 
-> 「互動塑模揭示了物件實例如何在執行時序中緊密協同，共同履行使用案例的行為承諾。」
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_class/01_anatomy_of_uml_class_diagrams.jpg" alt="The Anatomy of UML Class Diagrams" />
+</div>
+
+<!--
+我們正式進入類別圖的核心領域。
+
+在物件導向軟體工程中，類別圖是最常被使用、也最被深入研究的圖表。它是將現實世界業務領域映射為軟體程式碼的第一道橋樑。
+
+總結這張投影片，請記住這個核心觀念：類別圖是連結現實領域概念與程式碼物件類別的靜態橋樑。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_class/02_blueprint_vs_instance.jpg" alt="Blueprint vs Instance: The Foundation of OOD" />
+</div>
+
+<!--
+類別與物件實例的根本區別：
+
+類別是藍圖 (Blueprint)，定義型態與結構規格；物件是執行期的具體實例 (Instance)，擁有具體的記憶體空間與狀態資料。類別圖塑模的是藍圖，而非個別物件。
+
+總結這張投影片，請記住這個核心觀念：類別圖是定義物件集合結構特徵的靜態藍圖。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_class/03_three_perspectives_of_class_modeling.jpg" alt="The Three Perspectives of Class Modeling" />
+</div>
+
+<!--
+類別塑模的三重視角：
+
+概念視角 (Conceptual) 捕捉真實領域名詞；規格視角 (Specification) 定義抽象型態與介面操作簽章；實作視角 (Implementation) 則直接對齊程式語言中的具體欄位與函式實作。
+
+總結這張投影片，請記住這個核心觀念：依據專案階段精準切換概念、規格與實作三重視角。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_class/04_anatomy_of_class_box.jpg" alt="Anatomy of the Class Box" />
+</div>
+
+<!--
+剖析 UML 類別標準三格矩形：
+
+頂格是類別名稱；中格是屬性清單，標註名稱、型態與預設值；底格是操作方法清單，標註參數型態與回傳值。如果只需要表達概念模型，可以省略底格方法，聚焦於資料屬性。
+
+總結這張投影片，請記住這個核心觀念：三格矩形分別規範類別識別、資料屬性與操作行為合約。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_class/05_visibility_matrix.jpg" alt="The Visibility Matrix" />
+</div>
+
+<!--
+封裝與可見度符號是物件導向的基石：
+
+加號 (+) 代表 public 公開存取；減號 (-) 代表 private 私有封裝；井號 (#) 代表 protected 保護層級（僅子類別可見）；波浪號 (~) 代表 package 套件層級。良好的物件導向設計要求屬性一律 private，透過 public 方法對外提供受控服務。
+
+總結這張投影片，請記住這個核心觀念：嚴格遵循資訊隱藏原則，屬性私有化並透過公開方法暴露必要操作。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_class/06_parameter_directionality.jpg" alt="Parameter Directionality Dashboard" />
+</div>
+
+<!--
+深入檢視 UML 方法簽章中的參數方向指示符號：
+
+`in` 代表輸入參數（唯讀不可改）；`out` 代表輸出參數（由方法賦值傳回）；`inout` 則代表雙向讀寫參數。這在塑模跨行程遠端呼叫 (RPC) 或底層 C/C++ API 時至關重要。
+
+總結這張投影片，請記住這個核心觀念：參數方向指示符精確規範資料在函式邊界的流動方向與所有權。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_class/07_taxonomy_of_relationships.jpg" alt="Taxonomy of Relationships" />
+</div>
+
+<!--
+類別之間存在多種結構關聯：
+
+最弱的是依賴 (Dependency)，其次是普通關聯 (Association)，再往上是整體與部分的聚合 (Aggregation) 與組合 (Composition)，最後是具備多型特性的泛化繼承 (Generalization) 與介面實現 (Realization)。
+
+總結這張投影片，請記住這個核心觀念：不同關聯代表不同強度的耦合程度，架構師應依生命週期與相依性審慎抉擇。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_class/08_connector_cheat_sheet.jpg" alt="The Connector Cheat Sheet" />
+</div>
+
+<!--
+這是一張價值連城的 UML 連線符號速查指南：
+
+實線箭頭是一般關聯；空心三角實線是類別繼承；空心三角虛線是介面實現；空心菱形是聚合；實心黑菱形是組合。請大家務必把這張圖的線條與箭頭形狀烙印在腦海中，這是全球軟體工程師共通的文法！
+
+總結這張投影片，請記住這個核心觀念：精確區分虛實線條與箭頭形狀，避免在架構圖上傳達錯誤的依賴語義。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_class/09_aggregation_vs_composition.jpg" alt="Lifecycle Diagnostic: Aggregation vs. Composition" />
+</div>
+
+<!--
+聚合與組合是軟體工程中最常被考究的核心觀念：
+
+聚合 (Aggregation，空心菱形) 代表「Has-A」弱整體關係，部分可以獨立於整體而存在，例如大學與教授、外送平台與外送員；組合 (Composition，實心菱形) 代表「Part-Of」強整體關係，部分無法獨立生存，若整體消亡，部分隨之連帶銷毀，例如訂單與訂單明細項。
+
+總結這張投影片，請記住這個核心觀念：組合代表強生命週期綁定與連帶銷毀，而聚合代表獨立生命週期的鬆散組織。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_class/10_cardinality_and_constraints.jpg" alt="Cardinality & Constraints" />
+</div>
+
+<!--
+關聯重數 (Multiplicity) 規範了物件執行期的數量約束：
+
+`1` 代表恰好一個；`0..1` 代表可選（可能為 null）；`*` 或 `0..*` 代表零到多個；`1..*` 代表至少一個。必須在關聯線的兩端分別清楚標註，才能作為資料庫外部鍵 (FK) 與反向集合屬性的精確依據。
+
+總結這張投影片，請記住這個核心觀念：重數雙向明確標註，是指導資料庫綱要與程式碼集合宣告的法定邊界規則。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_class/11_order_model_example.jpg" alt="Syntax to System: The Order Model" />
+</div>
+
+<!--
+將上述所有語法融會貫通於真實的電商訂單領域模型中：
+
+看左邊的 Customer：包含私有 customerID 並以 1 對 * 關聯 Order。看中間的 Order：以實心菱形組合 (Composition) 指向 LineItem，訂單刪除時明細連帶抹除。看下方 PaymentInterface：Order 透過虛線空心箭頭實現介面。
+
+總結這張投影片，請記住這個核心觀念：結合可見度、重數、組合與介面實現，就能勾勒出生產級的強韌領域模型。
+-->
+
+---
+
+## AI 輔助指南：類別塑模 (Class Modeling)
+
+- **1. 角色設定與抽象層次界定 (Persona & Abstraction Level)：**
+  - 指示 AI 扮演「物件導向領域模型專家 (Domain Architect)」，並明確要求產出「概念層領域模型」或「實作層設計模型」。
+- **2. 整體與部分關聯性嚴格紀律 (Whole-Part Coupling)：**
+  - **組合 (`*--`, ◆)：** 強制 AI 辨識具備生命週期相依性的實體（整體銷毀時，部分連帶 cascade-delete）。
+  - **聚合 (`o--`, ◇)：** 要求部分具備獨立生命週期時使用空心菱形。
+  - **禁止濫用泛型關聯：** 嚴禁 AI 全部使用普通實線 (`--`) 敷衍了事，必須為每條線指明重數與關聯型態。
+- **3. 封裝與雙向重數規範：**
+  - 要求強制加上可見度符號（屬性私有 `-`、操作公開 `+`、型態宣告）。
+  - 關聯線「兩端」皆必須明確標註重數（如 `1` 對 `1..*`）。
+- **4. 架構師人工審查清單 (Verification Checklist)：**
+  - [ ] AI 是否誤將繼承 (`<|--`) 當成組合 (`*--`)？
+  - [ ] 敏感屬性（密碼、金流 token、地址）是否皆設定為 `- private`？
+  - [ ] 關聯重數在業務邏輯上是否合理（例如訂單能否包含 0 個項目）？
+
+<!--
+在引導 AI 產生類別圖時，最需要警惕的是「關係平庸化」與「繼承濫用」。
+
+如果沒有給予嚴格提示，LLM 經常把所有實體都用普通實線連起來，遺失重要的組合與聚合語義；或者隨意濫用繼承，造成深層脆弱的類別階層。
+
+透過提示詞強制規範組合 (Composition) 與聚合 (Aggregation) 的判定準則，並要求在兩端標註重數與可見度，架構師就能在數秒內獲得符合 Domain-Driven Design (DDD) 標準的乾淨模型。
+
+總結這張投影片，請記住這個核心觀念：嚴格約束整體/部分生命週期、雙向重數與屬性封裝，防止 AI 產出淺薄失真的類別圖。
+-->
+
+---
+
+## AI 提示詞範例：外送平台領域類別模型
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
-<h3>何謂循序圖模型 (Definition & Abstraction)</h3>
-<ul>
-<li><b>時間順序訊息流動：</b> 二維動態互動模型，水平軸排列參與物件生命線，垂直軸由上而下代表時序推移。</li>
-<li><b>顯性化訊息語意：</b> 清楚呈現同步呼叫 (Synchronous)、非同步訊息 (Asynchronous)、回傳值與物件啟動條長度。</li>
-<li><b>結構化控制邏輯：</b> 透過標準化複合片段 (Combined Fragments 如 <code>alt</code>、<code>opt</code>、<code>loop</code>) 表達條件分支與迴圈。</li>
-</ul>
+<div>
+
+**1. 角色設定與任務指令：**
+```text
+你是一位資深物件導向軟體架構師。
+請根據以下領域需求，產出符合 DDD 規範的
+標準 PlantUML 類別圖 (Class Diagram)。
+```
+
+**2. 塑模約束條件：**
+- `Order` 與 `OrderItem` 必須使用**組合關聯** (`*--`，重數 `1` 對 `1..*`)。
+- `Order` 與 `Courier` 必須使用**聚合關聯** (`o--`，重數 `*` 對 `0..1`)。
+- `OrderItem` 關聯至 `MenuItem` (`*` 對 `1`)。
+- 所有屬性均須宣告 `- private` 與明確資料型態。
+- 標註關鍵業務方法 (`+ calculateTotal()`, `+ assignCourier()`)。
+
 </div>
-<div class="card" data-marpit-fragment>
-<h3>為何至關重要 (Engineering Value)</h3>
-<ul>
-<li><b>揭示動態執行協同機制：</b> 類別圖只呈現「誰認識誰」，循序圖明確解答「誰在何時呼叫誰、等待多久、傳遞何種參數」。</li>
-<li><b>驗證架構分層與責任分配：</b> 實踐 BCE 穩健性架構模式（邊界、控制、實體），杜絕 UI 與資料庫直接耦合的義大利麵代碼。</li>
-<li><b>驗證通訊協定與並發邏輯：</b> 作為微服務分散式呼叫、網路逾時因應與多執行緒並發除錯的精確設計藍圖。</li>
-</ul>
+<div>
+
+**3. 輸入需求敘述 (Requirements Statement)：**
+> 「系統包含 **Customer**（顧客 ID、姓名、Email、電話、外送地址）。
+> **Restaurant**（餐廳 ID、店名、地址）擁有多項 **MenuItem**（餐點 ID、品名、單價、是否在庫）。
+> 顧客可建立多筆 **Order**。每筆訂單包含訂單編號、狀態列舉 (OrderStatus: 待處理、製作中、配送中、已送達)、下單時間與總金額。
+> 一筆訂單由一個或多個 **OrderItem**（購買數量、購買當下單價、小計）組成；若訂單被取消刪除，其明細項目必須連帶銷毀。
+> 平台可指派一位 **Courier**（外送員 ID、姓名、電話、交通工具）負責配送訂單。
+> 訂單透過 **PaymentProcessor** 介面委託第三方完成扣款。」
+
 </div>
 </div>
 
 <!--
-讓我們進入 4.5 節，探索循序圖 (Sequence Diagrams) 的本質與重要性。
+請看這份專為外送平台領域類別圖設計的 AI 提示詞範例。
 
-首先，何謂循序圖：循序圖是一種動態互動模型。不同於靜態類別圖，循序圖擁有明確的時間維度，自上而下追蹤物件生命線之間如何透過訊息傳遞完成協同。
+在左側約束條件中，我們明確寫下了領域規則的骨幹：
+Order 與 OrderItem 必須是組合（因為訂單明細脫離訂單就毫無存在的實體意義）；Order 與 Courier 則是聚合（因為外送員在完成配送後依然獨立存在於系統中）。
 
-其次，為什麼它至關重要：光有類別圖無法證明系統能正常運作！循序圖驗證了物件之間如何協作以滿足特定的使用案例場景，更能落實 BCE 模式，確保架構分層清晰。
+在右側，我們提供清晰的領域名詞與欄位定義。
 
-總結這張投影片，請記住這個核心觀念：循序圖精確捕捉特定場景下物件間隨時間流動的訊息交換與架構協調機制。
+這樣的提示詞結構能確保生成出來的 PlantUML 代碼具備極高的工程成熟度。
+
+總結這張投影片，請記住這個核心觀念：在 Prompt 中直接指明實體的生命週期從屬性，能有效引導 AI 產出具備高內聚、低耦合的優雅類別圖。
 -->
+
 ---
-## 循序圖塑模：四步標準工程流程
 
-> 「循序圖塑模驗證了靜態類別結構是否具備足夠能力協同合作，順利實現動態業務情境。」
+### 課堂互動討論：外送平台領域類別架構 (雙人同儕討論)
 
-<div style="display: flex; align-items: stretch; justify-content: space-between; gap: 12px; margin-top: 14px;">
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #8b5cf6; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #8b5cf6; text-transform: uppercase;">步驟 1</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">鎖定情境腳本<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(From Use Case)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li>選定單一具體情境（正常主情境或特定例外分支）。</li>
-<li>確定本次互動邊界。</li>
-</ul>
-</div>
+<div class="discussion-columns">
+  <div class="discussion-text">
 
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #8b5cf6; font-weight: bold;">→</div>
+  **雙人同儕討論：外送平台物件整體與部分及關聯重數抉擇**
+  - **領域實體：** `Customer`, `Order`, `OrderItem`, `MenuItem`, `Restaurant`, `Courier`。
+  - **與鄰座同學討論（限時 3 分鐘）：**
+    1. **組合 vs. 聚合：** `Order` 與 `OrderItem` 應採用組合 (◆) 還是聚合 (◇)？`Order` 與 `Courier` 之間又該採用何者？為什麼？
+    2. **跨店購物車重數難題：** 若平台開放顧客在一次結帳中同時包含多家 `Restaurant` 的餐點，類別關聯與重數該如何重新調整？
+    3. **資料封裝與安全性：** 為了保護個資與支付憑證，哪些屬性必須設為 `- private`？
 
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #7c3aed; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #7c3aed; text-transform: uppercase;">步驟 2</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">識別 BCE 生命線<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(Boundary-Control-Entity)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li>映射參與者、介面邊界、控制器與實體物件。</li>
-<li>由左至右橫向展開。</li>
-</ul>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #7c3aed; font-weight: bold;">→</div>
-
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #6d28d9; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #6d28d9; text-transform: uppercase;">步驟 3</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">繪製時序訊息<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(Top-Down Messaging)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li>由上而下標示時間流動。</li>
-<li>區分同步 (→)、非同步 (->) 與回傳虛線 (-->)。</li>
-</ul>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #6d28d9; font-weight: bold;">→</div>
-
-<div class="card" style="flex: 1.1; padding: 14px 12px; background: #f5f3ff; border: 1.5px solid #8b5cf6; border-top: 4px solid #5b21b6; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 800; color: #5b21b6; text-transform: uppercase;">步驟 4 ★ 控制邏輯</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #3b0764;">套用複合區塊<br><span style="font-size: 12px; color: #6d28d9; font-weight: normal;">(alt / opt / loop)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0; color: #3b0764;">
-<li><b>alt:</b> 互斥條件分支 (if-else)。</li>
-<li><b>opt:</b> 滿足條件時執行的可選行為。</li>
-<li><b>loop:</b> 對集合物件的重複迭代處理。</li>
-</ul>
-</div>
-</div>
-
-> 📌 **工程洞見：** 循序圖強制落實 **BCE 職責分離原則**——嚴格禁止 UI 介面邊界直接越權操作資料庫實體，必須經由 Controller 控制層協調調度。
----
-<!-- _class: title-image-slide -->
-
-## 訂單下單與支付流程：UML 循序圖
-
-<div class="image-wrapper">
-<img src="../../img/ch05/food_delivery_sequence.svg" alt="美食外送下單循序圖" />
+  </div>
+  <div class="discussion-logo">
+    <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
+  </div>
 </div>
 
 <!--
-請看這張「美食訂餐下單」情境的循序圖。
+現在讓我們進行 Section 4.4 的雙人同儕討論：外送平台領域類別架構！請戴上物件導向設計架構師的帽子。
 
-注意橫跨上方的各個參與物件：
-最左側是人類顧客。
-邊界物件：`CheckoutUI`。
-業務邏輯協調者：`OrderController` 控制器。
-外部金流介面：`PaymentGatewayAPI`。
-實體物件：`Order` 與 `Restaurant`。
-以及背景外送排程服務：`DispatchService`。
+審視題目中的三個架構難題：
+第一，辨別生命週期：Order 與 OrderItem 是什麼關係？Order 與 Courier 呢？
+第二，考慮商業模式突變：如果原本只能單店下單，現在產品經理要求「跨店結帳」（一張訂單買兩家不同餐廳的食物），類別圖會發生什麼翻天覆地的變化？
+第三，封裝考量：哪些敏感資料絕不能 public 暴露？
 
-順著時間軸由上往下追蹤訊息：
-1. 顧客點擊確認結帳。
-2. UI 將請求委派給 OrderController。
-3. 控制器進行內部購物車驗證。
-4. 控制器呼叫外部 PaymentGatewayAPI 進行預扣授權。
-5. 收到授權 Token 後，控制器在資料庫建立 Order 實體。
-6. 控制器非同步通知餐廳並加入外送派單佇列。
-7. 最後將確認結果與追蹤網址回傳給顧客。
+花三分鐘與你的夥伴討論這三個問題。
 
-總結這張投影片，請記住這個核心觀念：循序圖依時間順序清晰追蹤各架構元件之間的方法調用與訊息傳遞。
+參考解答與架構復盤：
+1. 組合 vs 聚合：Order 到 OrderItem 是絕對的組合 (◆)，因為明細項無法脫離訂單獨立存在；而 Order 到 Courier 是聚合 (◇) 或一般關聯，外送員生命週期獨立於任何單一訂單。
+2. 跨店重數：若支援跨店，OrderItem 必須直接關聯所屬的 Restaurant，或者在 Order 下拆分出 SubOrder（子訂單）分別對應不同店家與取件配送路線。
+3. 封裝：信用卡 token、顧客完整地址與電話必須嚴格 private，並透過專屬授權方法存取。
+
+總結這張投影片，請記住這個核心觀念：組合強化生命週期依賴，而封裝與合理的重數規劃則是保護領域資料完整性的盾牌。
 -->
+
 ---
-## 循序訊息流動與 BCE 架構模式剖析
 
-- **邊界–控制–實體 (BCE, Boundary–Control–Entity) 架構模式：**
-  - **邊界物件 (`<<Boundary>>`)：** 負責與外部人類參與者及第三方 API 溝通（如 `CheckoutUI`、`PaymentGatewayAPI`）。
-  - **控制物件 (`<<Control>>`)：** 協調交易流程、業務邏輯演算法與流程分派（如 `OrderController`、`DispatchService`）。
-  - **實體物件 (`<<Entity>>`)：** 封裝持久化儲存的領域狀態與業務核心資料（如 `Order`、`Restaurant`）。
-- **BCE 架構不可動搖的黃金鐵律：**
-  - 外部使用者與 UI 邊界物件**絕不可直接碰觸或存取 Entity 資料實體物件**！
-  - 呼叫流向必須嚴格遵守：**Actor &rarr; Boundary &rarr; Control &rarr; Entity**。
-  - *原因：* 徹底實現介面與資料綱要的解耦。未來資料庫欄位或 ORM 變更時，UI 畫面完全不受波及。
-
-<!--
-請特別注意主導這張循序圖的核心設計模式：邊界-控制-實體（BCE）模式。
-
-邊界物件位於外圍——負責渲染畫面或解析 JSON。
-控制物件蘊含商業邏輯——協調驗證、分散式交易與派單排程。
-實體物件則代表儲存在資料庫裡的領域核心資料。
-
-這是一條軟體工程的鋼鐵紀律：前端 UI 絕對不能直接繞過控制器去讀寫資料庫實體！
-如果你的網頁表單直接寫 SQL 存取資料表，就會寫出高耦合、極端難以維護的義大利麵程式碼。
-
-總結這張投影片，請記住這個核心觀念：BCE 模式透過控制協調者，將使用者介面與底層持久化資料模型徹底解耦。
--->
----
-## 循序圖符號與語意指引
-
-| 視覺符號 | 語意符號名稱 | 精確技術語義 |
-| :--- | :--- | :--- |
-| **垂直虛線** | **生命線 (Lifeline)** | 代表該物件實例在記憶體中隨時間推移的存續狀態。 |
-| **狹長垂直矩形** | **啟用條 (Activation Bar)** | 代表該物件實例正在 CPU 上積極執行程式碼運算的時間區間。 |
-| **實線＋實心箭頭** | **同步呼叫 (Synchronous Call)** | 阻斷性呼叫（Blocking）；呼叫端暫停等待回傳結果後方能繼續。 |
-| **實線＋開放箭頭** | **非同步訊息 (Asynchronous Call)** | 非阻斷性訊息（Non-blocking）；呼叫端送出訊息後立即繼續執行。 |
-| **虛線＋開放箭頭** | **回傳訊息 (Return Message)** | 將運算結果或資料實例明確回傳給原始呼叫者。 |
-| **自我迴圈箭頭** | **自身調用 (Self-Invocation)** | 物件呼叫自身的私有方法（例如 `validateCart()`）。 |
-
-> 📌 **幾何黃金法則：** 時間沿著垂直軸嚴格**向下**推進。任何訊息箭頭絕對不可向上逆行！
-
-<!--
-複習 UML 循序圖的標準符號規範：
-
-垂直虛線是生命線——代表物件存活在記憶體的時間。
-細長矩形條是啟用條——代表物件正在積極執行指令。
-實心三角箭頭代表同步呼叫，呼叫端會被阻塞等待。
-開放刺狀箭頭代表非同步訊息，送出後不等待立刻往下走。
-虛線箭頭則是運算完成後的資料回傳。
-
-請看圖中步驟 3：`validateCart()` 彎回控制器自己，這就是經典的自身調用（Self-Invocation）。
-
-總結這張投影片，請記住這個核心觀念：循序圖透過時間生命線，清楚區分了同步阻斷呼叫、非同步訊息與資料回傳。
--->
----
-## 循序圖模型：與其他 UML 模型的協同關係
-
-> 「循序圖扮演了動態轉譯的橋樑，將靜態的需求文字與類別定義，化為可執行的訊息調度流。」
-
-<div style="display: flex; gap: 16px; align-items: stretch; margin-top: 14px;">
-<div class="card" style="flex: 32%; background: #f8fafc; border: 2px solid #8b5cf6; border-radius: 8px; padding: 16px 14px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-<div style="background: #8b5cf6; color: #ffffff; font-weight: 700; font-size: 12px; padding: 3px 8px; border-radius: 4px; display: inline-block; margin: 0 auto 8px auto;">動態互動核心</div>
-<h3 style="margin: 0 0 6px 0; color: #0b3c5d; font-size: 19px;">4.5 互動循序圖</h3>
-<p style="font-size: 13.5px; line-height: 1.4; color: #334155; margin: 0 0 10px 0;">跨物件實例的時間序列訊息交換與控制轉移。</p>
-<div style="background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 6px; padding: 8px; font-size: 12.5px; color: #6d28d9; text-align: left;">
-• BCE 生命線與啟動條<br>
-• 同步與非同步呼叫<br>
-• 複合區塊 (alt / loop)
-</div>
-</div>
-
-<div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: 24px; font-size: 20px; color: #8b5cf6; font-weight: bold;">
-<div>→</div>
-<div>→</div>
-<div>→</div>
-</div>
-
-<div style="flex: 64%; display: flex; flex-direction: column; gap: 8px;">
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #0284c7; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.3 使用案例模型 (功能需求)</h4>
-<span style="background: #e0f2fe; color: #0369a1; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">場景動態實現</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        直接實現使用案例規格書中的文字對話步驟，證明整個系統架構能端到端滿足使用者的業務目標。
-</p>
-</div>
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #3b82f6; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.4 領域類別模型 (結構定義)</h4>
-<span style="background: #eff6ff; color: #1d4ed8; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">方法合法性檢核</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        每一條水平訊息皆直接檢驗或反哺接收類別的方法簽章 (Method Signatures)，確保職責分配合理。
-</p>
-</div>
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #10b981; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.6 有限狀態機 (生命週期)</h4>
-<span style="background: #ecfdf5; color: #047857; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">觸發事件派遣</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        抵達實體生命線的特定訊息（如 processPayment()），正是激發狀態機產生狀態躍遷的事件觸發源。
-</p>
-</div>
-</div>
-</div>
----
-### 觀念檢核測驗 5 (CCQ 5)
+### 觀念檢核測驗 4 (CCQ 4)
+<!-- id: ase-ch04-ccq4 -->
 <div class="ccq-columns">
 <div class="ccq-text">
 
-在採用 **邊界–控制–實體 (BCE)** 架構設計的 UML 循序圖中，當使用者於 `CheckoutUI` 點擊結帳送出時，該請求應該直接交由哪一個物件接收處理？
+在 UML 類別圖中，若類別 A 與類別 B 之間繪製了一條連線，且在 A 端標示了**實心黑色菱形 (Filled Black Diamond, ◆)** 指向 B，這代表什麼架構意涵？
 
-- **A.** 直接交給 `Order` 實體物件，以便第一時間將訂單寫入資料庫。
-- **B.** 直接交給 `PaymentGatewayAPI` 邊界物件，以便立刻進行信用卡扣款。
-- **C.** 交給 `OrderController` 控制物件，以統籌驗證業務規則與協調交易。
-- **D.** 直接交給 `Restaurant` 實體物件，以確認廚房產能是否充足。
+- **A.** 類別 B 繼承了類別 A 的所有公開方法與屬性。
+- **B.** 類別 A 組合 (Composition) 了類別 B；當物件 A 被銷毀時，所屬的物件 B 也將連帶被銷毀。
+- **C.** 類別 A 與類別 B 是鬆散聚合關係，B 擁有獨立生存的生命週期。
+- **D.** 類別 A 與類別 B 之間僅存在執行期的暫時性依賴。
 
 </div>
 <div class="ccq-logo">
-<img src="../../img/ch05/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq4" target="_blank"><img src="../../img/ch04/ase-ch04-ccq4.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+<!--
+讓我們透過觀念檢核測驗 4 來檢視對類別關聯性的掌握。
+
+題目問的是：實心黑色菱形 (◆) 代表什麼？
+檢視選項：
+選項 A 是泛化繼承（空心三角箭頭）。
+選項 C 是聚合關係（空心菱形 ◇）。
+選項 D 是依賴關係（虛線箭頭）。
+
+正確答案是 B！實心黑色菱形代表強整體組合關係 (Composition)，部分與整體共存亡，具備 cascade-delete 的生命週期約束。
+
+總結這張投影片，請記住這個核心觀念：實心菱形代表生命週期緊密綁定的組合關係 (Composition)，整體消亡則部分連帶銷毀。
+-->
+
+---
+
+<!-- _class: lead -->
+<!-- header: '4.5 互動與循序圖模型' -->
+
+# **4.5 互動與循序圖模型**
+
+> "時間是軟體架構中最嚴苛的考驗；循序圖將時間的流逝具象化為可驗證的訊息契約。"
+
+<!--
+我們現在進入第 4.5 節：互動與循序圖模型 (Sequence Diagrams)。
+
+類別圖向我們展示了系統由哪些物件組成，但它無法告訴我們「當使用者點擊按鈕時，這些物件如何在時間軸上一步步協同通訊、呼叫方法並處理錯誤」。
+循序圖正是為此而生：它以時間為縱軸、物件為橫軸，清晰展現系統運行時的動態脈搏。
+
+在這一節中，我們將學習生命線、啟動條、同步/非同步訊息、BCE 架構模式、UML 2.0 複合片段 (alt, opt, loop)，並結合 AI 提示詞產生嚴謹的動態互動模型。
+
+總結這張投影片，請記住這個核心觀念：循序圖沿時間軸精確描繪物件協同與訊息傳遞，是驗證動態邏輯與 API 介面的核心工具。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_sequence/01_dynamic_interaction_overview.jpg" alt="Dynamic Interaction Overview" />
+</div>
+
+<!--
+我們從靜態跨越到動態世界：為什麼需要動態互動模型？
+
+因為軟體 Bug 與分散式系統架構故障，絕大多數不是發生在類別定義上，而是發生在物件跨時間、跨網路呼叫時的時序死結、競爭條件 (Race Conditions) 與未捕獲例外上。
+
+總結這張投影片，請記住這個核心觀念：動態模型能提前暴露跨物件訊息傳遞與分散式時序中的隱藏架構缺陷。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_sequence/02_static_vs_dynamic_collaboration.jpg" alt="Mapping Dynamic Collaboration: Static vs Dynamic Models" />
+</div>
+
+<!--
+靜態結構與動態行為如同硬幣的兩面：
+
+左側類別圖展示『有什麼實體』，右側循序圖展示『如何隨時間運作』。類別圖中的公開方法，正是循序圖中箭頭上的訊息名稱；兩者相互對應、互為驗證。
+
+總結這張投影片，請記住這個核心觀念：靜態類別定義能力，動態循序展現運作，兩者相互印證方能構成完整架構。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_sequence/03_interaction_canvas_and_dimensions.jpg" alt="The Interaction Canvas: Object Dimension & Time Dimension" />
+</div>
+
+<!--
+循序圖的畫布維度與座標軸：
+
+橫軸代表系統中的物件實體（空間維度），縱軸由上向下代表時間的流逝（時間維度）。所有訊息箭頭一律水平繪製，位置越下方代表發生時間越晚。
+
+總結這張投影片，請記住這個核心觀念：以時間為縱軸、物件為橫軸，是循序圖視覺化執行時序的核心座標體系。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_sequence/04_structural_anatomy.jpg" alt="Structural Anatomy: Lifelines, Activation Bars, and Events" />
+</div>
+
+<!--
+深入循序圖的四大解剖要素：
+
+頂部矩形代表參與物件或參與者；向下延伸的垂直虛線是生命線 (Lifeline)；虛線上的細長矩形條是啟動條 (Activation Bar)，代表該物件正在執行處理；橫向箭頭則是物件間傳遞的訊息。
+
+總結這張投影片，請記住這個核心觀念：掌握生命線、啟動區間與訊息箭頭，就能看懂任何複雜的執行期時序。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_sequence/05_messaging_matrix.jpg" alt="The Messaging Matrix: Synchronous, Asynchronous, Return, Create, Destroy" />
+</div>
+
+<!--
+訊息箭頭的精準語法语義：
+
+實心三角箭頭 (`->`) 代表同步呼叫 (Synchronous Call)，呼叫端會阻塞等待回傳；虛線箭頭 (`-->`) 代表回傳訊息 (Return Message)；開放式魚骨箭頭 (`->>`) 代表非同步事件 (Asynchronous Message)，發送後立即繼續執行，不等待結果。
+
+總結這張投影片，請記住這個核心觀念：正確區分同步阻塞呼叫與非同步事件派發，是設計高併發與微服務架構的基石。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_sequence/06_combined_fragments_overview.jpg" alt="UML 2.0 Combined Fragments: alt, opt, loop, par" />
+</div>
+
+<!--
+UML 2.0 引入了強大的複合片段 (Combined Fragments)：
+
+`alt` 代表多選一條件分支（相當於 if-else）；`opt` 代表選擇性執行（相當於單純的 if）；`loop` 代表迴圈重複執行；`par` 代表多個生命線並行執行。這讓循序圖具備了表達現代控制結構的完整能力。
+
+總結這張投影片，請記住這個核心觀念：複合片段讓循序圖能夠優雅精確地表達條件分支、例外處理與迴圈重複邏輯。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_sequence/07_fragment_operators_to_code.jpg" alt="Fragment Operators to Production Code Logic" />
+</div>
+
+<!--
+這張圖展示了複合片段如何 100% 精準映射到程式代碼：
+
+`alt` 框中的守衛條件直接轉化為 `if (condition) { ... } else { ... }` 區塊；`loop` 框直接對應到 `while` 或 `for` 迴圈。架構師在圖上定義好例外分支，開發者編寫代碼時就絕對不會遺漏錯誤處理！
+
+總結這張投影片，請記住這個核心觀念：複合片段與高階語言的控制結構一一對應，是防止邊界例外被遺漏的利器。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_sequence/08_case_study_hotel_reservation.jpg" alt="System Model Case Study: Hotel Reservation Flow" />
+</div>
+
+<!--
+檢視經典案例：飯店線上預訂與支付流程。
+
+觀察這張生產級循序圖：前端 UI 呼叫 ReservationController，控制器協調 RoomInventory 鎖定房型，接著呼叫外部 PaymentGateway 進行信用卡扣款，並透過 `alt` 片段優雅處理扣款成功與信用卡遭拒的兩條分支。
+
+總結這張投影片，請記住這個核心觀念：真實的循序圖必須完整涵蓋正常流程與異常處理分支，形成嚴密的業務防護網。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_sequence/09_requirements_to_code_pipeline.jpg" alt="The Requirements-to-Code Pipeline: Use Case → Scenario → Sequence → Code" />
+</div>
+
+<!--
+軟體工程的標準落地推進管線：
+
+第一步，使用案例定義目標；第二步，將使用案例展開為一條條具體情境劇本；第三步，以循序圖分配物件職責並繪製訊息流；第四步，直接對照循序圖撰寫 Controller、Service 與 Repository 程式碼。這就是專業的工程紀律！
+
+總結這張投影片，請記住這個核心觀念：循序圖是承接高階使用案例情境、轉化為可執行物件導向程式碼的中樞引擎。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_sequence/10_model_before_code.jpg" alt="Model Before Code: Architectural Discipline vs Chaotic Code" />
+</div>
+
+<!--
+總結 4.5 節的永恆箴言：『先塑模，後寫代碼 (Model Before Code)』。
+
+左邊是沒做設計就盲目動手敲代碼：產生盤根錯節的依賴、未處理的競態條件與義大利麵架構；右邊是先用循序圖理清互動：在寫第一行代碼前就明確各元件職責、排除時序死結。
+
+總結這張投影片，請記住這個核心觀念：在動手編程前視覺化動態通訊，能省下數十倍後期返工與抓 Bug 的沉重代價。
+-->
+
+---
+
+## AI 輔助指南：循序圖塑模 (Sequence Modeling)
+
+- **1. 角色設定與架構模式約束 (Persona & Architecture Pattern)：**
+  - 指示 AI 扮演「分散式系統與 API 整合架構師」。
+  - **強制引入 BCE 模式：** 嚴格要求區分 Boundary (介面)、Control (業務邏輯)、Entity (資料庫實體)，嚴禁 UI 直接繞過控制器存取資料庫。
+- **2. 訊息語法與複合片段嚴格規範：**
+  - **同步呼叫 (`->`) 與返回 (`-->`)：** 強制要求對稱繪製返回虛線與回傳型態，避免啟動條無限懸空。
+  - **非同步派發 (`->>`)：** 對於背景事件排隊、推播通知，強制使用開放式箭頭。
+  - **複合片段 (`alt`)：** 強制要求 AI 必須針對業務失敗情境（如扣款失敗、超時）繪製 `alt [成功] else [失敗]` 區塊。
+- **3. 架構師人工審查清單 (Verification Checklist)：**
+  - [ ] 是否存在違背分層架構的「越級呼叫」（例如前端 UI 直接調用資料庫實體）？
+  - [ ] `alt` 片段中是否具備互斥的守衛條件 `[guard]`？
+  - [ ] 啟動條 (activate/deactivate) 的生命區間是否與方法呼叫週期完全吻合？
+
+<!--
+引導 AI 產生循序圖時，最容易出現的架構硬傷是「越級呼叫」與「只畫 Happy Path」。
+
+如果缺乏架構約束，LLM 經常讓前端直接向資料庫查詢，破壞三層分層架構；而且它極度傾向只畫成功路徑，完全忽略真實世界隨處可見的網路超時與驗證失敗。
+
+透過在提示詞中強制要求遵守 BCE 模式，並強制命令它用 alt 複合片段處理異常分支，就能產出生產級別的嚴謹循序圖。
+
+總結這張投影片，請記住這個核心觀念：透過 BCE 分層約束、對稱返回箭頭與 alt 異常分支，確保 AI 產出的循序圖具備生產級強韌度。
+-->
+
+---
+
+## AI 提示詞範例：外送平台結帳循序模型
+
+<div class="two-columns">
+<div>
+
+**1. 角色設定與任務指令：**
+```text
+你是一位資深分散式系統後端架構師。
+請根據以下結帳情境，採用 BCE 模式
+產出標準 PlantUML 循序圖 (Sequence Diagram)。
+```
+
+**2. 塑模約束條件：**
+- 宣告生命線職責：
+  - `boundary CheckoutUI as ":結帳介面"`
+  - `control OrderCtrl as ":訂單控制器"`
+  - `boundary StripeAPI as ":金流服務"`
+  - `entity OrderEntity as ":訂單實體"`
+  - `queue KitchenQueue as ":廚房事件佇列"`
+- 必須使用 `alt` 片段處理 `[扣款成功]` 與 `[扣款失敗]`。
+- 廚房通知必須使用非同步箭頭 `->>` 發送至事件佇列。
+
+</div>
+<div>
+
+**3. 輸入需求敘述 (Requirements Statement)：**
+> 「顧客在 **CheckoutUI** 點擊『立即付款』按鈕。
+> **CheckoutUI** 轉發 `submitOrder(購物車清單, 支付憑據)` 至 **OrderCtrl**。
+> **OrderCtrl** 呼叫 **StripeAPI** 執行 `authorizeCharge(金額, 憑據)`。
+> 若授權成功：
+> 1. StripeAPI 回傳授權碼 `chargeToken`。
+> 2. OrderCtrl 呼叫 **OrderEntity** 建立持久化訂單紀錄（狀態設為 `PLACED`）。
+> 3. OrderCtrl 以非同步訊息發布 `orderPlacedEvent` 至 **KitchenQueue**。
+> 4. OrderCtrl 回傳 `orderSuccess(訂單編號)` 給 CheckoutUI。
+> 若授權失敗：
+> 1. StripeAPI 回傳 `declinedError`。
+> 2. OrderCtrl 記錄失敗日誌，不建立訂單，直接回傳 `paymentFailed()`。」
+
 </div>
 </div>
 
 <!--
-讓我們透過觀念測驗 3 檢核對 BCE 架構的掌握度。
+這是一份引導 AI 產出 BCE 外送結帳循序圖的經典提示詞。
+
+請看左側的約束條件：
+我們不僅要求宣告 BCE 生命線角色，還特別指定了廚房事件佇列為非同步佇列。
+同時，我們明確要求使用 alt 複合片段包辦成功與失敗兩條路徑。
+
+右側的需求文字條理分明，步驟清晰。
+
+這樣的提示詞送進 LLM，產出的循序圖絕對是架構評審會議上可以直接過關的高水準作品。
+
+總結這張投影片，請記住這個核心觀念：明確定義 BCE 生命線角色與 alt 異常處理分支，能引導 AI 產出符合微服務實務的循序圖。
+-->
+
+---
+
+### 課堂互動討論：外送平台結帳與異常循序流 (雙人同儕討論)
+
+<div class="discussion-columns">
+  <div class="discussion-text">
+
+  **雙人同儕討論：追蹤執行期訊息時序與 BCE 強韌性架構**
+  - **工程情境：** 顧客在手機 App 點擊確認結帳，送出金額 $35 美元的外送訂單。
+  - **核心生命線：** `:CheckoutUI` (邊界), `:OrderController` (控制), `:Order` (實體), `:PaymentGateway` (外部服務)。
+  - **與鄰座同學討論（限時 3 分鐘）：**
+    1. 當扣款成功時，請依時間先後追蹤主要訊息流動。是由哪一個物件負責實體化 `:Order` 物件？
+    2. 如何利用 `alt` 複合片段來同時容納「扣款成功」與「卡片過期/額度不足」的分支？
+    3. 通知餐廳廚房接單的訊息，應該設計為同步阻塞呼叫 (`->`) 還是非同步訊息 (`->>`)？為什麼？
+
+  </div>
+  <div class="discussion-logo">
+    <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
+  </div>
+</div>
+
+<!--
+現在讓我們進入 Section 4.5 的雙人同儕討論：外送平台結帳與異常循序流！請轉頭與夥伴組成後端架構評審小組。
+
+請探討題目中的三個核心設計抉擇：
+第一，追蹤幸福路徑：顧客點擊付款後，各物件呼叫順序為何？誰有資格 new 出 Order 實體？
+第二，異常防護：如何用 alt 複合片段優雅呈現扣款被拒絕？
+第三，通訊效能關鍵：通知廚房平板接單，應該是讓顧客畫面卡在那邊等廚房回傳的同步呼叫，還是丟進 Kafka 佇列的非同步訊息？
+
+花三分鐘與你的夥伴討論這三個問題。
+
+參考解答與架構復盤：
+1. 訊息時序：CheckoutUI 送出請求給 OrderController，控制器向金流閘道授權，取得 token 後由控制器調用工廠或 Repository 建立 Order 實體。
+2. Alt 片段：`[paymentApproved]` 進行持久化並進入履約；`[else / paymentFailed]` 回滾交易並回傳錯誤訊息給 UI。
+3. 同步 vs 非同步：廚房通知必須是「非同步 (`->>`)」！若設計為同步阻塞，顧客的 App 畫面會一直轉圈圈等待廚房店員按平板確認，一旦廚房網路延遲就會造成結帳超時崩潰。
+
+總結這張投影片，請記住這個核心觀念：循序圖讓 BCE 職責劃分、異常失敗路徑與非同步解耦機制在動手寫程式碼前清晰可見。
+-->
+
+---
+
+### 觀念檢核測驗 5 (CCQ 5)
+<!-- id: ase-ch04-ccq5 -->
+<div class="ccq-columns">
+<div class="ccq-text">
+
+在 UML 2.0 循序圖中，若欲精準表達「**二選一的互斥條件分支邏輯**」（例如：若信用卡扣款成功則產生訂單，若扣款失敗則回滾交易並提示錯誤），應採用哪一種複合片段 (Combined Fragment)？
+
+- **A.** `loop` 片段
+- **B.** `par` 片段
+- **C.** `opt` 片段
+- **D.** `alt` 片段
+
+</div>
+<div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq5" target="_blank"><img src="../../img/ch04/ase-ch04-ccq5.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+<!--
+讓我們透過觀念檢核測驗 5 來檢驗對循序圖複合片段的掌握。
+
+審視四個複合片段選項：
+`loop` 用於表達重複迴圈。
+`par` 用於表達多條生命線並行處理 (Parallel)。
+`opt` 代表可選分支 (Optional)，相當於沒有 else 的單純 if。
+`alt` 則是 Alternatives 的縮寫，專門用於多選一的互斥分支 (if-else)。
+
+正確答案是 D，`alt` 片段！
+
+總結這張投影片，請記住這個核心觀念：`alt` 片段用於表達互斥條件分支 (if-else)，而 `opt` 則用於單一可選條件 (if without else)。
+-->
+
+---
+
+<!-- _class: lead -->
+<!-- header: '4.6 流程與活動圖模型' -->
+
+# **4.6 流程與活動圖模型**
+
+> "複雜的業務流程就像多條河流匯聚；活動圖能讓我們精確掌控每一道支流的並行與匯合。"
+
+<!--
+我們現在進入第 4.6 節：流程與活動圖模型 (Activity Diagrams)。
+
+在現代分散式軟體中，系統很少只依序執行單一步驟。顧客下單後，餐廳要同時備餐、演算法要同時計算外送路線、金流要同時請款。這種「並行 (Concurrency)」與「非同步協同」很難在一般流程圖中清晰表達。
+
+活動圖是 UML 中專門用於描述業務流程、工作流、並行分岔 (Fork)、同步結合 (Join) 與跨角色責任泳道 (Swimlanes) 的強大武器。
+
+總結這張投影片，請記住這個核心觀念：活動圖精準捕捉多角色工作流程、並行計算與同步屏障，是業務流程再造與分散式微服務協同的利器。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/01_cover.jpg" alt="Mapping the Dynamic System with UML Activity Diagrams" />
+</div>
+
+<!--
+我們正式進入活動圖的世界。
+
+在業務分析與系統架構中，活動圖負責將複雜的業務規則與運作流程具象化。它不僅能表達循序步驟，更是處理高併發與多執行緒流程的標準語言。
+
+總結這張投影片，請記住這個核心觀念：活動圖是視覺化複雜動態業務工作流與並行機制的利器。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/02_visual_logic.jpg" alt="Moving Beyond Static Structures to Model Dynamic Workflows" />
+</div>
+
+<!--
+為什麼不能只靠類別圖與使用案例？
+
+使用案例只告訴我們『有哪些功能』，卻沒說明執行的內部演算法與作業先後順序。活動圖超越了靜態結構，深入呈現資料與控制權在系統中流轉的真實軌跡。
+
+總結這張投影片，請記住這個核心觀念：活動圖填補了高階使用案例與底層程式碼演算法之間的動態流程缺口。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/03_triggers.jpg" alt="Three Triggers for Behavioral Modeling" />
+</div>
+
+<!--
+驅動行為塑模的三大核心情境：
+
+第一，複雜業務邏輯與跨部門作業程序；第二，涉及多方角色的微服務協同調度；第三，高併發環境下的非同步並行處理與超時例外管控。
+
+總結這張投影片，請記住這個核心觀念：當流程跨越多個角色、包含平行處理或具備複雜條件決策時，正是活動圖大顯身手的時刻。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/04_compair.jpg" alt="Standard Flowcharts vs UML Activity Diagrams" />
+</div>
+
+<!--
+比較傳統流程圖與 UML 活動圖的本質差異：
+
+傳統流程圖缺乏嚴格語法，無法表達『同時並行』的執行緒，也無法區分『控制流』與『資料物件流』；而 UML 活動圖具備精準的符號體系，天生支援分岔、結合與泳道責任歸屬。
+
+總結這張投影片，請記住這個核心觀念：UML 活動圖具備表達並行多執行緒與責任泳道的強大能力，遠勝傳統流程圖。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/05_core.jpg" alt="The Core Vocabulary of System Flow" />
+</div>
+
+<!--
+掌握活動圖的四大核心詞彙：
+
+實心圓點是起點 (Initial Node)；圓角矩形代表具體執行的動作 (Action)；箭頭是引導執行權轉移的控制流 (Control Flow)；雙重圓圈實心點則是流程終點 (Final Activity Node)。
+
+總結這張投影片，請記住這個核心觀念：起點、動作、控制流與終點構成了所有動態流程的基本骨架。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/06_conditional.jpg" alt="Handling Conditional System Logic: Decision & Merge Nodes" />
+</div>
+
+<!--
+條件分支的兩大菱形節點：
+
+決策節點 (Decision Node，一進多出) 依據守衛條件 `[guard]` 將流程分流至不同路徑；合併節點 (Merge Node，多進一出) 則將多個互斥分支收攏為單一流程。請注意：決策節點的分支守衛條件必須完全互斥！
+
+總結這張投影片，請記住這個核心觀念：決策菱形負責條件分流，合併菱形負責互斥路徑的匯整，兩者皆不涉及並行計算。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/07_parallel.jpg" alt="Orchestrating Parallel System Actions: Fork & Join Nodes" />
+</div>
+
+<!--
+活動圖最具威力的特徵：並行同步棒 (Synchronization Bar)：
+
+分岔節點 (Fork，一粗線進多出) 將單一執行權分裂為多個並行活動，同時在背景運作；結合節點 (Join，多粗線進一出) 則是同步屏障，必須等待『所有平行分支全部執行完畢』，後續流程才能被喚醒繼續！
+
+總結這張投影片，請記住這個核心觀念：Fork 啟動平行並行處理，Join 執行同步等待，確保所有分支到位後才推進後續作業。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/08_object_flow.jpg" alt="Tracking Data & Objects: Object Nodes and Object Flows" />
+</div>
+
+<!--
+除了控制權，資料是如何傳遞的？
+
+活動圖中的直角矩形代表物件節點 (Object Node)，虛線或帶有物件的箭頭稱為物件流 (Object Flow)。它清楚標示出某個動作產生了『訂單實體 [已付款]』，並作為下一動作的輸入參數。
+
+總結這張投影片，請記住這個核心觀念：物件節點明確追蹤資料實體在流程中的狀態變更與傳遞依賴。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/09_swimlane.jpg" alt="Multi-Actor Accountability: Why Swimlanes Matter" />
+</div>
+
+<!--
+當多個部門或微服務協同運作時，職責往往容易互相踢皮球。
+
+泳道 (Swimlanes / Partitions) 將活動圖垂直或水平劃分為不同欄位，每個欄位對應一個明確的負責角色、部門或微服務元件。任何動作落在該欄位內，就代表由該角色負起全部執行責任！
+
+總結這張投影片，請記住這個核心觀念：泳道將流程動作的當責性嚴格鎖定於具體角色或微服務，徹底消滅職責邊界模糊。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/10_grouping.jpg" alt="Grouping Activities by Actor or Thread: Swimlanes / Partitions" />
+</div>
+
+<!--
+泳道的架構分組彈性：
+
+在微服務架構中，泳道可以對應訂單服務、庫存服務、物流服務；在業務流程中，可以對應顧客、店員、外送員。透過跨泳道的控制流箭頭，系統間的 API 呼叫與事件依賴一目了然。
+
+總結這張投影片，請記住這個核心觀念：泳道分區能自然映射分散式微服務架構，清晰界定跨服務呼叫邊界。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/11_notation.jpg" alt="Complete Visual Taxonomy of Dynamic Modeling" />
+</div>
+
+<!--
+這是一張活動圖符號體系的完整全景圖：
+
+從初始點、動作節點、決策菱形、分岔/結合粗棒、物件矩形到終止點與中斷點 (Interruptible Region)。熟悉這套符號體系，就能流暢閱讀並設計任何複雜的企業級流程。
+
+總結這張投影片，請記住這個核心觀念：完整的活動圖符號體系能精準描繪具備容錯、中斷與並行的企業級工作流。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/12_workflow.jpg" alt="The Unified Workflow Model: Swimlanes + Concurrency + Logic" />
+</div>
+
+<!--
+將所有元素熔鑄為一體：
+
+看這張整合模型：左邊是顧客泳道，中間是餐廳泳道，右邊是外送員泳道。中間使用了 Fork 讓廚房備餐與外送派單平行進行，最後在取餐處透過 Join 棒完美同步！
+
+總結這張投影片，請記住這個核心觀念：融合泳道、條件決策與並行分岔結合，能建立無懈可擊的端到端業務藍圖。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_act/13_three_phases.jpg" alt="Three Phases to Map Your Complex Systems" />
+</div>
+
+<!--
+總結 4.6 節最佳實踐：繪製系統流程的三大漸進階段：
+
+第一階段：探索高階主幹流程；第二階段：劃分泳道邊界並指派各動作當責角色；第三階段：放大複雜度細節，補齊決策判斷、Fork/Join 並行與例外中斷。
+
+總結這張投影片，請記住這個核心觀念：由高階主幹到泳道分配、再到並行細節，逐步演進是掌握活動圖複雜度的工程法門。
+-->
+
+---
+
+## AI 輔助指南：活動圖塑模 (Activity Modeling)
+
+- **1. 角色設定與現代語法標準 (Persona & Syntax Standard)：**
+  - 指示 AI 扮演「分散式工作流與業務流程架構師 (Workflow Architect)」。
+  - **強制要求使用現代語法：** 指定採用 **PlantUML Activity Beta 新版語法** (`start`, `stop`, `if/else`, `fork/fork again/end fork`)，避免過時的舊版標記。
+- **2. 泳道當責邊界嚴格分配 (Swimlane Accountability)：**
+  - 要求明確定義泳道分區（如 `|顧客|`, `|餐廳廚房|`, `|調度引擎|`, `|外送員|`），動作必須歸屬在對應欄位中。
+- **3. 並行與同步工程紀律：**
+  - **分岔 (`fork` / `fork again`)：** 明確指示哪些流程必須平行運作（例如廚房做菜與系統配對司機）。
+  - **同步結合 (`end fork` / `join`)：** 強制要求在取餐交件前必須同步，防止產生單獨無人外送的競爭條件 (Race Condition)。
+- **4. 架構師人工審查清單 (Verification Checklist)：**
+  - [ ] 每個 `fork` 是否都有對應的 `end fork` 結合屏障？
+  - [ ] 跨泳道的控制流轉移是否合理且具備最小依賴？
+  - [ ] 是否存在流程在結合棒無限等待、造成業務死結的缺陷？
+
+<!--
+引導 AI 產生活動圖時，最容易出現的破綻是「失去並行能力」與「泳道歸屬混亂」。
+
+如果沒有嚴格限制，AI 經常把應該同時進行的任務畫成前後串聯的單線流水帳，或者畫出一個 Fork 分岔後卻忘了用 Join 棒同步，導致流程遺失同步屏障。
+
+透過指定現代 PlantUML beta 語法、明確宣告四大角色泳道，並明確規定並行分岔與結合點，AI 就能在秒級內產出具備工業級精準度的端到端活動圖。
+
+總結這張投影片，請記住這個核心觀念：約束現代語法、明確劃分泳道並嚴格規範 Fork/Join 配對，能確保 AI 產出零死結的高品質活動圖。
+-->
+
+---
+
+## AI 提示詞範例：外送平台廚房與外送並行活動模型
+
+<div class="two-columns">
+<div>
+
+**1. 角色設定與任務指令：**
+```text
+你是一位分散式工作流程架構師。
+請根據以下外送履約流程，使用 PlantUML
+activity beta 語法產生具備泳道與並行的活動圖。
+```
+
+**2. 塑模約束條件：**
+- 建立 4 個泳道：
+  - `|顧客|`, `|餐廳廚房|`,
+  - `|調度引擎|`, `|外送員|`
+- 訂單付款後立即插入 `fork` 並行分岔：
+  - 分支一：廚房接單、備餐並包裝餐點。
+  - 分支二：調度系統規劃路徑、媒合司機、司機開車抵達店家。
+- 使用 `end fork` (結合) 同步「包裝完成」與「司機抵達」。
+- 結合後進行交餐配送，驗證 OTP 後 `stop`。
+
+</div>
+<div>
+
+**3. 輸入需求敘述 (Requirements Statement)：**
+> 「顧客在 **|顧客|** 泳道送出訂單並完成信用卡付款。
+> 付款確認後，系統立即啟動兩條平行並行工作流：
+> - 在 **|餐廳廚房|** 泳道：廚房列印工單、廚師開始烹調餐點、完成後將食物裝盒並貼上封條。
+> - 同時間，在 **|調度引擎|** 泳道：系統計算配送里程、搜尋附近空閒外送員並派送接單推播；在 **|外送員|** 泳道，外送員點擊接單並騎車前往餐廳。
+> **同步里程碑：** 外送員抵達櫃檯時，必須等待『餐點包裝完成』且『外送員已經抵店』兩項條件皆達成，才能進行實體交餐。
+> 交餐後，外送員騎車前往顧客地址，顧客輸入 OTP 驗證簽收，流程結束。」
+
+</div>
+</div>
+
+<!--
+這是一份引導 AI 產出多泳道並行活動圖的示範提示詞。
+
+請看左側的約束細節：
+我們為 AI 規定了四個清楚的泳道分工，並特別強調了 Fork 分岔與 Join 結合的物理意義。
+更重要的是，我們在需求中定義了「同步里程碑」：餐點不能無人取件變冷，司機也不能空手離開。
+
+透過這份 Prompt，AI 會生成非常乾淨的 PlantUML 代碼，完美呈現兩條支流的同時展開與匯合。
+
+總結這張投影片，請記住這個核心觀念：明確定義並行支流與結合里程碑，能讓 AI 正確處理多角色非同步工作流。
+-->
+
+---
+
+### 課堂互動討論：外送平台廚房與外送並行流程 (雙人同儕討論)
+
+<div class="discussion-columns">
+  <div class="discussion-text">
+
+  **雙人同儕討論：外送平台業務並行性與泳道當責劃分**
+  - **工程情境：** 訂單扣款成功的瞬間，餐點製作與外送司機調度必須同時平行展開。
+  - **四大多方泳道：** `顧客`, `餐廳廚房`, `調度引擎`, `外送員`。
+  - **與鄰座同學討論（限時 3 分鐘）：**
+    1. 在扣款成功後，**分岔棒 (Fork Bar)** 應放在哪裡？哪兩條平行分支被同時啟動？
+    2. **結合棒 (Join Bar)** 必須在何處進行同步？為什麼司機不能在未結合前就逕自啟程前往顧客住處？
+    3. 若司機抵達餐廳時廚房還在煮麵（競態條件），活動圖如何自然呈現這種「等待狀態」？
+
+  </div>
+  <div class="discussion-logo">
+    <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
+  </div>
+</div>
+
+<!--
+讓我們進入 Section 4.6 的雙人同儕討論：外送平台業務並行性與泳道當責劃分！請轉頭與夥伴組成營運流程架構小組。
+
+請探討題目中的三個並行工程問題：
+第一，分岔發生在何時？付款完成瞬間，廚房開始炒菜，調度引擎開始計算 GPS 媒合司機。
+第二，結合點在哪裡？兩者在取餐櫃檯交會，必須兩者皆到位才能繼續。
+第三，競態條件：司機先到，菜還沒好；或是菜先好，司機還在塞車。在活動圖的執行語義（Token 語義）中，這如何被優雅處理？
+
+花三分鐘與你的夥伴討論這三個問題。
+
+參考解答與架構復盤：
+1. Fork 棒：緊接在『扣款成功』之後，分支一進入『餐廳廚房』備餐包裝，分支二進入『調度引擎』派單並由『外送員』騎車前往店家。
+2. Join 棒：設在『櫃檯交接餐點』之前，因為配送貨物必須同時滿足『食物已煮熟打包』與『配送員已抵達現場』兩個條件。
+3. 等待狀態：Join 棒在 UML 語義中天生就是一個同步屏障（Synchronization Barrier）。先到達的分支 token 會停留在結合棒前方掛起等待，直到另一條分支的 token 也抵達，結合棒才會釋放一個新的 token 往下執行，完美避免了空手送餐的災難。
+
+總結這張投影片，請記住這個核心觀念：活動圖的 Fork 與 Join 機制能優雅捕捉分散式並行流程與同步等待屏障。
+-->
+
+---
+
+### 觀念檢核測驗 6 (CCQ 6)
+<!-- id: ase-ch04-ccq6 -->
+<div class="ccq-columns">
+<div class="ccq-text">
+
+在 UML 活動圖中，若一條粗黑橫棒擁有「**多個輸入控制流 (Incoming Flows)**」與「**單一輸出控制流 (Outgoing Flow)**」，這代表哪一種節點？其執行語義為何？
+
+- **A.** 分岔節點 (Fork Node)：將單一控制流複製為多個並行活動。
+- **B.** 結合節點 (Join Node)：必須等待所有輸入控制流皆執行完畢後，才啟動後續動作。
+- **C.** 決策節點 (Decision Node)：依據守衛條件進行多選一互斥分流。
+- **D.** 合併節點 (Merge Node)：只要任一輸入控制流到達，便立即啟動後續動作。
+
+</div>
+<div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq6" target="_blank"><img src="../../img/ch04/ase-ch04-ccq6.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+<!--
+讓我們透過觀念檢核測驗 6 來驗收對活動圖並行節點的理解。
+
+題目問的是：多進一出的粗黑橫棒是什麼？
+分析選項：
+選項 A 是 Fork（一進多出）。
+選項 C 是菱形決策（一進多出條件分支）。
+選項 D 是菱形合併（多進一出，任一到達即觸發）。
+選項 B 是 Join 結合節點！多條輸入控制流匯整為單一輸出，且語義上必須全部到達才能放行。
+
+正確答案是 B！
+
+總結這張投影片，請記住這個核心觀念：Join 粗黑橫棒是必須等待所有平行輸入完全到位的同步屏障 (Synchronization Barrier)。
+-->
+
+---
+
+<!-- _class: lead -->
+<!-- header: '4.7 行為與狀態機模型' -->
+
+# **4.7 行為與狀態機模型**
+
+> "軟體系統中最昂貴的災難，往往源自於物件在錯誤的時間接收了看似合法的事件。"
+
+<!--
+我們現在進入第 4.7 節：行為與有限狀態機模型 (State Machine Diagrams)。
+
+活動圖描述的是「跨物件的連續工作流」，而狀態機圖聚焦的是「單一核心實體在生命週期中如何針對外部事件做出反應」。
+例如一張訂單：它不是死板的資料庫紀錄，它是一個有生命的實體，會歷經 Placed、Preparing、OutForDelivery 到 Delivered 等離散狀態。
+
+在錯誤的狀態下接收事件（例如在司機已經送達時點擊取消訂單），會引發致命的業務漏洞。
+狀態機圖就是架構師用來定義「合法狀態」、「守衛條件」與「防禦性不變量」的最高數學憲法。
+
+總結這張投影片，請記住這個核心觀念：狀態機模型規範物件生命的離散狀態與事件轉換邊界，是守護業務不變量與防禦性設計的核心武器。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/01_anatomy_of_state_dependent_behavior.jpg" alt="The Anatomy of State-Dependent Behavior" />
+</div>
+
+<!--
+我們進入狀態機的核心：狀態相依行為。
+
+在軟體中，系統對同一事件的反應，完全取決於它『當前處於什麼狀態』。如果手機在鎖定狀態，按電源鍵是點亮螢幕；如果在通話狀態，按電源鍵是掛斷電話！這就是狀態相依。
+
+總結這張投影片，請記住這個核心觀念：相同事件在不同狀態下會產生完全不同的反應與行為結果。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/02_same_event_different_results.jpg" alt="The Same Event Yields Different Results Based on State" />
+</div>
+
+<!--
+以具體案例感受狀態的決定性威力：
+
+以電商訂單為例，當使用者觸發『取消訂單』事件：若訂單在『剛下單』狀態，系統無條件全額退款；若訂單在『配送中』狀態，系統必須拒絕取消並提示無法退款！狀態決定了系統的生死邊界。
+
+總結這張投影片，請記住這個核心觀念：狀態機本質上是透過狀態前置條件來保護業務邏輯的正確性。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/03_positioning_within_uml_ecosystem.jpg" alt="Positioning the Tool Within the UML Ecosystem" />
+</div>
+
+<!--
+狀態機在整個 UML 宇宙中佔據獨特的戰略高地：
+
+它不同於類別圖的結構、不同於活動圖的流水線、不同於循序圖的通訊。它專注於『單一關鍵核心實體（如訂單、帳戶、連線）的完整生命週期歷程』。
+
+總結這張投影片，請記住這個核心觀念：狀態機專為生命週期複雜、事件驅動的關鍵領域實體提供形式化規範。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/04_state_defined_lifecycle_interval.jpg" alt="A State is a Defined Interval in an Object's Lifecycle" />
+</div>
+
+<!--
+如何為『狀態』下一個精確的工程定義？
+
+狀態是物件生命週期中滿足某個條件、執行某個活動或等待某個外部事件的一段時間區間。在狀態名稱命名上，必須使用形容詞或過去分詞（如 Placed, Active, Closed），絕對不要用動詞命名！
+
+總結這張投影片，請記住這個核心觀念：狀態代表物件在時間軸上的穩定條件，名稱應使用形容詞或過去分詞。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/05_four_triggers_of_state_transitions.jpg" alt="The Four Triggers That Initiate State Transitions" />
+</div>
+
+<!--
+觸發狀態轉換的四大驅動力：
+
+第一，訊號事件 (Signal Event，如接收到非同步 MQTT 訊息)；第二，呼叫事件 (Call Event，如函式被呼叫)；第三，時間事件 (Time Event，如超時 30 分鐘 `after(30m)`)；第四，變更事件 (Change Event，如溫度高於 100 度 `when(temp > 100)`)。
+
+總結這張投影片，請記住這個核心觀念：訊號、呼叫、時間與條件變更構成了狀態機運轉的四大感測源。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/06_mechanics_of_a_transition.jpg" alt="The Mechanics of a Transition" />
+</div>
+
+<!--
+狀態轉換箭頭上的國際標準語法公式：
+
+`Trigger [Guard] / Action`。Trigger 是觸發的事件名；中括號 `[Guard]` 是布林守衛條件（必須為 true 才能通行）；斜線 `/ Action` 則是轉換瞬間順帶執行的原子動作。
+
+總結這張投影片，請記住這個核心觀念：牢記『事件 [守衛條件] / 動作』的三位一體語法公式，這是狀態轉換的法定標準。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/07_actions_vs_activities.jpg" alt="Execution Engines: Actions vs. Activities" />
+</div>
+
+<!--
+嚴格區分動作 (Action) 與活動 (Activity) 的巨大差異：
+
+動作 (Action) 是『原子性、瞬間完成、不可中斷』的，例如變數賦值或發送一封 email；活動 (Activity，以 `do /` 標註) 則是『耗時長、可被中斷』的，例如播放音樂或加熱烤箱，一旦外部事件發生，活動會被立刻中斷並跳出狀態！
+
+總結這張投影片，請記住這個核心觀念：Action 是瞬間不可中斷的原子操作，Activity 是耗時且隨時可被中斷的持續狀態。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/08_entry_and_exit_actions.jpg" alt="Boundary Executions: Entry and Exit Actions" />
+</div>
+
+<!--
+狀態的邊界執行防禦機制：
+
+`entry /` 動作：不管從哪一條路徑進入該狀態，第一時間強制自動執行（例如進入 OutForDelivery 立即啟動 GPS 追蹤）；`exit /` 動作：無論因為何種原因離開該狀態，強制自動清理資源（例如關閉 GPS）。
+
+總結這張投影片，請記住這個核心觀念：善用 entry 與 exit 動作，能確保狀態初始設定與資源釋放具備 100% 執行可靠度。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/09_scaling_architecture_complexity_matrix.jpg" alt="Scaling Architecture: The Complexity Matrix" />
+</div>
+
+<!--
+當系統變得極度複雜時，狀態數量會呈指數級爆炸（狀態爆炸問題）。
+
+如果全部使用傳統的扁平狀態圖，狀態之間會密密麻麻畫成蜘蛛網；為了解決這個難題，UML 狀態機引入了階層式複合狀態 (Composite States)。
+
+總結這張投影片，請記住這個核心觀念：透過階層式複合狀態封裝內部子狀態，是解決大規模狀態爆炸的架構解法。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/10_composite_states_and_history.jpg" alt="Composite States and System Memory" />
+</div>
+
+<!--
+深入複合狀態與歷史狀態 (History State, [H])：
+
+複合狀態內部可以包含多個子狀態。更神奇的是歷史節點 [H]：當系統暫時跳出複合狀態（如設備休眠），再次喚醒返回時，歷史節點能記住『上次離開時停在誰』，直接精確復原子狀態，不需重頭開始！
+
+總結這張投影片，請記住這個核心觀念：歷史狀態節點讓階層系統具備狀態記憶復原能力，大幅提升使用者體驗。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/11_concurrency_fork_and_join.jpg" alt="Concurrency: Forking and Joining Execution Threads" />
+</div>
+
+<!--
+狀態機中的正交並行區域 (Orthogonal Regions)：
+
+一個物件在同一瞬間，能否同時具備兩種獨立狀態？答案是肯定的！例如一台智慧手機在開機狀態下，可以同時處於『連網狀態』與『音訊播放狀態』。狀態機用虛線將複合狀態切分為多個正交區塊，彼此獨立運作。
+
+總結這張投影片，請記住這個核心觀念：正交區域允許單一實體內部同時並存多個獨立維度的並行子狀態機。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/12_unified_blueprint_hvac_example.jpg" alt="The Unified Blueprint: HVAC Heating/Cooling System" />
+</div>
+
+<!--
+檢視工業級狀態機實戰藍圖：智慧空調 (HVAC) 控制系統。
+
+這張圖融合了初始狀態、加熱與製冷的複合狀態切換、歷史記憶節點、以及高溫火警時的緊急例外中斷跳轉。結構嚴整、邏輯滴水不漏。
+
+總結這張投影片，請記住這個核心觀念：真實的工程狀態機統一了起點、複合狀態、記憶歷史與安全例外機制。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_state_machine/13_operationalizing_behavioral_logic_ai.jpg" alt="Operationalizing Behavioral Logic with AI" />
+</div>
+
+<!--
+總結 4.7 節：利用生成式 AI 將行為邏輯落地。
+
+現代軟體工程師不再需要手動拖拉複雜的狀態圖框。我們可以將領域業務規則寫成結構化需求文字，由 AI 協助直接編譯為正式、可被靜態分析驗證的 PlantUML 狀態機代碼！架構師的職責轉向檢視邊界與守衛條件的安全。
+
+總結這張投影片，請記住這個核心觀念：AI 工具能加速文字到正式狀態機的轉譯，工程師則專注審查邊界轉換與守衛安全性。
+-->
+
+---
+
+## AI 輔助指南：狀態機塑模 (State Machine Modeling)
+
+- **1. 角色設定與形式化檢驗紀律 (Persona & Formal FSM Discipline)：**
+  - 指示 AI 扮演「形式化系統驗證與有限狀態機 (FSM) 專家」。
+  - **狀態命名嚴格紀律：** 狀態名稱必須代表物件的「客觀穩態條件」，一律採用形容詞或過去分詞（如 `Placed`, `Preparing`, `Delivered`），嚴禁使用動詞當作狀態名稱！
+- **2. 轉換語法與防禦性不變量約束：**
+  - **法定語法公式：** 強制要求轉換連線必須遵循 `事件名稱 [守衛條件] / 執行動作`。
+  - **進入/離開動作：** 對於具備資源配置或通知的關鍵狀態，明確定義 `entry /` 與 `exit /`。
+  - **嚴格封鎖非法路徑：** 明確宣告哪些狀態之間「絕對禁止跳轉」（例如配送中嚴禁直接點擊取消）。
+- **3. 架構師人工審查清單 (Verification Checklist)：**
+  - [ ] 是否存在無法抵達的「孤島狀態」或進得去出不來的「死結陷阱」？
+  - [ ] 守衛條件 `[guard]` 是否互斥且覆蓋所有可能？
+  - [ ] 終止狀態 (`[*]`) 是否正確對應至業務的終結？
+
+<!--
+引導 AI 產生狀態機圖時，最常見的失誤是「把狀態寫成動作」以及「遺漏非法跳轉的防護」。
+
+初學者或 LLM 常常把狀態命名為『烹調餐點』、『指派司機』——這完全混淆了活動與狀態！狀態必須是『已接單』、『備餐中』或『已送達』。
+
+透過在 Prompt 中要求遵循 UML 標準公式『事件 [守衛] / 動作』，並命令它設置進入與離開動作，就能產出具備強大防禦力、杜絕非法業務跳轉的狀態機。
+
+總結這張投影片，請記住這個核心觀念：約束狀態為過去分詞命名、嚴格規範轉換語法公式並定義例外守衛，能確保 AI 產出數學上嚴格正確的狀態機。
+-->
+
+---
+
+## AI 提示詞範例：外送平台訂單生命週期狀態機模型
+
+<div class="two-columns">
+<div>
+
+**1. 角色設定與任務指令：**
+```text
+你是一位形式化驗證工程師。
+請根據以下訂單生命週期規則，產生標準合規的
+PlantUML 狀態機圖 (State Machine Diagram)。
+```
+
+**2. 塑模約束條件：**
+- 狀態清單：`Placed`, `Accepted`, `Preparing`, `ReadyForPickup`, `OutForDelivery`, `Delivered`, `Cancelled`。
+- 轉換標籤必須遵循 `Event [Guard] / Action`。
+- `OutForDelivery` 狀態必須包含 `entry / startGPSTracking()`。
+- 僅允許在 `Placed` 與 `Accepted` 狀態下取消 `[cancellationWindow <= 120s]`；進入 `Preparing` 後嚴禁取消。
+
+</div>
+<div>
+
+**3. 輸入需求敘述 (Requirements Statement)：**
+> 「**Order** 生命週期從 `[*]` 開始，顧客完成扣款後進入 **Placed** (已下單)。
+> 在 **Placed** 狀態下，餐廳點擊接受則觸發 `acceptOrder` 進入 **Accepted**；若餐廳拒絕則觸發 `rejectOrder` 進入 **Cancelled** `/ issueFullRefund()`。
+> 顧客在 **Placed** 或 **Accepted** 狀態下可主動觸發 `cancelOrder`，但必須滿足守衛條件 `[timeElapsed <= 120s]` 才能轉入 **Cancelled**。
+> 當廚房點擊開始做菜，觸發 `startCooking` 進入 **Preparing**；此時取消路徑完全鎖死。
+> 餐點打包完成後觸發 `packagingComplete` 進入 **ReadyForPickup**。
+> 外送員抵達掃描條碼後觸發 `courierPickedUp` 進入 **OutForDelivery**，同時執行 `entry / startGPSTracking()`。
+> 顧客輸入 OTP 簽收後觸發 `confirmDropoff` 進入終止狀態 **Delivered**，最後轉入 `[*]`。」
+
+</div>
+</div>
+
+<!--
+請看這份外送訂單生命週期的 AI 提示詞示範。
+
+注意左側的約束有多麼嚴密：
+我們列舉了七個嚴格的狀態名稱，全部是過去分詞；我們明確指示了 OutForDelivery 的 entry 動作。
+最關鍵的是業務防禦規則：一旦進入 Preparing，取消訂單的路徑直接封閉，且取消動作受 120 秒超時守衛保護。
+
+這份提示詞送給 LLM，產出的狀態機代碼能直接作為後端開發者撰寫狀態模式 (State Pattern) 或 Spring StateMachine 的骨幹規格。
+
+總結這張投影片，請記住這個核心觀念：明確列舉合法狀態、轉換語法與取消守衛邊界，能引導 AI 產出杜絕業務漏洞的狀態機模型。
+-->
+
+---
+
+### 課堂互動討論：外送平台訂單生命週期與不變量 (雙人同儕討論)
+
+<div class="discussion-columns">
+  <div class="discussion-text">
+
+  **雙人同儕討論：守衛離散狀態轉換與捍衛業務不變量**
+  - **工程情境：** 建立外送平台中核心 `Order` 實體的完整生命週期狀態機。
+  - **關鍵狀態：** `Placed`, `Accepted`, `Preparing`, `ReadyForPickup`, `OutForDelivery`, `Delivered`, `Cancelled`。
+  - **與鄰座同學討論（限時 3 分鐘）：**
+    1. **合法性轉換：** 當訂單處於 `OutForDelivery` (外送中) 狀態時，顧客點擊「取消訂單」事件是否應被允許？在狀態機上應如何防禦？
+    2. **守衛條件設計：** 請為 `Placed → Cancelled` 的轉換撰寫一段嚴謹的布林守衛條件 `[guard]`（例如考慮時限與廚房狀態）。
+    3. **進入動作：** 當訂單進入 `OutForDelivery` 狀態時，應配置什麼 `entry /` 動作以即時觸發外部系統？
+
+  </div>
+  <div class="discussion-logo">
+    <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
+  </div>
+</div>
+
+<!--
+讓我們來到 Section 4.7 的雙人同儕討論：外送平台訂單生命週期與不變量！請戴上系統完整性與防禦性架構師的帽子。
+
+探討題目中的三個關鍵業務邊界問題：
+第一，非法跳轉防禦：司機都在路上跑了，顧客按取消怎麼辦？狀態機怎麼處理？
+第二，撰寫守衛條件：在剛下單狀態，顧客按取消，需要符合哪些條件才能放行？
+第三，進入動作：進入配送中，系統應自動做些什麼？
+
+花三分鐘與你的夥伴討論這三個問題。
+
+參考解答與架構復盤：
+1. 合法性轉換：在 `OutForDelivery` 狀態下，`cancelOrder` 事件屬於非法操作！在狀態機中，我們『完全不為該狀態繪製指向 Cancelled 的轉換箭頭』。任何未定義的事件到達，狀態機一律直接忽略或拋出例外，這從根本上杜絕了在路上退單的業務漏洞。
+2. 守衛條件：`Placed -> Cancelled` 上標註 `[currentTime - placedTime <= 120s && kitchenStatus == NotStarted]`。若超時或廚房已備料，守衛評估為 false，轉換被拒絕。
+3. 進入動作：`entry / broadcastCourierEnRoute(); activateLiveGPSStream()`，一進入該狀態就自動啟動 GPS 地圖串流並向顧客推播訊息。
+
+總結這張投影片，請記住這個核心觀念：狀態機透過不開放非法轉換箭頭與配置嚴密守衛條件，捍衛了系統不可逾越的業務邊界。
+-->
+
+---
+
+### 觀念檢核測驗 7 (CCQ 7)
+<!-- id: ase-ch04-ccq7 -->
+<div class="ccq-columns">
+<div class="ccq-text">
+
+在 UML 狀態機圖中，關於轉換標籤 (Transition Label) 的國際標準語法結構 `Trigger [Guard] / Action`，下列敘述何者**完全正確**？
+
+- **A.** `[Guard]` 是強制執行的動作，`/ Action` 是條件檢查。
+- **B.** 只有當 `Trigger` 事件發生，且 `[Guard]` 守衛條件評估為 true 時，轉換才會發生並執行 `/ Action`。
+- **C.** `Trigger` 代表進入新狀態後持續進行的長期耗時活動。
+- **D.** 只要 `[Guard]` 條件為 true，無需任何事件即可隨時自動觸發轉換。
+
+</div>
+<div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq7" target="_blank"><img src="../../img/ch04/ase-ch04-ccq7.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+<!--
+讓我們透過觀念檢核測驗 7 來檢驗對狀態轉換語法的掌握。
+
+分析題目的語法公式：`Trigger [Guard] / Action`。
+選項 A 顛倒了守衛與動作。
+選項 C 混淆了 Trigger 與 Activity (`do /`)。
+選項 D 忽略了 Trigger 事件觸發的必要性。
+
+正確答案是 B！只有當指定的 Trigger 事件到達，並且中括號內的 Guard 條件成立為 true 時，狀態轉換才會放行，並在瞬間執行 Action 動作！
+
+總結這張投影片，請記住這個核心觀念：轉換必須滿足『事件到達』且『守衛評估為真』，才會執行動作並完成狀態轉移。
+-->
+
+---
+
+<!-- _class: lead -->
+<!-- header: '4.8 PlantUML 宣告式文字塑模' -->
+
+# **4.8 PlantUML 宣告式文字塑模**
+
+> "告別手動拖拉圖框的痛苦。架構即代碼，讓軟體模型與程式碼在 Git 倉儲中一同進化。"
+
+<!--
+我們現在進入第 4.8 節：PlantUML 宣告式文字塑模 (Code-as-Architecture)。
+
+過去三十年，許多工程師對 UML 敬而遠之的最大原因，就是傳統繪圖工具極度繁瑣痛苦：拖拉方塊、調整箭頭對齊、檔案格式二進位無法用 Git 進行 code review、重構時牽一髮而動全身。
+
+PlantUML 與「架構即代碼 (Code-as-Architecture)」徹底終結了這個噩夢！
+我們只需要用簡練的純文字標記語言描述物件與關聯，排版佈局全部自動交給渲染引擎處理。更棒的是，它能與 Git、CI/CD 與 Markdown 講義無縫整合。
+
+總結這張投影片，請記住這個核心觀念：PlantUML 實現了架構即代碼，讓軟體模型具備可版本控制、自動渲染與無摩擦維護的現代工程特質。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/01_plantuml_code_driven_architecture.jpg" alt="UML Modeling with PlantUML: Code-Driven Architecture" />
+</div>
+
+<!--
+我們正式邁入文字化塑模新時代：代碼驅動的現代架構。
+
+在現代敏捷與 DevOps 環境中，軟體架構必須具備輕量、快速迭代與自動化特性。PlantUML 是這場革新的領頭羊。
+
+總結這張投影片，請記住這個核心觀念：PlantUML 將傳統昂貴繁瑣的圖形拖拉，轉化為優雅高效的純文字宣告。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/02_stop_dragging_start_writing.jpg" alt="Stop Dragging Boxes. Start Writing Architecture." />
+</div>
+
+<!--
+為什麼要停止手動拖拉方塊？
+
+手動排版浪費了工程師 80% 的寶貴精力在微調像素與對齊線上。以代碼寫架構，你能把全部心智專注於『領域實體、責任分配與時序合約』。版面美化，交給演算法處理！
+
+總結這張投影片，請記住這個核心觀念：讓工具負責排版，讓大腦專注於架構邏輯本身。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/03_frictionless_setup.jpg" alt="The Frictionless Setup: VS Code Extension & Local Rendering" />
+</div>
+
+<!--
+零摩擦的現代化開發環境搭建：
+
+只需在 VS Code 安裝 PlantUML 擴充套件，配合本機 Graphviz 引擎或遠端渲染伺服器，按下 Alt+D (Option+D) 即可享有毫秒級的即時預覽！支援 PNG、SVG 與向量 PDF 輸出。
+
+總結這張投影片，請記住這個核心觀念：在 IDE 內部直接編寫並即時預覽 UML，是最高效無縫的現代塑模工作流。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/04_five_essential_lenses.jpg" alt="The Architect's Blueprint: 5 Essential Lenses" />
+</div>
+
+<!--
+PlantUML 的五大核心透鏡：
+
+它以統一的文字文法體系，同時支援使用案例圖、類別圖、循序圖、活動圖與狀態機圖！你不需要安裝五種不同軟體，一套文字文法搞定全部五大維度。
+
+總結這張投影片，請記住這個核心觀念：統一的宣告式語法能無差別駕馭五大核心 UML 模型，極大降低認知負擔。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/05_use_case_in_plantuml.jpg" alt="Use Case Diagrams in PlantUML Syntax" />
+</div>
+
+<!--
+PlantUML 的使用案例語法極度簡潔：
+
+`actor Customer` 宣告參與者；`(Place Order)` 宣告圓形使用案例；`rectangle System { ... }` 劃定系統邊界；`.>` 與 `<.` 輕鬆表達包含與擴充。
+
+總結這張投影片，請記住這個核心觀念：幾行純文字就能瞬間渲染出邊界清晰、關聯嚴謹的使用案例圖。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/06_class_diagrams_in_plantuml.jpg" alt="Class Diagrams in PlantUML Syntax" />
+</div>
+
+<!--
+類別圖在 PlantUML 中的優雅宣告：
+
+`class Order { ... }` 定義類別主體；以 `-`、`+`、`#` 標註可見度；自動將屬性與方法分類排版；支援 `interface`、`abstract class` 與 `enum` 關鍵字。
+
+總結這張投影片，請記住這個核心觀念：語法直接映射 Java 與 TypeScript 的語義習慣，所寫即所想。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/07_class_relationships_matrix.jpg" alt="The Class Relationship Matrix in PlantUML Syntax" />
+</div>
+
+<!--
+這是 PlantUML 關聯符號的經典矩陣：
+
+`<|--` 是繼承；`*--` 是實心菱形組合；`o--` 是空心菱形聚合；`..|>` 是介面實現；`-->` 是定向關聯。兩端加上引號即可標註重數，例如 `"1" *-- "1..*" LineItem`。
+
+總結這張投影片，請記住這個核心觀念：熟記 ASCII 連線字元組合，在鍵盤上彈指間就能建立複雜的物件圖譜。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/08_sequence_diagrams_in_plantuml.jpg" alt="Sequence Diagrams in PlantUML Syntax" />
+</div>
+
+<!--
+循序圖是 PlantUML 最具殺手級優勢的王牌：
+
+只需依序鍵入 `Alice -> Bob: request`，生命線自動生成、時序自動排版、箭頭精確對齊！配合 `activate` 與 `deactivate`，啟動條毫秒級成型。
+
+總結這張投影片，請記住這個核心觀念：PlantUML 循序圖是軟體業界撰寫 API 規格與時序驗證的首選工具。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/09_anatomy_of_sequence_syntax.jpg" alt="Anatomy of Sequence Syntax: Lifelines & Messages" />
+</div>
+
+<!--
+深入循序圖複合語法：
+
+使用 `alt [condition] ... else ... end` 建立條件分支；使用 `autonumber` 自動為每一則訊息標上序號；使用 `participant` 或 `actor` 為實體賦予具象圖示。
+
+總結這張投影片，請記住這個核心觀念：支援完整的 UML 2.0 複合片段與自動編號，大幅提升規格書專業度。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/10_activity_diagrams_in_plantuml.jpg" alt="Activity Diagrams & Swimlanes in PlantUML Syntax" />
+</div>
+
+<!--
+現代 Activity Beta 語法無比優雅：
+
+`start` 起點；`:Action Name;` 動作；`|Lane Name|` 泳道；`fork` 與 `fork again` 並行分岔；`end fork` 結合；`stop` 終點。閱讀起來就像在讀自然語言詩篇！
+
+總結這張投影片，請記住這個核心觀念：Activity Beta 語法以極簡文字精確捕捉跨泳道並行流程。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/11_state_diagrams_in_plantuml.jpg" alt="State Diagrams in PlantUML Syntax" />
+</div>
+
+<!--
+狀態圖的純文字定義：
+
+`[*] --> Placed` 初始狀態；`Placed --> Accepted : acceptOrder` 轉換；`state OutForDelivery { ... }` 階層複合狀態；`entry /` 與 `exit /` 直接內嵌於狀態區塊內部。
+
+總結這張投影片，請記住這個核心觀念：宣告式語法能讓階層式複合狀態機保持極致清晰與數學嚴謹。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/12_cross_diagram_syntax_cheatsheet.jpg" alt="Cross-Diagram Syntax Quick Reference Matrix" />
+</div>
+
+<!--
+這張跨圖表語法速查對照表是每位軟體架構師的案頭必備指南：
+
+橫跨使用案例、類別、循序、活動與狀態機，快速對照各圖表的起點、關聯與關鍵字。隨查隨用，效率倍增。
+
+總結這張投影片，請記住這個核心觀念：將跨圖表共通符號內化為肌肉記憶，大幅提振日常架構設計生產力。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/13_holistic_system_view.jpg" alt="The Holistic System View: Linking Models Together" />
+</div>
+
+<!--
+文字化塑模的最大威力：宏觀整體視野 (Holistic View)。
+
+當所有圖表都變成純文字代碼，你可以把整個系統的模型全部收錄在一個 `docs/models/` Git 資料夾內，並在 CI/CD 流程中自動編譯為線上文件網站！
+
+總結這張投影片，請記住這個核心觀念：純文字讓分散的模型形成互為佐證的完整系統架構工程資產。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/14_practical_architecture_workflow.jpg" alt="Practical Architecture Workflow: Code, Render, Iterate" />
+</div>
+
+<!--
+現代軟體架構團隊的每日實踐工作流：
+
+1. 在分支編寫 PlantUML 文字代碼；
+2. 本機 VS Code 即時渲染驗證；
+3. 提交 Git Commit 並建立 Pull Request，與團隊進行有意義的文字 Diff Code Review；
+4. 合併後自動部署至文件門戶。
+
+總結這張投影片，請記住這個核心觀念：納入 Git 版本控制與 Pull Request 審查，賦予架構模型與代碼同等尊嚴的維護週期。
+-->
+
+---
+
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch04/nb_plantuml/15_elevate_your_architecture.jpg" alt="Master the Syntax, Elevate Your Architecture" />
+</div>
+
+<!--
+總結 4.8 節：精通 PlantUML，升級你的架構思維！
+
+當你不再受限於笨重的繪圖軟體，你就能在每一次需求變更時，第一時間用五秒鐘改兩行文字更新架構圖。敏捷與嚴謹不再衝突，模型真正成為活著的代碼！
+
+總結這張投影片，請記住這個核心觀念：PlantUML 讓架構塑模變得無摩擦且可持續，是頂尖軟體工程師必備的核心生產力武器。
+-->
+
+---
+
+### 觀念檢核測驗 8 (CCQ 8)
+<!-- id: ase-ch04-ccq8 -->
+<div class="ccq-columns">
+<div class="ccq-text">
+
+在軟體架構工程實踐中，相較於傳統以滑鼠手動拖拉圖框的二進位繪圖軟體（如 Visio 或特定商業 CASE 工具），採用 **PlantUML 宣告式文字塑模 (Code-as-Architecture)** 的最核心工程優勢為何？
+
+- **A.** 能保證自動生成 100% 無 Bug 的 Java 實作程式碼，無需單元測試。
+- **B.** 可以在純文字 Markdown 中編寫，輕鬆納入 Git 進行精確的行級版本控制與 Pull Request 審查。
+- **C.** 完全廢除物件導向原則，讓系統架構不再需要考慮類別或介面。
+- **D.** 限制只能產出循序圖，防止工程師建立過多無意義的圖表。
+
+</div>
+<div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq8" target="_blank"><img src="../../img/ch04/ase-ch04-ccq8.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+<!--
+讓我們透過觀念檢核測驗 8 來檢驗對宣告式文字塑模工程價值的掌握。
 
 分析選項：
-選項 A 嚴重違反 BCE 原則：UI 絕不能直接跨層操縱 Entity 資料實體！
-選項 B 繞過了內部驗證直接呼叫外部收費 API，容易產生幽靈帳單。
-選項 D 讓前端畫面直接綁定特定的領域實體，造成高度耦合。
+選項 A 是誇大不實的神話，模型不能替代軟體測試。
+選項 C 完全悖離物件導向宗旨。
+選項 D 違背事實，PlantUML 支援全套 UML 圖表。
 
-正確答案是 C！`OrderController` 作為控制物件，負責承接請求、驗證購物車商品、協調外部扣款並處理資料庫持久化。
+正確答案是 B！純文字宣告式架構讓模型成為代碼的一部分，享有 Git 行級 Diff、版本歷史比對與團隊 PR Code Review 的完整現代工程優勢。
 
-總結這張投影片，請記住這個核心觀念：控制物件在 UI 邊界與資料實體之間擔任中介，負責落實商業規則與流程協調。
+總結這張投影片，請記住這個核心觀念：文字化塑模讓架構資產得以被 Git 版本控制，消除傳統繪圖二進位檔無法審查與協作的長期痛點。
 -->
+
 ---
+
 <!-- _class: lead -->
-<!-- header: '4.6 行為塑模與狀態機' -->
+<!-- header: '4.9 概念複習與統整' -->
 
-# **4.6 行為塑模與有限狀態機模型**
+# **4.9 概念複習與統整**
 
-> "A system in dynamic execution is defined by the states it occupies and the events that trigger transitions."  
-> *(動態執行中的系統，是由其所處的狀態以及觸發狀態轉換的事件所定義。)*
-
-<!--
-我們接著進入 4.6 節：行為塑模與狀態機模型（State Machine Diagrams）。
-
-類別圖展現靜態結構，循序圖描繪單一場景的互動，但是對於反應式系統——例如自駕車控制、醫療輸液幫浦，以及外送訂單的生命週期流轉——最好的塑模方式就是有限狀態機（FSM）。
-
-讓我們看看一筆外送訂單如何在各個離散運作狀態之間切換。
-
-總結這張投影片，請記住這個核心觀念：狀態機塑模了反應式系統如何針對外在事件，在離散運作狀態之間依序轉換。
--->
----
-## 狀態機塑模：核心定義與工程價值
-
-> 「運作中的反應型系統，取決於其所處的離散狀態，以及激發狀態合法躍遷的事件驅動機制。」
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-<h3>何謂狀態機模型 (Definition & Abstraction)</h3>
-<ul>
-<li><b>離散事件驅動模型：</b> 源自 David Harel 的 Statecharts 理論，刻畫單一反應型實體在整個生命週期中如何回應外部事件。</li>
-<li><b>狀態分類學：</b> 包含初態 (Initial)、終態 (Final) 及滿足特定商業不變量的穩定運作狀態。</li>
-<li><b>轉換語法嚴謹規範：</b> 透過 <code>觸發事件 [守衛條件] / 動作效果</code> 形式化宣告狀態躍遷機制。</li>
-</ul>
-</div>
-<div class="card" data-marpit-fragment>
-<h3>為何至關重要 (Engineering Value)</h3>
-<ul>
-<li><b>徹底消除非法業務狀態：</b> 從數學與架構層面杜絕「未付款卻已出貨」、「已取消訂單卻重複退款」等重大業務漏洞。</li>
-<li><b>馴服非同步事件的複雜度：</b> 在電商訂單、IoT 設備與長時間工作流中，提供具備確定性與可預測性的可靠行為保障。</li>
-<li><b>確立明確的執行防衛線：</b> 嚴格的守衛條件 <code>[Guard]</code> 保證狀態躍遷只在業務不變量完全成立時才被放行。</li>
-</ul>
-</div>
-</div>
+> "模型是軟體工程的世界語；精通模型，方能洞見架構的真實靈魂。"
 
 <!--
-讓我們進入 4.6 節，探討有限狀態機模型 (State Machine Diagrams) 的本質與重要性。
+來到第四章的終章：4.9 概念複習與統整。
 
-首先，何謂狀態機：狀態機聚焦於單一物件在其完整生命週期中的反應行為。基於 David Harel 的理論，它定義了物件所處的離散狀態以及狀態之間合法的轉換路徑。
+今天我們完成了一趟跨越歷史、理論、五大核心模型與現代 AI 輔助的壯麗旅程。從 1990 年代的三巨頭整合，到使用案例的功能契約、類別圖的靜態骨幹、循序圖的時間時序、活動圖的並行泳道、狀態機的守衛不變量，最後以 PlantUML 架構即代碼進行統一。
 
-其次，為什麼它至關重要：在現代複雜系統中，非法的狀態躍遷往往導致毀滅性的業務漏洞。例如外送員已取餐，系統卻還能允許用戶一鍵取消？狀態機在架構層面封死了所有非法的轉換，保障業務語意完整性。
+讓我們透過互動小測驗來驗收今天的豐碩學習成果。
 
-總結這張投影片，請記住這個核心觀念：狀態機透過嚴謹的事件驅動模型，守護領域實體的生命週期完整性，杜絕非法狀態躍遷。
+總結這張投影片，請記住這個核心觀念：多重視角的系統塑模為我們提供了駕馭軟體內在複雜度最高效、最嚴謹的工程思維架構。
 -->
+
 ---
-## 狀態機塑模：四步標準工程流程
 
-> 「狀態機塑模從數學上杜絕了系統非法狀態的發生，並能有效駕馭非同步事件的複雜度。」
-
-<div style="display: flex; align-items: stretch; justify-content: space-between; gap: 12px; margin-top: 14px;">
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #10b981; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #10b981; text-transform: uppercase;">步驟 1</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">鎖定核心實體<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(Stateful Lifecycle)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li>挑選具備多階段生命週期的關鍵類別（如 FoodOrder）。</li>
-<li>排除無狀態實體。</li>
-</ul>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #10b981; font-weight: bold;">→</div>
-
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #059669; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #059669; text-transform: uppercase;">步驟 2</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">列舉合法狀態<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(Stable Conditions)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li>盤點所有穩定靜止狀態：草稿、已付款、製餐中、已送達。</li>
-<li>標定起始與終止端點。</li>
-</ul>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #059669; font-weight: bold;">→</div>
-
-<div class="card" style="flex: 1; padding: 14px 12px; background: #ffffff; border-top: 4px solid #047857; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 700; color: #047857; text-transform: uppercase;">步驟 3</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #0b3c5d;">繪製事件跳轉<br><span style="font-size: 12px; color: #64748b; font-weight: normal;">(Event Triggers)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0;">
-<li>繪製狀態間的單向躍遷箭頭路徑。</li>
-<li>標註觸發躍遷的外部業務事件。</li>
-</ul>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: center; font-size: 20px; color: #047857; font-weight: bold;">→</div>
-
-<div class="card" style="flex: 1.1; padding: 14px 12px; background: #ecfdf5; border: 1.5px solid #10b981; border-top: 4px solid #065f46; border-radius: 8px;">
-<div style="font-size: 13px; font-weight: 800; color: #065f46; text-transform: uppercase;">步驟 4 ★ 躍遷文法</div>
-<h4 style="font-size: 16.5px; margin: 4px 0 6px 0; color: #064e3b;">守衛與動作效果<br><span style="font-size: 12px; color: #047857; font-weight: normal;">([guard] / action)</span></h4>
-<ul style="font-size: 13px; line-height: 1.35; padding-left: 15px; margin: 0; color: #064e3b;">
-<li><b>[guard]:</b> 必須滿足的布林條件門檻。</li>
-<li><b>/ action:</b> 躍遷時執行的原子副作用。</li>
-<li><b>標準語法：</b> <code>event [guard] / action</code>。</li>
-</ul>
-</div>
-</div>
-
-> 📌 **工程洞見：** 狀態機在數學邏輯上消滅了非法狀態（如未付款直接出貨），將混亂的巢狀 `if-else` 與 Flag 標記轉化為嚴謹可驗證的狀態模式。
----
-<!-- _class: title-image-slide -->
-
-## 訂單生命週期：UML 狀態機圖 (State Machine Diagram)
-
-<div class="image-wrapper">
-<img src="../../img/ch05/food_delivery_state.svg" alt="訂單生命週期狀態機圖" />
-</div>
-
-<!--
-請看這張塑模訂單完整生命週期的 UML 狀態機圖。
-
-注意標準記號：
-上方實心黑圓是起始狀態（Initial State）。
-圓角矩形代表各個離散狀態：`Placed (已下單)`、`Accepted (已接單)`、`Preparing (備餐中)`、`ReadyForPickup (待取餐)`、`OutForDelivery (配送中)`、`Delivered (已送達)`，以及 `Cancelled (已取消)`。
-同心雙圓（牛眼圓）代表結束終止狀態。
-
-注意連接狀態之間的箭頭：這些是狀態轉換（Transitions）。
-上面的標註遵循經典 UML 文法：`觸發事件 [守衛條件] / 執行動作`。
-例如，在 `Placed` 狀態下，若發生 `restaurantAccepts() [within 5 min]`，則轉移至 `Accepted` 並執行 `/ lockOrder()`。
-若顧客在兩分鐘內取消，則轉移至 `Cancelled` 並執行 `/ refundCharge()`。
-
-總結這張投影片，請記住這個核心觀念：狀態機透過事件觸發、守衛條件與轉換動作，精確規範系統的離散狀態演變。
--->
----
-## 狀態圖運作原理與轉換文法解析
-
-- **有限狀態機 (FSM) 核心原理：**
-  - 在任何單一運行瞬間，一個 `Order` 物件實例**恰好且只能處於一個**離散狀態。
-  - 訂單對外界事件的反應，完全取決於其**當前所處的活躍狀態**。
-- **標準狀態轉換標籤文法 (Formal Label Grammar)：**
-  $$\text{觸發事件 (Event)} \; [\text{守衛條件 (Guard)}] \; / \; \text{執行動作 (Action)}$$
-  - **觸發事件 (Trigger Event)：** 刺激狀態轉移的外部或內部事件（如 `chefStartsCooking()`, `courierScansPickup()`）。
-  - **守衛條件 (`[...]` Guard Condition)：** 必須計算為 `true` 轉換才會被放行的布林條件（如 `[within 5 min]`, `[time < 2 min]`）。
-  - **執行動作 (`/ ...` Action Effect)：** 狀態轉移瞬間原子化執行的計算動作（如 `/ refundCharge()`, `/ startLiveGPSTracking()`）。
-- **狀態進入動作 (State Entry Actions)：**
-  - 進入特定狀態時自動執行的動作（例如：`Placed: Entry / startRestaurantAcceptTimer()`）。
-
-<!--
-深入剖析狀態機對分散式交易系統的重大價值：
-
-想像一筆訂單已經進入 `OutForDelivery (配送中)` 狀態，此時顧客在手機上猛按「取消訂單」會怎樣？
-因為在狀態機上，從 `OutForDelivery` **根本沒有任何一條箭頭**可以通往 `Cancelled`，系統在架構層級就能直接安全拒絕取消請求！外送員已經在路上，絕不允許隨意取消。
-
-再看中括號裡的守衛條件：在 `Placed` 狀態，顧客只有在 `[time < 2 min]` 條件下才能取消；超過兩分鐘，守衛條件評估為 false，取消通道直接封鎖！
-
-狀態機徹底杜絕了分散式系統中的非法狀態轉移。
-
-總結這張投影片，請記住這個核心觀念：狀態機透過事件觸發、布林守衛條件與原子動作，在架構層級杜絕非法商業狀態轉移。
--->
----
-## 有限狀態機：與其他 UML 模型的協同關係
-
-> 「有限狀態機統攝了領域實體的生命週期完整性，並在全系統層面守衛商業不變量。」
-
-<div style="display: flex; gap: 16px; align-items: stretch; margin-top: 14px;">
-<div class="card" style="flex: 32%; background: #f8fafc; border: 2px solid #10b981; border-radius: 8px; padding: 16px 14px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-<div style="background: #10b981; color: #ffffff; font-weight: 700; font-size: 12px; padding: 3px 8px; border-radius: 4px; display: inline-block; margin: 0 auto 8px auto;">生命週期守護者</div>
-<h3 style="margin: 0 0 6px 0; color: #0b3c5d; font-size: 19px;">4.6 有限狀態機</h3>
-<p style="font-size: 13.5px; line-height: 1.4; color: #334155; margin: 0 0 10px 0;">複雜領域實體隨時間與事件演進的離散生命週期規則。</p>
-<div style="background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 6px; padding: 8px; font-size: 12.5px; color: #047857; text-align: left;">
-• 合法穩定靜止狀態<br>
-• 外部事件觸發與信號<br>
-• 守衛條件與動作效果
-</div>
-</div>
-
-<div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: 24px; font-size: 20px; color: #10b981; font-weight: bold;">
-<div>→</div>
-<div>→</div>
-<div>→</div>
-</div>
-
-<div style="flex: 64%; display: flex; flex-direction: column; gap: 8px;">
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #0284c7; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.3 使用案例模型 (功能合約)</h4>
-<span style="background: #e0f2fe; color: #0369a1; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">前置條件守衛門檻</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        實體的當前狀態直接作為使用案例能否被觸發執行的前置守衛門檻（如只有在已付款或備餐中狀態，才允許執行「取消訂單」案例）。
-</p>
-</div>
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #3b82f6; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.4 領域類別模型 (結構定義)</h4>
-<span style="background: #eff6ff; color: #1d4ed8; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">狀態模式實作</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        狀態機深入描繪類別圖中特定實體類別的動態演變，直接對應 OOP 中的 GoF 狀態模式 (State Pattern) 或列舉變數。
-</p>
-</div>
-<div class="card" style="padding: 10px 14px; background: #ffffff; border-left: 4px solid #8b5cf6; border-radius: 6px;">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
-<h4 style="margin: 0; font-size: 15.5px; color: #0b3c5d;">4.5 互動循序圖 (動態交互)</h4>
-<span style="background: #f5f3ff; color: #6d28d9; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 4px;">事件來源與動作效果</span>
-</div>
-<p style="font-size: 13px; line-height: 1.35; color: #475569; margin: 0;">
-        循序圖中傳入實體生命線的訊息激發了狀態機的狀態躍遷；而躍遷伴隨的動作效果則體現為循序圖後續的呼叫返回。
-</p>
-</div>
-</div>
-</div>
----
-### 觀念檢核測驗 6 (CCQ 6)
-<div class="ccq-columns">
-<div class="ccq-text">
-
-在訂單生命週期狀態機中，標籤 `customerCancels() [time < 2 min] / refundCharge()` 各自代表何種技術語義？
-
-- **A.** `customerCancels()` 為守衛條件；`[time < 2 min]` 為觸發事件；`refundCharge()` 為目標狀態。
-- **B.** `customerCancels()` 為觸發事件；`[time < 2 min]` 為布林守衛條件；`refundCharge()` 為轉換執行動作。
-- **C.** `customerCancels()` 為目標類別；`[time < 2 min]` 為呼叫方法；`refundCharge()` 為傳回型別。
-- **D.** `customerCancels()` 為主要參與者；`[time < 2 min]` 為逾時限制；`refundCharge()` 為物件生命線。
-
-</div>
-<div class="ccq-logo">
-<img src="../../img/ch05/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
-</div>
-</div>
-
-<!--
-讓我們透過觀念測驗 5 驗證對狀態機標籤語法的掌握。
-
-檢視選項：
-選項 A 完全調換了定義。
-選項 C 誤用類別圖名詞解釋狀態圖。
-選項 D 混入了循序圖的參與者與生命線名詞。
-
-正確答案是 B！`customerCancels()` 是觸發事件，`[time < 2 min]` 是必須成立的布林守衛條件，而 `/ refundCharge()` 則是在狀態轉移時觸發的原子執行動作。
-
-總結這張投影片，請記住這個核心觀念：UML 狀態機轉換嚴格遵循「事件 [守衛條件] / 動作」的標準文法。
--->
----
-<!-- _class: lead -->
-<!-- header: '4.7 AI 輔助系統塑模' -->
-
-# **4.7 AI 輔助系統塑模**
-
-> "AI is a visual copilot that eliminates diagramming friction, but human architects must ensure semantic correctness."  
-> *(AI 是一具消除繪圖阻力的視覺副駕駛，但人類架構師必須確保語意的終極正確性。)*
-
-<!--
-現在我們來到現代軟體工程的最前線：4.7 節 AI 輔助系統塑模。
-
-過去幾十年來，開發者對 UML 最大的抱怨之一，就是必須在厚重的塑模軟體裡痛苦地拖拉矩形、調整箭頭對齊、維護不相容的二進位檔案。
-
-有了大型語言模型（LLM），這道阻力徹底煙消雲散。LLM 極度擅長將自然語言規格轉譯為 PlantUML 或 Mermaid 等宣告式文字圖表。在此節中，我們將探討 AI 塑模應用與人機協同防護。
-
-總結這張投影片，請記住這個核心觀念：AI 工具消除了繪圖排版阻力，但架構師必須嚴格把關語意與架構邊界。
--->
----
-## AI 在系統塑模中的角色：視覺副駕駛 (Visual Copilot)
-
-- **宣告式繪圖革命 (Text-to-Diagram Revolution)：**
-  - 大型語言模型能直接將非結構化軟體需求轉譯為**宣告式文字標記圖表**（如 PlantUML、Mermaid.js、Graphviz）。
-  - 在數秒內架起自然語言使用者故事與正式圖形架構模型之間的橋樑。
-
-<div style="text-align: center; margin-top: 15px;">
-<img src="../../img/ch05/ai_in_system_modeling.svg" style="max-height: 280px; width: auto;" alt="AI 輔助系統塑模工作流程" />
-</div>
-
-- **生產力的大幅躍升：** 徹底消除惱人的手動排版微調，讓軟體架構師能全神貫注於架構邏輯推理，而非繪圖軟體排版。
-
-<!--
-生成式 AI 為軟體塑模掀起了一場徹底的解放革命。
-
-過去在 Visio 或 Rational Rose 裡拉箭頭拉到手酸的日子已經結束。現在，你可以將 Jira Ticket 或使用者故事餵給 Claude 或 ChatGPT，指令：「請產生美食結帳的 PlantUML 循序圖，包含金流閘道」。三秒鐘內，乾淨無暇的標記語法就躍然眼前，並能立即編譯成精美向量圖！
-
-這徹底消除了格式摩擦，讓團隊在衝刺規劃（Sprint Planning）時能極速視覺化各種架構替代方案。
-
-總結這張投影片，請記住這個核心觀念：AI 驅動的 Text-to-UML 技術大幅加速了架構視覺化與敏捷文件的迭代效率。
--->
----
-## AI 在系統塑模中的 4 大核心應用
-
-- **1. 文字直接生成 UML (Text-to-UML Generation)：**
-  - 直接根據敏捷使用者故事與 Given-When-Then 驗收準則，自動生成循序圖、類別圖與活動圖標記。
-- **2. 領域實體智能萃取 (Domain Entity Extraction)：**
-  - 深度語意分析規格需求書，智慧提煉領域名詞（潛在類別、屬性）與動詞（方法操作、關聯）。
-- **3. 跨圖表一致性驗證 (Cross-Diagram Consistency Validation)：**
-  - 比對檢查使用案例參與者、類別圖與循序圖生命線，偵測命名衝突或未被實作的方法呼叫。
-- **4. 程式碼逆向工程塑模 (Code-to-Model Reverse Engineering)：**
-  - 讀取現有專案程式碼庫（Java/TypeScript/Python），自動逆向產出類別階層與相依圖，加速新進人員上手。
-
-<!--
-歸納今日 AI 在系統塑模領域的四大實務落地應用：
-
-第一，文字轉 UML：需求文字直接轉譯為 Mermaid 或 PlantUML。
-第二，領域實體萃取：從數十頁的合約需求書中自動提煉出核心實體名詞與操作動詞。
-第三，跨圖表一致性檢查：檢查模型是否存在矛盾——例如循序圖呼叫了一個類別圖上根本沒宣告的方法！
-第四，程式碼逆向塑模：接手陌生大型開源專案時，讓 AI 快速掃描並畫出架構圖，幫工程師省下數天摸索時間。
-
-總結這張投影片，請記住這個核心觀念：AI 透過自動草擬、實體萃取、一致性驗證與逆向工程，全方位賦能塑模工作。
--->
----
-## 人機協同防護：AI 塑模風險與最佳實踐
-
-- **未經審查即盲信 AI 塑模的潛在風險：**
-  - **虛構關聯 (Hallucinated Associations)：** 幻覺捏造出不存在於業務真實世界中的繼承或組合關聯。
-  - **架構過度膨脹 (Architectural Bloat)：** 硬塞不必要的設計模式（如動輒套用十層工廠裝飾者），違背簡潔原則。
-  - **幽靈生命線 (Ghost Lifelines)：** 在循序圖中憑空捏造不存在的微服務 API 或網路端點。
-- **不可動搖的軟體工程黃金守則：**
-  > **「AI 負責起草繪圖；人類架構師負責檢驗語意！」**  
-  > *(AI Drafts the Diagram; The Human Architect Validates the Semantics!)*  
-  > 軟體架構師必須以批判性工程眼光審視 AI 生成的模型，確保其忠實反映領域真相與架構邊界。
-
-<!--
-與需求工程一樣，未經人工驗證的 AI 塑模伴隨著極大風險。
-
-大型語言模型經常患有「設計模式狂熱症」——明明一個簡單類別就能搞定的功能，AI 偏偏要幫你生出 AbstractFactoryDecoratorManager。它也可能產生關聯幻覺，憑空捏造出荒謬的繼承關係。
-
-因此請牢記我們的黃金守則：AI 負責起草繪圖，人類架構師負責檢驗語意！
-
-將 AI 產出的圖表視為快速初稿，永遠以專業批判的工程眼光審視它。
-
-總結這張投影片，請記住這個核心觀念：人類架構師必須針對領域本質真相與架構簡潔性，主動驗證 AI 生成之模型。
--->
----
-### 觀念檢核測驗 7 (CCQ 7)
-<div class="ccq-columns">
-<div class="ccq-text">
-
-當軟體工程團隊導入生成式 AI 輔助自動化產生 UML 圖表時，軟體工程師／架構師最核心的職責為何？
-
-- **A.** 拒絕使用任何 AI 工具，堅持純手動編寫每一行繪圖標記語法。
-- **B.** 嚴格驗證領域業務語意正確性、結構約束條件與架構簡潔度。
-- **C.** 全面廢除傳統程式碼審查（Code Review）與架構設計評審會議。
-- **D.** 無條件全盤接受 AI 所生成的所有類別關聯與微服務生命線。
-
-</div>
-<div class="ccq-logo">
-<img src="../../img/ch05/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
-</div>
-</div>
-
-<!--
-讓我們透過觀念測驗 6 來檢核對 AI 輔助塑模人機協同的理解。
-
-使用 AI 生成 UML 時，工程師的核心定位是什麼？
-
-審視選項：
-選項 A 因噎廢食，放棄了現代工具的高效優勢。
-選項 C 與 D 代表了對未經驗證 AI 產物的盲目危險依賴。
-
-正確答案是 B！正如我們的黃金原則：「AI 負責起草繪圖，人類架構師負責檢驗語意」。工程師必須確保產出的模型忠實契合業務真實情況，並堅守架構簡潔性。
-
-總結這張投影片，請記住這個核心觀念：人類架構師的核心使命，在於嚴格驗證 AI 生成圖表的語意正確性與架構簡潔性。
--->
----
-<!-- _class: lead -->
-<!-- header: '4.8 核心複習與參考文獻' -->
-
-# **4.8 核心複習與統整**
-
-> "Models are the lingua franca of software engineering."  
-> *(模型，是軟體工程世界的通用語彙。)*
-
-<!--
-在第四章的尾聲，我們來到 4.8 節：核心複習與參考文獻。
-
-我們將透過互動填空複習，全面鞏固今天所學的所有核心基石——從三巨頭歷史、環境邊界、使用案例契約，到 BCE 循序互動、領域類別圖與有限狀態機。
-
-最後我們將回顧軟體塑模的經典學術文獻與國際標準。
-
-總結這張投影片，請記住這個核心觀念：精通系統塑模，能賦予軟體工程師推導、溝通與驗證複雜軟體架構的強大能力。
--->
----
 ## 核心觀念統整：互動填空小測驗
 
-測試你對本章核心概念的掌握度：
+測試你對本章核心架構概念的掌握度：
 
-1. 在 Rational Software 整合並催生 UML 的「三巨頭」為 Grady Booch、Jim Rumbaugh 與 **`___`**。
-2. **`___`** 圖用以劃定內部軟體系統與外部夥伴服務雲端之間的營運邊界。
-3. 在使用案例塑模中，多個案例必定強制共用的子流程是透過 **`___`** 關係抽離。
-4. 將系統劃分為使用者介面、商業邏輯協調與持久化實體的經典架構模式是 **`___`**。
-5. 在 UML 類別圖中，實心黑菱形 (`◆`) 代表 **`___`**，子物件無法脫離父物件獨立存在。
-6. 在 UML 類別圖中，空心白菱形 (`◇`) 代表 **`___`**，子物件具備完全獨立的生命週期。
-7. UML 狀態機圖之狀態轉移標籤嚴格遵循標準語法：觸發事件 [**`___`**] / 執行動作。
+1. 於 Rational Software 攜手催生 UML 標準化的「UML 三巨頭」為 Grady Booch、Jim Rumbaugh 與 **`___`**。
+2. 系統塑模的四大基礎核心視角為外部視角、**`___`** 視角、結構視角與行為視角。
+3. 在使用案例模型中，多個使用案例強制共用的必要子程序應使用 **`___`** 關聯。
+4. 徹底分離使用者介面、業務邏輯與資料庫持久實體的架構模式稱為 **`___`** 模式。
+5. 在 UML 類別圖中，實心黑色菱形 (`◆`) 代表 **`___`** 關聯，部分與整體生命週期緊密綁定連帶銷毀。
+6. 在 UML 類別圖中，空心菱形 (`◇`) 代表 **`___`** 關聯，部分具備獨立生存的生命週期。
+7. UML 狀態機圖中，轉換標籤的國際標準語法為：事件觸發 [**`___`**] / 執行動作。
 
 <!--
-讓我們透過快速互動測驗，盤點今天的學習成果！
+讓我們透過填空小測驗進行熱烈的課堂回顧：
 
-1. 三巨頭是 Grady Booch、Jim Rumbaugh 與 Ivar Jacobson！
-2. 環境圖（Context Diagram）用以劃定系統與外部夥伴的營運邊界！
-3. 強制共用的子流程是透過 <<include>> 關係抽離！
-4. 切分 UI、商業邏輯與資料實體的經典架構是 BCE 模式！
-5. 實心菱形代表組合（Composition）！
-6. 空心菱形代表聚合（Aggregation）！
-7. 中括號中的是守衛條件（Guard Condition）！
+1. 第三位巨頭是發明使用案例與 BCE 的 Ivar Jacobson！
+2. 四大核心視角為外部、互動 (Interaction)、結構與行為！
+3. 強制共用的必要子程序使用 <<include>> 包含關聯！
+4. 分離 UI、邏輯與實體的架構模式是 Boundary-Control-Entity (BCE)！
+5. 實心菱形代表生命週期綁定的組合 (Composition)！
+6. 空心菱形代表鬆散獨立的聚合 (Aggregation)！
+7. 中括號內的布林檢查條件是守衛條件 (Guard Condition)！
 
-全體同學表現非常優異！
+大家表現得非常出色！
 
-總結這張投影片，請記住這個核心觀念：這些核心塑模概念構成了打造穩健物件導向軟體架構的堅固基石。
+總結這張投影片，請記住這個核心觀念：這些核心概念構成了現代物件導向軟體架構設計最堅實的基石。
 -->
+
 ---
+
 ## 經典文獻與延伸閱讀 (References)
 
-- **奠基教科書與國際標準規範：**
+- **權威經典教科書與國際標準：**
   - Sommerville, I. (2016). *Software Engineering* (10th ed.). Chapter 5: System Modeling. Pearson.
   - Booch, G., Rumbaugh, J., & Jacobson, I. (2005). *The Unified Modeling Language User Guide* (2nd ed.). Addison-Wesley.
   - Fowler, M. (2003). *UML Distilled: A Brief Guide to the Standard Object Modeling Language* (3rd ed.). Addison-Wesley.
   - Cockburn, A. (2000). *Writing Effective Use Cases*. Addison-Wesley.
   - Object Management Group (OMG). (2017). *OMG Unified Modeling Language (OMG UML) Specification*, Version 2.5.1.
-- **現代宣告式繪圖標準與 AI 塑模工具：**
-  - PlantUML 開源標準官方網站：[plantuml.com](https://plantuml.com)
-  - Mermaid.js JavaScript 宣告式繪圖文件庫：[mermaid.js.org](https://mermaid.js.org)
+- **現代宣告式文字塑模資源：**
+  - PlantUML 官方標準網站：[plantuml.com](https://plantuml.com)
+  - Mermaid.js 宣告式圖表手冊：[mermaid.js.org](https://mermaid.js.org)
 
 <!--
-這裡是第四章的經典參考文獻、國際 OMG UML 官方規範，以及現代宣告式繪圖工具資源。
+這裡是第四章的權威經典教科書、OMG 國際標準規格書與現代宣告式文字塑模工具資源。
 
-Grady Booch、Jim Rumbaugh 與 Ivar Jacobson 合著的《UML 使用者手冊》，以及 Martin Fowler 的《UML 精華》是不可錯過的永恆經典。Alistair Cockburn 的著作為撰寫高效使用案例立下了黃金標準。
+Grady Booch、Jim Rumbaugh 與 Ivar Jacobson 合著的《UML 使用者指南》與 Martin Fowler 的《UML 精華》是不可不讀的傳世經典。Alistair Cockburn 的專書則是學習撰寫企業級使用案例規格書的金科玉律。
 
-若要實踐現代 Text-to-Diagram 與 AI 繪圖協作，強烈推薦深入研讀 PlantUML 與 Mermaid.js。
+現代工程實務中，請務必善用 PlantUML 享受架構即代碼的高效樂趣。
 
-謝謝大家今天的投入參與！
+感謝大家的熱情參與！
 -->
 
 <script>

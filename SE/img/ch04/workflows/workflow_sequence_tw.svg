@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 400" width="100%" height="100%" style="background:#f5f5f5; font-family:'PingFang TC', 'Microsoft JhengHei', 'Helvetica Neue', Arial, sans-serif;">
+<defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+      </marker>
+      <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="110%">
+        <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08" />
+      </filter>
+    </defs>
+<g filter="url(#card-shadow)">
+<rect x="35" y="45" width="230" height="310" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="2" />
+<path d="M 35 55 Q 35 45 45 45 L 255 45 Q 265 45 265 55 L 265 81 L 35 81 Z" fill="#8b5cf6" />
+<text x="150.0" y="69" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" letter-spacing="0.5">STEP 1</text>
+<text x="150.0" y="113" text-anchor="middle" font-size="16.5" font-weight="800" fill="#0b3c5d">選擇執行情境</text>
+<text x="150.0" y="133" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">(From Use Case)</text>
+<line x1="55" y1="149" x2="245" y2="149" stroke="#e2e8f0" stroke-width="1" />
+<circle cx="59" cy="171" r="3" fill="#8b5cf6" />
+<text x="69" y="175" font-size="12.5" font-weight="400" fill="#475569">選擇具體執行路徑</text>
+<circle cx="59" cy="219" r="3" fill="#8b5cf6" />
+<text x="69" y="223" font-size="12.5" font-weight="400" fill="#475569">主要成功情境或例外分支</text>
+<circle cx="59" cy="267" r="3" fill="#8b5cf6" />
+<text x="69" y="271" font-size="12.5" font-weight="400" fill="#475569">建立明確交易邊界範疇</text>
+</g>
+<line x1="269" y1="200" x2="287" y2="200" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+<g filter="url(#card-shadow)">
+<rect x="291" y="45" width="230" height="310" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="2" />
+<path d="M 291 55 Q 291 45 301 45 L 511 45 Q 521 45 521 55 L 521 81 L 291 81 Z" fill="#8b5cf6" />
+<text x="406.0" y="69" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" letter-spacing="0.5">STEP 2</text>
+<text x="406.0" y="113" text-anchor="middle" font-size="16.5" font-weight="800" fill="#0b3c5d">識別 BCE 生命線</text>
+<text x="406.0" y="133" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">(BCE Architecture)</text>
+<line x1="311" y1="149" x2="501" y2="149" stroke="#e2e8f0" stroke-width="1" />
+<circle cx="315" cy="171" r="3" fill="#8b5cf6" />
+<text x="325" y="175" font-size="12.5" font-weight="400" fill="#475569">對應 Actor 與 Boundary UI</text>
+<circle cx="315" cy="219" r="3" fill="#8b5cf6" />
+<text x="325" y="223" font-size="12.5" font-weight="400" fill="#475569">對應 Controller 與 Entity</text>
+<circle cx="315" cy="267" r="3" fill="#8b5cf6" />
+<text x="325" y="271" font-size="12.5" font-weight="400" fill="#475569">依 BCE 順序水平橫向排列</text>
+</g>
+<line x1="525" y1="200" x2="543" y2="200" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+<g filter="url(#card-shadow)">
+<rect x="547" y="45" width="230" height="310" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="2" />
+<path d="M 547 55 Q 547 45 557 45 L 767 45 Q 777 45 777 55 L 777 81 L 547 81 Z" fill="#8b5cf6" />
+<text x="662.0" y="69" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" letter-spacing="0.5">STEP 3</text>
+<text x="662.0" y="113" text-anchor="middle" font-size="16.5" font-weight="800" fill="#0b3c5d">追蹤時序訊息</text>
+<text x="662.0" y="133" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">(Chronological Flow)</text>
+<line x1="567" y1="149" x2="757" y2="149" stroke="#e2e8f0" stroke-width="1" />
+<circle cx="571" cy="171" r="3" fill="#8b5cf6" />
+<text x="581" y="175" font-size="12.5" font-weight="400" fill="#475569">由上至下繪製時間序列</text>
+<circle cx="571" cy="219" r="3" fill="#8b5cf6" />
+<text x="581" y="223" font-size="12.5" font-weight="400" fill="#475569">區分同步 (→) 與非同步 (-&gt;)</text>
+<circle cx="571" cy="267" r="3" fill="#8b5cf6" />
+<text x="581" y="271" font-size="12.5" font-weight="400" fill="#475569">標註虛線回傳 (--&gt;)</text>
+</g>
+<line x1="781" y1="200" x2="799" y2="200" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+<g filter="url(#card-shadow)">
+<rect x="803" y="45" width="230" height="310" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" />
+<path d="M 803 55 Q 803 45 813 45 L 1023 45 Q 1033 45 1033 55 L 1033 81 L 803 81 Z" fill="#16a34a" />
+<text x="918.0" y="69" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" letter-spacing="0.5">STEP 4 ★ CORE</text>
+<text x="918.0" y="113" text-anchor="middle" font-size="16.5" font-weight="800" fill="#0b3c5d">套用複合區塊</text>
+<text x="918.0" y="133" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">(Control Logic)</text>
+<line x1="823" y1="149" x2="1013" y2="149" stroke="#e2e8f0" stroke-width="1" />
+<circle cx="827" cy="171" r="3" fill="#16a34a" />
+<text x="837" y="175" font-size="12.5" font-weight="700" fill="#1e293b">alt：&lt;tspan font-weight="400" fill="#475569"&gt;條件分支 (if-else)&lt;/tspan&gt;</text>
+<circle cx="827" cy="219" r="3" fill="#16a34a" />
+<text x="837" y="223" font-size="12.5" font-weight="700" fill="#1e293b">opt：&lt;tspan font-weight="400" fill="#475569"&gt;可選條件執行區塊&lt;/tspan&gt;</text>
+<circle cx="827" cy="267" r="3" fill="#16a34a" />
+<text x="837" y="271" font-size="12.5" font-weight="700" fill="#1e293b">loop：&lt;tspan font-weight="400" fill="#475569"&gt;集合物件迭代迴圈&lt;/tspan&gt;</text>
+</g>
+</svg>

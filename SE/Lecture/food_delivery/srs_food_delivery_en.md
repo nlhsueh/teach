@@ -65,7 +65,7 @@ QuickBite operates at the center of the food delivery ecosystem, coordinating tr
 The standard System Context Diagram below formalizes the architectural boundary and external service contracts:
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_context.svg" alt="QuickBite System Context Diagram" style="max-width: 90%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_context.svg" alt="QuickBite System Context Diagram" style="max-width: 90%; border-radius: 8px;" />
   <p><em>Figure 2.1 QuickBite Platform System Context Diagram</em></p>
 </div>
 
@@ -82,7 +82,7 @@ The standard System Context Diagram below formalizes the architectural boundary 
 System functionality is structured around primary actors and the core fulfillment lifecycle:
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_usecase.svg" alt="QuickBite Use Case Diagram" style="max-width: 90%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_usecase.svg" alt="QuickBite Use Case Diagram" style="max-width: 90%; border-radius: 8px;" />
   <p><em>Figure 3.1 QuickBite Comprehensive Use Case Diagram</em></p>
 </div>
 
@@ -92,7 +92,7 @@ Use case relationships express strict engineering semantics (aligned with Slide 
 * **Extend Relationship (`<<extend>>`)**: An optional behavior executed only when specific extension points and guard conditions are satisfied. When a customer enters a valid discount code, the system triggers "Apply Promo Code".
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_include_extend.svg" alt="Include vs Extend Mechanics" style="max-width: 85%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_include_extend.svg" alt="Include vs Extend Mechanics" style="max-width: 85%; border-radius: 8px;" />
   <p><em>Figure 3.2 Detail of <<include>> and <<extend>> Relationships in Order Checkout</em></p>
 </div>
 
@@ -146,7 +146,7 @@ The food delivery lifecycle spans four distinct domains, modeled using UML Swiml
 Covers checkout validation, payment gateway authorization, and restaurant confirmation timeout safeguards:
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_activity_order.svg" alt="Order Placement Activity Diagram" style="max-width: 90%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_activity_order.svg" alt="Order Placement Activity Diagram" style="max-width: 90%; border-radius: 8px;" />
   <p><em>Figure 3.3 Phase 1: Customer Order, Payment Authorization & Kitchen Prep Activity Workflow</em></p>
 </div>
 
@@ -154,7 +154,7 @@ Covers checkout validation, payment gateway authorization, and restaurant confir
 Illustrates concurrent kitchen preparation and courier dispatch, pickup verification, and final customer delivery:
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_activity_dispatch.svg" alt="Courier Dispatch Activity Diagram" style="max-width: 90%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_activity_dispatch.svg" alt="Courier Dispatch Activity Diagram" style="max-width: 90%; border-radius: 8px;" />
   <p><em>Figure 3.4 Phase 2: Courier Dispatch, Pickup & Delivery Handover Activity Workflow</em></p>
 </div>
 

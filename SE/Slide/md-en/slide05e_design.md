@@ -124,7 +124,7 @@ To summarize this slide, remember this key takeaway: Software architecture bridg
 <!-- _class: full-image-slide -->
 
 <div class="centered-image">
-  <img src="../../img/ch05/02_connection.jpeg" alt="Connecting the What to the How" />
+  <img src="../../img/ch05/design/02_connection.jpeg" alt="Connecting the What to the How" />
 </div>
 
 <!--
@@ -229,7 +229,7 @@ To summarize this slide, remember this key takeaway: Kruchten's 4+1 model synthe
 <!-- _class: full-image-slide -->
 
 <div class="centered-image">
-  <img src="../../img/ch05/04_five_perspective.jpeg" alt="Five Perspectives One Unified Blueprint" />
+  <img src="../../img/ch05/design/04_five_perspective.jpeg" alt="Five Perspectives One Unified Blueprint" />
 </div>
 
 <!--
@@ -255,7 +255,7 @@ Which architectural view in Kruchten's 4+1 View Model illustrates how software c
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ch06/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
   </div>
 </div>
 
@@ -326,7 +326,7 @@ To summarize this slide, remember this key takeaway: Architectural patterns enca
   - **Decouples Data from Presentation:** Multiple simultaneous views (web dashboard, mobile JSON API) can observe the same underlying model without modifying business logic.
 
 <div style="text-align: center; margin-top: 10px;">
-  <img src="../../img/ch06/mvc_structure.png" style="max-height: 280px; width: auto;" alt="MVC Structure" />
+  <img src="../../img/ch05/architecture/mvc_structure.png" style="max-height: 280px; width: auto;" alt="MVC Structure" />
 </div>
 
 <!--
@@ -437,7 +437,7 @@ To summarize this slide, remember this key takeaway: Monoliths maximize simplici
 <!-- _class: full-image-slide -->
 
 <div class="centered-image">
-  <img src="../../img/ch05/06_monolithic_microservice.jpeg" alt="Monolith vs Microservices Architecture" />
+  <img src="../../img/ch05/design/06_monolithic_microservice.jpeg" alt="Monolith vs Microservices Architecture" />
 </div>
 
 <!--
@@ -465,7 +465,7 @@ Which classic architectural pattern explicitly separates user interface presenta
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ch06/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
   </div>
 </div>
 
@@ -528,7 +528,7 @@ To summarize this slide, remember this key takeaway: Quality attributes are achi
 <!-- _class: full-image-slide -->
 
 <div class="centered-image">
-  <img src="../../img/ch05/03_system_characteristics.jpeg" alt="Deliberate Structure Drives System Behavior" />
+  <img src="../../img/ch05/design/03_system_characteristics.jpeg" alt="Deliberate Structure Drives System Behavior" />
 </div>
 
 <!--
@@ -686,7 +686,7 @@ In software design, what is the primary operational benefit achieved by combinin
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ch06b/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
   </div>
 </div>
 
@@ -735,7 +735,7 @@ To summarize this slide, remember this key takeaway: The SOLID principles provid
   - High-level modules should not depend on low-level modules; both should depend on abstractions.
 
 <div style="text-align: center; margin-top: 10px;">
-  <img src="../../img/ch06b/solid_principles.svg" style="max-height: 250px; width: auto;" alt="SOLID Principles Overview" />
+  <img src="../../img/ch05/architecture/solid_principles.svg" style="max-height: 250px; width: auto;" alt="SOLID Principles Overview" />
 </div>
 
 <!--
@@ -930,7 +930,7 @@ To summarize this slide, remember this key takeaway: Invert dependencies so busi
 <!-- _class: full-image-slide -->
 
 <div class="centered-image">
-  <img src="../../img/ch05/11_solid_table.jpeg" alt="SOLID: The Good vs Bad Matrix" />
+  <img src="../../img/ch05/design/11_solid_table.jpeg" alt="SOLID: The Good vs Bad Matrix" />
 </div>
 
 <!--
@@ -961,7 +961,7 @@ Which SOLID design principle states that you should be able to introduce new sys
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ch06b/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
   </div>
 </div>
 
@@ -1004,7 +1004,7 @@ To summarize this slide, remember this key takeaway: AI serves as a powerful arc
   - Rapidly generates interface contracts (OpenAPI / Swagger specs, gRPC `.proto` schemas, and database DDL).
 
 <div style="text-align: center; margin-top: 15px;">
-  <img src="../../img/ch06/ai_in_architecture.svg" style="max-height: 280px; width: auto;" alt="AI in Architectural Design" />
+  <img src="../../img/ch05/architecture/ai_in_architecture.svg" style="max-height: 280px; width: auto;" alt="AI in Architectural Design" />
 </div>
 
 * **Core Architectural Value:** Accelerates trade-off analysis and generates clean boilerplate interfaces between sub-systems.

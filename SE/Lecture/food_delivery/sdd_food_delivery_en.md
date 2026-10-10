@@ -65,7 +65,7 @@ In Object-Oriented Analysis and Design (OOAD), the domain class diagram serves a
 The UML Domain Class Diagram below illustrates the entity structure of the QuickBite platform:
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_class.svg" alt="QuickBite Domain Class Diagram" style="max-width: 95%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_class.svg" alt="QuickBite Domain Class Diagram" style="max-width: 95%; border-radius: 8px;" />
   <p><em>Figure 2.1 QuickBite Platform UML Domain Class Diagram</em></p>
 </div>
 
@@ -172,7 +172,7 @@ The UML Sequence Diagram captures chronological message flows, synchronous RPC c
 The diagram below details the entire transaction flow from checkout and payment authorization to kitchen confirmation and courier assignment:
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_sequence.svg" alt="QuickBite Sequence Diagram" style="max-width: 95%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_sequence.svg" alt="QuickBite Sequence Diagram" style="max-width: 95%; border-radius: 8px;" />
   <p><em>Figure 3.1 QuickBite End-to-End Checkout, Payment & Dispatch Sequence Diagram</em></p>
 </div>
 
@@ -195,7 +195,7 @@ The diagram below details the entire transaction flow from checkout and payment 
 The state machine diagram governs the permissible states, transitions, guard conditions, and side-effect actions of the order entity:
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_state.svg" alt="QuickBite Order State Machine Diagram" style="max-width: 90%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_state.svg" alt="QuickBite Order State Machine Diagram" style="max-width: 90%; border-radius: 8px;" />
   <p><em>Figure 3.2 QuickBite Order Lifecycle State Machine Diagram</em></p>
 </div>
 

@@ -65,7 +65,7 @@ QuickBite 平台採用 **微服務架構 (Microservices Architecture)** 結合 *
 下圖為 QuickBite 平台之完整 UML 領域類別圖，展現各領域物件之屬性、操作、多重性 (Multiplicity) 以及繼承、組合與聚合關係：
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_class.svg" alt="QuickBite Domain Class Diagram" style="max-width: 95%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_class.svg" alt="QuickBite Domain Class Diagram" style="max-width: 95%; border-radius: 8px;" />
   <p><em>圖 2.1 QuickBite 美食外送平台 UML 領域類別圖 (Class Diagram)</em></p>
 </div>
 
@@ -172,7 +172,7 @@ UML 循序圖表達跨微服務實體之間在時間軸上的訊息傳遞（呼�
 下圖展示自消費者發起結帳、第三方金流扣款、餐廳確認備餐、派單引擎媒合至外送員接單之完整呼叫流程：
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_sequence.svg" alt="QuickBite Sequence Diagram" style="max-width: 95%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_sequence.svg" alt="QuickBite Sequence Diagram" style="max-width: 95%; border-radius: 8px;" />
   <p><em>圖 3.1 QuickBite 端到端下單、金流與智慧派單循序圖 (Sequence Diagram)</em></p>
 </div>
 
@@ -195,7 +195,7 @@ UML 循序圖表達跨微服務實體之間在時間軸上的訊息傳遞（呼�
 訂單生命週期為外送平台之最核心狀態機，涵蓋正常交付流程、異常退款分支與取消保護守衛條件 (Guards)。
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_state.svg" alt="QuickBite Order State Machine Diagram" style="max-width: 90%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_state.svg" alt="QuickBite Order State Machine Diagram" style="max-width: 90%; border-radius: 8px;" />
   <p><em>圖 3.2 QuickBite 訂單生命週期狀態機圖 (State Machine Diagram)</em></p>
 </div>
 

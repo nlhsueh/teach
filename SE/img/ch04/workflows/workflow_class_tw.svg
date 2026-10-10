@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 400" width="100%" height="100%" style="background:#f5f5f5; font-family:'PingFang TC', 'Microsoft JhengHei', 'Helvetica Neue', Arial, sans-serif;">
+<defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+      </marker>
+      <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="110%">
+        <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08" />
+      </filter>
+    </defs>
+<g filter="url(#card-shadow)">
+<rect x="35" y="45" width="230" height="310" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="2" />
+<path d="M 35 55 Q 35 45 45 45 L 255 45 Q 265 45 265 55 L 265 81 L 35 81 Z" fill="#3b82f6" />
+<text x="150.0" y="69" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" letter-spacing="0.5">STEP 1</text>
+<text x="150.0" y="113" text-anchor="middle" font-size="16.5" font-weight="800" fill="#0b3c5d">萃取領域名詞</text>
+<text x="150.0" y="133" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">(Domain Concepts)</text>
+<line x1="55" y1="149" x2="245" y2="149" stroke="#e2e8f0" stroke-width="1" />
+<circle cx="59" cy="171" r="3" fill="#3b82f6" />
+<text x="69" y="175" font-size="12.5" font-weight="400" fill="#475569">識別候選領域實體類別</text>
+<circle cx="59" cy="219" r="3" fill="#3b82f6" />
+<text x="69" y="223" font-size="12.5" font-weight="400" fill="#475569">過濾暫態 UI 輸入資料</text>
+<circle cx="59" cy="267" r="3" fill="#3b82f6" />
+<text x="69" y="271" font-size="12.5" font-weight="400" fill="#475569">提煉核心領域業務概念</text>
+</g>
+<line x1="269" y1="200" x2="287" y2="200" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+<g filter="url(#card-shadow)">
+<rect x="291" y="45" width="230" height="310" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="2" />
+<path d="M 291 55 Q 291 45 301 45 L 511 45 Q 521 45 521 55 L 521 81 L 291 81 Z" fill="#3b82f6" />
+<text x="406.0" y="69" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" letter-spacing="0.5">STEP 2</text>
+<text x="406.0" y="113" text-anchor="middle" font-size="16.5" font-weight="800" fill="#0b3c5d">分配屬性與操作</text>
+<text x="406.0" y="133" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">(State &amp; Operations)</text>
+<line x1="311" y1="149" x2="501" y2="149" stroke="#e2e8f0" stroke-width="1" />
+<circle cx="315" cy="171" r="3" fill="#3b82f6" />
+<text x="325" y="175" font-size="12.5" font-weight="400" fill="#475569">定義狀態變數與型別</text>
+<circle cx="315" cy="219" r="3" fill="#3b82f6" />
+<text x="325" y="223" font-size="12.5" font-weight="400" fill="#475569">設定可見度 (+, -, #)</text>
+<circle cx="315" cy="267" r="3" fill="#3b82f6" />
+<text x="325" y="271" font-size="12.5" font-weight="400" fill="#475569">分配高凝聚度行為操作</text>
+</g>
+<line x1="525" y1="200" x2="543" y2="200" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+<g filter="url(#card-shadow)">
+<rect x="547" y="45" width="230" height="310" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="2" />
+<path d="M 547 55 Q 547 45 557 45 L 767 45 Q 777 45 777 55 L 777 81 L 547 81 Z" fill="#3b82f6" />
+<text x="662.0" y="69" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" letter-spacing="0.5">STEP 3</text>
+<text x="662.0" y="113" text-anchor="middle" font-size="16.5" font-weight="800" fill="#0b3c5d">設定重數與關聯</text>
+<text x="662.0" y="133" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">(Associations)</text>
+<line x1="567" y1="149" x2="757" y2="149" stroke="#e2e8f0" stroke-width="1" />
+<circle cx="571" cy="171" r="3" fill="#3b82f6" />
+<text x="581" y="175" font-size="12.5" font-weight="400" fill="#475569">繪製結構化實體關聯</text>
+<circle cx="571" cy="219" r="3" fill="#3b82f6" />
+<text x="581" y="223" font-size="12.5" font-weight="400" fill="#475569">強制約束基數與重數</text>
+<circle cx="571" cy="267" r="3" fill="#3b82f6" />
+<text x="581" y="271" font-size="12.5" font-weight="400" fill="#475569">定義關聯端點角色名稱</text>
+</g>
+<line x1="781" y1="200" x2="799" y2="200" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+<g filter="url(#card-shadow)">
+<rect x="803" y="45" width="230" height="310" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" />
+<path d="M 803 55 Q 803 45 813 45 L 1023 45 Q 1033 45 1033 55 L 1033 81 L 803 81 Z" fill="#16a34a" />
+<text x="918.0" y="69" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" letter-spacing="0.5">STEP 4 ★ CORE</text>
+<text x="918.0" y="113" text-anchor="middle" font-size="16.5" font-weight="800" fill="#0b3c5d">精煉擁有權關係</text>
+<text x="918.0" y="133" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">(Coupling Control)</text>
+<line x1="823" y1="149" x2="1013" y2="149" stroke="#e2e8f0" stroke-width="1" />
+<circle cx="827" cy="171" r="3" fill="#16a34a" />
+<text x="837" y="175" font-size="12.5" font-weight="700" fill="#1e293b">聚合 (◇)：&lt;tspan font-weight="400" fill="#475569"&gt;共享生命週期&lt;/tspan&gt;</text>
+<circle cx="827" cy="219" r="3" fill="#16a34a" />
+<text x="837" y="223" font-size="12.5" font-weight="700" fill="#1e293b">組合 (◆)：&lt;tspan font-weight="400" fill="#475569"&gt;級聯刪除擁有&lt;/tspan&gt;</text>
+<circle cx="827" cy="267" r="3" fill="#16a34a" />
+<text x="837" y="271" font-size="12.5" font-weight="400" fill="#475569">控制物件間生命週期偶合</text>
+</g>
+</svg>

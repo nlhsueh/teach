@@ -125,7 +125,7 @@ footer: 'Ch 05 · 軟體架構與設計'
 <!-- _class: full-image-slide -->
 
 <div class="centered-image">
-  <img src="../../img/ch05/02_connection.jpeg" alt="連接需求 (What) 與實作 (How) 的架構橋樑" />
+  <img src="../../img/ch05/design/02_connection.jpeg" alt="連接需求 (What) 與實作 (How) 的架構橋樑" />
 </div>
 
 <!--
@@ -231,7 +231,7 @@ footer: 'Ch 05 · 軟體架構與設計'
 <!-- _class: full-image-slide -->
 
 <div class="centered-image">
-  <img src="../../img/ch05/04_five_perspective.jpeg" alt="五大視角：單一統一藍圖" />
+  <img src="../../img/ch05/design/04_five_perspective.jpeg" alt="五大視角：單一統一藍圖" />
 </div>
 
 <!--
@@ -257,7 +257,7 @@ footer: 'Ch 05 · 軟體架構與設計'
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ch06/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
   </div>
 </div>
 
@@ -329,7 +329,7 @@ footer: 'Ch 05 · 軟體架構與設計'
   - **資料與展示徹底解耦：** 多個不同視圖（Web 儀表板、手機原生 App、純 JSON API）可同時觀察同一個底層 Model，無須重複撰寫任何商業邏輯。
 
 <div style="text-align: center; margin-top: 10px;">
-  <img src="../../img/ch06/mvc_structure.png" style="max-height: 280px; width: auto;" alt="MVC 架構結構圖" />
+  <img src="../../img/ch05/architecture/mvc_structure.png" style="max-height: 280px; width: auto;" alt="MVC 架構結構圖" />
 </div>
 
 <!--
@@ -440,7 +440,7 @@ MVC 最驚豔的價值在於解耦：你可以為同一套 Model 打造網頁版
 <!-- _class: full-image-slide -->
 
 <div class="centered-image">
-  <img src="../../img/ch05/06_monolithic_microservice.jpeg" alt="單體架構 vs 微服務架構生動對比" />
+  <img src="../../img/ch05/design/06_monolithic_microservice.jpeg" alt="單體架構 vs 微服務架構生動對比" />
 </div>
 
 <!--
@@ -468,7 +468,7 @@ MVC 最驚豔的價值在於解耦：你可以為同一套 Model 打造網頁版
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ch06/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
   </div>
 </div>
 
@@ -532,7 +532,7 @@ MVC 最驚豔的價值在於解耦：你可以為同一套 Model 打造網頁版
 <!-- _class: full-image-slide -->
 
 <div class="centered-image">
-  <img src="../../img/ch05/03_system_characteristics.jpeg" alt="精心設計的結構驅動系統行為特性" />
+  <img src="../../img/ch05/design/03_system_characteristics.jpeg" alt="精心設計的結構驅動系統行為特性" />
 </div>
 
 <!--
@@ -691,7 +691,7 @@ class OrderProcessor {
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ch06b/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
   </div>
 </div>
 
@@ -741,7 +741,7 @@ class OrderProcessor {
   - 高階模組不應依賴低階模組；兩者皆應依賴抽象介面。
 
 <div style="text-align: center; margin-top: 10px;">
-  <img src="../../img/ch06b/solid_principles.svg" style="max-height: 250px; width: auto;" alt="SOLID 物件導向設計五大原則綜整圖" />
+  <img src="../../img/ch05/architecture/solid_principles.svg" style="max-height: 250px; width: auto;" alt="SOLID 物件導向設計五大原則綜整圖" />
 </div>
 
 <!--
@@ -936,7 +936,7 @@ class OrderService {
 <!-- _class: full-image-slide -->
 
 <div class="centered-image">
-  <img src="../../img/ch05/11_solid_table.jpeg" alt="SOLID 原則優劣對照總覽矩陣" />
+  <img src="../../img/ch05/design/11_solid_table.jpeg" alt="SOLID 原則優劣對照總覽矩陣" />
 </div>
 
 <!--
@@ -967,7 +967,7 @@ DIP 徹底解除商業邏輯對底層技術框架的束縛。
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ch06b/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
   </div>
 </div>
 
@@ -1011,7 +1011,7 @@ DIP 徹底解除商業邏輯對底層技術框架的束縛。
   - 能在數秒內極速產出系統間通訊的介面契約（OpenAPI / Swagger 規格書、gRPC `.proto` 檔案與資料庫 DDL）。
 
 <div style="text-align: center; margin-top: 15px;">
-  <img src="../../img/ch06/ai_in_architecture.svg" style="max-height: 280px; width: auto;" alt="AI 輔助軟體架構設計工作流程" />
+  <img src="../../img/ch05/architecture/ai_in_architecture.svg" style="max-height: 280px; width: auto;" alt="AI 輔助軟體架構設計工作流程" />
 </div>
 
 * **核心架構價值：** 大幅加速跨方案權衡分析（Trade-off Analysis），並自動化生成子系統間純淨無瑕的標準化介面契約樣板。

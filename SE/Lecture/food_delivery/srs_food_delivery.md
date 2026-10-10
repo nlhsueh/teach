@@ -65,7 +65,7 @@ QuickBite 平台居於中樞位置，協調消費者、餐廳、外送員之訊�
 下圖為系統標準架構脈絡圖（System Context Diagram），定義了平台與外部實體之邊界介面：
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_context.svg" alt="QuickBite System Context Diagram" style="max-width: 90%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_context.svg" alt="QuickBite System Context Diagram" style="max-width: 90%; border-radius: 8px;" />
   <p><em>圖 2.1 QuickBite 美食外送平台系統脈絡圖 (System Context Diagram)</em></p>
 </div>
 
@@ -82,7 +82,7 @@ QuickBite 平台居於中樞位置，協調消費者、餐廳、外送員之訊�
 系統功能依使用者角色與核心業務流程劃分，下圖為平台標準 UML 用例圖（Use Case Diagram）：
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_usecase.svg" alt="QuickBite Use Case Diagram" style="max-width: 90%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_usecase.svg" alt="QuickBite Use Case Diagram" style="max-width: 90%; border-radius: 8px;" />
   <p><em>圖 3.1 QuickBite 平台整體用例圖 (Use Case Diagram)</em></p>
 </div>
 
@@ -92,7 +92,7 @@ QuickBite 平台居於中樞位置，協調消費者、餐廳、外送員之訊�
 * **擴展關係 (`<<extend>>`)**：代表在滿足特定擴展點 (Extension Point) 與前提條件下才會觸發的選擇性行為。例如當消費者持有優惠代碼時，才在結帳流程中擴展執行「套用折價優惠 (Apply Promo Code)」。
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_include_extend.svg" alt="Include vs Extend Mechanics" style="max-width: 85%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_include_extend.svg" alt="Include vs Extend Mechanics" style="max-width: 85%; border-radius: 8px;" />
   <p><em>圖 3.2 結帳用例中 <<include>> 與 <<extend>> 機制詳解</em></p>
 </div>
 
@@ -146,7 +146,7 @@ QuickBite 平台居於中樞位置，協調消費者、餐廳、外送員之訊�
 涵蓋顧客結帳、金流授權檢驗、餐廳接單逾時防護之分支判斷：
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_activity_order.svg" alt="Order Placement Activity Diagram" style="max-width: 90%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_activity_order.svg" alt="Order Placement Activity Diagram" style="max-width: 90%; border-radius: 8px;" />
   <p><em>圖 3.3 階段一：客戶下單、金流扣款與餐廳備餐泳道活動圖</em></p>
 </div>
 
@@ -154,7 +154,7 @@ QuickBite 平台居於中樞位置，協調消費者、餐廳、外送員之訊�
 展示外送員媒合重試迴圈、平行取餐備餐路徑以及最終交付驗證：
 
 <div align="center">
-  <img src="../../img/ch05/food_delivery_activity_dispatch.svg" alt="Courier Dispatch Activity Diagram" style="max-width: 90%; border-radius: 8px;" />
+  <img src="../../img/ch04/food_delivery/food_delivery_activity_dispatch.svg" alt="Courier Dispatch Activity Diagram" style="max-width: 90%; border-radius: 8px;" />
   <p><em>圖 3.4 階段二：外送員智慧媒合、取餐與配送交付泳道活動圖</em></p>
 </div>
 

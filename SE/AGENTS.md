@@ -44,6 +44,17 @@
   node ../scripts/generate_lecture_pdf.js Lecture/en/<name>.md
   node ../scripts/generate_lecture_pdf.js Lecture/tw/<name>.md
   ```
+  - **講義手冊排版與防止橫向溢出規範 (Anti-Overflow Rules for Lecture PDF)**:
+    - **❌ 嚴禁在程式碼區塊內使用 ASCII 拼製寬表格 (No Wide ASCII Tables in Code Blocks)**：
+      - 講義手冊中的結構化資訊與對照表，**一律使用標準 GitHub Flavored Markdown (GFM) 表格語法（`| 欄位 1 | 欄位 2 |`）**。
+      - GFM 表格由 HTML 渲染引擎自動適配欄寬、內容文字自動折行，並套用斑馬紋樣式與邊框，具備 100% 響應式排版能力。
+      - 嚴禁用 `+----+----+` ASCII 框線拼裝表格放在程式碼區塊（` ``` `）中，避免單行超過 65 字元造成 A4 頁面橫向截斷（Over Page）。
+    - **📏 程式碼與文字圖表單行寬度安全上限 (Safe Line Width <= 60–65 chars)**：
+      - 講義中的任何程式碼片段（如 PlantUML 代碼、Java/TypeScript 範例、AI 提示詞、垂直 ASCII 流程圖），**單行字元數一律嚴格控制在 60–65 字元以內**。
+      - 長提示詞或註解必須主動換行，避免仰賴預設換行導致字首縮排混亂。
+    - **🛡️ PDF 編譯腳本樣式防護機制 (`scripts/generate_lecture_pdf.js`)**：
+      - `.markdown-body pre` 與 `code` 必須常駐設定 `white-space: pre-wrap; word-break: break-word; font-size: 11.5px; line-height: 1.45;` 與 `max-width: 100%`，作為防止極端長字串溢出的底層安全網。
+      - `@media print` 必須移除 body 內邊距 (`padding: 0 !important;`)，確保完全利用 Chrome DevTools Protocol 設定之 0.6 吋印刷邊界。
 
 - **Slide (16:9 橫式投影片)**:
   - **統一主題規範 (ase-theme, quiz-theme & syllabus-theme)**：

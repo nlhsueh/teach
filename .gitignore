@@ -35,6 +35,7 @@ Thumbs.db
 # Temporary and backup files
 img_backup/
 **/img_backup/
+**/_backup_*/
 __pycache__/
 *.py[cod]
 

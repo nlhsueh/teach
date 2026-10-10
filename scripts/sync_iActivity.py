@@ -812,10 +812,22 @@ def embed_ccqs_into_lecture(fpath: str, activities: list, base_url: str):
         f.write(new_content)
 
 def embed_ccqs_into_slides(course_dir: str, chapters_data: list, base_url: str, course_slug: str = ''):
-    """Embeds QR codes and [課堂互動] links into Marp slide files in Slide/source/."""
-    slide_dir = os.path.join(course_dir, 'Slide', 'source')
-    if not os.path.exists(slide_dir):
+    """Embeds QR codes and [課堂互動] links into Marp slide files in Slide directories."""
+    slide_dirs = [
+        os.path.join(course_dir, 'Slide', 'source'),
+        os.path.join(course_dir, 'Slide', 'md-en'),
+        os.path.join(course_dir, 'Slide', 'md-tw'),
+        os.path.join(course_dir, 'Slide'),
+    ]
+    slide_files = []
+    for sdir in slide_dirs:
+        if os.path.exists(sdir):
+            for f in glob.glob(os.path.join(sdir, '*.md')):
+                if f not in slide_files and not any(b in f.lower() for b in ['backup', 'copy', 'old', 'tmp']):
+                    slide_files.append(f)
+    if not slide_files:
         return 0
+    slide_files = sorted(slide_files)
 
     total_slide_updates = 0
     all_activities = []
@@ -823,9 +835,6 @@ def embed_ccqs_into_slides(course_dir: str, chapters_data: list, base_url: str, 
         all_activities.extend(activities)
 
     act_by_id = {act['id']: act for act in all_activities}
-
-    slide_files = sorted(glob.glob(os.path.join(slide_dir, '*.md')))
-    slide_files = [f for f in slide_files if not any(b in f.lower() for b in ['backup', 'copy', 'old', 'tmp'])]
     for sfile in slide_files:
         basename = os.path.basename(sfile)
         ch_match = re.search(r'(\d+)', basename)

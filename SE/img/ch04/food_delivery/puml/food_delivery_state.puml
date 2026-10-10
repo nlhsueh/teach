@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam roundCorner 8
+skinparam shadowing false
+
+skinparam state {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 2
+  FontColor #0b3c5d
+  FontSize 14
+  FontStyle bold
+  StartColor #0b3c5d
+  EndColor #0b3c5d
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #334155
+  FontSize 12
+  Thickness 1.5
+}
+
+[*] -right-> Placed : submitOrder() / authorizePayment()
+
+state Placed {
+  Placed : Entry / startRestaurantAcceptTimer()
+}
+
+Placed -right-> Accepted : restaurantAccepts() [within 5 min] / lockOrder()
+Placed -down-> Cancelled : restaurantRejects() / refundCharge()
+Placed -down-> Cancelled : customerCancels() [time < 2 min] / refundCharge()
+Placed -down-> Cancelled : timeout() [after 5 min] / autoRefund()
+
+Accepted -right-> Preparing : chefStartsCooking() / updateETA()
+Preparing -down-> ReadyForPickup : kitchenCompletes() / alertNearbyCouriers()
+
+ReadyForPickup -left-> OutForDelivery : courierScansPickup() / startLiveGPSTracking()
+OutForDelivery -left-> Delivered : courierConfirmsDropoff() / captureDeliveryPhoto()
+Delivered -down-> [*] : logOrderCompleted() / triggerRatingPrompt()
+
+Cancelled -right-> [*] : sendCancellationNotice()
+
+@enduml
