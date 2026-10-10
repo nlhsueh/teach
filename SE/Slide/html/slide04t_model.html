@@ -878,9 +878,6 @@ PlantUML 使用案例圖與使用案例規格書。
 <div class="centered-image">
   <img src="../../img/ch04/nb_sequence/05_messaging_matrix.jpg" alt="The Messaging Matrix: Synchronous, Asynchronous, Return, Create, Destroy" />
 </div>
-
-<p>總結這張投影片，請記住這個核心觀念：正確區分同步阻塞呼叫與非同步事件派發，是設計高併發與微服務架構的基石。<br />
---&gt;</p>
 <footer>薛念林 教授 · 逢甲大學資訊工程學系</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-paginate="true" data-header="4.5 互動與循序圖模型" data-footer="薛念林 教授 · 逢甲大學資訊工程學系" data-class="full-image-slide" data-theme="ase-theme" lang="zh-TW" class="full-image-slide" data-marpit-pagination="56" style="--paginate:true;--header:4.5 互動與循序圖模型;--footer:薛念林 教授 · 逢甲大學資訊工程學系;--class:full-image-slide;--theme:ase-theme;" data-marpit-pagination-total="120">
@@ -1020,12 +1017,12 @@ PlantUML 使用案例圖與使用案例規格書。
 <h3 id="%E8%A7%80%E5%BF%B5%E6%AA%A2%E6%A0%B8%E6%B8%AC%E9%A9%97-5-ccq-5">觀念檢核測驗 5 (CCQ 5)</h3>
 <div class="ccq-columns">
 <div class="ccq-text">
-<p>在 UML 2.0 循序圖中，若欲精準表達「<strong>二選一的互斥條件分支邏輯</strong>」（例如：若信用卡扣款成功則產生訂單，若扣款失敗則回滾交易並提示錯誤），應採用哪一種複合片段 (Combined Fragment)？</p>
+<p>在 BCE (Boundary-Control-Entity) 架構循序圖中，當顧客透過結帳前端點擊『確認下單』按鈕時，該事件應先傳遞給哪一種類型的物件處理？</p>
 <ul>
-<li><strong>A.</strong> <code>loop</code> 片段</li>
-<li><strong>B.</strong> <code>par</code> 片段</li>
-<li><strong>C.</strong> <code>opt</code> 片段</li>
-<li><strong>D.</strong> <code>alt</code> 片段</li>
+<li><strong>A.</strong> 直接傳遞給 <code>Order</code> 實體物件立即寫入資料庫</li>
+<li><strong>B.</strong> 直接呼叫 <code>PaymentGatewayAPI</code> 邊界物件立即刷卡扣款</li>
+<li><strong>C.</strong> 傳遞給 <code>OrderController</code> 控制物件協調業務邏輯驗證與調用</li>
+<li><strong>D.</strong> 直接傳遞給 <code>Restaurant</code> 實體物件確認餐廳接單</li>
 </ul>
 </div>
 <div class="ccq-logo">
@@ -1102,7 +1099,7 @@ PlantUML 使用案例圖與使用案例規格書。
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="74" data-paginate="true" data-header="4.6 流程與活動圖模型" data-footer="薛念林 教授 · 逢甲大學資訊工程學系" data-class="full-image-slide" data-theme="ase-theme" lang="zh-TW" class="full-image-slide" data-marpit-pagination="74" style="--paginate:true;--header:4.6 流程與活動圖模型;--footer:薛念林 教授 · 逢甲大學資訊工程學系;--class:full-image-slide;--theme:ase-theme;" data-marpit-pagination-total="120">
 <header>4.6 流程與活動圖模型</header>
 <div class="centered-image">
-  <img src="../../img/ch04/nb_act/09_swimlane.jpg" alt="Multi-Actor Accountability: Why Swimlanes Matter" />
+  <img src="../../img/ch04/nb_act/09_swimlane.jpg" alt="The Multi-Actor Accountability Problem" />
 </div>
 <footer>薛念林 教授 · 逢甲大學資訊工程學系</footer>
 </section>
@@ -1238,12 +1235,12 @@ activity beta 語法產生具備泳道與並行的活動圖。
 <h3 id="%E8%A7%80%E5%BF%B5%E6%AA%A2%E6%A0%B8%E6%B8%AC%E9%A9%97-6-ccq-6">觀念檢核測驗 6 (CCQ 6)</h3>
 <div class="ccq-columns">
 <div class="ccq-text">
-<p>在 UML 活動圖中，若一條粗黑橫棒擁有「<strong>多個輸入控制流 (Incoming Flows)</strong>」與「<strong>單一輸出控制流 (Outgoing Flow)</strong>」，這代表哪一種節點？其執行語義為何？</p>
+<p>在 UML 活動圖中，<strong>分岔/結合 (Fork/Join 同步條)</strong> 與 <strong>決策/合併 (Decision/Merge 菱形)</strong> 的核心差異為何？</p>
 <ul>
-<li><strong>A.</strong> 分岔節點 (Fork Node)：將單一控制流複製為多個並行活動。</li>
-<li><strong>B.</strong> 結合節點 (Join Node)：必須等待所有輸入控制流皆執行完畢後，才啟動後續動作。</li>
-<li><strong>C.</strong> 決策節點 (Decision Node)：依據守衛條件進行多選一互斥分流。</li>
-<li><strong>D.</strong> 合併節點 (Merge Node)：只要任一輸入控制流到達，便立即啟動後續動作。</li>
+<li><strong>A.</strong> Fork/Join 用於將單一流程切分為多條「並行同時執行」的執行緒；Decision/Merge 則依據布林條件由多條路徑中「嚴格選擇其一 (互斥)」執行。</li>
+<li><strong>B.</strong> Fork/Join 用於類別繼承；Decision/Merge 用於物件實體化。</li>
+<li><strong>C.</strong> Fork/Join 只能處理資料流；Decision/Merge 只能處理錯誤例外。</li>
+<li><strong>D.</strong> Fork/Join 必須等待人工確認；Decision/Merge 由系統計時器自動觸發。</li>
 </ul>
 </div>
 <div class="ccq-logo">
@@ -1257,7 +1254,7 @@ activity beta 語法產生具備泳道與並行的活動圖。
 
 <h1 id="47-%E8%A1%8C%E7%82%BA%E8%88%87%E7%8B%80%E6%85%8B%E6%A9%9F%E6%A8%A1%E5%9E%8B"><strong>4.7 行為與狀態機模型</strong></h1>
 <blockquote>
-<p>&quot;軟體系統中最昂貴的災難，往往源自於物件在錯誤的時間接收了看似合法的事件。&quot;</p>
+<p>&quot;軟體系統在動態執行中的行為，取決於它當下所處的狀態，以及觸發狀態轉移的事件。&quot;</p>
 </blockquote>
 <footer>薛念林 教授 · 逢甲大學資訊工程學系</footer>
 </section>
@@ -1441,12 +1438,12 @@ PlantUML 狀態機圖 (State Machine Diagram)。
 <h3 id="%E8%A7%80%E5%BF%B5%E6%AA%A2%E6%A0%B8%E6%B8%AC%E9%A9%97-7-ccq-7">觀念檢核測驗 7 (CCQ 7)</h3>
 <div class="ccq-columns">
 <div class="ccq-text">
-<p>在 UML 狀態機圖中，關於轉換標籤 (Transition Label) 的國際標準語法結構 <code>Trigger [Guard] / Action</code>，下列敘述何者<strong>完全正確</strong>？</p>
+<p>在 UML 狀態機圖中，<strong>動作 (Action，如 transition 上的 <code>/ refund()</code> 或 <code>entry /</code>)</strong> 與 <strong>活動 (Activity，如 <code>do /</code>)</strong> 最根本的執行語義差異為何？</p>
 <ul>
-<li><strong>A.</strong> <code>[Guard]</code> 是強制執行的動作，<code>/ Action</code> 是條件檢查。</li>
-<li><strong>B.</strong> 只有當 <code>Trigger</code> 事件發生，且 <code>[Guard]</code> 守衛條件評估為 true 時，轉換才會發生並執行 <code>/ Action</code>。</li>
-<li><strong>C.</strong> <code>Trigger</code> 代表進入新狀態後持續進行的長期耗時活動。</li>
-<li><strong>D.</strong> 只要 <code>[Guard]</code> 條件為 true，無需任何事件即可隨時自動觸發轉換。</li>
+<li><strong>A.</strong> Action 是瞬間完成、不可中斷的原子性操作；Activity 是耗時進行的持續運算，且可被外來事件隨時中斷。</li>
+<li><strong>B.</strong> Action 只能寫 Python；Activity 只能寫 SQL。</li>
+<li><strong>C.</strong> Action 只能在進入狀態時執行；Activity 只能在離開狀態時執行。</li>
+<li><strong>D.</strong> Action 專門處理例外失敗；Activity 專門處理成功路徑。</li>
 </ul>
 </div>
 <div class="ccq-logo">
@@ -1469,6 +1466,12 @@ PlantUML 狀態機圖 (State Machine Diagram)。
 <div class="centered-image">
   <img src="../../img/ch04/nb_plantuml/01_plantuml_code_driven_architecture.jpg" alt="UML Modeling with PlantUML: Code-Driven Architecture" />
 </div>
+
+<p>注意那道橘色箭頭穿透像素方塊，直接噴發到右側的架構圖中！</p>
+<p>右側的渲染引擎自動將文字轉譯為清晰的 User Interface、Order Service 與 Order DB 結構圖。</p>
+<p>你負責撰寫文字邏輯，排版與美化全部交由引擎自動完成！</p>
+<p>總結這張投影片，請記住這個核心觀念：PlantUML 能秒級將純文字腳本自動轉譯為標準合規且美觀的架構圖表。<br />
+--&gt;</p>
 <footer>薛念林 教授 · 逢甲大學資訊工程學系</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="103" data-paginate="true" data-header="4.8 PlantUML 宣告式文字塑模" data-footer="薛念林 教授 · 逢甲大學資訊工程學系" data-class="full-image-slide" data-theme="ase-theme" lang="zh-TW" class="full-image-slide" data-marpit-pagination="103" style="--paginate:true;--header:4.8 PlantUML 宣告式文字塑模;--footer:薛念林 教授 · 逢甲大學資訊工程學系;--class:full-image-slide;--theme:ase-theme;" data-marpit-pagination-total="120">
@@ -1497,6 +1500,10 @@ PlantUML 狀態機圖 (State Machine Diagram)。
 <div class="centered-image">
   <img src="../../img/ch04/nb_plantuml/05_use_case_in_plantuml.jpg" alt="Use Case Diagrams in PlantUML Syntax" />
 </div>
+
+<p>短短四行文字，就能在撰寫任何實作程式碼之前，精確鎖定敏捷開發的高階需求邊界。</p>
+<p>總結這張投影片，請記住這個核心觀念：PlantUML 透過 actor 與 usecase 等直覺關鍵字，快速勾勒參與者與功能邊界。<br />
+--&gt;</p>
 <footer>薛念林 教授 · 逢甲大學資訊工程學系</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="107" data-paginate="true" data-header="4.8 PlantUML 宣告式文字塑模" data-footer="薛念林 教授 · 逢甲大學資訊工程學系" data-class="full-image-slide" data-theme="ase-theme" lang="zh-TW" class="full-image-slide" data-marpit-pagination="107" style="--paginate:true;--header:4.8 PlantUML 宣告式文字塑模;--footer:薛念林 教授 · 逢甲大學資訊工程學系;--class:full-image-slide;--theme:ase-theme;" data-marpit-pagination-total="120">
@@ -1511,9 +1518,6 @@ PlantUML 狀態機圖 (State Machine Diagram)。
 <div class="centered-image">
   <img src="../../img/ch04/nb_plantuml/07_class_relationships_matrix.jpg" alt="The Class Relationship Matrix in PlantUML Syntax" />
 </div>
-
-<p>總結這張投影片，請記住這個核心觀念：熟記 ASCII 連線字元組合，在鍵盤上彈指間就能建立複雜的物件圖譜。<br />
---&gt;</p>
 <footer>薛念林 教授 · 逢甲大學資訊工程學系</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="109" data-paginate="true" data-header="4.8 PlantUML 宣告式文字塑模" data-footer="薛念林 教授 · 逢甲大學資訊工程學系" data-class="full-image-slide" data-theme="ase-theme" lang="zh-TW" class="full-image-slide" data-marpit-pagination="109" style="--paginate:true;--header:4.8 PlantUML 宣告式文字塑模;--footer:薛念林 教授 · 逢甲大學資訊工程學系;--class:full-image-slide;--theme:ase-theme;" data-marpit-pagination-total="120">
@@ -1521,6 +1525,10 @@ PlantUML 狀態機圖 (State Machine Diagram)。
 <div class="centered-image">
   <img src="../../img/ch04/nb_plantuml/08_sequence_diagrams_in_plantuml.jpg" alt="Sequence Diagrams in PlantUML Syntax" />
 </div>
+
+<p>右側的生命線、啟動長條與水平訊息流全部自動生成對齊，毫無手動拉線的痛苦。</p>
+<p>總結這張投影片，請記住這個核心觀念：PlantUML 循序圖將日常的對話式文字敘述，秒級轉化為精準對齊的時序訊息互動圖。<br />
+--&gt;</p>
 <footer>薛念林 教授 · 逢甲大學資訊工程學系</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="110" data-paginate="true" data-header="4.8 PlantUML 宣告式文字塑模" data-footer="薛念林 教授 · 逢甲大學資訊工程學系" data-class="full-image-slide" data-theme="ase-theme" lang="zh-TW" class="full-image-slide" data-marpit-pagination="110" style="--paginate:true;--header:4.8 PlantUML 宣告式文字塑模;--footer:薛念林 教授 · 逢甲大學資訊工程學系;--class:full-image-slide;--theme:ase-theme;" data-marpit-pagination-total="120">
@@ -1543,7 +1551,13 @@ PlantUML 狀態機圖 (State Machine Diagram)。
   <img src="../../img/ch04/nb_plantuml/11_state_diagrams_in_plantuml.jpg" alt="State Diagrams in PlantUML Syntax" />
 </div>
 
-<p>總結這張投影片，請記住這個核心觀念：宣告式語法能讓階層式複合狀態機保持極致清晰與數學嚴謹。<br />
+<p>沿著圖中粉紅色箭頭追蹤狀態流轉：<br />
+<code>[*] --&gt; NewOrder</code> 代表生命週期起點。<br />
+<code>NewOrder --&gt; Paid : Payment Processed</code> 代表付款成功引發狀態跳轉。<br />
+<code>Paid --&gt; Shipped : Order Sent</code> 代表出貨跳轉。<br />
+<code>Shipped --&gt; [*]</code> 代表生命週期終止。</p>
+<p>幾行文字，就能完整規範單一核心實體面對所有外來事件的離散狀態。</p>
+<p>總結這張投影片，請記住這個核心觀念：狀態圖透過箭頭轉換、事件標籤與起終點標記，簡潔定義物件的離散生命週期。<br />
 --&gt;</p>
 <footer>薛念林 教授 · 逢甲大學資訊工程學系</footer>
 </section>
@@ -1583,7 +1597,7 @@ PlantUML 狀態機圖 (State Machine Diagram)。
 <p>在軟體架構工程實踐中，相較於傳統以滑鼠手動拖拉圖框的二進位繪圖軟體（如 Visio 或特定商業 CASE 工具），採用 <strong>PlantUML 宣告式文字塑模 (Code-as-Architecture)</strong> 的最核心工程優勢為何？</p>
 <ul>
 <li><strong>A.</strong> 能保證自動生成 100% 無 Bug 的 Java 實作程式碼，無需單元測試。</li>
-<li><strong>B.</strong> 可以在純文字 Markdown 中編寫，輕鬆納入 Git 進行精確的行級版本控制與 Pull Request 審查。</li>
+<li><strong>B.</strong> 可以在純文字中編寫，輕鬆納入 Git 進行精確的行級版本控制、Pull Request 審查與 CI/CD 自動編譯。</li>
 <li><strong>C.</strong> 完全廢除物件導向原則，讓系統架構不再需要考慮類別或介面。</li>
 <li><strong>D.</strong> 限制只能產出循序圖，防止工程師建立過多無意義的圖表。</li>
 </ul>
@@ -2099,54 +2113,110 @@ Martin Fowler 則是撰寫《UML 精華 (UML Distilled)》與《重構》的大�
 
 在這一節中，我們將透過精緻的視覺圖解，逐步掌握參與者、系統邊界、include 與 extend 關聯的正確用法，並學習如何撰寫正式的使用案例規格書與 AI 提示詞。
 
-總結這張投影片，請記住這個核心觀念：使用案例模型是連結非技術利害關係人與工程團隊之間最關鍵的高階功能視覺契約。</p></div><div class="bespoke-marp-note" data-index="17" tabindex="0"><p>為什麼需要視覺模型？
+總結這張投影片，請記住這個核心觀念：使用案例模型是連結非技術利害關係人與工程團隊之間最關鍵的高階功能視覺契約。</p></div><div class="bespoke-marp-note" data-index="17" tabindex="0"><p>請看這張入門指南：『UML 使用案例圖塑模新手指南』。
 
-純文字規格書往往充滿模糊與歧義，每位工程師閱讀同一段文字可能產生完全不同的架構想像。使用案例模型透過直觀的幾何圖形與邊界框，將抽象的文字需求轉化為團隊一致認可的視覺契約。
+大家看畫面上最基礎的三個符號：一個人形符號（代表外部參與者）、一個橢圓（代表使用案例），以及連接兩者的一條實線。
 
-總結這張投影片，請記住這個核心觀念：視覺模型能夠消除文字歧義，建立利害關係人之間一致的心理模型。</p></div><div class="bespoke-marp-note" data-index="18" tabindex="0"><p>到底什麼是使用案例？
+這張圖解決了軟體工程中的大難題。我們不需要去讀動輒幾十頁的繁複文字，透過簡單直觀的圖形，所有人一眼就能看出：誰在用系統？他們想做什麼？彼此如何互動？
 
-使用案例代表外部參與者使用系統所要達成的一個完整、有價值的商業目標。它不是單一的函式調用或按鈕點擊，而是由一系列事件與互動構成的完整業務情境。
+總結這張投影片，請記住這個核心觀念：使用案例圖能將抽象繁複的文字需求，轉化為直觀清晰的系統設計。</p></div><div class="bespoke-marp-note" data-index="18" tabindex="0"><p>請看畫面上的三個卡片。
 
-總結這張投影片，請記住這個核心觀念：使用案例聚焦於為參與者交付完整的端到端商業價值。</p></div><div class="bespoke-marp-note" data-index="19" tabindex="0"><p>接著探討參與者 (Actor) 的觀念。
+左邊卡片指出塑模的焦點：商業價值與使用者目標。我們必須問：使用者到底想完成什麼事？例如『預訂航班』或『下單訂餐』。
 
-在 UML 中，參與者可以是人類使用者，也可以是與系統對接的外部軟體系統或硬體設備。請特別注意：參與者代表的是一種「角色 (Role)」，而非具體的「個人姓名」或「內部組織部門」。
+中間藍色卡片是黃金法則：永遠從專案利害關係人的視角出發，而不是從程式設計師的視角！
 
-總結這張投影片，請記住這個核心觀念：參與者代表與系統互動的外部角色，而非內部人員或特定職稱。</p></div><div class="bespoke-marp-note" data-index="20" tabindex="0"><p>使用案例圖中存在四種基本關聯。
+右邊卡片提醒排除項：絕對不要畫資料流、功能分解或資料庫處理細節。不要把『輸入密碼』或『點擊按鈕』這種內部操作畫成使用案例。
 
-第一是參與者與使用案例之間的關聯線；第二是使用案例之間的包含關聯 (Include)；第三是擴充關聯 (Extend)；第四是參與者之間的泛化繼承 (Generalization)。掌握這四種關聯，就能精確表達所有業務互動。
+總結這張投影片，請記住這個核心觀念：聚焦於使用者想要達成的商業目標，而非內部的技術實作細節。</p></div><div class="bespoke-marp-note" data-index="19" tabindex="0"><p>請看畫面上的四個標註框，這正是構成使用案例圖的四大核心基石。
 
-總結這張投影片，請記住這個核心觀念：熟練運用包含、擴充與泛化，能讓複雜的功能模型具備清晰的層次與模組化架構。</p></div><div class="bespoke-marp-note" data-index="21" tabindex="0"><p>使用案例的命名語意標準：
+左上角是『參與者 (Actor)』：人形符號，代表與系統互動的外部實體，可以是真人、組織、第三方系統，甚至是定時排程器。
 
-每個使用案例必須使用『主動動詞 + 名詞受詞』命名，例如『下單訂餐』、『查詢課表』。嚴禁使用模糊名詞（如『訂單管理』）或系統內部技術詞彙（如『SQL 查詢』）。
+右上角是『使用案例 (Use Case)』：橢圓形，代表能為參與者交付具體可衡量價值的一連串動作。
 
-總結這張投影片，請記住這個核心觀念：使用案例一律以主動動詞受詞命名，聚焦於參與者的具體目標。</p></div><div class="bespoke-marp-note" data-index="22" tabindex="0"><p>防止包含與擴充的過度嵌套：
+左下角是『關聯 (Relationship)』：連線，表達參與者與使用案例之間的互動、相依或繼承關係。
 
-使用案例不是流程圖，切勿進行多層 Include 巢狀鏈結（如 A 包含 B、B 又包含 C、C 又包含 D）。過度嵌套會徹底摧毀模型的高階抽象性，使其淪為低階演算法虛擬代碼。
+右下角是『系統邊界 (System Boundary)』：灰色外框，清楚界定什麼屬於系統內部開發範圍，什麼屬於外部環境。
 
-總結這張投影片，請記住這個核心觀念：限制關聯嵌套深度在兩層以內，維持高階商業溝通合約的清晰度。</p></div><div class="bespoke-marp-note" data-index="23" tabindex="0"><p>檢視經典案例：大學選課系統 (University Course Enrollment System)。
+總結這張投影片，請記住這個核心觀念：使用案例圖由四大元素構成：參與者、使用案例、關聯線與系統邊界。</p></div><div class="bespoke-marp-note" data-index="20" tabindex="0"><p>這張表格整理了 UML 中四種最核心的關聯與生活比喻：
 
-學生可執行『選修課程』，系統強制 include『驗證先修科目』；若遇課程額滿，則 extend『加入等候候補名單』。教務處註冊組人員則負責『維護開課清單』。
+第一行是『關聯 (Association)』：實線，代表參與者參與某個目標。就像顧客走進實體商店。
 
-總結這張投影片，請記住這個核心觀念：真實的系統模型透過邊界框將不同參與者的目標職責優雅隔離。</p></div><div class="bespoke-marp-note" data-index="24" tabindex="0"><p>參與者之間的泛化 (Generalization) 關聯。
+第二行是『&lt;&lt;include&gt;&gt; 包含』：虛線箭頭，代表每次必執行的強制共用邏輯。就像在結帳 checkout() 時，一定會呼叫 calculateTax() 計算稅金。
 
-當多個參與者角色擁有共用權限，但某些特定角色擁有進階專屬能力時，我們可以使用空心三角箭頭表示繼承。例如全職學生與兼任學生都繼承自『學生』基礎角色。
+第三行是『&lt;&lt;extend&gt;&gt; 擴充』：虛線箭頭，代表特定條件觸發的可選邏輯。就像符合優惠資格時彈出折價券，或者例外錯誤處理。
 
-總結這張投影片，請記住這個核心觀念：參與者泛化能有效重用共用角色權限，消除模型中多餘的重複連線。</p></div><div class="bespoke-marp-note" data-index="25" tabindex="0"><p>檢視初學者最容易掉入的四大反模式：
+第四行是『泛化 (Generalization)』：實線帶空心三角箭頭，代表『是一種 (is-a)』的繼承關係。例如國際學生也是一種學生，但具備額外的居留手續。
 
-第一，功能分解陷阱：把使用案例當成循序流程圖，把「點擊按鈕」、「輸入密碼」畫成一顆顆小泡泡；第二，蜘蛛網混亂：使用案例之間畫滿了毫無意義的箭頭；第三，邊界消失：把外部資料庫或 API 畫在系統邊界裡面。
+總結這張投影片，請記住這個核心觀念：牢記關聯差異：include 是強制必跑，extend 是條件可選，泛化則是角色繼承。</p></div><div class="bespoke-marp-note" data-index="21" tabindex="0"><p>使用案例與參與者該如何正確命名？
 
-總結這張投影片，請記住這個核心觀念：避免過度細化的功能分解，維持高階商業目標導向。</p></div><div class="bespoke-marp-note" data-index="26" tabindex="0"><p>工程師必備的最佳實踐檢核清單：
+請看左邊綠色打勾的良好實踐：使用案例一律以『強動詞 + 領域名詞』開頭，例如『提領資金』、『配送貨物』。參與者一律使用單數角色名稱，如『客服專員』，且泛化必須通過『is-like』常理測試。
 
-1. 每個使用案例名稱必須是動詞加受詞。
-2. 參與者必須代表明確角色，而非內部組織部門。
-3. 系統邊界框清晰劃分系統責任範圍。
-4. 正確區分強制 Include 與條件 Extend。
+再看右邊紅色叉叉的壞味道：避免使用弱動詞，如『處理』、『執行』或『做』。嚴禁出現技術黑話，如『Process_DB』，且不要使用企業內部 HR 職稱，如『初階專員』。要塑模角色，而非辦公室抬頭！
 
-總結這張投影片，請記住這個核心觀念：遵循嚴謹的語法標準與命名規範，確保模型具備高度可讀性與合約效力。</p></div><div class="bespoke-marp-note" data-index="27" tabindex="0"><p>總結 4.3 節核心精神：擁抱「溝通優先 (Communication-First)」的心態。
+總結這張投影片，請記住這個核心觀念：使用案例採用強動詞加名詞命名，參與者採用單數角色名稱。</p></div><div class="bespoke-marp-note" data-index="22" tabindex="0"><p>請看這張投影片提示的三大防護原則，讓你的圖表保持乾淨清晰：
 
-使用案例圖是強大的溝通橋樑，而非孤芳自賞的技術藍圖！它的最大超能力在於連接非技術的業務經理與後端工程團隊。如果一張圖不能讓業務人員在三十秒內看懂，它就是過度設計！
+第一，最上方的儀表板：『最多兩層嵌套』。切勿層層 include（如 A 包含 B、B 又包含 C），否則會讓圖表退化成雜亂的流程圖！
 
-總結這張投影片，請記住這個核心觀念：使用案例模型本質上是凝聚業務目標與工程共識的視覺溝通契約。</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p>使用案例圖只是一張高階目錄，真正嚴謹的行為合約完整記錄在使用案例規格書中！
+第二，中間卡片：『嚴禁人連人』。參與者之間絕不可直接連線。現實中人跟人講話的互動，請寫在文字規格書中。
+
+第三，下方卡片：『有目的地使用邊界框』。利用邊界框劃定系統範圍或不同交付階段（第一期、第二期）。
+
+另外注意最底部的提示：用 &lt;&lt;system&gt;&gt; 標示外部系統，用時鐘圖示代表定時排程。
+
+總結這張投影片，請記住這個核心觀念：限制嵌套深度在兩層內，禁止參與者互連，並有目的地劃定系統邊界。</p></div><div class="bespoke-marp-note" data-index="23" tabindex="0"><p>讓我們透過具體案例來演練：大學選課系統。
+
+這張投影片先將系統清楚拆解為左右兩大欄位：『Who（誰）』與『What（做什麼）』。
+
+左邊是參與者：包括一般『學生 (Student)』作為主要參與者、具備特殊資格的『國際學生 (International Student)』，以及定時排程的『時間 (Time)』。
+
+右邊是四個核心使用案例：『學生選課』、『選修研討課』、『執行安全查核』與『提交學費報告』。
+
+在下一張投影片中，我們將把這兩邊完整串接起來！
+
+總結這張投影片，請記住這個核心觀念：在連線之前，先清楚盤點系統中『誰參與 (Who)』與『做什麼 (What)』。</p></div><div class="bespoke-marp-note" data-index="24" tabindex="0"><p>現在請看整合後的完整模型！跟著右側藍圖圖例的橘色編號一步步對照：
+
+編號 1 是『泛化 (Generalization)』：空心箭頭代表國際學生繼承自一般學生，擁有基礎選課的所有權限。
+
+編號 2 是『&lt;&lt;include&gt;&gt; 包含』：箭頭從學生選課指向選修研討課，代表選課時強制包含修習研討課。
+
+編號 3 是『&lt;&lt;extend&gt;&gt; 擴充』：箭頭從執行安全查核指回學生選課，代表僅在特定條件下（如國際學生身分）才觸發安全查核。
+
+編號 4 是『時間參與者 (Time)』：右邊的時鐘圖示每個月定時觸發『提交學費報告』。
+
+總結這張投影片，請記住這個核心觀念：這張圖完整示範了泛化、包含、擴充與定時排程四大觀念在實務系統中的協同運作。</p></div><div class="bespoke-marp-note" data-index="25" tabindex="0"><p>這張表格條列了初學者最常犯的四大錯誤、失敗原因與修正對策：
+
+第一項：技術名稱（如 Process_DB_Transaction）。非技術利害關係人看不懂。修正：改用領域名稱（提領資金、產出報表）。
+
+第二項：用箭頭畫資料流。關聯線只代表參與，不是資料搬運。修正：移除箭頭，改畫簡單實線。
+
+第三項：濫用 &lt;&lt;extend&gt;&gt;。滿天飛的虛線箭頭會讓圖形變成蜘蛛網。修正：將次要條件移至文字規格書。
+
+第四項：直接把顧客連到管理員。參與者之間不直接連線。修正：把人與人之間的溝通移到文字情境中敘述。
+
+總結這張投影片，請記住這個核心觀念：避免技術命名、資料流箭頭與人連人連線，維持模型清爽精煉。</p></div><div class="bespoke-marp-note" data-index="26" tabindex="0"><p>在向團隊展示使用案例圖之前，請逐項檢查這九個方塊：
+
+1. 是否使用了強動詞加領域名詞？
+2. 參與者是否使用單數角色名稱，而非職稱？
+3. 主要參與者是否放置在左上方？
+4. 所有參與者是否都在系統邊界框之外？
+5. &lt;&lt;include&gt;&gt; 是否嚴格限定於強制執行步驟？
+6. &lt;&lt;extend&gt;&gt; 是否嚴格限定於可選或條件步驟？
+7. 泛化繼承是否通過常理邏輯檢驗？
+8. 參與者之間是否有零連線？
+9. 詳細的擴充條件是否保留在文字規格中？
+
+全數通過，代表你的模型具備高度專業品質！
+
+總結這張投影片，請記住這個核心觀念：將這九項檢核清單作為正式交付前不可或缺的品質把關標準。</p></div><div class="bespoke-marp-note" data-index="27" tabindex="0"><p>總結本單元的核心精神：擁抱『溝通優先 (Communication-First)』思維。
+
+請看畫面中的三個圓圈：開發者、設計師與業務團隊。三者重疊的最核心交集，就是使用案例圖——它是共用的視覺語言，也是全團隊的單一真實來源。
+
+記住周圍的三句箴言：
+使用案例圖是溝通工具，不是技術施工藍圖！
+敏捷塑模核心實踐：簡單呈現模型。
+如果某個細節無法幫助利害關係人理解系統目的，就毫不猶豫地從圖上拿掉！
+
+總結這張投影片，請記住這個核心觀念：使用案例圖的最高價值，是作為凝聚開發者、設計師與業務端共識的溝通媒介。</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p>使用案例圖只是一張高階目錄，真正嚴謹的行為合約完整記錄在使用案例規格書中！
 
 大家請看「UC-01 學生選課」的標準 Cockburn 規格書結構：
 主要參與者是通過驗證的學生。
@@ -2205,51 +2275,113 @@ AI 接收到這份提示詞後，即可直接輸出標準的 PlantUML 代碼，�
 
 在這一節中，我們將深入剖析類別的三格解剖結構、可見度資訊隱藏、多種關聯性、整體與部分（聚合與組合）的生命週期相依，以及如何引導 AI 精確產生領域模型。
 
-總結這張投影片，請記住這個核心觀念：類別圖奠定系統靜態物件導向架構與資料實體的堅實骨幹。</p></div><div class="bespoke-marp-note" data-index="34" tabindex="0"><p>我們正式進入類別圖的核心領域。
+總結這張投影片，請記住這個核心觀念：類別圖奠定系統靜態物件導向架構與資料實體的堅實骨幹。</p></div><div class="bespoke-marp-note" data-index="34" tabindex="0"><p>請看這幅精緻的架構對照圖：『UML 類別圖解剖學』。
 
-在物件導向軟體工程中，類別圖是最常被使用、也最被深入研究的圖表。它是將現實世界業務領域映射為軟體程式碼的第一道橋樑。
+請大家特別看畫面右側這棟建築物的等角透視圖。把軟體想像成一棟實體建築：
+中間貫穿上下的核心支柱是 System Core（系統核心基礎）；
+旁邊設有伺服器機櫃的房間是 Data Vault（資料庫管理者 DatabaseManager）；
+屋頂架著天線的通訊管制室是 Communications Hub（網路控制器 NetworkController）；
+而正面的大門和落地窗則是 Public Interface（使用者介面 UserInterface）。
 
-總結這張投影片，請記住這個核心觀念：類別圖是連結現實領域概念與程式碼物件類別的靜態橋樑。</p></div><div class="bespoke-marp-note" data-index="35" tabindex="0"><p>類別與物件實例的根本區別：
+再看右下角的對照小表格：
+類別就像一個個房間，屬性就像房間的尺寸規格，操作就是房間裡發生的活動，而關聯線就是連接各個房間的走廊與通道！
+左邊則是這棟建築物在 UML 類別圖中的標準表示法。
 
-類別是藍圖 (Blueprint)，定義型態與結構規格；物件是執行期的具體實例 (Instance)，擁有具體的記憶體空間與狀態資料。類別圖塑模的是藍圖，而非個別物件。
+總結這張投影片，請記住這個核心觀念：類別圖就像建築藍圖：類別是房間，而關聯線就是連接彼此的走廊。</p></div><div class="bespoke-marp-note" data-index="35" tabindex="0"><p>這是物件導向設計最根本的核心概念：『藍圖 (Blueprint) vs. 實例 (Instance)』。
 
-總結這張投影片，請記住這個核心觀念：類別圖是定義物件集合結構特徵的靜態藍圖。</p></div><div class="bespoke-marp-note" data-index="36" tabindex="0"><p>類別塑模的三重視角：
+請看左邊小狗的工程藍圖：這就是**類別 (Class)**。它定義了所有狗共有的特徵：屬性有顏色、名字與品種；行為有搖尾巴、吠叫與吃東西。但請記住：你沒辦法撫摸一張藍圖！
 
-概念視角 (Conceptual) 捕捉真實領域名詞；規格視角 (Specification) 定義抽象型態與介面操作簽章；實作視角 (Implementation) 則直接對齊程式語言中的具體欄位與函式實作。
+再看右邊貼著的三張拍立得照片：這些才是**物件 (Objects)**！
+分別是黃金獵犬 Buddy、巴哥犬 Max，以及貴賓犬 Daisy。
+牠們都是從同一張狗藍圖打造出來的，但每一隻在現實世界中都擁有各自具體的顏色、名字與狀態。
 
-總結這張投影片，請記住這個核心觀念：依據專案階段精準切換概念、規格與實作三重視角。</p></div><div class="bespoke-marp-note" data-index="37" tabindex="0"><p>剖析 UML 類別標準三格矩形：
+總結這張投影片，請記住這個核心觀念：類別是設計藍圖，而物件是依據藍圖在記憶體中生成的真實實例。</p></div><div class="bespoke-marp-note" data-index="36" tabindex="0"><p>請看頂部橫跨時間軸的三個欄位：類別塑模的三重視角。
 
-頂格是類別名稱；中格是屬性清單，標註名稱、型態與預設值；底格是操作方法清單，標註參數型態與回傳值。如果只需要表達概念模型，可以省略底格方法，聚焦於資料屬性。
+左邊是**概念視角 (Conceptual)**：專案剛開始時，我們只關心大方向的業務名詞，畫出簡單的 User 與 Product 方塊，不涉及任何技術細節。
 
-總結這張投影片，請記住這個核心觀念：三格矩形分別規範類別識別、資料屬性與操作行為合約。</p></div><div class="bespoke-marp-note" data-index="38" tabindex="0"><p>封裝與可見度符號是物件導向的基石：
+中間是**規格視角 (Specification)**：進入軟體分析階段，我們開始定義介面與型態（例如 login 方法與 price 屬性），定義軟體『做什麼』，但不綁定特定程式語言。
 
-加號 (+) 代表 public 公開存取；減號 (-) 代表 private 私有封裝；井號 (#) 代表 protected 保護層級（僅子類別可見）；波浪號 (~) 代表 package 套件層級。良好的物件導向設計要求屬性一律 private，透過 public 方法對外提供受控服務。
+右邊是**實作視角 (Implementation)**：進入工程編碼階段，直接對齊真實程式碼，精確宣告 private 欄位、參數資料型態與方法實作。
 
-總結這張投影片，請記住這個核心觀念：嚴格遵循資訊隱藏原則，屬性私有化並透過公開方法暴露必要操作。</p></div><div class="bespoke-marp-note" data-index="39" tabindex="0"><p>深入檢視 UML 方法簽章中的參數方向指示符號：
+總結這張投影片，請記住這個核心觀念：隨著開發進程推進，類別圖會從高階概念演進為軟體規格，最終落實為精確的程式碼結構。</p></div><div class="bespoke-marp-note" data-index="37" tabindex="0"><p>請看畫面中央立體拆解的三層三明治：『類別方塊解剖學』。每個標準的 UML 類別方塊都包含這三層結構：
 
-`in` 代表輸入參數（唯讀不可改）；`out` 代表輸出參數（由方法賦值傳回）；`inout` 則代表雙向讀寫參數。這在塑模跨行程遠端呼叫 (RPC) 或底層 C/C++ API 時至關重要。
+最上層（藍色）：**類別名稱 (Class Name)**。這是唯一必填的資訊，例如 Customer。
 
-總結這張投影片，請記住這個核心觀念：參數方向指示符精確規範資料在函式邊界的流動方向與所有權。</p></div><div class="bespoke-marp-note" data-index="40" tabindex="0"><p>類別之間存在多種結構關聯：
+中間層（橘色）：**屬性 (Attributes)**。用來儲存物件狀態，例如 name 與 email。請注意冒號後面標註的是資料型態，如 `name : String`。
 
-最弱的是依賴 (Dependency)，其次是普通關聯 (Association)，再往上是整體與部分的聚合 (Aggregation) 與組合 (Composition)，最後是具備多型特性的泛化繼承 (Generalization) 與介面實現 (Realization)。
+最下層（紅色）：**操作與方法 (Operations / Methods)**。代表類別能對外提供的服務，例如 `calculateTotal()`。冒號後面則是回傳型態 `: double`。
 
-總結這張投影片，請記住這個核心觀念：不同關聯代表不同強度的耦合程度，架構師應依生命週期與相依性審慎抉擇。</p></div><div class="bespoke-marp-note" data-index="41" tabindex="0"><p>這是一張價值連城的 UML 連線符號速查指南：
+總結這張投影片，請記住這個核心觀念：標準類別方塊由三層構成：頂層名稱、中層屬性資料，以及底層操作方法。</p></div><div class="bespoke-marp-note" data-index="38" tabindex="0"><p>我們如何在類別中保護資料？請看『可見度矩陣 (Visibility Matrix)』。在 UML 中，我們在屬性或方法前方加上前綴符號：
 
-實線箭頭是一般關聯；空心三角實線是類別繼承；空心三角虛線是介面實現；空心菱形是聚合；實心黑菱形是組合。請大家務必把這張圖的線條與箭頭形狀烙印在腦海中，這是全球軟體工程師共通的文法！
+第一行：**加號 (+)** 代表 **Public（公開）**。任何人都可以直接存取，對應右邊程式碼 `public String name;`。
 
-總結這張投影片，請記住這個核心觀念：精確區分虛實線條與箭頭形狀，避免在架構圖上傳達錯誤的依賴語義。</p></div><div class="bespoke-marp-note" data-index="42" tabindex="0"><p>聚合與組合是軟體工程中最常被考究的核心觀念：
+第二行：**減號 (-)** 代表 **Private（私有）**。只有該類別內部才能存取。在良好的物件導向設計中，屬性幾乎都應該是私有的！
 
-聚合 (Aggregation，空心菱形) 代表「Has-A」弱整體關係，部分可以獨立於整體而存在，例如大學與教授、外送平台與外送員；組合 (Composition，實心菱形) 代表「Part-Of」強整體關係，部分無法獨立生存，若整體消亡，部分隨之連帶銷毀，例如訂單與訂單明細項。
+第三行：**井號 (#)** 代表 **Protected（保護）**。外部無法存取，但繼承它的子類別可以使用。
 
-總結這張投影片，請記住這個核心觀念：組合代表強生命週期綁定與連帶銷毀，而聚合代表獨立生命週期的鬆散組織。</p></div><div class="bespoke-marp-note" data-index="43" tabindex="0"><p>關聯重數 (Multiplicity) 規範了物件執行期的數量約束：
+對照右側的程式碼範例，這些符號完美對應大家熟悉的 Java 或 C++ 關鍵字！
 
-`1` 代表恰好一個；`0..1` 代表可選（可能為 null）；`*` 或 `0..*` 代表零到多個；`1..*` 代表至少一個。必須在關聯線的兩端分別清楚標註，才能作為資料庫外部鍵 (FK) 與反向集合屬性的精確依據。
+總結這張投影片，請記住這個核心觀念：屬性一律私有使用減號 (-)，公開服務使用加號 (+)，繼承保護使用井號 (#)。</p></div><div class="bespoke-marp-note" data-index="39" tabindex="0"><p>請看這張儀表板中圍繞在方法方塊周圍的三色箭頭：參數方向性指示。
 
-總結這張投影片，請記住這個核心觀念：重數雙向明確標註，是指導資料庫綱要與程式碼集合宣告的法定邊界規則。</p></div><div class="bespoke-marp-note" data-index="44" tabindex="0"><p>將上述所有語法融會貫通於真實的電商訂單領域模型中：
+左上角的藍色箭頭標示 **in**：這是最常見的輸入參數，呼叫端把資料傳進來，方法僅讀取使用。
 
-看左邊的 Customer：包含私有 customerID 並以 1 對 * 關聯 Order。看中間的 Order：以實心菱形組合 (Composition) 指向 LineItem，訂單刪除時明細連帶抹除。看下方 PaymentInterface：Order 透過虛線空心箭頭實現介面。
+下方的黃色彎曲箭頭標示 **inout**：資料傳入方法，在內部被修改後，再把更新結果傳回給呼叫端。
 
-總結這張投影片，請記住這個核心觀念：結合可見度、重數、組合與介面實現，就能勾勒出生產級的強韌領域模型。</p></div><div class="bespoke-marp-note" data-index="45" tabindex="0"><p>在引導 AI 產生類別圖時，最需要警惕的是「關係平庸化」與「繼承濫用」。
+右下角的紅色箭頭標示 **out**：方法產生或計算出全新資料，並透過參數輸出傳回給呼叫端。
+
+在串接底層 API、遠端微服務或硬體介面時，這些指示能消除資料流動方向的歧義。
+
+總結這張投影片，請記住這個核心觀念：參數方向標籤明確定義資料流向：in 為輸入、out 為輸出、inout 為雙向修改。</p></div><div class="bespoke-marp-note" data-index="40" tabindex="0"><p>請看橫跨畫面頂部的藍色光譜橫尺：『關聯光譜 (Taxonomy of Relationships)』。它呈現了類別之間從最鬆散到最緊密的四種結構強度：
+
+最左端是**依賴 (Dependency)**：Class A 僅短暫借用 Class B（例如作為方法參數），彼此毫無擁有權。
+
+往右是**普通關聯 (Association)**：兩個類別彼此認識並持有參考，例如顧客關聯到訂單。
+
+再往右是**聚合 (Aggregation)**：弱整體關係，但部分可以獨立存活，例如圖書館擁有藏書。
+
+最右端是**組合 (Composition) 與泛化繼承**：最緊密的生死關係。在組合中，整體消亡，部分隨之連帶毀滅；在繼承中，子類別嚴格繼承父類別的所有特徵。
+
+總結這張投影片，請記住這個核心觀念：類別關聯橫跨連續光譜：從左側短暫借用的依賴，到右側生死相依的組合。</p></div><div class="bespoke-marp-note" data-index="41" tabindex="0"><p>這是一張讓大家考試與實作隨身必備的『連線符號速查表』。四個象限區分得非常清楚：
+
+左上象限：**繼承 (Inheritance)**。實線搭配空心三角箭頭指向父類別，代表『是一種 (is-a)』。
+
+右上象限：**實現 (Realization)**。虛線搭配空心三角箭頭指向介面，代表具體類別實現了介面合約。
+
+左下象限：**依賴 (Dependency)**。虛線搭配開放箭頭，代表短暫的『uses 使用』關係。
+
+右下象限：**一般關聯 (Simple Association)**。一條單純的實線，代表兩個對等類別之間的結構連線。
+
+總結這張投影片，請記住這個核心觀念：精確分辨實線與虛線、空心三角與開放箭頭，避免傳達錯誤的依賴語義。</p></div><div class="bespoke-marp-note" data-index="42" tabindex="0"><p>現在深入探討軟體工程最經典的考題：聚合 (Aggregation) 與組合 (Composition) 的差異。
+
+請看左欄：**聚合**使用**空心菱形 (◇)**。代表『包含 (part-of)』，但生命週期各自獨立。看生活比喻：球隊與球員。如果球隊今天解散了，球員依然存在，可以加入其他球隊！
+
+再看右欄：**組合**使用**實心菱形 (◆)**。這是嚴格的強包含與生命週期綁定！看生活比喻：房子與房間。如果房子被怪手拆毀了，房間也就隨之不復存在！
+
+在程式碼中，組合代表刪除主訂單時，必須連帶 cascade-delete 所有的訂單明細。
+
+總結這張投影片，請記住這個核心觀念：部分能獨立存活用空心菱形（聚合）；部分隨整體連帶銷毀用實心菱形（組合）。</p></div><div class="bespoke-marp-note" data-index="43" tabindex="0"><p>請看畫面上由藍色與紅色方塊組成的網絡圖：『重數與約束 (Cardinality &amp; Constraints)』。在 UML 中，重數規範了物件之間可連接的數量上限與下限：
+
+左邊：**一對一 (1 to 1)**。一個藍方塊剛好對應一個紅方塊，就像一位國民持有一本護照。
+
+中間：**一對多 (1 to *)**。一個藍方塊分支連到多個紅方塊，就像一位顧客可以建立多筆訂單。
+
+右邊：**多對多 (* to *)**。藍紅方塊交織成網狀，就像學生選修多門課程，而每門課程也有多名學生。
+
+標註這些數字能指導工程師在資料庫中該設計外鍵還是中繼關聯表！
+
+總結這張投影片，請記住這個核心觀念：重數明確定義了類別實例在執行期能夠相互關聯的數量邊界。</p></div><div class="bespoke-marp-note" data-index="44" tabindex="0"><p>現在讓我們看看所有觀念如何融合在真實的電商訂單模型中！跟著藍色對話框逐一看：
+
+左下角對話框：注意 `- customerID`。減號代表這是**私有屬性 (Private)**，保護客戶機密資料。
+
+上方中央對話框：Customer 與 Order 之間的連線標有 1 與 *，這是**一對多關聯 (One-to-Many)**。
+
+右上角對話框：Order 伸出紅色實心菱形指向 LineItem，這是**組合 (Composition)**！訂單一旦刪除，所有購買明細連帶銷毀。
+
+右下角對話框：虛線空心箭頭指向 PaymentInterface，這是**介面實現 (Realization)**。
+
+這張圖優雅示範了可見度、重數、組合與介面合約的完整結合！
+
+總結這張投影片，請記住這個核心觀念：一張成熟的類別圖能完整整合可見度、重數、組合依賴與介面合約。</p></div><div class="bespoke-marp-note" data-index="45" tabindex="0"><p>在引導 AI 產生類別圖時，最需要警惕的是「關係平庸化」與「繼承濫用」。
 
 如果沒有給予嚴格提示，LLM 經常把所有實體都用普通實線連起來，遺失重要的組合與聚合語義；或者隨意濫用繼承，造成深層脆弱的類別階層。
 
@@ -2288,52 +2420,122 @@ Order 與 OrderItem 必須是組合（因為訂單明細脫離訂單就毫無存
 
 正確答案是 B！實心黑色菱形代表強整體組合關係 (Composition)，部分與整體共存亡，具備 cascade-delete 的生命週期約束。
 
-總結這張投影片，請記住這個核心觀念：實心菱形代表生命週期緊密綁定的組合關係 (Composition)，整體消亡則部分連帶銷毀。</p></div><div class="bespoke-marp-note" data-index="49" tabindex="0"><p>我們現在進入第 4.5 節：互動與循序圖模型 (Sequence Diagrams)。
+總結這張投影片，請記住這個核心觀念：實心菱形代表生命週期緊密綁定的組合關係 (Composition)，整體消亡則部分連帶銷毀。</p></div><div class="bespoke-marp-note" data-index="49" tabindex="0"><p>歡迎進入第 4.5 節：互動與循序圖模型！
 
-類別圖向我們展示了系統由哪些物件組成，但它無法告訴我們「當使用者點擊按鈕時，這些物件如何在時間軸上一步步協同通訊、呼叫方法並處理錯誤」。
-循序圖正是為此而生：它以時間為縱軸、物件為橫軸，清晰展現系統運行時的動態脈搏。
+在前面幾節，我們透過使用案例了解了使用者想要什麼，也透過類別圖認識了系統有哪些靜態結構。但真實的軟體是隨時間動態運行的。當使用者點擊畫面按鈕時，物件之間會互相傳遞訊息、呼叫方法並回傳結果。
 
-在這一節中，我們將學習生命線、啟動條、同步/非同步訊息、BCE 架構模式、UML 2.0 複合片段 (alt, opt, loop)，並結合 AI 提示詞產生嚴謹的動態互動模型。
+在這一節中，我們將學習 UML 循序圖 (Sequence Diagram)。我們將深入探討生命線、訊息箭頭、if-else 與迴圈等複合片段，並學習如何透過 AI 提示詞產出清晰嚴謹的循序模型。
 
-總結這張投影片，請記住這個核心觀念：循序圖沿時間軸精確描繪物件協同與訊息傳遞，是驗證動態邏輯與 API 介面的核心工具。</p></div><div class="bespoke-marp-note" data-index="50" tabindex="0"><p>我們從靜態跨越到動態世界：為什麼需要動態互動模型？
+總結這張投影片，請記住這個核心觀念：循序圖沿時間軸展示物件之間如何透過傳遞訊息相互協同，落實具體情境劇本。</p></div><div class="bespoke-marp-note" data-index="50" tabindex="0"><p>請看這張 3D 視角的循序圖架構藍圖。
 
-因為軟體 Bug 與分散式系統架構故障，絕大多數不是發生在類別定義上，而是發生在物件跨時間、跨網路呼叫時的時序死結、競爭條件 (Race Conditions) 與未捕獲例外上。
+畫面頂部有三個參與者：第一個是 Actor 1 使用者 (User)，第二個是 Actor 2 系統介面 (System Interface)，第三個是 Actor 3 後端服務 (Backend Service)。從每個角色向下延伸的垂直虛線就是生命線。
 
-總結這張投影片，請記住這個核心觀念：動態模型能提前暴露跨物件訊息傳遞與分散式時序中的隱藏架構缺陷。</p></div><div class="bespoke-marp-note" data-index="51" tabindex="0"><p>靜態結構與動態行為如同硬幣的兩面：
+請沿著橘色箭頭由上往下追蹤編號 1 到 5 的訊息順序：
+第一步，使用者向系統介面提交請求 (SubmitRequest)。
+第二步，系統介面進行自我資料驗證 (Validate)。
+第三步，介面向後端服務發起交易處理 (ProcessTransaction)。
+第四步，後端更新資料庫並確認成功 (UpdateDatabase)。
+第五步，系統介面將確認結果回傳給使用者 (ReturnResponse)。
 
-左側類別圖展示『有什麼實體』，右側循序圖展示『如何隨時間運作』。類別圖中的公開方法，正是循序圖中箭頭上的訊息名稱；兩者相互對應、互為驗證。
+這張圖非常直觀：誰跟誰通訊、先後順序為何，一目了然！
 
-總結這張投影片，請記住這個核心觀念：靜態類別定義能力，動態循序展現運作，兩者相互印證方能構成完整架構。</p></div><div class="bespoke-marp-note" data-index="52" tabindex="0"><p>循序圖的畫布維度與座標軸：
+總結這張投影片，請記住這個核心觀念：循序圖以時間先後為序，為使用者、前端介面與後端服務之間的訊息交流提供清晰的動態藍圖。</p></div><div class="bespoke-marp-note" data-index="51" tabindex="0"><p>這張圖清楚對比了靜態模型與動態模型的核心差異。
 
-橫軸代表系統中的物件實體（空間維度），縱軸由上向下代表時間的流逝（時間維度）。所有訊息箭頭一律水平繪製，位置越下方代表發生時間越晚。
+左側藍色區塊是「靜態類別模型」：展示 Class A、Class B 與 Class C 之間的關聯。它告訴我們系統中有哪些零件、誰認識誰，但完全沒有時間或執行順序的概念。
 
-總結這張投影片，請記住這個核心觀念：以時間為縱軸、物件為橫軸，是循序圖視覺化執行時序的核心座標體系。</p></div><div class="bespoke-marp-note" data-index="53" tabindex="0"><p>深入循序圖的四大解剖要素：
+右側金色區塊則是「動態循序模型」：展示兩個真正正在運行的物件 Object X 與 Object Y。此時時間順序至關重要！請看橘色箭頭：1 請求動作、2 處理資料、3 發送回應、4 確認完成。
 
-頂部矩形代表參與物件或參與者；向下延伸的垂直虛線是生命線 (Lifeline)；虛線上的細長矩形條是啟動條 (Activation Bar)，代表該物件正在執行處理；橫向箭頭則是物件間傳遞的訊息。
+打個比方：類別圖就像一張道路地圖，告訴你有哪幾條公路；而循序圖則是車輛在道路上依序行駛的即時導航記錄。
 
-總結這張投影片，請記住這個核心觀念：掌握生命線、啟動區間與訊息箭頭，就能看懂任何複雜的執行期時序。</p></div><div class="bespoke-marp-note" data-index="54" tabindex="0"><p>訊息箭頭的精準語法语義：
+總結這張投影片，請記住這個核心觀念：類別圖定義系統的靜態結構，循序圖則展現系統隨時間推進的動態運作行為。</p></div><div class="bespoke-marp-note" data-index="52" tabindex="0"><p>我們來理解循序圖畫布的兩大維度座標軸。
 
-實心三角箭頭 (`-&gt;`) 代表同步呼叫 (Synchronous Call)，呼叫端會阻塞等待回傳；虛線箭頭 (`</p></div><div class="bespoke-marp-note" data-index="55" tabindex="0"><p>UML 2.0 引入了強大的複合片段 (Combined Fragments)：
+上方水平的藍色軸線是「物件維度 (Object Dimension)」：參與互動的物件由左至右排列，通常越早參與互動的物件排在越左邊。
 
-`alt` 代表多選一條件分支（相當於 if-else）；`opt` 代表選擇性執行（相當於單純的 if）；`loop` 代表迴圈重複執行；`par` 代表多個生命線並行執行。這讓循序圖具備了表達現代控制結構的完整能力。
+左側垂直向下的橘色軸線是「時間維度 (Time Dimension)」：時間永遠由上往下單向推進。在頁面上方發生的訊息，一定比下方的訊息更早發生。
 
-總結這張投影片，請記住這個核心觀念：複合片段讓循序圖能夠優雅精確地表達條件分支、例外處理與迴圈重複邏輯。</p></div><div class="bespoke-marp-note" data-index="56" tabindex="0"><p>這張圖展示了複合片段如何 100% 精準映射到程式代碼：
+請特別注意右下角的警告標語：垂直距離代表的是「事件發生的先後順序」，而不是「實際經過的秒數或時長」！兩條線之間的空白較大，不代表系統等待了十分鐘，只代表下一個事件接續發生。
 
-`alt` 框中的守衛條件直接轉化為 `if (condition) { ... } else { ... }` 區塊；`loop` 框直接對應到 `while` 或 `for` 迴圈。架構師在圖上定義好例外分支，開發者編寫代碼時就絕對不會遺漏錯誤處理！
+總結這張投影片，請記住這個核心觀念：循序圖畫布橫向排列參與物件、縱向推進時間順序，清晰表達事件發生的先後關係。</p></div><div class="bespoke-marp-note" data-index="53" tabindex="0"><p>這是循序圖的四大核心解剖構造。請對照左側圖解與右側的四張卡片。
 
-總結這張投影片，請記住這個核心觀念：複合片段與高階語言的控制結構一一對應，是防止邊界例外被遺漏的利器。</p></div><div class="bespoke-marp-note" data-index="57" tabindex="0"><p>檢視經典案例：飯店線上預訂與支付流程。
+第一是頂部的 Actor（參與者）：代表啟動互動的外部使用者或外部系統角色。
+第二是垂直向下的虛線 Lifeline（生命線）：代表該物件在時間軸上的存在週期。
 
-觀察這張生產級循序圖：前端 UI 呼叫 ReservationController，控制器協調 RoomInventory 鎖定房型，接著呼叫外部 PaymentGateway 進行信用卡扣款，並透過 `alt` 片段優雅處理扣款成功與信用卡遭拒的兩條分支。
+第三是黃色長條形矩形 Focus of Control（控制焦點，又稱啟動條 Activation Bar）：代表該物件當前正積極執行程式代碼的區間，從上方的啟動時間 (Initiation Time) 一直持續到下方的完成時間 (Completion Time)。
 
-總結這張投影片，請記住這個核心觀念：真實的循序圖必須完整涵蓋正常流程與異常處理分支，形成嚴密的業務防護網。</p></div><div class="bespoke-marp-note" data-index="58" tabindex="0"><p>軟體工程的標準落地推進管線：
+第四是 Event（事件）：指時間軸上某個發生的時間點，例如一條訊息到達或發出的瞬間。事件觸發時，啟動條便隨之展開！
 
-第一步，使用案例定義目標；第二步，將使用案例展開為一條條具體情境劇本；第三步，以循序圖分配物件職責並繪製訊息流；第四步，直接對照循序圖撰寫 Controller、Service 與 Repository 程式碼。這就是專業的工程紀律！
+總結這張投影片，請記住這個核心觀念：參與者發起事件，生命線代表存在，而啟動條則標記物件正在積極執行運算的期間。</p></div><div class="bespoke-marp-note" data-index="54" tabindex="0"><p>這張訊息矩陣表是循序圖最重要的語法對照表，不同的箭頭在程式代碼中代表截然不同的行為。
 
-總結這張投影片，請記住這個核心觀念：循序圖是承接高階使用案例情境、轉化為可執行物件導向程式碼的中樞引擎。</p></div><div class="bespoke-marp-note" data-index="59" tabindex="0"><p>總結 4.5 節的永恆箴言：『先塑模，後寫代碼 (Model Before Code)』。
+第一，Call（呼叫）：實心線搭配實心箭頭，代表呼叫另一個物件的方法。
+第二，Return（返回）：虛線搭配開放式箭頭，代表將執行結果傳回給呼叫者。
 
-左邊是沒做設計就盲目動手敲代碼：產生盤根錯節的依賴、未處理的競態條件與義大利麵架構；右邊是先用循序圖理清互動：在寫第一行代碼前就明確各元件職責、排除時序死結。
+第三，Self（自我呼叫）：彎曲箭頭繞回同一個物件，代表呼叫自己內部的輔助方法。
+第四，Recursive（遞迴呼叫）：在原本的啟動條上堆疊一個新的啟動條，代表方法自我遞迴。
 
-總結這張投影片，請記住這個核心觀念：在動手編程前視覺化動態通訊，能省下數十倍後期返工與抓 Bug 的沉重代價。</p></div><div class="bespoke-marp-note" data-index="60" tabindex="0"><p>引導 AI 產生循序圖時，最容易出現的架構硬傷是「越級呼叫」與「只畫 Happy Path」。
+第五，Create（建立）：虛線箭頭直接指向一個新的物件方塊，代表在運行時 new 出新物件。
+第六，Destroy（消滅）：箭頭末端加上粗體叉叉 X，代表釋放記憶體或結束生命週期。
+
+最後，Duration 標記兩個時間點之間的時長。
+
+總結這張投影片，請記住這個核心觀念：實線實心箭頭代表方法呼叫，虛線代表資料返回或建立新物件，叉叉 X 則標記生命週期的終結。</p></div><div class="bespoke-marp-note" data-index="55" tabindex="0"><p>在早期的 UML 中，一張循序圖只能畫單一線性流程。一旦遇到 if-else 條件分支，工程師就必須畫兩張完全獨立的圖！
+
+為了解決這個痛點，UML 2.0 推出了「複合片段 (Combined Fragments)」。它就像一個外框，框住特定區間的生命線來表達條件判斷或重複迴圈。
+
+請觀察這個框架的三個關鍵部位：
+第一，左上角的黃色標籤是「片段運算子 (Operator)」，例如圖中的 `alt` 代表互斥的條件分支。
+第二，方括號內的 `[condition == true]` 是「守衛條件 (Guard)」，說明觸發該路徑的條件。
+第三，中間的水平虛線是「分支分隔線 (Divider)」，上半部是條件成立時的執行路徑，下半部則是 else 的備用路徑。
+
+總結這張投影片，請記住這個核心觀念：複合片段透過運算子標籤、守衛條件與分隔線，在單一圖表中優雅表達條件分支與迴圈邏輯。</p></div><div class="bespoke-marp-note" data-index="56" tabindex="0"><p>這張對照表非常實用，它展示了 UML 片段運算子如何直接對應到程式代碼！
+
+請特別注意前兩個運算子，這是初學者最常混淆的地方：
+`alt` 代表 Alternatives（互斥分支）：只能執行其中一條路徑，直接對應到 `if ... else if ... else`。
+`opt` 代表 Optional（可選路徑）：只有在條件成立時才執行，沒有 else 分支，對應到單純的 `if` 敘述。
+
+接下來：
+`loop` 代表重複迴圈，對應到 `while` 或 `for`。
+`par` 代表 Parallel（平行並發），對應到多執行緒或非同步 async 任務。
+`region` 是臨界區，對應到 Mutex 鎖或同步區塊。
+`neg` 標記非法或錯誤路徑，對應到丟出 Exception。
+`ref` 代表引用另一張循序圖，就像呼叫外部函式一樣，能避免單張圖過於龐大。
+
+總結這張投影片，請記住這個核心觀念：`alt` 對應 if-else，`opt` 對應單純 if，`loop` 對應迴圈，而 `ref` 則能模組化分解複雜圖形。</p></div><div class="bespoke-marp-note" data-index="57" tabindex="0"><p>讓我們透過一個真實的「飯店訂房」案例，來看所有觀念如何串聯運作。
+
+頂部有四條生命線：使用者 User、前端預訂視窗 ReservationWindow、後端訂房系統 BookingSystem，以及 Reservation 預訂實體物件。
+
+跟隨時間軸由上往下看：
+首先，使用者在視窗點擊 `initiate()` 開始訂房。
+接著，視窗呼叫 BookingSystem 的 `checkAvailability()` 查詢空房狀態。
+
+這時進入了 `alt` 條件複合片段：
+上半部如果 `[room available]` 有空房，BookingSystem 發送 create 虛線箭頭，建立全新的 Reservation 物件！
+下半部如果是 `[else]` 沒有空房，BookingSystem 則透過虛線返回 `bookingFailed()` 失敗訊息給視窗。
+
+成功與失敗分支在一張圖中表達得清清楚楚。
+
+總結這張投影片，請記住這個核心觀念：真實的循序圖協調介面視窗、後端系統、實體建立與異常分支，構成嚴謹的互動防護網。</p></div><div class="bespoke-marp-note" data-index="58" tabindex="0"><p>我們如何從模糊的客戶需求一步步走到精確的程式碼？這條四步驟管線展示了完整的工程脈絡。
+
+第一步是 Use Case（使用案例）：定義系統在宏觀層面要做什麼，例如「預訂飯店房間」。
+第二步是 Scenario（情境劇本）：展開該使用案例的具體路徑，例如「正常扣款成功的晴天路徑」或「信用卡過期的雨天路徑」。
+
+第三步是 Sequence Diagram（循序圖）：針對特定劇本，精確畫出跨時間的物件、方法呼叫與訊息傳遞。
+第四步是 Implementation（代碼實作）：工程師看著循序圖編寫類別與方法，完全不需盲目通靈猜測！
+
+請看底部的金句：劇本是系統的一次執行過程，而循序圖正是這趟過程的精確架構藍圖。
+
+總結這張投影片，請記住這個核心觀念：從高階使用案例拆解出具體劇本，再繪製循序圖分配物件職責，最後落實為高品質代碼。</p></div><div class="bespoke-marp-note" data-index="59" tabindex="0"><p>這是軟體工程最重要的核心哲學：『先塑模，後寫代碼 (Model Before Code)』。
+
+請看左邊：如果一拿到需求就衝動動手敲鍵盤寫代碼，往往會寫出義大利麵般的混亂函式、隨處可見的空指標例外 (NullPointerException) 與未經處理的資料庫查詢。我們給它打上一個醒目的大叉叉！
+
+右邊則是專業的藍圖：乾淨的循序圖將 User、ApplicationController 與 DatabaseManager 的分工交代得清清楚楚，並與 UI 介面完美對齊。
+
+請看底部的四大價值：
+1. 語言中立：無論用 Java、Python 還是 Go，架構概念完全一致。
+2. 跨領域對齊：即使不懂寫 code 的產品經理也能看懂流程。
+3. 團隊共識：在圖上改一個箭頭只要五秒鐘，在代碼中大改架構卻要花上好幾週。
+4. 測試導向：測試工程師能直接把每個箭頭轉化為自動化測試案例！
+
+總結這張投影片，請記住這個核心觀念：先繪製循序藍圖建立團隊共識與測試基礎，能省下數十倍後期返工與抓 Bug 的沉重代價。</p></div><div class="bespoke-marp-note" data-index="60" tabindex="0"><p>引導 AI 產生循序圖時，最容易出現的架構硬傷是「越級呼叫」與「只畫 Happy Path」。
 
 如果缺乏架構約束，LLM 經常讓前端直接向資料庫查詢，破壞三層分層架構；而且它極度傾向只畫成功路徑，完全忽略真實世界隨處可見的網路超時與驗證失敗。
 
@@ -2363,75 +2565,139 @@ Order 與 OrderItem 必須是組合（因為訂單明細脫離訂單就毫無存
 2. Alt 片段：`[paymentApproved]` 進行持久化並進入履約；`[else / paymentFailed]` 回滾交易並回傳錯誤訊息給 UI。
 3. 同步 vs 非同步：廚房通知必須是「非同步 (`-&gt;&gt;`)」！若設計為同步阻塞，顧客的 App 畫面會一直轉圈圈等待廚房店員按平板確認，一旦廚房網路延遲就會造成結帳超時崩潰。
 
-總結這張投影片，請記住這個核心觀念：循序圖讓 BCE 職責劃分、異常失敗路徑與非同步解耦機制在動手寫程式碼前清晰可見。</p></div><div class="bespoke-marp-note" data-index="63" tabindex="0"><p>id: ase-ch04-ccq5</p><p>讓我們透過觀念檢核測驗 5 來檢驗對循序圖複合片段的掌握。
+總結這張投影片，請記住這個核心觀念：循序圖讓 BCE 職責劃分、異常失敗路徑與非同步解耦機制在動手寫程式碼前清晰可見。</p></div><div class="bespoke-marp-note" data-index="63" tabindex="0"><p>id: ase-ch04-ccq5</p><p>讓我們透過觀念檢核測驗 5 來檢驗對 BCE 架構職責分工的掌握。請掃描 QR Code 或點選連結進行線上作答。
 
-審視四個複合片段選項：
-`loop` 用於表達重複迴圈。
-`par` 用於表達多條生命線並行處理 (Parallel)。
-`opt` 代表可選分支 (Optional)，相當於沒有 else 的單純 if。
-`alt` 則是 Alternatives 的縮寫，專門用於多選一的互斥分支 (if-else)。
+題目詢問：當顧客點擊結帳介面的按鈕時，這個請求應該先交給誰？
 
-正確答案是 D，`alt` 片段！
+我們逐一審視選項：
+選項 A 主張直接交給 Order 實體物件，這嚴重違反了分層架構：前端介面絕對不能直接讀寫資料庫實體！
+選項 B 主張直接呼叫金流服務，跳過內部驗證與訂單處理，是不合理的捷徑。
+選項 D 也是前端直接碰觸實體物件。
 
-總結這張投影片，請記住這個核心觀念：`alt` 片段用於表達互斥條件分支 (if-else)，而 `opt` 則用於單一可選條件 (if without else)。</p></div><div class="bespoke-marp-note" data-index="64" tabindex="0"><p>我們現在進入第 4.6 節：流程與活動圖模型 (Activity Diagrams)。
+正確答案是 C！請求必須先送到 `OrderController` 控制物件。由它負責驗證購物車、檢查庫存、協調金流授權，最後才建立訂單實體。
 
-在現代分散式軟體中，系統很少只依序執行單一步驟。顧客下單後，餐廳要同時備餐、演算法要同時計算外送路線、金流要同時請款。這種「並行 (Concurrency)」與「非同步協同」很難在一般流程圖中清晰表達。
+總結這張投影片，請記住這個核心觀念：控制物件負責統籌業務邏輯，是介於邊界介面與資料實體之間的核心中樞。</p></div><div class="bespoke-marp-note" data-index="64" tabindex="0"><p>歡迎進入第 4.6 節：流程與活動圖模型！
 
-活動圖是 UML 中專門用於描述業務流程、工作流、並行分岔 (Fork)、同步結合 (Join) 與跨角色責任泳道 (Swimlanes) 的強大武器。
+在上一節中，循序圖向我們展示了單一情境劇本下物件之間的訊息往來。但在真實的現代軟體中，系統經常需要處理跨部門的商業工作流程、多方角色的責任交接，以及背景同時執行的平行任務。
 
-總結這張投影片，請記住這個核心觀念：活動圖精準捕捉多角色工作流程、並行計算與同步屏障，是業務流程再造與分散式微服務協同的利器。</p></div><div class="bespoke-marp-note" data-index="65" tabindex="0"><p>我們正式進入活動圖的世界。
+UML 活動圖 (Activity Diagram) 正是為工作流程而生。在這一節中，我們將學習動作節點、決策菱形、平行分岔與結合棒，以及劃分責任的泳道。
 
-在業務分析與系統架構中，活動圖負責將複雜的業務規則與運作流程具象化。它不僅能表達循序步驟，更是處理高併發與多執行緒流程的標準語言。
+總結這張投影片，請記住這個核心觀念：活動圖專門用於塑模動態業務流程、條件決策邏輯，以及多執行緒平行並行任務。</p></div><div class="bespoke-marp-note" data-index="65" tabindex="0"><p>請看這張描繪動態系統的漸進演進圖。
 
-總結這張投影片，請記住這個核心觀念：活動圖是視覺化複雜動態業務工作流與並行機制的利器。</p></div><div class="bespoke-marp-note" data-index="66" tabindex="0"><p>為什麼不能只靠類別圖與使用案例？
+沿著畫面中的引導線，貫穿了三個關鍵方塊：
+第一個是左邊的「構想生成 (Idea Generation)」：我們從非結構化的想法與雲朵概念開始。
+第二個是中間的「結構邏輯 (Structural Logic)」：我們定義商業規則、決策菱形與並行分工。
+第三個是右邊的「系統實踐 (System Realization)」：我們建立包含分岔棒與結合棒的具體可執行活動圖。
 
-使用案例只告訴我們『有哪些功能』，卻沒說明執行的內部演算法與作業先後順序。活動圖超越了靜態結構，深入呈現資料與控制權在系統中流轉的真實軌跡。
+活動圖能將腦海中混亂的業務想法，一步步轉化為條理分明的工程架構藍圖。
 
-總結這張投影片，請記住這個核心觀念：活動圖填補了高階使用案例與底層程式碼演算法之間的動態流程缺口。</p></div><div class="bespoke-marp-note" data-index="67" tabindex="0"><p>驅動行為塑模的三大核心情境：
+總結這張投影片，請記住這個核心觀念：活動圖能將非結構化的商業構想，淬鍊為清晰可執行的動態工作流藍圖。</p></div><div class="bespoke-marp-note" data-index="66" tabindex="0"><p>這張投影片呈現了一個極具衝擊力的對比：「混亂的文字」與「清晰的視覺邏輯」。
 
-第一，複雜業務邏輯與跨部門作業程序；第二，涉及多方角色的微服務協同調度；第三，高併發環境下的非同步並行處理與超時例外管控。
+請看左邊：這是一大段冗長密集的文字敘述，說明拆開包裝、初始化系統、建立檔案、輸入文字、排版到儲存。讀完這大坨文字，往往容易看漏步驟或產生誤解。
 
-總結這張投影片，請記住這個核心觀念：當流程跨越多個角色、包含平行處理或具備複雜條件決策時，正是活動圖大顯身手的時刻。</p></div><div class="bespoke-marp-note" data-index="68" tabindex="0"><p>比較傳統流程圖與 UML 活動圖的本質差異：
+現在看右邊：四個清爽的圓角方塊搭配箭頭，依序是開箱、建檔、打字、存檔。
 
-傳統流程圖缺乏嚴格語法，無法表達『同時並行』的執行緒，也無法區分『控制流』與『資料物件流』；而 UML 活動圖具備精準的符號體系，天生支援分岔、結合與泳道責任歸屬。
+這正是我們繪製活動圖的原因：透過視覺化的圖形邏輯，讓流程步驟一目了然！
 
-總結這張投影片，請記住這個核心觀念：UML 活動圖具備表達並行多執行緒與責任泳道的強大能力，遠勝傳統流程圖。</p></div><div class="bespoke-marp-note" data-index="69" tabindex="0"><p>掌握活動圖的四大核心詞彙：
+總結這張投影片，請記住這個核心觀念：活動圖以直觀的視覺流程取代冗長混亂的文字，讓執行步驟清晰無誤。</p></div><div class="bespoke-marp-note" data-index="67" tabindex="0"><p>我們什麼時候該畫活動圖？請看這個環形圖中的三大觸發情境：
 
-實心圓點是起點 (Initial Node)；圓角矩形代表具體執行的動作 (Action)；箭頭是引導執行權轉移的控制流 (Control Flow)；雙重圓圈實心點則是流程終點 (Final Activity Node)。
+第一是「商業工作流程 (Business Workflows)」：當我們需要串聯協調多個不同的使用案例，來達成更大的業務目標時。
+第二是「複雜協同調度 (Complex Coordination)」：當單一使用案例內部包含多個重疊作業，需要精確控制時序與並行時。
+第三是「情境狀態映射 (Contextual Mapping)」：當我們必須精確界定每個步驟執行前的前置條件 (Pre-conditions) 與執行後的後置條件 (Post-conditions) 時。
 
-總結這張投影片，請記住這個核心觀念：起點、動作、控制流與終點構成了所有動態流程的基本骨架。</p></div><div class="bespoke-marp-note" data-index="70" tabindex="0"><p>條件分支的兩大菱形節點：
+總結這張投影片，請記住這個核心觀念：在跨使用案例的工作流、重疊的複雜調度，以及需要驗證前後置條件時，最適合採用活動圖。</p></div><div class="bespoke-marp-note" data-index="68" tabindex="0"><p>很多人常問：『我們從小就會畫流程圖，為什麼還要學 UML 活動圖？』請看這張比較表。
 
-決策節點 (Decision Node，一進多出) 依據守衛條件 `[guard]` 將流程分流至不同路徑；合併節點 (Merge Node，多進一出) 則將多個互斥分支收攏為單一流程。請注意：決策節點的分支守衛條件必須完全互斥！
+前兩行：循序邏輯與條件分支，傳統流程圖和活動圖都能做到（都打勾）。
+但請看下面三行，傳統流程圖全部被打上了灰色叉叉：
+傳統流程圖無法表達「平行並行 (Concurrency)」——也就是兩件事同時發生；
+傳統流程圖缺乏「泳道 (Swimlanes)」——無法指派每個動作的負責人或服務；
+傳統流程圖也無法追蹤「資料物件」的狀態轉變。
 
-總結這張投影片，請記住這個核心觀念：決策菱形負責條件分流，合併菱形負責互斥路徑的匯整，兩者皆不涉及並行計算。</p></div><div class="bespoke-marp-note" data-index="71" tabindex="0"><p>活動圖最具威力的特徵：並行同步棒 (Synchronization Bar)：
+UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必須使用活動圖！
 
-分岔節點 (Fork，一粗線進多出) 將單一執行權分裂為多個並行活動，同時在背景運作；結合節點 (Join，多粗線進一出) 則是同步屏障，必須等待『所有平行分支全部執行完畢』，後續流程才能被喚醒繼續！
+總結這張投影片，請記住這個核心觀念：活動圖超越傳統流程圖，提供並行多執行緒、責任泳道與資料物件流等工業級能力。</p></div><div class="bespoke-marp-note" data-index="69" tabindex="0"><p>這是活動圖的四大核心詞彙。請對照畫面中央的圖形與四張卡片：
 
-總結這張投影片，請記住這個核心觀念：Fork 啟動平行並行處理，Join 執行同步等待，確保所有分支到位後才推進後續作業。</p></div><div class="bespoke-marp-note" data-index="72" tabindex="0"><p>除了控制權，資料是如何傳遞的？
+第一，最左側的實心黑色圓點是「初始節點 (Initial Node)」：代表整個流程被點燃的觸發起點。
+第二，實線箭頭是「控制流 (Control Flow)」：指引執行權如何依序前進。
 
-活動圖中的直角矩形代表物件節點 (Object Node)，虛線或帶有物件的箭頭稱為物件流 (Object Flow)。它清楚標示出某個動作產生了『訂單實體 [已付款]』，並作為下一動作的輸入參數。
+第三，中間的圓角矩形是「動作節點 (Action)」：代表使用者或系統執行的單一具體任務。
+第四，最右側的雙同心圓靶心是「終止節點 (Activity Final Node)」：代表所有執行緒全部停止，流程正式結束。
 
-總結這張投影片，請記住這個核心觀念：物件節點明確追蹤資料實體在流程中的狀態變更與傳遞依賴。</p></div><div class="bespoke-marp-note" data-index="73" tabindex="0"><p>當多個部門或微服務協同運作時，職責往往容易互相踢皮球。
+總結這張投影片，請記住這個核心觀念：流程始於初始實心點，沿著控制箭頭穿過圓角動作方塊，最終抵達雙圓靶心結束。</p></div><div class="bespoke-marp-note" data-index="70" tabindex="0"><p>我們來看條件分支邏輯。請觀察圖中的兩個菱形：
 
-泳道 (Swimlanes / Partitions) 將活動圖垂直或水平劃分為不同欄位，每個欄位對應一個明確的負責角色、部門或微服務元件。任何動作落在該欄位內，就代表由該角色負起全部執行責任！
+上方第一個菱形是「決策節點 (Decision Node)」：它提出問題「需要圖片嗎？」。如果 Yes，走左邊進行開圖與貼圖；如果 No，直接走右邊繞過。決策節點根據條件「嚴格二選一」。
 
-總結這張投影片，請記住這個核心觀念：泳道將流程動作的當責性嚴格鎖定於具體角色或微服務，徹底消滅職責邊界模糊。</p></div><div class="bespoke-marp-note" data-index="74" tabindex="0"><p>泳道的架構分組彈性：
+下方第二個菱形是「合併節點 (Merge Node)」：它將兩條互斥的分支重新匯合，接續執行儲存檔案。請特別注意：合併節點「不需要等待兩邊都完成」，因為原本就只會走其中一條路，哪一邊到了就直接往下走！
 
-在微服務架構中，泳道可以對應訂單服務、庫存服務、物流服務；在業務流程中，可以對應顧客、店員、外送員。透過跨泳道的控制流箭頭，系統間的 API 呼叫與事件依賴一目了然。
+總結這張投影片，請記住這個核心觀念：決策菱形依守衛條件進行互斥分流，合併菱形則安全地將替代路徑重新收攏。</p></div><div class="bespoke-marp-note" data-index="71" tabindex="0"><p>現在我們來看平行並行處理：注意圖中的兩條粗黑橫棒！
 
-總結這張投影片，請記住這個核心觀念：泳道分區能自然映射分散式微服務架構，清晰界定跨服務呼叫邊界。</p></div><div class="bespoke-marp-note" data-index="75" tabindex="0"><p>這是一張活動圖符號體系的完整全景圖：
+當「收到訂單」後，流程遇到了上方的「分岔節點 (Fork Node)」：
+這條粗黑橫棒將單一流程切分為兩條同時發生的並行分支——一邊處理請款 (Handle Billing)，另一邊備貨寄送 (Fill &amp; Send)。
 
-從初始點、動作節點、決策菱形、分岔/結合粗棒、物件矩形到終止點與中斷點 (Interruptible Region)。熟悉這套符號體系，就能流暢閱讀並設計任何複雜的企業級流程。
+再看下方的粗黑橫棒「結合節點 (Join Node)」：
+結合棒是一個同步屏障！它會「嚴格等待兩條平行分支全部抵達」，確認帳款處理完且貨物也備妥後，才放行進入「關閉訂單」。若請款一秒搞定，它也會在結合棒前掛起等待，直到包裝完成！
 
-總結這張投影片，請記住這個核心觀念：完整的活動圖符號體系能精準描繪具備容錯、中斷與並行的企業級工作流。</p></div><div class="bespoke-marp-note" data-index="76" tabindex="0"><p>將所有元素熔鑄為一體：
+總結這張投影片，請記住這個核心觀念：Fork 粗棒啟動平行並行任務，Join 粗棒則等待所有平行分支全部完成後才繼續前進。</p></div><div class="bespoke-marp-note" data-index="72" tabindex="0"><p>工作流程不只執行動作，還會產生與傳遞資料。
 
-看這張整合模型：左邊是顧客泳道，中間是餐廳泳道，右邊是外送員泳道。中間使用了 Fork 讓廚房備餐與外送派單平行進行，最後在取餐處透過 Join 棒完美同步！
+請特別觀察畫面中的圖形形狀：
+一般的動作（如產生報表、核准資料）是「圓角矩形」；
+而中間的「物件節點 (Object Node)」則是「直角矩形」！它代表真實的資料檔案或物件實體，例如 `Financial_Report.pdf`。
 
-總結這張投影片，請記住這個核心觀念：融合泳道、條件決策與並行分岔結合，能建立無懈可擊的端到端業務藍圖。</p></div><div class="bespoke-marp-note" data-index="77" tabindex="0"><p>總結 4.6 節最佳實踐：繪製系統流程的三大漸進階段：
+連接它們的虛線箭頭稱為「物件流 (Object Flow)」：代表資料的流動。左邊動作產出 PDF，右邊動作則讀入該 PDF 進行審核。
 
-第一階段：探索高階主幹流程；第二階段：劃分泳道邊界並指派各動作當責角色；第三階段：放大複雜度細節，補齊決策判斷、Fork/Join 並行與例外中斷。
+總結這張投影片，請記住這個核心觀念：直角矩形代表資料物件節點，虛線箭頭代表資料在動作之間的輸入與輸出流轉。</p></div><div class="bespoke-marp-note" data-index="73" tabindex="0"><p>這是軟體工程常見的痛點：多方角色的當責模糊問題。
 
-總結這張投影片，請記住這個核心觀念：由高階主幹到泳道分配、再到並行細節，逐步演進是掌握活動圖複雜度的工程法門。</p></div><div class="bespoke-marp-note" data-index="78" tabindex="0"><p>引導 AI 產生活動圖時，最容易出現的破綻是「失去並行能力」與「泳道歸屬混亂」。
+請看左邊「沒有泳道」的情況：七個動作方塊被蜘蛛網般的箭頭糾纏在一起。誰負責審查？誰負責請款？誰通知員工？完全看不出來，一旦出事大家就互相踢皮球。
+
+再看右邊「引入泳道」的成果：我們畫出一條縱向分隔線，左欄是員工 (Employee)，右欄是主管 (Manager)。
+責任瞬間清清楚楚：員工負責提交報銷與確認細節；主管負責審查、核准、對帳與撥款。
+
+總結這張投影片，請記住這個核心觀念：泳道將畫布劃分為不同責任欄位，消滅工作交接過程中的職責模糊與推諉。</p></div><div class="bespoke-marp-note" data-index="74" tabindex="0"><p>讓我們透過一個大學新生報到的例子，來看泳道如何清晰展示跨角色交接。
+
+畫面上劃分出兩個泳道：左邊是學生 (Applicant)，右邊是註冊組 (Registrar)。
+
+請追蹤跨越分隔線的箭頭：
+首先，學生填寫報到表單；
+接著，箭頭跨越泳道交給註冊組：註冊組檢查表單、確認填寫無誤，並通知學生；
+最後，箭頭再跨回學生泳道：學生繳交學雜費。
+
+每次箭頭跨過泳道分界線，就代表一次清清楚楚的跨角色工作交接 (Handoff)。
+
+總結這張投影片，請記住這個核心觀念：跨泳道箭頭直觀呈現不同角色、部門或微服務之間的實體工作交接點。</p></div><div class="bespoke-marp-note" data-index="75" tabindex="0"><p>這是一張活動圖的完整視覺語法全景速查表，結構分為三大欄：
+
+第一欄「參與者 (The Actors)」：泳道與分區，負責將動作歸屬給特定角色或服務。
+第二欄「動作與資料 (The Actions)」：包含代表任務的圓角動作節點，以及代表資料實體的直角物件節點。
+
+第三欄「交通指揮官 (The Directors)」：
+起點實心圓與終點雙圓圈；
+實線控制流與虛線物件流；
+菱形的條件決策與合併節點；
+以及粗黑棒的並行分岔與同步結合節點。
+
+隨時牢記這張全景表，你就能看懂並繪製任何專業的企業活動圖！
+
+總結這張投影片，請記住這個核心觀念：活動圖由泳道角色、任務物件與控制流節點三大支柱組成，具備完整的動態表達力。</p></div><div class="bespoke-marp-note" data-index="76" tabindex="0"><p>看這張大成之作：所有活動圖核心要素在單一模型中完美融合！
+
+畫面有三個泳道：Actor A、Actor B 與 Actor C。
+跟著箭頭走一次完整流程：
+1. Actor A 發起初始請求，跨泳道交給 Actor B 審查。
+2. Actor B 審查後碰到 Fork 分岔棒，同時啟動兩條平行支流！
+在 Actor B，執行分析並產出「分析報告」物件；
+在 Actor C，執行子處理。注意那個菱形：如果不成功，會循環重試！
+3. 當報告產出且子處理重試成功，兩者在 Actor C 的 Join 結合棒同步！
+4. Actor C 產出最終成果，再跨泳道交回 Actor A 交付成果，抵達終點。
+
+泳道分工、並行處理、重試迴圈與物件流動全部井然有序！
+
+總結這張投影片，請記住這個核心觀念：融合泳道責任、Fork/Join 並行與決策重試迴圈，能打造企業級無懈可擊的工作流藍圖。</p></div><div class="bespoke-marp-note" data-index="77" tabindex="0"><p>最後，總結在實務中設計複雜工作流程的三大漸進階段：
+
+最底部的第一階段：審視商業情境 (Business Context)。宏觀梳理核心使用案例，界定流程的輸入前置條件與輸出後置條件。
+中間的第二階段：繪製核心工作流 (Map Core Workflows)。建立主要泳道分區，串聯使用案例之間的主要控制流。
+最頂部的第三階段：深入複雜細節 (Zoom In on Complexity)。補齊決策判斷、Fork/Join 並行粗棒，以及資料物件的狀態轉變。
+
+循序漸進，不要一開始就想畫完所有細節。
+
+總結這張投影片，請記住這個核心觀念：依序從商業情境、核心泳道到並行細節三階段逐步推進，是駕馭複雜工作流的最佳實務。</p></div><div class="bespoke-marp-note" data-index="78" tabindex="0"><p>引導 AI 產生活動圖時，最容易出現的破綻是「失去並行能力」與「泳道歸屬混亂」。
 
 如果沒有嚴格限制，AI 經常把應該同時進行的任務畫成前後串聯的單線流水帳，或者畫出一個 Fork 分岔後卻忘了用 Join 棒同步，導致流程遺失同步屏障。
 
@@ -2459,78 +2725,145 @@ Order 與 OrderItem 必須是組合（因為訂單明細脫離訂單就毫無存
 2. Join 棒：設在『櫃檯交接餐點』之前，因為配送貨物必須同時滿足『食物已煮熟打包』與『配送員已抵達現場』兩個條件。
 3. 等待狀態：Join 棒在 UML 語義中天生就是一個同步屏障（Synchronization Barrier）。先到達的分支 token 會停留在結合棒前方掛起等待，直到另一條分支的 token 也抵達，結合棒才會釋放一個新的 token 往下執行，完美避免了空手送餐的災難。
 
-總結這張投影片，請記住這個核心觀念：活動圖的 Fork 與 Join 機制能優雅捕捉分散式並行流程與同步等待屏障。</p></div><div class="bespoke-marp-note" data-index="81" tabindex="0"><p>id: ase-ch04-ccq6</p><p>讓我們透過觀念檢核測驗 6 來驗收對活動圖並行節點的理解。
+總結這張投影片，請記住這個核心觀念：活動圖的 Fork 與 Join 機制能優雅捕捉分散式並行流程與同步等待屏障。</p></div><div class="bespoke-marp-note" data-index="81" tabindex="0"><p>id: ase-ch04-ccq6</p><p>讓我們透過觀念檢核測驗 6 來驗收對活動圖並行節點與條件決策差異的理解。請掃描 QR Code 或點選連結進行線上作答。
 
-題目問的是：多進一出的粗黑橫棒是什麼？
+題目問的是：Fork/Join 同步粗棒與 Decision/Merge 菱形的核心行為差異是什麼？
+
 分析選項：
-選項 A 是 Fork（一進多出）。
-選項 C 是菱形決策（一進多出條件分支）。
-選項 D 是菱形合併（多進一出，任一到達即觸發）。
-選項 B 是 Join 結合節點！多條輸入控制流匯整為單一輸出，且語義上必須全部到達才能放行。
+選項 B 混淆了結構化物件導向概念（繼承與實體化）。
+選項 C 與資料流或例外處理無關。
+選項 D 憑空捏造了人工確認與計時器的假規則。
 
-正確答案是 B！
+選項 A 是正確答案！Fork 粗黑橫棒將單一控制流切分為多條平行並行執行緒，Join 則等待所有並行執行緒皆完成才放行；而 Decision 菱形是根據條件由多條路徑中嚴格二選一或多選一（互斥）。
 
-總結這張投影片，請記住這個核心觀念：Join 粗黑橫棒是必須等待所有平行輸入完全到位的同步屏障 (Synchronization Barrier)。</p></div><div class="bespoke-marp-note" data-index="82" tabindex="0"><p>我們現在進入第 4.7 節：行為與有限狀態機模型 (State Machine Diagrams)。
+總結這張投影片，請記住這個核心觀念：Fork/Join 管理多執行緒平行並行任務，而 Decision/Merge 負責互斥條件決策。</p></div><div class="bespoke-marp-note" data-index="82" tabindex="0"><p>歡迎來到第 4.7 節：行為與有限狀態機模型 (State Machine Diagrams)。
 
-活動圖描述的是「跨物件的連續工作流」，而狀態機圖聚焦的是「單一核心實體在生命週期中如何針對外部事件做出反應」。
-例如一張訂單：它不是死板的資料庫紀錄，它是一個有生命的實體，會歷經 Placed、Preparing、OutForDelivery 到 Delivered 等離散狀態。
+到目前為止，我們學習了類別圖（靜態結構）、循序圖（物件互動）以及活動圖（業務工作流）。
 
-在錯誤的狀態下接收事件（例如在司機已經送達時點擊取消訂單），會引發致命的業務漏洞。
-狀態機圖就是架構師用來定義「合法狀態」、「守衛條件」與「防禦性不變量」的最高數學憲法。
+然而，在許多反應型系統中——例如自動駕駛、智慧空調、或是外送訂單系統——物件的行為取決於它「當前處於什麼狀態」。
 
-總結這張投影片，請記住這個核心觀念：狀態機模型規範物件生命的離散狀態與事件轉換邊界，是守護業務不變量與防禦性設計的核心武器。</p></div><div class="bespoke-marp-note" data-index="83" tabindex="0"><p>我們進入狀態機的核心：狀態相依行為。
+在這一節中，我們將深入探討狀態機如何塑模離散狀態、事件觸發、狀態轉移、動作與活動、複合狀態以及系統歷史記憶。
 
-在軟體中，系統對同一事件的反應，完全取決於它『當前處於什麼狀態』。如果手機在鎖定狀態，按電源鍵是點亮螢幕；如果在通話狀態，按電源鍵是掛斷電話！這就是狀態相依。
+總結這張投影片，請記住這個核心觀念：狀態機模型用來描繪反應型系統如何隨著時間與外部事件，在離散狀態之間精準流轉。</p></div><div class="bespoke-marp-note" data-index="83" tabindex="0"><p>請看這張全景藍圖：『狀態相依行為的架構剖析 (The Anatomy of State-Dependent Behavior)』。
 
-總結這張投影片，請記住這個核心觀念：相同事件在不同狀態下會產生完全不同的反應與行為結果。</p></div><div class="bespoke-marp-note" data-index="84" tabindex="0"><p>以具體案例感受狀態的決定性威力：
+在軟體工程中，許多系統並不是無狀態的（Stateless）。它們不只是接收輸入、產生輸出，它們會「記住自己身在何處」！
 
-以電商訂單為例，當使用者觸發『取消訂單』事件：若訂單在『剛下單』狀態，系統無條件全額退款；若訂單在『配送中』狀態，系統必須拒絕取消並提示無法退款！狀態決定了系統的生死邊界。
+系統面對同一個刺激會做出什麼反應，根本上取決於它目前的內部狀態。
 
-總結這張投影片，請記住這個核心觀念：狀態機本質上是透過狀態前置條件來保護業務邏輯的正確性。</p></div><div class="bespoke-marp-note" data-index="85" tabindex="0"><p>狀態機在整個 UML 宇宙中佔據獨特的戰略高地：
+UML 狀態機圖為我們提供了一套清晰且嚴謹的視覺框架，用來設計、拆解並驗證這些狀態相依的系統。
 
-它不同於類別圖的結構、不同於活動圖的流水線、不同於循序圖的通訊。它專注於『單一關鍵核心實體（如訂單、帳戶、連線）的完整生命週期歷程』。
+總結這張投影片，請記住這個核心觀念：狀態機圖為行為取決於內部狀態的反應型軟體實體，提供了形式化的設計框架。</p></div><div class="bespoke-marp-note" data-index="84" tabindex="0"><p>請看這個最直觀的經典範例：『相同事件因狀態不同而產生完全不同的結果』。
 
-總結這張投影片，請記住這個核心觀念：狀態機專為生命週期複雜、事件驅動的關鍵領域實體提供形式化規範。</p></div><div class="bespoke-marp-note" data-index="86" tabindex="0"><p>如何為『狀態』下一個精確的工程定義？
+看看圖中的電燈開關：當外部事件 `pressSwitch()` 發生時，它抵達了代表電燈狀態的菱形。
 
-狀態是物件生命週期中滿足某個條件、執行某個活動或等待某個外部事件的一段時間區間。在狀態名稱命名上，必須使用形容詞或過去分詞（如 Placed, Active, Closed），絕對不要用動詞命名！
+如果電燈當前處於「關閉狀態 (Off)」，順著藍色路徑，按開關會「打開電燈 (Turn Light On)」。
 
-總結這張投影片，請記住這個核心觀念：狀態代表物件在時間軸上的穩定條件，名稱應使用形容詞或過去分詞。</p></div><div class="bespoke-marp-note" data-index="87" tabindex="0"><p>觸發狀態轉換的四大驅動力：
+但如果電燈當前處於「開啟狀態 (On)」，順著紅色路徑，按下完全相同的開關，卻會「關閉電燈 (Turn Light Off)」！
 
-第一，訊號事件 (Signal Event，如接收到非同步 MQTT 訊息)；第二，呼叫事件 (Call Event，如函式被呼叫)；第三，時間事件 (Time Event，如超時 30 分鐘 `after(30m)`)；第四，變更事件 (Change Event，如溫度高於 100 度 `when(temp &gt; 100)`)。
+系統的回應不僅僅是由輸入事件決定，而是完全取決於它過去的歷史與當前的狀態。
 
-總結這張投影片，請記住這個核心觀念：訊號、呼叫、時間與條件變更構成了狀態機運轉的四大感測源。</p></div><div class="bespoke-marp-note" data-index="88" tabindex="0"><p>狀態轉換箭頭上的國際標準語法公式：
+總結這張投影片，請記住這個核心觀念：在狀態相依系統中，完全相同的事件在不同狀態下會觸發截然不同的行為結果。</p></div><div class="bespoke-marp-note" data-index="85" tabindex="0"><p>請看狀態機圖在整個 UML 生態系中的戰略定位，特別是對比右邊的循序圖：
 
-`Trigger [Guard] / Action`。Trigger 是觸發的事件名；中括號 `[Guard]` 是布林守衛條件（必須為 true 才能通行）；斜線 `/ Action` 則是轉換瞬間順帶執行的原子動作。
+右邊的循序圖，追蹤的是「多個協同物件在單一線性情境下的訊息傳遞」。它展示的是特定業務流程下的物件通訊。
 
-總結這張投影片，請記住這個核心觀念：牢記『事件 [守衛條件] / 動作』的三位一體語法公式，這是狀態轉換的法定標準。</p></div><div class="bespoke-marp-note" data-index="89" tabindex="0"><p>嚴格區分動作 (Action) 與活動 (Activity) 的巨大差異：
+左邊的狀態機圖則剛好相反！它將鏡頭拉近至「單一獨立物件（例如一張訂單或一個網路連線）」，完整描摹它一生中面對「所有可能事件與狀態」的全貌。
 
-動作 (Action) 是『原子性、瞬間完成、不可中斷』的，例如變數賦值或發送一封 email；活動 (Activity，以 `do /` 標註) 則是『耗時長、可被中斷』的，例如播放音樂或加熱烤箱，一旦外部事件發生，活動會被立刻中斷並跳出狀態！
+一句話總結：循序圖看的是「一個情境下的許多物件」，狀態機圖看的是「一個物件的一生所有情境」。
 
-總結這張投影片，請記住這個核心觀念：Action 是瞬間不可中斷的原子操作，Activity 是耗時且隨時可被中斷的持續狀態。</p></div><div class="bespoke-marp-note" data-index="90" tabindex="0"><p>狀態的邊界執行防禦機制：
+總結這張投影片，請記住這個核心觀念：循序圖描繪多物件在單一情境的互動，狀態機圖則聚焦單一物件跨越所有情境的生命週期。</p></div><div class="bespoke-marp-note" data-index="86" tabindex="0"><p>究竟什麼是『狀態 (State)』？請看圖中的定義與三個標號說明。
 
-`entry /` 動作：不管從哪一條路徑進入該狀態，第一時間強制自動執行（例如進入 OutForDelivery 立即啟動 GPS 追蹤）；`exit /` 動作：無論因為何種原因離開該狀態，強制自動清理資源（例如關閉 GPS）。
+狀態絕非一瞬間的動作，而是物件生命週期中一段「持續存在的時間區間 (Time Interval)」。
 
-總結這張投影片，請記住這個核心觀念：善用 entry 與 exit 動作，能確保狀態初始設定與資源釋放具備 100% 執行可靠度。</p></div><div class="bespoke-marp-note" data-index="91" tabindex="0"><p>當系統變得極度複雜時，狀態數量會呈指數級爆炸（狀態爆炸問題）。
+圖中標註了三個核心元素：
+第 1 點是 Initial Pseudo-State（初始偽狀態，實心黑圓圈）——物件生命週期的起跑線。
+第 2 點是 The State（狀態本體）——條件被滿足、持續執行活動、或等待事件發生的活躍時間區間。
+第 3 點是 Final State（終止狀態，牛眼圓圈）——物件生命週期的終點。
 
-如果全部使用傳統的扁平狀態圖，狀態之間會密密麻麻畫成蜘蛛網；為了解決這個難題，UML 狀態機引入了階層式複合狀態 (Composite States)。
+對於不會關機的連續運作系統（例如作業系統核心或恆溫控制器），終止狀態通常可以省略。
 
-總結這張投影片，請記住這個核心觀念：透過階層式複合狀態封裝內部子狀態，是解決大規模狀態爆炸的架構解法。</p></div><div class="bespoke-marp-note" data-index="92" tabindex="0"><p>深入複合狀態與歷史狀態 (History State, [H])：
+總結這張投影片，請記住這個核心觀念：狀態是物件生命週期中一段持續的時間區間，介於初始建立與最終終止之間。</p></div><div class="bespoke-marp-note" data-index="87" tabindex="0"><p>推動系統在不同狀態間流轉的四種觸發事件 (Triggers)：
 
-複合狀態內部可以包含多個子狀態。更神奇的是歷史節點 [H]：當系統暫時跳出複合狀態（如設備休眠），再次喚醒返回時，歷史節點能記住『上次離開時停在誰』，直接精確復原子狀態，不需重頭開始！
+左上角是訊號事件 (Signal Event，閃電圖標)：接收到外部傳來的非同步訊息或封包。
+右上角是呼叫事件 (Call Event，齒輪圖標)：呼叫端調用了物件上的某個方法或操作。
+左下角是時間事件 (Time Event，沙漏圖標)：經過了指定的時間間隔，例如 `after(30s)`。
+右下角是變更事件 (Change Event，中括號圖標)：某個布林運算式成立的瞬間，例如 `when(temp &gt; 100)`。
 
-總結這張投影片，請記住這個核心觀念：歷史狀態節點讓階層系統具備狀態記憶復原能力，大幅提升使用者體驗。</p></div><div class="bespoke-marp-note" data-index="93" tabindex="0"><p>狀態機中的正交並行區域 (Orthogonal Regions)：
+這四種事件構成了狀態機運作的全部感知來源。
 
-一個物件在同一瞬間，能否同時具備兩種獨立狀態？答案是肯定的！例如一台智慧手機在開機狀態下，可以同時處於『連網狀態』與『音訊播放狀態』。狀態機用虛線將複合狀態切分為多個正交區塊，彼此獨立運作。
+總結這張投影片，請記住這個核心觀念：狀態轉換由四種事件觸發——非同步訊號、方法呼叫、經過時間與條件成立。</p></div><div class="bespoke-marp-note" data-index="88" tabindex="0"><p>請看狀態轉換的運作機制，這張圖用了一座極為生動的『漏斗機器』來做比喻！
 
-總結這張投影片，請記住這個核心觀念：正交區域允許單一實體內部同時並存多個獨立維度的並行子狀態機。</p></div><div class="bespoke-marp-note" data-index="94" tabindex="0"><p>檢視工業級狀態機實戰藍圖：智慧空調 (HVAC) 控制系統。
+先看上方的法定公式：
+[來源狀態] + (事件) + [動作] = [目標狀態]。
 
-這張圖融合了初始狀態、加熱與製冷的複合狀態切換、歷史記憶節點、以及高溫火警時的緊急例外中斷跳轉。結構嚴整、邏輯滴水不漏。
+現在跟著機器走一遍：
+藍色的球代表「事件 (Event)」，掉入漏斗中。
+拉桿控制著「守衛條件 [Guard Condition]」。只有當守衛條件為真時，閥門才會打開！
+球通過旋轉的齒輪，這代表執行「動作 / Action」——瞬間完成的原子操作。
+最後球滾出管道，穩穩落入「目標狀態 (Target State)」的箱子中！
 
-總結這張投影片，請記住這個核心觀念：真實的工程狀態機統一了起點、複合狀態、記憶歷史與安全例外機制。</p></div><div class="bespoke-marp-note" data-index="95" tabindex="0"><p>總結 4.7 節：利用生成式 AI 將行為邏輯落地。
+如果轉換箭頭上沒有指定任何事件，它就是一個「自動完成轉換」，會在內部活動結束時自動觸發。
 
-現代軟體工程師不再需要手動拖拉複雜的狀態圖框。我們可以將領域業務規則寫成結構化需求文字，由 AI 協助直接編譯為正式、可被靜態分析驗證的 PlantUML 狀態機代碼！架構師的職責轉向檢視邊界與守衛條件的安全。
+總結這張投影片，請記住這個核心觀念：狀態轉換需在事件發生且守衛條件為真時放行，並在轉移瞬間執行原子動作。</p></div><div class="bespoke-marp-note" data-index="89" tabindex="0"><p>這張投影片點出了 UML 中最核心也最常被考到的觀念：動作 (Actions) 與活動 (Activities) 的本質差異！
 
-總結這張投影片，請記住這個核心觀念：AI 工具能加速文字到正式狀態機的轉譯，工程師則專注審查邊界轉換與守衛安全性。</p></div><div class="bespoke-marp-note" data-index="96" tabindex="0"><p>引導 AI 產生狀態機圖時，最常見的失誤是「把狀態寫成動作」以及「遺漏非法跳轉的防護」。
+請逐行比對表格中的四個維度：
+第一，本質 (Nature)：動作是「原子計算」（例如呼叫方法或釋放物件）；活動是「非原子計算」。
+第二，持續時間 (Duration)：動作是「瞬間完成」的，邏輯耗時為零；活動則是「持續進行」的，耗時較長。
+第三，可中斷性 (Interruptibility)：特別看有顏色的字！動作「絕對不可被中斷」；活動則「隨時可以被事件中斷」！
+第四，觸發時機 (Triggers)：動作在進入、離開或轉換時瞬間執行；活動則在停留於狀態期間持續執行 (`do /`)。
+
+總結這張投影片，請記住這個核心觀念：Action 是瞬間不可中斷的原子操作，Activity 則是耗時進行且隨時可被事件中斷的持續計算。</p></div><div class="bespoke-marp-note" data-index="90" tabindex="0"><p>請看狀態邊界的防護機制：進入動作 (Entry Action) 與離開動作 (Exit Action)。
+
+圖中展示了名為 `Check Book Status` 的狀態，裡面維護著一個 `BookCopy Object`。
+
+注意左側進入邊界的藍色火花：`entry / action`。無論是從哪一條轉換路徑來到這個狀態，只要跨入邊界，這個動作保證百分之百立即執行！
+注意右側離開邊界的紅色火花：`exit / action`。無論是因為什麼事件要離開這個狀態，只要跨出邊界，這個動作保證百分之百立即執行清理！
+
+這讓初始化與資源釋放邏輯與狀態邊界牢牢綁定，避免在每條進入或離開的箭頭上重複撰寫程式碼。
+
+總結這張投影片，請記住這個核心觀念：Entry 與 Exit 動作確保每次跨越狀態邊界時，初始設定與資源釋放保證絕對執行。</p></div><div class="bespoke-marp-note" data-index="91" tabindex="0"><p>當系統變得龐大時，扁平狀態圖會變成無法閱讀的蜘蛛網。看 UML 如何透過三種狀態層次解決複雜度：
+
+第一欄是「簡單狀態 (Simple State)」：如 `Active`，單一且不可分割的原子狀態。
+第二欄是「複合狀態 (Composite State)」：如 `Heater`，它像一個容器，內部封裝了 `Idle`、`Heating`、`Cooling` 等巢狀子狀態，有效隱藏內部細節！
+第三欄是「並行狀態 (Concurrent State)」：水平虛線將狀態切分為兩條並行軌道，上方是 Task A1 到 A2，下方是 Task B1 到 B3，兩者同時並行執行！
+
+總結這張投影片，請記住這個核心觀念：複合狀態與並行狀態透過階層巢狀與平行分區，徹底解決大規模狀態爆炸的架構難題。</p></div><div class="bespoke-marp-note" data-index="92" tabindex="0"><p>當系統被突發事件中斷時，如何記住上次停在哪裡？請看複合狀態與歷史記憶節點 (History State, [H])。
+
+一般情況下，進入複合狀態時，一律會從最前面的 Substate A 重新開始。
+
+但是想像一下：你在寫信時突然來了一通電話，講完電話切回信箱時，你希望從頭開始寫，還是回到剛才寫了一半的畫面？當然是回到剛才的地方！
+圖中的 `(H)` 圓圈就是「歷史狀態記憶槽」。
+當系統離開 Substate B 時，快取 (Cache) 記住了這個位置。
+當系統稍後從外部重新進入 `(H)` 時，指標直接精準跳回 Substate B！
+
+總結這張投影片，請記住這個核心觀念：歷史狀態節點作為快取記憶槽，能讓系統在中斷復原後直接回到上次活躍的子狀態。</p></div><div class="bespoke-marp-note" data-index="93" tabindex="0"><p>請看狀態機如何處理多執行緒平行任務：Fork 分流與 Join 聚合。
+
+以圖中的線上拍賣系統為例：
+`Auction Trigger` 抵達左側粗黑垂直的 Fork 橫線。
+單一流程立刻被分流為兩條並行軌道：上方執行 `Processing the Bid`（出價處理），下方同時執行 `Authorizing Payment Limit`（授權額度驗證）。
+
+兩條並行路徑最後都匯入右側粗黑垂直的 Join 橫線。
+系統會在 Join 處等待兩條軌道都順利完成。
+只有當兩者都抵達時，轉換才會正式放行並往下推進。
+
+總結這張投影片，請記住這個核心觀念：Fork 將流程分流為並行子狀態，Join 則等待所有並行軌道完成後才進行同步放行。</p></div><div class="bespoke-marp-note" data-index="94" tabindex="0"><p>這就是狀態機的綜合實戰藍圖：智慧空調 (HVAC Heater System)！
+
+看看這個架構有多麼優雅嚴整：
+中央垂直虛線將整個系統切分為兩個並行運作的區域：左邊是 Thermostat Control（恆溫控制），右邊是 Fan Operation（風扇運轉）。
+
+左側恆溫控制從初始起點進入 `Idle`，當 `temp &lt; setpoint` 訊號到達時轉入 `Heating`，同時瞬間執行原子進入動作 `entry / activate_burner`，並配有歷史快取 `(H)`。
+右側風扇運作則獨立根據風速請求訊號，在 `Fan Low`、`Fan High` 與 `Fan Off` 之間靈活轉移。
+
+透過並行分區、清晰事件觸發與邊界動作，複雜的實體行為被組織得井然有序。
+
+總結這張投影片，請記住這個核心觀念：真實工程架構將並行分區、進入動作、事件觸發與歷史記憶整合為單一嚴整藍圖。</p></div><div class="bespoke-marp-note" data-index="95" tabindex="0"><p>總結 4.7 節：利用生成式 AI 將行為邏輯落地。
+
+請看左側的 Prompt 提示詞：我們要求 AI「建立一個拍賣系統，包含並行的出價處理與付款授權，並為暫停的拍賣配置歷史狀態」。
+
+看右側建模工具產出的成果：AI 精準建立了包含 `Bid Processing` 與 `Payment Authorization` 兩個並行分區的狀態機，並在 `Suspended` 狀態配置了 `(H)` 歷史節點！
+
+現代架構師不再需要手動拖拉圖框，而是撰寫精確的行為規則交由 AI 生成，將心力專注於審查守衛條件與邊界安全性。
+
+總結這張投影片，請記住這個核心觀念：AI 工具能秒級將自然語言規則轉譯為嚴謹的狀態機模型，工程師則專注審查邊界與守衛。</p></div><div class="bespoke-marp-note" data-index="96" tabindex="0"><p>引導 AI 產生狀態機圖時，最常見的失誤是「把狀態寫成動作」以及「遺漏非法跳轉的防護」。
 
 初學者或 LLM 常常把狀態命名為『烹調餐點』、『指派司機』——這完全混淆了活動與狀態！狀態必須是『已接單』、『備餐中』或『已送達』。
 
@@ -2558,82 +2891,151 @@ Order 與 OrderItem 必須是組合（因為訂單明細脫離訂單就毫無存
 2. 守衛條件：`Placed -&gt; Cancelled` 上標註 `[currentTime - placedTime &lt;= 120s &amp;&amp; kitchenStatus == NotStarted]`。若超時或廚房已備料，守衛評估為 false，轉換被拒絕。
 3. 進入動作：`entry / broadcastCourierEnRoute(); activateLiveGPSStream()`，一進入該狀態就自動啟動 GPS 地圖串流並向顧客推播訊息。
 
-總結這張投影片，請記住這個核心觀念：狀態機透過不開放非法轉換箭頭與配置嚴密守衛條件，捍衛了系統不可逾越的業務邊界。</p></div><div class="bespoke-marp-note" data-index="99" tabindex="0"><p>id: ase-ch04-ccq7</p><p>讓我們透過觀念檢核測驗 7 來檢驗對狀態轉換語法的掌握。
+總結這張投影片，請記住這個核心觀念：狀態機透過不開放非法轉換箭頭與配置嚴密守衛條件，捍衛了系統不可逾越的業務邊界。</p></div><div class="bespoke-marp-note" data-index="99" tabindex="0"><p>id: ase-ch04-ccq7</p><p>讓我們透過觀念檢核測驗 7 來檢驗對狀態機執行語義的掌握。
 
-分析題目的語法公式：`Trigger [Guard] / Action`。
-選項 A 顛倒了守衛與動作。
-選項 C 混淆了 Trigger 與 Activity (`do /`)。
-選項 D 忽略了 Trigger 事件觸發的必要性。
+分析題目選項：
+選項 B 與 D 混淆了具體技術與形式化 UML 語意。
+選項 C 混淆了進入與離開動作。
 
-正確答案是 B！只有當指定的 Trigger 事件到達，並且中括號內的 Guard 條件成立為 true 時，狀態轉換才會放行，並在瞬間執行 Action 動作！
+正確答案是 A！在 UML 狀態機語意規格中：
+Action（轉換動作、entry/、exit/）概念上邏輯耗時為零，具備原子性且絕對不可中斷。
+Activity（以 `do /` 宣告）則代表一段耗時運算，只要有任何觸發狀態轉換的外來事件到達，該活動會被立即中斷並退出狀態。
 
-總結這張投影片，請記住這個核心觀念：轉換必須滿足『事件到達』且『守衛評估為真』，才會執行動作並完成狀態轉移。</p></div><div class="bespoke-marp-note" data-index="100" tabindex="0"><p>我們現在進入第 4.8 節：PlantUML 宣告式文字塑模 (Code-as-Architecture)。
+總結這張投影片，請記住這個核心觀念：Action 是瞬間不可中斷的原子操作，Activity 則是耗時進行且隨時可被事件中斷的持續計算。</p></div><div class="bespoke-marp-note" data-index="100" tabindex="0"><p>歡迎來到第 4.8 節：PlantUML 宣告式文字塑模 (Text-Based Modeling with PlantUML)。
 
-過去三十年，許多工程師對 UML 敬而遠之的最大原因，就是傳統繪圖工具極度繁瑣痛苦：拖拉方塊、調整箭頭對齊、檔案格式二進位無法用 Git 進行 code review、重構時牽一髮而動全身。
+長期以來，許多工程師對 UML 敬而遠之，最大的痛點就是傳統 GUI 工具極度繁瑣：手動拖拉圖框、微調箭頭像素，而且二進位檔完全無法在 Git 中進行版本比對與審查。
 
-PlantUML 與「架構即代碼 (Code-as-Architecture)」徹底終結了這個噩夢！
-我們只需要用簡練的純文字標記語言描述物件與關聯，排版佈局全部自動交給渲染引擎處理。更棒的是，它能與 Git、CI/CD 與 Markdown 講義無縫整合。
+PlantUML 帶來了「架構即代碼 (Diagram-as-Code)」的重大革新！
 
-總結這張投影片，請記住這個核心觀念：PlantUML 實現了架構即代碼，讓軟體模型具備可版本控制、自動渲染與無摩擦維護的現代工程特質。</p></div><div class="bespoke-marp-note" data-index="101" tabindex="0"><p>我們正式邁入文字化塑模新時代：代碼驅動的現代架構。
+我們只需要撰寫清晰易讀的純文字標記，模型就能與源碼一同存放在 Git 倉儲中，在 Pull Request 中進行 diff 審查，並由引擎自動編譯渲染。
 
-在現代敏捷與 DevOps 環境中，軟體架構必須具備輕量、快速迭代與自動化特性。PlantUML 是這場革新的領頭羊。
+總結這張投影片，請記住這個核心觀念：PlantUML 實現了代碼驅動的架構塑模，消除手動排版負擔並完美整合 Git 工作流。</p></div><div class="bespoke-marp-note" data-index="101" tabindex="0"><p>請看這張視覺開場：『UML Modeling with PlantUML』。
 
-總結這張投影片，請記住這個核心觀念：PlantUML 將傳統昂貴繁瑣的圖形拖拉，轉化為優雅高效的純文字宣告。</p></div><div class="bespoke-marp-note" data-index="102" tabindex="0"><p>為什麼要停止手動拖拉方塊？
+左側是黑底的代碼編輯器，寫著極為簡練的宣告式語法：
+`component &quot;Order Service&quot; as OS`
+`database &quot;Order DB&quot; as ODB`
+`OS</p></div><div class="bespoke-marp-note" data-index="102" tabindex="0"><p>這就是文字塑模的核心哲學：『停止拖拉方塊，開始以代碼撰寫架構』。
 
-手動排版浪費了工程師 80% 的寶貴精力在微調像素與對齊線上。以代碼寫架構，你能把全部心智專注於『領域實體、責任分配與時序合約』。版面美化，交給演算法處理！
+看看左邊的白板：歪歪斜斜的方塊、糾纏混亂的箭頭，還有一隻打著叉叉的哭泣滑鼠——這代表著傳統繪圖方式的「緩慢、手動與脫節」。
 
-總結這張投影片，請記住這個核心觀念：讓工具負責排版，讓大腦專注於架構邏輯本身。</p></div><div class="bespoke-marp-note" data-index="103" tabindex="0"><p>零摩擦的現代化開發環境搭建：
+再看看右邊：深色編輯器裡只有簡短幾行定義 `User` 與 `Order` 的代碼，右邊立刻生成帶有 `1` 到 `*` 多重性關聯的發光類別圖——代表著「即時、版本控制與標準化」。
 
-只需在 VS Code 安裝 PlantUML 擴充套件，配合本機 Graphviz 引擎或遠端渲染伺服器，按下 Alt+D (Option+D) 即可享有毫秒級的即時預覽！支援 PNG、SVG 與向量 PDF 輸出。
+省下 80% 調整像素的時間，把精力集中在真正的架構決策上！
 
-總結這張投影片，請記住這個核心觀念：在 IDE 內部直接編寫並即時預覽 UML，是最高效無縫的現代塑模工作流。</p></div><div class="bespoke-marp-note" data-index="104" tabindex="0"><p>PlantUML 的五大核心透鏡：
+總結這張投影片，請記住這個核心觀念：文字化塑模消除了手動排版的疲勞，讓架構圖直接融入軟體工程的標準流程。</p></div><div class="bespoke-marp-note" data-index="103" tabindex="0"><p>請看零摩擦的開發環境設定，只需三個簡單步驟：
 
-它以統一的文字文法體系，同時支援使用案例圖、類別圖、循序圖、活動圖與狀態機圖！你不需要安裝五種不同軟體，一套文字文法搞定全部五大維度。
+第一步（Install）：在 VS Code 市集中安裝 PlantUML 擴充套件。
+第二步（Write）：建立副檔名為 `.puml` 的文字檔案。
+第三步（Render）：按下快速鍵 `Alt + D`（Mac 上按 `Option + D`），即可啟動即時視覺預覽！
 
-總結這張投影片，請記住這個核心觀念：統一的宣告式語法能無差別駕馭五大核心 UML 模型，極大降低認知負擔。</p></div><div class="bespoke-marp-note" data-index="105" tabindex="0"><p>PlantUML 的使用案例語法極度簡潔：
+看看下方的 VS Code 視窗：
+左側編輯器在輸入 `class Car` 時，享有語法高亮（標號 1）與代碼自動補全（標號 2）。
+右側視窗即時渲染出 Car 類別框，還能直接匯出為 PNG、SVG 或 ASCII 圖（標號 3）！
 
-`actor Customer` 宣告參與者；`(Place Order)` 宣告圓形使用案例；`rectangle System { ... }` 劃定系統邊界；`.&gt;` 與 `&lt;.` 輕鬆表達包含與擴充。
+總結這張投影片，請記住這個核心觀念：PlantUML 與主流編輯器無縫整合，提供輸入即預覽的極致開發體驗與多格式匯出能力。</p></div><div class="bespoke-marp-note" data-index="104" tabindex="0"><p>請看架構師的五大核心透鏡樹狀圖：
 
-總結這張投影片，請記住這個核心觀念：幾行純文字就能瞬間渲染出邊界清晰、關聯嚴謹的使用案例圖。</p></div><div class="bespoke-marp-note" data-index="106" tabindex="0"><p>類別圖在 PlantUML 中的優雅宣告：
+UML 圖表整體分支為兩大體系：
 
-`class Order { ... }` 定義類別主體；以 `-`、`+`、`#` 標註可見度；自動將屬性與方法分類排版；支援 `interface`、`abstract class` 與 `enum` 關鍵字。
+上方分支是「結構圖 (Structure Diagrams)」——靜態的系統藍圖，由類別圖 (Class Diagram) 掛帥，定義系統中的物件、屬性與操作。
 
-總結這張投影片，請記住這個核心觀念：語法直接映射 Java 與 TypeScript 的語義習慣，所寫即所想。</p></div><div class="bespoke-marp-note" data-index="107" tabindex="0"><p>這是 PlantUML 關聯符號的經典矩陣：
+下方分支是「行為圖 (Behavior Diagrams)」——動態運轉中的系統，涵蓋四大透鏡：
+- 使用案例圖 (Use Case)：高階系統功能與參與者互動。
+- 活動圖 (Activity)：業務流程與控制流轉。
+- 循序圖 (Sequence)：跨時間的循序物件互動。
+- 狀態圖 (State)：單一物件在不同條件下的生命週期。
 
-`&lt;|--` 是繼承；`*--` 是實心菱形組合；`o--` 是空心菱形聚合；`..|&gt;` 是介面實現；`</p></div><div class="bespoke-marp-note" data-index="108" tabindex="0"><p>循序圖是 PlantUML 最具殺手級優勢的王牌：
+一套 PlantUML 語法，就能同時駕馭結構與行為五大模型！
 
-只需依序鍵入 `Alice -&gt; Bob: request`，生命線自動生成、時序自動排版、箭頭精確對齊！配合 `activate` 與 `deactivate`，啟動條毫秒級成型。
+總結這張投影片，請記住這個核心觀念：PlantUML 以統一的語法體系，同時涵蓋一大結構模型與四大行為動態模型。</p></div><div class="bespoke-marp-note" data-index="105" tabindex="0"><p>看看用 PlantUML 繪製使用案例圖有多麼簡單：
 
-總結這張投影片，請記住這個核心觀念：PlantUML 循序圖是軟體業界撰寫 API 規格與時序驗證的首選工具。</p></div><div class="bespoke-marp-note" data-index="109" tabindex="0"><p>深入循序圖複合語法：
+請看左側的代碼與兩條粉紅色對應箭頭：
+輸入 `actor Customer`，立刻生成代表外部參與者的火柴人圖示！
+輸入 `usecase Login` 與 `usecase Checkout`，立刻生成代表系統功能的橢圓形！
+接著用 `Customer</p></div><div class="bespoke-marp-note" data-index="106" tabindex="0"><p>現在檢視類別圖的宣告式語法：
 
-使用 `alt [condition] ... else ... end` 建立條件分支；使用 `autonumber` 自動為每一則訊息標上序號；使用 `participant` 或 `actor` 為實體賦予具象圖示。
+注意左側代碼的三段內容，精準對應到右側類別框的三個隔層：
+`class Animal` 對應到頂層的類別名稱（The Blueprint）。
+`int id` 與 `String name` 對應到中間層的屬性欄位（Attributes）。
+`+int getId()` 與 `+void makeSound()` 對應到底層的操作方法（Operations/Methods）。
 
-總結這張投影片，請記住這個核心觀念：支援完整的 UML 2.0 複合片段與自動編號，大幅提升規格書專業度。</p></div><div class="bespoke-marp-note" data-index="110" tabindex="0"><p>現代 Activity Beta 語法無比優雅：
+左上角提示了關鍵的可見度標記：`+` 代表 public、`-` 代表 private、`#` 代表 protected。
+寫類別圖的感覺，就跟撰寫標準物件導向程式碼一模一樣！
 
-`start` 起點；`:Action Name;` 動作；`|Lane Name|` 泳道；`fork` 與 `fork again` 並行分岔；`end fork` 結合；`stop` 終點。閱讀起來就像在讀自然語言詩篇！
+總結這張投影片，請記住這個核心觀念：PlantUML 類別圖語法高度貼合物件導向程式碼習慣，具備直覺的三層區塊與可見度宣告。</p></div><div class="bespoke-marp-note" data-index="107" tabindex="0"><p>請看這份極具助記效果的類別關聯符號矩陣：
 
-總結這張投影片，請記住這個核心觀念：Activity Beta 語法以極簡文字精確捕捉跨泳道並行流程。</p></div><div class="bespoke-marp-note" data-index="111" tabindex="0"><p>狀態圖的純文字定義：
+PlantUML 的符號設計充滿了象形巧思：
+- 繼承 (Inheritance)：`&lt;|--`，尖角三角形指向父類別。
+- 關聯 (Association)：`--`，一條乾淨的實線。
+- 聚合 (Aggregation)：`o--`，小寫字母 o 剛好畫出一顆空心菱形，代表部分可獨立存在。
+- 組合 (Composition)：`*--`，星號剛好畫出一顆實心菱形，代表同生共死的強烈擁有權。
 
-`[*]</p></div><div class="bespoke-marp-note" data-index="112" tabindex="0"><p>這張跨圖表語法速查對照表是每位軟體架構師的案頭必備指南：
+因為長得就像 UML 的箭頭，工程師完全不需要死背，單憑視覺直覺就能在鍵盤上敲出關聯。
 
-橫跨使用案例、類別、循序、活動與狀態機，快速對照各圖表的起點、關聯與關鍵字。隨查隨用，效率倍增。
+總結這張投影片，請記住這個核心觀念：ASCII 象形符號（如 `&lt;|--`、`o--`、`*--`）讓類別關聯的建立迅速、自然且不易出錯。</p></div><div class="bespoke-marp-note" data-index="108" tabindex="0"><p>循序圖是 PlantUML 最受開發者喜愛的殺手級功能：
 
-總結這張投影片，請記住這個核心觀念：將跨圖表共通符號內化為肌肉記憶，大幅提振日常架構設計生產力。</p></div><div class="bespoke-marp-note" data-index="113" tabindex="0"><p>文字化塑模的最大威力：宏觀整體視野 (Holistic View)。
+循序圖捕捉動態行為與 API 調用，時間軸由上至下垂直流動。
 
-當所有圖表都變成純文字代碼，你可以把整個系統的模型全部收錄在一個 `docs/models/` Git 資料夾內，並在 CI/CD 流程中自動編譯為線上文件網站！
+看左側的代碼：
+宣告 `participant User` 與 `participant OrderService`。
+`User -&gt; OrderService : Request to place order`（實線箭頭發送請求）。
+`OrderService</p></div><div class="bespoke-marp-note" data-index="109" tabindex="0"><p>請看循序圖解剖學中的四大核心元素（橘色標籤）：
 
-總結這張投影片，請記住這個核心觀念：純文字讓分散的模型形成互為佐證的完整系統架構工程資產。</p></div><div class="bespoke-marp-note" data-index="114" tabindex="0"><p>現代軟體架構團隊的每日實踐工作流：
+第一，生命線 (Lifelines)：垂直虛線，代表參與協同的物件或微服務元件。
+第二，訊息 (Messages)：水平橫向箭頭，代表生命線之間的通訊互動（例如同步呼叫）。
+第三，啟動長條 (Activation Boxes)：覆蓋在生命線上的細長矩形，標示物件正在主動處理運算的活躍期。
+第四，生命週期事件 (Lifecycle Events)：專屬的生命週期訊息，例如 `new` 箭頭指向 `New Participant` 框，表示實體的動態建立或銷毀。
 
-1. 在分支編寫 PlantUML 文字代碼；
-2. 本機 VS Code 即時渲染驗證；
-3. 提交 Git Commit 並建立 Pull Request，與團隊進行有意義的文字 Diff Code Review；
-4. 合併後自動部署至文件門戶。
+在 PlantUML 中，這些視覺元素都能用最簡單的文字關鍵字精準生成。
 
-總結這張投影片，請記住這個核心觀念：納入 Git 版本控制與 Pull Request 審查，賦予架構模型與代碼同等尊嚴的維護週期。</p></div><div class="bespoke-marp-note" data-index="115" tabindex="0"><p>總結 4.8 節：精通 PlantUML，升級你的架構思維！
+總結這張投影片，請記住這個核心觀念：循序圖由生命線、訊息箭頭、啟動長條與生命週期事件四大核心視覺骨架所構成。</p></div><div class="bespoke-marp-note" data-index="110" tabindex="0"><p>請看活動圖與業務流程工作流在 PlantUML 中的表現：
 
-當你不再受限於笨重的繪圖軟體，你就能在每一次需求變更時，第一時間用五秒鐘改兩行文字更新架構圖。敏捷與嚴謹不再衝突，模型真正成為活著的代碼！
+注意三條青色箭頭將左邊的文字代碼對齊到右邊的流程節點：
+標號 1：`start` 生成黑色的起點圓圈 (Start Node)。
+標號 2：`:Customer Login;` 與 `:Add to Cart;` 用冒號與分號包覆，生成圓角矩形的動作狀態 (Action States)。
+標號 3：`stop` 生成牛眼圓圈的終點節點 (End Node)。
 
-總結這張投影片，請記住這個核心觀念：PlantUML 讓架構塑模變得無摩擦且可持續，是頂尖軟體工程師必備的核心生產力武器。</p></div><div class="bespoke-marp-note" data-index="116" tabindex="0"><p>id: ase-ch04-ccq8</p><p>讓我們透過觀念檢核測驗 8 來檢驗對宣告式文字塑模工程價值的掌握。
+此外，語法還原生支援 `if/then/else` 條件分支與 `|Lane Name|` 泳道分割，宣告流程既簡潔又結構化。
+
+總結這張投影片，請記住這個核心觀念：活動圖透過 start、冒號動作與 stop 等極簡標記，優雅呈現步驟分明的業務流程。</p></div><div class="bespoke-marp-note" data-index="111" tabindex="0"><p>請看狀態圖在 PlantUML 中的純文字定義：
+
+活動圖關注多角色流程，狀態圖則嚴格聚焦在「單一物件的生命週期」。
+
+看左側的標準格式框：`StateA</p></div><div class="bespoke-marp-note" data-index="112" tabindex="0"><p>請看這張『架構師的診斷決策矩陣：挑選最適模型 (Choosing Your Model)』：
+
+當面對具體的工程問題時，這張表能指引你選擇正確的視角：
+- 使用案例圖 (Use Case)：釐清使用者目標、系統範疇與高階需求。
+- 類別圖 (Class)：確立領域實體、欄位屬性與靜態關聯。
+- 循序圖 (Sequence)：驗證特定情境下跨物件、跨 API 的時序呼叫合約。
+- 活動圖 (Activity)：梳理複雜的業務工作流、條件決策與並行分工。
+- 狀態圖 (State)：嚴格規範核心實體的離散狀態流轉與邊界保護。
+
+根據工程痛點對症下藥，選擇最具表現力的 UML 模型。
+
+總結這張投影片，請記住這個核心觀念：根據問題本質選擇最合適的建模透鏡，是卓越架構師的核心診斷素養。</p></div><div class="bespoke-marp-note" data-index="113" tabindex="0"><p>請看宏觀整體視野 (The Holistic System View)：四大多維模型如何緊密串聯！
+
+看這條貫穿 Stage 1 到 Stage 4 的端到端架構管線：
+Stage 1：使用案例 (`Customer Checkout`) 確立了使用者的商業需求...
+Stage 2：...這項需求需要循序圖 (`User` 與 `Payment Service` 互動) 來定義時序傳遞...
+Stage 3：...這段互動需要類別圖 (`PaymentProcessor`) 建立實體結構與方法...
+Stage 4：...最終執行時，會改變訂單在狀態圖中的狀態（從 `Pending` 轉為 `Paid`）！
+
+看底部的核心洞察：UML 各圖表絕非彼此孤立的文件，它們是對同一套軟體系統在不同維度上的重疊視角！
+
+總結這張投影片，請記住這個核心觀念：UML 各圖表不是孤立的畫作，而是同一個軟體實體彼此呼應的立體投影。</p></div><div class="bespoke-marp-note" data-index="114" tabindex="0"><p>請看『文檔即代碼 (Docs-as-Code) 的三大核心價值』：
+
+第一張卡片：Version Controlled（版本控制）。圖表與程式碼一同活在 Git 中，歷史紀錄一清二楚，文檔永遠不會脫離實際程式碼而過期。
+第二張卡片：Effortless Updates（輕鬆更新）。需求變更時，只需要修改一個單字，不需要手動重畫十幾個方框與重拉對齊連線。
+第三張卡片：Standardized Clarity（標準化清晰度）。徹底消除手繪白板照片的模糊與各人自創風格的凌亂，產出全團隊統一、標準的架構規格。
+
+總結這張投影片，請記住這個核心觀念：Docs-as-Code 保證了架構圖表具備可版本控制、極簡維護與全團隊標準化輸出的現代工程特質。</p></div><div class="bespoke-marp-note" data-index="115" tabindex="0"><p>總結 4.8 節，請記住這句箴言：『精通語法，升級你的架構思維！』
+
+優秀的軟體設計，始於高效精準的溝通。
+
+PlantUML 架起了一座連接純文字邏輯與視覺架構的橋樑，讓工程師能以代碼的速度思考，同時以架構的維度溝通。
+
+打開你的 VS Code，安裝擴充套件，開始撰寫你的架構代碼吧！
+
+總結這張投影片，請記住這個核心觀念：文字化塑模融合了文字的精確與圖像的直觀，賦予敏捷團隊最高維度的架構設計生產力。</p></div><div class="bespoke-marp-note" data-index="116" tabindex="0"><p>id: ase-ch04-ccq8</p><p>讓我們透過觀念檢核測驗 8 來檢驗對宣告式文字塑模工程價值的掌握。
 
 分析選項：
 選項 A 是誇大不實的神話，模型不能替代軟體測試。
