@@ -7,9 +7,9 @@ skinparam shadowing false
 skinparam state {
   BackgroundColor #ffffff
   BorderColor #0b3c5d
-  BorderThickness 2
+  BorderThickness 1.5
   FontColor #0b3c5d
-  FontSize 14
+  FontSize 12
   FontStyle bold
   StartColor #0b3c5d
   EndColor #0b3c5d
@@ -18,28 +18,30 @@ skinparam state {
 skinparam arrow {
   Color #0b3c5d
   FontColor #334155
-  FontSize 12
+  FontSize 11
   Thickness 1.5
 }
 
-[*] -right-> Placed : submitOrder() / authorizePayment()
+[*] -right-> Placed : customerPays()
 
 state Placed {
-  Placed : Entry / startRestaurantAcceptTimer()
+  Placed : entry / startAcceptTimer()
 }
 
-Placed -right-> Accepted : restaurantAccepts() [within 5 min] / lockOrder()
-Placed -down-> Cancelled : restaurantRejects() / refundCharge()
-Placed -down-> Cancelled : customerCancels() [time < 2 min] / refundCharge()
-Placed -down-> Cancelled : timeout() [after 5 min] / autoRefund()
+state OutForDelivery {
+  OutForDelivery : entry / startGPSTracking()
+}
 
-Accepted -right-> Preparing : chefStartsCooking() / updateETA()
-Preparing -down-> ReadyForPickup : kitchenCompletes() / alertNearbyCouriers()
+Placed -right-> Accepted : acceptOrder()
+Accepted -right-> Preparing : startCooking()
+Preparing -down-> ReadyForPickup : packagingComplete()
+ReadyForPickup -left-> OutForDelivery : courierPickedUp()
+OutForDelivery -left-> Delivered : confirmDropoff()
+Delivered -down-> [*]
 
-ReadyForPickup -left-> OutForDelivery : courierScansPickup() / startLiveGPSTracking()
-OutForDelivery -left-> Delivered : courierConfirmsDropoff() / captureDeliveryPhoto()
-Delivered -down-> [*] : logOrderCompleted() / triggerRatingPrompt()
-
-Cancelled -right-> [*] : sendCancellationNotice()
+Placed -down-> Cancelled : rejectOrder() / refund()
+Placed -down-> Cancelled : cancelOrder [t <= 120s]
+Accepted -down-> Cancelled : cancelOrder [t <= 120s]
+Cancelled -left-> [*]
 
 @enduml

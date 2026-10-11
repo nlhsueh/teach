@@ -11,63 +11,42 @@ skinparam activity {
   FontColor #1d2731
   DiamondBackgroundColor #e8eff5
   DiamondBorderColor #0b3c5d
+  FontSize 12
 }
 
 skinparam arrow {
   Color #0b3c5d
   FontColor #333333
+  FontSize 11
 }
 
-|#f0f4f8|Customer|
+|Customer|
 start
-:Browse restaurant menus\n& select meal items;
-:Submit delivery order\nwith delivery address;
+:Confirm & pay for order;
 
-|#e8eff5|Platform Core|
-:Validate cart & calculate total;
-:Authorize payment via\nPayment Gateway;
-if (Payment Authorized?) then (yes)
-  :Generate OrderRecord\nwith status "PLACED";
-else (no)
-  :Notify Customer payment failed;
-  detach
-endif
-
-|#ffffff|Restaurant Partner|
-:Receive order notification;
-if (Accept Order?) then (yes)
-  :Confirm order & start cooking;
-else (no)
-  |Platform Core|
-  :Refund payment & notify customer;
-  detach
-endif
-
-|#ffffff|Restaurant Partner|
-:Mark order "READY FOR PICKUP";
-
-|#e8eff5|Platform Core|
 fork
-  :Push "Meal Ready" alert to Customer;
+  |Restaurant Kitchen|
+  :Receive order ticket;
+  :Prepare food items;
+  :Package meal into delivery bag;
 fork again
-  :Dispatch nearest available Courier;
+  |Dispatch Engine|
+  :Calculate transit route;
+  :Query nearby couriers;
+  :Dispatch assignment offer;
+  |Delivery Courier|
+  :Accept assignment;
+  :Drive to restaurant;
 end fork
 
-|#fbf9f1|Courier|
-:Accept delivery dispatch;
-:Navigate to restaurant & pick up meal;
-:Confirm pickup in Courier App;
-:Navigate to customer delivery address;
-:Hand over meal to Customer;
-:Confirm delivery completed;
+|Restaurant Kitchen|
+:Hand off packaged meal to Courier;
 
-|Platform Core|
-:Capture final payment payout;
-:Update order status to "COMPLETED";
+|Delivery Courier|
+:Transport meal to customer address;
 
 |Customer|
-:Receive warm meal;
-:Submit rating & driver tip;
+:Verify delivery with OTP;
+:Receive meal;
 stop
-
 @enduml

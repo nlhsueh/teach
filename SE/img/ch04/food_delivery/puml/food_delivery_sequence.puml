@@ -19,46 +19,39 @@ skinparam sequence {
 
 autonumber
 
-actor "Customer" as Customer
-boundary "CheckoutUI\n<<Boundary>>" as UI
-control "OrderController\n<<Control>>" as Controller
-boundary "PaymentGatewayAPI\n<<Boundary>>" as PaymentAPI
-entity "Order\n<<Entity>>" as Order
-entity "Restaurant\n<<Entity>>" as Restaurant
-control "DispatchService\n<<Control>>" as Dispatch
+actor Customer
+boundary CheckoutUI
+control OrderCtrl
+boundary StripeAPI
+entity OrderEntity
+queue KitchenQueue
 
-Customer -> UI: clickCheckout(cartItems, address)
-activate UI
+Customer -> CheckoutUI: clickPayNow()
+activate CheckoutUI
 
-UI -> Controller: submitOrder(cartItems, address, paymentToken)
-activate Controller
+CheckoutUI -> OrderCtrl: submitOrder(cartItems, paymentInfo)
+activate OrderCtrl
 
-Controller -> Controller: validateCart(cartItems)
+OrderCtrl -> StripeAPI: authorizeCharge(amount, token)
+activate StripeAPI
 
-Controller -> PaymentAPI: authorizeCharge(amount, paymentToken)
-activate PaymentAPI
-PaymentAPI --> Controller: 200 OK (authCode: "AUTH_8849")
-deactivate PaymentAPI
-
-Controller -> Order: create(items, total, "PAID")
-activate Order
-Order --> Controller: orderId: "ORD-9201"
-deactivate Order
-
-Controller -> Restaurant: notifyNewOrder(orderId, items)
-activate Restaurant
-Restaurant --> Controller: orderAcknowledged
-deactivate Restaurant
-
-Controller -> Dispatch: queueForCourierDispatch(orderId, restaurantGPS)
-activate Dispatch
-Dispatch --> Controller: dispatchQueued
-deactivate Dispatch
-
-Controller --> UI: returnOrderSuccess(orderId, estimatedMinutes: 25)
-deactivate Controller
-
-UI --> Customer: displayOrderConfirmed(orderId, liveTrackingURL)
-deactivate UI
+alt Payment Approved
+  StripeAPI --> OrderCtrl: chargeToken
+  deactivate StripeAPI
+  OrderCtrl -> OrderEntity: create(PLACED)
+  activate OrderEntity
+  deactivate OrderEntity
+  OrderCtrl ->> KitchenQueue: orderPlacedEvent
+  OrderCtrl --> CheckoutUI: orderSuccess(orderId)
+  CheckoutUI --> Customer: displaySuccess(orderId)
+else Payment Declined
+  activate StripeAPI
+  StripeAPI --> OrderCtrl: declinedError
+  deactivate StripeAPI
+  OrderCtrl --> CheckoutUI: paymentFailed()
+  deactivate OrderCtrl
+  CheckoutUI --> Customer: displayError()
+  deactivate CheckoutUI
+end
 
 @enduml

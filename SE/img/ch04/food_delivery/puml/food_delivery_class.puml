@@ -22,98 +22,56 @@ skinparam arrow {
   FontSize 11
 }
 
-abstract class User {
-  # userId: String
-  # fullName: String
-  # phone: String
-  # email: String
-  + login(): Boolean
-  + updateProfile(): void
-}
-
 class Customer {
-  - defaultDeliveryAddress: String
-  - paymentCardToken: String
-  + placeOrder(cart: Cart): Order
-  + rateDelivery(orderId: String, stars: Integer): void
-}
-
-class Courier {
-  - vehicleType: String
-  - currentGPS: GeoLocation
-  - isAvailable: Boolean
-  + acceptDeliveryTask(taskId: String): Boolean
-  + updateLocation(coords: GeoLocation): void
-  + completeDropoff(): void
+  - customerId: String
+  - name: String
+  - deliveryAddress: String
+  + placeOrder(): Order
 }
 
 class Restaurant {
   - restaurantId: String
-  + name: String
+  - name: String
   - address: String
-  + isOpen: Boolean
-  + acceptOrder(orderId: String): Boolean
-  + markMealReady(orderId: String): void
+  + acceptOrder(): Boolean
 }
 
 class MenuItem {
   - itemId: String
-  + title: String
-  + price: Double
-  + isAvailable: Boolean
-  + getPrice(): Double
+  - name: String
+  - price: Double
+  - isAvailable: Boolean
 }
 
 class Order {
   - orderId: String
-  - createdAt: DateTime
-  - status: OrderStatus
+  - orderStatus: OrderStatus
   - totalAmount: Double
   + calculateTotal(): Double
-  + updateStatus(newStatus: OrderStatus): void
-  + cancel(): Boolean
+  + assignCourier(c: Courier): void
 }
 
 class OrderItem {
   - quantity: Integer
-  - unitPrice: Double
-  - specialInstructions: String
-  + getSubtotal(): Double
+  - itemPrice: Double
+  - subtotal: Double
 }
 
-class DeliveryTask {
-  - taskId: String
-  - pickupTime: DateTime
-  - deliveryETA: DateTime
-  - deliveryFee: Double
-  + assignCourier(c: Courier): void
-  + recordDropoff(): void
+class Courier {
+  - courierId: String
+  - name: String
+  - vehicleType: String
 }
 
-class Payment {
-  - transactionId: String
-  - amount: Double
-  - paymentMethod: String
-  - paidAt: DateTime
-  + executeCharge(): Boolean
-  + refund(): Boolean
+interface PaymentProcessor {
+  + chargeCreditCard(amount: Double): Boolean
 }
 
-' Generalization (Inheritance)
-User <|-- Customer
-User <|-- Courier
-
-' Composition (Strong Whole-Part: filled diamond)
-Restaurant "1" *-- "1..*" MenuItem : publishes >
-Order "1" *-- "1..*" OrderItem : contains >
-
-' Association
-OrderItem "0..*" --> "1" MenuItem : references >
-Customer "1" --> "0..*" Order : places >
-Order "1" -- "1" Payment : settled by >
-Order "1" -- "0..1" DeliveryTask : fulfilled via >
-
-' Aggregation (Weak Whole-Part: open diamond)
-DeliveryTask "0..*" o-- "1" Courier : assigned to >
+Restaurant "1" *-- "1..*" MenuItem : owns >
+Order "1" *-- "1..*" OrderItem : consists of >
+OrderItem "*" --> "1" MenuItem : references >
+Customer "1" --> "*" Order : places >
+Order "*" o-- "0..1" Courier : assigned to >
+Order ..> PaymentProcessor : delegates >
 
 @enduml

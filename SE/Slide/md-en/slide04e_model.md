@@ -809,31 +809,30 @@ To summarize this slide, remember this key takeaway: The diagram gives the overv
 
 ## AI Assistance: Guidelines for Use Case Modeling
 
-- **1. Persona & Boundary Priming:**
-  - Instruct the AI to act as a *Lead Requirements Analyst* with expertise in UML.
-  - Define the system **boundary** upfront to prevent the AI from confusing internal use cases with external partner systems.
-- **2. Actor & Relationship Constraints:**
-  - **Actors:** Force AI to distinguish **Primary Actors** (human users initiating goals) from **Secondary Supporting Actors**.
-  - **`<<include>>` Rule:** Use strictly for mandatory common sub-flows executed every time.
-  - **`<<extend>>` Rule:** Use strictly for optional, conditional, or exceptional behavior with named extension points.
-  - **Anti-Pattern Warning:** Prohibit functional decomposition (forbid trivial use cases like "Click Button" or "Enter Password").
-- **3. Architectural Verification Checklist:**
-  - Are all use cases named with active verb phrases (e.g., `Place Order`, `Track Delivery`)?
-  - Is third-party infrastructure (Payment Gateway, SMS) kept *outside* the system boundary rectangle?
-  - Are include arrows pointing toward the included supplier use case?
+- **1. Define Clear System Boundaries:**
+  - Clearly separate what is inside the system from external users and third-party services (e.g., payment gateways).
+- **2. Identify Real User Goals (Actors & Use Cases):**
+  - Focus on complete, meaningful user goals (e.g., `Place Order`, `Track Delivery`).
+  - Avoid breaking steps down into trivial UI interactions (no "Click Button" or "Enter Password").
+- **3. Clarify Relationship Semantics:**
+  - **Mandatory Sub-flows:** Identify common steps that occur every single time (shared building blocks).
+  - **Optional or Conditional Steps:** Explicitly distinguish optional extensions (e.g., applying vouchers) from normal flows.
+- **4. Human Review & Reality Check:**
+  - Are use cases named with clear active verbs?
+  - Are external partner systems kept outside the core system boundary?
 
 <!--
-How can we ask AI to help us build use case diagrams? AI can generate PlantUML code in seconds, but without clear instructions, it makes classic mistakes.
+When asking AI to help build use case models, focus on high-level goals and clean system boundaries rather than low-level details.
 
-Here are three practical guidelines:
+First, establish clear system boundaries so the AI doesn't mix up internal features with external services like SMS or payment providers.
 
-First, give the AI a clear role and define the system boundary upfront, so it does not put external services inside the box.
+Second, guide the AI to identify genuine user goals—meaningful business tasks like placing an order, rather than tiny UI clicks.
 
-Second, set strict rules for actors and arrows: Tell the AI that <<include>> is strictly for mandatory steps, and <<extend>> is strictly for optional steps. Forbid tiny, useless bubbles like 'Click Button'.
+Third, clarify relationships: Distinguish mandatory steps that happen every time from optional extensions like applying promo codes.
 
-Third, use our checklist to verify the result: Are use cases named with verb-noun pairs? Are external systems like Payment Gateways kept outside?
+Finally, do a quick sanity check: Ensure use cases are active verb phrases and external services stay outside the system boundary.
 
-To summarize this slide, remember this key takeaway: Guide AI by enforcing strict boundary definitions, valid verb-noun use case naming, and correct include/extend semantics.
+To summarize this slide, remember this key takeaway: Guide AI by defining clear system boundaries, real user goals, and distinguishing mandatory steps from optional extensions.
 -->
 
 ---
@@ -846,13 +845,15 @@ To summarize this slide, remember this key takeaway: Guide AI by enforcing stric
 **1. Role & Task Instruction:**
 ```text
 Act as a Lead Systems Analyst.
-Generate a valid PlantUML Use Case
-diagram and Description for a Food Delivery System.
+Generate a clean PlantUML Use Case
+diagram for a Food Delivery System.
 ```
 
-**2. Modeling Constraints:**
-- Use `<<extends>>` and `<<includes>>` to structure the model.
-- Prohibit functional decomposition (forbid trivial use cases like "Click Button" or "Enter Password").
+**2. Modeling Guidance:**
+- Clearly define system boundary vs. external services.
+- Focus on meaningful user goals (avoid trivial UI button clicks).
+- Separate mandatory sub-flows from optional extensions.
+- Identify primary human actors and external partner systems.
 
 </div>
 <div>
@@ -862,37 +863,106 @@ diagram and Description for a Food Delivery System.
 > When placing an order, the system must always authorize payment through an external **Payment Gateway** and validate delivery address.
 > A customer may optionally enter a discount coupon code (`Apply Promo Voucher`) or select contactless doorstep delivery.
 > **Restaurant Staff** review incoming orders, accept or reject them, and update kitchen prep status.
-> **Delivery Couriers** accept available delivery tasks, ...
+> **Delivery Couriers** accept available delivery tasks, pick up orders, and complete deliveries."
 
 </div>
 </div>
 
 <!--
-Here is a real example of an effective prompt for a Food Delivery System.
+Here is a practical prompt example for creating a Food Delivery Use Case Model.
 
-Look at the left column: We set clear ground rules. We tell the AI its role as a Systems Analyst, ask for PlantUML, and explicitly forbid trivial button clicks.
+Look at the left column: Instead of micromanaging syntax, we provide high-level modeling guidance: define clear boundaries, focus on real user goals without trivial UI clicks, and distinguish mandatory steps from optional extensions.
 
-Now look at the right column: We provide the actual business requirements. Notice how Customers place orders, the Payment Gateway must always authorize payments, applying a promo voucher is optional, and Restaurant Staff and Couriers have their own actions.
+In the right column, we supply the domain story: Customers placing orders, external Payment Gateways authorizing transactions, optional vouchers, and roles for Restaurant Staff and Couriers.
 
-Because this prompt provides clear rules and structured requirements, the AI generates a clean, accurate diagram on the first try.
+With this conceptual guidance, AI produces a clean, professional use case diagram without clutter or wrong boundaries.
 
-To summarize this slide, remember this key takeaway: Giving AI clear boundaries, actor roles, and relationship rules produces professional, accurate use case diagrams.
+To summarize this slide, remember this key takeaway: Guide AI with clear boundaries, real user goals, and structured domain stories.
 -->
 
 ---
 
-### Interactive Activity: Food Delivery Use Case Boundaries (Pair Discussion)
+<!-- header: '4.3 Functional & Use Case Models' -->
+
+## Generated PlantUML & Diagram: Food Delivery Use Case Model
+
+<div class="puml-output-grid">
+<div class="puml-code-col">
+
+<div class="puml-title">Generated PlantUML Specification:</div>
+
+```plantuml
+@startuml
+left to right direction
+actor Customer
+actor "Restaurant Partner" as Restaurant
+actor "Payment Gateway\n«Supporting»" as Payment
+actor "Delivery Courier" as Courier
+
+rectangle "Food Delivery System" {
+  usecase "Browse Menus" as UC_Browse
+  usecase "Place Food Order" as UC_PlaceOrder
+  usecase "Apply Promo Voucher" as UC_Voucher
+  usecase "Track Delivery Live" as UC_Track
+  usecase "Manage Menu" as UC_Menu
+  usecase "Accept / Reject Order" as UC_AcceptOrder
+  usecase "Process Payment" as UC_Payment
+  usecase "Accept Delivery Task" as UC_AcceptTask
+}
+
+Customer -- UC_Browse
+Customer -- UC_PlaceOrder
+Customer -- UC_Track
+Restaurant -- UC_Menu
+Restaurant -- UC_AcceptOrder
+
+UC_PlaceOrder ..> UC_Payment : <<include>>
+UC_Voucher .> UC_PlaceOrder : <<extend>>
+UC_Payment -- Payment
+UC_AcceptTask -- Courier
+@enduml
+```
+
+</div>
+<div class="puml-diagram-col">
+
+<div class="puml-title">Rendered Diagram Output:</div>
+
+<div class="diagram-wrapper">
+  <img src="../../img/ch04/food_delivery/food_delivery_usecase.svg" alt="Food Delivery Use Case Diagram" />
+</div>
+
+</div>
+</div>
+
+<!--
+Here is the resulting Use Case model generated by the AI from our structured prompt.
+
+On the left, you can see the concise PlantUML code. Notice how simple declarative statements define the actors, the system boundary box, and the use case bubbles.
+Notice the key relationships: Place Food Order includes Process Payment with a dotted arrow and guillemets, while Apply Promo Voucher extends Place Food Order.
+
+On the right, you see the rendered diagram. Notice the clean separation: primary actors Customer and Restaurant Partner on the left, supporting actors Payment Gateway and Courier on the right.
+
+To summarize this slide, remember this key takeaway: A structured prompt allows AI to generate valid PlantUML that compiles cleanly into an industry-standard use case diagram.
+-->
+
+---
+
+### Interactive Activity: Evolving Use Cases with AI (Pair Hands-On)
 
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Pair Discussion: Food Delivery Scope & Use Case Relationships**
-  - **Scenario:** Design the Use Case model for a food delivery platform (e.g., DoorDash / UberEats).
-  - **Actors:** Customer, Restaurant Kitchen, Delivery Courier, Payment Gateway.
-  - **Discussion Prompts with Your Partner (3 Mins):**
-    1. Identify 2 essential use cases with an `<<include>>` relationship (e.g., *Place Order* always includes *Process Payment*).
-    2. Identify 1 scenario requiring an `<<extend>>` relationship with an explicit extension point (e.g., *Apply Voucher* or *Select Contactless Drop-off*).
-    3. Is *Payment Gateway* placed inside or outside the system boundary? Why?
+  **Hands-on Experiment: Mutate Requirements & Audit AI Output (4 Mins)**
+  - **1. Add ONE New Feature to the Use Case Prompt:**
+    - *Scheduled Ordering:* Allow `Customer` to pre-order food for future delivery.
+    - *Live Chat Support:* Connect `Customer` with `Support Agent` or `Courier`.
+    - *Group Ordering:* Multiple users add items into a single pooled order.
+  - **2. Ask AI to Generate:** Prompt an LLM to update the PlantUML use case diagram.
+  - **3. Render & Critique:** Paste into [PlantText](https://www.planttext.com) and audit:
+    - Did AI keep external actors/gateways **outside** the system boundary?
+    - Did AI correctly distinguish **mandatory steps** from **optional extensions**?
+    - Did AI avoid trivial button clicks (e.g., no "Click Confirm")?
 
   </div>
   <div class="discussion-logo">
@@ -901,19 +971,20 @@ To summarize this slide, remember this key takeaway: Giving AI clear boundaries,
 </div>
 
 <!--
-Let's pause for a 3-minute pair discussion: Food Delivery Use Case Boundaries! Turn to your neighbor—you are system architects designing a delivery app.
+Now let's do a hands-on pair experiment! Work with your partner to test AI's requirements modeling accuracy in real time.
 
-Look at the three questions on the slide:
-First, find two use cases that have an <<include>> relationship. For example, 'Place Order' must always include 'Process Payment'.
-Second, find a scenario where <<extend>> is needed. When is behavior optional? For example, applying a discount coupon or choosing contactless drop-off.
-Third, where does the Payment Gateway belong? Inside or outside the box? Since it is run by a third-party bank, it must be outside!
+Look at the instructions on the screen:
+Take our Food Delivery Use Case prompt from earlier and mutate it with one new business requirement:
+- Option A: Scheduled delivery for future dates and times.
+- Option B: Real-time customer support chat with an agent or courier.
+- Option C: Group ordering where multiple teammates add food to a single cart.
 
-Debriefing Guide:
-1. Include: 'Place Order' includes 'Process Payment' because an order cannot complete without paying.
-2. Extend: 'Apply Promo Voucher' extends 'Place Order' only when the customer has a coupon code.
-3. Boundary: Payment Gateway is an external actor outside the boundary box.
+Ask your AI assistant to generate the updated PlantUML use case diagram, paste the code into PlantText, and critically audit the result:
+Did external third-party services stay outside the system boundary?
+Did AI properly differentiate mandatory core flows from optional extensions?
+Did AI fall into the trap of creating tiny button-click bubbles?
 
-To summarize this slide, remember this key takeaway: In any system, always clearly separate what is mandatory, what is optional, and what stays outside the system boundary.
+To summarize this slide, remember this key takeaway: Testing AI with mutated requirements reveals whether it truly understands system boundaries and user goals.
 -->
 
 ---
@@ -1211,31 +1282,29 @@ To summarize this slide, remember this key takeaway: A real class diagram combin
 
 ## AI Assistance: Guidelines for Class Modeling
 
-- **1. Persona & Level of Abstraction:**
-  - Instruct the AI to act as a *Principal Domain Architect* creating a *Domain Model (Conceptual Level)* or *Design Model (Implementation Level)*.
-- **2. Whole-Part Coupling Discipline:**
-  - **Composition (`*--`, ◆):** Explicitly require the AI to identify entities with dependent lifecycles (cascade-deleted with parent).
-  - **Aggregation (`o--`, ◇):** Require open diamonds for shared parts that maintain independent lifecycles.
-  - **Prohibit Default Associations:** Forbid the AI from taking the easy path of drawing generic lines (`--`) without whole-part justification.
-- **3. Encapsulation & Multiplicity Rules:**
-  - Enforce explicit visibility (`-` private attributes, `+` public methods, `#` protected).
-  - Require explicit multiplicities on *both* association ends (e.g., `1` to `1..*`).
-- **4. Architectural Verification Checklist:**
-  - Did the AI confuse Generalization (`<|--`) with Composition (`*--`)?
-  - Are sensitive fields (passwords, tokens, addresses) declared `- private`?
-  - Are multiplicities logically sound (e.g., can an order exist with 0 items)?
+- **1. Define Core Domain Entities:**
+  - Instruct AI to identify key business concepts (e.g., `Order`, `Customer`, `Item`) rather than raw database tables or UI widgets.
+- **2. Clarify Object Relationships:**
+  - **Whole vs. Part:** Guide AI to distinguish tight lifecycle ownership from loosely shared parts.
+  - **Multiplicity:** Ensure AI specifies cardinality on both ends (e.g., 1 customer, many orders).
+  - **Prefer Composition over Inheritance:** Prevent AI from creating deep "is-a" class hierarchies where simple composition fits better.
+- **3. Encapsulation & Responsibilities:**
+  - Keep internal state private; expose meaningful domain operations as methods.
+- **4. Human Reality Check:**
+  - Verify AI didn't hallucinate extra classes, invert arrows, or lazily draw plain associations.
 
 <!--
-When asking AI to generate class diagrams, clear rules are essential.
+When asking AI to help design class diagrams, we don't need to micromanage syntax right away. Instead, focus on four key conceptual guidelines:
 
-If you don't give specific rules, AI models often draw flat, lazy diagrams where every class is connected by a simple plain line, completely missing composition and aggregation. Sometimes they even use inheritance when they should have used composition!
+First, ask AI to identify the core domain entities—focusing on business concepts like Orders and Customers, not raw database tables.
 
-To get good results, give the AI three strict rules:
-First, specify whether whole-part links are composition or aggregation.
-Second, require private visibility for attributes and public for methods.
-Third, demand numbers on both ends of every association line.
+Second, clarify relationships: Have AI think about whole-part ownership, multiplicity on both ends, and avoid overusing inheritance where simple composition is better.
 
-To summarize this slide, remember this key takeaway: Guide AI by enforcing whole-part relationships, private attributes, and numbers on both ends of every line.
+Third, ensure encapsulation: Internal data should stay private, exposing clear operations.
+
+Finally, always conduct a human reality check: Verify that AI didn't hallucinate extra classes or lazily connect everything with plain, meaningless lines.
+
+To summarize this slide, remember this key takeaway: Guide AI by clarifying core business concepts, ownership, multiplicities, and encapsulation—then verify against real business rules.
 -->
 
 ---
@@ -1252,13 +1321,12 @@ Generate a formal PlantUML Class Diagram
 for a Food Delivery Domain Model.
 ```
 
-**2. Modeling Constraints:**
-- `Order` *must* have Composition (`*--`) with `OrderItem` (multiplicity `1` to `1..*`).
-- `Order` *must* have Aggregation (`o--`) with `Courier` (`*` to `0..1`).
-- `OrderItem` associates with `MenuItem` (`*` to `1`).
-- Declare all attributes with `-` private visibility and data types.
-- Provide primary business methods (`+ calculateTotal()`, `+ assignCourier()`).
-- Output clean `@startuml ... @enduml` block.
+**2. Modeling Guidance:**
+- Identify core entities: `Customer`, `Restaurant`, `Order`, `OrderItem`, `Courier`.
+- Distinguish whole-part relationships (an `Order` tightly owns its items).
+- Clarify multiplicities on both ends of connections.
+- Apply encapsulation (hide attributes, expose business operations).
+- Keep external payment processing decoupled via an interface.
 
 </div>
 <div>
@@ -1275,30 +1343,113 @@ for a Food Delivery Domain Model.
 </div>
 
 <!--
-Here is a complete prompt example for creating a Food Delivery Class Model.
+Here is an effective prompt example for creating a Food Delivery Class Model.
 
-Look at the left column: We set strict constraints. We tell the AI to act as a Software Architect. We specify that Order has composition with OrderItem, but aggregation with Courier. We also require private attributes and methods.
+Look at the left column: Instead of micromanaging syntax, we provide high-level architectural guidance: identify core entities, distinguish whole-part ownership, clarify multiplicities, enforce encapsulation, and decouple payments through an interface.
 
-Now look at the right column: We provide the domain story. Notice how Customers place Orders, Orders contain OrderItems that must be deleted if the order is deleted, Couriers deliver orders, and payments go through an interface.
+In the right column, we provide the business requirements story describing Customers, Restaurants, Orders, and Couriers.
 
-Because the prompt is so specific, the AI generates accurate PlantUML without guessing or making up wrong arrows.
+When you give AI clear structural guidance and rich domain context, it produces clean, accurate models without making careless architecture mistakes.
 
-To summarize this slide, remember this key takeaway: Providing explicit relationship rules and clear entity stories in your prompt helps AI generate accurate class diagrams.
+To summarize this slide, remember this key takeaway: Guide AI by stating core business entities, ownership relationships, multiplicities, and interfaces—not just syntax symbols.
 -->
 
 ---
 
-### Interactive Activity: Food Delivery Domain Class Architecture (Pair Discussion)
+<!-- header: '4.4 Structural & Class Models' -->
+
+## Generated PlantUML & Diagram: Food Delivery Class Model
+
+<div class="puml-output-grid">
+<div class="puml-code-col">
+
+<div class="puml-title">Generated PlantUML Specification:</div>
+
+```plantuml
+@startuml
+class Customer {
+  - customerId: String
+  - deliveryAddress: String
+  + placeOrder(): Order
+}
+class Restaurant {
+  - restaurantId: String
+  - address: String
+  + acceptOrder(): Boolean
+}
+class MenuItem {
+  - itemId: String
+  - price: Double
+}
+class Order {
+  - orderId: String
+  - totalAmount: Double
+  + calculateTotal(): Double
+  + assignCourier(c: Courier): void
+}
+class OrderItem {
+  - quantity: Integer
+  - subtotal: Double
+}
+class Courier {
+  - courierId: String
+  - vehicleType: String
+}
+interface PaymentProcessor {
+  + chargeCreditCard(amount: Double): Boolean
+}
+
+Restaurant "1" *-- "1..*" MenuItem : owns >
+Order "1" *-- "1..*" OrderItem : consists of >
+OrderItem "*" --> "1" MenuItem : references >
+Customer "1" --> "*" Order : places >
+Order "*" o-- "0..1" Courier : assigned to >
+Order ..> PaymentProcessor : delegates >
+@enduml
+```
+
+</div>
+<div class="puml-diagram-col">
+
+<div class="puml-title">Rendered Diagram Output:</div>
+
+<div class="diagram-wrapper">
+  <img src="../../img/ch04/food_delivery/food_delivery_class.svg" alt="Food Delivery Class Diagram" />
+</div>
+
+</div>
+</div>
+
+<!--
+Here is the formal Class Model generated from our architectural prompt.
+
+Look at the left column: The AI faithfully followed our modeling constraints:
+First, Order has composition with OrderItem using the filled diamond asterisk-dash-dash symbol.
+Second, Order has aggregation with Courier using the open diamond lowercase-o-dash-dash symbol.
+Third, attributes are private with minus signs, and business methods calculateTotal and assignCourier are explicitly declared.
+
+On the right, see how the diagram visually communicates these exact architectural semantics: solid diamonds for life-cycle ownership, hollow diamonds for weak references, and clean multiplicities on both ends.
+
+To summarize this slide, remember this key takeaway: Specifying explicit UML connector tokens in your AI prompt guarantees mathematically correct class relationships.
+-->
+
+---
+
+### Interactive Activity: Evolving Food Delivery with AI (Pair Hands-On)
 
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Pair Discussion: Whole-Part Coupling & Multiplicity in Food Delivery**
-  - **Domain Entities:** `Customer`, `Order`, `OrderItem`, `MenuItem`, `Restaurant`, `Courier`.
-  - **Discussion Prompts with Your Partner (3 Mins):**
-    1. **Composition vs. Aggregation:** Should the link between `Order` and `OrderItem` be composition (◆) or aggregation (◇)? What about between `Order` and `Courier`? Why?
-    2. **Multiplicity Dilemma:** Can an `Order` contain `OrderItem`s from multiple `Restaurant`s in a single checkout? How does this business rule change your class associations?
-    3. **Encapsulation:** Which attributes on `Customer` and `Order` should be `- private` to safeguard payment tokens and customer addresses?
+  **Hands-on Experiment: Mutate Requirements & Audit AI Output (4 Mins)**
+  - **1. Add ONE New Rule to the Food Delivery Prompt:**
+    - *Multi-Vendor:* Allow `Order` to bundle items from multiple `Restaurant`s.
+    - *Tipping:* Allow `Customer` to tip and rate the assigned `Courier`.
+    - *VIP Membership:* Add subscription tier (`Customer` gets free delivery).
+  - **2. Ask AI to Generate:** Prompt an LLM to update the PlantUML class diagram.
+  - **3. Render & Critique:** Paste into [PlantText](https://www.planttext.com) and audit:
+    - Did AI preserve **Composition** (`*--`) vs. **Aggregation** (`o--`)?
+    - Are **multiplicities** (`1..*`, `0..1`) logically sound for the new rule?
+    - Did AI hallucinate redundant classes or violate `- private` fields?
 
   </div>
   <div class="discussion-logo">
@@ -1307,19 +1458,25 @@ To summarize this slide, remember this key takeaway: Providing explicit relation
 </div>
 
 <!--
-Let's pause for a 3-minute pair discussion: Food Delivery Domain Class Architecture! Turn to your neighbor and think like software architects.
+Now let's do a hands-on pair experiment! Work with your partner to test AI's architectural accuracy in real time.
 
-Look at the three questions on the screen:
-Question 1: Is Order to OrderItem composition or aggregation? What about Order to Courier?
-Question 2: Can an order have items from more than one restaurant? How does that change your lines and numbers?
-Question 3: Which fields must be private to keep customer data safe?
+Look at the instructions on the screen:
+Take the Food Delivery prompt from the previous slide and modify it with one new business requirement:
+- Option A: Allow orders to bundle items from multiple restaurants in a single checkout.
+- Option B: Add a direct courier tipping and review mechanism.
+- Option C: Add VIP customer membership subscriptions.
+
+Ask your AI assistant to generate the updated PlantUML, paste the code into PlantText to render the diagram, and critically inspect the result:
+Did the AI maintain proper composition and aggregation?
+Did it correctly adjust multiplicities, or did it introduce architectural anti-patterns?
+Are all private attributes and public methods intact?
 
 Debriefing Guide:
-1. Order to OrderItem is strict Composition (solid diamond) because items cannot exist without an order. Order to Courier is Aggregation (hollow diamond) because the courier exists before and after the delivery.
-2. If multi-restaurant orders are allowed, OrderItem must link directly to Restaurant, splitting the order into sub-orders.
-3. Customer addresses, phone numbers, and payment tokens must always be private!
+1. In Scenario A, OrderItem must link directly to Restaurant, and an Order may need SubOrders or delivery splits. Many LLMs fail to update multiplicities!
+2. In Scenario B, Tipping links Payment to Courier or adds tipAmount; rating links Customer to Courier.
+3. Always remember our golden rule: AI drafts the diagram; the human architect validates the semantics!
 
-To summarize this slide, remember this key takeaway: In domain modeling, decide whether parts live or die with the parent, and always protect sensitive data.
+To summarize this slide, remember this key takeaway: When business requirements evolve, prompt AI with clear constraints and critically audit the generated UML for structural correctness.
 -->
 
 ---
@@ -1611,30 +1768,27 @@ To summarize this slide, remember this key takeaway: Draw sequence blueprints fi
 
 ## AI Assistance: Guidelines for Sequence Modeling
 
-- **1. Persona & Architectural Pattern:**
-  - Instruct the AI to act as a *Distributed Systems & API Architect*.
-  - Enforce the **Boundary-Control-Entity (BCE)** pattern to ensure clean separation of UI, business logic, and database persistence.
-- **2. Message Syntax & Combined Fragments:**
-  - **Synchronous Calls (`->`) & Returns (`-->`):** Require explicit return messages with return data types to prevent dangling activation bars.
-  - **Asynchronous Messages (`->>`):** Mandate open arrows for background messaging queues, event buses, and webhook alerts.
-  - **Control Fragments:** Force the AI to use `alt` for branching (success vs. failure/timeout), `opt` for optional steps, and `loop` for retries.
-  - **Activation Lifespans:** Require `activate` and `deactivate` on lifelines.
-- **3. Architectural Verification Checklist:**
-  - Did the AI bypass the controller (e.g., UI directly querying database)?
-  - Are alternate branches mutually exclusive with clear guard conditions `[condition]`?
-  - Are asynchronous notifications decoupled from blocking synchronous workflows?
+- **1. Enforce Architectural Layering:**
+  - Instruct AI to follow a clean layered structure (UI → Controller / Business Logic → Entities & Databases).
+  - Prevent AI from taking shortcuts like connecting UI directly to database storage.
+- **2. Capture Interaction Dynamics:**
+  - **Synchronous Requests & Replies:** Clearly show calls and corresponding response acknowledgments.
+  - **Branching (Success vs. Failure):** Require AI to handle both normal success and alternative exception scenarios (e.g., payment failure).
+  - **Decoupled / Asynchronous Tasks:** Distinguish immediate blocking actions from background notifications (e.g., alert queues).
+- **3. Human Reality Check:**
+  - Did AI bypass business logic layers?
+  - Are alternate scenarios mutually exclusive with clear conditions?
 
 <!--
-When you ask an AI model to generate a sequence diagram, you need to give it clear architectural guardrails.
+When asking AI to generate sequence diagrams, keep the focus on architectural layering and communication flow.
 
-Why? Because if you just say 'draw a checkout sequence,' the AI will almost always make a rookie mistake: it will connect the front-end UI directly to the database! That completely breaks layered architecture.
+First, enforce architectural layering. The biggest mistake AI makes is letting the frontend UI talk directly to the database. We must ensure interactions flow cleanly from UI through business controllers.
 
-To get great results, follow these three rules:
-First, tell the AI to use the Boundary-Control-Entity, or BCE pattern. The UI must talk to a Controller, and only the Controller talks to services and databases.
-Second, require proper syntax: ask for synchronous calls (`->`), returns (`-->`), and asynchronous messages (`->>`). Demand an `alt` fragment for success versus failure.
-Third, verify the output against the checklist: did the AI bypass the controller? Are the guard conditions clear?
+Second, capture interaction dynamics: make sure both requests and replies are accounted for, require AI to model both success and failure paths, and separate immediate responses from background asynchronous notifications.
 
-To summarize this slide, remember this key takeaway: Guide AI by enforcing BCE layering, explicit return arrows, and alt fragments for error handling.
+Finally, check the logic: did the AI bypass the business layer? Are branch conditions mutually exclusive?
+
+To summarize this slide, remember this key takeaway: Guide AI by enforcing clean architectural layers, clear request-reply flows, and explicit success versus failure paths.
 -->
 
 ---
@@ -1646,22 +1800,16 @@ To summarize this slide, remember this key takeaway: Guide AI by enforcing BCE l
 
 **1. Role & Task Instruction:**
 ```text
-Act as a Senior Backend Systems Architect.
-Generate a PlantUML Sequence Diagram
-using the Boundary-Control-Entity (BCE) pattern.
+Act as a Backend Systems Architect.
+Generate a clean PlantUML Sequence Diagram
+for a Food Delivery Checkout flow.
 ```
 
-**2. Modeling Constraints:**
-- Define lifelines:
-  - `actor Customer as ":Customer"`
-  - `boundary CheckoutUI as ":CheckoutUI"`
-  - `control OrderCtrl as ":OrderController"`
-  - `boundary StripeAPI as ":PaymentGateway"`
-  - `entity OrderEntity as ":Order"`
-  - `queue KitchenQueue as ":KitchenOrderQueue"`
-- Use `alt` fragment for `[Payment Approved]` vs. `[Payment Declined]`.
-- Use async `->>` to publish to `KitchenOrderQueue`.
-- Include `activate` and `deactivate` bars.
+**2. Modeling Guidance:**
+- Follow layered architecture (UI → Controller → Entities / External APIs).
+- Explicitly model both paths: **Payment Approved** vs. **Payment Declined**.
+- Show asynchronous handoff for background kitchen notification.
+- Show active execution lifespans during processing.
 
 </div>
 <div>
@@ -1670,46 +1818,115 @@ using the Boundary-Control-Entity (BCE) pattern.
 > "A Customer initiates checkout by clicking 'Pay Now' on the **CheckoutUI**.
 > The **CheckoutUI** forwards `submitOrder(cartItems, paymentInfo)` to the **OrderController**.
 > The **OrderController** calls **PaymentGateway** `authorizeCharge(amount, token)`.
-> If payment is approved:
-> 1. PaymentGateway returns `chargeToken`.
-> 2. OrderController calls **Order** entity to persist the new order as `PLACED`.
-> 3. OrderController publishes an asynchronous event `orderPlacedEvent` to the **KitchenOrderQueue**.
-> 4. OrderController returns `orderSuccess(orderId)` to the CheckoutUI.
-> If payment is declined:
-> 1. PaymentGateway returns `declinedError`.
-> 2. OrderController logs the failure and returns `paymentFailed()` to CheckoutUI without creating an order."
+> **If payment is approved:**
+> - PaymentGateway returns `chargeToken`.
+> - OrderController persists **Order** as `PLACED`, publishes async `orderPlacedEvent` to **KitchenOrderQueue**, and returns `orderSuccess(orderId)` to CheckoutUI.
+> **If payment is declined:**
+> - PaymentGateway returns `declinedError`.
+> - OrderController logs failure and returns `paymentFailed()` to CheckoutUI without creating an order."
 
 </div>
 </div>
 
 <!--
-Here is a complete, real-world prompt example for generating a food delivery sequence diagram.
+Here is a clear prompt example for generating a food delivery sequence diagram.
 
-Look at the left column. We first assign a clear persona: 'Act as a Senior Backend Systems Architect.' Then we specify the exact lifelines using BCE roles: Customer as the actor, CheckoutUI as the boundary, OrderController as the control layer, StripeAPI as external payment, Order as the entity, and KitchenOrderQueue as an async queue.
+Look at the left column: Instead of micromanaging syntax, we provide high-level architectural guidance: follow layered architecture, handle both approved and declined payment scenarios, and decouple background kitchen notifications.
 
-We also add explicit rules: use an `alt` fragment for payment approved versus declined, and use open arrows (`->>`) for the kitchen queue.
+In the right column, we provide the step-by-step scenario text detailing the request flow, success path, and error path.
 
-In the right column, we provide the step-by-step scenario text, detailing both the approved path and the declined error path.
+When given this clean architectural context, AI generates structured sequence diagrams that follow proper enterprise design principles.
 
-When you feed this structured prompt to an LLM, it generates pristine PlantUML code that matches enterprise backend standards.
-
-To summarize this slide, remember this key takeaway: Specifying BCE lifelines and explicit alternate paths in your prompt leads to production-grade sequence diagrams.
+To summarize this slide, remember this key takeaway: Guide AI with layered architecture principles, clear alternate paths, and realistic business scenarios.
 -->
 
 ---
 
-### Interactive Activity: Food Delivery Checkout & Failure Flows (Pair Discussion)
+<!-- header: '4.5 Interaction & Sequence Diagrams' -->
+
+## Generated PlantUML & Diagram: Food Delivery Sequence Model
+
+<div class="puml-output-grid">
+<div class="puml-code-col">
+
+<div class="puml-title">Generated PlantUML Specification:</div>
+
+```plantuml
+@startuml
+autonumber
+actor Customer
+boundary CheckoutUI
+control OrderCtrl
+boundary StripeAPI
+entity OrderEntity
+queue KitchenQueue
+
+Customer -> CheckoutUI: clickPayNow()
+activate CheckoutUI
+CheckoutUI -> OrderCtrl: submitOrder(cart, payment)
+activate OrderCtrl
+OrderCtrl -> StripeAPI: authorizeCharge(amount, token)
+activate StripeAPI
+
+alt Payment Approved
+  StripeAPI --> OrderCtrl: chargeToken
+  deactivate StripeAPI
+  OrderCtrl -> OrderEntity: create(PLACED)
+  OrderCtrl ->> KitchenQueue: orderPlacedEvent
+  OrderCtrl --> CheckoutUI: orderSuccess(orderId)
+  CheckoutUI --> Customer: displaySuccess()
+else Payment Declined
+  StripeAPI --> OrderCtrl: declinedError
+  OrderCtrl --> CheckoutUI: paymentFailed()
+  deactivate OrderCtrl
+  CheckoutUI --> Customer: displayError()
+  deactivate CheckoutUI
+end
+@enduml
+```
+
+</div>
+<div class="puml-diagram-col">
+
+<div class="puml-title">Rendered Diagram Output:</div>
+
+<div class="diagram-wrapper">
+  <img src="../../img/ch04/food_delivery/food_delivery_sequence.svg" alt="Food Delivery Sequence Diagram" />
+</div>
+
+</div>
+</div>
+
+<!--
+Here is the AI-generated BCE Sequence Diagram for checkout.
+
+Look at the PlantUML on the left:
+Notice how the lifelines are cleanly typed: actor Customer, boundary CheckoutUI, control OrderCtrl, boundary StripeAPI, entity OrderEntity, and queue KitchenQueue.
+Notice the alt combined fragment clearly delineating the success branch from the declined failure branch.
+Notice the asynchronous arrow dash-dash-greater-than publishing orderPlacedEvent to KitchenQueue.
+
+On the right, the rendered sequence diagram shows precise activation bars and clear return flows, preventing race conditions and keeping UI decoupled from backend databases.
+
+To summarize this slide, remember this key takeaway: Enforcing BCE stereotypes and control fragments in your prompt ensures AI produces robust, production-grade interaction blueprints.
+-->
+
+---
+
+### Interactive Activity: Evolving Sequences with AI (Pair Hands-On)
 
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Pair Discussion: Tracing Runtime Messages & Boundary-Control-Entity**
-  - **Scenario:** A customer taps "Confirm & Pay" for a $35 food delivery order.
-  - **Lifelines:** `:CheckoutUI` (Boundary), `:OrderController` (Control), `:Order` (Entity), `:PaymentGateway` (External API).
-  - **Discussion Prompts with Your Partner (3 Mins):**
-    1. Trace the primary message sequence when payment succeeds. Which object instantiates the `:Order` entity?
-    2. How would you use an `alt` combined fragment to model payment decline vs. gateway timeout?
-    3. Should notifying the restaurant kitchen be a synchronous (`->`) or asynchronous (`->>`) message? Why?
+  **Hands-on Experiment: Mutate Flow & Audit AI Output (4 Mins)**
+  - **1. Add ONE Edge Case to the Checkout Flow:**
+    - *Gateway Timeout:* Payment gateway takes >5s to respond (trigger retry or fallback).
+    - *Split Payment:* Allow customer to pay with partial Wallet Balance + Credit Card.
+    - *Out of Stock:* Restaurant runs out of an item during checkout.
+  - **2. Ask AI to Generate:** Prompt an LLM to update the PlantUML sequence diagram.
+  - **3. Render & Critique:** Paste into [PlantText](https://www.planttext.com) and audit:
+    - Did AI preserve **layering** (UI → Controller) without UI querying DB directly?
+    - Are **success vs. failure branches** clearly partitioned with return messages?
+    - Are **background alerts** (e.g., kitchen notifications) properly decoupled?
 
   </div>
   <div class="discussion-logo">
@@ -1718,23 +1935,20 @@ To summarize this slide, remember this key takeaway: Specifying BCE lifelines an
 </div>
 
 <!--
-Now it is time for our pair discussion! Turn to your neighbor and act as a team of backend systems architects for three minutes.
+Now let's do a hands-on pair experiment for Sequence Modeling! Work with your partner to test how AI handles complex runtime interactions.
 
-Imagine a customer taps 'Confirm and Pay' for a $35 food delivery order. You have four lifelines: CheckoutUI, OrderController, Order, and PaymentGateway.
+Look at the instructions on the screen:
+Take our Food Delivery Sequence prompt from earlier and introduce one realistic edge case:
+- Option A: Payment Gateway Timeout—the external bank doesn't reply in time.
+- Option B: Split Payment—using both digital wallet points and a credit card.
+- Option C: Item Sold Out—the kitchen marks an item unavailable during the payment step.
 
-Discuss these three questions with your partner:
-Question 1: When payment succeeds, trace the messages. Which object should create the Order entity?
-Question 2: How would you use an `alt` fragment to show what happens if payment is declined?
-Question 3: Should alerting the kitchen be a synchronous call or an asynchronous message? Why?
+Ask your AI assistant to generate the updated PlantUML sequence diagram, render it in PlantText, and critically audit the architecture:
+Did the AI maintain clean layering, or did it let the frontend UI talk directly to the database?
+Are alternate error paths clearly modeled with return values?
+Did it decouple background notifications so the customer isn't left hanging?
 
-Take three minutes to discuss.
-
-Let's review the answers together:
-For Question 1: CheckoutUI sends `submitOrder()` to OrderController. After the controller gets confirmation from PaymentGateway, the OrderController creates the Order entity. The UI should never create the entity directly!
-For Question 2: In the `alt` box, the top compartment is `[payment approved]`, where the order is saved. The bottom compartment is `[else]`, where an error is returned to the UI.
-For Question 3: Notifying the kitchen should be asynchronous (`->>`). You do not want the customer's phone to freeze waiting for a kitchen tablet to respond!
-
-To summarize this slide, remember this key takeaway: Sequence diagrams make controller responsibilities, failure handling, and async decoupling crystal clear before coding.
+To summarize this slide, remember this key takeaway: Testing AI with failure flows and timeouts ensures your dynamic architecture handles real-world distributed challenges.
 -->
 
 ---
@@ -1936,26 +2150,6 @@ To summarize this slide, remember this key takeaway: Fork bars launch concurrent
 <!-- _class: full-image-slide -->
 
 <div class="centered-image">
-  <img src="../../img/ch04/nb_act/08_object_flow.jpg" alt="Tracking Data & Objects: Object Nodes and Object Flows" />
-</div>
-
-<!--
-Workflows do not just execute steps—they also create and transform data.
-
-Look at the difference in shapes on this screen:
-Actions, like 'Generate Report' and 'Approve Data', have rounded corners.
-In the middle is an Object Node: notice its sharp corners! It represents a real data artifact, like 'Financial_Report.pdf'.
-
-The dashed arrows are Object Flows: they show data moving into and out of tasks. Generate Report outputs the PDF, and Approve Data takes that PDF as an input.
-
-To summarize this slide, remember this key takeaway: Use sharp rectangles for data object nodes and dashed arrows to show data moving between rounded action steps.
--->
-
----
-
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
   <img src="../../img/ch04/nb_act/09_swimlane.jpg" alt="The Multi-Actor Accountability Problem" />
 </div>
 
@@ -2067,32 +2261,29 @@ To summarize this slide, remember this key takeaway: Design workflows in three p
 
 ## AI Assistance: Guidelines for Activity Modeling
 
-- **1. Persona & Syntax Standard:**
-  - Instruct the AI to act as a *Distributed Workflow & Business Process Architect*.
-  - Require the modern **PlantUML Activity Beta syntax** (`start`, `stop`, `if (...) then (...) else (...)`, `fork`, `join`).
-- **2. Swimlane Responsibility Boundaries:**
-  - Require vertical or horizontal swimlanes (e.g., `|Customer|`, `|Restaurant Kitchen|`, `|Dispatch Engine|`, `|Delivery Courier|`) to allocate actions to distinct roles or microservices.
-- **3. Concurrency & Synchronization Rules:**
-  - **Fork (`fork` / `fork again`):** Explicitly state which processes occur simultaneously in parallel.
-  - **Join (`end fork`):** Mandate a join synchronization bar before any action that requires all parallel branches to complete.
-  - **Decision Diamonds:** Require explicit, mutually exclusive guard conditions on decision branches.
-- **4. Architectural Verification Checklist:**
-  - Does every `fork` have a corresponding `join` synchronization bar?
-  - Are transitions crossing swimlane boundaries logically valid and minimal?
-  - Are there deadlock states where an activity waits on an unfulfillable condition?
+- **1. Establish Clear Role Boundaries (Swimlanes):**
+  - Partition actions by role or system (e.g., Customer, Kitchen, Courier, Dispatch) so every action has an explicit owner.
+- **2. Identify True Concurrency & Synchronization:**
+  - **Parallel Workflows:** Guide AI to recognize independent steps that happen at the same time (e.g., cooking food while dispatching a driver).
+  - **Synchronization Milestones:** Explicitly specify where parallel branches must wait and join before the workflow can proceed.
+- **3. Explicit Decision Points:**
+  - Ensure branch conditions are clear and cover all possible outcomes.
+- **4. Human Reality Check:**
+  - Did AI collapse parallel work into a purely sequential list?
+  - Does every split path properly reunite at a synchronization point?
 
 <!--
-When prompting an AI to generate an activity diagram, you need to watch out for two common mistakes.
+When asking AI to model activity workflows, focus on responsibilities, concurrency, and synchronization.
 
-First, LLMs love to draw everything as a straight sequential line, even when tasks should happen at the same time.
-Second, if they do create a fork, they often forget the join bar, leaving parallel tasks floating with no way to synchronize!
+First, divide responsibilities across roles or swimlanes: Customer, Kitchen, Dispatch, and Courier. Every activity should have an obvious owner.
 
-To get great results:
-Tell the AI to use modern PlantUML activity beta syntax.
-Define clear swimlanes so every action belongs to an actor.
-And explicitly instruct the AI where the `fork` starts and where the `end fork` join bar synchronizes.
+Second, pay close attention to parallel concurrency and synchronization. AI models frequently make the mistake of drawing everything in a single sequential line. Guide the AI to identify tasks that run simultaneously and clearly define where they must join.
 
-To summarize this slide, remember this key takeaway: Guide AI by requiring swimlanes, modern PlantUML syntax, and strictly paired fork and join bars.
+Third, ensure decisions have clear, complete branches.
+
+Finally, conduct a human reality check: verify that parallel tasks actually run concurrently and don't leave loose ends without proper synchronization.
+
+To summarize this slide, remember this key takeaway: Guide AI by assigning clear role swimlanes, identifying parallel tasks, and enforcing synchronization milestones.
 -->
 
 ---
@@ -2104,20 +2295,16 @@ To summarize this slide, remember this key takeaway: Guide AI by requiring swiml
 
 **1. Role & Task Instruction:**
 ```text
-Act as a Distributed Workflow Architect.
-Generate a PlantUML Activity Diagram
-using swimlanes and parallel concurrency.
+Act as a Workflow & Process Architect.
+Generate a clean PlantUML Activity Diagram
+using swimlanes and parallel processing.
 ```
 
-**2. Modeling Constraints:**
-- Use 4 swimlanes:
-  - `|Customer|`, `|Restaurant Kitchen|`,
-  - `|Dispatch Engine|`, `|Delivery Courier|`
-- Immediately after order confirmation, insert a `fork` bar:
-  - Branch 1: Kitchen prepares and packages meal.
-  - Branch 2: Dispatch matches and assigns courier.
-- Use `end fork` (join) to synchronize food packaged AND courier arrived at store.
-- Use valid PlantUML activity beta syntax.
+**2. Modeling Guidance:**
+- Divide workflow into 4 roles: Customer, Kitchen, Dispatch, Courier.
+- Identify parallel steps after order payment (cooking meal while matching courier).
+- Synchronize branches: courier cannot pick up meal until both cooking is finished and courier has arrived.
+- Clearly show process start, decision points, and completion.
 
 </div>
 <div>
@@ -2135,34 +2322,104 @@ using swimlanes and parallel concurrency.
 </div>
 
 <!--
-Here is a complete prompt example for modeling a food delivery workflow.
+Here is a clear prompt example for modeling a food delivery workflow.
 
-Look at the structure:
-In the left column, we specify four distinct swimlanes: Customer, Restaurant Kitchen, Dispatch Engine, and Delivery Courier.
-We explicitly declare a `fork` bar right after payment so cooking and courier dispatch run in parallel.
-And we require an `end fork` join bar to synchronize before the handoff.
+Look at the left column: Instead of micromanaging syntax, we provide high-level process guidance: divide the flow into four roles, highlight parallel steps (cooking while matching courier), and define the key synchronization milestone.
 
-In the right column, we describe the scenario and emphasize the 'Synchronization Milestone': the courier cannot leave without the food, and the food cannot leave without a courier.
+In the right column, we describe the business scenario and emphasize that courier arrival and food preparation must both finish before the handoff.
 
-This gives the LLM zero room for confusion, producing a flawless PlantUML activity diagram.
+With this conceptual guidance, AI structures the diagram into clean swimlanes with proper parallel splits and synchronization points.
 
-To summarize this slide, remember this key takeaway: Clearly defining swimlanes and synchronization milestones in your prompt ensures AI models parallel workflows correctly.
+To summarize this slide, remember this key takeaway: Guide AI with clear role boundaries, concurrent activities, and explicit synchronization milestones.
 -->
 
 ---
 
-### Interactive Activity: Food Delivery Kitchen & Dispatch Concurrency (Pair Discussion)
+<!-- header: '4.6 Process & Activity Diagrams' -->
+
+## Generated PlantUML & Diagram: Food Delivery Activity Model
+
+<div class="puml-output-grid">
+<div class="puml-code-col">
+
+<div class="puml-title">Generated PlantUML Specification:</div>
+
+```plantuml
+@startuml
+|Customer|
+start
+:Confirm & pay for order;
+
+fork
+  |Restaurant Kitchen|
+  :Receive order ticket;
+  :Prepare food items;
+  :Package meal into delivery bag;
+fork again
+  |Dispatch Engine|
+  :Calculate transit route;
+  :Query nearby couriers;
+  :Dispatch assignment offer;
+  |Delivery Courier|
+  :Accept assignment;
+  :Drive to restaurant;
+end fork
+
+|Restaurant Kitchen|
+:Hand off packaged meal to Courier;
+
+|Delivery Courier|
+:Transport meal to customer address;
+
+|Customer|
+:Verify delivery with OTP;
+:Receive meal;
+stop
+@enduml
+```
+
+</div>
+<div class="puml-diagram-col">
+
+<div class="puml-title">Rendered Diagram Output:</div>
+
+<div class="diagram-wrapper">
+  <img src="../../img/ch04/food_delivery/food_delivery_activity.svg" alt="Food Delivery Activity Diagram" />
+</div>
+
+</div>
+</div>
+
+<!--
+Here is the resulting Activity Diagram with parallel swimlane execution.
+
+Look at the PlantUML on the left:
+Notice how vertical pipe characters define the four swimlanes: Customer, Restaurant Kitchen, Dispatch Engine, and Delivery Courier.
+Notice the fork and fork-again block where kitchen food preparation and courier dispatch run concurrently in parallel.
+Notice the end fork synchronization bar before hand-off, guaranteeing that the courier has arrived AND the meal is packaged before the hand-off action begins.
+
+On the right, the rendered activity diagram shows the distinct visual lanes and clear parallel concurrency.
+
+To summarize this slide, remember this key takeaway: Prompting AI with explicit swimlane names and fork/join synchronization constructs models complex asynchronous business processes accurately.
+-->
+
+---
+
+### Interactive Activity: Evolving Workflows with AI (Pair Hands-On)
 
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Pair Discussion: Modeling Parallelism & Swimlanes in Food Delivery**
-  - **Scenario:** The moment an order is confirmed, meal cooking and courier dispatch must run in parallel.
-  - **Swimlanes:** `Customer`, `Restaurant Kitchen`, `Dispatch Engine`, `Courier`.
-  - **Discussion Prompts with Your Partner (3 Mins):**
-    1. Where should a **Fork Bar** be placed immediately after order payment? Which two parallel flows branch out?
-    2. Where must a **Join Bar** synchronize before the courier can begin transit to the customer?
-    3. What happens if the courier arrives at the restaurant before the kitchen finishes cooking? How does your activity diagram represent that waiting state?
+  **Hands-on Experiment: Mutate Process & Audit AI Output (4 Mins)**
+  - **1. Add ONE Process Rule to the Activity Prompt:**
+    - *Courier Reassignment:* If matched courier declines, re-dispatch to another courier.
+    - *Quality Check:* Kitchen inspects food; if burnt, redo cooking before packaging.
+    - *Customer Self-Pickup:* If customer chooses takeaway, bypass courier swimlane.
+  - **2. Ask AI to Generate:** Prompt an LLM to update the PlantUML activity diagram.
+  - **3. Render & Critique:** Paste into [PlantText](https://www.planttext.com) and audit:
+    - Did AI maintain clear **swimlanes** for all participating roles?
+    - Are **parallel splits and joins** properly paired without deadlocks?
+    - Are **decision diamonds** fully labeled with complete branch conditions?
 
   </div>
   <div class="discussion-logo">
@@ -2171,23 +2428,20 @@ To summarize this slide, remember this key takeaway: Clearly defining swimlanes 
 </div>
 
 <!--
-Now let's do our pair discussion! Turn to your neighbor and work as workflow architects for three minutes.
+Now let's do a hands-on pair experiment for Activity Workflows! Work with your partner to test how AI models concurrent processes and business decisions.
 
-Look at the food delivery scenario with four swimlanes: Customer, Restaurant Kitchen, Dispatch Engine, and Courier.
+Look at the instructions on the screen:
+Take our Food Delivery Activity prompt from earlier and mutate it with one new process branch:
+- Option A: Courier declines assignment—the dispatch engine must loop back and search for another courier.
+- Option B: Kitchen quality check—if packaging fails inspection, food is remade before proceeding.
+- Option C: Customer chooses self-pickup (takeaway)—completely bypassing the courier swimlane.
 
-Discuss these three questions with your partner:
-Question 1: Where does the Fork bar go after payment, and what two parallel flows start?
-Question 2: Where must the Join bar be placed before delivery begins?
-Question 3: What happens if the courier arrives before the kitchen finishes cooking? How does the diagram show that waiting?
+Ask your AI assistant to generate the updated PlantUML activity diagram, render it in PlantText, and critically audit the result:
+Did each action land in the correct swimlane?
+Did AI properly pair parallel splits and synchronization points without causing deadlocks?
+Are decision diamonds clearly labeled with guards?
 
-Take three minutes to discuss.
-
-Let's review the answers:
-For Question 1: The Fork bar goes right after 'Confirm Payment'. One branch goes to Restaurant Kitchen to cook and package food; the other branch goes to Dispatch Engine to find a courier who drives to the store.
-For Question 2: The Join bar goes right before 'Handoff Food'. Delivery cannot start until both the food is packaged and the courier is at the store.
-For Question 3: The Join bar acts as a synchronization barrier. If the courier arrives first, execution pauses at the join bar until the kitchen finishes packaging the meal!
-
-To summarize this slide, remember this key takeaway: Fork bars launch parallel kitchen and courier workflows, and join bars prevent delivery before both tasks are done.
+To summarize this slide, remember this key takeaway: Testing AI with loops, fallbacks, and takeaway branches ensures your workflow diagrams reflect robust real-world operations.
 -->
 
 ---
@@ -2531,32 +2785,29 @@ To summarize this slide, remember this key takeaway: AI tools translate plain-la
 
 ## AI Assistance: Guidelines for State Machine Modeling
 
-- **1. Persona & Finite State Discipline:**
-  - Instruct the AI to act as a *Formal Systems Verification Engineer*.
-  - Enforce finite state machine (FSM) rigor: states represent *discrete, observable conditions* of an entity over time, never temporary actions.
-- **2. Transition Notation & Invariant Syntax:**
-  - Mandate the formal UML 2.5 transition syntax:
-    `TriggerEvent [GuardCondition] / ActionEffect`
-  - Require explicit `entry /` and `exit /` actions on critical states.
-  - Require initial state (`[*] -->`) and terminal state (`--> [*]`).
-- **3. Defensive Exception & Cancellation Rules:**
-  - Mandate guard conditions to block illegal transitions (e.g., canceling an order once kitchen prep has started).
-  - Explicitly model timeout events and failure transitions.
-- **4. Architectural Verification Checklist:**
-  - Are all state names passive/adjectival conditions (`Placed`, `Preparing`, `Delivered`) rather than verbs?
-  - Are guard conditions mutually exclusive to prevent non-deterministic state branching?
-  - Is there an unreachable state or an accidental infinite loop?
+- **1. Focus on Entity Lifecycle (States vs. Activities):**
+  - Name states as discrete conditions or adjectives (`Placed`, `Preparing`, `Delivered`), never verbs or temporary actions (e.g., avoid "Cooking Meal").
+- **2. Define Clear Triggers & Guard Rules:**
+  - **Triggers:** Specify the exact business events that cause a state change (e.g., `acceptOrder`, `paymentConfirmed`).
+  - **Business Guards:** Explicitly enforce rules that allow or block transitions (e.g., "cancellation allowed only before kitchen starts").
+- **3. Account for Terminal & Exception States:**
+  - Ensure every lifecycle has a clear starting point, successful completion, and failure/cancellation outcomes.
+- **4. Human Reality Check:**
+  - Did AI confuse an activity flow with a state machine?
+  - Are there dead-end or unreachable states?
 
 <!--
-State machine diagrams require high precision, so AI needs strict prompt guidelines.
+When asking AI to model state machines, guide it to focus on entity lifecycles rather than sequential tasks.
 
-The most common mistake AI makes in state modeling is naming states with verbs—like 'Cooking Food' or 'Assigning Driver'. That treats states as if they were activities!
+First, distinguish states from activities: states represent observable conditions of an entity over time—like 'Placed', 'Preparing', or 'Delivered'—not ongoing actions like 'Cooking'.
 
-By instructing the AI to use adjectives or past participles like 'Placed', 'Preparing', and 'ReadyForPickup', you enforce proper state machine semantics.
+Second, define clear triggers and business guard rules: specify what events trigger transitions, and what rules block invalid changes (such as disallowing cancellation once preparation has begun).
 
-Demanding the formal transition syntax—Trigger, Guard in brackets, and Action after a slash—ensures that transitions are deterministic and business rules, like cancellation policies, are strictly enforced.
+Third, handle both successful completion and exceptions like cancellation or refund.
 
-To summarize this slide, remember this key takeaway: Enforce state naming discipline, formal transition syntax with guards, and exception path modeling when prompting for state machines.
+Finally, verify that AI didn't confuse an activity workflow with a state machine and that all states lead to valid conclusions.
+
+To summarize this slide, remember this key takeaway: Guide AI by focusing on entity states rather than actions, defining explicit event triggers, and enforcing business guard conditions.
 -->
 
 ---
@@ -2568,17 +2819,16 @@ To summarize this slide, remember this key takeaway: Enforce state naming discip
 
 **1. Role & Task Instruction:**
 ```text
-Act as a Formal Verification Engineer.
-Generate a valid PlantUML State Machine
+Act as a Systems Verification Architect.
+Generate a clean PlantUML State Machine
 for a Food Delivery Order lifecycle.
 ```
 
-**2. Modeling Constraints:**
-- States: `Placed`, `Accepted`, `Preparing`, `ReadyForPickup`, `OutForDelivery`, `Delivered`, `Cancelled`.
-- Transitions must follow `Event [Guard] / Action`.
-- State `OutForDelivery` must declare `entry / startGPSTracking()`.
-- Customer cancellation only allowed from `Placed` or `Accepted` with guard `[timeElapsed <= 120s]`.
-- Output clean `@startuml ... @enduml` markup.
+**2. Modeling Guidance:**
+- Model discrete lifecycle states: `Placed`, `Accepted`, `Preparing`, `ReadyForPickup`, `OutForDelivery`, `Delivered`, `Cancelled`.
+- Enforce business rules: cancellation allowed only while in `Placed` or `Accepted` before cooking begins.
+- Trigger automatic actions upon entering `OutForDelivery` (start GPS tracking).
+- Ensure clear initial state and terminal states (Delivered, Cancelled).
 
 </div>
 <div>
@@ -2596,35 +2846,95 @@ for a Food Delivery Order lifecycle.
 </div>
 
 <!--
-Here is our state machine prompt for the Food Delivery Order lifecycle.
+Here is a clear prompt example for modeling a Food Delivery Order lifecycle.
 
-Notice how clear the modeling constraints are:
-We define seven discrete lifecycle states, all named as past-participles.
-We mandate the formal UML transition syntax with trigger events, guards, and action effects.
+Look at the left column: Instead of micromanaging syntax, we provide high-level lifecycle guidance: define discrete states, enforce business rules like cancellation windows, specify automatic actions on entering delivery, and define clear start and end points.
 
-Notice the defensive business logic in the requirements:
-The customer is allowed to cancel during Placed or Accepted within two minutes. But once the kitchen begins cooking, cancellation is blocked.
-When the order enters OutForDelivery, an entry action automatically initiates live GPS tracking.
+In the right column, we describe the business events and state transitions, detailing when cancellation is permitted and when cooking strictly locks the order.
 
-This prompt guides the AI to generate a reliable, deterministic state machine that prevents edge-case bugs before coding begins.
+With this conceptual guidance, AI produces a well-structured, deterministic state machine that accurately models real business rules.
 
-To summarize this slide, remember this key takeaway: Specifying explicit lifecycle states, guard conditions, and entry actions enables AI to produce verified, deterministic state machines.
+To summarize this slide, remember this key takeaway: Guide AI with clear lifecycle states, business transition rules, and well-defined boundary conditions.
 -->
 
 ---
 
-### Interactive Activity: Food Delivery Order Lifecycle & Invariants (Pair Discussion)
+<!-- header: '4.7 Behavioral & State Machine Models' -->
+
+## Generated PlantUML & Diagram: Food Delivery State Machine Model
+
+<div class="puml-output-grid">
+<div class="puml-code-col">
+
+<div class="puml-title">Generated PlantUML Specification:</div>
+
+```plantuml
+@startuml
+[*] -right-> Placed : customerPays()
+
+state Placed {
+  Placed : entry / startAcceptTimer()
+}
+state OutForDelivery {
+  OutForDelivery : entry / startGPSTracking()
+}
+
+Placed -right-> Accepted : acceptOrder()
+Accepted -right-> Preparing : startCooking()
+Preparing -down-> ReadyForPickup : packagingComplete()
+ReadyForPickup -left-> OutForDelivery : courierPickedUp()
+OutForDelivery -left-> Delivered : confirmDropoff()
+Delivered -down-> [*]
+
+Placed -down-> Cancelled : rejectOrder() / refund()
+Placed -down-> Cancelled : cancelOrder [t <= 120s]
+Accepted -down-> Cancelled : cancelOrder [t <= 120s]
+Cancelled -left-> [*]
+@enduml
+```
+
+</div>
+<div class="puml-diagram-col">
+
+<div class="puml-title">Rendered Diagram Output:</div>
+
+<div class="diagram-wrapper">
+  <img src="../../img/ch04/food_delivery/food_delivery_state.svg" alt="Food Delivery State Machine Diagram" />
+</div>
+
+</div>
+</div>
+
+<!--
+Here is the resulting State Machine Diagram for the Food Delivery Order lifecycle.
+
+Look at the PlantUML on the left:
+Notice how the states are defined with past-participle names: Placed, Accepted, Preparing, ReadyForPickup, OutForDelivery, Delivered, and Cancelled.
+Notice the entry actions declared inside state blocks: startAcceptTimer on Placed, and startGPSTracking on OutForDelivery.
+Notice the transition guards in square brackets: cancelOrder is strictly guarded with timeElapsed <= 120s, blocking cancellation once cooking begins.
+
+On the right, the rendered state diagram gives developers and QA engineers an unambiguous roadmap of valid system states and illegal transitions.
+
+To summarize this slide, remember this key takeaway: Prompting AI with explicit transition labels, entry actions, and guard conditions produces deterministic, formally verifiable state machines.
+-->
+
+---
+
+### Interactive Activity: Evolving State Lifecycles with AI (Pair Hands-On)
 
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Pair Discussion: Guarding States & Lifecycle Transitions in Food Delivery**
-  - **Scenario:** Model the complete lifecycle of a food delivery `Order` object.
-  - **Key States:** `Placed`, `Accepted`, `Preparing`, `ReadyForPickup`, `OutForDelivery`, `Delivered`, `Cancelled`.
-  - **Discussion Prompts with Your Partner (3 Mins):**
-    1. **Legal Transitions:** Can a customer trigger `cancelOrder()` when the order is in `OutForDelivery`? Why or why not?
-    2. **Guard Conditions:** Formulate a guard condition `[guard]` for the transition from `Placed` to `Cancelled` (e.g., time window and prep status).
-    3. **Entry Actions:** What `entry /` action should execute when entering `OutForDelivery` (e.g., `sendLiveTrackingSMS()`)?
+  **Hands-on Experiment: Mutate Lifecycle & Audit AI Output (4 Mins)**
+  - **1. Add ONE Lifecycle Invariant to the State Machine Prompt:**
+    - *Driver Reassignment:* If courier abandons delivery, transition back to `ReadyForPickup`.
+    - *Customer Reschedule:* Allow postponing delivery while in `Preparing`.
+    - *Delivery Failed:* If customer unreachable at drop-off, move to `FailedDelivery` and return meal.
+  - **2. Ask AI to Generate:** Prompt an LLM to update the PlantUML state machine.
+  - **3. Render & Critique:** Paste into [PlantText](https://www.planttext.com) and audit:
+    - Did AI preserve **state naming** (adjectives/conditions, no action verbs)?
+    - Are **illegal transitions** (e.g., cancelling hot food en route) strictly blocked?
+    - Are **guard conditions and exit/entry actions** logically consistent?
 
   </div>
   <div class="discussion-logo">
@@ -2633,22 +2943,20 @@ To summarize this slide, remember this key takeaway: Specifying explicit lifecyc
 </div>
 
 <!--
-Let's conclude with our Section 4.7 pair discussion: Food Delivery Order Lifecycle and Invariants! Work with your partner as state machine and business integrity engineers.
+Now let's do a hands-on pair experiment for State Machine Modeling! Work with your partner to test how AI enforces business integrity and lifecycle invariants.
 
-Look at the discrete order states: Placed, Accepted, Preparing, ReadyForPickup, OutForDelivery, Delivered, and Cancelled.
+Look at the instructions on the screen:
+Take our Food Delivery State Machine prompt from earlier and introduce one realistic lifecycle challenge:
+- Option A: Driver abandons order mid-way—transition back from OutForDelivery to ReadyForPickup to reassign a new driver.
+- Option B: Customer requests a reschedule while food is preparing.
+- Option C: Delivery failed—customer is not answering the door, transitioning to FailedDelivery and returning food to the store.
 
-First, examine illegal transitions: What happens if a customer clicks 'Cancel Order' while the driver is five minutes away with hot food? Is that transition allowed?
-Second, specify a precise guard condition for allowable cancellations while in the Placed state.
-Third, define entry and exit actions: What automated notifications or tracking triggers fire upon entering OutForDelivery?
+Ask your AI assistant to generate the updated PlantUML state machine, render it in PlantText, and critically audit the result:
+Did AI keep state names as passive conditions rather than confusing them with activities?
+Are illegal transitions strictly forbidden (for example, customer cannot cancel an order that is already on the road)?
+Are guards and entry actions properly specified?
 
-Take three minutes to discuss these state machine invariants.
-
-Possible Answers & Debriefing Guide:
-1. Legal Transitions: The transition 'OutForDelivery -> Cancelled' is strictly illegal. The state machine does not even draw a transition arrow from OutForDelivery to Cancelled. Any cancel event received in this state is simply rejected.
-2. Guard Condition: The transition 'Placed -> Cancelled' is guarded by '[currentTime - placedTime <= 120s && kitchenStatus == NotStarted]'. If the kitchen has already started cooking or time expired, the guard is false and cancellation is blocked.
-3. Entry Actions: Upon entering 'OutForDelivery', the state machine executes 'entry / broadcastCourierEnRoute(); activateLiveGPSStream()', and upon exit it stops tracking.
-
-To summarize this slide, remember this key takeaway: State machines protect business invariants by prohibiting illegal transitions and enforcing rigorous guard conditions.
+To summarize this slide, remember this key takeaway: Testing AI with abnormal lifecycle exceptions reveals whether it truly protects core business invariants.
 -->
 
 ---
@@ -2694,6 +3002,12 @@ To summarize this slide, remember this key takeaway: Actions are instantaneous a
 
 > "Stop dragging boxes. Start writing architecture."
 
+<div class="online-editor-link">
+  <a href="https://www.planttext.com" target="_blank" rel="noopener noreferrer">
+    <span class="editor-badge">Online Editor</span> <strong>PlantText Live Playground</strong> (planttext.com) →
+  </a>
+</div>
+
 <!--
 Welcome to Section 4.8: Text-Based Modeling with PlantUML.
 
@@ -2702,6 +3016,8 @@ For years, many developers resisted UML because drawing diagrams in graphical to
 PlantUML changed everything with 'Diagram-as-Code'.
 
 By writing simple, readable text, your diagrams live right alongside your code in Git, can be reviewed in pull requests, and render automatically.
+
+Notice the link on screen: you can jump directly into PlantText at planttext.com to experiment with PlantUML code in your browser right now without installing anything!
 
 To summarize this slide, remember this key takeaway: PlantUML enables code-driven, version-controlled architecture modeling without manual layout friction.
 -->
@@ -3007,44 +3323,6 @@ Stage 4: ...which ultimately changes the State of an Order from `Pending` to `Pa
 Notice the insight at the bottom: UML diagrams are not separate, isolated documents. They are overlapping viewpoints of the exact same system!
 
 To summarize this slide, remember this key takeaway: UML diagrams are not disconnected drawings; they are linked, overlapping perspectives of a single unified system.
--->
-
----
-
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/14_practical_architecture_workflow.jpg" alt="Practical Architecture Workflow: Code, Render, Iterate" />
-</div>
-
-<!--
-Look at 'The Value of Docs-as-Code' across these three cards:
-
-Card 1: Version Controlled. Diagrams live in Git right beside your source code. Every change is tracked in version history, so architecture never falls behind the implementation.
-Card 2: Effortless Updates. When requirements change, you change a single word in text instead of redrawing a dozen boxes and realigning connectors.
-Card 3: Standardized Clarity. Text-based rendering eliminates messy whiteboard photos and subjective hand-drawn boxes, giving your entire team consistent, clean architecture.
-
-To summarize this slide, remember this key takeaway: Docs-as-Code ensures architectural diagrams are version-controlled, easily updated, and consistently standardized.
--->
-
----
-
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/15_elevate_your_architecture.jpg" alt="Master the Syntax, Elevate Your Architecture" />
-</div>
-
-<!--
-To conclude Module 4.8, remember this motto: 'Master the syntax. Elevate your architecture.'
-
-Effective software design requires effective communication.
-
-By bridging the gap between text and visuals, PlantUML allows developers to architect systems with precision, clarity, and speed.
-
-Open VS Code, install the extension, and start writing your architecture!
-
-To summarize this slide, remember this key takeaway: Text-based modeling bridges technical writing and visual architecture, empowering engineering teams to design faster.
 -->
 
 ---
