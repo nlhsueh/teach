@@ -91,9 +91,9 @@ To summarize this slide, remember this key takeaway: System modeling provides pu
 > â€” *Ian Sommerville, Software Engineering (10th ed.)*
 
 - **Essential Principles of Modeling:**
-  - **Abstraction:** Hides non-essential implementation details to highlight critical architectural structures, data flows, and dependencies.
+  - **Abstraction:** **Hides** non-essential implementation details to highlight critical architectural structures, data flows, and dependencies.
   - **Multiple Perspectives:** No single diagram can explain a complex software system. Different stakeholders require different views.
-  - **Communication & Verification:** Serves as a universal visual grammar between product managers, system architects, software developers, and QA engineers.
+  - **Communication & Verification:** Serves as a universal **visual** grammar between product managers, system architects, software developers, and QA engineers.
   - **Blueprint for Implementation:** Provides the formal structural and behavioral specification from which executable code and database schemas are developed.
 
 <!--
@@ -615,9 +615,11 @@ To summarize this slide, remember this key takeaway: Remember the difference: in
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Clear Use Case Naming
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/05_clear_naming_semantics.jpg" alt="Clear Semantics: Strong Verbs & Singular Roles" />
 </div>
 
@@ -633,9 +635,11 @@ To summarize this slide, remember this key takeaway: Name use cases with strong 
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Rules of Building Use Case Models
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/07_safe_nesting_limits.jpg" alt="Safe Nesting Limits: Avoid Over-Engineering" />
 </div>
 
@@ -701,9 +705,11 @@ To summarize this slide, remember this key takeaway: See how all four conceptsâ€
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Common Anti-Patterns of Use Case Models
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/10_common_anti_patterns.jpg" alt="Common Anti-Patterns in Use Case Modeling" />
 </div>
 
@@ -723,9 +729,11 @@ To summarize this slide, remember this key takeaway: Keep diagrams clean by avoi
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Best Practices Checklists
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/11_best_practices_checklist.jpg" alt="Best Practices Checklist" />
 </div>
 
@@ -749,9 +757,11 @@ To summarize this slide, remember this key takeaway: Use this nine-point checkli
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Communication First Mindset
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/12_communication_first_mindset.jpg" alt="Communication-First Mindset: Bridges Between Stakeholders and Engineers" />
 </div>
 
@@ -808,9 +818,9 @@ To summarize this slide, remember this key takeaway: The diagram gives the overv
   - **`<<extend>>` Rule:** Use strictly for optional, conditional, or exceptional behavior with named extension points.
   - **Anti-Pattern Warning:** Prohibit functional decomposition (forbid trivial use cases like "Click Button" or "Enter Password").
 - **3. Architectural Verification Checklist:**
-  - [ ] Are all use cases named with active verb phrases (e.g., `Place Order`, `Track Delivery`)?
-  - [ ] Is third-party infrastructure (Payment Gateway, SMS) kept *outside* the system boundary rectangle?
-  - [ ] Are include arrows pointing toward the included supplier use case?
+  - Are all use cases named with active verb phrases (e.g., `Place Order`, `Track Delivery`)?
+  - Is third-party infrastructure (Payment Gateway, SMS) kept *outside* the system boundary rectangle?
+  - Are include arrows pointing toward the included supplier use case?
 
 <!--
 How can we ask AI to help us build use case diagrams? AI can generate PlantUML code in seconds, but without clear instructions, it makes classic mistakes.
@@ -1211,9 +1221,9 @@ To summarize this slide, remember this key takeaway: A real class diagram combin
   - Enforce explicit visibility (`-` private attributes, `+` public methods, `#` protected).
   - Require explicit multiplicities on *both* association ends (e.g., `1` to `1..*`).
 - **4. Architectural Verification Checklist:**
-  - [ ] Did the AI confuse Generalization (`<|--`) with Composition (`*--`)?
-  - [ ] Are sensitive fields (passwords, tokens, addresses) declared `- private`?
-  - [ ] Are multiplicities logically sound (e.g., can an order exist with 0 items)?
+  - Did the AI confuse Generalization (`<|--`) with Composition (`*--`)?
+  - Are sensitive fields (passwords, tokens, addresses) declared `- private`?
+  - Are multiplicities logically sound (e.g., can an order exist with 0 items)?
 
 <!--
 When asking AI to generate class diagrams, clear rules are essential.
@@ -1610,9 +1620,9 @@ To summarize this slide, remember this key takeaway: Draw sequence blueprints fi
   - **Control Fragments:** Force the AI to use `alt` for branching (success vs. failure/timeout), `opt` for optional steps, and `loop` for retries.
   - **Activation Lifespans:** Require `activate` and `deactivate` on lifelines.
 - **3. Architectural Verification Checklist:**
-  - [ ] Did the AI bypass the controller (e.g., UI directly querying database)?
-  - [ ] Are alternate branches mutually exclusive with clear guard conditions `[condition]`?
-  - [ ] Are asynchronous notifications decoupled from blocking synchronous workflows?
+  - Did the AI bypass the controller (e.g., UI directly querying database)?
+  - Are alternate branches mutually exclusive with clear guard conditions `[condition]`?
+  - Are asynchronous notifications decoupled from blocking synchronous workflows?
 
 <!--
 When you ask an AI model to generate a sequence diagram, you need to give it clear architectural guardrails.
@@ -2067,9 +2077,9 @@ To summarize this slide, remember this key takeaway: Design workflows in three p
   - **Join (`end fork`):** Mandate a join synchronization bar before any action that requires all parallel branches to complete.
   - **Decision Diamonds:** Require explicit, mutually exclusive guard conditions on decision branches.
 - **4. Architectural Verification Checklist:**
-  - [ ] Does every `fork` have a corresponding `join` synchronization bar?
-  - [ ] Are transitions crossing swimlane boundaries logically valid and minimal?
-  - [ ] Are there deadlock states where an activity waits on an unfulfillable condition?
+  - Does every `fork` have a corresponding `join` synchronization bar?
+  - Are transitions crossing swimlane boundaries logically valid and minimal?
+  - Are there deadlock states where an activity waits on an unfulfillable condition?
 
 <!--
 When prompting an AI to generate an activity diagram, you need to watch out for two common mistakes.
@@ -2533,9 +2543,9 @@ To summarize this slide, remember this key takeaway: AI tools translate plain-la
   - Mandate guard conditions to block illegal transitions (e.g., canceling an order once kitchen prep has started).
   - Explicitly model timeout events and failure transitions.
 - **4. Architectural Verification Checklist:**
-  - [ ] Are all state names passive/adjectival conditions (`Placed`, `Preparing`, `Delivered`) rather than verbs?
-  - [ ] Are guard conditions mutually exclusive to prevent non-deterministic state branching?
-  - [ ] Is there an unreachable state or an accidental infinite loop?
+  - Are all state names passive/adjectival conditions (`Placed`, `Preparing`, `Delivered`) rather than verbs?
+  - Are guard conditions mutually exclusive to prevent non-deterministic state branching?
+  - Is there an unreachable state or an accidental infinite loop?
 
 <!--
 State machine diagrams require high precision, so AI needs strict prompt guidelines.
