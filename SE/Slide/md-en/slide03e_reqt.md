@@ -821,6 +821,61 @@ Third, Return and Turn-In Flow: When the renter exits and taps 'Return', in-cabi
 To summarize this slide, remember this key takeaway: Quantifying non-functional requirements must span the entire product lifecycle—from user dispatch and contactless rental to autonomous driving and automated return checkout.
 -->
 ---
+## Interactive Activity: AI Requirements Prompting (Pair Discussion)
+
+> **Scenario:** Work in pairs with the same raw concept: *"A Food Delivery app connecting Customers, Restaurants, and Couriers for fast doorstep delivery."* Compare how prompt structure radically alters AI specification quality:
+
+<div class="two-columns">
+
+<div class="card" data-marpit-fragment>
+
+### Student A: Direct Naive Request
+*Unstructured prompt without guidance:*
+- **Your Prompt:** *"Generate the requirements specification for this food delivery system."*
+- **Inspect What AI Produces:**
+  - Generic feature bullets with loose boundaries.
+  - Vague, untestable NFRs (*"blazing fast"*, *"highly secure"*, *"super intuitive"*).
+  - Merges customer user needs with backend DB details.
+  - Ignores food hygiene, tax, and domain laws.
+
+</div>
+
+<div class="card" data-marpit-fragment>
+
+### Student B: Structured RE Request
+*Multi-dimensional RE framework prompt:*
+- **Your Prompt Demands:**
+  - **FR vs. NFR:** Decompose NFRs into verifiable metrics ($\le 500\text{ ms}$ latency, $99.95\%$ uptime).
+  - **User vs. System:** Split end-user goals from technical platform contracts.
+  - **Domain Rules:** Enforce PCI-DSS payment and food hygiene regulations.
+- **Compare:** How much more rigorous is Output B?
+
+</div>
+
+</div>
+
+<!--
+Let's pause here for a hands-on pair experiment: Structured versus Naive AI Prompting for Requirements! Turn to your partner—one of you will play Student A, and the other will play Student B.
+
+Both of you start with the exact same raw product statement: 'A Food Delivery platform connecting Customers, Restaurants, and Couriers for online ordering and rapid doorstep delivery.'
+
+Student A, you give the AI an unstructured, direct prompt: 'Generate the requirements specification for this food delivery system.'
+
+Student B, you give the AI a structured prompt using our Section 3.3 engineering framework:
+You demand three distinct classifications:
+First, Functional versus Non-Functional Requirements, with a strict rule that every non-functional requirement must be decomposed into a verifiable, measurable metric—like checkout latency under 500 milliseconds, or four-nines availability.
+Second, User Requirements written from customer, restaurant, and courier perspectives, versus System Requirements written as formal technical contracts.
+Third, Domain Requirements governing food temperature hygiene, tax compliance, and PCI-DSS payment tokenization.
+
+Take 3 minutes to run both prompts on ChatGPT, Claude, or Gemini, and compare the outputs side by side!
+
+Notice the dramatic contrast:
+Student A gets vague, untestable fluff—the AI says the app will be 'fast, reliable, and user-friendly,' but a QA engineer cannot write an automated test for that!
+Student B gets a professional, multi-tiered engineering specification with verifiable acceptance criteria.
+
+To summarize this slide, remember this key takeaway: AI does not lack technical knowledge—it lacks architectural intent; structuring prompts with explicit requirement classifications transforms generic AI summaries into testable engineering specifications.
+-->
+---
 <!-- _class: lead -->
 <!-- header: '3.4 Elicitation & Modeling' -->
 
@@ -1506,6 +1561,57 @@ Fourth, Realism: checking the price tag and calculator to ensure feasibility wit
 And fifth, Verifiability: the QA engineer holding a clear checklist of pass/fail automated tests.
 
 To summarize this slide, remember this key takeaway: Testing requirements across the five validation pillars prevents catastrophic defects before writing a single line of code.
+-->
+---
+## Interactive Activity: 5-Check Requirements Audit (Pair Discussion)
+
+> **Scenario:** Audit this draft requirement: *"The app shall deliver orders instantly and easily. Couriers must accept all incoming delivery tasks immediately, but may reject any order freely. Orders must arrive within 30 minutes under all conditions, even severe typhoons."*
+
+<div class="two-columns">
+
+<div class="card" data-marpit-fragment>
+
+### Round 1: Human Peer Audit (3 Mins)
+*Apply the 5 Checks with your partner:*
+- **Validity:** Does this satisfy genuine customer & business needs?
+- **Consistency:** Identify direct logical contradictions in the rules.
+- **Completeness:** Flag missing edge cases (spills, closures, refunds).
+- **Realism:** Is 30-min typhoon delivery physically or legally viable?
+- **Verifiability:** Spot subjective adjectives (*"instantly"*, *"easily"*).
+
+</div>
+
+<div class="card" data-marpit-fragment>
+
+### Round 2: AI Audit & Comparison (3 Mins)
+*Run an AI audit and compare findings:*
+- **Prompt LLM:** *"Audit this requirement against the 5 SE checks (Validity, Consistency, Completeness, Realism, Verifiability): [Draft Text]"*
+- **Compare Human vs. AI:**
+  - **Agreement:** Did AI catch the same contradiction and vague terms?
+  - **AI Blindspots:** Did AI miss safety regulations or human context?
+  - **AI Strengths:** Did AI uncover edge cases your pair overlooked?
+
+</div>
+
+</div>
+
+<!--
+Let's put the Five Pillars of Requirements Validation into practice with a rapid pair audit! Turn to your partner for this two-round experiment.
+
+Take a look at the scenario text at the top: 'The app shall deliver orders instantly and easily. Couriers must accept all incoming delivery tasks immediately, but may reject any order freely. Orders must arrive within 30 minutes under all conditions, even severe typhoons.'
+
+In Round 1, spend 3 minutes with your partner auditing this draft using the Five Checks:
+For Validity: Does the customer really want couriers forced to risk their lives?
+For Consistency: Notice how it says couriers must accept all tasks immediately, but in the next breath says they may reject any order freely—that's a direct logical contradiction!
+For Completeness: What happens if food is out of stock, payment fails, or weather stops traffic? Not a single exception flow is specified.
+For Realism: Can any courier deliver food within 30 minutes through hurricane-force winds? That's physically impossible and legally hazardous.
+And for Verifiability: How does a QA engineer verify 'instantly' and 'easily'? You cannot write an automated test without exact numerical thresholds.
+
+In Round 2, feed the exact same draft requirement into an AI LLM using the structured prompt shown on the right card.
+
+Now compare the results: Where do human engineers excel over AI, and where does AI catch subtle blindspots? AI is remarkably fast at identifying missing edge cases and flagging ambiguity, but human engineers excel at contextual realism, legal safety, and stakeholder negotiation.
+
+To summarize this slide, remember this key takeaway: Combining human critical thinking with AI validation creates a comprehensive quality filter across all five requirements checks.
 -->
 ---
 ## Requirements Change & Management
