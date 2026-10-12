@@ -183,17 +183,39 @@ Actors are categorized based on their architectural role:
 | **`<<extend>>`** | Dashed Arrow `- - - >` | Extension → Base | **Optional / conditional logic.** Executed only if Extension Point condition is met. |
 | **Generalization** | Solid + Hollow Triangle `───▷` | Sub-type → Super-type | **Inheritance.** Sub-actor or specialized use case inherits behavior of Super-type. |
 
-#### Safe Nesting Limits (Avoiding Over-Engineering)
+### 4.3.5 Clear Naming Semantics: Strong Verbs & Singular Roles
+
+![Clear Semantics: Strong Verbs & Singular Roles](../../img/ch04/nb_use_case/05_clear_naming_semantics.jpg)
+
+*Figure 4.3.5: Clear Naming Semantics. Choosing strong action verbs and singular roles while avoiding vague verbs, technical database jargon, and HR job titles.*
+
+| Dimension | Recommended Best Practice | Anti-Pattern to Avoid |
+| :--- | :--- | :--- |
+| **Use Case Verbs** | Strong, goal-oriented verbs: `Withdraw Funds`, `Deliver Shipment`, `Place Order` | Weak or vague verbs: `Process`, `Do`, `Perform`, `Manage` |
+| **Domain Terms** | Plain business vocabulary: `Authenticate User`, `Generate Invoice` | Technical database jargon: `Process_DB_Transaction`, `SQL_Query_Record` |
+| **Actor Roles** | Singular business roles: `Customer Support`, `Billing Manager`, `Courier` | Department names or HR job ranks: `Support Dept`, `Junior CSR Grade 2` |
+| **Generalization** | Passes the "is-a / is-like" common-sense test: `GradStudent is Student` | Arbitrary groupings or procedural steps disguised as inheritance |
+
+### 4.3.6 Safe Nesting Limits (Avoiding Over-Engineering)
 
 ![Safe Nesting Limits](../../img/ch04/nb_use_case/07_safe_nesting_limits.jpg)
 
-*Figure 4.3.5: Safe Nesting Limits. Avoid deep hierarchical chains of <<include>> and <<extend>>. Limit nesting to at most 1–2 levels to preserve architectural clarity.*
+*Figure 4.3.6: Safe Nesting Limits. Avoid deep hierarchical chains of <<include>> and <<extend>>. Limit nesting to at most 1–2 levels to preserve architectural clarity.*
 
-### 4.3.5 Case Study: University Enrollment System
+Three golden rules keep use case models clear and maintainable:
+1. **Max 2 Levels of Nesting:** Keep `<<include>>` chains shallow. If A includes B, and B includes C, the diagram degrades into a confusing procedural flowchart.
+2. **No Actor-to-Actor Lines:** Actors communicate only with use cases across the system boundary, never directly with each other on the diagram. Human conversations belong in textual scenario descriptions.
+3. **Use Boundaries with Purpose:** Leverage the boundary rectangle to define clear system scope or delineate release milestones (e.g., Phase 1 MVP vs. Phase 2 enhancements).
+
+### 4.3.7 Case Study: University Enrollment System
 
 ![University Enrollment Case Study](../../img/ch04/nb_use_case/08_case_study_enrollment_system.jpg)
 
-*Figure 4.3.6: University Course Enrollment Use Case Model. Demonstrating primary actors (Student), secondary supporting systems (Course Catalog DB, Billing Service), <<include>> relationships for mandatory prerequisites, and <<extend>> for waiting list placement.*
+*Figure 4.3.7: University Course Enrollment Case Study: Separating Actors ('The Who') from Use Cases ('The What').*
+
+![Actor Generalization in Enrollment](../../img/ch04/nb_use_case/09_actor_generalization.jpg)
+
+*Figure 4.3.8: Complete Enrollment System Model. Combining actor generalization, mandatory <<include>> relationships, conditional <<extend>> extension points, and automated timer actors.*
 
 #### Standard Tabular Use Case Description: "Enroll Student in Course"
 
@@ -208,11 +230,11 @@ Actors are categorized based on their architectural role:
 | **Main Success Scenario**<br>*(Happy Path)* | 1. Student browses open course sections in catalog.<br>2. Student selects desired section and submits enrollment request.<br>3. System verifies student satisfies all prerequisite course requirements.<br>4. System checks available seat quota in the section.<br>5. System reserves seat and updates course roster.<br>6. System notifies Billing Service to add tuition charge.<br>7. System displays enrollment confirmation receipt with timestamp. |
 | **Extensions**<br>*(Alternative & Exceptions)* | **3a. Prerequisite check fails:**<br>&nbsp;&nbsp;1. System displays missing prerequisite course codes.<br>&nbsp;&nbsp;2. System offers link to submit Prerequisite Waiver.<br>&nbsp;&nbsp;3. Use case terminates without enrollment.<br>**4a. Section is full (Quota = 0):**<br>&nbsp;&nbsp;1. System alerts student that section is currently full.<br>&nbsp;&nbsp;2. System triggers `<<extend>>` UC-05: Join Waiting List.<br>&nbsp;&nbsp;3. If student agrees, student added to priority queue.<br>**6a. Billing Service offline:**<br>&nbsp;&nbsp;1. System queues billing event in transactional outbox.<br>&nbsp;&nbsp;2. System completes enrollment and logs audit warning. |
 
-### 4.3.6 Seven Deadly Sins of Use Case Modeling
+### 4.3.8 Common Anti-Patterns in Use Case Modeling
 
 ![Common Anti-Patterns in Use Case Modeling](../../img/ch04/nb_use_case/10_common_anti_patterns.jpg)
 
-*Figure 4.3.7: Common Anti-Patterns. Avoiding functional decomposition, missing boundaries, reversed extend arrows, and mixing UI implementation details.*
+*Figure 4.3.9: Common Anti-Patterns. Avoiding functional decomposition, missing boundaries, reversed extend arrows, and mixing UI implementation details.*
 
 1. **Reversed Arrowheads:** Pointing `<<extend>>` from the base use case to the extension. Remember: the base use case should be completely unaware of the extension!
 2. **Functional Decomposition Trap:** Treating use case diagrams as flowcharts by breaking an operation into tiny procedural pieces.
@@ -222,7 +244,31 @@ Actors are categorized based on their architectural role:
 6. **Modeling UI Clicks:** Writing "Click Submit Button" instead of "Confirm Order".
 7. **Orphan Use Cases:** Creating use cases that connect to no actors whatsoever.
 
-### 4.3.7 Generative AI Assistance for Use Case Modeling
+### 4.3.9 Best Practices Checklist
+
+![Best Practices Checklist](../../img/ch04/nb_use_case/11_best_practices_checklist.jpg)
+
+*Figure 4.3.10: Use Case Best Practices Checklist. A 9-point architectural quality gate before finalizing diagrams for team review.*
+
+| Check # | Quality Gate Inspection Item | Verification Rule |
+| :---: | :--- | :--- |
+| **1** | **Strong Verb + Noun** | Does every use case begin with an active transitive verb and concrete noun? |
+| **2** | **Singular Roles** | Are actors named as singular operational roles rather than HR job titles? |
+| **3** | **Primary on Left** | Are primary initiating actors positioned on the left side of the boundary? |
+| **4** | **Actors Outside Box** | Are all actors placed strictly outside the system boundary rectangle? |
+| **5** | **Strict `<<include>>`** | Is `<<include>>` reserved exclusively for mandatory, unavoidable sub-routines? |
+| **6** | **Strict `<<extend>>`** | Is `<<extend>>` reserved exclusively for optional, conditional extensions? |
+| **7** | **"Is-Like" Generalization** | Does every actor generalization hierarchy pass the common-sense inheritance test? |
+| **8** | **Zero Actor Interlinks** | Are there zero lines connecting actors directly to each other? |
+| **9** | **Conditions in Text** | Are detailed extension conditions and exception rules recorded in text specifications? |
+
+### 4.3.10 Communication-First Mindset
+
+![Communication-First Mindset](../../img/ch04/nb_use_case/12_communication_first_mindset.jpg)
+
+*Figure 4.3.11: The Communication-First Mindset. Use case models serve as the vital tripartite bridge uniting non-technical business stakeholders, UX/system designers, and software engineers.*
+
+### 4.3.11 Generative AI Assistance & Food Delivery Case Study
 Modern LLMs can rapidly synthesize use case models from raw client transcripts when prompted with strict boundary constraints:
 
 ```text
@@ -247,6 +293,44 @@ must authorize payment through a third-party gateway.
 Optionally, the customer may apply a promo voucher code
 or request contact-free dropoff. Kitchen staff accept orders
 and update cooking status. Couriers accept delivery runs."
+```
+
+#### Generated Food Delivery Use Case Model
+
+![Food Delivery Use Case Model](../../img/ch04/food_delivery/food_delivery_usecase.svg)
+
+*Figure 4.3.12: Generated Food Delivery Use Case Diagram. Delineating system boundaries, primary customer interactions, restaurant kitchen management, courier dispatch, mandatory payment processing, and optional voucher extension.*
+
+```plantuml
+@startuml
+left to right direction
+actor Customer
+actor "Restaurant Partner" as Restaurant
+actor "Payment Gateway\n«Supporting»" as Payment
+actor "Delivery Courier" as Courier
+
+rectangle "Food Delivery System" {
+  usecase "Browse Menus" as UC_Browse
+  usecase "Place Food Order" as UC_PlaceOrder
+  usecase "Apply Promo Voucher" as UC_Voucher
+  usecase "Track Delivery Live" as UC_Track
+  usecase "Manage Menu" as UC_Menu
+  usecase "Accept / Reject Order" as UC_AcceptOrder
+  usecase "Process Payment" as UC_Payment
+  usecase "Accept Delivery Task" as UC_AcceptTask
+}
+
+Customer -- UC_Browse
+Customer -- UC_PlaceOrder
+Customer -- UC_Track
+Restaurant -- UC_Menu
+Restaurant -- UC_AcceptOrder
+
+UC_PlaceOrder ..> UC_Payment : <<include>>
+UC_Voucher .> UC_PlaceOrder : <<extend>>
+UC_Payment -- Payment
+UC_AcceptTask -- Courier
+@enduml
 ```
 
 ---
@@ -387,6 +471,55 @@ Design Constraints:
   exist (e.g., CreditCardPayment vs CashPayment).
 ```
 
+#### Generated Food Delivery Class Model
+
+![Food Delivery Class Model](../../img/ch04/food_delivery/food_delivery_class.svg)
+
+*Figure 4.4.9: Generated Food Delivery Class Diagram. Mapping Customer, Order, OrderItem, MenuItem, Restaurant, Courier, and PaymentProcessor entities with precise multiplicities and lifecycle bounds.*
+
+```plantuml
+@startuml
+class Customer {
+  - customerId: String
+  - deliveryAddress: String
+  + placeOrder(): Order
+}
+class Restaurant {
+  - restaurantId: String
+  - address: String
+  + acceptOrder(): Boolean
+}
+class MenuItem {
+  - itemId: String
+  - price: Double
+}
+class Order {
+  - orderId: String
+  - totalAmount: Double
+  + calculateTotal(): Double
+  + assignCourier(c: Courier): void
+}
+class OrderItem {
+  - quantity: Integer
+  - subtotal: Double
+}
+class Courier {
+  - courierId: String
+  - vehicleType: String
+}
+interface PaymentProcessor {
+  + chargeCreditCard(amount: Double): Boolean
+}
+
+Restaurant "1" *-- "1..*" MenuItem : owns >
+Order "1" *-- "1..*" OrderItem : consists of >
+OrderItem "*" --> "1" MenuItem : references >
+Customer "1" --> "*" Order : places >
+Order "*" o-- "0..1" Courier : assigned to >
+Order ..> PaymentProcessor : delegates >
+@enduml
+```
+
 ---
 
 <!-- id: ase-ch04-ccq4 -->
@@ -487,6 +620,46 @@ To prevent sequence diagrams from turning into tightly coupled spaghetti, profes
    * `[paymentApproved]`: `OrderController` creates `new Order()` (Entity), updates database state, and asynchronously fires `publishOrderPlaced()` to message broker.
    * `[else / paymentFailed]`: `OrderController` returns error message back to UI; transaction rolled back.
 
+#### Generated Food Delivery Sequence Model
+
+![Food Delivery Sequence Model](../../img/ch04/food_delivery/food_delivery_sequence.svg)
+
+*Figure 4.5.8: Generated Food Delivery Sequence Diagram. Tracing the BCE runtime collaboration between Customer, CheckoutUI, OrderCtrl, StripeAPI, OrderEntity, and KitchenQueue.*
+
+```plantuml
+@startuml
+autonumber
+actor Customer
+boundary CheckoutUI
+control OrderCtrl
+boundary StripeAPI
+entity OrderEntity
+queue KitchenQueue
+
+Customer -> CheckoutUI: clickPayNow()
+activate CheckoutUI
+CheckoutUI -> OrderCtrl: submitOrder(cart, payment)
+activate OrderCtrl
+OrderCtrl -> StripeAPI: authorizeCharge(amount, token)
+activate StripeAPI
+
+alt Payment Approved
+  StripeAPI --> OrderCtrl: chargeToken
+  deactivate StripeAPI
+  OrderCtrl -> OrderEntity: create(PLACED)
+  OrderCtrl ->> KitchenQueue: orderPlacedEvent
+  OrderCtrl --> CheckoutUI: orderSuccess(orderId)
+  CheckoutUI --> Customer: displaySuccess()
+else Payment Declined
+  StripeAPI --> OrderCtrl: declinedError
+  OrderCtrl --> CheckoutUI: paymentFailed()
+  deactivate OrderCtrl
+  CheckoutUI --> Customer: displayError()
+  deactivate CheckoutUI
+end
+@enduml
+```
+
 ---
 
 <!-- id: ase-ch04-ccq5 -->
@@ -564,6 +737,46 @@ Swimlanes partition activities into vertical or horizontal columns:
 
 Rather than only showing control arrows, activity diagrams incorporate **Object Nodes** (rectangles displaying `Class [State]`) to illustrate data transformations:
 `[Order Placed]` ──► **Prepare Food** ──► `[Meal Cooked]` ──► **Package Food** ──► `[Meal Ready for Pickup]`.
+
+### 4.6.5 Case Study: Food Delivery Multi-Actor Activity Workflow
+
+![Food Delivery Activity Model](../../img/ch04/food_delivery/food_delivery_activity.svg)
+
+*Figure 4.6.6: Generated Food Delivery Activity Diagram. Orchestrating concurrent parallel workflows across Customer, Restaurant Kitchen, Dispatch Engine, and Delivery Courier swimlanes using Fork/Join synchronization.*
+
+```plantuml
+@startuml
+|Customer|
+start
+:Confirm & pay for order;
+
+fork
+  |Restaurant Kitchen|
+  :Receive order ticket;
+  :Prepare food items;
+  :Package meal into delivery bag;
+fork again
+  |Dispatch Engine|
+  :Calculate transit route;
+  :Query nearby couriers;
+  :Dispatch assignment offer;
+  |Delivery Courier|
+  :Accept assignment;
+  :Drive to restaurant;
+end fork
+
+|Restaurant Kitchen|
+:Hand off packaged meal to Courier;
+
+|Delivery Courier|
+:Transport meal to customer address;
+
+|Customer|
+:Verify delivery with OTP;
+:Receive meal;
+stop
+@enduml
+```
 
 ---
 
@@ -646,6 +859,37 @@ Trigger [Guard] / Effect
 * **Composite (Nested) States:** Grouping related states within a parent container. Any transition attached to the parent container applies to all nested sub-states (e.g., hitting `EmergencyStop` transitions the entire machine to `Offline`, regardless of which sub-state was active).
 * **Shallow History Pseudostate (`H`):** Remembers the most recently active direct sub-state.
 * **Deep History Pseudostate (`H*`):** Recursively remembers the most active sub-state at any arbitrary nesting depth.
+
+### 4.7.5 Case Study: Food Delivery Order Lifecycle State Machine
+
+![Food Delivery State Machine Model](../../img/ch04/food_delivery/food_delivery_state.svg)
+
+*Figure 4.7.6: Generated Food Delivery State Machine Diagram. Modeling the discrete lifecycle progression of an Order: Placed, Accepted, Preparing, ReadyForPickup, OutForDelivery, Delivered, and Cancelled with transition guards and entry actions.*
+
+```plantuml
+@startuml
+[*] -right-> Placed : customerPays()
+
+state Placed {
+  Placed : entry / startAcceptTimer()
+}
+state OutForDelivery {
+  OutForDelivery : entry / startGPSTracking()
+}
+
+Placed -right-> Accepted : acceptOrder()
+Accepted -right-> Preparing : startCooking()
+Preparing -down-> ReadyForPickup : packagingComplete()
+ReadyForPickup -left-> OutForDelivery : courierPickedUp()
+OutForDelivery -left-> Delivered : confirmDropoff()
+Delivered -down-> [*]
+
+Placed -down-> Cancelled : rejectOrder() / refund()
+Placed -down-> Cancelled : cancelOrder [t <= 120s]
+Accepted -down-> Cancelled : cancelOrder [t <= 120s]
+Cancelled -left-> [*]
+@enduml
+```
 
 ---
 

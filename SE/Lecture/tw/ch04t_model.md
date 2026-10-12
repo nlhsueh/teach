@@ -184,17 +184,39 @@
 | **擴充 (`<<extend>>`)** | 虛線開放箭頭 `- - - >` | 擴充 → 基礎案例 | **條件式選用擴充。** 僅在滿足指定擴充點 (Extension Point) 時才觸發插入執行。 |
 | **一般化 (Generalization)** | 實線空心三角形 `───▷` | 子型別 → 父型別 | **繼承關係。** 子參與者或特化使用案例自動繼承父層全部操作權限與結構。 |
 
-#### 嵌套深度安全上限 (防止過度工程化)
+### 4.3.5 明確命名語意：強動詞與單數角色
+
+![明確命名語意](../../img/ch04/nb_use_case/05_clear_naming_semantics.jpg)
+
+*圖 4.3.5：明確命名語意原則。使用強動詞與單數角色命名，嚴禁模糊弱動詞、技術黑話與 HR 行政職稱。*
+
+| 評估向度 | 良好設計實踐 (Recommended) | 致命壞味道反模式 (Anti-Pattern) |
+| :--- | :--- | :--- |
+| **使用案例動詞** | 強動詞明確表達商業目標：`提領現金`、`配送包裹`、`下單訂購` | 模糊弱動詞：`處理`、`執行`、`做`、`管理` |
+| **領域術語** | 純粹業務語言：`驗證使用者`、`產生訂單收據` | 底層技術黑話：`Process_DB_Transaction`、`SQL_Insert` |
+| **參與者名稱** | 單數業務角色：`顧客服務人員`、`計費主管`、`外送員` | 部門組織名稱或 HR 職級：`客服部`、`二級助理工程師` |
+| **一般化繼承** | 符合「是一種 (is-a / is-like)」常理：`國際學生 繼承 學生` | 為了少畫幾條線而將無關角色硬塞繼承關係 |
+
+### 4.3.6 安全嵌套上限與三大防護原則
 
 ![安全嵌套深度](../../img/ch04/nb_use_case/07_safe_nesting_limits.jpg)
 
-*圖 4.3.5：嵌套深度安全限制。嚴禁多層級的 include 鏈結（如 A include B include C include D），關聯深度應嚴格限制在 1–2 層以內。*
+*圖 4.3.6：嵌套深度安全限制。嚴禁多層級的 include 鏈結，關聯深度應嚴格限制在 1–2 層以內。*
 
-### 4.3.5 大學選課系統實戰案例與標準規格書
+三大架構防護原則確保使用案例圖維持專業清晰：
+1. **最多兩層嵌套：** 保持 include 與 extend 鏈結極度扁平（如 A includes B, B includes C 會讓圖表退化成雜亂的流程圖）。
+2. **嚴禁參與者互連：** 參與者只能跨越邊界與使用案例通訊，人與人之間的溝通應寫在情境敘述文字中。
+3. **有目的地使用系統邊界框：** 邊界框明確宣告交付範疇或劃分敏捷疊代版本（第一期 MVP vs. 第二期擴充）。
 
-![大學選課系統使用案例實戰](../../img/ch04/nb_use_case/08_case_study_enrollment_system.jpg)
+### 4.3.7 大學選課系統實戰案例與標準規格書
 
-*圖 4.3.6：大學學生選課使用案例實戰圖。展示學生（主要參與者）、排課選課系統邊界、課程目錄與計費系統（次要參與者），以及包含擋修驗證與擴充遞補名額之語義。*
+![大學選課系統實戰案例](../../img/ch04/nb_use_case/08_case_study_enrollment_system.jpg)
+
+*圖 4.3.7：大學學生選課案例盤點。在連線前先清晰盤點系統參與者 (The Who) 與核心服務 (The What)。*
+
+![大學選課系統使用案例實戰](../../img/ch04/nb_use_case/09_actor_generalization.jpg)
+
+*圖 4.3.8：大學選課完整使用案例模型。展示角色泛化繼承、強制包含、條件擴充與定時排程觸發。*
 
 #### 工業級使用案例規格書 (Use Case Specification)：學生選課
 
@@ -209,11 +231,11 @@
 | **主要成功情境**<br>*(Happy Path)* | 1. 學生瀏覽全校開課清單並檢視尚有名額之課程。<br>2. 學生選定目標班別並送出加選申請。<br>3. 系統驗證該生已修畢且通過該課程之所有先修條件。<br>4. 系統檢查目標課程當前剩餘名額 (Quota > 0)。<br>5. 系統保留名額，將學生帳號寫入修課名冊 (Course Roster)。<br>6. 系統非同步發送結算訊息至計費系統增加學分費。<br>7. 系統回傳加選成功收據畫面，顯示當前已選學分數。 |
 | **擴充與例外分支**<br>*(Extensions)* | **3a. 先修課程未通過：**<br>&nbsp;&nbsp;1. 系統顯示未符合之先修科目代碼與成績。<br>&nbsp;&nbsp;2. 系統提示學生可申請先修豁免單，終止本次加選。<br>**4a. 課程名額已額滿 (Quota = 0)：**<br>&nbsp;&nbsp;1. 系統提示本班級名額已滿。<br>&nbsp;&nbsp;2. 系統啟動 `<<extend>>` UC-05: 加入候補排隊名單。<br>&nbsp;&nbsp;3. 若學生確認，將其加入候補隊列 (Waiting List)。<br>**6a. 出納計費系統斷線：**<br>&nbsp;&nbsp;1. 系統將計費事件寫入本地交易 Outbox 表。<br>&nbsp;&nbsp;2. 依舊判定加選成功，記錄稽核日誌並背景重試計費。 |
 
-### 4.3.6 使用案例七大常見致命反模式
+### 4.3.8 使用案例七大常見致命反模式
 
 ![使用案例常見反模式](../../img/ch04/nb_use_case/10_common_anti_patterns.jpg)
 
-*圖 4.3.7：使用案例塑模常見反模式。包括箭頭反向、無邊界框、功能分解與參雜 UI 點擊。*
+*圖 4.3.9：使用案例塑模常見反模式。包括箭頭反向、無邊界框、功能分解與參雜 UI 點擊。*
 
 1. **擴充箭頭指錯方向**：誤將 `<<extend>>` 箭頭從基底指向擴充。請牢記：基底案例對擴充案例應完全一無所知！
 2. **功能分解陷阱**：把使用案例當成程序代碼逐行拆解。
@@ -222,6 +244,88 @@
 5. **過度使用一般化繼承**：為使用案例建立複雜的深層繼承樹。
 6. **參雜 UI 細節操作**：寫出「點擊送出按鈕」而非「提交訂單」。
 7. **孤兒使用案例**：完全沒有連接任何參與者的無效橢圓。
+
+### 4.3.9 專家最佳實踐檢核清單
+
+![專家最佳實踐檢核清單](../../img/ch04/nb_use_case/11_best_practices_checklist.jpg)
+
+*圖 4.3.10：使用案例品質檢核清單。在向團隊展示前，確認通過九項架構檢驗點。*
+
+| 檢查項目 | 核心品質檢核原則 | 驗證標準 |
+| :---: | :--- | :--- |
+| **1** | **強動詞 + 名詞** | 每個使用案例是否皆以具備商業價值的及物動詞與名詞命名？ |
+| **2** | **單數業務角色** | 參與者是否採用單數角色名稱，而非行政 HR 職級？ |
+| **3** | **主要參與者置左** | 主要發起參與者是否統一排列於邊界框左側？ |
+| **4** | **參與者置於框外** | 所有參與者是否皆嚴格繪製於系統邊界矩形之外？ |
+| **5** | **嚴格包含 (Include)** | `<<include>>` 是否嚴格保留給「強制必經」之共享子流程？ |
+| **6** | **嚴格擴充 (Extend)** | `<<extend>>` 是否嚴格保留給「條件可選」之擴充行為？ |
+| **7** | **繼承常理檢驗** | 參與者一般化繼承是否皆通過常理「是一種」檢驗？ |
+| **8** | **禁止人連人** | 參與者之間是否完全零連線（禁止人連人）？ |
+| **9** | **擴充條件寫在文字** | 細節擴充條件與例外規則是否完整記錄於文字規格書中？ |
+
+### 4.3.10 溝通第一思維
+
+![溝通第一思維](../../img/ch04/nb_use_case/12_communication_first_mindset.jpg)
+
+*圖 4.3.11：溝通第一思維。使用案例模型是連結非技術商業利害關係人、UX/系統設計師與後端工程師之關鍵橋樑。*
+
+### 4.3.11 生成式 AI 提示詞指引與外送平台使用案例模型實戰
+
+引導 AI 產出工業級使用案例模型時，必須給予明確邊界、語法規則與情境描述：
+
+```text
+你是一位資深系統分析架構師。
+請根據以下需求描述，產生合規且簡練的 PlantUML 使用案例圖。
+
+塑模約束條件：
+- 使用 <<extend>> 與 <<include>> 建構模組化關係。
+- 嚴禁功能分解（禁止出現「點擊按鈕」等細節）。
+- 以 rectangle "Food Delivery System" 劃定邊界。
+- 外部金流閘道置於邊界外作為次要參與者。
+
+需求描述：
+顧客瀏覽菜單、將餐點加入購物車並結帳下單。下單時
+系統強制授權扣款金流；可選套用優惠券。
+餐廳管理菜單並審核訂單；外送員承接配送任務。
+```
+
+#### 外送平台使用案例模型圖 (Food Delivery Use Case Model)
+
+![外送平台使用案例圖](../../img/ch04/food_delivery/food_delivery_usecase.svg)
+
+*圖 4.3.12：外送平台使用案例圖。劃定系統邊界、顧客核心交易、餐廳接單、外送員承接任務、強制金流授權與可選優惠券擴充。*
+
+```plantuml
+@startuml
+left to right direction
+actor Customer
+actor "Restaurant Partner" as Restaurant
+actor "Payment Gateway\n«Supporting»" as Payment
+actor "Delivery Courier" as Courier
+
+rectangle "Food Delivery System" {
+  usecase "Browse Menus" as UC_Browse
+  usecase "Place Food Order" as UC_PlaceOrder
+  usecase "Apply Promo Voucher" as UC_Voucher
+  usecase "Track Delivery Live" as UC_Track
+  usecase "Manage Menu" as UC_Menu
+  usecase "Accept / Reject Order" as UC_AcceptOrder
+  usecase "Process Payment" as UC_Payment
+  usecase "Accept Delivery Task" as UC_AcceptTask
+}
+
+Customer -- UC_Browse
+Customer -- UC_PlaceOrder
+Customer -- UC_Track
+Restaurant -- UC_Menu
+Restaurant -- UC_AcceptOrder
+
+UC_PlaceOrder ..> UC_Payment : <<include>>
+UC_Voucher .> UC_PlaceOrder : <<extend>>
+UC_Payment -- Payment
+UC_AcceptTask -- Courier
+@enduml
+```
 
 ---
 
@@ -334,6 +438,62 @@
 
 *圖 4.4.8：外送平台領域模型架構實例。展示 Customer, Order, OrderItem, MenuItem, Restaurant, Courier 與 Payment 實體間嚴謹的組合、聚合與重數約束。*
 
+在本領域模型架構中：
+1. `Customer` 與 `Order` 為 `1 ─── *` 關聯（顧客可累積多筆歷史訂單）。
+2. `Order` 與 `OrderItem` 為 `1 ◆─── 1..*` 組合（訂單至少包含一項明細，明細脫離訂單即無實體意義）。
+3. `OrderItem` 與 `MenuItem` 為 `* ─── 1` 關聯（多項訂單明細指向相同菜單項目）。
+4. `Order` 與 `Courier` 為 `* ───◇ 0..1` 聚合（外送員配送訂單，配送結束後獨立存活）。
+5. `Order` 與 `PaymentProcessor` 保持依賴解耦（訂單委託外部金流處理扣款）。
+
+#### 外送平台類別模型圖 (Food Delivery Class Model)
+
+![外送平台類別圖](../../img/ch04/food_delivery/food_delivery_class.svg)
+
+*圖 4.4.9：外送平台 PlantUML 生成之標準類別圖。*
+
+```plantuml
+@startuml
+class Customer {
+  - customerId: String
+  - deliveryAddress: String
+  + placeOrder(): Order
+}
+class Restaurant {
+  - restaurantId: String
+  - address: String
+  + acceptOrder(): Boolean
+}
+class MenuItem {
+  - itemId: String
+  - price: Double
+}
+class Order {
+  - orderId: String
+  - totalAmount: Double
+  + calculateTotal(): Double
+  + assignCourier(c: Courier): void
+}
+class OrderItem {
+  - quantity: Integer
+  - subtotal: Double
+}
+class Courier {
+  - courierId: String
+  - vehicleType: String
+}
+interface PaymentProcessor {
+  + chargeCreditCard(amount: Double): Boolean
+}
+
+Restaurant "1" *-- "1..*" MenuItem : owns >
+Order "1" *-- "1..*" OrderItem : consists of >
+OrderItem "*" --> "1" MenuItem : references >
+Customer "1" --> "*" Order : places >
+Order "*" o-- "0..1" Courier : assigned to >
+Order ..> PaymentProcessor : delegates >
+@enduml
+```
+
 ---
 
 <!-- id: ase-ch04-ccq4 -->
@@ -424,6 +584,48 @@
 * **控制物件 (Control, `<<control>>`)**：負責業務邏輯編排與交易界限（如 `OrderCheckoutService`）。控制器協調實體狀態，並調用外部邊界。
 * **實體物件 (Entity, `<<entity>>`)**：代表持久化商業資料與核心規則（如 `Order`、`Customer`）。實體嚴禁感知 UI 邊界的存在。
 
+### 4.5.5 外送平台結帳 BCE 循序圖實戰案例
+
+#### 外送平台結帳循序模型圖 (Food Delivery Sequence Model)
+
+![外送平台結帳循序圖](../../img/ch04/food_delivery/food_delivery_sequence.svg)
+
+*圖 4.5.8：外送平台 PlantUML 生成之標準 BCE 結帳循序圖。展示 Customer, CheckoutUI, OrderCtrl, StripeAPI, OrderEntity 與 KitchenQueue 跨層互動與 alt 成功/失敗分支。*
+
+```plantuml
+@startuml
+autonumber
+actor Customer
+boundary CheckoutUI
+control OrderCtrl
+boundary StripeAPI
+entity OrderEntity
+queue KitchenQueue
+
+Customer -> CheckoutUI: clickPayNow()
+activate CheckoutUI
+CheckoutUI -> OrderCtrl: submitOrder(cart, payment)
+activate OrderCtrl
+OrderCtrl -> StripeAPI: authorizeCharge(amount, token)
+activate StripeAPI
+
+alt Payment Approved
+  StripeAPI --> OrderCtrl: chargeToken
+  deactivate StripeAPI
+  OrderCtrl -> OrderEntity: create(PLACED)
+  OrderCtrl ->> KitchenQueue: orderPlacedEvent
+  OrderCtrl --> CheckoutUI: orderSuccess(orderId)
+  CheckoutUI --> Customer: displaySuccess()
+else Payment Declined
+  StripeAPI --> OrderCtrl: declinedError
+  OrderCtrl --> CheckoutUI: paymentFailed()
+  deactivate OrderCtrl
+  CheckoutUI --> Customer: displayError()
+  deactivate CheckoutUI
+end
+@enduml
+```
+
 ---
 
 <!-- id: ase-ch04-ccq5 -->
@@ -496,6 +698,48 @@
 * **餐廳廚房泳道**：接收到訂單後 ──► `烹飪餐點` ──► `[餐點: 已備妥]`。
 * **外送系統泳道**：與烹飪並行觸發 ──► `媒合最佳外送員` ──► `[派遣單: 已接單]`。
 * **結合同步條 (Join Bar)**：等待「餐點已備妥」與「外送員已抵達餐廳」兩者皆滿足後，方能執行 `領取餐點並展開運送`。
+
+### 4.6.4 外送平台多方協同活動圖實戰案例
+
+#### 外送平台活動模型圖 (Food Delivery Activity Model)
+
+![外送平台活動圖](../../img/ch04/food_delivery/food_delivery_activity.svg)
+
+*圖 4.6.6：外送平台 PlantUML 生成之泳道活動圖。展示顧客、餐廳廚房、調度引擎與外送員四大泳道之並行備餐、調度與 Fork/Join 結合點。*
+
+```plantuml
+@startuml
+|Customer|
+start
+:Confirm & pay for order;
+
+fork
+  |Restaurant Kitchen|
+  :Receive order ticket;
+  :Prepare food items;
+  :Package meal into delivery bag;
+fork again
+  |Dispatch Engine|
+  :Calculate transit route;
+  :Query nearby couriers;
+  :Dispatch assignment offer;
+  |Delivery Courier|
+  :Accept assignment;
+  :Drive to restaurant;
+end fork
+
+|Restaurant Kitchen|
+:Hand off packaged meal to Courier;
+
+|Delivery Courier|
+:Transport meal to customer address;
+
+|Customer|
+:Verify delivery with OTP;
+:Receive meal;
+stop
+@enduml
+```
 
 ---
 
@@ -575,6 +819,39 @@ UML 狀態變遷以帶箭頭的直線連接來源狀態與目標狀態，完整�
 * **複合狀態 (Composite State)**：將多個相關子狀態封裝於一個父狀態方框中。任何連接至父狀態外框的變遷（如 `powerOff` 或 `emergencyStop`），對所有巢狀子狀態自動生效，徹底杜絕重複繪製幾十條相同箭頭的「狀態爆炸 (State Explosion)」問題。
 * **淺歷史假狀態 (Shallow History, `H`)**：當重新進入複合狀態時，自動恢復至**最外層直接子狀態**。
 * **深歷史假狀態 (Deep History, `H*`)**：遞迴記憶中斷發生時處於**最深層的巢狀子狀態**。
+
+### 4.7.5 外送平台訂單生命週期狀態機實戰案例
+
+#### 外送平台訂單狀態機模型圖 (Food Delivery State Machine Model)
+
+![外送平台訂單狀態機圖](../../img/ch04/food_delivery/food_delivery_state.svg)
+
+*圖 4.7.6：外送平台 PlantUML 生成之訂單狀態機圖。描繪 Placed, Accepted, Preparing, ReadyForPickup, OutForDelivery, Delivered 與 Cancelled 等離散狀態，並附帶計時守衛與 entry 動作。*
+
+```plantuml
+@startuml
+[*] -right-> Placed : customerPays()
+
+state Placed {
+  Placed : entry / startAcceptTimer()
+}
+state OutForDelivery {
+  OutForDelivery : entry / startGPSTracking()
+}
+
+Placed -right-> Accepted : acceptOrder()
+Accepted -right-> Preparing : startCooking()
+Preparing -down-> ReadyForPickup : packagingComplete()
+ReadyForPickup -left-> OutForDelivery : courierPickedUp()
+OutForDelivery -left-> Delivered : confirmDropoff()
+Delivered -down-> [*]
+
+Placed -down-> Cancelled : rejectOrder() / refund()
+Placed -down-> Cancelled : cancelOrder [t <= 120s]
+Accepted -down-> Cancelled : cancelOrder [t <= 120s]
+Cancelled -left-> [*]
+@enduml
+```
 
 ---
 
