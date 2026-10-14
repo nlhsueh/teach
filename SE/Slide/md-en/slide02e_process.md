@@ -8,7 +8,7 @@ footer: 'Ch 02 · Software Development Processes & Methodologies'
 ---
 # Software Engineering
 
-### Lecture 2: Software Development Processes & Methodologies
+### Chapter 2: Software Development Processes & Methodologies
 
 **Prof. Nien-Lin Hsueh**
 Department of Information Engineering and Computer Science

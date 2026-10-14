@@ -2,7 +2,7 @@
 marp: true
 theme: ase-theme
 paginate: true
-header: 'Software Engineering | Chapter 7: Software Testing'
+header: 'Software Engineering | Ch 07: Software Testing'
 footer: 'Prof. Nien-Lin Hsueh'
 ---
 

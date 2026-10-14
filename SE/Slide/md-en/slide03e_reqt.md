@@ -8,7 +8,7 @@ footer: 'Ch 03 · Requirements Engineering'
 ---
 # Software Engineering
 
-### Lecture 3: Requirements Engineering
+### Chapter 3: Requirements Engineering
 
 **Prof. Nien-Lin Hsueh**
 Department of Information Engineering and Computer Science

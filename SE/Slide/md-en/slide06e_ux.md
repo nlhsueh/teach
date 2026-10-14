@@ -2,13 +2,12 @@
 marp: true
 theme: ase-theme
 paginate: true
-header: 'Software Engineering | Chapter 6: User Experience (UX) Design'
+header: 'Software Engineering | Ch 06: User Experience (UX) Design'
 footer: 'Prof. Nien-Lin Hsueh'
 ---
 
 <!-- _class: lead -->
 <!-- header: '' -->
-
 # **Software Engineering**
 
 ### Chapter 6: User Experience (UX) Design & Human-Centered AI
@@ -203,42 +202,32 @@ Elderly users spent minutes hunting and squinting across the screen.
 To summarize this slide, remember this key takeaway: Equal visual weight across disparate features hides mission-critical user tasks during high-stress situations.
 -->
 ---
-<!-- _class: title-image-slide -->
-## Case Study: Original NHI App Interface (Before)
+## Case Study: NHI Mask App — Before & After Redesign
 
-<div class="image-wrapper">
-  <img src="../../img/ux/mask_order_app_before.png" alt="Mask App Before Redesign" />
+> "Interface layout should dynamically reflect urgent user goals, not internal department divisions."
+
+<div class="two-columns">
+  <div class="card" data-marpit-fragment style="text-align: center;">
+    <h3 style="color: #dc2626; margin-bottom: 12px;">Before: Bureaucratic Grid Clutter</h3>
+    <img src="../../img/ux/mask_order_app_before.png" alt="Mask App Before Redesign" style="max-height: 360px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto; display: block;" />
+  </div>
+
+  <div class="card" data-marpit-fragment style="text-align: center;">
+    <h3 style="color: #16a34a; margin-bottom: 12px;">After: Goal-Directed Hero Flow</h3>
+    <img src="../../img/ux/mask_order_app_after.png" alt="Mask App After Redesign" style="max-height: 360px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto; display: block;" />
+  </div>
 </div>
 
 <!--
-Examine the original interface on this slide.
+Look at the side-by-side transformation of the Taiwan National Health Insurance App.
 
-Notice the problem immediately: 20 identical square icons arranged in a uniform grid.
+In Card 1 on the left, observe the original interface: twenty identical square icons arranged in a uniform grid. The mission-critical mask pre-ordering feature was buried among routine hospital directories and medical brochures, forcing anxious citizens into exhaustive visual searches.
 
-Can you spot the mask pre-order button right away? It blends right into medical records, hospital directories, and policy announcements.
+In Card 2 on the right, observe the redesigned interface: the design team elevated mask pre-ordering into a prominent, high-contrast Hero Banner occupying the prime thumb zone at the top of the mobile screen. Secondary services were neatly chunked into structured cards below.
 
-For a citizen in an emergency rush, this interface required excessive visual scanning and caused severe cognitive friction.
+With this human-centered redesign, citizens could accomplish their primary goal with a single tap in less than two seconds.
 
-To summarize this slide, remember this key takeaway: Uniform grids force users into exhaustive visual search instead of providing immediate task recognition.
--->
----
-<!-- _class: title-image-slide -->
-## Case Study: Redesigned Emergency Mask Flow (After)
-
-<div class="image-wrapper">
-  <img src="../../img/ux/mask_order_app_after.png" alt="Mask App After Redesign" />
-</div>
-
-<!--
-Now examine the redesigned interface.
-
-What a dramatic transformation! The design team promoted mask pre-ordering into a massive, high-contrast hero banner right at the top of the mobile screen.
-
-Secondary administrative functions were neatly chunked into clean cards below.
-
-Any citizen opening the app could accomplish their goal with a single tap in less than two seconds.
-
-To summarize this slide, remember this key takeaway: High-priority situational tasks deserve dominant visual real estate and immediate affordance.
+To summarize this slide, remember this key takeaway: Interface architecture should dynamically elevate urgent user goals rather than statically mirroring internal organizational structures.
 -->
 ---
 ## Case Study Analysis: Transforming Emergency UX
@@ -264,9 +253,6 @@ To summarize this slide, remember this key takeaway: Dynamic, situational UX ada
 ---
 ## Why is UX So Hard? The Empathy Gap
 
-<div class="split73">
-  <div class="left">
-
 * **1. "You Are Not the User":**
   - Software engineers possess deep technical mental models (relational schemas, API routes, thread lifecycles).
   - End users possess everyday domain mental models (ordering dinner, booking an appointment, paying a bill).
@@ -275,12 +261,6 @@ To summarize this slide, remember this key takeaway: Dynamic, situational UX ada
   - They forget the cognitive friction experienced by a first-time user encountering the screen cold.
 * **3. Defensive vs. Empathetic Thinking:**
   - Engineers often design interfaces to match backend database tables rather than natural human mental steps.
-
-  </div>
-  <div class="right">
-    <img src="../../img/ux/why_ux_is_hard_nobg.png" alt="Why UX is Hard" />
-  </div>
-</div>
 
 <!--
 Why do brilliant engineers repeatedly build difficult-to-use software?
@@ -321,7 +301,7 @@ To summarize this slide, remember this key takeaway: UI is what the user touches
 ## Visualizing UI vs. UX: Anatomy of Interaction
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ui_vs_ux_comparison_new.jpg" alt="UI vs UX Comparison" />
+  <img src="../../img/ux/ui_vs_ux_comparison_new.png" alt="UI vs UX Comparison" />
 </div>
 
 <!--
@@ -341,7 +321,7 @@ To summarize this slide, remember this key takeaway: UI creates the aesthetic se
 ## The 5-Stage UX Design Thinking Process
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ux_core_process.jpg" alt="5-Stage Design Thinking Process" />
+  <img src="../../img/ux/ux_core_process_nobg.png" alt="5-Stage Design Thinking Process" />
 </div>
 
 <!--
@@ -386,37 +366,36 @@ In Test, you put those artifacts in front of users to gather behavioral evidence
 To summarize this slide, remember this key takeaway: The five design thinking stages provide a structured, repeatable methodology for creating human-centered software.
 -->
 ---
-## Concept Check Question 1: UX Foundations & Norman Doors
+### Concept Check Question 1: Taiwan Mask App Usability Audit
 
-In cognitive ergonomics and UX design, what is the fundamental lesson illustrated by a "Norman Door" that requires a printed "PUSH" label on a pull handle?
+<div class="ccq-columns">
+  <div class="ccq-text">
 
-- **A.** Users lack the technical literacy required to operate modern mechanical equipment.
-- **B.** The door's physical affordances contradict its operation, forcing external signifiers to patch poor design.
-- **C.** All architectural and digital interfaces must provide printed documentation to satisfy legal compliance.
-- **D.** Visual aesthetics should always take precedence over operational usability in public facilities.
+During nationwide mask rationing, Taiwan's NHI app originally presented 20 identical square icons in an unprioritized grid. Why did this cause severe operational failure, and how did the redesign resolve it?
 
-<!--
-Let's test our understanding of fundamental UX concepts and Norman Doors.
+- **A.** The interface lacked multi-language localization; adding English and Japanese menus resolved citizen confusion.
+- **B.** Equal visual weight buried emergency mask pre-ordering; promoting it to a top Hero Banner aligned interface hierarchy with real-world user priorities.
+- **C.** The backend database lacked indexing; adding Redis caching allowed the 20 grid buttons to render twice as fast.
+- **D.** Mobile screens should never contain more than 3 buttons; removing all secondary hospital directories solved the problem.
 
-Reflect on Don Norman's definitions of affordances and signifiers.
-
-Evaluate each option and select the choice that accurately captures why a labeled door represents a design failure.
--->
----
-## Concept Check Question 1: Answer & Explanation
-
-- **Correct Answer: B**
-- **Explanation:**
-  - A Norman Door is the archetypal design failure where the physical affordance of the handle (which naturally affords pulling) contradicts the actual required mechanism (pushing). Because the design violates intuitive human mental models, designers are forced to paste an explicit signifier ("PUSH") to prevent errors.
-  - As Don Norman established: if an everyday object requires an instruction label just to perform its primary function, its intuitive design has failed.
-  - *Why others are incorrect:* Option A blames the user, which violates the core axiom of human-centered design. Option C is false because intuitive designs should be self-explanatory without manuals. Option D falsely promotes aesthetics over usability.
+  </div>
+  <div class="ccq-logo">
+    <img src="../../img/ux/mask_order_app_before.png" alt="Mask App Before Redesign" style="max-height: 270px; width: auto; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);" />
+  </div>
+</div>
 
 <!--
-The correct answer is B.
+Let's test our understanding with an interactive case analysis of the Taiwan NHI Mask App!
 
-When the physical affordance of a handle tells the human brain to pull, but the door only pushes, the design has failed. The paper sign is an embarrassing band-aid over a broken mental model.
+Examine the original screen on the right: twenty identical square icons arranged in a uniform grid.
 
-To summarize this slide, remember this key takeaway: Intuitive physical and digital interfaces communicate operation through natural affordances, not corrective warning signs.
+Why did this cause massive operational failure? When millions of anxious citizens needed masks every day, the emergency feature was buried alongside routine informational links.
+
+The correct answer is Option B: Equal visual weight buried the critical task. The redesign succeeded because it promoted mask pre-ordering to a prominent top Hero Banner in the prime thumb zone, aligning interface hierarchy with situational human priorities.
+
+Option A is incorrect because language was not the bottleneck. Option C confuses backend speed with interaction design hierarchy. Option D proposes an arbitrary, incorrect limit.
+
+To summarize this slide, remember this key takeaway: Interface hierarchy must dynamically adapt to real-world user priorities rather than mirroring static organizational structures.
 -->
 ---
 <!-- _class: lead -->
@@ -439,23 +418,25 @@ To summarize this slide, remember this key takeaway: Nielsen's 10 Heuristics pro
 ---
 ## Overview: Nielsen's 10 Usability Heuristics
 
+> "Heuristics are broad rules of thumb, not rigid laws—distilled from decades of empirical HCI research."
+
 <div class="outline-columns">
   <div>
     <ul>
-      <li><b>NS01. Visibility of System Status:</b> Keep users informed through timely feedback.</li>
-      <li><b>NS02. Match System & Real World:</b> Speak the user's language using natural concepts.</li>
-      <li><b>NS03. User Control & Freedom:</b> Provide clear emergency exits (undo/redo).</li>
-      <li><b>NS04. Consistency & Standards:</b> Follow platform conventions (Jakob's Law).</li>
-      <li><b>NS05. Error Prevention:</b> Eliminate error-prone conditions beforehand.</li>
+      <li>🚦 <b>NS01. Visibility of System Status:</b> Keep users informed through timely feedback.</li>
+      <li>🌍 <b>NS02. Match System & Real World:</b> Speak the user's language using natural concepts.</li>
+      <li>🚪 <b>NS03. User Control & Freedom:</b> Provide clear emergency exits (undo/redo).</li>
+      <li>📐 <b>NS04. Consistency & Standards:</b> Follow platform conventions (Jakob's Law).</li>
+      <li>🛡️ <b>NS05. Error Prevention:</b> Eliminate error-prone conditions beforehand.</li>
     </ul>
   </div>
   <div>
     <ul>
-      <li><b>NS06. Recognition Rather Than Recall:</b> Make objects, actions, and options visible.</li>
-      <li><b>NS07. Flexibility & Efficiency:</b> Provide accelerators for power users.</li>
-      <li><b>NS08. Aesthetic & Minimalist Design:</b> Maximize signal-to-noise ratio.</li>
-      <li><b>NS09. Help Users Recover from Errors:</b> Express error messages in plain language.</li>
-      <li><b>NS10. Help and Documentation:</b> Provide searchable, contextual guidance.</li>
+      <li>👁️ <b>NS06. Recognition Rather Than Recall:</b> Make objects, actions, and options visible.</li>
+      <li>⚡ <b>NS07. Flexibility & Efficiency:</b> Provide accelerators for power users.</li>
+      <li>🎨 <b>NS08. Aesthetic & Minimalist Design:</b> Maximize signal-to-noise ratio.</li>
+      <li>🩹 <b>NS09. Help Users Recover from Errors:</b> Express error messages in plain language.</li>
+      <li>📖 <b>NS10. Help and Documentation:</b> Provide searchable, contextual guidance.</li>
     </ul>
   </div>
 </div>
@@ -502,7 +483,7 @@ To summarize this slide, remember this key takeaway: Continuous, timely visual f
 <!--
 Look at these concrete implementations of system status visibility.
 
-Notice the distinct patterns: a linear percentage progress bar informing users of background download duration, step-by-step breadcrumb steppers guiding a multi-page checkout flow, and tactile button depression animations.
+Notice the distinct patterns: a deterministic percentage progress bar informing users of background file upload progress, step-by-step breadcrumb steppers guiding a multi-page checkout flow, and live cloud sync and connection state indicators.
 
 Every interaction state is explicitly communicated. The user is never left guessing whether their action was registered.
 
@@ -613,7 +594,7 @@ To summarize this slide, remember this key takeaway: Adhering to platform conven
 ## NS04 in Practice: Standardized Conventions & Metaphors
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns04_standards.jpg" alt="Consistency and Standards" />
+  <img src="../../img/ux/ns04_standards.png" alt="Consistency and Standards" />
 </div>
 
 <!--
@@ -875,21 +856,7 @@ Let's check our understanding of Nielsen's Usability Heuristics.
 
 Analyze the team's actions: replacing freeform text with a constrained picker, and disabling the submit button until validation rules are satisfied.
 
-Identify which heuristic governs preventing user mistakes before they occur.
--->
----
-## Concept Check Question 2: Answer & Explanation
-
-- **Correct Answer: B**
-- **Explanation:**
-  - Nielsen's **NS05: Error Prevention** states that careful design which prevents mistakes from occurring in the first place is far superior to even the best error messages.
-  - Using a constrained calendar picker prevents invalid date formatting errors, and disabling the submit button until required fields are filled prevents invalid submission attempts before they happen.
-  - *Why others are incorrect:* NS01 deals with status feedback (progress bars, spinners). NS07 deals with power accelerators (shortcuts). NS10 deals with help guides and documentation.
-
-<!--
-The correct answer is B.
-
-Constraining input widgets and validating fields before submission embodies Error Prevention. You eliminate the possibility of invalid input before the user can make a mistake.
+The correct answer is Option B: NS05 Error Prevention. Nielsen's NS05 states that careful design which prevents mistakes from occurring in the first place is far superior to even the best error messages. Constraining input widgets and validating fields before submission eliminates invalid input before the user can make an error.
 
 To summarize this slide, remember this key takeaway: Proactive input constraints and disabled invalid actions exemplify heuristic NS05: Error Prevention.
 -->
@@ -1083,7 +1050,7 @@ To summarize this slide, remember this key takeaway: Streaming text and collapsi
 ## AI + NS01 in Practice: Streaming Tokens & Collapsible Reasoning
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns01_thinking_process.jpg" alt="AI Thinking Process" />
+  <img src="../../img/ux/ns01_thinking_process.png" alt="AI Thinking Process" />
 </div>
 
 <!--
@@ -1120,7 +1087,7 @@ To summarize this slide, remember this key takeaway: Maintain human agency with 
 ## AI + NS03 in Practice: User Steerability & Cancelation Controls
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_03.jpg" alt="AI User Control and Freedom" />
+  <img src="../../img/ux/ns_ai_03.png" alt="AI User Control and Freedom" />
 </div>
 
 <!--
@@ -1157,7 +1124,7 @@ To summarize this slide, remember this key takeaway: Human-in-the-loop confirmat
 ## AI + NS05 in Practice: Human-in-the-Loop Confirmation & Diff Auditing
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns05_error_prevention.jpg" alt="AI Error Prevention Guardrails" />
+  <img src="../../img/ux/ns05_error_prevention.png" alt="AI Error Prevention Guardrails" />
 </div>
 
 <!--
@@ -1193,7 +1160,7 @@ To summarize this slide, remember this key takeaway: Slash commands and multi-mo
 ## AI + NS10 in Practice: Explainable AI & Contextual Citations
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns10_help_doc.jpg" alt="AI Transparency and Explainability" />
+  <img src="../../img/ux/ns10_help_doc.png" alt="AI Transparency and Explainability" />
 </div>
 
 <!--
@@ -1220,21 +1187,7 @@ Let's evaluate our understanding of human-centered AI design principles.
 
 Consider the severe security and stability risks of autonomous agents interacting with local filesystems.
 
-Identify the design pattern that protects the user while preserving human control.
--->
----
-## Concept Check Question 3: Answer & Explanation
-
-- **Correct Answer: B**
-- **Explanation:**
-  - Autonomous agents operating on codebases can introduce irreversible damage (e.g., recursive file deletion, dropping databases, running dangerous shell commands).
-  - Fulfilling **NS05 (Error Prevention)** and **NS03 (User Control & Freedom)** requires a strict **Human-in-the-Loop (HITL)** architecture: the agent plans actions, but high-risk executions (modifying files, running shell scripts) mandate explicit developer preview and approval.
-  - *Why others are incorrect:* Option A creates severe security and data-loss hazards. Option C directly violates User Control (NS03). Option D violates Visibility of System Status (NS01) by hiding critical execution logs.
-
-<!--
-The correct answer is B.
-
-Autonomous AI agents must always maintain a Human-in-the-Loop guardrail. When an agent proposes destructive file edits or shell scripts, it must request explicit human confirmation.
+The correct answer is Option B: Requiring explicit human-in-the-loop review and confirmation before executing high-risk file modifications or system terminal commands. Autonomous agents operating on codebases can introduce irreversible damage. Fulfilling NS05 (Error Prevention) and NS03 (User Control & Freedom) requires a strict Human-in-the-Loop (HITL) architecture: the agent plans actions, but high-risk executions mandate explicit developer approval.
 
 To summarize this slide, remember this key takeaway: Human-in-the-loop confirmation guardrails protect software integrity against autonomous agent errors.
 -->

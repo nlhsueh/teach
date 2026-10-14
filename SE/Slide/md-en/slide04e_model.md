@@ -1,8 +1,9 @@
 ---
 marp: true
 theme: ase-theme
+_class: lead
 paginate: true
-header: 'Software Engineering | Chapter 4: System Modeling'
+header: 'Software Engineering | Ch 04: System Modeling'
 footer: 'Prof. Nien-Lin Hsueh'
 ---
 

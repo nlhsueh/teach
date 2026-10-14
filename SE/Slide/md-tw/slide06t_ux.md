@@ -613,7 +613,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS04 實踐：通用標準慣例與平台隱喻
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns04_standards.jpg" alt="標準慣例實例" />
+  <img src="../../img/ux/ns04_standards.png" alt="標準慣例實例" />
 </div>
 
 <!--
@@ -1087,7 +1087,7 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 ## AI + NS01 實踐：文字串流與思考過程可折疊面板
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns01_thinking_process.jpg" alt="AI 思考過程面板" />
+  <img src="../../img/ux/ns01_thinking_process.png" alt="AI 思考過程面板" />
 </div>
 
 <!--
@@ -1124,7 +1124,7 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 ## AI + NS03 實踐：使用者隨時中斷與提示詞重新編輯
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_03.jpg" alt="AI 控制與自由度範例" />
+  <img src="../../img/ux/ns_ai_03.png" alt="AI 控制與自由度範例" />
 </div>
 
 <!--
@@ -1161,7 +1161,7 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 ## AI + NS05 實踐：執行前確認彈窗與代碼 Diff 稽核
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns05_error_prevention.jpg" alt="AI 執行確認與 Diff 範例" />
+  <img src="../../img/ux/ns05_error_prevention.png" alt="AI 執行確認與 Diff 範例" />
 </div>
 
 <!--
@@ -1197,7 +1197,7 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 ## AI + NS10 實踐：可解釋性引註與知識庫定位
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns10_help_doc.jpg" alt="AI 可解釋性與引註範例" />
+  <img src="../../img/ux/ns10_help_doc.png" alt="AI 可解釋性與引註範例" />
 </div>
 
 <!--

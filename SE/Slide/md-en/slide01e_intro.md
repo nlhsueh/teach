@@ -9,7 +9,7 @@ footer: 'Ch 01 · Introduction to Software Engineering'
 
 # Software Engineering
 
-### Lecture 1: Introduction to Software Engineering
+### Chapter 1: Introduction to Software Engineering
 
 **Instructor: Professor Nien-Lin Hsueh (with Gemini AI)**  
 Department of Information Engineering and Computer Science  

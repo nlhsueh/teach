@@ -1,14 +1,17 @@
 ---
 marp: true
 theme: ase-theme
-_class: lead
 paginate: true
-header: 'Software Engineering | Ch 05: Architectural Design & Object-Oriented Principles'
-footer: 'Ch 05 · Software Architecture & Design'
+header: 'Software Engineering | Ch 05: Software Architecture & Design'
+footer: 'Prof. Nien-Lin Hsueh'
 ---
-# Software Engineering
 
-### Lecture 5: Software Architecture & Design
+<!-- _class: lead -->
+<!-- header: '' -->
+
+# **Software Engineering**
+
+### Chapter 5: Software Architecture & Design
 
 **Prof. Nien-Lin Hsueh**
 Department of Information Engineering and Computer Science
@@ -24,16 +27,31 @@ Software architecture and design represent the vital link between requirements a
 To summarize this slide, remember this key takeaway: Architecture and design establish the structural foundation that enables software systems to scale, adapt, and endure.
 -->
 ---
-## Chapter 5: Roadmap & Key Topics
 
-* **5.1 Foundations of Software Architecture** (The Bridge from Reqt to Design & Abstraction Levels)
-* **5.2 Kruchten's 4+1 Architectural Views** (Logical, Process, Development, Physical & Scenarios)
-* **5.3 Classic Architectural Patterns** (Layered, Repository, Client-Server, Pipe & Filter, MVC, Microservices)
-* **5.4 Architecture & System Quality Attributes** (Trade-offs: Performance, Security, Safety, Availability)
-* **5.5 Fundamentals of Software Design** (4 Design Activities & Core Tenets: Modularity, Cohesion, Coupling)
-* **5.6 SOLID Object-Oriented Design Principles** (SRP, OCP, LSP, ISP, DIP in Depth)
-* **5.7 AI in Architecture & Software Design** (Copilots, Refactoring, Pattern Recommendation & Risks)
-* **5.8 Conceptual Recap & References** (Fill-in-the-blank Quiz & Literature)
+<!-- _class: outline-slide -->
+
+## Chapter 5: Roadmap & Core Curriculum
+
+<div class="outline-columns">
+<div>
+<h3>Part 1: Architectural Design</h3>
+<ul>
+<li><b>5.1 Foundations of Architecture:</b> The critical bridge from requirements to design, abstraction in the small vs. large.</li>
+<li><b>5.2 Kruchten's 4+1 Views:</b> Logical, process, development, physical views unified by central scenarios.</li>
+<li><b>5.3 Classic Architectural Patterns:</b> Layered, repository, client-server, pipe-and-filter, MVC, and microservices.</li>
+<li><b>5.4 Architecture & Quality Attributes:</b> Non-functional trade-offs: performance, security, availability, and safety.</li>
+</ul>
+</div>
+<div>
+<h3>Part 2: Detailed Design & Principles</h3>
+<ul>
+<li><b>5.5 Fundamentals of Software Design:</b> Design activities, modularity, information hiding, high cohesion & low coupling.</li>
+<li><b>5.6 SOLID Design Principles:</b> SRP, OCP, LSP, ISP, and DIP with real-world refactoring examples.</li>
+<li><b>5.7 AI in Architecture & Design:</b> AI copilots for trade-off analysis, refactoring, code smell detection, and risks.</li>
+<li><b>5.8 Conceptual Recap & Synthesis:</b> Core principles review, fill-in-the-blank self-assessment quiz, and literature.</li>
+</ul>
+</div>
+</div>
 
 <!--
 Here is our roadmap for Chapter 5.

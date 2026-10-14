@@ -7,7 +7,7 @@ header: 'Advanced Software Engineering | Course Syllabus & Roadmap'
 footer: 'Advanced Software Engineering (115-1) · Feng Chia University'
 ---
 
-# Advanced Software Engineering
+# Software Engineering
 
 ### Course Syllabus & Roadmap — Fall 2026 (115-1)
 
