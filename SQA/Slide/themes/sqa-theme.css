@@ -746,19 +746,22 @@ section.full-image-slide div.centered-image img {
 /* ----------------------------------------------------
    13. Title & Image Slide
    ---------------------------------------------------- */
-section.title-image-slide {
+section.title-image-slide,
+section.title-img {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
 }
 
-section.title-image-slide h2 {
+section.title-image-slide h2,
+section.title-img h2 {
   margin-top: 0;
   margin-bottom: 10px;
 }
 
-section.title-image-slide div.image-wrapper {
+section.title-image-slide div.image-wrapper,
+section.title-img div.image-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -766,7 +769,10 @@ section.title-image-slide div.image-wrapper {
   height: 480px;
 }
 
-section.title-image-slide div.image-wrapper img {
+section.title-image-slide div.image-wrapper img,
+section.title-img div.image-wrapper img,
+section.title-image-slide div.image-wrapper svg,
+section.title-img div.image-wrapper svg {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;

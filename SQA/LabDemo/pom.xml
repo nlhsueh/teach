@@ -20,6 +20,7 @@
         <selenium.version>4.23.0</selenium.version>
         <pitest.version>1.16.1</pitest.version>
         <maven.build.dir>${project.basedir}/target</maven.build.dir>
+        <pmd.includes>**/u04_inspection/**</pmd.includes>
     </properties>
 
     <dependencies>
@@ -199,6 +200,32 @@
                         <param>HTML</param>
                     </outputFormats>
                 </configuration>
+            </plugin>
+            <!-- Static Code Analysis with PMD -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.26.0</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>src/main/resources/pmd/ruleset.xml</ruleset>
+                    </rulesets>
+                    <failOnViolation>false</failOnViolation>
+                    <printFailingErrors>true</printFailingErrors>
+                    <linkXRef>false</linkXRef>
+                    <includeTests>false</includeTests>
+                    <typeResolution>false</typeResolution>
+                    <includes>
+                        <include>${pmd.includes}</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

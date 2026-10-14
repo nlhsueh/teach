@@ -18,372 +18,27 @@ PMD 能檢查程式碼中的許多常見問題，從而提升程式碼的可讀�
 
 4. **報告程式碼問題**：PMD 生成詳細的報告，指出程式碼中每個問題所在的具體行數及原因，方便開發者進行修正。
 
-### Java rules
-PMD（Programming Mistake Detector）是一款靜態程式碼分析工具，用於檢測原始程式碼中的潛在問題。它支持多種語言，其中 Java 規則最為豐富。PMD 提供了一組預定義的規則集，可幫助開發者維護高質量的程式碼，主要涵蓋以下幾個方面：
-
-#### 1. **Best Practices（最佳實踐）**
-建議使用更安全、高效的方法來編寫程式碼。
-
-例如：
-- **`UseEqualsToCompareStrings`** – 避免使用 `==` 比較字符串  
-  *Bad Smell:* 直接用 `==` 比較字符串會導致錯誤的結果，應改用 `.equals()`。
-
-- **`UseTryWithResources`** – 使用 `try-with-resources` 管理資源  
-  *Bad Smell:* 手動管理資源時，若沒有正確關閉流，可能會導致記憶體洩漏。
-
-- **`EmptyCatchBlock`** – 避免空的 `catch` 區塊  
-  *Bad Smell:* 空的 `catch` 區塊會吞掉異常，導致錯誤難以發現和排查。
-
-- **`ReturnFromFinallyBlock`** – 不要在 `finally` 區塊內使用 `return`  
-  *Bad Smell:* 在 `finally` 區塊中 `return` 會覆蓋 `try` 或 `catch` 中的返回值或異常，導致不可預測的行為。
-
-- **`FinalFieldCouldBeStatic`** – 使用 `final` 修飾不可變變數  
-  *Bad Smell:* 若變數在初始化後不應變更，應使用 `final` 來提高可讀性和安全性。
-
-- **`AvoidUsingStaticFields`** – 避免過度使用靜態變數  
-  *Bad Smell:* 過多的靜態變數可能導致非預期的共享狀態問題，影響可維護性。
-
-- **`UseIsEmptyOnCollections`** – 使用 `isEmpty()` 而非 `size() == 0` 來檢查集合是否為空  
-  *Bad Smell:* `isEmpty()` 更具可讀性，且效能可能優於 `size() == 0`。
-
-- **`DoNotIgnoreInterruptedException`** – 不要忽略 `InterruptedException`  
-  *Bad Smell:* 在多執行緒環境下，應適當處理 `InterruptedException` 來確保執行緒可以正確中斷。
-
-- **`AvoidInstantiatingObjectsInLoops`** – 避免在迴圈中創建不必要的物件  
-  *Bad Smell:* 在迴圈內部頻繁創建物件會導致不必要的記憶體分配，應在迴圈外部初始化以提高效能。
-
-- **`AbstractClassWithoutAbstractMethod`** – 抽象類中沒有抽象方法  
-  *Bad Smell:* 若類沒有抽象方法，則應考慮是否應該是普通類，而非抽象類。
-
-- **`AvoidDuplicateLiterals`** – 避免重複的字面值  
-  *Bad Smell:* 多次重複相同的字符串或數值會降低可維護性，應將其提取為常數。
-
-```java
-public class OrderProcessor {
-    private static final String PENDING = "PENDING";
-    private static final String SHIPPED = "SHIPPED";
-    private static final String DELIVERED = "DELIVERED";
-
-    public void processOrder(String status) {
-        if (status.equals(PENDING)) {
-            System.out.println("Order is still pending.");
-        } else if (status.equals(SHIPPED)) {
-            System.out.println("Order has been shipped.");
-        } else if (status.equals(DELIVERED)) {
-            System.out.println("Order has been delivered.");
-        }
-    }
-}
-```
-
-- **`GodClass`** – 避免「上帝類」  
-  *Bad Smell:* 單個類擁有過多的責任，應拆分為多個類以提高可讀性與可維護性。
-
-- **`TooManyMethods`** – 避免類別中方法數量過多  
-  *Bad Smell:* 當類別的方法數量過多時，可能意味著職責過於複雜，應考慮拆分。
-
-- **`ExcessiveParameterList`** – 避免過多的參數列表  
-  *Bad Smell:* 方法參數過多（如超過 4-5 個）會降低可讀性，應考慮使用物件封裝。
-
-- **`AvoidDeeplyNestedIfStmts`** – 避免過深的巢狀 `if` 語句  
-  *Bad Smell:* 多層巢狀 `if` 會降低可讀性，應考慮早返回（early return）或重構成小方法。
-
-- **`LawOfDemeter`** – 遵循迪米特法則（Law of Demeter, LoD）  
-  *Bad Smell:* 物件不應直接訪問其他物件的屬性或方法鏈，應透過適當的封裝來降低耦合度。
-
-- **`UnusedPrivateMethod`** – 移除未使用的私有方法  
-  *Bad Smell:* 私有方法若未被使用，則應刪除以減少程式碼複雜度。
-
-- **`CyclomaticComplexity`** – 避免過高的循環複雜度  
-  *Bad Smell:* 當函式內的決策點（如 `if`、`switch`）過多時，應拆分成更小的函式以提高可讀性。
-
-- **`AvoidReassigningParameters`** – 避免修改方法參數的值  
-  *Bad Smell:* 方法參數應視為不可變的，若需變更應使用新的變數，以提高可讀性和可維護性。
-
-
-#### 2. **Code Style（程式碼風格）**
-   - 強制統一程式碼風格，提高可讀性。
-   - 例如：
-     - 禁止無用的 import
-     - 確保類名、方法名符合 Java 命名規範
-     - 禁止多行語句寫在同一行
-
-- **`UnnecessarySemicolon`** – 避免不必要的分號  
-  *Bad Smell:* 在類或方法內部出現額外的分號可能會影響可讀性，應移除它們。
-
-- **`UnusedImports`** – 移除未使用的 `import`  
-  *Bad Smell:* 未使用的 `import` 會讓程式碼顯得雜亂，影響可讀性，應清理它們。
-
-- **`TooManyStaticImports`** – 避免過多的靜態匯入  
-  *Bad Smell:* 使用過多 `import static` 可能會降低可讀性，應僅匯入必要的方法或變數。
-
-- **`MethodNamingConventions`** – 方法命名應符合規範  
-  *Bad Smell:* 方法名稱應使用駝峰命名法（camelCase），如 `calculateTotalAmount()`，避免 `Calculate_total_Amount()`。
-
-- **`ClassNamingConventions`** – 類名應遵循 Pascal 命名法  
-  *Bad Smell:* 類名應使用大寫開頭，如 `OrderProcessor`，避免 `orderprocessor` 或 `order_processor`。
-
-- **`VariableNamingConventions`** – 變數命名應符合規範  
-  *Bad Smell:* 變數名稱應使用小寫開頭的駝峰命名，如 `orderCount`，避免 `Order_Count` 或 `ORDERCOUNT`。
-
-- **`FieldNamingConventions`** – 類別的成員變數應遵循駝峰命名法  
-  *Bad Smell:* `private int TotalAmount;` 應改為 `private int totalAmount;`。
-
-- **`ConstantNamingConventions`** – 常數應使用全大寫命名，並以 `_` 分隔  
-  *Bad Smell:* `final int maxRetries = 5;` 應改為 `final int MAX_RETRIES = 5;`。
-
-- **`AvoidTrailingWhitespace`** – 移除行尾空白  
-  *Bad Smell:* 行尾的額外空白可能會增加程式碼的雜訊，應該移除。
-
-- **`UseTabsOrSpaces`** – 使用統一的縮排方式（tab 或 space）  
-  *Bad Smell:* 在同一專案中混用 `tab` 和 `space` 會導致格式錯亂，應統一選擇一種。
-
-- **`LineLength`** – 避免行長度超過 80 或 120 個字元  
-  *Bad Smell:* 過長的行降低可讀性，應適當換行或重構。
-
-- **`ConsecutiveBlankLines`** – 避免過多的空行  
-  *Bad Smell:* 連續的空行會讓程式碼變得難以閱讀，應限制最多 1-2 行。
-
-- **`AtLeastOneConstructor`** – 類應該有至少一個明確的建構子  
-  *Bad Smell:* 若類沒有明確建構子，應添加預設建構子以增加可讀性。
-
-- **`AvoidLongParameterList`** – 避免方法參數過多  
-  *Bad Smell:* 方法應該保持簡單，若參數過多應考慮封裝為物件。
-
-- **`AvoidEmptyMethod`** – 避免空的方法  
-  *Bad Smell:* 空的方法可能是未實作的功能，應提供實作或移除它。
-
-- **`AvoidEmptyClass`** – 避免空的類  
-  *Bad Smell:* 若類沒有任何屬性或方法，應移除或添加適當的功能。
-
-- **`UseBraces`** – 使用 `{}` 來包裹單行的 `if`、`for`、`while` 語句  
-  *Bad Smell:* `if (condition) doSomething();` 應改為：
-  ```java
-  if (condition) {
-      doSomething();
-  }
-  ```
-
-- **`SwitchStmtsShouldHaveDefault`** – `switch` 陳述式應該有 `default`  
-  *Bad Smell:* 避免 `switch` 缺少 `default`，這可能導致意外的錯誤。
-
-- **`AvoidMagicNumbers`** – 避免魔術數字  
-  *Bad Smell:* `if (x > 1000)` 應改為：
-  ```java
-  final int MAX_LIMIT = 1000;
-  if (x > MAX_LIMIT) { ... }
-  ```
-
-- **`NoFinalizer`** – 避免使用 `finalize()` 方法  
-  *Bad Smell:* `finalize()` 已被認為是過時的，應使用 `try-with-resources` 或明確的 `close()` 方法來管理資源。
-
-#### 3. **Design（設計）**
-   - 幫助識別不良的程式設計模式，以提高可維護性和擴展性。
-   - 例如：
-     - 避免循環依賴（Cyclomatic Complexity 過高）
-     - 禁止 Singleton 類的懶加載模式（Lazy Initialization）
-     - 檢測是否過度使用靜態變數（Global Variables）
-
-- **`GodClass`** – 避免「上帝類」  
-  *Bad Smell:* 單個類擁有過多的責任，應拆分為多個類以提高可讀性與可維護性。
-
-- **`LargeClass`** – 避免類過大  
-  *Bad Smell:* 類別內部包含過多的屬性或方法，應考慮拆分成多個小類。
-
-- **`TooManyMethods`** – 避免類的方法數量過多  
-  *Bad Smell:* 方法數量過多可能意味著職責過於複雜，應拆分成多個類或模組。
-
-- **`ExcessiveParameterList`** – 避免方法參數過多  
-  *Bad Smell:* 方法參數應保持簡潔，若超過 4-5 個，應封裝為物件。
-
-- **`FeatureEnvy`** – 避免過度訪問其他類的屬性  
-  *Bad Smell:* 若一個類頻繁存取其他類的屬性，可能表示應該將該邏輯移到被訪問的類中。
-
-- **`LawOfDemeter`** – 遵循迪米特法則（LoD, Least Knowledge Principle）  
-  *Bad Smell:* 物件應只與直接相關的物件互動，避免深層方法鏈調用，如 `object.getA().getB().doSomething()`。
-
-- **`DataClass`** – 避免過度使用資料類  
-  *Bad Smell:* 若類別只包含 getter 和 setter，則應考慮是否應增加行為，或使用記錄型態（Record）。
-
-- **`SwitchStatement`** – 避免使用 `switch` 替代多態  
-  *Bad Smell:* `switch` 語句可透過策略模式（Strategy Pattern）或工廠模式（Factory Pattern）來取代，提高可擴充性。
-
-- **`RefusedBequest`** – 避免子類拒絕繼承父類的行為  
-  *Bad Smell:* 若子類繼承了父類，卻不使用或覆蓋大部分方法，可能代表應使用組合而非繼承。
-
-- **`SpeculativeGenerality`** – 避免過度設計  
-  *Bad Smell:* 不應過早為將來可能用不到的功能預留架構，應根據實際需求設計。
-
-- **`CyclomaticComplexity`** – 控制循環複雜度  
-  *Bad Smell:* 方法內的決策點（如 `if`、`for`、`while`）過多時，應拆分成小方法提高可讀性。
-
-- **`DeepInheritanceTree`** – 避免過深的繼承層級  
-  *Bad Smell:* 深層繼承（超過 3-4 層）會影響可維護性，應考慮使用組合（Composition）來取代。
-
-- **`GodMethod`** – 避免「上帝方法」  
-  *Bad Smell:* 單一方法過長，處理過多的邏輯，應拆分為多個小方法。
-
-- **`UnusedPrivateMethod`** – 移除未使用的私有方法  
-  *Bad Smell:* 如果私有方法未被任何地方使用，應刪除以減少程式碼複雜度。
-
-- **`LongParameterList`** – 避免過長的參數列表  
-  *Bad Smell:* 若方法參數過多，應封裝成物件來提升可讀性。
-
-- **`CouplingBetweenObjects`** – 避免高耦合  
-  *Bad Smell:* 類之間的相依性過高會降低模組的可重用性，應考慮降低耦合程度。
-
-- **`HighFanOut`** – 避免過多的相依性  
-  *Bad Smell:* 單一類依賴過多的其他類別，應考慮拆分模組。
-
-- **`InappropriateIntimacy`** – 避免類之間過度依賴彼此的內部實作  
-  *Bad Smell:* 若一個類頻繁訪問另一個類的內部細節，應考慮是否需要重構。
-
-- **`SingletonPattern`** – 避免濫用單例模式  
-  *Bad Smell:* 單例模式可能導致測試困難和全域狀態問題，應僅在必要時使用。
-
-- **`AvoidStaticMethods`** – 避免過度使用靜態方法  
-  *Bad Smell:* 靜態方法無法被覆寫，會影響擴展性，應考慮是否應將其改為實例方法。
-
-#### 4. **Documentation（文件註解）**
-   - 確保程式碼有適當的註解，特別是對於 API 方法。
-   - 例如：
-     - 檢查類和方法是否缺少 Javadoc 註解
-     - 確保 Javadoc 格式正確，沒有缺失的標籤
-     - 禁止使用 `TODO` 註解而不實現相關功能
-
-- **`CommentRequired`** – 重要類和方法應提供註解  
-  *Bad Smell:* 關鍵類別或方法缺少說明，影響可讀性和維護性，應添加適當的 Javadoc。
-
-- **`MissingJavadocMethod`** – 方法應該有 Javadoc 註解  
-  *Bad Smell:* 公開（public）方法應該有 Javadoc 說明其用途、參數及回傳值，例如：
-  ```java
-  /**
-   * 計算總金額。
-   * @param price 商品價格
-   * @param quantity 商品數量
-   * @return 總金額
-   */
-  public double calculateTotal(double price, int quantity) { ... }
-  ```
-
-- **`MissingJavadocType`** – 類別應該有 Javadoc  
-  *Bad Smell:* 若類別沒有 Javadoc，開發人員可能難以理解其用途，例如：
-  ```java
-  /**
-   * 處理客戶訂單的服務類別。
-   */
-  public class OrderService { ... }
-  ```
-
-- **`MissingJavadocVariable`** – 公共變數應有 Javadoc 說明  
-  *Bad Smell:* 重要的公共變數應提供說明，例如：
-  ```java
-  /** 訂單的唯一識別碼 */
-  public String orderId;
-  ```
-
-- **`MissingJavadocPackage`** – `package-info.java` 應該有 Javadoc  
-  *Bad Smell:* `package-info.java` 文件應包含該 package 的簡要說明，例如：
-  ```java
-  /**
-   * 此 package 包含與客戶管理相關的類別，例如客戶資訊、客戶訂單等。
-   */
-  package com.example.customer;
-  ```
-
-- **`JavadocStyle`** – Javadoc 格式應符合標準  
-  *Bad Smell:* Javadoc 標籤（如 `@param`、`@return`）應保持統一格式，避免拼寫錯誤或缺失。
-
-- **`UncommentedEmptyMethodBody`** – 空的方法應該添加註解說明原因  
-  *Bad Smell:* 若方法尚未實作或特意保持空白，應註明原因，例如：
-  ```java
-  /**
-   * 此方法目前尚未實作，將於下個版本補充。
-   */
-  public void processOrder() { }
-  ```
-
-- **`CommentSize`** – 註解應保持適當長度  
-  *Bad Smell:* 註解應該簡潔明瞭，避免過度冗長或過於簡短，如：
-  ```java
-  // ❌ 過短
-  // 訂單 ID
-
-  // ✅ 清楚易懂
-  // 訂單的唯一識別碼，系統自動生成
-  ```
-
-- **`DuplicateJavadoc`** – 避免重複的 Javadoc 註解  
-  *Bad Smell:* 若相同的 Javadoc 註解出現在多個地方，應考慮將說明集中到類或介面中，減少重複。
-
-- **`TodoComment`** – 避免使用 `TODO` 註解而未執行對應修改  
-  *Bad Smell:* 若存在 `// TODO` 註解，應確保它被及時處理，或使用更清楚的標記，例如：
-  ```java
-  // TODO: 下個版本應加入錯誤處理機制
-  ```
-
-#### 5. **Error Prone（錯誤易發）**
-   - 偵測容易導致程式錯誤的程式碼結構，防止潛在 bug。
-   - 例如：
-     - 捕獲所有異常時，避免使用 `catch (Exception e)` 而不進行處理
-     - 檢測未關閉的流、文件、Socket 等資源泄漏
-     - 避免 `NullPointerException` 風險，例如不檢查 `null` 就調用方法
-
-- **`EmptyCatchBlock`** – 避免空的 `catch` 區塊  
-  *Bad Smell:* 空的 `catch` 會吞掉異常，導致錯誤難以偵測，應記錄日誌或適當處理，例如：
-  ```java
-  try {
-      int result = 10 / 0;
-  } catch (ArithmeticException e) {
-      System.err.println("數學錯誤: " + e.getMessage());
-  }
-  ```
-
-- **`DoNotIgnoreExceptions`** – 不要忽略異常  
-  *Bad Smell:* 捕獲異常但不進行任何處理會導致難以排查問題，應至少記錄錯誤訊息。
-
-- **`ReturnFromFinallyBlock`** – 避免在 `finally` 區塊內使用 `return`  
-  *Bad Smell:* 在 `finally` 區塊中 `return` 可能會覆蓋 `try` 或 `catch` 的返回值或異常，導致不可預測的行為。
-
-- **`AvoidCatchingGenericException`** – 避免過度使用 `catch (Exception e)`  
-  *Bad Smell:* 捕獲所有異常類型可能會掩蓋特定錯誤，應捕獲特定異常類型，例如：
-  ```java
-  try {
-      Files.readAllLines(Paths.get("file.txt"));
-  } catch (IOException e) {
-      System.err.println("檔案讀取錯誤: " + e.getMessage());
-  }
-  ```
-
-- **`DoNotThrowExceptionInFinally`** – 避免在 `finally` 中拋出異常  
-  *Bad Smell:* 若 `finally` 區塊內拋出異常，可能會覆蓋 `try` 或 `catch` 區塊中的異常，導致關鍵錯誤訊息遺失。
-
-- **`NullAssignment`** – 避免明確賦值 `null`  
-  *Bad Smell:* 直接將變數賦值為 `null` 可能導致 `NullPointerException`，應考慮使用 `Optional` 或其他替代方案。
-
-- **`AvoidThrowingNullPointerException`** – 不要手動拋出 `NullPointerException`  
-  *Bad Smell:* `NullPointerException` 應該是程式邏輯錯誤的結果，而非顯式拋出，應透過適當的 `null` 檢查來避免。
-
-- **`DoNotIgnoreInterruptedException`** – 避免忽略 `InterruptedException`  
-  *Bad Smell:* 在多執行緒環境下，應適當處理 `InterruptedException`，確保執行緒可以被正確中斷，例如：
-  ```java
-  try {
-      Thread.sleep(1000);
-  } catch (InterruptedException e) {
-      Thread.currentThread().interrupt(); // 正確恢復中斷狀態
-  }
-  ```
-
-- **`AvoidInstanceofChecksInCasts`** – 避免 `instanceof` 檢查後強制轉型  
-  *Bad Smell:* 若使用 `instanceof` 檢查對象類型，應考慮更好的設計模式，如多態，避免不必要的類型轉換。
-
-- **`AvoidHardCodedPasswords`** – 避免硬編碼密碼  
-  *Bad Smell:* 密碼不應該直接寫在程式碼中，應該存放於環境變數或安全存儲機制，例如：
-  ```java
-  String password = System.getenv("DB_PASSWORD"); // 正確做法
-  ```
-
-### PMD 之應用  
+### PMD 規則分類總覽
+
+PMD 提供了豐富的預定義規則集，主要涵蓋以下核心維度。各類別之詳細規則定義、壞味道描述與程式碼重構對策，請參閱專屬手冊：
+
+👉 **[📖 點此查看 PMD Java 規則與壞味道詳細手冊 (javarules.md)](./javarules.md)**
+
+| 規則分類 (Category) | 核心目標與檢查範疇 | 典型範例規則 |
+| :--- | :--- | :--- |
+| **Best Practices** | 建議更安全、高效且符合現代 Java 慣例的語法 | `UseEqualsToCompareStrings`, `UseTryWithResources`, `EmptyCatchBlock` |
+| **Code Style** | 強制遵循團隊編碼風格，提高可讀性與審查效率 | `MethodNamingConventions`, `UseBraces`, `AvoidMagicNumbers` |
+| **Design** | 識別架構壞味道，降低耦合度，提升可維護性 | `GodClass`, `CyclomaticComplexity`, `LawOfDemeter` |
+| **Documentation** | 確保重要 API 具備合規且適當長度的 Javadoc | `CommentRequired`, `CommentSize`, `MissingJavadocMethod` |
+| **Error Prone** | 偵測容易引發執行期例外或記憶體洩漏的缺陷 | `NullAssignment`, `AvoidCatchingGenericException`, `AvoidHardCodedPasswords` |
+| **Multithreading** | 檢查多執行緒環境下的同步與中斷安全 | `DoNotIgnoreInterruptedException`, `AvoidSynchronizedAtMethodLevel` |
+| **Performance** | 避免無效的資源浪費與不必要的記憶體配置 | `AvoidInstantiatingObjectsInLoops`, `UseArraysAsList` |
+| **Security** | 檢查潛在安全漏洞（如注入風險與硬編碼金鑰） | `HardCodedCryptoKey` |
+
+---
+
+### PMD 之應用與配置
+  
 
 要在 Maven 中使用 PMD，我們需要在 `pom.xml` 中加入 **PMD Maven Plugin**。以下是一個範例配置，展示如何使用 PMD 來檢查程式碼：
 
@@ -395,12 +50,14 @@ public class OrderProcessor {
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-pmd-plugin</artifactId>
-            <version>3.15.0</version>
+            <version>3.26.0</version>
             <configuration>
                 <rulesets>
                     <!-- 指定使用的 PMD 規則集 -->
                     <ruleset>src/main/resources/pmd/ruleset.xml</ruleset>
                 </rulesets>
+                <failOnViolation>false</failOnViolation>
+                <printFailingErrors>true</printFailingErrors>
             </configuration>
             <executions>
                 <execution>
@@ -461,13 +118,27 @@ public class OrderProcessor {
 mvn verify
 ```
 
-或者，你也可以直接執行 PMD 的檢查：
+或者直接執行 PMD 檢查目標：
 
 ```bash
+# 預設執行：檢查 pom.xml 中配置的 u04_inspection 單元範圍
 mvn pmd:check
 ```
 
-這樣會檢查程式碼中的問題，並生成報告。
+##### 🎯 如何只檢查特定類別（例如 BubbleSort）？
+
+一般 Maven 預設會掃描專案內所有來源檔，但我們在 `pom.xml` 中預設將範圍鎖定於 `u04_inspection`。若在日常練習時只想針對特定檔案進行檢查，可透過 `-Dpmd.includes` 參數動態指定：
+
+```bash
+# 1. 僅檢查所有氣泡排序相關類別 (BubbleSort*)
+mvn pmd:check -Dpmd.includes="**/BubbleSort*"
+
+# 2. 僅針對學生實習練習類別 (BubbleSortExercise) 進行檢查
+mvn pmd:check -Dpmd.includes="**/BubbleSortExercise.java"
+
+# 3. 產出該特定檔案的 HTML 網頁視覺化報告
+mvn pmd:pmd -Dpmd.includes="**/BubbleSortExercise.java"
+```
 
 #### 4. 觀看報告、修正程式碼
 
@@ -621,14 +292,156 @@ PMD 預設是在 `verify` 時期執行，如果你想要讓 PMD 在其他階段�
 
 這樣每次執行 `mvn validate` 時就會執行 PMD 的檢查。
 
-## Lab
+## 範例示範：氣泡排序 (Bubble Sort) 程式碼檢視
 
-### Lab01: install PMD
+為了讓大家具體體會 PMD 如何揪出潛藏的壞味道，本單元在 `src/main/java/u04_inspection/` 提供了以氣泡排序為例的示範與實習程式：
 
-### Lab02: improve code
-* check the report generated from PMD, improve at least 3 violations
+1. **`BubbleSortBadSmellDemo.java`**：刻意涵蓋多種 PMD 違規的示範類別。
+2. **`BubbleSortClean.java`**：重構後無壞味道且符合 PMD 標準的典範類別。
+3. **`BubbleSortExercise.java`**：供課堂實作練習的起始類別。
+4. **`BubbleSortTest.java`** (`src/test/java/u04_inspection/`)：驗證功能正確性的單元測試。
 
-### Lab03: customerize the rules
+### 常見壞味道與 PMD 規則對照表
 
-### Lab04: Suppress violation
-* 有些部分的 violation 是被冤枉的，可以透過 NOPMD 來取消
+| PMD 規則 | 壞味道描述與程式碼片段 | 潛在風險 / 影響 | 重構建議 |
+| :--- | :--- | :--- | :--- |
+| **`UseEqualsToCompareStrings`** | `if (Sort_Order == "DESC")` | 字串常數池比較，可能因物件位址不同引發邏輯錯誤 | 改用 `.equals()` 或定義 `Enum` |
+| **`AvoidInstantiatingObjectsInLoops`**| 迴圈內 `new SimpleDateFormat(...)` | 每次內層比較皆配置物件，引發頻繁 GC 與效能下降 | 提取至迴圈外部或設為常數重複使用 |
+| **`AvoidMagicNumbers`** | `if (Arr.length > 1000)` | 硬編碼數字語意不明，日後難以統一維護 | 提取為 `public static final int MAX_SIZE` |
+| **`UseBraces`** | `if (needSwap) swap();` 省略 `{}` | 容易在後續多人協作維護時因縮排錯覺產生邏輯漏洞 | 強制使用 `{}` 包裹程式碼區塊 |
+| **`FieldNamingConventions`** | `private int Total_Swaps;` | 違背 Java 小駝峰命名標準 | 改為 `totalSwaps` |
+| **`EmptyCatchBlock`** | `catch (Exception e) {}` | 吞掉例外錯誤，導致排查 bug 困難 | 記錄日誌（如 Log4j 2）或向上拋出例外 |
+| **`CommentRequired`** | 缺乏類別與方法 Javadoc 註解 | 團隊成員與外部呼叫者無法理解 API 契約 | 補齊標準 Javadoc（說明、`@param`、`@return`） |
+
+---
+
+## 實驗實作 (Lab Exercises)
+
+### Lab 01: 執行 PMD 靜態檢查
+
+**目標**：透過 Maven 執行 PMD 插件，確認專案靜態分析工具運作正常，並學會檢視報告。
+
+#### 方法 A：使用終端機 (CLI) 執行
+
+1. **執行靜態檢查**：
+   開啟終端機，在專案根目錄下執行：
+   ```bash
+   # 檢查整個 u04_inspection 單元
+   mvn pmd:check
+
+   # 或是只檢查特定檔案（例如學生的練習題）
+   mvn pmd:check -Dpmd.includes="**/BubbleSortExercise.java"
+   ```
+   *附註：PMD 會在終端機輸出違規數量與簡要摘要，並生成完整報告於 `target/pmd.xml`。*
+
+2. **產出 HTML 網頁格式報告**：
+   ```bash
+   # 產出練習題的專屬 HTML 報表
+   mvn pmd:pmd -Dpmd.includes="**/BubbleSortExercise.java"
+   ```
+   執行完成後，使用瀏覽器打開 `target/reports/pmd.html`（或 `target/site/pmd.html`），即可點擊各個規則超連結查看 PMD 官方詳細說明。
+
+---
+
+#### 方法 B：使用 IntelliJ IDEA 執行檢查
+
+在 IntelliJ IDEA 中，您可透過內建的 **Maven 工具視窗** 或 **PMD 外掛** 進行檢查：
+
+##### 1. 透過內建 Maven 工具視窗（無需額外安裝外掛）
+
+* **檢查整個 u04 單元**：
+  1. 展開 IntelliJ 右側側邊欄的 **`Maven`** 視窗。
+  2. 依序展開 `LabDemo` ➜ `Plugins` ➜ `pmd`。
+  3. 雙擊 **`pmd:check`** 即可在下方 Run 視窗檢視整個單元的違規摘要。
+* **只檢查個別單一檔案 (例如 BubbleSortExercise.java)**：
+  1. 點擊 Maven 工具列上方的 **「Execute Maven Goal」** 圖示（圖示為圓形內含字母 `m`，快捷鍵連按兩次 `Ctrl`）。
+  2. 在跳出的指令框中輸入以下參數並按下 Enter：
+     ```text
+     pmd:check -Dpmd.includes="**/BubbleSortExercise.java"
+     ```
+
+##### 2. 透過 IntelliJ PMD 外掛 (PMDPlugin - 圖形右鍵即時檢查)
+
+* **前置設定（一次性）**：
+  1. 前往 `Settings` (macOS 為 `Preferences`) ➜ `Plugins` ➜ 搜尋並安裝 **`PMDPlugin`**。
+  2. 安裝後進入 `Settings` ➜ `Tools` ➜ `PMD`，在 Rulesets 區塊點擊 `+` 號，選擇 `src/main/resources/pmd/ruleset.xml` 作為自訂規則集。
+* **檢查整個單元**：
+  * 在左側專案樹狀圖 (Project View) 的 `u04_inspection` 目錄上 **按右鍵** ➜ 選擇 **`Run PMD`** ➜ 點選您的規則集，即可在下方 PMD 視窗樹狀列出所有違規。
+* **檢查個別單一檔案**：
+  * 在欲檢查的 Java 檔案編輯器內（或左側檔案節點上）**按右鍵** ➜ 選擇 **`Run PMD`**，分析結果將直接在該檔案的程式碼行旁標示警告與波浪底線。
+
+---
+
+### Lab 02: 依 PMD 報告進行重構 (Improve Code)
+
+**目標**：開啟 `src/main/java/u04_inspection/BubbleSortExercise.java`，根據 PMD 報告修復至少 3 項違規。
+
+**操作步驟**：
+1. **修正命名與魔術數字**：
+   - 將變數 `Total_Swaps` 改為小駝峰命名 `totalSwaps`。
+   - 將上限數字 `5000` 提取為常數：
+     ```java
+     private static final int MAX_DATA_LENGTH = 5_000;
+     ```
+2. **修正字串比對與括號規範**：
+   - 將 `mode == "DESC"` 替換為 `"DESC".equalsIgnoreCase(mode)`。
+   - 補齊 `needSwap` 判斷區塊的大括號 `{}`。
+3. **優化迴圈內部的記憶體配置**：
+   - 移除內層迴圈不必要的 `Integer.valueOf(...)` 物件包裝，直接比對基本型別 `data[j]` 與 `data[j + 1]`。
+4. **補齊 Javadoc 註解**：
+   - 為公開方法 `bubbleSort` 撰寫符合規範的 Javadoc。
+5. **再次驗證**：
+   - 重新執行 `mvn pmd:check`，確認警告數量顯著下降。
+   - 執行單元測試 `mvn test -Dtest="BubbleSortTest"`，確保重構後的排序功能依然 100% 正確！
+
+---
+
+### Lab 03: 客製化規則集 (Customize Ruleset)
+
+**目標**：學會根據專案需求在 `ruleset.xml` 中調整門檻或排除特定規則。
+
+1. 開啟 `src/main/resources/pmd/ruleset.xml`。
+2. **調整註解長度門檻**：
+   若團隊偏好較詳盡的 Javadoc，可將 `CommentSize` 的 `maxLines` 調高至 10：
+   ```xml
+   <rule ref="category/java/documentation.xml/CommentSize">
+       <properties>
+           <property name="maxLines" value="10" />
+           <property name="maxLineLength" value="90" />
+       </properties>
+   </rule>
+   ```
+3. **排除特定規則**：
+   若專案暫時不需要強求所有局部變數皆宣告 `final`，可在 `codestyle.xml` 或對應分類中排除：
+   ```xml
+   <rule ref="category/java/codestyle.xml">
+       <exclude name="LocalVariableCouldBeFinal"/>
+       <exclude name="MethodArgumentCouldBeFinal"/>
+   </rule>
+   ```
+4. 儲存檔案後再次執行 `mvn pmd:check`，觀察警告訊息的變化。
+
+---
+
+### Lab 04: 合理壓制違規 (Suppress Violation)
+
+**目標**：針對無法依常規重構但有其合理設計理由的程式碼，學會局部壓制警告。
+
+以 `BubbleSortExercise.java` 中的 `manualCopy` 方法為例，PMD 會報告 `AvoidArrayLoops`（建議使用 `System.arraycopy`）。若因演算法示範需要手動迴圈：
+
+1. **方法層級壓制 (Annotation)**：
+   在方法宣告上方加上：
+   ```java
+   @SuppressWarnings("PMD.AvoidArrayLoops")
+   public int[] manualCopy(final int[] source) {
+       ...
+   }
+   ```
+2. **行層級壓制 (NOPMD Comment)**：
+   在迴圈行末加上 `// NOPMD` 並註明原因：
+   ```java
+   for (int i = 0; i < source.length; i++) { // NOPMD - 教學展示手動複製迴圈
+       result[i] = source[i];
+   }
+   ```
+3. 執行 `mvn pmd:check`，確認該條規則不再被列為違規。

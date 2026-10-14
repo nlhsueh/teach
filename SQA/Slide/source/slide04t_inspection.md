@@ -29,7 +29,7 @@ footer: 'Ch04 軟體檢視'
 <div class="outline-columns">
 <div>
 
-### 🧭 檢視哲學與流程標準
+### 🧭 檢視概念、規格與設計審查
 - **4.1 軟體檢視概念與前置條件**：
   - 軟體測試的「冰山比喻」：靜態檢視 vs. 動態執行互補
   - 檢視前置條件與組織品質社群文化
@@ -39,17 +39,17 @@ footer: 'Ch04 軟體檢視'
 - **4.3 需求與規格檢視 (SRS Review)**：
   - SRS 8 大核心品質屬性（正反實戰案例對照）
   - 規格書 7 大撰寫準則與雙向追溯 (Bidirectional Traceability)
+- **4.4 軟體設計檢視 (Design Review)**：
+  - 系統架構、介面契約與多維度模型檢核（結構 vs. 行為）
+  - 模型錯誤檢驗（DFD、Cyclic Dependency、ERD）與 ADR 審查
 
 </div>
 <div>
 
-### 📐 模型審查與程式碼防禦
-- **4.4 軟體設計檢視 (Design Review)**：
-  - 系統架構、介面契約與多維度模型檢核（結構 vs. 行為）
-  - 設計原則、常見架構反模式與 ADR 決策審查
+### 💻 程式碼防禦、工具與度量
 - **4.5 程式碼檢視與安全漏洞 (Code Review)**：
   - 團隊 Clean Code 審查查核清單與程式錯誤 5 大分類
-  - Martin Fowler 經典程式臭味 (Code Smells) 與重構手法
+  - Martin Fowler / Kent Beck 經典程式臭味與重構手法
   - OWASP Top 10 核心資安漏洞防範與防禦實踐
 - **4.6 PMD 靜態程式碼分析工具**：
   - AST 語法樹走訪、5 大核心規則集與 Maven 品質閘門配置
@@ -180,10 +180,12 @@ footer: 'Ch04 軟體檢視'
 #### 🙋 **概念核對問答 (CCQ 1)**
 
 **問題情境**：  
-【是非題】靜態測試（如軟體檢視、規格檢視）可以在程式碼實際編譯執行之前，檢查需求、設計、程式碼甚至測試資料中的異常，以早期發現錯誤、大幅降低整體的軟體品質成本。
+依據軟體工程檢視與測試理論（如「測試冰山比喻」），下列關於「靜態檢視 (Static Inspection)」與「動態測試 (Dynamic Testing)」特性的比較，何者最為正確？
 
-- **A)** 正確 (True)
-- **B)** 錯誤 (False)
+- **A)** 靜態檢視能在不執行程式下，早期發現需求、架構與語意缺陷，且不受錯誤遮蔽效應影響
+- **B)** 靜態檢視效率較低，現代軟體工程應全面以自動化單元測試取代所有人工檢視活動
+- **C)** 靜態檢視僅適用於已完全除錯且無語法錯誤的程式碼，無法審查需求或架構模型
+- **D)** 動態測試能夠一次性全面照亮系統所有結構性問題，因此靜態檢視僅具備次要輔助價值
 
 </div>
 <div class="ccq-logo">
@@ -762,6 +764,420 @@ footer: 'Ch04 軟體檢視'
 
 ---
 
+<!-- _class: title-img -->
+
+## 設計圖檢驗實戰 (一)：資料流程圖 (DFD) 錯誤反模式檢驗
+
+<div class="image-wrapper">
+
+<svg viewBox="0 0 960 480" width="100%" height="100%" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="dfd960-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+    <marker id="dfd960-arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#ef4444" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="480" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <!-- Left: Diagram Area (Width 510) -->
+  <rect x="15" y="15" width="510" height="450" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+  <rect x="25" y="22" width="180" height="24" rx="4" fill="#f1f5f9" />
+  <text x="115" y="38" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">📐 DFD 錯誤架構圖範例</text>
+
+  <!-- Entity: Customer -->
+  <rect x="35" y="65" width="110" height="46" rx="6" fill="#fce7f3" stroke="#db2777" stroke-width="2" />
+  <text x="90" y="93" font-size="13" font-weight="bold" fill="#9d174d" text-anchor="middle">顧客 (Entity)</text>
+
+  <!-- Store 1: Order DB -->
+  <path d="M 370 65 h 125 a 6 6 0 0 1 0 46 h -125" fill="#fef3c7" stroke="#d97706" stroke-width="2" />
+  <line x1="370" y1="65" x2="370" y2="111" stroke="#d97706" stroke-width="2" />
+  <text x="435" y="93" font-size="13" font-weight="bold" fill="#b45309" text-anchor="middle">(D1) 訂單資料庫</text>
+
+  <!-- Error 1: Entity to Store Direct Flow -->
+  <path d="M 145 88 L 360 88" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,4" marker-end="url(#dfd960-arrow-red)" />
+  <rect x="180" y="68" width="145" height="20" rx="4" fill="#fee2e2" stroke="#f87171" stroke-width="1" />
+  <text x="252" y="82" font-size="10.5" font-weight="bold" fill="#b91c1c" text-anchor="middle">❌ 錯誤 1：實體直通資料庫</text>
+
+  <!-- Process 1: Black Hole -->
+  <g transform="translate(35, 145)">
+    <rect width="200" height="125" rx="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <text x="100" y="28" font-size="13" font-weight="bold" fill="#0369a1" text-anchor="middle">P1: 顧客行為深度分析</text>
+    <!-- Inputs -->
+    <path d="M -20 60 L -2 60" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#dfd960-arrow)" />
+    <text x="-8" y="52" font-size="10" fill="#0369a1" text-anchor="end">登入日誌</text>
+    <path d="M -20 90 L -2 90" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#dfd960-arrow)" />
+    <text x="-8" y="82" font-size="10" fill="#0369a1" text-anchor="end">商品點擊流</text>
+    <!-- Callout Badge -->
+    <rect x="15" y="52" width="170" height="52" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5" />
+    <text x="100" y="74" font-size="12" font-weight="bold" fill="#b91c1c" text-anchor="middle">❌ 錯誤 2：黑洞 (Black Hole)</text>
+    <text x="100" y="93" font-size="10.5" fill="#dc2626" text-anchor="middle">只有輸入，無任何輸出！</text>
+  </g>
+
+  <!-- Process 2: Miracle -->
+  <g transform="translate(295, 145)">
+    <rect width="205" height="125" rx="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <text x="102" y="28" font-size="13" font-weight="bold" fill="#0369a1" text-anchor="middle">P2: 產出月結財務報表</text>
+    <!-- Output -->
+    <path d="M 205 75 L 225 75" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#dfd960-arrow)" />
+    <text x="215" y="65" font-size="10" fill="#0369a1">月報表</text>
+    <!-- Callout Badge -->
+    <rect x="15" y="52" width="175" height="52" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5" />
+    <text x="102" y="74" font-size="12" font-weight="bold" fill="#b91c1c" text-anchor="middle">❌ 錯誤 3：奇蹟 (Miracle)</text>
+    <text x="102" y="93" font-size="10.5" fill="#dc2626" text-anchor="middle">無任何輸入，憑空產出！</text>
+  </g>
+
+  <!-- Store to Store Direct -->
+  <g transform="translate(35, 315)">
+    <path d="M 15 25 h 115 a 6 6 0 0 1 0 42 h -115" fill="#fef3c7" stroke="#d97706" stroke-width="1.8" />
+    <line x1="15" y1="25" x2="15" y2="67" stroke="#d97706" stroke-width="1.8" />
+    <text x="75" y="50" font-size="11.5" font-weight="bold" fill="#b45309" text-anchor="middle">(D2) 交易日誌庫</text>
+
+    <path d="M 330 25 h 115 a 6 6 0 0 1 0 42 h -115" fill="#fef3c7" stroke="#d97706" stroke-width="1.8" />
+    <line x1="330" y1="25" x2="330" y2="67" stroke="#d97706" stroke-width="1.8" />
+    <text x="390" y="50" font-size="11.5" font-weight="bold" fill="#b45309" text-anchor="middle">(D3) 備份歸檔庫</text>
+
+    <path d="M 135 46 L 320 46" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,4" marker-end="url(#dfd960-arrow-red)" />
+    <rect x="155" y="26" width="145" height="20" rx="4" fill="#fee2e2" stroke="#f87171" stroke-width="1" />
+    <text x="227" y="40" font-size="10.5" font-weight="bold" fill="#b91c1c" text-anchor="middle">❌ 錯誤 4：儲存庫直通儲存庫</text>
+    <text x="235" y="85" font-size="11" fill="#64748b" text-anchor="middle">⚠️ 違反規範：儲存庫無運算能力，必須經 Process 進行備份處理</text>
+  </g>
+
+  <!-- Right: Defect Explanation & Checklist (Width 405) -->
+  <g transform="translate(540, 15)">
+    <rect width="405" height="450" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+    <rect x="15" y="14" width="225" height="26" rx="4" fill="#fee2e2" />
+    <text x="127" y="32" font-size="13" font-weight="bold" fill="#b91c1c" text-anchor="middle">🔍 DFD 錯誤點出與檢核要點</text>
+
+    <!-- Point 1 -->
+    <g transform="translate(15, 48)">
+      <rect width="375" height="88" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1" />
+      <text x="12" y="22" font-size="12" font-weight="bold" fill="#991b1b">❌ 點出 1：實體直讀直寫儲存庫 (Direct DB Access)</text>
+      <text x="12" y="42" font-size="11" fill="#334155">• 嚴重破綻：外部實體跳過系統核心邏輯直接存取資料庫。</text>
+      <text x="12" y="59" font-size="11" fill="#334155">• 違反規則：破壞系統安全驗證、業務規則檢核與資料封裝。</text>
+      <text x="12" y="77" font-size="11" fill="#0284c7" font-weight="bold">✓ 修正指引：所有讀寫請求必須由 Process 驗證後代理轉發。</text>
+    </g>
+
+    <!-- Point 2 -->
+    <g transform="translate(15, 146)">
+      <rect width="375" height="88" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1" />
+      <text x="12" y="22" font-size="12" font-weight="bold" fill="#991b1b">❌ 點出 2：黑洞處理程序 (Black Hole)</text>
+      <text x="12" y="42" font-size="11" fill="#334155">• 嚴重破綻：P1 只有輸入資料流，沒有任何資料流輸出。</text>
+      <text x="12" y="59" font-size="11" fill="#334155">• 違反規則：違反「處理平衡 (Process Balance)」，為死胡同邏輯。</text>
+      <text x="12" y="77" font-size="11" fill="#0284c7" font-weight="bold">✓ 修正指引：Process 產出的分析結果必須流向報表或儲存庫。</text>
+    </g>
+
+    <!-- Point 3 -->
+    <g transform="translate(15, 244)">
+      <rect width="375" height="88" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1" />
+      <text x="12" y="22" font-size="12" font-weight="bold" fill="#991b1b">❌ 點出 3：奇蹟處理程序 (Miracle / Gray Hole)</text>
+      <text x="12" y="42" font-size="11" fill="#334155">• 嚴重破綻：P2 無任何輸入資料流，卻源源不絕產出月報表。</text>
+      <text x="12" y="59" font-size="11" fill="#334155">• 違反規則：違反「資料守恆 (Conservation)」，無原料不可成物。</text>
+      <text x="12" y="77" font-size="11" fill="#0284c7" font-weight="bold">✓ 修正指引：月報表必須引入訂單庫與收費明細作為輸入源。</text>
+    </g>
+
+    <!-- Point 4 -->
+    <g transform="translate(15, 342)">
+      <rect width="375" height="96" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1" />
+      <text x="12" y="22" font-size="12" font-weight="bold" fill="#991b1b">❌ 點出 4：儲存庫直通儲存庫 (Store to Store)</text>
+      <text x="12" y="42" font-size="11" fill="#334155">• 嚴重破綻：D2 與 D3 資料庫之間直接建立資料流管線。</text>
+      <text x="12" y="59" font-size="11" fill="#334155">• 違反規則：儲存庫為靜態容器無主動運算力，不可自發傳輸。</text>
+      <text x="12" y="76" font-size="11" fill="#334155">• 儲存平衡：資料庫必須有進（寫入）有出（讀取），杜絕孤立庫。</text>
+      <text x="12" y="92" font-size="11" fill="#0284c7" font-weight="bold">✓ 修正指引：引入「排程備份程序 (Backup Process)」執行遷移。</text>
+    </g>
+  </g>
+</svg>
+
+</div>
+
+---
+
+<!-- _class: title-img -->
+
+## 設計圖檢驗實戰 (二)：模組循環依賴 (Cyclic Dependency) 錯誤檢驗
+
+<div class="image-wrapper">
+
+<svg viewBox="0 0 960 480" width="100%" height="100%" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="cyc960-arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#ef4444" />
+    </marker>
+    <marker id="cyc960-arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+    </marker>
+  </defs>
+
+  <rect width="960" height="480" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <!-- Left: Diagrams Area (Width 510) -->
+  <g transform="translate(15, 15)">
+    <!-- Sub-box 1: Cyclic Anti-pattern (Height 230) -->
+    <rect width="510" height="235" rx="8" fill="#ffffff" stroke="#fca5a5" stroke-width="1.5" />
+    <rect x="15" y="12" width="280" height="24" rx="4" fill="#fee2e2" />
+    <text x="155" y="28" font-size="12" font-weight="bold" fill="#b91c1c" text-anchor="middle">❌ 錯誤設計：循環依賴閉環 (Cyclic Loop)</text>
+
+    <!-- Node 1: OrderService -->
+    <rect x="40" y="55" width="130" height="46" rx="6" fill="#e2e8f0" stroke="#475569" stroke-width="1.5" />
+    <text x="105" y="83" font-size="12.5" font-weight="bold" fill="#1e293b" text-anchor="middle">OrderService</text>
+
+    <!-- Node 2: PaymentService -->
+    <rect x="340" y="55" width="135" height="46" rx="6" fill="#e2e8f0" stroke="#475569" stroke-width="1.5" />
+    <text x="407" y="83" font-size="12.5" font-weight="bold" fill="#1e293b" text-anchor="middle">PaymentService</text>
+
+    <!-- Node 3: NotificationService -->
+    <rect x="180" y="145" width="160" height="46" rx="6" fill="#e2e8f0" stroke="#475569" stroke-width="1.5" />
+    <text x="260" y="173" font-size="12.5" font-weight="bold" fill="#1e293b" text-anchor="middle">NotificationService</text>
+
+    <!-- Arrow 1: Order -> Payment -->
+    <path d="M 170 78 L 330 78" fill="none" stroke="#ef4444" stroke-width="2.5" marker-end="url(#cyc960-arrow-red)" />
+    <text x="250" y="70" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">1. 呼叫付款扣款</text>
+
+    <!-- Arrow 2: Payment -> Notification -->
+    <path d="M 370 103 L 305 140" fill="none" stroke="#ef4444" stroke-width="2.5" marker-end="url(#cyc960-arrow-red)" />
+    <text x="365" y="132" font-size="11" font-weight="bold" fill="#dc2626">2. 發送交易通知</text>
+
+    <!-- Arrow 3: Notification -> Order (The Cycle!) -->
+    <path d="M 200 145 L 130 106" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="5,4" marker-end="url(#cyc960-arrow-red)" />
+    <rect x="80" y="125" width="115" height="20" rx="3" fill="#fee2e2" stroke="#f87171" stroke-width="1" />
+    <text x="137" y="139" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">3. 反向查詢訂單明細</text>
+
+    <!-- Warning Center Badge -->
+    <circle cx="260" cy="105" r="16" fill="#fee2e2" stroke="#ef4444" stroke-width="2" />
+    <text x="260" y="111" font-size="16" text-anchor="middle">⚠️</text>
+    <text x="260" y="215" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">死鎖閉環：OrderService ➔ Payment ➔ Notify ➔ OrderService</text>
+
+    <!-- Sub-box 2: Decoupled Solution (Height 200) -->
+    <g transform="translate(0, 245)">
+      <rect width="510" height="205" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" />
+      <rect x="15" y="10" width="310" height="24" rx="4" fill="#dcfce7" />
+      <text x="170" y="26" font-size="12" font-weight="bold" fill="#15803d" text-anchor="middle">✅ 正確架構：領域事件驅動解耦 (Event-Driven / DAG)</text>
+
+      <!-- OrderService Source -->
+      <rect x="30" y="55" width="115" height="42" rx="6" fill="#ffffff" stroke="#10b981" stroke-width="1.5" />
+      <text x="87" y="80" font-size="12" font-weight="bold" fill="#065f46" text-anchor="middle">OrderService</text>
+
+      <!-- Event Bus -->
+      <rect x="195" y="48" width="145" height="56" rx="6" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5" />
+      <text x="267" y="73" font-size="12" font-weight="bold" fill="#854d0e" text-anchor="middle">Event Bus / Broker</text>
+      <text x="267" y="91" font-size="10" fill="#a16207" text-anchor="middle">(OrderPlacedEvent)</text>
+
+      <path d="M 145 76 L 187 76" fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#cyc960-arrow-green)" />
+      <text x="166" y="68" font-size="9.5" fill="#047857" text-anchor="middle">發布事件</text>
+
+      <!-- Consumers -->
+      <rect x="375" y="42" width="120" height="34" rx="4" fill="#ffffff" stroke="#64748b" stroke-width="1.2" />
+      <text x="435" y="63" font-size="11" fill="#334155" text-anchor="middle">PaymentService</text>
+
+      <rect x="375" y="84" width="120" height="34" rx="4" fill="#ffffff" stroke="#64748b" stroke-width="1.2" />
+      <text x="435" y="105" font-size="11" fill="#334155" text-anchor="middle">NotificationService</text>
+
+      <path d="M 340 65 L 367 58" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#cyc960-arrow-green)" />
+      <path d="M 340 85 L 367 96" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#cyc960-arrow-green)" />
+
+      <!-- Footer benefit note -->
+      <rect x="25" y="135" width="460" height="52" rx="4" fill="#ffffff" stroke="#bbf7d0" stroke-width="1" />
+      <text x="35" y="154" font-size="11" font-weight="bold" fill="#15803d">🎯 解耦效益：有向無環圖 (DAG, Directed Acyclic Graph)</text>
+      <text x="35" y="172" font-size="10.5" fill="#334155">將反向依賴切斷，資料包含在 Event Payload 中，徹底終結依賴死鎖與測試依賴！</text>
+    </g>
+  </g>
+
+  <!-- Right: Defect Explanation & Checklist (Width 405) -->
+  <g transform="translate(540, 15)">
+    <rect width="405" height="450" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+    <rect x="15" y="14" width="240" height="26" rx="4" fill="#fee2e2" />
+    <text x="135" y="32" font-size="13" font-weight="bold" fill="#b91c1c" text-anchor="middle">🔍 循環依賴點出與檢核要點</text>
+
+    <!-- Point 1 -->
+    <g transform="translate(15, 48)">
+      <rect width="375" height="88" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1" />
+      <text x="12" y="22" font-size="12" font-weight="bold" fill="#991b1b">❌ 點出 1：單元測試隔離完全破滅 (Untestable)</text>
+      <text x="12" y="42" font-size="11" fill="#334155">• 嚴重破綻：模組 A 需 B 才能跑，B 需 C，C 又需 A。</text>
+      <text x="12" y="59" font-size="11" fill="#334155">• 實務困境：無法建立乾淨獨立的 Mock 物件進行隔離單元測試。</text>
+      <text x="12" y="77" font-size="11" fill="#0284c7" font-weight="bold">✓ 檢核標準：單元測試必須能在不拉起其他業務模組下獨立執行。</text>
+    </g>
+
+    <!-- Point 2 -->
+    <g transform="translate(15, 146)">
+      <rect width="375" height="88" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1" />
+      <text x="12" y="22" font-size="12" font-weight="bold" fill="#991b1b">❌ 點出 2：牽一髮動全身 (Ripple Rebuild Effect)</text>
+      <text x="12" y="42" font-size="11" fill="#334155">• 嚴重破綻：NotificationService 微調一個資料型態。</text>
+      <text x="12" y="59" font-size="11" fill="#334155">• 實務困境：整條閉環所有模組被迫全部重新編譯、重測與重發布。</text>
+      <text x="12" y="77" font-size="11" fill="#0284c7" font-weight="bold">✓ 檢核標準：模組間應遵循「穩定依賴原則 (SDP)」，只依賴穩定抽象。</text>
+    </g>
+
+    <!-- Point 3 -->
+    <g transform="translate(15, 244)">
+      <rect width="375" height="88" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1" />
+      <text x="12" y="22" font-size="12" font-weight="bold" fill="#991b1b">❌ 點出 3：框架容器啟動死鎖 (Creation Deadlock)</text>
+      <text x="12" y="42" font-size="11" fill="#334155">• 嚴重破綻：Spring 依賴注入 (DI) 初始化時無法判定構造順序。</text>
+      <text x="12" y="59" font-size="11" fill="#334155">• 實務困境：執行期直接拋出 BeanCurrentlyInCreationException 崩潰。</text>
+      <text x="12" y="77" font-size="11" fill="#0284c7" font-weight="bold">✓ 檢核標準：架構審查禁用 `@Lazy` 掩蓋錯誤，必須從根源破除循環。</text>
+    </g>
+
+    <!-- Point 4: Solution -->
+    <g transform="translate(15, 342)">
+      <rect width="375" height="96" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1" />
+      <text x="12" y="22" font-size="12" font-weight="bold" fill="#15803d">💡 架構重構三大標準解法</text>
+      <text x="12" y="42" font-size="11" fill="#334155">1. 依賴反轉 (DIP)：OrderService 定義介面，底層反向實作。</text>
+      <text x="12" y="59" font-size="11" fill="#334155">2. 事件驅動 (EDA)：發布訂單事件，通知與支付非同步訂閱。</text>
+      <text x="12" y="76" font-size="11" fill="#334155">3. 引入中介者 (Mediator)：由 Orchestrator 統一指揮協調流程。</text>
+      <text x="12" y="92" font-size="11" fill="#15803d" font-weight="bold">✓ 靜態檢核：CI 整合 JDepend 或 SonarQube 自動阻斷閉環。</text>
+    </g>
+  </g>
+</svg>
+
+</div>
+
+---
+
+<!-- _class: title-img -->
+
+## 設計圖檢驗實戰 (三)：實體關聯圖 (ERD) 資料模型反模式檢驗
+
+<div class="image-wrapper">
+
+<svg viewBox="0 0 960 480" width="100%" height="100%" style="font-family: system-ui, -apple-system, sans-serif;">
+  <rect width="960" height="480" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <!-- Left: Diagrams Area (Width 510) -->
+  <g transform="translate(15, 15)">
+    <rect width="510" height="450" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+    <rect x="15" y="12" width="220" height="24" rx="4" fill="#f1f5f9" />
+    <text x="125" y="28" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">📐 ERD 資料庫模型錯誤範例</text>
+
+    <!-- Error 1: Direct Many-to-Many (Y: 45) -->
+    <g transform="translate(15, 45)">
+      <rect width="480" height="115" rx="6" fill="#fff" stroke="#fca5a5" stroke-width="1.5" />
+      <rect x="10" y="8" width="250" height="20" rx="3" fill="#fee2e2" />
+      <text x="135" y="22" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">❌ 錯誤 1：多對多未拆解 (Missing Junction)</text>
+
+      <!-- Student Table -->
+      <rect x="20" y="38" width="115" height="60" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2" />
+      <path d="M 20 38 h 115 v 18 h -115 z" fill="#e2e8f0" />
+      <text x="77" y="52" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Student (學生)</text>
+      <text x="28" y="70" font-size="9.5" fill="#475569">🔑 student_id (PK)</text>
+      <text x="28" y="86" font-size="9.5" fill="#475569">name, email</text>
+
+      <!-- Direct N:M line -->
+      <line x1="135" y1="68" x2="245" y2="68" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="5,4" />
+      <text x="150" y="62" font-size="12" font-weight="bold" fill="#ef4444">N</text>
+      <text x="230" y="62" font-size="12" font-weight="bold" fill="#ef4444">M</text>
+
+      <!-- Course Table -->
+      <rect x="245" y="38" width="115" height="60" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2" />
+      <path d="M 245 38 h 115 v 18 h -115 z" fill="#e2e8f0" />
+      <text x="302" y="52" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Course (課程)</text>
+      <text x="253" y="70" font-size="9.5" fill="#475569">🔑 course_id (PK)</text>
+      <text x="253" y="86" font-size="9.5" fill="#475569">title, credits</text>
+
+      <!-- Callout -->
+      <rect x="372" y="36" width="98" height="65" rx="4" fill="#fee2e2" />
+      <text x="421" y="52" font-size="10" font-weight="bold" fill="#991b1b" text-anchor="middle">無關聯實體！</text>
+      <text x="421" y="68" font-size="9" fill="#b91c1c" text-anchor="middle">選課成績 (grade)</text>
+      <text x="421" y="81" font-size="9" fill="#b91c1c" text-anchor="middle">與學期 (term)</text>
+      <text x="421" y="94" font-size="9" fill="#b91c1c" text-anchor="middle">屬性無處存放</text>
+    </g>
+
+    <!-- Error 2: Missing PK (Y: 170) -->
+    <g transform="translate(15, 170)">
+      <rect width="480" height="120" rx="6" fill="#fff" stroke="#fca5a5" stroke-width="1.5" />
+      <rect x="10" y="8" width="240" height="20" rx="3" fill="#fee2e2" />
+      <text x="130" y="22" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">❌ 錯誤 2：主鍵遺失與孤島實體 (No PK)</text>
+
+      <rect x="20" y="38" width="135" height="66" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5" />
+      <path d="M 20 38 h 135 v 18 h -135 z" fill="#fecaca" />
+      <text x="87" y="52" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">PaymentLog (無主鍵)</text>
+      <text x="28" y="70" font-size="9.5" fill="#7f1d1d">action (非唯一可重複)</text>
+      <text x="28" y="84" font-size="9.5" fill="#7f1d1d">amount (金額)</text>
+      <text x="28" y="98" font-size="9.5" fill="#7f1d1d">created_at (時間戳)</text>
+
+      <rect x="170" y="38" width="300" height="66" rx="4" fill="#fef2f2" stroke="#f87171" stroke-width="1" />
+      <text x="180" y="56" font-size="10.5" font-weight="bold" fill="#991b1b">破壞實體完整性 (Entity Integrity)：</text>
+      <text x="180" y="73" font-size="10" fill="#7f1d1d">• 無唯一識別 Primary Key，無法精準定址修改。</text>
+      <text x="180" y="89" font-size="10" fill="#7f1d1d">• 無外鍵與訂單或會員關聯，成為孤島髒資料。</text>
+    </g>
+
+    <!-- Error 3: Redundant Transitive Loop (Y: 298) -->
+    <g transform="translate(15, 298)">
+      <rect width="480" height="140" rx="6" fill="#fff" stroke="#fca5a5" stroke-width="1.5" />
+      <rect x="10" y="8" width="260" height="20" rx="3" fill="#fee2e2" />
+      <text x="140" y="22" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">❌ 錯誤 3：冗餘循環傳遞關聯 (3NF 違規)</text>
+
+      <rect x="20" y="38" width="90" height="38" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2" />
+      <text x="65" y="62" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Department</text>
+
+      <rect x="155" y="38" width="90" height="38" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2" />
+      <text x="200" y="62" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Professor</text>
+
+      <rect x="290" y="38" width="90" height="38" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2" />
+      <text x="335" y="62" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Course</text>
+
+      <!-- A -> B -> C -->
+      <line x1="110" y1="57" x2="155" y2="57" stroke="#64748b" stroke-width="1.5" />
+      <text x="132" y="52" font-size="10" fill="#475569" text-anchor="middle">1:N</text>
+      <line x1="245" y1="57" x2="290" y2="57" stroke="#64748b" stroke-width="1.5" />
+      <text x="267" y="52" font-size="10" fill="#475569" text-anchor="middle">1:N</text>
+
+      <!-- Redundant A -> C loop -->
+      <path d="M 65 76 Q 200 115 335 76" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="5,4" />
+      <rect x="130" y="98" width="140" height="18" rx="3" fill="#fee2e2" stroke="#f87171" stroke-width="1" />
+      <text x="200" y="111" font-size="9.5" font-weight="bold" fill="#b91c1c" text-anchor="middle">❌ 冗餘傳遞路徑 (1:N)</text>
+
+      <!-- Explanation side note -->
+      <rect x="390" y="38" width="80" height="92" rx="4" fill="#fef2f2" />
+      <text x="430" y="55" font-size="9.5" font-weight="bold" fill="#991b1b" text-anchor="middle">更新異常：</text>
+      <text x="430" y="73" font-size="9" fill="#7f1d1d" text-anchor="middle">教授轉系時</text>
+      <text x="430" y="90" font-size="9" fill="#7f1d1d" text-anchor="middle">兩路徑衝突</text>
+      <text x="430" y="107" font-size="9" fill="#7f1d1d" text-anchor="middle">產生不一致</text>
+    </g>
+  </g>
+
+  <!-- Right: Defect Explanation & Checklist (Width 405) -->
+  <g transform="translate(540, 15)">
+    <rect width="405" height="450" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+    <rect x="15" y="14" width="225" height="26" rx="4" fill="#fee2e2" />
+    <text x="127" y="32" font-size="13" font-weight="bold" fill="#b91c1c" text-anchor="middle">🔍 ERD 錯誤點出與檢核要點</text>
+
+    <!-- Point 1 -->
+    <g transform="translate(15, 48)">
+      <rect width="375" height="116" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1" />
+      <text x="12" y="22" font-size="12" font-weight="bold" fill="#991b1b">❌ 點出 1：多對多未拆解 (Missing Junction Table)</text>
+      <text x="12" y="42" font-size="11" fill="#334155">• 嚴重破綻：Student 與 Course 直接拉出 N:M 關聯線。</text>
+      <text x="12" y="59" font-size="11" fill="#334155">• 致命後果：選課成績 (grade)、學期 (term)、選課時間等無處存放。</text>
+      <text x="12" y="76" font-size="11" fill="#334155">• 關聯盲區：硬塞學生表造成重複欄位；塞課程表無法多學生。</text>
+      <text x="12" y="97" font-size="11" fill="#0284c7" font-weight="bold">✓ 修正指引：拆解為兩個 1:N 關係，建立 Enrollment 關聯實體與複合 PK。</text>
+    </g>
+
+    <!-- Point 2 -->
+    <g transform="translate(15, 174)">
+      <rect width="375" height="116" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1" />
+      <text x="12" y="22" font-size="12" font-weight="bold" fill="#991b1b">❌ 點出 2：主鍵遺失與孤島實體 (Missing PK & Constraints)</text>
+      <text x="12" y="42" font-size="11" fill="#334155">• 嚴重破綻：PaymentLog 只有日誌欄位，缺乏不可重複 Primary Key。</text>
+      <text x="12" y="59" font-size="11" fill="#334155">• 致命後果：破壞實體完整性 (Entity Integrity)，高並發容易重複記錄。</text>
+      <text x="12" y="76" font-size="11" fill="#334155">• 孤島缺陷：缺乏外鍵 (FK) 與 Order 綁定，無法執行關聯追溯。</text>
+      <text x="12" y="97" font-size="11" fill="#0284c7" font-weight="bold">✓ 修正指引：強制指派唯一 PK (如 log_id UUID)，並以 FK 綁定 Order 表。</text>
+    </g>
+
+    <!-- Point 3 -->
+    <g transform="translate(15, 300)">
+      <rect width="375" height="138" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1" />
+      <text x="12" y="22" font-size="12" font-weight="bold" fill="#991b1b">❌ 點出 3：冗餘傳遞關聯環 (Redundant Transitive Path)</text>
+      <text x="12" y="42" font-size="11" fill="#334155">• 嚴重破綻：已存在 Dept ➔ Prof ➔ Course，又建立 Dept ➔ Course。</text>
+      <text x="12" y="59" font-size="11" fill="#334155">• 致命後果：違反第三正規化 (3NF)，產生「更新異常 (Update Anomaly)」。</text>
+      <text x="12" y="76" font-size="11" fill="#334155">• 衝突情境：當教授調轉至其他系所時，Course 透過教授推導的系所，與直接關聯的系所產生邏輯矛盾。</text>
+      <text x="12" y="104" font-size="11" fill="#0284c7" font-weight="bold">✓ 修正指引：移除冗餘傳遞連線，透過授課教授之所屬系所單一來源動態查詢。</text>
+    </g>
+  </g>
+</svg>
+
+</div>
+
+---
+
 <!-- header: '4.4 設計檢視' -->
 
 ## 架構壞味道 (Architecture Smells) 與反模式防禦
@@ -885,10 +1301,12 @@ footer: 'Ch04 軟體檢視'
 #### 🙋 **概念核對問答 (CCQ 4)**
 
 **問題情境**：  
-【是非題】設計檢視（Design Review）最理想的執行時機，是在系統所有模組的單元測試與整合測試皆通過之後，以確保實際產出的系統程式碼與設計文件完全相符。
+在軟體品質保證落實「品質左移 (Shift-Left)」實務時，下列關於「軟體設計檢視 (Design Review)」的時機、範疇與架構原則，何者最為正確？
 
-- **A)** 正確 (True)
-- **B)** 錯誤 (False)
+- **A)** 設計檢視必須在撰寫程式碼 (Coding) 之前落實，及早揪出架構盲點以防錯誤修復成本被放大數十倍
+- **B)** 設計檢視最理想的執行時機，是在系統所有模組的單元測試與整合測試皆通過之後
+- **C)** 設計檢視只關注圖形排版美觀，不應深究循環依賴 (Cyclic Dependency) 或資料流黑洞
+- **D)** 只要團隊落實重構 (Refactoring)，錯誤的資料模型與系統分層結構就能在後期無痛自動修復
 
 </div>
 <div class="ccq-logo">
@@ -1003,7 +1421,9 @@ footer: 'Ch04 軟體檢視'
 </div>
 <div class="content-figure">
 
-![Code Smells](../../img/ch04/code_smells.jpg)
+![Kent Beck](../../img/ch04/kent_beck.jpg)
+
+<p style="text-align: center; font-size: 13px; color: #64748b; margin-top: 6px;">Kent Beck (極限編程 XP 與 TDD 之父，Code Smell 概念提出者)</p>
 
 </div>
 </div>
@@ -1208,10 +1628,12 @@ footer: 'Ch04 軟體檢視'
 #### 🙋 **概念核對問答 (CCQ 5)**
 
 **問題情境**：  
-【是非題】在程式碼檢視中，若發現系統直接將詳細的例外錯誤堆疊資訊（如 `e.printStackTrace()`）輸出至前端頁面或公開日誌，這屬於 OWASP Top 10 中的「A05:2021-安全設定錯誤 (Security Misconfiguration)」漏洞範疇。
+在進行安全性程式碼檢視 (Security Code Review) 時，若審查員發現程式碼在捕捉到例外時直接呼叫 `e.printStackTrace()` 輸出至日誌或畫面，依據 OWASP 安全規範，下列敘述何者最為正確？
 
-- **A)** 正確 (True)
-- **B)** 錯誤 (False)
+- **A)** 這屬於嚴重的安全設定錯誤與資訊洩漏 (OWASP A05)，攻擊者可藉此窺探內部路徑、框架版本與呼叫鏈發動精準滲透
+- **B)** 這是業界推薦的最佳除錯實踐，便於終端使用者第一時間掌握系統內部例外細節並回報
+- **C)** 只要將例外列印動作放在 `finally` 區塊中，就能自動受到沙箱保護而無洩漏風險
+- **D)** 靜態分析工具無法在語法樹中比對出此類呼叫，只能依賴線上入侵防禦系統動態攔截
 
 </div>
 <div class="ccq-logo">
@@ -1726,16 +2148,16 @@ footer: 'Ch04 軟體檢視'
 <div class="card" data-marpit-fragment>
 
 ### 🧭 CCQ 1 ～ 4：哲學、流程、規格與設計
-- **CCQ 1【正確 (A)】**：靜態測試能在不執行程式下提早揪出規格、架構與程式碼異常，是降低品質成本最佳手段。
+- **CCQ 1【靜態檢視優勢 (A)】**：靜態檢視能在不執行程式下提早揪出規格、架構與語意異常，且不受錯誤遮蔽影響，是降低品質成本最佳手段。
 - **CCQ 2【概述 (B)】**：Overview 階段由作者向小組簡報背景脈絡與規格，而非正式找錯。
 - **CCQ 3【雙向追溯 (A)】**：需求與系統規格需達成 Traced (回溯起源) 與 Traceable (前向導引實作與測試)。
-- **CCQ 4【錯誤 (B)】**：設計檢視必須在 Coding 之前進行（左移原則），不可等到測試通過才做。
+- **CCQ 4【極限左移防錯 (A)】**：設計檢視必須在 Coding 之前進行（左移原則），及早阻斷架構錯誤被幾何級數放大，絕不可等到測試通過才做。
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### 🎯 CCQ 5 ～ 8：代碼、PMD、AI 與度量
-- **CCQ 5【正確 (A)】**：在生產環境輸出詳細 `printStackTrace()` 暴露內部架構，屬於 OWASP A05 安全設定錯誤。
+- **CCQ 5【資訊洩漏與設定錯誤 (A)】**：直接呼叫 `printStackTrace()` 暴露內部路徑與呼叫堆疊，屬於 OWASP A05 安全設定錯誤，易遭精準滲透。
 - **CCQ 6【抑制與門禁 (B)】**：可針對特定方法使用 `@SuppressWarnings` 或行尾 `// NOPMD` 註明原因壓制誤報，PMD 為純原始碼靜態分析。
 - **CCQ 7【人機協作 (C)】**：AI 是 PR 初篩先行者（Human-in-the-Loop），需搭配 CI 靜態分析與分支保護品質閘門。
 - **CCQ 8【合理的檢視速率 (B)】**：檢視速率過快會導致缺陷遺漏率飆升，應控制在 200~400 LOC/小時。
