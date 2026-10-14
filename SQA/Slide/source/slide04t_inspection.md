@@ -33,12 +33,11 @@ footer: 'Ch04 軟體檢視'
 - **4.1 軟體檢視概念與前置條件**：
   - 軟體測試的「冰山比喻」：靜態檢視 vs. 動態執行互補
   - 檢視前置條件與組織品質社群文化
-- **4.2 檢視方法與 AI 現代實踐**：
+- **4.2 檢視方法與流程標準**：
   - IEEE 1028 審查體系：檢視 (Inspection) vs. 走查 (Walkthrough)
   - Fagan 檢視 6 大標準流程與 5 大核心角色分工
-  - 2026 AI PR 機器人先行 + 人類專家把關之典範轉移
 - **4.3 需求與規格檢視 (SRS Review)**：
-  - SRS 8 大核心品質屬性（正確、無歧義、完整、可驗證等）
+  - SRS 8 大核心品質屬性（正反實戰案例對照）
   - 規格書 7 大撰寫準則與雙向追溯 (Bidirectional Traceability)
 
 </div>
@@ -46,15 +45,20 @@ footer: 'Ch04 軟體檢視'
 
 ### 📐 模型審查與程式碼防禦
 - **4.4 軟體設計檢視 (Design Review)**：
-  - 系統架構、介面契約與資料庫 Schema 審查
-  - 設計模型檢核：DFD 4 大核心元素與平衡規則
-  - AI 威脅建模 (Threat Modeling) 與風險推演
+  - 系統架構、介面契約與多維度模型檢核（結構 vs. 行為）
+  - 設計原則、常見架構反模式與 ADR 決策審查
 - **4.5 程式碼檢視與安全漏洞 (Code Review)**：
   - 團隊 Clean Code 審查查核清單與程式錯誤 5 大分類
   - Martin Fowler 經典程式臭味 (Code Smells) 與重構手法
-  - OWASP Top 10 核心資安漏洞防範與 PMD 靜態分析
-- **4.6 檢視成效評估度量**：
-  - 缺失偵測效率 (EDE)、成本效用比與缺陷移除率 (DRL)
+  - OWASP Top 10 核心資安漏洞防範與防禦實踐
+- **4.6 PMD 靜態程式碼分析工具**：
+  - AST 語法樹走訪、5 大核心規則集與 Maven 品質閘門配置
+  - 違規壓制機制 (`@SuppressWarnings` / `// NOPMD`) 與 Lab 實作
+- **4.7 AI 輔助檢視與 DevOps 自動化**：
+  - AI 賦能需求、設計、程式碼三階段靜態檢視與 PR 機器人
+  - DevOps CI/CD 流水線檢視整合與階梯式阻斷品質閘門
+- **4.8 檢視成效評估度量**：
+  - 缺失偵測效率 (EDE)、檢視速率控制與缺陷移除率 (DRL)
 
 </div>
 </div>
@@ -197,7 +201,7 @@ footer: 'Ch04 軟體檢視'
 # **4.2 檢視方法**
 
 > 「正式檢視比非正式走查嚴謹數倍；  
-> 讓 AI 先行掃雷，人類專家方能聚焦於全局智慧。」
+> 藉由結構化角色分工，防範作者當局者迷。」
 
 ---
 
@@ -260,7 +264,13 @@ footer: 'Ch04 軟體檢視'
 </div>
 <div class="content-figure">
 
-![Inspection Flow](../../img/ch04/inspection_flow.jpg)
+  <div class="name-card">
+    <img src="../../img/ch04/michael_fagan.jpg" alt="Michael E. Fagan" />
+    <div class="name-card-caption">
+      <span class="name-card-name">Michael E. Fagan (麥克·范根)</span>
+      <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Fagan_inspection" target="_blank" rel="noopener">Inventor: Fagan Inspection (Wikipedia)</a></span>
+    </div>
+  </div>
 
 </div>
 </div>
@@ -297,69 +307,6 @@ footer: 'Ch04 軟體檢視'
   - 獨立審查員，從架構、效能、資安、邊界條件等多維度深入審查。
 - **關鍵守則**：
   - 檢視速率應控制在 **200 ~ 400 LOC/Hr**，超過此速率遺漏率將急遽上升。
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '4.2 檢視方法' -->
-
-## 2026 AI 輔助現代檢視：典範轉移
-
-<div class="card-deck">
-
-> 💡 流程革命：從傳統「耗時耗力的純人工會議」，轉向「AI 機器人先行掃雷 + 人類專家深層把關」。
-
-<div class="content-columns">
-<div class="content-text">
-
-### 🤖 AI 時代人機協同兩階段
-- **Stage 1: AI 第一道防線（靜態審查）**：
-  - 開發者送出 Pull Request 時，AI PR 機器人（如 PR-Agent、Cursor）自動分析變更。
-  - 10 秒內掃除命名風格、未釋放資源、空指標風險與常見漏洞，並產出變更摘要。
-- **Stage 2: 人類專家複審（聚焦智慧）**：
-  - 人類審查員無需浪費精力看語法格式，全神貫注於 **全局系統架構、商業領域邏輯正確性與高並發狀態不變量**。
-
-</div>
-<div class="content-figure">
-
-![AI-Assisted Inspection](../../img/ch04/ai_assisted_inspection.jpg)
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '4.2 檢視方法' -->
-
-## 檢視角色的 AI 賦能與終極防線
-
-<div class="card-deck">
-
-* > 💡 AI 雖然強大但存在幻覺與上下文盲區；人類工程師的最終決策依然是系統品質的終極守門人。
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### ⚡ 角色賦能升級
-- **作者 (Author) ── 本地自檢預防**：
-  - 在 IDE 內藉由 AI 進行 `/review`，在程式碼 Push 前掃除 80% 低階瑕疵。
-- **記錄者 (Scribe) ── 語音即時轉文字**：
-  - 會議中藉由 STT 工具自動分類缺陷，即時生成 Jira 任務與責任歸屬。
-- **檢視者 (Reviewer) ── 智慧對話式審查**：
-  - 讓 AI 模擬攻擊者視角或生成 10 組極端極限邊界測試案例輔助驗證。
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### ⚠️ AI 審查的盲點與警訊
-- **上下文遺失 (Context Loss)**：AI 往往只看局部 Diff，無法洞察微服務分散式架構下的漣漪效應。
-- **一本正經胡說八道 (Hallucination)**：給出看似精美但引用過期或不存在套件的修改建議。
-- **工程結論**：
-  > AI 是極佳的初審助手，但絕不能省略人類專家的架構決策與業務邏輯驗證！
 
 </div>
 </div>
@@ -439,31 +386,114 @@ footer: 'Ch04 軟體檢視'
 
 <!-- header: '4.3 規格檢視' -->
 
-## 規格雙向追溯性 (Bidirectional Traceability)
+## SRS 審查項目 (1/4)：正確性與無歧義
 
 <div class="card-deck">
 
-* > 💡 雙向追溯能保證「不漏掉任何客戶需求」，同時杜絕工程師「憑空實作鍍金功能」。
+> 💡 規格必須精確反映真實業務法規，且排除任何模糊臆測空間。
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 🔗 前向追溯 (Traceable Forward)
-- **從需求向後看**：
-  - 確保每一條「客戶需求 (User Need)」都能映射到具體的「系統規格 (SRS)」。
-  - 規格再進一步對應到架構模組、實作程式碼與測試案例。
-- **工程效益**：
-  - 避免需求流失，確保 100% 的客戶承諾都被落實與測試。
+### 🎯 1. 正確性 (Correct)
+- ❌ **反例**：「VIP 8 折結帳金額扣減後若小於零則以零元計。」
+  - *分析：VIP 8 折不可能算出負數；公式邏輯失真，違反財務常識。*
+- ✅ **正例**：「VIP 會員結帳應以購物車內非促銷商品總額之 80% 計算應付金額（四捨五入至整數）；運費另計不得扣抵。」
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 🔙 後向回溯 (Traced Backward)
-- **從程式碼與測試往前看**：
-  - 每一行程式碼、每一個 API、每一個測試案例都能回溯找到其來源需求。
-- **工程效益**：
-  - 杜絕**鍍金行為 (Gold Plating)**（實作未被授權且不必要的自嗨功能）。
-  - 當需求變更時，能立即進行「衝擊分析 (Impact Analysis)」。
+### 🔍 2. 無歧義 (Unambiguous)
+- ❌ **反例**：「系統應具備良好的回應速度，並適當支援行動裝置。」
+  - *分析：何謂「良好」？何謂「適當」？引發各方主觀解讀。*
+- ✅ **正例**：「在 1,000 並發連線下，API 95 百分位回應 $\le 1.2$ 秒；UI 通過 iOS Safari 16+ 與 Android Chrome 110+ 渲染相容測試。」
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.3 規格檢視' -->
+
+## SRS 審查項目 (2/4)：完整性與可驗證性
+
+<div class="card-deck">
+
+> 💡 規格必須防禦所有邊界極端異常，且具備客觀有限成本的驗證手段。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 📦 3. 完整性 (Complete)
+- ❌ **反例**：「使用者輸入密碼錯誤時，系統將鎖定該帳號。」
+  - *分析：未定義連續幾次錯誤、鎖定多久、如何解鎖，存在規格黑洞。*
+- ✅ **正例**：「連續 5 次輸入密碼錯誤立即鎖定帳號 15 分鐘，期間拒絕登入嘗試並向註冊信箱寄發警示通知。」
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ✅ 4. 可驗證性 (Verifiable)
+- ❌ **反例**：「系統介面必須非常友善，且核心服務永遠不會當機。」
+  - *分析：「非常友善」、「永不當機」為主觀且不可驗證的語句。*
+- ✅ **正例**：「系統須通過 OWASP ZAP 針對 SQL Injection 與 XSS 的自動化滲透掃描，且無未修復的 High 或 Critical 等級漏洞。」
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.3 規格檢視' -->
+
+## SRS 審查項目 (3/4)：一致性與雙向追溯
+
+<div class="card-deck">
+
+> 💡 內外部條款不得自相矛盾，且需求與實作間須具備不可斷裂的關聯鏈。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### ⚖️ 5. 一致性 (Consistent)
+- ❌ **反例**：第 3 節寫「訂單 30 分鐘未付自動取消釋出庫存」；第 7 節寫「每日午夜 00:00 統一批次釋出逾期庫存」。
+  - *分析：同份規格內部前後矛盾，開發與測試團隊無所適從。*
+- ✅ **正例**：「全系統統一規範：訂單建立起 30 分鐘內未付款，延遲佇列立即觸發取消事件並釋出所鎖定之庫存。」
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🔗 6. 雙向追溯 (Traceable)
+- ❌ **反例**：段落中隨興提及「需支援類似 Uber 的即時叫車定位」。（*無編號、無來源對應，極易遺漏或產生未授權鍍金功能*）
+- ✅ **正例**：「`[REQ-LOC-01]` 依據業務合約 2.1 條，司機端 App 每 5 秒透過 WebSocket 向後端回傳 GPS 座標（誤差範圍 $\le 10$ 公尺）。」
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.3 規格檢視' -->
+
+## SRS 審查項目 (4/4)：設計獨立與易理解性
+
+<div class="card-deck">
+
+> 💡 規格專注於「做什麼」而非限制「怎麼做」，且利害關係人皆能輕易讀懂。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🧩 7. 設計獨立 (Design-Independent)
+- ❌ **反例**：「會員資料表必須建立於 Oracle 19c，由 Java Spring Boot `UserService.java` 透過 JPA 進行查詢。」（*過度限制實作*）
+- ✅ **正例**：「提供標準 RESTful 會員查詢 API，接收 UUID 並於 200ms 內回傳 JSON 格式基本資料，支援 500 QPS。」
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🤝 8. 易理解性 (Understandable)
+- ❌ **反例**：「藉由非同步 Reactive Stream 背壓機制，於下游緩衝溢位前觸發斷路器狀態轉移俾使交易鏈路降級。」（*業務客戶無法理解*）
+- ✅ **正例**：「當結帳人潮超出系統負荷時，系統暫停處理非急迫請求，並於介面提示『目前排隊中，請稍候 30 秒』。」
 
 </div>
 </div>
@@ -502,31 +532,81 @@ footer: 'Ch04 軟體檢視'
 
 ---
 
+<!-- _class: title-image-slide -->
+
+## 需求追溯矩陣 (Requirement Traceability Matrix, RTM)
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/requirement_traceability_matrix.png" alt="Requirement Traceability Matrix (RTM)" />
+</div>
+
+---
+
 <!-- header: '4.3 規格檢視' -->
 
-## 規格好壞實戰範例對抗
+## 規格雙向追溯性 (Bidirectional Traceability)
 
 <div class="card-deck">
 
-* > 💡 一個模糊的字眼，在實作階段會被解讀出十種不同版本；規格必須消除所有臆測空間。
+* > 💡 雙向追溯能保證「不漏掉任何客戶需求」，同時杜絕工程師「憑空實作鍍金功能」。
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### ❌ 劣質規格敘述 (Ambiguous & Passive)
-- ❌ 「系統應具備良好的回應速度，並適當支援行動裝置。」
-  - *問題：什麼叫「良好」？哪些行動裝置？*
-- ❌ 「使用者輸入錯誤時，參數會被重置，相關資訊將被記錄等等。」
-  - *問題：被動句、誰來重置？「等等」包含什麼？*
-- ❌ 「系統應總是防範所有惡意攻擊，絕不當機。」
-  - *問題：過度絕對、脫離現實且不可驗證。*
+### 🔗 前向追溯 (Traceable Forward)
+- **從需求向後看**：
+  - 確保每一條「客戶需求 (User Need)」都能映射到具體的「系統規格 (SRS)」。
+  - 規格再進一步對應到架構模組、實作程式碼與測試案例。
+- **工程效益**：
+  - 避免需求流失，確保 100% 的客戶承諾都被落實與測試。
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### ✅ 優質規格敘述 (Verifiable & Precise)
-- ✅ 「在 1,000 並發使用者下，結帳 API 的 95 百分位響應時間需小於 1.2 秒；UI 需通過 iOS Safari 16+ 與 Android Chrome 110+ 渲染相容性測試。」
-- ✅ 「若帳號密碼驗證失敗，認證模組 (AuthService) 需累計嘗試次數，超過 5 次時鎖定帳號 15 分鐘，並向 AuditLog 寫入安全事件紀錄。」
+### 🔙 後向回溯 (Traced Backward)
+- **從程式碼與測試往前看**：
+  - 每一行程式碼、每一個 API、每一個測試案例都能回溯找到其來源需求。
+- **工程效益**：
+  - 杜絕**鍍金行為 (Gold Plating)**（實作未被授權且不必要的自嗨功能）。
+  - 當需求變更時，能立即進行「衝擊分析 (Impact Analysis)」。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.3 規格檢視' -->
+
+## 需求檢視 Q&A：規格階段三大常見誤解迷思
+
+<div class="card-deck">
+
+* > 💡 「需求檢視不是挑客戶毛病，而是在未動工前以最低成本校準開發方向盤。」
+
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+
+### ❓ 迷思 1：客戶已簽名確認，需求就不會錯？
+- **常見誤解**：以為客戶簽名驗收即代表規格完整無誤。
+- **領域真相**：客戶熟悉業務，但**普遍缺乏技術邊界與極端狀況思維**，常忽略並發、異常與容錯要求。
+- **檢視對策**：工程團隊主動探詢，挖掘未言明的「隱性需求」。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ❓ 迷思 2：敏捷擁抱變更，何必寫規格與檢視？
+- **常見誤解**：認為敏捷就是隨時改需求，寫 SRS 是浪費時間。
+- **領域真相**：敏捷講求快速回饋，但**沒有方向的變更只會造成無止境重工與架構腐蝕**。
+- **檢視對策**：推行輕量化檢視，將 User Story 淬鍊為明確的 Given-When-Then 驗收標準。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ❓ 迷思 3：AI 與工具能完全代勞規格檢視？
+- **常見誤解**：把文件丟給 LLM 或 Linter 就能抓出所有問題。
+- **領域真相**：工具擅長排查文字矛盾與模糊詞，但**完全抓不出「被遺漏的關鍵需求 (Missing Requirements)」**。
+- **檢視對策**：跨角色（開發、測試、業務）面對面對齊，以人機協同彌補工具盲點。
 
 </div>
 </div>
@@ -565,7 +645,7 @@ footer: 'Ch04 軟體檢視'
 <!-- _class: lead -->
 <!-- header: '4.4 設計檢視' -->
 
-# **4.4 設計檢視**
+# **4.4 軟體設計檢視 (Design Review)**
 
 > 「程式碼是磚瓦，架構設計才是地基；  
 > 挽救一個錯誤的架構，往往需要拆毀整棟大樓。」
@@ -574,26 +654,22 @@ footer: 'Ch04 軟體檢視'
 
 <!-- header: '4.4 設計檢視' -->
 
-## 設計檢視的核心目的與多維度清單
+## 設計檢視核心本質：架構級及早防錯 (Shift-Left)
 
 <div class="card-deck">
 
-> 💡 設計檢視 (Design Review) 是在 Coding 之前，針對架構模組、介面協定與資料庫 Schema 的靜態審查。
+> 💡 設計檢視是在 Coding 之前，針對系統架構、模組劃分、介面契約與資料模型的靜態審查。
 
 <div class="content-columns">
 <div class="content-text">
 
-### 🏛️ 五大核心檢核維度
-- **1. 實體與介面完整性**：
-  - 各模組具備唯一職責，介面契約（方法、參數、回傳值、前置/後置條件）精準無遺漏。
-- **2. 高內聚與低耦合**：
-  - 符合 High Cohesion, Low Coupling，杜絕循環依賴。
-- **3. 需求追溯與功能完整**：
-  - 逐一對照 SRS 需求，確保架構具備工程可行性。
-- **4. 多維度架構視角**：
-  - 涵蓋邏輯視角 (類別)、行程視角 (並行) 與實體部署視角。
-- **5. 關鍵非功能議題**：
-  - 例外復原、快取失效、單點故障 (SPOF) 與資源安全防護。
+### 🏛️ 為什麼設計檢視回報率最高？
+- **左移防錯效益**：架構與設計階段引入的缺陷，若流到測試或生產環境，修復成本高達 **50 ~ 100 倍**。
+- **四大標準審查階段**：
+  - **1. 準備 (Inputs)**：備妥架構設計書 (ADD)、介面規格 (API Spec)、資料庫模型 (ERD) 與設計檢核表。
+  - **2. 獨立審查 (Study)**：審查委員獨立研讀，標記架構破綻與盲點。
+  - **3. 審查會議 (Meeting)**：聚焦於介面界接、異常處理與系統容錯力，**不糾結實作細節**。
+  - **4. 追蹤修復 (Follow-up)**：落實架構問題修改，產出架構決策記錄 (ADR) 閉環。
 
 </div>
 <div class="content-figure">
@@ -608,99 +684,189 @@ footer: 'Ch04 軟體檢視'
 
 <!-- header: '4.4 設計檢視' -->
 
-## 設計模型檢核：DFD 4 大核心元素
+## 設計檢視五大核心維度檢核清單
 
 <div class="card-deck">
 
-> 💡 資料流程圖 (DFD) 為結構化分析利器；利用語法嚴謹的模型特徵能進行高效率檢核。
-
-<div class="content-columns">
-<div class="content-text">
-
-### 📊 DFD 四大要素檢核標準
-- **1. 外部實體 (External Entity)**：
-  - 系統邊界外的發送或接收者（人員或外部系統），絕不能直接存取內部資料儲存。
-- **2. 處理過程 (Process)**：
-  - 執行資料轉換，名稱必須以「**動詞 + 名詞**」命名（如「計算折扣」）。
-  - **平衡法則**：每個 Process 必須至少有 1 個輸入與 1 個輸出（無輸入為黑洞，無輸出為奇蹟）。
-- **3. 資料儲存 (Data Store)**：
-  - 靜態儲存庫，必須至少有 1 個輸入（寫入）與 1 個輸出（讀取）。
-- **4. 資料流 (Data Flow)**：
-  - 有向箭頭，必須明確標註名詞資料標籤。
-
-</div>
-<div class="content-figure">
-
-![DFD Elements](../../img/ch04/dfd_core_elements.jpg)
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '4.4 設計檢視' -->
-
-## DFD 實戰檢核：訂單處理流程
-
-<div class="card-deck">
-
-> 💡 透過標準 DFD 流程圖檢驗：資料流向是否合規？處理過程與資料儲存是否皆維持平衡？
-
-<div class="content-columns">
-<div class="content-text">
-
-### 📦 訂單處理檢核鏈條
-- **流程步序對照**：
-  - `1. 提交訂單 (Place Order)`：顧客 (Customer) ➔ P1 訂單處理。
-  - `2. 檢查庫存 (Check Stock)`：P1 ➔ D1 庫存資料庫（讀取查詢）。
-  - `3. 庫存狀態 (Stock Status)`：D1 ➔ P1（回傳即時狀態）。
-  - `4. 寫入訂單 (Save Order)`：P1 ➔ D2 訂單資料庫（寫入記錄）。
-  - `5. 出貨確認 (Order Confirmation)`：P1 ➔ 顧客（回傳通知）。
-- **檢核合規性分析**：
-  - P1 具備 2 輸入、3 輸出 ➔ **完全平衡**。
-  - D1/D2 皆具備讀寫機制 ➔ **合乎邏輯**。
-
-</div>
-<div class="content-figure">
-
-![DFD Order Flow](../../img/ch04/dfd_order_flow.jpg)
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '4.4 設計檢視' -->
-
-## AI 賦能現代設計檢視：威脅建模與契約檢查
-
-<div class="card-deck">
-
-* > 💡 利用大型語言模型模擬駭客視角與極端情境，讓架構設計在動工前就接受震撼教育。
+* > 💡 成熟的設計檢視必須兼顧邏輯結構、工程可行性與非功能品質指標 (NFRs)。
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 🛡️ AI 威脅建模與風險推演
-- **架構輸入模擬**：
-  - 將架構圖或 OpenAPI Spec 輸入 AI，讓 AI 代理以 STRIDE 模型進行威脅推演。
-- **主動標記漏洞**：
-  - 自動識別潛在風險：單點故障 (SPOF)、快取穿透/雪崩、資料庫連線池耗盡與分散式死結。
-- **容錯與降級建議**：
-  - 建議熔斷機制（Circuit Breaker）、限流（Rate Limiting）與重試指數退避策略。
+### 📐 結構與介面契約
+- **1. 模組職責與介面契約 (Interfaces)**：
+  - 各模組具備唯一職責 (SRP)，介面協定（方法、參數、回傳型態、前置/後置條件）精準定義。
+  - 維持良好封裝性，不洩漏內部實作細節。
+- **2. 高內聚與低耦合 (Cohesion & Coupling)**：
+  - 模組內部職責高度聚焦，跨模組依賴極小化。
+  - 嚴格杜絕跨模組之**循環依賴 (Cyclic Dependencies)**。
+- **3. 需求追溯與完整性 (Traceability)**：
+  - 每一條 SRS 功能需求在架構中皆有明確模組承載。
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 📜 API 契約與 DB Schema 審查
-- **OpenAPI 規範一致性**：
-  - 自動比對 RESTful URI 命名規則、HTTP 方法語意、錯誤碼規格（如 400, 401, 403, 404, 500）。
-- **資料庫 Schema 審查**：
-  - 分析 DDL 腳本，檢查外鍵是否遺漏索引、評估高頻欄位資料型態過大問題、檢查關聯刪除風險。
-- **合約測試生成**：
-  - 依據審查後的介面設計自動產出 Pact 測試腳本。
+### 🌐 視角與非功能防護
+- **4. 多維度架構視角 (Architectural Views)**：
+  - **邏輯視角**：模組結構、類別關係與領域模型。
+  - **行程視角**：執行緒調度、並行控制與生命週期。
+  - **部署視角**：伺服器拓撲、網路分區與快取層級。
+- **5. 關鍵非功能品質議題 (NFRs)**：
+  - **高可用與容錯**：消除單點故障 (SPOF)、快取失效防護。
+  - **例外與復原**：錯誤隔離、逾時重試與降級保護。
+  - **資料一致性**：分散式交易機制 (ACID / BASE)。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.4 設計檢視' -->
+
+## 設計模型審查：靜態結構 vs. 動態行為
+
+<div class="card-deck">
+
+* > 💡 透過語法嚴謹的圖形模型（UML、ERD、資料流），系統化檢驗設計的完整性與邊界正確性。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🧱 靜態結構模型檢核 (Structural)
+- **類別圖與元件圖 (Class & Component)**：
+  - 檢核：是否存在過度龐大的**上帝物件 (God Object)**？
+  - 檢核：繼承層次是否過深？是否遵循依賴反轉 (DIP)？
+- **實體關聯圖 (ERD / Database Schema)**：
+  - 檢核：正規化程度是否適當？高頻查詢是否漏設索引？
+  - 檢核：大量寫入是否存在鎖表風險？外鍵串聯刪除安全性。
+- **套件依賴圖 (Package Dependency Diagram)**：
+  - 檢核：依賴關係是否呈現單向有向無環 (DAG) 結構？
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🔄 動態行為模型檢核 (Behavioral)
+- **循序圖 (Sequence Diagram)**：
+  - 檢核：呼叫時序是否合理？非同步呼叫是否處理超時？
+  - 檢核：跨服務呼叫鏈是否過長（深層巢狀依賴）？
+- **狀態機圖 (State Machine Diagram)**：
+  - 檢核：狀態轉換是否封閉？是否有無法逃脫的死狀態？
+  - 檢核：極端併發事件觸發時是否有狀態機未定義分支？
+- **資料/事件流模型 (Data & Event Flow)**：
+  - 檢核：輸入與輸出是否維持守恆平衡（無黑洞或奇蹟）？
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.4 設計檢視' -->
+
+## 架構壞味道 (Architecture Smells) 與反模式防禦
+
+<div class="card-deck">
+
+* > 💡 審查的核心任務之一是識別架構腐化徵兆，在程式碼動工前剷除結構性毒瘤。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### ⚠️ 常見架構與結構反模式
+- **循環依賴 (Cyclic Dependency)**：
+  - 模組 A 依賴 B、B 依賴 C、C 又依賴 A；導致無法單獨建置、獨立測試與重構。
+- **上帝元件 / 泥球 (The Blob / God Component)**：
+  - 單一類別或服務包攬數十種不相干職責，其餘元件淪為單純資料載體。
+- **分散式單體 (Distributed Monolith)**：
+  - 微服務表面獨立部署，實際上共享同一資料庫且跨服務強耦合，牽一髮動全身。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ⚡ 介面與系統通訊反模式
+- **缺乏冪等性 (Non-Idempotent Pitfall)**：
+  - 結帳或轉帳 API 未設計 Idempotency-Key，網路抖動重試時導致重複交易。
+- **級聯失效 (Cascading Failure)**：
+  - 底層依賴服務回應延遲時，缺乏熔斷 (Circuit Breaker) 機制，拖垮整個系統連線池。
+- **洩漏內部實作 (Leaky Abstraction)**：
+  - 介面回傳資料直接暴露資料庫實體欄位，破壞抽象層邊界。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.4 設計檢視' -->
+
+## 現代工程實踐：ADR 架構決策與契約優先審查
+
+<div class="card-deck">
+
+* > 💡 從口頭討論走向制度化：以架構決策記錄 (ADR) 沉澱脈絡，以 API 契約優先驅動工程協同。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 📜 ADR (Architecture Decision Record)
+- **架構決策紀錄四大要件**：
+  - **1. 標題與狀態 (Status)**：如 Proposed, Accepted, Deprecated。
+  - **2. 背景脈絡 (Context)**：面臨的技術挑戰與約束條件。
+  - **3. 決策方案 (Decision)**：團隊選定的架構方案與技術選型。
+  - **4. 權衡後果 (Consequences)**：方案的優勢與必須承擔的技術代價。
+- **工程價值**：
+  - 終結人員流動時「為什麼當初要這樣設計」的重複爭吵。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🤝 API 契約優先與 RFC 審查
+- **契約優先設計 (Contract-First)**：
+  - 程式開發前先審查 OpenAPI / Swagger 或 Protobuf 規格。
+  - 統一 RESTful 資源命名、HTTP 狀態碼與錯誤回應結構。
+- **RFC (Request for Comments) 制度**：
+  - 重大功能動工前撰寫 Design Doc，邀請跨模組、資安與維運團隊同儕審查。
+- **架構權衡分析 (ATAM)**：
+  - 評估 CAP 定理與系統吞吐量 vs. 一致性之間的工程取捨。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.4 設計檢視' -->
+
+## 設計檢視 Q&A：架構設計三大常見誤解迷思
+
+<div class="card-deck">
+
+* > 💡 「程式碼臭味可以靠重構解決，但架構設計缺陷往往必須『推倒重來』。」
+
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+
+### ❓ 迷思 1：設計檢視會拖慢敏捷開發速度？
+- **常見誤解**：認為開架構審查會耽誤 Sprint 交付進度。
+- **領域真相**：未經審查的架構一旦存在單點失效 (SPOF) 或錯誤分層，**上線後的搶修代價是前期的數十倍**。
+- **檢視對策**：採納 1~2 頁輕量級架構決策紀錄 (ADR)，30 分鐘白板走查預防架構重寫災難。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ❓ 迷思 2：設計檢視就是檢查 UML 畫得對不對？
+- **常見誤解**：把審查焦點放在類別圖語法或圖表排版細節。
+- **領域真相**：UML 僅是溝通媒介；設計檢視核心在於**非功能性品質屬性與權衡取捨 (Trade-offs)**。
+- **檢視對策**：聚焦審查 CAP 定理取捨、快取穿透防禦、模組職責邊界與 API 介面契約。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ❓ 迷思 3：程式碼寫好跑完測試，再來重構架構？
+- **常見誤解**：迷信「先寫完跑起來，有測試保護再重構架構」。
+- **領域真相**：重構只適用於區域函式；**錯誤的資料模型與分散式通訊協議無法靠重構無痛翻盤**。
+- **檢視對策**：貫徹「極限左移 (Shift-Left)」，在動手寫 Code 之前先完成關鍵模組架構走查。
 
 </div>
 </div>
@@ -995,6 +1161,44 @@ footer: 'Ch04 軟體檢視'
 
 <!-- header: '4.5 程式碼檢視' -->
 
+## 程式碼檢視 Q&A：Code Review 三大常見誤解迷思
+
+<div class="card-deck">
+
+* > 💡 「工具與 AI 守護的是規範的底線，人工 Code Review 守護的是系統靈魂與團隊成長。」
+
+<div class="three-columns">
+<div class="card" data-marpit-fragment>
+
+### ❓ 迷思 1：有了 PMD 與 AI，不再需要人工審查？
+- **常見誤解**：靜態工具與生成式 AI 已能自動掃描，可完全取代人類審查。
+- **領域真相**：工具擅長語法規範與已知 CVE，但**完全無法理解真實商業法規與業務語意**（如算費是否合規）。
+- **檢視對策**：人機協同：CI/AI 先行掃雷（過濾 80% 雜訊），工程師聚焦業務邏輯與架構演進。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ❓ 迷思 2：Code Review 唯一目的就是「抓出 Bug」？
+- **常見誤解**：審查只看有沒有錯誤，若沒抓出 Bug 就等於浪費工時。
+- **領域真相**：找錯只是基本收益；更核心的是**促進集體程式碼共有 (Collective Ownership) 與團隊知識傳遞**。
+- **檢視對策**：透過審查讓資淺同仁學習大師心法，杜絕核心程式碼淪為「一人獨知」的孤島。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ❓ 迷思 3：PR 越大越能展現產出，一次審查數千行？
+- **常見誤解**：把累積數週的龐大功能包成一個巨型 PR 提交。
+- **領域真相**：檢視速率過快（>1000 行/時）會引發「橡皮圖章效應 (LGTM)」，深層邏輯漏洞 100% 漏檢。
+- **檢視對策**：堅持「原子化小 PR」（每次 < 400 LOC），讓審查者能以最高專注度審視細節。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.5 程式碼檢視' -->
+
 ## 概念核對問答 (CCQ 5)
 
 <div class="ccq-columns">
@@ -1020,16 +1224,399 @@ footer: 'Ch04 軟體檢視'
 ---
 
 <!-- _class: lead -->
-<!-- header: '4.6 檢視的評估' -->
+<!-- header: '4.6 PMD 靜態程式碼分析工具' -->
 
-# **4.6 檢視的評估**
+# **4.6 PMD 靜態程式碼分析工具**
+
+> 「在程式碼被編譯與執行之前，  
+> 讓語法樹走訪替你照亮隱藏在細節中的壞味道與潛在錯誤。」
+
+---
+
+<!-- header: '4.6 PMD 工具' -->
+
+## PMD 工具本質與 AST 分析引擎
+
+<div class="card-deck">
+
+* > 💡 **PMD (Programming Mistake Detector)**：不需編譯或運行程式碼，直接透過抽象語法樹 (AST) 進行原始碼走訪分析。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🌳 核心運作機制 (AST Engine)
+- **語法解析 (Parsing)**：
+  - 將 Java 原始碼剖析為**抽象語法樹 (Abstract Syntax Tree)**。
+  - 程式結構化為樹狀節點（如 `MethodDeclaration`, `IfStatement`, `VariableDeclarator`）。
+- **XPath / Java 走訪比對**：
+  - 使用 XPath 查詢或自訂 Java 規則比對 AST 節點特徵。
+  - 精確標定違規程式碼之檔案、行號、變數名與上下文。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ⚡ 核心價值與防護邊界
+- **零執行負擔**：
+  - 靜態源碼掃描，無需建置執行環境或部署測試伺服器。
+- **早期阻斷缺陷 (Left-Shift)**：
+  - 提早揪出潛在 NPE、未關閉串流、空 catch 與邏輯瑕疵。
+- **與實習相互呼應**：
+  - 詳見實習手冊：`LabDemo/docs/u04_inspection/pmd.md`。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.6 PMD 工具' -->
+
+## PMD 核心規則分類與程式碼壞味道
+
+<div class="card-deck">
+
+* > 💡 PMD 涵蓋多語言規範，其中以 Java 規則集最為完整，聚焦於可讀性、健全性與設計原則。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🛡️ 程式碼健全度 (Robustness)
+- **Best Practices（最佳實踐）**：
+  - `UseEqualsToCompareStrings`：禁字串 `==` 比較
+  - `UseTryWithResources`：自動管理關閉串流資源
+  - `AvoidDuplicateLiterals`：重複字面值常數化
+- **Error Prone（錯誤易發）**：
+  - `EmptyCatchBlock`：禁止吞掉例外（Empty Catch）
+  - `ReturnFromFinallyBlock`：禁 finally 內 return
+  - `AvoidHardCodedPasswords`：防範硬編碼密碼
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 📐 風格與架構設計 (Design & Style)
+- **Code Style（程式碼風格）**：
+  - 命名規範（類別 Pascal、方法與變數 camelCase）
+  - 移除 `UnusedImports` 與連續過多空行
+- **Design（架構與結構設計）**：
+  - `GodClass` / `GodMethod`：過重類別與肥大方法
+  - `CyclomaticComplexity`：圈複雜度超標拆分
+  - `LawOfDemeter`：迪米特法則，禁止過長串接調用
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.6 PMD 工具' -->
+
+## Maven Plugin 整合與品質門禁設定
+
+<div class="card-deck">
+
+* > 💡 透過 `maven-pmd-plugin` 將靜態分析納入標準建置週期，打造「有違規即阻斷」的品質防線。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### ⚙️ `pom.xml` 關鍵門禁配置
+```xml
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-pmd-plugin</artifactId>
+  <version>3.15.0</version>
+  <configuration>
+    <rulesets>
+      <ruleset>src/main/resources/pmd/ruleset.xml</ruleset>
+    </rulesets>
+    <failOnViolation>true</failOnViolation>
+    <minimumPriority>3</minimumPriority>
+  </configuration>
+</plugin>
+```
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🚪 品質門禁 (Quality Gates) 機制
+- **`<failOnViolation>true</failOnViolation>`**：
+  - 只要檢測到未排除的違規，Maven 建置**立即失敗中斷**。
+- **`<minimumPriority>3</minimumPriority>`**：
+  - 優先級 1 (最高/Blocker) ～ 5 (最低)。
+  - 設定為 3 時，僅阻斷優先級 1~3，略過 4 與 5 瑣碎警告。
+- **CLI 快速執行**：
+  - `mvn verify`（自動於驗證階段觸發）
+  - `mvn pmd:check`（產出 `target/report/pmd.html`）
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.6 PMD 工具' -->
+
+## 違規壓制機制與 Lab 04 實習導航
+
+<div class="card-deck">
+
+* > 💡 合理處理「假警報 (False Positive)」或特殊情境，切勿因噎廢食關閉全域規則檢查。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🛑 三大違規壓制手段 (Suppression)
+1. **Annotation 壓制 (局部方法 / 類別)**：
+   ```java
+   @SuppressWarnings("PMD.AvoidArrayLoops")
+   public void fastProcess() { ... }
+   ```
+2. **`// NOPMD` 行級註解壓制**：
+   ```java
+   for (int i=0; i<len; i++) { // NOPMD - 效能極限考量
+   ```
+3. **客製化 `ruleset.xml` 規則排除**：
+   - 透過 `<exclude name="..." />` 或檔案路徑 pattern 排除
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🧪 Lab 04 實習任務對應
+- **Lab 01 (安裝與配置)**：
+  - 配置 `pom.xml` 與 `ruleset.xml` 建立基礎管線
+- **Lab 02 (分析與修復)**：
+  - 閱讀 `pmd.html` 報告，手動修復至少 3 處真實違規
+- **Lab 03 (自訂規則集)**：
+  - 調整 `CommentSize` 門檻並自訂專案排除清單
+- **Lab 04 (精準壓制實作)**：
+  - 針對效能敏感關鍵程式碼，實作 `// NOPMD` 註解壓制
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.6 PMD 工具' -->
+
+## 概念核對問答 (CCQ 6)
+
+<div class="ccq-columns">
+<div class="ccq-text">
+
+<!-- id: sqa-ch04-ccq6 -->
+#### 🙋 **概念核對問答 (CCQ 6)**
+
+**問題情境**：  
+開發團隊在 Maven 專案中導入 PMD 靜態分析作為 CI/CD 品質門禁（Quality Gate）。為了避免誤報（False Positive）阻斷建置，同時落實嚴格的程式碼審查，下列關於 PMD 違規壓制（Suppression）與門禁配置的敘述，何者最為正確？
+
+- **A)** 在專案中若發現 PMD 報告誤報，唯一的解決方式是將 `failOnViolation` 改為 false，關閉所有檢查
+- **B)** 可針對特定方法加上 `@SuppressWarnings("PMD.RuleName")`，或於行尾使用 `// NOPMD` 並註明原因，以壓制已知合理的違規
+- **C)** PMD 必須先將 Java 原始碼編譯為 bytecode (`.class`) 並在 JVM 上運行，才能透過動態追蹤偵測壞味道
+- **D)** `minimumPriority` 設定為 3 時，PMD 只會回報優先級為 4 與 5 的低風險警告，1 與 2 的重大錯誤將被完全忽略
+
+</div>
+<div class="ccq-logo">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq6" target="_blank"><img src="../../img/ch04/sqa-ch04-ccq6.png" alt="QR Code" /></a>
+
+</div>
+</div>
+
+---
+
+<!-- _class: lead -->
+<!-- header: '4.7 AI 輔助與自動化' -->
+
+# **4.7 AI 輔助檢視與 DevOps 自動化**
+
+> 「從需求、架構到程式碼，  
+> 讓生成式 AI 成為工程師全天候的副駕駛，以自動化守護品質底線。」
+
+---
+
+<!-- header: '4.7 AI 輔助與自動化' -->
+
+## AI 賦能現代檢視體系：雙層防禦矩陣
+
+<div class="card-deck">
+
+* > 💡 現代檢視走向「AI 初篩＋人類把關」的雙層防禦體系，既保有檢視深度，又大幅縮減週期。
+
+<div class="two-columns">
+<div>
+
+### 🤖 Stage 1: AI 智慧第一道防線
+- **自動化 PR 摘要**：10 秒內梳理變更意圖與影響範圍。
+- **語法與臭味快篩**：即時攔截常規違規與冗餘程式碼。
+- **基礎資安與資源漏洞**：偵測資源未關閉、NPE 與注入風險。
+
+### 👨‍💻 Stage 2: 人類專家第二道防線
+- **全域架構與模組設計**：評估模組耦合度與系統邊界。
+- **業務領域邏輯**：驗證複雜商業邏輯與邊界情境。
+- **系統不變量 (Invariants)**：確保並發一致性與安全底線。
+
+</div>
+<div class="content-figure">
+
+![AI-Assisted Inspection](../../img/ch04/ai_assisted_inspection.jpg)
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.7 AI 輔助與自動化' -->
+
+## AI 在需求 (Req) 與設計 (Design) 檢視之落地
+
+<div class="card-deck">
+
+* > 💡 將靜態檢視「極限左移 (Shift-Left)」：在尚未寫下一行程式碼前，由 AI 協助排查高代價之規格與架構漏洞。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 📝 需求規格檢視 (SRS Inspection)
+- **模糊度與主觀用詞掃描**：
+  - 自動標記「友善、高效、支援多數人」等不可驗證模糊詞句。
+- **跨章節邏輯矛盾偵測**：
+  - 比對業務規則：如 Chapter 2 寫「一律免費」，Chapter 4 寫「滿千收運費」。
+- **自動化測資與場景補完**：
+  - 依據需求描述，自動生成 Gherkin (Given-When-Then) 驗收情境與邊界測試資料。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 📐 架構與模型檢視 (Design Review)
+- **STRIDE 威脅建模自動化**：
+  - 走訪架構拓撲圖與資料流程（DFD），自動推演資安弱點。
+- **API 契約與 Schema 審核**：
+  - 驗證 OpenAPI / GraphQL 規格與資料庫實體間的欄位完整性。
+- **並發與死結模式推演**：
+  - 識別分散式系統呼叫鏈中的潛在競態條件 (Race Conditions)。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.7 AI 輔助與自動化' -->
+
+## AI 在程式碼檢視與 PR 機器人實踐
+
+<div class="card-deck">
+
+* > 💡 結合 GitHub Actions 與 PR 機器人（如 PR-Agent、Cursor、Copilot），在 PR 發起數秒內提供深度檢核。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🤖 PR 智慧檢視機器人工作流
+- **10 秒變更摘要 (Walkthrough)**：
+  - 自動生成簡潔的 Pull Request 變更動機與關鍵模組影響圖。
+- **行級缺陷標註 (Line-by-line)**：
+  - 自動在 GitHub PR 具體行數留言指出記憶體洩漏、未捕獲例外或 SQL 注入。
+- **一鍵可採納修復 (Suggested Diff)**：
+  - 直接產出符合團隊風格的修復 Commit，作者點擊即可套用。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ⚠️ AI 檢視防護實務與限制
+- **防止 Token 污染與上下文截斷**：
+  - 巨型 PR 拆分為小原子 Commits，避免 AI 遺失跨檔案參照。
+- **資安與敏感資料脫敏 (Sanitization)**：
+  - 送入 AI 分析前，必須過濾內部金鑰、Token 與個資 (PII)。
+- **審核權限嚴格控管**：
+  - AI 僅具「建議」與「審查留言」權限，禁止授予直接合併權。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.7 AI 輔助與自動化' -->
+
+## DevOps 階梯式自動化流水線與品質閘門
+
+<div class="card-deck">
+
+* > 💡 建立階梯式防禦：從開發者本機到生產主線，設下多重自動化品質閘門 (Quality Gates)。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🧱 階梯式自動化檢視防線
+- **Level 1：本機預檢 (Pre-Commit Hook)**：
+  - Git commit 時觸發極速排版與 linter，秒級反饋。
+- **Level 2：PR 靜態分析 (SAST & PMD)**：
+  - 於 GitHub Actions 執行 PMD、SonarQube，違規即標紅。
+- **Level 3：AI PR Reviewer 深度審查**：
+  - 自動分析業務語意、潛在邊界條件與測試覆蓋度。
+- **Level 4：人類同儕審查 (Peer Review)**：
+  - 資深同儕確認架構與業務合規。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🛑 分支保護 (Branch Protection)
+- **阻斷合併規則 (Status Checks)**：
+  - PMD 違規數 > 0 時，嚴格禁止合併至 `main` 分支。
+  - 單元測試與覆蓋率門檻未達標者強制退回。
+- **雙人簽核機制 (Approvals)**：
+  - 核心模組需至少一位人類專家核准 (Required Reviewer)。
+- **持續度量與追蹤**：
+  - 缺陷外洩率 (Defect Leakage) 即時可視化看板。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '4.7 AI 輔助與自動化' -->
+
+## 概念核對問答 (CCQ 7)
+
+<div class="ccq-columns">
+<div class="ccq-text">
+
+<!-- id: sqa-ch04-ccq7 -->
+#### 🙋 **概念核對問答 (CCQ 7)**
+
+**問題情境**：  
+團隊計畫在現代 DevOps 流程中導入生成式 AI 輔助軟體檢視（涵蓋需求 SRS、架構設計與程式碼 PR）。下列關於「AI 輔助檢視與自動化品質閘門」的實務策略，何者最為正確？
+
+- **A)** 現代大語言模型 (LLM) 已具備 100% 準確率，因此程式碼檢視可完全交由 AI PR Bot 自動審核並直接合併，不再需要人類工程師介入
+- **B)** AI 僅能檢查程式碼的縮排與排版風格，完全無法應用於需求文件 (SRS) 的矛盾檢測或架構設計的威脅建模
+- **C)** 理想架構為「AI 機器人初篩預審＋人類資深工程師最終把關 (Human-in-the-Loop)」，並於 CI 流水線結合靜態工具設下阻斷性品質閘門
+- **D)** 為了發揮 AI 最佳效益，應將所有未經篩選的數萬行歷史程式碼一次性塞入單一 Prompt，無需任何分層過濾機制
+
+</div>
+<div class="ccq-logo">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq7" target="_blank"><img src="../../img/ch04/sqa-ch04-ccq7.png" alt="QR Code" /></a>
+
+</div>
+</div>
+
+---
+
+<!-- _class: lead -->
+<!-- header: '4.8 檢視的評估' -->
+
+# **4.8 檢視的評估**
 
 > 「無法度量的東西，就無法改善；  
 > 用數據證明檢視的價值，讓品質投資無懈可擊。」
 
 ---
 
-<!-- header: '4.6 檢視的評估' -->
+<!-- header: '4.8 檢視的評估' -->
 
 ## 檢視效益的量化度量指標
 
@@ -1065,7 +1652,7 @@ footer: 'Ch04 軟體檢視'
 
 ---
 
-<!-- header: '4.6 檢視的評估' -->
+<!-- header: '4.8 檢視的評估' -->
 
 ## 檢視速率 (Review Rate) 與漏檢率的權衡
 
@@ -1098,15 +1685,15 @@ footer: 'Ch04 軟體檢視'
 
 ---
 
-<!-- header: '4.6 檢視的評估' -->
+<!-- header: '4.8 檢視的評估' -->
 
-## 概念核對問答 (CCQ 6)
+## 概念核對問答 (CCQ 8)
 
 <div class="ccq-columns">
 <div class="ccq-text">
 
-<!-- id: sqa-ch04-ccq6 -->
-#### 🙋 **概念核對問答 (CCQ 6)**
+<!-- id: sqa-ch04-ccq8 -->
+#### 🙋 **概念核對問答 (CCQ 8)**
 
 **問題情境**：  
 組織在推行軟體檢視與審查時，常會使用度量指標來評估其效率。下列關於「檢視速率 (Review Rate)」與「檢視品質」的敘述，何者最為正確？
@@ -1119,7 +1706,7 @@ footer: 'Ch04 軟體檢視'
 </div>
 <div class="ccq-logo">
 
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq6" target="_blank"><img src="../../img/ch04/sqa-ch04-ccq6.png" alt="QR Code" /></a>
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch04-ccq8" target="_blank"><img src="../../img/ch04/sqa-ch04-ccq8.png" alt="QR Code" /></a>
 
 </div>
 </div>
@@ -1133,23 +1720,25 @@ footer: 'Ch04 軟體檢視'
 
 <div class="card-deck">
 
-* > 💡 本章課堂互動 (CCQ 1 ～ CCQ 6) 官方標準解答與核心觀念解析總整理。
+* > 💡 本章課堂互動 (CCQ 1 ～ CCQ 8) 官方標準解答與核心觀念解析總整理。
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 🧭 CCQ 1 ～ 3：哲學、流程與規格
+### 🧭 CCQ 1 ～ 4：哲學、流程、規格與設計
 - **CCQ 1【正確 (A)】**：靜態測試能在不執行程式下提早揪出規格、架構與程式碼異常，是降低品質成本最佳手段。
 - **CCQ 2【概述 (B)】**：Overview 階段由作者向小組簡報背景脈絡與規格，而非正式找錯。
 - **CCQ 3【雙向追溯 (A)】**：需求與系統規格需達成 Traced (回溯起源) 與 Traceable (前向導引實作與測試)。
+- **CCQ 4【錯誤 (B)】**：設計檢視必須在 Coding 之前進行（左移原則），不可等到測試通過才做。
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 🎯 CCQ 4 ～ 6：設計、資安與度量
-- **CCQ 4【錯誤 (B)】**：設計檢視必須在 Coding 之前進行（左移原則），不可等到測試通過才做。
+### 🎯 CCQ 5 ～ 8：代碼、PMD、AI 與度量
 - **CCQ 5【正確 (A)】**：在生產環境輸出詳細 `printStackTrace()` 暴露內部架構，屬於 OWASP A05 安全設定錯誤。
-- **CCQ 6【合理的檢視速率 (B)】**：檢視速率過快會導致缺陷遺漏率飆升，應控制在 200~400 LOC/小時。
+- **CCQ 6【抑制與門禁 (B)】**：可針對特定方法使用 `@SuppressWarnings` 或行尾 `// NOPMD` 註明原因壓制誤報，PMD 為純原始碼靜態分析。
+- **CCQ 7【人機協作 (C)】**：AI 是 PR 初篩先行者（Human-in-the-Loop），需搭配 CI 靜態分析與分支保護品質閘門。
+- **CCQ 8【合理的檢視速率 (B)】**：檢視速率過快會導致缺陷遺漏率飆升，應控制在 200~400 LOC/小時。
 
 </div>
 </div>

@@ -44,9 +44,12 @@ footer: 'Ch02 錯與除錯'
 <div class="card" data-marpit-fragment>
 
 ### 🛡️ 防禦架構與缺陷管理
-- **2.5 防禦編程與契約**：Meyer 契約三大法則、斷言、例外架構與 BubbleSort 實戰
-- **2.6 缺陷管理 (BTS)**：大樓的燈寓言、生命週期與 2x2 決策矩陣
-- **2.7 綜合練習與實戰**：因果辨析、邏輯排查與 MaxHeap 實作
+- **2.5 契約式設計 (DbC)**：Meyer 契約三大法則與權責判定
+- **2.6 斷言機制 (Assertions)**：狀態不變量、禁忌與 `-ea` 開關
+- **2.7 例外處理 (Exceptions)**：Throwable 體系、CDR 與反模式
+- **2.8 系統日誌 (Logging)**：SLF4J/Log4j 2、佔位符優化與配置
+- **2.9 缺陷管理 (BTS)**：生命週期、開源/商業工具與企業實務
+- **2.10 綜合練習與實戰**：因果辨析、邏輯排查與 Game 挑戰
 
 </div>
 </div>
@@ -945,9 +948,9 @@ public void processOrder(Order order) {
 ---
 
 <!-- _class: lead -->
-<!-- header: '2.5 防禦性編程與契約式設計' -->
+<!-- header: '2.5 契約式設計 (DbC)' -->
 
-# **2.5 防禦性編程與契約式設計 (DbC)**
+# **2.5 契約式設計 (Design by Contract, DbC)**
 
 > 「開車綠燈起步時依然減速張望——  
 > 這不是對別人的信任問題，而是主動預防事故擴散的工程態度。」
@@ -968,7 +971,7 @@ public void processOrder(Order order) {
 
 ---
 
-### 2.5.1 契約式設計的三大核心要素
+## 2.5.2 契約式設計的三大核心要素
 
 <div class="card-deck">
 
@@ -1004,7 +1007,7 @@ public void processOrder(Order order) {
 
 ---
 
-## 2.5.1 DbC 實務範例：銀行帳戶提款 (`withdraw`)
+## 2.5.3 DbC 實務範例：銀行帳戶提款 (`withdraw`)
 
 <style scoped>
 pre code {
@@ -1037,7 +1040,7 @@ public class BankAccount {
 
 ---
 
-## 契約破裂的權責判定與 SQA 效益
+## 2.5.4 契約破裂的權責判定與 SQA 效益
 
 - 🚨 **若前置條件 (Precondition) 失敗**（如傳入負數金額）：
   - **責任歸屬：呼叫者 (Caller)**。
@@ -1052,7 +1055,17 @@ public class BankAccount {
 
 ---
 
-## 2.5.2 斷言機制深究 (Java Assertions)
+<!-- _class: lead -->
+<!-- header: '2.6 斷言機制 (Assertions)' -->
+
+# **2.6 斷言機制 (Java Assertions)**
+
+> 「斷言是開發與除錯期的防錯鷹架，  
+> 隨時檢驗程式內部狀態是否依然符合不變量。」
+
+---
+
+## 2.6.1 斷言機制深究 (Java Assertions)
 
 - 🔍 **語法結構**：`assert condition : "自訂錯誤訊息";`（若條件為 false 則拋出 `AssertionError`）
 - 🛡️ **斷言三大最佳使用時機 (LabDemo 實務)**：
@@ -1075,7 +1088,7 @@ public class BankAccount {
 
 ---
 
-### 2.5.2 斷言的禁忌與啟用開關 (-ea)
+## 2.6.2 斷言的禁忌與啟用開關 (-ea)
 
 <div class="card-deck">
 
@@ -1126,7 +1139,7 @@ public class BankAccount {
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq6a" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq6a.png" alt="QR Code" /></a>
     <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/assertion.md#6--ccq---concept-check-questions">[上機手冊解析]</a>
-    <br><small>2.5.2 斷言防線</small>
+    <br><small>2.6 斷言防線</small>
   </div>
 </div>
 
@@ -1150,13 +1163,23 @@ public class BankAccount {
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq6b" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq6b.png" alt="QR Code" /></a>
     <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/assertion.md#6--ccq---concept-check-questions">[上機手冊解析]</a>
-    <br><small>副作用禁忌</small>
+    <br><small>2.6 副作用禁忌</small>
   </div>
 </div>
 
 ---
 
-## 2.5.3 例外處理機制 (Exception Handling)
+<!-- _class: lead -->
+<!-- header: '2.7 例外處理機制 (Exception Handling)' -->
+
+# **2.7 例外處理機制 (Exception Handling)**
+
+> 「面對外部環境不可控的風浪，  
+> 建立強固的捕捉、隔離與復原防線。」
+
+---
+
+## 2.7.1 Throwable 階層與例外分類
 
 <div class="card-deck">
 
@@ -1211,7 +1234,7 @@ public class BankAccount {
 
 ---
 
-## 2.5.3 實戰示範：BubbleSortExceptionDemo 例外全景
+## 2.7.2 實戰示範：BubbleSortExceptionDemo 例外全景
 
 <div class="card-deck">
 
@@ -1253,7 +1276,7 @@ public class BankAccount {
 
 ---
 
-## 2.5.3 現代例外實務：資源管理與反模式
+## 2.7.3 現代例外實務：資源管理與反模式
 
 <div class="card-deck">
 
@@ -1307,7 +1330,7 @@ public class BankAccount {
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq7a" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq7a.png" alt="QR Code" /></a>
     <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/exception.md#8--ccq---concept-check-questions">[上機手冊解析]</a>
-    <br><small>2.5.3 例外體系</small>
+    <br><small>2.7 例外體系</small>
   </div>
 </div>
 
@@ -1332,13 +1355,23 @@ public class BankAccount {
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq7b" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq7b.png" alt="QR Code" /></a>
     <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/exception.md#8--ccq---concept-check-questions">[上機手冊解析]</a>
-    <br><small>CDR 與資源管理</small>
+    <br><small>2.7 CDR 與資源管理</small>
   </div>
 </div>
 
 ---
 
-## 2.5.4 系統日誌機制 (Logging as Defense)
+<!-- _class: lead -->
+<!-- header: '2.8 系統日誌機制 (System Logging)' -->
+
+# **2.8 系統日誌機制 (System Logging)**
+
+> 「日誌是系統的黑盒子記錄器：  
+> 在生產環境中，它是唯一的時光倒流工具。」
+
+---
+
+## 2.8.1 系統日誌機制 (Logging as Defense)
 
 <div class="card-deck">
 
@@ -1374,7 +1407,7 @@ public class BankAccount {
 
 ---
 
-## 2.5.4 現代日誌框架架構：SLF4J + Log4j 2
+## 2.8.2 現代日誌框架架構：SLF4J + Log4j 2
 
 <div class="card-deck">
 
@@ -1395,18 +1428,20 @@ public class BankAccount {
 <div class="card" data-marpit-fragment>
 
 ### ⚡ 結構化佔位符與例外堆疊寫法
-- **❌ 劣質：字串拼接造成無謂浪費**：
+- **❌ 劣質：純變數拼接產生無謂垃圾物件**：
   ```java
-  logger.debug("第 " + p + " 輪陣列: " + Arrays.toString(arr));
-  // 即使 DEBUG 等級關閉，字串拼接與 toString 仍白白執行！
+  logger.debug("排序完成！耗時: " + cost + " ms，交換: " + swaps + " 次");
+  // 即使 DEBUG 等級關閉，字串拼接仍白白執行並產生垃圾物件！
   ```
-- **✅ 優質：使用 `{}` 佔位符按需替換**：
+- **✅ 優質：使用 `{}` 佔位符按需替換 (Parameterized)**：
   ```java
   logger.info("排序完成！耗時: {} ms，交換: {} 次", cost, swaps);
+  // 等級關閉時直接 return，零字串拼接開銷！
   ```
 - **✅ 完整堆疊：最後一個參數傳入 Throwable**：
   ```java
   logger.error("氣泡排序後置合約遭破壞: {}", msg, exception);
+  // SLF4J 自動輸出完整呼叫鏈與 Caused by，不遺失 StackTrace
   ```
 
 </div>
@@ -1415,7 +1450,49 @@ public class BankAccount {
 
 ---
 
-## 2.5.4 實戰示範：BubbleSortLoggingDemo 日誌全景
+## 2.8.2 深入探討：字串拼接 vs. 佔位符 vs. 昂貴運算的真相
+
+<div class="card-deck">
+
+* > ⚡ 效能問題有兩層：別誤以為「改用 `{}` 佔位符」就能解決 `Arrays.toString()` 的運算開銷！
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### ⚡ 層次 1：變數拼接 vs. 佔位符 `{}`
+- **字串拼接 (`+`) 的浪費**：
+  - 即使關閉 DEBUG，JVM 仍會先執行 `new StringBuilder()` 拼接字串，在 Heap 產生大量短命垃圾物件，造成 GC 停頓。
+- **佔位符 `{}` 的按需短路**：
+  - 僅傳遞引數參考（奈秒級）。SLF4J 內部先判定 `isXxxEnabled()`，**若等級未開啟立即 return，完全零字串拼接開銷！**
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🚨 層次 2：昂貴運算陷阱（單靠 `{}` 救不了！）
+- **致命誤區：以為用了 `{}` 就能延遲運算**：
+  ```java
+  logger.debug("陣列: {}", Arrays.toString(arr)); // 💥 仍是效能殺手！
+  ```
+- **Java 提前求值 (Eager Evaluation)**：
+  - Java 方法呼叫前**必須先計算所有傳入引數**！
+  - 無論 DEBUG 是否開啟，`Arrays.toString(arr)` 必定先執行遍歷整座大陣列，造成極大記憶體與 GC 負擔！
+- **真正的正解**：
+  - 必須搭配下一頁的 **Guard 守衛 (`isDebugEnabled()`)** 或 **Lambda 延遲求值**！
+
+</div>
+</div>
+
+<div class="card" data-marpit-fragment style="padding: 10px 18px; font-size: 18px; text-align: center;">
+
+💡 **例外堆疊小結**：傳入 `Throwable` 為最後參數以保留完整 StackTrace 與因果鏈，切勿只印 `e.getMessage()`。
+
+</div>
+
+</div>
+
+---
+
+## 2.8.3 實戰示範：BubbleSortLoggingDemo 日誌全景
 
 <div class="card-deck">
 
@@ -1462,7 +1539,7 @@ public class BankAccount {
 
 ---
 
-## 2.5.4 白話解密 log4j2.xml：三大核心元件生活比喻
+## 2.8.4 白話解密 log4j2.xml：三大核心元件生活比喻
 
 <div class="card-deck">
 
@@ -1510,7 +1587,7 @@ public class BankAccount {
 
 ---
 
-## 2.5.4 log4j2.xml 實務設定策略指引 (Best Practices)
+## 2.8.5 log4j2.xml 實務設定策略指引 (Best Practices)
 
 <div class="card-deck">
 
@@ -1570,7 +1647,7 @@ public class BankAccount {
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq8a" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq8a.png" alt="QR Code" /></a>
     <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/logging.md#3--ccq---concept-check-questions">[上機手冊解析]</a>
-    <br><small>2.5.4 日誌除錯</small>
+    <br><small>2.8 日誌除錯</small>
   </div>
 </div>
 
@@ -1595,14 +1672,14 @@ public class BankAccount {
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq8b" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq8b.png" alt="QR Code" /></a>
     <br><a href="https://nlhsueh.github.io/teach/SQA/lab.html?file=LabDemo/docs/u02_robust/logging.md#3--ccq---concept-check-questions">[上機手冊解析]</a>
-    <br><small>效能與 MDC</small>
+    <br><small>2.8 效能與 MDC</small>
   </div>
 </div>
 
 ---
 
 <!-- _class: title-image-slide -->
-## 2.5.5 防禦三大防線漫畫圖解：斷言、例外與日誌
+## 2.8.6 防禦三大防線漫畫圖解：斷言、例外與日誌
 
 <div class="image-wrapper">
   <img src="../../img/ch02/comic_defense_trio.jpg" alt="防禦性程式設計三大防線漫畫" />
@@ -1610,7 +1687,7 @@ public class BankAccount {
 
 ---
 
-## 2.5.5 防禦性程式設計全景對比
+## 2.8.6 防禦性程式設計全景對比
 
 | 防禦維度 | 核心機制 | 應對目標 | 生產環境行為 |
 | :--- | :--- | :--- | :--- |
@@ -1622,9 +1699,9 @@ public class BankAccount {
 ---
 
 <!-- _class: lead -->
-<!-- header: '2.6 缺陷管理與議題追蹤' -->
+<!-- header: '2.9 缺陷管理與議題追蹤' -->
 
-# **2.6 缺陷管理與議題追蹤 (Defect Management & BTS)**
+# **2.9 缺陷管理與議題追蹤 (Defect Management & BTS)**
 
 > 「沒有開關的 26 樓會議室——  
 > 治標剪線的代價，就是地下室掛滿前人留下的混亂電線。」
@@ -1632,7 +1709,7 @@ public class BankAccount {
 ---
 
 <!-- _class: title-image-slide -->
-## 2.6.1 軟體寓言：大樓的燈 (1/2)
+## 2.9.1 軟體寓言：大樓的燈 (1/2)
 
 <div class="image-wrapper">
   <img src="../../img/ch02/comic_building_lights_part1.jpg" alt="軟體寓言：大樓的燈 (Part 1)" />
@@ -1641,7 +1718,7 @@ public class BankAccount {
 ---
 
 <!-- _class: title-image-slide -->
-## 2.6.1 軟體寓言：大樓的燈 (2/2)
+## 2.9.1 軟體寓言：大樓的燈 (2/2)
 
 <div class="image-wrapper">
   <img src="../../img/ch02/comic_building_lights_part2.jpg" alt="軟體寓言：大樓的燈 (Part 2)" />
@@ -1649,7 +1726,7 @@ public class BankAccount {
 
 ---
 
-## 「大樓的燈」深刻隱喻與 SQA 省思
+## 2.9.1 「大樓的燈」深刻隱喻與 SQA 省思
 
 - 💡 **隱喻 1：治標不治本的 Quick Fix ➔ 毀滅性的技術債 (Technical Debt)**：
   - 「一刀剪斷電線」看似 5 分鐘快速解決當下工單，但問題本質從未被解決。
@@ -1662,7 +1739,7 @@ public class BankAccount {
 
 ---
 
-## 2.6.2 完整缺陷生命週期狀態機 (Defect Lifecycle)
+## 2.9.2 完整缺陷生命週期狀態機 (Defect Lifecycle)
 
 - **主流程 (Main Flow)**：
   - **New (新建)** ➔ **Assigned (已指派)** ➔ **In Progress (處理中)** ➔ **Fixed (已修復)** ➔ **QA Retest (QA 驗證)** ➔ **Closed (結案關閉)**。
@@ -1681,7 +1758,7 @@ public class BankAccount {
 
 ---
 
-### 2.6.3 嚴重度 (Severity) vs 優先級 (Priority)
+## 2.9.3 嚴重度 (Severity) vs 優先級 (Priority)
 
 <div class="card-deck">
 
@@ -1725,7 +1802,7 @@ public class BankAccount {
 
 ---
 
-## 2x2 決策矩陣四大象限實例分析
+## 2.9.4 2x2 決策矩陣四大象限實例分析
 
 <div class="card-deck">
 
@@ -1771,16 +1848,90 @@ public class BankAccount {
 
 ---
 
-<!-- _class: lead -->
-<!-- header: '2.7 綜合練習與實戰思維' -->
+## 2.9.5 缺陷管理系統 (BTS) 全景：開源與商業工具
 
-# **2.7 綜合練習與實戰思維**
+<div class="card-deck">
+
+> 🛠️ 工欲善其事，必先利其器：依團隊規模、合規需求與敏捷流程選擇合適的缺陷管理武器。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🌐 常見開源軟體 (Open Source BTS)
+- **Bugzilla (Mozilla 基金會)**：
+  - 缺陷追蹤鼻祖。具備極嚴密的工作流狀態機、精細欄位權限與完整審計追蹤，為 Linux Kernel、Apache 與 Red Hat 長期採納。
+- **Redmine (Ruby on Rails)**：
+  - 功能齊全的專案與 Issue 管理系統。內建甘特圖、日曆、Wiki，支援 Git/SVN 雙向代碼關聯，中小團隊自架首選。
+- **GitLab CE (Community Edition)**：
+  - 整合程式碼代管、Issue Boards 看板與 CI/CD 的一體化開源平臺。
+- **MantisBT (PHP/MySQL)**：
+  - 經典輕量級缺陷追蹤器，架構簡單、部屬極速，適合小團隊快速建置。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 💼 常用商業軟體 (Commercial Systems)
+- **Atlassian Jira**：
+  - 全球企業級敏捷與缺陷管理事實標準。強大的自訂工作流、JQL 結構化高階查詢，深度連動 Confluence 與 Bitbucket。
+- **Linear**：
+  - 矽谷新創與頂尖團隊（OpenAI、Vercel）新寵。主打極致流暢（<50ms 反應）、全鍵盤快捷鍵操作與自動化週期循環 (Cycles)。
+- **Azure DevOps (Boards)**：
+  - 微軟企業級軟體生命週期平臺，與 Visual Studio 及 GitHub 深度整合。
+- **ServiceNow**：
+  - 跨國大型企業 IT 服務管理 (ITSM) 與重大系統事故 (Major Incident) 管理巨擘。
+
+</div>
+</div>
+
+</div>
+
+---
+
+## 2.9.6 科技巨頭的真實錯誤管理實務：Google vs. Netflix
+
+<div class="card-deck">
+
+> 🏢 頂尖企業如何面對缺陷？從事後修復走向制度化預防與主動架構韌性。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🔍 Google：Buganizer、SLO 與無指責檢討
+- **統一工單體系 (Buganizer / Issue Tracker)**：
+  - 全公司數萬名工程師共用統一工具，所有內部缺陷與產品問題集中追蹤。
+- **SRE 錯誤預算 (Error Budget) 制約**：
+  - 依服務等級目標 (SLO) 定義錯誤預算。**一旦可用性預算耗盡，強制凍結新功能發布**，所有人力轉向修復缺陷與提升穩定性！
+- **無指責事後檢討 (Blameless Postmortem)**：
+  - 重大故障 (P0/P1) 會議**絕不問責懲罰個人**；核心理念為「人會犯錯是因系統防禦不足」。產出包含 Root Cause 與防範再次發生的 Action Items。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🍿 Netflix：混沌工程與事故指揮官
+- **主動式缺陷管理：混沌工程 (Chaos Engineering)**：
+  - 研發著名的 **Chaos Monkey** 與 **Simian Army**，平時在生產環境**主動隨機殺死伺服器實例、注入網路延遲**，逼迫工程師設計出自我修復與優雅降級的系統！
+- **事故指揮官體系 (Incident Commander, IC)**：
+  - 採用 SEV-1（全球中斷）至 SEV-3 分級。爆發重大事件時立即指派 IC，由指揮官全權主導排查與跨部門溝通，工程師免受外界打擾、專注止血。
+- **Learning from Incidents (LFI)**：
+  - 專注剖析複雜的分散式系統弱點，持續推動架構演進。
+
+</div>
+</div>
+
+</div>
+
+---
+
+<!-- _class: lead -->
+<!-- header: '2.10 綜合練習與實戰思維' -->
+
+# **2.10 綜合練習與實戰思維**
 
 > 「理論若無實踐，不過是空中樓閣。」
 
 ---
 
-## 🙋 2.7 綜合練習 (3/4)：核心概念填空挑戰
+## 🙋 2.10 綜合練習 (3/4)：核心概念填空挑戰
 
 請根據本章核心理論，填入最適當的軟體工程專業名詞：
 
@@ -1794,7 +1945,7 @@ public class BankAccount {
 ---
 
 <!-- id: sqa-ch02-game -->
-## 🙋 2.7 綜合練習 (4/4)：除錯偵探所 (Game 挑戰)
+## 🙋 2.10 綜合練習 (4/4)：除錯偵探所 (Game 挑戰)
 
 <div class="ccq-columns">
   <div class="ccq-text">
@@ -1871,13 +2022,13 @@ public class BankAccount {
 
 ---
 
-## 課堂互動參考解答 (5/5)：2.7 填空與 Game 挑戰
+## 課堂互動參考解答 (5/5)：2.10 填空與 Game 挑戰
 
-- **2.7 填空挑戰參考答案**：
+- **2.10 填空挑戰參考答案**：
   - ① `Mistake`（人為失誤）、② `Fault / Defect`（靜態缺陷）、③ `Error State`（內部錯誤狀態）、④ `Failure`（系統失效）
   - ⑤ `前置條件 (Preconditions)`、⑥ `後置條件 (Postconditions)`、⑦ `類別不變量 (Class Invariants)`
   - ⑧ `嚴重度 (Severity)`、⑨ `優先級 (Priority)`
-- **2.7 除錯偵探所 Game 判例參考答案**：
+- **2.10 除錯偵探所 Game 判例參考答案**：
   - **案件 1：A (Mistake)** —— 工程師思維偏差導致的手滑失誤。
   - **案件 2：B (Fault)** —— 潛伏於靜態程式碼中但尚未被激發的缺陷。
   - **案件 3：C (Error State)** —— 內部狀態已不一致（Dangling Pointer）但未對外暴露。

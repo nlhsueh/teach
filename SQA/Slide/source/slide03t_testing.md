@@ -280,8 +280,8 @@ footer: 'Ch03 軟體測試基礎'
 
 ---
 
-<!-- id: sqa-ch03-ccq2 -->
-## 🙋 概念核對問答 (CCQ 2)
+<!-- id: sqa-ch03-ccq1 -->
+## 🙋 概念核對問答 (CCQ 3.1)
 
 <div class="ccq-columns">
   <div class="ccq-text">
@@ -295,7 +295,7 @@ footer: 'Ch03 軟體測試基礎'
 
   </div>
   <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq2" target="_blank"><img src="../../img/ch03/sqa-ch03-ccq2.png" alt="QR Code" /></a>
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq1" target="_blank"><img src="../../img/ch03/sqa-ch03-ccq1.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -498,6 +498,27 @@ double div(double x, double y) {
 
 ---
 
+<!-- id: sqa-ch03-ccq2 -->
+## 🙋 概念核對問答 (CCQ 3.2)
+
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+**問題**：某醫療軟體團隊在驗證 App 時，發現測試策略陷入「冰淇淋甜筒反模式」，且醫師抱怨系統「完美執行了過期指引，完全不符合看診現狀」。下列分析與改進策略何者最為正確？
+
+- **A.** 冰淇淋甜筒代表底層單元測試過多，應立即刪除以節省 CI 資源
+- **B.** 團隊過度依賴脆弱昂貴的頂層 UI/手動測試，且軟體雖通過了 Verification（符合舊規格），卻在 Validation（滿足真實業務需求）上徹底失敗
+- **C.** 將前端自動化測試腳本改用 Python 執行即可根本性消除反模式
+- **D.** 醫師的抱怨屬於編譯時期語法錯誤，應加強靜態型別檢查
+
+  </div>
+  <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq2" target="_blank"><img src="../../img/ch03/sqa-ch03-ccq2.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+---
+
 <!-- _class: lead -->
 <!-- header: '3.3 V 開發模型與雙向追溯' -->
 
@@ -562,7 +583,7 @@ double div(double x, double y) {
 ---
 
 <!-- id: sqa-ch03-ccq3 -->
-## 🙋 概念核對問答 (CCQ 3)
+## 🙋 概念核對問答 (CCQ 3.3)
 
 <div class="ccq-columns">
   <div class="ccq-text">
@@ -719,6 +740,27 @@ double div(double x, double y) {
 
 ---
 
+<!-- id: sqa-ch03-ccq4 -->
+## 🙋 概念核對問答 (CCQ 3.4)
+
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+**問題**：依據軟體行為文氏圖（規格 $S$、程式 $P$、測試案例 $T$）與測試設計原理，若某個行為落在「區域 6：位於程式實作 $P$ 內，但完全超出規格 $S$ 與測試案例 $T$（$P \setminus (S \cup T)$）」，下列敘述何者最適當？
+
+- **A.** 該區域代表未經規格定義也未受測試防護的非預期隱藏行為（如後門或幽靈邏輯），構成重大資安與品質隱患
+- **B.** 該區域代表系統完全符合規格且具備 100% 覆蓋率的最佳實踐
+- **C.** 只要提高單元測試的斷言數量，區域 6 會自動被消除為零
+- **D.** 測試案例只需包含輸入資料，無須定義預期結果
+
+  </div>
+  <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq4" target="_blank"><img src="../../img/ch03/sqa-ch03-ccq4.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+---
+
 <!-- _class: lead -->
 <!-- header: '3.5 測試全景 3W2H 與 Test Oracle' -->
 
@@ -845,7 +887,7 @@ double div(double x, double y) {
 ## 錄製與回放架構流程 (Record & Replay Flow)
 
 <div class="image-wrapper">
-  <img src="../../img/ch03/record_replay_flow.jpg" alt="Record & Replay Flow" />
+  <img src="../../img/ch03/record_replay_flow.png" alt="Record & Replay Flow" />
 </div>
 
 ---
@@ -872,10 +914,12 @@ double div(double x, double y) {
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch03/test_oracle_comparator.jpg" alt="Test Oracle Comparator 比對架構" />
+## 測試預言機比對架構 (Test Oracle Comparator)
+
+<div class="image-wrapper">
+  <img src="../../img/ch03/test_oracle_comparator.png" alt="Test Oracle Comparator 比對架構" />
 </div>
 
 ---
@@ -930,6 +974,27 @@ double div(double x, double y) {
 
 ---
 
+<!-- id: sqa-ch03-ccq5 -->
+## 🙋 概念核對問答 (CCQ 3.5)
+
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+**問題**：在自駕車視覺辨識系統或大語言模型 (LLM) 應用中，系統面臨「沒有唯一標準答案」的 Test Oracle 困境。下列哪一種技術最精準利用了「變質測試 (Metamorphic Testing)」的核心精神來驗證演算法？
+
+- **A.** 聘請 100 位測試工程師手動核對每一張影像與每段文字的正確性
+- **B.** 透過旋轉輸入影像 10 度或變換無關詞序，檢驗輸出結果是否維持語意與類別的不變量 (Invariance) 關係
+- **C.** 直接將所有斷言改為 pass 以確保 CI pipeline 永遠綠燈
+- **D.** 僅測試空輸入以避免觸發不確定性邏輯
+
+  </div>
+  <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq5" target="_blank"><img src="../../img/ch03/sqa-ch03-ccq5.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+---
+
 <!-- _class: lead -->
 <!-- header: '3.6 綜合練習與實戰思維' -->
 
@@ -940,28 +1005,29 @@ double div(double x, double y) {
 
 ---
 
-## 3.6 綜合練習 (1/2)
+## 🙋 3.6 綜合練習 (1/2)：核心理論與測試體系填空
 
-- **一、測試原則與理論辨析**：
-  1. 為了確保軟體絕對正確，我們是否應該進行窮盡式測試（Exhaustive Testing）？為什麼？
-  2. 說明何謂測試的「殺蟲劑效應（Pesticide Paradox）」？當使用 AI 輔助生成測試時，為什麼更容易產生殺蟲劑效應？
-  3. 比較 Verification 與 Validation 的核心差異。
-- **二、V 模型與追溯**：
-  4. 依據 V 開發模型，需求規格書 (SRS) 確定後，應同步規劃哪一項測試計畫？
-  5. 試以 V 模型說明「規格設計在前、測試準備在先」如何避免實作後測試偏差。
+請根據本章核心測試原則與分類體系，填入最適當的軟體工程專業名詞：
+
+1. **ISTQB 測試原則**：
+   測試只能證明 **[ ① ______ ]**，而無法證明軟體毫無缺陷；反覆執行相同測資會產生抗藥性，稱為 **[ ② ______ ]**；修復所有 Bug 卻未滿足真實商業需求，屬於 **[ ③ ______ ]**。
+2. **驗證與確認 (V&V)**：
+   提問「我們是否**正確地建造軟體**（符合規格與設計）？」屬於 **[ ④ ______ ]**；提問「我們是否**建造了正確的軟體**（滿足用戶真實需求）？」屬於 **[ ⑤ ______ ]**。
+3. **測試架構反模式**：
+   健康的測試架構應是以單元測試為底座的「測試金字塔」；若底層測試薄弱而過度依賴脆弱的手動與 UI 測試，稱為 **[ ⑥ ______ ]**。
 
 ---
 
-## 3.6 綜合練習 (2/2)
+## 🙋 3.6 綜合練習 (2/2)：V 模型、測試案例與 Oracle 填空
 
-- **三、測試案例與 Test Oracle 設計**：
-  6. 針對以下函式，設計完整的測試案例（包含前置條件、輸入與預期輸出）：
-     - 計算最大公因數 `int getGCD(int x, int y);`
-     - 陣列排序 `int[] sort(int[] data);`
-  7. 假設你要測試一個無法手算預期結果的巨量文字搜尋引擎演算法，請提出 2 種 Test Oracle（如變質關係或差分策略）來驗證其排序正確性。
-- **四、場景綜合分析**：
-  8. 某網頁系統申請帳號時需輸入：帳號、Email、手機號碼、國籍與年齡。請列出你的黑箱測試等價類劃分策略。
-  9. 在一個西洋棋/象棋系統中，棋子由 $(x_1, y_1)$ 移動到 $(x_2, y_2)$，請列舉出至少 4 個必須防禦的邊界與不變量測試案例。
+請根據 V 模型、測試案例要件與 Test Oracle 理論，填入最適當的專業名詞：
+
+4. **V 開發模型對稱性**：
+   在 V 開發模型中，左側的「高階架構設計 (ADD)」水平對應右側的 **[ ⑦ ______ ]**；而最頂層的「需求規格分析 (SRS)」則對應 **[ ⑧ ______ ]**。
+5. **測試案例核心要件**：
+   完整的測試案例除了測試識別碼與待測項目，必須明確包含：執行前的 **[ ⑨ ______ ]**、受測系統的 **[ ⑩ ______ ]**，以及最關鍵的 **[ ⑪ ______ ]**。
+6. **測試預言機難題**：
+   在缺乏唯一標準答案的 AI 與複雜系統中，能夠仲裁測試輸出正確性的機制稱為 **[ ⑫ ______ ]**；藉由改變輸入微幅變換並檢驗輸出是否維持不變量關係的技術稱為 **[ ⑬ ______ ]**。
 
 ---
 
@@ -973,18 +1039,39 @@ double div(double x, double y) {
 > 各題答案與關鍵解析
 
 ---
-<!-- id: sqa-ch03-ccq2 -->
+## 課堂互動參考解答 (1/2)：各節概念核對問答
 
-## 課堂互動參考解答
+- **CCQ 3.1（AI 測試全綠燈但違反法規）**：
+  - **正確答案：B**（AI 陷入殺蟲劑悖論盲區；且無編譯錯誤不等於符合真實業務法規，即無錯謬誤）。
+- **CCQ 3.2（冰淇淋甜筒反模式與 V&V）**：
+  - **正確答案：B**（過度依賴脆弱頂層測試；符合舊規格為 Verification 成功，但未滿足實際臨床為 Validation 失敗）。
+- **CCQ 3.3（高階架構設計對應測試層級）**：
+  - **正確答案：B**（高階架構設計 ADD 定義模組通訊與介面協定，對應整合測試 Integration Testing）。
+- **CCQ 3.4（行為文氏圖區域 6）**：
+  - **正確答案：A**（超出規格 $S$ 且未受測試 $T$ 防護的程式行為 $P \setminus (S \cup T)$，即隱藏後門或幽靈邏輯）。
+- **CCQ 3.5（Test Oracle 難題與變質測試）**：
+  - **正確答案：B**（利用微幅輸入變換驗證系統是否維持對稱性或不變量 Invariance 關係）。
+- **short1（Test Oracle 難題突破）**：
+  - 利用變質關係、差分比對（雙演算法交叉驗證）與裁判模型 (LLM-as-a-Judge) 突破無唯一標準答案之瓶頸。
 
-- **CCQ 2（AI 測試全綠燈但違反法規）**：
-  - **正確答案：B**
-  - AI 為自身生成之程式碼寫測試會陷入自我印證的殺蟲劑抗藥性；且程式碼無編譯錯誤不等於符合業務與法規需求（無錯謬誤）。
-- **CCQ 3（高階架構設計對應測試層級）**：
-  - **正確答案：B**
-  - 高階架構設計 (ADD) 定義子系統與模組間的 API 介面與資料傳遞協定，其直接對應的驗證層級為整合測試 (Integration Testing)。
-- **short1（Test Oracle 難題破解）**：
-  - 利用變質關係（輸入微幅變換不變量）、差分比對（雙演算法對照）與裁判模型 (LLM-as-a-Judge) 突破無單一標準答案之瓶頸。
+---
+
+## 課堂互動參考解答 (2/2)：3.6 填空挑戰參考答案
+
+- **3.6 填空挑戰標準解答**：
+  - ① `缺陷的存在 (Presence of Defects)`
+  - ② `殺蟲劑悖論 (Pesticide Paradox)`
+  - ③ `無錯謬誤 (Absence-of-Errors Fallacy)`
+  - ④ `Verification (驗證)`
+  - ⑤ `Validation (確認)`
+  - ⑥ `冰淇淋甜筒反模式 (Ice-Cream Cone Anti-Pattern)`
+  - ⑦ `整合測試 (Integration Testing)`
+  - ⑧ `系統 / 驗收測試 (System / Acceptance Testing)`
+  - ⑨ `前置條件 (Preconditions)`
+  - ⑩ `測試輸入資料 (Test Inputs)`
+  - ⑪ `預期結果 (Expected Outputs)`
+  - ⑫ `Test Oracle (測試預言機)`
+  - ⑬ `變質測試 (Metamorphic Testing)`
 
 <script>
 (function() {
@@ -1128,7 +1215,3 @@ double div(double x, double y) {
   setTimeout(initHeaderDropdown, 400);
 })();
 </script>
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq2)
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch03-ccq2" target="_blank"><img src="../../img/ch03/sqa-ch03-ccq2.png" width="120"></a>
