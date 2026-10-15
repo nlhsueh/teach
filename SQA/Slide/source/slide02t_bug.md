@@ -95,9 +95,11 @@ footer: 'Ch02 錯與除錯'
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 2.1.1 臭蟲四階段因果鏈漫畫圖解
+
+<div class="image-wrapper">
   <img src="../../img/ch02/comic_bug_causality_chain.jpg" alt="IEEE 610.12 臭蟲四階段因果鏈漫畫" />
 </div>
 
@@ -171,9 +173,11 @@ footer: 'Ch02 錯與除錯'
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 2.1.2 規格、程式缺陷與系統失效文氏圖解
+
+<div class="image-wrapper">
   <img src="../../img/ch02/spec_fault_failure_venn.jpg" alt="規格、程式缺陷與系統失效之文氏圖" />
 </div>
 
@@ -558,18 +562,33 @@ public void processOrder(Order order) {
 
 ---
 
-## 2.2.5 具體實務作法 5 & 6：消除壞味道與測試保護
+## 2.2.5 具體實務作法 5：持續微重構與測試守護神
 
-| 常見壞味道 (Code Smell) | 現象與問題 | 改善手法 (Refactoring) |
-| :--- | :--- | :--- |
-| **過長函式 (Long Method)** | 動輒上百行，承載過多職責 | **萃取方法 (Extract Method)** |
-| **巨大類別 (God Class)** | 類別包山包海，違反單一職責 | **萃取類別 (Extract Class)** |
-| **重複程式碼 (Duplicated Code)** | 相同邏輯散落在不同區塊 | **提煉共用方法 (Extract Utility)** |
-| **依戀情節 (Feature Envy)** | 頻繁調用外部類別的 getter | **搬移方法 (Move Method)** |
-| **魔術數值 (Magic Numbers)** | 出現無說明的神秘數字/字串 | **萃取為具名常數 / Enum** |
+<div class="card-deck">
 
-- 🛡️ **自動化測試是 Clean Code 的守護神**：
-  - 未經自動化測試保護的程式碼，團隊往往不敢動手重構。唯有具備高涵蓋率的測試套件，重構才有安全網保障！
+> 💡 程式碼腐化不是一夕發生的；面對壞味道，必須靠日常微重構與自動化測試安全網共同抵禦。
+
+<div class="two-columns">
+<div class="card">
+
+### 🧹 敏捷微重構心法 (Micro-Refactoring)
+- **童子軍法則日常實踐**：
+  - 每次提交變更時，順手重命名模糊變數、萃取小函式、扁平化深層巢狀。
+- **架構壞味道系統化把關 (預告)**：
+  - 關於 Martin Fowler 提出的 22 種經典程式碼臭味 (Code Smells，如依戀情節、發散式變化) 與 PMD 自動化偵測，將在 **【第四章 程式碼檢視】** 深入剖析！
+
+</div>
+<div class="card">
+
+### 🛡️ 自動化測試是 Clean Code 守護神
+- **重構的唯一安全網**：
+  - 未經單元測試保護的程式碼，工程師往往「不敢動、不敢改」，任由系統繼續腐化。
+- **高涵蓋率賦予重構勇氣**：
+  - 唯有具備堅實自動化測試套件，重構與追求 Clean Code 才有隨時驗證行為不變的安全保障！
+
+</div>
+</div>
+</div>
 
 ---
 
@@ -687,9 +706,11 @@ public void processOrder(Order order) {
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 2.3.2 科學除錯五步驟流程漫畫
+
+<div class="image-wrapper">
   <img src="../../img/ch02/comic_scientific_debugging.jpg" alt="科學除錯五步驟流程漫畫" />
 </div>
 
@@ -999,9 +1020,11 @@ public void processOrder(Order order) {
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 2.5.2 契約式設計核心三要素漫畫圖解
+
+<div class="image-wrapper">
   <img src="../../img/ch02/comic_design_by_contract.jpg" alt="契約式設計核心三要素漫畫圖解" />
 </div>
 
@@ -1750,9 +1773,11 @@ public class BankAccount {
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 2.9.2 完整缺陷生命週期狀態機圖解
+
+<div class="image-wrapper">
   <img src="../../img/ch02/defect_lifecycle_complete.jpg" alt="完整缺陷生命週期狀態機" />
 </div>
 
@@ -1794,9 +1819,11 @@ public class BankAccount {
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 2.9.3 嚴重度 vs 優先級決策矩陣漫畫
+
+<div class="image-wrapper">
   <img src="../../img/ch02/comic_severity_vs_priority.jpg" alt="嚴重度 vs 優先級決策矩陣 (Comic)" />
 </div>
 

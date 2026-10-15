@@ -12,7 +12,6 @@
 * **【中央】受測系統 (System Under Test, SUT)**：系統內部程式碼、資料結構與演算法細節對測試人員隱藏不透明（黑盒子），聚焦於系統「做什麼 (What)」，而非「如何做 (How)」。
 * **【右側】輸出驗證 (Expected vs. Actual Output)**：比對受測系統實際產出的行為 (Actual Output) 是否完全符合需求規格所定義的預期結果 (Expected Output)。	
 
-> <!-- id: sqa-ch05-ccq1 -->
 ### 💡 軟體測試之父：Glenford J. Myers
 
 > 1979 年，美國電腦科學家 **Glenford J. Myers** 出版了軟體工程史上的奠基經典巨著 **《The Art of Software Testing》（軟體測試的藝術）**。
@@ -29,10 +28,10 @@
 ```
 Ch05 知識架構全景：
 【自動化基石】5.1 JUnit 5 實戰 ＆ 斷言機制
-【輸入域劃分】5.2 邊界值分析 (BVA: 4n+1, 6n+1) ＆ 5.3 等價類分割 (EP: 弱/強涵蓋)
-【組合爆炸解法】5.4 全成對測試 (Pairwise / All-Pairs) ＆ 5.5 案例優化
-【複雜業務邏輯】5.6 決策表測試 (Decision Table) ＆ 規則化簡
-【事件驅動架構】5.7 狀態轉換測試 (State Transition / 1-Switch)
+【輸入域劃分】5.2 邊界值分析 (BVA: 4n+1, 6n+1) ＆ 5.3 等價類分割 (EP: 弱/強涵蓋、二次重構)
+【組合爆炸解法】5.4 全成對測試 (Pairwise / All-Pairs) ＆ 5.5 案例優化與分類樹方法 (CTM)
+【複雜業務邏輯】5.6 因果圖 (CEG) ＆ 決策表測試 (CAR Table 規則化簡)
+【事件驅動架構】5.7 狀態轉換測試 (State Transition / 0-Switch, 1-Switch)
 【現代前沿測試】5.8 屬性基礎測試 (PBT) ＆ 變質測試 (Metamorphic Testing)
 ```
 
@@ -40,11 +39,11 @@ Ch05 知識架構全景：
 | :--- | :--- |
 | **[5.1 Lab: JUnit](#-51-lab-junit)** | 掌握 JUnit 5 單元測試基礎與斷言機制（`assertEquals` 內容相等 vs. `assertSame` 記憶體同一性）。 |
 | **[5.2 邊界測試 (BVA)](#52-邊界測試)** | 掌握「錯誤隱藏在角落」的核心理念；精熟**獨立型 vs. 非獨立型**、**標準邊界 (4n+1) vs. 強固邊界 (6n+1 / 7n+1)** 測試案例設計。 |
-| **[5.3 等價分割測試 (EP)](#53-等價分割測試)** | 掌握有效等價類與無效等價類劃分；精熟**弱一般/弱強固 vs. 強一般/強強固等價測試**之選取準則。 |
-| **[5.4 全成對組合測試 (Pairwise)](#54-全成對組合測試)** | 解決多參數輸入的「組合爆炸 (Combinatorial Explosion)」難題；掌握 **All-Pairs / 正交表** 原理與工具（PICT / ACTS）。 |
-| **[5.5 測試案例的優化](#55-測試案例的優化)** | 學習在覆蓋率不降低的前提下消除冗餘案例，達到測試集精實化。 |
-| **[5.6 決策表測試 (Decision Table)](#56-決策表測試)** | 針對複雜業務邏輯，掌握**條件樁 (Condition Stub)、動作樁 (Action Stub)**、規則展開與布林邏輯**規則化簡**。 |
-| **[5.7 狀態測試 (State Testing)](#57-狀態測試)** | 針對物件生命週期與狀態機（FSM），設計狀態轉換矩陣與 **0-Switch / 1-Switch 覆蓋路徑**。 |
+| **[5.3 等價分割測試 (EP)](#53-等價分割測試)** | 掌握有效與無效等價類劃分；精熟弱一般/弱強固 vs. 強一般/強強固選取準則，深入解析 **NextDate 12月跨年異常與二次等價重構**。 |
+| **[5.4 全成對組合測試 (Pairwise)](#54-全成對組合測試)** | 解決多參數輸入的「組合爆炸」難題；掌握 **All-Pairs / 正交表 (OATS)** 原理與工具（PICT / ACTS）。 |
+| **[5.5 案例優化與分類樹方法 (CTM)](#55-測試案例的優化與分類樹方法-ctm)** | 掌握分離例外、配對組合、FMEA，以及戴姆勒-賓士 **ISO 29119-4 分類樹方法 (CTM)** 雙層架構與電商打點矩陣。 |
+| **[5.6 因果圖與決策表測試](#56-因果圖與決策表測試)** | 掌握 Myers **因果圖法 (CEG)** 4 大邏輯閘與 5 大約束條件，精熟 **CAR 促銷決策表** 與 Don't Care 規則化簡 1:1 直出測試代碼。 |
+| **[5.7 狀態轉換測試 (State Testing)](#57-狀態轉換測試-state-transition-testing)** | 建立航空訂票狀態機生命週期模型（Happy Path vs. Cancellation），精熟 **0-Switch/1-Switch 轉移覆蓋**、Mock Clock 虛擬時鐘測試與物件狀態測試。 |
 | **[5.8 屬性基礎測試與變質測試](#58-屬性基礎測試-property-based-testing-與-變質測試-metamorphic-testing)** | 掌握 SQA 2.0 現代前沿技術：使用 **jqwik** 定義核心數學不變量與測資收縮，運用**變質測試 (MT)** 突破 Test Oracle 難題，並落地差分測試與 LLM 評測規準。 |
 | **[5.9 實戰練習題](#️-練習)** | 涵蓋游泳池計費、青年成家貸款、電子表狀態機與三角形多維案例實戰。 |
 
@@ -56,12 +55,12 @@ Ch05 知識架構全景：
 [JUnit on GitHub](
 https://github.com/nlhsueh/sw-testing24/blob/main/lab/u05_utest/intro_junit.md)
 
-<!-- id: sqa-ch05-ccq2 -->
+<!-- id: sqa-ch05-ccq1 -->
 #### 🙋 概念核對問答 (CCQ 1)
 
 * **是非題**：在 JUnit 中，`assertSame(a, b)` 斷言的作用與 `assertEquals(a, b)` 完全相同，都是在驗證兩個物件的內容值是否相等（即比對 `a.equals(b)`）。
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq2)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -252,7 +251,7 @@ FIG: 三角形程式：非獨立型一般邊界測試
 * [游泳池測試案例](https://docs.google.com/spreadsheets/d/1aE21HM1CCYPJtRBcb2hvYnHtOtqTdbzhQizSfn26hPk/edit?gid=0#gid=0)
 * [三角形測試案例](https://docs.google.com/spreadsheets/d/1fIEwtWf-MoXyBnr1eCET8lsrLSKQgCnYiq6w9WGZOMQ/edit?gid=1805558459#gid=1805558459)
 
-<!-- id: sqa-ch05-ccq3 -->
+<!-- id: sqa-ch05-ccq2 -->
 #### 🙋 概念核對問答 (CCQ 2)
 
 * **單選題**：假設某個受測方法接受 3 個彼此獨立的輸入參數。若採用「獨立型強固邊界測試 (Independent Robust BVA)」，其設計出的測試案例數量應為多少？
@@ -261,7 +260,7 @@ FIG: 三角形程式：非獨立型一般邊界測試
   C) 125  
   D) 343
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq3)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq2)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -426,7 +425,43 @@ FIG: Binary Search 的等價分割測試（*k*: key; *a*: array; *f*: found; *c*
 
 之所以把 day 分成四個分割，是因為我們知道這四個分割在不同的月份、年份的下一天是有所不同的。例如 2012/2/28 和 2011/2/28 的下一天是不同的、3/30 和 4/30 的下一天是不同的。如果我們採取強涵蓋，應該會有 3*4*3=36 個測試案例。
 
-==> [Next Day Example (slide)](https://docs.google.com/presentation/d/1IxfALssqJseO7JuX3i_gfKprWGqt765sOymSNgBtyjA/edit#slide=id.g25494e73315_0_685)
+#### 💥 驚見盲區：第一版測試中的「12 月跨年異常 (The December Anomaly)」
+
+當我們依照上述第一版的月份劃分（$M_1$: 30天月, $M_2$: 31天月, $M_3$: 二月）挑選弱涵蓋測試代表案例時，一個極其隱蔽且致命的邏輯漏洞浮現了：
+
+| 案例 | 輸入 ($Y, M, D$) | 涵蓋類別組合 | 預期輸出 | 實務行為與備註 |
+| :---: | :--- | :--- | :--- | :--- |
+| **$T_1$** | `2024/04/30` | $M_1 \times D_3$ | `2024/05/01` | 30 天月月底跳月（年份不變） |
+| **$T_2$** | `2024/07/31` | $M_2 \times D_4$ | `2024/08/01` | 31 天月月底跳月（年份不變） |
+| **$T_3$** | `2024/02/28` | $M_3 \times D_1 \times Y_2$ | `2024/02/29` | 閏年 2 月跳日（進入 29 日） |
+| **$T_4$** | `2023/02/28` | $M_3 \times D_1 \times Y_3$ | `2023/03/01` | 平年 2 月跳月（跨入 3 月 1 日） |
+
+> ⚠️ **等價性破滅盲區**：  
+> 測試人員若挑選了 $T_2$ (7/31)，$M_2$ (31天月) 便在測試報表上宣告完成覆蓋。但是——**12 月底 (12/31) 的跨年邏輯呢？！**
+> * **一般 31 天月月底 (1, 3, 5, 7, 8, 10 月)**：`Day = 1, Month = Month + 1, Year 不變`！
+> * **12 月底 (12/31) 的獨特跨年行為**：`Day = 1, Month = 1 (重置回一月), Year = Year + 1 (跨年世紀遞增)`！
+> * **結論**：12 月與其他 31 天月在系統內部處理邏輯上**根本不等價**！一旦將兩者混在同一個等價類，只要測試案例選中了 7/31，跨年 Year+1 的核心商業邏輯就會被**100% 完全漏測**！
+
+#### 🔄 迭代修正：重構 NextDate() 等價類劃分
+
+> 💡 **等價類分割黃金法則**：  
+> **只有後續處理邏輯與狀態轉移完全同構 (Isomorphic) 的資料群組，才能被視為同一等價類！**
+
+為了解決跨年盲區，我們必須將月份進行**二次重構**，將 12 月作為獨立等價類分離出來：
+
+* **月份重構等價類**：
+  * $M_1 = \{4, 6, 9, 11\}$ (30 天月)
+  * $M_2 = \{1, 3, 5, 7, 8, 10\}$ (一般 31 天月，跳月不跨年)
+  * $M_3 = \{12\}$ (**12 月，獨立跨年等價類**)
+  * $M_4 = \{2\}$ (2 月，需結合平閏年分析)
+* **日期等價類**：
+  * $D_1 = \{1 \le \text{day} \le 27\}$ (安全跳日區間，任何月份皆直接 Day + 1)
+  * $D_2 = \{\text{day} = 28\}$ (平年二月底跳月門檻)
+  * $D_3 = \{\text{day} = 29\}$ (閏年二月底跳月門檻)
+  * $D_4 = \{\text{day} = 30\}$ (30 天月月底跳月門檻)
+  * $D_5 = \{\text{day} = 31\}$ (31 天月月底跳月/跨年門檻)
+
+重構之後，測試案例集就能精確迫使測試人員挑選 `2024/12/31` 作為 $M_3 \times D_5$ 的代表值，徹底封死世紀跨年跳號的缺陷隱患。
 
 #### Swimming-pool-partition-testing
 > [!NOTE]
@@ -440,7 +475,7 @@ FIG: Binary Search 的等價分割測試（*k*: key; *a*: array; *f*: found; *c*
 
 事實上，等價分割是為種觀念，在每個測試活動中都可應用。
 
-<!-- id: sqa-ch05-ccq4 -->
+<!-- id: sqa-ch05-ccq3 -->
 #### 🙋 概念核對問答 (CCQ 3)
 
 * **單選題**：在等價分割測試 (Equivalence Partitioning) 中，「弱 (Weak)」與「強 (Strong)」分類法的主要區別是什麼？
@@ -449,7 +484,7 @@ FIG: Binary Search 的等價分割測試（*k*: key; *a*: array; *f*: found; *c*
   C) 「弱」不需要程式碼規格書，而「強」必須完全依照 SRS  
   D) 「弱」的測試案例數量一定比「強」多
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq4)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq3)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -581,7 +616,7 @@ All pair testing 工具的開發：
 * **Allpairs Generator**, 容易取得，免費, Perl 腳本, 無原生的 Java 版本,Perl 寫成的腳本，需要在系統中安裝 Perl 環境。
 * ACTS (NIST), 容易取得，免費, Java (JAR 檔案), 由美國國家標準與技術研究院 (NIST) 開發的，是 Java 寫成的, 功能強大，支援更高的強度 (t-way)，且為 Java 使用者設計。
 
-<!-- id: sqa-ch05-ccq5 -->
+<!-- id: sqa-ch05-ccq4 -->
 #### 🙋 概念核對問答 (CCQ 4)
 
 * **單選題**：全成對測試 (Pairwise / All-Pairs Testing) 能夠大幅縮減測試案例數量，其在工程上的核心理論依據是什麼？
@@ -590,7 +625,7 @@ All pair testing 工具的開發：
   C) 配對測試是白箱測試的一種，可以直接涵蓋所有的程式碼分支路徑  
   D) 成對測試可以保證 100% 涵蓋多變數系統的所有笛卡爾積組合
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq5)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq4)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -604,47 +639,97 @@ All pair testing 工具的開發：
 
 ---
 
-## 5.5 測試案例的優化
+## 5.5 測試案例的優化與分類樹方法 (CTM)
 
-如果有五個因子，分別有 4,5,6,7,8 個類別，那們強涵蓋就需要 4*5*6*7*8=6720 個測試案例。太過於複雜。
+在實際工程專案中，軟體往往包含大量輸入參數與組態因子。假設某系統有 5 個因子，各自分別有 4, 5, 6, 7, 8 個等價類別，若採用全笛卡爾積的「強等價組合涵蓋」，總共需要高達：
 
-**1. ✅分離例外**
+$$4 \times 5 \times 6 \times 7 \times 8 = 6,720 \text{ 個測試案例}$$
 
-* **基本原理：** 嚴格區分**有效等價類**和**無效等價類**，並在無效類中進一步識別出**例外類別**。
-* **具體做法：**
-    * **扣除等效的例外類別：** 如果所有因子都有**相同**的異常行為（例如，所有因子的輸入超限都會導致相同的錯誤碼），則您不需要為每個因子測試這個異常的組合。您可以將這些異常類別視為一個**單獨的集合**，只在特定的、最能代表異常的組合中測試，或者只測試它們與有效類別的組合。
-    * **最小有效集：** 對於 N 個類別，如果 N - k 個類別具有相同的成功/有效行為，則只需要選擇其中一個類別作為**代表**進行有效組合測試。測試數量變成 (4-2) * (5-2) ... (8-2) = 720 大量的減少測試案例。
+在人力、時間與預算受限的現實下，執行數千個測試案例幾乎是不可能的。因此，我們必須透過系統化的**測試優化技術**，在大幅精簡案例數量的同時，最大化測試涵蓋率與缺陷偵測力。
 
-**2. ✅配對組合**
+### 5.5.1 常見的測試案例優化策略
 
-可以改用 2-way 或是 n-way 的部分組合方式來進行測試。
+**1. ✅ 分離例外 (Exception Isolation)**
+* **基本原理**：嚴格區分「有效等價類 (Valid)」與「無效/例外等價類 (Invalid/Exception)」。
+* **具體做法**：
+  * **扣除等效的例外類別**：如果多個因子發生異常時，系統的反應完全相同（例如輸入超過上限皆回傳通用的 `HTTP 400 Bad Request` 或 `ERR_INVALID_PARAM`），我們不需要測試「多個例外同時發生」的所有笛卡爾積組合。例外類別應各自獨立測試（每次僅注入一個無效值），大幅剔除冗餘。
+  * **最小有效代表集**：對於 $N$ 個有效類別，若其中若干類別在內部走完全相同的業務處理管線，可選取單一最具代表性的類別進行跨因子組合。
 
-**3. ✅邊界值分析**
+**2. ✅ 成對組合 (Pairwise / Combinatorial Testing)**
+* 改用 2-way（成對測試）或 3-way 組合。根據統計研究，超過 70%~90% 的缺陷是由單一變數或任意兩變數的交互作用觸發，因此僅要求「任意兩因子的取值組合至少出現一次」，能將案例量從指數級降至多項式級（例如從 6,720 降至數十個）。
 
-結合等價分割後，我們優先測試**邊界值**。
+**3. ✅ 結合邊界值分析 (BVA Optimization)**
+* 等價分割確定「範圍」，邊界值分析鎖定「精準測試點」。測試時不再於等價類內部盲目隨機取值，而是聚焦於邊界點（Min, Min+, Nom, Max-, Max），避免無效的重複測試。
 
-* 缺陷最容易出現在等價類的邊界上。
-* 對於每個因子的每個等價類，測試其**精確邊界**、**邊界內**一個值、**邊界外**一個值（例如：N, N - 1, N + 1）。雖然邊界值分析不會直接減少因子數量，但它**取代**了在等價類內部隨機選擇值的需求，讓選取的測試點更有針對性，從而避免了對整個等價類的冗餘測試。
+**4. ✅ 故障模式與影響分析 (FMEA-based Prioritization)**
+* **基本原理**：依據各因子失效後的風險嚴重複重度（Severity）與發生機率（Occurrence）配置資源。
+* **高風險優先**：核心金流、身分驗證等關鍵因子維持全排列或高階組合測試。
+* **低風險簡化**：界面字體顏色、裝飾性選項等低風險因子，僅測試單一預設值即可。
 
-**4. ✅故障模式和影響分析**
+---
 
-Failure Mode and Effects Analysis, FMEA
+### 5.5.2 工業界視覺化等價組合：分類樹方法 (Classification Tree Method, CTM)
 
-* **基本原理：** 根據每個因子可能導致的風險和影響來分配測試資源。
-* **具體做法：**
-    * **高風險優先：** 識別出那些**最可能**出錯或一旦出錯會造成**最嚴重影響**的因子和類別。
-    * **低風險簡化：** 對於那些幾乎不可能出錯、或者其錯誤影響很小的因子，可以將其測試降級為**僅進行有效類別的組合測試**，甚至只進行**單個有效值**的測試。
+在需要對多變數進行系統化等價組合時，純粹在試算表中列出所有排列往往難以檢查「是否有遺漏或互相矛盾」。由德國 Daimler-Benz（戴姆勒-賓士）研究所提出、現已正式納入 **ISO/IEC/IEEE 29119-4** 國際標準的 **分類樹方法 (Classification Tree Method, CTM)**，是工業界廣泛採用的圖形化黑箱測試設計標準。
 
-<!-- id: sqa-ch05-ccq6 -->
+<div style="text-align: center; margin: 16px 0;">
+  <img src="../../img/ch05/ctm_architecture.svg" alt="Classification Tree Method Architecture" width="650" />
+</div>
+
+#### CTM 雙層核心架構與設計原理
+CTM 將測試設計嚴格拆分為「上下兩層」互相呼應的結構：
+
+1. **上層：分類樹 (Classification Tree - 輸入域分解)**
+   * **分類 (Classifications)**：將待測系統的輸入域從特定測試觀點分解為若干互斥的維度（例如：身分、訂單金額、付款方式）。在圖形中繪製為中間節點。
+   * **類別 (Classes)**：在每個分類維度下方，劃分出**互斥且窮盡 (Disjoint and Complete)** 的等價類葉節點（例如身分劃分為：VIP、一般會員、訪客）。
+
+2. **下層：組合規格表 (Combination Table - 案例規格矩陣)**
+   * **垂直投影對齊**：組合規格表的每一行（Column）均直接向上垂直投影對齊上方分類樹的每一個等價類葉節點。
+   * **橫列為測試案例**：每一橫列（Row）代表一組具體的測試案例（$TC_1, TC_2, \dots$）。
+   * **打點標記 (⚫)**：測試工程師在每一列中，針對每一個分類維度**恰好選取一個葉節點打點 (⚫)**。只要完成打點，一個具體合法的測試案例輸入即宣告完成！
+
+#### CTM 實戰範例：電商結帳折扣測試案例生成
+假設我們要設計某電商系統「滿額與會員結帳折扣」功能的測試案例。我們提取出 3 個分類維度，各包含 3 個互斥類別：
+* **分類 1：會員身分** $\rightarrow$ `VIP 會員`、`一般會員`、`訪客 (未登入)`
+* **分類 2：訂單金額** $\rightarrow$ `< $1,000`、`$1,000 ~ $3,000`、`> $3,000`
+* **分類 3：付款方式** $\rightarrow$ `信用卡`、`行動支付 (Apple/Line Pay)`、`貨到付款`
+
+我們利用 CTM 組合規格表，依據不同的覆蓋準則進行打點設計：
+
+| 案例編號 | VIP | 一般 | 訪客 | <1K | 1~3K | >3K | 信用卡 | 行動支付 | 貨到付款 | 具體輸入數據與預期輸出結果 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **$TC_1$** | ⚫ | | | | | ⚫ | ⚫ | | | VIP, $3,500, 信用卡 $\rightarrow$ 享 VIP 8折 + 滿額折 $300 |
+| **$TC_2$** | | ⚫ | | | ⚫ | | | ⚫ | | 一般會員, $2,000, 行動支付 $\rightarrow$ 享 9折 + 滿額折 $100 |
+| **$TC_3$** | | | ⚫ | ⚫ | | | | | ⚫ | 訪客, $800, 貨到付款 $\rightarrow$ 原價結帳，無任何折扣 |
+
+#### 覆蓋準則 (Coverage Criteria) 與案例數量對比
+透過 CTM，我們可以極為清晰地掌控不同層級的測試覆蓋度：
+
+* **1. 弱等價覆蓋 (Weak Equivalence / 1-wise Coverage)**：
+  * **準則要求**：分類樹中的每一個葉節點類別，在組合規格表中至少被垂直打點過一次。
+  * **案例規模**：如上表所示，**僅需 3 個測試案例** ($TC_1 \sim TC_3$)，即可完整覆蓋所有 9 個類別葉節點！
+* **2. 成對組合覆蓋 (Pairwise / 2-wise Coverage)**：
+  * **準則要求**：任意兩個分類維度的類別配對組合，都至少在某個測試案例中共同出現一次。
+  * **案例規模**：使用成對生成演算法（如 ACTS 或 CTE 工具），**僅需 9 個測試案例**即可達成 100% 2-way 涵蓋。
+* **3. 全笛卡爾積強覆蓋 (All Combinations / Strong Equivalence)**：
+  * **準則要求**：所有分類的所有類別進行全排列組合。
+  * **案例規模**：$3 \times 3 \times 3 = \mathbf{27}$ 個測試案例。當分類因子增加至 6~8 個時，案例量將迅速膨脹至數萬個而無法負擔。
+
+#### CTM 的工業工程價值
+1. **直觀防漏與防呆**：若組合規格表中有一欄完全沒有黑點，代表該等價類完全被遺漏；若同一維度被打上兩個黑點，代表違反互斥原則，審查時一目了然。
+2. **利害關係人審查 (Stakeholder Review)**：傳統測試清單充斥細碎數字，業務主管或產品經理（PO）難以檢視；CTM 樹狀結構提供高階語意視圖，大幅降低溝通成本。
+3. **工具鏈支援**：現代測試工具（如 Berner & Mattner 的 CTE XL、TESTONA、OSS 版本的 Classification Tree Editor）均可繪製分類樹並一鍵自動生成 Pairwise 打點矩陣與測試代碼框架。
+
+<!-- id: sqa-ch05-ccq5 -->
 #### 🙋 概念核對問答 (CCQ 5)
 
-* **單選題**：關於「正交表測試 (Orthogonal Array Testing)」與一般「成對測試 (Pairwise Testing)」的比較，下列敘述何者正確？
+* **單選題**：關於「正交表測試 (Orthogonal Array Testing, OATS)」與一般「全成對測試 (Pairwise Testing)」的比較，下列敘述何者正確？
   A) 正交表測試是隨機產生的，而 Pairwise 必須透過數學嚴格推導  
   B) 兩者都關注參數間的配對，但正交表更強調各因子組合的「均勻平衡性（正交性）」，而 Pairwise 僅要求任意兩因子的組合至少出現一次，因此 Pairwise 的案例數量通常更少且更有彈性  
   C) 只要變數的個數相同，正交表與 Pairwise 產生的測試案例清單必定完全一致  
   D) 正交表測試只能處理二分值（True/False）的變數組合
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq6)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq5)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -658,72 +743,135 @@ Failure Mode and Effects Analysis, FMEA
 
 ---
 
-## 5.6 決策表測試
+## 5.6 因果圖與決策表測試
 
-如果應用程式有複雜的邏輯規則，變數之間的相依性很強，亦即每個變數是不獨立的，我們可以透過決策表來協助分析這些邏輯。複雜的邏輯規則是很惱人的，決策表的 condition-action rule 可以一目了然的讓我們了解這些規則。
+在軟體系統中，若輸入參數彼此完全獨立，採用等價類劃分與邊界值分析即可涵蓋大部分場景。然而，在許多商務邏輯極為複雜的系統中（例如電商結帳折扣、保險核保、航空票務定價），**變數之間往往存在強烈的相依性、互斥性或先決約束關係**。當某個條件不成立時，其他條件可能完全失效；或者多個條件的特定交集會觸發截然不同的系統動作。
 
-CAR 決策表設計法，其中 ==C: Condition== 表示每一個細項的狀況，==A: Action== 事件表示系統需要進行的動作，==R: Rule== 規則表示在各種不同的狀況下系統應該進行的動作。在 Table 中，每一個行表示一條的規則，例如「當 C1 且 C2 且 C3 時，做 A1」「當 C1 且 C2 但非 C3 時做 A2」等等。
+面對這種「複雜邏輯規則與多變數條件約束」，如果僅憑直覺手寫測試，極易發生「規則遺漏」或「冗餘重複測試」。軟體工程界為此發展出兩大強大的黑箱建模工具：**因果圖法 (Cause-Effect Graphing)** 與 **決策表 (Decision Table / CAR Table)**。
 
-事實上，決策表不僅可用於測試，也適合在「需求分析」階段表達使用者的需求或邏輯。
+---
 
-FIG: 狀況，事件，規則表
+### 5.6.1 邏輯相依規格建模：因果圖法 (Cause-Effect Graphing)
 
-| 條件與事件 | 規則 1 (R1) | 規則 2 (R2) | 規則 3 (R3) | 規則 4 (R4) |
+因果圖法最初由軟體測試先驅 **Glenford Myers** 提出，其核心精神是：**將自然語言撰寫的規格需求，形式化轉譯為類似布林邏輯電路的有向圖網絡**，以此作為嚴格推導決策表的正規工具。
+
+<div style="text-align: center; margin: 16px 0;">
+  <img src="../../img/ch05/cause_effect_graph.svg" alt="Cause-Effect Graphing" width="650" />
+</div>
+
+#### 1. 核心構成要件
+* **原因 (Causes, $C_i$)**：代表系統的輸入條件或前置狀態（在邏輯圖中取值為 $0$ 或 $1$）。
+* **結果 (Effects, $E_j$)**：代表系統產生的輸出動作、錯誤提示或狀態變更（取值為 $0$ 或 $1$）。
+* **4 大基本布林邏輯關係**：
+  * **恆等 (Identity)**：若 $C_1 = 1$，則 $E_1 = 1$；否則 $E_1 = 0$。
+  * **非 (NOT, $\sim$ 或 $\neg$)**：若 $C_1 = 1$，則 $E_1 = 0$；否則 $E_1 = 1$。
+  * **或 (OR, $\lor$)**：若 $C_1, C_2, \dots$ 中任一條件為 $1$，則結果為 $1$。
+  * **與 (AND, $\land$)**：若且唯若所有 $C_i$ 皆為 $1$ 時，結果才為 $1$。
+
+#### 2. 因果圖 5 大約束條件 (Constraints)
+在現實系統中，輸入條件或輸出動作之間常有物理或商務上的限制（例如：使用者身分不可能「既是 VIP 又是訪客」）。因果圖透過 5 種約束標記在圖上加以規範：
+* **輸入端約束 (Causes Constraints)**：
+  * **$E$ (Exclusive 互斥)**：$C_1$ 與 $C_2$ 最多只能有一個為 $1$（即 $C_1 + C_2 \le 1$）。
+  * **$I$ (Inclusive 包含)**：$C_1, C_2, C_3$ 至少要有一個為 $1$（即 $\sum C_i \ge 1$）。
+  * **$O$ (One and only one 唯一)**：有且僅有一個條件必須為 $1$（即 $C_1 + C_2 = 1$）。
+  * **$R$ (Requires 要求)**：若 $C_1 = 1$，則 $C_2$ 必須為 $1$（即蘊含邏輯 $C_1 \implies C_2$）。
+* **輸出端約束 (Effects Constraints)**：
+  * **$M$ (Masks 遮蔽)**：若結果 $E_1 = 1$，則會強制遮蔽抑制 $E_2$，使其必為 $0$。
+
+---
+
+### 5.6.2 貫穿範例：電商促銷與免運規格建模與測試生成
+
+我們以一個典型的「電商結帳折扣與運費折抵」商務規格為例，展示如何從需求一步步推導至可執行的測試案例。
+
+#### Step 1：規格因子拆解與因果圖建模
+業務需求規格描述如下：
+1. 當「訂單金額 $\ge \$1,000$」且「具備 VIP 會員身分」時，享結帳 **8 折優惠**。
+2. 當「訂單金額 $\ge \$1,000$」且「結帳時輸入免運促銷碼」時，享 **免運費折抵**。
+3. 若訂單未達 $\$1,000$ 門檻，即使有 VIP 或促銷碼亦無法享有上述任何優惠，系統以 **原價一般結帳**。
+
+我們將規格拆解為原因與結果：
+* **原因 (Causes)**：
+  * $C_1$：訂單金額 $\ge \$1,000$（滿額先決門檻）
+  * $C_2$：具備 VIP 會員資格
+  * $C_3$：結帳輸入免運促銷碼
+* **結果 (Effects)**：
+  * $E_1$：享有 8 折優惠（邏輯式：$C_1 \land C_2$）
+  * $E_2$：享有免運費折抵（邏輯式：$C_1 \land C_3$）
+  * $E_3$：原價一般結帳（邏輯式：$\neg(E_1 \lor E_2)$）
+
+#### Step 2：導出 CAR 決策表與規則化簡
+**CAR 決策表**由三個核心要素構成：==C (Condition 條件)==、==A (Action 動作)==、==R (Rule 規則)==。
+若全展開 3 個條件，共有 $2^3 = 8$ 種可能的條件組合。但透過「**不在乎 / 不相關條件 (Don't Care, 以 `-` 表示)**」進行化簡，可以將決策表大幅收斂為 4 條精準的商務規則：
+
+* **化簡原理**：當 $C_1 = \text{N}$（未達 $\$1,000$）時，無論 $C_2$（VIP）與 $C_3$（促銷碼）是 Y 還是 N，輸出動作必定都是 $E_3$（原價結帳）。因此，原本 4 條 $C_1 = \text{N}$ 的組合可直接合併為單一規則 $R_4$！
+
+| 條件與動作項目 (Condition / Action) | 規則 1 ($R_1$) | 規則 2 ($R_2$) | 規則 3 ($R_3$) | 規則 4 ($R_4$) |
 | :--- | :---: | :---: | :---: | :---: |
-| **條件 (Conditions)** | | | | |
-| C1: 條件 1 | Y | Y | N | N |
-| C2: 條件 2 | Y | N | Y | N |
-| C3: 條件 3 | Y | - | - | Y |
-| **動作 (Actions)** | | | | |
-| A1: 執行動作 1 | X | X | | |
-| A2: 執行動作 2 | | X | X | |
-| A3: 執行動作 3 | | | | X |
+| **【條件 Conditions】** | | | | |
+| $C_1$: 訂單金額 $\ge \$1,000$？ | **Y** | **Y** | **Y** | **N** |
+| $C_2$: 具備 VIP 會員身分？ | **Y** | **N** | **Y** | **-** |
+| $C_3$: 輸入有效免運促銷碼？ | **N** | **Y** | **Y** | **-** |
+| **【動作 Actions】** | | | | |
+| $E_1$: 系統輸出「8 折優惠」 | **X** | | **X** | |
+| $E_2$: 系統輸出「免運費折抵」 | | **X** | **X** | |
+| $E_3$: 系統輸出「原價結帳」 | | | | **X** |
 
+#### Step 3：由決策表直出測試案例 (1:1 映射)
+化簡後的 CAR 決策表中，**每一列（Rule）直接 1:1 映射為一組標準黑箱測試案例**：
 
-在這個例子中，每一個 condition 都是一個條件為「真假」的變數，其實也可以試一個變數，而條件值為一個數字、範圍或描述性的條件。
+| 案例編號 | 對應規則 | 測試輸入參數 (金額, VIP, 促銷碼) | 預期執行動作與輸出斷言 (Expected Output) | 測試設計意圖說明 |
+| :---: | :---: | :--- | :--- | :--- |
+| **$TC_1$** | $R_1$ | `amount = 1200, isVip = true, promo = null` | `discount = 0.8, freeShipping = false` | 驗證滿額 VIP 獨享 8 折 |
+| **$TC_2$** | $R_2$ | `amount = 1200, isVip = false, promo = "SHIP"` | `discount = 1.0, freeShipping = true` | 驗證一般會員滿額促銷碼免運 |
+| **$TC_3$** | $R_3$ | `amount = 1500, isVip = true, promo = "SHIP"` | `discount = 0.8, freeShipping = true` | 驗證雙重優惠同時觸發 |
+| **$TC_4$** | $R_4$ | `amount = 800, isVip = true, promo = "SHIP"` | `discount = 1.0, freeShipping = false` | 驗證未達滿額門檻全部失效 |
 
-在下面三角形的例子中，我們用 C₁ 表示 a, b, c 不為三角形的狀況，這樣 CAR 才不會膨脹的太大，而且可閱讀性也高，如果我們把 C₁ 拆解為 C₁₁: a + b ≥ c, C₁₂: b + c ≥ a, C₁₃: a + c ≥ b，當然也可以，但表會變成很大難以閱讀與分析。
+* **工程黃金成果**：從模糊的自然語言需求，經由「**因果圖 $\rightarrow$ CAR 決策表 $\rightarrow$ 測試案例**」，達成了「**100% 邏輯覆蓋且零冗餘測試**」，完全杜絕了傳統手寫案例遺漏規則邊界的風險！
 
-FIG: 三角形的狀況事件規則表（CAR table）
+---
 
-| 條件與動作 | R1 | R2 | R3 | R4 | R5 | R6 |
+### 5.6.3 經典案例延伸一：三角形分類決策表
+
+在經典的三角形型態判斷中，我們若先以條件 $C_1$ 概括三角形不等式，同樣能透過決策表將邊長關係梳理得極為清晰：
+
+| 條件與動作項目 | $R_1$ | $R_2$ | $R_3$ | $R_4$ | $R_5$ | $R_6$ |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **條件 (Conditions)** | | | | | | |
-| C1: a < b + c 且 b < a + c 且 c < a + b？ | N | Y | Y | Y | Y | Y |
-| C2: a = b？ | - | Y | Y | N | N | N |
-| C3: b = c？ | - | Y | N | Y | N | N |
-| C4: a = c？ | - | Y | N | N | Y | N |
-| **動作 (Actions)** | | | | | | |
-| A1: 輸出「非三角形」 | X | | | | | |
-| A2: 輸出「等邊三角形」 | | X | | | | |
-| A3: 輸出「等腰三角形」 | | | X | X | X | |
-| A4: 輸出「不等邊三角形」 | | | | | | X |
+| **【條件 Conditions】** | | | | | | |
+| $C_1$: 滿足三角不等式？($a < b+c \land b < a+c \land c < a+b$) | **N** | **Y** | **Y** | **Y** | **Y** | **Y** |
+| $C_2$: $a = b$？ | **-** | **Y** | **Y** | **N** | **N** | **N** |
+| $C_3$: $b = c$？ | **-** | **Y** | **N** | **Y** | **N** | **N** |
+| $C_4$: $a = c$？ | **-** | **Y** | **N** | **N** | **Y** | **N** |
+| **【動作 Actions】** | | | | | | |
+| $A_1$: 輸出「非三角形」 | **X** | | | | | |
+| $A_2$: 輸出「正三角形 (Equilateral)」 | | **X** | | | | |
+| $A_3$: 輸出「等腰三角形 (Isosceles)」 | | | **X** | **X** | **X** | |
+| $A_4$: 輸出「不等邊三角形 (Scalene)」 | | | | | | **X** |
 
-> 在 nextDay() 的例子中，輸入一個日期，輸出是以下幾個動作是否執行：*impossible, increment day, increment month, increment year, reset day, reset month}。
-請以決策表設計測試案例。
+> **說明**：$R_1$ 中只要 $C_1 = \text{N}$，無論邊長是否相等，系統直接判定為非三角形；$R_3 \sim R_5$ 分別代表兩邊相等的 3 種對稱情況，均對應至輸出等腰三角形。
 
-FIG: nextDay() 等價類劃分
+---
 
-| 變數 (Variable) | 有效等價類 (Valid Equivalence Classes) |
-| :--- | :--- |
-| **月份 (Month)** | M1 = {30天月份: 4, 6, 9, 11}<br>M2 = {31天月份: 1, 3, 5, 7, 8, 10, 12}<br>M3 = {二月: 2} |
-| **日期 (Day)** | D1 = {1 ≤ day ≤ 28}<br>D2 = {day = 29}<br>D3 = {day = 30}<br>D4 = {day = 31} |
-| **年份 (Year)** | Y1 = {世紀平年: year = 1900}<br>Y2 = {一般閏年: 1812 ≤ year ≤ 2012 且 year ≠ 1900 且 year mod 4 = 0}<br>Y3 = {一般平年: 1812 ≤ year ≤ 2012 且 year mod 4 ≠ 0} |
+### 5.6.4 經典案例延伸二：NextDate 決策表與等價類細化分析
 
+針對 `nextDay()` 函數，若給定年、月、日，輸出為以下動作之一：`{day+1, month+1, year+1, resetDay, resetMonth, error}`。
 
-- M1 = {month: month has 30 days} 
-- M2 = {month: month has 31 days} 
-- M3 = {month: month is February} 
-- D1 = {day: 1<=day<=28}
-- D2 = {day: day=29}
-- D3 = {day: day=30}
-- D4 = {day: day=31}
-- Y1 = {year: year = 1900}
-- Y2 = {year: 1812<=year<=2012 AND (year!=1900) AND(year=0 mod 4)}
-- Y3 = {year: (1812<=year<=2012 AND year!=0 mod 4}
+#### 1. 初步等價類劃分
+* **月份 (Month)**：
+  * $M_1 = \{\text{30天月份: 4, 6, 9, 11}\}$
+  * $M_2 = \{\text{31天月份: 1, 3, 5, 7, 8, 10, 12}\}$
+  * $M_3 = \{\text{二月: 2}\}$
+* **日期 (Day)**：
+  * $D_1 = \{1 \le \text{day} \le 28\}$
+  * $D_2 = \{\text{day} = 29\}$
+  * $D_3 = \{\text{day} = 30\}$
+  * $D_4 = \{\text{day} = 31\}$
+* **年份 (Year)**：
+  * $Y_1 = \{\text{世紀平年: year} = 1900\}$
+  * $Y_2 = \{\text{一般閏年: } 1812 \le \text{year} \le 2012 \land \text{year} \ne 1900 \land \text{year} \bmod 4 = 0\}$
+  * $Y_3 = \{\text{一般平年: } 1812 \le \text{year} \le 2012 \land \text{year} \bmod 4 \ne 0\}$
 
-FIG: 應用決策表測試法於 nextDay()
-
+#### 2. 初步決策表 (15 條規則)
 | 規則 (Rules) | R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8 | R9 | R10 | R11 | R12 | R13 | R14 | R15 |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **條件 (Conditions)** | | | | | | | | | | | | | | | |
@@ -736,10 +884,16 @@ FIG: 應用決策表測試法於 nextDay()
 | A3: 年份加 1, 月/日歸 1 | | | | | | | | X | | | | | | | |
 | A4: 錯誤/不可能的日期 | | | X | | | | | | | | | | | X | X |
 
+#### 3. 決策表驅動的等價類二次重構思考
+在上面的決策表中，我們敏銳地發現：
+* 為了處理 R8 與 R9，條件列不得不寫成 `M2 (Dec)` 與 `M2 (not Dec)`；
+* 為了處理 R10~R12，日期不得不寫成 `D1 (1-27)` 與 `D1 (28)`。
 
-❓ 透過上述的決策表我們發現有些地方是無法確定的（打X的部份），因此分割需要再細一些，怎麼做呢？有需要修改分割嗎？
+這正是**決策表反哺等價類分割**的典型案例！正如我們在 5.3 節中所分析的「12 月跨年異常」，當條件列中出現非正則的括號補充說明時，代表原先的等價類分割過於粗糙。我們應將月份正式重構為：
+$$M_1 = \{30\text{天月份}\}, \quad M_2 = \{12\text{月以外的 } 31\text{天月份}\}, \quad M_3 = \{12\text{月}\}, \quad M_4 = \{2\text{月}\}$$
+如此一來，決策表的每一條規則都能回歸為純粹、嚴謹的等價類代號，消除模糊地帶。
 
-<!-- id: sqa-ch05-ccq7 -->
+<!-- id: sqa-ch05-ccq6 -->
 #### 🙋 概念核對問答 (CCQ 6)
 
 * **單選題**：在軟體測試實務中，下列哪一種受測情境最適合優先採用「決策表測試 (Decision Table Testing)」來設計案例？
@@ -748,7 +902,7 @@ FIG: 應用決策表測試法於 nextDay()
   C) 系統的輸出僅與目前輸入值有關，與輸入條件的組合邏輯無涉  
   D) 系統的運作強烈依賴時間序列與物件歷史狀態的轉移
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq7)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq6)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -762,124 +916,182 @@ FIG: 應用決策表測試法於 nextDay()
 
 ---
 
-## 5.7 狀態測試
+## 5.7 狀態轉換測試 (State Transition Testing)
 
-沒有 return 的 function 怎麼測試？
+在傳統的功能測試或單元測試中，我們習慣針對「輸入參數，檢查回傳值」的純函數進行測試（例如 `assertEquals(expected, add(2, 3))`）。然而，現代軟體系統（從電商訂單、航空票務、行動 App 生命週期到嵌入式控制器）絕大多數都是**事件導向 (Event-Driven)** 且**有狀態 (Stateful)** 的：
 
-前面我們所提到的測試多半著重在於輸入輸出的檢查，但是現在的軟體系統很多都是事件導向（event driven）的，系統內部會有一個狀態機（state machine）來記錄現有的狀態，並決定接受到狀態時應該做出什麼反應，轉移到哪一個狀態。像這一類的系統測試的重點就不是在功能是否正確，而是狀態的反應是否正確。
+* **沒有回傳值的 `void` 方法該怎麼測試？**
+* 當使用者呼叫 `order.cancel()` 時，方法沒有任何返回值，我們該如何斷言？
+* 答案是：**檢驗系統或物件內部的「狀態轉移 (State Transition)」是否符合規格！**
 
-<img src="../../img/ch05/airline_booking_state_machine.jpg" width="650">
+狀態轉換測試將受測系統抽象為一個**有限狀態機 (Finite State Machine, FSM)**，測試的重點不再是單次計算的數值輸出，而是：**「在特定的前置狀態下，給定激發事件，系統是否執行了正確的動作並平穩轉移至預期的次態；同時，在非法的狀態下接收事件時，是否具備足夠的強固性防止越權或崩潰。」**
 
-**圖形解說：航空訂票系統狀態機 (State Machine Lifecycle)**
-* **主流程 (Happy Path)**：
-  1. **Made (已預約)**：接收 `giveInfo` 事件後建立訂位。
-  2. **Paid (已付款)**：接收 `payMoney` 事件後完成扣款。
-  3. **Ticketed (已開票)**：接收 `print` 事件後完成開票。
-  4. **Used (已使用)**：接收 `giveTicket` 登機使用後順利結案。
-* **取消與例外分支**：
-  * **CancelledByCustomer (顧客主動取消)**：在 Made、Paid、Ticketed 狀態下均可觸發 `cancel` 轉移至此狀態。
-  * **CancelledNonPay (未付款逾期取消)**：在 Made 狀態下因付款超時 (`payTimeExpire`) 自動轉移至此狀態。
+---
 
+### 5.7.1 航空訂票系統狀態機模型
 
-圖表示一個飛機票的訂票系統，我們先把他的狀態定義出來：made (預約), paid（已付款）, ticketed（已開票）, used（已使用）, cancelled by customer（顧客取消）, cancelled nonpay（未付款取消）。狀態轉移（transition）上的格式為：
+我們以航空機票訂位系統為例，系統在旅客訂票、付款、開票到登機的整個生命週期中，存在嚴謹的狀態流轉規則。
 
-表示狀態接收到事件E 後若滿足條件 C 則會進行動作 A，並且進行狀態轉移。
+<div style="text-align: center; margin: 20px 0;">
+  <img src="../../img/ch05/airline_booking_state_machine.svg" alt="Airline Booking State Machine" width="700" />
+</div>
 
-測試時有以下涵蓋度的作法：
+#### 1. 核心要素與狀態轉移標準表示法
+在狀態機圖中，任何一條轉移弧線（Transition）均可形式化描述為：
+$$\text{Current State} \xrightarrow{\text{Event} \ [\text{Guard Condition}] \ / \ \text{Action}} \text{Next State}$$
+* **現態 (Current State)**：觸發事件前系統所處的狀態。
+* **事件 (Event)**：來自外界的刺激或內部計時器訊號（例如使用者的點擊、外部金流 Webhook、定時超時）。
+* **守衛條件 (Guard Condition, 選填)**：必須滿足的布林條件，若不滿足則不轉移。
+* **動作 (Action, 選填)**：轉移過程中系統執行的即時操作（如發送確認簡訊、扣款、釋放庫存）。
+* **次態 (Next State)**：完成轉移後抵達的新狀態。
 
-- 狀態涵蓋度（state coverage）：每個狀態都被涵蓋。
-- 事件涵蓋度（event coverage）：每個事件都被涵蓋。
-- 狀態轉移涵蓋度（state transition coverage）：每個狀態轉移都被涵蓋。
+#### 2. 6 大狀態與 8 條轉移弧線分析
+本系統定義了 6 種核心狀態，清晰區分為正常主流程與例外中斷分支：
 
-FIG: 全狀態轉移涵蓋
+* **🛫 正常商務主流程 (Happy Path)**：
+  1. **Made (已預約保留)**：系統接收初始事件 `giveInfo`，建立訂位記錄並鎖定機位。
+  2. **Paid (已付款)**：顧客在保留期限內完成支付，接收 `payMoney` 事件，轉移至此狀態。
+  3. **Ticketed (已開票)**：地勤或系統接收 `print` 事件，產出電子機票與航段條碼。
+  4. **Used 🏁 (已搭乘 / 正常終止)**：旅客於登機門出示登機證，接收 `giveTicket` 順利登機結案。
 
-> 百分百狀態轉移涵蓋並不保證百分百事件涵蓋，因為可能有多個事件會造成相同的狀態轉移。
+* **⛔ 例外取消分支 (Cancellation Paths)**：
+  * **CancelledByCustomer ⛔ (顧客主動取消 / 退票)**：
+    * 在 `Made` 狀態下，顧客可呼叫 `cancel` 取消保留；
+    * 在 `Paid` 狀態下，顧客可呼叫 `cancel` 申請全額退款並取消；
+    * 在 `Ticketed` 狀態下，顧客可呼叫 `cancel` 辦理退票手續。
+    * 這 3 個不同階段的取消皆轉移至終止狀態 `CancelledByCustomer`。
+  * **CancelledNonPay ⏱️ (逾期未付系統自動取消)**：
+    * 僅在 `Made` 狀態下生效。若顧客在規定時限（如 24 小時）內未付款，內部定時器發出 `payTimeExpire` 事件，機位自動釋回庫存，轉移至終止狀態 `CancelledNonPay`。
 
-為了達到全狀態與全狀態轉移的涵蓋，我們設計了以下 5 條測試路徑（事件序列）：
+* **🛑 終止狀態不變量 (Terminal State Invariant)**：
+  * `Used`、`CancelledByCustomer` 與 `CancelledNonPay` 為**終止狀態 (Terminal States)**。一旦訂單進入終止狀態，任何進一步的業務事件均不得再引發狀態跳轉。
 
-- **路徑 1**：`giveInfo` -> `payMoney` -> `print` -> `giveTicket` (涵蓋 Made, Paid, Ticketed, Used)
-- **路徑 2**：`giveInfo` -> `payMoney` -> `print` -> `cancel` (涵蓋 Made, Paid, Ticketed, CancelledByCustomer)
-- **路徑 3**：`giveInfo` -> `payMoney` -> `cancel` (涵蓋 Made, Paid, CancelledByCustomer)
-- **路徑 4**：`giveInfo` -> `cancel` (涵蓋 Made, CancelledByCustomer)
-- **路徑 5**：`giveInfo` -> `payTimeExpire` (涵蓋 Made, CancelledNonPay)
+---
 
+### 5.7.2 狀態測試覆蓋準則與測試路徑生成
 
-注意其中第五個測試案例需要產生過期未繳款的事件，這可能需要一段不短的時間（例如一個星期），會對測試造成困擾，所以通常需要假時間的建立以加快測試的效率。
+為了測試狀態機，我們需要決定測試的強度與覆蓋指標：
 
-### 設計檢驗
+#### 1. 覆蓋指標層次
+* **狀態覆蓋 (State Coverage / 節點覆蓋)**：
+  * 要求測試套件至少造訪過狀態機中的每一個狀態節點至少一次。
+  * **缺點**：強度極低！只要走完一條路徑觸發部分狀態，可能就宣稱達到 100% 狀態覆蓋，但遺漏了大量核心轉移分支。
+* **轉移覆蓋 (Transition Coverage / 弧線覆蓋 / 0-Switch 覆蓋)**：
+  * 要求狀態機中的**每一條合法轉移弧線 (Edge) 都至少被執行驗證一次**。
+  * **定理**：**達到 100% 轉移覆蓋，必定同時達成 100% 狀態覆蓋！**（因為走過所有弧線必然穿透所有相連的節點）。
+* **$N$-Switch 覆蓋 (Chow 提出)**：
+  * **0-Switch**：單一轉移弧線（即轉移覆蓋）。
+  * **1-Switch**：長度為 2 的連續轉移序列（例如：驗證先經過 A $\rightarrow$ B，再由 B $\rightarrow$ C 的記憶效應與相依性）。
 
-為了避免設計的疏忽造成狀態轉移的缺失，我們可以使用狀態轉移表來檢查 狀態對每一個事件是否都處理了？如下圖表示 s1 接受 e1, e2 訊息會轉移到 s2, 對於 e3, e4 等事件則沒有反應。
+#### 2. 全轉移覆蓋的 5 條最小測試路徑 (Test Suites)
+針對上述航空訂票狀態機，為達成 100% 轉移覆蓋（全部 8 條轉移弧線均被執行），我們設計了以下 5 條端到端測試事件序列：
 
-狀態轉移表:
+| 測試路徑編號 | 激發事件序列 (Event Sequences) | 穿透之狀態轉移歷程 | 測試業務意圖說明 |
+| :---: | :--- | :--- | :--- |
+| **路徑 1** | `giveInfo` $\rightarrow$ `payMoney` $\rightarrow$ `print` $\rightarrow$ `giveTicket` | $\bullet \rightarrow$ Made $\rightarrow$ Paid $\rightarrow$ Ticketed $\rightarrow$ **Used 🏁** | 正常商務主流程 (Happy Path) |
+| **路徑 2** | `giveInfo` $\rightarrow$ `payMoney` $\rightarrow$ `print` $\rightarrow$ `cancel` | $\bullet \rightarrow$ Made $\rightarrow$ Paid $\rightarrow$ Ticketed $\rightarrow$ **CancelledByCustomer ⛔** | 開票後顧客退票流程 |
+| **路徑 3** | `giveInfo` $\rightarrow$ `payMoney` $\rightarrow$ `cancel` | $\bullet \rightarrow$ Made $\rightarrow$ Paid $\rightarrow$ **CancelledByCustomer ⛔** | 付款後、開票前申請退款取消 |
+| **路徑 4** | `giveInfo` $\rightarrow$ `cancel` | $\bullet \rightarrow$ Made $\rightarrow$ **CancelledByCustomer ⛔** | 預約保留後顧客主動放棄取消 |
+| **路徑 5** | `giveInfo` $\rightarrow$ `payTimeExpire` | $\bullet \rightarrow$ Made $\rightarrow$ **CancelledNonPay ⏱️** | 預約逾期未付款，系統自動取消 |
 
-|     | e1  | e2  | e3  | e4  |
-| -----| -----| -----| -----| -----|
-| s1  | s2  | s2  | x   | x   |
-| s2  | x   | s3  | x   | x   |
-| s3  | x   | x   | s1  | x   |
+#### 3. 測試工程實務痛點：如何測試超時事件？(Mock Clock 虛擬時間注入)
+在測試路徑 5 時，許多初學者會面臨難題：
+> 「系統規定預約後保留 24 小時，若未付款則觸發 `payTimeExpire`。難道單元測試要讓程式碼 `Thread.sleep(86400000)` 等上一整天嗎？」
 
-### 物件狀態測試
+當然不行！測試套件必須在毫秒級內跑完。在現代軟體工程中，處理時間相依測試的最佳實踐是：
+* **依賴注入虛擬時鐘 (Mock Clock / Virtual Time Scheduler)**：
+  在待測模組中，嚴禁直接呼叫硬編碼的 `System.currentTimeMillis()` 或 `new Date()`；而是注入抽象的 `java.time.Clock`。
+* 在測試程式中，我們只需呼叫 `mockClock.fastForward(Duration.ofHours(25))`，即可瞬間模擬時光飛逝 25 小時，立刻安全、穩定地觸發定時器超時轉移！
 
-前面 JUnit 的測試都著重在某方法（副程式）的功能測試，但現在的系統多半是物件導向，只測試功能導向式不夠的。回想一下，我們用 JUnit 測試時，都針對有回傳值的功能做檢驗，例如 `assertEquals(12, a.m1())`。如果 m1() 的方式並沒有回傳值，難道我們就不用測試了嗎？
+---
 
-在物件狀態測試中，我們要檢驗的是「物件的狀態是否如我們預期的變化」。例如執行完 m1() 後物件的狀態變為 *isComplete*，我們就可以透過`assertTrue(a.isComplete())` 來檢驗。物件內部的屬性代表著它的狀態，「執行動作、改變狀態」，是物件開發的特性之一。
+### 5.7.3 狀態轉移表 (State Transition Table) 與非法轉移強固性檢查
 
-我們來看看如何應用 JUnit進行物件的狀態測試。
-#### Stack-test
+除了驗證規格書中定義的「合法轉移」，軟體上線後最危險的往往是**「在不對的狀態下收到了不合法的事件」**（例如：機票明明已經 `Used (已搭乘)`，駭客卻惡意發送 `cancel` 退票請求；或者訂單還在 `Made (未付款)`，系統卻收到了 `giveTicket (登機)` 事件）。
+
+為了徹底杜絕設計遺漏並規劃**強固性測試 (Robustness Testing)**，我們建立狀態轉移表：
+
+| 現態 (Current State) | `giveInfo` | `payMoney` | `print` | `giveTicket` | `cancel` | `payTimeExpire` |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Made (已預約)** | ❌ (無效) | **Paid** | ❌ (未付不得印) | ❌ (未付不得登) | **CancelledCust** | **CancelledNonPay** |
+| **Paid (已付款)** | ❌ (重複) | ❌ (重複扣款) | **Ticketed** | ❌ (未開票不得登) | **CancelledCust** | ❌ (已付不逾時) |
+| **Ticketed (已開票)** | ❌ (無效) | ❌ (已付) | ❌ (已出票) | **Used** | **CancelledCust** | ❌ (已付不逾時) |
+| **Used (已使用)** | ❌ (已結案) | ❌ (已結案) | ❌ (已結案) | ❌ (已登機) | ❌ (搭乘後禁退) | ❌ (已結案) |
+| **Cancelled... (已取消)**| ❌ (已死) | ❌ (已死) | ❌ (已死) | ❌ (已死) | ❌ (已死) | ❌ (已死) |
+
+* **表格中的 ❌ (非法轉移測試點)**：
+  測試工程師必須針對打 ❌ 的儲存格設計異常測試案例，斷言受測系統**絕不能默默接受轉移**，而必須：
+  1. 丟出 `IllegalStateException` 或商務異常；
+  2. 保持原狀態不變（防止資料被污染篡改）；
+  3. 寫入安全性稽核日誌。
+
+---
+
+### 5.7.4 物件導向狀態測試實戰：Stack 案例
+
+在物件導向程式設計中，物件內部的屬性集合就是它的狀態。我們透過連續呼叫物件的方法，觀察其內部布林查詢方法的狀態反饋。
+
 > [!NOTE]
-> 🏀 test Stack
+> 🏀 **實作練習：Stack 狀態機測試**
 >
-> 設計一個 Stack 物件，裡面用陣列來儲存內容。有以下的介面：
-> - `Stack(int n)`: 宣告裡面內容為 n 個的 Stack; 
-> - `int pop() throws StackEmptyException()`: 當系統已經在 empty 的狀態又 pop 的話就會拋出例外;
-> - `void push(int x) throws StackFullException()`：當系統已經在 full 的狀態又 push 的話就會拋出例外;
-> - `boolean isEmpty()`：檢驗是否為空 Stack;
-> - `boolean isFull()`：檢驗是否塞滿元素。
->
-> 1. 畫出 Stack 的狀態圖 
-> 2. 針對這個 Stack 設計測試案例，使得全狀態轉移涵蓋。
-> 3. 以 JUnit 來進行此測試
-> 4. 請檢驗程式碼之涵蓋度
+> 設計一個容量為 $N$ 的堆疊物件 `Stack`，具有以下規格：
+> - `Stack(int capacity)`: 建立指定容量之堆疊。
+> - `void push(int x) throws StackFullException`: 正常放入元素；若在 `isFull()` 狀態下呼叫則拋出例外。
+> - `int pop() throws StackEmptyException`: 正常取出元素；若在 `isEmpty()` 狀態下呼叫則拋出例外。
+> - `boolean isEmpty()` / `boolean isFull()`: 狀態查詢方法。
 
-
-在多數的情況，我們必須先做一些基本的*資料設定*（或是初始狀態的設定)，才開始進行事件的輸入。例如要測試一個 Stack 的反應，我們要先設定 Stack 內有多少元素，例如是 3 個，那們我們給予連續三個 pop 的事件後，該物件應該來到 Empty 的狀態。
-
-設計測試案例達到 `isFull` 的狀態:
-
+#### JUnit 5 狀態測試代碼
 ```java
-Stack s = new Stack(3);
-s.push(100);
-assertFalse(s.isFull());
-s.push(200);
-s.push(300);
-assertTrue(s.isFull());
+@Test
+void testStackLifecycleAndStateTransitions() {
+    Stack s = new Stack(3);
+    
+    // 初始狀態驗證：剛建立時必為 Empty
+    assertTrue(s.isEmpty(), "初始狀態必須為 Empty");
+    assertFalse(s.isFull(), "初始狀態不得為 Full");
+    
+    // 激發事件 1：推入一個元素，轉移至 NotEmpty / Partial 狀態
+    s.push(10);
+    assertFalse(s.isEmpty(), "推入元素後不再為 Empty");
+    assertFalse(s.isFull(), "未達容量上限不得為 Full");
+    
+    // 激發事件 2：推入至滿載，轉移至 isFull 狀態
+    s.push(20);
+    s.push(30);
+    assertTrue(s.isFull(), "塞滿 3 個元素後必須轉移至 isFull 狀態");
+    assertFalse(s.isEmpty());
+    
+    // 非法轉移與強固性驗證：在 isFull 狀態下再次 push 應拋出例外
+    assertThrows(StackFullException.class, () -> s.push(40), 
+        "Full 狀態下執行 push 必須拋出 StackFullException");
+    
+    // 逆向轉移驗證：連續 pop 3 次，回歸 isEmpty 狀態
+    assertEquals(30, s.pop());
+    assertEquals(20, s.pop());
+    assertEquals(10, s.pop());
+    assertTrue(s.isEmpty(), "清空後必須回歸 isEmpty 狀態");
+    
+    // 非法轉移驗證：在 isEmpty 狀態下 pop 應拋出例外
+    assertThrows(StackEmptyException.class, () -> s.pop(),
+        "Empty 狀態下執行 pop 必須拋出 StackEmptyException");
+}
 ```
 
-設計測試案例達到 `isEmpty` 的狀態
+* **測試要領歸納**：
+  1. **建立前置狀態**：透過前置操作（如 push 3 次）將物件推進到特定目標狀態。
+  2. **激發關鍵事件**：執行單一待測方法（如 `pop()` 或非法 `push()`）。
+  3. **斷言狀態與動作**：同時驗證「回傳值」與「後續狀態斷言 (`assertTrue(s.isFull())`)」。
 
-```java
-Stack s = new Stack(3);
-s.push(100);
-s.push(100);
-s.pop();
-s.pop();
-assertTrue(s.isEmpty());
-```
-
-😂 我是一個苦命的程式設計師，今晚加班到快通宵了，睏得快睜不開眼了，女上司很關心，問我要不要吃宵夜。我沒好氣地說，宵夜就算了，能讓我睡一覺就行了。女上司紅著臉說了句討厭啊，然後坐在我身邊不動，距離我很近，搞得我很緊張... *難道她發現我的程式有 bug？*
-
-See [DemoJUnit](https://github.com/nlhsueh/sw-testing24/tree/main/Intellij/DemoJunit) 下 `state/Stack` 的完整程式碼與測試碼。
-
-<!-- id: sqa-ch05-ccq8 -->
+<!-- id: sqa-ch05-ccq7 -->
 #### 🙋 概念核對問答 (CCQ 7)
 
 * **單選題**：在狀態測試 (State Testing) 中，關於「狀態覆蓋 (State Coverage)」與「轉移覆蓋 (Transition Coverage)」的強度關係，下列敘述何者正確？
   A) 達到狀態覆蓋必定代表同時達到了轉移覆蓋  
-  B) 轉移覆蓋的強度大於狀態覆蓋；若測試案例達到了轉移覆蓋（驗證了所有可能的轉移路徑），則必定已涵蓋了所有狀態（達到狀態覆蓋）  
+  B) 轉移覆蓋的強度大於狀態覆蓋；若測試案例達到了轉移覆蓋（驗證了所有可能的轉移弧線），則必定已涵蓋了所有狀態（達到狀態覆蓋）  
   C) 兩者互相獨立，沒有任何包含或強弱關係  
   D) 狀態測試不需要考慮無效轉移（即在某狀態下輸入非法事件的反應）
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq7)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -899,7 +1111,6 @@ See [DemoJUnit](https://github.com/nlhsueh/sw-testing24/tree/main/Intellij/DemoJ
 
 **屬性基礎測試 (Property-Based Testing, PBT)** 則是另一種典範轉移：它要求我們不去定義「具體的測試資料與預期輸出」，而是定義**「程式碼應該永遠滿足的數學屬性或狀態不變量 (Class/Algorithmic Invariants)」**。接著由測試框架自動生成成千上萬組不同的極端隨機測資，來試圖找出讓這個屬性失敗的反例。
 
-> <!-- id: sqa-ch05-ccq9 -->
 ### 💡 屬性基礎測試先驅：John Hughes 與 QuickCheck
 
 > **屬性基礎測試 (PBT)** 最初由瑞典查爾摩斯工學院教授、ACM Fellow **John Hughes** 與 Koen Claessen 於 2000 年共同提出，並發表了劃時代的函式庫 **QuickCheck**（榮獲 ACM SIGPLAN 最具影響力論文獎）。
@@ -1044,7 +1255,7 @@ public class RecommendationMetamorphicTest {
 
 ---
 
-<!-- id: sqa-ch05-ccq10 -->
+<!-- id: sqa-ch05-ccq8 -->
 #### 🙋 概念核對問答 (CCQ 8)
 
 在屬性基礎測試 (Property-Based Testing) 中，我們不需要手動為每一組測試寫出確切的預期輸出數值，而是定義程式執行時必須永遠維持的「屬性或不變量」，並交由測試框架隨機生成大量測資來尋找反例。
@@ -1052,7 +1263,7 @@ public class RecommendationMetamorphicTest {
 A) 正確 (True)
 B) 錯誤 (False)
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq10)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -1102,7 +1313,6 @@ B) 錯誤 (False)
    - 狀態涵蓋度百分百，則事件涵蓋度必定百分百。
    - 對於 Stack 而言，push 是一個事件，full 是一個狀態。
 
-<!-- id: sqa-ch05-ccq11 -->
 ## ✍️ 練習
 ### 5.ex.spec 設計規格
 一個功能模組的「規格」包含該模組的參數、回傳型態、前置條件、後置條件。寫出以下功能的規格，嘗試以正規的方式來描述之。並設計期測試案例。	

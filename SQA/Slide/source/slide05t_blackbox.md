@@ -634,26 +634,26 @@ footer: 'Ch05 黑箱測試'
 <div class="card" data-marpit-fragment>
 
 ### 📋 第一版弱涵蓋選取代表案例
-| 案例 | 輸入 ($Y, M, D$) | 涵蓋類別 | 預期輸出 | 備註說明 |
-| :---: | :--- | :--- | :--- | :--- |
-| **$T_1$** | `2024/04/30` | $M_1 \times D_4$ | `2024/05/01` | 30 天月月底跳月 (年不變) |
-| **$T_2$** | `2024/07/31` | $M_2 \times D_5$ | `2024/08/01` | 31 天月月底跳月 (年不變) |
-| **$T_3$** | `2024/02/28` | $M_3 \times D_2 \times Y_1$ | `2024/02/29` | 閏年 2 月跳日 (進入29日) |
-| **$T_4$** | `2023/02/28` | $M_3 \times D_2 \times Y_2$ | `2023/03/01` | 平年 2 月跳月 (進入3/1) |
+| 案例 | 輸入 ($Y, M, D$) | 預期輸出 | 涵蓋類別與說明 |
+| :---: | :--- | :--- | :--- |
+| **$T_1$** | `2024/04/30` | `2024/05/01` | $M_1 \times D_4$ (30 天月月底跳月，年不變) |
+| **$T_2$** | `2024/07/31` | `2024/08/01` | $M_2 \times D_5$ (31 天月月底跳月，年不變) |
+| **$T_3$** | `2024/02/28` | `2024/02/29` | $M_3 \times D_2 \times Y_1$ (閏年 2 月進 29 日) |
+| **$T_4$** | `2023/02/28` | `2023/03/01` | $M_3 \times D_2 \times Y_2$ (平年 2 月跳 3/1) |
 
-- **盲區曝光**：如果測試員挑了 $T_2$ (7/31)，$M_2$ 便宣告測試完成。但 **12 月底 (12/31) 呢？！**
+- **盲區曝光**：若測試員挑選 $T_2$ (7/31)，$M_2$ 就算完成覆蓋；但 **12 月底 (12/31) 的跨年** 就被徹底漏測！
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 💥 12 月底的特殊性 (The December Anomaly)
+### 💥 12 月底的特殊性 (December Anomaly)
 - **一般 31 天月月底 (1, 3, 5, 7, 8, 10 月)**：
   - `Day = 1`, `Month = Month + 1`, **`Year 不變`**！
-- **12 月底 (12/31) 的獨特跨年邏輯**：
-  - `Day = 1`, **`Month = 1 (重置回一月)`**, **`Year = Year + 1 (世紀跨年)`**！
-- **等價性破滅**：
+- **12 月底 (12/31) 獨特跨年邏輯**：
+  - `Day = 1`, **`Month = 1 (重置)`**, **`Year = Year + 1 (跨年)`**！
+- **等價性破滅 (Equivalence Broken)**：
   - 12 月與其他 31 天月在程式行為上**根本不等價**！
-  - 若混在同一個等價類，一旦案例選中 7/31，跨年 Year+1 的核心邏輯就會被**完全漏測**！
+  - 若混在同一個等價類，一旦選中 7/31，跨年 Year+1 的核心邏輯就會被**完全漏測**！
 
 </div>
 </div>
@@ -1079,28 +1079,65 @@ footer: 'Ch05 黑箱測試'
 
 <div class="card-deck">
 
-> 💡 Classification Tree Method (CTM) 由 Daimler-Benz 研發，現為 ISO/IEC/IEEE 29119-4 認可的圖形化黑箱測試設計標準。
+> 💡 Classification Tree Method (CTM) 源自 Daimler-Benz，現為 ISO/IEC/IEEE 29119-4 認可之圖形化黑箱測試標準。
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
-### 🌳 1. 分類樹架構 (Classification Tree)
-- **分類 (Classifications)**：
-  - 將輸入域依據測試觀點分解為若干互斥維度（例如：身分、支付方式、訂單金額）。
-- **類別 (Classes)**：
-  - 每個分類維度下，劃分出互斥且完整的等價子集（例如：VIP / 一般會員 / 訪客）。
-- **視覺化階層分解**：
-  - 支援子分類（Sub-classifications），可清晰呈現複雜前置依賴關係。
+### 🌳 雙層核心架構與設計原理
+- **上層：分類樹 (Classification Tree)**：
+  - **分類 (Classifications)**：將待測輸入域依測試觀點分解為若干互斥維度（例如：身分、金額）。
+  - **類別 (Classes)**：每個維度下劃分出互斥且完整的等價葉節點（如 VIP、一般、訪客）。
+- **下層：組合規格表 (Combination Table)**：
+  - 欄位**垂直投影對齊**上方各等價葉節點。
+  - 橫列代表具體的測試案例 ($TC_1, TC_2, \dots$)。
+- **打點標記 (⚫)**：
+  - 每一列在每個分類維度中**選取一個類別打點**，直觀防漏並組裝出完整測試案例！
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card" style="text-align: center; display: flex; align-items: center; justify-content: center; padding: 6px;">
 
-### 📊 2. 測試規格組合表格 (Combination Table)
-- **下方規格矩陣 (Matrix)**：
-  - 表格的欄對應樹狀葉節點（類別），每一列代表一個具體的測試案例（Test Case）。
-- **打點勾選設計**：
-  - 測試人員只需在每一列的各分類中**勾選一個代表類別**（落實弱涵蓋、強涵蓋或 Pairwise）。
-- **實務優勢**：直觀易讀、自動防漏、極利於向利害關係人與稽核員審查測試完整性。
+<img src="../../img/ch05/ctm_architecture.svg" style="max-height: 395px; width: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);" />
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.5 案例優化與分類樹方法 (CTM)' -->
+
+## CTM 實戰範例：電商結帳折扣測試案例生成
+
+<div class="card-deck">
+
+> 💡 實戰目標：測試「滿額與會員折扣功能」，用 CTM 打點規格矩陣落實不同的覆蓋準則。
+
+<div class="two-columns">
+<div class="card">
+
+### 📋 CTM 規格分解與打點組合矩陣
+| 案例 | VIP | 一般 | 訪客 | <1K | 1~3K | >3K | 信用卡 | 行動 | 貨到 | 具體輸入與預期輸出 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **$TC_1$** | ⚫ | | | | | ⚫ | ⚫ | | | VIP, $3500, 信用卡 $\rightarrow$ 8折+滿額折300 |
+| **$TC_2$** | | ⚫ | | | ⚫ | | | ⚫ | | 一般, $2000, 行動 $\rightarrow$ 9折+滿額折100 |
+| **$TC_3$** | | | ⚫ | ⚫ | | | | | ⚫ | 訪客, $800, 貨到付款 $\rightarrow$ 原價無折扣 |
+
+- **打點規則**：每一列在各分類中**恰好選取一個葉節點打點 (⚫)**；垂直觀察時，所有 9 個類別葉節點皆至少被打點 1 次！
+
+</div>
+<div class="card">
+
+### 🎯 覆蓋準則 (Coverage Criteria) 與效益對比
+- **弱等價覆蓋 (Weak EP / 1-wise)**：
+  - 每個葉節點至少打點 1 次 $\rightarrow$ **僅需 3 個案例**（即左側 $TC_1 \sim TC_3$）！
+- **成對組合覆蓋 (Pairwise / 2-wise)**：
+  - 任意兩維度的類別組合至少出現一次 $\rightarrow$ **僅需 9 個案例**。
+- **全笛卡爾積強覆蓋 (All Combinations)**：
+  - $3 \times 3 \times 3 = \mathbf{27}$ 個案例（維度增加時呈指數爆炸）。
+- **工業價值**：
+  - **視覺化防漏**：漏劃分類別或漏測組合一目了然。
+  - **利害關係人審查**：大幅降低與客戶、稽核員溝通成本（支援 CTE / TESTONA 工具自動產出）。
 
 </div>
 </div>
@@ -1153,7 +1190,7 @@ footer: 'Ch05 黑箱測試'
 > 💡 Glenford Myers 提出因果圖法：將自然語言規格轉譯為布林邏輯電路網絡，作為推導決策表的正規工具。
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### ⚡ 核心構成要件
 - **原因 (Causes, $C_i$)**：
@@ -1167,7 +1204,7 @@ footer: 'Ch05 黑箱測試'
   - **與 (AND, $\land$)**：若所有 $C_i=1$ 則 $E=1$。
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### 🎯 因果圖 5 大約束條件 (Constraints)
 - **輸入端約束 (Causes Constraints)**：
@@ -1186,35 +1223,30 @@ footer: 'Ch05 黑箱測試'
 
 <!-- header: '5.6 因果圖與決策表測試' -->
 
-## 從因果圖到決策表 (CAR) 的轉換流程
+## 貫穿範例 (1/3)：電商促銷規格與因果圖建模
 
 <div class="card-deck">
 
-> 💡 因果圖是橋樑，決策表是成果：四步驟消除規格盲區與邏輯矛盾。
+> 💡 業務需求：① 滿額且為 VIP 享 8 折；② 滿額且輸入促銷碼享免運；③ 未達任何門檻則原價結帳。
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
-### 🔄 系統化 4 步轉換程序
-- **Step 1：拆解因果因子**：
-  - 分析規格，為每個輸入條件與輸出動作編號命名（$C_1..C_n, E_1..E_m$）。
-- **Step 2：繪製邏輯網絡與標註約束**：
-  - 用邏輯閘連接原因與結果，加上 $E, I, O, R, M$ 約束。
-- **Step 3：由結果倒推條件組合**：
-  - 針對每個輸出 $E_j=1$ 的狀態，倒推需要哪些輸入組合；排除違反約束的非法組合。
-- **Step 4：生成並化簡決策表 (CAR)**：
-  - 將合法因果組合填入決策表作為規則（Rules），合併等效條件項。
+### 📋 規格因子拆解 (Step 1)
+- **原因 (Causes)**：
+  - $C_1$：訂單金額 $\ge \$1,000$ (滿額門檻)
+  - $C_2$：具備 VIP 會員資格
+  - $C_3$：結帳時輸入免運促銷碼
+- **結果 (Effects)**：
+  - $E_1$：享有 8 折優惠 ($C_1 \land C_2$)
+  - $E_2$：享有免運費折抵 ($C_1 \land C_3$)
+  - $E_3$：原價一般結帳 ($\neg(E_1 \lor E_2)$)
+- **前置約束**：$C_1$ 為享有任何優惠之必要條件。
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card" style="text-align: center; display: flex; align-items: center; justify-content: center; padding: 6px;">
 
-### 💎 因果圖法核心價值
-- **打破自然語言模糊性**：
-  - 規格書中常見的「如果...而且...除非...否則...」常常語意含混，因果圖能第一時間揪出規格矛盾或遺漏。
-- **防止無效組合爆炸**：
-  - 藉由互斥 ($E$) 與唯一 ($O$) 約束，在初期就剪除數十種不可能發生的輸入組合，大幅減輕後續測試成本。
-- **全自動化生成潛力**：
-  - 現代 SAT/SMT Solver 可直接將因果圖轉換為最簡可滿足解與測試案例。
+<img src="../../img/ch05/cause_effect_graph.svg" style="max-height: 385px; width: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);" />
 
 </div>
 </div>
@@ -1224,34 +1256,35 @@ footer: 'Ch05 黑箱測試'
 
 <!-- header: '5.6 因果圖與決策表測試' -->
 
-## 決策表測試 (Decision Table Testing) 架構
+## 貫穿範例 (2/3)：導出 CAR 決策表與規則化簡
 
 <div class="card-deck">
 
-* > 💡 針對高相依性、高制約的複雜商業邏輯，透過 Condition-Action-Rule (CAR) 進行邏輯收斂。
+> 💡 初始規則共有 $2^3 = 8$ 種。透過不相關條件 (`-` Don't Care) 化簡，收斂為 4 條精準規則。
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
-### 📋 CAR 決策表四大區塊
-- **條件樁 (Condition Stubs)**：
-  - 列出影響決策的所有輸入條件與前置狀態（如 $C_1, C_2, C_3$）。
-- **動作樁 (Action Stubs)**：
-  - 列出系統可能觸發的所有輸出動作（如 $A_1, A_2$）。
-- **條件項 (Condition Entries)**：
-  - 填入各條件之取值（Y, N 或 不在乎 `-`）。
-- **動作項 (Action Entries)**：
-  - 標記該規則下應執行的動作（$X$）。
+### ✂️ 規則展開與化簡邏輯 (Step 3 & 4)
+- **全展開 ($2^3 = 8$ 條規則)**：
+  - 當 $C_1 = \text{N}$（未滿額）時，無論 $C_2, C_3$ 為何，皆輸出 $E_3$（原價結帳）。
+- **不在乎化簡 (Don't Care, `-`)**：
+  - 原本 $C_1 = \text{N}$ 的 4 條規則整合成 **1 條規則 ($R_4$)**！
+- **效益**：
+  - 杜絕規格模糊、去除冗餘測試、規則無遺漏。
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card">
 
-### ✂️ 規則展開與化簡 (Simplification)
-- **初始全規則展開**：
-  - $k$ 個布林條件共有 $2^k$ 條初始規則。
-- **不相關化簡 (Don't Care)**：
-  - 若兩條規則僅有一項條件不同，但觸發相同動作，該條件可化簡為 `-`（不在乎）並合併為單一規則！
-- **效益**：杜絕規格矛盾與遺漏，需求分析與測試共用。
+### 📊 化簡後的 CAR 促銷決策表
+| 條件 / 動作項目 | $R_1$ | $R_2$ | $R_3$ | $R_4$ |
+| :--- | :---: | :---: | :---: | :---: |
+| $C_1$: 訂單金額 $\ge \$1,000$？ | **Y** | **Y** | **Y** | **N** |
+| $C_2$: VIP 會員身分？ | **Y** | **N** | **Y** | **-** |
+| $C_3$: 輸入免運促銷碼？ | **N** | **Y** | **Y** | **-** |
+| $E_1$: 輸出「8 折優惠」 | **X** | | **X** | |
+| $E_2$: 輸出「免運費」 | | **X** | **X** | |
+| $E_3$: 輸出「原價結帳」 | | | | **X** |
 
 </div>
 </div>
@@ -1261,7 +1294,28 @@ footer: 'Ch05 黑箱測試'
 
 <!-- header: '5.6 因果圖與決策表測試' -->
 
-## 三角形判斷決策表 (CAR Table) 實戰
+## 貫穿範例 (3/3)：由決策表直出測試案例
+
+<div class="card-deck">
+
+> 💡 CAR 決策表中的每一條化簡規則 (Rule)，直接 1:1 映射為一組標準黑箱測試案例！
+
+| 案例編號 | 對應規則 | 測試輸入參數 (金額, VIP, 促銷碼) | 預期執行動作與輸出斷言 (Expected Output) | 測試設計意圖說明 |
+| :---: | :---: | :--- | :--- | :--- |
+| **$TC_1$** | $R_1$ | `amount = 1200, isVip = true, promo = null` | `discount = 0.8, freeShipping = false` | 驗證滿額 VIP 獨享 8 折 |
+| **$TC_2$** | $R_2$ | `amount = 1200, isVip = false, promo = "SHIP"` | `discount = 1.0, freeShipping = true` | 驗證一般會員滿額促銷碼免運 |
+| **$TC_3$** | $R_3$ | `amount = 1500, isVip = true, promo = "SHIP"` | `discount = 0.8, freeShipping = true` | 驗證雙重優惠同時觸發 |
+| **$TC_4$** | $R_4$ | `amount = 800, isVip = true, promo = "SHIP"` | `discount = 1.0, freeShipping = false` | 驗證未達滿額門檻全部失效 |
+
+- **黃金成果**：從模糊的自然語言需求，經由「因果圖 $\rightarrow$ 決策表 $\rightarrow$ 測試案例」，保證 **100% 邏輯覆蓋且零冗餘**！
+
+</div>
+
+---
+
+<!-- header: '5.6 因果圖與決策表測試' -->
+
+## 經典案例延伸：三角形判斷決策表 (CAR Table)
 
 <div class="card-deck">
 
@@ -1322,26 +1376,48 @@ footer: 'Ch05 黑箱測試'
 
 <!-- header: '5.7 狀態轉換測試' -->
 
-## 事件驅動與狀態機 (State Machine) 測試
+## 航空訂票狀態機模型 (State Machine Diagram)
 
 <div class="card-deck">
 
-> 💡 現代系統多為事件驅動 (Event-Driven)；測試重點在於：受到事件激發後，狀態轉換是否如預期反應。
+> 💡 狀態機將系統行為抽象為狀態、事件與轉移弧線。測試核心：給定前置狀態與激發事件，斷言次態與動作。
 
-<div class="content-columns">
-<div class="content-text">
+<div style="text-align: center; margin: 4px 0 0 0;">
 
-### ✈️ 航空訂票狀態機生命週期
-- **主流程 (Happy Path)**：
-  - $\text{Made (已預約)} \xrightarrow{payMoney} \text{Paid (已付款)} \xrightarrow{print} \text{Ticketed (已開票)} \xrightarrow{giveTicket} \text{Used (已使用)}$
-- **取消與逾期例外分支**：
-  - 在 Made/Paid/Ticketed 下觸發 `cancel` ➔ 轉移至 **CancelledByCustomer**。
-  - 在 Made 下付款逾時 (`payTimeExpire`) ➔ 轉移至 **CancelledNonPay**。
+<img src="../../img/ch05/airline_booking_state_machine.svg" style="max-height: 410px; width: 92%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.06);" />
 
 </div>
-<div class="content-figure">
+</div>
 
-![State Machine](../../img/ch05/airline_booking_state_machine.jpg)
+---
+
+<!-- header: '5.7 狀態轉換測試' -->
+
+## 航空訂票狀態機：轉移規格與例外分支分析
+
+<div class="card-deck">
+
+> 💡 測試設計必須精準區分「主流程 Happy Path」與「例外中斷路徑」，確保所有終止狀態皆可正確轉移。
+
+<div class="two-columns">
+<div class="card">
+
+### 🛫 正常商務主流程 (Happy Path)
+- **初始進入**：$\bullet \xrightarrow{\text{giveInfo}} \text{Made (已預約保留)}$
+- **付款成功**：$\text{Made} \xrightarrow{\text{payMoney}} \text{Paid (已付款)}$
+- **出票開票**：$\text{Paid} \xrightarrow{\text{print}} \text{Ticketed (已出票)}$
+- **登機搭乘**：$\text{Ticketed} \xrightarrow{\text{giveTicket}} \text{Used 🏁 (正常終止)}$
+- **商務意義**：代表訂位成功並順利完成飛行的黃金路徑。
+
+</div>
+<div class="card">
+
+### ⛔ 例外取消分支 (Cancellation Paths)
+- **顧客主動退訂/取消 (cancel)**：
+  - 在 `Made`、`Paid`、`Ticketed` 狀態下，皆可觸發 `cancel` 轉移至 **`CancelledByCustomer ⛔`**。
+- **付款逾時取消 (payTimeExpire)**：
+  - 僅在 `Made` 狀態下，若超時則自動觸發轉移至 **`CancelledNonPay ⏱️`**。
+- **終止狀態邊界**：抵達終止狀態後，系統不得再接受任何轉移。
 
 </div>
 </div>
@@ -1355,10 +1431,10 @@ footer: 'Ch05 黑箱測試'
 
 <div class="card-deck">
 
-* > 💡 狀態覆蓋 (Node) vs. 轉移覆蓋 (Edge)：轉移覆蓋強度遠高於狀態覆蓋。
+> 💡 狀態覆蓋 (Node) vs. 轉移覆蓋 (Edge)：轉移覆蓋強度遠高於狀態覆蓋。
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### 🎯 覆蓋強度層次
 - **狀態覆蓋 (State Coverage)**：
@@ -1369,14 +1445,14 @@ footer: 'Ch05 黑箱測試'
   - 0-Switch（單次轉移）、1-Switch（連續 2 次轉移序列）。
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### 🛣️ 5 條全轉移覆蓋測試序列
 - **路徑 1**：`giveInfo` ➔ `payMoney` ➔ `print` ➔ `giveTicket` (正常使用)
-- **路徑 2**：`giveInfo` ➔ `payMoney` ➔ `print` ➔ `cancel` (開票後取消)
-- **路徑 3**：`giveInfo` ➔ `payMoney` ➔ `cancel` (付款後取消)
-- **路徑 4**：`giveInfo` ➔ `cancel` (預約後取消)
-- **路徑 5**：`giveInfo` ➔ `payTimeExpire` (逾期未付)
+- **路徑 2**：`giveInfo` ➔ `payMoney` ➔ `print` ➔ `cancel` (開票後退票)
+- **路徑 3**：`giveInfo` ➔ `payMoney` ➔ `cancel` (付款後退款取消)
+- **路徑 4**：`giveInfo` ➔ `cancel` (預約保留後取消)
+- **路徑 5**：`giveInfo` ➔ `payTimeExpire` (逾期未付系統自動取消)
 
 </div>
 </div>
@@ -1853,7 +1929,6 @@ public class RecommendationMetamorphicTest {
 </div>
 
 ---
-<!-- id: sqa-ch05-ccq1 -->
 
 <!-- header: '附錄：課堂互動參考解答' -->
 
@@ -2027,7 +2102,3 @@ public class RecommendationMetamorphicTest {
   setTimeout(initHeaderDropdown, 400);
 })();
 </script>
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1)
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq1.png" width="120"></a>

@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 390" width="100%" height="100%">
+  <defs>
+    <style>
+      .node-cause { fill: #e3f2fd; stroke: #1976d2; stroke-width: 2; rx: 8px; }
+      .node-gate { fill: #fff3e0; stroke: #f57c00; stroke-width: 2; rx: 6px; }
+      .node-effect { fill: #e8f5e9; stroke: #2e7d32; stroke-width: 2; rx: 8px; }
+      .title-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; font-size: 13.5px; font-weight: 700; }
+      .sub-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; font-size: 11px; fill: #546e7a; }
+      .gate-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: 800; fill: #e65100; text-anchor: middle; dominant-baseline: central; }
+      .gate-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: 600; fill: #ef6c00; text-anchor: middle; dominant-baseline: central; }
+      .line-flow { stroke: #37474f; stroke-width: 1.8; fill: none; }
+      .line-constraint { stroke: #d32f2f; stroke-width: 1.8; stroke-dasharray: 4 3; fill: none; }
+      .constraint-badge { fill: #ffebee; stroke: #d32f2f; stroke-width: 1; rx: 4px; }
+      .constraint-text { font-family: sans-serif; font-size: 11px; font-weight: 700; fill: #c62828; text-anchor: middle; dominant-baseline: central; }
+    </style>
+    <marker id="arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#37474f" />
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="780" height="390" fill="#ffffff" rx="10" stroke="#e0e0e0" stroke-width="1.5" />
+
+  <!-- Column Headers -->
+  <g transform="translate(30, 20)">
+    <rect x="0" y="0" width="160" height="24" fill="#e3f2fd" rx="4" />
+    <text x="80" y="16" font-family="sans-serif" font-size="12px" font-weight="700" fill="#1565c0" text-anchor="middle">原因 (Causes, Ci)</text>
+
+    <rect x="250" y="0" width="180" height="24" fill="#fff3e0" rx="4" />
+    <text x="340" y="16" font-family="sans-serif" font-size="12px" font-weight="700" fill="#e65100" text-anchor="middle">布林邏輯閘 (Logic Gates)</text>
+
+    <rect x="520" y="0" width="180" height="24" fill="#e8f5e9" rx="4" />
+    <text x="610" y="16" font-family="sans-serif" font-size="12px" font-weight="700" fill="#2e7d32" text-anchor="middle">結果 (Effects, Ej)</text>
+  </g>
+
+  <!-- ==================== CAUSES (LEFT) ==================== -->
+  <!-- C1: Amount >= 1000 -->
+  <g filter="url(#shadow)" transform="translate(30, 70)">
+    <rect width="160" height="54" class="node-cause" />
+    <text x="12" y="24" class="title-text" fill="#0d47a1">C1: 訂單滿額</text>
+    <text x="12" y="42" class="sub-text">金額 ≥ $1,000</text>
+  </g>
+
+  <!-- C2: VIP Member -->
+  <g filter="url(#shadow)" transform="translate(30, 160)">
+    <rect width="160" height="54" class="node-cause" />
+    <text x="12" y="24" class="title-text" fill="#0d47a1">C2: VIP 身分</text>
+    <text x="12" y="42" class="sub-text">具備頂級會員資格</text>
+  </g>
+
+  <!-- C3: Promo Code -->
+  <g filter="url(#shadow)" transform="translate(30, 250)">
+    <rect width="160" height="54" class="node-cause" />
+    <text x="12" y="24" class="title-text" fill="#0d47a1">C3: 輸入促銷碼</text>
+    <text x="12" y="42" class="sub-text">使用免運券代碼</text>
+  </g>
+
+  <!-- ==================== LOGIC GATES (MIDDLE) ==================== -->
+  <!-- Gate 1: AND (C1 AND C2) -->
+  <g filter="url(#shadow)" transform="translate(290, 100)">
+    <rect width="100" height="46" class="node-gate" />
+    <text x="50" y="18" class="gate-title">AND (∧)</text>
+    <text x="50" y="34" class="gate-sub">滿額 且 VIP</text>
+  </g>
+
+  <!-- Gate 2: AND (C1 AND C3) -->
+  <g filter="url(#shadow)" transform="translate(290, 210)">
+    <rect width="100" height="46" class="node-gate" />
+    <text x="50" y="18" class="gate-title">AND (∧)</text>
+    <text x="50" y="34" class="gate-sub">滿額 且 促銷碼</text>
+  </g>
+
+  <!-- Gate 3: NOR (NOT (E1 OR E2)) -->
+  <g filter="url(#shadow)" transform="translate(380, 310)">
+    <rect width="110" height="46" class="node-gate" />
+    <text x="55" y="18" class="gate-title">NOR (¬∨)</text>
+    <text x="55" y="34" class="gate-sub">無任何優惠</text>
+  </g>
+
+  <!-- ==================== EFFECTS (RIGHT) ==================== -->
+  <!-- E1: 20% Off -->
+  <g filter="url(#shadow)" transform="translate(540, 95)">
+    <rect width="180" height="54" class="node-effect" />
+    <text x="14" y="24" class="title-text" fill="#1b5e20">E1: 享有 8 折優惠</text>
+    <text x="14" y="42" class="sub-text">VIP 滿額專屬折扣</text>
+  </g>
+
+  <!-- E2: Free Shipping -->
+  <g filter="url(#shadow)" transform="translate(540, 205)">
+    <rect width="180" height="54" class="node-effect" />
+    <text x="14" y="24" class="title-text" fill="#1b5e20">E2: 享有免運費</text>
+    <text x="14" y="42" class="sub-text">滿額促銷碼折抵運費</text>
+  </g>
+
+  <!-- E3: Normal Price -->
+  <g filter="url(#shadow)" transform="translate(540, 305)">
+    <rect width="180" height="54" class="node-effect" />
+    <text x="14" y="24" class="title-text" fill="#1b5e20">E3: 原價一般結帳</text>
+    <text x="14" y="42" class="sub-text">無任何折扣與優惠</text>
+  </g>
+
+  <!-- ==================== FLOW CONNECTORS ==================== -->
+  <!-- C1 to Gate 1 -->
+  <path d="M 190 97 L 240 97 L 240 115 L 290 115" class="line-flow" marker-end="url(#arr)" />
+  <!-- C1 to Gate 2 -->
+  <path d="M 190 97 L 240 97 L 240 225 L 290 225" class="line-flow" marker-end="url(#arr)" />
+  <!-- C2 to Gate 1 -->
+  <path d="M 190 187 L 250 187 L 250 132 L 290 132" class="line-flow" marker-end="url(#arr)" />
+  <!-- C3 to Gate 2 -->
+  <path d="M 190 277 L 250 277 L 250 240 L 290 240" class="line-flow" marker-end="url(#arr)" />
+
+  <!-- Gate 1 to E1 -->
+  <path d="M 390 122 L 538 122" class="line-flow" marker-end="url(#arr)" />
+  <!-- Gate 2 to E2 -->
+  <path d="M 390 232 L 538 232" class="line-flow" marker-end="url(#arr)" />
+
+  <!-- Feedbacks into Gate 3 (NOR) -->
+  <path d="M 450 122 L 450 310" class="line-flow" />
+  <path d="M 470 232 L 470 330 L 490 330" class="line-flow" />
+  <path d="M 490 333 L 538 333" class="line-flow" marker-end="url(#arr)" />
+
+  <!-- Constraint Annotation (Requires / Mask) -->
+  <g transform="translate(30, 335)">
+    <rect width="280" height="34" fill="#fafafa" stroke="#cfd8dc" rx="5" />
+    <text x="10" y="21" font-family="sans-serif" font-size="11px" font-weight="700" fill="#37474f">💡 約束說明：C1 為必要前置門檻 (Gatekeeper)</text>
+  </g>
+</svg>

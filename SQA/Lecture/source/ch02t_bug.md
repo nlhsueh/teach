@@ -303,14 +303,9 @@ Uncle Bob 在書中訪談了多位軟體工程界的傳奇大師，每位大師�
 * **使用例外 (Exceptions) 代替錯誤碼 (Error Codes)**：將主流程與異常處理邏輯清楚分離。
 * **避免傳遞與回傳 `null`**：善用 Java 的 `Optional`、空集合（`Collections.emptyList()`）或 Null Object 模式，徹底杜絕 `NullPointerException`。
 
-#### 5. 消除程式碼壞味道 (Code Smells)
-| 常見壞味道 (Code Smell) | 現象與問題 | 改善手法 (Refactoring) |
-| :--- | :--- | :--- |
-| **過長函式 (Long Method)** | 一個方法動輒上百行，承載過多職責 | **萃取方法 (Extract Method)**，將子邏輯拆分為獨立具名函式 |
-| **巨大類別 (God Class / Large Class)** | 類別包山包海，違反單一職責原則 | **萃取類別 (Extract Class)**，將相關屬性與行為獨立劃分 |
-| **重複程式碼 (Duplicated Code)** | 相同邏輯散落在不同區塊 | **提煉共用方法 (Extract Method / Utility)** 或使用繼承/組合 |
-| **依戀情節 (Feature Envy)** | 方法頻繁調用另一個類別的 getter/setter | 將該方法**搬移到所依戀的類別 (Move Method)** 中 |
-| **魔術數值 (Magic Numbers / Strings)** | 程式中出現無說明的神秘數字或字串 | **萃取為具名常數 (Extract Constant / Enum)** |
+#### 5. 持續敏捷微重構 (Continuous Micro-Refactoring)
+* **落實童子軍法則**：每次提交變更時，順手重命名意圖模糊的變數、抽取小函式、並利用衛語句 (Guard Clauses) 扁平化巢狀邏輯。
+* **架構壞味道系統化檢驗 (Ch04 預告)**：關於 Martin Fowler 等大師提出之系統化 22 種**程式碼臭味 (Code Smells，如依戀情節 Feature Envy、發散式變化、散彈式修改)** 與 PMD 自動化靜態檢驗，將在 **[第四章 軟體檢視與靜態分析](ch04_inspection.md#45-程式碼檢視)** 全幅展開！
 
 #### 6. 自動化測試是 Clean Code 的守護神
 * 未經自動化單元測試保護的程式碼，工程師往往不敢動手重構；**唯有具備高涵蓋率的測試套件，重構與追求 Clean Code 才有安全網保障**。

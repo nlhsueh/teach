@@ -423,23 +423,44 @@ blockquote::after {
    6. Tables
    ---------------------------------------------------- */
 table {
-  margin: 15px auto;
+  margin: 12px auto;
   border-collapse: collapse;
-  font-size: 21px;
+  font-size: 0.88em; /* 對齊第二層清單項目 (約 18px~19px) */
   width: 100%;
 }
 
 th {
   border-bottom: 2px solid #0b3c5d;
-  padding: 10px 14px;
+  padding: 8px 12px;
   text-align: left;
   background-color: #eaf2f8;
 }
 
 td {
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-bottom: 1px solid #e0e0e0;
+  line-height: 1.4;
 }
+
+/* Compact table inside cards to prevent slide overflow */
+.card table {
+  margin: 6px 0 10px 0;
+  font-size: 14px; /* 卡片內對齊卡片第二層項目大小 */
+  width: 100%;
+}
+
+.card th {
+  padding: 5px 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.card td {
+  padding: 5px 8px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
 
 /* ----------------------------------------------------
    7. Code Blocks & Inlines
@@ -447,17 +468,23 @@ td {
 pre {
   margin-top: 8px;
   margin-bottom: 8px;
-  font-size: 22px;
+  font-size: 0.88em; /* 對齊第二層清單項目 (約 18px~19px) */
   line-height: 1.45;
   border-radius: 6px;
 }
 
 pre code {
-  font-size: 22px;
+  font-size: 1em; /* 繼承 pre 的 0.88em */
 }
 
 code {
   font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
+  font-size: 0.88em;
+}
+
+.card pre,
+.card pre code {
+  font-size: 15px; /* 卡片內程式碼對齊卡片第二層項目大小 */
 }
 
 /* ----------------------------------------------------

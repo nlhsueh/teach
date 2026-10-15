@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 450" width="100%" height="100%">
+  <defs>
+    <style>
+      .state-box { rx: 12px; stroke-width: 2.2; }
+      .normal-state { fill: #f0f7fc; stroke: #0b3c5d; }
+      .success-state { fill: #e8f5e9; stroke: #2e7d32; }
+      .cancel-state { fill: #fbe9e7; stroke: #d84315; }
+      .state-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; font-size: 15px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+      .state-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; font-size: 12px; font-weight: 500; text-anchor: middle; dominant-baseline: central; fill: #546e7a; }
+      .trans-arrow { stroke: #0b3c5d; stroke-width: 2; fill: none; }
+      .cancel-arrow { stroke: #d84315; stroke-width: 1.8; fill: none; stroke-dasharray: 5 3; }
+      .label-bg { fill: #ffffff; opacity: 0.92; rx: 4px; }
+      .label-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Courier New", monospace; font-size: 12px; font-weight: 700; fill: #0b3c5d; text-anchor: middle; dominant-baseline: central; }
+      .cancel-label-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Courier New", monospace; font-size: 11.5px; font-weight: 700; fill: #c62828; text-anchor: middle; dominant-baseline: central; }
+      .badge-text { font-family: sans-serif; font-size: 12px; font-weight: 700; }
+    </style>
+    <!-- Arrowhead markers -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0b3c5d" />
+    </marker>
+    <marker id="arrow-cancel" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d84315" />
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="940" height="450" fill="#ffffff" rx="12" stroke="#e0e0e0" stroke-width="1.5" />
+
+  <!-- Legend Header -->
+  <g transform="translate(25, 18)">
+    <text x="0" y="10" font-family="sans-serif" font-size="14px" font-weight="700" fill="#0b3c5d">✈️ 航空訂票系統狀態機模型 (Airline Ticket Booking State Diagram)</text>
+    <circle cx="580" cy="7" r="5" fill="#0b3c5d" />
+    <text x="592" y="11" font-family="sans-serif" font-size="11.5px" fill="#455a64">起始節點</text>
+    <line x1="660" y1="7" x2="695" y2="7" stroke="#0b3c5d" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="705" y="11" font-family="sans-serif" font-size="11.5px" fill="#455a64">正常轉移</text>
+    <line x1="775" y1="7" x2="810" y2="7" stroke="#d84315" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#arrow-cancel)" />
+    <text x="820" y="11" font-family="sans-serif" font-size="11.5px" fill="#c62828">例外/取消轉移</text>
+  </g>
+
+  <!-- ==================== TOP ROW: HAPPY PATH ==================== -->
+
+  <!-- Start Pseudo State -->
+  <circle cx="50" cy="110" r="14" fill="#0b3c5d" filter="url(#shadow)" />
+
+  <!-- Transition: Start -> Made -->
+  <path d="M 64 110 L 140 110" class="trans-arrow" marker-end="url(#arrow)" />
+  <rect x="70" y="88" width="62" height="18" class="label-bg" />
+  <text x="101" y="97" class="label-text">giveInfo</text>
+
+  <!-- State 1: Made (Reserved) -->
+  <g filter="url(#shadow)">
+    <rect x="142" y="80" width="130" height="60" class="state-box normal-state" />
+    <text x="207" y="102" class="state-title" fill="#0b3c5d">Made</text>
+    <text x="207" y="122" class="state-sub">已預約保留</text>
+  </g>
+
+  <!-- Transition: Made -> Paid -->
+  <path d="M 272 110 L 388 110" class="trans-arrow" marker-end="url(#arrow)" />
+  <rect x="294" y="88" width="76" height="18" class="label-bg" />
+  <text x="332" y="97" class="label-text">payMoney</text>
+
+  <!-- State 2: Paid -->
+  <g filter="url(#shadow)">
+    <rect x="390" y="80" width="130" height="60" class="state-box normal-state" />
+    <text x="455" y="102" class="state-title" fill="#0b3c5d">Paid</text>
+    <text x="455" y="122" class="state-sub">已完成付款</text>
+  </g>
+
+  <!-- Transition: Paid -> Ticketed -->
+  <path d="M 520 110 L 638 110" class="trans-arrow" marker-end="url(#arrow)" />
+  <rect x="548" y="88" width="64" height="18" class="label-bg" />
+  <text x="580" y="97" class="label-text">print</text>
+
+  <!-- State 3: Ticketed (Issued) -->
+  <g filter="url(#shadow)">
+    <rect x="640" y="80" width="130" height="60" class="state-box normal-state" />
+    <text x="705" y="102" class="state-title" fill="#0b3c5d">Ticketed</text>
+    <text x="705" y="122" class="state-sub">已出票完成</text>
+  </g>
+
+  <!-- Transition: Ticketed -> Used -->
+  <path d="M 770 110 L 836 110 L 836 215" class="trans-arrow" marker-end="url(#arrow)" />
+  <rect x="790" y="152" width="76" height="18" class="label-bg" />
+  <text x="828" y="161" class="label-text">giveTicket</text>
+
+  <!-- State 4: Used (Final State: Double border) -->
+  <g filter="url(#shadow)">
+    <rect x="760" y="220" width="150" height="64" rx="14" class="state-box success-state" />
+    <rect x="765" y="225" width="140" height="54" rx="10" fill="none" stroke="#2e7d32" stroke-width="1.2" />
+    <text x="835" y="244" class="state-title" fill="#2e7d32">Used 🏁</text>
+    <text x="835" y="264" class="state-sub" fill="#2e7d32">已登機搭乘 (終止)</text>
+  </g>
+
+  <!-- ==================== CANCELLATION BRANCHES ==================== -->
+
+  <!-- Cancellation State: CancelledByCustomer (Final State) -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="260" width="200" height="64" rx="14" class="state-box cancel-state" />
+    <rect x="365" y="265" width="190" height="54" rx="10" fill="none" stroke="#d84315" stroke-width="1.2" />
+    <text x="460" y="284" class="state-title" fill="#d84315">CancelledByCustomer ⛔</text>
+    <text x="460" y="304" class="state-sub" fill="#c62828">顧客主動取消退訂 (終止)</text>
+  </g>
+
+  <!-- Cancellation 1: Made -> CancelledByCustomer -->
+  <path d="M 235 140 L 235 275 L 358 275" class="cancel-arrow" marker-end="url(#arrow-cancel)" />
+  <rect x="242" y="258" width="50" height="18" class="label-bg" />
+  <text x="267" y="267" class="cancel-label-text">cancel</text>
+
+  <!-- Cancellation 2: Paid -> CancelledByCustomer -->
+  <path d="M 455 140 L 455 258" class="cancel-arrow" marker-end="url(#arrow-cancel)" />
+  <rect x="460" y="190" width="50" height="18" class="label-bg" />
+  <text x="485" y="199" class="cancel-label-text">cancel</text>
+
+  <!-- Cancellation 3: Ticketed -> CancelledByCustomer -->
+  <path d="M 685 140 L 685 275 L 562 275" class="cancel-arrow" marker-end="url(#arrow-cancel)" />
+  <rect x="585" y="258" width="76" height="18" class="label-bg" />
+  <text x="623" y="267" class="cancel-label-text">cancel (退票)</text>
+
+  <!-- ==================== NON-PAY TIMEOUT BRANCH ==================== -->
+
+  <!-- Cancellation State: CancelledNonPay (Final State) -->
+  <g filter="url(#shadow)">
+    <rect x="110" y="360" width="195" height="64" rx="14" class="state-box cancel-state" />
+    <rect x="115" y="365" width="185" height="54" rx="10" fill="none" stroke="#d84315" stroke-width="1.2" />
+    <text x="207" y="384" class="state-title" fill="#d84315">CancelledNonPay ⏱️</text>
+    <text x="207" y="404" class="state-sub" fill="#c62828">逾期未付款自動取消 (終止)</text>
+  </g>
+
+  <!-- Transition: Made -> CancelledNonPay -->
+  <path d="M 180 140 L 180 358" class="cancel-arrow" marker-end="url(#arrow-cancel)" />
+  <rect x="95" y="205" width="82" height="18" class="label-bg" />
+  <text x="136" y="214" class="cancel-label-text">payTimeExpire</text>
+
+  <!-- Summary Callout Box at bottom-right -->
+  <g transform="translate(590, 360)">
+    <rect width="320" height="64" fill="#f8f9fa" stroke="#cfd8dc" stroke-width="1" rx="8" />
+    <text x="15" y="24" font-family="sans-serif" font-size="12px" font-weight="700" fill="#0b3c5d">💡 狀態機核心規格摘要：</text>
+    <text x="15" y="45" font-family="sans-serif" font-size="11.5px" fill="#455a64">• 6 個狀態節點 (包含 3 個終止狀態 🏁/⛔/⏱️)</text>
+    <text x="15" y="60" font-family="sans-serif" font-size="11.5px" fill="#455a64">• 8 條有效轉移弧線 (Edges)，涵蓋正常與例外路徑</text>
+  </g>
+</svg>
