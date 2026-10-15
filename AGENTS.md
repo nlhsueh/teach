@@ -58,6 +58,7 @@
    * 題庫與隨堂測驗一律使用 **100% 純 Markdown 格式**（禁止手寫 `<div class="quiz-layout">` 等 HTML 標籤），由主題腳本透過 Progressive Enhancement 自動原地增強為即時點擊作答回饋與解析展開。
    * 選項清單一律直接顯示（使用 `-` 符號，不使用 `*` 漸進逐條淡入）。
    * 投影片頂部 Header 導覽一律採用純目錄下拉選單（`nav-dropdown`），預設隱藏，hover/click 時展開。
+   * **全版圖片投影片 (full-image-slide)**：比照 SE / ASE 規範，即便是全版圖片，頁碼（`::after`，右下角深色浮動膠囊）與頂部 Header 導覽（右上角淺色毛玻璃膠囊）均須正常呈現，確保簡報換頁進度與章節跳轉不中斷；僅底部 `footer` 予以隱藏。
    * 編譯投影片時必須在課程目錄下執行（例如 `cd SQA && npx @marp-team/marp-cli ...`）或帶入 `--config .marprc.json`，以確保 `sqa-theme.css` 與全套樣式正確注入。
 2. **互動題目 (CCQ) 生命週期與同步 SOP**：
    * **執行同步**：`python3 scripts/sync_iActivity.py -c sqa`（亦可指定 `ux`、`se`、`python` 或 `--all`）。

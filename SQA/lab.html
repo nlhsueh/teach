@@ -834,6 +834,8 @@
                 <a href="lab.html?file=LabDemo/docs/u02_robust/exception.md">🛠️ Lab 02 · 例外處理實務 (Exception)</a>
                 <a href="lab.html?file=LabDemo/docs/u02_debug/debug.md">🛠️ Lab 02 · 除錯實務與科學假設檢驗</a>
                 <a href="lab.html?file=LabDemo/docs/u02_debug/ai_code_break.md">🛠️ Lab 02 · AI 程式碼破壞實驗</a>
+                <a href="lab.html?file=LabDemo/docs/u03_principles/test_spec_ai_codesign.md">🛠️ Lab 03 · 測試規格設計與 AI 盲區審查</a>
+                <a href="lab.html?file=LabDemo/docs/u03_principles/test_oracle_metamorphic.md">🛠️ Lab 03 · Test Oracle 變質測試沙盒</a>
                 <a href="lab.html?file=LabDemo/docs/u04_inspection/pmd.md">🛠️ Lab 04 · PMD 靜態程式碼分析</a>
                 <a href="lab.html?file=LabDemo/docs/u05_utest/junit.md">🛠️ Lab 05 · JUnit 5 單元測試實務</a>
                 <a href="lab.html?file=LabDemo/docs/u05_utest/jqwik_property_based.md">🛠️ Lab 05/06 · jqwik 屬性基礎測試</a>
@@ -954,6 +956,30 @@
         document.getElementById('tocSidebar').style.display = 'none';
       }
     }
+
+    // Interactive Test Case Checker for Lab Exercises
+    window.checkTC = function(inputId, feedbackId, expected, okMsg, hintMsg) {
+      const input = document.getElementById(inputId);
+      const fb = document.getElementById(feedbackId);
+      if (!input || !fb) return;
+      const raw = input.value.trim();
+      if (!raw) {
+        fb.innerHTML = '<span style="color:#d97706;font-size:12.5px;font-weight:600;">⚠️ 請先輸入金額數字</span>';
+        input.focus();
+        return;
+      }
+      const val = parseInt(raw, 10);
+      if (val === expected) {
+        fb.innerHTML = `<span style="color:#16a34a;font-weight:700;font-size:12.5px;">✅ 正確！(NT$ ${expected}) ${okMsg}</span>`;
+        input.style.borderColor = '#16a34a';
+        input.style.backgroundColor = '#f0fdf4';
+      } else {
+        fb.innerHTML = `<span style="color:#dc2626;font-weight:600;font-size:12.5px;">❌ 算錯了 (你輸入: NT$ ${raw})。<br>💡 ${hintMsg}</span>`;
+        input.style.borderColor = '#dc2626';
+        input.style.backgroundColor = '#fef2f2';
+        input.focus();
+      }
+    };
 
     // Initialize on DOMContentLoaded
     document.addEventListener('DOMContentLoaded', loadMarkdown);

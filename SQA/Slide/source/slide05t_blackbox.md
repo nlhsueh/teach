@@ -49,8 +49,8 @@ footer: 'Ch05 黑箱測試'
   - 布林邏輯網絡、5 大約束條件 ($E, I, O, R, M$)、CAR 表規則化簡
 - **5.7 狀態轉換測試 (State Transition Testing)**：
   - 狀態機模型、狀態覆蓋 vs. 轉移覆蓋 (0-switch)、Stack 狀態斷言
-- **5.8 屬性基礎測試 (Property-Based Testing, PBT)**：
-  - 數學不變量規格、jqwik 隨機測資與極簡收縮 (Shrinking)
+- **5.8 屬性基礎測試 (PBT) 與 變質測試 (Metamorphic Testing)**：
+  - 數學不變量規格 (jqwik)、四大變質關係 (MR) 與 AI 系統評測落地
 - **5.9 使用案例與情境測試 (Use Case Testing)**：
   - 端對端黑箱、基本流 (Happy Path)、替代流與例外流測試矩陣
 - **5.10 經驗基礎測試：錯誤猜測與探索性測試**：
@@ -1330,6 +1330,139 @@ public class AdditionProperties {
 
 <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq8.png" alt="QR Code" /></a>
 
+</div>
+</div>
+
+---
+
+<!-- header: '5.8 屬性基礎測試 (PBT) 與 變質測試 (MT)' -->
+
+## 變質測試 (Metamorphic Testing)：黑箱不變量的新高度
+
+<div class="card-deck">
+
+> 💡 突破 Test Oracle 困境：當難以斷言「輸出 $y$ 的絕對數值」時，檢驗「輸入變換後的相對關係」。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🧬 從 PBT 到 MT 的延伸進化
+- **屬性基礎測試 (PBT)**：
+  - 聚焦於**單一執行**的代數性質（例如 $a + 0 = a$、反轉兩次等於原陣列）。
+  - 適合具備封閉數學結構的純函式 (Pure Functions)。
+- **變質測試 (Metamorphic Testing, MT)**：
+  - 由陳振宇 (T.Y. Chen) 於 1998 年提出，專門解決 **Oracle Problem**。
+  - 聚焦於**多次執行之間的輸入輸出關係 (Metamorphic Relations, MRs)**。
+  - 適用於搜尋引擎、機器學習、推薦演算法與巨量科學運算等「無標準答案」黑箱！
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🔄 變質測試三步執行迴圈
+- **1. 原始測試 (Source Execution)**：
+  - 輸入 $x$ 執行系統，獲得基準輸出 $y = f(x)$。
+- **2. 變質變換 (Follow-up Execution)**：
+  - 依據領域知識將輸入變換為 $x'$，執行系統獲得 $y' = f(x')$。
+- **3. 變質關係判定 (MR Verification)**：
+  - 斷言驗證 $R(x, x', y, y')$ 是否恆真成立！
+  - 若關係不成立，**100% 證明內部演算法存在缺陷**！
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.8 屬性基礎測試 (PBT) 與 變質測試 (MT)' -->
+
+## 四大經典變質關係模式庫 (MR Patterns)
+
+<div class="card-deck">
+
+> 💡 頂尖 QA 如何設計 MR？掌握四大不變量思維，即可通殺 90% 以上複雜系統。
+
+| 模式類別 | 變質關係定義 (MR Formulation) | 實戰工程案例 |
+| :--- | :--- | :--- |
+| **1. 對稱與等價性<br>(Symmetry / Invariance)** | $f(\text{Transform}(x)) == f(x)$ | **自駕車辨識**：輸入圖片水平翻轉或旋轉 $5^\circ$，行人偵測框與分類結果不變。 |
+| **2. 包含與單調性<br>(Inclusion / Monotonicity)** | 若 $x_1 \subseteq x_2 \implies f(x_1) \subseteq f(x_2)$ | **搜尋引擎**：搜尋「台積電 股價」之結果，必然是「台積電」搜尋結果之子集。 |
+| **3. 比例縮放一致性<br>(Scaling Consistency)** | $f(k \cdot x) == k \cdot f(x)$ | **導航路徑**：全圖路網權重放大 2 倍，計算出之最佳路徑節點序列完全相同。 |
+| **4. 獨立抗擾動性<br>(Irrelevant Perturbation)** | $f(x + \text{noise}) == f(x)$ | **情感分析 / LLM**：語句結尾加上無關空格或標點，正面情緒評分不應逆轉為負面。 |
+
+</div>
+
+---
+
+<!-- header: '5.8 屬性基礎測試 (PBT) 與 變質測試 (MT)' -->
+
+## 變質測試實戰：JUnit 5 演算法驗證程式碼
+
+<div class="card-deck">
+
+> 💡 實作範例：以推薦系統為例，將「變質關係 (MR)」直接化為可執行的單元測試。
+
+```java
+public class RecommendationMetamorphicTest {
+
+    private final RecommenderService service = new RecommenderService();
+
+    // 變質關係 MR-1 (單調性)：歷史瀏覽清單額外加入同類商品，該類別推薦權重絕不可下降
+    @ParameterizedTest
+    @ValueSource(strings = {"iPhone", "MacBook", "iPad"})
+    void testCategoryRecommendationMonotonicity(String product) {
+        UserProfile user = UserProfile.builder().history(List.of(product)).build();
+        List<Item> baseline = service.getRecommendations(user); // 原始執行 y
+
+        UserProfile enrichedUser = user.withExtraView("AirPods"); // 輸入變換 x -> x'
+        List<Item> followUp = service.getRecommendations(enrichedUser); // 後續執行 y'
+
+        // 變質斷言：Apple 生態系相關推薦佔比只可增加或持平，絕不能反而被洗掉
+        double baseScore = calculateCategoryAffinity(baseline, "Apple");
+        double newScore = calculateCategoryAffinity(followUp, "Apple");
+        assertTrue(newScore >= baseScore, "變質關係違規：增加同類互動後，相關權重反而下降！");
+    }
+}
+```
+
+</div>
+
+---
+
+<!-- header: '5.8 屬性基礎測試 (PBT) 與 變質測試 (MT)' -->
+
+## 現代 AI 與 LLM 評測實務：差分與裁判模型落地
+
+<div class="card-deck">
+
+> 💡 SQA 2.0 評測工具鏈：結合理論觀念，在 CI/CD Pipeline 落地自動化品質門檻。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### ⚖️ 多模型差分實務 (Differential)
+- **跨版本與跨模型交叉打靶**：
+  - 將 1,000 組邊界 Prompt 同時送入 **新版 Model vs. 舊版 Model**。
+  - 計算語意嵌入距離 (Cosine Similarity)。
+  - 若相似度小於 0.85，自動標記為潛在回歸缺陷 (Regression Drift)。
+- **工具鏈整合**：
+  - 使用 **Promptfoo** / **DeepEval** 跑自動化矩陣差分比對。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🧑‍⚖️ LLM-as-a-Judge 規準落地
+- **JSON Schema 結構化評分輸出**：
+  ```json
+  {
+    "metric": "Faithfulness",
+    "score": 0.95,
+    "has_hallucination": false,
+    "rationale": "所有陳述皆可在 Context 找到依據"
+  }
+  ```
+- **CI/CD Quality Gate 阻斷門檻**：
+  - 於 GitHub Actions 中設定：忠實度 < 0.90 或安全違規率 > 0% 即判定 Build Failed！
+
+</div>
 </div>
 </div>
 

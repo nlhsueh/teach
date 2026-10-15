@@ -369,6 +369,9 @@ D) 靜態程式碼檢視 (Code Review)
 | **邊界與極端測資生成** | ⭐ 人腦容易疲勞、易遺漏冷門 Unicode/極大值 | ⭐⭐⭐ 秒速生成數千組極端字串、溢位邊界 | **AI 輔助**：批量生成邊界與攻擊 Payload |
 | **測試結果有效性判斷 (Oracle)** | ⭐⭐⭐ 具備客觀真理的最終仲裁權 | ⭐ 自我印證偏誤，易產生假綠燈斷言 | **人類審查**：審查斷言邏輯並納入 CI 自動化 |
 
+> 🛠️ **實習手冊連結**：
+> * 測試規格化設計與 AI 協同生成盲區評審：[`../../LabDemo/docs/u03_principles/test_spec_ai_codesign.md`](../../LabDemo/docs/u03_principles/test_spec_ai_codesign.md)
+
 ---
 
 ## 3.5 測試全景 3W2H 分類體系
@@ -475,6 +478,11 @@ D) 靜態程式碼檢視 (Code Review)
    * 將相同輸入餵給兩種獨立實作（例如 Claude vs GPT、舊版演算法 vs 新版微服務）進行交叉比對。
 3. **LLM-as-a-Judge 與防護欄 (Guardrails)**：
    * 使用經過專門微調的評估模型，針對輸出進行忠實度（Faithfulness）、安全性與不變量檢驗。
+
+> 💡 **學習路徑導引 (Roadmap)**：變質測試 (Metamorphic Testing) 的四類核心變質關係 (MRs) 具體如何定義？如何與 JUnit 5 整合進行自動化程式碼斷言？我們將在 **第 5 章黑箱測試與屬性基礎測試 (PBT)** 中深入探討其具體設計法與程式碼落地實作！
+
+> 🛠️ **實習手冊連結**：
+> * Test Oracle 破局實驗（無標準答案之變質關係斷言沙盒）：[`../../LabDemo/docs/u03_principles/test_oracle_metamorphic.md`](../../LabDemo/docs/u03_principles/test_oracle_metamorphic.md)
 
 ---
 

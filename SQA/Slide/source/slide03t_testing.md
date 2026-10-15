@@ -98,10 +98,12 @@ footer: 'Ch03 軟體測試基礎'
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch03/istqb_seven_principles.jpg" alt="ISTQB 軟體測試 7 大經典原則總覽" />
+## ISTQB 軟體測試 7 大經典原則總覽
+
+<div class="image-wrapper">
+  <img src="../../img/ch03/istqb_seven_principles.png" alt="ISTQB 軟體測試 7 大經典原則總覽" />
 </div>
 
 ---
@@ -127,9 +129,11 @@ footer: 'Ch03 軟體測試基礎'
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 原則 1 圖解：測試顯示缺陷存在，而非不存在
+
+<div class="image-wrapper">
   <img src="../../img/ch03/presence_of_defects_comic.jpg" alt="測試顯示缺陷存在漫畫" />
 </div>
 
@@ -232,9 +236,11 @@ footer: 'Ch03 軟體測試基礎'
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 原則 5 圖解：殺蟲劑悖論 (Pesticide Paradox)
+
+<div class="image-wrapper">
   <img src="../../img/ch03/pesticide_paradox_comic.jpg" alt="殺蟲劑悖論漫畫" />
 </div>
 
@@ -341,9 +347,11 @@ footer: 'Ch03 軟體測試基礎'
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 驗證 (Verification) vs 確認 (Validation) 核心架構對比
+
+<div class="image-wrapper">
   <img src="../../img/ch03/verification_vs_validation.jpg" alt="Verification vs Validation" />
 </div>
 
@@ -409,9 +417,11 @@ footer: 'Ch03 軟體測試基礎'
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 黑箱測試 vs 白箱測試 核心維度對比
+
+<div class="image-wrapper">
   <img src="../../img/ch03/blackbox_vs_whitebox_testing.jpg" alt="黑箱測試 vs 白箱測試" />
 </div>
 
@@ -437,10 +447,12 @@ footer: 'Ch03 軟體測試基礎'
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch03/testing_levels_hierarchy.jpg" alt="三大測試層級架構" />
+## 三大核心測試層級階層體系 (Testing Levels)
+
+<div class="image-wrapper">
+  <img src="../../img/ch03/testing_levels_hierarchy.png" alt="三大測試層級架構" />
 </div>
 
 ---
@@ -490,10 +502,12 @@ double div(double x, double y) {
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch03/practical_test_pyramid.jpg" alt="現代實戰測試金字塔" />
+## 現代實戰測試金字塔體系 (The Practical Test Pyramid)
+
+<div class="image-wrapper">
+  <img src="../../img/ch03/practical_test_pyramid.png" alt="現代實戰測試金字塔" />
 </div>
 
 ---
@@ -544,10 +558,12 @@ double div(double x, double y) {
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch03/v_model_sdlc_testing.jpg" alt="V 開發模型與雙向追溯" />
+## V 開發模型與雙向追溯架構 (The V-Model)
+
+<div class="image-wrapper">
+  <img src="../../img/ch03/v_model_sdlc_testing.png" alt="V 開發模型與雙向追溯" />
 </div>
 
 ---
@@ -722,9 +738,11 @@ double div(double x, double y) {
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 標準測試案例五大要件圖解 (Test Case Components)
+
+<div class="image-wrapper">
   <img src="../../img/ch03/comic_test_case_structure.jpg" alt="標準測試案例五大要件漫畫圖解" />
 </div>
 
@@ -737,6 +755,8 @@ double div(double x, double y) {
 | **規格與不變量定義** | ⭐⭐⭐ 深刻理解領域商業價值與法律合約 | ⭐ 缺乏真實商業感知，易產生荒謬假設 | **人類主導**：定義前置/後置條件與狀態不變量 |
 | **邊界與極端測資生成** | ⭐ 人腦易疲勞、易遺漏冷門 Unicode/極大值 | ⭐⭐⭐ 秒速生成數千組極端字串、溢位邊界 | **AI 輔助**：批量生成邊界與攻擊 Payload |
 | **測試結果仲裁 (Oracle)** | ⭐⭐⭐ 具備客觀真理的最終仲裁權 | ⭐ 自我印證偏誤，易產生假綠燈斷言 | **人類審查**：審查斷言邏輯並納入 CI 自動化 |
+
+> 🛠️ **實習演練手冊**：參閱 [`LabDemo/docs/u03_principles/test_spec_ai_codesign.md`](../../LabDemo/docs/u03_principles/test_spec_ai_codesign.md)（電商促銷計費規格設計與 AI 生成盲區審查）。
 
 ---
 
@@ -771,9 +791,11 @@ double div(double x, double y) {
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 測試全景 3W2H 分類體系架構圖 (Testing Landscape)
+
+<div class="image-wrapper">
   <img src="../../img/ch03/testing_landscape_3w2h.jpg" alt="測試全景 3W2H 分類體系" />
 </div>
 
@@ -947,6 +969,75 @@ double div(double x, double y) {
 - **非確定性隨機生成**：LLM 模型參數取樣（Temperature > 0）使每次生成的語句結構皆具變異性
 - **預言機失效 (Oracle Problem)**：缺乏固定輸出基準，傳統硬編碼預期值的單元測試機制全面瓦解
 - **現代工程破局解方**：引進變質測試 (Metamorphic Testing)、多模型差分對比與 LLM-as-a-Judge 評測
+
+</div>
+</div>
+</div>
+
+---
+
+## 破局觀念一：變質測試 (Metamorphic Testing) 核心哲學
+
+<div class="card-deck">
+
+> 💡 當缺乏絕對標準答案時，不問「單一輸出是否正確」，改問「輸入變換前後，輸出關係是否符合領域不變量」。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🔬 核心思維：變質關係 (Metamorphic Relation, MR)
+- **擺脫標準答案依賴**：
+  - 我們無法預知複雜演算法對隨機輸入 $x$ 的精確輸出 $f(x)$；
+  - 但只要對輸入施加特定變換 $x \to x'$，即可預期 $f(x)$ 與 $f(x')$ 之間**必須恆真遵守的邏輯關係**！
+- **經典驗證邏輯**：
+  - 若 $f(x)$ 與 $f(x')$ 違反了變質關係，則**系統必然存在嚴重缺陷**！
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🚗 直觀領域案例 (Domain Invariants)
+- **自駕車視覺辨識**：
+  - 將一張行人的監視影像微幅旋轉 $5^\circ$ 或加入雨霧雜訊，模型**依然必須辨識出行人**！
+- **搜尋引擎與推薦演算法**：
+  - 查詢條件「台積電 且 營收」的結果集合，必然嚴格**包含於（子集）**「台積電」的搜尋結果中。
+- **導航最短路徑**：
+  - 全地圖道路長度等比例乘以 2，最佳路徑節點序列必須**完全一致**。
+
+</div>
+</div>
+
+> 🛠️ **實習沙盒手冊**：參閱 [`LabDemo/docs/u03_principles/test_oracle_metamorphic.md`](../../LabDemo/docs/u03_principles/test_oracle_metamorphic.md)（無標準答案之變質關係斷言沙盒）｜ 更多落地模式於 **第 5 章黑箱測試** 深入展開！
+
+</div>
+
+---
+
+## 破局觀念二：差分測試與裁判模型 (Differential & LLM Judge)
+
+<div class="card-deck">
+
+> 💡 突破主觀與隨機性：以「多實作交叉對決」仲裁共識，以「結構化規準」自動評估品質。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### ⚖️ 多模型差分測試 (Differential Testing)
+- **以「交叉對抗」取代「標準答案」**：
+  - 將相同測資同時輸入給兩個或多個**獨立實作**（如 GCC vs. Clang、舊版微服務 vs. 新版演算法、Claude vs. GPT-4o）。
+- **異常快速定位**：
+  - 若雙方輸出產生重大分歧（Divergence），代表至少有一方存在邏輯瑕疵或未定義邊界行為。
+- **最佳應用**：編譯器優化、密碼學協議、SQL 查詢優化器。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🧑‍⚖️ 裁判模型 (LLM-as-a-Judge) 與防護欄
+- **質化語意走向結構化度量**：
+  - 由更高智慧或微調之 Judge 模型，依據**結構化評估規準 (Evaluation Rubrics)** 進行自動仲裁。
+- **現代 AI 系統三大評測指標**：
+  - **1. 忠實度 (Faithfulness)**：輸出內容是否完全基於檢索到的參考文件（防範幻覺）。
+  - **2. 答案相關性 (Answer Relevance)**：回答是否切中使用者問題核心。
+  - **3. 安全防護欄 (Guardrails)**：杜絕 Prompt 注入、偏見與有害輸出。
 
 </div>
 </div>

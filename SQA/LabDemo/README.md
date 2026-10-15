@@ -10,6 +10,7 @@
 | :--- | :--- | :--- | :--- |
 | **Unit 01** | **開發環境與建置工具** | [Antigravity IDE](./docs/u01_intro/antigravity.md) · [Maven 設定](./docs/u01_intro/maven.md) | `pom.xml`<br>`docs/u01_intro/` |
 | **Unit 02** | **錯與除錯、防禦與日誌** | [除錯指引](./docs/u02_debug/debug.md) · [AI 破壞實驗](./docs/u02_debug/ai_code_break.md) · [斷言防護](./docs/u02_robust/assertion.md) · [例外處理](./docs/u02_robust/exception.md) · [日誌記錄](./docs/u02_robust/logging.md) | `src/main/java/u02_debug/`<br>`src/main/java/u02_robust/`<br>`src/test/java/u02_robust/` |
+| **Unit 03** | **測試原則、規格設計與 Oracle 實驗** | [測試規格與 AI 協同](./docs/u03_principles/test_spec_ai_codesign.md) · [Oracle 變質沙盒](./docs/u03_principles/test_oracle_metamorphic.md) | `src/main/java/u03_principles/`<br>`src/test/java/u03_principles/` |
 | **Unit 04** | **程式碼檢視與靜態分析** | [PMD 靜態分析與規則](./docs/u04_inspection/pmd.md) | `src/main/resources/pmd/ruleset.xml`<br>`src/main/java/u04_inspection/` |
 | **Unit 05** | **單元測試與黑箱測試** | [JUnit 5 核心實務](./docs/u05_utest/junit.md) · [屬性測試](./docs/u05_utest/jqwik_property_based.md) · [度量分析](./docs/u05_utest/metrics.md) | `src/test/java/u05_utest/`<br>`src/main/java/u05_utest/` |
 | **Unit 06** | **白箱覆蓋率分析** | [白箱測試與 JaCoCo 分析](./docs/u06_wbtesting/whitebox_test.md) | `src/test/java/u05_utest/whitebox/`<br>`pom.xml (JaCoCo Plugin)` |
@@ -32,6 +33,7 @@ LabDemo/
 │   ├── u01_intro/                        # Antigravity IDE、Maven 指南
 │   ├── u02_debug/                        # 中斷點除錯、AI 破壞實驗
 │   ├── u02_robust/                       # 日誌追蹤、例外處理、斷言防護
+│   ├── u03_principles/                   # 測試規格設計、AI 盲區審查、Oracle 變質沙盒
 │   ├── u04_inspection/                   # 程式碼檢視、PMD 規則
 │   ├── u05_utest/                        # 單元測試、參數化、屬性測試
 │   ├── u06_wbtesting/                    # 白箱覆蓋率、JaCoCo
@@ -67,6 +69,9 @@ mvn test
 ### 2. 依單元執行測試（課堂學習推薦）
 本課程採循序漸進講授，在終端機可指定 package 只執行當前單元的測試：
 ```bash
+# 執行 Unit 03 變質測試沙盒
+mvn test -Dtest="u03_principles.**"
+
 # 只執行 Unit 04 單元測試
 mvn test -Dtest="u04_utest.**"
 

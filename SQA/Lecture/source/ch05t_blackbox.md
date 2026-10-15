@@ -33,7 +33,7 @@ Ch05 知識架構全景：
 【組合爆炸解法】5.4 全成對測試 (Pairwise / All-Pairs) ＆ 5.5 案例優化
 【複雜業務邏輯】5.6 決策表測試 (Decision Table) ＆ 規則化簡
 【事件驅動架構】5.7 狀態轉換測試 (State Transition / 1-Switch)
-【現代前沿測試】5.8 屬性基礎測試 (Property-Based Testing with jqwik)
+【現代前沿測試】5.8 屬性基礎測試 (PBT) ＆ 變質測試 (Metamorphic Testing)
 ```
 
 | 章節單元 | 核心學習重點 (Key Takeaways) |
@@ -45,7 +45,7 @@ Ch05 知識架構全景：
 | **[5.5 測試案例的優化](#55-測試案例的優化)** | 學習在覆蓋率不降低的前提下消除冗餘案例，達到測試集精實化。 |
 | **[5.6 決策表測試 (Decision Table)](#56-決策表測試)** | 針對複雜業務邏輯，掌握**條件樁 (Condition Stub)、動作樁 (Action Stub)**、規則展開與布林邏輯**規則化簡**。 |
 | **[5.7 狀態測試 (State Testing)](#57-狀態測試)** | 針對物件生命週期與狀態機（FSM），設計狀態轉換矩陣與 **0-Switch / 1-Switch 覆蓋路徑**。 |
-| **[5.8 屬性基礎測試 (PBT)](#58-屬性基礎測試-property-based-testing)** | 掌握 SQA 2.0 現代前沿技術：使用 **jqwik** 定義核心數學不變量，自動生成海量隨機測資並執行**測資收縮 (Shrinking)**。 |
+| **[5.8 屬性基礎測試與變質測試](#58-屬性基礎測試-property-based-testing-與-變質測試-metamorphic-testing)** | 掌握 SQA 2.0 現代前沿技術：使用 **jqwik** 定義核心數學不變量與測資收縮，運用**變質測試 (MT)** 突破 Test Oracle 難題，並落地差分測試與 LLM 評測規準。 |
 | **[5.9 實戰練習題](#️-練習)** | 涵蓋游泳池計費、青年成家貸款、電子表狀態機與三角形多維案例實戰。 |
 
 ---
@@ -893,7 +893,7 @@ See [DemoJUnit](https://github.com/nlhsueh/sw-testing24/tree/main/Intellij/DemoJ
 
 ---
 
-## 5.8 屬性基礎測試 (Property-Based Testing)
+## 5.8 屬性基礎測試 (Property-Based Testing) 與 變質測試 (Metamorphic Testing)
 
 在傳統的單元測試中，我們習慣採用 **範例基礎測試 (Example-Based Testing, EBT)**。我們手動挑選幾組具代表性的輸入資料（如邊界值、等價區間內的數值），然後寫出對應的預期輸出，並使用 `assertEquals` 等斷言進行驗證。然而，這種做法高度依賴測試工程師的經驗，容易漏掉那些難以預料的極端輸入（Edge Cases）。
 
@@ -950,6 +950,99 @@ public class AdditionProperties {
 
 > 🛠️ **實習手冊連結**：
 > * Property-Based Testing 實戰：[`../../LabDemo/docs/u04_utest/jqwik_property_based.md`](../../LabDemo/docs/u04_utest/jqwik_property_based.md)
+
+### 5.8.3 變質測試 (Metamorphic Testing, MT)：黑箱不變量的新高度
+
+正如我們在 **Ch03 (3.5.5 SQA 2.0 前沿：突破 Test Oracle 困境)** 所探討的，當軟體系統日益複雜（如科學計算、推薦系統、搜尋引擎、圖像識別、生成式 AI）時，我們往往**無法事先得知特定輸入的唯一標準答案**——這就是經典的 **測試預言問題 (Test Oracle Problem)**。
+
+傳統黑箱測試（等價劃分、邊界值分析）與白箱測試，本質上都依賴一個假設：「給定輸入 $x$，必須有一個預期輸出 $y$，並透過 `assertEquals(y, f(x))` 進行驗證」。如果連人類專家都算不出精確的 $y$，測試該如何進行？
+
+1998 年，著名軟體工程學者**陳振宇 (T.Y. Chen)** 教授提出了**變質測試 (Metamorphic Testing, MT)**，為此難題開闢了革命性的黑箱測試新視角：
+> **「不檢驗單次執行的絕對輸出，轉而檢驗多次執行之間輸入與輸出必須遵守的相對關係 (Metamorphic Relations, MRs)。」**
+
+#### 🔄 變質測試三步執行迴圈
+
+1. **原始測試 (Source Execution)**：
+   * 給定初始輸入 $x$，執行系統獲得基準輸出 $y = f(x)$。
+2. **變質變換 (Follow-up Execution)**：
+   * 根據領域知識與演算法特性，將輸入經過某種合理變換得到 $x'$（例如縮放、排序、平移、加入不相關資訊），執行系統獲得後續輸出 $y' = f(x')$。
+3. **變質關係判定 (MR Verification)**：
+   * 驗證輸入變換與輸出變換之間的特定關係 $R(x, x', y, y')$ 是否恆真成立。
+   * **若關係不成立，100% 證明演算法內部邏輯存在缺陷！**
+
+#### 🏛️ 四大經典變質關係模式庫 (MR Patterns)
+
+設計高品質變質關係時，可套用以下四大經典模式：
+
+| 模式類別 | 變質關係數學表述 | 實戰工程案例 |
+| :--- | :--- | :--- |
+| **1. 對稱與等價性<br>(Symmetry / Invariance)** | $f(\text{Transform}(x)) == f(x)$ | **自駕車視覺辨識**：輸入圖片水平翻轉、反轉色調或微幅旋轉 5°，系統辨識出的行人位置與類別不應改變。 |
+| **2. 包含與單調性<br>(Inclusion / Monotonicity)** | 若 $x_1 \subseteq x_2 \implies f(x_1) \subseteq f(x_2)$ | **搜尋引擎與推薦**：搜尋「台積電 股價」之結果集合，必然是搜尋「台積電」結果之子集。使用者增加同類瀏覽紀錄，推薦權重只增不減。 |
+| **3. 比例縮放一致性<br>(Scaling Consistency)** | $f(k \cdot x) == k \cdot f(x)$ | **最短路徑與導航**：將地圖中所有道路權重同乘以 2，計算出的最佳行駛路線節點序列完全不變，總成本剛好放大 2 倍。 |
+| **4. 獨立抗擾動性<br>(Irrelevant Perturbation)** | $f(x + \text{noise}) == f(x)$ | **情感分析 / 推薦演算法**：語句末尾加上無關空格、標點或停用詞，正面評價評分不應逆轉為負面。 |
+
+#### 💻 變質測試實戰：JUnit 5 演算法驗證
+
+以下展示如何在黑箱測試中，將推薦系統的單調性（Monotonicity）變質關係轉化為可自動化執行的 JUnit 5 測試：
+
+```java
+public class RecommendationMetamorphicTest {
+
+    private final RecommenderService service = new RecommenderService();
+
+    // 變質關係 MR-1 (單調性)：歷史瀏覽清單額外加入同類商品，該類別推薦權重絕不可下降
+    @ParameterizedTest
+    @ValueSource(strings = {"iPhone", "MacBook", "iPad"})
+    void testCategoryRecommendationMonotonicity(String product) {
+        // 1. 原始執行 (Source Execution): 輸入 x -> 獲得 y
+        UserProfile user = UserProfile.builder().history(List.of(product)).build();
+        List<Item> baseline = service.getRecommendations(user);
+
+        // 2. 變質變換 (Follow-up Execution): 變換輸入 x' (加權同生態系商品) -> 獲得 y'
+        UserProfile enrichedUser = user.withExtraView("AirPods");
+        List<Item> followUp = service.getRecommendations(enrichedUser);
+
+        // 3. 變質關係判定 (MR Verification)
+        double baseScore = calculateCategoryAffinity(baseline, "Apple");
+        double newScore = calculateCategoryAffinity(followUp, "Apple");
+
+        // 斷言：加權同類商品後，Apple 生態系的推薦親和力必須 >= 原先親和力
+        assertTrue(newScore >= baseScore, 
+            "變質關係違規：增加 Apple 商品瀏覽後，相關推薦權重反而下降！");
+    }
+
+    private double calculateCategoryAffinity(List<Item> items, String category) {
+        return items.stream()
+            .filter(item -> category.equalsIgnoreCase(item.getCategory()))
+            .count() / (double) Math.max(1, items.size());
+    }
+}
+```
+
+---
+
+### 5.8.4 現代 AI 系統評測：差分測試與裁判模型落地
+
+在 LLM 與 AI 應用中，輸出的不確定性（Stochasticity）與開放式自然語言讓傳統單元測試完全失效。現代 SQA 2.0 在黑箱測試中引入了兩大自動化評測技術：
+
+#### 1. 多模型差分測試 (Differential Testing)
+* **原理**：將同一批測試案例（如 1,000 組邊界 Prompt）同時發送給不同實作版本（如 `Model-v1.0` vs. `Model-v2.0`，或 `GPT-4o` vs. `Claude-3.5-Sonnet`）。
+* **判定**：計算輸出之間的語意向量距離（Cosine Similarity）或結構一致性。若版本迭代後相似度低於門檻（例如 < 0.85），系統自動發出警報，防範模型降級（Model Drift）。
+* **實踐工具**：開源矩陣測試工具 **Promptfoo**、**DeepEval**。
+
+#### 2. 裁判模型 (LLM-as-a-Judge) 規準與 CI/CD Quality Gate
+* **結構化 Rubric 評分**：利用強推理模型（如 GPT-4o），搭配嚴格的 JSON Schema 輸出格式，針對三項核心維度進行自動化裁決：
+  * **忠實度 (Faithfulness)**：回答內容是否 100% 依據提供之 Context，是否存在幻覺（Hallucination）。
+  * **回答相關度 (Answer Relevance)**：是否直接回答使用者的問題，有無答非所問或贅詞過多。
+  * **安全性防護 (Safety & Guardrails)**：是否成功阻絕 Prompt Injection、越獄（Jailbreak）或個資外洩攻擊。
+* **CI/CD Quality Gate 整合**：
+  在 GitHub Actions 中將評測指標數字化，設定自動化阻斷門檻：
+  - `Faithfulness >= 0.90`
+  - `Hallucination Rate == 0.00`
+  - `Safety Pass Rate == 100%`
+  若任一項未達標，PR 即無法通過，確保 AI 軟體系統的工程品質可控可測。
+
+---
 
 <!-- id: sqa-ch05-ccq10 -->
 #### 🙋 概念核對問答 (CCQ 8)
