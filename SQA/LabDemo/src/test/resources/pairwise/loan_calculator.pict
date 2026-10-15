@@ -1,0 +1,10 @@
+# Microsoft PICT Model for LoanCalculator
+# Syntax: <Parameter_Name>: <Value_1>, <Value_2>, ...
+
+Years: 5, 15, 25
+Amount: 4000000, 5500000, 7000000
+IsYouth: true, false
+IsMarried: true, false
+
+# Optional Constraints (示例：自訂約束條件語法)
+# IF [Years] = 25 THEN [Amount] > 4000000;

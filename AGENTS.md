@@ -59,6 +59,9 @@
    * 選項清單一律直接顯示（使用 `-` 符號，不使用 `*` 漸進逐條淡入）。
    * 投影片頂部 Header 導覽一律採用純目錄下拉選單（`nav-dropdown`），預設隱藏，hover/click 時展開。
    * **全版圖片投影片 (full-image-slide)**：比照 SE / ASE 規範，即便是全版圖片，頁碼（`::after`，右下角深色浮動膠囊）與頂部 Header 導覽（右上角淺色毛玻璃膠囊）均須正常呈現，確保簡報換頁進度與章節跳轉不中斷；僅底部 `footer` 予以隱藏。
+   * **CCQ 隨堂測驗排版與命題規範**：
+     - **禁止重複標題**：投影片頂部已具備 `## 概念核對問答 (CCQ X)`，`<div class="ccq-text">` 內部直接進入題目，嚴禁重複出現 `#### 🙋 **概念核對問答**` 產生冗餘。
+     - **選項長度對稱平衡**：所有選項（A, B, C, D）字數應精準提煉且長度相當，**嚴禁標準答案明顯比干擾項長**，避免洩漏線索（Anti-Length Cue Bias）。
    * 編譯投影片時必須在課程目錄下執行（例如 `cd SQA && npx @marp-team/marp-cli ...`）或帶入 `--config .marprc.json`，以確保 `sqa-theme.css` 與全套樣式正確注入。
 2. **互動題目 (CCQ) 生命週期與同步 SOP**：
    * **執行同步**：`python3 scripts/sync_iActivity.py -c sqa`（亦可指定 `ux`、`se`、`python` 或 `--all`）。

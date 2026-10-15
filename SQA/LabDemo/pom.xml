@@ -115,6 +115,14 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
+
+        <!-- AllPairs4J for Pairwise Combinatorial Testing -->
+        <dependency>
+            <groupId>io.github.pavelicii</groupId>
+            <artifactId>allpairs4j</artifactId>
+            <version>2.0.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
