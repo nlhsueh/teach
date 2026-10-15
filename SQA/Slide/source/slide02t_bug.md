@@ -137,27 +137,6 @@ footer: 'Ch02 錯與除錯'
 
 ---
 
-<!-- id: sqa-ch02-ccq1 -->
-## 🙋 概念核對問答 (CCQ 1)
-
-<div class="ccq-columns">
-  <div class="ccq-text">
-
-**問題**：工程師在撰寫銀行轉帳演算法時，誤將手續費計算公式的減號寫成加號，並部署至伺服器。當天日常營運中，所有客戶轉帳金額均未達扣除手續費門檻，無任何客戶發現異常。依據 IEEE 軟體工程定義，此時系統狀態為何？
-
-- **A.** 系統已發生失效 (Failure)
-- **B.** 程式碼中存在缺陷 (Fault/Defect)，但尚未表現為系統失效 (Failure)
-- **C.** 工程師並未犯錯 (Mistake)，因為系統正常運作
-- **D.** 該程式碼完全符合軟體品質的正確性定義
-
-  </div>
-  <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq1" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq1.png" alt="QR Code" /></a>
-  </div>
-</div>
-
----
-
 ## 2.1.2 規格導致的缺陷 (Specification Bugs)
 
 - **「我前方沒有規格，錯誤在我身後形成。」**
@@ -244,27 +223,6 @@ footer: 'Ch02 錯與除錯'
 
 ---
 
-<!-- id: sqa-ch02-ccq2 -->
-## 🙋 概念核對問答 (CCQ 2)
-
-<div class="ccq-columns">
-  <div class="ccq-text">
-
-**問題**：某專案經理向客戶抱怨：「使用者輸入負數年齡導致伺服器當機，這是使用者的操作錯誤，不是我們程式的 Bug，因為規格書上根本沒寫年齡可以是負數！」從現代軟體工程與 SQA 觀點，下列評述何者最為正確？
-
-- **A.** 經理說法完全合理，合約規格未載明的邊界輸入，團隊無防禦義務
-- **B.** 資料庫欄位只要設為整數，程式遭遇任何數值當機皆屬於環境問題
-- **C.** 此屬典型規格遺漏與防禦缺失，系統應驗證非法輸入並優雅回報錯誤
-- **D.** 未明訂之規格只能當作新需求變更，驗收前不應要求修復當機異常
-
-  </div>
-  <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq2" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq2.png" alt="QR Code" /></a>
-  </div>
-</div>
-
----
-
 ## 2.1.3 常見編碼錯誤分類 (1/2)
 
 <style scoped>
@@ -299,6 +257,48 @@ pre code {
 - **4. 多執行緒與並發臭蟲 (Concurrency Bugs)**：
   - **死結 (Deadlock)**：執行緒 A 持有鎖 1 等待鎖 2，執行緒 B 持有鎖 2 等待鎖 1，相互卡死。
   - **競爭條件 (Race Condition)**：缺乏適當同步機制，共享資源的讀寫順序因執行緒調度隨機交錯而產生錯誤狀態。
+
+---
+
+<!-- id: sqa-ch02-ccq1 -->
+## 🙋 概念核對問答 (CCQ 1)
+
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+**問題**：工程師在撰寫銀行轉帳演算法時，誤將手續費計算公式的減號寫成加號，並部署至伺服器。當天日常營運中，所有客戶轉帳金額均未達扣除手續費門檻，無任何客戶發現異常。依據 IEEE 軟體工程定義，此時系統狀態為何？
+
+- **A.** 系統已發生失效 (Failure)
+- **B.** 程式碼中存在缺陷 (Fault/Defect)，但尚未表現為系統失效 (Failure)
+- **C.** 工程師並未犯錯 (Mistake)，因為系統正常運作
+- **D.** 該程式碼完全符合軟體品質的正確性定義
+
+  </div>
+  <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq1" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq1.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+---
+
+<!-- id: sqa-ch02-ccq2 -->
+## 🙋 概念核對問答 (CCQ 2)
+
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+**問題**：某專案經理向客戶抱怨：「使用者輸入負數年齡導致伺服器當機，這是使用者的操作錯誤，不是我們程式的 Bug，因為規格書上根本沒寫年齡可以是負數！」從現代軟體工程與 SQA 觀點，下列評述何者最為正確？
+
+- **A.** 經理說法完全合理，合約規格未載明的邊界輸入，團隊無防禦義務
+- **B.** 資料庫欄位只要設為整數，程式遭遇任何數值當機皆屬於環境問題
+- **C.** 此屬典型規格遺漏與防禦缺失，系統應驗證非法輸入並優雅回報錯誤
+- **D.** 未明訂之規格只能當作新需求變更，驗收前不應要求修復當機異常
+
+  </div>
+  <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq2" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq2.png" alt="QR Code" /></a>
+  </div>
+</div>
 
 ---
 
@@ -592,27 +592,6 @@ public void processOrder(Order order) {
 
 ---
 
-<!-- id: sqa-ch02-ccq3 -->
-## 🙋 概念核對問答 (CCQ 3)
-
-<div class="ccq-columns">
-  <div class="ccq-text">
-
-**問題**：資深工程師在進行 Code Review 時，發現後輩寫了 150 行的付款結帳方法 `checkout()`，內含 5 層 if-else 巢狀判斷，旁邊寫了 40 行詳細註解解釋每層判斷用途。根據 Clean Code 原則，下列重構建議何者最恰當？
-
-- **A.** 只要註解詳細且測試有過，150 行與 5 層巢狀完全可接受
-- **B.** 應利用「提早回傳 (Guard Clauses)」減少巢狀層級，並運用「萃取方法 (Extract Method)」將驗證、算折扣、扣款等子邏輯拆分為具備自我解釋能力的小函式，進而刪除冗餘解釋性註解
-- **C.** 應將註解全部翻譯成英文以提升國際化品質，邏輯不變
-- **D.** 應將 150 行壓縮成一行 Lambda 表達式以減少行數
-
-  </div>
-  <div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq3" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq3.png" alt="QR Code" /></a>
-  </div>
-</div>
-
----
-
 ### 2.2.6 重大迷思：Clean Code 等於沒有 Bug 嗎？
 
 <div class="card-deck">
@@ -642,6 +621,27 @@ public void processOrder(Order order) {
 </div>
 </div>
 
+</div>
+
+---
+
+<!-- id: sqa-ch02-ccq3 -->
+## 🙋 概念核對問答 (CCQ 3)
+
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+**問題**：資深工程師在進行 Code Review 時，發現後輩寫了 150 行的付款結帳方法 `checkout()`，內含 5 層 if-else 巢狀判斷，旁邊寫了 40 行詳細註解解釋每層判斷用途。根據 Clean Code 原則，下列重構建議何者最恰當？
+
+- **A.** 只要註解詳細且測試有過，150 行與 5 層巢狀完全可接受
+- **B.** 應利用「提早回傳 (Guard Clauses)」減少巢狀層級，並運用「萃取方法 (Extract Method)」將驗證、算折扣、扣款等子邏輯拆分為具備自我解釋能力的小函式，進而刪除冗餘解釋性註解
+- **C.** 應將註解全部翻譯成英文以提升國際化品質，邏輯不變
+- **D.** 應將 150 行壓縮成一行 Lambda 表達式以減少行數
+
+  </div>
+  <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch02-ccq3" target="_blank"><img src="../../img/ch02/sqa-ch02-ccq3.png" alt="QR Code" /></a>
+  </div>
 </div>
 
 ---
@@ -1652,6 +1652,26 @@ public class BankAccount {
 
 ---
 
+<!-- _class: title-image-slide -->
+## 2.8.6 防禦三大防線漫畫圖解：斷言、例外與日誌
+
+<div class="image-wrapper">
+  <img src="../../img/ch02/comic_defense_trio.jpg" alt="防禦性程式設計三大防線漫畫" />
+</div>
+
+---
+
+## 2.8.6 防禦性程式設計全景對比
+
+| 防禦維度 | 核心機制 | 應對目標 | 生產環境行為 |
+| :--- | :--- | :--- | :--- |
+| **契約前置條件** | `IllegalArgumentException` | 外部呼叫者違反合約、輸入髒資料 | 永遠啟用，直接阻擋非法請求 |
+| **斷言 (Assertion)** | `assert cond : msg` | 開發者自身的邏輯缺陷、內部狀態不變量 | 預設關閉，可由 `-ea` 參數開啟 |
+| **受檢例外 (Checked)** | `try-catch` / `throws` | 外部環境可預期的異常（網路斷線、檔案遺失） | 永遠啟用，強制呼叫方提供容錯策略 |
+| **系統日誌 (Logging)** | SLF4J / Log4j 2 | 系統運作軌跡、稽核審查、事後根本原因追查 | 透過設定檔動態調整輸出目標與等級 |
+
+---
+
 <!-- id: sqa-ch02-ccq8a -->
 ## 🙋 概念核對問答 (CCQ 8A：日誌傳播與 additivity)
 
@@ -1698,26 +1718,6 @@ public class BankAccount {
     <br><small>2.8 效能與 MDC</small>
   </div>
 </div>
-
----
-
-<!-- _class: title-image-slide -->
-## 2.8.6 防禦三大防線漫畫圖解：斷言、例外與日誌
-
-<div class="image-wrapper">
-  <img src="../../img/ch02/comic_defense_trio.jpg" alt="防禦性程式設計三大防線漫畫" />
-</div>
-
----
-
-## 2.8.6 防禦性程式設計全景對比
-
-| 防禦維度 | 核心機制 | 應對目標 | 生產環境行為 |
-| :--- | :--- | :--- | :--- |
-| **契約前置條件** | `IllegalArgumentException` | 外部呼叫者違反合約、輸入髒資料 | 永遠啟用，直接阻擋非法請求 |
-| **斷言 (Assertion)** | `assert cond : msg` | 開發者自身的邏輯缺陷、內部狀態不變量 | 預設關閉，可由 `-ea` 參數開啟 |
-| **受檢例外 (Checked)** | `try-catch` / `throws` | 外部環境可預期的異常（網路斷線、檔案遺失） | 永遠啟用，強制呼叫方提供容錯策略 |
-| **系統日誌 (Logging)** | SLF4J / Log4j 2 | 系統運作軌跡、稽核審查、事後根本原因追查 | 透過設定檔動態調整輸出目標與等級 |
 
 ---
 
