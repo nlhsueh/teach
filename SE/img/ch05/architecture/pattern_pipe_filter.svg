@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 340" width="100%" height="100%">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+    <marker id="arrow-pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+  </defs>
+
+  <rect width="880" height="340" fill="#f8fafc" rx="12" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Pattern Header Badge -->
+  <rect x="24" y="16" width="300" height="28" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+  <text x="34" y="35" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#0369a1">ARCHITECTURAL PATTERN</text>
+  <text x="180" y="35" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#64748b">05 / PIPE &amp; FILTER</text>
+
+  <!-- Flow Sequence: Source -> Pipe -> Filter 1 -> Pipe -> Filter 2 -> Pipe -> Filter 3 -> Pipe -> Sink -->
+  <!-- Top: Pipeline Diagram -->
+  <g transform="translate(30, 65)">
+    <!-- Source -->
+    <g transform="translate(0, 30)">
+      <rect width="95" height="70" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="1.5" filter="url(#shadow)" />
+      <text x="47" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">資料來源</text>
+      <text x="47" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Data Source</text>
+      <text x="47" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#0284c7" text-anchor="middle">(檔案/串流)</text>
+    </g>
+
+    <!-- Pipe 1 -->
+    <g transform="translate(95, 52)">
+      <line x1="0" y1="13" x2="35" y2="13" stroke="#0284c7" stroke-width="3" marker-end="url(#arrow-pf)" />
+      <text x="18" y="6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#0284c7" text-anchor="middle">Pipe</text>
+    </g>
+
+    <!-- Filter 1 -->
+    <g transform="translate(140, 20)">
+      <rect width="130" height="90" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+      <rect x="0" y="0" width="130" height="26" rx="8" fill="#0284c7" />
+      <rect x="0" y="16" width="130" height="10" fill="#0284c7" />
+      <text x="65" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">過濾器 1 (解析)</text>
+      <text x="65" y="45" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">Parser / Ingest</text>
+      <text x="65" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">讀取字串並拆解</text>
+      <text x="65" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#0284c7" text-anchor="middle">如: JSON.parse()</text>
+    </g>
+
+    <!-- Pipe 2 -->
+    <g transform="translate(270, 52)">
+      <line x1="0" y1="13" x2="35" y2="13" stroke="#0284c7" stroke-width="3" marker-end="url(#arrow-pf)" />
+      <text x="18" y="6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#0284c7" text-anchor="middle">Pipe</text>
+    </g>
+
+    <!-- Filter 2 -->
+    <g transform="translate(315, 20)">
+      <rect width="130" height="90" rx="8" fill="#ffffff" stroke="#059669" stroke-width="2" filter="url(#shadow)" />
+      <rect x="0" y="0" width="130" height="26" rx="8" fill="#059669" />
+      <rect x="0" y="16" width="130" height="10" fill="#059669" />
+      <text x="65" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">過濾器 2 (清洗)</text>
+      <text x="65" y="45" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">Filter / Clean</text>
+      <text x="65" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">剔除髒資料/無效值</text>
+      <text x="65" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#059669" text-anchor="middle">如: grep / validate</text>
+    </g>
+
+    <!-- Pipe 3 -->
+    <g transform="translate(445, 52)">
+      <line x1="0" y1="13" x2="35" y2="13" stroke="#0284c7" stroke-width="3" marker-end="url(#arrow-pf)" />
+      <text x="18" y="6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#0284c7" text-anchor="middle">Pipe</text>
+    </g>
+
+    <!-- Filter 3 -->
+    <g transform="translate(490, 20)">
+      <rect width="130" height="90" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+      <rect x="0" y="0" width="130" height="26" rx="8" fill="#d97706" />
+      <rect x="0" y="16" width="130" height="10" fill="#d97706" />
+      <text x="65" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">過濾器 3 (聚合)</text>
+      <text x="65" y="45" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">Aggregate / Score</text>
+      <text x="65" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">計算統計加權分數</text>
+      <text x="65" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#d97706" text-anchor="middle">如: reduce / sort</text>
+    </g>
+
+    <!-- Pipe 4 -->
+    <g transform="translate(620, 52)">
+      <line x1="0" y1="13" x2="35" y2="13" stroke="#0284c7" stroke-width="3" marker-end="url(#arrow-pf)" />
+      <text x="18" y="6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#0284c7" text-anchor="middle">Pipe</text>
+    </g>
+
+    <!-- Sink -->
+    <g transform="translate(665, 30)">
+      <rect width="95" height="70" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="1.5" filter="url(#shadow)" />
+      <text x="47" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">資料目標</text>
+      <text x="47" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Data Sink</text>
+      <text x="47" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#059669" text-anchor="middle">(報表/資料庫)</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Unix CLI Analogy & Key Insights -->
+  <g transform="translate(30, 195)">
+    <!-- Unix Terminal Box -->
+    <g transform="translate(0, 0)">
+      <rect width="470" height="120" rx="8" fill="#1e293b" filter="url(#shadow)" />
+      <rect x="0" y="0" width="470" height="24" rx="8" fill="#0f172a" />
+      <circle cx="14" cy="12" r="4" fill="#ef4444" />
+      <circle cx="28" cy="12" r="4" fill="#f59e0b" />
+      <circle cx="42" cy="12" r="4" fill="#10b981" />
+      <text x="65" y="16" font-family="Courier, monospace" font-size="11" fill="#94a3b8">Terminal (Unix Pipe Analogy)</text>
+
+      <text x="18" y="52" font-family="Courier, monospace" font-size="13" font-weight="700" fill="#38bdf8">$ cat access.log | grep "500" | sort | uniq -c</text>
+      <text x="18" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">每個過濾器均可獨立編寫、測試、替換，無須知道前後是誰！</text>
+      <text x="18" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#38bdf8">極致模組化：資料以標準串流（Streams）無縫貫通全管線。</text>
+    </g>
+
+    <!-- Right: Architecture Insights Card -->
+    <g transform="translate(490, 0)">
+      <rect width="330" height="120" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)" />
+      <text x="16" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#0284c7">最佳適用：</text>
+      <text x="80" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#334155">大數據處理、批次結算、編譯器轉換管線</text>
+
+      <line x1="16" y1="38" x2="314" y2="38" stroke="#f1f5f9" stroke-width="1" />
+
+      <text x="16" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#059669">核心優勢：</text>
+      <text x="80" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#334155">高度可重組、各過濾器可輕鬆並發平行運算</text>
+
+      <line x1="16" y1="70" x2="314" y2="70" stroke="#f1f5f9" stroke-width="1" />
+
+      <text x="16" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e11d48">架構代價：</text>
+      <text x="80" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#334155">不適合高頻雙向互動軟體；資料反覆序列化耗能</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 340" width="100%" height="100%">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+    <marker id="arrow-both" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#0284c7" />
+    </marker>
+    <marker id="arrow-repo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+  </defs>
+
+  <rect width="880" height="340" fill="#f8fafc" rx="12" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Pattern Header Badge -->
+  <rect x="24" y="16" width="280" height="28" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+  <text x="34" y="35" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#0369a1">ARCHITECTURAL PATTERN</text>
+  <text x="180" y="35" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#64748b">03 / REPOSITORY</text>
+
+  <!-- Central Repository Cylinder/Box -->
+  <g transform="translate(230, 95)">
+    <rect width="200" height="170" rx="12" fill="#ffffff" stroke="#0284c7" stroke-width="2.5" filter="url(#shadow)" />
+    <!-- Cylinder Top -->
+    <path d="M 30 35 C 30 15, 170 15, 170 35 C 170 55, 30 55, 30 35 Z" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <path d="M 30 35 L 30 75 C 30 95, 170 95, 170 75 L 170 35" fill="#f0f9ff" stroke="#0284c7" stroke-width="2" />
+    <path d="M 30 75 L 30 115 C 30 135, 170 135, 170 115 L 170 75" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <text x="100" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#0369a1" text-anchor="middle">中央儲存庫</text>
+    <text x="100" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#0284c7" text-anchor="middle">Central Repository</text>
+    <text x="100" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#334155" text-anchor="middle">共用記憶體 / 資料庫</text>
+    <text x="100" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">(例如 IDE 之 AST 樹)</text>
+  </g>
+
+  <!-- Surrounding Subsystems -->
+  <!-- Subsystem 1: Editor (Top Left) -->
+  <g transform="translate(30, 56)">
+    <rect width="140" height="60" rx="8" fill="#ffffff" stroke="#6366f1" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="70" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#312e81" text-anchor="middle">編輯與高亮器</text>
+    <text x="70" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#6366f1" text-anchor="middle">Code Editor</text>
+  </g>
+  <!-- Arrow 1 -->
+  <line x1="170" y1="95" x2="230" y2="135" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-repo)" marker-start="url(#arrow-repo)" />
+
+  <!-- Subsystem 2: Compiler (Bottom Left) -->
+  <g transform="translate(30, 215)">
+    <rect width="140" height="60" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="70" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#064e3b" text-anchor="middle">編譯與語法分析</text>
+    <text x="70" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#059669" text-anchor="middle">Compiler / Parser</text>
+  </g>
+  <!-- Arrow 2 -->
+  <line x1="170" y1="235" x2="230" y2="205" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-repo)" marker-start="url(#arrow-repo)" />
+
+  <!-- Subsystem 3: Linter (Top Right of Repo) -->
+  <g transform="translate(485, 56)">
+    <rect width="140" height="60" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="70" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#78350f" text-anchor="middle">語法檢查器</text>
+    <text x="70" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#d97706" text-anchor="middle">Linter &amp; Types</text>
+  </g>
+  <!-- Arrow 3 -->
+  <line x1="485" y1="95" x2="430" y2="135" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-repo)" marker-start="url(#arrow-repo)" />
+
+  <!-- Subsystem 4: Debugger (Bottom Right of Repo) -->
+  <g transform="translate(485, 215)">
+    <rect width="140" height="60" rx="8" fill="#ffffff" stroke="#e11d48" stroke-width="1.8" filter="url(#shadow)" />
+    <text x="70" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#881337" text-anchor="middle">互動式除錯器</text>
+    <text x="70" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#e11d48" text-anchor="middle">Debugger</text>
+  </g>
+  <!-- Arrow 4 -->
+  <line x1="485" y1="235" x2="430" y2="205" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-repo)" marker-start="url(#arrow-repo)" />
+
+  <!-- Right: Insights Card -->
+  <g transform="translate(650, 56)">
+    <rect width="205" height="258" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)" />
+    <rect x="0" y="0" width="205" height="34" rx="10" fill="#f1f5f9" />
+    <rect x="0" y="24" width="205" height="10" fill="#f1f5f9" />
+    <text x="102" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">架構運作特性</text>
+
+    <text x="14" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#0284c7">星狀被動協作：</text>
+    <text x="14" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#475569">各子系統互不相識，</text>
+    <text x="14" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#475569">全依賴中央儲存庫</text>
+    <text x="14" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#475569">交換大規模共享資料。</text>
+
+    <line x1="14" y1="124" x2="191" y2="124" stroke="#f1f5f9" stroke-width="1.5" />
+
+    <text x="14" y="146" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#059669">核心優勢：</text>
+    <text x="14" y="164" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#475569">共享海量複雜資料極快，</text>
+    <text x="14" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#475569">無跨行程複製開銷。</text>
+
+    <line x1="14" y1="196" x2="191" y2="196" stroke="#f1f5f9" stroke-width="1.5" />
+
+    <text x="14" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e11d48">單點故障 (SPOF)：</text>
+    <text x="14" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#475569">儲存庫崩潰或鎖死，</text>
+    <text x="14" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#475569">所有相依工具全數癱瘓！</text>
+  </g>
+</svg>

@@ -1,54 +1,50 @@
----
 marp: true
 theme: ase-theme
 paginate: true
-header: 'Software Engineering | Ch 05: Software Architecture & Design'
+header: 'Software Engineering | Ch 05: Software Design, Architecture & Principles'
 footer: 'Prof. Nien-Lin Hsueh'
 ---
-
 <!-- _class: lead -->
 <!-- header: '' -->
 
 # **Software Engineering**
-
-### Chapter 5: Software Architecture & Design
+### Chapter 5: Software Design, Architecture & OO Principles
+#### From Universal Foundations & Architecture Modeling to SOLID Craftsmanship
 
 **Prof. Nien-Lin Hsueh**
 Department of Information Engineering and Computer Science
 Feng Chia University
 
 <!--
-Welcome everyone to Lecture 5 of Software Engineering: Software Architecture and Object-Oriented Design.
+Welcome everyone to Lecture 5 of Software Engineering: Software Design, Architecture, and Object-Oriented Principles.
 
-In the previous chapters, we analyzed what the customer needs through Requirements Engineering, and how to visually model system boundaries through System Modeling. Today, we answer the ultimate engineering question: How do we structure the system so that it remains robust, scalable, and maintainable over decades?
+In previous chapters, we analyzed what the customer needs through Requirements Engineering (What to build), and modeled system behavioral boundaries through System Modeling. Today, we cross the threshold into the most creative and consequential phase of engineering: Software Design (How to build)—how do we structure systems so that they scale, adapt, and remain maintainable over decades?
 
-Software architecture and design represent the vital link between requirements and implementation. In this lecture, we examine Kruchten's 4+1 views, explore classic architectural patterns from MVC to Microservices, unpack the golden rule of High Cohesion and Low Coupling, master the foundational SOLID design principles, and see how modern AI copilots assist architects in trade-off analysis and refactoring.
+In today's lecture, we establish a comprehensive pedagogical journey. We begin with universal design principles—modularity, abstraction, and the timeless golden rule of High Cohesion and Low Coupling. With these foundations in place, we demystify Software Architecture: how architects actually design and model systems beyond mere patterns, utilizing Kruchten's 4+1 views, the modern C4 model, and Architecture Decision Records (ADRs). Next, we explore classic architectural patterns and trade-offs, zoom into micro-level SOLID object-oriented principles, and see how modern AI copilots empower architects while avoiding costly blind spots.
 
-To summarize this slide, remember this key takeaway: Architecture and design establish the structural foundation that enables software systems to scale, adapt, and endure.
+To summarize this slide, remember this key takeaway: Software design establishes the structural blueprints that enable software systems to scale, adapt, and endure across decades.
 -->
 ---
-
 <!-- _class: outline-slide -->
 
 ## Chapter 5: Roadmap & Core Curriculum
 
 <div class="outline-columns">
 <div>
-<h3>Part 1: Architectural Design</h3>
+<h3>Part 1: Foundations & Architecture</h3>
 <ul>
-<li><b>5.1 Foundations of Architecture:</b> The critical bridge from requirements to design, abstraction in the small vs. large.</li>
-<li><b>5.2 Kruchten's 4+1 Views:</b> Logical, process, development, physical views unified by central scenarios.</li>
-<li><b>5.3 Classic Architectural Patterns:</b> Layered, repository, client-server, pipe-and-filter, MVC, and microservices.</li>
-<li><b>5.4 Architecture & Quality Attributes:</b> Non-functional trade-offs: performance, security, availability, and safety.</li>
+<li><b>5.1 Software Design Foundations:</b> From requirements to blueprints, why design matters, the 4 design levels, and learning roadmap.</li>
+<li><b>5.2 Universal Design Principles:</b> Modularity, abstraction, information hiding, separation of concerns, high cohesion & low coupling.</li>
+<li><b>5.3 Software Architecture & Modeling:</b> Beyond patterns: ASRs, decomposition, UML vs. C4 model, 4+1 views, and ADRs.</li>
+<li><b>5.4 Architectural Patterns & Trade-offs:</b> Layered, repository, client-server, pipe-and-filter, MVC, microservices, and ATAM.</li>
 </ul>
 </div>
 <div>
-<h3>Part 2: Detailed Design & Principles</h3>
+<h3>Part 2: Detailed Design, AI & Synthesis</h3>
 <ul>
-<li><b>5.5 Fundamentals of Software Design:</b> Design activities, modularity, information hiding, high cohesion & low coupling.</li>
-<li><b>5.6 SOLID Design Principles:</b> SRP, OCP, LSP, ISP, and DIP with real-world refactoring examples.</li>
-<li><b>5.7 AI in Architecture & Design:</b> AI copilots for trade-off analysis, refactoring, code smell detection, and risks.</li>
-<li><b>5.8 Conceptual Recap & Synthesis:</b> Core principles review, fill-in-the-blank self-assessment quiz, and literature.</li>
+<li><b>5.5 SOLID Object-Oriented Principles:</b> SRP, OCP, LSP, ISP, and DIP with real-world refactoring examples.</li>
+<li><b>5.6 AI in Architecture & Design:</b> AI copilots for trade-off analysis, refactoring, code smell detection, and blind spot mitigations.</li>
+<li><b>5.7 Conceptual Synthesis & References:</b> Core principles review, multi-dimensional self-assessment, and literature.</li>
 </ul>
 </div>
 </div>
@@ -56,553 +52,184 @@ To summarize this slide, remember this key takeaway: Architecture and design est
 <!--
 Here is our roadmap for Chapter 5.
 
-We begin in 5.1 with the core definitions of software architecture and the distinction between architecture in the small versus architecture in the large.
+We begin in 5.1 with a comprehensive overview of Software Design: distinguishing design from coding, understanding why design dictates project survival, and deconstructing the four levels of design.
 
-In 5.2, we study Kruchten's 4+1 Architectural View Model, providing a multi-dimensional perspective for different stakeholders.
+In 5.2, we introduce Universal Software Design Principles first! Why? Because concepts like High Cohesion, Low Coupling, and Separation of Concerns are the fundamental physics of software design—governing everything from distributed microservices down to individual Java classes.
 
-In 5.3, we dive into classic Architectural Patterns: Layered, Repository, Client-Server, Pipe and Filter, Model-View-Controller, and modern Microservices.
+In 5.3, we explore Software Architecture & Modeling: answering the critical questions of how architects actually derive architectures from requirements, how to draw architecture using UML versus the modern C4 model, Kruchten's 4+1 views, and how to document decisions with ADRs.
 
-In 5.4, we examine how architecture directly drives non-functional quality attributes such as performance and security.
+In 5.4, we analyze classic Architectural Patterns and non-functional quality attribute trade-offs using ATAM.
 
-In 5.5, we zoom into detailed Software Design, examining modularity, information hiding, and the golden rule: High Cohesion and Low Coupling.
+In 5.5, we zoom into micro detailed design with the five foundational SOLID principles.
 
-In 5.6, we master the SOLID object-oriented principles with concrete before-and-after code examples.
+Finally, in 5.6 and 5.7, we examine AI architectural copilots and synthesize our key engineering takeaways.
 
-Finally, in 5.7, we explore AI as an architectural copilot, followed by our conceptual recap in 5.8.
-
-To summarize this slide, remember this key takeaway: This roadmap guides our journey from macro-level enterprise architecture to micro-level object-oriented design excellence.
--->
----
-## Focus Questions
-
-* What is **Software Architecture** and why does it serve as the critical link between requirements and detailed design?
-* How does **Architecture in the Small** differ from **Architecture in the Large**?
-* What are Kruchten's **4+1 Architectural Views** and how do they satisfy diverse stakeholder needs?
-* How do classic **Architectural Patterns** (Layered, Repository, Client-Server, Pipe & Filter, MVC, Microservices) structure software?
-* Why is **High Cohesion and Low Coupling** the universal golden rule of software engineering?
-* How do the **5 SOLID Principles** (SRP, OCP, LSP, ISP, DIP) prevent architectural rot and rigidity?
-* How can **Generative AI** assist software architects while safeguarding against architectural blind spots?
-
-<!--
-Keep these focus questions in mind throughout our lecture today.
-
-First, why is software architecture the most consequential technical decision made in a software project?
-
-Second, how do Kruchten's 4+1 views bridge the communication gap between business managers, system programmers, and DevOps infrastructure teams?
-
-Third, what are the fundamental architectural trade-offs between monolithic databases and distributed microservices?
-
-Fourth, why do we strive relentlessly for high cohesion and low coupling across classes and modules?
-
-And finally, how do the five SOLID principles protect codebases from decaying into unmaintainable legacy spaghetti?
-
-To summarize this slide, remember this key takeaway: These focus questions provide our analytical framework for evaluating software architecture and design.
+To summarize this slide, remember this key takeaway: This roadmap establishes universal design principles first, ascends to macro architecture and modeling, and descends into micro-level object-oriented craftsmanship.
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.1 Foundations of Architecture' -->
+<!-- header: '5.1 Software Design Foundations' -->
 
-# **5.1 Foundations of Software Architecture**
-
-> "Software architecture is the set of design decisions which, if made incorrectly, may cause your project to fail."  
-> — *Eoin Woods*
-
-<!--
-Welcome to Module 5.1: Foundations of Software Architecture.
-
-Software architecture is not about choosing whether to use a for-loop or a while-loop. It is the high-level blueprint that defines how major sub-systems are partitioned, how they communicate across process boundaries, and how data flows through the enterprise.
-
-In this section, we examine the bridge role of architecture, explore the advantages of making architecture explicit, and distinguish between architecture in the small and architecture in the large.
-
-To summarize this slide, remember this key takeaway: Software architecture establishes the fundamental organization of a system, governing its structural components and interactions.
--->
----
-## What is Software Architecture?
-
-> The fundamental organization of a software system embodied in its components, their relationships to each other and the environment, and the principles guiding its design and evolution.
-
-* **The Critical Bridge Role:**
-  - Connects **Requirements Engineering** (*what the customer needs*) to **Detailed Software Design** (*how components are constructed*).
-  - Identifies principal structural components and defines their public communication interfaces.
-* **Architecture as Design Decisions:**
-  - Architecture represents the early, high-impact design decisions that are **costliest to change** once implementation begins.
-
-<!--
-Let's define Software Architecture.
-
-Software architecture is the fundamental organization of a system embodied in its components, their relationships to each other and the environment, and the principles guiding its design and evolution.
-
-Notice its bridge role: Requirements engineering tells us *what* needs to be built. Coding is *how* individual lines are written. Architecture is the bridge in between—it determines the principal structural modules, the data persistence strategy, and the network communication protocols.
-
-Because architectural decisions are the hardest and most expensive to change later, getting the architecture right early is vital to project success.
-
-To summarize this slide, remember this key takeaway: Software architecture bridges requirements and code by establishing high-level component structures and communication boundaries.
--->
----
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
-  <img src="../../img/ch05/design/02_connection.jpeg" alt="Connecting the What to the How" />
-</div>
-
-<!--
-Look at this visual illustration: 'Connecting the What to the How.'
-
-On the left, we have Requirements Engineering: stakeholder interviews, user stories, and non-functional constraints—defining *what* problem must be solved.
-
-On the right, we have Implementation: thousands of lines of source code, unit tests, and database queries—representing *how* the system executes.
-
-In the center, bridging the chasm, sits Software Architecture! Architecture transforms messy human desires into structured sub-systems, service interfaces, and deployment topology.
-
-To summarize this slide, remember this key takeaway: Architecture is the intellectual keystone that translates requirements into an executable software reality.
--->
----
-## Architectural Abstraction Levels
-
-* **Architecture in the Small:**
-  - Concerned with the design of individual programs, microservices, or client applications.
-  - Focuses on how a single program is decomposed into sub-components, packages, and object classes.
-  - Directly influences internal code readability, testability, and refactoring velocity.
-* **Architecture in the Large:**
-  - Concerned with complex enterprise systems composed of interacting multi-system networks.
-  - Systems are distributed across multiple servers, cloud regions, and external vendor platforms.
-  - Encompasses legacy database integration, message queues, and cross-organizational API contracts.
-
-<!--
-We distinguish between two levels of architectural abstraction:
-
-Architecture in the Small focuses on a single application or microservice: How do we organize classes into packages? How do we decouple the controller from the database repository?
-
-Architecture in the Large zooms out to the entire enterprise: How do dozens of separate applications, legacy mainframes, mobile apps, and third-party SaaS services interact across distributed cloud networks?
-
-A senior software engineer must be comfortable navigating both levels—ensuring individual services are cleanly designed while orchestrating enterprise-wide integration.
-
-To summarize this slide, remember this key takeaway: Architecture spans micro-level package decomposition (in the small) to distributed enterprise ecosystems (in the large).
--->
----
-## Advantages of Explicit Software Architecture
-
-1. **Stakeholder Communication:**
-   - High-level architectural diagrams act as a common focus of discussion between technical teams, business executives, and external clients without getting bogged down in code syntax.
-2. **System Analysis & Non-Functional Verification:**
-   - Enables early verification of whether the proposed design can satisfy critical **non-functional requirements** (e.g., peak latency, fault tolerance, compliance).
-3. **Large-Scale Reuse:**
-   - Architectural patterns and component frameworks can be systematically reused across entire product families in the same domain.
-
-<!--
-Why should software teams invest time in making architecture explicit rather than just coding?
-
-Three primary reasons:
-First, Stakeholder Communication: An architectural diagram is understandable to business executives and product managers. It allows everyone to align on system scope without drowning in code.
-Second, System Analysis: You can evaluate whether the system will survive peak Black Friday traffic *before* writing a single line of backend code, by analyzing database bottlenecks and network hops.
-Third, Large-Scale Reuse: Mature engineering organizations reuse core architectural styles and microservice chassis across dozens of products.
-
-To summarize this slide, remember this key takeaway: Explicit architecture facilitates stakeholder alignment, enables early quality verification, and promotes large-scale reuse.
--->
----
-<!-- _class: lead -->
-<!-- header: "5.2 Kruchten's 4+1 Views" -->
-
-# **5.2 Kruchten's 4+1 Architectural Views**
-
-> "If you look at an architecture from only one perspective, you are blind to three-quarters of its reality."  
-> — *Philippe Kruchten*
-
-<!--
-We now enter Module 5.2: Kruchten's 4+1 Architectural View Model.
-
-Different stakeholders care about completely different aspects of a software system. A business analyst cares about domain concepts; a programmer cares about packages and libraries; a systems operator cares about network servers and CPU clusters.
-
-In this section, we study Philippe Kruchten's classic 4+1 View Model, exploring how the Logical, Process, Development, and Physical views are unified through user scenarios.
-
-To summarize this slide, remember this key takeaway: Kruchten's 4+1 model provides a multi-view framework that addresses the distinct concerns of all software stakeholders.
--->
----
-## Kruchten's 4+1 Architectural View Model
-
-* **1. Logical View (Domain / Object Perspective):**
-  - Shows key domain abstractions, object classes, and relationships (*Target Audience: System Analysts & Customers*).
-* **2. Process View (Concurrency / Runtime Perspective):**
-  - Shows runtime processes, threads, concurrency, and inter-process communication (*Target Audience: Integrators & Performance Engineers*).
-* **3. Development View (Module / Implementation Perspective):**
-  - Shows software packages, build artifacts, libraries, and source code hierarchies (*Target Audience: Software Developers*).
-* **4. Physical View (Deployment / Infrastructure Perspective):**
-  - Shows physical server hardware, cloud containers, and network topology (*Target Audience: DevOps & System Administrators*).
-* **+1 Scenarios (Use Cases):**
-  - Unifies and validates all four views by demonstrating how they execute real user journeys together.
-
-<!--
-Let's examine Philippe Kruchten's landmark 4+1 View Model:
-
-The Logical View represents the system's functional domain—object classes, entities, and services.
-The Process View captures the dynamic runtime behavior—processes, threads, race conditions, and message brokers.
-The Development View organizes the source code—modules, packages, frameworks, and build scripts.
-The Physical View maps the software onto infrastructure—cloud clusters, Docker containers, load balancers, and network firewalls.
-
-And the '+1' in the center represents Scenarios and Use Cases: they tie the four views together by walking through concrete user interactions.
-
-To summarize this slide, remember this key takeaway: Kruchten's 4+1 model synthesizes logical, process, development, and physical views anchored by user scenarios.
--->
----
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
-  <img src="../../img/ch05/design/04_five_perspective.jpeg" alt="Five Perspectives One Unified Blueprint" />
-</div>
-
-<!--
-Look at this visual illustration: 'Five Perspectives, One Unified Blueprint.'
-
-Notice how the four outer view boxes surround the central '+1 Scenarios' circle.
-
-No single architectural diagram can satisfy every stakeholder. When talking to a database administrator, you pull up the Physical and Process views. When onboarding a new junior developer, you open the Development and Logical views. When speaking to a product manager, you anchor discussions in the central Scenarios.
-
-To summarize this slide, remember this key takeaway: Multi-view architecture delivers tailored structural perspectives for developers, operators, and business stakeholders.
--->
----
-### Concept Check Question 1
-<div class="ccq-columns">
-  <div class="ccq-text">
-
-Which architectural view in Kruchten's 4+1 View Model illustrates how software components are deployed across physical hardware servers, cloud containers, and network topology at runtime?
-
-- **A.** Logical View
-- **B.** Process View
-- **C.** Development View
-- **D.** Physical (Deployment) View
-
-  </div>
-  <div class="ccq-logo">
-    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
-  </div>
-</div>
-
-<!--
-Let's test our understanding with Concept Check Question 1.
-
-Look at the prompt: Which view illustrates how components are deployed across physical hardware servers, cloud containers, and network topology?
-
-Let's evaluate the options:
-Option A, Logical View, shows domain object classes.
-Option B, Process View, shows runtime threads and concurrency.
-Option C, Development View, shows source code packages and libraries.
-
-The correct answer is Option D, the Physical (or Deployment) View! The physical view maps software artifacts onto physical or virtual execution environments, showing servers, load balancers, and network routers.
-
-To summarize this slide, remember this key takeaway: The Physical View models the deployment topology of software components on hardware and cloud infrastructure.
--->
----
-<!-- _class: lead -->
-<!-- header: '5.3 Architectural Patterns' -->
-
-# **5.3 Classic Architectural Patterns**
-
-> "Good architects borrow; great architects reuse proven architectural patterns."
-
-<!--
-Now we transition into Module 5.3: Classic Architectural Patterns.
-
-Architects rarely invent entirely new system structures from scratch. Over decades of software history, recurring design problems have given rise to proven, reusable architectural styles known as Architectural Patterns.
-
-In this section, we study six foundational patterns: Model-View-Controller, Layered, Repository, Client-Server, Pipe and Filter, and modern Microservices.
-
-To summarize this slide, remember this key takeaway: Architectural patterns provide proven, standardized structural templates for solving recurring software organization challenges.
--->
----
-## What is an Architectural Pattern?
-
-> A stylized, tested description of good design practice that has been tried and tested in different environments and is applicable to common structural scenarios.
-
-* **Pattern Anatomy:**
-  - **Pattern Name:** Meaningful identifier (*MVC*, *Layered*, *Repository*).
-  - **Context & Problem:** Common structural challenge the pattern addresses.
-  - **Solution:** Description of principal components and their communication relationships.
-  - **Trade-offs:** Clear articulation of advantages and architectural penalties.
-* **Why Patterns Matter:**
-  - Establishes a common vocabulary across engineering teams.
-  - Prevents teams from reinventing flawed architectural solutions.
-
-<!--
-What is an Architectural Pattern?
-
-An architectural pattern is a stylized, tested description of good design practice that has been proven in diverse real-world environments.
-
-Notice that a pattern is not code; it is a structural template. When an architect says 'We are building an MVC web app with a repository backend,' every engineer on the team instantly understands the high-level component structure and communication paths.
-
-Patterns provide a shared engineering vocabulary and document proven trade-offs.
-
-To summarize this slide, remember this key takeaway: Architectural patterns encapsulate proven structural wisdom, establishing a shared vocabulary and predictable trade-offs.
--->
----
-## 1. Model-View-Controller (MVC) Pattern
-
-* **Component Separation:**
-  - **Model:** Manages core business domain logic, data state, and persistence rules.
-  - **View:** Renders user interfaces and presents data to human users.
-  - **Controller:** Intercepts user inputs (clicks, HTTP requests), invokes Model updates, and selects Views.
-* **Core Advantage:**
-  - **Decouples Data from Presentation:** Multiple simultaneous views (web dashboard, mobile JSON API) can observe the same underlying model without modifying business logic.
-
-<div style="text-align: center; margin-top: 10px;">
-  <img src="../../img/ch05/architecture/mvc_structure.png" style="max-height: 280px; width: auto;" alt="MVC Structure" />
-</div>
-
-<!--
-The Model-View-Controller (MVC) pattern is the bedrock of interactive GUI and modern web application development.
-
-Notice the division of responsibilities:
-The Model represents the data and business rules. It knows nothing about HTML or buttons.
-The View renders the interface.
-The Controller listens for user input events and translates them into model updates.
-
-The brilliant advantage of MVC is decoupling: you can build a desktop view, a mobile view, and an administrative dashboard that all share the exact same underlying Model without duplicating a single line of business logic.
-
-To summarize this slide, remember this key takeaway: MVC cleanly separates business domain data from user interface presentation and input event handling.
--->
----
-## 2. Layered Architecture Pattern
-
-* **Stacked Abstraction Layers:**
-  - Organizes system functionality into ordered layers. Each layer provides services to the layer directly above it, and relies only on the layer directly below it.
-* **Standard Enterprise Layers:**
-  - **Presentation Layer:** UI, HTTP endpoints, view controllers.
-  - **Application / Service Layer:** Workflow orchestration, transaction boundaries.
-  - **Domain / Business Layer:** Pure domain logic, business rules, entities.
-  - **Infrastructure / Data Layer:** Database access, external third-party APIs.
-* **Key Advantage:**
-  - **Modifiability & Isolation:** An entire layer can be replaced (e.g., swapping Oracle for PostgreSQL) without breaking upper business layers, provided interface contracts remain stable.
-
-<!--
-The Layered Architecture pattern is the classic organizing principle of enterprise software.
-
-Think of it like an operating system: high-level applications don't talk directly to hard drive magnetic heads; they talk to the file system layer, which talks to the device driver layer.
-
-In enterprise software, the Presentation layer talks to the Service layer, which talks to the Domain layer, which talks to the Database infrastructure layer.
-
-This strict downward dependency isolates change: if you switch your database from MySQL to DynamoDB, only the Infrastructure layer changes. Your core business rules remain untouched.
-
-To summarize this slide, remember this key takeaway: Layered architectures isolate change by enforcing strict downward dependencies across stacked levels of abstraction.
--->
----
-## 3. Repository Architecture Pattern
-
-* **Centralized Data Sharing:**
-  - Sub-systems exchange large volumes of complex data through a shared, centralized repository or data store.
-  - Sub-systems operate independently; interactions occur strictly through repository state modifications.
-* **Prominent Examples:**
-  - Modern IDEs (VS Code language servers, Eclipse workspace repositories).
-  - Computer-Aided Design (CAD) engineering suites.
-  - Electronic Medical Health Record (EHR) central patient databases.
-* **Architectural Trade-offs:**
-  - *Pro:* Efficient for sharing massive, interconnected data sets.
-  - *Con:* The central repository is a potential **Single Point of Failure (SPOF)** and performance bottleneck.
-
-<!--
-In a Repository Architecture, multiple independent sub-systems interact entirely through a shared central database.
-
-Think of an IDE like VS Code: the syntax highlighter, the compiler, the linter, and the debugger are all separate tools, but they share a single central in-memory repository representing the Abstract Syntax Tree of your code.
-
-The advantage is data sharing efficiency without passing gigabytes across network sockets.
-The trade-off is vulnerability: if the central repository crashes or corrupts data, all dependent sub-systems halt immediately.
-
-To summarize this slide, remember this key takeaway: Repository architectures center sub-system collaboration around a shared data store, trading centralization for data sharing efficiency.
--->
----
-## 4. Client-Server & Pipe-and-Filter Patterns
-
-* **Client-Server Architecture:**
-  - Functionality is distributed between **Servers** offering specialized services (database, compute, auth) and **Clients** requesting services over a network.
-  - *Trade-off:* High scalability across commodity hardware, but vulnerable to network latency and server connection saturation.
-* **Pipe-and-Filter Architecture:**
-  - Processing is organized as a discrete sequence of transformations (**Filters**) connected by data streams (**Pipes**).
-  - Output of filter $N$ becomes the input stream of filter $N+1$.
-  - *Classic Example:* Unix terminal commands (`cat log.txt | grep 'ERROR' | sort | uniq -c`).
-  - *Best Suited For:* Batch billing processing, data analytics pipelines, compiler toolchains.
-
-<!--
-Here we compare two classic patterns:
-
-Client-Server distributes processing across a network. Clients make requests, servers return responses. It is the architectural engine of the World Wide Web.
-
-Pipe-and-Filter structures computation as a pipeline of independent transformation steps connected by data streams. The beauty of Pipe-and-Filter is composability: you can rearrange, add, or remove filters without rewriting the surrounding pipeline, just like Unix terminal commands.
-
-To summarize this slide, remember this key takeaway: Client-server distributes network computing; pipe-and-filter decomposes stream processing into independent transformational stages.
--->
----
-## 5. Microservices Architecture (MSA) vs. Monolith
-
-* **Monolithic Architecture:**
-  - All features, business logic, and database schemas packaged and deployed as a single unified executable binary.
-  - *Pro:* Simple to develop and deploy early; zero network serialization overhead.
-  - *Con:* Scaling requires duplicating the entire application; single code bug can crash the entire system.
-* **Microservices Architecture:**
-  - Decomposes the application into a suite of small, independently deployable services organized around **business capabilities**.
-  - Each microservice owns its **isolated private database** (decentralized data management).
-  - Services communicate asynchronously (Kafka/RabbitMQ) or via lightweight REST/gRPC APIs.
-
-<!--
-The most significant architectural debate of the modern era is Monolith versus Microservices.
-
-In a Monolith, all code—user accounts, checkout, inventory, billing—runs inside a single executable. It is simple to build initially, but as teams grow to hundreds of engineers, deployments become terrifying bottlenecks.
-
-In Microservices, each business domain becomes an independent service with its own private database. The Order Service cannot write directly to the User database; it must call the User API.
-
-This enables independent scaling and polyglot technology stacks, but introduces massive distributed system complexity.
-
-To summarize this slide, remember this key takeaway: Monoliths maximize simplicity early on, while microservices enable independent team scaling at the cost of distributed complexity.
--->
----
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
-  <img src="../../img/ch05/design/06_monolithic_microservice.jpeg" alt="Monolith vs Microservices Architecture" />
-</div>
-
-<!--
-Look at this visual comparison: 'Monolith vs. Microservices Architecture.'
-
-On the left, the Monolith: a massive, tightly packed skyscraper with a single foundation database. If a leak occurs on the 10th floor, the entire building is compromised.
-
-On the right, Microservices: a fleet of independent, modular houses, each with its own private utilities. If one house experiences an outage, the rest of the neighborhood continues operating uninterrupted.
-
-However, notice the paved roads and communication wires connecting the houses—that distributed network infrastructure is where latency, network failures, and distributed transaction complexity live!
-
-To summarize this slide, remember this key takeaway: Microservices decouple failure domains and team workflows, but introduce distributed network operational overhead.
--->
----
-### Concept Check Question 2
-<div class="ccq-columns">
-  <div class="ccq-text">
-
-Which classic architectural pattern explicitly separates user interface presentation and layout from underlying business domain data management and user input event processing?
-
-- **A.** Pipe and Filter Pattern
-- **B.** Model-View-Controller (MVC) Pattern
-- **C.** Repository Pattern
-- **D.** Client-Server Pattern
-
-  </div>
-  <div class="ccq-logo">
-    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
-  </div>
-</div>
-
-<!--
-Let's verify our understanding of architectural patterns with Concept Check Question 2.
-
-Look at the options:
-Option A, Pipe and Filter, transforms sequential data streams.
-Option C, Repository, shares data among tools via a central database.
-Option D, Client-Server, distributes compute over a network.
-
-The correct answer is Option B, Model-View-Controller (MVC)! The Model manages domain data, the View renders presentation, and the Controller processes user input events.
-
-To summarize this slide, remember this key takeaway: MVC decouples presentation views from domain data models and user input event controllers.
--->
----
-<!-- _class: lead -->
-<!-- header: '5.4 Quality Attributes' -->
-
-# **5.4 Architecture & System Quality Attributes**
-
-> "Architecture is where requirements meet reality through trade-off analysis."
-
-<!--
-We now enter Module 5.4: Architecture and System Quality Attributes.
-
-Recall our principle from Chapter 3: Software architecture is shaped far more by non-functional requirements than by functional requirements. Whether an app sells books or airline tickets, its architecture is dictated by whether it must survive 10 requests per second or 100,000 requests per second.
-
-In this section, we examine how architectural decisions directly determine Performance, Security, Safety, Availability, and Maintainability—and how architects balance conflicting quality goals.
-
-To summarize this slide, remember this key takeaway: Architecture is the primary mechanism for satisfying non-functional quality attributes through deliberate structural trade-offs.
--->
----
-## Architecture Drives System Quality Attributes
-
-* **Performance:**
-  - *Architectural Strategy:* Localize critical operations within coarse-grained components; minimize cross-network calls; deploy distributed caching layers (Redis).
-* **Security:**
-  - *Architectural Strategy:* Employ layered defense-in-depth; enclose high-value data assets in inner protected layers; enforce perimeter API gateways.
-* **Safety:**
-  - *Architectural Strategy:* Isolate safety-critical logic into independent, physically redundant sub-systems to prevent error propagation.
-* **Availability:**
-  - *Architectural Strategy:* Eliminate single points of failure (SPOF); implement redundant server instances, automated health checks, and active-active failover.
-* **Maintainability:**
-  - *Architectural Strategy:* Decompose into fine-grained, loosely coupled modules communicating strictly through stable abstract interfaces.
-
-<!--
-Notice how every major non-functional quality attribute maps directly to a specific architectural tactic:
-
-Want high performance? Minimize inter-process communication hops and place caching close to the user.
-Want high security? Use a layered castle-and-moat architecture with authentication firewalls at the perimeter.
-Want safety in an airplane or medical device? Isolate flight-control code from the passenger entertainment system on physically separate buses.
-Want five-nines availability? Build redundant instances with automated circuit breakers and multi-region failover.
-
-Architecture is the structural engine that delivers these systemic qualities.
-
-To summarize this slide, remember this key takeaway: Quality attributes are achieved through targeted architectural tactics such as caching, layering, isolation, and redundancy.
--->
----
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
-  <img src="../../img/ch05/design/03_system_characteristics.jpeg" alt="Deliberate Structure Drives System Behavior" />
-</div>
-
-<!--
-Look at this visual synthesis: 'Deliberate Structure Drives System Behavior.'
-
-Architecture is never about finding a single 'perfect' design. It is about understanding trade-offs.
-
-Notice the inherent tensions:
-Maximizing Security (adding encryption layers, token validations, and audit logs) inherently penalizes Performance (adding latency to every transaction).
-Maximizing Maintainability (splitting code into microservices) inherently increases Operational Complexity.
-
-The mark of a master software architect is the ability to analyze stakeholder priorities and select the optimal trade-off balance.
-
-To summarize this slide, remember this key takeaway: Architecture involves balancing inevitable trade-offs between competing quality attributes.
--->
----
-<!-- _class: lead -->
-<!-- header: '5.5 Fundamentals of Software Design' -->
-
-# **5.5 Fundamentals of Software Design**
+# **5.1 Software Design Foundations & Spectrum**
 
 > "There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies."  
-> — *C. A. R. Hoare*
+> — *C. A. R. Hoare (Turing Award Laureate)*
 
 <!--
-We now transition into Module 5.5: Fundamentals of Software Design.
+Welcome to Section 5.1: Software Design Foundations & Spectrum.
 
-Having established macro-level architecture, we now zoom into micro-level design: How do we organize individual classes, methods, and modules within an application?
+In software engineering, if Requirements Engineering discovers what needs to be built, Software Design establishes how it will be constructed.
 
-In this section, we examine the four fundamental design activities and unpack the universal golden rule of software design: High Cohesion and Low Coupling.
+Many beginners rush to open their IDE and start writing code immediately. But without thoughtful software design, codebases quickly deteriorate into unmaintainable quagmires.
 
-To summarize this slide, remember this key takeaway: Software design translates architectural blueprints into cohesive, decoupled classes and module interfaces.
+In this section, we examine the formal definition of software design, why design dictates project survival, the multi-level spectrum of design activities, and our pedagogical roadmap.
+
+To summarize this slide, remember this key takeaway: Software design is the pivotal engineering phase that transforms user requirements into an executable, high-quality implementation blueprint.
 -->
 ---
-## 4 Fundamental Software Design Activities
+## What is Software Design?
 
-1. **Architectural Design (Macro Structure):**
-   - Identifying principal sub-systems, service boundaries, and communication pipelines.
-2. **Interface Design (Contract Specification):**
-   - Defining precise, unambiguous public contracts between modules (REST APIs, interface methods).
-3. **Component / Detailed Design (Micro Structure):**
-   - Designing internal class structures, algorithms, data structures, and private helper logic.
-4. **Database & Data Structure Design (Persistence):**
-   - Designing relational entity-relationship schemas, document collections, or object graphs.
+* **From Requirements (What) to Implementation (How):**
+  - **Requirements Engineering**: Defines stakeholder problems and functional expectations (*what to build*).
+  - **Software Design**: Conceptualizes structural decomposition, component boundaries, data models, and protocols (*how to build*).
+* **Core Activities of Software Design:**
+  - **Blueprint Creation**: Establishes models, abstractions, and specifications that development teams execute against.
+  - **Trade-off Decision Making**: Balances competing non-functional forces (e.g., performance vs. security vs. development time and budget).
+* **The Distinction Between Design and Coding:**
+  - Coding expresses logic in a specific programming language syntax.
+  - Design determines **how modules are partitioned, where state lives, and how components are decoupled** for long-term evolvability.
 
 <!--
-Software design consists of four interlocking activities:
+What is Software Design?
 
-First, Architectural design: partitioning the system into high-level sub-systems.
-Second, Interface design: defining the contracts between components before writing implementation code.
-Third, Component design: fleshing out internal class attributes, methods, and algorithms.
-And fourth, Database design: mapping domain entities to persistent relational or NoSQL storage.
+Recall our previous chapters: Requirements engineering gives us functional specifications, like shopping cart checkouts or user authentication.
 
-These activities ensure that code is built on an organized, intentional blueprint.
+However, if an engineer jumps straight from user stories into code, they immediately face critical dilemmas: How many API endpoints should we expose? Do we store state in relational tables or document collections? Which module owns which data? Will the system survive when a million users log in simultaneously?
 
-To summarize this slide, remember this key takeaway: Software design systematically addresses architecture, interface contracts, internal component logic, and data persistence.
+Software design is the disciplined process that answers these questions. It is not surface-level styling; it is the structural and behavioral blueprint of a software system.
+
+To summarize this slide, remember this key takeaway: Software design is the intellectual blueprint bridging abstract human requirements and concrete executable code.
+-->
+---
+## Why is Software Design Crucial?
+
+* **1. Eliminating "Vibe Coding" and Structural Code Rot:**
+  - Coding without design rapidly triggers the 4 Symptoms of Poor Design (Robert C. Martin):
+    - **Rigidity**: A single change forces a cascade of modifications across dozens of unrelated files.
+    - **Fragility**: Fixing a bug in Module A inexplicably breaks Module B in an unrelated subsystem.
+    - **Immobility**: Components are tangled together, making reuse in other contexts impossible.
+* **2. Quality Attributes are Designed In, Not Tested In:**
+  - Scalability, fault tolerance, low latency, and security must be architected from day one—they cannot be patched in via unit tests later.
+* **3. Barry Boehm's Cost of Defect Removal Curve:**
+  - Catching an architectural flaw in **Requirements & Design** costs **$1**; in integration testing it rises to **$10**; in **production maintenance**, it escalates to **$50–$100x**!
+* **4. Shared Contract & Common Language for Engineering Teams:**
+  - Clean component boundaries and public interfaces enable dozens of engineers to work in parallel without blocking each other.
+
+<!--
+Why is software design so critically important?
+
+First, without design, developers fall into vibe coding or cowboy hacking. Early velocity feels fast, but within weeks the codebase becomes rigid and fragile: touch one line and three other features break.
+
+Second, quality attributes cannot be tested into existence. You cannot write a messy, tightly coupled monolith and hope a few unit tests will magically make it a globally distributed, fault-tolerant platform.
+
+Third, Barry Boehm's famous empirical cost curve demonstrates that catching architectural flaws during design costs 1 dollar, while fixing them in production costs 50 to 100 times more!
+
+To summarize this slide, remember this key takeaway: Disciplined software design minimizes long-term maintenance costs and hardcodes quality into the DNA of the system.
+-->
+---
+## What Does Software Design Encompass? (Design Spectrum)
+
+* **Software design spans a multi-level engineering spectrum from macro to micro:**
+  - 🏛️ **1. Architectural Design (Macro-Structure):**
+    - High-level system structure, major sub-systems, distributed communication mechanisms, and global patterns (Layered, MVC, Microservices).
+  - 🔌 **2. Interface Design (Contract & Boundaries):**
+    - Public API specifications, network protocols, inter-component contracts, and information hiding boundaries (encapsulating internals).
+  - 🧩 **3. Component & Detailed OO Design (Micro-Implementation):**
+    - Internal class structures, algorithms, data structures, SOLID object-oriented principles, and GoF design patterns.
+  - 💾 **4. Data & Database Design (Persistence):**
+    - Conceptual entity models, relational schemas (ERDs), NoSQL document collections, caching strategies, and data consistency models.
+* **User Interface Design (UI/UX Design):**
+  - Focuses on human cognitive ergonomics, usability heuristics, and interaction flows—explored in depth in **Chapter 6**.
+
+<!--
+What does software design actually encompass?
+
+Notice that software design is not a single, flat task. It is a multi-level engineering spectrum spanning four interconnected tiers:
+
+Tier 1 is Architectural Design: The 10,000-foot view. We partition sub-systems, choose monolithic or microservice architectures, and establish data pipelines.
+
+Tier 2 is Interface Design: Setting up guardrails between sub-systems with clean API contracts and protocols.
+
+Tier 3 is Component & Detailed OO Design: Zooming into classes, methods, and algorithms using SOLID principles and design patterns.
+
+Tier 4 is Data & Database Design: Defining persistence models, schemas, and caching.
+
+To summarize this slide, remember this key takeaway: Software design spans architectural, interface, component, and database design across an integrated engineering continuum.
+-->
+---
+## Roadmap: Why Universal Principles Precede Architecture
+
+* **The Educational Dilemma: Principles First vs. Architecture First:**
+  - If we teach architectural patterns first, patterns risk becoming arbitrary, memorized diagrams.
+  - When you understand **Separation of Concerns**, you immediately understand *why* Layered Architecture exists.
+  - When you understand **Low Coupling**, you immediately understand *why* MVC isolates Models from Views.
+  - When you understand **High Cohesion**, you immediately understand *why* Microservices align to Domain Bounded Contexts.
+* **Our Step-by-Step Trajectory:**
+  - **Step 1: Universal Design Principles (5.2)**: Core tenets, cohesion, coupling, and information hiding.
+  - **Step 2: Architecture & Modeling (5.3)**: ASRs, decomposition, UML diagrams, 4+1 views, C4 model, and ADRs.
+  - **Step 3: Classic Patterns & Trade-offs (5.4)**: The 6 architectural styles, monolithic vs microservices, and ATAM.
+  - **Step 4: Micro Detailed Design (5.5)**: Class-level SOLID object-oriented craftsmanship.
+  - **Step 5: Modern Practice & AI (5.6 & 5.7)**: AI copilot workflows, blind spot mitigations, and synthesis.
+
+<!--
+Why do we arrange universal design principles before architecture?
+
+In traditional curricula, instructors often rush directly into architectural patterns like MVC or Microservices. But students frequently ask: 'Why do we need layers? Why can't the database talk directly to the user interface?'
+
+The answer lies in universal principles: Separation of Concerns, High Cohesion, and Low Coupling!
+
+By learning these universal principles first, every architectural pattern we study later becomes an intuitive, logical application of these principles rather than an isolated formula to memorize.
+
+To summarize this slide, remember this key takeaway: Universal design principles provide the intellectual foundation that makes architectural patterns and detailed object-oriented design intuitive and coherent.
+-->
+---
+<!-- _class: lead -->
+<!-- header: '5.2 Universal Design Principles' -->
+
+# **5.2 Universal Software Design Principles**
+
+> "Good design is easily changeable; poor design resists change at every step."  
+> — *Dave Thomas (The Pragmatic Programmer)*
+
+<!--
+Welcome to Section 5.2: Universal Software Design Principles.
+
+Regardless of whether you are architecting a multi-region cloud platform across Kubernetes clusters or writing a 20-line utility function inside a single Java class, the laws of software physics remain identical.
+
+In this section, we study the foundational building blocks of all software design: Modularity, Abstraction, Encapsulation, Separation of Concerns, and the supreme golden rule of software engineering: High Cohesion and Low Coupling.
+
+To summarize this slide, remember this key takeaway: Universal design principles govern software quality fractally across every scale of abstraction.
+-->
+---
+## Universal Principles: Fractal Across Every Scale
+
+* **Software Design is Fractal:**
+  - The same fundamental principles govern software quality regardless of zoom level:
+    - **System Scale (Macro)**: Microservices partition business domains into decoupled, cohesive services.
+    - **Module Scale (Meso)**: Packages and libraries isolate responsibilities behind public API boundaries.
+    - **Class Scale (Micro)**: Individual classes encapsulate state and maintain a single, cohesive reason to change.
+* **Core Tenets Guard Against Complexity:**
+  - Computer memory is vast, but human working memory is strictly limited (Miller's Law: 7 ± 2 chunks).
+  - Software principles are cognitive tools designed to keep software understandable, testable, and modifiable by human engineering teams.
+
+<!--
+Why are software design principles called 'universal'?
+
+Because software design is fractal. When you look at an entire cloud enterprise, you see services communicating through APIs. When you zoom into one microservice, you see packages communicating through interfaces. When you zoom into one package, you see classes communicating through methods.
+
+At every single level of zoom, the exact same rules apply: keep things focused, keep them decoupled, hide internal complexity, and separate concerns.
+
+To summarize this slide, remember this key takeaway: Universal design principles operate fractally across systems, packages, and classes to keep software systems humanly manageable.
 -->
 ---
 ## Core Design Tenets: Modularity, Abstraction & SoC
@@ -614,59 +241,59 @@ To summarize this slide, remember this key takeaway: Software design systematica
 * **3. Separation of Concerns (SoC / 關注點分離):**
   - Decomposing software into distinct features that overlap as little as possible (e.g., decoupling UI rendering logic from SQL database queries).
 * **4. Modularity (模組化):**
-  - Partitioning systems into self-contained, independently testable, and replaceable units.
+  - Dividing systems into cohesive, independently testable, and hot-swappable units.
 
 <!--
-These four tenets form the bedrock of clean software engineering:
+These four principles form the bedrock of clean software engineering:
 
-Abstraction allows you to call `map.insert(key, value)` without worrying whether it uses a red-black tree or a hash table.
-Encapsulation protects internal variables behind private access modifiers, preventing outside code from corrupting data.
-Separation of Concerns ensures that UI code doesn't execute SQL queries, and business logic doesn't format HTML.
-And Modularity allows teams to work in parallel on independent components.
+Abstraction lets you call map.insert without worrying whether it uses a red-black tree or a hash table.
+Encapsulation uses private modifiers to guard internal object invariants.
+Separation of Concerns ensures that UI code never constructs raw SQL queries.
+And Modularity allows dozens of engineers to develop in parallel without blocking each other.
 
-To summarize this slide, remember this key takeaway: Abstraction, encapsulation, separation of concerns, and modularity prevent cognitive overload and protect system integrity.
+To summarize this slide, remember this key takeaway: Abstraction, encapsulation, separation of concerns, and modularity protect integrity and prevent developer cognitive overload.
 -->
 ---
 ## The Golden Rule: High Cohesion & Low Coupling
 
 * **Cohesion (凝聚度):**
-  - Measures how strongly related and focused the internal responsibilities of a single class or module are.
-  - **Engineering Goal:** **High Cohesion** (A class should do one thing, and do it completely).
+  - Measures how tightly focused and related the internal responsibilities of a single class or module are.
+  - **Engineering Goal:** **High Cohesion** (A module should do one thing, and do it exceptionally well).
 * **Coupling (耦合度):**
-  - Measures the degree of direct inter-dependence between separate modules.
-  - **Engineering Goal:** **Low Coupling** (Modules interact via abstract interfaces with minimal knowledge of internal mechanics).
+  - Measures the strength of direct interdependencies between separate modules.
+  - **Engineering Goal:** **Low Coupling** (Modules communicate via abstract contracts, remaining ignorant of internal implementation details).
 * **The Universal Golden Rule:**
-  > **Maximize Cohesion, Minimize Coupling!**
-  > High cohesion makes code easy to understand; low coupling prevents changes in one module from rippling across the entire codebase.
+  > **Maximize Cohesion, Minimize Coupling!**  
+  > High cohesion makes modules understandable and maintainable; low coupling prevents modifications from causing cascading system ripple effects.
 
 <!--
-If you remember only one slide from your entire software engineering education, let it be this one: Maximize Cohesion, Minimize Coupling!
+If you could remember only one rule from this entire lecture, make it this: Maximize Cohesion, Minimize Coupling!
 
-Cohesion measures internal focus: Does this class do one thing well, or is it a giant mess handling databases, email, and PDF printing? You want High Cohesion.
+Cohesion measures internal focus: Does this class handle one clear task, or does it process orders, send emails, and generate PDFs simultaneously? We strive for High Cohesion.
 
-Coupling measures external dependencies: Does Class A directly depend on the private variables of Class B, C, and D? You want Low Coupling.
+Coupling measures external entanglement: If I modify Class A, do ten unrelated files break? We strive for Low Coupling.
 
-High cohesion combined with low coupling is what makes software maintainable, testable, and reusable over decades.
+High cohesion paired with low coupling is the secret to building software that remains testable and maintainable across decades.
 
-To summarize this slide, remember this key takeaway: High cohesion ensures focused internal responsibilities; low coupling minimizes ripple-effect dependencies across modules.
+To summarize this slide, remember this key takeaway: High cohesion ensures focused internal responsibilities, while low coupling eliminates dangerous cascading change dependencies.
 -->
 ---
 ## Cohesion & Coupling: Bad vs. Good Design
 
 ```java
-// ❌ BAD: Low Cohesion, High Coupling ("God Class")
+// ❌ BAD: Low Cohesion & High Coupling (The Infamous "God Class")
 class OrderManager {
     public void processOrder() {
-        // Direct MySQL SQL query string execution
-        // Business discount arithmetic logic
-        // Raw HTML string formatting for invoice
-        // Low-level SMTP socket connection to send email
+        // Embeds raw MySQL database query strings
+        // Calculates complex VIP customer discount mathematics
+        // Concatenates raw HTML strings for customer invoices
+        // Opens raw low-level TCP/SMTP socket connections to send emails
     }
 }
 ```
 
 ```java
-// ✅ GOOD: High Cohesion, Low Coupling (Decoupled Single-Purpose Classes)
+// ✅ GOOD: High Cohesion & Low Coupling (Collaborative Decoupled Classes)
 class OrderProcessor {
     private final DiscountCalculator discountCalculator;
     private final OrderRepository orderRepository;
@@ -677,30 +304,30 @@ class OrderProcessor {
         this.orderRepository = repo;
         this.notificationService = ns;
     }
-    // Orchestrates workflow strictly through clean abstract interfaces!
+    // Orchestrates workflow cleanly across injected abstract interfaces!
 }
 ```
 
 <!--
-Look at this concrete Java comparison:
+Examine this concrete Java code comparison:
 
-In the Bad design on top, `OrderManager` is a classic 'God Class': it does raw SQL, business math, HTML rendering, and network SMTP email sockets all in one file! If you change your email provider, you risk breaking order calculation logic!
+In the bad design above, OrderManager is an infamous 'God Class': a single method contains raw SQL, business math, HTML templating, and raw TCP networking! If your email server changes protocols, you must modify your checkout order class!
 
-Now look at the Good design on the bottom: `OrderProcessor` has a single, cohesive responsibility—orchestrating the checkout workflow. It delegates calculation to `DiscountCalculator`, persistence to `OrderRepository`, and email to `NotificationService`. Each class can be unit-tested and modified in complete isolation.
+In the good design below, OrderProcessor has one single, cohesive responsibility: workflow orchestration. It delegates math to DiscountCalculator, persistence to OrderRepository, and alerts to NotificationService. Each collaborator is independently testable and swappable.
 
-To summarize this slide, remember this key takeaway: Decoupling multifaceted workflows into single-purpose collaborating classes achieves high cohesion and low coupling.
+To summarize this slide, remember this key takeaway: Decomposing bloated monolithic classes into focused, collaborating services exemplifies high cohesion and low coupling.
 -->
 ---
-### Concept Check Question 3
+### Concept Check Question 1 (CCQ 1)
 <div class="ccq-columns">
   <div class="ccq-text">
 
-In software design, what is the primary operational benefit achieved by combining **High Cohesion** with **Low Coupling**?
+In software system design, what is the primary practical benefit of combining **High Cohesion** with **Low Coupling**?
 
-- **A.** It maximizes CPU execution speed by inlining all functions into a single binary.
-- **B.** It creates modular code where modifications to one class have minimal ripple effects on others.
-- **C.** It mandates that all application data structures be stored in global memory spaces.
-- **D.** It eliminates the need for automated integration testing in production pipelines.
+- **A.** Maximizes raw CPU runtime performance by inlining all functions into a single binary.
+- **B.** Produces a modular architecture where changes to one class cause minimal cascading ripple effects on other modules.
+- **C.** Mandates storing all central data structures in a globally shared variable space.
+- **D.** Completely eliminates the need to write automated integration tests and regression suites.
 
   </div>
   <div class="ccq-logo">
@@ -709,65 +336,636 @@ In software design, what is the primary operational benefit achieved by combinin
 </div>
 
 <!--
-Let's test our understanding with Concept Check Question 3.
+Let's check our understanding of cohesion and coupling.
 
-Look at the options:
-Option A confuses runtime compiler optimization with architectural design.
-Option C describes global variables, which represent maximum coupling!
-Option D claims it eliminates testing, which is false.
+The question asks: What is the primary practical benefit of combining High Cohesion with Low Coupling?
 
-The correct answer is Option B! High cohesion keeps classes focused on a single responsibility, while low coupling minimizes dependencies between modules. When a requirement changes, you modify one class without triggering a cascading wave of bugs across the rest of the application.
+Evaluating options:
+Option A, inlining code for raw CPU speed, is a compiler optimization that destroys modularity.
+Option C, global variables, is the textbook definition of poor design!
+Option D, eliminating tests, is unrealistic wishful thinking.
 
-To summarize this slide, remember this key takeaway: High cohesion and low coupling prevent cascading ripple-effect bugs when requirements evolve.
+The correct answer is B! High cohesion keeps classes focused, while low coupling ensures clear boundaries—so modifications in one class cause minimal ripple effects elsewhere.
+
+To summarize this slide, remember this key takeaway: High cohesion and low coupling strictly limit the blast radius of code changes, ensuring long-term maintainability.
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.6 SOLID Principles' -->
+<!-- header: '5.3 Software Architecture & Modeling' -->
 
-# **5.6 SOLID Object-Oriented Principles**
+# **5.3 Software Architecture & Modeling**
+
+> "Software architecture is the set of design decisions which, if made incorrectly, may cause your project to fail."  
+> — *Eoin Woods*
+
+<!--
+Welcome to Section 5.3: Software Architecture & Modeling.
+
+Now that we have established universal principles, we step up to the macro-architectural scale.
+
+Students often ask: When architects design systems, do they just pick a pattern from a catalog? How do they actually decide what to build? And how do we model and draw architectures—do we use UML, or something else?
+
+In this section, we demystify the architectural design process: how to derive architecture from Architecturally Significant Requirements (ASRs), how to model systems using Kruchten's 4+1 views and Simon Brown's C4 model, and how to document architectural decisions using Architecture Decision Records (ADRs).
+
+To summarize this slide, remember this key takeaway: Architecture is a systematic decision and modeling discipline that establishes the foundational structural backbone of a software system.
+-->
+---
+## What is Software Architecture?
+
+* **Formal Definition (IEEE 1471 / ISO 42010):**
+  > Software architecture is the fundamental organization of a system embodied in its components, their relationships to each other and the environment, and the principles guiding its design and evolution.
+* **The Bridge Role of Architecture:**
+  - **Requirements (What)**: Stakeholder needs, user stories, and constraints.
+  - **Implementation (How)**: Source code, data schemas, and unit tests.
+  - **Architecture (The Bridge)**: Transforms messy requirements into structured sub-systems, communication boundaries, and deployment topology.
+* **Architecture in the Small vs. in the Large:**
+  - **In the Small**: Internal design of individual applications (classes, modules, local interfaces).
+  - **In the Large**: Enterprise-scale structures (distributed services, cloud platforms, event buses, multi-tier databases).
+
+<!--
+What is Software Architecture?
+
+Software architecture is the fundamental organization of a system embodied in its components, their relationships to each other and the environment, and the principles guiding its design and evolution.
+
+Notice its bridge role: Requirements engineering tells us what needs to be built. Coding is how individual lines are written. Architecture is the bridge in between—it determines the principal structural modules, the data persistence strategy, and the network communication protocols.
+
+Because architectural decisions are the hardest and most expensive to change later, getting the architecture right early is vital to project success.
+
+To summarize this slide, remember this key takeaway: Software architecture bridges requirements and code by establishing high-level component structures and communication boundaries.
+-->
+---
+## How to Do Architecture Design: Beyond Just Picking Patterns
+
+* **Architecture is NOT a "Pattern Shopping Cart":**
+  - Architecture is a disciplined engineering process of discovery, partitioning, and trade-off synthesis:
+* **The 5-Step Architecture Derivation Process:**
+  - **1. Extract ASRs (Architecturally Significant Requirements)**:
+    - Identify high-priority Quality Attributes (e.g., 99.99% uptime, <100ms latency) and mission-critical Use Cases.
+  - **2. Subsystem Partitioning & Decomposition**:
+    - Decompose the system by business capabilities (Domain-Driven Bounded Contexts) or technical layers.
+  - **3. Synthesize & Combine Architectural Styles**:
+    - Real-world systems combine patterns: e.g., Microservices at the enterprise tier, Event-Driven for ingestion, and Layered MVC inside each service!
+  - **4. Define Communication Protocols & Interfaces**:
+    - Synchronous REST / gRPC vs. asynchronous Kafka / RabbitMQ event streams.
+  - **5. Evaluate Trade-offs & Document Decisions**:
+    - Validate resilience under stress (ATAM) and capture decisions in Architecture Decision Records (ADRs).
+
+<!--
+How do software architects actually design systems?
+
+A common misconception among novices is that architecture is just browsing a catalog and picking 'Microservices' or 'Layered Architecture.'
+
+In reality, architecture is a systematic 5-step engineering process:
+First, you extract Architecturally Significant Requirements—not all requirements impact architecture, only those defining scale, security, and critical workflows.
+Second, you partition the system into clean bounded contexts.
+Third, you synthesize and combine patterns to solve specific technical forces.
+Fourth, you establish communication protocols between components.
+Fifth, you rigorously evaluate trade-offs and document your rationale.
+
+To summarize this slide, remember this key takeaway: Architectural design is a disciplined derivation process driven by Architecturally Significant Requirements and trade-off synthesis.
+-->
+---
+## Modeling Architecture: UML in Practice vs. Common Pitfalls
+
+* **The "Class Diagram" Trap (Most Common Novice Mistake):**
+  - Beginners often draw a giant UML Class Diagram with 50 classes and call it "System Architecture."
+  - **Why this fails:** Class diagrams show compile-time object relationships; they completely conceal network boundaries, runtime processes, database servers, and cloud deployment topology!
+* **Traditional UML Diagrams for Macro-Architecture:**
+  - **1. Component Diagram**:
+    - Visualizes high-level software components, provided interfaces (`--O` lollipop), and required interfaces (`--( ` socket).
+  - **2. Package Diagram**:
+    - Depicts namespace organization, logical subsystem boundaries, and dependency arrows.
+  - **3. Deployment Diagram**:
+    - Models physical hardware nodes, virtual containers, execution environments, and network protocols (HTTPS, TCP/IP, JDBC).
+
+<!--
+How do we model and draw software architecture? Can we just use UML?
+
+Here is the single most common mistake made by junior developers: they draw a massive UML class diagram with 50 classes, boxes, and arrows, and present it as the 'system architecture.'
+
+That is a trap! Class diagrams are micro-level implementation details. They tell you nothing about which components run on AWS, where the database lives, how services handle network timeouts, or what happens when traffic spikes 100x.
+
+If you use UML for architecture, you must use macro-level diagrams: Component diagrams for provided/required interfaces, Package diagrams for subsystem dependencies, and Deployment diagrams for physical server topology.
+
+To summarize this slide, remember this key takeaway: Avoid the class diagram trap for architecture; use component, package, and deployment diagrams to capture macro structure.
+-->
+---
+## Multi-Perspective Architecture: Kruchten's 4+1 View Model
+
+* **Philippe Kruchten (1995): "No single diagram can capture architecture for all stakeholders."**
+* **The 4+1 Multi-Perspective Framework:**
+  - **1. Logical View (End-User / Functional)**:
+    - Class structures, entity models, and domain packages satisfying functional user requirements.
+  - **2. Process View (System Integrators / Performance)**:
+    - Concurrency, multi-threading, asynchronous message queues, IPC, and runtime performance.
+  - **3. Development View (Software Developers / Managers)**:
+    - Source code package hierarchy, libraries, build modules, and repository organization.
+  - **4. Physical View / Deployment View (System Engineers / DevOps)**:
+    - Physical servers, cloud containers, network topology, firewalls, and communication protocols.
+  - **+1. Scenarios (Use Cases / Drivers)**:
+    - Core business workflows that bind, validate, and animate all four views together.
+
+<!--
+Examine Philippe Kruchten's legendary 4+1 Architectural View Model.
+
+Kruchten realized that no single architectural drawing can satisfy everyone. A business stakeholder cares about user features; a programmer cares about Maven build modules; a database administrator cares about network failover; and a DevOps engineer cares about Docker containers and Kubernetes clusters.
+
+The 4+1 model resolves this by providing four distinct views tied together by central use case scenarios:
+Logical View for end users; Process View for concurrency and throughput; Development View for code organization; and Physical View for hardware and cloud infrastructure.
+
+To summarize this slide, remember this key takeaway: Kruchten's 4+1 model reconciles conflicting stakeholder needs through four distinct views bound together by core scenarios.
+-->
+---
+## Modern Architecture Visualization: The C4 Model
+
+* **Created by Simon Brown as a modern, developer-friendly alternative to heavy UML:**
+* **The "Google Maps" Metaphor for Software Architecture (4 Zoom Levels):**
+  - 🗺️ **Level 1: System Context (Zoom: Continental View)**:
+    - Who uses the system (Actors) and what external systems does it integrate with (e.g., Stripe, SendGrid)?
+  - 🏙️ **Level 2: Container Diagram (Zoom: City Street View)**:
+    - What are the deployable units? (SPA Web App, iOS App, API Gateway, Microservice, DB, Redis Cache) and their protocols (JSON/HTTPS, gRPC).
+  - 🏛️ **Level 3: Component Diagram (Zoom: Building Floorplan View)**:
+    - Inside a single container: What are the major functional components (e.g., AuthController, PaymentService, UserRepository)?
+  - 🚪 **Level 4: Code Diagram (Zoom: Room Detail View)**:
+    - Class diagrams showing internal algorithms and interfaces (typically optional; auto-generated).
+
+<!--
+In modern software engineering, what do industry teams actually use to draw architecture?
+
+While UML is respected in academia, the modern industry standard is increasingly Simon Brown's C4 Model!
+
+Simon Brown realized that architects need a visual system like Google Maps.
+Level 1 is System Context: You view the whole continent—who are the users, and what external systems do we connect to?
+Level 2 is Container: You zoom into the city—what are the deployable containers? API servers, web apps, databases, and message queues.
+Level 3 is Component: You zoom into a single building—what internal modules make up this container?
+Level 4 is Code: You zoom into individual rooms—classes and methods.
+
+The C4 model is intuitive, unambiguous, and eliminates endless arguments over UML syntax.
+
+To summarize this slide, remember this key takeaway: The C4 model provides a hierarchical Google Maps visualization spanning System Context, Containers, Components, and Code.
+-->
+---
+## Documenting Architectural Decisions: Architecture Decision Records (ADRs)
+
+* **Why ADRs are Essential:**
+  - Code shows *how* a system is implemented, but code never explains *why* critical architectural choices were made.
+  - Without ADRs, engineering teams suffer from **"Architectural Archaeology"**—spending weeks wondering why an unusual database or protocol was chosen.
+* **Standard Structure of an ADR (Michael Nygard Template):**
+  - **1. Title**: Numbered, descriptive decision (e.g., `ADR-005: Adopt Kafka for Order Event Streaming`).
+  - **2. Status**: `Proposed` → `Accepted` → `Deprecated` → `Superseded by ADR-XXX`.
+  - **3. Context**: The business problem, technical forces, and constraints driving the decision.
+  - **4. Decision**: The concrete architectural strategy adopted and rationale.
+  - **5. Consequences**: Both positive benefits gained AND negative trade-offs accepted.
+
+<!--
+How do software architects document their choices?
+
+Architects don't just draw diagrams; they maintain Architecture Decision Records, or ADRs.
+
+When an engineer joins a project three years later and sees that the team uses Kafka instead of RabbitMQ, or PostgreSQL instead of MongoDB, they often think: 'Who designed this strange setup?'
+
+An ADR is a short, version-controlled markdown file that records the exact context, alternatives considered, decision made, and consequences accepted at that moment in time.
+
+To summarize this slide, remember this key takeaway: Architecture Decision Records preserve design intent, document trade-offs, and prevent costly architectural archaeology.
+-->
+---
+### Concept Check Question 2 (CCQ 2)
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+In Philippe Kruchten's 4+1 Architectural View Model, which view is specifically responsible for depicting how software components are deployed onto physical server hardware, cloud containers, and network topology?
+
+- **A.** Logical View
+- **B.** Process View
+- **C.** Development View
+- **D.** Physical View (Deployment View)
+
+  </div>
+  <div class="ccq-logo">
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+  </div>
+</div>
+
+<!--
+Let's check our understanding of architectural modeling views.
+
+The question asks: Which view in Kruchten's 4+1 model depicts software components deployed onto physical server hardware, cloud containers, and network topology?
+
+Let's evaluate each option:
+Option A, Logical View, focuses on domain entities and class relationships.
+Option B, Process View, focuses on concurrency, runtime threads, and non-functional throughput.
+Option C, Development View, organizes code packages, repositories, and build artifacts.
+Option D, Physical View (Deployment View), explicitly models physical nodes, virtual server clusters, Docker containers, and network routing.
+
+Therefore, the correct answer is D!
+
+To summarize this slide, remember this key takeaway: The Physical View captures deployment topology, cloud infrastructure, and network communication configurations.
+-->
+---
+<!-- _class: lead -->
+<!-- header: '5.4 Classic Architectural Patterns & Trade-offs' -->
+
+# **5.4 Classic Architectural Patterns & Trade-offs**
+
+> "There are no solutions, only trade-offs."  
+> — *Thomas Sowell*
+
+<!--
+Welcome to Section 5.4: Classic Architectural Patterns & Trade-offs.
+
+Now that we understand how architecture is derived, modeled, and documented, we explore the structural archetypes developed by the software engineering community over the past fifty years: Architectural Patterns.
+
+Patterns are proven structural solutions to recurring architectural challenges. However, every pattern introduces distinct trade-offs.
+
+In this section, we analyze six foundational architectural patterns: MVC, Layered, Repository, Client-Server, Pipe & Filter, and Microservices. We conduct a deep-dive comparison between Monolithic and Microservices architectures, and master the Architecture Trade-off Analysis Method (ATAM).
+
+To summarize this slide, remember this key takeaway: Architectural patterns provide proven structural templates whose trade-offs must be rigorously evaluated against system quality attributes.
+-->
+---
+## What is an Architectural Pattern?
+
+* **Definition of Architectural Patterns:**
+  - An architectural pattern is a **reusable, established solution to a commonly occurring structural problem** in software system design.
+  - While design patterns (e.g., Factory, Strategy) operate at the class level, architectural patterns govern the **entire macro-system topology**.
+* **Three Key Elements of an Architectural Pattern:**
+  - **1. Context**: The recurring design situation and engineering environment.
+  - **2. Problem & Forces**: Competing requirements (e.g., decoupling UI from business logic vs. minimizing latency).
+  - **3. Solution & Consequences**: Structural partitioning, communication topology, and resulting trade-offs.
+* **Why Patterns Matter:**
+  - Establishes a shared architectural vocabulary across engineering teams.
+  - Codifies decades of engineering experience, avoiding recurring structural failures.
+
+<!--
+What is an Architectural Pattern?
+
+An architectural pattern is a stylized, proven description of good design practice that has been tested in different environments.
+
+Notice that a pattern is not code; it is a structural archetype. When an architect specifies 'Layered Architecture with Repository', every engineer immediately understands the component boundaries and communication pipelines.
+
+Patterns encapsulate proven structural wisdom, establishing shared vocabulary and predictable trade-offs.
+
+To summarize this slide, remember this key takeaway: Architectural patterns encapsulate proven structural wisdom, establishing shared vocabulary and predictable trade-offs.
+-->
+---
+## Architectural Patterns: Comprehensive Overview Matrix
+
+| Pattern Name | Visual Topology | Core Mechanism | Best Used For | Primary Risk & Trade-off |
+| :--- | :--- | :--- | :--- | :--- |
+| **1. MVC** | Triangular Cycle (`C → M → V`) | Separates UI presentation from data models | Interactive Web / mobile apps with rich UIs | Overkill for simple data display (CRUD) |
+| **2. Layered** | Vertical Stack (`N → N-1`) | Strict hierarchy with one-way downward calls | Enterprise information systems & CRUD apps | Performance overhead; sinkhole anti-pattern |
+| **3. Repository** | Hub-and-Spoke Central Store | Passive central data store with active agents | Compilers, IDEs, and shared data analysis | Central DB bottleneck & single point of failure |
+| **4. Client-Server**| Distributed Network (`C ↔ S`) | Clients request services from central servers | Web apps, file servers, centralized services | Network latency & server overloading |
+| **5. Pipe-Filter** | Linear Sequential Stream | Discrete transform filters connected via pipes | Data processing, compilers, ETL pipelines | Inefficient for interactive systems; parsing cost |
+| **6. Microservices**| Decentralized Mesh (`S ↔ S`) | Independently deployable domain services | Large-scale, rapidly evolving cloud platforms | High operational, network & transactional complexity |
+
+<!--
+Examine this comprehensive Architectural Patterns Matrix.
+
+This matrix catalogs the visual icon, core mechanism, sweet-spot application, and primary architectural risk of six foundational patterns:
+MVC decouples UI and data models via circular flows;
+Layered establishes strict vertical abstraction boundaries;
+Repository enables passive component collaboration via a central store;
+Client-Server distributes computation over computer networks;
+Pipe & Filter connects discrete transformations through sequential data streams;
+Microservices partitions systems into independently deployable domain services.
+
+To summarize this slide, remember this key takeaway: The Architectural Patterns Matrix provides an archetypal reference guide for evaluating structural mechanisms and trade-offs.
+-->
+---
+## 1. Model-View-Controller (MVC) Pattern
+
+<div class="centered-image">
+  <img src="../../img/ch05/architecture/pattern_mvc.svg" style="max-height: 290px; width: auto;" alt="MVC Architecture Diagram" />
+</div>
+
+* **Core Structural Responsibilities:**
+  - **Model**: Encapsulates core business data, validation logic, and domain state.
+  - **View**: Renders visual representation to users; listens for state change events.
+  - **Controller**: Intercepts user inputs, orchestrates business logic, and mutates the Model.
+* **Engineering Advantages & Trade-offs:**
+  - **Strengths**: Enables multiple simultaneous views of the same model; allows UI and backend engineers to work in parallel.
+  - **Weaknesses**: Increases complexity for simple screens; tight coupling can occur if Views bypass Controllers.
+
+<!--
+Let's analyze Pattern 1: Model-View-Controller (MVC).
+
+Look at the triangular data flow in the diagram:
+The Controller intercepts user HTTP requests, translates them into domain actions, and updates the Model.
+The Model holds the authoritative state and business rules.
+The View observes or queries the Model to render HTML or mobile screens.
+
+MVC's greatest virtue is Separation of Concerns: frontend designers can overhaul the HTML CSS presentation without touching core business calculation rules!
+
+To summarize this slide, remember this key takeaway: MVC decouples visual presentation from domain data models, enabling independent evolution of user interfaces.
+-->
+---
+## 2. Layered Architecture Pattern
+
+<div class="centered-image">
+  <img src="../../img/ch05/architecture/pattern_layered.svg" style="max-height: 290px; width: auto;" alt="Layered Architecture Diagram" />
+</div>
+
+* **Core Structural Responsibilities:**
+  - Organizes components into horizontal layers: **Presentation → Business Logic → Data Access → Database**.
+  - **Strict Layering Rule**: Each layer only depends on the layer immediately below it (`Layer N → Layer N-1`).
+* **Engineering Advantages & Trade-offs:**
+  - **Strengths**: High modularity; hot-swappable layers (e.g., swapping SQL for NoSQL without modifying business logic).
+  - **Weaknesses**: "Architecture Sinkhole Anti-pattern" (requests simply pass through layers without doing work, causing performance drag).
+
+<!--
+Pattern 2 is the most ubiquitous architecture in enterprise computing: Layered Architecture.
+
+Look at the horizontal hierarchy: Presentation at top, Business Logic in the middle, and Data Access at the bottom.
+
+The fundamental rule is unidirectional downward dependency: Presentation calls Business Logic, Business Logic calls Data Access. The database never calls the UI!
+
+This provides phenomenal modularity: you can swap the UI from Web to Mobile without touching business code. However, beware the sinkhole anti-pattern, where layers do nothing but pass calls through, creating performance latency.
+
+To summarize this slide, remember this key takeaway: Layered architecture enforces clean vertical abstraction boundaries, ensuring upper layers remain decoupled from database implementations.
+-->
+---
+## 3. Repository Architecture Pattern
+
+<div class="centered-image">
+  <img src="../../img/ch05/architecture/pattern_repository.svg" style="max-height: 290px; width: auto;" alt="Repository Architecture Diagram" />
+</div>
+
+* **Core Structural Responsibilities:**
+  - **Central Repository**: Passive data store maintaining all persistent system state.
+  - **Subsystems / Accessors**: Independent active components that interact solely through the repository.
+* **Engineering Advantages & Trade-offs:**
+  - **Strengths**: Efficient sharing of large, complex data structures; subsystems do not need direct inter-connections.
+  - **Weaknesses**: Repository becomes a single point of failure (SPOF) and a severe performance bottleneck under high concurrent writes.
+
+<!--
+Pattern 3: Repository Architecture (also known as Blackboard Architecture in AI).
+
+Notice the topology: independent components (Parser, Type Checker, Optimizer, Code Generator in an IDE or compiler) do not talk directly to each other. Instead, they communicate exclusively through a central data store.
+
+This makes integrating new tools trivial: you simply plug a new tool into the central repository without rewiring existing modules.
+
+However, the central repository is a prime Single Point of Failure and can become an intolerable bottleneck under high concurrent load.
+
+To summarize this slide, remember this key takeaway: Repository architecture centralizes shared state among disparate tools, eliminating direct inter-module coupling at the cost of a central bottleneck.
+-->
+---
+## 4. Client-Server Architecture Pattern
+
+<div class="centered-image">
+  <img src="../../img/ch05/architecture/pattern_client_server.svg" style="max-height: 290px; width: auto;" alt="Client-Server Architecture Diagram" />
+</div>
+
+* **Core Structural Responsibilities:**
+  - **Server Component**: Centralized provider offering shared services (data storage, compute, auth).
+  - **Client Components**: Distributed consumers that initiate network requests to access server resources.
+* **Engineering Advantages & Trade-offs:**
+  - **Strengths**: Centralized data management, access control, and seamless server-side upgrades.
+  - **Weaknesses**: Network latency and failure risks; server overload during traffic surges (requires load balancing).
+
+<!--
+Pattern 4 is the foundation of the World Wide Web: Client-Server Architecture.
+
+Clients (browsers, mobile apps) communicate over TCP/IP or HTTP with centralized servers.
+
+This architecture centralizes data integrity and security: sensitive user accounts and banking ledgers are stored securely on servers rather than on vulnerable client devices.
+
+The major architectural challenges are network unreliability and scalability: servers must employ load balancers, caching proxies, and horizontal auto-scaling to survive traffic surges.
+
+To summarize this slide, remember this key takeaway: Client-server architecture distributes presentation to edge clients while centralizing security and data governance on servers.
+-->
+---
+## 5. Pipe-and-Filter Architecture Pattern
+
+<div class="centered-image">
+  <img src="../../img/ch05/architecture/pattern_pipe_filter.svg" style="max-height: 290px; width: auto;" alt="Pipe and Filter Architecture Diagram" />
+</div>
+
+* **Core Structural Responsibilities:**
+  - **Filters**: Independent, stateless transformation components that read input streams and produce output streams.
+  - **Pipes**: Unidirectional channels that buffer and transmit data streams between filters.
+* **Engineering Advantages & Trade-offs:**
+  - **Strengths**: High reusability (filters can be recombined freely, like Unix pipes `cat | grep | sort`); easy parallelization.
+  - **Weaknesses**: Poor fit for interactive GUI systems; data parsing overhead between adjacent filter boundaries.
+
+<!--
+Pattern 5: Pipe-and-Filter Architecture.
+
+Think of Unix command-line pipes, video encoding pipelines, or modern Big Data ETL pipelines.
+
+Each filter does one job: it reads an input stream, applies a transformation, and emits an output stream into a pipe.
+
+Filters know nothing about upstream or downstream neighbors; they only consume and produce data streams. This yields supreme reusability and trivial parallel execution across CPU cores.
+
+However, pipe-and-filter is terrible for interactive user interfaces, and serializing data between stages incurs significant overhead.
+
+To summarize this slide, remember this key takeaway: Pipe-and-filter architecture structures sequential data stream transformations into composable, parallelizable processing units.
+-->
+---
+## 6. Microservices Architecture Pattern (MSA)
+
+<div class="centered-image">
+  <img src="../../img/ch05/architecture/pattern_microservices.svg" style="max-height: 290px; width: auto;" alt="Microservices Architecture Diagram" />
+</div>
+
+* **Core Structural Responsibilities:**
+  - Decomposes the application into a suite of small, autonomous, **independently deployable services**.
+  - **Database per Service**: Each microservice owns its private persistent database; direct cross-service DB queries are forbidden!
+* **Engineering Advantages & Trade-offs:**
+  - **Strengths**: Independent deployment cadence; polyglot technology stacks; strict fault isolation (blast radius containment).
+  - **Weaknesses**: Distributed systems complexity: network latency, distributed transactions (Saga pattern), and eventual consistency.
+
+<!--
+Pattern 6 represents modern cloud-native computing: Microservices Architecture.
+
+Instead of deploying a single giant artifact, we decompose the system into dozens of small services organized around business capabilities: Order Service, Payment Service, Inventory Service.
+
+Crucially: each service owns its private database. If Order Service needs customer data, it must call Customer Service over REST or gRPC—never run a direct SQL JOIN!
+
+However, microservices introduce severe distributed systems overhead: network latency replaces in-memory calls, and cross-service transactions require complex Saga patterns.
+
+To summarize this slide, remember this key takeaway: Microservices achieve high team autonomy and fault isolation at the expense of distributed network and transactional complexity.
+-->
+---
+## Monolithic vs. Microservices: Deep Dive
+
+| Comparison Dimension | Monolithic Architecture | Microservices Architecture |
+| :--- | :--- | :--- |
+| **Deployment Unit** | Single unified binary / WAR / container | Dozens/hundreds of independent containers |
+| **Data Storage** | Single shared relational database | **Database-per-Service** (strict data encapsulation) |
+| **Communication** | Fast in-memory function calls | Network RPC / REST / gRPC / Event Bus |
+| **Fault Isolation** | **Poor**: Memory leak in Module A crashes entire app | **Superior**: Payment service crash leaves Browse active |
+| **Team Scalability** | Merge conflicts; coordination bottlenecks | Independent feature teams deploying autonomously |
+| **Operational Cost** | Simple (single CI/CD pipeline, standard logs) | High (Kubernetes, distributed tracing, service mesh) |
+| **Architectural Sweet Spot** | Startups, MVP stage, small teams (<15 devs) | Large organizations (>50 devs), complex domains |
+
+<!--
+Compare Monolithic and Microservices architectures side-by-side.
+
+In a Monolith, all code runs inside a single process sharing one database. Calling a function takes nanoseconds in memory, and deployments are simple. But if one module has a memory leak, the entire application crashes!
+
+In Microservices, each service runs in an isolated container. A crash in Payment Service does not take down the product catalog! Teams can deploy five times a day independently.
+
+However, do not underestimate operational complexity: you now need Kubernetes clusters, distributed tracing with OpenTelemetry, and eventual consistency handling.
+
+To summarize this slide, remember this key takeaway: Microservices trade operational simplicity for team autonomy and fault isolation; start with a modular monolith unless organizational scale demands distribution.
+-->
+---
+## Architecture Directly Shapes Quality Attributes
+
+* **Quality Attributes Cannot Be Retrofitted Later:**
+  - You cannot build a tightly coupled monolith and hope a few unit tests will magically make it scalable.
+* **How Architectural Decisions Determine Quality Attributes:**
+  - ⚡ **Performance**: Dictated by network hops, in-memory caching layers, and database partitioning.
+  - 🛡️ **Security**: Dictated by zero-trust network zones, API gateways, and isolation of sensitive databases.
+  - 🦺 **Safety**: Dictated by structural isolation of safety-critical functions (e.g., flight control vs. in-flight entertainment).
+  - 🔄 **Availability & Fault Tolerance**: Dictated by redundancy, health checks, circuit breakers, and automated failover replicas.
+  - 🔧 **Maintainability & Modifiability**: Dictated by strict adherence to High Cohesion and Low Coupling boundaries.
+
+<!--
+Why is architecture the ultimate determinant of software quality?
+
+Because non-functional quality attributes—performance, security, reliability, availability—cannot be patched on at the end of a project. They are emergent physical properties of the structural skeleton!
+
+If you build an automotive software system and place the brake control logic on the same unisolated memory bus as the passenger media player, a media player crash can disable the brakes! Safety requires physical structural partitioning.
+
+Similarly, high availability requires automated replica clusters, and maintainability requires low coupling.
+
+To summarize this slide, remember this key takeaway: Non-functional quality attributes are direct physical consequences of architectural structures and cannot be retrofitted via patches.
+-->
+---
+## Architectural Trade-off Analysis & ATAM
+
+* **The Inevitable Conflict Matrix:**
+  - In software architecture, there are **no perfect solutions—only trade-offs**:
+    - **Performance vs. Security**: Deep packet encryption and multi-tier authentication add latency.
+    - **Availability vs. Consistency (CAP Theorem)**: Instant consistency requires blocking network locks, hurting availability.
+    - **Modularity vs. Performance**: Pure decoupled layers introduce serialization and call-stack overhead.
+* **ATAM (Architecture Trade-off Analysis Method):**
+  - Developed by Carnegie Mellon SEI (Software Engineering Institute) to evaluate architectural soundness before coding:
+  - **Key Concepts in ATAM:**
+    - **Sensitivity Points**: Architectural decisions directly affecting a single quality attribute.
+    - **Trade-off Points**: Architectural decisions affecting multiple competing attributes (e.g., encryption improves security but hurts throughput).
+    - **Risks & Non-Risks**: Decisions that threaten or safeguard system viability.
+
+<!--
+Examine the reality of engineering: Architectural Trade-off Analysis.
+
+Every architectural decision is a compromise:
+Increasing security with double encryption inevitably degrades throughput.
+Achieving strict ACID consistency across distributed nodes degrades availability under network partitions (the CAP theorem).
+
+To evaluate these compromises systematically before writing code, Carnegie Mellon SEI created ATAM: the Architecture Trade-off Analysis Method.
+
+ATAM uncovers Trade-off Points—places where boosting one quality attribute directly penalizes another—allowing architects to make deliberate, informed business compromises.
+
+To summarize this slide, remember this key takeaway: Architecture fundamentally centers on balancing competing quality trade-offs to achieve business success.
+-->
+---
+### Concept Check Question 3 (CCQ 3)
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+When comparing a Monolithic architecture with a Microservices architecture, what is the primary structural reason that Microservices provide superior **fault isolation** (blast radius containment)?
+
+- **A.** Microservices store all enterprise data inside a single shared database instance.
+- **B.** Each microservice executes in an isolated process with its own private database, preventing catastrophic cascading failures.
+- **C.** Microservices completely eliminate all network communication overhead and distributed latency.
+- **D.** Microservices require significantly fewer software engineers to deploy and operate.
+
+  </div>
+  <div class="ccq-logo">
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+  </div>
+</div>
+
+<!--
+Let's check our understanding of architectural styles.
+
+The question asks: What is the primary structural reason that Microservices provide superior fault isolation?
+
+Evaluating options:
+Option A is false: sharing a single database is a monolithic antipattern that causes data coupling!
+Option C is false: microservices increase network communication overhead!
+Option D is false: microservices usually require more operational personnel.
+
+The correct answer is B! By isolating each service in its own independent process and database, a memory leak or crash in one service cannot directly crash neighboring services.
+
+To summarize this slide, remember this key takeaway: Process and database isolation in microservices prevents local failures from triggering catastrophic application-wide crashes.
+-->
+---
+<!-- _class: lead -->
+<!-- header: '5.5 SOLID Design Principles' -->
+
+# **5.5 SOLID Object-Oriented Design Principles**
 
 > "Clean code always looks like it was written by someone who cares."  
 > — *Robert C. Martin (Uncle Bob)*
 
 <!--
-We now enter Module 5.6: The SOLID Object-Oriented Principles.
+We now transition into Section 5.5: The SOLID Object-Oriented Design Principles.
 
-Coined by Robert C. Martin ('Uncle Bob'), the SOLID acronym encapsulates five foundational design principles that guide engineers in building clean, decoupled, and extensible object-oriented systems.
+Having designed our macro-architecture and partitioned our systems into services and components, we now zoom inside an individual module or microservice.
 
-In this section, we unpack each of the five letters—Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion—with concrete code patterns and anti-patterns.
+When writing classes and defining method signatures, how do we craft code that is resilient against continuous change?
 
-To summarize this slide, remember this key takeaway: The SOLID principles provide actionable design heuristics to prevent software codebases from decaying into rigid, fragile legacy systems.
+Coined by software luminary Robert C. Martin (Uncle Bob), the SOLID acronym captures five classic object-oriented design heuristics. In this section, we master each principle through intuitive mental models and real-world code refactoring.
+
+To summarize this slide, remember this key takeaway: The SOLID principles provide actionable guidelines for crafting extensible, testable, and robust object-oriented software.
 -->
 ---
-## Overview: The SOLID Principles
+## From Macro Architecture to Micro Detailed Design
 
-* **S &ndash; Single Responsibility Principle (SRP):**
-  - A class should have one, and only one, reason to change.
-* **O &ndash; Open / Closed Principle (OCP):**
-  - Software entities should be open for extension, but closed for modification.
-* **L &ndash; Liskov Substitution Principle (LSP):**
-  - Subtypes must be substitutable for their base types without altering program correctness.
-* **I &ndash; Interface Segregation Principle (ISP):**
-  - Clients should not be forced to depend on interface methods they do not use.
-* **D &ndash; Dependency Inversion Principle (DIP):**
-  - High-level modules should not depend on low-level modules; both should depend on abstractions.
-
-<div style="text-align: center; margin-top: 10px;">
-  <img src="../../img/ch05/architecture/solid_principles.svg" style="max-height: 250px; width: auto;" alt="SOLID Principles Overview" />
-</div>
+* **Connecting the Architectural Vision to Source Code:**
+  - Macro architecture establishes the structural skeleton and subsystem boundaries.
+  - Micro detailed design fills that skeleton with robust, maintainable classes and methods.
+* **The "Micro-Decay" Threat:**
+  - Even the most elegant microservices or layered architecture will collapse into chaos if the code inside each service degenerates into tightly coupled spaghetti!
+* **The Five SOLID Principles (Coined by Robert C. Martin):**
+  - **S**: Single Responsibility Principle (SRP)
+  - **O**: Open / Closed Principle (OCP)
+  - **L**: Liskov Substitution Principle (LSP)
+  - **I**: Interface Segregation Principle (ISP)
+  - **D**: Dependency Inversion Principle (DIP)
 
 <!--
-The SOLID acronym is the gold standard of object-oriented design excellence.
+Notice the vital connection between macro architecture and micro design.
 
-SRP guarantees that every class has a single focused responsibility.
-OCP enables you to add new features via polymorphism without editing tested existing classes.
-LSP ensures inheritance hierarchies are semantically sound and swappable.
-ISP keeps interfaces lean and role-specific rather than bloated.
-And DIP decouples business logic from concrete frameworks and databases using dependency injection.
+Many developers think: 'We use microservices and Docker, so our architecture is modern and great!'
+Yet inside those microservices, individual classes are 3,000-line God Classes tangled with raw SQL, global variables, and hardcoded dependencies.
 
-Let's examine each principle in depth.
+When micro-level code decays, the grandest architectural blueprint collapses like a house of cards.
 
-To summarize this slide, remember this key takeaway: The five SOLID principles form a cohesive engineering framework for building decoupled, maintainable software.
+The five SOLID principles provide our line-of-defense against code rot inside every module and service.
+
+To summarize this slide, remember this key takeaway: Sound micro-level object-oriented design is the indispensable foundation supporting macro architectural blueprints.
+-->
+---
+## Overview: The 5 SOLID Design Principles
+
+<div class="centered-image">
+  <img src="../../img/ch05/architecture/solid_principles.svg" style="max-height: 250px; width: auto;" alt="SOLID Principles Diagram" />
+</div>
+
+* **The SOLID Roster:**
+  - **SRP**: A class should have one, and only one, reason to change.
+  - **OCP**: Software entities should be open for extension, but closed for modification.
+  - **LSP**: Subtypes must be substitutable for their base types without altering correctness.
+  - **ISP**: Clients should not be forced to depend on methods they do not use.
+  - **DIP**: High-level policies should not depend on low-level details; both should depend on abstractions.
+
+<!--
+Examine the five SOLID principles overview diagram.
+
+Together, these five principles form a cohesive engineering system:
+SRP ensures internal cohesion;
+OCP enables adding features without breaking existing code;
+LSP guarantees inheritance integrity;
+ISP keeps interfaces lean and focused;
+DIP decouples business policies from database and framework details.
+
+Let's dissect each principle individually with concrete code refactoring.
+
+To summarize this slide, remember this key takeaway: The five SOLID principles work synergistically to eliminate rigidity, fragility, and immobility from object-oriented systems.
 -->
 ---
 ## S &ndash; Single Responsibility Principle (SRP)
@@ -775,202 +973,187 @@ To summarize this slide, remember this key takeaway: The five SOLID principles f
 * **Core Principle:**
   > A class should have one, and only one, reason to change.
 * **Why SRP is Vital:**
-  - When classes combine multiple responsibilities (e.g., database storage + PDF reporting + email dispatch), a change in email formatting risks introducing bugs into database persistence logic!
+  - When a class juggles multiple responsibilities, requirements changes from disparate stakeholders become tangled together, creating unexpected regressions.
 
 ```java
-// ❌ Violates SRP: 3 distinct reasons to change (DB, PDF formatting, Email delivery)
-class UserReportManager {
-    public void fetchUserData() { /* DB SQL */ }
-    public void generatePdfReport() { /* PDF rendering */ }
-    public void sendEmailReport() { /* SMTP protocol */ }
+// ❌ BAD: Multiple Reasons to Change (God Class violates SRP)
+class UserInvoiceReport {
+    public void calculateTotal() { /* CFO / Finance change */ }
+    public void renderHtmlPage()  { /* Marketing / UI change */ }
+    public void saveToDatabase()  { /* DBA / Schema change   */ }
 }
+```
 
-// ✅ Follows SRP: 3 separate, single-purpose classes
-class UserRepository { public User fetchUserData() { ... } }
-class PdfReportFormatter { public byte[] generatePdf(User u) { ... } }
-class EmailService { public void sendEmail(String to, byte[] data) { ... } }
+```java
+// ✅ GOOD: Single Responsibility per Class
+class InvoiceCalculator { public BigDecimal calculateTotal(Invoice inv) { ... } }
+class InvoiceHtmlRenderer { public String render(Invoice inv) { ... } }
+class InvoiceRepository { public void save(Invoice inv) { ... } }
 ```
 
 <!--
-The Single Responsibility Principle states that a class should have only one reason to change.
+Let's analyze principle 1: Single Responsibility Principle (SRP).
 
-Look at the bad example: `UserReportManager` has three distinct reasons to change. If the database schema updates, you edit this class. If the marketing team changes the PDF logo, you edit this class. If the email server changes, you edit this class.
+Uncle Bob defines responsibility as 'a reason to change.'
+In the bad design above, UserInvoiceReport has three distinct reasons to change:
+If the CFO changes tax rules, you edit this class.
+If marketing updates the HTML color scheme, you edit this class.
+If the DBA changes SQL column names, you edit this class!
 
-In the good design, we decouple these into three focused classes: `UserRepository`, `PdfReportFormatter`, and `EmailService`. Each class can be modified and tested independently without risking regression bugs in the others.
+By separating these into InvoiceCalculator, InvoiceHtmlRenderer, and InvoiceRepository, each class has exactly one stakeholder and one reason to change.
 
-To summarize this slide, remember this key takeaway: Assigning a single responsibility per class isolates change and prevents cross-functional regression defects.
+To summarize this slide, remember this key takeaway: Align class boundaries with stakeholder responsibilities so each class possesses exactly one reason to change.
 -->
 ---
 ## O &ndash; Open / Closed Principle (OCP)
 
-* **Core Principle:**
-  > Software entities should be open for extension, but closed for modification.
-* **The Engineering Mechanism:**
-  - Use **polymorphism and interfaces** (e.g., Strategy Pattern) rather than fragile `if-else` or `switch` statements checking type codes.
+* **Core Principle (Bertrand Meyer):**
+  > Software entities (classes, modules, functions) should be **open for extension**, but **closed for modification**.
+* **How to Achieve OCP:**
+  - Program to abstract interfaces; introduce new behaviors by adding new classes, **never by modifying battle-tested existing code** with brittle `if/else` or `switch` chains!
 
 ```java
-// ❌ Violates OCP: Adding a new discount tier REQUIRES modifying existing tested code!
-class DiscountCalculator {
-    public double calculate(String tier, double price) {
-        if (tier.equals("VIP")) return price * 0.8;
-        else if (tier.equals("STUDENT")) return price * 0.9;
-        return price; // Must edit this method every time a new promotion is invented!
-    }
-}
+// ❌ BAD: Adding a new channel forces modifying existing sendNotification code!
+if (type.equals("EMAIL")) { sendEmail(); }
+else if (type.equals("SMS")) { sendSms(); }
+else if (type.equals("DISCORD")) { sendDiscord(); } // Risky modification!
+```
 
-// ✅ Follows OCP: Add new tiers by creating NEW classes implementing the interface!
-interface DiscountStrategy { double apply(double price); }
-class VipDiscount implements DiscountStrategy { public double apply(double p) { return p * 0.8; } }
-class StudentDiscount implements DiscountStrategy { public double apply(double p) { return p * 0.9; } }
-// Adding "BlackFridayDiscount" requires ZERO edits to existing tested code!
+```java
+// ✅ GOOD: Open for Extension via Polymorphic Strategy Pattern
+interface NotificationChannel { void send(String message); }
+class EmailChannel implements NotificationChannel { ... }
+class DiscordChannel implements NotificationChannel { ... } // Zero modification to core!
 ```
 
 <!--
-The Open/Closed Principle states that code should be open for extension, but closed for modification.
+Principle 2: The Open/Closed Principle (OCP).
 
-Look at the bad example: Every time the marketing department invents a new discount tier, developers have to open `DiscountCalculator` and add another `else-if` branch. Over time, that method becomes an unmaintainable 500-line monstrosity.
+OCP states that when business requirements expand, you should extend system behavior by adding new code, not by cutting open and modifying existing, working classes.
 
-In the good design, we define a `DiscountStrategy` interface. To add a Black Friday discount, you simply create a new class implementing the interface. The existing tested code is never modified!
+Look at the bad example: every time marketing adds a notification channel—SMS, LINE, Slack, Discord—you must open the notification manager and insert another 'else if' branch. One typo breaks all notifications!
 
-To summarize this slide, remember this key takeaway: Leverage polymorphism to allow adding new features without modifying existing, tested source code.
+With polymorphic interfaces, you simply create a new DiscordChannel class implementing NotificationChannel. The existing engine remains completely untouched and regression-free!
+
+To summarize this slide, remember this key takeaway: OCP enables safe system expansion by adding new polymorphic classes without modifying battle-tested existing logic.
 -->
 ---
 ## L &ndash; Liskov Substitution Principle (LSP)
 
-* **Core Principle:**
-  > Subtypes must be substitutable for their base types without altering program correctness.
-* **The Classic Anti-Pattern: Square extending Rectangle:**
-  - In geometry, a square is a rectangle. But in object-oriented code, setting the width of a Square must also change its height, breaking client code expectations!
+* **Core Principle (Barbara Liskov, Turing Award Laureate):**
+  > Subtypes must be substitutable for their base types without altering the correctness of the program.
+* **The Classic Violation: The Square-Rectangle Problem:**
+  - In mathematics, a Square is a Rectangle. But in software, overriding `setWidth(w)` to also mutate `height` breaks caller expectations!
 
 ```java
-// ❌ Violates LSP: Square breaks the invariant assumptions of Rectangle!
+// ❌ BAD: Violating LSP via Unexpected Side-Effects
 class Rectangle {
-    protected int width, height;
-    public void setWidth(int w) { this.width = w; }
-    public void setHeight(int h) { this.height = h; }
-    public int getArea() { return width * height; }
+    protected int w, h;
+    public void setWidth(int w) { this.w = w; }
+    public void setHeight(int h) { this.h = h; }
+    public int getArea() { return w * h; }
 }
 class Square extends Rectangle {
-    @Override public void setWidth(int w) { this.width = w; this.height = w; }
-    @Override public void setHeight(int h) { this.width = h; this.height = h; }
+    @Override public void setWidth(int w) { this.w = this.h = w; } // Unexpected side-effect!
 }
-// Client code: rect.setWidth(5); rect.setHeight(4); expects area = 20, but Square gives 16!
-
-// ✅ Follows LSP: Separate abstractions using a common Shape interface
-interface Shape { int getArea(); }
-class Rectangle implements Shape { ... }
-class Square implements Shape { ... }
 ```
 
+* **Engineering Rule:** Subclasses must never weaken preconditions or strengthen postconditions!
+
 <!--
-The Liskov Substitution Principle, formulated by Turing Award winner Barbara Liskov, requires that subclasses behave consistently with their superclasses.
+Principle 3: The Liskov Substitution Principle (LSP), formulated by Turing Award Laureate Barbara Liskov.
 
-The classic trap is the Square extending Rectangle: In math, a square is a rectangle. But in code, if someone passes a Square into a function expecting a Rectangle, setting the width to 5 and height to 4 suddenly causes the area to be 16 instead of 20!
+LSP requires that if your program works with a base class, it must work identically with any derived subclass without surprising side-effects.
 
-If a subclass throws an unexpected exception or violates base class assumptions, it violates LSP.
+The classic violation is Square extending Rectangle. A client writes a function expecting a Rectangle, sets width to 5 and height to 10, expecting area 50. But if a Square is passed in, setting height changes width to 10 as well, yielding area 100!
 
-To summarize this slide, remember this key takeaway: Subclasses must strictly honor the behavioral contracts and invariants established by their base abstractions.
+Subclasses must strictly honor the behavioral contracts established by their base types.
+
+To summarize this slide, remember this key takeaway: Subclasses must strictly honor the behavioral contracts established by their base types.
 -->
 ---
 ## I &ndash; Interface Segregation Principle (ISP)
 
 * **Core Principle:**
-  > Clients should not be forced to depend on interface methods they do not use.
-* **The "Fat Interface" Problem:**
-  - Avoid creating massive interfaces with dozens of methods. Instead, favor small, focused, role-specific interfaces.
+  > Clients should not be forced to depend on methods they do not use.
+* **Key Tenet:** Prefer multiple **small, role-specific interfaces** over a single bloated, "fat" interface.
 
 ```java
-// ❌ Violates ISP: "Fat Interface" forces SimplePrinter to implement methods it cannot support!
-interface MultiFunctionDevice {
+// ❌ BAD: Fat, Bloated Interface forces dummy implementations
+interface MultiFunctionPrinter {
     void print();
     void scan();
     void fax();
 }
-class SimplePrinter implements MultiFunctionDevice {
+class SimpleInkjetPrinter implements MultiFunctionPrinter {
     public void print() { /* OK */ }
-    public void scan() { throw new UnsupportedOperationException(); } // Anti-pattern!
-    public void fax() { throw new UnsupportedOperationException(); }
+    public void scan()  { throw new UnsupportedOperationException(); } // Polluted!
+    public void fax()   { throw new UnsupportedOperationException(); } // Polluted!
 }
+```
 
-// ✅ Follows ISP: Segregated, role-specific interfaces
+```java
+// ✅ GOOD: Segregated, Role-Specific Interfaces
 interface Printer { void print(); }
 interface Scanner { void scan(); }
-interface Fax { void fax(); }
-
-class SimplePrinter implements Printer { public void print() { ... } }
-class AllInOneMachine implements Printer, Scanner, Fax { ... }
+class SimpleInkjetPrinter implements Printer { public void print() { ... } }
 ```
 
 <!--
-The Interface Segregation Principle warns against 'Fat Interfaces'.
+Principle 4: Interface Segregation Principle (ISP).
 
-Look at the bad example: `MultiFunctionDevice` bundles printing, scanning, and faxing. A simple $50 USB printer forced to implement this interface has to throw `UnsupportedOperationException` on scan and fax.
+ISP warns against creating giant 'fat' interfaces.
+Consider MultiFunctionPrinter with print, scan, and fax. A simple 30-dollar desk printer only prints! But because it implements the fat interface, it must implement dummy methods that throw UnsupportedOperationException.
 
-In the good design, we segregate into three clean interfaces: `Printer`, `Scanner`, and `Fax`. An all-in-one office machine implements all three, while a simple printer implements only `Printer`.
+If a change occurs in the fax protocol, SimpleInkjetPrinter is forced to recompile even though it doesn't even possess a phone jack!
 
-To summarize this slide, remember this key takeaway: Decompose bloated interfaces into role-specific contracts so clients depend only on methods they actually need.
+By splitting fat interfaces into Printer, Scanner, and FaxMachine, clients only depend on the exact capabilities they need.
+
+To summarize this slide, remember this key takeaway: Create lean, role-specific interfaces so clients never depend on capabilities they do not require.
 -->
 ---
 ## D &ndash; Dependency Inversion Principle (DIP)
 
 * **Core Principle:**
-  > High-level modules should not depend on low-level modules. Both should depend on abstractions.
-* **The Engineering Solution: Dependency Injection (DI):**
-  - High-level business services must never instantiate concrete database classes directly with `new MySQLDatabase()`. Instead, inject an abstract `Database` interface!
+  > 1. High-level modules should not depend on low-level modules; both should depend on abstractions.  
+  > 2. Abstractions should not depend on details; details must depend on abstractions.
 
 ```java
-// ❌ Violates DIP: High-level business logic is hardcoded to concrete MySQL implementation!
+// ❌ BAD: High-level business logic hardwired to low-level MySQL database
 class OrderService {
-    private MySQLDatabase db = new MySQLDatabase(); // Tight coupling! Cannot mock for tests!
-    public void completeOrder(Order o) { db.insert(o); }
+    private MySQLDatabase db = new MySQLDatabase(); // Direct 'new' coupling!
 }
+```
 
-// ✅ Follows DIP: Both depend on abstract interface; injected via constructor
-interface Database { void insert(Order o); }
+```java
+// ✅ GOOD: Inverted Dependency via Constructor Injection (IoC / DI)
+interface Database { void save(Order o); }
+class MySQLDatabase implements Database { ... }
+class MockDatabase implements Database { ... } // Fast in-memory unit tests!
 
 class OrderService {
-    private final Database db; // Depends strictly on abstraction!
-    public OrderService(Database db) { this.db = db; } // Dependency Injection (DI)
+    private final Database db;
+    public OrderService(Database db) { this.db = db; } // Injected abstraction!
 }
-// Now we can swap MySQL for PostgreSQL or inject an in-memory MockDatabase during testing!
 ```
 
 <!--
-The Dependency Inversion Principle is the cornerstone of modern framework architectures like Spring and NestJS.
+Principle 5: Dependency Inversion Principle (DIP).
 
-In the bad example, `OrderService` uses the `new` keyword to instantiate `MySQLDatabase`. This tightly binds your core business logic to MySQL. You cannot swap to PostgreSQL without rewriting the service, and you cannot run fast unit tests without a live MySQL server running!
+In traditional procedural programming, high-level business logic imports low-level database libraries. DIP flips this dependency completely upside down!
 
-In the good design, `OrderService` depends strictly on an abstract `Database` interface injected via the constructor. You can inject MySQL in production, and an in-memory mock during unit testing!
+In the bad design, OrderService instantiates MySQLDatabase with 'new'. That hardwires core business logic to MySQL! Swapping to PostgreSQL requires rewriting business code, and unit testing requires running an actual MySQL database.
 
-To summarize this slide, remember this key takeaway: Invert dependencies so business logic relies on abstract interfaces rather than concrete implementation details.
+In the good design, OrderService depends on a clean Database interface injected via its constructor. In production, we inject MySQL; in tests, we inject an in-memory Mock.
+
+To summarize this slide, remember this key takeaway: Invert dependencies so high-level business policies remain untangled from low-level infrastructure details.
 -->
 ---
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
-  <img src="../../img/ch05/design/11_solid_table.jpeg" alt="SOLID: The Good vs Bad Matrix" />
-</div>
-
-<!--
-Look at this comprehensive summary matrix: 'SOLID: The Good vs. Bad Matrix.'
-
-Notice how all five principles work in concert:
-SRP keeps classes focused on one responsibility.
-OCP keeps classes extensible without modifying existing code.
-LSP ensures subclasses can seamlessly substitute for base classes.
-ISP prevents bloated, fat interfaces.
-And DIP frees business logic from low-level database and infrastructure dependencies.
-
-Together, they transform fragile code into a resilient, maintainable software asset.
-
-To summarize this slide, remember this key takeaway: The SOLID principles provide a complete design system for creating extensible, testable, and robust software architectures.
--->
----
-### Concept Check Question 4
+### Concept Check Question 4 (CCQ 4)
 <div class="ccq-columns">
   <div class="ccq-text">
 
-Which SOLID design principle states that you should be able to introduce new system capabilities by adding new classes without editing existing, tested source code?
+Which SOLID object-oriented design principle explicitly advocates that when introducing new system capabilities, developers should extend functionality by adding new classes rather than modifying existing, battle-tested code?
 
 - **A.** Single Responsibility Principle (SRP)
 - **B.** Open / Closed Principle (OCP)
@@ -984,497 +1167,191 @@ Which SOLID design principle states that you should be able to introduce new sys
 </div>
 
 <!--
-Let's test our SOLID knowledge with Concept Check Question 4.
+Let's check our understanding of the SOLID principles.
 
-Look at the prompt: Which principle states that you should be able to introduce new capabilities by adding new classes without editing existing, tested code?
+The question asks: Which principle explicitly advocates extending functionality by adding new classes rather than modifying existing, battle-tested code?
 
 Let's evaluate the options:
-Option A, SRP, is about having one reason to change.
-Option C, ISP, is about avoiding fat interfaces.
-Option D, LSP, is about subclass substitutability.
+Option A, SRP, focuses on classes having only one single reason to change.
+Option B, OCP (Open/Closed Principle), explicitly states that software entities should be open for extension, but closed for modification!
+Option C, ISP, focuses on segregating fat interfaces into role-specific contracts.
+Option D, LSP, requires derived classes to be substitutable for base types.
 
-The correct answer is Option B, the Open/Closed Principle (OCP)! Software entities should be open for extension (via polymorphism/interfaces), but closed for modification.
+Therefore, the correct answer is B: Open / Closed Principle!
 
-To summarize this slide, remember this key takeaway: The Open/Closed Principle enables adding new capabilities through polymorphic extensions while keeping tested code unchanged.
+To summarize this slide, remember this key takeaway: The Open/Closed Principle shields working production code from regressions by requiring that new features be introduced via extension rather than modification.
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.7 AI in Architecture & Design' -->
+<!-- header: '5.6 AI in Software Design & Architecture' -->
 
-# **5.7 AI in Architecture & Software Design**
+# **5.6 AI in Software Design & Architecture**
 
-> "AI can recommend design patterns and refactor code smells, but human architects must steer the system's destiny."
+> "AI will not replace software architects, but architects who use AI will replace those who do not."
 
 <!--
-Now we arrive at Module 5.7: AI in Architecture and Software Design.
+Welcome to Section 5.6: AI in Software Design & Architecture.
 
-In recent years, Large Language Models have expanded far beyond generating simple code snippets. They now serve as analytical partners capable of evaluating architectural trade-offs, detecting code smells, and suggesting SOLID refactorings.
+Generative AI and Large Language Model copilots are revolutionizing software development.
+In the realm of design and architecture, AI serves as an extraordinarily powerful force multiplier—accelerating trade-off analysis, detecting code smells, and generating architectural documentation.
 
-In this section, we explore core AI applications in architecture and design, and establish essential human-in-the-loop safeguards against architectural blind spots.
+However, unchecked reliance on AI poses severe hazards: premature distributed complexity, context blindness, and resume-driven over-engineering.
 
-To summarize this slide, remember this key takeaway: AI serves as a powerful architectural copilot, but human architects retain ultimate accountability for system structure and trade-offs.
+In this section, we examine the Copilot paradigm, four core applications of AI in design, and how to maintain strict Human-in-the-Loop governance.
+
+To summarize this slide, remember this key takeaway: AI serves as a powerful architectural copilot, but human architects must maintain ultimate governance over architectural decisions and context.
 -->
 ---
 ## AI in Architecture & Design: The Copilot Paradigm
 
-* **The Analytical Copilot Leap:**
-  - LLMs analyze complex system specifications to recommend suitable architectural patterns (e.g., Microservices vs. Event-Driven).
-  - Rapidly generates interface contracts (OpenAPI / Swagger specs, gRPC `.proto` schemas, and database DDL).
+* **The Evolution of the Software Architect's Toolkit:**
+  - **Traditional Workflow**: Manual whiteboard diagramming, static architecture reviews, and labor-intensive manual refactoring.
+  - **AI-Augmented Workflow**: Conversational trade-off exploration, automated architectural smell scanning, and prompt-driven interface generation.
+* **The "Copilot, Not Autopilot" Principle:**
+  - AI excels at **generating options, synthesizing documentation, and identifying edge cases**.
+  - Human architects must provide **organizational context, budget constraints, security governance, and final accountability**.
 
-<div style="text-align: center; margin-top: 15px;">
-  <img src="../../img/ch05/architecture/ai_in_architecture.svg" style="max-height: 280px; width: auto;" alt="AI in Architectural Design" />
+<!--
+How does Generative AI fit into software architecture?
+
+We must view AI through the lens of the Copilot paradigm, not an Autopilot.
+
+An AI cannot be held legally or financially liable if a cloud architecture incurs a 200,000-dollar AWS bill or fails PCI-DSS compliance audits.
+
+AI is an intellectual brainstorming partner: you describe your user load and constraints, and AI rapidly generates three alternative architectural blueprints comparing Redis caching against PostgreSQL read-replicas.
+
+To summarize this slide, remember this key takeaway: AI is a powerful brainstorming partner that explores architectural possibilities, while human architects retain accountability and decision-making authority.
+-->
+---
+## 4 Core Applications of AI in Software Design
+
+<div class="centered-image">
+  <img src="../../img/ch05/architecture/ai_in_architecture.svg" style="max-height: 280px; width: auto;" alt="AI in Architecture Workflow Diagram" />
 </div>
 
-* **Core Architectural Value:** Accelerates trade-off analysis and generates clean boilerplate interfaces between sub-systems.
+* **1. Architectural Trade-off Exploration (ATAM Support):**
+  - Prompting LLMs to simulate adversarial scenarios: "What happens to our payment pipeline if Redis crashes during a network partition?"
+* **2. Automated Code Smell & Anti-Pattern Detection:**
+  - Scanning codebases for God Classes, Feature Envy, circular dependencies, and SRP violations.
+* **3. Design Pattern & SOLID Refactoring Suggestions:**
+  - Transforming tight `switch/case` statements into polymorphic Strategy or Factory patterns.
+* **4. Architecture Documentation & ADR Generation:**
+  - Automatically drafting standard Architecture Decision Records (ADRs) and OpenAPI/gRPC interface definitions.
 
 <!--
-Generative AI is transforming the daily workflow of software architects.
+Four core applications define AI in software design:
+First, automated SOLID refactoring to decompose God Classes.
+Second, code smell detection before pull requests are merged.
+Third, GoF design pattern recommendations to eliminate coupling.
+Fourth, test mock generation and ADR drafting.
 
-When evaluating a new system, an architect can prompt an LLM with non-functional constraints—such as 100,000 concurrent IoT devices requiring sub-second ingestion—and the AI can rapidly generate a comparative ATAM trade-off matrix evaluating Kafka versus RabbitMQ.
+AI copilots liberate engineers from boilerplate drudgery, allowing us to focus our intellect on strategic architectural and business decisions.
 
-Furthermore, AI automates the generation of OpenAPI specifications and gRPC protobuf contracts, ensuring decoupled interfaces between sub-systems.
-
-To summarize this slide, remember this key takeaway: AI accelerates architectural trade-off analysis and interface contract generation across distributed systems.
+To summarize this slide, remember this key takeaway: AI empowers software design through automated refactoring, smell detection, pattern recommendations, and ADR documentation.
 -->
 ---
-## 4 Core AI Applications in Software Design
+## Human-in-the-Loop: Mitigating AI Blind Spots
 
-* **1. Automated SOLID Refactoring:**
-  - Scans legacy classes to detect 'God Classes' (SRP violations) and suggests Strategy or Factory patterns to achieve OCP.
-* **2. Code Smell & Coupling Detection:**
-  - Identifies tight coupling, circular dependencies, duplicated logic, and shotgun surgery hotspots across repositories.
-* **3. Design Pattern Recommendation:**
-  - Recommends GoF design patterns (Observer, Decorator, Adapter, Builder) for recurring architectural friction points.
-* **4. Interface & Mock Generation for TDD:**
-  - Auto-generates decoupled interfaces and mock objects, accelerating Test-Driven Development pipelines.
-
-<!--
-Here are the four primary applications of AI in software design today:
-
-First, Automated SOLID refactoring: scanning legacy code to split multi-thousand-line monster classes into single-purpose components.
-Second, Code Smell detection: identifying high coupling, circular references, and code duplication before they merge into the main branch.
-Third, Design Pattern recommendation: proposing clean Gang of Four patterns to solve tricky design problems.
-And fourth, Mock generation: creating mock objects to facilitate isolated unit testing.
-
-To summarize this slide, remember this key takeaway: AI empowers software design through automated refactoring, code smell detection, pattern recommendation, and mock synthesis.
--->
----
-## Human-in-the-Loop: Architectural Blind Spots
-
-* **Risks of Unchecked AI in Architecture & Design:**
-  - **Premature Distributed Complexity:** Recommending complex microservices and event brokers for simple CRUD applications that would thrive as clean monoliths.
-  - **Context Blindness:** AI lacks awareness of team engineering skillsets, cloud infrastructure budgets, and corporate regulatory hurdles.
-  - **Superficial Refactoring:** Renaming variables without resolving underlying algorithmic or architectural coupling.
-* **The Golden Architectural Rule:**
-  > **AI Proposes Trade-offs; Lead Architects Make Decisions!**
-  > Human engineers must evaluate organizational context and maintain ultimate responsibility for system viability.
+* **Risks of Unchecked AI Adoption:**
+  - **Premature Distributed Complexity:** AI frequently over-engineers, recommending microservices, Kubernetes, and Kafka for simple internal tools that 3 engineers could finish in a fortnight with a monolith.
+  - **Context Blindness:** AI is blind to your team's tech-stack familiarity, cloud hosting budgets, and internal security compliance constraints.
+  - **Superficial Refactoring:** Renaming variables without resolving fundamental architectural bottlenecks or data coupling.
+* **The Golden Rule of System Architecture:**
+  > **"AI Proposes Trade-offs; Lead Architects Make Decisions!"**  
+  > Human engineers must evaluate organizational context and bear ultimate responsibility for system viability.
 
 <!--
-While AI tools are exceptionally capable, architects must remain vigilant against 'architectural blind spots'.
+Despite immense power, architects must remain vigilant against AI blind spots.
 
-LLMs frequently suffer from resume-driven design—recommending distributed microservices, Kubernetes clusters, and Kafka pipelines for simple internal applications that a three-person team could build in two weeks with a clean monolith.
+LLMs frequently suffer from 'Resume-Driven Architecture Syndrome'—eagerly recommending distributed microservices and message brokers. Yet AI has no clue that your team has zero experience debugging distributed race conditions or that your cloud budget is capped!
 
-AI has no awareness of your cloud budget or whether your team actually knows how to debug distributed race conditions!
+The deadliest failure is not being replaced by AI; it is being bankrupted by AI-recommended over-engineering.
 
-Therefore, our Golden Rule remains: AI proposes trade-offs; lead architects make decisions!
-
-To summarize this slide, remember this key takeaway: Human architects must evaluate organizational context, budget, and team skills to prevent AI-driven over-engineering.
+To summarize this slide, remember this key takeaway: AI accelerates trade-off exploration, but human architects must evaluate organizational reality and safeguard architectural boundaries.
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.8 Recap & References' -->
+<!-- header: '5.7 Synthesis & Literature' -->
 
-# **5.8 Conceptual Recap & References**
+# **5.7 Conceptual Synthesis & References**
 
-> "Architecture is the decisions that you wish you could get right the first time."
+> "Simplicity is prerequisite for reliability."  
+> — *Edsger W. Dijkstra*
 
 <!--
-To conclude Chapter 5, we arrive at Module 5.8: Conceptual Recap and References.
+Congratulations on completing Chapter 5!
 
-We will consolidate all the foundational architectural principles we covered today—from Kruchten's 4+1 views and classic patterns to cohesion, coupling, and the SOLID principles—through an interactive fill-in-the-blank quiz.
+From establishing design foundations in 5.1, to universal principles of cohesion and coupling in 5.2;
+from architecture derivation, UML, 4+1 views, and the C4 model in 5.3;
+from classic architectural patterns and ATAM trade-offs in 5.4;
+from the five SOLID principles in 5.5, to AI-augmented design in 5.6;
+we have traversed the full engineering spectrum from macro-architecture to micro-craftsmanship.
 
-We will also review the seminal research papers and textbooks that established modern software architecture.
+In this final section, we synthesize our learnings with a core self-assessment and explore classic literature.
 
-To summarize this slide, remember this key takeaway: Sound architecture and clean object-oriented design are the ultimate determinants of long-term software agility and success.
+To summarize this slide, remember this key takeaway: Software design is an integrated engineering continuum connecting universal principles, macro architecture, and micro object-oriented craftsmanship.
 -->
 ---
-## Conceptual Recap: Fill-in-the-blank Quiz
+## Core Curriculum Self-Assessment & Key Takeaways
 
-Test your understanding of the core concepts in this chapter:
-
-1. **`___`** architecture structures a system into stacked layers where each layer provides services to the layer directly above.
-2. In the **`___`** pattern, multiple independent sub-systems interact entirely through a shared central database.
-3. Kruchten's **`___`** View Model presents Logical, Process, Development, and Physical views joined by Scenarios.
-4. **`___`** measures the internal focus of a class, while **`___`** measures the degree of dependency between classes.
-5. The **`___`** Principle states that classes should be open for extension but closed for modification.
-6. The **`___`** Principle requires that high-level business logic must depend on abstractions rather than concrete classes.
+| Curriculum Dimension | Foundational Concept | Golden Architectural Heuristic |
+| :--- | :--- | :--- |
+| **5.1 Design Spectrum** | 4 Design Levels | Catch architectural flaws early; design quality in from day one. |
+| **5.2 Universal Principles** | Cohesion & Coupling | **Maximize Cohesion, Minimize Coupling!** Limit blast radiuses. |
+| **5.3 Architecture Modeling**| 4+1 Views & C4 Model | Beyond patterns: derive architecture from ASRs; document in ADRs. |
+| **5.4 Classic Patterns** | 6 Structural Archetypes | There are no perfect solutions, only evaluated trade-offs (ATAM). |
+| **5.5 Detailed OO Design**| 5 SOLID Principles | Depend on abstractions (DIP); open for extension, closed for modification (OCP). |
+| **5.6 AI in Design** | Copilot Paradigm | AI evaluates code; human architects evaluate organizational context! |
 
 <!--
-Let's review today's core concepts with a quick interactive quiz!
+Review this comprehensive Chapter 5 Synthesis Matrix.
 
-1. Layered architecture structures systems into stacked abstract layers!
-2. In the Repository pattern, sub-systems interact through a shared central database!
-3. Kruchten's 4+1 View Model provides a multi-view architectural framework!
-4. Cohesion measures internal focus; Coupling measures inter-module dependencies!
-5. The Open/Closed Principle (OCP) states classes are open for extension, closed for modification!
-6. The Dependency Inversion Principle (DIP) requires depending on abstractions via dependency injection!
+Notice how all the pieces interlock into a unified engineering discipline:
+Section 5.1 taught us the multi-tiered design spectrum.
+Section 5.2 gave us the universal laws of cohesion and coupling.
+Section 5.3 showed us how to derive architectures from ASRs and model them with 4+1 and C4.
+Section 5.4 armed us with classic patterns and trade-off analysis.
+Section 5.5 provided micro-level SOLID craftsmanship.
+And Section 5.6 guided us in harnessing AI as a disciplined copilot.
 
-Outstanding job, everyone!
-
-To summarize this slide, remember this key takeaway: These core principles form the intellectual bedrock of professional software architecture and design.
+To summarize this slide, remember this key takeaway: Mastering software engineering requires fluently translating high-level business goals into decoupled architectures and clean, SOLID code.
 -->
 ---
-## References & Further Reading
+## Classic Literature & Essential References
 
-* **Foundational Textbooks & Classics:**
-  - Sommerville, I. (2016). *Software Engineering* (10th ed.). Chapter 6 (Architecture) & Chapter 7 (Design). Pearson.
-  - Kruchten, P. (1995). "Architectural Blueprints — The '4+1' View Model of Software Architecture." *IEEE Software*, 12(6), 42-50.
-  - Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley.
-  - Martin, R. C. (2017). *Clean Architecture: A Craftsman's Guide to Software Structure and Design*. Prentice Hall.
-* **Modern Distributed Systems & Architecture:**
-  - Fowler, M. (2014). *Microservices: A definition of this new architectural term*. [martinfowler.com](https://martinfowler.com/articles/microservices.html)
-  - Richards, M., & Ford, N. (2020). *Fundamentals of Software Architecture*. O'Reilly Media.
+* **Foundational Software Architecture Textbooks:**
+  - Len Bass, Paul Clements, Rick Kazman (SEI): *Software Architecture in Practice*, 4th Edition, Addison-Wesley.
+  - Philippe Kruchten: *"Architectural Blueprints—The 4+1 View Model of Software Architecture"*, IEEE Software, 1995.
+  - Simon Brown: *Software Architecture for Developers (The C4 Model)*, Leanpub.
+* **Classic Design Principles & Patterns Literature:**
+  - Robert C. Martin (Uncle Bob): *Clean Architecture: A Craftsman's Guide to Software Structure and Design*, Prentice Hall.
+  - Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides: *Design Patterns: Elements of Reusable Object-Oriented Software (GoF)*, Addison-Wesley.
+  - Martin Fowler: *Patterns of Enterprise Application Architecture (P of EAA)*, Addison-Wesley.
+  - Michael Nygard: *Documenting Architecture Decisions (ADR)*, 2011.
 
 <!--
-Here are the foundational textbooks and seminal research papers for Chapter 5.
+To deepen your mastery of software architecture and design, consult these seminal foundational texts.
 
-Philippe Kruchten's 1995 paper on the 4+1 view model remains a timeless classic. The 'Gang of Four' Design Patterns book and Robert C. Martin's 'Clean Architecture' are mandatory reading for every aspiring software architect.
+Read Bass, Clements, and Kazman for industry-standard architectural evaluation methods;
+Read Philippe Kruchten's classic 1995 paper on the 4+1 view model;
+Read Simon Brown for the modern C4 visualization framework;
+Read Uncle Bob's Clean Architecture for micro-level SOLID principles;
+And refer to Martin Fowler and the Gang of Four for enterprise and object-oriented patterns.
 
-For modern distributed systems and microservices, refer to Martin Fowler's guides and Mark Richards' Fundamentals of Software Architecture.
-
-Thank you for your active participation in Chapter 5!
+To summarize this slide, remember this key takeaway: These classic texts document the collective engineering wisdom of the software industry over the past half-century.
 -->
+---
+<!-- _class: lead -->
+<!-- header: '' -->
 
-<script>
-(function() {
-  // =========================================================================
-  // 1. Header Dropdown (Table of Contents / Outline)
-  // =========================================================================
-  function initHeaderDropdown() {
-    const sections = [];
-    const seenTitles = new Set();
-    const slideSections = document.querySelectorAll('section[id]');
-    
-    // 1. Scan unique section titles and their slide IDs
-    slideSections.forEach(sec => {
-      const header = sec.querySelector('header');
-      if (!header) return;
-      
-      let title = header.textContent.trim();
-      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
-      if (!title || seenTitles.has(title)) return;
-      
-      seenTitles.add(title);
-      sections.push({
-        id: sec.id,
-        title: title
-      });
-    });
+# **Thank You for Listening!**
+### Questions & Discussion
 
-    if (sections.length === 0) return;
+**Prof. Nien-Lin Hsueh**
+Department of Information Engineering and Computer Science
+Feng Chia University
 
-    // Detect language: if slide titles don't have Chinese characters, use English
-    const allTitles = sections.map(s => s.title).join('');
-    const isEn = !/[\u4e00-\u9fa5]/.test(allTitles);
-    const txtOutline = isEn ? '📑 Table of Contents' : '📑 章節目錄';
-    const txtTitleTooltip = isEn ? 'Click to pin or hover to view outline' : '點擊固定或懸停查看章節目錄';
-    const txtPrev = isEn ? 'Previous Section' : '上一章節';
-    const txtNext = isEn ? 'Next Section' : '下一章節';
-
-    // Helper to create the dropdown DOM
-    function createDropdownWrapper(currentTitle) {
-      const wrapper = document.createElement('span');
-      wrapper.className = 'header-nav-wrapper';
-      
-      const titleSpan = document.createElement('span');
-      titleSpan.className = 'header-nav-title';
-      titleSpan.title = txtTitleTooltip;
-      titleSpan.innerHTML = currentTitle + '<span class="nav-caret"> ▾</span>';
-      
-      titleSpan.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const wasOpen = wrapper.classList.contains('is-open');
-        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
-        if (!wasOpen) {
-          wrapper.classList.add('is-open');
-        }
-      });
-      
-      const dropdown = document.createElement('div');
-      dropdown.className = 'nav-dropdown';
-      
-      dropdown.addEventListener('click', function(e) {
-        e.stopPropagation();
-      });
-      
-      const dropHeader = document.createElement('div');
-      dropHeader.className = 'nav-dropdown-header';
-      dropHeader.innerHTML = '<span>' + txtOutline + '</span>';
-      dropdown.appendChild(dropHeader);
-      
-      const grid = document.createElement('div');
-      grid.className = 'nav-dropdown-grid';
-      
-      sections.forEach(s => {
-        const item = document.createElement('a');
-        const isActive = (s.title === currentTitle);
-        item.className = 'nav-dropdown-item' + (isActive ? ' active' : '');
-        item.href = '#' + s.id;
-        item.innerHTML = '<span class="badge">#' + s.id.padStart(2, '0') + '</span><span class="item-text" title="' + s.title + '">' + s.title + '</span>';
-        
-        item.addEventListener('click', function(e) {
-          e.preventDefault();
-          wrapper.classList.remove('is-open');
-          dropdown.style.display = 'none';
-          const targetHash = '#' + s.id;
-          if (window.location.hash === targetHash) {
-            window.dispatchEvent(new HashChangeEvent('hashchange'));
-          } else {
-            window.location.hash = targetHash;
-          }
-          setTimeout(() => { dropdown.style.display = ''; }, 350);
-        });
-        
-        grid.appendChild(item);
-      });
-      
-      dropdown.appendChild(grid);
-      wrapper.appendChild(titleSpan);
-      wrapper.appendChild(dropdown);
-      return wrapper;
-    }
-
-    // Close any pinned dropdown when clicking anywhere outside
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.header-nav-wrapper')) {
-        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
-      }
-    });
-
-    // 2. Enhance each header element across all slides
-    slideSections.forEach(sec => {
-      const header = sec.querySelector('header');
-      if (!header || header.dataset.navEnhanced) return;
-      header.dataset.navEnhanced = 'true';
-      
-      const links = header.querySelectorAll('a');
-      let prevLink = null;
-      let nextLink = null;
-      
-      links.forEach(a => {
-        const txt = a.textContent.trim();
-        if (txt === '◄' || txt === '◀') prevLink = a;
-        if (txt === '►' || txt === '▶') nextLink = a;
-      });
-      
-      let title = header.textContent.trim();
-      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
-      if (!title) return;
-      
-      header.innerHTML = '';
-      if (prevLink) {
-        prevLink.className = 'header-nav-arrow';
-        prevLink.title = txtPrev;
-        header.appendChild(prevLink);
-        header.appendChild(document.createTextNode(' '));
-      }
-      
-      const wrapper = createDropdownWrapper(title);
-      header.appendChild(wrapper);
-      
-      if (nextLink) {
-        header.appendChild(document.createTextNode(' '));
-        nextLink.className = 'header-nav-arrow';
-        nextLink.title = txtNext;
-        header.appendChild(nextLink);
-      }
-    });
-  }
-
-  // =========================================================================
-  // 2. Number Quick Jump (<kbd>Num</kbd> + <kbd>Enter</kbd>)
-  // =========================================================================
-  function initNumberQuickJump() {
-    let inputBuffer = '';
-    let timer = null;
-    let hud = null;
-
-    // Detect language: check titles or body text
-    const slideSections = document.querySelectorAll('section[id]');
-    let hasZh = false;
-    slideSections.forEach(s => {
-      if (/[\u4e00-\u9fa5]/.test(s.textContent || '')) hasZh = true;
-    });
-    const isEn = !hasZh;
-
-    function getOrCreateHud() {
-      if (!hud) {
-        hud = document.createElement('div');
-        hud.id = 'slide-quick-jump-hud';
-        hud.style.cssText = [
-          'position: fixed',
-          'bottom: 36px',
-          'left: 50%',
-          'transform: translateX(-50%)',
-          'background: rgba(15, 23, 42, 0.94)',
-          'color: #ffffff',
-          'padding: 8px 18px',
-          'border-radius: 28px',
-          'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif',
-          'font-size: 14px',
-          'font-weight: 500',
-          'box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15)',
-          'backdrop-filter: blur(16px)',
-          '-webkit-backdrop-filter: blur(16px)',
-          'z-index: 999999',
-          'display: none',
-          'align-items: center',
-          'gap: 8px',
-          'pointer-events: none',
-          'opacity: 0',
-          'transition: opacity 0.15s ease, transform 0.15s ease'
-        ].join(';');
-        const targetParent = document.fullscreenElement || document.body;
-        targetParent.appendChild(hud);
-      }
-      const parent = document.fullscreenElement || document.body;
-      if (hud.parentElement !== parent) {
-        parent.appendChild(hud);
-      }
-      return hud;
-    }
-
-    function getTotalSlides() {
-      const secs = document.querySelectorAll('section[id]');
-      return secs.length || 1;
-    }
-
-    function showHud() {
-      const el = getOrCreateHud();
-      const total = getTotalSlides();
-      const label = isEn ? 'Go to slide:' : '跳至頁碼:';
-      const enterHint = isEn ? 'Enter ↵' : 'Enter 確認 ↵';
-      el.innerHTML = '<span>🧭 ' + label + '</span> ' +
-        '<strong style="color: #38bdf8; font-size: 20px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 1px;">' + inputBuffer + '</strong> ' +
-        '<span style="opacity: 0.6; font-size: 13px;">/ ' + total + '</span> ' +
-        '<span style="background: rgba(255,255,255,0.18); padding: 2px 7px; border-radius: 6px; font-size: 11px; margin-left: 2px; font-weight: 600;">' + enterHint + '</span>';
-      el.style.display = 'flex';
-      el.style.opacity = '1';
-
-      if (timer) clearTimeout(timer);
-      timer = setTimeout(clearInput, 2800);
-    }
-
-    function clearInput() {
-      inputBuffer = '';
-      if (timer) {
-        clearTimeout(timer);
-        timer = null;
-      }
-      if (hud) {
-        hud.style.opacity = '0';
-        setTimeout(() => {
-          if (inputBuffer === '' && hud) hud.style.display = 'none';
-        }, 150);
-      }
-    }
-
-    function jumpToSlide(num) {
-      const total = getTotalSlides();
-      const target = Math.max(1, Math.min(num, total));
-      const targetHash = '#' + target;
-      
-      // Visual flash confirmation
-      const el = getOrCreateHud();
-      const confirmedMsg = isEn ? ('✓ Slide ' + target) : ('✓ 第 ' + target + ' 頁');
-      el.innerHTML = '<span style="color: #34d399; font-weight: 700; font-size: 15px;">' + confirmedMsg + '</span>';
-      el.style.display = 'flex';
-      el.style.opacity = '1';
-      setTimeout(clearInput, 500);
-
-      if (window.location.hash === targetHash) {
-        window.dispatchEvent(new HashChangeEvent('hashchange'));
-      } else {
-        window.location.hash = targetHash;
-      }
-    }
-
-    window.addEventListener('keydown', function(e) {
-      // Don't intercept when focusing editable form elements
-      const active = document.activeElement;
-      if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT' || active.isContentEditable)) {
-        return;
-      }
-
-      // Ignore if modifier keys are pressed
-      if (e.ctrlKey || e.altKey || e.metaKey) {
-        return;
-      }
-
-      // Resolve digit from key or code (supports '2', 'Digit2', 'Numpad2')
-      let digit = null;
-      if (e.key >= '0' && e.key <= '9') {
-        digit = e.key;
-      } else if (/^(?:Digit|Numpad)([0-9])$/.test(e.key)) {
-        digit = e.key.replace(/^(?:Digit|Numpad)/, '');
-      } else if (/^(?:Digit|Numpad)([0-9])$/.test(e.code || '')) {
-        digit = (e.code || '').replace(/^(?:Digit|Numpad)/, '');
-      }
-
-      if (digit !== null) {
-        inputBuffer += digit;
-        if (inputBuffer.length > 4) inputBuffer = inputBuffer.slice(-4);
-        showHud();
-        return;
-      }
-
-      // Backspace
-      if ((e.key === 'Backspace' || e.code === 'Backspace') && inputBuffer.length > 0) {
-        e.preventDefault();
-        e.stopPropagation();
-        inputBuffer = inputBuffer.slice(0, -1);
-        if (inputBuffer.length === 0) {
-          clearInput();
-        } else {
-          showHud();
-        }
-        return;
-      }
-
-      // Escape
-      if ((e.key === 'Escape' || e.code === 'Escape') && inputBuffer.length > 0) {
-        e.preventDefault();
-        e.stopPropagation();
-        clearInput();
-        return;
-      }
-
-      // Enter key confirms numeric jump
-      if ((e.key === 'Enter' || e.code === 'Enter' || e.code === 'NumpadEnter') && inputBuffer.length > 0) {
-        e.preventDefault();
-        e.stopPropagation();
-        const targetPage = parseInt(inputBuffer, 10);
-        if (!isNaN(targetPage)) {
-          jumpToSlide(targetPage);
-        } else {
-          clearInput();
-        }
-      }
-    }, true);
-  }
-
-  // Initialize both features
-  function init() {
-    initHeaderDropdown();
-    initNumberQuickJump();
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-  setTimeout(init, 400);
-})();
-
-</script>
+<!--
+Thank you very much for your engagement and attention!
+The floor is now open for questions, architectural discussions, and project design reviews.
+-->
