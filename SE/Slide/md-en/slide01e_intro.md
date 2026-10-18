@@ -2212,44 +2212,49 @@ Blindly accepting code without review. Prevent this with contract-first specific
 -->
 ---
 
-## Recap: Fill-in-the-Blank Quiz
+## 🧩 Conceptual Recap: Fill-in-the-Blank Quiz
 
-<div class="fill-blank-columns">
-  <div class="fill-blank-text">
+<div class="fill-blank-container">
 
-Test your mastery of Chapter 1 fundamentals:
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ Word Bank:</div>
+  <span class="word-chip">Documentation</span>
+  <span class="word-chip">Brooks's Law</span>
+  <span class="word-chip">Essential Difficulty</span>
+  <span class="word-chip">ISO/IEC 25010</span>
+  <span class="word-chip">NATO Conference</span>
+  <span class="word-chip">Verification</span>
+  <span class="word-chip">Public Interest</span>
+</div>
 
-1. According to the IEEE definition, software consists of programs, data, operational procedures, and **[ _________ ]**.
-2. Adding manpower to a late software project makes it later is known as **[ _________ ]** Law.
-3. The **[ _________ ]** Quality Model defines 8 product quality characteristics including Functional Suitability, Compatibility, Security, and Maintainability.
-4. The first principle of the ACM/IEEE Code of Ethics prioritizes the **[ _________ ]** interest.
+<div class="quiz-questions">
 
-  </div>
-  <div class="fill-blank-logo">
-    <img src="../../img/ch01/fill_blank_icon.svg" alt="Quiz" />
-  </div>
+1. According to the IEEE definition, software consists of programs, data, operational procedures, and <span class="quiz-blank" data-answer="Documentation">[ _________ ]</span>.
+2. Adding manpower to a late software project makes it later is famously known as <span class="quiz-blank" data-answer="Brooks's Law">[ _________ ]</span>.
+3. In "No Silver Bullet," Fred Brooks argues that inherent software complexity is an <span class="quiz-blank" data-answer="Essential Difficulty">[ _________ ]</span>.
+4. The <span class="quiz-blank" data-answer="ISO/IEC 25010">[ _________ ]</span> standard defines 8 product quality characteristics including Security and Maintainability.
+5. The term "Software Crisis" was formally recognized at the 1968 <span class="quiz-blank" data-answer="NATO Conference">[ _________ ]</span> in Garmisch.
+6. The question "Are we building the product right?" refers to <span class="quiz-blank" data-answer="Verification">[ _________ ]</span>, while building the right product is Validation.
+7. The first principle of the ACM/IEEE Software Engineering Code of Ethics prioritizes the <span class="quiz-blank" data-answer="Public Interest">[ _________ ]</span>.
+
+</div>
+
+<div class="quiz-hint">💡 <em>Interactive Mode: Click any blank slot to reveal or hide the answer!</em></div>
+
 </div>
 
 <!--
-**Shifting our attention to the next slide...**
+Before we conclude Chapter 1, let's test our mastery across all fundamental concepts:
 
-Before we conclude Chapter 1, let's test your memory with four quick fill-in-the-blank questions!
+1. Software consists of code, data, procedures, and Documentation!
+2. Adding manpower to a late project makes it later: Brooks's Law!
+3. Inherent domain complexity is an Essential Difficulty!
+4. The 8-characteristic product quality model is ISO/IEC 25010!
+5. The software crisis was acknowledged at the 1968 NATO Conference in Garmisch!
+6. Checking against specifications is Verification; checking customer fitness is Validation!
+7. The ACM/IEEE Code of Ethics principle #1 prioritizes the Public Interest above all!
 
-Number 1: According to the IEEE definition, software consists of programs, data, operational procedures, and what?
-The answer is: Documentation!
-
-Number 2: Adding manpower to a late software project makes it later. Whose law is this?
-That's Brooks's Law!
-
-Number 3: What international standard defines eight product quality characteristics, including Performance, Security, and Maintainability?
-That is ISO/IEC 25010!
-
-And Number 4: The first principle of the ACM/IEEE Code of Ethics prioritizes whose interest above all else?
-The public interest!
-
-Great job if you got all four!
-
-**To wrap up this slide, here is the key takeaway to remember:** These core concepts form the foundation for everything we will study in advanced software engineering.
+To summarize this slide, remember this key takeaway: These seven concepts form the bedrock foundation of software engineering as a disciplined profession.
 -->
 ---
 
@@ -2601,10 +2606,34 @@ Thank you everyone, and see you in Chapter 2!
     }, true);
   }
 
-  // Initialize both features
+  function initQuizBlanks() {
+    document.querySelectorAll('span.quiz-blank').forEach(function(el) {
+      if (el.dataset.initialized) return;
+      el.dataset.initialized = 'true';
+      const answer = el.getAttribute('data-answer') || '';
+      const placeholder = '[ _________ ]';
+      if (!el.textContent.trim()) {
+        el.textContent = placeholder;
+      }
+      el.title = 'Click to reveal / hide answer';
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (el.classList.contains('revealed')) {
+          el.classList.remove('revealed');
+          el.textContent = placeholder;
+        } else {
+          el.classList.add('revealed');
+          el.textContent = answer;
+        }
+      });
+    });
+  }
+
+  // Initialize features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initQuizBlanks();
   }
 
   if (document.readyState === 'loading') {

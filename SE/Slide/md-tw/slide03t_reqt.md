@@ -1852,30 +1852,51 @@ AI 能提供強大推力，但唯有人類工程師能承擔法律、倫理與�
 總結這張投影片，請記住這個核心觀念：清晰、客觀且經嚴謹驗證的需求，是預測軟體專案成功的最關鍵指標。
 -->
 ---
-## 重點總結：概念填空測驗 (Fill-in-the-blank Quiz)
+## 🧩 核心觀念統整：互動填空小測驗
 
-測試你對本章核心概念的理解程度：
+<div class="fill-blank-container">
 
-1. **`___`** 需求描述系統應提供之具體功能與服務，而 **`___`** 需求則針對系統之品質與運作施加約束。
-2. 以自然語言撰寫、供客戶與非技術利害關係人閱讀的高階敘述稱為 **`___`** 需求。
-3. 嚴謹定義功能細節、作為軟體開發團隊實作與驗收合約基準的規格稱為 **`___`** 需求。
-4. 透過目標-問題-指標 (GQM) 手法，能將模糊的利害關係人願景鍛造為可客觀測試的 **`___`** 指標。
-5. 在 UML 使用案例圖中，基礎案例執行時必然無條件呼叫的共通子程序採用 **`___`** 關聯性。
-6. 在將 AI 導入需求工程時，確保系統規格具備終極責任與可信度的核心工程準則是 **`___`**。
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ 候選詞庫：</div>
+  <span class="word-chip">功能性需求</span>
+  <span class="word-chip">使用者需求</span>
+  <span class="word-chip">系統需求</span>
+  <span class="word-chip">可驗證指標 (GQM)</span>
+  <span class="word-chip">&lt;&lt;include&gt;&gt;</span>
+  <span class="word-chip">需求追溯矩陣 (RTM)</span>
+  <span class="word-chip">人機協同 (Human-in-the-Loop)</span>
+</div>
+
+<div class="quiz-questions">
+
+1. <span class="quiz-blank" data-answer="功能性需求">[ _________ ]</span> 定義系統應提供之具體功能與服務，而非功能性需求則對品質與運作施加約束。
+2. 以自然語言撰寫、供客戶與非技術利害關係人閱讀的高階敘述稱為 <span class="quiz-blank" data-answer="使用者需求">[ _________ ]</span>。
+3. 嚴謹定義功能細節、作為軟體開發團隊實作與驗收合約基準的規格稱為 <span class="quiz-blank" data-answer="系統需求">[ _________ ]</span>。
+4. 透過目標-問題-指標 (GQM) 手法，能將模糊的利害關係人願景鍛造為可客觀測試的 <span class="quiz-blank" data-answer="可驗證指標 (GQM)">[ _________ ]</span>。
+5. 在 UML 使用案例圖中，基礎案例執行時必然無條件呼叫的共通子程序採用 <span class="quiz-blank" data-answer="<<include>>">[ _________ ]</span> 包含關聯。
+6. 將每一項需求正向追蹤至架構設計、程式碼與測試案例的雙向對照工具為 <span class="quiz-blank" data-answer="需求追溯矩陣 (RTM)">[ _________ ]</span>。
+7. 在將生成式 AI 導入需求擷取與分析時，確保系統規格具備終極責任與可信度的核心工程準則是 <span class="quiz-blank" data-answer="人機協同 (Human-in-the-Loop)">[ _________ ]</span>。
+
+</div>
+
+<div class="quiz-hint">💡 <em>線上互動提示：點擊任何底線空格即可立即揭曉 / 隱藏解答！</em></div>
+
+</div>
 
 <!--
-讓我們透過課堂即時填空測驗，盤點今天的學習收穫！
+讓我們透過課堂即時填空測驗，盤點今天的學習收穫：
 
-第一題：描述系統提供什麼服務的是「功能性」需求；施加約束條件的是「非功能性」需求！
-第二題：寫給客戶與非技術主管看的高階敘述是「使用者」需求！
-第三題：作為開發與測試驗收合約基準的技術藍圖是「系統」需求！
-第四題：將主觀心願鍛造為可客觀驗收的數據，稱為「可驗證 (Verifiable)」或「量化」指標！
-第五題：在 UML 使用案例圖中，無條件必然呼叫的共用行為採用「<<include>> (包含)」關聯！
-第六題：將 AI 導入需求工程時，確保責任歸屬的最高準則是「人機協同 (Human-in-the-Loop)」！
+1. 描述系統提供什麼服務的是功能性需求，施加約束條件的是非功能性需求！
+2. 寫給客戶與非技術主管看的高階敘述是使用者需求！
+3. 作為開發與測試驗收合約基準的技術藍圖是系統需求！
+4. 將主觀心願鍛造為可客觀驗收的數據，稱為可驗證指標 (GQM)！
+5. 在 UML 使用案例圖中，無條件必然呼叫的共用行為採用 <<include>> 包含關聯！
+6. 需求雙向追蹤工具是需求追溯矩陣 (RTM)！
+7. 將 AI 導入需求工程時，確保責任歸屬的最高準則是人機協同 (Human-in-the-Loop)！
 
 大家表現得非常出色！
 
-總結這張投影片，請記住這個核心觀念：這些核心術語構成了專業軟體工程師必備的需求工程核心基石。
+總結這張投影片，請記住這個核心觀念：這七大核心概念構成了專業軟體工程師必備的需求工程核心基石。
 -->
 ---
 ## 經典文獻與延伸閱讀 (References & Further Reading)
@@ -2218,10 +2239,34 @@ AI 能提供強大推力，但唯有人類工程師能承擔法律、倫理與�
     }, true);
   }
 
-  // Initialize both features
+  function initQuizBlanks() {
+    document.querySelectorAll('span.quiz-blank').forEach(function(el) {
+      if (el.dataset.initialized) return;
+      el.dataset.initialized = 'true';
+      const answer = el.getAttribute('data-answer') || '';
+      const placeholder = '[ _________ ]';
+      if (!el.textContent.trim()) {
+        el.textContent = placeholder;
+      }
+      el.title = '點擊以揭曉 / 隱藏解答 (Click to toggle answer)';
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (el.classList.contains('revealed')) {
+          el.classList.remove('revealed');
+          el.textContent = placeholder;
+        } else {
+          el.classList.add('revealed');
+          el.textContent = answer;
+        }
+      });
+    });
+  }
+
+  // Initialize features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initQuizBlanks();
   }
 
   if (document.readyState === 'loading') {

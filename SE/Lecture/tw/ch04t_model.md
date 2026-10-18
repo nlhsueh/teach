@@ -327,6 +327,44 @@ UC_AcceptTask -- Courier
 @enduml
 ```
 
+### 4.3.12 診斷式案例實戰：抓出使用案例模型的致命破綻 (Diagnostic Case Study)
+
+即使是看似直觀的使用案例圖，若缺乏嚴謹的架構邊界意識，極易退化為充滿破綻的低階 UI 操作清單。
+
+![錯誤使用案例模型範例](../../img/ch04/food_delivery/bad_usecase_model.svg)
+
+*圖 4.3.11：具備四大典型缺陷的使用案例圖草稿。*
+
+#### 架構診斷審查：四大致命反模式
+
+1. **系統邊界混淆 (Boundary Collapse)：**
+   * *破綻：* 外部合作夥伴 `PaymentGateway`（第三方金流閘道）被錯誤置於系統邊界矩形框內部。
+   * *修正：* 系統邊界矩形框代表「我們團隊負責編寫與部署的軟體範疇」。所有外部系統、第三方 API 與終端使用者皆屬於外部參與者 (Actors)，必須嚴格置於系統邊界框之外。
+2. **CRUD 功能碎片化 (CRUD Fragmentation)：**
+   * *破綻：* 將「輸入密碼」、「點擊登入按鈕」與「驗證帳號」拆解為三個獨立的使用案例橢圓。
+   * *修正：* 使用案例必須代表完整、為參與者帶來獨立商業價值的目標（User Goal），嚴禁將單一操作畫面上的表單輸入與按鈕點擊拆為細碎案例。應收斂為單一的 `顧客登入` 或包含於交易流程中。
+3. **Include 依賴語意濫用 (Include Dependency Inversion / Abuse)：**
+   * *破綻：* 箭頭由細節操作指向主業務，或將非必要之輔助操作標記為 `<<include>>`。
+   * *修正：* `<<include>>` 箭頭必須由「基底案例」指向「被包含之子案例」，且代表不可或缺之強制流程（例如：下單強制包含扣款）。
+4. **參與者主客顛倒 (Actor Inversion)：**
+   * *破綻：* 未區分主要參與者（啟動者）與次要參與者（輔助者），甚至將系統內部的後端排程服務誤畫為人形參與者。
+   * *修正：* 左側繪製發起業務目標的主要參與者，右側繪製提供被動支援的次要外部系統。
+
+![修正後之標準使用案例模型](../../img/ch04/food_delivery/corrected_usecase_model.svg)
+
+*圖 4.3.12：修正後之標準使用案例模型。邊界清晰、參與者職責分明，且全面以商業目標為導向。*
+
+### 4.3.13 互動實作：運用 AI 演進使用案例模型 (Pair Hands-On Activity)
+
+* **實作目標：** 在既有的外送平台提示詞中引入一項全新的業務變更需求，並審查 AI 產出的 PlantUML 規格：
+  1. *選項 A (預約排程訂餐)：* 允許顧客預約未來 7 天內的特定時段送達（使用 `<<extend>>` 與擴充點守衛）。
+  2. *選項 B (在線客服即時交談)：* 新增顧客與平台客服、外送員之即時交談使用案例（外部次要參與者正確置於邊界外）。
+  3. *選項 C (多人團購分帳)：* 允許主揪發起多人購物車並各自結帳。
+* **架構檢核清單：**
+  * 邊界紀律：新增的外部輔助人員或服務是否嚴格置於系統矩形邊界之外？
+  * 關聯精確性：選擇性功能是否正確採用 `<<extend>>`，且箭頭指向基底案例？
+  * 目標層次：案例名稱是否維持動詞+名詞的高階商業目標，未退化為按鈕點擊？
+
 ---
 
 <!-- id: ase-ch04-ccq3 -->
@@ -445,6 +483,22 @@ UC_AcceptTask -- Courier
 4. `Order` 與 `Courier` 為 `* ───◇ 0..1` 聚合（外送員配送訂單，配送結束後獨立存活）。
 5. `Order` 與 `PaymentProcessor` 保持依賴解耦（訂單委託外部金流處理扣款）。
 
+### 4.4.6 生成式 AI 提示詞指引與外送平台類別模型
+
+運用大型語言模型 (LLM) 自動合成類別圖時，必須提供嚴謹的架構約束與多重性指示：
+
+```text
+[角色宣告：資深軟體架構師]
+任務：請為《外送平台》核心業務領域生成標準 PlantUML 類別圖。
+
+架構設計規範：
+- 類別三層隔間：完整標註類別名稱、私有屬性變數 (-) 與公開方法 (+)。
+- 生命週期約束：獨佔生命週期之整體-部分關係嚴格套用組合 (*--)。
+- 獨立生存約束：弱擁有或共享引用之實體嚴格套用聚合 (o--)。
+- 標註端點多重性 ('1', '0..1', '1..*')。
+- 介面與依賴：金流扣款等外部整合服務以 interface 與依賴 (..>) 呈現。
+```
+
 #### 外送平台類別模型圖 (Food Delivery Class Model)
 
 ![外送平台類別圖](../../img/ch04/food_delivery/food_delivery_class.svg)
@@ -493,6 +547,44 @@ Order "*" o-- "0..1" Courier : assigned to >
 Order ..> PaymentProcessor : delegates >
 @enduml
 ```
+
+### 4.4.7 診斷式案例實戰：抓出類別模型的架構破綻（棒球對決案例）
+
+在物件導向領域模型設計中，關聯語意（繼承、聚合、組合）與多重性設定若稍有不慎，便會引發嚴重的程式碼架構災難。
+
+![錯誤棒球類別模型範例](../../img/ch04/baseball/bad_baseball_class_model.svg)
+
+*圖 4.4.10：棒球對決模型草稿。充斥著生命週期毀滅性組合、多重性倒置與封裝破壞四大嚴重破綻。*
+
+#### 架構診斷審查：四大致命反模式
+
+1. **破壞性組合反模式 (Destructive Composition Anti-Pattern)：**
+   * *破綻：* `Team` 與 `Player` 之間被宣告為組合關聯 (`Team *-- Player`)。
+   * *修正：* 組合 (◆) 代表強烈的部分與整體生命週期相依。若球隊宣告破產解散，難道旗下的所有球員必須被強制「安樂死」銷毀嗎？當然不！球員在球隊解散後可自由轉隊。球隊與球員之間是共享成員的弱擁有關係，必須使用聚合關聯 (`Team o-- Player`)。
+2. **多重性倒置與幽靈成員 (Multiplicity Inversion & Ghost Members)：**
+   * *破綻：* `BaseballGame` 與 `Team` 的多重性被標註為 `1` 對 `*`（一場比賽可容納無限支球隊），且球隊至球員的多重性標註為 `0..1`。
+   * *修正：* 一場標準棒球對決嚴格由兩支球隊組成（主隊與客隊，多重性為 `2`）。一支球隊由多名球員組成 (`1..*` 或 `9..25`)，絕非 `0..1`。
+3. **封裝破壞與職責錯置 (Information Hiding Violation & Misplaced Responsibility)：**
+   * *破綻：* 類別所有屬性皆被宣告為公開 (`+`)；`pitchBall()`（投球）方法被錯誤掛在 `BaseballGame` 賽事類別上，而 `calculateWinner()` 則被掛在 `Team` 上。
+   * *修正：* 實踐資訊隱藏原則，欄位應宣告為私有 (`-`)。方法必須遵循「資訊專家模式 (Information Expert)」：投球是 `Player` 的具體動作行為；而計算獲勝隊伍需比對兩隊總分，屬於掌控全局賽事的 `BaseballGame` 職責。
+4. **繼承誤用 (Inheritance Misuse)：**
+   * *破綻：* 將非 "is-a" 關係的實體硬套用泛化箭頭。
+   * *修正：* 謹守「組合優於繼承 (Favor Composition over Inheritance)」原則。
+
+![修正後之棒球類別模型](../../img/ch04/baseball/corrected_baseball_class_model.svg)
+
+*圖 4.4.11：修正後之棒球類別模型。正確套用非破壞性聚合、嚴格私有封裝與精確的業務多重性。*
+
+### 4.4.8 互動實作：運用 AI 演進外送平台領域類別模型
+
+* **實作目標：** 在既有的外送平台領域類別提示詞中，引入一項業務結構變更，並審查 AI 產出的架構完整性：
+  1. *選項 A (跨餐廳多店家購物車)：* 允許單筆 `Order` 包含來自不同 `Restaurant` 的餐點（需拆解為 `SubOrder` 子訂單）。
+  2. *選項 B (外送員評分與小費)：* 允許 `Customer` 在訂單完成後對 `Courier` 進行評分與自由給予小費（弱聚合關聯 `0..1`）。
+  3. *選項 C (VIP 尊榮訂閱方案)：* 引入會員訂閱制度，免收外送服務費（採用策略模式關聯而非多重繼承）。
+* **架構檢核清單：**
+  * 生命週期語意：新增關聯是否精準區分組合 (`*--`) 與聚合 (`o--`)？
+  * 多重性邏輯：關聯端點的數量限制 (`1..*`, `0..1`) 是否符合真實業務約束？
+  * 封裝與職責：欄位是否維持私有 (`-`)，方法是否分配給持有資料的專家類別？
 
 ---
 
@@ -626,6 +718,44 @@ end
 @enduml
 ```
 
+### 4.5.6 診斷式案例實戰：抓出循序圖模型的架構破綻（飯店訂房案例）
+
+循序圖捕捉動態呼叫鏈，若忽略分層架構或控制片段語法，極易產生時序因果倒置或資料不一致之嚴重缺陷。
+
+![錯誤循序模型範例](../../img/ch04/sequence/bad_sequence_model.svg)
+
+*圖 4.5.9：飯店訂房循序圖草稿。包含分層架構破壞、守衛語意混淆、時序因果倒置與生命線懸掛四大嚴重破綻。*
+
+#### 架構診斷審查：四大致命反模式
+
+1. **分層架構與封裝破壞 (Layering & Encapsulation Violation)：**
+   * *破綻：* 訊息 `[2]` 顯示前端畫面 `BookingUI` 竟直接以 SQL 語法 (`SELECT * FROM rooms...`) 直連查詢資料庫 `MySQL_DB`。
+   * *修正：* 在多層架構與 BCE 原則下，表現層邊界嚴禁繞過商業邏輯控制層直通持久化資料庫。如此將導致前端與資料表綱要緊密耦合，破壞資訊隱藏。必須透過 `BookingController` 進行調度。
+2. **無效之 `alt` 複合片段條件混淆 (Invalid Combined Fragment Guards)：**
+   * *破綻：* 在 `alt` 條件區塊中，第一條分支守衛條件為 `[Room Available]`（房間尚有空位），但 `else` 分支守衛卻寫成 `[else Payment Successful]`（付款成功）。
+   * *修正：* 同一 `alt` 區塊內的各分支必須評估相同的業務向度且具備互斥性（例如：`[Room Available]` vs. `[else / Room Unavailable]`）。將房況庫存與付款成功混雜在同一個決策分支屬於根本性的邏輯混亂。
+3. **時序因果倒置與提前確認 (Chronological Causality & Premature Confirmation)：**
+   * *破綻：* 訊息 `[7]` 與 `[8]` 顯示系統在訊息 `[9]` 的資料庫寫入 (`INSERT INTO bookings`) 完成「之前」，就提前向顧客畫面顯示 `Booking Confirmed!`。
+   * *修正：* 若後續資料庫寫入因主鍵衝突或連線中斷失敗，顧客手中卻握有確認成功的假訊息，將造成災難性的業務糾紛。交易與資料庫寫入必須在向使用者確認成功之前完成提交 (Commit)。
+4. **生命線啟動條懸掛未關閉 (Dangling Lifeline Activation)：**
+   * *破綻：* `MySQL_DB` 在訊息 `[9]` 啟動後，啟動條一路無限向下延伸，從未關閉。
+   * *修正：* 啟動條代表物件獲取 CPU 執行緒或等待子程序返回之聚焦期間。資料庫查詢或寫入完畢後，必須立即終止啟動條焦點。
+
+![修正後之標準循序模型](../../img/ch04/sequence/corrected_sequence_model.svg)
+
+*圖 4.5.10：修正後之標準循序圖。貫徹 BCE 分層、互斥條件守衛、先寫入後確認時序與清晰閉合的啟動焦點。*
+
+### 4.5.7 互動實作：運用 AI 演進循序圖模型 (Pair Hands-On Activity)
+
+* **實作目標：** 在外送平台結帳循序圖提示詞中引入一項分散式異常邊緣案例，並審查 AI 產出的時序互動邏輯：
+  1. *選項 A (第三方金流閘道逾時)：* 刷卡呼叫超過 5 秒未回應，觸發控制器重試或取消交易補償機制。
+  2. *選項 B (數位錢包與信用卡雙軌混合支付)：* 先扣錢包餘額，餘額不足再呼叫外部信用卡；若信用卡失敗則執行錢包退款補償。
+  3. *選項 C (結帳瞬間庫存售罄)：* 在金流扣款前鎖定庫存失敗，優雅中斷交易並回報使用者。
+* **架構檢核清單：**
+  * 分層架構：UI 是否維持透過 Controller 調用，未直接存取資料庫或外部 API？
+  * 分支互斥性：成功路徑與異常失敗路徑是否使用 `alt` 片段清晰劃分？
+  * 背景解耦：非同步背景通知（如廚房印單、推播訊息）是否正確使用非同步箭頭 (`->>`)？
+
 ---
 
 <!-- id: ase-ch04-ccq5 -->
@@ -684,22 +814,27 @@ end
 * **決策與合併 (Decision / Merge ♢ 菱形)**：代表**條件互斥分支**。一個流入的 Token，依據布林守衛條件 `[guard]`，在多條路徑中**嚴格選擇其一**推進。
 * **分岔與結合 (Fork / Join ❚ 同步條)**：代表**多執行緒並行**。一個流入的 Token 被複製分配至所有流出路徑，所有並行活動**同時並發執行**；Join 條則具備阻塞同步語意，必須等待每一條並行路徑的 Token 全部到達，才融合成單一 Token 向下推進。
 
-### 4.6.3 泳道 (Swimlanes) 與物件資料流實戰
+### 4.6.3 泳道 (Swimlanes) 與責任分區
 
 ![泳道與分割區塊](../../img/ch04/nb_act/09_swimlane.jpg)
 
 *圖 4.6.4：泳道 (Swimlanes/Partitions) 劃分。將活動分配至不同部門、使用者或微服務系統。*
 
+泳道將活動圖垂直或水平分割為不同欄位，明確各角色的權責邊界：
+* **顧客泳道 (Customer Lane)：** 負責確認下單、以 OTP 驗證簽收餐點。
+* **餐廳廚房泳道 (Kitchen Lane)：** 負責接單烹飪、打包餐點並將餐點交付外送員。
+* **配送物流泳道 (Courier & Dispatch Lane)：** 負責媒合最佳外送員、行駛至餐廳取餐並配送到府。
+
+### 4.6.4 物件節點與狀態資料流 (Object Nodes & Stateful Data Flows)
+
 ![物件流與狀態傳遞](../../img/ch04/nb_act/08_object_flow.jpg)
 
 *圖 4.6.5：物件流 (Object Flow) 與狀態釘針。展示實體物件在各動作執行間的生命週期狀態轉變。*
 
-* **顧客泳道**：`瀏覽餐點` ──► `送出訂單` ──► `[訂單: 待處理]`。
-* **餐廳廚房泳道**：接收到訂單後 ──► `烹飪餐點` ──► `[餐點: 已備妥]`。
-* **外送系統泳道**：與烹飪並行觸發 ──► `媒合最佳外送員` ──► `[派遣單: 已接單]`。
-* **結合同步條 (Join Bar)**：等待「餐點已備妥」與「外送員已抵達餐廳」兩者皆滿足後，方能執行 `領取餐點並展開運送`。
+除了純粹的控制流箭頭，活動圖亦可引入**物件節點 (Object Nodes)**（標註為 `類別 [狀態]` 的矩形框），展示資料實體如何在動作之間流轉與轉變狀態：
+`[訂單已成立]` ──► **烹飪餐點** ──► `[餐點已煮好]` ──► **打包餐點** ──► `[餐點待取餐]`。
 
-### 4.6.4 外送平台多方協同活動圖實戰案例
+### 4.6.5 外送平台多方協同活動圖實戰案例
 
 #### 外送平台活動模型圖 (Food Delivery Activity Model)
 
@@ -740,6 +875,56 @@ end fork
 stop
 @enduml
 ```
+
+### 4.6.6 診斷式案例實戰：抓出活動圖模型的流程破綻（外送訂單履約流程）
+
+設計健全的業務工作流程，必須嚴格遵守 Token 守恆、同步平衡與泳道責任歸屬原則。
+
+![錯誤活動模型範例](../../img/ch04/activity/bad_activity_model.svg)
+
+*圖 4.6.7：外送履約流程活動圖草稿。包含分岔與分支混淆、泳道顛倒、懸掛流程與死鎖危機四大嚴重破綻。*
+
+#### 架構診斷審查：四大致命反模式
+
+1. **分岔同步條 vs. 條件決策菱形混淆 (Fork Bar vs. Decision Diamond)：**
+   * *破綻：* 在廚房泳道中，竟然以 `fork` 分岔同步條分出 `[Card Payment]`（信用卡支付）與 `[Cash on Delivery]`（貨到付款）兩條帶守衛條件的分支。
+   * *修正：* `fork` 分岔條的語義是「多執行緒並發」，所有流出分支會同時並行啟動！將互斥的付款方式掛在 fork 上，代表系統一邊刷顧客的信用卡、同時又吩咐外送員向顧客收現金！互斥條件二選一必須使用「決策菱形 (Decision Diamond, ♢)」，嚴禁使用同步條。
+2. **泳道職責嚴重顛倒 (Swimlane Responsibility Inversion)：**
+   * *破綻：* 動作職責完全錯置：`顧客 (Customer)` 泳道被指派去執行 `備餐與包裝餐點`，而 `餐廳廚房 (Kitchen)` 泳道卻被指派去執行 `輸入外送地址與電話`！
+   * *修正：* 泳道代表該活動之法定執行實體。顧客負責填寫外送地址；餐廳廚房負責料理餐點與打包。
+3. **懸掛控制流與遺漏終止節點 (Dangling Control Flow & Missing Final Node)：**
+   * *破綻：* 當食材檢核為 `[Out of Stock]`（庫存不足）時，流程執行 `Cancel Order`（取消訂單）後直接中斷懸掛在半空中，未連接任何終止節點。
+   * *修正：* UML 活動圖嚴禁懸掛箭頭。所有終止路徑必須明確引導至「活動終止節點 (Activity Final Node, ◉ 實心圓帶外圈)」或流程終止節點 (`⊗`)。
+4. **非對稱同步之死鎖危機 (Deadlock Hazard on Asymmetric Synchronization)：**
+   * *破綻：* 將互斥的決策分支直接匯入 `join` 結合同步條中。
+   * *修正：* Join 條會永久阻塞等待所有輸入箭頭上的 Token 到達。若將互斥分支（永遠只有一個 Token）接進 Join，系統將因永遠等不到另一個 Token 而陷入永久死鎖 (Deadlock)！互斥分支必須用合併菱形 (Merge) 匯流，Join 條僅能用於同步並行執行緒。
+
+![修正後之標準活動模型](../../img/ch04/activity/corrected_activity_model.svg)
+
+*圖 4.6.8：修正後之標準活動圖。正確運用決策菱形、分明泳道責任、補齊終止節點並杜絕死鎖危機。*
+
+### 4.6.7 動態模型深度對比：狀態機圖 vs. 活動圖架構決策矩陣
+
+狀態機圖與活動圖皆用於塑模系統的動態行為，但兩者回答的本質工程問題截然不同：
+
+| 評估向度 | 狀態機圖 (State Machine / Statechart) | 活動圖 (Activity Diagram / Workflow) |
+| :--- | :--- | :--- |
+| **核心視角** | **實體中心 / 反應式 (Entity-Centric)：** 描繪「單一實體」從誕生到消滅之完整生命週期。 | **流程中心 / 程序的 (Process-Centric)：** 描繪跨角色、跨系統之「端到端端工作流程」。 |
+| **主要節點** | **狀態 (State)：** 物件等待事件到達或持續執行背景運算的持久靜止模式。 | **動作 (Action / Activity)：** 正在被執行的具體運算步驟或業務任務（動詞）。 |
+| **推進驅動力** | **事件驅動 (Event-Driven)：** 需外來事件刺激觸發變遷 (`Event [Guard] / Action`)。 | **完成驅動 (Completion-Driven)：** 前一項任務完成後自動沿控制流向下推進。 |
+| **並行模型** | **正交區域 (Orthogonal Regions)：** 複合狀態內的並行子狀態軌道 (`||`)。 | **同步條 (Fork & Join)：** 跨泳道明確的並行分支切割與匯流等待。 |
+| **最佳應用** | 物件生命週期 (Order, Account, TCP 連線)、IoT 韌體裝置、狀態機模式。 | 業務流程自動化 (訂單履約流程)、批次排程、跨部門協同工作流程。 |
+
+### 4.6.8 互動實作：運用 AI 演進活動圖工作流程 (Pair Hands-On Activity)
+
+* **實作目標：** 在外送履約活動圖提示詞中引入一項實際營運之流程變異，並審查 AI 產出的 Token 控制流：
+  1. *選項 A (外送員拒單重新派單迴圈)：* 外送員可拒絕接單，調派引擎需進入 `repeat...repeat while` 迴圈重新搜尋下一位外送員。
+  2. *選項 B (廚房品管檢驗重做迴圈)：* 餐點打包前進行 QA 檢驗，若未達標準需退回重新製作。
+  3. *選項 C (顧客門市自取直通分支)：* 若訂單為自取 (Takeaway)，直接略過所有外送員搜尋與配送泳道，通知顧客到店自取。
+* **架構檢核清單：**
+  * 泳道歸屬：每個動作是否皆正確歸入權責角色，未出現越俎代庖之角色顛倒？
+  * 迴圈終止性：`repeat` 迴圈是否具備明確的跳出條件，避免陷入無窮迴圈？
+  * 避免死鎖：互斥分支是否嚴格採用 Merge 菱形匯合，絕未誤用 Join 同步條？
 
 ---
 
@@ -798,11 +983,22 @@ UML 狀態變遷以帶箭頭的直線連接來源狀態與目標狀態，完整�
 2. **Guard (守衛條件)**：以中括號括起之布林條件（如 `[balance >= orderAmount]`），僅在評估為 true 時變遷方能觸發。
 3. **Effect / Action (觸發動作)**：變遷跨越時執行之瞬間原子性操作（如 `/ deductAccountBalance()`）。
 
+![變遷實戰：外送平台訂單案例](../../img/ch04/food_delivery/food_delivery_transition_mechanics.svg)
+
+*圖 4.7.4：變遷實戰：外送平台訂單案例。套用五元素公式落實「下單 2 分鐘內允許免費取消」之業務規則。*
+
+在外送平台中：
+* **具體變遷語法：** `cancelOrder(reason) [elapsedTime <= 120s] / processFullRefund(); notifyKitchen()`。
+* **刺激事件 (Trigger)：** 顧客在手機 App 點擊「取消訂單」。
+* **守衛條件 (Guard)：** 系統嚴格檢查 `[elapsedTime <= 120s]`。若下單已超過 2 分鐘，守衛條件評估為 **false**，變遷被強制攔截，狀態絕不改變。
+* **動作效果 (Action)：** 瞬間原子操作執行 `/ processFullRefund()`，並非同步通知廚房停止備餐。
+* **目標狀態：** 訂單進入 `Cancelled` 並觸發 `entry / logCancellation()`。
+
 ### 4.7.3 動作 (Action) vs. 活動 (Activity) 核心語義辨析
 
 ![動作與活動對照](../../img/ch04/nb_state_machine/07_actions_vs_activities.jpg)
 
-*圖 4.7.4：動作 (Action) 與活動 (Activity) 之本質差異。Action 瞬間完成且不可中斷；Activity 持續耗時且可被外來事件隨時終止。*
+*圖 4.7.5：動作 (Action) 與活動 (Activity) 之本質差異。Action 瞬間完成且不可中斷；Activity 持續耗時且可被外來事件隨時終止。*
 
 | 特性維度 | 動作 (Action: `entry`, `exit`, `/`) | 活動 (Activity: `do / ...`) |
 | :--- | :--- | :--- |
@@ -810,23 +1006,55 @@ UML 狀態變遷以帶箭頭的直線連接來源狀態與目標狀態，完整�
 | **中斷性** | **不可中斷 (Atomic 原子操作)** | **可中斷 (Interruptible)**，外部變遷一觸發即刻被終止 |
 | **宣告位置** | `entry /`, `exit /` 或變遷線上之 `/ effect` | 僅能在狀態方塊內部以 `do /` 宣告 |
 
+#### 邊界執行：進入動作 (Entry) 與離開動作 (Exit)
+
+![邊界執行：進入與離開動作](../../img/ch04/food_delivery/food_delivery_boundary_execution.svg)
+
+*圖 4.7.6：邊界執行：進入與離開動作在《外送平台》的保證執行架構。*
+
+將初始化與清理邏輯綁定於狀態邊界，可徹底消除在多條流出變遷線上重複撰寫相同清理代碼的冗餘：
+* **進入動作 (`entry / startGPSTracking()`):** 只要一進入 `OutForDelivery`（外送中）狀態，系統保證瞬間啟動外送員 GPS 定位並通知顧客。
+* **持續活動 (`do / streamRiderGPSCoordinates()`):** 在外送途中持續串流回傳座標，一旦到達或訂單取消即被中斷。
+* **離開動作 (`exit / stopGPSTracking()`):** 無論訂單是正常送達 (`confirmDropoff()`) 或異常失聯 (`addressNotFound()`)，離開狀態的瞬間**保證絕對執行**關閉 GPS 模組並記錄時間戳記。
+
 ### 4.7.4 複合狀態 (Composite States) 與歷史假狀態 (History)
 
 ![複合狀態與歷史記號](../../img/ch04/nb_state_machine/10_composite_states_and_history.jpg)
 
-*圖 4.7.5：複合狀態與歷史假狀態。以巢狀結構解決狀態爆炸問題，並透過 H 與 H* 記號保存中斷前的內部狀態。*
+*圖 4.7.7：複合狀態與歷史假狀態。以巢狀結構解決狀態爆炸問題，並透過 H 與 H* 記號保存中斷前的內部狀態。*
 
-* **複合狀態 (Composite State)**：將多個相關子狀態封裝於一個父狀態方框中。任何連接至父狀態外框的變遷（如 `powerOff` 或 `emergencyStop`），對所有巢狀子狀態自動生效，徹底杜絕重複繪製幾十條相同箭頭的「狀態爆炸 (State Explosion)」問題。
-* **淺歷史假狀態 (Shallow History, `H`)**：當重新進入複合狀態時，自動恢復至**最外層直接子狀態**。
-* **深歷史假狀態 (Deep History, `H*`)**：遞迴記憶中斷發生時處於**最深層的巢狀子狀態**。
+* **複合狀態 (Composite State)**：將多個相關子狀態封裝於一個父狀態方框中。任何連接至父狀態外框的變遷（如 `emergencyCancel()` 附加於 `OrderFulfillment`），對所有巢狀子狀態自動生效，徹底杜絕「狀態爆炸」問題。
+* **並行正交區域 (Concurrent Orthogonal Regions, `||`)**：在複合狀態內部以虛線劃分多個同時並發推進的獨立子狀態軌道。
+
+![架構擴展：複合狀態與並行正交區域](../../img/ch04/food_delivery/food_delivery_composite_concurrent.svg)
+
+*圖 4.7.8：外送平台履約之複合與並行狀態。同時並發推進「廚房備餐」與「外送調派」兩條正交子狀態軌道。*
+
+在 `OrderFulfillment`（訂單履約）超狀態內部，兩條業務軌道各自獨立推進：
+1. **廚房管線 (區域 1)：** `Cooking` → `Packaged` → `AwaitingPickup`。
+2. **物流管線 (區域 2)：** `FindingCourier` → `CourierAssigned` → `CourierAtRestaurant`。
+
+兩者在背景同時執行，互不阻塞。
+
+#### 透過歷史狀態記憶恢復進度 (`H` / `H*`)
+
+![歷史狀態記憶機制](../../img/ch04/food_delivery/food_delivery_history_memory.svg)
+
+*圖 4.7.9：歷史狀態記憶機制。在突發爭議中斷後精準恢復狀態，避免重頭開始備餐。*
+
+當訂單處於 `OutForDelivery`（外送中）時，若突然觸發信用卡爭議或地址確認風控，訂單會被中斷並轉移至 `OrderSuspended`（訂單暫停）。
+* **無歷史狀態：** 爭議解除後重新進入履約狀態，系統只能回到預設初始狀態 (`Cooking`)，導致餐廳浪費食材、被逼重做一份餐點！
+* **具備深歷史狀態 (`H*`)：** 恢復變遷直接指向 `(H)` 節點，系統立即恢復至中斷前的 `OutForDelivery` 狀態，外送員直接繼續配送原餐點！
 
 ### 4.7.5 外送平台訂單生命週期狀態機實戰案例
 
-#### 外送平台訂單狀態機模型圖 (Food Delivery State Machine Model)
+![外送平台訂單架構統一藍圖](../../img/ch04/food_delivery/food_delivery_unified_blueprint.svg)
+
+*圖 4.7.10：外送平台訂單架構統一藍圖。整合守衛變遷、並行正交履約、深歷史暫停與邊界 Entry/Exit 動作之企業級藍圖。*
 
 ![外送平台訂單狀態機圖](../../img/ch04/food_delivery/food_delivery_state.svg)
 
-*圖 4.7.6：外送平台 PlantUML 生成之訂單狀態機圖。描繪 Placed, Accepted, Preparing, ReadyForPickup, OutForDelivery, Delivered 與 Cancelled 等離散狀態，並附帶計時守衛與 entry 動作。*
+*圖 4.7.11：外送平台基準訂單狀態機圖。描繪 Placed, Accepted, Preparing, ReadyForPickup, OutForDelivery, Delivered 與 Cancelled 等核心狀態。*
 
 ```plantuml
 @startuml
@@ -852,6 +1080,44 @@ Accepted -down-> Cancelled : cancelOrder [t <= 120s]
 Cancelled -left-> [*]
 @enduml
 ```
+
+### 4.7.6 診斷式案例實戰：抓出狀態機圖的行為破綻（訂單生命週期）
+
+狀態機圖規範了系統在執行時期的法定狀態與變遷約束。若狀態語意不清或缺少守衛，極易引發競態衝突與死鎖。
+
+![錯誤狀態機模型範例](../../img/ch04/statemachine/bad_statemachine_model.svg)
+
+*圖 4.7.12：訂單生命週期狀態機草稿。包含動作誤植、黑洞陷阱、非確定性變遷與終止狀態違規四大破綻。*
+
+#### 架構診斷審查：四大致命反模式
+
+1. **瞬態動作誤植為持久狀態 (Action vs. State Confusion)：**
+   * *破綻：* 狀態圖中出現了一個名為 `DeductCreditCard`（扣信用卡款）的狀態方塊。
+   * *修正：* 狀態 (State) 代表實體處於某種持久滿足的條件或靜止等待模式（如 `PendingPayment`, `Paid`）。扣款是瞬間完成的原子動作，耗時為零，必須標記為變遷上的 Effect 動作 (`pay / deductCreditCard()`)，絕不能畫成狀態方塊。
+2. **黑洞陷阱狀態 (Black Hole / Trap State)：**
+   * *破綻：* `RiskReview`（風控審查）狀態只有流入箭頭，但流出箭頭數量為零。
+   * *修正：* 訂單一旦進入 `RiskReview` 即永久被困死在系統中，無法通過審查、無法取消、也無法終止。任何中間狀態皆必須具備至少一條引導至後續或終止狀態的流出路徑。
+3. **非確定性變遷衝突 (Non-Deterministic Race Conflict)：**
+   * *破綻：* 從 `Paid` 出發有兩條 `cancelOrder` 變遷，一條帶有 `[amount > 100]`，另一條完全無守衛條件。
+   * *修正：* 若顧客取消一筆 $150 的訂單，兩條變遷同時被激活！UML 狀態機嚴禁非確定性競態。從同一個狀態出發、共享相同觸發事件之變遷，其守衛條件必須嚴格互斥（例如：`[amount > 100]` 與 `[amount <= 100]`）。
+4. **違規由終止狀態引出變遷 (Illegal Outgoing Transition from Final State)：**
+   * *破綻：* 從終止狀態 `[*]` 拉出一條 `reopenOrder()` 箭頭回到 `PendingPayment`。
+   * *修正：* 終止狀態代表該物件實體生命週期的徹底終結。UML 語法規範嚴禁由終止狀態引出任何箭頭！若訂單允許重新開啟，代表先前根本未真正終結。
+
+![修正後之標準狀態機模型](../../img/ch04/statemachine/corrected_statemachine_model.svg)
+
+*圖 4.7.13：修正後之標準狀態機圖。瞬態動作轉化為變遷效果、消除黑洞陷阱、規範互斥守衛並嚴守終止狀態不可逆性。*
+
+### 4.7.7 互動實作：運用 AI 演進狀態機模型 (Pair Hands-On Activity)
+
+* **實作目標：** 在外送訂單狀態機提示詞中引入一項真實世界的營運例外狀態，並審查 AI 產出的生命週期約束：
+  1. *選項 A (外送員途中車禍/拋錨重新指派)：* 外送途中若騎手拋錨，訂單變遷退回至 `ReadyForPickup`（`[retries < 3]`），重新調派下一位外送員，避免廚房重做。
+  2. *選項 B (餐點製作中顧客申請延期配送)：* 顧客在 `Preparing` 狀態下申請變更送達時間。
+  3. *選項 C (送達現場聯絡不上顧客退回餐廳)：* 送達現場等待超過 10 分鐘，狀態轉移至 `FailedDelivery`，再轉移至 `ReturnedToStore` 後終止。
+* **架構檢核清單：**
+  * 狀態命名紀律：狀態是否皆以被動狀態、條件或形容詞命名，未出現動詞動作？
+  * 非法變遷防堵：是否嚴格禁止在餐點已出發配送 (`OutForDelivery`) 時直接隨意取消訂單？
+  * 終止路徑完備：所有異常終止狀態是否皆有箭頭正確連接至終止節點 `[*]`？
 
 ---
 
@@ -988,19 +1254,178 @@ deactivate UI
 | **5. 狀態機圖 (State Machine)** | 關鍵核心實體的「生命週期狀態因應事件如何變遷」？ | 圓角狀態方塊、觸發因子、守衛條件、Composite 狀態、歷史 `H` | 具備狀態機特徵之物件 (訂單、連線協定、IoT 裝置)。 |
 | **6. PlantUML 純文字代碼** | 如何讓視覺架構模型「享受代碼般的版本控制與自動化」？ | 純文字標記語法 (`@startuml ... @enduml`) | 將架構代碼直接納入 Git 倉儲、CI/CD 自動編譯與 PR 審查。 |
 
-### 4.9.2 十大核心觀念自我檢測填空題
-1. 軟體塑模的四大視角中，描繪系統與環境邊界的是**外部**視角，描繪靜態實體與關聯的是**結構**視角。
-2. 統一塑模語言 (UML) 的三位奠基大師分別為 **Grady Booch**、**James Rumbaugh** 與 **Ivar Jacobson**。
-3. 在使用案例圖中，基礎案例「強制必定會執行」的子程序關聯標記為 **`<<include>>`**，箭頭由基底案例指向被包含案例。
-4. 代表「強烈實體擁有權」、部分物件生命週期與整體容器同生共死之關聯為**組合 (Composition, ◆)**。
-5. 在循序圖中，互斥的條件分支（等同於程式碼中的 if-else）應封裝於 **`alt`** 複合片段中。
-6. 在 BCE 架構中，外部使用者請求必定先傳遞給**邊界物件 (Boundary)**，再由其轉交給**控制物件 (Control)** 調度實體。
-7. 在活動圖中，能夠將單一控制 Token 切分為多條並發執行緒之節點為 **Fork (分岔同步條)**。
-8. 在狀態機中，**動作 (Action)** 耗時為零且不可中斷，而 **活動 (Activity)** 則是耗時且可被外來事件隨時中斷的背景運算。
-9. 欲讓複合狀態在被中斷重新進入時恢復至原先啟動之最深層子狀態，UML 提供了 **深歷史 (Deep History, `H*`)** 假狀態。
-10. 將視覺架構圖表轉化為純文字宣告代碼，納入 Git 進行 diff 比較與版本追蹤之軟體工程實踐稱為 **架構即代碼 (Architecture-as-Code)**。
+### 4.9.2 五大模型演進實作解答與架構評分規準
 
-### 4.9.3 經典權威文獻與延伸閱讀
+#### 活動解答 1：使用案例模型擴充 (Use Case Model Extensions)
+* **架構方案與語義分析：**
+  * **預約排程訂餐 (`<<extend>>`)：** `(Place Food Order) <.. (Schedule Future Delivery) : <<extend>>`，並附帶守衛條件 `[delivery_type == scheduled]`。屬於選擇性擴充功能，在結帳擴充點掛載，絕不污染基底案例。
+  * **在線客服即時交談 (自主基底案例)：** 獨立的 `(Live Order Chat)` 使用案例，主要參與者 `Customer` 與次要參與者 `Support Agent`、`Courier` 協同。外部合作夥伴嚴格維持在系統邊界矩形框之外。
+  * **多人團購分帳 (`<<extend>>`)：** 基底案例 `(Place Food Order)` 在進入購物車結帳前，由 `(Pool Group Cart)` 擴充注入。
+* **PlantUML Delta 代碼：**
+```plantuml
+rectangle "Food Delivery Platform" {
+  usecase "Place Food Order" as UC_Order
+  usecase "Schedule Future Order" as UC_Sched
+  usecase "Live Order Chat" as UC_Chat
+  UC_Order <.. UC_Sched : <<extend>>
+}
+Customer --> UC_Order
+Customer --> UC_Chat
+UC_Chat --> Agent : <<assists>>
+```
+* **架構評分檢核：**
+  * `[通過]` 外部協同角色 `Support Agent` 嚴格置於系統邊界之外。
+  * `[通過]` 預約排程採用 `<<extend>>`，絕未誤用強制包含之 `<<include>>`。
+  * `[通過]` 案例橢圓代表商業使用者目標，避免退化為 UI 按鈕點擊。
+
+#### 活動解答 2：領域類別模型深化 (Class Model Refinements)
+* **架構方案與語義分析：**
+  * **跨餐廳多店家購物車：** 主訂單 `Order` 拆解為餐廳專屬的子訂單 `SubOrder`。`Order` `"1"` `*--` `"1..*"` `SubOrder`（組合：主訂單刪除則子訂單同生共死）；`SubOrder` `"1..*"` `o--` `"1"` `Restaurant`（聚合：餐廳為獨立實體，生命週期獨立於訂單）。
+  * **外送員評分與小費：** `DeliveryTask` `"1"` `o--` `"0..1"` `CourierReview`（弱聚合關聯，評分與小費為非強制之可選項目）。
+  * **VIP 尊榮訂閱方案：** `Customer` `"1"` `o--` `"0..1"` `MembershipPlan`（採用策略模式解耦訂閱等級，避免多重繼承）。
+* **PlantUML Delta 代碼：**
+```plantuml
+class Order {
+  - orderId: UUID
+  - total: Money
+}
+class SubOrder {
+  - subTotal: Money
+  - status: Status
+}
+class Restaurant {
+  - name: String
+  - address: String
+}
+class CourierReview {
+  - rating: int
+  - tip: Money
+}
+Order "1" *-- "1..*" SubOrder : aggregates
+SubOrder "1..*" o-- "1" Restaurant : fulfills
+SubOrder "1" *-- "1..*" OrderItem
+DeliveryTask "1" o-- "0..1" CourierReview
+```
+* **架構評分檢核：**
+  * `[通過]` 多重性邏輯：1 筆主訂單包含 `1..*` 筆子訂單；1 筆子訂單鎖定 1 間餐廳。
+  * `[通過]` 關聯符號精確：實心菱形 (`*--`) 代表生命週期相依；空心菱形 (`o--`) 代表弱擁有引用。
+  * `[通過]` 嚴格私有封裝 (`-`)，屬性型別明確。
+
+#### 活動解答 3：循序圖動態邊緣案例 (Sequence Interaction Edge Cases)
+* **架構方案與語義分析：**
+  * **第三方金流閘道逾時 (>5s)：** `CheckoutUI` 呼叫 `OrderController.submitPayment()`。控制器協調外部金流 `PaymentGateway.processPayment()`。在 `alt [金流於 5 秒內回應]` 內正常確認並派單；在 `else [逾時 > 5s]` 內，控制器觸發 `cancelTransaction()` 復原交易、記錄稽核日誌，並回傳帶有重試選項的 `PaymentTimeoutError`。
+  * **雙軌混合支付流程：** 兩階段交易：先扣除 `Wallet Balance`（錢包餘額）；扣款成功再向信用卡請求差額。若信用卡刷卡失敗，觸發補償交易退回錢包扣款。
+* **PlantUML Delta 代碼：**
+```plantuml
+UI -> Controller : submitOrder(cart)
+activate Controller
+Controller -> Gateway : charge(amount)
+activate Gateway
+alt #LightGreen Response within 5s
+  Gateway --> Controller : 200 OK (txnId)
+  Controller -> Order : markPaid()
+  Controller --> UI : OrderSuccess
+else #Pink Timeout > 5s
+  Gateway --> Controller : [Timeout Error]
+  Controller -> Gateway : voidTransaction()
+  Controller --> UI : PaymentFailed(retryOption)
+end
+deactivate Gateway
+```
+* **架構評分檢核：**
+  * `[通過]` UI 僅與 Controller 通訊，嚴禁直接穿透存取資料庫或外部 Gateway。
+  * `[通過]` 成功與失敗路徑封裝於 `alt` 複合片段中，守衛條件清晰且互斥。
+
+#### 活動解答 4：活動圖工作流程演進 (Activity Workflow Evolution)
+* **架構方案與語義分析：**
+  * **外送員拒單重新派單迴圈：** 在 `|調派引擎|` 泳道內部，以 `repeat` 迴圈查詢最近外送員。發送通知將 Token 傳遞給 `|外送員|` 泳道。決策菱形評估：`if (接受接單?) then (yes) -> 確認指派; else (no) -> 記錄拒單; repeat while (仍有可用騎手)`。
+  * **顧客門市自取直通分支：** 在 `|平台系統|` 設置決策菱形：`if (訂單類型?) then (外送) -> Fork 同步啟動廚房與外送員; else (自取) -> 僅通知廚房備餐; |顧客| :於櫃檯出示憑證取餐; -> Merge`。
+* **PlantUML Delta 代碼：**
+```plantuml
+|Dispatch System|
+repeat
+  :Find Available Courier;
+  |Courier|
+  :Receive Dispatch Ping;
+backward:Log Rejection;
+repeat while (Courier accepts?) is (no)
+->yes;
+:Confirm Courier Assignment;
+|Kitchen|
+:Hand Off Sealed Package;
+|Courier|
+:Deliver to Customer;
+stop
+```
+* **架構評分檢核：**
+  * `[通過]` 動作泳道歸屬明確，未發生職責倒置。
+  * `[通過]` `repeat...repeat while` 迴圈具備確定性的跳出路徑。
+  * `[通過]` 所有終止分支皆匯入明確的 `stop` 活動終止節點。
+
+#### 活動解答 5：狀態機生命週期例外處理 (State Machine Lifecycle Exceptions)
+* **架構方案與語義分析：**
+  * **外送員途中拋錨重新指派：** `OutForDelivery → ReadyForPickup : courier_abandoned [retries < 3] / unassign()`。退回備餐完成狀態重新調派騎手，確保餐廳無需重做已打包好的餐點。
+  * **送達現場聯絡不上顧客退回餐廳：** `OutForDelivery → FailedDelivery : unreachable [wait >= 10m] / markFailed()`。隨後 `FailedDelivery → ReturnedToStore : return_package / recordDisposal()`。終止變遷：`ReturnedToStore → [*]`。
+  * **不可逆約束守衛：** 嚴禁直接由 `OutForDelivery → Cancelled`，餐點一旦在途取消，必須依循實體回收補償流程。
+* **PlantUML Delta 代碼：**
+```plantuml
+state OutForDelivery {
+  [*] --> InTransit
+}
+OutForDelivery --> ReadyForPickup : courier_dropped \
+  [retries < 3] / reassign()
+OutForDelivery --> FailedDelivery : unreachable \
+  [wait >= 10m] / logFailed()
+FailedDelivery --> ReturnedToStore : return_meal \
+  / auditWaste()
+ReturnedToStore --> [*]
+```
+* **架構評分檢核：**
+  * `[通過]` 狀態命名維持被動條件與名詞/形容詞 (`FailedDelivery`, `ReturnedToStore`)。
+  * `[通過]` 變遷完整標註事件觸發、`[守衛條件]` 與 `/動作`。
+  * `[通過]` 異常生命週期路徑最終皆收斂至終止狀態 `[*]`。
+
+### 4.9.3 全章核心觀念自我檢測：14 題精準填空測驗
+
+```
+🏷️ 候選字彙庫 (Word Bank):
+[ 互動視角 (Interaction) ]
+[ Ivar Jacobson ]
+[ Boundary-Control-Entity (BCE) ]
+[ <<include>> ]
+[ <<extend>> ]
+[ 組合關聯 (Composition, ◆) ]
+[ 聚合關聯 (Aggregation, ◇) ]
+[ 實心箭頭 (→) ]
+[ alt 複合片段 ]
+[ 泳道 (Swimlanes) ]
+[ Join 結合節點 ]
+[ 守衛條件 (Guard) ]
+[ 正交區域 (Orthogonal Regions, ||) ]
+[ 歷史狀態 (History, [H*]) ]
+```
+
+#### 第一部分：結構與使用案例基石 (Structural & Use Case Foundations)
+
+1. 在 Rational 軟體公司共同促成 UML 統一標準的「UML 三巨頭」為 Grady Booch、Jim Rumbaugh 與 **[ Ivar Jacobson ]**。
+2. 在軟體系統塑模的四大基石視角中，分別為外部視角、**[ 互動視角 (Interaction) ]**、結構視角與行為視角。
+3. 在使用案例圖中，多個案例之間 mandatory 強制共用的子程序關聯標記為 **[ `<<include>>` ]**。
+4. 在特定擴充點或異常條件下才會選擇性觸發插入的業務關聯標記為 **[ `<<extend>>` ]**。
+5. 將系統切分為使用者介面、業務調度控制器與持久化領域實體的三層架構分析模式為 **[ Boundary-Control-Entity (BCE) ]**。
+6. 在 UML 類別圖中，實心黑菱形 (`◆`) 代表 **[ 組合關聯 (Composition, ◆) ]**，子物件生命週期與整體容器同生共死。
+7. 在 UML 類別圖中，空心白菱形 (`◇`) 代表 **[ 聚合關聯 (Aggregation, ◇) ]**，子物件具備獨立於整體的自主生命週期。
+
+#### 第二部分：動態流程與狀態行為 (Dynamic Workflows & Statecharts)
+
+8. 在循序圖中，發送端呼叫後必須阻塞等待接收端返回之同步請求，其連線繪製為 **[ 實心箭頭 (→) ]**。
+9. 在循序圖中，用於塑模互斥條件分支（等同於程式碼 if-else）之結構化容器為 **[ alt 複合片段 ]**。
+10. 在活動圖中，用於區分各部門、系統服務或業務角色責任歸屬的垂直/水平分區為 **[ 泳道 (Swimlanes) ]**。
+11. 在活動圖中，用於等待所有並行執行緒全部到達匯流後方能繼續向下的同步粗線條為 **[ Join 結合節點 ]**。
+12. 在 UML 狀態機的變遷標籤中，以中括號 `[ ]` 包覆、必須為 true 變遷方能觸發之布林檢查式為 **[ 守衛條件 (Guard) ]**。
+13. 在複合狀態中，允許多個並行子狀態軌道在背景同時並發推進的區域稱為 **[ 正交區域 (Orthogonal Regions, ||) ]**。
+14. 當系統因突發中斷暫停、在爭議解除重新進入時能記憶並恢復至中斷前深層子狀態的假狀態節點為 **[ 歷史狀態 (History, [H*]) ]**。
+
+### 4.9.4 經典權威文獻與延伸閱讀
 * **Booch, G., Rumbaugh, J., & Jacobson, I. (2005).** *The Unified Modeling Language User Guide* (2nd ed.). Addison-Wesley.
 * **Fowler, M. (2003).** *UML Distilled: A Brief Guide to the Standard Object Modeling Language* (3rd ed.). Addison-Wesley.
 * **Cockburn, A. (2000).** *Writing Effective Use Cases*. Addison-Wesley.

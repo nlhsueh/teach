@@ -1910,35 +1910,51 @@ We will also review the seminal research papers and textbooks that established m
 To summarize this slide, remember this key takeaway: Clear, verifiable, and validated requirements are the single greatest predictor of software project success.
 -->
 ---
-## Conceptual Recap: Fill-in-the-blank Quiz
+## 🧩 Conceptual Recap: Fill-in-the-Blank Quiz
 
-Test your understanding of the core concepts in this chapter:
+<div class="fill-blank-container">
 
-1. **`___`** requirements describe what the system should do, while **`___`** requirements specify system constraints.
-2. High-level requirements written for customers are called **`___`** requirements.
-3. Detailed specifications written as a technical contract for developers are **`___`** requirements.
-4. The Goal-Question-Metric approach turns vague stakeholder wishes into **`___`** metrics.
-5. In UML use cases, behavior that is always executed as part of a base use case uses the **`___`** relationship.
-6. When using AI in requirements engineering, the engineering principle that ensures accountability is **`___`**.
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ Word Bank:</div>
+  <span class="word-chip">Functional Requirements</span>
+  <span class="word-chip">User Requirements</span>
+  <span class="word-chip">System Requirements</span>
+  <span class="word-chip">Verifiable Metrics</span>
+  <span class="word-chip">&lt;&lt;include&gt;&gt;</span>
+  <span class="word-chip">Traceability Matrix (RTM)</span>
+  <span class="word-chip">Human-in-the-Loop</span>
+</div>
+
+<div class="quiz-questions">
+
+1. <span class="quiz-blank" data-answer="Functional Requirements">[ _________ ]</span> define what services the system should provide, while Non-Functional Requirements specify quality constraints.
+2. High-level abstract statements of requirements written for clients and end-users are called <span class="quiz-blank" data-answer="User Requirements">[ _________ ]</span>.
+3. Detailed specifications written as a binding technical contract for software developers are <span class="quiz-blank" data-answer="System Requirements">[ _________ ]</span>.
+4. The Goal-Question-Metric (GQM) approach transforms subjective stakeholder wishes into objective, <span class="quiz-blank" data-answer="Verifiable Metrics">[ _________ ]</span>.
+5. In UML use cases, mandatory shared functionality factored out across base cases connects via the <span class="quiz-blank" data-answer="<<include>>">[ _________ ]</span> relationship.
+6. The bidirectional matrix mapping requirements forward to architectural code and test cases is the <span class="quiz-blank" data-answer="Traceability Matrix (RTM)">[ _________ ]</span>.
+7. When employing generative AI in requirements elicitation and analysis, the vital principle ensuring accountability is <span class="quiz-blank" data-answer="Human-in-the-Loop">[ _________ ]</span>.
+
+</div>
+
+<div class="quiz-hint">💡 <em>Interactive Mode: Click any blank slot to reveal or hide the answer!</em></div>
+
+</div>
 
 <!--
-Let's do an interactive recap quiz to solidify what we've learned today! Shout out the answers as I read through:
+Let's do an interactive recap quiz across the core concepts of Requirements Engineering:
 
-1. Functional requirements describe what the system should do, while Non-Functional requirements specify constraints!
-
-2. High-level requirements for customers are User requirements!
-
-3. Detailed technical specifications for developers are System requirements!
-
-4. The Goal-Question-Metric approach turns vague wishes into Verifiable or Testable metrics!
-
-5. In UML use cases, mandatory shared behavior uses the `<<include>>` relationship!
-
-6. And when using AI in requirements engineering, the vital principle ensuring accountability is Human-in-the-Loop!
+1. Services the system must provide: Functional Requirements!
+2. High-level customer-facing descriptions: User Requirements!
+3. Developer technical specification contracts: System Requirements!
+4. Turning vague wishes into testable numbers via GQM: Verifiable Metrics!
+5. Mandatory shared use case subroutines: <<include>>!
+6. Bidirectional mapping from requirements to code and tests: Traceability Matrix (RTM)!
+7. Keeping human engineers in command of AI specifications: Human-in-the-Loop!
 
 Outstanding job, everyone!
 
-To summarize this slide, remember this key takeaway: These core terms form the essential foundation of professional requirements engineering.
+To summarize this slide, remember this key takeaway: Clear, testable, and traceable specifications form the foundation of successful software engineering.
 -->
 ---
 ## References & Further Reading
@@ -2281,10 +2297,34 @@ Thank you for your active participation in Chapter 3!
     }, true);
   }
 
-  // Initialize both features
+  function initQuizBlanks() {
+    document.querySelectorAll('span.quiz-blank').forEach(function(el) {
+      if (el.dataset.initialized) return;
+      el.dataset.initialized = 'true';
+      const answer = el.getAttribute('data-answer') || '';
+      const placeholder = '[ _________ ]';
+      if (!el.textContent.trim()) {
+        el.textContent = placeholder;
+      }
+      el.title = 'Click to reveal / hide answer';
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (el.classList.contains('revealed')) {
+          el.classList.remove('revealed');
+          el.textContent = placeholder;
+        } else {
+          el.classList.add('revealed');
+          el.textContent = answer;
+        }
+      });
+    });
+  }
+
+  // Initialize features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initQuizBlanks();
   }
 
   if (document.readyState === 'loading') {

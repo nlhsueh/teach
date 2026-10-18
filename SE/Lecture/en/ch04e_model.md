@@ -333,6 +333,43 @@ UC_AcceptTask -- Courier
 @enduml
 ```
 
+### 4.3.12 Diagnostic Case Study: Spotting Flaws in Use Case Models
+
+To build rigorous architectural intuition, software engineers must learn to conduct diagnostic critiques of draft models. Consider the following draft use case diagram created by a junior analyst for an online food ordering workflow:
+
+![Bad Use Case Model Example](../../img/ch04/food_delivery/bad_usecase_model.svg)
+
+*Figure 4.3.13: Draft Use Case Diagram with 3 Critical Modeling Anti-Patterns.*
+
+#### Audit Findings & Architectural Corrections
+
+1. **Granularity & Workflow Trap (Anti-pattern: Flowcharting):**
+   * *The Flaw:* The student modeled `Enter Delivery Address` and `Click Submit Button` as distinct use cases connected sequentially with arrows.
+   * *Correction:* Use cases represent complete, observable user goals yielding measurable business value, not micro UI clicks or procedural flowchart steps. Entering an address and clicking submit are trivial interactions encapsulated within the single use case `Place Food Order`.
+2. **Inverted Include Arrow Direction:**
+   * *The Flaw:* The dashed arrow points from `Process Payment` toward `Place Food Order`.
+   * *Correction:* In UML, the base use case points *toward* the included subroutine (`Place Food Order ..> Process Payment : <<include>>`). The base case initiates and depends upon the included behavior, never the reverse.
+3. **Boundary & Actor Violations:**
+   * *The Flaw:* `Chef` is an actor but is drawn inside the system boundary box. Meanwhile, `MySQL Database` is drawn outside the boundary as an external actor.
+   * *Correction:* Actors represent external entities (human roles or external systems) and must reside strictly *outside* the system boundary rectangle. Conversely, an internal database is part of the system's software persistence tier, not an external actor.
+
+![Corrected Use Case Model](../../img/ch04/food_delivery/corrected_usecase_model.svg)
+
+*Figure 4.3.14: Corrected Use Case Model. Granularity restored to user goals, include arrow properly directed, and boundary discipline strictly enforced.*
+
+### 4.3.13 Interactive Hands-On Activity: Evolving Use Cases with AI
+
+To practice continuous architectural evolution, students complete the following pair hands-on exercise:
+
+* **Experiment Goal:** Mutate requirements by introducing one new business feature into the Food Delivery prompt and audit the AI's architectural output:
+  1. *Option A (Scheduled Ordering):* Allow `Customer` to schedule delivery for a future date/time.
+  2. *Option B (Live Chat Support):* Allow `Customer` to initiate real-time chat with a `Support Agent` or `Courier`.
+  3. *Option C (Group Ordering):* Allow multiple team members to pool items into a single shared order.
+* **Audit Checklist:**
+  * Did AI keep external actors/gateways outside the boundary?
+  * Did AI correctly distinguish mandatory subroutines (`<<include>>`) from optional extensions (`<<extend>>`)?
+  * Did AI avoid trivial button-click bubbles (e.g., no "Click Confirm")?
+
 ---
 
 <!-- id: ase-ch04-ccq3 -->
@@ -520,6 +557,44 @@ Order ..> PaymentProcessor : delegates >
 @enduml
 ```
 
+### 4.4.7 Diagnostic Case Study: Spotting Flaws in Class Models (The Baseball Matchup)
+
+Designing structural class diagrams requires careful distinction between inheritance (`is-a`), composition (destructive `has-a`), and loose association/aggregation (`uses-a` / shared `has-a`). Consider the following draft class diagram submitted for a baseball tracking engine:
+
+![Bad Baseball Class Model](../../img/ch04/baseball/bad_baseball_class_model.svg)
+
+*Figure 4.4.10: Draft Baseball Class Model with 4 Major Architectural Flaws.*
+
+#### Audit Findings & Architectural Corrections
+
+1. **Composition vs. Aggregation Disaster (`BaseballGame` & `Team`):**
+   * *The Flaw:* `BaseballGame` connects to `Team` with a solid diamond (Composition) and multiplicity `1`.
+   * *Correction:* Composition implies that deleting a game record destroys the participating teams! A `Team` (e.g., Yankees) outlives any single game and participates in many games throughout a season; this relationship must be Aggregation (hollow diamond `◇`) or Association. Furthermore, a baseball game requires exactly `2` teams (Home and Away), not 1.
+2. **Inheritance Abuse (is-a vs. has-a):**
+   * *The Flaw:* `Team <|-- Player` indicates that a Player is a subclass of Team.
+   * *Correction:* A Player is a member (part) of a Team, not a specialized kind of Team! Confusing membership with inheritance breaks object polymorphism. The relationship should be modeled as an Aggregation: `Team "1" o-- "9..*" Player`.
+3. **Missing Composition and Multiplicity for Inning:**
+   * *The Flaw:* `BaseballGame` has a plain association with `Inning` with multiplicity `1`.
+   * *Correction:* An inning belongs exclusively to its specific game—deleting the game invalidates its innings. This is true Composition (`BaseballGame "1" *-- "9..*" Inning`).
+4. **Broken Encapsulation & Responsibility Misplacement:**
+   * *The Flaw:* All fields are marked public (`+`). `pitchBall()` is placed in `BaseballGame` instead of `Player`. `calculateWinner()` is placed in `Team`.
+   * *Correction:* Enforce information hiding with private fields (`-`). Operations must belong to the class holding the state: `Player` executes `pitchBall()`, while `BaseballGame` compares team scores to determine `calculateWinner()`.
+
+![Corrected Baseball Class Model](../../img/ch04/baseball/corrected_baseball_class_model.svg)
+
+*Figure 4.4.11: Corrected Baseball Class Model. Non-destructive aggregation, proper membership, strict private encapsulation, and correct multiplicities.*
+
+### 4.4.8 Interactive Hands-On Activity: Evolving Food Delivery with AI
+
+* **Experiment Goal:** Mutate requirements by introducing one new structural rule into the Food Delivery domain prompt and audit the AI's architectural output:
+  1. *Option A (Multi-Vendor Orders):* Allow an `Order` to bundle items from multiple distinct `Restaurant`s in a single checkout.
+  2. *Option B (Courier Tipping & Rating):* Allow `Customer` to tip and rate the assigned `Courier` after delivery.
+  3. *Option C (VIP Membership Tier):* Add subscription membership where `Customer` receives free delivery.
+* **Audit Checklist:**
+  * Did AI preserve Composition (`*--`) vs. Aggregation (`o--`) semantics?
+  * Are multiplicities (`1..*`, `0..1`) logically sound for the new rule?
+  * Did AI preserve private encapsulation (`-`) and avoid hallucinating redundant classes?
+
 ---
 
 <!-- id: ase-ch04-ccq4 -->
@@ -660,6 +735,44 @@ end
 @enduml
 ```
 
+### 4.5.6 Diagnostic Case Study: Spotting Flaws in Sequence Models (Hotel Reservation Flow)
+
+Just as with structural models, dynamic sequence models frequently suffer from subtle design flaws that compromise architectural integrity, introduce race conditions, or violate component boundaries.
+
+![Bad Sequence Model Example](../../img/ch04/sequence/bad_sequence_model.svg)
+
+*Figure 4.5.9: Flawed Sequence Model Example. A draft sequence diagram exhibiting 4 critical architectural and syntactic anti-patterns.*
+
+#### Diagnostic Architectural Audit: 4 Critical Flaws Identified
+
+1. **Architecture Layering & Encapsulation Violation:**
+   * *The Flaw:* In message `[2]`, `BookingUI` sends raw SQL (`SELECT * FROM rooms...`) directly to `MySQL_DB`.
+   * *Correction:* In 3-tier and BCE architectures, presentation boundaries must never bypass application controllers to query data stores directly. Such shortcuts create tight coupling and expose database schemas to the UI. Requests must route through a dedicated `BookingController`.
+2. **Invalid `alt` Combined Fragment Guards:**
+   * *The Flaw:* The first branch of the `alt` block is guarded with `[Room Available]`, but the `else` branch is guarded with `[else Payment Successful]`.
+   * *Correction:* Branches within an `alt` fragment must evaluate the same domain condition and be mutually exclusive (e.g., `[Room Available]` vs. `[else / Room Unavailable]`). Mixing room inventory checks with payment processing produces nonsensical execution logic.
+3. **Chronological Causality & Premature Confirmation:**
+   * *The Flaw:* In messages `[7]` and `[8]`, the UI displays `Booking Confirmed!` to the guest *before* the database write at message `[9]` (`INSERT INTO bookings`) has completed.
+   * *Correction:* If the database write fails or crashes, the customer holds an invalid booking confirmation. State changes must be persisted and committed before the presentation layer confirms success.
+4. **Dangling Lifeline Activation:**
+   * *The Flaw:* The activation bar on `MySQL_DB` starts at message `[9]` but extends downwards indefinitely without a return or deactivation marker.
+   * *Correction:* Activation bars represent the active execution focus of a participant. When a query or stored procedure finishes, the activation must terminate cleanly.
+
+![Corrected Sequence Model Example](../../img/ch04/sequence/corrected_sequence_model.svg)
+
+*Figure 4.5.10: Corrected Sequence Model. Enforcing BCE layering, mutually exclusive alt guards, state persistence prior to confirmation, and cleanly bounded activations.*
+
+### 4.5.7 Interactive Hands-On Activity: Evolving Sequences with AI
+
+* **Experiment Goal:** Mutate the checkout interaction flow by introducing one edge case into the prompt and audit the AI's architectural output:
+  1. *Option A (Gateway Timeout):* Payment gateway takes >5s to respond (trigger retry or graceful fallback).
+  2. *Option B (Split Payment):* Allow customer to pay using Wallet Balance + Credit Card in two coordinated steps.
+  3. *Option C (Out of Stock during Checkout):* Restaurant inventory drops to zero right before payment authorization.
+* **Audit Checklist:**
+  * Did AI preserve BCE layering without allowing UI boundaries to query databases directly?
+  * Are normal success and alternative failure branches cleanly partitioned with `alt` fragments?
+  * Are decoupled background tasks (e.g., kitchen alerts) represented as asynchronous messages (`->>`)?
+
 ---
 
 <!-- id: ase-ch04-ccq5 -->
@@ -778,6 +891,56 @@ stop
 @enduml
 ```
 
+### 4.6.6 Diagnostic Case Study: Spotting Flaws in Activity Workflows (Food Order Fulfillment)
+
+Designing robust business processes requires careful attention to token semantics, synchronization rules, and actor ownership.
+
+![Bad Activity Model Example](../../img/ch04/activity/bad_activity_model.svg)
+
+*Figure 4.6.7: Flawed Activity Model Example. An order fulfillment workflow exhibiting 4 critical concurrency, branching, and swimlane anti-patterns.*
+
+#### Diagnostic Architectural Audit: 4 Critical Flaws Identified
+
+1. **Fork Bar vs. Decision Diamond:**
+   * *The Flaw:* In the Kitchen swimlane, a `fork` bar is drawn with mutually exclusive guards `[Card Payment]` and `[Cash on Delivery]`.
+   * *Correction:* A `fork` bar initiates concurrent parallel threads where *all* outgoing branches execute simultaneously. Putting payment options on a fork means the system charges the credit card *and* prepares cash change at the same time. Mutually exclusive choices require a Decision diamond (`♢`), not a Fork bar (`❚`).
+2. **Swimlane Responsibility Inversion:**
+   * *The Flaw:* Roles are absurdly reversed: `Enter Delivery Address & Phone` is assigned to the `Kitchen` lane, while `Cook Food & Package Meal` is placed in the `Customer` lane!
+   * *Correction:* Actions must strictly reside within the swimlane of the actor or system responsible for their execution. The customer inputs address details; the kitchen prepares and packages the food.
+3. **Dangling Control Flow & Missing Activity Final Node:**
+   * *The Flaw:* When ingredients are `[Out of Stock]`, the branch executes `Cancel Order` and abruptly terminates into empty space.
+   * *Correction:* In UML activity semantics, every terminating branch must explicitly lead to an Activity Final Node (`◉`, solid circle with outer ring) or Flow Final Node (`⊗`).
+4. **Deadlock Hazard on Asymmetric Synchronization:**
+   * *The Flaw:* Merging mutually exclusive decision branches into a Join bar.
+   * *Correction:* A Join bar blocks until a token arrives on *every* incoming arrow. Feeding alternative branches into a Join creates permanent system deadlock. Merge diamonds must reunite alternative flows, while Join bars synchronize concurrent threads.
+
+![Corrected Activity Model Example](../../img/ch04/activity/corrected_activity_model.svg)
+
+*Figure 4.6.8: Corrected Activity Model. Demonstrating proper Decision diamonds, aligned swimlane accountability, explicit final termination, and valid Join synchronization.*
+
+### 4.6.7 Comparative Architectural Matrix: Activity Diagram vs. State Machine
+
+Both activity diagrams and state machines model dynamic behavior, but answer fundamentally different architectural questions:
+
+| Comparison Dimension | State Machine Diagram (Statechart) | Activity Diagram (Workflow) |
+| :--- | :--- | :--- |
+| **Core Perspective** | **Entity-Centric / Reactive:** Models the complete lifecycle of a *single entity* over time. | **Process-Centric / Procedural:** Models the end-to-end *workflow* across multiple actors and systems. |
+| **Primary Node** | **State:** Quiescent condition where an object waits for events or performs continuous work. | **Action / Activity:** An active computational step or business operation being executed. |
+| **Transition Driver** | **Event-Driven:** Transitions wait for triggers (`Event [Guard] / Action`). | **Completion-Driven:** Flows advance automatically upon task completion (`Control / Object Flow`). |
+| **Concurrency Model** | **Orthogonal Regions:** Parallel sub-states within a composite state (`||` tracks). | **Fork & Join Nodes:** Explicit parallel flow splitting and synchronization across swimlanes. |
+| **Optimal Use Case** | Entity lifecycle (Order, Account, TCP socket), IoT devices, status machines. | Business process modeling (checkout pipeline), ETL batch jobs, use case elaboration. |
+
+### 4.6.8 Interactive Hands-On Activity: Evolving Workflows with AI
+
+* **Experiment Goal:** Mutate the food fulfillment process by introducing one operational variation into the prompt and audit the AI's architectural output:
+  1. *Option A (Courier Decline & Re-dispatch Loop):* Courier declines assignment; dispatch loops back to query next candidate.
+  2. *Option B (Kitchen Quality Check Loop):* If packaging fails QA inspection, meal is remade before courier hand-off.
+  3. *Option C (Customer Self-Pickup / Takeaway):* Customer picks up meal at counter, completely bypassing courier matching and dispatch swimlanes.
+* **Audit Checklist:**
+  * Did AI partition actions into the correct swimlanes without role reversal?
+  * Are loop constructs (`repeat ... repeat while`) properly terminated with explicit exit branches?
+  * Are parallel forks and joins properly paired without causing deadlock?
+
 ---
 
 <!-- id: ase-ch04-ccq6 -->
@@ -838,11 +1001,22 @@ Trigger [Guard] / Effect
 * **Guard (Boolean Condition):** A condition enclosed in square brackets `[balance >= total]` that must be true for the transition to fire.
 * **Effect (Action):** An atomic, instantaneous procedure executed during the transition (e.g., `/ deductBalance()`).
 
+![Transition in Action: Food Delivery Order Example](../../img/ch04/food_delivery/food_delivery_transition_mechanics.svg)
+
+*Figure 4.7.4: Transition in Action: Food Delivery Order Example. Applying the 5-element transition formula to enforce business cancellation rules.*
+
+In the Food Delivery system:
+* **Concrete Transition Syntax:** `cancelOrder(reason) [elapsedTime <= 120s] / processFullRefund(); notifyKitchen()`.
+* **Event Stimulus (`cancelOrder`):** The customer taps "Cancel Order" in the mobile client.
+* **Guard Condition (`[elapsedTime <= 120s]`):** The system strictly permits free cancellation within two minutes of order placement. If `elapsedTime > 120s`, the guard evaluates to **false**, blocking the transition.
+* **Action Effect (`/ processFullRefund()`):** An atomic side-effect executes immediately during the transition, initiating payment reversal.
+* **Target State (`Cancelled`):** The order enters `Cancelled` and executes `entry / logCancellation()`.
+
 ### 4.7.3 Actions vs. Activities: Instantaneous vs. Ongoing
 
 ![Actions vs Activities](../../img/ch04/nb_state_machine/07_actions_vs_activities.jpg)
 
-*Figure 4.7.4: Actions vs. Activities. Actions are instantaneous and atomic; Activities represent continuous, interruptible background work.*
+*Figure 4.7.5: Actions vs. Activities. Actions are instantaneous and atomic; Activities represent continuous, interruptible background work.*
 
 | Architectural Dimension | Action (`entry /`, `exit /`, transition `/`) | Activity (`do / ...`) |
 | :--- | :--- | :--- |
@@ -850,21 +1024,55 @@ Trigger [Guard] / Effect
 | **Interruptibility** | **Non-interruptible (Atomic)** | **Interruptible**; immediately aborted if an outgoing transition triggers |
 | **Execution Context** | Executes at entry, exit, or along transition line | Runs continuously in background while remaining inside state |
 
-### 4.7.4 Composite States and History Pseudostates
+#### Boundary Executions: Entry and Exit Actions
+
+![Boundary Executions: Entry and Exit Actions](../../img/ch04/food_delivery/food_delivery_boundary_execution.svg)
+
+*Figure 4.7.6: Boundary Executions: Entry and Exit Actions in Food Delivery. Encapsulating guaranteed lifecycle hooks across state boundaries.*
+
+By binding setup and teardown routines to state boundaries, architects prevent duplicate cleanup code across multiple exit transitions:
+* **Entry Action (`entry / startGPSTracking()`):** Guaranteed to execute immediately whenever `OutForDelivery` is entered, initializing rider geolocation tracking and notifying the customer.
+* **Ongoing Activity (`do / streamRiderGPSCoordinates()`):** Continues streaming real-time coordinates throughout the trip; immediately aborted if arrival or cancellation triggers.
+* **Exit Action (`exit / stopGPSTracking()`):** Guaranteed to execute regardless of whether delivery succeeds (`confirmDropoff()`) or fails (`addressNotFound()`), shutting down GPS hardware and logging timestamps.
+
+### 4.7.4 Composite States, Orthogonal Regions, and History Pseudostates
 
 ![Composite States and History](../../img/ch04/nb_state_machine/10_composite_states_and_history.jpg)
 
-*Figure 4.7.5: Composite States and History Pseudostates. Grouping sub-states into a composite parent prevents transition explosion and supports state restoration upon interruption.*
+*Figure 4.7.7: Composite States and History Pseudostates. Grouping sub-states into a composite parent prevents transition explosion and supports state restoration upon interruption.*
 
-* **Composite (Nested) States:** Grouping related states within a parent container. Any transition attached to the parent container applies to all nested sub-states (e.g., hitting `EmergencyStop` transitions the entire machine to `Offline`, regardless of which sub-state was active).
-* **Shallow History Pseudostate (`H`):** Remembers the most recently active direct sub-state.
-* **Deep History Pseudostate (`H*`):** Recursively remembers the most active sub-state at any arbitrary nesting depth.
+* **Composite (Nested) States:** Group related sub-states inside a parent container. Any transition attached to the super-state applies universally to all sub-states (e.g., `emergencyCancel()` on `OrderFulfillment` cancels the order regardless of whether the kitchen was cooking or packaging).
+* **Concurrent Orthogonal Regions (`||`):** Independent parallel sub-states executing simultaneously within a composite state.
+
+![Scaling Architecture: Composite & Concurrent States](../../img/ch04/food_delivery/food_delivery_composite_concurrent.svg)
+
+*Figure 4.7.8: Composite & Concurrent States in Food Delivery. Orchestrating Kitchen Preparation and Courier Logistics in parallel orthogonal regions.*
+
+In `OrderFulfillment`, execution splits into two concurrent tracks:
+1. **Kitchen Pipeline (Region 1):** `Cooking` → `Packaged` → `AwaitingPickup`.
+2. **Courier Logistics (Region 2):** `FindingCourier` → `CourierAssigned` → `CourierAtRestaurant`.
+
+Both regions progress concurrently without blocking each other.
+
+#### Preserving Progress with History States (`H` / `H*`)
+
+![Composite States and History Memory](../../img/ch04/food_delivery/food_delivery_history_memory.svg)
+
+*Figure 4.7.9: Preserving Order Progress with History States. Restoring active execution without restarting from scratch.*
+
+When an order in `OutForDelivery` is temporarily halted by a payment fraud alert or address dispute, it transitions to `OrderSuspended`. 
+* **Without History:** Upon dispute resolution, the system would restart at the initial state (`Cooking`), forcing the kitchen to wastefully re-cook the meal!
+* **With Deep History (`H*`):** The transition directs execution directly into `(H)`, which restores the exact active substate (`OutForDelivery`), allowing the courier to simply resume transit.
 
 ### 4.7.5 Case Study: Food Delivery Order Lifecycle State Machine
 
+![The Unified Blueprint: Food Delivery Order Architecture](../../img/ch04/food_delivery/food_delivery_unified_blueprint.svg)
+
+*Figure 4.7.10: The Unified Blueprint: Food Delivery Order Architecture. Integrating guarded transitions, concurrent orthogonal regions, history restoration, and boundary actions.*
+
 ![Food Delivery State Machine Model](../../img/ch04/food_delivery/food_delivery_state.svg)
 
-*Figure 4.7.6: Generated Food Delivery State Machine Diagram. Modeling the discrete lifecycle progression of an Order: Placed, Accepted, Preparing, ReadyForPickup, OutForDelivery, Delivered, and Cancelled with transition guards and entry actions.*
+*Figure 4.7.11: Generated Food Delivery State Machine Diagram. Baseline order statechart rendered from PlantUML specification.*
 
 ```plantuml
 @startuml
@@ -890,6 +1098,44 @@ Accepted -down-> Cancelled : cancelOrder [t <= 120s]
 Cancelled -left-> [*]
 @enduml
 ```
+
+### 4.7.6 Diagnostic Case Study: Spotting Flaws in State Machine Models (Order Lifecycle)
+
+State machine diagrams enforce strict behavioral invariants. Even small errors in state definition or transition guards can introduce race conditions or deadlocks.
+
+![Bad State Machine Model Example](../../img/ch04/statemachine/bad_statemachine_model.svg)
+
+*Figure 4.7.12: Flawed State Machine Model Example. A draft order lifecycle exhibiting 4 critical behavioral anti-patterns.*
+
+#### Diagnostic Architectural Audit: 4 Critical Flaws Identified
+
+1. **State vs. Transient Action:**
+   * *The Flaw:* A state rectangle is labeled `DeductCreditCard`.
+   * *Correction:* A State represents a condition or enduring mode where an object waits for events or performs continuous work (`PendingPayment`, `Paid`). Deducting a card is an instantaneous, atomic action executing in zero logical time. It must be modeled as a transition effect (`pay / deductCard()`), never as a state box.
+2. **Black Hole (Trap) State:**
+   * *The Flaw:* `RiskReview` has an incoming transition (`flagFraudTrigger`), but zero outgoing transitions.
+   * *Correction:* Once an order enters `RiskReview`, it is trapped forever—unable to be approved, cancelled, or terminated. Every intermediate state must provide at least one exit transition.
+3. **Non-Deterministic Transition Conflict:**
+   * *The Flaw:* Two transitions leave `Paid` on the trigger `cancelOrder`: one has guard `[amount > 100]`, while the other has no guard.
+   * *Correction:* If a cancellation request arrives for an order of $150, both transitions are valid, causing a race conflict. Transitions sharing the same event from a single state must have strictly mutually exclusive guards (e.g., `[amount > 100]` vs. `[amount <= 100]`).
+4. **Illegal Outgoing Transition from a Final State:**
+   * *The Flaw:* A transition `reopenOrder()` is drawn originating from the Final State `[*]`.
+   * *Correction:* A Final State marks the irreversible termination of an entity's lifecycle. UML rules strictly forbid outgoing transitions from final states. If an order can be reopened, it was never truly terminated.
+
+![Corrected State Machine Model Example](../../img/ch04/statemachine/corrected_statemachine_model.svg)
+
+*Figure 4.7.13: Corrected State Machine Model. Resolving actions into transition effects, eliminating trap states, enforcing deterministic guards, and respecting final state invariants.*
+
+### 4.7.7 Interactive Hands-On Activity: Evolving State Lifecycles with AI
+
+* **Experiment Goal:** Mutate the order lifecycle by introducing one operational exception into the prompt and audit the AI's architectural output:
+  1. *Option A (Courier Abandonment & Reassignment):* Courier abandons delivery; order transitions back to `ReadyForPickup` (`[retries < 3]`) without remaking food.
+  2. *Option B (Customer Reschedule):* Customer requests postponement while in `Preparing`.
+  3. *Option C (Delivery Failed & Return to Store):* Customer unreachable at doorstep; transition to `FailedDelivery`, then `ReturnedToStore`, and terminate.
+* **Audit Checklist:**
+  * Did AI maintain proper state naming (passive conditions/adjectives, no active verbs)?
+  * Are illegal transitions (e.g., direct cancellation while `OutForDelivery`) strictly blocked?
+  * Do exceptional branches cleanly lead to terminal state `[*]`?
 
 ---
 
@@ -1012,19 +1258,178 @@ What is the primary engineering advantage of using text-based diagramming tools 
 | **5. State Machine** | **HOW** does an entity change state in response to events? | Rounded state boxes, Triggers, Guards `[guard]`, Actions `/action`, Composite states, History `H` | Reactive protocols, IoT lifecycle states, order fulfillment tracking. |
 | **6. PlantUML Markup** | **HOW** do we maintain models in Git without documentation rot? | Declarative text-to-diagram syntax (`@startuml ... @enduml`) | Architecture-as-Code, Git PR reviews, CI/CD automated documentation pipelines. |
 
-### 4.9.2 Conceptual Review & Self-Assessment
-1. The **external** perspective models system boundaries, while the **structural** perspective captures static classes and associations.
-2. The Three Amigos who unified the modeling industry in the 1990s were **Grady Booch**, **James Rumbaugh**, and **Ivar Jacobson**.
-3. In a use case diagram, a mandatory sub-routine relationship is modeled using **`<<include>>`**, with the arrow pointing from the base case to the included case.
-4. An association representing exclusive part-whole ownership where parts are destroyed along with the container is **Composition (◆)**.
-5. In a Sequence Diagram, mutually exclusive conditional branching is encapsulated inside an **`alt`** combined fragment.
-6. In a Boundary-Control-Entity architecture, incoming user requests are received by the **Boundary** object and immediately dispatched to a **Control** object.
-7. In an Activity Diagram, a **Fork** node splits a single control flow into concurrent parallel threads.
-8. In a State Machine, an **Action** is instantaneous and atomic, whereas an **Activity** is ongoing and interruptible.
-9. To restore the most recent active sub-state inside a composite state upon re-entry, UML provides the **History (`H`)** pseudostate.
-10. Representing visual architecture diagrams in plain text code suitable for Git version control and pull request reviews is known as **Architecture-as-Code**.
+### 4.9.2 Solutions & Architectural Rubrics to All 5 Model Enhancement Activities
 
-### 4.9.3 Classic Literature & Further Reading
+#### Activity Solution 1: Use Case Model Extensions
+* **Architectural Solutions & Semantics:**
+  * **Scheduled Ordering (`<<extend>>`):** `(Place Food Order) <.. (Schedule Future Delivery) : <<extend>>` with guard `[delivery_type == scheduled]`. An optional feature hooking into checkout without polluting the base use case.
+  * **Live Chat Support (Autonomous Base Case):** Standalone `(Live Order Chat)` where primary actor `Customer` communicates with secondary actors `Support Agent` and `Courier`. External actors remain strictly outside the system boundary.
+  * **Group Ordering (`<<extend>>`):** `(Place Food Order)` extended by `(Pool Group Cart)` before entering checkout.
+* **PlantUML Delta:**
+```plantuml
+rectangle "Food Delivery Platform" {
+  usecase "Place Food Order" as UC_Order
+  usecase "Schedule Future Order" as UC_Sched
+  usecase "Live Order Chat" as UC_Chat
+  UC_Order <.. UC_Sched : <<extend>>
+}
+Customer --> UC_Order
+Customer --> UC_Chat
+UC_Chat --> Agent : <<assists>>
+```
+* **Audit Checklist:**
+  * `[Pass]` External partner `Support Agent` resides outside system boundary.
+  * `[Pass]` Scheduled delivery uses `<<extend>>`, not mandatory `<<include>>`.
+  * `[Pass]` Bubbles represent business user goals, avoiding low-level UI button clicks.
+
+#### Activity Solution 2: Class Model Refinements
+* **Architectural Solutions & Semantics:**
+  * **Multi-Vendor Sub-Orders:** Master `Order` decomposes into restaurant-specific sub-orders. `Order` `"1"` `*--` `"1..*"` `SubOrder` (Composition: sub-orders cannot exist without parent order). `SubOrder` `"1..*"` `o--` `"1"` `Restaurant` (Aggregation: restaurant survives order deletion).
+  * **Courier Tipping & Rating:** `DeliveryTask` `"1"` `o--` `"0..1"` `CourierReview` (Aggregation; tipping/rating is optional).
+  * **VIP Membership Plan:** `Customer` `"1"` `o--` `"0..1"` `MembershipPlan` (Strategy pattern decoupling subscription tiers).
+* **PlantUML Delta:**
+```plantuml
+class Order {
+  - orderId: UUID
+  - total: Money
+}
+class SubOrder {
+  - subTotal: Money
+  - status: Status
+}
+class Restaurant {
+  - name: String
+  - address: String
+}
+class CourierReview {
+  - rating: int
+  - tip: Money
+}
+Order "1" *-- "1..*" SubOrder : aggregates
+SubOrder "1..*" o-- "1" Restaurant : fulfills
+SubOrder "1" *-- "1..*" OrderItem
+DeliveryTask "1" o-- "0..1" CourierReview
+```
+* **Audit Checklist:**
+  * `[Pass]` Multiplicity logic: 1 master order contains `1..*` sub-orders; 1 sub-order targets 1 restaurant.
+  * `[Pass]` Solid diamond (`*--`) for lifecycle dependency; hollow diamond (`o--`) for weak associations.
+  * `[Pass]` Strict private encapsulation (`-`) on attributes.
+
+#### Activity Solution 3: Sequence Interaction Edge Cases
+* **Architectural Solutions & Semantics:**
+  * **Payment Gateway Timeout (>5s):** `CheckoutUI` calls `OrderController.submitPayment()`. Controller invokes `PaymentGateway.processPayment()`. `alt [Gateway Response < 5s]`: Normal confirmation. `else [Timeout > 5s]`: Controller triggers `cancelTransaction()`, logs audit trail, and returns `PaymentTimeoutError` with retry options.
+  * **Split Payment Workflow:** Two-phase execution: debit `Wallet Balance` first; if successful, charge remainder to credit card. If card declines, compensating transaction refunds wallet.
+* **PlantUML Delta:**
+```plantuml
+UI -> Controller : submitOrder(cart)
+activate Controller
+Controller -> Gateway : charge(amount)
+activate Gateway
+alt #LightGreen Response within 5s
+  Gateway --> Controller : 200 OK (txnId)
+  Controller -> Order : markPaid()
+  Controller --> UI : OrderSuccess
+else #Pink Timeout > 5s
+  Gateway --> Controller : [Timeout Error]
+  Controller -> Gateway : voidTransaction()
+  Controller --> UI : PaymentFailed(retryOption)
+end
+deactivate Gateway
+```
+* **Audit Checklist:**
+  * `[Pass]` UI communicates exclusively with Controller, never directly accessing DB or external Gateway.
+  * `[Pass]` Mutually exclusive paths enclosed in `alt` with clear guard expressions.
+
+#### Activity Solution 4: Activity Workflow Evolution
+* **Architectural Solutions & Semantics:**
+  * **Courier Decline & Re-dispatch Loop:** Inside `|Dispatch Engine|` lane: query nearest couriers in a `repeat` loop. Dispatch notification passes control token to `|Courier|` lane. Decision diamond: `if (Accept?) then (yes) -> Confirm; else (no) -> Log Decline; repeat while (Couriers Available)`.
+  * **Customer Self-Pickup Bypass:** Decision diamond in `|Platform|`: `if (Order Type?) then (Delivery) -> Fork to Kitchen & Courier; else (Self-Pickup) -> Notify Kitchen only; |Customer| :Pick Up at Counter; -> Merge`.
+* **PlantUML Delta:**
+```plantuml
+|Dispatch System|
+repeat
+  :Find Available Courier;
+  |Courier|
+  :Receive Dispatch Ping;
+backward:Log Rejection;
+repeat while (Courier accepts?) is (no)
+->yes;
+:Confirm Courier Assignment;
+|Kitchen|
+:Hand Off Sealed Package;
+|Courier|
+:Deliver to Customer;
+stop
+```
+* **Audit Checklist:**
+  * `[Pass]` Every action node resides in its responsible actor/system lane.
+  * `[Pass]` `repeat...repeat while` constructs have definitive termination paths.
+  * `[Pass]` All terminating branches reach explicit `stop` nodes.
+
+#### Activity Solution 5: State Machine Lifecycle Exceptions
+* **Architectural Solutions & Semantics:**
+  * **Courier Abandonment & Reassignment:** `OutForDelivery → ReadyForPickup : courier_abandoned [retries < 3] / unassign()`. Re-triggers courier matching without forcing kitchen to re-cook meal.
+  * **Delivery Failed & Return to Store:** `OutForDelivery → FailedDelivery : unreachable [wait >= 10m] / markFailed()`. `FailedDelivery → ReturnedToStore : return_package / recordDisposal()`. Terminal transition: `ReturnedToStore → [*]`.
+  * **Strict Invariant Enforcement:** Direct transition `OutForDelivery → Cancelled` is forbidden without compensating penalties.
+* **PlantUML Delta:**
+```plantuml
+state OutForDelivery {
+  [*] --> InTransit
+}
+OutForDelivery --> ReadyForPickup : courier_dropped \
+  [retries < 3] / reassign()
+OutForDelivery --> FailedDelivery : unreachable \
+  [wait >= 10m] / logFailed()
+FailedDelivery --> ReturnedToStore : return_meal \
+  / auditWaste()
+ReturnedToStore --> [*]
+```
+* **Audit Checklist:**
+  * `[Pass]` States represent passive conditions (`FailedDelivery`, `ReturnedToStore`), never active verbs.
+  * `[Pass]` Transitions declare Event `trigger`, `[guard]`, and `/action`.
+  * `[Pass]` Exceptional flows lead to explicit terminal state `[*]`.
+
+### 4.9.3 Comprehensive Conceptual Review: 14 Fill-in-the-Blank Quizzes
+
+```
+🏷️ Word Bank:
+[ Interaction ]
+[ Ivar Jacobson ]
+[ Boundary-Control-Entity (BCE) ]
+[ <<include>> ]
+[ <<extend>> ]
+[ Composition (◆) ]
+[ Aggregation (◇) ]
+[ Solid Arrow (→) ]
+[ alt fragment ]
+[ Swimlanes ]
+[ Join Node ]
+[ Guard Condition ]
+[ Orthogonal Regions (||) ]
+[ History State [H*] ]
+```
+
+#### Part 1: Structural & Use Case Foundations
+
+1. The "Three Amigos" who unified UML at Rational Software were Grady Booch, Jim Rumbaugh, and **[ Ivar Jacobson ]**.
+2. In system modeling, the 4 foundational perspectives are External, **[ Interaction ]**, Structural, and Behavioral.
+3. In use case modeling, mandatory shared functionality factored out across use cases uses the **[ `<<include>>` ]** relationship.
+4. Optional or conditional behavior triggered under specific conditions connects via the **[ `<<extend>>` ]** relationship.
+5. The architectural analysis pattern separating user interfaces, business logic, and persistent domain entities is **[ Boundary-Control-Entity (BCE) ]**.
+6. In a UML class diagram, a filled black diamond (`◆`) represents **[ Composition (◆) ]**, where part lifetimes strictly depend on the whole.
+7. In a UML class diagram, an open hollow diamond (`◇`) represents **[ Aggregation (◇) ]**, where parts maintain independent lifecycles.
+
+#### Part 2: Dynamic Workflows & Statecharts
+
+8. In a sequence diagram, a synchronous call that blocks execution until the target responds is drawn with a **[ Solid Arrow (→) ]**.
+9. In a sequence diagram, conditional branching with mutually exclusive execution alternatives is enclosed in an **[ alt fragment ]**.
+10. In an activity diagram, responsibilities of departments, business roles, or architectural tiers are partitioned by **[ Swimlanes ]**.
+11. In an activity diagram, a thick synchronization bar that merges multiple concurrent execution paths before continuing is a **[ Join Node ]**.
+12. In a UML state machine transition label, the boolean check condition enclosed in square brackets `[ ]` is the **[ Guard Condition ]**.
+13. In a composite state, concurrent parallel sub-states operating side-by-side are modeled inside **[ Orthogonal Regions (||) ]**.
+14. The pseudo-state that caches and restores the most recently active sub-state upon recovery from an interruption is the **[ History State [H*] ]**.
+
+### 4.9.4 Classic Literature & Further Reading
 * **Booch, G., Rumbaugh, J., & Jacobson, I. (2005).** *The Unified Modeling Language User Guide* (2nd ed.). Addison-Wesley.
 * **Fowler, M. (2003).** *UML Distilled: A Brief Guide to the Standard Object Modeling Language* (3rd ed.). Addison-Wesley.
 * **Cockburn, A. (2000).** *Writing Effective Use Cases*. Addison-Wesley.

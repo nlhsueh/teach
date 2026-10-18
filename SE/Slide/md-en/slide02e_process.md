@@ -2480,46 +2480,98 @@ Let's synthesize what we have learned through an interactive recap quiz and revi
 To summarize this slide, remember this key takeaway: Mastery of software engineering comes from harmonizing technical craft with sound process judgment.
 -->
 ---
-## Conceptual Recap: Fill-in-the-blank Quiz
+## 🧩 Conceptual Recap: Fill-in-the-Blank Quiz (Part 1)
 
-Test your mastery across the 9 software process modules:
+<div class="fill-blank-container">
 
-1. Software processes consist of 4 universal activities: Specification, Design/Implementation, **___**, and Evolution.
-2. The **___** model organizes testing symmetrically against requirements and design stages.
-3. Delivering functional vertical slices is **___**, while progressively refining an existing whole is **___**.
-4. The Agile Manifesto explicitly values **___** over following a plan.
-5. In Kanban, the primary mechanism used to expose bottlenecks and optimize flow is limiting **___**.
-6. Taking shortcuts to ship quickly incurs **___**, which degrades future developer velocity.
-7. In Extreme Programming, the practice of writing automated tests before production code is **___**.
-8. In DevOps, the elite performance metrics established by Google are known as the **___** metrics.
-9. Grounding AI coding agents with formal markdown documents and automated test harnesses is called **___**.
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ Word Bank:</div>
+  <span class="word-chip">Validation</span>
+  <span class="word-chip">Waterfall Model</span>
+  <span class="word-chip">V-Model</span>
+  <span class="word-chip">Incremental Delivery</span>
+  <span class="word-chip">Working Software</span>
+  <span class="word-chip">Timeboxing</span>
+  <span class="word-chip">Responding to Change</span>
+</div>
+
+<div class="quiz-questions">
+
+1. Software processes consist of 4 universal activities: Specification, Design/Implementation, <span class="quiz-blank" data-answer="Validation">[ _________ ]</span>, and Evolution.
+2. The classical sequential process where phases cascade strictly without early feedback is the <span class="quiz-blank" data-answer="Waterfall Model">[ _________ ]</span>.
+3. The <span class="quiz-blank" data-answer="V-Model">[ _________ ]</span> pairs verification stages symmetrically with validation testing to enable shift-left quality.
+4. Delivering usable vertical system increments is <span class="quiz-blank" data-answer="Incremental Delivery">[ _________ ]</span>, while refining an entire system iteratively is Iterative Development.
+5. The Agile Manifesto declares that the primary measure of progress is <span class="quiz-blank" data-answer="Working Software">[ _________ ]</span>.
+6. Scrum structures all development into fixed, non-extendable sprint durations known as <span class="quiz-blank" data-answer="Timeboxing">[ _________ ]</span>.
+7. A cornerstone agile value prioritizes <span class="quiz-blank" data-answer="Responding to Change">[ _________ ]</span> over blindly following a plan.
+
+</div>
+
+<div class="quiz-hint">💡 <em>Interactive Mode: Click any blank slot to reveal or hide the answer!</em></div>
+
+</div>
 
 <!--
-Now, let's do an interactive conceptual recap! I'll read each clue, and I want you to shout out the missing concept.
+Let's review the core lifecycles and agile values from Chapter 2:
 
-1. The classic sequential model with five linear phases: Waterfall!
+1. The four universal activities: Specification, Design/Implementation, Validation, and Evolution!
+2. The classic linear sequential process: Waterfall Model!
+3. The model pairing design phases symmetrically with testing: V-Model!
+4. Delivering functional vertical slices piece by piece: Incremental Delivery!
+5. The primary agile measure of software progress: Working Software!
+6. Fixed duration sprints that prevent scope creep: Timeboxing!
+7. The agile priority: Responding to Change over following a plan!
 
-2. The model pairing every design phase with a test phase: The V-Model!
+To summarize this slide, remember this key takeaway: These fundamental lifecycle models and agile philosophies define modern software development strategy.
+-->
 
-3. Delivering features piece by piece: Incremental delivery!
+---
 
-4. Refining a whole system over repeated cycles: Iterative development!
+## 🧩 Conceptual Recap: Fill-in-the-Blank Quiz (Part 2)
 
-5. Agile management with Sprints and Scrum Masters: Scrum!
+<div class="fill-blank-container">
 
-6. Continuous flow system that limits Work-in-Progress: Kanban!
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ Word Bank:</div>
+  <span class="word-chip">WIP Limits</span>
+  <span class="word-chip">Technical Debt</span>
+  <span class="word-chip">Test-Driven Development (TDD)</span>
+  <span class="word-chip">Pair Programming</span>
+  <span class="word-chip">Continuous Integration (CI)</span>
+  <span class="word-chip">DORA Metrics</span>
+  <span class="word-chip">Engineering Harness</span>
+</div>
 
-7. The hidden interest paid for cutting corners: Technical Debt!
+<div class="quiz-questions">
 
-8. XP practice of writing failing tests before code: Test-Driven Development (TDD)!
+8. In Kanban, the primary mechanism used to expose bottlenecks and enforce a pull system is limiting <span class="quiz-blank" data-answer="WIP Limits">[ _________ ]</span>.
+9. Taking architectural shortcuts to ship quickly incurs <span class="quiz-blank" data-answer="Technical Debt">[ _________ ]</span>, which accrues interest over time.
+10. In Extreme Programming, the discipline of writing a failing test before writing production code is <span class="quiz-blank" data-answer="Test-Driven Development (TDD)">[ _________ ]</span>.
+11. The agile practice where two engineers work concurrently on a single workstation is <span class="quiz-blank" data-answer="Pair Programming">[ _________ ]</span>.
+12. Automatically building, testing, and verifying code on every commit is the foundation of <span class="quiz-blank" data-answer="Continuous Integration (CI)">[ _________ ]</span>.
+13. The four elite engineering performance indicators (Lead Time, Deployment Frequency, MTTR, Change Failure Rate) are the <span class="quiz-blank" data-answer="DORA Metrics">[ _________ ]</span>.
+14. Grounding probabilistic AI coding agents with deterministic specs, sandboxes, and verification test suites is an <span class="quiz-blank" data-answer="Engineering Harness">[ _________ ]</span>.
 
-9. Automatically building and testing every commit: Continuous Integration (CI)!
+</div>
 
-10. Guiding AI with formal contracts and test harnesses: Specification-Driven AI!
+<div class="quiz-hint">💡 <em>Interactive Mode: Click any blank slot to reveal or hide the answer!</em></div>
 
-Excellent job, everyone!
+</div>
 
-To summarize this slide, remember this key takeaway: These core concepts form the foundational vocabulary of professional software engineering practices.
+<!--
+Now let's test our mastery of engineering practices, DevOps pipelines, and AI engineering:
+
+8. Continuous flow optimization with pull limits: WIP Limits!
+9. The hidden interest paid for cutting quality corners: Technical Debt!
+10. The Red-Green-Refactor test-first engineering practice: Test-Driven Development (TDD)!
+11. Two engineers collaborating on one screen: Pair Programming!
+12. Automating builds and regression suites on each commit: Continuous Integration (CI)!
+13. Elite team speed and stability benchmarks: DORA Metrics!
+14. Encapsulating AI LLMs with deterministic guardrails and tests: Engineering Harness!
+
+Outstanding job, everyone!
+
+To summarize this slide, remember this key takeaway: Advanced software practices from TDD and CI/CD to AI Harnesses turn software engineering into a predictable, high-velocity science.
 -->
 ---
 ## References & Further Reading
@@ -2864,10 +2916,34 @@ To summarize this slide, remember this key takeaway: Great software engineers co
     }, true);
   }
 
-  // Initialize both features
+  function initQuizBlanks() {
+    document.querySelectorAll('span.quiz-blank').forEach(function(el) {
+      if (el.dataset.initialized) return;
+      el.dataset.initialized = 'true';
+      const answer = el.getAttribute('data-answer') || '';
+      const placeholder = '[ _________ ]';
+      if (!el.textContent.trim()) {
+        el.textContent = placeholder;
+      }
+      el.title = 'Click to reveal / hide answer';
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (el.classList.contains('revealed')) {
+          el.classList.remove('revealed');
+          el.textContent = placeholder;
+        } else {
+          el.classList.add('revealed');
+          el.textContent = answer;
+        }
+      });
+    });
+  }
+
+  // Initialize features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initQuizBlanks();
   }
 
   if (document.readyState === 'loading') {

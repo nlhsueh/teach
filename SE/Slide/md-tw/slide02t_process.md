@@ -2526,29 +2526,98 @@ D：強制重開機。
 ---
 <!-- header: '2.10 重點總結與經典文獻' -->
 
-## 第二章核心觀念重點測驗 (填空檢核)
+## 🧩 核心觀念統整：互動填空小測驗 (Part 1)
 
-檢驗你對軟體開發流程九大模組核心觀念的掌握程度：
+<div class="fill-blank-container">
 
-1. 軟體工程的四大通用核心活動分別為**軟體規格說明**、**軟體設計與實作**、**軟體驗證與確認**以及**軟體演化**。
-2. 瀑布模型將開發切分為嚴格序列階段，其最致命的風險在於將可運行的軟體交付與客戶回饋延後到了整個週期的**最末端 (Big Bang)**。
-3. V-模型的核心價值在於**測試左移 (Shift-Left Testing)** 與需求測試間的**雙向追溯性 (Traceability)**。
-4. 敏捷的核心哲學是「回應**變更**重於遵循計畫」；進度的唯一真實度量標準是**可運行的軟體 (Working Software)**。
-5. 看板框架透過對欄位強制設定**在製品數量上限 (WIP Limits)**，暴露流程瓶頸並落實拉動系統。
-6. Ward Cunningham 提出的**技術債 (Technical Debt)** 隱喻指出，為了趕進度抄捷徑就如同向未來借款，未來修改代碼時所付出的額外痛苦時間即為**利息**。
-7. 在極限編程 (XP) 中，測試驅動開發 (TDD) 的三部曲循環為 **RED (紅燈失敗)** → **GREEN (綠燈通過)** → **REFACTOR (重構優化)**。
-8. DevOps 打破了開發與維運之間的混亂之牆，透過 **CI (持續整合)** 與 **CD (持續交付/部署)** 實現快速且可靠的發布。
-9. 在 AI 規格驅動開發中，包裹在機率性大語言模型外圍的確定性編譯器與測試防護體系稱為**工程安全裝備 (Engineering Harness)**。
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ 候選詞庫：</div>
+  <span class="word-chip">軟體驗證 (Validation)</span>
+  <span class="word-chip">瀑布模型 (Waterfall)</span>
+  <span class="word-chip">V-模型 (V-Model)</span>
+  <span class="word-chip">增量交付 (Incremental)</span>
+  <span class="word-chip">可運行的軟體</span>
+  <span class="word-chip">時間盒 (Timeboxing)</span>
+  <span class="word-chip">回應變更</span>
+</div>
+
+<div class="quiz-questions">
+
+1. 軟體工程的四大通用核心活動為規格說明、設計實作、<span class="quiz-blank" data-answer="軟體驗證 (Validation)">[ _________ ]</span> 與軟體演化。
+2. 階段嚴格線性推進且客戶回饋延宕至最末端的傳統開發方法是 <span class="quiz-blank" data-answer="瀑布模型 (Waterfall)">[ _________ ]</span>。
+3. 將開發階段與測試層次對稱映射、落實測試左移的核心模型為 <span class="quiz-blank" data-answer="V-模型 (V-Model)">[ _________ ]</span>。
+4. 每次交付可用功能垂直切片是 <span class="quiz-blank" data-answer="增量交付 (Incremental)">[ _________ ]</span>，而逐步精煉整體系統則是疊代開發 (Iterative)。
+5. 敏捷宣言明訂進度的唯一真實度量標準是交付 <span class="quiz-blank" data-answer="可運行的軟體">[ _________ ]</span>。
+6. Scrum 將開發節奏鎖定於固定不可延長的衝刺週期中，此原則稱為 <span class="quiz-blank" data-answer="時間盒 (Timeboxing)">[ _________ ]</span>。
+7. 敏捷價值核心強調「<span class="quiz-blank" data-answer="回應變更">[ _________ ]</span> 重於遵循計畫」。
+
+</div>
+
+<div class="quiz-hint">💡 <em>線上互動提示：點擊任何底線空格即可立即揭曉 / 隱藏解答！</em></div>
+
+</div>
 
 <!--
-請大家看這九道填空題。
+讓我們檢核第二章核心流程模型與敏捷哲學思維：
 
-這是今天整堂課的精華濃縮：
-四大核心活動、瀑布的大爆炸交付風險、V-模型的測試左移、敏捷的核心度量、看板的 WIP 限制、技術債的利息、TDD 的紅綠重構、DevOps 的 CI/CD，以及 AI 時代的 Harness 安全裝備。
+1. 四大核心通用活動為規格、實作、驗證 (Validation) 與演化！
+2. 缺乏早期回饋的經典線性流程是瀑布模型 (Waterfall)！
+3. 對稱映射設計與驗收層次的是 V-模型 (V-Model)！
+4. 切片交付可用功能是增量交付 (Incremental Delivery)！
+5. 敏捷衡量進度的唯一真實指標是可運行的軟體 (Working Software)！
+6. 固定且不可隨意延長的開發節奏稱為時間盒 (Timeboxing)！
+7. 敏捷四大價值核心之一：回應變更重於遵循計畫！
 
-只要能清晰回答這九個問題，你就真正掌握了第二章的核心精髓。
+總結這張投影片，請記住這個核心觀念：經典模型與敏捷思維為現代軟體專案策略奠定了穩固的基石。
+-->
 
-總結這張投影片，請記住這個核心觀念：九大觀念串聯起軟體流程的歷史演進與未來前沿，是每位軟體工程師必備的思維武器庫。
+---
+
+## 🧩 核心觀念統整：互動填空小測驗 (Part 2)
+
+<div class="fill-blank-container">
+
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ 候選詞庫：</div>
+  <span class="word-chip">在製品上限 (WIP Limits)</span>
+  <span class="word-chip">技術債 (Technical Debt)</span>
+  <span class="word-chip">TDD 測試驅動開發</span>
+  <span class="word-chip">結對編程 (Pair Programming)</span>
+  <span class="word-chip">持續整合 (CI)</span>
+  <span class="word-chip">DORA 指標</span>
+  <span class="word-chip">工程安全裝備 (Harness)</span>
+</div>
+
+<div class="quiz-questions">
+
+8. 看板方法透過強制設定欄位的 <span class="quiz-blank" data-answer="在製品上限 (WIP Limits)">[ _________ ]</span>，暴露流程瓶頸並落實拉動系統。
+9. 為了搶快走捷徑所欠下、未來修改需支付利息的架構隱患稱為 <span class="quiz-blank" data-answer="技術債 (Technical Debt)">[ _________ ]</span>。
+10. 極限編程 (XP) 中「紅燈失敗 → 綠燈通過 → 重構優化」的核心工程實踐為 <span class="quiz-blank" data-answer="TDD 測試驅動開發">[ _________ ]</span>。
+11. 兩位工程師共用一台螢幕與鍵盤共同思維與編碼的極限編程實踐是 <span class="quiz-blank" data-answer="結對編程 (Pair Programming)">[ _________ ]</span>。
+12. 每次提交代碼即自動觸發編譯與自動化測試流水線的實踐為 <span class="quiz-blank" data-answer="持續整合 (CI)">[ _________ ]</span>。
+13. Google 所確立的四大菁英工程效能指標（包含前置時間、部署頻率等）被稱為 <span class="quiz-blank" data-answer="DORA 指標">[ _________ ]</span>。
+14. 在 AI 時代，包裹在機率性大模型外圍、由規格契約與自動化測試構成的確定性防護體系稱為 <span class="quiz-blank" data-answer="工程安全裝備 (Harness)">[ _________ ]</span>。
+
+</div>
+
+<div class="quiz-hint">💡 <em>線上互動提示：點擊任何底線空格即可立即揭曉 / 隱藏解答！</em></div>
+
+</div>
+
+<!--
+接著檢核進階工程實踐、DevOps 管線與 AI 安全帶體系：
+
+8. 限制併發處理量以暴露瓶頸：WIP Limits 在製品上限！
+9. 趕工犧牲品質欠下的隱形利息：技術債 (Technical Debt)！
+10. 先寫測試後寫代碼的紅綠循環：TDD 測試驅動開發！
+11. 雙人協同思維與即時審查：結對編程 (Pair Programming)！
+12. 每次提交自動驗證的自動化安全網：持續整合 (CI)！
+13. 頂級效能度量體系：DORA 指標！
+14. 用確定性防護罩駕馭機率性 AI：工程安全裝備 (Engineering Harness)！
+
+大家表現得非常出色！
+
+總結這張投影片，請記住這個核心觀念：從 TDD、CI/CD 到 AI Harness，先進工程實踐讓軟體開發成為可預測、高速度的現代科學。
 -->
 ---
 ## 經典文獻與延伸閱讀 (References)
@@ -2891,10 +2960,34 @@ Sommerville 的教科書是學術基石；Kent Beck 的《極限編程》與 Mar
     }, true);
   }
 
-  // Initialize both features
+  function initQuizBlanks() {
+    document.querySelectorAll('span.quiz-blank').forEach(function(el) {
+      if (el.dataset.initialized) return;
+      el.dataset.initialized = 'true';
+      const answer = el.getAttribute('data-answer') || '';
+      const placeholder = '[ _________ ]';
+      if (!el.textContent.trim()) {
+        el.textContent = placeholder;
+      }
+      el.title = '點擊以揭曉 / 隱藏解答 (Click to toggle answer)';
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (el.classList.contains('revealed')) {
+          el.classList.remove('revealed');
+          el.textContent = placeholder;
+        } else {
+          el.classList.add('revealed');
+          el.textContent = answer;
+        }
+      });
+    });
+  }
+
+  // Initialize features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initQuizBlanks();
   }
 
   if (document.readyState === 'loading') {

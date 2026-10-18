@@ -4469,38 +4469,378 @@ To summarize this slide, remember this key takeaway: Mastering system modeling e
 
 ---
 
-## Conceptual Recap: Fill-in-the-blank Quiz
+## 🧩 Conceptual Recap: Fill-in-the-Blank Quiz (Part 1)
 
-<div class="fill-blank-columns">
-<div class="fill-blank-text">
+<div class="fill-blank-container">
 
-Test your understanding of the core concepts in this chapter:
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ Word Bank:</div>
+  <span class="word-chip">Interaction</span>
+  <span class="word-chip">Ivar Jacobson</span>
+  <span class="word-chip">Boundary-Control-Entity (BCE)</span>
+  <span class="word-chip">&lt;&lt;include&gt;&gt;</span>
+  <span class="word-chip">&lt;&lt;extend&gt;&gt;</span>
+  <span class="word-chip">Composition (◆)</span>
+  <span class="word-chip">Aggregation (◇)</span>
+</div>
 
-1. The "Three Amigos" who unified UML at Rational Software were Grady Booch, Jim Rumbaugh, and **`___`**.
-2. In system modeling, the 4 foundational perspectives are External, **`___`**, Structural, and Behavioral.
-3. In use case modeling, mandatory shared functionality is factored out using the **`___`** relationship.
-4. The architectural pattern that separates user interfaces, business logic, and persistent domain entities is **`___`**.
-5. In a UML class diagram, a filled black diamond (`◆`) represents **`___`**, where parts cannot exist without the whole.
-6. In a UML class diagram, an open hollow diamond (`◇`) represents **`___`**, where parts maintain independent lifecycles.
-7. A UML state machine transition label follows the formal syntax: Trigger Event [**`___`**] / Action Effect.
+<div class="quiz-questions">
+
+1. The "Three Amigos" who unified UML at Rational Software were Grady Booch, Jim Rumbaugh, and <span class="quiz-blank" data-answer="Ivar Jacobson">[ _________ ]</span>.
+2. In system modeling, the 4 foundational perspectives are External, <span class="quiz-blank" data-answer="Interaction">[ _________ ]</span>, Structural, and Behavioral.
+3. In use case modeling, mandatory shared functionality factored out across use cases uses the <span class="quiz-blank" data-answer="<<include>>">[ _________ ]</span> relationship.
+4. Optional or conditional behavior triggered under specific conditions connects via the <span class="quiz-blank" data-answer="<<extend>>">[ _________ ]</span> relationship.
+5. The architectural analysis pattern separating user interfaces, business logic, and persistent domain entities is <span class="quiz-blank" data-answer="Boundary-Control-Entity (BCE)">[ _________ ]</span>.
+6. In a UML class diagram, a filled black diamond (`◆`) represents <span class="quiz-blank" data-answer="Composition (◆)">[ _________ ]</span>, where part lifetimes strictly depend on the whole.
+7. In a UML class diagram, an open hollow diamond (`◇`) represents <span class="quiz-blank" data-answer="Aggregation (◇)">[ _________ ]</span>, where parts maintain independent lifecycles.
+
+</div>
+
+<div class="quiz-hint">💡 <em>Interactive Mode: Click any blank slot to reveal or hide the answer!</em></div>
+
+</div>
+
+<!--
+Let's review the foundational structural and use case concepts of Chapter 4:
+
+1. The third member of the Three Amigos is Ivar Jacobson, creator of use cases and Objectory!
+2. The four core modeling perspectives are External, Interaction, Structural, and Behavioral!
+3. Mandatory shared subroutines across use cases use the <<include>> dependency!
+4. Optional, conditionally executed use case behavior uses <<extend>>!
+5. The three-tier architectural analysis pattern is Boundary-Control-Entity (BCE)!
+6. A filled black diamond represents Composition—parts share the whole's lifetime!
+7. An open hollow diamond represents Aggregation—parts have autonomous lifecycles!
+
+To summarize this slide, remember this key takeaway: These seven concepts anchor the historical foundations, requirement use cases, and structural modeling of UML.
+-->
+
+---
+
+## 🧩 Conceptual Recap: Fill-in-the-Blank Quiz (Part 2)
+
+<div class="fill-blank-container">
+
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ Word Bank:</div>
+  <span class="word-chip">Solid Arrow (→)</span>
+  <span class="word-chip">alt fragment</span>
+  <span class="word-chip">Swimlanes</span>
+  <span class="word-chip">Join Node</span>
+  <span class="word-chip">Guard Condition</span>
+  <span class="word-chip">Orthogonal Regions (||)</span>
+  <span class="word-chip">History State [H*]</span>
+</div>
+
+<div class="quiz-questions">
+
+8. In a sequence diagram, a synchronous call that blocks execution until the target responds is drawn with a <span class="quiz-blank" data-answer="Solid Arrow (→)">[ _________ ]</span>.
+9. In a sequence diagram, conditional branching with mutually exclusive execution alternatives is enclosed in an <span class="quiz-blank" data-answer="alt fragment">[ _________ ]</span>.
+10. In an activity diagram, responsibilities of departments, business roles, or architectural tiers are partitioned by <span class="quiz-blank" data-answer="Swimlanes">[ _________ ]</span>.
+11. In an activity diagram, a thick synchronization bar that merges multiple concurrent execution paths before continuing is a <span class="quiz-blank" data-answer="Join Node">[ _________ ]</span>.
+12. In a UML state machine transition label, the boolean check condition enclosed in square brackets `[ ]` is the <span class="quiz-blank" data-answer="Guard Condition">[ _________ ]</span>.
+13. In a composite state, concurrent parallel sub-states operating side-by-side are modeled inside <span class="quiz-blank" data-answer="Orthogonal Regions (||)">[ _________ ]</span>.
+14. The pseudo-state that caches and restores the most recently active sub-state upon recovery from an interruption is the <span class="quiz-blank" data-answer="History State [H*]">[ _________ ]</span>.
+
+</div>
+
+<div class="quiz-hint">💡 <em>Interactive Mode: Click any blank slot to reveal or hide the answer!</em></div>
+
+</div>
+
+<!--
+Now let's review dynamic interactions, activity workflows, and statechart execution semantics:
+
+8. Synchronous blocking calls use a Solid Filled Arrow (->)!
+9. Mutually exclusive conditional logic is modeled with an alt fragment!
+10. Organizational boundaries and actor roles in activity diagrams are represented by Swimlanes!
+11. Parallel concurrent flows synchronize at a Join Node!
+12. The boolean guard condition is written inside square brackets [ ]!
+13. Concurrency within a composite state uses Orthogonal Regions separated by dashed lines (||)!
+14. Deep memory restoration after unexpected suspension is handled by a History State [H*]!
+
+To summarize this slide, remember this key takeaway: Interaction diagrams, workflows, and state machines capture the dynamic, temporal behavior of distributed software systems.
+-->
+
+---
+
+## 💡 Activity Solution 1: Use Case Model Extensions <a href="#34" class="activity-link">🔙 Activity Prompt (p. 34)</a>
+
+> "Extending use case models requires guarding system boundaries and distinguishing optional extensions from mandatory subroutines."
+
+<div class="two-columns">
+<div class="card">
+
+### Architectural Mutation Solutions
+- **Scheduled Ordering (`<<extend>>`):**
+  - `(Place Food Order) <.. (Schedule Future Delivery) : <<extend>>`
+  - Guard condition: `[delivery_type == scheduled]`. Optional feature that hooks into standard checkout without polluting the base case.
+- **Live Chat Support (Base Use Case):**
+  - Standalone `(Live Order Chat)` use case. Primary actor `Customer` connects with secondary actors `Support Agent` and `Courier`.
+  - Secondary actors remain strictly **outside** the system boundary rectangle.
+- **Group Ordering (`<<extend>>`):**
+  - Base use case `(Place Food Order)` extended by `(Pool Group Cart)` before payment.
+
+</div>
+<div class="card">
+
+### PlantUML Delta & Quality Audit
+```plantuml
+rectangle "Food Delivery Platform" {
+  usecase "Place Food Order" as UC_Order
+  usecase "Schedule Future Order" as UC_Sched
+  usecase "Live Order Chat" as UC_Chat
+  UC_Order <.. UC_Sched : <<extend>>
+}
+Customer --> UC_Order
+Customer --> UC_Chat
+UC_Chat --> Agent : <<assists>>
+```
+- **[Pass] Boundary Discipline:** External partner `Support Agent` is positioned outside system boundary.
+- **[Pass] Semantic Integrity:** Scheduled delivery is an optional extension, not a mandatory `<<include>>`.
+- **[Pass] Goal Orientation:** Avoids low-level UI button clicks.
 
 </div>
 </div>
 
 <!--
-Let's review today's core concepts with a quick interactive quiz!
+Here is the architectural solution for Activity 1: Evolving Use Cases with AI.
 
-1. The Three Amigos were Grady Booch, Jim Rumbaugh, and Ivar Jacobson!
-2. The four core perspectives are External, Interaction, Structural, and Behavioral!
-3. Mandatory shared functionality uses the <<include>> relationship!
-4. The pattern separating UI, business logic, and data entities is Boundary-Control-Entity (BCE)!
-5. A filled diamond represents Composition!
-6. An open diamond represents Aggregation!
-7. The bracketed expression in a state transition is the Guard condition!
+In the left card, notice how each requirement mutation is semantically classified:
+First, Scheduled Ordering is an optional extension. It extends Place Food Order with an extension point and guard condition. Never use <<include>> here because regular on-demand orders do not require scheduling!
+Second, Live Chat Support represents an autonomous user goal. It is a separate base use case connecting the Customer with external support staff.
+Third, Group Ordering allows pooling items before entering checkout.
 
-Outstanding job, everyone!
+In the right card, review the PlantUML snippet and our quality audit:
+The Support Agent sits safely outside the platform boundary.
+We use <<extend>> with a dotted arrow pointing toward the base use case.
+And all bubbles represent meaningful business goals rather than button clicks.
 
-To summarize this slide, remember this key takeaway: These core modeling concepts provide the foundation for robust object-oriented software design.
+To summarize this slide, remember this key takeaway: Use case evolution preserves clean boundaries and uses <<extend>> for optional business variations.
+-->
+
+---
+
+## 💡 Activity Solution 2: Class Model Refinements <a href="#53" class="activity-link">🔙 Activity Prompt (p. 53)</a>
+
+> "Domain class evolution tests whether lifecycles are autonomous (aggregation) or bounded by whole-part destruction (composition)."
+
+<div class="two-columns">
+<div class="card">
+
+### Structural Solutions & Semantics
+- **Multi-Vendor Sub-Orders:**
+  - Master `Order` splits into restaurant-specific sub-orders.
+  - `Order` `"1"` `*--` `"1..*"` `SubOrder` (Composition: sub-orders cannot exist without the master order).
+  - `SubOrder` `"1..*"` `o--` `"1"` `Restaurant` (Aggregation: restaurant survives order deletion).
+  - `SubOrder` `"1"` `*--` `"1..*"` `OrderItem`.
+- **Courier Tipping & Rating:**
+  - `DeliveryTask` `"1"` `o--` `"0..1"` `CourierReview` (Aggregation / weak reference; review is optional).
+- **VIP Membership Plan:**
+  - `Customer` `"1"` `o--` `"0..1"` `MembershipPlan` (Decoupled subscription strategy pattern).
+
+</div>
+<div class="card">
+
+### PlantUML Delta & Quality Audit
+```plantuml
+class Order { - orderId: UUID; - total: Money }
+class SubOrder { - subTotal: Money; - status: Status }
+class Restaurant { - name: String; - address: String }
+class CourierReview { - rating: int; - tip: Money }
+Order "1" *-- "1..*" SubOrder : aggregates
+SubOrder "1..*" o-- "1" Restaurant : fulfills
+SubOrder "1" *-- "1..*" OrderItem
+DeliveryTask "1" o-- "0..1" CourierReview
+```
+- **[Pass] Multiplicity Logic:** 1 master order contains `1..*` sub-orders; 1 sub-order targets exactly 1 restaurant.
+- **[Pass] Relationship Precision:** Solid diamond (`*--`) for lifecycle dependency; hollow diamond (`o--`) for weak associations.
+- **[Pass] Strict Encapsulation:** Private attributes with explicit types.
+
+</div>
+</div>
+
+<!--
+Here is the architectural solution for Activity 2: Evolving Food Delivery Domain Class Models.
+
+In the left card, look at how we resolve multi-vendor checkout and courier ratings:
+First, a multi-restaurant cart requires introducing a SubOrder entity. The master Order owns SubOrders through Composition: if the user cancels before authorization, all sub-orders vanish. However, SubOrder connects to Restaurant through Aggregation: the restaurant is an independent business entity that outlives any order!
+Second, CourierReview connects to DeliveryTask with a 0..1 multiplicity because tipping and rating are completely optional.
+Third, VIP Membership attaches to Customer without creating tight inheritance hierarchies.
+
+In the right card, verify the PlantUML relationships and multiplicities:
+Notice the distinction between filled diamonds for whole-part destruction and open diamonds for loose references.
+
+To summarize this slide, remember this key takeaway: Advanced domain modeling uses SubOrders to cleanly decouple multi-vendor fulfillment while preserving lifecycle invariants.
+-->
+
+---
+
+## 💡 Activity Solution 3: Sequence Interaction Edge Cases <a href="#71" class="activity-link">🔙 Activity Prompt (p. 71)</a>
+
+> "Robust sequence diagrams isolate failure domains with explicit alternative fragments and strict architectural layering."
+
+<div class="two-columns">
+<div class="card">
+
+### Dynamic Edge Cases & Semantics
+- **Payment Gateway Timeout (>5s):**
+  - Boundary `CheckoutUI` invokes Controller `submitPayment()`.
+  - Controller coordinates external `PaymentGateway.processPayment()`.
+  - `alt [Gateway Response < 5s]`: Normal confirmation; updates `Order` entity and dispatches order.
+  - `else [Timeout > 5s]`: Controller triggers `cancelTransaction()`, logs audit trail, and returns `PaymentTimeoutError` with retry options.
+- **Split Payment Workflow:**
+  - Two-phase execution: First deduct `Wallet Balance`. If successful, charge balance to `PaymentGateway`. If gateway fails, compensating rollback refunds wallet.
+
+</div>
+<div class="card">
+
+### PlantUML Delta & Quality Audit
+```plantuml
+UI -> Controller : submitOrder(cart)
+activate Controller
+Controller -> Gateway : charge(amount)
+activate Gateway
+alt #LightGreen Response within 5s
+  Gateway --> Controller : 200 OK (txnId)
+  Controller -> Order : markPaid()
+  Controller --> UI : OrderSuccess
+else #Pink Timeout > 5s
+  Gateway --> Controller : [Timeout Error]
+  Controller -> Gateway : voidTransaction()
+  Controller --> UI : PaymentFailed(retryOption)
+end
+deactivate Gateway
+```
+- **[Pass] Layering Integrity:** UI communicates exclusively with Controller, never directly accessing DB or external Gateway.
+- **[Pass] Failure Partitioning:** Mutually exclusive paths enclosed in `alt` with clear guard expressions.
+
+</div>
+</div>
+
+<!--
+Here is the architectural solution for Activity 3: Evolving Sequence Interactions.
+
+In the left card, examine how we model distributed runtime failure domains:
+First, a third-party gateway timeout must be encapsulated within an alt fragment. The OrderController coordinates the call: if the bank takes longer than 5 seconds, an explicit timeout branch executes voidTransaction, logs the incident, and returns a graceful failure response to the user interface.
+Second, for Split Payment, we model a two-phase transaction: debit digital wallet first, then bill the external card. If the credit card fails, a compensating call refunds the wallet balance.
+
+In the right card, inspect the PlantUML sequence diagram:
+Notice the clean activation bars and strict BCE layering: CheckoutUI talks only to OrderController. UI never talks directly to PaymentGateway or Order database!
+
+To summarize this slide, remember this key takeaway: Sequence diagrams shine when modeling distributed failure modes and enforcing strict multi-tier communication boundaries.
+-->
+
+---
+
+## 💡 Activity Solution 4: Activity Workflow Evolution <a href="#89" class="activity-link">🔙 Activity Prompt (p. 89)</a>
+
+> "Workflow evolution demands rigorous token balancing across swimlanes, explicit loop termination, and clean branching."
+
+<div class="two-columns">
+<div class="card">
+
+### Process Solutions & Control Logic
+- **Courier Decline & Re-dispatch Loop:**
+  - Inside `|Dispatch Engine|` swimlane: query nearest couriers in a `repeat` loop.
+  - Dispatch notification passes control token to `|Courier|` swimlane.
+  - Decision diamond in Courier swimlane: `if (Accept?) then (yes) -> Confirm; else (no) -> Log Decline; repeat while (Couriers Available)`.
+  - Exhaustion branch routes to `Activity Final Node` or escalation.
+- **Customer Self-Pickup Bypass:**
+  - Decision diamond in `|Platform|`: `if (Order Type?) then (Delivery) -> Fork to Kitchen & Courier; else (Self-Pickup) -> Notify Kitchen only; |Customer| :Pick Up at Counter; -> Merge`.
+
+</div>
+<div class="card">
+
+### PlantUML Delta & Quality Audit
+```plantuml
+|Dispatch System|
+repeat
+  :Find Available Courier;
+  |Courier|
+  :Receive Dispatch Ping;
+backward:Log Rejection;
+repeat while (Courier accepts?) is (no)
+->yes;
+:Confirm Courier Assignment;
+|Kitchen|
+:Hand Off Sealed Package;
+|Courier|
+:Deliver to Customer;
+stop
+```
+- **[Pass] Swimlane Ownership:** Every action node resides in its responsible actor/system lane.
+- **[Pass] Loop Integrity:** `repeat...repeat while` constructs have definitive termination paths.
+- **[Pass] Zero Dangling Tokens:** All terminating branches reach explicit `stop` nodes.
+
+</div>
+</div>
+
+<!--
+Here is the architectural solution for Activity 4: Evolving Activity Workflows.
+
+In the left card, see how we handle driver reassignment loops and takeaway branches:
+First, when a courier declines a delivery request, control must loop back without deadlocking parallel tasks. The Dispatch Engine executes a repeat-while loop: ping courier, evaluate response, and if declined, log the rejection and query the next candidate. If all couriers decline, an explicit fallback route prevents the workflow from hanging indefinitely.
+Second, for Self-Pickup orders, an early decision diamond splits the path, completely bypassing courier matching and dispatch swimlanes!
+
+In the right card, examine the PlantUML swimlane activity syntax:
+Notice the clean swimlane headers, the backward keyword for rejection logging, and the stop node terminating the execution token.
+
+To summarize this slide, remember this key takeaway: Robust activity workflows use swimlanes for accountability and guarantee every loop has an explicit exit condition.
+-->
+
+---
+
+## 💡 Activity Solution 5: State Machine Lifecycle Exceptions <a href="#109" class="activity-link">🔙 Activity Prompt (p. 109)</a>
+
+> "State machine integrity rests on protecting lifecycle invariants: once physical resources are committed, rollback rules must be absolute."
+
+<div class="two-columns">
+<div class="card">
+
+### Lifecycle Exceptions & Invariant Rules
+- **Courier Abandonment & Reassignment:**
+  - `OutForDelivery → ReadyForPickup : courier_abandoned [retries < 3] / unassign()`
+  - Re-triggers courier dispatch without forcing kitchen to re-cook meal.
+- **Delivery Failed & Return to Store:**
+  - `OutForDelivery → FailedDelivery : unreachable [wait >= 10m] / markFailed()`
+  - `FailedDelivery → ReturnedToStore : return_package / recordDisposal()`
+  - Terminal transition: `ReturnedToStore → [*]`
+- **Strict Invariant Enforcement:**
+  - Direct transition `OutForDelivery → Cancelled` is **forbidden** without compensation.
+
+</div>
+<div class="card">
+
+### PlantUML Delta & Quality Audit
+```plantuml
+state OutForDelivery {
+  [*] --> InTransit
+}
+OutForDelivery --> ReadyForPickup : courier_dropped \n [retries < 3] / reassign()
+OutForDelivery --> FailedDelivery : unreachable \n [wait >= 10m] / logFailed()
+FailedDelivery --> ReturnedToStore : return_meal \n / auditWaste()
+ReturnedToStore --> [*]
+```
+- **[Pass] State Naming Discipline:** States represent passive conditions (`FailedDelivery`, `ReturnedToStore`), never active verb actions.
+- **[Pass] Tripartite Syntax:** Transitions declare Event `trigger`, `[guard]`, and `/action`.
+- **[Pass] Finite Lifecycles:** Exceptional flows lead to explicit terminal state `[*]`.
+
+</div>
+</div>
+
+<!--
+Here is the architectural solution for Activity 5: Evolving State Lifecycles with AI.
+
+In the left card, look at how we protect core business invariants during delivery failures:
+First, if a courier breaks down or abandons an order mid-delivery, the order state must transition backwards to ReadyForPickup. This triggers a new dispatch request while ensuring the restaurant is NOT asked to remake food that is already packaged and waiting.
+Second, if the customer cannot be reached at the drop-off location after a 10-minute grace period, the order moves to FailedDelivery, then ReturnedToStore, and finally terminates.
+Third, we enforce the core invariant: once an order is OutForDelivery, an arbitrary customer cancellation transition is strictly forbidden!
+
+In the right card, inspect the PlantUML state machine syntax:
+All state names are passive conditions rather than verb actions.
+Every transition carries the full UML trigger, guard condition in brackets, and side-effect action after the forward slash.
+
+To summarize this slide, remember this key takeaway: State machines guard business truth by enforcing explicit lifecycle invariants and strictly disallowing invalid transitions.
 -->
 
 ---
@@ -4845,10 +5185,51 @@ Thank you for your active participation in Chapter 4!
     }, true);
   }
 
-  // Initialize both features
+  function initQuizBlanks() {
+    document.querySelectorAll('span.quiz-blank').forEach(function(el) {
+      if (el.dataset.initialized) return;
+      el.dataset.initialized = 'true';
+      const answer = el.getAttribute('data-answer') || '';
+      const placeholder = '[ _________ ]';
+      if (!el.textContent.trim()) {
+        el.textContent = placeholder;
+      }
+      el.title = 'Click to reveal / hide answer';
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (el.classList.contains('revealed')) {
+          el.classList.remove('revealed');
+          el.textContent = placeholder;
+        } else {
+          el.classList.add('revealed');
+          el.textContent = answer;
+        }
+      });
+    });
+  }
+
+  function initActivityLinks() {
+    document.querySelectorAll('a.activity-link').forEach(function(link) {
+      if (link.dataset.navBound) return;
+      link.dataset.navBound = 'true';
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const target = this.getAttribute('href');
+        if (target) {
+          window.location.hash = target;
+          window.dispatchEvent(new HashChangeEvent('hashchange'));
+        }
+      });
+    });
+  }
+
+  // Initialize features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initQuizBlanks();
+    initActivityLinks();
   }
 
   if (document.readyState === 'loading') {

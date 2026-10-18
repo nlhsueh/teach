@@ -4251,40 +4251,380 @@ PlantUML 的符號設計充滿了象形巧思：
 總結這張投影片，請記住這個核心觀念：多重視角的系統塑模為我們提供了駕馭軟體內在複雜度最高效、最嚴謹的工程思維架構。
 -->
 ---
-## 核心觀念統整：互動填空小測驗
+## 🧩 核心觀念統整：互動填空小測驗 (Part 1)
 
-<div class="fill-blank-columns">
-<div class="fill-blank-text">
+<div class="fill-blank-container">
 
-測試你對本章核心架構概念的掌握度：
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ 候選詞庫：</div>
+  <span class="word-chip">互動視角 (Interaction)</span>
+  <span class="word-chip">Ivar Jacobson</span>
+  <span class="word-chip">BCE 模式</span>
+  <span class="word-chip">&lt;&lt;include&gt;&gt;</span>
+  <span class="word-chip">&lt;&lt;extend&gt;&gt;</span>
+  <span class="word-chip">組合 (Composition ◆)</span>
+  <span class="word-chip">聚合 (Aggregation ◇)</span>
+</div>
 
-1. 於 Rational Software 攜手催生 UML 標準化的「UML 三巨頭」為 Grady Booch、Jim Rumbaugh 與 **`___`**。
-2. 系統塑模的四大基礎核心視角為外部視角、**`___`** 視角、結構視角與行為視角。
-3. 在使用案例模型中，多個使用案例強制共用的必要子程序應使用 **`___`** 關聯。
-4. 徹底分離使用者介面、業務邏輯與資料庫持久實體的架構模式稱為 **`___`** 模式。
-5. 在 UML 類別圖中，實心黑色菱形 (`◆`) 代表 **`___`** 關聯，部分與整體生命週期緊密綁定連帶銷毀。
-6. 在 UML 類別圖中，空心菱形 (`◇`) 代表 **`___`** 關聯，部分具備獨立生存的生命週期。
-7. UML 狀態機圖中，轉換標籤的國際標準語法為：事件觸發 [**`___`**] / 執行動作。
+<div class="quiz-questions">
+
+1. 於 Rational Software 攜手催生 UML 標準化的「UML 三巨頭」為 Grady Booch、Jim Rumbaugh 與 <span class="quiz-blank" data-answer="Ivar Jacobson">[ _________ ]</span>。
+2. 系統塑模的四大基礎核心視角為外部視角、<span class="quiz-blank" data-answer="互動視角 (Interaction)">[ _________ ]</span>、結構視角與行為視角。
+3. 在使用案例模型中，多個使用案例強制共用的必要子程序應使用 <span class="quiz-blank" data-answer="<<include>>">[ _________ ]</span> 包含關聯。
+4. 於特定擴充點條件觸發之非必要或選用性行為，應使用 <span class="quiz-blank" data-answer="<<extend>>">[ _________ ]</span> 延伸關聯。
+5. 徹底分離使用者介面、業務控制邏輯與資料庫持久實體的架構模式稱為 <span class="quiz-blank" data-answer="BCE 模式">[ _________ ]</span>。
+6. 在 UML 類別圖中，實心黑色菱形 (`◆`) 代表 <span class="quiz-blank" data-answer="組合 (Composition ◆)">[ _________ ]</span> 關聯，部分與整體生命週期緊密綁定連帶銷毀。
+7. 在 UML 類別圖中，空心菱形 (`◇`) 代表 <span class="quiz-blank" data-answer="聚合 (Aggregation ◇)">[ _________ ]</span> 關聯，部分具備獨立生存的生命週期。
+
+</div>
+
+<div class="quiz-hint">💡 <em>線上互動提示：點擊任何底線空格即可立即揭曉 / 隱藏解答！</em></div>
+
+</div>
+
+<!--
+讓我們透過互動填空測驗進行熱烈的課堂觀念回顧：
+
+1. 第三位巨頭是發明使用案例與 BCE 的 Ivar Jacobson！
+2. 四大核心視角為外部、互動 (Interaction)、結構與行為！
+3. 強制共用的必要子程序使用 <<include>> 包含關聯！
+4. 擴充點條件觸發的選用性行為使用 <<extend>> 延伸關聯！
+5. 分離 UI、邏輯與實體的架構模式是 Boundary-Control-Entity (BCE)！
+6. 實心黑菱形代表生命週期綁定的組合 (Composition)！
+7. 空心菱形代表鬆散獨立的聚合 (Aggregation)！
+
+總結這張投影片，請記住這個核心觀念：這七大基石構成了 UML 歷史演進、需求使用案例與結構物件塑模的核心骨架。
+-->
+
+---
+
+## 🧩 核心觀念統整：互動填空小測驗 (Part 2)
+
+<div class="fill-blank-container">
+
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ 候選詞庫：</div>
+  <span class="word-chip">實心箭頭 (→)</span>
+  <span class="word-chip">alt 互動片段</span>
+  <span class="word-chip">泳道 (Swimlanes)</span>
+  <span class="word-chip">結合節點 (Join)</span>
+  <span class="word-chip">守衛條件 (Guard)</span>
+  <span class="word-chip">正交區域 (Regions ||)</span>
+  <span class="word-chip">歷史狀態 [H*]</span>
+</div>
+
+<div class="quiz-questions">
+
+8. 在循序圖中，呼叫端會被阻塞暫停等待接收端回應的同步訊息，其箭頭樣式為 <span class="quiz-blank" data-answer="實心箭頭 (→)">[ _________ ]</span>。
+9. 在循序圖中，表達互斥的多路徑條件判斷分支時，應將訊息群組包覆於 <span class="quiz-blank" data-answer="alt 互動片段">[ _________ ]</span> 框中。
+10. 在活動圖中，劃分各部門、系統元件或角色責任歸屬的縱向/橫向容器稱為 <span class="quiz-blank" data-answer="泳道 (Swimlanes)">[ _________ ]</span>。
+11. 在活動圖中，等待所有平行並行分支全數執行完畢才放行下一步的同步粗橫條為 <span class="quiz-blank" data-answer="結合節點 (Join)">[ _________ ]</span>。
+12. 在 UML 狀態機圖的轉移標籤中，中括號 `[ ]` 內用來把關是否允許轉移的布林判斷式為 <span class="quiz-blank" data-answer="守衛條件 (Guard)">[ _________ ]</span>。
+13. 在複合狀態中，用來表達內部多條獨立平行運作之子狀態的垂直/水平分區稱為 <span class="quiz-blank" data-answer="正交區域 (Regions ||)">[ _________ ]</span>。
+14. 當狀態因突發事件中斷暫停，疑義排除後能精確還原至上次活躍子狀態的偽節點為 <span class="quiz-blank" data-answer="歷史狀態 [H*]">[ _________ ]</span>。
+
+</div>
+
+<div class="quiz-hint">💡 <em>線上互動提示：點擊任何底線空格即可立即揭曉 / 隱藏解答！</em></div>
+
+</div>
+
+<!--
+接著檢核動態互動、工作流程與狀態圖形式語法：
+
+8. 同步阻塞訊息呼叫使用實心箭頭 (->)！
+9. 互斥條件分支邏輯包覆於 alt 互動片段中！
+10. 劃分各參與角色職責的視覺容器為泳道 (Swimlanes)！
+11. 平行並行分支在結合節點 (Join) 進行同步等待！
+12. 中括號內的布林檢查條件是守衛條件 (Guard Condition)！
+13. 複合狀態內部的平行分區為正交區域 (Orthogonal Regions ||)！
+14. 中斷暫停後的深層狀態快取還原由歷史狀態 [H*] 負責！
+
+大家表現得非常出色！
+
+總結這張投影片，請記住這個核心觀念：互動圖、活動圖與狀態機圖共同刻畫了分散式軟體系統動態時間軸上的行為本質。
+-->
+
+---
+
+## 💡 實作解答 1：使用案例模型演進方案 <a href="#34" class="activity-link">🔙 題目回顧 (第 34 頁)</a>
+
+> "演進使用案例模型的關鍵在於嚴守系統邊界，並精準區分可選擴充與強制包含子流程。"
+
+<div class="two-columns">
+<div class="card">
+
+### 架構演進解題脈絡
+- **預約定時送餐 (`<<extend>>`)：**
+  - `(送出訂單) <.. (預約未來配送) : <<extend>>`
+  - 守衛條件：`[delivery_type == scheduled]`。屬於非強制之選用擴充點，切勿誤用 `<<include>>` 導致一般即時訂單無法獨立運行。
+- **即時客服對話 (獨立基礎案例)：**
+  - 建立獨立之 `(即時訂單客服)` 使用案例，主動參與者為 `顧客`，被動協同者為 `客服專員` 與 `外送夥伴`。
+  - 外部協同角色嚴格置於**系統邊界矩形之外**。
+- **多人揪團拼單 (`<<extend>>`)：**
+  - 於進入結帳流程前，由 `(拼團共享購物車)` 擴充進入 `(送出訂單)`。
+
+</div>
+<div class="card">
+
+### PlantUML 代碼增量與檢核標準
+```plantuml
+rectangle "外送平台系統邊界" {
+  usecase "送出訂單" as UC_Order
+  usecase "預約未來配送" as UC_Sched
+  usecase "即時訂單客服" as UC_Chat
+  UC_Order <.. UC_Sched : <<extend>>
+}
+顧客 --> UC_Order
+顧客 --> UC_Chat
+UC_Chat --> 客服專員 : <<協同>>
+```
+- **[通過] 邊界紀律：** 外部第三方與客服專員嚴格置於系統矩形框外。
+- **[通過] 語意正確：** 預約送餐使用 `<<extend>>` 虛線箭頭指向基礎案例。
+- **[通過] 目標導向：** 杜絕「點擊預約按鈕」等 UI 瑣碎操作氣泡。
 
 </div>
 </div>
 
 <!--
-讓我們透過填空小測驗進行熱烈的課堂回顧：
+這裡是實作活動 1：使用案例模型演進的標準架構解答。
 
-1. 第三位巨頭是發明使用案例與 BCE 的 Ivar Jacobson！
-2. 四大核心視角為外部、互動 (Interaction)、結構與行為！
-3. 強制共用的必要子程序使用 <<include>> 包含關聯！
-4. 分離 UI、邏輯與實體的架構模式是 Boundary-Control-Entity (BCE)！
-5. 實心菱形代表生命週期綁定的組合 (Composition)！
-6. 空心菱形代表鬆散獨立的聚合 (Aggregation)！
-7. 中括號內的布林檢查條件是守衛條件 (Guard Condition)！
+在左側卡片中，請注意每個突變需求的語意分類：
+首先，預約未來送餐是一項選用功能。它透過擴充點掛載於送出訂單之上，嚴禁使用 include，因為一般即時外送完全不需要預約！
+其次，即時客服對話是獨立的使用者目標，它連接顧客與外部客服專員，客服專員必須放在系統邊界之外。
+第三，多人揪團拼單是在結帳前聚合多位成員購物車的擴充流程。
 
-大家表現得非常出色！
+在右側卡片中，請檢核 PlantUML 代碼與架構品質指標：
+外部角色維持在系統矩形之外，擴充箭頭由延伸案例指向基礎案例，且所有案例皆代表完整的商業價值而非畫面點擊。
 
-總結這張投影片，請記住這個核心觀念：這些核心概念構成了現代物件導向軟體架構設計最堅實的基石。
+總結這張投影片，請記住這個核心觀念：使用案例演進時必須捍衛系統邊界，並以 extend 保持核心主流程的純粹性。
 -->
+
 ---
+
+## 💡 實作解答 2：領域類別模型演進方案 <a href="#53" class="activity-link">🔙 題目回顧 (第 53 頁)</a>
+
+> "領域類別演進的核心考驗在於物件生命週期是獨立共存（聚合）或是休戚與共（組合）。"
+
+<div class="two-columns">
+<div class="card">
+
+### 結構演進解題脈絡
+- **跨店家購物車 (Multi-Vendor Sub-Orders)：**
+  - 主訂單 `Order` 拆解為個別餐廳專屬的子訂單 `SubOrder`。
+  - `Order` `"1"` `*--` `"1..*"` `SubOrder`（組合關係：主訂單銷毀時子訂單隨之消滅）。
+  - `SubOrder` `"1..*"` `o--` `"1"` `Restaurant`（聚合關係：餐廳為獨立實體，生命週期不受訂單影響）。
+  - `SubOrder` `"1"` `*--` `"1..*"` `OrderItem`。
+- **外送員小費與評分 (Courier Tipping)：**
+  - `DeliveryTask` `"1"` `o--` `"0..1"` `CourierReview`（弱參考聚合，小費評分為選填）。
+- **VIP 會員訂閱 (VIP Membership)：**
+  - `Customer` `"1"` `o--` `"0..1"` `MembershipPlan`（策略模式解耦，避免類別繼承爆炸）。
+
+</div>
+<div class="card">
+
+### PlantUML 代碼增量與檢核標準
+```plantuml
+class Order { - orderId: UUID; - total: Money }
+class SubOrder { - subTotal: Money; - status: Status }
+class Restaurant { - name: String; - address: String }
+class CourierReview { - rating: int; - tip: Money }
+Order "1" *-- "1..*" SubOrder : 組合管轄
+SubOrder "1..*" o-- "1" Restaurant : 指派履約
+SubOrder "1" *-- "1..*" OrderItem
+DeliveryTask "1" o-- "0..1" CourierReview
+```
+- **[通過] 基數精確：** 1 筆主訂單包含 `1..*` 筆子訂單；每筆子訂單對應 1 家餐廳。
+- **[通過] 語意清晰：** 實心菱形 (`*--`) 表達全權生命週期依賴，空心菱形 (`o--`) 表達獨立關聯。
+- **[通過] 封裝完備：** 成員屬性嚴格宣告為私有 (`-`) 並標註型別。
+
+</div>
+</div>
+
+<!--
+這裡是實作活動 2：領域類別模型演進的標準架構解答。
+
+在左側卡片中，請觀察跨店家點餐與外送小費機制的架構處理：
+首先，跨店家結帳必須引入子訂單 SubOrder。主訂單 Order 與 SubOrder 之間是組合關係：若主訂單結帳失敗取消，所有子訂單全數作廢。但 SubOrder 與 Restaurant 之間是聚合關係：餐廳是獨立運作的實體，不會因為訂單被刪除而消失！
+其次，CourierReview 與 DeliveryTask 之間的基數為 0..1，因為給予評分與小費是選填的。
+第三，VIP 會員機制採用關聯或策略模式附加於顧客之上，避免為了會員身分使用不必要的類別繼承。
+
+在右側卡片中，請核對 PlantUML 語法與基數標註：
+實心菱形與空心菱形的分野，正是軟體工程中決定記憶體釋放與資料庫串聯刪除行為的關鍵分水嶺。
+
+總結這張投影片，請記住這個核心觀念：善用子訂單設計模式解耦多店家配送，能同時維護資料一致性與業務彈性。
+-->
+
+---
+
+## 💡 實作解答 3：循序互動模型演進方案 <a href="#71" class="activity-link">🔙 題目回顧 (第 71 頁)</a>
+
+> "強韌的循序圖透過互斥片段隔離故障領域，並嚴格維持分層通訊紀律。"
+
+<div class="two-columns">
+<div class="card">
+
+### 動態例外處理與架構脈絡
+- **第三方金流超時處理 (Gateway Timeout > 5s)：**
+  - 邊界 `CheckoutUI` 呼叫控制元件 `OrderController.submitPayment()`。
+  - 控制元件呼叫外部金流服務 `PaymentGateway.processPayment()`。
+  - `alt [5 秒內正常回應]`: 取得交易授權碼，更新實體 `Order` 為已付款並通知廚房。
+  - `else [超時 > 5s]`: 控制器發動補償交易 `voidTransaction()`，記錄稽核日誌，回傳 `PaymentTimeoutError` 提示重試。
+- **混合分筆支付流程 (Split Payment)：**
+  - 兩階段扣款：先扣除會員點數錢包。錢包成功後才向信用卡扣餘額；若信用卡失敗，啟動補償流程還原錢包點數。
+
+</div>
+<div class="card">
+
+### PlantUML 代碼增量與檢核標準
+```plantuml
+UI -> Controller : submitOrder(cart)
+activate Controller
+Controller -> Gateway : charge(amount)
+activate Gateway
+alt #LightGreen 5秒內成功回應
+  Gateway --> Controller : 200 OK (txnId)
+  Controller -> Order : markPaid()
+  Controller --> UI : 訂單建立成功
+else #Pink 逾時超時 > 5s
+  Gateway --> Controller : [Timeout Error]
+  Controller -> Gateway : voidTransaction()
+  Controller --> UI : 付款超時重試
+end
+deactivate Gateway
+```
+- **[通過] 分層邊界：** UI 介面僅與控制器對話，絕不直連資料庫或外部金流。
+- **[通過] 故障隔離：** 成功與例外分支完整包覆於 `alt` 互斥片段並標明守衛條件。
+
+</div>
+</div>
+
+<!--
+這裡是實作活動 3：循序互動模型演進的標準架構解答。
+
+在左側卡片中，請觀察分散式環境下例外情境的建模方式：
+首先，第三方金流超時必須以 alt 互斥片段明確分割。OrderController 負責發起交易：一旦銀行回應超過五秒，超時分支立即執行作廢補償 voidTransaction，記錄交易日誌，並優雅地通知前端提供重試選項。
+其次，對於混合分筆支付，必須採用兩階段扣款順序：先扣除點數錢包，再扣信用卡。若信用卡扣款失敗，必須有補償逆向呼叫把錢包點數退回。
+
+在右側卡片中，請核對 PlantUML 循序語法：
+注意活躍條的啟動與關閉，以及嚴格遵循的 BCE 分層架構：UI 只和 Controller 溝通，絕不跨層直連資料庫或第三方金流。
+
+總結這張投影片，請記住這個核心觀念：循序圖的最大價值在於清晰可視化分散式系統的邊界條件與補償性例外流程。
+-->
+
+---
+
+## 💡 實作解答 4：活動流程模型演進方案 <a href="#89" class="activity-link">🔙 題目回顧 (第 89 頁)</a>
+
+> "活動工作流程演進要求泳道職責清晰、控制權杖流轉守恆，以及迴圈具備明確終止條件。"
+
+<div class="two-columns">
+<div class="card">
+
+### 流程演進解題脈絡
+- **外送員拒單重新指派迴圈 (Courier Reassignment)：**
+  - 在 `|派單系統|` 泳道中：啟動 `repeat` 迴圈搜尋鄰近外送員。
+  - 將派單權杖轉移至 `|外送員|` 泳道評估：`if (接受派單?) then (是) -> 鎖定指派; else (否) -> 記錄拒單; repeat while (仍有可用外送員)`。
+  - 若所有外送員皆拒單，流程應引導至客服介入或訂單取消終止節點。
+- **顧客自取外帶旁路分支 (Self-Pickup Bypass)：**
+  - 於 `|平台核心|` 泳道設置判定菱形：`if (配送方式?) then (外送) -> Fork 平行廚房與外送員; else (自取) -> 僅通知廚房備餐; |顧客| :櫃台取餐; -> Merge`。
+
+</div>
+<div class="card">
+
+### PlantUML 代碼增量與檢核標準
+```plantuml
+|派單系統|
+repeat
+  :搜尋鄰近可用外送員;
+  |外送夥伴|
+  :收到派單推播通知;
+backward:記錄拒單日誌;
+repeat while (外送員接受派單?) is (否)
+->是;
+:鎖定指派外送員;
+|餐廳廚房|
+:交付密封餐點;
+|外送夥伴|
+:配送抵達顧客地址;
+stop
+```
+- **[通過] 泳道歸屬：** 每個動作節點皆嚴格座落於對應之業務主體泳道內。
+- **[通過] 迴圈閉環：** `repeat...repeat while` 具備完備之退出守衛條件，防止無窮等待。
+- **[通過] 終結完整：** 所有分支末端皆有顯式之活動終止節點 (`stop`)。
+
+</div>
+</div>
+
+<!--
+這裡是實作活動 4：活動流程模型演進的標準架構解答。
+
+在左側卡片中，請觀察外送員拒單重派與自取旁路的處理：
+首先，在外送員拒單情境中，工作流程不能產生死結。派單系統透過 repeat-while 迴圈進行循環指派：發送推播、外送員判定、若拒絕則記錄日誌並搜尋下一位。若超過最大搜尋次數，必須有明確的升級終止路徑，絕不能讓流程懸掛在半空中。
+其次，對於顧客自取訂單，在流程前期透過判定菱形直接分流，完全繞過外送員泳道，大幅簡化執行路徑。
+
+在右側卡片中，請檢核 PlantUML 泳道活動語法：
+清楚的泳道邊界、搭配 backward 記錄回退動作，最後全數收斂至 stop 節點。
+
+總結這張投影片，請記住這個核心觀念：健全的活動圖透過泳道建立職責界限，並確保所有並行與迴圈流程皆具備收斂終止機制。
+-->
+
+---
+
+## 💡 實作解答 5：狀態機模型演進方案 <a href="#109" class="activity-link">🔙 題目回顧 (第 109 頁)</a>
+
+> "狀態機的核心價值在於守護業務不變量：一旦實體資源投入履約，狀態回退與異常處置必須絕對精準。"
+
+<div class="two-columns">
+<div class="card">
+
+### 生命週期異常處置與不變量原則
+- **外送員棄單與重新指派 (Courier Abandonment)：**
+  - `OutForDelivery → ReadyForPickup : 外送員棄單 [重試 < 3] / 解除指派()`
+  - 訂單回退至待取餐狀態重新派單，**無須廚房重新料理**已包裝妥當之熱餐。
+- **配送失敗與退回店家 (Delivery Failed)：**
+  - `OutForDelivery → FailedDelivery : 顧客失聯 [等候逾時 >= 10分] / 標記無人領取()`
+  - `FailedDelivery → ReturnedToStore : 退回餐點 / 報銷處置()`
+  - 終局轉移：`ReturnedToStore → [*]`
+- **嚴格禁止非法轉移：**
+  - 嚴厲禁止從 `OutForDelivery → Cancelled` 直接無條件取消退款。
+
+</div>
+<div class="card">
+
+### PlantUML 代碼增量與檢核標準
+```plantuml
+state OutForDelivery {
+  [*] --> 配送途中
+}
+OutForDelivery --> ReadyForPickup : 司機棄單 \n [重試 < 3] / 重新派單()
+OutForDelivery --> FailedDelivery : 顧客失聯 \n [逾時 >= 10分] / 記錄失敗()
+FailedDelivery --> ReturnedToStore : 返還店家 \n / 報銷清算()
+ReturnedToStore --> [*]
+```
+- **[通過] 狀態命名紀律：** 狀態名稱維持被動條件句 (`FailedDelivery`, `ReturnedToStore`)，絕非動作動詞。
+- **[通過] 三段式轉移語法：** 轉移標籤完整宣告事件觸發、中括號守衛 `[ ]` 與斜線後附隨動作 `/`。
+- **[通過] 生命週期閉環：** 異常終局狀態明確導向終止節點 `[*]`。
+
+</div>
+</div>
+
+<!--
+這裡是實作活動 5：狀態機模型演進的標準架構解答。
+
+在左側卡片中，請注意外送異常處置對商業真實性的防護：
+首先，當外送員在配送途中車輛故障或棄單時，訂單必須回退到 ReadyForPickup。這會重新觸發派單，但關鍵是不會要求廚房重複製作已經完成的餐點！
+其次，如果外送員抵達門口後等候超過十分鐘顧客仍未接電話，狀態轉移到 FailedDelivery，再由司機退回餐廳進行報銷，最後走向生命週期終點。
+第三，嚴格禁止非法轉移：一旦進入配送中，絕對不允許顧客點擊無條件退款取消，防止嚴重的商業詐欺漏洞。
+
+在右側卡片中，請核對 PlantUML 狀態機語法：
+所有狀態皆為被動情態，每條轉移線皆具備三段式標籤（事件、守衛條件、動作），並正確導向終止狀態。
+
+總結這張投影片，請記住這個核心觀念：狀態機透過嚴格的守衛條件與禁止非法轉移，為複雜業務邏輯築起最堅固的架構防護牆。
+-->
+
+---
+
 ## 經典文獻與延伸閱讀 (References)
 
 - **權威經典教科書與國際標準：**
@@ -4625,10 +4965,51 @@ Grady Booch、Jim Rumbaugh 與 Ivar Jacobson 合著的《UML 使用者指南》�
     }, true);
   }
 
-  // Initialize both features
+  function initQuizBlanks() {
+    document.querySelectorAll('span.quiz-blank').forEach(function(el) {
+      if (el.dataset.initialized) return;
+      el.dataset.initialized = 'true';
+      const answer = el.getAttribute('data-answer') || '';
+      const placeholder = '[ _________ ]';
+      if (!el.textContent.trim()) {
+        el.textContent = placeholder;
+      }
+      el.title = '點擊以揭曉 / 隱藏解答 (Click to toggle answer)';
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (el.classList.contains('revealed')) {
+          el.classList.remove('revealed');
+          el.textContent = placeholder;
+        } else {
+          el.classList.add('revealed');
+          el.textContent = answer;
+        }
+      });
+    });
+  }
+
+  function initActivityLinks() {
+    document.querySelectorAll('a.activity-link').forEach(function(link) {
+      if (link.dataset.navBound) return;
+      link.dataset.navBound = 'true';
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const target = this.getAttribute('href');
+        if (target) {
+          window.location.hash = target;
+          window.dispatchEvent(new HashChangeEvent('hashchange'));
+        }
+      });
+    });
+  }
+
+  // Initialize features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initQuizBlanks();
+    initActivityLinks();
   }
 
   if (document.readyState === 'loading') {

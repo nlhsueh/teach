@@ -2030,42 +2030,49 @@ Q4：如何防範 AI Vibe Coding 的風險？
 -->
 ---
 
-## 觀念檢測：填空挑戰
+## 🧩 核心觀念統整：互動填空小測驗
 
-<div class="fill-blank-columns">
-  <div class="fill-blank-text">
+<div class="fill-blank-container">
 
-檢驗你對第一章核心觀念的掌握程度：
+<div class="word-bank">
+  <div class="word-bank-title">🏷️ 候選詞庫：</div>
+  <span class="word-chip">文件 (Documentation)</span>
+  <span class="word-chip">布魯克斯法則 (Brooks's Law)</span>
+  <span class="word-chip">本質性困難 (Essential)</span>
+  <span class="word-chip">ISO/IEC 25010</span>
+  <span class="word-chip">NATO 研討會</span>
+  <span class="word-chip">驗證 (Verification)</span>
+  <span class="word-chip">公眾利益 (Public Interest)</span>
+</div>
 
-1. 依據 IEEE 定義，軟體是由電腦程式、資料、運作程序以及 **[ _________ ]** 四大要素所構成。
-2. 在落後的專案中增加人手只會使專案更加落後，被稱為 **[ _________ ]** 法則。
-3. **[ _________ ]** 軟體產品品質模型定義了包括功能適合性、相容性、資訊安全與可維護性在內的 8 大特徵。
-4. ACM/IEEE 軟體工程倫理守則的第一項最高原則，強調必須將 **[ _________ ]** 利益置於最優先。
+<div class="quiz-questions">
 
-  </div>
-  <div class="fill-blank-logo">
-    <img src="../../img/ch01/fill_blank_icon.svg" alt="Quiz" />
-  </div>
+1. 依據 IEEE 定義，軟體是由電腦程式、資料、運作程序以及 <span class="quiz-blank" data-answer="文件 (Documentation)">[ _________ ]</span> 四大要素所構成。
+2. 在落後的專案中增加人手只會使專案更加落後，被稱為 <span class="quiz-blank" data-answer="布魯克斯法則 (Brooks's Law)">[ _________ ]</span>。
+3. Fred Brooks 在經典文獻《沒有銀彈》中指出，軟體固有的內在複雜度屬於 <span class="quiz-blank" data-answer="本質性困難 (Essential)">[ _________ ]</span>。
+4. <span class="quiz-blank" data-answer="ISO/IEC 25010">[ _________ ]</span> 軟體產品品質模型定義了包括功能適合性、資訊安全與可維護性在內的 8 大特徵。
+5. 「軟體危機 (Software Crisis)」一詞於 1968 年在德國召開的 <span class="quiz-blank" data-answer="NATO 研討會">[ _________ ]</span> 上被正式確立。
+6. 「Are we building the product right?」確認規格符合性屬於 <span class="quiz-blank" data-answer="驗證 (Verification)">[ _________ ]</span>，而確認客戶真正需求屬於確認 (Validation)。
+7. ACM/IEEE 軟體工程倫理守則的第一項最高原則，強調必須將 <span class="quiz-blank" data-answer="公眾利益 (Public Interest)">[ _________ ]</span> 置於最優先。
+
+</div>
+
+<div class="quiz-hint">💡 <em>線上互動提示：點擊任何底線空格即可立即揭曉 / 隱藏解答！</em></div>
+
 </div>
 
 <!--
-在結束第一章前，讓我們用四道填空題檢驗你的核心觀念掌握度！
+在結束第一章前，讓我們用七道填空題全面盤點你的核心觀念掌握度：
 
-第一題：根據 IEEE 定義，軟體由電腦程式、資料、作業程序與什麼所組成？
-答案是：文件 (Documentation)！
+1. 軟體由程式、資料、程序與文件 (Documentation) 所組成！
+2. 向進度落後的專案增加人手只會讓專案更落後：布魯克斯法則 (Brooks's Law)！
+3. 軟體內在複雜度是本質性困難 (Essential Difficulty)！
+4. 定義八大品質特徵的國際標準是 ISO/IEC 25010！
+5. 確立軟體危機歷史名詞的是 1968 年 NATO Garmisch 研討會！
+6. 對照規格檢查是驗證 (Verification)，對照客戶心智需求是確認 (Validation)！
+7. 倫理守則第一守則永遠是捍衛公眾利益 (Public Interest)！
 
-第二題：「向進度落後的專案增加人手，只會讓專案更落後」，這被稱為誰的法則？
-答案是：布魯克斯法則 (Brooks's Law)！
-
-第三題：定義了功能適合性、效能效率、安全性等八大特徵的國際品質標準為何？
-答案是：ISO/IEC 25010！
-
-第四題：ACM/IEEE 軟體工程倫理守則的第一條原則，優先捍衛誰的利益？
-答案是：公眾利益 (Public Interest)！
-
-全答對的同學，恭喜你已經建立起專業軟體工程的扎實心智模型！
-
-總結這張投影片，請記住這個核心觀念：掌握這些核心詞彙與定律，是我們邁向後續進階架構設計的基石。
+總結這張投影片，請記住這個核心觀念：這七大核心概念構成了軟體工程作為專業工程學門最根本的基石。
 -->
 ---
 
@@ -2412,10 +2419,34 @@ ACM/IEEE 軟體工程倫理守則；
     }, true);
   }
 
-  // Initialize both features
+  function initQuizBlanks() {
+    document.querySelectorAll('span.quiz-blank').forEach(function(el) {
+      if (el.dataset.initialized) return;
+      el.dataset.initialized = 'true';
+      const answer = el.getAttribute('data-answer') || '';
+      const placeholder = '[ _________ ]';
+      if (!el.textContent.trim()) {
+        el.textContent = placeholder;
+      }
+      el.title = '點擊以揭曉 / 隱藏解答 (Click to toggle answer)';
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (el.classList.contains('revealed')) {
+          el.classList.remove('revealed');
+          el.textContent = placeholder;
+        } else {
+          el.classList.add('revealed');
+          el.textContent = answer;
+        }
+      });
+    });
+  }
+
+  // Initialize features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initQuizBlanks();
   }
 
   if (document.readyState === 'loading') {

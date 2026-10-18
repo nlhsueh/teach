@@ -151,3 +151,21 @@
     - 內文與卡片避免使用裝飾性 Unicode Emoji。
     - 狀態或分類提示一律改用純文字標籤（例如：`[最佳實踐]`、`[反模式]`、`[案例]`）或原生 CSS 樣式，維持教材 100% 離線自包含（Self-contained）。
 
+---
+
+### 10. 填空測驗與章節回顧規範 (Fill-in-the-Blank Quiz Rules)
+* **🧩 標題測驗氛圍 (Quiz Affordance & Title Emoji)**：
+  - 章節末尾的填空測驗標題應加入測驗/解謎相關 Emoji（如 `🧩`、`🎯` 或 `📝`），明確建立互動測驗的心理提示。
+  - 例如：`## 🧩 核心觀念統整：互動填空小測驗 (Part 1)` / `## 🧩 Conceptual Recap: Fill-in-the-Blank Quiz (Part 1)`。
+* **🚫 嚴禁使用黑底反引號作為填空格 (No Inline Code for Blanks)**：
+  - 嚴禁使用 `**\`___\`**` 作為空格，避免 Gaia 主題深灰底塊破壞版面。
+  - 一律使用具備互動揭示語意的標籤 `<span class="quiz-blank" data-answer="解答">[ _________ ]</span>`，或乾淨的典雅底線槽。
+* **🏷️ 候選字彙庫 (Word Bank / Options Tag Cloud)**：
+  - 填空題上方必須提供 `<div class="word-bank">` 標籤列，展示所有候選答案詞彙（可混洗順序），賦予學生配對探索與自我檢驗的遊戲化體驗。
+* **📑 每頁容量上限與分頁原則 (Max 3-4 items per slide)**：
+  - 為了維持投影片優雅的行距與呼吸感，單頁填空題目**嚴格以 3~4 題為上限**。
+  - 若題數超過 4 題，**一律拆為 Part 1 與 Part 2 兩頁**，嚴禁將 6~8 題擠在單頁。
+* **💡 點擊揭曉互動機制 (Interactive Click-to-Reveal)**：
+  - 透過 CSS 與 JavaScript 支援在線上 HTML 簡報中「點擊空格即可翻開/揭曉答案」，點擊第二下可重新隱藏，支援講師課堂抽問與學生課後自我檢測。
+
+
