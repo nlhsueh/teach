@@ -523,6 +523,23 @@ div.fill-blank-logo img {
   max-width: 150px;
 }
 
+/* Twemoji & Inline Emoji styles - prevent breaking lines / blowing up layouts */
+img.emoji,
+img[data-marp-twemoji] {
+  display: inline-block !important;
+  width: 1.15em !important;
+  height: 1.15em !important;
+  max-width: 1.15em !important;
+  max-height: 1.15em !important;
+  min-width: unset !important;
+  margin: 0 0.2em !important;
+  vertical-align: -0.15em !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
 /* ==========================================================================
    7. Multi-Column Layouts (Split & Two Columns)
    ========================================================================== */
@@ -534,44 +551,136 @@ div.split64, div.split46, div.split55 {
 
 div.split64 > div.left {
   flex: 60%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.split64 > div.left img:not(.emoji) {
+  width: 100% !important;
+  max-width: 680px !important;
+  max-height: 520px !important;
+  object-fit: contain !important;
 }
 
 div.split64 > div.right {
   flex: 40%;
-  text-align: center;
+  text-align: left;
+  font-size: 17px !important;
+  line-height: 1.4 !important;
 }
 
-div.split64 > div.right img {
+div.split64 > div.right p {
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+}
+
+div.split64 > div.right ul,
+div.split64 > div.right ol {
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+}
+
+div.split64 > div.right li {
+  font-size: 17px !important;
+  line-height: 1.4 !important;
+  margin-bottom: 6px !important;
+}
+
+div.split64 > div.right li > ul,
+div.split64 > div.right li > ol {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+div.split64 > div.right li > ul > li,
+div.split64 > div.right li > ol > li {
+  font-size: 15.5px !important;
+  line-height: 1.35 !important;
+  margin-bottom: 2px !important;
+}
+
+div.split64 > div.right pre {
+  margin: 6px 0 !important;
+  padding: 8px 12px !important;
+  font-size: 14.5px !important;
+  line-height: 1.35 !important;
+}
+
+div.split64 > div.right img:not(.emoji) {
   width: 100%;
-  max-width: 330px;
+  max-width: 380px;
 }
 
+/* Split 4:6 Layout (40% Text Left, 60% Diagram Right) */
 div.split46 > div.left {
   flex: 40%;
+  text-align: left;
+  font-size: 17px !important;
+  line-height: 1.4 !important;
+}
+
+div.split46 > div.left p {
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+}
+
+div.split46 > div.left ul,
+div.split46 > div.left ol {
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+}
+
+div.split46 > div.left li {
+  font-size: 17px !important;
+  line-height: 1.4 !important;
+  margin-bottom: 6px !important;
+}
+
+div.split46 > div.left li > ul,
+div.split46 > div.left li > ol {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+div.split46 > div.left li > ul > li,
+div.split46 > div.left li > ol > li {
+  font-size: 15.5px !important;
+  line-height: 1.35 !important;
+  margin-bottom: 2px !important;
 }
 
 div.split46 > div.right {
   flex: 60%;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-div.split46 > div.right img {
-  width: 100%;
-  max-width: 480px;
+div.split46 > div.right img:not(.emoji) {
+  width: 100% !important;
+  max-width: 680px !important;
+  max-height: 520px !important;
+  object-fit: contain !important;
 }
 
-div.split55 > div.left {
-  flex: 50%;
-}
-
+/* Split 5:5 Layout (50% Text, 50% Diagram) */
+div.split55 > div.left,
 div.split55 > div.right {
   flex: 50%;
-  text-align: center;
+  text-align: left;
+  font-size: 17.5px !important;
+  line-height: 1.45 !important;
 }
 
-div.split55 > div.right img {
-  width: 100%;
-  max-width: 400px;
+div.split55 > div.left img:not(.emoji),
+div.split55 > div.right img:not(.emoji) {
+  width: 100% !important;
+  max-width: 560px !important;
+  max-height: 520px !important;
+  object-fit: contain !important;
 }
 
 div.split73 {
@@ -592,7 +701,7 @@ div.split73 > div.right {
   align-items: center;
 }
 
-div.split73 > div.right img {
+div.split73 > div.right img:not(.emoji) {
   width: auto;
   max-width: 100%;
   max-height: 420px;
@@ -611,6 +720,14 @@ div.two-columns {
 
 div.two-columns > div {
   flex: 1;
+}
+
+div.two-columns img:not(.emoji) {
+  width: 100%;
+  max-width: 560px;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 div.two-columns ol {
@@ -698,7 +815,8 @@ div.puml-output-grid {
 }
 
 div.puml-output-grid .puml-code-col {
-  flex: 1;
+  flex: 36%;
+  max-width: 36%;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -734,7 +852,8 @@ div.puml-output-grid .puml-code-col marp-pre code {
 }
 
 div.puml-output-grid .puml-diagram-col {
-  flex: 1.15;
+  flex: 64%;
+  max-width: 64%;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -757,14 +876,14 @@ div.puml-output-grid .diagram-wrapper {
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
-  padding: 12px;
+  padding: 10px 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   overflow: hidden;
 }
 
 div.puml-output-grid .diagram-wrapper img {
   max-width: 100%;
-  max-height: 460px;
+  max-height: 480px;
   width: auto;
   height: auto;
   object-fit: contain;

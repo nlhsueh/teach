@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam shadowing false
+left to right direction
+
+skinparam actor {
+  BackgroundColor #d9b310
+  BorderColor #0b3c5d
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 15
+}
+
+skinparam usecase {
+  BackgroundColor #ffffff
+  BorderColor #328cc1
+  BorderThickness 2
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 14
+}
+
+skinparam package {
+  BackgroundColor #fdfdfd
+  BorderColor #0b3c5d
+  BorderThickness 2.5
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 16
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #15803d
+  FontStyle bold
+  FontSize 13
+}
+
+actor "Customer" as Customer
+actor "Chef (Kitchen)" as Chef
+actor "Payment Gateway" as Gateway <<External System>>
+
+rectangle "Food Delivery System Boundary" {
+  usecase "Place Food Order" as UC_Order
+  usecase "Process Payment" as UC_Pay
+  usecase "Manage Food Prep" as UC_Prep
+  
+  Customer --> UC_Order
+  UC_Order ..> UC_Pay : <<include>>
+  Chef --> UC_Prep
+  UC_Pay --> Gateway
+}
+@enduml

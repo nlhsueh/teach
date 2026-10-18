@@ -1,0 +1,44 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam shadowing false
+skinparam roundcorner 6
+
+skinparam activity {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 2
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 13
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #15803d
+  FontStyle bold
+  FontSize 12
+}
+
+|Customer|
+start
+:Browse Menu & Select Items;
+:Enter Delivery Address & Phone;
+
+|Kitchen|
+if (Ingredients in Stock?) then ([Out of Stock])
+  :Cancel Order;
+  stop
+else ([In Stock])
+  if (Payment Choice?) then ([Card Payment])
+    :Charge Online Card;
+  else ([Cash on Delivery])
+    :Prepare Cash Change;
+  endif
+  :Cook Food & Package Meal;
+endif
+
+|Courier|
+:Deliver Meal to Customer;
+stop
+@enduml

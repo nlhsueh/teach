@@ -1,0 +1,61 @@
+@startuml
+
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam roundCorner 8
+skinparam shadowing false
+
+skinparam state {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 1.5
+  FontColor #0b3c5d
+  FontSize 13
+  FontStyle bold
+  StartColor #0b3c5d
+  EndColor #0b3c5d
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #1e293b
+  FontSize 11
+  Thickness 1.5
+}
+
+skinparam note {
+  BackgroundColor #fef3c7
+  BorderColor #d97706
+  FontColor #92400e
+  FontSize 11
+  BorderThickness 1
+}
+
+
+[*] -right-> Placed : customerPays()
+
+state OrderFulfillment {
+  state "Kitchen Pipeline (Region 1)" as Kitchen {
+    [*] --> Cooking
+    Cooking -down-> Packaged : mealReady()
+    Packaged -down-> AwaitingPickup : bagged()
+  }
+  ||
+  state "Courier Logistics (Region 2)" as Courier {
+    [*] --> FindingCourier
+    FindingCourier -down-> CourierAssigned : riderAccepts()
+    CourierAssigned -down-> CourierAtRestaurant : arrived()
+  }
+}
+
+Placed -right-> OrderFulfillment : acceptOrder()
+OrderFulfillment -right-> OutForDelivery : handoverMeal()
+OrderFulfillment -down-> Cancelled #fee2e2 : emergencyCancel() / fullRefund()
+
+note bottom of OrderFulfillment
+  <color:#0b3c5d>**Composite & Concurrent Architecture:**</color>
+  • **Composite State:** Encapsulates multi-step workflow into one clean abstraction
+  • **Orthogonal Regions (||):** Kitchen prep and Courier dispatch run simultaneously in parallel
+  • **Boundary Invariance:** A single outer cancel arrow protects the entire composite state
+end note
+@enduml

@@ -1,0 +1,69 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam shadowing false
+skinparam roundcorner 6
+autonumber "<b>[0]</b>"
+
+skinparam sequence {
+  ArrowColor #0b3c5d
+  ArrowFontColor #15803d
+  ArrowFontStyle bold
+  ArrowFontSize 13
+  
+  LifeLineBorderColor #0b3c5d
+  LifeLineBackgroundColor #ffffff
+  
+  ParticipantBorderColor #0b3c5d
+  ParticipantBackgroundColor #ffffff
+  ParticipantFontStyle bold
+  ParticipantFontSize 14
+  
+  ActorBorderColor #0b3c5d
+  ActorBackgroundColor #d9b310
+  ActorFontStyle bold
+  
+  GroupBorderColor #0b3c5d
+  GroupHeaderFontColor #0b3c5d
+  GroupFontStyle bold
+}
+
+actor "Customer" as User
+boundary "BookingUI" as UI
+control "BookingCtrl" as Ctrl
+database "MySQL_DB" as DB
+boundary "PaymentGateway" as Stripe
+
+User -> UI: clickBookRoom(id)
+activate UI
+
+UI -> Ctrl: requestBooking(id)
+activate Ctrl
+
+Ctrl -> DB: queryAvailability(id)
+activate DB
+DB --> Ctrl: roomRecord
+deactivate DB
+
+alt Room Available
+  Ctrl -> Stripe: processPayment($250)
+  activate Stripe
+  Stripe --> Ctrl: paymentResult
+  deactivate Stripe
+  
+  Ctrl -> DB: insertReservation(id, status=CONFIRMED)
+  activate DB
+  DB --> Ctrl: ok
+  deactivate DB
+  
+  Ctrl --> UI: showSuccessMessage()
+  UI --> User: "Booking Confirmed!"
+else Room Unavailable
+  Ctrl --> UI: showError("Room Sold Out")
+  UI --> User: "Booking Failed"
+end
+
+deactivate Ctrl
+deactivate UI
+
+@enduml

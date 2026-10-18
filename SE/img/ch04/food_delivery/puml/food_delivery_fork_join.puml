@@ -1,0 +1,64 @@
+@startuml
+
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam roundCorner 8
+skinparam shadowing false
+
+skinparam state {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 1.5
+  FontColor #0b3c5d
+  FontSize 13
+  FontStyle bold
+  StartColor #0b3c5d
+  EndColor #0b3c5d
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #1e293b
+  FontSize 11
+  Thickness 1.5
+}
+
+skinparam note {
+  BackgroundColor #fef3c7
+  BorderColor #d97706
+  FontColor #92400e
+  FontSize 11
+  BorderThickness 1
+}
+
+
+state Placed
+state fork_node <<fork>>
+state join_node <<join>>
+state OrderConfirmed #dcfce7
+
+Placed -right-> fork_node : checkout()
+
+state AuthorizePayment {
+  AuthorizePayment : entry / callPaymentGateway()
+}
+
+state ReserveKitchenInventory {
+  ReserveKitchenInventory : entry / lockMealPortions()
+}
+
+fork_node --> AuthorizePayment : [parallel 1]
+fork_node --> ReserveKitchenInventory : [parallel 2]
+
+AuthorizePayment --> join_node : paymentSuccess()
+ReserveKitchenInventory --> join_node : inventorySecured()
+
+join_node -right-> OrderConfirmed : [both complete]
+
+note bottom of join_node
+  <color:#0b3c5d>**Fork / Join Synchronization:**</color>
+  • **Fork Bar:** Splits checkout into 2 parallel threads
+  • **Join Bar:** Halts until BOTH tasks finish 100%
+  • Guarantees payment AND inventory before confirmation
+end note
+@enduml

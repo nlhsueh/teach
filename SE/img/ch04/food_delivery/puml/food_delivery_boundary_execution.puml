@@ -1,0 +1,59 @@
+@startuml
+
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam roundCorner 8
+skinparam shadowing false
+
+skinparam state {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 1.5
+  FontColor #0b3c5d
+  FontSize 13
+  FontStyle bold
+  StartColor #0b3c5d
+  EndColor #0b3c5d
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #1e293b
+  FontSize 11
+  Thickness 1.5
+}
+
+skinparam note {
+  BackgroundColor #fef3c7
+  BorderColor #d97706
+  FontColor #92400e
+  FontSize 11
+  BorderThickness 1
+}
+
+
+state ReadyForPickup
+state Delivered #dcfce7
+state DeliveryFailed #fee2e2
+
+state OutForDelivery {
+  OutForDelivery : <color:#0284c7>**entry /** startGPSTracking()</color>
+  OutForDelivery : <color:#0284c7>**entry /** notifyCustomer("Rider En Route")</color>
+  OutForDelivery : <color:#475569>**do /** streamRiderGPSCoordinates()</color>
+  OutForDelivery : <color:#dc2626>**exit /** stopGPSTracking()</color>
+  OutForDelivery : <color:#dc2626>**exit /** logDropoffTimestamp()</color>
+}
+
+ReadyForPickup -right-> OutForDelivery : courierPickUp()
+
+OutForDelivery -right-> Delivered : confirmDelivery()\n[atCustomerAddress]
+
+OutForDelivery -down-> DeliveryFailed : addressNotFound()\n[timeout > 30m]
+
+note top of OutForDelivery
+  <color:#0b3c5d>**Guaranteed Lifecycle Hooks:**</color>
+  • **entry:** Fires on arrival from any source path
+  • **do:** Continuous ongoing activity while in state
+  • **exit:** Guaranteed cleanup on departure via ANY path
+end note
+@enduml

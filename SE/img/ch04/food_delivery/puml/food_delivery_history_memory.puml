@@ -1,0 +1,57 @@
+@startuml
+
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam roundCorner 8
+skinparam shadowing false
+
+skinparam state {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 1.5
+  FontColor #0b3c5d
+  FontSize 13
+  FontStyle bold
+  StartColor #0b3c5d
+  EndColor #0b3c5d
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #1e293b
+  FontSize 11
+  Thickness 1.5
+}
+
+skinparam note {
+  BackgroundColor #fef3c7
+  BorderColor #d97706
+  FontColor #92400e
+  FontSize 11
+  BorderThickness 1
+}
+
+
+state "OrderExecution (Composite)" as OrderExecution {
+  [*] -right-> Cooking
+  Cooking -right-> ReadyForPickup : foodReady()
+  ReadyForPickup -right-> OutForDelivery : courierPickedUp()
+  [H] -up-> Cooking
+}
+
+state OrderSuspended #fef3c7 {
+  OrderSuspended : entry / notifyCustomer("On Hold")
+  OrderSuspended : do / resolveDisputeOrAddress()
+}
+
+OrderExecution -down-> OrderSuspended : paymentDispute() / pauseDelivery()
+OrderSuspended -up-> OrderExecution[H] : disputeResolved() / resumeOrder()
+
+note bottom of OrderSuspended
+  <color:#0b3c5d>**History Pseudo-State (H) Memory:**</color>
+  • Default entry starts at **Cooking**
+  • Incoming transition to **(H)** restores cached active substate
+  • If suspended while **OutForDelivery**, resumes directly at **OutForDelivery**
+  • <color:#b45309>**Crucial Value: The meal does NOT need to be re-cooked from scratch!**</color>
+end note
+@enduml

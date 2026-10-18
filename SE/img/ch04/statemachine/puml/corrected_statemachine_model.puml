@@ -1,0 +1,40 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam shadowing false
+skinparam roundcorner 6
+
+skinparam state {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 2
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 13
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #15803d
+  FontStyle bold
+  FontSize 12
+}
+
+[*] --> PendingPayment : createOrder()
+
+PendingPayment --> Paid : pay / deductCreditCard()
+PendingPayment --> RiskReview : flagFraudTrigger
+
+RiskReview --> Paid : [fraudCleared]
+RiskReview --> Cancelled : [fraudConfirmed]
+
+Paid --> Processing : prepareMeal
+Paid --> Cancelled : cancelOrder [amount <= 100] / autoRefund()
+Paid --> ManualReview : cancelOrder [amount > 100] / escalateVIP()
+
+Processing --> Delivered : courierDelivered
+Delivered --> [*]
+Cancelled --> [*]
+ManualReview --> Cancelled : [managerApproved]
+
+@enduml

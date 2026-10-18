@@ -754,8 +754,13 @@ Martin Fowler 則是撰寫《UML 精華 (UML Distilled)》與《重構》的大�
 
 ### 觀念診斷練習：找出這張使用案例圖的 3 大致命錯誤！
 
-<div class="split46">
-<div class="left" style="font-size: 19.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/food_delivery/bad_usecase_model.svg" alt="Bad Use Case Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **審查這份學生繪製的使用案例圖草稿：**
 你能找出圖中潛藏的 **3 大關鍵塑模謬誤（反模式）** 嗎？
@@ -766,11 +771,6 @@ Martin Fowler 則是撰寫《UML 精華 (UML Distilled)》與《重構》的大�
   - 仔細觀察 `處理線上扣款` 與 `送出外送訂單` 之間的 `<<include>>` 虛線箭頭方向！
 - **3. 系統邊界與內部實體錯置 (Boundary & Actor Placement)：**
   - 檢視 `主廚 (Chef)` 與 `MySQL 資料庫`，兩者如何違反了 UML 系統邊界與參與者定義？
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/food_delivery/bad_usecase_model.svg" alt="Bad Use Case Model Example" style="width: 100% !important; max-width: 580px !important; max-height: 480px !important; object-fit: contain;" />
 
 </div>
 </div>
@@ -788,6 +788,44 @@ Martin Fowler 則是撰寫《UML 精華 (UML Distilled)》與《重構》的大�
 首先，主廚 (Chef) 是人類角色參與者，卻被錯誤地畫在系統邊界方框內部——所有參與者一律必須嚴格置於邊界方框外部。其次，MySQL 資料庫被畫成了外部參與者並附帶資料流箭頭（writes SQL）。內部資料庫是系統內部的實作細節，絕非外部獨立通訊的參與者！
 
 總結這張投影片，請記住這個核心觀念：嚴禁將使用案例畫成 UI 微步驟流程圖、確保 include 箭頭指向被包含常式，並將內部資料庫與內部角色排除於外部參與者之外。
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### 觀念診斷解答：使用案例圖 3 大錯誤剖析與修正
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/food_delivery/corrected_usecase_model.svg" alt="Bad Use Case Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**審查診斷結論與架構修正指引：**
+
+- **1. 顆粒度太細與流程圖化 (Functional Decomposition)：**
+  - 「輸入地址」與「點擊送出」僅是「下單」內部的微小 UI 步驟，不可獨立畫為使用案例。
+- **2. 包含關聯方向顛倒 (Inverted <<include>>)：**
+  - 基礎案例主動調用共用子程序，箭頭必須由 `下單` 指向 `處理付款` (`Place Food Order` ➔ `Process Payment`)。
+- **3. 系統邊界與參與者錯置 (Boundary Violations)：**
+  - `Chef` 是人員角色，必須置於邊界方框外；`MySQL Database` 是系統內部儲存，不可畫為外部參與者。
+
+</div>
+</div>
+
+<!--
+這是使用案例圖三大設計反模式的標準解答：
+
+第一，避免功能分解與微步驟流程圖化。使用案例必須是為參與者帶來完整商業價值的目標，輸入地址或點擊按鈕應寫在步驟描述中，不可畫為獨立橢圓。
+
+第二，<<include>> 箭頭方向永遠由主程序指向被包含的子程序。下單包含付款，因此箭頭必須指向付款。
+
+第三，所有參與者都必須站在系統邊界之外。廚師誤放在方框內；內部資料庫是系統實作細節，絕非外部參與者。
+
+總結這張投影片，請記住這個核心觀念：使用案例聚焦使用者目標、包含箭頭指向子程序、僅有真正的外部實體置於系統邊界之外。
 -->
 ---
 ## AI 輔助指南：使用案例塑模 (Use Case Modeling)
@@ -1207,8 +1245,13 @@ AI 有沒有掉入把按鈕點擊畫成使用案例的經典反模式陷阱？
 
 ### 觀念檢核：電商訂單模型判讀 (Model Comprehension)
 
-<div class="split46">
-<div class="left" style="font-size: 16px; line-height: 1.4;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_class/11_order_model_example.jpg" alt="Order Model" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **根據右方類別圖，判斷下列 7 個陳述為「正確 (Correct)」或「錯誤 (Incorrect)」：**
 
@@ -1219,11 +1262,6 @@ AI 有沒有掉入把按鈕點擊畫成使用案例的經典反模式陷阱？
 - **5.** `LineItem` 實現了 `PaymentInterface` 所定義的介面操作。
 - **6.** 新註冊的顧客帳號在系統中可以暫時擁有 0 筆訂單。
 - **7.** 一筆 `Order` 可以同時由兩位不同的 `Customer` 共同擁有。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_class/11_order_model_example.jpg" alt="Order Model" style="width: 100% !important; max-width: 500px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -1291,8 +1329,13 @@ AI 有沒有掉入把按鈕點擊畫成使用案例的經典反模式陷阱？
 
 ### 觀念診斷練習：棒球比賽類別模型錯誤審查
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/baseball/bad_baseball_class_model.svg" alt="Bad Baseball Class Model" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **審查這份學生繪製的棒球比賽類別圖草稿：**
 你能從**封裝、繼承、關係（重數與組合）**中找出重大架構謬誤嗎？
@@ -1305,11 +1348,6 @@ AI 有沒有掉入把按鈕點擊畫成使用案例的經典反模式陷阱？
   - 一場比賽能只有 `1` 個球隊與 `1` 個局數嗎？棒球比賽實際上有幾隊、幾局？
 - **4. 封裝性與職責分配（Encapsulation & Operations）：**
   - 為何所有屬性都是公開的 (`+`)？`pitchBall()` 該放在比賽還是球員？勝負該由單一球隊決定嗎？
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/baseball/bad_baseball_class_model.svg" alt="Bad Baseball Class Model" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
 
 </div>
 </div>
@@ -1330,6 +1368,44 @@ BaseballGame 與 Inning (局數) 使用一般關聯且重數標註為 1。然而
 首先，所有屬性皆標註為 '+' (公開)，徹底破壞物件導向封裝原則。其次，pitchBall() (投球) 錯置於 BaseballGame 而非 Player (投手)。第三，局數得分硬編碼在比賽類別中 (inning1_score...)，而非封裝於 Inning 實體。最後，calculateWinner() 寫在 Team 內部——單一球隊無權私自判定誰是贏家，勝負判斷應是 BaseballGame 的職責！
 
 總結這張投影片，請記住這個核心觀念：嚴格區分 is-a 與 has-a、部分獨立於主體時切勿使用組合、貫徹私有屬性封裝，並將方法指派給持有資料的合適實體。
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### 觀念診斷解答：棒球比賽類別模型錯誤剖析與修正
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/baseball/corrected_baseball_class_model.svg" alt="Bad Baseball Class Model" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**審查診斷結論與架構修正指引：**
+
+- **1. 組合 vs. 聚合生命週期 (`BaseballGame` & `Team`)：**
+  - 實心菱形 (`◆`) 會使比賽刪除時球隊跟著消滅！球隊獨立於比賽存在，應改用聚合 (`◇`)。一場比賽應有 `2` 隊與 `9` 局。
+- **2. 濫用繼承 (is-a vs. has-a)：**
+  - `Team <|-- Player` 嚴重錯誤。球員是球隊的成員 (has-a)，絕非球隊的一種 (is-a)。
+- **3. 破壞封裝與職責分配錯亂：**
+  - 屬性應設為私有 (`-`)。`pitchBall()` 應由球員/投手執行。單一球隊不可片面決定 `calculateWinner()`，應由比賽協調判定。
+
+</div>
+</div>
+
+<!--
+這是棒球比賽類別圖四大設計謬誤的標準解答：
+
+第一，不可濫用組合關係。實心菱形代表生命週期連帶銷毀，刪除一場比賽絕不能把洋基隊消滅，應使用弱生命週期的聚合或關聯。此外，棒球比賽重數必須是 2 隊與 9 局。
+
+第二，繼承代表 is-a 本質關係。球員不是球隊的一種，而是球隊擁有的成員，屬於 has-a 關聯。
+
+第三，落實封裝與職責分工。公開屬性會破壞物件完整性；投球是球員的行為；勝負必須由裁判或比賽整體判定，單一球隊不能自己宣告獲勝。
+
+總結這張投影片，請記住這個核心觀念：嚴格區分 is-a 與 has-a、防止毀滅性組合、將方法分配給持有資料的合適類別。
 -->
 ---
 ## AI 輔助指南：類別塑模 (Class Modeling)
@@ -1663,6 +1739,15 @@ Order ..> PaymentProcessor : delegates >
 ### 互動畫布：程式碼至循序圖映射
 
 <div class="puml-output-grid">
+<div class="puml-diagram-col">
+
+<div class="puml-title">UML 循序圖：3 個物件與 7 大事件時序映射</div>
+
+<div class="diagram-wrapper">
+  <img src="../../img/ch04/sequence/code_to_sequence_mapping.svg" alt="Code to Sequence Diagram Mapping" />
+</div>
+
+</div>
 <div class="puml-code-col">
 
 <div class="puml-title">原始程式碼 (Java)：執行時序流程</div>
@@ -1688,15 +1773,6 @@ class OrderService {
     }
 }
 ```
-
-</div>
-<div class="puml-diagram-col">
-
-<div class="puml-title">UML 循序圖：3 個物件與 7 大事件時序映射</div>
-
-<div class="diagram-wrapper">
-  <img src="../../img/ch04/sequence/code_to_sequence_mapping.svg" alt="Code to Sequence Diagram Mapping" />
-</div>
 
 </div>
 </div>
@@ -1873,8 +1949,13 @@ class OrderService {
 
 ### 觀念診斷練習：找出這張循序圖的 4 大致命錯誤！
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/sequence/bad_sequence_model.svg" alt="Bad Sequence Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **審查這份學生繪製的客房預訂循序圖草稿：**
 你能從**架構分層、訊息語意、時序因果**中找出 4 大致命錯誤嗎？
@@ -1887,11 +1968,6 @@ class OrderService {
   - 檢查 `alt` 方塊中的守衛條件：`[Room Available]` 與 `[else Payment Successful]` 有何荒謬之處？
 - **4. 時序因果矛盾與活化條懸掛 (Chronological Paradox)：**
   - 訊息 `[7]`、`[8]` 的「預訂成功」與 `[9]` 的「寫入資料庫」順序為何顛倒？DB 活化條有閉合嗎？
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/sequence/bad_sequence_model.svg" alt="Bad Sequence Model Example" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
 
 </div>
 </div>
@@ -1912,6 +1988,48 @@ class OrderService {
 訊息 [9] 觸發 MySQL_DB 活化條後，直到循序圖結束都未出現 deactivation，活化條懸掛在半空中。物件的執行期生命區間必須嚴謹閉合。
 
 總結這張投影片，請記住這個核心觀念：循序圖必須嚴守架構分層、嚴謹對稱複合片段分支條件、維持正向時序因果，並完整閉合生命線活化條。
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### 觀念診斷解答：循序圖 4 大致命錯誤剖析與修正
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/sequence/corrected_sequence_model.svg" alt="Bad Sequence Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**審查診斷結論與架構修正指引：**
+
+- **1. 違反架構分層原則 (Layering Violation)：**
+  - 前端 `BookingUI` 絕不可越權直接向 `MySQL_DB` 下達 SQL 查詢，必須經由 Controller/Service 業務邏輯層中介。
+- **2. 複合片段 (`alt`) 守衛邏輯錯亂 (Invalid Guards)：**
+  - `alt` 分支必須針對同一條件互斥 (如 `[Room Available]` 與 `[else / Unavailable]`)，不可混雜付款狀態。
+- **3. 時序因果顛倒與過早確認 (Chronological Paradox)：**
+  - 資料庫寫入 (`INSERT INTO bookings`) 必須成功後，才可向使用者顯示預訂成功訊息。
+- **4. 活化條懸掛遺漏閉合 (Dangling Activation)：**
+  - `MySQL_DB` 的活化長條在操作完成後必須立即終止閉合，不可無限延伸。
+
+</div>
+</div>
+
+<!--
+這是客房預訂循序圖四大架構謬誤的標準解答：
+
+第一，嚴守三層式與 BCE 分層架構。前端畫面直接對資料庫下 SQL 會造成高度耦合與安全漏洞，必須由業務服務層進行協調。
+
+第二，alt 複合片段的分支守衛條件必須在同一維度上嚴格互斥。將客房可用與付款成功混在同一個 else，邏輯完全斷裂。
+
+第三，時序因果必須符合真實物理世界。在資料寫入資料庫之前就通知客人訂房成功，一旦寫入失敗將造成嚴重的資料不一致與客訴。
+
+第四，活化條精確代表執行生命週期，查詢結束後必須立即閉合返回。
+
+總結這張投影片，請記住這個核心觀念：分層呼叫不越權、alt 守衛互斥對齊、持久化先行於成功確認、活化條精準閉合。
 -->
 ---
 ## AI 輔助指南：循序圖塑模 (Sequence Modeling)
@@ -2151,7 +2269,12 @@ UML 活動圖 (Activity Diagram) 正是為工作流程而生。在這一節中�
 ### 採用活動圖塑模的三大觸發契機 (Three Triggers)
 
 <div class="split64">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/03_triggers.jpg" alt="Three Triggers for Behavioral Modeling" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **何時該動手繪製 UML 活動圖？**
 
@@ -2164,11 +2287,6 @@ UML 活動圖 (Activity Diagram) 正是為工作流程而生。在這一節中�
 - **3. 情境狀態映射 (Contextual Mapping)：**
   - **前後置條件契約：** 明確界定動作執行前的必備前提，以及完成後的狀態保證。
 - **核心價值：** 活動圖是連結高階使用案例與底層程式碼實作的最佳思維橋樑。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/03_triggers.jpg" alt="Three Triggers for Behavioral Modeling" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2233,8 +2351,13 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
 
 ### 條件分支邏輯：判定與合併節點 (Decision & Merge)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/06_conditional.jpg" alt="Handling Conditional System Logic: Decision & Merge Nodes" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **工作流程中的互斥條件路徑管理：**
 
@@ -2245,11 +2368,6 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
   - **替代路徑重新匯合：** 將互斥的分支重新收攏至單一控制流（如匯合後執行 `儲存檔案`）。
   - **無需同步等待：** **不等待**多個標記到達；哪一條分支先完成，就直接放行往下繼續。
 - **核心要訣：** 菱形專門處理 **if-else** 互斥選擇，安全地切分並重聚邏輯路徑。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/06_conditional.jpg" alt="Handling Conditional System Logic: Decision & Merge Nodes" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2268,8 +2386,13 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
 
 ### 並行協作處理：分支與結合節點 (Fork & Join)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/07_parallel.jpg" alt="Orchestrating Parallel System Actions: Fork & Join Nodes" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **編排多執行緒平行任務與同步屏障：**
 
@@ -2280,11 +2403,6 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
   - **同步等待屏障：** 所有匯入的平行分支皆必須執行完畢，輸出控制流 (`關閉訂單`) 才會放行。
   - **等待保證：** 若請款 1 秒搞定、包裝需 10 秒，請款執行緒會在結合棒前掛起等待，直到兩者齊全。
 - **核心要訣：** Fork 啟動平行並發執行緒；Join 擔任屏障，等待所有執行緒全數抵達才放行。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/07_parallel.jpg" alt="Orchestrating Parallel System Actions: Fork & Join Nodes" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2305,8 +2423,13 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
 
 ## 多角色責任歸屬困境 (The Multi-Actor Accountability Problem)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/09_swimlane.jpg" alt="The Multi-Actor Accountability Problem" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **明確的角色權責劃分消除流程模糊：**
 
@@ -2317,11 +2440,6 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
   - **垂直分欄確立權責：** 以清楚的縱向泳道將職責切分為 `員工 (Employee)` 與 `經理 (Manager)`。
   - **精確跨欄交接：** 箭頭跨越泳道即代表一次清晰的責任移交（如員工申請 → 經理審核與撥款）。
 - **核心法則：** 泳道將混亂的作業糾纏，轉化為權責清晰、邊界分明的工業級運作骨幹。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/09_swimlane.jpg" alt="The Multi-Actor Accountability Problem" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2341,8 +2459,13 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
 
 ### 泳道與分割區：明確職責邊界 (Swimlanes & Partitions)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/10_grouping.jpg" alt="Grouping Activities by Actor or Thread: Swimlanes / Partitions" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **實務上的跨角色無縫交接塑模：**
 
@@ -2354,11 +2477,6 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
   - **2. 跨界審核：** 控制流跨越邊界至註冊組進行資料查驗 (`Inspect Forms` → `Determine Proper Fill`)。
   - **3. 結果通知與回傳：** 註冊組通知學生審核結果 (`Inform Student`)，執行權交還學生以完成繳費 (`Pay Initial Tuition`)。
 - **核心要訣：** 每條跨越泳道的分隔線箭頭，都是不同角色或系統模組間最關鍵的介面合約。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/10_grouping.jpg" alt="Grouping Activities by Actor or Thread: Swimlanes / Partitions" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2407,8 +2525,13 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
 
 ### 統整工作流程模型：泳道、並行與條件邏輯 (Unified Workflow Model)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/12_workflow.jpg" alt="The Unified Workflow Model: Swimlanes + Concurrency + Logic" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **完美融合泳道、平行並行與條件邏輯：**
 
@@ -2421,11 +2544,6 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
   - **決策菱形：** 角色 C 依 `[Success?]` 判定；失敗則迴圈重試，成功才放行。
   - **Join 結合棒：** 嚴格等待「分析報告」與「子程序成功」兩者皆抵達，才編譯最終產出並遞交結果。
 - **核心要訣：** 將泳道權責、並行執行緒、資料物件與迴圈收攏為工業級標準工程藍圖。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/12_workflow.jpg" alt="The Unified Workflow Model: Swimlanes + Concurrency + Logic" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2484,8 +2602,13 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
 
 ### 觀念診斷練習：找出這張活動圖的 4 大致命錯誤！
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/activity/bad_activity_model.svg" alt="Bad Activity Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **審查這份學生繪製的外送活動流程圖草稿：**
 你能從**並行控制、條件分支、泳道責任歸屬**中找出重大流程謬誤嗎？
@@ -2498,11 +2621,6 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
   - 追蹤 `[Out of Stock]` 判定後的 `Cancel Order` 路徑，該流程結束時缺少了什麼關鍵節點？
 - **4. 流程死鎖與同步語意 (Deadlock Hazard)：**
   - 若將互斥的分支誤用並行結合條 (Join Bar) 匯合，在執行期會引發什麼致命系統問題？
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/activity/bad_activity_model.svg" alt="Bad Activity Model Example" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
 
 </div>
 </div>
@@ -2523,6 +2641,48 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
 若將互斥的決策路徑錯誤地接入 Join Bar (結合條)，由於 Join 必須等待所有輸入路徑皆抵達才會放行，而互斥分支只會走其中一條，導致系統永遠陷入等待，引發死結 (Deadlock)。互斥路徑必須使用 Merge 菱形匯合，Join 條僅限用於並行執行緒的同步。
 
 總結這張投影片，請記住這個核心觀念：Fork 條絕不能加條件守衛、泳道動作必須對齊職責邊界，且每條終止分支皆須閉合於正式終止節點。
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### 觀念診斷解答：活動圖 4 大致命錯誤剖析與修正
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/activity/corrected_activity_model.svg" alt="Bad Activity Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**審查診斷結論與架構修正指引：**
+
+- **1. 並行分支條 vs. 條件決策菱形 (Fork vs. Decision)：**
+  - `fork` 分支條會同時並行觸發所有路徑！信用卡與貨到付款是互斥選項，必須使用決策菱形 (Decision Diamond)。
+- **2. 泳道角色責任完全顛倒 (Swimlane Inversion)：**
+  - 角色責任配置荒謬：顧客負責輸入地址與電話；廚房負責烹調食物與打包餐點。
+- **3. 懸空流程與終止節點遺漏 (Dangling Flow)：**
+  - `Cancel Order` 後流程懸空終止，所有結束路徑必須明確連至活動終止節點 (`◉`)。
+- **4. 匯合條引發執行期死鎖 (Deadlock Hazard)：**
+  - 結合條 (Join Bar) 必須等待所有並行路徑的 Token 全數到達才可推進。將互斥分支接至 Join 會導致系統永久等待而死鎖。
+
+</div>
+</div>
+
+<!--
+這是活動流程圖四大致命錯誤的標準解答：
+
+第一，絕對不可在 Fork 並行條上加上互斥守衛條件。Fork 條代表多執行緒平行發起，把刷卡與付現掛在 Fork 上，代表系統同時刷卡又同時準備找零！互斥分支必須使用決策菱形。
+
+第二，泳道職責必須符合真實世界。讓顧客自己做菜打包、讓廚房填寫外送地址，是典型的角色錯置。
+
+第三，消除懸空未閉合流程。取消訂單後直接斷在半空中，必須補上雙重圓圈的活動終止節點。
+
+第四，嚴禁互斥路徑接上 Join 結合條。Join 結合條要求「全部輸入條件同時滿足」，互斥分支只會走其中一條，導致 Join 永遠等不到另一條 Token 而引發死鎖。
+
+總結這張投影片，請記住這個核心觀念：互斥用決策菱形、泳道職責分明、所有分支皆須終止、互斥匯合絕不用 Join 條。
 -->
 ---
 ## AI 輔助指南：活動圖塑模 (Activity Modeling)
@@ -2733,8 +2893,13 @@ stop
 
 ### 相同事件，因狀態不同而產生不同結果 (Same Event Different Results)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/02_same_event_different_results.jpg" alt="The Same Event Yields Different Results Based on State" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **情境依存的動態行為響應：**
 
@@ -2744,11 +2909,6 @@ stop
   - **當前狀態 = Off (藍色路徑)：** 觸發開關閉合電路，系統轉移至 `On` 狀態。
   - **當前狀態 = On (紅色路徑)：** 觸發開關切斷電路，系統轉移至 `Off` 狀態。
 - **核心架構定律：** 反應式系統的運作行為由 `(當前狀態, 輸入事件) → (目標狀態, 動作執行)` 嚴格決定。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/02_same_event_different_results.jpg" alt="The Same Event Yields Different Results Based on State" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2771,8 +2931,13 @@ stop
 
 ### 狀態機在 UML 生態系中的架構定位 (Positioning in UML)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/03_positioning_within_uml_ecosystem.jpg" alt="Positioning the Tool Within the UML Ecosystem" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **行為塑模的兩大互補視角：**
 
@@ -2783,11 +2948,6 @@ stop
   - **塑模範圍：** 聚焦**單一核心實體**（如 `Order` 或 `Connection`）。
   - **覆蓋度：** 窮舉該實體在整個生命週期中**所有可能的狀態、事件與轉移**。
 - **架構黃金法則：** 跨模組協議用循序圖；核心實體的狀態約束與不變量用狀態機。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/03_positioning_within_uml_ecosystem.jpg" alt="Positioning the Tool Within the UML Ecosystem" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2808,8 +2968,13 @@ stop
 
 ## 定義狀態：物件生命週期中的時間區間 (State Defined)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/04_state_defined_lifecycle_interval.jpg" alt="A State is a Defined Interval in an Object's Lifecycle" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **狀態的實質定義與生命週期區間：**
 
@@ -2821,11 +2986,6 @@ stop
 - **3. 終止狀態 (◉ Final State)：**
   - 靶心符號標記生命週期正式結束，進行資源回收與銷毀。
 - **核心法則：** 伺服器常駐常態系統通常省略終點；商業單據實體則必有終止靶心。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/04_state_defined_lifecycle_interval.jpg" alt="A State is a Defined Interval in an Object's Lifecycle" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2849,8 +3009,13 @@ stop
 
 ### 觸發狀態轉移的四大事件類型 (Four Triggers)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/05_four_triggers_of_state_transitions.jpg" alt="The Four Triggers That Initiate State Transitions" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **驅動狀態轉移的四大觸發事件：**
 
@@ -2860,14 +3025,9 @@ stop
   - 外部呼叫端同步調用該物件介面上的方法或操作。
 - **3. 時間事件 (⌛ Time Event)：**
   - 基於時間流逝的計時器觸發（例如逾時機制 `after(30s)`）。
-- **4. 變化事件 (⟦⟧ Change Event)：**
+- **4. 變化事件 ([≥] Change Event)：**
   - 當布林條件運算式由偽轉真時瞬間引爆（例如 `when(temp > 100)`）。
   - **核心要訣：** 狀態機中所有的主動轉移，皆由這四種標準事件之一所點燃。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/05_four_triggers_of_state_transitions.jpg" alt="The Four Triggers That Initiate State Transitions" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2889,8 +3049,13 @@ stop
 
 ### 狀態轉移機制：事件、守衛條件與動作 (Mechanics of Transition)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/06_mechanics_of_a_transition.jpg" alt="The Mechanics of a Transition" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **狀態轉移漏斗管線運作機制：**
 
@@ -2902,11 +3067,6 @@ stop
   - **3. 動作齒輪運轉：** 觸發不可中斷之原子動作，於瞬間執行完畢。
   - **4. 目標狀態著陸：** 離開來源狀態，正式進入目標狀態。
   - **無觸發完成轉移：** 無事件標註之轉移，於內部活動完成後自動放行。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/06_mechanics_of_a_transition.jpg" alt="The Mechanics of a Transition" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2927,13 +3087,67 @@ stop
 
 總結這張投影片，請記住這個核心觀念：狀態轉換需在事件發生且守衛條件為真時放行，並在轉移瞬間執行原子動作。
 -->
+
 ---
+
+<!-- _class: v-center -->
+
+### 狀態轉移實例：外送訂單的事件、防衛與動作
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/food_delivery/food_delivery_transition_mechanics.svg" alt="狀態轉移實例：外送訂單的事件、防衛與動作" style="width: 100% !important; max-width: 680px !important; border-radius: 6px;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**外送訂單生命週期的轉移管線實例：**
+
+- **標準轉移語法結構：**
+  - `cancelOrder(reason) [elapsedTime <= 120s] / processFullRefund(); notifyKitchen()`
+- **1. 事件刺激 (`cancelOrder`)：**
+  - 顧客從手機 App 發送主動取消請求。
+- **2. 守衛條件 (`[elapsedTime <= 120s]`)：**
+  - 嚴格限制下單後 120 秒內方可取消。若逾時（guard 為 false），轉移直接被阻擋，訂單保持在 `Placed`。
+- **3. 動作執行 (`/ processFullRefund()`)：**
+  - 轉移發生時瞬間原子性執行全額退款並通報餐廳廚房。
+- **目標狀態著陸 (`Cancelled`)：**
+  - 成功移轉至 `Cancelled` 並觸發 `entry / logCancellation()`。
+
+</div>
+</div>
+
+<!--
+我們來看狀態轉移公式在外送訂單系統中的真實運作！
+
+請看左側的 Placed 狀態，此時顧客剛完成付款。
+
+接著看往下指的這條轉移箭頭：
+事件是 cancelOrder(reason)，也就是顧客在 App 上點擊取消訂單。
+接著由中括號內的守衛條件進行把關：下單時間是否在 120 秒內？
+若條件成立（True），轉移立刻觸發，並瞬間執行斜線後的動作：呼叫金流進行退款，同時通知廚房。
+最後，訂單順利抵達目標狀態 Cancelled！
+
+如果顧客超過兩分鐘才按取消呢？
+守衛條件為 False，這條轉移根本不會引爆，訂單依然維持在 Placed，隨後由餐廳接單轉入 Accepted！
+
+總結這張投影片，請記住這個核心觀念：只有當事件發生且防衛條件為真時，狀態轉移才會引爆並執行原子動作進入目標狀態。
+-->
+
+---
+
 <!-- _class: v-center -->
 
 ## 執行引擎：動作 (Action) vs. 活動 (Activity)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/07_actions_vs_activities.jpg" alt="Execution Engines: Actions vs. Activities" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **瞬間原子動作 vs. 持續可中斷活動：**
 
@@ -2946,11 +3160,6 @@ stop
   - **中斷特性：** **隨時可被中斷**；一旦外向轉移事件抵達立即強制中止。
   - **放置位置：** 宣告於狀態內部 `do / [activity]`。
   - **架構鐵律：** 嚴禁將耗時長任務置於 Action，否則將導致狀態機嚴重阻塞。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/07_actions_vs_activities.jpg" alt="Execution Engines: Actions vs. Activities" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2966,199 +3175,211 @@ stop
 
 總結這張投影片，請記住這個核心觀念：Action 是瞬間不可中斷的原子操作，Activity 則是耗時進行且隨時可被事件中斷的持續計算。
 -->
+
 ---
+
 <!-- _class: v-center -->
 
 ### 邊界執行：進入動作與離開動作 (Entry & Exit Actions)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
 
-**邊界保證：進入與離開動作機制：**
-
-- **進入動作 (`entry / action`)：**
-  - 在進入狀態的瞬間自動無條件觸發執行。
-  - 無論系統經由哪一條轉移路徑抵達，保證率先完成。
-  - **應用情境：** 資源鎖定、啟動計時器、標記運作狀態。
-- **離開動作 (`exit / exitAction`)：**
-  - 在脫離狀態的瞬間自動無條件觸發執行。
-  - 無論系統沿著哪一條轉移路徑離開，保證完成善後。
-  - **應用情境：** 釋放資源、刷新緩衝區、取消看門狗計時器。
-  - **架構價值：** 將初始化與銷毀邏輯封裝於狀態本體，杜絕轉移箭頭上的重複代碼。
+<img src="../../img/ch04/food_delivery/food_delivery_boundary_execution.svg" alt="邊界執行：進入動作與離開動作" style="width: 100% !important; max-width: 680px !important; border-radius: 6px;" />
 
 </div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
-<img src="../../img/ch04/nb_state_machine/08_entry_and_exit_actions.jpg" alt="Boundary Executions: Entry and Exit Actions" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+**外送配送狀態的生命週期保證機制：**
+
+- **進入動作 (`entry / startGPSTracking()` 等)：**
+  - 外送員取餐跨入 `OutForDelivery` 的瞬間無條件觸發。
+  - 立即啟動騎手手機 GPS 定位並推播通知「外送員已出發前往配送」。
+- **持續活動 (`do / streamRiderGPSCoordinates()` 等)：**
+  - 配送路程中持續串流即時座標；抵達顧客門口或逾時即刻中斷。
+- **離開動作 (`exit / stopGPSTracking()` 等)：**
+  - 無論外送成功 (`Delivered`) 或失敗 (`DeliveryFailed`)，離開時保證執行！
+  - 關閉高耗電 GPS 晶片追蹤並寫入送達時間戳記。
+- **架構價值：** 確保生命週期初始與清理邏輯完全內聚，免於在多條離開箭頭重複撰寫代碼。
 
 </div>
 </div>
 
 <!--
-請看狀態邊界的防護機制：進入動作 (Entry Action) 與離開動作 (Exit Action)。
+請看狀態邊界的防護機制在外送系統中的運用：進入動作 (Entry) 與離開動作 (Exit)！
 
-圖中展示了名為 `Check Book Status` 的狀態，裡面維護著一個 `BookCopy Object`。
+圖中聚焦在外送運送中狀態：OutForDelivery。
 
-注意左側進入邊界的藍色火花：`entry / action`。無論是從哪一條轉換路徑來到這個狀態，只要跨入邊界，這個動作保證百分之百立即執行！
-注意右側離開邊界的紅色火花：`exit / action`。無論是因為什麼事件要離開這個狀態，只要跨出邊界，這個動作保證百分之百立即執行清理！
+注意上方的藍色進入動作：entry / startGPSTracking() 與 notifyCustomer()。
+只要外送員完成取餐跨入此狀態，不論從何而來，手機 GPS 追蹤與顧客通知保證百分之百立即啟動！
 
-這讓初始化與資源釋放邏輯與狀態邊界牢牢綁定，避免在每條進入或離開的箭頭上重複撰寫程式碼。
+接著看灰色 do 活動：streamRiderGPSCoordinates()。這是外送途中持續串流外送員座標的進行中活動。
+
+最後看紅色的離開動作：exit / stopGPSTracking() 與 logDropoffTimestamp()。
+注意！不論外送員是順利送達，還是因為找不到地址而回報失敗，只要離開 OutForDelivery，離開動作保證絕對會執行，確實關閉 GPS 並記下時間！
 
 總結這張投影片，請記住這個核心觀念：Entry 與 Exit 動作確保每次跨越狀態邊界時，初始設定與資源釋放保證絕對執行。
 -->
+
 ---
+
 <!-- _class: v-center -->
 
 ## 擴展架構：複合狀態與平行狀態 (Scaling Complexity)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
 
-**以階層結構駕馭狀態爆炸複雜度：**
-
-- **1. 簡單狀態 (Simple State，單一原子)：**
-  - 無內部子結構的基礎狀態（例如 `Active`）。
-- **2. 複合狀態 (Composite State，階層巢狀)：**
-  - 外部超狀態封裝內部多個子狀態（如 `Heater` 包含 `Idle`, `Heating`, `Cooling`）。
-  - 外部轉移一併適用於所有內部子狀態，大幅消除蜘蛛網箭頭。
-- **3. 正交並行狀態 (Concurrent State，多區並行)：**
-  - 以虛線分隔出獨立的正交區域 (Orthogonal Regions)。
-  - 各區域內之子狀態彼此獨立且同步並行運作。
-  - **核心價值：** 將扁平混亂的狀態圖，重構為模組化、可擴展的高階架構。
+<img src="../../img/ch04/food_delivery/food_delivery_composite_concurrent.svg" alt="擴展架構：複合狀態與平行狀態" style="width: 100% !important; max-width: 680px !important; border-radius: 6px;" />
 
 </div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
-<img src="../../img/ch04/nb_state_machine/09_scaling_architecture_complexity_matrix.jpg" alt="Scaling Architecture: The Complexity Matrix" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+**以階層結構駕馭外送履約的狀態複雜度：**
+
+- **1. 簡單狀態 (`Placed`)：**
+  - 單一原子狀態，等待餐廳確認接單。
+- **2. 複合狀態 (`OrderFulfillment`)：**
+  - 高階超狀態，封裝內部繁瑣之備餐與外送派件流程。
+  - 外邊界轉移（如 `emergencyCancel() / fullRefund()`）統一適用於全體子狀態，大幅消除重複箭頭。
+- **3. 正交並行區域 (`||` 並行軌道)：**
+  - **廚房備餐管線 (Region 1)：** `Cooking` → `Packaged` → `AwaitingPickup`。
+  - **外送員調度物流 (Region 2)：** `FindingCourier` → `CourierAssigned` → `CourierAtRestaurant`。
+  - 雙管線同步且獨立並行運作！
 
 </div>
 </div>
 
 <!--
-當系統變得龐大時，扁平狀態圖會變成無法閱讀的蜘蛛網。看 UML 如何透過三種狀態層次解決複雜度：
+當系統變得龐大時，扁平狀態圖會變成無法閱讀的蜘蛛網。看外送履約架構如何透過複合與平行狀態進行擴展：
 
-第一欄是「簡單狀態 (Simple State)」：如 `Active`，單一且不可分割的原子狀態。
-第二欄是「複合狀態 (Composite State)」：如 `Heater`，它像一個容器，內部封裝了 `Idle`、`Heating`、`Cooling` 等巢狀子狀態，有效隱藏內部細節！
-第三欄是「並行狀態 (Concurrent State)」：水平虛線將狀態切分為兩條並行軌道，上方是 Task A1 到 A2，下方是 Task B1 到 B3，兩者同時並行執行！
+左側 Placed 是「簡單狀態」：單一且不可分割的原子狀態。
 
-總結這張投影片，請記住這個核心觀念：複合狀態與並行狀態透過階層巢狀與平行分區，徹底解決大規模狀態爆炸的架構難題。
+中央大框框 OrderFulfillment 是「複合狀態」：它將內部多步驟的履約流程封裝成一個乾淨的高階容器。
+注意底部的 emergencyCancel 箭頭：只要掛在外框邊界上，就能一體適用於內部所有子狀態！完全不需要畫五六條重複的取消箭頭！
+
+現在看內部結構：垂直虛線將內部切分為兩個「正交並行區域」！
+區域 1 是廚房備餐流程：下鍋烹調、包裝封盒、等待取餐。
+區域 2 則是外送員調度管線：媒合騎手、接單確認、騎車前往餐廳。
+兩條管線在真實世界中是百分之百同時並行運作的！
+
+總結這張投影片，請記住這個核心觀念：複合狀態隱藏內部細節，並行正交區域則完美協調同時發生的多軌任務。
 -->
+
 ---
+
 <!-- _class: v-center -->
 
 ### 複合狀態與系統記憶 (History State)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
 
-**歷史記憶節點 (H)：中斷後的狀態精確復原：**
-
-- **預設進入流程：**
-  - 一般轉移進入複合狀態時，一律從預設初始子狀態 (Substate A) 重新開始。
-- **歷史偽節點 `(H)` 的快取機制：**
-  - **活躍狀態記憶：** 當複合狀態遭中斷退出時，自動記錄離開前當下活躍的子狀態。
-  - **精確跳轉復原：** 轉移線指入 `(H)` 時，直接略過起點，瞬間還原至先前快取之子狀態 (如 Substate B)。
-- **淺層 `(H)` vs. 深層 `(H*)` 記憶：**
-  - 淺層只記憶當前層級；深層則遞迴記憶至最深層的巢狀子狀態。
-  - **核心價值：** 完美支援暫停、系統休眠喚醒、通話中斷與工作階段還原。
+<img src="../../img/ch04/food_delivery/food_delivery_history_memory.svg" alt="複合狀態與系統記憶" style="width: 100% !important; max-width: 680px !important; border-radius: 6px;" />
 
 </div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
-<img src="../../img/ch04/nb_state_machine/10_composite_states_and_history.jpg" alt="Composite States and System Memory" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+**歷史記憶節點 (H)：外送中斷後的精確復原：**
+
+- **預設進入流程：**
+  - 新訂單正常進入 `OrderExecution` 時，一律從起點 `Cooking` 依序啟動。
+- **歷史偽節點 `(H)` 的狀態快取：**
+  - **中斷記憶：** 當訂單遭遇突發暫停（如信用卡盜刷查核、地址疑義），離開前自動記錄當下活躍狀態。
+  - **精確跳轉復原：** 疑義排除後（`disputeResolved()`），箭頭指入 `(H)`，直接精準還原至 `OutForDelivery`！
+- **極為關鍵的商業價值：**
+  - **若沒有 (H)：** 系統將退回 `Cooking` 重新開煮，餐廳將浪費食材並重新備餐！
+  - **具備 (H)：** 外送員直接在路上接續配送已經煮好的餐點。
 
 </div>
 </div>
 
 <!--
-當系統被突發事件中斷時，如何記住上次停在哪裡？請看複合狀態與歷史記憶節點 (History State, [H])。
+當外送途中遭到突發中斷，系統如何記住上次進度？請看外送系統中的歷史記憶節點 (H)！
 
-一般情況下，進入複合狀態時，一律會從最前面的 Substate A 重新開始。
+一般情況下，進入 OrderExecution 時，流程一定從起點 Cooking 重新開始。
 
-但是想像一下：你在寫信時突然來了一通電話，講完電話切回信箱時，你希望從頭開始寫，還是回到剛才寫了一半的畫面？當然是回到剛才的地方！
-圖中的 `(H)` 圓圈就是「歷史狀態記憶槽」。
-當系統離開 Substate B 時，快取 (Cache) 記住了這個位置。
-當系統稍後從外部重新進入 `(H)` 時，指標直接精準跳回 Substate B！
+但是想像一下：外送員已經在路上 (OutForDelivery)，此時銀行突然發出交易風險警報，訂單被迫轉入暫停狀態 OrderSuspended。
+當客服排除了爭議，訂單該如何恢復？
+
+看重新進入的箭頭：它指入帶有 (H) 的圓圈！
+歷史狀態節點會記住中斷前當下活躍的子狀態。
+因為剛才停在 OutForDelivery，系統直接精確還原到 OutForDelivery！
+
+請思考這在商業上的巨大價值：如果沒有 (H)，訂單退回 Cooking，餐廳就得被迫把已經煮好打包的熱騰騰餐點倒掉重煮！
 
 總結這張投影片，請記住這個核心觀念：歷史狀態節點作為快取記憶槽，能讓系統在中斷復原後直接回到上次活躍的子狀態。
 -->
+
 ---
-<!-- _class: v-center -->
 
-### 平行狀態：分岔與結合同步 (Concurrency)
+<!-- _class: title-image-slide -->
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+## 整合藍圖：外送訂單完整生命週期狀態圖
 
-**狀態機中的並行執行與同步屏障：**
-
-- **分岔橫條 (Fork Bar，1 對多並行分流)：**
-  - 單一觸發事件 (`Auction Trigger`) 瞬間分流出多個平行活躍的子狀態。
-  - 上方執行緒處理 `出價處理 (Processing the Bid)`；下方執行緒處理 `額度授權 (Authorizing Payment Limit)`。
-- **結合橫條 (Join Bar，同步等待屏障)：**
-  - 收攏並同步所有平行支流。
-  - 系統在屏障前掛起等待，直到出價與授權兩者**全數完成**方才放行。
-  - **架構確定性：** 確保平行多工背景任務全部抵達，方能安全推進後續生命週期。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/11_concurrency_fork_and_join.jpg" alt="Concurrency: Forking and Joining Execution Threads" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
-
-</div>
+<div class="image-wrapper">
+<img src="../../img/ch04/food_delivery/food_delivery_unified_blueprint.svg" alt="整合藍圖：外送訂單完整生命週期狀態圖" />
 </div>
 
 <!--
-請看狀態機如何處理多執行緒平行任務：Fork 分流與 Join 聚合。
-
-以圖中的線上拍賣系統為例：
-`Auction Trigger` 抵達左側粗黑垂直的 Fork 橫線。
-單一流程立刻被分流為兩條並行軌道：上方執行 `Processing the Bid`（出價處理），下方同時執行 `Authorizing Payment Limit`（授權額度驗證）。
-
-兩條並行路徑最後都匯入右側粗黑垂直的 Join 橫線。
-系統會在 Join 處等待兩條軌道都順利完成。
-只有當兩者都抵達時，轉換才會正式放行並往下推進。
-
-總結這張投影片，請記住這個核心觀念：Fork 將流程分流為並行子狀態，Join 則等待所有並行軌道完成後才進行同步放行。
--->
----
-<!-- _class: v-center -->
-
-### 整合藍圖：暖通空調系統範例 (HVAC Example)
-
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
-
-**工業級整合全景藍圖 (HVAC 溫控系統案例)：**
-
-- **雙重正交並行區域 (虛線邊界)：**
-  - **區域 1 (恆溫溫控)：** 於 `Idle` 與 `Heating` 間循環；守衛條件 `[temp < setpoint]` 觸發原子動作 `entry / activate_burner`，並具備歷史狀態 `(H)`。
-  - **區域 2 (風扇運轉)：** 獨立並行調度 `Fan Off` ↔ `Fan Low` ↔ `Fan High`。
-- **整合高階語法语意：**
-  - 進入動作確保硬體驅動即時就位；歷史節點保護系統斷電或暫停記憶。
-  - **大師級架構總結：** 狀態機圖以最高形式化精度，完美駕馭軟硬體深度整合之複雜行為。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/12_unified_blueprint_hvac_example.jpg" alt="The Unified Blueprint: HVAC Heating/Cooling System" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
-
-</div>
-</div>
-
-<!--
-這就是狀態機的綜合實戰藍圖：智慧空調 (HVAC Heater System)！
+這就是狀態機的綜合實戰藍圖：外送訂單系統的完整生命週期！
 
 看看這個架構有多麼優雅嚴整：
-中央垂直虛線將整個系統切分為兩個並行運作的區域：左邊是 Thermostat Control（恆溫控制），右邊是 Fan Operation（風扇運轉）。
 
-左側恆溫控制從初始起點進入 `Idle`，當 `temp < setpoint` 訊號到達時轉入 `Heating`，同時瞬間執行原子進入動作 `entry / activate_burner`，並配有歷史快取 `(H)`。
-右側風扇運作則獨立根據風速請求訊號，在 `Fan Low`、`Fan High` 與 `Fan Off` 之間靈活轉移。
+第一，左側訂單從 Placed 出發，帶有 cancelOrder [t <= 120s] / refund() 守衛轉移，嚴格把關取消規則。
 
-透過並行分區、清晰事件觸發與邊界動作，複雜的實體行為被組織得井然有序。
+第二，訂單進入 ActiveOrder 複合狀態，內部由正交區域將廚房烹調與外送員調度完全平行化處理！
 
-總結這張投影片，請記住這個核心觀念：真實工程架構將並行分區、進入動作、事件觸發與歷史記憶整合為單一嚴整藍圖。
+第三，看下方的 SuspendedOrder：一旦突發警報暫停，透過深層歷史狀態節點 [H*]，排除狀況後直接精準恢復當前的並行子狀態，資料毫無遺失！
+
+第四，餐點與騎手會合後轉入 OutForDelivery，透過嚴格的 entry 與 exit 邊界動作自動管理 GPS 定位與時間戳記，最後在顧客取餐確認後圓滿結束生命週期！
+
+總結這張投影片，請記住這個核心觀念：真實工程架構將並行分區、進入離開動作、守衛觸發與歷史記憶整合為單一嚴整藍圖。
 -->
+
+---
+
+<!-- _class: v-center -->
+
+### 動態模型對照：狀態機圖 vs. 活動圖 (State Machine vs. Activity)
+
+> 兩者皆為 UML 動態行為模型，但從根本上回答了完全不同的架構問題。
+
+<div class="matrix-table">
+
+| 比較維度 | 狀態機圖 (State Machine) | 活動圖 (Activity Diagram) |
+| :--- | :--- | :--- |
+| **核心視角** | **實體導向 / 被動反應 (Reactive)：** 聚焦於「單一實體」從生到死的生命週期。 | **流程導向 / 程序推進 (Procedural)：** 聚焦於跨越「多個參與者與系統」的端到端工作流程。 |
+| **核心節點** | **狀態 (State)：** 實體處於等待事件或維持運作的靜止/持續模式。 | **動作 (Action / Activity)：** 系統或人員正在執行的主動計算或業務操作。 |
+| **轉移驅動方式** | **事件驅動 (Event-Driven)：** 轉移必須等待外部或內部觸發事件 (`Event [Guard] / Action`)。 | **完成驅動 (Completion-Driven)：** 動作執行完畢後自動沿著控制流/物件流推進下一步。 |
+| **平行並行模型** | **正交區域 (Orthogonal Regions)：** 複合狀態內的平行子狀態區塊 (並行軌道)。 | **分岔與結合節點 (Fork & Join)：** 跨越泳道 (Swimlanes) 的明確流程分流與同步。 |
+| **最佳應用場景** | 領域實體生命週期（如外送訂單、帳戶狀態）、通訊協定、IoT 設備控制。 | 跨系統業務流程（如結帳到出貨流程）、ETL 批次管線、使用案例流程展開。 |
+
+</div>
+
+<!--
+在進入 CCQ 之前，讓我們對照 UML 中兩大動態模型：狀態機圖與活動圖。
+
+許多同學常問：兩者都有節點、動作與箭頭，到底該在什麼時機選擇哪一種？
+
+第一，看核心視角：
+狀態機圖是「實體導向」的。你鎖定單一關鍵物件（例如外送訂單 Order），追蹤它一生遭遇所有事件的模式轉移。
+活動圖則是「流程導向」的。它不屬於單一物件，而是呈現跨越顧客、廚房、金流閘道與外送員的端到端業務工作流。
+
+第二，看核心節點：
+狀態機圖的節點是「名詞或形容詞」的狀態（如 Placed, Cooking），代表物體處於等待或持續運作的模式。
+活動圖的節點則是「動詞」的動作（如驗證信用卡、通知廚房），代表主動執行的任務。
+
+第三，看轉移驅動：
+狀態機是「事件驅動」的。訂單停在 Placed，若沒有 cancelOrder 或 timeout 事件，它會永遠停在那裡。
+活動圖是「完成驅動」的。前一個動作一完成，控制流立刻自動沿著箭頭推進到下一個動作。
+
+第四，並行機制：
+狀態機使用複合狀態內部的正交區域；活動圖則使用泳道搭配明確的分岔 (Fork) 與結合 (Join) 節點。
+
+總結這張投影片，請記住這個核心觀念：為單一實體的生命週期與事件反應建模時選狀態機圖；為跨系統與跨人員的工作流程建模時選活動圖。
+-->
+
 ---
 ## 觀念檢核測驗 7 (CCQ 7)
 <!-- id: ase-ch04-ccq7 -->
@@ -3196,8 +3417,13 @@ Activity（以 `do /` 宣告）則代表一段耗時運算，只要有任何觸�
 
 ### 觀念診斷練習：找出這份狀態機模型的生命週期謬誤
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/statemachine/bad_statemachine_model.svg" alt="Bad State Machine Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **審查這份學生繪製的訂單生命週期狀態機圖草稿：**
 你能從**狀態語意、轉移條件、終止節點約束**中找出重大架構謬誤嗎？
@@ -3210,11 +3436,6 @@ Activity（以 `do /` 宣告）則代表一段耗時運算，只要有任何觸�
   - 檢視離開 `Paid` 狀態的兩條 `cancelOrder` 轉移線：當 `amount == 150` 時，系統該執行哪一條？
 - **4. 終止狀態不可逆性 (Final State Invariant)：**
   - 從終止狀態 `[*]` 伸出箭頭 `reopenOrder()` 重新回到 `PendingPayment`，違反了什麼核心不變量？
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/statemachine/bad_statemachine_model.svg" alt="Bad State Machine Model Example" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
 
 </div>
 </div>
@@ -3235,6 +3456,48 @@ Activity（以 `do /` 宣告）則代表一段耗時運算，只要有任何觸�
 圖中竟然從終止狀態 [*] 伸出轉移線 reopenOrder() 重新回到 PendingPayment。終止狀態 (Final State) 代表物件生命週期的終結與資源釋放，UML 規則嚴格禁止任何從終止狀態離開的轉移線！若訂單允許重新開啟，代表它當初根本就不該進入終止狀態。
 
 總結這張投影片，請記住這個核心觀念：狀態代表持久情境而非瞬間動作、非終止狀態必須具備離開路徑、同事件轉移條件必須嚴格互斥，且終止狀態絕對不可逆。
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### 觀念診斷解答：狀態機模型生命週期謬誤剖析與修正
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/statemachine/corrected_statemachine_model.svg" alt="Bad State Machine Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**審查診斷結論與架構修正指引：**
+
+- **1. 持久狀態 vs. 瞬時動作 (State vs. Action)：**
+  - `DeductCreditCard` 是耗時為零的瞬時動作，應作為轉移線上的效果 (`pay / deductCard()`)，絕不可畫為狀態方塊。
+- **2. 黑洞陷阱狀態 (Black Hole State)：**
+  - `RiskReview` 只有進入箭頭、零離開路徑，訂單一旦進入審查即永久卡死，缺少核准或拒絕出口。
+- **3. 非確定性轉移衝突 (Non-Deterministic Conflict)：**
+  - 離開 `Paid` 的兩條 `cancelOrder` 線未設定互斥守衛，當 `amount == 150` 時兩條皆滿足，造成不可預期的競態衝突。
+- **4. 終止狀態不可逆約束 (Final State Invariant)：**
+  - 從終止狀態 `[*]` 拉出 `reopenOrder()` 嚴重違反 UML 規範；終止狀態代表生命週期結束，不可有離開箭頭。
+
+</div>
+</div>
+
+<!--
+這是訂單生命週期狀態機圖四大核心謬誤的標準解答：
+
+第一，嚴格區分狀態與動作。狀態代表物件在一段時間內的持久存在條件（如 PendingPayment、Paid）。刷卡扣款是瞬時執行的行為，必須寫在轉換線的 Action 上，不可佔據狀態方塊。
+
+第二，杜絕黑洞狀態。中間狀態必須至少具備一條對外的離開路徑，審查狀態必須提供「通過」或「不通過」的出口。
+
+第三，確保轉移條件確定性。同一個事件觸發的多條轉移線，其守衛條件必須完全互斥（例如 amount > 100 與 amount <= 100），避免執行期無法判斷該走哪一條。
+
+第四，終止狀態具備不可逆約束。終止節點代表物件實體生命終結，從終止節點伸出箭頭重新啟動訂單違反 UML 核心不變量。
+
+總結這張投影片，請記住這個核心觀念：瞬時動作放轉換線、狀態必有出口、守衛條件嚴格互斥、終止狀態絕對不可逆。
 -->
 ---
 ## AI 輔助指南：狀態機塑模 (State Machine Modeling)
@@ -3441,8 +3704,13 @@ PlantUML 帶來了「架構即代碼 (Diagram-as-Code)」的重大革新！
 
 ## PlantUML：以代碼驅動架構 (Code-Driven Architecture)
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/01_plantuml_code_driven_architecture.jpg" alt="PlantUML：以代碼驅動架構" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **圖表即代碼（以純文字建構架構）：**
 
@@ -3457,11 +3725,6 @@ PlantUML 帶來了「架構即代碼 (Diagram-as-Code)」的重大革新！
 - **自動排版引擎 (Automated Layout)：**
   - 內建 Graphviz 自動計算座標、連線與對齊，消除手動拖拉負擔。
 - **核心工程價值：** 取代脆弱的繪圖工具，使架構能納入 Git 進行 PR 審查。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/01_plantuml_code_driven_architecture.jpg" alt="PlantUML：以代碼驅動架構" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3489,8 +3752,13 @@ PlantUML 帶來了「架構即代碼 (Diagram-as-Code)」的重大革新！
 
 ### 終結圖框拖曳地獄，直接撰寫架構 (Stop Dragging Boxes)
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/02_stop_dragging_start_writing.jpg" alt="終結圖框拖曳地獄，直接撰寫架構" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **消除排版視覺摩擦與維護負債：**
 
@@ -3505,11 +3773,6 @@ PlantUML 帶來了「架構即代碼 (Diagram-as-Code)」的重大革新！
   ```
 - **工程優勢：**
   - 100% 專注於軟體抽象概念與結構關聯，告別調像素的無效勞動。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/02_stop_dragging_start_writing.jpg" alt="終結圖框拖曳地獄，直接撰寫架構" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3532,8 +3795,13 @@ PlantUML 帶來了「架構即代碼 (Diagram-as-Code)」的重大革新！
 
 ### 極簡環境配置：VS Code 即時渲染預覽 (Frictionless Setup)
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/03_frictionless_setup.jpg" alt="極簡環境配置：VS Code 即時渲染預覽" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **三步驟啟動本地端高效架構繪圖：**
 
@@ -3545,11 +3813,6 @@ PlantUML 帶來了「架構即代碼 (Diagram-as-Code)」的重大革新！
   - 按下 `Alt + D`（Mac: `Option + D`）啟動雙欄即時預覽。
 - **多格式直接匯出：**
   - 原生支援直接匯出為向量 **SVG**、高解析度 **PNG** 或終端友善的 **ASCII 文字圖**。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/03_frictionless_setup.jpg" alt="極簡環境配置：VS Code 即時渲染預覽" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3574,8 +3837,13 @@ PlantUML 帶來了「架構即代碼 (Diagram-as-Code)」的重大革新！
 
 ## 架構師的五大核心視角全景 (5 Essential Lenses)
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/04_five_essential_lenses.jpg" alt="架構師的五大核心視角全景" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **以統一語法覆蓋系統各維度架構視圖：**
 
@@ -3587,11 +3855,6 @@ PlantUML 帶來了「架構即代碼 (Diagram-as-Code)」的重大革新！
   - **循序圖 (Sequence)：** 跨生命線之時間時序訊息傳遞。
   - **狀態圖 (State)：** 單一實體生命週期狀態與事件躍遷。
 - **核心價值：** 一套語法完整貫通五大關鍵 UML 視圖。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/04_five_essential_lenses.jpg" alt="架構師的五大核心視角全景" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3620,8 +3883,13 @@ UML 圖表整體分支為兩大體系：
 
 ### 純文字宣告使用案例與功能邊界 (Use Case Syntax)
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/05_use_case_in_plantuml.jpg" alt="純文字宣告使用案例與功能邊界" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **以純文字定義功能需求與系統範圍：**
 
@@ -3638,11 +3906,6 @@ UML 圖表整體分支為兩大體系：
   Customer --> Checkout
   ```
 - **敏捷優勢：** 於編寫程式前迅速完成使用者故事對齊與範疇鎖定。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/05_use_case_in_plantuml.jpg" alt="純文字宣告使用案例與功能邊界" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3666,8 +3929,13 @@ UML 圖表整體分支為兩大體系：
 
 ### 類別圖語法：直接對映物件導向結構 (Class Syntax)
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/06_class_diagrams_in_plantuml.jpg" alt="類別圖語法：直接對映物件導向結構" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **精確鏡像物件導向代碼結構：**
 
@@ -3686,11 +3954,6 @@ UML 圖表整體分支為兩大體系：
     +void makeSound()
   }
   ```
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/06_class_diagrams_in_plantuml.jpg" alt="類別圖語法：直接對映物件導向結構" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3715,8 +3978,13 @@ UML 圖表整體分支為兩大體系：
 
 ### 類別關聯語法對照表：直觀象形符號 (Relationship Matrix)
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/07_class_relationships_matrix.jpg" alt="類別關聯語法對照表：直觀象形符號" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **易記且符合視覺形狀的關聯連線符號：**
 
@@ -3729,11 +3997,6 @@ UML 圖表整體分支為兩大體系：
 - **組合 (*--)：**
   - 強烈整體與部分歸屬；生命週期同生共死（實心菱形 `*`）。
 - **象形助記設計：** 符號外觀完全對映標準 UML 圖例形狀。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/07_class_relationships_matrix.jpg" alt="類別關聯語法對照表：直觀象形符號" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3758,8 +4021,13 @@ PlantUML 的符號設計充滿了象形巧思：
 
 ### 循序圖語法：純文字描繪時間順序 (Sequence Syntax)
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/08_sequence_diagrams_in_plantuml.jpg" alt="循序圖語法：純文字描繪時間順序" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **以純文字捕捉動態訊息時序流：**
 
@@ -3776,11 +4044,6 @@ PlantUML 的符號設計充滿了象形巧思：
   OrderService --> User : Confirm order placement
   ```
 - **自動對齊：** 生命線、啟動條與箭頭水平對齊全由引擎運算。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/08_sequence_diagrams_in_plantuml.jpg" alt="循序圖語法：純文字描繪時間順序" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3806,8 +4069,13 @@ PlantUML 的符號設計充滿了象形巧思：
 
 ### 循序圖四大核心語法要素剖析 (Sequence Anatomy)
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/09_anatomy_of_sequence_syntax.jpg" alt="循序圖四大核心語法要素剖析" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **PlantUML 循序圖之核心視覺骨架：**
 
@@ -3820,11 +4088,6 @@ PlantUML 的符號設計充滿了象形巧思：
 - **4. 生命週期事件 (Lifecycle Events)：**
   - 專屬語法（`create` / `destroy`），標示實體動態建立或銷毀。
 - **核心價值：** 簡短文字代碼產出像素級精確的互動圖。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/09_anatomy_of_sequence_syntax.jpg" alt="循序圖四大核心語法要素剖析" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3848,8 +4111,13 @@ PlantUML 的符號設計充滿了象形巧思：
 
 ### 活動圖與泳道語法：業務流程建模 (Activity Syntax)
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/10_activity_diagrams_in_plantuml.jpg" alt="活動圖與泳道語法：業務流程建模" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **業務流程與工作流建模語法：**
 
@@ -3867,11 +4135,6 @@ PlantUML 的符號設計充滿了象形巧思：
 - **進階流程控制支援：**
   - 以 `if (...) then (...) else (...) endif` 宣告決策菱形。
   - 以 `|泳道名稱|` 分割多角色職責泳道。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/10_activity_diagrams_in_plantuml.jpg" alt="活動圖與泳道語法：業務流程建模" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3895,8 +4158,13 @@ PlantUML 的符號設計充滿了象形巧思：
 
 ### 狀態圖語法：單一物件反應型生命週期 (State Syntax)
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/11_state_diagrams_in_plantuml.jpg" alt="狀態圖語法：單一物件反應型生命週期" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **單一物件反應型生命週期建模：**
 
@@ -3912,11 +4180,6 @@ PlantUML 的符號設計充滿了象形巧思：
 - **生命週期標記：**
   - `[*]`：同時代表起始偽狀態與結束終止狀態。
 - **核心價值：** 數秒內建立有限狀態機，具備清晰躍遷事件標註。
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/11_state_diagrams_in_plantuml.jpg" alt="狀態圖語法：單一物件反應型生命週期" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3990,6 +4253,9 @@ PlantUML 的符號設計充滿了象形巧思：
 ---
 ## 核心觀念統整：互動填空小測驗
 
+<div class="fill-blank-columns">
+<div class="fill-blank-text">
+
 測試你對本章核心架構概念的掌握度：
 
 1. 於 Rational Software 攜手催生 UML 標準化的「UML 三巨頭」為 Grady Booch、Jim Rumbaugh 與 **`___`**。
@@ -3999,6 +4265,9 @@ PlantUML 的符號設計充滿了象形巧思：
 5. 在 UML 類別圖中，實心黑色菱形 (`◆`) 代表 **`___`** 關聯，部分與整體生命週期緊密綁定連帶銷毀。
 6. 在 UML 類別圖中，空心菱形 (`◇`) 代表 **`___`** 關聯，部分具備獨立生存的生命週期。
 7. UML 狀態機圖中，轉換標籤的國際標準語法為：事件觸發 [**`___`**] / 執行動作。
+
+</div>
+</div>
 
 <!--
 讓我們透過填空小測驗進行熱烈的課堂回顧：

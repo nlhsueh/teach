@@ -1,0 +1,62 @@
+@startuml
+
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam roundCorner 8
+skinparam shadowing false
+
+skinparam state {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 1.5
+  FontColor #0b3c5d
+  FontSize 13
+  FontStyle bold
+  StartColor #0b3c5d
+  EndColor #0b3c5d
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #1e293b
+  FontSize 11
+  Thickness 1.5
+}
+
+skinparam note {
+  BackgroundColor #fef3c7
+  BorderColor #d97706
+  FontColor #92400e
+  FontSize 11
+  BorderThickness 1
+}
+
+
+[*] -right-> Placed : customerPays()
+
+state Placed {
+  Placed : entry / startAcceptTimer(120s)
+}
+
+state Accepted {
+  Accepted : entry / printKitchenTicket()
+}
+
+state Cancelled #fee2e2 {
+  Cancelled : entry / logCancellation()
+}
+
+Placed -right-> Accepted : **acceptOrder()**\n**[restaurantOpen && capacityReady]** /\nnotifyCustomer("Order Accepted")
+
+Placed -down-> Cancelled : **cancelOrder(reason)**\n**[elapsedTime <= 120s]** /\nprocessFullRefund(); notifyKitchen()
+
+note on link
+  <color:#0b3c5d>**UML Transition Equation:**</color>
+  **Event [Guard] / Action**
+  • **Event:** cancelOrder(reason) (Stimulus)
+  • **[Guard]:** [elapsedTime <= 120s] (Boolean Gate)
+  • **/ Action:** processFullRefund() (Atomic Effect)
+end note
+
+Cancelled -right-> [*]
+@enduml

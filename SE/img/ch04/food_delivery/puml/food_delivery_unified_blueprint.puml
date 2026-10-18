@@ -1,0 +1,76 @@
+@startuml
+
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam roundCorner 8
+skinparam shadowing false
+
+skinparam state {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 1.5
+  FontColor #0b3c5d
+  FontSize 13
+  FontStyle bold
+  StartColor #0b3c5d
+  EndColor #0b3c5d
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #1e293b
+  FontSize 11
+  Thickness 1.5
+}
+
+skinparam note {
+  BackgroundColor #fef3c7
+  BorderColor #d97706
+  FontColor #92400e
+  FontSize 11
+  BorderThickness 1
+}
+
+
+[*] -right-> Placed : customerPays()
+
+state Placed {
+  Placed : entry / startAcceptTimer(120s)
+}
+
+state Cancelled #fee2e2 {
+  Cancelled : entry / logCancellation()
+}
+
+Placed -down-> Cancelled : cancelOrder [t <= 120s] / refund()
+
+state ActiveOrder {
+  state "Kitchen (Region 1)" as KRegion {
+    [*] --> Cooking
+    Cooking -down-> Packaged : mealPrepared()
+  }
+  ||
+  state "Courier Dispatch (Region 2)" as CRegion {
+    [*] --> MatchingRider
+    MatchingRider -down-> RiderAtStore : arrived()
+  }
+}
+
+Placed -right-> ActiveOrder : acceptOrder() / notifyKitchen()
+
+state SuspendedOrder #fef3c7 {
+  SuspendedOrder : do / customerSupportCheck()
+}
+
+ActiveOrder -down-> SuspendedOrder : paymentAlert()
+SuspendedOrder -up-> ActiveOrder[H*] : alertCleared() / resume()
+
+state OutForDelivery {
+  OutForDelivery : entry / startGPSTracking()
+  OutForDelivery : exit / stopGPSTracking()
+}
+
+ActiveOrder -right-> OutForDelivery : handoverToCourier()
+OutForDelivery -right-> Delivered #dcfce7 : confirmDropoff()
+Delivered -right-> [*]
+@enduml

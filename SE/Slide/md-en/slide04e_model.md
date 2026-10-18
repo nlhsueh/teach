@@ -818,8 +818,13 @@ To summarize this slide, remember this key takeaway: Use include for mandatory s
 
 ### Diagnostic Exercise: Spot the 3 Flaws in this Use Case Model
 
-<div class="split46">
-<div class="left" style="font-size: 19.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/food_delivery/bad_usecase_model.svg" alt="Bad Use Case Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Audit this student's draft diagram:**
 Can you spot the **3 critical modeling mistakes (anti-patterns)**?
@@ -830,11 +835,6 @@ Can you spot the **3 critical modeling mistakes (anti-patterns)**?
   - Look closely at `Process Payment` and `Place Food Order`. What is wrong with the `<<include>>` arrow?
 - **3. Boundary & Actor Placement:**
   - Examine `Chef` and `MySQL Database`. What violates UML system boundary principles?
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/food_delivery/bad_usecase_model.svg" alt="Bad Use Case Model Example" style="width: 100% !important; max-width: 580px !important; max-height: 480px !important; object-fit: contain;" />
 
 </div>
 </div>
@@ -852,6 +852,44 @@ Flaw 3 (Boundary & Actor Violations):
 First, Chef is an actor (a human role) but is drawn inside the system boundary box—all actors must remain strictly outside the boundary. Second, MySQL Database is drawn as an external actor with a data-flow arrow ('writes SQL'). An internal database is part of the system's internal implementation, not an external actor!
 
 To summarize this slide, remember this key takeaway: Avoid micro UI flowcharting, ensure include arrows point toward the included use case, and keep internal databases and actors outside system boundary errors.
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### Diagnostic Solution: 3 Flaws in Use Case Model Explained
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/food_delivery/corrected_usecase_model.svg" alt="Bad Use Case Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**Audit Findings & Architectural Corrections:**
+
+- **1. Granularity & Workflow (Anti-pattern: Flowcharting):**
+  - `Enter Address` & `Click Submit` are UI steps inside `Place Order`, not standalone value-yielding use cases.
+- **2. Inverted Include Relationship:**
+  - Base use cases include child subroutines. The `<<include>>` arrow must point: `Place Food Order` ➔ `Process Payment`.
+- **3. Boundary & Actor Violations:**
+  - `Chef` is an actor and must remain outside the boundary box; `MySQL Database` is internal storage, not an external actor.
+
+</div>
+</div>
+
+<!--
+Here are the solutions to the three modeling anti-patterns:
+
+First, avoid functional decomposition. Use cases represent complete, observable goals that yield measurable value to the actor. Micro UI button clicks like 'Click Submit Button' belong in user interface prototypes or interaction descriptions, never as independent use case ovals.
+
+Second, the <<include>> dependency points toward the included subroutine. The base use case 'Place Food Order' initiates and includes 'Process Payment', so the arrow must point toward 'Process Payment'.
+
+Third, actors are external entities outside the system boundary. The Chef is placed inside the boundary box, which is invalid. Furthermore, an internal database is not an actor—it is internal implementation.
+
+To summarize this slide, remember this key takeaway: Keep use cases goal-oriented, orient include dependencies from base to subroutine, and position only true external actors outside system boundaries.
 -->
 
 ---
@@ -1298,8 +1336,13 @@ To summarize this slide, remember this key takeaway: A real class diagram combin
 
 ### Comprehension Check: Reading the Order Model
 
-<div class="split46"> 
-<div class="left" style="font-size: 16px; line-height: 1.4;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_class/11_order_model_example.jpg" alt="Order Model" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Evaluate whether each statement about the diagram is Correct or Incorrect:**
 
@@ -1310,11 +1353,6 @@ To summarize this slide, remember this key takeaway: A real class diagram combin
 - **5.** `LineItem` realizes the contract and operations defined by `PaymentInterface`.
 - **6.** A newly registered `Customer` can exist in the system with zero orders.
 - **7.** A single `Order` can be jointly owned and shared by two different `Customer`s.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_class/11_order_model_example.jpg" alt="Order Model" style="width: 100% !important; max-width: 500px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -1387,25 +1425,25 @@ To summarize this slide, remember this key takeaway: OrderItem dies when the Ord
 
 ### Diagnostic Exercise: Spot the Flaws in this Baseball Class Model
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/baseball/bad_baseball_class_model.svg" alt="Bad Baseball Class Model" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Audit this student's draft model of a Baseball Game:**
 Can you spot the critical modeling flaws across **encapsulation, inheritance, and relationships**?
 
-* **1. Whole-Part & Lifecycle (Aggregation vs. Composition):**
+- **1. Whole-Part & Lifecycle (Aggregation vs. Composition):**
   - Why is `BaseballGame` linked to `Team` with a solid diamond (`◆`)? What happens when a game record is deleted?
-* **2. Inheritance vs. Membership (is-a vs. has-a):**
+- **2. Inheritance vs. Membership (is-a vs. has-a):**
   - Look closely at `Player` and `Team`. What is fundamentally wrong with `Team <|-- Player`?
-* **3. Multiplicity & Cardinality:**
+- **3. Multiplicity & Cardinality:**
   - Can a game have only `1` team and `1` inning? How many teams and innings does a baseball game actually have?
-* **4. Encapsulation & Responsibility Distribution:**
+- **4. Encapsulation & Responsibility Distribution:**
   - Why are all attributes `+` public? Does `pitchBall()` belong in `BaseballGame` or `Player`? Should a single `Team` declare who won?
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/baseball/bad_baseball_class_model.svg" alt="Bad Baseball Class Model" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
 
 </div>
 </div>
@@ -1426,6 +1464,44 @@ Flaw 4 (Broken Encapsulation & Misplaced Responsibilities):
 First, all attributes use '+' (public), destroying data encapsulation. Second, pitchBall() is placed inside BaseballGame instead of Player/Pitcher. Third, inning scores (inning1_score, inning2_score...) are hardcoded as attributes in BaseballGame rather than encapsulated dynamically in Inning. Finally, calculateWinner() is in Team—a single team cannot unilaterally declare itself the winner; that is the responsibility of BaseballGame!
 
 To summarize this slide, remember this key takeaway: Distinguish is-a from has-a, never use composition where parts outlive the whole, enforce strict attribute visibility, and assign operations to the classes that own the data.
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### Diagnostic Solution: Flaws in Baseball Class Model Explained
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/baseball/corrected_baseball_class_model.svg" alt="Bad Baseball Class Model" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**Audit Findings & Architectural Corrections:**
+
+- **1. Composition vs. Aggregation (`BaseballGame` & `Team`):**
+  - Solid diamond (`◆`) destroys `Team` if a game is deleted! Teams outlive games; use aggregation (`◇`). A game has `2` teams and `9` innings.
+- **2. Inheritance Abuse (is-a vs. has-a):**
+  - `Team <|-- Player` is invalid. A Player is a member (has-a) of a Team, not a subtype of a Team.
+- **3. Broken Encapsulation & Responsibility Misplacement:**
+  - All attributes must be private (`-`). `pitchBall()` belongs in `Player`. A single Team cannot decide `calculateWinner()` unilaterally.
+
+</div>
+</div>
+
+<!--
+Here are the solutions to the baseball class diagram audit:
+
+First, never use composition where parts outlive the whole. If a game record is deleted, the Yankees team doesn't cease to exist! It should be an aggregation or association. Also, a baseball game must have exactly two teams (Home and Away) and typically 9 innings.
+
+Second, avoid inheritance abuse. A player is not a kind of team—a player is a member of a team. Membership is a whole-part relationship, modeled with aggregation or association.
+
+Third, enforce encapsulation and cohesion. Attributes must be private to prevent external mutation. The action pitchBall() is executed by a player, not the game coordinator. And calculateWinner() requires comparing both teams, which is the responsibility of BaseballGame.
+
+To summarize this slide, remember this key takeaway: Distinguish is-a from has-a, guard against destructive composition, and assign operations to the classes that hold the relevant state.
 -->
 
 ---
@@ -1784,6 +1860,15 @@ To summarize this slide, remember this key takeaway: Use cases capture user goal
 ### The Interaction Canvas: Code to Sequence Mapping
 
 <div class="puml-output-grid">
+<div class="puml-diagram-col">
+
+<div class="puml-title">UML Sequence Diagram: 3 Objects & 7 Events</div>
+
+<div class="diagram-wrapper">
+  <img src="../../img/ch04/sequence/code_to_sequence_mapping.svg" alt="Code to Sequence Diagram Mapping" />
+</div>
+
+</div>
 <div class="puml-code-col">
 
 <div class="puml-title">Source Code (Java): Execution Flow</div>
@@ -1809,15 +1894,6 @@ class OrderService {
     }
 }
 ```
-
-</div>
-<div class="puml-diagram-col">
-
-<div class="puml-title">UML Sequence Diagram: 3 Objects & 7 Events</div>
-
-<div class="diagram-wrapper">
-  <img src="../../img/ch04/sequence/code_to_sequence_mapping.svg" alt="Code to Sequence Diagram Mapping" />
-</div>
 
 </div>
 </div>
@@ -2010,8 +2086,13 @@ To summarize this slide, remember this key takeaway: Control objects orchestrate
 
 ### Diagnostic Exercise: Spot the Flaws in this Sequence Diagram
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/sequence/bad_sequence_model.svg" alt="Bad Sequence Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Audit this student's draft Sequence Diagram for room booking:**
 Can you identify the critical mistakes across **layering, message syntax, and chronological flow**?
@@ -2024,11 +2105,6 @@ Can you identify the critical mistakes across **layering, message syntax, and ch
   - Inspect the guards on the `alt` block. Why are `[Room Available]` and `[else Payment Successful]` semantically invalid?
 - **4. Chronological Causality & Activations:**
   - In what order do `showSuccessMessage()` and `INSERT INTO bookings` occur? Does the DB activation ever close?
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/sequence/bad_sequence_model.svg" alt="Bad Sequence Model Example" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
 
 </div>
 </div>
@@ -2049,6 +2125,48 @@ Flaw 4 (Dangling Activation Lifetime):
 Notice the activation bar on MySQL_DB at message [9]: It is activated but never deactivated, hanging indefinitely. Execution specifications must terminate cleanly when operations finish.
 
 To summarize this slide, remember this key takeaway: Sequence diagrams must enforce architectural layering, strictly pair mutually exclusive fragment guards, maintain correct chronological order, and cleanly terminate activation lifelines.
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### Diagnostic Solution: 4 Flaws in Sequence Diagram Explained
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/sequence/corrected_sequence_model.svg" alt="Bad Sequence Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**Audit Findings & Architectural Corrections:**
+
+- **1. Architecture Layering Violation:**
+  - `BookingUI` must never send raw SQL (`SELECT ...`) directly to `MySQL_DB`. Interactions must route through the Controller/Service layer.
+- **2. Invalid `alt` Combined Fragment Guards:**
+  - Branches in an `alt` block must evaluate the same domain condition (e.g., `[Room Available]` vs. `[else / Room Unavailable]`).
+- **3. Chronological Paradox / Premature Confirmation:**
+  - Database write (`INSERT INTO bookings`) must complete *before* `showSuccessMessage()` confirms booking to the user.
+- **4. Dangling Lifeline Activation:**
+  - The activation bar on `MySQL_DB` must terminate immediately when the DB query completes.
+
+</div>
+</div>
+
+<!--
+Here are the solutions to the sequence diagram critique:
+
+First, maintain strict architectural layering. The UI must never bypass the business layer to execute raw SQL against the database. Doing so couples the presentation layer directly to schema details and breaks 3-tier/BCE separation.
+
+Second, alt combined fragment branches must be mutually exclusive conditions on the same state. Pairing [Room Available] with [else Payment Successful] mixes two completely unrelated business checks into a single decision diamond.
+
+Third, maintain correct chronological order. The system cannot tell the user their room is confirmed before the reservation record is committed to the database. If the database crashes, the user holds an invalid booking.
+
+Fourth, activation boxes represent execution duration. Lifelines must cleanly deactivate when operations finish.
+
+To summarize this slide, remember this key takeaway: Route calls through architectural layers, use matching mutually exclusive alt guards, persist state before confirmation, and terminate activations cleanly.
 -->
 
 ---
@@ -2291,7 +2409,12 @@ To summarize this slide, remember this key takeaway: Activity diagrams replace c
 ### Three Triggers for Activity Modeling
 
 <div class="split64">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/03_triggers.jpg" alt="Three Triggers for Behavioral Modeling" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **When to Reach for UML Activity Diagrams:**
 
@@ -2304,11 +2427,6 @@ To summarize this slide, remember this key takeaway: Activity diagrams replace c
 - **3. Contextual Mapping:**
   - **Pre/Post-Condition Contracts:** Identify exact state invariants required before actions start and verified upon completion.
 - **Core Value:** Activity models bridge high-level use cases and low-level code implementation.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/03_triggers.jpg" alt="Three Triggers for Behavioral Modeling" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2380,8 +2498,13 @@ To summarize this slide, remember this key takeaway: Workflows start at an initi
 
 ### Conditional Logic: Decision & Merge Nodes
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/06_conditional.jpg" alt="Handling Conditional System Logic: Decision & Merge Nodes" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Handling Mutually Exclusive Paths in Workflows:**
 
@@ -2392,11 +2515,6 @@ To summarize this slide, remember this key takeaway: Workflows start at an initi
   - **Reconvergence Point:** Brings alternative paths back into a single continuing flow (e.g., before `Save File`).
   - **No Synchronization Waiting:** Does **NOT** wait for multiple tokens; whichever branch arrives first continues immediately.
 - **Key Takeaway:** Diamonds handle **if-else** choices, safely dividing and reuniting mutually exclusive logic.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/06_conditional.jpg" alt="Handling Conditional System Logic: Decision & Merge Nodes" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2417,8 +2535,13 @@ To summarize this slide, remember this key takeaway: Decision diamonds split flo
 
 ### Concurrency: Fork & Join Nodes
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/07_parallel.jpg" alt="Orchestrating Parallel System Actions: Fork & Join Nodes" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Orchestrating Parallel Threads & Synchronization:**
 
@@ -2429,11 +2552,6 @@ To summarize this slide, remember this key takeaway: Decision diamonds split flo
   - **Synchronization Barrier:** All incoming parallel branches must finish before outgoing flow (`Close Order`) can proceed.
   - **Waiting Guarantee:** If billing takes 1s and packing takes 10s, billing halts at the join bar until packing arrives.
 - **Key Takeaway:** Forks spawn parallel concurrent threads; joins synchronize and wait for all threads to complete.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/07_parallel.jpg" alt="Orchestrating Parallel System Actions: Fork & Join Nodes" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2455,8 +2573,13 @@ To summarize this slide, remember this key takeaway: Fork bars launch concurrent
 
 ## The Multi-Actor Accountability Problem
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/09_swimlane.jpg" alt="The Multi-Actor Accountability Problem" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Clear Ownership Eliminates Workflow Ambiguity:**
 
@@ -2467,11 +2590,6 @@ To summarize this slide, remember this key takeaway: Fork bars launch concurrent
   - **Boundary Separation:** Clear vertical columns partition responsibilities (e.g., `Employee` vs. `Manager`).
   - **Explicit Crossing Points:** Cross-partition arrows explicitly define handoffs (e.g., employee submits → manager reviews & approves).
 - **Core Principle:** Swimlanes transform tangled process spaghetti into crisp, legally unambiguous operational boundaries.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/09_swimlane.jpg" alt="The Multi-Actor Accountability Problem" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2493,8 +2611,13 @@ To summarize this slide, remember this key takeaway: Swimlanes divide the canvas
 
 ### Swimlanes & Partitions: Grouping Activities
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/10_grouping.jpg" alt="Grouping Activities by Actor or Thread: Swimlanes / Partitions" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Mapping Seamless Actor Handoffs in Practice:**
 
@@ -2506,11 +2629,6 @@ To summarize this slide, remember this key takeaway: Swimlanes divide the canvas
   - **2. Boundary Crossing:** Flow crosses to the Registrar for validation (`Inspect Forms` → `Determine Proper Fill`).
   - **3. Notification & Return:** Registrar informs student (`Inform Student`), returning control to the Applicant to `Pay Initial Tuition`.
 - **Key Takeaway:** Every cross-lane arrow is a formal contract interface between two distinct actors or architectural components.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/10_grouping.jpg" alt="Grouping Activities by Actor or Thread: Swimlanes / Partitions" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2563,8 +2681,13 @@ To summarize this slide, remember this key takeaway: Activity diagrams combine a
 
 ### The Unified Workflow Model
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/12_workflow.jpg" alt="The Unified Workflow Model: Swimlanes + Concurrency + Logic" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Combining Swimlanes, Concurrency, & Logic:**
 
@@ -2577,11 +2700,6 @@ To summarize this slide, remember this key takeaway: Activity diagrams combine a
   - **Retry Diamond:** In `Actor C`, `[Success?]` loops on failure and proceeds on success.
   - **Join Bar:** Waits for both the `Analysis Report` and successful sub-process before compiling output and delivering result.
 - **Key Takeaway:** Unifies roles, parallel tasks, stateful objects, and conditional loops into an enterprise-grade blueprint.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_act/12_workflow.jpg" alt="The Unified Workflow Model: Swimlanes + Concurrency + Logic" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2644,8 +2762,13 @@ To summarize this slide, remember this key takeaway: Fork/Join manages concurren
 
 ### Diagnostic Exercise: Spot the Flaws in this Activity Diagram
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/activity/bad_activity_model.svg" alt="Bad Activity Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Audit this student's draft Activity Diagram for food fulfillment:**
 Can you identify the critical mistakes across **concurrency, branching, and swimlane roles**?
@@ -2658,11 +2781,6 @@ Can you identify the critical mistakes across **concurrency, branching, and swim
   - Follow the `[Out of Stock]` path after `Cancel Order`. What essential UML node is missing before flow terminates?
 - **4. Deadlock vs. Synchronization:**
   - If concurrent threads do not properly converge with matching join semantics, what runtime failure occurs?
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/activity/bad_activity_model.svg" alt="Bad Activity Model Example" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
 
 </div>
 </div>
@@ -2683,6 +2801,48 @@ Flaw 4 (Deadlock Hazard on Asymmetric Synchronization):
 If mutually exclusive decision paths are mistakenly fed into a Join bar, the join bar will wait indefinitely for the missing token to arrive, deadlocking the workflow. Always use Merge diamonds to reunite mutually exclusive paths, and reserve Join bars strictly for synchronizing concurrent parallel threads.
 
 To summarize this slide, remember this key takeaway: Never put guards on a fork bar, strictly verify swimlane accountability, and ensure all terminating branches reach an explicit final node.
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### Diagnostic Solution: 4 Flaws in Activity Diagram Explained
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/activity/corrected_activity_model.svg" alt="Bad Activity Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**Audit Findings & Architectural Corrections:**
+
+- **1. Fork Bar vs. Decision Diamond:**
+  - A `fork` bar spawns parallel threads running *simultaneously*. Mutually exclusive paths (`[Card]` vs. `[Cash]`) require a Decision diamond.
+- **2. Swimlane Responsibility Inversion:**
+  - Roles are absurdly reversed: `Customer` enters delivery address; `Kitchen` cooks food and packages the meal.
+- **3. Dangling Control Flow:**
+  - The `[Out of Stock]` path after `Cancel Order` terminates into thin air; it must reach an explicit Activity Final node (`◉`).
+- **4. Deadlock Hazard on Join:**
+  - Feeding mutually exclusive decision branches into a Join bar causes deadlock waiting for non-existent concurrent tokens.
+
+</div>
+</div>
+
+<!--
+Here are the solutions to the activity diagram audit:
+
+First, never place mutually exclusive guard conditions on a fork bar. A fork bar initiates concurrent parallel threads where all outgoing branches fire simultaneously. If you put Card and Cash guards on a fork, the system will attempt to charge the card AND prepare cash change at the same time! Mutually exclusive choices require a Decision diamond.
+
+Second, verify swimlane accountability. The student placed 'Cook Food' in the Customer lane and 'Enter Delivery Address' in the Kitchen lane, reversing core responsibilities.
+
+Third, prevent dangling termination. UML activity flows cannot stop abruptly into empty space. The Cancel Order path must connect to an Activity Final node.
+
+Fourth, understand join synchronization. A Join bar waits for tokens to arrive on ALL incoming arrows before firing. Merging mutually exclusive paths with a join bar causes permanent deadlock.
+
+To summarize this slide, remember this key takeaway: Use Decision diamonds for branching, verify actor swimlanes, always terminate dangling flows, and never join mutually exclusive paths.
 -->
 
 ---
@@ -2905,8 +3065,13 @@ To summarize this slide, remember this key takeaway: State machines model how re
 
 ### Same Event, Different Results Based on State
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/02_same_event_different_results.jpg" alt="The Same Event Yields Different Results Based on State" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Context-Dependent Behavioral Execution:**
 
@@ -2916,11 +3081,6 @@ To summarize this slide, remember this key takeaway: State machines model how re
   - **Current State = Off (Blue Path):** The switch closes the circuit and transitions light to `On`.
   - **Current State = On (Red Path):** The switch breaks the circuit and transitions light to `Off`.
 - **Core Architectural Invariant:** In reactive systems, runtime behavior is a function of `(Current State, Event) → (Next State, Action)`.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/02_same_event_different_results.jpg" alt="The Same Event Yields Different Results Based on State" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2945,8 +3105,13 @@ To summarize this slide, remember this key takeaway: In state-dependent systems,
 
 ### Positioning State Machines in the UML Ecosystem
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/03_positioning_within_uml_ecosystem.jpg" alt="Positioning the Tool Within the UML Ecosystem" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Complementary Behavioral Perspectives:**
 
@@ -2957,11 +3122,6 @@ To summarize this slide, remember this key takeaway: In state-dependent systems,
   - **Scope:** A **single key entity** (e.g., `Order`, `Connection`).
   - **Coverage:** Exhaustively captures **all possible states, events, and transitions** over its entire lifetime.
 - **Architectural Rule:** Use Sequence Diagrams for inter-service protocols; use State Machines for complex entity integrity.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/03_positioning_within_uml_ecosystem.jpg" alt="Positioning the Tool Within the UML Ecosystem" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -2984,8 +3144,13 @@ To summarize this slide, remember this key takeaway: Sequence diagrams show many
 
 ## Defining the State: A Lifecycle Interval
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/04_state_defined_lifecycle_interval.jpg" alt="A State is a Defined Interval in an Object's Lifecycle" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **The Formal Lifecycle Interval:**
 
@@ -2997,11 +3162,6 @@ To summarize this slide, remember this key takeaway: Sequence diagrams show many
 - **3. Final State (◉):**
   - Bullseye notation marking lifecycle termination and resource deallocation.
 - **Core Rule:** Continuous/server processes omit final states; workflow entities terminate at final states.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/04_state_defined_lifecycle_interval.jpg" alt="A State is a Defined Interval in an Object's Lifecycle" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3027,8 +3187,13 @@ To summarize this slide, remember this key takeaway: A state is a sustained time
 
 ### The Four Triggers of State Transitions
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/05_four_triggers_of_state_transitions.jpg" alt="The Four Triggers That Initiate State Transitions" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **The Four Event Stimuli in UML:**
 
@@ -3038,14 +3203,9 @@ To summarize this slide, remember this key takeaway: A state is a sustained time
   - Synchronous invocation of an operation or method on the object's interface.
 - **3. Time Event (⌛ Hourglass):**
   - Temporal trigger based on elapsed time (e.g., `after(30s)` or deadline expiration).
-- **4. Change Event (⟦⟧ Condition):**
+- **4. Change Event ([≥] Condition):**
   - Continuous monitoring trigger firing when a boolean expression transitions from false to true (e.g., `when(temp > 100)`).
   - **Key Takeaway:** Every state transition must be driven by exactly one of these four event types.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/05_four_triggers_of_state_transitions.jpg" alt="The Four Triggers That Initiate State Transitions" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3070,8 +3230,13 @@ To summarize this slide, remember this key takeaway: Transitions are triggered b
 
 ### The Mechanics of a Transition: Event, Guard, Action
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/06_mechanics_of_a_transition.jpg" alt="The Mechanics of a Transition" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Anatomy of the Transition Pipeline:**
 
@@ -3083,11 +3248,6 @@ To summarize this slide, remember this key takeaway: Transitions are triggered b
   - **3. Action Execution:** Atomic, instantaneous action effect runs in zero logical time.
   - **4. State Change:** System transitions out of Source State into Target State.
 - **Completion Transitions:** Transitions without triggers fire automatically when internal state activities finish.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/06_mechanics_of_a_transition.jpg" alt="The Mechanics of a Transition" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3113,10 +3273,62 @@ To summarize this slide, remember this key takeaway: A transition moves between 
 
 <!-- _class: v-center -->
 
+### Transition in Action: Food Delivery Order Example
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/food_delivery/food_delivery_transition_mechanics.svg" alt="Transition in Action: Food Delivery Order Example" style="width: 100% !important; max-width: 680px !important; border-radius: 6px;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**Applying the Transition Pipeline to Food Delivery:**
+
+- **Concrete Transition Syntax:**
+  - `cancelOrder(reason) [elapsedTime <= 120s] / processFullRefund(); notifyKitchen()`
+- **1. Event Stimulus (`cancelOrder`):**
+  - Customer triggers cancellation from the mobile app.
+- **2. Guard Condition (`[elapsedTime <= 120s]`):**
+  - Order allows cancellation strictly within 2 minutes of placement. If `elapsedTime > 120s`, the guard evaluates to **false**, blocking transition to `Cancelled`.
+- **3. Action Effect (`/ processFullRefund()`):**
+  - Atomic side-effect executes immediately during the transition to refund the payment.
+- **Target State (`Cancelled`):**
+  - State enters `Cancelled` and executes `entry / logCancellation()`.
+
+</div>
+</div>
+
+<!--
+Let's see the transition equation in action using our Food Delivery system!
+
+Look at the state Placed on the left. The customer has just paid.
+
+Now look at the downward transition:
+The Event is cancelOrder(reason)—the customer taps cancel.
+Next, the Guard Condition in square brackets checks: Is the elapsed time within 120 seconds?
+If true, the transition fires and executes the Action after the slash: processFullRefund() and notifyKitchen().
+Finally, the system arrives at the target state Cancelled!
+
+What happens if more than two minutes have passed?
+The guard evaluates to false! The transition does NOT fire, and the order remains in Placed, eventually moving to Accepted once the kitchen accepts it.
+
+To summarize this slide, remember this key takeaway: A transition only fires when its event occurs and its guard condition is true, executing the atomic action before entering the target state.
+-->
+
+---
+
+<!-- _class: v-center -->
+
 ## Execution Engines: Actions vs. Activities
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/07_actions_vs_activities.jpg" alt="Execution Engines: Actions vs. Activities" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Atomic Execution vs. Durational Behavior:**
 
@@ -3129,11 +3341,6 @@ To summarize this slide, remember this key takeaway: A transition moves between 
   - **Interruptibility:** **Immediately interruptible** if an outgoing transition event fires.
   - **Placement:** Declared as `do / [activity]`.
 - **Crucial Rule:** Never put long-running I/O or background loops inside an Action.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/07_actions_vs_activities.jpg" alt="Execution Engines: Actions vs. Activities" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3156,39 +3363,43 @@ To summarize this slide, remember this key takeaway: Actions are instantaneous a
 
 ### Boundary Executions: Entry and Exit Actions
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
 
-**Guaranteed Lifecycle Invariant Hooks:**
-
-- **Entry Action (`entry / action`):**
-  - Fires automatically the exact instant the state is entered.
-  - Executes regardless of which transition path arrived at the state.
-  - **Use Case:** Resource allocation, initializing timers, setting status flags.
-- **Exit Action (`exit / exitAction`):**
-  - Fires automatically the exact instant the state is abandoned.
-  - Executes regardless of which outgoing transition was taken.
-  - **Use Case:** Resource cleanup, flushing buffers, canceling watchdog timers.
-- **Architectural Value:** Encapsulates initialization/cleanup inside the state, eliminating duplicate transition code.
+<img src="../../img/ch04/food_delivery/food_delivery_boundary_execution.svg" alt="Boundary Executions: Entry and Exit Actions" style="width: 100% !important; max-width: 680px !important; border-radius: 6px;" />
 
 </div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
-<img src="../../img/ch04/nb_state_machine/08_entry_and_exit_actions.jpg" alt="Boundary Executions: Entry and Exit Actions" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+**Guaranteed Lifecycle Hooks in Food Delivery:**
+
+- **Entry Action (`entry / startGPSTracking()`):**
+  - Guaranteed to fire immediately whenever entering `OutForDelivery` from `courierPickUp()`.
+  - Starts real-time rider GPS tracking and alerts customer "Rider En Route".
+- **Ongoing Activity (`do / streamRiderGPSCoordinates()`):**
+  - Continues streaming GPS location throughout the delivery journey; immediately interruptible upon arrival or timeout.
+- **Exit Action (`exit / stopGPSTracking()`):**
+  - Guaranteed to execute regardless of whether delivery succeeds (`Delivered`) or fails (`DeliveryFailed`).
+  - Stops battery-heavy GPS tracking and logs drop-off timestamp.
+- **Architectural Value:** Encapsulates initialization and cleanup inside `OutForDelivery`, eliminating duplicate code across multiple exit arrows.
 
 </div>
 </div>
 
 <!--
-Look at how boundary actions protect state execution: Entry and Exit Actions.
+Look at how boundary actions protect state execution in Food Delivery: Entry and Exit Actions!
 
-In this diagram, look at the state `Check Book Status` containing a `BookCopy Object`.
+In this diagram, look at the state OutForDelivery.
 
-Notice the blue spark on the left: `entry / action`. This action executes automatically the exact millisecond the state is entered, no matter which transition brought the system there!
+Notice the blue entry actions at the top: entry / startGPSTracking() and notifyCustomer().
+The exact millisecond the courier picks up the food and the state is entered, GPS tracking starts automatically!
 
-Notice the red spark on the right: `exit / action`. This action executes automatically the exact millisecond the state is exited, ensuring clean teardown and cleanup!
+Inside the state, look at the grey do activity: streamRiderGPSCoordinates(). This is a durational activity that streams live coordinates while the rider travels.
 
-Using entry and exit actions guarantees initialization and cleanup logic without duplicating code across multiple transition arrows.
+Now look at the red exit actions: exit / stopGPSTracking() and logDropoffTimestamp().
+Whether the rider delivers the meal successfully or reports addressNotFound, the exit actions are GUARANTEED to execute upon departure!
+
+By binding setup and teardown to state boundaries, you never duplicate cleanup code across different exit transitions.
 
 To summarize this slide, remember this key takeaway: Entry and exit actions guarantee setup and cleanup executions every time a state boundary is crossed.
 -->
@@ -3199,39 +3410,44 @@ To summarize this slide, remember this key takeaway: Entry and exit actions guar
 
 ## Scaling Architecture: Composite & Concurrent States
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
 
-**Taming State Explosions via Hierarchy:**
-
-- **1. Simple State (Atomic):**
-  - Single state with no internal decomposition (e.g., `Active`).
-- **2. Composite State (Nested Hierarchy):**
-  - An outer super-state encapsulating nested substates (e.g., `Heater` containing `Idle`, `Heating`, `Cooling`).
-  - Outer transitions apply uniformly to all substates, drastically reducing arrow clutter.
-- **3. Concurrent State (Orthogonal Regions):**
-  - Split by dashed lines into orthogonal parallel regions.
-  - Substates in all regions execute simultaneously and independently.
-- **Core Value:** Scales flat, chaotic state graphs into clean, modular abstractions.
+<img src="../../img/ch04/food_delivery/food_delivery_composite_concurrent.svg" alt="Scaling Architecture: Composite & Concurrent States" style="width: 100% !important; max-width: 680px !important; border-radius: 6px;" />
 
 </div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
-<img src="../../img/ch04/nb_state_machine/09_scaling_architecture_complexity_matrix.jpg" alt="Scaling Architecture: The Complexity Matrix" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+**Taming Order Lifecycle Complexity via Hierarchy:**
+
+- **1. Simple State (`Placed`):**
+  - Single atomic state awaiting restaurant acceptance.
+- **2. Composite State (`OrderFulfillment`):**
+  - An outer super-state encapsulating multi-step preparation and dispatch.
+  - Outer transitions (e.g., `emergencyCancel() / fullRefund()`) uniformly govern all substates, drastically reducing arrow clutter.
+- **3. Concurrent Regions (`||` Orthogonal Tracks):**
+  - **Kitchen Pipeline (Region 1):** `Cooking` → `Packaged` → `AwaitingPickup`.
+  - **Courier Logistics (Region 2):** `FindingCourier` → `CourierAssigned` → `CourierAtRestaurant`.
+  - Both pipelines execute simultaneously and independently in parallel!
 
 </div>
 </div>
 
 <!--
-As software grows complex, flat state diagrams become tangled webs of arrows. Look at how UML scales architecture across three columns.
+As systems scale, flat state diagrams become tangled webs of arrows. Look at how UML scales architecture in Food Delivery!
 
-In the first column, we have a Simple State—like `Active`—which is a single atomic state.
+Look at the first state on the left: Placed is a Simple State—a single atomic state.
 
-In the second column, we have a Composite State. Notice the `Heater` state: it acts as an outer container holding nested substates: `Idle`, `Heating`, and `Cooling`. This hides internal complexity!
+Next, look at the large box: OrderFulfillment is a Composite State. It encapsulates the complex internal fulfillment workflow into a single container.
+Notice the emergencyCancel transition at the bottom: because it is attached to the outer boundary, it applies to ALL substates at once! You don't need five separate cancellation arrows!
 
-In the third column, we have a Concurrent State. A dashed horizontal line splits the state into two parallel execution tracks: Task A on top and Task B on the bottom. Both tracks execute at the same time!
+Now look inside OrderFulfillment:
+The vertical dashed line divides it into two Concurrent Orthogonal Regions running in parallel!
+Region 1 handles the Kitchen Pipeline: Cooking, Packaging, and Bagging.
+Region 2 simultaneously handles Courier Logistics: Finding a courier, assigning the rider, and driving to the restaurant.
+Both tracks happen at the exact same time!
 
-To summarize this slide, remember this key takeaway: Composite and concurrent states organize complex behaviors into clean, nested, and parallel regions.
+To summarize this slide, remember this key takeaway: Composite states hide internal workflow complexity, while concurrent orthogonal regions coordinate parallel execution.
 -->
 
 ---
@@ -3240,123 +3456,114 @@ To summarize this slide, remember this key takeaway: Composite and concurrent st
 
 ### Composite States and History Memory (H)
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
 
-**Resuming Execution After Interruptions:**
+<img src="../../img/ch04/food_delivery/food_delivery_history_memory.svg" alt="Composite States and History Memory" style="width: 100% !important; max-width: 680px !important; border-radius: 6px;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**Preserving Order Progress Across Interruptions:**
 
 - **Default Composite Entry:**
-  - Standard transitions into a composite state always start from the initial pseudo-state (Substate A).
+  - Standard orders entering `OrderExecution` always begin from initial startup (`Cooking`).
 - **The History State Pseudo-Node `(H)`:**
-  - **State Caching:** Remembers the most recently active substate when the composite state was exited.
-  - **Direct Restoration:** Incoming transitions directed to `(H)` bypass default startup and restore the cached substate directly (e.g., Substate B).
-- **Shallow `(H)` vs. Deep `(H*)`:**
-  - Shallow remembers immediate substate; Deep remembers nested child substates recursively.
-- **Core Value:** Perfect for modeling pauses, phone interruptions, and system sleep/wake cycles.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/10_composite_states_and_history.jpg" alt="Composite States and System Memory" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  - **State Caching:** Remembers the active substate when an unexpected suspension occurs (e.g., `paymentDispute()` or address verification hold).
+  - **Direct Restoration:** When the dispute is resolved (`disputeResolved()`), the transition enters `(H)`, which directs execution directly back to `OutForDelivery`!
+- **Real-World Business Impact:**
+  - **Without `(H)`:** Order would restart at `Cooking`, forcing the kitchen to re-cook the meal from scratch!
+  - **With `(H)`:** The courier simply resumes delivery of the already-prepared meal.
 
 </div>
 </div>
 
 <!--
-What happens when a system gets interrupted and needs to remember where it was? Look at Composite States and System Memory.
+What happens when an ongoing order gets interrupted and needs to remember its progress? Look at History Memory in Food Delivery!
 
-Normally, when you enter a composite state, execution restarts from the beginning at Substate A.
+Normally, when an order enters OrderExecution, it starts at the beginning: Cooking.
 
-However, look at the `(H)` circle—the History State memory slot. It acts like a cache!
+Now imagine a rider is OutForDelivery, and suddenly a payment dispute or fraud check halts the order.
+The order transitions to OrderSuspended (On Hold).
+When customer support clears the alert, how does the system resume?
 
-When the system was in Substate B and had to exit, its active substate was cached in `(H)`.
+Look at the incoming arrow: it points into the (H) History circle!
+The History node caches the active substate prior to suspension.
+Because the order was in OutForDelivery, the system restores directly back to OutForDelivery!
 
-When the system returns later from the outside, the arrow enters `(H)`, which directs execution straight back to Substate B!
+Think about how crucial this is in real life: without a history state, the system would restart at Cooking, and the restaurant would waste food and cook the meal all over again!
 
-To summarize this slide, remember this key takeaway: History states act as memory caches that restore the active substate after an interruption.
+To summarize this slide, remember this key takeaway: History states act as memory caches that restore the active substate after an interruption without restarting from the beginning.
+-->
+
+---
+
+<!-- _class: title-image-slide -->
+
+## The Unified Blueprint: Food Delivery Order Architecture
+
+<div class="image-wrapper">
+<img src="../../img/ch04/food_delivery/food_delivery_unified_blueprint.svg" alt="The Unified Blueprint: Food Delivery Order Architecture" />
+</div>
+
+<!--
+Here is the Unified Blueprint—bringing all our state machine concepts together in our Food Delivery system!
+
+Look at how complete and production-grade this architecture is:
+
+First, on the left, an order starts at Placed. A guarded transition cancelOrder [t <= 120s] / refund() allows cancellation only within 2 minutes.
+
+Second, the order enters ActiveOrder—a Composite State containing two Concurrent Regions running side-by-side!
+The Kitchen prepares the food while the Courier Dispatch simultaneously matches a rider and navigates to the store.
+
+Third, look at SuspendedOrder at the bottom: if a fraud alert or payment dispute fires, the system pauses into SuspendedOrder, and restores via Deep History [H*] straight back to the active region!
+
+Fourth, when food and courier meet, the order enters OutForDelivery, where entry and exit actions automatically manage GPS tracking and timestamp logging until drop-off!
+
+To summarize this slide, remember this key takeaway: Real-world architectures combine concurrent regions, entry/exit actions, guarded triggers, and history memory into a unified blueprint.
 -->
 
 ---
 
 <!-- _class: v-center -->
 
-### Concurrency: Fork and Join Synchronization
+### Comparing Dynamic Models: State Machine vs. Activity Diagram
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+> Both diagrams capture behavioral dynamics in UML, but answer fundamentally different architectural questions.
 
-**Orthogonal Synchronization in Statecharts:**
+<div class="matrix-table">
 
-- **Fork Bar (1-to-Many Thread Concurrency):**
-  - Takes a single event trigger (`Auction Trigger`) and spawns multiple parallel active sub-states simultaneously.
-  - Upper thread handles `Processing the Bid`; lower thread handles `Authorizing Payment Limit`.
-- **Join Bar (Synchronization Barrier):**
-  - Synchronizes incoming parallel execution tracks.
-  - System halts at the barrier until **both** bid processing and payment authorization are 100% complete.
-- **Architectural Determinism:** Guarantees parallel background jobs finish before downstream lifecycle actions execute.
+| Comparison Dimension | State Machine Diagram (Statechart) | Activity Diagram (Workflow) |
+| :--- | :--- | :--- |
+| **Core Perspective** | **Entity-Centric / Reactive:** Models the complete lifecycle of a *single entity* over time. | **Process-Centric / Procedural:** Models the end-to-end *workflow* across multiple actors and systems. |
+| **Primary Node** | **State:** Quiescent condition where an object waits for events or performs continuous work. | **Action / Activity:** An active computational step or business operation being executed. |
+| **Transition Driver** | **Event-Driven:** Transitions wait for triggers (`Event [Guard] / Action`). | **Completion-Driven:** Flows advance automatically upon task completion (`Control / Object Flow`). |
+| **Concurrency Model** | **Orthogonal Regions:** Parallel sub-states within a composite state (parallel tracks). | **Fork & Join Nodes:** Explicit parallel flow splitting and synchronization across swimlanes. |
+| **Optimal Use Case** | Entity lifecycle (e.g., Order, Account, TCP socket), IoT devices, and status machines. | Business process modeling (e.g., checkout pipeline), ETL batch jobs, and use case elaboration. |
 
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/11_concurrency_fork_and_join.jpg" alt="Concurrency: Forking and Joining Execution Threads" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
-
-</div>
 </div>
 
 <!--
-Look at how state machines handle parallel execution: Concurrency with Fork and Join.
+Let's step back and compare the two dominant dynamic models in UML: State Machines versus Activity Diagrams.
 
-Notice this online auction example:
-An `Auction Trigger` arrives at the thick vertical Fork bar on the left.
-The single thread splits into two parallel tracks: the upper track executes `Processing the Bid`, while the lower track executes `Authorizing Payment Limit`.
+Students often ask: both show states, actions, and arrows—when do I use which?
 
-Both parallel paths lead into the thick vertical Join bar on the right.
-The system waits at the join bar until both tracks have completed.
-Only when both parallel sub-activities finish does the system exit and proceed forward.
+First, look at the Core Perspective:
+A State Machine is strictly entity-centric. You pick ONE entity—like our Food Delivery Order—and trace its complete life from cradle to grave.
+An Activity Diagram is process-centric. It doesn't belong to a single object; it tracks a cross-cutting business workflow involving the customer, the restaurant, payment gateways, and riders.
 
-To summarize this slide, remember this key takeaway: Fork bars split execution into parallel sub-states, and Join bars synchronize them before moving forward.
--->
+Second, the Primary Node:
+In a state machine, nodes are States—conditions of waiting or enduring modes.
+In an activity diagram, nodes are Actions—verbs, computational tasks, and business operations.
 
----
+Third, what drives transitions:
+State machine transitions are Event-Driven. An order sits in Placed forever unless a cancelOrder or payEvent trigger occurs.
+Activity diagrams are Completion-Driven. As soon as 'Validate Credit Card' finishes, control automatically flows to 'Reserve Table'.
 
-<!-- _class: v-center -->
+Fourth, concurrency:
+State machines use orthogonal regions within a composite state. Activity diagrams use explicit Fork and Join bars and swimlanes.
 
-### The Unified Blueprint: HVAC System Example
-
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
-
-**Industrial-Grade Comprehensive Blueprint:**
-
-- **Dual Concurrent Regions (Dashed Boundary):**
-  - **Region 1 (Thermostat Control):** Cycles between `Idle` and `Heating`; guarded transition `[temp < setpoint]` fires atomic `entry / activate_burner`.
-  - **Region 2 (Fan Operation):** Runs concurrently and independently (`Fan Off` ↔ `Fan Low` ↔ `Fan High`).
-- **Integrated Advanced Mechanics:**
-  - Entry actions ensure burner hardware synchronization.
-  - History pseudo-state `(H)` preserves thermostat operating memory.
-- **Master Architecture Takeaway:** Statecharts express intricate hardware-software coordination with complete formal rigor.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_state_machine/12_unified_blueprint_hvac_example.jpg" alt="The Unified Blueprint: HVAC Heating/Cooling System" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
-
-</div>
-</div>
-
-<!--
-Here is the Unified Blueprint—bringing all our state machine concepts together in an HVAC Heater System!
-
-Look at how clean and organized this architecture is:
-The outer container is split by a dashed line into two Concurrent Regions running in parallel: Thermostat Control on the left, and Fan Operation on the right.
-
-On the left, Thermostat Control starts at the Initial Pseudo-State and enters `Idle`. When `temp < setpoint` triggers, it transitions to `Heating` and fires an atomic entry action: `entry / activate_burner`. It also features a History State Cache `(H)`.
-
-On the right, Fan Operation independently manages `Fan Low`, `Fan High`, and `Fan Off` based on speed signals.
-
-By organizing states into concurrent regions with clear entry actions and triggers, complex behavior becomes crystal clear.
-
-To summarize this slide, remember this key takeaway: Real-world architectures combine concurrent regions, entry actions, event triggers, and history memory into a unified blueprint.
+To summarize this slide, remember this key takeaway: Use State Machines to model the reactive lifecycle of an entity; use Activity Diagrams to model multi-step business workflows.
 -->
 
 ---
@@ -3399,8 +3606,13 @@ To summarize this slide, remember this key takeaway: Actions are instantaneous a
 
 ### Diagnostic Exercise: Spot the Flaws in this State Machine Model
 
-<div class="split46">
-<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/statemachine/bad_statemachine_model.svg" alt="Bad State Machine Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Audit this student's draft State Machine for an Order Lifecycle:**
 Can you identify the critical mistakes across **state semantics, transitions, and terminal nodes**?
@@ -3413,11 +3625,6 @@ Can you identify the critical mistakes across **state semantics, transitions, an
   - Inspect the two `cancelOrder` transitions leaving `Paid`. If `amount == 150`, which transition fires?
 - **4. Final State Invariants:**
   - What fundamental UML rule is violated by the `reopenOrder()` transition leaving the final state `[*]`?
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/statemachine/bad_statemachine_model.svg" alt="Bad State Machine Model Example" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
 
 </div>
 </div>
@@ -3438,6 +3645,48 @@ Flaw 4 (Illegal Outgoing Transition from a Final State):
 Notice the transition 'reopenOrder()' drawn from the Final State [*] back to 'PendingPayment'. A Final State indicates the complete termination of the object's lifecycle. UML rules strictly forbid any outgoing transitions from a final state! If an order can be reopened, it was never truly terminated.
 
 To summarize this slide, remember this key takeaway: Distinguish persistent states from instantaneous actions, avoid black hole states, enforce mutually exclusive guards, and never draw outgoing transitions from a final state.
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### Diagnostic Solution: Flaws in State Machine Model Explained
+
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/statemachine/corrected_statemachine_model.svg" alt="Bad State Machine Model Example" style="width: 100% !important; max-width: 680px !important; max-height: 520px !important; object-fit: contain;" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
+
+**Audit Findings & Architectural Corrections:**
+
+- **1. State vs. Transient Action:**
+  - `DeductCreditCard` is an instantaneous action, not a state. It should be an effect on a transition (`pay / deductCard()`), not a state box.
+- **2. Black Hole (Trap) State:**
+  - `RiskReview` has an entry transition but zero outgoing paths, trapping orders permanently with no resolution path.
+- **3. Non-Deterministic Transition Conflict:**
+  - Leaving `Paid`, two transitions share `cancelOrder` where one lacks a guard. When `amount == 150`, both fire, causing runtime race conflict.
+- **4. Illegal Outgoing Transition from Final State:**
+  - `reopenOrder()` extends from `[*]`. UML strictly forbids transitions leaving a final state; terminal state is permanent.
+
+</div>
+</div>
+
+<!--
+Here are the solutions to the state machine diagram audit:
+
+First, distinguish states from instantaneous actions. A state represents an observable condition over time, such as 'PendingPayment' or 'Paid'. Deducting a credit card takes zero logical time and represents an action effect on a transition, never a state rectangle.
+
+Second, eliminate black hole states. Every intermediate state must have at least one exit transition leading toward a final outcome. An order cannot stay in RiskReview forever.
+
+Third, enforce deterministic guard rules. When multiple transitions share the same trigger event from a single state, their guards must be strictly mutually exclusive (e.g., [amount > 100] and [amount <= 100]).
+
+Fourth, final states represent the complete end of the object lifecycle. Drawing an outgoing arrow from a final state [*] violates fundamental UML semantics.
+
+To summarize this slide, remember this key takeaway: Model durable conditions as states, eliminate trap states, enforce mutually exclusive guards, and treat final states as strictly terminal.
 -->
 
 ---
@@ -3658,8 +3907,13 @@ To summarize this slide, remember this key takeaway: PlantUML enables code-drive
 
 ## PlantUML: Code-Driven Architecture
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/01_plantuml_code_driven_architecture.jpg" alt="UML Modeling with PlantUML: Code-Driven Architecture" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Diagrams as Code (Text to Architecture):**
 
@@ -3674,11 +3928,6 @@ To summarize this slide, remember this key takeaway: PlantUML enables code-drive
 - **Automated Layout Engine:**
   - Graphviz computes coordinates, routing, and alignment automatically without manual layout friction.
 - **Core Value:** Replaces brittle drawing tools with version-controlled, pull-request-friendly architecture files.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/01_plantuml_code_driven_architecture.jpg" alt="UML Modeling with PlantUML: Code-Driven Architecture" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3706,8 +3955,13 @@ To summarize this slide, remember this key takeaway: PlantUML converts simple te
 
 ### Stop Dragging Boxes. Start Writing Architecture
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/02_stop_dragging_start_writing.jpg" alt="Stop Dragging Boxes. Start Writing Architecture." style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Eliminating Visual Friction & Maintenance Debt:**
 
@@ -3722,11 +3976,6 @@ To summarize this slide, remember this key takeaway: PlantUML converts simple te
   ```
 - **Engineering Advantage:**
   - Focus 100% on software abstractions and relationships rather than pixel-pushing alignment.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/02_stop_dragging_start_writing.jpg" alt="Stop Dragging Boxes. Start Writing Architecture." style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3751,8 +4000,13 @@ To summarize this slide, remember this key takeaway: Writing diagrams as text el
 
 ### Frictionless Setup: VS Code & Live Preview
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/03_frictionless_setup.jpg" alt="The Frictionless Setup: VS Code Extension & Local Rendering" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Three Steps to Local Diagramming Velocity:**
 
@@ -3764,11 +4018,6 @@ To summarize this slide, remember this key takeaway: Writing diagrams as text el
   - Press `Alt + D` (Mac: `Option + D`) to toggle live side-by-side preview.
 - **Multi-Format Export:**
   - Export production diagrams directly to **SVG**, high-res **PNG**, or terminal-friendly **ASCII art**.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/03_frictionless_setup.jpg" alt="The Frictionless Setup: VS Code Extension & Local Rendering" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3793,8 +4042,13 @@ To summarize this slide, remember this key takeaway: PlantUML integrates seamles
 
 ## The Architect's Blueprint: 5 Essential Lenses
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/04_five_essential_lenses.jpg" alt="The Architect's Blueprint: 5 Essential Lenses" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Unified Syntax Across All Architectural Perspectives:**
 
@@ -3806,11 +4060,6 @@ To summarize this slide, remember this key takeaway: PlantUML integrates seamles
   - **Sequence Diagram:** Message chronology across lifelines.
   - **State Diagram:** Entity lifecycle states and event transitions.
 - **Core Value:** One unified text syntax covers all five essential UML models.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/04_five_essential_lenses.jpg" alt="The Architect's Blueprint: 5 Essential Lenses" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3839,8 +4088,13 @@ To summarize this slide, remember this key takeaway: PlantUML provides a unified
 
 ### Use Case Diagrams in PlantUML Syntax
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/05_use_case_in_plantuml.jpg" alt="Use Case Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Capturing Functional Requirements in Plain Text:**
 
@@ -3857,11 +4111,6 @@ To summarize this slide, remember this key takeaway: PlantUML provides a unified
   Customer --> Checkout
   ```
 - **Agile Advantage:** Perfect for user story mapping and stakeholder scoping before coding.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/05_use_case_in_plantuml.jpg" alt="Use Case Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3885,8 +4134,13 @@ To summarize this slide, remember this key takeaway: PlantUML creates actors, us
 
 ### Class Diagrams in PlantUML Syntax
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/06_class_diagrams_in_plantuml.jpg" alt="Class Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Mirroring Object-Oriented Code Structure:**
 
@@ -3905,11 +4159,6 @@ To summarize this slide, remember this key takeaway: PlantUML creates actors, us
     +void makeSound()
   }
   ```
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/06_class_diagrams_in_plantuml.jpg" alt="Class Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3935,8 +4184,13 @@ To summarize this slide, remember this key takeaway: PlantUML class syntax direc
 
 ### The Class Relationship Matrix in PlantUML
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/07_class_relationships_matrix.jpg" alt="The Class Relationship Matrix in PlantUML Syntax" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Mnemonic Connector Symbols for Class Relations:**
 
@@ -3949,11 +4203,6 @@ To summarize this slide, remember this key takeaway: PlantUML class syntax direc
 - **Composition (`*--`):**
   - Strict ownership; parts live and die with the whole (solid diamond `*`).
 - **Mnemonic Design:** PlantUML symbols visually mirror UML standard connector shapes.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/07_class_relationships_matrix.jpg" alt="The Class Relationship Matrix in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -3978,8 +4227,13 @@ To summarize this slide, remember this key takeaway: Mnemonic symbols like `<|--
 
 ### Sequence Diagrams in PlantUML Syntax
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/08_sequence_diagrams_in_plantuml.jpg" alt="Sequence Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Chronological Interactions Over Time:**
 
@@ -3996,11 +4250,6 @@ To summarize this slide, remember this key takeaway: Mnemonic symbols like `<|--
   OrderService --> User : Confirm order placement
   ```
 - **Automatic Layout:** Lifelines, activations, and alignments are computed automatically.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/08_sequence_diagrams_in_plantuml.jpg" alt="Sequence Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -4030,8 +4279,13 @@ To summarize this slide, remember this key takeaway: PlantUML sequence diagrams 
 
 ### Anatomy of Sequence Syntax: Lifelines & Messages
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/09_anatomy_of_sequence_syntax.jpg" alt="Anatomy of Sequence Syntax: Lifelines & Messages" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Key Visual Building Blocks in PlantUML:**
 
@@ -4044,11 +4298,6 @@ To summarize this slide, remember this key takeaway: PlantUML sequence diagrams 
 - **4. Lifecycle Events (`create` / `destroy`):**
   - Specialized messages that instantiate new participants or terminate lifelines.
 - **Core Value:** Clean text syntax generates pixel-perfect sequence diagrams.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/09_anatomy_of_sequence_syntax.jpg" alt="Anatomy of Sequence Syntax: Lifelines & Messages" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -4072,8 +4321,13 @@ To summarize this slide, remember this key takeaway: Sequence diagrams are built
 
 ### Activity Diagrams & Swimlanes in PlantUML
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/10_activity_diagrams_in_plantuml.jpg" alt="Activity Diagrams & Swimlanes in PlantUML Syntax" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Workflow & Process Modeling (Beta Syntax):**
 
@@ -4091,11 +4345,6 @@ To summarize this slide, remember this key takeaway: Sequence diagrams are built
 - **Advanced Capabilities:**
   - Decision diamonds via `if (...) then (...) else (...) endif`.
   - Swimlanes via `|Lane Name|` partition markers.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/10_activity_diagrams_in_plantuml.jpg" alt="Activity Diagrams & Swimlanes in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -4121,8 +4370,13 @@ To summarize this slide, remember this key takeaway: Activity diagrams model ste
 
 ### State Diagrams in PlantUML Syntax
 
-<div class="split46">
-<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+<div class="split64">
+<div class="left" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/11_state_diagrams_in_plantuml.jpg" alt="State Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 680px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+<div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Single-Object Reactive Lifecycle Modeling:**
 
@@ -4138,11 +4392,6 @@ To summarize this slide, remember this key takeaway: Activity diagrams model ste
 - **Lifecycle Markers:**
   - `[*]`: Represents both initial pseudo-state and final state.
 - **Core Value:** Model complex finite state machines in seconds with clear transition event labels.
-
-</div>
-<div class="right" style="display: flex; justify-content: center; align-items: center;">
-
-<img src="../../img/ch04/nb_plantuml/11_state_diagrams_in_plantuml.jpg" alt="State Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
 </div>
 </div>
@@ -4222,6 +4471,9 @@ To summarize this slide, remember this key takeaway: Mastering system modeling e
 
 ## Conceptual Recap: Fill-in-the-blank Quiz
 
+<div class="fill-blank-columns">
+<div class="fill-blank-text">
+
 Test your understanding of the core concepts in this chapter:
 
 1. The "Three Amigos" who unified UML at Rational Software were Grady Booch, Jim Rumbaugh, and **`___`**.
@@ -4231,6 +4483,9 @@ Test your understanding of the core concepts in this chapter:
 5. In a UML class diagram, a filled black diamond (`◆`) represents **`___`**, where parts cannot exist without the whole.
 6. In a UML class diagram, an open hollow diamond (`◇`) represents **`___`**, where parts maintain independent lifecycles.
 7. A UML state machine transition label follows the formal syntax: Trigger Event [**`___`**] / Action Effect.
+
+</div>
+</div>
 
 <!--
 Let's review today's core concepts with a quick interactive quiz!
