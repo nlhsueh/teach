@@ -1,5 +1,7 @@
+---
 marp: true
 theme: ase-theme
+title: 'Software Engineering'
 paginate: true
 header: 'Software Engineering | Ch 05: Software Design, Architecture & Principles'
 footer: 'Prof. Nien-Lin Hsueh'
@@ -7,7 +9,7 @@ footer: 'Prof. Nien-Lin Hsueh'
 <!-- _class: lead -->
 <!-- header: '' -->
 
-# **Software Engineering**
+# Software Engineering
 ### Chapter 5: Software Design, Architecture & OO Principles
 #### From Universal Foundations & Architecture Modeling to SOLID Craftsmanship
 
@@ -34,9 +36,9 @@ To summarize this slide, remember this key takeaway: Software design establishes
 <h3>Part 1: Foundations & Architecture</h3>
 <ul>
 <li><b>5.1 Software Design Foundations:</b> From requirements to blueprints, why design matters, the 4 design levels, and learning roadmap.</li>
-<li><b>5.2 Universal Design Principles:</b> Modularity, abstraction, information hiding, separation of concerns, high cohesion & low coupling.</li>
-<li><b>5.3 Software Architecture & Modeling:</b> Beyond patterns: ASRs, decomposition, UML vs. C4 model, 4+1 views, and ADRs.</li>
-<li><b>5.4 Architectural Patterns & Trade-offs:</b> Layered, repository, client-server, pipe-and-filter, MVC, microservices, and ATAM.</li>
+<li><b>5.2 Universal Design Principles:</b> Modularity, abstraction, information hiding, levels of cohesion & coupling.</li>
+<li><b>5.3 Classic Architectural Patterns & Trade-offs:</b> Layered, repository, client-server, pipe-and-filter, MVC, microservices, and ATAM.</li>
+<li><b>5.4 Architecture Derivation & Modeling:</b> Beyond patterns: ASRs, decomposition, UML vs. C4 model, 4+1 views, and ADRs.</li>
 </ul>
 </div>
 <div>
@@ -54,17 +56,17 @@ Here is our roadmap for Chapter 5.
 
 We begin in 5.1 with a comprehensive overview of Software Design: distinguishing design from coding, understanding why design dictates project survival, and deconstructing the four levels of design.
 
-In 5.2, we introduce Universal Software Design Principles first! Why? Because concepts like High Cohesion, Low Coupling, and Separation of Concerns are the fundamental physics of software design—governing everything from distributed microservices down to individual Java classes.
+In 5.2, we introduce Universal Software Design Principles first! Concepts like High Cohesion, Low Coupling, and Separation of Concerns are the fundamental physics of software design—governing everything from distributed microservices down to individual classes. We will also examine the classic hierarchical levels of cohesion and coupling.
 
-In 5.3, we explore Software Architecture & Modeling: answering the critical questions of how architects actually derive architectures from requirements, how to draw architecture using UML versus the modern C4 model, Kruchten's 4+1 views, and how to document decisions with ADRs.
+In 5.3, we explore Classic Architectural Patterns and non-functional quality attribute trade-offs using ATAM: mastering patterns like MVC, Layered, Repository, Client-Server, Pipe-and-Filter, and Microservices.
 
-In 5.4, we analyze classic Architectural Patterns and non-functional quality attribute trade-offs using ATAM.
+In 5.4, we advance to Architecture Derivation & Modeling: answering the critical question of how architects actually derive architectures from requirements beyond just picking patterns, how to model structures using UML versus the modern C4 model, Kruchten's 4+1 views, and how to document decisions with ADRs.
 
 In 5.5, we zoom into micro detailed design with the five foundational SOLID principles.
 
 Finally, in 5.6 and 5.7, we examine AI architectural copilots and synthesize our key engineering takeaways.
 
-To summarize this slide, remember this key takeaway: This roadmap establishes universal design principles first, ascends to macro architecture and modeling, and descends into micro-level object-oriented craftsmanship.
+To summarize this slide, remember this key takeaway: This roadmap establishes universal design principles first, ascends to classic patterns and architectural modeling, and descends into micro-level object-oriented craftsmanship.
 -->
 ---
 <!-- _class: lead -->
@@ -175,9 +177,9 @@ To summarize this slide, remember this key takeaway: Software design spans archi
   - When you understand **Low Coupling**, you immediately understand *why* MVC isolates Models from Views.
   - When you understand **High Cohesion**, you immediately understand *why* Microservices align to Domain Bounded Contexts.
 * **Our Step-by-Step Trajectory:**
-  - **Step 1: Universal Design Principles (5.2)**: Core tenets, cohesion, coupling, and information hiding.
-  - **Step 2: Architecture & Modeling (5.3)**: ASRs, decomposition, UML diagrams, 4+1 views, C4 model, and ADRs.
-  - **Step 3: Classic Patterns & Trade-offs (5.4)**: The 6 architectural styles, monolithic vs microservices, and ATAM.
+  - **Step 1: Universal Design Principles (5.2)**: Core tenets, cohesion, coupling, and levels of cohesion & coupling.
+  - **Step 2: Classic Patterns & Trade-offs (5.3)**: The 6 architectural styles, monolithic vs. microservices, and ATAM.
+  - **Step 3: Architecture Derivation & Modeling (5.4)**: Beyond patterns: ASRs, decomposition, UML, 4+1 views, C4 model, and ADRs.
   - **Step 4: Micro Detailed Design (5.5)**: Class-level SOLID object-oriented craftsmanship.
   - **Step 5: Modern Practice & AI (5.6 & 5.7)**: AI copilot workflows, blind spot mitigations, and synthesis.
 
@@ -234,13 +236,13 @@ To summarize this slide, remember this key takeaway: Universal design principles
 ---
 ## Core Design Tenets: Modularity, Abstraction & SoC
 
-* **1. Abstraction (抽象化):**
+* **1. Abstraction :**
   - Hiding low-level implementation mechanics behind clean, high-level conceptual interfaces. Allows developers to reason about systems without mental overload.
-* **2. Encapsulation & Information Hiding (封裝與資訊隱藏):**
+* **2. Encapsulation & Information Hiding :**
   - *David Parnas's Principle:* Bundling state and behavior inside a module while concealing private variables. Prevents external code from introducing illegal state side-effects.
-* **3. Separation of Concerns (SoC / 關注點分離):**
+* **3. Separation of Concerns (SoC):**
   - Decomposing software into distinct features that overlap as little as possible (e.g., decoupling UI rendering logic from SQL database queries).
-* **4. Modularity (模組化):**
+* **4. Modularity :**
   - Dividing systems into cohesive, independently testable, and hot-swappable units.
 
 <!--
@@ -256,10 +258,10 @@ To summarize this slide, remember this key takeaway: Abstraction, encapsulation,
 ---
 ## The Golden Rule: High Cohesion & Low Coupling
 
-* **Cohesion (凝聚度):**
+* **Cohesion :**
   - Measures how tightly focused and related the internal responsibilities of a single class or module are.
   - **Engineering Goal:** **High Cohesion** (A module should do one thing, and do it exceptionally well).
-* **Coupling (耦合度):**
+* **Coupling :**
   - Measures the strength of direct interdependencies between separate modules.
   - **Engineering Goal:** **Low Coupling** (Modules communicate via abstract contracts, remaining ignorant of internal implementation details).
 * **The Universal Golden Rule:**
@@ -318,6 +320,67 @@ In the good design below, OrderProcessor has one single, cohesive responsibility
 To summarize this slide, remember this key takeaway: Decomposing bloated monolithic classes into focused, collaborating services exemplifies high cohesion and low coupling.
 -->
 ---
+## Levels and Types of Cohesion: From Weak to Strong
+
+* **Cohesion Spectrum (Edward Yourdon & Larry Constantine):**
+  - Measures how strongly related the internal elements of a single module/class are:
+
+| Level | Cohesion Type | Core Characteristics | Real-World Example | Quality Assessment |
+| :--- | :--- | :--- | :--- | :--- |
+| **7** | **Functional** | Performs exactly one single, well-defined mathematical or business task | `computeSalesTax()`, `sin(x)` | **Ideal (Highest)** |
+| **6** | **Sequential** | Output from one operation serves directly as the input to the next | `readData() → parseJSON() → validate()` | **Strong** |
+| **5** | **Communicational** | Operations share the same input data or produce the same output | `updateCustomerAddress()` & `printLabel()` | **Acceptable** |
+| **4** | **Procedural** | Elements execute in a specific order, but operate on different data | `validateOrder()`, then `updateInventoryAudit()` | **Moderate** |
+| **3** | **Temporal** | Elements are grouped purely because they execute at the same time | `systemStartup()`, `loadConfigAndLog()` | **Weak (Avoid)** |
+| **2** | **Logical** | Elements perform logically similar tasks, selected by a control flag | `printReport(int format)` (PDF, HTML, CSV) | **Weak (Avoid)** |
+| **1** | **Coincidental** | Elements have no meaningful relationship; arbitrary catch-all grouping | `GeneralUtils.java`, `CommonHelper.java` | **Worst (Eliminate)** |
+
+<!--
+Let's analyze the classic 7 levels of Cohesion established by Larry Constantine and Edward Yourdon.
+
+At the very top is Functional Cohesion—the gold standard of software design. Every line of code inside the class or method contributes to accomplishing one single, well-defined mathematical or domain operation.
+
+Sequential Cohesion is also strong: operations form an assembly line where Step A feeds into Step B.
+
+Communicational and Procedural represent intermediate levels where activities share data or execution order.
+
+At the bottom are the anti-patterns: Temporal cohesion groups tasks just because they happen at startup; Logical cohesion creates bloated switch-case methods controlled by flags; and Coincidental cohesion is the infamous 'Utils' class dumping ground with no meaningful relationship.
+
+To summarize this slide, remember this key takeaway: Strive for Functional and Sequential cohesion, and refactor away temporal, logical, and coincidental groupings.
+-->
+---
+## Levels and Types of Coupling: From Tight to Loose
+
+* **Coupling Spectrum (How Dependent Are Separate Modules?):**
+  - Measures the degree of direct interconnections and knowledge sharing between modules:
+
+| Level | Coupling Type | Coupling Mechanism & Risk | Real-World Example | Quality Assessment |
+| :--- | :--- | :--- | :--- | :--- |
+| **1** | **Content (Pathological)**| One module reaches directly into private internal memory/code of another | Bypassing getters to modify a private field | **Worst (Severe Bug Risk)** |
+| **2** | **Common (Global)** | Multiple modules share access to global mutable variables | Reading/writing global flags in multi-threading | **High Risk (Avoid)** |
+| **3** | **Control** | One module controls the internal execution flow of another via flags | Passing `mode = 3` to dictate callee branch | **Moderate Risk** |
+| **4** | **Stamp (Data-Structure)**| Modules share a composite data structure, but callee needs only a field | Passing entire `Customer` to get `zipCode` | **Moderate (Acceptable)** |
+| **5** | **Data** | Modules communicate exclusively via elementary, primitive arguments | `calculateArea(width, height)` | **Loosest & Best (Calls)** |
+| **6** | **Message / Event** | Modules communicate asynchronously via messages/events without coupling | EventBus: `OrderPlacedEvent` via Kafka | **Ideal (Decoupled)** |
+
+<!--
+Now let's examine the classic hierarchy of Coupling, ordered from the most dangerous and tightly coupled to the cleanest and most decoupled.
+
+At the worst extreme is Content Coupling, where Module A bypasses encapsulation and alters Module B's private internals. A change to B immediately shatters A.
+
+Common Coupling occurs when modules communicate through global mutable variables—a notorious source of race conditions and hidden side-effects.
+
+Control Coupling happens when you pass boolean or integer flags to dictate how the callee behaves internally.
+
+Stamp Coupling occurs when you pass a huge composite object, like passing a 50-field Employee record to a tax function that only needs gross income.
+
+Data Coupling is the gold standard for direct function calls: passing only primitive, elementary parameters.
+
+And Message or Event Coupling decouples modules entirely across time and space using asynchronous message brokers.
+
+To summarize this slide, remember this key takeaway: Eliminate content and common coupling, minimize control coupling, and aim for data and event-driven decoupling.
+-->
+---
 ### Concept Check Question 1 (CCQ 1)
 <div class="ccq-columns">
   <div class="ccq-text">
@@ -351,23 +414,23 @@ To summarize this slide, remember this key takeaway: High cohesion and low coupl
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.3 Software Architecture & Modeling' -->
+<!-- header: '5.3 Classic Architectural Patterns & Trade-offs' -->
 
-# **5.3 Software Architecture & Modeling**
+# **5.3 Classic Architectural Patterns & Trade-offs**
 
-> "Software architecture is the set of design decisions which, if made incorrectly, may cause your project to fail."  
-> — *Eoin Woods*
+> "There are no solutions, only trade-offs."  
+> — *Thomas Sowell*
 
 <!--
-Welcome to Section 5.3: Software Architecture & Modeling.
+Welcome to Section 5.3: Classic Architectural Patterns & Trade-offs.
 
-Now that we have established universal principles, we step up to the macro-architectural scale.
+Now that we have established universal principles, we step up to the macro-architectural scale. We explore the structural archetypes developed by the software engineering community over the past fifty years: Architectural Patterns.
 
-Students often ask: When architects design systems, do they just pick a pattern from a catalog? How do they actually decide what to build? And how do we model and draw architectures—do we use UML, or something else?
+Patterns are proven structural solutions to recurring architectural challenges. However, every pattern introduces distinct trade-offs.
 
-In this section, we demystify the architectural design process: how to derive architecture from Architecturally Significant Requirements (ASRs), how to model systems using Kruchten's 4+1 views and Simon Brown's C4 model, and how to document architectural decisions using Architecture Decision Records (ADRs).
+In this section, we begin by defining Software Architecture and Architectural Patterns. We then analyze six foundational architectural patterns: MVC, Layered, Repository, Client-Server, Pipe & Filter, and Microservices. We conduct a deep-dive comparison between Monolithic and Microservices architectures, and master the Architecture Trade-off Analysis Method (ATAM).
 
-To summarize this slide, remember this key takeaway: Architecture is a systematic decision and modeling discipline that establishes the foundational structural backbone of a software system.
+To summarize this slide, remember this key takeaway: Architectural patterns provide proven structural templates whose trade-offs must be rigorously evaluated against system quality attributes.
 -->
 ---
 ## What is Software Architecture?
@@ -392,194 +455,6 @@ Notice its bridge role: Requirements engineering tells us what needs to be built
 Because architectural decisions are the hardest and most expensive to change later, getting the architecture right early is vital to project success.
 
 To summarize this slide, remember this key takeaway: Software architecture bridges requirements and code by establishing high-level component structures and communication boundaries.
--->
----
-## How to Do Architecture Design: Beyond Just Picking Patterns
-
-* **Architecture is NOT a "Pattern Shopping Cart":**
-  - Architecture is a disciplined engineering process of discovery, partitioning, and trade-off synthesis:
-* **The 5-Step Architecture Derivation Process:**
-  - **1. Extract ASRs (Architecturally Significant Requirements)**:
-    - Identify high-priority Quality Attributes (e.g., 99.99% uptime, <100ms latency) and mission-critical Use Cases.
-  - **2. Subsystem Partitioning & Decomposition**:
-    - Decompose the system by business capabilities (Domain-Driven Bounded Contexts) or technical layers.
-  - **3. Synthesize & Combine Architectural Styles**:
-    - Real-world systems combine patterns: e.g., Microservices at the enterprise tier, Event-Driven for ingestion, and Layered MVC inside each service!
-  - **4. Define Communication Protocols & Interfaces**:
-    - Synchronous REST / gRPC vs. asynchronous Kafka / RabbitMQ event streams.
-  - **5. Evaluate Trade-offs & Document Decisions**:
-    - Validate resilience under stress (ATAM) and capture decisions in Architecture Decision Records (ADRs).
-
-<!--
-How do software architects actually design systems?
-
-A common misconception among novices is that architecture is just browsing a catalog and picking 'Microservices' or 'Layered Architecture.'
-
-In reality, architecture is a systematic 5-step engineering process:
-First, you extract Architecturally Significant Requirements—not all requirements impact architecture, only those defining scale, security, and critical workflows.
-Second, you partition the system into clean bounded contexts.
-Third, you synthesize and combine patterns to solve specific technical forces.
-Fourth, you establish communication protocols between components.
-Fifth, you rigorously evaluate trade-offs and document your rationale.
-
-To summarize this slide, remember this key takeaway: Architectural design is a disciplined derivation process driven by Architecturally Significant Requirements and trade-off synthesis.
--->
----
-## Modeling Architecture: UML in Practice vs. Common Pitfalls
-
-* **The "Class Diagram" Trap (Most Common Novice Mistake):**
-  - Beginners often draw a giant UML Class Diagram with 50 classes and call it "System Architecture."
-  - **Why this fails:** Class diagrams show compile-time object relationships; they completely conceal network boundaries, runtime processes, database servers, and cloud deployment topology!
-* **Traditional UML Diagrams for Macro-Architecture:**
-  - **1. Component Diagram**:
-    - Visualizes high-level software components, provided interfaces (`--O` lollipop), and required interfaces (`--( ` socket).
-  - **2. Package Diagram**:
-    - Depicts namespace organization, logical subsystem boundaries, and dependency arrows.
-  - **3. Deployment Diagram**:
-    - Models physical hardware nodes, virtual containers, execution environments, and network protocols (HTTPS, TCP/IP, JDBC).
-
-<!--
-How do we model and draw software architecture? Can we just use UML?
-
-Here is the single most common mistake made by junior developers: they draw a massive UML class diagram with 50 classes, boxes, and arrows, and present it as the 'system architecture.'
-
-That is a trap! Class diagrams are micro-level implementation details. They tell you nothing about which components run on AWS, where the database lives, how services handle network timeouts, or what happens when traffic spikes 100x.
-
-If you use UML for architecture, you must use macro-level diagrams: Component diagrams for provided/required interfaces, Package diagrams for subsystem dependencies, and Deployment diagrams for physical server topology.
-
-To summarize this slide, remember this key takeaway: Avoid the class diagram trap for architecture; use component, package, and deployment diagrams to capture macro structure.
--->
----
-## Multi-Perspective Architecture: Kruchten's 4+1 View Model
-
-* **Philippe Kruchten (1995): "No single diagram can capture architecture for all stakeholders."**
-* **The 4+1 Multi-Perspective Framework:**
-  - **1. Logical View (End-User / Functional)**:
-    - Class structures, entity models, and domain packages satisfying functional user requirements.
-  - **2. Process View (System Integrators / Performance)**:
-    - Concurrency, multi-threading, asynchronous message queues, IPC, and runtime performance.
-  - **3. Development View (Software Developers / Managers)**:
-    - Source code package hierarchy, libraries, build modules, and repository organization.
-  - **4. Physical View / Deployment View (System Engineers / DevOps)**:
-    - Physical servers, cloud containers, network topology, firewalls, and communication protocols.
-  - **+1. Scenarios (Use Cases / Drivers)**:
-    - Core business workflows that bind, validate, and animate all four views together.
-
-<!--
-Examine Philippe Kruchten's legendary 4+1 Architectural View Model.
-
-Kruchten realized that no single architectural drawing can satisfy everyone. A business stakeholder cares about user features; a programmer cares about Maven build modules; a database administrator cares about network failover; and a DevOps engineer cares about Docker containers and Kubernetes clusters.
-
-The 4+1 model resolves this by providing four distinct views tied together by central use case scenarios:
-Logical View for end users; Process View for concurrency and throughput; Development View for code organization; and Physical View for hardware and cloud infrastructure.
-
-To summarize this slide, remember this key takeaway: Kruchten's 4+1 model reconciles conflicting stakeholder needs through four distinct views bound together by core scenarios.
--->
----
-## Modern Architecture Visualization: The C4 Model
-
-* **Created by Simon Brown as a modern, developer-friendly alternative to heavy UML:**
-* **The "Google Maps" Metaphor for Software Architecture (4 Zoom Levels):**
-  - 🗺️ **Level 1: System Context (Zoom: Continental View)**:
-    - Who uses the system (Actors) and what external systems does it integrate with (e.g., Stripe, SendGrid)?
-  - 🏙️ **Level 2: Container Diagram (Zoom: City Street View)**:
-    - What are the deployable units? (SPA Web App, iOS App, API Gateway, Microservice, DB, Redis Cache) and their protocols (JSON/HTTPS, gRPC).
-  - 🏛️ **Level 3: Component Diagram (Zoom: Building Floorplan View)**:
-    - Inside a single container: What are the major functional components (e.g., AuthController, PaymentService, UserRepository)?
-  - 🚪 **Level 4: Code Diagram (Zoom: Room Detail View)**:
-    - Class diagrams showing internal algorithms and interfaces (typically optional; auto-generated).
-
-<!--
-In modern software engineering, what do industry teams actually use to draw architecture?
-
-While UML is respected in academia, the modern industry standard is increasingly Simon Brown's C4 Model!
-
-Simon Brown realized that architects need a visual system like Google Maps.
-Level 1 is System Context: You view the whole continent—who are the users, and what external systems do we connect to?
-Level 2 is Container: You zoom into the city—what are the deployable containers? API servers, web apps, databases, and message queues.
-Level 3 is Component: You zoom into a single building—what internal modules make up this container?
-Level 4 is Code: You zoom into individual rooms—classes and methods.
-
-The C4 model is intuitive, unambiguous, and eliminates endless arguments over UML syntax.
-
-To summarize this slide, remember this key takeaway: The C4 model provides a hierarchical Google Maps visualization spanning System Context, Containers, Components, and Code.
--->
----
-## Documenting Architectural Decisions: Architecture Decision Records (ADRs)
-
-* **Why ADRs are Essential:**
-  - Code shows *how* a system is implemented, but code never explains *why* critical architectural choices were made.
-  - Without ADRs, engineering teams suffer from **"Architectural Archaeology"**—spending weeks wondering why an unusual database or protocol was chosen.
-* **Standard Structure of an ADR (Michael Nygard Template):**
-  - **1. Title**: Numbered, descriptive decision (e.g., `ADR-005: Adopt Kafka for Order Event Streaming`).
-  - **2. Status**: `Proposed` → `Accepted` → `Deprecated` → `Superseded by ADR-XXX`.
-  - **3. Context**: The business problem, technical forces, and constraints driving the decision.
-  - **4. Decision**: The concrete architectural strategy adopted and rationale.
-  - **5. Consequences**: Both positive benefits gained AND negative trade-offs accepted.
-
-<!--
-How do software architects document their choices?
-
-Architects don't just draw diagrams; they maintain Architecture Decision Records, or ADRs.
-
-When an engineer joins a project three years later and sees that the team uses Kafka instead of RabbitMQ, or PostgreSQL instead of MongoDB, they often think: 'Who designed this strange setup?'
-
-An ADR is a short, version-controlled markdown file that records the exact context, alternatives considered, decision made, and consequences accepted at that moment in time.
-
-To summarize this slide, remember this key takeaway: Architecture Decision Records preserve design intent, document trade-offs, and prevent costly architectural archaeology.
--->
----
-### Concept Check Question 2 (CCQ 2)
-<div class="ccq-columns">
-  <div class="ccq-text">
-
-In Philippe Kruchten's 4+1 Architectural View Model, which view is specifically responsible for depicting how software components are deployed onto physical server hardware, cloud containers, and network topology?
-
-- **A.** Logical View
-- **B.** Process View
-- **C.** Development View
-- **D.** Physical View (Deployment View)
-
-  </div>
-  <div class="ccq-logo">
-    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
-  </div>
-</div>
-
-<!--
-Let's check our understanding of architectural modeling views.
-
-The question asks: Which view in Kruchten's 4+1 model depicts software components deployed onto physical server hardware, cloud containers, and network topology?
-
-Let's evaluate each option:
-Option A, Logical View, focuses on domain entities and class relationships.
-Option B, Process View, focuses on concurrency, runtime threads, and non-functional throughput.
-Option C, Development View, organizes code packages, repositories, and build artifacts.
-Option D, Physical View (Deployment View), explicitly models physical nodes, virtual server clusters, Docker containers, and network routing.
-
-Therefore, the correct answer is D!
-
-To summarize this slide, remember this key takeaway: The Physical View captures deployment topology, cloud infrastructure, and network communication configurations.
--->
----
-<!-- _class: lead -->
-<!-- header: '5.4 Classic Architectural Patterns & Trade-offs' -->
-
-# **5.4 Classic Architectural Patterns & Trade-offs**
-
-> "There are no solutions, only trade-offs."  
-> — *Thomas Sowell*
-
-<!--
-Welcome to Section 5.4: Classic Architectural Patterns & Trade-offs.
-
-Now that we understand how architecture is derived, modeled, and documented, we explore the structural archetypes developed by the software engineering community over the past fifty years: Architectural Patterns.
-
-Patterns are proven structural solutions to recurring architectural challenges. However, every pattern introduces distinct trade-offs.
-
-In this section, we analyze six foundational architectural patterns: MVC, Layered, Repository, Client-Server, Pipe & Filter, and Microservices. We conduct a deep-dive comparison between Monolithic and Microservices architectures, and master the Architecture Trade-off Analysis Method (ATAM).
-
-To summarize this slide, remember this key takeaway: Architectural patterns provide proven structural templates whose trade-offs must be rigorously evaluated against system quality attributes.
 -->
 ---
 ## What is an Architectural Pattern?
@@ -861,7 +736,7 @@ ATAM uncovers Trade-off Points—places where boosting one quality attribute dir
 To summarize this slide, remember this key takeaway: Architecture fundamentally centers on balancing competing quality trade-offs to achieve business success.
 -->
 ---
-### Concept Check Question 3 (CCQ 3)
+### Concept Check Question 2 (CCQ 2)
 <div class="ccq-columns">
   <div class="ccq-text">
 
@@ -891,6 +766,194 @@ Option D is false: microservices usually require more operational personnel.
 The correct answer is B! By isolating each service in its own independent process and database, a memory leak or crash in one service cannot directly crash neighboring services.
 
 To summarize this slide, remember this key takeaway: Process and database isolation in microservices prevents local failures from triggering catastrophic application-wide crashes.
+-->
+---
+<!-- _class: lead -->
+<!-- header: '5.4 Architecture Derivation & Modeling' -->
+
+# **5.4 Architecture Derivation & Modeling: Beyond Patterns**
+
+> "Architecture is the decisions that you wish you could get right the first time."  
+> — *Ralph Johnson (Design Patterns Author)*
+
+<!--
+Welcome to Section 5.4: Architecture Derivation & Modeling.
+
+Now that we have surveyed classic architectural patterns, a crucial question arises: When architects design systems in the real world, do they just pick a pattern from a catalog like a shopping cart?
+
+The answer is an emphatic NO! Architecture is a disciplined derivation and modeling process driven by Architecturally Significant Requirements (ASRs). In production, systems synthesize and combine multiple patterns across tiers.
+
+In this section, we demystify how architects actually derive architectures, how to model structures using UML diagrams, Kruchten's 4+1 views, and Simon Brown's modern C4 model, and how to preserve decisions using Architecture Decision Records (ADRs).
+
+To summarize this slide, remember this key takeaway: Architecture design is a disciplined derivation and multi-view modeling process that moves far beyond simply selecting isolated patterns.
+-->
+---
+## How to Do Architecture Design: Beyond Just Picking Patterns
+
+* **Architecture is NOT a "Pattern Shopping Cart":**
+  - Architecture is a disciplined engineering process of discovery, partitioning, and trade-off synthesis:
+* **The 5-Step Architecture Derivation Process:**
+  - **1. Extract ASRs (Architecturally Significant Requirements)**:
+    - Identify high-priority Quality Attributes (e.g., 99.99% uptime, <100ms latency) and mission-critical Use Cases.
+  - **2. Subsystem Partitioning & Decomposition**:
+    - Decompose the system by business capabilities (Domain-Driven Bounded Contexts) or technical layers.
+  - **3. Synthesize & Combine Architectural Styles**:
+    - Real-world systems combine patterns: e.g., Microservices at the enterprise tier, Event-Driven for ingestion, and Layered MVC inside each service!
+  - **4. Define Communication Protocols & Interfaces**:
+    - Synchronous REST / gRPC vs. asynchronous Kafka / RabbitMQ event streams.
+  - **5. Evaluate Trade-offs & Document Decisions**:
+    - Validate resilience under stress (ATAM) and capture decisions in Architecture Decision Records (ADRs).
+
+<!--
+How do software architects actually design systems?
+
+A common misconception among novices is that architecture is just browsing a catalog and picking 'Microservices' or 'Layered Architecture.'
+
+In reality, architecture is a systematic 5-step engineering process:
+First, you extract Architecturally Significant Requirements—not all requirements impact architecture, only those defining scale, security, and critical workflows.
+Second, you partition the system into clean bounded contexts.
+Third, you synthesize and combine patterns to solve specific technical forces.
+Fourth, you establish communication protocols between components.
+Fifth, you rigorously evaluate trade-offs and document your rationale.
+
+To summarize this slide, remember this key takeaway: Architectural design is a disciplined derivation process driven by Architecturally Significant Requirements and trade-off synthesis.
+-->
+---
+## Modeling Architecture: UML in Practice vs. Common Pitfalls
+
+* **The "Class Diagram" Trap (Most Common Novice Mistake):**
+  - Beginners often draw a giant UML Class Diagram with 50 classes and call it "System Architecture."
+  - **Why this fails:** Class diagrams show compile-time object relationships; they completely conceal network boundaries, runtime processes, database servers, and cloud deployment topology!
+* **Traditional UML Diagrams for Macro-Architecture:**
+  - **1. Component Diagram**:
+    - Visualizes high-level software components, provided interfaces (`--O` lollipop), and required interfaces (`--( ` socket).
+  - **2. Package Diagram**:
+    - Depicts namespace organization, logical subsystem boundaries, and dependency arrows.
+  - **3. Deployment Diagram**:
+    - Models physical hardware nodes, virtual containers, execution environments, and network protocols (HTTPS, TCP/IP, JDBC).
+
+<!--
+How do we model and draw software architecture? Can we just use UML?
+
+Here is the single most common mistake made by junior developers: they draw a massive UML class diagram with 50 classes, boxes, and arrows, and present it as the 'system architecture.'
+
+That is a trap! Class diagrams are micro-level implementation details. They tell you nothing about which components run on AWS, where the database lives, how services handle network timeouts, or what happens when traffic spikes 100x.
+
+If you use UML for architecture, you must use macro-level diagrams: Component diagrams for provided/required interfaces, Package diagrams for subsystem dependencies, and Deployment diagrams for physical server topology.
+
+To summarize this slide, remember this key takeaway: Avoid the class diagram trap for architecture; use component, package, and deployment diagrams to capture macro structure.
+-->
+---
+## Multi-Perspective Architecture: Kruchten's 4+1 View Model
+
+* **Philippe Kruchten (1995): "No single diagram can capture architecture for all stakeholders."**
+* **The 4+1 Multi-Perspective Framework:**
+  - **1. Logical View (End-User / Functional)**:
+    - Class structures, entity models, and domain packages satisfying functional user requirements.
+  - **2. Process View (System Integrators / Performance)**:
+    - Concurrency, multi-threading, asynchronous message queues, IPC, and runtime performance.
+  - **3. Development View (Software Developers / Managers)**:
+    - Source code package hierarchy, libraries, build modules, and repository organization.
+  - **4. Physical View / Deployment View (System Engineers / DevOps)**:
+    - Physical servers, cloud containers, network topology, firewalls, and communication protocols.
+  - **+1. Scenarios (Use Cases / Drivers)**:
+    - Core business workflows that bind, validate, and animate all four views together.
+
+<!--
+Examine Philippe Kruchten's legendary 4+1 Architectural View Model.
+
+Kruchten realized that no single architectural drawing can satisfy everyone. A business stakeholder cares about user features; a programmer cares about Maven build modules; a database administrator cares about network failover; and a DevOps engineer cares about Docker containers and Kubernetes clusters.
+
+The 4+1 model resolves this by providing four distinct views tied together by central use case scenarios:
+Logical View for end users; Process View for concurrency and throughput; Development View for code organization; and Physical View for hardware and cloud infrastructure.
+
+To summarize this slide, remember this key takeaway: Kruchten's 4+1 model reconciles conflicting stakeholder needs through four distinct views bound together by core scenarios.
+-->
+---
+## Modern Architecture Visualization: The C4 Model
+
+* **Created by Simon Brown as a modern, developer-friendly alternative to heavy UML:**
+* **The "Google Maps" Metaphor for Software Architecture (4 Zoom Levels):**
+  - 🗺️ **Level 1: System Context (Zoom: Continental View)**:
+    - Who uses the system (Actors) and what external systems does it integrate with (e.g., Stripe, SendGrid)?
+  - 🏙️ **Level 2: Container Diagram (Zoom: City Street View)**:
+    - What are the deployable units? (SPA Web App, iOS App, API Gateway, Microservice, DB, Redis Cache) and their protocols (JSON/HTTPS, gRPC).
+  - 🏛️ **Level 3: Component Diagram (Zoom: Building Floorplan View)**:
+    - Inside a single container: What are the major functional components (e.g., AuthController, PaymentService, UserRepository)?
+  - 🚪 **Level 4: Code Diagram (Zoom: Room Detail View)**:
+    - Class diagrams showing internal algorithms and interfaces (typically optional; auto-generated).
+
+<!--
+In modern software engineering, what do industry teams actually use to draw architecture?
+
+While UML is respected in academia, the modern industry standard is increasingly Simon Brown's C4 Model!
+
+Simon Brown realized that architects need a visual system like Google Maps.
+Level 1 is System Context: You view the whole continent—who are the users, and what external systems do we connect to?
+Level 2 is Container: You zoom into the city—what are the deployable containers? API servers, web apps, databases, and message queues.
+Level 3 is Component: You zoom into a single building—what internal modules make up this container?
+Level 4 is Code: You zoom into individual rooms—classes and methods.
+
+The C4 model is intuitive, unambiguous, and eliminates endless arguments over UML syntax.
+
+To summarize this slide, remember this key takeaway: The C4 model provides a hierarchical Google Maps visualization spanning System Context, Containers, Components, and Code.
+-->
+---
+## Documenting Architectural Decisions: Architecture Decision Records (ADRs)
+
+* **Why ADRs are Essential:**
+  - Code shows *how* a system is implemented, but code never explains *why* critical architectural choices were made.
+  - Without ADRs, engineering teams suffer from **"Architectural Archaeology"**—spending weeks wondering why an unusual database or protocol was chosen.
+* **Standard Structure of an ADR (Michael Nygard Template):**
+  - **1. Title**: Numbered, descriptive decision (e.g., `ADR-005: Adopt Kafka for Order Event Streaming`).
+  - **2. Status**: `Proposed` → `Accepted` → `Deprecated` → `Superseded by ADR-XXX`.
+  - **3. Context**: The business problem, technical forces, and constraints driving the decision.
+  - **4. Decision**: The concrete architectural strategy adopted and rationale.
+  - **5. Consequences**: Both positive benefits gained AND negative trade-offs accepted.
+
+<!--
+How do software architects document their choices?
+
+Architects don't just draw diagrams; they maintain Architecture Decision Records, or ADRs.
+
+When an engineer joins a project three years later and sees that the team uses Kafka instead of RabbitMQ, or PostgreSQL instead of MongoDB, they often think: 'Who designed this strange setup?'
+
+An ADR is a short, version-controlled markdown file that records the exact context, alternatives considered, decision made, and consequences accepted at that moment in time.
+
+To summarize this slide, remember this key takeaway: Architecture Decision Records preserve design intent, document trade-offs, and prevent costly architectural archaeology.
+-->
+---
+### Concept Check Question 3 (CCQ 3)
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+In Philippe Kruchten's 4+1 Architectural View Model, which view is specifically responsible for depicting how software components are deployed onto physical server hardware, cloud containers, and network topology?
+
+- **A.** Logical View
+- **B.** Process View
+- **C.** Development View
+- **D.** Physical View (Deployment View)
+
+  </div>
+  <div class="ccq-logo">
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+  </div>
+</div>
+
+<!--
+Let's check our understanding of architectural modeling views.
+
+The question asks: Which view in Kruchten's 4+1 model depicts software components deployed onto physical server hardware, cloud containers, and network topology?
+
+Let's evaluate each option:
+Option A, Logical View, focuses on domain entities and class relationships.
+Option B, Process View, focuses on concurrency, runtime threads, and non-functional throughput.
+Option C, Development View, organizes code packages, repositories, and build artifacts.
+Option D, Physical View (Deployment View), explicitly models physical nodes, virtual server clusters, Docker containers, and network routing.
+
+Therefore, the correct answer is D!
+
+To summarize this slide, remember this key takeaway: The Physical View captures deployment topology, cloud infrastructure, and network communication configurations.
 -->
 ---
 <!-- _class: lead -->
@@ -1355,3 +1418,337 @@ Feng Chia University
 Thank you very much for your engagement and attention!
 The floor is now open for questions, architectural discussions, and project design reviews.
 -->
+
+<script>
+(function() {
+  // =========================================================================
+  // 1. Header Dropdown (Table of Contents / Outline)
+  // =========================================================================
+  function initHeaderDropdown() {
+    const sections = [];
+    const seenTitles = new Set();
+    const slideSections = document.querySelectorAll('section[id]');
+    
+    // 1. Scan unique section titles and their slide IDs
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header) return;
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title || seenTitles.has(title)) return;
+      
+      seenTitles.add(title);
+      sections.push({
+        id: sec.id,
+        title: title
+      });
+    });
+
+    if (sections.length === 0) return;
+
+    // Detect language: if slide titles don't have Chinese characters, use English
+    const allTitles = sections.map(s => s.title).join('');
+    const isEn = !/[\u4e00-\u9fa5]/.test(allTitles);
+    const txtOutline = isEn ? '📑 Table of Contents' : '📑 章節目錄';
+    const txtTitleTooltip = isEn ? 'Click to pin or hover to view outline' : '點擊固定或懸停查看章節目錄';
+    const txtPrev = isEn ? 'Previous Section' : '上一章節';
+    const txtNext = isEn ? 'Next Section' : '下一章節';
+
+    // Helper to create the dropdown DOM
+    function createDropdownWrapper(currentTitle) {
+      const wrapper = document.createElement('span');
+      wrapper.className = 'header-nav-wrapper';
+      
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'header-nav-title';
+      titleSpan.title = txtTitleTooltip;
+      titleSpan.innerHTML = currentTitle + '<span class="nav-caret"> ▾</span>';
+      
+      titleSpan.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const wasOpen = wrapper.classList.contains('is-open');
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+        if (!wasOpen) {
+          wrapper.classList.add('is-open');
+        }
+      });
+      
+      const dropdown = document.createElement('div');
+      dropdown.className = 'nav-dropdown';
+      
+      dropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      const dropHeader = document.createElement('div');
+      dropHeader.className = 'nav-dropdown-header';
+      dropHeader.innerHTML = '<span>' + txtOutline + '</span>';
+      dropdown.appendChild(dropHeader);
+      
+      const grid = document.createElement('div');
+      grid.className = 'nav-dropdown-grid';
+      
+      sections.forEach(s => {
+        const item = document.createElement('a');
+        const isActive = (s.title === currentTitle);
+        item.className = 'nav-dropdown-item' + (isActive ? ' active' : '');
+        item.href = '#' + s.id;
+        item.innerHTML = '<span class="badge">#' + s.id.padStart(2, '0') + '</span><span class="item-text" title="' + s.title + '">' + s.title + '</span>';
+        
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          wrapper.classList.remove('is-open');
+          dropdown.style.display = 'none';
+          const targetHash = '#' + s.id;
+          if (window.location.hash === targetHash) {
+            window.dispatchEvent(new HashChangeEvent('hashchange'));
+          } else {
+            window.location.hash = targetHash;
+          }
+          setTimeout(() => { dropdown.style.display = ''; }, 350);
+        });
+        
+        grid.appendChild(item);
+      });
+      
+      dropdown.appendChild(grid);
+      wrapper.appendChild(titleSpan);
+      wrapper.appendChild(dropdown);
+      return wrapper;
+    }
+
+    // Close any pinned dropdown when clicking anywhere outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.header-nav-wrapper')) {
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+      }
+    });
+
+    // 2. Enhance each header element across all slides
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header || header.dataset.navEnhanced) return;
+      header.dataset.navEnhanced = 'true';
+      
+      const links = header.querySelectorAll('a');
+      let prevLink = null;
+      let nextLink = null;
+      
+      links.forEach(a => {
+        const txt = a.textContent.trim();
+        if (txt === '◄' || txt === '◀') prevLink = a;
+        if (txt === '►' || txt === '▶') nextLink = a;
+      });
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title) return;
+      
+      header.innerHTML = '';
+      if (prevLink) {
+        prevLink.className = 'header-nav-arrow';
+        prevLink.title = txtPrev;
+        header.appendChild(prevLink);
+        header.appendChild(document.createTextNode(' '));
+      }
+      
+      const wrapper = createDropdownWrapper(title);
+      header.appendChild(wrapper);
+      
+      if (nextLink) {
+        header.appendChild(document.createTextNode(' '));
+        nextLink.className = 'header-nav-arrow';
+        nextLink.title = txtNext;
+        header.appendChild(nextLink);
+      }
+    });
+  }
+
+  // =========================================================================
+  // 2. Number Quick Jump (<kbd>Num</kbd> + <kbd>Enter</kbd>)
+  // =========================================================================
+  function initNumberQuickJump() {
+    let inputBuffer = '';
+    let timer = null;
+    let hud = null;
+
+    // Detect language: check titles or body text
+    const slideSections = document.querySelectorAll('section[id]');
+    let hasZh = false;
+    slideSections.forEach(s => {
+      if (/[\u4e00-\u9fa5]/.test(s.textContent || '')) hasZh = true;
+    });
+    const isEn = !hasZh;
+
+    function getOrCreateHud() {
+      if (!hud) {
+        hud = document.createElement('div');
+        hud.id = 'slide-quick-jump-hud';
+        hud.style.cssText = [
+          'position: fixed',
+          'bottom: 36px',
+          'left: 50%',
+          'transform: translateX(-50%)',
+          'background: rgba(15, 23, 42, 0.94)',
+          'color: #ffffff',
+          'padding: 8px 18px',
+          'border-radius: 28px',
+          'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif',
+          'font-size: 14px',
+          'font-weight: 500',
+          'box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15)',
+          'backdrop-filter: blur(16px)',
+          '-webkit-backdrop-filter: blur(16px)',
+          'z-index: 999999',
+          'display: none',
+          'align-items: center',
+          'gap: 8px',
+          'pointer-events: none',
+          'opacity: 0',
+          'transition: opacity 0.15s ease, transform 0.15s ease'
+        ].join(';');
+        const targetParent = document.fullscreenElement || document.body;
+        targetParent.appendChild(hud);
+      }
+      const parent = document.fullscreenElement || document.body;
+      if (hud.parentElement !== parent) {
+        parent.appendChild(hud);
+      }
+      return hud;
+    }
+
+    function getTotalSlides() {
+      const secs = document.querySelectorAll('section[id]');
+      return secs.length || 1;
+    }
+
+    function showHud() {
+      const el = getOrCreateHud();
+      const total = getTotalSlides();
+      const label = isEn ? 'Go to slide:' : '跳至頁碼:';
+      const enterHint = isEn ? 'Enter ↵' : 'Enter 確認 ↵';
+      el.innerHTML = '<span>🧭 ' + label + '</span> ' +
+        '<strong style="color: #38bdf8; font-size: 20px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 1px;">' + inputBuffer + '</strong> ' +
+        '<span style="opacity: 0.6; font-size: 13px;">/ ' + total + '</span> ' +
+        '<span style="background: rgba(255,255,255,0.18); padding: 2px 7px; border-radius: 6px; font-size: 11px; margin-left: 2px; font-weight: 600;">' + enterHint + '</span>';
+      el.style.display = 'flex';
+      el.style.opacity = '1';
+
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(clearInput, 2800);
+    }
+
+    function clearInput() {
+      inputBuffer = '';
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      if (hud) {
+        hud.style.opacity = '0';
+        setTimeout(() => {
+          if (inputBuffer === '' && hud) hud.style.display = 'none';
+        }, 150);
+      }
+    }
+
+    function jumpToSlide(num) {
+      const total = getTotalSlides();
+      const target = Math.max(1, Math.min(num, total));
+      const targetHash = '#' + target;
+      
+      // Visual flash confirmation
+      const el = getOrCreateHud();
+      const confirmedMsg = isEn ? ('✓ Slide ' + target) : ('✓ 第 ' + target + ' 頁');
+      el.innerHTML = '<span style="color: #34d399; font-weight: 700; font-size: 15px;">' + confirmedMsg + '</span>';
+      el.style.display = 'flex';
+      el.style.opacity = '1';
+      setTimeout(clearInput, 500);
+
+      if (window.location.hash === targetHash) {
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
+      } else {
+        window.location.hash = targetHash;
+      }
+    }
+
+    window.addEventListener('keydown', function(e) {
+      // Don't intercept when focusing editable form elements
+      const active = document.activeElement;
+      if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT' || active.isContentEditable)) {
+        return;
+      }
+
+      // Ignore if modifier keys are pressed
+      if (e.ctrlKey || e.altKey || e.metaKey) {
+        return;
+      }
+
+      // Resolve digit from key or code (supports '2', 'Digit2', 'Numpad2')
+      let digit = null;
+      if (e.key >= '0' && e.key <= '9') {
+        digit = e.key;
+      } else if (/^(?:Digit|Numpad)([0-9])$/.test(e.key)) {
+        digit = e.key.replace(/^(?:Digit|Numpad)/, '');
+      } else if (/^(?:Digit|Numpad)([0-9])$/.test(e.code || '')) {
+        digit = (e.code || '').replace(/^(?:Digit|Numpad)/, '');
+      }
+
+      if (digit !== null) {
+        inputBuffer += digit;
+        if (inputBuffer.length > 4) inputBuffer = inputBuffer.slice(-4);
+        showHud();
+        return;
+      }
+
+      // Backspace
+      if ((e.key === 'Backspace' || e.code === 'Backspace') && inputBuffer.length > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        inputBuffer = inputBuffer.slice(0, -1);
+        if (inputBuffer.length === 0) {
+          clearInput();
+        } else {
+          showHud();
+        }
+        return;
+      }
+
+      // Escape
+      if ((e.key === 'Escape' || e.code === 'Escape') && inputBuffer.length > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        clearInput();
+        return;
+      }
+
+      // Enter key confirms numeric jump
+      if ((e.key === 'Enter' || e.code === 'Enter' || e.code === 'NumpadEnter') && inputBuffer.length > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        const targetPage = parseInt(inputBuffer, 10);
+        if (!isNaN(targetPage)) {
+          jumpToSlide(targetPage);
+        } else {
+          clearInput();
+        }
+      }
+    }, true);
+  }
+
+  // Initialize both features
+  function init() {
+    initHeaderDropdown();
+    initNumberQuickJump();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  setTimeout(init, 400);
+})();
+
+</script>

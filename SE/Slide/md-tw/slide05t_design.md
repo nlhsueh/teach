@@ -1,5 +1,7 @@
+---
 marp: true
 theme: ase-theme
+title: '軟體工程 (Software Engineering)'
 paginate: true
 header: '軟體工程 | 第 5 章：軟體設計、架構與物件導向原則'
 footer: 'Prof. Nien-Lin Hsueh'
@@ -7,7 +9,7 @@ footer: 'Prof. Nien-Lin Hsueh'
 <!-- _class: lead -->
 <!-- header: '' -->
 
-# 軟體工程
+# 軟體工程 (Software Engineering)
 ### 第五課：軟體設計、架構與物件導向原則 (Software Design & Architecture)
 #### 從通用設計基石、架構推導塑模到 SOLID 匠藝
 
@@ -31,12 +33,12 @@ footer: 'Prof. Nien-Lin Hsueh'
 
 <div class="outline-columns">
 <div>
-<h3>第一部分：設計基礎與架構塑模</h3>
+<h3>第一部分：設計基礎與架構模式</h3>
 <ul>
 <li><b>5.1 軟體設計導論與全景：</b> 從需求到實作藍圖、設計為何決定成敗、四大設計層次與學習路徑。</li>
-<li><b>5.2 通用軟體設計核心原則：</b> 模組化、抽象化、資訊隱藏、關注點分離、至高法則「高凝聚與低耦合」。</li>
-<li><b>5.3 軟體架構推導與塑模表現：</b> 超越 Pattern：ASR 驅動架構、UML 常見陷阱、4+1 視角、C4 Model 與 ADR。</li>
-<li><b>5.4 經典架構模式與品質權衡：</b> 六大模式全景總覽、單體 vs. 微服務、非功能品質屬性與 ATAM 權衡。</li>
+<li><b>5.2 通用軟體設計核心原則：</b> 模組化、抽象化、資訊隱藏、關注點分離、內聚力與耦合度的層次光譜。</li>
+<li><b>5.3 經典軟體架構模式與品質權衡：</b> 六大模式全景總覽、單體 vs. 微服務、非功能品質屬性與 ATAM 權衡。</li>
+<li><b>5.4 軟體架構推導與塑模表現：</b> 超越 Pattern：ASR 驅動架構、UML 常見陷阱、4+1 視角、C4 Model 與 ADR。</li>
 </ul>
 </div>
 <div>
@@ -54,17 +56,17 @@ footer: 'Prof. Nien-Lin Hsueh'
 
 在 5.1，我們建立軟體設計的宏觀全景：釐清「設計」與「寫程式」的本質差異，並解析軟體設計的四大層次。
 
-在 5.2，我們打破傳統順序，將「通用設計原則」放在架構之前！為什麼？因為「高凝聚、低耦合」與「關注點分離」是軟體工程的物理定律，貫穿於微服務到 Java 類別的每一個尺度。
+在 5.2，我們打破傳統順序，將「通用設計原則」放在架構之前！為什麼？因為「高凝聚、低耦合」與「關注點分離」是軟體工程的物理定律，貫穿於微服務到 Java 類別的每一個尺度。我們還會深入探討經典的 7 種內聚力層次與 6 種耦合度層次。
 
-在 5.3，我們深入軟體架構推導與塑模：解答如何從 ASR 需求推導架構、為什麼不能拿類別圖當架構圖、如何用 UML、4+1 視圖與業界主流 C4 Model 畫出精準架構圖，以及如何用 ADR 記錄架構決策。
+在 5.3，我們全面探索經典架構模式與非功能品質權衡：掌握 MVC、Layered、Repository、Client-Server、Pipe-and-Filter 與 Microservices 六大經典模式，並透過 ATAM 掌握架構取捨。
 
-在 5.4，我們深入六大經典架構模式，並透過 ATAM 權衡分析性能與安全等取捨。
+在 5.4，我們昇華到架構推導與塑模：解答架構師如何從 ASR 需求系統性推導架構（絕非僅僅從型錄挑選 Pattern！）、如何用 UML、4+1 視角與現代主流 C4 Model 畫出精準架構圖，以及如何用 ADR 記錄架構決策。
 
-在 5.5，我們將鏡頭推進至微觀物件導向設計，精通 SOLID 五大原則。
+在 5.5，我們深入微觀詳細設計，精通五大經典 SOLID 物件導向原則。
 
-最後在 5.6 與 5.7，我們探討 AI 輔助設計的實務與盲點，並進行全章統整。
+最後在 5.6 與 5.7，我們探討 AI 架構副駕駛的協同應用與核心觀念統整。
 
-總結這張投影片，請記住這個核心觀念：本章先立原則、再探巨觀架構與塑模、後精修微觀物件導向匠藝。
+總結這張投影片，請記住這個核心觀念：這份藍圖引領我們先扎根通用原則，再宏觀架構模式與推導塑模，最後微觀深耕物件導向匠藝。
 -->
 ---
 <!-- _class: lead -->
@@ -165,28 +167,28 @@ footer: 'Prof. Nien-Lin Hsueh'
 ---
 ## 本章學習路徑：為什麼通用設計原則必須先行？
 
-* **教學難題：先講架構？還是先講原則？**
-  - 若一開始就講架構模式，學生容易將模式當成死背的靜態圖形。
-  - 當你先理解**關注點分離 (SoC)**，你就會秒懂*為什麼*會有分層架構 (Layered)！
-  - 當你先理解**低耦合 (Low Coupling)**，你就會頓悟*為什麼* MVC 嚴禁 Model 直接碰 View！
-  - 當你先理解**高凝聚 (High Cohesion)**，你就會透徹掌握*為什麼*微服務必須圍繞領域邊界切分！
-* **本章五大推演步驟：**
-  - **第一步：通用設計核心原則 (5.2)**：模組化、抽象化、資訊隱藏、高凝聚與低耦合。
-  - **第二步：軟體架構推導與塑模 (5.3)**：ASR 驅動、UML 陷阱、4+1 視圖、C4 Model 與 ADR。
-  - **第三步：經典架構模式與權衡 (5.4)**：六大架構模式、單體 vs. 微服務、品質屬性與 ATAM。
-  - **第四步：微觀詳細設計與 SOLID (5.5)**：類別層級的 SOLID 物件導向工藝。
-  - **第五步：現代實務與 AI 賦能 (5.6 & 5.7)**：AI 副駕駛工作流、盲點防護與概念統整。
+* **教學編排的根本思維：原則先行 vs. 架構先行**
+  - 若一開始就背誦架構模式，模式往往淪為孤立、死記的框線圖。
+  - 當你徹底理解**關注點分離**，你便能自然洞悉分層架構 (Layered) 的存在必要；
+  - 當你深刻掌握**低耦合度**，你便能透徹理解 MVC 為何堅持將 Model 與 View 隔離；
+  - 當你深悟**高凝聚度**，你便能明白微服務 (Microservices) 為何必須嚴格對齊領域邊界。
+* **步步為營的完整學習軌跡：**
+  - **第一步：通用設計原則 (5.2)**：核心基石、內聚力與耦合度的詳細層次劃分。
+  - **第二步：經典架構模式與權衡 (5.3)**：六大架構樣式、單體 vs. 微服務技術對決與 ATAM。
+  - **第三步：架構推導與塑模 (5.4)**：超越 Pattern：ASR 驅動、UML 陷阱、4+1 視圖、C4 Model 與 ADR。
+  - **第四步：微觀詳細設計 (5.5)**：類別層級的 SOLID 物件導向工程匠藝。
+  - **第五步：現代實踐與 AI 賦能 (5.6 & 5.7)**：AI 副駕駛工作流、防範盲點與全景統整。
 
 <!--
-為什麼我們要把通用設計原則排在架構之前？
+為什麼我們將通用設計原則安排在架構之前？
 
-在許多傳統教材中，老師一開始就急著介紹 MVC 或微服務。但學生常問：為什麼要分三層？資料庫直接給前端呼叫不是更快嗎？
+在傳統教材中，許多課程一開始就直奔 MVC 或微服務等架構名詞。但初學者往往會困惑：「為什麼要分層？為什麼資料庫不能直接呼叫畫面？」
 
-答案就在通用設計原則：關注點分離、高凝聚與低耦合！
+答案正是通用設計原則：關注點分離、高凝聚與低耦合！
 
-先搞懂這些萬用原則，後面學到的每一個架構模式與物件導向原則，都會變成順理成章的自然推導，而不是死記硬背的配方。
+先掌握了這些通用物理定律，後續學習到的每一個架構模式與設計原則，都將是這些原理的自然延伸，而非生搬硬套的死記硬背。
 
-總結這張投影片，請記住這個核心觀念：通用設計原則是軟體設計的第一原理，為後續的架構模式與詳細設計奠定清晰思考基石。
+總結這張投影片，請記住這個核心觀念：通用設計原則是架構模式與微觀物件導向設計的共同靈魂與理論基石。
 -->
 ---
 <!-- _class: lead -->
@@ -311,6 +313,65 @@ class OrderProcessor {
 總結這張投影片，請記住這個核心觀念：將臃腫的單體類別拆解為專注、協同的服務，是實踐高凝聚與低耦合的經典範例。
 -->
 ---
+## 內聚力的層次與類型：從弱到強 (Weak to Strong)
+
+* **內聚力階梯譜系 (Larry Constantine & Edward Yourdon)：**
+  - 衡量「單一模組 / 類別內部各元素彼此關聯與聚焦的緊密程度」：
+
+| 層次 | 內聚力類型 | 核心特徵與運作機制 | 實務範例 | 品質評估 |
+| :--- | :--- | :--- | :--- | :--- |
+| **7** | **功能性內聚 (Functional)** | 模組內部所有元素只為完成單一、明確且具體的運算或業務功能 | `calculateTax()`, `sin(x)` | **最高境界 (最理想)** |
+| **6** | **順序性內聚 (Sequential)** | 前一個操作的輸出，直接作為下一個操作的輸入（如生產線） | `readData() → parseJSON() → validate()` | **強烈推薦** |
+| **5** | **溝通性內聚 (Communicational)**| 各項操作共用相同的輸入資料，或產出相同的輸出資料 | `updateCustomerAddress()` 兼 `printLabel()` | **可接受** |
+| **4** | **過程性內聚 (Procedural)** | 各步驟僅因「特定執行先後順序」而被綁在一起，處理不同資料 | 先 `validateOrder()`，再 `auditLog()` | **普通 (中度)** |
+| **3** | **時間性內聚 (Temporal)** | 元素僅因「在同一時間點執行」而被包在一起 | `systemStartup()`, `loadConfigAndConnect()` | **偏弱 (應重構)** |
+| **2** | **邏輯性內聚 (Logical)** | 模組包攬同類任務，由傳入的控制 Flag 決定具體執行哪一段分支 | `printReport(int format)` (內部 switch CSV/PDF) | **不良 (違反 OCP)** |
+| **1** | **偶然性內聚 (Coincidental)** | 元素之間毫無邏輯關聯，僅是隨機雜湊的大雜燴 | `CommonUtils.java`, `GeneralHelper.java` | **最差 (務必杜絕)** |
+
+<!--
+讓我們深入探討 Larry Constantine 與 Edward Yourdon 提出的經典 7 大內聚力層次。
+
+最高境界是「功能性內聚」：模組或類別只專注做好一件純粹而定義清晰的事情。每一行程式碼都為同一個目標效力。
+
+其次是「順序性內聚」，如流水線般由前一步骤直接供應下一步骤。
+
+而在階梯下方則是常見的反模式：時間性內聚將開機要做的事情全部塞進同一個肥大方法；邏輯性內聚用一個 flag 控制多種不同運算；最嚴重的則是偶然性內聚，也就是大家常見的 GeneralUtils 工具包，裡面什麼雜七雜八的函式都往裡塞。
+
+總結這張投影片，請記住這個核心觀念：極力追求功能性與順序性內聚，並主動重構消除時間性、邏輯性與偶然性內聚。
+-->
+---
+## 耦合度的層次與類型：從緊到鬆 (Tight to Loose)
+
+* **耦合度階梯譜系 (模組之間的相互依賴程度)：**
+  - 衡量「模組之間呼叫、資料傳遞與知識共享的牽扯深度」：
+
+| 層次 | 耦合度類型 | 依賴機制與破壞風險 | 實務範例 | 品質評估 |
+| :--- | :--- | :--- | :--- | :--- |
+| **1** | **內容耦合 (Content)** | 一個模組直接竄改或存取另一個模組的私有內部記憶體或邏輯 | 繞過封裝直接修改他者 private 欄位 | **最差 (極度危險)** |
+| **2** | **共用耦合 (Common)** | 多個模組共同讀寫全域變數或全域共用記憶體狀態 | 多執行緒下共用未加保護的全域狀態 flag | **高風險 (難追蹤)** |
+| **3** | **控制耦合 (Control)** | 一個模組透過傳遞控制旗標 (Flag) 來支配另一個模組的內部流程 | 呼叫時傳入 `mode = 3` 操控被呼叫者行為 | **中高風險** |
+| **4** | **標記耦合 (Stamp)** | 模組傳遞整包複合資料結構，但被呼叫者僅需其中一小部分 | 函式只需 `zipCode`，卻傳入整包 `Customer` | **中度 (可改善)** |
+| **5** | **資料耦合 (Data)** | 模組間僅透過簡單、獨立且必要的純參數進行通訊 | `calculateArea(width, height)` | **函式呼叫最佳** |
+| **6** | **訊息/事件耦合 (Message)**| 模組間透過非同步訊息/事件通訊，彼此完全不知曉對方存在 | EventBus：發布 `OrderPlacedEvent` | **完全解耦 (最理想)** |
+
+<!--
+接著我們來看耦合度的 6 大層次，從最危險的緊密耦合邁向最優質的鬆散解耦。
+
+最糟的稱為「內容耦合」：A 模組直接深入 B 模組的私有實作細節，徹底擊穿封裝。B 模組稍有改動，A 模組直接陣亡。
+
+「共用耦合」則是多個模組共用全域變數，往往引發難以重現的並行競爭與副作用。
+
+「控制耦合」是傳入 flag 決定對方的內部分支，這表示呼叫端對被呼叫端的內部實作細節知曉得太多。
+
+「標記耦合」是傳遞過大的資料物件，造成不必要的資料結構綁定。
+
+「資料耦合」是直接呼叫時的黃金標準：只傳入運算所需的純量參數。
+
+而「訊息/事件解耦」則透過事件匯流排達到時空徹底分離。
+
+總結這張投影片，請記住這個核心觀念：杜絕內容與共用耦合，降低控制耦合，優先採用資料耦合與事件驅動設計。
+-->
+---
 ### 觀念檢核測驗 1 (CCQ 1)
 <div class="ccq-columns">
   <div class="ccq-text">
@@ -344,23 +405,23 @@ class OrderProcessor {
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.3 軟體架構推導與塑模' -->
+<!-- header: '5.3 經典軟體架構模式與品質權衡' -->
 
-# **5.3 軟體架構推導與塑模表現**
+# **5.3 經典軟體架構模式與品質權衡**
 
-> "軟體架構是一組設計決策的集合；如果做錯了這些決策，專案終將走向失敗。"  
-> — *Eoin Woods*
+> 「軟體架構沒有完美的解法，只有持續的權衡取捨。」  
+> — *Thomas Sowell*
 
 <!--
-歡迎進入 5.3 節：軟體架構推導與塑模表現。
+歡迎來到 5.3 節：經典軟體架構模式與品質權衡。
 
-掌握了通用設計原則後，我們將視角拉升至系統巨觀架構。
+在建立了通用設計原則之後，我們正式邁向巨觀的軟體架構領域。我們將探索軟體工程界在過去半世紀中淬鍊出的核心結構典範：架構模式。
 
-很多同學常問：架構師做架構時，難道只是從型錄挑一個 Pattern 嗎？到底如何一步步推導出架構？架構圖到底該怎麼畫——是用 UML 類別圖嗎？
+架構模式是解決重複出現之結構難題的成熟模板。然而，每一種模式都必然伴隨著其獨特的代價與權衡。
 
-在這一節中，我們將深入剖析架構推導程序：如何由關鍵架構需求 (ASR) 驅動設計、如何辨識 UML 類別圖陷阱、如何運用 Kruchten 4+1 視圖與業界最風行的 C4 Model 繪製架構圖，以及如何用 ADR 架構決策記錄沉澱設計智慧。
+在本節中，我們首先精確定義什麼是軟體架構與架構模式；接著剖析 MVC、Layered、Repository、Client-Server、Pipe & Filter 與 Microservices 六大經典模式；隨後深入對決單體與微服務架構，並掌握業界標準的 ATAM 架構權衡分析方法。
 
-總結這張投影片，請記住這個核心觀念：架構是一套系統化的推導與塑模工程，奠定了整個軟體系統的結構骨架。
+總結這張投影片，請記住這個核心觀念：架構模式提供了經過驗證的結構骨架，工程師必須嚴謹評估其伴隨之非功能品質權衡。
 -->
 ---
 ## 什麼是軟體架構？ (What is Software Architecture?)
@@ -385,193 +446,6 @@ class OrderProcessor {
 因為架構決策是日後最難、成本最高更換的部分，儘早把架構做對，是專案成敗的關鍵。
 
 總結這張投影片，請記住這個核心觀念：軟體架構透過建立高階組件結構與通訊邊界，串接起抽象需求與具體程式碼。
--->
----
-## 架構如何推導？超越 Pattern 挑選的 5 步決策流程
-
-* **架構絕非「挑選 Pattern 的購物車」：**
-  - 架構模式只是積木與範本；架構設計的本質是一套嚴謹的**推導、分解與權衡流程**：
-* **架構推導五大核心步驟：**
-  - **1. 提煉 ASR (關鍵架構需求 / Architecturally Significant Requirements)**：
-    - 並非所有需求都影響架構！聚焦於具決定性影響的非功能品質屬性（如 99.99% 可用性、<100ms 延遲）與核心使用案例。
-  - **2. 系統分解與邊界劃分 (Decomposition)**：
-    - 依據業務領域能力（DDD 限界上下文 Bounded Contexts）或技術層次切分子系統。
-  - **3. 組合與合成架構模式 (Pattern Synthesis)**：
-    - 現實系統皆為複合架構：外層微服務 Mesh、中間事件驅動管線、內部則是分層 MVC！
-  - **4. 定義介面合約與通訊協定 (Protocols & Interfaces)**：
-    - 同步 RESTful / gRPC vs. 異步 Kafka / RabbitMQ 事件流。
-  - **5. 評估驗證與沉澱決策 (Evaluate & Document)**：
-    - 透過 ATAM 評估極端情境，並以 ADR 記錄決策脈絡。
-
-<!--
-架構師究竟是如何設計出系統架構的？
-
-初學者最常見的誤解，以為做架構就是從目錄翻出『微服務』或『分層架構』套進去。
-
-事實上，架構推導是一套嚴謹的五步工程流程：
-第一，提煉 ASR：購物車的 UI 按鈕顏色不影響架構，但十萬人瞬間結帳與信用卡個資法規會決定架構！
-第二，依據領域邊界分解子系統。
-第三，因應不同技術挑戰合成多種架構模式。
-第四，定義明確的同步與異步通訊協定。
-第五，透過 ATAM 評估權衡，並撰寫 ADR 留下決策紀錄。
-
-總結這張投影片，請記住這個核心觀念：架構設計是以 ASR 需求為驅動、結合多種模式並權衡決策的系統化推導流程。
--->
----
-## 如何畫架構圖？傳統 UML 在實務中的定位與陷阱
-
-* **「巨大類別圖陷阱」 (學生最常見的嚴重誤區)：**
-  - 學生常畫出一張擠滿 50 個類別的 UML Class Diagram，宣稱那是「系統架構圖」。
-  - **致命盲點：** 類別圖只呈現編譯期的物件關聯；它**完全掩蓋了網路通訊、程序隔離、伺服器節點與雲端部屬邊界**！
-* **傳統 UML 在巨觀架構中的正確用法：**
-  - **1. 組件圖 (Component Diagram)**：
-    - 呈現高階軟體組件、提供的介面 (`--O` 棒棒糖符號) 與相依的介面 (`--( ` 插座符號)。
-  - **2. 套件圖 (Package Diagram)**：
-    - 呈現命名空間分群、子系統模組邊界與套件相依方向。
-  - **3. 部屬圖 (Deployment Diagram)**：
-    - 呈現實體硬體節點、虛擬機器、容器、執行環境與網路協定 (HTTPS, TCP/IP, JDBC)。
-
-<!--
-架構到底該怎麼畫？我們可以用 UML 嗎？
-
-這是軟體工程學生最常犯的經典錯誤：花了整整三天畫了一張塞滿 50 個 Class 的類別圖，交上去當架構圖。
-
-這是嚴重的錯誤！類別圖是微觀層次的代碼細節。從類別圖裡，你看不到哪一台伺服器連哪一台、看不到網路逾時如何處理，也看不到負載平衡架構。
-
-如果要用 UML 畫架構，你必須使用巨觀圖表：用組件圖畫介面提供與需求，用套件圖畫模組相依，用部屬圖畫真實的雲端容器與伺服器拓撲！
-
-總結這張投影片，請記住這個核心觀念：切忌以類別圖充當架構圖；應採用組件圖、套件圖與部屬圖呈現巨觀結構。
--->
----
-## 多維度架構視圖：Kruchten 的 4+1 架構視圖模型
-
-* **Philippe Kruchten (1995) 經典洞察：「沒有單一圖表能滿足所有利益關係人！」**
-* **4+1 多維度架構模型：**
-  - **1. 邏輯視圖 (Logical View / 終端使用者與領域功能)**：
-    - 系統的類別結構、領域概念與物件封裝，滿足系統的功能性需求。
-  - **2. 程序視圖 (Process View / 整合工程師與效能調校)**：
-    - 系統的並行運算 (Concurrency)、執行緒、非同步訊息佇列、處理行程間通訊 (IPC) 與回應效能。
-  - **3. 開發視圖 (Development View / 軟體工程師與專案管理)**：
-    - 原始碼套件組織、第三方函式庫相依、Maven/Gradle 建置模組結構。
-  - **4. 實體視圖 (Physical View / 系統維運與 DevOps)**：
-    - 實體伺服器、Docker 容器叢集、網路拓撲、防火牆邊界與部署通訊協定。
-  - **+1. 核心場景 (Scenarios / 驅動與驗證核心)**：
-    - 貫穿並驗證前述四個視圖的核心業務使用案例 (Use Cases)。
-
-<!--
-請看 Philippe Kruchten 享譽全球的 4+1 架構視圖模型。
-
-Kruchten 發現，想用一張圖討好所有人是不可能的任務：業務主管只在乎功能邏輯；程式設計師在乎套件怎麼拆；維運工程師在乎 Kubernetes 節點怎麼連；架構師在乎並行執行緒會不會死結。
-
-4+1 模型透過四個專屬視圖，並以中央核心場景串接，完美化解了多重視角的衝突。
-
-總結這張投影片，請記住這個核心觀念：Kruchten 4+1 模型以四個專屬視角結合核心場景，全面調和所有利益關係人的關注點。
--->
----
-## 現代架構視覺化主流：C4 Model
-
-* **Simon Brown 創立之現代、直觀且開發者友善的架構表達標準：**
-* **「軟體架構的 Google Maps」——四層層次化縮放邏輯：**
-  - 🗺️ **Level 1: System Context (系統情境圖 / 全景空照圖)**：
-    - 誰在使用系統？系統與哪些外部系統整合（如第三方金流 Stripe、Google SSO）？
-  - 🏙️ **Level 2: Container Diagram (容器圖 / 城市街區圖)**：
-    - 包含哪些可獨立部署的單元？（SPA 前端、手機 App、API 後端、關聯資料庫、Redis 快取）與其通訊協定（JSON/HTTPS, gRPC）。
-  - 🏛️ **Level 3: Component Diagram (組件圖 / 建築平面圖)**：
-    - 放大單一 Container 內部：包含哪些核心架構組件（如 AuthController, PaymentService, UserRepository）？
-  - 🚪 **Level 4: Code Diagram (程式碼圖 / 室內裝潢圖)**：
-    - 類別圖特寫（通常為選填；只針對極度複雜的演算法模組繪製）。
-
-<!--
-在現代軟體實務中，業界工程師實際上是怎麼畫架構圖的？
-
-雖然 UML 在學界地位崇高，但在現代業界，最受推崇的架構表達法是 Simon Brown 的 C4 Model！
-
-Simon Brown 認為，架構圖應該像 Google Maps 一樣具備層次縮放能力：
-第一層 System Context：如同衛星空照圖，看到使用者與周遭外部系統。
-第二層 Container：放大到街區，看到有哪些獨立部屬的程式、API 與資料庫。
-第三層 Component：放大到建築平面圖，看到單一伺服器內部的組件切割。
-第四層 Code：放大到房間，看細節類別圖。
-
-C4 Model 直觀、沒有晦澀的 UML 語法爭議，是現代雲端與微服務架構的首選！
-
-總結這張投影片，請記住這個核心觀念：C4 Model 如同 Google Maps，以情境、容器、組件與代碼四層縮放層次呈現架構。
--->
----
-## 沉澱架構決策：架構決策記錄 (Architecture Decision Records, ADR)
-
-* **為什麼必須撰寫 ADR：**
-  - 程式碼忠實記錄了「*怎麼做 (How)*」，但程式碼從不解釋「*為什麼這麼做 (Why)*」。
-  - 缺乏 ADR 會引發**「架構考古學 (Architectural Archaeology)」**——新進工程師花費數月苦思當年為何選擇這套非主流技術。
-* **標準 ADR 結構 (Michael Nygard 輕量模板)：**
-  - **1. 標題 (Title)**：編號與明確決策（例如：`ADR-003: 採用 PostgreSQL 作為交易持久化資料庫`）。
-  - **2. 狀態 (Status)**：`提議 (Proposed)` → `接受 (Accepted)` → `廢棄 (Deprecated)` → `被取代 (Superseded)`。
-  - **3. 背景脈絡 (Context)**：面臨的商業問題、技術約束與相互抗衡的力量。
-  - **4. 決策內容 (Decision)**：採取的具體架構方案與選型依據。
-  - **5. 後續影響 (Consequences)**：帶來的好處，以及**明確承擔的負面代價與權衡**！
-
-<!--
-架構師如何記錄他們的決策？
-
-優秀的架構師絕不只畫圖，他們一定會撰寫 ADR：架構決策記錄。
-
-當三年後新工程師加入團隊，看到系統竟然用 Kafka 而不用 RabbitMQ，常常會心生抱怨。但如果有一份 ADR，記載了當年是因為必須支撐每天五千萬筆即時串流事件，大家就會立刻理解這個決策的智慧與代價。
-
-ADR 是一份納入 Git 版本控制的 Markdown 文件，能永久保留架構脈絡，杜絕昂貴的架構考古。
-
-總結這張投影片，請記住這個核心觀念：ADR 保存架構意圖、忠實記錄得失代價，是防止團隊陷入架構考古的必備實踐。
--->
----
-### 觀念檢核測驗 2 (CCQ 2)
-<div class="ccq-columns">
-  <div class="ccq-text">
-
-在 Philippe Kruchten 提出的 4+1 架構視圖模型 (4+1 View Model) 中，哪一個視圖專門負責描繪軟體組件如何被部屬至實體伺服器硬體、雲端容器叢集與底層網路拓撲上？
-
-- **A.** 邏輯視圖 (Logical View)
-- **B.** 程序視圖 (Process View)
-- **C.** 開發視圖 (Development View)
-- **D.** 實體視圖 / 部屬視圖 (Physical View / Deployment View)
-
-  </div>
-  <div class="ccq-logo">
-    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
-  </div>
-</div>
-
-<!--
-讓我們檢驗一下對架構塑模視圖的理解。
-
-題目問：在 Kruchten 的 4+1 模型中，哪一個視圖專門描繪軟體組件部署至實體硬體、雲端容器與網路拓撲？
-
-分析選項：
-選項 A，邏輯視圖，聚焦於領域概念與類別關聯。
-選項 B，程序視圖，聚焦於並行執行緒、IPC 與效能吞吐量。
-選項 C，開發視圖，聚焦於原始碼套件組織與建置模組。
-選項 D，實體視圖（部屬視圖），明確負責呈現伺服器節點、Docker 容器與網路路由！
-
-因此，正確答案是 D！
-
-總結這張投影片，請記住這個核心觀念：實體視圖忠實描繪出軟體系統在硬體伺服器、雲端容器與網路拓撲上的部屬樣貌。
--->
----
-<!-- _class: lead -->
-<!-- header: '5.4 經典架構模式' -->
-
-# **5.4 經典軟體架構模式與品質權衡**
-
-> "軟體工程中沒有完美的解答，只有取捨與權衡。"  
-> — *Thomas Sowell*
-
-<!--
-歡迎進入 5.4 節：經典軟體架構模式與品質權衡。
-
-學會了架構推導、塑模與記錄之後，我們來探討過去半世紀以來軟體工程界淬鍊出的經典範本：軟體架構模式。
-
-模式是為了解決反覆出現的結構性問題而誕生的成熟解法。但每一個模式在解決問題的同時，必定帶來相對應的代價。
-
-在這一節中，我們將剖析六大經典架構模式：MVC、分層架構、儲存庫架構、主從式架構、管線過濾器架構與微服務架構；並深入對比單體與微服務，最後透過 ATAM 架構權衡分析法學習如何衡量取捨。
-
-總結這張投影片，請記住這個核心觀念：架構模式是經過驗證的結構範本，其效益與代價必須依據系統品質屬性嚴密權衡。
 -->
 ---
 ## 什麼是軟體架構模式？ (Architectural Patterns)
@@ -842,7 +716,7 @@ MVC 最強大的地方在於關注點分離：前端工程師可以隨時改版 
 總結這張投影片，請記住這個核心觀念：架構設計的核心本質在於衡量互斥的非功能品質屬性，從中取得最符合商業目標的權衡點。
 -->
 ---
-### 觀念檢核測驗 3 (CCQ 3)
+### 觀念檢核測驗 2 (CCQ 2)
 <div class="ccq-columns">
   <div class="ccq-text">
 
@@ -872,6 +746,193 @@ MVC 最強大的地方在於關注點分離：前端工程師可以隨時改版 
 正確答案是 B！每個服務執行在獨立的 Process 與私有資料庫內，單一服務當機不會直接把其他服務拖下水。
 
 總結這張投影片，請記住這個核心觀念：行程與資料庫的實體隔離，是微服務杜絕區域故障演變成全域崩潰的關鍵防線。
+-->
+---
+<!-- _class: lead -->
+<!-- header: '5.4 軟體架構推導與塑模表現' -->
+
+# **5.4 軟體架構推導與塑模表現：超越 Pattern**
+
+> 「架構是那些你希望一開始就能做對的重要決策。」  
+> — *Ralph Johnson (Design Patterns 作者)*
+
+<!--
+歡迎來到 5.4 節：軟體架構推導與塑模表現。
+
+在學習完六大經典架構模式之後，初學者常常會產生一個疑問：在真實企業專案中，架構師難道只是像推著購物車一樣，從型錄中挑一個 Pattern 就能收工嗎？
+
+答案絕對是否定的！架構設計是一門由架構關鍵需求 (ASR) 驅動的嚴謹推導與塑模工程。在實務系統中，架構往往是在不同層級靈活揉合與混搭多種模式。
+
+在本節中，我們解答架構師如何從需求系統性推導架構、為什麼不能拿類別圖當架構圖、如何用 UML、4+1 視角與現代主流 C4 Model 畫出精準架構圖，以及如何用 ADR 記錄架構決策。
+
+總結這張投影片，請記住這個核心觀念：架構設計是從需求推導、多重視角塑模到記錄決策的嚴謹工程體系，遠非單純套用孤立模式。
+-->
+---
+## 架構如何推導？超越 Pattern 挑選的 5 步決策流程
+
+* **架構絕非「挑選 Pattern 的購物車」：**
+  - 架構模式只是積木與範本；架構設計的本質是一套嚴謹的**推導、分解與權衡流程**：
+* **架構推導五大核心步驟：**
+  - **1. 提煉 ASR (關鍵架構需求 / Architecturally Significant Requirements)**：
+    - 並非所有需求都影響架構！聚焦於具決定性影響的非功能品質屬性（如 99.99% 可用性、<100ms 延遲）與核心使用案例。
+  - **2. 系統分解與邊界劃分 (Decomposition)**：
+    - 依據業務領域能力（DDD 限界上下文 Bounded Contexts）或技術層次切分子系統。
+  - **3. 組合與合成架構模式 (Pattern Synthesis)**：
+    - 現實系統皆為複合架構：外層微服務 Mesh、中間事件驅動管線、內部則是分層 MVC！
+  - **4. 定義介面合約與通訊協定 (Protocols & Interfaces)**：
+    - 同步 RESTful / gRPC vs. 異步 Kafka / RabbitMQ 事件流。
+  - **5. 評估驗證與沉澱決策 (Evaluate & Document)**：
+    - 透過 ATAM 評估極端情境，並以 ADR 記錄決策脈絡。
+
+<!--
+架構師究竟是如何設計出系統架構的？
+
+初學者最常見的誤解，以為做架構就是從目錄翻出『微服務』或『分層架構』套進去。
+
+事實上，架構推導是一套嚴謹的五步工程流程：
+第一，提煉 ASR：購物車的 UI 按鈕顏色不影響架構，但十萬人瞬間結帳與信用卡個資法規會決定架構！
+第二，依據領域邊界分解子系統。
+第三，因應不同技術挑戰合成多種架構模式。
+第四，定義明確的同步與異步通訊協定。
+第五，透過 ATAM 評估權衡，並撰寫 ADR 留下決策紀錄。
+
+總結這張投影片，請記住這個核心觀念：架構設計是以 ASR 需求為驅動、結合多種模式並權衡決策的系統化推導流程。
+-->
+---
+## 如何畫架構圖？傳統 UML 在實務中的定位與陷阱
+
+* **「巨大類別圖陷阱」 (學生最常見的嚴重誤區)：**
+  - 學生常畫出一張擠滿 50 個類別的 UML Class Diagram，宣稱那是「系統架構圖」。
+  - **致命盲點：** 類別圖只呈現編譯期的物件關聯；它**完全掩蓋了網路通訊、程序隔離、伺服器節點與雲端部屬邊界**！
+* **傳統 UML 在巨觀架構中的正確用法：**
+  - **1. 組件圖 (Component Diagram)**：
+    - 呈現高階軟體組件、提供的介面 (`--O` 棒棒糖符號) 與相依的介面 (`--( ` 插座符號)。
+  - **2. 套件圖 (Package Diagram)**：
+    - 呈現命名空間分群、子系統模組邊界與套件相依方向。
+  - **3. 部屬圖 (Deployment Diagram)**：
+    - 呈現實體硬體節點、虛擬機器、容器、執行環境與網路協定 (HTTPS, TCP/IP, JDBC)。
+
+<!--
+架構到底該怎麼畫？我們可以用 UML 嗎？
+
+這是軟體工程學生最常犯的經典錯誤：花了整整三天畫了一張塞滿 50 個 Class 的類別圖，交上去當架構圖。
+
+這是嚴重的錯誤！類別圖是微觀層次的代碼細節。從類別圖裡，你看不到哪一台伺服器連哪一台、看不到網路逾時如何處理，也看不到負載平衡架構。
+
+如果要用 UML 畫架構，你必須使用巨觀圖表：用組件圖畫介面提供與需求，用套件圖畫模組相依，用部屬圖畫真實的雲端容器與伺服器拓撲！
+
+總結這張投影片，請記住這個核心觀念：切忌以類別圖充當架構圖；應採用組件圖、套件圖與部屬圖呈現巨觀結構。
+-->
+---
+## 多維度架構視圖：Kruchten 的 4+1 架構視圖模型
+
+* **Philippe Kruchten (1995) 經典洞察：「沒有單一圖表能滿足所有利益關係人！」**
+* **4+1 多維度架構模型：**
+  - **1. 邏輯視圖 (Logical View / 終端使用者與領域功能)**：
+    - 系統的類別結構、領域概念與物件封裝，滿足系統的功能性需求。
+  - **2. 程序視圖 (Process View / 整合工程師與效能調校)**：
+    - 系統的並行運算 (Concurrency)、執行緒、非同步訊息佇列、處理行程間通訊 (IPC) 與回應效能。
+  - **3. 開發視圖 (Development View / 軟體工程師與專案管理)**：
+    - 原始碼套件組織、第三方函式庫相依、Maven/Gradle 建置模組結構。
+  - **4. 實體視圖 (Physical View / 系統維運與 DevOps)**：
+    - 實體伺服器、Docker 容器叢集、網路拓撲、防火牆邊界與部署通訊協定。
+  - **+1. 核心場景 (Scenarios / 驅動與驗證核心)**：
+    - 貫穿並驗證前述四個視圖的核心業務使用案例 (Use Cases)。
+
+<!--
+請看 Philippe Kruchten 享譽全球的 4+1 架構視圖模型。
+
+Kruchten 發現，想用一張圖討好所有人是不可能的任務：業務主管只在乎功能邏輯；程式設計師在乎套件怎麼拆；維運工程師在乎 Kubernetes 節點怎麼連；架構師在乎並行執行緒會不會死結。
+
+4+1 模型透過四個專屬視圖，並以中央核心場景串接，完美化解了多重視角的衝突。
+
+總結這張投影片，請記住這個核心觀念：Kruchten 4+1 模型以四個專屬視角結合核心場景，全面調和所有利益關係人的關注點。
+-->
+---
+## 現代架構視覺化主流：C4 Model
+
+* **Simon Brown 創立之現代、直觀且開發者友善的架構表達標準：**
+* **「軟體架構的 Google Maps」——四層層次化縮放邏輯：**
+  - 🗺️ **Level 1: System Context (系統情境圖 / 全景空照圖)**：
+    - 誰在使用系統？系統與哪些外部系統整合（如第三方金流 Stripe、Google SSO）？
+  - 🏙️ **Level 2: Container Diagram (容器圖 / 城市街區圖)**：
+    - 包含哪些可獨立部署的單元？（SPA 前端、手機 App、API 後端、關聯資料庫、Redis 快取）與其通訊協定（JSON/HTTPS, gRPC）。
+  - 🏛️ **Level 3: Component Diagram (組件圖 / 建築平面圖)**：
+    - 放大單一 Container 內部：包含哪些核心架構組件（如 AuthController, PaymentService, UserRepository）？
+  - 🚪 **Level 4: Code Diagram (程式碼圖 / 室內裝潢圖)**：
+    - 類別圖特寫（通常為選填；只針對極度複雜的演算法模組繪製）。
+
+<!--
+在現代軟體實務中，業界工程師實際上是怎麼畫架構圖的？
+
+雖然 UML 在學界地位崇高，但在現代業界，最受推崇的架構表達法是 Simon Brown 的 C4 Model！
+
+Simon Brown 認為，架構圖應該像 Google Maps 一樣具備層次縮放能力：
+第一層 System Context：如同衛星空照圖，看到使用者與周遭外部系統。
+第二層 Container：放大到街區，看到有哪些獨立部屬的程式、API 與資料庫。
+第三層 Component：放大到建築平面圖，看到單一伺服器內部的組件切割。
+第四層 Code：放大到房間，看細節類別圖。
+
+C4 Model 直觀、沒有晦澀的 UML 語法爭議，是現代雲端與微服務架構的首選！
+
+總結這張投影片，請記住這個核心觀念：C4 Model 如同 Google Maps，以情境、容器、組件與代碼四層縮放層次呈現架構。
+-->
+---
+## 沉澱架構決策：架構決策記錄 (Architecture Decision Records, ADR)
+
+* **為什麼必須撰寫 ADR：**
+  - 程式碼忠實記錄了「*怎麼做 (How)*」，但程式碼從不解釋「*為什麼這麼做 (Why)*」。
+  - 缺乏 ADR 會引發**「架構考古學 (Architectural Archaeology)」**——新進工程師花費數月苦思當年為何選擇這套非主流技術。
+* **標準 ADR 結構 (Michael Nygard 輕量模板)：**
+  - **1. 標題 (Title)**：編號與明確決策（例如：`ADR-003: 採用 PostgreSQL 作為交易持久化資料庫`）。
+  - **2. 狀態 (Status)**：`提議 (Proposed)` → `接受 (Accepted)` → `廢棄 (Deprecated)` → `被取代 (Superseded)`。
+  - **3. 背景脈絡 (Context)**：面臨的商業問題、技術約束與相互抗衡的力量。
+  - **4. 決策內容 (Decision)**：採取的具體架構方案與選型依據。
+  - **5. 後續影響 (Consequences)**：帶來的好處，以及**明確承擔的負面代價與權衡**！
+
+<!--
+架構師如何記錄他們的決策？
+
+優秀的架構師絕不只畫圖，他們一定會撰寫 ADR：架構決策記錄。
+
+當三年後新工程師加入團隊，看到系統竟然用 Kafka 而不用 RabbitMQ，常常會心生抱怨。但如果有一份 ADR，記載了當年是因為必須支撐每天五千萬筆即時串流事件，大家就會立刻理解這個決策的智慧與代價。
+
+ADR 是一份納入 Git 版本控制的 Markdown 文件，能永久保留架構脈絡，杜絕昂貴的架構考古。
+
+總結這張投影片，請記住這個核心觀念：ADR 保存架構意圖、忠實記錄得失代價，是防止團隊陷入架構考古的必備實踐。
+-->
+---
+### 觀念檢核測驗 3 (CCQ 3)
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+在 Philippe Kruchten 提出的 4+1 架構視圖模型 (4+1 View Model) 中，哪一個視圖專門負責描繪軟體組件如何被部屬至實體伺服器硬體、雲端容器叢集與底層網路拓撲上？
+
+- **A.** 邏輯視圖 (Logical View)
+- **B.** 程序視圖 (Process View)
+- **C.** 開發視圖 (Development View)
+- **D.** 實體視圖 / 部屬視圖 (Physical View / Deployment View)
+
+  </div>
+  <div class="ccq-logo">
+    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+  </div>
+</div>
+
+<!--
+讓我們檢驗一下對架構塑模視圖的理解。
+
+題目問：在 Kruchten 的 4+1 模型中，哪一個視圖專門描繪軟體組件部署至實體硬體、雲端容器與網路拓撲？
+
+分析選項：
+選項 A，邏輯視圖，聚焦於領域概念與類別關聯。
+選項 B，程序視圖，聚焦於並行執行緒、IPC 與效能吞吐量。
+選項 C，開發視圖，聚焦於原始碼套件組織與建置模組。
+選項 D，實體視圖（部屬視圖），明確負責呈現伺服器節點、Docker 容器與網路路由！
+
+因此，正確答案是 D！
+
+總結這張投影片，請記住這個核心觀念：實體視圖忠實描繪出軟體系統在硬體伺服器、雲端容器與網路拓撲上的部屬樣貌。
 -->
 ---
 <!-- _class: lead -->
@@ -1333,3 +1394,337 @@ AI 副駕駛將工程師從繁瑣的樣板程式碼中解放出來，讓我們�
 非常感謝大家的專注聆聽與熱情參與！
 現在開放現場提問、架構實務研討與專案設計交流。
 -->
+
+<script>
+(function() {
+  // =========================================================================
+  // 1. Header Dropdown (Table of Contents / Outline)
+  // =========================================================================
+  function initHeaderDropdown() {
+    const sections = [];
+    const seenTitles = new Set();
+    const slideSections = document.querySelectorAll('section[id]');
+    
+    // 1. Scan unique section titles and their slide IDs
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header) return;
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title || seenTitles.has(title)) return;
+      
+      seenTitles.add(title);
+      sections.push({
+        id: sec.id,
+        title: title
+      });
+    });
+
+    if (sections.length === 0) return;
+
+    // Detect language: if slide titles don't have Chinese characters, use English
+    const allTitles = sections.map(s => s.title).join('');
+    const isEn = !/[\u4e00-\u9fa5]/.test(allTitles);
+    const txtOutline = isEn ? '📑 Table of Contents' : '📑 章節目錄';
+    const txtTitleTooltip = isEn ? 'Click to pin or hover to view outline' : '點擊固定或懸停查看章節目錄';
+    const txtPrev = isEn ? 'Previous Section' : '上一章節';
+    const txtNext = isEn ? 'Next Section' : '下一章節';
+
+    // Helper to create the dropdown DOM
+    function createDropdownWrapper(currentTitle) {
+      const wrapper = document.createElement('span');
+      wrapper.className = 'header-nav-wrapper';
+      
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'header-nav-title';
+      titleSpan.title = txtTitleTooltip;
+      titleSpan.innerHTML = currentTitle + '<span class="nav-caret"> ▾</span>';
+      
+      titleSpan.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const wasOpen = wrapper.classList.contains('is-open');
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+        if (!wasOpen) {
+          wrapper.classList.add('is-open');
+        }
+      });
+      
+      const dropdown = document.createElement('div');
+      dropdown.className = 'nav-dropdown';
+      
+      dropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      const dropHeader = document.createElement('div');
+      dropHeader.className = 'nav-dropdown-header';
+      dropHeader.innerHTML = '<span>' + txtOutline + '</span>';
+      dropdown.appendChild(dropHeader);
+      
+      const grid = document.createElement('div');
+      grid.className = 'nav-dropdown-grid';
+      
+      sections.forEach(s => {
+        const item = document.createElement('a');
+        const isActive = (s.title === currentTitle);
+        item.className = 'nav-dropdown-item' + (isActive ? ' active' : '');
+        item.href = '#' + s.id;
+        item.innerHTML = '<span class="badge">#' + s.id.padStart(2, '0') + '</span><span class="item-text" title="' + s.title + '">' + s.title + '</span>';
+        
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          wrapper.classList.remove('is-open');
+          dropdown.style.display = 'none';
+          const targetHash = '#' + s.id;
+          if (window.location.hash === targetHash) {
+            window.dispatchEvent(new HashChangeEvent('hashchange'));
+          } else {
+            window.location.hash = targetHash;
+          }
+          setTimeout(() => { dropdown.style.display = ''; }, 350);
+        });
+        
+        grid.appendChild(item);
+      });
+      
+      dropdown.appendChild(grid);
+      wrapper.appendChild(titleSpan);
+      wrapper.appendChild(dropdown);
+      return wrapper;
+    }
+
+    // Close any pinned dropdown when clicking anywhere outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.header-nav-wrapper')) {
+        document.querySelectorAll('.header-nav-wrapper.is-open').forEach(w => w.classList.remove('is-open'));
+      }
+    });
+
+    // 2. Enhance each header element across all slides
+    slideSections.forEach(sec => {
+      const header = sec.querySelector('header');
+      if (!header || header.dataset.navEnhanced) return;
+      header.dataset.navEnhanced = 'true';
+      
+      const links = header.querySelectorAll('a');
+      let prevLink = null;
+      let nextLink = null;
+      
+      links.forEach(a => {
+        const txt = a.textContent.trim();
+        if (txt === '◄' || txt === '◀') prevLink = a;
+        if (txt === '►' || txt === '▶') nextLink = a;
+      });
+      
+      let title = header.textContent.trim();
+      title = title.replace(/^[◄◀]\s*/, '').replace(/\s*[►▶]$/, '').trim();
+      if (!title) return;
+      
+      header.innerHTML = '';
+      if (prevLink) {
+        prevLink.className = 'header-nav-arrow';
+        prevLink.title = txtPrev;
+        header.appendChild(prevLink);
+        header.appendChild(document.createTextNode(' '));
+      }
+      
+      const wrapper = createDropdownWrapper(title);
+      header.appendChild(wrapper);
+      
+      if (nextLink) {
+        header.appendChild(document.createTextNode(' '));
+        nextLink.className = 'header-nav-arrow';
+        nextLink.title = txtNext;
+        header.appendChild(nextLink);
+      }
+    });
+  }
+
+  // =========================================================================
+  // 2. Number Quick Jump (<kbd>Num</kbd> + <kbd>Enter</kbd>)
+  // =========================================================================
+  function initNumberQuickJump() {
+    let inputBuffer = '';
+    let timer = null;
+    let hud = null;
+
+    // Detect language: check titles or body text
+    const slideSections = document.querySelectorAll('section[id]');
+    let hasZh = false;
+    slideSections.forEach(s => {
+      if (/[\u4e00-\u9fa5]/.test(s.textContent || '')) hasZh = true;
+    });
+    const isEn = !hasZh;
+
+    function getOrCreateHud() {
+      if (!hud) {
+        hud = document.createElement('div');
+        hud.id = 'slide-quick-jump-hud';
+        hud.style.cssText = [
+          'position: fixed',
+          'bottom: 36px',
+          'left: 50%',
+          'transform: translateX(-50%)',
+          'background: rgba(15, 23, 42, 0.94)',
+          'color: #ffffff',
+          'padding: 8px 18px',
+          'border-radius: 28px',
+          'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif',
+          'font-size: 14px',
+          'font-weight: 500',
+          'box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15)',
+          'backdrop-filter: blur(16px)',
+          '-webkit-backdrop-filter: blur(16px)',
+          'z-index: 999999',
+          'display: none',
+          'align-items: center',
+          'gap: 8px',
+          'pointer-events: none',
+          'opacity: 0',
+          'transition: opacity 0.15s ease, transform 0.15s ease'
+        ].join(';');
+        const targetParent = document.fullscreenElement || document.body;
+        targetParent.appendChild(hud);
+      }
+      const parent = document.fullscreenElement || document.body;
+      if (hud.parentElement !== parent) {
+        parent.appendChild(hud);
+      }
+      return hud;
+    }
+
+    function getTotalSlides() {
+      const secs = document.querySelectorAll('section[id]');
+      return secs.length || 1;
+    }
+
+    function showHud() {
+      const el = getOrCreateHud();
+      const total = getTotalSlides();
+      const label = isEn ? 'Go to slide:' : '跳至頁碼:';
+      const enterHint = isEn ? 'Enter ↵' : 'Enter 確認 ↵';
+      el.innerHTML = '<span>🧭 ' + label + '</span> ' +
+        '<strong style="color: #38bdf8; font-size: 20px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 1px;">' + inputBuffer + '</strong> ' +
+        '<span style="opacity: 0.6; font-size: 13px;">/ ' + total + '</span> ' +
+        '<span style="background: rgba(255,255,255,0.18); padding: 2px 7px; border-radius: 6px; font-size: 11px; margin-left: 2px; font-weight: 600;">' + enterHint + '</span>';
+      el.style.display = 'flex';
+      el.style.opacity = '1';
+
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(clearInput, 2800);
+    }
+
+    function clearInput() {
+      inputBuffer = '';
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      if (hud) {
+        hud.style.opacity = '0';
+        setTimeout(() => {
+          if (inputBuffer === '' && hud) hud.style.display = 'none';
+        }, 150);
+      }
+    }
+
+    function jumpToSlide(num) {
+      const total = getTotalSlides();
+      const target = Math.max(1, Math.min(num, total));
+      const targetHash = '#' + target;
+      
+      // Visual flash confirmation
+      const el = getOrCreateHud();
+      const confirmedMsg = isEn ? ('✓ Slide ' + target) : ('✓ 第 ' + target + ' 頁');
+      el.innerHTML = '<span style="color: #34d399; font-weight: 700; font-size: 15px;">' + confirmedMsg + '</span>';
+      el.style.display = 'flex';
+      el.style.opacity = '1';
+      setTimeout(clearInput, 500);
+
+      if (window.location.hash === targetHash) {
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
+      } else {
+        window.location.hash = targetHash;
+      }
+    }
+
+    window.addEventListener('keydown', function(e) {
+      // Don't intercept when focusing editable form elements
+      const active = document.activeElement;
+      if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT' || active.isContentEditable)) {
+        return;
+      }
+
+      // Ignore if modifier keys are pressed
+      if (e.ctrlKey || e.altKey || e.metaKey) {
+        return;
+      }
+
+      // Resolve digit from key or code (supports '2', 'Digit2', 'Numpad2')
+      let digit = null;
+      if (e.key >= '0' && e.key <= '9') {
+        digit = e.key;
+      } else if (/^(?:Digit|Numpad)([0-9])$/.test(e.key)) {
+        digit = e.key.replace(/^(?:Digit|Numpad)/, '');
+      } else if (/^(?:Digit|Numpad)([0-9])$/.test(e.code || '')) {
+        digit = (e.code || '').replace(/^(?:Digit|Numpad)/, '');
+      }
+
+      if (digit !== null) {
+        inputBuffer += digit;
+        if (inputBuffer.length > 4) inputBuffer = inputBuffer.slice(-4);
+        showHud();
+        return;
+      }
+
+      // Backspace
+      if ((e.key === 'Backspace' || e.code === 'Backspace') && inputBuffer.length > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        inputBuffer = inputBuffer.slice(0, -1);
+        if (inputBuffer.length === 0) {
+          clearInput();
+        } else {
+          showHud();
+        }
+        return;
+      }
+
+      // Escape
+      if ((e.key === 'Escape' || e.code === 'Escape') && inputBuffer.length > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        clearInput();
+        return;
+      }
+
+      // Enter key confirms numeric jump
+      if ((e.key === 'Enter' || e.code === 'Enter' || e.code === 'NumpadEnter') && inputBuffer.length > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        const targetPage = parseInt(inputBuffer, 10);
+        if (!isNaN(targetPage)) {
+          jumpToSlide(targetPage);
+        } else {
+          clearInput();
+        }
+      }
+    }, true);
+  }
+
+  // Initialize both features
+  function init() {
+    initHeaderDropdown();
+    initNumberQuickJump();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  setTimeout(init, 400);
+})();
+
+</script>

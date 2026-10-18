@@ -397,7 +397,12 @@ div.matrix-table td {
    ========================================================================== */
 section:has(div.ccq-columns),
 section:has(div.discussion-columns),
-section:has(div.fill-blank-columns) {
+section:has(div.fill-blank-columns),
+section.v-center,
+section.vertical-center,
+section.vcenter,
+section:has(.v-center),
+section:has(.vertical-center) {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -408,11 +413,29 @@ section:has(div.ccq-columns) h3,
 section:has(div.discussion-columns) h2,
 section:has(div.discussion-columns) h3,
 section:has(div.fill-blank-columns) h2,
-section:has(div.fill-blank-columns) h3 {
+section:has(div.fill-blank-columns) h3,
+section.v-center h2,
+section.v-center h3,
+section.vertical-center h2,
+section.vertical-center h3,
+section.vcenter h2,
+section.vcenter h3,
+section:has(.v-center) h2,
+section:has(.v-center) h3,
+section:has(.vertical-center) h2,
+section:has(.vertical-center) h3 {
   text-align: left;
   color: #0b3c5d;
   margin-top: 0;
   margin-bottom: 24px;
+}
+
+section.v-center div[class*="split"],
+section.vertical-center div[class*="split"],
+section:has(.v-center) div[class*="split"],
+section:has(.vertical-center) div[class*="split"] {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /* CCQ & Discussion Shared Layout (Identical 70% / 30% Architecture) */
@@ -682,24 +705,27 @@ div.puml-output-grid .puml-code-col {
   height: 100%;
 }
 
-div.puml-output-grid .puml-code-col p {
+div.puml-output-grid .puml-code-col p,
+div.puml-output-grid .puml-code-col .puml-title {
   margin: 0 0 6px 0 !important;
   font-size: 16px !important;
   font-weight: 700;
   color: #0b3c5d;
 }
 
-div.puml-output-grid .puml-code-col pre {
+div.puml-output-grid .puml-code-col pre,
+div.puml-output-grid .puml-code-col marp-pre {
   margin: 0 !important;
   padding: 10px 14px !important;
   background: #1e293b !important;
   border-radius: 8px;
-  overflow: auto;
+  overflow: auto !important;
   flex: 1;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-div.puml-output-grid .puml-code-col pre code {
+div.puml-output-grid .puml-code-col pre code,
+div.puml-output-grid .puml-code-col marp-pre code {
   font-size: 13px !important;
   line-height: 1.34 !important;
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace !important;
@@ -715,7 +741,8 @@ div.puml-output-grid .puml-diagram-col {
   height: 100%;
 }
 
-div.puml-output-grid .puml-diagram-col p {
+div.puml-output-grid .puml-diagram-col p,
+div.puml-output-grid .puml-diagram-col .puml-title {
   margin: 0 0 6px 0 !important;
   font-size: 16px !important;
   font-weight: 700;
@@ -741,6 +768,21 @@ div.puml-output-grid .diagram-wrapper img {
   width: auto;
   height: auto;
   object-fit: contain;
+}
+
+section.v-center div.puml-output-grid,
+section:has(.v-center) div.puml-output-grid {
+  height: 490px;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+section.v-center:has(div.puml-output-grid) h3,
+section.v-center:has(div.puml-output-grid) h2,
+section:has(.v-center):has(div.puml-output-grid) h3,
+section:has(.v-center):has(div.puml-output-grid) h2 {
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
 }
 
 /* ==========================================================================

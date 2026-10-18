@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor transparent
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam shadowing false
+skinparam roundcorner 8
+
+skinparam actor {
+  BorderColor #0b3c5d
+  BackgroundColor #ffffff
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 12
+}
+
+skinparam usecase {
+  BorderColor #0b3c5d
+  BackgroundColor #e8eff5
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 13
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #0b3c5d
+}
+
+skinparam rectangle {
+  BorderColor #90a4ae
+  BorderStyle dashed
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 12
+}
+
+left to right direction
+
+actor "Customer\n(Primary)" as Customer
+actor "Payment\nGateway" as Gateway <<External>>
+
+rectangle "Order System" {
+  usecase "Checkout\nOrder" as UC_Checkout
+}
+
+Customer --> UC_Checkout
+UC_Checkout --> Gateway
+@enduml

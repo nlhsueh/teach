@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam shadowing false
+skinparam roundcorner 6
+
+skinparam activity {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 2
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 13
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #b91c1c
+  FontStyle bold
+  FontSize 12
+}
+
+|Customer|
+start
+:Browse Menu & Select Items;
+
+|Kitchen|
+' Flaw 1: Responsibility misplacement - Kitchen enters delivery address?
+:Enter Delivery Address & Phone;
+
+|Customer|
+' Flaw 2: Responsibility misplacement - Customer cooks food?
+:Cook Food & Package Meal;
+
+|Kitchen|
+if (Ingredients in Stock?) then ([Out of Stock])
+  :Cancel Order;
+  ' Flaw 3: Flow terminates into thin air (dangling flow, missing Activity Final Node)!
+  detach
+else ([In Stock])
+  ' Flaw 4: Conceptual error - putting mutually exclusive guards on a concurrent Fork bar!
+  fork
+    -> [Card Payment];
+    :Charge Online Card;
+  fork again
+    -> [Cash on Delivery];
+    :Prepare Cash Change;
+  end fork
+endif
+
+|Courier|
+:Deliver Meal to Customer;
+stop
+@enduml

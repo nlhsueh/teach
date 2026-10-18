@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam shadowing false
+skinparam roundcorner 6
+skinparam classAttributeIconSize 0
+left to right direction
+
+skinparam class {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 2
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 14
+  HeaderBackgroundColor #e8eff5
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #b91c1c
+  FontStyle bold
+  FontSize 13
+}
+
+class BaseballGame {
+  + gameID: String
+  + date: Date
+  + finalWinner: String
+  + inning1_score: int
+  + inning2_score: int
+  + inning3_score: int
+  --
+  + pitchBall(): void
+  + printBoxScore(): void
+}
+
+class Team {
+  + teamName: String
+  + homeCity: String
+  + totalScore: int
+  --
+  + calculateWinner(): Team
+  + addPlayer(p: Player): void
+}
+
+class Player {
+  + playerName: String
+  + jerseyNumber: int
+  + battingAverage: double
+  --
+  + swingBat(): void
+}
+
+class Inning {
+  + inningNumber: int
+  + hits: int
+  + runs: int
+  --
+  + getInningStats(): String
+}
+
+BaseballGame "1" *-- "1" Team : competes in >
+BaseballGame "1" -- "1" Inning : plays >
+Team <|-- Player : extends
+
+@enduml

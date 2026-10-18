@@ -1,6 +1,7 @@
 ---
 marp: true
 theme: ase-theme
+title: 'Software Engineering'
 _class: lead
 paginate: true
 header: 'Software Engineering | Ch 04: System Modeling'
@@ -10,7 +11,7 @@ footer: 'Prof. Nien-Lin Hsueh'
 <!-- _class: lead -->
 <!-- header: '' -->
 
-# **Software Engineering**
+# Software Engineering
 
 ### Chapter 4: System Modeling & Unified Architecture
 
@@ -169,7 +170,7 @@ To summarize this slide, remember this key takeaway: The four modeling perspecti
 
 | Model / Diagram | Section | Perspective | Nature | Primary Engineering Role |
 | :--- | :---: | :--- | :--- | :--- |
-| **1. Use Case Model** | 4.3 | Interaction | Functional Contract | Defines system boundary, actor goals, and scope |
+| **1. Use Case Model** | 4.3 | External | Functional Contract | Defines system boundary, actor goals, and scope |
 | **2. Class Model** | 4.4 | Structural | Static Backbone | Specifies domain entities, attributes, and relationships |
 | **3. Sequence Diagram** | 4.5 | Interaction | Dynamic Chronology | Traces runtime message passing and BCE responsibilities |
 | **4. Activity Diagram** | 4.6 | Behavioral | Dynamic Workflow | Models business processes, fork/join concurrency & swimlanes |
@@ -534,27 +535,11 @@ To summarize this slide, remember this key takeaway: A use case is an agreement 
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_use_case/01_anatomy_of_use_case_modeling.jpg" alt="The Anatomy of Use-Case Diagram Modeling" />
-</div>
+## Focus: Business Value & User Goals
 
-<!--
-Look at this introductory slide: 'Beginner's Guide to UML Use-Case Diagram Modeling.'
-
-Notice the three basic symbols on the screen: a stick figure, an oval, and a line connecting them.
-
-This simple picture solves a huge problem in software engineering. Instead of reading pages of confusing text, a use case diagram gives everyone a simple picture: Who is using the system? What do they want to do? And how do they interact?
-
-To summarize this slide, remember this key takeaway: Use case diagrams turn complicated written requirements into clear, simple visual designs.
--->
-
----
-
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/02_business_value_and_user_goals.jpg" alt="Focus: Business Value & User Goals" />
 </div>
 
@@ -572,9 +557,11 @@ To summarize this slide, remember this key takeaway: Focus on what the user want
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Actor Taxonomy & System Boundaries
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/03_actor_taxonomy.jpg" alt="Actor Taxonomy" />
 </div>
 
@@ -594,9 +581,11 @@ To summarize this slide, remember this key takeaway: Every use case diagram is b
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Use Case Relationship Matrix
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/04_relationship_matrix.jpg" alt="Relationship Matrix: Association, Include, Extend, Generalization" />
 </div>
 
@@ -618,7 +607,7 @@ To summarize this slide, remember this key takeaway: Remember the difference: in
 
 <!-- _class: title-image-slide -->
 
-## Clear Use Case Naming
+### Clear Use Case Naming
 
 <div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/05_clear_naming_semantics.jpg" alt="Clear Semantics: Strong Verbs & Singular Roles" />
@@ -638,7 +627,7 @@ To summarize this slide, remember this key takeaway: Name use cases with strong 
 
 <!-- _class: title-image-slide -->
 
-## Rules of Building Use Case Models
+### Rules of Building Use Case Models
 
 <div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/07_safe_nesting_limits.jpg" alt="Safe Nesting Limits: Avoid Over-Engineering" />
@@ -660,9 +649,11 @@ To summarize this slide, remember this key takeaway: Keep nesting shallow, never
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Case Study: University Enrollment System
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/08_case_study_enrollment_system.jpg" alt="Case Study: University Enrollment System" />
 </div>
 
@@ -682,9 +673,11 @@ To summarize this slide, remember this key takeaway: Always identify the actors 
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+### Case Study: Actor Generalization & Relationship Synthesis
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/09_actor_generalization.jpg" alt="Actor Generalization: Specializing Roles in Hierarchies" />
 </div>
 
@@ -732,7 +725,7 @@ To summarize this slide, remember this key takeaway: Keep diagrams clean by avoi
 
 <!-- _class: title-image-slide -->
 
-## Best Practices Checklists
+### Best Practices Checklists
 
 <div class="image-wrapper">
   <img src="../../img/ch04/nb_use_case/11_best_practices_checklist.jpg" alt="Best Practices Checklist" />
@@ -758,30 +751,7 @@ To summarize this slide, remember this key takeaway: Use this nine-point checkli
 
 ---
 
-<!-- _class: title-image-slide -->
-
-## Communication First Mindset
-
-<div class="image-wrapper">
-  <img src="../../img/ch04/nb_use_case/12_communication_first_mindset.jpg" alt="Communication-First Mindset: Bridges Between Stakeholders and Engineers" />
-</div>
-
-<!--
-To wrap up our visual principles, look at this three-circle diagram: the 'Communication-First Mindset'.
-
-Notice the three circles: Developers, Designers, and Business Teams. Right in the center where they overlap is our use case diagram: a shared visual language and a single source of truth.
-
-Look at the three quotes around the circles:
-Top-left: Use case diagrams are tools for communication, not technical blueprints.
-Top-right: Keep models simple!
-Bottom-right: If a detail does not help stakeholders understand what the system is for, leave it off the diagram!
-
-To summarize this slide, remember this key takeaway: A use case diagram is a communication tool to bring developers, designers, and business stakeholders together.
--->
-
----
-
-## Use Case Specification: UC-01 Enroll Student
+### Use Case Specification: UC-01 Enroll Student
 
 | Field | Specification Details |
 | :--- | :--- |
@@ -804,6 +774,84 @@ Now look at Step 4 of the Main Success Scenario: It explicitly calls our include
 And in the Extensions at the bottom, we see what happens when things go wrong—like missing prerequisites, schedule conflicts, or full classes.
 
 To summarize this slide, remember this key takeaway: The diagram gives the overview, while the written specification explains the step-by-step story and exception paths.
+-->
+
+---
+
+## Concept Check Question 3
+<!-- id: ase-ch04-ccq3 -->
+
+<div class="ccq-columns">
+<div class="ccq-text">
+
+In our Food Delivery Use Case Model, why does `Apply Promo Voucher` point to `Place Food Order` with `<<extend>>`, while `Place Food Order` points to `Process Payment` with `<<include>>`?
+
+- **A.** Voucher application is mandatory for all orders; payment is optional.
+- **B.** Vouchers are conditional optional behavior; payment is mandatory shared execution.
+- **C.** Vouchers are executed by supporting actors; payment is executed by primary actors.
+- **D.** Vouchers represent class inheritance; payment represents object composition.
+
+</div>
+<div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq3" target="_blank"><img src="../../img/ch04/ase-ch04-ccq3.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+<!--
+Let's check our understanding with Concept Check Question 3.
+
+Why is applying a voucher an <<extend>>, while processing payment is an <<include>>?
+
+Look at the options:
+Option A reverses the business logic completely.
+Option C confuses actors with arrow types.
+Option D confuses class diagrams with use cases.
+
+The correct answer is Option B! Applying a voucher is optional—orders work fine without a coupon. In contrast, processing payment is mandatory—every order must be paid for.
+
+To summarize this slide, remember this key takeaway: Use include for mandatory shared steps, and use extend for optional, conditional steps.
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### Diagnostic Exercise: Spot the 3 Flaws in this Use Case Model
+
+<div class="split46">
+<div class="left" style="font-size: 19.5px; line-height: 1.45;">
+
+**Audit this student's draft diagram:**
+Can you spot the **3 critical modeling mistakes (anti-patterns)**?
+
+- **1. Granularity & Workflow:**
+  - What is wrong with connecting `Enter Delivery Address` ➔ `Click Submit Button` ➔ `Place Food Order`?
+- **2. Relationship Direction:**
+  - Look closely at `Process Payment` and `Place Food Order`. What is wrong with the `<<include>>` arrow?
+- **3. Boundary & Actor Placement:**
+  - Examine `Chef` and `MySQL Database`. What violates UML system boundary principles?
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/food_delivery/bad_usecase_model.svg" alt="Bad Use Case Model Example" style="width: 100% !important; max-width: 580px !important; max-height: 480px !important; object-fit: contain;" />
+
+</div>
+</div>
+
+<!--
+Let's conduct a diagnostic critique of this student draft diagram. Can you identify the three major modeling anti-patterns?
+
+Flaw 1 (Functional Decomposition / UI Flowcharting):
+Use cases represent complete, value-yielding user goals (what the user achieves), not micro-steps, button clicks, or a flowchart. 'Enter Delivery Address' and 'Click Submit Button' are not independent use cases—they are trivial input steps inside 'Place Food Order'.
+
+Flaw 2 (Inverted Include Arrow Direction):
+Look at the dependency between Place Food Order and Process Payment. The dashed arrow points in reverse! In UML, the base use case points TO the included use case (Place Food Order . . > Process Payment : <<include>>), because the base includes the subroutine, not vice versa.
+
+Flaw 3 (Boundary & Actor Violations):
+First, Chef is an actor (a human role) but is drawn inside the system boundary box—all actors must remain strictly outside the boundary. Second, MySQL Database is drawn as an external actor with a data-flow arrow ('writes SQL'). An internal database is part of the system's internal implementation, not an external actor!
+
+To summarize this slide, remember this key takeaway: Avoid micro UI flowcharting, ensure include arrows point toward the included use case, and keep internal databases and actors outside system boundary errors.
 -->
 
 ---
@@ -838,7 +886,9 @@ To summarize this slide, remember this key takeaway: Guide AI by defining clear 
 
 ---
 
-## AI Prompt Example: Food Delivery Use Case Model
+<!-- _class: v-center -->
+
+### AI Prompt Example: Food Delivery Use Case Model
 
 <div class="two-columns">
 <div>
@@ -883,9 +933,10 @@ To summarize this slide, remember this key takeaway: Guide AI with clear boundar
 
 ---
 
+<!-- _class: v-center -->
 <!-- header: '4.3 Functional & Use Case Models' -->
 
-## Generated PlantUML & Diagram: Food Delivery Use Case Model
+### Generated PlantUML & Diagram: Food Delivery Use Case Model
 
 <div class="puml-output-grid">
 <div class="puml-code-col">
@@ -988,41 +1039,7 @@ Did AI fall into the trap of creating tiny button-click bubbles?
 To summarize this slide, remember this key takeaway: Testing AI with mutated requirements reveals whether it truly understands system boundaries and user goals.
 -->
 
----
 
-### Concept Check Question 3
-<!-- id: ase-ch04-ccq3 -->
-
-<div class="ccq-columns">
-<div class="ccq-text">
-
-In our Food Delivery Use Case Model, why does `Apply Promo Voucher` point to `Place Food Order` with `<<extend>>`, while `Place Food Order` points to `Process Payment` with `<<include>>`?
-
-- **A.** Voucher application is mandatory for all orders; payment is optional.
-- **B.** Vouchers are conditional optional behavior; payment is mandatory shared execution.
-- **C.** Vouchers are executed by supporting actors; payment is executed by primary actors.
-- **D.** Vouchers represent class inheritance; payment represents object composition.
-
-</div>
-<div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq3" target="_blank"><img src="../../img/ch04/ase-ch04-ccq3.png" alt="QR Code" /></a>
-  </div>
-</div>
-
-<!--
-Let's check our understanding with Concept Check Question 3.
-
-Why is applying a voucher an <<extend>>, while processing payment is an <<include>>?
-
-Look at the options:
-Option A reverses the business logic completely.
-Option C confuses actors with arrow types.
-Option D confuses class diagrams with use cases.
-
-The correct answer is Option B! Applying a voucher is optional—orders work fine without a coupon. In contrast, processing payment is mandatory—every order must be paid for.
-
-To summarize this slide, remember this key takeaway: Use include for mandatory shared steps, and use extend for optional, conditional steps.
--->
 
 ---
 
@@ -1069,9 +1086,11 @@ To summarize this slide, remember this key takeaway: Think of a class diagram li
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Blueprint vs. Instance: The Foundation of OOD
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_class/02_blueprint_vs_instance.jpg" alt="Blueprint vs Instance: The Foundation of OOD" />
 </div>
 
@@ -1089,9 +1108,11 @@ To summarize this slide, remember this key takeaway: A class is the blueprint, w
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+### The Three Perspectives of Class Modeling
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_class/03_three_perspectives_of_class_modeling.jpg" alt="The Three Perspectives of Class Modeling" />
 </div>
 
@@ -1109,9 +1130,11 @@ To summarize this slide, remember this key takeaway: As development moves forwar
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Anatomy of the UML Class Box
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_class/04_anatomy_of_class_box.jpg" alt="Anatomy of the Class Box" />
 </div>
 
@@ -1129,9 +1152,11 @@ To summarize this slide, remember this key takeaway: A class box has three layer
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+### The Member Visibility Matrix (+, -, #, ~)
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_class/05_visibility_matrix.jpg" alt="The Visibility Matrix" />
 </div>
 
@@ -1151,31 +1176,11 @@ To summarize this slide, remember this key takeaway: Use minus for private data,
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_class/06_parameter_directionality.jpg" alt="Parameter Directionality Dashboard" />
-</div>
+## Taxonomy of Class Relationships
 
-<!--
-Look at the three colored arrows around the method box in this 'Parameter Directionality Dashboard':
-
-The blue arrow on the top-left is labeled **in**: This is the most common kind of parameter. The caller passes data in, and the method reads it.
-
-The yellow arrow at the bottom is labeled **inout**: Data is passed in, the method modifies it, and the updated data flows back out.
-
-The red arrow on the right is labeled **out**: The method creates or calculates new data and sends it back to the caller.
-
-These direction labels make it 100% clear which way data travels when calling APIs or remote services.
-
-To summarize this slide, remember this key takeaway: Parameter labels show the direction of data: 'in' is input, 'out' is output, and 'inout' is both.
--->
-
----
-
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_class/07_taxonomy_of_relationships.jpg" alt="Taxonomy of Relationships" />
 </div>
 
@@ -1195,9 +1200,11 @@ To summarize this slide, remember this key takeaway: Class relationships range f
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+### UML Connector & Arrowhead Cheat Sheet
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_class/08_connector_cheat_sheet.jpg" alt="The Connector Cheat Sheet" />
 </div>
 
@@ -1217,9 +1224,11 @@ To summarize this slide, remember this key takeaway: Pay close attention to soli
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+### Lifecycle Diagnostic: Aggregation vs. Composition
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_class/09_aggregation_vs_composition.jpg" alt="Lifecycle Diagnostic: Aggregation vs. Composition" />
 </div>
 
@@ -1237,9 +1246,11 @@ To summarize this slide, remember this key takeaway: Use a hollow diamond (aggre
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+### Cardinality, Multiplicity & Business Constraints
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_class/10_cardinality_and_constraints.jpg" alt="Cardinality & Constraints" />
 </div>
 
@@ -1259,9 +1270,11 @@ To summarize this slide, remember this key takeaway: Multiplicity numbers tell u
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Syntax to System: The E-Commerce Order Model
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_class/11_order_model_example.jpg" alt="Syntax to System: The Order Model" />
 </div>
 
@@ -1277,6 +1290,142 @@ Third, look at the top-right callout: Look at the solid red diamond on Order poi
 Fourth, look at the bottom-right callout: Look at the dashed line pointing to PaymentInterface. That is **Realization**—Order uses the payment interface to process payments.
 
 To summarize this slide, remember this key takeaway: A real class diagram combines visibility, multiplicity, composition, and interfaces into one clear system architecture.
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### Comprehension Check: Reading the Order Model
+
+<div class="split46"> 
+<div class="left" style="font-size: 16px; line-height: 1.4;">
+
+**Evaluate whether each statement about the diagram is Correct or Incorrect:**
+
+- **1.** A customer "Nick" can have 3 orders in the system.
+- **2.** If an `Order` is deleted, all its associated `LineItem`s are still kept.
+- **3.** An `Order` can exist in the system without being associated with any `Customer`.
+- **4.** External classes can directly modify `customer.customerID` via dot notation.
+- **5.** `LineItem` realizes the contract and operations defined by `PaymentInterface`.
+- **6.** A newly registered `Customer` can exist in the system with zero orders.
+- **7.** A single `Order` can be jointly owned and shared by two different `Customer`s.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_class/11_order_model_example.jpg" alt="Order Model" style="width: 100% !important; max-width: 500px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
+</div>
+
+<!--
+Let's verify our understanding of class diagram semantics by evaluating these seven statements against the diagram:
+
+1. A customer "Nick" can have 3 orders in the system.
+   -> [Correct / True]: The multiplicity on the Order side is '*', representing zero or more orders.
+
+2. If an Order is deleted, all its associated LineItems are still kept.
+   -> [Incorrect / False]: The solid diamond ('◆') denotes Composition; LineItem has strong lifecycle dependency and is destroyed when Order is deleted.
+
+3. An Order can exist in the system without being associated with any Customer.
+   -> [Incorrect / False]: The multiplicity on the Customer side is strictly '1', meaning an order cannot exist without exactly one customer.
+
+4. External classes can directly modify customer.customerID via dot notation.
+   -> [Incorrect / False]: The '-' prefix indicates a Private attribute; encapsulation prevents direct external modification.
+
+5. LineItem realizes the contract and operations defined by PaymentInterface.
+   -> [Correct / True]: The dashed connector with a hollow triangular arrowhead represents Interface Realization.
+
+6. A newly registered Customer can exist in the system with zero orders.
+   -> [Correct / True]: The '*' wildcard on the Order side covers 0..*, so a customer without orders is completely valid.
+
+7. A single Order can be jointly owned and shared by two different Customers.
+   -> [Incorrect / False]: The multiplicity on the Customer end is strictly '1', preventing multi-customer ownership of a single order.
+
+To summarize this slide, remember this key takeaway: Reading class diagrams requires checking multiplicity, lifecycle ownership, visibility symbols, and realization connectors simultaneously.
+-->
+
+---
+
+## Concept Check Question 4
+<!-- id: ase-ch04-ccq4 -->
+<div class="ccq-columns">
+<div class="ccq-text">
+
+In our Food Delivery Class Diagram, why is the relationship between `Order` and `OrderItem` modeled as **Composition (◆)**, whereas `Order` and `Courier` is modeled as **Aggregation (◇)**?
+
+- **A.** An `OrderItem` can exist independently, but a `Courier` cannot exist without an `Order`.
+- **B.** An `OrderItem` is destroyed with its parent `Order`, whereas a `Courier` maintains an independent lifecycle.
+- **C.** Composition represents inheritance between classes, while aggregation represents method invocation.
+- **D.** Composition requires zero-to-one multiplicity, while aggregation requires one-to-many multiplicity.
+
+</div>
+<div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq4" target="_blank"><img src="../../img/ch04/ase-ch04-ccq4.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+<!--
+Let's test our understanding with Concept Check Question 4.
+
+Why is Order to OrderItem Composition, while Order to Courier is Aggregation?
+
+Look at the options:
+Option A gets the lifecycles backwards.
+Option C confuses whole-part links with inheritance.
+Option D confuses multiplicity with relationship types.
+
+The correct answer is Option B! An OrderItem cannot exist without an Order—if the order is deleted, the items are deleted too (Composition). But a freelance Courier continues to exist whether they have an order right now or not (Aggregation).
+
+To summarize this slide, remember this key takeaway: OrderItem dies when the Order dies (Composition), while Courier exists independently (Aggregation).
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### Diagnostic Exercise: Spot the Flaws in this Baseball Class Model
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Audit this student's draft model of a Baseball Game:**
+Can you spot the critical modeling flaws across **encapsulation, inheritance, and relationships**?
+
+* **1. Whole-Part & Lifecycle (Aggregation vs. Composition):**
+  - Why is `BaseballGame` linked to `Team` with a solid diamond (`◆`)? What happens when a game record is deleted?
+* **2. Inheritance vs. Membership (is-a vs. has-a):**
+  - Look closely at `Player` and `Team`. What is fundamentally wrong with `Team <|-- Player`?
+* **3. Multiplicity & Cardinality:**
+  - Can a game have only `1` team and `1` inning? How many teams and innings does a baseball game actually have?
+* **4. Encapsulation & Responsibility Distribution:**
+  - Why are all attributes `+` public? Does `pitchBall()` belong in `BaseballGame` or `Player`? Should a single `Team` declare who won?
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/baseball/bad_baseball_class_model.svg" alt="Bad Baseball Class Model" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
+
+</div>
+</div>
+
+<!--
+Let's conduct an architectural audit of this student's draft Baseball Game class diagram. There are four major categories of conceptual mistakes:
+ 
+Flaw 1 (Destructive Composition vs. Aggregation):
+BaseballGame connects to Team with a solid diamond (Composition) and multiplicity 1. This implies that if a game is deleted or cancelled, the Team (e.g., Yankees) is destroyed from existence! Teams participate in games; they are not owned exclusively by a single game. Furthermore, a baseball game must have exactly 2 teams (Home and Away), not 1!
+
+Flaw 2 (Inheritance Abuse: is-a vs. has-a):
+Notice the generalization arrow pointing from Player to Team (Player extends Team). A Player is NOT a kind of Team—a Player is a member OF a team! Modeling membership with inheritance is a classic beginner anti-pattern; it should be an aggregation or association (Team 1 o-- * Player).
+
+Flaw 3 (Missing Composition and Faulty Multiplicity for Inning):
+BaseballGame has a plain association with Inning with multiplicity 1. But an Inning (e.g., Inning 4 of Game 102) has no meaning outside that game—it should be Composition (solid diamond). Moreover, a standard baseball game consists of 9 innings (or 1..*), not a single inning!
+
+Flaw 4 (Broken Encapsulation & Misplaced Responsibilities):
+First, all attributes use '+' (public), destroying data encapsulation. Second, pitchBall() is placed inside BaseballGame instead of Player/Pitcher. Third, inning scores (inning1_score, inning2_score...) are hardcoded as attributes in BaseballGame rather than encapsulated dynamically in Inning. Finally, calculateWinner() is in Team—a single team cannot unilaterally declare itself the winner; that is the responsibility of BaseballGame!
+
+To summarize this slide, remember this key takeaway: Distinguish is-a from has-a, never use composition where parts outlive the whole, enforce strict attribute visibility, and assign operations to the classes that own the data.
 -->
 
 ---
@@ -1310,7 +1459,9 @@ To summarize this slide, remember this key takeaway: Guide AI by clarifying core
 
 ---
 
-## AI Prompt Example: Food Delivery Class Model
+<!-- _class: v-center -->
+
+### AI Prompt Example: Food Delivery Class Model
 
 <div class="two-columns">
 <div>
@@ -1357,9 +1508,10 @@ To summarize this slide, remember this key takeaway: Guide AI by stating core bu
 
 ---
 
+<!-- _class: v-center -->
 <!-- header: '4.4 Structural & Class Models' -->
 
-## Generated PlantUML & Diagram: Food Delivery Class Model
+### Generated PlantUML & Diagram: Food Delivery Class Model
 
 <div class="puml-output-grid">
 <div class="puml-code-col">
@@ -1441,7 +1593,7 @@ To summarize this slide, remember this key takeaway: Specifying explicit UML con
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Hands-on Experiment: Mutate Requirements & Audit AI Output (4 Mins)**
+  **Hands-on Experiment: Mutate Requirements & Audit AI Output**
   - **1. Add ONE New Rule to the Food Delivery Prompt:**
     - *Multi-Vendor:* Allow `Order` to bundle items from multiple `Restaurant`s.
     - *Tipping:* Allow `Customer` to tip and rate the assigned `Courier`.
@@ -1480,40 +1632,6 @@ Debriefing Guide:
 To summarize this slide, remember this key takeaway: When business requirements evolve, prompt AI with clear constraints and critically audit the generated UML for structural correctness.
 -->
 
----
-
-### Concept Check Question 4
-<!-- id: ase-ch04-ccq4 -->
-<div class="ccq-columns">
-<div class="ccq-text">
-
-In our Food Delivery Class Diagram, why is the relationship between `Order` and `OrderItem` modeled as **Composition (◆)**, whereas `Order` and `Courier` is modeled as **Aggregation (◇)**?
-
-- **A.** An `OrderItem` can exist independently, but a `Courier` cannot exist without an `Order`.
-- **B.** An `OrderItem` is destroyed with its parent `Order`, whereas a `Courier` maintains an independent lifecycle.
-- **C.** Composition represents inheritance between classes, while aggregation represents method invocation.
-- **D.** Composition requires zero-to-one multiplicity, while aggregation requires one-to-many multiplicity.
-
-</div>
-<div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq4" target="_blank"><img src="../../img/ch04/ase-ch04-ccq4.png" alt="QR Code" /></a>
-  </div>
-</div>
-
-<!--
-Let's test our understanding with Concept Check Question 4.
-
-Why is Order to OrderItem Composition, while Order to Courier is Aggregation?
-
-Look at the options:
-Option A gets the lifecycles backwards.
-Option C confuses whole-part links with inheritance.
-Option D confuses multiplicity with relationship types.
-
-The correct answer is Option B! An OrderItem cannot exist without an Order—if the order is deleted, the items are deleted too (Composition). But a freelance Courier continues to exist whether they have an order right now or not (Aggregation).
-
-To summarize this slide, remember this key takeaway: OrderItem dies when the Order dies (Composition), while Courier exists independently (Aggregation).
--->
 
 ---
 
@@ -1561,9 +1679,11 @@ To summarize this slide, remember this key takeaway: Sequence diagrams give you 
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Static Structure vs. Dynamic Collaboration
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_sequence/02_static_vs_dynamic_collaboration.jpg" alt="Mapping Dynamic Collaboration: Static vs Dynamic Models" />
 </div>
 
@@ -1581,29 +1701,153 @@ To summarize this slide, remember this key takeaway: Class diagrams define stati
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_sequence/03_interaction_canvas_and_dimensions.jpg" alt="The Interaction Canvas: Object Dimension & Time Dimension" />
+## The Requirements-to-Code Pipeline: From Story to Code
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/nb_sequence/09_requirements_to_code_pipeline.jpg" alt="The Requirements-to-Code Pipeline: Use Case → Scenario → Sequence → Code" />
 </div>
 
 <!--
-Let's understand the two main axes of the sequence canvas.
+How do we move from customer requirements to working code? This four-step pipeline shows the whole journey.
 
-The horizontal blue axis across the top is the Object Dimension. We place participating objects from left to right, usually in the order they join the action. For example, the caller on the left and the worker on the right.
+Step 1 is the Use Case: it defines what the system should do from a user's perspective, like 'Book a Hotel Room'.
+Step 2 is a Scenario: a use case can unfold in several ways. One scenario is the sunny day where everything works; another scenario is when the credit card is expired.
 
-The vertical orange axis on the left is the Time Dimension. Time always flows strictly downward. A message higher on the page happens before a message lower down.
+Step 3 is the Sequence Diagram: for each scenario, we map out the exact objects, methods, and messages in chronological order.
+Step 4 is Implementation: developers can now write clean classes and methods with zero guessing, because the blueprint is already done!
 
-Now, look at the warning box in the lower right corner: vertical space shows the order of events, not how many seconds or milliseconds have passed! A big gap does not mean the system waited ten minutes; it just means that message comes next.
+Notice the quote at the bottom: a scenario is one execution path, and the sequence diagram is its exact architectural blueprint.
 
-To summarize this slide, remember this key takeaway: The sequence canvas places objects horizontally and flows time downward, showing the order of events.
+To summarize this slide, remember this key takeaway: We start with a high-level use case, pick a scenario, draw the sequence diagram, and then write the code.
 -->
 
 ---
 
-<!-- _class: full-image-slide -->
+### Upstream Models: Use Case, Scenario & Class Architecture
 
-<div class="centered-image">
+<div class="three-columns">
+<div class="card">
+<h3>1. Use Case Model</h3>
+<div style="text-align: center; margin: 10px 0;">
+  <img src="../../img/ch04/sequence/checkout_usecase_model.svg" alt="Use Case Model" style="max-width: 100%; height: auto;" />
+</div>
+<ul>
+<li><b>Primary Actor:</b> Customer</li>
+<li><b>Secondary Actor:</b> Payment Gateway</li>
+<li><b>System Boundary:</b> Order System</li>
+<li><b>Business Goal:</b> Checkout and purchase items</li>
+</ul>
+</div>
+<div class="card">
+<h3>2. Use Case Description</h3>
+<div style="font-size: 15px; line-height: 1.42;">
+<p style="margin-bottom: 5px;"><b>UC-01:</b> Checkout Order</p>
+<p style="margin-bottom: 5px;"><b>Precondition:</b> Cart confirmed by customer</p>
+<b>Main Success Scenario:</b>
+<ol style="margin-top: 3px; padding-left: 18px;">
+<li>Customer submits checkout with payment.</li>
+<li>System validates order items and availability.</li>
+<li>System requests payment from Payment Gateway.</li>
+<li>Payment Gateway confirms and issues receipt.</li>
+<li>System marks order status as <code>PAID</code>.</li>
+<li>System returns confirmation to Customer.</li>
+</ol>
+<p style="margin-top: 5px; margin-bottom: 0;"><b>Postcondition:</b> Order saved as <code>PAID</code></p>
+</div>
+</div>
+<div class="card">
+<h3>3. Design Class Model</h3>
+<div style="text-align: center; margin: 4px 0;">
+  <img src="../../img/ch04/sequence/checkout_class_model.svg" alt="Class Model" style="max-height: 380px; width: auto;" />
+</div>
+</div>
+</div>
+
+<!--
+Before diving into the dynamic sequence diagram and Java code, let's understand where they come from. System design doesn't happen in a vacuum—it flows systematically across three upstream artifacts.
+
+First, look at Card 1: the Use Case Model. Here we identify the business context. The primary actor, Customer, wants to achieve the goal of checking out an order, interacting across the Order System boundary with an external Payment Gateway.
+
+Second, look at Card 2: the Use Case Description. This gives us the behavioral contract and step-by-step narrative. Notice the exact steps: Customer submits checkout, System validates items, charges via Payment Gateway, gets a receipt, saves the status as PAID, and confirms back to the customer.
+
+Third, look at Card 3: the Design Class Model. How do we realize these requirements structurally? We assign responsibilities into classes: OrderController acts as the boundary endpoint, OrderService coordinates business logic with validate() and saveStatus(), and PaymentGateway provides the external charge() interface.
+
+Now, how do these three classes actually collaborate in time to execute the steps in the Use Case Description? Let's turn to the next slide to see the Sequence Diagram and the matching Java code!
+
+To summarize this slide, remember this key takeaway: Use cases capture user goals, descriptions specify behavioral steps, and class models define the static structural responsibilities needed to realize them.
+-->
+
+---
+
+### The Interaction Canvas: Code to Sequence Mapping
+
+<div class="puml-output-grid">
+<div class="puml-code-col">
+
+<div class="puml-title">Source Code (Java): Execution Flow</div>
+
+```java
+class OrderService {
+    private PaymentGateway gateway;
+
+    // [1] Controller invokes checkout
+    public OrderResult checkout(String id, double amount) {
+        // [2] Internal validation (self-call)
+        boolean ok = this.validate(id); // [3] returns true
+        
+        // [4] Call payment gateway
+        Receipt receipt = gateway.charge(amount);
+        // [5] Gateway returns receipt
+        
+        // [6] Record paid status (self-call)
+        this.saveStatus(OrderStatus.PAID);
+        
+        // [7] Return result to Controller
+        return new OrderResult(true, receipt);
+    }
+}
+```
+
+</div>
+<div class="puml-diagram-col">
+
+<div class="puml-title">UML Sequence Diagram: 3 Objects & 7 Events</div>
+
+<div class="diagram-wrapper">
+  <img src="../../img/ch04/sequence/code_to_sequence_mapping.svg" alt="Code to Sequence Diagram Mapping" />
+</div>
+
+</div>
+</div>
+
+<!--
+Let's see how source code directly maps into a UML Sequence Diagram across two fundamental axes:
+
+1. Horizontal Axis (The Object Dimension):
+Notice the three participating objects across the top: :OrderController, :OrderService, and :PaymentGateway. Lifelines drop vertically from each object box.
+
+2. Vertical Axis (The Time Dimension):
+Time flows strictly downward from top to bottom. Follow the 7 numbered events step-by-step:
+
+Event [1]: OrderController calls checkout() on OrderService. Both lifelines activate.
+Events [2] & [3]: OrderService calls validate() on itself (a self-call), returning 'valid: true'.
+Event [4]: OrderService synchronously calls charge() on PaymentGateway.
+Event [5]: PaymentGateway processes the charge and returns the receipt with a dashed arrow.
+Event [6]: OrderService performs another self-call to saveStatus(PAID).
+Event [7]: Finally, OrderService returns the OrderResult back to OrderController, and both activations complete.
+
+To summarize this slide, remember this key takeaway: Every method call is a horizontal message arrow, and time flows downward line by line exactly as code executes.
+-->
+
+---
+
+<!-- _class: title-image-slide -->
+
+## Structural Anatomy: Lifelines, Activations & Events
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_sequence/04_structural_anatomy.jpg" alt="Structural Anatomy: Lifelines, Activation Bars, and Events" />
 </div>
 
@@ -1622,9 +1866,11 @@ To summarize this slide, remember this key takeaway: An actor initiates events, 
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+### The Messaging Matrix: Synchronous, Asynchronous & Lifecycle
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_sequence/05_messaging_matrix.jpg" alt="The Messaging Matrix: Synchronous, Asynchronous, Return, Create, Destroy" />
 </div>
 
@@ -1647,9 +1893,11 @@ To summarize this slide, remember this key takeaway: Use solid filled arrows to 
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+### UML 2.0 Combined Fragments: alt, opt, loop, par
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_sequence/06_combined_fragments_overview.jpg" alt="UML 2.0 Combined Fragments: alt, opt, loop, par" />
 </div>
 
@@ -1668,9 +1916,11 @@ To summarize this slide, remember this key takeaway: Combined fragments use oper
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+### Fragment Operators to Production Code Logic
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_sequence/07_fragment_operators_to_code.jpg" alt="Fragment Operators to Production Code Logic" />
 </div>
 
@@ -1693,9 +1943,11 @@ To summarize this slide, remember this key takeaway: `alt` maps to if-else, `opt
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+### Case Study: Hotel Reservation Interaction Flow
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_sequence/08_case_study_hotel_reservation.jpg" alt="System Model Case Study: Hotel Reservation Flow" />
 </div>
 
@@ -1719,50 +1971,84 @@ To summarize this slide, remember this key takeaway: Real sequence diagrams coor
 
 ---
 
-<!-- _class: full-image-slide -->
+## Concept Check Question 5
+<!-- id: ase-ch04-ccq5 -->
+<div class="ccq-columns">
+<div class="ccq-text">
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_sequence/09_requirements_to_code_pipeline.jpg" alt="The Requirements-to-Code Pipeline: Use Case → Scenario → Sequence → Code" />
+In a Boundary-Control-Entity (BCE) sequence diagram, which object should receive the customer's `submitOrder()` event from the checkout UI boundary?
+
+- **A.** The `Order` entity object to immediately save database state.
+- **B.** The `PaymentGatewayAPI` boundary object to process payment immediately.
+- **C.** The `OrderController` control object to orchestrate business validation and service calls.
+- **D.** The `Restaurant` entity object to confirm kitchen capacity.
+
+</div>
+<div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq5" target="_blank"><img src="../../img/ch04/ase-ch04-ccq5.png" alt="QR Code" /></a>
+  </div>
 </div>
 
 <!--
-How do we move from customer requirements to working code? This four-step pipeline shows the whole journey.
+Let's check our understanding of BCE architecture with Concept Check Question 5. Scan the QR code or click the link to answer on your phone.
 
-Step 1 is the Use Case: it defines what the system should do from a user's perspective, like 'Book a Hotel Room'.
-Step 2 is a Scenario: a use case can unfold in several ways. One scenario is the sunny day where everything works; another scenario is when the credit card is expired.
+The question asks: When a customer clicks 'submitOrder' on the checkout UI boundary, who should receive this event first?
 
-Step 3 is the Sequence Diagram: for each scenario, we map out the exact objects, methods, and messages in chronological order.
-Step 4 is Implementation: developers can now write clean classes and methods with zero guessing, because the blueprint is already done!
+Let's look at the options:
+Option A says the Order entity. But remember: UI boundaries should never talk directly to database entities!
+Option B says PaymentGatewayAPI. Bypassing our own system logic to call an external API directly is risky and unstructured.
+Option D connects the UI directly to a Restaurant entity, which also breaks layering.
 
-Notice the quote at the bottom: a scenario is one execution path, and the sequence diagram is its exact architectural blueprint.
+Option C is the correct answer! The event must go to the `OrderController`. The controller coordinates business validation, checks inventory, contacts the payment gateway, and then saves the order.
 
-To summarize this slide, remember this key takeaway: We start with a high-level use case, pick a scenario, draw the sequence diagram, and then write the code.
+To summarize this slide, remember this key takeaway: Control objects orchestrate business logic and mediate between UI boundaries and data entities.
 -->
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_sequence/10_model_before_code.jpg" alt="Model Before Code: Architectural Discipline vs Chaotic Code" />
+### Diagnostic Exercise: Spot the Flaws in this Sequence Diagram
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Audit this student's draft Sequence Diagram for room booking:**
+Can you identify the critical mistakes across **layering, message syntax, and chronological flow**?
+
+- **1. Architecture Layering & Encapsulation:**
+  - Examine `BookingUI` and `MySQL_DB`. What architectural rule is broken by message `[2]` (`SELECT ...`)?
+- **2. Synchronous vs. Asynchronous Syntax:**
+  - Look at message `[6]`. Why is a synchronous return drawn with a dashed arrow while `[5]` is blocking?
+- **3. Combined Fragment (`alt`) Logic:**
+  - Inspect the guards on the `alt` block. Why are `[Room Available]` and `[else Payment Successful]` semantically invalid?
+- **4. Chronological Causality & Activations:**
+  - In what order do `showSuccessMessage()` and `INSERT INTO bookings` occur? Does the DB activation ever close?
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/sequence/bad_sequence_model.svg" alt="Bad Sequence Model Example" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
+
+</div>
 </div>
 
 <!--
-Here is the core philosophy of software engineering: 'Model Before Code.'
+Let's conduct an architectural audit of this student's draft Sequence Diagram. There are four major design anti-patterns:
 
-On the left, look at what happens when people start coding immediately without a plan: tangled functions, unexpected null pointer exceptions, and messy database queries. We put a big orange X over that!
+Flaw 1 (Architecture Layering & Encapsulation Violation):
+Look at message [2]: BookingUI queries MySQL_DB directly using raw SQL ('SELECT * FROM rooms...'). In three-tier and BCE architectures, presentation boundaries must NEVER bypass the application controller to speak directly to the database. This creates tight coupling and exposes raw schemas to the UI.
 
-On the right is our pristine blueprint: a clear sequence diagram showing User, ApplicationController, and DatabaseManager, linked to a clean UI screen.
+Flaw 2 (Nonsensical Combined Fragment Guards):
+Examine the alt combined fragment: The first branch is guarded with [Room Available], but the else branch is guarded with [else Payment Successful]! The branches in an alt block must evaluate the same conceptual condition and be mutually exclusive (e.g., [Room Available] vs [else / Room Unavailable]). Mixing room availability with payment success in an else clause is fundamentally broken logic.
 
-Look at the four benefits at the bottom:
-1. Language Neutral: You can discuss the architecture whether you code in Java, Python, or Go.
-2. Cross-Functional: Non-programmers, like product managers, can easily understand it.
-3. Team Consensus: It is much faster to debate a diagram than to rewrite two thousand lines of code in a pull request.
-4. Test and UX Ready: Testers can turn each arrow directly into a test case!
+Flaw 3 (Chronological Paradox / Premature Confirmation):
+Look at messages [7] and [8]: The UI displays 'Booking Confirmed!' to the user before the database insert at message [9] has even executed! If the database write fails or crashes, the user has been told their room is booked, causing critical data inconsistency. State must be persisted before confirming success.
 
-Remember the golden rule in the corner: architecture is much cheaper to change than code.
+Flaw 4 (Dangling Activation Lifetime):
+Notice the activation bar on MySQL_DB at message [9]: It is activated but never deactivated, hanging indefinitely. Execution specifications must terminate cleanly when operations finish.
 
-To summarize this slide, remember this key takeaway: Draw sequence blueprints first to build team consensus, avoid spaghetti code, and design better tests.
+To summarize this slide, remember this key takeaway: Sequence diagrams must enforce architectural layering, strictly pair mutually exclusive fragment guards, maintain correct chronological order, and cleanly terminate activation lifelines.
 -->
 
 ---
@@ -1794,7 +2080,9 @@ To summarize this slide, remember this key takeaway: Guide AI by enforcing clean
 
 ---
 
-## AI Prompt Example: Food Delivery Sequence Model
+<!-- _class: v-center -->
+
+### AI Prompt Example: Food Delivery Sequence Model
 
 <div class="two-columns">
 <div>
@@ -1843,9 +2131,10 @@ To summarize this slide, remember this key takeaway: Guide AI with layered archi
 
 ---
 
+<!-- _class: v-center -->
 <!-- header: '4.5 Interaction & Sequence Diagrams' -->
 
-## Generated PlantUML & Diagram: Food Delivery Sequence Model
+### Generated PlantUML & Diagram: Food Delivery Sequence Model
 
 <div class="puml-output-grid">
 <div class="puml-code-col">
@@ -1952,40 +2241,7 @@ Did it decouple background notifications so the customer isn't left hanging?
 To summarize this slide, remember this key takeaway: Testing AI with failure flows and timeouts ensures your dynamic architecture handles real-world distributed challenges.
 -->
 
----
 
-### Concept Check Question 5
-<!-- id: ase-ch04-ccq5 -->
-<div class="ccq-columns">
-<div class="ccq-text">
-
-In a Boundary-Control-Entity (BCE) sequence diagram, which object should receive the customer's `submitOrder()` event from the checkout UI boundary?
-
-- **A.** The `Order` entity object to immediately save database state.
-- **B.** The `PaymentGatewayAPI` boundary object to process payment immediately.
-- **C.** The `OrderController` control object to orchestrate business validation and service calls.
-- **D.** The `Restaurant` entity object to confirm kitchen capacity.
-
-</div>
-<div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq5" target="_blank"><img src="../../img/ch04/ase-ch04-ccq5.png" alt="QR Code" /></a>
-  </div>
-</div>
-
-<!--
-Let's check our understanding of BCE architecture with Concept Check Question 5. Scan the QR code or click the link to answer on your phone.
-
-The question asks: When a customer clicks 'submitOrder' on the checkout UI boundary, who should receive this event first?
-
-Let's look at the options:
-Option A says the Order entity. But remember: UI boundaries should never talk directly to database entities!
-Option B says PaymentGatewayAPI. Bypassing our own system logic to call an external API directly is risky and unstructured.
-Option D connects the UI directly to a Restaurant entity, which also breaks layering.
-
-Option C is the correct answer! The event must go to the `OrderController`. The controller coordinates business validation, checks inventory, contacts the payment gateway, and then saves the order.
-
-To summarize this slide, remember this key takeaway: Control objects orchestrate business logic and mediate between UI boundaries and data entities.
--->
 
 ---
 
@@ -2008,30 +2264,11 @@ To summarize this slide, remember this key takeaway: Activity diagrams model dyn
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_act/01_cover.jpg" alt="Mapping the Dynamic System with UML Activity Diagrams" />
-</div>
+## Visual Logic: Beyond Static Structures
 
-<!--
-Look at this overview of how we map a dynamic system.
-
-Follow the flow line through the three boxes on screen:
-First, on the left is Idea Generation: we start with unstructured thoughts and rough ideas.
-Second, in the middle is Structural Logic: we define business rules, decision diamonds, and who does what.
-Third, on the right is System Realization: we build a concrete, executable workflow with fork and join bars.
-
-Activity diagrams take your ideas and turn them into an organized engineering blueprint.
-
-To summarize this slide, remember this key takeaway: Activity diagrams turn unstructured business ideas into clear, executable workflow blueprints.
--->
-
----
-
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_act/02_visual_logic.jpg" alt="Moving Beyond Static Structures to Model Dynamic Workflows" />
 </div>
 
@@ -2049,10 +2286,31 @@ To summarize this slide, remember this key takeaway: Activity diagrams replace c
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_act/03_triggers.jpg" alt="Three Triggers for Behavioral Modeling" />
+### Three Triggers for Activity Modeling
+
+<div class="split64">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**When to Reach for UML Activity Diagrams:**
+
+- **1. Business Workflows:**
+  - **Cross-Boundary Value Streams:** Coordinate how multiple independent use cases chain together to fulfill end-to-end organizational goals.
+  - **Macro-Level Alignment:** Aligns business stakeholders and engineering teams on broad operational lifecycles.
+- **2. Complex Coordination:**
+  - **Intra-Use-Case Orchestration:** Track overlapping operations, branching paths, and precise chronological timing within a single feature.
+  - **Concurrency Management:** Safely handle simultaneous actions without thread race conditions.
+- **3. Contextual Mapping:**
+  - **Pre/Post-Condition Contracts:** Identify exact state invariants required before actions start and verified upon completion.
+- **Core Value:** Activity models bridge high-level use cases and low-level code implementation.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/03_triggers.jpg" alt="Three Triggers for Behavioral Modeling" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2068,12 +2326,17 @@ To summarize this slide, remember this key takeaway: Use activity diagrams for m
 -->
 
 ---
+<!-- _class: v-center -->
 
-<!-- _class: full-image-slide -->
+### Flowcharts vs. UML Activity Diagrams
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_act/04_compair.jpg" alt="Standard Flowcharts vs UML Activity Diagrams" />
-</div>
+| Modeling Capability | Standard Flowchart | UML Activity Diagram |
+| :--- | :---: | :---: |
+| **Sequential Logic** | ✓ | ✓ |
+| **Conditional Splits** (Branching) | ✓ | ✓ |
+| **Parallel / Concurrent Processes** (Fork & Join) | ✗ | ✓ |
+| **Actor Accountability** (Swimlanes / Partitions) | ✗ | ✓ |
+| **Object States & Transformation** (Data Flow) | ✗ | ✓ |
 
 <!--
 Many people ask: 'Why not just use a standard flowchart?' Look at this comparison table.
@@ -2091,9 +2354,11 @@ To summarize this slide, remember this key takeaway: Activity diagrams go far be
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Core Vocabulary of System Flow
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_act/05_core.jpg" alt="The Core Vocabulary of System Flow" />
 </div>
 
@@ -2111,10 +2376,29 @@ To summarize this slide, remember this key takeaway: Workflows start at an initi
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_act/06_conditional.jpg" alt="Handling Conditional System Logic: Decision & Merge Nodes" />
+### Conditional Logic: Decision & Merge Nodes
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Handling Mutually Exclusive Paths in Workflows:**
+
+- **Decision Node (Top Diamond ◇):**
+  - **Branching Point:** Evaluates guards on outgoing flows (e.g., `[Graphics Necessary? / Yes]` vs. `[No]`).
+  - **Strict Mutual Exclusion:** Exactly **ONE** path receives the execution token based on runtime evaluation.
+- **Merge Node (Bottom Diamond ◇):**
+  - **Reconvergence Point:** Brings alternative paths back into a single continuing flow (e.g., before `Save File`).
+  - **No Synchronization Waiting:** Does **NOT** wait for multiple tokens; whichever branch arrives first continues immediately.
+- **Key Takeaway:** Diamonds handle **if-else** choices, safely dividing and reuniting mutually exclusive logic.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/06_conditional.jpg" alt="Handling Conditional System Logic: Decision & Merge Nodes" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2129,10 +2413,29 @@ To summarize this slide, remember this key takeaway: Decision diamonds split flo
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_act/07_parallel.jpg" alt="Orchestrating Parallel System Actions: Fork & Join Nodes" />
+### Concurrency: Fork & Join Nodes
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Orchestrating Parallel Threads & Synchronization:**
+
+- **Fork Node (Top Solid Bar ▬):**
+  - **1-to-Many Concurrency:** Takes one incoming control flow and splits it into **concurrent parallel threads**.
+  - **Simultaneous Execution:** Both `Handle Billing` and `Fill and Send` execute concurrently without blocking each other.
+- **Join Node (Bottom Solid Bar ▬):**
+  - **Synchronization Barrier:** All incoming parallel branches must finish before outgoing flow (`Close Order`) can proceed.
+  - **Waiting Guarantee:** If billing takes 1s and packing takes 10s, billing halts at the join bar until packing arrives.
+- **Key Takeaway:** Forks spawn parallel concurrent threads; joins synchronize and wait for all threads to complete.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/07_parallel.jpg" alt="Orchestrating Parallel System Actions: Fork & Join Nodes" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2148,10 +2451,29 @@ To summarize this slide, remember this key takeaway: Fork bars launch concurrent
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_act/09_swimlane.jpg" alt="The Multi-Actor Accountability Problem" />
+## The Multi-Actor Accountability Problem
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Clear Ownership Eliminates Workflow Ambiguity:**
+
+- **The Problem: Process Ambiguity (Left):**
+  - **Unassigned Spaghetti Tasks:** Knowing *what* tasks occur is useless if no one knows *who* is responsible for each step.
+  - **Lost Handoffs:** Complex arrow webs obscure role transitions between employees and managers, causing dropped tasks.
+- **The Solution: Swimlane Accountability (Right):**
+  - **Boundary Separation:** Clear vertical columns partition responsibilities (e.g., `Employee` vs. `Manager`).
+  - **Explicit Crossing Points:** Cross-partition arrows explicitly define handoffs (e.g., employee submits → manager reviews & approves).
+- **Core Principle:** Swimlanes transform tangled process spaghetti into crisp, legally unambiguous operational boundaries.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/09_swimlane.jpg" alt="The Multi-Actor Accountability Problem" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2167,10 +2489,30 @@ To summarize this slide, remember this key takeaway: Swimlanes divide the canvas
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_act/10_grouping.jpg" alt="Grouping Activities by Actor or Thread: Swimlanes / Partitions" />
+### Swimlanes & Partitions: Grouping Activities
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Mapping Seamless Actor Handoffs in Practice:**
+
+- **Actor Partitions (Swimlanes):**
+  - Groups activities by performer: `Applicant` on the left, `Registrar` on the right.
+  - Visualizes organizational, departmental, or subsystem boundaries cleanly.
+- **Handoff Lifecycle (University Enrollment):**
+  - **1. Action Initiation:** Applicant hands in the enrollment form (`Hand in Enrollment Form`).
+  - **2. Boundary Crossing:** Flow crosses to the Registrar for validation (`Inspect Forms` → `Determine Proper Fill`).
+  - **3. Notification & Return:** Registrar informs student (`Inform Student`), returning control to the Applicant to `Pay Initial Tuition`.
+- **Key Takeaway:** Every cross-lane arrow is a formal contract interface between two distinct actors or architectural components.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/10_grouping.jpg" alt="Grouping Activities by Actor or Thread: Swimlanes / Partitions" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2190,9 +2532,11 @@ To summarize this slide, remember this key takeaway: Cross-swimlane arrows make 
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Visual Taxonomy of Activity Diagrams
+
+<div class="image-wrapper">
   <img src="../../img/ch04/nb_act/11_notation.jpg" alt="Complete Visual Taxonomy of Dynamic Modeling" />
 </div>
 
@@ -2215,10 +2559,31 @@ To summarize this slide, remember this key takeaway: Activity diagrams combine a
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_act/12_workflow.jpg" alt="The Unified Workflow Model: Swimlanes + Concurrency + Logic" />
+### The Unified Workflow Model
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Combining Swimlanes, Concurrency, & Logic:**
+
+- **1. Cross-Actor Handoff:**
+  - `Actor A` initiates an `Initial Request`; control flows across the partition to `Actor B` to `Review Request`.
+- **2. Concurrent Processing & Object Flow:**
+  - **Fork Bar:** Splits execution simultaneously into `Actor B` (perform analysis) and `Actor C` (execute sub-process).
+  - **Object Transformation:** `Actor B` produces a tangible `[Analysis Report]` data object.
+- **3. Decision Loop & Synchronization Barrier:**
+  - **Retry Diamond:** In `Actor C`, `[Success?]` loops on failure and proceeds on success.
+  - **Join Bar:** Waits for both the `Analysis Report` and successful sub-process before compiling output and delivering result.
+- **Key Takeaway:** Unifies roles, parallel tasks, stateful objects, and conditional loops into an enterprise-grade blueprint.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_act/12_workflow.jpg" alt="The Unified Workflow Model: Swimlanes + Concurrency + Logic" style="width: 100% !important; max-width: 520px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2240,22 +2605,84 @@ To summarize this slide, remember this key takeaway: Combining swimlanes, fork/j
 
 ---
 
-<!-- _class: full-image-slide -->
+## Concept Check Question 6
+<!-- id: ase-ch04-ccq6 -->
+<div class="ccq-columns">
+<div class="ccq-text">
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_act/13_three_phases.jpg" alt="Three Phases to Map Your Complex Systems" />
+In a UML Activity Diagram, what is the critical behavioral difference between a **Fork/Join** synchronization bar and a **Decision/Merge** diamond?
+
+- **A.** Fork/Join splits and synchronizes concurrent parallel threads; Decision/Merge evaluates guards to pick exactly one mutually exclusive branch.
+- **B.** Fork/Join is used for sequential database transactions; Decision/Merge is used for swimlane partitioning.
+- **C.** Fork/Join models class inheritance; Decision/Merge models object creation.
+- **D.** Fork/Join requires human operator approval; Decision/Merge is executed by automated timers.
+
+</div>
+<div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq6" target="_blank"><img src="../../img/ch04/ase-ch04-ccq6.png" alt="QR Code" /></a>
+  </div>
 </div>
 
 <!--
-To conclude this topic, follow these three phases when mapping any complex system:
+Let's check our understanding with Concept Check Question 6. Scan the QR code or click the link to answer on your phone.
 
-Step 1 at the bottom: Examine the Business Context. Look at the big picture, identify key use cases, and define preconditions and postconditions.
-Step 2 in the middle: Map the Core Workflows. Draw your main swimlanes and connect the flow between use cases.
-Step 3 at the top: Zoom In on Complexity. Add decision diamonds, fork and join bars, and object state transitions.
+The question asks: What is the critical behavioral difference between a Fork/Join bar and a Decision/Merge diamond?
 
-Don't try to draw every detail at once—build your model step by step.
+Let's look at the options:
+Option B mentions sequential transactions and swimlanes, which is unrelated.
+Option C confuses class inheritance with activity nodes.
+Option D invents fake rules about human approval and timers.
 
-To summarize this slide, remember this key takeaway: Design workflows in three phases: understand the business context, map core swimlanes, and then add detailed concurrency and logic.
+Option A is the correct answer! A Fork bar splits into concurrent parallel threads running at the same time, and Join waits for all of them. In contrast, Decision/Merge evaluates conditions to choose and reunite ONE path at a time.
+
+To summarize this slide, remember this key takeaway: Fork/Join manages concurrent parallel execution, while Decision/Merge handles mutually exclusive branching.
+-->
+
+---
+
+<!-- _class: v-center -->
+
+### Diagnostic Exercise: Spot the Flaws in this Activity Diagram
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Audit this student's draft Activity Diagram for food fulfillment:**
+Can you identify the critical mistakes across **concurrency, branching, and swimlane roles**?
+
+- **1. Concurrency vs. Conditional Branching:**
+  - Look closely at the `fork` bar in the Kitchen swimlane. Why is placing `[Card Payment]` and `[Cash on Delivery]` guards on a fork fundamentally wrong?
+- **2. Swimlane Accountability & Partitioning:**
+  - Examine the actions assigned to `Customer` and `Kitchen`. Which responsibilities are absurdly reversed?
+- **3. Dangling Control Flow & Termination:**
+  - Follow the `[Out of Stock]` path after `Cancel Order`. What essential UML node is missing before flow terminates?
+- **4. Deadlock vs. Synchronization:**
+  - If concurrent threads do not properly converge with matching join semantics, what runtime failure occurs?
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/activity/bad_activity_model.svg" alt="Bad Activity Model Example" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
+
+</div>
+</div>
+
+<!--
+Let's conduct an architectural audit of this student's draft Activity Diagram. There are four major workflow anti-patterns:
+
+Flaw 1 (Confusing Concurrency with Mutually Exclusive Decisions):
+Look at the fork bar in the Kitchen swimlane: It splits into [Card Payment] and [Cash on Delivery]. Placing guard conditions on a fork bar is a severe conceptual error! A fork bar spawns concurrent parallel threads where ALL outgoing branches execute simultaneously. Putting mutually exclusive payment choices on a fork means the system charges the customer's credit card AND prepares cash change at the same time! Mutually exclusive branches MUST use a Decision diamond, not a Fork bar.
+
+Flaw 2 (Absurd Swimlane Role Reversal):
+Notice the swimlane partitioning: 'Enter Delivery Address & Phone' is assigned to the Kitchen swimlane, while 'Cook Food & Package Meal' is placed inside the Customer swimlane! The customer is cooking their own meal while the restaurant kitchen enters the delivery address. Actions must strictly align with the responsible actor or system partition.
+
+Flaw 3 (Dangling Control Flow / Missing Activity Final Node):
+Follow the decision diamond when ingredients are [Out of Stock]: The flow executes 'Cancel Order' and then abruptly stops into thin air! In UML activity diagrams, every terminating flow path must explicitly lead to an Activity Final Node (a solid black circle with an outer ring) or a Flow Final Node.
+
+Flaw 4 (Deadlock Hazard on Asymmetric Synchronization):
+If mutually exclusive decision paths are mistakenly fed into a Join bar, the join bar will wait indefinitely for the missing token to arrive, deadlocking the workflow. Always use Merge diamonds to reunite mutually exclusive paths, and reserve Join bars strictly for synchronizing concurrent parallel threads.
+
+To summarize this slide, remember this key takeaway: Never put guards on a fork bar, strictly verify swimlane accountability, and ensure all terminating branches reach an explicit final node.
 -->
 
 ---
@@ -2289,7 +2716,9 @@ To summarize this slide, remember this key takeaway: Guide AI by assigning clear
 
 ---
 
-## AI Prompt Example: Food Delivery Activity Model
+<!-- _class: v-center -->
+
+### AI Prompt Example: Food Delivery Activity Model
 
 <div class="two-columns">
 <div>
@@ -2336,9 +2765,10 @@ To summarize this slide, remember this key takeaway: Guide AI with clear role bo
 
 ---
 
+<!-- _class: v-center -->
 <!-- header: '4.6 Process & Activity Diagrams' -->
 
-## Generated PlantUML & Diagram: Food Delivery Activity Model
+### Generated PlantUML & Diagram: Food Delivery Activity Model
 
 <div class="puml-output-grid">
 <div class="puml-code-col">
@@ -2445,40 +2875,7 @@ Are decision diamonds clearly labeled with guards?
 To summarize this slide, remember this key takeaway: Testing AI with loops, fallbacks, and takeaway branches ensures your workflow diagrams reflect robust real-world operations.
 -->
 
----
 
-### Concept Check Question 6
-<!-- id: ase-ch04-ccq6 -->
-<div class="ccq-columns">
-<div class="ccq-text">
-
-In a UML Activity Diagram, what is the critical behavioral difference between a **Fork/Join** synchronization bar and a **Decision/Merge** diamond?
-
-- **A.** Fork/Join splits and synchronizes concurrent parallel threads; Decision/Merge evaluates guards to pick exactly one mutually exclusive branch.
-- **B.** Fork/Join is used for sequential database transactions; Decision/Merge is used for swimlane partitioning.
-- **C.** Fork/Join models class inheritance; Decision/Merge models object creation.
-- **D.** Fork/Join requires human operator approval; Decision/Merge is executed by automated timers.
-
-</div>
-<div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq6" target="_blank"><img src="../../img/ch04/ase-ch04-ccq6.png" alt="QR Code" /></a>
-  </div>
-</div>
-
-<!--
-Let's check our understanding with Concept Check Question 6. Scan the QR code or click the link to answer on your phone.
-
-The question asks: What is the critical behavioral difference between a Fork/Join bar and a Decision/Merge diamond?
-
-Let's look at the options:
-Option B mentions sequential transactions and swimlanes, which is unrelated.
-Option C confuses class inheritance with activity nodes.
-Option D invents fake rules about human approval and timers.
-
-Option A is the correct answer! A Fork bar splits into concurrent parallel threads running at the same time, and Join waits for all of them. In contrast, Decision/Merge evaluates conditions to choose and reunite ONE path at a time.
-
-To summarize this slide, remember this key takeaway: Fork/Join manages concurrent parallel execution, while Decision/Merge handles mutually exclusive branching.
--->
 
 ---
 
@@ -2501,32 +2898,31 @@ In this section, we will learn how state machines model states, events, transiti
 To summarize this slide, remember this key takeaway: State machines model how reactive systems change states in response to external events over time.
 -->
 
+
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/01_anatomy_of_state_dependent_behavior.jpg" alt="The Anatomy of State-Dependent Behavior" />
+### Same Event, Different Results Based on State
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Context-Dependent Behavioral Execution:**
+
+- **Identical Stimulus, Divergent Outcome:**
+  - Sending the exact same input event (`pressSwitch()`) triggers opposite results depending on current system state.
+- **State Evaluation:**
+  - **Current State = Off (Blue Path):** The switch closes the circuit and transitions light to `On`.
+  - **Current State = On (Red Path):** The switch breaks the circuit and transitions light to `Off`.
+- **Core Architectural Invariant:** In reactive systems, runtime behavior is a function of `(Current State, Event) → (Next State, Action)`.
+
 </div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
 
-<!--
-Look at this architectural overview: 'The Anatomy of State-Dependent Behavior.'
+<img src="../../img/ch04/nb_state_machine/02_same_event_different_results.jpg" alt="The Same Event Yields Different Results Based on State" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
 
-In software engineering, many systems are not stateless. They do not just take an input and give an output. They remember where they are!
-
-How the system reacts to an event depends fundamentally on its current internal state.
-
-UML State Machine Diagrams give us a clear visual framework to model, deconstruct, and verify these state-dependent systems.
-
-To summarize this slide, remember this key takeaway: State machine diagrams formalize how a system behaves when its actions depend on its internal state.
--->
-
----
-
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/02_same_event_different_results.jpg" alt="The Same Event Yields Different Results Based on State" />
+</div>
 </div>
 
 <!--
@@ -2545,10 +2941,29 @@ To summarize this slide, remember this key takeaway: In state-dependent systems,
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/03_positioning_within_uml_ecosystem.jpg" alt="Positioning the Tool Within the UML Ecosystem" />
+### Positioning State Machines in the UML Ecosystem
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Complementary Behavioral Perspectives:**
+
+- **Sequence Diagram (Inter-Object Chronology):**
+  - **Scope:** Multiple objects collaborating across lifelines.
+  - **Coverage:** Traces a **single execution scenario** (happy path or specific edge case).
+- **State Machine (Intra-Object Lifecycle):**
+  - **Scope:** A **single key entity** (e.g., `Order`, `Connection`).
+  - **Coverage:** Exhaustively captures **all possible states, events, and transitions** over its entire lifetime.
+- **Architectural Rule:** Use Sequence Diagrams for inter-service protocols; use State Machines for complex entity integrity.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/03_positioning_within_uml_ecosystem.jpg" alt="Positioning the Tool Within the UML Ecosystem" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2565,10 +2980,30 @@ To summarize this slide, remember this key takeaway: Sequence diagrams show many
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/04_state_defined_lifecycle_interval.jpg" alt="A State is a Defined Interval in an Object's Lifecycle" />
+## Defining the State: A Lifecycle Interval
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**The Formal Lifecycle Interval:**
+
+- **1. Initial Pseudo-State (●):**
+  - Not a true state; marks the default starting entry point of an object lifecycle.
+- **2. The State (Rounded Box):**
+  - **Sustained Interval:** A period during which the object satisfies an invariant, executes an ongoing activity, or waits for an event.
+  - **State vs. Action:** A state is durational, unlike an instantaneous atomic action.
+- **3. Final State (◉):**
+  - Bullseye notation marking lifecycle termination and resource deallocation.
+- **Core Rule:** Continuous/server processes omit final states; workflow entities terminate at final states.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/04_state_defined_lifecycle_interval.jpg" alt="A State is a Defined Interval in an Object's Lifecycle" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2588,10 +3023,31 @@ To summarize this slide, remember this key takeaway: A state is a sustained time
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/05_four_triggers_of_state_transitions.jpg" alt="The Four Triggers That Initiate State Transitions" />
+### The Four Triggers of State Transitions
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**The Four Event Stimuli in UML:**
+
+- **1. Signal Event (⚡ Lightning):**
+  - Asynchronous message or event packet arriving from an external actor or subsystem.
+- **2. Call Event (⚙ Gears):**
+  - Synchronous invocation of an operation or method on the object's interface.
+- **3. Time Event (⌛ Hourglass):**
+  - Temporal trigger based on elapsed time (e.g., `after(30s)` or deadline expiration).
+- **4. Change Event (⟦⟧ Condition):**
+  - Continuous monitoring trigger firing when a boolean expression transitions from false to true (e.g., `when(temp > 100)`).
+  - **Key Takeaway:** Every state transition must be driven by exactly one of these four event types.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/05_four_triggers_of_state_transitions.jpg" alt="The Four Triggers That Initiate State Transitions" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2610,10 +3066,30 @@ To summarize this slide, remember this key takeaway: Transitions are triggered b
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/06_mechanics_of_a_transition.jpg" alt="The Mechanics of a Transition" />
+### The Mechanics of a Transition: Event, Guard, Action
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Anatomy of the Transition Pipeline:**
+
+- **The Transition Equation:**
+  - Standard UML syntax: `Event [Guard] / Action`.
+- **Step-by-Step Execution Mechanics:**
+  - **1. Event Stimulus:** Incoming event drops into the state handler funnel.
+  - **2. Guard Evaluation:** Boolean guard condition controls the gate; if false, the transition does not fire.
+  - **3. Action Execution:** Atomic, instantaneous action effect runs in zero logical time.
+  - **4. State Change:** System transitions out of Source State into Target State.
+- **Completion Transitions:** Transitions without triggers fire automatically when internal state activities finish.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/06_mechanics_of_a_transition.jpg" alt="The Mechanics of a Transition" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2635,10 +3111,31 @@ To summarize this slide, remember this key takeaway: A transition moves between 
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/07_actions_vs_activities.jpg" alt="Execution Engines: Actions vs. Activities" />
+## Execution Engines: Actions vs. Activities
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Atomic Execution vs. Durational Behavior:**
+
+- **Action (Atomic Computation):**
+  - **Duration:** Instantaneous (zero logical execution time).
+  - **Interruptibility:** **Non-interruptible**; once triggered, runs to completion before any event is processed.
+  - **Placement:** On transitions, `entry /`, or `exit /`.
+- **Activity (Ongoing Computation):**
+  - **Duration:** Sustained over time; continues while state is active.
+  - **Interruptibility:** **Immediately interruptible** if an outgoing transition event fires.
+  - **Placement:** Declared as `do / [activity]`.
+- **Crucial Rule:** Never put long-running I/O or background loops inside an Action.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/07_actions_vs_activities.jpg" alt="Execution Engines: Actions vs. Activities" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2655,10 +3152,31 @@ To summarize this slide, remember this key takeaway: Actions are instantaneous a
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/08_entry_and_exit_actions.jpg" alt="Boundary Executions: Entry and Exit Actions" />
+### Boundary Executions: Entry and Exit Actions
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Guaranteed Lifecycle Invariant Hooks:**
+
+- **Entry Action (`entry / action`):**
+  - Fires automatically the exact instant the state is entered.
+  - Executes regardless of which transition path arrived at the state.
+  - **Use Case:** Resource allocation, initializing timers, setting status flags.
+- **Exit Action (`exit / exitAction`):**
+  - Fires automatically the exact instant the state is abandoned.
+  - Executes regardless of which outgoing transition was taken.
+  - **Use Case:** Resource cleanup, flushing buffers, canceling watchdog timers.
+- **Architectural Value:** Encapsulates initialization/cleanup inside the state, eliminating duplicate transition code.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/08_entry_and_exit_actions.jpg" alt="Boundary Executions: Entry and Exit Actions" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2677,10 +3195,31 @@ To summarize this slide, remember this key takeaway: Entry and exit actions guar
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/09_scaling_architecture_complexity_matrix.jpg" alt="Scaling Architecture: The Complexity Matrix" />
+## Scaling Architecture: Composite & Concurrent States
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Taming State Explosions via Hierarchy:**
+
+- **1. Simple State (Atomic):**
+  - Single state with no internal decomposition (e.g., `Active`).
+- **2. Composite State (Nested Hierarchy):**
+  - An outer super-state encapsulating nested substates (e.g., `Heater` containing `Idle`, `Heating`, `Cooling`).
+  - Outer transitions apply uniformly to all substates, drastically reducing arrow clutter.
+- **3. Concurrent State (Orthogonal Regions):**
+  - Split by dashed lines into orthogonal parallel regions.
+  - Substates in all regions execute simultaneously and independently.
+- **Core Value:** Scales flat, chaotic state graphs into clean, modular abstractions.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/09_scaling_architecture_complexity_matrix.jpg" alt="Scaling Architecture: The Complexity Matrix" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2697,10 +3236,30 @@ To summarize this slide, remember this key takeaway: Composite and concurrent st
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/10_composite_states_and_history.jpg" alt="Composite States and System Memory" />
+### Composite States and History Memory (H)
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Resuming Execution After Interruptions:**
+
+- **Default Composite Entry:**
+  - Standard transitions into a composite state always start from the initial pseudo-state (Substate A).
+- **The History State Pseudo-Node `(H)`:**
+  - **State Caching:** Remembers the most recently active substate when the composite state was exited.
+  - **Direct Restoration:** Incoming transitions directed to `(H)` bypass default startup and restore the cached substate directly (e.g., Substate B).
+- **Shallow `(H)` vs. Deep `(H*)`:**
+  - Shallow remembers immediate substate; Deep remembers nested child substates recursively.
+- **Core Value:** Perfect for modeling pauses, phone interruptions, and system sleep/wake cycles.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/10_composite_states_and_history.jpg" alt="Composite States and System Memory" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2719,10 +3278,29 @@ To summarize this slide, remember this key takeaway: History states act as memor
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/11_concurrency_fork_and_join.jpg" alt="Concurrency: Forking and Joining Execution Threads" />
+### Concurrency: Fork and Join Synchronization
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Orthogonal Synchronization in Statecharts:**
+
+- **Fork Bar (1-to-Many Thread Concurrency):**
+  - Takes a single event trigger (`Auction Trigger`) and spawns multiple parallel active sub-states simultaneously.
+  - Upper thread handles `Processing the Bid`; lower thread handles `Authorizing Payment Limit`.
+- **Join Bar (Synchronization Barrier):**
+  - Synchronizes incoming parallel execution tracks.
+  - System halts at the barrier until **both** bid processing and payment authorization are 100% complete.
+- **Architectural Determinism:** Guarantees parallel background jobs finish before downstream lifecycle actions execute.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/11_concurrency_fork_and_join.jpg" alt="Concurrency: Forking and Joining Execution Threads" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2741,10 +3319,29 @@ To summarize this slide, remember this key takeaway: Fork bars split execution i
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/12_unified_blueprint_hvac_example.jpg" alt="The Unified Blueprint: HVAC Heating/Cooling System" />
+### The Unified Blueprint: HVAC System Example
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Industrial-Grade Comprehensive Blueprint:**
+
+- **Dual Concurrent Regions (Dashed Boundary):**
+  - **Region 1 (Thermostat Control):** Cycles between `Idle` and `Heating`; guarded transition `[temp < setpoint]` fires atomic `entry / activate_burner`.
+  - **Region 2 (Fan Operation):** Runs concurrently and independently (`Fan Off` ↔ `Fan Low` ↔ `Fan High`).
+- **Integrated Advanced Mechanics:**
+  - Entry actions ensure burner hardware synchronization.
+  - History pseudo-state `(H)` preserves thermostat operating memory.
+- **Master Architecture Takeaway:** Statecharts express intricate hardware-software coordination with complete formal rigor.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_state_machine/12_unified_blueprint_hvac_example.jpg" alt="The Unified Blueprint: HVAC Heating/Cooling System" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -2764,22 +3361,83 @@ To summarize this slide, remember this key takeaway: Real-world architectures co
 
 ---
 
-<!-- _class: full-image-slide -->
+## Concept Check Question 7
+<!-- id: ase-ch04-ccq7 -->
+<div class="ccq-columns">
+<div class="ccq-text">
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_state_machine/13_operationalizing_behavioral_logic_ai.jpg" alt="Operationalizing Behavioral Logic with AI" />
+In a UML State Machine, what is the critical architectural difference between an **Action** (such as `/ refundCharge()` or `entry / startTimer()`) and an **Activity** (`do / playAudio()`)?
+
+- **A.** Actions are instantaneous, atomic, and non-interruptible; Activities are ongoing computations that take time and can be interrupted by incoming events.
+- **B.** Actions are written in Python code; Activities are written in SQL queries.
+- **C.** Actions only apply to class diagrams; Activities only apply to sequence diagrams.
+- **D.** Actions represent manual human tasks; Activities are executed by database servers.
+
+</div>
+<div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq7" target="_blank"><img src="../../img/ch04/ase-ch04-ccq7.png" alt="QR Code" /></a>
+  </div>
 </div>
 
 <!--
-Look at how modern software engineering operationalizes behavioral logic using AI.
+Let's verify our understanding of state machine execution semantics with Concept Check Question 7.
 
-On the left is The Prompt: We ask the AI to "Create an auction system with parallel bid processing and payment authorization. Include a history state for suspended auctions."
+Look at the options:
+Option B and D confuse generic technology terms with formal UML semantics.
+Option C confuses completely different diagram types.
 
-On the right is The Output generated by the modeling tool: Look at how precisely the AI constructed the model! It created two concurrent regions—Bid Processing and Payment Authorization—and correctly added the Suspended state with an `(H)` history state cache!
+The correct answer is Option A! In UML state machine semantics:
+An Action is instantaneous, atomic, and non-interruptible—executing in zero logical time during a transition or entry/exit boundary.
+An Activity (declared with `do /`) is durational and interruptible—it executes continuously while the state is active, and is immediately halted if an outgoing transition event fires.
 
-Instead of spending hours dragging boxes manually, engineers write clear behavioral rules in prompts, let AI generate the diagram, and focus on verifying guards and safety conditions.
+To summarize this slide, remember this key takeaway: Actions are instantaneous and atomic; activities are ongoing and interruptible during state occupation.
+-->
 
-To summarize this slide, remember this key takeaway: AI tools translate plain-language behavioral rules into complete, verifiable UML state machines in seconds.
+---
+
+<!-- _class: v-center -->
+
+### Diagnostic Exercise: Spot the Flaws in this State Machine Model
+
+<div class="split46">
+<div class="left" style="font-size: 16.5px; line-height: 1.45;">
+
+**Audit this student's draft State Machine for an Order Lifecycle:**
+Can you identify the critical mistakes across **state semantics, transitions, and terminal nodes**?
+
+- **1. State vs. Transient Action:**
+  - Examine `DeductCreditCard`. Why is it semantically incorrect to model an instantaneous action as a persistent state?
+- **2. Black Hole (Trap) State:**
+  - Look at `RiskReview`. What happens once an order enters this state?
+- **3. Non-Deterministic Transition Conflict:**
+  - Inspect the two `cancelOrder` transitions leaving `Paid`. If `amount == 150`, which transition fires?
+- **4. Final State Invariants:**
+  - What fundamental UML rule is violated by the `reopenOrder()` transition leaving the final state `[*]`?
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/statemachine/bad_statemachine_model.svg" alt="Bad State Machine Model Example" style="width: 100% !important; max-width: 540px !important; max-height: 480px !important; object-fit: contain;" />
+
+</div>
+</div>
+
+<!--
+Let's conduct an architectural audit of this student's draft State Machine diagram. There are four major behavioral anti-patterns:
+
+Flaw 1 (Confusing Instantaneous Actions with Persistent States):
+Look at the state box labeled 'DeductCreditCard'. A State represents a condition or period of time during which an entity satisfies some condition, performs an ongoing activity, or waits for an event (e.g., 'PendingPayment', 'Delivered'). Deducting a credit card is an instantaneous, atomic action that executes in zero logical time—it should be modeled as an action on a transition (e.g., 'pay / deductCreditCard()'), never as a standalone state box!
+
+Flaw 2 (Black Hole / Trap State):
+Look closely at 'RiskReview': The state has an incoming transition triggered by 'flagFraudTrigger', but it has ZERO outgoing transitions! Once an order enters RiskReview, it is trapped forever. It can never be approved, cancelled, or closed. Every intermediate state must have at least one exit path.
+
+Flaw 3 (Non-Deterministic Transition Conflict):
+Examine the state 'Paid': There are two transitions triggered by 'cancelOrder'. One has guard [amount > 100], but the second transition has NO guard at all! If a cancellation request arrives for an order of $150, BOTH transitions are valid. In UML, transitions from a single state sharing the same trigger event must have strictly mutually exclusive guard conditions (e.g., [amount > 100] and [amount <= 100]). Non-deterministic race conditions are strictly prohibited.
+
+Flaw 4 (Illegal Outgoing Transition from a Final State):
+Notice the transition 'reopenOrder()' drawn from the Final State [*] back to 'PendingPayment'. A Final State indicates the complete termination of the object's lifecycle. UML rules strictly forbid any outgoing transitions from a final state! If an order can be reopened, it was never truly terminated.
+
+To summarize this slide, remember this key takeaway: Distinguish persistent states from instantaneous actions, avoid black hole states, enforce mutually exclusive guards, and never draw outgoing transitions from a final state.
 -->
 
 ---
@@ -2813,7 +3471,9 @@ To summarize this slide, remember this key takeaway: Guide AI by focusing on ent
 
 ---
 
-## AI Prompt Example: Food Delivery State Machine Model
+<!-- _class: v-center -->
+
+### AI Prompt Example: Food Delivery State Machine Model
 
 <div class="two-columns">
 <div>
@@ -2860,9 +3520,10 @@ To summarize this slide, remember this key takeaway: Guide AI with clear lifecyc
 
 ---
 
+<!-- _class: v-center -->
 <!-- header: '4.7 Behavioral & State Machine Models' -->
 
-## Generated PlantUML & Diagram: Food Delivery State Machine Model
+### Generated PlantUML & Diagram: Food Delivery State Machine Model
 
 <div class="puml-output-grid">
 <div class="puml-code-col">
@@ -2960,39 +3621,7 @@ Are guards and entry actions properly specified?
 To summarize this slide, remember this key takeaway: Testing AI with abnormal lifecycle exceptions reveals whether it truly protects core business invariants.
 -->
 
----
 
-### Concept Check Question 7
-<!-- id: ase-ch04-ccq7 -->
-<div class="ccq-columns">
-<div class="ccq-text">
-
-In a UML State Machine, what is the critical architectural difference between an **Action** (such as `/ refundCharge()` or `entry / startTimer()`) and an **Activity** (`do / playAudio()`)?
-
-- **A.** Actions are instantaneous, atomic, and non-interruptible; Activities are ongoing computations that take time and can be interrupted by incoming events.
-- **B.** Actions are written in Python code; Activities are written in SQL queries.
-- **C.** Actions only apply to class diagrams; Activities only apply to sequence diagrams.
-- **D.** Actions represent manual human tasks; Activities are executed by database servers.
-
-</div>
-<div class="ccq-logo">
-    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq7" target="_blank"><img src="../../img/ch04/ase-ch04-ccq7.png" alt="QR Code" /></a>
-  </div>
-</div>
-
-<!--
-Let's verify our understanding of state machine execution semantics with Concept Check Question 7.
-
-Look at the options:
-Option B and D confuse generic technology terms with formal UML semantics.
-Option C confuses completely different diagram types.
-
-The correct answer is Option A! In UML state machine semantics:
-An Action is instantaneous, atomic, and non-interruptible—executing in zero logical time during a transition or entry/exit boundary.
-An Activity (declared with `do /`) is durational and interruptible—it executes continuously while the state is active, and is immediately halted if an outgoing transition event fires.
-
-To summarize this slide, remember this key takeaway: Actions are instantaneous and atomic; activities are ongoing and interruptible during state occupation.
--->
 
 ---
 
@@ -3025,10 +3654,33 @@ To summarize this slide, remember this key takeaway: PlantUML enables code-drive
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/01_plantuml_code_driven_architecture.jpg" alt="UML Modeling with PlantUML: Code-Driven Architecture" />
+## PlantUML: Code-Driven Architecture
+
+<div class="split46">
+<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+
+**Diagrams as Code (Text to Architecture):**
+
+- **Declarative Architecture:**
+  - Write concise, human-readable text scripts to specify system components and data flows.
+- **PlantUML Syntax Snippet:**
+  ```plantuml
+  component "Order Service" as OS
+  database "Order DB" as ODB
+  OS --> ODB : Stores Order Data
+  ```
+- **Automated Layout Engine:**
+  - Graphviz computes coordinates, routing, and alignment automatically without manual layout friction.
+- **Core Value:** Replaces brittle drawing tools with version-controlled, pull-request-friendly architecture files.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/01_plantuml_code_driven_architecture.jpg" alt="UML Modeling with PlantUML: Code-Driven Architecture" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -3037,7 +3689,7 @@ Look at this visual introduction: 'UML Modeling with PlantUML.'
 On the left, you see a dark code editor with clean, declarative syntax:
 `component "Order Service" as OS`
 `database "Order DB" as ODB`
-`OS --> ODB : Stores Order Data`
+`OS -> ODB : Stores Order Data`
 
 Notice the bright orange arrow bursting out of the text into the diagram on the right!
 
@@ -3050,10 +3702,33 @@ To summarize this slide, remember this key takeaway: PlantUML converts simple te
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/02_stop_dragging_start_writing.jpg" alt="Stop Dragging Boxes. Start Writing Architecture." />
+### Stop Dragging Boxes. Start Writing Architecture
+
+<div class="split46">
+<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+
+**Eliminating Visual Friction & Maintenance Debt:**
+
+- **The Traditional GUI Way (Left - Mouse Fatigue):**
+  - Whiteboard and GUI dragging tools are slow, manual, and permanently disconnected from source code.
+  - Adding a single box requires tedious repositioning of dozens of connectors.
+- **The PlantUML Way (Right - Instant & Standardized):**
+  ```plantuml
+  class User { +name : String }
+  class Order { +id : Int }
+  User "1" -- "*" Order
+  ```
+- **Engineering Advantage:**
+  - Focus 100% on software abstractions and relationships rather than pixel-pushing alignment.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/02_stop_dragging_start_writing.jpg" alt="Stop Dragging Boxes. Start Writing Architecture." style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -3072,10 +3747,30 @@ To summarize this slide, remember this key takeaway: Writing diagrams as text el
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/03_frictionless_setup.jpg" alt="The Frictionless Setup: VS Code Extension & Local Rendering" />
+### Frictionless Setup: VS Code & Live Preview
+
+<div class="split46">
+<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+
+**Three Steps to Local Diagramming Velocity:**
+
+- **1. Install Extension:**
+  - Add the official **PlantUML** extension from the VS Code Marketplace.
+- **2. Write Architecture:**
+  - Create any `.puml` file with full syntax highlighting & intelligent auto-completion.
+- **3. Instant Rendering:**
+  - Press `Alt + D` (Mac: `Option + D`) to toggle live side-by-side preview.
+- **Multi-Format Export:**
+  - Export production diagrams directly to **SVG**, high-res **PNG**, or terminal-friendly **ASCII art**.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/03_frictionless_setup.jpg" alt="The Frictionless Setup: VS Code Extension & Local Rendering" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -3094,10 +3789,30 @@ To summarize this slide, remember this key takeaway: PlantUML integrates seamles
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/04_five_essential_lenses.jpg" alt="The Architect's Blueprint: 5 Essential Lenses" />
+## The Architect's Blueprint: 5 Essential Lenses
+
+<div class="split46">
+<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+
+**Unified Syntax Across All Architectural Perspectives:**
+
+- **Structure Diagrams (Static Backbone):**
+  - **Class Diagram:** Specifies domain entities, attributes, operations, and relationships.
+- **Behavior Diagrams (Dynamic Motion):**
+  - **Use Case Diagram:** High-level actor interactions and system boundaries.
+  - **Activity Diagram:** Process workflows, concurrency, and swimlanes.
+  - **Sequence Diagram:** Message chronology across lifelines.
+  - **State Diagram:** Entity lifecycle states and event transitions.
+- **Core Value:** One unified text syntax covers all five essential UML models.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/04_five_essential_lenses.jpg" alt="The Architect's Blueprint: 5 Essential Lenses" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -3120,10 +3835,35 @@ To summarize this slide, remember this key takeaway: PlantUML provides a unified
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/05_use_case_in_plantuml.jpg" alt="Use Case Diagrams in PlantUML Syntax" />
+### Use Case Diagrams in PlantUML Syntax
+
+<div class="split46">
+<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+
+**Capturing Functional Requirements in Plain Text:**
+
+- **Intuitive Language Elements:**
+  - `actor Customer`: Declares external actors (rendered as stick figures).
+  - `usecase Login`: Declares system capabilities inside boundary ovals.
+  - `Customer --> Login`: Establishes communication associations.
+- **PlantUML Script Example:**
+  ```plantuml
+  actor Customer
+  usecase Login
+  usecase Checkout
+  Customer --> Login
+  Customer --> Checkout
+  ```
+- **Agile Advantage:** Perfect for user story mapping and stakeholder scoping before coding.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/05_use_case_in_plantuml.jpg" alt="Use Case Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -3132,7 +3872,7 @@ Look at how easy it is to write 'Use Case Diagrams in PlantUML':
 Look at the code on the left and the magenta arrows pointing to the diagram:
 Typing `actor Customer` creates the stick figure representing external actors.
 Typing `usecase Login` and `usecase Checkout` creates the ovals representing system functionalities.
-Connecting them is as simple as typing `Customer --> Login` and `Customer --> Checkout`!
+Connecting them is as simple as typing `Customer -> Login` and `Customer -> Checkout`!
 
 In just four lines of plain text, you capture high-level requirements before writing any code.
 
@@ -3141,10 +3881,37 @@ To summarize this slide, remember this key takeaway: PlantUML creates actors, us
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/06_class_diagrams_in_plantuml.jpg" alt="Class Diagrams in PlantUML Syntax" />
+### Class Diagrams in PlantUML Syntax
+
+<div class="split46">
+<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+
+**Mirroring Object-Oriented Code Structure:**
+
+- **3-Compartment Class Box:**
+  - Top: Class name (`class Animal`).
+  - Middle: Attributes (`int id`, `String name`).
+  - Bottom: Operations (`+int getId()`, `+void makeSound()`).
+- **Visibility Modifiers:**
+  - `+` Public | `-` Private | `#` Protected | `~` Package
+- **PlantUML Script Example:**
+  ```plantuml
+  class Animal {
+    int id
+    String name
+    +int getId()
+    +void makeSound()
+  }
+  ```
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/06_class_diagrams_in_plantuml.jpg" alt="Class Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -3164,10 +3931,31 @@ To summarize this slide, remember this key takeaway: PlantUML class syntax direc
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/07_class_relationships_matrix.jpg" alt="The Class Relationship Matrix in PlantUML Syntax" />
+### The Class Relationship Matrix in PlantUML
+
+<div class="split46">
+<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+
+**Mnemonic Connector Symbols for Class Relations:**
+
+- **Inheritance (`<|--`):**
+  - Subclass inherits attributes/operations (hollow triangle `<|`).
+- **Association (`--`):**
+  - Structural relationship where one class references another.
+- **Aggregation (`o--`):**
+  - Shared "has-a" relationship; parts exist independently (hollow diamond `o`).
+- **Composition (`*--`):**
+  - Strict ownership; parts live and die with the whole (solid diamond `*`).
+- **Mnemonic Design:** PlantUML symbols visually mirror UML standard connector shapes.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/07_class_relationships_matrix.jpg" alt="The Class Relationship Matrix in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -3186,10 +3974,35 @@ To summarize this slide, remember this key takeaway: Mnemonic symbols like `<|--
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/08_sequence_diagrams_in_plantuml.jpg" alt="Sequence Diagrams in PlantUML Syntax" />
+### Sequence Diagrams in PlantUML Syntax
+
+<div class="split46">
+<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+
+**Chronological Interactions Over Time:**
+
+- **Core Interaction Rules:**
+  - Time flows downwards vertically.
+  - Participants are declared with `participant Name`.
+  - Solid arrow `->` represents synchronous request call.
+  - Dashed arrow `-->` represents return response.
+- **PlantUML Script Example:**
+  ```plantuml
+  participant User
+  participant OrderService
+  User -> OrderService : Request to place order
+  OrderService --> User : Confirm order placement
+  ```
+- **Automatic Layout:** Lifelines, activations, and alignments are computed automatically.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/08_sequence_diagrams_in_plantuml.jpg" alt="Sequence Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -3202,9 +4015,9 @@ Look at the code on the left:
 `participant User`
 `participant OrderService`
 `User -> OrderService : Request to place order`
-`OrderService --> User : Confirm order placement`
+`OrderService -> User : Confirm order placement`
 
-A solid arrow `->` represents the incoming request, while a dashed arrow `-->` represents the return reply!
+A solid arrow `->` represents the incoming request, while a dashed return arrow represents the reply!
 
 PlantUML automatically draws the vertical lifelines, activation boxes, and horizontal arrows.
 
@@ -3213,10 +4026,31 @@ To summarize this slide, remember this key takeaway: PlantUML sequence diagrams 
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/09_anatomy_of_sequence_syntax.jpg" alt="Anatomy of Sequence Syntax: Lifelines & Messages" />
+### Anatomy of Sequence Syntax: Lifelines & Messages
+
+<div class="split46">
+<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+
+**Key Visual Building Blocks in PlantUML:**
+
+- **1. Lifelines:**
+  - Vertical dashed tracks representing collaborating participants.
+- **2. Messages:**
+  - Horizontal communication arrows (`->` synchronous, `->>` asynchronous).
+- **3. Activation Boxes (`activate` / `deactivate`):**
+  - Thin rectangles showing active execution periods on a lifeline.
+- **4. Lifecycle Events (`create` / `destroy`):**
+  - Specialized messages that instantiate new participants or terminate lifelines.
+- **Core Value:** Clean text syntax generates pixel-perfect sequence diagrams.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/09_anatomy_of_sequence_syntax.jpg" alt="Anatomy of Sequence Syntax: Lifelines & Messages" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -3234,10 +4068,36 @@ To summarize this slide, remember this key takeaway: Sequence diagrams are built
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/10_activity_diagrams_in_plantuml.jpg" alt="Activity Diagrams & Swimlanes in PlantUML Syntax" />
+### Activity Diagrams & Swimlanes in PlantUML
+
+<div class="split46">
+<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+
+**Workflow & Process Modeling (Beta Syntax):**
+
+- **Workflow Control Markers:**
+  - `start`: Renders solid black initial node.
+  - `:Action Name;`: Colon and semicolon wrap action state boxes.
+  - `stop`: Renders bullseye final termination node.
+- **PlantUML Script Example:**
+  ```plantuml
+  start
+  :Customer Login;
+  :Add to Cart;
+  stop
+  ```
+- **Advanced Capabilities:**
+  - Decision diamonds via `if (...) then (...) else (...) endif`.
+  - Swimlanes via `|Lane Name|` partition markers.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/10_activity_diagrams_in_plantuml.jpg" alt="Activity Diagrams & Swimlanes in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -3257,10 +4117,34 @@ To summarize this slide, remember this key takeaway: Activity diagrams model ste
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: v-center -->
 
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/11_state_diagrams_in_plantuml.jpg" alt="State Diagrams in PlantUML Syntax" />
+### State Diagrams in PlantUML Syntax
+
+<div class="split46">
+<div class="left" style="font-size: 15.5px; line-height: 1.45;">
+
+**Single-Object Reactive Lifecycle Modeling:**
+
+- **Standard State Transition Syntax:**
+  - Format: `StateA --> StateB : Event String`
+- **PlantUML Script Example:**
+  ```plantuml
+  [*] --> NewOrder
+  NewOrder --> Paid : Payment Processed
+  Paid --> Shipped : Order Sent
+  Shipped --> [*]
+  ```
+- **Lifecycle Markers:**
+  - `[*]`: Represents both initial pseudo-state and final state.
+- **Core Value:** Model complex finite state machines in seconds with clear transition event labels.
+
+</div>
+<div class="right" style="display: flex; justify-content: center; align-items: center;">
+
+<img src="../../img/ch04/nb_plantuml/11_state_diagrams_in_plantuml.jpg" alt="State Diagrams in PlantUML Syntax" style="width: 100% !important; max-width: 580px !important; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+
+</div>
 </div>
 
 <!--
@@ -3269,61 +4153,17 @@ Look at 'State Diagrams: Object Lifecycles.'
 While activity diagrams show multi-actor workflows, state diagrams focus strictly on the lifecycle of a single object.
 
 Look at the code format box:
-`Format: StateA --> StateB : Event String`
+`Format: StateA -> StateB : Event String`
 
 Now trace the diagram:
-`[*] --> NewOrder` starts the lifecycle.
-`NewOrder --> Paid : Payment Processed` transitions state when payment succeeds.
-`Paid --> Shipped : Order Sent` moves to shipping.
-`Shipped --> [*]` terminates the lifecycle.
+`[*] -> NewOrder` starts the lifecycle.
+`NewOrder -> Paid : Payment Processed` transitions state when payment succeeds.
+`Paid -> Shipped : Order Sent` moves to shipping.
+`Shipped -> [*]` terminates the lifecycle.
 
 With this simple syntax, you can model any reactive object's lifecycle in minutes.
 
 To summarize this slide, remember this key takeaway: State diagrams map an object's discrete lifecycle states using arrows, event labels, and initial/final markers.
--->
-
----
-
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/12_cross_diagram_syntax_cheatsheet.jpg" alt="Cross-Diagram Syntax Quick Reference Matrix" />
-</div>
-
-<!--
-Look at 'The Architect's Diagnostic: Choosing Your Model.'
-
-This table helps you choose the right diagram for any engineering question:
-- Use Case: Focuses on user goals, system boundaries, and scope.
-- Class: Focuses on domain entities, attributes, and static relationships.
-- Sequence: Focuses on time-ordered message exchanges between components.
-- Activity: Focuses on business workflows, step routing, and concurrency.
-- State: Focuses on an entity's lifecycle states and event transitions.
-
-Whenever you face a modeling task, use this diagnostic table to select the right lens.
-
-To summarize this slide, remember this key takeaway: Use this diagnostic table to match your software engineering problem to the most effective UML modeling lens.
--->
-
----
-
-<!-- _class: full-image-slide -->
-
-<div class="centered-image">
-  <img src="../../img/ch04/nb_plantuml/13_holistic_system_view.jpg" alt="The Holistic System View: Linking Models Together" />
-</div>
-
-<!--
-Here is 'The Holistic System View'—showing how all four models link together across four stages:
-
-Stage 1: A Use Case (`Customer Checkout`) dictates the functional requirement.
-Stage 2: ...which requires a Sequence (`User` talks to `Payment Service`) to model the interaction...
-Stage 3: ...which requires a Class (`PaymentProcessor`) to be structurally built in code...
-Stage 4: ...which ultimately changes the State of an Order from `Pending` to `Paid`!
-
-Notice the insight at the bottom: UML diagrams are not separate, isolated documents. They are overlapping viewpoints of the exact same system!
-
-To summarize this slide, remember this key takeaway: UML diagrams are not disconnected drawings; they are linked, overlapping perspectives of a single unified system.
 -->
 
 ---

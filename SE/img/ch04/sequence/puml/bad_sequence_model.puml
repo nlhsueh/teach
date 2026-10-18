@@ -1,0 +1,71 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam shadowing false
+skinparam roundcorner 6
+autonumber "<b>[0]</b>"
+
+skinparam sequence {
+  ArrowColor #0b3c5d
+  ArrowFontColor #b91c1c
+  ArrowFontStyle bold
+  ArrowFontSize 13
+  
+  LifeLineBorderColor #0b3c5d
+  LifeLineBackgroundColor #ffffff
+  
+  ParticipantBorderColor #0b3c5d
+  ParticipantBackgroundColor #ffffff
+  ParticipantFontStyle bold
+  ParticipantFontSize 14
+  
+  ActorBorderColor #0b3c5d
+  ActorBackgroundColor #d9b310
+  ActorFontStyle bold
+  
+  GroupBorderColor #b91c1c
+  GroupHeaderFontColor #b91c1c
+  GroupFontStyle bold
+}
+
+actor "Customer" as User
+boundary "BookingUI" as UI
+control "BookingCtrl" as Ctrl
+database "MySQL_DB" as DB
+boundary "PaymentGateway" as Stripe
+
+User -> UI: clickBookRoom()
+activate UI
+
+' Flaw 1: UI directly queries DB with SQL, completely bypassing Controller!
+UI -> DB: SELECT * FROM rooms WHERE id=402
+activate DB
+DB --> UI: roomRecord
+deactivate DB
+
+' Flaw 2: Fragment with non-mutually exclusive, nonsensical guards
+alt Room Available
+  UI -> Ctrl: confirmBooking()
+  activate Ctrl
+  
+  Ctrl -> Stripe: processPayment($250)
+  activate Stripe
+  ' Flaw 3: Synchronous call shown with return-style dashed line
+  Stripe --> Ctrl: paymentResult
+  deactivate Stripe
+  
+  ' Flaw 4: Chronological paradox - UI returns success to user BEFORE DB reservation is saved!
+  Ctrl --> UI: showSuccessMessage()
+  UI --> User: "Booking Confirmed!"
+  
+  Ctrl -> DB: INSERT INTO bookings ...
+  activate DB
+  ' Flaw 5: Activation on DB never deactivates, hangs forever!
+else Payment Successful
+  Ctrl --> UI: errorPopup()
+end
+
+deactivate Ctrl
+deactivate UI
+
+@enduml

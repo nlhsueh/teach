@@ -1,6 +1,7 @@
 ---
 marp: true
 theme: ase-theme
+title: 'Software Engineering'
 paginate: true
 header: 'Software Engineering | Ch 07: Software Testing'
 footer: 'Prof. Nien-Lin Hsueh'
@@ -9,7 +10,7 @@ footer: 'Prof. Nien-Lin Hsueh'
 <!-- _class: lead -->
 <!-- header: '' -->
 
-# **Software Engineering**
+# Software Engineering
 
 ### Chapter 7: Software Testing & Quality Verification
 

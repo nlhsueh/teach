@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor transparent
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam shadowing false
+skinparam roundcorner 6
+skinparam classAttributeIconSize 0
+
+skinparam class {
+  BorderColor #0b3c5d
+  BackgroundColor #ffffff
+  HeaderBackgroundColor #e8eff5
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 11
+  AttributeFontColor #222222
+  AttributeFontSize 10
+}
+
+skinparam interface {
+  BorderColor #0b3c5d
+  BackgroundColor #ffffff
+  HeaderBackgroundColor #e8eff5
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 11
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #0b3c5d
+  FontSize 10
+}
+
+class OrderController {
+  + checkout(id, amount): OrderResult
+}
+
+class OrderService {
+  - gateway: PaymentGateway
+  + checkout(id, amount): OrderResult
+  - validate(id): boolean
+  - saveStatus(status): void
+}
+
+interface PaymentGateway <<external>> {
+  + charge(amount): Receipt
+}
+
+OrderController --> OrderService : uses >
+OrderService --> PaymentGateway : calls >
+@enduml

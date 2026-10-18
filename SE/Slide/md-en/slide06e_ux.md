@@ -1,6 +1,7 @@
 ---
 marp: true
 theme: ase-theme
+title: 'Software Engineering'
 paginate: true
 header: 'Software Engineering | Ch 06: User Experience (UX) Design'
 footer: 'Prof. Nien-Lin Hsueh'
@@ -8,7 +9,7 @@ footer: 'Prof. Nien-Lin Hsueh'
 
 <!-- _class: lead -->
 <!-- header: '' -->
-# **Software Engineering**
+# Software Engineering
 
 ### Chapter 6: User Experience (UX) Design & Human-Centered AI
 

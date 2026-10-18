@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor #ffffff
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam shadowing false
+skinparam roundcorner 6
+autonumber "<b>[0]</b>"
+
+skinparam sequence {
+  ArrowColor #0b3c5d
+  ArrowFontColor #0b3c5d
+  ArrowFontStyle bold
+  ArrowFontSize 12
+  
+  LifeLineBorderColor #0b3c5d
+  LifeLineBackgroundColor #e8eff5
+  
+  ParticipantBorderColor #0b3c5d
+  ParticipantBackgroundColor #ffffff
+  ParticipantFontStyle bold
+  ParticipantFontSize 13
+}
+
+participant ":OrderController" as Ctrl
+participant ":OrderService" as Svc
+participant ":PaymentGateway" as Pay
+
+Ctrl -> Svc: checkout(id, amount)
+activate Ctrl
+activate Svc
+
+Svc -> Svc: validate(id)
+activate Svc
+Svc --> Svc: valid: true
+deactivate Svc
+
+Svc -> Pay: charge(amount)
+activate Pay
+Pay --> Svc: receipt
+deactivate Pay
+
+Svc -> Svc: saveStatus(PAID)
+
+Svc --> Ctrl: return OrderResult
+deactivate Svc
+deactivate Ctrl
+@enduml

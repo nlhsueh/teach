@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam shadowing false
+skinparam roundcorner 6
+
+skinparam state {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 2
+  FontColor #0b3c5d
+  FontStyle bold
+  FontSize 13
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #b91c1c
+  FontStyle bold
+  FontSize 12
+}
+
+[*] --> PendingPayment : createOrder()
+
+' Flaw 1: An instantaneous action modeled as a persistent state!
+PendingPayment --> DeductCreditCard : paymentSubmitted
+state DeductCreditCard {
+  ' A transient operation is NOT a state
+}
+
+DeductCreditCard --> Paid : paymentSuccess
+
+' Flaw 2: Black Hole / Trap State - enters RiskReview but has no exit path!
+PendingPayment --> RiskReview : flagFraudTrigger
+state RiskReview {
+  ' No outgoing transitions anywhere!
+}
+
+' Flaw 3: Conflicting Non-Deterministic transitions on the same event!
+Paid --> Processing : prepareMeal
+Paid --> Cancelled : cancelOrder [amount > 100] / notifyVIP()
+Paid --> Cancelled : cancelOrder / standardRefund()
+
+Processing --> Delivered : courierDelivered
+Delivered --> [*]
+
+' Flaw 4: Illegal outgoing transition from a Final State!
+[*] --> PendingPayment : reopenOrder()
+
+@enduml

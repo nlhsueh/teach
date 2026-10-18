@@ -1,6 +1,7 @@
 ---
 marp: true
 theme: quiz-theme
+title: 'Advanced Software Engineering'
 paginate: true
 size: 16:9
 ---
@@ -10,7 +11,7 @@ size: 16:9
 <!-- _footer: '' -->
 <!-- _paginate: false -->
 
-# **Advanced Software Engineering**
+# Advanced Software Engineering
 ## Comprehensive Self-Study Quiz Deck (Chapters 1–3)
 
 > "Tell me and I forget, teach me and I may remember, involve me and I learn." — Benjamin Franklin

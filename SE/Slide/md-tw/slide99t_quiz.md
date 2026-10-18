@@ -1,6 +1,7 @@
 ---
 marp: true
 theme: quiz-theme
+title: '進階軟體工程 (Advanced Software Engineering)'
 paginate: true
 size: 16:9
 ---
@@ -10,7 +11,7 @@ size: 16:9
 <!-- _footer: '' -->
 <!-- _paginate: false -->
 
-# **進階軟體工程 (Advanced Software Engineering)**
+# 進階軟體工程 (Advanced Software Engineering)
 ## 核心觀念自學測驗題庫 (Chapters 1–3)
 
 > 「不聞不若聞之，聞之不若見之，見之不若知之，知之不若行之。」 —— 《荀子·儒效》

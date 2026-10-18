@@ -1,6 +1,7 @@
 ---
 marp: true
 theme: ase-theme
+title: '軟體工程 (Software Engineering)'
 paginate: true
 header: '軟體工程 | 第六章：使用者體驗 (UX) 設計'
 footer: '薛念林 教授 · 逢甲大學資訊工程學系'
@@ -9,7 +10,7 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 <!-- _class: lead -->
 <!-- header: '' -->
 
-# **軟體工程**
+# 軟體工程 (Software Engineering)
 
 ### 第六課：使用者體驗 (UX) 設計與以人為本的 AI (UX Design & Human-Centered AI)
 
