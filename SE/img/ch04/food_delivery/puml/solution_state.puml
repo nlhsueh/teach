@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam roundCorner 8
+skinparam shadowing false
+
+skinparam state {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 1.5
+  FontColor #0b3c5d
+  FontSize 12
+  FontStyle bold
+  StartColor #0b3c5d
+  EndColor #0b3c5d
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #334155
+  FontSize 11
+  Thickness 1.5
+}
+
+[*] -right-> Placed : customerSubmitsOrder()
+
+Placed -right-> Accepted : restaurantAccepts()
+Accepted -right-> Preparing : kitchenStartsCooking()
+Preparing -down-> ReadyForPickup : packagingComplete()
+
+ReadyForPickup -left-> OutForDelivery : courierPicksUpMeal()
+
+' Courier Abandonment Exception (Solution 5)
+OutForDelivery -up-> ReadyForPickup : courier_abandoned\n[retries < 3] / reassignCourier()
+
+' Customer Unreachable Exception (Solution 5)
+OutForDelivery -down-> FailedDelivery : customer_unreachable\n[wait >= 10m] / markFailed()
+FailedDelivery -down-> ReturnedToStore : courier_returns_meal\n/ recordWasteDisposal()
+ReturnedToStore -down-> [*]
+
+' Normal Completion Flow
+OutForDelivery -left-> Delivered : confirmDropoff(otpVerified)
+Delivered -left-> [*]
+
+' Cancellation rules (Invariants)
+Placed -down-> Cancelled : cancelOrder [t <= 120s] / fullRefund()
+Accepted -down-> Cancelled : cancelOrder [t <= 120s] / partialRefund()
+Cancelled -down-> [*]
+
+note left of OutForDelivery
+  <b>Invariant Rule:</b>
+  Direct cancellation from
+  OutForDelivery is forbidden!
+end note
+@enduml

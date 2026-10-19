@@ -4563,7 +4563,7 @@ To summarize this slide, remember this key takeaway: Interaction diagrams, workf
 
 ---
 
-## 💡 Activity Solution 1: Use Case Model Extensions <a href="#34" class="activity-link">🔙 Activity Prompt (p. 34)</a>
+## 💡 Activity Solution 1: Use Case Model Extensions (Analysis & Delta) <a href="#34" class="activity-link">🔙 Activity Prompt (p. 34)</a>
 
 > "Extending use case models requires guarding system boundaries and distinguishing optional extensions from mandatory subroutines."
 
@@ -4619,8 +4619,32 @@ To summarize this slide, remember this key takeaway: Use case evolution preserve
 -->
 
 ---
+<!-- _class: title-image-slide -->
 
-## 💡 Activity Solution 2: Class Model Refinements <a href="#53" class="activity-link">🔙 Activity Prompt (p. 53)</a>
+## 💡 Activity Solution 1: Resulting Evolved Use Case Model <a href="#34" class="activity-link">🔙 Activity Prompt (p. 34)</a>
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/food_delivery/solution_usecase.svg" alt="Evolved Food Delivery Use Case Diagram" />
+</div>
+
+<div class="image-caption">
+  <strong>Architectural Realization:</strong> Scheduled Delivery (<code>&lt;&lt;extend&gt;&gt;</code>) | Standalone Live Order Chat with External Support Agent | Pooled Group Cart
+</div>
+
+<!--
+Here is the complete resulting Use Case diagram reflecting our evolved requirements:
+
+First, look at the bottom-left inside the boundary: Scheduled Future Order and Pool Group Cart are modeled with dashed arrows with open arrowheads pointing toward Place Food Order, stereotyped with <<extend>>. Each specifies its distinct extension point guard condition ([scheduled] and [group_mode]).
+
+Second, observe Live Order Chat: it is a first-class base use case directly initiated by Customer, but notice how it coordinates with Delivery Courier and the newly introduced Support Agent. Critically, the Support Agent actor resides strictly outside the platform boundary rectangle!
+
+Third, standard baseline use cases such as Browse Menus, Track Delivery Live, and Process Payment (via <<include>>) remain intact, demonstrating non-destructive model evolution.
+
+To summarize this slide, remember this key takeaway: The resulting use case diagram cleanly accommodates new optional and operational capabilities while preserving strict system boundary integrity.
+-->
+---
+
+## 💡 Activity Solution 2: Class Model Refinements (Analysis & Delta) <a href="#53" class="activity-link">🔙 Activity Prompt (p. 53)</a>
 
 > "Domain class evolution tests whether lifecycles are autonomous (aggregation) or bounded by whole-part destruction (composition)."
 
@@ -4674,8 +4698,32 @@ To summarize this slide, remember this key takeaway: Advanced domain modeling us
 -->
 
 ---
+<!-- _class: title-image-slide -->
 
-## 💡 Activity Solution 3: Sequence Interaction Edge Cases <a href="#71" class="activity-link">🔙 Activity Prompt (p. 71)</a>
+## 💡 Activity Solution 2: Resulting Evolved Class Model <a href="#53" class="activity-link">🔙 Activity Prompt (p. 53)</a>
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/food_delivery/solution_class.svg" alt="Evolved Food Delivery Class Diagram" />
+</div>
+
+<div class="image-caption">
+  <strong>Architectural Realization:</strong> Multi-Vendor SubOrders (<code>Order *-- SubOrder o-- Restaurant</code>) | Optional Courier Reviews (<code>0..1</code>) | Decoupled VIP Membership
+</div>
+
+<!--
+Here is the complete resulting Domain Class diagram reflecting our evolved multi-vendor and rating requirements:
+
+First, examine the multi-vendor architecture: The master Order entity now decomposes into multiple SubOrder instances via Composition (filled black diamond). If the master order is cancelled before authorization, all constituent SubOrders are destroyed. Each SubOrder then aggregates an independent Restaurant via Aggregation (hollow white diamond)—ensuring restaurants exist autonomously in the catalog.
+
+Second, look at OrderItem: It is now composed directly inside SubOrder, with each item referencing its corresponding catalog MenuItem.
+
+Third, inspect the courier and customer extensions: Delivery Courier receives CourierReview instances (0..*), while each SubOrder optionally evaluates a single CourierReview (0..1). Customer connects to an optional MembershipPlan, cleanly isolating subscription logic.
+
+To summarize this slide, remember this key takeaway: Introducing the SubOrder entity elegantly decouples multi-restaurant fulfillment while preserving strict lifecycle and multiplicity constraints.
+-->
+---
+
+## 💡 Activity Solution 3: Sequence Interaction Edge Cases (Analysis & Delta) <a href="#71" class="activity-link">🔙 Activity Prompt (p. 71)</a>
 
 > "Robust sequence diagrams isolate failure domains with explicit alternative fragments and strict architectural layering."
 
@@ -4731,8 +4779,33 @@ To summarize this slide, remember this key takeaway: Sequence diagrams shine whe
 -->
 
 ---
+<!-- _class: title-image-slide -->
 
-## 💡 Activity Solution 4: Activity Workflow Evolution <a href="#89" class="activity-link">🔙 Activity Prompt (p. 89)</a>
+## 💡 Activity Solution 3: Resulting Evolved Sequence Model <a href="#71" class="activity-link">🔙 Activity Prompt (p. 71)</a>
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/food_delivery/solution_sequence.svg" alt="Evolved Food Delivery Sequence Diagram" />
+</div>
+
+<div class="image-caption">
+  <strong>Architectural Realization:</strong> Two-Phase Split Payment | <code>alt</code> Fragment for Gateway Timeout (>5s) | Automated Compensating Wallet Rollback
+</div>
+
+<!--
+Here is the complete resulting Sequence diagram capturing distributed failure handling and split payments:
+
+First, trace the split payment sequence: When the customer submits the order, OrderCtrl first interacts with WalletService within an optional fragment to debit the available stored balance, returning the remaining unpaid sum.
+
+Second, examine the primary charge interaction with PaymentGateway:
+The critical addition is the alternative (alt) interaction fragment.
+In the top branch (light green), if the gateway responds within 5000ms, the payment succeeds, the OrderEntity transitions to PAID, and an asynchronous event is dispatched to the kitchen.
+In the lower branch (pink), if the gateway times out after 5 seconds, OrderCtrl immediately issues a voidPendingTransaction call, initiates a compensating rollback transaction to restore the customer's wallet balance, and returns an actionable failure message with retry options to the UI.
+
+To summarize this slide, remember this key takeaway: The evolved sequence diagram guarantees distributed transactional consistency by combining timeout detection with compensating rollback logic.
+-->
+---
+
+## 💡 Activity Solution 4: Activity Workflow Evolution (Analysis & Delta) <a href="#89" class="activity-link">🔙 Activity Prompt (p. 89)</a>
 
 > "Workflow evolution demands rigorous token balancing across swimlanes, explicit loop termination, and clean branching."
 
@@ -4789,8 +4862,32 @@ To summarize this slide, remember this key takeaway: Robust activity workflows u
 -->
 
 ---
+<!-- _class: title-image-slide -->
 
-## 💡 Activity Solution 5: State Machine Lifecycle Exceptions <a href="#109" class="activity-link">🔙 Activity Prompt (p. 109)</a>
+## 💡 Activity Solution 4: Resulting Evolved Activity Workflow <a href="#89" class="activity-link">🔙 Activity Prompt (p. 89)</a>
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/food_delivery/solution_activity.svg" alt="Evolved Food Delivery Activity Diagram" />
+</div>
+
+<div class="image-caption">
+  <strong>Architectural Realization:</strong> Self-Pickup Workflow Bypass Decision Diamond | Courier Re-dispatch <code>repeat...repeat while</code> Loop | Multi-Swimlane Accountability
+</div>
+
+<!--
+Here is the complete resulting Activity workflow model with multi-swimlane governance:
+
+First, follow the top branch decision diamond: 'Fulfillment Method?'. If the customer selects 'Customer Self-Pickup', the entire courier matching and delivery pipeline is completely bypassed! The kitchen prepares the meal, places it in the pickup zone, and the customer claims it with an order QR code.
+
+Second, trace the Home Delivery branch:
+A fork node initiates parallel execution between Kitchen preparation and Platform Dispatch courier assignment.
+Inside the dispatch lane, examine the repeat...repeat while loop: The platform pings the nearest candidate courier. If the courier declines or times out, the rejection is audited and the loop repeats, querying the next candidate without deadlocking the kitchen. Once accepted, the courier navigates to the restaurant, receives the packaged meal, and completes dropoff verified via OTP.
+
+To summarize this slide, remember this key takeaway: Swimlane loops and early branching decision diamonds keep complex fulfillment workflows deadlock-free and operationally transparent.
+-->
+---
+
+## 💡 Activity Solution 5: State Machine Lifecycle Exceptions (Analysis & Delta) <a href="#109" class="activity-link">🔙 Activity Prompt (p. 109)</a>
 
 > "State machine integrity rests on protecting lifecycle invariants: once physical resources are committed, rollback rules must be absolute."
 
@@ -4843,6 +4940,30 @@ Every transition carries the full UML trigger, guard condition in brackets, and 
 To summarize this slide, remember this key takeaway: State machines guard business truth by enforcing explicit lifecycle invariants and strictly disallowing invalid transitions.
 -->
 
+---
+<!-- _class: title-image-slide -->
+
+## 💡 Activity Solution 5: Resulting Evolved State Machine <a href="#109" class="activity-link">🔙 Activity Prompt (p. 109)</a>
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/food_delivery/solution_state.svg" alt="Evolved Food Delivery State Machine Diagram" />
+</div>
+
+<div class="image-caption">
+  <strong>Architectural Realization:</strong> Courier Abandonment Rollback to <code>ReadyForPickup</code> | Customer Unreachable Escalation to <code>FailedDelivery</code> | Invariant Guard
+</div>
+
+<!--
+Here is the complete resulting State Machine diagram safeguarding delivery invariants:
+
+First, examine the courier breakdown and abandonment handling: While an order is in OutForDelivery, if the courier vehicle breaks down or the driver drops the delivery, the transition loops back to ReadyForPickup guarded by [retries < 3]. This triggers reassignment of a new courier without forcing the restaurant to remake meals that are already cooked and packaged!
+
+Second, observe delivery failure: If the courier arrives at the destination but the customer is unreachable after a 10-minute wait, the order transitions to FailedDelivery. From there, the courier returns the meal to the store, food disposal is audited, and the lifecycle terminates cleanly at the end state.
+
+Third, notice the explicit architectural invariant note: Direct customer cancellation while OutForDelivery is strictly prohibited, protecting physical merchant and logistics investments.
+
+To summarize this slide, remember this key takeaway: State machine exception transitions protect physical and financial invariants during unexpected operational failures.
+-->
 ---
 
 ## References & Further Reading

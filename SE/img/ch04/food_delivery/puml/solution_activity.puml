@@ -1,0 +1,71 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam roundCorner 8
+skinparam shadowing false
+
+skinparam activity {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 1.5
+  FontColor #1d2731
+  DiamondBackgroundColor #e8eff5
+  DiamondBorderColor #0b3c5d
+  FontSize 12
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #333333
+  FontSize 11
+}
+
+|Customer|
+start
+:Configure cart items;
+:Confirm & submit payment;
+
+|Platform Dispatch|
+if (Fulfillment Method?) then (Home Delivery)
+  fork
+    |Restaurant Kitchen|
+    :Prepare food items;
+    :Seal packaged delivery bag;
+  fork again
+    |Platform Dispatch|
+    repeat
+      :Query nearest available courier;
+      :Send dispatch offer notification;
+      |Delivery Courier|
+      :Inspect delivery distance & fee;
+      backward:Log rejection audit;
+    repeat while (Courier accepts dispatch?) is (No / Timeout)
+    ->Yes;
+    :Confirm courier assignment;
+    :Drive to restaurant pickup point;
+  end fork
+
+  |Restaurant Kitchen|
+  :Hand off package to assigned Courier;
+
+  |Delivery Courier|
+  :Transport meal to customer address;
+
+  |Customer|
+  :Verify delivery with 4-digit OTP;
+  :Receive food package;
+
+else (Customer Self-Pickup)
+  |Restaurant Kitchen|
+  :Prepare food items;
+  :Place meal in takeaway pickup zone;
+  
+  |Customer|
+  :Walk to restaurant counter;
+  :Present pickup QR code;
+  :Claim packaged food;
+endif
+
+|Customer|
+stop
+@enduml

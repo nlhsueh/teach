@@ -1,0 +1,72 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam roundCorner 8
+skinparam shadowing false
+
+skinparam sequence {
+  ArrowColor #0b3c5d
+  LifeLineBorderColor #328cc1
+  LifeLineBackgroundColor #e8eff5
+  ParticipantBorderColor #0b3c5d
+  ParticipantBackgroundColor #ffffff
+  ParticipantFontColor #0b3c5d
+  ParticipantFontStyle bold
+  ActorBorderColor #0b3c5d
+  ActorBackgroundColor #d9b310
+  ActorFontColor #0b3c5d
+}
+
+autonumber
+
+actor Customer
+boundary CheckoutUI
+control OrderCtrl
+boundary WalletService #fef3c7
+boundary PaymentGateway
+entity OrderEntity
+
+Customer -> CheckoutUI : clickPayNow(orderSummary)
+activate CheckoutUI
+
+CheckoutUI -> OrderCtrl : submitOrder(cart, splitPaymentInfo)
+activate OrderCtrl
+
+' Step 1: Wallet Split Payment
+opt #fef3c7 Partial Wallet Balance Selected
+  OrderCtrl -> WalletService : deductBalance(walletAmount)
+  activate WalletService
+  WalletService --> OrderCtrl : 200 OK (walletTxnId, remainingDue)
+  deactivate WalletService
+end
+
+' Step 2: Gateway Charge with Timeout Alternative
+OrderCtrl -> PaymentGateway : charge(cardToken, remainingDue)
+activate PaymentGateway
+
+alt #LightGreen Response within 5000ms (Success)
+  PaymentGateway --> OrderCtrl : 200 OK (chargeTxnId)
+  OrderCtrl -> OrderEntity : create(status=PAID)
+  activate OrderEntity
+  deactivate OrderEntity
+  OrderCtrl --> CheckoutUI : orderSuccess(orderId)
+  CheckoutUI --> Customer : displayConfirmation(orderId)
+
+else #Pink Gateway Timeout (> 5s) / Connection Failure
+  PaymentGateway --> OrderCtrl : [Gateway Timeout Exception]
+  OrderCtrl -> PaymentGateway : voidPendingTransaction(cardToken)
+  
+  opt #fef3c7 Compensating Rollback
+    OrderCtrl -> WalletService : refundBalance(walletAmount)
+    activate WalletService
+    WalletService --> OrderCtrl : balanceRestored()
+    deactivate WalletService
+  end
+  
+  OrderCtrl --> CheckoutUI : paymentFailed("Gateway Timeout. Wallet refunded. Retry?")
+  deactivate OrderCtrl
+  CheckoutUI --> Customer : displayErrorWithRetryOption()
+  deactivate CheckoutUI
+end
+deactivate PaymentGateway
+@enduml

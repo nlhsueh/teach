@@ -4347,7 +4347,7 @@ PlantUML 的符號設計充滿了象形巧思：
 
 ---
 
-## 💡 實作解答 1：使用案例模型演進方案 <a href="#34" class="activity-link">🔙 題目回顧 (第 34 頁)</a>
+## 💡 實作解答 1：使用案例模型演進方案 (分析與差異) <a href="#34" class="activity-link">🔙 題目回顧 (第 34 頁)</a>
 
 > "演進使用案例模型的關鍵在於嚴守系統邊界，並精準區分可選擴充與強制包含子流程。"
 
@@ -4401,8 +4401,32 @@ UC_Chat --> 客服專員 : <<協同>>
 -->
 
 ---
+<!-- _class: title-image-slide -->
 
-## 💡 實作解答 2：領域類別模型演進方案 <a href="#53" class="activity-link">🔙 題目回顧 (第 53 頁)</a>
+## 💡 實作解答 1：演進成果使用案例圖 (Use Case Model Result) <a href="#34" class="activity-link">🔙 題目回顧 (第 34 頁)</a>
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/food_delivery/solution_usecase.svg" alt="外送平台演進使用案例圖" />
+</div>
+
+<div class="image-caption">
+  <strong>架構演進重點：</strong> 預約點餐擴充 (<code>&lt;&lt;extend&gt;&gt;</code>) ｜ 獨立真人客服對話（外部 Support Agent 角色） ｜ 多人團購購物車
+</div>
+
+<!--
+這是根據新需求演進後的完整使用案例圖：
+
+首先，看系統邊界左下角：預約點餐 (Schedule Future Order) 與多人團購 (Pool Group Cart) 皆以虛線箭頭指向基礎案例「送出餐點訂單 (Place Food Order)」，並標註 <<extend>> 與守門條件（[scheduled] 與 [group_mode]）。
+
+其次，觀察線上客服對話 (Live Order Chat)：它是一個由顧客直接啟動的獨立基礎案例，但同時與外送員以及新加入的客服專員 (Support Agent) 協同。最關鍵的架構規範是：客服專員作為外部參與者，嚴格繪製在系統邊界框之外！
+
+第三，既有的基礎案例（瀏覽菜單、即時追蹤、包含處理付款）皆維持穩定不變，體現出非破壞性的模型演進。
+
+總結這張投影片，請記住這個核心觀念：演進後的使用案例圖在兼顧新業務擴充的同時，嚴格守護了系統邊界與參與者職責劃分。
+-->
+---
+
+## 💡 實作解答 2：領域類別模型演進方案 (分析與差異) <a href="#53" class="activity-link">🔙 題目回顧 (第 53 頁)</a>
 
 > "領域類別演進的核心考驗在於物件生命週期是獨立共存（聚合）或是休戚與共（組合）。"
 
@@ -4456,8 +4480,32 @@ DeliveryTask "1" o-- "0..1" CourierReview
 -->
 
 ---
+<!-- _class: title-image-slide -->
 
-## 💡 實作解答 3：循序互動模型演進方案 <a href="#71" class="activity-link">🔙 題目回顧 (第 71 頁)</a>
+## 💡 實作解答 2：演進成果領域類別圖 (Class Model Result) <a href="#53" class="activity-link">🔙 題目回顧 (第 53 頁)</a>
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/food_delivery/solution_class.svg" alt="外送平台演進類別圖" />
+</div>
+
+<div class="image-caption">
+  <strong>架構演進重點：</strong> 跨店家子訂單解耦 (<code>Order *-- SubOrder o-- Restaurant</code>) ｜ 外送員評分小費 (<code>0..1</code>) ｜ VIP 會員訂閱策略
+</div>
+
+<!--
+這是因應多店家購物車與外送員評分新規則演進後的完整領域類別圖：
+
+首先，審視多店家架構設計：母訂單 (Order) 透過複合關係 (Composition，實心菱形) 分解為多個子訂單 (SubOrder)。若母訂單在授權前取消，所有子訂單隨之消滅。而每個 SubOrder 則透過聚合關係 (Aggregation，空心菱形) 指向獨立的餐廳 (Restaurant)，確保店家實體在系統中獨立生存。
+
+其次，OrderItem 改由 SubOrder 擁有，每個細項引用目錄中的 MenuItem。
+
+第三，外送員評分與會員擴充：外送員與子訂單關聯可選的 CourierReview (0..1)，顧客則可關聯可選的 MembershipPlan，乾淨實現 VIP 會員策略解耦。
+
+總結這張投影片，請記住這個核心觀念：引入 SubOrder 子訂單實體能優雅解耦跨店家履約流程，同時嚴格維護物件生命週期約束。
+-->
+---
+
+## 💡 實作解答 3：循序互動模型演進方案 (分析與差異) <a href="#71" class="activity-link">🔙 題目回顧 (第 71 頁)</a>
 
 > "強韌的循序圖透過互斥片段隔離故障領域，並嚴格維持分層通訊紀律。"
 
@@ -4513,8 +4561,32 @@ deactivate Gateway
 -->
 
 ---
+<!-- _class: title-image-slide -->
 
-## 💡 實作解答 4：活動流程模型演進方案 <a href="#89" class="activity-link">🔙 題目回顧 (第 89 頁)</a>
+## 💡 實作解答 3：演進成果循序圖 (Sequence Model Result) <a href="#71" class="activity-link">🔙 題目回顧 (第 71 頁)</a>
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/food_delivery/solution_sequence.svg" alt="外送平台演進循序圖" />
+</div>
+
+<div class="image-caption">
+  <strong>架構演進重點：</strong> 兩階段錢包混合扣款 ｜ <code>alt</code> 條件片段處理金流超時 (>5s) ｜ 自動化補償交易與錢包退款
+</div>
+
+<!--
+這是完整捕捉分散式錯誤處理與混合扣款的演進循序圖：
+
+首先，追蹤混合支付流程：顧客結帳時，OrderCtrl 先在可選區塊中向 WalletService 扣除既有餘額，並回傳剩餘待付金額。
+
+其次，觀察與金流閘道核心的替代交互片段 (alt fragment)：
+在上方的綠色成功分支中，金流於 5 秒內回應成功，訂單實體轉為已付款，並異步派發事件至廚房佇列。
+在下方的粉紅色超時分支中，一旦金流閘道超過 5 秒未回應，OrderCtrl 立即發出取消待處理交易指令，並自動對 WalletService 執行補償性退款復原餘額，最後向前端 UI 回傳明確的失敗與重試訊息。
+
+總結這張投影片，請記住這個核心觀念：演進後的循序圖透過結合超時偵測與自動補償交易，具體確保了分散式系統的交易一致性。
+-->
+---
+
+## 💡 實作解答 4：活動流程模型演進方案 (分析與差異) <a href="#89" class="activity-link">🔙 題目回顧 (第 89 頁)</a>
 
 > "活動工作流程演進要求泳道職責清晰、控制權杖流轉守恆，以及迴圈具備明確終止條件。"
 
@@ -4570,8 +4642,30 @@ stop
 -->
 
 ---
+<!-- _class: title-image-slide -->
 
-## 💡 實作解答 5：狀態機模型演進方案 <a href="#109" class="activity-link">🔙 題目回顧 (第 109 頁)</a>
+## 💡 實作解答 4：演進成果活動流程圖 (Activity Model Result) <a href="#89" class="activity-link">🔙 題目回顧 (第 89 頁)</a>
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/food_delivery/solution_activity.svg" alt="外送平台演進活動圖" />
+</div>
+
+<div class="image-caption">
+  <strong>架構演進重點：</strong> 到店自取旁路決策菱形 ｜ 外送員拒單重新派單迴圈 (<code>repeat...repeat while</code>) ｜ 跨泳道職責嚴密分離
+</div>
+
+<!--
+這是涵蓋多泳道治理與拒單重派機制的完整活動流程圖：
+
+首先，追蹤頂部的取餐方式決策菱形：若顧客選擇「外帶自取」，流程將完全繞過外送員媒合與外送泳道！廚房出餐後直接放置於取餐區，顧客憑 QR 碼領取即可。
+
+其次，在外送分支中，分岔節點 (fork) 讓廚房備餐與派單媒合平行運作。在派單引擎泳道中，repeat-while 迴圈對外送員發送派單；若外送員拒單或超時，系統記錄後立即重試下一位候選人，絕不會卡死廚房備餐。外送員接單抵達餐廳領餐後，執行外送並由顧客以 4 位數 OTP 驗證完成交收。
+
+總結這張投影片，請記住這個核心觀念：泳道內的重試迴圈與前期決策分流，能確保複雜履約流程無死結且職責分明。
+-->
+---
+
+## 💡 實作解答 5：狀態機模型演進方案 (分析與差異) <a href="#109" class="activity-link">🔙 題目回顧 (第 109 頁)</a>
 
 > "狀態機的核心價值在於守護業務不變量：一旦實體資源投入履約，狀態回退與異常處置必須絕對精準。"
 
@@ -4623,6 +4717,30 @@ ReturnedToStore --> [*]
 總結這張投影片，請記住這個核心觀念：狀態機透過嚴格的守衛條件與禁止非法轉移，為複雜業務邏輯築起最堅固的架構防護牆。
 -->
 
+---
+<!-- _class: title-image-slide -->
+
+## 💡 實作解答 5：演進成果狀態機圖 (State Machine Result) <a href="#109" class="activity-link">🔙 題目回顧 (第 109 頁)</a>
+
+<div class="image-wrapper">
+  <img src="../../img/ch04/food_delivery/solution_state.svg" alt="外送平台演進狀態機圖" />
+</div>
+
+<div class="image-caption">
+  <strong>架構演進重點：</strong> 外送員棄單回滾至待取餐 (<code>ReadyForPickup</code>) ｜ 失聯超時 (10m) 轉入配送失敗 ｜ 配送中嚴禁直接取消不變量
+</div>
+
+<!--
+這是嚴格守護實體履約不變量的完整狀態機圖：
+
+首先，檢視外送員車禍或棄單處理：當處於「外送中 (OutForDelivery)」時，若外送員棄單，在重試次數未超過 3 次的守門條件下，狀態反向回滾至「待取餐 (ReadyForPickup)」。這會觸發重新派單，而絕對不會強迫店家重新烹飪已經打包好的餐點！
+
+其次，配送失敗例外處理：外送員抵達但顧客失聯超過 10 分鐘，狀態轉入「配送失敗 (FailedDelivery)」，餐點送回店家並記錄報廢銷毀，平穩抵達終止狀態。
+
+第三，明確的不變量註記：嚴禁在 OutForDelivery 狀態下允許顧客無償任意取消訂單，保護商家與物流投資。
+
+總結這張投影片，請記住這個核心觀念：狀態機的例外轉移設計，能在非預期營運故障發生時保護實體與財務不變量。
+-->
 ---
 
 ## 經典文獻與延伸閱讀 (References)

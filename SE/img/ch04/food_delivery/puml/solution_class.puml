@@ -1,0 +1,107 @@
+@startuml
+skinparam backgroundColor #f5f5f5
+skinparam defaultFontName "Helvetica Neue", Arial, sans-serif
+skinparam roundCorner 8
+skinparam shadowing false
+
+skinparam class {
+  BackgroundColor #ffffff
+  BorderColor #0b3c5d
+  BorderThickness 1.5
+  FontColor #0b3c5d
+  HeaderBackgroundColor #e8eff5
+  AttributeFontColor #1d2731
+  AttributeFontSize 11
+  OperationFontColor #1d2731
+  OperationFontSize 11
+}
+
+skinparam arrow {
+  Color #0b3c5d
+  FontColor #333333
+  FontSize 11
+}
+
+class Customer {
+  - customerId: UUID
+  - name: String
+  - deliveryAddress: String
+  + placeOrder(cart: Cart): Order
+}
+
+class MembershipPlan #fef3c7 {
+  - planId: String
+  - tierName: String
+  - freeDelivery: Boolean
+  - discountRate: Double
+  + applyBenefit(subTotal: Double): Double
+}
+
+class Order {
+  - orderId: UUID
+  - totalAmount: Money
+  - orderTime: DateTime
+  + calculateTotal(): Money
+  + cancel(): void
+}
+
+class SubOrder #e0f2fe {
+  - subOrderId: UUID
+  - subTotal: Money
+  - status: SubOrderStatus
+  + calculateSubTotal(): Money
+  + assignCourier(c: Courier): void
+}
+
+class Restaurant {
+  - restaurantId: UUID
+  - name: String
+  - address: String
+  + acceptSubOrder(so: SubOrder): Boolean
+}
+
+class OrderItem {
+  - quantity: Integer
+  - unitPrice: Money
+  + getSubtotal(): Money
+}
+
+class MenuItem {
+  - itemId: UUID
+  - name: String
+  - price: Money
+}
+
+class Courier {
+  - courierId: UUID
+  - name: String
+  - vehicleType: String
+}
+
+class CourierReview #e0f2fe {
+  - reviewId: UUID
+  - ratingScore: Integer
+  - tipAmount: Money
+  - comment: String
+  + submitReview(): void
+}
+
+interface PaymentProcessor {
+  + charge(amount: Money): Boolean
+}
+
+' Relationships & Multiplicities
+Customer "1" *-- "0..1" MembershipPlan : subscribes >
+Customer "1" --> "*" Order : places >
+
+Order "1" *-- "1..*" SubOrder : splits into >
+SubOrder "1..*" o-- "1" Restaurant : fulfills <
+SubOrder "1" *-- "1..*" OrderItem : contains >
+OrderItem "*" --> "1" MenuItem : references >
+
+SubOrder "*" o-- "0..1" Courier : assigned to >
+SubOrder "1" o-- "0..1" CourierReview : receives >
+Courier "1" o-- "0..*" CourierReview : rated by >
+
+Order ..> PaymentProcessor : authorizes >
+@enduml
