@@ -59,8 +59,8 @@ if (A == 2 || X > 1) {
 ## 🧪 1.3 實作練習 (Lab)
 
 ### 📋 Lab 1: Triangle 三角形測試與覆蓋度分析
-1.  開啟待測檔案 [Triangle.java](../../src/main/java/u04_utest/Triangle.java)。
-2.  在 `src/test/java/u04_utest/` 目錄下建立 `TriangleTest.java` 測試類別。
+1.  開啟待測檔案 [Triangle.java](../../src/main/java/u05_utest/bva/Triangle.java)。
+2.  在 `src/test/java/u05_utest/bva/` 目錄下檢視或建立測試類別。
 3.  使用 IntelliJ 的 **Run with Coverage** 檢驗測試涵蓋度：
     *   說明 Class、Method、Line、Branch 涵蓋率的實質意義。
     *   實務工具（IntelliJ/JaCoCo）中顯示的 Branch 覆蓋率，和講義中學術定義的「條件涵蓋度」與「分支涵蓋度」有何差異？
@@ -68,8 +68,8 @@ if (A == 2 || X > 1) {
 5.  若發現某些分支無論如何都無法達到 100% 覆蓋，請分析其原因（是否為等價邏輯或死碼），並嘗試改善。
 
 ### 📋 Lab 2: Binary Search 二元搜尋
-1.  開啟待測檔案 [BinarySearch.java](../../src/main/java/u04_utest/BinarySearch.java)。
-2.  在 `src/test/java/u04_utest/` 目錄下建立 `BinarySearchTest.java`。
+1.  開啟待測檔案 [BinarySearch.java](../../src/main/java/u05_utest/ep/BinarySearch.java)。
+2.  在 `src/test/java/u05_utest/ep/` 目錄下檢視或建立測試類別。
 3.  設計測試案例，並使用 Coverage 工具檢驗。逐步添加測資直到 **Line 與 Branch 覆蓋率達到 100%**。
 
 ### 📋 Lab 3: Loan Calculator 貸款利率計算
@@ -81,7 +81,7 @@ if (A == 2 || X > 1) {
 > *   若已婚則再減少 0.5%。
 > *   利率最低為 2%。
 
-1.  開啟待測檔案 [LoanCalculator.java](../../src/main/java/u04_utest/LoanCalculator.java)。
+1.  開啟待測檔案 [LoanCalculator.java](../../src/main/java/u05_utest/pairwise/LoanCalculator.java)。
 2.  分別設計三個測試案例集：
     *   **集合 A**：滿足 Weak Coverage (SC100)。
     *   **集合 B**：滿足 All-Pair Coverage（全成對測試）。
@@ -147,7 +147,7 @@ void testInvalidGradeTriggersElseBranch() {
 ## 🧪 2.3 AI 輔助實作練習 (AI-Assisted Lab)
 
 ### 📋 Lab 4: AI 輔助覆蓋度補彈實戰
-1.  執行 [LoanCalculator.java](../../src/main/java/u04_utest/LoanCalculator.java) 的測試套件。
+1.  執行 [LoanCalculator.java](../../src/main/java/u05_utest/pairwise/LoanCalculator.java) 的測試套件。
 2.  若發現分支覆蓋率未達 100%（例如利率下限 2% 的防禦分支未執行，或特定複合條件短路分支未覆蓋）：
     *   **不要手動推導輸入**。請撰寫一個結構化的 **AI Prompt**，將程式碼與未覆蓋的分支資訊提供給 AI，請它產出能觸發該分支的測試案例。
     *   **審查與驗證**：將 AI 產出的測試案例加入測試套件，確認覆蓋率是否成功提升至 100%。人工檢查 AI 生成的斷言是否符合貸款規格書（而非盲目合理化錯誤）。

@@ -52,3 +52,5 @@ client_secret*.json
 token.pickle
 **/-hidden/
 **/scratch/
+.jqwik-database
+**/.jqwik-database

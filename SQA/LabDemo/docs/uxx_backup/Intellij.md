@@ -297,12 +297,12 @@ AI 會產生類似以下的區塊，您只需直接貼入 `pom.xml` 的 `<depend
 3. 開啟後，Java 插件會自動偵測 `pom.xml` 並下載依賴（首次下載可能需要數分鐘）。
 
 ### 4.4 執行與除錯 (Run & Debug)
-* **執行單元測試**：打開任何一個測試檔案（例如 `src/test/java/u04_utest/CalculatorTest.java`），在測試類別或測試方法上方，會出現小型的 **`Run` | `Debug`** 字樣，直接點擊即可單獨執行或設定斷點進行除錯。
+* **執行單元測試**：打開任何一個測試檔案（例如 `src/test/java/u05_utest/CalculatorTest.java`），在測試類別或測試方法上方，會出現小型的 **`Run` | `Debug`** 字樣，直接點擊即可單獨執行或設定斷點進行除錯。
 * **終端機執行**：按下 `Ctrl + ~`（或從選單開啟 Terminal），可直接在下方輸入 Maven 指令（如 `mvn clean test`）。
 
 ### 4.5 使用內建 AI Agent 協同開發 (免裝外掛，已內建)
 * **AI 側邊欄聊天 (Chat)**：按下 `Cmd + L` (macOS) / `Ctrl + L` (Windows) 開啟聊天視窗，可直接向 AI 發問或要求解釋程式碼。
-* **Agent 模式 (Agent Mode)**：在聊天視窗中將模式切換至 **`Agent`**。您可以直接命令它：「*請幫我寫出 Unit 04 的單元測試並執行到通過*」，AI Agent 會自動讀寫專案檔案、自己開終端機跑測試，直到幫您排除所有 bug。
+* **Agent 模式 (Agent Mode)**：在聊天視窗中將模式切換至 **`Agent`**。您可以直接命令它：「*請幫我寫出 Unit 05 的單元測試並執行到通過*」，AI Agent 會自動讀寫專案檔案、自己開終端機跑測試，直到幫您排除所有 bug。
 * **行內 AI 修改 (Inline Command)**：選取任一段程式碼，按下 `Cmd + I` (macOS) / `Ctrl + I` (Windows)，可以直接在該行輸入指令修改程式碼（如：「*請幫我加上 Preconditions 斷言防護*」）。
 
 ---

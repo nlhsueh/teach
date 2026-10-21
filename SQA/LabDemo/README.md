@@ -12,8 +12,8 @@
 | **Unit 02** | **錯與除錯、防禦與日誌** | [除錯指引](./docs/u02_debug/debug.md) · [AI 破壞實驗](./docs/u02_debug/ai_code_break.md) · [斷言防護](./docs/u02_robust/assertion.md) · [例外處理](./docs/u02_robust/exception.md) · [日誌記錄](./docs/u02_robust/logging.md) | `src/main/java/u02_debug/`<br>`src/main/java/u02_robust/`<br>`src/test/java/u02_robust/` |
 | **Unit 03** | **測試原則、規格設計與 Oracle 實驗** | [測試規格與 AI 協同](./docs/u03_principles/test_spec_ai_codesign.md) · [Oracle 變質沙盒](./docs/u03_principles/test_oracle_metamorphic.md) | `src/main/java/u03_principles/`<br>`src/test/java/u03_principles/` |
 | **Unit 04** | **程式碼檢視與靜態分析** | [PMD 靜態分析與規則](./docs/u04_inspection/pmd.md) | `src/main/resources/pmd/ruleset.xml`<br>`src/main/java/u04_inspection/` |
-| **Unit 05** | **單元測試與黑箱測試** | [JUnit 5 核心實務](./docs/u05_utest/junit.md) · [屬性測試](./docs/u05_utest/jqwik_property_based.md) · [度量分析](./docs/u05_utest/metrics.md) | `src/test/java/u05_utest/`<br>`src/main/java/u05_utest/` |
-| **Unit 06** | **白箱覆蓋率分析** | [白箱測試與 JaCoCo 分析](./docs/u06_wbtesting/whitebox_test.md) | `src/test/java/u05_utest/whitebox/`<br>`pom.xml (JaCoCo Plugin)` |
+| **Unit 05** | **單元測試與黑箱測試** | [JUnit 5 核心實務](./docs/u05_utest/junit.md) · [屬性測試](./docs/u05_utest/jqwik_property_based.md) · [解答庫](./docs/u05_utest/solutions/README.md) | `src/test/java/u05_junit/`<br>`src/test/java/u05_input/`<br>`src/test/java/u05_scenario/`<br>`src/test/java/u05_pbtest/` |
+| **Unit 06** | **白箱覆蓋率與度量分析** | [白箱測試與 JaCoCo 分析](./docs/u06_wbtesting/whitebox_test.md) · [度量分析](./docs/u06_wbtesting/metrics.md) | `src/test/java/u06_mutation/whitebox/`<br>`pom.xml (JaCoCo Plugin)` |
 | **Unit 07** | **變異測試 (Mutation)** | [變異測試與 PIT 工具](./docs/u07_mutation/mutation_test.md) | `src/main/java/u06_mutation/`<br>`src/test/java/u06_mutation/` |
 | **Unit 08** | **隔離與 Mock 整合測試** | [Mockito 實務](./docs/u08_integration/mokito.md) · [Spring 整合測試](./docs/u08_integration/Spring.md) · [Testcontainers](./docs/u08_integration/testcontainers_spring.md) | `src/main/java/u07_mockito/`<br>`src/test/java/u07_mockito/` |
 | **Unit 09** | **行為驅動開發 (BDD) 與 Web 測試** | [BDD 導論](./docs/u09_cucumber_bdd/intro_BDD.md) · [Cucumber 實務](./docs/u09_cucumber_bdd/bmi_cucumber.md) · [Selenium 測試](./docs/u09_cucumber_bdd/bmi_selenium.md) · [契約與 E2E 測試](./docs/u09_cucumber_bdd/pact_and_playwright.md) | `src/test/resources/features/`<br>`src/test/java/u08_cucumber/`<br>`src/test/java/u09_web/` |
@@ -72,8 +72,8 @@ mvn test
 # 執行 Unit 03 變質測試沙盒
 mvn test -Dtest="u03_principles.**"
 
-# 只執行 Unit 04 單元測試
-mvn test -Dtest="u04_utest.**"
+# 只執行 Unit 05 單元測試
+mvn test -Dtest="u05_utest.**"
 
 # 只執行 Unit 07 Mockito 隔離測試
 mvn test -Dtest="u07_mockito.**"

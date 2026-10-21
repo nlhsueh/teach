@@ -1,7 +1,7 @@
 # Unit 02: 穩健與防禦性程式設計 (Robust & Defensive Programming)
 
 本模組彙整軟體品質保證 (SQA) 關鍵的三大防禦手段：**斷言 (Assertion)**、**例外處理 (Exception Handling)** 與 **日誌記錄 (Logging)**。
-每個主題皆遵循「**先展示 (Demo) $\rightarrow$ 後動手練習 (Practice)**」的教學原則。
+每個主題皆遵循「**先展示 (Demo) ➔ 後動手練習 (Practice)**」的教學原則。
 
 ---
 

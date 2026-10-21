@@ -323,7 +323,7 @@ D) 超自然觀點 (Transcendental View)
 *   **1:10:100 定律 (The Rule of Tens)**：
     *   在**需求/設計階段** 發現並修復缺陷的代價為 **$1**。
     *   若拖延至**開發/測試階段** 修復代價暴增至 **$10**。
-    *   若洩漏至**產品發布後 (Production Phase)**，修復代價與災難損失將高達 **$100 ～ $1000+**！
+    *   若洩漏至**產品發布後 (Production Phase)**，修復代價與災難損失將高達 **100 ～1000+**！
 *   **測試左移 (Shift-Left Testing)**：將品質活動儘早移至生命週期前端，是降低軟體總擁有成本的最有效手段。
 
 
@@ -477,14 +477,14 @@ ISO 25010 為軟體品質建立了完整且結構化的「**概念維度**」（
 
 | 品質特性 | 核心子特性 | 核心量化指標 (Metrics / KPIs) | 工業標準 / 建議門檻 | 常見工程量測工具 |
 | :--- | :--- | :--- | :--- | :--- |
-| **1. 功能適合性**<br>(Functional Suitability) | 完備性<br>正確性<br>適切性 | • **需求覆蓋率**：$\frac{\text{已實作驗證需求數}}{\text{總規格需求數}} \times 100\%$<br>• **驗收測試通過率**：$\frac{\text{通過案例數}}{\text{總測試案例數}} \times 100\%$<br>• **功能缺陷密度 (Defect Density)**：每 KLOC 或每功能點的功能 Bug 數 | • 需求覆蓋率 $= 100\%$<br>• 驗收通過率 $\ge 99.5\%$<br>• 上線前 Critical Bug $= 0$ | Jira, TestRail, JUnit, Allure |
-| **2. 可靠性**<br>(Reliability) | 可用性<br>容錯度<br>成熟度<br>可回復性 | • **系統可用度 (Availability)**：$\frac{\text{總運作時間 - 故障停機時間}}{\text{總運作時間}} \times 100\%$<br>• **平均故障間隔時間 (MTBF)**：正常運行的平均時數<br>• **平均修復時間 (MTTR)**：從故障到恢復運行的平均時間<br>• **容錯回復率**：異常注入時成功降級/自癒的比例 | • 可用度達 99.9% (三條九) 或 99.99% (四條九)<br>• MTTR $< 15$ 分鐘<br>• 異常輸入當機率 $= 0$ | Chaos Mesh, Datadog, Sentry, Prometheus |
-| **3. 效能效率**<br>(Performance Efficiency) | 時間特性<br>資源利用<br>容量 | • **回應時間 (Latency)**：平均延遲、P95 / P99 延遲<br>• **吞吐量 (Throughput)**：每秒交易/請求數 (TPS / QPS)<br>• **資源利用率**：尖峰 CPU / 記憶體 / 網路 I/O 佔用率<br>• **最大並發量**：滿足延遲 SLA 下的最大同時連線數 | • API P99 回應時間 $< 200\text{ms}$<br>• 尖峰 CPU $< 70\%$、記憶體無洩漏<br>• 支援預期尖峰 $1.5 \times$ 並發量 | JMeter, k6, Locust, Grafana |
-| **4. 易用性**<br>(Usability) | 易學性<br>可操作性<br>錯誤保護<br>可存取性 | • **任務完成率 (Task Completion Rate)**：首次順利完成核心操作比率<br>• **任務完成耗時 (Time-on-Task)**：新手與熟練者平均花費時間<br>• **SUS 易用性評分 (System Usability Scale)**：0~100 分標準問卷<br>• **無障礙合規度**：符合 WCAG 2.1 AA 規範檢查 | • 核心任務完成率 $\ge 90\%$<br>• SUS 分數 $\ge 68 \sim 70$ 分<br>• 破壞性操作 $100\%$ 具備二次確認與復原機制 | Google Lighthouse, Hotjar, UserTesting, Axe |
-| **5. 安全性**<br>(Security) | 機密性<br>完整性<br>真實性<br>抗抵賴性 | • **已知弱點數 (CVE Count)**：重大/高危漏洞數量<br>• **CVSS 弱點嚴重程度分級**：相依套件與原始程式碼安全評分<br>• **敏感資料加密合規率**：靜態儲存與傳輸加密比例<br>• **安全弱點修復天數 (Security MTTR)**：發現到修補上線時間 | • Critical / High 漏洞數 $= 0$<br>• 100% 採用 TLS 1.3 / AES-256 加密<br>• 高危漏洞在 24 小時內修補完畢 | OWASP ZAP, Snyk, SonarQube, Trivy |
-| **6. 可維護性**<br>(Maintainability) | 模組化<br>可分析性<br>可修改性<br>可測試性 | • **圈複雜度 (Cyclomatic Complexity, CC)**：單一函式獨立路徑數<br>• **程式碼涵蓋率 (Code Coverage)**：單元測試行/分支涵蓋率<br>• **重複程式碼比例 (Duplication %)**：重複出現的行數百分比<br>• **可維護性指數 (Maintainability Index, MI)**：綜合架構評分 (0~100) | • 單一函式 $CC \le 10$<br>• 行涵蓋率 $\ge 80\%$、分支涵蓋率 $\ge 70\%$<br>• 重複程式碼率 $< 3\%$<br>• MI 指數 $\ge 65 \sim 85$ 分 | SonarQube, JaCoCo, PMD, ESLint |
-| **7. 可移植性**<br>(Portability) | 適應性<br>易安裝性<br>易置換性 | • **自動化部署成功率**：無人值守 CI/CD Pipeline 部署通過率<br>• **環境啟動時間 (Boot Time)**：容器映像檔建置與冷啟動秒數<br>• **平台移植工作量比率 (Porting Effort)**：移植新平台工時 / 原開發工時 | • 自動化部署成功率 $\ge 99\%$<br>• 容器冷啟動時間 $< 5$ 秒<br>• 移植工作量比率 $\le 10\%$ | Docker, Kubernetes, Testcontainers, Terraform |
-| **8. 相容性**<br>(Compatibility) | 共存性<br>互通性 | • **跨平台/瀏覽器相容測試通過率**：目標支援矩陣測試通過率<br>• **API 契約合規率 (Contract Compliance)**：OpenAPI 規格相符比例<br>• **資源共存衝突率**：因通訊埠/共用記憶體搶佔引發的異常次數 | • 目標矩陣（主流瀏覽器/OS）相容率 $= 100\%$<br>• API 契約測試通過率 $= 100\%$<br>• 資源衝突失敗數 $= 0$ | Playwright, Selenium Grid, Pact, Postman |
+| **1. 功能適合性**<br>(Functional Suitability) | 完備性<br>正確性<br>適切性 | • **需求覆蓋率**：frac{已實作驗證需求數}{總規格需求數} × 100%<br>• **驗收測試通過率**：frac{通過案例數}{總測試案例數} × 100%<br>• **功能缺陷密度 (Defect Density)**：每 KLOC 或每功能點的功能 Bug 數 | • 需求覆蓋率 = 100%<br>• 驗收通過率 ≥ 99.5%<br>• 上線前 Critical Bug = 0 | Jira, TestRail, JUnit, Allure |
+| **2. 可靠性**<br>(Reliability) | 可用性<br>容錯度<br>成熟度<br>可回復性 | • **系統可用度 (Availability)**：frac{總運作時間 - 故障停機時間}{總運作時間} × 100%<br>• **平均故障間隔時間 (MTBF)**：正常運行的平均時數<br>• **平均修復時間 (MTTR)**：從故障到恢復運行的平均時間<br>• **容錯回復率**：異常注入時成功降級/自癒的比例 | • 可用度達 99.9% (三條九) 或 99.99% (四條九)<br>• MTTR < 15 分鐘<br>• 異常輸入當機率 = 0 | Chaos Mesh, Datadog, Sentry, Prometheus |
+| **3. 效能效率**<br>(Performance Efficiency) | 時間特性<br>資源利用<br>容量 | • **回應時間 (Latency)**：平均延遲、P95 / P99 延遲<br>• **吞吐量 (Throughput)**：每秒交易/請求數 (TPS / QPS)<br>• **資源利用率**：尖峰 CPU / 記憶體 / 網路 I/O 佔用率<br>• **最大並發量**：滿足延遲 SLA 下的最大同時連線數 | • API P99 回應時間 < 200ms<br>• 尖峰 CPU < 70%、記憶體無洩漏<br>• 支援預期尖峰 1.5 × 並發量 | JMeter, k6, Locust, Grafana |
+| **4. 易用性**<br>(Usability) | 易學性<br>可操作性<br>錯誤保護<br>可存取性 | • **任務完成率 (Task Completion Rate)**：首次順利完成核心操作比率<br>• **任務完成耗時 (Time-on-Task)**：新手與熟練者平均花費時間<br>• **SUS 易用性評分 (System Usability Scale)**：0~100 分標準問卷<br>• **無障礙合規度**：符合 WCAG 2.1 AA 規範檢查 | • 核心任務完成率 ≥ 90%<br>• SUS 分數 ≥ 68 ~ 70 分<br>• 破壞性操作 100% 具備二次確認與復原機制 | Google Lighthouse, Hotjar, UserTesting, Axe |
+| **5. 安全性**<br>(Security) | 機密性<br>完整性<br>真實性<br>抗抵賴性 | • **已知弱點數 (CVE Count)**：重大/高危漏洞數量<br>• **CVSS 弱點嚴重程度分級**：相依套件與原始程式碼安全評分<br>• **敏感資料加密合規率**：靜態儲存與傳輸加密比例<br>• **安全弱點修復天數 (Security MTTR)**：發現到修補上線時間 | • Critical / High 漏洞數 = 0<br>• 100% 採用 TLS 1.3 / AES-256 加密<br>• 高危漏洞在 24 小時內修補完畢 | OWASP ZAP, Snyk, SonarQube, Trivy |
+| **6. 可維護性**<br>(Maintainability) | 模組化<br>可分析性<br>可修改性<br>可測試性 | • **圈複雜度 (Cyclomatic Complexity, CC)**：單一函式獨立路徑數<br>• **程式碼涵蓋率 (Code Coverage)**：單元測試行/分支涵蓋率<br>• **重複程式碼比例 (Duplication %)**：重複出現的行數百分比<br>• **可維護性指數 (Maintainability Index, MI)**：綜合架構評分 (0~100) | • 單一函式 CC ≤ 10<br>• 行涵蓋率 ≥ 80%、分支涵蓋率 ≥ 70%<br>• 重複程式碼率 < 3%<br>• MI 指數 ≥ 65 ~ 85 分 | SonarQube, JaCoCo, PMD, ESLint |
+| **7. 可移植性**<br>(Portability) | 適應性<br>易安裝性<br>易置換性 | • **自動化部署成功率**：無人值守 CI/CD Pipeline 部署通過率<br>• **環境啟動時間 (Boot Time)**：容器映像檔建置與冷啟動秒數<br>• **平台移植工作量比率 (Porting Effort)**：移植新平台工時 / 原開發工時 | • 自動化部署成功率 ≥ 99%<br>• 容器冷啟動時間 < 5 秒<br>• 移植工作量比率 ≤ 10% | Docker, Kubernetes, Testcontainers, Terraform |
+| **8. 相容性**<br>(Compatibility) | 共存性<br>互通性 | • **跨平台/瀏覽器相容測試通過率**：目標支援矩陣測試通過率<br>• **API 契約合規率 (Contract Compliance)**：OpenAPI 規格相符比例<br>• **資源共存衝突率**：因通訊埠/共用記憶體搶佔引發的異常次數 | • 目標矩陣（主流瀏覽器/OS）相容率 = 100%<br>• API 契約測試通過率 = 100%<br>• 資源衝突失敗數 = 0 | Playwright, Selenium Grid, Pact, Postman |
 
 #### 現代 SQA 量化落地的「三大工程支柱」
 

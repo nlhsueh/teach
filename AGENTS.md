@@ -80,6 +80,14 @@
    * 結構化表格一律使用標準 GitHub Flavored Markdown 表格語法（`| ... |`），由瀏覽器自動依據欄寬折行，嚴禁用 ASCII 框線拼製表格置於程式碼區塊中。
    * 程式碼區塊、AI 提示詞與文字架構圖單行長度上限嚴格控制在 60–65 字元以內。
    * 講義編譯一律調用 `scripts/generate_lecture_pdf.js`，確保 `white-space: pre-wrap`、目錄書籤與印刷防溢出樣式生效。
+5. **GitHub Pages 跨平台相容性與符號排版規範 (Anti-LaTeX Rules)**：
+   * **嚴禁使用 LaTeX 數學標記**：GitHub Pages 靜態網站不支援原生 LaTeX 解析，嚴禁在 Markdown（Slide、Lecture、LabDemo）中使用 `$\rightarrow$`、`$\ge$`、`$\le$`、`$\pm$` 等語法，避免學生在網頁端看到未解析的裸露代碼。
+   * **符號替代原則（全面採用 Emoji / Unicode / 純文字）**：
+     - **流程推進 / 箭頭**：使用 `➔` 或 Emoji `➡️`、`👉`（嚴禁使用 `$\rightarrow$`）。
+     - **不等式與邊界**：使用 `>= 65`、`<= 10` 或 `≥ 65`、`≤ 10`（嚴禁使用 `$\ge$`、`$\le$`）。
+     - **正負與運算**：使用 `± 1`、`×`、`*`、`5^n`（嚴禁使用 `$\pm$`、`$\times$`）。
+     - **邏輯符號**：使用 `AND`、`OR`、`NOT`、`&&`、`||`、`!` 或中文說明（嚴禁使用 `$\land$`、`$\lor$`、`$\neg$`、`$\implies$`）。
+     - **重點指示與狀態**：多善用直覺的 Emoji，如 🎯, 💡, ⚠️, ❌, ✅, ⏱️, 🏁。
 
 ---
 

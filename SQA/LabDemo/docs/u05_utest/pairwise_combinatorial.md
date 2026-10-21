@@ -67,10 +67,10 @@ $$N = v_1 \times v_2 \times \dots \times v_k$$
 透過 **AllPairs4J** 壓縮後：僅需 **9 組成對案例**！
 
 ### 3.3 JUnit 5 動態成對測試程式碼
-位於本專案：`src/test/java/u04_utest/LoanCalculatorPairwiseTest.java`
+位於本專案：`src/test/java/u05_utest/LoanCalculatorPairwiseTest.java`
 
 ```java
-package u04_utest;
+package u05_utest;
 
 import io.github.pavelicii.allpairs4j.AllPairs;
 import io.github.pavelicii.allpairs4j.Case;
