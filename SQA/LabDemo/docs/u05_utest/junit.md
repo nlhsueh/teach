@@ -50,8 +50,8 @@
 </dependency>
 ```
 
-### 3. Demo 演示：`CalculatorDemoTest.java`
-開啟專案路徑：`u05_junit/CalculatorDemoTest.java`
+### 3. Demo 1 演示：Calculator 計算機與 3A 原則 (`CalculatorDemoTest.java`)
+開啟專案路徑：[`u05_junit/CalculatorDemoTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_junit/CalculatorDemoTest.java)
 
 ```java
 package u05_junit;
@@ -66,20 +66,130 @@ public class CalculatorDemoTest {
     @Test
     @DisplayName("基礎加法運算驗證 (經典 3A 結構)")
     void testAdd_standard3A() {
-        // 1. Arrange: 準備計算機實體
+        // 1. Arrange: 準備受測實體
         Calculator calculator = new Calculator();
-        // 2. Act: 執行相加
+        // 2. Act: 執行受測方法
         int result = calculator.add(10, 25);
-        // 3. Assert: 驗證輸出是否為 35
+        // 3. Assert: 驗證輸出是否吻合預期
         assertEquals(35, result, "10 + 25 應該等於 35");
     }
 }
 ```
 
-### 4. 關鍵思維：內容值等價 vs. 記憶體同一性
-開啟 `u05_junit/AssertionsDemoTest.java` 檢驗經典斷言區分：
-- **`assertEquals(expected, actual)`**：內部呼叫 `equals()` 方法，驗證兩物件承載的**資料內容是否相等**。
-- **`assertSame(expected, actual)`**：直接比對記憶體指標位址（`==`），驗證是否指向 Heap 中的**同一個物件實體**。
+---
+
+### 4. Demo 2 演示：JUnit 5 常用斷言語法大全 (`AssertionsDemoTest.java`)
+開啟專案路徑：[`u05_junit/AssertionsDemoTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_junit/AssertionsDemoTest.java)
+
+單元測試的核心在於 **Test Oracle (驗收真理)** 的精準表達。JUnit 5 的 `org.junit.jupiter.api.Assertions` 提供了豐富且具表達力的斷言工具箱：
+
+#### (1) 內容值等價 vs. 記憶體同一性
+- **`assertEquals(expected, actual)`**：內部呼叫物件的 `equals()` 方法，驗證兩物件承載的**資料內容是否相等**。
+- **`assertSame(expected, actual)`**：直接以記憶體指標位址（`==`）比對，驗證是否指向 Heap 中的**同一個物件實體**；反向驗證則使用 `assertNotSame`。
+
+#### (2) 標準斷言與延遲求值訊息 (Lazy Messages)
+當測試失敗時印出的診斷訊息需要較高成本的字串拼接或計算時，直接傳入字串會在每次執行測試時無條件運算。傳入 `Supplier<String>` (Lambda) 則具備**延遲求值 (Lazy Evaluation)** 特性，**僅在斷言失敗時**才會真正運算字串，大幅降低效能開銷：
+
+```java
+// 傳統字串：每次測試執行時無條件進行字串拼接
+assertEquals(4, calculator.multiply(2, 2), "選填失敗訊息放在最後");
+
+// 延遲求值：僅在斷言失敗時才會呼叫 generateFailureMessage 拼接字串
+assertTrue('a' < 'b', () -> generateFailureMessage('a', 'b'));
+```
+
+#### (3) 群組斷言 (`assertAll`)：破解 Early Abort 盲區
+傳統測試中若連續撰寫多個 `assertEquals`，一旦第一個斷言失敗就會立即拋錯中斷（Early Abort），導致後續狀態無法被檢查。`assertAll` 接受可變長度的 Executable (Lambda)，保證區塊內所有斷言**全數執行完畢**，並一次性聚合回報所有失敗點：
+
+```java
+assertAll("person 屬性驗證",
+    () -> assertEquals("Jane", person.getFirstName()),
+    () -> assertEquals("Doe", person.getLastName())
+);
+```
+
+#### (4) 階層與相依性斷言 (Dependent Assertions)
+利用 `assertAll` 內的巢狀區塊設計，可在前置條件（例如 Null 檢查）未通過時立即終止該區塊的深入檢查，避免噴出非預期的 `NullPointerException` 干擾診斷：
+
+```java
+assertAll("properties",
+    () -> {
+        String firstName = person.getFirstName();
+        assertNotNull(firstName); // 前置檢查
+
+        // 僅在 firstName 非 null 時，才會繼續深入斷言
+        assertAll("first name 細部檢驗",
+            () -> assertTrue(firstName.startsWith("J")),
+            () -> assertTrue(firstName.endsWith("e"))
+        );
+    }
+);
+```
+
+#### (5) 防禦性例外斷言 (`assertThrows`)
+驗證受測方法是否在特定非法輸入下能正確且安全地拋出預期之例外類別，並可進一步驗證例外承載之錯誤訊息：
+
+```java
+ArithmeticException exception = assertThrows(
+    ArithmeticException.class,
+    () -> calculator.divide(1, 0)
+);
+assertEquals("Division by zero is not allowed.", exception.getMessage());
+```
+
+#### (6) 執行效能與逾時測試 (`assertTimeout`)
+單元測試亦可用於把關關鍵操作之時間預算（Time Budget），確保程式碼在指定時限內執行完畢：
+
+```java
+// 驗證運算必須在 500 毫秒內完成，並回傳運算結果
+String actualResult = assertTimeout(ofMillis(500), () -> {
+    Thread.sleep(50);
+    return "done";
+});
+assertEquals("done", actualResult);
+```
+
+---
+
+### 5. Demo 3 演示：測試生命週期與測試隔離 (`LifeCycleDemoTest.java`)
+開啟專案路徑：[`u05_junit/LifeCycleDemoTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_junit/LifeCycleDemoTest.java)
+
+#### (1) JUnit 5 五大生命週期註解職責
+為確保每個單元測試的獨立性與純淨性，JUnit 5 定義了標準化的生命週期鉤子 (Lifecycle Hooks)：
+
+| 註解 | 作用層級 | 執行時機與次數 | 典型應用情境 |
+| :--- | :--- | :--- | :--- |
+| **`@BeforeAll`** | 類別層級 (`static`) | 全套測試開始前，僅執行 **1 次** | 啟動測試資料庫、載入大型全域配置 |
+| **`@BeforeEach`**| 方法層級 | 每個 `@Test` 執行前，各執行 **1 次** | 初始化/重置受測物件 (`new Calculator()`) |
+| **`@Test`**      | 方法層級 | 測試案例主體 | 執行 3A 測試邏輯與斷言驗證 |
+| **`@AfterEach`** | 方法層級 | 每個 `@Test` 執行後，各執行 **1 次** | 清理暫存檔案、重置 Mock 狀態 |
+| **`@AfterAll`**  | 類別層級 (`static`) | 全套測試結束後，僅執行 **1 次** | 關閉連線池、釋放系統資源 |
+
+> ⚠️ **注意**：`@BeforeAll` 與 `@AfterAll` 在 JUnit 5 預設的生命週期模式下必須宣告為 `static` 方法。
+
+#### (2) 生命週期執行順序流程
+當一個測試類別包含兩個測試方法時，JUnit 5 的真實調用順序如下：
+
+```text
+[類別啟動] @BeforeAll (執行 1 次：全域環境初始化)
+   │
+   ├── [測試 1 前] @BeforeEach (重置受測物件，確保環境乾淨)
+   │     └── [執行] @Test 1: testMethodOne()
+   │   [測試 1 後] @AfterEach  (清理暫存資料)
+   │
+   ├── [測試 2 前] @BeforeEach (重新建立乾淨物件，不受測試 1 影響)
+   │     └── [執行] @Test 2: testMethodTwo()
+   │   [測試 2 後] @AfterEach  (清理暫存資料)
+   │
+[類別結束] @AfterAll (執行 1 次：全域資源釋放與連線關閉)
+```
+
+#### (3) 核心思維：測試隔離原則 (Test Isolation)
+單元測試必須嚴格遵守 **F.I.R.S.T.** 原則中的 **Independent (獨立性)**：
+- **嚴禁測試間相依**：測試案例不得依賴其他測試的執行順序或殘留狀態（例如先執行 Insert 測試，後面的 Update 測試才通過）。
+- **零副作用與狀態殘留 (No Side-Effects)**：透過 `@BeforeEach` 重新 `new` 受測物件，或在 `@AfterEach` 回復資料狀態，確保任何單一測試無論「單獨跑」、「批次跑」或「隨機順序跑」，結果均百分之百一致。
+
+---
 
 ### 🧪 5.2 課堂動手練習
 開啟並執行 [`CalculatorExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_junit/CalculatorExerciseTest.java)：

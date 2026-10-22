@@ -29,11 +29,10 @@ public class CalculatorExerciseTest {
 
         // [Act]
         // TODO: 請呼叫 calculator 的 subtract 方法計算 20 - 7，並將結果存入 actual 變數
-        int actual = calculator.subtract(20, 7);
 
         // [Assert]
         // TODO: 請撰寫 assertEquals 斷言 actual 是否等於 13
-        assertEquals(13, actual, "20 - 7 應該等於 13");
+        fail("尚未完成練習 1：請呼叫 subtract(20, 7) 並斷言結果等於 13");
     }
 
     // =========================================================================
@@ -48,10 +47,12 @@ public class CalculatorExerciseTest {
     void exercise2_testNegativeAndZeroAdd() {
         Calculator calculator = new Calculator();
 
-        // TODO: 請在 assertAll 中補全兩個測試斷言
+        // TODO: 請在 assertAll 中補全兩個測試斷言：
+        // 1. (-5) + (-8) 應等於 -13
+        // 2. 100 + 0 應等於 100
         assertAll("負數與零的邊界運算",
-                () -> assertEquals(-13, calculator.add(-5, -8), "(-5) + (-8) 應等於 -13"),
-                () -> assertEquals(100, calculator.add(100, 0), "100 + 0 應等於 100")
+                () -> fail("尚未完成練習 2：請補全 (-5) + (-8) 斷言"),
+                () -> fail("尚未完成練習 2：請補全 100 + 0 斷言")
         );
     }
 
@@ -69,9 +70,10 @@ public class CalculatorExerciseTest {
         Person p2 = new Person("John", "Doe");
         Person p3 = p1; // 指向同一記憶體實體
 
-        // TODO: 觀察並體會斷言差異
-        assertEquals(p1, p2, "p1 與 p2 的屬性內容相同，assertEquals 應該通過");
-        assertNotSame(p1, p2, "p1 與 p2 屬不同 new 物件，assertNotSame 應該通過");
-        assertSame(p1, p3, "p1 與 p3 指向相同記憶體位址，assertSame 應該通過");
+        // TODO: 請撰寫三個斷言：
+        // 1. 驗證 p1 與 p2 的屬性內容相同 (assertEquals)
+        // 2. 驗證 p1 與 p2 指向不同記憶體位址 (assertNotSame)
+        // 3. 驗證 p1 與 p3 指向相同記憶體位址 (assertSame)
+        fail("尚未完成練習 3：請依據上述提示補全三項斷言");
     }
 }
