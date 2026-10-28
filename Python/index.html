@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python 程式設計與實務應用 | 課程教材與簡報入口</title>
+  <meta name="description" content="薛念林教授 Python 程式設計與實務應用全攻略：由淺入深涵蓋運算思維、控制結構、資料分析、物件導向、工程模擬、機器學習、生成式 AI、Pygame 遊戲與 Flask 全端應用。提供線上 HTML 簡報、PDF 簡報與詳細講義。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --accent: #f59e0b;
+      --accent-dark: #d97706;
+      --accent-light: #fef3c7;
+      --surface: #ffffff;
+      --background: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 14px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+      background-color: var(--background);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 0 0 60px 0;
+    }
+
+    /* Top Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0284c7 0%, #f59e0b 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      background-color: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .nav-link.active {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #0369a1 50%, #0284c7 100%);
+      color: white;
+      padding: 60px 24px 50px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 3.8vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #e0f2fe;
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 14.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .hero-btn-primary {
+      background: #f59e0b;
+      color: #0f172a;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+    }
+
+    .hero-btn-primary:hover {
+      background: #fbbf24;
+      transform: translateY(-2px);
+    }
+
+    .hero-btn-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: -28px auto 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Section Header */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 40px 0 20px 0;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    /* Grid Layout */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 22px;
+      margin-bottom: 30px;
+    }
+
+    /* Module Card */
+    .module-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .module-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: #93c5fd;
+    }
+
+    .card-top {
+      margin-bottom: 18px;
+    }
+
+    .card-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .card-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-num {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .module-card h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .module-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .card-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 14px 0 18px 0;
+    }
+
+    .topic-pill {
+      font-size: 11.5px;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    /* Card Actions */
+    .card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+    }
+
+    .btn-secondary {
+      background-color: #f8fafc;
+      color: #334155;
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      border-color: #cbd5e1;
+    }
+
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    /* Guide Info Card */
+    .guide-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 26px 30px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      margin-top: 30px;
+    }
+
+    .guide-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 14px;
+    }
+
+    .guide-item {
+      display: flex;
+      gap: 12px;
+    }
+
+    .guide-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .guide-text h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+
+    .guide-text p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar">
+    <a href="../" class="brand">
+      <div class="brand-icon">🐍</div>
+      <span class="brand-title">Python 程式設計與實務應用</span>
+    </a>
+    <div class="nav-links">
+      <a href="../" class="nav-link">🏫 總門戶</a>
+      <a href="../SE/" class="nav-link">🏗️ SE</a>
+      <a href="../UX/" class="nav-link">🎨 UX</a>
+      <a href="../SQA/" class="nav-link">🛡️ SQA</a>
+      <a href="./" class="nav-link active">🐍 Python</a>
+      <a href="https://github.com/nlhsueh/teach/tree/main/Python" target="_blank" rel="noopener" class="nav-link">GitHub</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-badge">
+      <span>🚀</span>
+      <span>114 學年度 Python 現代化運算思維與全方位應用</span>
+    </div>
+    <h1>Python 程式設計與實務應用全攻略</h1>
+    <p>
+      涵蓋運算思維、核心語法、流程控制、資料分析、物件導向，並延伸工程數值模擬、機器學習、生成式 AI (LLM / Agent)、Pygame 遊戲與 Flask 全端 Web 應用。
+    </p>
+    <div class="hero-actions">
+      <a href="#core" class="hero-btn hero-btn-primary">
+        <span>📚 核心正課教材 (Ch01~Ch07)</span>
+      </a>
+      <a href="#advanced" class="hero-btn hero-btn-secondary">
+        <span>✨ 進階自修單元 (Ch08~Ch12)</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+
+    <!-- Section 1: Core Curriculum -->
+    <div class="section-header" id="core">
+      <h2 class="section-title">
+        <span>📚</span>
+        <span>正課核心單元 (Core Handbooks & Slides)</span>
+      </h2>
+      <span class="section-tag">基礎至進階實戰必備</span>
+    </div>
+
+    <div class="modules-grid">
+
+      <!-- Ch01 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">運算思維 & 開發環境</span>
+            <span class="card-num">CH 01</span>
+          </div>
+          <h2>導論與環境建置</h2>
+          <p>運算思維四大基石、直譯 vs 編譯機制、Google Colab 雲端、VS Code 本機開發、虛擬環境與新手避坑指南。</p>
+          <div class="card-topics">
+            <span class="topic-pill">運算思維</span>
+            <span class="topic-pill">VS Code / Colab</span>
+            <span class="topic-pill">虛擬環境 venv</span>
+            <span class="topic-pill">REPL 互動</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch01s_intro.html" target="_blank" class="btn btn-primary" title="開啟全螢幕線上簡報">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch01s_intro.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture/ch01_intro.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ch02 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">核心語法 & 型態</span>
+            <span class="card-num">CH 02</span>
+          </div>
+          <h2>程式基本元素</h2>
+          <p>變數宣告與動態型別、指派運算、識別字規則、數值運算、布林邏輯、f-string 格式化與 I/O 操作。</p>
+          <div class="card-topics">
+            <span class="topic-pill">動態型別</span>
+            <span class="topic-pill">f-string</span>
+            <span class="topic-pill">布林邏輯</span>
+            <span class="topic-pill">input / print</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch02s_program.html" target="_blank" class="btn btn-primary">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch02s_program.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture/ch02_program.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ch03 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">分支 & 迴圈結構</span>
+            <span class="card-num">CH 03</span>
+          </div>
+          <h2>流程控制結構</h2>
+          <p>條件分支 (if-elif-else)、巢狀判斷、迭代迴圈 (for-in/range)、條件迴圈 (while) 與中斷控制 (break/continue)。</p>
+          <div class="card-topics">
+            <span class="topic-pill">條件判斷</span>
+            <span class="topic-pill">for / range</span>
+            <span class="topic-pill">while 迴圈</span>
+            <span class="topic-pill">break / continue</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch03s_control.html" target="_blank" class="btn btn-primary">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch03s_control.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture/ch03_control.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ch04 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">集合容器 & CRUD</span>
+            <span class="card-num">CH 04</span>
+          </div>
+          <h2>資料容器與結構</h2>
+          <p>列表 (List)、元組 (Tuple)、集合 (Set)、字典 (Dict)、容器推導式 (Comprehension) 與巢狀 JSON 解析。</p>
+          <div class="card-topics">
+            <span class="topic-pill">List / Dict</span>
+            <span class="topic-pill">Tuple / Set</span>
+            <span class="topic-pill">推導式</span>
+            <span class="topic-pill">JSON 結構走訪</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch04s_collection.html" target="_blank" class="btn btn-primary">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch04s_collection.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture/ch04_collection.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ch05 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">模組化 & 例外處理</span>
+            <span class="card-num">CH 05</span>
+          </div>
+          <h2>函式設計與模組化</h2>
+          <p>自訂函式、位置與關鍵字參數、*args/**kwargs、Lambda 匿名函式、LEGB 變數作用域與 try-except 例外處理。</p>
+          <div class="card-topics">
+            <span class="topic-pill">函式設計</span>
+            <span class="topic-pill">*args / **kwargs</span>
+            <span class="topic-pill">Lambda 函式</span>
+            <span class="topic-pill">try-except 捕捉</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch05s_function.html" target="_blank" class="btn btn-primary">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch05s_function.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture/ch05_function.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ch06 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">資料科學 & 視覺化</span>
+            <span class="card-num">CH 06</span>
+          </div>
+          <h2>資料處理與分析 (Pandas)</h2>
+          <p>Pandas Series / DataFrame 核心操作、切片篩選 (loc/iloc)、缺失值處理、Groupby 分群、表格合併與 Matplotlib 繪圖。</p>
+          <div class="card-topics">
+            <span class="topic-pill">DataFrame</span>
+            <span class="topic-pill">loc / iloc 篩選</span>
+            <span class="topic-pill">Groupby 彙整</span>
+            <span class="topic-pill">Matplotlib 圖表</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch06s_pandas.html" target="_blank" class="btn btn-primary">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch06s_pandas.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture/ch06_pandas.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ch07 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">物件導向 & 封裝繼承</span>
+            <span class="card-num">CH 07</span>
+          </div>
+          <h2>物件導向設計 (OOP)</h2>
+          <p>類別與物件、屬性與方法 (__init__)、封裝存取控制、@property 裝飾器、繼承 (super)、多型與抽象基底類別 (abc)。</p>
+          <div class="card-topics">
+            <span class="topic-pill">類別與物件</span>
+            <span class="topic-pill">封裝 & @property</span>
+            <span class="topic-pill">繼承與多型</span>
+            <span class="topic-pill">魔術方法 dunder</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch07s_OOP.html" target="_blank" class="btn btn-primary">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch07s_OOP.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture/ch07_OOP.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Section 2: Advanced Topics -->
+    <div class="section-header" id="advanced">
+      <h2 class="section-title">
+        <span>🚀</span>
+        <span>進階補充教材 (Advanced Topics & Projects)</span>
+      </h2>
+      <span class="section-tag" style="background:#fef3c7; color:#b45309;">延伸自修與專案實作</span>
+    </div>
+
+    <div class="modules-grid">
+
+      <!-- Ch08 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">數值運算 & 資電模擬</span>
+            <span class="card-num">CH 08</span>
+          </div>
+          <h2>工程與資電應用實務</h2>
+          <p>線性聯立方程 (NumPy)、二階 RLC 電路 ODE (SciPy)、快速傅立葉變換 (FFT)、PID 溫控模擬、機械手臂運動學與 TCP 聊天室。</p>
+          <div class="card-topics">
+            <span class="topic-pill">NumPy / SciPy</span>
+            <span class="topic-pill">FFT 頻譜分析</span>
+            <span class="topic-pill">PID 控制器</span>
+            <span class="topic-pill">TCP Socket 網路</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch08s_engineering.html" target="_blank" class="btn btn-primary">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch08s_engineering.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture+/ch08_engineering.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ch09 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">演算法 & 模型訓練</span>
+            <span class="card-num">CH 09</span>
+          </div>
+          <h2>機器學習入門實踐</h2>
+          <p>機器學習流程、分類演算法 (KNN/決策樹/隨機森林)、多元線性迴歸與正則化 (Lasso/Ridge)、K-Means 分群與特徵工程。</p>
+          <div class="card-topics">
+            <span class="topic-pill">Scikit-Learn</span>
+            <span class="topic-pill">決策樹 & 隨機森林</span>
+            <span class="topic-pill">多元線性迴歸</span>
+            <span class="topic-pill">K-Means 分群</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch09s_machine_learning.html" target="_blank" class="btn btn-primary">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch09s_machine_learning.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture+/ch09_machine_learning.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ch10 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">LLM & 智慧代理人</span>
+            <span class="card-num">CH 10</span>
+          </div>
+          <h2>生成式 AI 與 LLM 應用</h2>
+          <p>大型語言模型原理、Gemini API 串接、打字機串流輸出、多輪對話 Session、結構化 JSON 輸出、Function Calling 與 RAG 知識庫。</p>
+          <div class="card-topics">
+            <span class="topic-pill">Gemini API</span>
+            <span class="topic-pill">串流輸出 & Session</span>
+            <span class="topic-pill">Function Calling</span>
+            <span class="topic-pill">RAG 檢索增強</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch10s_AI_LLM.html" target="_blank" class="btn btn-primary">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch10s_AI_LLM.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture+/ch10_AI_LLM.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ch11 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">2D 遊戲引擎 & 互動</span>
+            <span class="card-num">CH 11</span>
+          </div>
+          <h2>Pygame 視窗遊戲設計</h2>
+          <p>2D 遊戲引擎基礎、螢幕座標系、經典遊戲迴圈三階段、事件佇列、Sprite 精靈系統、AABB 碰撞檢測與太空射擊大戰專案。</p>
+          <div class="card-topics">
+            <span class="topic-pill">遊戲迴圈 Game Loop</span>
+            <span class="topic-pill">Sprite 精靈系統</span>
+            <span class="topic-pill">AABB 碰撞檢測</span>
+            <span class="topic-pill">太空射擊遊戲實作</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch11s_game.html" target="_blank" class="btn btn-primary">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch11s_game.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture+/ch11_game.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ch12 -->
+      <article class="module-card">
+        <div class="card-top">
+          <div class="card-badge-row">
+            <span class="card-tag">Web 框架 & REST API</span>
+            <span class="card-num">CH 12</span>
+          </div>
+          <h2>Python Web 開發 (Flask)</h2>
+          <p>Client-Server 架構、HTTP 狀態碼、Flask 微型框架、路由分派、Jinja2 模板渲染、表單處理與學籍管理 RESTful JSON API。</p>
+          <div class="card-topics">
+            <span class="topic-pill">Flask 輕量框架</span>
+            <span class="topic-pill">Jinja2 模板引擎</span>
+            <span class="topic-pill">RESTful API</span>
+            <span class="topic-pill">學生學籍系統專案</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="Slide/html/ch12s_web.html" target="_blank" class="btn btn-primary">
+            <span>🖥️ 線上簡報 (HTML)</span>
+          </a>
+          <div class="btn-row">
+            <a href="Slide/pdf/ch12s_web.pdf" target="_blank" class="btn btn-secondary">📄 簡報 PDF</a>
+            <a href="Lecture+/ch12_web.md" target="_blank" class="btn btn-secondary">📖 詳細講義</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Guide Info Card -->
+    <section class="guide-card">
+      <div class="guide-title">
+        <span>💡</span>
+        <span>教材使用與學習建議</span>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-item">
+          <span class="guide-icon">🖥️</span>
+          <div class="guide-text">
+            <h4>線上 HTML 互動簡報</h4>
+            <p>點擊「線上簡報」即可在瀏覽器直接全螢幕放映，支援鍵盤方向鍵切換、簡報者模式 (P) 與即時 CCQ 隨堂互動題目。</p>
+          </div>
+        </div>
+        <div class="guide-item">
+          <span class="guide-icon">📄</span>
+          <div class="guide-text">
+            <h4>PDF 簡報與詳細講義</h4>
+            <p>支援離線閱覽與列印。講義內含觀念圖解、生活化比喻、新手常見雷區與即時互動題 (CCQ) 深入解析。</p>
+          </div>
+        </div>
+        <div class="guide-item">
+          <span class="guide-icon">💻</span>
+          <div class="guide-text">
+            <h4>本機程式碼演練</h4>
+            <p>儲存庫中 <code>code/</code> 目錄提供各章節範例程式碼，同學可直接以 VS Code 開啟執行並進行改寫實驗。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 逢甲大學 資訊工程學系 薛念林教授 | Python 程式設計與實務應用教學教材庫</p>
+    <p style="margin-top: 6px; font-size: 0.8rem;">
+      <a href="../">返回課程總入口</a> · 
+      <a href="https://github.com/nlhsueh/teach/tree/main/Python" target="_blank" rel="noopener">GitHub 原始碼</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>

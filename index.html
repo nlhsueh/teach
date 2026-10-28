@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>薛念林教授 課程教學教材庫 | Course Materials Portal</title>
-  <meta name="description" content="薛念林教授開設之軟體工程 (SE)、使用者體驗設計 (UX Design) 與軟體品質保證 (SQA) 課程教材、互動簡報與實作範例總入口">
+  <meta name="description" content="薛念林教授開設之軟體工程 (SE)、使用者體驗設計 (UX Design)、軟體品質保證 (SQA) 與 Python 程式設計與實務應用 (Python) 課程教材、互動簡報與實作範例總入口">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -25,6 +25,9 @@
       --sqa-color: #0f766e;
       --sqa-dark: #115e59;
       --sqa-light: #f0fdfa;
+      --python-color: #0284c7;
+      --python-dark: #0369a1;
+      --python-light: #f0f9ff;
       --surface: #ffffff;
       --background: #f8fafc;
       --text-main: #0f172a;
@@ -217,6 +220,10 @@
       background: linear-gradient(135deg, #115e59 0%, #0f766e 100%);
     }
 
+    .banner-python {
+      background: linear-gradient(135deg, #0f172a 0%, #0369a1 50%, #0284c7 100%);
+    }
+
     .card-meta {
       display: flex;
       justify-content: space-between;
@@ -330,6 +337,15 @@
       background: var(--sqa-dark);
     }
 
+    .btn-python {
+      background: var(--python-color);
+      color: white;
+    }
+
+    .btn-python:hover {
+      background: var(--python-dark);
+    }
+
     .btn-secondary {
       padding: 12px 16px;
       border: 1px solid var(--border);
@@ -384,6 +400,7 @@
       <a href="./SE/" class="nav-link">🏗️ SE</a>
       <a href="./UX/" class="nav-link">🎨 UX</a>
       <a href="./SQA/" class="nav-link">🛡️ SQA</a>
+      <a href="./Python/" class="nav-link">🐍 Python</a>
       <a href="https://github.com/nlhsueh/teach" target="_blank" rel="noopener" class="nav-link">GitHub</a>
     </div>
   </nav>
@@ -488,6 +505,36 @@
               <span>→</span>
             </a>
             <a href="./SQA/index.html" class="btn-secondary" title="直接前往教材目錄">教材目錄</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Python Course Card -->
+      <article class="course-card">
+        <div class="card-banner banner-python">
+          <div class="card-meta">
+            <span class="card-tag">程式設計 & AI 實務應用</span>
+            <span class="card-icon">🐍</span>
+          </div>
+          <h2 class="card-title">Python 程式設計與應用</h2>
+          <div class="card-subtitle">Python Programming & Applications</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">
+            由淺入深涵蓋運算思維、核心語法、流程控制、Pandas 資料分析與物件導向設計。延伸工程數值模擬、機器學習、生成式 AI (LLM / Agent)、Pygame 遊戲與 Flask 全端 Web 應用。
+          </p>
+          <div class="topics-list">
+            <span class="topic-pill">核心語法 & OOP</span>
+            <span class="topic-pill">Pandas 資料分析</span>
+            <span class="topic-pill">生成式 AI / LLM</span>
+            <span class="topic-pill">Pygame & Flask Web</span>
+          </div>
+          <div class="card-actions">
+            <a href="./Python/" class="btn-main btn-python">
+              <span>進入 Python 課程門戶</span>
+              <span>→</span>
+            </a>
+            <a href="./Python/index.html" class="btn-secondary" title="直接前往教材目錄">教材目錄</a>
           </div>
         </div>
       </article>
