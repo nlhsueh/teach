@@ -38,6 +38,8 @@ img_backup/
 **/_backup_*/
 __pycache__/
 *.py[cod]
+.venv/
+venv/
 
 # Large media or private materials
 **/*.mp4
