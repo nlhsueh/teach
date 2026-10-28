@@ -875,7 +875,7 @@ section.lead header {
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.002.jpeg" alt="Web 請求-回應架構圖解" />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-marpit-fragments="3" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -1304,18 +1304,18 @@ section.lead header {
 ;color:#333;background-color:#f5f5f5;background-image:none;" data-marpit-pagination-total="39">
 <h1 id="121-%E7%B6%B2%E9%A0%81%E9%96%8B%E7%99%BC%E5%9F%BA%E7%A4%8E%E7%9F%A5%E8%AD%98">12.1 網頁開發基礎知識</h1>
 <ul>
-<li data-marpit-fragment="1"><strong>Client-Server 請求與回應機制</strong>：
+<li><strong>Client-Server 請求與回應機制</strong>：
 <ul>
 <li><strong>Client (用戶端/瀏覽器)</strong>：發起請求 (Request)，負責渲染 HTML 視覺介面。</li>
 <li><strong>Server (伺服器端)</strong>：監聽網路連線，執行 Python 業務邏輯並返回資料。</li>
 </ul>
 </li>
-<li data-marpit-fragment="2"><strong>HTTP (HyperText Transfer Protocol)</strong>：
+<li><strong>HTTP (HyperText Transfer Protocol)</strong>：
 <ul>
 <li>全球網際網路通用之應用層通訊標準協定。</li>
 </ul>
 </li>
-<li data-marpit-fragment="3"><strong>狀態碼 (Status Codes)</strong>：
+<li><strong>狀態碼 (Status Codes)</strong>：
 <ul>
 <li>伺服器回傳三位數字，簡潔標明處理結果。</li>
 </ul>
@@ -1752,7 +1752,7 @@ section.lead header {
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.003.jpeg" alt="HTTP 狀態碼核心分類與意義" />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-marpit-fragments="2" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -2181,13 +2181,13 @@ section.lead header {
 ;color:#333;background-color:#f5f5f5;background-image:none;" data-marpit-pagination-total="39">
 <h1 id="http-%E8%AB%8B%E6%B1%82%E6%96%B9%E6%B3%95get-vs-post">HTTP 請求方法：GET vs POST</h1>
 <ul>
-<li data-marpit-fragment="1"><strong>GET 請求</strong>：
+<li><strong>GET 請求</strong>：
 <ul>
 <li>參數掛載於網址列 (Query String, <code>?key=value</code>)。</li>
 <li>主要用於<strong>讀取與查詢</strong>資料，具備可快取、可加為書籤之特性。</li>
 </ul>
 </li>
-<li data-marpit-fragment="2"><strong>POST 請求</strong>：
+<li><strong>POST 請求</strong>：
 <ul>
 <li>參數封裝於 HTTP 請求主體 (Request Body) 中。</li>
 <li>主要用於<strong>新增、更新、提交敏感資料</strong>（如帳號密碼），不洩露於網址列。</li>
@@ -3055,7 +3055,7 @@ section.lead header {
   <img src="../img/ch12/gemini_nb/02_http_status.jpeg" alt="HTTP 狀態碼與 GET/POST 請求比較" />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-marpit-fragments="4" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -3487,16 +3487,16 @@ section.lead header {
   <div class="ccq-text">
 <p><strong>當你在瀏覽器中登入網頁，輸入個人密碼並點擊提交時，前端應該採用哪一種 HTTP 方法將資料傳送到後台 Python 伺服器？</strong></p>
 <ul>
-<li data-marpit-fragment="1">
+<li>
 <p><strong>A.</strong> GET 請求，方便將密碼直接保存在網址書籤中</p>
 </li>
-<li data-marpit-fragment="2">
+<li>
 <p><strong>B.</strong> POST 請求，資料封裝在 Request Body 中傳輸避免外洩</p>
 </li>
-<li data-marpit-fragment="3">
+<li>
 <p><strong>C.</strong> HEAD 請求，不回傳網頁本體以加速傳輸</p>
 </li>
-<li data-marpit-fragment="4">
+<li>
 <p><strong>D.</strong> DELETE 請求，在登入後將密碼銷毀</p>
 </div>
 <div class="ccq-logo">
@@ -3506,7 +3506,7 @@ section.lead header {
 </ul>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-marpit-fragments="1" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -3938,7 +3938,7 @@ section.lead header {
   <div class="ccq-text">
 <h3 id="%E6%AD%A3%E7%A2%BA%E7%AD%94%E6%A1%88b-post-%E8%AB%8B%E6%B1%82"><strong>正確答案：B. POST 請求</strong></h3>
 <ul>
-<li data-marpit-fragment="1">
+<li>
 <p><strong>解析</strong>：</p>
 <ul>
 <li>GET 請求的參數會完全曝露在網址列中（例如 <code>login?pwd=123</code>），會被瀏覽器歷史紀錄與代理伺服器日誌保存，極易外洩。</li>
@@ -3952,7 +3952,7 @@ section.lead header {
 </ul>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-marpit-fragments="4" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -4384,16 +4384,16 @@ section.lead header {
   <div class="ccq-text">
 <p><strong>當你的 Python Flask 伺服器在執行時，因為讀取了不存在的 List Index 導致拋出 Exception 當機，用戶端瀏覽器最可能收到哪一個 HTTP 狀態碼？</strong></p>
 <ul>
-<li data-marpit-fragment="1">
+<li>
 <p><strong>A.</strong> 200 OK</p>
 </li>
-<li data-marpit-fragment="2">
+<li>
 <p><strong>B.</strong> 302 Redirect</p>
 </li>
-<li data-marpit-fragment="3">
+<li>
 <p><strong>C.</strong> 404 Not Found</p>
 </li>
-<li data-marpit-fragment="4">
+<li>
 <p><strong>D.</strong> 500 Internal Server Error</p>
 </div>
 <div class="ccq-logo">
@@ -4403,7 +4403,7 @@ section.lead header {
 </ul>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-marpit-fragments="1" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -4835,7 +4835,7 @@ section.lead header {
   <div class="ccq-text">
 <h3 id="%E6%AD%A3%E7%A2%BA%E7%AD%94%E6%A1%88d-500-internal-server-error"><strong>正確答案：D. 500 Internal Server Error</strong></h3>
 <ul>
-<li data-marpit-fragment="1">
+<li>
 <p><strong>解析</strong>：</p>
 <ul>
 <li><strong>500 狀態碼</strong>代表「伺服器內部錯誤」，通常代表後端 Python 程式碼拋出未捕獲的例外或異常崩潰。</li>
@@ -4849,7 +4849,7 @@ section.lead header {
 </ul>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-marpit-fragments="3" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -5278,17 +5278,17 @@ section.lead header {
 ;color:#333;background-color:#f5f5f5;background-image:none;" data-marpit-pagination-total="39">
 <h1 id="122-flask-%E5%BE%AE%E5%9E%8B-web-%E6%A1%86%E6%9E%B6%E5%85%A5%E9%96%80">12.2 Flask 微型 Web 框架入門</h1>
 <ul>
-<li data-marpit-fragment="1"><strong>輕量級與高自由度 (Microframework)</strong>：
+<li><strong>輕量級與高自由度 (Microframework)</strong>：
 <ul>
 <li>核心精簡，無多餘套件束縛，專注於路由與請求處理。</li>
 </ul>
 </li>
-<li data-marpit-fragment="2"><strong>WSGI 相容架構</strong>：
+<li><strong>WSGI 相容架構</strong>：
 <ul>
 <li>遵循 Python 標準 Web 伺服器網關介面規範。</li>
 </ul>
 </li>
-<li data-marpit-fragment="3"><strong>路由裝飾器 (<code>@app.route</code>)</strong>：
+<li><strong>路由裝飾器 (<code>@app.route</code>)</strong>：
 <ul>
 <li>將 URL 路徑精準綁定至 Python 處理函數 (View Function)。</li>
 </ul>
@@ -8338,7 +8338,7 @@ section.lead header {
   <img src="../img/ch12/gemini_nb/04_dynamic_routing.jpeg" alt="Flask 動態路由參數擷取執行畫面" />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-marpit-fragments="4" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -8770,16 +8770,16 @@ section.lead header {
   <div class="ccq-text">
 <p><strong>在 Flask 中，裝飾器指令 <code>@app.route('/user/&lt;username&gt;')</code> 的主要作用為何？</strong></p>
 <ul>
-<li data-marpit-fragment="1">
+<li>
 <p><strong>A.</strong> 限定只有使用者名稱為 &quot;username&quot; 的帳號才能連線</p>
 </li>
-<li data-marpit-fragment="2">
+<li>
 <p><strong>B.</strong> 定義路由路徑，並將 <code>/user/</code> 後方的文字動態擷取，作為引數傳給下方視圖函數</p>
 </li>
-<li data-marpit-fragment="3">
+<li>
 <p><strong>C.</strong> 強制重導向到系統登入畫面</p>
 </li>
-<li data-marpit-fragment="4">
+<li>
 <p><strong>D.</strong> 自動下載該用戶的所有照片到伺服器端</p>
 </div>
 <div class="ccq-logo">
@@ -8789,7 +8789,7 @@ section.lead header {
 </ul>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-fragments="1" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -9221,7 +9221,7 @@ section.lead header {
   <div class="ccq-text">
 <h3 id="%E6%AD%A3%E7%A2%BA%E7%AD%94%E6%A1%88b-%E5%AE%9A%E7%BE%A9%E8%B7%AF%E7%94%B1%E8%B7%AF%E5%BE%91%E4%B8%A6%E5%8B%95%E6%85%8B%E6%93%B7%E5%8F%96%E5%BC%95%E6%95%B8"><strong>正確答案：B. 定義路由路徑並動態擷取引數</strong></h3>
 <ul>
-<li data-marpit-fragment="1">
+<li>
 <p><strong>解析</strong>：</p>
 <ul>
 <li>Flask 動態路由使用角括號 <code>&lt;variable_name&gt;</code> 宣告變數。</li>
@@ -9235,7 +9235,7 @@ section.lead header {
 </ul>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-marpit-fragments="3" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -9664,18 +9664,18 @@ section.lead header {
 ;color:#333;background-color:#f5f5f5;background-image:none;" data-marpit-pagination-total="39">
 <h1 id="123-%E5%8B%95%E6%85%8B%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93%E8%88%87%E8%A1%A8%E5%96%AE%E8%99%95%E7%90%86">12.3 動態模板渲染與表單處理</h1>
 <ul>
-<li data-marpit-fragment="1"><strong>邏輯與介面分離 (Separation of Concerns)</strong>：
+<li><strong>邏輯與介面分離 (Separation of Concerns)</strong>：
 <ul>
 <li>避免在 Python 字串中硬編碼 HTML。</li>
 </ul>
 </li>
-<li data-marpit-fragment="2"><strong>Jinja2 模板語法</strong>：
+<li><strong>Jinja2 模板語法</strong>：
 <ul>
 <li>變數插值：<code>{{ variable }}</code></li>
 <li>控制流程：<code>{% for x in list %}...{% endfor %}</code>、<code>{% if condition %}...{% endif %}</code></li>
 </ul>
 </li>
-<li data-marpit-fragment="3"><strong>Request 物件資料擷取</strong>：
+<li><strong>Request 物件資料擷取</strong>：
 <ul>
 <li>GET Query 參數：<code>request.args.get('name')</code></li>
 <li>POST Form 參數：<code>request.form.get('name')</code></li>
@@ -11424,7 +11424,7 @@ section.lead header {
   <img src="../img/ch12/gemini_nb/05_form_submit.jpeg" alt="HTML 表單填寫與 POST 提交至 Flask 流程" />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-marpit-fragments="4" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -11856,16 +11856,16 @@ section.lead header {
   <div class="ccq-text">
 <p><strong>在 HTML 表單中，<code>&lt;form action=&quot;/query&quot; method=&quot;GET&quot;&gt;</code> 的運作行為為何？</strong></p>
 <ul>
-<li data-marpit-fragment="1">
+<li>
 <p><strong>A.</strong> 表單提交時，以 POST 隱密將資料送至伺服器</p>
 </li>
-<li data-marpit-fragment="2">
+<li>
 <p><strong>B.</strong> 表單欄位會編碼成 <code>?key=value</code> 附加在網址列尾端，向 <code>/query</code> 發出 GET 請求</p>
 </li>
-<li data-marpit-fragment="3">
+<li>
 <p><strong>C.</strong> 會強行關閉後端 Python 伺服器</p>
 </li>
-<li data-marpit-fragment="4">
+<li>
 <p><strong>D.</strong> HTML 規格不支援 GET 表單提交</p>
 </div>
 <div class="ccq-logo">
@@ -11875,7 +11875,7 @@ section.lead header {
 </ul>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-marpit-fragments="1" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -12307,7 +12307,7 @@ section.lead header {
   <div class="ccq-text">
 <h3 id="%E6%AD%A3%E7%A2%BA%E7%AD%94%E6%A1%88b-%E8%A1%A8%E5%96%AE%E6%AC%84%E4%BD%8D%E6%9C%83%E9%99%84%E5%8A%A0%E5%9C%A8%E7%B6%B2%E5%9D%80%E5%88%97%E5%B0%BE%E7%AB%AF%E4%B8%A6%E7%99%BC%E9%80%81-get-%E8%AB%8B%E6%B1%82"><strong>正確答案：B. 表單欄位會附加在網址列尾端並發送 GET 請求</strong></h3>
 <ul>
-<li data-marpit-fragment="1">
+<li>
 <p><strong>解析</strong>：</p>
 <ul>
 <li><code>action</code> 定義表單資料的目標路由路徑。</li>
@@ -12322,7 +12322,7 @@ section.lead header {
 </ul>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-marpit-fragments="1" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -12751,7 +12751,7 @@ section.lead header {
 ;color:#333;background-color:#f5f5f5;background-image:none;" data-marpit-pagination-total="39">
 <h1 id="124-%E7%B6%9C%E5%90%88%E5%AF%A6%E4%BD%9C%E5%B0%88%E6%A1%88%E6%88%90%E7%B8%BE%E7%99%BB%E8%A8%98%E8%88%87%E6%9F%A5%E8%A9%A2%E7%B3%BB%E7%B5%B1">12.4 綜合實作專案：成績登記與查詢系統</h1>
 <ul>
-<li data-marpit-fragment="1"><strong>全端三核心功能</strong>：
+<li><strong>全端三核心功能</strong>：
 <ul>
 <li><strong>1. 成績清單總覽</strong>：使用 Jinja2 <code>{% for %}</code> 動態渲染學生資料與自動評等。</li>
 <li><strong>2. 關鍵字搜尋</strong>：利用 GET 參數即時篩選學生姓名。</li>
@@ -14910,7 +14910,7 @@ section.lead header {
   <img src="../img/ch12/gemini_nb/07_grade_system_search.jpeg" alt="學籍搜尋結果頁面" />
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-marpit-fragments="2" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-background-color="#f5f5f5" data-color="#333" data-theme="gaia" data-style="section {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   padding: 40px;
   font-size: 24px;
@@ -15339,13 +15339,13 @@ section.lead header {
 ;color:#333;background-color:#f5f5f5;background-image:none;" data-marpit-pagination-total="39">
 <h1 id="125-%E8%AA%B2%E5%BE%8C%E9%80%B2%E9%9A%8E%E6%8C%91%E6%88%B0%E5%B0%88%E9%A1%8C-restful-api">12.5 課後進階挑戰專題 (RESTful API)</h1>
 <ul>
-<li data-marpit-fragment="1"><strong>RESTful JSON API 設計理念</strong>：
+<li><strong>RESTful JSON API 設計理念</strong>：
 <ul>
 <li>後端不再直接回傳 HTML 網頁，而是回傳輕量、結構化的 <strong>JSON 資料</strong>。</li>
 <li>供前端 React/Vue 網頁或手機 App 跨平台非同步呼叫。</li>
 </ul>
 </li>
-<li data-marpit-fragment="2"><strong>Flask <code>jsonify</code> 函式</strong>：
+<li><strong>Flask <code>jsonify</code> 函式</strong>：
 <ul>
 <li>將 Python List/Dict 物件序列化為標準 JSON 字串，並自動設置 HTTP 表頭 <code>Content-Type: application/json</code>。</li>
 </ul>

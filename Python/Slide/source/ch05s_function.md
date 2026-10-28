@@ -234,17 +234,17 @@ Feng Chia University
 
 ## 本章學習重點
 
-* **5.1 模組化設計與函式基本定義 (Modular Design)**
+- **5.1 模組化設計與函式基本定義 (Modular Design)**
   - 函式定義、引數傳遞、回傳值、Keyword 參數、預設值
   - 限制參數傳遞機制 (`/` 與 `*`)、現代型態提示 (Type Hints)
   - 可變動引數個數 (`*args`、`**kwargs`)
-* **5.2 進階參數的傳遞 (Parameter Passing)**
+- **5.2 進階參數的傳遞 (Parameter Passing)**
   - 不可變物件 vs 可變物件傳遞、複製後傳 (Copy and pass)
-* **5.3 Lambda 匿名函式 (Lambda)**
+- **5.3 Lambda 匿名函式 (Lambda)**
   - Lambda 宣告、客製化排序應用
-* **5.4 例外處理 (Exception)**
+- **5.4 例外處理 (Exception)**
   - try-except-else-finally 結構、主動 raise 例外
-* **5.5 套件與應用 (Packages & Application)**
+- **5.5 套件與應用 (Packages & Application)**
   - 套件結構與 import，河內塔、井字棋、YouTube 下載範例
 
 ---
@@ -263,9 +263,9 @@ Feng Chia University
 
 ## 5.1.1 什麼是函式？
 
-* 函式是**組織好的、可重複使用的、用來實現單一或相關聯功能的代碼段**。
-* 函式能提高應用的模組性，和代碼的重複利用率。
-* Python 提供了許多內建函式（如 `print()`、`len()`），但也可以自己建立函式（自訂函式）。
+- 函式是**組織好的、可重複使用的、用來實現單一或相關聯功能的代碼段**。
+- 函式能提高應用的模組性，和代碼的重複利用率。
+- Python 提供了許多內建函式（如 `print()`、`len()`），但也可以自己建立函式（自訂函式）。
 
 ---
 <!-- _class: full-image-slide -->
@@ -278,7 +278,7 @@ Feng Chia University
 
 ## 5.1.2 函式的定義與呼叫
 
-* 透過 `def` 關鍵字來定義函式，定義後即可重複呼叫，增進程式重用性與可讀性：
+- 透過 `def` 關鍵字來定義函式，定義後即可重複呼叫，增進程式重用性與可讀性：
 
 ```python
 # 函式的定義 (包含一個參數 p)
@@ -301,7 +301,7 @@ hello2("Python")  # 輸出: Hello Python
 
 ## 5.1.3 帶參數的函式與回傳值
 
-* 使用 `return` 可以將函式的運算結果回傳給呼叫端。可撰寫 `docstring` 提供說明：
+- 使用 `return` 可以將函式的運算結果回傳給呼叫端。可撰寫 `docstring` 提供說明：
 
 ```python
 def find_max(a, b, c):
@@ -325,7 +325,7 @@ help(find_max)           # 讀取註解 (docstring)
 
 ## 5.1.4 綜合範例：計算 BMI
 
-* 基於定義好的公式 `weight / (tall^2)`，計算後回傳：
+- 基於定義好的公式 `weight / (tall^2)`，計算後回傳：
 
 ```python
 def get_bmi(tall, weight):
@@ -344,7 +344,7 @@ print(bmi) # 27.04
 
 ## 5.1.5 關鍵字引數 (Keyword Arguments)
 
-* 呼叫函式時，預設是依據位置順序傳遞。但也可利用關鍵字指定，不受順序限制：
+- 呼叫函式時，預設是依據位置順序傳遞。但也可利用關鍵字指定，不受順序限制：
 
 ```python
 def hello1(name, msg):
@@ -364,8 +364,8 @@ hello1('Good morning', 'Nick')
 
 ## 5.1.6 預設參數 (Default Parameters)
 
-* 定義時可給參數預設值。呼叫時若未傳該參數，則使用預設值。
-* **規則**：定義時「必要參數」必須放在「預設參數」之前。
+- 定義時可給參數預設值。呼叫時若未傳該參數，則使用預設值。
+- **規則**：定義時「必要參數」必須放在「預設參數」之前。
 
 ```python
 def hello2(name, msg = "Hello"):
@@ -382,7 +382,7 @@ hello2('Nick', 'Good morning') # 覆蓋預設值 -> Hi, Nick, Good morning
 
 ## 5.1.7 位置專用與關鍵字專用參數 (Python 3.8+)
 
-* 透過 `/` 和 `*` 來精準控制引數的傳遞方式：
+- 透過 `/` 和 `*` 來精準控制引數的傳遞方式：
   - **`/` 之前的參數**：必須為**位置引數** (不能用 name=val 指定)。
   - **`*` 之後的參數**：必須為**關鍵字引數** (不能用位置指定)。
 
@@ -400,8 +400,8 @@ example("pos", "standard", kw_only="kw") # 正確
 
 ## 5.1.8 現代型態提示 (Type Hints) (Python 3.10+)
 
-* 使用型態提示增加程式可讀性與靜態檢查支援。
-* 現代 Python 3.10+ 使用 `|` 運算子表達聯集型態（Union Type），不再需要額外匯入 Union。
+- 使用型態提示增加程式可讀性與靜態檢查支援。
+- 現代 Python 3.10+ 使用 `|` 運算子表達聯集型態（Union Type），不再需要額外匯入 Union。
 
 ```python
 # name 預期為 str，age 預期為 int 或 None，回傳 str
@@ -417,7 +417,7 @@ print(greet("Nick", 20))
 
 ## 5.1.9 可變動的參數個數
 
-* 當傳入的參數數量不確定時：
+- 當傳入的參數數量不確定時：
   - **`*args`** (變動位置參數)：以 **Tuple** 形式收集多個位置引數。
   - **`**kwargs`** (變動關鍵字參數)：以 **Dict** 形式收集多個關鍵字引數。
 
@@ -444,10 +444,10 @@ intro("Albert", age=20, city="Taichung") # kwargs 為 {'age': 20, 'city': 'Taich
 
 **給定函式定義 `def func(a, b=5, c=10): print(a, b, c)`。下列哪一個呼叫方式在 Python 中是無效的，會導致語法錯誤？**
 
-* **A.** `func(1)`
-* **B.** `func(a=1, c=20)`
-* **C.** `func(b=20, 30)`
-* **D.** `func(1, c=20, b=30)`
+- **A.** `func(1)`
+- **B.** `func(a=1, c=20)`
+- **C.** `func(b=20, 30)`
+- **D.** `func(1, c=20, b=30)`
 
   </div>
   <div class="ccq-logo">
@@ -464,10 +464,10 @@ intro("Albert", age=20, city="Taichung") # kwargs 為 {'age': 20, 'city': 'Taich
 
 ### **正確答案：C. `func(b=20, 30)`**
 
-* **解析**：
-  * Python 的引數傳遞語法嚴格規定：**位置引數（Positional Arguments）必須排在關鍵字引數（Keyword Arguments）之前**。
-  * 在選項 C `func(b=20, 30)` 中，第一個引數 `b=20` 為關鍵字引數，而第二個 `30` 為位置引數，這直接違反了語法規則，會拋出 `SyntaxError: positional argument follows keyword argument`。
-  * 其他選項皆為合法呼叫。
+- **解析**：
+  - Python 的引數傳遞語法嚴格規定：**位置引數（Positional Arguments）必須排在關鍵字引數（Keyword Arguments）之前**。
+  - 在選項 C `func(b=20, 30)` 中，第一個引數 `b=20` 為關鍵字引數，而第二個 `30` 為位置引數，這直接違反了語法規則，會拋出 `SyntaxError: positional argument follows keyword argument`。
+  - 其他選項皆為合法呼叫。
 
   </div>
   <div class="ccq-logo">
@@ -491,8 +491,8 @@ intro("Albert", age=20, city="Taichung") # kwargs 為 {'age': 20, 'city': 'Taich
 
 ## 5.2.1 不可變物件傳遞 (Immutable Passing)
 
-* 整數、浮點數、字串、元組皆為不可變物件。
-* 當不可變物件傳入函式中，在函式內部的修改會重新綁定局部變數的記憶體位址，呼叫端的原變數**不會**受到任何影響。
+- 整數、浮點數、字串、元組皆為不可變物件。
+- 當不可變物件傳入函式中，在函式內部的修改會重新綁定局部變數的記憶體位址，呼叫端的原變數**不會**受到任何影響。
 
 ```python
 def plus1(aNumber):
@@ -514,8 +514,8 @@ print(a) # 輸出: 1 (未受影響)
 
 ## 5.2.2 可變物件傳遞 (Mutable Passing)
 
-* 列表、字典、集合皆為可變物件。
-* 當可變物件傳入函式，並在函式內部就地（in-place）修改內容時，會**直接變更**呼叫端傳入的原物件。
+- 列表、字典、集合皆為可變物件。
+- 當可變物件傳入函式，並在函式內部就地（in-place）修改內容時，會**直接變更**呼叫端傳入的原物件。
 
 ```python
 def plus2(aList):
@@ -552,7 +552,7 @@ print(m) # 輸出: [2, 3] (原串列被修改)
 
 ## 5.2.3 複製後傳 (Copy and pass)
 
-* 如果不希望傳入的串列受函式內部修改影響，應傳入其副本：
+- 如果不希望傳入的串列受函式內部修改影響，應傳入其副本：
 
 ```python
 def plus2(aList):
@@ -584,10 +584,10 @@ modify_values(x, y)
 print(x, y)
 ```
 
-* **A.** `5 [5]`
-* **B.** `15 [5, 10]`
-* **C.** `5 [5, 10]`
-* **D.** `15 [5]`
+- **A.** `5 [5]`
+- **B.** `15 [5, 10]`
+- **C.** `5 [5, 10]`
+- **D.** `15 [5]`
 
   </div>
   <div class="ccq-logo">
@@ -604,9 +604,9 @@ print(x, y)
 
 ### **強確答案：C. `5 [5, 10]`**
 
-* **解析**：
-  * `x = 5` 為整數（不可變物件），傳入後 `a = a + 10` 在局部作用域建立新物件並重綁局部變數 `a`，**不影響**外部 `x` 的值。故 `x` 依然為 `5`。
-  * `y = [5]` 為串列（可變物件），傳入後 `b.append(10)` 是在原本的串列位址上就地進行修改，因此外部的 `y` 內容會被同步更改為 `[5, 10]`。
+- **解析**：
+  - `x = 5` 為整數（不可變物件），傳入後 `a = a + 10` 在局部作用域建立新物件並重綁局部變數 `a`，**不影響**外部 `x` 的值。故 `x` 依然為 `5`。
+  - `y = [5]` 為串列（可變物件），傳入後 `b.append(10)` 是在原本的串列位址上就地進行修改，因此外部的 `y` 內容會被同步更改為 `[5, 10]`。
 
   </div>
   <div class="ccq-logo">
@@ -623,8 +623,8 @@ print(x, y)
 
 ## 5.3.1 Lambda 匿名函式基本語法
 
-* `lambda` 常用來建立一次性、簡單的迷你功能。其結構為：`lambda 參數: 運算表達式`。
-* 表達式會自動被回傳，不需要（也不能）寫 `return`。
+- `lambda` 常用來建立一次性、簡單的迷你功能。其結構為：`lambda 參數: 運算表達式`。
+- 表達式會自動被回傳，不需要（也不能）寫 `return`。
 
 ```python
 # 宣告一個簡單的加法 lambda
@@ -648,8 +648,8 @@ print(squared) # [1, 4, 9, 16]
 
 ## 5.3.2 Lambda 於排序的客製化應用
 
-* 透過 `key=lambda`，我們可以指定複雜容器的比較指標。
-* 範例：依據二維成績列表中「物理（最後一個欄位）」或「加權分數」進行排序。
+- 透過 `key=lambda`，我們可以指定複雜容器的比較指標。
+- 範例：依據二維成績列表中「物理（最後一個欄位）」或「加權分數」進行排序。
 
 ```python
 # [英文, 數學, 物理]
@@ -681,10 +681,10 @@ squared_evens = list(map(
 print(squared_evens)
 ```
 
-* **A.** `[1, 4, 9, 16]`
-* **B.** `[4, 16]`
-* **C.** `[1, 9]`
-* **D.** `[2, 4]`
+- **A.** `[1, 4, 9, 16]`
+- **B.** `[4, 16]`
+- **C.** `[1, 9]`
+- **D.** `[2, 4]`
 
   </div>
   <div class="ccq-logo">
@@ -701,10 +701,10 @@ print(squared_evens)
 
 ### **正確答案：B. `[4, 16]`**
 
-* **解析**：
-  * 核心部分：`filter(lambda x: x % 2 == 0, nums)` 會先篩選出偶數，篩選後的元素序列為 `[2, 4]`。
-  * 外層部分：`map(lambda x: x**2, ...)` 接收此偶數序列並依序進行平方運算：`2^2 = 4`，`4^2 = 16`。
-  * 最後透過 `list()` 轉為串列輸出，結果為 `[4, 16]`。
+- **解析**：
+  - 核心部分：`filter(lambda x: x % 2 == 0, nums)` 會先篩選出偶數，篩選後的元素序列為 `[2, 4]`。
+  - 外層部分：`map(lambda x: x**2, ...)` 接收此偶數序列並依序進行平方運算：`2^2 = 4`，`4^2 = 16`。
+  - 最後透過 `list()` 轉為串列輸出，結果為 `[4, 16]`。
 
   </div>
   <div class="ccq-logo">
@@ -721,9 +721,9 @@ print(squared_evens)
 
 ## 5.4.1 什麼是例外處理？
 
-* 在程式執行時，難免會遇到不預期的錯誤（如使用者輸入非數字、檔案開檔失敗）。
-* 若不妥善處理，程式會直接崩潰中斷。
-* Python 使用 **`try-except-else-finally`** 結構來攔截並安全處理例外。
+- 在程式執行時，難免會遇到不預期的錯誤（如使用者輸入非數字、檔案開檔失敗）。
+- 若不妥善處理，程式會直接崩潰中斷。
+- Python 使用 **`try-except-else-finally`** 結構來攔截並安全處理例外。
 
 ```python
 try:
@@ -740,8 +740,8 @@ except ZeroDivisionError:
 
 ## 5.4.2 try-except-else-finally 完整結構
 
-* **`else` 區塊**：在沒有發生任何例外時執行。
-* **`finally` 區塊**：不論是否發生例外，都**保證一定會執行**（常用於釋放資源、關閉檔案）。
+- **`else` 區塊**：在沒有發生任何例外時執行。
+- **`finally` 區塊**：不論是否發生例外，都**保證一定會執行**（常用於釋放資源、關閉檔案）。
 
 ```python
 try:
@@ -760,7 +760,7 @@ finally:
 
 ## 5.4.3 主動拋出例外 (raise)
 
-* 當程式偵測到不合邏輯的業務狀態（例如年齡小於 0 歲）時，可使用 `raise` 主動引發錯誤，交由上層補獲處理。
+- 當程式偵測到不合邏輯的業務狀態（例如年齡小於 0 歲）時，可使用 `raise` 主動引發錯誤，交由上層補獲處理。
 
 ```python
 def set_age(age):
@@ -796,10 +796,10 @@ def test_div(a, b):
 print(test_div(10, 2))
 ```
 
-* **A.** `5.0`
-* **B.** `Cannot divide by zero`
-* **C.** `Always executed`
-* **D.** `5.0` 且換行印出 `Always executed`
+- **A.** `5.0`
+- **B.** `Cannot divide by zero`
+- **C.** `Always executed`
+- **D.** `5.0` 且換行印出 `Always executed`
 
   </div>
   <div class="ccq-logo">
@@ -816,10 +816,10 @@ print(test_div(10, 2))
 
 ### **正確答案：C. `Always executed`**
 
-* **解析**：
-  * 在 Python 例外處理中，`finally` 區塊必定會執行。
-  * **關鍵規則**：如果 `finally` 區塊中包含了 `return` 語句，它會直接**覆蓋 (override)** try 區塊或 except 區塊中已準備返回的任何值。
-  * 呼叫 `test_div(10, 2)` 時，try 內計算得 `5.0` 並準備 return，隨後進入 `finally` 執行了 `return "Always executed"`，覆蓋了原本的 `5.0`。
+- **解析**：
+  - 在 Python 例外處理中，`finally` 區塊必定會執行。
+  - **關鍵規則**：如果 `finally` 區塊中包含了 `return` 語句，它會直接**覆蓋 (override)** try 區塊或 except 區塊中已準備返回的任何值。
+  - 呼叫 `test_div(10, 2)` 時，try 內計算得 `5.0` 並準備 return，隨後進入 `finally` 執行了 `return "Always executed"`，覆蓋了原本的 `5.0`。
 
   </div>
   <div class="ccq-logo">
@@ -843,8 +843,8 @@ print(test_div(10, 2))
 
 ## 5.5.1 Python 套件結構與導入
 
-* **套件 (Package)**：是一個包含一個特殊檔案 `__init__.py` 的資料夾目錄，可以包含多個子模組 (modules)。
-* **常用的 import 語法**：
+- **套件 (Package)**：是一個包含一個特殊檔案 `__init__.py` 的資料夾目錄，可以包含多個子模組 (modules)。
+- **常用的 import 語法**：
 
 ```python
 # 1. 匯入整個套件模組
@@ -878,7 +878,7 @@ data = js.loads('{"value": 100}')
 
 ## 5.5.2 遞迴應用：河內塔程式實作
 
-* 以遞迴函式簡潔表達河內塔的搬移步驟：
+- 以遞迴函式簡潔表達河內塔的搬移步驟：
 
 ```python
 def hanoi(n, start, temp, end):
@@ -920,8 +920,8 @@ hanoi(3, 'A', 'B', 'C') # 搬移 3 個盤子需 7 步
 
 ## 5.5.3 應用：井字棋狀態與勝負判定
 
-* 使用 9 元素的一維串列表示井字棋格盤狀態。
-* 呼叫函式判定落子位置與連線獲勝：
+- 使用 9 元素的一維串列表示井字棋格盤狀態。
+- 呼叫函式判定落子位置與連線獲勝：
 
 ```python
 # 初始化棋盤
@@ -944,7 +944,7 @@ def check_win(player):
 
 ## 5.5.4 應用：YouTube 檔案下載 (pytubefix)
 
-* 利用外部套件 `pytubefix` 下載最高畫質 YouTube 影片範例：
+- 利用外部套件 `pytubefix` 下載最高畫質 YouTube 影片範例：
 
 ```python
 # 使用 pip install pytubefix 安裝套件

@@ -239,10 +239,10 @@ style: |
 
 # 8.1 科學運算與電路求解 (NumPy / SciPy)
 
-* **網目電流法 (Mesh Analysis)**：
+- **網目電流法 (Mesh Analysis)**：
   - 將基爾霍夫電壓定律 (KVL) 表示為線性方程組：$A \cdot I = B$。
   - 使用 `numpy.linalg.solve(A, B)` 高效求解。
-* **二階 RLC 電路動態模擬**：
+- **二階 RLC 電路動態模擬**：
   - 將二階常微分方程 (ODE) 轉為一階狀態方程組。
   - 使用 `scipy.integrate.solve_ivp` 對電阻-電感-電容迴路進行數值解模擬。
 
@@ -341,10 +341,10 @@ I = np.linalg.solve(R_matrix, V_matrix)
 ```
 **下列關於 `I` 變數的敘述，何者正確？**
 
-* **A.** `I` 是一個逆矩陣物件，可用 `I.apply()`
-* **B.** `I` 是一個含有兩個元素的一維 NumPy 陣列
-* **C.** `I` 包含了 `R_matrix` 的特徵向量
-* **D.** 若 `R_matrix` 的行列式值為 0，此程式仍可順利執行並回傳全 0
+- **A.** `I` 是一個逆矩陣物件，可用 `I.apply()`
+- **B.** `I` 是一個含有兩個元素的一維 NumPy 陣列
+- **C.** `I` 包含了 `R_matrix` 的特徵向量
+- **D.** 若 `R_matrix` 的行列式值為 0，此程式仍可順利執行並回傳全 0
 
   </div>
   <div class="ccq-logo">
@@ -361,7 +361,7 @@ I = np.linalg.solve(R_matrix, V_matrix)
 
 ### **正確答案：B. `I` 是一個含有兩個元素的一維 NumPy 陣列**
 
-* **解析**：
+- **解析**：
   - `np.linalg.solve` 解線性聯立方程式，回傳結果為包含未知變數解的一維 Array。
   - 當係數矩陣行列式值為 0 (奇異矩陣) 時，表示方程式無解或無限多組解，此時呼叫此函數會拋出 `LinAlgError`，而非回傳全 0。
 
@@ -381,10 +381,10 @@ I = np.linalg.solve(R_matrix, V_matrix)
 
 **使用 `scipy.integrate.solve_ivp` 求解暫態電壓隨時間變化時，我們需要傳入微分方程函數。下列何者為正確的函數參數宣告？**
 
-* **A.** `def rc_ode(Vc, t):`
-* **B.** `def rc_ode(t, Vc):`
-* **C.** `def rc_ode(t, y, dt):`
-* **D.** `def rc_ode(y, t):`
+- **A.** `def rc_ode(Vc, t):`
+- **B.** `def rc_ode(t, Vc):`
+- **C.** `def rc_ode(t, y, dt):`
+- **D.** `def rc_ode(y, t):`
 
   </div>
   <div class="ccq-logo">
@@ -401,7 +401,7 @@ I = np.linalg.solve(R_matrix, V_matrix)
 
 ### **正確答案：B. `def rc_ode(t, Vc):`**
 
-* **解析**：
+- **解析**：
   - `solve_ivp` 要求傳入的常微分方程式回呼函數，其第一引數必須是時間自變數 `t`，第二引數為狀態變數或向量 `y`（如電容電壓 `Vc`），即符合 `f(t, y)` 形式。
   - 選項 A 與 D 參數順序相反，會導致 runtime 與計算結果錯誤。
 
@@ -415,10 +415,10 @@ I = np.linalg.solve(R_matrix, V_matrix)
 
 # 8.2 訊號處理與頻域分析 (Signal Processing & FFT)
 
-* **時域 (Time Domain) vs 頻域 (Frequency Domain)**：
+- **時域 (Time Domain) vs 頻域 (Frequency Domain)**：
   - 時域訊號受高頻雜訊干擾時，肉眼難以直接看出其組成。
   - 傅立葉變換將訊號在不同頻率的分量展開。
-* **快速傅立葉變換 (FFT)**：
+- **快速傅立葉變換 (FFT)**：
   - 使用 `numpy.fft.fft()` 進行數值快速傅立葉轉換。
   - 可以完美擷取混雜了白雜訊中的特定頻率正弦波峰值。
 
@@ -466,11 +466,11 @@ amplitude = np.abs(fft_result[:half_n]) * 2 / n
 
 # 8.3 自動控制與機械手臂運動學 (Control & Robotics)
 
-* **自動控制與 PID 閉迴路系統**：
+- **自動控制與 PID 閉迴路系統**：
   - **比例 (P)**：與誤差成比例，提供基礎控制力。
   - **積分 (I)**：累積歷史誤差，用以消除「穩態誤差」。
   - **微分 (D)**：感應誤差變化率，抑制系統震盪。
-* **機械手臂運動學 (Kinematics)**：
+- **機械手臂運動學 (Kinematics)**：
   - **正向運動學**：給定角度 $\theta_1, \theta_2 \rightarrow$ 求末端平面座標 $(x, y)$。
   - **逆向運動學**：給定末端座標 $(x, y) \rightarrow$ 利用餘弦定理求解角度。
 
@@ -574,10 +574,10 @@ class RoboticArm2R:
 
 **在閉迴路溫控系統的 PID 控制器實作中，我們常發現系統已經運作了很久，但實際溫度始終與目標溫度差了 2°C (穩態誤差)。此時我們應優先調大哪一個參數？**
 
-* **A.** 比例增益 (Kp)
-* **B.** 微分增益 (Kd)
-* **C.** 積分增益 (Ki)
-* **D.** 取樣時間常數 (dt)
+- **A.** 比例增益 (Kp)
+- **B.** 微分增益 (Kd)
+- **C.** 積分增益 (Ki)
+- **D.** 取樣時間常數 (dt)
 
   </div>
   <div class="ccq-logo">
@@ -594,7 +594,7 @@ class RoboticArm2R:
 
 ### **正確答案：C. 積分增益 (Ki)**
 
-* **解析**：
+- **解析**：
   - 穩態誤差是由於比例項輸出力量太小，剛好與外界阻力/散熱抵銷所產生的靜態誤差。
   - **積分項 (Ki)** 會隨時間持續累計誤差數值，並逐步放大控制輸出，直到誤差完全被消除為止。因此優先調升 Ki，故選 C。
 
@@ -608,11 +608,11 @@ class RoboticArm2R:
 
 # 8.4 虛擬序列埠與實體硬體互動 (pySerial)
 
-* **微控制器硬體通訊**：
+- **微控制器硬體通訊**：
   - 外部晶片藉由 USB 串口發送數據字串，以換行符 `\n` 作為結束符。
-* **pySerial 套件**：
+- **pySerial 套件**：
   - 提供 `serial.Serial(port, baudrate)` 連線實體 COM Port。
-* **虛擬串流測試與多執行緒**：
+- **虛擬串流測試與多執行緒**：
   - 如果沒有硬體，可用 `threading.Thread` 與 `queue.Queue` 在背景模擬持續送出的串口數據流，便於電腦端程式進行接收除錯。
 
 ---
@@ -649,10 +649,10 @@ class RoboticArm2R:
 
 **若硬體發送序列埠資料的週期是 10ms，而 Python 每 100ms 才呼叫一次 `readline()`，且未配置 Flow Control。這會導致什麼後果？**
 
-* **A.** Python 程式運算效能會提高十倍
-* **B.** 接收端的緩衝區 (Buffer) 會發生溢位，資料會大量遺失或產生延遲亂碼
-* **C.** 訊號在傳輸線上會被自動平均成低通濾波值
-* **D.** Python 直譯器會傳送指令強制降低晶片的發送頻率
+- **A.** Python 程式運算效能會提高十倍
+- **B.** 接收端的緩衝區 (Buffer) 會發生溢位，資料會大量遺失或產生延遲亂碼
+- **C.** 訊號在傳輸線上會被自動平均成低通濾波值
+- **D.** Python 直譯器會傳送指令強制降低晶片的發送頻率
 
   </div>
   <div class="ccq-logo">
@@ -669,7 +669,7 @@ class RoboticArm2R:
 
 ### **正確答案：B. 接收端的緩衝區 (Buffer) 會發生溢位，資料會大量遺失或產生延遲亂碼**
 
-* **解析**：
+- **解析**：
   - 序列晶片的軟硬體緩衝區大小是有限的。
   - 當發送端（寫入速度）大於接收端（讀取速度），緩衝區會被塞滿。新數據會被直接拋棄，或者 Python 讀取到的都是很久之前的舊資料，造成資料的嚴重延遲。
 
@@ -683,10 +683,10 @@ class RoboticArm2R:
 
 # 8.5 網路通訊與 Socket 程式 (TCP Networking)
 
-* **TCP (Transmission Control Protocol)**：
+- **TCP (Transmission Control Protocol)**：
   - 物聯網與網路最基礎之傳輸層協定。
   - 提供可靠、有連線導向、雙向傳輸的串流服務。
-* **Socket 機制與多連接埠**：
+- **Socket 機制與多連接埠**：
   - Server 先進行 `bind()` 綁定與 `listen()` 監聽。
   - 當新用戶端連線時，伺服器在 `accept()` 獲得新 Socket。
   - 為了防止多個用戶端互相阻塞，必須為每一條連線開闢獨立的執行緒背景處理。
@@ -730,10 +730,10 @@ server_socket.setsockopt(socket.SOL_SOCKET,
 ```
 **此設定的主要作用為何？**
 
-* **A.** 限制外部用戶端在同一時間點的連線數量
-* **B.** 加密傳輸通道防止網路竊聽
-* **C.** 允許伺服器關閉重啟後，立即重新 bind 原埠號，免受 TIME_WAIT 保留期限制
-* **D.** 將傳輸協定強制提升為 UDP 封包形式
+- **A.** 限制外部用戶端在同一時間點的連線數量
+- **B.** 加密傳輸通道防止網路竊聽
+- **C.** 允許伺服器關閉重啟後，立即重新 bind 原埠號，免受 TIME_WAIT 保留期限制
+- **D.** 將傳輸協定強制提升為 UDP 封包形式
 
   </div>
   <div class="ccq-logo">
@@ -750,7 +750,7 @@ server_socket.setsockopt(socket.SOL_SOCKET,
 
 ### **正確答案：C. 允許伺服器關閉重啟後，立即重新 bind 原埠號，免受 TIME_WAIT 保留期限制**
 
-* **解析**：
+- **解析**：
   - TCP 連線終止後，連接埠會在作業系統內部保留在 TIME_WAIT 狀態數分鐘，防堵網路殘存封包。
   - 此時重新 bind 同一埠號會拋出 Address already in use 錯誤。
   - 配置 `SO_REUSEADDR` 能允許重用埠號，大幅方便程式除錯，故選 C。
@@ -765,9 +765,9 @@ server_socket.setsockopt(socket.SOL_SOCKET,
 
 # 8.6 本章綜合工程實作專題 (Digital LPF)
 
-* **數位濾波器 (Digital Filter)**：
+- **數位濾波器 (Digital Filter)**：
   - 排除感測器在傳輸過程中的高頻波動，保留核心物理訊號。
-* **一階數位低通濾波器差分方程**：
+- **一階數位低通濾波器差分方程**：
   - 運算方程式：$y[k] = \alpha \cdot x[k] + (1 - \alpha) \cdot y[k-1]$。
   - 其中 $\alpha$ 介於 0 與 1 之間。
   - $\alpha$ 越小，抗噪效果越強，但也會伴隨較大的時間延遲。

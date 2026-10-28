@@ -234,15 +234,15 @@ Feng Chia University
 
 ## 本章學習重點
 
-* **7.1 類別與物件 (Class & Object)**
+- **7.1 類別與物件 (Class & Object)**
   - 物件導向 vs 功能導向、藍圖與實例概念
   - 類別宣告、物件封裝設計與 Data Classes (Python 3.7+)
-* **7.2 屬性與封裝 (Attribute & Encapsulation)**
+- **7.2 屬性與封裝 (Attribute & Encapsulation)**
   - 物件屬性 vs 類別屬性、私有屬性與名稱修飾 (Name Mangling)
   - 特性與裝飾器 (`@property`、`@setter`)、動態屬性
-* **7.3 繼承與多型 (Inheritance & Polymorphism)**
+- **7.3 繼承與多型 (Inheritance & Polymorphism)**
   - 基礎類別與衍生類別、方法覆寫 (Override) 與 `super()` 呼叫
-* **7.4 特殊方法與抽象類別 (Special Methods & Abstract Classes)**
+- **7.4 特殊方法與抽象類別 (Special Methods & Abstract Classes)**
   - 雙底線特殊方法 (dunder methods)、自訂有理數 Rational 類別
   - 抽象類別宣告 (`abc.ABCMeta`) 與抽象方法 (`@abstractmethod`)
 
@@ -262,14 +262,14 @@ Feng Chia University
 
 ## 物件導向設計 (Object-Oriented Design)
 
-* **功能導向**：將大系統切割成小函式，以函式為最小單元來解決複雜性。
-* **物件導向**：以**物件**為最小單元。物件內部**封裝了資料以及對應的操作方法**。
+- **功能導向**：將大系統切割成小函式，以函式為最小單元來解決複雜性。
+- **物件導向**：以**物件**為最小單元。物件內部**封裝了資料以及對應的操作方法**。
 
 <div class="split55">
   <div class="left">
 
-  * **高內聚 (High Cohesion)**：資料與其行為緊密包裝。
-  * **降低複雜度**：透過物件邊界與接口，讓程式結構更加清晰、容易組裝與維護。
+  - **高內聚 (High Cohesion)**：資料與其行為緊密包裝。
+  - **降低複雜度**：透過物件邊界與接口，讓程式結構更加清晰、容易組裝與維護。
   
   </div>
   <div class="right">
@@ -281,8 +281,8 @@ Feng Chia University
 
 ## 類別的宣告與物件生成
 
-* **類別 (Class)**：定義物件特徵與行為的「藍圖/模板」。
-* **物件 (Object/Instance)**：根據藍圖實際建立出來的「實體」。
+- **類別 (Class)**：定義物件特徵與行為的「藍圖/模板」。
+- **物件 (Object/Instance)**：根據藍圖實際建立出來的「實體」。
 
 ```python
 # 類別的宣告
@@ -310,12 +310,12 @@ print(obj.getX()) # 輸出: 10
 
 ## Python 中一切皆物件
 
-* 在 Python 中，所有的資料型態（如 `int`, `float`, `list`, `dict`）都是類別實作的物件。
+- 在 Python 中，所有的資料型態（如 `int`, `float`, `list`, `dict`）都是類別實作的物件。
 
 <div class="split55">
   <div class="left">
 
-  * **以 `list` 物件為例**：
+  - **以 `list` 物件為例**：
     - **內部資料**：儲存的元素集合。
     - **方法**：提供 `append()`、`extend()`、`insert()` 等方法來操作內部的資料。
   
@@ -329,7 +329,7 @@ print(obj.getX()) # 輸出: 10
 
 ## 封裝的好處：以 People 類別為例
 
-* 透過物件將「資料」與「行為」封裝，可使程式碼更加簡潔，避免參數過多的混亂設計。
+- 透過物件將「資料」與「行為」封裝，可使程式碼更加簡潔，避免參數過多的混亂設計。
 
 ```python
 class People:
@@ -353,7 +353,7 @@ def better(p1, p2):
 
 ## 現代 Python：資料類別 (Data Classes)
 
-* 自 Python 3.7 起引入 `@dataclass`，專門簡化「單純儲存資料」類別的宣告，自動生成建構子、字串表達及比較方法。
+- 自 Python 3.7 起引入 `@dataclass`，專門簡化「單純儲存資料」類別的宣告，自動生成建構子、字串表達及比較方法。
 
 ```python
 from dataclasses import dataclass
@@ -379,7 +379,7 @@ print(s1 == s2)  # 輸出: True
 
 ## 現代 Python：Self 型態提示 (Python 3.11+)
 
-* 當類別的方法會返回**該物件本身**（例如鏈式呼叫）時，在型態提示中可使用 `typing.Self`：
+- 當類別的方法會返回**該物件本身**（例如鏈式呼叫）時，在型態提示中可使用 `typing.Self`：
 
 ```python
 from typing import Self
@@ -400,7 +400,7 @@ b1.rename("Python Advanced").rename("Python Expert") # 鏈式呼叫
 
 ## 物件相關輔助函式
 
-* Python 提供了數個內建函式用來查詢與操作物件：
+- Python 提供了數個內建函式用來查詢與操作物件：
   - `type(obj)`：返回物件所屬的類別。
   - `dir(obj)`：列出物件的所有方法和屬性。
   - `id(obj)`：取得物件的唯一識別值（記憶體位置）。
@@ -428,8 +428,8 @@ print(getattr(b, 'age', 18)) # 18 (安全取得屬性)
 
 ## 物件屬性 vs 類別屬性
 
-* **物件屬性 (實體屬性)**：在 `__init__` 中以 `self.xxx` 定義，每個實例獨立擁有。
-* **類別屬性**：直接在類別區塊中定義，所有實例共享。
+- **物件屬性 (實體屬性)**：在 `__init__` 中以 `self.xxx` 定義，每個實例獨立擁有。
+- **類別屬性**：直接在類別區塊中定義，所有實例共享。
 
 ```python
 class Car:
@@ -466,10 +466,10 @@ print(Counter.count, c.count)
 ```
 **請問程式執行的輸出結果為何？**
 
-* **A.** `0 0`
-* **B.** `0 1`
-* **C.** `1 1`
-* **D.** 引發 `AttributeError`
+- **A.** `0 0`
+- **B.** `0 1`
+- **C.** `1 1`
+- **D.** 引發 `AttributeError`
 
   </div>
   <div class="ccq-logo">
@@ -486,10 +486,10 @@ print(Counter.count, c.count)
 
 ### **正確答案：B**
 
-* **解析**：
-  * `Counter.count` 存取的是定義在類別層級的**類別屬性**，其值為 `0`。它被所有實例共用，但不能透過實例進行直接覆寫（除非特別指定）。
-  * `c.count` 存取的是實例 `c` 初始化時在 `__init__` 中建立的**實例屬性**，其值為 `1`。
-  * 實例屬性與類別屬性同名時，實例屬性會**遮蔽 (shadow)** 類別屬性，因此存取 `c.count` 會優先返回實例屬性的值 `1`。
+- **解析**：
+  - `Counter.count` 存取的是定義在類別層級的**類別屬性**，其值為 `0`。它被所有實例共用，但不能透過實例進行直接覆寫（除非特別指定）。
+  - `c.count` 存取的是實例 `c` 初始化時在 `__init__` 中建立的**實例屬性**，其值為 `1`。
+  - 實例屬性與類別屬性同名時，實例屬性會**遮蔽 (shadow)** 類別屬性，因此存取 `c.count` 會優先返回實例屬性的值 `1`。
 
   </div>
   <div class="ccq-logo">
@@ -508,13 +508,13 @@ print(Counter.count, c.count)
 
 ## 私有屬性 (Private Attributes)
 
-* 如果屬性公開，外面的程式可以任意修改，這可能造成物件內部的邏輯或狀態混亂（例如銀行餘額變為負值）。
+- 如果屬性公開，外面的程式可以任意修改，這可能造成物件內部的邏輯或狀態混亂（例如銀行餘額變為負值）。
 
 <div class="split55">
   <div class="left">
 
-  * **雙底線命名**：在屬性名稱前加上雙底線 `__`，將其宣告為私有。
-  * 外部無法直接透過 `obj.__balance` 存取私有變數。
+  - **雙底線命名**：在屬性名稱前加上雙底線 `__`，將其宣告為私有。
+  - 外部無法直接透過 `obj.__balance` 存取私有變數。
   
   </div>
   <div class="right">
@@ -526,7 +526,7 @@ print(Counter.count, c.count)
 
 ## 私有屬性與保護機制
 
-* 透過 Getter / Setter 方法間接存取私有屬性，可在內部加入商業邏輯檢查（例如存款不可為負，提款需確認餘額）：
+- 透過 Getter / Setter 方法間接存取私有屬性，可在內部加入商業邏輯檢查（例如存款不可為負，提款需確認餘額）：
 
 ```python
 class BankAccount:
@@ -565,10 +565,10 @@ s = Secretive()
 print(s.__code)
 ```
 
-* **A.** 正常執行，印出 `42`
-* **B.** 正常執行，印出 `None`
-* **C.** 引發 `AttributeError`
-* **D.** 引發 `NameError`
+- **A.** 正常執行，印出 `42`
+- **B.** 正常執行，印出 `None`
+- **C.** 引發 `AttributeError`
+- **D.** 引發 `NameError`
 
   </div>
   <div class="ccq-logo">
@@ -585,10 +585,10 @@ print(s.__code)
 
 ### **正確答案：C**
 
-* **解析**：
-  * 在 Python 中，以兩個底線開頭但不用兩個底線結尾的屬性名稱（例如 `__code`），會觸發 **名稱修飾 (Name Mangling)** 機制。
-  * 直譯器會自動將這個屬性重新命名為 `_ClassName__attributeName`（即 `_Secretive__code`），以避免在繼承關係中意外衝突。
-  * 因此，在外部直接透過 `s.__code` 存取該屬性時，會因為找不到此名稱而引發 `AttributeError: 'Secretive' object has no attribute '__code'`。
+- **解析**：
+  - 在 Python 中，以兩個底線開頭但不用兩個底線結尾的屬性名稱（例如 `__code`），會觸發 **名稱修飾 (Name Mangling)** 機制。
+  - 直譯器會自動將這個屬性重新命名為 `_ClassName__attributeName`（即 `_Secretive__code`），以避免在繼承關係中意外衝突。
+  - 因此，在外部直接透過 `s.__code` 存取該屬性時，會因為找不到此名稱而引發 `AttributeError: 'Secretive' object has no attribute '__code'`。
 
   </div>
   <div class="ccq-logo">
@@ -607,7 +607,7 @@ print(s.__code)
 
 ## 使用 @property 特性
 
-* 傳統 Getter/Setter 需要繁瑣的 `obj.get_x()`，而 `@property` 裝飾器可以讓存取看起來像一般屬性，但底層仍受方法保護。
+- 傳統 Getter/Setter 需要繁瑣的 `obj.get_x()`，而 `@property` 裝飾器可以讓存取看起來像一般屬性，但底層仍受方法保護。
 
 ```python
 class BankAccount:
@@ -648,7 +648,7 @@ nick.riskLevel = 2    # 呼叫 setter
 
 ## 繼承 (Inheritance)
 
-* 繼承允許子類別 (衍生類別) 取得父類別 (基礎類別) 的屬性與功能，提高程式碼重用性。
+- 繼承允許子類別 (衍生類別) 取得父類別 (基礎類別) 的屬性與功能，提高程式碼重用性。
 
 ```python
 class Person:
@@ -671,7 +671,7 @@ class Engineer(Person):
 
 ## 方法覆寫 (Override) 與多型
 
-* 子類別可以重新定義父類別中同名的方法，以展現其專屬行為，這即是**方法覆寫 (Override)**：
+- 子類別可以重新定義父類別中同名的方法，以展現其專屬行為，這即是**方法覆寫 (Override)**：
 
 ```python
 class Manager(Person):
@@ -713,10 +713,10 @@ print(c.val)
 ```
 **請問印出的結果為何？**
 
-* **A.** `10`
-* **B.** `20`
-* **C.** `30`
-* **D.** 引發 `AttributeError`
+- **A.** `10`
+- **B.** `20`
+- **C.** `30`
+- **D.** 引發 `AttributeError`
 
   </div>
   <div class="ccq-logo">
@@ -733,10 +733,10 @@ print(c.val)
 
 ### **正確答案：B**
 
-* **解析**：
-  * 子類別 `Child` 定義了自己的建構子 `__init__`，這會直接**覆寫 (override)** 父類別 `Parent` 的建構子。
-  * 當我們實例化 `Child()` 時，只有子類別的建構子會被執行，其中 `self.val` 被設定為 `20`。
-  * 因為子類別建構子內沒有呼叫 `super().__init__()`，所以父類別建構子沒有被執行（但 `self.val` 已經在子類別中建立並賦值），故 `c.val` 回傳的值是 `20`。
+- **解析**：
+  - 子類別 `Child` 定義了自己的建構子 `__init__`，這會直接**覆寫 (override)** 父類別 `Parent` 的建構子。
+  - 當我們實例化 `Child()` 時，只有子類別的建構子會被執行，其中 `self.val` 被設定為 `20`。
+  - 因為子類別建構子內沒有呼叫 `super().__init__()`，所以父類別建構子沒有被執行（但 `self.val` 已經在子類別中建立並賦值），故 `c.val` 回傳的值是 `20`。
 
   </div>
   <div class="ccq-logo">
@@ -760,8 +760,8 @@ print(c.val)
 
 ## Python 特殊方法 (Magic Methods)
 
-* 特殊方法（或稱魔法方法，Dunder Methods）是以雙底線開頭與結尾的方法。
-* 它們定義了物件與 Python 內建運算子（如 `+`, `-`, `==`, `len()`, `str()`）的行為。
+- 特殊方法（或稱魔法方法，Dunder Methods）是以雙底線開頭與結尾的方法。
+- 它們定義了物件與 Python 內建運算子（如 `+`, `-`, `==`, `len()`, `str()`）的行為。
 
 | 特殊方法 | 呼叫時機 |
 | --- | --- |
@@ -776,7 +776,7 @@ print(c.val)
 
 ## 特殊方法應用：有理數 Rational 類別
 
-* 自訂 Rational (分數) 類別，透過實作特殊方法，使其能與內建數值般進行運算：
+- 自訂 Rational (分數) 類別，透過實作特殊方法，使其能與內建數值般進行運算：
 
 ```python
 class Rational:
@@ -811,8 +811,8 @@ print(a == b) # 輸出: True (呼叫 __eq__)
 
 ## 抽象類別 (Abstract Class)
 
-* 抽象類別是用來定義規格（方法介面）的類別，不能直接被實例化，需由子類別繼承並實現其抽象方法。
-* Python 中使用 `abc` 模組的 `ABCMeta` 與 `@abstractmethod` 宣告。
+- 抽象類別是用來定義規格（方法介面）的類別，不能直接被實例化，需由子類別繼承並實現其抽象方法。
+- Python 中使用 `abc` 模組的 `ABCMeta` 與 `@abstractmethod` 宣告。
 
 ```python
 from abc import ABCMeta, abstractmethod
@@ -835,7 +835,7 @@ class GuessGame(metaclass=ABCMeta): # 宣告為抽象類別
 
 ## 抽象類別實作與限制
 
-* 子類別必須完全實作所有的抽象方法，否則該子類別亦被視為抽象而無法實例化：
+- 子類別必須完全實作所有的抽象方法，否則該子類別亦被視為抽象而無法實例化：
 
 ```python
 class ConsoleGame(GuessGame):

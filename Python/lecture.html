@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python 講義閱讀器 | Python 程式設計與實務應用</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Highlight.js CSS (GitHub Theme) -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+  <!-- Marked, Highlight.js, Mermaid & KaTeX Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --accent: #f59e0b;
+      --accent-dark: #d97706;
+      --surface: #ffffff;
+      --background: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-dark: #cbd5e1;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 10px -1px rgba(2, 132, 199, 0.08), 0 2px 4px -2px rgba(2, 132, 199, 0.04);
+      --shadow-lg: 0 12px 24px -4px rgba(2, 132, 199, 0.12), 0 4px 6px -2px rgba(2, 132, 199, 0.04);
+    }
+
+    body.dark-mode {
+      --primary: #38bdf8;
+      --primary-dark: #0284c7;
+      --primary-light: #082f49;
+      --accent: #fbbf24;
+      --surface: #1e293b;
+      --background: #0f172a;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --border-dark: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+      background-color: var(--background);
+      color: var(--text-main);
+      line-height: 1.75;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Reading Progress Bar */
+    #progressBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #0284c7 0%, #f59e0b 100%);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Top Sticky Navbar */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    body.dark-mode .top-navbar {
+      background: rgba(30, 41, 59, 0.92);
+      border-bottom-color: var(--border);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    body.dark-mode .btn-back {
+      background: #334155;
+    }
+
+    .btn-back:hover {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    /* Chapter Selector */
+    .chapter-select {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+      max-width: 260px;
+    }
+
+    .chapter-select:focus {
+      border-color: var(--primary);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .btn-nav-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-nav-action:hover {
+      color: var(--primary);
+      border-color: #93c5fd;
+      background: var(--primary-light);
+    }
+
+    /* Main Container & Dual-Column Layout */
+    .layout-container {
+      max-width: 1380px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 24px 80px 24px;
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+      flex: 1;
+    }
+
+    /* Main Document Article */
+    .document-body {
+      flex: 1;
+      min-width: 0;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 44px 52px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (max-width: 768px) {
+      .document-body {
+        padding: 24px 20px;
+      }
+    }
+
+    /* Right Sticky TOC */
+    .toc-sidebar {
+      width: 290px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 75px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (max-width: 1060px) {
+      .toc-sidebar {
+        display: none;
+      }
+    }
+
+    .toc-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .toc-item {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .toc-item a {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toc-item a:hover {
+      color: var(--primary);
+      background-color: var(--primary-light);
+    }
+
+    .toc-item.active a {
+      color: var(--primary);
+      font-weight: 700;
+      background-color: var(--primary-light);
+      border-left: 3px solid var(--primary);
+      padding-left: 8px;
+    }
+
+    .toc-level-2 { padding-left: 0; }
+    .toc-level-3 { padding-left: 12px; font-size: 12.5px; }
+    .toc-level-4 { padding-left: 20px; font-size: 12px; }
+
+    /* Markdown Typography & Elements */
+    #contentArea h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--border);
+      line-height: 1.3;
+    }
+
+    #contentArea h2 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 42px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.35;
+    }
+
+    #contentArea h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 28px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    #contentArea p {
+      margin-bottom: 16px;
+      color: var(--text-main);
+      font-size: 15.5px;
+    }
+
+    #contentArea ul,
+    #contentArea ol {
+      margin-bottom: 18px;
+      padding-left: 26px;
+      font-size: 15.5px;
+    }
+
+    #contentArea li {
+      margin-bottom: 7px;
+    }
+
+    #contentArea blockquote {
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      padding: 14px 20px;
+      border-radius: 0 10px 10px 0;
+      margin: 20px 0;
+      color: var(--text-main);
+      font-size: 15px;
+    }
+
+    #contentArea table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+
+    #contentArea th,
+    #contentArea td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    #contentArea th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    body.dark-mode #contentArea th {
+      background: #334155;
+    }
+
+    #contentArea tr:nth-child(even) td {
+      background: rgba(0, 0, 0, 0.015);
+    }
+
+    body.dark-mode #contentArea tr:nth-child(even) td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    #contentArea img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin: 18px 0;
+      display: block;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Code Block Enhancements */
+    .code-wrapper {
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      background: #f8fafc;
+    }
+
+    body.dark-mode .code-wrapper {
+      background: #0f172a;
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 14px;
+      background: #e2e8f0;
+      color: #475569;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+
+    body.dark-mode .code-header {
+      background: #1e293b;
+      color: #94a3b8;
+    }
+
+    .btn-copy {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 3px 8px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #334155;
+      transition: all 0.15s ease;
+    }
+
+    body.dark-mode .btn-copy {
+      background: #334155;
+      color: #f1f5f9;
+      border-color: #475569;
+    }
+
+    .btn-copy:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    #contentArea pre {
+      margin: 0;
+      padding: 16px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    #contentArea code:not(pre code) {
+      font-family: 'JetBrains Mono', monospace;
+      background: #f1f5f9;
+      color: #0369a1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      border: 1px solid #e2e8f0;
+    }
+
+    body.dark-mode #contentArea code:not(pre code) {
+      background: #334155;
+      color: #38bdf8;
+      border-color: #475569;
+    }
+
+    /* Loading Spinner */
+    .loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+    }
+
+    .spinner {
+      width: 44px;
+      height: 44px;
+      border: 4px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 16px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Bottom Navigator */
+    .bottom-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 50px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-step:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary-dark);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div id="progressBar"></div>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-navbar">
+    <div class="nav-left">
+      <a href="index.html" class="btn-back">
+        <span>←</span>
+        <span>Python 門戶</span>
+      </a>
+
+      <!-- Chapter Switcher -->
+      <select id="chapterSelect" class="chapter-select" onchange="switchChapter(this.value)">
+        <optgroup label="正課核心單元 (Ch01~Ch07)">
+          <option value="Lecture/ch01_intro.md">Ch01 導論與環境建置</option>
+          <option value="Lecture/ch02_program.md">Ch02 程式基本元素</option>
+          <option value="Lecture/ch03_control.md">Ch03 流程控制結構</option>
+          <option value="Lecture/ch04_collection.md">Ch04 資料容器與結構</option>
+          <option value="Lecture/ch05_function.md">Ch05 函式設計與模組化</option>
+          <option value="Lecture/ch06_pandas.md">Ch06 資料處理分析 (Pandas)</option>
+          <option value="Lecture/ch07_OOP.md">Ch07 物件導向設計 (OOP)</option>
+        </optgroup>
+        <optgroup label="進階自修補充 (Ch08~Ch12)">
+          <option value="Lecture+/ch08_engineering.md">Ch08 工程與資電應用實務</option>
+          <option value="Lecture+/ch09_machine_learning.md">Ch09 機器學習入門實踐</option>
+          <option value="Lecture+/ch10_AI_LLM.md">Ch10 生成式 AI 與 LLM 應用</option>
+          <option value="Lecture+/ch11_game.md">Ch11 Pygame 視窗遊戲設計</option>
+          <option value="Lecture+/ch12_web.md">Ch12 Python Web 開發 (Flask)</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="nav-right">
+      <a id="btnSlideHtml" href="#" target="_blank" class="btn-nav-action" title="開啟全螢幕線上簡報">
+        <span>🖥️</span>
+        <span>簡報 (HTML)</span>
+      </a>
+      <a id="btnSlidePdf" href="#" target="_blank" class="btn-nav-action" title="開啟或下載簡報 PDF">
+        <span>📄</span>
+        <span>簡報 (PDF)</span>
+      </a>
+      <button class="btn-nav-action" onclick="toggleDarkMode()" title="切換深淺模式">
+        <span id="darkIcon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Layout Container -->
+  <main class="layout-container">
+
+    <!-- Document Article -->
+    <article class="document-body">
+      <div id="contentArea">
+        <div class="loader">
+          <div class="spinner"></div>
+          <p>正在解析並渲染 Markdown 講義內容...</p>
+        </div>
+      </div>
+
+      <!-- Bottom Step Navigator -->
+      <nav class="bottom-nav">
+        <a id="prevBtn" href="#" class="btn-step" style="display:none;">
+          <span>←</span>
+          <span id="prevTitle">上一章</span>
+        </a>
+        <div style="flex:1"></div>
+        <a id="nextBtn" href="#" class="btn-step" style="display:none;">
+          <span id="nextTitle">下一章</span>
+          <span>→</span>
+        </a>
+      </nav>
+    </article>
+
+    <!-- Right Table of Contents -->
+    <aside class="toc-sidebar" id="tocSidebar">
+      <div class="toc-title">
+        <span>📑</span>
+        <span>本講義目錄</span>
+      </div>
+      <ul class="toc-list" id="tocList"></ul>
+    </aside>
+
+  </main>
+
+  <script>
+    // Chapter Metadata Mapping
+    const chapters = [
+      { file: 'Lecture/ch01_intro.md', title: 'Ch01 導論與環境建置', slideHtml: 'Slide/html/ch01s_intro.html', slidePdf: 'Slide/pdf/ch01s_intro.pdf' },
+      { file: 'Lecture/ch02_program.md', title: 'Ch02 程式基本元素', slideHtml: 'Slide/html/ch02s_program.html', slidePdf: 'Slide/pdf/ch02s_program.pdf' },
+      { file: 'Lecture/ch03_control.md', title: 'Ch03 流程控制結構', slideHtml: 'Slide/html/ch03s_control.html', slidePdf: 'Slide/pdf/ch03s_control.pdf' },
+      { file: 'Lecture/ch04_collection.md', title: 'Ch04 資料容器與結構', slideHtml: 'Slide/html/ch04s_collection.html', slidePdf: 'Slide/pdf/ch04s_collection.pdf' },
+      { file: 'Lecture/ch05_function.md', title: 'Ch05 函式設計與模組化', slideHtml: 'Slide/html/ch05s_function.html', slidePdf: 'Slide/pdf/ch05s_function.pdf' },
+      { file: 'Lecture/ch06_pandas.md', title: 'Ch06 資料處理分析 (Pandas)', slideHtml: 'Slide/html/ch06s_pandas.html', slidePdf: 'Slide/pdf/ch06s_pandas.pdf' },
+      { file: 'Lecture/ch07_OOP.md', title: 'Ch07 物件導向設計 (OOP)', slideHtml: 'Slide/html/ch07s_OOP.html', slidePdf: 'Slide/pdf/ch07s_OOP.pdf' },
+      { file: 'Lecture+/ch08_engineering.md', title: 'Ch08 工程與資電應用實務', slideHtml: 'Slide/html/ch08s_engineering.html', slidePdf: 'Slide/pdf/ch08s_engineering.pdf' },
+      { file: 'Lecture+/ch09_machine_learning.md', title: 'Ch09 機器學習入門實踐', slideHtml: 'Slide/html/ch09s_machine_learning.html', slidePdf: 'Slide/pdf/ch09s_machine_learning.pdf' },
+      { file: 'Lecture+/ch10_AI_LLM.md', title: 'Ch10 生成式 AI 與 LLM 應用', slideHtml: 'Slide/html/ch10s_AI_LLM.html', slidePdf: 'Slide/pdf/ch10s_AI_LLM.pdf' },
+      { file: 'Lecture+/ch11_game.md', title: 'Ch11 Pygame 視窗遊戲設計', slideHtml: 'Slide/html/ch11s_game.html', slidePdf: 'Slide/pdf/ch11s_game.pdf' },
+      { file: 'Lecture+/ch12_web.md', title: 'Ch12 Python Web 開發 (Flask)', slideHtml: 'Slide/html/ch12s_web.html', slidePdf: 'Slide/pdf/ch12s_web.pdf' },
+    ];
+
+    function getFileParam() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('file') || 'Lecture/ch01_intro.md';
+    }
+
+    function switchChapter(file) {
+      history.pushState(null, null, `lecture.html?file=${encodeURIComponent(file)}`);
+      loadMarkdown();
+    }
+
+    function updateNavButtons(currentFile) {
+      const idx = chapters.findIndex(c => c.file === currentFile);
+      const ch = idx !== -1 ? chapters[idx] : chapters[0];
+
+      // Update dropdown selection
+      document.getElementById('chapterSelect').value = ch.file;
+
+      // Update Top Slide buttons
+      const btnSlideHtml = document.getElementById('btnSlideHtml');
+      const btnSlidePdf = document.getElementById('btnSlidePdf');
+      if (ch.slideHtml) {
+        btnSlideHtml.href = ch.slideHtml;
+        btnSlideHtml.style.display = 'inline-flex';
+      } else {
+        btnSlideHtml.style.display = 'none';
+      }
+      if (ch.slidePdf) {
+        btnSlidePdf.href = ch.slidePdf;
+        btnSlidePdf.style.display = 'inline-flex';
+      } else {
+        btnSlidePdf.style.display = 'none';
+      }
+
+      // Update Prev / Next buttons
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      if (idx > 0) {
+        prevBtn.style.display = 'inline-flex';
+        document.getElementById('prevTitle').textContent = chapters[idx - 1].title;
+        prevBtn.onclick = (e) => { e.preventDefault(); switchChapter(chapters[idx - 1].file); };
+      } else {
+        prevBtn.style.display = 'none';
+      }
+
+      if (idx >= 0 && idx < chapters.length - 1) {
+        nextBtn.style.display = 'inline-flex';
+        document.getElementById('nextTitle').textContent = chapters[idx + 1].title;
+        nextBtn.onclick = (e) => { e.preventDefault(); switchChapter(chapters[idx + 1].file); };
+      } else {
+        nextBtn.style.display = 'none';
+      }
+    }
+
+    // Path Resolver Helper
+    function resolvePath(baseDir, relativePath) {
+      if (relativePath.startsWith('/') || /^(https?:|\/\/|data:)/i.test(relativePath)) return relativePath;
+      if (relativePath.startsWith('./')) relativePath = relativePath.substring(2);
+
+      const stack = baseDir ? baseDir.split('/').filter(Boolean) : [];
+      const parts = relativePath.split('/');
+
+      for (let p of parts) {
+        if (p === '..') {
+          if (stack.length > 0) stack.pop();
+        } else if (p !== '.' && p !== '') {
+          stack.push(p);
+        }
+      }
+      return stack.join('/');
+    }
+
+    // Fix Relative Image Paths
+    function fixRelativePaths(baseDir) {
+      const images = document.querySelectorAll('#contentArea img');
+      images.forEach(img => {
+        const src = img.getAttribute('src');
+        if (src && !/^(https?:|\/\/|data:)/i.test(src)) {
+          img.src = resolvePath(baseDir, src);
+        }
+      });
+    }
+
+    // Build Table of Contents & Scroll-Spy
+    function buildTOC() {
+      const content = document.getElementById('contentArea');
+      const tocList = document.getElementById('tocList');
+      tocList.innerHTML = '';
+
+      const headings = content.querySelectorAll('h2, h3, h4');
+      if (headings.length === 0) {
+        document.getElementById('tocSidebar').style.display = 'none';
+        return;
+      }
+      document.getElementById('tocSidebar').style.display = 'block';
+
+      headings.forEach((heading, index) => {
+        let id = heading.id;
+        if (!id) {
+          id = 'heading-' + index + '-' + heading.textContent.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fa5]+/g, '-');
+          heading.id = id;
+        }
+
+        const li = document.createElement('li');
+        li.className = `toc-item toc-level-${heading.tagName.toLowerCase().charAt(1)}`;
+        li.dataset.targetId = id;
+
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.textContent = heading.textContent.trim();
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+          history.pushState(null, null, '#' + id);
+        });
+
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            tocList.querySelectorAll('.toc-item').forEach(item => {
+              item.classList.toggle('active', item.dataset.targetId === id);
+            });
+          }
+        });
+      }, {
+        rootMargin: '-80px 0px -75% 0px'
+      });
+
+      headings.forEach(h => observer.observe(h));
+    }
+
+    // Code Blocks Enhancement
+    function enhanceCodeBlocks() {
+      document.querySelectorAll('#contentArea pre').forEach(pre => {
+        const code = pre.querySelector('code');
+        if (!code) return;
+
+        let lang = 'CODE';
+        const classes = code.className.split(' ');
+        for (let c of classes) {
+          if (c.startsWith('language-')) {
+            lang = c.replace('language-', '').toUpperCase();
+            break;
+          }
+        }
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-wrapper';
+
+        const header = document.createElement('div');
+        header.className = 'code-header';
+        header.innerHTML = `<span>${lang}</span>`;
+
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'btn-copy';
+        copyBtn.textContent = '📋 複製程式碼';
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(code.innerText).then(() => {
+            copyBtn.textContent = '✅ 已複製！';
+            setTimeout(() => { copyBtn.textContent = '📋 複製程式碼'; }, 2000);
+          });
+        });
+
+        header.appendChild(copyBtn);
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(header);
+        wrapper.appendChild(pre);
+      });
+    }
+
+    // Load and Render Markdown
+    async function loadMarkdown() {
+      const file = getFileParam();
+      updateNavButtons(file);
+
+      const contentArea = document.getElementById('contentArea');
+      contentArea.innerHTML = `
+        <div class="loader">
+          <div class="spinner"></div>
+          <p>正在載入 ${file} ...</p>
+        </div>`;
+
+      try {
+        const resp = await fetch(file);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status} 找不到講義檔案：${file}`);
+        const mdText = await resp.text();
+
+        marked.setOptions({
+          highlight: function(code, lang) {
+            if (lang && hljs.getLanguage(lang)) {
+              return hljs.highlight(code, { language: lang }).value;
+            }
+            return hljs.highlightAuto(code).value;
+          },
+          breaks: true,
+          gfm: true
+        });
+
+        contentArea.innerHTML = marked.parse(mdText);
+
+        // Fix image paths
+        const lastSlash = file.lastIndexOf('/');
+        const baseDir = lastSlash !== -1 ? file.substring(0, lastSlash) : '';
+        fixRelativePaths(baseDir);
+
+        // Build Table of Contents & Code Blocks
+        buildTOC();
+        enhanceCodeBlocks();
+
+        // Render Mermaid Diagrams if any
+        mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains('dark-mode') ? 'dark' : 'default' });
+        document.querySelectorAll('#contentArea .language-mermaid').forEach(async (el) => {
+          const graphDefinition = el.innerText;
+          const container = document.createElement('div');
+          container.className = 'mermaid';
+          container.innerHTML = graphDefinition;
+          el.parentNode.replaceChild(container, el);
+        });
+        await mermaid.run();
+
+        // Render KaTeX Math
+        if (window.renderMathInElement) {
+          renderMathInElement(contentArea, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false }
+            ],
+            throwOnError: false
+          });
+        }
+
+        window.scrollTo(0, 0);
+
+      } catch (err) {
+        contentArea.innerHTML = `
+          <div style="padding: 40px; text-align: center; color: #ef4444;">
+            <h2>⚠️ 載入講義時發生錯誤</h2>
+            <p style="margin-top: 10px; color: var(--text-muted);">${err.message}</p>
+            <a href="index.html" class="btn-back" style="display:inline-flex; margin-top:20px;">返回 Python 門戶</a>
+          </div>`;
+      }
+    }
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('progressBar').style.width = progress + '%';
+    });
+
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      document.getElementById('darkIcon').textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('teach_python_dark', isDark ? 'true' : 'false');
+    }
+
+    if (localStorage.getItem('teach_python_dark') === 'true') {
+      document.body.classList.add('dark-mode');
+      document.getElementById('darkIcon').textContent = '☀️';
+    }
+
+    // Keyboard Shortcuts ( [ for prev, ] for next )
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+      if (e.key === '[') {
+        const prev = document.getElementById('prevBtn');
+        if (prev && prev.style.display !== 'none') prev.click();
+      } else if (e.key === ']') {
+        const next = document.getElementById('nextBtn');
+        if (next && next.style.display !== 'none') next.click();
+      }
+    });
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', loadMarkdown);
+    window.addEventListener('popstate', loadMarkdown);
+  </script>
+
+</body>
+
+</html>
