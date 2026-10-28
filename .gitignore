@@ -46,6 +46,8 @@ venv/
 **/*.zip
 /-hidden/
 /exam/
+exam/
+**/exam/
 /hw/
 
 # Private credentials and presentation binaries
