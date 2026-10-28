@@ -47,6 +47,7 @@
   │     └── .marprc.json           (配置引入 ../themes/)
   │
   ├── UX/                          <-- 使用者體驗設計 (UX) 課程工作區
+  ├── Python/                      <-- Python 程式設計與 AI 應用課程工作區
   └── SE/                          <-- 軟體工程 (SE / ASE) 課程工作區
 ```
 
