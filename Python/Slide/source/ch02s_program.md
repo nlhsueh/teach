@@ -261,7 +261,9 @@ Feng Chia University
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 程式的基本架構 (IPO)
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/02_IPO.jpeg" alt="程式的基本架構 (IPO)" />
 </div>
 
@@ -320,7 +322,9 @@ print (name + "'s BMI is", BMI)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 變數命名規則
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/03_naming.jpeg" alt="變數命名規則" />
 </div>
 
@@ -404,7 +408,9 @@ isTeacher = True
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 常見的變數型態
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/04_var_types.jpeg" alt="常見的變數型態" />
 </div>
 
@@ -417,7 +423,9 @@ isTeacher = True
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 布林值
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/05_boolean.jpeg" alt="布林值" />
 </div>
 
@@ -495,7 +503,9 @@ bool('two') # True
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## ASCII 編碼系統
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/06_ASCII.jpeg" alt="ASCII 編碼系統" />
 </div>
 
@@ -612,7 +622,9 @@ print(bool(None), bool('False'))
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 銀行家捨入法
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/07_round.jpeg" alt="銀行家捨入法" />
 </div>
 
@@ -699,7 +711,9 @@ print(10 // 4, round(3.5))
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 字串運算
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/08_string_manipulation.jpeg" alt="字串運算" />
 </div>
 
@@ -779,7 +793,9 @@ print(hello) # 注意！字串在 Python 中是不可變的，原值不變
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 邏輯運算
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/09_logical_op.jpeg" alt="邏輯運算" />
 </div>
 
@@ -864,7 +880,9 @@ print(is_student or is_kid and not is_student)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## eval 函式
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/10_eval.jpeg" alt="eval 函式" />
 </div>
 
@@ -895,7 +913,9 @@ print(age1, age2, type(age1)) # 12 23 <class 'int'>
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 字串格式化
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/11_formating.jpeg" alt="字串格式化" />
 </div>
 
@@ -948,7 +968,9 @@ print(r"raw string: first line\nsecond line") # 輸出原本的 \n
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 檔案處理 with open
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/12_with_op.jpeg" alt="檔案處理 with open" />
 </div>
 
@@ -1030,7 +1052,9 @@ with open("grade.txt", "r", encoding="utf-8") as f2:
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 程式錯誤 (Bugs)
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/13_bugs.jpeg" alt="程式錯誤 (Bugs)" />
 </div>
 
@@ -1080,7 +1104,9 @@ area = radius * radius * PI # 易讀且易於日後修改 PI 的精確度
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 程式註解 (Comments)
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/14_comment.jpeg" alt="程式註解 (Comments)" />
 </div>
 
@@ -1123,7 +1149,9 @@ print("排序後結果:", a)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 程式生命週期
+
+<div class="image-wrapper">
   <img src="../img/ch02/gemini_nb/15_lifecycle.jpeg" alt="程式生命週期" />
 </div>
 

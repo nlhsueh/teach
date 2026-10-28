@@ -284,7 +284,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## The AI Paradox: AI User vs AI Creator
+
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.003.jpeg" alt="The AI Paradox: AI User vs AI Creator" />
 </div>
 
@@ -307,7 +309,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Computational Thinking 跨領域賦能
+
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.006.jpeg" alt="Computational Thinking 跨領域賦能" />
 </div>
 
@@ -331,7 +335,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## The Universal Origin: Python 的起源與應用生態
+
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.004.jpeg" alt="The Universal Origin: Python 的起源與應用生態" />
 </div>
 
@@ -351,7 +357,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## The Zen of Python
+
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.005.jpeg" alt="The Zen of Python" />
 </div>
 
@@ -454,7 +462,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## The Modern Developer Toolkit
+
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.007.jpeg" alt="The Modern Developer Toolkit" />
 </div>
 
@@ -462,7 +472,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## The Setup Decision Tree
+
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.008.jpeg" alt="The Setup Decision Tree" />
 </div>
 
@@ -483,7 +495,7 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.009.jpeg" alt="Local Setup Architecture" />
 </div>
 
@@ -607,7 +619,9 @@ deactivate
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## The Timeless Learning Mindset
+
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.010.jpeg" alt="The Timeless Learning Mindset" />
 </div>
 
@@ -624,7 +638,9 @@ deactivate
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Learning in the AI Generation
+
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.011.jpeg" alt="Learning in the AI Generation" />
 </div>
 
@@ -632,7 +648,9 @@ deactivate
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Anatomy of a Perfect Prompt
+
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.012.jpeg" alt="Anatomy of a Perfect Prompt" />
 </div>
 
@@ -665,7 +683,9 @@ deactivate
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## The Smart Coding Tutor Framework
+
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.013.jpeg" alt="The Smart Coding Tutor Framework" />
 </div>
 
@@ -673,7 +693,9 @@ deactivate
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Personalizing the Path
+
+<div class="image-wrapper">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.014.jpeg" alt="Personalizing the Path" />
 </div>
 

@@ -233,7 +233,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 人工智慧與LLM應用
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.002.jpeg" alt="人工智慧與LLM應用" />
 </div>
 
@@ -254,7 +256,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Transformer自注意力機制
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.003.jpeg" alt="Transformer自注意力機制" />
 </div>
 
@@ -262,7 +266,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Token計費模型
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.004.jpeg" alt="Token計費模型" />
 </div>
 
@@ -270,7 +276,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 隨機性控制超參數
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.005.jpeg" alt="隨機性控制超參數" />
 </div>
 
@@ -332,7 +340,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## GeminiAPI開發入門
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.006.jpeg" alt="GeminiAPI開發入門" />
 </div>
 
@@ -340,7 +350,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 基礎文字生成呼叫
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.007.jpeg" alt="基礎文字生成呼叫" />
 </div>
 
@@ -348,7 +360,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 串流輸出與打字效果
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.008.jpeg" alt="串流輸出與打字效果" />
 </div>
 
@@ -356,7 +370,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 多輪對話歷史記憶
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.009.jpeg" alt="多輪對話歷史記憶" />
 </div>
 
@@ -376,7 +392,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 多模態影像分析
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.010.jpeg" alt="多模態影像分析" />
 </div>
 
@@ -384,7 +402,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 強制輸出JSON模式
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.011.jpeg" alt="強制輸出JSON模式" />
 </div>
 
@@ -392,7 +412,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 工具調用運作流程
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.012.jpeg" alt="工具調用運作流程" />
 </div>
 
@@ -452,7 +474,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## RAG檢索增強生成
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.013.jpeg" alt="RAG檢索增強生成" />
 </div>
 
@@ -508,6 +532,8 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 終端機AI助理代理人專案
+
+<div class="image-wrapper">
   <img src="../img/ch10/gemini_nb/Python_AI_Agent_Engineering.014.jpeg" alt="終端機AI助理代理人專案" />
 </div>

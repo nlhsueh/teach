@@ -250,21 +250,27 @@ Feng Chia University
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 控制結構總覽
+
+<div class="image-wrapper">
   <img src="../img/ch03/01_flowchart_overview.png" alt="控制結構總覽" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 循序結構
+
+<div class="image-wrapper">
   <img src="../img/ch03/gemini_nb/02_sequential.jpeg" alt="循序結構" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 範例專案總覽
+
+<div class="image-wrapper">
   <img src="../img/ch03/02_projects_overview.png" alt="範例專案總覽" />
 </div>
 
@@ -276,14 +282,18 @@ Feng Chia University
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## if 分支流程圖
+
+<div class="image-wrapper">
   <img src="../img/ch03/03_branch_if.png" alt="if 分支流程圖" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 分支控制結構
+
+<div class="image-wrapper">
   <img src="../img/ch03/gemini_nb/03_branch.jpeg" alt="分支控制結構" />
 </div>
 
@@ -310,7 +320,9 @@ print ("end") # 不論如何都會執行的程式 (無縮排)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## else 分支流程圖
+
+<div class="image-wrapper">
   <img src="../img/ch03/04_branch_else.png" alt="else 分支流程圖" />
 </div>
 
@@ -338,7 +350,9 @@ print ("end")
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## elif 分支流程圖
+
+<div class="image-wrapper">
   <img src="../img/ch03/05_branch_elif.png" alt="elif 分支流程圖" />
 </div>
 
@@ -366,7 +380,9 @@ print ("end")
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 邏輯錯誤示意圖
+
+<div class="image-wrapper">
   <img src="../img/ch03/06_logic_error.png" alt="邏輯錯誤示意圖" />
 </div>
 
@@ -414,7 +430,9 @@ if is_young_male:
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 乾淨的條件程式碼
+
+<div class="image-wrapper">
   <img src="../img/ch03/gemini_nb/05_clean_code.jpeg" alt="乾淨的條件程式碼" />
 </div>
 
@@ -426,7 +444,9 @@ if is_young_male:
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## while 迴圈與 for 迴圈比較
+
+<div class="image-wrapper">
   <img src="../img/ch03/gemini_nb/09_while_for.jpeg" alt="while 迴圈與 for 迴圈比較" />
 </div>
 
@@ -475,7 +495,9 @@ print("總和為:", sum)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## List 列表結構
+
+<div class="image-wrapper">
   <img src="../img/ch03/07_list_intro.png" alt="List 列表結構" />
 </div>
 
@@ -523,7 +545,9 @@ for i in range(10, 0, -2):
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## range 函數的參數
+
+<div class="image-wrapper">
   <img src="../img/ch03/gemini_nb/08_range.jpeg" alt="range 函數的參數" />
 </div>
 
@@ -572,7 +596,9 @@ for i in range(1, 10):
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 分支與迴圈控制控制流
+
+<div class="image-wrapper">
   <img src="../img/ch03/gemini_nb/14_branch_loop.jpeg" alt="分支與迴圈控制控制流" />
 </div>
 
@@ -629,14 +655,18 @@ while True:
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 小烏龜繪圖幾何
+
+<div class="image-wrapper">
   <img src="../img/ch03/08_turtle_geom.png" alt="小烏龜繪圖幾何" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 小烏龜幾何繪圖
+
+<div class="image-wrapper">
   <img src="../img/ch03/gemini_nb/13_geometric.jpeg" alt="小烏龜幾何繪圖" />
 </div>
 
@@ -665,7 +695,9 @@ for i in range(36):
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 小烏龜螺旋軌跡
+
+<div class="image-wrapper">
   <img src="../img/ch03/09_turtle_spiral.png" alt="小烏龜螺旋軌跡" />
 </div>
 
@@ -721,7 +753,9 @@ while not correct:
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 第三章總結與練習
+
+<div class="image-wrapper">
   <img src="../img/ch03/gemini_nb/15_conclusion.jpeg" alt="第三章總結與練習" />
 </div>
 

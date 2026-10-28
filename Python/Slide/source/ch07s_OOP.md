@@ -256,7 +256,9 @@ Feng Chia University
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 類別與物件
+
+<div class="image-wrapper">
   <img src="../img/ch07/gemini_nb/02_object.jpeg" alt="類別與物件" />
 </div>
 
@@ -304,7 +306,9 @@ print(obj.getX()) # 輸出: 10
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## List 也是物件
+
+<div class="image-wrapper">
   <img src="../img/ch07/gemini_nb/12_all_object.jpeg" alt="List 也是物件" />
 </div>
 
@@ -502,7 +506,9 @@ print(Counter.count, c.count)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 安全性弱點
+
+<div class="image-wrapper">
   <img src="../img/ch07/gemini_nb/05_vulnerability.jpeg" alt="安全性弱點" />
 </div>
 
@@ -601,7 +607,9 @@ print(s.__code)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 屬性安全性管理
+
+<div class="image-wrapper">
   <img src="../img/ch07/gemini_nb/07_security.jpeg" alt="屬性安全性管理" />
 </div>
 
@@ -642,7 +650,9 @@ nick.riskLevel = 2    # 呼叫 setter
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 繼承關係
+
+<div class="image-wrapper">
   <img src="../img/ch07/gemini_nb/09_inheritance.jpeg" alt="繼承關係" />
 </div>
 
@@ -754,7 +764,9 @@ print(c.val)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 自訂特殊方法
+
+<div class="image-wrapper">
   <img src="../img/ch07/gemini_nb/08_custom.jpeg" alt="自訂特殊方法" />
 </div>
 
@@ -805,7 +817,9 @@ print(a == b) # 輸出: True (呼叫 __eq__)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 抽象類別與多型
+
+<div class="image-wrapper">
   <img src="../img/ch07/gemini_nb/11_abstract.jpeg" alt="抽象類別與多型" />
 </div>
 

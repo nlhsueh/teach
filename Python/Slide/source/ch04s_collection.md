@@ -276,14 +276,18 @@ empty_list_2 = list()
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## List 記憶體索引架構
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/02_indexed_collection.jpeg" alt="List 記憶體索引架構" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## List 新增方法比較
+
+<div class="image-wrapper">
   <img src="../img/ch04/01_list_insert_extend_append.png" alt="List 新增方法比較" />
 </div>
 
@@ -348,7 +352,9 @@ print(grades)      # [60, 72, 90, 100]
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## List 索引與切片
+
+<div class="image-wrapper">
   <img src="../img/ch04/02_list_index.png" alt="List 索引與切片" />
 </div>
 
@@ -394,14 +400,18 @@ for i, g in enumerate(grade):
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 二維/巢狀 List
+
+<div class="image-wrapper">
   <img src="../img/ch04/03_two_dim_list.png" alt="二維/巢狀 List" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 二維陣列位置指標
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/04_nested.jpeg" alt="二維陣列位置指標" />
 </div>
 
@@ -470,14 +480,18 @@ g_last = sorted(grade_data, key=lambda x: x[-1])
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## is vs ==
+
+<div class="image-wrapper">
   <img src="../img/ch04/04_equality_vs_identity.png" alt="is vs ==" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## is vs == 記憶體與參考比較
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/03_compare.jpeg" alt="is vs == 記憶體與參考比較" />
 </div>
 
@@ -503,14 +517,18 @@ print(grade is gc) # False (不同位址)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 氣泡排序法
+
+<div class="image-wrapper">
   <img src="../img/ch04/05_bubble_sort.png" alt="氣泡排序法" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Tuple 與 List 的差別與效能
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/05_tuple.jpeg" alt="Tuple 與 List 的差別與效能" />
 </div>
 
@@ -769,21 +787,27 @@ print(tup)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Set 集合基本概念
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/08_set.jpeg" alt="Set 集合基本概念" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Set 數學運算
+
+<div class="image-wrapper">
   <img src="../img/ch04/06_set_operations.png" alt="Set 數學運算" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Set 交集/聯集/差集圖解
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/09_set_op.jpeg" alt="Set 交集/聯集/差集圖解" />
 </div>
 
@@ -881,7 +905,9 @@ print(set([1, 2, 2, 3]) == set([3, 2, 1]))
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Dict 字典結構觀念
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/10_dict.jpeg" alt="Dict 字典結構觀念" />
 </div>
 
@@ -908,7 +934,9 @@ popped_val = grade.pop(3) # 移除並回傳鍵 3 的值 (90)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 不合法的鍵型態 (List 鍵錯誤)
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/12_invalid_key.jpeg" alt="不合法的鍵型態 (List 鍵錯誤)" />
 </div>
 
@@ -974,21 +1002,27 @@ dict_comp = {k: v for k, v in zip(std, grades, strict=True)}
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Zip 壓縮與 strict=True 圖解
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/11_zip.jpeg" alt="Zip 壓縮與 strict=True 圖解" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## JSON 結構化資料格式
+
+<div class="image-wrapper">
   <img src="../img/ch04/07_json_formatter.png" alt="JSON 結構化資料格式" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## json loads 與 dumps 記憶體關係
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/13_json_load.jpeg" alt="json loads 與 dumps 記憶體關係" />
 </div>
 
@@ -1066,7 +1100,9 @@ print(info.get('score', 60), info.get('age', 60))
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## iBike 實例結構架構
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/14_dict_example.jpeg" alt="iBike 實例結構架構" />
 </div>
 
@@ -1096,7 +1132,9 @@ print(info.get('score', 60), info.get('age', 60))
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## iBike 資料處理讀取流程
+
+<div class="image-wrapper">
   <img src="../img/ch04/gemini_nb/15_process.jpeg" alt="iBike 資料處理讀取流程" />
 </div>
 

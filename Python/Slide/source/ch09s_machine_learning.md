@@ -233,7 +233,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 機器學習工具包
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.001.jpeg" alt="機器學習工具包" />
 </div>
 
@@ -254,7 +256,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 機器學習基本分類
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.002.jpeg" alt="機器學習基本分類" />
 </div>
 
@@ -262,7 +266,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 偏差與變異的平衡
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.003.jpeg" alt="偏差與變異的平衡" />
 </div>
 
@@ -283,7 +289,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## K近鄰分類器原理
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.004.jpeg" alt="K近鄰分類器原理" />
 </div>
 
@@ -291,7 +299,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 決策樹原理
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.005.jpeg" alt="決策樹原理" />
 </div>
 
@@ -299,7 +309,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 隨機森林集成學習
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.006.jpeg" alt="隨機森林集成學習" />
 </div>
 
@@ -307,7 +319,9 @@ style: |
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 交叉驗證與網格搜尋
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.007.jpeg" alt="交叉驗證與網格搜尋" />
 </div>
 
@@ -430,7 +444,9 @@ print(f"交叉驗證最佳精度：{grid_search.best_score_:.4f}")
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 多元線性迴歸
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.008.jpeg" alt="多元線性迴歸" />
 </div>
 
@@ -438,7 +454,9 @@ print(f"交叉驗證最佳精度：{grid_search.best_score_:.4f}")
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 脊迴歸與套索迴歸
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.009.jpeg" alt="脊迴歸與套索迴歸" />
 </div>
 
@@ -446,7 +464,9 @@ print(f"交叉驗證最佳精度：{grid_search.best_score_:.4f}")
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 迴歸指標評估
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.010.jpeg" alt="迴歸指標評估" />
 </div>
 
@@ -507,7 +527,9 @@ print(f"交叉驗證最佳精度：{grid_search.best_score_:.4f}")
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## KMeans資料分群
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.011.jpeg" alt="KMeans資料分群" />
 </div>
 
@@ -515,7 +537,9 @@ print(f"交叉驗證最佳精度：{grid_search.best_score_:.4f}")
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 肘部法聚類評估
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.012.jpeg" alt="肘部法聚類評估" />
 </div>
 
@@ -573,7 +597,9 @@ print(f"交叉驗證最佳精度：{grid_search.best_score_:.4f}")
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 特徵標準化
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.013.jpeg" alt="特徵標準化" />
 </div>
 
@@ -581,7 +607,9 @@ print(f"交叉驗證最佳精度：{grid_search.best_score_:.4f}")
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 類別獨熱編碼
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.014.jpeg" alt="類別獨熱編碼" />
 </div>
 
@@ -639,6 +667,8 @@ print(f"交叉驗證最佳精度：{grid_search.best_score_:.4f}")
 
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 紅酒品質分類器專案
+
+<div class="image-wrapper">
   <img src="../img/ch09/gemini_nb/The_Machine_Learning_Toolkit.015.jpeg" alt="紅酒品質分類器專案" />
 </div>

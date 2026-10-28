@@ -259,7 +259,9 @@ Feng Chia University
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Pandas 資料分析流程
+
+<div class="image-wrapper">
   <img src="../img/ch06/gemini_nb/02_pipeline.jpeg" alt="Pandas 資料分析流程" />
 </div>
 
@@ -286,7 +288,9 @@ Feng Chia University
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Series 概念
+
+<div class="image-wrapper">
   <img src="../img/ch06/gemini_nb/03_series.jpeg" alt="Series 概念" />
 </div>
 
@@ -312,7 +316,9 @@ Feng Chia University
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## DataFrame 概念
+
+<div class="image-wrapper">
   <img src="../img/ch06/gemini_nb/04_dataframe.jpeg" alt="DataFrame 概念" />
 </div>
 
@@ -373,7 +379,9 @@ Name: Apple, dtype: object
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## loc vs iloc
+
+<div class="image-wrapper">
   <img src="../img/ch06/gemini_nb/06_loc_iloc.jpeg" alt="loc vs iloc" />
 </div>
 
@@ -616,7 +624,9 @@ print(df2)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## groupby 概念
+
+<div class="image-wrapper">
   <img src="../img/ch06/gemini_nb/09_groupby.jpeg" alt="groupby 概念" />
 </div>
 
@@ -651,7 +661,9 @@ df.groupby(['縣市名稱', '學制']).count()
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 遺失資料處理
+
+<div class="image-wrapper">
   <img src="../img/ch06/gemini_nb/07_missing_data.jpeg" alt="遺失資料處理" />
 </div>
 
@@ -679,7 +691,9 @@ df.bfill()
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 支援缺失值的原生型態 (Nullable Types)
+
+<div class="image-wrapper">
   <img src="../img/ch06/gemini_nb/08_nullable_types.jpeg" alt="支援缺失值的原生型態 (Nullable Types)" />
 </div>
 
@@ -701,7 +715,9 @@ print(df_modern.dtypes)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 寫入時複製 (CoW)
+
+<div class="image-wrapper">
   <img src="../img/ch06/gemini_nb/05_copy_on_write.jpeg" alt="寫入時複製 (CoW)" />
 </div>
 
@@ -766,7 +782,9 @@ df2.iloc[0, 0] = 99  # 此時修改才真正分裂複製
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 資料表合併
+
+<div class="image-wrapper">
   <img src="../img/ch06/gemini_nb/10_merge.jpeg" alt="資料表合併" />
 </div>
 
@@ -831,7 +849,9 @@ print(df_outer)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## 繪製圖表
+
+<div class="image-wrapper">
   <img src="../img/ch06/gemini_nb/11_plot.jpeg" alt="繪製圖表" />
 </div>
 
@@ -887,7 +907,9 @@ plt.show()
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## YouBike 開放資料分析實例
+
+<div class="image-wrapper">
   <img src="../img/ch06/gemini_nb/13_youbike.jpeg" alt="YouBike 開放資料分析實例" />
 </div>
 

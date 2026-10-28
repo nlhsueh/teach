@@ -257,7 +257,9 @@ Feng Chia University
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Modular Design - Function Intro
+
+<div class="image-wrapper">
   <img src="../img/ch05/gemini_nb/03_function.jpeg" alt="Modular Design - Function Intro" />
 </div>
 
@@ -272,7 +274,9 @@ Feng Chia University
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Function Flow Concept
+
+<div class="image-wrapper">
   <img src="../img/ch05/01_function_intro.png" alt="Function Flow Concept" />
 </div>
 
@@ -295,7 +299,9 @@ hello2("Python")  # 輸出: Hello Python
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Function Definition - Name and Parameters
+
+<div class="image-wrapper">
   <img src="../img/ch05/gemini_nb/05_nametag.jpeg" alt="Function Definition - Name and Parameters" />
 </div>
 
@@ -485,7 +491,9 @@ intro("Albert", age=20, city="Taichung") # kwargs 為 {'age': 20, 'city': 'Taich
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Parameter Passing Principles
+
+<div class="image-wrapper">
   <img src="../img/ch05/gemini_nb/14_parameter.jpeg" alt="Parameter Passing Principles" />
 </div>
 
@@ -508,7 +516,9 @@ print(a) # 輸出: 1 (未受影響)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Immutable Parameter Passing Memory Detail
+
+<div class="image-wrapper">
   <img src="../img/ch05/02_immutable_passing.png" alt="Immutable Parameter Passing Memory Detail" />
 </div>
 
@@ -532,21 +542,27 @@ print(m) # 輸出: [2, 3] (原串列被修改)
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Mutable Parameter Passing Memory Detail
+
+<div class="image-wrapper">
   <img src="../img/ch05/03_mutable_passing.png" alt="Mutable Parameter Passing Memory Detail" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Parameter Passing Memory Details
+
+<div class="image-wrapper">
   <img src="../img/ch05/gemini_nb/07_passing_memory.jpeg" alt="Parameter Passing Memory Details" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Variables Memory Passing Architecture
+
+<div class="image-wrapper">
   <img src="../img/ch05/04_parameter_passing.png" alt="Variables Memory Passing Architecture" />
 </div>
 
@@ -642,7 +658,9 @@ print(squared) # [1, 4, 9, 16]
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Lambda Anonymous Function
+
+<div class="image-wrapper">
   <img src="../img/ch05/gemini_nb/08_lambda.jpeg" alt="Lambda Anonymous Function" />
 </div>
 
@@ -837,7 +855,9 @@ print(test_div(10, 2))
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Python Package and Module Importing
+
+<div class="image-wrapper">
   <img src="../img/ch05/gemini_nb/10_package.jpeg" alt="Python Package and Module Importing" />
 </div>
 
@@ -865,14 +885,18 @@ data = js.loads('{"value": 100}')
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Hanoi Tower Recursion Visual
+
+<div class="image-wrapper">
   <img src="../img/ch05/gemini_nb/12_recursive.jpeg" alt="Hanoi Tower Recursion Visual" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Hanoi Tower Rules
+
+<div class="image-wrapper">
   <img src="../img/ch05/05_hanoi_tower.png" alt="Hanoi Tower Rules" />
 </div>
 
@@ -900,21 +924,27 @@ hanoi(3, 'A', 'B', 'C') # 搬移 3 個盤子需 7 步
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Tic Tac Toe UI Structure
+
+<div class="image-wrapper">
   <img src="../img/ch05/gemini_nb/13_tic_tac_toe.jpeg" alt="Tic Tac Toe UI Structure" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Tic Tac Toe Game Loop Flow
+
+<div class="image-wrapper">
   <img src="../img/ch05/gemini_nb/14_game_flow.jpeg" alt="Tic Tac Toe Game Loop Flow" />
 </div>
 
 ---
 <!-- _class: title-image-slide -->
 
-<div class="centered-image">
+## Tic Tac Toe Game Board
+
+<div class="image-wrapper">
   <img src="../img/ch05/06_tictactoe.png" alt="Tic Tac Toe Game Board" />
 </div>
 
