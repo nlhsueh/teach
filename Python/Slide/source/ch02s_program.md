@@ -177,14 +177,16 @@ style: |
     margin-top: 0;
     margin-bottom: 10px;
   }
-  section.title-image-slide div.image-wrapper {
+  section.title-image-slide div.image-wrapper,
+  section.title-image-slide div.centered-image {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
     height: 480px;
   }
-  section.title-image-slide div.image-wrapper img {
+  section.title-image-slide div.image-wrapper img,
+  section.title-image-slide div.centered-image img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -257,7 +259,7 @@ Feng Chia University
   - **Output (輸出)**：將處理後的結果呈現給使用者（如螢幕顯示、寫入檔案、網路傳輸等）。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/02_IPO.jpeg" alt="程式的基本架構 (IPO)" />
@@ -316,7 +318,7 @@ print (name + "'s BMI is", BMI)
   - 不能使用 Python 的**保留字 (Keywords)**。 (例如：`import`, `for`, `else` ❌)
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/03_naming.jpeg" alt="變數命名規則" />
@@ -400,7 +402,7 @@ isTeacher = True
 | **空值 (`None`)** | 表示空值或缺少值 | `None` |
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/04_var_types.jpeg" alt="常見的變數型態" />
@@ -413,7 +415,7 @@ isTeacher = True
 - 只有兩種可能：**`True`** (真) 或 **`False`** (假)，主要用於條件判斷與邏輯控制。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/05_boolean.jpeg" alt="布林值" />
@@ -491,7 +493,7 @@ bool('two') # True
   - **`chr(code)`**：根據編碼數字反查字元。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/06_ASCII.jpeg" alt="ASCII 編碼系統" />
@@ -608,7 +610,7 @@ print(bool(None), bool('False'))
 - **設計目的**：避免累計捨入誤差在統計時系統性偏高，使大數據求和時更平準接近真實值。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/07_round.jpeg" alt="銀行家捨入法" />
@@ -695,7 +697,7 @@ print(10 // 4, round(3.5))
 | `in` | 檢查是否包含子字串 | `"e" in "Hello"` -> `True` |
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/08_string_manipulation.jpeg" alt="字串運算" />
@@ -775,7 +777,7 @@ print(hello) # 注意！字串在 Python 中是不可變的，原值不變
   - **`not`**：邏輯反轉（True 變 False，False 變 True）。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/09_logical_op.jpeg" alt="邏輯運算" />
@@ -860,7 +862,7 @@ print(is_student or is_kid and not is_student)
   - **`eval()`**：直接解析與執行字串中的運算，或自動將字串解析成對應型態（如以逗號分隔的數值組）。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/10_eval.jpeg" alt="eval 函式" />
@@ -891,7 +893,7 @@ print(age1, age2, type(age1)) # 12 23 <class 'int'>
   - **`%` 運算子**：C 語言風格（例：`"%s 歲數是 %d" % (name, age)`）。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/11_formating.jpeg" alt="字串格式化" />
@@ -944,7 +946,7 @@ print(r"raw string: first line\nsecond line") # 輸出原本的 \n
   - `f.readline()`：一次讀取檔案的一行資料（會連帶讀入換行符號 `\n`）。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/12_with_op.jpeg" alt="檔案處理 with open" />
@@ -1026,7 +1028,7 @@ with open("grade.txt", "r", encoding="utf-8") as f2:
 - **邏輯錯誤 (Logic Error)**：程式能順利執行到底，但運算公式寫錯，導致輸出結果並非預期。（例：加寫成乘）
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/13_bugs.jpeg" alt="程式錯誤 (Bugs)" />
@@ -1076,7 +1078,7 @@ area = radius * radius * PI # 易讀且易於日後修改 PI 的精確度
   - **多行/區塊註解**：以三個單引號 `'''` 或雙引號 `"""` 包裹。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/14_comment.jpeg" alt="程式註解 (Comments)" />
@@ -1119,7 +1121,7 @@ print("排序後結果:", a)
 # **2.7 程式練習 (OJ Exercises)**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch02/gemini_nb/15_lifecycle.jpeg" alt="程式生命週期" />

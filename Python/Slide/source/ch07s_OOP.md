@@ -177,14 +177,16 @@ style: |
     margin-top: 0;
     margin-bottom: 10px;
   }
-  section.title-image-slide div.image-wrapper {
+  section.title-image-slide div.image-wrapper,
+  section.title-image-slide div.centered-image {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
     height: 480px;
   }
-  section.title-image-slide div.image-wrapper img {
+  section.title-image-slide div.image-wrapper img,
+  section.title-image-slide div.centered-image img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -252,7 +254,7 @@ Feng Chia University
 # **7.1 類別與物件 (Class & Object)**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch07/gemini_nb/02_object.jpeg" alt="類別與物件" />
@@ -300,7 +302,7 @@ print(obj.getX()) # 輸出: 10
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch07/gemini_nb/12_all_object.jpeg" alt="List 也是物件" />
@@ -498,7 +500,7 @@ print(Counter.count, c.count)
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch07/gemini_nb/05_vulnerability.jpeg" alt="安全性弱點" />
@@ -597,7 +599,7 @@ print(s.__code)
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch07/gemini_nb/07_security.jpeg" alt="屬性安全性管理" />
@@ -638,7 +640,7 @@ nick.riskLevel = 2    # 呼叫 setter
 # **7.3 繼承與多型 (Inheritance & Polymorphism)**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch07/gemini_nb/09_inheritance.jpeg" alt="繼承關係" />
@@ -750,7 +752,7 @@ print(c.val)
 # **7.4 特殊方法與抽象類別 (Special Methods & Abstract Classes)**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch07/gemini_nb/08_custom.jpeg" alt="自訂特殊方法" />
@@ -801,7 +803,7 @@ print(a == b) # 輸出: True (呼叫 __eq__)
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch07/gemini_nb/11_abstract.jpeg" alt="抽象類別與多型" />

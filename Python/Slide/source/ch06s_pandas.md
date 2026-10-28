@@ -177,14 +177,16 @@ style: |
     margin-top: 0;
     margin-bottom: 10px;
   }
-  section.title-image-slide div.image-wrapper {
+  section.title-image-slide div.image-wrapper,
+  section.title-image-slide div.centered-image {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
     height: 480px;
   }
-  section.title-image-slide div.image-wrapper img {
+  section.title-image-slide div.image-wrapper img,
+  section.title-image-slide div.centered-image img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -255,7 +257,7 @@ Feng Chia University
 # **6.1 基礎 Pandas 介紹**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch06/gemini_nb/02_pipeline.jpeg" alt="Pandas 資料分析流程" />
@@ -282,7 +284,7 @@ Feng Chia University
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch06/gemini_nb/03_series.jpeg" alt="Series 概念" />
@@ -308,7 +310,7 @@ Feng Chia University
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch06/gemini_nb/04_dataframe.jpeg" alt="DataFrame 概念" />
@@ -369,7 +371,7 @@ Name: Apple, dtype: object
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch06/gemini_nb/06_loc_iloc.jpeg" alt="loc vs iloc" />
@@ -612,7 +614,7 @@ print(df2)
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch06/gemini_nb/09_groupby.jpeg" alt="groupby 概念" />
@@ -647,7 +649,7 @@ df.groupby(['縣市名稱', '學制']).count()
 # **6.2 進階 Pandas 資料處理**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch06/gemini_nb/07_missing_data.jpeg" alt="遺失資料處理" />
@@ -675,7 +677,7 @@ df.bfill()
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch06/gemini_nb/08_nullable_types.jpeg" alt="支援缺失值的原生型態 (Nullable Types)" />
@@ -697,7 +699,7 @@ print(df_modern.dtypes)
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch06/gemini_nb/05_copy_on_write.jpeg" alt="寫入時複製 (CoW)" />
@@ -762,7 +764,7 @@ df2.iloc[0, 0] = 99  # 此時修改才真正分裂複製
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch06/gemini_nb/10_merge.jpeg" alt="資料表合併" />
@@ -827,7 +829,7 @@ print(df_outer)
 # **6.3 圖表繪製 (Visualization)**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch06/gemini_nb/11_plot.jpeg" alt="繪製圖表" />
@@ -883,7 +885,7 @@ plt.show()
 # **6.4 應用實例**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch06/gemini_nb/13_youbike.jpeg" alt="YouBike 開放資料分析實例" />

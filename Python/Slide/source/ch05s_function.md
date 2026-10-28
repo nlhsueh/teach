@@ -177,14 +177,16 @@ style: |
     margin-top: 0;
     margin-bottom: 10px;
   }
-  section.title-image-slide div.image-wrapper {
+  section.title-image-slide div.image-wrapper,
+  section.title-image-slide div.centered-image {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
     height: 480px;
   }
-  section.title-image-slide div.image-wrapper img {
+  section.title-image-slide div.image-wrapper img,
+  section.title-image-slide div.centered-image img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -253,7 +255,7 @@ Feng Chia University
 # **5.1 模組化設計 (Modular Design)**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/gemini_nb/03_function.jpeg" alt="Modular Design - Function Intro" />
@@ -268,7 +270,7 @@ Feng Chia University
 - Python 提供了許多內建函式（如 `print()`、`len()`），但也可以自己建立函式（自訂函式）。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/01_function_intro.png" alt="Function Flow Concept" />
@@ -291,7 +293,7 @@ hello2("Python")  # 輸出: Hello Python
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/gemini_nb/05_nametag.jpeg" alt="Function Definition - Name and Parameters" />
@@ -481,7 +483,7 @@ intro("Albert", age=20, city="Taichung") # kwargs 為 {'age': 20, 'city': 'Taich
 # **5.2 進階參數的傳遞 (Parameter Passing)**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/gemini_nb/14_parameter.jpeg" alt="Parameter Passing Principles" />
@@ -504,7 +506,7 @@ print(a) # 輸出: 1 (未受影響)
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/02_immutable_passing.png" alt="Immutable Parameter Passing Memory Detail" />
@@ -528,21 +530,21 @@ print(m) # 輸出: [2, 3] (原串列被修改)
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/03_mutable_passing.png" alt="Mutable Parameter Passing Memory Detail" />
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/gemini_nb/07_passing_memory.jpeg" alt="Parameter Passing Memory Details" />
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/04_parameter_passing.png" alt="Variables Memory Passing Architecture" />
@@ -638,7 +640,7 @@ print(squared) # [1, 4, 9, 16]
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/gemini_nb/08_lambda.jpeg" alt="Lambda Anonymous Function" />
@@ -833,7 +835,7 @@ print(test_div(10, 2))
 # **5.5 套件與應用 (Packages & Application)**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/gemini_nb/10_package.jpeg" alt="Python Package and Module Importing" />
@@ -861,14 +863,14 @@ data = js.loads('{"value": 100}')
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/gemini_nb/12_recursive.jpeg" alt="Hanoi Tower Recursion Visual" />
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/05_hanoi_tower.png" alt="Hanoi Tower Rules" />
@@ -896,21 +898,21 @@ hanoi(3, 'A', 'B', 'C') # 搬移 3 個盤子需 7 步
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/gemini_nb/13_tic_tac_toe.jpeg" alt="Tic Tac Toe UI Structure" />
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/gemini_nb/14_game_flow.jpeg" alt="Tic Tac Toe Game Loop Flow" />
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch05/06_tictactoe.png" alt="Tic Tac Toe Game Board" />

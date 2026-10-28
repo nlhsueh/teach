@@ -177,14 +177,16 @@ style: |
     margin-top: 0;
     margin-bottom: 10px;
   }
-  section.title-image-slide div.image-wrapper {
+  section.title-image-slide div.image-wrapper,
+  section.title-image-slide div.centered-image {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
     height: 480px;
   }
-  section.title-image-slide div.image-wrapper img {
+  section.title-image-slide div.image-wrapper img,
+  section.title-image-slide div.centered-image img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -246,21 +248,21 @@ Feng Chia University
 - **3.4 自我測驗** (13 題觀念詳析)
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/01_flowchart_overview.png" alt="控制結構總覽" />
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/gemini_nb/02_sequential.jpeg" alt="循序結構" />
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/02_projects_overview.png" alt="範例專案總覽" />
@@ -272,14 +274,14 @@ Feng Chia University
 # **3.1 分支 (Branching)**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/03_branch_if.png" alt="if 分支流程圖" />
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/gemini_nb/03_branch.jpeg" alt="分支控制結構" />
@@ -306,7 +308,7 @@ print ("end") # 不論如何都會執行的程式 (無縮排)
 > * 縮排錯誤會引發 `IndentationError` 或邏輯上的語意錯誤。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/04_branch_else.png" alt="else 分支流程圖" />
@@ -334,7 +336,7 @@ print ("end")
 > * `else` 後面也必須加上冒號 `:` 且不帶任何條件判斷。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/05_branch_elif.png" alt="elif 分支流程圖" />
@@ -362,7 +364,7 @@ print ("end")
 - 程式會由上而下依序檢查條件，一旦某個條件成立，執行完該區塊後即跳出整個 `if-elif-else` 結構，不再檢查後續條件。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/06_logic_error.png" alt="邏輯錯誤示意圖" />
@@ -410,7 +412,7 @@ if is_young_male:
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/gemini_nb/05_clean_code.jpeg" alt="乾淨的條件程式碼" />
@@ -422,7 +424,7 @@ if is_young_male:
 # **3.2 迴圈 (Loops)**
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/gemini_nb/09_while_for.jpeg" alt="while 迴圈與 for 迴圈比較" />
@@ -471,7 +473,7 @@ print("總和為:", sum)
 - `for ... in` 可以依序走訪串列中的每個元素：
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/07_list_intro.png" alt="List 列表結構" />
@@ -519,7 +521,7 @@ for i in range(10, 0, -2):
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/gemini_nb/08_range.jpeg" alt="range 函數的參數" />
@@ -568,7 +570,7 @@ for i in range(1, 10):
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/gemini_nb/14_branch_loop.jpeg" alt="分支與迴圈控制控制流" />
@@ -625,14 +627,14 @@ while True:
 - Python 內建的圖形繪製套件，能以簡單的迴圈繪製複雜幾何圖案。
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/08_turtle_geom.png" alt="小烏龜繪圖幾何" />
 </div>
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/gemini_nb/13_geometric.jpeg" alt="小烏龜幾何繪圖" />
@@ -661,7 +663,7 @@ for i in range(36):
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/09_turtle_spiral.png" alt="小烏龜螺旋軌跡" />
@@ -717,7 +719,7 @@ while not correct:
 ```
 
 ---
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch03/gemini_nb/15_conclusion.jpeg" alt="第三章總結與練習" />

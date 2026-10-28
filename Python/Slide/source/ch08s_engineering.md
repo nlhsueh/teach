@@ -177,14 +177,16 @@ style: |
     margin-top: 0;
     margin-bottom: 10px;
   }
-  section.title-image-slide div.image-wrapper {
+  section.title-image-slide div.image-wrapper,
+  section.title-image-slide div.centered-image {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
     height: 480px;
   }
-  section.title-image-slide div.image-wrapper img {
+  section.title-image-slide div.image-wrapper img,
+  section.title-image-slide div.centered-image img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -229,7 +231,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.002.jpeg" alt="Python與智慧系統工程" />
@@ -248,7 +250,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.003.jpeg" alt="線性聯立方程式與電路網目電流法" />
@@ -280,7 +282,7 @@ print(f"I1={I[0]:.3f}A, I2={I[1]:.3f}A, I3={I[2]:.3f}A")
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/01_mesh_current.jpeg" alt="網目電流聯立方程求解終端機執行成果" />
@@ -288,7 +290,7 @@ print(f"I1={I[0]:.3f}A, I2={I[1]:.3f}A, I3={I[2]:.3f}A")
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.004.jpeg" alt="常微分方程與 RLC 暫態響應模擬" />
@@ -319,7 +321,7 @@ sol = solve_ivp(rlc_ode, t_span, initial_state, t_eval=np.linspace(0, 0.05, 500)
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/02_rlc_simulation.jpeg" alt="二階 RLC 暫態響應模擬成果" />
@@ -424,7 +426,7 @@ I = np.linalg.solve(R_matrix, V_matrix)
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.005.jpeg" alt="訊號處理與快速傅立葉變換" />
@@ -456,7 +458,7 @@ amplitude = np.abs(fft_result[:half_n]) * 2 / n
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/03_fft_analysis.jpeg" alt="快速傅立葉變換 FFT 頻譜分析成果圖" />
@@ -476,7 +478,7 @@ amplitude = np.abs(fft_result[:half_n]) * 2 / n
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.006.jpeg" alt="自動控制與回授系統" />
@@ -510,7 +512,7 @@ class PIDController:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.007.jpeg" alt="PID 控制器原理與架構" />
@@ -518,7 +520,7 @@ class PIDController:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/04_pid_temp_control.jpeg" alt="PID 溫度回授控制階躍響應成果圖" />
@@ -526,7 +528,7 @@ class PIDController:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.008.jpeg" alt="二軸機械手臂正向運動學與逆向運動學" />
@@ -558,7 +560,7 @@ class RoboticArm2R:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/05_robot_arm_kinematics.jpeg" alt="二軸機械手臂幾何運動學成果圖" />
@@ -617,7 +619,7 @@ class RoboticArm2R:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.009.jpeg" alt="微控制器與硬體通訊" />
@@ -625,7 +627,7 @@ class RoboticArm2R:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.010.jpeg" alt="虛擬序列埠與多執行緒模擬" />
@@ -633,7 +635,7 @@ class RoboticArm2R:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/06_serial_sensor_stream.jpeg" alt="虛擬序列埠數據流讀取執行畫面" />
@@ -693,7 +695,7 @@ class RoboticArm2R:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.011.jpeg" alt="網路通訊協定與 TCP/IP Socket 機制" />
@@ -701,7 +703,7 @@ class RoboticArm2R:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.012.jpeg" alt="TCP 伺服器與用戶端連線生命週期" />
@@ -709,7 +711,7 @@ class RoboticArm2R:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/07_tcp_chat_room.jpeg" alt="多用戶 TCP Socket 聊天室連線成果" />
@@ -774,7 +776,7 @@ server_socket.setsockopt(socket.SOL_SOCKET,
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.013.jpeg" alt="數位濾波器設計與低通濾波器模擬" />
@@ -782,7 +784,7 @@ server_socket.setsockopt(socket.SOL_SOCKET,
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/08_digital_lowpass_filter.jpeg" alt="數位一階 RC 低通濾波器模擬成果" />
@@ -790,7 +792,7 @@ server_socket.setsockopt(socket.SOL_SOCKET,
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch08/gemini_nb/Python_Smart_System_Engineering.014.jpeg" alt="本章工程專題與應用實作小結" />

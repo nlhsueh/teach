@@ -177,14 +177,16 @@ style: |
     margin-top: 0;
     margin-bottom: 10px;
   }
-  section.title-image-slide div.image-wrapper {
+  section.title-image-slide div.image-wrapper,
+  section.title-image-slide div.centered-image {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
     height: 480px;
   }
-  section.title-image-slide div.image-wrapper img {
+  section.title-image-slide div.image-wrapper img,
+  section.title-image-slide div.centered-image img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -229,7 +231,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.002.jpeg" alt="Web 請求-回應架構圖解" />
@@ -249,7 +251,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.003.jpeg" alt="HTTP 狀態碼核心分類與意義" />
@@ -268,7 +270,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.004.jpeg" alt="HTTP 請求方法 GET 與 POST 的特性與差異" />
@@ -276,7 +278,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/02_http_status.jpeg" alt="HTTP 狀態碼與 GET/POST 請求比較" />
@@ -375,7 +377,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.006.jpeg" alt="Flask 微型 Web 框架架構與設計理念" />
@@ -383,7 +385,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.007.jpeg" alt="Flask 路由分派與裝飾器機制" />
@@ -415,7 +417,7 @@ if __name__ == '__main__':
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/03_flask_hello.jpeg" alt="Flask 最簡伺服器執行畫面與終端機紀錄" />
@@ -423,7 +425,7 @@ if __name__ == '__main__':
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.008.jpeg" alt="Flask 動態路由參數與轉換器類型" />
@@ -454,7 +456,7 @@ if __name__ == '__main__':
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/04_dynamic_routing.jpeg" alt="Flask 動態路由參數擷取執行畫面" />
@@ -515,7 +517,7 @@ if __name__ == '__main__':
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.009.jpeg" alt="Jinja2 模板引擎與 HTML 渲染機制" />
@@ -523,7 +525,7 @@ if __name__ == '__main__':
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.010.jpeg" alt="Flask Request 物件與表單資料接收" />
@@ -559,7 +561,7 @@ def handle_submit():
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/05_form_submit.jpeg" alt="HTML 表單填寫與 POST 提交至 Flask 流程" />
@@ -617,7 +619,7 @@ def handle_submit():
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.011.jpeg" alt="成績查詢與登記系統全端架構" />
@@ -625,7 +627,7 @@ def handle_submit():
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.012.jpeg" alt="Post-Redirect-Get (PRG) 模式機制" />
@@ -633,7 +635,7 @@ def handle_submit():
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.013.jpeg" alt="Query String 搜尋與即時過濾架構" />
@@ -641,7 +643,7 @@ def handle_submit():
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/06_grade_system_home.jpeg" alt="學期成績登記與查詢系統首頁" />
@@ -649,7 +651,7 @@ def handle_submit():
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/07_grade_system_search.jpeg" alt="學籍搜尋結果頁面" />
@@ -667,7 +669,7 @@ def handle_submit():
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.014.jpeg" alt="RESTful JSON API 設計理念與 jsonify" />
@@ -698,7 +700,7 @@ if __name__ == '__main__':
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/08_json_api.jpeg" alt="RESTful JSON API 端點輸出畫面" />
@@ -706,7 +708,7 @@ if __name__ == '__main__':
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch12/gemini_nb/Modern_Flask_Web_Development.015.jpeg" alt="本章 Web 開發實務與最佳實踐總結" />

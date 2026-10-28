@@ -177,14 +177,16 @@ style: |
     margin-top: 0;
     margin-bottom: 10px;
   }
-  section.title-image-slide div.image-wrapper {
+  section.title-image-slide div.image-wrapper,
+  section.title-image-slide div.centered-image {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
     height: 480px;
   }
-  section.title-image-slide div.image-wrapper img {
+  section.title-image-slide div.image-wrapper img,
+  section.title-image-slide div.centered-image img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -229,7 +231,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.002.jpeg" alt="遊戲世界的物件導向宇宙" />
@@ -249,7 +251,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.003.jpeg" alt="螢幕座標空間與數學笛卡爾座標比較" />
@@ -257,7 +259,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/02_coordinate_system.jpeg" alt="Pygame 螢幕座標系統圖解" />
@@ -265,7 +267,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.004.jpeg" alt="遊戲迴圈的脈動：輸入、更新、渲染與 FPS 控制" />
@@ -273,7 +275,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/03_game_loop.jpeg" alt="經典遊戲迴圈三大階段流程圖" />
@@ -305,7 +307,7 @@ while True:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/01_basic_window.jpeg" alt="基礎視窗幾何繪製執行成果" />
@@ -404,7 +406,7 @@ while True:
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.005.jpeg" alt="事件佇列與按鍵狀態輪詢機制比較" />
@@ -437,7 +439,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/04_input_control.jpeg" alt="鍵盤長按平滑運動與滑鼠點擊畫圓成果" />
@@ -497,7 +499,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.006.jpeg" alt="精靈類別的解剖：Surface 與 Rect 邊框" />
@@ -505,7 +507,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.007.jpeg" alt="精靈群組與批次渲染管理" />
@@ -513,7 +515,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.009.jpeg" alt="Rect 物件座標錨點定位系統" />
@@ -521,7 +523,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/05_rect_properties.jpeg" alt="pygame.Rect 內建座標定位屬性詳解" />
@@ -529,7 +531,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.008.jpeg" alt="AABB 邊界碰撞檢測原理" />
@@ -537,7 +539,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/06_collision_detection.jpeg" alt="Pygame 碰撞檢測機制圖解" />
@@ -635,7 +637,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.010.jpeg" alt="Pygame 音訊管線與背景音樂/音效控制" />
@@ -654,7 +656,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.011.jpeg" alt="太空射擊遊戲架構與實體關聯圖" />
@@ -662,7 +664,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.012.jpeg" alt="遊戲狀態機切換機制" />
@@ -670,7 +672,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/07_space_shooter_gameplay.jpeg" alt="太空射擊遊戲實戰進行畫面" />
@@ -678,7 +680,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/08_space_shooter_gameover.jpeg" alt="太空射擊遊戲 Game Over 與重啟畫面" />
@@ -696,7 +698,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/Architecture_of_Play.013.jpeg" alt="粒子系統與爆炸視覺特效" />
@@ -704,7 +706,7 @@ pygame.display.flip()
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../img/ch11/gemini_nb/09_particle_explosion.jpeg" alt="粒子爆炸特效展示" />

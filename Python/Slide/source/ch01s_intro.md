@@ -177,14 +177,16 @@ style: |
     margin-top: 0;
     margin-bottom: 10px;
   }
-  section.title-image-slide div.image-wrapper {
+  section.title-image-slide div.image-wrapper,
+  section.title-image-slide div.centered-image {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
     height: 480px;
   }
-  section.title-image-slide div.image-wrapper img {
+  section.title-image-slide div.image-wrapper img,
+  section.title-image-slide div.centered-image img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -280,7 +282,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.003.jpeg" alt="The AI Paradox: AI User vs AI Creator" />
@@ -303,7 +305,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.006.jpeg" alt="Computational Thinking 跨領域賦能" />
@@ -327,7 +329,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.004.jpeg" alt="The Universal Origin: Python 的起源與應用生態" />
@@ -347,7 +349,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.005.jpeg" alt="The Zen of Python" />
@@ -450,7 +452,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.007.jpeg" alt="The Modern Developer Toolkit" />
@@ -458,7 +460,7 @@ style: |
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.008.jpeg" alt="The Setup Decision Tree" />
@@ -479,7 +481,7 @@ style: |
 
 ## 路徑二：本機安裝架構 (Local Setup)
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.009.jpeg" alt="Local Setup Architecture" />
@@ -603,7 +605,7 @@ deactivate
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.010.jpeg" alt="The Timeless Learning Mindset" />
@@ -620,7 +622,7 @@ deactivate
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.011.jpeg" alt="Learning in the AI Generation" />
@@ -628,7 +630,7 @@ deactivate
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.012.jpeg" alt="Anatomy of a Perfect Prompt" />
@@ -661,7 +663,7 @@ deactivate
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.013.jpeg" alt="The Smart Coding Tutor Framework" />
@@ -669,7 +671,7 @@ deactivate
 
 ---
 
-<!-- _class: full-image-slide -->
+<!-- _class: title-image-slide -->
 
 <div class="centered-image">
   <img src="../../img/ch01/gemini_nb/Modern_Code_Mastery.014.jpeg" alt="Personalizing the Path" />
