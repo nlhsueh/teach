@@ -513,14 +513,6 @@ function generateHtml(item, index) {
     </div>
 
     <div class="nav-right">
-      <a href="${item.slideHtml}" target="_blank" class="btn-nav-action" title="開啟全螢幕線上簡報">
-        <span>🖥️</span>
-        <span>簡報 (HTML)</span>
-      </a>
-      <a href="${item.slidePdf}" target="_blank" class="btn-nav-action" title="開啟簡報 PDF">
-        <span>📄</span>
-        <span>簡報 (PDF)</span>
-      </a>
       <button class="btn-nav-action" onclick="toggleDarkMode()" title="切換深淺模式">
         <span id="darkIcon">🌙</span>
       </button>
