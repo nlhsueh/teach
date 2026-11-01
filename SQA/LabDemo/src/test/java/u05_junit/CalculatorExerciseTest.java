@@ -8,7 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * 🧪 課堂動手練習 (Exercise 5.2)：JUnit 5 基礎練習
  * 
- * 請閱讀每個測試方法的【提示 (Hints)】，補全 // TODO 標記處的程式碼以通過測試。
+ * 請閱讀每個測試方法的【提示 (Hints)】，參考註解中的提示語法，
+ * 親手打出程式碼並移除 fail(...) 以通過測試。
  */
 @DisplayName("Unit 5.2 練習：Calculator 計算機練習題")
 public class CalculatorExerciseTest {
@@ -29,9 +30,11 @@ public class CalculatorExerciseTest {
 
         // [Act]
         // TODO: 請呼叫 calculator 的 subtract 方法計算 20 - 7，並將結果存入 actual 變數
+        // 參考寫法：int actual = calculator.subtract(20, 7);
 
         // [Assert]
-        // TODO: 請撰寫 assertEquals 斷言 actual 是否等於 13
+        // TODO: 請撰寫 assertEquals 斷言 actual 是否等於 13，完成後請刪除下方 fail(...)
+        // 參考寫法：assertEquals(13, actual, "20 - 7 應該等於 13");
         fail("尚未完成練習 1：請呼叫 subtract(20, 7) 並斷言結果等於 13");
     }
 
@@ -47,9 +50,9 @@ public class CalculatorExerciseTest {
     void exercise2_testNegativeAndZeroAdd() {
         Calculator calculator = new Calculator();
 
-        // TODO: 請在 assertAll 中補全兩個測試斷言：
-        // 1. (-5) + (-8) 應等於 -13
-        // 2. 100 + 0 應等於 100
+        // TODO: 請在 assertAll 中將 fail(...) 替換為兩個 assertEquals 斷言：
+        // 1. () -> assertEquals(-13, calculator.add(-5, -8), "(-5) + (-8) 應等於 -13")
+        // 2. () -> assertEquals(100, calculator.add(100, 0), "100 + 0 應等於 100")
         assertAll("負數與零的邊界運算",
                 () -> fail("尚未完成練習 2：請補全 (-5) + (-8) 斷言"),
                 () -> fail("尚未完成練習 2：請補全 100 + 0 斷言")
@@ -70,10 +73,10 @@ public class CalculatorExerciseTest {
         Person p2 = new Person("John", "Doe");
         Person p3 = p1; // 指向同一記憶體實體
 
-        // TODO: 請撰寫三個斷言：
-        // 1. 驗證 p1 與 p2 的屬性內容相同 (assertEquals)
-        // 2. 驗證 p1 與 p2 指向不同記憶體位址 (assertNotSame)
-        // 3. 驗證 p1 與 p3 指向相同記憶體位址 (assertSame)
+        // TODO: 請撰寫以下三個斷言，完成後請刪除下方 fail(...)：
+        // 1. 驗證 p1 與 p2 的屬性內容相同：assertEquals(p1, p2);
+        // 2. 驗證 p1 與 p2 指向不同記憶體位址：assertNotSame(p1, p2);
+        // 3. 驗證 p1 與 p3 指向相同記憶體位址：assertSame(p1, p3);
         fail("尚未完成練習 3：請依據上述提示補全三項斷言");
     }
 }

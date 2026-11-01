@@ -11,7 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * 🧪 課堂動手練習 (Exercise 5.8)：堆疊 1-Switch 連續狀態轉移與不變量練習
  * 
- * 請閱讀【提示 (Hints)】，補全 // TODO 標記處的程式碼以通過測試。
+ * 請閱讀【提示 (Hints)】，參考註解中的提示語法，
+ * 親手打出程式碼並移除 fail(...) 以通過測試。
  */
 @DisplayName("Unit 5.8 練習：堆疊連續狀態轉移練習題")
 public class StackStateExerciseTest {
@@ -37,15 +38,16 @@ public class StackStateExerciseTest {
         assertTrue(stack.isEmpty(), "初始應為空");
 
         // [Event 1] push
-        // TODO: 執行 stack.push(42) 並斷言此時 isEmpty 為 false
-        stack.push(42);
-        assertFalse(stack.isEmpty(), "push 後應離開空狀態");
+        // TODO: 請執行 stack.push(42) 並斷言此時 isEmpty 為 false：
+        // stack.push(42);
+        // assertFalse(stack.isEmpty(), "push 後應離開空狀態");
 
         // [Event 2] pop
-        // TODO: 執行 stack.pop() 並斷言回傳值為 42，且 stack 重新回到 isEmpty == true
-        int value = stack.pop();
-        assertEquals(42, value, "pop 出的值應為 42");
-        assertTrue(stack.isEmpty(), "pop 後應恢復為空狀態");
+        // TODO: 請執行 stack.pop() 並斷言回傳值為 42，且 stack 重新回到 isEmpty == true，完成後刪除 fail(...)：
+        // int value = stack.pop();
+        // assertEquals(42, value, "pop 出的值應為 42");
+        // assertTrue(stack.isEmpty(), "pop 後應恢復為空狀態");
+        fail("尚未完成練習 1：請完成 push(42) 與 pop() 之連續狀態轉移驗證");
     }
 
     // =========================================================================
@@ -55,11 +57,11 @@ public class StackStateExerciseTest {
     @Test
     @DisplayName("練習 2：驗證空狀態 peek() 之例外防禦與狀態不變量")
     void exercise2_testPeekOnEmptyThrowsException() {
-        // TODO: 使用 assertThrows 驗證 stack.peek() 會拋出 EmptyStackException
-        assertThrows(EmptyStackException.class, () -> stack.peek(),
-                "空堆疊執行 peek 必須拋出 EmptyStackException");
-
-        // 驗證狀態不變量：拋出例外後，物件狀態不可損壞，仍應為空
-        assertTrue(stack.isEmpty(), "拋出例外後堆疊依然必須保持為空");
+        // TODO: 請使用 assertThrows 驗證 stack.peek() 會拋出 EmptyStackException，
+        // 並斷言拋出例外後 stack.isEmpty() 依然為 true，完成後刪除 fail(...)：
+        // assertThrows(EmptyStackException.class, () -> stack.peek(),
+        //         "空堆疊執行 peek 必須拋出 EmptyStackException");
+        // assertTrue(stack.isEmpty(), "拋出例外後堆疊依然必須保持為空");
+        fail("尚未完成練習 2：請驗證空堆疊呼叫 peek() 拋出 EmptyStackException 且維持空狀態");
     }
 }

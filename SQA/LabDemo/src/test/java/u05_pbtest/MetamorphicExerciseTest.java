@@ -6,14 +6,15 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * 🧪 課堂動手練習 (Exercise 5.9-B)：變質測試 (MT) 關係驗證實作
+ * 🧪 課堂動手練習 (Exercise 5.11-B)：變質測試 (MT) 關係驗證實作
  * 
- * 請閱讀【提示 (Hints)】，補全 // TODO 標記處的程式碼以通過測試。
+ * 請閱讀【提示 (Hints)】，參考註解中的提示語法，
+ * 親手打出程式碼並移除 fail(...) 以通過測試。
  */
-@DisplayName("Unit 5.9 練習：搜尋引擎大小寫不敏感變質關係測試")
+@DisplayName("Unit 5.11 練習：搜尋引擎大小寫不敏感變質關係測試")
 public class MetamorphicExerciseTest {
 
     private MetamorphicSearch searchEngine;
@@ -41,13 +42,14 @@ public class MetamorphicExerciseTest {
         List<String> resultsLower = searchEngine.search(queryLower);
 
         // [Follow-up Execution]
-        // TODO: 建立全大寫關鍵字並呼叫 search
-        String queryUpper = "SOFTWARE";
-        List<String> resultsUpper = searchEngine.search(queryUpper);
+        // TODO: 請建立全大寫關鍵字 "SOFTWARE" 並呼叫 searchEngine.search(...)：
+        // String queryUpper = "SOFTWARE";
+        // List<String> resultsUpper = searchEngine.search(queryUpper);
 
         // [MR Verification]
-        // TODO: 斷言兩者結果集合完全相等
-        assertEquals(resultsLower, resultsUpper,
-                "變質關係違反：搜尋關鍵字大小寫不應改變搜尋結果！");
+        // TODO: 請使用 assertEquals 斷言 resultsLower 與 resultsUpper 完全相等，完成後刪除 fail(...)：
+        // assertEquals(resultsLower, resultsUpper,
+        //         "變質關係違反：搜尋關鍵字大小寫不應改變搜尋結果！");
+        fail("尚未完成練習：請搜尋全大寫關鍵字並斷言與小寫搜尋結果一致");
     }
 }

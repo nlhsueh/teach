@@ -48,6 +48,9 @@ venv/
 /exam/
 exam/
 **/exam/
+/exams/
+exams/
+**/exams/
 /hw/
 
 # Private credentials and presentation binaries

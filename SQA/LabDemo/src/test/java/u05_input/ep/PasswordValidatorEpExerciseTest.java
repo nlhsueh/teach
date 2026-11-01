@@ -1,9 +1,7 @@
 package u05_input.ep;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,14 +27,15 @@ public class PasswordValidatorEpExerciseTest {
     @ParameterizedTest(name = "有效密碼測試 - \"{0}\" ➔ 預期合格")
     @DisplayName("練習 1：驗證有效等價類密碼 (長度合格且包含字母與數字)")
     @ValueSource(strings = {
-            "Admin1234",          // 一般大小寫英數混合
-            "Password2026",       // 邊界長度合格
-            "A1b2C3d4E5"          // 多字母多數字交錯
+            // TODO: 請在 @ValueSource 中填入合規的有效等價類密碼代表值，例如：
+            // "Admin1234", "Password2026", "A1b2C3d4E5"
+            "TODO_VALID_PASSWORD"
     })
     void exercise1_testValidPasswords(String password) {
-        // TODO: 呼叫 PasswordValidator.validate(password) 並斷言為 true
-        boolean isValid = PasswordValidator.validate(password);
-        assertTrue(isValid, "密碼 " + password + " 應判定為合法有效");
+        // TODO: 呼叫 PasswordValidator.validate(password) 並斷言為 true，完成後刪除 fail(...)：
+        // boolean isValid = PasswordValidator.validate(password);
+        // assertTrue(isValid, "密碼 " + password + " 應判定為合法有效");
+        fail("尚未完成練習 1：請填入有效密碼測資並使用 assertTrue 斷言");
     }
 
     // =========================================================================
@@ -47,16 +46,16 @@ public class PasswordValidatorEpExerciseTest {
     @ParameterizedTest(name = "無效長度密碼 - \"{0}\" ➔ 預期拋出例外")
     @DisplayName("練習 2：驗證長度不合格之無效等價類防禦 (拋出 IllegalArgumentException)")
     @ValueSource(strings = {
-            "",                   // 長度 0 (極端下界)
-            "Ab1",                // 長度 3 (過短)
-            "Passw1",             // 長度 6 (過短)
-            "ThisIsAVeryLongPasswordExceedingTwentyCharacters123" // 長度 50 (過長)
+            // TODO: 請填入過短 (< 8) 與過長 (> 20) 的無效長度密碼代表值，例如：
+            // "", "Ab1", "Passw1", "ThisIsAVeryLongPasswordExceedingTwentyCharacters123"
+            "short1"
     })
     void exercise2_testInvalidLengthThrowsException(String invalidPassword) {
-        // TODO: 使用 assertThrows 驗證傳入無效密碼時會拋出 IllegalArgumentException
-        assertThrows(IllegalArgumentException.class,
-                () -> PasswordValidator.validate(invalidPassword),
-                "長度不符的密碼必須拋出 IllegalArgumentException");
+        // TODO: 使用 assertThrows 驗證傳入無效長度密碼時會拋出 IllegalArgumentException，完成後刪除 fail(...)：
+        // assertThrows(IllegalArgumentException.class,
+        //         () -> PasswordValidator.validate(invalidPassword),
+        //         "長度不符的密碼必須拋出 IllegalArgumentException");
+        fail("尚未完成練習 2：請使用 assertThrows 驗證長度不符時拋出 IllegalArgumentException");
     }
 
     // =========================================================================
@@ -67,12 +66,14 @@ public class PasswordValidatorEpExerciseTest {
     @ParameterizedTest(name = "弱密碼測試 - \"{0}\" ➔ 預期 false")
     @DisplayName("練習 3：驗證純字母或純數字之弱密碼等價類")
     @ValueSource(strings = {
-            "OnlyLettersPassword",  // 純英文字母，無數字
-            "123456789012"          // 純數字，無英文字母
+            // TODO: 請填入「純英文字母」與「純數字」(長度 8~20) 的弱密碼代表值，例如：
+            // "OnlyLettersPassword", "123456789012"
+            "OnlyLettersPassword"
     })
     void exercise3_testWeakPasswordReturnsFalse(String weakPassword) {
-        // TODO: 呼叫 PasswordValidator.validate(weakPassword) 並斷言結果為 false
-        boolean isValid = PasswordValidator.validate(weakPassword);
-        assertFalse(isValid, "純文字或純數字密碼應判定為 false");
+        // TODO: 呼叫 PasswordValidator.validate(weakPassword) 並斷言結果為 false，完成後刪除 fail(...)：
+        // boolean isValid = PasswordValidator.validate(weakPassword);
+        // assertFalse(isValid, "純文字或純數字密碼應判定為 false");
+        fail("尚未完成練習 3：請填入弱密碼測資並使用 assertFalse 斷言");
     }
 }
