@@ -151,8 +151,8 @@ def parse_single_question_block(block_text: str, default_type: str = 'ccq') -> d
     ordering_items = []
 
     for line in lines:
-        # Option pattern: A) / A. / - A) / - A.
-        opt_match = re.match(r'^(?:[-*]\s*)?([A-Za-z0-9]+)[\.\)]\s*(.+)$', line)
+        # Option pattern: A) / A. / - A) / - A. / - **A.** / - **A)**
+        opt_match = re.match(r'^(?:[-*]\s*)?(?:\*\*)?([A-Za-z0-9]+)(?:\*\*)?[\.\)](?:\*\*)?\s*(.+)$', line)
         if opt_match:
             key = opt_match.group(1)
             text = opt_match.group(2).strip()
@@ -396,6 +396,124 @@ def parse_lecture_ccqs(fpath: str, course_slug: str):
             'correct_answer': sub_questions[0]['correct_answer'],
             'explanation': sub_questions[0]['explanation'],
             'questions': sub_questions,
+            'ch_num': ch_num,
+            'prefix_folder': prefix_folder
+        })
+
+    return ch_title, activities
+
+def parse_slide_ccqs(fpath: str, course_slug: str):
+    """Parses CCQ slides directly from a Marp slide markdown file when no lecture file exists for that chapter."""
+    ch_match = re.search(r'(?:slide|ch|u)[xX]?0*(\d+)', os.path.basename(fpath), re.IGNORECASE)
+    ch_num = f"{int(ch_match.group(1)):02d}" if ch_match else '01'
+    prefix_folder = f"ch{ch_num}"
+    ch_id = prefix_folder
+
+    with open(fpath, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # Remove <script>...</script> from content before splitting
+    content_no_script = re.sub(r'<script>.*?</script>', '', content, flags=re.DOTALL | re.IGNORECASE)
+    slides = content_no_script.split('\n---\n')
+
+    # Extract chapter title from first slide with "Chapter X: ..." or first H1
+    ch_title = f"Chapter {int(ch_num)}"
+    for s in slides[:3]:
+        ch_line_m = re.search(r'^#{1,3}\s+.*?(Chapter\s*0?\d+[:\s—\-]+[^\n]+)$', s, re.MULTILINE | re.IGNORECASE)
+        if ch_line_m:
+            raw_ch = re.sub(r'[*_`~]+', '', ch_line_m.group(1)).strip()
+            ch_title = re.sub(r'^[Cc]h(?:apter)?\s*0?(\d+)[:\s—\-]*', r'Chapter \1: ', raw_ch)
+            break
+        h1_m = re.search(r'^#\s+(.+)$', s, re.MULTILINE)
+        if h1_m:
+            raw_h1 = re.sub(r'[*_`~]+', '', h1_m.group(1)).strip()
+            if raw_h1.lower() not in ['software engineering', 'advanced software engineering']:
+                raw_h1 = re.sub(r'^[Cc]h(?:apter)?\s*0?(\d+)[:\s—\-]*', r'Chapter \1: ', raw_h1)
+                if not re.match(r'^Chapter\s+\d+', raw_h1, re.IGNORECASE):
+                    ch_title = f"Chapter {int(ch_num)}: {raw_h1}"
+                else:
+                    ch_title = raw_h1
+                break
+
+    activities = []
+    for i, slide in enumerate(slides):
+        if re.search(r'(?:答案與解析|課堂互動參考解答|互動參考解答|參考解答|參考答案|Answer\s*&?\s*Explanation)', slide, re.IGNORECASE):
+            continue
+
+        hdr_m = re.search(r'^(#{2,4}\s*[^\n]*?(?:Concept Check(?: Question)?|CCQ|觀念檢[測核])\s*[:：\(]?\s*(?:CCQ\s*)?(\d+)[^\n]*)$', slide, re.MULTILINE | re.IGNORECASE)
+        if not hdr_m:
+            continue
+
+        header_line = hdr_m.group(1).strip()
+        ccq_num = int(hdr_m.group(2))
+
+        id_m = re.search(r'<!--\s*id:\s*([^\s>]+)\s*-->', slide)
+        act_id = id_m.group(1).strip() if id_m else f"{course_slug}-{ch_id}-ccq{ccq_num}"
+
+        # Extract speaker notes (comments that are not Marp directives or id comments)
+        notes_list = []
+        for cm in re.finditer(r'<!--(.*?)-->', slide, re.DOTALL):
+            c_text = cm.group(1).strip()
+            if not re.match(r'^(?:_class|_paginate|_header|_footer|header|footer|paginate|class|id)\s*:', c_text):
+                notes_list.append(c_text)
+        notes_text = '\n'.join(notes_list)
+
+        # Also check next slide if it is an Answer & Explanation slide
+        if i + 1 < len(slides) and re.search(r'(?:答案與解析|參考解答|Answer\s*&?\s*Explanation)', slides[i + 1], re.IGNORECASE):
+            next_s_clean = re.sub(r'<!--.*?-->', '', slides[i + 1], flags=re.DOTALL)
+            next_s_clean = re.sub(r'^#{1,4}\s*[^\n]+\n', '', next_s_clean.strip())
+            notes_text = next_s_clean.strip()
+
+        correct_ans = ''
+        ans_patterns = [
+            r'(?:Correct\s*Answer|正確答案|標準答案)\s*\**[：:is]*\s*\**(?:Option\s*)?([A-D])\b',
+            r'correct\s+answer\s+is\s+(?:clearly\s+)?(?:Option\s+)?\**([A-D])\b',
+            r'正確答案(?:是|為)\s*(?:選項\s*)?\**([A-D])\b',
+        ]
+        for pat in ans_patterns:
+            am = re.search(pat, notes_text, re.IGNORECASE)
+            if am:
+                correct_ans = am.group(1).upper()
+                break
+
+        # Extract explanation from speaker notes
+        explanation = ''
+        if notes_text:
+            exp_lines = []
+            for nl in notes_text.split('\n'):
+                nl_s = nl.strip()
+                if not nl_s or nl_s.startswith('Let\'s check') or nl_s.startswith('The question asks') or nl_s.startswith('讓我們檢驗') or nl_s.startswith('題目問'):
+                    continue
+                if nl_s.startswith('To summarize this slide') or nl_s.startswith('總結這張投影片'):
+                    continue
+                exp_lines.append(nl_s)
+            explanation = ' '.join(exp_lines).strip()
+
+        # Extract question body from <div class="ccq-text"> if present
+        ccq_text_m = re.search(r'<div class=["\']ccq-text["\']>(.*?)</div>', slide, re.DOTALL)
+        q_raw = ccq_text_m.group(1) if ccq_text_m else slide[hdr_m.end():]
+        q_raw = re.sub(r'<!--.*?-->', '', q_raw, flags=re.DOTALL)
+        q_raw = re.sub(r'<div[^>]*>.*?</div>', '', q_raw, flags=re.DOTALL)
+        q_raw = re.sub(r'</?div[^>]*>', '', q_raw)
+
+        parsed_q = parse_single_question_block(q_raw, default_type='ccq')
+        if correct_ans:
+            parsed_q['correct_answer'] = correct_ans
+            parsed_q['options'] = [(k, t, k == correct_ans) for k, t, _ in parsed_q['options']]
+        if explanation:
+            parsed_q['explanation'] = explanation
+
+        activity_title = f"{ch_title} CCQ {ccq_num}"
+        activities.append({
+            'id': act_id,
+            'title': activity_title,
+            'type': 'ccq',
+            'question': parsed_q['question'],
+            'options': parsed_q['options'],
+            'ordering_items': [],
+            'correct_answer': parsed_q['correct_answer'],
+            'explanation': parsed_q['explanation'],
+            'questions': [parsed_q],
             'ch_num': ch_num,
             'prefix_folder': prefix_folder
         })
@@ -1035,10 +1153,9 @@ def git_commit_and_push_nickedupocket(nickedupocket_dir: str, course_title: str 
             subprocess.run(['git', 'add', 'public/courses/'], cwd=nickedupocket_dir, check=True)
             msg = f"Auto-sync interactive course data: {course_title or 'Teach'}"
             subprocess.run(['git', 'commit', '-m', msg], cwd=nickedupocket_dir, check=True)
-            push_res = subprocess.run(['git', 'push'], cwd=nickedupocket_dir, capture_output=True, text=True, check=True)
-            print("🚀 Successfully committed and pushed course data to nickedupocket repository!")
-        else:
-            print("\nℹ️ nickedupocket course data is up-to-date (no Git changes).")
+        subprocess.run(['git', 'pull', '--rebase', '--autostash'], cwd=nickedupocket_dir, capture_output=True, text=True, check=True)
+        push_res = subprocess.run(['git', 'push'], cwd=nickedupocket_dir, capture_output=True, text=True, check=True)
+        print("🚀 Successfully committed and pushed course data to nickedupocket repository!")
     except subprocess.CalledProcessError as e:
         print(f"⚠️ [WARN] Git auto commit/push for nickedupocket encountered an issue: {e}")
         if e.stderr:
@@ -1140,6 +1257,35 @@ def sync_course(course_key: str, out_file: str = None, gen_qr: bool = True, embe
             total_questions += sub_q_count
             print(f"  ✓ {rel_path:<35} -> {count:>2} Activities ({sub_q_count} Qs) [{ch_title}]")
 
+    # 2b. Also scan Slide markdown files for chapters that have no Lecture file yet
+    scanned_ch_nums = {act.get('ch_num') for _, _, acts in chapters_data for act in acts}
+    slide_source_candidates = []
+    for s_sub in [os.path.join('Slide', 'md-en'), os.path.join('Slide', 'source'), os.path.join('Slide', 'md-tw'), 'Slide']:
+        s_dir = os.path.join(course_dir, s_sub)
+        if os.path.exists(s_dir):
+            for sf in sorted(glob.glob(os.path.join(s_dir, '*.md'))):
+                base_sf = os.path.basename(sf).lower()
+                if any(b in base_sf for b in ['backup', 'copy', 'old', 'tmp', 'syllabus', 'quiz', 'exam', 'slide00', 'slide99']):
+                    continue
+                m_ch = re.search(r'(?:slide|ch|u)0*(\d+)', base_sf)
+                if m_ch:
+                    s_ch_num = f"{int(m_ch.group(1)):02d}"
+                    if s_ch_num not in scanned_ch_nums:
+                        if not target_filter or any(term in sf.lower() for term in filter_terms):
+                            slide_source_candidates.append((s_ch_num, sf))
+                            scanned_ch_nums.add(s_ch_num)
+
+    for s_ch_num, sf in slide_source_candidates:
+        rel_path = os.path.relpath(sf, course_dir)
+        ch_title, activities = parse_slide_ccqs(sf, course_slug)
+        count = len(activities)
+        if count > 0:
+            chapters_data.append((sf, ch_title, activities))
+            total_activities += count
+            sub_q_count = sum(len(a.get('questions', [1])) for a in activities)
+            total_questions += sub_q_count
+            print(f"  ✓ {rel_path:<35} -> {count:>2} Activities ({sub_q_count} Qs) [{ch_title}]")
+
     # 3. Update nickedupocket Course Markdown (preserving non-synced chapters)
     os.makedirs(os.path.dirname(target_out_path), exist_ok=True)
     out_md = update_nickedupocket_markdown(course_title, target_out_path, [(ch_t, acts) for _, ch_t, acts in chapters_data])
@@ -1155,10 +1301,10 @@ def sync_course(course_key: str, out_file: str = None, gen_qr: bool = True, embe
     # 5. Embed links into Lecture & Lab/Docs Markdowns
     if embed:
         for fpath, ch_title, activities in chapters_data:
-            if activities:
+            if activities and '/Slide/' not in fpath:
                 embed_ccqs_into_lecture(fpath, activities, base_url)
         for fpath, ch_title, activities in chapters_data:
-            if activities:
+            if activities and '/Slide/' not in fpath:
                 # Also check if tw counterpart exists in bilingual courses
                 if '/Lecture/en/' in fpath:
                     tw_fpath = fpath.replace('/Lecture/en/', '/Lecture/tw/').replace('e_', 't_')

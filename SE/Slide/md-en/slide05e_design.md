@@ -33,82 +33,83 @@ To summarize this slide, remember this key takeaway: Software design establishes
 
 <div class="outline-columns">
 <div>
-<h3>Part 1: Foundations & Architecture</h3>
+<h3>Part 1: Process, Principles & Macro Design</h3>
 <ul>
-<li><b>5.1 Software Design Foundations:</b> From requirements to blueprints, why design matters, the 4 design levels, and learning roadmap.</li>
-<li><b>5.2 Universal Design Principles:</b> Modularity, abstraction, information hiding, levels of cohesion & coupling.</li>
-<li><b>5.3 Classic Architectural Patterns & Trade-offs:</b> Layered, repository, client-server, pipe-and-filter, MVC, microservices, and ATAM.</li>
-<li><b>5.4 Architecture Derivation & Modeling:</b> Beyond patterns: ASRs, decomposition, UML vs. C4 model, 4+1 views, and ADRs.</li>
+<li><b>5.1 Software Design Foundations & Process:</b> The 4-stage design process (Arch → Interface → OO → Data) and specifications (SDS & ADRs).</li>
+<li><b>5.2 Universal Design Principles:</b> Abstraction, encapsulation, separation of concerns, modularity, and cohesion & coupling.</li>
+<li><b>5.3 Stage 1 — Architectural Design:</b> 6 classic patterns, Food Delivery synthesis, ATAM, and <b>UML Package & Deployment Diagrams</b>.</li>
+<li><b>5.4 Stage 2 — Interface & Contract Spec:</b> <b>Design by Contract (DbC)</b> and <b>UML Component Diagrams</b> (Lollipop & Socket).</li>
 </ul>
 </div>
 <div>
-<h3>Part 2: Detailed Design, AI & Synthesis</h3>
+<h3>Part 2: Micro OO Design, Data, AI & Synthesis</h3>
 <ul>
-<li><b>5.5 SOLID Object-Oriented Principles:</b> SRP, OCP, LSP, ISP, and DIP with real-world refactoring examples.</li>
-<li><b>5.6 AI in Architecture & Design:</b> AI copilots for trade-off analysis, refactoring, code smell detection, and blind spot mitigations.</li>
-<li><b>5.7 Conceptual Synthesis & References:</b> Core principles review, multi-dimensional self-assessment, and literature.</li>
+<li><b>5.5 Stage 3 — Component & OO Design:</b> GoF 23 Design Patterns and the 5 SOLID principles via <b>UML Class Diagrams</b>.</li>
+<li><b>5.6 Stage 4 — Data & Persistence Design:</b> 3-level data modeling, <b>UML ERD</b>, 3NF, Redis Geo-caching, and polyglot persistence.</li>
+<li><b>5.7 AI-Augmented Software Design:</b> AI copilots across all 4 design stages and human-in-the-loop blind spot governance.</li>
+<li><b>5.8 Conceptual Synthesis & References:</b> End-to-end curriculum review, self-assessment matrix, and classic literature.</li>
 </ul>
 </div>
 </div>
 
 <!--
-Here is our roadmap for Chapter 5.
+Here is our end-to-end roadmap for Chapter 5, structured directly around the 4-Stage Software Design Process introduced on Slide 6:
 
-We begin in 5.1 with a comprehensive overview of Software Design: distinguishing design from coding, understanding why design dictates project survival, and deconstructing the four levels of design.
+In 5.1, we establish the Software Design Foundations & Process: understanding why design matters and how requirements transform into a Software Design Specification (SDS) and Architecture Decision Records (ADRs) across four iterative stages.
 
-In 5.2, we introduce Universal Software Design Principles first! Concepts like High Cohesion, Low Coupling, and Separation of Concerns are the fundamental physics of software design—governing everything from distributed microservices down to individual classes. We will also examine the classic hierarchical levels of cohesion and coupling.
+In 5.2, we master Universal Software Design Principles—the foundational laws of High Cohesion, Low Coupling, Information Hiding, and Separation of Concerns that govern every design stage.
 
-In 5.3, we explore Classic Architectural Patterns and non-functional quality attribute trade-offs using ATAM: mastering patterns like MVC, Layered, Repository, Client-Server, Pipe-and-Filter, and Microservices.
+Then, Sections 5.3 through 5.6 follow the exact 4 stages of the Software Design Process, pairing each stage with its dedicated UML / Data diagram:
+In 5.3 (Stage 1: Architectural Design), we explore the 6 classic architectural patterns, ATAM trade-offs, and model macro-structure using **UML Package Diagrams** and **UML Deployment Diagrams**.
+In 5.4 (Stage 2: Interface & Contract Specification), we master Bertrand Meyer's **Design by Contract (DbC)** and model plug-and-play module boundaries using **UML Component Diagrams**.
+In 5.5 (Stage 3: Component & Detailed OO Design), we survey the GoF 23 Design Patterns and master the 5 SOLID principles using **UML Class & Interface Diagrams**.
+In 5.6 (Stage 4: Data & Persistence Design), we cover 3-level data modeling, **UML ERD schemas**, Redis caching, and polyglot persistence in our Food Delivery System.
 
-In 5.4, we advance to Architecture Derivation & Modeling: answering the critical question of how architects actually derive architectures from requirements beyond just picking patterns, how to model structures using UML versus the modern C4 model, Kruchten's 4+1 views, and how to document decisions with ADRs.
+Finally, in 5.7, we examine AI design copilots and synthesize our complete engineering journey.
 
-In 5.5, we zoom into micro detailed design with the five foundational SOLID principles.
-
-Finally, in 5.6 and 5.7, we examine AI architectural copilots and synthesize our key engineering takeaways.
-
-To summarize this slide, remember this key takeaway: This roadmap establishes universal design principles first, ascends to classic patterns and architectural modeling, and descends into micro-level object-oriented craftsmanship.
+To summarize this slide, remember this key takeaway: Chapter 5 follows the exact 4-stage software design workflow—Architectural Design, Interface Contracts, Detailed OO Design, and Data Design—matching each stage with its canonical UML diagram.
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.1 Software Design Foundations' -->
+<!-- header: '5.1 Software Design Foundations & Process' -->
 
-# **5.1 Software Design Foundations & Spectrum**
+# **5.1 Software Design Foundations, Process & Specifications**
 
 > "There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies."  
 > — *C. A. R. Hoare (Turing Award Laureate)*
 
 <!--
-Welcome to Section 5.1: Software Design Foundations & Spectrum.
+Welcome to Section 5.1: Software Design Foundations, Process & Specifications.
 
 In software engineering, if Requirements Engineering discovers what needs to be built, Software Design establishes how it will be constructed.
 
-Many beginners rush to open their IDE and start writing code immediately. But without thoughtful software design, codebases quickly deteriorate into unmaintainable quagmires.
+Many beginners rush to open their IDE and start writing code immediately. But without a systematic design process and clear design specifications, codebases quickly deteriorate into unmaintainable quagmires.
 
-In this section, we examine the formal definition of software design, why design dictates project survival, the multi-level spectrum of design activities, and our pedagogical roadmap.
+In this section, we examine what software design is, why it dictates project survival, and how the 4-stage Software Design Process produces formal Design Specifications (SDS & ADRs) that guide the rest of Chapter 5.
 
-To summarize this slide, remember this key takeaway: Software design is the pivotal engineering phase that transforms user requirements into an executable, high-quality implementation blueprint.
+To summarize this slide, remember this key takeaway: Software design is the systematic 4-stage engineering phase that transforms user requirements into verifiable structural, interface, object, and data blueprints.
 -->
 ---
 ## What is Software Design?
 
 * **From Requirements (What) to Implementation (How):**
-  - **Requirements Engineering**: Defines stakeholder problems and functional expectations (*what to build*).
-  - **Software Design**: Conceptualizes structural decomposition, component boundaries, data models, and protocols (*how to build*).
+  - **Requirements Engineering (SRS)**: Defines stakeholder problems, use cases, and quality expectations (*what to build*).
+  - **Software Design (SDS)**: Conceptualizes structural decomposition, interface contracts, class hierarchies, and data schemas (*how to build*).
 * **Core Activities of Software Design:**
-  - **Blueprint Creation**: Establishes models, abstractions, and specifications that development teams execute against.
-  - **Trade-off Decision Making**: Balances competing non-functional forces (e.g., performance vs. security vs. development time and budget).
+  - **Blueprint & Specification Creation**: Establishes architectural models, formal interface contracts, and database schemas so teams can build in parallel.
+  - **Trade-off Decision Making**: Balances competing non-functional forces (e.g., latency vs. consistency vs. cloud cost).
 * **The Distinction Between Design and Coding:**
   - Coding expresses logic in a specific programming language syntax.
-  - Design determines **how modules are partitioned, where state lives, and how components are decoupled** for long-term evolvability.
+  - Design determines **how modules are partitioned, how interfaces are contracted, and how data is persisted** for long-term evolvability.
 
 <!--
 What is Software Design?
 
-Recall our previous chapters: Requirements engineering gives us functional specifications, like shopping cart checkouts or user authentication.
+Recall our previous chapters: Requirements engineering gives us a Software Requirements Specification (SRS), such as food delivery checkout or real-time courier tracking.
 
-However, if an engineer jumps straight from user stories into code, they immediately face critical dilemmas: How many API endpoints should we expose? Do we store state in relational tables or document collections? Which module owns which data? Will the system survive when a million users log in simultaneously?
+However, if an engineer jumps straight from user stories into code, they immediately face critical dilemmas: How many subsystems should we split the platform into? What are the exact API contracts between Order and Payment? Do we store live GPS coordinates in SQL or Redis?
 
-Software design is the disciplined process that answers these questions. It is not surface-level styling; it is the structural and behavioral blueprint of a software system.
+Software design is the disciplined engineering process that answers these questions and produces a Software Design Specification (SDS) before heavy coding begins.
 
 To summarize this slide, remember this key takeaway: Software design is the intellectual blueprint bridging abstract human requirements and concrete executable code.
 -->
@@ -116,84 +117,96 @@ To summarize this slide, remember this key takeaway: Software design is the inte
 ## Why is Software Design Crucial?
 
 * **1. Eliminating "Vibe Coding" and Structural Code Rot:**
-  - Coding without design rapidly triggers the 4 Symptoms of Poor Design (Robert C. Martin):
-    - **Rigidity**: A single change forces a cascade of modifications across dozens of unrelated files.
-    - **Fragility**: Fixing a bug in Module A inexplicably breaks Module B in an unrelated subsystem.
-    - **Immobility**: Components are tangled together, making reuse in other contexts impossible.
+  - Coding without design rapidly triggers the **4 Symptoms of Poor Design** (Robert C. Martin):
+    - **Rigidity**: A single change forces cascading edits across dozens of unrelated files.
+    - **Fragility**: Fixing a bug in Module A inexplicably breaks an unrelated Module B.
+    - **Immobility**: Tangled components cannot be extracted for reuse in other systems.
+    - **Viscosity**: Doing things right is harder than hacking, tempting devs to take shortcuts.
 * **2. Quality Attributes are Designed In, Not Tested In:**
-  - Scalability, fault tolerance, low latency, and security must be architected from day one—they cannot be patched in via unit tests later.
+  - Scalability, fault isolation, `< 200ms` latency, and security must be architected from day one—they cannot be patched in via unit tests later.
 * **3. Barry Boehm's Cost of Defect Removal Curve:**
-  - Catching an architectural flaw in **Requirements & Design** costs **$1**; in integration testing it rises to **$10**; in **production maintenance**, it escalates to **$50–$100x**!
-* **4. Shared Contract & Common Language for Engineering Teams:**
-  - Clean component boundaries and public interfaces enable dozens of engineers to work in parallel without blocking each other.
+  - Catching an architectural flaw in **Design** costs **$1**; in integration testing **$10**; in **production**, it escalates to **$50–$100x**!
 
 <!--
 Why is software design so critically important?
 
-First, without design, developers fall into vibe coding or cowboy hacking. Early velocity feels fast, but within weeks the codebase becomes rigid and fragile: touch one line and three other features break.
+First, without design, developers fall into vibe coding or cowboy hacking. Early velocity feels fast, but within weeks the codebase exhibits the 4 Symptoms of Poor Design: Rigidity, Fragility, Immobility, and Viscosity.
 
-Second, quality attributes cannot be tested into existence. You cannot write a messy, tightly coupled monolith and hope a few unit tests will magically make it a globally distributed, fault-tolerant platform.
+Second, quality attributes cannot be tested into existence. You cannot write a tightly coupled monolith and hope unit tests will magically make it handle 50,000 concurrent dinner-rush orders.
 
-Third, Barry Boehm's famous empirical cost curve demonstrates that catching architectural flaws during design costs 1 dollar, while fixing them in production costs 50 to 100 times more!
+Third, Barry Boehm's empirical cost curve proves that catching architectural or interface flaws during design costs 1 dollar, while fixing them after deployment costs 50 to 100 times more!
 
-To summarize this slide, remember this key takeaway: Disciplined software design minimizes long-term maintenance costs and hardcodes quality into the DNA of the system.
+To summarize this slide, remember this key takeaway: Disciplined software design prevents the four symptoms of code rot and minimizes long-term defect removal costs.
 -->
 ---
-## What Does Software Design Encompass? (Design Spectrum)
+<!-- _class: title-image-slide -->
 
-* **Software design spans a multi-level engineering spectrum from macro to micro:**
-  - 🏛️ **1. Architectural Design (Macro-Structure):**
-    - High-level system structure, major sub-systems, distributed communication mechanisms, and global patterns (Layered, MVC, Microservices).
-  - 🔌 **2. Interface Design (Contract & Boundaries):**
-    - Public API specifications, network protocols, inter-component contracts, and information hiding boundaries (encapsulating internals).
-  - 🧩 **3. Component & Detailed OO Design (Micro-Implementation):**
-    - Internal class structures, algorithms, data structures, SOLID object-oriented principles, and GoF design patterns.
-  - 💾 **4. Data & Database Design (Persistence):**
-    - Conceptual entity models, relational schemas (ERDs), NoSQL document collections, caching strategies, and data consistency models.
-* **User Interface Design (UI/UX Design):**
-  - Focuses on human cognitive ergonomics, usability heuristics, and interaction flows—explored in depth in **Chapter 6**.
+## The 4-Stage Software Design Process & Design Specifications
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/design_process_dbc.svg" alt="The 4-Stage Software Design Process and Design Specifications" />
+</div>
 
 <!--
-What does software design actually encompass?
+Examine this master diagram on Slide 6, which defines the 4-Stage Software Design Process and serves as the exact structural backbone of Chapter 5!
 
-Notice that software design is not a single, flat task. It is a multi-level engineering spectrum spanning four interconnected tiers:
+On the left, the design process takes two inputs from Requirements Engineering: Functional Specifications (SRS & Use Cases) and Non-Functional Quality Drivers (Architecturally Significant Requirements, or ASRs).
 
-Tier 1 is Architectural Design: The 10,000-foot view. We partition sub-systems, choose monolithic or microservice architectures, and establish data pipelines.
+In the center, software design progresses iteratively from Macro to Micro across four stages—each paired with its dedicated UML or Data diagram:
+1. Stage 1 (Section 5.3) is Architectural Design: decomposing subsystems, synthesizing architectural patterns, evaluating ATAM trade-offs, and modeling macro-structure with UML Package Diagrams and Deployment Diagrams.
+2. Stage 2 (Section 5.4) is Interface & Contract Specification: establishing information-hiding boundaries, specifying formal contracts via Design by Contract (DbC), and wiring plug-and-play interfaces with UML Component Diagrams.
+3. Stage 3 (Section 5.5) is Component & Detailed OO Design: designing internal class hierarchies using GoF Design Patterns, the 5 SOLID principles, and UML Class Diagrams.
+4. Stage 4 (Section 5.6) is Data & Persistence Design: transforming domain entities into 3NF Relational ERDs, Redis Geo-caches, and Kafka event streams.
 
-Tier 2 is Interface Design: Setting up guardrails between sub-systems with clean API contracts and protocols.
+Notice the dark foundation bar at the bottom: Section 5.2 (Universal Design Principles: High Cohesion & Low Coupling) underpins all four stages! And on the right, the process outputs a complete Software Design Specification (SDS — IEEE 1016) and Architecture Decision Records (ADRs).
 
-Tier 3 is Component & Detailed OO Design: Zooming into classes, methods, and algorithms using SOLID principles and design patterns.
-
-Tier 4 is Data & Database Design: Defining persistence models, schemas, and caching.
-
-To summarize this slide, remember this key takeaway: Software design spans architectural, interface, component, and database design across an integrated engineering continuum.
+To summarize this slide, remember this key takeaway: The software design process progresses systematically across Architectural Design (5.3), Interface Specification (5.4), Detailed OO Design (5.5), and Data Design (5.6).
 -->
 ---
-## Roadmap: Why Universal Principles Precede Architecture
+## The 4 Design Stages & Deliverables (SDS & ADRs)
 
-* **The Educational Dilemma: Principles First vs. Architecture First:**
-  - If we teach architectural patterns first, patterns risk becoming arbitrary, memorized diagrams.
-  - When you understand **Separation of Concerns**, you immediately understand *why* Layered Architecture exists.
-  - When you understand **Low Coupling**, you immediately understand *why* MVC isolates Models from Views.
-  - When you understand **High Cohesion**, you immediately understand *why* Microservices align to Domain Bounded Contexts.
-* **Our Step-by-Step Trajectory:**
-  - **Step 1: Universal Design Principles (5.2)**: Core tenets, cohesion, coupling, and levels of cohesion & coupling.
-  - **Step 2: Classic Patterns & Trade-offs (5.3)**: The 6 architectural styles, monolithic vs. microservices, and ATAM.
-  - **Step 3: Architecture Derivation & Modeling (5.4)**: Beyond patterns: ASRs, decomposition, UML, 4+1 views, C4 model, and ADRs.
-  - **Step 4: Micro Detailed Design (5.5)**: Class-level SOLID object-oriented craftsmanship.
-  - **Step 5: Modern Practice & AI (5.6 & 5.7)**: AI copilot workflows, blind spot mitigations, and synthesis.
+> **Chapter 5 Master Plan:** After mastering **Universal Design Principles (5.2)**, we follow the exact **4-Stage Design Process (5.3 → 5.6)** and pair each stage with its canonical **UML Diagram**.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### The 4 Iterative Design Stages & UML Models
+1. **Stage 1 — Architectural Design (Sec 5.3)**:
+   - Synthesize patterns (Layered, Microservices), run ATAM, and model **UML Package & Deployment Diagrams**.
+2. **Stage 2 — Interface & Contract Spec (Sec 5.4)**:
+   - Specify **Design by Contract (DbC)** (`Pre`, `Post`, `Invariant`) and wire **UML Component Diagrams** (`—○` / `—(`).
+3. **Stage 3 — Component & OO Design (Sec 5.5)**:
+   - Apply GoF 23 Patterns & **5 SOLID Principles** modeled via **UML Class & Interface Diagrams**.
+4. **Stage 4 — Data & Persistence Design (Sec 5.6)**:
+   - Design 3-level **UML ERD Schemas**, 3NF tables, Redis spatial caches, and polyglot persistence.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### Design Specification Deliverables (SDS & ADRs)
+- **Software Design Specification (SDS — IEEE 1016)**:
+  - **Enables Parallel Engineering**: Frontend, Backend, DBAs, and QA build and write tests simultaneously against locked specs.
+  - **Contents**: Package/Deployment views, Component API contracts (OpenAPI/Protobuf), Class models & DDL schemas.
+- **Architecture Decision Records (ADRs — Michael Nygard)**:
+  - Lightweight, Git-versioned records (`Title`, `Status`, `Context`, `Decision`, `Consequences`) capturing **why** key trade-offs were chosen—preventing costly *"Architectural Archaeology"*!
+
+</div>
+</div>
 
 <!--
-Why do we arrange universal design principles before architecture?
+Let's unpack how the four design stages on the left and the design specification deliverables on the right work together in real-world engineering.
 
-In traditional curricula, instructors often rush directly into architectural patterns like MVC or Microservices. But students frequently ask: 'Why do we need layers? Why can't the database talk directly to the user interface?'
+In the left card, see how each stage answers a distinct engineering question and uses a dedicated diagram:
+Stage 1 (Section 5.3) asks: What is our macro system topology, how are source packages organized (UML Package Diagram), and how are binaries deployed to cloud nodes (UML Deployment Diagram)?
+Stage 2 (Section 5.4) asks: How do modular components interact across boundaries via formal contracts (Design by Contract & UML Component Diagram)?
+Stage 3 (Section 5.5) asks: How are classes structured inside a component to remain extensible and testable (GoF, SOLID & UML Class Diagram)?
+Stage 4 (Section 5.6) asks: How is domain state modeled, indexed, cached, and persisted (UML ERD & Polyglot Storage)?
 
-The answer lies in universal principles: Separation of Concerns, High Cohesion, and Low Coupling!
+In the right card, all four stages crystallize into the Software Design Specification (SDS) and Architecture Decision Records (ADRs)—documenting not only *what* the blueprint is, but *why* critical trade-offs were made!
 
-By learning these universal principles first, every architectural pattern we study later becomes an intuitive, logical application of these principles rather than an isolated formula to memorize.
-
-To summarize this slide, remember this key takeaway: Universal design principles provide the intellectual foundation that makes architectural patterns and detailed object-oriented design intuitive and coherent.
+To summarize this slide, remember this key takeaway: Following a structured 4-stage design process produces complete SDS blueprints and ADRs that empower parallel development and long-term maintainability.
 -->
+
 ---
 <!-- _class: lead -->
 <!-- header: '5.2 Universal Design Principles' -->
@@ -236,14 +249,14 @@ To summarize this slide, remember this key takeaway: Universal design principles
 ---
 ## Core Design Tenets: Modularity, Abstraction & SoC
 
-* **1. Abstraction :**
-  - Hiding low-level implementation mechanics behind clean, high-level conceptual interfaces. Allows developers to reason about systems without mental overload.
-* **2. Encapsulation & Information Hiding :**
-  - *David Parnas's Principle:* Bundling state and behavior inside a module while concealing private variables. Prevents external code from introducing illegal state side-effects.
-* **3. Separation of Concerns (SoC):**
-  - Decomposing software into distinct features that overlap as little as possible (e.g., decoupling UI rendering logic from SQL database queries).
-* **4. Modularity :**
-  - Dividing systems into cohesive, independently testable, and hot-swappable units.
+* **1. Abstraction — *[Cognitive View: "What It Does"]*:**
+  - Distills complex reality into clean, high-level public contracts (`interface`) while ignoring irrelevant details, reducing developer mental load.
+* **2. Encapsulation & Information Hiding — *[Protective Boundary: "How State Is Guarded"]*:**
+  - *David Parnas's Principle:* Bundles state and behavior inside a capsule while locking away `private` secrets to prevent external state corruption.
+* **3. Separation of Concerns (SoC) — *[Logical Dimension: "Orthogonal Aspects"]*:**
+  - Separates distinct problem domains or roles (e.g., UI presentation vs. business rules vs. SQL persistence vs. logging) so concerns never tangle.
+* **4. Modularity — *[Structural Packaging: "Swappable Building Blocks"]*:**
+  - Physically organizes software into discrete, self-contained units (packages, libraries, microservices) that compile, test, and deploy independently.
 
 <!--
 These four principles form the bedrock of clean software engineering:
@@ -280,35 +293,14 @@ High cohesion paired with low coupling is the secret to building software that r
 To summarize this slide, remember this key takeaway: High cohesion ensures focused internal responsibilities, while low coupling eliminates dangerous cascading change dependencies.
 -->
 ---
-## Cohesion & Coupling: Bad vs. Good Design
+## Cohesion & Coupling: Bad vs. Good Design (UML Comparison)
 
-```java
-// ❌ BAD: Low Cohesion & High Coupling (The Infamous "God Class")
-class OrderManager {
-    public void processOrder() {
-        // Embeds raw MySQL database query strings
-        // Calculates complex VIP customer discount mathematics
-        // Concatenates raw HTML strings for customer invoices
-        // Opens raw low-level TCP/SMTP socket connections to send emails
-    }
-}
-```
+<div class="centered-image">
+  <img src="../../img/ch05/architecture/cohesion_coupling_uml.svg" style="max-height: 335px; width: auto;" alt="UML Comparison of Bad vs Good Cohesion and Coupling" />
+</div>
 
-```java
-// ✅ GOOD: High Cohesion & Low Coupling (Collaborative Decoupled Classes)
-class OrderProcessor {
-    private final DiscountCalculator discountCalculator;
-    private final OrderRepository orderRepository;
-    private final NotificationService notificationService;
-
-    public OrderProcessor(DiscountCalculator dc, OrderRepository repo, NotificationService ns) {
-        this.discountCalculator = dc;
-        this.orderRepository = repo;
-        this.notificationService = ns;
-    }
-    // Orchestrates workflow cleanly across injected abstract interfaces!
-}
-```
+* **Bad Design (`OrderManager`)**: Cramming SQL, pricing math, HTML rendering, and SMTP sockets into one class yields **Coincidental Cohesion** and **Tight Concrete Coupling**.
+* **Good Design (`OrderProcessor`)**: Delegating to focused collaborators via injected interfaces achieves **Functional Cohesion** and **Loose Abstract Coupling**.
 
 <!--
 Examine this concrete Java code comparison:
@@ -320,20 +312,37 @@ In the good design below, OrderProcessor has one single, cohesive responsibility
 To summarize this slide, remember this key takeaway: Decomposing bloated monolithic classes into focused, collaborating services exemplifies high cohesion and low coupling.
 -->
 ---
+<!-- _class: title-image-slide -->
+
+## Visual Spectrum: The 7 Levels of Cohesion (Strong to Weak)
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/cohesion_levels_visual_map.svg" alt="Visual Spectrum of the 7 Levels of Cohesion" />
+</div>
+
+<!--
+Before examining the detailed reference table, let's visualize the entire 7-level spectrum of Cohesion side by side.
+
+On the left in green and blue are the strong, focused cohesion levels: Level 7 Functional Cohesion, where every element inside a module converges on one single well-defined task; Level 6 Sequential Cohesion, where output from one step feeds directly into the next like an assembly line; Level 5 Communicational Cohesion, where operations share the same input or output record; and Level 4 Procedural Cohesion, where steps follow a control sequence across different data stores.
+
+On the right in orange and red are the weak, entangled anti-patterns: Level 3 Temporal Cohesion, grouping unrelated tasks simply because they run at startup; Level 2 Logical Cohesion, stuffing multiple modes behind a switch flag; and Level 1 Coincidental Cohesion, the infamous CommonUtils grab-bag with zero meaningful relationship.
+
+To summarize this slide, remember this key takeaway: Always design modules toward the top-left of this map—Functional and Sequential Cohesion—and refactor away flag-driven or grab-bag classes on the right.
+-->
+---
 ## Levels and Types of Cohesion: From Weak to Strong
 
-* **Cohesion Spectrum (Edward Yourdon & Larry Constantine):**
-  - Measures how strongly related the internal elements of a single module/class are:
+- **Cohesion Spectrum (Yourdon & Constantine):** How strongly focused a single module's internal elements are:
 
-| Level | Cohesion Type | Core Characteristics | Real-World Example | Quality Assessment |
+| Level | Cohesion Type | Core Characteristics | Real-World Example | Quality |
 | :--- | :--- | :--- | :--- | :--- |
-| **7** | **Functional** | Performs exactly one single, well-defined mathematical or business task | `computeSalesTax()`, `sin(x)` | **Ideal (Highest)** |
-| **6** | **Sequential** | Output from one operation serves directly as the input to the next | `readData() → parseJSON() → validate()` | **Strong** |
-| **5** | **Communicational** | Operations share the same input data or produce the same output | `updateCustomerAddress()` & `printLabel()` | **Acceptable** |
-| **4** | **Procedural** | Elements execute in a specific order, but operate on different data | `validateOrder()`, then `updateInventoryAudit()` | **Moderate** |
-| **3** | **Temporal** | Elements are grouped purely because they execute at the same time | `systemStartup()`, `loadConfigAndLog()` | **Weak (Avoid)** |
-| **2** | **Logical** | Elements perform logically similar tasks, selected by a control flag | `printReport(int format)` (PDF, HTML, CSV) | **Weak (Avoid)** |
-| **1** | **Coincidental** | Elements have no meaningful relationship; arbitrary catch-all grouping | `GeneralUtils.java`, `CommonHelper.java` | **Worst (Eliminate)** |
+| **7** | **Functional** | Performs one single, well-defined domain or math task | `computeSalesTax()`, `sin(x)` | **Ideal (Best)** |
+| **6** | **Sequential** | Output of one step serves directly as input to the next | `read() → parse() → validate()` | **Strong** |
+| **5** | **Communicational** | Operations share the same input or output data structure | `updateAddr()` & `printLabel()` | **Acceptable** |
+| **4** | **Procedural** | Grouped by execution order, operating on different data | `checkAuth()` then `auditLog()` | **Moderate** |
+| **3** | **Temporal** | Grouped purely because they execute at the same time | `initStartup()`, `closeAll()` | **Weak (Avoid)** |
+| **2** | **Logical** | Similar tasks selected via an external control flag | `export(int mode)` (PDF/CSV) | **Weak (Avoid)** |
+| **1** | **Coincidental** | Unrelated catch-all tasks with no meaningful relationship | `CommonUtils`, `MiscHelper` | **Worst** |
 
 <!--
 Let's analyze the classic 7 levels of Cohesion established by Larry Constantine and Edward Yourdon.
@@ -349,19 +358,36 @@ At the bottom are the anti-patterns: Temporal cohesion groups tasks just because
 To summarize this slide, remember this key takeaway: Strive for Functional and Sequential cohesion, and refactor away temporal, logical, and coincidental groupings.
 -->
 ---
+<!-- _class: title-image-slide -->
+
+## Visual Spectrum: The 6 Levels of Coupling (Loose to Tight)
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/coupling_levels_visual_map.svg" alt="Visual Spectrum of the 6 Levels of Coupling" />
+</div>
+
+<!--
+Now let's visualize the 6-level spectrum of Coupling across modules.
+
+On the left side are the desirable, loosely coupled mechanisms: Level 6 Message and Event Coupling decouples sender and receiver completely via an asynchronous event bus with zero compile-time dependency; Level 5 Data Coupling passes only the exact primitive parameters needed; and Level 4 Stamp Coupling passes a composite data structure when only one field like zipCode is read.
+
+On the right side are the dangerous, tightly coupled anti-patterns: Level 3 Control Coupling passes a flag that forces the caller to know the callee's internal if-else branches; Level 2 Common Coupling binds multiple modules to a shared global mutable state; and Level 1 Content Coupling pierces encapsulation to mutate another module's private fields directly.
+
+To summarize this slide, remember this key takeaway: Loose coupling acts as an architectural firewall that stops change ripple effects, whereas tight coupling turns small edits into system-wide domino failures.
+-->
+---
 ## Levels and Types of Coupling: From Tight to Loose
 
-* **Coupling Spectrum (How Dependent Are Separate Modules?):**
-  - Measures the degree of direct interconnections and knowledge sharing between modules:
+- **Coupling Spectrum:** Measures the degree of direct interconnections and dependencies between separate modules:
 
-| Level | Coupling Type | Coupling Mechanism & Risk | Real-World Example | Quality Assessment |
+| Level | Coupling Type | Coupling Mechanism & Risk | Real-World Example | Quality |
 | :--- | :--- | :--- | :--- | :--- |
-| **1** | **Content (Pathological)**| One module reaches directly into private internal memory/code of another | Bypassing getters to modify a private field | **Worst (Severe Bug Risk)** |
-| **2** | **Common (Global)** | Multiple modules share access to global mutable variables | Reading/writing global flags in multi-threading | **High Risk (Avoid)** |
-| **3** | **Control** | One module controls the internal execution flow of another via flags | Passing `mode = 3` to dictate callee branch | **Moderate Risk** |
-| **4** | **Stamp (Data-Structure)**| Modules share a composite data structure, but callee needs only a field | Passing entire `Customer` to get `zipCode` | **Moderate (Acceptable)** |
-| **5** | **Data** | Modules communicate exclusively via elementary, primitive arguments | `calculateArea(width, height)` | **Loosest & Best (Calls)** |
-| **6** | **Message / Event** | Modules communicate asynchronously via messages/events without coupling | EventBus: `OrderPlacedEvent` via Kafka | **Ideal (Decoupled)** |
+| **1** | **Content (Pathological)**| Reaches directly into private fields/branches of another | Modifying a `private` field via reflection | **Worst (Severe)** |
+| **2** | **Common (Global)** | Multiple modules read/write shared global mutable state | Sharing mutable global flags across threads | **High Risk** |
+| **3** | **Control** | Caller dictates callee's internal execution flow via flags | Passing `mode = 3` to select internal branch | **Moderate Risk** |
+| **4** | **Stamp (Data-Struct)** | Passes a whole composite object when only 1 field is needed | Passing entire `Customer` to read `zipCode` | **Acceptable** |
+| **5** | **Data** | Communicates exclusively via needed primitive parameters | `calculateArea(width, height)` | **Best (Direct)** |
+| **6** | **Message / Event** | Communicates asynchronously via events with zero reference | Publishing `OrderPlacedEvent` via EventBus | **Ideal (Loosest)** |
 
 <!--
 Now let's examine the classic hierarchy of Coupling, ordered from the most dangerous and tightly coupled to the cleanest and most decoupled.
@@ -382,19 +408,20 @@ To summarize this slide, remember this key takeaway: Eliminate content and commo
 -->
 ---
 ### Concept Check Question 1 (CCQ 1)
+<!-- id: ase-ch05-ccq1 -->
 <div class="ccq-columns">
   <div class="ccq-text">
 
 In software system design, what is the primary practical benefit of combining **High Cohesion** with **Low Coupling**?
 
-- **A.** Maximizes raw CPU runtime performance by inlining all functions into a single binary.
-- **B.** Produces a modular architecture where changes to one class cause minimal cascading ripple effects on other modules.
-- **C.** Mandates storing all central data structures in a globally shared variable space.
-- **D.** Completely eliminates the need to write automated integration tests and regression suites.
+- **A.** Maximizes raw CPU execution speed by inlining all helper methods into one monolithic binary executable.
+- **B.** Isolates internal class changes behind clean boundaries so modifications cause minimal ripple effects.
+- **C.** Mandates storing all shared domain data structures inside a single globally mutable memory namespace.
+- **D.** Eliminates the need to run automated integration test suites or continuous regression checks in CI/CD.
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq1" target="_blank"><img src="../../img/ch05/ase-ch05-ccq1.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -414,23 +441,21 @@ To summarize this slide, remember this key takeaway: High cohesion and low coupl
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.3 Classic Architectural Patterns & Trade-offs' -->
+<!-- header: '5.3 Architectural Design: Patterns & UML' -->
 
-# **5.3 Classic Architectural Patterns & Trade-offs**
+# **5.3 Stage 1 — Architectural Design: Patterns, Trade-offs & Macro UML**
 
 > "There are no solutions, only trade-offs."  
 > — *Thomas Sowell*
 
 <!--
-Welcome to Section 5.3: Classic Architectural Patterns & Trade-offs.
+Welcome to Section 5.3: Stage 1 of our Software Design Process—Architectural Design: Patterns, Trade-offs & Macro UML.
 
-Now that we have established universal principles, we step up to the macro-architectural scale. We explore the structural archetypes developed by the software engineering community over the past fifty years: Architectural Patterns.
+Now that we have established the 4-stage design process in 5.1 and universal principles in 5.2, we enter Stage 1: Macro Architectural Design.
 
-Patterns are proven structural solutions to recurring architectural challenges. However, every pattern introduces distinct trade-offs.
+In this section, we first explore the six foundational Architectural Patterns (MVC, Layered, Repository, Client-Server, Pipe & Filter, and Microservices), see how they combine inside our Food Delivery Platform, and evaluate quality trade-offs via ATAM. Then, we learn how to formally model this macro-architecture using two dedicated UML diagrams: the **UML Package Diagram** (compile-time module structure) and the **UML Deployment Diagram** (runtime cloud topology).
 
-In this section, we begin by defining Software Architecture and Architectural Patterns. We then analyze six foundational architectural patterns: MVC, Layered, Repository, Client-Server, Pipe & Filter, and Microservices. We conduct a deep-dive comparison between Monolithic and Microservices architectures, and master the Architecture Trade-off Analysis Method (ATAM).
-
-To summarize this slide, remember this key takeaway: Architectural patterns provide proven structural templates whose trade-offs must be rigorously evaluated against system quality attributes.
+To summarize this slide, remember this key takeaway: Stage 1 Architectural Design selects and synthesizes structural patterns, evaluates trade-offs via ATAM, and models macro-topology using UML Package and Deployment diagrams.
 -->
 ---
 ## What is Software Architecture?
@@ -482,6 +507,33 @@ Patterns encapsulate proven structural wisdom, establishing shared vocabulary an
 To summarize this slide, remember this key takeaway: Architectural patterns encapsulate proven structural wisdom, establishing shared vocabulary and predictable trade-offs.
 -->
 ---
+<!-- _class: title-image-slide -->
+
+## Visual Roadmap: The 6 Architectural Patterns in 5.3
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/patterns_53_visual_map.svg" alt="Visual Overview of 5.3 Architectural Patterns" />
+</div>
+
+<!--
+Before diving into each pattern individually, examine this visual roadmap of Section 5.3.
+
+Notice how our six architectural patterns divide into two major families:
+On the left are Centralized & Structural Patterns:
+1. Model-View-Controller (MVC) decoupling UI presentation from state;
+2. Layered (N-Tier) Architecture enforcing strict downward abstraction boundaries;
+3. Repository (Blackboard) Architecture coordinating tools around a central data hub;
+along with the classic Monolithic vs. Modular Component baseline at the bottom.
+
+On the right are Distributed, Routing & Flow Patterns:
+4. Client-Server Architecture connecting edge devices to centralized servers;
+5. Pipe-and-Filter Stream Architecture chaining stateless transformations;
+6. Microservices Architecture partitioning systems into autonomous pods with private databases;
+culminating in Event-Driven buses and Multi-Pattern Hybrid Composition at the bottom!
+
+To summarize this slide, remember this key takeaway: Architectural patterns span centralized structural organization and distributed network/data-flow topologies.
+-->
+---
 ## Architectural Patterns: Comprehensive Overview Matrix
 
 | Pattern Name | Visual Topology | Core Mechanism | Best Used For | Primary Risk & Trade-off |
@@ -507,156 +559,257 @@ Microservices partitions systems into independently deployable domain services.
 To summarize this slide, remember this key takeaway: The Architectural Patterns Matrix provides an archetypal reference guide for evaluating structural mechanisms and trade-offs.
 -->
 ---
-## 1. Model-View-Controller (MVC) Pattern
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch05/architecture/pattern_mvc.svg" style="max-height: 290px; width: auto;" alt="MVC Architecture Diagram" />
+## 1. Model-View-Controller (MVC) Pattern — Visual Topology
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/pattern_mvc.svg" alt="MVC Architecture Diagram" />
 </div>
 
-* **Core Structural Responsibilities:**
-  - **Model**: Encapsulates core business data, validation logic, and domain state.
-  - **View**: Renders visual representation to users; listens for state change events.
-  - **Controller**: Intercepts user inputs, orchestrates business logic, and mutates the Model.
-* **Engineering Advantages & Trade-offs:**
-  - **Strengths**: Enables multiple simultaneous views of the same model; allows UI and backend engineers to work in parallel.
-  - **Weaknesses**: Increases complexity for simple screens; tight coupling can occur if Views bypass Controllers.
-
 <!--
-Let's analyze Pattern 1: Model-View-Controller (MVC).
+Let's examine the visual topology of Pattern 1: Model-View-Controller (MVC).
 
-Look at the triangular data flow in the diagram:
-The Controller intercepts user HTTP requests, translates them into domain actions, and updates the Model.
-The Model holds the authoritative state and business rules.
-The View observes or queries the Model to render HTML or mobile screens.
+Follow the numbered triangular interaction cycle in the diagram:
+Step 1: The User sends an action or HTTP request to the Controller.
+Step 2: The Controller translates that input into domain operations and updates the Model.
+Step 3: The Model notifies registered View observers that state has changed.
+Step 4: The View queries the updated state from the Model.
+Step 5: The View renders the updated UI display back to the User.
 
-MVC's greatest virtue is Separation of Concerns: frontend designers can overhaul the HTML CSS presentation without touching core business calculation rules!
-
-To summarize this slide, remember this key takeaway: MVC decouples visual presentation from domain data models, enabling independent evolution of user interfaces.
+To summarize this slide, remember this key takeaway: MVC decouples user interface rendering from domain state through a triangular Controller-Model-View interaction flow.
 -->
 ---
-## 2. Layered Architecture Pattern
-
-<div class="centered-image">
-  <img src="../../img/ch05/architecture/pattern_layered.svg" style="max-height: 290px; width: auto;" alt="Layered Architecture Diagram" />
-</div>
+## 1. Model-View-Controller (MVC): Responsibilities & Trade-offs
 
 * **Core Structural Responsibilities:**
-  - Organizes components into horizontal layers: **Presentation → Business Logic → Data Access → Database**.
-  - **Strict Layering Rule**: Each layer only depends on the layer immediately below it (`Layer N → Layer N-1`).
+  - **Model**: Encapsulates core business data, validation rules, and authoritative domain state; remains completely ignorant of UI presentation.
+  - **View**: Renders visual representations (HTML, mobile screens, charts) to users and listens for Model state change notifications.
+  - **Controller**: Intercepts user inputs and HTTP requests, orchestrates business workflows, updates the Model, and selects the target View.
+* **When Used & Real-World Scenarios:**
+  - Interactive Web and mobile applications where the same underlying data must be presented in multiple visual formats (e.g., dashboard tables, charts, and mobile views).
 * **Engineering Advantages & Trade-offs:**
-  - **Strengths**: High modularity; hot-swappable layers (e.g., swapping SQL for NoSQL without modifying business logic).
-  - **Weaknesses**: "Architecture Sinkhole Anti-pattern" (requests simply pass through layers without doing work, causing performance drag).
+  - **Strengths**: Clean separation of concerns; UI designers and backend engineers can evolve presentation and business logic in parallel.
+  - **Weaknesses**: Introduces extra indirection and boilerplate for simple CRUD screens; tight coupling arises if Views bypass Controllers to mutate state.
 
 <!--
-Pattern 2 is the most ubiquitous architecture in enterprise computing: Layered Architecture.
+Now let's review the architectural responsibilities and trade-offs of MVC.
 
-Look at the horizontal hierarchy: Presentation at top, Business Logic in the middle, and Data Access at the bottom.
+By separating the Model, View, and Controller, frontend engineers can completely redesign the visual user interface without touching a single line of backend business calculation logic.
 
-The fundamental rule is unidirectional downward dependency: Presentation calls Business Logic, Business Logic calls Data Access. The database never calls the UI!
+Moreover, multiple Views—such as a web dashboard and a mobile view—can share the exact same underlying Model.
 
-This provides phenomenal modularity: you can swap the UI from Web to Mobile without touching business code. However, beware the sinkhole anti-pattern, where layers do nothing but pass calls through, creating performance latency.
+However, for trivial data-entry screens, full MVC can add unnecessary indirection, and teams must guard against stuffing business logic into Controllers or Views.
 
-To summarize this slide, remember this key takeaway: Layered architecture enforces clean vertical abstraction boundaries, ensuring upper layers remain decoupled from database implementations.
+To summarize this slide, remember this key takeaway: MVC enables independent UI and domain evolution, trading minor structural indirection for high presentation flexibility.
 -->
 ---
-## 3. Repository Architecture Pattern
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch05/architecture/pattern_repository.svg" style="max-height: 290px; width: auto;" alt="Repository Architecture Diagram" />
+## 2. Layered Architecture Pattern — Visual Topology
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/pattern_layered.svg" alt="Layered Architecture Diagram" />
 </div>
 
-* **Core Structural Responsibilities:**
-  - **Central Repository**: Passive data store maintaining all persistent system state.
-  - **Subsystems / Accessors**: Independent active components that interact solely through the repository.
-* **Engineering Advantages & Trade-offs:**
-  - **Strengths**: Efficient sharing of large, complex data structures; subsystems do not need direct inter-connections.
-  - **Weaknesses**: Repository becomes a single point of failure (SPOF) and a severe performance bottleneck under high concurrent writes.
-
 <!--
-Pattern 3: Repository Architecture (also known as Blackboard Architecture in AI).
+Let's examine the visual topology of Pattern 2: Layered Architecture.
 
-Notice the topology: independent components (Parser, Type Checker, Optimizer, Code Generator in an IDE or compiler) do not talk directly to each other. Instead, they communicate exclusively through a central data store.
+Look at the four horizontal tiers stacked from top to bottom:
+Presentation Layer at the top for Web views, mobile UIs, and REST controllers;
+Application / Service Layer for use-case orchestration and transaction boundaries;
+Business / Domain Layer for core entities and business rules;
+and Persistence / Infrastructure Layer at the bottom for repositories and SQL/NoSQL databases.
 
-This makes integrating new tools trivial: you simply plug a new tool into the central repository without rewiring existing modules.
+Notice the downward arrows on the right: each layer only invokes the layer immediately below it.
 
-However, the central repository is a prime Single Point of Failure and can become an intolerable bottleneck under high concurrent load.
-
-To summarize this slide, remember this key takeaway: Repository architecture centralizes shared state among disparate tools, eliminating direct inter-module coupling at the cost of a central bottleneck.
+To summarize this slide, remember this key takeaway: Layered architecture organizes software into a strict vertical hierarchy of downward-only dependencies.
 -->
 ---
-## 4. Client-Server Architecture Pattern
-
-<div class="centered-image">
-  <img src="../../img/ch05/architecture/pattern_client_server.svg" style="max-height: 290px; width: auto;" alt="Client-Server Architecture Diagram" />
-</div>
+## 2. Layered Architecture: Responsibilities & Trade-offs
 
 * **Core Structural Responsibilities:**
-  - **Server Component**: Centralized provider offering shared services (data storage, compute, auth).
-  - **Client Components**: Distributed consumers that initiate network requests to access server resources.
+  - Organizes the system into horizontal abstraction tiers: **Presentation → Application/Service → Business/Domain → Persistence**.
+  - **Strict Layering Rule**: Each layer depends solely on the layer immediately below it (`Layer N → Layer N-1`), forbidding upward or skipped-layer calls.
+* **When Used & Real-World Scenarios:**
+  - Standard enterprise information systems, e-commerce backends, and banking applications requiring clear team boundaries and multi-level security isolation.
 * **Engineering Advantages & Trade-offs:**
-  - **Strengths**: Centralized data management, access control, and seamless server-side upgrades.
-  - **Weaknesses**: Network latency and failure risks; server overload during traffic surges (requires load balancing).
+  - **Strengths**: High modularity and change isolation—swapping MySQL for DynamoDB in the Persistence layer leaves core Business Logic completely untouched.
+  - **Weaknesses**: Susceptible to the **"Architecture Sinkhole Anti-Pattern"**, where requests merely pass through multiple layers without processing, adding latency and object-mapping overhead.
 
 <!--
-Pattern 4 is the foundation of the World Wide Web: Client-Server Architecture.
+Let's analyze the responsibilities and trade-offs of Layered Architecture.
 
-Clients (browsers, mobile apps) communicate over TCP/IP or HTTP with centralized servers.
+Layered architecture is the workhorse of enterprise software because its boundaries are intuitive and align naturally with engineering roles: UI engineers, backend domain developers, and database administrators.
 
-This architecture centralizes data integrity and security: sensitive user accounts and banking ledgers are stored securely on servers rather than on vulnerable client devices.
+Its greatest advantage is change isolation: replacing a database engine or web framework only impacts a single layer.
 
-The major architectural challenges are network unreliability and scalability: servers must employ load balancers, caching proxies, and horizontal auto-scaling to survive traffic surges.
+However, architects must watch out for the Architecture Sinkhole anti-pattern, where 80 percent of requests simply pass straight through four layers without any business logic, paying a runtime tax for every layer hop.
 
-To summarize this slide, remember this key takeaway: Client-server architecture distributes presentation to edge clients while centralizing security and data governance on servers.
+To summarize this slide, remember this key takeaway: Layered architecture isolates technology changes across vertical tiers, but must avoid wasteful pass-through sinkholes.
 -->
 ---
-## 5. Pipe-and-Filter Architecture Pattern
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch05/architecture/pattern_pipe_filter.svg" style="max-height: 290px; width: auto;" alt="Pipe and Filter Architecture Diagram" />
+## 3. Repository Architecture Pattern — Visual Topology
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/pattern_repository.svg" alt="Repository Architecture Diagram" />
 </div>
 
-* **Core Structural Responsibilities:**
-  - **Filters**: Independent, stateless transformation components that read input streams and produce output streams.
-  - **Pipes**: Unidirectional channels that buffer and transmit data streams between filters.
-* **Engineering Advantages & Trade-offs:**
-  - **Strengths**: High reusability (filters can be recombined freely, like Unix pipes `cat | grep | sort`); easy parallelization.
-  - **Weaknesses**: Poor fit for interactive GUI systems; data parsing overhead between adjacent filter boundaries.
-
 <!--
-Pattern 5: Pipe-and-Filter Architecture.
+Let's examine the visual topology of Pattern 3: Repository Architecture.
 
-Think of Unix command-line pipes, video encoding pipelines, or modern Big Data ETL pipelines.
+Notice the hub-and-spoke structure in the diagram:
+At the center sits the Central Repository holding authoritative shared state, such as an Abstract Syntax Tree (AST) in an IDE or a central enterprise database.
+Surrounding it are independent active subsystems—Code Editor, Compiler, Static Analyzer, and Debugger.
 
-Each filter does one job: it reads an input stream, applies a transformation, and emits an output stream into a pipe.
+None of these tools call each other directly; all coordination occurs by reading and writing to the central repository.
 
-Filters know nothing about upstream or downstream neighbors; they only consume and produce data streams. This yields supreme reusability and trivial parallel execution across CPU cores.
-
-However, pipe-and-filter is terrible for interactive user interfaces, and serializing data between stages incurs significant overhead.
-
-To summarize this slide, remember this key takeaway: Pipe-and-filter architecture structures sequential data stream transformations into composable, parallelizable processing units.
+To summarize this slide, remember this key takeaway: Repository architecture decouples independent tools by routing all state sharing through a central data hub.
 -->
 ---
-## 6. Microservices Architecture Pattern (MSA)
-
-<div class="centered-image">
-  <img src="../../img/ch05/architecture/pattern_microservices.svg" style="max-height: 290px; width: auto;" alt="Microservices Architecture Diagram" />
-</div>
+## 3. Repository Architecture: Responsibilities & Trade-offs
 
 * **Core Structural Responsibilities:**
-  - Decomposes the application into a suite of small, autonomous, **independently deployable services**.
-  - **Database per Service**: Each microservice owns its private persistent database; direct cross-service DB queries are forbidden!
+  - **Central Repository**: A passive, authoritative data store maintaining all shared persistent state and schema invariants.
+  - **Active Subsystems**: Independent tools or processing agents that never call each other directly, interacting exclusively through the central store.
+* **When Used & Real-World Scenarios:**
+  - Data-intensive environments where multiple specialized tools process the same complex data representation: **IDEs, compilers (shared AST), CAD systems, and AI Blackboard systems**.
 * **Engineering Advantages & Trade-offs:**
-  - **Strengths**: Independent deployment cadence; polyglot technology stacks; strict fault isolation (blast radius containment).
-  - **Weaknesses**: Distributed systems complexity: network latency, distributed transactions (Saga pattern), and eventual consistency.
+  - **Strengths**: Eliminates direct inter-tool coupling; new analysis tools can be plugged into the repository effortlessly without modifying existing subsystems.
+  - **Weaknesses**: The central repository is a **Single Point of Failure (SPOF)** and a major contention bottleneck under heavy concurrent writes; schema evolution affects all connected tools.
 
 <!--
-Pattern 6 represents modern cloud-native computing: Microservices Architecture.
+Let's examine the responsibilities and trade-offs of Repository Architecture.
 
-Instead of deploying a single giant artifact, we decompose the system into dozens of small services organized around business capabilities: Order Service, Payment Service, Inventory Service.
+In an IDE like VS Code or IntelliJ, dozens of tools—syntax highlighting, type checking, refactoring, and debugging—all need access to your code's Abstract Syntax Tree. Instead of copying gigabytes of data between tools, they share a single central repository.
 
-Crucially: each service owns its private database. If Order Service needs customer data, it must call Customer Service over REST or gRPC—never run a direct SQL JOIN!
+This makes adding new plugins effortless.
 
-However, microservices introduce severe distributed systems overhead: network latency replaces in-memory calls, and cross-service transactions require complex Saga patterns.
+However, the trade-off is clear: if the central repository crashes or locks up, every single connected subsystem halts, and changing the central data schema impacts all tools.
+
+To summarize this slide, remember this key takeaway: Repository architecture enables efficient large-scale data sharing among decoupled tools, at the cost of a central bottleneck and single point of failure.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## 4. Client-Server Architecture Pattern — Visual Topology
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/pattern_client_server.svg" alt="Client-Server Architecture Diagram" />
+</div>
+
+<!--
+Let's examine the visual topology of Pattern 4: Client-Server Architecture.
+
+On the left, diverse distributed clients—Web Browsers, Mobile Native Apps, and Desktop/POS terminals—initiate requests.
+In the center, requests traverse the Internet/WAN boundary over HTTPS, REST, or gRPC.
+On the right, the centralized server tier receives traffic through a Load Balancer, distributes work across stateless application servers, and persists data in a central database and cache cluster.
+
+To summarize this slide, remember this key takeaway: Client-server architecture separates distributed edge clients from centralized compute and storage servers across a network boundary.
+-->
+---
+## 4. Client-Server Architecture: Responsibilities & Trade-offs
+
+* **Core Structural Responsibilities:**
+  - **Client Tier**: Distributed consumer nodes responsible for user interaction, local rendering, and initiating network service requests.
+  - **Server Tier**: Centralized provider nodes enforcing authentication, business rules, concurrent access control, and persistent data storage.
+* **When Used & Real-World Scenarios:**
+  - Web applications, mobile banking, multiplayer online services, and enterprise systems where shared data must be accessed securely from diverse locations.
+* **Engineering Advantages & Trade-offs:**
+  - **Strengths**: Centralizes security governance, data backups, and server-side upgrades; stateless application servers can scale horizontally behind load balancers.
+  - **Weaknesses**: Vulnerable to network latency, packet loss, and connection drops; centralized server endpoints face DDoS and traffic-surge overload risks.
+
+<!--
+Let's analyze the responsibilities and trade-offs of Client-Server Architecture.
+
+By keeping sensitive data and core business logic on centralized servers while pushing presentation to edge clients, organizations maintain strict control over security, authentication, and data integrity.
+
+Furthermore, stateless application servers can be replicated horizontally behind a load balancer to handle variable traffic loads.
+
+On the downside, every interaction crosses an unreliable network boundary, requiring architects to design for latency, retries, caching, and DDoS mitigation.
+
+To summarize this slide, remember this key takeaway: Client-server architecture centralizes security and data governance while requiring resilience against network latency and server overload.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## 5. Pipe-and-Filter Architecture Pattern — Visual Topology
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/pattern_pipe_filter.svg" alt="Pipe and Filter Architecture Diagram" />
+</div>
+
+<!--
+Let's examine the visual topology of Pattern 5: Pipe-and-Filter Architecture.
+
+Follow the linear data stream across the top of the diagram:
+Raw data leaves the Data Source and flows through Pipe 1 into Filter 1 (Parse/Ingest).
+The parsed records flow through Pipe 2 into Filter 2 (Cleanse/Validate), then through Pipe 3 into Filter 3 (Transform/Aggregate), and finally arrive at the Data Sink.
+
+At the bottom, notice the classic Unix shell pipe analogy: cat, grep, sort, and uniq chained together seamlessly.
+
+To summarize this slide, remember this key takeaway: Pipe-and-filter architecture processes data streams through a sequence of stateless, decoupled transformation stages.
+-->
+---
+## 5. Pipe-and-Filter Architecture: Responsibilities & Trade-offs
+
+* **Core Structural Responsibilities:**
+  - **Filters**: Independent, stateless transformation units that consume an input stream, apply a single focused transformation, and emit an output stream.
+  - **Pipes**: Unidirectional connectors that buffer and transport data streams between adjacent filters without the filters knowing each other's identity.
+* **When Used & Real-World Scenarios:**
+  - Multi-stage data processing pipelines: **Unix shell pipelines (`cat | grep | sort`), compiler front-ends, audio/video media encoding, and Big Data ETL workflows**.
+* **Engineering Advantages & Trade-offs:**
+  - **Strengths**: Exceptional composability and reuse—filters can be reordered, added, or executed concurrently across CPU cores.
+  - **Weaknesses**: Ill-suited for interactive event-driven GUIs; incurs data parsing/serialization overhead at every pipe boundary and requires a common stream format.
+
+<!--
+Let's review the responsibilities and trade-offs of Pipe-and-Filter Architecture.
+
+Because each filter is completely stateless and ignorant of what comes before or after it, filters achieve high functional cohesion and minimal coupling. You can reorder filters, reuse them in new pipelines, or run each filter on a separate thread Pool.
+
+However, pipe-and-filter is a poor fit for interactive user interfaces that require bidirectional state updates, and parsing or serializing data at every pipe stage can introduce runtime overhead.
+
+To summarize this slide, remember this key takeaway: Pipe-and-filter excels at composable, parallelizable batch and stream transformations, but is unsuitable for interactive UIs.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## 6. Microservices Architecture Pattern (MSA) — Visual Topology
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/pattern_microservices.svg" alt="Microservices Architecture Diagram" />
+</div>
+
+<!--
+Let's examine the visual topology of Pattern 6: Microservices Architecture (MSA).
+
+On the left, client traffic enters through a unified API Gateway handling routing, JWT authentication, and rate limiting.
+In the center, the system is decomposed into autonomous domain pods: User Service (Node.js + Postgres), Order Service (Spring Boot + MongoDB), and Payment Service (Python + MySQL).
+Crucially, each service owns its private database—cross-service database joins are strictly forbidden!
+At the bottom, services coordinate asynchronously via an Event Broker such as Kafka or RabbitMQ.
+
+To summarize this slide, remember this key takeaway: Microservices decompose an enterprise system into independently deployable domain services, each encapsulating its own private database.
+-->
+---
+## 6. Microservices Architecture (MSA): Responsibilities & Trade-offs
+
+* **Core Structural Responsibilities:**
+  - **Autonomous Domain Services**: Small, business-capability-aligned services running in isolated processes with independent CI/CD deployment pipelines.
+  - **Database-per-Service**: Each microservice strictly encapsulates its own private database; inter-service communication occurs solely via APIs (REST/gRPC) or Event Brokers (Kafka).
+* **When Used & Real-World Scenarios:**
+  - Large-scale cloud platforms (e.g., Netflix, Uber, Amazon) with dozens of autonomous engineering teams requiring rapid, independent release cycles and elastic scaling per domain.
+* **Engineering Advantages & Trade-offs:**
+  - **Strengths**: Superior **fault isolation (blast-radius containment)**, independent scaling of bottleneck services, team autonomy, and polyglot technology freedom.
+  - **Weaknesses**: High distributed systems complexity—network latency, eventual consistency (Saga transactions), distributed tracing, and heavy Kubernetes/DevOps operational cost.
+
+<!--
+Let's analyze the architectural responsibilities and trade-offs of Microservices Architecture.
+
+Microservices solve two critical enterprise bottlenecks: blast-radius containment and organizational scaling. If Payment Service experiences a memory leak, the product catalog and search services remain completely operational. And 50 teams can deploy independently without merge conflicts.
+
+However, microservices are never a free lunch: in-memory function calls become network RPCs that can fail or time out, ACID database transactions become complex multi-step Sagas, and DevOps complexity skyrockets.
 
 To summarize this slide, remember this key takeaway: Microservices achieve high team autonomy and fault isolation at the expense of distributed network and transactional complexity.
 -->
@@ -685,6 +838,53 @@ However, do not underestimate operational complexity: you now need Kubernetes cl
 To summarize this slide, remember this key takeaway: Microservices trade operational simplicity for team autonomy and fault isolation; start with a modular monolith unless organizational scale demands distribution.
 -->
 ---
+<!-- _class: title-image-slide -->
+
+## Case Study: Food Delivery System — Multi-Pattern Topology
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/pattern_food_delivery_synthesis.svg" alt="Food Delivery Multi-Pattern Architecture Diagram" />
+</div>
+
+<!--
+Now let's answer a crucial engineering question: Is a real-world system like UberEats or foodpanda built using just one single architectural pattern?
+
+Look at this comprehensive architecture diagram of a Food Delivery Platform. The answer is an emphatic NO! Real-world systems combine all six architectural patterns across different zoom levels and specialized subsystems:
+
+On the left edge, Client-Server connects Customer, Merchant, and Rider apps to the cloud, while MVC inside the Customer App drives both the live map and order status bar from one shared OrderModel.
+In the center, the cloud backend is partitioned into autonomous Microservices, while zooming inside Order Service reveals a strict 4-tier Layered Architecture.
+On the right, Pipe-and-Filter processes 100,000 live rider GPS streams per second, while the AI Dispatch Hub uses a Central Repository where route solvers, order batchers, and surge pricers collaborate around live city geo-state!
+
+To summarize this slide, remember this key takeaway: Real-world software architectures synthesize multiple patterns fractally across system boundaries, services, and data pipelines.
+-->
+---
+## Case Study Synthesis: 6 Patterns in a Food Delivery System
+
+- **Multi-Pattern Composition:** Real systems combine patterns by **zoom level** and **problem domain**:
+
+| Pattern | Food Delivery Subsystem / Zoom Level | Core Engineering Problem Solved |
+| :--- | :--- | :--- |
+| **1. MVC** | **Customer App & Merchant Portal UI** | One `OrderModel` simultaneously updates Live Map View & Progress Bar View |
+| **2. Layered** | **Inside `Order Service` (`Controller → Domain → Repo`)** | Isolates delivery fee & promo pricing rules from PostgreSQL persistence |
+| **3. Repository** | **AI Dispatch Blackboard (`Geo-State Store`)** | Route solver, order batcher & surge pricer share live city map state |
+| **4. Client-Server** | **Customer / Merchant / Rider Apps ↔ Cloud** | Centralizes menu pricing, auth & payment verification on secure servers |
+| **5. Pipe-Filter** | **Live Rider GPS Stream (`Denoise → Match → ETA`)** | Processes 100k+ GPS pings/sec through stateless, parallelizable stages |
+| **6. Microservices** | **Backend Domains (`Menu`, `Order`, `Pay`, `Dispatch`)** | Scales GPS dispatch 20x during rainstorms; isolates promo crashes from checkout |
+
+<!--
+Examine this 6-pattern synthesis table for our Food Delivery Platform case study.
+
+Notice how each pattern solves a distinct engineering force at its specific zoom level:
+1. MVC operates inside the Customer App so that when an order status changes, both the map view and status bar refresh automatically.
+2. Layered Architecture operates inside individual services like Order Service to keep fee calculation rules clean and database-agnostic.
+3. Repository Architecture powers the AI Dispatch Engine, where route optimization, order batching, and surge pricing algorithms collaborate around one shared geospatial state store.
+4. Client-Server governs the external boundary between mobile apps and cloud servers.
+5. Pipe-and-Filter cleanses and map-matches continuous streams of rider GPS coordinates.
+6. And Microservices partition the enterprise backend so peak-hour traffic or local failures never bring down checkout.
+
+To summarize this slide, remember this key takeaway: Master architects do not pick a single pattern; they compose complementary patterns to satisfy diverse subsystem forces.
+-->
+---
 ## Architecture Directly Shapes Quality Attributes
 
 * **Quality Attributes Cannot Be Retrofitted Later:**
@@ -710,46 +910,250 @@ To summarize this slide, remember this key takeaway: Non-functional quality attr
 ---
 ## Architectural Trade-off Analysis & ATAM
 
-* **The Inevitable Conflict Matrix:**
-  - In software architecture, there are **no perfect solutions—only trade-offs**:
-    - **Performance vs. Security**: Deep packet encryption and multi-tier authentication add latency.
-    - **Availability vs. Consistency (CAP Theorem)**: Instant consistency requires blocking network locks, hurting availability.
-    - **Modularity vs. Performance**: Pure decoupled layers introduce serialization and call-stack overhead.
-* **ATAM (Architecture Trade-off Analysis Method):**
-  - Developed by Carnegie Mellon SEI (Software Engineering Institute) to evaluate architectural soundness before coding:
-  - **Key Concepts in ATAM:**
-    - **Sensitivity Points**: Architectural decisions directly affecting a single quality attribute.
-    - **Trade-off Points**: Architectural decisions affecting multiple competing attributes (e.g., encryption improves security but hurts throughput).
-    - **Risks & Non-Risks**: Decisions that threaten or safeguard system viability.
+* **The Inevitable Conflict Matrix (No Silver Bullet):**
+  - **Performance vs. Security**: Deep packet inspection, TLS, and fraud checks add latency.
+  - **Availability vs. Consistency (CAP Theorem)**: Strict distributed locks block orders during network partitions.
+  - **Modularity vs. Performance**: Fine-grained layers and microservice RPCs add serialization overhead.
+* **ATAM (Architecture Trade-off Analysis Method — Carnegie Mellon SEI):**
+  - Evaluates how architectural decisions satisfy or conflict across **Quality Attribute Scenarios**:
+    - **Sensitivity Points**: Decisions critical to a single quality attribute (e.g., *Circuit breakers on `Payment Service` directly govern checkout **Availability***).
+    - **Trade-off Points**: Decisions where improving one quality attribute directly penalizes another.
+    - **Risks & Non-Risks**: Unmitigated architectural bottlenecks vs. validated safe design choices.
 
 <!--
-Examine the reality of engineering: Architectural Trade-off Analysis.
+Examine the reality of engineering: Architectural Trade-off Analysis and ATAM.
 
-Every architectural decision is a compromise:
-Increasing security with double encryption inevitably degrades throughput.
-Achieving strict ACID consistency across distributed nodes degrades availability under network partitions (the CAP theorem).
+Developed by Carnegie Mellon's Software Engineering Institute (SEI), ATAM evaluates architecture before code is written by testing it against concrete Quality Attribute Scenarios.
 
-To evaluate these compromises systematically before writing code, Carnegie Mellon SEI created ATAM: the Architecture Trade-off Analysis Method.
+ATAM identifies two vital markers:
+Sensitivity Points—single architectural levers that make or break one quality attribute;
+and Trade-off Points—places where boosting one quality attribute directly penalizes another.
 
-ATAM uncovers Trade-off Points—places where boosting one quality attribute directly penalizes another—allowing architects to make deliberate, informed business compromises.
+Let's apply ATAM directly to our Food Delivery Platform case study on the next slide!
 
-To summarize this slide, remember this key takeaway: Architecture fundamentally centers on balancing competing quality trade-offs to achieve business success.
+To summarize this slide, remember this key takeaway: ATAM systematically uncovers sensitivity points and competing quality trade-offs before implementation begins.
+-->
+---
+## ATAM Case Study: Food Delivery Architecture Trade-offs
+
+- **Applying ATAM to 4 Critical Decisions in a Food Delivery Platform:**
+
+| Architectural Decision | Competing Quality Attributes (Trade-off Point) | ATAM Architectural Resolution |
+| :--- | :--- | :--- |
+| **1. Rider GPS Ping Rate**<br>(`1s` vs. `15s` interval) | **Map Accuracy (Usability)** ↔ **Rider Battery & Bandwidth (Efficiency)** | **Adaptive Pinging**: Ping every `2s` near drop-off; throttle to `15s` when waiting at restaurant |
+| **2. Checkout & Dispatch**<br>(`Sync 2PC` vs. `Async Saga`) | **Strict Data Consistency** ↔ **Peak Surge Availability & Latency (CAP)** | **Hybrid Saga**: Sync pre-auth for payment, then async Kafka `OrderPlacedEvent` for dispatch |
+| **3. AI Dispatch Repository**<br>(`Central Store` vs. `Sharded`) | **Global Route Optimality** ↔ **Single Point of Failure Risk (SPOF)** | **Geo-Sharded In-Memory Cluster**: Partition Redis repository by city zone with active replicas |
+| **4. Promo & Fraud Check**<br>(`Deep ML` vs. `Fast Rule`) | **Anti-Fraud Security** ↔ **Checkout Throughput (<200ms Latency)** | **Two-Stage Pipeline**: Fast `<15ms` rule check inline at Gateway; async ML audit post-order |
+
+<!--
+Let's walk through a real-world ATAM evaluation on our Food Delivery System!
+
+Decision 1: How often should the Rider App send GPS coordinates? Pinging every 1 second gives customers a smooth live map, but drains the rider's phone battery and floods server bandwidth! ATAM resolves this trade-off with adaptive pinging: 2 seconds when moving near the customer, and 15 seconds when parked at the restaurant.
+
+Decision 2: During a rainy Friday dinner surge, if we use synchronous two-phase commit locks across Order, Payment, and Dispatch, any slow service blocks all checkouts! ATAM resolves this by pre-authorizing payment synchronously, then dispatching kitchens and riders asynchronously via Kafka Saga events.
+
+Decision 3: Our Dispatch Repository is a sensitivity point for Single Point of Failure. ATAM mitigates this risk by geo-sharding the in-memory repository by city district with hot standby replicas.
+
+Decision 4: Running heavy machine-learning fraud models inline slows checkout latency. ATAM splits it into a fast 15-millisecond inline rule check and an asynchronous post-order ML audit.
+
+To summarize this slide, remember this key takeaway: ATAM turns abstract quality conflicts into concrete, quantifiable architectural mechanisms in real-world systems.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## Modeling Macro Structure (1): UML Package Diagram
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/uml_package_food_delivery.svg" alt="UML Package Diagram Notation and Food Delivery Example" />
+</div>
+
+<!--
+Once we have selected and synthesized our architectural patterns, how do we formally model that macro-architecture in UML?
+In Stage 1 (Architectural Design), we use two complementary macro UML diagrams: the **UML Package Diagram** (compile-time module boundaries) and the **UML Deployment Diagram** (runtime hardware and cloud topology).
+
+Let's examine the first diagram: the UML Package Diagram, applied to our Food Delivery Platform.
+
+On the left panel, look at the standard UML notations:
+First, the Package symbol is drawn as a tabbed folder containing logically cohesive classes and interfaces.
+Second, visibility markers indicate whether an internal class is exported publicly with a plus sign (+) or hidden privately inside the package with a minus sign (-).
+Third, a dashed open arrow labeled «import» or «access» points from the client package to the supplier package it depends on.
+Fourth, the golden architectural rule is the Acyclic Dependencies Principle (ADP): package dependencies must form a Directed Acyclic Graph—cycles are strictly forbidden!
+
+On the right panel, see how our Food Delivery codebase is organized: both the top Presentation packages (`ui.customer_app`, `ui.rider_app`) and the bottom Infrastructure packages (`infra.persistence`, `infra.messaging_geo`, `infra.payment_sdk`) point their dependency arrows inward toward the core Domain packages (`domain.order`, `domain.dispatch`, `domain.payment`).
+
+To summarize this slide, remember this key takeaway: A UML Package Diagram governs compile-time namespace boundaries and enforces inward, acyclic dependencies toward the core domain.
+-->
+---
+## UML Package Diagram: Meaning, Notation & Food Delivery
+
+> **Architectural Meaning (Compile-Time View):** Models **source code organization**, **subsystem boundaries**, and **dependency direction governance**.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### Core UML Notations & Rules
+- **Tabbed Folder (`Package`)**: Groups cohesive classes and interfaces into a single namespace (`domain.order`).
+- **Visibility (`+` Public vs. `-` Private)**: `+OrderService` & `+IOrderRepository` are exported; `-SurgePricingPolicy` is hidden inside the package.
+- **Dependency Arrow (`- - ->`)**: Dashed open arrow with `«import»` or `«access»`; changes in the target package may force recompilation of the source package.
+- **Acyclic Dependencies Principle (ADP)**: Package dependency graphs must never form a cycle (`A → B → A` is forbidden).
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### Food Delivery Design Insights
+- **Bounded Context Partitioning**: Separate core domain packages for `domain.order`, `domain.dispatch`, and `domain.payment`.
+- **Inward Dependency Governance**:
+  - `ui.customer_app` imports `domain.order` downward.
+  - `infra.persistence` (`PostgresOrderRepoImpl`) imports `domain.order` (`IOrderRepository`) **upward**!
+- **Result**: The entire `domain.*` core has **zero compile-time dependencies** on PostgreSQL, Redis, Kafka, or Stripe SDKs.
+
+</div>
+</div>
+
+<!--
+Let's break down the meaning, notations, and architectural rules of the UML Package Diagram.
+
+In the left card, review the four core symbols:
+A tabbed folder represents a namespace package. Inside it, plus signs (+) mark public APIs exposed to other packages, while minus signs (-) hide internal implementation classes (Information Hiding!).
+A dashed arrow with an open arrowhead represents a compile-time dependency: if Package A imports Package B, any breaking change in B can break A.
+
+In the right card, see why this matters in our Food Delivery System:
+Instead of letting `domain.order` depend downward on `infra.persistence`, `domain.order` defines the public interface `+IOrderRepository`, and `infra.persistence` imports `domain.order` upward to implement it!
+Because both `ui.*` and `infra.*` point toward `domain.*`, our core business logic is 100% immune to database or SDK migrations.
+
+To summarize this slide, remember this key takeaway: Package diagrams enforce clean modular boundaries and verify that infrastructure depends on domain abstractions, never the reverse.
+-->
+---
+### Peer Discussion: Chess Game in MVC — UML Package Diagram (PlantUML)
+
+<div class="discussion-columns">
+  <div class="discussion-text">
+
+  **Hands-On Modeling: Architecting a Chess Game in MVC (4 Mins)**
+  - **Scenario:** Your team is designing a desktop/web **Chess Game** using the **Model-View-Controller (MVC)** architectural pattern.
+  - **1. Partition Classes into 3 Cohesive Packages (`package` syntax):**
+    - `chess.model`: `+Board`, `+Piece`, `+MoveValidator`, `-BitboardEngine` (pure chess rules & state).
+    - `chess.view`: `+BoardCanvasUI`, `+MoveHistoryPanel`, `+SoundEffectPlayer` (UI rendering).
+    - `chess.controller`: `+GameController`, `+TurnClockHandler` (user input routing).
+  - **2. Draw the Package Diagram in PlantUML ([PlantText](https://www.planttext.com)):**
+    - Use `package "chess.model" { ... }` and connect packages via `..> : «import»`.
+    - **Audit Question:** Which direction do the dependency arrows point? Does `chess.model` import `chess.view`? Does your diagram satisfy the **Acyclic Dependencies Principle (ADP)**?
+
+  </div>
+  <div class="discussion-logo">
+    <img src="../../img/ch05/architecture/discussion_icon.svg" alt="Discussion Icon" />
+  </div>
+</div>
+
+<!--
+Now let's do a 4-minute peer discussion and hands-on modeling exercise!
+
+Suppose your team is building a Chess Game using the MVC (Model-View-Controller) architectural pattern we learned earlier in Section 5.3.
+Work with your partner to design its **UML Package Diagram** using PlantUML syntax on PlantText.com:
+First, partition your classes into three packages (`chess.model`, `chess.view`, and `chess.controller`), marking public classes with `+` and internal helper classes like `-BitboardEngine` with `-`.
+Second, draw the dashed dependency arrows (`..>`) labeled `«import»` between the three packages.
+
+Discuss with your partner: Which package should have **zero outgoing dependency arrows** so it can be unit-tested headlessly without any GUI framework? (`chess.model`!) And how do you prevent a circular dependency cycle between `chess.view` and `chess.controller`?
+
+To summarize this slide, remember this key takeaway: Modeling an MVC Chess Game as a PlantUML Package Diagram verifies that the core game model remains 100% independent of UI views and controllers.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## Modeling Macro Topology (2): UML Deployment Diagram
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/uml_deployment_food_delivery.svg" alt="UML Deployment Diagram Notation and Food Delivery Example" />
+</div>
+
+<!--
+While the UML Package Diagram models compile-time source folders, how do we model the runtime cloud infrastructure of our Client-Server and Microservices patterns? We use the **UML Deployment Diagram**!
+
+Look at the left panel for the standard notations:
+First, a Node is drawn as a 3D cube representing either physical hardware («device», like a smartphone or AWS server) or a software runtime environment («executionEnvironment», like a Kubernetes Pod, Docker container, or JVM).
+Second, an Artifact is drawn as a rectangle labeled «artifact» with a dog-eared document icon—this represents the actual physical binary file deployed onto a node, such as `order-service.jar`, `customer.ipa`, or `orders_schema.sql`.
+Third, solid lines between 3D nodes are Communication Paths annotated with transport protocol stereotypes («HTTPS», «gRPC», «TCP/RESP», «JDBC/TLS») and instance multiplicity (`[3..12]`).
+
+On the right panel, trace our Food Delivery physical cloud topology: Mobile client nodes connect via HTTPS/WSS to a Multi-AZ AWS API Gateway, which routes gRPC traffic into an AWS EKS Kubernetes cluster running auto-scaled Pods for Order (`[3..12]`), Dispatch (`[5..20]`), and Payment (`[2..6]`), backed by RDS PostgreSQL (Primary + 2 Replicas), a 6-shard Redis ElastiCache cluster, and a 3-broker Kafka cluster!
+
+To summarize this slide, remember this key takeaway: A UML Deployment Diagram maps software artifacts onto physical 3D server nodes, containers, and network protocols.
+-->
+---
+## UML Deployment Diagram: Meaning, Notation & Food Delivery
+
+> **Architectural Meaning (Runtime Infrastructure View):** Models **physical hardware nodes, cloud runtime containers, deployable binary artifacts, and network protocols**.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### Core UML Notations & Rules
+- **3D Node Cube (`«device»` / `«executionEnv»`)**:
+  - `«device»`: Physical compute host (Mobile phone, AWS EC2, Load Balancer).
+  - `«executionEnvironment»`: Nested runtime container (Kubernetes Pod, Docker, JVM, PostgreSQL Engine).
+- **Artifact (`«artifact»` + 📄 Icon)**: Concrete deployable binary/file (`order-service:v2.4.jar`, `rider-gps.apk`) that `«manifest»` a logical component.
+- **Communication Path & Multiplicity**: Solid line labeled with network protocol (`«gRPC / HTTP2»`, `«JDBC / TLS»`) and node cardinality (`[5..20]`).
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### Food Delivery Design Insights
+- **Exposes High-Availability & Scaling Policies**:
+  - `Dispatch Engine Pod [5..20]` scales wider than `Payment Pod [2..6]` to handle 6 PM dinner GPS spikes.
+- **Eliminates Single Points of Failure (SPOF)**:
+  - Shows `RDS PostgreSQL [1 Primary + 2 Replica]`, `Redis ElastiCache [6 Shards]`, and `Kafka [3 Nodes]`.
+- **Makes Network Boundaries Explicit**:
+  - External traffic uses `«HTTPS / REST & WSS»`, internal east-west traffic uses `«gRPC»`, and Payment uses `«HTTPS / mTLS»` to `Stripe Cloud`.
+
+</div>
+</div>
+
+<!--
+Let's synthesize the meaning, notation, and power of the UML Deployment Diagram.
+
+In the left card, distinguish the three core building blocks:
+First, 3D Cubes are Nodes—either physical hardware (`«device»`) or nested software containers (`«executionEnvironment»`).
+Second, Artifacts (`«artifact»`) are the compiled files (`.jar`, `.apk`, `.sql`) physically placed inside those nodes.
+Third, Communication Paths specify the exact wire protocol and cardinality between nodes.
+
+In the right card, notice what the Deployment Diagram reveals in our Food Delivery System that is 100% invisible in code-level diagrams:
+We immediately see auto-scaling pod ranges (`[5..20]` for Dispatch), database replication (`1 Primary + 2 Replicas`), 6-shard Redis memory partitioning, and mTLS security boundaries to Stripe Cloud!
+
+To summarize this slide, remember this key takeaway: Deployment diagrams expose cloud scaling, replication, and network security boundaries that are invisible in source-code diagrams.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## Section 5.3 Visual Recap: Structural vs. Distributed Patterns
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/patterns_53_visual_map.svg" alt="Section 5.3 Visual Summary of Architectural Patterns" />
+</div>
+
+<!--
+Let's conclude Section 5.3 (Stage 1: Architectural Design) by revisiting our complete visual map of architectural patterns.
+
+We began with individual structural building blocks on the left—Layered, MVC, and Repository—and progressed to distributed and stream topologies on the right—Client-Server, Pipe-and-Filter, and Microservices.
+
+Through our Food Delivery Platform case study, ATAM trade-off analysis, and UML Package & Deployment diagrams, we saw how macro-architecture transforms quality requirements into a concrete compile-time and runtime blueprint.
+
+To summarize this slide, remember this key takeaway: Mastering Stage 1 Architectural Design means combining structural patterns, evaluating ATAM trade-offs, and modeling them with UML Package and Deployment diagrams.
 -->
 ---
 ### Concept Check Question 2 (CCQ 2)
+<!-- id: ase-ch05-ccq2 -->
 <div class="ccq-columns">
   <div class="ccq-text">
 
 When comparing a Monolithic architecture with a Microservices architecture, what is the primary structural reason that Microservices provide superior **fault isolation** (blast radius containment)?
 
-- **A.** Microservices store all enterprise data inside a single shared database instance.
-- **B.** Each microservice executes in an isolated process with its own private database, preventing catastrophic cascading failures.
-- **C.** Microservices completely eliminate all network communication overhead and distributed latency.
-- **D.** Microservices require significantly fewer software engineers to deploy and operate.
+- **A.** All services read and write to a single shared enterprise SQL database instance with global table locks.
+- **B.** Each service runs in an isolated process with a private database, containing the blast radius of crashes.
+- **C.** Distributed service calls completely eliminate network serialization overhead and inter-node TCP latency.
+- **D.** Decomposing a monolith into microservices drastically reduces DevOps infrastructure and monitoring costs.
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq2" target="_blank"><img src="../../img/ch05/ase-ch05-ccq2.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -769,450 +1173,619 @@ To summarize this slide, remember this key takeaway: Process and database isolat
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.4 Architecture Derivation & Modeling' -->
+<!-- header: '5.4 Interface & Contract Spec: DbC & Component UML' -->
 
-# **5.4 Architecture Derivation & Modeling: Beyond Patterns**
+# **5.4 Stage 2 — Interface & Contract Specification: DbC & Component UML**
 
-> "Architecture is the decisions that you wish you could get right the first time."  
-> — *Ralph Johnson (Design Patterns Author)*
-
-<!--
-Welcome to Section 5.4: Architecture Derivation & Modeling.
-
-Now that we have surveyed classic architectural patterns, a crucial question arises: When architects design systems in the real world, do they just pick a pattern from a catalog like a shopping cart?
-
-The answer is an emphatic NO! Architecture is a disciplined derivation and modeling process driven by Architecturally Significant Requirements (ASRs). In production, systems synthesize and combine multiple patterns across tiers.
-
-In this section, we demystify how architects actually derive architectures, how to model structures using UML diagrams, Kruchten's 4+1 views, and Simon Brown's modern C4 model, and how to preserve decisions using Architecture Decision Records (ADRs).
-
-To summarize this slide, remember this key takeaway: Architecture design is a disciplined derivation and multi-view modeling process that moves far beyond simply selecting isolated patterns.
--->
----
-## How to Do Architecture Design: Beyond Just Picking Patterns
-
-* **Architecture is NOT a "Pattern Shopping Cart":**
-  - Architecture is a disciplined engineering process of discovery, partitioning, and trade-off synthesis:
-* **The 5-Step Architecture Derivation Process:**
-  - **1. Extract ASRs (Architecturally Significant Requirements)**:
-    - Identify high-priority Quality Attributes (e.g., 99.99% uptime, <100ms latency) and mission-critical Use Cases.
-  - **2. Subsystem Partitioning & Decomposition**:
-    - Decompose the system by business capabilities (Domain-Driven Bounded Contexts) or technical layers.
-  - **3. Synthesize & Combine Architectural Styles**:
-    - Real-world systems combine patterns: e.g., Microservices at the enterprise tier, Event-Driven for ingestion, and Layered MVC inside each service!
-  - **4. Define Communication Protocols & Interfaces**:
-    - Synchronous REST / gRPC vs. asynchronous Kafka / RabbitMQ event streams.
-  - **5. Evaluate Trade-offs & Document Decisions**:
-    - Validate resilience under stress (ATAM) and capture decisions in Architecture Decision Records (ADRs).
+> "Treat every software module boundary as a formal legal contract with explicit rights and obligations."  
+> — *Bertrand Meyer (Creator of Design by Contract)*
 
 <!--
-How do software architects actually design systems?
+Welcome to Section 5.4: Stage 2 of our Software Design Process—Interface & Contract Specification!
 
-A common misconception among novices is that architecture is just browsing a catalog and picking 'Microservices' or 'Layered Architecture.'
+In Stage 1 (Section 5.3), we partitioned our Food Delivery Platform into packages and deployed containers. Now we reach Stage 2: Before any team writes internal class code inside those subsystems, how do we formally specify the **interfaces and behavioral contracts** between them so multiple teams can develop in parallel without breaking each other?
 
-In reality, architecture is a systematic 5-step engineering process:
-First, you extract Architecturally Significant Requirements—not all requirements impact architecture, only those defining scale, security, and critical workflows.
-Second, you partition the system into clean bounded contexts.
-Third, you synthesize and combine patterns to solve specific technical forces.
-Fourth, you establish communication protocols between components.
-Fifth, you rigorously evaluate trade-offs and document your rationale.
+In this section, we master Bertrand Meyer's **Design by Contract (DbC)**—Preconditions, Postconditions, and Class Invariants—and learn how to model plug-and-play module contracts visually using the **UML Component Diagram** (`—○` Lollipop and `—(` Socket notations).
 
-To summarize this slide, remember this key takeaway: Architectural design is a disciplined derivation process driven by Architecturally Significant Requirements and trade-off synthesis.
+To summarize this slide, remember this key takeaway: Stage 2 Interface & Contract Specification defines formal Design by Contract rules and models them via UML Component Diagrams.
 -->
 ---
-## Modeling Architecture: UML in Practice vs. Common Pitfalls
+<!-- _class: title-image-slide -->
 
-* **The "Class Diagram" Trap (Most Common Novice Mistake):**
-  - Beginners often draw a giant UML Class Diagram with 50 classes and call it "System Architecture."
-  - **Why this fails:** Class diagrams show compile-time object relationships; they completely conceal network boundaries, runtime processes, database servers, and cloud deployment topology!
-* **Traditional UML Diagrams for Macro-Architecture:**
-  - **1. Component Diagram**:
-    - Visualizes high-level software components, provided interfaces (`--O` lollipop), and required interfaces (`--( ` socket).
-  - **2. Package Diagram**:
-    - Depicts namespace organization, logical subsystem boundaries, and dependency arrows.
-  - **3. Deployment Diagram**:
-    - Models physical hardware nodes, virtual containers, execution environments, and network protocols (HTTPS, TCP/IP, JDBC).
+## Formal Interface Specification & Design by Contract (DbC)
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/interface_dbc_overview.svg" alt="Formal Interface Specification and Design by Contract (DbC)" />
+</div>
 
 <!--
-How do we model and draw software architecture? Can we just use UML?
+Examine this visual overview of Stage 2: Formal Interface Specification and Bertrand Meyer's **Design by Contract (DbC)**, applied to our Food Delivery checkout API (`IOrderCheckoutAPI.placeOrder`).
 
-Here is the single most common mistake made by junior developers: they draw a massive UML class diagram with 50 classes, boxes, and arrows, and present it as the 'system architecture.'
+Look at the top panel: Why is a bare method signature like `placeOrder(cart, token)` insufficient as a design specification? Because it only tells you parameter types—it says nothing about behavioral obligations or edge cases!
+Design by Contract turns every interface into an enforceable three-part legal contract between the **Client (Caller)** and the **Supplier (Called Component)**:
+1. **Precondition (`require`)**: The Client's obligation *before* calling—`cart` must not be empty, `paymentToken` must be valid, and the restaurant must be open.
+2. **Postcondition (`ensure`)**: The Supplier's guarantee *upon return*—the returned order is `CONFIRMED`, stock is decremented by `qty`, and `OrderPlacedEvent` is published.
+3. **Class Invariant (`invariant`)**: The continuous domain truth that must hold before *and* after every method call—`order.totalAmount >= 0` and `rider.activeAssignedOrders <= 3`.
 
-That is a trap! Class diagrams are micro-level implementation details. They tell you nothing about which components run on AWS, where the database lives, how services handle network timeouts, or what happens when traffic spikes 100x.
+Look at the bottom panels: DbC eliminates defensive programming bloat (the Supplier doesn't need to re-check preconditions) and maps directly to UML Component Diagrams (Lollipop/Socket) and Section 5.5's Liskov Substitution Principle (LSP)!
 
-If you use UML for architecture, you must use macro-level diagrams: Component diagrams for provided/required interfaces, Package diagrams for subsystem dependencies, and Deployment diagrams for physical server topology.
-
-To summarize this slide, remember this key takeaway: Avoid the class diagram trap for architecture; use component, package, and deployment diagrams to capture macro structure.
+To summarize this slide, remember this key takeaway: Design by Contract turns passive method signatures into enforceable engineering contracts using Preconditions, Postconditions, and Class Invariants.
 -->
 ---
-## Multi-Perspective Architecture: Kruchten's 4+1 View Model
+## Design by Contract (DbC): Rights, Obligations & API Specs
 
-* **Philippe Kruchten (1995): "No single diagram can capture architecture for all stakeholders."**
-* **The 4+1 Multi-Perspective Framework:**
-  - **1. Logical View (End-User / Functional)**:
-    - Class structures, entity models, and domain packages satisfying functional user requirements.
-  - **2. Process View (System Integrators / Performance)**:
-    - Concurrency, multi-threading, asynchronous message queues, IPC, and runtime performance.
-  - **3. Development View (Software Developers / Managers)**:
-    - Source code package hierarchy, libraries, build modules, and repository organization.
-  - **4. Physical View / Deployment View (System Engineers / DevOps)**:
-    - Physical servers, cloud containers, network topology, firewalls, and communication protocols.
-  - **+1. Scenarios (Use Cases / Drivers)**:
-    - Core business workflows that bind, validate, and animate all four views together.
+> **Core Principle (Bertrand Meyer):** If the **Client** fulfills the **Precondition**, the **Supplier** is contractually bound to deliver the **Postcondition** while preserving the **Class Invariant**.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### The 3 Pillars of Design by Contract (DbC)
+- **1. Precondition (`requires` — Client Obligation)**:
+  - What must be true *before* invocation (`!cart.isEmpty() && token.isValid()`).
+  - *Benefit to Supplier*: No need to litter internal code with redundant defensive checks; if violated, fail fast!
+- **2. Postcondition (`ensures` — Supplier Guarantee)**:
+  - What the Supplier guarantees *after* execution (`order.status == CONFIRMED && stock_after == stock_before - qty`).
+  - *Benefit to Client*: Guaranteed outcome without inspecting Supplier internals.
+- **3. Class Invariant (`invariant` — Domain Integrity)**:
+  - Always true before and after any operation (`order.totalAmount >= 0`).
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### Industrial Interface Specification Standards
+- **Eliminating Ambiguity Across Teams**:
+  - Frontend, Mobile, and Backend teams lock interface specs in the **SDS** on Day 1 to enable **parallel development & contract testing**.
+- **Modern Machine-Readable Contract Formats**:
+  - **REST APIs**: **OpenAPI 3.1 (Swagger)** — specifies endpoints, JSON schemas, status codes (`201`, `400`, `422`), and validation bounds.
+  - **RPC Services**: **Protocol Buffers (`.proto`)** — strongly-typed binary contracts for east-west `gRPC` calls.
+  - **Event Streams**: **AsyncAPI / Apache Avro** — versioned schemas for Kafka `OrderPlacedEvent` payloads + **Idempotency Keys** (`idempotency_key: UUID`) to prevent duplicate payment charging!
+
+</div>
+</div>
 
 <!--
-Examine Philippe Kruchten's legendary 4+1 Architectural View Model.
+Let's unpack the engineering value of Design by Contract on the left and modern industrial API specification standards on the right.
 
-Kruchten realized that no single architectural drawing can satisfy everyone. A business stakeholder cares about user features; a programmer cares about Maven build modules; a database administrator cares about network failover; and a DevOps engineer cares about Docker containers and Kubernetes clusters.
+In the left card, notice the symmetry of Rights and Obligations in DbC:
+For the Client (caller): Satisfying the Precondition is an obligation, and receiving the Postcondition is a guaranteed right.
+For the Supplier (callee): Delivering the Postcondition and maintaining the Class Invariant are obligations, while being freed from handling invalid Precondition inputs inside core logic is a major benefit!
 
-The 4+1 model resolves this by providing four distinct views tied together by central use case scenarios:
-Logical View for end users; Process View for concurrency and throughput; Development View for code organization; and Physical View for hardware and cloud infrastructure.
+In the right card, how do modern engineering teams write down these contracts in their Software Design Specification (SDS)?
+For REST APIs, teams write OpenAPI 3.1 YAML specifications.
+For internal microservices, teams write gRPC Protocol Buffers (`.proto`).
+For Kafka event streams, teams use AsyncAPI or Avro schemas—and crucially include an `idempotency_key` contract so network retries never charge a customer's credit card twice!
 
-To summarize this slide, remember this key takeaway: Kruchten's 4+1 model reconciles conflicting stakeholder needs through four distinct views bound together by core scenarios.
+To summarize this slide, remember this key takeaway: Formal contracts—expressed via DbC rules and OpenAPI/Protobuf/AsyncAPI specs—allow teams to develop and test components independently in parallel.
 -->
 ---
-## Modern Architecture Visualization: The C4 Model
+### Peer Discussion: Formal Design Specification for `bubbleSort(int[] arr)`
 
-* **Created by Simon Brown as a modern, developer-friendly alternative to heavy UML:**
-* **The "Google Maps" Metaphor for Software Architecture (4 Zoom Levels):**
-  - 🗺️ **Level 1: System Context (Zoom: Continental View)**:
-    - Who uses the system (Actors) and what external systems does it integrate with (e.g., Stripe, SendGrid)?
-  - 🏙️ **Level 2: Container Diagram (Zoom: City Street View)**:
-    - What are the deployable units? (SPA Web App, iOS App, API Gateway, Microservice, DB, Redis Cache) and their protocols (JSON/HTTPS, gRPC).
-  - 🏛️ **Level 3: Component Diagram (Zoom: Building Floorplan View)**:
-    - Inside a single container: What are the major functional components (e.g., AuthController, PaymentService, UserRepository)?
-  - 🚪 **Level 4: Code Diagram (Zoom: Room Detail View)**:
-    - Class diagrams showing internal algorithms and interfaces (typically optional; auto-generated).
+<div class="discussion-columns">
+  <div class="discussion-text">
 
-<!--
-In modern software engineering, what do industry teams actually use to draw architecture?
-
-While UML is respected in academia, the modern industry standard is increasingly Simon Brown's C4 Model!
-
-Simon Brown realized that architects need a visual system like Google Maps.
-Level 1 is System Context: You view the whole continent—who are the users, and what external systems do we connect to?
-Level 2 is Container: You zoom into the city—what are the deployable containers? API servers, web apps, databases, and message queues.
-Level 3 is Component: You zoom into a single building—what internal modules make up this container?
-Level 4 is Code: You zoom into individual rooms—classes and methods.
-
-The C4 model is intuitive, unambiguous, and eliminates endless arguments over UML syntax.
-
-To summarize this slide, remember this key takeaway: The C4 model provides a hierarchical Google Maps visualization spanning System Context, Containers, Components, and Code.
--->
----
-## Documenting Architectural Decisions: Architecture Decision Records (ADRs)
-
-* **Why ADRs are Essential:**
-  - Code shows *how* a system is implemented, but code never explains *why* critical architectural choices were made.
-  - Without ADRs, engineering teams suffer from **"Architectural Archaeology"**—spending weeks wondering why an unusual database or protocol was chosen.
-* **Standard Structure of an ADR (Michael Nygard Template):**
-  - **1. Title**: Numbered, descriptive decision (e.g., `ADR-005: Adopt Kafka for Order Event Streaming`).
-  - **2. Status**: `Proposed` → `Accepted` → `Deprecated` → `Superseded by ADR-XXX`.
-  - **3. Context**: The business problem, technical forces, and constraints driving the decision.
-  - **4. Decision**: The concrete architectural strategy adopted and rationale.
-  - **5. Consequences**: Both positive benefits gained AND negative trade-offs accepted.
-
-<!--
-How do software architects document their choices?
-
-Architects don't just draw diagrams; they maintain Architecture Decision Records, or ADRs.
-
-When an engineer joins a project three years later and sees that the team uses Kafka instead of RabbitMQ, or PostgreSQL instead of MongoDB, they often think: 'Who designed this strange setup?'
-
-An ADR is a short, version-controlled markdown file that records the exact context, alternatives considered, decision made, and consequences accepted at that moment in time.
-
-To summarize this slide, remember this key takeaway: Architecture Decision Records preserve design intent, document trade-offs, and prevent costly architectural archaeology.
--->
----
-### Concept Check Question 3 (CCQ 3)
-<div class="ccq-columns">
-  <div class="ccq-text">
-
-In Philippe Kruchten's 4+1 Architectural View Model, which view is specifically responsible for depicting how software components are deployed onto physical server hardware, cloud containers, and network topology?
-
-- **A.** Logical View
-- **B.** Process View
-- **C.** Development View
-- **D.** Physical View (Deployment View)
+  **Pair Challenge: Specify the Complete DbC Contract for Bubble Sort (4 Mins)**
+  - **Scenario:** Anyone can code `void bubbleSort(int[] arr)`, but writing a **mathematically airtight Design by Contract (DbC) specification** is surprisingly tricky!
+  - **1. Precondition (`requires` — Client Obligation):**
+    - What must the caller guarantee about `arr` before calling? (`arr != null`? Is `arr.length == 0` valid?)
+  - **2. Postcondition (`ensures` — Supplier Guarantee):**
+    - *The Classic Trap:* Suppose a developer writes only: `∀ i ∈ [0, n-2] : arr[i] <= arr[i+1]`.
+    - *Critique:* If a buggy `bubbleSort` overwrites every element with zeros (`[0, 0, 0, 0]`), does it pass that postcondition? **YES!** What **second postcondition** is missing? *(Hint: Permutation / Multiset preservation!)*
+  - **3. Loop Invariant (`invariant`):** After outer pass `k`, what is guaranteed about the last `k` elements?
 
   </div>
-  <div class="ccq-logo">
-    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+  <div class="discussion-logo">
+    <img src="../../img/ch05/architecture/discussion_icon.svg" alt="Discussion Icon" />
   </div>
 </div>
 
 <!--
-Let's check our understanding of architectural modeling views.
+Let's pause for a classic software engineering thought experiment! Turn to your partner and write the formal **Design Specification (Design by Contract)** for a function everyone knows from freshman year: `void bubbleSort(int[] arr)`.
 
-The question asks: Which view in Kruchten's 4+1 model depicts software components deployed onto physical server hardware, cloud containers, and network topology?
+First, what is the **Precondition (`requires`)**? At minimum, `arr != null`! (An empty or 1-element array is valid and trivially sorted).
+
+Second, what is the **Postcondition (`ensures`)**? Almost everyone writes: 'Every element is less than or equal to the next element: `arr[i] <= arr[i+1]`.'
+Wait—think about this! What if I implement `bubbleSort` by filling the entire array with zeros (`Arrays.fill(arr, 0)`)? Is `[0, 0, 0, 0]` sorted in non-decreasing order? Yes!
+Why did our specification fail? Because a complete sorting postcondition requires **two clauses**:
+Clause 1 (**Ordered Property**): `arr[0] <= arr[1] <= ... <= arr[n-1]`.
+Clause 2 (**Permutation / Multiset Conservation**): The output array `arr_after` must be a **permutation** (exact same multiset of elements) of the input array `arr_before`!
+
+Third, what is the **Loop Invariant** of Bubble Sort? After `k` passes of the outer loop, the final `k` elements `arr[n-k .. n-1]` are in their final sorted positions and are greater than or equal to all preceding elements!
+
+To summarize this slide, remember this key takeaway: A rigorous sorting contract must specify both non-decreasing order and multiset permutation equivalence, proving why formal specs catch subtle logic flaws.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## Modeling Interface Contracts: UML Component Diagram
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/uml_component_food_delivery.svg" alt="UML Component Diagram Notation and Food Delivery Example" />
+</div>
+
+<!--
+Now, how do we visually model Stage 2's modular components and their Design by Contract interfaces in UML? We use the **UML Component Diagram**!
+
+Look at the left panel for the classic UML 2.x Component notations:
+First, a Component is drawn as a rectangle stereotyped «component» with the signature two-tabbed component icon in the top-right corner.
+Second, a Provided Interface is drawn as a 'Lollipop' or 'Ball' (—○)—this visually represents the Supplier's DbC contract (guaranteeing Postconditions) exposed to the outside world.
+Third, a Required Interface is drawn as a 'Socket' (—( )—this visually represents the Client's dependency on an external contract (obligating it to satisfy Preconditions).
+Fourth, when you wire a consumer's Required Socket into a provider's Provided Lollipop, they form an Assembly Connector (—(○—), also known as a Ball-and-Socket joint, with Ports (□) marking explicit boundary endpoints!
+
+On the right panel, trace our Food Delivery System: `Order Management Component` exposes `IOrderCheckoutAPI` (lollipop) to the `API Gateway` (socket), while requiring three sockets at the bottom: `IPaymentGateway`, `IDispatchMatcher`, and `IEventBus`.
+
+To summarize this slide, remember this key takeaway: A UML Component Diagram visualizes Stage 2 interface contracts by wiring modular components strictly through Lollipop (provided) and Socket (required) interfaces.
+-->
+---
+## UML Component Diagram: Meaning, Notation & Food Delivery
+
+> **Stage 2 Modeling Purpose:** Models **modular, replaceable software components** wired strictly through **plug-and-play interface contracts** (visualizing **Design by Contract**).
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### Core UML Notations & DbC Mapping
+- **Component (`«component»` + ⧉ Icon)**: Encapsulated, replaceable unit whose internal classes are hidden behind explicit interfaces.
+- **Provided Interface (`—○` Lollipop / Ball)**: Contract realized by a Supplier component (`IOrderCheckoutAPI` — guarantees DbC **Postconditions**).
+- **Required Interface (`—(` Socket)**: Contract demanded by a Client component (`IPaymentGateway` — must satisfy DbC **Preconditions**).
+- **Assembly Connector (`—(○—` Ball & Socket)**: Mates a required socket to a provided lollipop with zero implementation coupling.
+- **Port (`□`) & Delegation (`- - ->`)**: Boundary endpoint forwarding external calls to internal sub-components.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### Food Delivery Design Insights
+- **Composite Subsystem Decomposition**: `Order Management` encapsulates internal `OrderStateEngine` and `MenuPricingCalc` behind an external boundary Port (`□`).
+- **Hot-Swappable Plug-and-Play**:
+  - `Order Management` only binds to socket `IPaymentGateway`.
+  - Whether the lollipop is provided by `Stripe`, `ApplePay`, or an in-memory `MockPaymentStub` during CI testing, `Order Management` requires **zero code changes**!
+- **Geo-Dispatch Contract**: `Rider Dispatch Engine` queries `Rider Geo-Location Tracker` strictly via `IGeoSpatialIndex`.
+
+</div>
+</div>
+
+<!--
+Let's examine why the UML Component Diagram is the canonical diagram for Stage 2 (Interface & Contract Specification).
+
+In the left card, see how UML Component notations map 1-to-1 to Design by Contract:
+A Lollipop (circle on a stick) means 'I am the Supplier providing this contract and guaranteeing its Postconditions.'
+A Socket (half-circle cup on a stick) means 'I am the Client requiring this contract and promising to satisfy its Preconditions.'
+When a socket snaps onto a lollipop, you get a Ball-and-Socket Assembly Connector! And a small square on a component's border is a Port, which delegates incoming requests to internal sub-components.
+
+In the right card, see how this empowers our Food Delivery Platform:
+`Order Management` is a composite component containing `OrderStateEngine` and `MenuPricingCalc`. Externally, it exposes a single lollipop (`IOrderCheckoutAPI`) and requires three sockets (`IPaymentGateway`, `IDispatchMatcher`, `IEventBus`).
+Because components interact only via Ball-and-Socket contracts, we can hot-swap Stripe for ApplePay—or plug in a Mock Payment Stub for automated testing—without modifying a single line inside `Order Management`!
+
+To summarize this slide, remember this key takeaway: Ball-and-socket component connectors enforce strict contract-first decoupling and enable hot-swappable component replacement.
+-->
+---
+### Concept Check Question 3 (CCQ 3)
+<!-- id: ase-ch05-ccq3 -->
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+In Stage 2 (**Interface & Contract Specification**), how do Bertrand Meyer's **Design by Contract (DbC)** and the **UML Component Diagram** work together when `Order Management` calls `Payment Component` via the `IPaymentGateway` interface?
+
+- **A.** `Order Management` exposes a Lollipop (`—○`) and may freely pass negative order amounts without validation.
+- **B.** Client Socket (`—(`) must satisfy the **Precondition**, while Supplier Lollipop (`—○`) guarantees the **Postcondition**.
+- **C.** Component diagrams use 3D hardware node cubes (`«device»`) to bypass runtime Precondition and Postcondition checks.
+- **D.** Design by Contract requires the caller component to directly mutate private SQL tables inside the supplier module.
+
+  </div>
+  <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq3" target="_blank"><img src="../../img/ch05/ase-ch05-ccq3.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+<!--
+Let's check our understanding of Stage 2: Design by Contract (DbC) and UML Component Diagrams!
+
+The question asks: How do DbC and the UML Component Diagram work together when `Order Management` (Client) calls `Payment Component` (Supplier) via `IPaymentGateway`?
 
 Let's evaluate each option:
-Option A, Logical View, focuses on domain entities and class relationships.
-Option B, Process View, focuses on concurrency, runtime threads, and non-functional throughput.
-Option C, Development View, organizes code packages, repositories, and build artifacts.
-Option D, Physical View (Deployment View), explicitly models physical nodes, virtual server clusters, Docker containers, and network routing.
+Option A is backwards: `Order Management` is the Client requiring the payment service, not the provider, and cannot pass invalid negative amounts.
+Option B is exact: As the Client, `Order Management` uses a Required Socket (`—(`) and is obligated to satisfy the **Precondition** (valid payment token and positive amount); as the Supplier, `Payment Component` exposes a Provided Lollipop (`—○`) and guarantees the **Postcondition**!
+Option C confuses Component Diagrams with Deployment Diagrams (3D Node cubes).
+Option D violates Information Hiding and Low Coupling.
 
-Therefore, the correct answer is D!
+Therefore, the correct answer is B!
 
-To summarize this slide, remember this key takeaway: The Physical View captures deployment topology, cloud infrastructure, and network communication configurations.
+To summarize this slide, remember this key takeaway: In a UML Component Diagram, the Client's Socket (`—(`) obligates it to satisfy Preconditions, while the Supplier's Lollipop (`—○`) guarantees Postconditions.
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.5 SOLID Design Principles' -->
+<!-- header: '5.5 Component & OO Design: Patterns & SOLID' -->
 
-# **5.5 SOLID Object-Oriented Design Principles**
+# **5.5 Stage 3 — Component & Detailed OO Design: Patterns, SOLID & Class UML**
 
 > "Clean code always looks like it was written by someone who cares."  
 > — *Robert C. Martin (Uncle Bob)*
 
 <!--
-We now transition into Section 5.5: The SOLID Object-Oriented Design Principles.
+We now transition into Section 5.5: Stage 3 of our Software Design Process—Component & Detailed Object-Oriented Design!
 
-Having designed our macro-architecture and partitioned our systems into services and components, we now zoom inside an individual module or microservice.
+Look at our seamless progression so far:
+In Stage 1 (5.3), we designed our macro-architecture using Architectural Patterns and modeled it with UML Package and Deployment diagrams.
+In Stage 2 (5.4), we specified our module boundaries using Design by Contract (DbC) and modeled them with UML Component diagrams.
+Now, in Stage 3 (5.5), we zoom *inside* an individual component to design its internal class hierarchy using **GoF Design Patterns**, the **5 SOLID Principles**, and **UML Class & Interface Diagrams**!
 
-When writing classes and defining method signatures, how do we craft code that is resilient against continuous change?
-
-Coined by software luminary Robert C. Martin (Uncle Bob), the SOLID acronym captures five classic object-oriented design heuristics. In this section, we master each principle through intuitive mental models and real-world code refactoring.
-
-To summarize this slide, remember this key takeaway: The SOLID principles provide actionable guidelines for crafting extensible, testable, and robust object-oriented software.
+To summarize this slide, remember this key takeaway: Stage 3 Detailed OO Design structures internal component classes using GoF patterns, SOLID principles, and UML Class Diagrams.
 -->
 ---
-## From Macro Architecture to Micro Detailed Design
+## What Are Design Patterns? From GoF to SOLID Foundations
 
-* **Connecting the Architectural Vision to Source Code:**
-  - Macro architecture establishes the structural skeleton and subsystem boundaries.
-  - Micro detailed design fills that skeleton with robust, maintainable classes and methods.
-* **The "Micro-Decay" Threat:**
-  - Even the most elegant microservices or layered architecture will collapse into chaos if the code inside each service degenerates into tightly coupled spaghetti!
-* **The Five SOLID Principles (Coined by Robert C. Martin):**
-  - **S**: Single Responsibility Principle (SRP)
-  - **O**: Open / Closed Principle (OCP)
-  - **L**: Liskov Substitution Principle (LSP)
-  - **I**: Interface Segregation Principle (ISP)
-  - **D**: Dependency Inversion Principle (DIP)
+* **What Is a Software Design Pattern?**
+  - While **Architectural Patterns** (Section 5.3) define system-wide macro topology, **Design Patterns** provide reusable, proven micro-level solutions to recurring class and object design problems within a specific context.
+* **The Vast Landscape of Design Patterns (e.g., Gang of Four — GoF 23 Patterns):**
+  - **Creational Patterns (5)**: *Factory Method, Abstract Factory, Builder, Singleton, Prototype* (decouple object creation).
+  - **Structural Patterns (7)**: *Adapter, Decorator, Facade, Proxy, Composite, Bridge* (compose classes & interfaces).
+  - **Behavioral Patterns (11)**: *Strategy, Observer, Command, State, Template Method, Iterator* (manage object collaboration).
+* **Our Focus Here — The 5 SOLID Design Principles (Robert C. Martin):**
+  - Rather than memorizing 23 GoF patterns by rote, we focus on **SOLID**—the **foundational "first principles"** upon which nearly all GoF patterns are built (e.g., *Strategy* realizes **OCP**; *Adapter* realizes **DIP**)!
 
 <!--
-Notice the vital connection between macro architecture and micro design.
+Before diving into individual UML diagrams, let's clarify a fundamental question: What is a Design Pattern, and how does it relate to SOLID?
 
-Many developers think: 'We use microservices and Docker, so our architecture is modern and great!'
-Yet inside those microservices, individual classes are 3,000-line God Classes tangled with raw SQL, global variables, and hardcoded dependencies.
+In Section 5.3, we studied Architectural Patterns—macro-level blueprints like Microservices and Layered Architecture. When we zoom inside a single component to design classes and interfaces, we enter the world of Object-Oriented Design Patterns.
 
-When micro-level code decays, the grandest architectural blueprint collapses like a house of cards.
+The most famous catalog in computer science is the 1994 'Gang of Four' (GoF) book by Gamma, Helm, Johnson, and Vlissides, which documented 23 classic Design Patterns across three categories: Creational (like Factory and Builder), Structural (like Adapter and Facade), and Behavioral (like Strategy and Observer).
 
-The five SOLID principles provide our line-of-defense against code rot inside every module and service.
+With so many design patterns out there, why do we focus specifically on SOLID here? Because SOLID is the foundational physics underneath GoF patterns! Once you understand OCP and DIP in UML, patterns like Strategy, Adapter, and Dependency Injection become completely natural.
 
-To summarize this slide, remember this key takeaway: Sound micro-level object-oriented design is the indispensable foundation supporting macro architectural blueprints.
+To summarize this slide, remember this key takeaway: While catalogs like the Gang of Four define 23 specific design patterns, we focus on the five SOLID principles that serve as the theoretical foundation for all object-oriented patterns.
 -->
 ---
-## Overview: The 5 SOLID Design Principles
+## Overview: The 5 SOLID Design Principles in UML
 
-<div class="centered-image">
-  <img src="../../img/ch05/architecture/solid_principles.svg" style="max-height: 250px; width: auto;" alt="SOLID Principles Diagram" />
+* **How SOLID Shapes Class & Interface Topologies:**
+  - **S — Single Responsibility Principle (SRP)**: Partition bloated "God Classes" so each class serves **1 Actor / 1 Reason to Change**.
+  - **O — Open / Closed Principle (OCP)**: Replace rigid concrete dependencies with **polymorphic `«interface»` abstractions** (`- - -|>`).
+  - **L — Liskov Substitution Principle (LSP)**: Ensure every subclass (`───|>`) or realization (`- - -|>`) honors the **behavioral contract** of its base type.
+  - **I — Interface Segregation Principle (ISP)**: Split bloated "Fat Interfaces" into **lean, role-specific `«interface»` contracts**.
+  - **D — Dependency Inversion Principle (DIP)**: Invert dependency arrows **upward** so both high-level policies and low-level details depend on abstractions.
+
+<!--
+Examine the five SOLID principles from an architectural and UML perspective.
+
+Notice that SOLID is not about syntax tricks—it is fundamentally about how you draw boxes (classes and interfaces) and arrows (dependencies and realizations) in your UML design:
+SRP governs what belongs inside a single class box;
+OCP governs how new behavior is plugged in via interface realization arrows;
+LSP governs when inheritance arrows are valid vs. broken;
+ISP governs the granularity of interface boxes;
+and DIP governs the direction of cross-layer dependency arrows!
+
+Let's examine each principle using a two-slide visual format: first a full-canvas Before-vs-After UML diagram, followed by its engineering breakdown.
+
+To summarize this slide, remember this key takeaway: The five SOLID principles are structural rules that govern class cohesion, interface granularity, and dependency direction in UML design.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## S — Single Responsibility Principle (SRP): UML Comparison
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/solid_srp_uml.svg" alt="Single Responsibility Principle UML Diagram" />
 </div>
 
-* **The SOLID Roster:**
-  - **SRP**: A class should have one, and only one, reason to change.
-  - **OCP**: Software entities should be open for extension, but closed for modification.
-  - **LSP**: Subtypes must be substitutable for their base types without altering correctness.
-  - **ISP**: Clients should not be forced to depend on methods they do not use.
-  - **DIP**: High-level policies should not depend on low-level details; both should depend on abstractions.
-
 <!--
-Examine the five SOLID principles overview diagram.
+Look at our first UML comparison: the Single Responsibility Principle (SRP).
 
-Together, these five principles form a cohesive engineering system:
-SRP ensures internal cohesion;
-OCP enables adding features without breaking existing code;
-LSP guarantees inheritance integrity;
-ISP keeps interfaces lean and focused;
-DIP decouples business policies from database and framework details.
+On the left panel, examine the red God Class `OrderInvoiceReport`:
+Three completely different organizational actors—the CFO's Finance team, the UX/Marketing team, and the DBA Infrastructure team—all point dependency arrows into this single class!
+It mixes financial tax calculation (`calculateTaxAndSurge`), HTML receipt rendering (`renderHtmlInvoice`), and PostgreSQL persistence (`saveToPostgresDb`).
 
-Let's dissect each principle individually with concrete code refactoring.
+On the right panel, examine the refactored green UML design:
+We separate data (`OrderInvoice`) from the three orthogonal responsibilities, creating three focused classes: `InvoiceTaxCalculator` (for Finance), `InvoiceHtmlRenderer` (for UX), and `InvoiceSqlRepository` (for DBAs). Now, each class has one actor and one reason to change!
 
-To summarize this slide, remember this key takeaway: The five SOLID principles work synergistically to eliminate rigidity, fragility, and immobility from object-oriented systems.
+To summarize this slide, remember this key takeaway: SRP splits multi-actor God Classes into cohesive, single-purpose classes aligned with distinct axes of change.
 -->
 ---
-## S &ndash; Single Responsibility Principle (SRP)
+## S — Single Responsibility Principle (SRP): Design Analysis
 
-* **Core Principle:**
-  > A class should have one, and only one, reason to change.
-* **Why SRP is Vital:**
-  - When a class juggles multiple responsibilities, requirements changes from disparate stakeholders become tangled together, creating unexpected regressions.
+> **Definition (Robert C. Martin):** *"A class should have one, and only one, reason to change (i.e., be responsible to one, and only one, actor/stakeholder)."*
 
-```java
-// ❌ BAD: Multiple Reasons to Change (God Class violates SRP)
-class UserInvoiceReport {
-    public void calculateTotal() { /* CFO / Finance change */ }
-    public void renderHtmlPage()  { /* Marketing / UI change */ }
-    public void saveToDatabase()  { /* DBA / Schema change   */ }
-}
-```
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
 
-```java
-// ✅ GOOD: Single Responsibility per Class
-class InvoiceCalculator { public BigDecimal calculateTotal(Invoice inv) { ... } }
-class InvoiceHtmlRenderer { public String render(Invoice inv) { ... } }
-class InvoiceRepository { public void save(Invoice inv) { ... } }
-```
+### ❌ UML Anti-Pattern: The "God Class"
+- **Tangled Axes of Change**: `OrderInvoiceReport` combines **Financial Rules** (`calculateTaxAndSurge`), **Presentation Formatting** (`renderHtmlInvoice`), and **Database I/O** (`saveToPostgresDb`).
+- **Fragility & Merge Collisions**:
+  - When UX designers tweak receipt CSS inside `OrderInvoiceReport`, they risk breaking CFO tax logic or triggering SQL regressions.
+  - achieves low **Coincidental / Logical Cohesion**.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ✅ UML Refactoring: 1 Class per Actor
+- **Cohesive Decomposition**:
+  - `InvoiceTaxCalculator` ➔ Serves **CFO / Finance**.
+  - `InvoiceHtmlRenderer` ➔ Serves **UX / Marketing**.
+  - `InvoiceSqlRepository` ➔ Serves **DBA / Infra**.
+- **Architectural Payoff**:
+  - Achieves **Level 1 Functional Cohesion** and **Data Coupling** (passing only `OrderInvoice`).
+  - Each class can be modified, tested, and deployed independently with zero cross-team interference.
+
+</div>
+</div>
 
 <!--
-Let's analyze principle 1: Single Responsibility Principle (SRP).
+Let's summarize the engineering insights of the Single Responsibility Principle (SRP).
 
-Uncle Bob defines responsibility as 'a reason to change.'
-In the bad design above, UserInvoiceReport has three distinct reasons to change:
-If the CFO changes tax rules, you edit this class.
-If marketing updates the HTML color scheme, you edit this class.
-If the DBA changes SQL column names, you edit this class!
+Uncle Bob later clarified what he meant by 'one reason to change': a responsibility belongs to a specific stakeholder group or Actor!
+In the left card, when Finance, Marketing, and DBAs all depend on `OrderInvoiceReport`, three separate axes of change collide in one file.
 
-By separating these into InvoiceCalculator, InvoiceHtmlRenderer, and InvoiceRepository, each class has exactly one stakeholder and one reason to change.
+In the right card, by decomposing the UML model into `InvoiceTaxCalculator`, `InvoiceHtmlRenderer`, and `InvoiceSqlRepository`, we achieve Functional Cohesion and Data Coupling. A change to HTML formatting never touches or recompiles tax calculation logic!
 
-To summarize this slide, remember this key takeaway: Align class boundaries with stakeholder responsibilities so each class possesses exactly one reason to change.
+To summarize this slide, remember this key takeaway: Align class boundaries with stakeholder actors so that every class possesses a single, isolated reason to change.
 -->
 ---
-## O &ndash; Open / Closed Principle (OCP)
+<!-- _class: title-image-slide -->
 
-* **Core Principle (Bertrand Meyer):**
-  > Software entities (classes, modules, functions) should be **open for extension**, but **closed for modification**.
-* **How to Achieve OCP:**
-  - Program to abstract interfaces; introduce new behaviors by adding new classes, **never by modifying battle-tested existing code** with brittle `if/else` or `switch` chains!
+## O — Open / Closed Principle (OCP): UML Comparison
 
-```java
-// ❌ BAD: Adding a new channel forces modifying existing sendNotification code!
-if (type.equals("EMAIL")) { sendEmail(); }
-else if (type.equals("SMS")) { sendSms(); }
-else if (type.equals("DISCORD")) { sendDiscord(); } // Risky modification!
-```
-
-```java
-// ✅ GOOD: Open for Extension via Polymorphic Strategy Pattern
-interface NotificationChannel { void send(String message); }
-class EmailChannel implements NotificationChannel { ... }
-class DiscordChannel implements NotificationChannel { ... } // Zero modification to core!
-```
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/solid_ocp_uml.svg" alt="Open Closed Principle UML Diagram" />
+</div>
 
 <!--
-Principle 2: The Open/Closed Principle (OCP).
+Now look at Principle 2: the Open / Closed Principle (OCP), visualized in UML.
 
-OCP states that when business requirements expand, you should extend system behavior by adding new code, not by cutting open and modifying existing, working classes.
+On the left panel, look at the red anti-pattern:
+`OrderNotificationService` has direct concrete dependency arrows pointing to `EmailSender` and `SmsSender`, driven by an internal `if / else if` chain. When a new business requirement arrives to support `LineNotifySender`, engineers must cut open `OrderNotificationService`, add a new dependency arrow, and modify its `if/else` logic!
 
-Look at the bad example: every time marketing adds a notification channel—SMS, LINE, Slack, Discord—you must open the notification manager and insert another 'else if' branch. One typo breaks all notifications!
+On the right panel, look at the green OCP-compliant UML design:
+`OrderNotificationService` is locked (Closed for Modification) because it depends solely on the abstract interface `«interface» INotificationChannel`.
+`EmailChannel` and `SmsChannel` realize (`- - -|>`) that interface. When we need `LineNotifyChannel`, we simply add a new class realizing `INotificationChannel`—zero lines of code inside `OrderNotificationService` are touched!
 
-With polymorphic interfaces, you simply create a new DiscordChannel class implementing NotificationChannel. The existing engine remains completely untouched and regression-free!
-
-To summarize this slide, remember this key takeaway: OCP enables safe system expansion by adding new polymorphic classes without modifying battle-tested existing logic.
+To summarize this slide, remember this key takeaway: OCP replaces hardwired concrete dependencies with an abstract interface pivot, allowing new extensions via realization without modifying the client class.
 -->
 ---
-## L &ndash; Liskov Substitution Principle (LSP)
+## O — Open / Closed Principle (OCP): Design Analysis
 
-* **Core Principle (Barbara Liskov, Turing Award Laureate):**
-  > Subtypes must be substitutable for their base types without altering the correctness of the program.
-* **The Classic Violation: The Square-Rectangle Problem:**
-  - In mathematics, a Square is a Rectangle. But in software, overriding `setWidth(w)` to also mutate `height` breaks caller expectations!
+> **Definition (Bertrand Meyer):** *"Software entities (classes, modules, components) should be **open for extension**, but **closed for modification**."*
 
-```java
-// ❌ BAD: Violating LSP via Unexpected Side-Effects
-class Rectangle {
-    protected int w, h;
-    public void setWidth(int w) { this.w = w; }
-    public void setHeight(int h) { this.h = h; }
-    public int getArea() { return w * h; }
-}
-class Square extends Rectangle {
-    @Override public void setWidth(int w) { this.w = this.h = w; } // Unexpected side-effect!
-}
-```
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
 
-* **Engineering Rule:** Subclasses must never weaken preconditions or strengthen postconditions!
+### ❌ UML Anti-Pattern: Direct Concrete Coupling
+- **Hardwired Fan-Out (`───>`)**: `OrderNotificationService` directly depends on concrete `EmailSender` and `SmsSender` classes via `if / else if` type-switching.
+- **Violation of "Closed for Modification"**:
+  - Adding `LineNotifySender`, `WhatsApp`, or `Discord` forces engineers to **open and edit** the core `OrderNotificationService` class.
+  - Every edit risks breaking existing, production-tested notification channels!
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ✅ UML Refactoring: Polymorphic Interface Pivot
+- **Stable Abstraction (`«interface» INotificationChannel`)**:
+  - `OrderNotificationService` depends **only** on `INotificationChannel.send(msg)` (**🔒 Closed for Modification**).
+- **Plug-in Realization (`- - -|>`)**:
+  - `EmailChannel`, `SmsChannel`, and the new `LineNotifyChannel` independently realize `INotificationChannel` (**🔓 Open for Extension**).
+- **Zero-Touch Expansion**: New channels are added as standalone classes with zero impact on core orchestration.
+
+</div>
+</div>
 
 <!--
-Principle 3: The Liskov Substitution Principle (LSP), formulated by Turing Award Laureate Barbara Liskov.
+Let's analyze how the Open/Closed Principle works in UML.
 
-LSP requires that if your program works with a base class, it must work identically with any derived subclass without surprising side-effects.
+In the left card, whenever a client class points directly at concrete implementation classes with solid dependency arrows (`───>`), adding a new variant forces you to modify the client class.
 
-The classic violation is Square extending Rectangle. A client writes a function expecting a Rectangle, sets width to 5 and height to 10, expecting area 50. But if a Square is passed in, setting height changes width to 10 as well, yielding area 100!
+In the right card, we insert an `«interface»` (`INotificationChannel`) as a protective firewall. Now the client points to the interface, and all concrete variants point their dashed hollow realization arrows (`- - -|>`) toward the interface!
+Because `OrderNotificationService` only knows `INotificationChannel`, it is 100% closed for modification, while the interface remains wide open for infinite new extensions.
 
-Subclasses must strictly honor the behavioral contracts established by their base types.
-
-To summarize this slide, remember this key takeaway: Subclasses must strictly honor the behavioral contracts established by their base types.
+To summarize this slide, remember this key takeaway: Introducing a polymorphic interface pivot locks core business logic against modification while opening the system to plug-in extensions.
 -->
 ---
-## I &ndash; Interface Segregation Principle (ISP)
+<!-- _class: title-image-slide -->
 
-* **Core Principle:**
-  > Clients should not be forced to depend on methods they do not use.
-* **Key Tenet:** Prefer multiple **small, role-specific interfaces** over a single bloated, "fat" interface.
+## L — Liskov Substitution Principle (LSP): UML Comparison
 
-```java
-// ❌ BAD: Fat, Bloated Interface forces dummy implementations
-interface MultiFunctionPrinter {
-    void print();
-    void scan();
-    void fax();
-}
-class SimpleInkjetPrinter implements MultiFunctionPrinter {
-    public void print() { /* OK */ }
-    public void scan()  { throw new UnsupportedOperationException(); } // Polluted!
-    public void fax()   { throw new UnsupportedOperationException(); } // Polluted!
-}
-```
-
-```java
-// ✅ GOOD: Segregated, Role-Specific Interfaces
-interface Printer { void print(); }
-interface Scanner { void scan(); }
-class SimpleInkjetPrinter implements Printer { public void print() { ... } }
-```
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/solid_lsp_uml.svg" alt="Liskov Substitution Principle UML Diagram" />
+</div>
 
 <!--
-Principle 4: Interface Segregation Principle (ISP).
+Now examine Principle 3: the Liskov Substitution Principle (LSP), formulated by Turing Award Laureate Barbara Liskov.
 
-ISP warns against creating giant 'fat' interfaces.
-Consider MultiFunctionPrinter with print, scan, and fax. A simple 30-dollar desk printer only prints! But because it implements the fat interface, it must implement dummy methods that throw UnsupportedOperationException.
+On the left panel, look at the famous 'IS-A Inheritance Trap' in UML:
+Mathematically, a Square is a Rectangle, so a novice draws a UML generalization arrow (`───|>`) from `Square` up to `Rectangle`.
+However, `Rectangle` defines mutable setters `setWidth(w)` and `setHeight(h)` with the postcondition that changing height leaves width unchanged. To stay a square, `Square` overrides `setHeight(10)` to secretly overwrite `width = 10` as well! When `MapZoneTester` passes a `Square` into a method expecting a `Rectangle`, `5 * 10` suddenly returns `100` instead of `50`—crashing the program!
 
-If a change occurs in the fax protocol, SimpleInkjetPrinter is forced to recompile even though it doesn't even possess a phone jack!
+On the right panel, look at the green LSP-compliant UML design:
+Instead of forcing `Square` to inherit mutable state from `Rectangle`, both `Rectangle` and `Square` are modeled as independent, immutable sibling classes realizing the pure contract `«interface» IShape` (`+ getArea(): int`). Now any `IShape` subtype can substitute for another with 100% behavioral integrity!
 
-By splitting fat interfaces into Printer, Scanner, and FaxMachine, clients only depend on the exact capabilities they need.
-
-To summarize this slide, remember this key takeaway: Create lean, role-specific interfaces so clients never depend on capabilities they do not require.
+To summarize this slide, remember this key takeaway: LSP requires that UML inheritance and realization hierarchies preserve behavioral contracts, postconditions, and invariants without unexpected side effects.
 -->
 ---
-## D &ndash; Dependency Inversion Principle (DIP)
+## L — Liskov Substitution Principle (LSP): Design Analysis
 
-* **Core Principle:**
-  > 1. High-level modules should not depend on low-level modules; both should depend on abstractions.  
-  > 2. Abstractions should not depend on details; details must depend on abstractions.
+> **Definition (Barbara Liskov):** *"Subtypes must be behaviorally substitutable for their base types without altering any desirable correctness properties of the program."*
 
-```java
-// ❌ BAD: High-level business logic hardwired to low-level MySQL database
-class OrderService {
-    private MySQLDatabase db = new MySQLDatabase(); // Direct 'new' coupling!
-}
-```
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
 
-```java
-// ✅ GOOD: Inverted Dependency via Constructor Injection (IoC / DI)
-interface Database { void save(Order o); }
-class MySQLDatabase implements Database { ... }
-class MockDatabase implements Database { ... } // Fast in-memory unit tests!
+### ❌ UML Anti-Pattern: The "IS-A" Inheritance Trap
+- **Broken Postcondition in `Square ───|> Rectangle`**:
+  - Base `Rectangle` promises that `setHeight(10)` mutates `height` while keeping `width` invariant.
+  - Subclass `Square` breaks this contract by silently mutating **both** `width` and `height` (`getArea()` yields `100 != 50`).
+- **Other Common LSP Violations in Food Delivery**:
+  - `CashOnDeliveryPayment ───|> OnlinePayment` throwing `UnsupportedOperationException` inside `autoRefundCard()`!
 
-class OrderService {
-    private final Database db;
-    public OrderService(Database db) { this.db = db; } // Injected abstraction!
-}
-```
+</div>
+<div class="card" data-marpit-fragment>
+
+### ✅ UML Refactoring: Behavioral Subtyping
+- **Sibling Realization (`- - -|> IShape`)**:
+  - Eliminate invalid inheritance between `Square` and `Rectangle`.
+  - Both classes independently realize the pure contract `«interface» IShape` (`+ getArea(): int`) with immutable dimensions.
+- **Design by Contract (DbC) Rules for LSP**:
+  - A subtype must **never strengthen preconditions**, **never weaken postconditions**, and **never throw unexpected exceptions**.
+
+</div>
+</div>
 
 <!--
-Principle 5: Dependency Inversion Principle (DIP).
+Let's review the engineering rules of the Liskov Substitution Principle (LSP).
 
-In traditional procedural programming, high-level business logic imports low-level database libraries. DIP flips this dependency completely upside down!
+Novices are often taught that UML inheritance (`───|>`) means 'IS-A' in everyday English. Barbara Liskov proved that English 'IS-A' is not enough: inheritance in software requires *Behavioral Subtyping*!
 
-In the bad design, OrderService instantiates MySQLDatabase with 'new'. That hardwires core business logic to MySQL! Swapping to PostgreSQL requires rewriting business code, and unit testing requires running an actual MySQL database.
+In the left card, `Square extends Rectangle` (or `CashOnDelivery extends CreditCardPayment` throwing `UnsupportedOperationException` on `refund()`) violates the base class postcondition and crashes polymorphic callers.
 
-In the good design, OrderService depends on a clean Database interface injected via its constructor. In production, we inject MySQL; in tests, we inject an in-memory Mock.
+In the right card, we replace broken inheritance with clean sibling realization (`- - -|>`) of a shared behavioral interface (`IShape`). Every subtype fulfills 100% of the contract promised by the interface!
 
-To summarize this slide, remember this key takeaway: Invert dependencies so high-level business policies remain untangled from low-level infrastructure details.
+To summarize this slide, remember this key takeaway: Never use UML inheritance unless the subclass honors every precondition, postcondition, and invariant promised by the base type.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## I — Interface Segregation Principle (ISP): UML Comparison
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/solid_isp_uml.svg" alt="Interface Segregation Principle UML Diagram" />
+</div>
+
+<!--
+Now let's examine Principle 4: the Interface Segregation Principle (ISP), visualized in UML.
+
+On the left panel, look at the red 'Fat Interface' anti-pattern:
+An architect creates a giant interface `«interface» IMultiFunctionDevice` bundling `printOrderTicket()`, `scanInvoicePdf()`, and `sendVendorFax()`.
+While `CorporateOfficeMFP` uses all three, look at `KitchenThermalPrinter` (a restaurant receipt printer in our Food Delivery partner kitchen): it can only print! Yet because it realizes `IMultiFunctionDevice`, it is forced to implement dummy `scanInvoicePdf()` and `sendVendorFax()` methods that throw errors!
+
+On the right panel, look at the green ISP-compliant UML design:
+We segregate the fat interface into three focused, role-specific interfaces: `IPrintable`, `IScannable`, and `IFaxable`. Now `KitchenThermalPrinter` realizes only `IPrintable`, while `CorporateOfficeMFP` realizes all three!
+
+To summarize this slide, remember this key takeaway: ISP decomposes bloated interfaces into cohesive role-specific contracts so implementing classes never depend on unused methods.
+-->
+---
+## I — Interface Segregation Principle (ISP): Design Analysis
+
+> **Definition (Robert C. Martin):** *"Clients should not be forced to depend on interfaces or methods that they do not use."*
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### ❌ UML Anti-Pattern: The "Fat Interface"
+- **Polluted Contract (`IMultiFunctionDevice`)**: Bundles unrelated capabilities (`printOrderTicket`, `scanInvoicePdf`, `sendVendorFax`) into one monolithic `«interface»`.
+- **Two Severe Consequences**:
+  - **1. Dummy Stubs & Liskov Violations**: `KitchenThermalPrinter` must implement `scan()` and `fax()` by throwing runtime exceptions.
+  - **2. Phantom Recompilation Coupling**: Changing a parameter in `sendVendorFax()` forces `KitchenThermalPrinter` to recompile!
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ✅ UML Refactoring: Role-Specific Interfaces
+- **Granular Role Contracts**:
+  - Decompose into `«interface» IPrintable`, `«interface» IScannable`, and `«interface» IFaxable`.
+- **Selective Realization (`- - -|>`)**:
+  - `KitchenThermalPrinter` realizes **only** `IPrintable`.
+  - `CorporateOfficeMFP` composes capabilities by realizing all three (`IPrintable`, `IScannable`, `IFaxable`).
+- **Result**: Zero unused methods and zero phantom coupling across unrelated clients.
+
+</div>
+</div>
+
+<!--
+Notice how the Interface Segregation Principle (ISP) complements both SRP and LSP!
+
+In the left card, a bloated 'Fat Interface' (`IMultiFunctionDevice`) forces simple implementers like `KitchenThermalPrinter` to write dummy methods that throw exceptions (which immediately violates LSP too!), and couples kitchen printers to fax-machine parameter changes.
+
+In the right card, by splitting the UML interface into role-specific contracts (`IPrintable`, `IScannable`, `IFaxable`), every client and every device binds solely to the exact methods it requires.
+
+To summarize this slide, remember this key takeaway: Prefer cohesive, role-specific interfaces over monolithic fat interfaces to eliminate dummy implementations and phantom coupling.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## D — Dependency Inversion Principle (DIP): UML Comparison
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/solid_dip_uml.svg" alt="Dependency Inversion Principle UML Diagram" />
+</div>
+
+<!--
+Finally, examine Principle 5—the capstone of Clean Architecture: the Dependency Inversion Principle (DIP)!
+
+Look closely at the direction of the UML arrows crossing the horizontal package boundary:
+On the left panel (red anti-pattern), high-level `OrderCheckoutService` in `domain.order` directly instantiates and depends downward (`───>`) on low-level `MySqlOrderDatabase` in `infra.mysql`. Both the runtime flow of control AND the compile-time source code dependency point downward!
+
+Now look at the right panel (green DIP-compliant design):
+Inside the high-level `domain.order` package, `OrderCheckoutService` defines and depends on `«interface» IOrderRepository`.
+Down in `infra.persistence`, concrete adapters—`MySqlOrderRepo`, `PostgresOrderRepo`, and `InMemoryMockRepo`—realize `IOrderRepository` with dashed hollow arrows (`- - -|>`) pointing **UPWARD** into the Domain layer!
+
+To summarize this slide, remember this key takeaway: DIP inverts compile-time UML dependency arrows upward so low-level infrastructure adapters depend on high-level domain abstractions.
+-->
+---
+## D — Dependency Inversion Principle (DIP): Design Analysis
+
+> **Definition (Robert C. Martin):** *"1. High-level modules should not depend on low-level modules; both should depend on abstractions. 2. Abstractions should not depend on details; details must depend on abstractions."*
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### ❌ UML Anti-Pattern: Downward Source Dependency
+- **High-Level Bound to Low-Level (`domain ───> infra`)**:
+  - `OrderCheckoutService` directly references concrete `MySqlOrderDatabase`.
+- **Why This Cripples Architecture**:
+  - **Immobility**: Core business policy cannot be reused with PostgreSQL without editing domain classes.
+  - **Untestability**: Running unit tests on `OrderCheckoutService` requires booting a physical MySQL database server.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### ✅ UML Refactoring: Upward Arrow Inversion
+- **Domain Owns the Interface (`IOrderRepository`)**:
+  - `OrderCheckoutService` depends only on `«interface» IOrderRepository` inside `domain.order`.
+- **Infrastructure Realizes Upward (`infra - - -|> domain`)**:
+  - `PostgresOrderRepo` and `InMemoryMockRepo` point **upward** across the layer boundary to realize `IOrderRepository`.
+- **Constructor Dependency Injection (DI)**: Inject `PostgresOrderRepo` in production and `InMemoryMockRepo` for **1ms isolated unit tests**!
+
+</div>
+</div>
+
+<!--
+Let's connect the Dependency Inversion Principle (DIP) back to the Food Delivery UML Package and Component diagrams we learned in Section 5.4!
+
+In the left card, traditional layered dependencies flow straight down: Business Logic depends on Database Details. That means database changes break business logic, and unit tests are slow and brittle.
+
+In the right card, DIP flips the UML realization arrow (`- - -|>`) upside down! By placing `IOrderRepository` inside the high-level `domain.order` package, the low-level `infra.persistence` classes must point **upward** to implement it.
+At runtime, we use Dependency Injection (DI) to pass `PostgresOrderRepo` in production, or `InMemoryMockRepo` to run thousands of unit tests in milliseconds!
+
+To summarize this slide, remember this key takeaway: Inverting UML dependency arrows upward across package boundaries protects core domain policies from infrastructure volatility and enables instant unit testing.
+-->
+---
+### Peer Discussion: Exploring the GoF Observer Pattern (Motivation & Structure)
+
+<div class="discussion-columns">
+  <div class="discussion-text">
+
+  **Web Search & Pair Analysis: The GoF Observer Design Pattern (4 Mins)**
+  - **1. Search Online:** Look up the **Observer Design Pattern** (e.g., on *Refactoring.Guru* or *GoF Catalog*).
+  - **2. Design Motivation (What problem does it solve?):**
+    - When one **Subject** changes state (e.g., a Food Delivery `Order` transitions to `READY_FOR_PICKUP`), multiple **Dependents** (`CustomerApp`, `RiderApp`, `MerchantDisplay`) must update automatically—**without hardcoding concrete class calls inside `Order`**!
+  - **3. UML Structure & SOLID Mapping (Discuss with Your Partner):**
+    - Sketch the 4 UML roles: `Subject (Publisher)`, `«interface» IObserver (Subscriber)`, and `ConcreteObserverA / B`.
+    - How does the Observer Pattern embody **OCP** (adding new subscribers without editing `Subject`) and **DIP** (`Subject` depends only on `«interface» IObserver`)?
+
+  </div>
+  <div class="discussion-logo">
+    <img src="../../img/ch05/architecture/discussion_icon.svg" alt="Discussion Icon" />
+  </div>
+</div>
+
+<!--
+Now let's connect the 5 SOLID principles we just mastered back to the Gang of Four (GoF) Design Patterns through a 4-minute web research and peer discussion activity!
+
+Take out your laptop or phone with your partner and look up the classic **GoF Observer Design Pattern** (for example, on Refactoring.Guru).
+Discuss two essential questions together:
+First, **Design Motivation**: Why did the Gang of Four invent the Observer pattern? Imagine our Food Delivery `Order` object: whenever its status changes, we need to notify the Customer's push notification service, the Rider's dispatch screen, and the Restaurant's tablet. If `Order` directly calls those three concrete classes, it violates SRP, OCP, and DIP!
+Second, **UML Structure**: Look at the UML class diagram of the Observer pattern. The `Subject` holds a list of `«interface» IObserver` references (`attach()`, `detach()`, `notifyObservers()`), and concrete subscribers implement `IObserver.update()`.
+Notice how the Observer pattern is simply **OCP + DIP in action**: `Subject` depends upward on the `IObserver` abstraction (DIP), and you can plug in 10 new notification channels at runtime without modifying a single line of `Subject` (OCP)!
+
+To summarize this slide, remember this key takeaway: The GoF Observer pattern decouples state publishers from subscribers by combining the Open/Closed Principle and Dependency Inversion Principle in UML.
 -->
 ---
 ### Concept Check Question 4 (CCQ 4)
+<!-- id: ase-ch05-ccq4 -->
 <div class="ccq-columns">
   <div class="ccq-text">
 
@@ -1225,7 +1798,7 @@ Which SOLID object-oriented design principle explicitly advocates that when intr
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ch05/architecture/question_icon.svg" alt="Question Icon" style="max-width: 140px;" />
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq4" target="_blank"><img src="../../img/ch05/ase-ch05-ccq4.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -1246,71 +1819,204 @@ To summarize this slide, remember this key takeaway: The Open/Closed Principle s
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.6 AI in Software Design & Architecture' -->
+<!-- header: '5.6 Data & Persistence Design: ERD & Polyglot' -->
 
-# **5.6 AI in Software Design & Architecture**
+# **5.6 Stage 4 — Data & Persistence Design: ERD, Caching & Polyglot Storage**
 
-> "AI will not replace software architects, but architects who use AI will replace those who do not."
-
-<!--
-Welcome to Section 5.6: AI in Software Design & Architecture.
-
-Generative AI and Large Language Model copilots are revolutionizing software development.
-In the realm of design and architecture, AI serves as an extraordinarily powerful force multiplier—accelerating trade-off analysis, detecting code smells, and generating architectural documentation.
-
-However, unchecked reliance on AI poses severe hazards: premature distributed complexity, context blindness, and resume-driven over-engineering.
-
-In this section, we examine the Copilot paradigm, four core applications of AI in design, and how to maintain strict Human-in-the-Loop governance.
-
-To summarize this slide, remember this key takeaway: AI serves as a powerful architectural copilot, but human architects must maintain ultimate governance over architectural decisions and context.
--->
----
-## AI in Architecture & Design: The Copilot Paradigm
-
-* **The Evolution of the Software Architect's Toolkit:**
-  - **Traditional Workflow**: Manual whiteboard diagramming, static architecture reviews, and labor-intensive manual refactoring.
-  - **AI-Augmented Workflow**: Conversational trade-off exploration, automated architectural smell scanning, and prompt-driven interface generation.
-* **The "Copilot, Not Autopilot" Principle:**
-  - AI excels at **generating options, synthesizing documentation, and identifying edge cases**.
-  - Human architects must provide **organizational context, budget constraints, security governance, and final accountability**.
+> "Bad programmers worry about the code. Good programmers worry about data structures and their relationships."  
+> — *Linus Torvalds (Creator of Linux & Git)*
 
 <!--
-How does Generative AI fit into software architecture?
+Welcome to Section 5.6: Stage 4 of our Software Design Process—Data & Persistence Design!
 
-We must view AI through the lens of the Copilot paradigm, not an Autopilot.
+Having designed our macro-architecture in 5.3, specified our interface contracts in 5.4, and structured our internal object-oriented classes in 5.5, we now reach Stage 4: How is domain state modeled, normalized, indexed, cached, and persisted across databases?
 
-An AI cannot be held legally or financially liable if a cloud architecture incurs a 200,000-dollar AWS bill or fails PCI-DSS compliance audits.
+In this section, we master the 3-level data modeling pipeline, **UML Data / ERD notations**, relational normalization (3NF) vs. read performance, and how our Food Delivery System combines **PostgreSQL (ACID)**, **Redis Geo-Hash (TTL cache)**, and **Apache Kafka (event logs)** in a Polyglot Persistence architecture.
 
-AI is an intellectual brainstorming partner: you describe your user load and constraints, and AI rapidly generates three alternative architectural blueprints comparing Redis caching against PostgreSQL read-replicas.
-
-To summarize this slide, remember this key takeaway: AI is a powerful brainstorming partner that explores architectural possibilities, while human architects retain accountability and decision-making authority.
+To summarize this slide, remember this key takeaway: Stage 4 Data & Persistence Design transforms domain entities into optimized database schemas, spatial caches, and event logs.
 -->
 ---
-## 4 Core Applications of AI in Software Design
+<!-- _class: title-image-slide -->
 
-<div class="centered-image">
-  <img src="../../img/ch05/architecture/ai_in_architecture.svg" style="max-height: 280px; width: auto;" alt="AI in Architecture Workflow Diagram" />
+## 3-Level Data Modeling, ERD & Polyglot Storage in Food Delivery
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/data_design_food_delivery.svg" alt="Stage 4 Data and Persistence Design in Food Delivery System" />
 </div>
 
-* **1. Architectural Trade-off Exploration (ATAM Support):**
-  - Prompting LLMs to simulate adversarial scenarios: "What happens to our payment pipeline if Redis crashes during a network partition?"
-* **2. Automated Code Smell & Anti-Pattern Detection:**
-  - Scanning codebases for God Classes, Feature Envy, circular dependencies, and SRP violations.
-* **3. Design Pattern & SOLID Refactoring Suggestions:**
-  - Transforming tight `switch/case` statements into polymorphic Strategy or Factory patterns.
-* **4. Architecture Documentation & ADR Generation:**
-  - Automatically drafting standard Architecture Decision Records (ADRs) and OpenAPI/gRPC interface definitions.
+<!--
+Examine this comprehensive diagram of Stage 4: Data & Persistence Design, applied to our Food Delivery System!
+
+Look at the left panel: Data design progresses through three distinct levels of abstraction:
+1. Level 1 is the **Conceptual Data Model**: identifying core business entities and relationships (`Customer 1 ── 0..* Order 1 ── 1..* Item`) independent of any database technology.
+2. Level 2 is the **Logical ERD Model**: defining explicit attributes, data types, Primary Keys (`«PK»`), Foreign Keys (`«FK»`), multiplicities (`1..*`), and applying Third Normal Form (3NF) to prevent data anomalies.
+3. Level 3 is the **Physical Data Schema**: writing concrete SQL DDL, B-Tree and Geo-indexes (`«idx»`), monthly table partitioning, Redis cache TTLs, and Kafka topic partition keys.
+
+Now look at the right panel: Can a single database handle every workload in a Food Delivery System? No!
+A. **PostgreSQL (Relational OLTP)** stores `customers`, `restaurants`, `orders`, `order_items`, and `payments` with strict ACID transactions and 3NF integrity so no order or payment is ever lost or double-charged.
+B. **Redis Cluster (In-Memory Spatial Store)** handles 50,000 riders pinging GPS coordinates every 5 seconds (`10,000 writes/sec`) using a 64-bit `GeoHash` sorted set with `TTL = 30s`, answering nearest-rider queries in under 5 milliseconds!
+C. **Apache Kafka (Immutable Event Log)** streams `OrderPlacedEvent` via the Transactional Outbox pattern to synchronize Dispatch, Analytics, and Read Projections asynchronously.
+
+To summarize this slide, remember this key takeaway: Data design combines 3-level ERD schema modeling with polyglot persistence tailored to each workload's consistency and latency demands.
+-->
+---
+## 1. Three-Level Data Modeling, ERD Notation & Normalization
+
+> **Stage 4 Modeling Purpose:** Translates domain objects into **integrity-enforced relational schemas** and **high-speed physical indexes**.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 3-Level Data Modeling & UML ERD Notation
+- **1. Conceptual → 2. Logical ERD → 3. Physical Schema**:
+  - Progresses from business concepts to normalized table columns, and finally to DBMS-specific indexes and partitions.
+- **Core UML Data / ERD Notations**:
+  - **`«PK»` (Primary Key)**: Unique immutable identifier (`order_id: UUID`).
+  - **`«FK»` (Foreign Key)**: Referential integrity link (`customer_id` referencing `customers.customer_id`).
+  - **Multiplicity (`1 ── 0..*`, `1 ◆── 1..*`)**: Distinguishes optional associations from lifecycle-bound composition (`Order` ◆── `OrderItem`).
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 3NF Normalization vs. Physical Optimization
+- **Third Normal Form (3NF — Write Integrity)**:
+  - Every non-key column depends *only* on the Primary Key (e.g., store `restaurant_id` on `orders`, never duplicate restaurant address strings across millions of orders).
+  - **Benefit**: Eliminates update anomalies and guarantees single source of truth.
+- **Physical Indexing & Partitioning (Read Speed)**:
+  - **Composite Index (`«idx»`)**: `(customer_id, created_at DESC)` accelerates *"My Order History"* from `800ms` full-table scan to `< 2ms` B-Tree lookup.
+  - **Table Partitioning**: Partitioning `orders` monthly by `created_at` keeps active working sets small in RAM.
+
+</div>
+</div>
 
 <!--
-Four core applications define AI in software design:
-First, automated SOLID refactoring to decompose God Classes.
-Second, code smell detection before pull requests are merged.
-Third, GoF design pattern recommendations to eliminate coupling.
-Fourth, test mock generation and ADR drafting.
+Let's unpack the principles of relational schema modeling on the left and physical database optimization on the right.
 
-AI copilots liberate engineers from boilerplate drudgery, allowing us to focus our intellect on strategic architectural and business decisions.
+In the left card, review the core UML ERD notations:
+`«PK»` marks the Primary Key uniquely identifying each row; `«FK»` marks a Foreign Key enforcing referential integrity across tables.
+Notice the difference between `1 ── 0..*` (a Customer may place zero or many Orders, and Orders survive even if a Customer profile is archived) and Composition `1 ◆── 1..*` (an Order owns 1 or more OrderItems, whose lifecycle is strictly bound to that Order).
 
-To summarize this slide, remember this key takeaway: AI empowers software design through automated refactoring, smell detection, pattern recommendations, and ADR documentation.
+In the right card, how do we balance write integrity against read speed?
+For transactional writes, we normalize tables to Third Normal Form (3NF) so changing a restaurant's phone number updates 1 row in `restaurants`, not 500,000 historical order rows!
+Then, at the Physical level, we add composite B-Tree indexes (`customer_id, created_at`) and monthly table partitioning so queries remain sub-millisecond even as the table grows to hundreds of millions of rows.
+
+To summarize this slide, remember this key takeaway: Logical 3NF normalization protects data integrity on writes, while physical indexing and partitioning guarantee low-latency reads.
+-->
+---
+## 2. Polyglot Persistence, Caching & Distributed Consistency
+
+> **Architectural Reality:** Modern cloud systems pair **ACID Relational Databases** with **In-Memory Caches** and **Event Logs** (*Polyglot Persistence*).
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### Matching Storage Engines to Workloads
+- **1. Relational OLTP (`PostgreSQL` — ACID)**:
+  - *Food Delivery Use*: `orders`, `order_items`, `payments`.
+  - *Design Rule*: Use `«UQ» idempotency_key` and row-level locking to guarantee zero double-charging.
+- **2. In-Memory Key-Value / Spatial (`Redis` — Ephemeral)**:
+  - *Food Delivery Use*: Live rider GPS (`rider:geo:{city}`) & restaurant menu **Cache-Aside** (`TTL = 5 min`).
+  - *Design Rule*: High write/read velocity (`< 5ms`), auto-evicted via `TTL = 30s` if a rider goes offline.
+- **3. Append-Only Event Log (`Kafka` — Stream)**:
+  - *Food Delivery Use*: High-throughput immutable audit log of domain events partitioned by `order_id`.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### Managing Consistency: ACID vs. BASE & Outbox
+- **Inside a Single Service (`ACID`)**:
+  - Atomicity, Consistency, Isolation, Durability via local SQL transactions.
+- **Across Distributed Services (`BASE` & Saga)**:
+  - *Problem*: How to commit an `Order` in PostgreSQL and publish `OrderPlacedEvent` to Kafka without dual-write data loss?
+  - *Solution — **Transactional Outbox Pattern***:
+    1. Insert `orders` row AND `outbox_events` row in the **same local ACID transaction**.
+    2. A background relay publishes `outbox_events` to Kafka (`At-Least-Once`), while downstream consumers enforce idempotency!
+
+</div>
+</div>
+
+<!--
+Let's examine how Stage 4 Data Design handles diverse workloads across a distributed system like Food Delivery.
+
+In the left card, see why modern architects practice **Polyglot Persistence**:
+1. We use **PostgreSQL (ACID)** for financial records (`orders` and `payments`), enforcing a unique `idempotency_key` constraint so network retries never charge a user twice.
+2. We use **Redis** for two critical patterns: **Cache-Aside** for hot restaurant menus (reducing database read load by 95%), and **Geo-Hash Sorted Sets** (`TTL = 30s`) for 50,000 real-time rider GPS coordinates.
+3. We use **Apache Kafka** as an immutable, append-only event log partitioned by `order_id`.
+
+In the right card, how do we keep PostgreSQL, Redis, and Kafka consistent without slow distributed locks?
+Within a single database, we use **ACID** transactions. Across services, we embrace **BASE (Eventual Consistency)** using the **Transactional Outbox Pattern**: when an order is placed, we write both the `orders` row and an `outbox_events` row in one atomic SQL commit, and stream the outbox to Kafka reliably!
+
+To summarize this slide, remember this key takeaway: Polyglot persistence pairs ACID relational storage with Redis caching and Kafka event streams, synchronized safely via the Transactional Outbox pattern.
+-->
+---
+### Concept Check Question 5 (CCQ 5)
+<!-- id: ase-ch05-ccq5 -->
+<div class="ccq-columns">
+  <div class="ccq-text">
+
+In Stage 4 (**Data & Persistence Design**), why does a Food Delivery Platform store `orders` and `payments` in **PostgreSQL (Relational OLTP)** while storing 50,000 real-time courier GPS coordinates in **Redis (`GeoHash` + `TTL = 30s`)**?
+
+- **A.** PostgreSQL lacks primary key support for tables, whereas Redis enforces Third Normal Form (3NF) foreign keys.
+- **B.** Redis archives historical financial ledgers on disk, whereas PostgreSQL evicts all unpaid orders after 30 seconds.
+- **C.** PostgreSQL ensures ACID financial integrity, while in-memory Redis serves high-frequency GPS queries in `< 5ms`.
+- **D.** Writing live courier GPS streams into PostgreSQL eliminates all wireless network latency on mobile client devices.
+
+  </div>
+  <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq5" target="_blank"><img src="../../img/ch05/ase-ch05-ccq5.png" alt="QR Code" /></a>
+  </div>
+</div>
+
+<!--
+Let's check our understanding of Stage 4: Data & Persistence Design and Polyglot Persistence!
+
+The question asks: Why does a Food Delivery Platform store `orders` and `payments` in PostgreSQL while storing 50,000 real-time courier GPS coordinates in Redis?
+
+Let's evaluate the options:
+Option A is backwards: PostgreSQL enforces relational PK/FK constraints and 3NF, whereas Redis is a NoSQL key-value store.
+Option B is backwards: PostgreSQL durably persists financial records, whereas Redis uses a 30-second TTL for ephemeral GPS pings.
+Option C is exact: PostgreSQL guarantees strict ACID transactional integrity so payments are never lost or double-charged, while in-memory Redis Geo-Hash handles 10,000 GPS writes/sec and nearest-rider spatial queries in under 5 milliseconds!
+Option D is false: database choice on the backend cannot eliminate wireless radio latency on mobile devices.
+
+Therefore, the correct answer is C!
+
+To summarize this slide, remember this key takeaway: Polyglot persistence matches each data workload to its ideal storage engine—ACID relational databases for financial records and in-memory spatial caches for high-velocity telemetry.
+-->
+---
+<!-- _class: lead -->
+<!-- header: '5.7 AI-Augmented Software Design' -->
+
+# **5.7 AI-Augmented Software Design**
+
+> "AI will not replace software architects, but architects who use AI—while grounded in solid engineering principles—will replace those who do not."
+
+<!--
+Welcome to Section 5.7: AI-Augmented Software Design.
+
+Having completed all four stages of the Software Design Process—Stage 1 Architectural Design (5.3), Stage 2 Interface & Contract Specification (5.4), Stage 3 Component & OO Design (5.5), and Stage 4 Data & Persistence Design (5.6)—we now examine how Generative AI serves as a force-multiplying Copilot across every stage, and how human architects guard against AI over-engineering blind spots.
+
+To summarize this slide, remember this key takeaway: AI accelerates all four stages of software design, while human architects retain ultimate accountability for trade-offs and organizational reality.
+-->
+---
+## AI as a Copilot Across the 4 Stages of Software Design
+
+* **The "Copilot, Not Autopilot" Paradigm:**
+  - AI excels at **generating candidate models, drafting contracts, detecting smells, and writing schemas**; human architects own **context, budget, security, and accountability**.
+* **4 High-Impact Applications Mapped to Our 4 Design Stages:**
+  - **Stage 1 (Arch Design — 5.3)**: Simulating **ATAM failure scenarios** (*"What happens if Redis crashes during dinner surge?"*), drafting **ADRs**, and generating **UML Package/Deployment** PlantUML code.
+  - **Stage 2 (Interface Spec — 5.4)**: Generating **OpenAPI 3.1 / Protobuf** contracts and deriving **DbC Preconditions, Postconditions, and boundary test cases**.
+  - **Stage 3 (OO Design — 5.5)**: Scanning for God Classes / cyclic dependencies and refactoring `switch/case` blocks into **SOLID / GoF Strategy** patterns.
+  - **Stage 4 (Data Design — 5.6)**: Translating domain models into **3NF SQL DDL**, recommending composite **B-Tree indexes**, and spotting `N+1` query bottlenecks.
+
+<!--
+Notice how Generative AI acts as a specialized copilot across each of the four design stages we mastered in this chapter:
+
+In Stage 1 (Architectural Design), you can prompt an LLM to stress-test your architecture with ATAM scenarios, draft Markdown ADRs, and generate PlantUML/Mermaid code for Package and Deployment diagrams.
+In Stage 2 (Interface & Contract Spec), AI rapidly drafts OpenAPI 3.1 YAML or gRPC `.proto` files and suggests missing Design by Contract preconditions and idempotency keys.
+In Stage 3 (Component & OO Design), AI scans pull requests for SOLID violations (like SRP God Classes or DIP breaches) and refactors rigid conditionals into GoF patterns.
+In Stage 4 (Data Design), AI converts Logical ERDs into optimized PostgreSQL DDL, suggests composite indexes, and catches ORM N+1 query traps.
+
+To summarize this slide, remember this key takeaway: AI supercharges productivity across Architectural, Interface, Object-Oriented, and Data design when guided by structured engineering prompts.
 -->
 ---
 ## Human-in-the-Loop: Mitigating AI Blind Spots
@@ -1334,9 +2040,9 @@ To summarize this slide, remember this key takeaway: AI accelerates trade-off ex
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '5.7 Synthesis & Literature' -->
+<!-- header: '5.8 Synthesis & Literature' -->
 
-# **5.7 Conceptual Synthesis & References**
+# **5.8 Conceptual Synthesis & References**
 
 > "Simplicity is prerequisite for reliability."  
 > — *Edsger W. Dijkstra*
@@ -1344,64 +2050,61 @@ To summarize this slide, remember this key takeaway: AI accelerates trade-off ex
 <!--
 Congratulations on completing Chapter 5!
 
-From establishing design foundations in 5.1, to universal principles of cohesion and coupling in 5.2;
-from architecture derivation, UML, 4+1 views, and the C4 model in 5.3;
-from classic architectural patterns and ATAM trade-offs in 5.4;
-from the five SOLID principles in 5.5, to AI-augmented design in 5.6;
-we have traversed the full engineering spectrum from macro-architecture to micro-craftsmanship.
+In this final section (5.8), we synthesize our entire engineering journey across the 4-Stage Software Design Process, review our core self-assessment matrix, and explore classic literature.
 
-In this final section, we synthesize our learnings with a core self-assessment and explore classic literature.
-
-To summarize this slide, remember this key takeaway: Software design is an integrated engineering continuum connecting universal principles, macro architecture, and micro object-oriented craftsmanship.
+To summarize this slide, remember this key takeaway: Software design is an integrated 4-stage engineering continuum connecting universal principles, macro architecture, formal contracts, SOLID classes, and polyglot data systems.
 -->
 ---
 ## Core Curriculum Self-Assessment & Key Takeaways
 
-| Curriculum Dimension | Foundational Concept | Golden Architectural Heuristic |
+| Chapter Section | Design Stage & UML / Model | Golden Engineering Heuristic |
 | :--- | :--- | :--- |
-| **5.1 Design Spectrum** | 4 Design Levels | Catch architectural flaws early; design quality in from day one. |
-| **5.2 Universal Principles** | Cohesion & Coupling | **Maximize Cohesion, Minimize Coupling!** Limit blast radiuses. |
-| **5.3 Architecture Modeling**| 4+1 Views & C4 Model | Beyond patterns: derive architecture from ASRs; document in ADRs. |
-| **5.4 Classic Patterns** | 6 Structural Archetypes | There are no perfect solutions, only evaluated trade-offs (ATAM). |
-| **5.5 Detailed OO Design**| 5 SOLID Principles | Depend on abstractions (DIP); open for extension, closed for modification (OCP). |
-| **5.6 AI in Design** | Copilot Paradigm | AI evaluates code; human architects evaluate organizational context! |
+| **5.1 Design Process & Specs** | 4-Stage Workflow, **SDS & ADRs** | Catch flaws early ($1 vs. $100); document the *How* (SDS) and *Why* (ADR). |
+| **5.2 Universal Principles** | **Cohesion & Coupling** (UML Compare) | **Maximize Cohesion, Minimize Coupling!** Hide internal secrets. |
+| **5.3 Stage 1: Arch Design** | 6 Patterns, ATAM, **Package & Deploy UML** | Synthesize patterns; enforce acyclic imports & cloud fault isolation. |
+| **5.4 Stage 2: Interface Spec** | **Design by Contract (DbC) & Component UML** | Specify `Pre`, `Post` & `Invariant`; wire via Lollipop (`—○`) & Socket (`—(`). |
+| **5.5 Stage 3: OO Design** | GoF 23, **5 SOLID & Class UML** | Depend on abstractions (DIP); subclasses must honor DbC contracts (LSP). |
+| **5.6 Stage 4: Data Design** | **3-Level ERD**, 3NF & Polyglot Storage | Use ACID SQL for money, Redis TTL for live Geo-cache, Outbox for Kafka. |
+| **5.7 AI in Design** | Copilot Across Stages 1–4 | AI proposes options; human architects own trade-offs & context! |
 
 <!--
-Review this comprehensive Chapter 5 Synthesis Matrix.
+Review this comprehensive Chapter 5 Synthesis Matrix, which brings our entire end-to-end engineering story together!
 
-Notice how all the pieces interlock into a unified engineering discipline:
-Section 5.1 taught us the multi-tiered design spectrum.
-Section 5.2 gave us the universal laws of cohesion and coupling.
-Section 5.3 showed us how to derive architectures from ASRs and model them with 4+1 and C4.
-Section 5.4 armed us with classic patterns and trade-off analysis.
-Section 5.5 provided micro-level SOLID craftsmanship.
-And Section 5.6 guided us in harnessing AI as a disciplined copilot.
+Look at how every section locks into place:
+Section 5.1 established the 4-stage design process and SDS/ADR specifications.
+Section 5.2 gave us the universal laws of High Cohesion and Low Coupling.
+Section 5.3 (Stage 1: Architectural Design) covered classic patterns, ATAM trade-offs, and UML Package & Deployment diagrams.
+Section 5.4 (Stage 2: Interface & Contract Spec) taught us Design by Contract (DbC) and UML Component diagrams (Lollipop & Socket).
+Section 5.5 (Stage 3: Component & OO Design) covered GoF patterns and the 5 SOLID principles via UML Class diagrams.
+Section 5.6 (Stage 4: Data Design) taught us 3-level ERD modeling, 3NF normalization, and polyglot persistence (PostgreSQL + Redis + Kafka).
+And Section 5.7 showed us how to harness AI responsibly across all four stages.
 
-To summarize this slide, remember this key takeaway: Mastering software engineering requires fluently translating high-level business goals into decoupled architectures and clean, SOLID code.
+To summarize this slide, remember this key takeaway: Software design is an integrated 4-stage discipline connecting macro-architecture, formal interface contracts, SOLID class hierarchies, and polyglot data schemas.
 -->
 ---
 ## Classic Literature & Essential References
 
-* **Foundational Software Architecture Textbooks:**
+* **Foundational Software Architecture & Design Specifications:**
   - Len Bass, Paul Clements, Rick Kazman (SEI): *Software Architecture in Practice*, 4th Edition, Addison-Wesley.
-  - Philippe Kruchten: *"Architectural Blueprints—The 4+1 View Model of Software Architecture"*, IEEE Software, 1995.
-  - Simon Brown: *Software Architecture for Developers (The C4 Model)*, Leanpub.
-* **Classic Design Principles & Patterns Literature:**
+  - Bertrand Meyer: *Object-Oriented Software Construction* (Origin of Design by Contract — DbC), Prentice Hall.
+  - IEEE Std 1016: *IEEE Standard for Information Technology—Systems Design—Software Design Descriptions (SDD / SDS)*.
+  - Michael Nygard: *Documenting Architecture Decisions (ADR)*, 2011.
+* **Classic Design Principles, UML, Data & Patterns Literature:**
   - Robert C. Martin (Uncle Bob): *Clean Architecture: A Craftsman's Guide to Software Structure and Design*, Prentice Hall.
   - Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides: *Design Patterns: Elements of Reusable Object-Oriented Software (GoF)*, Addison-Wesley.
-  - Martin Fowler: *Patterns of Enterprise Application Architecture (P of EAA)*, Addison-Wesley.
-  - Michael Nygard: *Documenting Architecture Decisions (ADR)*, 2011.
+  - Martin Fowler: *UML Distilled* & *Patterns of Enterprise Application Architecture*, Addison-Wesley.
+  - Martin Kleppmann: *Designing Data-Intensive Applications (DDIA)*, O'Reilly Media.
 
 <!--
-To deepen your mastery of software architecture and design, consult these seminal foundational texts.
+To deepen your mastery of software architecture, contracts, object-oriented design, and data systems, consult these seminal texts:
 
-Read Bass, Clements, and Kazman for industry-standard architectural evaluation methods;
-Read Philippe Kruchten's classic 1995 paper on the 4+1 view model;
-Read Simon Brown for the modern C4 visualization framework;
-Read Uncle Bob's Clean Architecture for micro-level SOLID principles;
-And refer to Martin Fowler and the Gang of Four for enterprise and object-oriented patterns.
+Read Bass, Clements, and Kazman for architectural patterns and ATAM;
+Read Bertrand Meyer for the definitive foundation of Design by Contract (DbC);
+Read Uncle Bob's Clean Architecture and the Gang of Four for SOLID and design patterns;
+Read Martin Fowler's UML Distilled for crisp UML modeling;
+And read Martin Kleppmann's Designing Data-Intensive Applications for modern polyglot persistence, caching, and distributed data consistency.
 
-To summarize this slide, remember this key takeaway: These classic texts document the collective engineering wisdom of the software industry over the past half-century.
+To summarize this slide, remember this key takeaway: These classic texts document the collective engineering wisdom of the software industry across architecture, contracts, classes, and data.
 -->
 ---
 <!-- _class: lead -->

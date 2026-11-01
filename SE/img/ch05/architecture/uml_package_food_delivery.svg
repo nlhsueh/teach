@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .panel-header { fill: #0f172a; rx: 10; }
+      .title { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; fill: #ffffff; }
+      .subtitle { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12.5px; font-weight: 700; fill: #1e293b; }
+      .label { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 700; fill: #0f172a; }
+      .desc { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; fill: #475569; }
+      .mono { font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; font-weight: 700; fill: #0f172a; }
+      .stereo { font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; font-style: italic; font-weight: 700; fill: #1d4ed8; }
+      .pkg-tab-ui { fill: #93c5fd; stroke: #1d4ed8; stroke-width: 2; }
+      .pkg-body-ui { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 2; }
+      .pkg-tab-dom { fill: #6ee7b7; stroke: #047857; stroke-width: 2; }
+      .pkg-body-dom { fill: #ecfdf5; stroke: #047857; stroke-width: 2; }
+      .pkg-tab-inf { fill: #fcd34d; stroke: #b45309; stroke-width: 2; }
+      .pkg-body-inf { fill: #fffbeb; stroke: #b45309; stroke-width: 2; }
+      .pkg-tab-neutral { fill: #cbd5e1; stroke: #334155; stroke-width: 2; }
+      .pkg-body-neutral { fill: #f8fafc; stroke: #334155; stroke-width: 2; }
+      .dep-line { stroke: #1d4ed8; stroke-width: 2.2; stroke-dasharray: 6,4; fill: none; }
+      .bad-line { stroke: #dc2626; stroke-width: 2.2; stroke-dasharray: 5,4; fill: none; }
+    </style>
+    <marker id="open-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#1d4ed8" stroke-width="2" />
+    </marker>
+    <marker id="bad-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#dc2626" stroke-width="2" />
+    </marker>
+  </defs>
+
+  <!-- Outer Background (#f5f5f5 per Rule 6) -->
+  <rect width="1200" height="580" class="bg" />
+
+  <!-- ================= LEFT PANEL: UML PACKAGE DIAGRAM NOTATION ================= -->
+  <rect x="20" y="18" width="405" height="544" class="panel" />
+  <rect x="20" y="18" width="405" height="38" class="panel-header" />
+  <text x="222" y="42" text-anchor="middle" class="title">UML Package Diagram Notation Legend</text>
+
+  <!-- 1. Package Symbol -->
+  <rect x="36" y="70" width="373" height="112" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+  <text x="48" y="90" class="subtitle" fill="#0f172a">1. Package Symbol (Tabbed Folder)</text>
+  <!-- Mini Folder Icon -->
+  <path d="M 48 102 L 125 102 L 132 116 L 48 116 Z" class="pkg-tab-neutral" />
+  <rect x="48" y="116" width="140" height="54" class="pkg-body-neutral" />
+  <text x="86" y="113" text-anchor="middle" class="mono" font-size="10">domain.order</text>
+  <text x="58" y="136" class="mono" font-size="10.5">+ OrderService</text>
+  <text x="58" y="152" class="mono" font-size="10.5">+ IOrderRepo</text>
+  <text x="58" y="166" class="mono" font-size="10.5" fill="#64748b">- OrderValidator</text>
+  <!-- Explanation -->
+  <text x="202" y="114" class="desc">Groups logically cohesive classes,</text>
+  <text x="202" y="130" class="desc">interfaces &amp; sub-packages into a</text>
+  <text x="202" y="146" class="desc">single namespace boundary.</text>
+  <text x="202" y="166" class="desc" font-weight="700" fill="#0f172a">Name in top tab or body center.</text>
+
+  <!-- 2. Visibility Markers -->
+  <rect x="36" y="194" width="373" height="90" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+  <text x="48" y="214" class="subtitle" fill="#0f172a">2. Element Visibility Specifiers</text>
+  <rect x="48" y="226" width="165" height="46" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5" />
+  <text x="58" y="245" class="mono" fill="#047857">+ Public Element</text>
+  <text x="58" y="262" class="desc">Accessible by external packages</text>
+  <rect x="225" y="226" width="172" height="46" rx="6" fill="#fef2f2" stroke="#f87171" stroke-width="1.5" />
+  <text x="235" y="245" class="mono" fill="#b91c1c">- Private Element</text>
+  <text x="235" y="262" class="desc">Hidden internal implementation</text>
+
+  <!-- 3. Dependency & Stereotypes -->
+  <rect x="36" y="296" width="373" height="122" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+  <text x="48" y="316" class="subtitle" fill="#0f172a">3. Dependency Arrow &amp; Stereotypes</text>
+  <rect x="48" y="334" width="76" height="32" rx="4" class="pkg-body-neutral" />
+  <text x="86" y="354" text-anchor="middle" class="mono">ClientPkg</text>
+  <line x1="124" y1="350" x2="218" y2="350" class="dep-line" marker-end="url(#open-arrow)" />
+  <text x="171" y="342" text-anchor="middle" class="stereo">«import»</text>
+  <rect x="222" y="334" width="84" height="32" rx="4" class="pkg-body-neutral" />
+  <text x="264" y="354" text-anchor="middle" class="mono">SupplierPkg</text>
+  <text x="48" y="385" class="desc">• Dashed open arrow: changes in Supplier may break Client.</text>
+  <text x="48" y="401" class="desc">• <tspan class="stereo">«import»</tspan>: adds supplier public names to client namespace.</text>
+  <text x="48" y="415" class="desc">• <tspan class="stereo">«access»</tspan>: private import (does not re-export elements).</text>
+
+  <!-- 4. Architectural Governance Rule (ADP) -->
+  <rect x="36" y="430" width="373" height="116" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" />
+  <text x="48" y="450" class="subtitle" fill="#b91c1c">4. Acyclic Dependencies Principle (ADP)</text>
+  <text x="48" y="470" class="desc" fill="#7f1d1d">• Package dependency graph must be a <tspan font-weight="700">Directed Acyclic Graph</tspan>.</text>
+  <text x="48" y="487" class="desc" fill="#7f1d1d">• <tspan font-weight="700">UI &amp; Infrastructure</tspan> depend on <tspan font-weight="700">Domain</tspan> (never reverse!).</text>
+  <rect x="48" y="498" width="90" height="28" rx="4" fill="#ffffff" stroke="#dc2626" />
+  <text x="93" y="516" text-anchor="middle" class="mono" fill="#b91c1c">domain.order</text>
+  <line x1="138" y1="512" x2="232" y2="512" class="bad-line" marker-end="url(#bad-arrow)" />
+  <text x="185" y="505" text-anchor="middle" class="mono" fill="#dc2626" font-size="10">✘ FORBIDDEN</text>
+  <rect x="236" y="498" width="84" height="28" rx="4" fill="#ffffff" stroke="#dc2626" />
+  <text x="278" y="516" text-anchor="middle" class="mono" fill="#b91c1c">ui.mobile</text>
+  <text x="332" y="516" class="desc" fill="#b91c1c" font-weight="700">No Cycles!</text>
+
+  <!-- ================= RIGHT PANEL: FOOD DELIVERY PACKAGE DIAGRAM ================= -->
+  <rect x="442" y="18" width="738" height="544" class="panel" />
+  <rect x="442" y="18" width="738" height="38" class="panel-header" />
+  <text x="811" y="42" text-anchor="middle" class="title">Food Delivery System — UML Package Diagram (Module &amp; Dependency Structure)</text>
+
+  <!-- Outer Root Package Frame -->
+  <path d="M 462 68 L 680 68 L 692 88 L 462 88 Z" fill="#e2e8f0" stroke="#475569" stroke-width="2" />
+  <rect x="462" y="88" width="698" height="456" fill="#f8fafc" stroke="#475569" stroke-width="2" stroke-dasharray="8,4" />
+  <text x="572" y="83" text-anchor="middle" class="mono" font-size="12">com.fooddelivery.platform</text>
+
+  <!-- TIER 1: PRESENTATION PACKAGES -->
+  <text x="478" y="110" class="subtitle" fill="#1d4ed8">Presentation Tier Packages (Entrypoints)</text>
+
+  <!-- ui.customer_mobile -->
+  <path d="M 480 120 L 630 120 L 638 138 L 480 138 Z" class="pkg-tab-ui" />
+  <rect x="480" y="138" width="210" height="78" class="pkg-body-ui" />
+  <text x="555" y="133" text-anchor="middle" class="mono">ui.customer_app</text>
+  <text x="492" y="157" class="mono">+ OrderCheckoutController</text>
+  <text x="492" y="175" class="mono">+ LiveMapViewModel</text>
+  <text x="492" y="193" class="mono" fill="#64748b">- CartDtoMapper</text>
+
+  <!-- ui.rider_dispatch -->
+  <path d="M 730 120 L 870 120 L 878 138 L 730 138 Z" class="pkg-tab-ui" />
+  <rect x="730" y="138" width="210" height="78" class="pkg-body-ui" />
+  <text x="800" y="133" text-anchor="middle" class="mono">ui.rider_app</text>
+  <text x="742" y="157" class="mono">+ RiderPingController</text>
+  <text x="742" y="175" class="mono">+ DeliveryTaskPresenter</text>
+  <text x="742" y="193" class="mono" fill="#64748b">- GpsPayloadParser</text>
+
+  <!-- TIER 2: DOMAIN / APPLICATION PACKAGES (CORE BOUNDED CONTEXTS) -->
+  <text x="478" y="254" class="subtitle" fill="#047857">Core Domain &amp; Application Packages (Bounded Contexts — Pure Business Logic)</text>
+
+  <!-- domain.order -->
+  <path d="M 480 264 L 605 264 L 613 282 L 480 282 Z" class="pkg-tab-dom" />
+  <rect x="480" y="282" width="206" height="92" class="pkg-body-dom" />
+  <text x="542" y="277" text-anchor="middle" class="mono">domain.order</text>
+  <text x="492" y="302" class="mono">+ OrderApplicationService</text>
+  <text x="492" y="319" class="mono">+ OrderAggregate</text>
+  <text x="492" y="336" class="mono" fill="#047857">+ «interface» IOrderRepository</text>
+  <text x="492" y="353" class="mono" fill="#64748b">- SurgePricingPolicy</text>
+
+  <!-- domain.dispatch -->
+  <path d="M 716 264 L 856 264 L 864 282 L 716 282 Z" class="pkg-tab-dom" />
+  <rect x="716" y="282" width="206" height="92" class="pkg-body-dom" />
+  <text x="786" y="277" text-anchor="middle" class="mono">domain.dispatch</text>
+  <text x="728" y="302" class="mono">+ DispatchMatcherService</text>
+  <text x="728" y="319" class="mono" fill="#047857">+ «interface» IRiderGeoCache</text>
+  <text x="728" y="336" class="mono" fill="#047857">+ «interface» IEventPublisher</text>
+  <text x="728" y="353" class="mono" fill="#64748b">- HaversineDistanceCalc</text>
+
+  <!-- domain.payment -->
+  <path d="M 946 264 L 1080 264 L 1088 282 L 946 282 Z" class="pkg-tab-dom" />
+  <rect x="946" y="282" width="196" height="92" class="pkg-body-dom" />
+  <text x="1013" y="277" text-anchor="middle" class="mono">domain.payment</text>
+  <text x="958" y="302" class="mono">+ PaymentOrchestrator</text>
+  <text x="958" y="319" class="mono" fill="#047857">+ «interface» IPaymentGateway</text>
+  <text x="958" y="336" class="mono">+ PaymentReceipt</text>
+  <text x="958" y="353" class="mono" fill="#64748b">- FraudScoreRule</text>
+
+  <!-- TIER 3: INFRASTRUCTURE PACKAGES -->
+  <text x="478" y="414" class="subtitle" fill="#b45309">Infrastructure &amp; Adapter Packages (Database, Redis, Kafka, External SDKs)</text>
+
+  <!-- infra.persistence -->
+  <path d="M 480 424 L 625 424 L 633 442 L 480 442 Z" class="pkg-tab-inf" />
+  <rect x="480" y="442" width="206" height="82" class="pkg-body-inf" />
+  <text x="552" y="437" text-anchor="middle" class="mono">infra.persistence</text>
+  <text x="492" y="462" class="mono">+ PostgresOrderRepoImpl</text>
+  <text x="492" y="480" class="mono" fill="#64748b">- JpaOrderEntity</text>
+  <text x="492" y="498" class="mono" fill="#64748b">- HikariConnectionPool</text>
+
+  <!-- infra.redis_kafka -->
+  <path d="M 716 424 L 866 424 L 874 442 L 716 442 Z" class="pkg-tab-inf" />
+  <rect x="716" y="442" width="206" height="82" class="pkg-body-inf" />
+  <text x="791" y="437" text-anchor="middle" class="mono">infra.messaging_geo</text>
+  <text x="728" y="462" class="mono">+ RedisRiderGeoAdapter</text>
+  <text x="728" y="480" class="mono">+ KafkaOrderEventProducer</text>
+  <text x="728" y="498" class="mono" fill="#64748b">- AvroSerializer</text>
+
+  <!-- infra.stripe_sdk -->
+  <path d="M 946 424 L 1086 424 L 1094 442 L 946 442 Z" class="pkg-tab-inf" />
+  <rect x="946" y="442" width="196" height="82" class="pkg-body-inf" />
+  <text x="1016" y="437" text-anchor="middle" class="mono">infra.payment_sdk</text>
+  <text x="958" y="462" class="mono">+ StripeGatewayAdapter</text>
+  <text x="958" y="480" class="mono">+ ApplePayAdapter</text>
+  <text x="958" y="498" class="mono" fill="#64748b">- WebhookSignatureVerifier</text>
+
+  <!-- DEPENDENCY ARROWS (ALL POINTING INWARD TO DOMAIN!) -->
+  <!-- UI -> Domain -->
+  <line x1="580" y1="216" x2="580" y2="262" class="dep-line" marker-end="url(#open-arrow)" />
+  <text x="615" y="242" text-anchor="middle" class="stereo">«import»</text>
+
+  <line x1="825" y1="216" x2="825" y2="262" class="dep-line" marker-end="url(#open-arrow)" />
+  <text x="860" y="242" text-anchor="middle" class="stereo">«import»</text>
+
+  <!-- Domain Order -> Domain Dispatch & Payment -->
+  <line x1="686" y1="312" x2="714" y2="312" class="dep-line" marker-end="url(#open-arrow)" />
+  <text x="700" y="302" text-anchor="middle" class="stereo" font-size="9.5">«import»</text>
+
+  <path d="M 650 282 Q 800 245 955 280" class="dep-line" marker-end="url(#open-arrow)" />
+  <text x="802" y="258" text-anchor="middle" class="stereo" font-size="10">«import»</text>
+
+  <!-- Infra -> Domain (Dependency Inversion! Infra imports Domain Interfaces) -->
+  <line x1="580" y1="424" x2="580" y2="376" class="dep-line" marker-end="url(#open-arrow)" />
+  <text x="628" y="400" text-anchor="middle" class="stereo">«import» (DIP)</text>
+
+  <line x1="818" y1="424" x2="818" y2="376" class="dep-line" marker-end="url(#open-arrow)" />
+  <text x="865" y="400" text-anchor="middle" class="stereo">«import» (DIP)</text>
+
+  <line x1="1044" y1="424" x2="1044" y2="376" class="dep-line" marker-end="url(#open-arrow)" />
+  <text x="1090" y="400" text-anchor="middle" class="stereo">«import» (DIP)</text>
+
+  <!-- Callout Badge Top Right -->
+  <rect x="960" y="118" width="182" height="96" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="1.8" />
+  <text x="1051" y="138" text-anchor="middle" class="subtitle" fill="#047857">Key Design Insight</text>
+  <text x="970" y="158" class="desc" fill="#065f46">Both <tspan font-weight="700">ui.*</tspan> and <tspan font-weight="700">infra.*</tspan> arrows</text>
+  <text x="970" y="174" class="desc" fill="#065f46">point into <tspan font-weight="700">domain.*</tspan>!</text>
+  <text x="970" y="192" class="desc" fill="#065f46">Domain has <tspan font-weight="700">0 dependencies</tspan></text>
+  <text x="970" y="206" class="desc" fill="#065f46">on SQL, Redis, or Kafka.</text>
+</svg>
+

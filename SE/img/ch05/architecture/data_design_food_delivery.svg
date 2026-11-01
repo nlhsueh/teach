@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 21px; font-weight: 800; fill: #0f172a; text-anchor: middle; }
+      .subtitle { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 12.5px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .panel-title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; font-weight: 800; fill: #0f172a; }
+      .lbl-b { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 800; }
+      .lbl-s { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 10.5px; font-weight: 600; fill: #334155; }
+      .mono { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 10px; font-weight: 700; }
+    </style>
+    <marker id="arr-down" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arr-sync" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0d9488" />
+    </marker>
+  </defs>
+
+  <!-- Slide-matching background -->
+  <rect width="1200" height="620" class="bg" />
+
+  <!-- Header -->
+  <text x="600" y="30" class="title">Stage 4: Data &amp; Persistence Design — 3-Level Modeling, ERD &amp; Polyglot Storage</text>
+  <text x="600" y="50" class="subtitle">Designing Relational Schemas (ACID), Ephemeral Spatial Caches (TTL), and Event Logs for the Food Delivery System</text>
+
+  <!-- ================================================================= -->
+  <!-- LEFT PANEL: 3-LEVEL DATA MODELING & ERD NOTATION                  -->
+  <!-- ================================================================= -->
+  <rect x="20" y="68" width="420" height="534" class="panel" />
+  <text x="40" y="94" class="panel-title">1. Three-Level Data Modeling Pipeline</text>
+
+  <!-- Level 1: Conceptual -->
+  <rect x="38" y="110" width="384" height="90" fill="#eff6ff" stroke="#2563eb" stroke-width="2" rx="8" />
+  <rect x="38" y="110" width="384" height="24" fill="#2563eb" rx="6" />
+  <text x="230" y="126" class="mono" fill="#ffffff" text-anchor="middle">LEVEL 1: CONCEPTUAL DATA MODEL (Domain View)</text>
+  <text x="50" y="150" class="lbl-s">• High-level business entities &amp; relationships (technology-agnostic).</text>
+  <text x="50" y="168" class="mono" fill="#1d4ed8">[Customer] 1 ──── places ──── 0..* [Order] 1 ──── contains ──── 1..* [Item]</text>
+  <text x="50" y="186" class="lbl-s" fill="#475569">Audience: Domain Experts, Product Owners &amp; Architects.</text>
+
+  <line x1="230" y1="200" x2="230" y2="218" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arr-down)" />
+
+  <!-- Level 2: Logical ERD -->
+  <rect x="38" y="222" width="384" height="102" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2" rx="8" />
+  <rect x="38" y="222" width="384" height="24" fill="#7c3aed" rx="6" />
+  <text x="230" y="238" class="mono" fill="#ffffff" text-anchor="middle">LEVEL 2: LOGICAL ERD MODEL (Schema Structure)</text>
+  <text x="50" y="262" class="lbl-s">• Defines attributes, data types, Primary Keys (PK), Foreign Keys (FK).</text>
+  <text x="50" y="280" class="lbl-s">• Applies Normalization (1NF → 2NF → 3NF) to eliminate write anomalies.</text>
+  <text x="50" y="298" class="mono" fill="#6d28d9">«PK» order_id: UUID  |  «FK» customer_id: UUID  |  status: VARCHAR</text>
+  <text x="50" y="314" class="lbl-s" fill="#475569">Audience: Software Engineers &amp; Data Architects.</text>
+
+  <line x1="230" y1="324" x2="230" y2="342" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arr-down)" />
+
+  <!-- Level 3: Physical Schema -->
+  <rect x="38" y="346" width="384" height="105" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" rx="8" />
+  <rect x="38" y="346" width="384" height="24" fill="#16a34a" rx="6" />
+  <text x="230" y="362" class="mono" fill="#ffffff" text-anchor="middle">LEVEL 3: PHYSICAL DATA SCHEMA (DBMS Optimization)</text>
+  <text x="50" y="386" class="lbl-s">• SQL DDL, B-Tree / Geo Indexes, Table Partitioning &amp; Sharding keys.</text>
+  <text x="50" y="404" class="lbl-s">• Read Replicas, Redis Cache-Aside TTLs, and Kafka topic retention.</text>
+  <text x="50" y="422" class="mono" fill="#15803d">CREATE INDEX idx_orders_cust_created ON orders(customer_id, created_at);</text>
+  <text x="50" y="438" class="lbl-s" fill="#475569">Audience: DBAs, Backend Engineers &amp; SREs.</text>
+
+  <!-- UML / ERD Multiplicity Legend -->
+  <rect x="38" y="465" width="384" height="122" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" rx="8" />
+  <text x="50" y="485" class="lbl-b" fill="#0f172a">UML Data / ERD Notation Key:</text>
+  <text x="50" y="505" class="mono" fill="#b45309">«PK»</text>
+  <text x="90" y="505" class="lbl-s">Primary Key (Unique row identifier, e.g., order_id)</text>
+  <text x="50" y="523" class="mono" fill="#6d28d9">«FK»</text>
+  <text x="90" y="523" class="lbl-s">Foreign Key (References PK of parent entity table)</text>
+  <text x="50" y="541" class="mono" fill="#1d4ed8">1 ──── 0..*</text>
+  <text x="135" y="541" class="lbl-s">One-to-Zero-or-Many (A Customer has 0 or many Orders)</text>
+  <text x="50" y="559" class="mono" fill="#15803d">1 ◆─── 1..*</text>
+  <text x="135" y="559" class="lbl-s">Composition: Order owns 1..* OrderItems (lifecycle bound)</text>
+  <text x="50" y="577" class="mono" fill="#0e7490">«idx»</text>
+  <text x="90" y="577" class="lbl-s">Database Index accelerating high-frequency WHERE / JOIN queries</text>
+
+  <!-- ================================================================= -->
+  <!-- RIGHT PANEL: FOOD DELIVERY ERD & POLYGLOT PERSISTENCE             -->
+  <!-- ================================================================= -->
+  <rect x="458" y="68" width="722" height="534" class="panel" />
+  <text x="478" y="94" class="panel-title">2. Food Delivery System: Logical ERD &amp; Polyglot Persistence Architecture</text>
+
+  <!-- TIER A: RELATIONAL DATABASE (POSTGRESQL ACID) -->
+  <rect x="476" y="108" width="686" height="275" fill="#eff6ff" stroke="#2563eb" stroke-width="2" rx="10" />
+  <rect x="476" y="108" width="686" height="28" fill="#1d4ed8" rx="8" />
+  <text x="819" y="127" class="lbl-b" fill="#ffffff" text-anchor="middle">A. Relational OLTP Store (PostgreSQL — Strict ACID Transactions &amp; 3NF Normalization)</text>
+
+  <!-- Entity 1: customers -->
+  <rect x="492" y="148" width="185" height="105" fill="#ffffff" stroke="#1e40af" stroke-width="2" rx="6" />
+  <rect x="492" y="148" width="185" height="24" fill="#dbeafe" rx="4" />
+  <text x="584" y="164" class="lbl-b" fill="#1e3a8a" text-anchor="middle">«table» customers</text>
+  <text x="500" y="184" class="mono" fill="#b45309">+ «PK» customer_id: UUID</text>
+  <text x="500" y="200" class="mono" fill="#334155">+ full_name: VARCHAR(80)</text>
+  <text x="500" y="216" class="mono" fill="#334155">+ phone_hash: CHAR(64)</text>
+  <text x="500" y="232" class="mono" fill="#0e7490">+ «idx» email: VARCHAR</text>
+
+  <!-- Entity 2: restaurants -->
+  <rect x="492" y="268" width="185" height="102" fill="#ffffff" stroke="#1e40af" stroke-width="2" rx="6" />
+  <rect x="492" y="268" width="185" height="24" fill="#dbeafe" rx="4" />
+  <text x="584" y="284" class="lbl-b" fill="#1e3a8a" text-anchor="middle">«table» restaurants</text>
+  <text x="500" y="304" class="mono" fill="#b45309">+ «PK» restaurant_id: UUID</text>
+  <text x="500" y="320" class="mono" fill="#334155">+ name: VARCHAR(100)</text>
+  <text x="500" y="336" class="mono" fill="#334155">+ lat_lng: POINT</text>
+  <text x="500" y="352" class="mono" fill="#334155">+ is_open: BOOLEAN</text>
+
+  <!-- Entity 3: orders (Central Aggregate Root) -->
+  <rect x="728" y="148" width="205" height="145" fill="#ffffff" stroke="#1d4ed8" stroke-width="2.5" rx="6" />
+  <rect x="728" y="148" width="205" height="24" fill="#2563eb" rx="4" />
+  <text x="830" y="164" class="lbl-b" fill="#ffffff" text-anchor="middle">«table» orders (Root)</text>
+  <text x="736" y="184" class="mono" fill="#b45309">+ «PK» order_id: UUID</text>
+  <text x="736" y="200" class="mono" fill="#6d28d9">+ «FK» customer_id: UUID</text>
+  <text x="736" y="216" class="mono" fill="#6d28d9">+ «FK» restaurant_id: UUID</text>
+  <text x="736" y="232" class="mono" fill="#334155">+ status: OrderStatusEnum</text>
+  <text x="736" y="248" class="mono" fill="#334155">+ total_cents: INT (&gt;= 0)</text>
+  <text x="736" y="264" class="mono" fill="#0e7490">+ «idx» created_at: TIMESTAMPTZ</text>
+  <text x="736" y="280" class="mono" fill="#15803d">Partitioned monthly by created_at</text>
+
+  <!-- Entity 4: order_items -->
+  <rect x="975" y="148" width="175" height="105" fill="#ffffff" stroke="#1e40af" stroke-width="2" rx="6" />
+  <rect x="975" y="148" width="175" height="24" fill="#dbeafe" rx="4" />
+  <text x="1062" y="164" class="lbl-b" fill="#1e3a8a" text-anchor="middle">«table» order_items</text>
+  <text x="983" y="184" class="mono" fill="#b45309">+ «PK,FK» order_id: UUID</text>
+  <text x="983" y="200" class="mono" fill="#b45309">+ «PK» item_seq: SMALLINT</text>
+  <text x="983" y="216" class="mono" fill="#334155">+ menu_item_id: UUID</text>
+  <text x="983" y="232" class="mono" fill="#334155">+ qty: INT, unit_cents: INT</text>
+
+  <!-- Entity 5: payment_transactions -->
+  <rect x="975" y="268" width="175" height="102" fill="#ffffff" stroke="#1e40af" stroke-width="2" rx="6" />
+  <rect x="975" y="268" width="175" height="24" fill="#dbeafe" rx="4" />
+  <text x="1062" y="284" class="lbl-b" fill="#1e3a8a" text-anchor="middle">«table» payments</text>
+  <text x="983" y="304" class="mono" fill="#b45309">+ «PK» payment_id: UUID</text>
+  <text x="983" y="320" class="mono" fill="#6d28d9">+ «FK,UQ» order_id: UUID</text>
+  <text x="983" y="336" class="mono" fill="#0e7490">+ «UQ» idempotency_key</text>
+  <text x="983" y="352" class="mono" fill="#334155">+ stripe_tx_ref: VARCHAR</text>
+
+  <!-- ERD Relationship Lines & Multiplicities -->
+  <!-- customers 1 --- 0..* orders -->
+  <line x1="677" y1="195" x2="728" y2="195" stroke="#1d4ed8" stroke-width="2" />
+  <text x="684" y="190" class="mono" fill="#1e3a8a">1</text>
+  <text x="705" y="190" class="mono" fill="#1e3a8a">0..*</text>
+
+  <!-- restaurants 1 --- 0..* orders -->
+  <path d="M 677 315 L 702 315 L 702 225 L 728 225" fill="none" stroke="#1d4ed8" stroke-width="2" />
+  <text x="684" y="310" class="mono" fill="#1e3a8a">1</text>
+  <text x="706" y="220" class="mono" fill="#1e3a8a">0..*</text>
+
+  <!-- orders 1 ◆--- 1..* order_items -->
+  <line x1="933" y1="195" x2="975" y2="195" stroke="#1d4ed8" stroke-width="2" />
+  <polygon points="933,195 940,190 947,195 940,200" fill="#1d4ed8" />
+  <text x="953" y="190" class="mono" fill="#1e3a8a">1..*</text>
+
+  <!-- orders 1 --- 0..1 payments -->
+  <path d="M 933 255 L 954 255 L 954 315 L 975 315" fill="none" stroke="#1d4ed8" stroke-width="2" />
+  <text x="937" y="250" class="mono" fill="#1e3a8a">1</text>
+  <text x="952" y="330" class="mono" fill="#1e3a8a">0..1</text>
+
+  <!-- Bottom note inside Relational Box -->
+  <text x="730" y="355" class="lbl-s" fill="#1e3a8a">★ Why 3NF + ACID here? Financial orders &amp; payments cannot tolerate lost updates or double charging!</text>
+
+  <!-- TIER B: IN-MEMORY SPATIAL CACHE (REDIS) -->
+  <rect x="476" y="396" width="335" height="192" fill="#fffbeb" stroke="#d97706" stroke-width="2" rx="10" />
+  <rect x="476" y="396" width="335" height="28" fill="#d97706" rx="8" />
+  <text x="643" y="415" class="lbl-b" fill="#ffffff" text-anchor="middle">B. In-Memory Spatial Store (Redis Cluster)</text>
+  <text x="488" y="440" class="mono" fill="#92400e">Key Pattern:  rider:geo:{city_id}</text>
+  <text x="488" y="458" class="mono" fill="#78350f">Structure:    Sorted Set (64-bit GeoHash)</text>
+  <text x="488" y="476" class="mono" fill="#78350f">Value:        {rider_id, lat, lng, status}</text>
+  <text x="488" y="494" class="mono" fill="#b45309">Expiration:   TTL = 30 seconds (Auto-Evict)</text>
+  <line x1="488" y1="504" x2="798" y2="504" stroke="#fde68a" stroke-width="1.5" />
+  <text x="488" y="522" class="lbl-b" fill="#92400e">Why Not SQL for Rider GPS?</text>
+  <text x="488" y="540" class="lbl-s">• 50k riders ping every 5s (10,000 writes/sec).</text>
+  <text x="488" y="556" class="lbl-s">• Redis GEORADIUS finds nearest riders in &lt; 5ms</text>
+  <text x="488" y="572" class="lbl-s">  without B-Tree index lock contention!</text>
+
+  <!-- TIER C: APPEND-ONLY EVENT LOG (KAFKA) -->
+  <rect x="827" y="396" width="335" height="192" fill="#f0fdfa" stroke="#0d9488" stroke-width="2" rx="10" />
+  <rect x="827" y="396" width="335" height="28" fill="#0d9488" rx="8" />
+  <text x="994" y="415" class="lbl-b" fill="#ffffff" text-anchor="middle">C. Immutable Event Log (Apache Kafka)</text>
+  <text x="839" y="440" class="mono" fill="#0f766e">Topic:         food.orders.domain-events</text>
+  <text x="839" y="458" class="mono" fill="#115e59">Partition Key: order_id (Strict ordering)</text>
+  <text x="839" y="476" class="mono" fill="#115e59">Schema:        Avro / Protobuf (Versioned)</text>
+  <text x="839" y="494" class="mono" fill="#0d9488">Consistency:   Transactional Outbox + Saga</text>
+  <line x1="839" y1="504" x2="1149" y2="504" stroke="#99f6e4" stroke-width="1.5" />
+  <text x="839" y="522" class="lbl-b" fill="#0f766e">Polyglot Data Synchronization:</text>
+  <text x="839" y="540" class="lbl-s">• Order commits to PostgreSQL → Outbox emits</text>
+  <text x="839" y="556" class="lbl-s">  event to Kafka → Dispatch, Analytics &amp; Read</text>
+  <text x="839" y="572" class="lbl-s">  Projections consume asynchronously (BASE).</text>
+</svg>
+

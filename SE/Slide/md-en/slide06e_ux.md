@@ -368,6 +368,7 @@ To summarize this slide, remember this key takeaway: The five design thinking st
 -->
 ---
 ### Concept Check Question 1: Taiwan Mask App Usability Audit
+<!-- id: ase-ch06-ccq1 -->
 
 <div class="ccq-columns">
   <div class="ccq-text">
@@ -381,7 +382,8 @@ During nationwide mask rationing, Taiwan's NHI app originally presented 20 ident
 
   </div>
   <div class="ccq-logo">
-    <img src="../../img/ux/mask_order_app_before.png" alt="Mask App Before Redesign" style="max-height: 270px; width: auto; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);" />
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq1" target="_blank"><img src="../../img/ch06/ase-ch06-ccq1.png" alt="QR Code" /></a>
+    <br><img src="../../img/ux/mask_order_app_before.png" alt="Mask App Before Redesign" style="max-height: 270px; width: auto; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);" />
   </div>
 </div>
 
@@ -843,6 +845,7 @@ Learning happens organically through doing, not passive reading.
 To summarize this slide, remember this key takeaway: Embed contextual tooltips and interactive walkthroughs directly within user tasks to enable progressive learning.
 -->
 ---
+<!-- id: ase-ch06-ccq2 -->
 ## Concept Check Question 2: Usability Heuristics
 
 When designing an e-commerce checkout flow, a team replaces raw text date inputs with an interactive calendar picker and automatically disables the "Place Order" button until all required shipping addresses pass validation. Which Nielsen Heuristic is primarily demonstrated?
@@ -861,6 +864,11 @@ The correct answer is Option B: NS05 Error Prevention. Nielsen's NS05 states tha
 
 To summarize this slide, remember this key takeaway: Proactive input constraints and disabled invalid actions exemplify heuristic NS05: Error Prevention.
 -->
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq2)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq2" target="_blank"><img src="../../img/ch06/ase-ch06-ccq2.png" width="120"></a>
+
 ---
 <!-- _class: lead -->
 <!-- header: '6.3 AI for UX (AI4UX)' -->
@@ -1174,6 +1182,7 @@ Transparency transforms a mysterious AI black box into a verifiable, trustworthy
 To summarize this slide, remember this key takeaway: Interactive citation pills and grounded reference popovers provide the transparency required for calibrated user trust.
 -->
 ---
+<!-- id: ase-ch06-ccq3 -->
 ## Concept Check Question 3: UX for AI Design
 
 When designing an autonomous AI coding assistant that can inspect directories, edit source files, and execute shell commands, which design pattern best fulfills **Error Prevention (NS05)** and **User Agency (NS03)**?
@@ -1192,6 +1201,11 @@ The correct answer is Option B: Requiring explicit human-in-the-loop review and 
 
 To summarize this slide, remember this key takeaway: Human-in-the-loop confirmation guardrails protect software integrity against autonomous agent errors.
 -->
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq3)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq3" target="_blank"><img src="../../img/ch06/ase-ch06-ccq3.png" width="120"></a>
+
 ---
 <!-- _class: lead -->
 <!-- header: '6.5 Evaluation & Synthesis' -->

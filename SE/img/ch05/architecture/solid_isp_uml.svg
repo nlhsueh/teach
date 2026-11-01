@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .panel-bad { fill: #ffffff; stroke: #ef4444; stroke-width: 2.5; rx: 12; }
+      .panel-good { fill: #ffffff; stroke: #10b981; stroke-width: 2.5; rx: 12; }
+      .hdr-bad { fill: #dc2626; rx: 10; }
+      .hdr-good { fill: #059669; rx: 10; }
+      .title { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; fill: #ffffff; }
+      .uml-box-bad { fill: #fef2f2; stroke: #dc2626; stroke-width: 2.2; }
+      .uml-hdr-bad { fill: #fee2e2; stroke: #dc2626; stroke-width: 2.2; }
+      .uml-box-good { fill: #ecfdf5; stroke: #059669; stroke-width: 2.2; }
+      .uml-hdr-good { fill: #d1fae5; stroke: #059669; stroke-width: 2.2; }
+      .uml-box-iface { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 2.2; }
+      .uml-hdr-iface { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2.2; }
+      .cls-name { font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; font-weight: 800; fill: #0f172a; }
+      .mono { font-family: 'Consolas', 'Courier New', monospace; font-size: 10.8px; fill: #1e293b; }
+      .stereo { font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; font-style: italic; font-weight: 700; fill: #1d4ed8; }
+      .desc { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11.5px; fill: #334155; }
+      .actor-text { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11.5px; font-weight: 700; }
+    </style>
+    <marker id="realize-red" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <polygon points="1,1 11,6 1,11" fill="#ffffff" stroke="#dc2626" stroke-width="2" />
+    </marker>
+    <marker id="realize-green" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <polygon points="1,1 11,6 1,11" fill="#ffffff" stroke="#059669" stroke-width="2" />
+    </marker>
+  </defs>
+
+  <!-- Outer Background (#f5f5f5 per Rule 6) -->
+  <rect width="1200" height="580" class="bg" />
+
+  <!-- ================= LEFT PANEL: VIOLATING ISP ================= -->
+  <rect x="20" y="18" width="568" height="544" class="panel-bad" />
+  <rect x="20" y="18" width="568" height="40" class="hdr-bad" />
+  <text x="304" y="44" text-anchor="middle" class="title">✘ Violating ISP: Bloated "Fat" Interface Pollutes Clients</text>
+
+  <!-- Bloated Fat Interface at Top -->
+  <rect x="134" y="74" width="340" height="128" class="uml-box-bad" />
+  <rect x="134" y="74" width="340" height="44" class="uml-hdr-bad" />
+  <text x="304" y="92" text-anchor="middle" class="stereo" fill="#991b1b">«interface» (Fat Interface)</text>
+  <text x="304" y="110" text-anchor="middle" class="cls-name" fill="#991b1b">IMultiFunctionDevice</text>
+  <text x="150" y="140" class="mono">+ printOrderTicket(doc: Doc): void</text>
+  <text x="150" y="160" class="mono">+ scanInvoicePdf(doc: Doc): Pdf</text>
+  <text x="150" y="180" class="mono">+ sendVendorFax(doc: Doc, phone: Tel): void</text>
+
+  <!-- Realization Arrows pointing UP to Fat Interface -->
+  <path d="M 148 264 L 148 228 L 240 228 L 240 204" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="6,4" fill="none" marker-end="url(#realize-red)" />
+  <path d="M 426 264 L 426 228 L 360 228 L 360 204" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="6,4" fill="none" marker-end="url(#realize-red)" />
+
+  <!-- Implementer 1: Full Office MFP -->
+  <rect x="36" y="266" width="224" height="122" fill="#f8fafc" stroke="#475569" stroke-width="2" />
+  <rect x="36" y="266" width="224" height="32" fill="#e2e8f0" stroke="#475569" stroke-width="2" />
+  <text x="148" y="287" text-anchor="middle" class="cls-name">CorporateOfficeMFP</text>
+  <text x="48" y="318" class="mono">+ printOrderTicket() ✓</text>
+  <text x="48" y="340" class="mono">+ scanInvoicePdf()   ✓</text>
+  <text x="48" y="362" class="mono">+ sendVendorFax()    ✓</text>
+
+  <!-- Implementer 2: Simple Kitchen Receipt Printer (Forced to implement unused methods!) -->
+  <rect x="280" y="266" width="292" height="122" class="uml-box-bad" />
+  <rect x="280" y="266" width="292" height="32" class="uml-hdr-bad" />
+  <text x="426" y="287" text-anchor="middle" class="cls-name" fill="#991b1b">KitchenThermalPrinter</text>
+  <text x="290" y="318" class="mono" fill="#047857">+ printOrderTicket() { /* OK */ }</text>
+  <text x="290" y="342" class="mono" fill="#dc2626" font-weight="700">+ scanInvoicePdf() { throw Error! }</text>
+  <text x="290" y="366" class="mono" fill="#dc2626" font-weight="700">+ sendVendorFax()  { throw Error! }</text>
+
+  <!-- Bottom Consequence Box -->
+  <rect x="38" y="408" width="530" height="134" rx="8" fill="#fef2f2" stroke="#f87171" stroke-width="1.8" />
+  <text x="54" y="432" class="actor-text" fill="#b91c1c">Why This Violates Interface Segregation Principle (ISP):</text>
+  <text x="54" y="456" class="desc" fill="#7f1d1d">• <tspan class="mono">KitchenThermalPrinter</tspan> only prints restaurant receipts, yet is forced</text>
+  <text x="54" y="474" class="desc" fill="#7f1d1d">  to implement dummy <tspan class="mono">scan</tspan> and <tspan class="mono">fax</tspan> methods that throw runtime exceptions!</text>
+  <text x="54" y="496" class="desc" fill="#7f1d1d">• <tspan font-weight="700">Phantom Coupling</tspan>: If the <tspan class="mono">Tel</tspan> parameter in <tspan class="mono">sendVendorFax()</tspan> changes,</text>
+  <text x="54" y="514" class="desc" fill="#7f1d1d">  <tspan class="mono">KitchenThermalPrinter</tspan> is forced to recompile &amp; redeploy for no reason!</text>
+
+  <!-- ================= RIGHT PANEL: FOLLOWING ISP ================= -->
+  <rect x="612" y="18" width="568" height="544" class="panel-good" />
+  <rect x="612" y="18" width="568" height="40" class="hdr-good" />
+  <text x="896" y="44" text-anchor="middle" class="title">✓ Following ISP: Lean, Role-Specific Interfaces</text>
+
+  <!-- 3 Focused Role Interfaces at Top -->
+  <!-- Role Interface 1: IPrinter -->
+  <rect x="628" y="80" width="166" height="92" class="uml-box-iface" />
+  <rect x="628" y="80" width="166" height="40" class="uml-hdr-iface" />
+  <text x="711" y="96" text-anchor="middle" class="stereo">«interface»</text>
+  <text x="711" y="113" text-anchor="middle" class="cls-name" fill="#1e40af">IPrintable</text>
+  <text x="638" y="148" class="mono">+ printTicket(): void</text>
+
+  <!-- Role Interface 2: IScanner -->
+  <rect x="812" y="80" width="166" height="92" class="uml-box-iface" />
+  <rect x="812" y="80" width="166" height="40" class="uml-hdr-iface" />
+  <text x="895" y="96" text-anchor="middle" class="stereo">«interface»</text>
+  <text x="895" y="113" text-anchor="middle" class="cls-name" fill="#1e40af">IScannable</text>
+  <text x="822" y="148" class="mono">+ scanPdf(): Pdf</text>
+
+  <!-- Role Interface 3: IFaxable -->
+  <rect x="996" y="80" width="166" height="92" class="uml-box-iface" />
+  <rect x="996" y="80" width="166" height="40" class="uml-hdr-iface" />
+  <text x="1079" y="96" text-anchor="middle" class="stereo">«interface»</text>
+  <text x="1079" y="113" text-anchor="middle" class="cls-name" fill="#1e40af">IFaxable</text>
+  <text x="1006" y="148" class="mono">+ sendFax(): void</text>
+
+  <!-- Realization Arrows -->
+  <!-- KitchenThermalPrinter ONLY realizes IPrintable -->
+  <line x1="711" y1="266" x2="711" y2="174" stroke="#059669" stroke-width="2.4" stroke-dasharray="6,4" marker-end="url(#realize-green)" />
+
+  <!-- CorporateOfficeMFP realizes all 3 -->
+  <path d="M 960 266 L 960 222 L 745 222 L 745 174" stroke="#059669" stroke-width="2.2" stroke-dasharray="6,4" fill="none" marker-end="url(#realize-green)" />
+  <line x1="990" y1="266" x2="895" y2="174" stroke="#059669" stroke-width="2.2" stroke-dasharray="6,4" marker-end="url(#realize-green)" />
+  <line x1="1079" y1="266" x2="1079" y2="174" stroke="#059669" stroke-width="2.2" stroke-dasharray="6,4" marker-end="url(#realize-green)" />
+
+  <!-- Clean Class 1: KitchenThermalPrinter -->
+  <rect x="630" y="266" width="230" height="114" class="uml-box-good" />
+  <rect x="630" y="266" width="230" height="32" class="uml-hdr-good" />
+  <text x="745" y="287" text-anchor="middle" class="cls-name" fill="#065f46">KitchenThermalPrinter</text>
+  <text x="642" y="322" class="mono">+ printTicket(): void ✓</text>
+  <text x="642" y="352" class="actor-text" fill="#047857">✓ Zero Unused Methods!</text>
+
+  <!-- Clean Class 2: CorporateOfficeMFP -->
+  <rect x="892" y="266" width="268" height="114" class="uml-box-good" />
+  <rect x="892" y="266" width="268" height="32" class="uml-hdr-good" />
+  <text x="1026" y="287" text-anchor="middle" class="cls-name" fill="#065f46">CorporateOfficeMFP</text>
+  <text x="904" y="318" class="mono">+ printTicket(): void ✓</text>
+  <text x="904" y="338" class="mono">+ scanPdf(): Pdf      ✓</text>
+  <text x="904" y="358" class="mono">+ sendFax(): void     ✓</text>
+
+  <!-- Bottom Benefit Box -->
+  <rect x="630" y="408" width="530" height="134" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8" />
+  <text x="646" y="432" class="actor-text" fill="#047857">Why This UML Design Excels (Cohesive Role Contracts):</text>
+  <text x="646" y="456" class="desc" fill="#065f46">• Each interface represents a single capability (<tspan class="mono">IPrintable</tspan>, <tspan class="mono">IScannable</tspan>).</text>
+  <text x="646" y="478" class="desc" fill="#065f46">• <tspan class="mono">KitchenThermalPrinter</tspan> implements only <tspan class="mono">IPrintable</tspan>—no dummy stubs!</text>
+  <text x="646" y="498" class="desc" fill="#065f46">• Multi-function devices compose multiple interfaces via multiple</text>
+  <text x="646" y="516" class="desc" fill="#065f46">  realization (<tspan class="mono">implements IPrintable, IScannable, IFaxable</tspan>).</text>
+</svg>
+

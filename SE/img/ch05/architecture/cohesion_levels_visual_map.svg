@@ -1,0 +1,311 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%" height="100%">
+  <defs>
+    <filter id="soft-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+    <marker id="arr-sm-blue" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#2563eb" />
+    </marker>
+    <marker id="arr-sm-green" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#059669" />
+    </marker>
+    <marker id="arr-sm-amber" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#d97706" />
+    </marker>
+    <marker id="arr-sm-red" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#dc2626" />
+    </marker>
+    <marker id="arr-sm-gray" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#64748b" />
+    </marker>
+  </defs>
+
+  <!-- Slide-matched #f5f5f5 background -->
+  <rect width="960" height="400" fill="#f5f5f5" />
+  <rect x="6" y="6" width="948" height="388" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Column Headers -->
+  <text x="240" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17.5" font-weight="800" fill="#065f46" text-anchor="middle">Strong &amp; Focused Cohesion (Levels 7 → 4)</text>
+  <text x="720" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17.5" font-weight="800" fill="#991b1b" text-anchor="middle">Weak &amp; Entangled Cohesion (Levels 3 → 1)</text>
+
+  <!-- Center Vertical Divider -->
+  <line x1="480" y1="20" x2="480" y2="380" stroke="#e2e8f0" stroke-width="1.8" />
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 1: LEVEL 7. FUNCTIONAL COHESION (IDEAL / BEST)
+       ========================================================================= -->
+  <g transform="translate(18, 48)">
+    <!-- Left Graphic: Focused Module Converging on Single Goal -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="0" width="122" height="74" rx="7" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5" />
+      <text x="61" y="13" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="800" fill="#065f46" text-anchor="middle">Module: TaxCalculator</text>
+      <rect x="8" y="20" width="38" height="18" rx="3" fill="#34d399" />
+      <text x="27" y="32" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#064e3b" text-anchor="middle">Rate</text>
+      <rect x="8" y="46" width="38" height="18" rx="3" fill="#34d399" />
+      <text x="27" y="58" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#064e3b" text-anchor="middle">Amount</text>
+      <line x1="46" y1="29" x2="64" y2="39" stroke="#059669" stroke-width="1.5" marker-end="url(#arr-sm-green)" />
+      <line x1="46" y1="55" x2="64" y2="45" stroke="#059669" stroke-width="1.5" marker-end="url(#arr-sm-green)" />
+      <rect x="67" y="27" width="48" height="28" rx="5" fill="#059669" filter="url(#soft-shadow)" />
+      <text x="91" y="39" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="800" fill="#ffffff" text-anchor="middle">1 Single</text>
+      <text x="91" y="49" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="800" fill="#ffffff" text-anchor="middle">Goal</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="222" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#065f46" text-anchor="middle">7. Functional Cohesion</text>
+    <text x="222" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(1 Single Well-Defined Task)</text>
+    <rect x="172" y="48" width="100" height="17" rx="8.5" fill="#d1fae5" stroke="#10b981" stroke-width="1" />
+    <text x="222" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#065f46" text-anchor="middle">IDEAL (BEST)</text>
+
+    <!-- Right Graphic: Concrete Function Box -->
+    <g transform="translate(308, 2)">
+      <rect x="0" y="4" width="122" height="66" rx="7" fill="#f0fdf4" stroke="#059669" stroke-width="1.5" />
+      <rect x="0" y="4" width="122" height="18" rx="5" fill="#059669" />
+      <text x="61" y="16" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">DeliveryFeeCalc</text>
+      <text x="61" y="36" font-family="monospace" font-size="8" font-weight="700" fill="#064e3b" text-anchor="middle">computeFee(distKm)</text>
+      <rect x="12" y="44" width="98" height="18" rx="4" fill="#d1fae5" stroke="#34d399" stroke-width="1" />
+      <text x="61" y="56" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#065f46" text-anchor="middle">100% Focused on 1 Math Rule</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 2: LEVEL 6. SEQUENTIAL COHESION (STRONG)
+       ========================================================================= -->
+  <g transform="translate(18, 136)">
+    <!-- Left Graphic: Pipeline Step A -> Step B -> Step C -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="4" width="122" height="68" rx="7" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5" />
+      <text x="61" y="17" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="800" fill="#1e40af" text-anchor="middle">Assembly-Line Module</text>
+      <rect x="6" y="26" width="31" height="32" rx="4" fill="#3b82f6" />
+      <text x="21.5" y="40" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Read</text>
+      <text x="21.5" y="50" font-family="-apple-system, sans-serif" font-size="6.5" fill="#dbeafe" text-anchor="middle">Raw</text>
+
+      <line x1="37" y1="42" x2="44" y2="42" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr-sm-blue)" />
+
+      <rect x="46" y="26" width="31" height="32" rx="4" fill="#2563eb" />
+      <text x="61.5" y="40" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Parse</text>
+      <text x="61.5" y="50" font-family="-apple-system, sans-serif" font-size="6.5" fill="#dbeafe" text-anchor="middle">DTO</text>
+
+      <line x1="77" y1="42" x2="84" y2="42" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr-sm-blue)" />
+
+      <rect x="86" y="26" width="31" height="32" rx="4" fill="#10b981" />
+      <text x="101.5" y="40" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">Valid</text>
+      <text x="101.5" y="50" font-family="-apple-system, sans-serif" font-size="6.5" fill="#d1fae5" text-anchor="middle">Order</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="222" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e40af" text-anchor="middle">6. Sequential Cohesion</text>
+    <text x="222" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Output of A Feeds Input of B)</text>
+    <rect x="172" y="48" width="100" height="17" rx="8.5" fill="#dbeafe" stroke="#3b82f6" stroke-width="1" />
+    <text x="222" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#1e40af" text-anchor="middle">STRONG</text>
+
+    <!-- Right Graphic: Concrete Forward Data Chain -->
+    <g transform="translate(308, 2)">
+      <rect x="4" y="6" width="114" height="20" rx="4" fill="#3b82f6" />
+      <text x="61" y="19" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">1. readOrderJson()</text>
+      <line x1="61" y1="26" x2="61" y2="33" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr-sm-blue)" />
+      <rect x="4" y="35" width="114" height="20" rx="4" fill="#10b981" />
+      <text x="61" y="48" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">2. validateAndTotal()</text>
+      <text x="61" y="68" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#475569" text-anchor="middle">Direct Data Relay Pipeline</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 3: LEVEL 5. COMMUNICATIONAL COHESION (ACCEPTABLE)
+       ========================================================================= -->
+  <g transform="translate(18, 224)">
+    <!-- Left Graphic: Shared Central Data Record with Multiple Readers -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="4" width="122" height="68" rx="7" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" />
+      <rect x="6" y="24" width="46" height="30" rx="5" fill="#0284c7" />
+      <text x="29" y="37" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Shared</text>
+      <text x="29" y="47" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#e0f2fe" text-anchor="middle">Order DTO</text>
+
+      <line x1="52" y1="32" x2="66" y2="22" stroke="#0284c7" stroke-width="1.4" marker-end="url(#arr-sm-blue)" />
+      <line x1="52" y1="45" x2="66" y2="54" stroke="#0284c7" stroke-width="1.4" marker-end="url(#arr-sm-blue)" />
+
+      <rect x="68" y="10" width="48" height="22" rx="4" fill="#38bdf8" />
+      <text x="92" y="24" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#0c4a6e" text-anchor="middle">Print Label</text>
+
+      <rect x="68" y="44" width="48" height="22" rx="4" fill="#34d399" />
+      <text x="92" y="58" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#064e3b" text-anchor="middle">Save Addr</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="222" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#0369a1" text-anchor="middle">5. Communicational</text>
+    <text x="222" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Operate on Same Data Record)</text>
+    <rect x="172" y="48" width="100" height="17" rx="8.5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+    <text x="222" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">ACCEPTABLE</text>
+
+    <!-- Right Graphic: Same Input / Dual Actions -->
+    <g transform="translate(308, 2)">
+      <rect x="24" y="4" width="74" height="22" rx="4" fill="#0284c7" />
+      <text x="61" y="18" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">CustomerRecord</text>
+      <line x1="44" y1="26" x2="30" y2="40" stroke="#64748b" stroke-width="1.4" marker-end="url(#arr-sm-gray)" />
+      <line x1="78" y1="26" x2="92" y2="40" stroke="#64748b" stroke-width="1.4" marker-end="url(#arr-sm-gray)" />
+      <rect x="2" y="42" width="54" height="24" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+      <text x="29" y="57" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#0369a1" text-anchor="middle">updateAddr()</text>
+      <rect x="66" y="42" width="54" height="24" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+      <text x="93" y="57" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#0369a1" text-anchor="middle">printReceipt()</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 4: LEVEL 4. PROCEDURAL COHESION (MODERATE)
+       ========================================================================= -->
+  <g transform="translate(18, 312)">
+    <!-- Left Graphic: Step 1 -> Step 2 touching different data stores -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="2" width="122" height="68" rx="7" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.2" />
+      <rect x="8" y="10" width="46" height="22" rx="4" fill="#fbbf24" />
+      <text x="31" y="24" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#78350f" text-anchor="middle">1. CheckAuth</text>
+      <line x1="54" y1="21" x2="66" y2="21" stroke="#d97706" stroke-width="1.5" marker-end="url(#arr-sm-amber)" />
+      <rect x="68" y="10" width="46" height="22" rx="4" fill="#fb923c" />
+      <text x="91" y="24" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">2. AuditLog</text>
+
+      <!-- Different Data Stores Below -->
+      <rect x="12" y="42" width="38" height="20" rx="3" fill="#e2e8f0" stroke="#64748b" stroke-width="1" />
+      <text x="31" y="55" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#334155" text-anchor="middle">User DB</text>
+      <rect x="72" y="42" width="38" height="20" rx="3" fill="#e2e8f0" stroke="#64748b" stroke-width="1" />
+      <text x="91" y="55" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#334155" text-anchor="middle">Log File</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="222" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#b45309" text-anchor="middle">4. Procedural Cohesion</text>
+    <text x="222" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Grouped by Order, Diff Data)</text>
+    <rect x="172" y="48" width="100" height="17" rx="8.5" fill="#fef3c7" stroke="#f59e0b" stroke-width="1" />
+    <text x="222" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#b45309" text-anchor="middle">MODERATE</text>
+
+    <!-- Right Graphic: Ordered Workflow Steps -->
+    <g transform="translate(308, 2)">
+      <rect x="6" y="6" width="110" height="60" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.2" />
+      <text x="61" y="21" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#92400e" text-anchor="middle">Step 1: checkPermission()</text>
+      <text x="61" y="36" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#b45309" text-anchor="middle">↓ (Control Order Only)</text>
+      <text x="61" y="52" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#92400e" text-anchor="middle">Step 2: writeDiskAudit()</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 1: LEVEL 3. TEMPORAL COHESION (WEAK)
+       ========================================================================= -->
+  <g transform="translate(494, 48)">
+    <!-- Left Graphic: Clock / Startup Batch Triggering Unrelated Tasks -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="2" width="122" height="72" rx="7" fill="#fff7ed" stroke="#fb923c" stroke-width="1.4" />
+      <rect x="6" y="22" width="40" height="32" rx="6" fill="#ea580c" />
+      <text x="26" y="36" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="800" fill="#ffffff" text-anchor="middle">T = 0s</text>
+      <text x="26" y="47" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#ffedd5" text-anchor="middle">Startup</text>
+
+      <line x1="46" y1="28" x2="64" y2="16" stroke="#ea580c" stroke-width="1.3" marker-end="url(#arr-sm-amber)" />
+      <line x1="46" y1="38" x2="64" y2="38" stroke="#ea580c" stroke-width="1.3" marker-end="url(#arr-sm-amber)" />
+      <line x1="46" y1="48" x2="64" y2="60" stroke="#ea580c" stroke-width="1.3" marker-end="url(#arr-sm-amber)" />
+
+      <rect x="66" y="6" width="50" height="17" rx="3" fill="#3b82f6" />
+      <text x="91" y="17.5" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Init DB</text>
+      <rect x="66" y="29" width="50" height="17" rx="3" fill="#a855f7" />
+      <text x="91" y="40.5" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Load UI</text>
+      <rect x="66" y="52" width="50" height="17" rx="3" fill="#10b981" />
+      <text x="91" y="63.5" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Clear Log</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="224" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#c2410c" text-anchor="middle">3. Temporal Cohesion</text>
+    <text x="224" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Same Time Slot Only)</text>
+    <rect x="174" y="48" width="100" height="17" rx="8.5" fill="#ffedd5" stroke="#fb923c" stroke-width="1" />
+    <text x="224" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#c2410c" text-anchor="middle">WEAK (REFACTOR)</text>
+
+    <!-- Right Graphic: initSystem() Catch-All -->
+    <g transform="translate(314, 2)">
+      <rect x="2" y="4" width="120" height="66" rx="7" fill="#fff7ed" stroke="#ea580c" stroke-width="1.4" />
+      <rect x="2" y="4" width="120" height="18" rx="5" fill="#ea580c" />
+      <text x="62" y="16" font-family="monospace" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">initStartup()</text>
+      <text x="62" y="34" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#9a3412" text-anchor="middle">connectDb() + renderSplash()</text>
+      <text x="62" y="47" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#9a3412" text-anchor="middle">+ pingSmtp() + loadFonts()</text>
+      <text x="62" y="62" font-family="-apple-system, sans-serif" font-size="7" font-weight="600" fill="#c2410c" text-anchor="middle">Unrelated Startup Batch</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 2: LEVEL 2. LOGICAL COHESION (WEAK — VIOLATES OCP)
+       ========================================================================= -->
+  <g transform="translate(494, 136)">
+    <!-- Left Graphic: Flag Driving Giant Switch Statement -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="2" width="122" height="72" rx="7" fill="#fef2f2" stroke="#f87171" stroke-width="1.4" />
+      <rect x="6" y="24" width="42" height="28" rx="4" fill="#ef4444" />
+      <text x="27" y="36" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="800" fill="#ffffff" text-anchor="middle">switch</text>
+      <text x="27" y="46" font-family="monospace" font-size="7" font-weight="700" fill="#fee2e2" text-anchor="middle">(mode)</text>
+
+      <line x1="48" y1="30" x2="64" y2="16" stroke="#dc2626" stroke-width="1.3" marker-end="url(#arr-sm-red)" />
+      <line x1="48" y1="38" x2="64" y2="38" stroke="#dc2626" stroke-width="1.3" marker-end="url(#arr-sm-red)" />
+      <line x1="48" y1="46" x2="64" y2="60" stroke="#dc2626" stroke-width="1.3" marker-end="url(#arr-sm-red)" />
+
+      <rect x="66" y="6" width="50" height="17" rx="3" fill="#fca5a5" />
+      <text x="91" y="17.5" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">1: PDF</text>
+      <rect x="66" y="29" width="50" height="17" rx="3" fill="#fca5a5" />
+      <text x="91" y="40.5" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">2: CSV</text>
+      <rect x="66" y="52" width="50" height="17" rx="3" fill="#fca5a5" />
+      <text x="91" y="63.5" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">3: Audio</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="224" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#b91c1c" text-anchor="middle">2. Logical Cohesion</text>
+    <text x="224" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Flag-Controlled Switch Box)</text>
+    <rect x="174" y="48" width="100" height="17" rx="8.5" fill="#fee2e2" stroke="#f87171" stroke-width="1" />
+    <text x="224" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#b91c1c" text-anchor="middle">POOR (ANTI-OCP)</text>
+
+    <!-- Right Graphic: exportAll(int type) -->
+    <g transform="translate(314, 2)">
+      <rect x="2" y="4" width="120" height="66" rx="7" fill="#fef2f2" stroke="#dc2626" stroke-width="1.4" />
+      <rect x="2" y="4" width="120" height="18" rx="5" fill="#dc2626" />
+      <text x="62" y="16" font-family="monospace" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">export(int flag)</text>
+      <text x="62" y="34" font-family="monospace" font-size="7.5" font-weight="700" fill="#991b1b" text-anchor="middle">if (flag==1) drawPdf();</text>
+      <text x="62" y="47" font-family="monospace" font-size="7.5" font-weight="700" fill="#991b1b" text-anchor="middle">else if (flag==2) dumpCsv();</text>
+      <text x="62" y="62" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#b91c1c" text-anchor="middle">Tangled Multi-Branch Logic</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 3: LEVEL 1. COINCIDENTAL COHESION (WORST)
+       ========================================================================= -->
+  <g transform="translate(494, 224)">
+    <!-- Left Graphic: Random Dumping Ground Grab-Bag -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="2" width="122" height="70" rx="7" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4 2" />
+      <text x="61" y="14" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="800" fill="#991b1b" text-anchor="middle">Grab-Bag: CommonUtils</text>
+      <rect x="8" y="20" width="48" height="20" rx="4" fill="#f59e0b" />
+      <text x="32" y="33" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Date Math</text>
+      <rect x="66" y="20" width="48" height="20" rx="4" fill="#8b5cf6" />
+      <text x="90" y="33" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Send SMS</text>
+      <rect x="8" y="45" width="48" height="20" rx="4" fill="#3b82f6" />
+      <text x="32" y="58" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Calc Tax</text>
+      <rect x="66" y="45" width="48" height="20" rx="4" fill="#ec4899" />
+      <text x="90" y="58" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Zip File</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="224" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#991b1b" text-anchor="middle">1. Coincidental Cohesion</text>
+    <text x="224" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Zero Meaningful Relation)</text>
+    <rect x="174" y="48" width="100" height="17" rx="8.5" fill="#991b1b" />
+    <text x="224" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#ffffff" text-anchor="middle">WORST (ELIMINATE)</text>
+
+    <!-- Right Graphic: MiscHelper Junk Drawer -->
+    <g transform="translate(314, 2)">
+      <rect x="2" y="4" width="120" height="66" rx="7" fill="#450a0a" stroke="#991b1b" stroke-width="1.5" />
+      <text x="62" y="18" font-family="monospace" font-size="8.5" font-weight="800" fill="#fca5a5" text-anchor="middle">MiscHelper.java</text>
+      <text x="62" y="33" font-family="monospace" font-size="7.5" fill="#fecaca" text-anchor="middle">formatCurrency() // UI</text>
+      <text x="62" y="46" font-family="monospace" font-size="7.5" fill="#fecaca" text-anchor="middle">openTcpSocket()  // Net</text>
+      <text x="62" y="59" font-family="monospace" font-size="7.5" fill="#fecaca" text-anchor="middle">computeVatTax()  // Biz</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 4: REFACTORING TRANSFORMATION SUMMARY
+       ========================================================================= -->
+  <g transform="translate(494, 312)">
+    <rect x="6" y="4" width="430" height="66" rx="8" fill="#f0fdf4" stroke="#10b981" stroke-width="1.5" />
+    <text x="221" y="21" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="800" fill="#065f46" text-anchor="middle">Cohesion Refactoring Rule (Single Responsibility Principle)</text>
+    <text x="221" y="38" font-family="-apple-system, sans-serif" font-size="9.5" font-weight="700" fill="#b91c1c" text-anchor="middle">Split Coincidental / Logical / Temporal God Classes (Levels 1–3)</text>
+    <text x="221" y="54" font-family="-apple-system, sans-serif" font-size="9.5" font-weight="800" fill="#047857" text-anchor="middle">→ Into Focused Functional &amp; Sequential Collaborators (Levels 6–7)</text>
+  </g>
+</svg>
+

@@ -1,0 +1,412 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%" height="100%">
+  <defs>
+    <filter id="soft-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+    <marker id="arr-sm-blue" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#2563eb" />
+    </marker>
+    <marker id="arr-sm-green" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#059669" />
+    </marker>
+    <marker id="arr-sm-amber" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#d97706" />
+    </marker>
+    <marker id="arr-sm-gray" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#64748b" />
+    </marker>
+  </defs>
+
+  <!-- Slide-matched #f5f5f5 background -->
+  <rect width="960" height="400" fill="#f5f5f5" />
+  <rect x="6" y="6" width="948" height="388" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Column Headers -->
+  <text x="240" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Centralized &amp; Structural Patterns</text>
+  <text x="720" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Distributed, Routing &amp; Flow Patterns</text>
+
+  <!-- Center Vertical Divider -->
+  <line x1="480" y1="20" x2="480" y2="380" stroke="#e2e8f0" stroke-width="1.8" />
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 1: 01. LAYERED (N-TIER) ARCHITECTURE
+       ========================================================================= -->
+  <g transform="translate(18, 48)">
+    <!-- Left Graphic: 4 Stacked Bars -->
+    <g transform="translate(8, 2)">
+      <rect x="0" y="0" width="118" height="17" rx="3" fill="#4a90e2" stroke="#2563eb" stroke-width="1" />
+      <text x="59" y="12" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">Presentation</text>
+
+      <rect x="0" y="20" width="118" height="17" rx="3" fill="#34d399" stroke="#059669" stroke-width="1" />
+      <text x="59" y="32" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#064e3b" text-anchor="middle">Business Logic</text>
+
+      <rect x="0" y="40" width="118" height="17" rx="3" fill="#fbbf24" stroke="#d97706" stroke-width="1" />
+      <text x="59" y="52" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#78350f" text-anchor="middle">Data Access</text>
+
+      <rect x="0" y="60" width="118" height="17" rx="3" fill="#fb923c" stroke="#ea580c" stroke-width="1" />
+      <text x="59" y="72" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">Database</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="222" y="30" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">2. Layered (N-Tier)</text>
+    <text x="222" y="46" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">Architecture</text>
+    <text x="222" y="62" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">(Strict Downward Calls)</text>
+
+    <!-- Right Graphic: Stepped Pyramid Hierarchy -->
+    <g transform="translate(308, 2)">
+      <rect x="27" y="0" width="66" height="17" rx="3" fill="#4a90e2" stroke="#2563eb" stroke-width="1" />
+      <text x="60" y="12" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">UI</text>
+
+      <rect x="18" y="20" width="84" height="17" rx="3" fill="#34d399" stroke="#059669" stroke-width="1" />
+      <text x="60" y="32" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#064e3b" text-anchor="middle">Business Logic</text>
+
+      <rect x="9" y="40" width="102" height="17" rx="3" fill="#fbbf24" stroke="#d97706" stroke-width="1" />
+      <text x="60" y="52" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#78350f" text-anchor="middle">Data Access</text>
+
+      <rect x="0" y="60" width="120" height="17" rx="3" fill="#fb923c" stroke="#ea580c" stroke-width="1" />
+      <text x="60" y="72" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">Database</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 2: 01. MODEL-VIEW-CONTROLLER (MVC)
+       ========================================================================= -->
+  <g transform="translate(18, 138)">
+    <!-- Left Graphic: MVC Triangular Cycle -->
+    <g transform="translate(8, 2)">
+      <!-- Controller Top Left -->
+      <rect x="4" y="2" width="52" height="26" rx="5" fill="#3b82f6" filter="url(#soft-shadow)" />
+      <text x="30" y="18" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">Controller</text>
+
+      <!-- View Top Right -->
+      <rect x="66" y="2" width="52" height="26" rx="5" fill="#f59e0b" filter="url(#soft-shadow)" />
+      <text x="92" y="18" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">View (UI)</text>
+
+      <!-- Model Bottom Center -->
+      <rect x="30" y="48" width="62" height="26" rx="5" fill="#10b981" filter="url(#soft-shadow)" />
+      <text x="61" y="64" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">Model (State)</text>
+
+      <!-- Cycle Arrows -->
+      <line x1="56" y1="15" x2="63" y2="15" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr-sm-gray)" />
+      <line x1="28" y1="28" x2="42" y2="45" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr-sm-blue)" />
+      <line x1="80" y1="48" x2="92" y2="31" stroke="#059669" stroke-width="1.5" marker-end="url(#arr-sm-green)" />
+    </g>
+
+    <!-- Center Label -->
+    <text x="222" y="28" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">1. Model-View-Controller</text>
+    <text x="222" y="44" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">(MVC) Architecture</text>
+    <text x="222" y="60" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">(Decoupled UI &amp; State)</text>
+
+    <!-- Right Graphic: 1 Model Driving Multiple Views -->
+    <g transform="translate(312, 4)">
+      <ellipse cx="26" cy="24" rx="22" ry="7" fill="#34d399" stroke="#059669" stroke-width="1.2" />
+      <path d="M 4 24 L 4 52 C 4 58, 48 58, 48 52 L 48 24" fill="#10b981" stroke="#059669" stroke-width="1.2" />
+      <ellipse cx="26" cy="24" rx="22" ry="7" fill="#6ee7b7" stroke="#059669" stroke-width="1.2" />
+      <text x="26" y="44" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">Model</text>
+
+      <!-- Web View & Mobile View -->
+      <rect x="68" y="4" width="48" height="28" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4" />
+      <rect x="68" y="4" width="48" height="7" rx="2" fill="#3b82f6" />
+      <text x="92" y="23" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#1d4ed8" text-anchor="middle">Web View</text>
+
+      <rect x="74" y="40" width="36" height="30" rx="4" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.4" />
+      <rect x="74" y="40" width="36" height="6" rx="2" fill="#f59e0b" />
+      <text x="92" y="60" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#b45309" text-anchor="middle">App View</text>
+
+      <line x1="48" y1="32" x2="64" y2="20" stroke="#059669" stroke-width="1.5" marker-end="url(#arr-sm-green)" />
+      <line x1="48" y1="44" x2="70" y2="54" stroke="#059669" stroke-width="1.5" marker-end="url(#arr-sm-green)" />
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 3: 03. REPOSITORY (BLACKBOARD) ARCHITECTURE
+       ========================================================================= -->
+  <g transform="translate(18, 224)">
+    <!-- Left Graphic: Hub-and-Spoke Central Repository -->
+    <g transform="translate(8, 0)">
+      <!-- Spokes -->
+      <line x1="60" y1="40" x2="22" y2="12" stroke="#64748b" stroke-width="1.8" />
+      <line x1="60" y1="40" x2="98" y2="12" stroke="#64748b" stroke-width="1.8" />
+      <line x1="60" y1="40" x2="12" y2="42" stroke="#64748b" stroke-width="1.8" />
+      <line x1="60" y1="40" x2="108" y2="42" stroke="#64748b" stroke-width="1.8" />
+      <line x1="60" y1="40" x2="24" y2="70" stroke="#64748b" stroke-width="1.8" />
+      <line x1="60" y1="40" x2="96" y2="70" stroke="#64748b" stroke-width="1.8" />
+
+      <!-- Satellite Tool Nodes -->
+      <rect x="8" y="2" width="24" height="16" rx="4" fill="#fbbf24" />
+      <rect x="88" y="2" width="24" height="16" rx="4" fill="#6366f1" />
+      <rect x="0" y="34" width="22" height="16" rx="4" fill="#f97316" />
+      <rect x="98" y="34" width="22" height="16" rx="4" fill="#10b981" />
+      <rect x="10" y="62" width="24" height="16" rx="4" fill="#a855f7" />
+      <rect x="86" y="62" width="24" height="16" rx="4" fill="#3b82f6" />
+
+      <!-- Central Octagon/Circle Hub -->
+      <circle cx="60" cy="40" r="23" fill="#1e293b" stroke="#38bdf8" stroke-width="2" filter="url(#soft-shadow)" />
+      <text x="60" y="38" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Central</text>
+      <text x="60" y="48" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Repo Hub</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="222" y="28" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">3. Repository (Blackboard)</text>
+    <text x="222" y="44" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">Architecture</text>
+    <text x="222" y="60" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">(Central Shared Data Store)</text>
+
+    <!-- Right Graphic: Shared State Grid / Blackboard -->
+    <g transform="translate(310, 4)">
+      <rect x="0" y="12" width="54" height="52" rx="6" fill="#0284c7" stroke="#0369a1" stroke-width="1.5" />
+      <text x="27" y="35" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">Shared</text>
+      <text x="27" y="46" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#e0f2fe" text-anchor="middle">AST / DB</text>
+
+      <line x1="54" y1="24" x2="78" y2="12" stroke="#64748b" stroke-width="1.5" />
+      <line x1="54" y1="38" x2="78" y2="38" stroke="#64748b" stroke-width="1.5" />
+      <line x1="54" y1="52" x2="78" y2="64" stroke="#64748b" stroke-width="1.5" />
+
+      <rect x="78" y="2" width="38" height="18" rx="4" fill="#fb923c" />
+      <text x="97" y="14" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Parser</text>
+
+      <rect x="78" y="29" width="38" height="18" rx="4" fill="#10b981" />
+      <text x="97" y="41" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Linter</text>
+
+      <rect x="78" y="56" width="38" height="18" rx="4" fill="#8b5cf6" />
+      <text x="97" y="68" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Solver</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 4 (BOTTOM): MONOLITHIC vs. MODULAR COMPONENT
+       ========================================================================= -->
+  <g transform="translate(18, 310)">
+    <!-- Monolithic Box -->
+    <g transform="translate(22, 0)">
+      <rect x="0" y="0" width="90" height="62" rx="6" fill="#c2410c" stroke="#9a3412" stroke-width="1.5" filter="url(#soft-shadow)" />
+      <rect x="10" y="7" width="70" height="13" rx="2" fill="#7c2d12" />
+      <text x="45" y="16" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">UI</text>
+      <rect x="10" y="24" width="70" height="13" rx="2" fill="#7c2d12" />
+      <text x="45" y="33" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Business</text>
+      <rect x="10" y="41" width="70" height="13" rx="2" fill="#7c2d12" />
+      <text x="45" y="50" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Data</text>
+      <text x="45" y="76" font-family="-apple-system, sans-serif" font-size="11" font-weight="800" fill="#1e293b" text-anchor="middle">Monolithic Architecture</text>
+    </g>
+
+    <!-- Modular Components -->
+    <g transform="translate(235, 0)">
+      <rect x="0" y="4" width="44" height="24" rx="4" fill="#34d399" stroke="#059669" stroke-width="1.2" />
+      <rect x="48" y="4" width="44" height="24" rx="4" fill="#6ee7b7" stroke="#059669" stroke-width="1.2" />
+      <rect x="0" y="32" width="44" height="24" rx="4" fill="#60a5fa" stroke="#2563eb" stroke-width="1.2" />
+      <rect x="48" y="32" width="44" height="24" rx="4" fill="#fbbf24" stroke="#d97706" stroke-width="1.2" />
+
+      <rect x="108" y="6" width="68" height="48" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2" stroke-dasharray="3,2" />
+      <rect x="114" y="12" width="56" height="14" rx="3" fill="#6ee7b7" stroke="#059669" stroke-width="1" />
+      <text x="142" y="22" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#064e3b" text-anchor="middle">Interface</text>
+      <rect x="114" y="32" width="56" height="16" rx="3" fill="#38bdf8" stroke="#0284c7" stroke-width="1" />
+      <text x="142" y="43" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#0c4a6e" text-anchor="middle">Module Impl</text>
+
+      <text x="88" y="76" font-family="-apple-system, sans-serif" font-size="11" font-weight="800" fill="#1e293b" text-anchor="middle">Modular Component Design</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 1: 04. CLIENT-SERVER ARCHITECTURE
+       ========================================================================= -->
+  <g transform="translate(496, 48)">
+    <!-- Left Graphic: Server Tower with Surrounding Devices -->
+    <g transform="translate(6, 0)">
+      <!-- Connecting Lines -->
+      <line x1="60" y1="40" x2="22" y2="14" stroke="#94a3b8" stroke-width="1.5" />
+      <line x1="60" y1="40" x2="98" y2="14" stroke="#94a3b8" stroke-width="1.5" />
+      <line x1="60" y1="40" x2="14" y2="42" stroke="#94a3b8" stroke-width="1.5" />
+      <line x1="60" y1="40" x2="106" y2="42" stroke="#94a3b8" stroke-width="1.5" />
+      <line x1="60" y1="40" x2="24" y2="68" stroke="#94a3b8" stroke-width="1.5" />
+      <line x1="60" y1="40" x2="96" y2="68" stroke="#94a3b8" stroke-width="1.5" />
+
+      <!-- Central Purple Server Rack -->
+      <rect x="44" y="18" width="32" height="44" rx="4" fill="#8b5cf6" stroke="#5b21b6" stroke-width="1.5" filter="url(#soft-shadow)" />
+      <line x1="50" y1="28" x2="70" y2="28" stroke="#ddd6fe" stroke-width="2" />
+      <line x1="50" y1="36" x2="70" y2="36" stroke="#ddd6fe" stroke-width="2" />
+      <circle cx="60" cy="50" r="3" fill="#a7f3d0" />
+
+      <!-- Client Devices (Phones & Laptops) -->
+      <rect x="14" y="2" width="14" height="22" rx="2" fill="#93c5fd" stroke="#1e40af" stroke-width="1.2" />
+      <rect x="92" y="2" width="14" height="22" rx="2" fill="#93c5fd" stroke="#1e40af" stroke-width="1.2" />
+      <rect x="0" y="34" width="22" height="15" rx="2" fill="#bfdbfe" stroke="#1e40af" stroke-width="1.2" />
+      <rect x="98" y="34" width="22" height="15" rx="2" fill="#bfdbfe" stroke="#1e40af" stroke-width="1.2" />
+      <rect x="10" y="60" width="24" height="15" rx="2" fill="#bfdbfe" stroke="#1e40af" stroke-width="1.2" />
+      <rect x="86" y="60" width="24" height="15" rx="2" fill="#bfdbfe" stroke="#1e40af" stroke-width="1.2" />
+    </g>
+
+    <!-- Center Label -->
+    <text x="220" y="30" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">4. Client-Server</text>
+    <text x="220" y="46" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">Architecture</text>
+    <text x="220" y="62" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">(Edge Clients ↔ Central Tier)</text>
+
+    <!-- Right Graphic: Client Cluster -> Load Balancer -> Server Pool -->
+    <g transform="translate(312, 4)">
+      <rect x="0" y="6" width="34" height="18" rx="3" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2" />
+      <text x="17" y="18" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#1e40af" text-anchor="middle">Web</text>
+      <rect x="0" y="29" width="34" height="18" rx="3" fill="#e0e7ff" stroke="#4f46e5" stroke-width="1.2" />
+      <text x="17" y="41" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#312e81" text-anchor="middle">App</text>
+      <rect x="0" y="52" width="34" height="18" rx="3" fill="#d1fae5" stroke="#059669" stroke-width="1.2" />
+      <text x="17" y="64" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#065f46" text-anchor="middle">POS</text>
+
+      <line x1="34" y1="16" x2="54" y2="34" stroke="#2563eb" stroke-width="1.3" />
+      <line x1="34" y1="38" x2="54" y2="38" stroke="#2563eb" stroke-width="1.3" />
+      <line x1="34" y1="60" x2="54" y2="42" stroke="#2563eb" stroke-width="1.3" />
+
+      <rect x="54" y="16" width="62" height="44" rx="6" fill="#0284c7" stroke="#0369a1" stroke-width="1.4" />
+      <text x="85" y="34" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">Server Cluster</text>
+      <text x="85" y="47" font-family="-apple-system, sans-serif" font-size="7.5" fill="#e0f2fe" text-anchor="middle">+ Central DB</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 2: 05. PIPE-AND-FILTER ARCHITECTURE
+       ========================================================================= -->
+  <g transform="translate(496, 138)">
+    <!-- Left Graphic: Stream Pipeline & Event Bus -->
+    <g transform="translate(6, 4)">
+      <rect x="24" y="24" width="76" height="22" rx="5" fill="#fcd34d" stroke="#d97706" stroke-width="1.4" />
+      <text x="62" y="38" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#78350f" text-anchor="middle">Stream Pipe</text>
+
+      <rect x="2" y="2" width="20" height="14" rx="3" fill="#34d399" />
+      <rect x="52" y="0" width="20" height="14" rx="3" fill="#60a5fa" />
+      <rect x="102" y="2" width="20" height="14" rx="3" fill="#818cf8" />
+      <rect x="2" y="54" width="20" height="14" rx="3" fill="#fbbf24" />
+      <rect x="52" y="56" width="20" height="14" rx="3" fill="#2dd4bf" />
+      <rect x="102" y="54" width="20" height="14" rx="3" fill="#f472b6" />
+
+      <line x1="22" y1="9" x2="40" y2="24" stroke="#64748b" stroke-width="1.2" />
+      <line x1="62" y1="14" x2="62" y2="24" stroke="#64748b" stroke-width="1.2" />
+      <line x1="102" y1="9" x2="84" y2="24" stroke="#64748b" stroke-width="1.2" />
+      <line x1="22" y1="61" x2="40" y2="46" stroke="#64748b" stroke-width="1.2" />
+      <line x1="62" y1="56" x2="62" y2="46" stroke="#64748b" stroke-width="1.2" />
+      <line x1="102" y1="61" x2="84" y2="46" stroke="#64748b" stroke-width="1.2" />
+    </g>
+
+    <!-- Center Label -->
+    <text x="220" y="28" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">5. Pipe-and-Filter</text>
+    <text x="220" y="44" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">Stream Architecture</text>
+    <text x="220" y="60" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">(Sequential Stateless Filters)</text>
+
+    <!-- Right Graphic: 3 Filter Drums & Horizontal Pipe (Just like uploaded image!) -->
+    <g transform="translate(308, 12)">
+      <!-- Horizontal Pipe Tube -->
+      <rect x="0" y="20" width="124" height="10" rx="3" fill="#cbd5e1" stroke="#64748b" stroke-width="1.2" />
+
+      <!-- Filter Drum 1 (Purple) -->
+      <rect x="12" y="8" width="22" height="34" rx="4" fill="#a855f7" stroke="#6b21a8" stroke-width="1.2" />
+      <circle cx="19" cy="2" r="2.5" fill="#c084fc" />
+      <circle cx="27" cy="4" r="2" fill="#c084fc" />
+
+      <!-- Filter Drum 2 (Blue) -->
+      <rect x="51" y="8" width="22" height="34" rx="4" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.2" />
+
+      <!-- Filter Drum 3 (Teal) -->
+      <rect x="90" y="8" width="22" height="34" rx="4" fill="#0d9488" stroke="#115e59" stroke-width="1.2" />
+      <circle cx="97" cy="2" r="2.5" fill="#5eead4" />
+      <circle cx="105" cy="4" r="2" fill="#5eead4" />
+
+      <text x="23" y="54" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#475569" text-anchor="middle">Filter 1</text>
+      <text x="62" y="54" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#475569" text-anchor="middle">Pipe</text>
+      <text x="101" y="54" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#475569" text-anchor="middle">Filter 2</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 3: 06. MICROSERVICES ARCHITECTURE
+       ========================================================================= -->
+  <g transform="translate(496, 224)">
+    <!-- Left Graphic: Cloud Mesh of Autonomous Microservices (Just like uploaded image!) -->
+    <g transform="translate(4, 2)">
+      <rect x="2" y="4" width="124" height="68" rx="34" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" />
+      <!-- Mesh Lines -->
+      <line x1="24" y1="26" x2="64" y2="16" stroke="#64748b" stroke-width="1" />
+      <line x1="64" y1="16" x2="104" y2="26" stroke="#64748b" stroke-width="1" />
+      <line x1="24" y1="26" x2="42" y2="56" stroke="#64748b" stroke-width="1" />
+      <line x1="42" y1="56" x2="86" y2="56" stroke="#64748b" stroke-width="1" />
+      <line x1="104" y1="26" x2="86" y2="56" stroke="#64748b" stroke-width="1" />
+      <line x1="24" y1="26" x2="86" y2="56" stroke="#64748b" stroke-width="1" />
+      <line x1="64" y1="16" x2="42" y2="56" stroke="#64748b" stroke-width="1" />
+      <line x1="104" y1="26" x2="42" y2="56" stroke="#64748b" stroke-width="1" />
+
+      <!-- Service Nodes -->
+      <circle cx="24" cy="26" r="10" fill="#8b5cf6" stroke="#ffffff" stroke-width="1.5" />
+      <text x="24" y="29" font-family="-apple-system, sans-serif" font-size="6.5" font-weight="700" fill="#ffffff" text-anchor="middle">Cart</text>
+
+      <circle cx="64" cy="16" r="10" fill="#6366f1" stroke="#ffffff" stroke-width="1.5" />
+      <text x="64" y="19" font-family="-apple-system, sans-serif" font-size="6.5" font-weight="700" fill="#ffffff" text-anchor="middle">Menu</text>
+
+      <circle cx="104" cy="26" r="10" fill="#3b82f6" stroke="#ffffff" stroke-width="1.5" />
+      <text x="104" y="29" font-family="-apple-system, sans-serif" font-size="6.5" font-weight="700" fill="#ffffff" text-anchor="middle">Pay</text>
+
+      <circle cx="42" cy="56" r="10" fill="#0ea5e9" stroke="#ffffff" stroke-width="1.5" />
+      <text x="42" y="59" font-family="-apple-system, sans-serif" font-size="6.5" font-weight="700" fill="#ffffff" text-anchor="middle">User</text>
+
+      <circle cx="86" cy="56" r="10" fill="#10b981" stroke="#ffffff" stroke-width="1.5" />
+      <text x="86" y="59" font-family="-apple-system, sans-serif" font-size="6.5" font-weight="700" fill="#ffffff" text-anchor="middle">Order</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="220" y="28" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">6. Microservices (MSA)</text>
+    <text x="220" y="44" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e293b" text-anchor="middle">Architecture</text>
+    <text x="220" y="60" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">(Database-per-Service Pods)</text>
+
+    <!-- Right Graphic: Isolated Pods + Private DBs -->
+    <g transform="translate(310, 4)">
+      <rect x="0" y="2" width="36" height="64" rx="5" fill="#f5f3ff" stroke="#6366f1" stroke-width="1.3" />
+      <rect x="4" y="8" width="28" height="20" rx="3" fill="#6366f1" />
+      <text x="18" y="21" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">Svc A</text>
+      <rect x="6" y="38" width="24" height="18" rx="3" fill="#ddd6fe" stroke="#6366f1" stroke-width="1" />
+      <text x="18" y="50" font-family="-apple-system, sans-serif" font-size="6.5" font-weight="700" fill="#4c1d95" text-anchor="middle">DB 1</text>
+
+      <rect x="42" y="2" width="36" height="64" rx="5" fill="#ecfdf5" stroke="#059669" stroke-width="1.3" />
+      <rect x="46" y="8" width="28" height="20" rx="3" fill="#059669" />
+      <text x="60" y="21" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">Svc B</text>
+      <rect x="48" y="38" width="24" height="18" rx="3" fill="#a7f3d0" stroke="#059669" stroke-width="1" />
+      <text x="60" y="50" font-family="-apple-system, sans-serif" font-size="6.5" font-weight="700" fill="#064e3b" text-anchor="middle">DB 2</text>
+
+      <rect x="84" y="2" width="36" height="64" rx="5" fill="#fffbeb" stroke="#d97706" stroke-width="1.3" />
+      <rect x="88" y="8" width="28" height="20" rx="3" fill="#d97706" />
+      <text x="102" y="21" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">Svc C</text>
+      <rect x="90" y="38" width="24" height="18" rx="3" fill="#fde68a" stroke="#d97706" stroke-width="1" />
+      <text x="102" y="50" font-family="-apple-system, sans-serif" font-size="6.5" font-weight="700" fill="#78350f" text-anchor="middle">DB 3</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 4 (BOTTOM): EVENT BUS & MULTI-PATTERN COMPOSITION
+       ========================================================================= -->
+  <g transform="translate(496, 310)">
+    <!-- Event-Driven Bus -->
+    <g transform="translate(8, 2)">
+      <rect x="8" y="0" width="44" height="15" rx="3" fill="#10b981" />
+      <text x="30" y="10" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">Order</text>
+      <rect x="58" y="0" width="44" height="15" rx="3" fill="#3b82f6" />
+      <text x="80" y="10" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">Payment</text>
+      <rect x="108" y="0" width="48" height="15" rx="3" fill="#f59e0b" />
+      <text x="132" y="10" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">Dispatch</text>
+
+      <!-- Purple Event Bus Cylinder -->
+      <rect x="4" y="22" width="160" height="18" rx="9" fill="#8b5cf6" stroke="#5b21b6" stroke-width="1.3" />
+      <text x="84" y="34" font-family="-apple-system, sans-serif" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">Event Bus / Message Broker</text>
+
+      <rect x="28" y="46" width="50" height="14" rx="3" fill="#34d399" />
+      <text x="53" y="56" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#064e3b" text-anchor="middle">GPS Stream</text>
+      <rect x="90" y="46" width="50" height="14" rx="3" fill="#60a5fa" />
+      <text x="115" y="56" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#1e3a8a" text-anchor="middle">Geo Repo</text>
+
+      <text x="84" y="74" font-family="-apple-system, sans-serif" font-size="11" font-weight="800" fill="#1e293b" text-anchor="middle">Event-Driven Bus Topology</text>
+    </g>
+
+    <!-- Multi-Pattern Synthesis Cloud (Food Delivery) -->
+    <g transform="translate(230, 2)">
+      <rect x="4" y="2" width="196" height="58" rx="8" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.4" />
+      <text x="102" y="17" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Real-World System Composition</text>
+      <text x="102" y="31" font-family="-apple-system, sans-serif" font-size="8" font-weight="600" fill="#334155" text-anchor="middle">Client-Server + MVC (Frontend)</text>
+      <text x="102" y="43" font-family="-apple-system, sans-serif" font-size="8" font-weight="600" fill="#059669" text-anchor="middle">+ Microservices + Layered (Services)</text>
+      <text x="102" y="55" font-family="-apple-system, sans-serif" font-size="8" font-weight="600" fill="#d97706" text-anchor="middle">+ Pipe-Filter + Repository (Dispatch)</text>
+
+      <text x="102" y="74" font-family="-apple-system, sans-serif" font-size="11" font-weight="800" fill="#1e293b" text-anchor="middle">Multi-Pattern Hybrid Architecture</text>
+    </g>
+  </g>
+</svg>
+

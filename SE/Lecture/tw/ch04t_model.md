@@ -69,7 +69,7 @@
 - C. 結構視角 (Structural Perspective)
 - D. 行為視角 (Behavioral Perspective)
 
-[Interactive Activity (線上作答)](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq1)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq1)
 
 <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq1" target="_blank"><img src="../../img/ch04/ase-ch04-ccq1.png" width="120"></a>
 
@@ -122,7 +122,7 @@
 - C. Ivar Jacobson
 - D. Martin Fowler
 
-[Interactive Activity (線上作答)](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq2)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq2)
 
 <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq2" target="_blank"><img src="../../img/ch04/ase-ch04-ccq2.png" width="120"></a>
 
@@ -379,7 +379,7 @@ UC_AcceptTask -- Courier
 - C. 使用案例 A 繼承了使用案例 B 的所有屬性與操作方法。
 - D. 使用案例 B 是外部第三方系統，不屬於軟體邊界範疇。
 
-[Interactive Activity (線上作答)](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq3)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq3)
 
 <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq3" target="_blank"><img src="../../img/ch04/ase-ch04-ccq3.png" width="120"></a>
 
@@ -600,7 +600,7 @@ Order ..> PaymentProcessor : delegates >
 - C. 組合用於介面繼承，聚合用於多型實作。
 - D. 組合關聯度數只能是 1:1，聚合關聯度數只能是 1:N。
 
-[Interactive Activity (線上作答)](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq4)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq4)
 
 <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq4" target="_blank"><img src="../../img/ch04/ase-ch04-ccq4.png" width="120"></a>
 
@@ -770,7 +770,7 @@ end
 - C. 傳遞給 `OrderController` 控制物件 (Control) 協調業務邏輯驗證與調用
 - D. 直接傳遞給 `KitchenPrinter` 邊界物件列印工單
 
-[Interactive Activity (線上作答)](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq5)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq5)
 
 <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq5" target="_blank"><img src="../../img/ch04/ase-ch04-ccq5.png" width="120"></a>
 
@@ -940,7 +940,7 @@ stop
 - C. Fork/Join 只能處理資料流；Decision/Merge 只能處理錯誤例外。
 - D. Fork/Join 必須等待人工確認；Decision/Merge 由系統計時器自動觸發。
 
-[Interactive Activity (線上作答)](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq6)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq6)
 
 <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq6" target="_blank"><img src="../../img/ch04/ase-ch04-ccq6.png" width="120"></a>
 
@@ -1133,7 +1133,7 @@ Cancelled -left-> [*]
 - C. Action 只能在進入狀態時執行；Activity 只能在離開狀態時執行。
 - D. Action 專門處理例外失敗；Activity 專門處理成功路徑。
 
-[Interactive Activity (線上作答)](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq7)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq7)
 
 <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq7" target="_blank"><img src="../../img/ch04/ase-ch04-ccq7.png" width="120"></a>
 
@@ -1228,7 +1228,7 @@ deactivate UI
 - C. PlantUML 能自動產生完整的商業生產微服務與雲端資料庫。
 - D. PlantUML 只能繪製類別圖，無法繪製動態流程圖。
 
-[Interactive Activity (線上作答)](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq8)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq8)
 
 <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq8" target="_blank"><img src="../../img/ch04/ase-ch04-ccq8.png" width="120"></a>
 

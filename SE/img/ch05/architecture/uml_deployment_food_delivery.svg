@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .panel-header { fill: #0f172a; rx: 10; }
+      .title { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; fill: #ffffff; }
+      .subtitle { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12.5px; font-weight: 700; fill: #0f172a; }
+      .node-title { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12.5px; font-weight: 800; fill: #0f172a; }
+      .desc { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; fill: #475569; }
+      .mono { font-family: 'Consolas', 'Courier New', monospace; font-size: 10.5px; font-weight: 700; fill: #0f172a; }
+      .proto { font-family: 'Consolas', 'Courier New', monospace; font-size: 10.5px; font-weight: 700; fill: #1d4ed8; }
+      .stereo { font-family: 'Consolas', 'Courier New', monospace; font-size: 10.5px; font-style: italic; fill: #334155; }
+      .artifact-box { fill: #ffffff; stroke: #475569; stroke-width: 1.6; rx: 3; }
+      .comm-line { stroke: #0f172a; stroke-width: 2.3; fill: none; }
+    </style>
+    <!-- Dog-eared Document Icon for «artifact» -->
+    <g id="doc-icon">
+      <polygon points="0,0 10,0 14,4 14,17 0,17" fill="#f8fafc" stroke="#334155" stroke-width="1.4" />
+      <polyline points="10,0 10,4 14,4" fill="none" stroke="#334155" stroke-width="1.4" />
+    </g>
+  </defs>
+
+  <!-- Outer Background (#f5f5f5 per Rule 6) -->
+  <rect width="1200" height="580" class="bg" />
+
+  <!-- ================= LEFT PANEL: UML DEPLOYMENT DIAGRAM NOTATION ================= -->
+  <rect x="20" y="18" width="405" height="544" class="panel" />
+  <rect x="20" y="18" width="405" height="38" class="panel-header" />
+  <text x="222" y="42" text-anchor="middle" class="title">UML Deployment Diagram Notation Legend</text>
+
+  <!-- 1. 3D Node Box («device» & «executionEnvironment») -->
+  <rect x="36" y="68" width="373" height="128" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+  <text x="48" y="88" class="subtitle">1. Node (3D Cube: Hardware or Runtime Env)</text>
+  <!-- 3D Cube Illustration -->
+  <polygon points="48,112 60,100 186,100 174,112" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="1.8" />
+  <rect x="48" y="112" width="126" height="68" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.8" />
+  <polygon points="174,112 186,100 186,168 174,180" fill="#93c5fd" stroke="#1d4ed8" stroke-width="1.8" />
+  <text x="111" y="128" text-anchor="middle" class="stereo">«device»</text>
+  <text x="111" y="145" text-anchor="middle" class="node-title">AWS EC2 Host</text>
+  <text x="111" y="164" text-anchor="middle" class="desc" font-size="10">«executionEnv» Docker</text>
+  <!-- Explanation -->
+  <text x="200" y="112" class="desc">• <tspan font-weight="700" fill="#1d4ed8">«device»</tspan>: Physical compute</text>
+  <text x="200" y="128" class="desc">  resource (Server, Phone, IoT).</text>
+  <text x="200" y="148" class="desc">• <tspan font-weight="700" fill="#047857">«executionEnvironment»</tspan>:</text>
+  <text x="200" y="164" class="desc">  OS, Docker Container, K8s Pod,</text>
+  <text x="200" y="180" class="desc">  JVM, or DBMS nested inside.</text>
+
+  <!-- 2. Artifact («artifact») -->
+  <rect x="36" y="206" width="373" height="106" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+  <text x="48" y="226" class="subtitle">2. Deployable Artifact («artifact»)</text>
+  <rect x="48" y="240" width="142" height="54" class="artifact-box" />
+  <use href="#doc-icon" x="168" y="247" />
+  <text x="112" y="259" text-anchor="middle" class="stereo">«artifact»</text>
+  <text x="115" y="278" text-anchor="middle" class="mono">order-svc.jar</text>
+  <text x="202" y="250" class="desc">Concrete physical file deployed</text>
+  <text x="202" y="266" class="desc">onto a Node (e.g., <tspan class="mono">.jar</tspan>, <tspan class="mono">.war</tspan>,</text>
+  <text x="202" y="282" class="desc"><tspan class="mono">.ipa</tspan>, Docker image, SQL schema)</text>
+  <text x="202" y="298" class="desc">that <tspan class="stereo">«manifest»</tspan> a component.</text>
+
+  <!-- 3. Communication Path & Protocol Stereotype -->
+  <rect x="36" y="322" width="373" height="108" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+  <text x="48" y="342" class="subtitle">3. Communication Path &amp; Multiplicity</text>
+  <rect x="48" y="362" width="70" height="32" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.6" />
+  <text x="83" y="382" text-anchor="middle" class="mono">Node A</text>
+  <line x1="118" y1="378" x2="256" y2="378" class="comm-line" />
+  <text x="187" y="368" text-anchor="middle" class="proto">«gRPC / TLS 1.3»</text>
+  <text x="130" y="393" class="mono" font-size="10">1</text>
+  <text x="234" y="393" class="mono" font-size="10">3..10</text>
+  <rect x="256" y="362" width="76" height="32" fill="#ecfdf5" stroke="#047857" stroke-width="1.6" />
+  <text x="294" y="382" text-anchor="middle" class="mono">Node B</text>
+  <text x="48" y="414" class="desc">• Solid line = network link + transport protocol &amp; cardinality.</text>
+
+  <!-- 4. Architectural Value -->
+  <rect x="36" y="440" width="373" height="106" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5" />
+  <text x="48" y="460" class="subtitle" fill="#047857">4. Why Deployment Diagrams Are Vital</text>
+  <text x="48" y="480" class="desc" fill="#065f46">• Bridges <tspan font-weight="700">software binaries</tspan> to <tspan font-weight="700">cloud infrastructure</tspan>.</text>
+  <text x="48" y="497" class="desc" fill="#065f46">• Reveals <tspan font-weight="700">Single Points of Failure (SPOF)</tspan>, firewall</text>
+  <text x="48" y="513" class="desc" fill="#065f46">  boundaries, replication topology &amp; auto-scaling pools</text>
+  <text x="48" y="529" class="desc" fill="#065f46">  that are 100% invisible in Class or Package diagrams!</text>
+
+  <!-- ================= RIGHT PANEL: FOOD DELIVERY DEPLOYMENT DIAGRAM ================= -->
+  <rect x="442" y="18" width="738" height="544" class="panel" />
+  <rect x="442" y="18" width="738" height="38" class="panel-header" />
+  <text x="811" y="42" text-anchor="middle" class="title">Food Delivery System — UML Deployment Diagram (Cloud Infrastructure)</text>
+
+  <!-- NODE 1: Client Devices (Top Left) -->
+  <polygon points="462,86 474,74 646,74 634,86" fill="#ddd6fe" stroke="#6d28d9" stroke-width="1.8" />
+  <rect x="462" y="86" width="172" height="114" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.8" />
+  <polygon points="634,86 646,74 646,188 634,200" fill="#c4b5fd" stroke="#6d28d9" stroke-width="1.8" />
+  <text x="548" y="103" text-anchor="middle" class="stereo">«device» [1..*]</text>
+  <text x="548" y="119" text-anchor="middle" class="node-title">Mobile Client Nodes</text>
+  <rect x="474" y="128" width="146" height="28" class="artifact-box" />
+  <use href="#doc-icon" x="602" y="133" />
+  <text x="538" y="146" text-anchor="middle" class="mono">«artifact» customer.ipa</text>
+  <rect x="474" y="162" width="146" height="28" class="artifact-box" />
+  <use href="#doc-icon" x="602" y="167" />
+  <text x="538" y="180" text-anchor="middle" class="mono">«artifact» rider-gps.apk</text>
+
+  <!-- Comm Link: Client -> API Gateway -->
+  <line x1="646" y1="138" x2="736" y2="138" class="comm-line" />
+  <text x="691" y="120" text-anchor="middle" class="proto">«HTTPS / REST»</text>
+  <text x="691" y="133" text-anchor="middle" class="proto">«WSS (Live GPS)»</text>
+  <text x="654" y="152" class="mono" font-size="9.5">*</text>
+  <text x="720" y="152" class="mono" font-size="9.5">2..4</text>
+
+  <!-- NODE 2: AWS Edge / API Gateway Node (Top Right) -->
+  <polygon points="736,86 748,74 962,74 950,86" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="1.8" />
+  <rect x="736" y="86" width="214" height="106" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.8" />
+  <polygon points="950,86 962,74 962,180 950,192" fill="#93c5fd" stroke="#1d4ed8" stroke-width="1.8" />
+  <text x="843" y="103" text-anchor="middle" class="stereo">«device» [2..4 Multi-AZ]</text>
+  <text x="843" y="119" text-anchor="middle" class="node-title">AWS ALB + API Gateway</text>
+  <rect x="750" y="130" width="184" height="48" class="artifact-box" />
+  <use href="#doc-icon" x="914" y="136" />
+  <text x="835" y="148" text-anchor="middle" class="stereo">«artifact»</text>
+  <text x="835" y="166" text-anchor="middle" class="mono">kong-envoy-proxy.conf</text>
+
+  <!-- External Stripe Cloud Badge (Top Far Right) -->
+  <polygon points="1020,86 1030,76 1158,76 1148,86" fill="#e2e8f0" stroke="#475569" stroke-width="1.6" />
+  <rect x="1020" y="86" width="128" height="86" fill="#f8fafc" stroke="#475569" stroke-width="1.6" />
+  <polygon points="1148,86 1158,76 1158,162 1148,172" fill="#cbd5e1" stroke="#475569" stroke-width="1.6" />
+  <text x="1084" y="106" text-anchor="middle" class="stereo">«device»</text>
+  <text x="1084" y="124" text-anchor="middle" class="node-title">Stripe Cloud</text>
+  <text x="1084" y="144" text-anchor="middle" class="desc">(External PCI-DSS)</text>
+
+  <!-- Comm Link: Gateway -> EKS Cluster -->
+  <line x1="843" y1="192" x2="843" y2="232" class="comm-line" />
+  <text x="905" y="215" text-anchor="middle" class="proto">«gRPC / HTTP2»</text>
+
+  <!-- NODE 3: AWS EKS Kubernetes Cluster (Middle Center Wide 3D Cube) -->
+  <polygon points="462,244 476,230 1156,230 1142,244" fill="#a7f3d0" stroke="#047857" stroke-width="2" />
+  <rect x="462" y="244" width="680" height="148" fill="#ecfdf5" stroke="#047857" stroke-width="2" />
+  <polygon points="1142,244 1156,230 1156,378 1142,392" fill="#6ee7b7" stroke="#047857" stroke-width="2" />
+  <text x="802" y="262" text-anchor="middle" class="stereo">«device» AWS EKS Worker Node Cluster — «executionEnvironment» Kubernetes Engine</text>
+
+  <!-- Nested Pod 1: Order Pod -->
+  <rect x="478" y="272" width="204" height="106" rx="6" fill="#ffffff" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" />
+  <text x="580" y="290" text-anchor="middle" class="stereo">«executionEnv» K8s Pod [3..12]</text>
+  <text x="580" y="306" text-anchor="middle" class="node-title">Order Service Container</text>
+  <rect x="492" y="316" width="176" height="48" class="artifact-box" />
+  <use href="#doc-icon" x="648" y="322" />
+  <text x="572" y="334" text-anchor="middle" class="stereo">«artifact»</text>
+  <text x="572" y="352" text-anchor="middle" class="mono">order-service:v2.4.jar</text>
+
+  <!-- Nested Pod 2: Dispatch Pod -->
+  <rect x="700" y="272" width="208" height="106" rx="6" fill="#ffffff" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" />
+  <text x="804" y="290" text-anchor="middle" class="stereo">«executionEnv» K8s Pod [5..20]</text>
+  <text x="804" y="306" text-anchor="middle" class="node-title">Dispatch Engine Container</text>
+  <rect x="714" y="316" width="180" height="48" class="artifact-box" />
+  <use href="#doc-icon" x="874" y="322" />
+  <text x="796" y="334" text-anchor="middle" class="stereo">«artifact»</text>
+  <text x="796" y="352" text-anchor="middle" class="mono">dispatch-matcher.jar</text>
+
+  <!-- Nested Pod 3: Payment Pod -->
+  <rect x="926" y="272" width="200" height="106" rx="6" fill="#ffffff" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" />
+  <text x="1026" y="290" text-anchor="middle" class="stereo">«executionEnv» K8s Pod [2..6]</text>
+  <text x="1026" y="306" text-anchor="middle" class="node-title">Payment Service Container</text>
+  <rect x="940" y="316" width="172" height="48" class="artifact-box" />
+  <use href="#doc-icon" x="1092" y="322" />
+  <text x="1018" y="334" text-anchor="middle" class="stereo">«artifact»</text>
+  <text x="1018" y="352" text-anchor="middle" class="mono">payment-worker.jar</text>
+
+  <!-- Comm Link: Payment Pod -> Stripe Cloud -->
+  <line x1="1084" y1="272" x2="1084" y2="172" class="comm-line" />
+  <text x="1125" y="208" text-anchor="middle" class="proto" font-size="9.5">«HTTPS/mTLS»</text>
+
+  <!-- BOTTOM TIER: DATA, CACHE & STREAMING NODES -->
+  <!-- Comm Link 1: Order Pod -> RDS PostgreSQL -->
+  <line x1="560" y1="392" x2="560" y2="436" class="comm-line" />
+  <text x="615" y="418" text-anchor="middle" class="proto">«JDBC / TLS»</text>
+
+  <!-- Comm Link 2: Dispatch Pod -> Redis Geo Cluster -->
+  <line x1="804" y1="392" x2="804" y2="436" class="comm-line" />
+  <text x="862" y="418" text-anchor="middle" class="proto">«TCP / RESP»</text>
+
+  <!-- Comm Link 3: All Pods -> Apache Kafka Cluster -->
+  <line x1="1040" y1="392" x2="1040" y2="436" class="comm-line" />
+  <text x="1102" y="418" text-anchor="middle" class="proto">«Kafka TCP»</text>
+
+  <!-- NODE 4: AWS RDS PostgreSQL Cluster (Bottom Left) -->
+  <polygon points="462,448 472,438 672,438 662,448" fill="#fde68a" stroke="#b45309" stroke-width="1.8" />
+  <rect x="462" y="448" width="200" height="98" fill="#fffbeb" stroke="#b45309" stroke-width="1.8" />
+  <polygon points="662,448 672,438 672,536 662,546" fill="#fcd34d" stroke="#b45309" stroke-width="1.8" />
+  <text x="562" y="465" text-anchor="middle" class="stereo">«device» RDS [1 Primary + 2 Replica]</text>
+  <text x="562" y="481" text-anchor="middle" class="node-title">PostgreSQL DB Cluster</text>
+  <rect x="476" y="490" width="172" height="44" class="artifact-box" />
+  <use href="#doc-icon" x="628" y="496" />
+  <text x="554" y="507" text-anchor="middle" class="stereo">«artifact»</text>
+  <text x="554" y="524" text-anchor="middle" class="mono">orders_ledger_schema.sql</text>
+
+  <!-- NODE 5: Redis ElastiCache Geo-Shard (Bottom Middle) -->
+  <polygon points="698,448 708,438 914,438 904,448" fill="#fecaca" stroke="#dc2626" stroke-width="1.8" />
+  <rect x="698" y="448" width="206" height="98" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8" />
+  <polygon points="904,448 914,438 914,536 904,546" fill="#fca5a5" stroke="#dc2626" stroke-width="1.8" />
+  <text x="801" y="465" text-anchor="middle" class="stereo">«device» ElastiCache [6 Shards]</text>
+  <text x="801" y="481" text-anchor="middle" class="node-title">Redis Geo-Spatial Cluster</text>
+  <rect x="712" y="490" width="176" height="44" class="artifact-box" />
+  <use href="#doc-icon" x="868" y="496" />
+  <text x="792" y="507" text-anchor="middle" class="stereo">«artifact»</text>
+  <text x="792" y="524" text-anchor="middle" class="mono">rider-geohash-memory.rdb</text>
+
+  <!-- NODE 6: Apache Kafka Event Broker Cluster (Bottom Right) -->
+  <polygon points="938,448 948,438 1156,438 1146,448" fill="#cbd5e1" stroke="#334155" stroke-width="1.8" />
+  <rect x="938" y="448" width="208" height="98" fill="#f8fafc" stroke="#334155" stroke-width="1.8" />
+  <polygon points="1146,448 1156,438 1156,536 1146,546" fill="#94a3b8" stroke="#334155" stroke-width="1.8" />
+  <text x="1042" y="465" text-anchor="middle" class="stereo">«device» Kafka Brokers [3 Nodes]</text>
+  <text x="1042" y="481" text-anchor="middle" class="node-title">Event Streaming Cluster</text>
+  <rect x="952" y="490" width="180" height="44" class="artifact-box" />
+  <use href="#doc-icon" x="1112" y="496" />
+  <text x="1034" y="507" text-anchor="middle" class="stereo">«artifact»</text>
+  <text x="1034" y="524" text-anchor="middle" class="mono">order-dispatch-events.log</text>
+</svg>
+

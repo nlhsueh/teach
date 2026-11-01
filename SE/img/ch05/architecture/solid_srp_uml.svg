@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .panel-bad { fill: #ffffff; stroke: #ef4444; stroke-width: 2.5; rx: 12; }
+      .panel-good { fill: #ffffff; stroke: #10b981; stroke-width: 2.5; rx: 12; }
+      .hdr-bad { fill: #dc2626; rx: 10; }
+      .hdr-good { fill: #059669; rx: 10; }
+      .title { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; fill: #ffffff; }
+      .uml-box-bad { fill: #fef2f2; stroke: #dc2626; stroke-width: 2.2; }
+      .uml-hdr-bad { fill: #fee2e2; stroke: #dc2626; stroke-width: 2.2; }
+      .uml-box-good { fill: #ecfdf5; stroke: #059669; stroke-width: 2.2; }
+      .uml-hdr-good { fill: #d1fae5; stroke: #059669; stroke-width: 2.2; }
+      .uml-box-entity { fill: #eff6ff; stroke: #2563eb; stroke-width: 2.2; }
+      .uml-hdr-entity { fill: #dbeafe; stroke: #2563eb; stroke-width: 2.2; }
+      .cls-name { font-family: 'Consolas', 'Courier New', monospace; font-size: 13.5px; font-weight: 800; fill: #0f172a; }
+      .mono { font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; fill: #1e293b; }
+      .actor-badge { rx: 6; stroke-width: 1.8; }
+      .actor-text { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11.5px; font-weight: 700; }
+      .desc { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11.5px; fill: #334155; }
+      .dep-bad { stroke: #dc2626; stroke-width: 2; stroke-dasharray: 5,4; fill: none; }
+      .dep-good { stroke: #059669; stroke-width: 2; stroke-dasharray: 5,4; fill: none; }
+    </style>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#dc2626" stroke-width="2" />
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#059669" stroke-width="2" />
+    </marker>
+  </defs>
+
+  <!-- Outer Background (#f5f5f5 per Rule 6) -->
+  <rect width="1200" height="580" class="bg" />
+
+  <!-- ================= LEFT PANEL: VIOLATING SRP ================= -->
+  <rect x="20" y="18" width="568" height="544" class="panel-bad" />
+  <rect x="20" y="18" width="568" height="40" class="hdr-bad" />
+  <text x="304" y="44" text-anchor="middle" class="title">✘ Violating SRP: God Class with 3 Reasons to Change</text>
+
+  <!-- 3 Stakeholder Actors on the Left -->
+  <rect x="38" y="96" width="156" height="62" class="actor-badge" fill="#eff6ff" stroke="#2563eb" />
+  <text x="116" y="120" text-anchor="middle" class="actor-text" fill="#1d4ed8">Actor 1: CFO / Finance</text>
+  <text x="116" y="138" text-anchor="middle" class="desc">"Change tax &amp; surge</text>
+  <text x="116" y="151" text-anchor="middle" class="desc">fee formula!"</text>
+
+  <rect x="38" y="210" width="156" height="62" class="actor-badge" fill="#f5f3ff" stroke="#7c3aed" />
+  <text x="116" y="234" text-anchor="middle" class="actor-text" fill="#6d28d9">Actor 2: UX / Marketing</text>
+  <text x="116" y="252" text-anchor="middle" class="desc">"Redesign HTML/PDF</text>
+  <text x="116" y="265" text-anchor="middle" class="desc">invoice layout!"</text>
+
+  <rect x="38" y="324" width="156" height="62" class="actor-badge" fill="#fffbeb" stroke="#d97706" />
+  <text x="116" y="348" text-anchor="middle" class="actor-text" fill="#b45309">Actor 3: DBA / Infra</text>
+  <text x="116" y="366" text-anchor="middle" class="desc">"Migrate SQL table</text>
+  <text x="116" y="379" text-anchor="middle" class="desc">schema &amp; indexes!"</text>
+
+  <!-- Arrows from 3 Actors converging on 1 God Class -->
+  <line x1="194" y1="127" x2="254" y2="180" class="dep-bad" marker-end="url(#arr-red)" />
+  <line x1="194" y1="241" x2="254" y2="241" class="dep-bad" marker-end="url(#arr-red)" />
+  <line x1="194" y1="355" x2="254" y2="300" class="dep-bad" marker-end="url(#arr-red)" />
+
+  <!-- Bloated UML Class Box -->
+  <rect x="258" y="92" width="310" height="304" class="uml-box-bad" />
+  <rect x="258" y="92" width="310" height="42" class="uml-hdr-bad" />
+  <text x="413" y="118" text-anchor="middle" class="cls-name" fill="#991b1b">OrderInvoiceReport (God Class)</text>
+
+  <!-- Attributes Compartment -->
+  <text x="270" y="154" class="mono">- items: List&lt;OrderItem&gt;</text>
+  <text x="270" y="172" class="mono">- taxRate: BigDecimal</text>
+  <text x="270" y="190" class="mono">- htmlTemplatePath: String</text>
+  <text x="270" y="208" class="mono">- jdbcConnectionUrl: String</text>
+  <line x1="258" y1="220" x2="568" y2="220" stroke="#dc2626" stroke-width="1.8" />
+
+  <!-- Methods Compartment (Tangled Responsibilities) -->
+  <text x="270" y="244" class="mono" fill="#1d4ed8" font-weight="700">+ calculateTaxAndSurge(): Money</text>
+  <text x="270" y="262" class="mono" fill="#1d4ed8">- applyPromoDiscount(): Money</text>
+  <text x="270" y="290" class="mono" fill="#6d28d9" font-weight="700">+ renderHtmlInvoice(): String</text>
+  <text x="270" y="308" class="mono" fill="#6d28d9">- formatCurrencyCss(): String</text>
+  <text x="270" y="336" class="mono" fill="#b45309" font-weight="700">+ saveToPostgresDb(): void</text>
+  <text x="270" y="354" class="mono" fill="#b45309">- buildInsertSqlQuery(): String</text>
+
+  <!-- Bottom Consequence Box -->
+  <rect x="38" y="420" width="530" height="122" rx="8" fill="#fef2f2" stroke="#f87171" stroke-width="1.8" />
+  <text x="54" y="444" class="actor-text" fill="#b91c1c">Why This UML Design Fails (Coincidental / Logical Cohesion):</text>
+  <text x="54" y="468" class="desc" fill="#7f1d1d">• <tspan font-weight="700">3 Orthogonal Axes of Change</tspan> collide inside one class file.</text>
+  <text x="54" y="490" class="desc" fill="#7f1d1d">• A routine UI tweak by Marketing (<tspan class="mono">renderHtmlInvoice</tspan>) forces recompiling</text>
+  <text x="54" y="508" class="desc" fill="#7f1d1d">  and redeploying mission-critical CFO tax calculation &amp; SQL persistence!</text>
+  <text x="54" y="528" class="desc" fill="#7f1d1d">• Frequent Git merge conflicts across Finance, Frontend, and Backend teams.</text>
+
+  <!-- ================= RIGHT PANEL: FOLLOWING SRP ================= -->
+  <rect x="612" y="18" width="568" height="544" class="panel-good" />
+  <rect x="612" y="18" width="568" height="40" class="hdr-good" />
+  <text x="896" y="44" text-anchor="middle" class="title">✓ Following SRP: 1 Cohesive Class per Actor</text>
+
+  <!-- Pure Domain Data Class on Left of Right Panel -->
+  <rect x="630" y="182" width="184" height="126" class="uml-box-entity" />
+  <rect x="630" y="182" width="184" height="36" class="uml-hdr-entity" />
+  <text x="722" y="205" text-anchor="middle" class="cls-name" fill="#1e40af">OrderInvoice</text>
+  <text x="640" y="238" class="mono">- orderId: UUID</text>
+  <text x="640" y="256" class="mono">- items: List&lt;Item&gt;</text>
+  <line x1="630" y1="268" x2="814" y2="268" stroke="#2563eb" stroke-width="1.5" />
+  <text x="640" y="290" class="mono">+ getItems(): List</text>
+
+  <!-- Class 1: InvoiceTaxCalculator (Finance Actor) -->
+  <rect x="876" y="76" width="284" height="98" class="uml-box-good" />
+  <rect x="876" y="76" width="284" height="32" class="uml-hdr-good" />
+  <text x="1018" y="97" text-anchor="middle" class="cls-name" fill="#065f46">InvoiceTaxCalculator</text>
+  <text x="888" y="126" class="mono">+ calculateTotal(OrderInvoice): Money</text>
+  <text x="888" y="144" class="mono">- applySurgeAndTax(): Money</text>
+  <text x="888" y="164" class="desc" fill="#1d4ed8" font-weight="700">Sole Actor: CFO / Finance Team</text>
+
+  <!-- Class 2: InvoiceHtmlRenderer (UX Actor) -->
+  <rect x="876" y="196" width="284" height="98" class="uml-box-good" />
+  <rect x="876" y="196" width="284" height="32" class="uml-hdr-good" />
+  <text x="1018" y="217" text-anchor="middle" class="cls-name" fill="#065f46">InvoiceHtmlRenderer</text>
+  <text x="888" y="246" class="mono">+ renderHtml(OrderInvoice): String</text>
+  <text x="888" y="264" class="mono">- formatReceiptDom(): String</text>
+  <text x="888" y="284" class="desc" fill="#6d28d9" font-weight="700">Sole Actor: UX / Marketing Team</text>
+
+  <!-- Class 3: InvoiceSqlRepository (DBA Actor) -->
+  <rect x="876" y="316" width="284" height="98" class="uml-box-good" />
+  <rect x="876" y="316" width="284" height="32" class="uml-hdr-good" />
+  <text x="1018" y="337" text-anchor="middle" class="cls-name" fill="#065f46">InvoiceSqlRepository</text>
+  <text x="888" y="366" class="mono">+ save(OrderInvoice): void</text>
+  <text x="888" y="384" class="mono">- executePreparedInsert(): void</text>
+  <text x="888" y="404" class="desc" fill="#b45309" font-weight="700">Sole Actor: DBA / Infra Team</text>
+
+  <!-- Clean Dependency Arrows from the 3 Focused Classes to OrderInvoice -->
+  <line x1="876" y1="125" x2="780" y2="180" class="dep-good" marker-end="url(#arr-green)" />
+  <line x1="876" y1="245" x2="816" y2="245" class="dep-good" marker-end="url(#arr-green)" />
+  <line x1="876" y1="365" x2="780" y2="310" class="dep-good" marker-end="url(#arr-green)" />
+
+  <!-- Bottom Benefit Box -->
+  <rect x="630" y="430" width="530" height="112" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8" />
+  <text x="646" y="454" class="actor-text" fill="#047857">Why This UML Design Excels (Functional Cohesion + Data Coupling):</text>
+  <text x="646" y="476" class="desc" fill="#065f46">• <tspan font-weight="700">1 Class = 1 Stakeholder = 1 Reason to Change</tspan>.</text>
+  <text x="646" y="496" class="desc" fill="#065f46">• UI changes in <tspan class="mono">InvoiceHtmlRenderer</tspan> have <tspan font-weight="700">zero blast radius</tspan> on tax</text>
+  <text x="646" y="514" class="desc" fill="#065f46">  calculations or SQL persistence; each class can be unit-tested in isolation!</text>
+</svg>
+

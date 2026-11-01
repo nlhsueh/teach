@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .panel-bad { fill: #ffffff; stroke: #ef4444; stroke-width: 2.5; rx: 12; }
+      .panel-good { fill: #ffffff; stroke: #10b981; stroke-width: 2.5; rx: 12; }
+      .hdr-bad { fill: #dc2626; rx: 10; }
+      .hdr-good { fill: #059669; rx: 10; }
+      .title { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; fill: #ffffff; }
+      .uml-box-bad { fill: #fef2f2; stroke: #dc2626; stroke-width: 2.2; }
+      .uml-hdr-bad { fill: #fee2e2; stroke: #dc2626; stroke-width: 2.2; }
+      .uml-box-good { fill: #ecfdf5; stroke: #059669; stroke-width: 2.2; }
+      .uml-hdr-good { fill: #d1fae5; stroke: #059669; stroke-width: 2.2; }
+      .uml-box-iface { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 2.2; }
+      .uml-hdr-iface { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2.2; }
+      .uml-box-new { fill: #fefce8; stroke: #d97706; stroke-width: 2.5; stroke-dasharray: 6,3; }
+      .cls-name { font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; font-weight: 800; fill: #0f172a; }
+      .mono { font-family: 'Consolas', 'Courier New', monospace; font-size: 10.8px; fill: #1e293b; }
+      .stereo { font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; font-style: italic; font-weight: 700; fill: #1d4ed8; }
+      .desc { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11.5px; fill: #334155; }
+      .actor-text { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11.5px; font-weight: 700; }
+      .dep-bad { stroke: #dc2626; stroke-width: 2.2; fill: none; }
+      .realize-line { stroke: #059669; stroke-width: 2.2; stroke-dasharray: 6,4; fill: none; }
+    </style>
+    <marker id="open-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#dc2626" stroke-width="2" />
+    </marker>
+    <marker id="open-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#1d4ed8" stroke-width="2" />
+    </marker>
+    <!-- UML Hollow Triangle for Realization / Inheritance -->
+    <marker id="hollow-tri" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <polygon points="1,1 11,6 1,11" fill="#ffffff" stroke="#059669" stroke-width="2" />
+    </marker>
+  </defs>
+
+  <!-- Outer Background (#f5f5f5 per Rule 6) -->
+  <rect width="1200" height="580" class="bg" />
+
+  <!-- ================= LEFT PANEL: VIOLATING OCP ================= -->
+  <rect x="20" y="18" width="568" height="544" class="panel-bad" />
+  <rect x="20" y="18" width="568" height="40" class="hdr-bad" />
+  <text x="304" y="44" text-anchor="middle" class="title">✘ Violating OCP: Rigid Concrete Coupling &amp; Switch Chains</text>
+
+  <!-- Top Client Class (Must be modified every time!) -->
+  <rect x="114" y="76" width="380" height="142" class="uml-box-bad" />
+  <rect x="114" y="76" width="380" height="36" class="uml-hdr-bad" />
+  <text x="304" y="99" text-anchor="middle" class="cls-name" fill="#991b1b">OrderNotificationService (Fragile Core)</text>
+  <text x="128" y="130" class="mono">+ notifyCustomer(order: Order, type: String): void</text>
+  <line x1="114" y1="142" x2="494" y2="142" stroke="#dc2626" stroke-width="1.5" />
+  <text x="128" y="162" class="mono" fill="#b91c1c">if (type == "EMAIL") emailSender.sendEmail();</text>
+  <text x="128" y="180" class="mono" fill="#b91c1c">else if (type == "SMS") smsSender.sendSms();</text>
+  <text x="128" y="198" class="mono" fill="#dc2626" font-weight="700">else if (type == "LINE") ... // ✘ MUST EDIT CORE!</text>
+
+  <!-- Direct Hardwired Dependencies to Concrete Classes -->
+  <line x1="190" y1="218" x2="110" y2="294" class="dep-bad" marker-end="url(#open-red)" />
+  <line x1="304" y1="218" x2="296" y2="294" class="dep-bad" marker-end="url(#open-red)" />
+  <line x1="418" y1="218" x2="484" y2="294" class="dep-bad" stroke-dasharray="5,3" marker-end="url(#open-red)" />
+
+  <!-- Concrete Class 1: EmailSender -->
+  <rect x="36" y="298" width="154" height="84" class="uml-box-bad" />
+  <rect x="36" y="298" width="154" height="30" class="uml-hdr-bad" />
+  <text x="113" y="318" text-anchor="middle" class="cls-name">EmailSender</text>
+  <text x="46" y="352" class="mono">+ sendEmail(): void</text>
+
+  <!-- Concrete Class 2: SmsSender -->
+  <rect x="214" y="298" width="154" height="84" class="uml-box-bad" />
+  <rect x="214" y="298" width="154" height="30" class="uml-hdr-bad" />
+  <text x="291" y="318" text-anchor="middle" class="cls-name">SmsSender</text>
+  <text x="224" y="352" class="mono">+ sendSms(): void</text>
+
+  <!-- Concrete Class 3: LineSender (New Requirement) -->
+  <rect x="392" y="298" width="176" height="84" class="uml-box-new" />
+  <text x="480" y="316" text-anchor="middle" class="actor-text" fill="#b45309">«New Requirement»</text>
+  <text x="480" y="336" text-anchor="middle" class="cls-name" fill="#92400e">LineNotifySender</text>
+  <text x="404" y="362" class="mono">+ pushLineMsg(): void</text>
+
+  <!-- Bottom Consequence Box -->
+  <rect x="38" y="408" width="530" height="134" rx="8" fill="#fef2f2" stroke="#f87171" stroke-width="1.8" />
+  <text x="54" y="432" class="actor-text" fill="#b91c1c">Why This Violates OCP (Not Closed for Modification):</text>
+  <text x="54" y="456" class="desc" fill="#7f1d1d">• <tspan class="mono">OrderNotificationService</tspan> is directly coupled to every concrete channel.</text>
+  <text x="54" y="478" class="desc" fill="#7f1d1d">• Every time business adds a new channel (LINE, WhatsApp, Discord),</text>
+  <text x="54" y="496" class="desc" fill="#7f1d1d">  engineers must <tspan font-weight="700">cut open and modify</tspan> the tested core service class.</text>
+  <text x="54" y="518" class="desc" fill="#7f1d1d">• High risk of breaking existing Email/SMS logic during routine extensions!</text>
+
+  <!-- ================= RIGHT PANEL: FOLLOWING OCP ================= -->
+  <rect x="612" y="18" width="568" height="544" class="panel-good" />
+  <rect x="612" y="18" width="568" height="40" class="hdr-good" />
+  <text x="896" y="44" text-anchor="middle" class="title">✓ Following OCP: Open for Extension, Closed for Modification</text>
+
+  <!-- Client Class (Closed for Modification!) -->
+  <rect x="630" y="84" width="236" height="106" class="uml-box-good" />
+  <rect x="630" y="84" width="236" height="34" class="uml-hdr-good" />
+  <text x="748" y="106" text-anchor="middle" class="cls-name" fill="#065f46">OrderNotificationService</text>
+  <text x="640" y="138" class="mono">- channels: List&lt;INotifier&gt;</text>
+  <line x1="630" y1="148" x2="866" y2="148" stroke="#059669" stroke-width="1.5" />
+  <text x="640" y="170" class="mono">+ notifyAll(Order): void</text>
+  <text x="748" y="208" text-anchor="middle" class="actor-text" fill="#047857">🔒 CLOSED for Modification!</text>
+
+  <!-- Arrow from Service to Interface -->
+  <line x1="866" y1="136" x2="932" y2="136" stroke="#1d4ed8" stroke-width="2.4" marker-end="url(#open-blue)" />
+
+  <!-- Abstract Interface (The Stable Pivot) -->
+  <rect x="936" y="76" width="224" height="114" class="uml-box-iface" />
+  <rect x="936" y="76" width="224" height="44" class="uml-hdr-iface" />
+  <text x="1048" y="94" text-anchor="middle" class="stereo">«interface»</text>
+  <text x="1048" y="112" text-anchor="middle" class="cls-name" fill="#1e40af">INotificationChannel</text>
+  <text x="948" y="148" class="mono">+ send(msg: Message): void</text>
+  <text x="948" y="170" class="desc" fill="#1d4ed8" font-weight="700">🔓 OPEN for Extension!</text>
+
+  <!-- UML Realization Arrows (- - -|>) pointing UP to INotificationChannel -->
+  <path d="M 702 298 L 702 248 L 1000 248 L 1000 192" class="realize-line" marker-end="url(#hollow-tri)" />
+  <path d="M 884 298 L 884 248 L 1048 248 L 1048 192" class="realize-line" marker-end="url(#hollow-tri)" />
+  <path d="M 1074 298 L 1074 248 L 1096 248 L 1096 192" class="realize-line" marker-end="url(#hollow-tri)" />
+
+  <!-- Concrete Implementation 1 -->
+  <rect x="630" y="298" width="146" height="84" class="uml-box-good" />
+  <rect x="630" y="298" width="146" height="30" class="uml-hdr-good" />
+  <text x="703" y="318" text-anchor="middle" class="cls-name">EmailChannel</text>
+  <text x="640" y="352" class="mono">+ send(msg): void</text>
+
+  <!-- Concrete Implementation 2 -->
+  <rect x="810" y="298" width="146" height="84" class="uml-box-good" />
+  <rect x="810" y="298" width="146" height="30" class="uml-hdr-good" />
+  <text x="883" y="318" text-anchor="middle" class="cls-name">SmsChannel</text>
+  <text x="820" y="352" class="mono">+ send(msg): void</text>
+
+  <!-- Concrete Implementation 3 (Plugged in with 0 changes to Core!) -->
+  <rect x="988" y="298" width="172" height="84" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="2.8" />
+  <rect x="988" y="298" width="172" height="30" fill="#a7f3d0" stroke="#059669" stroke-width="2.2" />
+  <text x="1074" y="318" text-anchor="middle" class="cls-name" fill="#065f46">LineNotifyChannel</text>
+  <text x="998" y="346" class="mono">+ send(msg): void</text>
+  <text x="1074" y="370" text-anchor="middle" class="actor-text" fill="#047857">★ Added via New Class!</text>
+
+  <!-- Bottom Benefit Box -->
+  <rect x="630" y="408" width="530" height="134" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8" />
+  <text x="646" y="432" class="actor-text" fill="#047857">Why This UML Design Excels (Polymorphic Strategy / Plugin Pattern):</text>
+  <text x="646" y="456" class="desc" fill="#065f46">• <tspan class="mono">OrderNotificationService</tspan> depends solely on the stable <tspan class="mono">INotificationChannel</tspan>.</text>
+  <text x="646" y="478" class="desc" fill="#065f46">• To support <tspan font-weight="700">LINE Notify</tspan> or <tspan font-weight="700">Discord</tspan>, we simply add a new class that</text>
+  <text x="646" y="496" class="desc" fill="#065f46">  realizes (<tspan class="mono">- - -|&gt;</tspan>) the interface—<tspan font-weight="700">0 lines modified</tspan> in the core service!</text>
+  <text x="646" y="518" class="desc" fill="#065f46">• Eliminates regression bugs in existing battle-tested notification channels.</text>
+</svg>
+

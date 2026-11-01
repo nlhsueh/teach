@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%" height="100%">
+  <defs>
+    <filter id="soft-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+    <marker id="arr-sm-blue" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#2563eb" />
+    </marker>
+    <marker id="arr-sm-green" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#059669" />
+    </marker>
+    <marker id="arr-sm-amber" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#d97706" />
+    </marker>
+    <marker id="arr-sm-red" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#dc2626" />
+    </marker>
+    <marker id="arr-sm-purple" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#7c3aed" />
+    </marker>
+  </defs>
+
+  <!-- Slide-matched #f5f5f5 background -->
+  <rect width="960" height="400" fill="#f5f5f5" />
+  <rect x="6" y="6" width="948" height="388" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Column Headers -->
+  <text x="240" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17.5" font-weight="800" fill="#065f46" text-anchor="middle">Loose &amp; Modular Coupling (Levels 6 → 4)</text>
+  <text x="720" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17.5" font-weight="800" fill="#991b1b" text-anchor="middle">Tight &amp; Pathological Coupling (Levels 3 → 1)</text>
+
+  <!-- Center Vertical Divider -->
+  <line x1="480" y1="20" x2="480" y2="380" stroke="#e2e8f0" stroke-width="1.8" />
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 1: LEVEL 6. MESSAGE / EVENT COUPLING (IDEAL / LOOSEST)
+       ========================================================================= -->
+  <g transform="translate(18, 48)">
+    <!-- Left Graphic: Pub/Sub via Event Bus (Zero Direct Ref) -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="2" width="122" height="72" rx="7" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5" />
+      <rect x="6" y="10" width="38" height="22" rx="4" fill="#059669" />
+      <text x="25" y="24" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">OrderSvc</text>
+
+      <line x1="25" y1="32" x2="25" y2="44" stroke="#059669" stroke-width="1.5" marker-end="url(#arr-sm-green)" />
+
+      <!-- Event Bus Bar -->
+      <rect x="6" y="46" width="110" height="20" rx="10" fill="#7c3aed" />
+      <text x="61" y="59" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="800" fill="#ffffff" text-anchor="middle">Async Event Bus</text>
+
+      <line x1="95" y1="46" x2="95" y2="34" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arr-sm-purple)" />
+
+      <rect x="76" y="10" width="40" height="22" rx="4" fill="#3b82f6" />
+      <text x="96" y="24" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">NotifySvc</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="222" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#065f46" text-anchor="middle">6. Message / Event</text>
+    <text x="222" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Async Events, Zero Direct Ref)</text>
+    <rect x="172" y="48" width="100" height="17" rx="8.5" fill="#d1fae5" stroke="#10b981" stroke-width="1" />
+    <text x="222" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#065f46" text-anchor="middle">IDEAL (LOOSEST)</text>
+
+    <!-- Right Graphic: Concrete Event Payload -->
+    <g transform="translate(308, 2)">
+      <rect x="0" y="4" width="122" height="66" rx="7" fill="#f0fdf4" stroke="#059669" stroke-width="1.5" />
+      <rect x="10" y="12" width="102" height="22" rx="5" fill="#059669" />
+      <text x="61" y="26" font-family="monospace" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">publish(OrderPlaced)</text>
+      <text x="61" y="48" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#065f46" text-anchor="middle">Sender &amp; Receiver Have</text>
+      <text x="61" y="60" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="800" fill="#047857" text-anchor="middle">0 Compile-Time Dependency</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 2: LEVEL 5. DATA COUPLING (BEST DIRECT CALL)
+       ========================================================================= -->
+  <g transform="translate(18, 136)">
+    <!-- Left Graphic: Module A passing only primitive values (w, h) to Module B -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="2" width="122" height="70" rx="7" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5" />
+      <rect x="6" y="20" width="36" height="36" rx="5" fill="#2563eb" />
+      <text x="24" y="41" font-family="-apple-system, sans-serif" font-size="8" font-weight="800" fill="#ffffff" text-anchor="middle">Order</text>
+
+      <line x1="42" y1="38" x2="76" y2="38" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arr-sm-blue)" />
+      <rect x="45" y="18" width="32" height="15" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1" />
+      <text x="61" y="28.5" font-family="monospace" font-size="7.5" font-weight="700" fill="#1e40af" text-anchor="middle">(km, $)</text>
+
+      <rect x="78" y="20" width="38" height="36" rx="5" fill="#10b981" />
+      <text x="97" y="41" font-family="-apple-system, sans-serif" font-size="8" font-weight="800" fill="#ffffff" text-anchor="middle">FeeCalc</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="222" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#1e40af" text-anchor="middle">5. Data Coupling</text>
+    <text x="222" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Passes Needed Primitives Only)</text>
+    <rect x="172" y="48" width="100" height="17" rx="8.5" fill="#dbeafe" stroke="#3b82f6" stroke-width="1" />
+    <text x="222" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#1e40af" text-anchor="middle">BEST (DIRECT)</text>
+
+    <!-- Right Graphic: Clean Signature -->
+    <g transform="translate(308, 2)">
+      <rect x="0" y="4" width="122" height="66" rx="7" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5" />
+      <rect x="0" y="4" width="122" height="18" rx="5" fill="#2563eb" />
+      <text x="61" y="16" font-family="monospace" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">calcFee(double km)</text>
+      <text x="61" y="37" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#1e3a8a" text-anchor="middle">Passes Only Exact Values</text>
+      <text x="61" y="50" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#059669" text-anchor="middle">Zero Knowledge of Order</text>
+      <text x="61" y="62" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#059669" text-anchor="middle">or Customer Class Structure</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 3: LEVEL 4. STAMP (DATA-STRUCT) COUPLING (ACCEPTABLE)
+       ========================================================================= -->
+  <g transform="translate(18, 224)">
+    <!-- Left Graphic: Passing giant 4-field struct when only 1 field is used -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="2" width="122" height="70" rx="7" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4" />
+      <!-- Bloated DTO passed -->
+      <rect x="6" y="10" width="54" height="54" rx="4" fill="#e2e8f0" stroke="#64748b" stroke-width="1" />
+      <text x="33" y="21" font-family="-apple-system, sans-serif" font-size="7" font-weight="800" fill="#334155" text-anchor="middle">CustomerDTO</text>
+      <rect x="10" y="25" width="46" height="10" rx="2" fill="#cbd5e1" />
+      <text x="33" y="32.5" font-family="monospace" font-size="6.5" fill="#64748b" text-anchor="middle">name (unused)</text>
+      <rect x="10" y="37" width="46" height="10" rx="2" fill="#cbd5e1" />
+      <text x="33" y="44.5" font-family="monospace" font-size="6.5" fill="#64748b" text-anchor="middle">card (unused)</text>
+      <rect x="10" y="49" width="46" height="11" rx="2" fill="#38bdf8" />
+      <text x="33" y="57" font-family="monospace" font-size="7" font-weight="800" fill="#0c4a6e" text-anchor="middle">zipCode (USED)</text>
+
+      <line x1="60" y1="54" x2="76" y2="42" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arr-sm-blue)" />
+
+      <rect x="78" y="22" width="38" height="34" rx="5" fill="#0284c7" />
+      <text x="97" y="37" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">Tax</text>
+      <text x="97" y="47" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#e0f2fe" text-anchor="middle">Zone</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="222" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#0369a1" text-anchor="middle">4. Stamp Coupling</text>
+    <text x="222" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Whole Object for 1 Field)</text>
+    <rect x="172" y="48" width="100" height="17" rx="8.5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+    <text x="222" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">MODERATE</text>
+
+    <!-- Right Graphic: Unnecessary Schema Binding -->
+    <g transform="translate(308, 2)">
+      <rect x="0" y="4" width="122" height="66" rx="7" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.4" />
+      <rect x="0" y="4" width="122" height="18" rx="5" fill="#0284c7" />
+      <text x="61" y="16" font-family="monospace" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">findZone(Customer c)</text>
+      <text x="61" y="35" font-family="monospace" font-size="7.5" font-weight="700" fill="#0369a1" text-anchor="middle">return map.get(c.zipCode);</text>
+      <text x="61" y="50" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#b45309" text-anchor="middle">Risk: Tied to Customer Class</text>
+      <text x="61" y="61" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#047857" text-anchor="middle">Fix: Pass String zipCode</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       LEFT COLUMN — ROW 4: ARCHITECTURAL FIREWALL SUMMARY (LOOSE COUPLING)
+       ========================================================================= -->
+  <g transform="translate(18, 312)">
+    <rect x="6" y="4" width="424" height="66" rx="8" fill="#f0fdf4" stroke="#10b981" stroke-width="1.5" />
+    <text x="218" y="21" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="800" fill="#065f46" text-anchor="middle">Loose Coupling Firewall (Levels 5–6 + Interface Contracts)</text>
+    <text x="218" y="38" font-family="-apple-system, sans-serif" font-size="9.5" font-weight="700" fill="#0f172a" text-anchor="middle">Module A  →  [Narrow Interface / Primitives / Event]  →  Module B</text>
+    <text x="218" y="54" font-family="-apple-system, sans-serif" font-size="9.5" font-weight="800" fill="#047857" text-anchor="middle">Result: Changing Module B Internals Causes Zero Ripple Effect on Module A</text>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 1: LEVEL 3. CONTROL COUPLING (MODERATE-HIGH RISK)
+       ========================================================================= -->
+  <g transform="translate(494, 48)">
+    <!-- Left Graphic: Caller Passing Flag Dictating Callee Internal Branch -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="2" width="122" height="72" rx="7" fill="#fff7ed" stroke="#fb923c" stroke-width="1.4" />
+      <rect x="6" y="22" width="36" height="30" rx="4" fill="#ea580c" />
+      <text x="24" y="40" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="800" fill="#ffffff" text-anchor="middle">Caller</text>
+
+      <line x1="42" y1="37" x2="66" y2="37" stroke="#ea580c" stroke-width="1.5" marker-end="url(#arr-sm-amber)" />
+      <text x="54" y="29" font-family="monospace" font-size="7" font-weight="800" fill="#c2410c" text-anchor="middle">flag=2</text>
+
+      <rect x="68" y="8" width="48" height="58" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="1.2" />
+      <text x="92" y="20" font-family="-apple-system, sans-serif" font-size="7" font-weight="800" fill="#9a3412" text-anchor="middle">Callee</text>
+      <rect x="73" y="25" width="38" height="14" rx="2" fill="#fed7aa" />
+      <text x="92" y="34.5" font-family="monospace" font-size="6.5" fill="#9a3412" text-anchor="middle">if (1)</text>
+      <rect x="73" y="43" width="38" height="16" rx="2" fill="#ea580c" />
+      <text x="92" y="53.5" font-family="monospace" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">if (2)!</text>
+    </g>
+
+    <!-- Center Label -->
+    <text x="224" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#c2410c" text-anchor="middle">3. Control Coupling</text>
+    <text x="224" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Flag Dictates Internal Branch)</text>
+    <rect x="174" y="48" width="100" height="17" rx="8.5" fill="#ffedd5" stroke="#fb923c" stroke-width="1" />
+    <text x="224" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#c2410c" text-anchor="middle">HIGH RISK</text>
+
+    <!-- Right Graphic: Flag Control Anti-Pattern -->
+    <g transform="translate(314, 2)">
+      <rect x="2" y="4" width="120" height="66" rx="7" fill="#fff7ed" stroke="#ea580c" stroke-width="1.4" />
+      <rect x="2" y="4" width="120" height="18" rx="5" fill="#ea580c" />
+      <text x="62" y="16" font-family="monospace" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle">pay(amt, int mode)</text>
+      <text x="62" y="34" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#9a3412" text-anchor="middle">Caller Must Know Internal</text>
+      <text x="62" y="46" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#9a3412" text-anchor="middle">if/else Flag Constants</text>
+      <text x="62" y="61" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#047857" text-anchor="middle">Fix: Polymorphic Strategy</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 2: LEVEL 2. COMMON (GLOBAL) COUPLING (SEVERE RISK)
+       ========================================================================= -->
+  <g transform="translate(494, 136)">
+    <!-- Left Graphic: Modules A, B, C Mutating Shared Global State -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="2" width="122" height="72" rx="7" fill="#fef2f2" stroke="#f87171" stroke-width="1.4" />
+      <!-- Shared Global Variable in Center -->
+      <rect x="26" y="8" width="70" height="22" rx="4" fill="#dc2626" />
+      <text x="61" y="21.5" font-family="monospace" font-size="7.5" font-weight="800" fill="#ffffff" text-anchor="middle">GLOBAL_STATE</text>
+
+      <!-- 3 Modules Mutating It -->
+      <rect x="6" y="46" width="32" height="20" rx="3" fill="#fca5a5" />
+      <text x="22" y="59" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">Mod A</text>
+      <rect x="45" y="46" width="32" height="20" rx="3" fill="#fca5a5" />
+      <text x="61" y="59" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">Mod B</text>
+      <rect x="84" y="46" width="32" height="20" rx="3" fill="#fca5a5" />
+      <text x="100" y="59" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">Mod C</text>
+
+      <line x1="22" y1="46" x2="40" y2="32" stroke="#dc2626" stroke-width="1.4" marker-end="url(#arr-sm-red)" />
+      <line x1="61" y1="46" x2="61" y2="32" stroke="#dc2626" stroke-width="1.4" marker-end="url(#arr-sm-red)" />
+      <line x1="100" y1="46" x2="82" y2="32" stroke="#dc2626" stroke-width="1.4" marker-end="url(#arr-sm-red)" />
+    </g>
+
+    <!-- Center Label -->
+    <text x="224" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#b91c1c" text-anchor="middle">2. Common (Global)</text>
+    <text x="224" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Shared Global Mutable State)</text>
+    <rect x="174" y="48" width="100" height="17" rx="8.5" fill="#fee2e2" stroke="#f87171" stroke-width="1" />
+    <text x="224" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#b91c1c" text-anchor="middle">SEVERE RISK</text>
+
+    <!-- Right Graphic: Global State Side Effects -->
+    <g transform="translate(314, 2)">
+      <rect x="2" y="4" width="120" height="66" rx="7" fill="#fef2f2" stroke="#dc2626" stroke-width="1.4" />
+      <rect x="2" y="4" width="120" height="18" rx="5" fill="#dc2626" />
+      <text x="62" y="16" font-family="monospace" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">GlobalApp.currentCart</text>
+      <text x="62" y="35" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#991b1b" text-anchor="middle">Hidden Side Effects &amp;</text>
+      <text x="62" y="47" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#991b1b" text-anchor="middle">Thread Race Conditions</text>
+      <text x="62" y="61" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#b91c1c" text-anchor="middle">Any Reader Can Corrupt All</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 3: LEVEL 1. CONTENT (PATHOLOGICAL) COUPLING (WORST)
+       ========================================================================= -->
+  <g transform="translate(494, 224)">
+    <!-- Left Graphic: Module A Piercing Module B's Boundary to Mutate Private Field -->
+    <g transform="translate(6, 2)">
+      <rect x="0" y="2" width="122" height="70" rx="7" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4 2" />
+      <rect x="6" y="22" width="36" height="32" rx="4" fill="#991b1b" />
+      <text x="24" y="41" font-family="-apple-system, sans-serif" font-size="7.5" font-weight="800" fill="#ffffff" text-anchor="middle">Mod A</text>
+
+      <!-- Module B with private internals exposed/pierced -->
+      <rect x="60" y="10" width="56" height="54" rx="5" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5" />
+      <text x="88" y="22" font-family="-apple-system, sans-serif" font-size="7" font-weight="800" fill="#7f1d1d" text-anchor="middle">Mod B</text>
+      <rect x="65" y="28" width="46" height="28" rx="3" fill="#7f1d1d" />
+      <text x="88" y="40" font-family="monospace" font-size="6.5" font-weight="700" fill="#fca5a5" text-anchor="middle">-private</text>
+      <text x="88" y="50" font-family="monospace" font-size="6.5" font-weight="700" fill="#ffffff" text-anchor="middle">balance</text>
+
+      <!-- Piercing Arrow -->
+      <line x1="42" y1="38" x2="63" y2="42" stroke="#dc2626" stroke-width="2" marker-end="url(#arr-sm-red)" />
+    </g>
+
+    <!-- Center Label -->
+    <text x="224" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#991b1b" text-anchor="middle">1. Content Coupling</text>
+    <text x="224" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">(Mutates Private Internals)</text>
+    <rect x="174" y="48" width="100" height="17" rx="8.5" fill="#991b1b" />
+    <text x="224" y="59.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="#ffffff" text-anchor="middle">WORST (PATHOLOGICAL)</text>
+
+    <!-- Right Graphic: Reflection / Direct Field Hack -->
+    <g transform="translate(314, 2)">
+      <rect x="2" y="4" width="120" height="66" rx="7" fill="#450a0a" stroke="#991b1b" stroke-width="1.5" />
+      <text x="62" y="18" font-family="monospace" font-size="8" font-weight="800" fill="#fca5a5" text-anchor="middle">Encapsulation Breach</text>
+      <text x="62" y="34" font-family="monospace" font-size="7.5" fill="#fecaca" text-anchor="middle">order.payment.rawSql</text>
+      <text x="62" y="46" font-family="monospace" font-size="7.5" fill="#fecaca" text-anchor="middle">  = "UPDATE paid=1";</text>
+      <text x="62" y="60" font-family="-apple-system, sans-serif" font-size="7" font-weight="700" fill="#fca5a5" text-anchor="middle">Any Change in B Breaks A!</text>
+    </g>
+  </g>
+
+  <!-- =========================================================================
+       RIGHT COLUMN — ROW 4: TIGHT COUPLING RIPPLE-EFFECT WARNING
+       ========================================================================= -->
+  <g transform="translate(494, 312)">
+    <rect x="6" y="4" width="430" height="66" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" />
+    <text x="221" y="21" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="800" fill="#991b1b" text-anchor="middle">Tight Coupling Ripple Effect (Levels 1–3 Domino Failure)</text>
+    <text x="221" y="38" font-family="-apple-system, sans-serif" font-size="9.5" font-weight="700" fill="#b91c1c" text-anchor="middle">Change 1 Private Field in Mod B  →  Breaks Mod A  →  Breaks Mod C</text>
+    <text x="221" y="54" font-family="-apple-system, sans-serif" font-size="9.5" font-weight="800" fill="#047857" text-anchor="middle">→ Refactor to Data / Event Coupling (Levels 5–6) via Narrow Interfaces</text>
+  </g>
+</svg>
+

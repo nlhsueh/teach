@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .panel-bad { fill: #ffffff; stroke: #ef4444; stroke-width: 2.5; rx: 12; }
+      .panel-good { fill: #ffffff; stroke: #10b981; stroke-width: 2.5; rx: 12; }
+      .hdr-bad { fill: #dc2626; rx: 10; }
+      .hdr-good { fill: #059669; rx: 10; }
+      .title { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; fill: #ffffff; }
+      .uml-box-bad { fill: #fef2f2; stroke: #dc2626; stroke-width: 2.2; }
+      .uml-hdr-bad { fill: #fee2e2; stroke: #dc2626; stroke-width: 2.2; }
+      .uml-box-good { fill: #ecfdf5; stroke: #059669; stroke-width: 2.2; }
+      .uml-hdr-good { fill: #d1fae5; stroke: #059669; stroke-width: 2.2; }
+      .uml-box-iface { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 2.2; }
+      .uml-hdr-iface { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2.2; }
+      .cls-name { font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; font-weight: 800; fill: #0f172a; }
+      .mono { font-family: 'Consolas', 'Courier New', monospace; font-size: 10.8px; fill: #1e293b; }
+      .stereo { font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; font-style: italic; font-weight: 700; fill: #1d4ed8; }
+      .desc { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11.5px; fill: #334155; }
+      .actor-text { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11.5px; font-weight: 700; }
+      .layer-zone { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.6; stroke-dasharray: 7,4; rx: 8; }
+    </style>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#dc2626" stroke-width="2.2" />
+    </marker>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#1d4ed8" stroke-width="2.2" />
+    </marker>
+    <marker id="realize-up" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <polygon points="1,1 11,6 1,11" fill="#ffffff" stroke="#059669" stroke-width="2.2" />
+    </marker>
+  </defs>
+
+  <!-- Outer Background (#f5f5f5 per Rule 6) -->
+  <rect width="1200" height="580" class="bg" />
+
+  <!-- ================= LEFT PANEL: VIOLATING DIP ================= -->
+  <rect x="20" y="18" width="568" height="544" class="panel-bad" />
+  <rect x="20" y="18" width="568" height="40" class="hdr-bad" />
+  <text x="304" y="44" text-anchor="middle" class="title">✘ Violating DIP: High-Level Policy Coupled to Low-Level Detail</text>
+
+  <!-- High-Level Layer Frame -->
+  <rect x="38" y="72" width="530" height="142" class="layer-zone" />
+  <text x="52" y="92" class="actor-text" fill="#475569">Package: domain.order (High-Level Business Policy)</text>
+
+  <rect x="134" y="102" width="336" height="98" class="uml-box-bad" />
+  <rect x="134" y="102" width="336" height="32" class="uml-hdr-bad" />
+  <text x="302" y="123" text-anchor="middle" class="cls-name" fill="#991b1b">OrderCheckoutService</text>
+  <text x="148" y="152" class="mono" fill="#b91c1c">- db: MySqlOrderDatabase = new MySql...()</text>
+  <line x1="134" y1="162" x2="470" y2="162" stroke="#dc2626" stroke-width="1.5" />
+  <text x="148" y="184" class="mono">+ checkout(order: Order): Receipt</text>
+
+  <!-- Downward Dependency Arrow Crossing Architectural Boundary -->
+  <line x1="302" y1="200" x2="302" y2="274" stroke="#dc2626" stroke-width="3" marker-end="url(#arr-red)" />
+  <rect x="316" y="220" width="234" height="36" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5" />
+  <text x="433" y="242" text-anchor="middle" class="actor-text" fill="#dc2626">✘ Downward Source Dependency!</text>
+
+  <!-- Low-Level Layer Frame -->
+  <rect x="38" y="264" width="530" height="130" class="layer-zone" />
+  <text x="52" y="284" class="actor-text" fill="#475569">Package: infra.mysql (Low-Level Infrastructure Detail)</text>
+
+  <rect x="134" y="294" width="336" height="86" class="uml-box-bad" />
+  <rect x="134" y="294" width="336" height="32" class="uml-hdr-bad" />
+  <text x="302" y="315" text-anchor="middle" class="cls-name" fill="#991b1b">MySqlOrderDatabase</text>
+  <text x="148" y="346" class="mono">- jdbcDriver: com.mysql.cj.jdbc.Driver</text>
+  <text x="148" y="366" class="mono">+ insertOrderRow(sql: String): void</text>
+
+  <!-- Bottom Consequence Box -->
+  <rect x="38" y="408" width="530" height="134" rx="8" fill="#fef2f2" stroke="#f87171" stroke-width="1.8" />
+  <text x="54" y="432" class="actor-text" fill="#b91c1c">Why This Violates Dependency Inversion Principle (DIP):</text>
+  <text x="54" y="456" class="desc" fill="#7f1d1d">• <tspan font-weight="700">High-level business policy</tspan> directly imports low-level MySQL JDBC details.</text>
+  <text x="54" y="478" class="desc" fill="#7f1d1d">• <tspan font-weight="700">Immobility</tspan>: Cannot reuse <tspan class="mono">OrderCheckoutService</tspan> with PostgreSQL or</text>
+  <text x="54" y="496" class="desc" fill="#7f1d1d">  DynamoDB without rewriting core business classes.</text>
+  <text x="54" y="518" class="desc" fill="#7f1d1d">• <tspan font-weight="700">Untestable</tspan>: Cannot run fast unit tests without booting a real MySQL DB!</text>
+
+  <!-- ================= RIGHT PANEL: FOLLOWING DIP ================= -->
+  <rect x="612" y="18" width="568" height="544" class="panel-good" />
+  <rect x="612" y="18" width="568" height="40" class="hdr-good" />
+  <text x="896" y="44" text-anchor="middle" class="title">✓ Following DIP: Both Layers Depend on Domain Abstraction</text>
+
+  <!-- High-Level Layer Frame (Owns BOTH Service and Interface!) -->
+  <rect x="630" y="72" width="532" height="148" fill="#ecfdf5" stroke="#059669" stroke-width="1.8" stroke-dasharray="7,4" rx="8" />
+  <text x="644" y="92" class="actor-text" fill="#047857">Package: domain.order (High-Level Policy OWNS the Abstraction!)</text>
+
+  <!-- High-Level Service -->
+  <rect x="644" y="104" width="234" height="100" class="uml-box-good" />
+  <rect x="644" y="104" width="234" height="30" class="uml-hdr-good" />
+  <text x="761" y="124" text-anchor="middle" class="cls-name" fill="#065f46">OrderCheckoutService</text>
+  <text x="654" y="152" class="mono">- repo: IOrderRepository</text>
+  <line x1="644" y1="162" x2="878" y2="162" stroke="#059669" stroke-width="1.5" />
+  <text x="654" y="182" class="mono">+ Service(r: IOrderRepo) // DI</text>
+  <text x="654" y="197" class="mono">+ checkout(Order): Receipt</text>
+
+  <!-- Arrow from Service to Interface (Same High-Level Package!) -->
+  <line x1="878" y1="154" x2="928" y2="154" stroke="#1d4ed8" stroke-width="2.4" marker-end="url(#arr-blue)" />
+
+  <!-- Domain Interface -->
+  <rect x="932" y="104" width="216" height="100" class="uml-box-iface" />
+  <rect x="932" y="104" width="216" height="40" class="uml-hdr-iface" />
+  <text x="1040" y="120" text-anchor="middle" class="stereo">«interface»</text>
+  <text x="1040" y="137" text-anchor="middle" class="cls-name" fill="#1e40af">IOrderRepository</text>
+  <text x="944" y="168" class="mono">+ save(o: Order): void</text>
+  <text x="944" y="188" class="mono">+ findById(id): Order</text>
+
+  <!-- INVERTED UPWARD Realization Arrows from Low-Level to High-Level Interface -->
+  <path d="M 710 296 L 710 248 L 990 248 L 990 206" stroke="#059669" stroke-width="2.4" stroke-dasharray="6,4" fill="none" marker-end="url(#realize-up)" />
+  <path d="M 896 296 L 896 248 L 1040 248 L 1040 206" stroke="#059669" stroke-width="2.4" stroke-dasharray="6,4" fill="none" marker-end="url(#realize-up)" />
+  <path d="M 1078 296 L 1078 206" stroke="#059669" stroke-width="2.4" stroke-dasharray="6,4" fill="none" marker-end="url(#realize-up)" />
+
+  <rect x="644" y="226" width="290" height="28" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="1.5" />
+  <text x="789" y="244" text-anchor="middle" class="actor-text" fill="#047857">★ Dependency Arrow Inverted UPWARD (- - -|&gt;)!</text>
+
+  <!-- Low-Level Layer Frame -->
+  <rect x="630" y="268" width="532" height="126" class="layer-zone" />
+  <text x="644" y="288" class="actor-text" fill="#475569">Package: infra.persistence (Low-Level Pluggable Adapters)</text>
+
+  <rect x="642" y="298" width="156" height="82" class="uml-box-good" />
+  <rect x="642" y="298" width="156" height="28" class="uml-hdr-good" />
+  <text x="720" y="317" text-anchor="middle" class="cls-name">MySqlOrderRepo</text>
+  <text x="652" y="346" class="mono">+ save(Order): void</text>
+  <text x="652" y="366" class="desc" fill="#047857">(Legacy DB Adapter)</text>
+
+  <rect x="816" y="298" width="162" height="82" class="uml-box-good" />
+  <rect x="816" y="298" width="162" height="28" class="uml-hdr-good" />
+  <text x="897" y="317" text-anchor="middle" class="cls-name">PostgresOrderRepo</text>
+  <text x="826" y="346" class="mono">+ save(Order): void</text>
+  <text x="826" y="366" class="desc" fill="#047857">(Production RDS)</text>
+
+  <rect x="996" y="298" width="154" height="82" class="uml-box-good" />
+  <rect x="996" y="298" width="154" height="28" class="uml-hdr-good" />
+  <text x="1073" y="317" text-anchor="middle" class="cls-name">InMemoryMockRepo</text>
+  <text x="1006" y="346" class="mono">+ save(Order): void</text>
+  <text x="1006" y="366" class="desc" fill="#1d4ed8" font-weight="700">(1ms Unit Test Fake!)</text>
+
+  <!-- Bottom Benefit Box -->
+  <rect x="630" y="408" width="530" height="134" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8" />
+  <text x="646" y="432" class="actor-text" fill="#047857">Why This UML Design Excels (Inversion of Control &amp; Clean Architecture):</text>
+  <text x="646" y="456" class="desc" fill="#065f46">• <tspan font-weight="700">Rule 1</tspan>: High-level <tspan class="mono">OrderCheckoutService</tspan> and low-level <tspan class="mono">PostgresOrderRepo</tspan></text>
+  <text x="646" y="474" class="desc" fill="#065f46">  both depend on the <tspan class="mono">IOrderRepository</tspan> abstraction.</text>
+  <text x="646" y="496" class="desc" fill="#065f46">• <tspan font-weight="700">Rule 2</tspan>: Low-level DB adapters point <tspan font-weight="700">UPWARD</tspan> into the Domain package;</text>
+  <text x="646" y="514" class="desc" fill="#065f46">  injected via Constructor Dependency Injection (DI) for 1ms unit testing!</text>
+</svg>
+

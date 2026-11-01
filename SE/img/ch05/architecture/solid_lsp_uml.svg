@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .panel-bad { fill: #ffffff; stroke: #ef4444; stroke-width: 2.5; rx: 12; }
+      .panel-good { fill: #ffffff; stroke: #10b981; stroke-width: 2.5; rx: 12; }
+      .hdr-bad { fill: #dc2626; rx: 10; }
+      .hdr-good { fill: #059669; rx: 10; }
+      .title { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; fill: #ffffff; }
+      .uml-box-bad { fill: #fef2f2; stroke: #dc2626; stroke-width: 2.2; }
+      .uml-hdr-bad { fill: #fee2e2; stroke: #dc2626; stroke-width: 2.2; }
+      .uml-box-good { fill: #ecfdf5; stroke: #059669; stroke-width: 2.2; }
+      .uml-hdr-good { fill: #d1fae5; stroke: #059669; stroke-width: 2.2; }
+      .uml-box-iface { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 2.2; }
+      .uml-hdr-iface { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2.2; }
+      .cls-name { font-family: 'Consolas', 'Courier New', monospace; font-size: 13.5px; font-weight: 800; fill: #0f172a; }
+      .mono { font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; fill: #1e293b; }
+      .stereo { font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; font-style: italic; font-weight: 700; fill: #1d4ed8; }
+      .desc { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11.5px; fill: #334155; }
+      .actor-text { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11.5px; font-weight: 700; }
+    </style>
+    <marker id="inherit-red" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <polygon points="1,1 11,6 1,11" fill="#ffffff" stroke="#dc2626" stroke-width="2" />
+    </marker>
+    <marker id="realize-green" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <polygon points="1,1 11,6 1,11" fill="#ffffff" stroke="#059669" stroke-width="2" />
+    </marker>
+    <marker id="open-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#334155" stroke-width="2" />
+    </marker>
+  </defs>
+
+  <!-- Outer Background (#f5f5f5 per Rule 6) -->
+  <rect width="1200" height="580" class="bg" />
+
+  <!-- ================= LEFT PANEL: VIOLATING LSP ================= -->
+  <rect x="20" y="18" width="568" height="544" class="panel-bad" />
+  <rect x="20" y="18" width="568" height="40" class="hdr-bad" />
+  <text x="304" y="44" text-anchor="middle" class="title">✘ Violating LSP: Subclass Breaks Base Class Postcondition</text>
+
+  <!-- Client Caller -->
+  <rect x="38" y="82" width="204" height="106" fill="#f8fafc" stroke="#475569" stroke-width="2" rx="4" />
+  <text x="140" y="106" text-anchor="middle" class="cls-name">Client: MapZoneTester</text>
+  <line x1="38" y1="116" x2="242" y2="116" stroke="#475569" stroke-width="1.5" />
+  <text x="48" y="136" class="mono">r.setWidth(5);</text>
+  <text x="48" y="154" class="mono">r.setHeight(10);</text>
+  <text x="48" y="174" class="mono" fill="#dc2626" font-weight="700">assert(r.getArea() == 50)</text>
+
+  <line x1="242" y1="134" x2="300" y2="134" stroke="#334155" stroke-width="2" marker-end="url(#open-arr)" />
+
+  <!-- Base Class: Rectangle -->
+  <rect x="304" y="74" width="256" height="134" class="uml-box-bad" />
+  <rect x="304" y="74" width="256" height="34" class="uml-hdr-bad" />
+  <text x="432" y="96" text-anchor="middle" class="cls-name" fill="#991b1b">Rectangle (Base Type)</text>
+  <text x="316" y="126" class="mono"># width: int</text>
+  <text x="316" y="144" class="mono"># height: int</text>
+  <line x1="304" y1="154" x2="560" y2="154" stroke="#dc2626" stroke-width="1.5" />
+  <text x="316" y="174" class="mono">+ setWidth(w: int): void</text>
+  <text x="316" y="190" class="mono">+ setHeight(h: int): void</text>
+  <text x="316" y="204" class="mono">+ getArea(): int</text>
+
+  <!-- Inheritance Arrow (Square extends Rectangle) -->
+  <line x1="432" y1="264" x2="432" y2="210" stroke="#dc2626" stroke-width="2.4" marker-end="url(#inherit-red)" />
+  <text x="492" y="242" text-anchor="middle" class="actor-text" fill="#dc2626">✘ "IS-A" Trap!</text>
+
+  <!-- Subclass: Square -->
+  <rect x="278" y="266" width="282" height="122" class="uml-box-bad" />
+  <rect x="278" y="266" width="282" height="34" class="uml-hdr-bad" />
+  <text x="419" y="288" text-anchor="middle" class="cls-name" fill="#991b1b">Square extends Rectangle</text>
+  <text x="290" y="320" class="mono" fill="#b91c1c">+ setWidth(w): { width = height = w; }</text>
+  <text x="290" y="340" class="mono" fill="#b91c1c">+ setHeight(h): { width = height = h; }</text>
+  <text x="290" y="368" class="actor-text" fill="#dc2626">⚠ Mutates BOTH dimensions silently!</text>
+
+  <!-- Crash Callout on Left -->
+  <rect x="38" y="266" width="220" height="122" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2" />
+  <text x="148" y="290" text-anchor="middle" class="actor-text" fill="#b91c1c">Runtime Substitution Failure</text>
+  <text x="50" y="314" class="desc" fill="#7f1d1d">Pass <tspan class="mono">new Square()</tspan> into Client:</text>
+  <text x="50" y="334" class="mono" fill="#7f1d1d">1. setWidth(5)  → w=5, h=5</text>
+  <text x="50" y="352" class="mono" fill="#7f1d1d">2. setHeight(10)→ w=10, h=10</text>
+  <text x="50" y="372" class="mono" fill="#dc2626" font-weight="700">3. getArea() == 100 != 50 💥</text>
+
+  <!-- Bottom Consequence Box -->
+  <rect x="38" y="408" width="530" height="134" rx="8" fill="#fef2f2" stroke="#f87171" stroke-width="1.8" />
+  <text x="54" y="432" class="actor-text" fill="#b91c1c">Why This Violates Liskov Substitution Principle (LSP):</text>
+  <text x="54" y="456" class="desc" fill="#7f1d1d">• <tspan font-weight="700">Rectangle Postcondition Contract</tspan>: <tspan class="mono">setHeight(h)</tspan> modifies <tspan class="mono">height</tspan></text>
+  <text x="54" y="474" class="desc" fill="#7f1d1d">  while leaving <tspan class="mono">width</tspan> invariant.</text>
+  <text x="54" y="496" class="desc" fill="#7f1d1d">• <tspan class="mono">Square</tspan> violates this postcondition! Mathematical "IS-A" does NOT imply</text>
+  <text x="54" y="514" class="desc" fill="#7f1d1d">  behavioral substitutability when mutable state setters are involved.</text>
+
+  <!-- ================= RIGHT PANEL: FOLLOWING LSP ================= -->
+  <rect x="612" y="18" width="568" height="544" class="panel-good" />
+  <rect x="612" y="18" width="568" height="40" class="hdr-good" />
+  <text x="896" y="44" text-anchor="middle" class="title">✓ Following LSP: Substitutable Contract via Shared Abstraction</text>
+
+  <!-- Client Caller -->
+  <rect x="630" y="84" width="204" height="96" fill="#f8fafc" stroke="#059669" stroke-width="2" rx="4" />
+  <text x="732" y="108" text-anchor="middle" class="cls-name">Client: MapZoneTester</text>
+  <line x1="630" y1="118" x2="834" y2="118" stroke="#059669" stroke-width="1.5" />
+  <text x="642" y="142" class="mono">+ renderZone(s: IShape)</text>
+  <text x="642" y="164" class="mono" fill="#047857" font-weight="700">area = s.getArea(); ✓</text>
+
+  <line x1="834" y1="132" x2="896" y2="132" stroke="#059669" stroke-width="2.2" marker-end="url(#open-arr)" />
+
+  <!-- Top Shared Interface: IShape -->
+  <rect x="900" y="76" width="246" height="106" class="uml-box-iface" />
+  <rect x="900" y="76" width="246" height="44" class="uml-hdr-iface" />
+  <text x="1023" y="94" text-anchor="middle" class="stereo">«interface»</text>
+  <text x="1023" y="112" text-anchor="middle" class="cls-name" fill="#1e40af">IShape (Pure Contract)</text>
+  <text x="914" y="148" class="mono">+ getArea(): int</text>
+  <text x="914" y="168" class="desc" fill="#1d4ed8">No mutable dimension setters!</text>
+
+  <!-- Realization Arrows pointing UP to IShape -->
+  <path d="M 756 266 L 756 222 L 975 222 L 975 184" stroke="#059669" stroke-width="2.2" stroke-dasharray="6,4" fill="none" marker-end="url(#realize-green)" />
+  <path d="M 1036 266 L 1036 184" stroke="#059669" stroke-width="2.2" stroke-dasharray="6,4" fill="none" marker-end="url(#realize-green)" />
+
+  <!-- Sibling Class 1: Immutable Rectangle -->
+  <rect x="634" y="266" width="244" height="122" class="uml-box-good" />
+  <rect x="634" y="266" width="244" height="34" class="uml-hdr-good" />
+  <text x="756" y="288" text-anchor="middle" class="cls-name" fill="#065f46">Rectangle</text>
+  <text x="646" y="318" class="mono">- final width: int</text>
+  <text x="646" y="336" class="mono">- final height: int</text>
+  <line x1="634" y1="346" x2="878" y2="346" stroke="#059669" stroke-width="1.5" />
+  <text x="646" y="370" class="mono">+ getArea(): width * height</text>
+
+  <!-- Sibling Class 2: Immutable Square -->
+  <rect x="912" y="266" width="248" height="122" class="uml-box-good" />
+  <rect x="912" y="266" width="248" height="34" class="uml-hdr-good" />
+  <text x="1036" y="288" text-anchor="middle" class="cls-name" fill="#065f46">Square</text>
+  <text x="924" y="318" class="mono">- final side: int</text>
+  <line x1="912" y1="346" x2="1160" y2="346" stroke="#059669" stroke-width="1.5" />
+  <text x="924" y="370" class="mono">+ getArea(): side * side</text>
+
+  <!-- Bottom Benefit Box -->
+  <rect x="630" y="408" width="530" height="134" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8" />
+  <text x="646" y="432" class="actor-text" fill="#047857">Why This UML Design Excels (100% Behavioral Substitutability):</text>
+  <text x="646" y="456" class="desc" fill="#065f46">• <tspan class="mono">Rectangle</tspan> and <tspan class="mono">Square</tspan> are independent siblings realizing <tspan class="mono">IShape</tspan>.</text>
+  <text x="646" y="478" class="desc" fill="#065f46">• Any <tspan class="mono">IShape</tspan> instance can substitute for another without hidden</text>
+  <text x="646" y="496" class="desc" fill="#065f46">  side effects, broken invariants, or <tspan class="mono">UnsupportedOperationException</tspan>!</text>
+  <text x="646" y="518" class="desc" fill="#065f46">• <tspan font-weight="700">Design by Contract Rule</tspan>: Subtypes never weaken preconditions or</text>
+  <text x="646" y="534" class="desc" fill="#065f46">  violate postconditions &amp; invariants of the base contract.</text>
+</svg>

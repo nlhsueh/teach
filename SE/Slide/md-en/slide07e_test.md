@@ -346,6 +346,7 @@ User testing begins with Alpha testing—internal stakeholders testing in a stag
 To summarize this slide, remember this key takeaway: Release testing ensures formal specification compliance, while user testing validates real-world operational acceptance.
 -->
 ---
+<!-- id: ase-ch07-ccq1 -->
 ## Concept Check Question 1: Testing Principles
 
 According to Dijkstra's foundational testing axiom and the Shift-Left principle, what is the primary capability and economic timing of software testing?
@@ -362,6 +363,11 @@ Consider Dijkstra's axiom carefully, alongside the economic benefits of the Shif
 
 Read each option thoughtfully and select the choice that accurately captures both core concepts.
 -->
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch07-ccq1)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch07-ccq1" target="_blank"><img src="../../img/ch07/ase-ch07-ccq1.png" width="120"></a>
+
 ---
 ## Concept Check Question 1: Answer & Explanation
 
@@ -702,6 +708,7 @@ Observe how test cases TC1 through TC8 systematically verify typical mid-month i
 To summarize this slide, remember this key takeaway: Systematic tabular test design guarantees complete coverage of complex calendrical boundary conditions.
 -->
 ---
+<!-- id: ase-ch07-ccq2 -->
 ## Concept Check Question 2: Boundary Value Analysis
 
 Under the Single Fault Assumption, how many test cases are required to perform Independent Normal Boundary Value Analysis on a function with $n = 4$ independent input variables?
@@ -718,6 +725,11 @@ Review the problem parameters: Independent Normal testing, Single Fault Assumpti
 
 Recall the mathematical formulas we examined earlier and choose the correct calculation.
 -->
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch07-ccq2)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch07-ccq2" target="_blank"><img src="../../img/ch07/ase-ch07-ccq2.png" width="120"></a>
+
 ---
 ## Concept Check Question 2: Answer & Explanation
 
@@ -827,6 +839,7 @@ Use Case testing validates complete end-to-end customer journeys, testing the ha
 To summarize this slide, remember this key takeaway: State testing validates entity lifecycle integrity, while use case testing validates end-to-end customer goals.
 -->
 ---
+<!-- id: ase-ch07-ccq3 -->
 ## Concept Check Question 3: Combinatorial Testing
 
 Why is All-Pairs (Pairwise) testing widely considered one of the highest-ROI test design techniques in modern software engineering?
@@ -843,6 +856,11 @@ Think about why software teams adopt tools like Microsoft PICT or ACTS to genera
 
 Evaluate each option and select the one that correctly identifies the ROI and empirical backing of pairwise testing.
 -->
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch07-ccq3)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch07-ccq3" target="_blank"><img src="../../img/ch07/ase-ch07-ccq3.png" width="120"></a>
+
 ---
 ## Concept Check Question 3: Answer & Explanation
 
@@ -1033,6 +1051,7 @@ Under strict short-circuit coverage metrics, you must force the first condition 
 To summarize this slide, remember this key takeaway: Short-circuiting skips right-hand conditions, requiring deliberate test design to guarantee atomic condition execution.
 -->
 ---
+<!-- id: ase-ch07-ccq4 -->
 ## Concept Check Question 4: Condition vs. Branch Coverage
 
 Given the decision statement `if (X > 10 && Y == 1)`:
@@ -1050,6 +1069,11 @@ Analyze each test suite for the decision X > 10 AND Y == 1.
 
 Check whether both atomic conditions experience True and False, while the overall decision fails to experience both True and False branches.
 -->
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch07-ccq4)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch07-ccq4" target="_blank"><img src="../../img/ch07/ase-ch07-ccq4.png" width="120"></a>
+
 ---
 ## Concept Check Question 4: Answer & Explanation
 
@@ -1214,6 +1238,7 @@ Testing exactly V(G) basis paths guarantees 100% statement and branch coverage w
 To summarize this slide, remember this key takeaway: Basis path testing uses McCabe's cyclomatic complexity to achieve complete branch coverage with minimal linear test paths.
 -->
 ---
+<!-- id: ase-ch07-ccq5 -->
 ## Concept Check Question 5: Advanced Coverage Criteria
 
 In safety-critical avionics testing conforming to DO-178B/C Level A, why is MC/DC mandated rather than Multiple Condition Combination (MCC) or standard Branch Coverage?
@@ -1230,6 +1255,11 @@ Consider the engineering trade-offs between Branch Coverage, MCC, and MC/DC in D
 
 Select the option that accurately captures why MC/DC is the mandatory standard.
 -->
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch07-ccq5)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch07-ccq5" target="_blank"><img src="../../img/ch07/ase-ch07-ccq5.png" width="120"></a>
+
 ---
 ## Concept Check Question 5: Answer & Explanation
 

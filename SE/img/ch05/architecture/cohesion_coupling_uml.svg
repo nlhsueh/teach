@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 355" width="100%" height="100%">
+  <defs>
+    <filter id="card-shadow" x="-3%" y="-3%" width="106%" height="108%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.07" />
+    </filter>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="arrow-open-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#059669" stroke-width="1.8" />
+    </marker>
+  </defs>
+
+  <!-- Background matching slide #f5f5f5 -->
+  <rect width="960" height="355" fill="#f5f5f5" />
+
+  <!-- =====================================================================
+       LEFT PANEL: BAD DESIGN (LOW COHESION & HIGH COUPLING)
+       ===================================================================== -->
+  <g transform="translate(12, 8)">
+    <rect width="450" height="338" rx="10" fill="#ffffff" stroke="#fca5a5" stroke-width="1.8" filter="url(#card-shadow)" />
+    <rect width="450" height="32" rx="10" fill="#fee2e2" />
+    <rect y="20" width="450" height="12" fill="#fee2e2" />
+    <line x1="0" y1="32" x2="450" y2="32" stroke="#fca5a5" stroke-width="1.2" />
+    <text x="225" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#991b1b" text-anchor="middle">BAD: Low Cohesion &amp; High Coupling ("God Class")</text>
+
+    <!-- UML Class Box: OrderManager -->
+    <g transform="translate(20, 46)">
+      <rect width="275" height="246" rx="5" fill="#fffafa" stroke="#dc2626" stroke-width="1.8" />
+      <!-- Class Name Compartment -->
+      <rect width="275" height="42" rx="5" fill="#fef2f2" />
+      <line x1="0" y1="42" x2="275" y2="42" stroke="#dc2626" stroke-width="1.5" />
+      <text x="137" y="17" font-family="'Courier New', Consolas, monospace" font-size="10.5" font-style="italic" fill="#b91c1c" text-anchor="middle">«Monolithic God Class»</text>
+      <text x="137" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="14" font-weight="700" fill="#7f1d1d" text-anchor="middle">OrderManager</text>
+
+      <!-- Attributes Compartment -->
+      <text x="10" y="59" font-family="'SFMono-Regular', Consolas, monospace" font-size="11" fill="#334155">- db: MySQLConnection</text>
+      <text x="10" y="75" font-family="'SFMono-Regular', Consolas, monospace" font-size="11" fill="#334155">- smtp: SmtpSocketClient</text>
+      <line x1="0" y1="84" x2="275" y2="84" stroke="#dc2626" stroke-width="1.2" />
+
+      <!-- Methods Compartment (Tangled Concerns) -->
+      <text x="10" y="102" font-family="'SFMono-Regular', Consolas, monospace" font-size="11" font-weight="700" fill="#0f172a">+ processOrder(): void</text>
+
+      <rect x="8" y="111" width="259" height="28" rx="4" fill="#fee2e2" />
+      <text x="14" y="124" font-family="'SFMono-Regular', Consolas, monospace" font-size="10.5" fill="#991b1b">- execMySqlQuery(sql)</text>
+      <text x="260" y="124" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#b91c1c" text-anchor="end">[SQL DB]</text>
+
+      <rect x="8" y="144" width="259" height="28" rx="4" fill="#ffedd5" />
+      <text x="14" y="157" font-family="'SFMono-Regular', Consolas, monospace" font-size="10.5" fill="#9a3412">- calcVipDiscountMath()</text>
+      <text x="260" y="157" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#c2410c" text-anchor="end">[Pricing]</text>
+
+      <rect x="8" y="177" width="259" height="28" rx="4" fill="#fef3c7" />
+      <text x="14" y="190" font-family="'SFMono-Regular', Consolas, monospace" font-size="10.5" fill="#92400e">- buildInvoiceHtmlStr()</text>
+      <text x="260" y="190" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#b45309" text-anchor="end">[UI View]</text>
+
+      <rect x="8" y="210" width="259" height="28" rx="4" fill="#fce7f3" />
+      <text x="14" y="223" font-family="'SFMono-Regular', Consolas, monospace" font-size="10.5" fill="#9d174d">- openSmtpTcpSocket()</text>
+      <text x="260" y="223" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#be185d" text-anchor="end">[Net I/O]</text>
+    </g>
+
+    <!-- Concrete Hardwired Dependencies -->
+    <g transform="translate(330, 82)">
+      <rect width="104" height="52" rx="4" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5" />
+      <text x="52" y="22" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#881337" text-anchor="middle">MySQLDriver</text>
+      <text x="52" y="38" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#9f1239" text-anchor="middle">(Concrete Class)</text>
+    </g>
+
+    <g transform="translate(330, 196)">
+      <rect width="104" height="52" rx="4" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5" />
+      <text x="52" y="22" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#881337" text-anchor="middle">SmtpSocket</text>
+      <text x="52" y="38" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" fill="#9f1239" text-anchor="middle">(Concrete Class)</text>
+    </g>
+
+    <!-- Solid Tight Coupling Arrows -->
+    <line x1="295" y1="108" x2="323" y2="108" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)" />
+    <line x1="295" y1="222" x2="323" y2="222" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)" />
+    <text x="365" y="166" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="700" fill="#dc2626" text-anchor="middle">Tight Direct</text>
+    <text x="365" y="180" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="700" fill="#dc2626" text-anchor="middle">Coupling!</text>
+
+    <!-- Bottom Caption -->
+    <rect x="20" y="302" width="414" height="24" rx="5" fill="#fef2f2" />
+    <text x="227" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#991b1b" text-anchor="middle">4 unrelated concerns mixed in 1 class; any DB/SMTP change breaks OrderManager</text>
+  </g>
+
+  <!-- =====================================================================
+       RIGHT PANEL: GOOD DESIGN (HIGH COHESION & LOW COUPLING)
+       ===================================================================== -->
+  <g transform="translate(478, 8)">
+    <rect width="470" height="338" rx="10" fill="#ffffff" stroke="#86efac" stroke-width="1.8" filter="url(#card-shadow)" />
+    <rect width="470" height="32" rx="10" fill="#dcfce7" />
+    <rect y="20" width="470" height="12" fill="#dcfce7" />
+    <line x1="0" y1="32" x2="470" y2="32" stroke="#86efac" stroke-width="1.2" />
+    <text x="235" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#166534" text-anchor="middle">GOOD: High Cohesion &amp; Low Coupling (Collaborating Modules)</text>
+
+    <!-- Orchestrator UML Class Box: OrderProcessor -->
+    <g transform="translate(95, 46)">
+      <rect width="280" height="104" rx="5" fill="#f8fafc" stroke="#0284c7" stroke-width="1.8" />
+      <rect width="280" height="28" rx="5" fill="#e0f2fe" />
+      <line x1="0" y1="28" x2="280" y2="28" stroke="#0284c7" stroke-width="1.4" />
+      <text x="140" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#0369a1" text-anchor="middle">OrderProcessor (Orchestrator)</text>
+
+      <text x="12" y="45" font-family="'SFMono-Regular', Consolas, monospace" font-size="10.5" fill="#334155">- discountCalc: DiscountCalculator</text>
+      <text x="12" y="60" font-family="'SFMono-Regular', Consolas, monospace" font-size="10.5" fill="#334155">- orderRepo: OrderRepository</text>
+      <text x="12" y="75" font-family="'SFMono-Regular', Consolas, monospace" font-size="10.5" fill="#334155">- notifier: NotificationService</text>
+      <line x1="0" y1="82" x2="280" y2="82" stroke="#cbd5e1" stroke-width="1.2" />
+      <text x="12" y="97" font-family="'SFMono-Regular', Consolas, monospace" font-size="11" font-weight="700" fill="#0f172a">+ processOrder(o: Order): void</text>
+    </g>
+
+    <!-- Dashed Dependency Arrows to Abstract Interfaces -->
+    <path d="M 155 150 L 82 192" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrow-open-green)" />
+    <path d="M 235 150 L 235 192" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrow-open-green)" />
+    <path d="M 315 150 L 388 192" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrow-open-green)" />
+
+    <text x="235" y="175" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#059669" text-anchor="middle">Injected Abstract Contracts (Loose Coupling)</text>
+
+    <!-- Cohesive Collaborator 1: DiscountCalculator -->
+    <g transform="translate(14, 198)">
+      <rect width="138" height="92" rx="5" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6" />
+      <rect width="138" height="36" rx="5" fill="#dcfce7" />
+      <line x1="0" y1="36" x2="138" y2="36" stroke="#16a34a" stroke-width="1.2" />
+      <text x="69" y="14" font-family="'Courier New', Consolas, monospace" font-size="9.5" font-style="italic" fill="#15803d" text-anchor="middle">«interface»</text>
+      <text x="69" y="29" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="#14532d" text-anchor="middle">DiscountCalculator</text>
+      <text x="8" y="55" font-family="'SFMono-Regular', Consolas, monospace" font-size="10" fill="#0f172a">+ calcDiscount(o)</text>
+      <rect x="8" y="65" width="122" height="19" rx="3" fill="#bbf7d0" />
+      <text x="69" y="78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#166534" text-anchor="middle">Cohesive: Pricing Math</text>
+    </g>
+
+    <!-- Cohesive Collaborator 2: OrderRepository -->
+    <g transform="translate(166, 198)">
+      <rect width="138" height="92" rx="5" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6" />
+      <rect width="138" height="36" rx="5" fill="#dcfce7" />
+      <line x1="0" y1="36" x2="138" y2="36" stroke="#16a34a" stroke-width="1.2" />
+      <text x="69" y="14" font-family="'Courier New', Consolas, monospace" font-size="9.5" font-style="italic" fill="#15803d" text-anchor="middle">«interface»</text>
+      <text x="69" y="29" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="#14532d" text-anchor="middle">OrderRepository</text>
+      <text x="8" y="55" font-family="'SFMono-Regular', Consolas, monospace" font-size="10" fill="#0f172a">+ save(o: Order)</text>
+      <rect x="8" y="65" width="122" height="19" rx="3" fill="#bbf7d0" />
+      <text x="69" y="78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#166534" text-anchor="middle">Cohesive: Persistence</text>
+    </g>
+
+    <!-- Cohesive Collaborator 3: NotificationService -->
+    <g transform="translate(318, 198)">
+      <rect width="138" height="92" rx="5" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6" />
+      <rect width="138" height="36" rx="5" fill="#dcfce7" />
+      <line x1="0" y1="36" x2="138" y2="36" stroke="#16a34a" stroke-width="1.2" />
+      <text x="69" y="14" font-family="'Courier New', Consolas, monospace" font-size="9.5" font-style="italic" fill="#15803d" text-anchor="middle">«interface»</text>
+      <text x="69" y="29" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="#14532d" text-anchor="middle">NotificationService</text>
+      <text x="8" y="55" font-family="'SFMono-Regular', Consolas, monospace" font-size="10" fill="#0f172a">+ sendAlert(o)</text>
+      <rect x="8" y="65" width="122" height="19" rx="3" fill="#bbf7d0" />
+      <text x="69" y="78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#166534" text-anchor="middle">Cohesive: Messaging</text>
+    </g>
+
+    <!-- Bottom Caption -->
+    <rect x="14" y="302" width="442" height="24" rx="5" fill="#f0fdf4" />
+    <text x="235" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#166534" text-anchor="middle">Each module has 1 focused job (High Cohesion) &amp; connects via interfaces (Low Coupling)</text>
+  </g>
+</svg>
+

@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 22px; font-weight: 800; fill: #0f172a; text-anchor: middle; }
+      .subtitle { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 14; }
+      .hdr-w { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 800; fill: #ffffff; }
+      .lbl-b { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 800; }
+      .lbl-s { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 600; }
+      .mono { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 12px; font-weight: 700; }
+    </style>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#16a34a" />
+    </marker>
+  </defs>
+
+  <!-- Slide-matching background -->
+  <rect width="1200" height="580" class="bg" />
+
+  <!-- Header -->
+  <text x="600" y="34" class="title">How to Specify an Interface Contract: Design by Contract (DbC)</text>
+  <text x="600" y="56" class="subtitle">Example: Food Delivery Checkout Interface — IOrderCheckoutAPI.placeOrder(cart, paymentToken) : OrderReceipt</text>
+
+  <!-- Main Outer Container -->
+  <rect x="24" y="74" width="1152" height="482" class="panel" />
+
+  <!-- ================================================================= -->
+  <!-- TOP: CLIENT  ──►  [1. PRECONDITION]  ──►  SUPPLIER  ──►  [2. POST] -->
+  <!-- ================================================================= -->
+
+  <!-- CLIENT BOX (Left) -->
+  <rect x="46" y="106" width="210" height="240" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" rx="12" />
+  <rect x="46" y="106" width="210" height="38" fill="#2563eb" rx="10" />
+  <text x="151" y="130" class="hdr-w" text-anchor="middle">CLIENT (Caller)</text>
+  <text x="151" y="164" class="lbl-b" fill="#1d4ed8" text-anchor="middle">Customer App /</text>
+  <text x="151" y="184" class="lbl-b" fill="#1d4ed8" text-anchor="middle">API Gateway</text>
+  <line x1="64" y1="200" x2="238" y2="200" stroke="#bfdbfe" stroke-width="1.5" />
+  <text x="151" y="224" class="lbl-s" fill="#334155" text-anchor="middle">Invokes operation:</text>
+  <rect x="58" y="236" width="186" height="34" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5" rx="6" />
+  <text x="151" y="258" class="mono" fill="#1e40af" text-anchor="middle">placeOrder(cart, token)</text>
+  <text x="151" y="300" class="lbl-s" fill="#b45309" text-anchor="middle">Must satisfy Precondition</text>
+  <text x="151" y="318" class="lbl-s" fill="#b45309" text-anchor="middle">before calling!</text>
+
+  <!-- Arrow 1: Client -> Precondition -->
+  <line x1="256" y1="226" x2="294" y2="226" stroke="#2563eb" stroke-width="3" marker-end="url(#arr-blue)" />
+
+  <!-- 1. PRECONDITION BOX -->
+  <rect x="298" y="106" width="280" height="240" fill="#fffbeb" stroke="#d97706" stroke-width="2.5" rx="12" />
+  <rect x="298" y="106" width="280" height="38" fill="#d97706" rx="10" />
+  <text x="438" y="130" class="hdr-w" text-anchor="middle">1. PRECONDITION (requires)</text>
+  <text x="438" y="162" class="lbl-b" fill="#92400e" text-anchor="middle">Client's Obligation Before Call</text>
+  <line x1="316" y1="176" x2="560" y2="176" stroke="#fde68a" stroke-width="1.5" />
+  <text x="318" y="204" class="mono" fill="#78350f">• cart != null</text>
+  <text x="318" y="230" class="mono" fill="#78350f">• cart.items.size() &gt;= 1</text>
+  <text x="318" y="256" class="mono" fill="#78350f">• paymentToken.isValid()</text>
+  <text x="318" y="282" class="mono" fill="#78350f">• restaurant.isOpenNow()</text>
+  <rect x="314" y="300" width="248" height="30" fill="#fef3c7" rx="6" />
+  <text x="438" y="320" class="lbl-s" fill="#b45309" text-anchor="middle">If violated → Caller is at fault!</text>
+
+  <!-- Arrow 2: Precondition -> Supplier -->
+  <line x1="578" y1="226" x2="616" y2="226" stroke="#2563eb" stroke-width="3" marker-end="url(#arr-blue)" />
+
+  <!-- SUPPLIER BOX -->
+  <rect x="620" y="106" width="210" height="240" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5" rx="12" />
+  <rect x="620" y="106" width="210" height="38" fill="#7c3aed" rx="10" />
+  <text x="725" y="130" class="hdr-w" text-anchor="middle">SUPPLIER (Callee)</text>
+  <text x="725" y="164" class="lbl-b" fill="#6d28d9" text-anchor="middle">«component»</text>
+  <text x="725" y="184" class="lbl-b" fill="#6d28d9" text-anchor="middle">OrderService</text>
+  <line x1="638" y1="200" x2="812" y2="200" stroke="#ddd6fe" stroke-width="1.5" />
+  <text x="725" y="226" class="lbl-s" fill="#334155" text-anchor="middle">Executes business logic</text>
+  <text x="725" y="246" class="lbl-s" fill="#5b21b6" text-anchor="middle">(Internal implementation</text>
+  <text x="725" y="264" class="lbl-s" fill="#5b21b6" text-anchor="middle">hidden behind interface)</text>
+  <text x="725" y="304" class="lbl-s" fill="#15803d" text-anchor="middle">Assumes Precondition holds;</text>
+  <text x="725" y="322" class="lbl-s" fill="#15803d" text-anchor="middle">delivers Postcondition!</text>
+
+  <!-- Arrow 3: Supplier -> Postcondition -->
+  <line x1="830" y1="226" x2="868" y2="226" stroke="#16a34a" stroke-width="3" marker-end="url(#arr-green)" />
+
+  <!-- 2. POSTCONDITION BOX -->
+  <rect x="872" y="106" width="282" height="240" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5" rx="12" />
+  <rect x="872" y="106" width="282" height="38" fill="#16a34a" rx="10" />
+  <text x="1013" y="130" class="hdr-w" text-anchor="middle">2. POSTCONDITION (ensures)</text>
+  <text x="1013" y="162" class="lbl-b" fill="#166534" text-anchor="middle">Supplier's Guarantee on Return</text>
+  <line x1="890" y1="176" x2="1136" y2="176" stroke="#bbf7d0" stroke-width="1.5" />
+  <text x="892" y="204" class="mono" fill="#14532d">• receipt.status == CONFIRMED</text>
+  <text x="892" y="230" class="mono" fill="#14532d">• stock_after == stock_pre - qty</text>
+  <text x="892" y="256" class="mono" fill="#14532d">• payment.isCaptured() == true</text>
+  <text x="892" y="282" class="mono" fill="#14532d">• OrderPlacedEvent emitted</text>
+  <rect x="888" y="300" width="250" height="30" fill="#dcfce7" rx="6" />
+  <text x="1013" y="320" class="lbl-s" fill="#15803d" text-anchor="middle">If violated → Supplier has a bug!</text>
+
+  <!-- ================================================================= -->
+  <!-- BOTTOM: 3. CLASS INVARIANT (ALWAYS TRUE BEFORE & AFTER CALL)      -->
+  <!-- ================================================================= -->
+  <rect x="46" y="376" width="1108" height="154" fill="#ecfeff" stroke="#0891b2" stroke-width="2.5" rx="12" />
+  <rect x="46" y="376" width="1108" height="38" fill="#0891b2" rx="10" />
+  <text x="600" y="400" class="hdr-w" text-anchor="middle">3. CLASS INVARIANT (invariant — Domain Integrity Rules That Must Hold Before AND After Every Method Call)</text>
+
+  <rect x="70" y="430" width="335" height="80" fill="#ffffff" stroke="#67e8f9" stroke-width="1.5" rx="8" />
+  <text x="237" y="456" class="lbl-b" fill="#0e7490" text-anchor="middle">Financial Integrity Invariant</text>
+  <text x="237" y="484" class="mono" fill="#155e75" text-anchor="middle">order.totalAmount &gt;= 0</text>
+  <text x="237" y="502" class="lbl-s" fill="#475569" text-anchor="middle">(Order total can never be negative)</text>
+
+  <rect x="432" y="430" width="335" height="80" fill="#ffffff" stroke="#67e8f9" stroke-width="1.5" rx="8" />
+  <text x="600" y="456" class="lbl-b" fill="#0e7490" text-anchor="middle">Order Structural Invariant</text>
+  <text x="600" y="484" class="mono" fill="#155e75" text-anchor="middle">sum(items.price) + fee == total</text>
+  <text x="600" y="502" class="lbl-s" fill="#475569" text-anchor="middle">(Line items always reconcile to total)</text>
+
+  <rect x="794" y="430" width="335" height="80" fill="#ffffff" stroke="#67e8f9" stroke-width="1.5" rx="8" />
+  <text x="961" y="456" class="lbl-b" fill="#0e7490" text-anchor="middle">Dispatch Capacity Invariant</text>
+  <text x="961" y="484" class="mono" fill="#155e75" text-anchor="middle">rider.activeOrders &lt;= 3</text>
+  <text x="961" y="502" class="lbl-s" fill="#475569" text-anchor="middle">(A courier never holds &gt; 3 active orders)</text>
+</svg>
