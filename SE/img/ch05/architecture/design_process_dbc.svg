@@ -163,12 +163,12 @@
   <line x1="968" y1="265" x2="991" y2="265" stroke="#0d9488" stroke-width="3" marker-end="url(#arr-green)" />
 
   <!-- ================================================================= -->
-  <!-- RIGHT PANEL: OUTPUT DELIVERABLES (SDS & ADR)                      -->
+  <!-- RIGHT PANEL: OUTPUT DELIVERABLES (SDD & ADR)                      -->
   <!-- ================================================================= -->
   <rect x="995" y="68" width="185" height="425" fill="#f0fdfa" stroke="#0d9488" stroke-width="2" rx="12" />
   <rect x="995" y="68" width="185" height="36" fill="#0d9488" rx="10" />
-  <text x="1087" y="91" class="hdr-w" text-anchor="middle">OUTPUT: Design Specs</text>
-  <text x="1087" y="118" class="mono" fill="#0f766e" text-anchor="middle">SDS (IEEE 1016) &amp; ADRs</text>
+  <text x="1087" y="91" class="hdr-w" text-anchor="middle">OUTPUT: Design Docs</text>
+  <text x="1087" y="118" class="mono" fill="#0f766e" text-anchor="middle">SDD (IEEE 1016) &amp; ADRs</text>
 
   <rect x="1007" y="130" width="161" height="75" fill="#ffffff" stroke="#5eead4" stroke-width="1.5" rx="6" />
   <text x="1087" y="149" class="lbl-b" fill="#0f766e" text-anchor="middle">1. Architecture Views</text>

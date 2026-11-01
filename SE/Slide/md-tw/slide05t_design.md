@@ -35,7 +35,7 @@ footer: 'Prof. Nien-Lin Hsueh'
 <div>
 <h3>第一部分：設計流程、原則與巨觀設計</h3>
 <ul>
-<li><b>5.1 軟體設計導論、流程與設計規格：</b> 四階段軟體設計流程 (Arch → Interface → OO → Data) 與 SDS / ADR 規格。</li>
+<li><b>5.1 軟體設計導論、流程與設計規格：</b> 四階段軟體設計流程 (Arch → Interface → OO → Data) 與 SDD / ADR 規格。</li>
 <li><b>5.2 通用軟體設計核心原則：</b> 抽象化、封裝、關注點分離、模組化，以及內聚力與耦合度的層次光譜。</li>
 <li><b>5.3 階段一 — 架構設計 (Architectural Design)：</b> 六大架構模式、外送平台複合合成、ATAM 與 <b>UML 套件圖 / 部屬圖</b>。</li>
 <li><b>5.4 階段二 — 介面與契約規格 (Interface & Contract)：</b> <b>契約式設計 (DbC)</b> 與 <b>UML 組件圖</b> (棒棒糖與插座)。</li>
@@ -55,7 +55,7 @@ footer: 'Prof. Nien-Lin Hsueh'
 <!--
 這是我們第五章由巨觀到微觀、完全依照第 6 頁「四階段軟體設計流程」展開的完整學習藍圖：
 
-在 5.1，我們建立軟體設計的宏觀全景：釐清「設計」與「寫程式」的本質差異、掌握由需求 (SRS/ASR) 轉化為藍圖的「四階段軟體設計流程」，並認識最終交付的軟體設計規格書 (SDS 與 ADR 架構決策記錄)。
+在 5.1，我們建立軟體設計的宏觀全景：釐清「設計」與「寫程式」的本質差異、掌握由需求 (SRS/ASR) 轉化為藍圖的「四階段軟體設計流程」，並認識最終交付的軟體設計文件 (Software Design Document, SDD 與 ADR 架構決策記錄)。
 
 在 5.2，我們深入探討貫穿所有設計階段的通用物理定律：「抽象化、封裝、關注點分離、模組化」，以及「高凝聚、低耦合」的 7 種內聚力與 6 種耦合度層次。
 
@@ -83,9 +83,9 @@ footer: 'Prof. Nien-Lin Hsueh'
 
 在軟體工程中，如果需求工程是探索「要做什麼 (What)」，那麼軟體設計就是決定「如何建造 (How)」。
 
-很多初學者一拿到需求就急著開 IDE 寫程式，但缺乏系統化的設計流程與設計規格書，程式碼很快就會演變成無法維護的泥淖。
+很多初學者一拿到需求就急著開 IDE 寫程式，但缺乏系統化的設計流程與軟體設計文件，程式碼很快就會演變成無法維護的泥淖。
 
-在這一節中，我們將探討軟體設計的本質、不良設計的四大病徵，以及貫穿本章的「四階段軟體設計流程」與「軟體設計規格書 (SDS 與 ADR)」。
+在這一節中，我們將探討軟體設計的本質、不良設計的四大病徵，以及貫穿本章的「四階段軟體設計流程」與「軟體設計文件 (SDD 與 ADR)」。
 
 總結這張投影片，請記住這個核心觀念：軟體設計是透過四階段系統化工程流程，將使用者需求轉化為架構、介面、物件與資料規格藍圖的關鍵階段。
 -->
@@ -94,7 +94,7 @@ footer: 'Prof. Nien-Lin Hsueh'
 
 * **從需求 (What) 到實作 (How) 的轉化過程：**
   - **需求工程 (Requirements / SRS)**：定義利益關係人的痛點、使用案例與品質期待（*建造什麼*）。
-  - **軟體設計 (Software Design / SDS)**：構思結構分解、介面合約、類別階層與資料綱要（*如何建造*）。
+  - **軟體設計 (Software Design / SDD)**：構思結構分解、介面合約、類別階層與資料綱要（*如何建造*）。
 * **軟體設計的核心任務：**
   - **建立工程規格與藍圖 (Blueprinting)**：產出架構模型、介面契約與資料庫綱要，讓工程團隊得以平行開發。
   - **進行權衡決策 (Trade-off Decision Making)**：在互斥的非功能需求間取得平衡（如低延遲 vs. 強一致性 vs. 雲端成本）。
@@ -141,10 +141,10 @@ footer: 'Prof. Nien-Lin Hsueh'
 ---
 <!-- _class: title-image-slide -->
 
-## 四階段軟體設計流程與設計規格書 (SDS & ADR) 全景圖
+## 四階段軟體設計流程與軟體設計文件 (SDD & ADR) 全景圖
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/design_process_dbc.svg" alt="The 4-Stage Software Design Process and Design Specifications" />
+  <img src="../../img/ch05/architecture/design_process_dbc.svg" alt="The 4-Stage Software Design Process and Design Documents" />
 </div>
 
 <!--
@@ -158,12 +158,12 @@ footer: 'Prof. Nien-Lin Hsueh'
 第三階段（對應 **5.5 節**）是 **組件與物件導向設計 (Component & Detailed OO Design)**：深入組件內部，運用 GoF 23 種設計模式與 **SOLID 五大原則**，並以 **UML 類別圖 (Class Diagram)** 塑模。
 第四階段（對應 **5.6 節**）是 **資料與持久化設計 (Data & Persistence Design)**：進行三層次資料塑模、繪製 **UML ERD 綱要**，並設計 SQL、Redis 與 Kafka 多模態儲存。
 
-請注意最下方的深色基石列：**5.2 節的通用設計原則（高凝聚、低耦合）** 支撐著上方所有四個階段！而最右側則產出完整的 **軟體設計規格書 (SDS — IEEE 1016)** 與 **ADR 架構決策記錄**。
+請注意最下方的深色基石列：**5.2 節的通用設計原則（高凝聚、低耦合）** 支撐著上方所有四個階段！而最右側則產出完整的 **軟體設計文件 (Software Design Document, SDD — IEEE 1016)** 與 **ADR 架構決策記錄**。
 
-總結這張投影片，請記住這個核心觀念：軟體設計依循「架構設計 (5.3) → 介面契約 (5.4) → 物件導向設計 (5.5) → 資料設計 (5.6)」四階段流程推進，並產出 SDS 與 ADR 規格。
+總結這張投影片，請記住這個核心觀念：軟體設計依循「架構設計 (5.3) → 介面契約 (5.4) → 物件導向設計 (5.5) → 資料設計 (5.6)」四階段流程推進，並產出 SDD 與 ADR 規格。
 -->
 ---
-## 四階段軟體設計流程與交付規格產物 (SDS & ADR)
+## 四階段軟體設計流程與交付設計產物 (SDD & ADR)
 
 > **第五章展開主軸：** 先掌握底層的**通用設計原則 (5.2)**，再依序執行**四階段設計流程 (5.3 → 5.6)**，並為每一階段搭配專屬的 **UML 圖表**。
 
@@ -183,8 +183,8 @@ footer: 'Prof. Nien-Lin Hsueh'
 </div>
 <div class="card" data-marpit-fragment>
 
-### 2. 軟體設計規格書 (SDS 與 ADR 產物)
-- **軟體設計規格書 (SDS — IEEE 1016)**：
+### 2. 軟體設計文件 (SDD 與 ADR 產物)
+- **軟體設計文件 (Software Design Document, SDD — IEEE 1016)**：
   - **賦能平行開發**：前端、後端、DBA 與 QA 團隊依據鎖定的規格同步開發與撰寫測試，不必苦等實作完成。
   - **涵蓋內容**：套件/部屬架構圖、組件 API 合約 (OpenAPI/Protobuf)、類別模型與 DDL 綱要。
 - **架構決策記錄 (ADR — Michael Nygard)**：
@@ -194,7 +194,7 @@ footer: 'Prof. Nien-Lin Hsueh'
 </div>
 
 <!--
-我們進一步拆解左欄的「四階段設計流程」與右欄的「設計規格交付產物」。
+我們進一步拆解左欄的「四階段設計流程」與右欄的「設計文件交付產物」。
 
 請看左欄卡片：這四個階段完美解答了軟體設計由巨觀到微觀的四個核心工程問題，並各自對應一張標準圖表：
 階段一 (5.3 節) 決定巨觀架構模式，並用 UML 套件圖管原始碼相依、用 UML 部屬圖管雲端硬體容器；
@@ -202,9 +202,9 @@ footer: 'Prof. Nien-Lin Hsueh'
 階段三 (5.5 節) 走進組件內部，用 UML 類別圖落實 GoF 設計模式與 SOLID 原則；
 階段四 (5.6 節) 用 UML ERD 實體關聯圖與多模態架構設計資料庫與快取。
 
-再看右欄卡片：這四個階段的產出匯聚為 **軟體設計規格書 (SDS)** 與 **ADR 架構決策記錄**——既交代清楚「系統怎麼建 (How)」，也完整保存「當年為什麼這樣取捨 (Why)」！
+再看右欄卡片：這四個階段的產出匯聚為 **軟體設計文件 (SDD)** 與 **ADR 架構決策記錄**——既交代清楚「系統怎麼建 (How)」，也完整保存「當年為什麼這樣取捨 (Why)」！
 
-總結這張投影片，請記住這個核心觀念：結構化的四階段設計流程產出完整的 SDS 藍圖與 ADR 決策記錄，是工程團隊平行協作與長期演進的基石。
+總結這張投影片，請記住這個核心觀念：結構化的四階段設計流程產出完整的 SDD 藍圖與 ADR 決策記錄，是工程團隊平行協作與長期演進的基石。
 -->
 ---
 <!-- _class: lead -->
@@ -1209,7 +1209,7 @@ MVC 解耦呈現與資料；
 <div class="card" data-marpit-fragment>
 
 ### 工業級機器可讀介面規格標準 (API Specs)
-- **為什麼要在 SDS 鎖定機器可讀契約？**
+- **為什麼要在 SDD 鎖定機器可讀契約？**
   - 讓手機 App、後端微服務與 QA 能透過 Mock Server **同步平行開發與執行契約測試 (Contract Testing)**。
 - **三大現代介面規格標準 (外送平台實例)**：
   - **REST API**：**OpenAPI 3.1 (Swagger)** — 明確定義端點、JSON Schema、狀態碼 (`201`, `400`, `422`) 與欄位上下界。
@@ -1226,7 +1226,7 @@ MVC 解耦呈現與資料；
 對呼叫端 (Client) 而言，遵守前置條件是義務，獲得後置條件的正確結果就是受保障的權利；
 對供應端 (Supplier) 而言，達成後置條件與維持不變量是義務，而不必浪費程式碼處理違法輸入則是它的權利！
 
-再看右欄卡片：在現代軟體工程中，我們如何把這些契約寫進軟體設計規格書 (SDS)？
+再看右欄卡片：在現代軟體工程中，我們如何把這些契約寫進軟體設計文件 (SDD)？
 對外 REST API 使用 **OpenAPI 3.1**；內部微服務通訊使用 **gRPC Protocol Buffers (`.proto`)**；Kafka 非同步事件則使用 **AsyncAPI 與 Avro**——並且務必在付款與結帳合約中設計 `idempotency_key`（冪等鍵），確保顧客在網路斷線重按結帳時絕對不會被扣兩次錢！
 
 總結這張投影片，請記住這個核心觀念：結合 DbC 邏輯規則與 OpenAPI/Protobuf 規格，能消除跨團隊溝通歧義並實現契約驅動的平行開發。
@@ -2043,7 +2043,7 @@ C. **Apache Kafka 不可變事件日誌 (Event Log)**：透過 Transactional Out
 
 | 章節與設計階段 | 核心設計概念與專屬 UML / 資料模型 | 最關鍵工程啟發 Heuristic |
 | :--- | :--- | :--- |
-| **5.1 設計流程與規格** | 四階段設計流程、**SDS 與 ADR** | 設計階段修缺陷僅 $1（上線後 $100）；以 SDS 記 How、ADR 記 Why。 |
+| **5.1 設計流程與規格** | 四階段設計流程、**SDD 與 ADR** | 設計階段修缺陷僅 $1（上線後 $100）；以 SDD 記 How、ADR 記 Why。 |
 | **5.2 通用設計原則** | **高凝聚與低耦合** (UML 結構對照) | **極大化凝聚度，極小化耦合度！** 嚴格隱藏模組私有實作細節。 |
 | **5.3 階段一：架構設計** | 六大架構模式、ATAM、**套件圖與部屬圖** | 真實系統皆為複合模式；以套件圖控管無環相依、部屬圖規劃雲端容錯。 |
 | **5.4 階段二：介面契約** | **契約式設計 (DbC) 與 UML 組件圖** | 明確定義 `Pre`、`Post` 與 `Invariant`；以棒棒糖 (`—○`) 與插座 (`—(`) 熱插拔。 |
@@ -2054,7 +2054,7 @@ C. **Apache Kafka 不可變事件日誌 (Event Log)**：透過 Transactional Out
 <!--
 請複習這份第五章全景統整矩陣，感受整章從頭到尾、嚴密相扣的工程邏輯！
 
-5.1 確立了四階段軟體設計流程與 SDS/ADR 規格；
+5.1 確立了四階段軟體設計流程與 SDD/ADR 規格；
 5.2 奠定了貫穿全章的「高凝聚、低耦合」萬用物理定律；
 5.3（階段一：架構設計）教我們組合六大架構模式、執行 ATAM 權衡，並用 **UML 套件圖與部屬圖** 描繪巨觀架構；
 5.4（階段二：介面契約規格）教我們定義 **契約式設計 (DbC)**，並用 **UML 組件圖** 的棒棒糖與插座規範模組邊界；
@@ -2070,7 +2070,7 @@ C. **Apache Kafka 不可變事件日誌 (Event Log)**：透過 Transactional Out
 * **軟體架構與設計規格權威文獻：**
   - Len Bass, Paul Clements, Rick Kazman (SEI): *Software Architecture in Practice*, 4th Edition, Addison-Wesley.
   - Bertrand Meyer: *Object-Oriented Software Construction* (契約式設計 Design by Contract 創立著作), Prentice Hall.
-  - IEEE Std 1016: *IEEE Standard for Information Technology—Systems Design—Software Design Descriptions (SDD / SDS)*.
+  - IEEE Std 1016: *IEEE Standard for Information Technology—Systems Design—Software Design Descriptions (SDD)*.
   - Michael Nygard: *Documenting Architecture Decisions (ADR)*, 2011.
 * **經典設計原則、UML、資料設計與設計模式著作：**
   - Robert C. Martin (Uncle Bob): *Clean Architecture: A Craftsman's Guide to Software Structure and Design*, Prentice Hall.

@@ -35,7 +35,7 @@ To summarize this slide, remember this key takeaway: Software design establishes
 <div>
 <h3>Part 1: Process, Principles & Macro Design</h3>
 <ul>
-<li><b>5.1 Software Design Foundations & Process:</b> The 4-stage design process (Arch → Interface → OO → Data) and specifications (SDS & ADRs).</li>
+<li><b>5.1 Software Design Foundations & Process:</b> The 4-stage design process (Arch → Interface → OO → Data) and specifications (SDD & ADRs).</li>
 <li><b>5.2 Universal Design Principles:</b> Abstraction, encapsulation, separation of concerns, modularity, and cohesion & coupling.</li>
 <li><b>5.3 Stage 1 — Architectural Design:</b> 6 classic patterns, Food Delivery synthesis, ATAM, and <b>UML Package & Deployment Diagrams</b>.</li>
 <li><b>5.4 Stage 2 — Interface & Contract Spec:</b> <b>Design by Contract (DbC)</b> and <b>UML Component Diagrams</b> (Lollipop & Socket).</li>
@@ -55,7 +55,7 @@ To summarize this slide, remember this key takeaway: Software design establishes
 <!--
 Here is our end-to-end roadmap for Chapter 5, structured directly around the 4-Stage Software Design Process introduced on Slide 6:
 
-In 5.1, we establish the Software Design Foundations & Process: understanding why design matters and how requirements transform into a Software Design Specification (SDS) and Architecture Decision Records (ADRs) across four iterative stages.
+In 5.1, we establish the Software Design Foundations & Process: understanding why design matters and how requirements transform into a Software Design Document (SDD) and Architecture Decision Records (ADRs) across four iterative stages.
 
 In 5.2, we master Universal Software Design Principles—the foundational laws of High Cohesion, Low Coupling, Information Hiding, and Separation of Concerns that govern every design stage.
 
@@ -83,9 +83,9 @@ Welcome to Section 5.1: Software Design Foundations, Process & Specifications.
 
 In software engineering, if Requirements Engineering discovers what needs to be built, Software Design establishes how it will be constructed.
 
-Many beginners rush to open their IDE and start writing code immediately. But without a systematic design process and clear design specifications, codebases quickly deteriorate into unmaintainable quagmires.
+Many beginners rush to open their IDE and start writing code immediately. But without a systematic design process and clear design documents, codebases quickly deteriorate into unmaintainable quagmires.
 
-In this section, we examine what software design is, why it dictates project survival, and how the 4-stage Software Design Process produces formal Design Specifications (SDS & ADRs) that guide the rest of Chapter 5.
+In this section, we examine what software design is, why it dictates project survival, and how the 4-stage Software Design Process produces formal Design Documents (SDD & ADRs) that guide the rest of Chapter 5.
 
 To summarize this slide, remember this key takeaway: Software design is the systematic 4-stage engineering phase that transforms user requirements into verifiable structural, interface, object, and data blueprints.
 -->
@@ -94,7 +94,7 @@ To summarize this slide, remember this key takeaway: Software design is the syst
 
 * **From Requirements (What) to Implementation (How):**
   - **Requirements Engineering (SRS)**: Defines stakeholder problems, use cases, and quality expectations (*what to build*).
-  - **Software Design (SDS)**: Conceptualizes structural decomposition, interface contracts, class hierarchies, and data schemas (*how to build*).
+  - **Software Design (SDD)**: Conceptualizes structural decomposition, interface contracts, class hierarchies, and data schemas (*how to build*).
 * **Core Activities of Software Design:**
   - **Blueprint & Specification Creation**: Establishes architectural models, formal interface contracts, and database schemas so teams can build in parallel.
   - **Trade-off Decision Making**: Balances competing non-functional forces (e.g., latency vs. consistency vs. cloud cost).
@@ -109,7 +109,7 @@ Recall our previous chapters: Requirements engineering gives us a Software Requi
 
 However, if an engineer jumps straight from user stories into code, they immediately face critical dilemmas: How many subsystems should we split the platform into? What are the exact API contracts between Order and Payment? Do we store live GPS coordinates in SQL or Redis?
 
-Software design is the disciplined engineering process that answers these questions and produces a Software Design Specification (SDS) before heavy coding begins.
+Software design is the disciplined engineering process that answers these questions and produces a Software Design Document (SDD) before heavy coding begins.
 
 To summarize this slide, remember this key takeaway: Software design is the intellectual blueprint bridging abstract human requirements and concrete executable code.
 -->
@@ -141,10 +141,10 @@ To summarize this slide, remember this key takeaway: Disciplined software design
 ---
 <!-- _class: title-image-slide -->
 
-## The 4-Stage Software Design Process & Design Specifications
+## The 4-Stage Software Design Process & Design Documents (SDD & ADR)
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/design_process_dbc.svg" alt="The 4-Stage Software Design Process and Design Specifications" />
+  <img src="../../img/ch05/architecture/design_process_dbc.svg" alt="The 4-Stage Software Design Process and Design Documents" />
 </div>
 
 <!--
@@ -158,12 +158,12 @@ In the center, software design progresses iteratively from Macro to Micro across
 3. Stage 3 (Section 5.5) is Component & Detailed OO Design: designing internal class hierarchies using GoF Design Patterns, the 5 SOLID principles, and UML Class Diagrams.
 4. Stage 4 (Section 5.6) is Data & Persistence Design: transforming domain entities into 3NF Relational ERDs, Redis Geo-caches, and Kafka event streams.
 
-Notice the dark foundation bar at the bottom: Section 5.2 (Universal Design Principles: High Cohesion & Low Coupling) underpins all four stages! And on the right, the process outputs a complete Software Design Specification (SDS — IEEE 1016) and Architecture Decision Records (ADRs).
+Notice the dark foundation bar at the bottom: Section 5.2 (Universal Design Principles: High Cohesion & Low Coupling) underpins all four stages! And on the right, the process outputs a complete Software Design Document (SDD — IEEE 1016) and Architecture Decision Records (ADRs).
 
 To summarize this slide, remember this key takeaway: The software design process progresses systematically across Architectural Design (5.3), Interface Specification (5.4), Detailed OO Design (5.5), and Data Design (5.6).
 -->
 ---
-## The 4 Design Stages & Deliverables (SDS & ADRs)
+## The 4 Design Stages & Deliverables (SDD & ADRs)
 
 > **Chapter 5 Master Plan:** After mastering **Universal Design Principles (5.2)**, we follow the exact **4-Stage Design Process (5.3 → 5.6)** and pair each stage with its canonical **UML Diagram**.
 
@@ -183,8 +183,8 @@ To summarize this slide, remember this key takeaway: The software design process
 </div>
 <div class="card" data-marpit-fragment>
 
-### Design Specification Deliverables (SDS & ADRs)
-- **Software Design Specification (SDS — IEEE 1016)**:
+### Design Deliverables (SDD & ADRs)
+- **Software Design Document (SDD — IEEE 1016)**:
   - **Enables Parallel Engineering**: Frontend, Backend, DBAs, and QA build and write tests simultaneously against locked specs.
   - **Contents**: Package/Deployment views, Component API contracts (OpenAPI/Protobuf), Class models & DDL schemas.
 - **Architecture Decision Records (ADRs — Michael Nygard)**:
@@ -194,7 +194,7 @@ To summarize this slide, remember this key takeaway: The software design process
 </div>
 
 <!--
-Let's unpack how the four design stages on the left and the design specification deliverables on the right work together in real-world engineering.
+Let's unpack how the four design stages on the left and the design deliverables on the right work together in real-world engineering.
 
 In the left card, see how each stage answers a distinct engineering question and uses a dedicated diagram:
 Stage 1 (Section 5.3) asks: What is our macro system topology, how are source packages organized (UML Package Diagram), and how are binaries deployed to cloud nodes (UML Deployment Diagram)?
@@ -202,9 +202,9 @@ Stage 2 (Section 5.4) asks: How do modular components interact across boundaries
 Stage 3 (Section 5.5) asks: How are classes structured inside a component to remain extensible and testable (GoF, SOLID & UML Class Diagram)?
 Stage 4 (Section 5.6) asks: How is domain state modeled, indexed, cached, and persisted (UML ERD & Polyglot Storage)?
 
-In the right card, all four stages crystallize into the Software Design Specification (SDS) and Architecture Decision Records (ADRs)—documenting not only *what* the blueprint is, but *why* critical trade-offs were made!
+In the right card, all four stages crystallize into the Software Design Document (SDD) and Architecture Decision Records (ADRs)—documenting not only *what* the blueprint is, but *why* critical trade-offs were made!
 
-To summarize this slide, remember this key takeaway: Following a structured 4-stage design process produces complete SDS blueprints and ADRs that empower parallel development and long-term maintainability.
+To summarize this slide, remember this key takeaway: Following a structured 4-stage design process produces complete SDD blueprints and ADRs that empower parallel development and long-term maintainability.
 -->
 
 ---
@@ -1234,7 +1234,7 @@ To summarize this slide, remember this key takeaway: Design by Contract turns pa
 
 ### Industrial Interface Specification Standards
 - **Eliminating Ambiguity Across Teams**:
-  - Frontend, Mobile, and Backend teams lock interface specs in the **SDS** on Day 1 to enable **parallel development & contract testing**.
+  - Frontend, Mobile, and Backend teams lock interface specs in the **SDD** on Day 1 to enable **parallel development & contract testing**.
 - **Modern Machine-Readable Contract Formats**:
   - **REST APIs**: **OpenAPI 3.1 (Swagger)** — specifies endpoints, JSON schemas, status codes (`201`, `400`, `422`), and validation bounds.
   - **RPC Services**: **Protocol Buffers (`.proto`)** — strongly-typed binary contracts for east-west `gRPC` calls.
@@ -1250,7 +1250,7 @@ In the left card, notice the symmetry of Rights and Obligations in DbC:
 For the Client (caller): Satisfying the Precondition is an obligation, and receiving the Postcondition is a guaranteed right.
 For the Supplier (callee): Delivering the Postcondition and maintaining the Class Invariant are obligations, while being freed from handling invalid Precondition inputs inside core logic is a major benefit!
 
-In the right card, how do modern engineering teams write down these contracts in their Software Design Specification (SDS)?
+In the right card, how do modern engineering teams write down these contracts in their Software Design Document (SDD)?
 For REST APIs, teams write OpenAPI 3.1 YAML specifications.
 For internal microservices, teams write gRPC Protocol Buffers (`.proto`).
 For Kafka event streams, teams use AsyncAPI or Avro schemas—and crucially include an `idempotency_key` contract so network retries never charge a customer's credit card twice!
@@ -2059,7 +2059,7 @@ To summarize this slide, remember this key takeaway: Software design is an integ
 
 | Chapter Section | Design Stage & UML / Model | Golden Engineering Heuristic |
 | :--- | :--- | :--- |
-| **5.1 Design Process & Specs** | 4-Stage Workflow, **SDS & ADRs** | Catch flaws early ($1 vs. $100); document the *How* (SDS) and *Why* (ADR). |
+| **5.1 Design Process & Specs** | 4-Stage Workflow, **SDD & ADRs** | Catch flaws early ($1 vs. $100); document the *How* (SDD) and *Why* (ADR). |
 | **5.2 Universal Principles** | **Cohesion & Coupling** (UML Compare) | **Maximize Cohesion, Minimize Coupling!** Hide internal secrets. |
 | **5.3 Stage 1: Arch Design** | 6 Patterns, ATAM, **Package & Deploy UML** | Synthesize patterns; enforce acyclic imports & cloud fault isolation. |
 | **5.4 Stage 2: Interface Spec** | **Design by Contract (DbC) & Component UML** | Specify `Pre`, `Post` & `Invariant`; wire via Lollipop (`—○`) & Socket (`—(`). |
@@ -2071,7 +2071,7 @@ To summarize this slide, remember this key takeaway: Software design is an integ
 Review this comprehensive Chapter 5 Synthesis Matrix, which brings our entire end-to-end engineering story together!
 
 Look at how every section locks into place:
-Section 5.1 established the 4-stage design process and SDS/ADR specifications.
+Section 5.1 established the 4-stage design process and SDD/ADR specifications.
 Section 5.2 gave us the universal laws of High Cohesion and Low Coupling.
 Section 5.3 (Stage 1: Architectural Design) covered classic patterns, ATAM trade-offs, and UML Package & Deployment diagrams.
 Section 5.4 (Stage 2: Interface & Contract Spec) taught us Design by Contract (DbC) and UML Component diagrams (Lollipop & Socket).
@@ -2087,7 +2087,7 @@ To summarize this slide, remember this key takeaway: Software design is an integ
 * **Foundational Software Architecture & Design Specifications:**
   - Len Bass, Paul Clements, Rick Kazman (SEI): *Software Architecture in Practice*, 4th Edition, Addison-Wesley.
   - Bertrand Meyer: *Object-Oriented Software Construction* (Origin of Design by Contract — DbC), Prentice Hall.
-  - IEEE Std 1016: *IEEE Standard for Information Technology—Systems Design—Software Design Descriptions (SDD / SDS)*.
+  - IEEE Std 1016: *IEEE Standard for Information Technology—Systems Design—Software Design Descriptions (SDD)*.
   - Michael Nygard: *Documenting Architecture Decisions (ADR)*, 2011.
 * **Classic Design Principles, UML, Data & Patterns Literature:**
   - Robert C. Martin (Uncle Bob): *Clean Architecture: A Craftsman's Guide to Software Structure and Design*, Prentice Hall.
