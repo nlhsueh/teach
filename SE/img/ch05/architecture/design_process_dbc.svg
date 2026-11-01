@@ -15,6 +15,9 @@
     <marker id="arr-solid" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M 0 1 L 9 5 L 0 9 z" fill="#2563eb" />
     </marker>
+    <marker id="arr-solid-rev" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 10 1 L 1 5 L 10 9 z" fill="#2563eb" />
+    </marker>
     <marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M 0 1 L 9 5 L 0 9 z" fill="#0d9488" />
     </marker>
@@ -68,8 +71,8 @@
   <!-- CENTER PANEL: THE 4-STAGE ITERATIVE DESIGN PROCESS                -->
   <!-- ================================================================= -->
   <rect x="232" y="68" width="736" height="425" class="panel" />
-  <text x="600" y="94" class="panel-title" text-anchor="middle">THE 4-STAGE ITERATIVE SOFTWARE DESIGN WORKFLOW (Macro Architecture → Micro Craftsmanship)</text>
-  <text x="600" y="112" class="lbl-s" fill="#64748b" text-anchor="middle">Each design stage addresses a distinct level of abstraction and produces dedicated UML / Schema models</text>
+  <text x="600" y="94" class="panel-title" text-anchor="middle">THE 4 INTERLOCKING DESIGN DIMENSIONS (Macro Architecture ⇄ Micro Craftsmanship)</text>
+  <text x="600" y="112" class="lbl-s" fill="#0369a1" text-anchor="middle">Taught Top-Down (5.3 → 5.6); in practice, teams iterate freely or start Data-First (Stage 4 ERD → Stage 2 API → Stage 3 OO)!</text>
 
   <!-- STAGE 1: ARCHITECTURAL DESIGN (5.3) -->
   <rect x="248" y="128" width="166" height="295" fill="#fffbeb" stroke="#d97706" stroke-width="2" rx="10" />
@@ -91,7 +94,7 @@
   <text x="331" y="393" class="lbl-s" fill="#78350f" text-anchor="middle">2. Deployment Diagram</text>
   <text x="331" y="405" class="mono" fill="#b45309" text-anchor="middle">(3D Cloud Nodes)</text>
 
-  <line x1="414" y1="275" x2="428" y2="275" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arr-solid)" />
+  <line x1="416" y1="275" x2="429" y2="275" stroke="#2563eb" stroke-width="2" marker-start="url(#arr-solid-rev)" marker-end="url(#arr-solid)" />
 
   <!-- STAGE 2: INTERFACE & CONTRACT SPECIFICATION (5.4) -->
   <rect x="432" y="128" width="166" height="295" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2" rx="10" />
@@ -112,7 +115,7 @@
   <text x="515" y="381" class="mono" fill="#6d28d9" text-anchor="middle">Lollipop (—○) &amp;</text>
   <text x="515" y="397" class="mono" fill="#6d28d9" text-anchor="middle">Socket (—( ) Contracts</text>
 
-  <line x1="598" y1="275" x2="612" y2="275" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arr-solid)" />
+  <line x1="600" y1="275" x2="613" y2="275" stroke="#2563eb" stroke-width="2" marker-start="url(#arr-solid-rev)" marker-end="url(#arr-solid)" />
 
   <!-- STAGE 3: COMPONENT & OO DESIGN (5.5) -->
   <rect x="616" y="128" width="166" height="295" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" rx="10" />
@@ -133,7 +136,7 @@
   <text x="699" y="379" class="lbl-s" fill="#14532d" text-anchor="middle">Diagrams</text>
   <text x="699" y="397" class="mono" fill="#15803d" text-anchor="middle">Realization (--|&gt;) &amp; DIP</text>
 
-  <line x1="782" y1="275" x2="796" y2="275" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arr-solid)" />
+  <line x1="784" y1="275" x2="797" y2="275" stroke="#2563eb" stroke-width="2" marker-start="url(#arr-solid-rev)" marker-end="url(#arr-solid)" />
 
   <!-- STAGE 4: DATA & PERSISTENCE DESIGN (5.6) -->
   <rect x="800" y="128" width="154" height="295" fill="#ecfeff" stroke="#0891b2" stroke-width="2" rx="10" />
@@ -156,8 +159,8 @@
 
   <!-- Iterative Feedback Loop -->
   <path d="M 877 423 L 877 468 L 331 468 L 331 428" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arr-back)" />
-  <rect x="440" y="454" width="320" height="24" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1" rx="6" />
-  <text x="600" y="470" class="mono" fill="#334155" text-anchor="middle">Iterative Refinement &amp; Architectural Feedback Loop</text>
+  <rect x="360" y="454" width="480" height="24" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1" rx="6" />
+  <text x="600" y="470" class="mono" fill="#0f172a" text-anchor="middle">Multi-Entry &amp; Iterative: Architecture-First (1→4) · Data-First (4→2→3) · Domain-First (3→4→1)</text>
 
   <!-- Arrow from Center to Outputs -->
   <line x1="968" y1="265" x2="991" y2="265" stroke="#0d9488" stroke-width="3" marker-end="url(#arr-green)" />

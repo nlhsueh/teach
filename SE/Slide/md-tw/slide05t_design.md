@@ -139,46 +139,21 @@ footer: 'Prof. Nien-Lin Hsueh'
 總結這張投影片，請記住這個核心觀念：嚴謹的軟體設計能大幅降低長期維護成本，並將卓越品質深植於系統基因中。
 -->
 ---
-<!-- _class: title-image-slide -->
-
-## 四階段軟體設計流程與軟體設計文件 (SDD & ADR) 全景圖
-
-<div class="image-wrapper">
-  <img src="../../img/ch05/architecture/design_process_dbc.svg" alt="The 4-Stage Software Design Process and Design Documents" />
-</div>
-
-<!--
-請看第 6 頁這張核心總覽圖——它清楚描繪了「四階段軟體設計流程」，同時也是我們第五章接下來的完整章節路線圖！
-
-請看最左側的輸入：軟體設計承接需求工程的兩大輸入——功能規格 (SRS 與使用案例) 以及非功能品質驅動因子 (關鍵架構需求 ASR)。
-
-再看正中央的四階段迭代設計流程，每一階段皆由巨觀逐步推進至微觀，並搭配專屬的 UML 或資料圖表：
-第一階段（對應 **5.3 節**）是 **架構設計 (Architectural Design)**：進行子系統分解、組合架構模式、執行 ATAM 權衡，並以 **UML 套件圖 (Package Diagram)** 與 **UML 部屬圖 (Deployment Diagram)** 塑模巨觀結構。
-第二階段（對應 **5.4 節**）是 **介面與契約規格 (Interface & Contract Specification)**：建立資訊隱藏邊界、定義 **契約式設計 (DbC)**，並以 **UML 組件圖 (Component Diagram)** 的棒棒糖與插座塑模組件合約。
-第三階段（對應 **5.5 節**）是 **組件與物件導向設計 (Component & Detailed OO Design)**：深入組件內部，運用 GoF 23 種設計模式與 **SOLID 五大原則**，並以 **UML 類別圖 (Class Diagram)** 塑模。
-第四階段（對應 **5.6 節**）是 **資料與持久化設計 (Data & Persistence Design)**：進行三層次資料塑模、繪製 **UML ERD 綱要**，並設計 SQL、Redis 與 Kafka 多模態儲存。
-
-請注意最下方的深色基石列：**5.2 節的通用設計原則（高凝聚、低耦合）** 支撐著上方所有四個階段！而最右側則產出完整的 **軟體設計文件 (Software Design Document, SDD — IEEE 1016)** 與 **ADR 架構決策記錄**。
-
-總結這張投影片，請記住這個核心觀念：軟體設計依循「架構設計 (5.3) → 介面契約 (5.4) → 物件導向設計 (5.5) → 資料設計 (5.6)」四階段流程推進，並產出 SDD 與 ADR 規格。
--->
----
 ## 四階段軟體設計流程與交付設計產物 (SDD & ADR)
 
-> **第五章展開主軸：** 先掌握底層的**通用設計原則 (5.2)**，再依序執行**四階段設計流程 (5.3 → 5.6)**，並為每一階段搭配專屬的 **UML 圖表**。
+> **第五章展開主軸：** 本章依**「由巨觀至微觀 (5.3 → 5.6)」**順序講授四大設計階段與專屬 UML 圖；實務上各階段可依系統型態彈性切入並雙向迭代！
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 1. 四階段設計流程與專屬 UML 圖表
-1. **階段一 — 架構設計 (5.3 節)**：
-   - 組合架構模式 (Layered、微服務)、執行 ATAM 權衡，並繪製 **UML 套件圖與部屬圖**。
-2. **階段二 — 介面與契約規格 (5.4 節)**：
-   - 定義 **契約式設計 (DbC)** (`Pre`, `Post`, `Invariant`)，並繪製 **UML 組件圖** (`—○` / `—(`)。
-3. **階段三 — 組件與 OO 設計 (5.5 節)**：
-   - 運用 GoF 23 種設計模式與 **SOLID 五大原則**，並繪製 **UML 類別與介面圖**。
-4. **階段四 — 資料與持久化設計 (5.6 節)**：
-   - 設計三層次 **UML ERD 資料綱要**、3NF 正規化、Redis 空間快取與多模態儲存。
+### 1. 四大設計階段與實務彈性切入點
+1. **階段一 — 架構設計 (5.3)**：架構模式、ATAM 與 **UML 套件/部屬圖**。
+2. **階段二 — 介面與契約規格 (5.4)**：**DbC 契約** (`Pre/Post/Inv`) 與 **組件圖** (`—○`/`—(`)。
+3. **階段三 — 組件與 OO 設計 (5.5)**：GoF 模式、**SOLID** 與 **類別圖**。
+4. **階段四 — 資料與持久化設計 (5.6)**：三層 **ERD**、3NF、Redis 與多模態儲存。
+- **非僵化單向瀑布！常見實務切入模式**：
+  - **架構先行 (`1 → 2 → 3 → 4`)**：大型高併發、跨團隊分散式系統。
+  - **資料先行 (`4 → 2 → 3`, Data-First)**：資訊系統 (CRUD/ERP) 或學期專題，常**先定 Stage 4 資料表 (ERD)**，再往外推導 **Stage 2 API** 與 **Stage 3 類別**！
 
 </div>
 <div class="card" data-marpit-fragment>
@@ -194,17 +169,45 @@ footer: 'Prof. Nien-Lin Hsueh'
 </div>
 
 <!--
-我們進一步拆解左欄的「四階段設計流程」與右欄的「設計文件交付產物」。
+我們進一步拆解左欄的「四大設計階段」與右欄的「設計文件交付產物」。
 
-請看左欄卡片：這四個階段完美解答了軟體設計由巨觀到微觀的四個核心工程問題，並各自對應一張標準圖表：
+請看左欄卡片上半部：這四個階段分別解答了軟體設計由巨觀到微觀的四個核心問題，並各自對應專屬的 UML 圖表：
 階段一 (5.3 節) 決定巨觀架構模式，並用 UML 套件圖管原始碼相依、用 UML 部屬圖管雲端硬體容器；
 階段二 (5.4 節) 規範模組邊界與契約式設計 (DbC)，並用 UML 組件圖的棒棒糖與插座接合 API；
 階段三 (5.5 節) 走進組件內部，用 UML 類別圖落實 GoF 設計模式與 SOLID 原則；
 階段四 (5.6 節) 用 UML ERD 實體關聯圖與多模態架構設計資料庫與快取。
 
-再看右欄卡片：這四個階段的產出匯聚為 **軟體設計文件 (SDD)** 與 **ADR 架構決策記錄**——既交代清楚「系統怎麼建 (How)」，也完整保存「當年為什麼這樣取捨 (Why)」！
+但請同學特別注意左欄下半部的重點提醒：**為什麼我們課本按照 5.3 → 5.4 → 5.5 → 5.6 的順序講？** 因為從「一萬英尺高空的巨觀架構」一路推進到「地面上的類別與資料表」，最符合大腦建立全景認知的學習順序！
+然而在真實工程與各位的畢業專題中，**Stage 1 到 Stage 4 絕不是死板的單向瀑布步驟**！
+舉例來說：當大家開發選課系統、電商後台或企業資訊系統 (ERP/CRUD) 時，實務上最常見的反而是 **「資料先行 (Data-First：Stage 4 → Stage 2 → Stage 3)」**——團隊會先從 **Stage 4 (5.6 節)** 把核心資料庫 ERD 綱要與欄位確定下來，接著再往外定義 **Stage 2 (5.4 節)** 的前後端 API 契約與 **Stage 3 (5.5 節)** 的物件類別！若是做領域驅動設計 (DDD)，則會從 **Stage 3 領域物件模型** 先行切入。因此，請把這四個階段視為**彼此交織、雙向回饋的四個設計維度**！
 
-總結這張投影片，請記住這個核心觀念：結構化的四階段設計流程產出完整的 SDD 藍圖與 ADR 決策記錄，是工程團隊平行協作與長期演進的基石。
+再看右欄卡片：這四個維度的設計成果最終會匯聚為 **軟體設計文件 (SDD)** 與 **ADR 架構決策記錄**——既交代清楚「系統怎麼建 (How)」，也完整保存「為什麼這樣取捨 (Why)」！
+
+總結這張投影片，請記住這個核心觀念：四大設計階段代表四個緊密交織的設計維度，實務上可依系統特性採「架構先行」或「資料先行」彈性切入，並產出完整的 SDD 與 ADR 藍圖。
+-->
+---
+<!-- _class: title-image-slide -->
+
+## 四階段軟體設計流程與軟體設計文件 (SDD & ADR) 全景圖
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/design_process_dbc.svg" alt="The 4-Stage Software Design Process and Design Documents" />
+</div>
+
+<!--
+請看這張核心總覽圖——它將剛才我們所講的「四大設計維度與雙向迭代流程」完整視覺化，同時也是我們第五章的章節導覽地圖！
+
+請看最左側的輸入：軟體設計承接需求工程的兩大輸入——功能規格 (SRS 與使用案例) 以及非功能品質驅動因子 (關鍵架構需求 ASR)。
+
+再看正中央的四階段設計流程，每一階段皆搭配專屬的 UML 或資料圖表：
+第一階段（**5.3 節**）是 **架構設計 (Architectural Design)**：進行子系統分解、組合架構模式、執行 ATAM 權衡，並以 **UML 套件圖** 與 **UML 部屬圖** 塑模巨觀結構。
+第二階段（**5.4 節**）是 **介面與契約規格 (Interface & Contract Specification)**：建立資訊隱藏邊界、定義 **契約式設計 (DbC)**，並以 **UML 組件圖** 的棒棒糖與插座塑模組件合約。
+第三階段（**5.5 節**）是 **組件與物件導向設計 (Component & Detailed OO Design)**：深入組件內部，運用 GoF 設計模式與 **SOLID 五大原則**，並以 **UML 類別圖** 塑模。
+第四階段（**5.6 節**）是 **資料與持久化設計 (Data & Persistence Design)**：進行三層次資料塑模、繪製 **UML ERD 綱要**，並設計 SQL、Redis 與 Kafka 多模態儲存。
+
+請特別留意四個方塊之間的**雙向箭頭**以及下方的**多起點迭代迴路**：教學上我們由左至右（巨觀 5.3 → 微觀 5.6）依序探索；但在實務開發中，你可以從 Stage 1（架構先行）切入，也可以從 Stage 4（資料結構 ERD 先行）往回推導 API 與類別！
+
+總結這張投影片，請記住這個核心觀念：軟體設計串聯「架構 (5.3) ⇄ 介面契約 (5.4) ⇄ 物件導向 (5.5) ⇄ 資料設計 (5.6)」四大交織維度，透過雙向迭代產出 SDD 與 ADR 規格。
 -->
 ---
 <!-- _class: lead -->
@@ -308,24 +311,6 @@ footer: 'Prof. Nien-Lin Hsueh'
 總結這張投影片，請記住這個核心觀念：將臃腫的單體類別拆解為專注、協同的服務，是實踐高凝聚與低耦合的經典範例。
 -->
 ---
-<!-- _class: title-image-slide -->
-
-## 內聚力視覺化譜系：7 大內聚層次圖解 (從強到弱)
-
-<div class="image-wrapper">
-  <img src="../../img/ch05/architecture/cohesion_levels_visual_map.svg" alt="內聚力 7 大層次視覺化譜系圖" />
-</div>
-
-<!--
-在看詳細對照表之前，我們先透過這張視覺化全景圖，直觀比較 7 種不同程度的「內聚力 (Cohesion)」。
-
-左半部（綠與藍色系）代表高凝聚、職責清晰的優良設計：第 7 級「功能性內聚」所有元素只為完成單一明確目標；第 6 級「順序性內聚」如同流水線，前一步驟的輸出直接成為下一步驟的輸入；第 5 級「溝通性內聚」共用同一份資料結構；第 4 級「過程性內聚」則依控制流程先後執行。
-
-右半部（橘與紅色系）則是職責糾纏的反模式：第 3 級「時間性內聚」只因同在開機瞬間執行就塞進 initStartup；第 2 級「邏輯性內聚」用外部傳入的 mode 旗標控制龐大的 switch 分支；最糟的第 1 級「偶然性內聚」則是毫無關聯的 CommonUtils 大雜燴。
-
-總結這張投影片，請記住這個核心觀念：模組設計應極力向左上角的「功能性與順序性內聚」靠攏，並重構拆解右半部的旗標大傘與雜物箱類別。
--->
----
 ## 內聚力的層次與類型：從弱到強 (Weak to Strong)
 
 * **內聚力譜系 (Yourdon & Constantine)**：衡量單一模組內部各元素彼此關聯與聚焦的緊密程度：
@@ -354,20 +339,20 @@ footer: 'Prof. Nien-Lin Hsueh'
 ---
 <!-- _class: title-image-slide -->
 
-## 耦合度視覺化譜系：6 大耦合層次圖解 (從鬆到緊)
+## 內聚力視覺化譜系：7 大內聚層次圖解 (從強到弱)
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/coupling_levels_visual_map.svg" alt="耦合度 6 大層次視覺化譜系圖" />
+  <img src="../../img/ch05/architecture/cohesion_levels_visual_map.svg" alt="內聚力 7 大層次視覺化譜系圖" />
 </div>
 
 <!--
-接著我們透過同樣的視覺化風格，對比模組之間 6 種不同程度的「耦合度 (Coupling)」。
+在看詳細對照表之前，我們先透過這張視覺化全景圖，直觀比較 7 種不同程度的「內聚力 (Cohesion)」。
 
-左半部代表鬆散、低度牽連的優良耦合：第 6 級「訊息與事件耦合」透過非同步 Event Bus 通訊，發送端與接收端達到零編譯期依賴；第 5 級「資料耦合」只傳遞必要的純量參數（如距離與金額）；第 4 級「標記耦合」則傳遞了整包 CustomerDTO，但對方其實只讀取其中的 zipCode 欄位。
+左半部（綠與藍色系）代表高凝聚、職責清晰的優良設計：第 7 級「功能性內聚」所有元素只為完成單一明確目標；第 6 級「順序性內聚」如同流水線，前一步驟的輸出直接成為下一步驟的輸入；第 5 級「溝通性內聚」共用同一份資料結構；第 4 級「過程性內聚」則依控制流程先後執行。
 
-右半部則是高風險的緊密耦合反模式：第 3 級「控制耦合」由呼叫端傳入 flag=2 去遙控被呼叫端內部的 if-else 分支；第 2 級「共用耦合」讓多個模組同時讀寫同一個全域變數 GLOBAL_STATE，極易引發競爭條件；最致命的第 1 級「內容耦合」則直接刺穿封裝邊界，竄改另一模組的 private 私有欄位。
+右半部（橘與紅色系）則是職責糾纏的反模式：第 3 級「時間性內聚」只因同在開機瞬間執行就塞進 initStartup；第 2 級「邏輯性內聚」用外部傳入的 mode 旗標控制龐大的 switch 分支；最糟的第 1 級「偶然性內聚」則是毫無關聯的 CommonUtils 大雜燴。
 
-總結這張投影片，請記住這個核心觀念：鬆散耦合如同架構防火牆，能將修改影響完全隔離；緊密耦合則會引發骨牌效應，改動一個欄位就導致全系統連環崩潰。
+總結這張投影片，請記住這個核心觀念：模組設計應極力向左上角的「功能性與順序性內聚」靠攏，並重構拆解右半部的旗標大傘與雜物箱類別。
 -->
 ---
 ## 耦合度的層次與類型：從緊到鬆 (Tight to Loose)
@@ -399,6 +384,24 @@ footer: 'Prof. Nien-Lin Hsueh'
 而「訊息/事件解耦」則透過事件匯流排達到時空徹底分離。
 
 總結這張投影片，請記住這個核心觀念：杜絕內容與共用耦合，降低控制耦合，優先採用資料耦合與事件驅動設計。
+-->
+---
+<!-- _class: title-image-slide -->
+
+## 耦合度視覺化譜系：6 大耦合層次圖解 (從鬆到緊)
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/coupling_levels_visual_map.svg" alt="耦合度 6 大層次視覺化譜系圖" />
+</div>
+
+<!--
+接著我們透過同樣的視覺化風格，對比模組之間 6 種不同程度的「耦合度 (Coupling)」。
+
+左半部代表鬆散、低度牽連的優良耦合：第 6 級「訊息與事件耦合」透過非同步 Event Bus 通訊，發送端與接收端達到零編譯期依賴；第 5 級「資料耦合」只傳遞必要的純量參數（如距離與金額）；第 4 級「標記耦合」則傳遞了整包 CustomerDTO，但對方其實只讀取其中的 zipCode 欄位。
+
+右半部則是高風險的緊密耦合反模式：第 3 級「控制耦合」由呼叫端傳入 flag=2 去遙控被呼叫端內部的 if-else 分支；第 2 級「共用耦合」讓多個模組同時讀寫同一個全域變數 GLOBAL_STATE，極易引發競爭條件；最致命的第 1 級「內容耦合」則直接刺穿封裝邊界，竄改另一模組的 private 私有欄位。
+
+總結這張投影片，請記住這個核心觀念：鬆散耦合如同架構防火牆，能將修改影響完全隔離；緊密耦合則會引發骨牌效應，改動一個欄位就導致全系統連環崩潰。
 -->
 ---
 ### 觀念檢核測驗 1 (CCQ 1)
@@ -500,27 +503,6 @@ footer: 'Prof. Nien-Lin Hsueh'
 總結這張投影片，請記住這個核心觀念：架構模式凝聚成熟結構經驗，為團隊建立共通溝通語言與可預測的權衡指標。
 -->
 ---
-<!-- _class: title-image-slide -->
-
-## 架構模式視覺導覽：5.3 六大經典架構樣式總覽
-
-<div class="image-wrapper">
-  <img src="../../img/ch05/architecture/patterns_53_visual_map.svg" alt="Visual Overview of 5.3 Architectural Patterns" />
-</div>
-
-<!--
-在逐一深入各個架構模式之前，請先看這張 5.3 節的「架構模式視覺全景導覽圖」。
-
-我們可以將本節的六大經典架構模式分為左右兩大陣營：
-左側是「集中式與結構型模式 (Centralized & Structural Patterns)」：
-包含垂直分層的 Layered (N-Tier) 架構、分離畫面與狀態的 MVC 架構、圍繞中央資料樞紐運作的 Repository (黑板) 架構，以及最下方的單體架構與模組化組件基礎。
-
-右側則是「分散式、路由與資料流模式 (Distributed, Routing & Flow Patterns)」：
-包含跨越網路邊界的 Client-Server 架構、串接無狀態串流轉換的 Pipe-and-Filter 管線架構、各擁私有資料庫的 Microservices 微服務架構，以及底部的事件匯流排 (Event Bus) 與多模式複合架構！
-
-總結這張投影片，請記住這個核心觀念：掌握「集中結構型」與「分散資料流型」兩大譜系，就能快速建立軟體架構的全景心智地圖。
--->
----
 ## 六大經典架構模式全景對照總表
 
 | 模式名稱 | 拓撲外觀特徵 | 核心運作機制 | 最適用場景 | 主要風險與承擔代價 |
@@ -546,23 +528,23 @@ MVC 解耦呈現與資料；
 ---
 <!-- _class: title-image-slide -->
 
-## 1. 模型-視圖-控制器模式 (MVC) — 架構拓撲圖
+## 架構模式視覺導覽：5.3 六大經典架構樣式總覽
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/pattern_mvc.svg" alt="MVC Architecture Diagram" />
+  <img src="../../img/ch05/architecture/patterns_53_visual_map.svg" alt="Visual Overview of 5.3 Architectural Patterns" />
 </div>
 
 <!--
-我們先透過架構拓撲圖來觀察第一個經典模式：Model-View-Controller (MVC)。
+在逐一深入各個架構模式之前，請先看這張 5.3 節的「架構模式視覺全景導覽圖」。
 
-請順著圖中的編號箭頭觀察三角循環資料流：
-第一步：User 透過瀏覽器或 App 發送操作請求給 Controller。
-第二步：Controller 將操作轉譯為商業動作，呼叫 Model 更新領域狀態。
-第三步：Model 狀態變更後，主動發送通知給觀察者 View。
-第四步：View 向 Model 查詢最新狀態資料。
-第五步：View 將最新畫面渲染呈現給使用者。
+我們可以將本節的六大經典架構模式分為左右兩大陣營：
+左側是「集中式與結構型模式 (Centralized & Structural Patterns)」：
+包含垂直分層的 Layered (N-Tier) 架構、分離畫面與狀態的 MVC 架構、圍繞中央資料樞紐運作的 Repository (黑板) 架構，以及最下方的單體架構與模組化組件基礎。
 
-總結這張投影片，請記住這個核心觀念：MVC 透過 Controller、Model 與 View 的三角互動迴圈，徹底解耦視覺呈現與底層資料邏輯。
+右側則是「分散式、路由與資料流模式 (Distributed, Routing & Flow Patterns)」：
+包含跨越網路邊界的 Client-Server 架構、串接無狀態串流轉換的 Pipe-and-Filter 管線架構、各擁私有資料庫的 Microservices 微服務架構，以及底部的事件匯流排 (Event Bus) 與多模式複合架構！
+
+總結這張投影片，請記住這個核心觀念：掌握「集中結構型」與「分散資料流型」兩大譜系，就能快速建立軟體架構的全景心智地圖。
 -->
 ---
 ## 1. 模型-視圖-控制器模式 (MVC)：職責與權衡
@@ -589,24 +571,23 @@ MVC 解耦呈現與資料；
 ---
 <!-- _class: title-image-slide -->
 
-## 2. 分層架構模式 (Layered Architecture) — 架構拓撲圖
+## 1. 模型-視圖-控制器模式 (MVC) — 架構拓撲圖
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/pattern_layered.svg" alt="Layered Architecture Diagram" />
+  <img src="../../img/ch05/architecture/pattern_mvc.svg" alt="MVC Architecture Diagram" />
 </div>
 
 <!--
-我們來看第二個模式：分層架構 (Layered Architecture) 的視覺拓撲圖。
+我們先透過架構拓撲圖來觀察第一個經典模式：Model-View-Controller (MVC)。
 
-圖中由上而下垂直堆疊了四個標準抽象層次：
-最上層是 Presentation 展示層（Web 畫面、行動介面、REST API 控制器）；
-第二層是 Application 應用服務層（負責使用案例工作流調度與交易邊界）；
-第三層是 Business / Domain 領域業務層（封裝核心商業規則與實體演算法）；
-最底層是 Persistence 持久化與基礎設施層（資料庫存取與外部系統介接）。
+請順著圖中的編號箭頭觀察三角循環資料流：
+第一步：User 透過瀏覽器或 App 發送操作請求給 Controller。
+第二步：Controller 將操作轉譯為商業動作，呼叫 Model 更新領域狀態。
+第三步：Model 狀態變更後，主動發送通知給觀察者 View。
+第四步：View 向 Model 查詢最新狀態資料。
+第五步：View 將最新畫面渲染呈現給使用者。
 
-請特別注意右側向下的箭頭：每一層只允許單向呼叫其正下方的一層。
-
-總結這張投影片，請記住這個核心觀念：分層架構將系統組織為由上而下嚴格單向呼叫的垂直抽象階層。
+總結這張投影片，請記住這個核心觀念：MVC 透過 Controller、Model 與 View 的三角互動迴圈，徹底解耦視覺呈現與底層資料邏輯。
 -->
 ---
 ## 2. 分層架構模式 (Layered Architecture)：職責與權衡
@@ -634,22 +615,24 @@ MVC 解耦呈現與資料；
 ---
 <!-- _class: title-image-slide -->
 
-## 3. 儲存庫架構模式 (Repository Architecture) — 架構拓撲圖
+## 2. 分層架構模式 (Layered Architecture) — 架構拓撲圖
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/pattern_repository.svg" alt="Repository Architecture Diagram" />
+  <img src="../../img/ch05/architecture/pattern_layered.svg" alt="Layered Architecture Diagram" />
 </div>
 
 <!--
-我們來看第三個模式：儲存庫架構 (Repository Architecture) 的視覺拓撲圖。
+我們來看第二個模式：分層架構 (Layered Architecture) 的視覺拓撲圖。
 
-請觀察圖中的「星狀輻射樞紐 (Hub-and-Spoke)」結構：
-正中央是 Central Repository 中央儲存庫，維護著全系統唯一的真實共享資料（例如 IDE 中的抽象語法樹 AST 或大型共用資料庫）。
-四周圍繞著獨立運作的子系統：Code Editor、Compiler、Static Analyzer 與 Interactive Debugger。
+圖中由上而下垂直堆疊了四個標準抽象層次：
+最上層是 Presentation 展示層（Web 畫面、行動介面、REST API 控制器）；
+第二層是 Application 應用服務層（負責使用案例工作流調度與交易邊界）；
+第三層是 Business / Domain 領域業務層（封裝核心商業規則與實體演算法）；
+最底層是 Persistence 持久化與基礎設施層（資料庫存取與外部系統介接）。
 
-請注意：這四個工具彼此之間完全沒有連線，所有資料交換與協作皆透過中央儲存庫完成。
+請特別注意右側向下的箭頭：每一層只允許單向呼叫其正下方的一層。
 
-總結這張投影片，請記住這個核心觀念：儲存庫架構透過中央共享資料樞紐，讓多個獨立工具在不產生直接耦合的前提下協同運作。
+總結這張投影片，請記住這個核心觀念：分層架構將系統組織為由上而下嚴格單向呼叫的垂直抽象階層。
 -->
 ---
 ## 3. 儲存庫架構模式 (Repository Architecture)：職責與權衡
@@ -675,20 +658,22 @@ MVC 解耦呈現與資料；
 ---
 <!-- _class: title-image-slide -->
 
-## 4. 主從式架構模式 (Client-Server Architecture) — 架構拓撲圖
+## 3. 儲存庫架構模式 (Repository Architecture) — 架構拓撲圖
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/pattern_client_server.svg" alt="Client-Server Architecture Diagram" />
+  <img src="../../img/ch05/architecture/pattern_repository.svg" alt="Repository Architecture Diagram" />
 </div>
 
 <!--
-我們來看第四個模式：主從式架構 (Client-Server Architecture) 的視覺拓撲圖。
+我們來看第三個模式：儲存庫架構 (Repository Architecture) 的視覺拓撲圖。
 
-左側是分布在世界各地的多樣化客戶端 (Clients)：包含 Web 瀏覽器、iOS/Android 原生行動 App 以及門市 POS 終端機。
-中間是網際網路邊界 (Network / WAN)，透過 HTTPS、REST 或 gRPC 傳輸加密封包。
-右側則是集中式伺服器叢集 (Centralized Server Tier)：由負載平衡閘道器接收流量，分發給可水平擴展的無狀態應用伺服器，最後存取中央資料庫與快取叢集。
+請觀察圖中的「星狀輻射樞紐 (Hub-and-Spoke)」結構：
+正中央是 Central Repository 中央儲存庫，維護著全系統唯一的真實共享資料（例如 IDE 中的抽象語法樹 AST 或大型共用資料庫）。
+四周圍繞著獨立運作的子系統：Code Editor、Compiler、Static Analyzer 與 Interactive Debugger。
 
-總結這張投影片，請記住這個核心觀念：主從式架構跨越網路邊界，將分散式前端互動終端與集中式後端運算儲存清楚分離。
+請注意：這四個工具彼此之間完全沒有連線，所有資料交換與協作皆透過中央儲存庫完成。
+
+總結這張投影片，請記住這個核心觀念：儲存庫架構透過中央共享資料樞紐，讓多個獨立工具在不產生直接耦合的前提下協同運作。
 -->
 ---
 ## 4. 主從式架構模式 (Client-Server Architecture)：職責與權衡
@@ -714,23 +699,20 @@ MVC 解耦呈現與資料；
 ---
 <!-- _class: title-image-slide -->
 
-## 5. 管線與過濾器模式 (Pipe-and-Filter) — 架構拓撲圖
+## 4. 主從式架構模式 (Client-Server Architecture) — 架構拓撲圖
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/pattern_pipe_filter.svg" alt="Pipe and Filter Architecture Diagram" />
+  <img src="../../img/ch05/architecture/pattern_client_server.svg" alt="Client-Server Architecture Diagram" />
 </div>
 
 <!--
-我們來看第五個模式：管線與過濾器 (Pipe-and-Filter Architecture) 的視覺拓撲圖。
+我們來看第四個模式：主從式架構 (Client-Server Architecture) 的視覺拓撲圖。
 
-請看上半部的單向資料處理流水線：
-原始資料從左側 Data Source 流出，經由 Pipe 傳入 Filter 1 進行語法解析 (Parse)；
-解析後的結構化串流經由下一段 Pipe 傳入 Filter 2 進行資料清洗與驗證 (Cleanse)；
-接著再流入 Filter 3 進行統計聚合 (Transform)，最後輸出至右側 Data Sink。
+左側是分布在世界各地的多樣化客戶端 (Clients)：包含 Web 瀏覽器、iOS/Android 原生行動 App 以及門市 POS 終端機。
+中間是網際網路邊界 (Network / WAN)，透過 HTTPS、REST 或 gRPC 傳輸加密封包。
+右側則是集中式伺服器叢集 (Centralized Server Tier)：由負載平衡閘道器接收流量，分發給可水平擴展的無狀態應用伺服器，最後存取中央資料庫與快取叢集。
 
-下半部則是經典的 Unix 命令列管線實例：將 cat、grep、sort 與 uniq 串接成一氣呵成的處理管線。
-
-總結這張投影片，請記住這個核心觀念：管線與過濾器模式將複雜資料處理拆解為一連串無狀態、單向串接的獨立轉換階段。
+總結這張投影片，請記住這個核心觀念：主從式架構跨越網路邊界，將分散式前端互動終端與集中式後端運算儲存清楚分離。
 -->
 ---
 ## 5. 管線與過濾器模式 (Pipe-and-Filter)：職責與權衡
@@ -756,22 +738,23 @@ MVC 解耦呈現與資料；
 ---
 <!-- _class: title-image-slide -->
 
-## 6. 微服務架構模式 (Microservices, MSA) — 架構拓撲圖
+## 5. 管線與過濾器模式 (Pipe-and-Filter) — 架構拓撲圖
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/pattern_microservices.svg" alt="Microservices Architecture Diagram" />
+  <img src="../../img/ch05/architecture/pattern_pipe_filter.svg" alt="Pipe and Filter Architecture Diagram" />
 </div>
 
 <!--
-我們來看第六個模式：微服務架構 (Microservices Architecture, MSA) 的視覺拓撲圖。
+我們來看第五個模式：管線與過濾器 (Pipe-and-Filter Architecture) 的視覺拓撲圖。
 
-請從左至右觀察整體雲原生拓撲：
-左側所有外部請求統一經過 API Gateway 閘道器，完成路由分發、JWT 權限驗證與速率限制。
-中間則是依業務領域拆分的自治微服務叢集：User 會員服務 (Node.js + Postgres)、Order 訂單服務 (Spring Boot + MongoDB) 與 Payment 支付服務 (Python + MySQL)。
-請特別注意：每個微服務都擁有自己專屬的 Private DB，嚴禁跨服務直接連資料庫做 SQL JOIN！
-底部則透過 Kafka / RabbitMQ 非同步事件匯流排發布領域事件，實現跨服務解耦協作。
+請看上半部的單向資料處理流水線：
+原始資料從左側 Data Source 流出，經由 Pipe 傳入 Filter 1 進行語法解析 (Parse)；
+解析後的結構化串流經由下一段 Pipe 傳入 Filter 2 進行資料清洗與驗證 (Cleanse)；
+接著再流入 Filter 3 進行統計聚合 (Transform)，最後輸出至右側 Data Sink。
 
-總結這張投影片，請記住這個核心觀念：微服務架構將龐大系統拆解為獨立部署、各自封裝私有資料庫的自治領域服務叢集。
+下半部則是經典的 Unix 命令列管線實例：將 cat、grep、sort 與 uniq 串接成一氣呵成的處理管線。
+
+總結這張投影片，請記住這個核心觀念：管線與過濾器模式將複雜資料處理拆解為一連串無狀態、單向串接的獨立轉換階段。
 -->
 ---
 ## 6. 微服務架構模式 (Microservices, MSA)：職責與權衡
@@ -793,6 +776,26 @@ MVC 解耦呈現與資料；
 然而，微服務絕非銀彈：原本奈秒級的記憶體呼叫變成了可能失敗的網路呼叫，原本簡單的資料庫 ACID 交易變成了複雜的 Saga 最終一致性，更需要強大的 DevOps 團隊維運 Kubernetes 與分散式監控。
 
 總結這張投影片，請記住這個核心觀念：微服務架構以承擔分散式網路與維運複雜度為代價，換取大型團隊極致的部署自治與故障隔離。
+-->
+---
+<!-- _class: title-image-slide -->
+
+## 6. 微服務架構模式 (Microservices, MSA) — 架構拓撲圖
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/pattern_microservices.svg" alt="Microservices Architecture Diagram" />
+</div>
+
+<!--
+我們來看第六個模式：微服務架構 (Microservices Architecture, MSA) 的視覺拓撲圖。
+
+請從左至右觀察整體雲原生拓撲：
+左側所有外部請求統一經過 API Gateway 閘道器，完成路由分發、JWT 權限驗證與速率限制。
+中間則是依業務領域拆分的自治微服務叢集：User 會員服務 (Node.js + Postgres)、Order 訂單服務 (Spring Boot + MongoDB) 與 Payment 支付服務 (Python + MySQL)。
+請特別注意：每個微服務都擁有自己專屬的 Private DB，嚴禁跨服務直接連資料庫做 SQL JOIN！
+底部則透過 Kafka / RabbitMQ 非同步事件匯流排發布領域事件，實現跨服務解耦協作。
+
+總結這張投影片，請記住這個核心觀念：微服務架構將龐大系統拆解為獨立部署、各自封裝私有資料庫的自治領域服務叢集。
 -->
 ---
 ## 單體架構 vs. 微服務架構：深度技術對比
@@ -817,26 +820,6 @@ MVC 解耦呈現與資料；
 但請牢記：別墅社區需要複雜的道路、管線維護。不要為了趕時髦而貿然採用微服務；小型團隊從模組化單體起步通常是更明智的選擇。
 
 總結這張投影片，請記住這個核心觀念：微服務是以維運複雜度換取團隊自治與故障隔離；初期除非組織規模龐大，否則應謹慎採用。
--->
----
-<!-- _class: title-image-slide -->
-
-## 實戰案例：外送平台系統 (Food Delivery) — 複合架構全景圖
-
-<div class="image-wrapper">
-  <img src="../../img/ch05/architecture/pattern_food_delivery_synthesis.svg" alt="Food Delivery Multi-Pattern Architecture Diagram" />
-</div>
-
-<!--
-學完了六大經典架構模式後，請思考一個關鍵問題：真實世界的大型系統（例如 UberEats 或 foodpanda 外送平台），是只挑選其中一種模式來建造的嗎？
-
-請看這張外送平台的複合架構全景圖，答案絕對是否定的！真實系統會在不同「縮放層級」與「子系統領域」中，巧妙組合這六種模式：
-
-在左側系統邊界，採用 Client-Server 連接顧客、商家與外送員三大終端；而放大進到顧客 App 內部，則用 MVC 讓同一份訂單狀態同時驅動地圖畫面與進度列。
-在中間雲端後台，巨觀上採用 Microservices 拆分菜單、訂單与支付服務；但放大進到單一 Order Service 內部，則是標準的四層 Layered 分層架構。
-在右側即時資料流，採用 Pipe-and-Filter 管線處理每秒十萬筆外送員 GPS 訊號；而在智慧派單中心，則採用 Repository 儲存庫模式，讓路徑規劃、順路併單與動態加價演算法圍繞同一份全城即時地理狀態庫協同運算！
-
-總結這張投影片，請記住這個核心觀念：真實世界的軟體架構絕非單一模式，而是跨層級、跨子系統的多模式分形組合。
 -->
 ---
 ## 實戰案例解析：外送平台如何組合六大架構模式？
@@ -865,6 +848,26 @@ MVC 解耦呈現與資料；
 這也直接引出我們下一節 5.4 的主題：架構設計不是逛街挑單一模式，而是由需求驅動的多視角合成！
 
 總結這張投影片，請記住這個核心觀念：優秀的架構師不會死守單一模式，而是根據不同層級與非功能需求靈活組合多種架構模式。
+-->
+---
+<!-- _class: title-image-slide -->
+
+## 實戰案例：外送平台系統 (Food Delivery) — 複合架構全景圖
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/pattern_food_delivery_synthesis.svg" alt="Food Delivery Multi-Pattern Architecture Diagram" />
+</div>
+
+<!--
+學完了六大經典架構模式後，請思考一個關鍵問題：真實世界的大型系統（例如 UberEats 或 foodpanda 外送平台），是只挑選其中一種模式來建造的嗎？
+
+請看這張外送平台的複合架構全景圖，答案絕對是否定的！真實系統會在不同「縮放層級」與「子系統領域」中，巧妙組合這六種模式：
+
+在左側系統邊界，採用 Client-Server 連接顧客、商家與外送員三大終端；而放大進到顧客 App 內部，則用 MVC 讓同一份訂單狀態同時驅動地圖畫面與進度列。
+在中間雲端後台，巨觀上採用 Microservices 拆分菜單、訂單与支付服務；但放大進到單一 Order Service 內部，則是標準的四層 Layered 分層架構。
+在右側即時資料流，採用 Pipe-and-Filter 管線處理每秒十萬筆外送員 GPS 訊號；而在智慧派單中心，則採用 Repository 儲存庫模式，讓路徑規劃、順路併單與動態加價演算法圍繞同一份全城即時地理狀態庫協同運算！
+
+總結這張投影片，請記住這個核心觀念：真實世界的軟體架構絕非單一模式，而是跨層級、跨子系統的多模式分形組合。
 -->
 ---
 ## 軟體架構直接決定非功能品質屬性
@@ -935,31 +938,6 @@ MVC 解耦呈現與資料；
 總結這張投影片，請記住這個核心觀念：ATAM 幫助我們針對外送平台的真實壓力場景，在互斥的品質屬性之間設計出最精準的折衷機制。
 -->
 ---
-<!-- _class: title-image-slide -->
-
-## 巨觀結構塑模 (1)：UML 套件圖 (Package Diagram)
-
-<div class="image-wrapper">
-  <img src="../../img/ch05/architecture/uml_package_food_delivery.svg" alt="UML Package Diagram Notation and Food Delivery Example" />
-</div>
-
-<!--
-當我們選定了架構模式並完成 ATAM 權衡後，該如何用標準的 UML 圖表把「階段一：巨觀架構設計」畫出來？
-在架構設計階段，我們使用兩張互補的巨觀 UML 圖表：第一張是 **UML 套件圖 (Package Diagram)**（描繪編譯期原始碼模組切分與相依規則），第二張是 **UML 部屬圖 (Deployment Diagram)**（描繪執行期雲端硬體與容器拓撲）。
-
-我們先看第一張巨觀架構圖：UML 套件圖 (Package Diagram)，並以 Food Delivery 外送平台為例。
-
-請先看左側面板的標準 UML 符號：
-第一，Package 符號畫成一個帶有左上角標籤的資料夾 (Tabbed Folder)，用來將高內聚的類別與介面收納在同一個命名空間內。
-第二，可見度符號 (Visibility)：加號 `+` 代表公開匯出給外部套件呼叫的元素（如 `+OrderService`、`+IOrderRepo`）；減號 `-` 代表封閉在套件內部的私有實作細節（如 `-OrderValidator`）。
-第三，虛線開放箭頭 (`- - ->`) 搭配 `«import»` 或 `«access»`，代表編譯期相依：當被指向的供應端套件修改時，來源端套件就可能被迫重新編譯。
-第四，架構治理的黃金鐵律——無環相依原則 (ADP)：套件之間的相依圖絕對不能出現循環 (`A → B → A`)！
-
-再看右側面板的外送平台實例：無論是頂層的 UI 展示套件 (`ui.customer_app`, `ui.rider_app`)，還是底層的基礎設施套件 (`infra.persistence`, `infra.messaging_geo`, `infra.payment_sdk`)，所有的相依箭頭全部朝向中間的核心領域套件 (`domain.order`, `domain.dispatch`, `domain.payment`)！
-
-總結這張投影片，請記住這個核心觀念：UML 套件圖負責規範編譯期命名空間邊界，並強制所有外部套件向核心領域單向相依。
--->
----
 ## UML 套件圖：核心符號規範與外送平台設計洞察
 
 > **架構意義（編譯期模組視圖）：** 塑模**原始碼組織結構**、子系統命名空間可見度與**無環模組相依規則**。
@@ -1000,6 +978,31 @@ MVC 解耦呈現與資料；
 總結這張投影片，請記住這個核心觀念：套件圖能一眼檢驗系統是否落實依賴反轉，確保核心業務邏輯不受底層基礎設施綁架。
 -->
 ---
+<!-- _class: title-image-slide -->
+
+## 巨觀結構塑模 (1)：UML 套件圖 (Package Diagram)
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/uml_package_food_delivery.svg" alt="UML Package Diagram Notation and Food Delivery Example" />
+</div>
+
+<!--
+當我們選定了架構模式並完成 ATAM 權衡後，該如何用標準的 UML 圖表把「階段一：巨觀架構設計」畫出來？
+在架構設計階段，我們使用兩張互補的巨觀 UML 圖表：第一張是 **UML 套件圖 (Package Diagram)**（描繪編譯期原始碼模組切分與相依規則），第二張是 **UML 部屬圖 (Deployment Diagram)**（描繪執行期雲端硬體與容器拓撲）。
+
+我們先看第一張巨觀架構圖：UML 套件圖 (Package Diagram)，並以 Food Delivery 外送平台為例。
+
+請先看左側面板的標準 UML 符號：
+第一，Package 符號畫成一個帶有左上角標籤的資料夾 (Tabbed Folder)，用來將高內聚的類別與介面收納在同一個命名空間內。
+第二，可見度符號 (Visibility)：加號 `+` 代表公開匯出給外部套件呼叫的元素（如 `+OrderService`、`+IOrderRepo`）；減號 `-` 代表封閉在套件內部的私有實作細節（如 `-OrderValidator`）。
+第三，虛線開放箭頭 (`- - ->`) 搭配 `«import»` 或 `«access»`，代表編譯期相依：當被指向的供應端套件修改時，來源端套件就可能被迫重新編譯。
+第四，架構治理的黃金鐵律——無環相依原則 (ADP)：套件之間的相依圖絕對不能出現循環 (`A → B → A`)！
+
+再看右側面板的外送平台實例：無論是頂層的 UI 展示套件 (`ui.customer_app`, `ui.rider_app`)，還是底層的基礎設施套件 (`infra.persistence`, `infra.messaging_geo`, `infra.payment_sdk`)，所有的相依箭頭全部朝向中間的核心領域套件 (`domain.order`, `domain.dispatch`, `domain.payment`)！
+
+總結這張投影片，請記住這個核心觀念：UML 套件圖負責規範編譯期命名空間邊界，並強制所有外部套件向核心領域單向相依。
+-->
+---
 ### 同儕討論：西洋棋遊戲之 MVC 架構與 UML 套件圖 (PlantUML 實戰)
 
 <div class="discussion-columns">
@@ -1032,27 +1035,6 @@ MVC 解耦呈現與資料；
 請特別與夥伴討論檢查：哪一個套件應該「完全沒有向外射出的相依箭頭」，好讓它能在沒有視窗介面的情況下獨立跑單元測試？（答案是 `chess.model`！）此外，你要如何設計 `chess.view` 與 `chess.controller` 的關係，才不會違反「無環相依原則 (ADP)」產生循環依賴？
 
 總結這張投影片，請記住這個核心觀念：透過 PlantUML 繪製 MVC 套件圖，能確保核心棋規模型 (Model) 與視覺介面 (View) 徹底解耦並符合無環相依原則。
--->
----
-<!-- _class: title-image-slide -->
-
-## 巨觀硬體拓撲塑模 (2)：UML 部屬圖 (Deployment Diagram)
-
-<div class="image-wrapper">
-  <img src="../../img/ch05/architecture/uml_deployment_food_delivery.svg" alt="UML Deployment Diagram Notation and Food Delivery Example" />
-</div>
-
-<!--
-套件圖管的是編譯期原始碼資料夾，那如果要呈現主從式架構與微服務在 AWS 雲端上的執行期硬體拓撲，該畫哪張圖？答案就是 **UML 部屬圖 (Deployment Diagram)**！
-
-請先看左側面板的標準 UML 部屬圖符號：
-第一，節點 (Node) 一律畫成「3D 立體方塊」，分為兩類刻板印象：`«device»` 代表實體運算硬體（如智慧型手機、AWS EC2 主機、硬體負載平衡器）；`«executionEnvironment»` 則代表巢狀執行環境（如 Kubernetes Pod、Docker 容器、JVM 或資料庫引擎）。
-第二，部屬產物 (`«artifact»`) 畫成帶有摺角文件圖示的方框，代表真正被複製並安裝到節點上的實體二進位檔案（例如 `order-service.jar`、`customer.ipa` 或 `orders_schema.sql`）。
-第三，節點之間的實線稱為「通訊路徑 (Communication Path)」，必須標註網路傳輸協定（如 `«HTTPS»`、`«gRPC»`、`«TCP/RESP»`、`«JDBC/TLS»`）以及節點數量基數 (`[3..12]`)。
-
-再看右側面板的外送平台實體雲端拓撲：顧客與外送員的手機節點透過 HTTPS 與 WSS 長連線連入跨可用區的 AWS API Gateway，再以 gRPC 轉發至 AWS EKS 叢集中的三個自動擴縮 Pod 群（Order `[3..12]`、Dispatch `[5..20]`、Payment `[2..6]`），底層則連接一主二從的 RDS PostgreSQL、6 分片的 Redis ElastiCache 以及 3 節點的 Kafka 叢集！
-
-總結這張投影片，請記住這個核心觀念：UML 部屬圖將軟體二進位產物映射至 3D 硬體節點、容器叢集與網路協定上。
 -->
 ---
 ## UML 部屬圖：3D 節點、產物與外送平台雲端高可用性解析
@@ -1095,6 +1077,27 @@ MVC 解耦呈現與資料；
 這張部屬圖呈現了原始碼階段完全看不到的維運關鍵——我們一眼就能檢查：派單服務有沒有設定 `[5..20]` 自動擴縮？PostgreSQL 有沒有設 Read Replica 防止單點故障？Redis 有沒有分片？連往外部 Stripe 金流有沒有走 mTLS 加密？
 
 總結這張投影片，請記住這個核心觀念：部屬圖讓負載擴縮、叢集備援與網路安全邊界一目了然，是架構師與 DevOps 團隊溝通的共同語言。
+-->
+---
+<!-- _class: title-image-slide -->
+
+## 巨觀硬體拓撲塑模 (2)：UML 部屬圖 (Deployment Diagram)
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/uml_deployment_food_delivery.svg" alt="UML Deployment Diagram Notation and Food Delivery Example" />
+</div>
+
+<!--
+套件圖管的是編譯期原始碼資料夾，那如果要呈現主從式架構與微服務在 AWS 雲端上的執行期硬體拓撲，該畫哪張圖？答案就是 **UML 部屬圖 (Deployment Diagram)**！
+
+請先看左側面板的標準 UML 部屬圖符號：
+第一，節點 (Node) 一律畫成「3D 立體方塊」，分為兩類刻板印象：`«device»` 代表實體運算硬體（如智慧型手機、AWS EC2 主機、硬體負載平衡器）；`«executionEnvironment»` 則代表巢狀執行環境（如 Kubernetes Pod、Docker 容器、JVM 或資料庫引擎）。
+第二，部屬產物 (`«artifact»`) 畫成帶有摺角文件圖示的方框，代表真正被複製並安裝到節點上的實體二進位檔案（例如 `order-service.jar`、`customer.ipa` 或 `orders_schema.sql`）。
+第三，節點之間的實線稱為「通訊路徑 (Communication Path)」，必須標註網路傳輸協定（如 `«HTTPS»`、`«gRPC»`、`«TCP/RESP»`、`«JDBC/TLS»`）以及節點數量基數 (`[3..12]`)。
+
+再看右側面板的外送平台實體雲端拓撲：顧客與外送員的手機節點透過 HTTPS 與 WSS 長連線連入跨可用區的 AWS API Gateway，再以 gRPC 轉發至 AWS EKS 叢集中的三個自動擴縮 Pod 群（Order `[3..12]`、Dispatch `[5..20]`、Payment `[2..6]`），底層則連接一主二從的 RDS PostgreSQL、6 分片的 Redis ElastiCache 以及 3 節點的 Kafka 叢集！
+
+總結這張投影片，請記住這個核心觀念：UML 部屬圖將軟體二進位產物映射至 3D 硬體節點、容器叢集與網路協定上。
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -1166,28 +1169,6 @@ MVC 解耦呈現與資料；
 總結這張投影片，請記住這個核心觀念：階段二介面與契約規格透過契約式設計（DbC）嚴格定義行為邊界，並以 UML 組件圖進行視覺化塑模。
 -->
 ---
-<!-- _class: title-image-slide -->
-
-## 正式介面規格與契約式設計 (Design by Contract, DbC)
-
-<div class="image-wrapper">
-  <img src="../../img/ch05/architecture/interface_dbc_overview.svg" alt="Formal Interface Specification and Design by Contract (DbC)" />
-</div>
-
-<!--
-請看這張「階段二：正式介面規格與契約式設計 (DbC)」的全景架構圖，我們以 Food Delivery 外送平台的結帳介面 (`IOrderCheckoutAPI.placeOrder`) 為例！
-
-請先看上半部：為什麼光寫一行方法簽章 `placeOrder(cart, token)` 不足以作為設計規格？因為它只規定了參數型別，完全沒規定行為義務與邊界條件！
-圖靈獎級大師 Bertrand Meyer 提出的 **契約式設計 (Design by Contract, DbC)**，將每個公開 API 轉化為 **呼叫端 (Client)** 與 **供應端 (Supplier)** 之間具有約束力的三要素法律合約：
-1. **前置條件 (`Precondition / require`)**：呼叫端在呼叫方法**之前**必須滿足的義務——購物車不可為空 (`!cart.isEmpty()`)、付款憑證有效 (`token.isValid()`) 且餐廳營業中。
-2. **後置條件 (`Postcondition / ensure`)**：供應端在方法執行**完成後**保證兌現的結果——訂單狀態為 `CONFIRMED`、庫存精準扣除 `qty`，並發出 `OrderPlacedEvent`。
-3. **類別不變量 (`Class Invariant / invariant`)**：在任何公開方法呼叫**前後皆必須恆為真**的領域約束——訂單總金額永遠 `>= 0` 且外送員同時接單數 `<= 3`。
-
-再看下半部：DbC 消除了各模組重複寫 `if (x != null)` 的防禦性檢查地獄，並且直接對應下一頁的 **UML 組件圖（棒棒糖與插座）** 以及 5.5 節的 **里氏替換原則 (LSP)**！
-
-總結這張投影片，請記住這個核心觀念：契約式設計（前置條件、後置條件、不變量）將靜態的方法簽章昇華為可驗證的工程行為合約。
--->
----
 ## 契約式設計 (DbC)：權利義務矩陣與工業級 API 規格標準
 
 > **Bertrand Meyer 契約核心精神：** 只要**呼叫端 (Client)** 履行了**前置條件**，**供應端 (Supplier)** 就有義務兌現**後置條件**並維持**類別不變量**。
@@ -1232,19 +1213,124 @@ MVC 解耦呈現與資料；
 總結這張投影片，請記住這個核心觀念：結合 DbC 邏輯規則與 OpenAPI/Protobuf 規格，能消除跨團隊溝通歧義並實現契約驅動的平行開發。
 -->
 ---
-### 同儕討論：撰寫氣泡排序法 `bubbleSort(int[] arr)` 之正式設計規格 (DbC)
+<!-- _class: title-image-slide -->
+
+## 正式介面規格與契約式設計 (Design by Contract, DbC)
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/interface_dbc_overview.svg" alt="Formal Interface Specification and Design by Contract (DbC)" />
+</div>
+
+<!--
+請看這張「階段二：正式介面規格與契約式設計 (DbC)」的全景架構圖，我們以 Food Delivery 外送平台的結帳介面 (`IOrderCheckoutAPI.placeOrder`) 為例！
+
+請先看上半部：為什麼光寫一行方法簽章 `placeOrder(cart, token)` 不足以作為設計規格？因為它只規定了參數型別，完全沒規定行為義務與邊界條件！
+圖靈獎級大師 Bertrand Meyer 提出的 **契約式設計 (Design by Contract, DbC)**，將每個公開 API 轉化為 **呼叫端 (Client)** 與 **供應端 (Supplier)** 之間具有約束力的三要素法律合約：
+1. **前置條件 (`Precondition / require`)**：呼叫端在呼叫方法**之前**必須滿足的義務——購物車不可為空 (`!cart.isEmpty()`)、付款憑證有效 (`token.isValid()`) 且餐廳營業中。
+2. **後置條件 (`Postcondition / ensure`)**：供應端在方法執行**完成後**保證兌現的結果——訂單狀態為 `CONFIRMED`、庫存精準扣除 `qty`，並發出 `OrderPlacedEvent`。
+3. **類別不變量 (`Class Invariant / invariant`)**：在任何公開方法呼叫**前後皆必須恆為真**的領域約束——訂單總金額永遠 `>= 0` 且外送員同時接單數 `<= 3`。
+
+再看下半部：DbC 消除了各模組重複寫 `if (x != null)` 的防禦性檢查地獄，並且直接對應後續的 **UML 組件圖（棒棒糖與插座）** 以及 5.5 節的 **里氏替換原則 (LSP)**！
+
+總結這張投影片，請記住這個核心觀念：契約式設計（前置條件、後置條件、不變量）將靜態的方法簽章昇華為可驗證的工程行為合約。
+-->
+---
+## 以 Javadoc 與 JML 撰寫正式契約規格：以 `OrderService` 為例
+
+> **從概念圖表走向可驗證規格：** 如何運用 **擴充契約 Javadoc** 與 **JML (Java Modeling Language)** 精確描述 `OrderService.placeOrder()` 的設計規格？
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. 契約擴充型 Javadoc 設計規格
+```java
+public interface OrderService {
+  /**
+   * 建立並確認外送平台顧客訂單。
+   *
+   * @invariant activeOrders >= 0
+   * @param cart  購物車物件 (非 null 且至少 1 項餐點)
+   * @param token 已授權之有效付款憑證
+   * @return 狀態為 CONFIRMED 之訂單收據
+   * @throws IllegalArgumentException 若違反前置條件
+   * @pre  cart != null && !cart.isEmpty()
+   *       && token != null && token.isValid()
+   *       && stock >= cart.totalQty()
+   * @post RESULT != null
+   *       && RESULT.getStatus() == Status.CONFIRMED
+   *       && stock == OLD(stock) - cart.totalQty()
+   */
+  OrderReceipt placeOrder(Cart cart, PaymentToken token);
+}
+```
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. JML (Java Modeling Language) 形式化規格
+```java
+public class OrderService {
+  //@ spec_public
+  private int stock;
+  //@ public invariant stock >= 0;
+
+  /*@ public normal_behavior
+    @   requires cart != null && !cart.isEmpty();
+    @   requires token != null && token.isValid();
+    @   requires stock >= cart.totalQty();
+    @   assignable stock;
+    @   ensures \result != null;
+    @   ensures \result.status == Status.CONFIRMED;
+    @   ensures stock == \old(stock) - cart.totalQty();
+    @ also
+    @ public exceptional_behavior
+    @   requires cart == null || !token.isValid();
+    @   assignable \nothing;
+    @   signals_only IllegalArgumentException;
+    @*/
+  public OrderReceipt placeOrder(Cart cart, PaymentToken token);
+}
+```
+
+</div>
+</div>
+
+<!--
+我們該如何把前一頁圖中的「前置條件、後置條件、不變量」，真正寫進 Java 介面與類別的設計規格中？這裡展示業界與形式化驗證最常用的兩種寫法，以 `OrderService.placeOrder()` 為例：
+
+請看左欄卡片（**契約擴充型 Javadoc 規格**）：
+除了標準的 `@param`、`@return` 與 `@throws` 之外，我們明確標註 `@invariant`（類別不變量）、`@pre`（前置條件）與 `@post`（後置條件）。特別注意 `@post` 中利用 `OLD(stock)` 表達「執行後的庫存等於執行前庫存減去購買數量」。
+
+再看右欄卡片（**JML — Java Modeling Language 形式化規格**）：
+JML 將規格寫在特殊的 `/*@ ... @*/` 或 `//@` 註解內，一般 Java 編譯器會直接忽略它，但 OpenJML 與靜態驗證工具能將它編譯為執行期斷言或數學證明！
+請認識 JML 的五大核心關鍵字：
+1. `public invariant stock >= 0;`：宣告類別不變量。
+2. `requires`：宣告呼叫端必須滿足的前置條件。
+3. `assignable stock;`：宣告 Frame Condition（允許修改的欄位範圍；在 `exceptional_behavior` 中寫 `assignable \nothing` 代表發生例外時保證不改動任何狀態！）。
+4. `ensures`：宣告後置條件，使用 `\result` 代表回傳值、`\old(stock)` 代表呼叫前的狀態快照。
+
+總結這張投影片，請記住這個核心觀念：Javadoc 與 JML 透過 requires、assignable、ensures、\result 與 \old()，將抽象的契約式設計轉化為精確可驗證的程式碼規格。
+-->
+---
+### 同儕討論：以 Javadoc 撰寫 `bubbleSort(int[] arr)` 之正式設計規格
 
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **雙人思辨挑戰：為 Bubble Sort 制定滴水不漏的 DbC 契約規格 (4 分鐘)**
-  - **情境挑戰：** 寫出 `void bubbleSort(int[] arr)` 的程式碼很容易，但要寫出**嚴謹無漏洞的設計規格 (Design Spec / DbC)** 卻暗藏陷阱！請與夥伴討論以下三大要素：
-  - **1. 前置條件 (`Precondition / requires` — 呼叫端義務)：**
-    - 呼叫前 `arr` 必須滿足什麼條件？（`arr != null`？若傳入空陣列 `arr.length == 0` 是否合法？）
-  - **2. 後置條件 (`Postcondition / ensures` — 供應端保證)：**
-    - *經典規格漏洞：* 若後置條件只寫「執行後滿足遞增順序 `arr[0] <= arr[1] <= ... <= arr[n-1]`」夠嗎？
-    - *破綻追擊：* 如果某個惡意實作直接把陣列全部填滿 `0`（變成 `[0, 0, ..., 0]`），它完全符合 `arr[i] <= arr[i+1]`！請問我們漏掉了哪一條**關鍵的第二後置條件**？（提示：多重集置換不變性 Permutation！）
-  - **3. 迴圈不變量 (`Loop Invariant`)：** 外層迴圈第 `k` 輪結束時，陣列最後 `k` 個元素滿足什麼性質？
+  **雙人思辨挑戰：完成 Bubble Sort 的 Javadoc 契約規格 (4 分鐘)**
+  - **實作任務：** 請與夥伴討論並補齊以下 `bubbleSort` 的 **Javadoc 設計規格 (`@throws`, `@pre`, `@post`)**：
+```java
+/**
+ * 將傳入之整數陣列以原地 (in-place) 方式由小到大遞增排序。
+ * @param  arr 待排序之整數陣列
+ * @throws IllegalArgumentException 若 _____________________________
+ * @pre    _________________________________________________________
+ * @post   1. (Ordered 順序性)     forall i in [0, arr.length-2]: arr[i] <= arr[i+1]
+ * @post   2. (Permutation 守恆性) _________________________________
+ */
+public static void bubbleSort(int[] arr)
+```
+  - **破綻追擊：** 如果只寫 `@post 1 (Ordered)`，某個惡意程式直接執行 `Arrays.fill(arr, 0)` 把陣列全填滿 `0`，竟然也能通過規格檢驗！該如何用 `OLD(arr)` 寫出 **`@post 2 (Permutation)`** 防堵此漏洞？
 
   </div>
   <div class="discussion-logo">
@@ -1253,41 +1339,21 @@ MVC 解耦呈現與資料；
 </div>
 
 <!--
-現在我們來進行一個非常經典的軟體工程思辨挑戰！請與鄰座同學討論：如果請你為大一就學過的「氣泡排序法 `void bubbleSort(int[] arr)`」撰寫一份正式的 **契約式設計規格 (Design Spec)**，你會怎麼寫？
+現在我們馬上現學現賣！請與鄰座同學合作，仿照剛才 `OrderService` 的 Javadoc / JML 寫法，為大一最熟悉的 `public static void bubbleSort(int[] arr)` 補齊完整的 **Javadoc 設計規格 (Design Spec)**！
 
-第一，**前置條件 (`Precondition`)** 是什麼？至少必須規定 `arr != null`！（至於空陣列或單一元素陣列則是合法輸入，本身即為已排序狀態）。
+請跟著投影片上的 Javadoc 填空逐一思考：
+第一，**`@pre` 與 `@throws` 怎麼寫？**
+前置條件是 `@pre arr != null`（注意：空陣列 `arr.length == 0` 或單一元素陣列都是合法輸入，不需要拋出例外！）。若 `arr == null`，則 `@throws IllegalArgumentException`（或 `NullPointerException`）。
 
-第二，**後置條件 (`Postcondition`)** 是什麼？九成以上的工程師第一直覺只會寫：「執行完畢後，陣列呈非遞減排序：`arr[0] <= arr[1] <= ... <= arr[n-1]`。」
-等一下！請仔細想想這個陷阱：如果我寫一個只有一行 `Arrays.fill(arr, 0)` 的偷懶函式，把你的陣列全部改寫成 `[0, 0, 0, 0]`，請問 `[0, 0, 0, 0]` 有沒有滿足 `arr[i] <= arr[i+1]`？完全滿足！但它把你的資料全毀了！
-為什麼規格會被鑽漏洞？因為完整的排序後置條件必須包含**兩大條件**：
-條件一（**順序性 Ordered Property**）：`∀ i ∈ [0, n-2], arr[i] <= arr[i+1]`。
-條件二（**置換守恆性 Permutation / Multiset Equivalence**）：排序後的陣列元素多重集 `multiset(arr_after)`，必須是排序前陣列 `multiset(arr_before)` 的一個**排列組合（元素個數與數值完全守恆）**！
+第二，**`@post 1 (Ordered 順序性)`**：
+對於所有索引 `0 <= i <= arr.length - 2`，皆滿足 `arr[i] <= arr[i+1]`。
 
-第三，Bubble Sort 的**迴圈不變量 (Loop Invariant)** 是什麼？外層迴圈每跑完第 `k` 輪，陣列最右側的 `k` 個元素 `arr[n-k .. n-1]` 必定已就定位，且為全陣列最大的前 `k` 個元素！
+第三，**`@post 2 (Permutation 多重集置換守恆性)`**：
+為什麼光寫 `@post 1` 會有致命漏洞？因為如果有人把 `bubbleSort` 實作成 `Arrays.fill(arr, 0)`，把所有元素全洗成 `[0, 0, 0, 0]`，它完全符合 `arr[i] <= arr[i+1]`，卻把顧客原本的資料全毀了！
+因此，我們必須補上 `@post 2`：
+`@post 2. (Permutation) 執行後 arr 之元素多重集為 OLD(arr) 之排列組合 (multiset(arr) == multiset(OLD(arr)))`，亦即每個數值在排序後出現的次數必須與排序前 (`OLD(arr)`) 完全相等！
 
-總結這張投影片，請記住這個核心觀念：嚴謹的排序規格必須同時規定「非遞減順序」與「多重集排列守恆」，展現正式設計規格防堵邏輯漏洞的威力。
--->
----
-<!-- _class: title-image-slide -->
-
-## 視覺化介面契約塑模：UML 組件圖 (Component Diagram)
-
-<div class="image-wrapper">
-  <img src="../../img/ch05/architecture/uml_component_food_delivery.svg" alt="UML Component Diagram Notation and Food Delivery Example" />
-</div>
-
-<!--
-定義好契約式設計 (DbC) 後，我們該如何用標準 UML 圖表把「階段二：組件邊界與介面合約」視覺化畫出來？答案正是 **UML 組件圖 (Component Diagram)**！
-
-請先看左側面板的 UML 2.x 標準組件圖符號：
-第一，組件 (`«component»`) 畫成方框，並在右上角附帶一個「左側突出兩小格」的經典組件圖示。它代表一個可獨立替換、內部狀態完全封裝的軟體單元。
-第二，提供介面 (Provided Interface) 畫成一根「棒棒糖 / 圓球 (Lollipop `—○`)」——這正是供應端對外公開的 DbC 合約（承諾兌現 Postcondition）。
-第三，需求介面 (Required Interface) 畫成一個「半圓形插座 (Socket `—( `)」——這正是呼叫端對外部合約的依賴（承諾遵守 Precondition）。
-第四，當需求端的「插座」扣上供應端的「棒棒糖」，就形成「組裝連接器 (Assembly Connector `—(○—`，俗稱 Ball-and-Socket 球窩接頭)」，搭配邊界上的方形「連接埠 (Port `□`)」轉發內部請求！
-
-再看右側面板的外送平台組件圖：`Order Management` 複合組件透過左側 Port 對 `API Gateway` 提供 `IOrderCheckoutAPI` 棒棒糖；同時在下方伸出三個插座，分別接合 `Payment Component` 的 `IPaymentGateway`、`Rider Dispatch Engine` 的 `IDispatchMatcher` 與事件匯流排的 `IEventBus`！
-
-總結這張投影片，請記住這個核心觀念：UML 組件圖透過棒棒糖（提供介面）與插座（需求介面）精準定義隨插即用的契約式架構。
+總結這張投影片，請記住這個核心觀念：以 Javadoc 撰寫 bubbleSort 設計規格時，後置條件必須同時涵蓋「遞增順序性」與「相對於 OLD(arr) 的多重集排列守恆性」。
 -->
 ---
 ## UML 組件圖：棒棒糖/插座符號與外送平台隨插即用設計
@@ -1330,6 +1396,28 @@ MVC 解耦呈現與資料；
 正因為採用了 Ball-and-Socket 介面契約，當我們在臺灣市場要把 Stripe 換成 LINE Pay，或者在 CI/CD 管線中換成 Mock 測試替身時，只要把新的棒棒糖插進 `IPaymentGateway` 插座即可，訂單核心組件完全不必動刀！
 
 總結這張投影片，請記住這個核心觀念：組件圖的球窩接頭（Ball-and-Socket）具體落實了契約優先設計，賦予系統極致的熱插拔擴充彈性。
+-->
+---
+<!-- _class: title-image-slide -->
+
+## 視覺化介面契約塑模：UML 組件圖 (Component Diagram)
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/uml_component_food_delivery.svg" alt="UML Component Diagram Notation and Food Delivery Example" />
+</div>
+
+<!--
+定義好契約式設計 (DbC) 後，我們該如何用標準 UML 圖表把「階段二：組件邊界與介面合約」視覺化畫出來？答案正是 **UML 組件圖 (Component Diagram)**！
+
+請先看左側面板的 UML 2.x 標準組件圖符號：
+第一，組件 (`«component»`) 畫成方框，並在右上角附帶一個「左側突出兩小格」的經典組件圖示。它代表一個可獨立替換、內部狀態完全封裝的軟體單元。
+第二，提供介面 (Provided Interface) 畫成一根「棒棒糖 / 圓球 (Lollipop `—○`)」——這正是供應端對外公開的 DbC 合約（承諾兌現 Postcondition）。
+第三，需求介面 (Required Interface) 畫成一個「半圓形插座 (Socket `—( `)」——這正是呼叫端對外部合約的依賴（承諾遵守 Precondition）。
+第四，當需求端的「插座」扣上供應端的「棒棒糖」，就形成「組裝連接器 (Assembly Connector `—(○—`，俗稱 Ball-and-Socket 球窩接頭)」，搭配邊界上的方形「連接埠 (Port `□`)」轉發內部請求！
+
+再看右側面板的外送平台組件圖：`Order Management` 複合組件透過左側 Port 對 `API Gateway` 提供 `IOrderCheckoutAPI` 棒棒糖；同時在下方伸出三個插座，分別接合 `Payment Component` 的 `IPaymentGateway`、`Rider Dispatch Engine` 的 `IDispatchMatcher` 與事件匯流排的 `IEventBus`！
+
+總結這張投影片，請記住這個核心觀念：UML 組件圖透過棒棒糖（提供介面）與插座（需求介面）精準定義隨插即用的契約式架構。
 -->
 ---
 ### 觀念檢核測驗 3 (CCQ 3)
@@ -1436,29 +1524,6 @@ ISP 規範介面方框的顆粒度，禁止出現肥大介面；
 總結這張投影片，請記住這個核心觀念：SOLID 五大原則在 UML 圖上直接體現為類別內聚度、介面顆粒度與相依箭頭方向的精準治理。
 -->
 ---
-<!-- _class: title-image-slide -->
-
-## S — 單一職責原則 (SRP)：UML 重構對照
-
-<div class="image-wrapper">
-  <img src="../../img/ch05/architecture/solid_srp_uml.svg" alt="Single Responsibility Principle UML Diagram" />
-</div>
-
-<!--
-請看第一個原則：單一職責原則 (SRP) 的 UML 前後對照圖。
-
-請先看左側面板（紅色違反 SRP 的設計）：
-`OrderInvoiceReport` 是一個典型的「上帝類別 (God Class)」。注意左邊有三個截然不同的利益關係人（Actors）同時將相依箭頭指向它：
-第一，財務長與會計部門（要求修改稅率與尖峰加成公式 `calculateTaxAndSurge`）；
-第二，UX 與行銷團隊（要求修改 HTML/PDF 電子發票排版 `renderHtmlInvoice`）；
-第三，DBA 資料庫團隊（要求修改 PostgreSQL 寫入語法 `saveToPostgresDb`）。
-
-再看右側面板（綠色遵循 SRP 的重構設計）：
-我們保留純粹的資料模型 `OrderInvoice`，並將三大正交職責拆分為三個獨立且高內聚的類別：`InvoiceTaxCalculator`（只對財務部負責）、`InvoiceHtmlRenderer`（只對 UX 團隊負責）與 `InvoiceSqlRepository`（只對 DBA 負責）！
-
-總結這張投影片，請記住這個核心觀念：SRP 要求將多重角色的「上帝類別」拆解為各司其職的獨立類別，使每個類別僅對單一角色負責。
--->
----
 ## S — 單一職責原則 (SRP)：UML 結構與設計解析
 
 > **核心定義 (Robert C. Martin)：** *「一個類別應該有且僅有一個引起它改變的原因（亦即：僅對單一利益關係人 Actor 負責）。」*
@@ -1499,23 +1564,25 @@ Uncle Bob 後來在《Clean Architecture》書中特別澄清：「一個改變�
 ---
 <!-- _class: title-image-slide -->
 
-## O — 開放封閉原則 (OCP)：UML 重構對照
+## S — 單一職責原則 (SRP)：UML 重構對照
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/solid_ocp_uml.svg" alt="Open Closed Principle UML Diagram" />
+  <img src="../../img/ch05/architecture/solid_srp_uml.svg" alt="Single Responsibility Principle UML Diagram" />
 </div>
 
 <!--
-接著請看第二個原則：開放封閉原則 (OCP) 的 UML 前後對照圖。
+請看第一個原則：單一職責原則 (SRP) 的 UML 前後對照圖。
 
-請先看左側面板（紅色違反 OCP 的設計）：
-`OrderNotificationService` 直接用實線箭頭硬編碼相依於具體的 `EmailSender` 與 `SmsSender`，並在內部靠 `if / else if` 分支判斷。當業務決定新增臺灣消費者最常用的 `LineNotifySender` 時，工程師被迫拿手術刀剖開已經在線上穩定運行的 `OrderNotificationService`，新增第三條相依箭頭並修改 `if/else` 邏輯！
+請先看左側面板（紅色違反 SRP 的設計）：
+`OrderInvoiceReport` 是一個典型的「上帝類別 (God Class)」。注意左邊有三個截然不同的利益關係人（Actors）同時將相依箭頭指向它：
+第一，財務長與會計部門（要求修改稅率與尖峰加成公式 `calculateTaxAndSurge`）；
+第二，UX 與行銷團隊（要求修改 HTML/PDF 電子發票排版 `renderHtmlInvoice`）；
+第三，DBA 資料庫團隊（要求修改 PostgreSQL 寫入語法 `saveToPostgresDb`）。
 
-再看右側面板（綠色遵循 OCP 的重構設計）：
-我們在中間引入了一個穩定的抽象介面樞紐 `«interface» INotificationChannel`。
-`OrderNotificationService` 只相依於這個介面（因此對修改封閉 🔒）；而 `EmailChannel`、`SmsChannel` 與新加入的 `LineNotifyChannel` 則透過虛線空心三角箭頭 (`- - -|>`) 實作該介面（對擴充開放 🔓）！新增 LINE 通知時，核心服務類別一行程式碼都不必改！
+再看右側面板（綠色遵循 SRP 的重構設計）：
+我們保留純粹的資料模型 `OrderInvoice`，並將三大正交職責拆分為三個獨立且高內聚的類別：`InvoiceTaxCalculator`（只對財務部負責）、`InvoiceHtmlRenderer`（只對 UX 團隊負責）與 `InvoiceSqlRepository`（只對 DBA 負責）！
 
-總結這張投影片，請記住這個核心觀念：OCP 透過抽象介面樞紐隔離變更，讓系統能以新增實作類別 (`- - -|>`) 的方式擴充功能，而不必修改既有核心類別。
+總結這張投影片，請記住這個核心觀念：SRP 要求將多重角色的「上帝類別」拆解為各司其職的獨立類別，使每個類別僅對單一角色負責。
 -->
 ---
 ## O — 開放封閉原則 (OCP)：UML 結構與設計解析
@@ -1557,23 +1624,23 @@ Uncle Bob 後來在《Clean Architecture》書中特別澄清：「一個改變�
 ---
 <!-- _class: title-image-slide -->
 
-## L — 里氏替換原則 (LSP)：UML 重構對照
+## O — 開放封閉原則 (OCP)：UML 重構對照
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/solid_lsp_uml.svg" alt="Liskov Substitution Principle UML Diagram" />
+  <img src="../../img/ch05/architecture/solid_ocp_uml.svg" alt="Open Closed Principle UML Diagram" />
 </div>
 
 <!--
-現在我們來看第三個原則：由圖靈獎得主 Barbara Liskov 提出的里氏替換原則 (LSP) UML 對照圖。
+接著請看第二個原則：開放封閉原則 (OCP) 的 UML 前後對照圖。
 
-請先看左側面板（紅色違反 LSP 的經典「正方形繼承長方形」陷阱）：
-在國中數學裡，正方形是一種長方形，所以初學者很自然地在 UML 圖上畫了一條實線空心三角繼承箭頭 (`───|>`)，讓 `Square` 繼承 `Rectangle`。
-然而，`Rectangle` 提供了可變狀態的 `setWidth(w)` 與 `setHeight(h)`，其隱含的契約後置條件是：「修改高度時，寬度保持不變」。為了維持四邊等長，`Square` 覆寫了 `setHeight(10)`，偷偷把 `width` 也改成 `10`！結果當用戶端 `MapZoneTester` 把 `Square` 當作 `Rectangle` 傳入並執行 `寬 5 × 高 10` 時，面積竟然算出 `100` 而不是 `50`，直接導致系統契約崩潰！
+請先看左側面板（紅色違反 OCP 的設計）：
+`OrderNotificationService` 直接用實線箭頭硬編碼相依於具體的 `EmailSender` 與 `SmsSender`，並在內部靠 `if / else if` 分支判斷。當業務決定新增臺灣消費者最常用的 `LineNotifySender` 時，工程師被迫拿手術刀剖開已經在線上穩定運行的 `OrderNotificationService`，新增第三條相依箭頭並修改 `if/else` 邏輯！
 
-再看右側面板（綠色遵循 LSP 的重構設計）：
-我們拔除錯誤的父子繼承關係，改提取純粹的行為介面 `«interface» IShape` (`+ getArea(): int`)，並讓不可變 (Immutable) 的 `Rectangle` 與 `Square` 以平輩兄弟關係分別實作 (`- - -|>`) `IShape`。現在任何子型態替換進 `MapZoneTester`，都 100% 遵守契約、毫無副作用！
+再看右側面板（綠色遵循 OCP 的重構設計）：
+我們在中間引入了一個穩定的抽象介面樞紐 `«interface» INotificationChannel`。
+`OrderNotificationService` 只相依於這個介面（因此對修改封閉 🔒）；而 `EmailChannel`、`SmsChannel` 與新加入的 `LineNotifyChannel` 則透過虛線空心三角箭頭 (`- - -|>`) 實作該介面（對擴充開放 🔓）！新增 LINE 通知時，核心服務類別一行程式碼都不必改！
 
-總結這張投影片，請記住這個核心觀念：LSP 要求 UML 繼承與實作關係必須嚴格履踐基礎型態的行為契約，絕不能因覆寫而產生破壞預期的副作用。
+總結這張投影片，請記住這個核心觀念：OCP 透過抽象介面樞紐隔離變更，讓系統能以新增實作類別 (`- - -|>`) 的方式擴充功能，而不必修改既有核心類別。
 -->
 ---
 ## L — 里氏替換原則 (LSP)：UML 結構與設計解析
@@ -1617,23 +1684,23 @@ Uncle Bob 後來在《Clean Architecture》書中特別澄清：「一個改變�
 ---
 <!-- _class: title-image-slide -->
 
-## I — 介面隔離原則 (ISP)：UML 重構對照
+## L — 里氏替換原則 (LSP)：UML 重構對照
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/solid_isp_uml.svg" alt="Interface Segregation Principle UML Diagram" />
+  <img src="../../img/ch05/architecture/solid_lsp_uml.svg" alt="Liskov Substitution Principle UML Diagram" />
 </div>
 
 <!--
-接著請看第四個原則：介面隔離原則 (ISP) 的 UML 前後對照圖。
+現在我們來看第三個原則：由圖靈獎得主 Barbara Liskov 提出的里氏替換原則 (LSP) UML 對照圖。
 
-請先看左側面板（紅色違反 ISP 的「肥大介面 Fat Interface」反模式）：
-系統定義了一個包山包海的 `«interface» IMultiFunctionDevice`，裡面塞滿了列印訂單 (`printOrderTicket`)、掃描發票 (`scanInvoicePdf`) 與傳真給供應商 (`sendVendorFax`) 三個方法。
-雖然企業辦公室的複合事務機 (`CorporateOfficeMFP`) 三個功能都有，但請看外送平台合作餐廳廚房裡的熱感應出單機 (`KitchenThermalPrinter`)：它只能印出單！卻因為實作了這個肥大介面，被迫為掃描和傳真寫出拋出錯誤的空殼方法！
+請先看左側面板（紅色違反 LSP 的經典「正方形繼承長方形」陷阱）：
+在國中數學裡，正方形是一種長方形，所以初學者很自然地在 UML 圖上畫了一條實線空心三角繼承箭頭 (`───|>`)，讓 `Square` 繼承 `Rectangle`。
+然而，`Rectangle` 提供了可變狀態的 `setWidth(w)` 與 `setHeight(h)`，其隱含的契約後置條件是：「修改高度時，寬度保持不變」。為了維持四邊等長，`Square` 覆寫了 `setHeight(10)`，偷偷把 `width` 也改成 `10`！結果當用戶端 `MapZoneTester` 把 `Square` 當作 `Rectangle` 傳入並執行 `寬 5 × 高 10` 時，面積竟然算出 `100` 而不是 `50`，直接導致系統契約崩潰！
 
-再看右側面板（綠色遵循 ISP 的重構設計）：
-我們將肥大介面精確拆解為三個專一的角色介面 (Role Interfaces)：`IPrintable`、`IScannable` 與 `IFaxable`。現在廚房熱感應出單機只需要乾淨地實作 (`- - -|>`) `IPrintable` 即可，完全不受掃描與傳真功能的污染！
+再看右側面板（綠色遵循 LSP 的重構設計）：
+我們拔除錯誤的父子繼承關係，改提取純粹的行為介面 `«interface» IShape` (`+ getArea(): int`)，並讓不可變 (Immutable) 的 `Rectangle` 與 `Square` 以平輩兄弟關係分別實作 (`- - -|>`) `IShape`。現在任何子型態替換進 `MapZoneTester`，都 100% 遵守契約、毫無副作用！
 
-總結這張投影片，請記住這個核心觀念：ISP 主張將臃腫的肥大介面拆解為精巧的角色介面，確保實作類別與客戶端絕不依賴其不需要的方法。
+總結這張投影片，請記住這個核心觀念：LSP 要求 UML 繼承與實作關係必須嚴格履踐基礎型態的行為契約，絕不能因覆寫而產生破壞預期的副作用。
 -->
 ---
 ## I — 介面隔離原則 (ISP)：UML 結構與設計解析
@@ -1676,23 +1743,23 @@ Uncle Bob 後來在《Clean Architecture》書中特別澄清：「一個改變�
 ---
 <!-- _class: title-image-slide -->
 
-## D — 相依反轉原則 (DIP)：UML 重構對照
+## I — 介面隔離原則 (ISP)：UML 重構對照
 
 <div class="image-wrapper">
-  <img src="../../img/ch05/architecture/solid_dip_uml.svg" alt="Dependency Inversion Principle UML Diagram" />
+  <img src="../../img/ch05/architecture/solid_isp_uml.svg" alt="Interface Segregation Principle UML Diagram" />
 </div>
 
 <!--
-最後，請看第五個原則——也是整潔架構 (Clean Architecture) 的核心基石：相依反轉原則 (DIP) 的 UML 對照圖！
+接著請看第四個原則：介面隔離原則 (ISP) 的 UML 前後對照圖。
 
-請特別觀察跨越水平套件邊界（`domain.order` 與 `infra.*`）的那根 UML 箭頭方向：
-在左側面板（紅色違反 DIP 的設計）中，高階領域層的 `OrderCheckoutService` 直接建立並向下相依 (`───>`) 於低階基礎設施層的 `MySqlOrderDatabase`。這時執行期的控制流與編譯期的原始碼相依箭頭「雙雙朝下」，高階業務邏輯被底層 MySQL 死死綁架！
+請先看左側面板（紅色違反 ISP 的「肥大介面 Fat Interface」反模式）：
+系統定義了一個包山包海的 `«interface» IMultiFunctionDevice`，裡面塞滿了列印訂單 (`printOrderTicket`)、掃描發票 (`scanInvoicePdf`) 與傳真給供應商 (`sendVendorFax`) 三個方法。
+雖然企業辦公室的複合事務機 (`CorporateOfficeMFP`) 三個功能都有，但請看外送平台合作餐廳廚房裡的熱感應出單機 (`KitchenThermalPrinter`)：它只能印出單！卻因為實作了這個肥大介面，被迫為掃描和傳真寫出拋出錯誤的空殼方法！
 
-再看右側面板（綠色遵循 DIP 的重構設計）：
-高階的 `domain.order` 套件自己定義並擁有 `«interface» IOrderRepository` 抽象介面，`OrderCheckoutService` 只依賴同套件內的這個介面。
-而在底層的 `infra.persistence` 套件中，`MySqlOrderRepo`、`PostgresOrderRepo` 與測試用的 `InMemoryMockRepo`，全都畫出虛線空心三角箭頭 (`- - -|>`) **由下往上反轉指向領域層的 `IOrderRepository`**！
+再看右側面板（綠色遵循 ISP 的重構設計）：
+我們將肥大介面精確拆解為三個專一的角色介面 (Role Interfaces)：`IPrintable`、`IScannable` 與 `IFaxable`。現在廚房熱感應出單機只需要乾淨地實作 (`- - -|>`) `IPrintable` 即可，完全不受掃描與傳真功能的污染！
 
-總結這張投影片，請記住這個核心觀念：DIP 將跨層的 UML 實作箭頭由下往上反轉，使底層基礎設施細節依賴於高階領域定義的抽象介面。
+總結這張投影片，請記住這個核心觀念：ISP 主張將臃腫的肥大介面拆解為精巧的角色介面，確保實作類別與客戶端絕不依賴其不需要的方法。
 -->
 ---
 ## D — 相依反轉原則 (DIP)：UML 結構與設計解析
@@ -1731,6 +1798,27 @@ Uncle Bob 後來在《Clean Architecture》書中特別澄清：「一個改變�
 透過建構子依賴注入 (Dependency Injection)，我們在生產環境傳入 PostgreSQL，在測試環境傳入記憶體內的 `InMemoryMockRepo`，一秒鐘就能跑完上千個領域邏輯測試！
 
 總結這張投影片，請記住這個核心觀念：將跨套件邊界的 UML 相依箭頭向上反轉，能徹底保護核心業務邏輯不受基礎設施更迭影響，並賦予系統極致的可測試性。
+-->
+---
+<!-- _class: title-image-slide -->
+
+## D — 相依反轉原則 (DIP)：UML 重構對照
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/solid_dip_uml.svg" alt="Dependency Inversion Principle UML Diagram" />
+</div>
+
+<!--
+最後，請看第五個原則——也是整潔架構 (Clean Architecture) 的核心基石：相依反轉原則 (DIP) 的 UML 對照圖！
+
+請特別觀察跨越水平套件邊界（`domain.order` 與 `infra.*`）的那根 UML 箭頭方向：
+在左側面板（紅色違反 DIP 的設計）中，高階領域層的 `OrderCheckoutService` 直接建立並向下相依 (`───>`) 於低階基礎設施層的 `MySqlOrderDatabase`。這時執行期的控制流與編譯期的原始碼相依箭頭「雙雙朝下」，高階業務邏輯被底層 MySQL 死死綁架！
+
+再看右側面板（綠色遵循 DIP 的重構設計）：
+高階的 `domain.order` 套件自己定義並擁有 `«interface» IOrderRepository` 抽象介面，`OrderCheckoutService` 只依賴同套件內的這個介面。
+而在底層的 `infra.persistence` 套件中，`MySqlOrderRepo`、`PostgresOrderRepo` 與測試用的 `InMemoryMockRepo`，全都畫出虛線空心三角箭頭 (`- - -|>`) **由下往上反轉指向領域層的 `IOrderRepository`**！
+
+總結這張投影片，請記住這個核心觀念：DIP 將跨層的 UML 實作箭頭由下往上反轉，使底層基礎設施細節依賴於高階領域定義的抽象介面。
 -->
 ---
 ### 同儕討論：探索 GoF 觀察者模式 (Observer Pattern) 之設計動機與結構
@@ -1820,30 +1908,6 @@ Uncle Bob 後來在《Clean Architecture》書中特別澄清：「一個改變�
 總結這張投影片，請記住這個核心觀念：階段四資料與持久化設計將領域模型轉化為高完整性之 ERD 資料庫綱要、記憶體快取與事件串流。
 -->
 ---
-<!-- _class: title-image-slide -->
-
-## 三層次資料塑模、UML ERD 與外送平台多模態儲存
-
-<div class="image-wrapper">
-  <img src="../../img/ch05/architecture/data_design_food_delivery.svg" alt="Stage 4 Data and Persistence Design in Food Delivery System" />
-</div>
-
-<!--
-請看這張「階段四：資料與持久化設計」的全景架構圖，完整呈現了資料塑模三層次與外送平台的多模態儲存設計！
-
-請先看左側面板：資料設計由抽象到具體分為三個層次：
-1. **Level 1 概念資料模型 (Conceptual Data Model)**：與資料庫技術無關，專注於梳理核心業務實體與基數關係（如 `Customer 1 ── 0..* Order 1 ── 1..* Item`）。
-2. **Level 2 邏輯 ERD 模型 (Logical ERD Model)**：明確定義欄位型別、主鍵 (`«PK»`)、外來鍵 (`«FK»`)，並執行第三正規化 (3NF) 以消除資料更新異常。
-3. **Level 3 實體資料綱要 (Physical Data Schema)**：撰寫具體的 SQL DDL、建立複合索引 (`«idx»`)、按月資料表分區 (Partitioning)、設定 Redis 快取過期時間 (`TTL`) 與 Kafka 分區鍵。
-
-再看右側面板：外送平台能不能只用單一資料庫打天下？絕對不行！現代架構採用 **多模態持久化 (Polyglot Persistence)**：
-A. **PostgreSQL 關聯式資料庫 (ACID)**：儲存 `customers`、`restaurants`、`orders`、`order_items` 與 `payments`，利用 3NF 與嚴格 ACID 交易確保金流與訂單絕對不掉單、不重複扣款。
-B. **Redis 記憶體空間資料庫 (In-Memory Spatial Store)**：面對 5 萬名外送員每 5 秒回傳一次 GPS（每秒 1 萬次寫入），使用 64-bit `GeoHash` 搭配 `TTL = 30 秒` 自動過期，在 5 毫秒內秒級找出最近外送員！
-C. **Apache Kafka 不可變事件日誌 (Event Log)**：透過 Transactional Outbox 發布訂單事件，非同步同步派單與分析系統。
-
-總結這張投影片，請記住這個核心觀念：資料設計結合三層次 ERD 綱要塑模與多模態持久化，針對不同讀寫特性匹配最適合的儲存引擎。
--->
----
 ## 1. 三層次資料塑模、UML ERD 符號與正規化 (3NF)
 
 > **階段四塑模定位：** 將領域實體轉化為**具備參照完整性的關聯式綱要 (ERD)** 與**高速實體索引**。
@@ -1930,6 +1994,30 @@ C. **Apache Kafka 不可變事件日誌 (Event Log)**：透過 Transactional Out
 答案就是業界標準的 **Transactional Outbox 模式**：利用 PostgreSQL 本地 ACID 交易同時寫入 `orders` 與 `outbox_events` 兩張表，再由背景程序轉發到 Kafka，優雅兼顧高吞吐量與資料零遺失！
 
 總結這張投影片，請記住這個核心觀念：多模態持久化結合了 SQL 的 ACID 嚴謹性、Redis 的極速快取與 Kafka 的串流解耦，並透過 Transactional Outbox 確保最終一致性。
+-->
+---
+<!-- _class: title-image-slide -->
+
+## 三層次資料塑模、UML ERD 與外送平台多模態儲存
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/architecture/data_design_food_delivery.svg" alt="Stage 4 Data and Persistence Design in Food Delivery System" />
+</div>
+
+<!--
+請看這張「階段四：資料與持久化設計」的全景架構圖，完整呈現了資料塑模三層次與外送平台的多模態儲存設計！
+
+請先看左側面板：資料設計由抽象到具體分為三個層次：
+1. **Level 1 概念資料模型 (Conceptual Data Model)**：與資料庫技術無關，專注於梳理核心業務實體與基數關係（如 `Customer 1 ── 0..* Order 1 ── 1..* Item`）。
+2. **Level 2 邏輯 ERD 模型 (Logical ERD Model)**：明確定義欄位型別、主鍵 (`«PK»`)、外來鍵 (`«FK»`)，並執行第三正規化 (3NF) 以消除資料更新異常。
+3. **Level 3 實體資料綱要 (Physical Data Schema)**：撰寫具體的 SQL DDL、建立複合索引 (`«idx»`)、按月資料表分區 (Partitioning)、設定 Redis 快取過期時間 (`TTL`) 與 Kafka 分區鍵。
+
+再看右側面板：外送平台能不能只用單一資料庫打天下？絕對不行！現代架構採用 **多模態持久化 (Polyglot Persistence)**：
+A. **PostgreSQL 關聯式資料庫 (ACID)**：儲存 `customers`、`restaurants`、`orders`、`order_items` 與 `payments`，利用 3NF 與嚴格 ACID 交易確保金流與訂單絕對不掉單、不重複扣款。
+B. **Redis 記憶體空間資料庫 (In-Memory Spatial Store)**：面對 5 萬名外送員每 5 秒回傳一次 GPS（每秒 1 萬次寫入），使用 64-bit `GeoHash` 搭配 `TTL = 30 秒` 自動過期，在 5 毫秒內秒級找出最近外送員！
+C. **Apache Kafka 不可變事件日誌 (Event Log)**：透過 Transactional Outbox 發布訂單事件，非同步同步派單與分析系統。
+
+總結這張投影片，請記住這個核心觀念：資料設計結合三層次 ERD 綱要塑模與多模態持久化，針對不同讀寫特性匹配最適合的儲存引擎。
 -->
 ---
 ### 觀念檢核測驗 5 (CCQ 5)
@@ -2088,6 +2176,190 @@ C. **Apache Kafka 不可變事件日誌 (Event Log)**：透過 Transactional Out
 想精通現代資料庫、快取與分散式一致性，必讀 Martin Kleppmann 的 DDIA！
 
 總結這張投影片，請記住這個核心觀念：這些經典文獻匯聚了軟體產業半世紀以來在架構、契約、物件與資料工程上的集體智慧。
+-->
+---
+<!-- header: '5.8 附錄：隨堂測驗與討論建議解答' -->
+
+## 附錄 A：隨堂觀念檢核 (CCQ 1 – CCQ 5) 建議解答與解析
+
+| 題號與章節 | 解答 | 核心設計原則 / UML 規範與關鍵解析 |
+| :--- | :---: | :--- |
+| **CCQ 1 (5.2 節)**<br>*凝聚度與耦合度* | **B** | **低凝聚與內容耦合反模式**：`OrderReportUtils` 混雜算稅、HTML 與寄信（**邏輯/巧合凝聚**），且直接篡改他類別私有 `rawSqlString` 構成最惡劣的**內容耦合 (Content Coupling)**；應拆分為單一職責類別並以 **資料耦合 (Data Coupling)** 傳遞 DTO。 |
+| **CCQ 2 (5.3 節)**<br>*巨觀 UML 圖表* | **C** | **編譯期結構 vs. 執行期硬體拓撲**：**UML 套件圖**塑模編譯期原始碼命名空間與單向無環 `«import»` 規則；**UML 部屬圖**則以 3D 節點塑模執行期雲端伺服器、容器環境與部署之 `«artifact»` 執行檔。 |
+| **CCQ 3 (5.4 節)**<br>*契約式設計與組件圖* | **B** | **DbC 權利義務對稱與組件接合**：**呼叫端 (Client)** 負責滿足**前置條件 (`qty > 0`)**，**供應端 (Supplier)** 則保證兌現**後置條件**，並於 **UML 組件圖**中以供應端**棒棒糖 (`—○`)** 接合呼叫端**插座 (`—(`)**。 |
+| **CCQ 4 (5.5 節)**<br>*SOLID 物件導向原則* | **A** | **違反 DIP 與 LSP**：高階結帳邏輯直接 `new MySqlOrderDatabase()` 違反**相依反轉原則 (DIP)**；子類別 `CryptoPayment` 覆寫 `refund()` 卻拋出不支援例外，直接毀棄父介面契約，嚴重違反**里氏替換原則 (LSP)** 與 **ISP**。 |
+| **CCQ 5 (5.6 節)**<br>*多模態資料與快取* | **C** | **依工作負載適配多模態儲存**：金流與訂單需 **PostgreSQL (OLTP)** 保障嚴格 **ACID** 與 3NF 完整性；5 萬名外送員每 5 秒回傳之高頻暫態座標則需 **Redis (`GeoHash` + `TTL = 30s`)** 於記憶體內實現 **`< 5ms`** 極速鄰近查詢。 |
+
+<!--
+這張附錄總表彙整了本章五題隨堂觀念檢核（CCQ 1 至 CCQ 5）的標準解答與核心工程解析。
+
+請同學對照檢視自己在 5.2 高凝聚低耦合、5.3 套件圖與部屬圖、5.4 契約式設計與組件圖、5.5 SOLID 五大原則，以及 5.6 多模態資料設計的掌握程度。
+
+總結這張投影片，請記住這個核心觀念：每一題 CCQ 都印證了嚴謹模組邊界、正式契約規格與多模態資料分流如何防止系統架構腐化。
+-->
+---
+## 附錄 B：同儕討論 5.3 建議解答 — 西洋棋 MVC 之 UML 套件圖
+
+> **設計解答核心：** 將系統切分為 `ui.controller`、`ui.view` 與 `domain.model` 三大套件，且 **`domain.model` 嚴禁向上依賴任何 UI 套件**！
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. 建議 PlantUML 套件圖源碼
+```plantuml
+@startuml
+skinparam packageStyle folder
+
+package "ui.controller" {
+  [GameController]
+  [MoveInputHandler]
+}
+package "ui.view" {
+  [ChessBoardGUI]
+  [MoveHistoryPanel]
+}
+package "domain.model" {
+  [BoardState]
+  [PieceRulesEngine]
+  [MoveValidator]
+}
+
+"ui.controller" ..> "domain.model" : «import» 驗證與更新棋局
+"ui.controller" ..> "ui.view"      : «import» 觸發畫面重繪
+"ui.view"       ..> "domain.model" : «import» 讀取棋盤狀態
+@enduml
+```
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. 套件職責劃分與無環相依解析
+- **1. 三大套件分類**：
+  - `domain.model`：`BoardState`、`PieceRulesEngine`、`MoveValidator`（純西洋棋規則與狀態）。
+  - `ui.view`：`ChessBoardGUI`、`MoveHistoryPanel`（純視覺繪製）。
+  - `ui.controller`：`GameController`、`MoveInputHandler`（將滑鼠事件轉為領域操作）。
+- **2. 單向無環相依原則 (ADP)**：
+  - 所有相依箭頭皆**朝向 `domain.model`**。
+  - **絕對禁止之反向相依**：嚴禁出現 `domain.model ..> ui.view`！正因 `domain.model` 不匯入任何 GUI 套件，我們才能在不啟動視窗的情況下 1 秒跑完一萬個 JUnit 棋規測試，或隨時將桌面視窗替換為手機 App 與網頁版！
+
+</div>
+</div>
+
+<!--
+這是 5.3 節同儕討論「西洋棋遊戲 MVC 架構之 UML 套件圖 (PlantUML)」的建議解答。
+
+請看左欄完整的 PlantUML 程式碼：我們將 7 個類別乾淨地歸入 `ui.controller`、`ui.view` 與 `domain.model` 三個資料夾套件，並以虛線箭頭 `..>` 標示 `«import»` 方向。
+
+再看右欄的設計重點：最關鍵的架構紀律就是 **`domain.model` 絕對不能 import `ui.view` 或 `ui.controller`**！只要守住這條單向邊界，西洋棋的核心規則引擎就能 100% 獨立進行自動化測試，未來要改成網頁版或手機版也完全不必修改任何一行棋規程式碼。
+
+總結這張投影片，請記住這個核心觀念：在 MVC 套件圖中，相依箭頭必須單向指向核心領域模型，確保業務規則與視覺介面徹底解耦。
+-->
+---
+## 附錄 C：同儕討論 5.4 建議解答 — `bubbleSort` 之 Javadoc 設計規格
+
+> **設計解答核心：** 完整的排序後置條件必須同時規定 **「遞增有序 (Ordered)」** 與 **「元素排列守恆 (Permutation)」**，缺一不可！
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. 契約擴充型 Javadoc 與 JML 規格
+```java
+/**
+ * 將傳入之整數陣列以原地 (in-place) 方式由小到大遞增排序。
+ *
+ * @param arr 待排序之整數陣列（直接於原陣列內交換元素）
+ * @throws IllegalArgumentException 若 {@code arr == null}
+ *
+ * @pre  arr != null（空陣列或單一元素陣列視為合法，直接返回）
+ * @post 1. 長度不變：arr.length == \old(arr.length)
+ * @post 2. 遞增有序：\forall int i; 0 <= i < arr.length - 1;
+ *                   arr[i] <= arr[i + 1]
+ * @post 3. 排列守恆 (Multiset Permutation)：
+ *          排序後之 arr 必須為 \old(arr) 之重排列——所有元素之
+ *          出現次數 (frequency count) 與排序前完全相同！
+ * @invariant 外層迴圈不變量 (第 k 回合結束)：陣列最右側 k 個元素
+ *          arr[n - k .. n - 1] 已就定位且為全陣列最大之 k 個值。
+ */
+public static void bubbleSort(int[] arr) { ... }
+```
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. 三大契約問題解析與反例驗證
+- **Q1. 前置條件 (`@param` / `@throws`)**：
+  - `arr != null`；若傳入 `null` 則拋出 `IllegalArgumentException`。注意 `arr.length == 0` 屬於合法輸入，不應拋出例外。
+- **Q2 & Q3. 為何只寫 `arr[i] <= arr[i+1]` 會有致命漏洞？**：
+  - 假設某個惡意或寫錯的實作直接在函式裡寫：
+    `Arrays.fill(arr, 0);`（把陣列全部填滿 `0`）。
+  - 請問 `[0, 0, 0, 0]` 有沒有滿足 `arr[i] <= arr[i+1]`？**完全滿足！**
+  - 因此，嚴謹的排序後置條件 (Postcondition) **必須同時包含兩大子句**：
+    1. **有序性 (Ordered)**：相鄰元素滿足 `arr[i] <= arr[i + 1]`。
+    2. **排列守恆 (Permutation)**：輸出陣列的多重集 (Multiset) 必須等於 `\old(arr)`，嚴禁憑空竄改或遺失任何原始數值！
+
+</div>
+</div>
+
+<!--
+這是 5.4 節同儕討論「以 Javadoc 撰寫 `bubbleSort(int[] arr)` 設計規格」的建議解答。
+
+請特別看右欄第 3 題的經典反例：為什麼後置條件只寫「相鄰元素 `arr[i] <= arr[i+1]`」是不合格的規格？
+因為如果一個偷懶的工程師直接把陣列全部覆寫成 `0`（`Arrays.fill(arr, 0)`），產出的 `[0, 0, 0, 0]` 完全符合 `0 <= 0` 的遞增條件，但原本的資料卻全部毀了！
+所以形式化規格提醒我們：完整的排序 Postcondition 必須同時宣告**「1. 遞增有序 (Ordered)」**與**「2. 元素排列守恆 (Permutation of `\old(arr)`)」**！
+
+總結這張投影片，請記住這個核心觀念：嚴謹的排序契約必須同時規範「有序性」與「多重集排列守恆」，才能防止破壞資料的錯誤實作蒙混過關。
+-->
+---
+## 附錄 D：同儕討論 5.5 建議解答 — GoF 觀察者模式 (Observer)
+
+> **設計解答核心：** **觀察者模式**透過抽象通知介面 (`Observer`)，將狀態頻繁變動的 **主題 (`Subject`)** 與任意數量的 **觀察者** 徹底解耦！
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. 設計動機與 GoF UML 角色結構
+- **設計動機（輪詢浪費 vs. 硬編碼耦合之兩難）**：
+  - 若不使用 Observer，要麼客戶端每秒瘋狂輪詢 (Polling) 耗盡資源，要麼 `OrderService` 在程式碼裡直接寫死呼叫 `CustomerApp`、`KitchenDisplay` 與 `RiderTracker`（嚴重違反 **SRP 與 OCP**）。
+- **GoF 核心參與者角色**：
+  - **`Subject` (`OrderEventPublisher`)**：維護 `List<OrderObserver>` 清單，提供 `+ attach(o)`、`+ detach(o)` 與 `+ notifyObservers(event)`。
+  - **`«interface» OrderObserver`**：宣告統一通知合約 `+ onOrderStateChanged(OrderEvent e)`。
+  - **`ConcreteObservers`**：`CustomerPushObserver`、`KitchenScreenObserver`、`RiderMapObserver` 實作該介面 (`..|>`)。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. 外送平台 UML 結構與 SOLID 原則印證
+```plantuml
+@startuml
+class OrderService {
+  - observers: List<OrderObserver>
+  + attach(o: OrderObserver)
+  + updateStatus(id, status)
+}
+interface OrderObserver <<interface>> {
+  + onOrderStateChanged(e: OrderEvent)
+}
+OrderService o--> "*" OrderObserver : 廣播通知 >
+OrderObserver <|.. CustomerPushObserver
+OrderObserver <|.. KitchenScreenObserver
+OrderObserver <|.. FraudAuditObserver
+@enduml
+```
+- **Observer 如何完美體現 DIP 與 OCP**：
+  - **DIP (相依反轉)**：高階 `OrderService` 僅依賴抽象的 `«interface» OrderObserver`，完全不知曉底層推播細節。
+  - **OCP (開放封閉)**：下個月若要新增「防詐稽核 (`FraudAuditObserver`)」，只需新增一個實作類別並呼叫 `attach()`——**`OrderService` 連一行程式碼都不必修改！**
+
+</div>
+</div>
+
+<!--
+這是 5.5 節同儕討論「探索 GoF 觀察者模式 (Observer Pattern) 之設計動機與結構」的建議解答。
+
+請看左欄：當外送訂單狀態改變時，如果讓 `OrderService` 直接去呼叫顧客推播、餐廳螢幕與外送員地圖，每多一個通知對象就要改一次 `OrderService`。透過 Observer 模式，`OrderService` 只負責維護一個 `List<OrderObserver>` 並廣播事件。
+
+再看右欄的 UML 圖與 SOLID 印證：這正是 **相依反轉原則 (DIP)** 與 **開放封閉原則 (OCP)** 的完美結晶！高階的 `OrderService` 只依賴抽象的 `OrderObserver` 介面；未來要新增「防詐稽核」或「簡訊通知」時，只要實作新類別並掛載 (`attach`) 上去即可，完全不必修改既有的核心訂單服務。
+
+總結這張投影片，請記住這個核心觀念：GoF 觀察者模式結合了 DIP 與 OCP，讓一對多的狀態變更通知具備隨插即用的高度擴充性。
 -->
 ---
 <!-- _class: lead -->

@@ -135,22 +135,22 @@
   <text x="983" y="352" class="mono" fill="#334155">+ stripe_tx_ref: VARCHAR</text>
 
   <!-- ERD Relationship Lines & Multiplicities -->
-  <!-- customers 1 --- 0..* orders -->
+  <!-- customers 1 to 0..* orders -->
   <line x1="677" y1="195" x2="728" y2="195" stroke="#1d4ed8" stroke-width="2" />
   <text x="684" y="190" class="mono" fill="#1e3a8a">1</text>
   <text x="705" y="190" class="mono" fill="#1e3a8a">0..*</text>
 
-  <!-- restaurants 1 --- 0..* orders -->
+  <!-- restaurants 1 to 0..* orders -->
   <path d="M 677 315 L 702 315 L 702 225 L 728 225" fill="none" stroke="#1d4ed8" stroke-width="2" />
   <text x="684" y="310" class="mono" fill="#1e3a8a">1</text>
   <text x="706" y="220" class="mono" fill="#1e3a8a">0..*</text>
 
-  <!-- orders 1 ◆--- 1..* order_items -->
+  <!-- orders 1 composition to 1..* order_items -->
   <line x1="933" y1="195" x2="975" y2="195" stroke="#1d4ed8" stroke-width="2" />
   <polygon points="933,195 940,190 947,195 940,200" fill="#1d4ed8" />
   <text x="953" y="190" class="mono" fill="#1e3a8a">1..*</text>
 
-  <!-- orders 1 --- 0..1 payments -->
+  <!-- orders 1 to 0..1 payments -->
   <path d="M 933 255 L 954 255 L 954 315 L 975 315" fill="none" stroke="#1d4ed8" stroke-width="2" />
   <text x="937" y="250" class="mono" fill="#1e3a8a">1</text>
   <text x="952" y="330" class="mono" fill="#1e3a8a">0..1</text>
