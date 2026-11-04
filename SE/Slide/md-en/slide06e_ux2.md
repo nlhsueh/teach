@@ -22,7 +22,7 @@ Welcome everyone to Chapter 6 of Software Engineering: User Experience (UX) Engi
 
 In previous chapters, we mastered how to elicit requirements, model system behavior with UML, and architect scalable backend systems. Yet even the most fault-tolerant, sub-millisecond microservice architecture will fail in the real world if human users cannot understand its conceptual model, navigate its interface, or recover from errors safely.
 
-In this 60-slide academic lecture, we approach UX not as subjective artistic decoration, but as a rigorous engineering and cognitive science discipline. We will progress from ISO usability standards and human information processing to quantitative interaction laws, human-centered research, information architecture, Jakob Nielsen's 10 heuristics, empirical usability testing, and AI-augmented UX design.
+In this academic lecture, we approach UX not as subjective artistic decoration, but as a rigorous engineering and cognitive science discipline—combining pioneer profiles, conceptual diagrams, mathematical interaction laws, and empirical usability engineering.
 
 To summarize this slide, remember this key takeaway: UX Engineering bridges human cognitive psychology and software design to ensure systems are useful, usable, accessible, and safe.
 -->
@@ -35,36 +35,36 @@ To summarize this slide, remember this key takeaway: UX Engineering bridges huma
 <div>
 <h3>Part 1: Foundations, Cognition, Laws & Research</h3>
 <ul>
-<li><b>6.1 Foundations of HCI, UX & Usability:</b> ISO 9241-210, UI vs. UX, Garrett's 5 Planes, and Nielsen's 5 usability dimensions.</li>
-<li><b>6.2 Cognitive Psychology & Mental Models:</b> Model Human Processor, Norman's 7 Stages of Action, Gulfs, and Cognitive Load.</li>
-<li><b>6.3 Quantitative Laws & Visual Perception:</b> Fitts's Law, Hick's Law, Tesler's Law, Gestalt grouping, and WCAG accessibility.</li>
-<li><b>6.4 Human-Centered Design & User Research:</b> Double Diamond lifecycle, empirical research, Personas, JTBD, and Journey Maps.</li>
+<li><b>6.1 Foundations of HCI, UX & Usability:</b> Engelbart's GUI revolution, ISO 9241, Garrett's 5 Planes, and Nielsen's 5 usability dimensions.</li>
+<li><b>6.2 Cognitive Psychology & Mental Models:</b> Don Norman's 7 Stages of Action, the Two Gulfs, Signifiers, Mental Models, and Cognitive Load.</li>
+<li><b>6.3 Quantitative Laws & Visual Perception:</b> Ben Shneiderman's Direct Manipulation, Fitts's Law, Hick's Law, Gestalt grouping, and WCAG a11y.</li>
+<li><b>6.4 Human-Centered Design & User Research:</b> Double Diamond lifecycle, 2×2 Research Matrix, Personas, JTBD, and Customer Journey Maps.</li>
 </ul>
 </div>
 <div>
-<h3>Part 2: Architecture, Evaluation, Testing & AI UX</h3>
+<h3>Part 2: Architecture, Heuristics, Testing & AI UX</h3>
 <ul>
-<li><b>6.5 Information Architecture & Prototyping:</b> Taxonomies, Card Sorting, Tree Testing, Wireframing, and Atomic Design Systems.</li>
-<li><b>6.6 Analytical Evaluation (Heuristics):</b> Heuristic Evaluation workflow, Nielsen's 10 Usability Heuristics, and Cognitive Walkthroughs.</li>
-<li><b>6.7 Empirical Testing, Metrics & Ethics:</b> Think-Aloud testing, N=5 model, SUS score, HEART metrics, A/B testing, and Dark Patterns.</li>
-<li><b>6.8 AI-Augmented UX & Synthesis:</b> AI for UX vs. UX for AI, interactive concept recap, self-assessment, and reference solutions.</li>
+<li><b>6.5 Information Architecture & Prototyping:</b> LATCH taxonomy, Card Sorting, Tree Testing, Wireframing, and Brad Frost's Atomic Design.</li>
+<li><b>6.6 Analytical Evaluation (Heuristics):</b> Jakob Nielsen's 10 Usability Heuristics, 0–4 Severity Scale, and Cognitive Walkthroughs.</li>
+<li><b>6.7 Empirical Testing, Metrics & Ethics:</b> Herbert Simon's Think-Aloud protocol, N=5 Poisson curve, SUS 0–100, HEART, and Dark Patterns.</li>
+<li><b>6.8 AI-Augmented UX & Synthesis:</b> AI for UX vs. UX for AI (Microsoft 18 HAI Guidelines), interactive recap quiz, and reference solutions.</li>
 </ul>
 </div>
 </div>
 
 <!--
-Here is our comprehensive 8-section academic roadmap for Chapter 6, organized into two main parts:
+Here is our comprehensive 8-section academic roadmap for Chapter 6, enriched with pioneer name cards, visual case studies, and custom architectural concept diagrams:
 
 In Part 1 (Sections 6.1 to 6.4), we build our theoretical and empirical foundation:
-Section 6.1 defines HCI, UX, and Usability through ISO 9241 standards, Garrett's 5 Planes, and Jakob Nielsen's 5 quality components.
-Section 6.2 explores Cognitive Psychology: how human perception, working memory, Mental Models, and Don Norman's Gulfs of Execution and Evaluation govern every user interaction.
-Section 6.3 covers Quantitative Laws of Interaction (Fitts's Law, Hick-Hyman Law, Jakob's Law, Tesler's Law), Gestalt visual perception, and WCAG accessibility engineering.
-Section 6.4 introduces the ISO Human-Centered Design (HCD) Double Diamond process, empirical user research, Personas, Jobs-to-be-Done (JTBD), and Customer Journey Maps.
+Section 6.1 introduces the roots of HCI with Douglas Engelbart, defines UX and Usability via ISO 9241 standards, and maps Garrett's 5 Planes and Morville's UX Honeycomb.
+Section 6.2 profiles Don Norman and explores Cognitive Psychology: the Model Human Processor, Norman's 7 Stages of Action, the Gulfs of Execution and Evaluation, Mental Models, and Sweller's Cognitive Load Theory.
+Section 6.3 profiles Ben Shneiderman and covers Quantitative Laws of Interaction (Fitts's Law, Hick-Hyman Law, Jakob's Law, Tesler's Law), Gestalt visual grouping, and WCAG 2.2 accessibility.
+Section 6.4 covers the Double Diamond HCD lifecycle, the 2×2 Empirical Research Matrix, Personas, Jobs-to-be-Done (JTBD), and Customer Journey Mapping.
 
 In Part 2 (Sections 6.5 to 6.8), we move from structure and prototyping to analytical inspection, empirical testing, and AI:
-Section 6.5 covers Information Architecture (IA), Card Sorting, Tree Testing, the Prototyping Fidelity Spectrum, and Atomic Design Systems.
-Section 6.6 examines Analytical Evaluation using Jakob Nielsen's 10 Usability Heuristics and Cognitive Walkthroughs.
-Section 6.7 covers Empirical Usability Testing, the System Usability Scale (SUS), Google's HEART framework, and Ethical UX (Dark Patterns).
+Section 6.5 covers Information Architecture, Card Sorting, Tree Testing, the Prototyping Fidelity Spectrum, and Brad Frost's Atomic Design Systems.
+Section 6.6 profiles Jakob Nielsen and examines Analytical Evaluation using his 10 Usability Heuristics and Cognitive Walkthroughs.
+Section 6.7 profiles Herbert A. Simon and covers the Think-Aloud Protocol, the N=5 discovery model, the System Usability Scale (SUS), Google HEART, and Ethical UX (Dark Patterns).
 Finally, Section 6.8 explores AI-Augmented UX (AI for UX vs. UX for AI) and synthesizes the entire chapter.
 
 To summarize this slide, remember this key takeaway: Our curriculum follows the full UX engineering lifecycle from cognitive theory and user research to information architecture, heuristic inspection, and empirical validation.
@@ -83,9 +83,47 @@ Welcome to Section 6.1: Foundations of HCI, UX, and Usability Engineering.
 
 A common misconception among software engineers is equating User Experience (UX) with graphic design—choosing colors, border radii, or animations at the very end of a sprint. In reality, visual styling is only the outermost surface of a much deeper architectural structure.
 
-In this section, we establish the formal academic definitions of Human-Computer Interaction (HCI), User Experience (ISO 9241-210), and Usability (ISO 9241-11 & Jakob Nielsen), and examine why UX engineering directly determines software project survival.
+In this section, we trace the birth of interactive computing with Douglas Engelbart, establish the formal definitions of HCI, User Experience (ISO 9241-210), and Usability (ISO 9241-11 & Jakob Nielsen), and visualize Garrett's 5 Planes and Morville's Honeycomb.
 
 To summarize this slide, remember this key takeaway: UX Engineering is a foundational software engineering discipline that governs how a product works, not merely how its surface looks.
+-->
+---
+## Pioneers of HCI: Douglas Engelbart & Interactive Computing
+
+<div class="content-columns">
+<div class="content-text">
+
+- **Role & Distinctions:**
+  - Director, Augmentation Research Center (SRI International); **1997 ACM Turing Award Laureate**; National Medal of Technology.
+- **The 1968 *"Mother of All Demos"* (San Francisco):**
+  - When computing meant batch punch cards, Engelbart demonstrated live **bitmapped windows, hypertext links, real-time collaborative editing, video conferencing**, and his invention: the **Computer Mouse**.
+- **Core Philosophy — Augmenting Human Intellect:**
+  - Viewed software not as an isolated number-cruncher, but as a **co-evolving human-machine system** designed to amplify human cognitive capability.
+- **Foundational HCI Maxim:**
+  > *"The digital revolution is far more significant than the invention of writing or even of printing—because it augments collective human intellect."*
+
+</div>
+<div class="content-figure">
+
+<div class="name-card">
+<img src="../../img/ch06/portraits/douglas_engelbart.jpg" alt="Douglas Engelbart" />
+<div class="name-card-caption">
+<span class="name-card-name">Douglas Engelbart (1925–2013)</span>
+<span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Douglas_Engelbart" target="_blank">SRI International / ACM Turing Award</a></span>
+</div>
+</div>
+
+</div>
+</div>
+
+<!--
+Meet the pioneer who ignited the transition from batch mainframes to interactive human-computer systems: Dr. Douglas Engelbart.
+
+In the 1960s, interacting with a computer meant punching holes in paper cards and waiting 24 hours for a printout. On December 9, 1968, at the Fall Joint Computer Conference in San Francisco—in a 90-minute live presentation forever known as "The Mother of All Demos"—Engelbart unveiled the oN-Line System (NLS).
+
+In a single afternoon, Engelbart demonstrated the first computer mouse, clickable hypertext, networked collaborative document editing, and split-screen video conferencing! His work at SRI inspired Xerox PARC, Apple Macintosh, and the entire field of Human-Computer Interaction (HCI).
+
+To summarize this slide, remember this key takeaway: Douglas Engelbart transformed computing from batch data processing into interactive visual systems that augment human intellect.
 -->
 ---
 ## What is User Experience (UX)? Formal Definitions
@@ -120,10 +158,10 @@ To summarize this slide, remember this key takeaway: UX Engineering is a foundat
 </div>
 
 <!--
-Let's begin by distinguishing four terms that are frequently confused in industry: HCI, UI, UX, and CX.
+Let's distinguish four terms that are frequently confused in industry: HCI, UI, UX, and CX.
 
 Look at the left card:
-Human-Computer Interaction (HCI) is the foundational academic field founded by pioneers like Stuart Card, Thomas Moran, Allen Newell, and Don Norman in the early 1980s.
+Human-Computer Interaction (HCI) is the foundational academic field uniting computer science and cognitive science.
 User Interface (UI) is the concrete presentation medium—the pixels, buttons, forms, and touch controls on the screen.
 User Experience (UX), as defined by ISO 9241-210, encompasses the user's holistic perceptions, cognitive load, task efficiency, and emotional responses before, during, and after using the system.
 Customer Experience (CX) extends even further to include brand marketing, pricing, and customer service hotline interactions.
@@ -156,23 +194,32 @@ To summarize this slide, remember this key takeaway: Great software products har
 ---
 ## Why UX Engineering Matters in Software Engineering
 
-* **1. The Economic ROI of Early UX Engineering (Boehm's Law Applied to UX):**
-  - Fixing a workflow or mental-model flaw during **UX Prototyping** costs **$1** (moving a wireframe box in 5 minutes).
-  - Fixing that same flaw after **Backend API & UI Coding** costs **$10–$20**; fixing it after **Production Release** costs **$50–$100+** in rework, support tickets, and user churn.
-* **2. Operational Efficiency & Error Reduction in Enterprise Systems:**
-  - Every extra click or ambiguous label multiplied across 50,000 daily courier dispatches wastes thousands of labor hours and inflates operational error rates.
-* **3. Safety-Critical Systems: When Poor UX Becomes Fatal:**
-  - **[Case 1] Therac-25 Radiation Therapy (1985–1987)**: Cryptic error codes (`Malfunction 54`) and mode-confusion UI contributed to lethal radiation overdoses.
-  - **[Case 2] Hawaii Ballistic Missile False Alarm (2018)**: Ambiguous dropdown links (`PACOM (CDW) - STATE ONLY` vs. `Test Missile Alert`) with no confirmation dialog triggered statewide panic.
+<div class="split55">
+<div class="left">
+
+* **1. The Economic ROI (Boehm's Law in UX):**
+  - Fixing a workflow flaw during **UX Prototyping** costs **$1** (5 minutes in a wireframe).
+  - Fixing it after **Backend API & UI Coding** costs **$10–$20**; fixing it after **Production Release** costs **$50–$100+** in rework and churn.
+* **2. Operational Throughput & Error Reduction:**
+  - Every extra click or ambiguous label multiplied across 50,000 daily courier dispatches wastes thousands of labor hours.
+* **3. Safety-Critical UX Disasters:**
+  - **Therac-25 (1985)**: Cryptic codes (`Malfunction 54`) and mode confusion caused lethal overdoses.
+  - **Hawaii Missile False Alarm (2018)**: Ambiguous text links with no confirmation dialog triggered statewide panic.
+
+</div>
+<div class="right">
+  <img src="../../img/ux/why_ux_is_hard_nobg.png" alt="Why UX Engineering is Challenging Across Stakeholders" />
+</div>
+</div>
 
 <!--
 Why should backend and full-stack software engineers care deeply about UX Engineering?
 
-First, consider the economic return on investment (ROI): Barry Boehm's Cost of Change curve applies directly to user interfaces! Discovering that a 5-step checkout flow confuses users during a 10-minute wireframe test costs almost nothing to fix. Discovering it after engineers have hardcoded database schemas, REST APIs, and React state machines costs 50 to 100 times more!
+Look at the left column:
+First, Barry Boehm's Cost of Change curve applies directly to user interfaces! Discovering that a 5-step checkout flow confuses users during a 10-minute wireframe test costs $1 to fix. Discovering it after engineers have hardcoded database schemas, REST APIs, and React state machines costs 50 to 100 times more!
+Second, in safety-critical domains—medical devices like Therac-25, aviation cockpits, or the 2018 Hawaii emergency alert system—poor UX is not a minor annoyance; it causes catastrophic human error.
 
-Second, in enterprise software, usability directly impacts business throughput. Shaving 5 seconds of confusion off a courier dispatch screen saves thousands of hours per month across a fleet.
-
-Third, in safety-critical domains—medical devices, aviation cockpits, nuclear power plants, and emergency alert systems—poor UX is not a minor annoyance; it can be fatal. In the 2018 Hawaii false missile alert, an operator clicked the wrong link in a cluttered list of nearly identical text strings with no preview or confirmation dialog.
+And look at the illustration on the right: Why is UX engineering challenging? Because engineers, business executives, and end users view the system through completely different lenses! UX engineering provides the empirical methods to align those perspectives.
 
 To summarize this slide, remember this key takeaway: Early UX engineering prevents expensive late-stage code rework, boosts operational productivity, and safeguards against catastrophic human error.
 -->
@@ -209,15 +256,38 @@ To summarize this slide, remember this key takeaway: Early UX engineering preven
 <!--
 How do UX architects structure a software product systematically? Let's examine two foundational models in the field: Jesse James Garrett's 5 Planes of UX on the left, and Peter Morville's UX Honeycomb on the right.
 
-In the left card, Garrett's 5 Planes demonstrate why UX must be engineered from the bottom up (Plane 5 up to Plane 1):
+In the left card, Garrett's 5 Planes demonstrate why UX must be engineered from the bottom up:
 At the bottom is the **Strategy Plane** (Why are we building this, and for whom?), followed by the **Scope Plane** (What features belong in our Software Requirements Specification?).
 Next comes the **Structure Plane**, where we define Information Architecture and Interaction Design flows.
 Above that sits the **Skeleton Plane** (wireframes and control placement), and finally, at the very top, the **Surface Plane** (visual styling).
-If you try to design the Surface Plane without fixing the Strategy, Scope, and Structure beneath it, the product collapses!
 
-In the right card, Peter Morville's UX Honeycomb expands our evaluation criteria beyond mere usability into seven facets: Useful, Usable, Findable, Credible, Accessible, Desirable, and Valuable.
+In the right card, Peter Morville's UX Honeycomb expands our evaluation criteria beyond mere usability into seven facets: Useful, Usable, Findable, Credible, Accessible, Desirable, and Valuable. Let's inspect the architectural diagram on the next slide!
 
 To summarize this slide, remember this key takeaway: Garrett's 5 Planes organize UX design from abstract strategy up to visual surface, while Morville's Honeycomb defines the seven quality facets of a complete user experience.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## Conceptual Architecture: Garrett's 5 Planes & The UX Honeycomb
+
+<div class="image-wrapper">
+  <img src="../../img/ch06/concepts/garrett_5_planes_honeycomb.svg" alt="Garrett's 5 Planes of UX and Peter Morville's UX Honeycomb" />
+</div>
+
+<!--
+Examine this conceptual architecture diagram uniting Jesse James Garrett's 5 Planes of UX on the left and Peter Morville's 7-Facet UX Honeycomb on the right!
+
+On the left, trace the upward arrow from Abstract to Concrete:
+- **Plane 1 (Strategy)** produces Evidence-Based Personas, Jobs-to-be-Done (JTBD), and Business KPIs.
+- **Plane 2 (Scope)** translates strategy into our Software Requirements Specification (SRS) and Product Backlog.
+- **Plane 3 (Structure)** defines Information Architecture (LATCH taxonomies) and Interaction Design state machines.
+- **Plane 4 (Skeleton)** creates mid-fidelity wireframes covering Empty, Loading, Ideal, and Error states.
+- **Plane 5 (Surface)** applies Design Tokens, WCAG color contrast, and visual polish.
+Notice the architectural rule at the bottom: if you try to paint Plane 5 (Surface UI) without locking Planes 1 through 4 beneath it, the product collapses!
+
+On the right, see how Morville's Honeycomb centers on **Valuable** surrounded by **Useful, Usable, Desirable, Findable, Accessible, and Credible**.
+
+To summarize this slide, remember this key takeaway: Every visual pixel on the Surface Plane rests upon a rigorous foundation of Wireframe Skeleton, IA Structure, SRS Scope, and User Strategy.
 -->
 ---
 ## ISO 9241-11 & Jakob Nielsen's 5 Quality Components of Usability
@@ -237,9 +307,9 @@ Now let's zoom in on the most testable engineering subset of UX: **Usability**.
 
 ISO 9241-11 defines usability around three pillars—Effectiveness (can users complete the goal accurately?), Efficiency (how much effort/time does it take?), and Satisfaction (how comfortable do they feel?)—always evaluated relative to specific users, specific goals, and a specific environment.
 
-Jakob Nielsen, co-founder of the Nielsen Norman Group, operationalized usability into **5 measurable quality components** shown in this table:
+Jakob Nielsen operationalized usability into **5 measurable quality components** shown in this table:
 1. **Learnability**: How fast can a novice place their first food order without reading a manual?
-2. **Efficiency**: How fast can an experienced restaurant cashier accept 20 incoming orders during the Friday dinner rush? (Notice that novices need high Learnability, while daily power users need high Efficiency!)
+2. **Efficiency**: How fast can an experienced restaurant cashier accept 20 incoming orders during the Friday dinner rush?
 3. **Memorability**: If a user only files taxes once a year, can they remember how the interface works without starting from scratch?
 4. **Errors**: How often do users make slips or mistakes, and how gracefully does the system help them recover?
 5. **Satisfaction**: Measured empirically via instruments like the System Usability Scale (SUS).
@@ -247,41 +317,31 @@ Jakob Nielsen, co-founder of the Nielsen Norman Group, operationalized usability
 To summarize this slide, remember this key takeaway: Usability is not a vague opinion; it is quantified across Learnability, Efficiency, Memorability, Errors, and Satisfaction.
 -->
 ---
-## The Aesthetic-Usability Effect & Norman's 3 Levels of Emotional Design
+## The Aesthetic-Usability Effect & Norman's Emotional Design
 
-> **Empirical Finding (Kurosu & Kashimura, 1995):** Users perceive **aesthetically pleasing interfaces as more usable** than they objectively are—up to a critical threshold!
+<div class="split55">
+<div class="left">
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. The Aesthetic-Usability Effect
-- **Origin (ATM Study, 1995)**:
-  - Researchers tested 26 layouts of an ATM with identical functionality and number of buttons.
-  - Layouts rated higher in visual beauty were consistently rated significantly **easier to use** (`r = 0.589`), even when actual task speed was identical.
-- **Engineering Implications & Limits**:
-  - **[Benefit]**: Visual polish builds initial trust and makes users more tolerant of **minor** usability hiccups.
-  - **[Boundary Limit]**: Aesthetics **cannot** mask **severe** task failures (e.g., broken checkout or lost data).
+* **1. The Aesthetic-Usability Effect (Kurosu & Kashimura, 1995):**
+  - Tested 26 ATM layouts with identical buttons and logic.
+  - Visually attractive layouts were rated **significantly easier to use** (`r = 0.589`), fostering trust and patience for minor hiccups—though aesthetics **never** rescue severe task failures!
+* **2. Norman's 3 Levels of Emotional Design:**
+  - **Visceral (`< 50ms`)**: Pre-conscious gut reaction to visual symmetry, color harmony, and craft.
+  - **Behavioral (In-Use)**: Subconscious feel of functional usability, speed, and control.
+  - **Reflective (Post-Use)**: Conscious pride, brand meaning, and peer recommendation.
 
 </div>
-<div class="card" data-marpit-fragment>
-
-### 2. Don Norman's 3 Levels of Emotional Processing
-- **1. Visceral Level (Pre-conscious / First Impression)**:
-  - Instantaneous (`< 50ms`) gut reaction to visual symmetry, color harmony, typography, and tactile feel.
-- **2. Behavioral Level (In-Use / Functional Usability)**:
-  - Subconscious experience while performing tasks—governed by **usability, feedback speed, and feel of control**.
-- **3. Reflective Level (Post-Use / Conscious Meaning)**:
-  - Intellectual rationalization, personal identity, brand pride, and whether the user recommends the product to peers.
-
+<div class="right">
+  <img src="../../img/ux/aesthetic_clock.png" alt="Aesthetic vs Functional Design Balance" />
 </div>
 </div>
 
 <!--
-How do aesthetics and emotion interact with functional usability? Let's examine two classic theories: the Aesthetic-Usability Effect and Don Norman's Three Levels of Emotional Design.
+How do aesthetics and emotion interact with functional usability? Let's examine the Aesthetic-Usability Effect and Don Norman's Three Levels of Emotional Design.
 
-In the left card, in 1995, Japanese researchers Masaaki Kurosu and Kaori Kashimura tested 26 variations of an ATM interface with identical functional logic. They discovered the **Aesthetic-Usability Effect**: users consistently perceived visually attractive layouts as easier to use, and were more patient when minor issues occurred. However, usability studies also show a hard boundary: while good aesthetics forgive minor friction, they never rescue a system that fails to complete the user's core task!
+In 1995, Japanese researchers Masaaki Kurosu and Kaori Kashimura tested 26 variations of an ATM interface with identical functional logic. They discovered the **Aesthetic-Usability Effect**: users consistently perceived visually attractive layouts as easier to use, and were more patient when minor issues occurred.
 
-In the right card, Don Norman's book *Emotional Design* explains *why* this happens across three brain processing levels:
+Don Norman's *Emotional Design* explains why this happens across three brain processing levels:
 1. The **Visceral Level** is your immediate, pre-conscious reaction to visual appearance (`< 50ms`).
 2. The **Behavioral Level** is the functional usability experienced during task execution.
 3. The **Reflective Level** is your conscious post-use reflection, memory, and brand attachment.
@@ -323,109 +383,119 @@ To summarize this slide, remember this key takeaway: Learnability measures initi
 
 # **6.2 Cognitive Psychology & Human Information Processing**
 
-> "What information consumes is rather obvious: it consumes the attention of its recipients. Hence a wealth of information creates a poverty of attention."  
-> — *Herbert A. Simon (Nobel Laureate & Turing Award Winner)*
+> "People are not machines. When a user makes an error, it is almost always a design error—not a human error."  
+> — *Don Norman (The Design of Everyday Things)*
 
 <!--
 Welcome to Section 6.2: Cognitive Psychology and Human Information Processing.
 
 Every interactive software system involves two processors communicating across an interface: a silicon CPU/GPU executing code, and a biological human brain perceiving visuals, forming mental models, holding items in working memory, and executing motor actions.
 
-While silicon processors double in speed over time, the human perceptual, cognitive, and motor architecture has remained fundamentally unchanged for tens of thousands of years. In this section, we study the cognitive laws that govern how humans perceive, think, remember, and act.
+In this section, we profile Don Norman, study the Model Human Processor, visualize the 7 Stages of Action and the Two Gulfs, examine Norman's Doors, and diagram Mental Models and Cognitive Load Theory.
 
 To summarize this slide, remember this key takeaway: Designing usable software requires engineering interfaces that respect the biological limits of human perception, attention, and working memory.
 -->
 ---
-## The Model Human Processor (MHP) & Perceptual Response Thresholds
+## Pioneers of UX & Cognitive Engineering: Don Norman
 
-> **Foundational HCI Model (Card, Moran & Newell, 1983):** Models the human user as three coupled subsystems—**Perceptual**, **Cognitive**, and **Motor**—each with measurable cycle times.
+<div class="content-columns">
+<div class="content-text">
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. The 3 Subsystems of MHP
-- **Perceptual System (`τ_p ≈ 100 ms`)**:
-  - Sensory buffers (Visual Iconic Store & Auditory Echoic Store) that capture raw stimuli from the screen.
-  - Events occurring within **`< 100 ms`** fuse into a single instantaneous perception (perceived causality).
-- **Cognitive System (`τ_c ≈ 70 ms`)**:
-  - Compares perceived symbols in **Working Memory** against **Long-Term Memory** schemas to make decisions.
-- **Motor System (`τ_m ≈ 70 ms`)**:
-  - Translates cognitive intentions into physical muscle movements (finger tap, mouse drag, eye saccade).
+- **Role & Distinctions:**
+  - Distinguished Professor of Cognitive Science, UC San Diego; Former VP of Advanced Technology, **Apple**; Co-founder, **Nielsen Norman Group (NN/g)**.
+- **Originator of the Term *"User Experience (UX)"* (1993):**
+  - Created the world's first *"User Experience Architect"* title at Apple to encompass the entire human experience of a product beyond the screen UI.
+- **Seminal Contributions to HCI & Software Engineering:**
+  - Authored ***The Design of Everyday Things*** (originally *The Psychology of Everyday Things*, 1988).
+  - Formulated the **7 Stages of Action**, the **Gulfs of Execution & Evaluation**, **Perceived Affordances & Signifiers**, and the **Triad of Mental Models**.
+- **Signature Engineering Maxim:**
+  > *"Do not blame the user! Human error is usually the result of poor design that ignores cognitive psychology."*
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="content-figure">
 
-### 2. Jakob Nielsen's 3 Response-Time Thresholds
-- **`0.1 Second (100 ms)` — Instantaneous Manipulation**:
-  - The user feels they are **directly manipulating** the object (e.g., button press state, scrolling, cursor tracking).
-- **`1.0 Second (1,000 ms)` — Uninterrupted Flow of Thought**:
-  - The user notices a slight delay, but their **train of thought remains unbroken** without needing a progress bar.
-- **`10 Seconds (10,000 ms)` — Maximum Attention Span**:
-  - Beyond `10s`, working memory context breaks down; the UI **must** provide a **percent-done progress indicator**, time estimate, and a safe **Cancel / Background** option!
+<div class="name-card">
+<img src="../../img/ch06/portraits/don_norman.jpg" alt="Don Norman" />
+<div class="name-card-caption">
+<span class="name-card-name">Don Norman</span>
+<span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Don_Norman" target="_blank">UC San Diego / Apple / NN/g Co-Founder</a></span>
+</div>
+</div>
 
 </div>
 </div>
 
 <!--
-Let's examine the foundational quantitative model of Human-Computer Interaction: the **Model Human Processor (MHP)** introduced by Stuart Card, Thomas Moran, and Allen Newell in *The Psychology of Human-Computer Interaction* (1983).
+Meet the father of modern Cognitive Engineering and User Experience: Professor Don Norman.
 
-Look at the left card: MHP models the human mind as three pipelined processors:
-1. The **Perceptual Processor** (`~100 ms` cycle time) captures visual and auditory stimuli into short-lived sensory buffers.
-2. The **Cognitive Processor** (`~70 ms` cycle time) matches sensory input in Working Memory against Long-Term Memory to decide what to do next.
-3. The **Motor Processor** (`~70 ms` cycle time) dispatches physical commands to the hand, fingers, or eyes.
-Notice that a simple human visual reaction (`Perceive + Cognize + Motor`) takes roughly `100 + 70 + 70 = 240 ms`!
+Trained in electrical engineering at MIT and mathematical psychology at the University of Pennsylvania, Don Norman founded the Institute for Cognitive Science at UC San Diego before joining Apple in 1993 as Vice President of Advanced Technology. At Apple, he coined the term "User Experience Architect" because he felt "human interface" was too narrow to capture how industrial design, software, graphics, and manuals work together.
 
-Look at the right card: Directly derived from human perceptual and cognitive constants are **Jakob Nielsen's 3 Universal Response-Time Limits** (`0.1s`, `1.0s`, and `10s`):
-Under `100 ms`, actions feel completely instantaneous. Under `1.0 second`, the user's train of thought stays intact. Beyond `10 seconds`, attention fractures unless you display a deterministic progress bar and allow background execution.
+In 1988, he published his masterpiece, *The Design of Everyday Things*, giving software engineers the vocabulary we use every day: Affordances, Signifiers, Natural Mapping, Mental Models, and the Gulfs of Execution and Evaluation.
 
-To summarize this slide, remember this key takeaway: Software latency requirements (`100ms`, `1s`, `10s`) are dictated not by arbitrary server SLAs, but by the biological cycle times of the human perceptual and cognitive processors.
+To summarize this slide, remember this key takeaway: Don Norman coined the term User Experience and established the cognitive engineering foundations of interaction design.
 -->
 ---
-## Don Norman's 7 Stages of Action & The Two Gulfs
+## Norman's 7 Stages of Action, The Two Gulfs & MHP Thresholds
 
-> **Core Interaction Cycle (Don Norman, *The Design of Everyday Things*):** Every human interaction bridges the gap between **Internal Psychological Goals** and **External Physical System State**.
+> **Core Interaction Cycle (Don Norman & Card/Moran/Newell):** Every human interaction bridges **Internal Psychological Goals** and **External Physical System State** within biological clock limits (`100ms / 1s / 10s`).
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 1. The 7 Stages of Action Cycle
-- **Goal (1)**: Formulate the high-level objective (*"Order dinner for $15"*).
-- **Execution Bridge (Stages 2 → 4)**:
-  - **2. Plan**: Choose an action strategy.
-  - **3. Specify**: Determine the exact sequence of UI inputs.
-  - **4. Perform**: Execute physical clicks/taps on the world.
-- **Evaluation Bridge (Stages 5 → 7)**:
-  - **5. Perceive**: Sense what changed on the screen.
-  - **6. Interpret**: Decode the meaning of that visual change.
-  - **7. Compare**: Verify if the new system state matches the **Goal**.
+### 1. The 7 Stages & The Two Gulfs
+- **Goal (Stage 1)**: Formulate the high-level objective (*"Order dinner for $15"*).
+- **The Gulf of Execution (*"How do I work this?"*)**:
+  - **2. Plan** → **3. Specify** → **4. Perform** physical action.
+  - *Bridged by*: Clear **Signifiers**, **Affordances**, **Natural Mapping**, and **Constraints**.
+- **The Gulf of Evaluation (*"What happened? Did it work?"*)**:
+  - **5. Perceive** → **6. Interpret** → **7. Compare** to Goal.
+  - *Bridged by*: Immediate **Status Feedback (`< 100ms`)** and clear **Conceptual Models**.
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 2. The Two Gulfs of Interaction Failure
-- **The Gulf of Execution (*"How do I make it do what I want?"*)**:
-  - The gap between the user's **intentions** and the **actions allowed** by the interface.
-  - *Bridged by*: Clear **Signifiers**, **Affordances**, **Natural Mapping**, and **Constraints**.
-- **The Gulf of Evaluation (*"What happened? Did it work?"*)**:
-  - The effort required to perceive and interpret the **system's current state** after acting.
-  - *Bridged by*: Immediate **Status Feedback (`< 100ms`)**, clear **Conceptual Models**, and informative state indicators.
+### 2. Model Human Processor (MHP) & Latency SLAs
+- **Biological Cycle Times (Card, Moran & Newell, 1983)**:
+  - **Perceptual (`τ_p ≈ 100 ms`)** + **Cognitive (`τ_c ≈ 70 ms`)** + **Motor (`τ_m ≈ 70 ms`)** = `~240 ms` simple reaction loop.
+- **Jakob Nielsen's 3 Universal Response-Time Limits**:
+  - **`0.1s (100 ms)`**: Feels **instantaneous** (direct manipulation: button ripple, scroll tracking).
+  - **`1.0s (1,000 ms)`**: User's **flow of thought stays unbroken** without needing a progress bar.
+  - **`10.0s (10,000 ms)`**: Max attention limit! Must show a **`%` Progress Bar** + time estimate + **`[Cancel]` exit**.
 
 </div>
 </div>
 
 <!--
-Now let's examine one of the most important theoretical models in all of UX Engineering: **Don Norman's 7 Stages of Action** and the **Two Gulfs** (*The Design of Everyday Things*).
+Now let's examine how **Don Norman's 7 Stages of Action** and the **Model Human Processor (MHP)** work together:
 
-Look at the left card: Whenever a user interacts with your software, they traverse seven cognitive stages:
-First, they form a **Goal** (Stage 1).
-Next, they cross the **Execution Bridge**: they **Plan** a high-level approach (Stage 2), **Specify** the exact sequence of buttons to click (Stage 3), and physically **Perform** the action (Stage 4).
-Then, after the system responds, they cross the **Evaluation Bridge**: they **Perceive** the screen update (Stage 5), **Interpret** what those pixels mean (Stage 6), and **Compare** the outcome against their original Goal (Stage 7).
+Look at the left card: Whenever a user interacts with your software, they form a **Goal** (Stage 1), cross the **Execution Bridge** (`Plan → Specify → Perform`), and then cross the **Evaluation Bridge** (`Perceive → Interpret → Compare`).
+Where do usability failures occur? In the **Two Gulfs**:
+- The **Gulf of Execution** occurs when a user knows *what* they want to achieve, but cannot figure out *how* to execute it in your UI.
+- The **Gulf of Evaluation** occurs when a user clicks "Pay Now", the screen gives zero feedback, and they cannot tell if their click worked!
 
-Now look at the right card: Where do usability failures occur? In the **Two Gulfs**!
-1. The **Gulf of Execution** occurs when a user knows *what* they want to achieve (e.g., split the restaurant bill with a friend), but cannot figure out *how* to execute it in your UI.
-2. The **Gulf of Evaluation** occurs when a user clicks "Pay Now", the button neither spins nor changes state, and the user has no idea whether their credit card was charged or if the app froze!
+Look at the right card: Why must feedback appear in `< 100ms` (tactile state) or `< 1.0s` (page transition)? Because the human Perceptual Processor (`τ_p ≈ 100ms`) fuses events under `100ms` as instantaneous causality, while delays beyond `10s` fracture working memory! Let's inspect the complete visual model on the next slide.
 
-To summarize this slide, remember this key takeaway: Great interaction design narrows the Gulf of Execution through clear signifiers and constraints, and narrows the Gulf of Evaluation through immediate, unambiguous feedback.
+To summarize this slide, remember this key takeaway: Great interaction design narrows the Gulf of Execution via clear signifiers and narrows the Gulf of Evaluation via feedback aligned with MHP latency thresholds.
+-->
+---
+<!-- _class: title-image-slide -->
+
+## Conceptual Model: 7 Stages of Action, The Two Gulfs & MHP
+
+<div class="image-wrapper">
+  <img src="../../img/ch06/concepts/norman_action_cycle_gulfs.svg" alt="Don Norman's 7 Stages of Action, The Two Gulfs and Model Human Processor" />
+</div>
+
+<!--
+Examine this complete conceptual diagram of Don Norman's 7 Stages of Action on the left and the Model Human Processor (MHP) on the right!
+
+Trace the loop on the left:
+Starting at the top blue capsule (**Stage 1: Formulate Goal** in the Human Mind), the user descends down the amber left side across the **Gulf of Execution** (`Stage 2: Plan` → `Stage 3: Specify` → `Stage 4: Perform`) to act on **The Physical World / System Image** at the bottom.
+Then the system updates its pixels, and the user ascends up the teal right side across the **Gulf of Evaluation** (`Stage 5: Perceive` → `Stage 6: Interpret` → `Stage 7: Compare Outcome to Goal`).
+
+On the right, see how the three biological clocks of the Model Human Processor—Perceptual (`100ms`), Cognitive (`70ms`), and Motor (`70ms`)—dictate Nielsen's `0.1s`, `1.0s`, and `10s` software response-time SLAs.
+
+To summarize this slide, remember this key takeaway: Every interaction traverses the 7-stage loop between human goal and system image, governed by the biological cycle times of perception, cognition, and motor control.
 -->
 ---
 ## Affordances, Signifiers, Mappings & Feedback
@@ -443,8 +513,8 @@ To summarize this slide, remember this key takeaway: Great interaction design na
 <!--
 How do we concretely bridge the Gulf of Execution and the Gulf of Evaluation? Don Norman defines five fundamental design primitives shown in this table:
 
-1. **Affordance**: An affordance is an objective relationship defining what actions are possible (for example, a touch screen *affords* tapping and swiping).
-2. **Signifier**: Because digital screens are flat glass, users cannot see hidden affordances unless designers provide **Signifiers**—perceptible clues like button borders, cursor changes, icons, or placeholder prompts that signal *"Tap here!"* or *"Swipe left to delete!"* (Flat-design trends that strip away button borders destroy signifiers!)
+1. **Affordance**: An objective relationship defining what actions are possible (e.g., a touch screen *affords* tapping and swiping).
+2. **Signifier**: Because digital screens are flat glass, users cannot see hidden affordances unless designers provide **Signifiers**—perceptible clues like button borders, cursor changes, icons, or placeholder prompts that signal *"Tap here!"*
 3. **Natural Mapping**: Aligning the layout of controls with their real-world spatial or logical effects, reducing cognitive translation effort to zero.
 4. **Feedback**: Immediately confirming that an input was received and showing its effect on system state.
 5. **Constraints**: Proactively blocking illegal actions before an error can even occur.
@@ -454,7 +524,7 @@ To summarize this slide, remember this key takeaway: Affordances define possible
 ---
 <!-- _class: title-image-slide -->
 
-## Case Study: Norman's Door & Natural Mapping in Controls
+## Case Study: Norman's Door & Signifier Failure
 
 <div class="image-wrapper">
   <img src="../../img/ux/normans_door_nobg.png" alt="Norman's Door and Signifier Failure" />
@@ -472,90 +542,64 @@ In software interfaces, whenever you have to write a multi-line instruction para
 To summarize this slide, remember this key takeaway: If a standard user interface control requires an instructional warning label to prevent misuse, its signifiers and mappings are fundamentally flawed.
 -->
 ---
-## Mental Models vs. Conceptual Models (The System Image)
+## Mental Models vs. Conceptual Models & Cognitive Load Theory
 
-> **Norman's Triad of Models:** Designers **never talk directly to users**; they communicate exclusively through the **System Image** (the UI, feedback, behavior, and documentation).
+> **Norman's Triad & Sweller's Cognitive Load (1988):** Designers communicate with users **only through the System Image**, while human **Working Memory** holds only **`4 ± 1` active chunks** (`~20s` decay).
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 1. The Three Models in Software Systems
-- **1. The Designer's Conceptual Model**:
-  - How the software architect and developer conceive the system (e.g., Git commits as a Directed Acyclic Graph of SHA-1 blobs and trees; file deletion as unlinking an inode pointer).
-- **2. The User's Mental Model**:
-  - The internal belief system formed in the user's mind based on prior real-world experience (e.g., folders on a desktop, a shopping cart, a trash can).
+### 1. Norman's Triad of Models
+- **1. Designer's Conceptual Model (Implementation)**:
+  - Normalized SQL tables, foreign keys, Kafka partitions, and state machines.
+- **2. User's Mental Model (Everyday Beliefs)**:
+  - Shopping carts, paper receipts, folders, and instant Undo.
 - **3. The System Image (The Bridge)**:
-  - Everything the user actually interacts with: UI layout, metaphors, labels, feedback, and error messages.
+  - The visible UI, labels, metaphors, and error messages.
+  - **[Anti-Pattern] Implementation Model Leak**: Exposing raw SQL errors (`ORA-02292`) or internal shard IDs to end users breaks their Mental Model!
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 2. Engineering Consequences of Model Mismatch
-- **[Anti-Pattern] Implementation Model Leak**:
-  - Exposing database foreign-key stack traces (`ORA-02292: integrity constraint violated`) or internal microservices jargon directly to end users.
-- **[Case Study] Cloud Sync vs. Local Save**:
-  - If a web editor auto-saves to the cloud every keystroke, but displays a prominent `"Save"` icon thatActually downloads a `.json` backup, users with a traditional desktop Mental Model will repeatedly click `"Save"` and clutter their disk!
-- **Design Rule**: Align the **System Image** with the **User's Mental Model**, hiding internal implementation mechanics.
+### 2. Sweller's 3 Types of Cognitive Load
+- **Intrinsic Load (Inherent Task Complexity)**:
+  - Managed by breaking complex flows into **step-by-step wizards**.
+- **Extraneous Load (Bad UI Friction)**:
+  - Wasted mental effort caused by visual clutter, inconsistent menus, or forcing users to memorize promo codes across screens. **Goal: Reduce to ~0%!**
+- **Germane Load (Schema Mastery)**:
+  - Productive effort invested in learning reusable patterns.
 
 </div>
 </div>
 
 <!--
-Why do software engineers so often build interfaces that make complete sense to the development team, yet baffle real users? Don Norman's **Triad of Mental Models** explains this phenomenon clearly.
+Let's unite two crucial cognitive frameworks: **Don Norman's Triad of Mental Models** on the left, and **John Sweller's Cognitive Load Theory** on the right.
 
-Look at the left card:
-1. The **Designer's Model (or Implementation Model)** is how the engineer understands the code—relational tables, JSON payloads, state machines, and asynchronous queues.
-2. The **User's Mental Model** is the internal working model inside the user's head, shaped by everyday life and other apps they use.
-3. Crucially, once the software ships, the engineer is not standing behind the user's chair explaining how it works! The Designer communicates with the User *exclusively* through the **System Image** (the visible UI, metaphors, and runtime behavior).
+Look at the left card: Once your software ships, you are not sitting next to the user explaining how the backend works. The **Designer's Model** and the **User's Mental Model** meet *exclusively* through the **System Image**. When a developer lets the backend Implementation Model leak into the System Image—throwing raw database exceptions or asking users to configure internal technical parameters—the user's Mental Model shatters!
 
-Look at the right card: When a developer lets the backend **Implementation Model** leak directly into the **System Image**—for instance, asking a hungry food delivery customer *"Select Partition Shard & Idempotency Mode"* or throwing a raw SQL foreign-key exception—a catastrophic mismatch occurs between the System Image and the User's Mental Model!
+Look at the right card: Why do cluttered interfaces fail? Because human **Working Memory** holds only **`4 ± 1` active chunks** (Cowan, 2001). When bad UI design inflates **Extraneous Cognitive Load**, it overflows working memory and causes immediate task abandonment! Let's inspect the visual architecture of both models on the next slide.
 
-To summarize this slide, remember this key takeaway: Engineers must design the System Image to match the User's Mental Model rather than exposing the backend Implementation Model.
+To summarize this slide, remember this key takeaway: Engineers must align the System Image with the User's Mental Model while ruthlessly eliminating Extraneous Cognitive Load.
 -->
 ---
-## Working Memory, Attention & Cognitive Load Theory
+<!-- _class: title-image-slide -->
 
-> **Sweller's Cognitive Load Theory (1988):** Human **Working Memory** has severely limited capacity (`4 ± 1` active chunks, decaying within `~20 seconds`); exceeding it triggers cognitive overload and task abandonment.
+## Conceptual Diagram: Mental Models & Cognitive Load Architecture
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. The 3 Types of Cognitive Load (John Sweller)
-- **Intrinsic Cognitive Load (Task Inherent)**:
-  - The unavoidable mental effort required by the domain task itself (e.g., filing corporate taxes vs. ordering a coffee).
-  - *Managed by*: Breaking complex workflows into **progressive step-by-step wizards**.
-- **Extraneous Cognitive Load (Bad UI Overhead)**:
-  - Wasted mental effort caused by **poor interface design**—visual clutter, inconsistent navigation, cryptic jargon, or forcing users to memorize codes across screens.
-  - *Engineering Goal*: **Eliminate Extraneous Load to near zero!**
-- **Germane Cognitive Load (Schema Building)**:
-  - Productive mental effort invested in learning reusable patterns and mastering the system's conceptual model.
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 2. Memory & Attention Constraints in UI Design
-- **Working Memory Capacity (Miller `7 ± 2` → Cowan `4 ± 1`)**:
-  - Modern cognitive research (Nelson Cowan, 2001) shows humans actively hold only **3 to 5 chunks** in working memory while multitasking.
-- **Recognition Over Recall**:
-  - Showing recent addresses, visual menu thumbnails, and search autocomplete (`Recognition`) requires far less cognitive load than typing from memory (`Recall`).
-- **Inattentional & Change Blindness**:
-  - Users tunnel-focus on their goal; subtle status changes placed outside their **foveal fixation zone** (`~2°` visual angle) go completely unnoticed!
-
-</div>
+<div class="image-wrapper">
+  <img src="../../img/ch06/concepts/mental_vs_conceptual_model.svg" alt="Norman's Triad of Mental Models and Sweller's Cognitive Load Theory" />
 </div>
 
 <!--
-Let's examine the biological bottleneck at the heart of the Cognitive Processor: **Working Memory** and **John Sweller's Cognitive Load Theory (1988)**.
+Examine this visual diagram illustrating Norman's Triad of Models on the left and Sweller's Cognitive Load Architecture on the right!
 
-In the left card, Sweller classifies mental effort into three distinct types:
-1. **Intrinsic Load** is the inherent complexity of the problem itself (configuring an AWS VPC firewall is intrinsically more complex than ordering a pizza).
-2. **Extraneous Load** is unnecessary cognitive friction imposed by clumsy UI design—such as forcing a user to read a 6-digit promo code on Banner Screen A, memorize it in their head, navigate three menus deep to Checkout Screen B, and type it in from memory!
-3. **Germane Load** is healthy mental effort spent forming long-term mental schemas.
-As UX engineers, our primary mission is to **ruthlessly eliminate Extraneous Cognitive Load** so all of the user's limited working memory remains available for their actual task!
+On the left, notice the red dashed line between the **Designer's Model** (SQL foreign keys, Kafka shards, Git SHA-1 DAGs) and the **User's Mental Model** (Shopping cart, kitchen preparing meal, folders on a desk): **There is no direct telepathy between engineer and user!** Everything must pass through **The System Image** at the bottom.
 
-In the right card, note two critical perceptual limits: First, while George Miller's 1956 paper cited `7 ± 2` items, Nelson Cowan's modern research shows active working memory during complex tasks holds only **`4 ± 1` chunks**. Second, due to **Change Blindness** and **Foveal Tunnel Vision**, if a user clicks a button at the bottom-right of a desktop screen and you display a tiny error message at the top-left corner, the user will never see it!
+On the right, compare Scenario A and Scenario B in the Working Memory capacity bars:
+In **Scenario A (Cluttered UI)**, a massive red block of **Extraneous Load (75%)**—caused by visual noise and forcing users to memorize codes across screens—pushes total mental effort past the **100% Working Memory Limit**!
+In **Scenario B (Well-Engineered UX)**, chunking, Recognition over Recall, and inline feedback shrink Extraneous Load to `~10%`, leaving ample cognitive headroom for the user to complete their task effortlessly.
 
-To summarize this slide, remember this key takeaway: Effective UI design minimizes extraneous cognitive load, relies on visual recognition over memory recall, and places feedback near the user's locus of attention.
+To summarize this slide, remember this key takeaway: Hiding implementation complexity behind a familiar System Image and shrinking Extraneous Load keeps total cognitive demand safely inside Working Memory capacity.
 -->
 ---
 ### Concept Check Question 2 (CCQ 2)
@@ -599,172 +643,145 @@ Welcome to Section 6.3: Quantitative Laws of Interaction and Visual Perception.
 
 Many computer science students are surprised to discover that Human-Computer Interaction has mathematical equations that accurately predict how many milliseconds a user needs to point to a button (`Fitts's Law`) or choose from a menu (`Hick-Hyman Law`).
 
-In this section, we master the core quantitative and behavioral laws of interaction design, examine how Gestalt psychology governs visual layout without clutter, and establish concrete engineering standards for WCAG Web Accessibility.
+In this section, we profile interaction pioneer Ben Shneiderman, master the mathematical and behavioral laws of UX, visualize Gestalt grouping and thumb ergonomics, and inspect real-world visual contrast and information overload failures.
 
 To summarize this slide, remember this key takeaway: Quantitative HCI laws and perceptual principles allow software engineers to optimize pointing speed, decision latency, visual hierarchy, and accessibility mathematically.
 -->
 ---
-## Mathematical Laws of Pointing & Choice: Fitts's Law & Hick's Law
+## Pioneers of Interaction Design: Ben Shneiderman
 
-> **Predictive HCI Modeling:** Human motor targeting and decision-making speed follow **logarithmic information-theoretic equations** (bits per second).
+<div class="content-columns">
+<div class="content-text">
+
+- **Role & Distinctions:**
+  - Distinguished University Professor of Computer Science, University of Maryland; Founding Director, **Human-Computer Interaction Lab (HCIL)**; IEEE & ACM Fellow; NAE Member.
+- **Pioneered Concepts & Inventions:**
+  - Coined **Direct Manipulation (1982)**: Continuous visual representation of objects, physical actions/pointing instead of complex command syntax, and rapid reversible incremental operations.
+  - Invented the **highlighted clickable web hyperlink**, dynamic sliders, **Treemaps** for hierarchical data visualization, and **Human-Centered AI (HCAI)**.
+- **Author of the Classic Textbook:**
+  - *Designing the User Interface* (**Eight Golden Rules of Interface Design**: Consistency, Universal Usability, Informative Feedback, Closure, Error Prevention, Easy Reversal, Internal Locus of Control, Short-Term Memory Load).
+
+</div>
+<div class="content-figure">
+
+<div class="name-card">
+<img src="../../img/ch06/portraits/ben_shneiderman.jpg" alt="Ben Shneiderman" />
+<div class="name-card-caption">
+<span class="name-card-name">Ben Shneiderman</span>
+<span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Ben_Shneiderman" target="_blank">Univ. of Maryland HCIL / ACM Fellow</a></span>
+</div>
+</div>
+
+</div>
+</div>
+
+<!--
+Meet one of the most influential computer scientists in Human-Computer Interaction: Professor Ben Shneiderman, founding director of the Human-Computer Interaction Lab (HCIL) at the University of Maryland.
+
+In 1982, studying why users loved early visual editors and video games while struggling with command-line terminals, Shneiderman coined the term **"Direct Manipulation"**:
+1. Continuous visual representation of the objects of interest.
+2. Physical pointing, dragging, and tapping instead of memorizing complex command syntax.
+3. Rapid, incremental, immediately reversible operations whose impact on the object is immediately visible (`< 100ms`).
+
+Shneiderman also invented the blue highlighted clickable link (adopted by Tim Berners-Lee for the World Wide Web!), Treemaps for visualizing disk and financial hierarchies, the famous **Eight Golden Rules of Interface Design**, and the modern framework for **Human-Centered AI (HCAI)**.
+
+To summarize this slide, remember this key takeaway: Ben Shneiderman formalized Direct Manipulation and the Eight Golden Rules that govern modern graphical and touch interfaces.
+-->
+---
+## Mathematical & Behavioral Laws: Fitts, Hick, Jakob & Tesler
+
+> **Predictive HCI Modeling:** Human motor targeting (`Fitts`), decision latency (`Hick`), convention transfer (`Jakob`), and complexity conservation (`Tesler`) follow strict engineering laws.
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 1. Fitts's Law (1954 — Motor Targeting Speed)
-- **Shannon Formulation (MacKenzie, 1992)**:
-  - `MT = a + b · log`<sub>`2`</sub>`(D / W + 1)`
-  - `MT`: Movement Time; `D`: Distance to target; `W`: Width (size) of target along the axis of motion.
-  - `log`<sub>`2`</sub>`(D / W + 1)`: **Index of Difficulty (`ID`, in bits)**.
-- **4 Core UI Engineering Applications**:
-  1. **Enlarge Primary Targets (`↑ W`)**: Make frequent CTAs at least `44×44 px` (Apple iOS) / `48×48 dp` (Android).
-  2. **Minimize Travel Distance (`↓ D`)**: Context menus (`right-click`) pop up at `D ≈ 0` right under the cursor!
-  3. **Infinite Screen Edges ("Magic Corners")**: macOS top menu bar & Windows bottom-left Start corner have **`W = ∞`** because the cursor is stopped by the screen bezel.
-  4. **Separate Destructive Actions**: Never place `"Delete Account"` `2px` next to `"Save"`!
+### 1. Fitts's Law & Hick-Hyman Law
+- **Fitts's Law (1954 — Motor Targeting Speed)**:
+  - `MT = a + b · log`<sub>`2`</sub>`(D / W + 1)` (`D` = Distance, `W` = Target Width).
+  - **UI Rules**: Make primary CTAs large (`>= 44×44 px` / `48×48 dp`, `↑ W`) inside the mobile **Bottom Thumb Zone (`↓ D`)**; pin global menus to **Screen Edges/Corners (`W = ∞`)**; isolate destructive buttons!
+- **Hick-Hyman Law (1952 — Choice Reaction Time)**:
+  - `RT = a + b · log`<sub>`2`</sub>`(n + 1)` (`n` = number of choices).
+  - **UI Rules**: Apply **Progressive Disclosure** (show 3–5 core choices + `[Recommended]` default; tuck rare options under `"More..."`).
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 2. Hick-Hyman Law (1952 — Choice Reaction Time)
-- **Mathematical Formulation**:
-  - `RT = a + b · log`<sub>`2`</sub>`(n + 1)` (for `n` equally probable choices)
-  - `RT = a + b · Σ p`<sub>`i`</sub>` log`<sub>`2`</sub>`(1 / p`<sub>`i`</sub>` + 1)` (general entropy form)
-- **Core UI Engineering Applications**:
-  1. **Progressive Disclosure**: Do not dump 40 settings onto one screen; display the **3–5 primary options** and tuck advanced settings behind `"Advanced..."`.
-  2. **Categorized & Scannable Grouping**: Group long lists into clear semantic categories so users scan `k` headers instead of reading `n` unsorted items.
-  3. **Smart Defaults & Highlighted Recommendations**: Highlighting a `[Recommended]` plan reduces choice entropy (`H`), slashing decision paralysis!
+### 2. Jakob's, Tesler's, Postel's & Doherty Laws
+- **Jakob's Law**: Users spend most of their time on *other* sites—follow standard conventions (top-right `[Cart]`, `Ctrl+Z`) so navigation takes **0% learning load**.
+- **Doherty Threshold (`< 400 ms`)**: Keep system-human interaction under `400 ms` via **Skeleton Screens & Optimistic UI**.
+- **Tesler's Law (Conservation of Complexity)**: Shift irreducible complexity from the User to the Code (e.g., auto-fill City/State from ZIP code).
+- **Postel's Law (Robustness Principle)**: Accept flexible human input (`0912-345-678` or `0912345678`) liberally and normalize in code!
 
 </div>
 </div>
 
 <!--
-Let's examine the two most famous mathematical equations in Human-Computer Interaction: **Fitts's Law** (Paul Fitts, 1954; refined by Scott MacKenzie, 1992) on the left, and the **Hick-Hyman Law** (William Hick & Ray Hyman, 1952) on the right.
+Let's synthesize the core quantitative and behavioral laws of interaction design:
 
-Look at the left card: **Fitts's Law** states that the time `MT` required to move a pointer (or finger) to a target is a logarithmic function of the ratio between the distance to the target (`D`) and the target's width (`W`):
-`MT = a + b * log2(D/W + 1)`.
-What does this formula tell us as UI engineers?
-1. Make frequent primary buttons large (`↑ W`, minimum `44×44 px` on touchscreens) and place them close to the user's natural thumb zone or current cursor (`↓ D`).
-2. Why does a right-click pop-up context menu feel so fast? Because it appears right under your cursor (`D = 0`)!
-3. Why is the macOS menu bar pinned to the top pixel edge of the screen? Because you can fling your mouse upward at full speed—the screen border stops the cursor, giving the menu bar **infinite effective target width (`W = ∞`)**!
-4. Conversely, we can use Fitts's Law in reverse to prevent accidents: make destructive buttons (`"Format Disk"`) smaller and further away from common actions.
+In the left card:
+1. **Fitts's Law** (`MT = a + b * log2(D/W + 1)`) governs physical pointing and tapping. It explains why primary mobile buttons belong in the bottom easy thumb zone with large tap targets (`>= 48dp`), why right-click context menus appear at `D = 0`, and why the macOS top menu bar has infinite target depth (`W = ∞`).
+2. **Hick-Hyman Law** (`RT = a + b * log2(n + 1)`) governs decision latency. Instead of dumping 28 payment methods on screen, we use **Progressive Disclosure** and smart defaults.
 
-Look at the right card: **Hick's Law** models cognitive choice reaction time `RT = a + b * log2(n + 1)`. As the number of choices `n` increases, decision latency grows logarithmically (and linearly if the list is unsorted!). We solve this via **Progressive Disclosure**—showing only core choices upfront and revealing secondary details on demand.
+In the right card:
+3. **Jakob's Law** reminds us to honor familiar platform conventions.
+4. **The Doherty Threshold (`< 400 ms`)** keeps users in a flow state.
+5. **Tesler's Law** and **Postel's Law** shift formatting work from human fingers into frontend parser code. Let's inspect the visual diagram of Fitts's Law, Thumb Zones, Hick's Law, and Gestalt Grouping on the next slide!
 
-To summarize this slide, remember this key takeaway: Fitts's Law optimizes physical target acquisition (`D` and `W`), while Hick's Law minimizes cognitive decision latency (`n`) through progressive disclosure.
+To summarize this slide, remember this key takeaway: Fitts's and Hick's laws optimize physical pointing and cognitive choice mathematically, while Jakob's, Tesler's, and Postel's laws eliminate unnecessary interaction friction.
 -->
 ---
-## Behavioral & Workflow Laws: Jakob's, Tesler's, Postel's & Doherty
+<!-- _class: title-image-slide -->
 
-> **Systems Laws of UX:** Great interaction design leverages **existing user habits**, absorbs **accidental complexity** into code, and accepts **flexible human input**.
+## Conceptual Diagram: Fitts's Law, Hick's Law & Gestalt Grouping
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. Jakob's Law & The Doherty Threshold
-- **Jakob's Law of Internet User Experience (Jakob Nielsen)**:
-  - *"Users spend most of their time on **other sites**. This means that users prefer your site to work the same way as all the other sites they already know."*
-  - **Design Rule**: Follow established platform conventions (top-right shopping cart `[Cart]`, top-left logo home link, standard `Ctrl+Z` undo) so users spend **0% cognitive load** learning navigation!
-- **The Doherty Threshold (`< 400 ms`, Walter Doherty, 1982)**:
-  - Productivity soars when computer and human interact at a pace **`< 400 ms`**, ensuring neither waits on the other.
-  - *Technique*: Use **Optimistic UI Updates** & **Skeleton Screens** to keep perceived response under `400 ms`.
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 2. Tesler's Law & Postel's Law in UI Engineering
-- **Tesler's Law (Law of Conservation of Complexity)**:
-  - Every application has an inherent amount of irreducible complexity. The only question is: **Who bears it—the User or the Software Engineer?**
-  - *Example*: Instead of forcing users to type City, State, and County manually, the engineer spends 20 lines of code auto-filling them from a 5-digit **Postal/ZIP Code**!
-- **Postel's Law (The Robustness Principle)**:
-  - *"Be conservative in what you send, be liberal in what you accept."*
-  - *Example*: Accept credit card or phone numbers whether the user types `0912-345-678`, `(0912) 345 678`, or `0912345678`—strip formatting characters in code instead of throwing a red syntax error!
-
-</div>
+<div class="image-wrapper">
+  <img src="../../img/ch06/concepts/fitts_hick_gestalt_visual.svg" alt="Fitts's Law, Mobile Thumb Zones, Hick's Law and Gestalt Visual Grouping" />
 </div>
 
 <!--
-Beyond Fitts's and Hick's laws, four system-level laws govern everyday software UX engineering:
+Examine this 3-panel visual diagram illustrating Fitts's Law, Hick-Hyman Law, and Gestalt Visual Grouping!
 
-Look at the left card:
-1. **Jakob's Law**: Users spend 99% of their digital lives on *other* apps and websites. When a designer reinvents standard controls—putting the shopping cart at the bottom-left or changing a checkbox into a triangle—users get disoriented. Innovate on your core product value, not on basic navigation conventions!
-2. **The Doherty Threshold (`< 400 ms`)**: Discovered by IBM researcher Walter Doherty in 1982, when system response drops below 400 milliseconds, human engagement and productivity jump dramatically because the user stays in a continuous flow state. Modern apps achieve this using **Skeleton Screens** and **Optimistic UI** (immediately showing a "Liked" heart before the HTTP POST finishes).
+1. In **Panel 1 (Left — Fitts's Law)**:
+   - At the top, see how movement time depends on Distance (`D`) divided by Target Width (`W`), and why screen edges act as "magic corners" (`W = ∞`).
+   - At the bottom, inspect the **Mobile One-Handed Thumb Ergonomics Map**: the bottom green arc is the **Easy Thumb Zone (Low D)** where primary CTA bars belong, while the top-left red corner is the **Hard Stretch Zone (High D)** where destructive or rare actions should be isolated!
+2. In **Panel 2 (Center — Hick-Hyman Law)**:
+   - See the logarithmic reaction-time curve (`RT`) and the visual contrast between an `[Anti-Pattern]` flat list of `n = 28` banks vs. `[Best Practice]` Progressive Disclosure (`n = 3` choices with Apple Pay pre-selected as default, cutting decision time to `< 1.2s`).
+3. In **Panel 3 (Right — Gestalt Visual Grouping Laws)**:
+   - See how **Proximity** (`4px` label gap vs. `20px` field gap), **Similarity** (consistent primary button color), **Common Region** (cards), and **Closure** (partially clipped 3rd carousel card signaling horizontal scroll) organize interfaces cleanly!
 
-Look at the right card:
-3. **Larry Tesler's Law (Conservation of Complexity)**: Complexity cannot be destroyed, only shifted. If an engineer takes an extra hour to write an address auto-complete or smart default, they shift complexity *away* from millions of users and onto the software!
-4. **Jon Postel's Law (Robustness Principle)**: Never scold a user with `"Error: Do not include dashes in phone number!"` Accept flexible human input formats liberally and normalize them silently in your frontend parser.
-
-To summarize this slide, remember this key takeaway: Follow Jakob's Law for familiar conventions, honor the 400ms Doherty Threshold, and apply Tesler's and Postel's laws to shift formatting work from the user to the code.
+To summarize this slide, remember this key takeaway: Combining thumb-zone Fitts ergonomics, progressive Hick disclosure, and Gestalt perceptual grouping creates effortlessly scannable interfaces.
 -->
 ---
-## Gestalt Principles of Visual Perception in UI Layout
+## Gestalt Visual Hierarchy & WCAG 2.2 Accessibility Engineering
 
-> **Gestalt Psychology (*"The whole is other than the sum of its parts"*):** The human visual cortex automatically groups screen elements into coherent structures based on **6 perceptual laws**.
+<div class="split55">
+<div class="left">
 
-| Gestalt Principle | Perceptual Mechanism | UI / Frontend Engineering Application |
-| :--- | :--- | :--- |
-| **1. Proximity** | Elements placed **closer together** are perceived as belonging to the same functional group. | Keep a form **Label `4px`** above its **Input Box**, but leave **`20px` margin** before the next field—zero border lines needed! |
-| **2. Similarity** | Elements sharing visual attributes (**color, shape, size, font**) are perceived as having similar behavior. | Style all primary actions in solid brand blue (`#2563eb`) and all secondary actions in subtle outline gray. |
-| **3. Common Region (Enclosure)** | Elements enclosed within a **visible boundary or shaded card** are perceived as a unified unit. | Group an order card's restaurant title, item list, and `"Track Order"` button inside a subtle `.card` container. |
-| **4. Continuity** | The human eye naturally follows **smooth, aligned lines and curves** rather than abrupt jagged jumps. | Align form labels and inputs along a **single clean vertical left axis** to accelerate visual scanning. |
-| **5. Closure** | The brain automatically fills in missing gaps to perceive **complete, familiar shapes**. | Partially clipping the 4th card at the right edge of a horizontal carousel naturally signals *"Scroll right for more!"* |
-| **6. Figure-Ground** | The visual system instantly separates the **foreground focal object (Figure)** from the **background (Ground)**. | Dimming the background (`rgba(0,0,0,0.5)` backdrop blur) behind a **Modal Dialog** focuses 100% attention on the modal. |
-
-<!--
-How does a user look at a screen of 50 rectangles and text strings and instantly understand which label belongs to which input box? The answer lies in **Gestalt Psychology**, founded by Max Wertheimer, Kurt Koffka, and Wolfgang Köhler in the early 20th century.
-
-Review the six core Gestalt principles in this table and how they guide CSS layout engineering:
-1. **Proximity**: The single most powerful layout tool! If the vertical gap between `Label A` and `Input A` is equal to the gap between `Input A` and `Label B` (`12px` everywhere), users constantly type into the wrong box. By setting `margin-bottom: 4px` on labels and `margin-bottom: 20px` between form groups, **Proximity** groups them effortlessly without drawing ugly boxes!
-2. **Similarity**: Things that look alike should act alike. Never use your clickable link color (`#2563eb` blue underline) for non-clickable static headings!
-3. **Common Region (Enclosure)**: Using subtle background shading or cards to group related controls.
-4. **Continuity**: Maintaining crisp grid alignment so the eye glides down a single column.
-5. **Closure**: Showing `3.5` cards in a horizontal row so the cut-off 4th card visually signifies horizontal scrolling.
-6. **Figure-Ground**: Using elevation shadows and modal backdrops to separate active foreground dialogs from background content.
-
-To summarize this slide, remember this key takeaway: Gestalt principles allow engineers to communicate structure and hierarchy through whitespace, alignment, and similarity rather than heavy visual clutter.
--->
----
-## Visual Hierarchy, Typography, Contrast & Accessibility (WCAG 2.2)
-
-> **Inclusive Engineering Mandate:** Accessibility (**a11y**) is not an optional edge case—roughly **15% of the global population** lives with visual, motor, auditory, or cognitive disabilities ( plus situational impairments like bright sunlight!).
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. Visual Hierarchy & Scanning Patterns
-- **F-Pattern & Z-Pattern Eye Tracking (NN/g)**:
-  - Users **do not read** interfaces word-for-word; they **scan** in an **F-shaped pattern** (text-heavy lists) or **Z-shaped pattern** (landing pages).
-- **3 Pillars of Scannable Typography**:
-  - **Size & Weight Scale**: Clear ratio between `H1` (`28–32px`), `H2` (`20–24px`), Body (`16px`), and Caption (`13–14px`).
-  - **Line Length (Measure)**: Keep body text paragraphs between **50 and 75 characters per line** (`max-width: 65ch`).
-  - **Whitespace (Negative Space)**: Active breathing room that prevents visual crowding and isolates focal points.
+* **1. Visual Hierarchy & Eye-Tracking (F / Z Patterns):**
+  - Users **scan** interfaces rather than reading word-for-word.
+  - Enforce a clear typographic scale (`H1 > H2 > Body`), line width `50–75 chars` (`65ch`), and **Gestalt Proximity** whitespace.
+* **2. W3C WCAG 2.2 Accessibility (POUR Mandate):**
+  - **Luminance Contrast (Level AA)**: Minimum **`4.5 : 1`** for normal text (`3.0 : 1` for large text `>= 18pt` and UI controls).
+  - **Color-Blindness Safety**: Never rely on Red vs. Green alone (~8% of males have Deuteranopia/Protanopia)—always pair color with **`[!] Icon + Text Label`**.
+  - **Keyboard & Screen Reader**: Semantic `<button>`, focus rings, and `aria-label`.
 
 </div>
-<div class="card" data-marpit-fragment>
-
-### 2. W3C WCAG 2.1 / 2.2 Accessibility (POUR)
-- **The 4 POUR Principles**: **P**erceivable, **O**perable, **U**nderstandable, **R**obust.
-- **Concrete Frontend Engineering Requirements**:
-  1. **Color Contrast (Level AA)**: Minimum **`4.5 : 1`** luminance contrast ratio for normal text (`3.0 : 1` for large text `>= 18pt` or UI icons).
-  2. **Never Rely on Color Alone**: ~8% of males have red-green color deficiency (Deuteranopia/Protanopia). Pair red error borders with **an icon (`[!]`) + text message**!
-  3. **Keyboard & Screen Reader Support**: Full `Tab` focus ring order, semantic HTML (`<button>`, `<nav>`, `<main>`), and `aria-label` attributes.
-
+<div class="right">
+  <img src="../../img/ux/bad_design_color_contrast_xray.png" alt="Visual Contrast Failure and Information Clutter Case Study" />
 </div>
 </div>
 
 <!--
-Let's examine how Visual Hierarchy and Web Content Accessibility Guidelines (**WCAG 2.1 / 2.2**) translate into concrete frontend engineering standards.
+Look at how Visual Hierarchy and **WCAG 2.2 Accessibility (POUR: Perceivable, Operable, Understandable, Robust)** prevent the real-world visual failures shown on the right!
 
-In the left card, Nielsen Norman Group's eye-tracking studies prove a humbling truth: **Users don't read web pages; they scan them!**
-To support scanning:
-1. Establish an unmistakable typographic scale (`H1 > H2 > Body > Caption`).
-2. Constrain paragraph line widths to `50–75 characters` (`65ch`)—lines spanning `180 characters` across a 27-inch monitor cause the eye to lose its place when jumping to the next line.
+In the image on the right, notice what happens when an interface violates **WCAG Contrast (`1.4.3`)** and **Gestalt Figure-Ground**: low-contrast text placed over busy background imagery or washed-out pastel colors becomes completely illegible—especially for older adults, users with low vision, or couriers looking at their phone screen under bright outdoor sunlight!
 
-In the right card, let's review **WCAG Accessibility (a11y)** structured around the **POUR** acronym (Perceivable, Operable, Understandable, Robust):
-1. **Contrast Ratio**: Light-gray text (`#999999`) on a white background (`#ffffff`) has a contrast ratio of only `2.8:1`—it becomes unreadable for aging eyes or a courier riding under midday sun! WCAG Level AA requires at least **`4.5:1`** for normal text.
-2. **Color-Blindness Safety**: Never indicate status by red vs. green color alone; always combine color with distinct shapes/icons and text labels.
-3. **Semantic HTML & Keyboard Operability**: Use real `<button>` elements (not `<div onclick>`) so keyboard `Tab`/`Enter` and screen readers work out of the box.
+To engineer accessible interfaces:
+1. Enforce a minimum **`4.5 : 1` contrast ratio** for body text (verifiable in Chrome DevTools Accessibility Inspector).
+2. Never communicate form errors or system status by red/green color alone—always include a distinct icon (`[!]`) and descriptive text.
+3. Ensure every interactive control is a native semantic HTML element (`<button>`, `<input>`, `<nav>`) operable via the `Tab` and `Enter` keys.
 
-To summarize this slide, remember this key takeaway: Accessible visual design combines scannable typographic hierarchy with WCAG 4.5:1 contrast, color-independent indicators, and semantic HTML.
+To summarize this slide, remember this key takeaway: Accessible visual design pairs scannable Gestalt hierarchy with WCAG 4.5:1 contrast, color-independent indicators, and keyboard-operable semantic HTML.
 -->
 ---
 ### Peer Discussion 6.3: Diagnosing a High-Friction Checkout Screen
@@ -793,12 +810,12 @@ Let's take 4 minutes for Peer Discussion 6.3!
 
 Work with your neighbor to audit this high-friction Food Delivery checkout screen where 62% of users abandon their cart.
 Look at the four flaws (`#1` through `#4`):
-In Flaw #1, look at the size (`24x18 px`), placement (top-left of a mobile screen, far from the thumb), and proximity (`2px` from "Empty Entire Cart"). Which mathematical law is violated here?
+In Flaw #1, look at the size (`24x18 px`), placement (top-left hard stretch zone of a mobile screen), and proximity (`2px` from "Empty Entire Cart"). Which mathematical law is violated here?
 In Flaw #2, dumping 28 unsorted banks and wallets into a single flat radio list violates which decision-time law?
 In Flaw #3, rejecting hyphens in a phone number and wiping out all 8 address fields violates which robustness and complexity laws?
 And in Flaw #4, relying solely on red vs. green borders with a `2.1:1` contrast ratio violates which WCAG accessibility rules?
 
-Discuss with your partner both the theoretical law violated and your concrete engineering refactoring for each item. (Full reference solutions are provided in Appendix B at the end of the slide deck!)
+Full reference solutions are provided in Appendix B at the end of the slide deck!
 
 To summarize this slide, remember this key takeaway: Auditing interfaces against Fitts's Law, Hick's Law, Postel's Law, and WCAG standards turns subjective UI critique into systematic engineering diagnosis.
 -->
@@ -849,204 +866,126 @@ Welcome to Section 6.4: The Human-Centered Design (HCD) Process and Empirical Us
 Perhaps the single greatest trap in software engineering is the **False-Consensus Effect**: engineers naturally assume that because *they* understand recursive folder trees, regular expressions, or modal state transitions, everyday users think the exact same way.
 
 Hence the First Golden Rule of UX Engineering: **"You Are Not the User!"**
-In this section, we study the ISO 9241-210 Human-Centered Design lifecycle, the UK Design Council's Double Diamond model, empirical user research methods, Personas, Jobs-to-be-Done (JTBD), and Customer Journey Mapping.
+In this section, we study the ISO 9241-210 Human-Centered Design lifecycle, the UK Design Council's Double Diamond model, the 2×2 Empirical User Research Matrix, Personas, Jobs-to-be-Done (JTBD), and Customer Journey Mapping.
 
 To summarize this slide, remember this key takeaway: Human-Centered Design replaces developer assumptions with empirical user research across iterative divergent and convergent phases.
 -->
 ---
-## The Double Diamond Model & ISO 9241-210 Iterative Lifecycle
+## The Double Diamond Lifecycle & ISO 9241-210 HCD Process
 
-> **Design Before Solutioning:** Engineers must first **design the right thing** (Problem Space) before **designing the thing right** (Solution Space).
+<div class="split55">
+<div class="left">
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. The Double Diamond (4 Phases: Diverge ↔ Converge)
-- **Diamond 1 — Understanding the Problem Space**:
-  1. **Discover (Diverge `<`)**: Conduct field observations, contextual inquiry, and user interviews to uncover real pain points.
-  2. **Define (Converge `>`)**: Synthesize findings into Personas, Journey Maps, and a focused **Problem Statement (HMW — How Might We)**.
-- **Diamond 2 — Engineering the Solution Space**:
-  3. **Develop (Diverge `<`)**: Brainstorm alternative IA flows, sketch low-fidelity wireframes, and explore interactive prototypes.
-  4. **Deliver (Converge `>`)**: Run usability tests, refine high-fidelity designs, validate metrics, and hand off to agile sprints.
+* **1. Diamond 1 — Problem Space (*"Design the Right Thing"*):**
+  - **Discover (Diverge `<`)**: Field observation (**Contextual Inquiry**) and user interviews to uncover real pain points.
+  - **Define (Converge `>`)**: Synthesize findings into **Personas**, **JTBD**, and a focused Problem Statement (**SRS Scope**).
+* **2. Diamond 2 — Solution Space (*"Design the Thing Right"*):**
+  - **Develop (Diverge `<`)**: Explore Information Architecture, low-fidelity sketches, and wireframes.
+  - **Deliver (Converge `>`)**: Run iterative usability tests, refine UI tokens, and ship in agile sprints.
 
 </div>
-<div class="card" data-marpit-fragment>
-
-### 2. ISO 9241-210 Core Principles of HCD
-- **1. Explicit Understanding of Users, Tasks & Environments**:
-  - Grounded in empirical observation, not stakeholder guesswork.
-- **2. Users Involved Throughout Design & Development**:
-  - Continuous feedback from early paper sketches to beta releases.
-- **3. Driven & Refined by User-Centered Evaluation**:
-  - Prototypes are tested early and often to catch mental-model flaws.
-- **4. Iterative Process**:
-  - Every evaluation round feeds insights back into requirements and design until usability benchmarks are met.
-
+<div class="right">
+  <img src="../../img/ux/ux_core_process_nobg.png" alt="The Iterative Human-Centered UX Engineering Process" />
 </div>
 </div>
 
 <!--
-How does UX Engineering fit into the broader Software Development Lifecycle (SDLC)? Let's examine the **UK Design Council's Double Diamond Model (2005)** on the left and the **ISO 9241-210 Human-Centered Design Standard** on the right.
+How does UX Engineering fit into the broader Software Development Lifecycle (SDLC)? Let's examine the **UK Design Council's Double Diamond Model** on the left and the **ISO 9241-210 Iterative HCD Loop** on the right.
 
-Look at the left card: Why is it called the **Double Diamond**?
-Because great design alternates between **Divergent Thinking** (expanding to explore possibilities) and **Convergent Thinking** (narrowing down to focused decisions) across two distinct diamonds:
-- **Diamond 1 (Problem Space — "Build the Right Thing")**: First we **Discover** (diverge via field user research), then we **Define** (converge on the core user personas and problem statement).
-- **Diamond 2 (Solution Space — "Build the Thing Right")**: Next we **Develop** (diverge by sketching multiple alternative UI prototypes), and finally we **Deliver** (converge through usability testing and engineering delivery).
+Why is it called the **Double Diamond**? Because great design alternates between **Divergent Thinking** (expanding to explore possibilities) and **Convergent Thinking** (narrowing down to focused decisions) across two diamonds:
+- **Diamond 1 (Problem Space — "Build the Right Thing")**: First we **Discover** via field user research, then we **Define** the core personas, Jobs-to-be-Done, and problem statement.
+- **Diamond 2 (Solution Space — "Build the Thing Right")**: Next we **Develop** alternative wireframes and prototypes, and finally we **Deliver** through usability testing and sprint implementation.
 
-Most failed software projects skip Diamond 1 entirely—jumping straight into coding a solution for a problem users don't actually have!
+Let's examine the complete conceptual diagram uniting the Double Diamond, SRS traceability, and the 2×2 User Research Matrix on the next slide!
 
 To summarize this slide, remember this key takeaway: The Double Diamond enforces exploring and defining the Problem Space before diverging and converging in the Solution Space.
 -->
 ---
 <!-- _class: title-image-slide -->
 
-## Visual Overview: The Iterative UX Engineering Lifecycle
+## Conceptual Diagram: Double Diamond & 2×2 User Research Matrix
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ux_core_process_nobg.png" alt="The Core Iterative UX Engineering Process" />
+  <img src="../../img/ch06/concepts/double_diamond_research_matrix.svg" alt="Double Diamond HCD Lifecycle and NN/g 2x2 User Research Matrix" />
 </div>
 
 <!--
-Examine this visual diagram of the Core Iterative UX Engineering Process:
+Examine this dual conceptual diagram showing the **Double Diamond HCD Lifecycle** on the left and the **NN/g 2×2 User Research Landscape** on the right!
 
-Notice how the workflow forms a continuous empirical loop:
-1. **Understand & Empathize (Research)**: Observing real users in their physical and social context to uncover their goals, constraints, and bottlenecks.
-2. **Define & Structure**: Translating messy qualitative observations into structured Personas, Empathy Maps, Information Architecture, and Task Flows.
-3. **Ideate & Prototype**: Rapidly externalizing ideas from low-cost paper sketches and grayscale wireframes up to interactive clickable prototypes.
-4. **Evaluate & Test**: Running analytical Heuristic Evaluations and empirical Usability Tests with real users, feeding quantitative and qualitative findings back to refine the design before expensive production coding!
+In the left panel:
+- Notice how **Diamond 1 (Problem Space: Discover → Define)** converges onto our **SRS / How-Might-We Problem Statement** in the center, which then launches **Diamond 2 (Solution Space: Develop → Deliver)** with a continuous iterative evaluation loop underneath.
+- At the bottom-left, review the direct traceability to Software Engineering (Chapters 3–5): **Personas** map to **UML Actors & Usability NFRs**; **Jobs-to-be-Done (JTBD)** map to **Agile User Stories**; and **Hierarchical Task Analysis (HTA)** maps to **UML Use Case & Activity Diagrams**.
 
-To summarize this slide, remember this key takeaway: The UX engineering process is an iterative feedback loop connecting user research, problem definition, rapid prototyping, and empirical evaluation.
+In the right panel:
+- See how empirical research methods are organized across **Behavioral (What Users Actually Do)** vs. **Attitudinal (What Users Say)** on the vertical axis, and **Qualitative (Why & How to Fix, `N = 5–12`)** vs. **Quantitative (How Much, `N = 100+`)** on the horizontal axis.
+- Best engineering practice **triangulates** both: Clickstream funnel logs tell you *where* users drop off (`62% at step 3`), while **Contextual Inquiry** and **Think-Aloud Testing** reveal *why*!
+
+To summarize this slide, remember this key takeaway: Combining Double Diamond problem-space discipline with Behavioral + Attitudinal triangulation ensures software requirements are grounded in empirical reality.
 -->
 ---
-## Empirical User Research: The 2×2 Landscape (NN/g)
+## Synthesizing Research: Personas, JTBD, Journey Maps & HTA
 
-> **Triangulation Principle:** What users **say they do** in interviews often differs from what they **actually do** in the wild! Combine **Attitudinal** and **Behavioral** methods.
-
-| Research Dimension | Qualitative (*"Why & How to Fix"*)<br>Small Sample (`N = 5–12`), Deep Insights | Quantitative (*"How Many & How Much"*)<br>Large Sample (`N = 100–10,000+`), Statistical |
-| :--- | :--- | :--- |
-| **Behavioral**<br>*(What Users Actually Do)* | **• Contextual Inquiry (Field Observation)**<br>**• Moderated Usability Testing (Think-Aloud)**<br>*Insight*: Uncovers workarounds, environmental distractions, and mental-model breakdowns. | **• Product Telemetry & Clickstream Funnel Analytics**<br>**• Controlled A/B Testing & Eye-Tracking Heatmaps**<br>*Insight*: Pinpoints exact drop-off rates (`62% at step 3`) and task completion times at scale. |
-| **Attitudinal**<br>*(What Users Say & Feel)* | **• Semi-Structured User Interviews**<br>**• Diary Studies & Focus Groups**<br>*Insight*: Reveals underlying motivations, domain goals, anxieties, and unmet emotional needs. | **• Standardized Questionnaires (SUS, SUPR-Q, NPS)**<br>**• Large-Scale Intercept Surveys & Kano Surveys**<br>*Insight*: Benchmarks subjective satisfaction and feature priority across customer segments. |
-
-<!--
-How do UX researchers select the right empirical method for a given stage of the project? Christian Rohrer at the Nielsen Norman Group classifies all user research methods across a **2×2 Matrix** shown in this table:
-
-Along the vertical axis, we distinguish **Behavioral** methods (*observing what people actually do*) from **Attitudinal** methods (*listening to what people say they think or feel*). Why is this distinction so vital? Because human beings are notoriously bad at predicting their own future behavior or recalling microscopic UI habits! In an interview, a courier might say, *"I always verify the customer's apartment number before riding,"* yet in a **Contextual Inquiry** (riding along in the rain), you observe that glare on the phone screen forces them to guess!
-
-Along the horizontal axis, we distinguish **Qualitative** methods (`N = 5–12` participants, answering **Why** a problem happens and **How** to fix it) from **Quantitative** methods (`N = 100+` participants, answering **How much** or **How many** with statistical rigor).
-Best engineering practice **triangulates** both: Analytics tells you *where* the funnel is leaking (`62% drop-off at checkout`), while Qualitative Observation tells you *why* (`users can't find the promo code button`)!
-
-To summarize this slide, remember this key takeaway: Quantitative analytics reveal *what* is happening at scale, while qualitative behavioral observation reveals *why* it happens and how to fix it.
--->
----
-## Synthesizing Research: Affinity Diagrams, Personas & JTBD
-
-> **Data-Driven Synthesis:** Raw interview transcripts must be distilled into actionable engineering models—**Personas** (*Who*) and **Jobs-to-be-Done** (*Why*).
+> **From Raw Field Notes to Engineering Models:** Distill qualitative observations into **Goal-Directed Personas** (*Who*), **Jobs-to-be-Done** (*Why*), **Customer Journey Maps** (*Macro Timeline*), and **Hierarchical Task Analysis** (*Micro Steps*).
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 1. Affinity Diagramming & Evidence-Based Personas
-- **Affinity Diagramming (KJ Method)**:
-  - Clustering hundreds of field observation notes bottom-up into thematic insight groups (`Pain Points`, `Workarounds`, `Trust Barriers`).
+### 1. Personas (Alan Cooper) & JTBD (Christensen)
 - **Alan Cooper's Goal-Directed Personas (*The Inmates Are Running the Asylum*)**:
-  - An archetype representing a distinct **behavioral pattern cluster** derived from real user research (never made-up marketing stereotypes!).
-  - **Core Anatomy of an Engineering Persona**:
-    1. **Context & Tech Proficiency** (e.g., *"Rider Wei, operates one-handed on a scooter in rain"*).
-    2. **End Goals & Motivations** (maximize deliveries/hour safely).
-    3. **Pain Points & Frustrations** (small tap targets, GPS drift).
+  - Empirical behavioral archetypes clustered via **Affinity Diagramming (KJ Method)**—never fictional marketing stereotypes!
+  - Captures **Context of Use** (e.g., *"Courier Wei, operates one-handed on a scooter in rain"*), **Goals**, and **Frustrations**.
+- **Jobs-to-be-Done (JTBD Template)**:
+  - **When** `[Situation]`, **I want to** `[Action]`, **so I can** `[Outcome]`.
+  - *Example*: *"When working overtime with 4 colleagues at 8 PM, I want to share a group cart link capped at $25/person, so we can order dinner without passing my phone around."*
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 2. Jobs-to-be-Done (JTBD — Clayton Christensen)
-- **Focus on the "Job", Not Demographic Labels**:
-  - People don't buy products because of their age bracket; they *"hire"* a product to get a specific **Job** done in a specific situation.
-- **Standard JTBD Statement Template**:
-  - **When** `[Situation / Context]`,
-  - **I want to** `[Motivation / Action]`,
-  - **So I can** `[Expected Outcome / Value]`.
-- **Food Delivery JTBD Example**:
-  - *"When I am working overtime with 4 colleagues at 8 PM (**Situation**), I want to share a single group cart link where everyone picks their own meal in 3 minutes (**Action**), so I can order dinner without collecting cash or passing my phone around (**Outcome**)."*
+### 2. Customer Journey Maps & Task Analysis (HTA)
+- **Customer Journey Map (Macro Experience & Emotion Curve)**:
+  - Plots user actions, thoughts, and **Emotional Peaks/Valleys (`Delight (+) ↔ Frustration (−)`)** across timeline stages.
+  - Exposes the infamous **"Post-Payment Anxiety Valley"** in food delivery!
+- **Hierarchical Task Analysis (HTA — Micro Task Tree)**:
+  - Decomposes `Goal 0` into numbered sub-tasks (`1, 2, 3...`) and conditional execution **`Plans`**—mapping directly to **UML Activity Diagrams** and **BDD Acceptance Tests**!
 
 </div>
 </div>
 
 <!--
-Once we return from field observations and user interviews with hundreds of notes, how do we synthesize that qualitative data so software engineers can act on it?
+Once we return from field observations and user interviews, how do we synthesize qualitative notes into rigorous software engineering artifacts?
 
-Look at the left card: First, teams use **Affinity Diagramming** (the KJ Method invented by Jiro Kawakita) to cluster individual observations into recurring behavioral patterns.
-From those clusters, we construct **Goal-Directed Personas**, pioneered by Alan Cooper in his classic book *The Inmates Are Running the Asylum*.
-Warning: A real engineering Persona is **never** a fictional demographic wishlist (*"32-year-old Aries who likes yoga"*). It is an empirical behavioral archetype capturing **Context of Use** (riding a scooter with wet gloves), **Core Goals**, and **Current Pain Points**. Designing for 1 to 3 specific Personas prevents "elastic user" syndrome where developers twist the definition of the user to justify whatever code is easiest to write!
+In the left card:
+1. **Alan Cooper's Goal-Directed Personas**: Pioneered by Alan Cooper (creator of Visual Basic and author of *The Inmates Are Running the Asylum*), a Persona represents an empirical behavioral cluster—capturing physical context, domain goals, and pain points.
+2. **Jobs-to-be-Done (JTBD)**: Frames requirements around the situational job the user "hires" the software to accomplish (`When [Situation], I want to [Action], so I can [Outcome]`).
 
-Look at the right card: Complementing Personas is **Jobs-to-be-Done (JTBD)** (`When [Situation], I want to [Action], so I can [Outcome]`), which links directly to Agile User Stories!
+In the right card:
+3. **Customer Journey Maps** plot the emotional trajectory across stages, pinpointing where user anxiety spikes.
+4. **Hierarchical Task Analysis (HTA)** breaks high-level goals into structured sub-tasks and execution plans. Let's inspect our Food Delivery Customer Journey Map diagram on the next slide!
 
-To summarize this slide, remember this key takeaway: Evidence-based Personas model *who* uses the system and under what constraints, while Jobs-to-be-Done (JTBD) captures *why* they hire the system in a specific context.
+To summarize this slide, remember this key takeaway: Personas and JTBD define who uses the system and why, while Journey Maps and HTA model the temporal experience and task hierarchy.
 -->
 ---
-## Modeling Context & Tasks: Journey Maps & Task Analysis (HTA)
+<!-- _class: title-image-slide -->
 
-> **End-to-End Temporal Modeling:** While Personas capture user traits, **Customer Journey Maps** and **Hierarchical Task Analysis (HTA)** model actions, emotions, and pain points **over time**.
+## Visual Case Study: Customer Journey Map in Food Delivery
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. Customer Journey Map (Macro Experience Flow)
-- **Horizontal Stages (Timeline)**:
-  - `Discovery` → `Onboarding` → `Ordering` → `Waiting` → `Delivery & Support`.
-- **Vertical Swimlanes Across Each Stage**:
-  1. **User Actions & Touchpoints**: Mobile app, SMS, push notifications, physical handoff.
-  2. **Thoughts & Questions**: *"Is the restaurant still open? Where is my rider?"*
-  3. **Emotional Curve (`Delight (+) ↔ Frustration (−)`)**: Visualizes emotional peaks and **valleys of anxiety** (e.g., the 25-minute "black box" wait after paying!).
-  4. **Pain Points & Engineering Opportunities**: Adding a live kitchen status tracker (`Preparing → Packing → Picked Up`) directly heals the post-payment anxiety valley!
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 2. Hierarchical Task Analysis (HTA — Micro Task Tree)
-- **Origin (Annett & Duncan, 1967)**:
-  - Decomposes a high-level user **Goal (`0`)** into a tree of **Sub-tasks (`1, 2, 3...`)** and execution **Plans** (specifying sequence, selection, or loops).
-- **Food Delivery HTA Example**:
-  - **Goal `0`**: Complete Group Meal Order
-    - `1.` Create Group Session & Share Link
-    - `2.` Collect Member Selections (`Plan 2`: wait until all members click *"Ready"* OR host clicks *"Lock Cart"*)
-    - `3.` Select Split-Bill vs. Host-Pays Mode
-    - `4.` Authorize Payment (`3.1` Verify address → `3.2` Confirm total → `3.3` Authenticate biometrics)
-- **Engineering Value**: Directly maps to **UI screen flows, UML Activity Diagrams, and test scenarios**!
-
-</div>
+<div class="image-wrapper">
+  <img src="../../img/ch06/concepts/journey_map_food_delivery.svg" alt="Customer Journey Map and Emotional Curve for Food Delivery Group Order" />
 </div>
 
 <!--
-How do we model the dynamic flow of a user's interaction over time? We pair two complementary artifacts: the **Customer Journey Map** (macro experience) on the left, and **Hierarchical Task Analysis (HTA)** (micro task decomposition) on the right.
+Examine this complete **Customer Journey Map** for our Food Delivery Group Order scenario!
 
-Look at the left card: A **Customer Journey Map** plots the user's end-to-end timeline across stages (`Discovery → Ordering → Waiting → Delivery`), overlaying their **Emotional Curve**.
-In Food Delivery research, plotting the emotional curve reveals a famous insight: the lowest point of user satisfaction (maximum anxiety) occurs *immediately after payment*, when money has left their bank account and they sit hungry in the dark wondering if the restaurant even saw their order! That single Journey Map insight inspired the iconic live **Order Progress Tracker** (`Order Confirmed → Preparing in Kitchen → Rider Heading to Store → Arriving in 4 mins`).
+Trace the three horizontal swimlanes across the 5 stages (`Stage 1: Group Setup` → `Stage 2: Shared Cart` → `Stage 3: Checkout & Pay` → `Stage 4: Kitchen Wait` → `Stage 5: Live Arrival`):
+1. In **Row 1 (User Actions)**, see what the host and coworkers are physically doing at each stage.
+2. In **Row 2 (Emotion Curve)**, follow the blue trajectory:
+   - Notice the minor dip at **Stage 2** when one coworker walks away from their desk and stalls the shared cart.
+   - And look at the deep red **ANXIETY VALLEY at Stage 4 (Kitchen Wait)**: the user has already paid $95, money has left their bank account, and for 25 minutes they stare at a static screen wondering, *"Did the restaurant even receive our order?!"*
+3. In **Row 3 (SE & UX Solutions)**, see how each emotional dip translates directly into a concrete software engineering feature:
+   - To fix Stage 2 stall friction, we add `[Picking...]` vs. `[Ready ✓]` badges and a **Host Override (`[Lock Cart & Checkout]`)** button.
+   - To heal the Stage 4 Anxiety Valley, we engineer **WebSocket event streaming (`Confirmed → Wok → Packed`)** and **Redis Geo-Hash live rider tracking**!
 
-Look at the right card: **Hierarchical Task Analysis (HTA)** breaks each high-level goal down into numbered sub-goals and conditional execution **Plans**—providing a rigorous bridge from UX research directly into UML Activity Diagrams and UI state machines.
-
-To summarize this slide, remember this key takeaway: Customer Journey Maps expose emotional pain points across touchpoints, while Hierarchical Task Analysis (HTA) decomposes goals into structured operational steps.
--->
----
-## Bridging UX Artifacts to Software Requirements (SRS)
-
-> **Closing the SE ↔ UX Gap:** Every UX research artifact translates directly into a formal **Software Engineering Requirements or Design Specification** artifact!
-
-| UX Engineering Artifact (Ch 06) | Corresponding SE / UML Artifact (Ch 03–05) | Concrete Traceability Example in Food Delivery |
-| :--- | :--- | :--- |
-| **1. Evidence-Based Persona**<br>*(e.g., Rider Wei — Scooter Context)* | **UML Actor & Non-Functional Requirements (NFRs)** in SRS | **Usability NFR-01**: Courier Order Accept/Decline screen must have tap targets `>= 56×56 dp` and contrast `>= 7:1` for one-handed outdoor glare use. |
-| **2. Jobs-to-be-Done (JTBD)** | **Agile Epic & User Stories**<br>(`As a... I want... So that...`) | **US-204**: *As an office team host, I want to generate a shareable group-cart link with a $25/person cap so colleagues can pick meals within budget.* |
-| **3. Customer Journey Map**<br>*(Post-Payment Anxiety Valley)* | **Functional Requirements & Event-Driven Architecture** | **FR-108**: System shall push real-time `OrderStateChanged` WebSocket updates within `< 2s` of kitchen tablet and courier status transitions. |
-| **4. Hierarchical Task Analysis (HTA)** | **UML Use Case Scenarios, Activity Diagrams & Acceptance Tests** | Maps HTA `Plan 2` branches (`All Members Ready` vs. `Host Timeout Override`) directly into **Given-When-Then (BDD)** acceptance criteria. |
-
-<!--
-Before we move into Part 2 of Chapter 6, examine this synthesis table showing how UX Engineering integrates seamlessly with Requirements Engineering (Chapter 3), System Modeling (Chapter 4), and Software Design (Chapter 5):
-
-1. An **Evidence-Based Persona** (like Courier Wei riding in outdoor sunlight with one thumb) directly specifies our **UML Actor** profile and quantifiable **Usability Non-Functional Requirements (NFRs)** in the SRS (e.g., minimum `56×56 dp` touch targets and `7:1` outdoor contrast).
-2. A **Jobs-to-be-Done (JTBD)** statement translates directly into an **Agile Epic or User Story**.
-3. Pain points uncovered in a **Customer Journey Map** drive both **Functional Requirements** and backend **Event-Driven Architecture** (such as WebSocket push notifications).
-4. And **Hierarchical Task Analysis (HTA)** plans map 1-to-1 into **UML Use Case Flows, Activity Diagrams, and Given-When-Then Acceptance Tests**!
-
-To summarize this slide, remember this key takeaway: UX artifacts are not isolated design deliverables; they trace directly into UML actors, user stories, non-functional requirements, and acceptance criteria in the SRS.
+To summarize this slide, remember this key takeaway: Customer Journey Maps transform emotional valleys of user anxiety into high-impact frontend and backend architectural requirements.
 -->
 ---
 <!-- _class: lead -->
@@ -1062,161 +1001,113 @@ Welcome to Section 6.5 (and Part 2 of our lecture): Information Architecture (IA
 
 Once we have researched our users and defined their goals in Sections 6.1–6.4, how do we structure the software's content, navigation, and screen layouts before writing frontend code?
 
-In this section, we examine Information Architecture (Garrett's Structure Plane), empirical taxonomy validation using Card Sorting and Tree Testing, the Prototyping Fidelity Spectrum (from 5-minute paper sketches to interactive Figma prototypes), and scalable UI engineering via Brad Frost's Atomic Design Systems.
+In this section, we examine Information Architecture (LATCH taxonomies), empirical taxonomy validation using Card Sorting and Tree Testing, the Prototyping Fidelity Spectrum, and scalable UI engineering via Brad Frost's Atomic Design Systems.
 
 To summarize this slide, remember this key takeaway: Information Architecture and iterative prototyping validate content findability and interaction flows before costly frontend coding begins.
 -->
 ---
-## Information Architecture (IA): Organization, Labeling & Navigation
+## Information Architecture (IA), Card Sorting & Atomic Design
 
-> **Information Architecture (Rosenfeld, Morville & Arango — *The "Polar Bear Book"*):** The structural design of shared information environments to maximize **findability** and **understandability**.
+> **Structure Before Pixels:** Never let backend database schemas dictate your UI menu hierarchy—validate mental models via **Card Sorting & Tree Testing**, and scale UI via **Brad Frost's Atomic Design**.
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 1. The 4 Core Systems of Information Architecture
-- **1. Organization Systems (How we categorize)**:
-  - **LATCH Principle (Wurman)**: Information can only be organized by **L**ocation, **A**lphabet, **T**ime, **C**ategory, or **H**ierarchy (Magnitude).
-  - **Structural Topologies**: **Hierarchy (Tree)**, **Sequential (Linear Wizard)**, **Matrix (Multi-faceted Filter)**, and **Organic (Hypertext Graph)**.
-- **2. Labeling Systems (How we name things)**:
-  - Using user-centric vocabulary (`"Track My Order"`) instead of internal DB table names (`"Query Dispatch_Log_V2"`).
+### 1. IA Systems, Card Sorting & Tree Testing
+- **4 IA Systems (Rosenfeld & Morville)**:
+  - **Organization (LATCH)**: **L**ocation, **A**lphabet, **T**ime, **C**ategory, **H**ierarchy.
+  - **Labeling, Navigation (`Global / Local / Breadcrumb`) & Search**.
+- **Empirical IA Validation**:
+  1. **Card Sorting (Generative — Bottom-Up)**: `15–20` users group feature cards into piles (**Open Sort** invents category labels; **Closed Sort** tests fixed buckets).
+  2. **Tree Testing (Evaluative — Reverse Card Sort)**: Tests a plain-text menu tree for **Findability Success (%)** and **First-Click Directness (%)** (`87%` win if 1st click is right vs. `46%` if wrong!).
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 2. Navigation & Search Systems
-- **3. Navigation Systems (How users move through space)**:
-  - **Global Navigation**: Persistent top/bottom bar present across the entire app (`Home | Search | Orders | Account`).
-  - **Local Navigation**: Sub-navigation within a specific category (e.g., Restaurant Menu tabs: `Popular | Mains | Drinks`).
-  - **Contextual & Breadcrumb Navigation**: `"Where am I?"* trail (`Home > Taiwanese > Din Tai Fung > XiaoLongBao`) + inline related links.
-- **4. Search Systems**:
-  - Autocomplete, typo tolerance, and faceted filtering when repositories grow too large to browse.
+### 2. Brad Frost's Atomic Design System (2013)
+- **Single Source of Truth (`Figma ↔ React / iOS / Android`)**:
+  - **0. Design Tokens**: Semantic JSON variables (`--color-primary`, `--space-md`) enforcing **Dark Mode & WCAG contrast**.
+  - **1. Atoms**: Indivisible primitives (`<Button>`, `<Input>`, `<Icon>`).
+  - **2. Molecules**: Simple functional groups (`<PromoCodeBox>`).
+  - **3. Organisms**: Self-contained UI sections (`<RestaurantCard>`).
+  - **4. Templates**: Content-agnostic page layout grids.
+  - **5. Pages**: Real dynamic payloads testing edge cases (`80-char` dish names).
 
 </div>
 </div>
 
 <!--
-What is **Information Architecture (IA)**? Coined by Richard Saul Wurman and formalized by Louis Rosenfeld and Peter Morville in *Information Architecture for the World Wide Web*, IA is the structural blueprint of how information is categorized, labeled, and navigated.
+Let's examine how we structure and scale an application's interface: **Information Architecture (IA)** on the left, and **Brad Frost's Atomic Design System** on the right.
 
-Look at the left card:
-1. **Organization Systems**: Richard Saul Wurman's famous **LATCH** principle states that all human knowledge is organized along five axes: **L**ocation (nearby restaurants on a map), **A**lphabet (A-Z directory), **T**ime (chronological order history), **C**ategory (Cuisine type: Italian, Thai, Vegan), or **H**ierarchy/Magnitude (Price low-to-high or Star rating).
-2. **Labeling Systems**: Every menu label is a promise to the user. Labels must use the user's natural mental-model vocabulary, never internal database schema names.
+In the left card:
+1. Richard Saul Wurman's **LATCH** principle shows that information can be organized by Location, Alphabet, Time, Category, or Hierarchy.
+2. Before drawing a single screen, we validate our taxonomy empirically using **Card Sorting** (where users group feature cards into mental-model piles) followed by **Tree Testing** (where users navigate a plain-text accordion menu tree to measure First-Click Accuracy and Findability).
 
-Look at the right card:
-3. **Navigation Systems** answer the three fundamental spatial questions every user asks on every screen (Steve Krug): *"Where am I?"*, *"Where have I been?"*, and *"Where can I go next?"* through Global, Local, and Breadcrumb navigation.
-4. **Search Systems** complement browsing with typo-tolerant query retrieval and multi-attribute faceted filters.
+In the right card:
+Once we begin building UI components, **Brad Frost's Atomic Design** structures our frontend codebase from **Design Tokens** and primitive **Atoms** (`<Button>`) up to **Molecules**, **Organisms**, **Templates**, and **Pages**—guaranteeing 100% consistency (Nielsen's Heuristic #4) and built-in WCAG accessibility across every team! Let's inspect the visual architecture diagram on the next slide.
 
-To summarize this slide, remember this key takeaway: Information Architecture combines Organization, Labeling, Navigation, and Search systems so users always know where they are and how to find what they need.
+To summarize this slide, remember this key takeaway: Card Sorting and Tree Testing validate menu findability empirically, while Atomic Design scales consistent UI components from Tokens and Atoms to Pages.
 -->
 ---
-## Empirical IA Validation: Card Sorting & Tree Testing
+<!-- _class: title-image-slide -->
 
-> **Testing Navigation Before Drawing Screens:** Never let backend database schemas dictate your UI menu hierarchy—validate user mental models empirically with **Card Sorting** and **Tree Testing**!
+## Conceptual Diagram: Card Sorting, Tree Testing & Atomic Design
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. Card Sorting (Generative — Building the Taxonomy)
-- **How It Works**:
-  - Write 30–60 content items or app features on index cards (or digital tools like OptimalSort). Ask `15–20` users to group them into piles that make sense to them.
-- **Two Variants**:
-  - **Open Card Sort**: Users create their own groupings AND invent their own **category names** (*discovers how users naturally classify and label concepts*).
-  - **Closed Card Sort**: Users sort cards into **pre-defined top-level categories** (*tests whether existing menu labels are unambiguous*).
-- **Analysis**: **Dendrograms** & **Similarity Matrices** reveal consensus clusters vs. orphan items.
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 2. Tree Testing (Evaluative — "Reverse Card Sorting")
-- **How It Works**:
-  - Strip away all visual styling, layout, and graphics—present **only the pure text menu hierarchy (the "Tree")**.
-  - Give users realistic findability tasks: *"Where would you go to request a refund for a missing drink?"*
-- **Quantitative IA Metrics**:
-  1. **Success Rate (%)**: Did they reach the correct leaf node?
-  2. **Directness (%)**: Did they navigate straight there on the **first path without backtracking** (`First-Click Accuracy`)?
-  3. **Time Spent**: Seconds required to locate the item.
-
-</div>
+<div class="image-wrapper">
+  <img src="../../img/ch06/concepts/ia_card_sorting_atomic_design.svg" alt="Card Sorting, Tree Testing and Brad Frost's Atomic Design System" />
 </div>
 
 <!--
-How do we know whether our proposed menu structure matches the User's Mental Model *before* we spend weeks designing screens? UX engineers use two complementary empirical methods: **Card Sorting** and **Tree Testing**.
+Examine this dual conceptual diagram illustrating Empirical IA Validation on the left and Brad Frost's Atomic Design System on the right!
 
-Look at the left card: **Card Sorting** is a generative method used to create or restructure a taxonomy:
-You give participants 30 to 60 cards representing specific features (e.g., `"Change Credit Card"`, `"Download Tax Invoice"`, `"Report Cold Food"`, `"Tip Rider"`).
-In an **Open Card Sort**, users group the cards however they think best and write their own category titles—revealing their natural mental taxonomy!
-In a **Closed Card Sort**, you give them fixed top-level buckets (`Account`, `Orders`, `Help`, `Wallet`) and measure whether users agree on which bucket each feature belongs in.
+In the left panel:
+- **Step A (Card Sorting)** is generative and bottom-up: `15–20` users sort feature cards like `"Tip Courier"`, `"Tax Invoice"`, and `"Missing Drink"` into natural mental-model piles (`"My Orders"` vs. `"Billing"`).
+- **Step B (Tree Testing)** is evaluative and top-down: we strip away all visual graphics and ask users to locate `"Missing Item"` inside a plain-text menu tree, measuring **Success Rate (%)** and **Directness (First-Click Accuracy)**. Notice the empirical rule: when a user's first click is right, `87%` succeed; when their first click is wrong, success drops to `46%`!
 
-Look at the right card: **Tree Testing** (often called *Reverse Card Sorting*) evaluates the resulting hierarchy:
-You show users a plain-text accordion tree of your menu labels and ask: *"Find where to cancel your monthly subscription."*
-Research shows that **First-Click Testing** is highly predictive: if a user's very first menu click is correct, their probability of completing the task is **87%**; if their first click is wrong, task success plummets to **46%**!
+In the right panel:
+- Trace the 5-level **Atomic Design Hierarchy** resting on **Design Tokens**: **1. Atoms** (`<Input>`, `<Button>`) combine into **2. Molecules** (`<PromoCodeBox>`), which assemble into **3. Organisms** (`<RestaurantCard>`), **4. Templates** (page wireframe grids), and **5. Pages** (live data instances verified in Storybook).
 
-To summarize this slide, remember this key takeaway: Open/Closed Card Sorting discovers how users naturally group and label concepts, while Tree Testing validates findability and first-click accuracy in the resulting hierarchy.
+To summarize this slide, remember this key takeaway: Card Sorting and Tree Testing prevent developer-centric navigation trees, while Atomic Design enforces modular component reuse across design and code.
 -->
 ---
 ## The Prototyping Fidelity Spectrum: Sketch → Wireframe → Prototype
 
-> **Bill Buxton's Dual Mandate (*Sketching User Experiences*):** Early low-fidelity sketches focus on **"Getting the Right Design"** (exploring alternatives cheaply); late high-fidelity prototypes focus on **"Getting the Design Right"** (refining micro-interactions).
-
-| Fidelity Tier | Visual & Interactive Characteristics | Primary Engineering Purpose & Cost to Change |
-| :--- | :--- | :--- |
-| **1. Low-Fidelity (Lo-Fi)**<br>*Paper Sketches & Balsamiq* | Hand-drawn boxes, rough lines, zero color/fonts; static or wizard-of-oz paper flipping. | **Divergent Ideation (`Cost: Minutes`)**: Explore 5 radically different workflows in 30 mins. Encourages honest user critique (*nobody hesitates to criticize a pencil sketch!*). |
-| **2. Mid-Fidelity (Mid-Fi)**<br>*Grayscale Wireframes* | Strict grid layout, real hierarchy & copy labels, grayscale boxes (`[Image]`), no brand colors. | **Skeleton & IA Alignment (`Cost: Hours`)**: Lock down screen density, Gestalt grouping, content priority, and edge-case states (`Empty`, `Loading`, `Error`). |
-| **3. High-Fidelity (Hi-Fi)**<br>*Interactive Figma / Code Prototype* | Pixel-accurate UI tokens, real food photos, clickable state transitions, and micro-animations. | **Usability Testing & Dev Handoff (`Cost: Days`)**: Validate realistic task flows, visual contrast, and exact component specs prior to sprint implementation. |
-
-<!--
-Once our Information Architecture is validated, we move to Garrett's Skeleton and Surface planes through **Prototyping**. Examine the three tiers of the **Prototyping Fidelity Spectrum** in this table:
-
-1. **Low-Fidelity (Lo-Fi) Paper Sketches**: Why do senior UX architects still start with pen and paper or rough Balsamiq sketches? Two reasons:
-   - First, **speed and non-attachment (Sunk-Cost Immunity)**: If you spend 3 days crafting a pixel-perfect Figma screen, you fall in love with it and resist changing it when it fails usability testing. If you draw three 5-minute sketches, you happily throw away two!
-   - Second, **honest participant feedback**: When users see a polished high-fidelity screen, they assume the app is already finished and only comment on colors or fonts. When they see a rough sketch, they feel empowered to critique the fundamental workflow!
-2. **Mid-Fidelity (Mid-Fi) Grayscale Wireframes**: Focus strictly on layout hierarchy, real text labels (avoiding fake `"Lorem ipsum"` wherever possible!), and mapping out the **4 UI States** of every screen: `Ideal State`, `Empty State`, `Loading State`, and `Error State`.
-3. **High-Fidelity (Hi-Fi) Interactive Prototypes**: Clickable Figma prototypes used for summative usability testing and exact developer handoff.
-
-To summarize this slide, remember this key takeaway: Match prototyping fidelity to your engineering stage—use low-fidelity sketches to explore alternative concepts cheaply, and high-fidelity prototypes to validate detailed interactions.
--->
----
-## Design Systems, Atomic Design & UI Engineering Consistency
-
-> **Bridging UX Design & Frontend Architecture (Brad Frost, 2013):** A **Design System** is not a static PDF style guide; it is a **versioned, single-source-of-truth component library** shared between Figma and production code (React/Vue/iOS/Android).
+> **Bill Buxton's Dual Mandate (*Sketching User Experiences*):** Early low-fidelity sketches focus on **"Getting the Right Design"** (exploring alternatives cheaply); late high-fidelity prototypes focus on **"Getting the Design Right"**.
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 1. Brad Frost's 5-Level Atomic Design Hierarchy
-1. **Atoms (Primitives)**: Indivisible UI building blocks—`<Button>`, `<Input>`, `<Icon>`, `<Badge>`, plus **Design Tokens** (`--color-primary-600`, `--space-4`).
-2. **Molecules (Simple Compounds)**: A small functional unit combining 2–3 atoms—e.g., a **`<SearchBar>`** (`<Label>` + `<Input>` + `<Button>`).
-3. **Organisms (Complex Sections)**: Self-contained interface regions—e.g., **`<RestaurantCard>`** or **`<GlobalNavbar>`**.
-4. **Templates (Page Skeletons)**: Content-agnostic layout grids assembling organisms into a page structure.
-5. **Pages (Concrete Instances)**: Templates populated with real runtime data (`"Din Tai Fung Menu"`), used to test edge cases (e.g., 80-character dish names!).
+### 1. Low & Mid-Fidelity Wireframes (`Cost: Minutes/Hours`)
+<img src="../../img/ux/proto_wireframe_concept.jpg" alt="Low and Mid-Fidelity Wireframe Sketching" style="max-height: 210px; margin: 4px auto 8px auto; display: block;" />
+
+- **Purpose**: Divergent exploration, IA layout, and locking down the **4 Mandatory UI States** (`Empty`, `Loading`, `Ideal`, `Error`).
+- **Sunk-Cost Immunity**: Nobody hesitates to critique or discard a 5-minute grayscale sketch!
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 2. Why Software Engineers Love Design Systems
-- **1. Enforces Nielsen's Heuristic #4 (Consistency)**:
-  - Guarantees every modal, toast, and primary button behaves identically across 50 microservices and frontend squads.
-- **2. Design Tokens as the Contract (`JSON → CSS/Swift/Kotlin`)**:
-  - Semantic tokens (`color.bg.danger.subtle`, `spacing.md = 16px`) enable instant **Dark Mode** switching and WCAG contrast compliance from a single JSON source!
-- **3. Built-In Accessibility (a11y Once, Everywhere)**:
-  - Baking keyboard `Tab` focus traps and `aria-*` attributes into the base `<DialogAtom>` automatically makes every modal in the enterprise accessible!
+### 2. High-Fidelity Interactive Prototypes (`Cost: Days`)
+<img src="../../img/ux/proto_figma_concept.jpg" alt="High-Fidelity Interactive Figma Prototyping" style="max-height: 210px; margin: 4px auto 8px auto; display: block;" />
+
+- **Purpose**: Realistic clickable Figma flows, Design Token contrast verification, summative usability testing, and exact developer handoff.
+- **Risk if Used Too Early**: Premature pixel-polishing locks teams into a flawed workflow!
 
 </div>
 </div>
 
 <!--
-How do modern software engineering organizations ensure that 40 frontend developers and 15 UX designers build a unified, consistent interface without reinventing the `<Button>` 40 times? Through **Design Systems** (such as Google Material 3, Apple Human Interface Guidelines, IBM Carbon, or Shopify Polaris) structured via **Brad Frost's Atomic Design (2013)**.
+Compare the two ends of the **Prototyping Fidelity Spectrum** illustrated on this slide:
 
-Look at the left card:Notice how **Atomic Design** mirrors object-oriented composition in software engineering:
-1. **Atoms** are the foundational HTML/UI primitives (`<Button>`, `<Input>`, `<Avatar>`) governed by **Design Tokens** (variables for color, typography, spacing, and elevation).
-2. **Molecules** combine a few atoms into a single-purpose widget (like a `<PromoCodeField>` combining an input box and an `"Apply"` button).
-3. **Organisms** combine molecules and atoms into reusable domain sections (like a `<CheckoutOrderSummary>` card).
-4. **Templates** define the structural page wireframe grid.
-5. **Pages** instantiate templates with real dynamic payloads to stress-test layout wrapping and truncation.
+In the left card (**Low & Mid-Fidelity Wireframes**):
+Why do experienced UX engineers always begin with paper sketches or grayscale wireframes?
+First, **Sunk-Cost Immunity**: you can sketch 4 radically different checkout flows in 20 minutes and throw away 3 without regret.
+Second, **Honest User Feedback**: when test participants see a rough grayscale wireframe, they critique the fundamental workflow; when they see a glossy, pixel-perfect screen, they hold back and only comment on colors!
+Third, Mid-Fi wireframes force engineers to design all **4 Mandatory UI States**: `Empty State`, `Loading State`, `Ideal State`, and `Error State`.
 
-Look at the right card: By encoding **Design Tokens** and **WCAG Accessibility** directly into the shared Atomic component library (documented in **Storybook**), teams eliminate UI drift, support Dark Mode effortlessly, and boost frontend velocity by 3–5x!
+In the right card (**High-Fidelity Interactive Prototypes**):
+Once the workflow is validated, high-fidelity Figma prototypes apply real Design Tokens, food photography, and interactive transitions for realistic usability testing and developer handoff.
 
-To summarize this slide, remember this key takeaway: Atomic Design Systems unite UX designers and frontend engineers around shared Design Tokens and reusable component hierarchies from Atoms to Pages.
+To summarize this slide, remember this key takeaway: Use low- and mid-fidelity wireframes to explore workflows and all 4 UI states cheaply, then advance to high-fidelity prototypes for interaction validation.
 -->
 ---
 ### Peer Discussion 6.5: IA & Wireframe States for Group Ordering
@@ -1229,10 +1120,10 @@ To summarize this slide, remember this key takeaway: Atomic Design Systems unite
   - **1. Information Architecture & Labeling:**
     - Where in the app's hierarchy should `"Start Group Order"` live so users find it on their **first click** (Restaurant Menu header vs. Account Settings vs. Checkout Screen)?
   - **2. Mid-Fidelity Wireframe & The 4 UI States:**
-    - Sketch or specify the **Host's Shared Cart Wireframe**, explicitly addressing the **4 Mandatory UI States**:
+    - Specify the **Host's Shared Cart Wireframe**, explicitly addressing the **4 Mandatory UI States**:
       - **Empty State**: Host just created the link; 0 colleagues have joined yet. What signifiers/actions are shown?
       - **Loading / Active State**: 3 colleagues have added items; 1 colleague is still *"Choosing..."*.
-      - **Error / Edge State**: A colleague adds a $32 item exceeding the $25 cap, OR abandons their phone without clicking *"I'm Ready"*. How does the UI prevent the Host from getting stuck?
+      - **Error / Edge State**: A colleague adds a $32 item exceeding the $25 cap, OR walks away without clicking *"I'm Ready"*. How does the UI prevent the Host from getting stuck?
 
   </div>
   <div class="discussion-logo">
@@ -1245,8 +1136,8 @@ Let's take 4 minutes for Peer Discussion 6.5!
 
 Imagine you are the UX Architect pairing with a Frontend Tech Lead to design the **Group Order (Shared Cart)** feature in our Food Delivery App.
 Discuss two crucial architectural questions with your partner:
-First, **Information Architecture & First-Click Findability**: If a user opens the app wanting to order lunch with 4 coworkers from a specific restaurant, where does their Mental Model expect to find the `"Group Order"` button? If you hide it inside `Account > Settings > Experimental Features`, what will happen in a Tree Test?
-Second, **Wireframing the 4 UI States**: Novice designers only draw the "Happy Path" (Ideal State) where all 4 coworkers instantly pick $20 meals. In real life, what should the wireframe show in the **Empty State** (0 friends joined), the **Partial Progress State** (3 ready, 1 still browsing), and the **Edge/Error State** (one coworker walked away from their desk—how can the Host proceed to checkout without losing everyone else's food)?
+First, **Information Architecture & First-Click Findability**: If a user opens the app wanting to order lunch with 4 coworkers from a specific restaurant, where does their Mental Model expect to find the `"[+ Group Order]"` button?
+Second, **Wireframing the 4 UI States**: Novice designers only draw the "Happy Path" (Ideal State). In real life, what should the wireframe show in the **Empty State** (0 friends joined), the **Partial Progress State** (3 ready, 1 still browsing), and the **Edge/Error State** (one coworker walked away from their desk—how can the Host proceed to checkout without losing everyone else's food)?
 
 We will review the complete reference architecture in Appendix B!
 
@@ -1296,16 +1187,53 @@ To summarize this slide, remember this key takeaway: Tree Testing isolates the p
 <!--
 Welcome to Section 6.6: Analytical Evaluation and Jakob Nielsen's 10 Usability Heuristics.
 
-In software engineering, before we run expensive integration tests in production, we perform **Static Code Analysis and Peer Code Reviews** to catch bugs early. In UX Engineering, the exact equivalent of a static code review is **Analytical Usability Inspection**—led by **Heuristic Evaluation** (Jakob Nielsen & Rolf Molich, 1990; refined by Nielsen in 1994) and **Cognitive Walkthroughs**.
+In software engineering, before we run expensive integration tests in production, we perform **Static Code Analysis and Peer Code Reviews** to catch bugs early. In UX Engineering, the exact equivalent of a static code review is **Analytical Usability Inspection**—led by **Heuristic Evaluation** and **Cognitive Walkthroughs**.
 
-In this section, we master the formal Heuristic Evaluation protocol, Nielsen's 0–4 Severity Scale, all 10 Usability Heuristics with concrete software engineering examples, and the Cognitive Walkthrough technique.
+In this section, we profile usability pioneer Jakob Nielsen, master the formal Heuristic Evaluation protocol, inspect all 10 Usability Heuristics with rich visual examples, and compare Heuristic Evaluation against Cognitive Walkthroughs.
 
 To summarize this slide, remember this key takeaway: Heuristic Evaluation is the UX equivalent of static code inspection, systematically catching interface defects against 10 time-tested design principles.
 -->
 ---
+## Pioneers of Usability Engineering: Jakob Nielsen
+
+<div class="content-columns">
+<div class="content-text">
+
+- **Role & Distinctions:**
+  - Co-founder, **Nielsen Norman Group (NN/g)** (with Don Norman); Former Sun Microsystems Distinguished Engineer; Ph.D. in HCI, Technical University of Denmark; **SIGCHI Lifetime Achievement Award**.
+- **Champion of *"Discount Usability Engineering"* (1989–1994):**
+  - Proved that software teams do not need million-dollar biometric labs to build usable software—combining **Simplified Thinking Aloud (`N = 5` users)**, **Paper Prototyping**, and **Heuristic Evaluation** delivers massive ROI rapidly.
+- **Core Contributions to Software Engineering:**
+  - Formulated the **10 Usability Heuristics (1994)**, **5 Quality Components of Usability**, **Jakob's Law**, **3 Response-Time Limits (`0.1s/1s/10s`)**, and **F-Pattern Eye-Tracking**.
+
+</div>
+<div class="content-figure">
+
+<div class="name-card">
+<img src="../../img/ch06/portraits/jakob_nielsen.jpg" alt="Jakob Nielsen" />
+<div class="name-card-caption">
+<span class="name-card-name">Jakob Nielsen</span>
+<span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Jakob_Nielsen_(usability_consultant)" target="_blank">Sun Microsystems / NN/g Co-Founder</a></span>
+</div>
+</div>
+
+</div>
+</div>
+
+<!--
+Meet the "King of Usability": Dr. Jakob Nielsen, co-founder of the Nielsen Norman Group (NN/g) alongside Don Norman.
+
+In the late 1980s, many corporations refused to conduct usability testing because they believed it required 6-month studies with 100 participants in expensive one-way-mirror laboratories. Jakob Nielsen revolutionized the software industry by introducing **Discount Usability Engineering** (*Usability Engineering*, 1993):
+He proved mathematically and empirically that 3 to 5 independent evaluators conducting a **Heuristic Evaluation**, paired with iterative rounds of **5-user Think-Aloud tests** on rapid prototypes, uncover ~80–85% of usability problems in days rather than months!
+
+His **10 Usability Heuristics (1994)** remain the universal checklist taught in every computer science and UX engineering curriculum worldwide.
+
+To summarize this slide, remember this key takeaway: Jakob Nielsen democratized usability engineering through his 10 Heuristics, the N=5 discovery model, and Discount Usability methods.
+-->
+---
 ## Heuristic Evaluation: Protocol, Evaluators & Severity Rating
 
-> **Why Multiple Evaluators? (Nielsen & Landauer, 1993):** A single evaluator finds only **`~35%`** of usability problems; aggregating **3 to 5 independent evaluators** uncovers **`75%–80%`** of issues at minimal cost!
+> **Why Multiple Independent Evaluators? (Nielsen & Landauer, 1993):** A single evaluator finds only **`~35%`** of usability problems; aggregating **3 to 5 independent evaluators** uncovers **`75%–80%`** of issues!
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -1313,7 +1241,7 @@ To summarize this slide, remember this key takeaway: Heuristic Evaluation is the
 ### 1. The 4-Step Heuristic Evaluation Protocol
 1. **Briefing & Task Scenarios**: Evaluators receive the target Persona, domain context, and core task flows to inspect.
 2. **Independent Inspection (Crucial Rule!)**:
-   - Each of the **3–5 evaluators** inspects the interface **alone** (two passes: Pass 1 for overall flow, Pass 2 auditing each screen against the 10 Heuristics) to prevent groupthink bias!
+   - Each of the **3–5 evaluators** inspects the interface **alone** (Pass 1 for overall flow, Pass 2 auditing each screen against the 10 Heuristics) to prevent groupthink bias!
 3. **Aggregation & Debriefing**: Combine duplicate findings into a master defect log, citing the specific **Heuristic (`#1–#10`)** violated.
 4. **Severity Rating & Action Plan**: Score each defect (`0–4`) to prioritize engineering sprint fixes.
 
@@ -1326,45 +1254,53 @@ To summarize this slide, remember this key takeaway: Heuristic Evaluation is the
   - **`1` — Cosmetic Problem**: Fix only if extra time remains in the sprint (e.g., `2px` icon misalignment).
   - **`2` — Minor Usability Problem**: Low priority; causes brief hesitation but users recover quickly.
   - **`3` — Major Usability Problem**: High priority; causes significant confusion, delay, or repeated errors.
-  - **`4` — Usability Catastrophe**: **Blocker!** Must be fixed before release (causes data loss, double-charging, or task abandonment).
+  - **`4` — Usability Catastrophe**: **Release Blocker (`P0`)!** Must be fixed before launch (causes data loss, double-charging, or task abandonment).
 
 </div>
 </div>
 
 <!--
-How is a formal **Heuristic Evaluation** conducted in industry?
+How is a formal **Heuristic Evaluation** conducted in software engineering teams?
 
-Look at the left card: A common mistake students make is sitting 5 people in a room together to critique a screen at the same time. In a real Heuristic Evaluation, **each evaluator must inspect the UI independently first**! Why? Because if an outspoken senior developer speaks first, everyone else anchors on their opinion (**Groupthink**). When 3 to 5 evaluators inspect the interface independently and then merge their lists, they catch 75% to 80% of all usability defects!
+Look at the left card: A critical procedural rule is that **each of the 3 to 5 evaluators must inspect the UI independently first** before meeting to compare notes! Why? Because if an outspoken lead developer speaks first in a group session, everyone else anchors on their opinion (**Groupthink**). Independent inspection ensures diverse coverage, catching 75% to 80% of all usability defects.
 
-Look at the right card: Once defects are logged, how do we decide what the engineering team must fix before launch? Jakob Nielsen defines a **0-to-4 Severity Scale** based on three factors—**Frequency** (how many users hit it?), **Impact** (how badly does it block them?), and **Persistence** (do they hit it every single time, or only once?):
-A **Level 4 Usability Catastrophe** is a release blocker (just like a `P0` severity bug in Jira!), whereas a **Level 1 Cosmetic Problem** is fixed only when spare bandwidth exists.
+Look at the right card: Once defects are logged, Jakob Nielsen's **0-to-4 Severity Scale** prioritizes them using three factors—**Frequency** (how common?), **Impact** (how hard to overcome?), and **Persistence** (one-time annoyance vs. repeated trap?):
+A **Level 4 Usability Catastrophe** is a `P0` release blocker, whereas a **Level 1 Cosmetic Problem** is deferred to polish sprints.
 
 To summarize this slide, remember this key takeaway: Effective Heuristic Evaluation requires 3 to 5 independent inspections followed by collective severity ranking (0 to 4) to prioritize engineering fixes.
 -->
 ---
 ## Nielsen's Heuristics #1 – #3: Status, Real World & User Control
 
-> **Cluster 1 (Transparency & Agency):** Keep the user informed, speak their language, and always provide an **emergency exit**.
+<div class="split55">
+<div class="left">
 
-| Heuristic (`#1 – #3`) | Core Principle & Cognitive Rationale | Software UI Engineering Examples (`[Good]` vs. `[Violation]`) |
-| :--- | :--- | :--- |
-| **#1 Visibility of System Status** | Always keep users informed about **what is going on**, through appropriate feedback within a reasonable time (`100ms / 1s / 10s`). | **[Good]**: Live Food Delivery steps (`Order Confirmed → Kitchen Preparing → Rider 3 mins away`) + upload `%` bar.<br>**[Violation]**: Clicking `"Pay"` shows a frozen button for 9 seconds. |
-| **#2 Match Between System & Real World** | Speak the **users' language** (words, phrases, familiar concepts) rather than system-oriented engineering terms; follow real-world conventions. | **[Good]**: Checkout uses a familiar receipt layout and says *"Card declined by bank"*.<br>**[Violation]**: Throwing `"Error 0x80040E14: RPC Payment Shard NullPointer"`. |
-| **#3 User Control & Freedom** | Users often choose functions by mistake and need a clearly marked **"Emergency Exit"** to leave the unwanted state without an extended dialogue. | **[Good]**: Gmail's `"Message Sent — [Undo] (5s)"` toast; Food Delivery `"Cancel Order (Free within 60s)"` button.<br>**[Violation]**: Accidentally tapping an item immediately charges the card with no cancel/back option. |
+* **#1 Visibility of System Status:**
+  - Keep users informed of current state within reasonable latency (`100ms` button press, `1s` transition, `10s` `%` progress bar + live order steps).
+* **#2 Match Between System & Real World:**
+  - Speak the **user's language** and follow real-world spatial mappings (see the classic **Stove Burner Mapping** on the right!)—never leak SQL/RPC codes.
+* **#3 User Control & Freedom:**
+  - Always provide an **"Emergency Exit"** (`Undo`, `Redo`, `Cancel Order within 60s`, clear modal `×`) so users never feel trapped by an accidental click.
+
+</div>
+<div class="right">
+  <img src="../../img/ux/ns02_mapping_gas_stove.png" alt="Heuristic 2 Match Between System and Real World: Stove Burner Spatial Mapping" />
+</div>
+</div>
 
 <!--
-Let's systematically master all 10 of Jakob Nielsen's Usability Heuristics, grouped into three logical engineering clusters. Here in Cluster 1 (Heuristics #1, #2, and #3), the focus is on **System Transparency and User Agency**:
+Let's examine Cluster 1 of Jakob Nielsen's 10 Usability Heuristics: **Heuristics #1, #2, and #3 (Transparency, Real-World Match, and User Agency)**:
 
-1. **Heuristic #1 — Visibility of System Status**: Directly narrows Norman's **Gulf of Evaluation**. Whether it is a battery icon, an unread badge, a step indicator (`Step 2 of 3`), or a live courier map, the user should never have to guess what state the system is in.
-2. **Heuristic #2 — Match Between System and the Real World**: Directly enforces aligning the **System Image** with the **User's Mental Model**. Never leak backend table names, HTTP status codes (`502 Bad Gateway`), or enum keys (`STATUS_PENDING_ACK_04`) onto a customer screen!
-3. **Heuristic #3 — User Control and Freedom**: Humans explore interfaces by trial and error, and fingers slip on mobile screens. Always provide an immediate **"Emergency Exit"**—`Undo`, `Redo`, `Cancel`, and a clear `×` close button on modals—so users feel safe exploring your software without fear of irreversible traps!
+1. **Heuristic #1 — Visibility of System Status**: Directly narrows Norman's Gulf of Evaluation. Whether it is a step progress bar (`Order Confirmed → Preparing → On the Way`) or an upload percentage indicator, never leave the user guessing whether the app is working or frozen!
+2. **Heuristic #2 — Match Between System and the Real World**: Speak the user's natural language and honor real-world physical mappings. Look at the classic **Gas Stove Burner diagram on the right**: when four burners are arranged in a 2×2 square, but the four control knobs are arranged in a flat horizontal row, users constantly turn on the wrong burner! Staggering or arranging the knobs to match the 2×2 burner geometry eliminates the need for labels!
+3. **Heuristic #3 — User Control and Freedom**: Always provide a safe, visible **Undo / Cancel** emergency exit. Let's inspect visual examples of Heuristic #1 on the next slide!
 
-To summarize this slide, remember this key takeaway: Heuristics #1–#3 ensure users always know the current system state, understand the domain vocabulary, and possess a safe Undo/Cancel emergency exit.
+To summarize this slide, remember this key takeaway: Heuristics #1–#3 ensure users always see the current system state, benefit from natural real-world mappings, and possess a safe Undo/Cancel emergency exit.
 -->
 ---
 <!-- _class: title-image-slide -->
 
-## Visual Examples: Visibility of System Status & Real-World Mapping
+## Visual Examples: Heuristic #1 Visibility of System Status
 
 <div class="image-wrapper">
   <img src="../../img/ux/ns01_status_feedback_examples.png" alt="Nielsen Heuristic 1 Visibility of System Status Examples" />
@@ -1376,7 +1312,7 @@ Examine these concrete visual examples of Heuristic #1 (**Visibility of System S
 Notice how different task durations require different visual status indicators:
 - For instantaneous actions (`< 100 ms`), a tactile button press state, toggle switch animation, or badge count update immediately confirms receipt.
 - For multi-second asynchronous operations (`1s–10s`), an indeterminate skeleton shimmer or spinner communicates that the request is actively processing.
-- For long or multi-stage workflows (`> 10s` or multi-minute physical fulfillment like Food Delivery or file uploads), a deterministic step progress bar (`Order Received → Preparing → On the Way → Delivered`) with estimated time remaining eliminates uncertainty and prevents repeat submissions!
+- For long or multi-stage workflows (`> 10s` or multi-minute physical fulfillment like Food Delivery or file uploads), a deterministic step progress bar (`Order Received → Preparing → On the Way → Delivered`) with estimated time remaining eliminates uncertainty and prevents duplicate submissions!
 
 To summarize this slide, remember this key takeaway: Matching status feedback granularity to operation duration keeps users informed and confident across every stage of execution.
 -->
@@ -1397,33 +1333,48 @@ Now let's examine Cluster 2: Heuristics #4, #5, #6, and #7, which govern **Cogni
 
 4. **Heuristic #4 — Consistency and Standards**: Encompasses both **Internal Consistency** (within your own product via an Atomic Design System) and **External Consistency** (following industry conventions per **Jakob's Law**).
 5. **Heuristic #5 — Error Prevention**: Don Norman divides human errors into two types:
-   - **Slips (Action Errors)**: The user has the *right intention*, but accidentally executes the wrong physical action (e.g., fat-fingering `"Delete"` next to `"Edit"`). We prevent Slips via Fitts's Law spacing, constraints, and confirmation dialogs for high-stakes actions.
-   - **Mistakes (Mental-Model Errors)**: The user forms the *wrong goal or plan* because they misunderstood the system state. We prevent Mistakes via clear previews, smart defaults, and contextual guardrails (like Gmail's forgotten-attachment detector!).
-6. **Heuristic #6 — Recognition Rather Than Recall**: Directly applies Cognitive Load Theory—keep options, recent searches, and context visible on screen!
-7. **Heuristic #7 — Flexibility and Efficiency of Use**: How do you satisfy both a first-time novice and a daily power user? Keep the default UI clean for novices, while embedding **Accelerators** (`Cmd+K`, swipe gestures, `"1-Click Reorder"`) for experts!
+   - **Slips (Action Errors)**: The user has the *right intention*, but accidentally executes the wrong physical action (e.g., fat-fingering `"Delete"` next to `"Edit"`).
+   - **Mistakes (Mental-Model Errors)**: The user forms the *wrong plan* because they misunderstood the system state. We prevent both via constraints, smart defaults, and high-stakes confirmation dialogs.
+6. **Heuristic #6 — Recognition Rather Than Recall**: Keep options, recent searches, and context visible on screen!
+7. **Heuristic #7 — Flexibility and Efficiency of Use**: Keep the default UI clean for novices, while embedding **Accelerators** (`Cmd+K`, swipe gestures, `"1-Click Reorder"`) for daily experts!
 
 To summarize this slide, remember this key takeaway: Heuristics #4–#7 reduce cognitive friction through consistency, proactive constraint-based error prevention, visible context, and expert accelerators.
 -->
 ---
-## Nielsen's Heuristics #8 – #10: Minimalism, Recovery & Help
+## Nielsen's Heuristics #8 – #10 & Visual Error Handling
 
-> **Cluster 3 (Signal-to-Noise & Graceful Recovery):** Every extra unit of irrelevant information competes with relevant units and **diminishes their relative visibility**.
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
 
-| Heuristic (`#8 – #10`) | Core Principle & Cognitive Rationale | Software UI Engineering Examples (`[Good]` vs. `[Violation]`) |
-| :--- | :--- | :--- |
-| **#8 Aesthetic & Minimalist Design** | Interfaces should **not contain irrelevant or rarely needed information**; maximize the **Signal-to-Noise Ratio** (Edward Tufte's *Data-Ink Ratio*). | **[Good]**: Restaurant card shows only Name, Photo, Rating (`4.8★`), ETA (`25 min`), and Delivery Fee.<br>**[Violation]**: Cluttering every menu card with 14 promotional badges, legal disclaimers, and full address strings. |
-| **#9 Help Users Recognize, Diagnose & Recover from Errors** | Error messages must be expressed in **plain language** (no error codes), precisely **indicate the problem**, and **constructively suggest a solution**. | **[Good]**: *"Card expired (08/25). Please update your expiration date or choose Apple Pay."*<br>**[Violation]**: A red banner saying simply `"Invalid Input (Code 422)"` without highlighting which field failed. |
-| **#10 Help & Documentation** | Even though it is best if the system can be used without documentation, provide **searchable, task-focused, concise contextual help**. | **[Good]**: Inline `[?]` tooltip explaining *"Service Fee covers packaging & insurance"* right at checkout.<br>**[Violation]**: Forcing users to download a 120-page PDF manual to learn how to split a bill. |
+### 1. Heuristics #8, #9 & #10 (Signal & Recovery)
+- **#8 Aesthetic & Minimalist Design (Signal-to-Noise)**:
+  - Remove irrelevant marketing clutter that competes with core task controls (Edward Tufte's *Data-Ink Ratio*).
+- **#9 Recognize, Diagnose & Recover from Errors**:
+  - **3 Rules of Error Messages**: *(a)* Plain human language (no SQL/hex codes), *(b)* Precise diagnosis, *(c)* **Constructive recovery link/button** without wiping user input!
+- **#10 Help & Documentation**:
+  - Provide concise, contextual inline tooltips (`[?]`) and interactive onboarding spotlights focused on user tasks.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. Visual Comparison: #5 Prevention vs. #9 Recovery
+<img src="../../img/ux/ns05_confirmation_dialogs.png" alt="Heuristic 5 Error Prevention Confirmation Dialogs" style="max-height: 165px; margin: 2px auto 6px auto; display: block;" />
+<img src="../../img/ux/ns09_error_404_recovery.png" alt="Heuristic 9 Constructive Error Recovery" style="max-height: 165px; margin: 2px auto 2px auto; display: block;" />
+
+</div>
+</div>
 
 <!--
-Now let's complete the 10 Heuristics with Cluster 3: Heuristics #8, #9, and #10!
+Now let's complete the 10 Heuristics with Cluster 3 (**Heuristics #8, #9, and #10**) on the left, paired with visual examples of Error Prevention (`#5`) and Error Recovery (`#9`) on the right!
 
-8. **Heuristic #8 — Aesthetic and Minimalist Design**: Note that "Minimalist" does **not** mean making everything blank white and hiding all labels! It means maximizing the **Signal-to-Noise Ratio**: every pixel on screen should directly support the user's current task. If 15 marketing banners and secondary metadata fields scream for attention on a checkout screen, the user misses the critical delivery address warning!
-9. **Heuristic #9 — Help Users Recognize, Diagnose, and Recover from Errors**: Whenever an error cannot be prevented by Heuristic #5, your error message must fulfill **3 mandatory engineering criteria**:
-   - **(a) Noticeable & Polite**: Clearly visible near the field (never blame or insult the user).
-   - **(b) Plain-Language Diagnosis**: Explain *what* went wrong in human terms (no raw stack traces or hex codes).
-   - **(c) Constructive Recovery Action**: Provide a direct button or instruction showing *how to fix it right now*!
-10. **Heuristic #10 — Help and Documentation**: Deliver help **in-context** (inline tooltips, empty-state coaching, interactive 3-step onboarding spotlights) centered on concrete user tasks.
+Look at the left card:
+8. **Heuristic #8 — Aesthetic and Minimalist Design**: Maximize the **Signal-to-Noise Ratio** so irrelevant badges and popups never drown out critical task controls.
+9. **Heuristic #9 — Help Users Recognize, Diagnose, and Recover from Errors**: Whenever an error occurs, never show a raw error code (`Error 422`) or wipe out the user's form! Explain what went wrong in plain language and provide a one-click constructive recovery path.
+10. **Heuristic #10 — Help and Documentation**: Deliver help right in context via inline `[?]` tooltips and empty-state guidance.
+
+Look at the two visual examples in the right card:
+- The top image illustrates **Heuristic #5 (Error Prevention)** for destructive actions—requiring specific confirmation (`"Delete 12 files"` rather than a generic `"OK"`) before irreversible data loss.
+- The bottom image illustrates **Heuristic #9 (Error Recovery)**—turning a dead-end `404` error into a helpful search bar and quick navigation links!
 
 To summarize this slide, remember this key takeaway: Heuristics #8–#10 keep interfaces focused on high-signal task information while providing actionable error recovery and contextual guidance.
 -->
@@ -1465,7 +1416,6 @@ At every single click or tap in the ideal task path, the engineering team asks *
 - **Q2 (Visibility)**: Is the button or control visible without hidden scrolling or hover traps?
 - **Q3 (Signifier Match)**: Does the button's label match the words in the user's head so they know *this* is the button to click?
 - **Q4 (Feedback)**: Once clicked, does the screen update clearly enough that the user knows they succeeded and moves to the next step?
-If the answer to any of `Q1–Q4` is *"No"*, you have pinpointed an exact learnability bug!
 
 To summarize this slide, remember this key takeaway: Cognitive Walkthroughs audit first-time task learnability by testing Goal Formation, Control Visibility, Label Association, and Feedback at every action step.
 -->
@@ -1492,7 +1442,7 @@ Let's check our mastery of Section 6.6 with Concept Check Question 5 (CCQ 5)!
 
 Analyze what went wrong in this registration form:
 First, instead of speaking the user's natural language (*"This email is already registered"*), the UI dumps a raw PostgreSQL database exception (`"SQLSTATE[23505]: Unique violation on key idx_users_email"`). Exposing internal database jargon directly violates **Heuristic #2: Match Between System and the Real World**!
-Second, when the error occurs, the UI wipes out all 12 fields the user just typed and offers zero constructive recovery path (such as preserving their input and offering a *"Log in instead"* or *"Reset password"* link). That directly violates **Heuristic #9: Help Users Recognize, Diagnose, and Recover from Errors** (as well as inline Error Prevention #5)!
+Second, when the error occurs, the UI wipes out all 12 fields the user just typed and offers zero constructive recovery path (such as preserving their input and offering a *"Log in instead"* or *"Reset password"* link). That directly violates **Heuristic #9: Help Users Recognize, Diagnose, and Recover from Errors**!
 
 Comparing the option pairs, Option B (`#2` and `#9`) is the exact match!
 
@@ -1512,142 +1462,144 @@ Welcome to Section 6.7: Empirical Usability Testing, Quantitative Metrics, and E
 
 Analytical inspections like Heuristic Evaluation and Cognitive Walkthroughs are powerful, but they are still performed by experts—not by real end users. Even the most seasoned UX architect cannot predict every surprising way real humans will interpret an interface in the wild.
 
-In this section, we transition from analytical inspection to **Empirical Evaluation with Real Users**: Moderated Think-Aloud Usability Testing, Jakob Nielsen's `N = 5` Poisson discovery model, quantitative benchmarking (Task Success, SUS, NASA-TLX, Google HEART, A/B Testing), and Ethical UX Engineering against **Dark Patterns**.
+In this section, we profile Nobel and Turing Laureate Herbert A. Simon, master the Think-Aloud Protocol, visualize Jakob Nielsen's `N = 5` Poisson discovery curve and John Brooke's `0–100` SUS scale, and examine Ethical UX Engineering against **Dark Patterns**.
 
 To summarize this slide, remember this key takeaway: Empirical usability testing validates software with real representative users, combining qualitative Think-Aloud insights with standardized quantitative metrics.
 -->
 ---
-## Formative vs. Summative Testing & The Think-Aloud Protocol
+## Pioneers of Cognitive Science & Think-Aloud: Herbert A. Simon
 
-> **Why Test with `N = 5` Users Per Iteration? (Nielsen & Landauer, 1993):** The proportion of usability problems discovered by `n` users follows **`P = 1 − (1 − L)`<sup>`n`</sup>** (where average problem discoverability `L ≈ 0.31`). Testing **5 users uncovers `~85%`** of usability flaws!
+<div class="content-columns">
+<div class="content-text">
+
+- **Role & Distinctions:**
+  - Professor of Computer Science & Psychology, **Carnegie Mellon University (CMU)**; recipient of both the **1975 ACM Turing Award** and the **1978 Nobel Prize in Economics**.
+- **Foundational Contributions to HCI & UX Engineering:**
+  - **Bounded Rationality & *"Satisficing"*:** Proved that humans do not exhaustively scan every menu option for the mathematical optimum; they pick the **first reasonable option that seems "good enough"** (*explaining why users scan and click impulsively!*).
+  - **The Attention Economy:** Formulated the law that information consumes human attention.
+  - **The Think-Aloud Protocol (*Protocol Analysis*, with K. Anders Ericsson, 1984):** Established the rigorous cognitive methodology of having subjects verbalize Working Memory thoughts during problem-solving—now the **#1 usability testing method worldwide**.
+
+</div>
+<div class="content-figure">
+
+<div class="name-card">
+<img src="../../img/ch06/portraits/herbert_simon.jpg" alt="Herbert A. Simon" />
+<div class="name-card-caption">
+<span class="name-card-name">Herbert A. Simon (1916–2001)</span>
+<span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Herbert_A._Simon" target="_blank">CMU / Nobel &amp; ACM Turing Laureate</a></span>
+</div>
+</div>
+
+</div>
+</div>
+
+<!--
+Meet one of the towering intellects of the 20th century: Professor Herbert A. Simon of Carnegie Mellon University—the only person in history to win both the **ACM Turing Award (1975)** and the **Nobel Prize in Economics (1978)**!
+
+Why is Herbert Simon so central to UX Engineering? Three reasons:
+First, Simon coined **Bounded Rationality** and **Satisficing** (a blend of *satisfy* and *suffice*). Engineers often assume users carefully read every word on a screen before clicking. Simon proved that because cognitive effort is costly, humans *satisfice*: as soon as they spot a link that vaguely resembles their goal, they click it! (Steve Krug made this the cornerstone of *Don't Make Me Think*.)
+Second, Simon identified the scarcity of human attention in an information-rich world.
+Third, together with K. Anders Ericsson in *Protocol Analysis: Verbal Reports as Data (1984)*, Simon formalized the **Think-Aloud Protocol**—showing how concurrent verbalization reveals the contents of short-term Working Memory during task execution.
+
+To summarize this slide, remember this key takeaway: Herbert A. Simon established Bounded Rationality (Satisficing), Attention Scarcity, and the scientific foundation of the Think-Aloud Protocol.
+-->
+---
+## Formative vs. Summative Testing, Think-Aloud & Quantitative Metrics
+
+> **Iterative Discovery (`N = 5`) + Psychometric Benchmarking (`SUS & HEART`):** Pair qualitative **Think-Aloud** observation during design with quantitative metrics at release.
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 1. Formative vs. Summative Usability Testing
-- **Formative Evaluation (*During Design — "Find & Fix"*)**:
-  - Conducted iteratively on **wireframes and prototypes** before code is locked.
-  - **Sample Size**: **5 users per iteration** (`3 rounds × 5 users = 15 users` catches far more bugs than `1 round × 15 users`!).
-  - **Focus**: Qualitative behavioral diagnosis (*Why did they get stuck?*).
-- **Summative Evaluation (*Post-Build — "Benchmark & Compare"*)**:
-  - Conducted on working builds or against competitors.
-  - **Sample Size**: **`20–30+` users** for tight confidence intervals on quantitative metrics (`Task Success %`, `Time-on-Task`, `SUS`).
+### 1. Formative Think-Aloud (`N = 5` Poisson Model)
+- **Formative (*"Find & Fix"* During Wireframing)**:
+  - **Poisson Law (Nielsen & Landauer, 1993)**: `P = 1 − (1 − L)`<sup>`n`</sup> (with `L ≈ 0.31`, **`n = 5` users uncovers `~85%`** of usability flaws!).
+  - Run **3 iterative rounds × 5 users** (`v1 → fix → v2 → fix → v3`) rather than 1 giant round of 15 users!
+- **3 Moderator Rules for Concurrent Think-Aloud**:
+  1. Reassure: *"We are testing the software, never you."*
+  2. Use **non-leading task scenarios** (never repeat the button's exact text label in your prompt!).
+  3. Watch **actions** over polite verbal compliments.
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 2. The Think-Aloud Protocol (Ericsson & Simon, 1984)
-- **How Concurrent Think-Aloud Works**:
-  - Ask participants to complete realistic scenario tasks while **continuously verbalizing their thoughts, expectations, and confusion out loud** (*"I'm looking for a way to split the bill... I'm clicking this icon because it looks like two people..."*).
-- **3 Strict Moderator Rules (Preventing Bias)**:
-  1. **Test the System, Never the User**: Explicitly reassure participants *"We are testing the app, not you; any confusion is the software's fault."*
-  2. **Never Lead the Witness**: Never ask *"Do you see the green button at the top?"* Ask open prompts: *"What are you thinking right now?"*
-  3. **Observe Actions Over Polite Compliments**: Users often say *"It's nice!"* out of politeness after failing a task for 4 minutes!
+### 2. Quantitative Metrics, SUS (`0–100`) & HEART
+- **Behavioral Task Metrics (Summative `N = 20–30+`)**:
+  - **Task Completion Rate (`%`)**, **Time-on-Task (`s`)**, **First-Click Accuracy (`%`)**, and **Lostness (`L > 0.5` = lost)**.
+- **Standardized Psychometric Scales**:
+  - **SEQ (Single Ease Question)**: `1–7` rating right after each task (benchmark `>= 5.5`).
+  - **SUS (System Usability Scale — John Brooke, 1986)**: 10 items scored **`0–100`** (percentile rank: **`68` is 50th percentile average**; **`>= 80.3` is Grade A** / Top 10%).
+- **Production Scale**: **A/B Testing** (with **Guardrail Metrics**) + **Google HEART** (`Happiness, Engagement, Adoption, Retention, Task Success`).
 
 </div>
 </div>
 
 <!--
-Let's examine the methodology of **Empirical Usability Testing**.
+Let's synthesize the complete methodology of **Empirical Usability Testing and Quantitative Benchmarking**:
 
-Look at the left card: First, distinguish **Formative Testing** from **Summative Testing**:
-- **Formative Usability Testing** happens *while* you are still designing wireframes and prototypes. Its goal is to find and fix flaws rapidly.
-Why did Jakob Nielsen and Thomas Landauer (1993) famously recommend testing **`N = 5` users per round**?
-Look at the Poisson discovery formula: `P = 1 - (1 - L)^n`, where `L ≈ 0.31` is the average probability that any single user encounters a given usability flaw.
-With `n = 1` user, you find `31%` of flaws. With `n = 3`, you find `67%`. With **`n = 5` users, you uncover `1 - (0.69)^5 ≈ 85%`** of the core usability problems in that design! Rather than spending your entire budget testing 15 users on a broken prototype v1, you test **5 users on v1**, fix the bugs, test **5 users on v2**, fix the remaining bugs, and test **5 users on v3**!
-- **Summative Usability Testing**, by contrast, evaluates a completed release with `20–30+` users to establish statistically reliable benchmarks.
+In the left card:
+During **Formative Testing** on prototypes, Jakob Nielsen and Thomas Landauer's Poisson formula `P = 1 - (1 - L)^n` proves that testing **`n = 5` users** catches `~85%` of core usability flaws when average problem visibility `L = 0.31`. By running 3 iterative rounds of 5 users, you fix the obvious blockers in Round 1 and uncover deeper workflow issues in Rounds 2 and 3!
 
-Look at the right card: During Formative testing, our gold-standard method is the **Think-Aloud Protocol** (K. Anders Ericsson & Herbert A. Simon, 1984), which opens a direct window into the user's working memory and mental model!
+In the right card:
+For **Summative Benchmarking** and production telemetry, we combine behavioral metrics (Task Completion %, Time-on-Task, Smith's Lostness `L`) with **John Brooke's System Usability Scale (SUS 0–100)** and **Google's HEART Framework**. Let's examine the visual diagram of the `N = 5` Poisson curve, the SUS grading scale, and Google HEART on the next slide!
 
-To summarize this slide, remember this key takeaway: Iterative formative testing with 5 users per round using the Think-Aloud protocol uncovers ~85% of usability defects early and cheaply.
+To summarize this slide, remember this key takeaway: Iterative 5-user Think-Aloud testing uncovers ~85% of flaws qualitatively, while SUS (benchmark 68) and Google HEART quantify usability objectively.
 -->
 ---
-## Quantitative Usability Metrics & Standardized Questionnaires
+<!-- _class: title-image-slide -->
 
-> **Objective UX Benchmarking:** Combine **Behavioral Task Metrics** (what happened during the test) with **Standardized Psychometric Scales** (validated post-task / post-test questionnaires).
+## Conceptual Diagram: Nielsen's N=5 Curve, SUS Scale & HEART
 
-| Metric Category | Specific Engineering Metric / Scale | Formula, Benchmark Threshold & Interpretation |
-| :--- | :--- | :--- |
-| **1. Effectiveness**<br>*(Behavioral)* | **Task Completion Rate (Success %)** & **Error Count** | `Success % = (Completed Accurately / Total Attempts) × 100%`.<br>*Target*: **`>= 80%–90%`** for consumer apps; **`100%`** for safety-critical flows. |
-| **2. Efficiency**<br>*(Behavioral)* | **Time-on-Task (s)** & **Lostness Metric (`L`, Smith 1996)** | `L = sqrt((N/S − 1)² + (R/N − 1)²)` (`R`=min nodes, `S`=total visited, `N`=unique visited).<br>*Threshold*: `L < 0.4` indicates clear navigation; **`L > 0.5`** indicates severe user disorientation! |
-| **3. Post-Task Ease**<br>*(Attitudinal)* | **SEQ (Single Ease Question)** & **NASA-TLX (Cognitive Workload)** | **SEQ**: 1-item 7-point rating right after each task (*"Overall, how difficult or easy was this task?"*, Benchmark **`>= 5.5 / 7`**). **NASA-TLX**: 6-dimension workload index. |
-| **4. Overall Usability**<br>*(Post-Study Scale)* | **SUS (System Usability Scale — John Brooke, 1986)** | 10 alternating positive/negative items (`1–5` Likert), scored **`0 to 100`** (percentile rank, *not* a percentage!).<br>*Industry Historical Average*: **`68`** (`>= 80.3` is Grade **A** / Top 10%; `< 50` is Grade **F**). |
-
-<!--
-How do we quantify usability so software engineering teams can track UX quality in CI/CD release gates alongside backend latency and test coverage? Examine the four tiers of quantitative metrics in this table:
-
-1. **Behavioral Effectiveness**: **Binary Task Completion Rate (%)** (did the user successfully place the group order without moderator rescue?) and **Critical vs. Non-Critical Error Counts**.
-2. **Behavioral Efficiency**: **Time-on-Task** (geometric mean in seconds) and Pauline Smith's (1996) mathematical **Lostness Metric (`L`)**, which compares the minimum optimal number of screens required (`R`) against the unique screens (`N`) and total screen visits (`S`) taken by the user. When `L > 0.5`, users are lost in a maze of backtracking!
-3. **Post-Task Perceived Ease**: Immediately after each individual task, we administer the **Single Ease Question (SEQ)** (`1 = Very Difficult` to `7 = Very Easy`, historical average `~5.5`) or **NASA-TLX** for high-stakes operational interfaces.
-4. **Post-Study Overall Perceived Usability**: At the end of the entire test session, we administer John Brooke's (1986) **System Usability Scale (SUS)**—the most widely validated 10-item psychometric questionnaire in software engineering. Remember: a **SUS score of `68`** is the 50th percentile industry benchmark, and **`>= 80.3`** places your software in the top 10% (Grade A)!
-
-To summarize this slide, remember this key takeaway: Rigorous UX evaluation pairs behavioral metrics (Task Success, Time-on-Task, Lostness) with standardized psychometric instruments (SEQ and the 0–100 SUS scale).
--->
----
-## Large-Scale Production Experiments: A/B Testing & Google HEART
-
-> **Continuous UX Telemetry:** After launch, product engineering teams pair **Controlled Online Experiments (A/B Testing)** with **Google's HEART Framework** (Kerry Rodden, Hilary Hutchinson & Xin Fu, 2010).
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. Controlled A/B Testing & Guardrail Metrics
-- **Randomized Controlled Trial (RCT) in Production**:
-  - Randomly split live traffic (`50% Control A` vs. `50% Variant B` via feature flags) to test a specific **UX Hypothesis**.
-- **Statistical Rigor & Guardrail Metrics**:
-  - Require pre-calculated **Sample Size (Statistical Power `1 − β >= 80%`)** and **`p < 0.05`** significance (never "peek and stop early"!).
-  - **Guardrail Metrics**: When testing if a larger checkout button increases conversion (`Primary Metric`), monitor **Cancel/Refund Rate** and **Page Latency** (`Guardrail Metrics`) to ensure you didn't just cause accidental clicks!
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 2. Google's HEART Framework + Goals-Signals-Metrics
-- **5 UX Quality Dimensions at Scale (`H-E-A-R-T`)**:
-  - **H — Happiness**: Subjective satisfaction (`SUS`, in-app CSAT, App Store rating).
-  - **E — Engagement**: Depth & frequency of voluntary interaction (`orders/week`, active sessions).
-  - **A — Adoption**: New users adopting the product or a new feature (`% using Group Order within 14 days`).
-  - **R — Retention**: Cohort survival rate (`D7 / D30 / D90` returning active users; inverse of **Churn**).
-  - **T — Task Success**: Behavioral efficiency & error rates in telemetry (`Search-to-Cart %`, checkout completion time).
-
-</div>
+<div class="image-wrapper">
+  <img src="../../img/ch06/concepts/usability_testing_n5_sus_scale.svg" alt="Nielsen N=5 Poisson Discovery Curve, SUS 0-100 Benchmark Scale and Google HEART" />
 </div>
 
 <!--
-Once your software ships to hundreds of thousands of users in production, how do you continuously measure and improve UX? We combine **Controlled A/B Testing** on the left with **Google's HEART Framework** on the right.
+Examine this quantitative UX engineering diagram illustrating Nielsen's `N = 5` Poisson Discovery Curve on the left and the System Usability Scale (SUS) + Google HEART on the right!
 
-Look at the left card: In an **A/B Test**, live users are randomly assigned to Control (`A`) or Treatment (`B`).
-Notice the critical engineering concept of **Guardrail Metrics**: Suppose Variant B increases `"1-Click Order"` conversion by `+8%`, but also increases `"Customer Support Cancellation Requests"` by `+25%` because users clicked it by accident! Without a Guardrail Metric protecting user trust and error rates, naive conversion optimization can degrade UX!
+In the left panel:
+- Follow the blue curve `P = 1 - (1 - 0.31)^n`: `1` user finds `31%` of problems; `3` users find `67%`; and at **`n = 5` users (the green sweet spot), you uncover `85%`** of usability flaws! Beyond 5 users in a single unedited prototype round, diminishing returns set in rapidly.
 
-Look at the right card: Developed by Google UX researchers Kerry Rodden, Hilary Hutchinson, and Xin Fu (2010), the **HEART Framework** structures production UX telemetry across five orthogonal dimensions—**Happiness, Engagement, Adoption, Retention, and Task Success**—mapped via the **Goals → Signals → Metrics** process so product teams never drown in vanity metrics.
+In the right panel:
+- At the top, inspect the **Sauro & Lewis Curved Grading Scale for SUS (`0–100`)**:
+  - Remember that **SUS is NOT a percentage**! Because the 50th percentile historical industry average is **`SUS = 68`**, a score of `60` is actually a **Grade D**, and anything below `51` is a **Grade F (Unacceptable)**! To reach **Grade A (Top 10%, where users actively recommend your software)**, your product must achieve **`SUS >= 80.3`**.
+- At the bottom, review **Google's HEART Framework** (`Happiness, Engagement, Adoption, Retention, Task Success`) and the golden rule of A/B Testing: always pair primary conversion metrics with **Guardrail Metrics**!
 
-To summarize this slide, remember this key takeaway: Production UX engineering combines statistically rigorous A/B testing (with guardrail metrics) and Google's HEART framework to track long-term user value.
+To summarize this slide, remember this key takeaway: Budget formative tests in iterative 5-user rounds, benchmark release usability against SUS = 68 (targeting 80.3+ for Grade A), and protect A/B tests with guardrail metrics.
 -->
 ---
 ## Ethical UX Engineering: Dark Patterns vs. Transparent Design
 
-> **ACM Code of Ethics & EU Digital Services Act (DSA):** Software engineers have a professional and legal duty to reject **Deceptive Design (Dark Patterns)** that exploit human cognitive biases against the user's best interest.
+<div class="split55">
+<div class="left">
 
-| Dark Pattern (Harry Brignull, 2010) | Deceptive Cognitive Manipulation Mechanism | Ethical & Legal UX Engineering Alternative |
-| :--- | :--- | :--- |
-| **1. Roach Motel**<br>*(Asymmetric Friction)* | Signing up for a monthly subscription takes **1 tap**, but canceling requires calling a phone hotline during business hours and navigating 8 retention screens. | **Symmetric Click-to-Cancel (FTC Rule)**: Make subscription cancellation just as fast, visible, and self-service as sign-up. |
-| **2. Confirmshaming**<br>*(Emotional Manipulation)* | Phrasing the decline button to guilt or insult the user: *"No thanks, I hate saving money and prefer paying full price."* | **Neutral, Respectful Labeling**: Use clear, objective choices: `"Apply Annual Pass"` vs. `"Continue with Standard Order"`. |
-| **3. Sneak into Basket & Drip Pricing** | Automatically pre-checking optional insurance/tips in the cart, or hiding mandatory `"Platform + Service Fees"` until the final payment click. | **Upfront All-In Price Transparency & Opt-In Consent**: Display total estimated fees upfront; require explicit user **Opt-In** (never pre-checked boxes!). |
-| **4. Misdirection & Disguised Cancel** | Making `"Keep My Subscription"` a giant bright blue button while hiding `"Confirm Cancellation"` as tiny low-contrast gray text (`Fitts + Visual Hierarchy abuse`). | **Honest Visual Hierarchy**: Style primary confirmation and secondary back actions clearly without inverting button semantics to trick users. |
+* **What Are Dark Patterns? (Harry Brignull, 2010):**
+  - Deceptive UI designs that exploit cognitive biases (**Default Bias, Sunk Cost, Visual Misdirection**) to trick users into unintended actions.
+* **4 Classic Dark Patterns to Ban in Code Reviews:**
+  - **1. Roach Motel**: 1-click sign-up, but canceling requires a phone call and 8 retention screens.
+  - **2. Confirmshaming**: Guilt-tripping decline copy (*"No, I prefer wasting money"*).
+  - **3. Sneak into Basket / Drip Pricing**: Pre-checked add-ons or hiding mandatory fees until the final step.
+  - **4. Visual Misdirection**: Inverting button colors so users accidentally click `"Keep Subscription"`.
+* **Legal Mandate**: Banned by **EU Digital Services Act (DSA Art. 25)**, **GDPR**, and **FTC Click-to-Cancel** rules!
+
+</div>
+<div class="right">
+  <img src="../../img/ch01/dark_patterns_comic.png" alt="Ethical UX vs Deceptive Dark Patterns" />
+</div>
+</div>
 
 <!--
-As software engineers and UX designers, our deep knowledge of cognitive psychology, Fitts's Law, Gestalt hierarchy, and default biases comes with a profound ethical responsibility.
+As software engineers and UX designers, our knowledge of cognitive psychology, Fitts's Law, and Gestalt hierarchy carries a serious ethical responsibility under the **ACM/IEEE Software Engineering Code of Ethics**.
 
-In 2010, cognitive scientist **Harry Brignull** coined the term **Dark Patterns** (now also termed **Deceptive Design Patterns**) to describe user interfaces carefully crafted to trick users into doing things they did not intend—such as buying hidden add-ons, surrendering private data, or failing to cancel recurring subscriptions.
+In 2010, cognitive scientist **Harry Brignull** coined the term **Dark Patterns** (Deceptive Design) for interfaces engineered to trick users:
+1. **Roach Motel**: Asymmetric friction—1 tap to subscribe, 8 hidden screens and a phone hotline to cancel.
+2. **Confirmshaming**: Insulting the user on the decline button.
+3. **Sneak into Basket & Drip Pricing**: Exploiting default bias via pre-checked boxes or hiding mandatory service fees until the user has already invested 10 minutes building their cart.
+4. **Visual Misdirection**: Making `"Keep My Plan"` a giant bright button while disguising `"Confirm Cancel"` as tiny low-contrast text.
 
-Review the four notorious Dark Patterns in this table:
-1. **Roach Motel**: Easy to get in (1-click sign-up), nearly impossible to get out.
-2. **Confirmshaming**: Manipulating user guilt through insulting decline labels.
-3. **Sneak into Basket / Drip Pricing**: Pre-checking optional add-ons (exploiting default bias) or hiding mandatory fees until the user has already invested 10 minutes building their cart (exploiting the **Sunk-Cost Fallacy**).
-4. **Visual Misdirection**: Inverting button colors on a cancellation confirmation screen so users who habitually click the bright button accidentally *keep* the subscription they were trying to cancel!
+Today, Dark Patterns are not just unethical—they violate the **EU Digital Services Act (DSA)** and **FTC Click-to-Cancel regulations**, exposing companies to massive fines and immediate loss of user trust!
 
-Today, Dark Patterns are not merely unethical under the **ACM/IEEE Software Engineering Code of Ethics**—they are **illegal** under the **EU Digital Services Act (DSA Article 25)**, **GDPR**, and **US FTC Click-to-Cancel regulations**, carrying fines up to 6% of global annual turnover!
-
-To summarize this slide, remember this key takeaway: Ethical UX engineering uses cognitive science to empower user agency and informed consent, never to manipulate users via deceptive Dark Patterns.
+To summarize this slide, remember this key takeaway: Ethical UX engineering uses cognitive science to empower informed consent and symmetric control, never to trap users via Dark Patterns.
 -->
 ---
 ### Peer Discussion 6.7: Designing a Usability Test Plan & Ethical Audit
@@ -1676,9 +1628,9 @@ Let's take 4 minutes for Peer Discussion 6.7!
 In this exercise, you are leading the UX Engineering release review for **FoodPass**, a $9.99/month membership program.
 Work with your partner on two tasks:
 In Part 1, design the **Usability Test Plan**:
-- How do you apply Nielsen's `N = 5` rule across formative iterations?
-- And how do you write a **non-leading Task Prompt**? Remember: if the button on screen is labeled `"Manage FoodPass"`, and your test script says *"Please click Manage FoodPass to cancel"*, you have turned a cognitive usability test into a trivial word-matching game! How should you phrase the scenario instead?
-In Part 2, conduct a **Dark Pattern Audit** on the PM's proposal: identify the exact Dark Pattern names for `(a)` and `(b)`, and propose an ethical, transparent alternative (such as showing the exact dollar savings on the current order with an explicit Opt-In toggle and 1-click Pause/Cancel).
+- How do you apply Nielsen's `N = 5` rule across formative iterations vs. summative benchmarking?
+- And how do you write a **non-leading Task Prompt** without giving away the exact label `"Manage FoodPass"`?
+In Part 2, conduct a **Dark Pattern Audit** on the PM's proposal: identify the exact Dark Pattern names for `(a)` and `(b)`, and propose an ethical, transparent redesign.
 
 Full reference solutions are in Appendix B!
 
@@ -1699,48 +1651,46 @@ Today, Artificial Intelligence and Large Language Models (LLMs) are transforming
 First, **AI for UX**: How UX researchers and UI engineers use generative AI as a copilot across the Double Diamond lifecycle.
 Second, **UX for AI**: How we design trustworthy, controllable human-centered interfaces for AI-powered features that are inherently probabilistic, non-deterministic, and prone to hallucination!
 
-Let's examine this dual paradigm and then synthesize our entire 60-slide curriculum.
+Let's examine this dual paradigm with visual illustrations and then synthesize our entire curriculum.
 
 To summarize this slide, remember this key takeaway: Modern software engineers must master both using AI to accelerate UX engineering (AI for UX) and designing safe, transparent interfaces for probabilistic AI agents (UX for AI).
 -->
 ---
 ## The Dual Paradigm: "AI for UX" vs. "UX for AI" (Human-AI Interaction)
 
-> **Deterministic GUI vs. Probabilistic AI:** Traditional GUIs are **100% deterministic** (`Click Button A → State B`); Generative AI interfaces are **probabilistic, latency-variable, and fallible**, requiring new UX engineering patterns!
+> **Deterministic GUI vs. Probabilistic AI:** Traditional GUIs are **100% deterministic** (`Click Button A → State B`); Generative AI interfaces are **probabilistic and fallible**, requiring **Human-Centered AI (HCAI)** patterns!
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 1. AI for UX (Accelerating the HCD Lifecycle)
-- **Discover & Define**:
-  - Using LLMs to transcribe interviews, cluster **Affinity Diagrams** with verbatim citations, and spot themes across 10,000 support tickets.
-- **Develop (Ideation & Wireframing)**:
-  - Rapidly generating multi-variant wireframe layouts, realistic domain microcopy (eliminating `"Lorem ipsum"`), and WCAG-compliant color palettes.
-- **Evaluate (Synthetic Pre-Inspection)**:
-  - Running automated **Heuristic & WCAG pre-audits** before human usability testing (*Warning: Synthetic AI personas never replace real human observation!*).
+### 1. AI for UX (Copilot Across the HCD Lifecycle)
+<img src="../../img/ux/ai_for_ux_concept_nobg.png" alt="AI for UX Concept" style="max-height: 175px; margin: 2px auto 8px auto; display: block;" />
+
+- **Research & Synthesis**: Clustering interview transcripts into **Affinity Diagrams** with verbatim quotes.
+- **Prototyping & Pre-Audit**: Generating wireframe variants, domain microcopy, and running automated **WCAG / Heuristic pre-checks** (*never replacing real human testing!*).
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 2. UX for AI (Designing Human-AI Interaction — HAI)
-- **Microsoft's 18 HAI Guidelines (Amershi et al., CHI 2019)**:
-  1. **Calibrate Trust Initially (`G1–G2`)**: Make clear *what the AI can do* and *how well it can do it* (avoid false anthropomorphism).
-  2. **Hybrid Intent Input (Prompt + GUI Controls)**: Pure chat boxes have a wide **Gulf of Execution** ("Blank Canvas Paralysis"); pair natural language with **clickable prompt chips & parameter sliders**!
-  3. **Explainability & Source Grounding (`G11`)**: Show *why* the AI recommended a dish or route, with clickable citations/provenance.
-  4. **Graceful Hallucination Recovery & Human-in-the-Loop**: Stream tokens progressively (`< 400ms` first token), show confidence levels, and require **explicit human confirmation** (`Diff Preview + Undo`) before executing destructive actions!
+### 2. UX for AI (Microsoft 18 HAI Guidelines, CHI '19)
+<img src="../../img/ux/ux_for_ai_concept.png" alt="UX for AI Concept" style="max-height: 175px; margin: 2px auto 8px auto; display: block;" />
+
+- **1. Hybrid Intent UI (Defeat Blank-Box Paralysis)**: Pair chat prompts with **clickable starter chips & GUI sliders** (Heuristic #6 Recognition over Recall).
+- **2. Source Grounding & Streaming (`< 400ms`)**: Show provenance citations and confidence indicators.
+- **3. Human-in-the-Loop Agency**: Require explicit **Diff Preview + One-Click Undo** before AI executes actions!
 
 </div>
 </div>
 
 <!--
-Let's unpack the two sides of AI and UX shown on this slide:
+Let's unpack the visual contrast between **AI for UX** on the left and **UX for AI** on the right:
 
-In the left card (**AI for UX**), Generative AI acts as a high-speed copilot across all four phases of the Double Diamond: clustering interview transcripts into affinity themes, generating realistic domain copy and wireframe variations in seconds, and running automated WCAG and Heuristic pre-checks. However, remember our golden rule from Section 6.4: **Synthetic LLM personas cannot replace observing real humans in the wild**, because LLMs do not have physical thumbs riding a scooter in the rain!
+In the left card (**AI for UX**), Generative AI acts as a high-speed copilot across the Double Diamond: clustering interview transcripts into affinity themes, generating realistic domain copy and wireframe variations in seconds, and running automated WCAG and Heuristic pre-checks. Yet remember: **Synthetic LLM personas never replace observing real humans in the wild!**
 
-In the right card (**UX for AI**), how do we design user interfaces for AI agents and LLM features (based on Saleema Amershi et al.'s landmark CHI 2019 paper, *Guidelines for Human-AI Interaction*)?
-1. **Overcome "Blank Prompt Paralysis"**: A blank text box has terrible discoverability (Heuristic #6 Recognition over Recall!). Great AI UX pairs natural-language input with **contextual starter chips, scoped slash commands, and visual refinement controls**.
-2. **Stream Feedback & Explain Why**: Use token streaming to keep first-byte feedback under the `400ms` Doherty Threshold, and ground AI outputs with transparent citations so users can verify accuracy.
-3. **Human-in-the-Loop Agency**: Because AI is probabilistic, never let an AI agent execute irreversible actions (charging a credit card or deleting production records) without a clear **Preview Diff + One-Click Undo**!
+In the right card (**UX for AI**), based on Saleema Amershi et al.'s landmark CHI 2019 paper (*Guidelines for Human-AI Interaction*) and Ben Shneiderman's *Human-Centered AI*:
+1. **Defeat Blank-Canvas Paralysis**: A bare chat box has a wide Gulf of Execution! Pair natural-language prompts with clickable starter chips, scoped slash commands, and visual sliders.
+2. **Stream Tokens & Ground Sources**: Stream first tokens under the `400ms` Doherty Threshold and show clickable citations so users can verify accuracy.
+3. **Human-in-the-Loop Preview + Undo**: Never let a probabilistic AI agent execute destructive or financial actions without an explicit human **Preview Diff + Undo**!
 
 To summarize this slide, remember this key takeaway: AI for UX accelerates research and prototyping, while UX for AI combines hybrid GUI-prompt controls, source grounding, and human-in-the-loop previews to tame probabilistic models.
 -->
@@ -1797,7 +1747,7 @@ To summarize this slide, remember this key takeaway: Mastering the Two Gulfs, Co
 
 5. The empirical IA evaluation method ("reverse card sorting") that tests findability and first-click accuracy using a plain-text menu hierarchy is <span class="quiz-blank" data-answer="Tree Testing">[ _________ ]</span>.
 6. Showing recent delivery addresses and visual autocomplete suggestions instead of forcing users to memorize codes applies Nielsen's Heuristic #6: <span class="quiz-blank" data-answer="Recognition Rather Than Recall">[ _________ ]</span>.
-7. The formative usability testing method in which participants continuously verbalize their thoughts and expectations while performing tasks is the <span class="quiz-blank" data-answer="Think-Aloud Protocol">[ _________ ]</span>.
+7. The formative usability testing method (Ericsson & Simon, 1984) in which participants continuously verbalize their thoughts while performing tasks is the <span class="quiz-blank" data-answer="Think-Aloud Protocol">[ _________ ]</span>.
 8. A deceptive Dark Pattern that makes subscribing take 1 click while burying cancellation behind phone calls and 8 retention screens is a <span class="quiz-blank" data-answer="Roach Motel">[ _________ ]</span>.
 
 </div>
@@ -1819,26 +1769,24 @@ To summarize this slide, remember this key takeaway: Tree Testing, Recognition o
 ---
 ## Core Curriculum Synthesis & Classic Academic Literature
 
-| Section | Core UX / HCI Models & Frameworks | Golden Engineering Takeaway |
+| Section | Pioneer & Visual Concept Diagram | Golden UX Engineering Takeaway |
 | :--- | :--- | :--- |
-| **6.1 Foundations** | **ISO 9241-210 / 9241-11**, Garrett's 5 Planes, **Nielsen's 5 Dimensions** | UX is built bottom-up (`Strategy → Surface`); quantify Learnability, Efficiency, Memorability, Errors & Satisfaction. |
-| **6.2 Cognition** | **Model Human Processor (`100ms/1s/10s`)**, **7 Stages & 2 Gulfs**, **Cognitive Load** | Narrow the **Gulfs of Execution & Evaluation**; align the **System Image** with the **User's Mental Model**; cut extraneous load. |
-| **6.3 Laws & a11y** | **Fitts's Law**, **Hick's Law**, **Tesler/Postel**, **Gestalt**, **WCAG 2.2 (`4.5:1`)** | Maximize target `W`, minimize `D` & choice entropy `n`; absorb complexity in code; enforce `4.5:1` contrast & non-color cues. |
-| **6.4 HCD Research** | **Double Diamond**, **2×2 Research Matrix**, **Personas**, **JTBD**, **Journey Maps & HTA** | *"You are not the user!"* Triangulate behavioral & attitudinal research; trace Personas/JTBD/HTA directly to the **SRS**. |
-| **6.5 IA & Prototyping** | **LATCH**, **Card Sorting & Tree Testing**, **Lo-Fi → Hi-Fi**, **Atomic Design** | Validate taxonomy findability first; sketch Lo-Fi to get the *right design*; scale UI via **Atoms → Organisms** & Tokens. |
-| **6.6 Heuristics** | **Nielsen's 10 Usability Heuristics (`0–4` Severity)**, **Cognitive Walkthrough** | Run 3–5 independent inspections (`~80%` bug discovery); prevent Slips & Mistakes; audit novice steps via `Q1–Q4`. |
-| **6.7 Testing & Ethics** | **Think-Aloud (`N = 5`)**, **SUS (`68` avg)**, **HEART & A/B**, **Anti-Dark Patterns** | Test 5 users per round; benchmark via **SUS & HEART**; reject **Roach Motel / Confirmshaming** Dark Patterns. |
+| **6.1 Foundations** | **Douglas Engelbart**; Garrett's 5 Planes & Morville Honeycomb SVG | UX is built bottom-up (`Strategy → Surface`); quantify Learnability, Efficiency, Memorability, Errors & Satisfaction. |
+| **6.2 Cognition** | **Don Norman**; 7 Stages, 2 Gulfs, MHP & Cognitive Load SVGs | Narrow the **Gulfs of Execution & Evaluation**; align the **System Image** with the **User's Mental Model**; cut extraneous load. |
+| **6.3 Laws & a11y** | **Ben Shneiderman**; Fitts's Law, Thumb Zones, Hick & Gestalt SVG | Maximize target `W`, minimize `D` & choice entropy `n`; absorb complexity in code; enforce `4.5:1` contrast & non-color cues. |
+| **6.4 HCD Research** | Double Diamond, 2×2 Research Matrix & Journey Map SVGs | *"You are not the user!"* Triangulate behavioral & attitudinal research; trace Personas/JTBD/HTA directly to the **SRS**. |
+| **6.5 IA & Prototyping** | Card Sorting, Tree Testing & Brad Frost Atomic Design SVG | Validate taxonomy findability first; sketch Lo-Fi to get the *right design*; scale UI via **Atoms → Organisms** & Tokens. |
+| **6.6 Heuristics** | **Jakob Nielsen**; 10 Usability Heuristics (`0–4` Severity) & Stove Map | Run 3–5 independent inspections (`~80%` bug discovery); prevent Slips & Mistakes; audit novice steps via `Q1–Q4`. |
+| **6.7 Testing & Ethics** | **Herbert A. Simon**; `N = 5` Poisson Curve, SUS `0–100` & HEART SVG | Test 5 users per round (**Think-Aloud**); benchmark via **SUS (`68` avg)**; reject **Roach Motel / Confirmshaming** Dark Patterns. |
 | **6.8 AI & UX** | **AI for UX** vs. **UX for AI (Microsoft 18 HAI Guidelines)** | Pair natural language with GUI controls, ground sources, and require **Human-in-the-Loop Preview + Undo**. |
 
-* **Essential References:** Don Norman (*The Design of Everyday Things*); Jakob Nielsen (*Usability Engineering*); Stuart Card, Thomas Moran & Allen Newell (*The Psychology of HCI*); Steve Krug (*Don't Make Me Think*); Jesse James Garrett (*The Elements of User Experience*); ISO 9241-210 & W3C WCAG 2.2.
+* **Essential References:** Don Norman (*The Design of Everyday Things*); Jakob Nielsen (*Usability Engineering*); Ben Shneiderman (*Designing the User Interface*); Herbert A. Simon & K. Anders Ericsson (*Protocol Analysis*); Steve Krug (*Don't Make Me Think*); ISO 9241-210 & W3C WCAG 2.2.
 
 <!--
 Review this comprehensive Chapter 6 Synthesis Matrix and reading list!
 
-Notice how every single section connects into a unified software engineering discipline:
-From ISO usability standards (6.1) and cognitive psychology (6.2) to mathematical interaction laws and accessibility (6.3), empirical user research and SRS traceability (6.4), information architecture and Atomic Design Systems (6.5), Jakob Nielsen's 10 Heuristics (6.6), empirical Think-Aloud testing, SUS metrics, and ethical design (6.7), all the way to Human-AI Interaction (6.8).
-
-For deeper reading, consult the foundational classics listed at the bottom: Don Norman's *The Design of Everyday Things*, Jakob Nielsen's *Usability Engineering*, Card, Moran, and Newell's *The Psychology of Human-Computer Interaction*, and Steve Krug's *Don't Make Me Think*.
+Notice how every single section connects pioneer scholarship, conceptual diagrams, and concrete software engineering practices:
+From Douglas Engelbart and ISO usability standards (6.1) to Don Norman's cognitive psychology (6.2), Ben Shneiderman and mathematical interaction laws (6.3), empirical user research and Customer Journey Maps (6.4), Card Sorting, Tree Testing, and Brad Frost's Atomic Design (6.5), Jakob Nielsen's 10 Heuristics (6.6), Herbert A. Simon's Think-Aloud Protocol, SUS metrics, and ethical design (6.7), all the way to Human-AI Interaction (6.8).
 
 To summarize this slide, remember this key takeaway: UX Engineering integrates cognitive science, mathematical laws, empirical research, and rigorous usability testing across the entire software lifecycle.
 -->
