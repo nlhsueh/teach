@@ -224,6 +224,10 @@
       background: linear-gradient(135deg, #0f172a 0%, #0369a1 50%, #0284c7 100%);
     }
 
+    .banner-talk {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #3730a3 100%);
+    }
+
     .card-meta {
       display: flex;
       justify-content: space-between;
@@ -346,6 +350,156 @@
       background: var(--python-dark);
     }
 
+    .btn-talk {
+      background: #4338ca;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-talk:hover {
+      background: #312e81;
+    }
+
+    /* Talk Auth Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      max-width: 440px;
+      width: 100%;
+      padding: 34px 28px;
+      text-align: center;
+      position: relative;
+      animation: modalPop 0.25s ease-out;
+    }
+
+    @keyframes modalPop {
+      0% { opacity: 0; transform: scale(0.92) translateY(10px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #94a3b8;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: #1e293b;
+    }
+
+    .modal-icon {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 16px auto;
+      border-radius: 50%;
+      background: #eef2ff;
+      border: 2px solid #e0e7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.9rem;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1e1b4b;
+      margin-bottom: 6px;
+    }
+
+    .modal-desc {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 13px 16px;
+      font-size: 1.05rem;
+      border: 2px solid #cbd5e1;
+      border-radius: 10px;
+      outline: none;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      transition: all 0.2s ease;
+    }
+
+    .modal-input:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    }
+
+    .modal-btn-submit {
+      padding: 13px;
+      background: linear-gradient(135deg, #1e1b4b, #4338ca);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .modal-btn-submit:hover {
+      background: linear-gradient(135deg, #0f172a, #3730a3);
+    }
+
+    .modal-error {
+      color: #ef4444;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 2px;
+      display: none;
+    }
+
+    .shake {
+      animation: shakeAnim 0.35s ease-in-out;
+    }
+
+    @keyframes shakeAnim {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+
     .btn-secondary {
       padding: 12px 16px;
       border: 1px solid var(--border);
@@ -401,6 +555,7 @@
       <a href="./UX/" class="nav-link">🎨 UX</a>
       <a href="./SQA/" class="nav-link">🛡️ SQA</a>
       <a href="./Python/" class="nav-link">🐍 Python</a>
+      <a href="javascript:void(0)" onclick="handleTalkNavigation('portal')" class="nav-link" style="color: #4338ca; font-weight: 700;">🎙️ Talk 🔒</a>
       <a href="https://github.com/nlhsueh/teach" target="_blank" rel="noopener" class="nav-link">GitHub</a>
     </div>
   </nav>
@@ -539,8 +694,59 @@
         </div>
       </article>
 
+      <!-- Talk (Software Engineering History & Pioneer Quotes) Card -->
+      <article class="course-card">
+        <div class="card-banner banner-talk">
+          <div class="card-meta">
+            <span class="card-tag" style="background: rgba(245, 158, 11, 0.25); color: #fef3c7;">🔒 特邀專題 · 密碼受限</span>
+            <span class="card-icon">🎙️</span>
+          </div>
+          <h2 class="card-title">格言裡的軟體工程</h2>
+          <div class="card-subtitle">SE History & Pioneer Quotes (18 先驅 · 93 頁)</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">
+            精選半世紀 18 位軟體工程先驅（Hopper、Dijkstra、Brooks、Jobs、Gates、Hinton、Musk、Altman、Huang 等）的經典格言與四格美式漫畫，深入剖析歷史危機與現代震撼案例。
+          </p>
+          <div class="topics-list">
+            <span class="topic-pill">18 位傳奇先驅</span>
+            <span class="topic-pill">四格美式漫畫</span>
+            <span class="topic-pill">歷史現場與案例</span>
+            <span class="topic-pill">93 頁全彩簡報</span>
+          </div>
+          <div class="card-actions">
+            <button onclick="handleTalkNavigation('slides')" class="btn-main btn-talk">
+              <span>解鎖進入 Talk 講座</span>
+              <span>🔒</span>
+            </button>
+            <button onclick="handleTalkNavigation('pdf')" class="btn-secondary" title="需先通過驗證">下載 PDF 🔒</button>
+          </div>
+        </div>
+      </article>
+
     </div>
   </main>
+
+  <!-- Talk Auth Modal -->
+  <div class="modal-overlay" id="talkAuthModal" onclick="handleBackdropClick(event)">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeTalkModal()" title="關閉">✕</button>
+      <div class="modal-icon">🔒</div>
+      <h3 class="modal-title">請輸入講座存取密碼</h3>
+      <p class="modal-desc">
+        《格言裡的軟體工程》為特邀專題講座教材，請輸入通行密碼以解鎖線上簡報與完整講義資源。
+      </p>
+
+      <form class="modal-form" id="talkModalForm" onsubmit="submitTalkAuth(event)">
+        <input type="password" id="talkModalInput" class="modal-input" placeholder="請輸入通行密碼" autocomplete="off" />
+        <button type="submit" class="modal-btn-submit">
+          <span>驗證並進入講座</span>
+          <span>🔑</span>
+        </button>
+        <div class="modal-error" id="talkModalError">⚠️ 密碼錯誤，請重新輸入！</div>
+      </form>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -552,6 +758,73 @@
       &bull; 透過 Marp 與 GitHub Pages 技術自動構建
     </p>
   </footer>
+
+  <script>
+    const TALK_AUTH_KEY = 'talk_auth_passed';
+    const TALK_PASSCODE = 'nick007';
+    let targetTalkDestination = './Talk/SE_history/SE_history.html';
+
+    function handleTalkNavigation(destType) {
+      if (destType === 'pdf') {
+        targetTalkDestination = './Talk/SE_history/SE_history.pdf';
+      } else if (destType === 'portal') {
+        targetTalkDestination = './Talk/index.html';
+      } else {
+        targetTalkDestination = './Talk/SE_history/SE_history.html';
+      }
+
+      if (sessionStorage.getItem(TALK_AUTH_KEY) === 'true') {
+        window.location.href = targetTalkDestination;
+      } else {
+        openTalkModal();
+      }
+    }
+
+    function openTalkModal() {
+      const modal = document.getElementById('talkAuthModal');
+      const input = document.getElementById('talkModalInput');
+      const error = document.getElementById('talkModalError');
+      if (error) error.style.display = 'none';
+      if (input) input.value = '';
+      modal.classList.add('active');
+      setTimeout(() => input && input.focus(), 150);
+    }
+
+    function closeTalkModal() {
+      const modal = document.getElementById('talkAuthModal');
+      modal.classList.remove('active');
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === 'talkAuthModal') {
+        closeTalkModal();
+      }
+    }
+
+    function submitTalkAuth(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('talkModalInput');
+      const error = document.getElementById('talkModalError');
+      const val = (input.value || '').trim();
+
+      if (val.toLowerCase() === TALK_PASSCODE.toLowerCase()) {
+        sessionStorage.setItem(TALK_AUTH_KEY, 'true');
+        error.style.display = 'none';
+        closeTalkModal();
+        window.location.href = targetTalkDestination;
+      } else {
+        error.style.display = 'block';
+        input.classList.add('shake');
+        setTimeout(() => input.classList.remove('shake'), 400);
+        input.select();
+      }
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeTalkModal();
+    });
+  </script>
 
 </body>
 
