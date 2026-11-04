@@ -43,24 +43,12 @@ As the central case study for the Software Engineering course, this project demo
 ### 2.1 System Boundary & Context
 QuickBite operates at the center of the food delivery ecosystem, coordinating transactions, communications, and real-time telemetry among customers, merchants, couriers, and cloud infrastructure:
 
-```
-                       +----------------------------+
-                       |    Geospatial Map API      |
-                       |  (Google Maps / Mapbox)    |
-                       +--------------+-------------+
-                                      ^
-                                      | Distance Matrix / Routing
-+-------------------+                 v                 +--------------------+
-|     Customer      |<======> [ QuickBite Platform ] <====>|     Restaurant     |
-| (Mobile App / Web)|  Orders/Payment  (Core API)       Accept/Prep | (Merchant Console) |
-+-------------------+                 ^                 +--------------------+
-                                      | Dispatch / Telemetry
-                                      v
-                       +--------------+-------------+
-                       |      Courier Partner       |
-                       |   (Courier Driver App)     |
-                       +----------------------------+
-```
+| External Actor / System | Interface Endpoint | Bidirectional Interaction with `QuickBite Core API` |
+| :--- | :--- | :--- |
+| **1. Customer** | Mobile App / Web SPA | Browses menus, submits orders, authorizes payments, and tracks live delivery status |
+| **2. Restaurant** | Merchant Console | Receives order alerts, accepts orders, updates kitchen prep status, and marks ready for pickup |
+| **3. Courier Partner** | Courier Driver App | Receives dispatch pings, confirms pickup/delivery, and streams GPS telemetry every 5 seconds |
+| **4. Geospatial Map API** | Google Maps / Mapbox | Computes road distance matrices, dynamic ETA estimates, and turn-by-turn navigation routes |
 
 The standard System Context Diagram below formalizes the architectural boundary and external service contracts:
 
@@ -164,22 +152,11 @@ Illustrates concurrent kitchen preparation and courier dispatch, pickup verifica
 
 This section operationalizes the **Sommerville NFR Taxonomy** taught in **Slide 03 (Module 3.3)**, establishing quantifiable, testable engineering metrics:
 
-```
-                           +--------------------------------------+
-                           |   Non-Functional Requirements (NFR)  |
-                           +------------------+-------------------+
-                                              |
-        +-------------------------------------+------------------------------------+
-        |                                     |                                    |
-        v                                     v                                    v
-+------------------+                +-------------------+                +-------------------+
-| 1. Product Reqs  |                | 2. Org Reqs       |                | 3. External Reqs  |
-| - Performance    |                | - Dev Environment |                | - Labor Standards |
-| - Availability   |                | - Test Coverage   |                | - Tax Compliance  |
-| - Security       |                | - CI/CD Standards |                | - Privacy Laws    |
-| - Usability (UX) |                +-------------------+                +-------------------+
-+------------------+
-```
+| NFR Taxonomy Family | Key Software Quality & Constraint Dimensions |
+| :--- | :--- |
+| **1. Product Requirements** | Performance & throughput, high availability & reliability, security & data masking, usability (UX) |
+| **2. Organizational Requirements** | Development environment & framework standards, automated test coverage gates, CI/CD deployment standards |
+| **3. External Requirements** | Municipal courier labor standards, electronic tax invoice compliance, national data privacy regulations |
 
 ### 4.1 Product Requirements
 

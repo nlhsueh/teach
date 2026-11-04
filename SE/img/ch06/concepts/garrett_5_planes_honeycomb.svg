@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 21px; font-weight: 800; fill: #0b3c5d; text-anchor: middle; }
+      .subtitle { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .panel-title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; font-weight: 800; fill: #0b3c5d; }
+      .hdr-w { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800; fill: #ffffff; }
+      .lbl-b { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800; fill: #1e293b; }
+      .lbl-m { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 700; fill: #334155; }
+      .lbl-s { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #475569; }
+      .mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace; font-size: 11px; font-weight: 700; }
+    </style>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0d9488" />
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#7c3aed" />
+    </marker>
+  </defs>
+  <rect width="1200" height="620" class="bg" />
+
+  <text x="600" y="30" class="title">Structural Frameworks of UX: Garrett's 5 Planes &amp; Morville's UX Honeycomb</text>
+  <text x="600" y="50" class="subtitle">Engineering User Experience from Abstract Strategy to Concrete Pixels (Left) &amp; Evaluating the 7 Facets of UX Quality (Right)</text>
+
+  <!-- LEFT PANEL: GARRETT'S 5 PLANES -->
+  <rect x="24" y="68" width="600" height="530" class="panel" />
+  <text x="324" y="96" class="panel-title" text-anchor="middle">1. JESSE JAMES GARRETT'S 5 PLANES OF UX (Bottom-Up Architecture)</text>
+  <text x="324" y="114" class="lbl-s" text-anchor="middle">Each plane depends on decisions locked in the plane directly beneath it (Abstract → Concrete)</text>
+
+  <!-- Axis headers -->
+  <rect x="96" y="126" width="236" height="24" fill="#dbeafe" rx="6" />
+  <text x="214" y="142" class="lbl-m" fill="#1e40af" text-anchor="middle">Product as Functionality (Software)</text>
+  <rect x="342" y="126" width="236" height="24" fill="#e0e7ff" rx="6" />
+  <text x="460" y="142" class="lbl-m" fill="#3730a3" text-anchor="middle">Product as Information (Content)</text>
+
+  <!-- Plane 5: Surface -->
+  <rect x="96" y="160" width="482" height="68" fill="#fdf2f8" stroke="#db2777" stroke-width="2" rx="10" />
+  <rect x="96" y="160" width="110" height="68" fill="#db2777" rx="8" />
+  <text x="151" y="191" class="hdr-w" text-anchor="middle">5. SURFACE</text>
+  <text x="151" y="209" class="mono" fill="#fce7f3" text-anchor="middle">(Concrete UI)</text>
+  <text x="220" y="185" class="lbl-b" fill="#9d174d">Sensory &amp; Visual Design</text>
+  <text x="220" y="204" class="lbl-s">Typography, WCAG color contrast, iconography, elevation shadows &amp; micro-animations</text>
+  <text x="220" y="219" class="mono" fill="#be185d">Deliverable: Design Tokens, High-Fidelity Figma Specs &amp; CSS</text>
+
+  <!-- Plane 4: Skeleton -->
+  <rect x="96" y="242" width="482" height="68" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2" rx="10" />
+  <rect x="96" y="242" width="110" height="68" fill="#7c3aed" rx="8" />
+  <text x="151" y="273" class="hdr-w" text-anchor="middle">4. SKELETON</text>
+  <text x="151" y="291" class="mono" fill="#ede9fe" text-anchor="middle">(Wireframes)</text>
+  <text x="220" y="266" class="lbl-b" fill="#5b21b6">Interface Design &amp; Navigation Layout</text>
+  <text x="395" y="266" class="lbl-b" fill="#5b21b6">| Information Design</text>
+  <text x="220" y="285" class="lbl-s">Button placement (Fitts's Law), form controls, global/local navbars &amp; Gestalt visual grouping</text>
+  <text x="220" y="301" class="mono" fill="#6d28d9">Deliverable: Mid-Fidelity Wireframes (Empty, Loading, Ideal, Error States)</text>
+
+  <!-- Plane 3: Structure -->
+  <rect x="96" y="324" width="482" height="68" fill="#ecfdf5" stroke="#0d9488" stroke-width="2" rx="10" />
+  <rect x="96" y="324" width="110" height="68" fill="#0d9488" rx="8" />
+  <text x="151" y="355" class="hdr-w" text-anchor="middle">3. STRUCTURE</text>
+  <text x="151" y="373" class="mono" fill="#ccfbf1" text-anchor="middle">(Flows &amp; IA)</text>
+  <text x="220" y="348" class="lbl-b" fill="#115e59">Interaction Design (IxD)</text>
+  <text x="395" y="348" class="lbl-b" fill="#115e59">| Information Architecture (IA)</text>
+  <text x="220" y="367" class="lbl-s">State transition flows, error prevention &amp; recovery | LATCH taxonomy, Card Sorting &amp; Tree Testing</text>
+  <text x="220" y="383" class="mono" fill="#0f766e">Deliverable: Sitemaps, User Flows &amp; UML Activity / State Diagrams</text>
+
+  <!-- Plane 2: Scope -->
+  <rect x="96" y="406" width="482" height="68" fill="#fffbeb" stroke="#d97706" stroke-width="2" rx="10" />
+  <rect x="96" y="406" width="110" height="68" fill="#d97706" rx="8" />
+  <text x="151" y="437" class="hdr-w" text-anchor="middle">2. SCOPE</text>
+  <text x="151" y="455" class="mono" fill="#fef3c7" text-anchor="middle">(SRS Specs)</text>
+  <text x="220" y="430" class="lbl-b" fill="#92400e">Functional Specifications</text>
+  <text x="395" y="430" class="lbl-b" fill="#92400e">| Content Requirements</text>
+  <text x="220" y="449" class="lbl-s">Feature set boundaries, User Stories, Acceptance Criteria &amp; Non-Functional Usability SLAs</text>
+  <text x="220" y="465" class="mono" fill="#b45309">Deliverable: Software Requirements Specification (SRS) &amp; Product Backlog</text>
+
+  <!-- Plane 1: Strategy -->
+  <rect x="96" y="488" width="482" height="68" fill="#eff6ff" stroke="#2563eb" stroke-width="2" rx="10" />
+  <rect x="96" y="488" width="110" height="68" fill="#2563eb" rx="8" />
+  <text x="151" y="519" class="hdr-w" text-anchor="middle">1. STRATEGY</text>
+  <text x="151" y="537" class="mono" fill="#dbeafe" text-anchor="middle">(Foundation)</text>
+  <text x="220" y="512" class="lbl-b" fill="#1e40af">User Needs (Personas &amp; JTBD)</text>
+  <text x="395" y="512" class="lbl-b" fill="#1e40af">| Business Objectives</text>
+  <text x="220" y="531" class="lbl-s">Empirical field research, user goals &amp; pain points | Conversion ROI, retention KPIs &amp; brand value</text>
+  <text x="220" y="547" class="mono" fill="#1d4ed8">Deliverable: Evidence-Based Personas, JTBD &amp; Product Vision</text>
+
+  <!-- Vertical Upward Arrow on Left -->
+  <line x1="62" y1="540" x2="62" y2="175" stroke="#2563eb" stroke-width="3.5" marker-end="url(#arr-blue)" />
+  <text x="52" y="360" class="lbl-b" fill="#1e40af" transform="rotate(-90 52,360)" text-anchor="middle">ABSTRACT  ───►  CONCRETE</text>
+  <text x="335" y="582" class="lbl-m" fill="#dc2626" text-anchor="middle">[Architectural Rule]: Designing Surface UI (Plane 5) without Strategy/Scope/Structure causes project failure!</text>
+
+  <!-- RIGHT PANEL: MORVILLE'S UX HONEYCOMB -->
+  <rect x="644" y="68" width="532" height="530" class="panel" />
+  <text x="910" y="96" class="panel-title" text-anchor="middle">2. PETER MORVILLE'S 7 FACETS OF UX (The UX Honeycomb)</text>
+  <text x="910" y="114" class="lbl-s" text-anchor="middle">Moves beyond pure "Usability" to evaluate holistic product value across 7 dimensions</text>
+
+  <!-- Center Hexagon: VALUABLE -->
+  <polygon points="910,275 975,312 975,388 910,425 845,388 845,312" fill="#2563eb" stroke="#1e3a8a" stroke-width="2.5" />
+  <text x="910" y="340" class="hdr-w" text-anchor="middle" font-size="14">7. VALUABLE</text>
+  <text x="910" y="358" class="mono" fill="#dbeafe" text-anchor="middle">Delivers ROI &amp;</text>
+  <text x="910" y="373" class="mono" fill="#dbeafe" text-anchor="middle">User Mission</text>
+
+  <!-- Top: USEFUL -->
+  <polygon points="910,130 975,167 975,243 910,280 845,243 845,167" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+  <text x="910" y="192" class="lbl-b" fill="#1e40af" text-anchor="middle">1. USEFUL</text>
+  <text x="910" y="210" class="lbl-s" text-anchor="middle">Solves a real</text>
+  <text x="910" y="224" class="lbl-s" text-anchor="middle">human problem</text>
+
+  <!-- Top-Right: USABLE -->
+  <polygon points="1038,202 1103,239 1103,315 1038,352 973,315 973,239" fill="#ecfdf5" stroke="#0d9488" stroke-width="2" />
+  <text x="1038" y="264" class="lbl-b" fill="#0f766e" text-anchor="middle">2. USABLE</text>
+  <text x="1038" y="282" class="lbl-s" text-anchor="middle">Easy to learn</text>
+  <text x="1038" y="296" class="lbl-s" text-anchor="middle">&amp; efficient</text>
+
+  <!-- Bottom-Right: DESIRABLE -->
+  <polygon points="1038,348 1103,385 1103,461 1038,498 973,461 973,385" fill="#fdf2f8" stroke="#db2777" stroke-width="2" />
+  <text x="1038" y="410" class="lbl-b" fill="#9d174d" text-anchor="middle">3. DESIRABLE</text>
+  <text x="1038" y="428" class="lbl-s" text-anchor="middle">Visceral appeal</text>
+  <text x="1038" y="442" class="lbl-s" text-anchor="middle">&amp; brand craft</text>
+
+  <!-- Bottom: FINDABLE -->
+  <polygon points="910,420 975,457 975,533 910,570 845,533 845,457" fill="#fffbeb" stroke="#d97706" stroke-width="2" />
+  <text x="910" y="482" class="lbl-b" fill="#92400e" text-anchor="middle">4. FINDABLE</text>
+  <text x="910" y="500" class="lbl-s" text-anchor="middle">Clear IA, search</text>
+  <text x="910" y="514" class="lbl-s" text-anchor="middle">&amp; navigation</text>
+
+  <!-- Bottom-Left: ACCESSIBLE -->
+  <polygon points="782,348 847,385 847,461 782,498 717,461 717,385" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2" />
+  <text x="782" y="410" class="lbl-b" fill="#5b21b6" text-anchor="middle">5. ACCESSIBLE</text>
+  <text x="782" y="428" class="lbl-s" text-anchor="middle">WCAG 2.2 a11y</text>
+  <text x="782" y="442" class="lbl-s" text-anchor="middle">for all abilities</text>
+
+  <!-- Top-Left: CREDIBLE -->
+  <polygon points="782,202 847,239 847,315 782,352 717,315 717,239" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" />
+  <text x="782" y="264" class="lbl-b" fill="#15803d" text-anchor="middle">6. CREDIBLE</text>
+  <text x="782" y="282" class="lbl-s" text-anchor="middle">Trustworthy,</text>
+  <text x="782" y="296" class="lbl-s" text-anchor="middle">safe &amp; honest</text>
+
+  <text x="910" y="586" class="lbl-s" fill="#334155" text-anchor="middle">Engineering Synthesis: A system with 99.99% uptime that isn't Useful, Findable, or Accessible fails its users.</text>
+</svg>

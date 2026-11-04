@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 21px; font-weight: 800; fill: #0b3c5d; text-anchor: middle; }
+      .subtitle { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .panel-title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; font-weight: 800; fill: #0b3c5d; }
+      .hdr-w { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800; fill: #ffffff; }
+      .lbl-b { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800; fill: #1e293b; }
+      .lbl-m { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 700; fill: #334155; }
+      .lbl-s { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #475569; }
+      .mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace; font-size: 11px; font-weight: 700; }
+    </style>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0d9488" />
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#7c3aed" />
+    </marker>
+  </defs>
+  <rect width="1200" height="620" class="bg" />
+
+  <text x="600" y="30" class="title">Information Architecture Validation &amp; Brad Frost's Atomic Design System</text>
+  <text x="600" y="50" class="subtitle">Empirical Taxonomy Discovery via Card Sorting &amp; Tree Testing (Left) + Component-Driven UI Engineering (Right)</text>
+
+  <!-- LEFT PANEL: CARD SORTING VS TREE TESTING -->
+  <rect x="20" y="68" width="540" height="530" class="panel" />
+  <text x="290" y="95" class="panel-title" text-anchor="middle">1. EMPIRICAL IA: CARD SORTING vs. TREE TESTING</text>
+  <text x="290" y="113" class="lbl-s" text-anchor="middle">Validate mental-model findability BEFORE drawing visual screens!</text>
+
+  <!-- Phase A: Card Sorting -->
+  <rect x="42" y="130" width="496" height="195" fill="#eff6ff" stroke="#2563eb" stroke-width="2" rx="10" />
+  <text x="290" y="152" class="lbl-b" fill="#1e40af" text-anchor="middle">Step A: Card Sorting (Generative — Bottom-Up Taxonomy)</text>
+  <!-- Unsorted cards -->
+  <rect x="58" y="168" width="115" height="32" fill="#ffffff" stroke="#64748b" rx="4" />
+  <text x="115" y="188" class="lbl-s" text-anchor="middle">"Tip Courier"</text>
+  <rect x="58" y="208" width="115" height="32" fill="#ffffff" stroke="#64748b" rx="4" />
+  <text x="115" y="228" class="lbl-s" text-anchor="middle">"Tax Invoice"</text>
+  <rect x="58" y="248" width="115" height="32" fill="#ffffff" stroke="#64748b" rx="4" />
+  <text x="115" y="268" class="lbl-s" text-anchor="middle">"Missing Drink"</text>
+
+  <line x1="185" y1="224" x2="235" y2="224" stroke="#2563eb" stroke-width="3" marker-end="url(#arr-blue)" />
+  <text x="210" y="212" class="mono" fill="#1e40af" text-anchor="middle">15–20</text>
+  <text x="210" y="244" class="mono" fill="#1e40af" text-anchor="middle">Users</text>
+
+  <!-- User Piles -->
+  <rect x="248" y="166" width="130" height="118" fill="#dbeafe" stroke="#2563eb" rx="6" />
+  <text x="313" y="186" class="lbl-m" fill="#1e3a8a" text-anchor="middle">Pile: "My Orders"</text>
+  <text x="260" y="210" class="lbl-s">• Tip Courier</text>
+  <text x="260" y="230" class="lbl-s">• Missing Drink</text>
+  <text x="260" y="250" class="lbl-s">• Live Map</text>
+
+  <rect x="390" y="166" width="130" height="118" fill="#dbeafe" stroke="#2563eb" rx="6" />
+  <text x="455" y="186" class="lbl-m" fill="#1e3a8a" text-anchor="middle">Pile: "Billing"</text>
+  <text x="402" y="210" class="lbl-s">• Tax Invoice</text>
+  <text x="402" y="230" class="lbl-s">• Saved Cards</text>
+  <text x="402" y="250" class="lbl-s">• FoodPass Plan</text>
+
+  <text x="290" y="308" class="mono" fill="#1d4ed8" text-anchor="middle">Open Sort = Users invent pile names | Closed Sort = Fixed buckets</text>
+
+  <!-- Phase B: Tree Testing -->
+  <rect x="42" y="342" width="496" height="236" fill="#ecfdf5" stroke="#0d9488" stroke-width="2" rx="10" />
+  <text x="290" y="364" class="lbl-b" fill="#0f766e" text-anchor="middle">Step B: Tree Testing (Evaluative — "Reverse Card Sorting")</text>
+  <text x="290" y="382" class="lbl-s" text-anchor="middle">Task Prompt: "Where would you go to report a missing drink?"</text>
+
+  <!-- Plain text tree -->
+  <rect x="58" y="396" width="220" height="162" fill="#ffffff" stroke="#0d9488" rx="6" />
+  <text x="72" y="418" class="mono" fill="#334155">▸ Home &amp; Restaurants</text>
+  <text x="72" y="440" class="mono" fill="#0f766e">▾ My Orders (First Click ✓)</text>
+  <text x="92" y="462" class="mono" fill="#334155">  • Active Order Map</text>
+  <text x="92" y="484" class="mono" fill="#059669">  • Get Help / Missing Item ✓</text>
+  <text x="72" y="506" class="mono" fill="#334155">▸ Wallet &amp; Billing</text>
+  <text x="72" y="528" class="mono" fill="#334155">▸ Account Settings</text>
+
+  <!-- Tree Testing Metrics -->
+  <rect x="294" y="396" width="226" height="162" fill="#ffffff" stroke="#cbd5e1" rx="6" />
+  <text x="407" y="418" class="lbl-b" fill="#0f766e" text-anchor="middle">Quantitative IA Metrics</text>
+  <text x="306" y="444" class="lbl-s">1. Success Rate (%): Reached</text>
+  <text x="306" y="460" class="lbl-s">   correct destination node?</text>
+  <text x="306" y="484" class="lbl-s">2. Directness (%): Zero</text>
+  <text x="306" y="500" class="lbl-s">   backtracking up the tree?</text>
+  <text x="306" y="526" class="mono" fill="#047857">First-Click Correct → 87% Win</text>
+  <text x="306" y="544" class="mono" fill="#dc2626">First-Click Wrong   → 46% Win</text>
+
+  <!-- RIGHT PANEL: BRAD FROST'S ATOMIC DESIGN -->
+  <rect x="580" y="68" width="600" height="530" class="panel" />
+  <text x="880" y="95" class="panel-title" text-anchor="middle">2. BRAD FROST'S ATOMIC DESIGN SYSTEM (5 Levels + Tokens)</text>
+  <text x="880" y="113" class="lbl-s" text-anchor="middle">Single Source of Truth connecting Figma Components to Production React / iOS / Android</text>
+
+  <!-- Level 0: Design Tokens Banner -->
+  <rect x="604" y="128" width="552" height="44" fill="#1e293b" rx="8" />
+  <text x="880" y="147" class="hdr-w" text-anchor="middle">FOUNDATION: DESIGN TOKENS (JSON → CSS / Swift / Kotlin)</text>
+  <text x="880" y="164" class="mono" fill="#38bdf8" text-anchor="middle">--color-primary: #2563eb | --space-md: 16px | --radius-card: 10px | WCAG AA Built-In</text>
+
+  <!-- 5 Atomic Stages Row 1 (Atoms -> Molecules -> Organisms) -->
+  <rect x="604" y="190" width="166" height="175" fill="#eff6ff" stroke="#2563eb" stroke-width="2" rx="10" />
+  <rect x="604" y="190" width="166" height="30" fill="#2563eb" rx="8" />
+  <text x="687" y="210" class="hdr-w" text-anchor="middle">1. ATOMS</text>
+  <text x="687" y="234" class="lbl-s" text-anchor="middle">Indivisible UI primitives</text>
+  <rect x="624" y="248" width="126" height="24" fill="#ffffff" stroke="#94a3b8" rx="4" />
+  <text x="687" y="264" class="lbl-s" text-anchor="middle">&lt;Input placeholder /&gt;</text>
+  <rect x="644" y="282" width="86" height="28" fill="#2563eb" rx="6" />
+  <text x="687" y="300" class="hdr-w" text-anchor="middle" font-size="11">&lt;Button /&gt;</text>
+  <text x="687" y="346" class="mono" fill="#1e40af" text-anchor="middle">&lt;Icon /&gt; &lt;Badge /&gt;</text>
+
+  <line x1="770" y1="277" x2="792" y2="277" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arr-blue)" />
+
+  <rect x="796" y="190" width="166" height="175" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2" rx="10" />
+  <rect x="796" y="190" width="166" height="30" fill="#7c3aed" rx="8" />
+  <text x="879" y="210" class="hdr-w" text-anchor="middle">2. MOLECULES</text>
+  <text x="879" y="234" class="lbl-s" text-anchor="middle">Simple functional unit</text>
+  <rect x="812" y="252" width="134" height="62" fill="#ffffff" stroke="#7c3aed" rx="6" />
+  <text x="879" y="270" class="mono" fill="#5b21b6" text-anchor="middle">&lt;PromoCodeBox /&gt;</text>
+  <rect x="820" y="280" width="72" height="22" fill="#f8fafc" stroke="#cbd5e1" rx="3" />
+  <rect x="896" y="280" width="42" height="22" fill="#7c3aed" rx="3" />
+  <text x="917" y="295" class="hdr-w" text-anchor="middle" font-size="9">Apply</text>
+  <text x="879" y="346" class="mono" fill="#6d28d9" text-anchor="middle">Input + Button + Label</text>
+
+  <line x1="962" y1="277" x2="984" y2="277" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arr-purple)" />
+
+  <rect x="988" y="190" width="168" height="175" fill="#ecfdf5" stroke="#0d9488" stroke-width="2" rx="10" />
+  <rect x="988" y="190" width="168" height="30" fill="#0d9488" rx="8" />
+  <text x="1072" y="210" class="hdr-w" text-anchor="middle">3. ORGANISMS</text>
+  <text x="1072" y="234" class="lbl-s" text-anchor="middle">Complete UI section</text>
+  <rect x="1004" y="248" width="136" height="82" fill="#ffffff" stroke="#0d9488" rx="6" />
+  <text x="1072" y="266" class="mono" fill="#0f766e" text-anchor="middle">&lt;RestaurantCard /&gt;</text>
+  <text x="1014" y="286" class="lbl-s">• Photo + 4.9★ Badge</text>
+  <text x="1014" y="302" class="lbl-s">• ETA 20m + Fee $0</text>
+  <text x="1014" y="318" class="lbl-s">• [+ Add Favorite]</text>
+  <text x="1072" y="348" class="mono" fill="#0f766e" text-anchor="middle">Reusable across screens</text>
+
+  <!-- Row 2: 4. Templates -> 5. Pages -->
+  <rect x="604" y="388" width="260" height="190" fill="#fffbeb" stroke="#d97706" stroke-width="2" rx="10" />
+  <rect x="604" y="388" width="260" height="30" fill="#d97706" rx="8" />
+  <text x="734" y="408" class="hdr-w" text-anchor="middle">4. TEMPLATES (Page Skeleton)</text>
+  <text x="734" y="434" class="lbl-s" text-anchor="middle">Content-agnostic layout wireframe grid</text>
+  <rect x="628" y="446" width="212" height="114" fill="#ffffff" stroke="#f59e0b" stroke-dasharray="4,3" rx="6" />
+  <text x="734" y="468" class="mono" fill="#b45309" text-anchor="middle">[ &lt;GlobalNavbarOrganism /&gt; ]</text>
+  <text x="734" y="494" class="mono" fill="#b45309" text-anchor="middle">[ 2-Column Menu Grid Slot ]</text>
+  <text x="734" y="520" class="mono" fill="#b45309" text-anchor="middle">[ &lt;StickyCartFooter /&gt; ]</text>
+  <text x="734" y="548" class="lbl-s" text-anchor="middle">Defines responsive breakpoints</text>
+
+  <line x1="864" y1="483" x2="892" y2="483" stroke="#d97706" stroke-width="2.5" marker-end="url(#arr-amber)" />
+
+  <rect x="896" y="388" width="260" height="190" fill="#fdf2f8" stroke="#db2777" stroke-width="2" rx="10" />
+  <rect x="896" y="388" width="260" height="30" fill="#db2777" rx="8" />
+  <text x="1026" y="408" class="hdr-w" text-anchor="middle">5. PAGES (Real Data Instance)</text>
+  <text x="1026" y="434" class="lbl-s" text-anchor="middle">Populated with live production payloads</text>
+  <rect x="920" y="446" width="212" height="114" fill="#ffffff" stroke="#db2777" rx="6" />
+  <text x="1026" y="468" class="lbl-b" fill="#9d174d" text-anchor="middle">"Din Tai Fung — Group Cart"</text>
+  <text x="932" y="490" class="lbl-s">• Tests 80-char dish names</text>
+  <text x="932" y="508" class="lbl-s">• Tests Empty / Error / Loading</text>
+  <text x="932" y="526" class="lbl-s">• Verifies Heuristic #4 Consistency</text>
+  <text x="1026" y="548" class="mono" fill="#be185d" text-anchor="middle">100% Storybook Verified!</text>
+</svg>

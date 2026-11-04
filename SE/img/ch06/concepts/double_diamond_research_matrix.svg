@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 21px; font-weight: 800; fill: #0b3c5d; text-anchor: middle; }
+      .subtitle { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .panel-title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; font-weight: 800; fill: #0b3c5d; }
+      .hdr-w { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800; fill: #ffffff; }
+      .lbl-b { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800; fill: #1e293b; }
+      .lbl-m { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 700; fill: #334155; }
+      .lbl-s { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #475569; }
+      .mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace; font-size: 11px; font-weight: 700; }
+    </style>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0d9488" />
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#7c3aed" />
+    </marker>
+  </defs>
+  <rect width="1200" height="620" class="bg" />
+
+  <text x="600" y="30" class="title">The Double Diamond HCD Lifecycle &amp; Empirical User Research Landscape</text>
+  <text x="600" y="50" class="subtitle">Diverging and Converging Across Problem &amp; Solution Spaces (Left) + Triangulating Qualitative &amp; Quantitative Methods (Right)</text>
+
+  <!-- LEFT PANEL: THE DOUBLE DIAMOND -->
+  <rect x="20" y="68" width="615" height="530" class="panel" />
+  <text x="327" y="95" class="panel-title" text-anchor="middle">1. UK DESIGN COUNCIL DOUBLE DIAMOND &amp; ISO 9241-210</text>
+  <text x="327" y="113" class="lbl-s" text-anchor="middle">"Design the Right Thing" (Diamond 1) Before "Designing the Thing Right" (Diamond 2)</text>
+
+  <!-- Diamond 1: Problem Space -->
+  <polygon points="55,280 185,155 315,280 185,405" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" />
+  <line x1="185" y1="155" x2="185" y2="405" stroke="#93c5fd" stroke-width="2" stroke-dasharray="5,4" />
+  <text x="185" y="142" class="lbl-b" fill="#1e40af" text-anchor="middle">DIAMOND 1: PROBLEM SPACE</text>
+  <text x="125" y="255" class="lbl-b" fill="#1d4ed8" text-anchor="middle">1. DISCOVER</text>
+  <text x="125" y="273" class="mono" fill="#2563eb" text-anchor="middle">(Diverge &lt;)</text>
+  <text x="125" y="292" class="lbl-s" text-anchor="middle">Field Inquiry</text>
+  <text x="125" y="306" class="lbl-s" text-anchor="middle">&amp; Interviews</text>
+
+  <text x="245" y="255" class="lbl-b" fill="#1e3a8a" text-anchor="middle">2. DEFINE</text>
+  <text x="245" y="273" class="mono" fill="#1d4ed8" text-anchor="middle">(Converge &gt;)</text>
+  <text x="245" y="292" class="lbl-s" text-anchor="middle">Personas, JTBD</text>
+  <text x="245" y="306" class="lbl-s" text-anchor="middle">&amp; Journey Map</text>
+
+  <!-- Diamond 2: Solution Space -->
+  <polygon points="335,280 465,155 595,280 465,405" fill="#ecfdf5" stroke="#0d9488" stroke-width="2.5" />
+  <line x1="465" y1="155" x2="465" y2="405" stroke="#5eead4" stroke-width="2" stroke-dasharray="5,4" />
+  <text x="465" y="142" class="lbl-b" fill="#0f766e" text-anchor="middle">DIAMOND 2: SOLUTION SPACE</text>
+  <text x="405" y="255" class="lbl-b" fill="#0f766e" text-anchor="middle">3. DEVELOP</text>
+  <text x="405" y="273" class="mono" fill="#0d9488" text-anchor="middle">(Diverge &lt;)</text>
+  <text x="405" y="292" class="lbl-s" text-anchor="middle">IA, Sketches &amp;</text>
+  <text x="405" y="306" class="lbl-s" text-anchor="middle">Wireframes</text>
+
+  <text x="525" y="255" class="lbl-b" fill="#115e59" text-anchor="middle">4. DELIVER</text>
+  <text x="525" y="273" class="mono" fill="#0f766e" text-anchor="middle">(Converge &gt;)</text>
+  <text x="525" y="292" class="lbl-s" text-anchor="middle">Usability Test</text>
+  <text x="525" y="306" class="lbl-s" text-anchor="middle">&amp; Sprint Ship</text>
+
+  <!-- Center Pivot Node: Problem Statement / SRS -->
+  <circle cx="325" cy="280" r="24" fill="#d97706" stroke="#ffffff" stroke-width="3" />
+  <text x="325" y="277" class="hdr-w" text-anchor="middle" font-size="10">SRS /</text>
+  <text x="325" y="290" class="hdr-w" text-anchor="middle" font-size="10">HMW</text>
+
+  <!-- Iterative Feedback Loop Arrow at Bottom -->
+  <path d="M 525 415 Q 325 465 185 415" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="6,4" fill="none" marker-end="url(#arr-purple)" />
+  <text x="327" y="456" class="mono" fill="#6d28d9" text-anchor="middle">Continuous Iterative Evaluation Loop (ISO 9241-210)</text>
+
+  <!-- Traceability Box -->
+  <rect x="42" y="476" width="570" height="102" fill="#f8fafc" stroke="#cbd5e1" rx="8" />
+  <text x="327" y="498" class="lbl-b" fill="#0b3c5d" text-anchor="middle">Direct Traceability from UX Artifacts to Software Engineering (Ch 03–05)</text>
+  <text x="58" y="520" class="lbl-s">• Evidence-Based Persona  ───►  UML Actor + Non-Functional Usability SLAs (e.g., 56dp outdoor targets)</text>
+  <text x="58" y="540" class="lbl-s">• Jobs-to-be-Done (JTBD)  ───►  Agile Epics &amp; User Stories ("When [Context], I want [Action], so I can...")</text>
+  <text x="58" y="560" class="lbl-s">• Hierarchical Task Analysis (HTA)  ───►  UML Use Case Scenarios, Activity Diagrams &amp; BDD Acceptance Tests</text>
+
+  <!-- RIGHT PANEL: NN/G 2x2 RESEARCH MATRIX -->
+  <rect x="650" y="68" width="530" height="530" class="panel" />
+  <text x="915" y="95" class="panel-title" text-anchor="middle">2. THE 2×2 USER RESEARCH LANDSCAPE (NN/g)</text>
+  <text x="915" y="113" class="lbl-s" text-anchor="middle">Triangulate What Users Do (Behavioral) vs. What Users Say (Attitudinal)</text>
+
+  <!-- Column Headers -->
+  <rect x="755" y="128" width="190" height="32" fill="#eff6ff" stroke="#93c5fd" rx="6" />
+  <text x="850" y="149" class="lbl-b" fill="#1e40af" text-anchor="middle">QUALITATIVE ("Why?")</text>
+  <rect x="960" y="128" width="195" height="32" fill="#ecfdf5" stroke="#6ee7b7" rx="6" />
+  <text x="1057" y="149" class="lbl-b" fill="#047857" text-anchor="middle">QUANTITATIVE ("How Much?")</text>
+
+  <!-- Row 1: Behavioral -->
+  <rect x="668" y="172" width="76" height="175" fill="#1e293b" rx="6" />
+  <text x="706" y="260" class="hdr-w" text-anchor="middle" transform="rotate(-90 706,260)">BEHAVIORAL (What They Do)</text>
+
+  <rect x="755" y="172" width="190" height="175" fill="#ffffff" stroke="#2563eb" stroke-width="2" rx="8" />
+  <text x="850" y="196" class="lbl-b" fill="#1d4ed8" text-anchor="middle">Field &amp; Lab Observation</text>
+  <text x="767" y="218" class="lbl-s">• Contextual Inquiry (Field)</text>
+  <text x="767" y="238" class="lbl-s">• Moderated Usability Test</text>
+  <text x="767" y="256" class="lbl-s">  (Think-Aloud Protocol)</text>
+  <text x="767" y="276" class="lbl-s">• Open/Closed Card Sorting</text>
+  <rect x="767" y="294" width="166" height="40" fill="#eff6ff" rx="4" />
+  <text x="850" y="312" class="mono" fill="#1e40af" text-anchor="middle">Sample: N = 5–12 users</text>
+  <text x="850" y="326" class="lbl-s" fill="#1d4ed8" text-anchor="middle">Finds mental-model bugs!</text>
+
+  <rect x="960" y="172" width="195" height="175" fill="#ffffff" stroke="#0d9488" stroke-width="2" rx="8" />
+  <text x="1057" y="196" class="lbl-b" fill="#0f766e" text-anchor="middle">Scale Telemetry &amp; RCTs</text>
+  <text x="972" y="218" class="lbl-s">• Clickstream Funnel Logs</text>
+  <text x="972" y="238" class="lbl-s">• Controlled A/B Testing</text>
+  <text x="972" y="256" class="lbl-s">• Tree Testing (First-Click)</text>
+  <text x="972" y="276" class="lbl-s">• Eye-Tracking Heatmaps</text>
+  <rect x="972" y="294" width="171" height="40" fill="#ecfdf5" rx="4" />
+  <text x="1057" y="312" class="mono" fill="#047857" text-anchor="middle">Sample: N = 100–100k+</text>
+  <text x="1057" y="326" class="lbl-s" fill="#0f766e" text-anchor="middle">Pinpoints drop-off rates!</text>
+
+  <!-- Row 2: Attitudinal -->
+  <rect x="668" y="360" width="76" height="175" fill="#475569" rx="6" />
+  <text x="706" y="448" class="hdr-w" text-anchor="middle" transform="rotate(-90 706,448)">ATTITUDINAL (What They Say)</text>
+
+  <rect x="755" y="360" width="190" height="175" fill="#ffffff" stroke="#d97706" stroke-width="2" rx="8" />
+  <text x="850" y="384" class="lbl-b" fill="#b45309" text-anchor="middle">Deep Needs &amp; Motivations</text>
+  <text x="767" y="406" class="lbl-s">• Semi-Structured Interviews</text>
+  <text x="767" y="426" class="lbl-s">• Longitudinal Diary Studies</text>
+  <text x="767" y="446" class="lbl-s">• Stakeholder Interviews</text>
+  <text x="767" y="464" class="lbl-s">• Focus Groups</text>
+  <rect x="767" y="482" width="166" height="40" fill="#fffbeb" rx="4" />
+  <text x="850" y="500" class="mono" fill="#92400e" text-anchor="middle">Sample: N = 8–15 users</text>
+  <text x="850" y="514" class="lbl-s" fill="#b45309" text-anchor="middle">Discovers JTBD &amp; Context</text>
+
+  <rect x="960" y="360" width="195" height="175" fill="#ffffff" stroke="#7c3aed" stroke-width="2" rx="8" />
+  <text x="1057" y="384" class="lbl-b" fill="#6d28d9" text-anchor="middle">Standardized Scales</text>
+  <text x="972" y="406" class="lbl-s">• SUS (0–100 Usability Scale)</text>
+  <text x="972" y="426" class="lbl-s">• SEQ &amp; NASA-TLX Workload</text>
+  <text x="972" y="446" class="lbl-s">• Google HEART Happiness</text>
+  <text x="972" y="464" class="lbl-s">• Kano Feature Priority Survey</text>
+  <rect x="972" y="482" width="171" height="40" fill="#f5f3ff" rx="4" />
+  <text x="1057" y="500" class="mono" fill="#5b21b6" text-anchor="middle">Sample: N = 30–1,000+</text>
+  <text x="1057" y="514" class="lbl-s" fill="#6d28d9" text-anchor="middle">Benchmarks satisfaction!</text>
+
+  <text x="915" y="568" class="lbl-m" fill="#dc2626" text-anchor="middle">Golden Rule: Never rely on Focus Groups alone—observe real behavior!</text>
+</svg>

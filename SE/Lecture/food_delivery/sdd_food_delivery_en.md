@@ -14,38 +14,13 @@
 QuickBite implements a **Microservices Architecture** integrated with an **Event-Driven Architecture (EDA)**.  
 The system leverages modern cloud-native design patterns to achieve high horizontal scalability, resilience, and strict domain separation:
 
-```
-+---------------------------------------------------------------------------------+
-|                       Client Tier (Mobile iOS/Android & Web SPA)                |
-+---------------------------------------------------------------------------------+
-                                        | (HTTPS / WSS)
-                                        v
-+---------------------------------------------------------------------------------+
-|                  Cloud API Gateway (Kong / Envoy) + OAuth 2.0 Auth              |
-|        - SSL Termination  - Rate Limiting  - Route Management  - JWT Validation |
-+---------------------------------------------------------------------------------+
-          |                     |                      |                   |
-          v                     v                      v                   v
-+------------------+  +-------------------+  +------------------+  +--------------+
-|  Order Service   |  | Restaurant Service|  | Dispatch Service |  |Payment Serv. |
-| (Spring Boot/Go) |  |   (Menu & Prep)   |  | (Matching Engine)|  | (Stripe/Bank)|
-+------------------+  +-------------------+  +------------------+  +--------------+
-          |                     |                      |                   |
-          +---------------------+----------------------+-------------------+
-                                        |
-                                        v
-+---------------------------------------------------------------------------------+
-|               High-Throughput Event Streaming Bus (Apache Kafka)                |
-| Topics: order.created | order.paid | order.prep_ready | courier.matched | ...  |
-+---------------------------------------------------------------------------------+
-          |                                            |
-          v                                            v
-+------------------------------------+       +------------------------------------+
-|  Polyglot Persistence Layer        |       |  Notification & Real-time Services |
-|  - PostgreSQL (ACID Order Records) |       |  - Redis Cluster (GeoJSON & Lock)  |
-|  - MongoDB (Unstructured Logs)     |       |  - WebSocket Push Gateway (Tracking)|
-+------------------------------------+       +------------------------------------+
-```
+| Architecture Tier | Core Technology Stack | Key Engineering Responsibilities & Protocols |
+| :--- | :--- | :--- |
+| **1. Client Tier** | Mobile (iOS/Android) & Web SPA | Customer ordering UI, Merchant console, and Courier app over HTTPS / WSS |
+| **2. Cloud API Gateway** | Kong / Envoy + OAuth 2.0 Auth | SSL termination, rate limiting, route management, and JWT validation |
+| **3. Domain Microservices** | Order / Restaurant / Dispatch / Payment | Order lifecycle, menu & prep, courier matching engine, and Stripe/Bank payment (Spring Boot / Go) |
+| **4. Event Streaming Bus** | Apache Kafka | High-throughput asynchronous event decoupling (`order.created`, `order.paid`, `order.prep_ready`, `courier.matched`) |
+| **5. Polyglot Persistence & Push** | PostgreSQL / MongoDB / Redis / WebSocket | PostgreSQL (ACID orders), MongoDB (logs), Redis Cluster (GeoJSON & locks), and WebSocket push gateway |
 
 ### 1.2 Kruchten's 4+1 View Model Alignment
 Following the 4+1 View Model taught in **Slide 05**:
@@ -95,19 +70,20 @@ To enforce high cohesion, loose coupling, and the Open/Closed Principle (OCP), Q
 #### Pattern 1: Strategy Pattern — Intelligent Courier Dispatch
 The matching engine alternates between optimization algorithms based on environmental conditions and regional traffic:
 
-```
-                <<interface>>
-              DispatchStrategy
-       +-----------------------------+
-       |+ matchCourier(Order): Courier|
-       +-----------------------------+
-                      ^
-         +------------+------------+
-         |                         |
-+---------------------+   +-----------------------+
-|NearestCourierStrategy|   |RatingWeightedStrategy |
-| (Peak hour / Rain)  |   | (Standard load mode)  |
-+---------------------+   +-----------------------+
+```plantuml
+@startuml
+interface DispatchStrategy <<interface>> {
+  + matchCourier(order: Order): Courier
+}
+class NearestCourierStrategy {
+  + matchCourier(order: Order): Courier
+}
+class RatingWeightedStrategy {
+  + matchCourier(order: Order): Courier
+}
+DispatchStrategy <|.. NearestCourierStrategy
+DispatchStrategy <|.. RatingWeightedStrategy
+@enduml
 ```
 
 ```java
@@ -141,22 +117,22 @@ public class RatingWeightedStrategy implements DispatchStrategy {
 #### Pattern 2: State Pattern — Order Lifecycle State Machine
 Rather than cluttering code with sprawling `switch-case` branches, the State Pattern encapsulates lifecycle-specific behaviors into dedicated state classes, preventing invalid state jumps:
 
-```
-                <<interface>>
-                 OrderState
-       +-----------------------------+
-       |+ pay(): void                |
-       |+ accept(): void             |
-       |+ pickup(): void             |
-       |+ deliver(): void            |
-       |+ cancel(): void             |
-       +-----------------------------+
-                      ^
-     +----------------+----------------+
-     |                |                |
-+----------+    +------------+   +-------------+
-|PlacedState|   |PaidState   |   |Delivering...|
-+----------+    +------------+   +-------------+
+```plantuml
+@startuml
+interface OrderState <<interface>> {
+  + pay(): void
+  + accept(): void
+  + pickup(): void
+  + deliver(): void
+  + cancel(): void
+}
+class PlacedState
+class PaidState
+class DeliveringState
+OrderState <|.. PlacedState
+OrderState <|.. PaidState
+OrderState <|.. DeliveringState
+@enduml
 ```
 
 #### Pattern 3: Observer Pattern (Pub-Sub) — Real-Time Event Broadcasting
@@ -298,19 +274,11 @@ Different domains require divergent consistency and latency characteristics. Qui
 ### 5.2 CAP Theorem Trade-off Strategy
 Per the CAP Theorem, distributed architectures must balance Consistency (C) and Availability (A) during network partitions (P):
 
-```
-                    +------------------------------------+
-                    |        CAP Trade-off Strategy      |
-                    +-----------------+------------------+
-                                      |
-              +-----------------------+-----------------------+
-              |                                               |
-              v                                               v
-    [ CP Subsystem: Orders & Ledger ]             [ AP Subsystem: GPS & Reviews ]
-    - Strong Consistency Priority                 - High Availability Priority
-    - Strict distributed locks (ACID / Redlock)   - Eventual Consistency accepted
-    - Rejects order if consensus cannot be reached - Displays last-known GPS coordinates during jitter
-```
+| Distributed CAP Strategy | CP Subsystem: Orders & Financial Ledger | AP Subsystem: GPS Telemetry & Reviews |
+| :--- | :--- | :--- |
+| **Primary Architectural Priority** | Strong Consistency (CP) | High Availability (AP) |
+| **Concurrency & Locking** | Strict distributed locks (PostgreSQL ACID / Redlock) | Eventual Consistency accepted |
+| **Partition Fallback Behavior** | Rejects order if consensus cannot be reached (zero double-charging) | Displays last-known cached GPS coordinates during network jitter |
 
 ---
 *Authored by: Feng Chia University Software Engineering Teaching Team (Prof. Nien-Lin Hsueh)*  

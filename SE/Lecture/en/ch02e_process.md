@@ -21,18 +21,11 @@
 
 Before an engineering team writes a single line of executable code or configures automated build tooling, it must establish the operational environment in which software construction takes place. Software development is rarely an individual pursuit; in commercial and industrial settings, it is an intellectually demanding, collaborative undertaking spanning weeks, months, or years, involving multidisciplinary specialists including product managers, domain analysts, systems architects, security specialists, quality assurance engineers, and site reliability teams.
 
-```
-+-----------------------------------------------------------------------------------+
-|                            THE SOFTWARE PROCESS                                   |
-|                                                                                   |
-|  [Inputs]                                                         [Outputs]       |
-|  * User Needs          +------------------------------------+     * Running Code  |
-|  * Market Demands  --->|   Interrelated Technical,          |---> * Documentation |
-|  * Constraints         |   Collaborative & Management       |     * Verified      |
-|  * Resources           |   Activities (ISO/IEC 12207)       |       Releases      |
-|                        +------------------------------------+                     |
-+-----------------------------------------------------------------------------------+
-```
+| Process Role | Core Elements & Engineering Responsibilities |
+| :--- | :--- |
+| **Inputs** | Real user needs, market demands, regulatory constraints, and project resources |
+| **Core Engine (The Software Process)** | Interrelated technical, collaborative, and management activities (defined by ISO/IEC 12207) |
+| **Outputs** | Executable running code, architectural documentation, and verified production releases |
 
 ### 2.1.1 What is a Software Process?
 
@@ -60,28 +53,12 @@ Think of a process model as a **city road map**:
 
 Regardless of whether a team follows an ultra-rigid military Waterfall model, a two-week Scrum cadence, an Extreme Programming regimen, or an autonomous AI agent workflow, **all software processes encompass four universal activities**:
 
-```
-+------------------------------------------------------------------------------------+
-|                      THE 4 UNIVERSAL PROCESS ACTIVITIES                            |
-+--------------------------+---------------------------------------------------------+
-| Activity                 | Core Engineering Focus                                  |
-+--------------------------+---------------------------------------------------------+
-| 1. Software              | Eliciting, analyzing, negotiating, and documenting      |
-|    Specification         | functional requirements, system constraints, user       |
-|    (Requirements)        | stories, and formal acceptance criteria.                |
-+--------------------------+---------------------------------------------------------+
-| 2. Software Design &     | Establishing system architecture, interface contracts,   |
-|    Implementation        | database schemas, and writing executable source code.   |
-+--------------------------+---------------------------------------------------------+
-| 3. Software Validation   | Verifying that code meets formal specifications and      |
-|    (V&V / Testing)       | validating that the running system satisfies customer   |
-|                          | operational needs in real-world environments.           |
-+--------------------------+---------------------------------------------------------+
-| 4. Software Evolution    | Modifying, refactoring, patching, and scaling software   |
-|    (Maintenance)         | in response to bugs, architectural decay, and new       |
-|                          | competitive market demands over years or decades.       |
-+--------------------------+---------------------------------------------------------+
-```
+| Universal Activity | Core Engineering Focus & Objectives |
+| :--- | :--- |
+| **1. Software Specification (Requirements)** | Eliciting, analyzing, negotiating, and documenting functional requirements, system constraints, user stories, and formal acceptance criteria. |
+| **2. Software Design & Implementation** | Establishing system architecture, interface contracts, database schemas, and writing executable source code. |
+| **3. Software Validation (V&V / Testing)** | Verifying that code meets formal specifications and validating that the running system satisfies customer operational needs in real-world environments. |
+| **4. Software Evolution (Maintenance)** | Modifying, refactoring, patching, and scaling software in response to bugs, architectural decay, and new competitive market demands over years or decades. |
 
 > 💡 **Core Insight**: The four activities above are *time-agnostic*. Every piece of software must be specified, designed, validated, and evolved. **Software process models differ fundamentally not in *what* activities they perform, but in *WHEN* and *HOW OFTEN* these activities occur!**
 > * In Waterfall, each activity occurs once in a monumental, multi-month sequential block.
@@ -91,12 +68,12 @@ Regardless of whether a team follows an ultra-rigid military Waterfall model, a 
 
 Software processes exist along a continuous spectrum ranging from highly predictive (plan-driven) to highly adaptive (evolutionary and continuous):
 
-```
-Predictive (Plan-Driven) <=================================> Adaptive (Continuous)
-[Waterfall] ---------> [V-Model] ---------> [Scrum/Kanban/XP] ---------> [DevOps / AI Spec]
-Strict Upfront Plans   Symmetrical V&V      Short Iterations / MVP       Continuous Pipelines
-Document Gates         Traceability         Refactoring & Flow           Automated Gates
-```
+| Spectrum Position | Representative Model | Core Strategy | Governance & Handoff Mechanism |
+| :--- | :--- | :--- | :--- |
+| **1. Predictive (Plan-Driven)** | Waterfall Model | Exhaustive upfront planning & frozen scope | Formal phase-gate document sign-offs |
+| **2. Symmetrical V&V** | The V-Model | Dual-track specification & test design | Horizontal Requirements Traceability Matrix (RTM) |
+| **3. Empirical Adaptive** | Scrum / Kanban / XP | Short iterations & vertical MVP slices | Continuous refactoring, WIP limits & empirical adaptation |
+| **4. Continuous Automated** | DevOps / AI Spec-Driven | End-to-end automated CI/CD pipelines | Deterministic compilers, SAST & automated test gates |
 
 1. **Plan-Driven / Sequential Models (Waterfall & V-Model):** Prioritize predictable budgets, fixed timelines, exhaustive upfront specifications, formal phase-gate sign-offs, and audit traceability.
 2. **Evolutionary & Iterative Models (Spiral & Prototyping):** Prioritize explicit risk assessment, iterative refinement, and user mockups to resolve requirements ambiguity.
@@ -109,39 +86,21 @@ Document Gates         Traceability         Refactoring & Flow           Automat
 
 Plan-driven approaches represent the earliest formal software lifecycle methodologies. Originating in the late 1960s and early 1970s, they borrowed their organizational philosophy directly from traditional heavy engineering disciplines—such as civil infrastructure, bridge construction, and aerospace manufacturing.
 
-```
-+-----------------------------------------------------------------------------------+
-|                        THE CIVIL ENGINEERING ANALOGY                              |
-|                                                                                   |
-|  Civil Engineering (Skyscraper / Bridge):                                         |
-|  * Blueprints must be 100% complete before excavation begins.                     |
-|  * Modifying foundation specifications after pouring concrete costs millions.     |
-|                                                                                   |
-|  Plan-Driven Software Engineering:                                                |
-|  * Software requirements must be 100% frozen before coding begins.                |
-|  * Modifying architecture after code implementation is assumed to be catastrophic.|
-+-----------------------------------------------------------------------------------+
-```
+> 🏗️ **The Civil Engineering Analogy vs. Plan-Driven Software Engineering**:
+> * **Civil Engineering (Skyscraper / Bridge)**: Blueprints must be 100% complete before excavation begins; modifying foundation specifications after pouring concrete costs millions of dollars.
+> * **Plan-Driven Software Engineering**: Software requirements (SRS) must be 100% frozen before coding begins; modifying architecture after code implementation is assumed to be equally catastrophic.
 
 ### 2.2.1 The Waterfall Model: 5 Sequential Stages
 
 First formally described by **Winston W. Royce in 1970** in his landmark paper *"Managing the Development of Large Software Systems"*, the classic Waterfall model arranges development into distinct, sequential, cascading phases:
 
-```
-[ Requirements Definition ]
-            |
-            v  (Signed SRS Document)
-      [ System & Software Design ]
-                  |
-                  v  (Architecture & Interface Specs)
-            [ Implementation & Unit Testing ]
-                        |
-                        v  (Compiled Modules & Unit Test Runs)
-                  [ Integration & System Testing ]
-                              |
-                              v  (Validated Production Release)
-                        [ Operations & Maintenance ]
-```
+| Sequential Stage | Phase Name | Primary Downstream Handoff Deliverable |
+| :--- | :--- | :--- |
+| **Stage 1** | Requirements Definition | Signed & frozen *Software Requirements Specification (SRS)* |
+| **Stage 2** | System & Software Design | *Software Architecture Document (SAD)* & module interface contracts |
+| **Stage 3** | Implementation & Unit Testing | Compiled binary modules & isolated unit test reports |
+| **Stage 4** | Integration & System Testing | Fully integrated, end-to-end validated release candidate |
+| **Stage 5** | Operations & Maintenance | Live production deployment & long-term maintenance patches |
 
 1. **Requirements Definition:** Systems analysts interact with stakeholders to document the entire scope of system capabilities, constraints, and non-functional goals in a legally binding *Software Requirements Specification (SRS)*.
 2. **System & Software Design:** System architects map requirements into hardware allocations, multi-tier software architectures, data schemas, and component interface contracts, codified in a *Software Architecture Document (SAD)*.
@@ -206,23 +165,12 @@ The **V-Model (Verification and Validation Model)** is an architectural extensio
 
 The V-Model bends the linear waterfall downward and upward into a symmetrical "V" shape, enforcing **dual-track engineering**:
 
-```
-      DECOMPOSITION & SPECIFICATION                       INTEGRATION & VALIDATION
-      (Left Downward Arm)                                 (Right Upward Arm)
-
-  User Requirements -------------------------------------> Acceptance Testing
-         \                                                    ^
-          v                                                  /
-    System Architecture -------------------------> System Integration Testing
-           \                                              ^
-            v                                            /
-      Detailed Component Design -------------> Unit / Component Testing
-             \                                        ^
-              v                                      /
-             +--------------------------------------+
-             |   Source Code Implementation (Tip)   |
-             +--------------------------------------+
-```
+| Left Downward Arm: Decomposition & Specification | Symmetrical Traceability | Right Upward Arm: Integration & Validation |
+| :--- | :---: | :--- |
+| **1. User Requirements** | ↔ | **Acceptance Testing (UAT)** |
+| **2. System Architecture** | ↔ | **System Integration Testing** |
+| **3. Detailed Component Design** | ↔ | **Unit / Component Testing** |
+| **4. Apex: Source Code Implementation** | — | *Connects downward specification with upward integration & verification* |
 
 ![The Software V-Model](../../img/ch02/comic_v_model.png)
 
@@ -232,13 +180,13 @@ The V-Model bends the linear waterfall downward and upward into a symmetrical "V
 
 The power of the V-Model lies in the **horizontal dashed lines** linking each decomposition phase on the left with its corresponding verification phase on the right:
 
-1. **User Requirements $\longleft→ Acceptance Testing:**
+1. **User Requirements ↔ Acceptance Testing:**
    * *Core Question:* *"Are we building the right system?"* (Validation).
    * *Mechanism:* While requirements engineers define business workflows and user stories on the left, quality assurance leads simultaneously author the **User Acceptance Test (UAT) Plan** on the right.
-2. **System Architecture $\longleft→ System Integration Testing:**
+2. **System Architecture ↔ System Integration Testing:**
    * *Core Question:* *"Are subsystems and microservices communicating correctly?"* (Verification).
    * *Mechanism:* While architects define network protocols, database schemas, and API contracts on the left, integration engineers concurrently author automated integration test suites verifying inter-service boundaries.
-3. **Detailed Component Design $\longleft→ Unit / Component Testing:**
+3. **Detailed Component Design ↔ Unit / Component Testing:**
    * *Core Question:* *"Do individual algorithms and classes execute correctly without crashing?"* (Verification).
    * *Mechanism:* While software engineers specify class interfaces, data structures, and edge-case behaviors on the left, they write unit test specifications verifying algorithms before writing production code.
 
@@ -299,23 +247,11 @@ As the software industry entered the 1980s and 1990s, the fatal integration risk
 
 The solution emerged in two distinct but complementary mechanisms: **Incremental Delivery** and **Iterative Refinement**.
 
-```
-+-----------------------------------------------------------------------------------+
-|                        INCREMENTAL vs. ITERATIVE AT A GLANCE                      |
-+------------------------------------+----------------------------------------------+
-| Dimension                          | Incremental Development                      |
-+------------------------------------+----------------------------------------------+
-| Engineering Focus                  | "Breadth & Partitioning" (Adding pieces)     |
-| Architectural Action               | Deliver vertical functional slice A, then B. |
-| Metaphor                           | Building a brick wall layer by layer.        |
-+------------------------------------+----------------------------------------------+
-| Dimension                          | Iterative Development                        |
-+------------------------------------+----------------------------------------------+
-| Engineering Focus                  | "Depth & Polish" (Refining the whole)        |
-| Architectural Action               | Create a rough draft of the whole, polish it.|
-| Metaphor                           | A sculptor chiseling a rough marble block.   |
-+------------------------------------+----------------------------------------------+
-```
+| Comparison Dimension | Incremental Development | Iterative Development |
+| :--- | :--- | :--- |
+| **Engineering Focus** | "Breadth & Partitioning" (Adding pieces) | "Depth & Polish" (Refining the whole) |
+| **Architectural Action** | Deliver vertical functional slice A, then B, then C | Create a rough draft of the whole system, then polish it |
+| **Classic Metaphor** | **Brick Wall**: Building a brick wall layer by layer | **The Sculptor**: Chiseling a rough marble block into a statue |
 
 ### 2.3.1 Incremental Delivery: Vertical Functional Slicing
 
@@ -341,10 +277,8 @@ The classic analogy is **The Sculptor**:
 * **Iteration 3 (Features & Musculature):** Facial features, hands, and muscular definitions are carved into the stone.
 * **Iteration 4 (Fine Polish):** Sanding, surface texturing, and polishing produce the finished masterpiece.
 
-```
-[Raw Marble Block] ---> [Rough Silhouette] ---> [Defined Limbs] ---> [Polished Masterpiece]
-    (Start)               (Iteration 1)           (Iteration 2)          (Final Iteration)
-```
+> 🗿 **Iterative Refinement Trajectory**:
+> **Raw Marble Block** (Start) ➔ **Rough Silhouette** (Iteration 1) ➔ **Defined Limbs** (Iteration 2) ➔ **Polished Masterpiece** (Final Iteration)
 
 > 💡 **The Sculptor's Lesson**: A sculptor **never** carves a 100% perfect, polished left ear out of raw marble while leaving the rest of the block completely untouched! If they did, discovering later that the head was five inches too low would force them to throw the entire block away.
 
@@ -386,26 +320,11 @@ This synthesis gives birth to the **Minimum Viable Product (MVP)**. Consultant H
 
 To understand how incremental and iterative engineering combine in commercial practice, consider building a food ordering platform (e.g., UberEats):
 
-```
-+------------------------------------------------------------------------------------+
-|                FOOD DELIVERY PLATFORM: INCREMENTAL + ITERATIVE                     |
-+---------------------+--------------------------------------------------------------+
-| Phase               | Implementation & Strategy                                    |
-+---------------------+--------------------------------------------------------------+
-| Sprint 1: MVP       | * Simple text-based menu (HTML).                             |
-| (End-to-End Core)   | * Cash-on-delivery only (no payment gateway).                |
-|                     | * Manual phone dispatch to restaurant and drivers.           |
-|                     | --> Result: Complete vertical order flow functions on Day 1! |
-+---------------------+--------------------------------------------------------------+
-| Sprint 2:           | * Add Online Credit Card & Apple Pay integration.            |
-| Incremental Slice   | * Automated merchant notification tablet app.                |
-|                     | --> Result: New functional capability added to stable base.  |
-+---------------------+--------------------------------------------------------------+
-| Sprint 3:           | * Upgrade plain driver text notification to real-time GPS    |
-| Iterative Polish    |   mapping, dynamic routing, and driver location tracking.    |
-|                     | --> Result: Deepens and polishes existing delivery workflow. |
-+---------------------+--------------------------------------------------------------+
-```
+| Evolution Phase | Architectural Implementation & Strategy | Resulting Business Value |
+| :--- | :--- | :--- |
+| **Sprint 1: MVP (End-to-End Core)** | Simple text-based menu (HTML); cash-on-delivery only (no payment gateway); manual phone dispatch to restaurant and drivers. | Complete vertical order flow functions end-to-end on Day 1! |
+| **Sprint 2: Incremental Slice** | Add Online Credit Card & Apple Pay integration; build automated merchant notification tablet app. | New functional capability slices added horizontally to a stable base. |
+| **Sprint 3: Iterative Polish** | Upgrade plain driver text notification to real-time GPS mapping, dynamic routing, and live courier location tracking. | Deepens and polishes the existing delivery workflow for superior UX. |
 
 ---
 
@@ -503,22 +422,11 @@ Traditional plan-driven processes assume a **Defined Process Control model** (ap
 
 Agile pioneers recognized that software development is an intrinsically creative, non-linear human endeavor governed by **Empirical Process Control (經驗主義過程控制)**, anchored by three fundamental pillars:
 
-```
-+-----------------------------------------------------------------------------------+
-|                     THE 3 PILLARS OF EMPIRICAL PROCESS CONTROL                    |
-+------------------+----------------------------------------------------------------+
-| Pillar           | Operational Definition                                         |
-+------------------+----------------------------------------------------------------+
-| 1. Transparency  | Significant aspects of the process, codebase, bottlenecks, and |
-|    (透明性)      | true project progress must be visible to all stakeholders.    |
-+------------------+----------------------------------------------------------------+
-| 2. Inspection    | Teams must frequently inspect progress toward sprint goals,    |
-|    (檢驗性)      | software quality, and architectural integrity.                 |
-+------------------+----------------------------------------------------------------+
-| 3. Adaptation    | If inspection reveals deviation or defects, the team must      |
-|    (調適性)      | adjust its process, backlog, or code immediately.              |
-+------------------+----------------------------------------------------------------+
-```
+| Empirical Pillar | Operational Engineering Definition |
+| :--- | :--- |
+| **1. Transparency (透明性)** | Significant aspects of the process, codebase, bottlenecks, and true project progress must be visible to all stakeholders without concealment. |
+| **2. Inspection (檢驗性)** | Teams must frequently inspect progress toward sprint goals, software quality, and architectural integrity (via daily standups, CI pipelines, and sprint reviews). |
+| **3. Adaptation (調適性)** | If inspection reveals deviation or defects, the team must adjust its process, backlog, or code immediately rather than clinging to an outdated plan. |
 
 ### 2.4.2 The Agile Manifesto: 4 Core Values
 
@@ -539,24 +447,20 @@ In February 2001, seventeen software pioneers (including Kent Beck, Ward Cunning
 
 ### 2.4.3 The 12 Principles of Agile Software
 
-```
-+------------------------------------------------------------------------------------+
-|                        THE 12 AGILE PRINCIPLES SUMMARY                             |
-+------------------------------------------------------------------------------------+
-| 1. Satisfy the Customer: Early and continuous delivery of valuable software.      |
-| 2. Welcome Changing Requirements: Harness change for customer competitive edge.    |
-| 3. Deliver Working Software Frequently: From couple of weeks to couple of months.  |
-| 4. Daily Collaboration: Business stakeholders and developers must work together.   |
-| 5. Motivated Individuals: Build projects around motivated people; give trust.      |
-| 6. Face-to-Face Conversation: The most efficient and effective communication mode. |
-| 7. Working Software as Primary Metric: The ultimate measure of project progress.   |
-| 8. Sustainable Development: Maintain a constant, unhurried pace indefinitely.      |
-| 9. Technical Excellence: Continuous attention to good design enhances agility.     |
-| 10. Simplicity: The art of maximizing the amount of work NOT done is essential.    |
-| 11. Self-Organizing Teams: Best architectures, requirements, and designs emerge.   |
-| 12. Regular Reflection: Team tunes and adjusts behavior at regular intervals.      |
-+------------------------------------------------------------------------------------+
-```
+| Principle | Core Engineering Tenet |
+| :--- | :--- |
+| **1. Satisfy the Customer** | Highest priority is early and continuous delivery of valuable software. |
+| **2. Welcome Changing Requirements** | Even late in development; Agile processes harness change for the customer's competitive advantage. |
+| **3. Deliver Working Software Frequently** | From a couple of weeks to a couple of months, with a preference for the shorter timescale. |
+| **4. Daily Collaboration** | Business stakeholders and software developers must work together daily throughout the project. |
+| **5. Motivated Individuals** | Build projects around motivated individuals; give them the environment, support, and trust they need. |
+| **6. Face-to-Face Conversation** | The most efficient and effective method of conveying information to and within a development team. |
+| **7. Working Software as Primary Metric** | Running, verified software is the primary measure of true project progress. |
+| **8. Sustainable Development** | Sponsors, developers, and users should be able to maintain a constant, unhurried pace indefinitely. |
+| **9. Technical Excellence** | Continuous attention to technical excellence and good architectural design enhances agility. |
+| **10. Simplicity** | Simplicity—the art of maximizing the amount of work NOT done—is essential. |
+| **11. Self-Organizing Teams** | The best architectures, requirements, and designs emerge from self-organizing teams. |
+| **12. Regular Reflection** | At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior. |
 
 ---
 
@@ -660,24 +564,14 @@ Originating from Taiichi Ohno's **Toyota Production System (TPS)** in lean autom
 
 ### 2.5.3 Scrum vs. Kanban: Comprehensive Comparison
 
-```
-+---------------------+-------------------------------+-------------------------------+
-| Dimension           | Scrum                         | Kanban                        |
-+---------------------+-------------------------------+-------------------------------+
-| Cadence & Iteration | Fixed timeboxed sprints (1–4w)| Continuous, unbroken flow     |
-+---------------------+-------------------------------+-------------------------------+
-| Release Mechanism   | At sprint boundary or on-demand| Continuous per-ticket delivery |
-+---------------------+-------------------------------+-------------------------------+
-| Change Policy       | Scope locked during sprint;   | Changes pulled anytime column |
-|                     | changes deferred to next plan | has capacity under WIP limit  |
-+---------------------+-------------------------------+-------------------------------+
-| Limiting Work       | Indirectly via sprint velocity| Directly via numeric WIP caps |
-+---------------------+-------------------------------+-------------------------------+
-| Prescribed Roles    | Strict: PO, SM, Developers    | None: Overlaid on existing org|
-+---------------------+-------------------------------+-------------------------------+
-| Primary Metrics     | Velocity, Burndown Charts     | Lead Time, Cycle Time, CFD    |
-+---------------------+-------------------------------+-------------------------------+
-```
+| Dimension | Scrum Framework | Kanban Method |
+| :--- | :--- | :--- |
+| **Cadence & Iteration** | Fixed timeboxed sprints (1–4 weeks) | Continuous, unbroken flow |
+| **Release Mechanism** | At sprint boundary or on-demand | Continuous per-ticket delivery |
+| **Change Policy** | Scope locked during sprint; changes deferred to next plan | Changes pulled anytime a column has capacity under its WIP limit |
+| **Limiting Work** | Indirectly via sprint velocity | Directly via explicit numeric WIP caps on each column |
+| **Prescribed Roles** | Strict: Product Owner, Scrum Master, Developers | None prescribed: overlaid directly on existing org |
+| **Primary Metrics** | Velocity, Sprint Burndown Charts | Lead Time, Cycle Time, Cumulative Flow Diagram (CFD) |
 
 ---
 
@@ -737,23 +631,11 @@ In the quest for commercial velocity, teams frequently face a seductive temptati
 
 In 1992, software pioneer **Ward Cunningham** (co-author of the Agile Manifesto and inventor of the Wiki) coined the financial metaphor of **Technical Debt (技術債)** to explain the economic reality of this trade-off.
 
-```
-+-----------------------------------------------------------------------------------+
-|                     THE FINANCIAL METAPHOR OF TECHNICAL DEBT                      |
-|                                                                                   |
-|  * The Principal (本金):                                                          |
-|    The engineering shortcuts taken to ship early (e.g., hardcoded values, missing|
-|    unit tests, duplicated copy-paste code, tightly coupled monolithic classes).   |
-|                                                                                   |
-|  * The Interest (利息):                                                           |
-|    The extra friction, cognitive load, slowdown, and defect-fixing time imposed   |
-|    on developers during EVERY future modification of that brittle codebase.      |
-|                                                                                   |
-|  * Technical Bankruptcy (技術破產):                                               |
-|    When compounding interest consumes 100% of engineering capacity—all velocity  |
-|    drops to zero as developers spend every working hour fighting regressions.     |
-+-----------------------------------------------------------------------------------+
-```
+| Financial Concept | Software Engineering Equivalent |
+| :--- | :--- |
+| **The Principal (本金)** | The engineering shortcuts taken to ship early (e.g., hardcoded values, missing unit tests, duplicated copy-paste code, tightly coupled monolithic classes). |
+| **The Interest (複利利息)** | The extra friction, cognitive load, slowdown, and defect-fixing time imposed on developers during EVERY future modification of that brittle codebase. |
+| **Technical Bankruptcy (技術破產)** | When compounding interest consumes 100% of engineering capacity—all velocity drops to zero as developers spend every working hour fighting regressions. |
 
 ![Technical Debt Comic](../../img/ch02/comic_26_technical_debt.jpg)
 
@@ -885,17 +767,11 @@ TDD inverts the traditional programming workflow: **never write a line of produc
 
 Development proceeds in tight 3-to-5 minute cycles known as the **Red-Green-Refactor Cycle**:
 
-```
-        +-------------------------------------------------------+
-        |                                                       |
-        v                                                       |
-  +------------+             +------------+             +---------------+
-  |   1. RED   | ----------> |  2. GREEN  | ----------> |  3. REFACTOR  |
-  +------------+             +------------+             +---------------+
-  Write a failing            Write minimal code         Clean code without
-  test that defines          to make the test           changing behavior;
-  desired behavior           pass (even hardcoded)      all tests remain green!
-```
+| TDD Cycle Phase | Core Developer Action | Engineering Goal & Safety Net |
+| :--- | :--- | :--- |
+| **1. 🔴 RED** | Write a tiny failing automated unit test | Define desired behavior, interface contract, and edge cases |
+| **2. 🟢 GREEN** | Write minimal code to make the test pass | Validate functional feasibility rapidly (even hardcoded) |
+| **3. 🔵 REFACTOR** | Clean up code structure and eliminate duplication | Improve internal design while all tests remain 100% green! |
 
 ![TDD Red-Green-Refactor Cycle](../../img/ch02/comic_tdd_cycle.png)
 
@@ -916,23 +792,13 @@ Development proceeds in tight 3-to-5 minute cycles known as the **Red-Green-Refa
 
 ### 2.7.4 Pair Programming: Driver and Navigator
 
-In Pair Programming, two software engineers sit side-by-side at a single workstation, sharing one keyboard, mouse, and monitor:
+In Pair Programming, two software engineers sit side-by-side at a single workstation, sharing one keyboard, mouse, and monitor, and **switch roles every 30 minutes**:
 
-```
-+------------------------------------+------------------------------------+
-| THE DRIVER (Tactical Execution)    | THE NAVIGATOR (Strategic Review)   |
-+------------------------------------+------------------------------------+
-| * Hands on keyboard & mouse.       | * Hands off keyboard.              |
-| * Writes current lines of code.    | * Reviews code in real time.       |
-| * Focuses on syntax, algorithms,   | * Thinks about edge cases, null    |
-|   and passing the immediate test.  |   pointers, race conditions.       |
-| * Tactical short-term focus.       | * Considers broader architecture.  |
-+------------------------------------+------------------------------------+
-              \                                /
-               +------------------------------+
-               | Role Switch Every 30 Minutes |
-               +------------------------------+
-```
+| Comparison Dimension | THE DRIVER (Tactical Execution) | THE NAVIGATOR (Strategic Review) |
+| :--- | :--- | :--- |
+| **Physical Activity** | Hands on keyboard & mouse; types current lines of code | Hands off keyboard; reviews code in real time |
+| **Cognitive Focus** | Focuses on syntax, local algorithms, and passing the immediate test | Thinks about edge cases, null pointers, and race conditions |
+| **Horizon** | **Tactical short-term focus** (switches every 30 minutes) | **Strategic architectural focus** (switches every 30 minutes) |
 
 ![Pair Programming Driver and Navigator](../../img/ch02/comic_pair_programming.jpg)
 
@@ -1037,17 +903,10 @@ The foundational pillars of DevOps are captured in the **CALMS Framework**:
 
 A crucial operational distinction separates Continuous Delivery from Continuous Deployment:
 
-```
-[ Git Push ] ---> [ Automated CI Build & Test ] ---> [ Staged in Production-like Env ]
-                                                               |
-                     +-----------------------------------------+
-                     |
-                     v
-   [ Continuous Delivery (CD) ]              [ Continuous Deployment (CD) ]
-   Requires manual business approval         Zero human gates! Every passing
-   to release to production (click button)   build automatically deploys to live
-   (e.g., waiting for marketing campaign)    production users within minutes.
-```
+| Pipeline Strategy | Upstream Automated Flow | Final Promotion to Live Production |
+| :--- | :--- | :--- |
+| **Continuous Delivery (CD)** | `Git Push` ➔ Automated CI Build & Test ➔ Staged in Production-like Environment | **Requires manual business approval** (human click button) to release to production (e.g., aligning with a marketing launch) |
+| **Continuous Deployment (CD)** | `Git Push` ➔ Automated CI Build & Test ➔ Staged in Production-like Environment | **Zero human gates!** Every build that passes the automated test suite automatically deploys to live production users within minutes |
 
 ### 2.8.4 Infrastructure as Code (IaC) & Production Observability
 
@@ -1061,25 +920,12 @@ A crucial operational distinction separates Continuous Delivery from Continuous 
 
 Google's **DevOps Research and Assessment (DORA)** team analyzed thousands of software organizations over six years, proving scientifically that **high performers do not trade off speed for stability—they achieve both simultaneously**:
 
-```
-+------------------------------------------------------------------------------------+
-|                         THE 4 DORA BENCHMARK METRICS                               |
-+--------------------------+---------------------------------+-----------------------+
-| Metric                   | Dimension Measured              | Elite Performance     |
-+--------------------------+---------------------------------+-----------------------+
-| 1. Deployment Frequency  | Throughput: How often code is   | On-demand             |
-|    (DF)                  | successfully deployed to prod.  | (Multiple per day)    |
-+--------------------------+---------------------------------+-----------------------+
-| 2. Lead Time for Changes | Throughput: Time from code      | Less than 1 hour      |
-|    (LTTC)                | commit to running in prod.      |                       |
-+--------------------------+---------------------------------+-----------------------+
-| 3. Change Failure Rate   | Stability: Percentage of prod   | 0% – 15%              |
-|    (CFR)                 | deployments causing degradation.|                       |
-+--------------------------+---------------------------------+-----------------------+
-| 4. Time to Restore Svc   | Stability: Time required to     | Less than 1 hour      |
-|    (MTTR)                | recover from production failure.|                       |
-+--------------------------+---------------------------------+-----------------------+
-```
+| DORA Benchmark Metric | Dimension Measured | Elite Organization Performance |
+| :--- | :--- | :--- |
+| **1. Deployment Frequency (DF)** | **Throughput**: How often code is successfully deployed to production | On-demand (Multiple deployments per day) |
+| **2. Lead Time for Changes (LTTC)** | **Throughput**: Time from code commit to running in production | Less than 1 hour |
+| **3. Change Failure Rate (CFR)** | **Stability**: Percentage of production deployments causing service degradation | 0% – 15% |
+| **4. Time to Restore Service (MTTR)** | **Stability**: Time required to recover from a production failure | Less than 1 hour |
 
 ---
 
@@ -1128,44 +974,23 @@ While suitable for weekend hobby projects, Vibe Coding is disastrous for enterpr
 
 ### 2.9.2 Vibe Coding vs. Specification-Driven AI
 
-```
-+---------------------+-------------------------------+-------------------------------+
-| Dimension           | Vibe Coding (Anti-Pattern)    | Spec-Driven AI (Engineering)  |
-+---------------------+-------------------------------+-------------------------------+
-| Core Philosophy     | Prompt-first; accept outputs  | Specification-first; verify   |
-|                     | based on superficial demos.   | outputs against formal gates. |
-+---------------------+-------------------------------+-------------------------------+
-| Single Source       | Ephemeral chat history and    | Version-controlled Markdown   |
-| of Truth (SSOT)     | fuzzy conversational memory.  | files (`SPEC.md`, `API.yaml`).|
-+---------------------+-------------------------------+-------------------------------+
-| Human Role          | Passive code-accepter and     | System architect, constraint  |
-|                     | casual prompter.              | author, and high-level reviewer.|
-+---------------------+-------------------------------+-------------------------------+
-| Verification Gate   | Manual eyeballing and casual  | Deterministic compilers, SAST,|
-|                     | clicking in the browser.      | and automated CI test suites. |
-+---------------------+-------------------------------+-------------------------------+
-| Project Longevity   | Codebase collapses into chaos | Sustained, maintainable       |
-|                     | beyond 1,000 lines.           | long-term evolution.          |
-+---------------------+-------------------------------+-------------------------------+
-```
+| Comparison Dimension | Vibe Coding (Anti-Pattern) | Spec-Driven AI (Engineering Discipline) |
+| :--- | :--- | :--- |
+| **Core Philosophy** | Prompt-first; accept outputs based on superficial demos | Specification-first; verify outputs against formal gates |
+| **Single Source of Truth (SSOT)** | Ephemeral chat history and fuzzy conversational memory | Version-controlled Markdown files (`SPEC.md`, `API.yaml`) |
+| **Human Engineer Role** | Passive code-accepter and casual prompter | System architect, constraint author, and high-level reviewer |
+| **Verification Gate** | Manual eyeballing and casual clicking in the browser | Deterministic compilers, SAST, and automated CI test suites |
+| **Project Longevity** | Codebase collapses into chaos beyond 1,000 lines | Sustained, maintainable long-term architectural evolution |
 
 ### 2.9.3 The 3-Step Agentic Feedback Loop
 
 In modern Specification-Driven development, human engineers and autonomous AI agents collaborate in a rigorous 3-step closed loop:
 
-```
-[ Step 1: Formal Specification ] (Human Architect)
-  * Defines unambiguous schemas, interfaces, data structures, and acceptance tests in Markdown.
-         |
-         v
-[ Step 2: Autonomous Agent Execution ] (AI Worker)
-  * Agent reads codebase, generates code in an isolated sandbox, reads compile errors, self-corrects.
-         |
-         v
-[ Step 3: Deterministic Verification Gates ] (CI/CD Pipeline & Human Review)
-  * Compilers, linters, security scanners, and test suites execute objectively.
-  * Human performs final architectural review before merging to production.
-```
+| Loop Step | Responsible Actor | Core Engineering Action & Verification |
+| :--- | :--- | :--- |
+| **Step 1: Formal Specification** | Human System Architect | Defines unambiguous schemas, interfaces, data structures, and acceptance tests in Markdown |
+| **Step 2: Autonomous Agent Execution** | AI Coding Agent | Reads codebase, generates code in an isolated sandbox, reads compile/test errors, and self-corrects |
+| **Step 3: Deterministic Verification Gates** | CI/CD Pipeline & Human Review | Compilers, linters, security scanners, and test suites execute objectively before human architectural merge review |
 
 ### 2.9.4 The 4 Golden Principles of AI-Driven Engineering
 
@@ -1241,23 +1066,19 @@ Test your mastery across the 9 modules of Chapter 2:
 
 ## Appendix: Solutions & Detailed Explanations to All Interactive Concept Checks (CCQ 1–14)
 
-```
-+--------+-------------------------------------------------------------+--------+
-| CCQ ID | Topic / Question Title                                      | Answer |
-+--------+-------------------------------------------------------------+--------+
-| CCQ 1  | Operational Drawbacks of the Traditional Waterfall Model    |   B    |
-| CCQ 2  | Engineering Advantage of the V-Model (Test Planning)        |   B    |
-| CCQ 3  | Fundamental Difference: Incremental vs. Iterative           |   B    |
-| CCQ 4  | Henrik Kniberg MVP Skateboard Analogy Anti-Pattern          |   B    |
-| CCQ 5  | Agile Value: Working Software over Comprehensive Docs       |   B    |
-| CCQ 6  | Agile Principle 8: Promoting a Sustainable Pace             |   A    |
-| CCQ 7  | Kanban Framework: Purpose of Work In Progress (WIP) Limits  |   B    |
-| CCQ 8  | Scrum Framework: Objective of the Sprint Retrospective      |   B    |
-| CCQ 9  | Ward Cunningham's Technical Debt: Compounding Interest      |   B    |
-| CCQ 10 | Martin Fowler's "Flaccid Scrum" Warning                     |   A    |
-| CCQ 11 | Extreme Programming: Role of the Pair Programming Navigator |   B    |
-| CCQ 12 | Test-Driven Development (TDD): Objective of Refactor Step   |   B    |
-| CCQ 13 | Operational Difference: Continuous Delivery vs. Deployment  |   B    |
-| CCQ 14 | AI Specification-Driven: Role of CI/CD Verification Gates   |   B    |
-+--------+-------------------------------------------------------------+--------+
-```
+| CCQ ID | Topic / Question Title | Correct Answer |
+| :---: | :--- | :---: |
+| **CCQ 1** | Operational Drawbacks of the Traditional Waterfall Model | **B** |
+| **CCQ 2** | Engineering Advantage of the V-Model (Test Planning) | **B** |
+| **CCQ 3** | Fundamental Difference: Incremental vs. Iterative | **B** |
+| **CCQ 4** | Henrik Kniberg MVP Skateboard Analogy Anti-Pattern | **B** |
+| **CCQ 5** | Agile Value: Working Software over Comprehensive Docs | **B** |
+| **CCQ 6** | Agile Principle 8: Promoting a Sustainable Pace | **A** |
+| **CCQ 7** | Kanban Framework: Purpose of Work In Progress (WIP) Limits | **B** |
+| **CCQ 8** | Scrum Framework: Objective of the Sprint Retrospective | **B** |
+| **CCQ 9** | Ward Cunningham's Technical Debt: Compounding Interest | **B** |
+| **CCQ 10** | Martin Fowler's "Flaccid Scrum" Warning | **A** |
+| **CCQ 11** | Extreme Programming: Role of the Pair Programming Navigator | **B** |
+| **CCQ 12** | Test-Driven Development (TDD): Objective of Refactor Step | **B** |
+| **CCQ 13** | Operational Difference: Continuous Delivery vs. Deployment | **B** |
+| **CCQ 14** | AI Specification-Driven: Role of CI/CD Verification Gates | **B** |

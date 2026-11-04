@@ -144,25 +144,19 @@ In production systems, **over 80% of total engineering effort, complexity, and c
 * *GitLab Database Outage (2017):* While production code was functioning normally, human operators accidentally deleted the primary production database directory. When attempting to restore from backups, five different automated backup **procedures** were discovered to be broken, unverified, or misconfigured.
 * *Therac-25 Radiation Accidents:* A medical linear accelerator administered massive lethal radiation overdoses to cancer patients. The root cause was a subtle race condition in software; however, the fatal flaw was the complete lack of architectural **documentation**, which prevented new engineers from understanding that the software safety interlocks relied on fragile timing assumptions.
 
-```
-                  THE SOFTWARE ICEBERG
-                          ▲
-                         / \
-                        /LOC\     ◄── Programs / Source Code (Visible 20%)
-           ~~~~~~~~~~~~/~~~~~\~~~~~~~~~~~~
-                      /       \
-                     /  DATA   \   ◄── Database Schemas, State, Configs (80% Below)
-                    /PROCEDURES \  ◄── CI/CD, Deployment, Disaster Recovery
-                   /DOCUMENTATION\ ◄── API Contracts, Architecture Decisions (ADRs)
-                  ───────────────
-```
+| Iceberg Layer | Engineering Pillar | Core Artifacts & Production Responsibilities |
+| :--- | :--- | :--- |
+| **Visible Tip (20%)** | **Programs (LOC)** | Executable source code, algorithms, and runtime logic |
+| **Submerged (80%)** | **Data** | Database schemas, persistent state, migrations, and configuration |
+| **Submerged (80%)** | **Procedures** | CI/CD pipelines, deployment runbooks, backup & disaster recovery |
+| **Submerged (80%)** | **Documentation** | API contracts, requirements specs, and Architecture Decision Records (ADRs) |
 
 ### 1.3.3 Why the Four Pillars Demand the Software Life Cycle (SDLC)
 
-* **Documentation $\longleft→ Requirements & Architecture:** Code only documents *how* a system works; documentation captures *why* it was designed that way. Without architectural documentation, multi-year cross-functional collaboration is impossible.
-* **Programs $\longleft→ Implementation & Validation:** Writing code is only the initial spark. Engineering requires continuous automated testing, refactoring, and integration to prevent code rot and technical debt.
-* **Data $\longleft→ State Persistence & Long-Term Evolution:** Code can be re-deployed in seconds, but production data must endure for decades. This requires schema versioning, backward compatibility, and zero-downtime database migration strategies.
-* **Procedures $\longleft→ DevOps & Site Reliability Engineering (SRE):** Code running exclusively on `localhost` is a toy. Engineering requires containerization, automated rollback pipelines, canary deployments, and observability telemetry.
+* **Documentation ↔ Requirements & Architecture:** Code only documents *how* a system works; documentation captures *why* it was designed that way. Without architectural documentation, multi-year cross-functional collaboration is impossible.
+* **Programs ↔ Implementation & Validation:** Writing code is only the initial spark. Engineering requires continuous automated testing, refactoring, and integration to prevent code rot and technical debt.
+* **Data ↔ State Persistence & Long-Term Evolution:** Code can be re-deployed in seconds, but production data must endure for decades. This requires schema versioning, backward compatibility, and zero-downtime database migration strategies.
+* **Procedures ↔ DevOps & Site Reliability Engineering (SRE):** Code running exclusively on `localhost` is a toy. Engineering requires containerization, automated rollback pipelines, canary deployments, and observability telemetry.
 
 ### 1.3.4 Practical Example: YouBike (Urban Bike-Sharing System)
 

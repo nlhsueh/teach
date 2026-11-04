@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 21px; font-weight: 800; fill: #0b3c5d; text-anchor: middle; }
+      .subtitle { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .panel-title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; font-weight: 800; fill: #0b3c5d; }
+      .hdr-w { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800; fill: #ffffff; }
+      .lbl-b { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800; fill: #1e293b; }
+      .lbl-m { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 700; fill: #334155; }
+      .lbl-s { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #475569; }
+      .mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace; font-size: 11px; font-weight: 700; }
+    </style>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0d9488" />
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#7c3aed" />
+    </marker>
+  </defs>
+  <rect width="1200" height="620" class="bg" />
+
+  <text x="600" y="30" class="title">Empirical Usability Engineering: Nielsen's N = 5 Curve &amp; The SUS Benchmark Scale</text>
+  <text x="600" y="50" class="subtitle">Why 5 Formative Users Uncover ~85% of Usability Flaws (Left) &amp; Interpreting System Usability Scale Scores 0–100 (Right)</text>
+
+  <!-- LEFT PANEL: NIELSEN & LANDAUER N=5 POISSON CURVE -->
+  <rect x="20" y="68" width="560" height="530" class="panel" />
+  <text x="300" y="95" class="panel-title" text-anchor="middle">1. NIELSEN &amp; LANDAUER (1993) POISSON DISCOVERY MODEL</text>
+  <rect x="80" y="106" width="440" height="32" fill="#eff6ff" stroke="#93c5fd" rx="6" />
+  <text x="300" y="127" class="mono" fill="#1e40af" text-anchor="middle" font-size="13">P(Problems Found) = 1 − (1 − L)^n   (where avg L ≈ 0.31)</text>
+
+  <!-- Graph Box -->
+  <rect x="44" y="150" width="512" height="255" fill="#f8fafc" stroke="#cbd5e1" rx="8" />
+  <!-- Axes -->
+  <line x1="95" y1="365" x2="525" y2="365" stroke="#334155" stroke-width="2" />
+  <line x1="95" y1="365" x2="95" y2="170" stroke="#334155" stroke-width="2" />
+  <text x="310" y="392" class="lbl-m" text-anchor="middle">Number of Test Users per Iteration (n)</text>
+  <text x="64" y="268" class="lbl-m" transform="rotate(-90 64,268)" text-anchor="middle">% of Usability Problems Found</text>
+
+  <!-- Grid lines: 100% at y=180, 85% at y=208, 50% at y=272, 0% at y=365 -->
+  <line x1="95" y1="180" x2="525" y2="180" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4" />
+  <text x="86" y="184" class="mono" fill="#64748b" text-anchor="end">100%</text>
+  <line x1="95" y1="208" x2="525" y2="208" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5,3" />
+  <text x="86" y="212" class="mono" fill="#047857" text-anchor="end">85%</text>
+  <line x1="95" y1="272" x2="525" y2="272" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4" />
+  <text x="86" y="276" class="mono" fill="#64748b" text-anchor="end">50%</text>
+  <text x="86" y="369" class="mono" fill="#64748b" text-anchor="end">0%</text>
+
+  <!-- X-axis ticks: n=0 (95), n=1 (123), n=3 (180), n=5 (238), n=10 (380), n=15 (520) -->
+  <text x="123" y="380" class="mono" text-anchor="middle">1</text>
+  <text x="180" y="380" class="mono" text-anchor="middle">3</text>
+  <text x="238" y="380" class="mono" fill="#047857" text-anchor="middle">5</text>
+  <text x="380" y="380" class="mono" text-anchor="middle">10</text>
+  <text x="515" y="380" class="mono" text-anchor="middle">15</text>
+
+  <!-- Curve path: (95,365) -> (123,308) -> (180,241) -> (238,208) -> (380,185) -> (515,181) -->
+  <path d="M 95 365 Q 150 235 238 208 T 515 181" stroke="#2563eb" stroke-width="4" fill="none" />
+
+  <!-- Data points -->
+  <circle cx="123" cy="308" r="5" fill="#2563eb" />
+  <text x="148" y="316" class="mono" fill="#1e40af">n=1 (31%)</text>
+
+  <circle cx="180" cy="241" r="5" fill="#2563eb" />
+  <text x="165" y="230" class="mono" fill="#1e40af">n=3 (67%)</text>
+
+  <!-- Sweet spot n=5 -->
+  <line x1="238" y1="208" x2="238" y2="365" stroke="#059669" stroke-width="2" stroke-dasharray="4,3" />
+  <circle cx="238" cy="208" r="8" fill="#059669" stroke="#ffffff" stroke-width="2" />
+  <rect x="250" y="212" width="165" height="44" fill="#ecfdf5" stroke="#059669" stroke-width="1.5" rx="6" />
+  <text x="332" y="230" class="lbl-b" fill="#047857" text-anchor="middle">n = 5 Sweet Spot (85%)</text>
+  <text x="332" y="246" class="lbl-s" fill="#065f46" text-anchor="middle">Maximum ROI per test round!</text>
+
+  <circle cx="515" cy="181" r="5" fill="#dc2626" />
+  <text x="445" y="200" class="mono" fill="#dc2626">Diminishing Returns (n=15)</text>
+
+  <!-- Iterative Strategy Comparison -->
+  <rect x="44" y="420" width="512" height="158" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8" rx="8" />
+  <text x="300" y="444" class="lbl-b" fill="#92400e" text-anchor="middle">How to Budget 15 Test Participants Across a Project:</text>
+  <text x="60" y="470" class="lbl-s" fill="#dc2626">• [Anti-Pattern] 1 Big Round × 15 Users on Prototype v1:</text>
+  <text x="76" y="488" class="lbl-s">Users #6–#15 repeatedly hit the exact same obvious bugs; 0 users test your fixes!</text>
+  <text x="60" y="516" class="lbl-s" fill="#047857">• [Best Practice] 3 Iterative Rounds × 5 Users (v1 → Fix → v2 → Fix → v3):</text>
+  <text x="76" y="534" class="lbl-s">Uncovers 85% of flaws in v1, verifies the fixes in v2, and polishes edge cases in v3!</text>
+  <text x="60" y="558" class="mono" fill="#1e40af">* Exception: Summative benchmarking requires n = 20–30+ for tight statistical CIs.</text>
+
+  <!-- RIGHT PANEL: SYSTEM USABILITY SCALE (SUS 0-100) & HEART -->
+  <rect x="600" y="68" width="580" height="530" class="panel" />
+  <text x="890" y="95" class="panel-title" text-anchor="middle">2. SYSTEM USABILITY SCALE (SUS) &amp; GOOGLE HEART METRICS</text>
+  <text x="890" y="113" class="lbl-s" text-anchor="middle">John Brooke's (1986) 10-Item Scale: Scored 0–100 (Percentile Benchmark, NOT a Percentage!)</text>
+
+  <!-- SUS Scale Bar (0 to 100) -->
+  <rect x="624" y="132" width="532" height="175" fill="#f8fafc" stroke="#cbd5e1" rx="8" />
+  <text x="890" y="156" class="lbl-b" fill="#0b3c5d" text-anchor="middle">Interpreting Your Product's SUS Score (Sauro &amp; Lewis Curved Grading Scale)</text>
+
+  <!-- Color Scale Segments -->
+  <!-- 0-51 Grade F -->
+  <rect x="644" y="190" width="180" height="36" fill="#ef4444" rx="4" />
+  <text x="734" y="213" class="hdr-w" text-anchor="middle">0 – 51 : Grade F (Unacceptable)</text>
+  <!-- 51-68 Grade D/C -->
+  <rect x="826" y="190" width="95" height="36" fill="#f59e0b" rx="2" />
+  <text x="873" y="213" class="hdr-w" text-anchor="middle" font-size="11">51–68 (D/C)</text>
+  <!-- 68-80.3 Grade B -->
+  <rect x="923" y="190" width="85" height="36" fill="#3b82f6" rx="2" />
+  <text x="965" y="213" class="hdr-w" text-anchor="middle" font-size="11">68–80 (B)</text>
+  <!-- 80.3-100 Grade A -->
+  <rect x="1010" y="190" width="126" height="36" fill="#10b981" rx="4" />
+  <text x="1073" y="213" class="hdr-w" text-anchor="middle" font-size="11">80.3+ : Grade A</text>
+
+  <!-- Benchmark Markers -->
+  <line x1="922" y1="172" x2="922" y2="242" stroke="#0f172a" stroke-width="3" />
+  <text x="922" y="168" class="mono" fill="#0f172a" text-anchor="middle">★ SUS = 68 (50th Percentile Industry Avg)</text>
+  <text x="1073" y="248" class="mono" fill="#047857" text-anchor="middle">Top 10% (NPS Promoters!)</text>
+  <text x="734" y="248" class="mono" fill="#dc2626" text-anchor="middle">High Churn / Detractors</text>
+  <text x="890" y="286" class="lbl-s" text-anchor="middle">Warning: Because SUS is a curved percentile scale, a score of 60 is NOT "passing"—it is below average (Grade D)!</text>
+
+  <!-- Google HEART Framework Table -->
+  <rect x="624" y="322" width="532" height="256" fill="#ffffff" stroke="#cbd5e1" rx="8" />
+  <rect x="624" y="322" width="532" height="32" fill="#0b3c5d" rx="6" />
+  <text x="890" y="343" class="hdr-w" text-anchor="middle">GOOGLE'S HEART FRAMEWORK (Goals → Signals → Metrics at Scale)</text>
+
+  <text x="640" y="376" class="mono" fill="#2563eb">H — Happiness:</text>
+  <text x="775" y="376" class="lbl-s">Subjective attitude (SUS score, post-order CSAT, App Store rating)</text>
+
+  <text x="640" y="408" class="mono" fill="#0d9488">E — Engagement:</text>
+  <text x="775" y="408" class="lbl-s">Depth &amp; frequency of voluntary use (Orders/week, DAU/MAU ratio)</text>
+
+  <text x="640" y="440" class="mono" fill="#7c3aed">A — Adoption:</text>
+  <text x="775" y="440" class="lbl-s">New users adopting a feature (% trying Group Order within 14 days)</text>
+
+  <text x="640" y="472" class="mono" fill="#d97706">R — Retention:</text>
+  <text x="775" y="472" class="lbl-s">Cohort survival over time (D7 / D30 / D90 repeat buyers; inverse of Churn)</text>
+
+  <text x="640" y="504" class="mono" fill="#dc2626">T — Task Success:</text>
+  <text x="775" y="504" class="lbl-s">Behavioral Effectiveness &amp; Efficiency (Completion %, Time-on-Task, Lostness L)</text>
+
+  <line x1="640" y1="522" x2="1140" y2="522" stroke="#e2e8f0" stroke-width="1.5" />
+  <text x="890" y="546" class="lbl-m" fill="#1e40af" text-anchor="middle">A/B Testing Rule: Always pair Primary Conversion Metrics with Guardrail Metrics</text>
+  <text x="890" y="564" class="lbl-s" text-anchor="middle">(e.g., monitor Cancel/Refund Rate &amp; Support Tickets to prevent accidental-click Dark Patterns!)</text>
+</svg>

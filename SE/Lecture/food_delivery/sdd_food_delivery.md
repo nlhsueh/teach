@@ -14,38 +14,13 @@
 QuickBite 平台採用 **微服務架構 (Microservices Architecture)** 結合 **事件驅動架構 (Event-Driven Architecture, EDA)**。  
 整體系統透過現代化雲原生架構運作，兼具高水平擴展性 (Scalability)、容錯彈性 (Resilience) 與職責隔離 (Separation of Concerns)。
 
-```
-+---------------------------------------------------------------------------------+
-|                       Client Tier (Mobile iOS/Android & Web SPA)                |
-+---------------------------------------------------------------------------------+
-                                        | (HTTPS / WSS)
-                                        v
-+---------------------------------------------------------------------------------+
-|                  Cloud API Gateway (Kong / Envoy) + OAuth 2.0 Auth              |
-|        - SSL Termination  - Rate Limiting  - Route Management  - JWT Validation |
-+---------------------------------------------------------------------------------+
-          |                     |                      |                   |
-          v                     v                      v                   v
-+------------------+  +-------------------+  +------------------+  +--------------+
-|  Order Service   |  | Restaurant Service|  | Dispatch Service |  |Payment Serv. |
-| (Spring Boot/Go) |  |   (Menu & Prep)   |  | (Matching Engine)|  | (Stripe/Bank)|
-+------------------+  +-------------------+  +------------------+  +--------------+
-          |                     |                      |                   |
-          +---------------------+----------------------+-------------------+
-                                        |
-                                        v
-+---------------------------------------------------------------------------------+
-|               High-Throughput Event Streaming Bus (Apache Kafka)                |
-| Topics: order.created | order.paid | order.prep_ready | courier.matched | ...  |
-+---------------------------------------------------------------------------------+
-          |                                            |
-          v                                            v
-+------------------------------------+       +------------------------------------+
-|  Polyglot Persistence Layer        |       |  Notification & Real-time Services |
-|  - PostgreSQL (ACID Order Records) |       |  - Redis Cluster (GeoJSON & Lock)  |
-|  - MongoDB (Unstructured Logs)     |       |  - WebSocket Push Gateway (Tracking)|
-+------------------------------------+       +------------------------------------+
-```
+| 架構分層 (Architecture Tier) | 核心技術組件 | 關鍵工程職責與通訊協定 |
+| :--- | :--- | :--- |
+| **1. 客戶端展示層 (Client Tier)** | Mobile (iOS/Android) & Web SPA | 使用者點餐介面、商家接單控台與外送員導航 App（透過 HTTPS / WSS 通訊） |
+| **2. 雲端 API 閘道層 (API Gateway)** | Kong / Envoy + OAuth 2.0 Auth | SSL 終止、Rate Limiting 限流、路由分發與 JWT 權杖驗證 |
+| **3. 領域微服務層 (Microservices)** | Order / Restaurant / Dispatch / Payment | 訂單狀態管理、菜單與備餐、智慧派單撮合引擎、金流授權扣款（Spring Boot / Go） |
+| **4. 事件串流匯流排 (Event Bus)** | Apache Kafka | 非同步高吞吐事件解耦（`order.created`、`order.paid`、`order.prep_ready`、`courier.matched`） |
+| **5. 多模態持久化與即時推播層** | PostgreSQL / MongoDB / Redis / WebSocket | PostgreSQL (ACID 交易帳本)、MongoDB (日誌)、Redis (GeoJSON 與分散式鎖)、WebSocket 推播 |
 
 ### 1.2 4+1 架構視圖模型定位 (Kruchten's 4+1 View Model)
 依據課程 **Ch05 軟體設計模組** 所講授之 4+1 視角模型：
@@ -95,19 +70,20 @@ QuickBite 平台採用 **微服務架構 (Microservices Architecture)** 結合 *
 #### 模式一：策略模式 (Strategy Pattern) — 智慧派單調度演算法
 派單引擎隨時段、氣候與區域負載動態切換媒合演算法，透過抽取 `DispatchStrategy` 介面達成 OCP（開放封閉原則）：
 
-```
-                <<interface>>
-              DispatchStrategy
-       +-----------------------------+
-       |+ matchCourier(Order): Courier|
-       +-----------------------------+
-                      ^
-         +------------+------------+
-         |                         |
-+---------------------+   +-----------------------+
-|NearestCourierStrategy|   |RatingWeightedStrategy |
-| (雨天/尖峰優先就近)   |   | (平峰品質優先兼顧星等)  |
-+---------------------+   +-----------------------+
+```plantuml
+@startuml
+interface DispatchStrategy <<interface>> {
+  + matchCourier(order: Order): Courier
+}
+class NearestCourierStrategy {
+  + matchCourier(order: Order): Courier
+}
+class RatingWeightedStrategy {
+  + matchCourier(order: Order): Courier
+}
+DispatchStrategy <|.. NearestCourierStrategy
+DispatchStrategy <|.. RatingWeightedStrategy
+@enduml
 ```
 
 ```java
@@ -141,22 +117,22 @@ public class RatingWeightedStrategy implements DispatchStrategy {
 #### 模式二：狀態模式 (State Pattern) — 訂單生命週期狀態機
 傳統寫法充斥龐大的 `switch-case` 或多層 `if-else`。狀態模式將訂單在不同生命週期階段之行為封裝於獨立的狀態物件中，杜絕無效狀態跳躍：
 
-```
-                <<interface>>
-                 OrderState
-       +-----------------------------+
-       |+ pay(): void                |
-       |+ accept(): void             |
-       |+ pickup(): void             |
-       |+ deliver(): void            |
-       |+ cancel(): void             |
-       +-----------------------------+
-                      ^
-     +----------------+----------------+
-     |                |                |
-+----------+    +------------+   +-------------+
-|PlacedState|   |PaidState   |   |Delivering...|
-+----------+    +------------+   +-------------+
+```plantuml
+@startuml
+interface OrderState <<interface>> {
+  + pay(): void
+  + accept(): void
+  + pickup(): void
+  + deliver(): void
+  + cancel(): void
+}
+class PlacedState
+class PaidState
+class DeliveringState
+OrderState <|.. PlacedState
+OrderState <|.. PaidState
+OrderState <|.. DeliveringState
+@enduml
 ```
 
 #### 模式三：觀察者模式 (Observer Pattern / Pub-Sub) — 即時狀態異動廣播
@@ -298,19 +274,11 @@ UML 循序圖表達跨微服務實體之間在時間軸上的訊息傳遞（呼�
 ### 5.2 CAP 定理架構權衡決策 (CAP Theorem Trade-off)
 根據 CAP 定理，在面臨網路分割 (Network Partition, P) 時，分散式系統必須在一致性 (Consistency, C) 與可用性 (Availability, A) 之間進行權衡取捨：
 
-```
-                    +------------------------------------+
-                    |        CAP Trade-off Strategy      |
-                    +-----------------+------------------+
-                                      |
-              +-----------------------+-----------------------+
-              |                                               |
-              v                                               v
-    [ CP 子系統: 核心交易與扣款 ]                  [ AP 子系統: 即時軌跡與推薦 ]
-    - 追求強一致性 (Strong Consistency)           - 追求高可用性 (High Availability)
-    - 資料庫嚴格鎖定 (ACID / Distributed Lock)   - 接受最終一致性 (Eventual Consistency)
-    - 寧可拒絕少數下單，絕不超賣或重複扣款        - 網路短暫抖動時，顯示上一次已知 GPS 位置
-```
+| 分散式 CAP 定理權衡策略 | CP 子系統：核心交易與金流扣款 | AP 子系統：即時軌跡與餐廳推薦 |
+| :--- | :--- | :--- |
+| **優先保障目標** | 追求強一致性 (Strong Consistency) | 追求高可用性 (High Availability) |
+| **底層同步與鎖定機制** | 資料庫嚴格鎖定 (ACID / Distributed Lock) | 接受最終一致性 (Eventual Consistency) |
+| **網路分區異常退化行為** | 寧可拒絕少數下單，絕不允許超賣或重複扣款 | 網路短暫抖動時，顯示上一次已知的快取 GPS 座標 |
 
 ---
 *文件編制：逢甲大學軟體工程教學團隊 (Prof. Nien-Lin Hsueh)*  

@@ -77,9 +77,10 @@
      - **背景機制**：該腳本會將 `oTeach/SQA/LabDemo` 排除 `target/`、`.DS_Store`、`logs/*` 與 macOS `._*` 隱藏元資料，打包成最乾淨的 `LabDemo.zip`，並自動原子性更新至 Google Drive：
        `~/Library/CloudStorage/GoogleDrive-nlhsueh@gmail.com/我的雲端硬碟/gTEACH/gTeachSQA/LabDemo-zip/LabDemo.zip`。
      - **結果反饋**：執行完成後立即回報檔案大小與完整性檢查結果。
-4. **講義手冊 (Lecture PDF) 排版與防橫向溢出規範 (Anti-Overflow Rules)**：
-   * 結構化表格一律使用標準 GitHub Flavored Markdown 表格語法（`| ... |`），由瀏覽器自動依據欄寬折行，嚴禁用 ASCII 框線拼製表格置於程式碼區塊中。
-   * 程式碼區塊、AI 提示詞與文字架構圖單行長度上限嚴格控制在 60–65 字元以內。
+4. **講義手冊 (Lecture PDF) 排版與防橫向溢出規範 (Anti-Overflow & Zero-ASCII-Box Rules)**：
+   * **全面禁止 ASCII 框線表格与文字圖**：不論單行字元長短，嚴禁在程式碼區塊（` ``` `）中使用 `+----+`、`┌───┐`、`| ... |`、`--->` 等 ASCII 符號拼製表格、方框或文字流程圖（避免中英文混排與自動折行造成右邊界錯位跑版）。
+   * **標準替代語法**：結構化表格一律使用標準 GitHub Flavored Markdown 表格語法（`| ... |`）；重點框使用引言（`> ...`）；架構與流程圖一律直接引用 SVG/PNG 圖檔或改用 GFM 表格／清單。
+   * 程式碼區塊（真實程式碼如 Java/Python/PlantUML）與 AI 提示詞單行長度上限嚴格控制在 60–65 字元以內。
    * 講義編譯一律調用 `scripts/generate_lecture_pdf.js`，確保 `white-space: pre-wrap`、目錄書籤與印刷防溢出樣式生效。
 5. **GitHub Pages 跨平台相容性與符號排版規範 (Anti-LaTeX Rules)**：
    * **嚴禁使用 LaTeX 數學標記**：GitHub Pages 靜態網站不支援原生 LaTeX 解析，嚴禁在 Markdown（Slide、Lecture、LabDemo）中使用 `$\rightarrow$`、`$\ge$`、`$\le$`、`$\pm$` 等語法，避免學生在網頁端看到未解析的裸露代碼。

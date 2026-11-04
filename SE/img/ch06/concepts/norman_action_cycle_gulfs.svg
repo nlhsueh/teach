@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f5f5f5; }
+      .title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 21px; font-weight: 800; fill: #0b3c5d; text-anchor: middle; }
+      .subtitle { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .panel-title { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; font-weight: 800; fill: #0b3c5d; }
+      .hdr-w { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800; fill: #ffffff; }
+      .lbl-b { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800; fill: #1e293b; }
+      .lbl-m { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 700; fill: #334155; }
+      .lbl-s { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #475569; }
+      .mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace; font-size: 11px; font-weight: 700; }
+    </style>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0d9488" />
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#7c3aed" />
+    </marker>
+  </defs>
+  <rect width="1200" height="620" class="bg" />
+
+  <text x="600" y="30" class="title">Don Norman's 7 Stages of Action, The Two Gulfs &amp; Model Human Processor</text>
+  <text x="600" y="50" class="subtitle">How Humans Bridge Internal Goals and Physical System State Across Execution and Evaluation</text>
+
+  <!-- Main Diagram Panel -->
+  <rect x="24" y="68" width="800" height="530" class="panel" />
+  <text x="424" y="95" class="panel-title" text-anchor="middle">NORMAN'S 7 STAGES OF ACTION &amp; THE TWO GULFS OF INTERACTION FAILURE</text>
+
+  <!-- Top: HUMAN GOAL (Stage 1) -->
+  <rect x="264" y="114" width="320" height="62" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" rx="31" />
+  <text x="424" y="141" class="lbl-b" fill="#1e40af" text-anchor="middle" font-size="14">STAGE 1: FORMULATE GOAL (Human Mind)</text>
+  <text x="424" y="160" class="lbl-s" fill="#1d4ed8" text-anchor="middle">e.g., "Order dinner for 4 colleagues under $25/person"</text>
+
+  <!-- LEFT SIDE: GULF OF EXECUTION (Stages 2 -> 3 -> 4) -->
+  <rect x="48" y="192" width="340" height="270" fill="#fffbeb" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,4" rx="12" />
+  <text x="218" y="216" class="lbl-b" fill="#b45309" text-anchor="middle">THE GULF OF EXECUTION</text>
+  <text x="218" y="232" class="mono" fill="#d97706" text-anchor="middle">"How do I make this UI do what I want?"</text>
+
+  <rect x="78" y="246" width="280" height="52" fill="#ffffff" stroke="#d97706" stroke-width="2" rx="8" />
+  <text x="218" y="268" class="lbl-b" fill="#92400e" text-anchor="middle">Stage 2: Plan the Action</text>
+  <text x="218" y="286" class="lbl-s" text-anchor="middle">Select high-level strategy (Start a Group Order)</text>
+
+  <line x1="218" y1="298" x2="218" y2="316" stroke="#d97706" stroke-width="2.5" marker-end="url(#arr-amber)" />
+
+  <rect x="78" y="318" width="280" height="52" fill="#ffffff" stroke="#d97706" stroke-width="2" rx="8" />
+  <text x="218" y="340" class="lbl-b" fill="#92400e" text-anchor="middle">Stage 3: Specify Action Sequence</text>
+  <text x="218" y="358" class="lbl-s" text-anchor="middle">Locate [+ Group Order] button &amp; budget slider</text>
+
+  <line x1="218" y1="370" x2="218" y2="388" stroke="#d97706" stroke-width="2.5" marker-end="url(#arr-amber)" />
+
+  <rect x="78" y="390" width="280" height="52" fill="#ffffff" stroke="#d97706" stroke-width="2" rx="8" />
+  <text x="218" y="412" class="lbl-b" fill="#92400e" text-anchor="middle">Stage 4: Perform the Action</text>
+  <text x="218" y="430" class="lbl-s" text-anchor="middle">Execute physical motor tap / click (Fitts's Law)</text>
+
+  <!-- RIGHT SIDE: GULF OF EVALUATION (Stages 7 <- 6 <- 5) -->
+  <rect x="460" y="192" width="340" height="270" fill="#ecfdf5" stroke="#10b981" stroke-width="2" stroke-dasharray="6,4" rx="12" />
+  <text x="630" y="216" class="lbl-b" fill="#047857" text-anchor="middle">THE GULF OF EVALUATION</text>
+  <text x="630" y="232" class="mono" fill="#059669" text-anchor="middle">"What happened? Did my click work?"</text>
+
+  <rect x="490" y="246" width="280" height="52" fill="#ffffff" stroke="#0d9488" stroke-width="2" rx="8" />
+  <text x="630" y="268" class="lbl-b" fill="#115e59" text-anchor="middle">Stage 7: Compare Outcome to Goal</text>
+  <text x="630" y="286" class="lbl-s" text-anchor="middle">"Yes! Group link created &amp; capped at $25"</text>
+
+  <line x1="630" y1="318" x2="630" y2="300" stroke="#0d9488" stroke-width="2.5" marker-end="url(#arr-teal)" />
+
+  <rect x="490" y="318" width="280" height="52" fill="#ffffff" stroke="#0d9488" stroke-width="2" rx="8" />
+  <text x="630" y="340" class="lbl-b" fill="#115e59" text-anchor="middle">Stage 6: Interpret System State</text>
+  <text x="630" y="358" class="lbl-s" text-anchor="middle">Decode toast badge &amp; shared cart header</text>
+
+  <line x1="630" y1="390" x2="630" y2="372" stroke="#0d9488" stroke-width="2.5" marker-end="url(#arr-teal)" />
+
+  <rect x="490" y="390" width="280" height="52" fill="#ffffff" stroke="#0d9488" stroke-width="2" rx="8" />
+  <text x="630" y="412" class="lbl-b" fill="#115e59" text-anchor="middle">Stage 5: Perceive the World</text>
+  <text x="630" y="430" class="lbl-s" text-anchor="middle">Sense visual/haptic state change (&lt; 100ms)</text>
+
+  <!-- BOTTOM: THE WORLD / SYSTEM IMAGE -->
+  <rect x="184" y="490" width="480" height="66" fill="#1e293b" stroke="#0f172a" stroke-width="2" rx="12" />
+  <text x="424" y="518" class="hdr-w" text-anchor="middle" font-size="14">THE PHYSICAL WORLD / SYSTEM IMAGE (Software UI &amp; State)</text>
+  <text x="424" y="538" class="mono" fill="#38bdf8" text-anchor="middle">Bridged by: Signifiers · Affordances · Natural Mapping · Immediate Feedback</text>
+
+  <!-- Connecting Arrows Goal -> Stage 2, Stage 4 -> World, World -> Stage 5, Stage 7 -> Goal -->
+  <path d="M 280 165 L 218 192" stroke="#d97706" stroke-width="2.5" fill="none" marker-end="url(#arr-amber)" />
+  <path d="M 218 442 L 300 490" stroke="#d97706" stroke-width="2.5" fill="none" marker-end="url(#arr-amber)" />
+  <path d="M 548 490 L 630 444" stroke="#0d9488" stroke-width="2.5" fill="none" marker-end="url(#arr-teal)" />
+  <path d="M 630 246 L 560 168" stroke="#0d9488" stroke-width="2.5" fill="none" marker-end="url(#arr-teal)" />
+
+  <text x="424" y="580" class="lbl-s" fill="#334155" text-anchor="middle">Engineering Diagnosis: Missing Signifiers widen the Gulf of Execution; missing Status Feedback widens the Gulf of Evaluation!</text>
+
+  <!-- RIGHT PANEL: MODEL HUMAN PROCESSOR & LATENCY THRESHOLDS -->
+  <rect x="844" y="68" width="332" height="530" class="panel" />
+  <text x="1010" y="95" class="panel-title" text-anchor="middle">MODEL HUMAN PROCESSOR</text>
+  <text x="1010" y="113" class="lbl-s" text-anchor="middle">Card, Moran &amp; Newell (1983) Biological Clocks</text>
+
+  <rect x="868" y="130" width="284" height="74" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" rx="8" />
+  <text x="1010" y="152" class="lbl-b" fill="#1e40af" text-anchor="middle">1. Perceptual Processor (τ_p ≈ 100 ms)</text>
+  <text x="1010" y="170" class="lbl-s" text-anchor="middle">Visual Iconic &amp; Auditory Echoic Stores</text>
+  <text x="1010" y="188" class="mono" fill="#1d4ed8" text-anchor="middle">Events &lt; 100ms fuse as instantaneous!</text>
+
+  <line x1="1010" y1="204" x2="1010" y2="222" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)" />
+
+  <rect x="868" y="224" width="284" height="74" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.8" rx="8" />
+  <text x="1010" y="246" class="lbl-b" fill="#5b21b6" text-anchor="middle">2. Cognitive Processor (τ_c ≈ 70 ms)</text>
+  <text x="1010" y="264" class="lbl-s" text-anchor="middle">Working Memory (4 ± 1 chunks) ↔ LTM</text>
+  <text x="1010" y="282" class="mono" fill="#6d28d9" text-anchor="middle">Decides action; decays in ~20 seconds</text>
+
+  <line x1="1010" y1="298" x2="1010" y2="316" stroke="#7c3aed" stroke-width="2" marker-end="url(#arr-purple)" />
+
+  <rect x="868" y="318" width="284" height="74" fill="#fffbeb" stroke="#d97706" stroke-width="1.8" rx="8" />
+  <text x="1010" y="340" class="lbl-b" fill="#92400e" text-anchor="middle">3. Motor Processor (τ_m ≈ 70 ms)</text>
+  <text x="1010" y="358" class="lbl-s" text-anchor="middle">Eye Saccades &amp; Hand/Thumb Movement</text>
+  <text x="1010" y="376" class="mono" fill="#b45309" text-anchor="middle">Simple loop: 100+70+70 ≈ 240 ms</text>
+
+  <!-- Nielsen's 3 Latency Rules Box -->
+  <rect x="868" y="410" width="284" height="168" fill="#f8fafc" stroke="#64748b" stroke-width="1.8" rx="8" />
+  <text x="1010" y="432" class="lbl-b" fill="#0f172a" text-anchor="middle">Nielsen's 3 Response SLAs</text>
+  <line x1="882" y1="440" x2="1138" y2="440" stroke="#cbd5e1" stroke-width="1.5" />
+  <text x="882" y="462" class="mono" fill="#059669">• 0.1s (100ms):</text>
+  <text x="985" y="462" class="lbl-s">Direct manipulation feel</text>
+  <text x="882" y="486" class="mono" fill="#0284c7">• 0.4s (400ms):</text>
+  <text x="985" y="486" class="lbl-s">Doherty flow threshold</text>
+  <text x="882" y="510" class="mono" fill="#d97706">• 1.0s (1000ms):</text>
+  <text x="985" y="510" class="lbl-s">Unbroken train of thought</text>
+  <text x="882" y="534" class="mono" fill="#dc2626">• 10.0s Limit:</text>
+  <text x="985" y="534" class="lbl-s">Max attention! Must show</text>
+  <text x="894" y="552" class="lbl-s" fill="#dc2626">% Progress Bar + [Cancel] exit</text>
+</svg>

@@ -21,23 +21,11 @@ In software engineering, constructing a modern, multi-tier system without an arc
 ### 4.1.1 What is a Model?
 A **model** is an abstraction of a system that emphasizes relevant architectural details while intentionally suppressing non-essential complexities. Just as an electrical engineer relies on schematic circuit diagrams rather than microscopic physical wire scans, a software engineer relies on architectural diagrams to reason about component interactions, data dependencies, and state lifecycles.
 
-```text
-+-------------------------------------------------------------+
-|                  THE ROLE OF SYSTEM MODELS                  |
-+-------------------------------------------------------------+
-|  [Ambiguous Business Needs]                                 |
-|  * Unstructured text, implicit assumptions, stakeholder gap |
-|                           │                                 |
-|                           ▼                                 |
-|  [System Architecture Models (UML)]                         |
-|  * Clear system boundaries & precise object contracts       |
-|  * Deterministic state paths & verifiable interactions      |
-|                           │                                 |
-|                           ▼                                 |
-|  [Target Executable Code]                                   |
-|  * TypeScript, Java, Go, Rust, Database Schemas & APIs      |
-+-------------------------------------------------------------+
-```
+| Abstraction Stage | Representation Form | Key Engineering Characteristics |
+| :--- | :--- | :--- |
+| **1. Ambiguous Business Needs** | Natural Language Text | Unstructured user stories, implicit domain assumptions, and stakeholder communication gaps |
+| **2. System Architecture Models (UML)** | Formal Visual & Textual Models | Clear system boundaries, precise object contracts, deterministic state paths, and verifiable interactions |
+| **3. Target Executable Code** | Production Source Code | TypeScript, Java, Go, Rust, relational database schemas, and REST/gRPC APIs |
 
 ### 4.1.2 The Blind Men and an Elephant: Four Modeling Perspectives
 No single diagram can capture the totality of a non-trivial software system. Attempting to force database schema, network protocols, user interactions, and UI workflows into a single visual diagram results in unreadable architectural chaos. Instead, software engineers view the system through **four distinct, orthogonal perspectives**:
