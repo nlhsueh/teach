@@ -81,16 +81,16 @@ To summarize this slide, remember this key takeaway: When users make mistakes, b
 ---
 ## The Classic Anti-Pattern: Norman's Door
 
+> **What is a "Norman Door"?** A door whose design gives **false visual clues** about how to operate it (e.g., a door with a pull handle that must be pushed, or a flat plate that must be pulled).
+
 <div class="split73">
   <div class="left">
 
-* **What is a "Norman Door"?**
-  - A door whose design gives false visual clues about how to operate it (e.g., a door with a pull handle that must be pushed, or a flat plate that must be pulled).
 * **Affordance vs. Signifier:**
-  - **Affordance:** The physical properties and potential actions of an object (a flat surface affords pushing).
+  - **Affordance:** The physical properties and potential actions of an object (a flat surface affords pushing; a handle affords pulling).
   - **Signifier:** Visual cues that signal *where* and *how* the action should happen (e.g., a "PUSH" sign).
-* **The Design Axiom:**
-  - When an object needs an instruction sign just to open it, its design is fundamentally broken!
+* **The Design Axiom (Don Norman):**
+  - *"When a simple everyday door requires an instruction manual—even a one-word **'PUSH'** sign—then the design is fundamentally broken!"*
 
   </div>
   <div class="right">
@@ -111,6 +111,8 @@ To summarize this slide, remember this key takeaway: Intuitive design leverages 
 -->
 ---
 ## The Frustration of Bad UI/UX
+
+> "Users rarely blame the software architect when an interface is confusing—they feel **frustrated**, blame themselves, and **abandon the product**."
 
 <div class="split73">
   <div class="left">
@@ -139,120 +141,155 @@ Engineers must realize that usability is not a superficial luxury—it directly 
 To summarize this slide, remember this key takeaway: Poor UX directly drives user churn, operational errors, and support overhead.
 -->
 ---
-## 3 Classic Bad Design Archetypes
+## Bad Design Archetype (1): "Night Market" Sensory Overload
 
-* **1. The "Night Market Chaos" (Arngren-Style Overload):**
-  - Stuffs hundreds of products, flashing banners, and conflicting links into a single screen with zero visual hierarchy.
-  - The human brain suffers acute cognitive sensory overload.
-* **2. The "Paint is Free" (Color & Contrast Nightmare):**
-  - Uses neon greens, blazing yellows, and magenta fonts on cyan backgrounds.
-  - Violates WCAG color contrast standards; illegible for users with visual impairments.
-* **3. The "Where Do I Start?" (Missing Visual Hierarchy):**
-  - Clutters dozens of identical, unprioritized buttons across the screen.
-  - Fails to establish a primary Call-to-Action (CTA); the user has no idea which button to click first.
+> **The "Night Market Chaos" (Arngren-Style Overload):** Stuffing hundreds of competing products and links into a single screen with zero visual hierarchy.
 
-<!--
-Let's catalog the three most common bad design archetypes found in legacy software.
+<div class="split55">
+  <div class="left">
 
-First is the 'Night Market' style: cramming every possible link, banner, and image onto one page. The user's eye has nowhere to rest.
+* **Why This Design Fails:**
+  - **Broken Pattern Recognition:** Every product block has a random aspect ratio, font size, and alignment, forcing the brain to painfully refocus on every single item.
+  - **No Grid System or Visual Anchors:** Lacks horizontal/vertical alignment guides; the human eye has no natural scanning path.
+  - **Acute Sensory Overload:** When everything screams for attention simultaneously, users suffer cognitive fatigue and immediately bounce.
 
-Second is the 'Paint is Free' style: using garish, uncurated color palettes that violate contrast standards and cause severe eye strain.
-
-Third is the 'Where Do I Start?' archetype: presenting twenty identical buttons with no visual weight, leaving users paralyzed by decision fatigue.
-
-To summarize this slide, remember this key takeaway: Eliminate cognitive overload, adhere to contrast standards, and guide users with clear visual hierarchies.
--->
----
-<!-- _class: title-image-slide -->
-
-## Real-World Anti-Pattern: Night Market Sensory Overload
-
-<div class="image-wrapper">
-  <img src="../../img/ux/bad_design_night_market_arngren.png" alt="Arngren Cluttered Design" />
+  </div>
+  <div class="right">
+    <img src="../../img/ux/bad_design_night_market_arngren.png" alt="Arngren Cluttered Design" />
+  </div>
 </div>
 
 <!--
-Look at this infamous real-world web page from Arngren.
+Let's examine the first classic bad design archetype: the 'Night Market' sensory overload, exemplified by the infamous Arngren website on the right.
 
-This is a textbook example of sensory overload. Hundreds of unrelated items—drones, electric scooters, model trains—compete simultaneously for attention. There are no margins, no whitespace, no visual grouping, and no clear scanning path.
+Why is this interface so exhausting to use? First, pattern recognition is completely broken. In modern e-commerce, product cards share a fixed aspect ratio, title position, and price tag. Here, every block is randomly sized and positioned, forcing your brain to re-focus from scratch on every item.
 
-When everything screams for attention, nothing is heard.
+Second, there is no underlying grid system or whitespace. Drones, scooters, and gadgets compete simultaneously for every pixel.
 
-To summarize this slide, remember this key takeaway: Without visual grouping and whitespace, interfaces devolve into chaotic visual noise.
+To summarize this slide, remember this key takeaway: Without a structured grid system, visual grouping, and whitespace, interfaces devolve into exhausting cognitive noise.
 -->
 ---
-## Case Study: Taiwan Mask App — The Operational Challenge
+## Bad Design Archetype (2): "Paint is Free" Color & Contrast
 
-* **Context & Operational Urgency:**
-  - During the COVID-19 pandemic, Taiwan's National Health Insurance App (健保快易通) handled millions of mask reservations daily.
-* **Critical Usability Flaws of the Original Interface:**
-  - **Buried Priority:** The critical "Mask Pre-Order" function was hidden inside a cluttered, 20-icon unorganized grid.
-  - **Cognitive Search Fatigue:** Elderly citizens and anxious users were forced to hunt across multiple rows of identical icons.
-  - **No Visual Hierarchy:** Trivial informational links had the exact same visual weight as life-critical pandemic services.
-  - **System Bottlenecks:** Confused users repeatedly tapped wrong options, spiking customer support queues and server latency.
+> **The "Paint is Free" Nightmare:** Abusing clashing colors, busy textured backgrounds, and drop-shadows that destroy readability and brand trust.
+
+<div class="split55">
+  <div class="left">
+
+* **Why This Design Fails:**
+  - **Color Contrast Collapse:** Dark red and neon yellow text over a wavy cyan gradient causes visual vibration and violates **WCAG accessibility standards**.
+  - **Typography Nightmares:** Heavy 3D drop-shadows and jagged, unaligned link lists create severe eye strain.
+  - **Zero Negative Space & Lost Trust:** Cramming text without breathing room—especially on a medical X-ray supplier site—instantly destroys professional credibility.
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/bad_design_color_contrast_xray.png" alt="Pacific Northwest X-Ray Color Contrast Nightmare" />
+  </div>
+</div>
 
 <!--
-Here is a dramatic real-world case study: the Taiwan National Health Insurance App redesign during the COVID-19 pandemic.
+Here is our second bad design archetype: the 'Paint is Free' color and contrast nightmare, taken from an actual medical X-ray equipment supplier website on the right.
 
-During nationwide mask rationing, millions of anxious citizens needed to pre-order masks every single day.
+Look at why this design fails on every ergonomic level: First, dark red and yellow text is placed directly on top of a wavy blue gradient background, violating WCAG contrast rules and making the text nearly impossible to read for older or color-blind users.
 
-However, the existing app was an administrative portal featuring an unprioritized grid of 20 identical square icons. Mask pre-ordering had the exact same visual weight as routine informational brochures.
+Second, heavy drop-shadows on headings add visual noise, and there is zero negative whitespace. Worse still, in a high-trust medical domain, this chaotic palette immediately destroys professional credibility.
 
-Elderly users spent minutes hunting and squinting across the screen.
-
-To summarize this slide, remember this key takeaway: Equal visual weight across disparate features hides mission-critical user tasks during high-stress situations.
+To summarize this slide, remember this key takeaway: High-contrast typography and clean negative space are essential for both human readability and brand trust.
 -->
 ---
-## Case Study: NHI Mask App — Before & After Redesign
+## Bad Design Archetype (3): "Where Do I Start?" Missing Hierarchy
 
-> "Interface layout should dynamically reflect urgent user goals, not internal department divisions."
+> **The "Where Do I Start?" Archetype:** Cluttering dozens of identical buttons and ultra-wide text lines without a clear primary Call-to-Action (CTA).
+
+<div class="split55">
+  <div class="left">
+
+* **Why This Design Fails:**
+  - **Missing Visual Focal Point:** Dozens of identical red and black buttons on the left carry equal visual weight—users have no idea which button to click first.
+  - **Information Flood:** Phone numbers, addresses, and slogans are crammed into a neon banner with no visual priority.
+  - **Uncontrolled Line Length:** Paragraphs stretch across the entire screen width, far exceeding the ergonomic reading limit of **45–75 characters per line**.
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/bad_design_cluttered_gates.png" alt="Gates N Fences Cluttered Hierarchy and Line Length" />
+  </div>
+</div>
+
+<!--
+Here is our third bad design archetype: 'Where Do I Start?'—missing visual hierarchy and uncontrolled line length.
+
+Look at the website on the right and why it paralyzes the user: First, on the left sidebar, over a dozen identical red and black buttons compete with equal visual weight. There is no primary Call-to-Action (CTA) to guide the user's first step.
+
+Second, look at the text paragraphs on the right: they stretch across the entire width of the monitor. Cognitive ergonomics proves that comfortable human reading requires 45 to 75 characters per line. Ultra-wide lines force the reader's eyes and neck to swing back and forth, causing rapid reading fatigue.
+
+To summarize this slide, remember this key takeaway: Establish a clear primary Call-to-Action and constrain text line lengths to 45–75 characters for effortless scanning.
+-->
+---
+## Case Study: Taiwan NHI Mask App — Where Do You Pre-Order?
+
+> **Classroom Challenge:** Guess which icon (**1–6**) you had to tap when you wanted to **pre-order masks**?
 
 <div class="two-columns">
   <div class="card" data-marpit-fragment style="text-align: center;">
-    <h3 style="color: #dc2626; margin-bottom: 12px;">Before: Bureaucratic Grid Clutter</h3>
-    <img src="../../img/ux/mask_order_app_before.png" alt="Mask App Before Redesign" style="max-height: 360px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto; display: block;" />
+    <h3 style="color: #dc2626; margin-bottom: 8px;">v1 Emergency Launch: Guess Where (1–6)?</h3>
+    <img src="../../img/ux/mask_order_app_before.png" alt="Mask App Before Redesign" style="max-height: 310px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto 8px auto; display: block;" />
+    <p style="font-size: 15px; color: #334155; margin: 0;"><strong>1.</strong> Mask Query &nbsp;|&nbsp; <strong>2.</strong> My Health Bank &nbsp;|&nbsp; <strong>3.</strong> Reform Diary<br/><strong>4.</strong> Hospital Search &nbsp;|&nbsp; <strong>5.</strong> E-Counter &nbsp;|&nbsp; <strong>6.</strong> More...</p>
   </div>
 
   <div class="card" data-marpit-fragment style="text-align: center;">
-    <h3 style="color: #16a34a; margin-bottom: 12px;">After: Goal-Directed Hero Flow</h3>
-    <img src="../../img/ux/mask_order_app_after.png" alt="Mask App After Redesign" style="max-height: 360px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto; display: block;" />
+    <h3 style="color: #16a34a; margin-bottom: 8px;">Answer: Buried in #2! → Refactored 3×3 Grid</h3>
+    <img src="../../img/ux/mask_order_app_after.png" alt="Mask App After Redesign" style="max-height: 310px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto 8px auto; display: block;" />
+    <p style="font-size: 15px; color: #15803d; margin: 0;"><strong>Why #2 (My Health Bank)?</strong> It had the login module!<br/><strong>Redesign:</strong> Promoted <strong>eMask Pre-Order</strong> directly to top row.</p>
   </div>
 </div>
 
 <!--
-Look at the side-by-side transformation of the Taiwan National Health Insurance App.
+Let's do a quick interactive classroom exercise with this real-world case study from Taiwan's COVID-19 response.
 
-In Card 1 on the left, observe the original interface: twenty identical square icons arranged in a uniform grid. The mission-critical mask pre-ordering feature was buried among routine hospital directories and medical brochures, forcing anxious citizens into exhaustive visual searches.
+When the government urgently launched online mask pre-ordering on the National Health Insurance App (行動快易通), they told citizens: 'Open the app to pre-order your masks!'
 
-In Card 2 on the right, observe the redesigned interface: the design team elevated mask pre-ordering into a prominent, high-contrast Hero Banner occupying the prime thumb zone at the top of the mobile screen. Secondary services were neatly chunked into structured cards below.
+Look at the first version on the left, labeled 1 through 6:
+1 is Mask Query (口罩查詢), 2 is My Health Bank (健康存摺), 3 is Reform Diary (改革日記), 4 is Hospital Search (院所查詢), 5 is E-Counter (行動櫃檯), and 6 is More.
+Ask yourself: Where would you tap to pre-order a mask?
 
-With this human-centered redesign, citizens could accomplish their primary goal with a single tap in less than two seconds.
+Almost everyone tapped #1 (Mask Query)—but #1 only showed a map of pharmacy stock! You could not pre-order masks there!
 
-To summarize this slide, remember this key takeaway: Interface architecture should dynamically elevate urgent user goals rather than statically mirroring internal organizational structures.
+Now click to reveal the answer on the right: The 'Mask Pre-Order' button was actually hidden inside #2: 'My Health Bank (健康存摺)'!
+Why on earth did engineers put Mask Pre-Order inside Health Bank? Because pre-ordering required real-name identity authentication, and the authentication code was already built inside the Health Bank module! The developers designed the UI around their backend authentication module rather than the user's mental model!
+
+Look at the redesigned version on the right: the team refactored the home screen into a clean, standardized 3-by-3 grid with uniform icon sizes and bilingual labels, promoting 'eMask (口罩預購)' and 'History (購買紀錄)' directly to the top surface level.
+
+To summarize this slide, remember this key takeaway: Never bury a high-priority user task inside an unrelated menu just because it shares a backend authentication module.
 -->
 ---
-## Case Study Analysis: Transforming Emergency UX
+## Case Study Analysis: Backend-Driven vs. User-Centered UX
 
-* **Human-Centered Redesign Strategy:**
-  - **Hero Priority Card:** Promoted mask pre-ordering to a prominent top banner occupying the prime mobile thumb zone.
-  - **Task Chunking:** Grouped secondary medical services into clear functional cards with clean spacing and high-contrast labels.
-  - **Immediate Clarity:** Reduced user decision time from minutes of hunting to a single direct tap.
-* **Key Redesign Takeaway:**
-  - **Dynamic Situational UX:** Interface navigation hierarchy must dynamically adapt to real-world citizen priorities rather than reflecting static government department structures.
+* **Why the v1 Emergency Design Failed (Implementation-Driven UI):**
+  - **Conway's Law & Module Convenience:** Because mask pre-ordering required identity login, engineers stuffed it inside **#2 My Health Bank (`健康存摺`)** where authentication already existed.
+  - **False Signifier Trap:** Icon **#1 (`口罩查詢`)** had a mask illustration and the word "Mask," luring millions of users into a dead-end map view while the red banner at the top looked like an unclickable advertisement.
+  - **Inconsistent Visual Weight:** Icons had random sizes and shapes (circles, rectangles, 3D books) with zero grid alignment.
+* **How the Refactored Version Fixed It (Goal-Directed 3×3 Grid):**
+  - **Surface-Level Task Visibility:** Extracted **`eMask 口罩預購`**, **`History 購買紀錄`**, and **`Mask Map 口罩地圖`** as distinct, top-row first-class actions matching citizen goals.
+  - **Standardized Visual System:** Unified all 9 entry points into consistent circular icons with clear bilingual (**English + Chinese**) labels.
 
 <!--
-Let's analyze why this redesign was so successful.
+Let's analyze the architectural lesson behind the NHI Mask App redesign.
 
-First, the team applied Task Chunking: they grouped related secondary services together, reducing clutter.
+Why did the first version fail so badly? Because it was an Implementation-Driven UI. From a backend engineer's perspective, putting Mask Pre-Order inside 'My Health Bank' made total sense because Health Bank already handled user login and identity verification.
 
-Second, they aligned the interface with human situational priorities. During a pandemic, 95% of app visits were for masks. The interface adapted to human reality.
+But from a citizen's mental model, 'Health Bank' is where you check past hospital medical records—nobody would ever guess you go there to buy masks! Meanwhile, Icon #1 literally had a picture of a mask, acting as a false signifier that trapped millions of users.
 
-Remember: software navigation should never reflect internal company org charts or database schemas; it must reflect what real humans are trying to accomplish right now.
+In the refactored 3-by-3 grid, the design team broke free from backend module boundaries. They brought 'eMask Pre-Order', 'Purchase History', and 'Mask Map' straight to the top level, and standardized the visual grid with bilingual labels.
 
-To summarize this slide, remember this key takeaway: Dynamic, situational UX adapts interface hierarchy to real-world user priorities.
+To summarize this slide, remember this key takeaway: Design navigation hierarchies around what users want to accomplish, never around how your backend authentication modules are organized.
 -->
 ---
 ## Why is UX So Hard? The Empathy Gap
+
+> **The Cardinal Rule of UX:** "You are **not** your user—never assume that because you built the backend schema, the interface is obvious to a first-time visitor."
+
+<div class="split73">
+  <div class="left">
 
 * **1. "You Are Not the User":**
   - Software engineers possess deep technical mental models (relational schemas, API routes, thread lifecycles).
@@ -262,6 +299,12 @@ To summarize this slide, remember this key takeaway: Dynamic, situational UX ada
   - They forget the cognitive friction experienced by a first-time user encountering the screen cold.
 * **3. Defensive vs. Empathetic Thinking:**
   - Engineers often design interfaces to match backend database tables rather than natural human mental steps.
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/why_ux_is_hard_nobg.png" alt="Why UX is Hard" />
+  </div>
+</div>
 
 <!--
 Why do brilliant engineers repeatedly build difficult-to-use software?
@@ -459,7 +502,7 @@ To summarize this slide, remember this key takeaway: These ten heuristics cover 
 ## NS01: Visibility of System Status
 
 * **Heuristic Principle:**
-  > "The system should always keep users informed about what is going on, through appropriate feedback within a reasonable time."
+  > "The system should always **keep users informed** about what is going on, through **appropriate feedback** within a **reasonable time**."
 * **Core Interaction Patterns:**
   - **Immediate Touch Feedback:** Active button states, ripple effects, and micro-animations validating input registration.
   - **Progress Transparency:** Deterministic progress bars (% complete), multi-step checkout steppers (1. Cart &rarr; 2. Shipping &rarr; 3. Payment).
@@ -496,7 +539,7 @@ To summarize this slide, remember this key takeaway: Visual feedback across butt
 ## NS02: Match Between System and the Real World
 
 * **Heuristic Principle:**
-  > "The system should speak the users' language, with words, phrases, and concepts familiar to the user, rather than system-oriented terms. Follow real-world conventions."
+  > "The system should **speak the users' language**, with **words, phrases, and concepts familiar to the user**, rather than system-oriented terms. Follow **real-world conventions**."
 * **Natural Spatial Mapping (Natural Mapping):**
   - Controls should mirror the physical arrangement of the objects they manipulate.
   - *Classic Counter-Example:* Gas stove burner knobs arranged in a straight line for a 2x2 grid force mental translation and errors.
@@ -534,7 +577,7 @@ To summarize this slide, remember this key takeaway: When digital controls mirro
 ## NS03: User Control & Freedom (Emergency Exits)
 
 * **Heuristic Principle:**
-  > "Users often choose system functions by mistake and will need a clearly marked 'emergency exit' to leave the unwanted state without having to go through an extended dialogue."
+  > "Users often choose system functions **by mistake** and will need a clearly marked **'emergency exit'** to leave the unwanted state **without having to go through an extended dialogue**."
 * **Essential Implementation Patterns:**
   - **Universal Undo / Redo:** Support `Ctrl+Z` / `Cmd+Z` across all text editors, canvas tools, and destructive state changes.
   - **Cancelation Actions:** Provide clear, high-contrast "Cancel" buttons on modals, file uploads, and bulk operations.
@@ -573,7 +616,7 @@ To summarize this slide, remember this key takeaway: Prominent emergency exits a
 ## NS04: Consistency & Standards (Jakob's Law)
 
 * **Heuristic Principle:**
-  > "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions."
+  > "Users **should not have to wonder** whether **different words, situations, or actions mean the same thing**. Follow **platform and industry conventions**."
 * **Jakob's Law of Internet User Experience:**
   - Users spend 99% of their digital lives on **other websites and apps**.
   - They expect your software to follow established conventions (e.g., logo at top-left returns home, shopping cart at top-right, magnifying glass indicates search).
@@ -613,7 +656,7 @@ To summarize this slide, remember this key takeaway: Conform to industry-standar
 ## NS05: Error Prevention
 
 * **Heuristic Principle:**
-  > "Even better than good error messages is a careful design which prevents a problem from occurring in the first place."
+  > "Even better than good error messages is a **careful design** which **prevents a problem from occurring** **in the first place**."
 * **Defensive Design Patterns:**
   - **Eliminate Error-Prone States:** Grey out or disable the "Submit" button until all mandatory fields pass real-time validation.
   - **Input Constraints:** Use visual Date Pickers instead of freeform text boxes to prevent date formatting syntax errors (`MM/DD/YYYY` vs. `DD/MM/YYYY`).
@@ -652,7 +695,7 @@ To summarize this slide, remember this key takeaway: Use high-friction confirmat
 ## NS06: Recognition Rather Than Recall
 
 * **Heuristic Principle:**
-  > "Minimize the user's memory load by making objects, actions, and options visible. The user should not have to remember information from one part of the dialogue to another."
+  > "**Minimize the user's memory load** by making **objects, actions, and options visible**. The user **should not have to remember information** from one part of the dialogue to another."
 * **Cognitive Psychology Foundation:**
   - **Recognition (Easy):** Identifying something you have seen before when presented with visual cues (e.g., multiple-choice quiz).
   - **Recall (Hard):** Retrieving information entirely from memory without assistance (e.g., blank-slate command line terminal).
@@ -693,7 +736,7 @@ To summarize this slide, remember this key takeaway: Surfacing recent history an
 ## NS07: Flexibility & Efficiency of Use (Accelerators)
 
 * **Heuristic Principle:**
-  > "Accelerators—unseen by the novice user—may often speed up the interaction for the expert user such that the system can cater to both inexperienced and experienced users."
+  > "**Accelerators**—unseen by the novice user—may often **speed up the interaction for the expert user** such that the system can **cater to both inexperienced and experienced users**."
 * **Dual-Track Interaction Design:**
   - **Novice Path:** Guided visual menus, onboarding tours, wizard steppers, and descriptive labels.
   - **Expert Accelerators:** Keyboard shortcuts (`Cmd+K` command palette), multi-touch gestures, reusable templates, and batch actions.
@@ -732,7 +775,7 @@ To summarize this slide, remember this key takeaway: Accelerators like command p
 ## NS08: Aesthetic & Minimalist Design
 
 * **Heuristic Principle:**
-  > "Dialogues should not contain information which is irrelevant or rarely needed. Every extra unit of information in a dialogue competes with the relevant units of information and diminishes their relative visibility."
+  > "Dialogues should **not contain information which is irrelevant** or rarely needed. Every **extra unit of information** in a dialogue **competes with the relevant units** and **diminishes their relative visibility**."
 * **The Signal-to-Noise Ratio (SNR):**
   - **Signal:** Information directly relevant to the user's immediate decision.
   - **Noise:** Visual clutter, redundant borders, unnecessary badges, decorative chrome.
@@ -772,7 +815,7 @@ To summarize this slide, remember this key takeaway: Clean visual hierarchy and 
 ## NS09: Help Users Recognize, Diagnose, & Recover from Errors
 
 * **Heuristic Principle:**
-  > "Error messages should be expressed in plain language (no codes), precisely indicate the problem, and constructively suggest a solution."
+  > "Error messages should be expressed in **plain language** (**no codes**), **precisely indicate the problem**, and **constructively suggest a solution**."
 * **The Anatomy of a Terrible Error Message:**
   - ❌ *"Error 0x80004005: Unexpected runtime exception in thread main."* (Terrifies the user; completely unhelpful).
 * **The Anatomy of a Great Error Message:**
@@ -812,7 +855,7 @@ To summarize this slide, remember this key takeaway: Empathetic error designs ex
 ## NS10: Help and Documentation
 
 * **Heuristic Principle:**
-  > "Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation. Any such information should be easy to search, focused on the user's task, list concrete steps to be carried out, and not be too large."
+  > "Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation. Any such information should be **easy to search**, **focused on the user's task**, **list concrete steps** to be carried out, and **not be too large**."
 * **Modern Documentation Paradigms:**
   - **Contextual Tooltips:** Inline `?` icons explaining complex form requirements on hover.
   - **Interactive Onboarding Tours:** Lightweight, multi-step interactive walkthroughs highlighting key UI areas for first-time signups.
