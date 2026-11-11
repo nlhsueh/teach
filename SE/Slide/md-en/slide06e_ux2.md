@@ -363,6 +363,7 @@ A hospital deploys a new Emergency Room Triage System. First-time nursing intern
 
   </div>
   <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq1" target="_blank"><img src="../../img/ch06/ase-ch06-ccq1.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -616,6 +617,7 @@ In a cloud deployment dashboard, an engineer clicks the **"Deploy to Production"
 
   </div>
   <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq2" target="_blank"><img src="../../img/ch06/ase-ch06-ccq2.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -834,6 +836,7 @@ According to the Shannon formulation of **Fitts's Law** (`MT = a + b · log`<sub
 
   </div>
   <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq3" target="_blank"><img src="../../img/ch06/ase-ch06-ccq3.png" alt="QR Code" /></a>
   </div>
 </div>
 
@@ -1791,6 +1794,7 @@ From Douglas Engelbart and ISO usability standards (6.1) to Don Norman's cogniti
 To summarize this slide, remember this key takeaway: UX Engineering integrates cognitive science, mathematical laws, empirical research, and rigorous usability testing across the entire software lifecycle.
 -->
 ---
+<!-- id: ase-ch06-ccq1 -->
 <!-- header: '6.8 Appendix: Suggested Solutions' -->
 
 ## Appendix A: Suggested Answers for CCQ 1 – CCQ 5
@@ -1810,6 +1814,11 @@ Use this summary table when reviewing for quizzes and exams to verify your maste
 
 To summarize this slide, remember this key takeaway: Every CCQ illustrates how theoretical HCI models diagnose concrete frontend engineering defects.
 -->
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq1)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq1" target="_blank"><img src="../../img/ch06/ase-ch06-ccq1.png" width="120"></a>
+
 ---
 ## Appendix B: Suggested Solutions for Peer Discussions 6.3, 6.5 & 6.7
 

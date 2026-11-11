@@ -2178,6 +2178,7 @@ C. **Apache Kafka 不可變事件日誌 (Event Log)**：透過 Transactional Out
 總結這張投影片，請記住這個核心觀念：這些經典文獻匯聚了軟體產業半世紀以來在架構、契約、物件與資料工程上的集體智慧。
 -->
 ---
+<!-- id: ase-ch05-ccq1 -->
 <!-- header: '5.8 附錄：隨堂測驗與討論建議解答' -->
 
 ## 附錄 A：隨堂觀念檢核 (CCQ 1 – CCQ 5) 建議解答與解析
@@ -2197,6 +2198,11 @@ C. **Apache Kafka 不可變事件日誌 (Event Log)**：透過 Transactional Out
 
 總結這張投影片，請記住這個核心觀念：每一題 CCQ 都印證了嚴謹模組邊界、正式契約規格與多模態資料分流如何防止系統架構腐化。
 -->
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq1)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq1" target="_blank"><img src="../../img/ch05/ase-ch05-ccq1.png" width="120"></a>
+
 ---
 ## 附錄 B：同儕討論 5.3 建議解答 — 西洋棋 MVC 之 UML 套件圖
 

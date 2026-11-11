@@ -315,7 +315,9 @@ To document Stage 1 in our Software Design Document (SDD), we use two complement
 
 *Figure 5.3.9: UML Package Diagram notation (Left) and Food Delivery layered package structure enforcing zero cyclic dependencies (Right).*
 
+<!-- id: ase-ch05-pair1 -->
 #### 💬 Peer Discussion 5.3: Chess Game in MVC — UML Package Diagram (PlantUML)
+
 * **Scenario:** You are designing a Desktop/Web **Chess Game** using the **MVC** architectural pattern with seven core classes: `ChessBoardGUI`, `MoveHistoryPanel`, `GameController`, `MoveInputHandler`, `BoardState`, `PieceRulesEngine`, and `MoveValidator`.
 * **Discussion Tasks:**
   1. Group the 7 classes into three packages (`ui.view`, `ui.controller`, `domain.model`) and write the **PlantUML Package Diagram** script (`package "..." { ... }` and `..>`).
@@ -329,11 +331,11 @@ To document Stage 1 in our Software Design Document (SDD), we use two complement
   * **Artifact (`«artifact»`):** The compiled binary file deployed onto a node (`order-service.jar`, `payment-service.jar`).
   * **Communication Path (Solid Line with Protocol Stereotype):** Network link annotated with protocol & port (`«HTTPS / TLS 1.3 :443»`, `«gRPC / mTLS :9090»`, `«TCP :5432»`).
 
-![UML Deployment Diagram Notation and Food Delivery Cloud Topology](../../img/ch05/architecture/uml_deployment_diagram_guide.svg)
-
 *Figure 5.3.10: UML Deployment Diagram notation (Left) and Food Delivery multi-zone cloud deployment topology (Right).*
 
 ---
+
+[Interactive Activity (線上作答)](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-pair1)
 
 <!-- id: ase-ch05-ccq2 -->
 #### 🙋 **Concept Check (CCQ 2) — Architectural Design & Macro UML**
@@ -464,7 +466,9 @@ public class OrderServiceImpl implements OrderService {
 > * `\old(expr)` captures the pre-state value before method execution so the postcondition (`ensures`) can mathematically verify state deltas (`stock == \old(stock) - qty`).
 > * `assignable \nothing;` in the `exceptional_behavior` block is a **Frame Condition**: it formally guarantees that if `OutOfStockException` is thrown, **zero database rows or payment balances are mutated**!
 
+<!-- id: ase-ch05-pair2 -->
 #### 💬 Peer Discussion 5.4: Write the Javadoc Design Spec for `bubbleSort(int[] arr)`
+
 * **Scenario:** Every CS student can code `public static void bubbleSort(int[] arr)` in 2 minutes, yet most struggle to write its **complete, airtight formal Design Specification**!
 * **Discussion Tasks:**
   1. Write the **Precondition (`@param` / `@throws` / `@pre`)** for `arr` (what if `arr == null` vs. `arr.length == 0`?).
@@ -472,7 +476,6 @@ public class OrderServiceImpl implements OrderService {
   3. **Critical Trap:** If your postcondition only states *"For all `0 <= i < arr.length - 1`, `arr[i] <= arr[i+1]`"*, why would a buggy implementation `Arrays.fill(arr, 0)` (overwriting the entire array with zeros!) pass 100% of your contract? What second postcondition clause is missing? *(See Appendix C for the complete solution!)*
 
 ---
-
 ### 5.4.3 Modeling Interface Contracts: UML Component Diagram
 
 To visualize how modular components wire their contracts together at the **Meso (subsystem/component) level**, Stage 2 uses the **UML Component Diagram**:
@@ -618,13 +621,17 @@ Inspired by architect **Christopher Alexander's** *A Pattern Language* (1977), t
 
 *Figure 5.5.5: Dependency Inversion Principle (DIP) inverting traditional downward dependencies (`domain ──> infra`, Left) into upward interface realization (`infra ..|> domain`, Right).*
 
+<!-- id: ase-ch05-pair3 -->
 #### 💬 Peer Discussion 5.5: Explore the GoF Observer Design Pattern
+
 * **Scenario:** When an order's state changes in our Food Delivery System (e.g., `Order` transitions to `READY_FOR_PICKUP`), multiple modules must react immediately: **Customer Push Notifier**, **Restaurant Kitchen Display**, **Rider Map Tracker**, and **Fraud Analytics Logger**.
 * **Discussion Tasks:**
   1. **Design Motivation:** Why is hardcoding `customerApp.notify(); kitchen.update(); riderMap.ping();` inside `OrderService.updateStatus()` a maintenance disaster?
   2. **UML Class Structure:** Sketch the GoF **Observer Pattern** (`Subject` / `Publisher`, `«interface» Observer` / `Subscriber`, and `ConcreteObservers`) and explain how it simultaneously embodies **OCP** and **DIP**! *(See Appendix D for the complete solution!)*
 
 ---
+
+[Interactive Activity (線上作答)](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-pair3)
 
 <!-- id: ase-ch05-ccq4 -->
 #### 🙋 **Concept Check (CCQ 4) — Component & OO Design (SOLID)**

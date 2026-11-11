@@ -79,18 +79,19 @@ In this section, we study everyday design psychology, examine classic bad design
 To summarize this slide, remember this key takeaway: When users make mistakes, blame the interface design rather than human intelligence.
 -->
 ---
-## The Classic Anti-Pattern: Norman's Door
+## Why Good Design Matters: The "Norman Door"
 
-> **What is a "Norman Door"?** A door whose design gives **false visual clues** about how to operate it (e.g., a door with a pull handle that must be pushed, or a flat plate that must be pulled).
+> **What is a "Norman Door"?** A door whose design sends the **wrong visual signal**—such as installing a prominent **pull handle** on a door that must actually be **pushed**!
 
 <div class="split73">
   <div class="left">
 
-* **Affordance vs. Signifier:**
-  - **Affordance:** The physical properties and potential actions of an object (a flat surface affords pushing; a handle affords pulling).
-  - **Signifier:** Visual cues that signal *where* and *how* the action should happen (e.g., a "PUSH" sign).
-* **The Design Axiom (Don Norman):**
-  - *"When a simple everyday door requires an instruction manual—even a one-word **'PUSH'** sign—then the design is fundamentally broken!"*
+* **The Emotional Impact (Embarrassment & Frustration):**
+  - You see a handle, pull instinctively, and suddenly can't open the door—making you feel **embarrassed, foolish, or even angry** in front of others.
+  - Yet **you are not to blame—the design failed** by fighting human instinct!
+* **Why This Brings Us to User Experience (UX):**
+  - *"When a simple door needs a **'PUSH'** sign, the design is faulty."* — Don Norman
+  - Software is full of "digital Norman Doors": good **UX Design** aligns visual cues with human intuition so users feel **confident and effortless**, never frustrated.
 
   </div>
   <div class="right">
@@ -99,15 +100,15 @@ To summarize this slide, remember this key takeaway: When users make mistakes, b
 </div>
 
 <!--
-Look at this classic example of a Norman Door.
+Look at this famous example known as a Norman Door.
 
-Observe the contradiction: the door has a vertical pull bar, but someone had to paste a clumsy sticker saying 'PUSH' because everyone was pulling it!
+When you walk up to a door with a vertical pull handle, your brain instinctively tells you to grab and pull. When the door refuses to budge because it actually opens by pushing—or sliding—you suddenly feel embarrassed, awkward, or even angry in public.
 
-Don Norman established the vital distinction between Affordance and Signifiers. An affordance is what an object can physically do. A signifier is an explicit visual signal telling users where and how to interact.
+Cognitive scientist Don Norman pointed out that when people struggle with everyday objects, they often blame themselves, when in fact the design is at fault. If a simple door requires a 'PUSH' sticker to explain how it works, the design itself has failed.
 
-If a door has proper affordances—such as a flat push-plate on the push side and a handle on the pull side—no sign is ever needed. The human brain operates it unconsciously.
+This brings us directly to why User Experience, or UX, is so critical in software engineering. Software interfaces are full of digital Norman Doors that confuse and frustrate users. Good UX design ensures that visual cues match human intuition naturally.
 
-To summarize this slide, remember this key takeaway: Intuitive design leverages natural physical affordances so users never require external operational instructions.
+To summarize this slide, remember this key takeaway: Good UX design matters because interfaces should work effortlessly with human instinct rather than making users feel embarrassed or frustrated.
 -->
 ---
 ## The Frustration of Bad UI/UX
@@ -382,16 +383,16 @@ To summarize this slide, remember this key takeaway: UX design is an iterative c
 ---
 ## The 5 Stages of Design Thinking: Process Breakdown
 
-* **1. Empathize (探索 / 同理):**
+* **1. Empathize:**
   - Conduct qualitative user interviews, contextual field inquiries, and observational studies.
   - Identify unarticulated frustrations and true emotional pain points.
-* **2. Define (定義):**
+* **2. Define:**
   - Synthesize user research into concrete personas, empathy maps, and precise "How Might We" problem statements.
-* **3. Ideate (構思):**
+* **3. Ideate:**
   - Brainstorm diverse potential solutions without premature judgment; sketch rapid low-fidelity paper wireframes.
-* **4. Prototype (設計 / 原型):**
+* **4. Prototype:**
   - Build interactive, testable artifacts (clickable Figma mockups, interactive HTML/CSS code components).
-* **5. Test (確認 / 測試):**
+* **5. Test:**
   - Put prototypes in front of real users, observe stumbling blocks, measure task completion rates, and iterate.
 
 <!--
@@ -410,38 +411,37 @@ In Test, you put those artifacts in front of users to gather behavioral evidence
 To summarize this slide, remember this key takeaway: The five design thinking stages provide a structured, repeatable methodology for creating human-centered software.
 -->
 ---
-### Concept Check Question 1: Taiwan Mask App Usability Audit
+### Concept Check Question 1: UI vs. UX & The Empathy Gap
 <!-- id: ase-ch06-ccq1 -->
 
 <div class="ccq-columns">
   <div class="ccq-text">
 
-During nationwide mask rationing, Taiwan's NHI app originally presented 20 identical square icons in an unprioritized grid. Why did this cause severe operational failure, and how did the redesign resolve it?
+A mobile banking app has sleek animations (**polished UI**), yet **68% of new users abandon transfers** because the flow exposes raw database codes (`TXN_ROUTING_ID`). What is the root failure and proper **Design Thinking** remedy?
 
-- **A.** The interface lacked multi-language localization; adding English and Japanese menus resolved citizen confusion.
-- **B.** Equal visual weight buried emergency mask pre-ordering; promoting it to a top Hero Banner aligned interface hierarchy with real-world user priorities.
-- **C.** The backend database lacked indexing; adding Redis caching allowed the 20 grid buttons to render twice as fast.
-- **D.** Mobile screens should never contain more than 3 buttons; removing all secondary hospital directories solved the problem.
+- **A.** A **UI visual defect**; replace CSS animations with higher-contrast Material Design buttons.
+- **B.** A **backend latency bottleneck**; add Redis caching so transfer queries finish in under 50ms.
+- **C.** A **UX Empathy Gap failure**; research user pain points and prototype flows around customer mental models.
+- **D.** A **user training gap**; require new customers to watch a 15-minute tutorial before transferring funds.
 
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq1" target="_blank"><img src="../../img/ch06/ase-ch06-ccq1.png" alt="QR Code" /></a>
-    <br><img src="../../img/ux/mask_order_app_before.png" alt="Mask App Before Redesign" style="max-height: 270px; width: auto; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);" />
   </div>
 </div>
 
 <!--
-Let's test our understanding with an interactive case analysis of the Taiwan NHI Mask App!
+Let's check our understanding of Section 6.1 with Concept Check Question 1!
 
-Examine the original screen on the right: twenty identical square icons arranged in a uniform grid.
+Examine the scenario: the mobile banking app has sleek visual styling and animations (a polished UI), yet 68% of new users drop out during money transfers because the workflow exposes raw internal database codes like TXN_ACCT_ROUTING_ID.
 
-Why did this cause massive operational failure? When millions of anxious citizens needed masks every day, the emergency feature was buried alongside routine informational links.
+Why did this happen? Because engineers suffered from the Curse of Knowledge and designed the workflow around their internal database schema rather than the customer's mental model!
 
-The correct answer is Option B: Equal visual weight buried the critical task. The redesign succeeded because it promoted mask pre-ordering to a prominent top Hero Banner in the prime thumb zone, aligning interface hierarchy with situational human priorities.
+The correct answer is Option C: It is a UX and Empathy Gap failure; the team must apply Design Thinking—empathizing with real users, defining the friction points, and prototyping/testing transfer flows that speak the customer's language.
 
-Option A is incorrect because language was not the bottleneck. Option C confuses backend speed with interaction design hierarchy. Option D proposes an arbitrary, incorrect limit.
+Option A confuses visual UI styling with end-to-end UX workflow usability. Option B misdiagnoses cognitive confusion as a backend performance problem. Option D blames the user and tries to patch a broken interface with a 15-minute manual—the exact Norman Door mistake!
 
-To summarize this slide, remember this key takeaway: Interface hierarchy must dynamically adapt to real-world user priorities rather than mirroring static organizational structures.
+To summarize this slide, remember this key takeaway: A gorgeous visual UI cannot rescue a product whose UX workflow exposes internal system schemas instead of matching user mental models.
 -->
 ---
 <!-- _class: lead -->
@@ -520,20 +520,35 @@ To summarize this slide, remember this key takeaway: Continuous, timely visual f
 -->
 ---
 <!-- _class: title-image-slide -->
-## NS01 in Practice: System Status & Real-Time Feedback
+## NS01 in Practice (1/2): Progress Bars, Steppers & Sync State
 
 <div class="image-wrapper">
   <img src="../../img/ux/ns01_status_feedback_examples.png" alt="Status Feedback Examples" />
 </div>
 
 <!--
-Look at these concrete implementations of system status visibility.
+Look at these first concrete implementations of system status visibility.
 
-Notice the distinct patterns: a deterministic percentage progress bar informing users of background file upload progress, step-by-step breadcrumb steppers guiding a multi-page checkout flow, and live cloud sync and connection state indicators.
+Notice the three distinct patterns: a deterministic percentage progress bar informing users of background file upload progress, step-by-step breadcrumb steppers guiding a multi-page checkout flow, and live cloud sync and connection state indicators.
 
-Every interaction state is explicitly communicated. The user is never left guessing whether their action was registered.
+Every interaction state is explicitly communicated so the user is never left guessing whether their action was registered.
 
 To summarize this slide, remember this key takeaway: Visual feedback across buttons, spinners, and progress steppers keeps users continuously oriented.
+-->
+---
+<!-- _class: title-image-slide -->
+## NS01 in Practice (2/2): Batch File Import Progress & ETA
+
+<div class="image-wrapper">
+  <img src="../../img/ux/ns_ai_01.jpg" alt="Batch File Import Progress Modal" />
+</div>
+
+<!--
+Here is a second real-world application of NS01 in an enterprise data dashboard.
+
+When importing a large Excel spreadsheet of 1,000 rows, the interface does not freeze or show a generic spinning wheel. Instead, it displays the exact completion percentage (45%), the current row count (450 of 1,000), the estimated time remaining (12 seconds), and a 4-stage pipeline checklist.
+
+To summarize this slide, remember this key takeaway: For long-running asynchronous operations, combine percentage progress bars, item counters, and estimated remaining time to eliminate user anxiety.
 -->
 ---
 ## NS02: Match Between System and the Real World
@@ -558,20 +573,49 @@ To summarize this slide, remember this key takeaway: Map digital controls direct
 -->
 ---
 <!-- _class: title-image-slide -->
-## NS02 in Practice: Natural Spatial Mapping of Controls
+## NS02 in Practice (1/2): Natural Spatial Mapping of Controls
 
 <div class="image-wrapper">
   <img src="../../img/ux/ns02_mapping_gas_stove.png" alt="Gas Stove Natural Mapping" />
 </div>
 
 <!--
-Examine this classic demonstration of natural mapping.
+Examine this classic demonstration of natural spatial mapping.
 
-On the left, four knobs are arranged in a single horizontal row for a 2x2 burner stove. Users must read labels or mentally calculate which knob controls which burner—inevitably resulting in burning the wrong pot!
+On the left, four knobs are arranged in a single horizontal row for a 2x2 burner stove. Users must read labels or mentally calculate which knob controls which burner—inevitably resulting in turning on the wrong burner!
 
 On the right, arranging the knobs in the identical 2x2 matrix makes operation subconscious and completely error-free.
 
-To summarize this slide, remember this key takeaway: When digital controls mirror real-world spatial geometries, mental translation friction drops to zero.
+To summarize this slide, remember this key takeaway: When controls mirror real-world spatial geometries, mental translation friction drops to zero.
+-->
+---
+## NS02 in Practice (2/2): Speaking Everyday User Language
+
+> **Why It Matters:** Exposing raw backend exceptions (`HTTP 502`, `ERR_SOCKET_TIMEOUT`) forces everyday shoppers to decipher engineering jargon and triggers panic over double-charging.
+
+<div class="split55">
+  <div class="left">
+
+* **System-Oriented Jargon (Bad):**
+  - ❌ *"Transaction Exception 403: Acquirer socket connection timed out."*
+  - Leaves customers anxious: *"Was my credit card charged or not?"*
+* **Human-Centered Language (Good):**
+  - ✅ **Reassuring Status:** Clearly confirms **"we couldn't complete the charge"** (no money lost!).
+  - ✅ **Everyday Vocabulary:** Explains that the *"payment channel is currently busy."*
+  - ✅ **Actionable Next Steps:** Offers clear choices (**`Retry Payment`** or **`Use Different Card`**).
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/ns_ai_02_nobg.png" alt="Friendly Everyday Language in Mobile Checkout" style="max-height: 430px;" />
+  </div>
+</div>
+
+<!--
+Here is our second example of NS02, focusing on speaking the user's everyday language in software dialogs.
+
+When a mobile checkout payment fails, a developer-centric system might throw 'HTTP Error 403: Gateway Connection Timeout'. Instead, this interface uses familiar, everyday human vocabulary: 'Our payment channel is currently busy and we couldn't complete the charge. Please try again in a moment or use a different credit card.'
+
+To summarize this slide, remember this key takeaway: Translate internal system states and network exceptions into empathetic, everyday human concepts.
 -->
 ---
 ## NS03: User Control & Freedom (Emergency Exits)
@@ -597,20 +641,33 @@ To summarize this slide, remember this key takeaway: Clear emergency exits and u
 -->
 ---
 <!-- _class: title-image-slide -->
-## NS03 in Practice: User Control, Freedom & Emergency Exits
+## NS03 in Practice (1/2): Instant "Undo" Toast After Drag-and-Drop
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns03_user_control.jpg" alt="User Control and Freedom" />
+  <img src="../../img/ux/ns_ai_03.png" alt="Calendar Drag-and-Drop Undo Toast" />
 </div>
 
 <!--
-Look at these interaction safeguards on screen.
+Look at this first example of NS03 in a web calendar application.
 
-Notice the prominent 'Cancel' button next to the primary action, the ubiquitous 'Undo' toast appearing after deletion, and the escape cross on modal dialogs.
+When a user accidentally drags and drops a meeting to 10:00 AM, the application does not trap them or force them to manually drag it back. Instead, a floating toast notification immediately appears at the bottom with a prominent one-click 'Undo' button.
 
-Users never feel trapped in an unrecoverable state. They know that if their finger slips, they can instantly revert the action with a single tap.
+To summarize this slide, remember this key takeaway: Immediate Undo toast notifications let users revert accidental direct-manipulation actions with a single click.
+-->
+---
+<!-- _class: title-image-slide -->
+## NS03 in Practice (2/2): Email Trash "Undo" & Post "Discard" Exits
 
-To summarize this slide, remember this key takeaway: Prominent emergency exits and undo options provide a psychological safety net for user exploration.
+<div class="image-wrapper">
+  <img src="../../img/ux/ns03_emergency_exits_en.png" alt="Gmail Undo and Mobile Post Discard" />
+</div>
+
+<!--
+Here is a second set of real-world emergency exits in Gmail and mobile social apps.
+
+On the left, when a user deletes an email thread or hits send too early, Gmail surfaces a yellow banner offering an instant 'Undo' link. On the right, when backing out of a half-written mobile post, a clear action sheet lets the user choose between 'Discard' or 'Keep' so they never feel locked into a screen.
+
+To summarize this slide, remember this key takeaway: Prominent Undo banners and Cancel/Discard exits provide a psychological safety net across both desktop and mobile workflows.
 -->
 ---
 ## NS04: Consistency & Standards (Jakob's Law)
@@ -637,20 +694,33 @@ To summarize this slide, remember this key takeaway: Adhering to platform conven
 -->
 ---
 <!-- _class: title-image-slide -->
-## NS04 in Practice: Standardized Conventions & Metaphors
+## NS04 in Practice (1/2): Consistent Form Controls & Button Hierarchy
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns04_standards.png" alt="Consistency and Standards" />
+  <img src="../../img/ux/ns_ai_04.jpg" alt="Consistent SaaS Account Settings Modal" />
 </div>
 
 <!--
-Observe these universal interface conventions.
+Observe this first example of NS04 in a SaaS Account Settings dialog.
 
-Top-left logos link back to the homepage. Shopping carts reside in the upper right. Search inputs display magnifying glasses. System icons—like gear for settings and bell for notifications—are instantly understood worldwide.
+Notice the internal and external consistency: form labels sit uniformly above inputs, toggle switches use the universal green active state on the right, and the bottom action bar places the neutral 'Cancel' button on the left and the high-contrast green 'Confirm' primary button on the right. Users never have to guess which button saves or cancels.
 
-When your application complies with these platform standards, first-time users can navigate immediately with zero training.
+To summarize this slide, remember this key takeaway: Consistent button placement, color semantics, and form patterns prevent spatial memory errors across dialogs.
+-->
+---
+<!-- _class: title-image-slide -->
+## NS04 in Practice (2/2): Platform-Standard Keyboard Conventions
 
-To summarize this slide, remember this key takeaway: Conform to industry-standard UI conventions so users can leverage familiar existing mental models.
+<div class="image-wrapper">
+  <img src="../../img/ux/ns04_standards.png" alt="Standardized IDE Command Bar" />
+</div>
+
+<!--
+Here is our second example of NS04 in modern developer tools and code editors.
+
+Across VS Code, Cursor, Slack, Notion, and Linear, pressing Cmd+K (or Ctrl+K) opens an inline command palette, Enter accepts, and Shift+Enter inserts a newline. By honoring these industry-wide conventions, a developer switching to a new IDE can operate at full speed on day one.
+
+To summarize this slide, remember this key takeaway: Following industry-standard interaction shortcuts allows users to transfer existing muscle memory effortlessly.
 -->
 ---
 ## NS05: Error Prevention
@@ -676,20 +746,33 @@ To summarize this slide, remember this key takeaway: Prevent errors by constrain
 -->
 ---
 <!-- _class: title-image-slide -->
-## NS05 in Practice: Confirmation Dialogs & Destructive Safeguards
+## NS05 in Practice (1/2): Destructive Safeguards & Missing Attachment Check
 
 <div class="image-wrapper">
   <img src="../../img/ux/ns05_confirmation_dialogs.png" alt="Confirmation Dialogs" />
 </div>
 
 <!--
-Examine GitHub's famous repository deletion confirmation dialog on this slide.
+Examine these two classic error-prevention mechanisms on screen.
 
-Notice the intentional friction: GitHub does not simply offer an 'OK' button. It requires the developer to explicitly type out the repository name before the destructive delete button activates.
+On the left is GitHub's repository deletion safeguard, which requires typing the exact repository name before the delete button activates. On the right is an email client's proactive attachment detector: when your message body contains the word 'attached' but no file is attached, it intercepts the send action before an embarrassing mistake happens.
 
-This makes accidental catastrophic deletions virtually impossible. Slips and lapses are caught before any bytes are destroyed.
+To summarize this slide, remember this key takeaway: Proactive context checks and confirmation dialogs catch human slips and lapses before irreversible mistakes occur.
+-->
+---
+<!-- _class: title-image-slide -->
+## NS05 in Practice (2/2): Disabled Action Until Explicit Name Match
 
-To summarize this slide, remember this key takeaway: Use high-friction confirmation safeguards to protect users from irreversible mistakes on destructive actions.
+<div class="image-wrapper">
+  <img src="../../img/ux/ns_ai_05.jpg" alt="Project Deletion Confirmation Modal" />
+</div>
+
+<!--
+Here is a second detailed example of NS05 in a cloud CI/CD platform.
+
+Notice how the red 'Delete Project' button remains completely disabled (greyed out) while the user types 'MyProject' into the confirmation box. Only when the string matches 100% does the button become clickable—preventing muscle-memory clicks on 'OK' from wiping out production builds.
+
+To summarize this slide, remember this key takeaway: Disabling destructive buttons until explicit confirmation criteria are met eliminates accidental one-click disasters.
 -->
 ---
 ## NS06: Recognition Rather Than Recall
@@ -717,20 +800,47 @@ To summarize this slide, remember this key takeaway: Reduce working memory load 
 -->
 ---
 <!-- _class: title-image-slide -->
-## NS06 in Practice: Recognition Over Recall & Search History
+## NS06 in Practice (1/2): Forced Recall vs. Search History Recognition
 
 <div class="image-wrapper">
   <img src="../../img/ux/ns06_search_keyword_retention.png" alt="Recent Search Retention" />
 </div>
 
 <!--
-Look at this modern search interface pattern.
+Look at this side-by-side comparison of Recall versus Recognition in search design.
 
-When the user taps the search input, they are not confronted with a blank screen. Instead, the interface displays their recent searches, popular trending topics, and auto-complete suggestions.
-
-The user's brain simply recognizes what they were looking for, avoiding the cognitive effort of recalling and typing out the full query again.
+On the left, a blank search bar forces the user to recall exact technical terms from memory. On the right, the moment the user focuses the search input, recent searches and trending topics appear for instant 1-tap selection.
 
 To summarize this slide, remember this key takeaway: Surfacing recent history and visual suggestions transforms difficult recall into effortless recognition.
+-->
+---
+## NS06 in Practice (2/2): Contextual Menus Eliminate Recall
+
+> **Why Is This a Recall vs. Recognition Issue?** Without contextual menus, users must **memorize and recall** *which* top-level menu (`Edit`, `Tools`, or `Format`) or hotkey hides an action!
+
+<div class="split55">
+  <div class="left">
+
+* **The Recall Burden (Traditional Menu / CLI):**
+  - After highlighting a paragraph, a user must search their memory: *"Where is the summarize tool? Is it buried under `Tools → AI` or `Edit → Transform`? What was the shortcut?"*
+* **The Recognition Solution (Contextual Toolbar):**
+  - The moment text is highlighted, valid actions (**`Translate`**, **`Summarize`**, **`Improve Writing`**) appear **visibly right beside the cursor**.
+  - Users **see and recognize** available options on the spot—zero menu hunting or command memorization!
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/ns06_recognition_nobg.png" alt="Contextual Floating Toolbar on Text Selection" />
+  </div>
+</div>
+
+<!--
+Here is a second powerful application of NS06 in a modern document editor.
+
+Why is an in-place contextual toolbar a classic example of Recognition Rather Than Recall? Because in traditional software, after you select a sentence, you have to recall from memory which top-level menu—File, Edit, Insert, or Tools—contains the 'Summarize' or 'Translate' command, or memorize a keyboard shortcut.
+
+By automatically popping up a floating contextual toolbar right next to the selected text, the system makes the available actions immediately visible. The user's brain simply recognizes the desired action on screen instead of recalling hidden menu paths!
+
+To summarize this slide, remember this key takeaway: Surfacing contextual action menus right at the point of interaction eliminates the need to memorize deep menu hierarchies.
 -->
 ---
 ## NS07: Flexibility & Efficiency of Use (Accelerators)
@@ -756,20 +866,33 @@ To summarize this slide, remember this key takeaway: Provide accelerators and sh
 -->
 ---
 <!-- _class: title-image-slide -->
-## NS07 in Practice: Keyboard Shortcuts & Power-User Accelerators
+## NS07 in Practice (1/2): Keyboard Shortcuts & Code Snippet Accelerators
 
 <div class="image-wrapper">
   <img src="../../img/ux/ns07_keyboard_shortcuts_snippets.png" alt="Keyboard Shortcuts and Snippets" />
 </div>
 
 <!--
-Examine the power-user accelerators shown here:
+Examine the first set of power-user accelerators shown here.
 
-Notice the `Cmd+K` command palette in modern developer tools, allowing instant fuzzy searching across hundreds of actions without leaving the keyboard.
+On the left, menu items display subtle shortcut badges next to commands (`Cmd+P`, `Shift+Option+F`) so novices can click with a mouse while experts trigger them instantaneously via keyboard. On the right, typing `for` expands an entire loop snippet with Tab-stops.
 
-Notice also how menu items display subtle grey shortcut badges next to commands (`Cmd+S`, `Cmd+Shift+P`). As novices browse menus, they subconsciously memorize hotkeys and graduate into expert users.
+To summarize this slide, remember this key takeaway: Menu hotkey hints and snippet expansions let power users move at keyboard speed while keeping menus approachable for beginners.
+-->
+---
+<!-- _class: title-image-slide -->
+## NS07 in Practice (2/2): Multi-Select Batch Operations for Power Users
 
-To summarize this slide, remember this key takeaway: Accelerators like command palettes and hotkeys dramatically elevate power-user velocity while remaining invisible to novices.
+<div class="image-wrapper">
+  <img src="../../img/ux/ns_ai_07.jpg" alt="Batch Action Toolbar on Data Table" />
+</div>
+
+<!--
+Here is a second essential example of NS07 in an enterprise admin dashboard.
+
+A novice administrator might edit or delete one user at a time using the row icons on the right. But when an expert needs to clean up 50 inactive accounts, checking multiple rows reveals a floating batch-action bar at the top ('3 items selected: Delete Selected [Delete] | Export'), turning 50 repetitive operations into a single click or `[Delete]` keystroke.
+
+To summarize this slide, remember this key takeaway: Multi-select batch action bars and keyboard accelerators prevent repetitive strain on high-frequency administrative tasks.
 -->
 ---
 ## NS08: Aesthetic & Minimalist Design
@@ -779,7 +902,7 @@ To summarize this slide, remember this key takeaway: Accelerators like command p
 * **The Signal-to-Noise Ratio (SNR):**
   - **Signal:** Information directly relevant to the user's immediate decision.
   - **Noise:** Visual clutter, redundant borders, unnecessary badges, decorative chrome.
-* **Technique: Progressive Disclosure (漸進式揭露):**
+* **Technique: Progressive Disclosure:**
   - Show only the primary, essential controls upfront.
   - Tuck advanced settings behind "Advanced Options" accordions or secondary tabs.
 
@@ -796,20 +919,33 @@ To summarize this slide, remember this key takeaway: Eliminate visual noise and 
 -->
 ---
 <!-- _class: title-image-slide -->
-## NS08 in Practice: Minimalist Clarity vs Information Overload
+## NS08 in Practice (1/2): Information Overload vs. Minimalist Clarity
 
 <div class="image-wrapper">
   <img src="../../img/ux/ns08_excessive_info_gates.png" alt="Minimalist vs Cluttered Gates" />
 </div>
 
 <!--
-Look at this striking comparison on screen.
+Look at this striking comparison of signal-to-noise ratio on screen.
 
-On the left, an old-fashioned portal screen is overwhelmed with dozens of competing widgets, blinking banners, and links. The signal-to-noise ratio is catastrophically low.
-
-On the right, modern minimalist design spotlights the primary action with ample whitespace, clean visual hierarchy, and zero decorative clutter.
+On the left, a cluttered portal screen is overwhelmed with dozens of competing widgets, popups, and bright buttons—burying the primary call-to-action. On the right, minimalist design spotlights the primary user goal with generous whitespace and clear visual hierarchy.
 
 To summarize this slide, remember this key takeaway: Clean visual hierarchy and generous whitespace maximize the visibility of primary user goals.
+-->
+---
+<!-- _class: title-image-slide -->
+## NS08 in Practice (2/2): Focused KPI Dashboard with Progressive Disclosure
+
+<div class="image-wrapper">
+  <img src="../../img/ux/ns_ai_08.jpg" alt="Minimalist Executive KPI Dashboard" />
+</div>
+
+<!--
+Here is our second example of NS08, showing how progressive disclosure tames complex analytics dashboards.
+
+Instead of cramming 30 charts onto the opening screen, this Performance Overview surfaces only the 3 most critical top-level KPIs (Monthly Revenue, New Sign-ups, and Conversion Rate) with clean typography, while tucking secondary drill-down tables behind a single 'View Full Report' button.
+
+To summarize this slide, remember this key takeaway: Surface only high-priority metrics upfront and defer secondary details through progressive disclosure.
 -->
 ---
 ## NS09: Help Users Recognize, Diagnose, & Recover from Errors
@@ -836,20 +972,33 @@ To summarize this slide, remember this key takeaway: Deliver plain-language erro
 -->
 ---
 <!-- _class: title-image-slide -->
-## NS09 in Practice: Constructive Error Recovery & Helpful 404s
+## NS09 in Practice (1/2): Cryptic 404 Dead-End vs. Helpful 404 Recovery
 
 <div class="image-wrapper">
   <img src="../../img/ux/ns09_error_404_recovery.png" alt="Friendly 404 Recovery" />
 </div>
 
 <!--
-Observe this empathetic 404 error page implementation.
+Observe this first comparison of error recovery on a 404 page.
 
-Instead of displaying a blank page with a terrifying '404 Bad Request' code, the application uses friendly language, acknowledges that the link might have moved, and immediately provides helpful recovery options: a search box and a button to return to the dashboard.
+On the left, a cryptic message ('Cannot locate requested endpoint /api/v1/page') leaves the user at a dead end. On the right, the application explains the issue in plain language and immediately offers a search bar plus one-click recovery links to the Dashboard and Popular Guides.
 
-An error state is transformed into an effortless, reassuring recovery path.
+To summarize this slide, remember this key takeaway: Transform dead-end error pages into helpful navigation hubs with search and direct recovery links.
+-->
+---
+<!-- _class: title-image-slide -->
+## NS09 in Practice (2/2): Plain-Language Upload Diagnosis & Recovery
 
-To summarize this slide, remember this key takeaway: Empathetic error designs explain the issue in plain language and offer immediate, one-click recovery routes.
+<div class="image-wrapper">
+  <img src="../../img/ux/ns_ai_09_nobg.png" alt="Actionable File Upload Error Modal" />
+</div>
+
+<!--
+Here is our second example of NS09 in a file upload workflow.
+
+Instead of rejecting a file with 'Error: Invalid MIME Type', this dialog clearly states what failed ('Upload failed: file format not supported'), explains the exact rule ('We only accept PNG or JPG, max 5MB'), and provides a direct 'Choose Another File' action button plus a link to supported format docs.
+
+To summarize this slide, remember this key takeaway: Every validation error should state what went wrong, why it failed, and provide an immediate button to fix it.
 -->
 ---
 ## NS10: Help and Documentation
@@ -872,24 +1021,40 @@ To summarize this slide, remember this key takeaway: Provide searchable, task-fo
 -->
 ---
 <!-- _class: title-image-slide -->
-## NS10 in Practice: Contextual Help & Interactive Onboarding
+## NS10 in Practice (1/2): Contextual Tooltips & Interactive Spotlight Tours
 
 <div class="image-wrapper">
   <img src="../../img/ux/ns10_onboarding_tutorial_modes.png" alt="Interactive Onboarding Modes" />
 </div>
 
 <!--
-Look at this interactive onboarding pattern.
+Look at these two complementary documentation patterns on screen.
 
-Instead of forcing users to read a 50-page PDF manual before they can touch the software, the app uses progressive onboarding: interactive spotlights and contextual tooltips that introduce features right when the user reaches them in their flow.
+On the left is passive contextual help: an unobtrusive '?' icon next to 'API Key' that reveals a concise definition on hover. On the right is active interactive onboarding: a 3-step spotlight walkthrough guiding a new user through creating their first project.
 
-Learning happens organically through doing, not passive reading.
-
-To summarize this slide, remember this key takeaway: Embed contextual tooltips and interactive walkthroughs directly within user tasks to enable progressive learning.
+To summarize this slide, remember this key takeaway: Combine on-demand microcopy tooltips with concise spotlight tours to support users without forcing them to leave the screen.
 -->
 ---
+<!-- _class: title-image-slide -->
+## NS10 in Practice (2/2): Task-Focused Step-by-Step Guided Walkthrough
+
+<div class="image-wrapper">
+  <img src="../../img/ux/ns_ai_10.jpg" alt="Tax Filing Contextual Step-by-Step Walkthrough" />
+</div>
+
+<!--
+Here is a second real-world example of NS10 in an online tax-filing application.
+
+Tax forms are inherently complex. When the user reaches the 'Income (W-2s)' step, a contextual popover ('Step 1 of 4: Import Your W-2') points directly to the 'Import W-2' button, explains the benefit in two sentences, and offers both a 'Next' button and a 'Skip Guide' link.
+
+To summarize this slide, remember this key takeaway: Embed concise, task-oriented guidance directly beside complex domain actions while always allowing experienced users to skip the tour.
+-->
+---
+### Concept Check Question 2: Usability Heuristics
 <!-- id: ase-ch06-ccq2 -->
-## Concept Check Question 2: Usability Heuristics
+
+<div class="ccq-columns">
+  <div class="ccq-text">
 
 When designing an e-commerce checkout flow, a team replaces raw text date inputs with an interactive calendar picker and automatically disables the "Place Order" button until all required shipping addresses pass validation. Which Nielsen Heuristic is primarily demonstrated?
 
@@ -897,6 +1062,12 @@ When designing an e-commerce checkout flow, a team replaces raw text date inputs
 - **B.** NS05: Error Prevention.
 - **C.** NS07: Flexibility and Efficiency of Use.
 - **D.** NS10: Help and Documentation.
+
+  </div>
+  <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq2" target="_blank"><img src="../../img/ch06/ase-ch06-ccq2.png" alt="QR Code" /></a>
+  </div>
+</div>
 
 <!--
 Let's check our understanding of Nielsen's Usability Heuristics.
@@ -907,10 +1078,6 @@ The correct answer is Option B: NS05 Error Prevention. Nielsen's NS05 states tha
 
 To summarize this slide, remember this key takeaway: Proactive input constraints and disabled invalid actions exemplify heuristic NS05: Error Prevention.
 -->
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq2)
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq2" target="_blank"><img src="../../img/ch06/ase-ch06-ccq2.png" width="120"></a>
 
 ---
 <!-- _class: lead -->
@@ -973,13 +1140,13 @@ To summarize this slide, remember this key takeaway: AI for UX amplifies designe
 
 To get precise, professional UX output from AI models, avoid vague prompts (❌ *"Help me design a login page"*). Use the structured **RTCF Framework**:
 
-* **R — Role (角色):**
+* **R — Role:**
   - Define the AI's persona and expertise (e.g., *"Act as a Lead UX Researcher specializing in accessibility and WCAG 2.1 AA standards."*).
-* **T — Task (任務):**
+* **T — Task:**
   - Define the concrete objective (e.g., *"Conduct a heuristic evaluation of this mobile checkout wireframe."*).
-* **C — Constraints (約束):**
+* **C — Constraints:**
   - Enforce domain rules (e.g., *"Evaluate strictly against Nielsen's Heuristics NS01, NS03, and NS05; target a 375px mobile viewport."*).
-* **F — Format (格式):**
+* **F — Format:**
   - Specify the output structure (e.g., *"Provide results in a 4-column Markdown table: [Heuristic ID, Observed Issue, Severity (0-4), Concrete Fix Recommendation]."*).
 
 <!--
@@ -1139,7 +1306,7 @@ To summarize this slide, remember this key takeaway: Maintain human agency with 
 ## AI + NS03 in Practice: User Steerability & Cancelation Controls
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_03.png" alt="AI User Control and Freedom" />
+  <img src="../../img/ux/ns03_user_control.jpg" alt="AI User Control and Freedom" />
 </div>
 
 <!--
@@ -1225,8 +1392,11 @@ Transparency transforms a mysterious AI black box into a verifiable, trustworthy
 To summarize this slide, remember this key takeaway: Interactive citation pills and grounded reference popovers provide the transparency required for calibrated user trust.
 -->
 ---
+### Concept Check Question 3: UX for AI Design
 <!-- id: ase-ch06-ccq3 -->
-## Concept Check Question 3: UX for AI Design
+
+<div class="ccq-columns">
+  <div class="ccq-text">
 
 When designing an autonomous AI coding assistant that can inspect directories, edit source files, and execute shell commands, which design pattern best fulfills **Error Prevention (NS05)** and **User Agency (NS03)**?
 
@@ -1234,6 +1404,12 @@ When designing an autonomous AI coding assistant that can inspect directories, e
 - **B.** Requiring explicit human-in-the-loop review and confirmation before executing high-risk file modifications or system terminal commands.
 - **C.** Removing the ability to stop or cancel running background tasks once the AI begins executing code.
 - **D.** Hiding all command execution logs from developers to avoid visual clutter and information overload.
+
+  </div>
+  <div class="ccq-logo">
+    <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq3" target="_blank"><img src="../../img/ch06/ase-ch06-ccq3.png" alt="QR Code" /></a>
+  </div>
+</div>
 
 <!--
 Let's evaluate our understanding of human-centered AI design principles.
@@ -1244,10 +1420,6 @@ The correct answer is Option B: Requiring explicit human-in-the-loop review and 
 
 To summarize this slide, remember this key takeaway: Human-in-the-loop confirmation guardrails protect software integrity against autonomous agent errors.
 -->
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq3)
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq3" target="_blank"><img src="../../img/ch06/ase-ch06-ccq3.png" width="120"></a>
 
 ---
 <!-- _class: lead -->
@@ -1296,7 +1468,7 @@ To summarize this slide, remember this key takeaway: Prioritize usability defect
 ---
 ## Heuristic Evaluation vs. Empirical User Testing
 
-| Dimension | Heuristic Evaluation (專家啟發式評估) | Empirical User Testing (真實使用者易用性測試) |
+| Dimension | Heuristic Evaluation (Expert Inspection) | Empirical User Testing (Real End-Users) |
 | :--- | :--- | :--- |
 | **Evaluators** | 3 to 5 UX Experts / Senior Engineers | 5 Real Representative End-Users |
 | **When to Use** | Early in design (wireframes, early prototypes) | Later in development (interactive prototypes, staging) |

@@ -2196,6 +2196,7 @@ And read Martin Kleppmann's Designing Data-Intensive Applications for modern pol
 To summarize this slide, remember this key takeaway: These classic texts document the collective engineering wisdom of the software industry across architecture, contracts, classes, and data.
 -->
 ---
+<!-- id: ase-ch05-ccq1 -->
 <!-- header: '5.8 Appendix: Suggested Solutions' -->
 
 ## Appendix A: Suggested Answers for CCQ 1 – CCQ 5
@@ -2215,6 +2216,11 @@ Review each explanation to verify your mastery of High Cohesion & Low Coupling (
 
 To summarize this slide, remember this key takeaway: Every CCQ reinforces how rigorous design boundaries, formal contracts, and workload-matched storage prevent architectural decay.
 -->
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq1)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq1" target="_blank"><img src="../../img/ch05/ase-ch05-ccq1.png" width="120"></a>
+
 ---
 ## Appendix B: Solution — Peer Discussion 5.3 (Chess MVC Package UML)
 

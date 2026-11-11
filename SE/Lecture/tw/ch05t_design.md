@@ -313,7 +313,9 @@
 
 *圖 5.3.9：UML 套件圖核心符號（左）與外送平台單向無環套件結構（右）。*
 
+<!-- id: ase-ch05-pair1 -->
 #### 💬 同儕討論 5.3：西洋棋遊戲之 MVC 架構與 UML 套件圖 (PlantUML 實戰)
+
 * **情境題目**：請為採用 **MVC 架構**的「西洋棋遊戲 (Chess Game)」繪製 **UML 套件圖**。系統共有 7 個核心類別：`ChessBoardGUI`、`MoveHistoryPanel`、`GameController`、`MoveInputHandler`、`BoardState`、`PieceRulesEngine` 與 `MoveValidator`。
 * **討論任務**：
   1. 請將上述 7 個類別歸入三個套件（`ui.view`、`ui.controller`、`domain.model`），並寫出對應的 **PlantUML 套件圖語法**。
@@ -327,11 +329,11 @@
   * **部署產物 (`«artifact»`)**：實際部署至節點上的執行檔或映像檔（`order-service.jar`、`payment-service.jar`）。
   * **通訊路徑 (Communication Path)**：連接 3D 節點的實線，標註通訊協定與埠號（`«HTTPS / TLS 1.3 :443»`、`«gRPC :9090»`）。
 
-![UML 部屬圖符號規範與外送平台雲端拓撲](../../img/ch05/architecture/uml_deployment_diagram_guide.svg)
-
 *圖 5.3.10：UML 部屬圖 3D 節點與產物符號（左）與外送平台跨可用區高可用性雲端部署圖（右）。*
 
 ---
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-pair1)
 
 <!-- id: ase-ch05-ccq2 -->
 #### 🙋 **觀念檢核測驗 (CCQ 2) — 架構設計與巨觀 UML 圖表**
@@ -456,7 +458,9 @@ public class OrderServiceImpl implements OrderService {
 > * `\old(expr)` 能精準捕捉方法執行前的舊狀態，讓 `ensures` 後置條件得以用數學等式驗證庫存扣減量 (`stock == \old(stock) - qty`)。
 > * `exceptional_behavior` 中的 `assignable \nothing;` 稱為**框架條件 (Frame Condition)**：形式化保證當發生庫存不足拋出 `OutOfStockException` 時，**系統絕對不會產生任何資料庫髒寫入或誤扣款**！
 
+<!-- id: ase-ch05-pair2 -->
 #### 💬 同儕討論 5.4：以 Javadoc 撰寫 `bubbleSort(int[] arr)` 之正式設計規格
+
 * **情境題目**：幾乎每位資工系學生都能在兩分鐘內寫出氣泡排序法 `public static void bubbleSort(int[] arr)` 的雙層迴圈程式碼；但若請你作為架構師，為它撰寫一份**滴水不漏的 Javadoc / DbC 設計規格**，你會怎麼寫？
 * **討論任務**：
   1. **前置條件 (`@param` / `@throws` / `@pre`)**：對輸入陣列 `arr` 有何要求？（若 `arr == null` vs. 空陣列 `arr.length == 0` 應如何處理？）
@@ -464,7 +468,6 @@ public class OrderServiceImpl implements OrderService {
   3. **經典規格漏洞思考**：如果後置條件只寫「對於所有 `0 <= i < arr.length - 1`，皆滿足 `arr[i] <= arr[i+1]`」，請問若某個偷懶工程師在函式內直接寫 `Arrays.fill(arr, 0);`（把陣列全部填滿 `0`），有沒有 100% 符合這條規則？到底漏掉了哪一條關鍵後置條件？*(完整參考解答請見本章末附錄 C)*
 
 ---
-
 ### 5.4.3 視覺化介面契約塑模：UML 組件圖 (Component Diagram)
 
 為了在 SDD 中視覺化呈現中觀層次（Meso-level）各模組如何透過契約接合，階段二採用 **UML 組件圖 (Component Diagram)**：
@@ -610,13 +613,17 @@ public class OrderServiceImpl implements OrderService {
 
 *圖 5.5.5：相依反轉原則 (DIP) 將自上而下的具體耦合（左）反轉為低階基礎設施向上實作高階領域介面（右）。*
 
+<!-- id: ase-ch05-pair3 -->
 #### 💬 同儕討論 5.5：探索 GoF 觀察者模式 (Observer Pattern) 之設計動機與結構
+
 * **情境題目**：在外送平台中，當一筆訂單的狀態變更（如 `Order` 轉為 `READY_FOR_PICKUP` 餐點完成待取）時，系統必須即時觸發多個後續動作：**顧客 App 推播通知**、**餐廳廚房看板更新**、**外送員地圖導航刷新**，以及**防詐稽核日誌記錄**。
 * **討論任務**：
   1. **設計動機**：若直接在 `OrderService.updateStatus()` 裡面寫死呼叫上述四個具體模組，會違反哪些 SOLID 原則？
   2. **UML 類別圖結構**：請說明 GoF **觀察者模式 (`Subject` / `Observer` / `ConcreteObservers`)** 的結構，並解釋它如何同時完美體現 **OCP** 與 **DIP**！*(完整參考解答請見本章末附錄 D)*
 
 ---
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-pair3)
 
 <!-- id: ase-ch05-ccq4 -->
 #### 🙋 **觀念檢核測驗 (CCQ 4) — 組件與物件導向設計 (SOLID 原則)**
