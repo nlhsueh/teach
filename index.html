@@ -690,32 +690,31 @@
         </div>
       </article>
 
-      <!-- Talk (Software Engineering History & Pioneer Quotes) Card -->
+      <!-- Talk (Keynotes, Talks & Workshops) Card -->
       <article class="course-card">
         <div class="card-banner banner-talk">
           <div class="card-meta">
-            <span class="card-tag" style="background: rgba(245, 158, 11, 0.25); color: #fef3c7;">🔒 特邀專題 · 密碼受限</span>
+            <span class="card-tag" style="background: rgba(245, 158, 11, 0.25); color: #fef3c7;">🔒 特邀專區 · 密碼受限</span>
             <span class="card-icon">🎙️</span>
           </div>
-          <h2 class="card-title">格言裡的軟體工程</h2>
-          <div class="card-subtitle">SE History & Pioneer Quotes (18 先驅 · 93 頁)</div>
+          <h2 class="card-title">特邀演講與專題講座</h2>
+          <div class="card-subtitle">Talks & Keynotes (軟體工程思想 · 微服務 DevOps · 程式教育)</div>
         </div>
         <div class="card-body">
           <p class="card-desc">
-            精選半世紀 18 位軟體工程先驅（Hopper、Dijkstra、Brooks、Jobs、Gates、Hinton、Musk、Altman、Huang 等）的經典格言與四格美式漫畫，深入剖析歷史危機與現代震撼案例。
+            精選薛念林教授歷年受邀之主題演講與實務教材，涵蓋跨越半世紀的軟體工程歷史大師格言、微服務與 DevOps 開源實務、以及程式教育與線上學習歷程分析等多項精采專題。
           </p>
           <div class="topics-list">
-            <span class="topic-pill">18 位傳奇先驅</span>
-            <span class="topic-pill">四格美式漫畫</span>
-            <span class="topic-pill">歷史現場與案例</span>
-            <span class="topic-pill">93 頁全彩簡報</span>
+            <span class="topic-pill">🏛️ 軟體工程歷史人物</span>
+            <span class="topic-pill">📊 程式教育歷程分析</span>
+            <span class="topic-pill">☁️ 微服務 DevOps</span>
+            <span class="topic-pill">🖥️ 線上簡報與教材</span>
           </div>
           <div class="card-actions">
-            <button onclick="handleTalkNavigation('slides')" class="btn-main btn-talk">
-              <span>解鎖進入 Talk 講座</span>
-              <span>🔒</span>
+            <button onclick="handleTalkNavigation('portal')" class="btn-main btn-talk">
+              <span>解鎖進入 Talk 講座門戶 🔒</span>
+              <span>🔑</span>
             </button>
-            <button onclick="handleTalkNavigation('pdf')" class="btn-secondary" title="需先通過驗證">下載 PDF 🔒</button>
           </div>
         </div>
       </article>
@@ -728,9 +727,9 @@
     <div class="modal-card">
       <button class="modal-close" onclick="closeTalkModal()" title="關閉">✕</button>
       <div class="modal-icon">🔒</div>
-      <h3 class="modal-title">請輸入講座存取密碼</h3>
+      <h3 class="modal-title">請輸入講座專區通行密碼</h3>
       <p class="modal-desc">
-        《格言裡的軟體工程》為特邀專題講座教材，請輸入通行密碼以解鎖線上簡報與完整講義資源。
+        《特邀演講與專題講座》為特邀專題講座與研討會教材專區，請輸入通行密碼以解鎖講座門戶與線上投影片資源。
       </p>
 
       <form class="modal-form" id="talkModalForm" onsubmit="submitTalkAuth(event)">
@@ -758,7 +757,7 @@
   <script>
     const TALK_AUTH_KEY = 'talk_auth_passed';
     const TALK_PASSCODE = 'nick007';
-    let targetTalkDestination = './Talk/SE_history/SE_history.html';
+    let targetTalkDestination = './Talk/index.html';
 
     function handleTalkNavigation(destType) {
       if (destType === 'pdf') {

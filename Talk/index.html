@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>軟體工程歷史與人物格言講座 | Talk Portal</title>
-  <meta name="description" content="薛念林教授 · 軟體工程歷史與人物格言特邀講座專屬門戶">
+  <title>特邀演講與專題講座 | Talks & Keynotes Portal</title>
+  <meta name="description" content="薛念林教授 · 特邀演講與專題講座專屬門戶，收錄軟體工程思想史、程式教育學習歷程分析、微服務 DevOps 等多項演講教材與線上簡報">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -14,6 +14,7 @@
   <style>
     :root {
       --primary: #1e1b4b;
+      --primary-dark: #0f172a;
       --accent: #4f46e5;
       --accent-light: #6366f1;
       --gold: #f59e0b;
@@ -23,6 +24,8 @@
       --text-muted: #64748b;
       --border: #e2e8f0;
       --radius: 16px;
+      --radius-sm: 10px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
       --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
@@ -45,7 +48,7 @@
 
     /* Top Navbar */
     .navbar {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       position: sticky;
@@ -76,16 +79,24 @@
       justify-content: center;
       font-weight: 800;
       font-size: 1.1rem;
+      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
     }
 
     .brand-title {
       font-weight: 700;
       font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 12px;
+      align-items: center;
     }
 
     .nav-links {
       display: flex;
-      gap: 14px;
+      gap: 8px;
       align-items: center;
     }
 
@@ -104,11 +115,31 @@
       background: #f1f5f9;
     }
 
+    .btn-lockout {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid #fecaca;
+      background: #fef2f2;
+      color: #b91c1c;
+      transition: all 0.2s ease;
+    }
+
+    .btn-lockout:hover {
+      background: #fee2e2;
+      transform: translateY(-1px);
+    }
+
     /* Hero */
     .hero {
       background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
       color: white;
-      padding: 60px 24px 70px 24px;
+      padding: 60px 24px 72px 24px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -121,7 +152,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -141,25 +172,25 @@
     }
 
     .hero h1 {
-      font-size: clamp(1.8rem, 3.8vw, 2.5rem);
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
       font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       line-height: 1.25;
     }
 
     .hero p {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       color: #cbd5e1;
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* Main Container */
     .container {
-      max-width: 900px;
-      margin: -35px auto 60px auto;
+      max-width: 1140px;
+      margin: -36px auto 70px auto;
       padding: 0 24px;
       position: relative;
       z-index: 10;
@@ -167,13 +198,15 @@
       width: 100%;
     }
 
-    /* Auth Gate Card */
+    /* Gate Card (Locked View) */
     .gate-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow-xl);
-      padding: 40px 36px;
+      padding: 46px 36px;
+      max-width: 520px;
+      margin: 0 auto;
       text-align: center;
     }
 
@@ -194,30 +227,24 @@
     .gate-title {
       font-size: 1.5rem;
       font-weight: 800;
-      color: #1e1b4b;
-      margin-bottom: 8px;
+      color: var(--primary);
+      margin-bottom: 10px;
     }
 
     .gate-desc {
       font-size: 0.95rem;
-      color: #64748b;
-      max-width: 520px;
+      color: var(--text-muted);
+      max-width: 440px;
       margin: 0 auto 26px auto;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     .auth-form {
-      max-width: 440px;
+      max-width: 400px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 14px;
-    }
-
-    .input-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
     }
 
     .passcode-input {
@@ -225,7 +252,7 @@
       padding: 14px 18px;
       font-size: 1.05rem;
       border: 2px solid #cbd5e1;
-      border-radius: 12px;
+      border-radius: var(--radius-sm);
       outline: none;
       transition: all 0.2s ease;
       letter-spacing: 0.1em;
@@ -243,7 +270,7 @@
       background: linear-gradient(135deg, #1e1b4b, #4338ca);
       color: white;
       border: none;
-      border-radius: 12px;
+      border-radius: var(--radius-sm);
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
@@ -279,105 +306,303 @@
       40%, 80% { transform: translateX(8px); }
     }
 
-    /* Unlocked Content (Initially Hidden) */
+    /* Unlocked Content Wrapper */
     .unlocked-view {
       display: none;
-      text-align: left;
     }
 
-    .unlocked-header {
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 10px 16px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .filter-btn {
+      border: none;
+      background: transparent;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--text-main);
+      background: #f1f5f9;
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, #1e1b4b, #4338ca);
+      color: white;
+      box-shadow: 0 2px 8px rgba(49, 46, 129, 0.3);
+    }
+
+    /* Talks Grid */
+    .talks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 26px;
+    }
+
+    .talk-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .talk-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+      border-color: #cbd5e1;
+    }
+
+    .card-banner {
+      padding: 22px 24px 18px 24px;
+      color: white;
+      position: relative;
+    }
+
+    .banner-se {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%);
+    }
+
+    .banner-edu {
+      background: linear-gradient(135deg, #064e3b 0%, #047857 60%, #10b981 100%);
+    }
+
+    .banner-devops {
+      background: linear-gradient(135deg, #7c2d12 0%, #c2410c 60%, #ea580c 100%);
+    }
+
+    .banner-future {
+      background: linear-gradient(135deg, #334155 0%, #475569 60%, #64748b 100%);
+    }
+
+    .card-meta-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 24px;
+      margin-bottom: 12px;
     }
 
-    .status-badge {
+    .card-tag {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: #ecfdf5;
-      color: #065f46;
-      border: 1px solid #a7f3d0;
-      padding: 5px 12px;
-      border-radius: 9999px;
-      font-size: 0.82rem;
-      font-weight: 700;
+      gap: 4px;
+      letter-spacing: 0.02em;
     }
 
-    .resources-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      margin-top: 24px;
+    .tag-open {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    .resource-card {
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 22px;
+    .card-icon {
+      font-size: 1.8rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+    }
+
+    .card-body {
+      padding: 22px 24px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      color: inherit;
+      flex: 1;
+      gap: 16px;
     }
 
-    .resource-card:hover {
-      background: #ffffff;
-      border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
+    .card-desc {
+      font-size: 0.92rem;
+      color: #475569;
+      line-height: 1.6;
+      flex: 1;
     }
 
-    .resource-icon {
-      font-size: 2rem;
+    .topics-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
-    .resource-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #1e1b4b;
+    .topic-pill {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #4338ca;
+      background: #eef2ff;
+      padding: 4px 10px;
+      border-radius: 6px;
     }
 
-    .resource-desc {
-      font-size: 0.88rem;
-      color: #64748b;
-      line-height: 1.5;
+    .topic-pill.pill-green {
+      color: #065f46;
+      background: #ecfdf5;
     }
 
-    .resource-action {
+    .topic-pill.pill-orange {
+      color: #9a3412;
+      background: #fff7ed;
+    }
+
+    .topic-pill.pill-gray {
+      color: #334155;
+      background: #f1f5f9;
+    }
+
+    /* Actions */
+    .card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
       font-size: 0.88rem;
       font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1e1b4b, #4338ca);
+      color: white;
+      flex: 1;
+      box-shadow: 0 2px 6px rgba(49, 46, 129, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0f172a, #3730a3);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(49, 46, 129, 0.35);
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, #064e3b, #047857);
+      color: white;
+      flex: 1;
+      box-shadow: 0 2px 6px rgba(4, 120, 87, 0.25);
+    }
+
+    .btn-green:hover {
+      background: linear-gradient(135deg, #022c22, #065f46);
+      transform: translateY(-1px);
+    }
+
+    .btn-orange {
+      background: linear-gradient(135deg, #7c2d12, #c2410c);
+      color: white;
+      flex: 1;
+      box-shadow: 0 2px 6px rgba(194, 65, 12, 0.25);
+    }
+
+    .btn-orange:hover {
+      background: linear-gradient(135deg, #431407, #9a3412);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--text-main);
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
       color: var(--accent);
+    }
+
+    .btn-icon-only {
+      padding: 10px 12px;
+      font-size: 0.95rem;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-xl);
+      z-index: 120;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 8px;
     }
 
-    .btn-lockout {
-      background: none;
-      border: none;
-      color: #94a3b8;
-      font-size: 0.82rem;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    .btn-lockout:hover {
-      color: #ef4444;
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
     }
 
     /* Footer */
     footer {
       background: #ffffff;
       border-top: 1px solid var(--border);
-      padding: 28px 24px;
+      padding: 30px 24px;
       text-align: center;
       color: var(--text-muted);
       font-size: 0.88rem;
@@ -388,6 +613,21 @@
       color: var(--accent);
       text-decoration: none;
       font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 12px 18px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .container {
+        padding: 0 16px;
+      }
+      .talks-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -400,12 +640,17 @@
       <div class="brand-icon">T</div>
       <span class="brand-title">薛念林教授 課程教材庫</span>
     </a>
-    <div class="nav-links">
-      <a href="../SE/" class="nav-link">🏗️ SE</a>
-      <a href="../UX/" class="nav-link">🎨 UX</a>
-      <a href="../SQA/" class="nav-link">🛡️ SQA</a>
-      <a href="../Python/" class="nav-link">🐍 Python</a>
-      <a href="../index.html" class="nav-link">🏠 回首頁</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="../SE/" class="nav-link">🏗️ SE</a>
+        <a href="../UX/" class="nav-link">🎨 UX</a>
+        <a href="../SQA/" class="nav-link">🛡️ SQA</a>
+        <a href="../Python/" class="nav-link">🐍 Python</a>
+        <a href="../index.html" class="nav-link">🏠 回首頁</a>
+      </div>
+      <button class="btn-lockout" id="btnLockout" onclick="handleLockout()" title="重新上鎖講座專區">
+        <span>🔒 重新上鎖</span>
+      </button>
     </div>
   </nav>
 
@@ -415,79 +660,194 @@
       <span>🔒</span>
       <span>受保護講座專區 · 密碼存取</span>
     </div>
-    <h1>軟體工程歷史與人物格言</h1>
-    <p>穿越半世紀的 18 位傳奇先驅智慧、四格美式漫畫與重大歷史現場剖析</p>
+    <h1>特邀演講與專題講座</h1>
+    <p>
+      收錄薛念林教授歷年受邀於國內外大學、研討會與產官學培訓之精選講座教材與線上簡報，涵蓋軟體工程思想史、微服務與 DevOps 實務、程式教育與學習歷程分析等多元領域。
+    </p>
   </header>
 
   <!-- Main Container -->
   <main class="container">
-    <div class="gate-card" id="gateCard">
 
-      <!-- Locked View (Enter Passcode) -->
-      <div id="lockedView">
-        <div class="lock-icon-wrapper">
-          <span>🔒</span>
-        </div>
-        <h2 class="gate-title">請輸入存取密碼</h2>
-        <p class="gate-desc">
-          本講座教材專為特邀講座與專案研討授課準備。請輸入講座專用密碼以解鎖 93 頁完整投影片與高解析講義資源。
-        </p>
+    <!-- Locked View (Enter Passcode) -->
+    <div class="gate-card" id="lockedView">
+      <div class="lock-icon-wrapper">
+        <span>🔒</span>
+      </div>
+      <h2 class="gate-title">請輸入講座專區通行密碼</h2>
+      <p class="gate-desc">
+        《特邀演講與專題講座》為特邀專題講座與研討會教材專區。請輸入專用密碼以解鎖講座專區與所有線上投影片、講義資源。
+      </p>
 
-        <form class="auth-form" id="passcodeForm" onsubmit="handleUnlock(event)">
-          <div class="input-wrapper">
-            <input type="password" id="passcodeInput" class="passcode-input" placeholder="請輸入通行密碼" autocomplete="off" autofocus />
-          </div>
-          <button type="submit" class="btn-unlock">
-            <span>解鎖進入講座教材</span>
-            <span>🔑</span>
-          </button>
-          <div class="error-msg" id="errorMsg">⚠️ 密碼錯誤，請重新輸入！</div>
-        </form>
+      <form class="auth-form" id="passcodeForm" onsubmit="handleUnlock(event)">
+        <input type="password" id="passcodeInput" class="passcode-input" placeholder="請輸入通行密碼" autocomplete="off" autofocus />
+        <button type="submit" class="btn-unlock">
+          <span>解鎖進入講座專區</span>
+          <span>🔑</span>
+        </button>
+        <div class="error-msg" id="errorMsg">⚠️ 密碼錯誤，請重新輸入！</div>
+      </form>
+    </div>
+
+    <!-- Unlocked View (Category Filter + Talks Grid) -->
+    <div class="unlocked-view" id="unlockedView">
+
+      <!-- Category Filter Bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterTalks('all', this)">全部講座 (All)</button>
+        <button class="filter-btn" onclick="filterTalks('se', this)">軟體工程與思想</button>
+        <button class="filter-btn" onclick="filterTalks('edu', this)">程式教育與研究</button>
+        <button class="filter-btn" onclick="filterTalks('devops', this)">微服務與 DevOps</button>
       </div>
 
-      <!-- Unlocked View (Resources Access) -->
-      <div id="unlockedView" class="unlocked-view">
-        <div class="unlocked-header">
-          <div>
-            <span class="status-badge">✅ 已成功解鎖授權</span>
-            <h2 style="font-size: 1.4rem; color: #1e1b4b; margin-top: 6px;">格言裡的軟體工程 · 講座教材入口</h2>
+      <!-- Talks Grid -->
+      <div class="talks-grid" id="talksGrid">
+
+        <!-- Card 1: SE History & Pioneer Quotes (Local Marp / PDF) -->
+        <article class="talk-card" data-category="se">
+          <div class="card-banner banner-se">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🏛️ 軟體工程思想史</span>
+              <span class="card-icon">🏛️</span>
+            </div>
+            <h2 class="card-title">格言裡的軟體工程</h2>
+            <div class="card-subtitle">SE History & Pioneer Quotes · 18 位大師與重大歷史現場</div>
           </div>
-          <button class="btn-lockout" onclick="handleLockout()">重新上鎖 🔒</button>
-        </div>
+          <div class="card-body">
+            <p class="card-desc">
+              穿越半世紀 18 位傳奇先驅（Hopper、Dijkstra、Brooks、Jobs、Gates、Hinton、Musk、Altman、Huang 等）的經典格言與四格美式漫畫，深入剖析 Therac-25、阿波羅登月、愛國者飛彈等歷史關鍵現場與現代震撼啟示。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill">18 位傳奇先驅</span>
+              <span class="topic-pill">四格美式漫畫</span>
+              <span class="topic-pill">重大歷史案例剖析</span>
+              <span class="topic-pill">93 頁全彩簡報</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="./SE_history/SE_history.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="開啟 Marp 線上互動全螢幕簡報">
+                  <span>線上簡報</span>
+                  <span>🖥️</span>
+                </a>
+                <a href="./SE_history/SE_history.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" title="下載 93 頁高清講義 PDF">
+                  <span>下載 PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./SE_history/SE_history.md" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視講稿 Markdown 源碼">
+                  📄
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
 
-        <p style="color: #475569; font-size: 0.95rem; margin-bottom: 14px;">
-          歡迎閱讀！本系列整理了從 Grace Hopper (1947) 至 Satya Nadella (2024) 跨越 70 年軟體工程史的 18 位大師經典格言、四格漫畫、重大危機與現代震撼案例。
-        </p>
+        <!-- Card 2: Computing Education & Analytics (Google Slides) -->
+        <article class="talk-card" data-category="edu">
+          <div class="card-banner banner-edu">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🌐 線上簡報 · Google Slides</span>
+              <span class="card-icon">📊</span>
+            </div>
+            <h2 class="card-title">程式教育的線上學習與其歷程分析</h2>
+            <div class="card-subtitle">talk22 國立高雄師範大學 (高師大) 特邀演講</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              探討大專院校程式設計教學在線上學習環境中的數位轉型實務，深入分析學生在線上評測與自主編程練習中的行為軌跡、卡關瓶頸數據與教學介入成效研究。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-green">高師大特邀講座</span>
+              <span class="topic-pill pill-green">程式教育數位學習</span>
+              <span class="topic-pill pill-green">學習歷程行為分析</span>
+              <span class="topic-pill pill-green">Google Slides</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="https://docs.google.com/presentation/d/1OmQfpitxy9FwxKGbPKoip8wm-ddddMrLvLdOZvDinNY/edit?usp=sharing"
+                  target="_blank" rel="noopener" class="btn-action btn-green" title="在新視窗開啟 Google 簡報">
+                  <span>開啟 Google 簡報</span>
+                  <span>↗</span>
+                </a>
+                <button onclick="copyToClipboard('https://docs.google.com/presentation/d/1OmQfpitxy9FwxKGbPKoip8wm-ddddMrLvLdOZvDinNY/edit?usp=sharing', '已複製 Google 簡報連結！')"
+                  class="btn-action btn-outline btn-icon-only" title="複製簡報連結">
+                  📋
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
 
-        <div class="resources-grid">
-          <!-- Web Slide Deck -->
-          <a href="./SE_history/SE_history.html" class="resource-card">
-            <div class="resource-icon">🖥️</div>
-            <div class="resource-title">線上全螢幕簡報</div>
-            <div class="resource-desc">Marp 互動網頁簡報，支援鍵盤左右換頁、全螢幕演講播放模式與四格漫畫呈現。</div>
-            <div class="resource-action">立即全螢幕播放 →</div>
-          </a>
+        <!-- Card 3: Microservices & DevOps (Google Sites) -->
+        <article class="talk-card" data-category="devops">
+          <div class="card-banner banner-devops">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">☁️ 開源計畫 · 教材分享區</span>
+              <span class="card-icon">🚀</span>
+            </div>
+            <h2 class="card-title">微服務 DevOps 開源軟體工具計畫</h2>
+            <div class="card-subtitle">教育部雲端軟體人才培育 · 實務教材與開源工具平台</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              教育部雲端軟體與微服務開發培育計畫專屬教材庫，整合 Docker 容器化、Kubernetes 叢集部署、CI/CD 自動化管線與微服務架構實務，提供完整開放之教學模組與實作範例。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-orange">微服務架構 (Microservices)</span>
+              <span class="topic-pill pill-orange">DevOps 自動化管線</span>
+              <span class="topic-pill pill-orange">開源軟體實務</span>
+              <span class="topic-pill pill-orange">教材分享專區</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="https://reurl.cc/Ggd6jd" target="_blank" rel="noopener" class="btn-action btn-orange" title="前往教材分享區網站">
+                  <span>前往教材分享區</span>
+                  <span>↗</span>
+                </a>
+                <button onclick="copyToClipboard('https://reurl.cc/Ggd6jd', '已複製教材分享區短網址！')"
+                  class="btn-action btn-outline btn-icon-only" title="複製分享連結">
+                  📋
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
 
-          <!-- PDF Handout -->
-          <a href="./SE_history/SE_history.pdf" target="_blank" class="resource-card">
-            <div class="resource-icon">📥</div>
-            <div class="resource-title">完整 93 頁講義 (PDF)</div>
-            <div class="resource-desc">高清向量與高品質排版，排版嚴格防溢出，適合離線閱讀、列印與投影分享。</div>
-            <div class="resource-action">下載完整 PDF →</div>
-          </a>
+        <!-- Card 4: Upcoming / Future Talks -->
+        <article class="talk-card" data-category="se">
+          <div class="card-banner banner-future">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">⏳ 持續收錄中 · Future Talks</span>
+              <span class="card-icon">💡</span>
+            </div>
+            <h2 class="card-title">更多主題演講與實務工作坊</h2>
+            <div class="card-subtitle">AI 時代軟體工程 · 規格驅動開發 · 敏捷實踐</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              持續梳理並收錄涵蓋「AI 規格驅動流程與 Harness Engineering」、「大語言模型時代的軟體工程師修煉」、「現代前端架構演進」等專題演講投影片與影音紀錄。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-gray">AI 規格驅動流程</span>
+              <span class="topic-pill pill-gray">Harness Engineering</span>
+              <span class="topic-pill pill-gray">工作坊專題</span>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action btn-outline" style="cursor: default; opacity: 0.75;">
+                <span>內容整理中 · 敬請期待</span>
+              </button>
+            </div>
+          </div>
+        </article>
 
-          <!-- Markdown Source -->
-          <a href="./SE_history/SE_history.md" target="_blank" class="resource-card">
-            <div class="resource-icon">📄</div>
-            <div class="resource-title">Markdown 講稿源碼</div>
-            <div class="resource-desc">包含所有四格漫畫分鏡腳本備忘、案例歷史背景細節與三段式卡片源碼。</div>
-            <div class="resource-action">查看 Markdown →</div>
-          </a>
-        </div>
       </div>
-
     </div>
   </main>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span>✅</span>
+    <span id="toastMsg">已複製連結！</span>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -503,12 +863,18 @@
 
     function checkAuthStatus() {
       const isAuth = sessionStorage.getItem(AUTH_KEY) === 'true';
+      const lockedView = document.getElementById('lockedView');
+      const unlockedView = document.getElementById('unlockedView');
+      const btnLockout = document.getElementById('btnLockout');
+
       if (isAuth) {
-        document.getElementById('lockedView').style.display = 'none';
-        document.getElementById('unlockedView').style.display = 'block';
+        lockedView.style.display = 'none';
+        unlockedView.style.display = 'block';
+        btnLockout.style.display = 'inline-flex';
       } else {
-        document.getElementById('lockedView').style.display = 'block';
-        document.getElementById('unlockedView').style.display = 'none';
+        lockedView.style.display = 'block';
+        unlockedView.style.display = 'none';
+        btnLockout.style.display = 'none';
         const input = document.getElementById('passcodeInput');
         if (input) setTimeout(() => input.focus(), 150);
       }
@@ -523,10 +889,8 @@
       if (val.toLowerCase() === VALID_PASSCODE.toLowerCase()) {
         sessionStorage.setItem(AUTH_KEY, 'true');
         errorMsg.style.display = 'none';
-        
-        // Auto redirect to slides or reveal resources
         checkAuthStatus();
-        window.location.href = './SE_history/SE_history.html';
+        showToast('🔓 驗證成功！已解鎖講座專區');
       } else {
         errorMsg.style.display = 'block';
         input.classList.add('shake');
@@ -538,13 +902,56 @@
     function handleLockout() {
       sessionStorage.removeItem(AUTH_KEY);
       checkAuthStatus();
+      showToast('🔒 講座專區已重新上鎖');
     }
 
-    // Auto-check on page load
+    // Category Filter
+    function filterTalks(category, btn) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.talk-card');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Clipboard Copy
+    function copyToClipboard(text, msg) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(msg || '已複製到剪貼簿！');
+      }).catch(() => {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast(msg || '已複製到剪貼簿！');
+      });
+    }
+
+    // Toast Notification
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2600);
+    }
+
+    // Initialize UI on page load
     document.addEventListener('DOMContentLoaded', checkAuthStatus);
   </script>
 
 </body>
 
 </html>
-
