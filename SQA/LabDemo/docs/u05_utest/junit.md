@@ -1,9 +1,10 @@
 # 🧪 Lab 05: 單元測試與黑箱測試實務 (JUnit 5 & Black-Box Testing)
 
 > 本實驗手冊配合課堂教學節奏，採用「概念講授 ➔ Lab Demo 操作 ➔ 深入方法 ➔ 課堂動手練習」之交錯式教學設計。  
-> 專案程式碼依據**方案 B (三層次測試維度)** 結構化劃分於：
+> 專案程式碼依據**測試維度**結構化劃分於：
 > - 基礎工具層：`src/test/java/u05_junit/`
 > - 資料與規則層：`src/test/java/u05_input/`
+> - 成對組合層：`src/test/java/u05_pair/`（搭配專題手冊 [📖 `pairwise_combinatorial.md`](./pairwise_combinatorial.md)）
 > - 行為與情境層：`src/test/java/u05_scenario/`
 > - 性質與變質層：`src/test/java/u05_pbtest/`  
 > 每個主題皆配有附詳細教學註解的 **Demo 程式** 與附帶提示指引的 **Exercise 練習程式**。
@@ -17,7 +18,7 @@
 | **5.2** | [`u05_junit/`](#52-junit-5-快速入門與-3a-原則) | 測試驅動、3A 原則、`@Test`、`assertEquals` vs. `assertSame`、`assertAll` | `CalculatorDemoTest.java`<br>`AssertionsDemoTest.java`<br>`LifeCycleDemoTest.java` | `CalculatorExerciseTest.java`<br>*(3A 減法、負數與零、物件同一性驗證)* |
 | **5.3** | [`u05_input/bva/`](#53-邊界值分析-bva-實戰) | 獨立型 4n+1 / 強固 6n+1、參數化 `@ValueSource`、群組斷言 `assertAll` | `TriangleBvaDemoTest.java` | `TriangleBvaExerciseTest.java`<br>`PoolTicketBvaExerciseTest.java`<br>*(On-Off-In 三點法與年齡階層邊界)* |
 | **5.4** | [`u05_input/ep/`](#54-等價類分割-ep-實戰) | 單一無效原則、例外斷言 `assertThrows`、資料驅動 `@CsvSource` / `@EnumSource` | `BinarySearchEpDemoTest.java`<br>`ParamDemoTest.java`<br>`ParamEnumDemoTest.java` | `PasswordValidatorEpExerciseTest.java`<br>*(長度邊界、純文字/數字弱密碼等價類)* |
-| **5.5** | [`u05_input/pairwise/`](#55-全成對組合測試-pairwise-實戰) | AllPairs4J 演算法、動態測試工廠 `@TestFactory`、`DynamicTest` | `LoanCalculatorPairwiseDemoTest.java` | `LoanCalculatorPairwiseExerciseTest.java`<br>*(極限優惠保底 2.0% 與自訂 3 因子矩陣)* |
+| **5.5** | [`u05_pair/`](#55-全成對組合測試-pairwise-實戰) | Greedy 集合覆蓋演算法、AllPairs4J、動態測試工廠 `@TestFactory`、`DynamicTest` | `SwimmingPoolPairwiseDemoTest.java`<br>`LoanCalculatorPairwiseDemoTest.java` | `LoanCalculatorPairwiseExerciseTest.java`<br>*(極限優惠保底 2.0% 與自訂 3 因子矩陣)* |
 | **5.6** | [`u05_input/ctm/`](#56-分類樹方法-ctm-規格化實戰) | 繁中語意化規格 `@DisplayName`、命名生成器、階層情境 `@Nested` | `DisplayNameDemoTest.java` | `OrderDiscountCtmExerciseTest.java`<br>*(電商 CTM 打點組合階層式驗證)* |
 | **5.7** | [`u05_input/decision/`](#57-因果圖與決策表實戰) | 決策表 1:1 直出 `@CsvSource`、多動作完整驗收 `assertAll` | `PromotionDecisionDemoTest.java` | `PromotionDecisionExerciseTest.java`<br>*(滿千、VIP、促銷碼化簡規則全覆蓋)* |
 | **5.8** | [`u05_scenario/state/`](#58-狀態轉換測試實戰) | 前置生命週期隔離 `@BeforeEach`、狀態階層 `@Nested`、狀態不變量 | `StackStateDemoTest.java`<br>`PlayerStateDemoTest.java` | `StackStateExerciseTest.java`<br>*(1-Switch 轉移序列與非法轉移防護)* |
@@ -270,16 +271,61 @@ void testTriangleInequality_criticalBoundary() {
 
 ## 🎲 5.5: 全成對組合測試 (Pairwise) 實戰
 
+> 📖 **完整演算法步進推導與專題手冊**：請參閱 [👉 **全成對組合測試專題手冊 (`pairwise_combinatorial.md`)**](./pairwise_combinatorial.md)。
+
 ### 1. 痛點剖析：成對矩陣動態生成，靜態測試無法彈性接收
 - 多維參數系統引發指數級「組合爆炸」（如 4 參數全乘積需 36 組）。
 - NIST 實證 2-Way 交互作用可捕捉 90% 缺陷。
 - 但 Pairwise 工具（如 AllPairs4J）是在**執行時期**依演算法動態產生成對矩陣，傳統靜態 `@Test` 無法彈性接收動態長度的測試清單。
 
-### 2. JUnit 5 解決方案
-- **動態測試工廠 (`@TestFactory` + `DynamicTest`)**：測試方法回傳動態案例串流，執行時期即時將演算法輸出的每組配對封裝為獨立命名的測試節點！
+### 2. JUnit 5 + `AllPairs4J` 解決方案與核心 API 解析
+本專案引入純 Java 成對測試框架 **`AllPairs4J`** (`io.github.pavelicii:allpairs4j:2.0.0`)，搭配 JUnit 5 的 **`@TestFactory` + `DynamicTest`**，只要四個核心 API 即可將成對演算法轉化為自動化單元測試：
 
-### 3. Demo 演示：`LoanCalculatorPairwiseDemoTest.java`
-開啟 `u05_input/pairwise/LoanCalculatorPairwiseDemoTest.java`：
+| `AllPairs4J` / JUnit 5 核心 API | 角色與意義 | 游泳池範例用法 (`SwimmingPoolPairwiseDemoTest.java`) |
+| :--- | :--- | :--- |
+| **`new Parameter(name, values...)`** | 定義**單一測試參數維度**（名稱 + 所有候選水準值） | `new Parameter("TimeSlot", "MORNING", "NOON", "OTHER")` |
+| **`new AllPairs.AllPairsBuilder()`** | **建造者模式**組裝多個參數維度：<br>• `.withParameter(...)` 註冊維度<br>• `.withConstraint(...)` 排除非法互斥組合<br>• **`.build()` 啟動 Greedy 演算法**計算矩陣 | `new AllPairs.AllPairsBuilder()`<br>&nbsp;&nbsp;`.withParameter(...)`<br>&nbsp;&nbsp;`.build()` |
+| **`allPairs.getGeneratedCases()`** | 取得演算法壓縮後的**成對案例清單 (`List<Case>`)** | 回傳 6 組 `Case`（由 3×2×2=12 組全乘積壓縮而來） |
+| **`Case.get("參數名稱")`** | `Case` 繼承自 `LinkedHashMap<String, Object>`，代表**單列測試組合**，以參數名稱取值 | `c.get("TimeSlot")`、`c.get("DayType")`、`c.get("IsMember")` |
+| **`@TestFactory` + `DynamicTest`** | JUnit 5 動態測試工廠，將每一筆 `Case` 即時封裝為 IDE 中獨立顯示的測試節點 | `DynamicTest.dynamicTest(title, () -> { ... })` |
+
+### 3. Demo 演示：`SwimmingPoolPairwiseDemoTest.java` 與 `LoanCalculatorPairwiseDemoTest.java`
+開啟 `src/test/java/u05_pair/` 目錄下的兩個示範類別：
+- **[`u05_pair/SwimmingPoolPairwiseDemoTest.java`](../../src/test/java/u05_pair/SwimmingPoolPairwiseDemoTest.java)**：對應投影片「游泳池收費系統（3 × 2 × 2 = 12 組全乘積）」，示範如何用 `AllPairs4J` 產生 **6 組**測試案例消去全部 16 個成對配對：
+
+```java
+// 1. 使用 AllPairsBuilder 註冊 3 個參數維度，呼叫 build() 啟動演算法生成 6 組 Case
+private static List<Case> buildSwimmingPoolCases() {
+    AllPairs allPairs = new AllPairs.AllPairsBuilder()
+            .withParameter(new Parameter("TimeSlot", "MORNING", "NOON", "OTHER"))
+            .withParameter(new Parameter("DayType", "HOLIDAY", "WEEKDAY"))
+            .withParameter(new Parameter("IsMember", "true", "false"))
+            .build();
+    return allPairs.getGeneratedCases();
+}
+
+// 2. 結合 @TestFactory，用 c.get("參數名") 取出每組配對值並封裝為 DynamicTest
+@TestFactory
+List<DynamicTest> dynamicSwimmingPoolPairwiseTests() {
+    return buildSwimmingPoolCases().stream().map(c -> {
+        TimeSlot time = TimeSlot.valueOf(c.get("TimeSlot").toString());
+        DayType day = DayType.valueOf(c.get("DayType").toString());
+        boolean isMember = Boolean.parseBoolean(c.get("IsMember").toString());
+
+        return DynamicTest.dynamicTest("泳池成對: " + time + "/" + day + "/會員=" + isMember, () -> {
+            int price = SwimmingPoolPricing.calculatePrice(time, day, isMember);
+            assertTrue(price >= 50 && price <= 200);
+        });
+    }).collect(Collectors.toList());
+}
+```
+
+> 🤔 **關鍵盲點：成對工具只負責生出「輸入組合 (Inputs)」，那「Expected Output」從哪來？**  
+> `AllPairs4J` 不懂游泳池或房貸的業務規則，因此**不會自動產生 Expected Output**！實務上有兩種驗證策略（皆實作於 `SwimmingPoolPairwiseDemoTest.java`）：
+> 1. **策略 A（屬性不變量斷言，如上例 `@TestFactory`）**：不逐一算精確值，直接驗證「在任何組合下都必須成立的業務邊界與不崩潰性」（如 `50 <= price <= 200`、房貸利率 `>= 2.0%`）。優點是全自動，但若應收 80 元卻算成 100 元會漏抓。
+> 2. **策略 B（兩階段精確預言機：AllPairs 挑組合 ➔ 人工對照 SRS 補上 Expected Output 轉為 `@CsvSource`）**：先用 `AllPairs4J` 把 12 組壓縮成 **6 組**（幫工程師省去算另外 6 組或 27 組的時間），再由工程師為這 6 組補上 SRS 規格預期票價（`100, 80, 200, 50, 100, 100`），透過 `@CsvSource` + `assertEquals(expectedPrice, actualPrice)` 進行 100% 精確驗證！
+
+- **[`u05_pair/LoanCalculatorPairwiseDemoTest.java`](../../src/test/java/u05_pair/LoanCalculatorPairwiseDemoTest.java)**：將 4 維度貸款利率（3 × 3 × 2 × 2 = 36 組全乘積）壓縮至 **9 組**，並以 `@TestFactory` 動態驗證利率保底下限 2.0%：
 
 ```java
 @TestFactory
@@ -306,7 +352,7 @@ List<DynamicTest> dynamicPairwiseTests() {
 ```
 
 ### 🧪 5.5 課堂動手練習
-開啟 [`LoanCalculatorPairwiseExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_input/pairwise/LoanCalculatorPairwiseExerciseTest.java)：
+開啟 [`u05_pair/LoanCalculatorPairwiseExerciseTest.java`](../../src/test/java/u05_pair/LoanCalculatorPairwiseExerciseTest.java)：
 1. **練習 1**：設計極限優惠組合，驗證利率精準觸發保底下限 2.0%。
 2. **練習 2**：使用 `AllPairs.AllPairsBuilder` 自行定義 3 因子成對生成矩陣並動態執行斷言！
 

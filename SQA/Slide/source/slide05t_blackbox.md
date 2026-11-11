@@ -1412,10 +1412,10 @@ class CalculatorTest {
 | :---: | :---: | :---: | :---: |
 | **1** | t<sub>1</sub> (清晨) | d<sub>1</sub> (假日) | m<sub>1</sub> (會員) |
 | **2** | t<sub>1</sub> (清晨) | d<sub>2</sub> (平日) | m<sub>2</sub> (非會員) |
-| **3** | t<sub>2</sub> (中午) | d<sub>1</sub> (假日) | m<sub>1</sub> (會員) |
-| **4** | t<sub>2</sub> (中午) | d<sub>2</sub> (平日) | m<sub>2</sub> (非會員) |
-| **5** | t<sub>3</sub> (其他) | d<sub>1</sub> (假日) | m<sub>2</sub> (非會員) |
-| **6** | t<sub>3</sub> (其他) | d<sub>2</sub> (平日) | m<sub>1</sub> (會員) |
+| **3** | t<sub>2</sub> (中午) | d<sub>1</sub> (假日) | m<sub>2</sub> (非會員) |
+| **4** | t<sub>2</sub> (中午) | d<sub>2</sub> (平日) | m<sub>1</sub> (會員) |
+| **5** | t<sub>3</sub> (其他) | d<sub>1</sub> (假日) | m<sub>1</sub> (會員) |
+| **6** | t<sub>3</sub> (其他) | d<sub>2</sub> (平日) | m<sub>2</sub> (非會員) |
 
 *(時間-星期、星期-會員、時間-會員兩兩組合 100% 涵蓋！)*
 
@@ -1439,7 +1439,7 @@ class CalculatorTest {
 ### 📐 數學本質：最小集合覆蓋 (Set Cover)
 - **問題歸約**：
   - 系統中有 k 個參數，全成對測試需涵蓋全部 ∑ (|V<sub>i</sub>| × |V<sub>j</sub>|) 個成對組合 (Pairs)。
-  - 每個測試案例最多能覆蓋 binom{k}{2} 個特定 Pair。
+  - 每個測試案例最多能覆蓋 C(k, 2) 個特定 Pair。
   - **尋找最少測試案例以覆蓋所有成對組合**，在計算理論上等價於經典的 **NP-Complete 最小集合覆蓋問題**。
 - **指數級計算爆炸**：
   - 隨參數與取值增加，窮舉搜尋全域絕對最佳解耗時天文數字，在工程實務上毫無效益。
@@ -1454,6 +1454,45 @@ class CalculatorTest {
 - **約束求解與剪枝 (Constraints & SAT)**：
   - 實務常有業務互斥（如 `OS=iOS` 不可配 `Browser=IE`）；
   - 現代工具整合 SAT/SMT 求解器即時修剪非法狀態，確保每組案例皆合法可用。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.5 全成對組合測試 (Pairwise)' -->
+
+## 演算法步進圖解：以「游泳池收費系統」逐步推導
+
+<div class="card-deck">
+
+> 💡 將游泳池 3 個參數代入「IPO 基底展開 + Greedy 貪婪計分」，看每一輪如何依條件選出最佳組合！
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1️⃣ 步驟一：母集合 U (16 個 Pairs) 與選取條件
+- **待覆蓋母集合 U = 6 + 6 + 4 = 16 個 Pairs**：
+  - **T × D (6 組)**：(t<sub>1</sub>..t<sub>3</sub>) × (d<sub>1</sub>, d<sub>2</sub>)
+  - **T × M (6 組)**：(t<sub>1</sub>..t<sub>3</sub>) × (m<sub>1</sub>, m<sub>2</sub>)
+  - **D × M (4 組)**：(d<sub>1</sub>, d<sub>2</sub>) × (m<sub>1</sub>, m<sub>2</sub>)
+- **每一輪的兩大選擇條件 (IPO + Greedy)**：
+  1. **前兩欄 `(T, D)` 依序展開基底**：先列出取值最多的 `T × D` 共 **6 組必備配對** `(t1,d1) ➔ (t1,d2) ➔ ... ➔ (t3,d2)`。
+  2. **第三欄 `M` 貪婪計分 PK**：比較填入 `m1` 與 `m2` 誰能**消去更多「尚未出現過的 Pair」**（高分勝出；平手時依序先選 `m1`）。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2️⃣ 步驟二：逐輪 `m1` vs. `m2` 貪婪計分決策表
+| 輪次 | 基底 (T,D) | 候選 `m1` vs. `m2` 新消去 Pair 數比較 | 勝出案例 | 累計 |
+| :---: | :---: | :--- | :---: | :---: |
+| **1** | **(t<sub>1</sub>, d<sub>1</sub>)** | `m1`: **+3** vs `m2`: **+3** *(全未出現，平手先選 m<sub>1</sub>)* | **(t<sub>1</sub>, d<sub>1</sub>, m<sub>1</sub>)** | 3/16 |
+| **2** | **(t<sub>1</sub>, d<sub>2</sub>)** | `m1`: +2 *(t<sub>1</sub>m<sub>1</sub>已重複)* vs **`m2`: +3** *(t<sub>1</sub>d<sub>2</sub>, t<sub>1</sub>m<sub>2</sub>, d<sub>2</sub>m<sub>2</sub>)* | **(t<sub>1</sub>, d<sub>2</sub>, m<sub>2</sub>)** | 6/16 |
+| **3** | **(t<sub>2</sub>, d<sub>1</sub>)** | `m1`: +2 *(d<sub>1</sub>m<sub>1</sub>已重複)* vs **`m2`: +3** *(t<sub>2</sub>d<sub>1</sub>, t<sub>2</sub>m<sub>2</sub>, d<sub>1</sub>m<sub>2</sub>)* | **(t<sub>2</sub>, d<sub>1</sub>, m<sub>2</sub>)** | 9/16 |
+| **4** | **(t<sub>2</sub>, d<sub>2</sub>)** | **`m1`: +3** *(t<sub>2</sub>d<sub>2</sub>, t<sub>2</sub>m<sub>1</sub>, d<sub>2</sub>m<sub>1</sub>)* vs `m2`: +1 *(僅 t<sub>2</sub>d<sub>2</sub>)* | **(t<sub>2</sub>, d<sub>2</sub>, m<sub>1</sub>)** | 12/16 |
+| **5** | **(t<sub>3</sub>, d<sub>1</sub>)** | `m1`: **+2** vs `m2`: **+2** *(D×M已滿，平手先選 m<sub>1</sub>)* | **(t<sub>3</sub>, d<sub>1</sub>, m<sub>1</sub>)** | 14/16 |
+| **6** | **(t<sub>3</sub>, d<sub>2</sub>)** | `m1`: +1 *(t<sub>3</sub>m<sub>1</sub>已重複)* vs **`m2`: +2** *(補齊 t<sub>3</sub>d<sub>2</sub>, t<sub>3</sub>m<sub>2</sub>)* | **(t<sub>3</sub>, d<sub>2</sub>, m<sub>2</sub>)** | **16/16** ✅ |
 
 </div>
 </div>
@@ -1496,30 +1535,94 @@ class CalculatorTest {
 
 <!-- header: '5.5 全成對組合測試 (Pairwise)' -->
 
-## 全成對測試的 JUnit 5 落地：動態測試工廠 (@TestFactory)
+## AllPairs4J 核心 API 與 `@TestFactory` 實作（以游泳池為例）
 
 <div class="card-deck">
 
-> 💡 成對測試的工程挑戰：案例矩陣是由演算法在執行期動態產生的，傳統靜態 `@Test` 無法彈性接收！
+> 💡 成對測試的工程落地：以 `AllPairs4J` 動態計算成對矩陣，再交由 JUnit 5 `@TestFactory` 展開為獨立測試節點！
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### ⚙️ 動態測試工廠機制 (`@TestFactory`)
-- **動態案例串流生成**：
-  - 一般 `@Test` 必須在編譯期寫死；但 Pairwise 案例數量會隨參數維度調整（如 36 組壓縮為 9~10 組）。
-- **JUnit 5 解決方案 (DynamicTest)**：
-  - 使用 `@TestFactory` 傳回動態案例串流（如 LabDemo `LoanCalculatorPairwiseTest`）；
-  - 測試在執行時期呼叫 AllPairs4J 生成成對矩陣，並將每一組配對結果（年限、金額、身分）封裝為一個獨立的 `DynamicTest` 節點執行！
+### 🧩 `AllPairs4J` 四大核心 API 意義
+- **1. `new Parameter(name, values...)`**：
+  - 定義**單一參數維度**（參數名 + 所有候選水準值）。
+- **2. `new AllPairs.AllPairsBuilder()`**：
+  - 以 `.withParameter(...)` 註冊各維度（亦支援 `.withConstraint(...)` 排除互斥組合）；呼叫 **`.build()` 正式啟動 IPO+Greedy 演算法**！
+- **3. `allPairs.getGeneratedCases()`**：
+  - 回傳壓縮後之成對案例清單 **`List<Case>`**（泳池 12 組 ➔ **6 組**）。
+- **4. `Case.get("參數名")` + `@TestFactory`**：
+  - `Case` 繼承自 `Map`，以 `c.get(key)` 取出配對值並封裝為 `DynamicTest`！
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 📈 工程效益：IDE 視覺化與獨立回歸
-- **每個成對案例皆具備獨立生命週期**：
-  - 在 IDE 與 CI/CD 測試樹中，每個動態案例皆有清晰的自訂標籤與獨立通過/失敗狀態。
-- **精準缺陷定位 (Fault Isolation)**：
-  - 若第 4 組成對組合出錯，測試報告能秒級定位是「青年身分 × 30年期」的 2-Way 交互作用產生異常，其餘成對測試繼續執行不中斷，完美落實成對測試的工程價值！
+### 💻 游泳池成對測試 (`SwimmingPoolPairwiseDemoTest`)
+```java
+// 1. 定義 3 維度並呼叫 build() 啟動演算法生成 6 組 Case
+AllPairs allPairs = new AllPairs.AllPairsBuilder()
+    .withParameter(new Parameter("TimeSlot", "MORNING", "NOON", "OTHER"))
+    .withParameter(new Parameter("DayType", "HOLIDAY", "WEEKDAY"))
+    .withParameter(new Parameter("IsMember", "true", "false"))
+    .build();
+
+// 2. @TestFactory 走訪每筆 Case，以 c.get(key) 取值並動態執行
+@TestFactory
+List<DynamicTest> dynamicSwimmingPoolPairwiseTests() {
+    return allPairs.getGeneratedCases().stream().map(c -> {
+        TimeSlot t = TimeSlot.valueOf(c.get("TimeSlot").toString());
+        DayType d  = DayType.valueOf(c.get("DayType").toString());
+        boolean m  = Boolean.parseBoolean(c.get("IsMember").toString());
+        return DynamicTest.dynamicTest(t + "/" + d + "/m=" + m, () -> {
+            int price = SwimmingPoolPricing.calculatePrice(t, d, m);
+            assertTrue(price >= 50 && price <= 200);
+        });
+    }).collect(Collectors.toList());
+}
+```
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.5 全成對組合測試 (Pairwise)' -->
+
+## 🤔 關鍵反思：工具只生「輸入組合」，Expected Output 從哪來？
+
+<div class="card-deck">
+
+> 💡 `AllPairs4J` 與 `PICT` 只負責壓縮**測試輸入 (Inputs)**，並不曉得業務規格的**預期輸出 (Test Oracle)**！實務上有兩大落地策略：
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🛡️ 策略 A：動態不變量斷言 (`@TestFactory`)
+- **做法**：不逐一查表算精確值，改驗證「**任何組合下皆須成立的業務不變量 (Invariants)**」與「**不崩潰 (No Crash)**」。
+  - 例：泳池票價必介於 `50 ~ 200 元`、房貸利率必 `≥ 2.0%` 法定下限。
+- **優缺點**：
+  - ✅ **100% 全自動**：適合數十組至上百組高維度配對或 Smoke Test。
+  - ⚠️ **Oracle 盲區**：若應收 80 元卻算成 100 元（仍在 50~200 內），單靠區間斷言抓不到！
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🎯 策略 B：兩階段精確預言機 (`AllPairs` ➔ `@CsvSource`)
+- **實務兩步驟工作流（於 Lab `SwimmingPoolPairwiseDemoTest` 示範）**：
+  1. **Step 1 (工具印出 `@CsvSource` 樣板)**：用 `AllPairs4J` 印出 6 組配對骨架，預期值欄位留 `TODO` 供複製貼上。
+  2. **Step 2 (人工對照 SRS 補上預期值)**：只需算這 **6 組**（省去算另外 6~27 組！），將 `TODO` 改為規格票價並執行 `assertEquals`：
+```java
+@ParameterizedTest
+@CsvSource({ // Step 1 自動印出前3欄與 TODO ➔ Step 2 複製貼上並將 TODO 改為 SRS 預期票價
+    "MORNING, HOLIDAY, true,  100", "MORNING, WEEKDAY, false,  80",
+    "NOON,    HOLIDAY, false, 200", "NOON,    WEEKDAY, true,   50",
+    "OTHER,   HOLIDAY, true,  100", "OTHER,   WEEKDAY, false, 100"
+})
+void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
+    assertEquals(expected, SwimmingPoolPricing.calculatePrice(t, d, m));
+}
+```
 
 </div>
 </div>
@@ -1555,33 +1658,32 @@ class CalculatorTest {
 
 <!-- header: '5.5 全成對組合測試 (Pairwise)' -->
 
-## 🧪 課堂實習指引 (LabDemo 5.5: Pairwise 全成對實戰)
+## 🧪 課堂實習指引 (LabDemo 5.5: `u05_pair` 全成對實戰)
 
 <div class="card-deck">
 
-> 💡 全成對實戰重點：使用 AllPairs4J 演算法啟發式生成成對矩陣，並以 @TestFactory 動態展開測試節點。
+> 💡 實習目錄：`LabDemo/src/test/java/u05_pair/`（搭配專題手冊 `pairwise_combinatorial.md`）
 
 <div class="two-columns">
 <div class="card">
 
-### 💻 體驗範例程式碼 (Demo Walkthrough)
-- **1. 開啟成對測試示範類別**：
-  - 開啟 `u05_input/pairwise/LoanCalculatorPairwiseDemoTest.java`。
-- **2. 觀察矩陣生成與壓縮**：
-  - 執行 `testPairwiseMatrixGeneration()`；
-  - 觀察控制台輸出：4 個維度的全乘積原本需要 3 × 3 × 2 × 2 = 36 組，AllPairs 啟發式壓縮至 **9 組**即可達成 100% 2-way 覆蓋！
-- **3. 觀察動態測試工廠**：
-  - 檢視 `dynamicPairwiseTests()` 方法，體驗 `@TestFactory` 如何將每組案例動態展開為獨立測試。
+### 💻 課堂示範體驗 (`u05_pair/` 兩大 Demo)
+- **1. 游泳池成對測試 (`SwimmingPoolPairwiseDemoTest.java`)**：
+  - **示範 1**：印出 `m1 vs. m2` 貪婪計分表，觀察 **16 個 Pairs** 如何在 6 組內歸零。
+  - **示範 2 (策略 A)**：`AllPairs4J` + `@TestFactory` 動態驗證票價不變量 (`50~200`)。
+  - **示範 3 (策略 B)**：執行 `generateCsvSourceTemplateForPaste()` 印出含 `TODO` 的 `@CsvSource` 樣板 ➔ 複製貼上並填入 SRS 預期票價執行 `assertEquals`！
+- **2. 房貸利率成對測試 (`LoanCalculatorPairwiseDemoTest.java`)**：
+  - 觀察 4 維度（3×3×2×2 = **36 組**）如何由 `AllPairs4J` 壓縮為 **9 組**動態執行。
 
 </div>
 <div class="card">
 
-### 🎯 課堂動手練習 (Hands-on Exercise)
-- **開啟練習檔**：`u05_input/pairwise/LoanCalculatorPairwiseExerciseTest.java`
-- **練習 1：極限優惠保底下限 2.0% 斷言**：
-  - 設計多項優惠累加（年限25年+金額2500萬+青年+已婚）組合，驗證利率精準觸發保底下限 2.0%！
-- **練習 2：自訂 3 因子成對生成工廠**：
-  - 使用 `AllPairs.AllPairsBuilder` 構建年限、青年與婚姻 3 因子矩陣，動態驗證利率範圍！
+### 🎯 課堂動手練習 (`LoanCalculatorPairwiseExerciseTest.java`)
+- **開啟練習檔**：`u05_pair/LoanCalculatorPairwiseExerciseTest.java`
+- **練習 1：極限優惠保底下限 `2.0%` 精確斷言**：
+  - 設計多項優惠累加（年限 25 年 + 金額 2500 萬 + 青年 + 已婚），驗證原始折扣雖低於 2%，但系統精準鎖定保底 **`2.0%`**！
+- **練習 2：自訂 3 因子 `AllPairs4J` 動態測試工廠**：
+  - 使用 `AllPairs.AllPairsBuilder` 註冊 `Parameter`（年限 3 × 青年 2 × 已婚 2 = 12 組 ➔ **壓縮為 6 組**），透過 `@TestFactory` 動態展開驗證！
 
 </div>
 </div>
@@ -1658,8 +1760,8 @@ class CalculatorTest {
 ### 🎯 3. 邊界鎖定與 4. FMEA 風險優先
 - **鎖定邊界替代隨機**：
   - 等價區間內部只挑 1 個代表，將精力聚焦於 min, min+, max-, max。
-- **FMEA 故障模式分析**：
-  - 高風險、核心金流、常變更模組採用強涵蓋；低風險輔助模組降級為弱涵蓋。
+- **FMEA 失效模式與效應分析 (Failure Mode and Effects Analysis)**：
+  - 依 **嚴重度 (S) × 發生率 (O) × 難檢度 (D)** 計算風險優先數 (RPN)；高風險核心金流採強涵蓋，低風險輔助模組降級為弱涵蓋。
 
 </div>
 </div>
@@ -1701,37 +1803,35 @@ class CalculatorTest {
 
 <!-- header: '5.6 案例優化與分類樹方法 (CTM)' -->
 
-## CTM 實戰範例：電商結帳折扣測試案例生成
+## CTM 實戰範例：電商結帳折扣（為何超越一般弱涵蓋？）
 
 <div class="card-deck">
 
-> 💡 實戰目標：測試「滿額與會員折扣功能」，用 CTM 打點規格矩陣落實不同的覆蓋準則。
+> 💡 CTM 不只是把弱涵蓋畫成表，而是結合「**樹狀子分類細分 + 垂直防漏稽核 + 風險混搭覆蓋**」的視覺化工程規格！
 
 <div class="two-columns">
 <div class="card">
 
-### 📋 CTM 規格分解與打點組合矩陣
-| 案例 | VIP | 一般 | 訪客 | <1K | 1~3K | >3K | 信用卡 | 行動 | 貨到 | 具體輸入與預期輸出 |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| **TC<sub>1</sub>** | ⚫ | | | | | ⚫ | ⚫ | | | VIP, 3500, 信用卡 ➔ 8折+滿額折300 |
-| **TC<sub>2</sub>** | | ⚫ | | | ⚫ | | | ⚫ | | 一般, 2000, 行動 ➔ 9折+滿額折100 |
-| **TC<sub>3</sub>** | | | ⚫ | ⚫ | | | | | ⚫ | 訪客, 800, 貨到付款 ➔ 原價無折扣 |
+### 📋 CTM 階層細分與打點矩陣（含信用卡子樹）
+| 案例 | VIP | 一般 | 訪客 | <1K | 1~3K | >3K | 刷卡:一次 | 刷卡:分期 | 行動 | 貨到 | 預期輸出與測試重點 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **TC<sub>1</sub>** | ⚫ | | | | | ⚫ | ⚫ | | | | 8折+折300 (一次付清) |
+| **TC<sub>2</sub>** | ⚫ | | | | | ⚫ | | ⚫ | | | 8折+折300 (**刷卡分期子樹**) |
+| **TC<sub>3</sub>** | | ⚫ | | | ⚫ | | | | ⚫ | | 9折+折100 (行動免測分期) |
+| **TC<sub>4</sub>** | | | ⚫ | ⚫ | | | | | | ⚫ | 原價無折扣 (貨到免測分期) |
 
-- **打點規則**：每一列在各分類中**恰好選取一個葉節點打點 (⚫)**；垂直觀察時，所有 9 個類別葉節點皆至少被打點 1 次！
+- **垂直防漏檢查**：往下掃視全部 10 個葉節點直欄，每一欄皆至少有 1 個 `⚫`，**0 漏測**！
 
 </div>
 <div class="card">
 
-### 🎯 覆蓋準則 (Coverage Criteria) 與效益對比
-- **弱等價覆蓋 (Weak EP / 1-wise)**：
-  - 每個葉節點至少打點 1 次 ➔ **僅需 3 個案例**（即左側 TC<sub>1</sub> ~ TC<sub>3</sub>）！
-- **成對組合覆蓋 (Pairwise / 2-wise)**：
-  - 任意兩維度的類別組合至少出現一次 ➔ **僅需 9 個案例**。
-- **全笛卡爾積強覆蓋 (All Combinations)**：
-  - 3 × 3 × 3 = **27** 個案例（維度增加時呈指數爆炸）。
-- **工業價值**：
-  - **視覺化防漏**：漏劃分類別或漏測組合一目了然。
-  - **利害關係人審查**：大幅降低與客戶、稽核員溝通成本（支援 CTE / TESTONA 工具自動產出）。
+### 🎯 CTM 超越一般 EP 表格的三大獨特價值
+- **1. 樹狀階層細分（解決條件相依子參數）**：
+  - 只有選「**信用卡**」時才長出「**一次 vs. 分期**」子樹（`TC1, TC2`）；選「行動/貨到」時自動略過分期，消除扁平表格的無效矛盾組合！
+- **2. 垂直掃視 1 秒抓漏（Visual Coverage Audit）**：
+  - 當系統有數十個維度時，傳統文字表難以人工除錯；CTM 只要**垂直檢查哪一欄沒有黑點 `⚫`**，稽核員 1 秒即可抓出漏測等價類！
+- **3. 同一張表混搭覆蓋強度（Risk-Based Hybrid）**：
+  - 低風險區（`訪客`、`一般`）僅打 1 點採**弱涵蓋**；高風險金流（`VIP × >3K`）可加列密集打點（`TC1+TC2` **局部強涵蓋/Pairwise**），黑點密度即代表測試火力配置！
 
 </div>
 </div>
@@ -2684,16 +2784,16 @@ class CalculatorTest {
 ---
 
 <!-- _class: lead -->
-<!-- header: '5.11 屬性基礎測試 (PBT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
-# **5.11 屬性基礎測試 (PBT)**
+# **5.11 屬性基礎測試 (PBT) 與變質測試 (MT)**
 
 > 「不再人工苦思特定測資，  
-> 而是宣告系統永不妥協的數學不變量。」
+> 而是宣告系統永不妥協的數學不變量與變質關係。」
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
 ## 範例測試 (EBT) vs. 屬性測試 (PBT) 典範轉移
 
@@ -2705,22 +2805,23 @@ class CalculatorTest {
 <div class="card" data-marpit-fragment>
 
 ### 📝 傳統範例測試 (Example-Based)
-- **手動設計特定案例**：
-  - 挑選輸入 2 與 3，斷言輸出必為 5。
-- **致命瓶頸**：
-  - 覆蓋率高度取決於工程師的直覺與經驗；
-  - 極容易遺漏包含極大值、空字串、Unicode 特殊字元之極端漏洞。
+- **手動設計單點特例**：
+  - 工程師手挑輸入 `add(2, 3)`，斷言輸出必為 `5`。
+- **三大致命瓶頸**：
+  - **1. 思維偏見**：開發者潛意識只挑「自己覺得會過」的正常數字。
+  - **2. 邊界遺漏**：極易漏掉 `0`、`-1`、`Integer.MAX_VALUE` 溢位、空集合或特殊字元。
+  - **3. 維護沉重**：手寫幾十組相似測資，卻仍只覆蓋輸入空間的滄海一粟。
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 🎲 屬性基礎測試 (Property-Based)
-- **定義通用不變量 (Invariant)**：
-  - 不管輸入何值，加法必滿足「交換律 a+b = b+a」。
-- **三大核心機制**：
-  - **1. 屬性 (Property)**：永恆成立之數學真理。
-  - **2. 生成器 (Generator)**：自動產生數萬組隨機邊界資料。
-  - **3. 測資收縮 (Shrinking)**：遇錯自動簡化為極簡反例！
+### 🎲 屬性基礎測試 (Property-Based, PBT)
+- **改為宣告「通用不變量 (Invariant)」**：
+  - 不管輸入何值，永遠滿足「交換律 `a + b == b + a`」或「反轉兩次等於自身」。
+- **PBT 框架三大自動化引擎**：
+  - **1. 屬性 (`@Property`)**：由人類定義永恆成立的邏輯規則。
+  - **2. 生成器 (`@ForAll`)**：自動轟炸 **1,000 組**隨機與極端邊界值。
+  - **3. 測資收縮 (`Shrinking`)**：一旦抓到 Bug，自動二分化簡為**最小可重現反例**！
 
 </div>
 </div>
@@ -2728,7 +2829,7 @@ class CalculatorTest {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
 ## 屬性基礎測試 (PBT) 先驅：John Hughes
 
@@ -2765,34 +2866,35 @@ class CalculatorTest {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
-## jqwik 宣告式不變量與測資收縮 (Shrinking) 機制
+## 四大經典屬性設計模式：如何找出系統的「不變量」？
 
 <div class="card-deck">
 
-> 💡 不寫死特定數值，宣告永恆真理：交由框架生成海量隨機測資並自動二分尋找極簡反例。
+> 💡 初學 PBT 最常問：「如果不寫死答案，那我要驗證什麼？」—— 掌握以下四大模式即可涵蓋 90% 場景！
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 💡 宣告式不變量規格 (Property-Based)
-- **`@Property` 宣告真理**：
-  - 告訴框架這是一條通用性質（例如加法交換律、反轉兩次回到原陣列）。
-  - 單一測試預設自動執行 1,000 次隨機測資檢驗。
-- **`@ForAll` 海量生成器**：
-  - 自動注入邊界與極值（0、1、-1、負數、`Integer.MAX_VALUE` 溢位值）。
-  - 徹底解放手寫特例的思維狹隘！
+### 🔄 模式 1：往返可逆 (Round-Trip) 與 模式 2：特徵守恆 (Invariants)
+- **① 往返可逆性（去了再回來，必定等於自己）**：
+  - **公式**：`inverse(forward(x)) == x`
+  - **例子**：不必知道壓縮或加密後的亂碼長怎樣，只要驗證**「壓縮再解壓縮 = 原檔案」**、**「陣列反轉兩次 `reverse(reverse(L))` = 原陣列 `L`」**！
+- **② 結構與特徵守恆（不管怎麼變，核心特徵永遠不變）**：
+  - **公式**：`invariant(f(x)) == true`
+  - **例子**：對任意亂數陣列排序 `sort(L)`，雖不知排完第 3 個數是多少，但必滿足：**A. 元素總數不變（長度守恆）** 且 **B. 前數永遠 ≤ 後數（單調遞增）**！
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 📉 自動測資收縮 (Shrinking) 威力
-- **傳統隨機測試 (Fuzzing) 痛點**：
-  - 當長度為 100 的隨機亂碼陣列出錯時，工程師難以人工肉眼除錯。
-- **jqwik 啟發式收縮**：
-  - 框架一旦發現失敗反例，自動啟動「二分微調收縮」演算法；
-  - 自動修剪無關雜訊，收縮為 **`[0, -1]`** 最小可重現反例 (Minimal Counterexample)！
+### ⚖️ 模式 3：冪等性 (Idempotence) 與 模式 4：排列對稱 / 代數定律
+- **③ 冪等性（做一次跟重複做十次，結果完全一樣）**：
+  - **公式**：`f(f(x)) == f(x)`
+  - **例子**：已經排好序的資料再排一次結果不變 `sort(sort(L)) == sort(L)`；字串去除首尾空白做兩次結果不變 `trim(trim(s)) == trim(s)`。
+- **④ 代數與排列對稱性 (Symmetry & Algebraic — 以 5.3 節「三角形」為例)**：
+  - **公式**：`f(a, b, c) == f(b, c, a) == f(c, a, b)`
+  - **三角形對稱不變量**：隨機丟入任意三邊 `(a, b, c)`，雖不知它是哪種三角形，但**將三邊順序對調，分類結果必定相同**！（若程式只寫 `a+b<=c` 卻漏寫 `b+c<=a`，隨機測對稱性 0.1 秒即抓出 `triangle(2,3,6) != triangle(6,2,3)`！）
 
 </div>
 </div>
@@ -2800,61 +2902,35 @@ class CalculatorTest {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
-## 概念核對問答 (CCQ 8)
-
-<div class="ccq-columns">
-<div class="ccq-text">
-
-<!-- id: sqa-ch05-ccq8 -->
-**問題情境**：  
-【是非題】在屬性基礎測試 (Property-Based Testing, PBT) 中，我們不需要手動為每一組測試寫出確切的預期輸出數值，而是定義程式執行時必須永遠維持的「屬性或不變量 (Invariants)」，並交由測試框架隨機生成大量測資來自動尋找反例。
-
-- **A)** 正確 (True)
-- **B)** 錯誤 (False)
-
-</div>
-<div class="ccq-logo">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq8.png" alt="QR Code" /></a>
-
-</div>
-</div>
-
----
-
-<!-- header: '5.11 屬性基礎測試 (PBT) 與 變質測試 (MT)' -->
-
-## 變質測試 (Metamorphic Testing)：黑箱不變量的新高度
+## 為什麼叫 `jqwik`？什麼是「測資收縮 (Shrinking)」？
 
 <div class="card-deck">
 
-> 💡 突破 Test Oracle 困境：當難以斷言「輸出 y 的絕對數值」時，檢驗「輸入變換後的相對關係」。
+> 💡 隨機測試最怕「生出一坨超長亂碼報錯，人類根本無法除錯」—— **測資收縮**正是解決此痛點的殺手鐧！
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 🧬 從 PBT 到 MT 的延伸進化
-- **屬性基礎測試 (PBT)**：
-  - 聚焦於**單一執行**的代數性質（例如 a + 0 = a、反轉兩次等於原陣列）。
-  - 適合具備封閉數學結構的純函式 (Pure Functions)。
-- **變質測試 (Metamorphic Testing, MT)**：
-  - 由陳振宇 (T.Y. Chen) 於 1998 年提出，專門解決 **Oracle Problem**。
-  - 聚焦於**多次執行之間的輸入輸出關係 (Metamorphic Relations, MRs)**。
-  - 適用於搜尋引擎、機器學習、推薦演算法與巨量科學運算等「無標準答案」黑箱！
+### 🏷️ 1. 為什麼框架叫做 `jqwik`？
+- **命名由來（發音同 *"J-Quick"*）**：
+  - **`J`** (**J**ava / **J**Unit 5) + **`qwik`** (致敬 John Hughes 的 **Quick**Check) = **`jqwik`**！
+  - 它是專為 **JUnit 5 Platform** 打造的原生屬性測試引擎，直接與 JUnit 5 共用執行器。
+- **隨機 + 邊界混合轟炸 (`@ForAll`)**：
+  - 標註 `@Property` 的測試方法預設會自動執行 **1,000 次**；
+  - `jqwik` 不只生隨機數，還會優先塞入 **`0, 1, -1, Integer.MAX_VALUE, 空串列`** 等惡魔邊界值！
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 🔄 變質測試三步執行迴圈
-- **1. 原始測試 (Source Execution)**：
-  - 輸入 x 執行系統，獲得基準輸出 y = f(x)。
-- **2. 變質變換 (Follow-up Execution)**：
-  - 依據領域知識將輸入變換為 x'，執行系統獲得 y' = f(x')。
-- **3. 變質關係判定 (MR Verification)**：
-  - 斷言驗證 R(x, x', y, y') 是否恆真成立！
-  - 若關係不成立，**100% 證明內部演算法存在缺陷**！
+### 📉 2. 什麼是「測資收縮」？為什麼要縮小？
+- **為什麼要縮小？**：
+  - 假設程式在 **`x >= 100`（滿百元折扣）時有 Bug**；`jqwik` 隨機抽中 **`x = 800`** 抓到錯誤，但若直接報 `800`，工程師看不出為何是 `800` 出錯！
+- **如何自動折半縮小（像玩終極密碼，每次切一半重測）**：
+  - 抓到 `800` 失敗 ❌ 後，引擎不急著報錯，自動在背景反覆折半重跑：
+  - 試 `400` (失敗 ❌) ➔ 試 `200` (失敗 ❌) ➔ 試 `100` (失敗 ❌) ➔ 試 `50` (通過 ✅，代表臨界點在 51~100) ➔ 試到 `99` (通過 ✅)！
+  - **最終報表直接印出最小反例：`x = 100`**（若陣列 `[42, -999, 8531]` 因負數崩潰，也會自動刪光雜訊並縮成 **`[-1]`**），讓工程師 1 秒看穿 Bug 根因！
 
 </div>
 </div>
@@ -2862,54 +2938,163 @@ class CalculatorTest {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與 變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+
+## `jqwik` 語法實戰：將四大屬性模式寫成單元測試
+
+<div class="card-deck">
+
+> 💡 只需掌握 `@Property`（宣告屬性測試）與 `@ForAll`（自動生成隨機與邊界參數）兩個核心註解！
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🧩 `jqwik` 核心註解意義
+- **`@Property`（取代 `@Test`）**：
+  - 宣告此方法為一條「通用屬性不變量」，由 `jqwik` 引擎自動重複呼叫 **1,000 次**（可設 `tries = 500` 調整次數）。
+  - 回傳 `boolean`（若回傳 `false` 即代表屬性被打破，立即觸發 Shrinking！）或內部使用 JUnit `assertEquals`。
+- **`@ForAll`（標註於方法參數前）**：
+  - 指示 `jqwik` 根據參數型別（如 `int`、`String`、`List<Integer>`）自動建立對應的資料生成器與收縮器。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 💻 課堂範例 (`u05_pbtest/PropertyBasedDemoTest.java`)
+```java
+class PropertyBasedDemoTest {
+    // 【模式 4：代數定律】加法交換律 (自動測 1,000 組 int a, b)
+    @Property
+    boolean additionIsCommutative(@ForAll int a, @ForAll int b) {
+        return MathFunctions.add(a, b) == MathFunctions.add(b, a);
+    }
+    // 【模式 1：往返可逆】反轉兩次必恢復原串列
+    @Property
+    boolean reverseTwiceIsOriginal(@ForAll List<Integer> list) {
+        List<Integer> rev2 = MathFunctions.reverse(MathFunctions.reverse(list));
+        return list.equals(rev2);
+    }
+    // 【模式 2：結構與特徵守恆】排序後長度守恆且必為單調遞增
+    @Property
+    boolean sortedListIsMonotonic(@ForAll List<Integer> list) {
+        List<Integer> s = MathFunctions.sort(list);
+        for (int i = 0; i < s.size() - 1; i++)
+            if (s.get(i) > s.get(i + 1)) return false;
+        return s.size() == list.size();
+    }
+}
+```
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+
+## 變質測試 (Metamorphic Testing)：突破無 Oracle 困境
+
+<div class="card-deck">
+
+> 💡 當連單一執行的輸出都無法驗證時（如搜尋引擎、AI 模型），改檢驗「兩次執行間的輸入變換與輸出相對關係」！
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🧬 1. 從 PBT 進化到變質測試 (MT)
+- **何時連 PBT 也不夠用？**
+  - 搜尋引擎輸入 `"Java"` 回傳 3,842 筆網頁、或 LLM 生成一段摘要，我們根本不知道「標準答案」是什麼！
+- **變質測試三步執行迴圈 (陳振宇, 1998)**：
+  1. **原始執行 (Source Run)**：輸入基準 `x`（如搜尋 `"Java"`），得到結果 `y = f(x)`。
+  2. **變換執行 (Follow-up Run)**：依領域知識變換輸入為 `x'`（如縮小範圍搜尋 `"Java SQA"`），得到 `y' = f(x')`。
+  3. **變質關係驗收 (MR)**：斷言 **`y' ⊆ y`**（複合關鍵字結果必為單一關鍵字結果的子集）！
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 💻 2. 搜尋引擎變質實戰 (`MetamorphicDemoTest.java`)
+```java
+@Test // MR 1 (包含性)：搜尋範圍縮小，結果必為原結果之子集
+void testMetamorphicRelation_inclusion() {
+    List<String> r1 = searchEngine.search("Java");     // 原始輸出 y
+    List<String> r2 = searchEngine.search("Java SQA"); // 變換輸出 y'
+    assertTrue(r1.containsAll(r2), "y' 必須包含於 y 之中！");
+}
+
+@Test // MR 2 (抗擾動性)：首尾加上無關空白，搜尋結果必須完全一致
+void testMetamorphicRelation_irrelevantPerturbation() {
+    List<String> source    = searchEngine.search("SQA");
+    List<String> perturbed = searchEngine.search("   SQA   ");
+    assertEquals(source, perturbed, "無關空白擾動不應改變搜尋結果！");
+}
+```
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
 ## 四大經典變質關係模式庫 (MR Patterns)
 
 <div class="card-deck">
 
-> 💡 頂尖 QA 如何設計 MR？掌握四大不變量思維，即可通殺 90% 以上複雜系統。
+> 💡 頂尖 QA 如何設計 MR？掌握四大不變量思維，即可通殺 90% 以上複雜系統与 AI 黑箱。
 
 | 模式類別 | 變質關係定義 (MR Formulation) | 實戰工程案例 |
 | :--- | :--- | :--- |
-| **1. 對稱與等價性<br>(Symmetry / Invariance)** | f(Transform(x)) == f(x) | **自駕車辨識**：輸入圖片水平翻轉或旋轉 5°，行人偵測框與分類結果不變。 |
-| **2. 包含與單調性<br>(Inclusion / Monotonicity)** | 若 x<sub>1</sub> ⊆ x<sub>2</sub> ➔ f(x<sub>1</sub>) ⊆ f(x<sub>2</sub>) | **搜尋引擎**：搜尋「台積電 股價」之結果，必然是「台積電」搜尋結果之子集。 |
-| **3. 比例縮放一致性<br>(Scaling Consistency)** | f(k cdot x) == k cdot f(x) | **導航路徑**：全圖路網權重放大 2 倍，計算出之最佳路徑節點序列完全相同。 |
-| **4. 獨立抗擾動性<br>(Irrelevant Perturbation)** | f(x + noise) == f(x) | **情感分析 / LLM**：語句結尾加上無關空格或標點，正面情緒評分不應逆轉為負面。 |
+| **1. 對稱與等價性<br>(Symmetry / Invariance)** | f(Transform(x)) == f(x) | **三角形 / 搜尋引擎**：三邊順序對調 `triangle(a,b,c) == triangle(b,c,a)`；關鍵字大小寫 `Search("sqa") == Search("SQA")` 結果相同。 |
+| **2. 包含與單調性<br>(Inclusion / Monotonicity)** | 若 x<sub>1</sub> ≤ x<sub>2</sub> ➔ f(x<sub>1</sub>) ≤ f(x<sub>2</sub>) 或 f(x<sub>1</sub>) ⊆ f(x<sub>2</sub>) | **游泳池 / 房貸 / 搜尋**：會員票價必 ≤ 非會員票價；貸款金額增加則利率單調遞減；複合關鍵字結果為子集。 |
+| **3. 比例縮放一致性<br>(Scaling Consistency)** | f(k × x) == f(x) 或 k × f(x) | **三角形 / 導航路徑**：合法三角形三邊同乘 k 倍 `triangle(ka, kb, kc) == triangle(a,b,c)` 分類不變；路網權重同乘 2 倍最佳路徑不變。 |
+| **4. 獨立抗擾動性<br>(Irrelevant Perturbation)** | f(x + noise) == f(x) | **搜尋引擎 / LLM**：關鍵字前後加上無關空格 `"  SQA  "` 搜尋結果不變；語句結尾加標點情緒評分不逆轉。 |
 
 </div>
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與 變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
-## 變質測試實戰：演算法與 AI 評測思維落地
+## 貫穿本章回顧：把「三角形、游泳池、房貸」變成 PBT / MT！
 
 <div class="card-deck">
 
-> 💡 以相對關係取代絕對數值：透過輸入變換與相對不變量，驗證黑箱核心邏輯的正確性。
+> 💡 同一個系統，從 5.3~5.5 的「指定答案測資」切換到 5.11 的「屬性與變質關係」，視野如何升級？
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 🔄 變質測試落地三步曲
-- **1. 原始基準執行 (Source Run)**：
-  - 給定基準輸入 x 執行系統，獲得輸出 y = f(x)。
-- **2. 領域變換輸入 (Follow-up Run)**：
-  - 依領域規則變換輸入 x ➔ x'（例如圖片旋轉、多加關鍵字）。
-  - 執行後續測試獲得 y' = f(x')。
-- **3. 變質關係驗收 (MR Verification)**：
-  - 斷言驗證 R(x, x', y, y') 是否恆真成立！
+### 🔄 前面範例的 PBT / MT 寫法
+- **1. 三角形 (`Triangle`) —— 對稱與比例縮放**：
+  ```java
+  @Property // 排列對稱性：三邊任意對調，分類結果必相同
+  boolean triangleSymmetry(@ForAll int a, @ForAll int b, @ForAll int c) {
+      return Triangle.getTriangleType(a, b, c)
+             .equals(Triangle.getTriangleType(b, c, a));
+  }
+  ```
+- **2. 游泳池 (`SwimmingPool`) 與房貸 (`LoanCalculator`) —— 優惠單調性**：
+  ```java
+  @Property // 優惠單調性：多貸 100 萬或具青年身分，利率只會更低或持平！
+  boolean loanRateMonotonic(@ForAll @IntRange(min=1, max=40) int yr,
+                            @ForAll @DoubleRange(min=1e5, max=5e7) double amt) {
+      double rBase = LoanCalculator.calculateInterestRate(yr, amt, false, false);
+      double rMore = LoanCalculator.calculateInterestRate(yr, amt + 1e6, true, false);
+      return rMore <= rBase && rMore >= 2.0; // 單調遞減且保底 2.0%
+  }
+  ```
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 🤖 為什麼 AI 與大模型必用 MT？
-- **無法事先手寫精確答案**：
-  - 要求 LLM 摘要文章或產生程式碼，字串內容無法進行 `assertEquals`！
-- **抗擾動與單調性驗證**：
-  - 結尾加上無關空格或標點，核心評分與情緒不應逆轉（抗擾動）。
-  - 增加正向提示詞，滿意度得分只可增加或持平（單調性）。
+### 🧭 工程師的關鍵判斷：何時用 Pairwise？何時用 PBT？
+- **📌 純離散小組合（如游泳池 3×2×2 = 12 種）➔ 首選 Pairwise**：
+  - 整個輸入空間只有 12 種組合時，用 Pairwise（6 組）搭配 `@CsvSource` 就能 100% 精確測完。
+  - 若硬用 `jqwik` 跑 1,000 次，只是把相同的 12 種組合重複跑 80 遍，**殺雞用牛刀**！
+- **📌 連續大範圍數值或無 Oracle（如三角形邊長、房貸金額、搜尋引擎）➔ 首選 PBT / MT**：
+  - 當輸入是 `int`（42 億種）、`double` 金額或任意字串陣列時，傳統表格只能測幾個點；
+  - 用 **PBT + MT** 才能以萬組隨機極值轟炸，抓出整數溢位與單調性反轉等深層 Bug！
 
 </div>
 </div>
@@ -2917,7 +3102,7 @@ class CalculatorTest {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與 變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
 ## 現代 AI 與 LLM 評測實務：差分與裁判模型落地
 
@@ -2958,36 +3143,56 @@ class CalculatorTest {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試與變質測試' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
-## 🧪 課堂實習指引 (LabDemo 5.11)
+## 概念核對問答 (CCQ 8)
+
+<div class="ccq-columns">
+<div class="ccq-text">
+
+<!-- id: sqa-ch05-ccq8 -->
+**問題情境**：  
+【是非題】在屬性基礎測試 (Property-Based Testing, PBT) 中，我們不需要手動為每一組測試寫出確切的預期輸出數值，而是定義程式執行時必須永遠維持的「屬性或不變量 (Invariants)」，並交由測試框架隨機生成大量測資來自動尋找反例。
+
+- **A)** 正確 (True)
+- **B)** 錯誤 (False)
+
+</div>
+<div class="ccq-logo">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq8.png" alt="QR Code" /></a>
+
+</div>
+</div>
+
+---
+
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+
+## 🧪 課堂實習指引 (LabDemo 5.11: `u05_pbtest`)
 
 <div class="card-deck">
 
-> 💡 告別特例斷言，擁抱不變量規格：體驗 jqwik 海量測資收縮與搜尋引擎變質關係驗收。
+> 💡 實習目錄：`LabDemo/src/test/java/u05_pbtest/`（搭配專題手冊 `jqwik_property_based.md`）
 
 <div class="two-columns">
 <div class="card">
 
-### 💻 體驗範例程式碼 (Demo Walkthrough)
-- **1. 屬性基礎測試 (PBT)**：
-  - 開啟 `u05_pbtest/PropertyBasedDemoTest.java`；
-  - 觀察加法交換律、單位元性質、反轉兩次回到自身與排序單調性不變量；
-  - 觀察 jqwik 自動執行 1000 次隨機測資與 Shrinking 最小反例收縮。
-- **2. 變質測試 (MT)**：
-  - 開啟 `u05_pbtest/MetamorphicDemoTest.java`；
-  - 觀察文章搜尋引擎之「結果包含性 (Inclusion)」與「前後空白抗擾動性 (Irrelevant)」變質關係！
+### 💻 課堂示範體驗 (`u05_pbtest/` 兩大 Demo)
+- **1. 屬性基礎測試 (`PropertyBasedDemoTest.java`)**：
+  - 執行 4 個 `@Property` 屬性：加法交換律、單位元、反轉兩次回到自身、排序單調性；
+  - 觀察 `jqwik` 自動產生 **1,000 組**隨機測資與 **Shrinking** 最小反例收縮。
+- **2. 變質測試 (`MetamorphicDemoTest.java`)**：
+  - 執行搜尋引擎之「結果包含性 (`Search("Java SQA") ⊆ Search("Java")`)」與「前後空白抗擾動性」變質關係！
 
 </div>
 <div class="card">
 
 ### 🎯 課堂動手練習 (Hands-on Exercise)
-- **練習 1：PBT 乘法與長度守恆不變量**：
-  - 開啟 `u05_pbtest/PropertyBasedExerciseTest.java`；
-  - 補全乘法交換律 (`a * b == b * a`) 與反轉後串列長度守恆斷言！
-- **練習 2：搜尋引擎對稱性變質測試**：
-  - 開啟 `u05_pbtest/MetamorphicExerciseTest.java`；
-  - 實作關鍵字大小寫不敏感之對稱變質關係 (`Search("software") == Search("SOFTWARE")`)！
+- **練習 1：PBT 乘法與長度守恆 (`PropertyBasedExerciseTest.java`)**：
+  - 補全乘法交換律 (`a * b == b * a`) 與反轉後串列長度守恆 (`reversed.size() == list.size()`) 斷言！
+- **練習 2：搜尋引擎對稱性變質關係 (`MetamorphicExerciseTest.java`)**：
+  - 實作關鍵字大小寫不敏感之對稱變質關係：`search("software")` 與 `search("SOFTWARE")` 回傳結果必須完全相等！
 
 </div>
 </div>
@@ -2995,9 +3200,9 @@ class CalculatorTest {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試與變質測試' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
-## 屬性測試 (PBT) 與 變形測試 (MT) 最佳實務 (Best Practices)
+## 屬性測試 (PBT) 與變質測試 (MT) 最佳實務 (Best Practices)
 
 <div class="card-deck">
 

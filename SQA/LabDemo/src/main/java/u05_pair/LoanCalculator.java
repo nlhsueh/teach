@@ -1,8 +1,8 @@
-package u05_input.pairwise;
+package u05_pair;
 
 /**
  * 貸款利率計算器 (供 Unit 5.5 全成對組合測試 Pairwise Testing 示範)
- * 
+ *
  * 商業規則規格：
  * - 基礎利率為 5.0%
  * - 年限優惠：
@@ -51,3 +51,4 @@ public class LoanCalculator {
         return Math.round(rate * 100.0) / 100.0;
     }
 }
+

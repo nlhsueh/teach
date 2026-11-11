@@ -81,7 +81,7 @@ if (A == 2 || X > 1) {
 > *   若已婚則再減少 0.5%。
 > *   利率最低為 2%。
 
-1.  開啟待測檔案 [LoanCalculator.java](../../src/main/java/u05_utest/pairwise/LoanCalculator.java)。
+1.  開啟待測檔案 [LoanCalculator.java](../../src/main/java/u05_pair/LoanCalculator.java)。
 2.  分別設計三個測試案例集：
     *   **集合 A**：滿足 Weak Coverage (SC100)。
     *   **集合 B**：滿足 All-Pair Coverage（全成對測試）。
@@ -147,7 +147,7 @@ void testInvalidGradeTriggersElseBranch() {
 ## 🧪 2.3 AI 輔助實作練習 (AI-Assisted Lab)
 
 ### 📋 Lab 4: AI 輔助覆蓋度補彈實戰
-1.  執行 [LoanCalculator.java](../../src/main/java/u05_utest/pairwise/LoanCalculator.java) 的測試套件。
+1.  執行 [LoanCalculator.java](../../src/main/java/u05_pair/LoanCalculator.java) 的測試套件。
 2.  若發現分支覆蓋率未達 100%（例如利率下限 2% 的防禦分支未執行，或特定複合條件短路分支未覆蓋）：
     *   **不要手動推導輸入**。請撰寫一個結構化的 **AI Prompt**，將程式碼與未覆蓋的分支資訊提供給 AI，請它產出能觸發該分支的測試案例。
     *   **審查與驗證**：將 AI 產出的測試案例加入測試套件，確認覆蓋率是否成功提升至 100%。人工檢查 AI 生成的斷言是否符合貸款規格書（而非盲目合理化錯誤）。

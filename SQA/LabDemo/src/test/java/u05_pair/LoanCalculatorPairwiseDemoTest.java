@@ -1,4 +1,4 @@
-package u05_input.pairwise;
+package u05_pair;
 
 import io.github.pavelicii.allpairs4j.AllPairs;
 import io.github.pavelicii.allpairs4j.Case;
@@ -14,27 +14,27 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * 💡 課堂示範 (Demo 5.5)：全成對組合測試 (Pairwise / All-Pairs Testing)
- * 
+ * 💡 課堂示範 B (Demo 5.5-B)：房貸利率計算器全成對組合測試 (Pairwise / All-Pairs Testing)
+ *
  * 【教學核心觀念】：
- * 1. 組合爆炸挑戰：若 4 個參數分別有 3, 3, 2, 2 個水準，全乘積需要 3 * 3 * 2 * 2 = 36 個案例；
+ * 1. 組合爆炸挑戰：若 4 個參數分別有 3, 3, 2, 2 個水準，全乘積需要 3 × 3 × 2 × 2 = 36 個案例；
  *    若為 10 個變數各 3 水準，全組合將高達 3^10 = 59,049 個案例！
- * 2. NIST 研究精髓：70%~85% 的軟體缺陷是由單一或 2 個參數的交互作用所觸發 (2-Way Faults)。
- * 3. 成對測試保證：藉由 AllPairs4J 演算法，將案例數從 36 個高度壓縮至 10 餘個，
+ * 2. NIST 研究精髓：67%~93% 的軟體缺陷是由單一或 2 個參數的交互作用所觸發 (2-Way Faults)。
+ * 3. 成對測試保證：藉由 AllPairs4J 演算法，將案例數從 36 個高度壓縮至 9 個，
  *    但保證【任意兩個參數的所有可能取值組合】皆被 100% 覆蓋！
  */
-@DisplayName("Unit 5.5 示範：貸款利率 AllPairs4J 全成對動態測試")
+@DisplayName("Unit 5.5 示範 B：貸款利率 AllPairs4J 全成對動態測試")
 public class LoanCalculatorPairwiseDemoTest {
 
     @Test
-    @DisplayName("示範 1：驗證 AllPairs 壓縮效益矩陣輸出")
+    @DisplayName("示範 1：驗證 AllPairs 壓縮效益矩陣輸出 (36 組壓縮為 9 組)")
     void testPairwiseMatrixGeneration() {
         List<Case> cases = buildLoanCases();
 
         System.out.println("==========================================================================");
-        System.out.println("  [SQA Lab 5.5] AllPairs4J 全成對測試案例生成矩陣 (LoanCalculator)");
+        System.out.println("  [SQA Lab 5.5-B] AllPairs4J 全成對測試案例生成矩陣 (LoanCalculator)");
         System.out.println("==========================================================================");
-        System.out.printf("%-6s | %-10s | %-12s | %-10s | %-10s%n", 
+        System.out.printf("%-6s | %-10s | %-12s | %-10s | %-10s%n",
                 "Case #", "貸款年限", "貸款金額(元)", "是否青年", "是否已婚");
         System.out.println("--------------------------------------------------------------------------");
 
@@ -96,3 +96,4 @@ public class LoanCalculatorPairwiseDemoTest {
         return allPairs.getGeneratedCases();
     }
 }
+

@@ -165,7 +165,8 @@ void exercise3_testWeakPasswordCombinations(String weakPassword) {
 ---
 
 ## Unit 5.5: 全成對組合測試 (Pairwise)
-📂 原始檔案：[`5.5_pairwise/LoanCalculatorPairwiseExerciseTest.java`](5.5_pairwise/LoanCalculatorPairwiseExerciseTest.java)
+📂 實習專案目錄：`src/test/java/u05_pair/`  
+📂 參考解答檔案：[`5.5_pairwise/LoanCalculatorPairwiseExerciseTest.java`](5.5_pairwise/LoanCalculatorPairwiseExerciseTest.java)
 
 ```java
 // 練習 1：極限優惠組合驗證利率精準觸發保底下限 2.0%

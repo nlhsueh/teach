@@ -1,4 +1,4 @@
-package u05_input.pairwise;
+package u05_pair;
 
 import io.github.pavelicii.allpairs4j.AllPairs;
 import io.github.pavelicii.allpairs4j.Case;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 🧪 課堂動手練習 (Exercise 5.5)：全成對測試組合與邊界驗證練習
- * 
+ *
  * 請閱讀【提示 (Hints)】，參考註解中的提示語法，
  * 親手打出程式碼並移除 fail(...) 以通過測試。
  */
@@ -51,7 +51,7 @@ public class LoanCalculatorPairwiseExerciseTest {
     // 1. 因子 A (Years): "3", "12", "30"
     // 2. 因子 B (IsYouth): "true", "false"
     // 3. 因子 C (IsMarried): "true", "false"
-    // 4. 全乘積為 3 * 2 * 2 = 12 組，成對壓縮後應只有 6 組案例！
+    // 4. 全乘積為 3 × 2 × 2 = 12 組，成對壓縮後應只有 6 組案例！
     // =========================================================================
     @TestFactory
     @DisplayName("練習 2：動態生成 3 因子成對測試套件")
@@ -79,3 +79,4 @@ public class LoanCalculatorPairwiseExerciseTest {
         );
     }
 }
+
