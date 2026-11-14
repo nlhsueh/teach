@@ -378,6 +378,53 @@ class CalculatorTest {
 
 <!-- header: '5.2 單元測試與 JUnit 5 快速入門' -->
 
+## 進階斷言：Java Lambda `() -> ...` 延遲執行語法
+
+<div class="card-deck">
+
+> 💡Lambda function 與 「延遲執行 (Deferred Execution)」！
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 🤔 為什麼不能直接傳入一般運算式？
+- **一般方法呼叫的「立即求值陷阱」**：
+  - ❌ 若寫成：`assertThrows(ArithmeticException.class, calc.divide(10, 0));`
+  - Java 會在進入 `assertThrows` **之前**就先執行 `calc.divide(10, 0)`，當場炸出例外使測試崩潰，`assertThrows` 根本來不及接住！
+- **Lambda `() -> 動作`：打包成「待執行任務膠囊」**：
+  - **語法結構**：`()` 代表無參數，`->` 指向待執行的單行程式碼（對應 JUnit 5 的 `Executable` 函式介面）。
+  - **運作原理**：告訴 Java **「先別執行！把這行程式碼打包成膠囊交給 JUnit」**，由 JUnit 在內部的 `try-catch` 安全沙盒中親自拆封執行並攔截錯誤！
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 🛠️ JUnit 5 三大 Lambda 實戰語法樣板
+- **1. 例外斷言 (`assertThrows`) —— 攔截預期異常**：
+  ```java
+  assertThrows(ArithmeticException.class,
+      () -> calc.divide(10, 0)); // 沙盒內執行並驗證拋出例外
+  ```
+- **2. 群組聚合斷言 (`assertAll`) —— 失敗不中斷**：
+  ```java
+  assertAll("邊界群組驗證",
+      () -> assertEquals(0, calc.add(-5, 5)),
+      () -> assertEquals(-10, calc.add(-5, -5))
+  ); // 每個斷言各自打包，第 1 個失敗仍會繼續執行第 2 個！
+  ```
+- **3. 延遲錯誤訊息 (`Supplier<String>`) —— 失敗才算**：
+  ```java
+  assertEquals(13, calc.subtract(20, 7),
+      () -> "耗時組裝之除錯訊息"); // 綠燈時完全不消耗字串拼接成本
+  ```
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.2 單元測試與 JUnit 5 快速入門' -->
+
 ## 概念核對問答 (CCQ 1)
 
 <div class="ccq-columns">
@@ -725,9 +772,14 @@ class CalculatorTest {
 ### 🛡️ 群組聚合斷言：一次收集所有邊界缺陷
 - **早期中斷 (Early Abort) 陷阱**：
   - 若在同一個測試方法中連續寫多行斷言，當第一個 min- 斷言失敗時，測試方法會立即拋錯終止，後續 max 邊界完全沒機會執行！
-- **JUnit 5 解決方案 (`assertAll`)**：
-  - 將多組邊界檢驗包裝在 `assertAll` 區塊中（如 LabDemo `AssertionsDemoTest` & `TriangleBlackBoxTest`）；
-  - **所有邊界斷言皆保證被完整執行**，一次性報告所有崩潰點，大幅縮短修復與回歸週期！
+- **JUnit 5 解決方案 (`assertAll` + Lambda `() ->`)**：
+  - 以 Lambda `() ->` 將每個邊界斷言打包為獨立任務（如 LabDemo `AssertionsDemoTest` & `TriangleBlackBoxTest`），**所有邊界皆保證被完整執行**，一次報告所有崩潰點：
+  ```java
+  assertAll("BVA 邊界群組檢驗",
+      () -> assertEquals("丁", Grade.eval(0)),   // min
+      () -> assertEquals("優", Grade.eval(100))  // max
+  );
+  ```
 
 </div>
 </div>
@@ -968,7 +1020,7 @@ class CalculatorTest {
 
 <div class="card-deck">
 
-* > 💡 單純考慮數值範圍是不夠的；優質的等價劃分必須深入融入業務規則（如大小月與閏年）。
+> 💡 單純考慮數值範圍是不夠的；優質的等價劃分必須深入融入業務規則（如大小月與閏年）。
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -1002,7 +1054,7 @@ class CalculatorTest {
 
 <!-- header: '5.4 等價類分割測試 (EP)' -->
 
-## NextDate() 初步測試：驚見「12 月跨年異常」
+## NextDate() 初步測試：「12 月跨年異常」
 
 <div class="card-deck">
 
@@ -1080,18 +1132,20 @@ class CalculatorTest {
 
 <!-- header: '5.4 等價類分割測試 (EP)' -->
 
-## NextDate() 重構後測試資料規格表
+## NextDate() 重構後測試資料規格表（混合式涵蓋：5 組弱涵蓋基底 + 3 組耦合補強）
 
-| 案例編號 | 涵蓋類別組合 | 測試輸入 (Y, M, D) | 預期輸出 (Expected Output) | 驗證之業務規則目標 |
-| :---: | :--- | :--- | :--- | :--- |
-| **TC<sub>1</sub>** | M<sub>2</sub> × D<sub>1</sub> × Y<sub>2</sub> | `2023/05/15` | `2023/05/16` | 一般月中遞增 (Day + 1, Month/Year不變) |
-| **TC<sub>2</sub>** | M<sub>1</sub> × D<sub>4</sub> × Y<sub>2</sub> | `2023/04/30` | `2023/05/01` | 30 天月月底換月 (Day重置為1, Month + 1) |
-| **TC<sub>3</sub>** | M<sub>2</sub> × D<sub>5</sub> × Y<sub>2</sub> | `2023/07/31` | `2023/08/01` | 31 天月(非12月)月底換月 (Month + 1, Year不變) |
-| **TC<sub>4</sub>** | M<sub>4</sub> × D<sub>1</sub> × Y<sub>2</sub> | `2023/12/15` | `2023/12/16` | 12 月非月底正常日進位 (Month/Year皆不變) |
-| **TC<sub>5</sub>** | M<sub>4</sub> × D<sub>5</sub> × Y<sub>2</sub> | `2023/12/31` | `2024/01/01` | **★ 12/31 跨年重置 (Day/Month重置為1, Year + 1)** |
-| **TC<sub>6</sub>** | M<sub>3</sub> × D<sub>2</sub> × Y<sub>1</sub> | `2024/02/28` | `2024/02/29` | 閏年 2 月 28 日尚未跳月 (進入 2/29) |
-| **TC<sub>7</sub>** | M<sub>3</sub> × D<sub>3</sub> × Y<sub>1</sub> | `2024/02/29` | `2024/03/01` | 閏年 2 月 29 日月底跳月 (進入 3/1) |
-| **TC<sub>8</sub>** | M<sub>3</sub> × D<sub>2</sub> × Y<sub>2</sub> | `2023/02/28` | `2023/03/01` | 平年 2 月 28 日月底跳月 (進入 3/1) |
+> 💡 採用「混合式涵蓋 (Hybrid Coverage)」：先以 **5 組弱涵蓋**確保所有等價類至少出現一次，再針對月底與閏平年之**輸出行為分支補齊 3 組局部強涵蓋**！
+
+| 案例編號 | 涵蓋策略定位 | 涵蓋類別組合 | 測試輸入 (Y, M, D) | 預期輸出 | 驗證之業務規則與輸出行為分支 |
+| :---: | :---: | :--- | :--- | :--- | :--- |
+| **TC<sub>1</sub>** | **弱涵蓋基底 (1/5)** | **M<sub>2</sub>** × **D<sub>1</sub>** × **Y<sub>2</sub>** | `2023/05/15` | `2023/05/16` | 一般月中遞增 (`Day + 1`，涵蓋 M<sub>2</sub>, D<sub>1</sub>, Y<sub>2</sub>) |
+| **TC<sub>2</sub>** | **弱涵蓋基底 (2/5)** | **M<sub>3</sub>** × **D<sub>2</sub>** × **Y<sub>1</sub>** | `2024/02/28` | `2024/02/29` | 閏年 2/28 未跳月 (`Day + 1`，涵蓋 M<sub>3</sub>, D<sub>2</sub>, Y<sub>1</sub>) |
+| **TC<sub>3</sub>** | **弱涵蓋基底 (3/5)** | M<sub>3</sub> × **D<sub>3</sub>** × Y<sub>1</sub> | `2024/02/29` | `2024/03/01` | 閏年 2/29 月底跳月 (`Month + 1`，涵蓋 D<sub>3</sub>) |
+| **TC<sub>4</sub>** | **弱涵蓋基底 (4/5)** | **M<sub>1</sub>** × **D<sub>4</sub>** × Y<sub>2</sub> | `2023/04/30` | `2023/05/01` | 30 天月月底換月 (`Month + 1`，涵蓋 M<sub>1</sub>, D<sub>4</sub>) |
+| **TC<sub>5</sub>** | **弱涵蓋基底 (5/5)** | **M<sub>4</sub>** × **D<sub>5</sub>** × Y<sub>2</sub> | `2023/12/31` | `2024/01/01` | **★ 12/31 跨年重置 (`Year + 1`，涵蓋 M<sub>4</sub>, D<sub>5</sub>)** |
+| **TC<sub>6</sub>** | **局部強涵蓋補強 (+1)** | M<sub>2</sub> × D<sub>5</sub> × Y<sub>2</sub> | `2023/07/31` | `2023/08/01` | 補強 M<sub>2</sub>×D<sub>5</sub>：31 天月(非12月)月底換月不跨年 |
+| **TC<sub>7</sub>** | **局部強涵蓋補強 (+2)** | M<sub>4</sub> × D<sub>1</sub> × Y<sub>2</sub> | `2023/12/15` | `2023/12/16` | 補強 M<sub>4</sub>×D<sub>1</sub>：12 月一般日正常遞增不誤跨年 |
+| **TC<sub>8</sub>** | **局部強涵蓋補強 (+3)** | M<sub>3</sub> × D<sub>2</sub> × Y<sub>2</sub> | `2023/02/28` | `2023/03/01` | 補強 M<sub>3</sub>×D<sub>2</sub>×Y<sub>2</sub>：平年 2/28 月底直接跳 3/1 |
 
 ---
 
@@ -1172,6 +1226,25 @@ class CalculatorTest {
 
 <!-- header: '5.4 等價類分割測試 (EP)' -->
 
+## EP & BVA 三步合體 SOP 實戰：游泳池年齡票價（避免重複）
+
+> 💡 以 5.3 **游泳池年齡票價 (`0~120` 歲)** 為例：若把 EP (6 類) 與 4 段區間的強固 BVA (4×7=28 點) 分開死板套用，會產生 **34 個高度重複點**；透過三步 SOP 合體去重，僅需 **14 個精準測試點**！
+
+| 1：劃分等價類 | 2：標記相鄰交界 | 3：統一精準取點 (邊界極值 + 標稱值) | 預期輸出與「拒絕重複」關鍵解析 |
+| :--- | :---: | :---: | :--- |
+| **I<sub>1</sub> 無效低界 (`age < 0`)** | `-1` \| `0` | **`-1`** *(BVA 左越界 + I<sub>1</sub> 代表)* | 🚨 `IllegalArgumentException`（1 點兼顧越界與無效類） |
+| **V<sub>1</sub> 免費票 (`0 ≤ age ≤ 3`)** | `0`、`3` | **`0`** (min), **`2`** (nom), **`3`** (max) | `FREE (0 元)` —— 涵蓋 V<sub>1</sub> 雙邊界與標稱值 |
+| **V<sub>2</sub> 兒童票 (`4 ≤ age ≤ 12`)** | `4`、`12` | **`4`** (min), **`8`** (nom), **`12`** (max) | `CHILD (100 元)` —— **`4` 即 V<sub>1</sub> 的 `max+`，免重複測！** |
+| **V<sub>3</sub> 全票 (`13 ≤ age ≤ 64`)** | `13`、`64` | **`13`** (min), **`30`** (nom), **`64`** (max) | `ADULT (250 元)` —— **`13` 即 V<sub>2</sub> 的 `max+`，免重複測！** |
+| **V<sub>4</sub> 敬老票 (`65 ≤ age ≤ 120`)** | `65`、`120` | **`65`** (min), **`80`** (nom), **`120`** (max) | `SENIOR (120 元)` —— **`65` 即 V<sub>3</sub> 的 `max+`，免重複測！** |
+| **I<sub>2</sub> 無效高界 (`age > 120`)** | `120` \| `121` | **`121`** *(BVA 右越界 + I<sub>2</sub> 代表)* | 🚨 `IllegalArgumentException`（1 點兼顧越界與無效類） |
+
+- **為什麼分開做會重複？** 連續分段規格中，「前一段的右越界 (`max+`) 剛好就是後一段的左邊界 (`min`)」（如 `3` 與 `4`、`12` 與 `13`、`64` 與 `65`）。
+
+---
+
+<!-- header: '5.4 等價類分割測試 (EP)' -->
+
 ## 等價類分割測試 (EP) 常見問答 (FAQ)
 
 <div class="card-deck">
@@ -1187,18 +1260,18 @@ class CalculatorTest {
   - 案例數少，能以最低成本確保每個等價類都被測試一次。
 - **強涵蓋 (Strong Coverage) / 全成對 (Pairwise)**：
   - 適用於**參數間存在緊密商務交互制約**（如保險費率乘數、折扣與年資、貸款審核）；
-  - 若參數過多導致強涵蓋全乘積爆炸，直接升級為 **5.4 全成對測試 (Pairwise)** 是業界最佳解！
+  - 若參數過多導致強涵蓋全乘積爆炸，直接升級為 **5.5 全成對測試 (Pairwise)** 是業界最佳解！
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### ❓ Q2: 可以部分變數用強涵蓋，部分變數用弱涵蓋嗎？
 - **實務主流：混合式涵蓋策略 (Hybrid Coverage)**：
-  - **完全可以，且高度推薦**！全域強涵蓋會引發組合爆炸，全域弱涵蓋又會漏測關鍵耦合缺陷。
+  - **完全可以，且高度推薦**（如前頁 `NextDate()` 之 5 組弱涵蓋基底 + 3 組高耦合補強）！全域強涵蓋會引發組合爆炸，全域弱涵蓋又會漏測關鍵耦合缺陷。
 - **風險驅動的工程配置**：
-  - **局部強涵蓋**：針對有強烈商務制約的 2~3 個核心變數（如年限 × 信用等級 × 青年）進行全乘積。
-  - **局部弱涵蓋**：針對其餘無耦合的周邊變數（如性別、聯絡方式），僅確保其各類別代表至少被選中一次填入。
-- **更高階解法**：直接運用 **5.4 Pairwise** 工具求解。
+  - **局部強涵蓋**：針對有強烈商務制約的 2~3 個核心變數（如 2 月 × 28/29 日 × 閏平年）進行重點交集。
+  - **局部弱涵蓋**：針對其餘無耦合的常規區間，僅確保各類別代表至少被選中一次。
+- **更高階解法**：直接運用 **5.5 Pairwise** 工具求解。
 
 </div>
 </div>
@@ -1220,9 +1293,13 @@ class CalculatorTest {
 ### 🚨 無效等價類：例外斷言 (`assertThrows`)
 - **單一無效原則之落實**：
   - 非法輸入（如負數邊長、空字串、超出規格之帳號長度）不得回傳正常值，而應觸發防禦性例外。
-- **JUnit 5 解決方案 (assertThrows)**：
-  - 驗證特定輸入是否精確拋出指定的異常類別（如 `IllegalArgumentException.class`）；
-  - 可進一步驗證錯誤訊息（`getMessage()`），確保防禦邏輯不僅攔截錯誤，還提供了清晰的除錯指引，杜絕系統假死或默默吃掉例外！
+- **JUnit 5 解決方案 (`assertThrows` + Lambda `() ->`)**：
+  - 透過 `() ->` 延遲執行非法呼叫，驗證是否精確拋出指定異常並檢查錯誤訊息：
+  ```java
+  var ex = assertThrows(IllegalArgumentException.class,
+      () -> Triangle.classify(-1, 5, 5)); // 單一無效輸入
+  assertTrue(ex.getMessage().contains("邊長必須大於 0"));
+  ```
 
 </div>
 <div class="card" data-marpit-fragment>
@@ -1301,48 +1378,6 @@ class CalculatorTest {
 
 ---
 
-<!-- header: '5.4 等價類分割測試 (EP)' -->
-
-## 等價類分割 (EP) 測試設計 4 步拆解程序 (SOP)
-
-<div class="card-deck">
-
-> 💡 任何問題皆可依循：**維度解構 ➔ 5 大規則劃分 ➔ 名義值取樣 ➔ 兩階段矩陣組裝**，公式化直出測試案例！
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 📋 前置 3 步拆解程序
-- **Step 1 (維度解構)**：
-  - 找出獨立輸入變數；複合欄位拆解降維（如生日拆為 Y, M, D）。
-- **Step 2 (5 大規則切分等價類並編號)**：
-  1. **連續區間**：[A, B] ➔ 1 有效，2 無效 (<A, >B)
-  2. **個數限定**：限定 N 個 ➔ 1 有效，2 無效 (過少/過多)
-  3. **列舉集合**：控制邏輯相異者獨立為有效類；未定義者無效
-  4. **布林條件**：1 符合有效，1 違反無效
-  5. **防禦型態**：Null、空字串、非預期型態為無效
-- **Step 3 (挑選名義代表值 Nominal)**：
-  - 選取遠離邊界的正中央代表值（邊界留給 BVA）。
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 🎯 Step 4：兩階段案例組裝演算法
-- **階段 A：有效等價類「貪婪多合一」**：
-  - 每個測試案例盡可能同時涵蓋多個尚未測試的有效等價類；
-  - 重複直到**所有有效類皆覆蓋至少一次**（追求最小案例集）。
-- **階段 B：無效等價類「嚴格一案一測」(防遮蔽)**：
-  - 每次只挑選 **1 個無效等價類**作為測試目標；
-  - **其餘所有欄位強制填入已知合法的「有效代表值」**！
-  - 重複直到所有無效類皆測過一次（嚴防錯誤遮蔽 Fault Masking）。
-- **案例數檢驗公式**：**案例總數 = 有效案例最少組裝數 + k**（k 為無效等價類總數）。
-
-</div>
-</div>
-</div>
-
----
-
 <!-- _class: lead -->
 <!-- header: '5.5 全成對組合測試 (Pairwise)' -->
 
@@ -1359,7 +1394,7 @@ class CalculatorTest {
 
 <div class="card-deck">
 
-* > 💡 美國國家標準與技術研究院 (NIST) 研究：軟體系統中絕大多數缺陷皆由「單一變數」或「雙變數配對」所觸發。
+> 💡 美國國家標準與技術研究院 (NIST) 研究：軟體系統中絕大多數缺陷皆由「單一變數」或「雙變數配對」所觸發。
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -1393,7 +1428,7 @@ class CalculatorTest {
 
 <div class="card-deck">
 
-* > 💡 透過交錯法與成對匹配，案例數量從全乘積的 12 個直接砍半至 6 個，覆蓋率絲毫不減。
+> 💡 透過交錯法與成對匹配，案例數量從全乘積的 12 個直接砍半至 6 個，覆蓋率絲毫不減。
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -1448,12 +1483,12 @@ class CalculatorTest {
 <div class="card" data-marpit-fragment>
 
 ### ⚡ 現代工具求解策略：貪婪啟發式 (Heuristics)
-- **貪婪覆蓋 (Greedy / AETG / IPO)**：
-  - 每輪生成下一個測試案例時，貪婪選取「能同時涵蓋最多尚未配對 Pairs」的參數值。
-  - 在**多項式時間內**秒級產出極度逼近理論極限的測試矩陣。
+- **貪婪覆蓋演算法**：
+  - **AETG (`Automatic Efficient Test Generator`，自動高效測試產生器)**：逐列生成，每輪貪婪挑選能一次消去最多未覆蓋 Pairs 的整列測試案例。
+  - **IPO (`In-Parameter-Order`，參數依序擴展法)**：先將前兩個參數全配對展開，再逐一加入新參數欄（橫向擴展 + 縱向補列），於多項式時間秒級求解。
 - **約束求解與剪枝 (Constraints & SAT)**：
   - 實務常有業務互斥（如 `OS=iOS` 不可配 `Browser=IE`）；
-  - 現代工具整合 SAT/SMT 求解器即時修剪非法狀態，確保每組案例皆合法可用。
+  - 整合 **SAT (`Boolean Satisfiability`，布林可滿足性)** 求解器即時修剪非法狀態。
 
 </div>
 </div>
@@ -1539,7 +1574,7 @@ class CalculatorTest {
 
 <div class="card-deck">
 
-> 💡 成對測試的工程落地：以 `AllPairs4J` 動態計算成對矩陣，再交由 JUnit 5 `@TestFactory` 展開為獨立測試節點！
+> 💡 以 `AllPairs4J` 動態計算成對矩陣，再交由 JUnit 5 `@TestFactory` 展開為獨立測試節點！
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -1557,7 +1592,7 @@ class CalculatorTest {
 </div>
 <div class="card" data-marpit-fragment>
 
-### 💻 游泳池成對測試 (`SwimmingPoolPairwiseDemoTest`)
+### 💻 `SwimmingPoolPairwiseDemoTest`
 ```java
 // 1. 定義 3 維度並呼叫 build() 啟動演算法生成 6 組 Case
 AllPairs allPairs = new AllPairs.AllPairsBuilder()
