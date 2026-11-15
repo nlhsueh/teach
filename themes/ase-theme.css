@@ -593,6 +593,19 @@ div.split73 > div.right {
   align-items: center;
 }
 
+div.split73 > div.right,
+div.split64 > div.right {
+  position: relative;
+  z-index: 20;
+}
+
+div.split73 > div.right:hover,
+div.split64 > div.right:hover,
+div.split73 > div.right:has(.is-inplace-zoomed),
+div.split64 > div.right:has(.is-inplace-zoomed) {
+  z-index: 200;
+}
+
 div.split73 > div.right img {
   width: auto;
   max-width: 100%;
@@ -601,13 +614,37 @@ div.split73 > div.right img {
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
+  position: relative;
+  z-index: 20;
   cursor: zoom-in;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  transform-origin: right center;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, background-color 0.22s ease;
 }
 
 div.split64 > div.right img {
+  position: relative;
+  z-index: 20;
   cursor: zoom-in;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  transform-origin: right center;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, background-color 0.22s ease;
+}
+
+div.split73 > div.right img:hover,
+div.split73 > div.right img.is-inplace-zoomed {
+  transform: scale(var(--split-zoom-scale, 1.48));
+  z-index: 200;
+  background-color: #f5f5f5 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.26) !important;
+}
+
+div.split64 > div.right img:hover,
+div.split64 > div.right img.is-inplace-zoomed {
+  transform: scale(var(--split-zoom-scale, 1.35));
+  z-index: 200;
+  background-color: #f5f5f5 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.26) !important;
 }
 
 div.split64 > div.left:has(.orig-ui-hover) blockquote {

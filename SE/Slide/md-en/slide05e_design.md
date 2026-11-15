@@ -2729,101 +2729,53 @@ The floor is now open for questions, architectural discussions, and project desi
 
 
   // =========================================================================
-  // 3. Split73 / Split64 Image Hover Full-Screen Zoom
+  // 3. Split73 / Split64 Image In-Place Hover Zoom
   // =========================================================================
   function initSplitImageHoverZoom() {
-    document.body.classList.add('has-split-zoom-js');
-    let overlay = null;
-    let overlayImg = null;
-    let hideTimer = null;
-
-    function getOrCreateOverlay() {
-      if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.id = 'split-img-zoom-overlay';
-        overlay.style.cssText = [
-          'position: fixed',
-          'inset: 0',
-          'width: 100vw',
-          'height: 100vh',
-          'background: rgba(15, 23, 42, 0.88)',
-          'backdrop-filter: blur(8px)',
-          '-webkit-backdrop-filter: blur(8px)',
-          'z-index: 999998',
-          'display: none',
-          'align-items: center',
-          'justify-content: center',
-          'padding: 28px',
-          'box-sizing: border-box',
-          'pointer-events: none',
-          'opacity: 0',
-          'transition: opacity 0.18s ease'
-        ].join(';');
-
-        overlayImg = document.createElement('img');
-        overlayImg.style.cssText = [
-          'max-width: 94vw',
-          'max-height: 92vh',
-          'width: auto',
-          'height: auto',
-          'object-fit: contain',
-          'border-radius: 12px',
-          'box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55)',
-          'transform: scale(0.96)',
-          'transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1)'
-        ].join(';');
-
-        overlay.appendChild(overlayImg);
-      }
-      const parent = document.fullscreenElement || document.body;
-      if (overlay.parentElement !== parent) {
-        parent.appendChild(overlay);
-      }
-      return overlay;
+    function updateInPlaceScale(img) {
+      const isSplit73 = !!img.closest("div.split73");
+      const baseScale = isSplit73 ? 1.52 : 1.38;
+      const h = img.offsetHeight || 360;
+      const maxAllowedScale = Math.max(1.22, Math.min(baseScale, 640 / h));
+      img.style.setProperty("--split-zoom-scale", maxAllowedScale.toFixed(2));
     }
 
-    function showZoom(imgEl) {
-      if (hideTimer) {
-        clearTimeout(hideTimer);
-        hideTimer = null;
-      }
-      const el = getOrCreateOverlay();
-      overlayImg.src = imgEl.currentSrc || imgEl.src;
-      overlayImg.alt = imgEl.alt || '';
-      el.style.display = 'flex';
-      // Trigger reflow for smooth transition
-      void el.offsetWidth;
-      el.style.opacity = '1';
-      overlayImg.style.transform = 'scale(1)';
-    }
-
-    function hideZoom() {
-      if (!overlay) return;
-      overlay.style.opacity = '0';
-      if (overlayImg) overlayImg.style.transform = 'scale(0.96)';
-      if (hideTimer) clearTimeout(hideTimer);
-      hideTimer = setTimeout(() => {
-        if (overlay && overlay.style.opacity === '0') {
-          overlay.style.display = 'none';
-        }
-      }, 180);
-    }
-
-    const targets = document.querySelectorAll('div.split73 img:not(.emoji), div.split64 img:not(.emoji)');
+    const targets = document.querySelectorAll("div.split73 img:not(.emoji), div.split64 img:not(.emoji)");
     targets.forEach(img => {
       if (img.dataset.splitZoomBound) return;
-      img.dataset.splitZoomBound = 'true';
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('mouseenter', function() {
-        showZoom(img);
-      });
-      img.addEventListener('mouseleave', function() {
-        hideZoom();
+      img.dataset.splitZoomBound = "true";
+      img.addEventListener("mouseenter", function() {
+        updateInPlaceScale(img);
       });
     });
 
-    window.addEventListener('hashchange', hideZoom);
-    window.addEventListener('keydown', hideZoom);
+    const origBadges = document.querySelectorAll(".orig-ui-hover[data-orig-src]");
+    origBadges.forEach(badge => {
+      if (badge.dataset.origZoomBound) return;
+      badge.dataset.origZoomBound = "true";
+      badge.addEventListener("mouseenter", function() {
+        const split = badge.closest("div.split64, div.split73");
+        if (!split) return;
+        const rightImg = split.querySelector("div.right img:not(.emoji)");
+        if (!rightImg) return;
+        if (!rightImg.dataset.annotatedSrc) {
+          rightImg.dataset.annotatedSrc = rightImg.getAttribute("src");
+        }
+        rightImg.setAttribute("src", badge.dataset.origSrc);
+        updateInPlaceScale(rightImg);
+        rightImg.classList.add("is-inplace-zoomed");
+      });
+      badge.addEventListener("mouseleave", function() {
+        const split = badge.closest("div.split64, div.split73");
+        if (!split) return;
+        const rightImg = split.querySelector("div.right img:not(.emoji)");
+        if (!rightImg) return;
+        rightImg.classList.remove("is-inplace-zoomed");
+        if (rightImg.dataset.annotatedSrc) {
+          rightImg.setAttribute("src", rightImg.dataset.annotatedSrc);
+        }
+      });
+    });
   }
 
   // Initialize all features
