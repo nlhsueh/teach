@@ -209,7 +209,8 @@ A software architect wants to define **how domain entity data is structured and 
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq1" target="_blank"><img src="../../img/ch04/ase-ch04-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -497,7 +498,8 @@ Which of the "Three Amigos" was specifically renowned for inventing **Use Cases 
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq2" target="_blank"><img src="../../img/ch04/ase-ch04-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -794,7 +796,8 @@ In our Food Delivery Use Case Model, why does `Apply Promo Voucher` point to `Pl
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq3" target="_blank"><img src="../../img/ch04/ase-ch04-ccq3.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1057,7 +1060,8 @@ To summarize this slide, remember this key takeaway: A structured prompt allows 
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1401,7 +1405,8 @@ In our Food Delivery Class Diagram, why is the relationship between `Order` and 
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq4" target="_blank"><img src="../../img/ch04/ase-ch04-ccq4.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1683,7 +1688,8 @@ To summarize this slide, remember this key takeaway: Specifying explicit UML con
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2062,7 +2068,8 @@ In a Boundary-Control-Entity (BCE) sequence diagram, which object should receive
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq5" target="_blank"><img src="../../img/ch04/ase-ch04-ccq5.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2339,7 +2346,8 @@ To summarize this slide, remember this key takeaway: Enforcing BCE stereotypes a
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2738,7 +2746,8 @@ In a UML Activity Diagram, what is the critical behavioral difference between a 
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq6" target="_blank"><img src="../../img/ch04/ase-ch04-ccq6.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -3015,7 +3024,8 @@ To summarize this slide, remember this key takeaway: Prompting AI with explicit 
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -3583,7 +3593,8 @@ In a UML State Machine, what is the critical architectural difference between an
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq7" target="_blank"><img src="../../img/ch04/ase-ch04-ccq7.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -3850,7 +3861,8 @@ To summarize this slide, remember this key takeaway: Prompting AI with explicit 
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -4432,7 +4444,8 @@ What is the primary engineering advantage of using text-based diagramming tools 
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq8" target="_blank"><img src="../../img/ch04/ase-ch04-ccq8.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--

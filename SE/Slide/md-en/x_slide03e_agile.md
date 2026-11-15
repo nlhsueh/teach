@@ -268,17 +268,19 @@ In 2001, 17 software developers created the **Agile Manifesto**, valuing:
 ## Extreme Programming (XP)
 
 <div class="split55">
-  <div class="left">
+<div class="left">
 
   - **Extreme Approach:** Pushes iterative development practices to extreme levels.
   - **Frequent Builds:** New versions built multiple times per day.
   - **2-Week Deliveries:** Functional increments delivered to customers every 2 weeks.
   - **Automated Safety:** All unit tests must pass before any build is accepted.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch03/fig_xp.png" alt="XP Release Cycle" />
-  </div>
+
+</div>
 </div>
 
 ---
@@ -317,17 +319,19 @@ In 2001, 17 software developers created the **Agile Manifesto**, valuing:
 ## Pair Programming
 
 <div class="split55">
-  <div class="left">
+<div class="left">
 
   - **Collaborative Coding:** Two programmers work together at one workstation.
   - **Informal Code Review:** Continuous inspection as code is written.
   - **Knowledge Sharing:** Spreads domain and system knowledge across the entire team, reducing project risk.
   - **Collective Ownership:** Encourages refactoring and shared responsibility.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch03/pair_programming.png" alt="Pair Programming" />
-  </div>
+
+</div>
 </div>
 
 ---
@@ -366,7 +370,7 @@ In 2001, 17 software developers created the **Agile Manifesto**, valuing:
 ## Refactoring
 
 <div class="split55">
-  <div class="left">
+<div class="left">
 
   - **Constant Code Improvement:**
     - Restructuring code to make it simpler and more maintainable without altering external functionality.
@@ -377,10 +381,12 @@ In 2001, 17 software developers created the **Agile Manifesto**, valuing:
     - *Extract Method:* Splitting complex functions.
     - *Rename Variables/Methods:* Improving clarity.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch03/refactoring.png" alt="Refactoring" />
-  </div>
+
+</div>
 </div>
 
 ---
@@ -388,7 +394,7 @@ In 2001, 17 software developers created the **Agile Manifesto**, valuing:
 ## Test-Driven Development (TDD)
 
 <div class="split55">
-  <div class="left">
+<div class="left">
 
   - **Test First:** Tests are written as executable programs *before* feature code.
   - **The TDD Cycle:**
@@ -397,10 +403,12 @@ In 2001, 17 software developers created the **Agile Manifesto**, valuing:
     3. **REFACTOR:** Clean up code structure.
   - **Regression Testing:** Automated test suites ensure new code doesn't break existing features.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch03/tdd_cycle.svg" alt="TDD Cycle" />
-  </div>
+
+</div>
 </div>
 
 ---
@@ -427,7 +435,8 @@ Which of the following is ONE of the 4 core values stated in the Agile Manifesto
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq1" target="_blank"><img src="../../img/ch03/ase-ch03-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 ---
 <!-- id: ase-ch03-ccq1 -->
@@ -444,7 +453,8 @@ Which of the following is ONE of the 4 core values stated in the Agile Manifesto
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq1" target="_blank"><img src="../../img/ch03/ase-ch03-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 ---
 
@@ -531,7 +541,8 @@ In Scrum, who is responsible for protecting the development team from external d
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq2" target="_blank"><img src="../../img/ch03/ase-ch03-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 ---
 <!-- id: ase-ch03-ccq2 -->
@@ -548,7 +559,8 @@ In Scrum, who is responsible for protecting the development team from external d
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq2" target="_blank"><img src="../../img/ch03/ase-ch03-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 ---
 
@@ -567,7 +579,8 @@ Test your understanding of the core concepts in this chapter:
   </div>
   <div class="fill-blank-logo">
     <img src="../../img/ch03/fill_blank_icon.svg" alt="Quiz" />
-  </div>
+
+</div>
 </div>
 
 ---
@@ -587,7 +600,8 @@ Here are the completed concepts:
   </div>
   <div class="fill-blank-logo">
     <img src="../../img/ch03/fill_blank_answer_icon.svg" alt="Quiz Answers" />
-  </div>
+
+</div>
 </div>
 
 ---

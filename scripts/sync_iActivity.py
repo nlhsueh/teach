@@ -467,8 +467,9 @@ def parse_slide_ccqs(fpath: str, course_slug: str):
         correct_ans = ''
         ans_patterns = [
             r'(?:Correct\s*Answer|正確答案|標準答案)\s*\**[：:is]*\s*\**(?:Option\s*)?([A-D])\b',
-            r'correct\s+answer\s+is\s+(?:clearly\s+)?(?:Option\s+)?\**([A-D])\b',
-            r'正確答案(?:是|為)\s*(?:選項\s*)?\**([A-D])\b',
+            r'correct\s+answer\s+is\s+(?:clearly\s+)?\**(?:Option\s+)?\**([A-D])\b',
+            r'Why\s+is\s+\**(?:Option\s+)?([A-D])\b.*?right\s+answer',
+            r'正確答案(?:是|為)\s*\**(?:選項\s*)?\**([A-D])\b',
         ]
         for pat in ans_patterns:
             am = re.search(pat, notes_text, re.IGNORECASE)
@@ -482,7 +483,9 @@ def parse_slide_ccqs(fpath: str, course_slug: str):
             exp_lines = []
             for nl in notes_text.split('\n'):
                 nl_s = nl.strip()
-                if not nl_s or nl_s.startswith('Let\'s check') or nl_s.startswith('The question asks') or nl_s.startswith('讓我們檢驗') or nl_s.startswith('題目問'):
+                if nl_s.startswith('💡 難字') or nl_s.startswith('難字與專業術語'):
+                    break
+                if not nl_s or nl_s.startswith('Let\'s check') or nl_s.startswith('Let\'s pause') or nl_s.startswith('Let\'s test') or nl_s.startswith('The question asks') or nl_s.startswith('讓我們檢驗') or nl_s.startswith('讓我們透過') or nl_s.startswith('題目問'):
                     continue
                 if nl_s.startswith('To summarize this slide') or nl_s.startswith('總結這張投影片'):
                     continue

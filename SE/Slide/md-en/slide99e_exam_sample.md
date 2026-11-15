@@ -22,7 +22,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div style="flex: 1.2;"><span>Student ID:</span> ___________________________</div>
     <div style="flex: 1.2;"><span>Student Name:</span> ___________________________</div>
     <div style="flex: 0.8; text-align: right;"><span style="font-weight: 800; color: #0b3c5d;">Final Score:</span> ______ / 100</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-instructions">
@@ -41,7 +42,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> Slow compilation speed on legacy build toolchains</div>
     <div><strong>(C)</strong> Conceptual complexity of arbitrary non-linear logic</div>
     <div><strong>(D)</strong> Syntax errors from unergonomic programming grammar</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-mc-item">
@@ -51,7 +53,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> An architecture team intentionally bypassing a microservice boundary to release an MVP before a conference, planning remediation next sprint.</div>
     <div><strong>(C)</strong> A team copying and pasting legacy code without realizing the severe security vulnerabilities it introduces.</div>
     <div><strong>(D)</strong> Discovering after three years that a third-party framework is no longer maintained by open-source authors.</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-mc-item">
@@ -61,7 +64,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> Usability (Learnability & Operability)</div>
     <div><strong>(C)</strong> Maintainability (Modularity & Reusability)</div>
     <div><strong>(D)</strong> Portability (Adaptability & Installability)</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-mc-item">
@@ -71,7 +75,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> Safety-critical avionics firmware with fully validated, unchangeable regulatory specifications.</div>
     <div><strong>(C)</strong> Early-stage startup prototypes exploring uncharted product-market fit with vague requirements.</div>
     <div><strong>(D)</strong> E-commerce websites requiring continuous A/B testing and multiple daily production deployments.</div>
-  </div>
+
+</div>
 </div>
 
 ---
@@ -82,7 +87,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
   <div style="display: flex; justify-content: space-between; font-size: 11px; color: #64748b; font-weight: 600;">
     <span>Software Engineering (SE) — Midterm Examination</span>
     <span>Candidate: _______________________ (ID: _______________________)</span>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-part-header" style="margin-top: 0;">
@@ -97,7 +103,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> Interpersonal communication channels grow combinatorially at $n(n - 1) / 2$, diverting senior developers to training.</div>
     <div><strong>(C)</strong> Git merge conflict resolution algorithms experience quadratic $O(n^2)$ time complexity in large repositories.</div>
     <div><strong>(D)</strong> Cloud hosting infrastructure costs increase exponentially whenever extra team members log in.</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-mc-item">
@@ -107,7 +114,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> Cycle time decreases, bottlenecks become immediately visible, and feedback loops accelerate.</div>
     <div><strong>(C)</strong> Code quality degrades because developers are strictly forbidden from writing unit tests during WIP caps.</div>
     <div><strong>(D)</strong> Project scope must be permanently reduced by 50% according to Scrum alliance guidelines.</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-mc-item">
@@ -117,7 +125,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> User requirements are written strictly in formal mathematical Z-notation; System requirements are written in colloquial natural language.</div>
     <div><strong>(C)</strong> User requirements are authored exclusively by database administrators; System requirements are written by marketing executives.</div>
     <div><strong>(D)</strong> User requirements describe only non-functional attributes; System requirements define exclusively GUI wireframes.</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-mc-item">
@@ -127,7 +136,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> "The checkout API endpoint shall return HTTP 200 within 250 ms at the 99th percentile under a load of 1,000 requests/sec."</div>
     <div><strong>(C)</strong> "The application should quickly load images whenever high-speed campus Wi-Fi network is available."</div>
     <div><strong>(D)</strong> "The payment portal shall utilize modern, cutting-edge AI technology to maximize business revenue."</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-mc-item">
@@ -137,7 +147,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> When the target behavior represents optional or conditional functionality triggered only at a specific extension point.</div>
     <div><strong>(C)</strong> When two unrelated human actors share the exact same role and permission levels across the organization.</div>
     <div><strong>(D)</strong> When one use case inherits all class attributes and database schemas directly from a parent entity.</div>
-  </div>
+
+</div>
 </div>
 
 ---
@@ -148,7 +159,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
   <div style="display: flex; justify-content: space-between; font-size: 11px; color: #64748b; font-weight: 600;">
     <span>Software Engineering (SE) — Midterm Examination</span>
     <span>Candidate: _______________________ (ID: _______________________)</span>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-part-header" style="margin-top: 0;">
@@ -163,7 +175,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> In Composition, parts possess strong lifecycle dependency; when the composite whole is destroyed, its parts are destroyed.</div>
     <div><strong>(C)</strong> In Aggregation, parts cannot be shared across multiple different parent container objects.</div>
     <div><strong>(D)</strong> Composition can only be applied to primitive integer data types, whereas Aggregation applies to object pointers.</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-mc-item">
@@ -173,7 +186,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> A vertical rectangular box called an Activation bar</div>
     <div><strong>(C)</strong> A solid black circle denoting initial state</div>
     <div><strong>(D)</strong> A horizontal bidirectional dotted arrow</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-mc-item">
@@ -183,7 +197,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> Control (Coordinator / Service / Business Logic)</div>
     <div><strong>(C)</strong> Entity (Data Model / Database Table Schema)</div>
     <div><strong>(D)</strong> Actor (Human user operating the web browser)</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-mc-item">
@@ -193,7 +208,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> When event <code>submit</code> occurs AND guard condition <code>isValid == true</code> holds, subsequently invoking action <code>logAudit()</code>.</div>
     <div><strong>(C)</strong> Only after action <code>logAudit()</code> finishes executing and assigns a boolean return value to <code>submit</code>.</div>
     <div><strong>(D)</strong> When the state machine enters an error state and rolls back the database transaction automatically.</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-mc-item">
@@ -203,7 +219,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
     <div><strong>(B)</strong> They provide complementary structural and behavioral viewpoints, ensuring end-to-end requirement traceability.</div>
     <div><strong>(C)</strong> They guarantee 100% bug-free software execution without requiring code reviews or CI/CD pipelines.</div>
     <div><strong>(D)</strong> They allow non-technical project managers to directly generate binary machine code without programmers.</div>
-  </div>
+
+</div>
 </div>
 
 ---
@@ -214,7 +231,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
   <div style="display: flex; justify-content: space-between; font-size: 11px; color: #64748b; font-weight: 600;">
     <span>Software Engineering (SE) — Midterm Examination</span>
     <span>Candidate: _______________________ (ID: _______________________)</span>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-part-header" style="margin-top: 0;">
@@ -335,7 +353,8 @@ footer: 'Software Engineering (SE) Midterm Examination · Department of CSIE, FC
   <div class="exam-key-card">
     <div class="ans-hdr"><span>Q14. Holistic Model Linking</span><span class="ans-val">Key: (B)</span></div>
     <div>Unified diagrams model complementary structural and behavioral facets of a single system, ensuring bidirectional traceability.</div>
-  </div>
+
+</div>
 </div>
 
 <div class="exam-part-header" style="background: #059669; margin-top: 4px;">

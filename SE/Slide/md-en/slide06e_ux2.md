@@ -364,7 +364,8 @@ A hospital deploys a new Emergency Room Triage System. First-time nursing intern
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq1" target="_blank"><img src="../../img/ch06/ase-ch06-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -618,7 +619,8 @@ In a cloud deployment dashboard, an engineer clicks the **"Deploy to Production"
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq2" target="_blank"><img src="../../img/ch06/ase-ch06-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -804,7 +806,8 @@ To summarize this slide, remember this key takeaway: Accessible visual design pa
   </div>
   <div class="discussion-logo">
     <img src="../../img/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -837,7 +840,8 @@ According to the Shannon formulation of **Fitts's Law** (`MT = a + b · log`<sub
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq3" target="_blank"><img src="../../img/ch06/ase-ch06-ccq3.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1131,7 +1135,8 @@ To summarize this slide, remember this key takeaway: Use low- and mid-fidelity w
   </div>
   <div class="discussion-logo">
     <img src="../../img/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1161,7 +1166,8 @@ Before designing any visual screens for a banking portal, a UX engineer presents
 
   </div>
   <div class="ccq-logo">
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1437,7 +1443,8 @@ When a user attempts to register an account on a web portal, typing an already-r
 
   </div>
   <div class="ccq-logo">
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1622,7 +1629,8 @@ To summarize this slide, remember this key takeaway: Ethical UX engineering uses
   </div>
   <div class="discussion-logo">
     <img src="../../img/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--

@@ -193,7 +193,8 @@ Ian Sommerville 教授將塑模定義為建立抽象模型的過程，每個模�
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq1" target="_blank"><img src="../../img/ch04/ase-ch04-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -462,7 +463,8 @@ Grady Booch 規劃軟體架構，回答了這些元件在程式碼中如何高�
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq2" target="_blank"><img src="../../img/ch04/ase-ch04-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -733,7 +735,8 @@ Martin Fowler 則是撰寫《UML 精華 (UML Distilled)》與《重構》的大�
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq3" target="_blank"><img src="../../img/ch04/ase-ch04-ccq3.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -989,7 +992,8 @@ UC_AcceptTask -- Courier
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1308,7 +1312,8 @@ AI 有沒有掉入把按鈕點擊畫成使用案例的經典反模式陷阱？
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq4" target="_blank"><img src="../../img/ch04/ase-ch04-ccq4.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1580,7 +1585,8 @@ Order ..> PaymentProcessor : delegates >
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1927,7 +1933,8 @@ class OrderService {
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq5" target="_blank"><img src="../../img/ch04/ase-ch04-ccq5.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2203,7 +2210,8 @@ end
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2580,7 +2588,8 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq6" target="_blank"><img src="../../img/ch04/ase-ch04-ccq6.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2850,7 +2859,8 @@ stop
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -3396,7 +3406,8 @@ stop
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq7" target="_blank"><img src="../../img/ch04/ase-ch04-ccq7.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -3652,7 +3663,8 @@ Cancelled -left-> [*]
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch04/icons/discussion_icon.svg" alt="Discussion Icon" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -4218,7 +4230,8 @@ PlantUML 的符號設計充滿了象形巧思：
 </div>
 <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch04-ccq8" target="_blank"><img src="../../img/ch04/ase-ch04-ccq8.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--

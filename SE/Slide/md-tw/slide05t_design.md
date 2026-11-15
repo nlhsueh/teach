@@ -419,7 +419,8 @@ footer: 'Prof. Nien-Lin Hsueh'
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq1" target="_blank"><img src="../../img/ch05/ase-ch05-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1021,7 +1022,8 @@ MVC 解耦呈現與資料；
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch05/architecture/discussion_icon.svg" alt="討論圖示" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1133,7 +1135,8 @@ MVC 解耦呈現與資料；
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq2" target="_blank"><img src="../../img/ch05/ase-ch05-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1335,7 +1338,8 @@ public static void bubbleSort(int[] arr)
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch05/architecture/discussion_icon.svg" alt="討論圖示" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1435,7 +1439,8 @@ public static void bubbleSort(int[] arr)
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq3" target="_blank"><img src="../../img/ch05/ase-ch05-ccq3.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1837,7 +1842,8 @@ Uncle Bob 後來在《Clean Architecture》書中特別澄清：「一個改變�
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch05/architecture/discussion_icon.svg" alt="討論圖示" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1867,7 +1873,8 @@ Uncle Bob 後來在《Clean Architecture》書中特別澄清：「一個改變�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq4" target="_blank"><img src="../../img/ch05/ase-ch05-ccq4.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2035,7 +2042,8 @@ C. **Apache Kafka 不可變事件日誌 (Event Log)**：透過 Transactional Out
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch05-ccq5" target="_blank"><img src="../../img/ch05/ase-ch05-ccq5.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2701,10 +2709,110 @@ OrderObserver <|.. FraudAuditObserver
     }, true);
   }
 
-  // Initialize both features
+
+  // =========================================================================
+  // 3. Split73 / Split64 Image Hover Full-Screen Zoom
+  // =========================================================================
+  function initSplitImageHoverZoom() {
+    document.body.classList.add('has-split-zoom-js');
+    let overlay = null;
+    let overlayImg = null;
+    let hideTimer = null;
+
+    function getOrCreateOverlay() {
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'split-img-zoom-overlay';
+        overlay.style.cssText = [
+          'position: fixed',
+          'inset: 0',
+          'width: 100vw',
+          'height: 100vh',
+          'background: rgba(15, 23, 42, 0.88)',
+          'backdrop-filter: blur(8px)',
+          '-webkit-backdrop-filter: blur(8px)',
+          'z-index: 999998',
+          'display: none',
+          'align-items: center',
+          'justify-content: center',
+          'padding: 28px',
+          'box-sizing: border-box',
+          'pointer-events: none',
+          'opacity: 0',
+          'transition: opacity 0.18s ease'
+        ].join(';');
+
+        overlayImg = document.createElement('img');
+        overlayImg.style.cssText = [
+          'max-width: 94vw',
+          'max-height: 92vh',
+          'width: auto',
+          'height: auto',
+          'object-fit: contain',
+          'border-radius: 12px',
+          'box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55)',
+          'transform: scale(0.96)',
+          'transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1)'
+        ].join(';');
+
+        overlay.appendChild(overlayImg);
+      }
+      const parent = document.fullscreenElement || document.body;
+      if (overlay.parentElement !== parent) {
+        parent.appendChild(overlay);
+      }
+      return overlay;
+    }
+
+    function showZoom(imgEl) {
+      if (hideTimer) {
+        clearTimeout(hideTimer);
+        hideTimer = null;
+      }
+      const el = getOrCreateOverlay();
+      overlayImg.src = imgEl.currentSrc || imgEl.src;
+      overlayImg.alt = imgEl.alt || '';
+      el.style.display = 'flex';
+      // Trigger reflow for smooth transition
+      void el.offsetWidth;
+      el.style.opacity = '1';
+      overlayImg.style.transform = 'scale(1)';
+    }
+
+    function hideZoom() {
+      if (!overlay) return;
+      overlay.style.opacity = '0';
+      if (overlayImg) overlayImg.style.transform = 'scale(0.96)';
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (overlay && overlay.style.opacity === '0') {
+          overlay.style.display = 'none';
+        }
+      }, 180);
+    }
+
+    const targets = document.querySelectorAll('div.split73 img:not(.emoji), div.split64 img:not(.emoji)');
+    targets.forEach(img => {
+      if (img.dataset.splitZoomBound) return;
+      img.dataset.splitZoomBound = 'true';
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('mouseenter', function() {
+        showZoom(img);
+      });
+      img.addEventListener('mouseleave', function() {
+        hideZoom();
+      });
+    });
+
+    window.addEventListener('hashchange', hideZoom);
+    window.addEventListener('keydown', hideZoom);
+  }
+
+  // Initialize all features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initSplitImageHoverZoom();
   }
 
   if (document.readyState === 'loading') {

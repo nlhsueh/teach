@@ -149,7 +149,7 @@
 
 ---
 
-### 8. 多欄卡片排版與樣式規範 (Multi-Column Card Guidelines)
+### 8. 多欄卡片與分割版面排版規範 (Multi-Column Card & Split Layout Guidelines)
 * **逐步揭示屬性 (Fragment)**：凡使用多欄卡片（`.two-columns`、`.three-columns`），每個 `<div class="card">` **一律必須加上 `data-marpit-fragment`**，維持適當演講呈現步調。
 * **頂部引言引導 (Guiding Quote)**：在多欄卡片容器上方，**必須有一段 `> 引言` 或核心提示句**，先勾勒思維脈絡再展開分欄卡片。
 * **卡片底色與層次樣式**：卡片底色採用半透明柔白霧面底（`rgba(255, 255, 255, 0.75)` 搭配微陰影與細邊框），兼顧視覺柔和與立體分層，解決純白刺眼與完全透明空洞的問題。
@@ -157,6 +157,10 @@
   - 針對「頂部一句引言 + 下方雙欄卡片」之版型，`.two-columns .card` 內文字體設定為 `17.5px`、標題 `h3` 為 `20.5px`、第一層清單 `li` 為 `17px`（子清單 `15.8px`）、內距 `16px 22px`，避免字體過小導致投影片下半部留白過多。
 * **「先有說明、再有圖」教學順序原則 (Explanation Before Diagram)**：
   - 當一個概念同時包含「文字/表格/卡片解析頁」與「視覺化架構圖頁 (`title-image-slide`)」時，一律**先放說明頁建立觀念框架，下一頁再放視覺化架構圖進行印證**。
+* **🔍 分割版面 (`split73` / `split64`) 圖片滑鼠懸停全螢幕放大規範 (Hover-to-Fullscreen Image Zoom)**：
+  - **互動行為**：凡使用 `div.split73` 或 `div.split64` 版型時，當滑鼠移至右側（或欄位內）圖片上方（`mouseover` / `:hover`），圖片必須平滑放大至全螢幕（Full-Screen Lightbox Overlay，`max-width: 94vw; max-height: 92vh; object-fit: contain;` 搭配深色毛玻璃背景），移開滑鼠（`mouseleave`）時自動恢復原狀。
+  - **防閃爍實作原則**：全螢幕放大層必須設定 `pointer-events: none`，確保游標命中區域固定於原圖座標，杜絕懸停邊界閃爍（Hover Flicker）。
+  - **HTML 標籤頂格規範**：`<div class="split64">` 與 `<div class="split73">` 內部的 `<div class="left">`、`</div>`、`<div class="right">` **一律頂格撰寫（0 縮排）且與 Markdown 清單之間保留空行**，防止 CommonMark 將 `<div class="right">` 誤吞入 `<li>` 導致排版與放大失效。
 
 ---
 

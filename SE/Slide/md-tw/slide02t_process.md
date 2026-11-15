@@ -52,7 +52,8 @@ footer: 'Ch 02 · 軟體流程與開發方法學 (Software Processes & Methodolo
       <li><b>2.8 系統架構與協同文化 (DevOps)：</b> 打破部門壁壘、CI/CD 自動化部署管道。</li>
       <li><b>2.9 現代新前沿與觀念總結：</b> AI 規格驅動流程、人機協同迴路、重點測驗與經典文獻。</li>
     </ul>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -287,7 +288,8 @@ footer: 'Ch 02 · 軟體流程與開發方法學 (Software Processes & Methodolo
   <div class="name-card-caption">
     <span class="name-card-name">Winston W. Royce</span>
     <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Winston_W._Royce" target="_blank">Wikimedia Commons / Wikipedia</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -399,7 +401,8 @@ footer: 'Ch 02 · 軟體流程與開發方法學 (Software Processes & Methodolo
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq1" target="_blank"><img src="../../img/ch02/ase-ch02-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -544,7 +547,8 @@ V-模型是安全關鍵領域的王者。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq2" target="_blank"><img src="../../img/ch02/ase-ch02-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -580,7 +584,8 @@ D：允許跳過單元測試。
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch02/discussion_icon.svg" alt="討論圖示" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -850,7 +855,8 @@ D：允許跳過單元測試。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq3" target="_blank"><img src="../../img/ch02/ase-ch02-ccq3.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -887,7 +893,8 @@ D：增量不產生代碼，疊代依賴甘特圖。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq4" target="_blank"><img src="../../img/ch02/ase-ch02-ccq4.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -922,7 +929,8 @@ D：包含機械零件喪失敏捷資格。
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch02/discussion_icon.svg" alt="討論圖示" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1132,7 +1140,8 @@ D：包含機械零件喪失敏捷資格。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq5" target="_blank"><img src="../../img/ch02/ase-ch02-ccq5.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1169,7 +1178,8 @@ D：不用理會資安。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq6" target="_blank"><img src="../../img/ch02/ase-ch02-ccq6.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1405,7 +1415,8 @@ WIP 限制迫使團隊暴露隱蔽的流程瓶頸，大幅降低多工切換的�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq7" target="_blank"><img src="../../img/ch02/ase-ch02-ccq7.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1442,7 +1453,8 @@ D：週五下午禁止部署。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq8" target="_blank"><img src="../../img/ch02/ase-ch02-ccq8.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1529,7 +1541,8 @@ D：重新編譯所有模組。
   <div class="name-card-caption">
     <span class="name-card-name">Ward Cunningham</span>
     <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Ward_Cunningham" target="_blank">Wikimedia Commons / CC BY-SA</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -1639,7 +1652,8 @@ CISQ 聯盟在 2022 年的報告更指出，美國境內因軟體品質低劣與
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq9" target="_blank"><img src="../../img/ch02/ase-ch02-ccq9.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1676,7 +1690,8 @@ Martin Fowler 提出著名的**「疲軟 Scrum (Flaccid Scrum)」**一詞，是�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq10" target="_blank"><img src="../../img/ch02/ase-ch02-ccq10.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1712,7 +1727,8 @@ D：不用使用者故事格式。
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch02/discussion_icon.svg" alt="討論圖示" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1794,7 +1810,8 @@ XP 是敏捷運動中最純粹的工程技術流派：它堅信只有極致的�
   <div class="name-card-caption">
     <span class="name-card-name">Kent Beck</span>
     <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Kent_Beck" target="_blank">Wikimedia Commons / CC BY-SA</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -1967,7 +1984,8 @@ TDD 完全顛覆了這個習慣：你連一行生產代碼都還沒寫，就必�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq11" target="_blank"><img src="../../img/ch02/ase-ch02-ccq11.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2004,7 +2022,8 @@ D：不看代碼直接按 Merge。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq12" target="_blank"><img src="../../img/ch02/ase-ch02-ccq12.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2223,7 +2242,8 @@ CI 要求大家「每天至少合併一次」！每次提交，自動化伺服�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq13" target="_blank"><img src="../../img/ch02/ase-ch02-ccq13.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2484,7 +2504,8 @@ AI 代理人開始編程；寫完後自動進入第三步的確定性驗證。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq14" target="_blank"><img src="../../img/ch02/ase-ch02-ccq14.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--

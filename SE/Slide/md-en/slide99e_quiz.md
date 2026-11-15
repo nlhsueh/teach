@@ -52,7 +52,8 @@ To summarize this slide, remember this key takeaway: Active self-testing is prov
   </ul>
   <div style="margin-top: 12px; text-align: center;">
     <a href="#4" class="btn-primary" style="display: inline-block; padding: 4px 14px; font-size: 13px; text-decoration: none; border-radius: 6px; background: #0284c7; color: #fff; font-weight: 700;">Start Chapter 1 ➔</a>
-  </div>
+
+</div>
 </div>
 
 <div class="card">
@@ -65,7 +66,8 @@ To summarize this slide, remember this key takeaway: Active self-testing is prov
   </ul>
   <div style="margin-top: 12px; text-align: center;">
     <a href="#14" class="btn-primary" style="display: inline-block; padding: 4px 14px; font-size: 13px; text-decoration: none; border-radius: 6px; background: #0284c7; color: #fff; font-weight: 700;">Start Chapter 2 ➔</a>
-  </div>
+
+</div>
 </div>
 
 <div class="card">
@@ -78,7 +80,8 @@ To summarize this slide, remember this key takeaway: Active self-testing is prov
   </ul>
   <div style="margin-top: 12px; text-align: center;">
     <a href="#29" class="btn-primary" style="display: inline-block; padding: 4px 14px; font-size: 13px; text-decoration: none; border-radius: 6px; background: #0284c7; color: #fff; font-weight: 700;">Start Chapter 3 ➔</a>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -156,7 +159,8 @@ To summarize this slide, remember this key takeaway: Reflect critically on each 
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — The crisis was fundamentally an intellectual and organizational failure in managing system complexity. Increasing hardware capacity allowed organizations to build systems of unprecedented scale, which human programmers using ad-hoc, informal techniques could not manage. Faster CPU chips do not fix missing requirements, tangled spaghetti dependencies, or miscommunicated interface contracts.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -209,7 +213,8 @@ To summarize this slide, remember this key takeaway: Software Crisis & Complexit
     <div class="fb-body">
       <strong>💡 Correct Answer: C</strong> — The IEEE standard defines software as computer programs, procedures, and possibly associated documentation and data. CPU hardware and physical memory are physical electronic devices (hardware) that execute software, rather than components of the software itself.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -262,7 +267,8 @@ To summarize this slide, remember this key takeaway: IEEE Software Definition hi
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — Eliciting and modeling requirements through stakeholder interviews is a direct action in Software Specification. Writing unit tests is part of Software Validation (specifically verification). Refactoring database schemas is Software Evolution (preventive/perfective maintenance). Swapping APIs is Design & Implementation or Evolution.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -315,7 +321,8 @@ To summarize this slide, remember this key takeaway: Core Engineering Activities
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — Frederick Brooks demonstrated in The Mythical Man-Month that complex software development is not partitionable like manual labor. Adding people to a late project increases communication overhead quadratically according to n(n-1)/2, while senior engineers must stop productive coding to onboard newcomers.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -368,7 +375,8 @@ To summarize this slide, remember this key takeaway: Brooks's Law & Team Scaling
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — Separation of Concerns (and the Single Responsibility Principle) dictates that a module should have only one reason to change and encapsulate a single coherent responsibility. Tangling HTTP routing, business payment processing, database access, and UI rendering in one module creates severe coupling and high fragility.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -421,7 +429,8 @@ To summarize this slide, remember this key takeaway: Separation of Concerns high
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — A system's ability to cope with external service failures without crashing is the definition of Fault Tolerance (a sub-characteristic of Reliability). Slow query execution is Performance Efficiency (Time Behavior). Struggling to write unit tests is Maintainability (Testability). Unencrypted session cookies belong to Security (Confidentiality).
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -474,7 +483,8 @@ To summarize this slide, remember this key takeaway: ISO 25010 Quality Model hig
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — Principle 1 of the ACM/IEEE Software Engineering Code of Ethics states that software engineers shall act consistently with the public interest, which takes absolute precedence over loyalty to an employer or client.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -527,7 +537,8 @@ To summarize this slide, remember this key takeaway: ACM/IEEE Code of Ethics hig
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — Code churn measures the percentage of code that is modified, replaced, or deleted within two weeks of being committed. In AI coding environments, high code churn reveals that developers rapidly accept AI suggestions that compile on localhost but fail under real-world integration, forcing frequent rewrites and accumulating maintainability debt.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -580,7 +591,8 @@ To summarize this slide, remember this key takeaway: Code Churn & AI Assistants 
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — When AI writes both the implementation and its own test cases without an independent specification contract, it falls into "echo-chamber testing"—validating only what it assumed, rather than what the system is actually required to do. Independent verification is required ("Who tests the tester?").
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -656,7 +668,8 @@ To summarize this slide, remember this key takeaway: Reflect critically on each 
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — The Waterfall model rigidly partitions activities into sequential stages with formal handoffs. Accommodating changing user needs requires costly backward iterations, contract renegotiation, and massive specification rework.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -709,7 +722,8 @@ To summarize this slide, remember this key takeaway: Waterfall Late Integration 
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — The V-Model's definitive breakthrough is horizontal symmetry: test suites are authored concurrently with their corresponding specification phases (e.g., acceptance tests designed during requirements analysis), front-loading defect discovery.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -762,7 +776,8 @@ To summarize this slide, remember this key takeaway: V-Model Verification & Vali
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — Incremental builds software piece by piece by vertical functional slices; iterative starts with a rough draft of the entire system and progressively refines depth, fidelity, and polish through repeated cycles.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -815,7 +830,8 @@ To summarize this slide, remember this key takeaway: Incremental vs. Iterative P
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — An MVP must deliver standalone, end-to-end usable value that solves a real user problem. A single wheel cannot transport a person, leaving the user dissatisfied and generating zero empirical feedback on transportation needs.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -868,7 +884,8 @@ To summarize this slide, remember this key takeaway: Kniberg's MVP Analogy (Skat
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — The Agile Manifesto emphasizes that running, tested software delivering actual business value takes precedence over generating exhaustive paperwork. Documentation is authored when it serves an essential communicative purpose, but never at the expense of working software.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -921,7 +938,8 @@ To summarize this slide, remember this key takeaway: Agile Manifesto Living Soft
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — Chronic overtime causes severe cognitive fatigue, multiplying defect injection rates and accelerating developer burnout. A sustainable, predictable pace produces higher quality code and predictable delivery velocity over years.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -974,7 +992,8 @@ To summarize this slide, remember this key takeaway: Agile Sustainable Developme
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — By restricting WIP limits, teams prevent hidden queues, eliminate context-switching waste, and immediately highlight process bottlenecks where cards pile up.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1027,7 +1046,8 @@ To summarize this slide, remember this key takeaway: Kanban WIP Limits & Flow Co
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — While the Sprint Review focuses on inspecting the product with stakeholders, the Sprint Retrospective focuses inward on the team's processes, collaboration dynamics, and engineering practices to implement continuous self-improvement.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1080,7 +1100,8 @@ To summarize this slide, remember this key takeaway: Daily Scrum Coordination Go
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — The interest on technical debt is the extra friction and slowed velocity encountered every time engineers attempt to add new features or modify brittle, untested, poorly factored code.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1133,7 +1154,8 @@ To summarize this slide, remember this key takeaway: Technical Debt Metaphor hig
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — Flaccid Scrum occurs when organizations adopt agile project management rituals but ignore engineering craftsmanship. Without automated tests, refactoring, and clean architecture, code quickly becomes fragile and unmaintainable.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1186,7 +1208,8 @@ To summarize this slide, remember this key takeaway: Martin Fowler's Flaccid Scr
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — In pair programming, the Driver types the code while the Navigator thinks strategically, reviews code in real time, catches bugs, considers edge cases, and ensures the implementation aligns with overall architecture.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1239,7 +1262,8 @@ To summarize this slide, remember this key takeaway: XP Pair Programming Roles h
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — Refactoring strictly means altering the internal structure of software to make it easier to understand and cheaper to modify without changing its observable external behavior, protected by passing unit tests.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1292,7 +1316,8 @@ To summarize this slide, remember this key takeaway: TDD Red-Green-Refactor Cycl
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — Continuous Delivery ensures that every build passing the automated pipeline is immediately deployable to production, but waits for a human business decision. Continuous Deployment automatically promotes every passing build straight to production with zero manual gates.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1345,7 +1370,8 @@ To summarize this slide, remember this key takeaway: Continuous Delivery vs. Dep
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — AI coding agents can generate code rapidly, but they may introduce subtle hallucinations or security flaws. Automated CI/CD gates provide deterministic verification barriers that prevent unverified code from reaching production.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1421,7 +1447,8 @@ To summarize this slide, remember this key takeaway: Reflect critically on each 
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — User requirements communicate the overarching business capabilities to non-technical stakeholders, while system requirements bridge those desires into precise, contract-level engineering specifications.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1474,7 +1501,8 @@ To summarize this slide, remember this key takeaway: User vs. System Requirement
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — While this requirement mentions a 45-minute timing constraint, it does not arise from user preference or general system performance tuning. Instead, it is dictated by external municipal health laws and thermodynamic physical properties of food safety. In software engineering, constraints that originate from industry regulations, physics, or the operating domain are classified as Domain Requirements.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1527,7 +1555,8 @@ To summarize this slide, remember this key takeaway: Domain Requirements (UberEa
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — A verifiable NFR must be quantifiable so that test engineers can objectively measure pass or fail. Specifying 95th- or 99th-percentile latency under 500 milliseconds and four-nines availability provides an unambiguous, enforceable engineering contract.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1580,7 +1609,8 @@ To summarize this slide, remember this key takeaway: Verifiable & Measurable NFR
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — Stakeholders frequently suggest specific technical tools because they heard a buzzword, when their real business requirement is data integrity or regulatory traceability. An engineer's job is to uncover the underlying problem, not prematurely implement proposed technical band-aids.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1633,7 +1663,8 @@ To summarize this slide, remember this key takeaway: Root Cause & The 5 Whys Heu
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — People often cannot articulate everything they do because habits become second nature. By observing practitioners in their actual physical workspace, engineers uncover critical tacit knowledge—like sticky notes, manual spreadsheets, and physical handoffs—that never appear in official manuals or interviews.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1686,7 +1717,8 @@ To summarize this slide, remember this key takeaway: Ethnography & Tacit Knowled
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — A use case diagram is just a visual table of contents; it shows who interacts with what feature. But engineers cannot write code or tests from an ellipse alone. They need the textual use case description to know the exact preconditions, the sequential normal flow, and how to handle exception flows when things go wrong.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1739,7 +1771,8 @@ To summarize this slide, remember this key takeaway: Use Case Diagrams vs. Descr
     <div class="fb-body">
       <strong>💡 Correct Answer: B</strong> — When a requirement defect escapes into production, all the downstream work built on that false premise—the architectural design, database schemas, API contracts, frontend views, and automated tests—must be ripped out and rebuilt. That cascading rework is what causes the 100x cost explosion.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1792,7 +1825,8 @@ To summarize this slide, remember this key takeaway: Exponential Cost of Late De
     <div class="fb-body">
       <strong>💡 Correct Answer: A</strong> — LLMs are fluent text predictors, not domain experts. They frequently invent plausible-sounding business rules or overlook subtle safety constraints that were never stated by the stakeholder. An experienced requirements engineer must critically audit every generated requirement.
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1821,7 +1855,8 @@ To summarize this slide, remember this key takeaway: LLM Hallucinations in Requi
   <p style="font-size: 13.5px; color: #475569;">Revisit Software Crisis, ISO 25010 & Ethics concepts.</p>
   <div style="margin-top: 10px;">
     <a href="#4" class="btn-secondary" style="display: inline-block; padding: 4px 12px; font-size: 12px; text-decoration: none; border-radius: 4px; border: 1px solid #cbd5e1; background: #fff; color: #0284c7; font-weight: 700;">Jump to Q01 ➔</a>
-  </div>
+
+</div>
 </div>
 
 <div class="card">
@@ -1829,7 +1864,8 @@ To summarize this slide, remember this key takeaway: LLM Hallucinations in Requi
   <p style="font-size: 13.5px; color: #475569;">Revisit Agile, Scrum, Kanban & TDD cycles.</p>
   <div style="margin-top: 10px;">
     <a href="#14" class="btn-secondary" style="display: inline-block; padding: 4px 12px; font-size: 12px; text-decoration: none; border-radius: 4px; border: 1px solid #cbd5e1; background: #fff; color: #0284c7; font-weight: 700;">Jump to Q10 ➔</a>
-  </div>
+
+</div>
 </div>
 
 <div class="card">
@@ -1837,7 +1873,8 @@ To summarize this slide, remember this key takeaway: LLM Hallucinations in Requi
   <p style="font-size: 13.5px; color: #475569;">Revisit Elicitation, NFR metrics & Use Cases.</p>
   <div style="margin-top: 10px;">
     <a href="#29" class="btn-secondary" style="display: inline-block; padding: 4px 12px; font-size: 12px; text-decoration: none; border-radius: 4px; border: 1px solid #cbd5e1; background: #fff; color: #0284c7; font-weight: 700;">Jump to Q24 ➔</a>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -2170,10 +2207,110 @@ To summarize this slide, remember this key takeaway: Active self-quizzing builds
     }, true);
   }
 
-  // Initialize both features
+
+  // =========================================================================
+  // 3. Split73 / Split64 Image Hover Full-Screen Zoom
+  // =========================================================================
+  function initSplitImageHoverZoom() {
+    document.body.classList.add('has-split-zoom-js');
+    let overlay = null;
+    let overlayImg = null;
+    let hideTimer = null;
+
+    function getOrCreateOverlay() {
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'split-img-zoom-overlay';
+        overlay.style.cssText = [
+          'position: fixed',
+          'inset: 0',
+          'width: 100vw',
+          'height: 100vh',
+          'background: rgba(15, 23, 42, 0.88)',
+          'backdrop-filter: blur(8px)',
+          '-webkit-backdrop-filter: blur(8px)',
+          'z-index: 999998',
+          'display: none',
+          'align-items: center',
+          'justify-content: center',
+          'padding: 28px',
+          'box-sizing: border-box',
+          'pointer-events: none',
+          'opacity: 0',
+          'transition: opacity 0.18s ease'
+        ].join(';');
+
+        overlayImg = document.createElement('img');
+        overlayImg.style.cssText = [
+          'max-width: 94vw',
+          'max-height: 92vh',
+          'width: auto',
+          'height: auto',
+          'object-fit: contain',
+          'border-radius: 12px',
+          'box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55)',
+          'transform: scale(0.96)',
+          'transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1)'
+        ].join(';');
+
+        overlay.appendChild(overlayImg);
+      }
+      const parent = document.fullscreenElement || document.body;
+      if (overlay.parentElement !== parent) {
+        parent.appendChild(overlay);
+      }
+      return overlay;
+    }
+
+    function showZoom(imgEl) {
+      if (hideTimer) {
+        clearTimeout(hideTimer);
+        hideTimer = null;
+      }
+      const el = getOrCreateOverlay();
+      overlayImg.src = imgEl.currentSrc || imgEl.src;
+      overlayImg.alt = imgEl.alt || '';
+      el.style.display = 'flex';
+      // Trigger reflow for smooth transition
+      void el.offsetWidth;
+      el.style.opacity = '1';
+      overlayImg.style.transform = 'scale(1)';
+    }
+
+    function hideZoom() {
+      if (!overlay) return;
+      overlay.style.opacity = '0';
+      if (overlayImg) overlayImg.style.transform = 'scale(0.96)';
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (overlay && overlay.style.opacity === '0') {
+          overlay.style.display = 'none';
+        }
+      }, 180);
+    }
+
+    const targets = document.querySelectorAll('div.split73 img:not(.emoji), div.split64 img:not(.emoji)');
+    targets.forEach(img => {
+      if (img.dataset.splitZoomBound) return;
+      img.dataset.splitZoomBound = 'true';
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('mouseenter', function() {
+        showZoom(img);
+      });
+      img.addEventListener('mouseleave', function() {
+        hideZoom();
+      });
+    });
+
+    window.addEventListener('hashchange', hideZoom);
+    window.addEventListener('keydown', hideZoom);
+  }
+
+  // Initialize all features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initSplitImageHoverZoom();
   }
 
   if (document.readyState === 'loading') {

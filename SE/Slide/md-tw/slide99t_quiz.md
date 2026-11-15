@@ -52,7 +52,8 @@ size: 16:9
   </ul>
   <div style="margin-top: 12px; text-align: center;">
     <a href="#4" class="btn-primary" style="display: inline-block; padding: 4px 14px; font-size: 13px; text-decoration: none; border-radius: 6px; background: #0284c7; color: #fff; font-weight: 700;">開始第一章測驗 ➔</a>
-  </div>
+
+</div>
 </div>
 
 <div class="card">
@@ -65,7 +66,8 @@ size: 16:9
   </ul>
   <div style="margin-top: 12px; text-align: center;">
     <a href="#14" class="btn-primary" style="display: inline-block; padding: 4px 14px; font-size: 13px; text-decoration: none; border-radius: 6px; background: #0284c7; color: #fff; font-weight: 700;">開始第二章測驗 ➔</a>
-  </div>
+
+</div>
 </div>
 
 <div class="card">
@@ -78,7 +80,8 @@ size: 16:9
   </ul>
   <div style="margin-top: 12px; text-align: center;">
     <a href="#29" class="btn-primary" style="display: inline-block; padding: 4px 14px; font-size: 13px; text-decoration: none; border-radius: 6px; background: #0284c7; color: #fff; font-weight: 700;">開始第三章測驗 ➔</a>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -152,7 +155,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 危機本質上是系統規模與智力管理帶來的組織複雜度挑戰。單純提升硬體運算能力與記憶體容量，反而會刺激建造更大規模的系統，使人腦使用非正式、隨意編程方法無法應對。更快的 CPU 無法解決需求遺漏、混亂的相依關係或介面溝通失誤等核心軟體問題。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -204,7 +208,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：C</strong> — 依據 IEEE 610.12 標準定義，軟體包含電腦程式、作業程序、相關文件與系統資料。CPU 運算處理器與記憶體屬於執行軟體的「實體電子硬體設備」，本身並非軟體組成要素。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -256,7 +261,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 與利害關係人訪談並梳理使用者故事是「軟體規格說明 (Specification)」的直接實踐；單元測試屬於「驗證 (Validation)」；資料庫重構屬於「軟體演進 (Evolution)」；抽換第三方 API 屬於「設計與實作」或「演進」。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -308,7 +314,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 佛瑞德·布魯克斯在《人月神話》中指出：軟體開發是複雜的智力活動，無法像體力勞動般任意分割。向落後的專案增加人手，團隊通訊路徑會依 $n(n-1)/2$ 呈二次方暴增，且資深工程師必須暫停手邊開發來指導新人，導致專案更加落後。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -360,7 +367,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 一個模組同時負責網路通訊、金流扣款、資料庫存取與郵件生成，承擔了過多截然不同的業務邏輯，嚴重違反「單一職責原則 (Single Responsibility Principle, SRP)」，應拆分為各自獨立的高內聚模組。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -412,7 +420,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 當支付閘道或子服務逾時時，訂單核心系統應能維持降級運作而非全盤崩潰，此能力屬於「可靠性 (Reliability)」維度下的「容錯性 (Fault Tolerance)」或「可用性 (Availability)」。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -464,7 +473,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — ACM/IEEE 軟體工程倫理守則第一條明確規範：公眾的健康、安全與福祉高於雇主或客戶的利益。面對會威脅人命或法規的安全隱患，工程師有道德與法定責任拒絕違規指示並向上級或主管機關通報。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -516,7 +526,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 代碼在寫入後兩週內即被大量重寫或廢棄刪除，稱為「代碼流失率 (Code Churn)」。這代表開發者雖然能快速產出代碼，但程式碼品質欠佳、架構缺乏深思熟慮，是 Vibe Coding 累積技術債的典型徵兆。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -568,7 +579,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 當測試程式與實作程式碼皆由同一個 AI 模型在未經外部客觀規格定義下生成時，測試只會順著錯誤的生成邏輯進行驗證，形成「同溫層測試 (Echo Chamber Testing)」，產生虛假的安全感。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -639,7 +651,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 瀑布模型將開發切分為嚴格依序進行的階段，並假設前期需求能夠完全凍結。一旦專案進入後期的編程或測試階段，任何需求變更都將導致跨階段的骨牌式連鎖重工，付出極為高昂的代價。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -691,7 +704,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — V-模型的最大貢獻在於「測試左移 (Shift-Left Testing)」：在專案初期的需求分析階段就同步規劃驗收測試計畫，在系統架構設計時即規劃整合測試，提早揭露各層級的潛在缺陷。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -743,7 +757,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 增量開發 (Incremental) 是按功能模組一塊一塊交付（如搭拼圖般垂直切片）；疊代開發 (Iterative) 則是在一輪輪回圈中逐步深化打磨整體系統（如雕刻塑像般逐漸精細）。敏捷方法通常同時結合兩者。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -795,7 +810,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 軟體的價值在於「解決使用者痛點」。單一顆輪子無法提供任何位移功能，是不可運作的內部組件；而滑板雖然簡陋，卻能立刻提供位移價值並蒐集真實使用者反饋，這才是 MVP 的核心真諦。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -847,7 +863,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 敏捷宣言主張「可執行的軟體高於詳盡的文件」，意在強調文件應以支援可運行軟體的交付為目的，避免過度官僚形式主義阻礙實際價值的快速交付，並非完全放棄規格與架構文檔。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -899,7 +916,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 敏捷原則提倡「可持續的開發步調 (Sustainable Pace)」。長期加班與通宵開發會耗盡工程師心力，使代碼缺陷率急遽飆升，後續修復臭蟲的時間往往數倍於加班搶出的進度，反而拖垮整體產能。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -951,7 +969,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 看板限制在製品 (WIP) 的核心精神是「停止開始，開始完成 (Stop starting, start finishing)」。限制平行進行中的任務數量，能顯著降低上下文切換 (Context Switching) 的認知損耗，並能迅速暴露流水線中的阻塞瓶頸。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1003,7 +1022,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 衝刺回顧會議 (Retrospective) 是團隊內部的閉門自省會議，聚焦於「人、流程、工具與協同機制」的檢討與調適，並共同承諾在下一個衝刺具體落實改進行動。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1055,7 +1075,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 當初為了求快而欠下的架構債務是「本金」；而因為劣質代碼存在，導致後續每次開發與維護時額外付出的摸索、除錯與修補代價，就是必須不斷償還的「利息」。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1107,7 +1128,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 「疲軟 Scrum (Flaccid Scrum)」指的是團隊僅導入站立會議、衝刺等專案管理儀式，卻忽視了極限編程 (XP) 中的自動化測試、重構、持續整合等嚴謹技術實踐，導致底層代碼逐漸腐爛。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1159,7 +1181,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 在結對編程 (Pair Programming) 中，領航員 (Navigator) 的職責是抽離鍵盤細節，站在更高的戰略視野：審視整體演算法方向、考量邊界與極端狀況、預防架構腐爛，並確保代碼符合設計模式。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1211,7 +1234,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 重構 (Refactoring) 的定義是在「不改變外在可觀察行為」的前提下，改善代碼的內部結構與可維護性。在重構期間必須確保所有自動化測試皆維持綠燈（通過狀態）。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1263,7 +1287,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 持續交付 (Continuous Delivery) 確保每版代碼皆產出經過嚴密驗證、可隨時上線的製品，但由人工業務決策決定何時釋出；持續部署 (Continuous Deployment) 則拿掉人工審批，自動化直通生產環境。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1315,7 +1340,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — AI 代理人能以驚人速度產出大量代碼，但極易混雜幻覺、不符規範的寫法或未知漏洞。嚴密的自動化編譯、靜態分析與單元測試守門員，是確保主幹分支品質不受污染的關鍵防線。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1386,7 +1412,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 使用者需求 (User Requirements) 以高階自然語言與圖表描繪系統需提供之服務與業務約束，主要面向客戶與主管；系統需求 (System Requirements) 則詳細規範系統功能、介面與操作約束，作為工程師實作與驗收的合約。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1441,7 +1468,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 源自外部法規、主管機關監管標準、特定產業合約或實體物理環境法則的強制性約束，在軟體工程中歸類為「領域需求 (Domain Requirements)」。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1496,7 +1524,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 非功能性需求必須具備「客觀可量化與可驗證性」。選項 A 明確定義了 99 百分位延遲低於 500ms、尖峰可用性達 99.95%，使測試團隊能依此設計壓力測試並得出明確判定。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1548,7 +1577,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 利害關係人往往提出表面技術解法（如區塊鏈），工程師應運用「五個為什麼 (5 Whys)」深掘其背後真正的商業痛點（如稽核紀錄不可篡改），進而給出最適當的工程架構。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1600,7 +1630,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 現場人員在長期高壓環境下累積的大量工作直覺、非正式流程與緊急捷徑，屬於「內隱知識 (Tacit Knowledge)」，在會議室訪談中極難被主動表述，必須透過實地民族誌觀察法才能發掘。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1652,7 +1683,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — UML 使用案例圖僅提供宏觀視角展示參與者與功能之關聯；工程師在實作與編寫測試案例時，必須仰賴文字型說明書中所定義的前置條件、主要成功流程與例外處理路徑。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1704,7 +1736,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：B</strong> — 當需求缺陷逃逸至正式生產環境後，建築於該錯誤之上的架構設計、資料庫綱要、API 介面合約、前端視角與測試套件全都必須打掉重做，引發百倍的骨牌式重工成本。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1756,7 +1789,8 @@ size: 16:9
     <div class="fb-body">
       <strong>💡 正確答案：A</strong> — 大型語言模型 (LLM) 本質為機率文字預測器而非領域專家，極易產生虛構商業邏輯或遺漏邊界限制的「幻覺 (Hallucination)」，因此在將其產生的規格投入實作前，必須有人類工程師進行嚴謹驗證。
     </div>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1784,7 +1818,8 @@ size: 16:9
   <p style="font-size: 13.5px; color: #475569;">回顧軟體危機、職責分離、ISO 25010 與工程倫理核心概念。</p>
   <div style="margin-top: 10px;">
     <a href="#4" class="btn-secondary" style="display: inline-block; padding: 4px 12px; font-size: 12.5px; text-decoration: none; border-radius: 4px; border: 1px solid #cbd5e1; background: #fff; color: #0284c7; font-weight: 700;">跳轉至第 01 題 ➔</a>
-  </div>
+
+</div>
 </div>
 
 <div class="card">
@@ -1792,7 +1827,8 @@ size: 16:9
   <p style="font-size: 13.5px; color: #475569;">回顧敏捷宣言、Scrum 儀式、看板 WIP 限制與 TDD 重構回圈。</p>
   <div style="margin-top: 10px;">
     <a href="#14" class="btn-secondary" style="display: inline-block; padding: 4px 12px; font-size: 12.5px; text-decoration: none; border-radius: 4px; border: 1px solid #cbd5e1; background: #fff; color: #0284c7; font-weight: 700;">跳轉至第 10 題 ➔</a>
-  </div>
+
+</div>
 </div>
 
 <div class="card">
@@ -1800,7 +1836,8 @@ size: 16:9
   <p style="font-size: 13.5px; color: #475569;">回顧需求獲取方法、可量化 NFR、使用案例與 AI 幻覺防範。</p>
   <div style="margin-top: 10px;">
     <a href="#29" class="btn-secondary" style="display: inline-block; padding: 4px 12px; font-size: 12.5px; text-decoration: none; border-radius: 4px; border: 1px solid #cbd5e1; background: #fff; color: #0284c7; font-weight: 700;">跳轉至第 24 題 ➔</a>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -2133,10 +2170,110 @@ size: 16:9
     }, true);
   }
 
-  // Initialize both features
+
+  // =========================================================================
+  // 3. Split73 / Split64 Image Hover Full-Screen Zoom
+  // =========================================================================
+  function initSplitImageHoverZoom() {
+    document.body.classList.add('has-split-zoom-js');
+    let overlay = null;
+    let overlayImg = null;
+    let hideTimer = null;
+
+    function getOrCreateOverlay() {
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'split-img-zoom-overlay';
+        overlay.style.cssText = [
+          'position: fixed',
+          'inset: 0',
+          'width: 100vw',
+          'height: 100vh',
+          'background: rgba(15, 23, 42, 0.88)',
+          'backdrop-filter: blur(8px)',
+          '-webkit-backdrop-filter: blur(8px)',
+          'z-index: 999998',
+          'display: none',
+          'align-items: center',
+          'justify-content: center',
+          'padding: 28px',
+          'box-sizing: border-box',
+          'pointer-events: none',
+          'opacity: 0',
+          'transition: opacity 0.18s ease'
+        ].join(';');
+
+        overlayImg = document.createElement('img');
+        overlayImg.style.cssText = [
+          'max-width: 94vw',
+          'max-height: 92vh',
+          'width: auto',
+          'height: auto',
+          'object-fit: contain',
+          'border-radius: 12px',
+          'box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55)',
+          'transform: scale(0.96)',
+          'transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1)'
+        ].join(';');
+
+        overlay.appendChild(overlayImg);
+      }
+      const parent = document.fullscreenElement || document.body;
+      if (overlay.parentElement !== parent) {
+        parent.appendChild(overlay);
+      }
+      return overlay;
+    }
+
+    function showZoom(imgEl) {
+      if (hideTimer) {
+        clearTimeout(hideTimer);
+        hideTimer = null;
+      }
+      const el = getOrCreateOverlay();
+      overlayImg.src = imgEl.currentSrc || imgEl.src;
+      overlayImg.alt = imgEl.alt || '';
+      el.style.display = 'flex';
+      // Trigger reflow for smooth transition
+      void el.offsetWidth;
+      el.style.opacity = '1';
+      overlayImg.style.transform = 'scale(1)';
+    }
+
+    function hideZoom() {
+      if (!overlay) return;
+      overlay.style.opacity = '0';
+      if (overlayImg) overlayImg.style.transform = 'scale(0.96)';
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (overlay && overlay.style.opacity === '0') {
+          overlay.style.display = 'none';
+        }
+      }, 180);
+    }
+
+    const targets = document.querySelectorAll('div.split73 img:not(.emoji), div.split64 img:not(.emoji)');
+    targets.forEach(img => {
+      if (img.dataset.splitZoomBound) return;
+      img.dataset.splitZoomBound = 'true';
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('mouseenter', function() {
+        showZoom(img);
+      });
+      img.addEventListener('mouseleave', function() {
+        hideZoom();
+      });
+    });
+
+    window.addEventListener('hashchange', hideZoom);
+    window.addEventListener('keydown', hideZoom);
+  }
+
+  // Initialize all features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initSplitImageHoverZoom();
   }
 
   if (document.readyState === 'loading') {

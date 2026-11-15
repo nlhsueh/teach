@@ -48,7 +48,8 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
       <li><b>7.5 進階結構準則與控制流分析：</b> 複合條件組合 (MCC)、DO-178B/C 航空航太標準 MC/DC 條件獨立性驗證、迴圈路徑爆炸、McCabe 圈複雜度與基本路徑測試。</li>
       <li><b>7.6 測試綜合分析與反模式剖析：</b> 破除 100% 涵蓋度迷思、全準則基準比較總表、全章核心測驗與工程實務指南。</li>
     </ul>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1716,10 +1717,110 @@ MC/DC 只要 3 個 (N + 1)。
     }, true);
   }
 
-  // Initialize both features
+
+  // =========================================================================
+  // 3. Split73 / Split64 Image Hover Full-Screen Zoom
+  // =========================================================================
+  function initSplitImageHoverZoom() {
+    document.body.classList.add('has-split-zoom-js');
+    let overlay = null;
+    let overlayImg = null;
+    let hideTimer = null;
+
+    function getOrCreateOverlay() {
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'split-img-zoom-overlay';
+        overlay.style.cssText = [
+          'position: fixed',
+          'inset: 0',
+          'width: 100vw',
+          'height: 100vh',
+          'background: rgba(15, 23, 42, 0.88)',
+          'backdrop-filter: blur(8px)',
+          '-webkit-backdrop-filter: blur(8px)',
+          'z-index: 999998',
+          'display: none',
+          'align-items: center',
+          'justify-content: center',
+          'padding: 28px',
+          'box-sizing: border-box',
+          'pointer-events: none',
+          'opacity: 0',
+          'transition: opacity 0.18s ease'
+        ].join(';');
+
+        overlayImg = document.createElement('img');
+        overlayImg.style.cssText = [
+          'max-width: 94vw',
+          'max-height: 92vh',
+          'width: auto',
+          'height: auto',
+          'object-fit: contain',
+          'border-radius: 12px',
+          'box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55)',
+          'transform: scale(0.96)',
+          'transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1)'
+        ].join(';');
+
+        overlay.appendChild(overlayImg);
+      }
+      const parent = document.fullscreenElement || document.body;
+      if (overlay.parentElement !== parent) {
+        parent.appendChild(overlay);
+      }
+      return overlay;
+    }
+
+    function showZoom(imgEl) {
+      if (hideTimer) {
+        clearTimeout(hideTimer);
+        hideTimer = null;
+      }
+      const el = getOrCreateOverlay();
+      overlayImg.src = imgEl.currentSrc || imgEl.src;
+      overlayImg.alt = imgEl.alt || '';
+      el.style.display = 'flex';
+      // Trigger reflow for smooth transition
+      void el.offsetWidth;
+      el.style.opacity = '1';
+      overlayImg.style.transform = 'scale(1)';
+    }
+
+    function hideZoom() {
+      if (!overlay) return;
+      overlay.style.opacity = '0';
+      if (overlayImg) overlayImg.style.transform = 'scale(0.96)';
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (overlay && overlay.style.opacity === '0') {
+          overlay.style.display = 'none';
+        }
+      }, 180);
+    }
+
+    const targets = document.querySelectorAll('div.split73 img:not(.emoji), div.split64 img:not(.emoji)');
+    targets.forEach(img => {
+      if (img.dataset.splitZoomBound) return;
+      img.dataset.splitZoomBound = 'true';
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('mouseenter', function() {
+        showZoom(img);
+      });
+      img.addEventListener('mouseleave', function() {
+        hideZoom();
+      });
+    });
+
+    window.addEventListener('hashchange', hideZoom);
+    window.addEventListener('keydown', hideZoom);
+  }
+
+  // Initialize all features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initSplitImageHoverZoom();
   }
 
   if (document.readyState === 'loading') {

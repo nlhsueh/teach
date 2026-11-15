@@ -18,13 +18,18 @@ Department of Information Engineering and Computer Science
 Feng Chia University
 
 <!--
-Welcome to Chapter 6 of Software Engineering: User Experience Design and Human-Centered AI.
+Welcome to Chapter 6 of Software Engineering: User Experience (UX) Design and Human-Centered AI.
 
-In previous chapters, we studied how to elicit requirements, model system architectures, and structure maintainable object-oriented software. But even the most mathematically elegant, bug-free software architecture is a catastrophic failure if real human beings cannot understand it, navigate it, or enjoy using it.
+In previous chapters, we studied how to elicit requirements, model system architectures, and structure maintainable object-oriented software. Yet even the most mathematically elegant, bug-free backend architecture becomes a complete failure if real human beings cannot understand it, navigate it, or trust it.
 
-Software engineering is fundamentally human-centered. In this chapter, we bridge the gap between engineering logic and human psychology. We explore the core principles of User Experience (UX), master Jakob Nielsen's 10 Usability Heuristics, learn how modern engineers use AI to accelerate UX design (AI for UX), and study how to design trustworthy interfaces for AI-powered systems (UX for AI).
+Software engineering is fundamentally a human-centered discipline. In this chapter, we bridge the gap between deterministic engineering logic and human cognitive psychology—moving from classic usability principles and UI design patterns to the modern frontier of AI-augmented design and human-centered AI interfaces.
 
-To summarize this slide, remember this key takeaway: Software engineering excellence requires pairing robust technical architecture with intuitive, human-centered user experience design.
+💡 難字與專業術語解說：
+- elicit requirements: 需求擷取 / 需求誘導（透過訪談與觀察挖掘使用者真實需求）
+- User Experience (UX): 使用者體驗（使用者與系統互動全過程的主觀感受與成效）
+- Human-Centered AI (HCAI): 以人為本的人工智慧（強調可控性、透明度與人類自主權的 AI 設計）
+- deterministic: 確定性的（相同輸入必定產生相同輸出的傳統軟體特性）
+- cognitive psychology: 認知心理學（研究人類注意力、記憶、感知與決策機制的學門）
 -->
 ---
 <!-- _class: outline-slide -->
@@ -47,17 +52,24 @@ To summarize this slide, remember this key takeaway: Software engineering excell
       <li><b>6.5 UX for AI (UX4AI):</b> Designing for non-deterministic AI, managing latency & thinking traces, human agency & steerability, hallucination guardrails, explainable AI (XAI).</li>
       <li><b>6.6 Evaluation & Synthesis:</b> Heuristic severity ratings (0 to 4), heuristic evaluation vs. user testing, chapter recap quiz, and engineering takeaways.</li>
     </ul>
-  </div>
+
+</div>
 </div>
 
 <!--
-Here is our roadmap for Chapter 6.
+Here is our architectural roadmap for Chapter 6, divided into two major parts across six modules.
 
-On the left, in Part 1, we unpack foundational UX concepts: why good design is invisible, why bad design causes user rage, Jakob Nielsen's 10 Usability Heuristics, and Jenifer Tidwell's battle-tested UI/UX design patterns across behaviors, information architecture, navigation, and data display.
+In Part 1 (Modules 6.1 to 6.3), we establish the foundations of cognitive ergonomics and interface architecture: why everyday designs fail (Norman Doors and the three bad design archetypes), Jakob Nielsen's 10 Usability Heuristics, and Jenifer Tidwell's reusable UI design patterns across user behavior, layout, wayfinding, and data display.
 
-On the right, in Part 2, we step into the cutting-edge frontier of AI-driven design and engineering evaluation: AI for UX (accelerating workflows with LLMs and multi-agent prototypes), UX for AI (designing steerable, trustworthy interfaces for probabilistic models), and formal usability evaluation methodologies.
+In Part 2 (Modules 6.4 to 6.6), we step into the AI era and engineering verification: AI for UX (using LLMs, RTCF prompting, and multi-agent pipelines to amplify design), UX for AI (designing steerable, transparent interfaces for probabilistic AI models), and formal usability evaluation methodologies.
 
-To summarize this slide, remember this key takeaway: This chapter takes you from foundational cognitive ergonomics and classic interface patterns to modern, AI-augmented human-computer interaction design and empirical evaluation.
+💡 難字與專業術語解說：
+- roadmap & core curriculum: 課程學習地圖與核心課綱
+- archetype: 典型範例、原型態樣（反覆出現的代表性問題模式）
+- usability heuristics: 易用性啟發式原則（評估介面是否好用的經驗法則與檢核準則）
+- wayfinding & escape hatches: 尋路導航與逃生出口（協助使用者定位並安全撤離狀態的機制）
+- non-deterministic: 非確定性的（如生成式 AI 每次推論結果皆具機率變異性）
+- steerability & hallucination guardrails: 可操控性與幻覺防護圍欄（引導 AI 輸出並攔截虛構錯誤的設計）
 -->
 ---
 <!-- _class: lead -->
@@ -69,15 +81,17 @@ To summarize this slide, remember this key takeaway: This chapter takes you from
 > — *Don Norman, The Design of Everyday Things*
 
 <!--
-We begin with Module 6.1: Foundations of User Experience Design.
+We begin with Module 6.1: Foundations of User Experience (UX).
 
-Have you ever walked up to a door in a public building, pushed with all your might, only to realize you were supposed to pull? Did you feel foolish?
+Have you ever walked up to a door in an office building or café, pushed with all your strength, and stood there awkward and embarrassed when it refused to budge—because you were actually supposed to pull?
 
-As cognitive scientist Don Norman proved, you are not stupid—the door is stupid! When a door has a flat brass plate, human ergonomics dictates pushing. When it has a handle, humans instinctively pull. When a handle requires pushing, the design violates fundamental cognitive psychology.
+Cognitive scientist Don Norman studied this exact phenomenon in his classic book *The Design of Everyday Things*. His conclusion is liberating: when you push a door meant to be pulled, you are not clumsy—the door was poorly engineered! Good design fits human perception and instinct so naturally that the interface itself becomes completely invisible.
 
-In this section, we study everyday design psychology, examine classic bad design archetypes, analyze a real-world government app redesign, and define the formal scope of User Experience.
-
-To summarize this slide, remember this key takeaway: When users make mistakes, blame the interface design rather than human intelligence.
+💡 難字與專業術語解說：
+- invisible design: 隱形設計（設計完美契合人類直覺，使人專注於目標而感受不到工具阻礙）
+- cognitive scientist: 認知科學家（研究人類心智運作與資訊處理的學者）
+- instinct: 本能、直覺反應
+- The Design of Everyday Things: 《設計的心理學》（Don Norman 的人機互動奠基經典著作）
 -->
 ---
 ## Why Good Design Matters: The "Norman Door"
@@ -85,7 +99,7 @@ To summarize this slide, remember this key takeaway: When users make mistakes, b
 > **Norman Door-** A door whose design sends the **wrong visual signal**—such as installing a prominent **pull handle** on a door that must actually be **pushed**!
 
 <div class="split73">
-  <div class="left">
+<div class="left">
 
 * **The Emotional Impact:**
   - You see a handle, pull instinctively, and suddenly can't open the door—making you feel **embarrassed, foolish, or even angry** in front of others.
@@ -95,22 +109,27 @@ To summarize this slide, remember this key takeaway: When users make mistakes, b
   - *"When a simple door needs a **'PUSH'** sign, the design is faulty."* — Don Norman
   - Software is full of "digital Norman Doors": good **UX Design** aligns visual cues with human intuition so users feel **confident and effortless**, never frustrated.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch06/normans_door_nobg.png" alt="Norman Door" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Look at this famous example known as a Norman Door.
+Why do we call a confusing door a "Norman Door"? Look closely at the physical cues on a door.
 
-When you walk up to a door with a vertical pull handle, your brain instinctively tells you to grab and pull. When the door refuses to budge because it actually opens by pushing—or sliding—you suddenly feel embarrassed, awkward, or even angry in public.
+When your eyes see a vertical grab handle, your motor cortex automatically triggers a grasping and pulling motion—that visual cue is what Don Norman calls a signifier. When an architect installs a prominent pull handle on a door whose hinges only allow it to open by pushing, the visual signifier directly contradicts the physical affordance of the door.
 
-Cognitive scientist Don Norman pointed out that when people struggle with everyday objects, they often blame themselves, when in fact the design is at fault. If a simple door requires a 'PUSH' sticker to explain how it works, the design itself has failed.
+Notice Don Norman's famous litmus test: if a simple door needs a printed "PUSH" or "PULL" sign taped to the glass, the hardware design has already failed. Our software systems are filled with "digital Norman Doors"—buttons that look like unclickable banners, or icons that trigger unexpected destructive actions.
 
-This brings us directly to why User Experience, or UX, is so critical in software engineering. Software interfaces are full of digital Norman Doors that confuse and frustrate users. Good UX design ensures that visual cues match human intuition naturally.
-
-To summarize this slide, remember this key takeaway: Good UX design matters because interfaces should work effortlessly with human instinct rather than making users feel embarrassed or frustrated.
+💡 難字與專業術語解說：
+- Norman Door: 諾曼門（視覺暗示與實際操作方式互相矛盾、讓人推拉錯亂的門）
+- prominent pull handle: 顯眼的拉門把手
+- instinctively: 出於本能地、直覺地
+- visual cue / signifier: 視覺線索 / 意符（傳達「應如何操作」的視覺信號）
+- affordance: 預設用途 / 可供性（物體本身具備並允許使用者執行的物理操作特性）
 -->
 ---
 ## The Frustration of Bad UI/UX
@@ -118,7 +137,7 @@ To summarize this slide, remember this key takeaway: Good UX design matters beca
 > "Users rarely blame the software architect when an interface is confusing—they feel **frustrated**, blame themselves, and **abandon the product**."
 
 <div class="split73">
-  <div class="left">
+<div class="left">
 
 * **The Emotional Toll of Poor Software:**
   - Cognitive overload, confusion, anxiety, and ultimate user abandonment.
@@ -128,20 +147,27 @@ To summarize this slide, remember this key takeaway: Good UX design matters beca
   - **Support Costs:** Thousands of expensive customer tickets originate from confusing navigation.
   - **Employee Burnout:** Enterprise software with terrible UX causes daily operational errors and lost productivity.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch06/bad_ui_ux_frustration_nobg.png" alt="User Frustration" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Poor software design carries severe emotional and economic costs.
+When users encounter digital Norman Doors in software, what happens psychologically and economically?
 
-When users encounter confusing forms, hidden submit buttons, or sudden error dialogs, they experience visceral frustration. In consumer applications, users simply uninstall the app and switch to a competitor. In enterprise settings, bad software costs organizations millions of dollars in lost productivity and operational mistakes.
+Look at the quote at the top: users almost never say, "The software architect poorly designed this state machine." Instead, they feel anxious, blame themselves for "not being tech-savvy," and quietly abandon the product.
 
-Engineers must realize that usability is not a superficial luxury—it directly governs business retention, conversion rates, and software survival.
+In commercial software engineering, bad UX is a silent revenue killer. Nearly 70% of e-commerce shopping carts are abandoned before payment due to convoluted checkout flows. In B2B enterprise systems, poor UX generates thousands of avoidable customer support tickets and causes daily operational burnout among employees forced to fight clunky interfaces eight hours a day.
 
-To summarize this slide, remember this key takeaway: Poor UX directly drives user churn, operational errors, and support overhead.
+💡 難字與專業術語解說：
+- emotional toll: 情緒耗損、心理代價
+- cognitive overload: 認知過載（畫面資訊或步驟超過人類工作記憶可負荷的上限）
+- cart abandonment: 購物車放棄率（將商品加入購物車卻因流程繁瑣而未完成結帳）
+- convoluted: 盤根錯節的、過於迂迴複雜的
+- employee burnout: 員工職業倦怠（長期被難用的內部系統折磨導致的精力耗竭）
 -->
 ---
 ## Bad Design Archetype (1): "Night Market" Sensory Overload
@@ -149,27 +175,35 @@ To summarize this slide, remember this key takeaway: Poor UX directly drives use
 > **The "Night Market Chaos" (Arngren-Style Overload):** Stuffing hundreds of competing products and links into a single screen with zero visual hierarchy.
 
 <div class="split73">
-  <div class="left">
+<div class="left">
 
 * **Why This Design Fails:**
   - **Broken Pattern Recognition:** Every product block has a random aspect ratio, font size, and alignment, forcing the brain to painfully refocus on every single item.
   - **No Grid System or Visual Anchors:** Lacks horizontal/vertical alignment guides; the human eye has no natural scanning path.
   - **Acute Sensory Overload:** When everything screams for attention simultaneously, users suffer cognitive fatigue and immediately bounce.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch06/bad_design_night_market_arngren.png" alt="Arngren Cluttered Design" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Let's examine the first classic bad design archetype: the 'Night Market' sensory overload, exemplified by the infamous Arngren website on the right.
+Let's examine the first classic bad design archetype: "Night Market Chaos" sensory overload, famously illustrated by the Norwegian electronics website Arngren on the right.
 
-Why is this interface so exhausting to use? First, pattern recognition is completely broken. In modern e-commerce, product cards share a fixed aspect ratio, title position, and price tag. Here, every block is randomly sized and positioned, forcing your brain to re-focus from scratch on every item.
+Why does staring at this page for ten seconds make your eyes hurt? First, pattern recognition is completely shattered. In a well-engineered product catalog, every card shares a consistent aspect ratio, image frame, title typography, and price badge. Here, every item has a random size, border, and orientation—forcing your visual cortex to recalibrate from scratch on every single square inch.
 
-Second, there is no underlying grid system or whitespace. Drones, scooters, and gadgets compete simultaneously for every pixel.
+Second, there is zero grid alignment or whitespace. When hundreds of gadgets, bicycles, and flashing links scream for attention at the exact same decibel level, the human brain experiences acute sensory overload and immediately hits the Back button.
 
-To summarize this slide, remember this key takeaway: Without a structured grid system, visual grouping, and whitespace, interfaces devolve into exhausting cognitive noise.
+💡 難字與專業術語解說：
+- sensory overload: 感官過載（過多雜亂視覺刺激同時湧入導致大腦無法處理）
+- visual hierarchy: 視覺階層（透過字級、色彩與空間引導視線先後順序的結構）
+- pattern recognition: 模式辨識（大腦透過規律排版快速識別同類資訊的能力）
+- aspect ratio: 長寬比（圖片或卡片的寬高比例）
+- visual anchor: 視覺錨點（協助眼球定位與建立掃描起點的基準元素）
+- cognitive fatigue & bounce: 認知疲勞與跳出（因心智耗竭而立即離開網頁）
 -->
 ---
 ## Bad Design Archetype (2): "Paint is Free" Color & Contrast
@@ -177,27 +211,35 @@ To summarize this slide, remember this key takeaway: Without a structured grid s
 > **The "Paint is Free" Nightmare:** Abusing clashing colors, busy textured backgrounds, and drop-shadows that destroy readability and brand trust.
 
 <div class="split73">
-  <div class="left">
+<div class="left">
 
 * **Why This Design Fails:**
   - **Color Contrast Collapse:** Dark red and neon yellow text over a wavy cyan gradient causes visual vibration and violates **WCAG accessibility standards**.
   - **Typography Nightmares:** Heavy 3D drop-shadows and jagged, unaligned link lists create severe eye strain.
   - **Zero Negative Space & Lost Trust:** Cramming text without breathing room—especially on a medical X-ray supplier site—instantly destroys professional credibility.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch06/bad_design_color_contrast_xray.png" alt="Pacific Northwest X-Ray Color Contrast Nightmare" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Here is our second bad design archetype: the 'Paint is Free' color and contrast nightmare, taken from an actual medical X-ray equipment supplier website on the right.
+Our second bad design archetype is the "Paint is Free" color and contrast nightmare, shown here on a real medical X-ray equipment supplier's website.
 
-Look at why this design fails on every ergonomic level: First, dark red and yellow text is placed directly on top of a wavy blue gradient background, violating WCAG contrast rules and making the text nearly impossible to read for older or color-blind users.
+Look at the visual mechanics failing on this screen: bright red and neon yellow text are rendered directly over a busy, wavy cyan background gradient. This creates a phenomenon known in visual ergonomics as chromostereopsis—where clashing wavelengths vibrate on the retina—and severely violates WCAG (Web Content Accessibility Guidelines) contrast ratios.
 
-Second, heavy drop-shadows on headings add visual noise, and there is zero negative whitespace. Worse still, in a high-trust medical domain, this chaotic palette immediately destroys professional credibility.
+Furthermore, heavy 3D drop-shadows and zero negative space make scanning impossible. Even worse, consider the domain context: this company sells hospital X-ray protection gear! An amateurish, chaotic visual presentation immediately destroys user trust in the safety and reliability of the underlying engineering.
 
-To summarize this slide, remember this key takeaway: High-contrast typography and clean negative space are essential for both human readability and brand trust.
+💡 難字與專業術語解說：
+- clashing colors: 衝突撞色（高彩度互補色直接疊加造成視覺刺眼與顫動）
+- drop-shadow: 陰影效果（文字或區塊後方的立體投影，過度使用會破壞易讀性）
+- visual vibration: 視覺顫動（強對比色彩相鄰時在視網膜產生的閃爍不適感）
+- WCAG (Web Content Accessibility Guidelines): 網頁內容無障礙指南（國際通用的明暗對比度與可及性標準）
+- negative space (whitespace): 負空間 / 留白（不放任何元素的呼吸空間，用於分隔資訊群組）
+- professional credibility: 專業可信度、品牌信賴感
 -->
 ---
 ## Bad Design Archetype (3): "Where Do I Start?" Missing Hierarchy
@@ -205,27 +247,34 @@ To summarize this slide, remember this key takeaway: High-contrast typography an
 > **The "Where Do I Start?" Archetype:** Cluttering dozens of identical buttons and ultra-wide text lines without a clear primary Call-to-Action (CTA).
 
 <div class="split73">
-  <div class="left">
+<div class="left">
 
 * **Why This Design Fails:**
   - **Missing Visual Focal Point:** Dozens of identical red and black buttons on the left carry equal visual weight—users have no idea which button to click first.
   - **Information Flood:** Phone numbers, addresses, and slogans are crammed into a neon banner with no visual priority.
   - **Uncontrolled Line Length:** Paragraphs stretch across the entire screen width, far exceeding the ergonomic reading limit of **45–75 characters per line**.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch06/bad_design_cluttered_gates.png" alt="Gates N Fences Cluttered Hierarchy and Line Length" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Here is our third bad design archetype: 'Where Do I Start?'—missing visual hierarchy and uncontrolled line length.
+Here is the third bad design archetype: "Where Do I Start?"—characterized by missing visual hierarchy and uncontrolled line lengths.
 
-Look at the website on the right and why it paralyzes the user: First, on the left sidebar, over a dozen identical red and black buttons compete with equal visual weight. There is no primary Call-to-Action (CTA) to guide the user's first step.
+Look at the left column of the Gates N' Fences website: over twenty identical red and black pill buttons are stacked vertically with the exact same size, color saturation, and typography. When every button has equal visual weight, nothing stands out—there is no primary Call-to-Action (CTA) to anchor the user's journey.
 
-Second, look at the text paragraphs on the right: they stretch across the entire width of the monitor. Cognitive ergonomics proves that comfortable human reading requires 45 to 75 characters per line. Ultra-wide lines force the reader's eyes and neck to swing back and forth, causing rapid reading fatigue.
+Now look at the body paragraphs stretching across the entire monitor width. Typography research shows that human eyes read most comfortably at 45 to 75 characters per line. When lines stretch to 180 characters across a widescreen monitor, the reader's eye loses track of the next line on the return sweep, causing skipped lines and rapid reading fatigue.
 
-To summarize this slide, remember this key takeaway: Establish a clear primary Call-to-Action and constrain text line lengths to 45–75 characters for effortless scanning.
+💡 難字與專業術語解說：
+- Call-to-Action (CTA): 行動召喚按鈕（頁面上最核心、引導使用者點擊推進流程的主按鈕）
+- visual focal point: 視覺焦點（畫面上第一眼吸引注意力的核心區域）
+- visual weight: 視覺權重（元素透過大小、色彩與對比度所佔據的視覺份量）
+- ergonomic reading limit: 人因工程閱讀極限（最符合人眼水平掃視舒適度的單行字元數 45–75 字）
+- return sweep: 換行回掃（視線讀完一行末端後移回下一行開頭的眼球運動）
 -->
 ---
 ## Case Study: Taiwan NHI Mask App — Where Do You Pre-Order?
@@ -243,26 +292,24 @@ To summarize this slide, remember this key takeaway: Establish a clear primary C
     <h3 style="color: #16a34a; margin-bottom: 8px;">Answer: Buried in #2! → Refactored 3×3 Grid</h3>
     <img src="../../img/ch06/mask_order_app_after.png" alt="Mask App After Redesign" style="max-height: 310px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto 8px auto; display: block;" />
     <p style="font-size: 15px; color: #15803d; margin: 0;"><strong>Why #2 (My Health Bank)?</strong> It had the login module!<br/><strong>Redesign:</strong> Promoted <strong>eMask Pre-Order</strong> directly to top row.</p>
-  </div>
+
+</div>
 </div>
 
 <!--
-Let's do a quick interactive classroom exercise with this real-world case study from Taiwan's COVID-19 response.
+Let's test your UX intuition with a famous real-world case study from Taiwan: the National Health Insurance (NHI) "健保快易通" App during the 2020 COVID-19 mask rationing rollout.
 
-When the government urgently launched online mask pre-ordering on the National Health Insurance App (行動快易通), they told citizens: 'Open the app to pre-order your masks!'
+When the government announced that citizens could pre-order face masks online using this app, millions of citizens opened the v1 home screen on the left. Look at the six options labeled 1 to 6:
+1. Mask Query (口罩查詢), 2. My Health Bank (健康存摺), 3. Reform Diary (改革日記), 4. Hospital Search (院所查詢), 5. E-Counter (行動櫃檯), and 6. More.
+Which icon would you tap to pre-order masks?
 
-Look at the first version on the left, labeled 1 through 6:
-1 is Mask Query (口罩查詢), 2 is My Health Bank (健康存摺), 3 is Reform Diary (改革日記), 4 is Hospital Search (院所查詢), 5 is E-Counter (行動櫃檯), and 6 is More.
-Ask yourself: Where would you tap to pre-order a mask?
+Nearly everyone tapped #1 (Mask Query)! Yet tapping #1 only opened a static link to pharmacy stock maps—there was no pre-order button inside! Where was the actual Mask Pre-Order button hidden? It was buried deep inside #2: "My Health Bank (健康存摺)"!
 
-Almost everyone tapped #1 (Mask Query)—but #1 only showed a map of pharmacy stock! You could not pre-order masks there!
-
-Now click to reveal the answer on the right: The 'Mask Pre-Order' button was actually hidden inside #2: 'My Health Bank (健康存摺)'!
-Why on earth did engineers put Mask Pre-Order inside Health Bank? Because pre-ordering required real-name identity authentication, and the authentication code was already built inside the Health Bank module! The developers designed the UI around their backend authentication module rather than the user's mental model!
-
-Look at the redesigned version on the right: the team refactored the home screen into a clean, standardized 3-by-3 grid with uniform icon sizes and bilingual labels, promoting 'eMask (口罩預購)' and 'History (購買紀錄)' directly to the top surface level.
-
-To summarize this slide, remember this key takeaway: Never bury a high-priority user task inside an unrelated menu just because it shares a backend authentication module.
+💡 難字與專業術語解說：
+- Taiwan NHI (National Health Insurance): 台灣全民健康保險
+- pre-order: 預購、事先登記申購
+- emergency launch: 緊急上線發布（在時間壓力下倉促推上線的版本）
+- refactor: 重構（在不改變核心業務功能的前提下，重新調整結構以提升品質與易用性）
 -->
 ---
 ## Case Study Analysis: Backend-Driven vs. User-Centered UX
@@ -276,39 +323,61 @@ To summarize this slide, remember this key takeaway: Never bury a high-priority 
   - **Standardized Visual System:** Unified all 9 entry points into consistent circular icons with clear bilingual (**English + Chinese**) labels.
 
 <!--
-Let's analyze the architectural lesson behind the NHI Mask App redesign.
+Why on earth did the engineering team bury "Mask Pre-Order" inside "My Health Bank (#2)" while leaving a mask icon on "#1 Mask Query"?
 
-Why did the first version fail so badly? Because it was an Implementation-Driven UI. From a backend engineer's perspective, putting Mask Pre-Order inside 'My Health Bank' made total sense because Health Bank already handled user login and identity verification.
+This is the textbook example of an **Implementation-Driven UI** (backend-driven design). Because buying rationed masks required real-name identity authentication, and the login/authentication code already lived inside the "My Health Bank" module, the engineers simply bolted the mask pre-order button inside Module #2 for backend convenience!
 
-But from a citizen's mental model, 'Health Bank' is where you check past hospital medical records—nobody would ever guess you go there to buy masks! Meanwhile, Icon #1 literally had a picture of a mask, acting as a false signifier that trapped millions of users.
+Meanwhile, Icon #1 had a huge illustration of a surgical mask—acting as a **False Signifier** that lured millions of users into a dead end. Look at how the refactored v2 design solved this: volunteered UX designers broke free from backend module boundaries, promoted **eMask Pre-Order**, **Purchase History**, and **Mask Map** directly to the top row of a clean, standardized 3×3 grid, and added clear bilingual labels.
 
-In the refactored 3-by-3 grid, the design team broke free from backend module boundaries. They brought 'eMask Pre-Order', 'Purchase History', and 'Mask Map' straight to the top level, and standardized the visual grid with bilingual labels.
-
-To summarize this slide, remember this key takeaway: Design navigation hierarchies around what users want to accomplish, never around how your backend authentication modules are organized.
+💡 難字與專業術語解說：
+- Implementation-Driven UI: 實作導向介面（依照後端程式碼模組或資料庫結構，而非使用者思維所排出的介面）
+- authentication: 身分驗證（確認使用者真實身分的登入機制）
+- false signifier: 錯誤意符 / 誤導性視覺線索（外觀看起來像某功能，點擊後卻不是該預期的行為）
+- goal-directed: 目標導向的（以使用者想完成的任務為核心來組織介面）
+- first-class action: 一級核心操作（無需深層鑽取、直接擺在首頁最顯眼處的功能）
 -->
 ---
 ## Why is UX So Hard?
 
 > **The Root Cause:** Good UX fails not from a lack of coding skills, but from engineering-centric thinking and fragmented development habits.
 
-- 1. Module vs. Systems Thinking
-- 2. Patchwork Construction
-- 3. System vs. User Thinking 
-- 4. Lack of Empathic Thinking 
-- 5. No User Research or Requirements Analysis
-- 6. Construction Without Prior Design 
-- 7. No Testing, Feedback, or Iteration 
+<div class="split73">
+<div class="left">
+
+- **Lack of Systems Thinking**
+  - Only modular thinking; patchwork construction
+- **Lack of User Thinking**
+  - Obsessed with backend schemas rather than user goals
+- **Lack of Empathic Thinking**
+- **Lack of User Research or Requirements Analysis**
+- **Lack of Prior Design**
+  - Construction directly without prior interaction design
+- **Lack of Testing, Feedback, or Iteration**
+  - Launching the system without comprehensive usability testing
+
+</div>
+<div class="right">
+    <img src="../../img/ch06/why_ux_is_hard_nobg.png" alt="Why UX is Hard" />
+
+</div>
+</div>
 
 <!--
-Why do brilliant software teams repeatedly deliver difficult-to-use software?
+Seeing the NHI Mask App disaster leads us to a fundamental software engineering question: Why is building good UX so hard, even for talented programmers?
 
-It boils down to seven systemic pitfalls in software development:
+The root cause is rarely a lack of coding skill—it stems from seven systemic engineering habits:
+1. **Module vs. Systems Thinking**: Engineers optimize isolated functional modules (like the login module) without viewing the end-to-end user journey.
+2. **Patchwork Construction**: Features are bolted onto existing menus ad-hoc as urgent requests arrive, turning the UI into Frankenstein's monster.
+3. **System vs. User Thinking**: Screens mirror database tables and API payloads instead of human mental models.
+4. **Lack of Empathic Thinking**: Developers suffer from the "Curse of Knowledge"—because *we* wrote the code, we forget how confusing it looks to a first-time user.
+5. **No User Research**, **6. Coding Before Designing**, and **7. Shipping Without Usability Testing or Iteration**.
 
-First, teams often fall into module-level thinking without seeing the whole system journey. Second, features get stacked haphazardly as new requests trickle in. Third, developers get consumed by system architecture and forget user-centric thinking. 
-
-Fourth, there is a severe shortage of empathic thinking—we forget what real users feel when they are confused. Fifth, projects skip real user research and deep requirements analysis. Sixth, engineers jump directly into coding and construction without any interface design. Finally, there is no testing, feedback collection, or iterative refinement loop.
-
-To summarize this slide, remember this key takeaway: UX fails when development is driven by ad-hoc construction rather than user research, empathetic design, and iterative feedback.
+💡 難字與專業術語解說：
+- engineering-centric: 以工程師為中心的（從系統實作便利性而非使用者體驗出發的思維）
+- fragmented: 支離破碎的、缺乏整體連貫性的
+- patchwork construction: 拼湊式建造（缺乏頂層設計、東補西湊堆疊功能）
+- empathic thinking: 同理心思維（設身處地感受使用者困惑與情緒的能力）
+- Curse of Knowledge: 知識的詛咒（專家因過度熟悉系統內部邏輯，而無法理解新手為何看不懂）
 -->
 ---
 ## UI (User Interface) vs. UX (User Experience)
@@ -325,15 +394,18 @@ To summarize this slide, remember this key takeaway: UX fails when development i
   - UI is the saddle, stirrup, and reins; UX is the *feeling* of riding the horse!
 
 <!--
-Let's crystallize the distinction between User Interface and User Experience.
+Before going further, every software engineer must be able to clearly distinguish **UI (User Interface)** from **UX (User Experience)**.
 
-UI represents the visual elements: the typography, colors, button gradients, and CSS layout.
+**UI (User Interface)** is the tangible, visual, and interactive surface—the buttons, typography scales, color palettes, CSS grid layouts, icons, and micro-animations. UI answers: *"How does the product look and respond visually?"*
 
-UX represents the complete human journey: How long did it take to accomplish the goal? Did the user feel frustrated or delighted? What happened when the payment failed?
+**UX (User Experience)** encompasses the entire end-to-end human journey—task efficiency, cognitive load, information architecture, error recovery, and emotional trust. Look at the classic analogy at the bottom: **UI is the saddle, stirrups, and reins; UX is the overall feeling and safety of riding the horse.** A banking app can have a gorgeous glassmorphic UI, but if transferring money takes 12 confusing steps, its UX is terrible.
 
-A website can have stunning UI graphics with glassmorphism and animations, but if the checkout button fails to submit on mobile Safari, the UX is disastrous.
-
-To summarize this slide, remember this key takeaway: UI is what the user touches and sees; UX is how the user feels and succeeds.
+💡 難字與專業術語解說：
+- tangible: 具體可感知的、有形的
+- sensory touchpoint: 感官接觸點（使用者眼睛看到、手指觸碰到的介面元素）
+- typography: 字體排印學（字型選擇、字級階層、行高與字距的排版設計）
+- end-to-end journey: 端到端旅程（從產生需求、進入系統到最終完成目標的完整歷程）
+- saddle, stirrup, and reins: 馬鞍、馬鐙與韁繩（比喻表面可見的操控器物，對比騎乘的整體體驗）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -344,15 +416,17 @@ To summarize this slide, remember this key takeaway: UI is what the user touches
 </div>
 
 <!--
-This visual comparison illuminates the distinction between UI and UX.
+This anatomical diagram reinforces the symbiotic relationship between UI and UX.
 
-On the left, we observe UI attributes: visual aesthetics, typography, iconography, and color palettes.
+On the left side of the brain, UI design governs visual design, colors, graphic design, layouts, and typography—the aesthetic skin and sensory presentation of the product.
 
-On the right, we observe UX attributes: information architecture, interaction flows, usability testing, and emotional satisfaction.
+On the right side, UX design governs interaction design, wireframes and prototypes, information architecture, user research, and scenarios—the structural skeleton and nervous system of the product. Great software engineering requires both working in harmony: UX ensures we build the *right workflow*, while UI ensures the workflow is *visually clear and delightful*.
 
-Both are indispensable. But UI serves UX. A visually gorgeous interface that frustrates users is an engineering failure.
-
-To summarize this slide, remember this key takeaway: UI creates the aesthetic sensory touchpoints, while UX governs user success, satisfaction, and utility.
+💡 難字與專業術語解說：
+- anatomy of interaction: 互動結構剖析
+- wireframe: 線框稿（不含色彩與美化細節、專注於配置與流程的低擬真結構草圖）
+- information architecture (IA): 資訊架構（系統內容的分類、階層組織與導覽標籤體系）
+- symbiotic: 共生的、相輔相成的
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -364,78 +438,84 @@ To summarize this slide, remember this key takeaway: UI creates the aesthetic se
 </div>
 
 <!--
-Here is the Stanford d.school Design Thinking framework formalizing the 5-stage UX engineering lifecycle.
+How do professional product teams systematically engineer great UX instead of guessing? They follow the **5-Stage Design Thinking Process** formalized by the Stanford d.school and IDEO.
 
-Notice the sequence: You never start by writing code or drawing high-fidelity screens. You start with Empathy—observing actual users in their natural environment.
+Look at the five stages on the diagram: **Empathize → Define → Ideate → Prototype → Test**.
 
-Next, you Define the root problem. Then you Ideate dozens of creative concepts. You build rapid, disposable Prototypes, and you Test them with target users.
+Notice two crucial engineering principles here: First, coding is nowhere near Stage 1! You begin by understanding human needs (Empathize) and framing the exact problem (Define) before brainstorming solutions (Ideate). Second, notice the return arrows at the bottom: Design Thinking is **non-linear and iterative**. Insights from user testing loop directly back to refine your problem definition or prototypes before expensive production code is written.
 
-Let's examine what happens in each of these five critical stages.
-
-To summarize this slide, remember this key takeaway: UX design is an iterative cycle progressing from user empathy to rapid prototyping and testing.
+💡 難字與專業術語解說：
+- Design Thinking: 設計思考（以人為本、結合同理心與快速實驗迭代的問題解決方法論）
+- Empathize / Define / Ideate / Prototype / Test: 同理 → 定義 → 發想 → 原型 → 測試（設計思考五階段）
+- non-linear & iterative: 非線性且迭代的（允許隨時根據測試反饋回溯修正，而非單向瀑布流）
 -->
 ---
 ## The 5 Stages of Design Thinking: Process Breakdown
 
-* **1. Empathize:**
+- **1. Empathize:**
   - Conduct qualitative user interviews, contextual field inquiries, and observational studies.
   - Identify unarticulated frustrations and true emotional pain points.
-* **2. Define:**
+- **2. Define:**
   - Synthesize user research into concrete personas, empathy maps, and precise "How Might We" problem statements.
-* **3. Ideate:**
+- **3. Ideate:**
   - Brainstorm diverse potential solutions without premature judgment; sketch rapid low-fidelity paper wireframes.
-* **4. Prototype:**
+- **4. Prototype:**
   - Build interactive, testable artifacts (clickable Figma mockups, interactive HTML/CSS code components).
-* **5. Test:**
+- **5. Test:**
   - Put prototypes in front of real users, observe stumbling blocks, measure task completion rates, and iterate.
 
 <!--
-Let's examine each phase of the Design Thinking methodology.
+Let's break down the concrete engineering deliverables produced in each of the five Design Thinking stages:
 
-In Empathize, you set aside your assumptions and listen to real users.
+1. **Empathize**: Conduct qualitative user interviews and contextual field inquiries—watching real people use their current tools in their real environment to uncover unarticulated pain points.
+2. **Define**: Synthesize raw observations into concrete **Personas**, Empathy Maps, and actionable *"How Might We..."* problem statements.
+3. **Ideate**: Brainstorm broad solution alternatives without premature criticism, sketching disposable paper wireframes that cost pennies to throw away.
+4. **Prototype**: Construct interactive, testable artifacts—such as clickable Figma flows or lightweight HTML/CSS components.
+5. **Test**: Observe real users attempting concrete tasks, measure task completion rates, and iterate relentlessly.
 
-In Define, you distill research into actionable problem statements and personas.
-
-In Ideate, you brainstorm wide varieties of solutions.
-
-In Prototype, you build quick, testable artifacts.
-
-In Test, you put those artifacts in front of users to gather behavioral evidence. Design is iterative: testing feedback loops back into redefining the problem.
-
-To summarize this slide, remember this key takeaway: The five design thinking stages provide a structured, repeatable methodology for creating human-centered software.
+💡 難字與專業術語解說：
+- qualitative user interview: 質性使用者訪談（深入探索「為什麼」與動機的開放式訪談）
+- contextual field inquiry: 情境實地調查（到使用者真實工作或生活現場觀察其自然行為）
+- unarticulated frustration: 未被言明的挫折感（使用者習以為常、說不出口卻實際存在的痛點）
+- synthesize: 綜合提煉、歸納統整
+- persona & empathy map: 人物誌與同理心地圖（具象化目標用戶特徵、目標與痛點的模型）
+- low-fidelity (lo-fi): 低擬真度（如紙本手繪草圖，旨在快速驗證概念而非視覺細節）
 -->
 ---
-### Concept Check Question 1: UI vs. UX & The Empathy Gap
+### Concept Check Question 1: Affordances vs. Signifiers
 <!-- id: ase-ch06-ccq1 -->
 
 <div class="ccq-columns">
   <div class="ccq-text">
 
-A mobile banking app has sleek animations (**polished UI**), yet **68% of new users abandon transfers** because the flow exposes raw database codes (`TXN_ROUTING_ID`). What is the root failure and proper **Design Thinking** remedy?
+In a redesigned hospital check-in kiosk, `"Confirm Check-In"` is styled as flat, borderless grey text for a "minimalist UI." Although the screen **can** register taps there, **75% of elderly patients freeze** and ask where to press. According to **Don Norman**, what is the root flaw?
 
-- **A.** A **UI visual defect**; replace CSS animations with higher-contrast Material Design buttons.
-- **B.** A **backend latency bottleneck**; add Redis caching so transfer queries finish in under 50ms.
-- **C.** A **UX Empathy Gap failure**; research user pain points and prototype flows around customer mental models.
-- **D.** A **user training gap**; require new customers to watch a 15-minute tutorial before transferring funds.
+- **A.** **Missing Affordance**; the touchscreen hardware lacks the physical touch-sensing capability to detect finger taps on text regions.
+- **B.** **Missing Signifier**; tapping works, but the flat text lacks perceivable visual cues (border, contrast, shadow) showing it is tappable.
+- **C.** **User Training Deficit**; the hospital should tape a printed step-by-step instruction sheet beside the kiosk to guide elderly patients.
+- **D.** **System Model Latency**; the backend appointment database schema should be refactored with in-memory caching to speed up check-in queries.
 
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq1" target="_blank"><img src="../../img/ch06/ase-ch06-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
-Let's check our understanding of Section 6.1 with Concept Check Question 1!
+Let's pause for Concept Check Question 1 to test our grasp of Don Norman's **Affordances vs. Signifiers** and **UI vs. UX**!
 
-Examine the scenario: the mobile banking app has sleek visual styling and animations (a polished UI), yet 68% of new users drop out during money transfers because the workflow exposes raw internal database codes like TXN_ACCT_ROUTING_ID.
+Read the scenario carefully: on a hospital check-in kiosk, the `"Confirm Check-In"` button is styled as flat, borderless grey text to look "minimalist." Even though the touchscreen *can* register taps on that text, 75% of elderly patients freeze and don't know where to press.
 
-Why did this happen? Because engineers suffered from the Curse of Knowledge and designed the workflow around their internal database schema rather than the customer's mental model!
+Why is **Option B (Missing Signifier)** the exact right answer rather than Option A (Missing Affordance)?
+- Remember Don Norman's distinction: **Affordance** is what actions the system physically or digitally allows—since the touchscreen *can* detect taps on that region, the affordance already exists (so Option A is false).
+- What is missing is the **Signifier**—the perceivable visual cue (button border, high-contrast color, elevation shadow) that communicates *where* and *how* to tap!
+- And notice Option C: taping a printed instruction sheet next to the kiosk is the classic **Norman Door fallacy**—blaming the human instead of fixing the signifier!
 
-The correct answer is Option C: It is a UX and Empathy Gap failure; the team must apply Design Thinking—empathizing with real users, defining the friction points, and prototyping/testing transfer flows that speak the customer's language.
-
-Option A confuses visual UI styling with end-to-end UX workflow usability. Option B misdiagnoses cognitive confusion as a backend performance problem. Option D blames the user and tries to patch a broken interface with a 15-minute manual—the exact Norman Door mistake!
-
-To summarize this slide, remember this key takeaway: A gorgeous visual UI cannot rescue a product whose UX workflow exposes internal system schemas instead of matching user mental models.
+💡 難字與專業術語解說：
+- check-in kiosk: 自助報到服務機（醫院或機場常見的觸控式自助終端機）
+- affordance vs. signifier: 預設用途 vs. 意符（系統實際可支援的物理/數位動作 vs. 引導人類「按哪裡、怎麼操作」的可感知視覺線索）
+- minimalist UI: 極簡風視覺介面（若過度去除邊框與陰影，極易犧牲意符而傷害 UX 可用性）
 -->
 ---
 <!-- _class: lead -->
@@ -447,13 +527,16 @@ To summarize this slide, remember this key takeaway: A gorgeous visual UI cannot
 > — *Jakob Nielsen, Nielsen Norman Group*
 
 <!--
-We now enter Module 6.2: Nielsen's 10 Usability Heuristics.
+We now enter Module 6.2: **Jakob Nielsen's 10 Usability Heuristics**.
 
-Formulated by Jakob Nielsen and Rolf Molich in 1994, these ten heuristics remain the universal constitution of interaction design. They are not rigid mathematical laws; they are broad rules of thumb based on decades of empirical human-computer interaction studies.
+First formulated by Jakob Nielsen and Rolf Molich in 1990 and refined by Nielsen in 1994, these ten principles are the undisputed gold standard of user interface engineering.
 
-In this module, we examine all ten heuristics side-by-side with real interface examples—from gas stove knobs to iPhone lock screens—and study how these timeless rules guide software engineering decisions.
+Read Jakob's Law in the quote box: *"Users spend most of their time on other sites. This means that users prefer your site to work the same way as all the other sites they already know."* As we step through NS01 to NS10, we will pair every two heuristics with an interactive **Classroom UI Challenge**—first diagnosing a broken mobile screen, learning the two heuristics, and then revealing the refactored engineering design.
 
-To summarize this slide, remember this key takeaway: Nielsen's 10 Heuristics provide the universal heuristic grammar for evaluating and designing intuitive software interfaces.
+💡 難字與專業術語解說：
+- usability heuristic: 易用性啟發式原則（輔助工程師快速檢視介面設計缺陷的經驗準則）
+- Jakob's Law: 雅各布定律（使用者習慣將其他主流網站的操作經驗轉移到你的產品上）
+- rule of thumb: 經驗法則（普遍適用且實用的大原則，而非死板的數學公式）
 -->
 ---
 ## Overview: Nielsen's 10 Usability Heuristics
@@ -478,53 +561,26 @@ To summarize this slide, remember this key takeaway: Nielsen's 10 Heuristics pro
       <li>🩹 <b>NS09. Help Users Recover from Errors:</b> Express error messages in plain language.</li>
       <li>📖 <b>NS10. Help and Documentation:</b> Provide searchable, contextual guidance.</li>
     </ul>
-  </div>
+
+</div>
 </div>
 
 <!--
-Here is the master list of Jakob Nielsen's 10 Usability Heuristics.
+Here is the complete overview of Nielsen's 10 Usability Heuristics—from **NS01** through **NS10**.
 
-Every software engineer, product manager, and designer should have these ten principles memorized.
+Notice how these ten heuristics form a complete defensive lifecycle around human interaction:
+- **NS01 & NS02** govern *Communication*: keeping status visible and speaking the user's real-world language.
+- **NS03 & NS04** govern *Control & Predictability*: providing emergency undo exits and following platform conventions.
+- **NS05 & NS06** govern *Cognitive Protection*: preventing errors before they happen and replacing memory recall with visual recognition.
+- **NS07 & NS08** govern *Efficiency & Clarity*: offering shortcuts for experts while removing visual noise for everyone.
+- **NS09 & NS10** govern *Support & Recovery*: diagnosing errors in plain language and embedding contextual help.
 
-Notice the scope: from immediate feedback (NS01) to real-world metaphors (NS02), emergency escapes (NS03), consistency (NS04), preventing bugs before they happen (NS05), reducing cognitive memory load (NS06), power shortcuts (NS07), visual minimalism (NS08), friendly error recovery (NS09), and contextual documentation (NS10).
-
-Let's dissect each heuristic with real-world examples.
-
-To summarize this slide, remember this key takeaway: These ten heuristics cover feedback, cognitive load, error resilience, and operational efficiency across all software tiers.
--->
----
-## Challenge: What's Wrong with this Food Delivery Screen?
-
-<div class="split64">
-  <div class="left">
-
-> **Scenario:** After placing an order for dinner, a hungry customer is greeted with this order tracking screen.
-
-* **1. Status & Feedback (What's happening?):**
-  - The spinner has been stuck for nearly 4 minutes (`3m 42s`) with no progress bar.
-  - Did the restaurant accept the order? When will it arrive (`ETA: TBD`)?
-* **2. Language & Mental Model (Whose language is this?):**
-  - Displays cryptic backend codes: `ITEM_SKU_90218` and `HTTP_204_NO_CONTENT`.
-  - Buttons ask the hungry customer to *"Rollback TXN"* or *"Refresh Socket"*.
-* **Discussion Prompt:**
-  - What are the **top 3 usability disasters** on this screen?
-
-  </div>
-  <div class="right">
-    <img src="../../img/ch06/food_delivery_bad.png" alt="Bad Food Delivery Tracking Screen" />
-  </div>
-</div>
-
-<!--
-Before we dive into the first two heuristics, let's look at a real-world scenario that happens every day in software development.
-
-Look at the mobile mockup on the right. A customer just placed an order for dinner. The screen has been showing a frozen spinner for over three minutes with cryptic messages like STATUS_CODE_204 and SKU numbers.
-
-Turn to your neighbor and discuss: What is fundamentally broken about this user experience? Why does this screen cause anxiety, confusion, and panic?
-
-Keep your thoughts in mind—over the next few slides, we will learn the two foundational Nielsen heuristics that explain and solve this exact problem!
-
-To summarize this slide, remember this key takeaway: Software that exposes internal technical plumbing instead of user-centered communication creates confusion and distrust.
+💡 難字與專業術語解說：
+- empirical HCI research: 實證人機互動研究（基於大量真實使用者測試數據歸納出的研究）
+- emergency exit: 緊急出口（讓誤觸的使用者能立即撤銷或離開當前狀態的機制）
+- recognition vs. recall: 辨識取代回憶（看見選項直接認出，遠比憑空背誦指令省力）
+- accelerator: 加速器 / 快捷操作（讓資深使用者能跳過繁瑣步驟的高效捷徑）
+- signal-to-noise ratio (SNR): 訊噪比（畫面上有效核心資訊與無關雜訊的比例）
 -->
 ---
 ## NS01: Visibility of System Status
@@ -538,13 +594,20 @@ To summarize this slide, remember this key takeaway: Software that exposes inter
   - **Connection State Indicators:** Real-time online/offline banners and live synchronization indicators.
 
 <!--
-Heuristic 1: Visibility of System Status.
+That food delivery disaster brings us directly to **NS01: Visibility of System Status**.
 
-Nothing induces user anxiety faster than clicking a button and seeing absolutely nothing happen. Did the transaction go through? Did the app crash? Should I click it again and risk double-billing?
+Nielsen's first heuristic states: *"The system should always keep users informed about what is going on, through appropriate feedback within a reasonable time."*
 
-Software must provide immediate feedback. If an operation takes less than 1 second, a subtle animation is fine. If it takes several seconds, provide an explicit percentage progress bar. For multi-step workflows, show a breadcrumb stepper.
+Why does a silent or frozen screen trigger instant user panic? Because without feedback, humans cannot tell whether their tap registered, whether the network dropped, or whether they should tap "Pay" a second time (risking a double charge!). In human-computer interaction, response time thresholds matter:
+- **Under 0.1 seconds**: Feels instantaneous (use active button states / ripple effects).
+- **0.1 to 1.0 second**: User notices a slight delay (use a subtle spinner).
+- **Over 1 to 10 seconds**: User's attention wanders—you must display a **deterministic progress bar** (% complete), item counter, or multi-step breadcrumb stepper!
 
-To summarize this slide, remember this key takeaway: Continuous, timely visual feedback eliminates user anxiety and prevents duplicate submission errors.
+💡 難字與專業術語解說：
+- visibility of system status: 系統狀態可見度（讓使用者隨時清楚系統當前運作進度與狀態）
+- ripple effect & micro-animation: 水波紋動效與微動畫（點擊瞬間確認「已收到輸入」的視覺反饋）
+- deterministic progress bar: 確定性進度條（明確顯示完成百分比與剩餘時間，而非無止境轉圈）
+- multi-step checkout stepper: 多步驟結帳進度條（標示目前在第幾步、總共幾步的導覽元件）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -555,13 +618,16 @@ To summarize this slide, remember this key takeaway: Continuous, timely visual f
 </div>
 
 <!--
-Look at these first concrete implementations of system status visibility.
+Look at these three concrete engineering implementations of NS01 on screen:
 
-Notice the three distinct patterns: a deterministic percentage progress bar informing users of background file upload progress, step-by-step breadcrumb steppers guiding a multi-page checkout flow, and live cloud sync and connection state indicators.
+1. **Deterministic Progress Bars**: Instead of a mysterious spinning wheel, the file upload bar explicitly reports percentage completion so the user knows whether they have time to grab a cup of coffee.
+2. **Multi-Step Checkout Steppers**: Clearly highlights `1. Cart → 2. Shipping → 3. Payment`, orienting the user within the overall workflow funnel.
+3. **Live Cloud Sync & Connection State Indicators**: Explicitly displays whether the document is *"Saved to cloud 2 mins ago"* or *"Offline — changes saved locally"*, preventing data-loss anxiety.
 
-Every interaction state is explicitly communicated so the user is never left guessing whether their action was registered.
-
-To summarize this slide, remember this key takeaway: Visual feedback across buttons, spinners, and progress steppers keeps users continuously oriented.
+💡 難字與專業術語解說：
+- status feedback: 狀態回饋（系統回應使用者操作或背景進度的訊號）
+- sync state (synchronization state): 同步狀態（顯示本地端與雲端資料是否已一致更新）
+- workflow funnel: 工作流漏斗（使用者從進入流程到最終完成目標的多階段路徑）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -572,11 +638,17 @@ To summarize this slide, remember this key takeaway: Visual feedback across butt
 </div>
 
 <!--
-Here is a second real-world application of NS01 in an enterprise data dashboard.
+Here is a second real-world example of NS01 in an enterprise data management platform.
 
-When importing a large Excel spreadsheet of 1,000 rows, the interface does not freeze or show a generic spinning wheel. Instead, it displays the exact completion percentage (45%), the current row count (450 of 1,000), the estimated time remaining (12 seconds), and a 4-stage pipeline checklist.
+When an administrator imports a massive Excel spreadsheet containing 1,000 customer records, a naive implementation freezes the UI or shows an indeterminate spinner for 30 seconds.
 
-To summarize this slide, remember this key takeaway: For long-running asynchronous operations, combine percentage progress bars, item counters, and estimated remaining time to eliminate user anxiety.
+Look at how this modal dialog implements NS01 with engineering precision: it combines four distinct feedback layers—an overall percentage bar (**45%**), an exact record counter (**450 of 1,000 rows processed**), an estimated time remaining (**~12 seconds left**), and a 4-stage pipeline checklist (*Uploading → Validating Schema → Importing Rows → Indexing*). The user feels in total command of the asynchronous job.
+
+💡 難字與專業術語解說：
+- batch file import: 批次檔案匯入（一次處理大量資料筆數的背景作業）
+- indeterminate spinner: 非確定性轉圈動畫（只會一直旋轉、不提供任何進度比例或剩餘時間）
+- asynchronous job: 非同步任務（在背景執行、不阻塞主執行緒的耗時運算）
+- validating schema & indexing: 結構綱要驗證與建立索引（資料庫匯入的關鍵處理階段）
 -->
 ---
 ## NS02: Match Between System and the Real World
@@ -591,13 +663,19 @@ To summarize this slide, remember this key takeaway: For long-running asynchrono
   - Trash can for deletions, desktop folder icons for directory trees, and shopping carts for e-commerce purchases.
 
 <!--
-Heuristic 2: Match Between System and the Real World.
+Now let's examine the second heuristic violated by our food delivery screen: **NS02: Match Between System and the Real World**.
 
-Software should adopt metaphors and spatial arrangements that humans already understand from physical life. Think of the trash can icon on your desktop, the shopping cart in e-commerce, or the folder hierarchy.
+Nielsen defines NS02 clearly: *"The system should speak the users' language, with words, phrases, and concepts familiar to the user, rather than system-oriented terms. Follow real-world conventions."*
 
-Examine the gas stove example on the upcoming slide: when 4 knobs are arranged in a straight line, your brain has to perform mental translation to determine which knob controls which burner. But when the knobs mirror the physical 2x2 layout, interaction is instinctive.
+NS02 operates on two levels:
+1. **Vocabulary & Conceptual Metaphors**: Using everyday human concepts (desktop folders, shopping carts, trash cans) and natural language rather than leaking database table names or HTTP status codes.
+2. **Natural Spatial Mapping (Natural Mapping)**: Look at the gas stove example. When 4 burners are arranged in a 2×2 square grid, but the 4 control knobs are arranged in a 1×4 horizontal line, the user must perform mental coordinate translation every time they cook—frequently turning on the wrong burner! Arranging the 4 knobs in the exact same 2×2 spatial geometry reduces cognitive friction to zero.
 
-To summarize this slide, remember this key takeaway: Map digital controls directly to physical spatial layouts and everyday human vocabulary.
+💡 難字與專業術語解說：
+- system-oriented terms: 系統導向術語（工程師內部使用的資料庫、網路或程式碼名詞）
+- natural spatial mapping: 自然空間映射（控制項的排列位置直接對應受控物體在真實空間的幾何配置）
+- counter-example: 反例、反面教材
+- conceptual metaphor: 概念隱喻（借用真實世界熟悉的事物如「購物車、垃圾桶」來比喻數位操作）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -608,13 +686,17 @@ To summarize this slide, remember this key takeaway: Map digital controls direct
 </div>
 
 <!--
-Examine this classic demonstration of natural spatial mapping.
+This side-by-side illustration captures the power of Natural Spatial Mapping on a kitchen stove.
 
-On the left, four knobs are arranged in a single horizontal row for a 2x2 burner stove. Users must read labels or mentally calculate which knob controls which burner—inevitably resulting in turning on the wrong burner!
+On the left ("Poor Mapping"), the four burners sit in a 2×2 square, while the four knobs sit in a single horizontal row at the bottom. Even with tiny text labels printed next to the knobs (*Front Left, Rear Left, Rear Right, Front Right*), humans in a hurry constantly misread them and ignite the wrong burner.
 
-On the right, arranging the knobs in the identical 2x2 matrix makes operation subconscious and completely error-free.
+On the right ("Good Natural Mapping"), the four knobs are positioned in a 2×2 physical cluster that mirrors the exact geometry of the burners. No text labels are needed—your hand reaches for the corresponding knob subconsciously and error-free!
 
-To summarize this slide, remember this key takeaway: When controls mirror real-world spatial geometries, mental translation friction drops to zero.
+💡 難字與專業術語解說：
+- burner & knob: 瓦斯爐口與控制旋鈕
+- mental translation: 心智轉換（大腦必須先閱讀標籤再換算空間對應位置的認知負荷）
+- spatial geometry: 空間幾何排列
+- subconsciously: 下意識地、無須刻意動腦思考地
 -->
 ---
 ## NS02 in Practice (2/2): Speaking Everyday User Language
@@ -622,7 +704,7 @@ To summarize this slide, remember this key takeaway: When controls mirror real-w
 - Exposing raw backend exceptions (`HTTP 502`, `ERR_SOCKET_TIMEOUT`) forces everyday shoppers to decipher engineering jargon and triggers panic over double-charging.
 
 <div class="split73">
-  <div class="left">
+<div class="left">
 
 * **System-Oriented Jargon (Bad):**
   - ❌ *"Transaction Exception 403: Acquirer socket connection timed out."*
@@ -632,83 +714,114 @@ To summarize this slide, remember this key takeaway: When controls mirror real-w
   - ✅ **Everyday Vocabulary:** Explains that the *"payment channel is currently busy."*
   - ✅ **Actionable Next Steps:** Offers clear choices (**`Retry Payment`** or **`Use Different Card`**).
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch06/ns_ai_02_nobg.png" alt="Friendly Everyday Language in Mobile Checkout" style="max-height: 430px;" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Here is our second example of NS02, focusing on speaking the user's everyday language in software dialogs.
+Let's look at the second dimension of NS02: **Speaking Everyday User Language** instead of raw system jargon during mobile checkout exceptions.
 
-When a mobile checkout payment fails, a developer-centric system might throw 'HTTP Error 403: Gateway Connection Timeout'. Instead, this interface uses familiar, everyday human vocabulary: 'Our payment channel is currently busy and we couldn't complete the charge. Please try again in a moment or use a different credit card.'
+On the left, when a payment gateway times out, a developer-centric app dumps the raw exception string onto the screen: *"Transaction Exception 403: Acquirer socket connection timed out."* Imagine being a shopper who just clicked "Pay $299"—your immediate panic is: *"Did you charge my credit card or not?!"*
 
-To summarize this slide, remember this key takeaway: Translate internal system states and network exceptions into empathetic, everyday human concepts.
+Now look at the human-centered dialog on the right:
+1. **Reassuring Status**: Immediately answers the user's #1 fear in plain language: *"We couldn't complete the charge"* (your money is safe!).
+2. **Everyday Vocabulary**: Explains that *"the payment channel is currently busy"* instead of talking about acquirer sockets.
+3. **Actionable Next Steps**: Provides two clear buttons—**`Retry Payment`** or **`Use Different Card`**.
+
+💡 難字與專業術語解說：
+- raw backend exception: 原始後端例外錯誤（未經包裝轉譯的程式底層錯誤訊息）
+- decipher engineering jargon: 解讀工程行話（強迫一般用戶猜測技術名詞的含義）
+- acquirer socket timeout: 收單機構網路連線逾時（金融刷卡通道的底層網路術語）
+- reassuring: 令人安心的、消除疑慮的
+- actionable next steps: 可立即採取的下一步行動方案
+-->
+---
+## Challenge: What's Wrong with this Food Delivery Screen?
+
+<div class="split64">
+<div class="left">
+
+> **Scenario:** After placing an order for dinner, a hungry customer is greeted with this order tracking screen.
+
+* **1. Status & Feedback (What's happening?):**
+  - The spinner has been stuck for nearly 4 minutes (`3m 42s`) with no progress bar.
+  - Did the restaurant accept the order? When will it arrive (`ETA: TBD`)?
+* **2. Language & Mental Model (Whose language is this?):**
+  - Displays cryptic backend codes: `ITEM_SKU_90218` and `HTTP_204_NO_CONTENT`.
+  - Buttons ask the hungry customer to *"Rollback TXN"* or *"Refresh Socket"*.
+* **Discussion Prompt:**
+  - What are the **top 3 usability disasters** on this screen?
+
+
+</div>
+<div class="right">
+    <img src="../../img/ch06/food_delivery_bad.png" alt="Bad Food Delivery Tracking Screen" />
+
+</div>
+</div>
+
+<!--
+Now that we have mastered NS01 and NS02, let's put them to the test with our first Classroom Challenge!
+
+Look at the mobile screen on the right (`food_delivery_bad.png`). Imagine a hungry customer has just paid for dinner on a food delivery app, and this tracking screen appears.
+
+Turn to your neighbor and examine what is wrong in two areas:
+1. **Status & Feedback**: The red-and-grey spinner says *"Processing Request... Elapsed: 3m 42s (No ACK)"*, *"Worker State: STUCK / WAIT"*, and at the bottom, *"ETA: TBD"*. Did the restaurant even receive the order? Is the app frozen?
+2. **Language & Mental Model**: Look at the logs: `STATUS: HTTP_204_NO_CONTENT`, `ITEM_SKU_90218_SPEC_V2 x 1`, `GEO_COORD: 24.1788, 120.6467`, and buttons labeled **`Refresh Socket`** and **`Rollback TXN`**! Why is a hungry dinner customer forced to read raw backend RPC logs?
+
+💡 難字與專業術語解說：
+- spinner: 旋轉載入指示器（俗稱「轉圈圈」的等待動畫元件）
+- elapsed time & ACK (Acknowledgment): 已耗用時間與確認回應訊號
+- ETA (Estimated Time of Arrival) & TBD (To Be Determined): 預計送達時間與待定（未知）
+- cryptic backend code: 晦澀難懂的後端代碼
+- SKU (Stock Keeping Unit): 庫存單位編號（倉儲與資料庫內部的商品編碼）
+- Rollback TXN (Transaction): 回滾交易（資料庫術語，一般消費者完全無法理解）
 -->
 ---
 ## Challenge Revealed: Redesigning for NS01 & NS02
 
 <div class="split64">
-  <div class="left">
+<div class="left">
 
 > **The Solution:** Replace developer jargon with real-world mental models, and replace infinite spinners with multi-stage progress tracking.
 
+<div class="orig-ui-hover" data-orig-src="../../img/ch06/food_delivery_bad.png">🔍 Hover to see original UI design (p.25)</div>
+
 * **NS01 Redesign (Visibility of System Status):**
-  - [x] **Concrete ETA:** *"12:35 PM (in ~18 mins)"* replaces ambiguous *"TBD"*.
-  - [x] **4-Stage Stepper:** Placed -> Cooking -> On Road -> Delivered gives instant visual feedback of where the order stands.
+  - ✅ **Concrete ETA:** *"12:35 PM (in ~18 mins)"* replaces ambiguous *"TBD"*.
+  - ✅ **4-Stage Stepper:** Placed -> Cooking -> On Road -> Delivered gives instant visual feedback of where the order stands.
 * **NS02 Redesign (Match with Real World):**
-  - [x] **Everyday Culinary Language:** Human food names (*Braised Beef Noodle Soup*) replace database SKU IDs.
-  - [x] **Human Real-World Concepts:** Courier name, motorbike model, and recognizable street addresses replace coordinates.
-  - [x] **Natural Actions:** *"Call Courier"* & *"Need Help?"* replace technical database commands (*Rollback*).
+  - ✅ **Everyday Culinary Language:** Human food names (*Braised Beef Noodle Soup*) replace database SKU IDs.
+  - ✅ **Human Real-World Concepts:** Courier name, motorbike model, and recognizable street addresses replace coordinates.
+  - ✅ **Natural Actions:** *"Call Courier"* & *"Need Help?"* replace technical database commands (*Rollback*).
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch06/food_delivery_good.png" alt="Good Food Delivery Tracking Screen" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Remember the frustrating food delivery screen from earlier? Now that we've covered NS01 and NS02, here is how professional UX teams redesign it.
+Now let's return to our Food Delivery Challenge (`food_delivery_good.png`) and see how applying **NS01** and **NS02** transforms the user experience!
 
-For NS01, we replaced the frozen spinner and 'TBD' with an explicit arrival estimate of 12:35 PM and a 4-stage visual stepper. The user immediately knows the courier is on the way to the restaurant.
+1. **NS01 Redesign (Visibility of System Status)**:
+   - The frozen spinner and *"ETA: TBD"* are replaced by a prominent green arrival estimate: **`12:35 PM (in ~18 mins)`** with dynamic status text (*"Kitchen is preparing your fresh meal!"*).
+   - A 4-stage visual stepper (**`Placed ✓ → Cooking ● → On Road → Delivered`**) shows the exact stage of the order at a glance.
+2. **NS02 Redesign (Match with the Real World)**:
+   - Raw SKUs (`ITEM_SKU_90218`) become appetizing real-world dish names (**`1x Braised Beef Noodle Soup (Large)`**, **`1x Seasonal Steamed Greens`**).
+   - GPS coordinates become a recognizable street address (`100 Wenhua Rd, Science 4F`) and courier identity (`Alex Chen, KYMCO 125`), while **`Rollback TXN`** becomes **`Call Courier`** and **`Need Help?`**!
 
-For NS02, technical jargon is completely eradicated. We see the actual restaurant name, the courier's name and scooter plate, and real food names. The actions align with real-world desires: calling the courier or contacting support.
-
-To summarize this slide, remember this key takeaway: Great UX makes the backend invisible by mirroring the user's everyday physical world and providing continuous, reassuring feedback.
--->
----
-## Challenge: What's Wrong with this Checkout Screen?
-
-<div class="split64">
-  <div class="left">
-
-> **Scenario:** A shopper reaches the final checkout screen, but realizes they mistyped their apartment number (`Apt 4B`).
-
-* **1. User Control & Escape Hatches (Can you go back?):**
-  - There is no *"Back"* button, the stepper is locked, and shipping details are read-only.
-  - Notice the red banner: *"Clicking pay finalizes immediately. No refunds, no cancelation, no undo!"*
-* **2. UI Conventions & Visual Hierarchy (Does this feel familiar?):**
-  - Why is the top-right shopping cart button represented by a **wrench icon**?
-  - Why is the primary button a giant red *"Delete & Empty Cart"* trap, while *"Place Order ($299.00)"* is a faint, disabled-looking ghost button?
-* **Discussion Prompt:**
-  - What makes this checkout flow a usability nightmare?
-
-  </div>
-  <div class="right">
-    <img src="../../img/ch06/checkout_bad.png" alt="Bad E-Commerce Checkout Screen" />
-  </div>
-</div>
-
-<!--
-Before we examine Heuristics 3 and 4, let's explore this e-commerce checkout disaster.
-
-Look at the mobile screen on the right. A customer is on the final payment step, but spots a typo in their apartment number. 
-
-What violates NS03 (User Control & Freedom)? The pipeline is completely locked down. There is no back button, no edit link, and a terrifying banner stating that payment is permanent with zero undo window.
-
-What violates NS04 (Consistency & Standards)? The shopping cart icon has been replaced by a wrench! Furthermore, Jakob's Law is violently broken: standard checkout conventions are reversed. The giant high-contrast button deletes the cart, while the actual checkout button looks disabled.
-
-To summarize this slide, remember this key takeaway: Trapping users in linear workflows and defying platform UI conventions induces instant purchase abandonment.
+💡 難字與專業術語解說：
+- concrete ETA: 具體明確的預計送達時間
+- culinary language: 餐飲生活語彙（人類日常點餐熟悉的菜名與口味描述）
+- courier: 外送員、快遞人員
+- braised beef noodle soup: 紅燒牛肉麵
 -->
 ---
 ## NS03: User Control & Freedom (Emergency Exits)
@@ -722,15 +835,18 @@ To summarize this slide, remember this key takeaway: Trapping users in linear wo
   - **Soft Deletes:** Move deleted items to a "Trash Bin" with a 30-day restoration window before permanent deletion.
 
 <!--
-Heuristic 3: User Control and Freedom.
+That claustrophobic checkout screen leads us to **NS03: User Control and Freedom**.
 
-Humans are curious, but they are also prone to accidental clicks. If an interface makes users terrified that a single misclick will permanently delete their data or finalize an unwanted purchase, they become hesitant and anxious.
+Nielsen states: *"Users often choose system functions by mistake and will need a clearly marked 'emergency exit' to leave the unwanted state without having to go through an extended dialogue."*
 
-Provide obvious emergency exits! Every modal dialog must have an escape key or close icon. Every destructive action should provide an immediate 'Undo' toast notification.
+Why is NS03 psychologically vital? Because humans learn software by exploring, and human fingers slip! If users feel that one wrong tap will trap them in a screen, wipe their cart, or irreversibly charge their card, they become anxious and defensive. Providing **Universal Undo (`Cmd+Z`)**, obvious **Cancel / Back buttons**, **Non-Destructive Steppers**, and **Soft Deletes (Trash Bins)** gives users the psychological safety net required to use software with confidence.
 
-When users know they can easily undo any mistake, they explore features freely and confidently.
-
-To summarize this slide, remember this key takeaway: Clear emergency exits and universal undo mechanisms empower users to explore software without fear of irreversible mistakes.
+💡 難字與專業術語解說：
+- user control & freedom: 使用者控制與自由度（賦予使用者隨時反悔、撤銷與退出的掌控權）
+- extended dialogue: 冗長繁瑣的對話確認流程
+- destructive state change: 破壞性狀態變更（如刪除資料、清空表單或正式扣款）
+- non-destructive navigation: 非破壞性導覽（切換分頁或返回上一頁時，完整保留已填寫的表單資料）
+- soft delete: 軟刪除（刪除時僅標記移入垃圾桶並保留 30 天復原期，而非立即物理抹除）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -741,11 +857,16 @@ To summarize this slide, remember this key takeaway: Clear emergency exits and u
 </div>
 
 <!--
-Look at this first example of NS03 in a web calendar application.
+Look at this first practical implementation of NS03 in a web calendar application.
 
-When a user accidentally drags and drops a meeting to 10:00 AM, the application does not trap them or force them to manually drag it back. Instead, a floating toast notification immediately appears at the bottom with a prominent one-click 'Undo' button.
+When a user drags a meeting block to reschedule it and accidentally drops it on the wrong time slot (`10:00 AM`), a poorly designed system either silently commits the error or interrupts every drag with an annoying *"Are you sure?"* popup modal.
 
-To summarize this slide, remember this key takeaway: Immediate Undo toast notifications let users revert accidental direct-manipulation actions with a single click.
+Instead, modern interfaces allow direct manipulation immediately and surface a floating **Undo Toast** at the bottom of the screen: *"Event moved to 10:00 AM — **[Undo]** [✕]"*. With a single click, the mistake is reverted in milliseconds with zero friction.
+
+💡 難字與專業術語解說：
+- drag-and-drop: 拖放操作（按住滑鼠或手指直接搬移介面物件的直接操作模式）
+- Undo Toast: 復原浮動快顯通知（畫面底部短暫浮現、附帶一鍵「復原」按鈕的輕量提示列）
+- direct manipulation: 直接操作（直接拖拉物件而非透過填寫表單修改屬性）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -756,11 +877,16 @@ To summarize this slide, remember this key takeaway: Immediate Undo toast notifi
 </div>
 
 <!--
-Here is a second set of real-world emergency exits in Gmail and mobile social apps.
+Here are two more everyday masterpieces of NS03 across desktop email and mobile social apps:
 
-On the left, when a user deletes an email thread or hits send too early, Gmail surfaces a yellow banner offering an instant 'Undo' link. On the right, when backing out of a half-written mobile post, a clear action sheet lets the user choose between 'Discard' or 'Keep' so they never feel locked into a screen.
+On the left, when a user deletes an email thread or hits "Send" a second too early in Gmail, a prominent banner offers an instant **`Undo`** link—implemented on the backend by holding the outgoing message in a queue for 5 to 30 seconds before actual SMTP transmission!
 
-To summarize this slide, remember this key takeaway: Prominent Undo banners and Cancel/Discard exits provide a psychological safety net across both desktop and mobile workflows.
+On the right, when backing out of a half-written mobile post, the app does not silently discard the user's writing nor lock them inside the editor; it presents a clear action sheet (**`Discard`**, **`Save Draft`**, or **`Keep Editing`**) so the user stays in complete control.
+
+💡 難字與專業術語解說：
+- email thread: 電子郵件對話串
+- action sheet: 底部操作選單（行動裝置由下往上滑出、提供明確分支選項的面板）
+- discard vs. keep: 捨棄修改 vs. 保留繼續編輯
 -->
 ---
 ## NS04: Consistency & Standards (Jakob's Law)
@@ -775,15 +901,20 @@ To summarize this slide, remember this key takeaway: Prominent Undo banners and 
   - **External Consistency:** Adhering to platform standards (Apple HIG for iOS, Material Design for Android).
 
 <!--
-Heuristic 4: Consistency and Standards.
+Now let's examine the second heuristic violated by our wrench-icon checkout screen: **NS04: Consistency and Standards**.
 
-Engineers and junior designers often succumb to the urge to reinvent the wheel—putting navigation menus at the bottom-right or using novel icons for shopping carts.
+Nielsen states: *"Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions."*
 
-Jakob Nielsen formulated Jakob's Law: Remember that your users spend 99% of their screen time on other applications! When they arrive at your app, they transfer their existing habits and expectations.
+Why is reinventing standard icons (like using a wrench for a shopping cart) or reversing button color semantics so destructive? Because of **Jakob's Law**: your users spend 99% of their time on *other* apps! They bring deeply ingrained muscle memory to your software. Professional engineers maintain consistency across two dimensions:
+1. **Internal Consistency**: Using a unified Design System (consistent typography, spacing tokens, terminology, and button hierarchy across every screen of your product).
+2. **External Consistency**: Honoring industry and OS conventions (Apple Human Interface Guidelines on iOS, Material Design on Android, cart at top-right, search as a magnifying glass).
 
-Respect platform standards. Use design tokens to ensure internal consistency across your product suite.
-
-To summarize this slide, remember this key takeaway: Adhering to platform conventions and internal design systems minimizes cognitive friction and speeds user onboarding.
+💡 難字與專業術語解說：
+- consistency & standards: 一致性與標準性（詞彙、圖示與操作邏輯在產品內外保持統一）
+- industry convention: 產業通用慣例（全網使用者早已習以為常的標準設計模式）
+- internal vs. external consistency: 內部一致性（產品自身各頁面統一）vs. 外部一致性（符合主流平台慣例）
+- Design System & Design Tokens: 設計系統與設計變數（統一管理色彩、字級、間距與元件規格的工程規範）
+- Apple HIG & Material Design: 蘋果人機介面指南與 Google Material 設計規範
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -794,11 +925,18 @@ To summarize this slide, remember this key takeaway: Adhering to platform conven
 </div>
 
 <!--
-Observe this first example of NS04 in a SaaS Account Settings dialog.
+Examine how NS04 is implemented in this SaaS Account Settings modal dialog.
 
-Notice the internal and external consistency: form labels sit uniformly above inputs, toggle switches use the universal green active state on the right, and the bottom action bar places the neutral 'Cancel' button on the left and the high-contrast green 'Confirm' primary button on the right. Users never have to guess which button saves or cancels.
+Notice both internal and external consistency working together:
+- Every form label sits consistently above its input field with uniform vertical rhythm and padding.
+- Toggle switches follow the universal platform standard: grey and left when off, vibrant green and right when active.
+- Most importantly, look at the bottom action bar: the neutral secondary **`Cancel`** button sits on the left, while the high-contrast green primary **`Confirm`** CTA sits on the right. Keeping this button order consistent across all 50 dialogs in an enterprise system prevents catastrophic muscle-memory misclicks.
 
-To summarize this slide, remember this key takeaway: Consistent button placement, color semantics, and form patterns prevent spatial memory errors across dialogs.
+💡 難字與專業術語解說：
+- form control: 表單控制項（輸入框、下拉選單、開關滑桿等互動元件的統稱）
+- button hierarchy: 按鈕視覺階層（區分主要行動按鈕 Primary CTA 與次要取消按鈕的視覺對比）
+- toggle switch: 切換開關（代表二元啟用/停用狀態的滑桿元件）
+- spatial muscle memory: 空間肌肉記憶（使用者習慣性點擊視窗固定角落的直覺反應）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -809,77 +947,97 @@ To summarize this slide, remember this key takeaway: Consistent button placement
 </div>
 
 <!--
-Here is our second example of NS04 in modern developer tools and code editors.
+Here is a second example of NS04 in modern developer tools and AI-powered IDEs.
 
-Across VS Code, Cursor, Slack, Notion, and Linear, pressing Cmd+K (or Ctrl+K) opens an inline command palette, Enter accepts, and Shift+Enter inserts a newline. By honoring these industry-wide conventions, a developer switching to a new IDE can operate at full speed on day one.
+Whether a developer is working in VS Code, Cursor, Notion, Linear, or Slack, pressing **`Cmd+K`** (or **`Ctrl+K`**) invokes the inline command palette, pressing **`Enter`** confirms and submits, and pressing **`Shift+Enter`** inserts a line break.
 
-To summarize this slide, remember this key takeaway: Following industry-standard interaction shortcuts allows users to transfer existing muscle memory effortlessly.
+Because these tools honor cross-platform keyboard conventions, an engineer switching to a new IDE does not have to read a manual—their existing muscle memory works on minute one!
+
+💡 難字與專業術語解說：
+- keyboard convention: 鍵盤快捷鍵慣例（跨軟體通用的標準按鍵組合）
+- command palette / command bar: 命令面板 / 快捷指令列（透過快捷鍵喚出、可快速搜尋並執行動作的浮動輸入框）
+- muscle memory transfer: 肌肉記憶轉移（將在舊工具練就的操作習慣無縫應用至新工具）
+-->
+---
+## Challenge: What's Wrong with this Checkout Screen?
+
+<div class="split64">
+<div class="left">
+
+> **Scenario:** A shopper reaches the final checkout screen, but realizes they mistyped their apartment number (`Apt 4B`).
+
+* **1. User Control & Escape Hatches (Can you go back?):**
+  - There is no *"Back"* button, the stepper is locked, and shipping details are read-only.
+  - Notice the red banner: *"Clicking pay finalizes immediately. No refunds, no cancelation, no undo!"*
+* **2. UI Conventions & Visual Hierarchy (Does this feel familiar?):**
+  - Why is the top-right shopping cart button represented by a **wrench icon**?
+  - Why is the primary button a giant red *"Delete & Empty Cart"* trap, while *"Place Order ($299.00)"* is a faint, disabled-looking ghost button?
+* **Discussion Prompt:**
+  - What makes this checkout flow a usability nightmare?
+
+
+</div>
+<div class="right">
+    <img src="../../img/ch06/checkout_bad.png" alt="Bad E-Commerce Checkout Screen" />
+
+</div>
+</div>
+
+<!--
+Now that we have covered NS03 and NS04, let's test your diagnostic eye with our second Classroom Challenge! Look at the e-commerce checkout screen on the right (`checkout_bad.png`).
+
+Imagine a shopper reaches Step 3 (Final Payment) for a $299 pair of headphones, and suddenly notices a typo in their shipping apartment number (`Apt 4B`). Look closely at the traps on this screen:
+1. **User Control & Escape Hatches**: There is **no `< Back` button** in the top bar! The stepper says `STEP 3 OF 3: FINAL PAYMENT (LOCKED)`, the shipping address says `(READ-ONLY)` with no Edit link, and the red warning box screams: *"Clicking pay finalizes immediately. No refunds, no cancelation, no undo!"*
+2. **UI Conventions & Visual Hierarchy**: Look at the top-right corner—why is the shopping cart button drawn as a **red wrench icon**?! And look at the bottom buttons: why is the giant, high-contrast primary button a bright red **`Delete & Empty Cart`** trap, while **`Place Order ($299.00)`** looks like a disabled grey ghost button?!
+
+💡 難字與專業術語解說：
+- escape hatch: 逃生出口（讓使用者安全退回上一步或取消操作的介面管道）
+- read-only: 唯讀狀態（僅供檢視、禁止修改鎖定的欄位）
+- irreversible action: 不可逆操作（一旦執行便無法撤銷或復原的動作）
+- wrench icon: 板手圖示（通常代表系統設定或維修工具，絕不應拿來代表購物車）
+- ghost button: 幽靈按鈕（僅有淺色邊框或低對比背景、視覺權重極低的次要或禁用按鈕）
 -->
 ---
 ## Challenge Revealed: Redesigning for NS03 & NS04
 
 <div class="split64">
-  <div class="left">
+<div class="left">
 
 > **The Solution:** Honor platform standards and Jakob's Law, while guaranteeing non-destructive emergency exits and an undo safety net.
 
+<div class="orig-ui-hover" data-orig-src="../../img/ch06/checkout_bad.png">🔍 Hover to see original UI design (p.33)</div>
+
 * **NS03 Redesign (User Control & Freedom):**
-  - [x] **Non-Destructive Stepper:** Shoppers can click back to *"Cart"* or *"Shipping"* anytime without losing entered data.
-  - [x] **Direct In-Line Edits:** Clear `[Edit Items]` and `[Change]` links beside order items and delivery addresses.
-  - [x] **15-Second Undo Guarantee:** Reassuring safety net allows 1-click cancelation right after tapping pay.
+  - ✅ **Non-Destructive Stepper:** Shoppers can click back to *"Cart"* or *"Shipping"* anytime without losing entered data.
+  - ✅ **Direct In-Line Edits:** Clear `[Edit Items]` and `[Change]` links beside order items and delivery addresses.
+  - ✅ **15-Second Undo Guarantee:** Reassuring safety net allows 1-click cancelation right after tapping pay.
 * **NS04 Redesign (Consistency & Standards):**
-  - [x] **Platform Conventions:** Standard shopping cart icon at top-right, standard `< Cart` back navigation at top-left.
-  - [x] **Expected Button Hierarchy:** Prominent green CTA for *"Place Order ($299.00)"* with a clean neutral *"Cancel & Return to Cart"* exit below.
+  - ✅ **Platform Conventions:** Standard shopping cart icon at top-right, standard `< Cart` back navigation at top-left.
+  - ✅ **Expected Button Hierarchy:** Prominent green CTA for *"Place Order ($299.00)"* with a clean neutral *"Cancel & Return to Cart"* exit below.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch06/checkout_good.png" alt="Good E-Commerce Checkout Screen" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Here is the solution for our second challenge, applying Heuristics 3 and 4.
+Now let's reveal the refactored E-Commerce Checkout screen (`checkout_good.png`) applying **NS03** and **NS04**!
 
-For NS03 (User Control & Freedom), we gave the user total psychological safety: they can freely click back to previous steps, edit their shipping address with a single tap, and enjoy a 15-second Undo window after placing the order.
+1. **NS03 Redesign (User Control & Freedom)**:
+   - Top-left provides a clear **`< Cart`** back button, and the stepper (`1. Cart (OK) → 2. Shipping (OK) → 3. Pay`) allows clicking back to any previous step without losing data.
+   - Both the Order Summary and Shipping Address cards include inline **`[ Edit Items ]`** and **`[ Change ]`** links so fixing `Apt 4B` takes a single tap!
+   - A green banner provides a **15-Second Undo Guarantee** right after placing the order.
+2. **NS04 Redesign (Consistency & Standards)**:
+   - The bizarre red wrench icon is replaced by a standard **Shopping Cart icon** in the top-right corner.
+   - Button hierarchy follows universal e-commerce standards: a prominent green primary CTA (**`Place Order ($299.00)`**) paired with a clean neutral exit (**`Cancel & Return to Cart`**) below.
 
-For NS04 (Consistency & Standards), the interface now behaves like every other top-tier e-commerce app (Amazon, Apple, Shopify). The shopping cart icon is standard, the back button is top-left, and the primary CTA is unmistakably clear.
-
-To summarize this slide, remember this key takeaway: When users have easy emergency exits and familiar standard controls, hesitation vanishes and checkout conversion surges.
--->
----
-## Challenge: What's Wrong with this Flight Booking Screen?
-
-<div class="split64">
-  <div class="left">
-
-> **Scenario:** A traveler is booking round-trip tickets from Taipei to Osaka for an upcoming autumn vacation.
-
-* **1. Input Guardrails & Validation (Why let errors happen?):**
-  - Requires manual string typing for dates (`YYYY-MM-DD`) instead of a calendar picker.
-  - Accepts past dates (`2026-11-10`) and impossible logic (*Return date `2026-11-05` earlier than Departure!*).
-  - Red *"Delete Profile"* button triggers instant 1-click deletion with no confirmation.
-* **2. Memory Load vs. Visual Cues (Why force memorization?):**
-  - Forces users to recall 3-letter IATA airport codes (`TPE`, `KIX`) from memory.
-  - Zero city autocomplete, search history, or popular destination chips.
-* **Discussion Prompt:**
-  - How could defensive design eliminate these errors before submission?
-
-  </div>
-  <div class="right">
-    <img src="../../img/ch06/flight_booking_bad.png" alt="Bad Flight Booking Screen" />
-  </div>
-</div>
-
-<!--
-Before exploring Heuristics 5 and 6, examine this flight booking mobile screen.
-
-Look at the input fields on the right. A traveler wants to book a flight from Taipei to Osaka.
-
-What violates NS05 (Error Prevention)? The system forces the user to manually type raw date strings into text boxes. Worse, it lets them type a past date and a return date that is earlier than departure! There is no guardrail, and deleting a passenger has no confirmation prompt.
-
-What violates NS06 (Recognition Rather Than Recall)? The app expects users to recall cryptic 3-letter IATA airport codes from memory. There are no city names, no search suggestions, and no recent history chips.
-
-To summarize this slide, remember this key takeaway: Forcing users to memorize codes and type unconstrained data invites catastrophic user error.
+💡 難字與專業術語解說：
+- non-destructive stepper: 非破壞性步驟導覽列（允許自由來回切換步驟而不遺失已填資料）
+- inline edit: 行內直接編輯（在當前卡片旁直接點擊修改，無需重走整個流程）
+- undo safety net: 復原安全網（允許使用者在誤觸下單後短時間內無條件撤銷的保護機制）
 -->
 ---
 ## NS05: Error Prevention
@@ -893,15 +1051,20 @@ To summarize this slide, remember this key takeaway: Forcing users to memorize c
   - **Intelligent Defaults:** Pre-fill sensible default parameters to eliminate blank-form intimidation.
 
 <!--
-Heuristic 5: Error Prevention.
+This flight booking nightmare demonstrates why **NS05: Error Prevention** is one of the highest-leverage principles in software engineering.
 
-Writing a polite error message after the user fails is good; designing the interface so the user cannot fail in the first place is brilliant engineering.
+Read Nielsen's definition carefully: *"Even better than good error messages is a careful design which prevents a problem from occurring in the first place."*
 
-Why let a user type a date into a raw text box and then yell at them for using slashes instead of dashes? Give them a constrained date picker widget!
+Cognitive psychologist Don Norman distinguishes between two types of human errors:
+- **Slips**: The user intends the right action, but their finger slips or loses focus (e.g., accidentally clicking "Delete Profile" next to another button).
+- **Mistakes**: The user has an incorrect mental model or misunderstands the required format (e.g., typing `11/05/2026` vs. `05/11/2026`).
+Defensive UI engineering prevents both by using **Input Constraints** (calendar date pickers that disable past dates), **Disabled Submit States** until validation passes, and **High-Friction Confirmation Dialogs** for destructive actions!
 
-For catastrophic actions—like deleting a production database—introduce intentional friction, such as requiring the user to type the database name explicitly.
-
-To summarize this slide, remember this key takeaway: Prevent errors by constraining inputs, validating fields in real time, and requiring explicit confirmation for destructive actions.
+💡 難字與專業術語解說：
+- error prevention: 防錯設計 / 防呆機制（透過介面限制讓錯誤從一開始就無法發生）
+- slip vs. mistake: 操作失誤（手滑/分心按錯）vs. 認知錯誤（誤解規則或格式而填錯）
+- input constraint: 輸入約束（以日曆、下拉選單或步進器取代自由文字框，物理性排除非法輸入）
+- high-friction confirmation: 高阻力確認機制（針對永久刪除等危險操作，要求輸入專案名稱以強迫大腦清醒確認）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -912,11 +1075,16 @@ To summarize this slide, remember this key takeaway: Prevent errors by constrain
 </div>
 
 <!--
-Examine these two classic error-prevention mechanisms on screen.
+Look at these two classic industrial implementations of NS05 on screen:
 
-On the left is GitHub's repository deletion safeguard, which requires typing the exact repository name before the delete button activates. On the right is an email client's proactive attachment detector: when your message body contains the word 'attached' but no file is attached, it intercepts the send action before an embarrassing mistake happens.
+On the left is GitHub's repository deletion safeguard. Because deleting a code repository is permanent and catastrophic, a simple "OK / Cancel" popup is not enough—users click "OK" out of habitual muscle memory! GitHub introduces intentional cognitive friction: the user must manually type the exact repository string (`user/repo`) before the red delete button unlocks.
 
-To summarize this slide, remember this key takeaway: Proactive context checks and confirmation dialogs catch human slips and lapses before irreversible mistakes occur.
+On the right is Gmail's proactive "Forgotten Attachment Detector": when the email body contains words like *"I have attached the PDF"*, but zero files are attached, the system intercepts the Send action before an embarrassing human slip occurs!
+
+💡 難字與專業術語解說：
+- destructive safeguard: 破壞性操作防護機制
+- intentional cognitive friction: 刻意的認知阻力（在危險操作前故意打斷自動化反射動作，喚醒大腦注意力）
+- proactive interception: 主動式攔截（在錯誤送出前預先偵測矛盾並提醒使用者）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -927,11 +1095,16 @@ To summarize this slide, remember this key takeaway: Proactive context checks an
 </div>
 
 <!--
-Here is a second detailed example of NS05 in a cloud CI/CD platform.
+Here is a second close-up example of NS05 in a cloud CI/CD deployment platform.
 
-Notice how the red 'Delete Project' button remains completely disabled (greyed out) while the user types 'MyProject' into the confirmation box. Only when the string matches 100% does the button become clickable—preventing muscle-memory clicks on 'OK' from wiping out production builds.
+When an engineer clicks to delete a production project (`MyProject`), look at the state of the red **`Delete Project`** button at the bottom right: it is rendered in a **disabled, unclickable state** while the text box is incomplete.
 
-To summarize this slide, remember this key takeaway: Disabling destructive buttons until explicit confirmation criteria are met eliminates accidental one-click disasters.
+Only when the typed string matches `MyProject` 100% does the button state transition to active. Combining explicit string matching with a disabled button state makes accidental one-click deletion physically impossible.
+
+💡 難字與專業術語解說：
+- disabled state: 禁用反灰狀態（按鈕暫時不可點擊，防止未滿足條件時誤觸送出）
+- explicit string match: 明確字串完全比對（要求親手輸入目標名稱以確認刪除意圖）
+- accidental one-click disaster: 一鍵誤觸災難
 -->
 ---
 ## NS06: Recognition Rather Than Recall
@@ -947,15 +1120,19 @@ To summarize this slide, remember this key takeaway: Disabling destructive butto
   - Contextual action toolbars appearing when text is selected.
 
 <!--
-Heuristic 6: Recognition Rather Than Recall.
+Now let's examine the second heuristic violated by forcing travelers to memorize `TPE` and `KIX`: **NS06: Recognition Rather Than Recall**.
 
-Human working memory is extremely limited—capable of holding only about 4 to 7 chunks of information at once.
+Nielsen states: *"Minimize the user's memory load by making objects, actions, and options visible. The user should not have to remember information from one part of the dialogue to another."*
 
-Recognition is cognitively cheap: when you see a familiar icon or recent search history, your brain recognizes it instantly. Recall is cognitively expensive: forcing a user to remember a customer ID code from screen 1 to paste into screen 3 creates intense mental friction.
+Why is this grounded in human neurobiology? Because human **working memory** (short-term memory) is severely limited—George Miller's famous law shows we can hold only **7 ± 2 chunks** (and modern research suggests closer to **4 chunks**) at a time!
+- **Recall** (like a blank command-line prompt or fill-in-the-blank exam) forces the brain to retrieve exact syntax from thin air—high cognitive load!
+- **Recognition** (like a visual menu, autocomplete dropdown, or multiple-choice question) lets the brain visually identify the answer on screen—almost zero cognitive load!
 
-Keep options, previous inputs, and action buttons visible in the user's immediate visual field.
-
-To summarize this slide, remember this key takeaway: Reduce working memory load by surfacing recent history, contextual suggestions, and visible interaction options.
+💡 難字與專業術語解說：
+- recognition rather than recall: 辨識取代回憶（將選項視覺化呈現讓大腦直接認出，而非強迫大腦憑空背誦）
+- working memory load: 工作記憶負荷（大腦短期暫存與處理資訊的心智負擔）
+- blank-slate terminal: 空白終端機介面（毫無視覺提示、全靠背誦指令語法的介面）
+- contextual action toolbar: 情境式操作工具列（選取物件時直接在旁邊浮現可用功能的選單）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -966,11 +1143,16 @@ To summarize this slide, remember this key takeaway: Reduce working memory load 
 </div>
 
 <!--
-Look at this side-by-side comparison of Recall versus Recognition in search design.
+This side-by-side comparison of search interfaces illustrates Recall versus Recognition in everyday web applications.
 
-On the left, a blank search bar forces the user to recall exact technical terms from memory. On the right, the moment the user focuses the search input, recent searches and trending topics appear for instant 1-tap selection.
+On the left ("Forced Recall"), clicking into the search bar shows nothing but an empty white rectangle. If a user wants to re-run a complex query they searched yesterday, they must recall the exact keywords from memory.
 
-To summarize this slide, remember this key takeaway: Surfacing recent history and visual suggestions transforms difficult recall into effortless recognition.
+On the right ("Recognition"), the moment the search input receives focus, a dropdown immediately surfaces **Recent Searches** and **Trending Categories**. A task that required mental memory retrieval + 15 keystrokes is reduced to a 1-second visual recognition and a single tap!
+
+💡 難字與專業術語解說：
+- forced recall: 強迫憑記憶回想
+- search keyword retention: 搜尋關鍵字歷程保留（自動記住並顯示近期搜尋詞彙）
+- focus state: 焦點狀態（當游標點擊進入輸入框時的互動狀態）
 -->
 ---
 ## NS06 in Practice (2/2): Contextual Menus Eliminate Recall
@@ -978,7 +1160,7 @@ To summarize this slide, remember this key takeaway: Surfacing recent history an
 > **Why Is This a Recall vs. Recognition Issue?** Without contextual menus, users must **memorize and recall** *which* top-level menu (`Edit`, `Tools`, or `Format`) or hotkey hides an action!
 
 <div class="split64">
-  <div class="left">
+<div class="left">
 
 * **The Recall Burden (Traditional Menu / CLI):**
   - After highlighting a paragraph, a user must search their memory: *"Where is the summarize tool? Is it buried under `Tools → AI` or `Edit → Transform`? What was the shortcut?"*
@@ -986,85 +1168,105 @@ To summarize this slide, remember this key takeaway: Surfacing recent history an
   - The moment text is highlighted, valid actions (**`Translate`**, **`Summarize`**, **`Improve Writing`**) appear **visibly right beside the cursor**.
   - Users **see and recognize** available options on the spot—zero menu hunting or command memorization!
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch06/ns06_recognition_nobg.png" alt="Contextual Floating Toolbar on Text Selection" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Here is a second powerful application of NS06 in a modern document editor.
+Here is a second powerful application of NS06 in modern document editors (such as Notion, Medium, or AI writing tools): **Contextual Floating Toolbars**.
 
-Why is an in-place contextual toolbar a classic example of Recognition Rather Than Recall? Because in traditional software, after you select a sentence, you have to recall from memory which top-level menu—File, Edit, Insert, or Tools—contains the 'Summarize' or 'Translate' command, or memorize a keyboard shortcut.
+Why is a floating toolbar an NS06 (Recognition vs. Recall) pattern? Think about traditional desktop word processors with 10 top-level menus (`File`, `Edit`, `View`, `Insert`, `Format`, `Tools`...): after highlighting a sentence, a user must **recall from memory** which top-level menu hides the *"Summarize"* or *"Translate"* command, or memorize an obscure keyboard hotkey!
 
-By automatically popping up a floating contextual toolbar right next to the selected text, the system makes the available actions immediately visible. The user's brain simply recognizes the desired action on screen instead of recalling hidden menu paths!
+With a contextual floating toolbar, the moment text is highlighted, the relevant actions (**`Translate`**, **`Summarize`**, **`Improve Writing`**) appear right beside the cursor. The user sees and **recognizes** the action immediately without hunting through deep menu trees.
 
-To summarize this slide, remember this key takeaway: Surfacing contextual action menus right at the point of interaction eliminates the need to memorize deep menu hierarchies.
+💡 難字與專業術語解說：
+- contextual floating toolbar: 情境式浮動工具列（隨選取動作在游標旁即時浮現的快捷選單）
+- recall burden: 記憶提取負擔（必須背誦功能藏在哪一層頂部選單的認知消耗）
+- menu hunting: 選單迷航 / 翻找選單（在多層下拉選單中來回尋找某項功能）
+-->
+---
+## Challenge: What's Wrong with this Flight Booking Screen?
+
+<div class="split64">
+<div class="left">
+
+> **Scenario:** A traveler is booking round-trip tickets from Taipei to Osaka for an upcoming autumn vacation.
+
+* **1. Input Guardrails & Validation (Why let errors happen?):**
+  - Requires manual string typing for dates (`YYYY-MM-DD`) instead of a calendar picker.
+  - Accepts past dates (`2026-11-10`) and impossible logic (*Return date `2026-11-05` earlier than Departure!*).
+  - Red *"Delete Profile"* button triggers instant 1-click deletion with no confirmation.
+* **2. Memory Load vs. Visual Cues (Why force memorization?):**
+  - Forces users to recall 3-letter IATA airport codes (`TPE`, `KIX`) from memory.
+  - Zero city autocomplete, search history, or popular destination chips.
+* **Discussion Prompt:**
+  - How could defensive design eliminate these errors before submission?
+
+
+</div>
+<div class="right">
+    <img src="../../img/ch06/flight_booking_bad.png" alt="Bad Flight Booking Screen" />
+
+</div>
+</div>
+
+<!--
+Let's move to our third Classroom Challenge! Examine the Flight Booking screen on the right (`flight_booking_bad.png`).
+
+A traveler wants to book a round-trip flight from Taipei to Osaka. Look at the usability traps engineered into this form:
+1. **Input Guardrails & Validation**: Instead of a visual calendar picker, the form forces the user to manually type raw `YYYY-MM-DD` strings! Even worse, it accepts **`2026-11-10` (`[Past Date Accepted!]`)** and a return date of **`2026-11-05` (`[Earlier Than Depart!]`)**! And in the passenger card, a bright red **`Delete Profile`** button deletes the traveler's passport record in 1 click with zero confirmation!
+2. **Memory Load vs. Visual Cues**: Look at the airport boxes—the user must recall 3-letter IATA airport codes (**`TPE`**, **`KIX`**) from raw memory, with no city name autocomplete and no recent search chips!
+
+💡 難字與專業術語解說：
+- input guardrail: 輸入防護圍欄 / 防呆限制（在前端控制項層級直接攔截不合法輸入的設計）
+- IATA airport code: 國際航空運輸協會三碼機場代號（如桃園 TPE、關西 KIX）
+- autocomplete: 自動補全（輸入部分字元即自動聯想並帶出完整城市與機場名稱）
+- recent search chip: 最近搜尋標籤膠囊（可一鍵點擊帶入歷史搜尋條件的圓角按鈕）
 -->
 ---
 ## Challenge Revealed: Redesigning for NS05 & NS06
 
 <div class="split64">
-  <div class="left">
+<div class="left">
 
 > **The Solution:** Constrain inputs to eliminate error-prone conditions, and surface visual suggestions so users recognize instead of recall.
 
+<div class="orig-ui-hover" data-orig-src="../../img/ch06/flight_booking_bad.png">🔍 Hover to see original UI design (p.41)</div>
+
 * **NS05 Redesign (Proactive Error Prevention):**
-  - [x] **Visual Calendar Guardrails:** Past dates disabled; return dates strictly constrained to departure or later.
-  - [x] **Constrained Stepper Controls:** Stepper buttons (`[-] 1 [+]`) enforce valid passenger bounds (1–9).
-  - [x] **Smart Validation:** Searches only execute when all parameters form a logically coherent query.
+  - ✅ **Visual Calendar Guardrails:** Past dates disabled; return dates strictly constrained to departure or later.
+  - ✅ **Constrained Stepper Controls:** Stepper buttons (`[-] 1 [+]`) enforce valid passenger bounds (1–9).
+  - ✅ **Smart Validation:** Searches only execute when all parameters form a logically coherent query.
 * **NS06 Redesign (Recognition Rather Than Recall):**
-  - [x] **Natural City Autocomplete:** Displays full names (*Taipei, Osaka*) with IATA codes automatically populated.
-  - [x] **Recent Search Chips:** 1-tap recognition chips (*Tokyo, Seoul*) eliminate repetitive typing and memory retrieval.
+  - ✅ **Natural City Autocomplete:** Displays full names (*Taipei, Osaka*) with IATA codes automatically populated.
+  - ✅ **Recent Search Chips:** 1-tap recognition chips (*Tokyo, Seoul*) eliminate repetitive typing and memory retrieval.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch06/flight_booking_good.png" alt="Good Flight Booking Screen" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Here is the solution for our flight booking challenge, applying Heuristics 5 and 6.
+Let's reveal the refactored Flight Booking screen (`flight_booking_good.png`) applying **NS05** and **NS06**!
 
-For NS05 (Error Prevention), we removed raw string text fields entirely. The visual date picker makes it physically impossible to choose a past date or select a return date before departure. Passenger counts are bounded with steppers.
+1. **NS06 Redesign (Recognition Rather Than Recall)**:
+   - Travelers type or select familiar city names (**`Taipei (TPE - Taoyuan Intl)`**, **`Osaka (KIX - Kansai Intl)`**) with automatic IATA lookup.
+   - Clickable **`Recent:`** destination chips (**`Tokyo (NRT)`**, **`Seoul (ICN)`**) allow 1-tap recognition without retyping.
+2. **NS05 Redesign (Proactive Error Prevention)**:
+   - Raw date text boxes are replaced by a **Constrained Calendar Picker** (`Nov 20, 2026 --> Nov 27, 2026 (7 Days)`) where past dates are greyed out and return dates are strictly constrained to `>= Depart`.
+   - Passenger count uses a bounded stepper (**`[-] 1 [+]`**) and saved traveler profiles auto-fill safely without an unguarded 1-click delete trap!
 
-For NS06 (Recognition Rather Than Recall), travelers no longer need to know what 'KIX' or 'TPE' means. They search for 'Osaka' or 'Taipei', and recent destination chips allow instant recognition and one-tap selection.
-
-To summarize this slide, remember this key takeaway: Replace raw memory recall with visual cues, and replace freeform text inputs with defensive, constrained UI controls.
--->
----
-## Challenge: What's Wrong with this Task Manager Screen?
-
-<div class="split64">
-  <div class="left">
-
-> **Scenario:** A software engineer opens their enterprise team task board to triage their daily bugs.
-
-* **1. Visual Clutter & Signal-to-Noise Ratio (What matters here?):**
-  - Drowning in backend noise: `INTERNAL_DB_ID`, server `Ping: 28ms`, shard names, and daemon timestamps.
-  - Clashing 5-color rainbow tags, heavy borders, and a yellow promotional ad banner compete for attention.
-* **2. Speed & Shortcuts for Daily Experts (Why so many clicks?):**
-  - Zero keyboard shortcuts (`Cmd+K` and `Enter` are disabled).
-  - No multi-select batch actions—editing a task requires clicking through 4 nested mouse submenus (`Submenu 1..3`, `Actions...`).
-* **Discussion Prompt:**
-  - How would you declutter this interface and empower power-user workflows?
-
-  </div>
-  <div class="right">
-    <img src="../../img/ch06/task_management_bad.png" alt="Bad Task Management Workspace" />
-  </div>
-</div>
-
-<!--
-Before we examine Heuristics 7 and 8, let's explore this enterprise task dashboard nightmare.
-
-Look at the mobile workspace on the right. An engineer is trying to prioritize bugs for today's sprint.
-
-What violates NS08 (Aesthetic and Minimalist Design)? The screen is drowning in visual noise. Unrelated database shards, raw timestamps, and clashing neon labels compete for attention, while an intrusive cloud upgrade banner occupies prime real estate. The signal-to-noise ratio is abysmal.
-
-What violates NS07 (Flexibility and Efficiency of Use)? Even though engineers use this tool eight hours a day, there are zero keyboard shortcuts. No Cmd+K quick launcher, no inline editing, and no batch selection. Every trivial edit requires opening nested menus with the mouse.
-
-To summarize this slide, remember this key takeaway: When tools drown in visual clutter and ignore keyboard shortcuts, daily team productivity grinds to a halt.
+💡 難字與專業術語解說：
+- proactive error prevention: 主動式防錯設計（在輸入階段即透過元件限制排除錯誤可能）
+- calendar guardrail: 日曆防呆限制（禁用過去日期並確保回程晚於去程的邏輯約束）
+- bounded stepper: 具上下限約束的步進控制器（如限制人數僅能在 1–9 人之間增減的按鈕）
 -->
 ---
 ## NS07: Flexibility & Efficiency of Use (Accelerators)
@@ -1078,15 +1280,20 @@ To summarize this slide, remember this key takeaway: When tools drown in visual 
   - Display keyboard shortcut hints directly inside dropdown menus, enabling novices to gradually transition into power users.
 
 <!--
-Heuristic 7: Flexibility and Efficiency of Use.
+That agonizing 4-click task board brings us to **NS07: Flexibility and Efficiency of Use**.
 
-Great software caters gracefully to both first-time novices and daily power users.
+Nielsen states: *"Accelerators—unseen by the novice user—may often speed up the interaction for the expert user such that the system can cater to both inexperienced and experienced users."*
 
-A novice needs clear labels, large buttons, and guided step-by-step wizards. A power user—like an accountant or software engineer—finds clicking through five modal screens agonizingly slow.
+This is the art of **Dual-Track Interaction Design**:
+- **Novice Path**: A new intern joining the team on Day 1 needs visible buttons, clear labels, and guided menus so they can use the software immediately.
+- **Expert Path (Accelerators)**: A senior engineer triaging 100 tickets a day needs **Global Command Palettes (`Cmd+K`)**, **Single-Key Hotkeys** (`C` to create, `E` to edit), **Code Snippets**, and **Multi-Select Batch Actions**.
+By displaying shortcut hints quietly inside dropdown menus, you create a bridge for novices to naturally evolve into power users!
 
-Provide accelerators: command palettes like Cmd+K, keyboard hotkeys, and macro snippets. Novices never need to know the hotkeys exist, but power users will love you for them.
-
-To summarize this slide, remember this key takeaway: Provide accelerators and shortcuts that allow power users to operate at peak speed without confusing novice users.
+💡 難字與專業術語解說：
+- flexibility & efficiency of use: 彈性與使用效率（同時兼顧新手易學性與專家高效操作的雙軌設計）
+- novice user vs. expert / power user: 新手使用者 vs. 資深專家 / 重度進階使用者
+- dual-track interaction design: 雙軌互動設計（表面提供直覺圖形按鈕給新手，底層內建快捷鍵給專家）
+- progressive mastery: 漸進式熟練（在選單旁標註快捷鍵提示，幫助新手在日常操作中自然學會快捷鍵）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -1097,11 +1304,16 @@ To summarize this slide, remember this key takeaway: Provide accelerators and sh
 </div>
 
 <!--
-Examine the first set of power-user accelerators shown here.
+Look at these two developer-focused implementations of NS07 on screen:
 
-On the left, menu items display subtle shortcut badges next to commands (`Cmd+P`, `Shift+Option+F`) so novices can click with a mouse while experts trigger them instantaneously via keyboard. On the right, typing `for` expands an entire loop snippet with Tab-stops.
+On the left, dropdown menu items display their corresponding keyboard shortcuts right-aligned in subtle grey text (`Cmd+P`, `Shift+Option+F`). A beginner can click the menu item with their mouse, while an experienced user sees the hint a few times and transitions to keyboard speed.
 
-To summarize this slide, remember this key takeaway: Menu hotkey hints and snippet expansions let power users move at keyboard speed while keeping menus approachable for beginners.
+On the right, code snippet accelerators allow typing a 3-letter trigger (`for`) and pressing `Tab` to expand an entire loop structure with interactive cursor tab-stops—multiplying coding throughput without cluttering the UI.
+
+💡 難字與專業術語解說：
+- code snippet accelerator: 程式碼片段加速器（輸入簡短縮寫即自動展開完整語法模板的功能）
+- tab-stop: Tab 鍵游標停駐點（展開模板後按 Tab 鍵即可依序跳轉填寫變數的位置）
+- throughput: 產出效能、單位時間處理量
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -1112,11 +1324,16 @@ To summarize this slide, remember this key takeaway: Menu hotkey hints and snipp
 </div>
 
 <!--
-Here is a second essential example of NS07 in an enterprise admin dashboard.
+Here is a second indispensable NS07 pattern for enterprise web applications: **Multi-Select Batch Operations**.
 
-A novice administrator might edit or delete one user at a time using the row icons on the right. But when an expert needs to clean up 50 inactive accounts, checking multiple rows reveals a floating batch-action bar at the top ('3 items selected: Delete Selected [Delete] | Export'), turning 50 repetitive operations into a single click or `[Delete]` keystroke.
+In an admin data table, a novice user or someone updating a single row can simply click the edit or trash icon on the right side of that row.
 
-To summarize this slide, remember this key takeaway: Multi-select batch action bars and keyboard accelerators prevent repetitive strain on high-frequency administrative tasks.
+However, when a system administrator needs to clean up 50 inactive accounts or export 30 records, forcing them to click 50 times is torture! By supporting checkbox multi-selection (and `Shift+Click` range selection), a floating **Batch Action Bar** (`3 items selected: Delete Selected [Delete] | Export`) appears dynamically—turning 50 repetitive mouse trips into a single keystroke.
+
+💡 難字與專業術語解說：
+- batch operation / bulk action: 批次操作 / 大量處理（一次選取多筆資料並同步執行相同動作）
+- range selection (`Shift+Click`): 範圍連選（按住 Shift 點擊首尾項目即可一次勾選中間所有資料列）
+- repetitive strain: 重複性操作疲勞（因機械式重複點擊滑鼠造成的身心耗損）
 -->
 ---
 ## NS08: Aesthetic & Minimalist Design
@@ -1131,15 +1348,22 @@ To summarize this slide, remember this key takeaway: Multi-select batch action b
   - Tuck advanced settings behind "Advanced Options" accordions or secondary tabs.
 
 <!--
-Heuristic 8: Aesthetic and Minimalist Design.
+Now let's pair NS07 with **NS08: Aesthetic and Minimalist Design**.
 
-Minimalism in UX does not mean making everything stark white or hiding features completely. It means maximizing the Signal-to-Noise ratio.
+Read Nielsen's definition carefully—this is one of the most misunderstood heuristics in software engineering:
+*"Dialogues should not contain information which is irrelevant or rarely needed. Every extra unit of information in a dialogue competes with the relevant units and diminishes their relative visibility."*
 
-Every extra word, decorative border, or irrelevant banner competes for the user's finite visual attention.
+In UX engineering, "minimalism" does **not** mean making everything flat white or hiding essential buttons! It means maximizing the **Signal-to-Noise Ratio (SNR)**:
+- **Signal**: Information directly required for the user's current task decision.
+- **Noise**: Database BLOB IDs, decorative borders, rainbow badges, and promotional bloat.
+When you strip away the noise and use **Progressive Disclosure** to tuck secondary details behind a secondary view, the primary signal shines with crystal clarity.
 
-Use Progressive Disclosure: show users what they need right now to complete the current step, and hide advanced configuration parameters behind an 'Advanced' accordion.
-
-To summarize this slide, remember this key takeaway: Eliminate visual noise and use progressive disclosure to keep user attention focused on primary tasks.
+💡 難字與專業術語解說：
+- aesthetic & minimalist design: 簡約美學設計（剔除無關冗餘資訊，而非單純追求視覺留白）
+- Signal-to-Noise Ratio (SNR): 訊噪比（核心決策訊號與無關視覺雜訊的比值）
+- diminish relative visibility: 削弱相對能見度（畫面塞滿次要資訊時，真正重要的按鈕反而被淹沒）
+- decorative chrome: 裝飾性外框雜訊（無助於理解內容的多餘邊框、陰影或花俏裝飾）
+- progressive disclosure: 漸進式揭露（首層僅展示核心資訊，次要進階參數收納於展開面板後）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -1150,11 +1374,16 @@ To summarize this slide, remember this key takeaway: Eliminate visual noise and 
 </div>
 
 <!--
-Look at this striking comparison of signal-to-noise ratio on screen.
+Look at this visual contrast of Signal-to-Noise Ratio on screen.
 
-On the left, a cluttered portal screen is overwhelmed with dozens of competing widgets, popups, and bright buttons—burying the primary call-to-action. On the right, minimalist design spotlights the primary user goal with generous whitespace and clear visual hierarchy.
+On the left, information overload buries the user's primary goal under dozens of competing banners, widgets, and tightly packed links—resulting in visual paralysis.
 
-To summarize this slide, remember this key takeaway: Clean visual hierarchy and generous whitespace maximize the visibility of primary user goals.
+On the right, minimalist design uses generous whitespace, clear typographic scale, and strict visual grouping to spotlight the primary task—allowing the user's eye to lock onto the core action in less than a second.
+
+💡 難字與專業術語解說：
+- information overload: 資訊過載（畫面同時呈現過多資訊，超過人類注意力頻寬）
+- visual paralysis: 視覺麻痺 / 決策癱瘓（因干擾項過多而不知所措）
+- typographic scale: 字級比例階層（透過標題、副標與內文的大小對比建立閱讀次序）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -1165,77 +1394,95 @@ To summarize this slide, remember this key takeaway: Clean visual hierarchy and 
 </div>
 
 <!--
-Here is our second example of NS08, showing how progressive disclosure tames complex analytics dashboards.
+Here is our second practical example of NS08 in an executive analytics dashboard.
 
-Instead of cramming 30 charts onto the opening screen, this Performance Overview surfaces only the 3 most critical top-level KPIs (Monthly Revenue, New Sign-ups, and Conversion Rate) with clean typography, while tucking secondary drill-down tables behind a single 'View Full Report' button.
+A common anti-pattern in business intelligence (BI) software is cramming 25 charts, 10 filter bars, and raw SQL tables onto the home screen.
 
-To summarize this slide, remember this key takeaway: Surface only high-priority metrics upfront and defer secondary details through progressive disclosure.
+Look at how this dashboard applies NS08 and **Progressive Disclosure**: the primary view surfaces only the **3 top-level KPIs** (*Monthly Revenue*, *New Sign-ups*, and *Conversion Rate*) with bold, scannable numbers and clean trend indicators. Detailed drill-down tables and secondary parameters are deferred behind the **`View Full Report`** action—keeping daily executive scanning effortless.
+
+💡 難字與專業術語解說：
+- KPI (Key Performance Indicator) dashboard: 關鍵績效指標儀表板
+- anti-pattern: 反模式（看似合理、實則會帶來嚴重負面後果的常見錯誤設計）
+- drill-down table: 下鑽明細表（點擊總覽指標後深入檢視底層逐筆資料的表格）
+-->
+---
+## Challenge: What's Wrong with this Task Manager Screen?
+
+<div class="split64">
+<div class="left">
+
+> **Scenario:** A software engineer opens their enterprise team task board to triage their daily bugs.
+
+* **1. Visual Clutter & Signal-to-Noise Ratio (What matters here?):**
+  - Drowning in backend noise: `INTERNAL_DB_ID`, server `Ping: 28ms`, shard names, and daemon timestamps.
+  - Clashing 5-color rainbow tags, heavy borders, and a yellow promotional ad banner compete for attention.
+* **2. Speed & Shortcuts for Daily Experts (Why so many clicks?):**
+  - Zero keyboard shortcuts (`Cmd+K` and `Enter` are disabled).
+  - No multi-select batch actions—editing a task requires clicking through 4 nested mouse submenus (`Submenu 1..3`, `Actions...`).
+* **Discussion Prompt:**
+  - How would you declutter this interface and empower power-user workflows?
+
+
+</div>
+<div class="right">
+    <img src="../../img/ch06/task_management_bad.png" alt="Bad Task Management Workspace" />
+
+</div>
+</div>
+
+<!--
+Now let's tackle our fourth Classroom Challenge! Look at the Enterprise Task Manager screen on the right (`task_management_bad.png`).
+
+Imagine you are a software engineer who uses this issue tracker 8 hours a day to triage sprint bugs. Look at the two major usability failures on this screen:
+1. **Visual Clutter & Signal-to-Noise Ratio**: Every card is drowning in irrelevant backend metadata (`INTERNAL_DB_ID: 883910-TXN-BLOB`, `Ping: 28ms | Shard: ap-east-01`, `Created: ... by DAEMON`), 5 clashing rainbow badges (`URGENT`, `BACKEND`, `SPRINT_42`, `DEV_OPS`, `P0`), thick dark borders, and a loud yellow cloud upgrade ad banner at the top!
+2. **Zero Accelerators for Daily Experts**: Look at the bottom notice—keyboard shortcuts (`Cmd+K` / `Enter`) and batch multi-select are completely disabled! Updating a single task requires clicking through 4 nested mouse buttons (`Submenu 1`, `Submenu 2`, `Submenu 3`, `Actions...`)!
+
+💡 難字與專業術語解說：
+- triage daily bugs: 每日缺陷檢傷分類與優先級排定
+- visual clutter: 視覺雜訊、畫面雜亂堆積
+- database shard & daemon: 資料庫分片節點與背景常駐程式（純後端底層資訊，不應暴露於一般任務卡片）
+- nested mouse submenu: 巢狀多層滑鼠子選單（必須逐層點擊多次才能觸達目標動作的設計）
 -->
 ---
 ## Challenge Revealed: Redesigning for NS07 & NS08
 
 <div class="split64">
-  <div class="left">
+<div class="left">
 
 > **The Solution:** Strip away irrelevant technical noise to maximize signal, and empower power users with omnipresent keyboard shortcuts.
 
+<div class="orig-ui-hover" data-orig-src="../../img/ch06/task_management_bad.png">🔍 Hover to see original UI design (p.49)</div>
+
 * **NS07 Redesign (Accelerators & Flexibility):**
-  - [x] **Universal Command Palette:** `Cmd+K` / `Ctrl+K` launches instant actions from anywhere.
-  - [x] **Inline Keybinds:** Press `E` to edit, `C` to create quick tasks without touching the mouse.
-  - [x] **Batch Operations:** Multi-select shift-click lets power users triage 10 tasks simultaneously.
+  - ✅ **Universal Command Palette:** `Cmd+K` / `Ctrl+K` launches instant actions from anywhere.
+  - ✅ **Inline Keybinds:** Press `E` to edit, `C` to create quick tasks without touching the mouse.
+  - ✅ **Batch Operations:** Multi-select shift-click lets power users triage 10 tasks simultaneously.
 * **NS08 Redesign (Aesthetic & Minimalist Design):**
-  - [x] **Noise Eradicated:** Internal database shards and latency stats hidden behind details view.
-  - [x] **High Signal-to-Noise:** Generous whitespace, clean priority tags (*High Priority, Due Tomorrow*).
+  - ✅ **Noise Eradicated:** Internal database shards and latency stats hidden behind details view.
+  - ✅ **High Signal-to-Noise:** Generous whitespace, clean priority tags (*High Priority, Due Tomorrow*).
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch06/task_management_good.png" alt="Good Task Management Workspace" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Here is the solution for our task management challenge, combining Heuristics 7 and 8.
+Now let's reveal the refactored Task Manager workspace (`task_management_good.png`) combining **NS07** and **NS08**!
 
-For NS08 (Aesthetic and Minimalist Design), we eliminated every shred of engineering noise. The promotional ads and internal database shard IDs are gone. The signal-to-noise ratio is pristine: clean typography, elegant priority badges, and ample breathing room.
+1. **NS08 Redesign (Aesthetic & Minimalist Design)**:
+   - The yellow ad banner, 5-color rainbow tags, and raw database shard/ping metadata (`INTERNAL_DB_ID`) are completely eradicated from the card surface.
+   - Each card displays only high-signal information: a single priority badge (**`High Priority`** / **`In Progress`**), due date (**`Due Tomorrow`**), clear task title, owner, and comment count with generous whitespace.
+2. **NS07 Redesign (Flexibility & Efficiency Accelerators)**:
+   - A global command bar at the top supports **`Cmd + K`** instant search and command execution.
+   - Cards feature inline **`[Press E to edit]`** triggers, **`Press C`** for inline creation, **`Shift + Click`** for multi-select batch editing, and **`[Press N]`** on the primary CTA!
 
-For NS07 (Flexibility and Efficiency of Use), the app caters seamlessly to both novices and keyboard warriors. Beginners click the prominent '+ Create New Task' button. Power users hit Cmd+K to search, press 'C' to create inline, and press 'E' to edit on the fly.
-
-To summarize this slide, remember this key takeaway: Declutter visual interfaces to highlight core tasks, and embed invisible accelerators that let power users fly.
--->
----
-## Challenge: What's Wrong with this Account Setup Screen?
-
-<div class="split64">
-  <div class="left">
-
-> **Scenario:** A new employee is creating an account on their company portal and clicks *"Submit & Try Again"*.
-
-* **1. Error Diagnosis & Recovery (What went wrong, and why wipe the form?):**
-  - Screams a cryptic fatal hex code (`ERROR CODE 0x800A03EA`) and `REG_VALIDATION_ERR_SYNTAX` with no plain-language explanation.
-  - Punishes the user by wiping the entire form blank—forcing them to retype their email!
-  - Rejects the password without stating *which* policy rule failed.
-* **2. Contextual Guidance & Help (Where do you get answers?):**
-  - Asks for a *"TOTP 2FA SEED / TOKEN ID"* with no inline tooltip or `(?)` explainer.
-  - The only help offered is a link to *"Download 180-Page Admin PDF (45MB)"*!
-* **Discussion Prompt:**
-  - How can we make error messages constructive and guidance contextual?
-
-  </div>
-  <div class="right">
-    <img src="../../img/ch06/signup_help_bad.png" alt="Bad Account Registration Screen" />
-  </div>
-</div>
-
-<!--
-Before exploring our final two heuristics (NS09 and NS10), let's examine this registration form nightmare.
-
-Look at the mobile mockup on the right. A new employee tries to register an account and clicks submit.
-
-What violates NS09 (Error Recovery)? The system screams a terrifying hex error code: '0x800A03EA'. Worse, it wipes the entire form clean, forcing the user to retype their email. The password was rejected, but the user has no idea why—was it too short? Did it need a symbol?
-
-What violates NS10 (Help and Documentation)? When encountering a confusing security token field, there is no tooltip, no interactive guide, and no search bar. The only help offered is a link to download a 180-page system admin PDF manual!
-
-To summarize this slide, remember this key takeaway: Cryptic error codes and giant PDF manuals turn simple account setup into an agonizing ordeal.
+💡 難字與專業術語解說：
+- omnipresent keyboard shortcut: 無處不在的全域鍵盤快捷鍵
+- inline keybind: 行內快捷鍵綁定（無需點開子選單，直接按單鍵如 E 或 C 即可原地編輯或新增）
+- eradicate noise: 徹底根除視覺雜訊
 -->
 ---
 ## NS09: Help Users Recognize, Diagnose, & Recover from Errors
@@ -1250,15 +1497,18 @@ To summarize this slide, remember this key takeaway: Cryptic error codes and gia
   - ✅ **Constructive Recovery:** *"Please enter an updated expiration date or choose a different payment method [Update Card]."*
 
 <!--
-Heuristic 9: Helping Users Recover from Errors.
+That hostile registration form brings us to **NS09: Help Users Recognize, Diagnose, and Recover from Errors**.
 
-When an error occurs, the user is already in a vulnerable state. Never display raw stack traces, hex memory dumps, or generic HTTP error codes.
+Nielsen's rule for error messages has three mandatory parts:
+1. **Express in plain language (no codes)**: Never expose raw stack traces, SQL exceptions, or hex codes like `0x80004005`.
+2. **Precisely indicate the problem**: Instead of a vague *"Invalid input"* or *"Password rejected"*, state the exact cause (*"The expiration date entered (05/23) is in the past"*).
+3. **Constructively suggest a solution**: Give the user an immediate, actionable recovery path or clickable link (*"Please enter an updated expiration date or [Update Card]"*), and **never wipe valid form fields**!
 
-A proper error message contains three components: First, plain language explaining what went wrong. Second, the precise reason why it happened. Third, a constructive next step or clickable button to fix it.
-
-Notice how modern websites turn a 404 Page Not Found into a helpful recovery portal with search bars and popular links.
-
-To summarize this slide, remember this key takeaway: Deliver plain-language error messages that clearly state the cause and provide direct, actionable recovery paths.
+💡 難字與專業術語解說：
+- recognize, diagnose, and recover: 辨識、診斷與修復錯誤（使用者發現出錯、理解原因並成功修正的三階段）
+- plain language: 平易白話的自然語言（不含程式碼與系統縮寫的日常用語）
+- runtime exception & stack trace: 執行期例外與呼叫堆疊追蹤（程式崩潰時的內部除錯資訊）
+- constructive recovery: 具建設性的修復引導（明確告訴使用者「現在該怎麼做才能解決問題」）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -1269,11 +1519,16 @@ To summarize this slide, remember this key takeaway: Deliver plain-language erro
 </div>
 
 <!--
-Observe this first comparison of error recovery on a 404 page.
+Look at this side-by-side comparison of a 404 Page Not Found error (`NS09 in Practice 1/2`).
 
-On the left, a cryptic message ('Cannot locate requested endpoint /api/v1/page') leaves the user at a dead end. On the right, the application explains the issue in plain language and immediately offers a search bar plus one-click recovery links to the Dashboard and Popular Guides.
+On the left ("Cryptic 404 Dead-End"), the server dumps `HTTP 404: Cannot locate requested endpoint /api/v1/page` on a stark screen with zero navigation—leaving the user stranded at a dead end.
 
-To summarize this slide, remember this key takeaway: Transform dead-end error pages into helpful navigation hubs with search and direct recovery links.
+On the right ("Helpful 404 Recovery"), the page explains in friendly language that the link may have moved, provides an embedded **Search Bar** right in the center, and offers one-click recovery buttons (**`Go to Dashboard`**, **`Popular Guides`**, **`Contact Support`**) so the user can recover immediately.
+
+💡 難字與專業術語解說：
+- dead-end error page: 死胡同錯誤頁（只告知出錯、卻不提供任何返回或下一步出口的畫面）
+- endpoint: API 端點 / 網址路徑
+- navigation hub: 導覽樞紐（提供搜尋框與常用捷徑以協助使用者重新定向的頁面）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -1284,11 +1539,19 @@ To summarize this slide, remember this key takeaway: Transform dead-end error pa
 </div>
 
 <!--
-Here is our second example of NS09 in a file upload workflow.
+Here is our second practical example of NS09 in a file upload workflow.
 
-Instead of rejecting a file with 'Error: Invalid MIME Type', this dialog clearly states what failed ('Upload failed: file format not supported'), explains the exact rule ('We only accept PNG or JPG, max 5MB'), and provides a direct 'Choose Another File' action button plus a link to supported format docs.
+When a user tries to upload a `.tiff` or `.bmp` image, a lazy implementation throws a red toast saying *"Error: Invalid MIME Type"* or *"Upload Failed (Code 415)"*.
 
-To summarize this slide, remember this key takeaway: Every validation error should state what went wrong, why it failed, and provide an immediate button to fix it.
+Look at how this modal dialog implements all three pillars of NS09:
+1. **What failed (Plain Language)**: *"Upload failed: File format not supported."*
+2. **Why it failed (Precise Cause)**: *"We only accept PNG or JPG files under 5MB (your file is 12.4MB TIFF)."*
+3. **How to recover (Constructive Action)**: Provides a prominent primary button (**`Choose Another File`**) right inside the dialog!
+
+💡 難字與專業術語解說：
+- MIME Type (Multipurpose Internet Mail Extensions): 多用途網際網路郵件擴充類型（標準檔案格式識別碼，一般用戶不熟悉此術語）
+- actionable error modal: 可直接採取修復行動的錯誤對話框
+- file format & size constraint: 檔案格式與容量上限規範
 -->
 ---
 ## NS10: Help and Documentation
@@ -1301,13 +1564,20 @@ To summarize this slide, remember this key takeaway: Every validation error shou
   - **Searchable Task-Oriented Help Centers:** Documentation organized by customer goals rather than internal system architecture.
 
 <!--
-Heuristic 10: Help and Documentation.
+Now let's examine the tenth and final heuristic: **NS10: Help and Documentation**.
 
-The ultimate goal of interaction design is a system so intuitive that nobody reads the manual. But for complex enterprise platforms, good documentation is indispensable.
+Nielsen writes: *"Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation. Any such information should be easy to search, focused on the user's task, list concrete steps to be carried out, and not be too large."*
 
-Modern documentation is contextual and embedded directly inside the application: microcopy tooltips, interactive product tours, and searchable knowledge bases organized around user tasks rather than internal API modules.
+In modern software engineering, dumping a 180-page PDF manual on users is unacceptable. Instead, documentation is **contextual and embedded directly inside the UI**:
+- **Contextual Tooltips (`?`)**: Microcopy popovers right next to complex fields (like `2FA` or `API Key`).
+- **Interactive Onboarding Spotlight Tours**: Guided 3-step walkthroughs on first login.
+- **Searchable, Task-Oriented Help Widgets**: Organized around what the user wants to accomplish, not how the backend modules are named.
 
-To summarize this slide, remember this key takeaway: Provide searchable, task-focused documentation and contextual microcopy embedded directly within user workflows.
+💡 難字與專業術語解說：
+- help & documentation: 說明文件與求助支援
+- contextual tooltip / microcopy: 情境式微提示 / 介面微文案（嵌入在欄位旁、在疑惑發生當下給予解答的精簡說明）
+- interactive onboarding tour: 互動式新手導覽（首次登入時以聚光燈高亮逐步引導操作的教學流程）
+- task-oriented knowledge base: 任務導向知識庫（依使用者目標而非系統模組分類的可搜尋說明中心）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -1318,11 +1588,16 @@ To summarize this slide, remember this key takeaway: Provide searchable, task-fo
 </div>
 
 <!--
-Look at these two complementary documentation patterns on screen.
+Look at these two complementary embedded documentation patterns on screen (`NS10 in Practice 1/2`):
 
-On the left is passive contextual help: an unobtrusive '?' icon next to 'API Key' that reveals a concise definition on hover. On the right is active interactive onboarding: a 3-step spotlight walkthrough guiding a new user through creating their first project.
+On the left is **Passive Contextual Help**: a subtle `?` icon placed right beside an advanced technical field (`API Key` / `Webhook URL`). It takes up zero screen space until the user hovers or taps it, revealing a concise two-sentence explanation right in place.
 
-To summarize this slide, remember this key takeaway: Combine on-demand microcopy tooltips with concise spotlight tours to support users without forcing them to leave the screen.
+On the right is **Active Interactive Onboarding**: when a new user creates their first workspace, a spotlight overlay dims the background and highlights Step 1 of 3 with a clear action pointer—teaching by doing rather than forcing the user to read a manual.
+
+💡 難字與專業術語解說：
+- passive vs. active help: 被動式求助（使用者有疑問時主動點擊 `?` 觸發）vs. 主動式導覽（系統偵測到新用戶時自動彈出引導）
+- spotlight overlay: 聚光燈遮罩（將背景壓暗、僅打亮當前教學目標按鈕的視覺引導技術）
+- learning by doing: 做中學（在真實介面互動中自然學會操作，而非閱讀靜態手冊）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -1333,41 +1608,93 @@ To summarize this slide, remember this key takeaway: Combine on-demand microcopy
 </div>
 
 <!--
-Here is a second real-world example of NS10 in an online tax-filing application.
+Here is a second real-world example of NS10 in a complex domain: an online tax-filing application (`NS10 in Practice 2/2`).
 
-Tax forms are inherently complex. When the user reaches the 'Income (W-2s)' step, a contextual popover ('Step 1 of 4: Import Your W-2') points directly to the 'Import W-2' button, explains the benefit in two sentences, and offers both a 'Next' button and a 'Skip Guide' link.
+Filing taxes involves intimidating legal terminology like *"Form W-2 Wage and Tax Statement"*. Instead of sending the user to read IRS tax codes, a contextual popover (**`Step 1 of 4: Import Your W-2`**) points directly to the **`Import W-2`** button, explains in two plain sentences how to auto-import payroll data, and crucially includes both a **`Next`** button and a **`Skip Guide`** link (honoring NS03 User Control!).
 
-To summarize this slide, remember this key takeaway: Embed concise, task-oriented guidance directly beside complex domain actions while always allowing experienced users to skip the tour.
+💡 難字與專業術語解說：
+- tax-filing workflow: 報稅申報工作流（高專業門檻、極需情境式說明輔助的典型領域）
+- contextual popover: 情境式彈出說明氣泡（指向特定按鈕並提供步驟指引的浮動卡片）
+- skip tour / skip guide: 跳過導覽（允許熟練用戶隨時略過新手教學的控制出口）
+-->
+---
+## Challenge: What's Wrong with this Account Setup Screen?
+
+<div class="split64">
+<div class="left">
+
+> **Scenario:** A new employee is creating an account on their company portal and clicks *"Submit & Try Again"*.
+
+* **1. Error Diagnosis & Recovery (What went wrong, and why wipe the form?):**
+  - Screams a cryptic fatal hex code (`ERROR CODE 0x800A03EA`) and `REG_VALIDATION_ERR_SYNTAX` with no plain-language explanation.
+  - Punishes the user by wiping the entire form blank—forcing them to retype their email!
+  - Rejects the password without stating *which* policy rule failed.
+* **2. Contextual Guidance & Help (Where do you get answers?):**
+  - Asks for a *"TOTP 2FA SEED / TOKEN ID"* with no inline tooltip or `(?)` explainer.
+  - The only help offered is a link to *"Download 180-Page Admin PDF (45MB)"*!
+* **Discussion Prompt:**
+  - How can we make error messages constructive and guidance contextual?
+
+
+</div>
+<div class="right">
+    <img src="../../img/ch06/signup_help_bad.png" alt="Bad Account Registration Screen" />
+
+</div>
+</div>
+
+<!--
+Let's examine our fifth and final Classroom Challenge (`signup_help_bad.png`), covering the last two heuristics!
+
+Imagine a new employee is registering their enterprise account and clicks **`Submit & Try Again`**. Look at what happens on the screen:
+1. **Error Diagnosis & Recovery**: A terrifying red banner screams **`ERROR CODE 0x800A03EA (FATAL)`** and **`Exception: REG_VALIDATION_ERR_SYNTAX`**. Worse still, it says *"Entire form wiped for security. Re-enter all"*—wiping their email blank! And under Password, it says *"Password rejected by policy. (Rules unstated)"* without telling them *which* rule failed!
+2. **Contextual Guidance & Help**: The form asks for a **`TOTP 2FA SEED / TOKEN ID`** with zero inline tooltip or `(?)` icon. And at the bottom under *"Need Help?"*, the only option is **`Download 180-Page Admin PDF (45MB)`**!
+
+💡 難字與專業術語解說：
+- hex error code: 十六進位錯誤碼（如 `0x800A03EA`，僅供底層除錯、對一般使用者毫無意義的代碼）
+- form wiping: 清空重置表單（表單驗證失敗時惡意把使用者已填對的欄位也一併清空的糟糕設計）
+- TOTP 2FA (Time-based One-Time Password Two-Factor Authentication): 基於時間的一次性密碼雙重驗證
+- inline tooltip: 行內微提示（點擊或懸停於欄位旁 `?` 圖示時即時彈出的簡短說明框）
 -->
 ---
 ## Challenge Revealed: Redesigning for NS09 & NS10
 
 <div class="split64">
-  <div class="left">
+<div class="left">
 
 > **The Solution:** Deliver plain-language error diagnostics with live recovery checklists, and embed contextual inline guidance right at the point of action.
 
-* **NS09 Redesign (Constructive Error Recovery):**
-  - [x] **No Form Wiping:** Email and previously entered data are safely preserved upon validation errors.
-  - [x] **Real-Time Password Checklist:** Dynamic indicators (*Length, Number, Symbol*) confirm exactly which rules pass or fail.
-* **NS10 Redesign (Help & Documentation):**
-  - [x] **Inline Contextual Tooltips:** Inline `Help (?)` explainer defines 2FA in 2 plain sentences without leaving the screen.
-  - [x] **Searchable Instant FAQs:** Replaces 180-page static PDF manual with an interactive in-app search query box.
+<div class="orig-ui-hover" data-orig-src="../../img/ch06/signup_help_bad.png">🔍 Hover to see original UI design (p.57)</div>
 
-  </div>
-  <div class="right">
+* **NS09 Redesign (Constructive Error Recovery):**
+  - ✅ **No Form Wiping:** Email and previously entered data are safely preserved upon validation errors.
+  - ✅ **Real-Time Password Checklist:** Dynamic indicators (*Length, Number, Symbol*) confirm exactly which rules pass or fail.
+* **NS10 Redesign (Help & Documentation):**
+  - ✅ **Inline Contextual Tooltips:** Inline `Help (?)` explainer defines 2FA in 2 plain sentences without leaving the screen.
+  - ✅ **Searchable Instant FAQs:** Replaces 180-page static PDF manual with an interactive in-app search query box.
+
+
+</div>
+<div class="right">
     <img src="../../img/ch06/signup_help_good.png" alt="Good Account Registration Screen" />
-  </div>
+
+</div>
 </div>
 
 <!--
-Here is the solution for our final heuristics challenge, completing the ten usability principles.
+Now let's reveal the refactored Account Registration screen (`signup_help_good.png`) applying **NS09** and **NS10**—completing all five of our Heuristic Challenges!
 
-For NS09 (Error Recovery), notice how the system treats the user with respect: previous inputs are retained, and the password requirements are displayed as a live, interactive checklist. The user knows immediately that they only need to add a symbol.
+1. **NS09 Redesign (Constructive Error Recovery)**:
+   - **Zero Form Wiping**: The user's valid corporate email (`jane.doe@acme.com`) is safely preserved with a green **`✓ Valid`** badge!
+   - **Live Constructive Checklist**: Instead of a cryptic hex error or vague password rejection, a real-time green checklist confirms each satisfied rule (*At least 8 characters*, *Contains a number*, *Contains a symbol `!`*).
+2. **NS10 Redesign (Contextual Help & Documentation)**:
+   - Next to `TWO-FACTOR AUTH (2FA)`, a clickable **`Help (?)`** pill opens an inline contextual guide explaining in two clear sentences how to scan the QR code with Google Authenticator or 1Password.
+   - At the bottom, the 180-page PDF download is replaced by an **Instant FAQ Search Bar**!
 
-For NS10 (Help and Documentation), rather than exiling the user to a massive PDF file, guidance is delivered right where the question arises. An inline tooltip explains 2FA, and an interactive FAQ search bar provides instant answers.
-
-To summarize this slide, remember this key takeaway: Constructive error guidance and lightweight contextual help empower users to overcome obstacles independently and confidently.
+💡 難字與專業術語解說：
+- preserved form state: 保留已填表單狀態（發生局部錯誤時，妥善留存使用者已輸入的正確欄位）
+- live validation checklist: 即時動態驗證檢核表（隨使用者打字即時打勾回饋哪些密碼條件已達成）
+- searchable instant FAQ: 可即時檢索的常見問答框
 -->
 ---
 ### Concept Check Question 2: Usability Heuristics
@@ -1386,17 +1713,65 @@ When designing an e-commerce checkout flow, a team replaces raw text date inputs
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq2" target="_blank"><img src="../../img/ch06/ase-ch06-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
-Let's check our understanding of Nielsen's Usability Heuristics.
+Let's test our mastery of Section 6.2 with Concept Check Question 2!
 
-Analyze the team's actions: replacing freeform text with a constrained picker, and disabling the submit button until validation rules are satisfied.
+Read the scenario: in an e-commerce checkout flow, the engineering team replaces raw text date inputs with an interactive calendar picker and automatically disables the "Place Order" button until all required shipping fields pass validation. Which Nielsen Heuristic is primarily demonstrated?
 
-The correct answer is Option B: NS05 Error Prevention. Nielsen's NS05 states that careful design which prevents mistakes from occurring in the first place is far superior to even the best error messages. Constraining input widgets and validating fields before submission eliminates invalid input before the user can make an error.
+The correct answer is **Option B: NS05 (Error Prevention)**. Rather than waiting for the user to submit a malformed date string or an incomplete address and then throwing an error message (which would be NS09), the team used **input constraints** (a calendar picker) and **disabled invalid states** to prevent the error from occurring in the first place!
 
-To summarize this slide, remember this key takeaway: Proactive input constraints and disabled invalid actions exemplify heuristic NS05: Error Prevention.
+💡 難字與專業術語解說：
+- malformed date string: 格式錯誤的日期字串
+- proactive constraint vs. reactive error message: 事前主動防呆約束（NS05）vs. 事後錯誤訊息診斷（NS09）
+-->
+---
+## Pair Discussion: Real-World Heuristic Audit (30 Mins)
+
+> **Mission (⏱️ 30 Mins):** In pairs, choose **one** familiar system below and create a short **slide deck with annotated screenshots** showing which designs **satisfy (✅)** and which **violate (❌)** `NS01–NS10`.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. Pick One Target System
+1. **THSR Booking System (高鐵訂票系統 / T-EX):** Timetable search, discount filters, seat map, or ticket split/exchange flows.
+2. **University Course System (大學選課系統):** Rush-hour queuing, course code lookup, schedule conflict checks, and session timeouts.
+3. **Shopee / E-Commerce (蝦皮或其他購物平台):** Home screen pop-ups, coupon rules, cart checkout, and parcel tracking.
+4. **Daily Super-Apps (LINE / Uber Eats / YouTube):** Message recall (`Unsend` vs. `Delete`), live delivery maps, or settings menus.
+5. **Custom Choice (其他自定義系統):** Any web or mobile app your team uses daily.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. Slide Deliverable (Screenshots)
+- **✅ Satisfied Heuristics (2–3 Screenshots):**
+  - Capture real screens, circle the good UI elements, tag the exact **`NS01–NS10`** code, and explain *why* it reduces cognitive load.
+- **❌ Violated Heuristics (2–3 Screenshots):**
+  - Capture frustrating screens, point out the exact design flaw, tag the violated **`NS01–NS10`** code, and rate its severity (`1–4`).
+- **🛠️ One-Sentence Fix:**
+  - Propose how your team would redesign the worst `❌` screen!
+
+</div>
+</div>
+
+<!--
+Before we move on to Section 6.3, let's put Nielsen's 10 Usability Heuristics into hands-on practice with a 30-minute Pair Discussion and Mini-Presentation!
+
+Pair up with your neighbor and choose one real-world software system that you both use all the time:
+1. **Taiwan High Speed Rail (THSR) Booking System or T-EX App**: Think about how it handles timetable selection, student discount filters, ticket modification, or split-ticket picking.
+2. **Your University Course Registration System**: Every student has strong feelings about course selection day! Look for how it handles rush-hour status (NS01), course codes vs. recognition (NS06), schedule conflict prevention (NS05), or session timeouts (NS03/NS09).
+3. **Shopee or another E-Commerce App**: Compare its awesome 4-stage logistics tracking (✅ NS01) against its crowded home screen pop-ups and gamified banners (❌ NS08).
+4. **Or any custom system you use daily** (like LINE, Uber Eats, or Git/VS Code).
+
+Over the next 30 minutes, take real screenshots on your phone or laptop and put together a short slide deck: show 2 to 3 screenshots where the system **satisfies (✅)** specific `NS01–NS10` principles, and 2 to 3 screenshots where it **violates (❌)** specific `NS01–NS10` principles—plus a quick redesign fix for the worst offender. Let's start the timer!
+
+💡 難字與專業術語解說：
+- heuristic audit: 啟發式可用性稽核（依據 NS01–NS10 原則逐項檢視真實系統介面的體檢過程）
+- annotated screenshot: 標註式畫面截圖（在真實介面截圖上圈選特定元件並加上原則編號與說明）
+- rush-hour queuing: 尖峰時段排隊佇列（如搶票或選課系統在瞬間高併發流量下的等待狀態回饋）
 -->
 
 ---
@@ -1409,18 +1784,16 @@ To summarize this slide, remember this key takeaway: Proactive input constraints
 > — *Jenifer Tidwell, Designing Interfaces*
 
 <!--
-Welcome to Module 6.3: Jenifer Tidwell's Interaction & UI Design Patterns.
+Welcome to Section 6.3: Jenifer Tidwell's Interaction & UI Design Patterns.
 
-In software engineering, we have the Gang of Four (GoF) 23 Design Patterns for object-oriented software architecture. In human-computer interaction and web engineering, we have an equally foundational canon: Jenifer Tidwell's interaction design patterns from her seminal book *Designing Interfaces*.
+In Section 6.2, Jakob Nielsen gave us ten diagnostic heuristics—the lenses to spot what is broken in an interface. Now we need the constructive engineering toolkit to build what is right. Just as the Gang of Four gave backend software engineers structural and behavioral design patterns like Factory, Observer, and Strategy, Jenifer Tidwell cataloged the foundational interaction design patterns for human-computer interfaces in her classic O'Reilly book, *Designing Interfaces*.
 
-Engineers often invent novel UI layouts from scratch, forcing users to relearn navigation on every single screen. Tidwell's pattern language provides battle-tested blueprints refined across billions of interactions worldwide—spanning core human behaviors, information architecture, wayfinding, and high-density data display.
-
-In this module, we dissect real-world production teardowns—from High-Speed Rail ticketing to Airbnb and Slack—to master this architectural grammar.
+As Tidwell reminds us, users do not open our software to admire its visual chrome; they come to get work done, find answers, or complete a workflow without feeling foolish. Let's explore how UI patterns translate human psychology into concrete layout and interaction architectures.
 
 💡 難字與專業術語解說：
-- off-the-shelf: 現成的、現貨買來即用的
-- blueprint: 藍圖、架構設計指南
-- teardown: 深度拆解剖析
+- interaction design pattern: 互動設計模式（針對常見使用者介面互動問題的結構化可重用解決方案）
+- visual chrome: 介面視覺邊框與裝飾框架（瀏覽器或應用程式中非內容本體的控制列與外框裝飾）
+- foolish: 愚蠢的、受挫無助的（良好介面設計的核心目標是不讓使用者感到自己很笨）
 -->
 ---
 ## What is an Interaction Design Pattern? (UI Patterns)
@@ -1442,30 +1815,29 @@ In this module, we dissect real-world production teardowns—from High-Speed Rai
 <div class="card" data-marpit-fragment>
 
 ### 2. Jenifer Tidwell's Canon & Curated Scope
-- **Seminal Book: *Designing Interfaces***:
-  - Authored by Jenifer Tidwell (O'Reilly), the definitive industry bible for UI/UX interaction patterns across desktop, web, and mobile.
-- **Vast Catalog of 100+ Patterns**:
-  - Encompasses an encyclopedic range of over 100 patterns—spanning forms, actions, navigation trails, canvases, and responsive data grids.
-- **Curated Focus for This Course**:
-  - Because the full catalog is enormous, we deliberately select the most critical, high-impact patterns grouped into **4 architectural dimensions**.
+- **Pioneering Origins & Seminal Book (*Designing Interfaces*)**:
+  - Pioneered HCI pattern languages at MIT (**1997** *"Common Ground"* catalog), inspired by Christopher Alexander (1977) & GoF (1994).
+  - Authored ***Designing Interfaces*** (O'Reilly): **1st Ed. (2005)**, **2nd Ed. (2010)**, and **3rd Ed. (2020**, with C. Brewer & A. Valencia) across desktop, web, and mobile.
+- **Vast Catalog of 100+ Patterns → 4 Core Dimensions**:
+  - Encompasses 100+ patterns spanning forms, navigation, canvases, and data grids; we curate the highest-impact patterns into **4 architectural dimensions**.
 
 </div>
 </div>
 
 <!--
-What is an interaction design pattern, and why Jenifer Tidwell?
+Before we look at specific layouts, let's clarify what a UI Design Pattern actually is—and what it is not.
 
-Just as backend systems utilize Gang of Four design patterns to solve structural dilemmas, modern web and front-end architectures rely on interaction design patterns.
+First, a UI pattern is not a copy-paste visual template or a CSS component library like Material UI or Tailwind. It is a reusable structural solution to a recurring human-computer interaction problem, balancing competing layout forces across different platforms.
 
-On the left: Why avoid bespoke, ad-hoc UI experimentation? Because Jakob's Law reminds us that users spend 99% of their digital lives on other platforms. When you use recognized patterns, engineers know the component hierarchy instantly, and users navigate effortlessly without friction.
+Second, every pattern is rooted in empirical human psychology—how people perceive visual hierarchy, how much working memory they can hold, and how they scan screens under time pressure.
 
-On the right: Jenifer Tidwell's seminal O'Reilly book, "Designing Interfaces", established the definitive pattern language for human-computer interaction. Her book details an extensive catalog of over a hundred patterns across every aspect of interface design. Because covering the entire catalog would be overwhelming, we have selectively curated the most essential patterns across four core engineering dimensions: user behavior, content layout, wayfinding navigation, and data display.
+Third, think of the relationship between Nielsen and Tidwell as a two-sided coin: if Nielsen's ten heuristics are the diagnostic stethoscope that tells you a patient has high blood pressure, Tidwell's patterns are the concrete clinical prescriptions and surgical procedures that cure it.
 
 💡 難字與專業術語解說：
-- bespoke: 客製化、量身訂做（此處指隨興自行發明的非標準設計）
-- ad-hoc: 臨時湊合的、非體系化的
-- catalog: 完整目錄、典藏清單
-- curated: 精選策劃的、去蕪存菁的
+- empirical psychology: 實證心理學（以真實人類認知與行為觀察為基礎的心理學法則）
+- competing forces: 相互競爭的設計取捨力（如資訊密度與畫面簡潔度之間的拉扯）
+- diagnostic lens: 診斷透鏡（用於檢測系統缺陷的評估視角）
+- constructive toolkit: 建構式工具箱（提供具體實作藍圖與組件的工程方法論）
 -->
 ---
 ## The 4 Core Dimensions of Tidwell's Architecture (The 4 Dimensions)
@@ -1494,19 +1866,21 @@ On the right: Jenifer Tidwell's seminal O'Reilly book, "Designing Interfaces", e
 </div>
 
 <!--
-Tidwell organizes the vast universe of interaction patterns into four interconnected dimensions:
+To give you a structured mental map of Tidwell's catalog, we organize her patterns into four core engineering dimensions.
 
-Dimension 1 (Core Behaviors) dives into human cognitive psychology—how users explore, hesitate, remember, and make decisions in digital environments.
-Dimension 2 (Information Architecture) tackles how content is categorized, filtered, and unveiled over time without overwhelming the screen.
-Dimension 3 (Wayfinding) acts as the digital highway system, ensuring users never feel trapped or disoriented.
-Dimension 4 (Data Display) focuses on how collections, feeds, and tables adapt gracefully across desktop and mobile screens.
+Dimension 1 focuses on User Behavior & Core Operations—understanding how real humans satisfice, muddle through, and rely on safe exploration, instant gratification, and prospective memory.
 
-These four dimensions form an organic loop: human needs drive layout structure, navigation guides user flow, and data display delivers the final payloads.
+Dimension 2 covers Organizing Content & Page Layout—choosing the right spatial architecture, such as Two-Panel Split Views, One-Window Drilldowns, Visual Frameworks, and Progressive Disclosure.
+
+Dimension 3 addresses Wayfinding & Navigation—preventing spatial disorientation through Clear Entry Points, Escape Hatches, Breadcrumbs, and Annotated Scrollbars.
+
+Dimension 4 tackles Data Display & Lists—helping users browse and compare massive datasets using Thumbnail Grids, Carousels, Alternating Row Striping, and Pagination. Let's dive into Dimension 1 first.
 
 💡 難字與專業術語解說：
-- wayfinding: 尋路、空間定向與導航引導
-- topology: 拓撲結構（各模組間的相互關係與連通模式）
-- payload: 有效負載（此處指使用者真正需要消費的資料內容）
+- mental map: 心智地圖（協助大腦組織複雜知識結構的空間分類框架）
+- wayfinding: 尋路導引（源自建築學，指使用者在資訊空間中定位自身並規劃路徑的過程）
+- spatial disorientation: 空間迷航（使用者在多層級視窗或深層選單中迷失位置與方向）
+- alternating row striping: 奇偶列交錯底色／斑馬紋（透過深淺交錯背景色輔助水平視線追蹤）
 -->
 ---
 ## Section 1: General Patterns & Core Behaviors (Core Behaviors)
@@ -1543,19 +1917,22 @@ These four dimensions form an organic loop: human needs drive layout structure, 
 </div>
 
 <!--
-We begin with Section 1: General Patterns & Core Behaviors.
+Let's start with Section 1: Understanding User Behavior & Core Operations.
 
-In software engineering, many bugs occur not because the code crashed, but because the software made invalid assumptions about human psychology. If an interface assumes an alert, tireless robot, users will make mistakes constantly. Defensive interface design assumes distracted, imperfect humans:
+In software engineering, we often design interfaces for an imaginary, idealized user—someone who reads every manual, carefully analyzes every menu option, and follows our happy path step by step. In the real world, that user does not exist.
 
-On the left: Safe Exploration gives users a psychological safety net through low-cost trial and an instant Undo parachute. Instant Gratification eliminates unnecessary hurdles for returning intent. Changes in Midstream recognizes that user goals evolve dynamically during query execution. Deferred Choice removes upfront registration walls that trigger bounce rates.
+In 1956, Nobel laureate Herbert Simon coined a famous portmanteau word: **satisficing**—a blend of *satisfy* and *suffice*. Humans do not exhaustively examine every option on a screen to find the mathematically optimal path; instead, the moment they spot an option that looks "good enough" to move them closer to their goal, they click it and "muddle through" by trial and error.
 
-On the right: Incremental Construction keeps feedback loops immediate so working memory never overflows. Habituation and Spatial Memory ensure that muscle memory remains uninterrupted by keeping navigational anchors fixed in place.
+Because users satisfice, Tidwell identifies twelve behavioral patterns that support real human cognition. Here we highlight six foundational ones: Safe Exploration (letting users poke around without fear of breaking things), Instant Gratification (giving immediate visual success within seconds), Deferred Choices (not forcing upfront account registration before users can try the app), Incremental Construction (letting users mold their work iteratively), Habituation (keeping keyboard shortcuts and gestures consistent so muscle memory never backfires), and Prospective Memory ("remembering to remember"—giving users lightweight pins, drafts, and reminders so they don't have to hold future tasks in their fragile biological RAM).
 
 💡 難字與專業術語解說：
-- satisficing: 滿意決策（滿足於「夠用就好」而非耗盡精力追求全局最優解）
-- habituation: 習慣化（重複刺激下心理與操作產生的自動化慣性）
-- midstream: 中途、流程中段
-- bounce rate: 跳出率（使用者進入頁面後未採取任何行動便直接離開的比率）
+- satisficing: 滿意決策（Herbert Simon 提出之認知原則：人類傾向選擇第一個「夠好」的方案而非窮舉尋找全局最優解）
+- muddling through: 摸索前行、邊試邊走（不看說明書、直接憑直覺點擊嘗試的操作行為）
+- instant gratification: 即時滿足感（使用者進入系統後幾秒內即可看到具體的操作成果回饋）
+- deferred choices: 延遲非必要決策（允許先跳過繁瑣設定或註冊，待核心任務推進後再補填）
+- incremental construction: 漸進式建構（支援邊做邊改、逐步微調成形的創作與編輯體驗）
+- habituation: 習慣化與肌肉記憶（重複操作形成的下意識反射動作，一旦跨介面不一致極易引發失誤）
+- prospective memory: 前瞻性記憶（「記得未來要去某處做某事」的記憶能力，極易受外部干擾而遺忘）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1565,16 +1942,16 @@ On the right: Incremental Construction keeps feedback loops immediate so working
 </div>
 
 <!--
-Review the 12 core behavior patterns in Section 1:
+Look at this illustration of Satisficing versus Optimal Rationality.
 
-From Safe Exploration (TW1.1) and Instant Gratification (TW1.2), to Satisficing (TW1.3), Changes in Midstream (TW1.4), Deferred Choice (TW1.5), Incremental Construction (TW1.6), Habituation (TW1.7), Spatial Memory (TW1.9), Prospective Memory (TW1.10), Streamlined Repetition (TW1.11), and Keyboard Only (TW1.12).
+On the left, the engineer's mental model assumes the user stands at a crossroads, calmly reading a five-hundred-page specification manual to calculate the optimal route. On the right is what actually happens in production: the user sprints straight through the bushes toward the first glowing sign that looks remotely related to their goal, relying on Undo if they hit a dead end.
 
-Every single pattern corresponds to an established cognitive principle in human factors engineering. When engineers respect these patterns, users experience software as an effortless extension of their own intentions.
+Whenever you find yourself saying, "Why didn't the user read the three-paragraph instruction at the top of the modal?", remember this diagram. Users scan for action cues and satisfice.
 
 💡 難字與專業術語解說：
-- cognitive: 認知的、心理思維運作的
-- prospective memory: 前瞻記憶（對未來預定要執行事項的記憶，如待辦提醒紅點）
-- streamlined: 精簡流暢的、阻力最小化的
+- optimal rationality: 最佳理性模型（假設決策者具備無限時間與算力去評估所有可能選項的理想化假設）
+- trial and error: 試誤學習法（透過不斷嘗試與修正錯誤來達成目標的探索過程）
+- action cue: 行動視覺線索（畫面中引導點擊或操作的按鈕、連結與高對比圖示）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1584,16 +1961,14 @@ Every single pattern corresponds to an established cognitive principle in human 
 </div>
 
 <!--
-Examine these two fundamental human behavioral patterns:
+This architectural diagram maps out how Safe Exploration, Instant Gratification, and Deferred Choices work together during the first sixty seconds of user onboarding.
 
-On the left: Safe Exploration (TW1.1) in mobile email. When an email is archived, an asynchronous toast notification immediately appears with an "Undo" action. Notice how this transforms user psychology: users feel confident and decisive because mistakes carry zero penalty. This directly implements Nielsen's Heuristics on User Control and Error Recovery.
-
-On the right: Instant Gratification (TW1.2) in e-commerce. A prominent "Buy Again" button allows returning customers to re-order standard supplies in a single click. For habitual transactions, forcing users through searching, filtering, and re-entering shipping specs is an unforgivable friction multiplier.
+If a new user opens your graphic design tool or cloud IDE and is immediately blocked by a mandatory ten-field registration wall, credit card prompt, and project configuration wizard, they bounce. Instead, if you let them jump straight onto an interactive canvas (Safe Exploration), apply a one-click starter template that renders a live result in two seconds (Instant Gratification), and only ask them to name their project or create an account when they click "Save & Share" (Deferred Choices), activation rates skyrocket.
 
 💡 難字與專業術語解說：
-- asynchronous toast: 非同步浮動快顯提示（短暫停留不打斷操作的輕量通知）
-- gratification: 滿足、滿意感
-- friction multiplier: 阻力放大因子（增加使用者心智阻礙的設計缺陷）
+- onboarding: 新手引導與初次上手體驗（使用者首次接觸產品直到成功完成核心價值的過程）
+- registration wall: 強制註冊牆（在體驗任何核心功能前強迫使用者先註冊登入的阻斷式設計）
+- activation rate: 產品啟用轉換率（新使用者成功完成首次核心價值體驗的指標比例）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1603,17 +1978,16 @@ On the right: Instant Gratification (TW1.2) in e-commerce. A prominent "Buy Agai
 </div>
 
 <!--
-Examine how interfaces handle shifting user intentions and onboarding friction:
+Here we see Incremental Construction and Habituation in action.
 
-Top: Changes in Midstream (TW1.4) in High-Speed Rail ticketing. After searching for a 17:00 departure, users can immediately click "Earlier trains" or "Later trains" directly within the results view. Imagine the rage if the user had to click the browser Back button, re-select origins and destinations, and re-pick the date just to shift the window by 30 minutes!
+Incremental Construction is why modern code editors, document processors, and query builders provide live previews and hot-reloading. Humans cannot hold a complex finished artifact entirely in their head before typing; they sketch a rough draft, see how it looks, and iteratively refine it.
 
-Bottom: Deferred Choice (TW1.5) during app onboarding. Requiring users to fill out complex profile questionnaires before seeing any core value creates massive drop-off. A clean "Skip for now" link gives users immediate agency, allowing them to defer configuration until they are invested in the product.
+Meanwhile, Habituation explains why breaking platform conventions is so dangerous. Once a user has pressed `Cmd+S` to save or swiped right to go back ten thousand times, that action moves from conscious prefrontal cortex processing to automatic basal ganglia muscle memory. If your web app overrides `Cmd+S` to "Send & Publish Unfinished Draft to All Clients," your users' own muscle memory becomes a weapon against them.
 
 💡 難字與專業術語解說：
-- midstream: 流程中段、中途
-- drop-off rate: 流失率、途中棄用率
-- onboarding: 新手引導流程、初次使用體驗
-- agency: 主控權、自主行動能力
+- hot-reloading: 熱重載／即時預覽更新（修改局部內容或代碼後無須重啟即刻呈現視覺結果）
+- muscle memory: 肌肉記憶（經長期重複訓練後不需大腦意識思考即可自動執行的程序性記憶）
+- basal ganglia: 基底核（大腦中負責習慣化動作與程序性運動記憶的深層神經結構）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1623,16 +1997,16 @@ Bottom: Deferred Choice (TW1.5) during app onboarding. Requiring users to fill o
 </div>
 
 <!--
-Here is the quintessential implementation of Incremental Construction (TW1.6): Overleaf, the collaborative LaTeX authoring platform.
+This diagram illustrates Prospective Memory—one of the most fragile aspects of human cognition.
 
-Observe the split architecture: the left pane is the code editor where formulas and text are input, while the right pane renders live, pixel-perfect PDF output. 
+Retrospective memory is remembering the past ("What did I eat yesterday?"). Prospective memory is remembering to perform an intended action in the future ("When I finish reviewing this pull request, I need to update the deployment config"). As soon as a Slack notification pops up or a colleague walks by, prospective memory evaporates.
 
-Why is this pattern so powerful for complex creative tasks? Because humans have severe working memory limits. Forcing authors to mentally compile code or wait minutes for a batch build causes immense cognitive fatigue. Real-time incremental rendering offloads cognitive simulation to the browser, sustaining a state of uninterrupted creative flow.
+Great interfaces externalize prospective memory directly into the workspace: letting users star an email, leave an inline `// TODO` comment, pin a tab, or save a half-written draft visibly in the sidebar so the interface remembers on their behalf.
 
 💡 難字與專業術語解說：
-- quintessential: 最典型具代表性的、典範的
-- working memory: 工作記憶（大腦短期暫存並處理資訊的容量，極其有限）
-- state of flow: 心流狀態（高度專注沉浸且高效的心理狀態）
+- retrospective memory: 回溯性記憶（對過去已發生事件、知識或經驗的記憶提取）
+- externalize: 認知外化（將原本需儲存在人腦內部的記憶或計算轉移至外部視覺工具中保存）
+- intended action: 預期計畫行動（使用者打算在未來某個時間點或條件下執行的待辦動作）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1642,18 +2016,18 @@ Why is this pattern so powerful for complex creative tasks? Because humans have 
 </div>
 
 <!--
-Observe how modern enterprise dashboards orchestrate three complementary memory patterns:
+Now let's examine how these behavioral truths crystallize into concrete UI patterns.
 
-Left: Habituation (TW1.7). A standardized vertical navigation sidebar leverages unconscious muscle memory so users navigate without deliberate mental effort.
+Every modern authoring tool—from VS Code and Figma to Notion and Canva—relies on the **Safe Editing Trifecta**: Preview, Undo, and Autosave. Notice how each pillar neutralizes a specific psychological barrier: Live Preview eliminates the fear of the unknown before an action; Multi-level Undo eliminates the fear of human error after an action; and Cloud Autosave eliminates the fear of catastrophic hardware or network failure.
 
-Sidebar Red Badge: Prospective Memory (TW1.10). Human prospective memory—remembering to do something in the future—is notoriously unreliable. The "Saved Items (3)" red counter badge acts as an external cognitive artifact, reminding the user to complete unfinished review tasks.
-
-Top-Right Gear Icon: Spatial Memory (TW1.9). The human brain maps digital interfaces like physical territory. By anchoring settings permanently in the upper-right corner, visual search costs drop to zero.
+Beside that sits **Progressive Disclosure** (often implemented as "Show More" drawers, collapsible advanced panels, or tiered settings). Notice the golden engineering rule: display the 20% of controls that handle 80% of daily workflows upfront, and tuck the remaining 80% of edge-case parameters behind an on-demand expansion toggle. You satisfy both novices who need simplicity and power users who need granular control.
 
 💡 難字與專業術語解說：
-- cognitive artifact: 認知人造物（輔助人類心智記憶的外在工具或標記）
-- muscle memory: 肌肉記憶（經重複練習形成的無意識直覺反應）
-- visual search cost: 視覺搜尋成本（眼睛在畫面上尋找特定元素所耗費的時間與精力）
+- trifecta: 黃金三要素、三連勝組合（三個相輔相成缺一不可的核心機制）
+- multi-level undo: 多層次復原（支援連續回退多個歷史操作步驟的狀態堆疊機制）
+- progressive disclosure: 漸進式揭露（依使用者需求分階段展開進階細節以控制初始認知負荷）
+- Pareto distribution (80/20 rule): 柏拉圖八二法則（80% 的日常使用情境集中在 20% 的核心功能上）
+- granular control: 細粒度控制（針對底層參數進行精密微調的能力）
 -->
 ---
 ## Section 2: Organizing Content & Layout (Content & Layout)
@@ -1690,19 +2064,14 @@ Top-Right Gear Icon: Spatial Memory (TW1.9). The human brain maps digital interf
 </div>
 
 <!--
-We move into Section 2: Organizing Content and Layout.
+Look at this visual comparison of the Safe Editing Trifecta and Progressive Disclosure.
 
-Screen real estate is strictly finite, yet modern databases hold millions of records. Dumping everything onto a single page overwhelms users with catastrophic cognitive noise.
-
-On the left: The Discovery Trifecta (TW2.1) balances the three ways humans explore information—Search for direct intent, Feature for editorial highlights, and Browse for casual exploration. Dashboards aggregate disparate metrics into unified executive summaries, while Alternative Views let users toggle representations (such as Map vs. List) based on their immediate task context.
-
-On the right: Progressive Disclosure and Wizards master temporal organization. Instead of presenting a 40-field form, we break it into a linear journey, unveiling complexity only when the user is ready. Meanwhile, Module Tabs swap peer-level contexts, while Accordions expand nested details in-place.
+When all parameters—margins, color profiles, bleed settings, PostScript flags, and font subsetting—are dumped into a single flat dialog box, the user freezes. By separating the primary daily actions into a clean top-level view and placing rare configuration parameters inside an expandable "Advanced Settings" drawer, the visual noise drops dramatically while preserving 100% of the engineering capability.
 
 💡 難字與專業術語解說：
-- real estate: 版面空間、螢幕可用面積
-- disparate: 截然不同的、多元殊異的
-- temporal organization: 時間維度組織（按流程先後次序逐步展現內容）
-- in-place: 就地、原位（無需切換頁面或跳轉視圖）
+- flat dialog box: 扁平無層次對話框（將所有初階與進階選項不分類別全部攤開在同一視窗的設計）
+- expandable drawer: 可展開式抽屜面板（點擊後滑出或向下展開以顯示次要控制項的容器組件）
+- visual noise: 視覺雜訊（畫面中干擾注意力集中於主要任務的多餘線條、文字與控制項）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1712,20 +2081,19 @@ On the right: Progressive Disclosure and Wizards master temporal organization. I
 </div>
 
 <!--
-Here is the pattern matrix for Section 2: Organizing Content and Layout.
+Now let's move to Section 2: Organizing Content & Page Layout—Macro-to-Micro Spatial Architecture.
 
-Notice the rich taxonomy:
-- Information discovery: Search / Browse / Feature, Mobile Direct Access.
-- Overview architectures: The Dashboard, Alternative Views, Many Workspaces, Visual Framework.
-- Content containers: Center Stage, Grid of Equals, Titled Sections, Card Containers.
-- Temporal controllers: Progressive Disclosure, The Wizard, Module Tabs, Accordions, and Collapsible Panels.
+When a user opens a new screen, they do not read top-to-bottom like a novel. Within the first two hundred milliseconds, their visual cortex performs pre-attentive processing, scanning the page's macro geometry—whitespace, contrast blocks, alignment, and scale—to deduce what is most important and where to start.
 
-Every front-end layout framework—from Bootstrap and Material UI to Tailwind component kits—is built directly on top of these structural blueprints.
+Let's examine four classic spatial architectures from Tidwell's catalog. First, **Two-Panel Split View (Master-Detail)**: keeping a selectable list on the left and rendering the selected item's details immediately on the right, which eliminates tedious back-and-forth page reloads. Second, **One-Window Drilldown**: ideal for mobile screens or step-by-step system settings where horizontal space is tight, replacing the entire viewport as the user drills deeper down a hierarchy. Third, **Visual Framework**: maintaining consistent headers, sidebars, typography, and color tokens across every view so the application feels like a single coherent building. And fourth, **Alternative Views**: allowing the exact same underlying data model to be toggled instantly between a Table, a Kanban Board, and a Calendar view.
 
 💡 難字與專業術語解說：
-- taxonomy: 分類學、分門別類體系
-- container: 容器元件
-- temporal: 時間次序上的
+- pre-attentive processing: 前注意力視覺處理（人類視覺皮層在 200 毫秒內無意識快速掃描色彩、大小與空間結構的生理機制）
+- macro-to-micro: 從巨觀到微觀（先確立整體版面骨架，再雕琢局部組件細節的設計階層）
+- two-panel split view (master-detail): 雙欄主從分割視圖（左側顯示清單目錄、右側即時連動顯示詳細內容的經典佈局）
+- one-window drilldown: 單視窗下鑽導覽（在單一視窗區域內點擊項目後整頁切換至下一層級細節的行動端常見模式）
+- pogo-sticking: 跳跳虎式反覆進出（因缺乏雙欄預覽而被迫在「列表頁 ↔ 詳情頁」之間不斷按返回鍵來回跳轉的痛苦操作）
+- visual framework: 視覺框架系統（跨頁面維持一致的導覽列、網格與字體色彩規範）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1735,18 +2103,14 @@ Every front-end layout framework—from Bootstrap and Material UI to Tailwind co
 </div>
 
 <!--
-Here is a live architectural teardown of Foodpanda's food delivery home screen:
+This diagram contrasts the four macro page architectures side by side.
 
-At the top: Search (TW2.1). Engineered for high-intent users who know exactly what restaurant or dish they crave.
-In the middle: Feature / Center Stage (TW4.2). Editorial promotion banners highlighting discounts and top-rated restaurants, capturing immediate visual attention.
-At the bottom: Browse (TW2.1). Categorical icons (Bubble Tea, Bento, Fried Chicken) designed for casual exploratory browsing when the user is undecided.
-
-Whether designing an e-commerce storefront, an enterprise SaaS portal, or a media streaming service, this three-tier discovery trifecta accommodates all user mindsets simultaneously.
+Notice the crucial engineering trade-off between **Two-Panel Split View** and **One-Window Drilldown**. On a 27-inch desktop monitor, a Two-Panel Split View (like macOS Finder, Outlook, or VS Code's file explorer + editor) is unbeatable because it prevents "pogo-sticking"—jumping into an item, realizing it's the wrong one, clicking Back, and clicking the next item. However, on a 6-inch smartphone screen, squeezing two panels side by side crushes both into unreadable columns; there, responsive design automatically adapts the Master-Detail pattern into a One-Window Drilldown!
 
 💡 難字與專業術語解說：
-- teardown: 架構拆解剖析
-- intent: 使用者意圖（明確性的高低）
-- categorical: 分門別類的
+- viewport: 視埠／可視視窗區域（螢幕上實際可用於渲染畫面內容的矩形顯示區域）
+- responsive adaptation: 響應式調適（依據螢幕尺寸與裝置特性自動轉換版面結構的設計機制）
+- spatial hierarchy: 空間層級結構（透過區塊位置、面積大小與縮排距離傳達資訊主從關係）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1756,16 +2120,18 @@ Whether designing an e-commerce storefront, an enterprise SaaS portal, or a medi
 </div>
 
 <!--
-Examine two indispensable content organization paradigms:
+How do we organize multiple sections of content within a single workspace without overwhelming the screen? Tidwell gives us four workhorse container patterns: **Module Tabs**, **Accordion**, **Collapsible Panels**, and **Movable / Floating Panels**.
 
-On the left: The Dashboard (TW2.5) in Microsoft PowerBI. Key performance indicators, time-series line charts, and status gauges are consolidated into modular cards. Executives can digest systemic operational health in under five seconds without digging through underlying SQL tables.
-
-On the right: Alternative Views (TW2.9) in restaurant discovery. The identical dataset can be experienced either spatially via an interactive Map View or linearly via a sorted List View. A floating pill toggle gives users immediate freedom to choose the representation that fits their current situational priority.
+Notice the subtle but vital architectural distinction between **Module Tabs** and an **Accordion**:
+- **Module Tabs** are **mutually exclusive (`1-of-N`)**: only one tab's content pane is visible at any moment, and all panes share the exact same fixed spatial footprint. Use tabs when categories are distinct peers and the user never needs to compare two tabs side by side.
+- **Accordions** stack vertically and can allow **multiple panels to remain open simultaneously (`M-of-N`)**. This makes Accordions ideal for FAQ pages, multi-section inspector sidebars (like Figma or CSS dev tools), or stacked mobile forms where users want to keep two sections expanded at once.
 
 💡 難字與專業術語解說：
-- time-series: 時間序列（隨時間推移記錄的數據走勢）
-- consolidate: 整合統整、濃縮匯總
-- paradigm: 範式、架構典範
+- module tabs: 模組化分頁籤（共用同一顯示區域、每次僅呈現單一作用中分頁內容的切換組件）
+- accordion: 手風琴摺疊面板（垂直堆疊且可支援單一或多個區塊同時展開收合的容器組件）
+- mutually exclusive: 互斥關係（同一時間僅允許一個狀態成立，即 1-of-N 選擇邏輯）
+- spatial footprint: 空間佔用面積（UI 組件在螢幕版面上所佔據的矩形像素範圍）
+- floating palette: 浮動工具面板（可自由拖曳位置、懸浮於主畫布之上的專業工具列）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1775,16 +2141,14 @@ On the right: Alternative Views (TW2.9) in restaurant discovery. The identical d
 </div>
 
 <!--
-Observe temporal organization strategies for controlling visual complexity:
+Look closely at this visual comparison of Module Tabs, Accordions, Collapsible Panels, and Floating Palettes.
 
-On the left: Progressive Disclosure in text formatting. The default toolbar presents only standard typographic controls. Clicking into paragraph styles expands the secondary palette only when needed, preserving visual minimalism.
-
-On the right: The Wizard (TW2.7) for data onboarding. A daunting multi-phase workflow is partitioned into four predictable sequential milestones: Select File → Entity Mapping → Data Mapping → Summary. Notice the step navigation bar: it communicates clear forward progress and lowers task anxiety.
+A common rookie mistake in enterprise web apps is nesting Module Tabs inside another row of Module Tabs ("double-decked tabs"). When you stack two or three rows of tabs on top of each other, users lose track of which top tab owns which bottom tab. Whenever your hierarchy goes deeper than one level of tabs, switch to a left-hand vertical navigation tree combined with a content pane, or use Collapsible Panels within the page.
 
 💡 難字與專業術語解說：
-- progressive disclosure: 漸進式揭露（預設隱藏次要細節，待需要時再行展開）
-- onboarding: 引導導入（此處指大量資料匯入與欄位對應流程）
-- milestone: 里程碑、重要進度節點
+- double-decked tabs: 雙層堆疊分頁籤（在分頁籤下方又嵌套另一排分頁籤的反模式，極易造成階層混淆）
+- navigation tree: 樹狀導覽結構（以垂直縮排展開多層級父子節點的側邊目錄）
+- workspace customization: 工作區自訂化（允許進階使用者依個人工作流自由停靠或分離面板）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1794,16 +2158,17 @@ On the right: The Wizard (TW2.7) for data onboarding. A daunting multi-phase wor
 </div>
 
 <!--
-Here is one of the most common debates in front-end design: When should you use Tabs versus Accordions?
+Let's examine two more essential layout patterns: **Right/Left Alignment** in forms, and **Responsive Disclosure**.
 
-On the left: Module Tabs (TW4.5). Tabs represent mutually exclusive datasets situated at the exact same hierarchical tier (e.g., Topics, Archives, Pages). Switching tabs swaps the active viewport canvas entirely.
+Look at the form alignment rules on the left. Have you ever filled out a wide desktop form where the text labels were left-aligned on the far left edge of the screen, and the input boxes were 400 pixels away on the right? Your eyes have to play ping-pong across a massive white gap, causing you to type values into the wrong row! Tidwell highlights two superior patterns: **Top-Aligned Labels** (placed directly above each input field, allowing a single vertical eye fixation for the fastest completion time) or **Right-Aligned Labels** (which hug the left edge of the input boxes tightly so label and field form a clean visual spine).
 
-On the right: Accordion (TW4.6). Accordions represent nested, progressive details within a unified page (e.g., Frequently Asked Questions). Expanding an accordion pushes subsequent content downward, allowing users to inspect multiple sections simultaneously while preserving their vertical scroll position.
+On the right, **Responsive Disclosure** shows how a multi-step checkout or configuration flow reveals the next logical section dynamically only after the current step is validated, keeping the screen calm and focused.
 
 💡 難字與專業術語解說：
-- mutually exclusive: 互斥的（選取其一則其餘關閉）
-- hierarchical: 階層式的、上下從屬結構的
-- vertical scroll position: 垂直滾動位置
+- eye fixation: 視覺凝視點（眼球在閱讀掃描過程中短暫停留聚焦以擷取資訊的座標點）
+- visual spine: 視覺中軸線（表單中標籤右緣與輸入框左緣緊密對齊所形成的垂直視覺導引線）
+- top-aligned labels: 頂部對齊標籤（將欄位名稱置於輸入框正上方，能大幅縮短視線移動距離）
+- responsive disclosure: 響應式動態揭露（依據使用者前一步驟的選擇結果，動態顯示後續相關表單區塊）
 -->
 ---
 ## Section 3: Wayfinding & Navigation Mechanisms (Wayfinding & Navigation)
@@ -1838,19 +2203,14 @@ On the right: Accordion (TW4.6). Accordions represent nested, progressive detail
 </div>
 
 <!--
-We move to Section 3: Wayfinding and Navigation Mechanisms.
+This diagram demonstrates the eye-tracking difference between poor form alignment and clean alignment.
 
-Navigating complex enterprise software is analogous to navigating an international airport terminal. Without clear departure gates, flight status boards, and emergency exits, travelers experience intense disorientation and anxiety.
-
-On the left: Clear Entry Points establish unmistakable starting lines; Sign-in Tools anchor user identity in predictable screen coordinates. And remember the Golden Rule of Modals: if you trap a user inside a modal dialog to demand their undivided attention, you are ethically and architecturally obligated to provide an Escape Hatch! The top-right '✕' button and the Escape key handler are just as critical as the primary Submit button.
-
-On the right: The 3-Tier Orientation Hierarchy systematically answers all user questions: Steppers answer "How much is left?", Breadcrumbs answer "Where am I in the taxonomy?", and Annotated Scrollbars answer "Where am I within this massive document?".
+Notice the jagged red zig-zag saccades when labels are far from their fields, versus the smooth, straight vertical scan path of top-aligned or tightly right-aligned labels. In high-frequency data entry software—like hospital electronic health records or financial trading desks—eliminating those extra eye saccades saves hours of cognitive fatigue every week.
 
 💡 難字與專業術語解說：
-- wayfinding: 尋路機制（引導使用者在數位空間中確立方位與路徑的設計）
-- analogous: 類似的、可相提並論的
-- modal dialog: 互動對話框（強制阻斷背景操作的浮層面板）
-- escape hatch: 逃生出口（迅速安全退出當前狀態的安全機制）
+- saccade: 眼球跳視（視線在兩個凝視點之間快速跳躍移動的過程，跳視距離越長越容易產生視覺疲勞）
+- cognitive fatigue: 認知疲勞（因長時間處理繁瑣或不自然介面佈局而導致的注意力下降與疲倦感）
+- scan path: 視覺掃描路徑（眼球在檢視畫面時依序停留與移動所構成的軌跡）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1860,16 +2220,19 @@ On the right: The 3-Tier Orientation Hierarchy systematically answers all user q
 </div>
 
 <!--
-Follow this connected wayfinding navigation trail:
+Now we enter Section 3: Wayfinding & Navigation—Preventing Spatial Disorientation.
 
-Starting from Entry Points (TW3.1) and Sign-in Tools (TW3.9), leading into Menu Panels, Modal Panels (TW3.4), and Escape Hatches (TW3.6), and culminating in navigational feedback: Breadcrumbs (TW3.11), Progress Indicators (TW3.10), and Annotated Scrollbars (TW3.12).
+Wayfinding is a term borrowed from urban architecture and environmental design (pioneered by Kevin Lynch). When you walk into an unfamiliar international airport, you immediately ask four questions: *Where am I? Where can I go? How do I get there? And how do I get back?* Users ask those exact same four questions inside your software.
 
-Together, these patterns build a coherent spatial orientation network across your application.
+Look at Tidwell's first two navigation patterns:
+1. **Clear Entry Points**: Do not drop new or returning users into a dense, intimidating cockpit of fifty tiny menus. Present a calm, task-oriented gateway—for example, three prominent cards saying *"Create New Project"*, *"Open Recent File"*, or *"Explore Templates"*.
+2. **Escape Hatch**: Whenever a user enters a deep wizard, a full-screen preview, a modal dialog, or an error state, provide an unmistakable, zero-penalty button (`Cancel`, `Close X`, or the top-left app logo) that teleports them safely back to a known home state.
 
 💡 難字與專業術語解說：
-- navigation trail: 導航軌跡、路徑線索
-- culminating: 終至、達到頂點完成
-- orientation: 定向、方位確立
+- clear entry points: 清晰入口點（在首頁或空白狀態提供少數幾個任務導向的明確起點，引導使用者順利起步）
+- escape hatch: 緊急逃生艙／安全退路（在深層流程、全螢幕模式或對話框中提供一鍵安全返回主畫面的明確出口）
+- environmental design: 環境空間設計（研究建築、指標系統與人類空間認知互動的設計學科）
+- task-oriented gateway: 任務導向入口（以使用者想完成的具體目標而非系統底層資料表來組織的首頁入口）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1879,16 +2242,14 @@ Together, these patterns build a coherent spatial orientation network across you
 </div>
 
 <!--
-Examine these two entry and identity patterns:
+This diagram illustrates Clear Entry Points and Escape Hatches in practice.
 
-Top: Clear Entry Points (TW3.1) on Prezi's marketing site. Unambiguous "Log in", "Teams", and "Get started" call-to-action buttons eliminate initial hesitation, offering a clear doorway into the product.
-
-Bottom: Sign-in Tools (TW3.9) in GitHub. Clicking the user profile avatar in the persistent top-right corner reveals account settings, organization switches, and sign-out options. Maintaining this convention respects universal web muscle memory.
+Think about why modern IDEs and creative suites show a "Welcome Screen" with clear task entry points when you launch them with no file open, rather than an empty gray screen surrounded by two hundred disabled toolbar icons. And notice how every checkout flow or modal overlay needs an obvious Escape Hatch so users never feel trapped in a one-way tunnel.
 
 💡 難字與專業術語解說：
-- call-to-action (CTA): 行動召喚（引導使用者採取明確下一步操作的按鈕或連結）
-- persistent: 常駐的、跨頁面始終保持的
-- avatar: 個人頭像
+- welcome screen: 歡迎起始畫面（軟體啟動時提供最近檔案、範本與快速入門導引的任務入口頁）
+- modal overlay: 模態遮罩視窗（浮現於主畫面之上並鎖定背景互動，要求使用者先處理或關閉的焦點視窗）
+- one-way tunnel: 單向死胡同（缺乏返回鍵或取消出口、強迫使用者只能一路按到底的壓迫式流程）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1898,16 +2259,18 @@ Bottom: Sign-in Tools (TW3.9) in GitHub. Clicking the user profile avatar in the
 </div>
 
 <!--
-Study the Golden Rule of Modals illustrated here:
+Next in Wayfinding, let's examine four orientation and跳转 (jump) patterns: **Breadcrumbs**, **Modal Dialogs**, **Sequence Map**, and **Annotated Scrollbar**.
 
-"If you force a user into a 'Forced Response Panel' (TW3.4) to guarantee focus, you must explicitly design the 'Escape Hatch' (TW3.6) to prevent them from feeling trapped. The '✕' is as important as the 'Submit' button."
-
-Look at the architectural state tree on the right: when a modal interrupts the flow, clicking the close button or pressing the ESC key must safely route the user back to their prior state without corrupted form data or stuck overlay backdrops.
+- **Breadcrumbs** (`Home > Electronics > Audio > Headphones`) show the user's exact hierarchical ancestry—not their chronological browser history! Each segment is clickable, letting the user jump two or three levels up the hierarchy in a single click.
+- **Modal Dialogs** intentionally interrupt the main workflow and dim the background. Because modals are disruptive, reserve them strictly for critical confirmations (like destructive actions) or short, self-contained sub-tasks.
+- **Sequence Map (Step Indicator)** turns a multi-step wizard (`1. Cart → 2. Shipping → 3. Payment → 4. Review`) into a visual progress roadmap, showing completed steps, current position, and remaining effort.
+- **Annotated Scrollbar** turns a passive scrollbar track into a high-density spatial minimap—marking search hits, compiler errors, Git diff changes, or timeline chapters right along the scroll track.
 
 💡 難字與專業術語解說：
-- forced response: 強制回應（要求使用者必須做出選擇方能繼續）
-- escape hatch: 逃生出口
-- overlay backdrop: 遮罩背景底層（對話框後方的半透明黑色遮罩）
+- breadcrumbs: 麵包屑導覽列（源自童話糖果屋，顯示當前頁面在網站階層結構中從根節點到當前位置的路徑）
+- hierarchical ancestry: 階層父系路徑（在樹狀資訊架構中從根目錄一路向下到當前節點的從屬關係）
+- sequence map (step indicator): 序列步驟地圖（在多步驟精靈流程頂部顯示總步數、已完成步驟與當前進度的導覽組件）
+- annotated scrollbar: 標註型捲軸（在捲軸軌道上疊加搜尋命中點、錯誤位置或日期刻度標記的空間視覺化組件）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1917,16 +2280,14 @@ Look at the architectural state tree on the right: when a modal interrupts the f
 </div>
 
 <!--
-Examine this 3-tier orientation system answering the core navigation questions:
+Look at how these four wayfinding patterns appear in real software interfaces.
 
-Top Tier (The Process): TW3.10 Progress Indicators with numbered nodes showing which checkout or onboarding step you are currently completing.
-Middle Tier (The Hierarchy): TW3.11 Breadcrumbs displaying academic semester > college > department > course, allowing instant upward traversal without clicking Back multiple times.
-Bottom Tier (The Page): TW3.12 Annotated Scrollbar providing an alphabetical scrub rail for massive contact lists, offering continuous spatial context during fast scrolling.
+Notice the Annotated Scrollbar on the bottom right: every developer who uses VS Code, IntelliJ, or Chrome DevTools relies on those colored tick marks in the scrollbar gutter—yellow ticks for search matches, red ticks for syntax errors, green and blue bars for Git additions and modifications—and Google Photos uses a date-annotated scrollbar so you can scrub directly to "October 2021" across fifty thousand photos in one second.
 
 💡 難字與專業術語解說：
-- upward traversal: 向上層級遍歷（點擊導航路徑直接回到父層或祖父層）
-- scrub rail: 快速滑動滑軌（滑鼠或手指直接拖拉以快速定位的標尺）
-- annotated: 標註註解的、附帶標記的
+- scrollbar gutter: 捲軸溝槽軌道（視窗右側供捲軸滑塊移動與顯示標記的垂直長條區域）
+- minimap: 微縮全覽圖（在程式碼編輯器或大型畫布側邊顯示整體結構縮圖以利快速定位的組件）
+- scrub: 快速拖曳檢索（按住時間軸或捲軸滑塊高速滑動以即時預覽不同區段內容的操作）
 -->
 ---
 ## Section 4: Data Display & Collections (Data Display & Lists)
@@ -1959,18 +2320,19 @@ Bottom Tier (The Page): TW3.12 Annotated Scrollbar providing an alphabetical scr
 </div>
 
 <!--
-We arrive at Section 4: Data Display and Collections.
+Now let's explore Section 4: Data Display & Lists—Managing Information Density.
 
-Over 80% of business software centers on displaying, querying, and updating collections of data.
+When your application needs to present hundreds or thousands of items—products, photos, log entries, or customer records—how you structure the list determines how fast users can scan and compare items.
 
-On the left: The desktop environment provides broad viewports, making the Two-Panel Split View (TW7.1) the gold standard—users browse the list on the left while simultaneously reading item details on the right. On mobile screens with severe horizontal constraints, we degrade gracefully to the One-Window Drilldown (TW7.2), which mandates an unmistakable Back navigation button.
-
-On the right: Visual scanning and space compression. Thumbnail Grids allow human vision to scan hundreds of images in parallel, while Carousels compress multiple hero banners horizontally. Meanwhile, Pagination and New-Item Rows structure infinite data and streamline record creation.
+Look at the visual comparison between a **Thumbnail Grid** and a **Carousel**:
+- A **Thumbnail Grid** lays items out in a clean 2D matrix, maximizing visual density and letting users compare multiple visual items (photos, video thumbnails, e-commerce apparel, template cards) simultaneously with vertical scrolling.
+- A **Carousel** displays a horizontal strip of featured items in a constrained vertical footprint, inviting discovery through horizontal peeking or scrolling. However, keep a critical usability finding in mind: **never turn on fast auto-advancing carousels** that yank a card away while the user is reading it, and never hide essential primary content on slide 4 of a carousel where most users will never scroll!
 
 💡 難字與專業術語解說：
-- two-panel split view: 雙欄分割檢視（左側清單、右側詳細資料的經典架構）
-- one-window drilldown: 單視窗逐層深入（點選清單項目後全頁滑入詳細頁）
-- degrade gracefully: 優雅降級（在受限環境下平順切換為適配版型而不破壞功能）
+- information density: 資訊密度（單位螢幕面積內所呈現的有效資訊量與視覺元素比例）
+- thumbnail grid: 縮圖網格佈局（以二維矩陣排列圖片卡片，適合視覺主導型商品的平行瀏覽與比較）
+- carousel: 旋轉木馬橫向輪播組件（在有限垂直高度內透過水平滑動展示精選卡片的組件）
+- banner blindness: 橫幅廣告盲視（使用者下意識忽略外觀或行為類似動態輪播廣告區塊的認知現象）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1980,16 +2342,14 @@ On the right: Visual scanning and space compression. Thumbnail Grids allow human
 </div>
 
 <!--
-Review the pattern suite for Section 4: Data Display and Collections.
+This diagram compares Thumbnail Grids and Carousels side by side.
 
-Covering Two-Panel Selector, One-Window Drilldown, Alternative Views, Thumbnail Grid, Carousel, Row Striping, Pagination, and New-Item Row.
-
-These patterns govern how data arrays and records are mapped to interactive UI components across responsive breakpoints.
+Notice how Netflix, Spotify, and App Stores combine both patterns thoughtfully: they use horizontal Carousels to showcase several distinct curated categories ("Continue Watching", "Trending Now", "Award-Winning Dramas") within a single viewport, and once you click into a specific genre or search result, they switch to a full 2D Thumbnail Grid for deep browsing.
 
 💡 難字與專業術語解說：
-- row striping: 斑馬紋隔行著色（提升多列表格橫向閱讀辨識度的樣式技巧）
-- responsive breakpoint: 響應式斷點（畫面寬度觸發版型重排的臨界像素值）
-- data array: 資料陣列、集合
+- curated category: 策展精選分類（經編輯或演算法挑選主題後呈現的內容集合）
+- horizontal peeking: 邊緣局部露頭提示（在橫向輪播最右側刻意露出下一張卡片的局部邊緣，暗示使用者可向左滑動）
+- deep browsing: 深度探索瀏覽（使用者已有明確類別目標、需要大面積快速掃描大量項目的瀏覽模式）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -1999,17 +2359,20 @@ These patterns govern how data arrays and records are mapped to interactive UI c
 </div>
 
 <!--
-Compare these two responsive paradigms:
+When data is text-heavy, multi-attribute, and quantitative—such as financial transactions, server logs, or issue trackers—Thumbnail Grids waste space. That's where **Alternating Row Striping** and **Pagination vs. Infinite Scroll** come in.
 
-Left: Desktop Slack using Two-Panel Split View (TW7.1). Channels on the left remain visible while reading messages on the right, eliminating context switching.
-Right: iOS Mail using One-Window Drilldown (TW7.2). Selecting an email transitions into a dedicated reading view, with a clear "Back" button and prev/next arrows (1 of 50).
+In wide data tables, a user's eye has to travel horizontally from the item name in Column 1 all the way to the action button in Column 8. Without visual guidance, the eye easily slips up or down one row. **Alternating Row Striping (Zebra Striping)** uses subtle, low-contrast background shading on every even row to create horizontal visual rails—though modern tables also pair this with subtle row-hover highlighting.
 
-When designing responsive web apps, engineers must dynamically switch between these two modes based on container width media queries.
+On the right, compare the three ways to load large lists:
+1. **Pagination (`Page 1, 2, 3...`)**: Gives users a predictable sense of dataset scale, preserves access to the page footer, and lets someone bookmark or return to *"Page 4, middle row"*. Best for enterprise tables, search results, and admin dashboards.
+2. **Infinite Scroll**: Continuously appends content as the user scrolls down. Great for social media feeds where users are casually browsing, but terrible if a user wants to find a specific item again or reach links in the website footer!
+3. **"Load More" Button**: Often the goldilocks compromise for e-commerce—giving users explicit control over when to fetch the next batch of 24 items without trapping the footer.
 
 💡 難字與專業術語解說：
-- context switching: 情境切換（在不同畫面間跳轉帶來的認知重新定向耗損）
-- media query: 媒體查詢（CSS 偵測螢幕寬度與裝置特性的語法）
-- drilldown: 逐層深入、下鑽探查
+- alternating row striping (zebra striping): 奇偶列斑馬紋底色（在寬表格中以極淡的深淺交錯背景色形成水平視覺軌道，防止跨欄看錯行）
+- pagination: 分頁導覽器（將大型資料集切割為固定大小頁面並提供頁碼跳轉的控制組件）
+- infinite scroll: 無限捲動載入（當捲動接近底部時自動非同步載入更多內容的無縫瀏覽模式）
+- footer trap: 頁尾陷阱（因無限捲動不斷在底部塞入新內容，導致使用者永遠無法觸及頁面底部的版權與聯絡資訊列）
 -->
 ---
 <!-- _class: full-image-slide -->
@@ -2019,17 +2382,14 @@ When designing responsive web apps, engineers must dynamically switch between th
 </div>
 
 <!--
-Examine space compression versus scanning density:
+Look at this side-by-side comparison of Zebra-Striped Tables, Pagination, and Infinite Scroll.
 
-Top: Windows Photos using a Thumbnail Grid (TW7.5). High-density matrix layout allowing human eyes to scan dozens of assets in a fraction of a second.
-Bottom: Web hero carousel (TW7.6). Compressing computer systems, security, and cloud computing into one viewport height. Note the circled arrow affordance—carousels require explicit navigation controls!
-
-Thumbnail grids maximize parallel visual scanning, while carousels compress multiple prominent visual assets horizontally into a single viewport fold.
+Every time you design a list view in a software project, ask yourself: *"Is my user grazing an endless entertainment stream, or are they hunting for a specific record to compare and act upon?"* If they are grazing, Infinite Scroll reduces click friction. If they are hunting, sorting, and comparing, Pagination (or a virtualized table with an annotated scrollbar) gives them spatial control and addressability.
 
 💡 難字與專業術語解說：
-- visual scanning: 視覺掃描（人眼在多項元素間快速掠過以尋找目標的行為）
-- viewport fold: 視窗首屏折疊線（無需向下滾動即可看見的第一屏區域）
-- affordance: 可供性、預設用途（引導使用者發現其可點擊操作的線索）
+- grazing vs. hunting: 漫遊瀏覽 vs. 目標狩獵（資訊尋求行為的兩種典型模式：消遣式隨意滑動 vs. 精準查找特定紀錄）
+- addressability: 位置可尋址性（使用者能否精確記住、定位或透過網址連結回到資料集中的特定位置）
+- click friction: 點擊摩擦成本（每一次額外要求使用者手動點擊按鈕或等待換頁所產生的操作阻力）
 -->
 ---
 ## The Tidwell UX Mandate: Engineering Usability Checklist
@@ -2061,21 +2421,18 @@ Thumbnail grids maximize parallel visual scanning, while carousels compress mult
 </div>
 
 <!--
-Before concluding Module 6.3, internalize this Pre-Release Engineering Usability Checklist.
+Before we leave Section 6.3, let's synthesize Tidwell's entire pattern language into a five-point engineering mandate checklist that you can apply to every pull request and UI review.
 
-When building front-end components or reviewing pull requests, do not simply evaluate CSS styling or test coverage—interrogate the interaction architecture:
-- Is it safe to explore? Does an accidental click trigger irreversible state loss?
-- Where is the escape hatch? Does every modal dialog provide an intuitive '✕' and ESC key dismiss?
-- Is location unambiguous? Can users orient themselves in five seconds via breadcrumbs or steppers?
-- Is responsive parity preserved? Does a desktop split view degrade gracefully to mobile drilldowns?
-- Is discovery balanced across search, features, and browsing?
-
-Transforming these pattern requirements into engineering acceptance criteria guarantees software that earns long-term user trust.
+1. **Respect Satisficing**: Make primary click targets obvious and offer an instant Escape Hatch + Undo so trial-and-error is always safe.
+2. **Progressive Disclosure**: Never dump 100% of database columns or configuration flags onto the initial screen; show the essential 20% upfront and reveal advanced controls on demand.
+3. **Eliminate Pogo-Sticking**: Use Two-Panel Split Views (Master-Detail) on desktop whenever users need to inspect items in a list rapidly.
+4. **Orient the User**: Combine a consistent Visual Framework, Breadcrumbs, and Sequence Maps so users always know *where they are* and *what comes next*.
+5. **Responsive Parity**: Adapt macro layouts gracefully across device form factors—for example, transforming a desktop Split View into a mobile One-Window Drilldown.
 
 💡 難字與專業術語解說：
-- acceptance criteria: 驗收條件（敏捷開發中判定功能是否合格的具體標準）
-- irreversible: 不可逆的、無法挽回的
-- parity: 對等性、一致性（跨裝置在體驗與能力上的對等平衡）
+- pattern language: 模式語言（源自建築師 Christopher Alexander，指由一套相互關聯的設計模式所組成的完整系統架構方法）
+- engineering mandate: 工程設計準則（研發團隊在程式碼與介面審查時必須共同遵守的規範要求）
+- responsive parity: 跨裝置響應式對等性（確保桌面端與行動端雖採用不同空間佈局，但提供對等完整的功能與體驗）
 -->
 
 ---
@@ -2087,13 +2444,18 @@ Transforming these pattern requirements into engineering acceptance criteria gua
 > "AI will not replace UX designers, but UX designers who use AI will replace those who do not."
 
 <!--
-We now transition into Part 2: AI-Powered UX and Interaction Design.
+Welcome to Section 6.4: AI for UX (AI4UX).
 
-In Module 6.4, we explore AI for UX (AI4UX). How can software engineers and designers leverage Large Language Models, generative image tools, and autonomous AI agents to dramatically accelerate the UX design lifecycle?
+Throughout this course, we pay close attention to the two-way relationship between Software Engineering and Artificial Intelligence. In the domain of User Experience, this relationship splits cleanly into two distinct directions:
+- **Section 6.4 is AI for UX (AI4UX)**: How do we use Large Language Models and generative AI tools to accelerate and elevate the UX design and evaluation process itself?
+- **Section 6.5 is UX for AI (UX4AI)**: How do we design trustworthy, usable human-centered interfaces *for* AI-powered software products whose outputs are probabilistic and non-deterministic?
 
-We introduce the RTCF prompt engineering framework, explore synthetic persona generation, examine automated heuristic evaluation audits, and look at multi-agent design systems.
+Let's start with **AI4UX**—using AI as a force multiplier for the UX designer and software engineer.
 
-To summarize this slide, remember this key takeaway: AI for UX utilizes generative intelligence as a cognitive co-designer to rapidly prototype, critique, and optimize interfaces.
+💡 難字與專業術語解說：
+- AI for UX (AI4UX): AI 賦能使用者體驗設計（運用生成式 AI 與大型語言模型加速 UX 研究、原型生成與啟發式評估）
+- UX for AI (UX4AI): 為 AI 系統設計使用者體驗（針對非確定性 AI 模型設計透明、可控且具防呆護欄的人機介面）
+- force multiplier: 戰力倍增器（能讓單一工程師或設計師產出效率與探索廣度成倍躍升的輔助工具）
 -->
 ---
 ## What is AI for UX (AI4UX)?
@@ -2107,15 +2469,20 @@ To summarize this slide, remember this key takeaway: AI for UX utilizes generati
   - **Generative Prototyping:** Text-to-wireframe and text-to-code pipelines (v0, Figma AI, Galileo).
 
 <!--
-What is AI for UX?
+How does Generative AI transform the traditional UX workflow? Let's look at four high-impact applications of AI4UX, and one critical engineering warning.
 
-It is the practice of using generative AI tools to amplify the speed, depth, and quality of user experience work.
+First, **Synthetic Persona & Scenario Generation**: Before going into the field, LLMs can help teams brainstorm diverse edge-case user personas, accessibility scenarios, and stress-test user journeys that a homogeneous engineering team might overlook.
+Second, **UI Copywriting & Microcopy Optimization**: Writing clear button labels, empathetic error messages (NS09), and localized tooltips is notoriously difficult for backend engineers. LLMs excel at transforming cryptic error codes into actionable, human-friendly microcopy across twenty languages.
+Third, **Automated First-Pass Heuristic Audits**: Using multimodal Vision-Language Models (VLMs), you can feed a screenshot or DOM tree of your prototype into an AI auditor to scan for low contrast, missing escape hatches, or jargon before human reviewers even sit down.
+Fourth, **Text-to-UI Rapid Prototyping**: Tools like v0, Bolt, and Claude Artifacts allow teams to generate 5 to 10 interactive HTML/React wireframe variations in minutes, breaking fixation on a single initial layout.
 
-Instead of spending weeks drafting user personas or writing dozens of button microcopy variations by hand, designers use LLMs to generate high-quality drafts in seconds.
+Now look at the warning at the bottom: **Synthetic users are NOT real users!** An LLM only reflects statistical patterns in its training data. It can accelerate ideation and catch obvious anti-patterns, but it can never replace empirical observation of real human beings struggling with your product in the wild.
 
-Furthermore, vision-language models can inspect UI mockups and conduct automated heuristic evaluations, identifying contrast failures or missing labels before human testing begins.
-
-To summarize this slide, remember this key takeaway: AI for UX transforms generative models into rapid research, ideation, auditing, and prototyping partners.
+💡 難字與專業術語解說：
+- synthetic persona: 合成人物誌（由大型語言模型模擬生成的虛擬使用者角色與情境特徵）
+- microcopy: 微文案（介面中決定操作成敗的極短文字，如按鈕標籤、錯誤提示、空白頁引導與工具提示）
+- Vision-Language Model (VLM): 視覺語言多模態模型（能同時理解螢幕截圖視覺佈局與文字語意的 AI 模型）
+- design fixation: 設計固著（設計者過度執著於第一個想到的版面方案，而忽略其他更優可能性之心理盲點）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -2126,13 +2493,14 @@ To summarize this slide, remember this key takeaway: AI for UX transforms genera
 </div>
 
 <!--
-Look at this visualization of the modern AI-augmented design workflow.
+Look at this architecture diagram of the AI-Augmented UX Design Workflow.
 
-The human designer provides creative vision, strategic objectives, and empathetic evaluation. Generative AI tools and multi-agent copilots rapidly generate layout alternatives, accessibility audits, and boilerplate component code.
+Notice how AI acts as a high-speed diverging and screening engine across the early stages: expanding research hypotheses, generating multiple layout candidates, rewriting microcopy, and running automated heuristic pre-checks. Yet at the decisive validation gate, a real human-in-the-loop (HITL) and real target users remain the ultimate arbiters of usability.
 
-Design speed accelerates tenfold while human empathy and taste remain firmly in the driver's seat.
-
-To summarize this slide, remember this key takeaway: AI for UX amplifies designer throughput without replacing human creativity and empathy.
+💡 難字與專業術語解說：
+- diverging and converging: 發散與收斂（設計思考中先大量產生多元方案、再經評估篩選出最佳解的雙鑽石過程）
+- pre-check screening: 前置初篩檢驗（在投入昂貴真人測試前，先用自動化工具濾除低級排版與可用性缺陷）
+- human-in-the-loop (HITL): 人類在環監督（在 AI 自動化流程的關鍵決策點保留人類專家審核與把關的機制）
 -->
 ---
 ## The RTCF Prompt Engineering Framework for Designers
@@ -2149,19 +2517,21 @@ To get precise, professional UX output from AI models, avoid vague prompts (❌ 
   - Specify the output structure (e.g., *"Provide results in a 4-column Markdown table: [Heuristic ID, Observed Issue, Severity (0-4), Concrete Fix Recommendation]."*).
 
 <!--
-Prompt engineering is an essential engineering skill.
+If you simply paste a screenshot into an LLM and type, *"Is this UI good?"*, you will get vague, generic praise. To turn an LLM into a rigorous usability engineering assistant, we use the structured **RTCF Prompt Framework**: **Role**, **Task**, **Context**, and **Format**.
 
-Vague prompts generate vague, generic output. If you type 'Give me UX ideas for my app,' you get useless cliches.
+Look at how each component constrains the model's latent space:
+- **Role (R)**: Assign a specific expert persona and diagnostic framework—for example, *"Act as a Senior UX Researcher and Accessibility Specialist trained in Jakob Nielsen's 10 Heuristics and WCAG 2.1 AA standards."*
+- **Task (T)**: Define the exact analytical operation—*"Audit this mobile banking transfer screen to identify usability flaws and cognitive friction."*
+- **Context (C)**: Specify the target user's environment and constraints—*"Target users include older adults (65+) with presbyopia operating the app one-handed on a moving bus."*
+- **Format (F)**: Demand a structured, actionable engineering deliverable—*"Output a Markdown table with columns: [Heuristic ID | UI Element | Severity (1-4) | Concrete Redesign Fix + Rewritten Microcopy]."*
 
-Apply the RTCF framework:
-Role: tell the model who it is—a senior accessibility specialist.
-Task: tell it the exact assignment—audit this checkout screen.
-Constraint: bind it to specific rules—Nielsen heuristics and mobile constraints.
-Format: mandate a structured Markdown table with severity ratings.
+When you combine all four elements, the LLM stops giving vague opinions and produces a systematic, prioritized engineering audit table.
 
-Structured prompts yield production-grade design analysis.
-
-To summarize this slide, remember this key takeaway: Master the RTCF framework—Role, Task, Constraint, and Format—to extract precise, actionable UX engineering outputs from LLMs.
+💡 難字與專業術語解說：
+- RTCF Prompt Framework: 角色-任務-情境-格式提示框架（結構化提示工程方法，確保大型語言模型產出精準專業的工程分析）
+- WCAG (Web Content Accessibility Guidelines): 網頁內容無障礙指南（W3C 制定的國際無障礙設計標準，如對比度與字級規範）
+- presbyopia: 老花眼（隨年齡增長導致近距離對焦與細小低對比文字閱讀困難的視覺退化現象）
+- cognitive friction: 認知摩擦力（介面設計與使用者直覺預期不符時所產生的理解阻礙與猶豫）
 -->
 ---
 ## Multi-Agent Prototyping & Generative UI
@@ -2175,13 +2545,18 @@ To summarize this slide, remember this key takeaway: Master the RTCF framework�
   - AI generates rapid prototypes; human engineers evaluate ergonomics, brand voice, and real user empathy.
 
 <!--
-Look at modern autonomous multi-agent engineering workflows.
+We can push AI4UX even further using **Multi-Agent Collaborative Prototyping**.
 
-In state-of-the-art environments like Google Antigravity, specialized agents collaborate: a research agent identifies user pain points, a design system agent generates consistent CSS variables, and a coding agent builds the executable UI component.
+Instead of relying on a single LLM prompt, modern agentic workflows orchestrate a specialized team of AI agents that critique and refine a UI prototype in an iterative loop before presenting it to the human designer:
+1. **Product Manager (PM) Agent**: Translates business requirements into user stories, acceptance criteria, and edge-case constraints.
+2. **UI Generator / Frontend Agent**: Synthesizes clean HTML/Tailwind or React component trees applying Tidwell's layout patterns.
+3. **Persona Simulator & Heuristic Critic Agent**: Role-plays multiple target personas (e.g., a rushed commuter, a screen-reader user, a first-time novice) and scores the generated DOM against Nielsen's 10 heuristics.
+4. **Human Designer / Engineer (HITL)**: Reviews the surviving top variations, makes high-level aesthetic and architectural judgments, and validates with real users.
 
-Notice the vital role of the human engineer: Human-in-the-Loop. The human provides taste, architectural judgment, and ethical oversight, validating that the generated interface truly delights real people.
-
-To summarize this slide, remember this key takeaway: Multi-agent systems automate rapid UI code generation, with human designers providing critical architectural judgment and user empathy.
+💡 難字與專業術語解說：
+- multi-agent orchestration: 多代理協作編排（協調多個具備不同專業角色設定的 AI Agent 進行分工與交互審查）
+- acceptance criteria: 驗收條件（敏捷開發中定義使用者故事必須滿足哪些具體行為才算完成的檢核標準）
+- critic agent: 審查評論代理（專門負責在多代理迴路中挑出設計漏洞、無障礙缺失與啟發式違規的 AI 角色）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -2192,13 +2567,14 @@ To summarize this slide, remember this key takeaway: Multi-agent systems automat
 </div>
 
 <!--
-Examine the multi-agent system architecture on this slide.
+This diagram visualizes the Multi-Agent UX Prototyping & Heuristic Critique Loop.
 
-Notice how specialized autonomous agents coordinate: a research subagent ingests user requirements, a design subagent structures layout tokens, and a frontend implementation subagent drafts interactive code.
+Notice the closed feedback loop in the center: the UI Generator Agent produces a candidate interface, the Heuristic Critic Agent inspects it against NS01 through NS10 and WCAG rules, and if it detects a Severity 3 or 4 violation (like a missing Escape Hatch or a destructive button with no confirmation), it sends structured critique back to the Generator Agent to self-correct automatically before the human engineer even opens the preview!
 
-Crucially, review checkpoints feed back to the human developer before changes commit to production.
-
-To summarize this slide, remember this key takeaway: Multi-agent architectures divide design challenges across specialized cognitive roles, unified by human review gates.
+💡 難字與專業術語解說：
+- closed feedback loop: 閉迴路回饋系統（將輸出結果的檢測誤差自動回傳給輸入端進行自我修正的循環機制）
+- self-correction: 自我修正（AI 代理根據審查回饋自動改寫代碼或調整版面結構的迭代過程）
+- candidate interface: 候選介面方案（在多方案探索階段生成供評估比較之用的原型版本）
 -->
 ---
 <!-- _class: lead -->
@@ -2209,15 +2585,16 @@ To summarize this slide, remember this key takeaway: Multi-agent architectures d
 > "The hardest part of building AI products is not training the model—it is designing the interface that makes probabilistic intelligence understandable, steerable, and trustworthy."
 
 <!--
-We now enter Module 6.5: UX for AI (UX4AI).
+Now let's flip the coin to Section 6.5: **UX for AI (UX4AI)**.
 
-Notice the inversion! In the previous section, we used AI to help us design software (AI for UX). Now, we ask the opposite, profound question: How do we design the user experience OF an AI product? (UX for AI).
+This is one of the hottest challenges in modern software engineering. Why do traditional GUI patterns often break down when applied to AI-powered systems? Because for forty years, traditional software was **deterministic**: if you clicked `Sort by Price`, the database ran `ORDER BY price ASC` in 15 milliseconds and returned the exact same mathematically guaranteed result every single time.
 
-AI applications—such as ChatGPT, GitHub Copilot, Gemini, and autonomous agents—behave completely differently from traditional deterministic software. They are probabilistic. They suffer from latency, produce hallucinations, and possess opaque internal reasoning.
+Generative AI and LLM agents are fundamentally different. As our section quote states, designing for AI means designing for **probabilistic outputs**, **evolving context**, and **calibrated human trust**. Let's see how we extend Nielsen's classical heuristics to tame non-deterministic AI interfaces.
 
-How do we adapt Nielsen's 10 Heuristics for the age of generative intelligence?
-
-To summarize this slide, remember this key takeaway: UX for AI establishes the interaction design patterns required to make non-deterministic models steerable, transparent, and trustworthy.
+💡 難字與專業術語解說：
+- deterministic vs. probabilistic: 確定性 vs. 機率性（傳統軟體相同輸入必得相同輸出；AI 模型則依機率分布取樣，輸出具變異性）
+- calibrated human trust: 校準後的人類信任度（讓使用者對 AI 的能力邊界建立既不盲目迷信、也不過度排斥的準確信任感）
+- non-deterministic system: 非確定性系統（輸出結果受隨機取樣、上下文細微差異影響而無法百分百預測的系統）
 -->
 ---
 ## Unique UX Challenges in AI-Native Products
@@ -2234,15 +2611,19 @@ To summarize this slide, remember this key takeaway: UX for AI establishes the i
   - **Under-trust:** Users abandon the AI after a single minor mistake, losing all productivity benefits.
 
 <!--
-Why is designing interfaces for AI products so extraordinarily difficult?
+Let's examine the four unique UX challenges that every engineer building an AI feature must solve:
 
-Traditional software is deterministic: if you click Save, it writes bytes to disk. The mental model is mechanical and predictable.
+1. **Non-Determinism & Probabilistic Outputs**: The exact same prompt can yield different answers across runs, and small phrasing changes can dramatically shift output quality.
+2. **Hallucinations & Plausible Errors**: Unlike a traditional program that throws an obvious stack trace when it fails, an LLM fails by generating fluent, confident, grammatically flawless falsehoods! This creates **automation complacency**—users fall asleep at the wheel and trust wrong answers because they look so polished.
+3. **High & Variable Inference Latency**: A SQL query takes 10 milliseconds; a deep-reasoning multi-step LLM agent can take 10 to 60 seconds. A traditional spinning wheel for 45 seconds makes users think the app crashed.
+4. **The "Blank Canvas" Prompt Paralysis**: Dropping a user in front of an empty text box that says *"Ask me anything..."* violates Recognition Rather Than Recall (NS06). Users don't know what the AI is capable of or how to phrase an effective prompt.
 
-AI is probabilistic. It hallucinates with absolute confidence. It suffers from inference latency. It can write flawless code on Monday and hallucinate an imaginary library on Tuesday.
-
-The core challenge of UX for AI is trust calibration: helping users understand exactly what the AI can do, warning them of limitations, and making errors effortless to detect and fix.
-
-To summarize this slide, remember this key takeaway: AI interaction design must manage non-determinism, hallucinations, latency, and calibrated user trust.
+💡 難字與專業術語解說：
+- hallucination: AI 幻覺（大型語言模型一本正經地編造出語法流暢但違背事實或無中生有的錯誤資訊）
+- plausible error: 貌似合理的錯誤（表面看似專業可信、極難第一時間肉眼察覺的隱蔽性錯誤）
+- automation complacency: 自動化自滿／過度依賴（人類因系統長期表現看似良好而降低戒心、不再仔細查核輸出的心理陷阱）
+- inference latency: 推論延遲時間（AI 模型從接收輸入提示詞到完成運算並產出回應所需的等待時間）
+- prompt paralysis (blank canvas syndrome): 空白畫布提示詞癱瘓症（面對空無一物的對話輸入框時，不知該輸入什麼指令的無助狀態）
 -->
 ---
 ## AI + NS01: Visibility of AI State & Thinking Traces
@@ -2255,13 +2636,17 @@ To summarize this slide, remember this key takeaway: AI interaction design must 
   - **RAG Grounding Citations:** Provide clickable source pills linking directly to retrieved reference documents.
 
 <!--
-Let's examine how Heuristic 1—Visibility of System Status—applies directly to modern AI products.
+How do we adapt **NS01 (Visibility of System Status)** for high-latency, multi-step AI systems?
 
-When an LLM takes 15 seconds to reason through a complex math or coding problem, staring at a static loading spinner makes users believe the application has frozen.
+If an AI agent takes twenty seconds to search your codebase, query three APIs, and synthesize an answer, a static spinner is a usability failure. Instead, modern UX4AI uses three patterns:
+- **Streaming Tokens & Progressive Rendering**: Render tokens as they are generated so the user can start reading within 300 milliseconds instead of waiting for the entire response to finish.
+- **Collapsible Reasoning & Tool-Call Traces**: Show live, human-readable micro-steps while the agent works—for example, *"Searching repository (`14 files matched`) → Reading `auth.ts` → Synthesizing security patch..."*—and collapse the trace cleanly once the final answer arrives so it doesn't clutter the screen.
+- **Grounding Citations & Confidence Cues**: Attach inline clickable source badges (`[1]`, `[2]`) that highlight the exact paragraph in the source PDF or database record, letting users verify claims in one click and calibrate their trust.
 
-The solution is multi-faceted: stream tokens progressively, provide collapsible reasoning accordions that disclose the model's internal thinking steps, and display clickable citation pills for retrieved RAG chunks.
-
-To summarize this slide, remember this key takeaway: Streaming text and collapsible reasoning accordions make probabilistic inference latency transparent and engaging.
+💡 難字與專業術語解說：
+- streaming tokens: 串流式逐字輸出（模型每生成一個詞元即刻推送至前端顯示，大幅降低體感等待時間）
+- collapsible reasoning trace: 可摺疊推論軌跡（即時展示 AI 思考步驟與工具呼叫過程、完成後可收合的透明化面板）
+- RAG grounding citation: 檢索增強生成之溯源引用標籤（將 AI 回答中的每一句話連結回原始文件段落的驗證標記）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -2272,13 +2657,14 @@ To summarize this slide, remember this key takeaway: Streaming text and collapsi
 </div>
 
 <!--
-Look at this state-of-the-art AI reasoning interface on screen.
+Look at this visual showcase of AI + NS01: Streaming Tokens, Collapsible Thinking Traces, and Inline Source Citations.
 
-Notice the collapsible 'Thought for 12 seconds' accordion. Users can expand it to inspect the AI's step-by-step logic, active tool invocations, and sub-queries.
+Notice how the collapsible *"Thought for 6 seconds"* accordion gives the user complete peace of mind during a long reasoning step, and how hovering over citation badge `[1]` pops up a verification card showing the exact sentence from the underlying source document. This transforms the AI from an inscrutable black box into an inspectable glass box.
 
-Real-time token streaming gives immediate tactile feedback, completely eliminating perceived inference latency.
-
-To summarize this slide, remember this key takeaway: Collapsible thinking accordions and token streaming transform opaque inference latency into engaging system status transparency.
+💡 難字與專業術語解說：
+- black box vs. glass box: 黑盒子 vs. 透明玻璃盒（無法得知內部運作邏輯的封閉系統 vs. 可檢視推論過程與證據來源的透明系統）
+- verification card: 溯源查核預覽卡（滑鼠懸停於引用標籤時浮現原始文獻片段以供快速比對的卡片）
+- perceived latency: 體感延遲（使用者主觀感受到的等待時間，可透過串流輸出與進度解析大幅降低）
 -->
 ---
 ## AI + NS02 & NS03: Grounding, Control & Human Agency
@@ -2292,13 +2678,19 @@ To summarize this slide, remember this key takeaway: Collapsible thinking accord
   - **Steerability Sliders:** Provide controls for temperature, brevity, and response tone.
 
 <!--
-Heuristics 2 and 3 govern conversational grounding and human agency.
+Next, let's see how **NS02 (Match with the Real World)** and **NS03 (User Control and Freedom)** evolve for AI interfaces.
 
-In NS02, software must never deceive users into believing they are talking to a human doctor or lawyer. Disclose AI identity clearly.
+First, **Conversational Grounding & Scoped Context (NS02)**: Users often don't know *what* the AI can currently "see." Is it reading only the current file, the whole repository, or the public internet? Good AI interfaces display explicit **context chips** (e.g., `@CurrentFile: slide06.md`, `@Docs: UX Guidelines`) right above the prompt box so the shared mental context is unmistakable.
 
-In NS03, human agency is paramount: users must have full steerability. If the AI begins outputting unwanted code, provide an immediate 'Stop Generating' button. Let users edit prior prompts to branch conversations without starting over from scratch.
+Second, **Stop Generation, Regenerate & Prompt Branching (NS03)**: Because LLM generation is slow and probabilistic, users need an immediate **"Stop Generating"** escape hatch the moment they see the AI heading down the wrong track. Even better, support **non-destructive prompt editing and branching** (`< 2 / 2 >`) so users can tweak an earlier prompt and explore a new conversation branch without losing their previous output!
 
-To summarize this slide, remember this key takeaway: Maintain human agency with transparent identity disclosure, instant generation aborts, and prompt branching.
+Third, **Granular Output Steerability (NS03)**: Don't force users to regenerate a 500-word document from scratch just to fix one paragraph. Let them highlight a single sentence and click inline quick-actions like *"Make Shorter"*, *"More Formal"*, or *"Convert to Table"*.
+
+💡 難字與專業術語解說：
+- conversational grounding: 對話語境錨定（確保人類與 AI 對於「當前討論所引用的上下文資料範圍」達成明確共識）
+- context chip: 上下文膠囊標籤（在輸入框上方顯示當前已掛載之檔案、資料庫或選取範圍的視覺化標籤）
+- prompt branching: 提示詞分支探索（修改歷史提問時不覆蓋舊對話，而是建立平行分支供來回切換比較）
+- granular steerability: 細粒度操控性（允許針對 AI 生成內容的局部段落進行精準微調，而非整篇重寫）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -2309,13 +2701,14 @@ To summarize this slide, remember this key takeaway: Maintain human agency with 
 </div>
 
 <!--
-Look at these steering mechanisms in modern LLM applications.
+This diagram illustrates Scoped Context Chips, Prompt Branching, and Inline Canvas Refinement.
 
-Notice the prominent 'Stop Generating' button active during inference, the hover edit button on past user messages allowing quick prompt rewrites, and the regenerative retry icon.
+Look at how modern canvas-based AI workspaces (like Claude Artifacts, ChatGPT Canvas, or Cursor inline diffs) move beyond pure linear chat: the chat thread on the left handles high-level intent, while the artifact canvas on the right supports direct manipulation and localized inline refinement.
 
-The human user remains completely in charge of the conversational direction at all times.
-
-To summarize this slide, remember this key takeaway: Dedicated stop buttons, prompt edit forks, and regenerate options guarantee user control over non-deterministic AI outputs.
+💡 難字與專業術語解說：
+- artifact canvas: 產出物共同編輯畫布（將對話紀錄與生成的程式碼或文件分離，支援直接在畫布上局部選取與修改的雙欄介面）
+- linear chat: 線性對話流（傳統由上而下單向捲動、難以針對局部成果進行反覆雕琢的聊天室介面）
+- localized refinement: 局部精煉微調（僅鎖定選取之句子或程式碼區塊進行重寫與優化）
 -->
 ---
 ## AI + NS05: Error Prevention & Agentic Guardrails
@@ -2329,30 +2722,63 @@ To summarize this slide, remember this key takeaway: Dedicated stop buttons, pro
   - **Sandboxed Execution:** Run unverified AI code in isolated containers before applying changes to host environments.
 
 <!--
-Heuristic 5—Error Prevention—takes on life-or-death importance when dealing with autonomous AI agents.
+Now let's examine one of the most safety-critical areas of UX4AI: **NS05 (Error Prevention)** in the era of **Autonomous AI Agents**.
 
-An autonomous coding agent with terminal access can easily execute 'rm -rf' or overwrite critical configuration files if it hallucinates an incorrect shell command.
+When an AI was just a passive chatbot, the worst mistake it could make was writing a bad poem. Today, agentic AI systems have tool-calling permissions to execute shell commands, modify production files, send emails, and trigger financial transactions! How do we prevent catastrophic agentic errors?
 
-The gold standard pattern is Human-in-the-Loop confirmation: the agent proposes the plan and displays a git diff of proposed edits, but waits for the human engineer to click 'Approve' before executing.
+1. **Human-in-the-Loop (HITL) Confirmation Gates**: Classify agent actions by risk tier. Read-only actions (`read_file`, `search`) can run automatically, but any **external, state-mutating, or destructive action** (sending an email to clients, running `rm -rf`, executing a database migration, or charging a credit card) must pause and require explicit human approval.
+2. **Diff Previews & Staged Execution**: Never let an AI agent silently overwrite a user's document or codebase in place. Render a clear **Red/Green Diff Preview** (`- old line` / `+ new line`) with granular `[Accept]`, `[Reject]`, or `[Edit]` controls per hunk.
+3. **Sandboxed Execution**: Run AI-generated code inside isolated containers or dry-run sandboxes first so errors cannot corrupt the host environment.
 
-To summarize this slide, remember this key takeaway: Human-in-the-loop confirmation guardrails protect software integrity against autonomous agent errors.
+💡 難字與專業術語解說：
+- agentic guardrail: 代理型 AI 安全護欄（限制自主 AI 代理執行高風險操作、確保人類保有最終控制權的防呆機制）
+- state-mutating action: 狀態變更操作（會修改外部資料庫、檔案系統或發送真實外部通訊的不可逆動作）
+- diff preview: 差異比對預覽（以紅綠顏色標示刪除與新增內容，讓使用者在套用前清楚審視 AI 修改細節的視圖）
+- sandboxed execution: 沙箱隔離執行（在受限的虛擬環境中先測試執行 AI 生成的程式碼，防止破壞主系統）
 -->
 ---
 <!-- _class: title-image-slide -->
-## AI + NS05 in Practice: Human-in-the-Loop Confirmation & Diff Auditing
+## AI + NS05 in Practice (1/2): Pre-Execution HITL Gate & Diff Auditing
 
 <div class="image-wrapper">
-  <img src="../../img/ch06/ns05_error_prevention.png" alt="AI Error Prevention Guardrails" />
+  <img src="../../img/ch06/ns05_agentic_hitl_diff.png" alt="Pre-Execution HITL Confirmation Gate and Staged Diff Previews" />
 </div>
 
 <!--
-Examine this agentic confirmation modal.
+Let's examine the first two agentic guardrails from the previous slide in action: **Pre-Execution HITL Confirmation Gates** (left) and **Staged Diff Previews with Per-Hunk Auditing** (right).
 
-Before executing a terminal command or overwriting project files, the agent halts and presents a clear, readable diff alongside an explicit 'Run' or 'Cancel' choice.
+On the left, when the developer asks the AI agent to *"Clean up obsolete staging order tables"*, the agent proposes running `DROP TABLE staging_orders CASCADE` and `rm -rf`. Instead of executing silently, **Guardrail 1** intercepts the state-mutating tool call, computes the **Blast Radius** (irreversible deletion of 14,820 QA records affecting 3 downstream microservices), and pauses for explicit human consent (`[X] Deny & Abort`, `[Edit] Modify Cmd`, or `[OK] Approve Once`).
 
-The developer can inspect the exact bash command and file diff before any change touches their machine.
+On the right, **Guardrail 2** prevents silent file overwrites by staging proposed code changes as color-coded Git diffs. Notice how the AI fixed the SQL injection in **Hunk 1** (green), but also hallucinated an unrequested policy change in **Hunk 2** (changing `session.ttl_seconds` from 1 hour to 30 days!). Because of per-hunk diff auditing, the engineer can click **Accept Hunk 1** and **Reject Hunk 2**, maintaining 100% situational awareness.
 
-To summarize this slide, remember this key takeaway: Explicit pre-execution confirmation modals and diff previews prevent catastrophic autonomous agent mistakes.
+💡 難字與專業術語解說：
+- blast radius: 爆炸波及半徑／影響範圍（一旦高風險指令執行失敗或誤刪，將連帶摧毀的資料筆數與下游服務範圍）
+- collateral edit: 附帶非預期修改（大型語言模型在修復目標問題時，順手擅自改動其他無關邏輯或參數的危險行為）
+- per-hunk approval: 逐區塊審核批准（允許針對單一程式碼修改片段個別選擇接受或拒絕，而非全盤接收）
+- situational awareness: 態勢感知能力（操作者對系統當前狀態、變更內容與潛在風險的全面掌握程度）
+-->
+---
+<!-- _class: title-image-slide -->
+## AI + NS05 in Practice (2/2): Sandboxed Execution & Input Guardrails
+
+<div class="image-wrapper">
+  <img src="../../img/ch06/ns05_sandbox_guardrails.png" alt="Sandboxed Execution in Isolated Containers and Proactive Input Guardrails" />
+</div>
+
+<!--
+Now let's look at the third and fourth layers of defense: **Sandboxed Execution in Isolated Containers** (left) and **Proactive Input & Secret-Leak Prevention** (right).
+
+On the left (**Guardrail 3**), human eyes alone cannot catch every subtle runtime bug or infinite loop in AI-generated code. Before any AI code touches the developer's host workspace, the system executes it inside an **Ephemeral Sandbox Container** (Docker / MicroVM) with three strict boundaries: a **Copy-on-Write filesystem snapshot**, a **blocked egress firewall** (so credentials cannot be exfiltrated), and **strict CPU/memory/timeout quotas**. Only after automated unit tests, SAST security scans, and dry-run migration checks pass is the change promoted to the host workspace.
+
+On the right (**Guardrail 4**), error prevention also operates proactively at the **client input boundary**:
+- **Pre-Submission Secret & PII Scanner**: When a user accidentally pastes a live `OPENAI_API_KEY` or `AWS_ACCESS_KEY_ID` into the prompt, the client-side guardrail blocks transmission and auto-redacts it with `[REDACTED_KEY]` before a single byte leaves the browser.
+- **Attachment & Context Budget Constraints**: Immediately flags unsupported archive formats (`.rar`) and displays a live **Context Budget Meter (`62%`)** so prompts never fail mid-generation.
+
+💡 難字與專業術語解說：
+- ephemeral sandbox container: 短暫隔離沙箱容器（專為單次測試任務動態建立、執行完畢即銷毀的輕量級虛擬隔離環境）
+- copy-on-write (CoW) snapshot: 寫入時複製快照（在沙箱內修改檔案僅寫入暫存差異層，絕不汙染真實主機檔案系統的技術）
+- egress firewall: 對外連線防火牆（攔截容器向外部網際網路發起未授權連線，防止機密資料外洩或誤觸正式環境 API）
+- secret redaction: 機密金鑰自動遮蔽（在提示詞發送至雲端模型前，於客戶端自動偵測並隱去 API Key 與個資的防漏機制）
 -->
 ---
 ## AI + NS07 & NS10: Accelerators & Explainability (XAI)
@@ -2365,13 +2791,17 @@ To summarize this slide, remember this key takeaway: Explicit pre-execution conf
   - **Model Cards & Confidence Meters:** Explicitly disclosing active model versions and estimated prediction confidence.
 
 <!--
-Finally, examine heuristics 7 and 10 in AI applications.
+Finally in Section 6.5, let's look at how **NS06 (Recognition Rather Than Recall)**, **NS07 (Flexibility & Efficiency)**, and **NS10 (Help & Documentation)** combine in modern AI interfaces:
 
-In NS07, power users don't want to type long polite sentences. They want slash commands: /test, /fix, /summarize. They want to drag an error screenshot directly into the chat pane.
+- **Starter Prompt Chips & Templates (NS06 + NS10)**: Cure "Blank Canvas Paralysis" on empty chat screens by displaying 3 to 4 clickable, role-relevant starter cards (e.g., *"Summarize this PDF"*, *"Find security bugs in `auth.py`"*, *"Draft a sprint retrospective"*). Users learn what the AI can do by clicking, not by reading a manual.
+- **Slash Commands & Context Mentions (NS07)**: Give power users fast keyboard accelerators like `/summarize`, `/test`, `/fix`, and `@file` autocomplete menus so they can invoke complex structured workflows in two keystrokes.
+- **Explainable AI (XAI) & Model Cards (NS10)**: Provide concise, transparent documentation about *why* a recommendation was made, what data sources the model can access, its cutoff date, and privacy guarantees (e.g., *"Your enterprise data is never used to train public models"*).
 
-In NS10, documentation evolves into Explainable AI. Users deserve to know why an AI made a loan decision or medical recommendation. Popovers disclosing retrieved documents and confidence scores build calibrated trust.
-
-To summarize this slide, remember this key takeaway: Slash commands and multi-modal inputs accelerate expert workflows, while Explainable AI fosters calibrated trust.
+💡 難字與專業術語解說：
+- starter prompt chip: 起始提示詞引導卡（在空白對話頁提供可一鍵點擊的範例指令卡片，消除空白畫布焦慮）
+- slash command: 斜線快捷指令（輸入 `/` 即可喚出結構化功能選單的專家級鍵盤加速器）
+- Explainable AI (XAI): 可解釋人工智慧（讓使用者理解 AI 模型為何做出特定預測或建議的透明化設計與說明機制）
+- model card: 模型透明化說明卡（揭露 AI 模型的能力邊界、訓練資料時效、限制與隱私保護政策的標準化文件）
 -->
 ---
 <!-- _class: title-image-slide -->
@@ -2382,13 +2812,14 @@ To summarize this slide, remember this key takeaway: Slash commands and multi-mo
 </div>
 
 <!--
-Observe these explainability patterns on screen.
+Look at this visual synthesis of Starter Prompt Chips, Slash Command Accelerators, and Explainable AI (XAI) Cards.
 
-Notice the numbered footnote citations and clickable document pills. When clicked, they disclose the exact passage retrieved from the knowledge base that grounded the AI's response.
+Notice how a single well-designed AI input workspace serves both ends of the user spectrum simultaneously: a first-time novice clicks one of the visual Starter Prompt Cards above the input box (NS06), while a seasoned engineer types `/fix @auth.ts` directly into the command bar (NS07).
 
-Transparency transforms a mysterious AI black box into a verifiable, trustworthy engineering tool.
-
-To summarize this slide, remember this key takeaway: Interactive citation pills and grounded reference popovers provide the transparency required for calibrated user trust.
+💡 難字與專業術語解說：
+- user spectrum: 使用者熟練度光譜（涵蓋從初次接觸的生手到每天重度使用的專家之全體使用者分布）
+- autocomplete menu: 自動補全選單（輸入關鍵字或符號時即時彈出候選指令與檔案名稱的輔助選單）
+- capability boundary: 能力邊界（AI 系統擅長處理與無法可靠處理的任務範圍界線）
 -->
 ---
 ### Concept Check Question 3: UX for AI Design
@@ -2407,17 +2838,23 @@ When designing an autonomous AI coding assistant that can inspect directories, e
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch06-ccq3" target="_blank"><img src="../../img/ch06/ase-ch06-ccq3.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
-Let's evaluate our understanding of human-centered AI design principles.
+Let's test your UX4AI intuition with Concept Check Question 3 (CCQ 3)!
 
-Consider the severe security and stability risks of autonomous agents interacting with local filesystems.
+Consider the severe security and stability risks of autonomous AI coding assistants that can inspect directories, edit source files, and execute shell commands on local or staging environments.
 
-The correct answer is Option B: Requiring explicit human-in-the-loop review and confirmation before executing high-risk file modifications or system terminal commands. Autonomous agents operating on codebases can introduce irreversible damage. Fulfilling NS05 (Error Prevention) and NS03 (User Control & Freedom) requires a strict Human-in-the-Loop (HITL) architecture: the agent plans actions, but high-risk executions mandate explicit developer approval.
+Why is **Option B** the exact right answer?
+- **Option B** requires explicit **Human-in-the-Loop (HITL) review and confirmation** (such as pre-execution confirmation gates and staged red/green diff previews) before executing high-risk file modifications or terminal commands, directly fulfilling **Error Prevention (NS05)** and **User Agency (NS03)**.
+- **Option A** (silent background deletions), **Option C** (removing the stop/cancel button), and **Option D** (hiding execution logs) violate NS01, NS03, and NS05 by stripping developers of situational awareness and emergency escape hatches.
 
-To summarize this slide, remember this key takeaway: Human-in-the-loop confirmation guardrails protect software integrity against autonomous agent errors.
+💡 難字與專業術語解說：
+- autonomous AI coding assistant: 自主型 AI 程式設計助手（具備工具呼叫、讀寫檔案與執行終端機指令能力的 AI 代理）
+- human-in-the-loop (HITL): 人機迴路／人類在環控制（在高風險決策或不可逆操作執行前，強制由人類審查與批准的安全機制）
+- user agency: 使用者主體性與控制權（確保人類始終保有最終決策、隨時中斷與覆寫 AI 行為的權力）
 -->
 
 ---
@@ -2430,13 +2867,16 @@ To summarize this slide, remember this key takeaway: Human-in-the-loop confirmat
 > — *Jakob Nielsen*
 
 <!--
-We conclude Chapter 6 with Module 6.6: Evaluation and Engineering Synthesis.
+Welcome to our final section, Section 6.6: Evaluation & Engineering Synthesis.
 
-How do engineering teams rigorously evaluate interfaces before and after release?
+We have learned the psychology of UX (6.1), Nielsen's 10 diagnostic heuristics (6.2), Tidwell's constructive UI patterns (6.3), and the bilateral AI-UX frontier (6.4 & 6.5). Now, how do we operationalize all of this inside a real software engineering sprint?
 
-In this final module, we examine formal Heuristic Evaluation methodology, learn Nielsen's 5-point severity rating scale, contrast expert heuristic audits with empirical user testing, test your knowledge with a fill-in-the-blank recap challenge, and review key engineering takeaways.
+As Jakob Nielsen famously demonstrated, you do not need a million-dollar usability laboratory to catch 80% of your interface flaws—systematic inspection paired with lightweight empirical testing will transform your product quality.
 
-To summarize this slide, remember this key takeaway: Combine expert heuristic evaluations with empirical user testing to systematically eliminate usability flaws throughout the SDLC.
+💡 難字與專業術語解說：
+- operationalize: 將理論轉化為可執行的標準作業流程（把抽象原則落實為日常研發團隊的具體工程實踐）
+- usability laboratory: 可用性實驗室（配備眼動儀、單向鏡與錄影設備的專業使用者測試空間）
+- empirical testing: 實證測試（透過實際觀察真實使用者操作產品來收集客觀行為數據的驗證方法）
 -->
 ---
 ## Conducting a Formal Heuristic Evaluation
@@ -2451,18 +2891,23 @@ To summarize this slide, remember this key takeaway: Combine expert heuristic ev
   - **4 = Usability catastrophe:** Imperative to fix! Completely blocks task completion; software cannot ship!
 
 <!--
-How do you conduct a formal Heuristic Evaluation?
+How do you conduct a formal **Heuristic Evaluation** in practice?
 
-A group of 3 to 5 independent evaluators steps through every screen, checking each interaction against the 10 heuristics.
+First, never rely on a single evaluator! Empirical research by Nielsen and Landauer shows that a single inspector only catches about 35% of usability problems. However, if you assemble **3 to 5 independent evaluators** to inspect the interface separately before aggregating their findings, they collectively uncover **75% to 80%** of all usability flaws—known as the classic **"Discount Usability Engineering"** curve.
 
-Every discovered problem is assigned a severity score from 0 to 4:
-Level 0 is not a problem.
-Level 1 is cosmetic—like a misaligned border.
-Level 2 is minor.
-Level 3 is major—like a confusing button label that misleads users.
-Level 4 is a catastrophe—like a broken submit button that traps users in an infinite loop. Software cannot ship with Level 4 flaws!
+Second, once the findings are aggregated, we don't fix everything blindly. Every usability defect is scored on **Nielsen's 0-to-4 Severity Scale** based on three factors: *Frequency* (how often does it occur?), *Impact* (how hard is it for the user to overcome?), and *Persistence* (is it a one-time annoyance or a permanent barrier?):
+- **0 — Not a usability problem**: Disagreement or pure preference.
+- **1 — Cosmetic problem**: Fix only if extra time is available in the sprint.
+- **2 — Minor usability problem**: Low priority fix.
+- **3 — Major usability problem**: High priority; causes significant user delay or error.
+- **4 — Usability catastrophe**: **Mandatory release blocker!** Must be fixed before shipping (e.g., an irreversible destructive button with no confirmation, or a broken checkout flow).
 
-To summarize this slide, remember this key takeaway: Prioritize usability defect remediation using Nielsen's 5-point severity rating scale.
+💡 難字與專業術語解說：
+- discount usability engineering: 精實／高性價比可用性工程（以 3 至 5 位評估者進行輕量級啟發式檢查與測試，以極低成本找出八成問題的方法）
+- independent evaluator: 獨立評估者（在彙整討論前先各自獨立檢視介面以避免群體迷思的審查人員）
+- persistence: 問題持續性（使用者學會一次後就能避開，還是每次操作都會反覆受困的程度）
+- cosmetic problem: 外觀瑕疵級問題（嚴重度 1：僅影響局部視覺美觀但不妨礙任務完成的微小問題）
+- usability catastrophe: 可用性災難（嚴重度 4：導致資料遺失、任務完全卡死或嚴重誤操作的發佈阻斷級缺陷）
 -->
 ---
 ## Heuristic Evaluation vs. Empirical User Testing
@@ -2476,15 +2921,18 @@ To summarize this slide, remember this key takeaway: Prioritize usability defect
 | **Limitation** | Experts can miss domain-specific workflow quirks | Users reveal *what* broke, but not always *why* or *how to fix* |
 
 <!--
-Compare Heuristic Evaluation with Empirical User Testing.
+Engineers often ask: *"If we run a Heuristic Evaluation (or an AI4UX heuristic audit), do we still need Empirical User Testing with real humans?"*
 
-Heuristic evaluation is fast, cheap, and conducted by internal experts early in the design cycle. It catches 75% of obvious layout, consistency, and status feedback mistakes before any code is built.
+Look closely at this comparison table—the answer is an emphatic **YES, because they catch different classes of bugs!**
+- **Heuristic Evaluation (Expert / AI Inspection)** is fast (hours), cheap, and requires zero external user recruitment. It excels at catching **known structural violations**: missing back buttons, technical jargon, inconsistent button styles, and absent confirmation dialogs. Move it to **Shift-Left** (during wireframing and PR review).
+- **Empirical User Testing (Think-Aloud Protocol with 5 Real Users)** takes days, requires recruiting real domain users, and observes them attempting realistic tasks while speaking their thoughts aloud. It excels at catching **unanticipated mental model mismatches**—when your interface follows every textbook rule, yet real domain users completely misunderstand your workflow concept!
 
-User testing puts the product in front of actual customers. It takes more time and money, but reveals authentic human behavior that experts never anticipate.
+Use Heuristic Evaluation first to clean up all the "rocks and potholes" on the road, so your precious Empirical User Testing sessions can focus on deep workflow and value validation.
 
-Both techniques are complementary: run heuristic audits first to clean up obvious flaws, then run user testing to validate real workflows.
-
-To summarize this slide, remember this key takeaway: Use heuristic audits early for rapid defect discovery, and user testing later to validate authentic customer workflows.
+💡 難字與專業術語解說：
+- shift-left testing: 測試左移（將可用性與品質檢驗提早至需求與線框圖階段執行，大幅降低後期返工成本）
+- think-aloud protocol: 放聲思考法（請受測者在操作介面時同步口述腦中的理解、疑惑與預期，以洞察其心智模型）
+- mental model mismatch: 心智模型落差（設計師的系統模型與真實使用者的認知預期發生根本性的理解偏差）
 -->
 ---
 ## Chapter Recap: Fill-in-the-Blank Challenge
@@ -2499,9 +2947,21 @@ Test your mastery of the core concepts in Chapter 6:
 * **6.** On Nielsen's severity rating scale, a usability defect that completely blocks task completion and prevents product release is rated as a **`___`**.
 
 <!--
-Let's review the core concepts and principles from Chapter 6.
+Let's bring everything together with our interactive **Fill-in-the-Blank Conceptual Recap Challenge**!
 
-Take a moment to mentally fill in the blanks across all six questions.
+Look at the Word Bank at the top of the slide: `Affordance`, `Signifiers`, `Satisfaction`, `NS05: Error Prevention`, `NS06: Recognition`, `Satisficing`, `Two-Panel Split View`, and `HITL Confirmation`.
+
+Try to fill in all six blanks in your head (or click each blank in the HTML slide to reveal the answer):
+1. Don Norman distinguishes between `[ _________ ]` (what actions an object physically or digitally allows) and `[ _________ ]` (visual cues like labels or shadows that communicate where and how to act).
+2. According to ISO 9241-11, Usability consists of three measurable pillars: Effectiveness (accuracy), Efficiency (speed/effort), and `[ _________ ]` (comfort and freedom from frustration).
+3. Replacing a manual terminal command with a visual pick-list of options exemplifies `[ _________ ]`, whereas disabling a Submit button until required fields are valid exemplifies `[ _________ ]`.
+4. Herbert Simon observed that real users rarely optimize; instead, they practice `[ _________ ]`—picking the first "good enough" option and muddling through.
+5. To eliminate tedious back-and-forth "pogo-sticking" between a list and item details on desktop screens, Tidwell recommends the `[ _________ ]` pattern.
+6. In UX4AI, before an autonomous agent executes a destructive or external state-mutating tool call, the interface must enforce a `[ _________ ]` gate with a diff preview.
+
+💡 難字與專業術語解說：
+- conceptual recap: 核心觀念總複習（透過主動回想與填空配對強化長期記憶的學習檢核）
+- word bank: 候選字彙庫（提供待選專業術語以供配對檢驗的提示詞雲）
 -->
 ---
 ## Chapter Recap: Solution Key
@@ -2516,16 +2976,19 @@ Here are the completed principles and technical terms:
 * **6.** On Nielsen's severity rating scale, a usability defect that completely blocks task completion and prevents product release is rated as a **4 (Catastrophe)**.
 
 <!--
-Here is the solution key.
+Here is the complete **Solution Key & Conceptual Synthesis** for our recap challenge!
 
-1. Norman Door.
-2. Jakob's Law.
-3. NS05 Error Prevention.
-4. RTCF Framework.
-5. NS01 Visibility of System Status.
-6. Severity Level 4: Usability Catastrophe.
+Let's quickly verify the six connections:
+1. **Affordance & Signifiers**: Capability versus perceivable visual cue—the foundation of fixing every Norman Door.
+2. **Satisfaction**: Completing the ISO 9241-11 triad alongside Effectiveness and Efficiency.
+3. **NS06: Recognition** vs. **NS05: Error Prevention**: Visual pick-lists relieve human memory (NS06), while smart constraints and validation guardrails prevent slips and mistakes before they happen (NS05).
+4. **Satisficing**: Accepting that users scan and click the first plausible cue rather than reading manuals.
+5. **Two-Panel Split View**: Keeping master list and detail view side by side on wide screens.
+6. **HITL Confirmation**: Keeping humans in command of high-risk agentic actions.
 
-To summarize this slide, remember this key takeaway: These core principles form the foundation of professional human-computer interaction and AI interface design.
+💡 難字與專業術語解說：
+- solution key: 解答與解析對照（提供標準答案與背後核心理論脈絡的總結頁）
+- triad: 三位一體組合（ISO 9241-11 可用性標準中有效性、效率與滿意度三個相輔相成的維度）
 -->
 ---
 ## Chapter Summary & Engineering Takeaways
@@ -2540,13 +3003,22 @@ To summarize this slide, remember this key takeaway: These core principles form 
   - Design AI products for calibrated trust: stream tokens, show reasoning traces, mandate human confirmations for agentic actions, and provide in-place error recovery.
 
 <!--
-To conclude Chapter 6, remember that technology is only as powerful as the human experience it enables.
+Let's wrap up Chapter 6 with our core engineering takeaways.
 
-You can write flawless, concurrent backend algorithms, but if your users cannot understand what the software is doing, your engineering efforts will go to waste.
+As software engineers, it is easy to fall into the trap of thinking our job ends when the backend API returns `HTTP 200 OK` and the unit tests pass. But remember the lesson of the 2020 Taiwan Mask App: to the human being holding the phone, **the User Interface IS the system**.
 
-Master Nielsen's 10 heuristics. Empathize with real users. Leverage AI to accelerate your design workflows, and design your AI products with transparency, control, and human dignity.
+Whenever you build a feature from today onward, carry four layers of craft with you:
+- First, **Empathy & Cognitive Humility (6.1)**: When a user makes a mistake, never blame the human—diagnose the signifiers, mental model mapping, and cognitive load.
+- Second, **Diagnostic Precision (6.2)**: Use Jakob Nielsen's 10 Usability Heuristics as your daily code-review checklist for the frontend.
+- Third, **Constructive Architecture (6.3)**: Reach for Jenifer Tidwell's proven UI patterns—Safe Exploration, Progressive Disclosure, Split Views, Escape Hatches, and Zebra Tables—so you never reinvent clumsy layouts from scratch.
+- Fourth, **Future-Ready AI-UX Craft (6.4 & 6.5)**: Leverage structured RTCF prompts and multi-agent critiques to accelerate your design workflow (AI4UX), while building transparent reasoning traces, grounded citations, and HITL diff guardrails into every AI product you ship (UX4AI).
 
-To summarize this slide, remember this key takeaway: Great engineering marries technical structural rigor with empathetic, intuitive human-centered design.
+Thank you all, and have fun inspecting the interfaces around you with your new UX lens!
+
+💡 難字與專業術語解說：
+- cognitive humility: 認知謙遜（工程師承認自身具備專家盲點、不將自身心智模型強加於一般使用者的專業態度）
+- diagnostic precision: 診斷精準度（能精確指出介面違反哪一項可用性原則而非僅憑主觀好惡批評的能力）
+- constructive architecture: 建構式空間架構（運用經過驗證的設計模式系統化組織介面佈局的工程方法）
 -->
 
 <script>
@@ -2867,10 +3339,122 @@ To summarize this slide, remember this key takeaway: Great engineering marries t
     }, true);
   }
 
-  // Initialize both features
+
+  // =========================================================================
+  // 3. Split73 / Split64 Image Hover Full-Screen Zoom
+  // =========================================================================
+  function initSplitImageHoverZoom() {
+    document.body.classList.add('has-split-zoom-js');
+    let overlay = null;
+    let overlayImg = null;
+    let hideTimer = null;
+
+    function getOrCreateOverlay() {
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'split-img-zoom-overlay';
+        overlay.style.cssText = [
+          'position: fixed',
+          'inset: 0',
+          'width: 100vw',
+          'height: 100vh',
+          'background: rgba(15, 23, 42, 0.88)',
+          'backdrop-filter: blur(8px)',
+          '-webkit-backdrop-filter: blur(8px)',
+          'z-index: 999998',
+          'display: none',
+          'align-items: center',
+          'justify-content: center',
+          'padding: 28px',
+          'box-sizing: border-box',
+          'pointer-events: none',
+          'opacity: 0',
+          'transition: opacity 0.18s ease'
+        ].join(';');
+
+        overlayImg = document.createElement('img');
+        overlayImg.style.cssText = [
+          'max-width: 94vw',
+          'max-height: 92vh',
+          'width: auto',
+          'height: auto',
+          'object-fit: contain',
+          'border-radius: 12px',
+          'box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55)',
+          'transform: scale(0.96)',
+          'transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1)'
+        ].join(';');
+
+        overlay.appendChild(overlayImg);
+      }
+      const parent = document.fullscreenElement || document.body;
+      if (overlay.parentElement !== parent) {
+        parent.appendChild(overlay);
+      }
+      return overlay;
+    }
+
+    function showZoom(imgEl) {
+      if (hideTimer) {
+        clearTimeout(hideTimer);
+        hideTimer = null;
+      }
+      const el = getOrCreateOverlay();
+      overlayImg.src = imgEl.currentSrc || imgEl.src;
+      overlayImg.alt = imgEl.alt || '';
+      el.style.display = 'flex';
+      // Trigger reflow for smooth transition
+      void el.offsetWidth;
+      el.style.opacity = '1';
+      overlayImg.style.transform = 'scale(1)';
+    }
+
+    function hideZoom() {
+      if (!overlay) return;
+      overlay.style.opacity = '0';
+      if (overlayImg) overlayImg.style.transform = 'scale(0.96)';
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (overlay && overlay.style.opacity === '0') {
+          overlay.style.display = 'none';
+        }
+      }, 180);
+    }
+
+    const targets = document.querySelectorAll('div.split73 img:not(.emoji), div.split64 img:not(.emoji)');
+    targets.forEach(img => {
+      if (img.dataset.splitZoomBound) return;
+      img.dataset.splitZoomBound = 'true';
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('mouseenter', function() {
+        showZoom(img);
+      });
+      img.addEventListener('mouseleave', function() {
+        hideZoom();
+      });
+    });
+
+    const origBadges = document.querySelectorAll('.orig-ui-hover[data-orig-src]');
+    origBadges.forEach(badge => {
+      if (badge.dataset.origZoomBound) return;
+      badge.dataset.origZoomBound = 'true';
+      badge.addEventListener('mouseenter', function() {
+        showZoom({ src: badge.dataset.origSrc, alt: badge.textContent || 'Original UI Design' });
+      });
+      badge.addEventListener('mouseleave', function() {
+        hideZoom();
+      });
+    });
+
+    window.addEventListener('hashchange', hideZoom);
+    window.addEventListener('keydown', hideZoom);
+  }
+
+  // Initialize all features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
+    initSplitImageHoverZoom();
   }
 
   if (document.readyState === 'loading') {

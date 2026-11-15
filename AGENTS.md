@@ -60,6 +60,7 @@
    * 選項清單一律直接顯示（使用 `-` 符號，不使用 `*` 漸進逐條淡入）。
    * 投影片頂部 Header 導覽一律採用純目錄下拉選單（`nav-dropdown`），預設隱藏，hover/click 時展開。
    * **全版圖片投影片 (full-image-slide)**：比照 SE / ASE 規範，即便是全版圖片，頁碼（`::after`，右下角深色浮動膠囊）與頂部 Header 導覽（右上角淺色毛玻璃膠囊）均須正常呈現，確保簡報換頁進度與章節跳轉不中斷；僅底部 `footer` 予以隱藏。
+   * **分割版面 (`split73` / `split64`) 圖片滑鼠懸停全螢幕放大 (Hover-to-Fullscreen Image Zoom)**：在 `div.split73` 與 `div.split64` 版型中，當滑鼠移至圖片上方（`mouseover` / `:hover`）時，圖片自動平滑放大至全螢幕（搭配 `pointer-events: none` 防閃爍深色毛玻璃檢視層），移開滑鼠即恢復原狀；且 `<div class="left">`、`</div>`、`<div class="right">` 標籤一律頂格撰寫（0 縮排）。
    * **CCQ 隨堂測驗排版與命題規範**：
      - **禁止重複標題**：投影片頂部已具備 `## 概念核對問答 (CCQ X)`，`<div class="ccq-text">` 內部直接進入題目，嚴禁重複出現 `#### 🙋 **概念核對問答**` 產生冗餘。
      - **選項長度對稱平衡**：所有選項（A, B, C, D）字數應精準提煉且長度相當，**嚴禁標準答案明顯比干擾項長**，避免洩漏線索（Anti-Length Cue Bias）。

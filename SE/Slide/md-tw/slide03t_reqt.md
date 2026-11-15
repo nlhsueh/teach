@@ -45,7 +45,8 @@ footer: 'Ch 03 · 需求工程'
       <li><b>3.6 AI 賦能需求工程：</b> 大型語言模型輔助、使用者故事生成、模糊性檢測與人機協同防護。</li>
       <li><b>3.7 觀念總結與經典文獻：</b> 重點填空測驗、深度思考問題、核心回顧與參考文獻。</li>
     </ul>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -241,7 +242,8 @@ footer: 'Ch 03 · 需求工程'
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq1" target="_blank"><img src="../../img/ch03/ase-ch03-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -432,7 +434,8 @@ Uber 平台營運端則需要透過即時動態加價平衡雨天的供需失衡
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq2" target="_blank"><img src="../../img/ch03/ase-ch03-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -734,7 +737,8 @@ Uber 平台營運端則需要透過即時動態加價平衡雨天的供需失衡
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq3" target="_blank"><img src="../../img/ch03/ase-ch03-ccq3.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -927,7 +931,8 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
   <div class="name-card-caption">
     <span class="name-card-name">Fred Brooks (1931–2022)</span>
     <span class="name-card-cc"><a href="https://zh.wikipedia.org/wiki/%E5%BC%97%E9%9B%B7%E5%BE%B7%C2%B7%E5%B8%83%E9%B2%81%E5%85%8B%E6%96%AF" target="_blank">圖靈獎 (1999) / 維基百科</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -1200,7 +1205,8 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq4" target="_blank"><img src="../../img/ch03/ase-ch03-ccq4.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1233,7 +1239,8 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq5" target="_blank"><img src="../../img/ch03/ase-ch03-ccq5.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1375,7 +1382,8 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq6" target="_blank"><img src="../../img/ch03/ase-ch03-ccq6.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1614,7 +1622,8 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq7" target="_blank"><img src="../../img/ch03/ase-ch03-ccq7.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1816,7 +1825,8 @@ AI 能提供強大推力，但唯有人類工程師能承擔法律、倫理與�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq8" target="_blank"><img src="../../img/ch03/ase-ch03-ccq8.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--

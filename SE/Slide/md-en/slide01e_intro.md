@@ -52,7 +52,8 @@ In this chapter, we will explore why software is hard to build, why past crises 
       <li><b>1.8 AI in Software Engineering:</b> Paradigm shifts, SDLC lifecycle impact matrix, and technical engineering rigor.</li>
       <li><b>1.9 Synthesis & Conceptual Recap:</b> Key takeaway review, FAQ, interactive quiz, and classic references.</li>
     </ul>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -214,7 +215,7 @@ To summarize this slide, remember this key takeaway: Software engineering was bo
 ## The Software Crisis of the Late 1960s
 
 <div class="split55">
-  <div class="left">
+<div class="left">
 
   - As hardware costs plummeted, software demand and complexity exploded.
   - **The Symptoms of Crisis:**
@@ -223,10 +224,12 @@ To summarize this slide, remember this key takeaway: Software engineering was bo
     - Severe defects, system crashes, and unmaintainability.
   - **The Core Problem:** Informal, craft-like programming does not scale to large teams and complex systems.
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch01/nato_conference.png" alt="NATO Conference 1968" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -292,7 +295,8 @@ We need structured methods, accurate cost estimation, and formal testing.
   <div class="name-card-caption">
     <span class="name-card-name">Mars Climate Orbiter</span>
     <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Mars_Climate_Orbiter" target="_blank">NASA / JPL / Wikipedia</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -330,7 +334,8 @@ Third, **Ariane 5 Flight 501 in 1996**. A 64-bit velocity value overflowed a 16-
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq1" target="_blank"><img src="../../img/ch01/ase-ch01-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -534,7 +539,8 @@ If YouBike only had app source code without these procedures and data pipelines,
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq2" target="_blank"><img src="../../img/ch01/ase-ch01-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -932,7 +938,8 @@ According to Lehman's Laws: if a software system does not evolve, it becomes les
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq3" target="_blank"><img src="../../img/ch01/ase-ch01-ccq3.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1117,7 +1124,8 @@ That is why we test early and review requirements carefully!
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq4" target="_blank"><img src="../../img/ch01/ase-ch01-ccq4.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1156,7 +1164,8 @@ Think about communication overhead and training time. Go ahead and vote!
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq5" target="_blank"><img src="../../img/ch01/ase-ch01-ccq5.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1409,7 +1418,8 @@ That is what real software engineering looks like in production.
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq6" target="_blank"><img src="../../img/ch01/ase-ch01-ccq6.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1449,7 +1459,8 @@ Go ahead and submit your answer!
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch01/discussion_icon.svg" alt="Discussion" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1684,7 +1695,8 @@ As software engineers, we must realize: UI and frontend code is not ethically ne
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq7" target="_blank"><img src="../../img/ch01/ase-ch01-ccq7.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1721,7 +1733,8 @@ Think about Principle 1. Go ahead and submit your answer!
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch01/discussion_icon.svg" alt="Discussion" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1801,7 +1814,8 @@ Building a demo is fun and easy. But engineering a secure, reliable, long-lastin
   <div class="name-card-caption">
     <span class="name-card-name">Andrej Karpathy</span>
     <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Andrej_Karpathy" target="_blank">Wikimedia Commons / Wikipedia</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -2055,7 +2069,8 @@ Third, Human Professional Accountability. AI produces drafts, but you own 100% o
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq8" target="_blank"><img src="../../img/ch01/ase-ch01-ccq8.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2100,7 +2115,8 @@ Think about what happens when developers accept AI code too quickly. Go ahead an
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq9" target="_blank"><img src="../../img/ch01/ase-ch01-ccq9.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2142,7 +2158,8 @@ What happens when an AI checks its own work without an external spec? Cast your 
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch01/discussion_icon.svg" alt="Discussion" />
-  </div>
+
+</div>
 </div>
 
 <!--

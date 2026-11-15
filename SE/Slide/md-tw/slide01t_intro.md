@@ -52,7 +52,8 @@ footer: 'Ch 01 · 軟體工程導論'
       <li><b>1.8 軟體工程中的 AI 角色：</b> 典範轉移、SDLC 生命週期矩陣與工程嚴謹性。</li>
       <li><b>1.9 觀念總結與回顧：</b> 常見問題 (FAQ)、填空測驗與經典文獻。</li>
     </ul>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -211,7 +212,7 @@ footer: 'Ch 01 · 軟體工程導論'
 ## 1960 年代末期的軟體危機
 
 <div class="split55">
-  <div class="left">
+<div class="left">
 
   - 隨著硬體成本大幅下降，軟體需求與系統複雜度呈現爆炸性增長。
   - **危機的具體症狀：**
@@ -220,10 +221,12 @@ footer: 'Ch 01 · 軟體工程導論'
     - 系統充斥嚴重缺陷、頻繁崩潰且難以維護。
   - **根本病因：** 憑個人手藝、缺乏紀律的手工作坊式編程，無法應對大型團隊協作與複雜系統規模。
 
-  </div>
-  <div class="right">
+
+</div>
+<div class="right">
     <img src="../../img/ch01/nato_conference.png" alt="1968 年 NATO 迦米許會議" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -283,7 +286,8 @@ footer: 'Ch 01 · 軟體工程導論'
   <div class="name-card-caption">
     <span class="name-card-name">Mars Climate Orbiter</span>
     <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Mars_Climate_Orbiter" target="_blank">NASA / JPL / Wikipedia</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -317,7 +321,8 @@ footer: 'Ch 01 · 軟體工程導論'
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq1" target="_blank"><img src="../../img/ch01/ase-ch01-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -504,7 +509,8 @@ YouBike 能運作，仰賴四大支柱的完美協作：
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq2" target="_blank"><img src="../../img/ch01/ase-ch01-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -864,7 +870,8 @@ Validation：「我們是否有做對的系統？（是否滿足使用者真正�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq3" target="_blank"><img src="../../img/ch01/ase-ch01-ccq3.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1027,7 +1034,8 @@ Validation：「我們是否有做對的系統？（是否滿足使用者真正�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq4" target="_blank"><img src="../../img/ch01/ase-ch01-ccq4.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1064,7 +1072,8 @@ Validation：「我們是否有做對的系統？（是否滿足使用者真正�
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq5" target="_blank"><img src="../../img/ch01/ase-ch01-ccq5.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1289,7 +1298,8 @@ Docker 容器保證環境一致性。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq6" target="_blank"><img src="../../img/ch01/ase-ch01-ccq6.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1325,7 +1335,8 @@ Docker 容器保證環境一致性。
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch01/discussion_icon.svg" alt="Discussion" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1540,7 +1551,8 @@ Docker 容器保證環境一致性。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq7" target="_blank"><img src="../../img/ch01/ase-ch01-ccq7.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1573,7 +1585,8 @@ Docker 容器保證環境一致性。
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch01/discussion_icon.svg" alt="Discussion" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1651,7 +1664,8 @@ Docker 容器保證環境一致性。
   <div class="name-card-caption">
     <span class="name-card-name">Andrej Karpathy</span>
     <span class="name-card-cc"><a href="https://zh.wikipedia.org/wiki/%E5%AE%89%E5%BE%B7%E7%83%88%C2%B7%E5%8D%A1%E5%B8%95%E8%A5%BF" target="_blank">維基百科 (CC BY-SA)</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -1892,7 +1906,8 @@ AI 能快速比較設計模式，並生成 OpenAPI 合約與架構圖草稿。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq8" target="_blank"><img src="../../img/ch01/ase-ch01-ccq8.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1930,7 +1945,8 @@ D：測試案例執行速度太快，耗盡了虛擬機運算資源。
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch01-ccq9" target="_blank"><img src="../../img/ch01/ase-ch01-ccq9.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1965,7 +1981,8 @@ D：測試套件被綁定於特定單一雲端環境。
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch01/discussion_icon.svg" alt="Discussion" />
-  </div>
+
+</div>
 </div>
 
 <!--

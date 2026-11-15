@@ -47,7 +47,8 @@ To summarize this slide, remember this key takeaway: A disciplined process trans
       <li><b>2.8 Systems & Culture — DevOps:</b> Breaking silos, CI/CD automated deployment pipelines, and observability.</li>
       <li><b>2.9 The Modern Frontier — AI Spec-Driven:</b> AI spec loops, human-in-the-loop, recap quiz & references.</li>
     </ul>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -273,7 +274,8 @@ To summarize this slide, remember this key takeaway: Plan-driven models prioriti
   <div class="name-card-caption">
     <span class="name-card-name">Winston W. Royce</span>
     <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Winston_W._Royce" target="_blank">Wikimedia Commons / Wikipedia</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -379,7 +381,8 @@ What is the primary operational drawback of the traditional Waterfall model?
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq1" target="_blank"><img src="../../img/ch02/ase-ch02-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -512,7 +515,8 @@ What is the primary engineering advantage of the V-Model over the classic Waterf
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq2" target="_blank"><img src="../../img/ch02/ase-ch02-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -546,7 +550,8 @@ To summarize this slide, remember this key takeaway: The V-Model front-loads ver
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch02/discussion_icon.svg" alt="Discussion" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -806,7 +811,8 @@ In software process engineering, what is the fundamental conceptual difference b
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq3" target="_blank"><img src="../../img/ch02/ase-ch02-ccq3.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -840,7 +846,8 @@ In Henrik Kniberg's famous Minimum Viable Product (MVP) analogy (Skateboard to C
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq4" target="_blank"><img src="../../img/ch02/ase-ch02-ccq4.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -873,7 +880,8 @@ To summarize this slide, remember this key takeaway: An MVP must deliver immedia
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch02/discussion_icon.svg" alt="Discussion" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1084,7 +1092,8 @@ The Agile Manifesto states: *"Working software over comprehensive documentation.
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq5" target="_blank"><img src="../../img/ch02/ase-ch02-ccq5.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1115,7 +1124,8 @@ Agile Principle 8 states: *"Agile processes promote sustainable development. The
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq6" target="_blank"><img src="../../img/ch02/ase-ch02-ccq6.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1374,7 +1384,8 @@ In the Kanban process framework, what is the primary operational purpose of enfo
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq7" target="_blank"><img src="../../img/ch02/ase-ch02-ccq7.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1408,7 +1419,8 @@ In the Scrum framework, what is the primary operational objective of the **Sprin
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq8" target="_blank"><img src="../../img/ch02/ase-ch02-ccq8.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1487,7 +1499,8 @@ To summarize this slide, remember this key takeaway: Shortcuts taken today becom
   <div class="name-card-caption">
     <span class="name-card-name">Ward Cunningham</span>
     <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Ward_Cunningham" target="_blank">Wikimedia Commons / CC BY-SA</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -1589,7 +1602,8 @@ According to Ward Cunningham's Technical Debt metaphor, what represents the "com
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq9" target="_blank"><img src="../../img/ch02/ase-ch02-ccq9.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1623,7 +1637,8 @@ Martin Fowler coined the term **"Flaccid Scrum"** to describe which critical sof
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq10" target="_blank"><img src="../../img/ch02/ase-ch02-ccq10.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1653,7 +1668,8 @@ To summarize this slide, remember this key takeaway: Scrum rituals without engin
   </div>
   <div class="discussion-logo">
     <img src="../../img/ch02/discussion_icon.svg" alt="Discussion" />
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1735,7 +1751,8 @@ To summarize this slide, remember this key takeaway: Extreme Programming provide
   <div class="name-card-caption">
     <span class="name-card-name">Kent Beck</span>
     <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Kent_Beck" target="_blank">Wikimedia Commons / CC BY-SA</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -1929,7 +1946,8 @@ In Extreme Programming (XP), what is the primary role of the "Navigator" during 
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq11" target="_blank"><img src="../../img/ch02/ase-ch02-ccq11.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1963,7 +1981,8 @@ In Extreme Programming's Test-Driven Development (TDD), what is the specific obj
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq12" target="_blank"><img src="../../img/ch02/ase-ch02-ccq12.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2172,7 +2191,8 @@ What is the defining operational distinction between "Continuous Delivery" and "
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq13" target="_blank"><img src="../../img/ch02/ase-ch02-ccq13.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -2443,7 +2463,8 @@ In modern AI Specification-Driven development, what is the primary role of autom
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch02-ccq14" target="_blank"><img src="../../img/ch02/ase-ch02-ccq14.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--

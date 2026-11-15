@@ -45,7 +45,8 @@ To summarize this slide, remember this key takeaway: Requirements engineering en
       <li><b>3.6 AI-Assisted Requirements Engineering:</b> Generative AI copilots, user story refinement, ambiguity detection, human-in-the-loop.</li>
       <li><b>3.7 Synthesis & Conceptual Recap:</b> Key takeaway review, fill-in-the-blank quiz, discussion questions, and references.</li>
     </ul>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -240,7 +241,8 @@ In requirements engineering, what is the critical operational distinction betwee
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq1" target="_blank"><img src="../../img/ch03/ase-ch03-ccq1.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -430,7 +432,8 @@ What category of software requirement does this statement represent?
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq2" target="_blank"><img src="../../img/ch03/ase-ch03-ccq2.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -748,7 +751,8 @@ A client provides an imprecise non-functional goal: *"The order checkout system 
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq3" target="_blank"><img src="../../img/ch03/ase-ch03-ccq3.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -940,7 +944,8 @@ To summarize this slide, remember this key takeaway: Vague adjectives and unvali
   <div class="name-card-caption">
     <span class="name-card-name">Fred Brooks (1931–2022)</span>
     <span class="name-card-cc"><a href="https://en.wikipedia.org/wiki/Fred_Brooks" target="_blank">Turing Award (1999) / Wikipedia</a></span>
-  </div>
+
+</div>
 </div>
 
 </div>
@@ -1224,7 +1229,8 @@ During a requirements elicitation interview, an executive insists: *"Our clinica
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq4" target="_blank"><img src="../../img/ch03/ase-ch03-ccq4.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1258,7 +1264,8 @@ In requirements engineering, why is **Ethnography (workplace observation)** uniq
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq5" target="_blank"><img src="../../img/ch03/ase-ch03-ccq5.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1426,7 +1433,8 @@ A software engineering team creates a UML Use Case Diagram showing an actor conn
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq6" target="_blank"><img src="../../img/ch03/ase-ch03-ccq6.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1669,7 +1677,8 @@ Why is fixing a requirements error after software delivery significantly more ex
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq7" target="_blank"><img src="../../img/ch03/ase-ch03-ccq7.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
@@ -1874,7 +1883,8 @@ When software engineering teams use Large Language Models (LLMs) to generate req
   </div>
   <div class="ccq-logo">
     <a href="https://nlhsueh.github.io/nickedupocket/#/student/ase-ch03-ccq8" target="_blank"><img src="../../img/ch03/ase-ch03-ccq8.png" alt="QR Code" /></a>
-  </div>
+
+</div>
 </div>
 
 <!--
