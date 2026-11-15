@@ -81,14 +81,15 @@ To summarize this slide, remember this key takeaway: When users make mistakes, b
 ---
 ## Why Good Design Matters: The "Norman Door"
 
-> **What is a "Norman Door"?** A door whose design sends the **wrong visual signal**—such as installing a prominent **pull handle** on a door that must actually be **pushed**!
+> **Norman Door-** A door whose design sends the **wrong visual signal**—such as installing a prominent **pull handle** on a door that must actually be **pushed**!
 
 <div class="split73">
   <div class="left">
 
-* **The Emotional Impact (Embarrassment & Frustration):**
+* **The Emotional Impact:**
   - You see a handle, pull instinctively, and suddenly can't open the door—making you feel **embarrassed, foolish, or even angry** in front of others.
   - Yet **you are not to blame—the design failed** by fighting human instinct!
+
 * **Why This Brings Us to User Experience (UX):**
   - *"When a simple door needs a **'PUSH'** sign, the design is faulty."* — Don Norman
   - Software is full of "digital Norman Doors": good **UX Design** aligns visual cues with human intuition so users feel **confident and effortless**, never frustrated.
@@ -146,7 +147,7 @@ To summarize this slide, remember this key takeaway: Poor UX directly drives use
 
 > **The "Night Market Chaos" (Arngren-Style Overload):** Stuffing hundreds of competing products and links into a single screen with zero visual hierarchy.
 
-<div class="split55">
+<div class="split73">
   <div class="left">
 
 * **Why This Design Fails:**
@@ -174,7 +175,7 @@ To summarize this slide, remember this key takeaway: Without a structured grid s
 
 > **The "Paint is Free" Nightmare:** Abusing clashing colors, busy textured backgrounds, and drop-shadows that destroy readability and brand trust.
 
-<div class="split55">
+<div class="split73">
   <div class="left">
 
 * **Why This Design Fails:**
@@ -202,7 +203,7 @@ To summarize this slide, remember this key takeaway: High-contrast typography an
 
 > **The "Where Do I Start?" Archetype:** Cluttering dozens of identical buttons and ultra-wide text lines without a clear primary Call-to-Action (CTA).
 
-<div class="split55">
+<div class="split73">
   <div class="left">
 
 * **Why This Design Fails:**
@@ -228,7 +229,7 @@ To summarize this slide, remember this key takeaway: Establish a clear primary C
 ---
 ## Case Study: Taiwan NHI Mask App — Where Do You Pre-Order?
 
-> **Classroom Challenge:** Guess which icon (**1–6**) you had to tap when you wanted to **pre-order masks**?
+> **Challenge:** Guess which icon (**1–6**) you had to tap when you wanted to **pre-order masks**?
 
 <div class="two-columns">
   <div class="card" data-marpit-fragment style="text-align: center;">
@@ -266,8 +267,8 @@ To summarize this slide, remember this key takeaway: Never bury a high-priority 
 ## Case Study Analysis: Backend-Driven vs. User-Centered UX
 
 * **Why the v1 Emergency Design Failed (Implementation-Driven UI):**
-  - **Conway's Law & Module Convenience:** Because mask pre-ordering required identity login, engineers stuffed it inside **#2 My Health Bank (`健康存摺`)** where authentication already existed.
-  - **False Signifier Trap:** Icon **#1 (`口罩查詢`)** had a mask illustration and the word "Mask," luring millions of users into a dead-end map view while the red banner at the top looked like an unclickable advertisement.
+  - **Module Convenience:** Because mask pre-ordering required identity login, engineers stuffed it inside **#2 My Health Bank (`健康存摺`)** where authentication already existed.
+  - **False Signifier Trap:** Icon **#1 (`口罩查詢`)** had a mask illustration and the word "Mask".
   - **Inconsistent Visual Weight:** Icons had random sizes and shapes (circles, rectangles, 3D books) with zero grid alignment.
 * **How the Refactored Version Fixed It (Goal-Directed 3×3 Grid):**
   - **Surface-Level Task Visibility:** Extracted **`eMask 口罩預購`**, **`History 購買紀錄`**, and **`Mask Map 口罩地圖`** as distinct, top-row first-class actions matching citizen goals.
@@ -285,50 +286,42 @@ In the refactored 3-by-3 grid, the design team broke free from backend module bo
 To summarize this slide, remember this key takeaway: Design navigation hierarchies around what users want to accomplish, never around how your backend authentication modules are organized.
 -->
 ---
-## Why is UX So Hard? The Empathy Gap
+## Why is UX So Hard?
 
-> **The Cardinal Rule of UX:** "You are **not** your user—never assume that because you built the backend schema, the interface is obvious to a first-time visitor."
+> **The Root Cause:** Good UX fails not from a lack of coding skills, but from engineering-centric thinking and fragmented development habits.
 
-<div class="split73">
-  <div class="left">
-
-* **1. "You Are Not the User":**
-  - Software engineers possess deep technical mental models (relational schemas, API routes, thread lifecycles).
-  - End users possess everyday domain mental models (ordering dinner, booking an appointment, paying a bill).
-* **2. The Curse of Knowledge:**
-  - Once an engineer builds a complex feature, it seems "obvious" and "intuitive" to them.
-  - They forget the cognitive friction experienced by a first-time user encountering the screen cold.
-* **3. Defensive vs. Empathetic Thinking:**
-  - Engineers often design interfaces to match backend database tables rather than natural human mental steps.
-
-  </div>
-  <div class="right">
-    <img src="../../img/ux/why_ux_is_hard_nobg.png" alt="Why UX is Hard" />
-  </div>
-</div>
+- 1. Module vs. Systems Thinking
+- 2. Patchwork Construction
+- 3. System vs. User Thinking 
+- 4. Lack of Empathic Thinking 
+- 5. No User Research or Requirements Analysis
+- 6. Construction Without Prior Design 
+- 7. No Testing, Feedback, or Iteration 
 
 <!--
-Why do brilliant engineers repeatedly build difficult-to-use software?
+Why do brilliant software teams repeatedly deliver difficult-to-use software?
 
-The fundamental psychological culprit is the Curse of Knowledge. Because the engineer spent three months designing the database architecture, the interface feels completely obvious to them. They can no longer see the system through the eyes of a novice.
+It boils down to seven systemic pitfalls in software development:
 
-Remember the cardinal rule of interaction design: You Are Not The User. Never assume what is easy for you is easy for the public.
+First, teams often fall into module-level thinking without seeing the whole system journey. Second, features get stacked haphazardly as new requests trickle in. Third, developers get consumed by system architecture and forget user-centric thinking. 
 
-To summarize this slide, remember this key takeaway: Overcome the curse of knowledge by separating internal system schemas from human mental models.
+Fourth, there is a severe shortage of empathic thinking—we forget what real users feel when they are confused. Fifth, projects skip real user research and deep requirements analysis. Sixth, engineers jump directly into coding and construction without any interface design. Finally, there is no testing, feedback collection, or iterative refinement loop.
+
+To summarize this slide, remember this key takeaway: UX fails when development is driven by ad-hoc construction rather than user research, empathetic design, and iterative feedback.
 -->
 ---
 ## UI (User Interface) vs. UX (User Experience)
 
 * **User Interface (UI):**
-  - The tangible, sensory touchpoints through which humans interact with software.
+  - The **tangible**, **sensory touchpoints** through which humans interact with software.
   - *Elements:* Buttons, typography, color palettes, spacing, CSS grids, icons, transitions, animations.
   - *Core Question:* "How does the screen look, render, and react visually?"
 * **User Experience (UX):**
-  - The overall, end-to-end emotional and psychological journey a human has with a brand, service, or system.
+  - The overall, end-to-end **emotional** and **psychological** journey a human has with a brand, service, or system.
   - *Elements:* Task efficiency, friction, cognitive load, user satisfaction, error recovery, trust.
   - *Core Question:* "How effectively, intuitively, and pleasantly does the user achieve their goal?"
 * **The Classical Analogy:**
-  - UI is the saddle, stirrup, and reins; UX is the feeling of riding the horse!
+  - UI is the saddle, stirrup, and reins; UX is the *feeling* of riding the horse!
 
 <!--
 Let's crystallize the distinction between User Interface and User Experience.
@@ -499,6 +492,40 @@ Let's dissect each heuristic with real-world examples.
 To summarize this slide, remember this key takeaway: These ten heuristics cover feedback, cognitive load, error resilience, and operational efficiency across all software tiers.
 -->
 ---
+## Challenge: What's Wrong with this Food Delivery Screen?
+
+<div class="split64">
+  <div class="left">
+
+> **Scenario:** After placing an order for dinner, a hungry customer is greeted with this order tracking screen.
+
+* **1. Status & Feedback (What's happening?):**
+  - The spinner has been turning for 4 minutes with no progress update.
+  - Did the restaurant accept the order? How long will it take?
+* **2. Language & Mental Model (Whose language is this?):**
+  - Displays cryptic codes: `ITEM_SKU_90218` and `STATUS_204`.
+  - Buttons ask the hungry customer to *"Rollback TXN"* or *"Refresh DB Socket"*.
+* **Discussion Prompt:**
+  - What are the **top 3 usability disasters** on this screen?
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/food_delivery_bad.png" alt="Bad Food Delivery Tracking Screen" />
+  </div>
+</div>
+
+<!--
+Before we dive into the first two heuristics, let's look at a real-world scenario that happens every day in software development.
+
+Look at the mobile mockup on the right. A customer just placed an order for dinner. The screen has been showing a frozen spinner for over three minutes with cryptic messages like STATUS_CODE_204 and SKU numbers.
+
+Turn to your neighbor and discuss: What is fundamentally broken about this user experience? Why does this screen cause anxiety, confusion, and panic?
+
+Keep your thoughts in mind—over the next few slides, we will learn the two foundational Nielsen heuristics that explain and solve this exact problem!
+
+To summarize this slide, remember this key takeaway: Software that exposes internal technical plumbing instead of user-centered communication creates confusion and distrust.
+-->
+---
 ## NS01: Visibility of System Status
 
 * **Heuristic Principle:**
@@ -537,7 +564,7 @@ To summarize this slide, remember this key takeaway: Visual feedback across butt
 -->
 ---
 <!-- _class: title-image-slide -->
-## NS01 in Practice (2/2): Batch File Import Progress & ETA
+## NS01 in Practice (2/2): Batch File Import Progress
 
 <div class="image-wrapper">
   <img src="../../img/ux/ns_ai_01.jpg" alt="Batch File Import Progress Modal" />
@@ -591,9 +618,9 @@ To summarize this slide, remember this key takeaway: When controls mirror real-w
 ---
 ## NS02 in Practice (2/2): Speaking Everyday User Language
 
-> **Why It Matters:** Exposing raw backend exceptions (`HTTP 502`, `ERR_SOCKET_TIMEOUT`) forces everyday shoppers to decipher engineering jargon and triggers panic over double-charging.
+- Exposing raw backend exceptions (`HTTP 502`, `ERR_SOCKET_TIMEOUT`) forces everyday shoppers to decipher engineering jargon and triggers panic over double-charging.
 
-<div class="split55">
+<div class="split73">
   <div class="left">
 
 * **System-Oriented Jargon (Bad):**
@@ -616,6 +643,71 @@ Here is our second example of NS02, focusing on speaking the user's everyday lan
 When a mobile checkout payment fails, a developer-centric system might throw 'HTTP Error 403: Gateway Connection Timeout'. Instead, this interface uses familiar, everyday human vocabulary: 'Our payment channel is currently busy and we couldn't complete the charge. Please try again in a moment or use a different credit card.'
 
 To summarize this slide, remember this key takeaway: Translate internal system states and network exceptions into empathetic, everyday human concepts.
+-->
+---
+## Challenge Revealed: Redesigning for NS01 & NS02
+
+<div class="split64">
+  <div class="left">
+
+> **The Solution:** Replace developer jargon with real-world mental models, and replace infinite spinners with multi-stage progress tracking.
+
+* **NS01 Redesign (Visibility of System Status):**
+  - [x] **Concrete ETA:** *"12:35 PM (in ~18 mins)"* replaces ambiguous *"TBD"*.
+  - [x] **4-Stage Stepper:** Placed -> Cooking -> On Road -> Delivered gives instant visual feedback of where the order stands.
+* **NS02 Redesign (Match with Real World):**
+  - [x] **Everyday Culinary Language:** Human food names (*Braised Beef Noodle Soup*) replace database SKU IDs.
+  - [x] **Human Real-World Concepts:** Courier name, motorbike model, and recognizable street addresses replace coordinates.
+  - [x] **Natural Actions:** *"Call Courier"* & *"Need Help?"* replace technical database commands (*Rollback*).
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/food_delivery_good.png" alt="Good Food Delivery Tracking Screen" />
+  </div>
+</div>
+
+<!--
+Remember the frustrating food delivery screen from earlier? Now that we've covered NS01 and NS02, here is how professional UX teams redesign it.
+
+For NS01, we replaced the frozen spinner and 'TBD' with an explicit arrival estimate of 12:35 PM and a 4-stage visual stepper. The user immediately knows the courier is on the way to the restaurant.
+
+For NS02, technical jargon is completely eradicated. We see the actual restaurant name, the courier's name and scooter plate, and real food names. The actions align with real-world desires: calling the courier or contacting support.
+
+To summarize this slide, remember this key takeaway: Great UX makes the backend invisible by mirroring the user's everyday physical world and providing continuous, reassuring feedback.
+-->
+---
+## Challenge: What's Wrong with this Checkout Screen?
+
+<div class="split64">
+  <div class="left">
+
+> **Scenario:** A shopper reaches the final checkout screen, but realizes they mistyped their apartment number.
+
+* **1. Emergency Exits & Control (NS03):**
+  - There is no *"Back"* button and no way to edit items or shipping addresses.
+  - Notice the warning: *"Action irreversible—no refunds or cancelation!"*
+* **2. Consistency & Standards (NS04):**
+  - Why is the shopping cart icon represented by a wrench 🛠️?
+  - Why is the primary button an enormous red *"Empty Cart"* trap, while *"Place Order"* is a faint, unclickable ghost button?
+* **Discussion Prompt:**
+  - What makes this checkout flow a usability nightmare?
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/checkout_bad.png" alt="Bad E-Commerce Checkout Screen" />
+  </div>
+</div>
+
+<!--
+Before we examine Heuristics 3 and 4, let's explore this e-commerce checkout disaster.
+
+Look at the mobile screen on the right. A customer is on the final payment step, but spots a typo in their apartment number. 
+
+What violates NS03 (User Control & Freedom)? The pipeline is completely locked down. There is no back button, no edit link, and a terrifying banner stating that payment is permanent with zero undo window.
+
+What violates NS04 (Consistency & Standards)? The shopping cart icon has been replaced by a wrench! Furthermore, Jakob's Law is violently broken: standard checkout conventions are reversed. The giant high-contrast button deletes the cart, while the actual checkout button looks disabled.
+
+To summarize this slide, remember this key takeaway: Trapping users in linear workflows and defying platform UI conventions induces instant purchase abandonment.
 -->
 ---
 ## NS03: User Control & Freedom (Emergency Exits)
@@ -723,6 +815,72 @@ Across VS Code, Cursor, Slack, Notion, and Linear, pressing Cmd+K (or Ctrl+K) op
 To summarize this slide, remember this key takeaway: Following industry-standard interaction shortcuts allows users to transfer existing muscle memory effortlessly.
 -->
 ---
+## Challenge Revealed: Redesigning for NS03 & NS04
+
+<div class="split64">
+  <div class="left">
+
+> **The Solution:** Honor platform standards and Jakob's Law, while guaranteeing non-destructive emergency exits and an undo safety net.
+
+* **NS03 Redesign (User Control & Freedom):**
+  - [x] **Non-Destructive Stepper:** Shoppers can click back to *"Cart"* or *"Shipping"* anytime without losing entered data.
+  - [x] **Direct In-Line Edits:** Clear `[Edit]` and `[Change]` links beside order items and delivery addresses.
+  - [x] **15-Second Undo Guarantee:** Reassuring safety net allows 1-click cancelation right after tapping pay.
+* **NS04 Redesign (Consistency & Standards):**
+  - [x] **Platform Conventions:** Standard shopping bag icon (🛍️) at top-right, standard left-arrow back navigation.
+  - [x] **Expected Button Hierarchy:** Prominent green CTA for *"Place Order"* with a clean neutral *"Cancel"* exit below.
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/checkout_good.png" alt="Good E-Commerce Checkout Screen" />
+  </div>
+</div>
+
+<!--
+Here is the solution for our second challenge, applying Heuristics 3 and 4.
+
+For NS03 (User Control & Freedom), we gave the user total psychological safety: they can freely click back to previous steps, edit their shipping address with a single tap, and enjoy a 15-second Undo window after placing the order.
+
+For NS04 (Consistency & Standards), the interface now behaves like every other top-tier e-commerce app (Amazon, Apple, Shopify). The shopping cart icon is standard, the back button is top-left, and the primary CTA is unmistakably clear.
+
+To summarize this slide, remember this key takeaway: When users have easy emergency exits and familiar standard controls, hesitation vanishes and checkout conversion surges.
+-->
+---
+## Challenge: What's Wrong with this Flight Booking Screen?
+
+<div class="split64">
+  <div class="left">
+
+> **Scenario:** A traveler is booking round-trip tickets from Taipei to Osaka for an upcoming autumn vacation.
+
+* **1. Error Prevention Failures (NS05):**
+  - Requires raw string typing for dates (`YYYY-MM-DD`) with no format validation.
+  - Allows selecting past dates and impossible logic (*Return date earlier than Departure!*).
+  - Destructive *"Delete Profile"* triggers instantly with no confirmation.
+* **2. Recall vs. Recognition Failures (NS06):**
+  - Forces users to memorize 3-letter IATA airport codes (`TPE`, `KIX`) from memory.
+  - Zero search history, autocomplete, or popular destination chips.
+* **Discussion Prompt:**
+  - How could defensive design eliminate these errors before submission?
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/flight_booking_bad.png" alt="Bad Flight Booking Screen" />
+  </div>
+</div>
+
+<!--
+Before exploring Heuristics 5 and 6, examine this flight booking mobile screen.
+
+Look at the input fields on the right. A traveler wants to book a flight from Taipei to Osaka.
+
+What violates NS05 (Error Prevention)? The system forces the user to manually type raw date strings into text boxes. Worse, it lets them type a past date and a return date that is earlier than departure! There is no guardrail, and deleting a passenger has no confirmation prompt.
+
+What violates NS06 (Recognition Rather Than Recall)? The app expects users to recall cryptic 3-letter IATA airport codes from memory. There are no city names, no search suggestions, and no recent history chips.
+
+To summarize this slide, remember this key takeaway: Forcing users to memorize codes and type unconstrained data invites catastrophic user error.
+-->
+---
 ## NS05: Error Prevention
 
 * **Heuristic Principle:**
@@ -818,7 +976,7 @@ To summarize this slide, remember this key takeaway: Surfacing recent history an
 
 > **Why Is This a Recall vs. Recognition Issue?** Without contextual menus, users must **memorize and recall** *which* top-level menu (`Edit`, `Tools`, or `Format`) or hotkey hides an action!
 
-<div class="split55">
+<div class="split64">
   <div class="left">
 
 * **The Recall Burden (Traditional Menu / CLI):**
@@ -841,6 +999,71 @@ Why is an in-place contextual toolbar a classic example of Recognition Rather Th
 By automatically popping up a floating contextual toolbar right next to the selected text, the system makes the available actions immediately visible. The user's brain simply recognizes the desired action on screen instead of recalling hidden menu paths!
 
 To summarize this slide, remember this key takeaway: Surfacing contextual action menus right at the point of interaction eliminates the need to memorize deep menu hierarchies.
+-->
+---
+## Challenge Revealed: Redesigning for NS05 & NS06
+
+<div class="split64">
+  <div class="left">
+
+> **The Solution:** Constrain inputs to eliminate error-prone conditions, and surface visual suggestions so users recognize instead of recall.
+
+* **NS05 Redesign (Proactive Error Prevention):**
+  - [x] **Visual Calendar Guardrails:** Past dates disabled; return dates strictly constrained to departure or later.
+  - [x] **Constrained Stepper Controls:** Stepper buttons (`[-] 1 [+]`) enforce valid passenger bounds (1–9).
+  - [x] **Smart Validation:** Searches only execute when all parameters form a logically coherent query.
+* **NS06 Redesign (Recognition Rather Than Recall):**
+  - [x] **Natural City Autocomplete:** Displays full names (*Taipei, Osaka*) with IATA codes automatically populated.
+  - [x] **Recent Search Chips:** 1-tap recognition chips (*Tokyo, Seoul*) eliminate repetitive typing and memory retrieval.
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/flight_booking_good.png" alt="Good Flight Booking Screen" />
+  </div>
+</div>
+
+<!--
+Here is the solution for our flight booking challenge, applying Heuristics 5 and 6.
+
+For NS05 (Error Prevention), we removed raw string text fields entirely. The visual date picker makes it physically impossible to choose a past date or select a return date before departure. Passenger counts are bounded with steppers.
+
+For NS06 (Recognition Rather Than Recall), travelers no longer need to know what 'KIX' or 'TPE' means. They search for 'Osaka' or 'Taipei', and recent destination chips allow instant recognition and one-tap selection.
+
+To summarize this slide, remember this key takeaway: Replace raw memory recall with visual cues, and replace freeform text inputs with defensive, constrained UI controls.
+-->
+---
+## Challenge: What's Wrong with this Task Manager Screen?
+
+<div class="split64">
+  <div class="left">
+
+> **Scenario:** A software engineer opens their enterprise team task board to triage their daily bugs.
+
+* **1. Visual Noise & Low Signal-to-Noise Ratio (NS08):**
+  - Irrelevant technical clutter: database BLOB IDs, internal shard names, and server ping latencies.
+  - Clashing rainbow badges, aggressive promotional banner ads, and heavy borders everywhere.
+* **2. Zero Accelerators for High-Frequency Users (NS07):**
+  - No keyboard shortcuts (`Cmd+K`, `Enter`, `N` for new task disabled).
+  - No multi-select batch actions—every single status update requires 4 mouse clicks.
+* **Discussion Prompt:**
+  - How would you declutter this interface and empower power-user workflows?
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/task_management_bad.png" alt="Bad Task Management Workspace" />
+  </div>
+</div>
+
+<!--
+Before we examine Heuristics 7 and 8, let's explore this enterprise task dashboard nightmare.
+
+Look at the mobile workspace on the right. An engineer is trying to prioritize bugs for today's sprint.
+
+What violates NS08 (Aesthetic and Minimalist Design)? The screen is drowning in visual noise. Unrelated database shards, raw timestamps, and clashing neon labels compete for attention, while an intrusive cloud upgrade banner occupies prime real estate. The signal-to-noise ratio is abysmal.
+
+What violates NS07 (Flexibility and Efficiency of Use)? Even though engineers use this tool eight hours a day, there are zero keyboard shortcuts. No Cmd+K quick launcher, no inline editing, and no batch selection. Every trivial edit requires opening nested menus with the mouse.
+
+To summarize this slide, remember this key takeaway: When tools drown in visual clutter and ignore keyboard shortcuts, daily team productivity grinds to a halt.
 -->
 ---
 ## NS07: Flexibility & Efficiency of Use (Accelerators)
@@ -948,6 +1171,72 @@ Instead of cramming 30 charts onto the opening screen, this Performance Overview
 To summarize this slide, remember this key takeaway: Surface only high-priority metrics upfront and defer secondary details through progressive disclosure.
 -->
 ---
+## Challenge Revealed: Redesigning for NS07 & NS08
+
+<div class="split64">
+  <div class="left">
+
+> **The Solution:** Strip away irrelevant technical noise to maximize signal, and empower power users with omnipresent keyboard shortcuts.
+
+* **NS07 Redesign (Accelerators & Flexibility):**
+  - [x] **Universal Command Palette:** `Cmd+K` / `Ctrl+K` launches instant actions from anywhere.
+  - [x] **Inline Keybinds:** Press `E` to edit, `C` to create quick tasks without touching the mouse.
+  - [x] **Batch Operations:** Multi-select shift-click lets power users triage 10 tasks simultaneously.
+* **NS08 Redesign (Aesthetic & Minimalist Design):**
+  - [x] **Noise Eradicated:** Internal database shards and latency stats hidden behind details view.
+  - [x] **High Signal-to-Noise:** Generous whitespace, clean priority tags (*High Priority, Due Tomorrow*).
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/task_management_good.png" alt="Good Task Management Workspace" />
+  </div>
+</div>
+
+<!--
+Here is the solution for our task management challenge, combining Heuristics 7 and 8.
+
+For NS08 (Aesthetic and Minimalist Design), we eliminated every shred of engineering noise. The promotional ads and internal database shard IDs are gone. The signal-to-noise ratio is pristine: clean typography, elegant priority badges, and ample breathing room.
+
+For NS07 (Flexibility and Efficiency of Use), the app caters seamlessly to both novices and keyboard warriors. Beginners click the prominent '+ Create New Task' button. Power users hit Cmd+K to search, press 'C' to create inline, and press 'E' to edit on the fly.
+
+To summarize this slide, remember this key takeaway: Declutter visual interfaces to highlight core tasks, and embed invisible accelerators that let power users fly.
+-->
+---
+## Challenge: What's Wrong with this Account Setup Screen?
+
+<div class="split64">
+  <div class="left">
+
+> **Scenario:** A new employee is creating an account on their company portal and clicks *"Submit"*.
+
+* **1. Terrible Error Recovery (NS09):**
+  - Displays cryptic hex code `0x800A03EA` with zero plain-language explanation.
+  - Punishes the user by wiping the entire form clean—forcing them to retype everything!
+  - Rejects the password without explaining *which* rule was broken.
+* **2. Missing Contextual Help (NS10):**
+  - Asks for a "TOTP 2FA Token" with no inline tooltip or `(?)` explainer.
+  - The only help is a link to download a massive 180-page PDF manual!
+* **Discussion Prompt:**
+  - How can we make error messages constructive and guidance contextual?
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/signup_help_bad.png" alt="Bad Account Registration Screen" />
+  </div>
+</div>
+
+<!--
+Before exploring our final two heuristics (NS09 and NS10), let's examine this registration form nightmare.
+
+Look at the mobile mockup on the right. A new employee tries to register an account and clicks submit.
+
+What violates NS09 (Error Recovery)? The system screams a terrifying hex error code: '0x800A03EA'. Worse, it wipes the entire form clean, forcing the user to retype their email. The password was rejected, but the user has no idea why—was it too short? Did it need a symbol?
+
+What violates NS10 (Help and Documentation)? When encountering a confusing security token field, there is no tooltip, no interactive guide, and no search bar. The only help offered is a link to download a 180-page system admin PDF manual!
+
+To summarize this slide, remember this key takeaway: Cryptic error codes and giant PDF manuals turn simple account setup into an agonizing ordeal.
+-->
+---
 ## NS09: Help Users Recognize, Diagnose, & Recover from Errors
 
 * **Heuristic Principle:**
@@ -1048,6 +1337,36 @@ Here is a second real-world example of NS10 in an online tax-filing application.
 Tax forms are inherently complex. When the user reaches the 'Income (W-2s)' step, a contextual popover ('Step 1 of 4: Import Your W-2') points directly to the 'Import W-2' button, explains the benefit in two sentences, and offers both a 'Next' button and a 'Skip Guide' link.
 
 To summarize this slide, remember this key takeaway: Embed concise, task-oriented guidance directly beside complex domain actions while always allowing experienced users to skip the tour.
+-->
+---
+## Challenge Revealed: Redesigning for NS09 & NS10
+
+<div class="split64">
+  <div class="left">
+
+> **The Solution:** Deliver plain-language error diagnostics with live recovery checklists, and embed contextual inline guidance right at the point of action.
+
+* **NS09 Redesign (Constructive Error Recovery):**
+  - [x] **No Form Wiping:** Email and previously entered data are safely preserved upon validation errors.
+  - [x] **Real-Time Password Checklist:** Dynamic indicators (*Length, Number, Symbol*) confirm exactly which rules pass or fail.
+* **NS10 Redesign (Help & Documentation):**
+  - [x] **Inline Contextual Tooltips:** Inline `Help (?)` explainer defines 2FA in 2 plain sentences without leaving the screen.
+  - [x] **Searchable Instant FAQs:** Replaces 180-page static PDF manual with an interactive in-app search query box.
+
+  </div>
+  <div class="right">
+    <img src="../../img/ux/signup_help_good.png" alt="Good Account Registration Screen" />
+  </div>
+</div>
+
+<!--
+Here is the solution for our final heuristics challenge, completing the ten usability principles.
+
+For NS09 (Error Recovery), notice how the system treats the user with respect: previous inputs are retained, and the password requirements are displayed as a live, interactive checklist. The user knows immediately that they only need to add a symbol.
+
+For NS10 (Help and Documentation), rather than exiling the user to a massive PDF file, guidance is delivered right where the question arises. An inline tooltip explains 2FA, and an interactive FAQ search bar provides instant answers.
+
+To summarize this slide, remember this key takeaway: Constructive error guidance and lightweight contextual help empower users to overcome obstacles independently and confidently.
 -->
 ---
 ### Concept Check Question 2: Usability Heuristics

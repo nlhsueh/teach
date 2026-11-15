@@ -642,68 +642,70 @@ div.split64, div.split46, div.split55 {
   gap: 20px;
 }
 
+/* Split 6:4 Layout (60% Text Left, 40% Visual Right) */
 div.split64 > div.left {
   flex: 60%;
+  text-align: left;
+  font-size: 18px !important;
+  line-height: 1.45 !important;
+}
+
+div.split64 > div.left p {
+  margin-top: 4px !important;
+  margin-bottom: 6px !important;
+}
+
+div.split64 > div.left blockquote {
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  font-size: 1.05em !important;
+}
+
+div.split64 > div.left ul,
+div.split64 > div.left ol {
+  margin-top: 4px !important;
+  margin-bottom: 6px !important;
+  padding-left: 20px !important;
+}
+
+div.split64 > div.left li {
+  font-size: 18px !important;
+  line-height: 1.45 !important;
+  margin-bottom: 8px !important;
+  text-align: left !important;
+}
+
+div.split64 > div.left li > ul,
+div.split64 > div.left li > ol {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  padding-left: 18px !important;
+}
+
+div.split64 > div.left li > ul > li,
+div.split64 > div.left li > ol > li {
+  font-size: 16px !important;
+  line-height: 1.38 !important;
+  margin-bottom: 3px !important;
+  text-align: left !important;
+}
+
+div.split64 > div.right {
+  flex: 40%;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-div.split64 > div.left img:not(.emoji) {
-  width: 100% !important;
-  max-width: 680px !important;
-  max-height: 520px !important;
-  object-fit: contain !important;
-}
-
-div.split64 > div.right {
-  flex: 40%;
-  text-align: left;
-  font-size: 17px !important;
-  line-height: 1.4 !important;
-}
-
-div.split64 > div.right p {
-  margin-top: 4px !important;
-  margin-bottom: 4px !important;
-}
-
-div.split64 > div.right ul,
-div.split64 > div.right ol {
-  margin-top: 4px !important;
-  margin-bottom: 4px !important;
-}
-
-div.split64 > div.right li {
-  font-size: 17px !important;
-  line-height: 1.4 !important;
-  margin-bottom: 6px !important;
-}
-
-div.split64 > div.right li > ul,
-div.split64 > div.right li > ol {
-  margin-top: 2px !important;
-  margin-bottom: 2px !important;
-}
-
-div.split64 > div.right li > ul > li,
-div.split64 > div.right li > ol > li {
-  font-size: 15.5px !important;
-  line-height: 1.35 !important;
-  margin-bottom: 2px !important;
-}
-
-div.split64 > div.right pre {
-  margin: 6px 0 !important;
-  padding: 8px 12px !important;
-  font-size: 14.5px !important;
-  line-height: 1.35 !important;
-}
-
 div.split64 > div.right img:not(.emoji) {
-  width: 100%;
-  max-width: 380px;
+  width: auto !important;
+  max-width: 100% !important;
+  max-height: 540px !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 /* Split 4:6 Layout (40% Text Left, 60% Diagram Right) */
