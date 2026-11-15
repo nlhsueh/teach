@@ -96,7 +96,7 @@ To summarize this slide, remember this key takeaway: When users make mistakes, b
 
   </div>
   <div class="right">
-    <img src="../../img/ux/normans_door_nobg.png" alt="Norman Door" />
+    <img src="../../img/ch06/normans_door_nobg.png" alt="Norman Door" />
   </div>
 </div>
 
@@ -129,7 +129,7 @@ To summarize this slide, remember this key takeaway: Good UX design matters beca
 
   </div>
   <div class="right">
-    <img src="../../img/ux/bad_ui_ux_frustration_nobg.png" alt="User Frustration" />
+    <img src="../../img/ch06/bad_ui_ux_frustration_nobg.png" alt="User Frustration" />
   </div>
 </div>
 
@@ -157,7 +157,7 @@ To summarize this slide, remember this key takeaway: Poor UX directly drives use
 
   </div>
   <div class="right">
-    <img src="../../img/ux/bad_design_night_market_arngren.png" alt="Arngren Cluttered Design" />
+    <img src="../../img/ch06/bad_design_night_market_arngren.png" alt="Arngren Cluttered Design" />
   </div>
 </div>
 
@@ -185,7 +185,7 @@ To summarize this slide, remember this key takeaway: Without a structured grid s
 
   </div>
   <div class="right">
-    <img src="../../img/ux/bad_design_color_contrast_xray.png" alt="Pacific Northwest X-Ray Color Contrast Nightmare" />
+    <img src="../../img/ch06/bad_design_color_contrast_xray.png" alt="Pacific Northwest X-Ray Color Contrast Nightmare" />
   </div>
 </div>
 
@@ -213,7 +213,7 @@ To summarize this slide, remember this key takeaway: High-contrast typography an
 
   </div>
   <div class="right">
-    <img src="../../img/ux/bad_design_cluttered_gates.png" alt="Gates N Fences Cluttered Hierarchy and Line Length" />
+    <img src="../../img/ch06/bad_design_cluttered_gates.png" alt="Gates N Fences Cluttered Hierarchy and Line Length" />
   </div>
 </div>
 
@@ -234,13 +234,13 @@ To summarize this slide, remember this key takeaway: Establish a clear primary C
 <div class="two-columns">
   <div class="card" data-marpit-fragment style="text-align: center;">
     <h3 style="color: #dc2626; margin-bottom: 8px;">v1 Emergency Launch: Guess Where (1–6)?</h3>
-    <img src="../../img/ux/mask_order_app_before.png" alt="Mask App Before Redesign" style="max-height: 310px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto 8px auto; display: block;" />
+    <img src="../../img/ch06/mask_order_app_before.png" alt="Mask App Before Redesign" style="max-height: 310px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto 8px auto; display: block;" />
     <p style="font-size: 15px; color: #334155; margin: 0;"><strong>1.</strong> Mask Query &nbsp;|&nbsp; <strong>2.</strong> My Health Bank &nbsp;|&nbsp; <strong>3.</strong> Reform Diary<br/><strong>4.</strong> Hospital Search &nbsp;|&nbsp; <strong>5.</strong> E-Counter &nbsp;|&nbsp; <strong>6.</strong> More...</p>
   </div>
 
   <div class="card" data-marpit-fragment style="text-align: center;">
     <h3 style="color: #16a34a; margin-bottom: 8px;">Answer: Buried in #2! → Refactored 3×3 Grid</h3>
-    <img src="../../img/ux/mask_order_app_after.png" alt="Mask App After Redesign" style="max-height: 310px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto 8px auto; display: block;" />
+    <img src="../../img/ch06/mask_order_app_after.png" alt="Mask App After Redesign" style="max-height: 310px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto 8px auto; display: block;" />
     <p style="font-size: 15px; color: #15803d; margin: 0;"><strong>Why #2 (My Health Bank)?</strong> It had the login module!<br/><strong>Redesign:</strong> Promoted <strong>eMask Pre-Order</strong> directly to top row.</p>
   </div>
 </div>
@@ -339,7 +339,7 @@ To summarize this slide, remember this key takeaway: UI is what the user touches
 ## Visualizing UI vs. UX: Anatomy of Interaction
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ui_vs_ux_comparison_new.png" alt="UI vs UX Comparison" />
+  <img src="../../img/ch06/ui_vs_ux_comparison_new.png" alt="UI vs UX Comparison" />
 </div>
 
 <!--
@@ -359,7 +359,7 @@ To summarize this slide, remember this key takeaway: UI creates the aesthetic se
 ## The 5-Stage UX Design Thinking Process
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ux_core_process_nobg.png" alt="5-Stage Design Thinking Process" />
+  <img src="../../img/ch06/ux_core_process_nobg.png" alt="5-Stage Design Thinking Process" />
 </div>
 
 <!--
@@ -500,17 +500,17 @@ To summarize this slide, remember this key takeaway: These ten heuristics cover 
 > **Scenario:** After placing an order for dinner, a hungry customer is greeted with this order tracking screen.
 
 * **1. Status & Feedback (What's happening?):**
-  - The spinner has been turning for 4 minutes with no progress update.
-  - Did the restaurant accept the order? How long will it take?
+  - The spinner has been stuck for nearly 4 minutes (`3m 42s`) with no progress bar.
+  - Did the restaurant accept the order? When will it arrive (`ETA: TBD`)?
 * **2. Language & Mental Model (Whose language is this?):**
-  - Displays cryptic codes: `ITEM_SKU_90218` and `STATUS_204`.
-  - Buttons ask the hungry customer to *"Rollback TXN"* or *"Refresh DB Socket"*.
+  - Displays cryptic backend codes: `ITEM_SKU_90218` and `HTTP_204_NO_CONTENT`.
+  - Buttons ask the hungry customer to *"Rollback TXN"* or *"Refresh Socket"*.
 * **Discussion Prompt:**
   - What are the **top 3 usability disasters** on this screen?
 
   </div>
   <div class="right">
-    <img src="../../img/ux/food_delivery_bad.png" alt="Bad Food Delivery Tracking Screen" />
+    <img src="../../img/ch06/food_delivery_bad.png" alt="Bad Food Delivery Tracking Screen" />
   </div>
 </div>
 
@@ -550,7 +550,7 @@ To summarize this slide, remember this key takeaway: Continuous, timely visual f
 ## NS01 in Practice (1/2): Progress Bars, Steppers & Sync State
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns01_status_feedback_examples.png" alt="Status Feedback Examples" />
+  <img src="../../img/ch06/ns01_status_feedback_examples.png" alt="Status Feedback Examples" />
 </div>
 
 <!--
@@ -567,7 +567,7 @@ To summarize this slide, remember this key takeaway: Visual feedback across butt
 ## NS01 in Practice (2/2): Batch File Import Progress
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_01.jpg" alt="Batch File Import Progress Modal" />
+  <img src="../../img/ch06/ns_ai_01.jpg" alt="Batch File Import Progress Modal" />
 </div>
 
 <!--
@@ -603,7 +603,7 @@ To summarize this slide, remember this key takeaway: Map digital controls direct
 ## NS02 in Practice (1/2): Natural Spatial Mapping of Controls
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns02_mapping_gas_stove.png" alt="Gas Stove Natural Mapping" />
+  <img src="../../img/ch06/ns02_mapping_gas_stove.png" alt="Gas Stove Natural Mapping" />
 </div>
 
 <!--
@@ -633,7 +633,7 @@ To summarize this slide, remember this key takeaway: When controls mirror real-w
 
   </div>
   <div class="right">
-    <img src="../../img/ux/ns_ai_02_nobg.png" alt="Friendly Everyday Language in Mobile Checkout" style="max-height: 430px;" />
+    <img src="../../img/ch06/ns_ai_02_nobg.png" alt="Friendly Everyday Language in Mobile Checkout" style="max-height: 430px;" />
   </div>
 </div>
 
@@ -662,7 +662,7 @@ To summarize this slide, remember this key takeaway: Translate internal system s
 
   </div>
   <div class="right">
-    <img src="../../img/ux/food_delivery_good.png" alt="Good Food Delivery Tracking Screen" />
+    <img src="../../img/ch06/food_delivery_good.png" alt="Good Food Delivery Tracking Screen" />
   </div>
 </div>
 
@@ -681,20 +681,20 @@ To summarize this slide, remember this key takeaway: Great UX makes the backend 
 <div class="split64">
   <div class="left">
 
-> **Scenario:** A shopper reaches the final checkout screen, but realizes they mistyped their apartment number.
+> **Scenario:** A shopper reaches the final checkout screen, but realizes they mistyped their apartment number (`Apt 4B`).
 
-* **1. Emergency Exits & Control (NS03):**
-  - There is no *"Back"* button and no way to edit items or shipping addresses.
-  - Notice the warning: *"Action irreversible—no refunds or cancelation!"*
-* **2. Consistency & Standards (NS04):**
-  - Why is the shopping cart icon represented by a wrench 🛠️?
-  - Why is the primary button an enormous red *"Empty Cart"* trap, while *"Place Order"* is a faint, unclickable ghost button?
+* **1. User Control & Escape Hatches (Can you go back?):**
+  - There is no *"Back"* button, the stepper is locked, and shipping details are read-only.
+  - Notice the red banner: *"Clicking pay finalizes immediately. No refunds, no cancelation, no undo!"*
+* **2. UI Conventions & Visual Hierarchy (Does this feel familiar?):**
+  - Why is the top-right shopping cart button represented by a **wrench icon**?
+  - Why is the primary button a giant red *"Delete & Empty Cart"* trap, while *"Place Order ($299.00)"* is a faint, disabled-looking ghost button?
 * **Discussion Prompt:**
   - What makes this checkout flow a usability nightmare?
 
   </div>
   <div class="right">
-    <img src="../../img/ux/checkout_bad.png" alt="Bad E-Commerce Checkout Screen" />
+    <img src="../../img/ch06/checkout_bad.png" alt="Bad E-Commerce Checkout Screen" />
   </div>
 </div>
 
@@ -736,7 +736,7 @@ To summarize this slide, remember this key takeaway: Clear emergency exits and u
 ## NS03 in Practice (1/2): Instant "Undo" Toast After Drag-and-Drop
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_03.png" alt="Calendar Drag-and-Drop Undo Toast" />
+  <img src="../../img/ch06/ns_ai_03.png" alt="Calendar Drag-and-Drop Undo Toast" />
 </div>
 
 <!--
@@ -751,7 +751,7 @@ To summarize this slide, remember this key takeaway: Immediate Undo toast notifi
 ## NS03 in Practice (2/2): Email Trash "Undo" & Post "Discard" Exits
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns03_emergency_exits_en.png" alt="Gmail Undo and Mobile Post Discard" />
+  <img src="../../img/ch06/ns03_emergency_exits_en.png" alt="Gmail Undo and Mobile Post Discard" />
 </div>
 
 <!--
@@ -789,7 +789,7 @@ To summarize this slide, remember this key takeaway: Adhering to platform conven
 ## NS04 in Practice (1/2): Consistent Form Controls & Button Hierarchy
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_04.jpg" alt="Consistent SaaS Account Settings Modal" />
+  <img src="../../img/ch06/ns_ai_04.jpg" alt="Consistent SaaS Account Settings Modal" />
 </div>
 
 <!--
@@ -804,7 +804,7 @@ To summarize this slide, remember this key takeaway: Consistent button placement
 ## NS04 in Practice (2/2): Platform-Standard Keyboard Conventions
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns04_standards.png" alt="Standardized IDE Command Bar" />
+  <img src="../../img/ch06/ns04_standards.png" alt="Standardized IDE Command Bar" />
 </div>
 
 <!--
@@ -824,15 +824,15 @@ To summarize this slide, remember this key takeaway: Following industry-standard
 
 * **NS03 Redesign (User Control & Freedom):**
   - [x] **Non-Destructive Stepper:** Shoppers can click back to *"Cart"* or *"Shipping"* anytime without losing entered data.
-  - [x] **Direct In-Line Edits:** Clear `[Edit]` and `[Change]` links beside order items and delivery addresses.
+  - [x] **Direct In-Line Edits:** Clear `[Edit Items]` and `[Change]` links beside order items and delivery addresses.
   - [x] **15-Second Undo Guarantee:** Reassuring safety net allows 1-click cancelation right after tapping pay.
 * **NS04 Redesign (Consistency & Standards):**
-  - [x] **Platform Conventions:** Standard shopping bag icon (🛍️) at top-right, standard left-arrow back navigation.
-  - [x] **Expected Button Hierarchy:** Prominent green CTA for *"Place Order"* with a clean neutral *"Cancel"* exit below.
+  - [x] **Platform Conventions:** Standard shopping cart icon at top-right, standard `< Cart` back navigation at top-left.
+  - [x] **Expected Button Hierarchy:** Prominent green CTA for *"Place Order ($299.00)"* with a clean neutral *"Cancel & Return to Cart"* exit below.
 
   </div>
   <div class="right">
-    <img src="../../img/ux/checkout_good.png" alt="Good E-Commerce Checkout Screen" />
+    <img src="../../img/ch06/checkout_good.png" alt="Good E-Commerce Checkout Screen" />
   </div>
 </div>
 
@@ -853,19 +853,19 @@ To summarize this slide, remember this key takeaway: When users have easy emerge
 
 > **Scenario:** A traveler is booking round-trip tickets from Taipei to Osaka for an upcoming autumn vacation.
 
-* **1. Error Prevention Failures (NS05):**
-  - Requires raw string typing for dates (`YYYY-MM-DD`) with no format validation.
-  - Allows selecting past dates and impossible logic (*Return date earlier than Departure!*).
-  - Destructive *"Delete Profile"* triggers instantly with no confirmation.
-* **2. Recall vs. Recognition Failures (NS06):**
-  - Forces users to memorize 3-letter IATA airport codes (`TPE`, `KIX`) from memory.
-  - Zero search history, autocomplete, or popular destination chips.
+* **1. Input Guardrails & Validation (Why let errors happen?):**
+  - Requires manual string typing for dates (`YYYY-MM-DD`) instead of a calendar picker.
+  - Accepts past dates (`2026-11-10`) and impossible logic (*Return date `2026-11-05` earlier than Departure!*).
+  - Red *"Delete Profile"* button triggers instant 1-click deletion with no confirmation.
+* **2. Memory Load vs. Visual Cues (Why force memorization?):**
+  - Forces users to recall 3-letter IATA airport codes (`TPE`, `KIX`) from memory.
+  - Zero city autocomplete, search history, or popular destination chips.
 * **Discussion Prompt:**
   - How could defensive design eliminate these errors before submission?
 
   </div>
   <div class="right">
-    <img src="../../img/ux/flight_booking_bad.png" alt="Bad Flight Booking Screen" />
+    <img src="../../img/ch06/flight_booking_bad.png" alt="Bad Flight Booking Screen" />
   </div>
 </div>
 
@@ -907,7 +907,7 @@ To summarize this slide, remember this key takeaway: Prevent errors by constrain
 ## NS05 in Practice (1/2): Destructive Safeguards & Missing Attachment Check
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns05_confirmation_dialogs.png" alt="Confirmation Dialogs" />
+  <img src="../../img/ch06/ns05_confirmation_dialogs.png" alt="Confirmation Dialogs" />
 </div>
 
 <!--
@@ -922,7 +922,7 @@ To summarize this slide, remember this key takeaway: Proactive context checks an
 ## NS05 in Practice (2/2): Disabled Action Until Explicit Name Match
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_05.jpg" alt="Project Deletion Confirmation Modal" />
+  <img src="../../img/ch06/ns_ai_05.jpg" alt="Project Deletion Confirmation Modal" />
 </div>
 
 <!--
@@ -961,7 +961,7 @@ To summarize this slide, remember this key takeaway: Reduce working memory load 
 ## NS06 in Practice (1/2): Forced Recall vs. Search History Recognition
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns06_search_keyword_retention.png" alt="Recent Search Retention" />
+  <img src="../../img/ch06/ns06_search_keyword_retention.png" alt="Recent Search Retention" />
 </div>
 
 <!--
@@ -987,7 +987,7 @@ To summarize this slide, remember this key takeaway: Surfacing recent history an
 
   </div>
   <div class="right">
-    <img src="../../img/ux/ns06_recognition_nobg.png" alt="Contextual Floating Toolbar on Text Selection" />
+    <img src="../../img/ch06/ns06_recognition_nobg.png" alt="Contextual Floating Toolbar on Text Selection" />
   </div>
 </div>
 
@@ -1018,7 +1018,7 @@ To summarize this slide, remember this key takeaway: Surfacing contextual action
 
   </div>
   <div class="right">
-    <img src="../../img/ux/flight_booking_good.png" alt="Good Flight Booking Screen" />
+    <img src="../../img/ch06/flight_booking_good.png" alt="Good Flight Booking Screen" />
   </div>
 </div>
 
@@ -1039,18 +1039,18 @@ To summarize this slide, remember this key takeaway: Replace raw memory recall w
 
 > **Scenario:** A software engineer opens their enterprise team task board to triage their daily bugs.
 
-* **1. Visual Noise & Low Signal-to-Noise Ratio (NS08):**
-  - Irrelevant technical clutter: database BLOB IDs, internal shard names, and server ping latencies.
-  - Clashing rainbow badges, aggressive promotional banner ads, and heavy borders everywhere.
-* **2. Zero Accelerators for High-Frequency Users (NS07):**
-  - No keyboard shortcuts (`Cmd+K`, `Enter`, `N` for new task disabled).
-  - No multi-select batch actions—every single status update requires 4 mouse clicks.
+* **1. Visual Clutter & Signal-to-Noise Ratio (What matters here?):**
+  - Drowning in backend noise: `INTERNAL_DB_ID`, server `Ping: 28ms`, shard names, and daemon timestamps.
+  - Clashing 5-color rainbow tags, heavy borders, and a yellow promotional ad banner compete for attention.
+* **2. Speed & Shortcuts for Daily Experts (Why so many clicks?):**
+  - Zero keyboard shortcuts (`Cmd+K` and `Enter` are disabled).
+  - No multi-select batch actions—editing a task requires clicking through 4 nested mouse submenus (`Submenu 1..3`, `Actions...`).
 * **Discussion Prompt:**
   - How would you declutter this interface and empower power-user workflows?
 
   </div>
   <div class="right">
-    <img src="../../img/ux/task_management_bad.png" alt="Bad Task Management Workspace" />
+    <img src="../../img/ch06/task_management_bad.png" alt="Bad Task Management Workspace" />
   </div>
 </div>
 
@@ -1092,7 +1092,7 @@ To summarize this slide, remember this key takeaway: Provide accelerators and sh
 ## NS07 in Practice (1/2): Keyboard Shortcuts & Code Snippet Accelerators
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns07_keyboard_shortcuts_snippets.png" alt="Keyboard Shortcuts and Snippets" />
+  <img src="../../img/ch06/ns07_keyboard_shortcuts_snippets.png" alt="Keyboard Shortcuts and Snippets" />
 </div>
 
 <!--
@@ -1107,7 +1107,7 @@ To summarize this slide, remember this key takeaway: Menu hotkey hints and snipp
 ## NS07 in Practice (2/2): Multi-Select Batch Operations for Power Users
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_07.jpg" alt="Batch Action Toolbar on Data Table" />
+  <img src="../../img/ch06/ns_ai_07.jpg" alt="Batch Action Toolbar on Data Table" />
 </div>
 
 <!--
@@ -1145,7 +1145,7 @@ To summarize this slide, remember this key takeaway: Eliminate visual noise and 
 ## NS08 in Practice (1/2): Information Overload vs. Minimalist Clarity
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns08_excessive_info_gates.png" alt="Minimalist vs Cluttered Gates" />
+  <img src="../../img/ch06/ns08_excessive_info_gates.png" alt="Minimalist vs Cluttered Gates" />
 </div>
 
 <!--
@@ -1160,7 +1160,7 @@ To summarize this slide, remember this key takeaway: Clean visual hierarchy and 
 ## NS08 in Practice (2/2): Focused KPI Dashboard with Progressive Disclosure
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_08.jpg" alt="Minimalist Executive KPI Dashboard" />
+  <img src="../../img/ch06/ns_ai_08.jpg" alt="Minimalist Executive KPI Dashboard" />
 </div>
 
 <!--
@@ -1188,7 +1188,7 @@ To summarize this slide, remember this key takeaway: Surface only high-priority 
 
   </div>
   <div class="right">
-    <img src="../../img/ux/task_management_good.png" alt="Good Task Management Workspace" />
+    <img src="../../img/ch06/task_management_good.png" alt="Good Task Management Workspace" />
   </div>
 </div>
 
@@ -1207,21 +1207,21 @@ To summarize this slide, remember this key takeaway: Declutter visual interfaces
 <div class="split64">
   <div class="left">
 
-> **Scenario:** A new employee is creating an account on their company portal and clicks *"Submit"*.
+> **Scenario:** A new employee is creating an account on their company portal and clicks *"Submit & Try Again"*.
 
-* **1. Terrible Error Recovery (NS09):**
-  - Displays cryptic hex code `0x800A03EA` with zero plain-language explanation.
-  - Punishes the user by wiping the entire form clean—forcing them to retype everything!
-  - Rejects the password without explaining *which* rule was broken.
-* **2. Missing Contextual Help (NS10):**
-  - Asks for a "TOTP 2FA Token" with no inline tooltip or `(?)` explainer.
-  - The only help is a link to download a massive 180-page PDF manual!
+* **1. Error Diagnosis & Recovery (What went wrong, and why wipe the form?):**
+  - Screams a cryptic fatal hex code (`ERROR CODE 0x800A03EA`) and `REG_VALIDATION_ERR_SYNTAX` with no plain-language explanation.
+  - Punishes the user by wiping the entire form blank—forcing them to retype their email!
+  - Rejects the password without stating *which* policy rule failed.
+* **2. Contextual Guidance & Help (Where do you get answers?):**
+  - Asks for a *"TOTP 2FA SEED / TOKEN ID"* with no inline tooltip or `(?)` explainer.
+  - The only help offered is a link to *"Download 180-Page Admin PDF (45MB)"*!
 * **Discussion Prompt:**
   - How can we make error messages constructive and guidance contextual?
 
   </div>
   <div class="right">
-    <img src="../../img/ux/signup_help_bad.png" alt="Bad Account Registration Screen" />
+    <img src="../../img/ch06/signup_help_bad.png" alt="Bad Account Registration Screen" />
   </div>
 </div>
 
@@ -1264,7 +1264,7 @@ To summarize this slide, remember this key takeaway: Deliver plain-language erro
 ## NS09 in Practice (1/2): Cryptic 404 Dead-End vs. Helpful 404 Recovery
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns09_error_404_recovery.png" alt="Friendly 404 Recovery" />
+  <img src="../../img/ch06/ns09_error_404_recovery.png" alt="Friendly 404 Recovery" />
 </div>
 
 <!--
@@ -1279,7 +1279,7 @@ To summarize this slide, remember this key takeaway: Transform dead-end error pa
 ## NS09 in Practice (2/2): Plain-Language Upload Diagnosis & Recovery
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_09_nobg.png" alt="Actionable File Upload Error Modal" />
+  <img src="../../img/ch06/ns_ai_09_nobg.png" alt="Actionable File Upload Error Modal" />
 </div>
 
 <!--
@@ -1313,7 +1313,7 @@ To summarize this slide, remember this key takeaway: Provide searchable, task-fo
 ## NS10 in Practice (1/2): Contextual Tooltips & Interactive Spotlight Tours
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns10_onboarding_tutorial_modes.png" alt="Interactive Onboarding Modes" />
+  <img src="../../img/ch06/ns10_onboarding_tutorial_modes.png" alt="Interactive Onboarding Modes" />
 </div>
 
 <!--
@@ -1328,7 +1328,7 @@ To summarize this slide, remember this key takeaway: Combine on-demand microcopy
 ## NS10 in Practice (2/2): Task-Focused Step-by-Step Guided Walkthrough
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_10.jpg" alt="Tax Filing Contextual Step-by-Step Walkthrough" />
+  <img src="../../img/ch06/ns_ai_10.jpg" alt="Tax Filing Contextual Step-by-Step Walkthrough" />
 </div>
 
 <!--
@@ -1355,7 +1355,7 @@ To summarize this slide, remember this key takeaway: Embed concise, task-oriente
 
   </div>
   <div class="right">
-    <img src="../../img/ux/signup_help_good.png" alt="Good Account Registration Screen" />
+    <img src="../../img/ch06/signup_help_good.png" alt="Good Account Registration Screen" />
   </div>
 </div>
 
@@ -1442,7 +1442,7 @@ To summarize this slide, remember this key takeaway: AI for UX transforms genera
 ## AI for UX: The Augmented Human-AI Design Workflow
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ai_for_ux_concept.png" alt="AI for UX Concept" />
+  <img src="../../img/ch06/ai_for_ux_concept.png" alt="AI for UX Concept" />
 </div>
 
 <!--
@@ -1508,7 +1508,7 @@ To summarize this slide, remember this key takeaway: Multi-agent systems automat
 ## Multi-Agent Architecture: Collaborative Prototyping Pipelines
 
 <div class="image-wrapper">
-  <img src="../../img/ux/antigravity_agents_architecture.png" alt="Agents Architecture" />
+  <img src="../../img/ch06/antigravity_agents_architecture.png" alt="Agents Architecture" />
 </div>
 
 <!--
@@ -1588,7 +1588,7 @@ To summarize this slide, remember this key takeaway: Streaming text and collapsi
 ## AI + NS01 in Practice: Streaming Tokens & Collapsible Reasoning
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns01_thinking_process.png" alt="AI Thinking Process" />
+  <img src="../../img/ch06/ns01_thinking_process.png" alt="AI Thinking Process" />
 </div>
 
 <!--
@@ -1625,7 +1625,7 @@ To summarize this slide, remember this key takeaway: Maintain human agency with 
 ## AI + NS03 in Practice: User Steerability & Cancelation Controls
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns03_user_control.jpg" alt="AI User Control and Freedom" />
+  <img src="../../img/ch06/ns03_user_control.jpg" alt="AI User Control and Freedom" />
 </div>
 
 <!--
@@ -1662,7 +1662,7 @@ To summarize this slide, remember this key takeaway: Human-in-the-loop confirmat
 ## AI + NS05 in Practice: Human-in-the-Loop Confirmation & Diff Auditing
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns05_error_prevention.png" alt="AI Error Prevention Guardrails" />
+  <img src="../../img/ch06/ns05_error_prevention.png" alt="AI Error Prevention Guardrails" />
 </div>
 
 <!--
@@ -1698,7 +1698,7 @@ To summarize this slide, remember this key takeaway: Slash commands and multi-mo
 ## AI + NS10 in Practice: Explainable AI & Contextual Citations
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns10_help_doc.png" alt="AI Transparency and Explainability" />
+  <img src="../../img/ch06/ns10_help_doc.png" alt="AI Transparency and Explainability" />
 </div>
 
 <!--

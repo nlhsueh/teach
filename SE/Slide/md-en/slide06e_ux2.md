@@ -177,7 +177,7 @@ To summarize this slide, remember this key takeaway: UI is the visible interacti
 ## Visual Comparison: UI vs. UX in Real-World Products
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ui_vs_ux_comparison_new.png" alt="Visual Comparison of UI versus UX" />
+  <img src="../../img/ch06/ui_vs_ux_comparison_new.png" alt="Visual Comparison of UI versus UX" />
 </div>
 
 <!--
@@ -208,7 +208,7 @@ To summarize this slide, remember this key takeaway: Great software products har
 
 </div>
 <div class="right">
-  <img src="../../img/ux/why_ux_is_hard_nobg.png" alt="Why UX Engineering is Challenging Across Stakeholders" />
+  <img src="../../img/ch06/why_ux_is_hard_nobg.png" alt="Why UX Engineering is Challenging Across Stakeholders" />
 </div>
 </div>
 
@@ -332,7 +332,7 @@ To summarize this slide, remember this key takeaway: Usability is not a vague op
 
 </div>
 <div class="right">
-  <img src="../../img/ux/aesthetic_clock.png" alt="Aesthetic vs Functional Design Balance" />
+  <img src="../../img/ch06/aesthetic_clock.png" alt="Aesthetic vs Functional Design Balance" />
 </div>
 </div>
 
@@ -528,7 +528,7 @@ To summarize this slide, remember this key takeaway: Affordances define possible
 ## Case Study: Norman's Door & Signifier Failure
 
 <div class="image-wrapper">
-  <img src="../../img/ux/normans_door_nobg.png" alt="Norman's Door and Signifier Failure" />
+  <img src="../../img/ch06/normans_door_nobg.png" alt="Norman's Door and Signifier Failure" />
 </div>
 
 <!--
@@ -769,7 +769,7 @@ To summarize this slide, remember this key takeaway: Combining thumb-zone Fitts 
 
 </div>
 <div class="right">
-  <img src="../../img/ux/bad_design_color_contrast_xray.png" alt="Visual Contrast Failure and Information Clutter Case Study" />
+  <img src="../../img/ch06/bad_design_color_contrast_xray.png" alt="Visual Contrast Failure and Information Clutter Case Study" />
 </div>
 </div>
 
@@ -888,7 +888,7 @@ To summarize this slide, remember this key takeaway: Human-Centered Design repla
 
 </div>
 <div class="right">
-  <img src="../../img/ux/ux_core_process_nobg.png" alt="The Iterative Human-Centered UX Engineering Process" />
+  <img src="../../img/ch06/ux_core_process_nobg.png" alt="The Iterative Human-Centered UX Engineering Process" />
 </div>
 </div>
 
@@ -1081,7 +1081,7 @@ To summarize this slide, remember this key takeaway: Card Sorting and Tree Testi
 <div class="card" data-marpit-fragment>
 
 ### 1. Low & Mid-Fidelity Wireframes (`Cost: Minutes/Hours`)
-<img src="../../img/ux/proto_wireframe_concept.jpg" alt="Low and Mid-Fidelity Wireframe Sketching" style="max-height: 210px; margin: 4px auto 8px auto; display: block;" />
+<img src="../../img/ch06/proto_wireframe_concept.jpg" alt="Low and Mid-Fidelity Wireframe Sketching" style="max-height: 210px; margin: 4px auto 8px auto; display: block;" />
 
 - **Purpose**: Divergent exploration, IA layout, and locking down the **4 Mandatory UI States** (`Empty`, `Loading`, `Ideal`, `Error`).
 - **Sunk-Cost Immunity**: Nobody hesitates to critique or discard a 5-minute grayscale sketch!
@@ -1090,7 +1090,7 @@ To summarize this slide, remember this key takeaway: Card Sorting and Tree Testi
 <div class="card" data-marpit-fragment>
 
 ### 2. High-Fidelity Interactive Prototypes (`Cost: Days`)
-<img src="../../img/ux/proto_figma_concept.jpg" alt="High-Fidelity Interactive Figma Prototyping" style="max-height: 210px; margin: 4px auto 8px auto; display: block;" />
+<img src="../../img/ch06/proto_figma_concept.jpg" alt="High-Fidelity Interactive Figma Prototyping" style="max-height: 210px; margin: 4px auto 8px auto; display: block;" />
 
 - **Purpose**: Realistic clickable Figma flows, Design Token contrast verification, summative usability testing, and exact developer handoff.
 - **Risk if Used Too Early**: Premature pixel-polishing locks teams into a flawed workflow!
@@ -1287,7 +1287,7 @@ To summarize this slide, remember this key takeaway: Effective Heuristic Evaluat
 
 </div>
 <div class="right">
-  <img src="../../img/ux/ns02_mapping_gas_stove.png" alt="Heuristic 2 Match Between System and Real World: Stove Burner Spatial Mapping" />
+  <img src="../../img/ch06/ns02_mapping_gas_stove.png" alt="Heuristic 2 Match Between System and Real World: Stove Burner Spatial Mapping" />
 </div>
 </div>
 
@@ -1306,7 +1306,7 @@ To summarize this slide, remember this key takeaway: Heuristics #1–#3 ensure u
 ## Visual Examples: Heuristic #1 Visibility of System Status
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns01_status_feedback_examples.png" alt="Nielsen Heuristic 1 Visibility of System Status Examples" />
+  <img src="../../img/ch06/ns01_status_feedback_examples.png" alt="Nielsen Heuristic 1 Visibility of System Status Examples" />
 </div>
 
 <!--
@@ -1361,8 +1361,8 @@ To summarize this slide, remember this key takeaway: Heuristics #4–#7 reduce c
 <div class="card" data-marpit-fragment>
 
 ### 2. Visual Comparison: #5 Prevention vs. #9 Recovery
-<img src="../../img/ux/ns05_confirmation_dialogs.png" alt="Heuristic 5 Error Prevention Confirmation Dialogs" style="max-height: 165px; margin: 2px auto 6px auto; display: block;" />
-<img src="../../img/ux/ns09_error_404_recovery.png" alt="Heuristic 9 Constructive Error Recovery" style="max-height: 165px; margin: 2px auto 2px auto; display: block;" />
+<img src="../../img/ch06/ns05_confirmation_dialogs.png" alt="Heuristic 5 Error Prevention Confirmation Dialogs" style="max-height: 165px; margin: 2px auto 6px auto; display: block;" />
+<img src="../../img/ch06/ns09_error_404_recovery.png" alt="Heuristic 9 Constructive Error Recovery" style="max-height: 165px; margin: 2px auto 2px auto; display: block;" />
 
 </div>
 </div>
@@ -1667,7 +1667,7 @@ To summarize this slide, remember this key takeaway: Modern software engineers m
 <div class="card" data-marpit-fragment>
 
 ### 1. AI for UX (Copilot Across the HCD Lifecycle)
-<img src="../../img/ux/ai_for_ux_concept_nobg.png" alt="AI for UX Concept" style="max-height: 175px; margin: 2px auto 8px auto; display: block;" />
+<img src="../../img/ch06/ai_for_ux_concept_nobg.png" alt="AI for UX Concept" style="max-height: 175px; margin: 2px auto 8px auto; display: block;" />
 
 - **Research & Synthesis**: Clustering interview transcripts into **Affinity Diagrams** with verbatim quotes.
 - **Prototyping & Pre-Audit**: Generating wireframe variants, domain microcopy, and running automated **WCAG / Heuristic pre-checks** (*never replacing real human testing!*).
@@ -1676,7 +1676,7 @@ To summarize this slide, remember this key takeaway: Modern software engineers m
 <div class="card" data-marpit-fragment>
 
 ### 2. UX for AI (Microsoft 18 HAI Guidelines, CHI '19)
-<img src="../../img/ux/ux_for_ai_concept.png" alt="UX for AI Concept" style="max-height: 175px; margin: 2px auto 8px auto; display: block;" />
+<img src="../../img/ch06/ux_for_ai_concept.png" alt="UX for AI Concept" style="max-height: 175px; margin: 2px auto 8px auto; display: block;" />
 
 - **1. Hybrid Intent UI (Defeat Blank-Box Paralysis)**: Pair chat prompts with **clickable starter chips & GUI sliders** (Heuristic #6 Recognition over Recall).
 - **2. Source Grounding & Streaming (`< 400ms`)**: Show provenance citations and confidence indicators.

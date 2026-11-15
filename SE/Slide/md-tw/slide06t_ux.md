@@ -97,7 +97,7 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 
   </div>
   <div class="right">
-    <img src="../../img/ux/normans_door_nobg.png" alt="諾曼門範例" />
+    <img src="../../img/ch06/normans_door_nobg.png" alt="諾曼門範例" />
   </div>
 </div>
 
@@ -130,7 +130,7 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 
   </div>
   <div class="right">
-    <img src="../../img/ux/bad_ui_ux_frustration_nobg.png" alt="使用者挫折感" />
+    <img src="../../img/ch06/bad_ui_ux_frustration_nobg.png" alt="使用者挫折感" />
   </div>
 </div>
 
@@ -158,7 +158,7 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 
   </div>
   <div class="right">
-    <img src="../../img/ux/bad_design_night_market_arngren.png" alt="Arngren 混亂介面範例" />
+    <img src="../../img/ch06/bad_design_night_market_arngren.png" alt="Arngren 混亂介面範例" />
   </div>
 </div>
 
@@ -186,7 +186,7 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 
   </div>
   <div class="right">
-    <img src="../../img/ux/bad_design_color_contrast_xray.png" alt="X-Ray 網站色彩對比災難" />
+    <img src="../../img/ch06/bad_design_color_contrast_xray.png" alt="X-Ray 網站色彩對比災難" />
   </div>
 </div>
 
@@ -214,7 +214,7 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 
   </div>
   <div class="right">
-    <img src="../../img/ux/bad_design_cluttered_gates.png" alt="Gates N Fences 導覽與行寬失控範例" />
+    <img src="../../img/ch06/bad_design_cluttered_gates.png" alt="Gates N Fences 導覽與行寬失控範例" />
   </div>
 </div>
 
@@ -235,13 +235,13 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 <div class="two-columns">
   <div class="card" data-marpit-fragment style="text-align: center;">
     <h3 style="color: #dc2626; margin-bottom: 8px;">第一版緊急上線：猜猜在哪裡買口罩 (1–6)？</h3>
-    <img src="../../img/ux/mask_order_app_before.png" alt="口罩 App 改版前介面" style="max-height: 310px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto 8px auto; display: block;" />
+    <img src="../../img/ch06/mask_order_app_before.png" alt="口罩 App 改版前介面" style="max-height: 310px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto 8px auto; display: block;" />
     <p style="font-size: 15px; color: #334155; margin: 0;"><strong>1.</strong> 口罩查詢 &nbsp;|&nbsp; <strong>2.</strong> 健康存摺 &nbsp;|&nbsp; <strong>3.</strong> 改革日記<br/><strong>4.</strong> 院所查詢 &nbsp;|&nbsp; <strong>5.</strong> 行動櫃檯 &nbsp;|&nbsp; <strong>6.</strong> 更多...</p>
   </div>
 
   <div class="card" data-marpit-fragment style="text-align: center;">
     <h3 style="color: #16a34a; margin-bottom: 8px;">解答：竟藏在 2 號「健康存摺」！→ 改版後九宮格</h3>
-    <img src="../../img/ux/mask_order_app_after.png" alt="口罩 App 改版後介面" style="max-height: 310px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto 8px auto; display: block;" />
+    <img src="../../img/ch06/mask_order_app_after.png" alt="口罩 App 改版後介面" style="max-height: 310px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); margin: 0 auto 8px auto; display: block;" />
     <p style="font-size: 15px; color: #15803d; margin: 0;"><strong>為何放「健康存摺」？</strong>因為裡面才有登入驗證模組！<br/><strong>改版後：</strong>直接將 <strong>eMask 口罩預購</strong> 獨立拉到第一排正中央。</p>
   </div>
 </div>
@@ -311,7 +311,7 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 
   </div>
   <div class="right">
-    <img src="../../img/ux/why_ux_is_hard_nobg.png" alt="為什麼 UX 很困難" />
+    <img src="../../img/ch06/why_ux_is_hard_nobg.png" alt="為什麼 UX 很困難" />
   </div>
 </div>
 
@@ -358,7 +358,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 ## 視覺化比對：UI 與 UX 的互動架構解剖
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ui_vs_ux_comparison_new.jpg" alt="UI vs UX 對照圖" />
+  <img src="../../img/ch06/ui_vs_ux_comparison_new.jpg" alt="UI vs UX 對照圖" />
 </div>
 
 <!--
@@ -378,7 +378,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 ## 設計思考 5 大階段 (The 5-Stage Design Thinking)
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ux_core_process.jpg" alt="設計思考五大階段流程圖" />
+  <img src="../../img/ch06/ux_core_process.jpg" alt="設計思考五大階段流程圖" />
 </div>
 
 <!--
@@ -514,17 +514,17 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 > **情境描述：** 肚子餓扁的小明在外送 App 點了晚餐並送出訂單，手機跳轉出了右方這個訂單追蹤畫面……
 
 * **1. 狀態與即時回饋（到底發生了什麼事？）：**
-  - 灰色圈圈已經持續轉了 4 分鐘，完全沒有進度更新與回應。
-  - 店家接單了嗎？開始煮了沒？到底還要等多久？
+  - 進度圈已經卡住轉了近 4 分鐘（`3m 42s`），完全沒有進度百分比與回應。
+  - 店家接單了嗎？開始煮了沒？預計送達時間竟然顯示「未定 (`ETA: TBD`)」！
 * **2. 語言與心智模型（這是誰的語言？）：**
-  - 畫面上充斥著生硬代碼：`ITEM_SKU_90218` 與 `STATUS_204`。
-  - 按鈕居然要求飢餓的消費者去點擊「Rollback 交易」或「重整 Socket」。
+  - 畫面上充斥著生硬代碼：`ITEM_SKU_90218` 與 `HTTP_204_NO_CONTENT`。
+  - 按鈕居然要求飢餓的消費者去點擊「`Rollback TXN`」或「`Refresh Socket`」。
 * **課堂分組任務：**
   - 請找出這張畫面的**前 3 大易用性災難**！
 
   </div>
   <div class="right">
-    <img src="../../img/ux/food_delivery_bad.png" alt="外送 App 追蹤畫面挑戰" />
+    <img src="../../img/ch06/food_delivery_bad.png" alt="外送 App 追蹤畫面挑戰" />
   </div>
 </div>
 
@@ -564,7 +564,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 ## NS01 實踐 (1/2)：進度條、步驟指示器與即時同步狀態
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns01_status_feedback_examples.png" alt="狀態反饋具體範例" />
+  <img src="../../img/ch06/ns01_status_feedback_examples.png" alt="狀態反饋具體範例" />
 </div>
 
 <!--
@@ -581,7 +581,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 ## NS01 實踐 (2/2)：批次檔案匯入進度與預估剩餘時間
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_01.jpg" alt="批次檔案匯入進度視窗" />
+  <img src="../../img/ch06/ns_ai_01.jpg" alt="批次檔案匯入進度視窗" />
 </div>
 
 <!--
@@ -617,7 +617,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 ## NS02 實踐 (1/2)：控制項的自然空間幾何映射
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns02_mapping_gas_stove.png" alt="瓦斯爐自然映射" />
+  <img src="../../img/ch06/ns02_mapping_gas_stove.png" alt="瓦斯爐自然映射" />
 </div>
 
 <!--
@@ -647,7 +647,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 
   </div>
   <div class="right">
-    <img src="../../img/ux/ns_ai_02_nobg.png" alt="行動結帳白話提示範例" style="max-height: 430px;" />
+    <img src="../../img/ch06/ns_ai_02_nobg.png" alt="行動結帳白話提示範例" style="max-height: 430px;" />
   </div>
 </div>
 
@@ -676,7 +676,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 
   </div>
   <div class="right">
-    <img src="../../img/ux/food_delivery_good.png" alt="符合 NS01 與 NS02 的外送畫面" />
+    <img src="../../img/ch06/food_delivery_good.png" alt="符合 NS01 與 NS02 的外送畫面" />
   </div>
 </div>
 
@@ -695,20 +695,20 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 <div class="split64">
   <div class="left">
 
-> **情境描述：** 消費者在電商購物流程進入最後付款頁，突然發現自己的收件地址填錯了樓層……
+> **情境描述：** 消費者在電商購物流程進入最後付款頁，突然發現自己的收件地址填錯了門牌號碼（`Apt 4B`）……
 
-* **1. 緊急出口與控制自由（NS03 檢視）：**
-  - 完全找不到「返回購物車」或「返回上一頁」的按鈕，表單也無法點擊修改。
-  - 下方居然印著刺眼的警告：*「付款流程不可逆，點擊後無法退貨、取消或復原！」*
-* **2. 一致性與慣例標準（NS04 檢視）：**
-  - 為什麼右上角的購物車圖示，被畫成了一把奇怪的板手 🛠️？
-  - 為什麼最大、最搶眼的紅色按鈕居然是「清空購物車」，而真正結帳的按鈕卻做成淡淡的幽靈按鈕？
+* **1. 控制權與逃生出口（發現填錯了，回得去嗎？）：**
+  - 完全找不到「返回上一頁」的按鈕，步驟條被鎖死，地址也標示為唯讀無法修改。
+  - 下方更印著刺眼警告：*「付款流程不可逆，點擊後無法退款、取消或復原！」*
+* **2. 介面慣例與視覺階層（符合一般電商直覺嗎？）：**
+  - 為什麼右上角的購物車按鈕，被畫成了一把奇怪的**紅色板手圖示**？
+  - 為什麼最大、最搶眼的紅色主按鈕居然是「`Delete & Empty Cart`（刪除並清空購物車）」，而真正結帳的「`Place Order ($299.00)`」卻做成淡淡的幽靈按鈕？
 * **課堂任務：**
   - 這個設計違反了哪些人機互動原則？會引發什麼嚴重後果？
 
   </div>
   <div class="right">
-    <img src="../../img/ux/checkout_bad.png" alt="不良電商結帳畫面" />
+    <img src="../../img/ch06/checkout_bad.png" alt="不良電商結帳畫面" />
   </div>
 </div>
 
@@ -750,7 +750,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 ## NS03 實踐 (1/2)：行事曆拖曳變更後的即時「復原 (Undo)」
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_03.png" alt="行事曆拖曳復原提示框" />
+  <img src="../../img/ch06/ns_ai_03.png" alt="行事曆拖曳復原提示框" />
 </div>
 
 <!--
@@ -765,7 +765,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 ## NS03 實踐 (2/2)：信件刪除反悔機制與放棄編輯出口
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ux_diagram.png" alt="Gmail 復原與行動端放棄貼文確認" />
+  <img src="../../img/ch06/ux_diagram.png" alt="Gmail 復原與行動端放棄貼文確認" />
 </div>
 
 <!--
@@ -803,7 +803,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS04 實踐 (1/2)：一致的表單控制項與按鈕視覺階層
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_04.jpg" alt="一致的 SaaS 帳號設定視窗" />
+  <img src="../../img/ch06/ns_ai_04.jpg" alt="一致的 SaaS 帳號設定視窗" />
 </div>
 
 <!--
@@ -818,7 +818,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS04 實踐 (2/2)：遵循跨平台標準慣例的快捷指令列
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns04_standards.png" alt="標準慣例實例" />
+  <img src="../../img/ch06/ns04_standards.png" alt="標準慣例實例" />
 </div>
 
 <!--
@@ -838,15 +838,15 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 
 * **NS03 優化（使用者掌控權與緊急出口）：**
   - [x] **非破壞性步驟條：** 隨時可點回「購物車」或「配送資訊」，已填資料絕不遺失。
-  - [x] **行內即時修改：** 商品與收件地址旁皆提供直覺的 `[修改]` 出口。
+  - [x] **行內即時修改：** 商品與收件地址旁皆提供直覺的 `[Edit Items]` 與 `[Change]` 出口。
   - [x] **15 秒冷靜撤回機制：** 點擊下單後提供即時「一鍵撤回」安全氣囊。
 * **NS04 優化（一致性與平台慣例標準）：**
-  - [x] **標準購物車圖示：** 右上角回歸通用購物袋/推車圖示（🛍️），左上角標準返回。
-  - [x] **直覺的主次按鈕層次：** 底部綠色鮮明 CTA 為「確認下單」，下方搭配中性「取消返回」。
+  - [x] **標準購物車圖示：** 右上角回歸通用購物車圖示，左上角提供標準 `< Cart` 返回導覽。
+  - [x] **直覺的主次按鈕層次：** 底部綠色鮮明 CTA 為「確認下單 (`Place Order`)」，下方搭配中性「取消返回購物車」。
 
   </div>
   <div class="right">
-    <img src="../../img/ux/checkout_good.png" alt="符合 NS03 與 NS04 的結帳畫面" />
+    <img src="../../img/ch06/checkout_good.png" alt="符合 NS03 與 NS04 的結帳畫面" />
   </div>
 </div>
 
@@ -867,19 +867,19 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 
 > **情境描述：** 旅客正準備預訂台北往返大阪的機票，打開了右方這個航班搜尋畫面……
 
-* **1. 防錯機制嚴重缺失（NS05 檢視）：**
-  - 要求手打純文字日期字串（`YYYY-MM-DD`），毫無防呆約束。
-  - 允許使用者選擇「昨天的日期」，甚至回程比去程還要早！
-  - 旅客資料提供「一鍵直接永久刪除」，完全沒有二次確認彈窗。
-* **2. 辨識取代記憶的挫折（NS06 檢視）：**
-  - 強迫一般人背出並盲打 3 碼 IATA 機場代號（`TPE`、`KIX`）。
+* **1. 輸入防呆與驗證約束（為什麼允許荒謬輸入？）：**
+  - 要求手打純文字日期字串（`YYYY-MM-DD`），沒有提供日曆選擇器。
+  - 允許輸入「過去的日期（`2026-11-10`）」，甚至回程（`2026-11-05`）比出發還要早！
+  - 旅客資料旁的紅色「`Delete Profile`」一按直接永久刪除，毫無二次確認。
+* **2. 記憶負擔與視覺提示（為什麼強迫大腦死背代碼？）：**
+  - 強迫一般人憑記憶背出並盲打 3 碼 IATA 機場代號（`TPE`、`KIX`）。
   - 完全沒有城市自動補全、熱門景點標籤或歷史搜尋紀錄。
 * **課堂任務：**
   - 思考工程師如何透過「主動防禦設計」杜絕這些操作低級錯誤？
 
   </div>
   <div class="right">
-    <img src="../../img/ux/flight_booking_bad.png" alt="不良機票預訂畫面" />
+    <img src="../../img/ch06/flight_booking_bad.png" alt="不良機票預訂畫面" />
   </div>
 </div>
 
@@ -921,7 +921,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS05 實踐 (1/2)：破壞性操作防呆與「忘記附件」主動攔截
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns05_confirmation_dialogs.png" alt="GitHub 刪除確認與漏寄附件提醒" />
+  <img src="../../img/ch06/ns05_confirmation_dialogs.png" alt="GitHub 刪除確認與漏寄附件提醒" />
 </div>
 
 <!--
@@ -936,7 +936,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS05 實踐 (2/2)：未輸入完整專案名稱前禁用刪除按鈕
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_05.jpg" alt="專案刪除二次確認防呆視窗" />
+  <img src="../../img/ch06/ns_ai_05.jpg" alt="專案刪除二次確認防呆視窗" />
 </div>
 
 <!--
@@ -975,7 +975,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS06 實踐 (1/2)：強迫記憶 (Recall) vs. 搜尋歷程辨識
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns06_search_keyword_retention.png" alt="搜尋歷程保留範例" />
+  <img src="../../img/ch06/ns06_search_keyword_retention.png" alt="搜尋歷程保留範例" />
 </div>
 
 <!--
@@ -1001,7 +1001,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 
   </div>
   <div class="right">
-    <img src="../../img/ux/ns06_recognition_nobg.png" alt="文字選取情境式浮動工具列" />
+    <img src="../../img/ch06/ns06_recognition_nobg.png" alt="文字選取情境式浮動工具列" />
   </div>
 </div>
 
@@ -1030,7 +1030,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 
   </div>
   <div class="right">
-    <img src="../../img/ux/flight_booking_good.png" alt="符合 NS05 與 NS06 的機票預訂畫面" />
+    <img src="../../img/ch06/flight_booking_good.png" alt="符合 NS05 與 NS06 的機票預訂畫面" />
   </div>
 </div>
 
@@ -1051,18 +1051,18 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 
 > **情境描述：** 軟體工程師每天早上打開團隊工作看板，準備處理今天被指派的缺陷與任務……
 
-* **1. 視覺雜訊嚴重，訊噪比極低（NS08 檢視）：**
-  - 充斥無關的技術代碼：資料庫 Blob ID、伺服器 Shard 代號、網路延遲 Ping 值。
-  - 七彩霓虹標籤、粗黑外框與巨大的升級廣告橫幅，干擾注意力。
-* **2. 毫無專業加速器支援（NS07 檢視）：**
-  - 不支援任何鍵盤快捷鍵（`Cmd+K`、`Enter`、`N` 鍵新增均無反應）。
-  - 不支援多選批次操作，修改 10 個任務狀態必須逐一按 4 次滑鼠！
+* **1. 視覺雜訊與訊噪比（真正重要的資訊在哪裡？）：**
+  - 充斥無關的底層代碼：`INTERNAL_DB_ID`、伺服器 `Ping: 28ms`、Shard 節點與系統時間戳記。
+  - 五顏六色的標籤、粗黑外框與頂部刺眼的黃色升級廣告橫幅，嚴重干擾注意力。
+* **2. 高頻專家操作效率（為什麼改個狀態要點 4 次滑鼠？）：**
+  - 不支援任何鍵盤快捷鍵（`Cmd+K` 與 `Enter` 均被停用）。
+  - 不支援多選批次操作，修改任務狀態必須逐一點擊 4 層子選單（`Submenu 1..3`、`Actions...`）！
 * **課堂任務：**
   - 如何進行「視覺減法」並讓每天高頻使用的專業工程師發揮極致效率？
 
   </div>
   <div class="right">
-    <img src="../../img/ux/task_management_bad.png" alt="不良專案看板畫面" />
+    <img src="../../img/ch06/task_management_bad.png" alt="不良專案看板畫面" />
   </div>
 </div>
 
@@ -1104,7 +1104,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS07 實踐 (1/2)：選單快捷鍵提示與智慧代碼片段展開
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns07_keyboard_shortcuts_snippets.png" alt="快捷鍵與代碼片段加速器" />
+  <img src="../../img/ch06/ns07_keyboard_shortcuts_snippets.png" alt="快捷鍵與代碼片段加速器" />
 </div>
 
 <!--
@@ -1119,7 +1119,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS07 實踐 (2/2)：支援專家高效處理的多選批次操作列
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_07.jpg" alt="資料表多選批次操作列" />
+  <img src="../../img/ch06/ns_ai_07.jpg" alt="資料表多選批次操作列" />
 </div>
 
 <!--
@@ -1157,7 +1157,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS08 實踐 (1/2)：資訊過載噪音 vs. 極簡視覺階層
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns08_excessive_info_gates.png" alt="資訊過載對比簡約清晰" />
+  <img src="../../img/ch06/ns08_excessive_info_gates.png" alt="資訊過載對比簡約清晰" />
 </div>
 
 <!--
@@ -1172,7 +1172,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS08 實踐 (2/2)：聚焦核心指標與漸進式揭露的極簡儀表板
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_08.jpg" alt="極簡 KPI 績效儀表板" />
+  <img src="../../img/ch06/ns_ai_08.jpg" alt="極簡 KPI 績效儀表板" />
 </div>
 
 <!--
@@ -1200,7 +1200,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 
   </div>
   <div class="right">
-    <img src="../../img/ux/task_management_good.png" alt="符合 NS07 與 NS08 的專案看板畫面" />
+    <img src="../../img/ch06/task_management_good.png" alt="符合 NS07 與 NS08 的專案看板畫面" />
   </div>
 </div>
 
@@ -1219,21 +1219,21 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 <div class="split64">
   <div class="left">
 
-> **情境描述：** 新進員工正在註冊公司企業門戶帳號，輸入資料後滿心期待地點擊「送出」……
+> **情境描述：** 新進員工正在註冊公司企業門戶帳號，輸入資料後滿心期待地點擊「送出 (`Submit & Try Again`)」……
 
-* **1. 災難級的錯誤修復體驗（NS09 檢視）：**
-  - 跳出令人恐慌的十六進位錯誤碼 `0x800A03EA`，毫無白話成因。
-  - 懲罰性地把整頁表單全部清空抹煞，強迫使用者從頭重打！
-  - 密碼被拒絕，卻完全不說究竟是太短、還是缺少特殊符號。
-* **2. 欠缺情境式求助支援（NS10 檢視）：**
-  - 出現看不懂的專業名詞（`TOTP 2FA`），周遭沒有任何 Tooltip 說明。
-  - 唯一的幫助按鈕，居然是叫使用者下載「180 頁系統管理員 PDF 手冊」！
+* **1. 錯誤診斷與復原體驗（哪裡填錯？為何清空整張表單？）：**
+  - 跳出令人恐慌的十六進位錯誤碼 `ERROR CODE 0x800A03EA` 與 `REG_VALIDATION_ERR_SYNTAX`，毫無白話成因。
+  - 懲罰性地把整頁表單全部清空抹煞，強迫使用者從頭重打 Email！
+  - 密碼被拒絕（`Invalid Format`），卻完全不說究竟違反了哪一條密碼規則。
+* **2. 情境式引導與求助支援（遇到專有名詞該問誰？）：**
+  - 出現看不懂的專業欄位（`TOTP 2FA SEED / TOKEN ID`），周遭沒有任何 Tooltip 或 `(?)` 圖示說明。
+  - 唯一的幫助連結，居然是叫使用者「下載 180 頁系統管理員 PDF 手冊 (`45MB`)」！
 * **課堂任務：**
   - 如何將這場註冊災難，轉變為有同理心、有指引的流暢體驗？
 
   </div>
   <div class="right">
-    <img src="../../img/ux/signup_help_bad.png" alt="不良註冊與求助畫面" />
+    <img src="../../img/ch06/signup_help_bad.png" alt="不良註冊與求助畫面" />
   </div>
 </div>
 
@@ -1276,7 +1276,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS09 實踐 (1/2)：死胡同報錯 vs. 具建設性引導的 404 頁面
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns09_error_404_recovery.png" alt="建設性錯誤導航範例" />
+  <img src="../../img/ch06/ns09_error_404_recovery.png" alt="建設性錯誤導航範例" />
 </div>
 
 <!--
@@ -1291,7 +1291,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS09 實踐 (2/2)：白話說明上傳失敗原因並提供一鍵重選按鈕
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_09_nobg.png" alt="檔案上傳失敗具體診斷與復原視窗" />
+  <img src="../../img/ch06/ns_ai_09_nobg.png" alt="檔案上傳失敗具體診斷與復原視窗" />
 </div>
 
 <!--
@@ -1325,7 +1325,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS10 實踐 (1/2)：情境式微提示 (`?`) 與主動式聚光燈導覽
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns10_onboarding_tutorial_modes.png" alt="互動導覽模式" />
+  <img src="../../img/ch06/ns10_onboarding_tutorial_modes.png" alt="互動導覽模式" />
 </div>
 
 <!--
@@ -1340,7 +1340,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS10 實踐 (2/2)：聚焦當下任務的步驟化引導與可跳過機制
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns_ai_10.jpg" alt="報稅系統情境式步驟導覽" />
+  <img src="../../img/ch06/ns_ai_10.jpg" alt="報稅系統情境式步驟導覽" />
 </div>
 
 <!--
@@ -1367,7 +1367,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 
   </div>
   <div class="right">
-    <img src="../../img/ux/signup_help_good.png" alt="符合 NS09 與 NS10 的註冊畫面" />
+    <img src="../../img/ch06/signup_help_good.png" alt="符合 NS09 與 NS10 的註冊畫面" />
   </div>
 </div>
 
@@ -1454,7 +1454,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## AI for UX：人機協同的增強設計工作流程
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ai_for_ux_concept.png" alt="AI for UX 概念示意圖" />
+  <img src="../../img/ch06/ai_for_ux_concept.png" alt="AI for UX 概念示意圖" />
 </div>
 
 <!--
@@ -1520,7 +1520,7 @@ Format：要求輸出為四欄表格並帶有嚴重度分數。
 ## 多代理人架構：協同原型打造流水線
 
 <div class="image-wrapper">
-  <img src="../../img/ux/antigravity_agents_architecture.png" alt="多代理人協同架構圖" />
+  <img src="../../img/ch06/antigravity_agents_architecture.png" alt="多代理人協同架構圖" />
 </div>
 
 <!--
@@ -1603,7 +1603,7 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 ## AI + NS01 實踐：文字串流與思考過程可折疊面板
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns01_thinking_process.png" alt="AI 思考過程面板" />
+  <img src="../../img/ch06/ns01_thinking_process.png" alt="AI 思考過程面板" />
 </div>
 
 <!--
@@ -1640,7 +1640,7 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 ## AI + NS03 實踐：使用者隨時中斷與提示詞重新編輯
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns03_user_control.jpg" alt="AI 控制與自由度範例" />
+  <img src="../../img/ch06/ns03_user_control.jpg" alt="AI 控制與自由度範例" />
 </div>
 
 <!--
@@ -1677,7 +1677,7 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 ## AI + NS05 實踐：執行前確認彈窗與代碼 Diff 稽核
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns05_error_prevention.png" alt="AI 執行確認與 Diff 範例" />
+  <img src="../../img/ch06/ns05_error_prevention.png" alt="AI 執行確認與 Diff 範例" />
 </div>
 
 <!--
@@ -1713,7 +1713,7 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 ## AI + NS10 實踐：可解釋性引註與知識庫定位
 
 <div class="image-wrapper">
-  <img src="../../img/ux/ns10_help_doc.png" alt="AI 可解釋性與引註範例" />
+  <img src="../../img/ch06/ns10_help_doc.png" alt="AI 可解釋性與引註範例" />
 </div>
 
 <!--
