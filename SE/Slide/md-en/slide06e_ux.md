@@ -2411,11 +2411,11 @@ Every time you design a list view in a software project, ask yourself: *"Is my u
 <div class="card" data-marpit-fragment>
 
 ### 2. Pre-Release Engineering Checklist
-- [ ] **Safe to explore?** Is there a non-destructive Undo or rollback mechanism?
-- [ ] **Escape hatch present?** Does every modal dialog have an obvious "✕" and ESC key dismiss?
-- [ ] **Location clear?** Do breadcrumbs, steppers, or scrollbars answer *"Where am I?"*
-- [ ] **Responsive parity?** Does desktop split view degrade gracefully to mobile drilldown with a Back button?
-- [ ] **Discovery balanced?** Are search, editorial features, and category browsing working together?
+- ✅ **Safe to explore?** Is there a non-destructive Undo or rollback mechanism?
+- ✅ **Escape hatch present?** Does every modal dialog have an obvious "✕" and ESC key dismiss?
+- ✅ **Location clear?** Do breadcrumbs, steppers, or scrollbars answer *"Where am I?"*
+- ✅ **Responsive parity?** Does desktop split view degrade gracefully to mobile drilldown with a Back button?
+- ✅ **Discovery balanced?** Are search, editorial features, and category browsing working together?
 
 </div>
 </div>
@@ -2433,6 +2433,47 @@ Before we leave Section 6.3, let's synthesize Tidwell's entire pattern language 
 - pattern language: 模式語言（源自建築師 Christopher Alexander，指由一套相互關聯的設計模式所組成的完整系統架構方法）
 - engineering mandate: 工程設計準則（研發團隊在程式碼與介面審查時必須共同遵守的規範要求）
 - responsive parity: 跨裝置響應式對等性（確保桌面端與行動端雖採用不同空間佈局，但提供對等完整的功能與體驗）
+-->
+---
+## Pair Discussion (Part 2): Tidwell UI Pattern Hunting in Real Systems
+
+> **Mission (Continuing from 6.2):** Using the **same system** your pair audited in 6.2, **add annotated screenshots to your slides** showing which **Tidwell UI Patterns** it uses—and which patterns can fix the UX flaws you found earlier!
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. Target Systems & Pattern Clues
+1. **THSR Booking (高鐵訂票系統 / T-EX):** *Deferred Choices* (search trains before login), *Wizard / Sequence Map* (booking steps), *Escape Hatch* (ticket split/cancel).
+2. **University Course System (大學選課系統):** *Two-Panel Split View* (course list + live schedule grid), *Changes in Midstream*, *Pagination vs. Filtering*.
+3. **Shopee / E-Commerce (蝦皮購物平台):** *Thumbnail Grid* vs. *Carousel*, *Hub & Spoke*, *Breadcrumbs*, *Fat Menus*, *Progress Indicators*.
+4. **Daily Super-Apps / Custom (LINE / Uber Eats / 其他自定義):** *Safe Exploration* (`Unsend`), *Progressive Disclosure*, *One-Window Drilldown* (mobile).
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. Slide Deliverable (Annotated Screenshots)
+- **🔍 Spot the Patterns (2–3 Screenshots):**
+  - Circle UI components and label the exact **Tidwell Pattern** across the **4 Dimensions** (*1. User Behaviors, 2. Content Layout, 3. Wayfinding, 4. Data Display*).
+- **🛠️ Prescribe a Pattern Fix (1–2 Cases):**
+  - Take the worst `❌ NS01–NS10` violation you found in **6.2**, and prescribe a **Tidwell Pattern** to refactor it (e.g., *"Apply **Progressive Disclosure** + **Sequence Map** to fix the overloaded form"*).
+
+</div>
+</div>
+
+<!--
+Now let's connect Section 6.2 and Section 6.3 with **Pair Discussion (Part 2): Tidwell UI Pattern Hunting**!
+
+Remember our medical analogy earlier: if **Nielsen's 10 Heuristics (`NS01–NS10`)** in 6.2 were the **diagnostic stethoscope** that helped you spot symptoms and usability bugs in your chosen system, **Jenifer Tidwell's UI Patterns** in 6.3 are the **architectural blueprints and surgical prescriptions** used to build and fix them!
+
+Continuing with the **exact same partner and target system** from 6.2 (THSR Booking, University Course Registration, Shopee, LINE/Uber Eats, or your custom app), please add 2 to 3 slides to your deck:
+1. **Spot the Patterns (2–3 Annotated Screenshots)**: Identify which specific Tidwell patterns are already implemented in the system across the 4 dimensions—for example, does the THSR app use *Deferred Choices* (letting you check train timetables before forcing login) and a *Sequence Map*? Does Shopee combine a top *Carousel* with a 2D *Thumbnail Grid*? Does your desktop Course Registration system use a *Two-Panel Split View* or force painful pogo-sticking?
+2. **Prescribe a Pattern Refactoring (1–2 Cases)**: Look back at the worst `❌` heuristic violation you found in 6.2, and name the exact **Tidwell UI Pattern** you would use to fix it!
+
+💡 難字與專業術語解說：
+- pattern hunting: 設計模式獵尋（在真實上線產品中辨識並拆解其背後採用的標準架構模式）
+- deferred choices: 延遲選擇／先體驗後註冊（允許使用者先查詢車次或瀏覽商品，直到最後結帳才要求登入的模式）
+- pogo-sticking: 跳跳虎式來回跳轉（因缺乏雙欄分割檢視，被迫在列表頁與明細頁之間不斷按上一頁來回跳轉的痛苦行為）
+- pattern-driven refactoring: 模式驅動重構（運用成熟的 UI 設計模式作為具體處方，修復啟發式評估發現的介面缺陷）
 -->
 
 ---
