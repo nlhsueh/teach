@@ -34,18 +34,19 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 
 <div class="outline-columns">
   <div>
-    <h3>第一部分：UX 基礎與易用性啟發法則</h3>
+    <h3>第一部分：UX 基礎、啟發法則與設計模式</h3>
     <ul>
       <li><b>6.1 使用者體驗 (UX) 基礎：</b> 什麼是 UX、諾曼門（Norman Doors）、三大不良設計原型、台灣健保快易通 App 改版案例、UI 與 UX 的本質差異、設計思考五大階段。</li>
       <li><b>6.2 尼爾森 10 大易用性啟發法則：</b> 系統狀態可見度、符合真實世界、使用者控制與自由、一致性與標準、防錯設計、辨識取代回憶、彈性與效率捷徑、簡約美學、協助使用者修復錯誤、說明文件。</li>
+      <li><b>6.3 Tidwell 介面設計模式：</b> 四大架構維度、核心使用者行為模式、資訊架構與內容佈局、尋路與導航逃生機制、資料呈現與電商/平台解構實例。</li>
     </ul>
   </div>
   <div>
-    <h3>第二部分：AI 賦能設計與智慧介面</h3>
+    <h3>第二部分：AI 賦能設計、智慧介面與評估</h3>
     <ul>
-      <li><b>6.3 AI 賦能 UX 設計 (AI for UX)：</b> AI 作為設計放大器、RTCF 結構化提示詞工程框架、自動化啟發式稽核、多代理人協同原型打造。</li>
-      <li><b>6.4 為 AI 打造卓越體驗 (UX for AI)：</b> 為機率性非確定性 AI 設計介面、延遲與思考軌跡管理、人類自主掌控權、幻覺防護圍欄、可解釋性 AI (XAI)。</li>
-      <li><b>6.5 易用性評估與工程整合：</b> 尼爾森 0-4 級嚴重度評級、專家啟發式評估 vs. 真人使用者測試、章節回顧測驗與工程總結。</li>
+      <li><b>6.4 AI 賦能 UX 設計 (AI for UX)：</b> AI 作為設計放大器、RTCF 結構化提示詞工程框架、自動化啟發式稽核、多代理人協同原型打造。</li>
+      <li><b>6.5 為 AI 打造卓越體驗 (UX for AI)：</b> 為機率性非確定性 AI 設計介面、延遲與思考軌跡管理、人類自主掌控權、幻覺防護圍欄、可解釋性 AI (XAI)。</li>
+      <li><b>6.6 易用性評估與工程整合：</b> 尼爾森 0-4 級嚴重度評級、專家啟發式評估 vs. 真人使用者測試、章節回顧測驗與工程總結。</li>
     </ul>
   </div>
 </div>
@@ -53,11 +54,11 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 <!--
 這是我們第六章的學習藍圖。
 
-在左側的第一部分，我們從日常認知心理學切入：探討為什麼好設計往往「看不見」，為什麼壞設計會引發使用者暴怒，並系統性拆解 Jakob Nielsen 的十大易用性啟發原則。
+在左側的第一部分，我們從日常認知心理學切入：探討為什麼好設計往往「看不見」，為什麼壞設計會引發使用者暴怒；接著系統性拆解 Jakob Nielsen 的十大易用性啟發原則；最後深入 Jenifer Tidwell 的經典 Web UI/UX 設計模式庫，掌握涵蓋核心行為、資訊架構、尋路導航與資料呈現的實戰藍圖。
 
-在右側的第二部分，我們邁入 AI 時代的前沿設計。我們分別探討兩大面向：第一是 AI for UX——運用大型語言模型與代理人加速設計與稽核；第二是 UX for AI——如何為充滿隨機性與潛在幻覺的 AI 系統，設計出透明、可控且令人信賴的互動介面。
+在右側的第二部分，我們邁入 AI 時代的前沿設計與工程評估：分別探討 AI for UX（以 AI 加速原型與稽核）、UX for AI（為機率性系統設計透明可控的介面），以及正式的專家啟發式評估與真人測試方法。
 
-總結這張投影片，請記住這個核心觀念：本章將引導大家從底層的人類認知人因工程，一路躍升至現代 AI 增強的人機互動設計前沿。
+總結這張投影片，請記住這個核心觀念：本章將引導大家從底層認知心理學與經典介面模式，一路躍升至現代 AI 增強的人機互動設計與工程評估體系。
 -->
 ---
 <!-- _class: lead -->
@@ -1411,9 +1412,581 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '6.3 AI for UX (AI4UX)' -->
+<!-- header: '6.3 Tidwell 介面設計模式' -->
 
-# **6.3 AI 賦能 UX 設計：AI for UX (AI4UX)**
+# **6.3 Jenifer Tidwell 介面設計模式 (Interaction & UI Patterns)**
+
+> "Patterns are not off-the-shelf components that you plug into a layout. They are living architectural blueprints rooted in human perception, habit, and behavior."  
+> *(設計模式並非可隨意拼裝的現成零件，而是植根於人類感知、習慣與心理機制的活體架構藍圖。)*  
+> — *Jenifer Tidwell (《Designing Interfaces》作者)*
+
+<!--
+歡迎進入 6.3 節：Jenifer Tidwell 介面設計模式（Interaction & UI Design Patterns）。
+
+在軟體工程中，我們有 GoF 23 種物件導向設計模式，用來解決類別與物件結構的復用問題。而在人機互動與前端介面領域，同樣存在一套經典傳世的架構語彙——那就是 Jenifer Tidwell 所歸納的介面設計模式。
+
+很多工程師在刻劃網頁或 App 時，往往隨興發揮，導致使用者在每一頁都得重新適應按鈕與導航邏輯。Tidwell 的模式庫為我們提煉了經過全球數十億使用者反覆驗證的標準結構，涵蓋底層心理認知、資訊架構、尋路導航到資料清單呈現。
+
+在這一節中，我們將透過解剖真實世界中的高鐵、蝦皮、Airbnb、PChome 與 Slack 等產品，深入掌握這套工業級 UI/UX 設計模式體系。
+
+總結這張投影片，請記住這個核心觀念：Tidwell 介面設計模式是將人類認知心理學轉化為可復用前端架構的經典設計語彙。
+-->
+---
+## 什麼是 Web UI/UX 設計模式？ (What is a UI Pattern?)
+
+> **設計模式的本質：** 針對在特定情境下反覆出現的人機互動問題，所提煉出經過驗證的通用架構解決方案。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. 為什麼工程團隊需要 UI 模式？
+- **建立跨職能通用語彙 (Shared Vocabulary)**：
+  - 產品經理、UI 設計師與前後端工程師能精準溝通（如：「這裡採 Two-Panel Split View 還是 One-Window Drilldown？」）。
+- **杜絕重複造輪子 (Proven Solutions)**：
+  - 成熟的互動問題（如逃生出口、漸進式揭露、分頁）已有最優解，不必盲目冒險。
+- **大幅降低認知負荷 (Cognitive Load)**：
+  - 吻合使用者的心智模型與習慣，讓軟體操作變得自然「隱形」。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. Jenifer Tidwell 的模式體系與精選範疇
+- **經典著作：《Designing Interfaces》**：
+  - 由 Jenifer Tidwell 所著（O'Reilly 出版），被譽為人機互動與介面設計模式的產業權威經典。
+- **涵蓋逾百種龐大模式庫**：
+  - 完整書籍涵蓋 100 多種模式，橫跨表單、操作按鈕、手勢、畫布、導航與響應式資料排版。
+  - 種類極為龐雜，實務開發不需死記硬背所有細節。
+- **本課程之精選聚焦**：
+  - 我們特別去蕪存菁，嚴選軟體工程師最關鍵的代表性模式，歸納為 **4 大核心架構維度** 進行深入剖析。
+
+</div>
+</div>
+
+<!--
+什麼是 Web UI/UX 設計模式？為什麼特別介紹 Jenifer Tidwell？
+
+如同後端架構有單例模式、觀察者模式一樣，前端介面也有自己的設計模式。
+
+請看左欄：為什麼我們不能憑空隨性設計介面？因為使用者在你的網站上花的時間，遠遠少於他們在其他所有網站花費的時間總和（Jakob 定律）。如果每個軟體都發明一套獨特的操作按鈕，使用者會崩潰。成熟的模式能建立跨團隊的共通語言，讓前端工程師光聽名字就知道元件階層怎麼寫。
+
+請看右欄：Jenifer Tidwell 的經典著作《Designing Interfaces》（O'Reilly 出版）是介面模式領域的集大成之作，書中歸納了上百種豐富的設計模式。因為全書內容極為龐大，本課程精選了在軟體工程與全端開發中最關鍵的代表性模式，濃縮在「核心行為、內容佈局、路徑導航、資料呈現」四大核心維度中進行拆解。
+
+總結這張投影片，請記住這個核心觀念：Tidwell 的《Designing Interfaces》建立了龐大的模式語彙庫，本課程精選其中四大維度的核心模式進行實戰拆解。
+-->
+---
+## Tidwell 介面設計模式的四大架構維度 (The 4 Dimensions)
+
+> **全景架構：** 從底層的人類行為動機，層層向上構築至資訊架構、尋路導航與海量資料呈現。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 維度 1 & 2：行為認知與資訊架構
+- **1. 核心使用者行為模式 (Core Behaviors)**：
+  - 順應人類大腦的試錯探索、即時滿足、延遲抉擇、習慣化與空間記憶機制。
+- **2. 資訊架構與內容佈局 (Content & Layout)**：
+  - 內容發現三要素（搜尋 / 焦點精選 / 分類瀏覽）、儀表板、漸進式揭露與精靈步驟。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 維度 3 & 4：尋路導航與資料呈現
+- **3. 尋路機制與導航設計 (Wayfinding & Navigation)**：
+  - 解答「我在哪裡、如何前往、如何離開」、模態對話框與逃生出口黃金法則、三層定位體系。
+- **4. 資料呈現與集合展示 (Data Display & Lists)**：
+  - 桌面端雙欄分割 vs. 行動端深入鑽取、縮圖網格、輪播卡片與真實電商平台解構。
+
+</div>
+</div>
+
+<!--
+Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
+
+第一維度是「核心使用者行為」：深入人類認知心理學，研究使用者在面對螢幕時如何探索、猶豫、記憶與做決定；
+第二維度是「資訊架構與內容佈局」：探討如何將海量資訊拆解成合理的結構、框架與漸進式揭露步驟；
+第三維度是「尋路與導航」：宛如數位世界的交通路網，確保使用者隨時清楚自己身在何處，並且永遠擁有安全的逃生出口；
+第四維度是「資料呈現」：聚焦於清單、表格、網格與輪播等高頻資料集合的最佳展示策略。
+
+總結這張投影片，請記住這個核心觀念：Tidwell 設計模式由心理認知、資訊組織、空間導航到資料呈現，構成了完整的人機互動工程體系。
+-->
+---
+## Section 1：核心使用者行為與認知心理模式 (Core Behaviors)
+
+> **核心設計哲學：** 介面必須主動包容人類的認知侷限與行為慣性，而非強迫使用者適應生硬的機器邏輯。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. 試錯探索與即時反饋機制
+- **安全探索 (Safe Exploration, TW1.1)**：
+  - 消除使用者的點擊恐懼！永遠提供零風險的嘗試機會與明確的復原途徑（**Undo 復原**）。
+- **即時滿足 (Instant Gratification, TW1.2)**：
+  - 直通主要目標（如電商「再次購買」按鈕），跳過繁複漏斗流程。
+- **中途變更 (Changes in Midstream, TW1.4)**：
+  - 允許使用者在流程中途直接調整參數（如高鐵查詢即時切換更早/更晚車次），無須返回重填。
+- **延遲抉擇 (Deferred Choice, TW1.5)**：
+  - 降低首次體驗門檻，非核心資料允許「**稍後再說 (Skip for now)**」。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. 認知負荷與記憶輔助機制
+- **增量式建構 (Incremental Construction, TW1.6)**：
+  - 一邊撰寫、一邊提供即時動態預覽（如 Overleaf/Markdown Live Preview），減輕工作記憶負荷。
+- **習慣化 (Habituation, TW1.7)**：
+  - 遵循標準介面慣例（如左側標準導覽列），培養使用者的無意識肌肉記憶。
+- **空間記憶 (Spatial Memory, TW1.9)**：
+  - 核心功能位置恆定（如右上角設定齒輪），嚴禁動態隨機漂移！
+- **前瞻記憶 (Prospective Memory, TW1.10)**：
+  - 透過未讀徽章、未完成標記等視覺提示，輔助使用者記住未來待辦任務。
+
+</div>
+</div>
+
+<!--
+我們進入 Section 1：核心使用者行為與認知心理模式。
+
+在軟體工程中，系統崩潰最常見的原因不是硬體故障，而是使用者的誤操作。如果我們將使用者視為「會犯錯、沒耐心、注意力破碎」的真實人類，我們就能透過這 12 種行為模式進行防禦性設計：
+
+請看左欄：Safe Exploration 是現代 App 最重要的模式之一——給予使用者一個明確的 Undo 按鈕，能讓他們安心大膽探索；Instant Gratification 則讓老顧客一鍵再買，省去五步驟結帳流程；而高鐵查詢的中途變更，更是免除了使用者重新打字的怒火。
+
+請看右欄：增量建構讓工程師在寫代碼或 LaTeX 時隨時看見成果；空間記憶則嚴格要求設定齒輪必須老老實實待在右上角，不能今天放左邊、明天放底欄！
+
+總結這張投影片，請記住這個核心觀念：順應人類的認知慣性與安全探索心理，是打造零摩擦、無痛介面的第一基石。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell003.png" alt="Section 1: General Patterns Overview" />
+</div>
+
+<!--
+請看 Section 1 的 12 個通用行為模式總覽卡片：
+從 Safe Exploration、Instant Gratification、Satisficing、Changes in Midstream，一路涵蓋到 Habituation、Spatial Memory 與 Keyboard Only。
+
+每一個模式背後，都對應著人機互動與認知心理學的深刻實證定律。
+
+總結這張投影片，請記住這個核心觀念：這 12 種行為模式構成了軟體工程師理解使用者操作動機的完整心智地圖。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell004.png" alt="Safe Exploration & Instant Gratification" />
+</div>
+
+<!--
+請看這兩組生動的實戰案例：
+
+左側是 Safe Exploration：當使用者封存郵件或刪除項目時，畫面上彈出一個帶有「Undo」操作的吐司通知（Toast Notification）。這正是尼爾森原則中的使用者控制與自由（NS03）與防錯（NS05）的極致體現！
+
+右側是 Instant Gratification：在電商 App 中，針對顧客買過的日常消耗品，直接提供「Buy Again（再次購買）」捷徑，省去搜尋、選規格、加購物車的漫長漏斗。
+
+總結這張投影片，請記住這個核心觀念：Safe Exploration 賦予使用者安全感，而 Instant Gratification 則以最短路徑滿足使用者核心意圖。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell005.png" alt="Changes in Midstream & Deferred Choice" />
+</div>
+
+<!--
+請看這兩個人性化設計案例：
+
+上方是台灣高鐵時刻表查詢：當你查出 17:00 的班次後，如果發現客滿，右上角直接提供「更早車次 (Earlier trains)」與「更晚車次 (Later trains)」快捷鍵！使用者不需要重新按上一頁、重新選站名、重新填時間。這就是 Changes in Midstream。
+
+下方是 Deferred Choice：在初次註冊流程中，除了輸入姓名密碼，右上角明確提供「Skip for now（稍後再填）」。先讓使用者進門體驗核心價值，而不是用十道個人資料問題把顧客嚇跑。
+
+總結這張投影片，請記住這個核心觀念：允許使用者中途調整參數並延遲非必要決策，能大幅降低互動流失率。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell006.png" alt="TW1.6 Incremental Construction" />
+</div>
+
+<!--
+請看這張 Incremental Construction（增量式建構）的代表作：Overleaf / LaTeX 論文線上編輯器。
+
+左側是原始碼工作區（Workspace），右側是即時編譯預覽（Live Feedback）。使用者每修改一段文字或一個公式，右側便以響應式回饋即時印證。這大幅降低了人類工作記憶的負擔，讓複雜的創造性任務變得可控且愉悅。
+
+總結這張投影片，請記住這個核心觀念：增量式建構透過即時緊密的反饋迴圈，讓使用者在執行高複雜度任務時保持流暢的心流狀態。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell007.png" alt="Habituation, Prospective Memory & Spatial Memory" />
+</div>
+
+<!--
+請看現代儀表板如何巧妙融合三大記憶機制：
+
+左側是 Habituation（習慣化）：標準的側邊欄導覽，讓使用者憑肌肉記憶就能盲按；
+側邊欄上的紅底數字標籤「Saved Items (3)」是 Prospective Memory（前瞻記憶）：提醒你還有 3 件儲存的項目尚未處理；
+右上角的設定齒輪則是 Spatial Memory（空間記憶）：永遠固定在右上角，讓大腦不需要耗費視覺搜尋成本。
+
+總結這張投影片，請記住這個核心觀念：透過位置恆定性與視覺線索，系統能自然成為人類大腦記憶體的外接擴充。
+-->
+---
+## Section 2：資訊架構與內容佈局模式 (Organizing Content & Layout)
+
+> **核心設計哲學：** 螢幕空間有限而資訊無窮，優秀的佈局必須以使用者的發現路徑為核心，建立清晰的視覺階層。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. 內容發現三要素與空間框架
+- **內容發現三要素 (The Discovery Trifecta, TW2.1)**：
+  - **搜尋 (Search)**：針對目標明確的使用者，提供直接、意圖驅動的文字查詢。
+  - **焦點舞台 (Feature / Center Stage, TW4.2)**：系統主動推薦的核心精選，第一眼抓住眼球。
+  - **分類瀏覽 (Browse)**：針對探索型使用者，提供依類別展開的圖文瀏覽清單。
+- **儀表板 (The Dashboard, TW2.5)**：
+  - 高密度匯總關鍵維運指標，提供一覽無遺的全局掌握力。
+- **替代檢視 (Alternative Views, TW2.9)**：
+  - 賦予使用者自主權，以偏好的形式消費同一份資料（如：地圖模式 vs. 清單模式）。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. 時間組織與複雜度控制
+- **漸進式揭露 (Progressive Disclosure)**：
+  - 預設保持介面極簡乾淨；唯有當使用者觸發特定編輯情境時，才揭露進階工具箱。
+- **步驟精靈 (The Wizard, TW2.7)**：
+  - 將龐大、令人生畏的繁雜流程，拆解為線性、可預測的步驟導航（Step 1 → 2 → 3）。
+- **模組分頁 (Module Tabs, TW4.5)**：
+  - 適用於**同層級、互斥**的資料切換（如：按主題 / 按月份 / 按頁面）。
+- **手風琴摺疊 (Accordion, TW4.6)**：
+  - 適用於**原地向下深入展開層級細節**（如 FAQ 常見問答），不跳離當前頁面。
+
+</div>
+</div>
+
+<!--
+我們進入 Section 2：資訊架構與內容佈局模式。
+
+很多工程師把所有能撈出來的資料一次性通通倒在畫面上，以為這叫功能齊全，結果使用者看到的是一片資訊雜訊。
+
+請看左欄：任何平台的首頁都必須平衡「內容發現三要素」——想直接找店的人用 Search，想看熱門推薦的人看 Center Stage，閒晃探索的人用 Browse 分類；而當資料有多個維度時，務必提供 Alternative Views（例如叫外送或找餐廳時，有人喜歡看地圖距離，有人喜歡看文字清單）。
+
+請看右欄：漸進式揭露是維護介面簡約的秘密武器；精靈步驟則讓原本可怕的 20 欄表格變成輕鬆闖關；而 Tabs 與 Accordion 的取捨更體現了工程師對資訊層級的深刻理解。
+
+總結這張投影片，請記住這個核心觀念：透過內容發現三要素、漸進式揭露與多維替代檢視，能有效駕馭複雜資訊架構。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell008.png" alt="Section 2: Organizing Content & Layout Overview" />
+</div>
+
+<!--
+請看 Section 2 的模式矩陣：
+涵蓋了 Feature/Search/Browse、Dashboard、Wizard、Alternative Views、Visual Framework、Center Stage、Tabs 與 Accordion 等 11 個經典版面組織模式。
+
+總結這張投影片，請記住這個核心觀念：這組模式庫解決了「如何組織螢幕空間以最佳化資訊傳達效率」的工程挑戰。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell009.png" alt="Content Discovery Deconstructed" />
+</div>
+
+<!--
+請看這張在 Foodpanda 外送 App 上的內容發現解構實例：
+
+頂部是 Search（意圖驅動的直接查詢框）；
+中間是 Feature（系統主動精選推薦的焦點餐廳，Center Stage）；
+底部是 Browse（依料理類別如小吃、日式、台式、漢堡進行探索分類導航）。
+
+無論是淘寶、Netflix、Spotify 還是外送平台，全世界最成功的數位產品首頁，骨子裡全都在運用這套「搜尋 + 精選 + 瀏覽」的黃金三要素！
+
+總結這張投影片，請記住這個核心觀念：將搜尋、精選與分類瀏覽有機結合，能無縫滿足不同心理預期層次的使用者。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell010.png" alt="The Dashboard & Alternative Views" />
+</div>
+
+<!--
+請看這兩大經典版面模式：
+
+左側是 The Dashboard（儀表板）：將龐大的營收、成長率、裝置比例以高密度、高對比的圖表集中展示，提供最高效率的視覺掃描；
+右側是 Alternative Views（替代檢視）：在餐廳探索頁中，右下角提供一個藍色切換鈕，讓使用者可以在「空間地圖視圖 (Spatial Map)」與「線性清單視圖 (Linear List)」之間無痛切換，滿足不同情境下的檢視偏好。
+
+總結這張投影片，請記住這個核心觀念：儀表板賦予使用者全局洞察，而替代檢視則將資料呈現的主控權完全交還給使用者。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell011.png" alt="Temporal Organization: Progressive Disclosure & Wizards" />
+</div>
+
+<!--
+請看時間維度的資訊組織模式：
+
+左側是 Progressive Disclosure（漸進式揭露）：平常工具列只顯示基本的粗體、斜體與對齊；當使用者點擊進階編輯時，才展開第二層完整的字型與段落面板，防止初始介面過度雜亂；
+右側是 The Wizard（精靈步驟）：在進行大量使用者匯入時，將「選檔案 → 欄位對應 → 資料檢驗 → 總結」拆解為嚴格的線性向導，步步為營。
+
+總結這張投影片，請記住這個核心觀念：漸進式揭露守護視覺純淨，而精靈步驟則化繁為簡、分步消除複雜任務的焦慮感。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell012.png" alt="TW4.5 Module Tabs vs. TW4.6 Accordion" />
+</div>
+
+<!--
+這是前端工程師最常面臨的抉擇：到底該用分頁 (Tabs) 還是手風琴 (Accordion)？
+
+左側的 Module Tabs（模組分頁）：最適合在「同一個階層下，存在互斥檢視」的情境（如文章列表中的「主題 / 封存 / 頁面」），切換時會替換掉整個內容上下文；
+右側的 Accordion（手風琴摺疊）：最適合在「完全相同的視圖中，展開階層細節」（如常見問答 FAQ），讓使用者在不跳離當前頁面的前提下原地展開深度資訊。
+
+總結這張投影片，請記住這個核心觀念：分頁用於同階互斥切換，手風琴則用於同一視圖內的局部垂直向下鑽取。
+-->
+---
+## Section 3：尋路機制與導航設計模式 (Wayfinding & Navigation)
+
+> **核心設計哲學：** 優秀的導航系統解答人類在數位空間的三大終極問題：**「我在哪裡？還剩多少？如何離開？」**
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. 入口識別與模態逃生黃金法則
+- **明確進入點 (Clear Entry Points, TW3.1)**：
+  - 清晰的第一道起跑線（如首頁顯著的「登入」或行動號召大按鈕），消除觀望猶豫。
+- **身分管理工具 (Sign-in Tools, TW3.9)**：
+  - 個人檔案、組織切換與登出選單，固定於右上角習慣化位置（Habitual Placement）。
+- **模態視窗的黃金法則 (The Golden Rule of Modals)**：
+  - 當以**強制回應面板 (Modal Panels / Forced Response, TW3.4)** 鎖定使用者專注力時：
+  - **必須無條件設計逃生出口 (Escape Hatches, TW3.6)！**
+  - **右上角的「✕ 關閉按鈕」與「確定送出」按鈕同等重要！** 嚴禁讓使用者陷入無路可退的死胡同。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. 三層次空間與進度感知定位體系
+- **頂層流程進度 (Progress Indicators, TW3.10)**：
+  - 針對線性、多步驟的任務流程，以編號節點（1 → 2 → 3 → 4）清楚標示「還剩多少步」。
+- **中層階層定位 (Breadcrumbs, TW3.11)**：
+  - 針對深層樹狀結構的資訊架構（如：`學年度 > 學院 > 系所 > 課程`），提供可點擊回溯的麵包屑軌跡。
+- **底層長頁面定位 (Annotated Scrollbar, TW3.12)**：
+  - 針對超長單頁海量資料（如通訊錄、日誌），在捲軸邊緣標註字母索引或視覺錨點，支援極速滑動跳轉。
+
+</div>
+</div>
+
+<!--
+我們進入 Section 3：尋路機制與導航設計模式（Wayfinding & Navigation）。
+
+使用者進入一個軟體系統，就像走進一座陌生的建築物。如果建築物沒有路標、沒有出口，人們就會恐慌。
+
+請看左欄：Entry Points 告訴使用者從哪裡開始；Sign-in Tools 則讓身分切換固定在右上角；特別注意「模態對話框的黃金法則」——很多初階工程師彈出一個浮動視窗，卻忘了做右上角的「X」或點擊遮罩關閉，導致使用者按 ESC 沒反應、除了重新整理別無他法，這是最嚴重的易用性災難！
+
+請看右欄：回答「我在哪裡、還剩多少」的三層體系：流程用進度球、網站架構用麵包屑、長清單用帶註解的字母捲軸。
+
+總結這張投影片，請記住這個核心觀念：清楚的起跑點、不可或缺的逃生出口與三層定位體系，共同確保使用者在系統中來去自如。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell013.png" alt="Section 3: Wayfinding & Navigation Trail" />
+</div>
+
+<!--
+請看 Section 3 的尋路路徑圖：
+從起點的 Entry Points 與 Sign-in Tools，經過局部的 Modal Panels 與 Escape Hatches，一路貫穿到 Breadcrumbs、Progress Indicators 與 Annotated Scrollbar。
+
+這條路徑串聯了使用者在整個軟體旅程中的每一步位置感知。
+
+總結這張投影片，請記住這個核心觀念：尋路模式形成了一套完整的數位空間定向導航體系。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell014.png" alt="Clear Entry Points & Sign-in Tools" />
+</div>
+
+<!--
+請看這兩個人性化導航案例：
+
+上方是 Prezi 首頁：頂部有極為醒目的「Log in」與「Get started」按鈕，主視覺下方有清晰的大按鈕，提供明確的入口（TW3.1 Entry Points）；
+右下方是 GitHub / 現代 Web 應用：點擊右上角頭像，展開的下拉選單將個人檔案、儲存庫、組織、設定與 Sign out 集中管理（TW3.9 Sign-in Tools），完全吻合使用者的習慣化肌肉記憶。
+
+總結這張投影片，請記住這個核心觀念：明確的入口消除了初始行動遲疑，而標準化的帳號工具則確立了恆定的歸屬感。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell015.png" alt="The Golden Rule of Modals: Forced Response Panel & Escape Hatch" />
+</div>
+
+<!--
+請全班同學務必牢記這張圖上的「模態對話框黃金法則」：
+
+如果你為了強制使用者集中注意力，而使用「Forced Response Panel (TW3.4)」彈出一個阻斷背景的登入或輸入視窗，那麼你必須在架構上顯式設計「Escape Hatch (TW3.6 逃生出口)」！
+
+看右側的樹狀架構圖：彈跳視窗可以從樹狀結構的任何節點觸發，但點擊右上角的「X」或者按鍵盤「ESC」，必須能夠無條件安全返回先前的節點。右上角的「X」與底部的「登入」按鈕同等重要！
+
+總結這張投影片，請記住這個核心觀念：任何強制回應面板都必須配備無條件的逃生出口，絕不能讓使用者感到被系統綁架。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell016.png" alt="Answering: Where am I, and how much is left?" />
+</div>
+
+<!--
+請看這張生動的三層定位對照圖：
+
+頂層 (Top Tier - The Process)：進度指示器（TW3.10 Progress Indicators），用在多步驟購物結帳或註冊向導中，回答「流程還剩幾步」；
+中層 (Middle Tier - The Hierarchy)：逢甲大學課程系統中的麵包屑記錄（TW3.11 Breadcrumbs），清晰展示「112-2 > 資電學院 > 資訊系 > Web程式設計」，回答「我在整座資訊樹的哪一層」；
+底層 (Bottom Tier - The Page)：通訊錄側邊的字母捲軸（TW3.12 Annotated Scrollbar），回答「我在這份萬人名單的哪個英文字母段落」。
+
+總結這張投影片，請記住這個核心觀念：透過進度指示器、麵包屑與註解捲軸三層體系，精準解答使用者在流程、架構與頁面中的即時定位。
+-->
+---
+## Section 4：資料呈現與集合展示模式 (Data Display & Lists)
+
+> **核心設計哲學：** 依據硬體螢幕尺寸與使用者任務目標，在空間利用率與視覺掃描效率之間取得最佳平衡。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. 跨裝置響應式清單架構
+- **桌面寬螢幕：雙欄分割檢視 (Two-Panel Split View, TW7.1)**：
+  - 左側維持長駐清單，右側同步呈現詳細內容（如 Slack、Outlook）。
+  - **核心價值**：徹底消除在清單頁與細節頁之間的來回往返跳轉。
+- **行動窄螢幕：單視窗深入鑽取 (One-Window Drilldown, TW7.2)**：
+  - 窄螢幕下清單被詳細內容完全覆蓋替換（如 iOS Mail）。
+  - **核心要求**：左上角必須強制配置醒目的返回鍵（Back button）。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. 空間壓縮與視覺掃描模式
+- **縮圖網格 (Thumbnail Grid, TW7.5)**：
+  - 「小而多」的高密度排列（如相簿網格），最適化人眼的高速視覺比對與掃描。
+- **輪播切換 (Carousel, TW7.6)**：
+  - 將多張大型圖片或卡片壓縮在單一水平視窗內，必須具備明確的方向性操作線索（左右箭頭與導航圓點）。
+- **分頁控制 (Pagination, TW7.7)**：
+  - 將海量資料切分為可控批次，避免單頁記憶體爆量與無限捲動疲勞。
+
+</div>
+</div>
+
+<!--
+我們進入 Section 4：資料呈現與集合展示模式（Data Display & Lists）。
+
+軟體工程實務中，超過 80% 的商業畫面本質上都是「資料集合的展示與操作」。
+
+請看左欄：在桌面端大螢幕上，請善用寬螢幕優勢，採用 Two-Panel Split View（左清單、右細節），讓使用者點選即預覽；但在手機等行動小螢幕上，空間不足以容納雙欄，必須優雅降級為 One-Window Drilldown，並且一定要在左上角提供明確的返回鍵。
+
+請看右欄：相片或商品瀏覽適合用 Thumbnail Grid，首頁精選大圖適合用 Carousel，海量報表則需要 Pagination。
+
+總結這張投影片，請記住這個核心觀念：寬螢幕雙欄分割與窄螢幕單視窗鑽取的響應式切換，是資料集合展示架構的核心基石。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell017.png" alt="Section 4: Data Display (Lists) Overview" />
+</div>
+
+<!--
+請看 Section 4 的資料呈現模式卡片：
+涵蓋了 Two-Panel Selector、One Window Drilldown、Thumbnail Grid、Carousel、Pagination 與 New-Item Row。
+
+這組模式專門處理現代軟體中最常見的陣列、列表與集合資料結構。
+
+總結這張投影片，請記住這個核心觀念：掌握這 6 種清單展示模式，能讓工程師在處理複雜商業資料時遊刃有餘。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell018.png" alt="Desktop Split View vs. Mobile Drilldown" />
+</div>
+
+<!--
+請看這張極具啟發性的跨裝置對照實例：
+
+左側是桌面端 Slack：採用 Two-Panel Split View（TW7.1），左側頻道與私訊清單恆定存在，右側為對話內容。使用者在切換頻道時不需要重新載入頁面；
+右側是行動端 iOS Mail：採用 One-Window Drilldown（TW7.2），點擊郵件後整頁推進顯示信件細節，左上角提供明確的「Back」返回按鈕，同時頂部還提供上下箭頭（1 of 50）讓使用者直接換信。
+
+總結這張投影片，請記住這個核心觀念：根據裝置螢幕尺寸自動在雙欄分割與單頁鑽取之間優雅切換，是現代響應式前端的核心功力。
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell019.png" alt="Thumbnail Grid & Carousel" />
+</div>
+
+<!--
+請看視覺密度與空間壓縮的兩種模式：
+
+上方是 Windows 相簿的 Thumbnail Grid（TW7.5 縮圖網格）：採用「小而多」的密集矩陣排列，讓人眼在 1 秒鐘內掃描數十張圖片；
+下方是網站首頁的 Carousel（TW7.6 輪播橫幅）：在有限的螢幕高度內，將電腦系統、資訊安全、雲端運算三大主題橫向摺疊。請注意右側藍圈標出的箭頭指示符——輪播必須具備清晰的前進與後退操作線索！
+
+總結這張投影片，請記住這個核心觀念：縮圖網格擅長高密度並行掃描，而輪播則擅長在單一視覺焦點內水平壓縮展示多重資源。
+-->
+---
+## Tidwell 設計模式核心準則：從模式邁向直覺體驗
+
+> **工程師必備心態：** 掌握模式不是為了生搬硬套，而是為了在系統架構中為人類認知弱點築起安全防護網。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. 三大核心設計承諾 (The 3 Mandates)
+- **建立親近感 (Build Familiarity)**：
+  - 善用習慣化 (Habituation) 與通用慣例，讓使用者首次進入系統便能無師自通。
+- **降低認知負荷 (Reduce Cognitive Load)**：
+  - 以漸進式揭露、分部精靈與空間記憶，讓畫面在任何瞬間都只呈現關鍵資訊。
+- **賦權使用者 (Empower the User)**：
+  - 永遠提供逃生出口 (Escape Hatch)、撤銷復原 (Undo) 與多維檢視，讓使用者擁有絕對掌控權。
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. 工程落地啟發式檢核表 (Checklist)
+- [ ] **探索安全嗎？** 是否具備無痛 Undo 或狀態復原機制？
+- [ ] **逃生口在哪？** 任何彈出視窗是否都有清晰醒目的「✕」或取消按鈕？
+- [ ] **位置明確嗎？** 是否同時提供麵包屑、進度條或捲軸錨點解答「我在哪」？
+- [ ] **裝置適配嗎？** 桌面端雙欄分割檢視在手機端是否優雅降級為帶返回鍵的單視窗鑽取？
+- [ ] **發現容易嗎？** 搜尋、精選與分類瀏覽是否各司其職？
+
+</div>
+</div>
+
+<!--
+在結束 6.3 節之前，請大家將這張「工程落地檢核表」銘記於心。
+
+當你未來在公司開發前端畫面、或者進行程式碼審查 (Code Review) 時，不要只看 CSS 有沒有跑版，而是拿出這五道靈魂拷問：
+探索安全嗎？逃生口在哪？位置明確嗎？裝置適配嗎？發現容易嗎？
+
+只要落實這五點，你的產品就已經超越市面上 90% 粗製濫造的軟體系統。
+
+總結這張投影片，請記住這個核心觀念：將 Tidwell 模式轉化為工程交付的檢核標準，能確保系統在兼顧美學的同時具備卓越的易用性與強韌度。
+-->
+---
+<!-- _class: lead -->
+<!-- header: '6.4 AI for UX (AI4UX)' -->
+
+# **6.4 AI 賦能 UX 設計：AI for UX (AI4UX)**
 
 > "AI will not replace UX designers, but UX designers who use AI will replace those who do not."  
 > *(AI 不會取代 UX 設計師，但善用 AI 的 UX 設計師將會取代不用 AI 的人。)*
@@ -1421,7 +1994,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 <!--
 我們現在邁入第二部分：AI 時代的互動設計前沿。
 
-在 6.3 節中，我們探討 AI for UX（AI4UX）：軟體工程師與設計師如何善用大型語言模型、多模態視覺工具與自主代理人，全方位放大設計思維的每個環節？
+在 6.4 節中，我們探討 AI for UX（AI4UX）：軟體工程師與設計師如何善用大型語言模型、多模態視覺工具與自主代理人，全方位放大設計思維的每個環節？
 
 我們將介紹專業設計師專屬的 RTCF 結構化提示詞工程框架、虛擬使用者人物誌生成，以及多代理人自動化原型建構。
 
@@ -1534,15 +2107,15 @@ Format：要求輸出為四欄表格並帶有嚴重度分數。
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '6.4 UX for AI (UX4AI)' -->
+<!-- header: '6.5 UX for AI (UX4AI)' -->
 
-# **6.4 為 AI 打造卓越體驗：UX for AI (UX4AI)**
+# **6.5 為 AI 打造卓越體驗：UX for AI (UX4AI)**
 
 > "The hardest part of building AI products is not training the model—it is designing the interface that makes probabilistic intelligence understandable, steerable, and trustworthy."  
 > *(打造 AI 產品最困難的部分從來不是訓練模型——而是設計出能讓機率性智慧變得好懂、可控且值得信賴的互動介面。)*
 
 <!--
-我們現在進入 6.4 節：UX for AI（UX4AI）。
+我們現在進入 6.5 節：UX for AI（UX4AI）。
 
 請大家注意這個重大的思維翻轉！在前一節，我們是「用 AI 來幫我們做設計 (AI for UX)」。現在，我們要探索一個更深奧的課題：「如何為 AI 產品本身設計出卓越的使用者體驗？(UX for AI)」。
 
@@ -1756,16 +2329,16 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '6.5 評估與工程整合' -->
+<!-- header: '6.6 評估與工程整合' -->
 
-# **6.5 易用性評估與工程整合**
+# **6.6 易用性評估與工程整合**
 
 > "Evaluating usability with 5 users uncovers roughly 85% of all usability problems."  
 > *(只要找 5 位代表性使用者進行測試，就能找出系統中大約 85% 的易用性問題。)*  
 > — *Jakob Nielsen*
 
 <!--
-在第六章的尾聲，我們來到 6.5 節：易用性評估與工程整合。
+在第六章的尾聲，我們來到 6.6 節：易用性評估與工程整合。
 
 軟體工程團隊在產品上線前後，究竟該如何科學化地檢驗介面的易用性？
 

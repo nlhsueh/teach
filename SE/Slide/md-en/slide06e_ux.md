@@ -33,18 +33,19 @@ To summarize this slide, remember this key takeaway: Software engineering excell
 
 <div class="outline-columns">
   <div>
-    <h3>Part 1: Foundations & Usability Heuristics</h3>
+    <h3>Part 1: Foundations, Heuristics & Patterns</h3>
     <ul>
       <li><b>6.1 Foundations of User Experience (UX):</b> What is UX, Norman Doors, the 3 bad design archetypes, Taiwan NHI App case study, UI vs. UX distinction, 5-stage Design Thinking.</li>
       <li><b>6.2 Nielsen's 10 Usability Heuristics:</b> System status visibility, real-world match, user control & freedom, consistency, error prevention, recognition over recall, efficiency accelerators, minimalist aesthetics, error recovery, documentation.</li>
+      <li><b>6.3 Tidwell Interaction & UI Patterns:</b> 4 architectural dimensions, core user behaviors, information architecture & layout, wayfinding & escape hatches, data display & platform teardowns.</li>
     </ul>
   </div>
   <div>
     <h3>Part 2: AI-Powered UX & Interaction Design</h3>
     <ul>
-      <li><b>6.3 AI for UX (AI4UX):</b> AI as a design amplifier, the RTCF prompt engineering framework (Role-Task-Constraint-Format), automated heuristic audits, multi-agent prototyping.</li>
-      <li><b>6.4 UX for AI (UX4AI):</b> Designing for non-deterministic AI, managing latency & thinking traces, human agency & steerability, hallucination guardrails, explainable AI (XAI).</li>
-      <li><b>6.5 Evaluation & Synthesis:</b> Heuristic severity ratings (0 to 4), heuristic evaluation vs. user testing, chapter recap quiz, and engineering takeaways.</li>
+      <li><b>6.4 AI for UX (AI4UX):</b> AI as a design amplifier, the RTCF prompt engineering framework (Role-Task-Constraint-Format), automated heuristic audits, multi-agent prototyping.</li>
+      <li><b>6.5 UX for AI (UX4AI):</b> Designing for non-deterministic AI, managing latency & thinking traces, human agency & steerability, hallucination guardrails, explainable AI (XAI).</li>
+      <li><b>6.6 Evaluation & Synthesis:</b> Heuristic severity ratings (0 to 4), heuristic evaluation vs. user testing, chapter recap quiz, and engineering takeaways.</li>
     </ul>
   </div>
 </div>
@@ -52,11 +53,11 @@ To summarize this slide, remember this key takeaway: Software engineering excell
 <!--
 Here is our roadmap for Chapter 6.
 
-On the left, in Part 1, we unpack foundational UX concepts: why good design is invisible, why bad design causes user rage, and how Jakob Nielsen's 10 Usability Heuristics provide the universal design grammar for digital interfaces.
+On the left, in Part 1, we unpack foundational UX concepts: why good design is invisible, why bad design causes user rage, Jakob Nielsen's 10 Usability Heuristics, and Jenifer Tidwell's battle-tested UI/UX design patterns across behaviors, information architecture, navigation, and data display.
 
-On the right, in Part 2, we step into the cutting-edge frontier of AI-driven design. We examine AI for UX—using LLMs and agents to supercharge design workflows—and UX for AI—the art and science of designing interfaces for probabilistic, hallucination-prone AI systems.
+On the right, in Part 2, we step into the cutting-edge frontier of AI-driven design and engineering evaluation: AI for UX (accelerating workflows with LLMs and multi-agent prototypes), UX for AI (designing steerable, trustworthy interfaces for probabilistic models), and formal usability evaluation methodologies.
 
-To summarize this slide, remember this key takeaway: This chapter takes you from foundational cognitive ergonomics to modern, AI-augmented human-computer interaction design.
+To summarize this slide, remember this key takeaway: This chapter takes you from foundational cognitive ergonomics and classic interface patterns to modern, AI-augmented human-computer interaction design and empirical evaluation.
 -->
 ---
 <!-- _class: lead -->
@@ -1400,16 +1401,695 @@ To summarize this slide, remember this key takeaway: Proactive input constraints
 
 ---
 <!-- _class: lead -->
-<!-- header: '6.3 AI for UX (AI4UX)' -->
+<!-- header: '6.3 Tidwell Interaction & UI Patterns' -->
 
-# **6.3 AI for UX (AI4UX): Amplifying Design Workflows**
+# **6.3 Jenifer Tidwell's Interaction & UI Design Patterns**
+
+> "Patterns are not off-the-shelf components that you plug into a layout. They are living architectural blueprints rooted in human perception, habit, and behavior."  
+> — *Jenifer Tidwell, Designing Interfaces*
+
+<!--
+Welcome to Module 6.3: Jenifer Tidwell's Interaction & UI Design Patterns.
+
+In software engineering, we have the Gang of Four (GoF) 23 Design Patterns for object-oriented software architecture. In human-computer interaction and web engineering, we have an equally foundational canon: Jenifer Tidwell's interaction design patterns from her seminal book *Designing Interfaces*.
+
+Engineers often invent novel UI layouts from scratch, forcing users to relearn navigation on every single screen. Tidwell's pattern language provides battle-tested blueprints refined across billions of interactions worldwide—spanning core human behaviors, information architecture, wayfinding, and high-density data display.
+
+In this module, we dissect real-world production teardowns—from High-Speed Rail ticketing to Airbnb and Slack—to master this architectural grammar.
+
+💡 難字與專業術語解說：
+- off-the-shelf: 現成的、現貨買來即用的
+- blueprint: 藍圖、架構設計指南
+- teardown: 深度拆解剖析
+-->
+---
+## What is an Interaction Design Pattern? (UI Patterns)
+
+> **Core Definition:** A proven, reusable architectural solution to a commonly occurring human-computer interaction problem within a specific context.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. Why Engineering Teams Rely on UI Patterns
+- **Shared Cross-Functional Vocabulary**:
+  - Unifies Product Managers, UI/UX Designers, and Full-Stack Engineers (e.g., agreeing on "Two-Panel Split View vs. One-Window Drilldown").
+- **Eliminates Reinventing the Wheel**:
+  - Mature interaction dilemmas (escape hatches, wizards, tabs, carousels) already have empirically validated solutions.
+- **Reduces Cognitive Friction**:
+  - Aligns with users' preexisting mental models (Jakob's Law), making complex systems feel effortlessly intuitive.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. Jenifer Tidwell's Canon & Curated Scope
+- **Seminal Book: *Designing Interfaces***:
+  - Authored by Jenifer Tidwell (O'Reilly), the definitive industry bible for UI/UX interaction patterns across desktop, web, and mobile.
+- **Vast Catalog of 100+ Patterns**:
+  - Encompasses an encyclopedic range of over 100 patterns—spanning forms, actions, navigation trails, canvases, and responsive data grids.
+- **Curated Focus for This Course**:
+  - Because the full catalog is enormous, we deliberately select the most critical, high-impact patterns grouped into **4 architectural dimensions**.
+
+</div>
+</div>
+
+<!--
+What is an interaction design pattern, and why Jenifer Tidwell?
+
+Just as backend systems utilize Gang of Four design patterns to solve structural dilemmas, modern web and front-end architectures rely on interaction design patterns.
+
+On the left: Why avoid bespoke, ad-hoc UI experimentation? Because Jakob's Law reminds us that users spend 99% of their digital lives on other platforms. When you use recognized patterns, engineers know the component hierarchy instantly, and users navigate effortlessly without friction.
+
+On the right: Jenifer Tidwell's seminal O'Reilly book, "Designing Interfaces", established the definitive pattern language for human-computer interaction. Her book details an extensive catalog of over a hundred patterns across every aspect of interface design. Because covering the entire catalog would be overwhelming, we have selectively curated the most essential patterns across four core engineering dimensions: user behavior, content layout, wayfinding navigation, and data display.
+
+💡 難字與專業術語解說：
+- bespoke: 客製化、量身訂做（此處指隨興自行發明的非標準設計）
+- ad-hoc: 臨時湊合的、非體系化的
+- catalog: 完整目錄、典藏清單
+- curated: 精選策劃的、去蕪存菁的
+-->
+---
+## The 4 Core Dimensions of Tidwell's Architecture (The 4 Dimensions)
+
+> **End-to-End Hierarchy:** Grounded in human cognitive behavior, scaling upward through layout, navigation, and complex data collections.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### Dimensions 1 & 2: Behaviors & Content Structure
+- **1. Core User Behaviors (Human Psychology)**:
+  - Designing for how the human brain actually operates: safe exploration, instant gratification, satisficing, habituation, and spatial memory.
+- **2. Organizing Content & Layout (Information Architecture)**:
+  - The content discovery trifecta (Search / Feature / Browse), dashboards, progressive disclosure, and multi-step wizards.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### Dimensions 3 & 4: Navigation & Data Display
+- **3. Wayfinding & Navigation Mechanisms**:
+  - Answering "Where am I, how much is left, and how do I get out?", modal panel rules, escape hatches, and 3-tier orientation.
+- **4. Data Display (Lists, Grids & Tables)**:
+  - Responsive list strategies: Desktop Two-Panel Split View vs. Mobile One-Window Drilldown, thumbnail grids, carousels, and live platform teardowns.
+
+</div>
+</div>
+
+<!--
+Tidwell organizes the vast universe of interaction patterns into four interconnected dimensions:
+
+Dimension 1 (Core Behaviors) dives into human cognitive psychology—how users explore, hesitate, remember, and make decisions in digital environments.
+Dimension 2 (Information Architecture) tackles how content is categorized, filtered, and unveiled over time without overwhelming the screen.
+Dimension 3 (Wayfinding) acts as the digital highway system, ensuring users never feel trapped or disoriented.
+Dimension 4 (Data Display) focuses on how collections, feeds, and tables adapt gracefully across desktop and mobile screens.
+
+These four dimensions form an organic loop: human needs drive layout structure, navigation guides user flow, and data display delivers the final payloads.
+
+💡 難字與專業術語解說：
+- wayfinding: 尋路、空間定向與導航引導
+- topology: 拓撲結構（各模組間的相互關係與連通模式）
+- payload: 有效負載（此處指使用者真正需要消費的資料內容）
+-->
+---
+## Section 1: General Patterns & Core Behaviors (Core Behaviors)
+
+> **Guiding Principle:** Interfaces must accommodate human cognitive vulnerabilities and physiological habits—never force humans to adapt to rigid machine logic.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. Exploration & Immediate Feedback
+- **Safe Exploration (TW1.1)**:
+  - Eliminate the fear of clicking! Always provide low-cost trial and an instant, frictionless undo pathway (**Undo Toast**).
+- **Instant Gratification (TW1.2)**:
+  - Provide a one-click fast-track to the user's primary goal (e.g., e-commerce "Buy Again" button), bypassing multi-step funnels.
+- **Changes in Midstream (TW1.4)**:
+  - Allow users to modify query parameters mid-flow (e.g., train schedule "Earlier / Later Trains") without starting over from scratch.
+- **Deferred Choice (TW1.5)**:
+  - Minimize upfront friction; allow users to skip secondary setup steps (**Skip for now**).
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. Cognitive Load & Memory Support
+- **Incremental Construction (TW1.6)**:
+  - Provide instant, real-time live previews as users author content (e.g., Overleaf / Markdown editors) to reduce working memory load.
+- **Habituation (TW1.7)**:
+  - Adhere to standard conventions (e.g., persistent left sidebar) to build unconscious muscle memory.
+- **Spatial Memory (TW1.9)**:
+  - Keep critical tools fixed in place (e.g., Settings gear in the top-right corner); never allow core controls to randomly drift!
+- **Prospective Memory (TW1.10)**:
+  - Use visual badges and counter markers to remind users of future unfinished tasks.
+
+</div>
+</div>
+
+<!--
+We begin with Section 1: General Patterns & Core Behaviors.
+
+In software engineering, many bugs occur not because the code crashed, but because the software made invalid assumptions about human psychology. If an interface assumes an alert, tireless robot, users will make mistakes constantly. Defensive interface design assumes distracted, imperfect humans:
+
+On the left: Safe Exploration gives users a psychological safety net through low-cost trial and an instant Undo parachute. Instant Gratification eliminates unnecessary hurdles for returning intent. Changes in Midstream recognizes that user goals evolve dynamically during query execution. Deferred Choice removes upfront registration walls that trigger bounce rates.
+
+On the right: Incremental Construction keeps feedback loops immediate so working memory never overflows. Habituation and Spatial Memory ensure that muscle memory remains uninterrupted by keeping navigational anchors fixed in place.
+
+💡 難字與專業術語解說：
+- satisficing: 滿意決策（滿足於「夠用就好」而非耗盡精力追求全局最優解）
+- habituation: 習慣化（重複刺激下心理與操作產生的自動化慣性）
+- midstream: 中途、流程中段
+- bounce rate: 跳出率（使用者進入頁面後未採取任何行動便直接離開的比率）
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell003.png" alt="Section 1: General Patterns Overview" />
+</div>
+
+<!--
+Review the 12 core behavior patterns in Section 1:
+
+From Safe Exploration (TW1.1) and Instant Gratification (TW1.2), to Satisficing (TW1.3), Changes in Midstream (TW1.4), Deferred Choice (TW1.5), Incremental Construction (TW1.6), Habituation (TW1.7), Spatial Memory (TW1.9), Prospective Memory (TW1.10), Streamlined Repetition (TW1.11), and Keyboard Only (TW1.12).
+
+Every single pattern corresponds to an established cognitive principle in human factors engineering. When engineers respect these patterns, users experience software as an effortless extension of their own intentions.
+
+💡 難字與專業術語解說：
+- cognitive: 認知的、心理思維運作的
+- prospective memory: 前瞻記憶（對未來預定要執行事項的記憶，如待辦提醒紅點）
+- streamlined: 精簡流暢的、阻力最小化的
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell004.png" alt="Safe Exploration & Instant Gratification" />
+</div>
+
+<!--
+Examine these two fundamental human behavioral patterns:
+
+On the left: Safe Exploration (TW1.1) in mobile email. When an email is archived, an asynchronous toast notification immediately appears with an "Undo" action. Notice how this transforms user psychology: users feel confident and decisive because mistakes carry zero penalty. This directly implements Nielsen's Heuristics on User Control and Error Recovery.
+
+On the right: Instant Gratification (TW1.2) in e-commerce. A prominent "Buy Again" button allows returning customers to re-order standard supplies in a single click. For habitual transactions, forcing users through searching, filtering, and re-entering shipping specs is an unforgivable friction multiplier.
+
+💡 難字與專業術語解說：
+- asynchronous toast: 非同步浮動快顯提示（短暫停留不打斷操作的輕量通知）
+- gratification: 滿足、滿意感
+- friction multiplier: 阻力放大因子（增加使用者心智阻礙的設計缺陷）
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell005.png" alt="Changes in Midstream & Deferred Choice" />
+</div>
+
+<!--
+Examine how interfaces handle shifting user intentions and onboarding friction:
+
+Top: Changes in Midstream (TW1.4) in High-Speed Rail ticketing. After searching for a 17:00 departure, users can immediately click "Earlier trains" or "Later trains" directly within the results view. Imagine the rage if the user had to click the browser Back button, re-select origins and destinations, and re-pick the date just to shift the window by 30 minutes!
+
+Bottom: Deferred Choice (TW1.5) during app onboarding. Requiring users to fill out complex profile questionnaires before seeing any core value creates massive drop-off. A clean "Skip for now" link gives users immediate agency, allowing them to defer configuration until they are invested in the product.
+
+💡 難字與專業術語解說：
+- midstream: 流程中段、中途
+- drop-off rate: 流失率、途中棄用率
+- onboarding: 新手引導流程、初次使用體驗
+- agency: 主控權、自主行動能力
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell006.png" alt="TW1.6 Incremental Construction" />
+</div>
+
+<!--
+Here is the quintessential implementation of Incremental Construction (TW1.6): Overleaf, the collaborative LaTeX authoring platform.
+
+Observe the split architecture: the left pane is the code editor where formulas and text are input, while the right pane renders live, pixel-perfect PDF output. 
+
+Why is this pattern so powerful for complex creative tasks? Because humans have severe working memory limits. Forcing authors to mentally compile code or wait minutes for a batch build causes immense cognitive fatigue. Real-time incremental rendering offloads cognitive simulation to the browser, sustaining a state of uninterrupted creative flow.
+
+💡 難字與專業術語解說：
+- quintessential: 最典型具代表性的、典範的
+- working memory: 工作記憶（大腦短期暫存並處理資訊的容量，極其有限）
+- state of flow: 心流狀態（高度專注沉浸且高效的心理狀態）
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell007.png" alt="Habituation, Prospective Memory & Spatial Memory" />
+</div>
+
+<!--
+Observe how modern enterprise dashboards orchestrate three complementary memory patterns:
+
+Left: Habituation (TW1.7). A standardized vertical navigation sidebar leverages unconscious muscle memory so users navigate without deliberate mental effort.
+
+Sidebar Red Badge: Prospective Memory (TW1.10). Human prospective memory—remembering to do something in the future—is notoriously unreliable. The "Saved Items (3)" red counter badge acts as an external cognitive artifact, reminding the user to complete unfinished review tasks.
+
+Top-Right Gear Icon: Spatial Memory (TW1.9). The human brain maps digital interfaces like physical territory. By anchoring settings permanently in the upper-right corner, visual search costs drop to zero.
+
+💡 難字與專業術語解說：
+- cognitive artifact: 認知人造物（輔助人類心智記憶的外在工具或標記）
+- muscle memory: 肌肉記憶（經重複練習形成的無意識直覺反應）
+- visual search cost: 視覺搜尋成本（眼睛在畫面上尋找特定元素所耗費的時間與精力）
+-->
+---
+## Section 2: Organizing Content & Layout (Content & Layout)
+
+> **Guiding Principle:** Screen real estate is finite while information is limitless; great layouts balance immediate discoverability with progressive depth.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. Discovery Trifecta & Spatial Frameworks
+- **The Content Discovery Trifecta (TW2.1)**:
+  - **Search**: For high-intent users with direct, explicit queries.
+  - **Feature / Center Stage (TW4.2)**: Curated system highlights that command immediate visual focus.
+  - **Browse**: For exploratory users navigating category hierarchies.
+- **The Dashboard (TW2.5)**:
+  - Aggregates critical high-density KPIs in high-contrast visual tiles for rapid scanning.
+- **Alternative Views (TW2.9)**:
+  - Empowers users to toggle between representations of identical data (e.g., spatial Map View vs. linear List View).
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. Temporal Organization & Complexity Control
+- **Progressive Disclosure**:
+  - Keep initial screens clean; reveal advanced tools only when the user executes a relevant contextual action.
+- **The Wizard (TW2.7)**:
+  - Deconstructs an intimidating, multi-parameter process into a strict, predefined linear flow (Step 1 → 2 → 3).
+- **Module Tabs (TW4.5)**:
+  - Best for **mutually exclusive** datasets at the **same hierarchical level** (swapping global context).
+- **Accordion (TW4.6)**:
+  - Best for **drilling down into hierarchical details** (e.g., FAQs) without navigating away from the current page.
+
+</div>
+</div>
+
+<!--
+We move into Section 2: Organizing Content and Layout.
+
+Screen real estate is strictly finite, yet modern databases hold millions of records. Dumping everything onto a single page overwhelms users with catastrophic cognitive noise.
+
+On the left: The Discovery Trifecta (TW2.1) balances the three ways humans explore information—Search for direct intent, Feature for editorial highlights, and Browse for casual exploration. Dashboards aggregate disparate metrics into unified executive summaries, while Alternative Views let users toggle representations (such as Map vs. List) based on their immediate task context.
+
+On the right: Progressive Disclosure and Wizards master temporal organization. Instead of presenting a 40-field form, we break it into a linear journey, unveiling complexity only when the user is ready. Meanwhile, Module Tabs swap peer-level contexts, while Accordions expand nested details in-place.
+
+💡 難字與專業術語解說：
+- real estate: 版面空間、螢幕可用面積
+- disparate: 截然不同的、多元殊異的
+- temporal organization: 時間維度組織（按流程先後次序逐步展現內容）
+- in-place: 就地、原位（無需切換頁面或跳轉視圖）
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell008.png" alt="Section 2: Organizing Content & Layout Overview" />
+</div>
+
+<!--
+Here is the pattern matrix for Section 2: Organizing Content and Layout.
+
+Notice the rich taxonomy:
+- Information discovery: Search / Browse / Feature, Mobile Direct Access.
+- Overview architectures: The Dashboard, Alternative Views, Many Workspaces, Visual Framework.
+- Content containers: Center Stage, Grid of Equals, Titled Sections, Card Containers.
+- Temporal controllers: Progressive Disclosure, The Wizard, Module Tabs, Accordions, and Collapsible Panels.
+
+Every front-end layout framework—from Bootstrap and Material UI to Tailwind component kits—is built directly on top of these structural blueprints.
+
+💡 難字與專業術語解說：
+- taxonomy: 分類學、分門別類體系
+- container: 容器元件
+- temporal: 時間次序上的
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell009.png" alt="Content Discovery Deconstructed" />
+</div>
+
+<!--
+Here is a live architectural teardown of Foodpanda's food delivery home screen:
+
+At the top: Search (TW2.1). Engineered for high-intent users who know exactly what restaurant or dish they crave.
+In the middle: Feature / Center Stage (TW4.2). Editorial promotion banners highlighting discounts and top-rated restaurants, capturing immediate visual attention.
+At the bottom: Browse (TW2.1). Categorical icons (Bubble Tea, Bento, Fried Chicken) designed for casual exploratory browsing when the user is undecided.
+
+Whether designing an e-commerce storefront, an enterprise SaaS portal, or a media streaming service, this three-tier discovery trifecta accommodates all user mindsets simultaneously.
+
+💡 難字與專業術語解說：
+- teardown: 架構拆解剖析
+- intent: 使用者意圖（明確性的高低）
+- categorical: 分門別類的
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell010.png" alt="The Dashboard & Alternative Views" />
+</div>
+
+<!--
+Examine two indispensable content organization paradigms:
+
+On the left: The Dashboard (TW2.5) in Microsoft PowerBI. Key performance indicators, time-series line charts, and status gauges are consolidated into modular cards. Executives can digest systemic operational health in under five seconds without digging through underlying SQL tables.
+
+On the right: Alternative Views (TW2.9) in restaurant discovery. The identical dataset can be experienced either spatially via an interactive Map View or linearly via a sorted List View. A floating pill toggle gives users immediate freedom to choose the representation that fits their current situational priority.
+
+💡 難字與專業術語解說：
+- time-series: 時間序列（隨時間推移記錄的數據走勢）
+- consolidate: 整合統整、濃縮匯總
+- paradigm: 範式、架構典範
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell011.png" alt="Temporal Organization: Progressive Disclosure & Wizards" />
+</div>
+
+<!--
+Observe temporal organization strategies for controlling visual complexity:
+
+On the left: Progressive Disclosure in text formatting. The default toolbar presents only standard typographic controls. Clicking into paragraph styles expands the secondary palette only when needed, preserving visual minimalism.
+
+On the right: The Wizard (TW2.7) for data onboarding. A daunting multi-phase workflow is partitioned into four predictable sequential milestones: Select File → Entity Mapping → Data Mapping → Summary. Notice the step navigation bar: it communicates clear forward progress and lowers task anxiety.
+
+💡 難字與專業術語解說：
+- progressive disclosure: 漸進式揭露（預設隱藏次要細節，待需要時再行展開）
+- onboarding: 引導導入（此處指大量資料匯入與欄位對應流程）
+- milestone: 里程碑、重要進度節點
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell012.png" alt="TW4.5 Module Tabs vs. TW4.6 Accordion" />
+</div>
+
+<!--
+Here is one of the most common debates in front-end design: When should you use Tabs versus Accordions?
+
+On the left: Module Tabs (TW4.5). Tabs represent mutually exclusive datasets situated at the exact same hierarchical tier (e.g., Topics, Archives, Pages). Switching tabs swaps the active viewport canvas entirely.
+
+On the right: Accordion (TW4.6). Accordions represent nested, progressive details within a unified page (e.g., Frequently Asked Questions). Expanding an accordion pushes subsequent content downward, allowing users to inspect multiple sections simultaneously while preserving their vertical scroll position.
+
+💡 難字與專業術語解說：
+- mutually exclusive: 互斥的（選取其一則其餘關閉）
+- hierarchical: 階層式的、上下從屬結構的
+- vertical scroll position: 垂直滾動位置
+-->
+---
+## Section 3: Wayfinding & Navigation Mechanisms (Wayfinding & Navigation)
+
+> **Guiding Principle:** An effective navigation system answers the three fundamental questions of digital space: **"Where am I? How much is left? How do I get out?"**
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. Entry Points & The Golden Rule of Modals
+- **Clear Entry Points (TW3.1)**:
+  - An unmistakable starting line (e.g., bold "Get Started" or "Log In" CTAs) that eliminates hesitation.
+- **Sign-in Tools (TW3.9)**:
+  - Account profile, organization switches, and logout options anchored persistently in the top-right corner.
+- **The Golden Rule of Modals**:
+  - When forcing users into a **Forced Response Panel (Modal Panels, TW3.4)** to guarantee focus:
+  - **You must explicitly engineer the Escape Hatch (TW3.6)!**
+  - **The top-right "✕" close button is just as important as the Submit button.** Never trap users in dead-ends!
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. The 3-Tier Orientation & Progress Hierarchy
+- **Top Tier (Process Progress, TW3.10)**:
+  - **Progress Indicators**: Numbered stepper nodes (Step 1 → 2 → 3 → 4) answering *"How many steps remain?"* in multi-step flows.
+- **Middle Tier (Architectural Hierarchy, TW3.11)**:
+  - **Breadcrumbs**: Clickable hierarchical trails answering *"Where am I in the nested information tree?"*
+- **Bottom Tier (Page-Level Navigation, TW3.12)**:
+  - **Annotated Scrollbars**: Visual letter index or markers on the scrollbar answering *"Where am I in this massive list?"*
+
+</div>
+</div>
+
+<!--
+We move to Section 3: Wayfinding and Navigation Mechanisms.
+
+Navigating complex enterprise software is analogous to navigating an international airport terminal. Without clear departure gates, flight status boards, and emergency exits, travelers experience intense disorientation and anxiety.
+
+On the left: Clear Entry Points establish unmistakable starting lines; Sign-in Tools anchor user identity in predictable screen coordinates. And remember the Golden Rule of Modals: if you trap a user inside a modal dialog to demand their undivided attention, you are ethically and architecturally obligated to provide an Escape Hatch! The top-right '✕' button and the Escape key handler are just as critical as the primary Submit button.
+
+On the right: The 3-Tier Orientation Hierarchy systematically answers all user questions: Steppers answer "How much is left?", Breadcrumbs answer "Where am I in the taxonomy?", and Annotated Scrollbars answer "Where am I within this massive document?".
+
+💡 難字與專業術語解說：
+- wayfinding: 尋路機制（引導使用者在數位空間中確立方位與路徑的設計）
+- analogous: 類似的、可相提並論的
+- modal dialog: 互動對話框（強制阻斷背景操作的浮層面板）
+- escape hatch: 逃生出口（迅速安全退出當前狀態的安全機制）
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell013.png" alt="Section 3: Wayfinding & Navigation Trail" />
+</div>
+
+<!--
+Follow this connected wayfinding navigation trail:
+
+Starting from Entry Points (TW3.1) and Sign-in Tools (TW3.9), leading into Menu Panels, Modal Panels (TW3.4), and Escape Hatches (TW3.6), and culminating in navigational feedback: Breadcrumbs (TW3.11), Progress Indicators (TW3.10), and Annotated Scrollbars (TW3.12).
+
+Together, these patterns build a coherent spatial orientation network across your application.
+
+💡 難字與專業術語解說：
+- navigation trail: 導航軌跡、路徑線索
+- culminating: 終至、達到頂點完成
+- orientation: 定向、方位確立
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell014.png" alt="Clear Entry Points & Sign-in Tools" />
+</div>
+
+<!--
+Examine these two entry and identity patterns:
+
+Top: Clear Entry Points (TW3.1) on Prezi's marketing site. Unambiguous "Log in", "Teams", and "Get started" call-to-action buttons eliminate initial hesitation, offering a clear doorway into the product.
+
+Bottom: Sign-in Tools (TW3.9) in GitHub. Clicking the user profile avatar in the persistent top-right corner reveals account settings, organization switches, and sign-out options. Maintaining this convention respects universal web muscle memory.
+
+💡 難字與專業術語解說：
+- call-to-action (CTA): 行動召喚（引導使用者採取明確下一步操作的按鈕或連結）
+- persistent: 常駐的、跨頁面始終保持的
+- avatar: 個人頭像
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell015.png" alt="The Golden Rule of Modals" />
+</div>
+
+<!--
+Study the Golden Rule of Modals illustrated here:
+
+"If you force a user into a 'Forced Response Panel' (TW3.4) to guarantee focus, you must explicitly design the 'Escape Hatch' (TW3.6) to prevent them from feeling trapped. The '✕' is as important as the 'Submit' button."
+
+Look at the architectural state tree on the right: when a modal interrupts the flow, clicking the close button or pressing the ESC key must safely route the user back to their prior state without corrupted form data or stuck overlay backdrops.
+
+💡 難字與專業術語解說：
+- forced response: 強制回應（要求使用者必須做出選擇方能繼續）
+- escape hatch: 逃生出口
+- overlay backdrop: 遮罩背景底層（對話框後方的半透明黑色遮罩）
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell016.png" alt="Answering: Where am I, and how much is left?" />
+</div>
+
+<!--
+Examine this 3-tier orientation system answering the core navigation questions:
+
+Top Tier (The Process): TW3.10 Progress Indicators with numbered nodes showing which checkout or onboarding step you are currently completing.
+Middle Tier (The Hierarchy): TW3.11 Breadcrumbs displaying academic semester > college > department > course, allowing instant upward traversal without clicking Back multiple times.
+Bottom Tier (The Page): TW3.12 Annotated Scrollbar providing an alphabetical scrub rail for massive contact lists, offering continuous spatial context during fast scrolling.
+
+💡 難字與專業術語解說：
+- upward traversal: 向上層級遍歷（點擊導航路徑直接回到父層或祖父層）
+- scrub rail: 快速滑動滑軌（滑鼠或手指直接拖拉以快速定位的標尺）
+- annotated: 標註註解的、附帶標記的
+-->
+---
+## Section 4: Data Display & Collections (Data Display & Lists)
+
+> **Guiding Principle:** Optimize information consumption efficiency by tailoring data layout to device dimensions and user tasks.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. Responsive List Architecture Strategies
+- **Desktop Context: Two-Panel Split View (TW7.1)**:
+  - Keeps the master list persistent on the left while displaying active record details on the right (e.g., Slack, Outlook).
+  - **Key Benefit**: Completely eliminates back-and-forth round-trip navigation.
+- **Mobile Context: One-Window Drilldown (TW7.2)**:
+  - On narrow viewports, the master list is replaced entirely by the detail screen (e.g., iOS Mail).
+  - **Mandatory Rule**: A prominent, unambiguous Back navigation button is strictly required.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. Space Compression & Visual Scanning
+- **Thumbnail Grid (TW7.5)**:
+  - "Small but many" matrix layout (e.g., photo galleries) optimized for rapid human visual scanning and comparison.
+- **Carousel (TW7.6)**:
+  - Compresses multiple visual assets onto a single horizontal plane; demands clear directional affordances (arrows/dots).
+- **Pagination (TW7.7) & New-Item Row (TW7.10)**:
+  - Partitions massive datasets and provides inline creation at list boundaries.
+
+</div>
+</div>
+
+<!--
+We arrive at Section 4: Data Display and Collections.
+
+Over 80% of business software centers on displaying, querying, and updating collections of data.
+
+On the left: The desktop environment provides broad viewports, making the Two-Panel Split View (TW7.1) the gold standard—users browse the list on the left while simultaneously reading item details on the right. On mobile screens with severe horizontal constraints, we degrade gracefully to the One-Window Drilldown (TW7.2), which mandates an unmistakable Back navigation button.
+
+On the right: Visual scanning and space compression. Thumbnail Grids allow human vision to scan hundreds of images in parallel, while Carousels compress multiple hero banners horizontally. Meanwhile, Pagination and New-Item Rows structure infinite data and streamline record creation.
+
+💡 難字與專業術語解說：
+- two-panel split view: 雙欄分割檢視（左側清單、右側詳細資料的經典架構）
+- one-window drilldown: 單視窗逐層深入（點選清單項目後全頁滑入詳細頁）
+- degrade gracefully: 優雅降級（在受限環境下平順切換為適配版型而不破壞功能）
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell017.png" alt="Section 4: Data Display (Lists) Overview" />
+</div>
+
+<!--
+Review the pattern suite for Section 4: Data Display and Collections.
+
+Covering Two-Panel Selector, One-Window Drilldown, Alternative Views, Thumbnail Grid, Carousel, Row Striping, Pagination, and New-Item Row.
+
+These patterns govern how data arrays and records are mapped to interactive UI components across responsive breakpoints.
+
+💡 難字與專業術語解說：
+- row striping: 斑馬紋隔行著色（提升多列表格橫向閱讀辨識度的樣式技巧）
+- responsive breakpoint: 響應式斷點（畫面寬度觸發版型重排的臨界像素值）
+- data array: 資料陣列、集合
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell018.png" alt="Desktop Split View vs. Mobile Drilldown" />
+</div>
+
+<!--
+Compare these two responsive paradigms:
+
+Left: Desktop Slack using Two-Panel Split View (TW7.1). Channels on the left remain visible while reading messages on the right, eliminating context switching.
+Right: iOS Mail using One-Window Drilldown (TW7.2). Selecting an email transitions into a dedicated reading view, with a clear "Back" button and prev/next arrows (1 of 50).
+
+When designing responsive web apps, engineers must dynamically switch between these two modes based on container width media queries.
+
+💡 難字與專業術語解說：
+- context switching: 情境切換（在不同畫面間跳轉帶來的認知重新定向耗損）
+- media query: 媒體查詢（CSS 偵測螢幕寬度與裝置特性的語法）
+- drilldown: 逐層深入、下鑽探查
+-->
+---
+<!-- _class: full-image-slide -->
+
+<div class="centered-image">
+  <img src="../../img/ch06/tidwell/tidwell019.png" alt="Thumbnail Grid & Carousel" />
+</div>
+
+<!--
+Examine space compression versus scanning density:
+
+Top: Windows Photos using a Thumbnail Grid (TW7.5). High-density matrix layout allowing human eyes to scan dozens of assets in a fraction of a second.
+Bottom: Web hero carousel (TW7.6). Compressing computer systems, security, and cloud computing into one viewport height. Note the circled arrow affordance—carousels require explicit navigation controls!
+
+Thumbnail grids maximize parallel visual scanning, while carousels compress multiple prominent visual assets horizontally into a single viewport fold.
+
+💡 難字與專業術語解說：
+- visual scanning: 視覺掃描（人眼在多項元素間快速掠過以尋找目標的行為）
+- viewport fold: 視窗首屏折疊線（無需向下滾動即可看見的第一屏區域）
+- affordance: 可供性、預設用途（引導使用者發現其可點擊操作的線索）
+-->
+---
+## The Tidwell UX Mandate: Engineering Usability Checklist
+
+> **The Engineering Mindset:** Patterns are not meant for mindless copying—they build resilient cognitive safety nets into software architectures.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. The 3 Core Mandates
+- **Build Familiarity**:
+  - Leverage habituation and web conventions so users feel instantly at home on first launch.
+- **Reduce Cognitive Load**:
+  - Use progressive disclosure, wizards, and spatial memory so screens remain uncluttered at every moment.
+- **Empower the User**:
+  - Provide escape hatches, undo buttons, and alternative views so users maintain full agency and control.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. Pre-Release Engineering Checklist
+- [ ] **Safe to explore?** Is there a non-destructive Undo or rollback mechanism?
+- [ ] **Escape hatch present?** Does every modal dialog have an obvious "✕" and ESC key dismiss?
+- [ ] **Location clear?** Do breadcrumbs, steppers, or scrollbars answer *"Where am I?"*
+- [ ] **Responsive parity?** Does desktop split view degrade gracefully to mobile drilldown with a Back button?
+- [ ] **Discovery balanced?** Are search, editorial features, and category browsing working together?
+
+</div>
+</div>
+
+<!--
+Before concluding Module 6.3, internalize this Pre-Release Engineering Usability Checklist.
+
+When building front-end components or reviewing pull requests, do not simply evaluate CSS styling or test coverage—interrogate the interaction architecture:
+- Is it safe to explore? Does an accidental click trigger irreversible state loss?
+- Where is the escape hatch? Does every modal dialog provide an intuitive '✕' and ESC key dismiss?
+- Is location unambiguous? Can users orient themselves in five seconds via breadcrumbs or steppers?
+- Is responsive parity preserved? Does a desktop split view degrade gracefully to mobile drilldowns?
+- Is discovery balanced across search, features, and browsing?
+
+Transforming these pattern requirements into engineering acceptance criteria guarantees software that earns long-term user trust.
+
+💡 難字與專業術語解說：
+- acceptance criteria: 驗收條件（敏捷開發中判定功能是否合格的具體標準）
+- irreversible: 不可逆的、無法挽回的
+- parity: 對等性、一致性（跨裝置在體驗與能力上的對等平衡）
+-->
+
+---
+<!-- _class: lead -->
+<!-- header: '6.4 AI for UX (AI4UX)' -->
+
+# **6.4 AI for UX (AI4UX): Amplifying Design Workflows**
 
 > "AI will not replace UX designers, but UX designers who use AI will replace those who do not."
 
 <!--
 We now transition into Part 2: AI-Powered UX and Interaction Design.
 
-In Module 6.3, we explore AI for UX (AI4UX). How can software engineers and designers leverage Large Language Models, generative image tools, and autonomous AI agents to dramatically accelerate the UX design lifecycle?
+In Module 6.4, we explore AI for UX (AI4UX). How can software engineers and designers leverage Large Language Models, generative image tools, and autonomous AI agents to dramatically accelerate the UX design lifecycle?
 
 We introduce the RTCF prompt engineering framework, explore synthetic persona generation, examine automated heuristic evaluation audits, and look at multi-agent design systems.
 
@@ -1522,14 +2202,14 @@ To summarize this slide, remember this key takeaway: Multi-agent architectures d
 -->
 ---
 <!-- _class: lead -->
-<!-- header: '6.4 UX for AI (UX4AI)' -->
+<!-- header: '6.5 UX for AI (UX4AI)' -->
 
-# **6.4 UX for AI (UX4AI): Designing Human-Centered AI**
+# **6.5 UX for AI (UX4AI): Designing Human-Centered AI**
 
 > "The hardest part of building AI products is not training the model—it is designing the interface that makes probabilistic intelligence understandable, steerable, and trustworthy."
 
 <!--
-We now enter Module 6.4: UX for AI (UX4AI).
+We now enter Module 6.5: UX for AI (UX4AI).
 
 Notice the inversion! In the previous section, we used AI to help us design software (AI for UX). Now, we ask the opposite, profound question: How do we design the user experience OF an AI product? (UX for AI).
 
@@ -1742,15 +2422,15 @@ To summarize this slide, remember this key takeaway: Human-in-the-loop confirmat
 
 ---
 <!-- _class: lead -->
-<!-- header: '6.5 Evaluation & Synthesis' -->
+<!-- header: '6.6 Evaluation & Synthesis' -->
 
-# **6.5 Evaluation & Engineering Synthesis**
+# **6.6 Evaluation & Engineering Synthesis**
 
 > "Evaluating usability with 5 users uncovers roughly 85% of all usability problems."
 > — *Jakob Nielsen*
 
 <!--
-We conclude Chapter 6 with Module 6.5: Evaluation and Engineering Synthesis.
+We conclude Chapter 6 with Module 6.6: Evaluation and Engineering Synthesis.
 
 How do engineering teams rigorously evaluate interfaces before and after release?
 
