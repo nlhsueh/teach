@@ -59,8 +59,8 @@ if (A == 2 || X > 1) {
 ## 🧪 1.3 實作練習 (Lab)
 
 ### 📋 Lab 1: Triangle 三角形測試與覆蓋度分析
-1.  開啟待測檔案 [Triangle.java](../../src/main/java/u05_utest/bva/Triangle.java)。
-2.  在 `src/test/java/u05_utest/bva/` 目錄下檢視或建立測試類別。
+1.  開啟待測檔案 [Triangle.java](../../src/main/java/u06_coverage/Triangle.java)。
+2.  在 `src/test/java/u06_coverage/` 目錄下檢視或執行測試類別 [TriangleCoverageTest.java](../../src/test/java/u06_coverage/TriangleCoverageTest.java)。
 3.  使用 IntelliJ 的 **Run with Coverage** 檢驗測試涵蓋度：
     *   說明 Class、Method、Line、Branch 涵蓋率的實質意義。
     *   實務工具（IntelliJ/JaCoCo）中顯示的 Branch 覆蓋率，和講義中學術定義的「條件涵蓋度」與「分支涵蓋度」有何差異？
@@ -68,8 +68,8 @@ if (A == 2 || X > 1) {
 5.  若發現某些分支無論如何都無法達到 100% 覆蓋，請分析其原因（是否為等價邏輯或死碼），並嘗試改善。
 
 ### 📋 Lab 2: Binary Search 二元搜尋
-1.  開啟待測檔案 [BinarySearch.java](../../src/main/java/u05_utest/ep/BinarySearch.java)。
-2.  在 `src/test/java/u05_utest/ep/` 目錄下檢視或建立測試類別。
+1.  開啟待測檔案 [BinarySearch.java](../../src/main/java/u06_coverage/BinarySearch.java)。
+2.  在 `src/test/java/u06_coverage/` 目錄下檢視或執行測試類別 [BinarySearchCoverageTest.java](../../src/test/java/u06_coverage/BinarySearchCoverageTest.java)。
 3.  設計測試案例，並使用 Coverage 工具檢驗。逐步添加測資直到 **Line 與 Branch 覆蓋率達到 100%**。
 
 ### 📋 Lab 3: Loan Calculator 貸款利率計算

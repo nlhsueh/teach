@@ -205,10 +205,12 @@
                 </dependencies>
                 <configuration>
                     <targetClasses>
+                        <param>u06_coverage.*</param>
                         <param>u06_mutation.*</param>
                         <param>demo.mutant.*</param>
                     </targetClasses>
                     <targetTests>
+                        <param>u06_coverage.*Test</param>
                         <param>u06_mutation.*Test</param>
                     </targetTests>
                     <mutators>STRONGER</mutators>

@@ -16,8 +16,8 @@
 
 ```
 Ch06 知識架構全景：
-【插樁工具】6.1 JaCoCo 涵蓋度量測實戰 ＆ Bytecode 動態插樁原理
-【邏輯覆蓋】6.2 涵蓋度階梯 (敘述 ➔ 分支 ➔ 條件 ➔ 多重條件 ➔ MC/DC 航太標準)
+【邏輯覆蓋】6.1 涵蓋度階梯 (敘述 ➔ 分支 ➔ 條件 ➔ 多重條件 ➔ MC/DC 航太標準)
+【插樁工具】6.2 JaCoCo 涵蓋度量測實戰 ＆ Bytecode 動態插樁原理
 【結構分析】6.3 基本路徑測試 (Basis Path) ＆ McCabe 圈複雜度 (Cyclomatic Complexity)
 【質量驗證】6.4 變異測試 (Mutation Testing with PITest) ＆ 變異分數
 【現代前沿】6.5 AI 輔助白箱測試（未覆蓋路徑測資合成 ＆ 等價變異體識別）
@@ -34,30 +34,7 @@ Ch06 知識架構全景：
 
 ---
 
-## 🧑‍💻 6.1 Lab: 測試涵蓋度
-
-[涵蓋度 Lab](../../LabDemo/docs/u06_wbtesting/whitebox_test.md)
-
-<!-- id: sqa-ch06-ccq1 -->
-#### 🙋 6.1.1 概念核對問答 (CCQ 1)
-
-* **是非題**：JaCoCo 作為 Java 軟體測試覆蓋率工具，在測量覆蓋率時是透過修改 Java 原始碼檔 (.java) 並插入計數器變數來追蹤執行狀態的。
-
-A) 正確 (True)
-B) 錯誤 (False)
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch06-ccq1)
-
-<details>
-<summary>點擊查看【概念核對問答】答案與解析</summary>
-
-**正確答案：B**
-* **解析**：
-  * **錯誤**：JaCoCo 並不修改原始碼，而是利用 Java Agent 技術，在 JVM 載入類別檔案時，動態對編譯後的位元組碼（Bytecode, .class 檔案）進行插樁（On-the-fly Instrumentation）。這使得測試與開發程式碼解耦，無需改動原始碼即可測量覆蓋率。
-
-</details>
-
-## 6.2 測試涵蓋度 (Testing Coverage)
+## 6.1 測試涵蓋度 (Testing Coverage)
 
 ```java=
 input A,B,X 
@@ -68,7 +45,7 @@ if (A=2) or (X>1) then
 print Y
 ```
 
-### 6.2.1 敘述涵蓋度 (Statement Coverage)
+### 6.1.1 敘述涵蓋度 (Statement Coverage)
 
 *設計測試案例，使每一條指令敘述至少執行一次*。輸入為 (A,B,X) = (2,0,3) 就可覆蓋所有可執行指令，結果會得到 3。即便所有的敘述都被執行了，此方法並不是很「嚴謹」的方法：如果我們犯了以下的錯誤：
 
@@ -78,7 +55,7 @@ print Y
 
 測試案例 (2,0,3) 並不能找出你犯的錯誤，這表示這組測試案例太弱了。事實上，敘述覆蓋準則是這幾個方法中最弱的一個，白箱測試至少要做到此測試。
 
-### 6.2.2 分支涵蓋度 (Branch Coverage)
+### 6.1.2 分支涵蓋度 (Branch Coverage)
 分支涵蓋度（branch coverage）又稱為決策涵蓋度（decision coverage）。其目標是設計測試案例使程式每個判斷取 *真分支和取假分支至少執行一次*。上述的例子有兩個 branch:
 
 - (A>1) AND (B=0)
@@ -93,7 +70,7 @@ A,B,X若為(3,0,3)和(3,1,1)能使得 (A>1) AND (B=0)和(A=2) OR (X>1)這兩個�
 
 ❓ 針對任何程式，我們一定可以找到一群測試案例，使得分支涵蓋度為百分百？
 
-### 6.2.3 條件涵蓋度 (Condition Coverage)
+### 6.1.3 條件涵蓋度 (Condition Coverage)
 
 條件覆蓋（condition）和分支覆蓋類似，不過條件覆蓋是以某項條件為主，而決策涵蓋則以整個布林運算式為主。使程式中每個判斷的每個條件至少執行一次。例如 (A>1) AND (B=0) 運算式包含 A>1 和 B=0 兩條件。前述程式具有下列四條件 A>1、B=0、A=2、X>1。欲使這四個條件都能產生真與假的值，測試案例須包含以下八種案例：
 
@@ -140,12 +117,12 @@ A,B,X若為(3,0,3)和(3,1,1)能使得 (A>1) AND (B=0)和(A=2) OR (X>1)這兩個�
 
 因此，(t1, t2, t3) 可以滿足條件涵蓋度與分支涵蓋度百分百。
 
-### 6.2.4 分支與條件涵蓋度 (Branch/Condition Coverage)
+### 6.1.4 分支與條件涵蓋度 (Branch/Condition Coverage)
 
 如上節所言，條件覆蓋嚴密性通常比決策覆蓋高，*但非絕對*。例如 (1,0,3) 和 (2,1,1) 這組數據，雖然使上述四個條件均產生真與假的值，但並未使運算式 (A>1) AND (B=0) 和 (A=2) OR (X>1) 具有真與假的值。 因此，『分支與條件涵蓋度」設計足夠的測試案例，使判斷中每個條件的所有可能值至少執行一次，同時每個判斷的所有可能判斷結果至少執行一次。上例中， (2,0,3) 和 (1,1,1) 可達成此目標。
 
 <!-- id: sqa-ch06-ccq2 -->
-#### 🙋 6.2.4.1 概念核對問答 (CCQ 2)
+#### 🙋 6.1.4.1 概念核對問答 (CCQ 2)
 
 * **單選題**：在包含短路求值 (Short-circuit evaluation) 的條件句 `if (A && B)` 中，若我們設計的測試案例集達到了 100% 分支涵蓋度 (Branch Coverage)，是否必定能達成 100% 條件涵蓋度 (Condition Coverage)？
 
@@ -165,7 +142,7 @@ D) 取決於編譯器優化，與短路求值無關
 
 </details>
 
-#### 6.2.4.2 實務工具中的分支與條件涵蓋度 (Branch Coverage in Practice Tools)
+#### 6.1.4.2 實務工具中的分支與條件涵蓋度 (Branch Coverage in Practice Tools)
 
 在學術定義中，**分支涵蓋度 (Branch Coverage)** 通常指的是「決策涵蓋度 (Decision Coverage)」，即將整個 `if (A && B)` 視為一個單一的決策點（只有 True 與 False 兩種分支結果）。然而，在實務測試工具中，其定義與行為有所不同：
 
@@ -222,7 +199,7 @@ D) 取決於編譯器優化，與短路求值無關
 | 12 | 11 | *T*  |  F  | *F*  |  T  |  T  |
 | 12 |  2 | *T*  |  F  | *T*  |  F  |  F  |
 
-### 6.2.5 多重條件組合涵蓋度 (Multiple Condition Coverage)
+### 6.1.5 多重條件組合涵蓋度 (Multiple Condition Coverage)
 
 ```java=
 input A,B,X 
@@ -260,7 +237,7 @@ print Y
 > Programmer 必須自己進行單元測試，配合 JUnit 及涵蓋度檢查工具的使用，檢查自己的測試是否足夠。
 
 
-### 6.2.6 路徑涵蓋度 (Path Coverage)
+### 6.1.6 路徑涵蓋度 (Path Coverage)
 
 上述的幾種方法，涵蓋度都是以敘述、條件或是分支為單位，如果把「路徑」考量進去就會越複雜。例如上述的 (2,0,4), (2,1,1), (1,0,2), (1,1,1) 測試資料，雖然可以把所有的 敘述、條件、分支都涵蓋，但以路徑的角度來看，他只涵蓋了 a-c-e, a-b-e, a-b-d 等三個路徑。
 
@@ -279,7 +256,7 @@ print Y
 統整了本節所講的涵蓋度的關係。最上方（路徑涵蓋度）是最嚴謹的，依序往下。分支涵蓋度與條件涵蓋度沒有絕對的關係，因此平行。分支涵蓋度百分百時，敘述涵蓋度也為百分百。值得一提的是，條件涵蓋度百分百時並不保證敘述涵蓋度為百分百。
 
 
-### 6.2.7 MC/DC 涵蓋度 (Modified Condition/Decision Coverage)
+### 6.1.7 MC/DC 涵蓋度 (Modified Condition/Decision Coverage)
 
 MC/DC 的核心理念是：**確保每個條件（Condition）都能獨立地影響整個決策（Decision）的最終輸出結果。**
 
@@ -302,7 +279,7 @@ MC/DC 的核心理念是：**確保每個條件（Condition）都能獨立地影
 [See Example](https://docs.google.com/spreadsheets/d/1Vs-44wjK8ipsNIYTRjKBwxJ3flpK_LmxlxQ775O1EwM/edit?gid=0#gid=0)
 
 <!-- id: sqa-ch06-ccq3 -->
-#### 🙋 6.2.7.1 概念核對問答 (CCQ 3)
+#### 🙋 6.1.7.1 概念核對問答 (CCQ 3)
 
 * **單選題**：考慮一個包含 n 個彼此獨立之布林條件的複雜判斷式（例如 `A && B && C`，n = 3）。若要滿足 MC/DC 覆蓋率，最少與最多分別需要設計幾個測試案例？
 
@@ -322,7 +299,7 @@ D) 最少 2n 個，最多 2ⁿ 個
 
 </details>
 
-### 6.2.8 百分百涵蓋度的迷思
+### 6.1.8 百分百涵蓋度的迷思
 
 在軟體開發中，我們通常**不會要求程式碼覆蓋率 (Code Coverage) 達到 100%**，這背後有幾個主要的原因：
 
@@ -357,6 +334,34 @@ D) 最少 2n 個，最多 2ⁿ 個
 
 > 📌 **程式碼覆蓋率是一個指標，而不是目標。** 它的價值在於作為一個**發現未測試區域的工具**，而不是一個需要達成的硬性標準。
 
+---
+
+## 🧑‍💻 6.2 Lab: 測試涵蓋度與 JaCoCo
+
+* 📄 **實習手冊**：[涵蓋度 Lab](../../LabDemo/docs/u06_wbtesting/whitebox_test.md) ｜ [度量分析手冊](../../LabDemo/docs/u06_wbtesting/metrics.md)
+* 💻 **待測原始碼**：`LabDemo/src/main/java/u06_coverage/`（包含 [Triangle.java](../../LabDemo/src/main/java/u06_coverage/Triangle.java)、[BinarySearch.java](../../LabDemo/src/main/java/u06_coverage/BinarySearch.java)、[GradeAverage.java](../../LabDemo/src/main/java/u06_coverage/GradeAverage.java)）
+* 🧪 **測試實作**：`LabDemo/src/test/java/u06_coverage/`（包含 [TriangleCoverageTest.java](../../LabDemo/src/test/java/u06_coverage/TriangleCoverageTest.java)、[BinarySearchCoverageTest.java](../../LabDemo/src/test/java/u06_coverage/BinarySearchCoverageTest.java)、[GradeAverageBasisPathTest.java](../../LabDemo/src/test/java/u06_coverage/GradeAverageBasisPathTest.java)）
+
+<!-- id: sqa-ch06-ccq1 -->
+#### 🙋 6.2.1 概念核對問答 (CCQ 1)
+
+* **是非題**：JaCoCo 作為 Java 軟體測試覆蓋率工具，在測量覆蓋率時是透過修改 Java 原始碼檔 (.java) 並插入計數器變數來追蹤執行狀態的。
+
+A) 正確 (True)
+B) 錯誤 (False)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch06-ccq1)
+
+<details>
+<summary>點擊查看【概念核對問答】答案與解析</summary>
+
+**正確答案：B**
+* **解析**：
+  * **錯誤**：JaCoCo 並不修改原始碼，而是利用 Java Agent 技術，在 JVM 載入類別檔案時，動態對編譯後的位元組碼（Bytecode, .class 檔案）進行插樁（On-the-fly Instrumentation）。這使得測試與開發程式碼解耦，無需改動原始碼即可測量覆蓋率。
+
+</details>
+
+---
 
 ## 6.3 基本路徑測試 (Basis Path Testing)
 

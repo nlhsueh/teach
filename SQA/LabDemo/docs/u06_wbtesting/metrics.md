@@ -94,6 +94,16 @@ MetricsReloaded 提供的這些指標通常需要**結合起來**看，才能全
 | **類別職責過多** | `WMC` **高** 且 `LOC` **高** | 類別承擔了過多的責任（神級物件）。 | 應使用**設計模式**，將類別**拆分**成多個更專業的類別。 |
 | **方法複雜度不一** | `WMC` 高，但 `OCavg` 低 | 類別有很多簡單方法，但可能有一兩個**極度複雜**的方法。 | 專注於重構那幾個特別複雜的方法。 |
 
+---
+
+## 🧪 實作練習範例 (Demo Code)
+* **待測原始碼**：[GradeAverage.java](../../src/main/java/u06_coverage/GradeAverage.java)
+* **基本路徑測試案例**：[GradeAverageBasisPathTest.java](../../src/test/java/u06_coverage/GradeAverageBasisPathTest.java)
+* **練習目標**：
+  1. 對 `GradeAverage.java` 繪製控制流程圖 (CFG)，計算 McCabe 圈複雜度 `V(G) = P + 1 = 6`。
+  2. 執行 `MetricsReloaded` 插件，檢視 `computeAverage` 方法的 `v(G)` 與 `CogC` 數值。
+  3. 執行 `GradeAverageBasisPathTest` 驗證 6 條獨立路徑的測試覆蓋率！
+
 這些指標是您維護高品質程式碼庫的強大工具。
 
 您想讓我針對其中一個指標，例如 **Cognitive Complexity (CogC)**，提供更多關於如何降低它的技巧嗎？
