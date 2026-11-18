@@ -31,13 +31,13 @@ footer: 'Ch03 軟體測試基礎'
 <div>
 
 ### 🧭 核心原則與多維體系
-- **3.1 ISTQB 7 大軟體測試經典原則**：
+- [**3.1 ISTQB 7 大軟體測試經典原則**](#3)：
   - 核心哲學：測試顯示缺陷存在而非不存在、窮盡測試不可能
   - 工程實務：及早測試 (Shift-Left)、缺陷群聚 (80/20)、殺蟲劑悖論與無錯謬誤
-- **3.2 測試多維度分類體系與金字塔**：
+- [**3.2 測試多維度分類體系與金字塔**](#17)：
   - 雙重靈魂叩問：驗證 (Verification - 製程) vs. 確認 (Validation - 價值)
   - 全方位矩陣：缺失 vs. 確認、靜態 vs. 動態、黑箱 vs. 白箱與測試金字塔
-- **3.3 V 開發模型與水平雙向追溯 (RTM)**：
+- [**3.3 V 開發模型與水平雙向追溯 (RTM)**](#29)：
   - 階段水平對稱架構：需求對驗收、高階設計對整合、詳細設計對單元
   - 雙向追溯矩陣：正向杜絕覆蓋盲區、反向杜絕孤兒測試，破除後測偏差
 
@@ -45,13 +45,13 @@ footer: 'Ch03 軟體測試基礎'
 <div>
 
 ### 📐 案例實務與測試全景
-- **3.4 測試案例設計與 AI 協同實踐**：
+- [**3.4 測試案例設計與 AI 協同實踐**](#34)：
   - 行為文氏圖：規格 (Specified)、程式碼 (Programmed) 與測試 (Verified) 交集
   - 測試案例 5 大要件（前置、輸入、步驟、預期、Oracle）與 AI 協同邊界補全
-- **3.5 測試全景 3W2H 與 Test Oracle 難題**：
+- [**3.5 測試全景 3W2H 與 Test Oracle 難題**](#43)：
   - 測試全景體系：Who 誰測、What 測什麼、Why 為何測、How 如何測、How to Evaluate
   - 確定性等值比對 vs. 現代 AI 隨機系統之變質測試 (Metamorphic Testing)
-- **3.6 綜合練習與實戰思維檢定**：
+- [**3.6 綜合練習與實戰思維檢定**](#58)：
   - 經典原則辨析、V 模型追溯分析、MaxHeap 邊界案例與 AI 協同設計實戰
 
 </div>
@@ -756,7 +756,7 @@ double div(double x, double y) {
 | **邊界與極端測資生成** | ⭐ 人腦易疲勞、易遺漏冷門 Unicode/極大值 | ⭐⭐⭐ 秒速生成數千組極端字串、溢位邊界 | **AI 輔助**：批量生成邊界與攻擊 Payload |
 | **測試結果仲裁 (Oracle)** | ⭐⭐⭐ 具備客觀真理的最終仲裁權 | ⭐ 自我印證偏誤，易產生假綠燈斷言 | **人類審查**：審查斷言邏輯並納入 CI 自動化 |
 
-> 🛠️ **實習演練手冊**：參閱 [`LabDemo/docs/u03_principles/test_spec_ai_codesign.md`](../../lab.html?file=LabDemo/docs/u03_principles/test_spec_ai_codesign.md)（電商促銷計費規格設計與 AI 生成盲區審查）。
+> 🛠️ **實習演練手冊**：參閱 [`test_spec_ai_codesign.md`](../../lab.html?file=LabDemo/docs/u03_principles/test_spec_ai_codesign.md)（電商促銷計費規格設計與 AI 生成盲區審查）。
 
 ---
 
@@ -1006,7 +1006,7 @@ double div(double x, double y) {
 </div>
 </div>
 
-> 🛠️ **實習沙盒手冊**：參閱 [`LabDemo/docs/u03_principles/test_oracle_metamorphic.md`](../../lab.html?file=LabDemo/docs/u03_principles/test_oracle_metamorphic.md)（無標準答案之變質關係斷言沙盒）｜ 更多落地模式於 **第 5 章黑箱測試** 深入展開！
+> 🛠️ **實習沙盒手冊**：參閱 [`test_oracle_metamorphic.md`](../../lab.html?file=LabDemo/docs/u03_principles/test_oracle_metamorphic.md)（無標準答案之變質關係斷言沙盒）｜ 更多落地模式於 **第 5 章黑箱測試** 深入展開！
 
 </div>
 
@@ -1295,6 +1295,72 @@ double div(double x, double y) {
       header.innerHTML = "";
       var wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
+    });
+
+    // 3. Auto-link and calibrate section items on the Outline slide (Slide 2)
+    var secByNum = {};
+    sections.forEach(function(s) {
+      var m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) {
+        secByNum[m[1]] = s.id;
+      }
+    });
+    var outlineSlide = document.querySelector("section.outline-slide, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(function(li) {
+        var existingLink = li.querySelector(":scope > a, :scope > strong > a");
+        if (existingLink) {
+          var m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.href = "#" + secByNum[m[1]];
+          }
+          return;
+        }
+        var strong = li.querySelector(":scope > strong, :scope > b");
+        if (strong) {
+          var m = strong.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            var a = document.createElement("a");
+            a.href = "#" + secByNum[m[1]];
+            strong.parentNode.insertBefore(a, strong);
+            a.appendChild(strong);
+          }
+        }
+      });
+    }
+
+    // 4. Auto-clamp hover zoom scale (--zoom-scale) so enlarged images never exceed slide (1280x720)
+    function updateImgZoomScale(img) {
+      var sec = img.closest("section");
+      if (!sec) return;
+      var w = img.offsetWidth;
+      var h = img.offsetHeight;
+      if (!w || !h) return;
+      var x = 0, y = 0, cur = img;
+      while (cur && cur !== sec && sec.contains(cur)) {
+        x += cur.offsetLeft;
+        y += cur.offsetTop;
+        cur = cur.offsetParent;
+      }
+      var secW = sec.offsetWidth || 1280;
+      var secH = sec.offsetHeight || 720;
+      var padSide = 36;
+      var padTop = 30;
+      var isLeftOrigin = img.closest(":is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child");
+      var availW = isLeftOrigin ? (secW - padSide - x) : ((x + w) - padSide);
+      var availH = (y + h) - padTop;
+      var tag = img.tagName ? img.tagName.toLowerCase() : "";
+      var cap = (tag === "pre" || tag === "marp-pre") ? 1.42 : 2.0;
+      var maxS = Math.min(cap, availW / w, availH / h, (secH - 60) / h);
+      if (maxS < 1.0) maxS = 1.0;
+      img.style.setProperty("--zoom-scale", maxS.toFixed(3));
+    }
+    document.querySelectorAll(".card img:not(.emoji), div.content-figure img:not(.emoji), .card pre, .card marp-pre").forEach(function(img) {
+      if (img.dataset.zoomBound) return;
+      img.dataset.zoomBound = "true";
+      img.addEventListener("mouseenter", function() { updateImgZoomScale(img); });
+      img.addEventListener("load", function() { updateImgZoomScale(img); });
+      updateImgZoomScale(img);
     });
   }
 

@@ -30,14 +30,14 @@ footer: 'Ch08 系統測試、BDD 與非功能性驗證'
 <div>
 
 ### 🎯 業務流程、BDD 與現代 E2E 驗證
-- **8.1 使用案例與流程測試 (Use Case Testing)**：
+- [**8.1 使用案例與流程測試 (Use Case Testing)**](#3)：
   - 端到端使用者視角、對話式事件流（圖書館預借媒體）
   - 基本流 (BF) 與替代流 (AF<sub>1</sub>, AF<sub>2</sub>) 路徑組合設計與 ATM 演練
-- **8.2 行為驅動開發 (BDD) 與 Cucumber 測試**：
+- [**8.2 行為驅動開發 (BDD) 與 Cucumber 測試**](#7)：
   - 活文件 (Living Doc) 哲學與三方共識 (Three Amigos)
   - Gherkin 語法 (`Given-When-Then`、`Scenario Outline` + `Examples`)
   - Java `BMICalculatorStepDefs` 參數自動映射實戰 (CCQ 1)
-- **8.3 微服務契約、Playwright 與 AI 畫面模擬**：
+- [**8.3 微服務契約、Playwright 與 AI 畫面模擬**](#12)：
   - 微服務 API 漂移與 **Pact 消費者驅動契約測試**
   - **Playwright** 現代 Web E2E、**Headless 無頭光柵化**與 **Spectron / Electron**
   - **AI 瀏覽器代理人 (Browser Subagent)** 多模態雙軌感知與三代演進 (CCQ 2)
@@ -46,16 +46,16 @@ footer: 'Ch08 系統測試、BDD 與非功能性驗證'
 <div>
 
 ### 🛡️ 全方位非功能性測試工程
-- **8.4 可用性測試 (Usability Testing)**：
+- [**8.4 可用性測試 (Usability Testing)**](#18)：
   - iPhone 計算機 `77 - 38.5 = 0` 之謎與 **Nielsen 十大可用性原則**
   - Hallway 走道測試與 **A/B 測試法**線上分流驗證 (CCQ 3)
-- **8.5 效能測試與負載工程 (Performance & Load)**：
+- [**8.5 效能測試與負載工程 (Performance & Load)**](#23)：
   - 負載/壓力/突波/浸泡測試、Scalability 延展性、昂貴與困難根源
   - 虛擬使用者 (VUs)、**規劃 (使用輪廓/Ramp-up) ➔ 執行 (Thresholds) ➔ 分析 (三大黃金指標與飽和點)**、**k6 vs. JMeter** (CCQ 4)
-- **8.6 相容性測試 (Compatibility)**：跨環境/瀏覽器與官方認證測試
-- **8.7 安全性測試 (Security)**：攻擊者思維、**OWASP Top 10**、**SAST/DAST/SCA/Fuzzing** 與 **STRIDE + CVSS** 程序 (CCQ 5)
-- **8.8 回復性與彈性測試 (Resilience)**：**MTBF/RPO/RTO/MTTR**、WAL 回滾、Resilience4j 斷路器與混沌工程四步程序 (CCQ 6)
-- **8.9 課堂實習與六大真實系統測試選型演練**
+- [**8.6 相容性測試 (Compatibility)**](#31)：跨環境/瀏覽器與官方認證測試
+- [**8.7 安全性測試 (Security)**](#33)：攻擊者思維、**OWASP Top 10**、**SAST/DAST/SCA/Fuzzing** 與 **STRIDE + CVSS** 程序 (CCQ 5)
+- [**8.8 回復性與彈性測試 (Resilience)**](#37)：**MTBF/RPO/RTO/MTTR**、WAL 回滾、Resilience4j 斷路器與混沌工程四步程序 (CCQ 6)
+- [**8.9 課堂實習與六大真實系統測試選型演練**](#41)
 
 </div>
 </div>
@@ -348,9 +348,9 @@ public class BMICalculatorStepDefs {
 }
 ```
 
-- **🧪 課堂實習對應 (`LabDemo/src/test/java/u08_cucumber/`)**：
-  - **BMI 範例**：`u08_cucumber/bmi/BMICalculatorStepDefs.java` 與 `RunCucumberTest.java`
-  - **電商範例**：`u08_cucumber/ecommerce/` (`Login.java`, `Register.java`, `Cart.java`) 與 Ninja 購物網 / Rapi Recorder 錄製回放。
+- **🧪 課堂實習對應 ([`bmi_cucumber.md`](../../lab.html?file=LabDemo/docs/u09_cucumber_bdd/bmi_cucumber.md))**：
+  - **BMI 範例**：[`BMICalculatorStepDefs.java`](../../lab.html?file=LabDemo/src/test/java/u08_cucumber/bmi/BMICalculatorStepDefs.java) 與 [`RunCucumberTest.java`](../../lab.html?file=LabDemo/src/test/java/u08_cucumber/bmi/RunCucumberTest.java)
+  - **電商範例**：[`Login.java`](../../lab.html?file=LabDemo/src/test/java/u08_cucumber/ecommerce/Login.java)、[`Register.java`](../../lab.html?file=LabDemo/src/test/java/u08_cucumber/ecommerce/Register.java)、[`Cart.java`](../../lab.html?file=LabDemo/src/test/java/u08_cucumber/ecommerce/Cart.java) 與 Ninja 購物網 / Rapi Recorder 錄製回放。
 
 </div>
 </div>
@@ -1353,12 +1353,12 @@ public OrderResult fallback(Order order, Throwable t) {
 <div class="card">
 
 ### 🥒 實習 A：BDD、契約與 Web E2E (`u08 / u09`)
-- **1. Cucumber BDD 活文件實戰 (`u08_cucumber`)**：
-  - 執行 `u08_cucumber/bmi/RunCucumberTest.java` 與 `BMICalculatorStepDefs.java`，觀察 `Scenario Outline` 表格如何自動驅動測試。
-  - 延伸體驗 `u08_cucumber/ecommerce/` 電商註冊、登入與購物車 BDD 劇本。
+- **1. Cucumber BDD 活文件實戰 ([`bmi_cucumber.md`](../../lab.html?file=LabDemo/docs/u09_cucumber_bdd/bmi_cucumber.md))**：
+  - 執行 [`RunCucumberTest.java`](../../lab.html?file=LabDemo/src/test/java/u08_cucumber/bmi/RunCucumberTest.java) 與 [`BMICalculatorStepDefs.java`](../../lab.html?file=LabDemo/src/test/java/u08_cucumber/bmi/BMICalculatorStepDefs.java)，觀察 `Scenario Outline` 表格如何自動驅動測試。
+  - 延伸體驗電商註冊 ([`Register.java`](../../lab.html?file=LabDemo/src/test/java/u08_cucumber/ecommerce/Register.java))、登入 ([`Login.java`](../../lab.html?file=LabDemo/src/test/java/u08_cucumber/ecommerce/Login.java)) 與購物車 ([`Cart.java`](../../lab.html?file=LabDemo/src/test/java/u08_cucumber/ecommerce/Cart.java)) BDD 劇本。
 - **2. Pact 契約與 Playwright E2E (`Lab 11`)**：
   - 手冊：[pact_and_playwright.md](../../lab.html?file=LabDemo/docs/u09_cucumber_bdd/pact_and_playwright.md)
-  - 演練 Consumer-Driven `V4Pact` 契約生成，以及 `u09_web/bmi/BMICalculatorTest.java` 與 Playwright 自動等待、Trace 錄影！
+  - 演練 Consumer-Driven `V4Pact` 契約生成，以及 [`BMICalculatorTest.java`](../../lab.html?file=LabDemo/src/test/java/u09_web/bmi/BMICalculatorTest.java) 與 Playwright 自動等待、Trace 錄影！
 
 </div>
 <div class="card">
@@ -1580,6 +1580,72 @@ public OrderResult fallback(Order order, Throwable t) {
       header.innerHTML = "";
       var wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
+    });
+
+    // 3. Auto-link and calibrate section items on the Outline slide (Slide 2)
+    var secByNum = {};
+    sections.forEach(function(s) {
+      var m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) {
+        secByNum[m[1]] = s.id;
+      }
+    });
+    var outlineSlide = document.querySelector("section.outline-slide, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(function(li) {
+        var existingLink = li.querySelector(":scope > a, :scope > strong > a");
+        if (existingLink) {
+          var m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.href = "#" + secByNum[m[1]];
+          }
+          return;
+        }
+        var strong = li.querySelector(":scope > strong, :scope > b");
+        if (strong) {
+          var m = strong.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            var a = document.createElement("a");
+            a.href = "#" + secByNum[m[1]];
+            strong.parentNode.insertBefore(a, strong);
+            a.appendChild(strong);
+          }
+        }
+      });
+    }
+
+    // 4. Auto-clamp hover zoom scale (--zoom-scale) so enlarged images never exceed slide (1280x720)
+    function updateImgZoomScale(img) {
+      var sec = img.closest("section");
+      if (!sec) return;
+      var w = img.offsetWidth;
+      var h = img.offsetHeight;
+      if (!w || !h) return;
+      var x = 0, y = 0, cur = img;
+      while (cur && cur !== sec && sec.contains(cur)) {
+        x += cur.offsetLeft;
+        y += cur.offsetTop;
+        cur = cur.offsetParent;
+      }
+      var secW = sec.offsetWidth || 1280;
+      var secH = sec.offsetHeight || 720;
+      var padSide = 36;
+      var padTop = 30;
+      var isLeftOrigin = img.closest(":is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child");
+      var availW = isLeftOrigin ? (secW - padSide - x) : ((x + w) - padSide);
+      var availH = (y + h) - padTop;
+      var tag = img.tagName ? img.tagName.toLowerCase() : "";
+      var cap = (tag === "pre" || tag === "marp-pre") ? 1.42 : 2.0;
+      var maxS = Math.min(cap, availW / w, availH / h, (secH - 60) / h);
+      if (maxS < 1.0) maxS = 1.0;
+      img.style.setProperty("--zoom-scale", maxS.toFixed(3));
+    }
+    document.querySelectorAll(".card img:not(.emoji), div.content-figure img:not(.emoji), .card pre, .card marp-pre").forEach(function(img) {
+      if (img.dataset.zoomBound) return;
+      img.dataset.zoomBound = "true";
+      img.addEventListener("mouseenter", function() { updateImgZoomScale(img); });
+      img.addEventListener("load", function() { updateImgZoomScale(img); });
+      updateImgZoomScale(img);
     });
   }
 

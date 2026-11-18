@@ -1,4 +1,4 @@
-package u05_pair;
+package u05_combinatorial.pair;
 
 import io.github.pavelicii.allpairs4j.AllPairs;
 import io.github.pavelicii.allpairs4j.Case;

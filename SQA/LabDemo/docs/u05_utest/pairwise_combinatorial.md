@@ -1,8 +1,8 @@
 # 全成對組合測試 (Pairwise / All-Pairs Testing) 實戰手冊
 
-> 📂 **本單元程式碼專屬目錄 (`u05_pair`)**：
-> - **待測主程式**：[`src/main/java/u05_pair/`](../../src/main/java/u05_pair/)（`SwimmingPoolPricing.java`、`LoanCalculator.java`）
-> - **示範與練習測試**：[`src/test/java/u05_pair/`](../../src/test/java/u05_pair/)（`SwimmingPoolPairwiseDemoTest.java`、`LoanCalculatorPairwiseDemoTest.java`、`LoanCalculatorPairwiseExerciseTest.java`）
+> 📂 **本單元程式碼專屬目錄 (`u05_combinatorial/pair`)**：
+> - **待測主程式**：[`src/main/java/u05_combinatorial/pair/`](../../src/main/java/u05_combinatorial/pair/)（`SwimmingPoolPricing.java`、`LoanCalculator.java`）
+> - **示範與練習測試**：[`src/test/java/u05_combinatorial/pair/`](../../src/test/java/u05_combinatorial/pair/)（`SwimmingPoolPairwiseDemoTest.java`、`LoanCalculatorPairwiseDemoTest.java`、`LoanCalculatorPairwiseExerciseTest.java`）
 
 ---
 
@@ -42,7 +42,7 @@
 
 ## 3. 演算法步進推導範例：游泳池收費系統 (`SwimmingPoolPricing`)
 
-對應教材與投影片的經典範例（實作於 [`src/main/java/u05_pair/SwimmingPoolPricing.java`](../../src/main/java/u05_pair/SwimmingPoolPricing.java)）：
+對應教材與投影片的經典範例（實作於 [`src/main/java/u05_combinatorial/pair/SwimmingPoolPricing.java`](../../src/main/java/u05_combinatorial/pair/SwimmingPoolPricing.java)）：
 * **時間 (T, 3 種)**：t<sub>1</sub> 清晨 (`MORNING`), t<sub>2</sub> 中午 (`NOON`), t<sub>3</sub> 其他 (`OTHER`)
 * **星期 (D, 2 種)**：d<sub>1</sub> 假日 (`HOLIDAY`), d<sub>2</sub> 平日 (`WEEKDAY`)
 * **會員 (M, 2 種)**：m<sub>1</sub> 會員 (`true`), m<sub>2</sub> 非會員 (`false`)
@@ -80,7 +80,7 @@
 
 ### Step 3：`AllPairs4J` 核心 API 詳解與使用方法（以游泳池收費系統為例）
 
-在 [`SwimmingPoolPairwiseDemoTest.java`](../../src/test/java/u05_pair/SwimmingPoolPairwiseDemoTest.java) 中，我們不用自己手寫迴圈挑測資，而是直接呼叫 Java 成對測試框架 **[AllPairs4J](https://github.com/pavelicii/allpairs4j)**（Maven 座標：`io.github.pavelicii:allpairs4j:2.0.0`）自動完成上述 Step 2 的貪婪計算。
+在 [`SwimmingPoolPairwiseDemoTest.java`](../../src/test/java/u05_combinatorial/pair/SwimmingPoolPairwiseDemoTest.java) 中，我們不用自己手寫迴圈挑測資，而是直接呼叫 Java 成對測試框架 **[AllPairs4J](https://github.com/pavelicii/allpairs4j)**（Maven 座標：`io.github.pavelicii:allpairs4j:2.0.0`）自動完成上述 Step 2 的貪婪計算。
 
 #### 1. `AllPairs4J` 四大核心類別與方法意義
 
@@ -137,7 +137,7 @@ return cases.stream().map(c -> {
 | **策略 B：屬性不變量斷言**<br>*(`@TestFactory` + Invariant Oracle)* | 不逐一查表算精確值，而是驗證「**在任何輸入組合下都必須成立的業務不變量與不崩潰性**」（例如：`50 <= price <= 200`、貸款利率必 `>= 2.0%` 保底、系統不拋出 Exception）。 | ✅ **100% 全自動**，適合上百組高維度配對或 Smoke Test<br>⚠️ **盲區**：若應收 80 元卻算成 100 元（仍在 50~200 區間內），單靠區間斷言會漏抓！ |
 | **策略 C：獨立參考模型預言機**<br>*(`@TestFactory` + Reference Oracle)* | 在測試端透過「舊版系統」、「獨立查表規則」或「簡化版規格公式」動態算出 `expected`，再與被測系統比對。 | ✅ 兼具全自動與精確性<br>📌 適用於系統重構（新舊版本對拍）或具標準公式之領域。 |
 
-👉 **在 [`SwimmingPoolPairwiseDemoTest.java`](../../src/test/java/u05_pair/SwimmingPoolPairwiseDemoTest.java) 的「示範 3-Step1 與 Step2」中，即展示了如何落地【策略 A：兩階段精確預言機】**：
+👉 **在 [`SwimmingPoolPairwiseDemoTest.java`](../../src/test/java/u05_combinatorial/pair/SwimmingPoolPairwiseDemoTest.java) 的「示範 3-Step1 與 Step2」中，即展示了如何落地【策略 A：兩階段精確預言機】**：
 1. **先執行 `generateCsvSourceTemplateForPaste()`**：在 Console 自動印出排版對齊的 `@CsvSource({...})` 程式碼骨架（最後一欄標示 `TODO`），方便工程師直接複製貼上（Copy & Paste）。
 2. **再貼入 `testSwimmingPoolPairwiseWithExactOracle(...)` 並將 `TODO` 改為 SRS 預期票價**：
 ```java
@@ -156,7 +156,7 @@ void testSwimmingPoolPairwiseWithExactOracle(TimeSlot time, DayType day, boolean
 }
 ```
 
-開啟 [`src/test/java/u05_pair/SwimmingPoolPairwiseDemoTest.java`](../../src/test/java/u05_pair/SwimmingPoolPairwiseDemoTest.java) 並執行：
+開啟 [`src/test/java/u05_combinatorial/pair/SwimmingPoolPairwiseDemoTest.java`](../../src/test/java/u05_combinatorial/pair/SwimmingPoolPairwiseDemoTest.java) 並執行：
 ```bash
 mvn test -Dtest=SwimmingPoolPairwiseDemoTest
 ```
@@ -167,7 +167,7 @@ mvn test -Dtest=SwimmingPoolPairwiseDemoTest
 
 在 Java 生態系中，**[AllPairs4J](https://github.com/pavelicii/allpairs4j)** 是一套純 Java 成對生成框架，能與 JUnit 5 的 `@TestFactory` 和 `DynamicTest` 無縫整合。
 
-### 4.1 房貸利率計算器 (`u05_pair/LoanCalculator.java`) 案例背景
+### 4.1 房貸利率計算器 (`u05_combinatorial/pair/LoanCalculator.java`) 案例背景
 受測方法 `LoanCalculator.calculateInterestRate(loanYears, loanAmount, isYouth, isMarried)` 具備 4 個維度：
 - **貸款年限 (Years)**：5 年、15 年、25 年 (3 種)
 - **貸款金額 (Amount)**：400 萬、550 萬、700 萬 (3 種)
@@ -178,10 +178,10 @@ mvn test -Dtest=SwimmingPoolPairwiseDemoTest
 透過 **AllPairs4J** 壓縮後：僅需 **9 組成對案例**！
 
 ### 4.2 JUnit 5 動態成對測試程式碼 (`LoanCalculatorPairwiseDemoTest.java`)
-位於本專案：[`src/test/java/u05_pair/LoanCalculatorPairwiseDemoTest.java`](../../src/test/java/u05_pair/LoanCalculatorPairwiseDemoTest.java)
+位於本專案：[`src/test/java/u05_combinatorial/pair/LoanCalculatorPairwiseDemoTest.java`](../../src/test/java/u05_combinatorial/pair/LoanCalculatorPairwiseDemoTest.java)
 
 ```java
-package u05_pair;
+package u05_combinatorial.pair;
 
 import io.github.pavelicii.allpairs4j.AllPairs;
 import io.github.pavelicii.allpairs4j.Case;
@@ -224,16 +224,16 @@ public class LoanCalculatorPairwiseDemoTest {
 }
 ```
 
-### 4.3 執行 `u05_pair` 測試與課堂練習
+### 4.3 執行 `u05_combinatorial/pair` 測試與課堂練習
 ```bash
-# 執行 u05_pair 目錄下所有示範測試
-mvn test -Dtest="u05_pair.*DemoTest"
+# 執行 u05_combinatorial/pair 目錄下所有示範測試
+mvn test -Dtest="u05_combinatorial.pair.*DemoTest"
 
 # 執行課堂練習題 (完成 LoanCalculatorPairwiseExerciseTest.java 後驗證)
 mvn test -Dtest=LoanCalculatorPairwiseExerciseTest
 ```
 
-> 💡 **課堂動手練習 (`u05_pair/LoanCalculatorPairwiseExerciseTest.java`)**：
+> 💡 **課堂動手練習 (`u05_combinatorial/pair/LoanCalculatorPairwiseExerciseTest.java`)**：
 > 1. **練習 1**：設計極限優惠組合（25 年、2500 萬、青年、已婚），驗證利率精準觸發保底下限 `2.0%`。
 > 2. **練習 2**：使用 `AllPairs.AllPairsBuilder` 自行定義 3 因子成對生成矩陣（3 × 2 × 2 = 12 組 ➔ 壓縮為 6 組）並動態執行斷言！
 > *(標準解答請參閱 [`solutions/5.5_pairwise/LoanCalculatorPairwiseExerciseTest.java`](solutions/5.5_pairwise/LoanCalculatorPairwiseExerciseTest.java))*

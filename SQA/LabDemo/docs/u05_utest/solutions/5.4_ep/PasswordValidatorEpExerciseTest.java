@@ -1,4 +1,4 @@
-package u05_input.ep;
+package u05_partition.ep;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

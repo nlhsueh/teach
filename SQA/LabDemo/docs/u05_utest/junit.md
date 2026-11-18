@@ -1,12 +1,11 @@
 # 🧪 Lab 05: 單元測試與黑箱測試實務 (JUnit 5 & Black-Box Testing)
 
 > 本實驗手冊配合課堂教學節奏，採用「概念講授 ➔ Lab Demo 操作 ➔ 深入方法 ➔ 課堂動手練習」之交錯式教學設計。  
-> 專案程式碼依據**測試維度**結構化劃分於：
-> - 基礎工具層：`src/test/java/u05_junit/`
-> - 資料與規則層：`src/test/java/u05_input/`
-> - 成對組合層：`src/test/java/u05_pair/`（搭配專題手冊 [📖 `pairwise_combinatorial.md`](./pairwise_combinatorial.md)）
-> - 行為與情境層：`src/test/java/u05_scenario/`
-> - 性質與變質層：`src/test/java/u05_pbtest/`  
+> 專案程式碼依據**黑箱測試四大方法家族**結構化劃分於：
+> - **1. 基礎工具層 (`src/test/java/u05_junit/`)**：5.2 JUnit 5 基礎語法、斷言與生命週期
+> - **2. 單一值域分割層 (`src/test/java/u05_partition/`)**：`bva/` (5.3 邊界值分析)、`ep/` (5.4 等價類分割)
+> - **3. 多維組合與邏輯規則層 (`src/test/java/u05_combinatorial/`)**：`pair/` (5.5 全成對組合測試，搭配專題手冊 [📖 `pairwise_combinatorial.md`](./pairwise_combinatorial.md))、`ctm/` (5.6 分類樹方法)、`decision/` (5.7 因果圖與決策表)
+> - **4. 狀態、情境與屬性層 (`src/test/java/u05_behavioral/`)**：`state/` (5.8 狀態轉換)、`usecase/` (5.9 使用案例)、`experience/` (5.10 錯誤猜測)、`pbtest/` (5.11 屬性基礎測試與變質測試)  
 > 每個主題皆配有附詳細教學註解的 **Demo 程式** 與附帶提示指引的 **Exercise 練習程式**。
 
 ---
@@ -16,15 +15,15 @@
 | 課堂章節 | 模組分類目錄 | 核心技術解鎖 | 專案示範程式 (Demo) | 課堂動手練習 (Exercise) |
 | :--- | :--- | :--- | :--- | :--- |
 | **5.2** | [`u05_junit/`](#52-junit-5-快速入門與-3a-原則) | 測試驅動、3A 原則、`@Test`、`assertEquals` vs. `assertSame`、`assertAll` | `CalculatorDemoTest.java`<br>`AssertionsDemoTest.java`<br>`LifeCycleDemoTest.java` | `CalculatorExerciseTest.java`<br>*(3A 減法、負數與零、物件同一性驗證)* |
-| **5.3** | [`u05_input/bva/`](#53-邊界值分析-bva-實戰) | 獨立型 4n+1 / 強固 6n+1、參數化 `@ValueSource`、群組斷言 `assertAll` | `TriangleBvaDemoTest.java` | `TriangleBvaExerciseTest.java`<br>`PoolTicketBvaExerciseTest.java`<br>*(On-Off-In 三點法與年齡階層邊界)* |
-| **5.4** | [`u05_input/ep/`](#54-等價類分割-ep-實戰) | 單一無效原則、例外斷言 `assertThrows`、資料驅動 `@CsvSource` / `@EnumSource` | `BinarySearchEpDemoTest.java`<br>`ParamDemoTest.java`<br>`ParamEnumDemoTest.java` | `PasswordValidatorEpExerciseTest.java`<br>*(長度邊界、純文字/數字弱密碼等價類)* |
-| **5.5** | [`u05_pair/`](#55-全成對組合測試-pairwise-實戰) | Greedy 集合覆蓋演算法、AllPairs4J、動態測試工廠 `@TestFactory`、`DynamicTest` | `SwimmingPoolPairwiseDemoTest.java`<br>`LoanCalculatorPairwiseDemoTest.java` | `LoanCalculatorPairwiseExerciseTest.java`<br>*(極限優惠保底 2.0% 與自訂 3 因子矩陣)* |
-| **5.6** | [`u05_input/ctm/`](#56-分類樹方法-ctm-規格化實戰) | 繁中語意化規格 `@DisplayName`、命名生成器、階層情境 `@Nested` | `DisplayNameDemoTest.java` | `OrderDiscountCtmExerciseTest.java`<br>*(電商 CTM 打點組合階層式驗證)* |
-| **5.7** | [`u05_input/decision/`](#57-因果圖與決策表實戰) | 決策表 1:1 直出 `@CsvSource`、多動作完整驗收 `assertAll` | `PromotionDecisionDemoTest.java` | `PromotionDecisionExerciseTest.java`<br>*(滿千、VIP、促銷碼化簡規則全覆蓋)* |
-| **5.8** | [`u05_scenario/state/`](#58-狀態轉換測試實戰) | 前置生命週期隔離 `@BeforeEach`、狀態階層 `@Nested`、狀態不變量 | `StackStateDemoTest.java`<br>`PlayerStateDemoTest.java` | `StackStateExerciseTest.java`<br>*(1-Switch 轉移序列與非法轉移防護)* |
-| **5.9** | [`u05_scenario/usecase/`](#59-使用案例測試-use-case-testing-實戰) | 業務情境規格、基本流 (Happy Path)、替代流 (Alternative Path)、例外流 (Exception Path) | `AtmUseCaseDemoTest.java` | `AtmUseCaseExerciseTest.java`<br>*(連續 3 次錯誤密碼鎖卡防衛例外流)* |
-| **5.10** | [`u05_scenario/experience/`](#510-經驗基礎與錯誤推測-error-guessing-實戰) | 直覺錯誤推測 (Error Guessing)、攻擊探針、極端畸形邊緣測資 (Boundary/Special Chars) | `ErrorGuessingDemoTest.java` | `ExploratoryExerciseTest.java`<br>*(畸形 Email 與 Null 指標注入防衛測試)* |
-| **5.11** | [`u05_pbtest/`](#511-以性質為基礎的測試-pbt-與變質測試實戰) | 屬性不變量 `@Property`、隨機測資 `@ForAll`、測資收縮 (Shrinking)、變質關係 (MR) | `PropertyBasedDemoTest.java`<br>`MetamorphicDemoTest.java` | `PropertyBasedExerciseTest.java`<br>`MetamorphicExerciseTest.java`<br>*(乘法交換律、串列長度守恆、大小寫不敏感變質關係)* |
+| **5.3** | [`u05_partition/bva/`](#53-邊界值分析-bva-實戰) | 獨立型 4n+1 / 強固 6n+1、參數化 `@ValueSource`、群組斷言 `assertAll` | `TriangleBvaDemoTest.java` | `TriangleBvaExerciseTest.java`<br>`PoolTicketBvaExerciseTest.java`<br>*(On-Off-In 三點法與年齡階層邊界)* |
+| **5.4** | [`u05_partition/ep/`](#54-等價類分割-ep-實戰) | 單一無效原則、例外斷言 `assertThrows`、資料驅動 `@CsvSource` / `@EnumSource` | `BinarySearchEpDemoTest.java`<br>`ParamDemoTest.java`<br>`ParamEnumDemoTest.java` | `PasswordValidatorEpExerciseTest.java`<br>*(長度邊界、純文字/數字弱密碼等價類)* |
+| **5.5** | [`u05_combinatorial/pair/`](#55-全成對組合測試-pairwise-實戰) | Greedy 集合覆蓋演算法、AllPairs4J、動態測試工廠 `@TestFactory`、`DynamicTest` | `SwimmingPoolPairwiseDemoTest.java`<br>`LoanCalculatorPairwiseDemoTest.java` | `LoanCalculatorPairwiseExerciseTest.java`<br>*(極限優惠保底 2.0% 與自訂 3 因子矩陣)* |
+| **5.6** | [`u05_combinatorial/ctm/`](#56-分類樹方法-ctm-規格化實戰) | 繁中語意化規格 `@DisplayName`、命名生成器、階層情境 `@Nested` | `OrderDiscountCtmDemoTest.java`<br>`LeapYearDisplayNameDemoTest.java` | `OrderDiscountCtmExerciseTest.java`<br>*(電商 CTM 打點組合階層式驗證)* |
+| **5.7** | [`u05_combinatorial/decision/`](#57-因果圖與決策表實戰) | 決策表 1:1 直出 `@CsvSource`、多動作完整驗收 `assertAll` | `PromotionDecisionDemoTest.java` | `PromotionDecisionExerciseTest.java`<br>*(滿千、VIP、促銷碼化簡規則全覆蓋)* |
+| **5.8** | [`u05_behavioral/state/`](#58-狀態轉換測試實戰) | 前置生命週期隔離 `@BeforeEach`、狀態階層 `@Nested`、狀態不變量 | `StackStateDemoTest.java`<br>`PlayerStateDemoTest.java` | `StackStateExerciseTest.java`<br>*(1-Switch 轉移序列與非法轉移防護)* |
+| **5.9** | [`u05_behavioral/usecase/`](#59-使用案例測試-use-case-testing-實戰) | 業務情境規格、基本流 (Happy Path)、替代流 (Alternative Path)、例外流 (Exception Path) | `AtmUseCaseDemoTest.java` | `AtmUseCaseExerciseTest.java`<br>*(連續 3 次錯誤密碼鎖卡防衛例外流)* |
+| **5.10** | [`u05_behavioral/experience/`](#510-經驗基礎與錯誤推測-error-guessing-實戰) | 直覺錯誤推測 (Error Guessing)、攻擊探針、極端畸形邊緣測資 (Boundary/Special Chars) | `ErrorGuessingDemoTest.java` | `ExploratoryExerciseTest.java`<br>*(畸形 Email 與 Null 指標注入防衛測試)* |
+| **5.11** | [`u05_behavioral/pbtest/`](#511-以性質為基礎的測試-pbt-與變質測試實戰) | 屬性不變量 `@Property`、隨機測資 `@ForAll`、測資收縮 (Shrinking)、變質關係 (MR) | `PropertyBasedDemoTest.java`<br>`MetamorphicDemoTest.java` | `PropertyBasedExerciseTest.java`<br>`MetamorphicExerciseTest.java`<br>*(乘法交換律、串列長度守恆、大小寫不敏感變質關係)* |
 | **進階** | [`ai/`](#-進階單元ai-輔助單元測試生成教學) | Prompt Engineering 四大要素、測試 Oracle 責任、反例收斂 | - | 練習: 撰寫注入測試知識的高品質 Prompt |
 
 ---
@@ -214,7 +213,7 @@ assertEquals("done", actualResult);
 - **群組聚合斷言 (`assertAll`)**：群組內所有斷言保證全部執行完畢，一次性收集並回報所有邊界失敗！
 
 ### 3. Demo 演示：`TriangleBvaDemoTest.java`
-開啟 `u05_input/bva/TriangleBvaDemoTest.java`：
+開啟 `u05_partition/bva/TriangleBvaDemoTest.java`：
 
 ```java
 // 使用 assertAll 聚合邊界測試，任一失敗不中斷其餘邊界
@@ -230,10 +229,10 @@ void testTriangleInequality_criticalBoundary() {
 ```
 
 ### 🧪 5.3 課堂動手練習
-1. 開啟 [`TriangleBvaExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_input/bva/TriangleBvaExerciseTest.java)：
+1. 開啟 [`TriangleBvaExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_partition/bva/TriangleBvaExerciseTest.java)：
    - 補全三角形強固邊界（`min-`、`max+`）越界測資。
    - 運用 On-Off-In 三點法檢驗兩邊之和的極限臨界點。
-2. 開啟 [`PoolTicketBvaExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_input/bva/PoolTicketBvaExerciseTest.java)：
+2. 開啟 [`PoolTicketBvaExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_partition/bva/PoolTicketBvaExerciseTest.java)：
    - 規格：免費 (0~3歲)、兒童票 (4~12歲)、全票 (13~64歲)、敬老票 (≥ 65 歲)。
    - 使用 `@CsvSource` 驗證所有交界點票價，並用 `assertThrows` 驗證 -1 與 121 歲越界防禦！
 
@@ -253,13 +252,13 @@ void testTriangleInequality_criticalBoundary() {
 - **外部資料驅動 (`@CsvSource` / `@EnumSource`)**：將等價類測試向量外置至表格，測試邏輯與測資徹底解耦。
 
 ### 3. Demo 演示：`BinarySearchEpDemoTest.java` 與 `ParamDemoTest.java`
-開啟 `u05_input/ep/BinarySearchEpDemoTest.java`：
+開啟 `u05_partition/ep/BinarySearchEpDemoTest.java`：
 - 單元素陣列命中 vs. 未命中。
 - 多元素陣列命中頭部、中間、尾部。
 - 空陣列邊界與傳入 null 之例外斷言。
 
 ### 🧪 5.4 課堂動手練習
-開啟 [`PasswordValidatorEpExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_input/ep/PasswordValidatorEpExerciseTest.java)：
+開啟 [`PasswordValidatorEpExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_partition/ep/PasswordValidatorEpExerciseTest.java)：
 1. **練習 1**：驗證有效等價類密碼（長度 8~20 且含英數字）。
 2. **練習 2**：使用 `assertThrows` 驗證長度過短 (<8) 與過長 (>20) 之無效等價類例外拋出。
 3. **練習 3**：驗證純字母或純數字之弱密碼等價類回傳 false。
@@ -290,8 +289,8 @@ void testTriangleInequality_criticalBoundary() {
 | **`@TestFactory` + `DynamicTest`** | JUnit 5 動態測試工廠，將每一筆 `Case` 即時封裝為 IDE 中獨立顯示的測試節點 | `DynamicTest.dynamicTest(title, () -> { ... })` |
 
 ### 3. Demo 演示：`SwimmingPoolPairwiseDemoTest.java` 與 `LoanCalculatorPairwiseDemoTest.java`
-開啟 `src/test/java/u05_pair/` 目錄下的兩個示範類別：
-- **[`u05_pair/SwimmingPoolPairwiseDemoTest.java`](../../src/test/java/u05_pair/SwimmingPoolPairwiseDemoTest.java)**：對應投影片「游泳池收費系統（3 × 2 × 2 = 12 組全乘積）」，示範如何用 `AllPairs4J` 產生 **6 組**測試案例消去全部 16 個成對配對：
+開啟 `src/test/java/u05_combinatorial/pair/` 目錄下的兩個示範類別：
+- **[`u05_combinatorial/pair/SwimmingPoolPairwiseDemoTest.java`](../../src/test/java/u05_combinatorial/pair/SwimmingPoolPairwiseDemoTest.java)**：對應投影片「游泳池收費系統（3 × 2 × 2 = 12 組全乘積）」，示範如何用 `AllPairs4J` 產生 **6 組**測試案例消去全部 16 個成對配對：
 
 ```java
 // 1. 使用 AllPairsBuilder 註冊 3 個參數維度，呼叫 build() 啟動演算法生成 6 組 Case
@@ -325,7 +324,7 @@ List<DynamicTest> dynamicSwimmingPoolPairwiseTests() {
 > 1. **策略 A（屬性不變量斷言，如上例 `@TestFactory`）**：不逐一算精確值，直接驗證「在任何組合下都必須成立的業務邊界與不崩潰性」（如 `50 <= price <= 200`、房貸利率 `>= 2.0%`）。優點是全自動，但若應收 80 元卻算成 100 元會漏抓。
 > 2. **策略 B（兩階段精確預言機：AllPairs 挑組合 ➔ 人工對照 SRS 補上 Expected Output 轉為 `@CsvSource`）**：先用 `AllPairs4J` 把 12 組壓縮成 **6 組**（幫工程師省去算另外 6 組或 27 組的時間），再由工程師為這 6 組補上 SRS 規格預期票價（`100, 80, 200, 50, 100, 100`），透過 `@CsvSource` + `assertEquals(expectedPrice, actualPrice)` 進行 100% 精確驗證！
 
-- **[`u05_pair/LoanCalculatorPairwiseDemoTest.java`](../../src/test/java/u05_pair/LoanCalculatorPairwiseDemoTest.java)**：將 4 維度貸款利率（3 × 3 × 2 × 2 = 36 組全乘積）壓縮至 **9 組**，並以 `@TestFactory` 動態驗證利率保底下限 2.0%：
+- **[`u05_combinatorial/pair/LoanCalculatorPairwiseDemoTest.java`](../../src/test/java/u05_combinatorial/pair/LoanCalculatorPairwiseDemoTest.java)**：將 4 維度貸款利率（3 × 3 × 2 × 2 = 36 組全乘積）壓縮至 **9 組**，並以 `@TestFactory` 動態驗證利率保底下限 2.0%：
 
 ```java
 @TestFactory
@@ -352,7 +351,7 @@ List<DynamicTest> dynamicPairwiseTests() {
 ```
 
 ### 🧪 5.5 課堂動手練習
-開啟 [`u05_pair/LoanCalculatorPairwiseExerciseTest.java`](../../src/test/java/u05_pair/LoanCalculatorPairwiseExerciseTest.java)：
+開啟 [`u05_combinatorial/pair/LoanCalculatorPairwiseExerciseTest.java`](../../src/test/java/u05_combinatorial/pair/LoanCalculatorPairwiseExerciseTest.java)：
 1. **練習 1**：設計極限優惠組合，驗證利率精準觸發保底下限 2.0%。
 2. **練習 2**：使用 `AllPairs.AllPairsBuilder` 自行定義 3 因子成對生成矩陣並動態執行斷言！
 
@@ -363,25 +362,71 @@ List<DynamicTest> dynamicPairwiseTests() {
 
 ## 🌳 5.6: 分類樹方法 (CTM) 規格化實戰
 
-### 1. 痛點剖析：打點規格表缺乏語意可讀性
-- Daimler-Benz 分類樹方法 (CTM) 透過打點組合矩陣組裝測試案例。
-- 傳統測試若命名為 `test01()`、`test02()`，在 CI/CD 測試報告中完全失去商務脈絡，無法作為利害關係人驗收之活文件。
+### 1. 痛點剖析：打點規格表與階層子樹缺乏語意可讀性
+- Daimler-Benz 分類樹方法 (CTM) 透過「**樹狀子分類細分 + 垂直防漏打點矩陣**」組裝測試案例。
+- 在電商結帳折扣範例中，共有三個分類維度（`會員身分`、`消費金額`、`付款方式`），其中只有選「**信用卡**」時才向下展開「**刷一次 vs. 刷分期**」階層子樹（共 10 個葉節點、4 組測試案例 `TC_1 ~ TC_4`）：
+
+| 案例 | VIP | 一般 | 訪客 | <1K | 1~3K | >3K | 刷一次 | 刷分期 | 行動 | 貨到 | 預期輸出與測試重點 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **TC<sub>1</sub>** | ⚫ | | | | | ⚫ | ⚫ | | | | 3500×0.8−300 = **2500 元** (一次付清) |
+| **TC<sub>2</sub>** | ⚫ | | | | | ⚫ | | ⚫ | | | 3500×0.8−300 = **2500 元** (**刷卡分期子樹**) |
+| **TC<sub>3</sub>** | | ⚫ | | | ⚫ | | | | ⚫ | | 2000×0.9−100 = **1700 元** (行動免測分期) |
+| **TC<sub>4</sub>** | | | ⚫ | ⚫ | | | | | | ⚫ | **800 元** 原價無折扣 (貨到免測分期) |
+
+- 若傳統單元測試僅扁平命名為 `testCheckout1()`、`testCheckout2()`，在 CI/CD 測試報表中將完全失去分類樹的階層脈絡與業務語意。
 
 ### 2. JUnit 5 解決方案
-- **繁中語意化命名 (`@DisplayName`)**：以自然語言直接描述業務規則。
-- **命名生成器 (`@DisplayNameGeneration`)**：支援自動轉譯下底線為空格語句。
-- **階層情境分組 (`@Nested`)**：1:1 對應分類樹的樹狀分類與子分類結構。
+- **繁中語意化命名 (`@DisplayName`)**：以自然語言直接標註 CTM 打點組合與預期業務結果。
+- **命名生成器 (`@DisplayNameGeneration`)**：支援自動轉譯下底線方法名為空格語句。
+- **多層巢狀情境分組 (`@Nested`)**：將 CTM 的上層分類（`VIPMemberTest`）、中層分類（`Over3000AmountTest`）與下層子樹（`CreditCardSubTreeTest`）1:1 映照為 Java 內部 `@Nested` 類別階層，使 IDE 測試導覽樹自動呈現出與 CTM 分類樹完全一致的樹狀結構！
 
-### 3. Demo 演示：`DisplayNameDemoTest.java`
-開啟 `u05_input/ctm/DisplayNameDemoTest.java` 檢視階層式組織結構。
+### 3. Demo 演示：`OrderDiscountCtmDemoTest.java`
+開啟 [`u05_combinatorial/ctm/OrderDiscountCtmDemoTest.java`](../../src/test/java/u05_combinatorial/ctm/OrderDiscountCtmDemoTest.java) 檢視多層 `@Nested` 如何同構映射 CTM 分類樹（`TC1 ~ TC4`）：
+
+```java
+@Nested
+@DisplayName("👑 分類一 [會員身分]：VIP 會員 (VIPMemberTest)")
+class VIPMemberTest {
+
+    @Nested
+    @DisplayName("💰 分類二 [消費金額]：滿 3000 元大額訂單 (Over3000AmountTest)")
+    class Over3000AmountTest {
+
+        @Nested
+        @DisplayName("💳 分類三 [付款方式]：信用卡支付子樹 (CreditCardSubTreeTest)")
+        class CreditCardSubTreeTest {
+
+            @Test
+            @DisplayName("TC1: VIP會員且滿3000元刷卡一次付清 ➔ 享8折與滿額折300")
+            void testVipOver3000CreditCardOneTime() {
+                OrderDiscount.DiscountResult result = OrderDiscount.calculateDiscount(
+                        OrderDiscount.MemberType.VIP, 3500.0,
+                        OrderDiscount.PaymentMethod.CREDIT_CARD_ONE_TIME);
+                assertEquals(2500.0, result.finalAmount);
+            }
+
+            @Test
+            @DisplayName("TC2: VIP會員且滿3000元刷卡分期 (子樹) ➔ 享8折與滿額折300")
+            void testVipOver3000CreditCardInstallment() {
+                OrderDiscount.DiscountResult result = OrderDiscount.calculateDiscount(
+                        OrderDiscount.MemberType.VIP, 3500.0,
+                        OrderDiscount.PaymentMethod.CREDIT_CARD_INSTALLMENT);
+                assertEquals(2500.0, result.finalAmount);
+            }
+        }
+    }
+}
+```
 
 ### 🧪 5.6 課堂動手練習
-開啟 [`OrderDiscountCtmExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_input/ctm/OrderDiscountCtmExerciseTest.java)：
-- 依據投影片中的電商結帳（身分 × 金額 × 支付）CTM 打點規格表：
-  - `TC_1`：VIP 大額訂單（>3K）享 8 折加滿額折 300 元。
-  - `TC_2`：一般會員中額訂單（1K~3K）享 9 折加滿額折 100 元。
-  - `TC_3`：訪客小額訂單（<1K）原價無折扣。
-- 以 `@Nested` 分層驗證 CTM 矩陣中的組合！
+開啟 [`u05_combinatorial/ctm/OrderDiscountCtmExerciseTest.java`](../../src/test/java/u05_combinatorial/ctm/OrderDiscountCtmExerciseTest.java)：
+- 依據上方電商結帳（身分 × 金額 × 付款方式含信用卡子樹）CTM 打點規格表：
+  - **外層 `@Nested class VipMemberTests`** 內嵌 **`@Nested class CreditCardSubTreeTests`**：
+    - `TC_1`：VIP 大額訂單（3500 元, `CREDIT_CARD_ONE_TIME`）➔ 結帳 `2500.0` 元、總折扣 `1000.0` 元。
+    - `TC_2`：VIP 大額訂單（3500 元, `CREDIT_CARD_INSTALLMENT` 刷卡分期子樹）➔ 結帳 `2500.0` 元、總折扣 `1000.0` 元。
+  - **外層 `@Nested class RegularAndGuestTests`**（行動支付與貨到付款免測分期子樹）：
+    - `TC_3`：一般會員中額訂單（2000 元, `MOBILE_PAY`）➔ 結帳 `1700.0` 元。
+    - `TC_4`：訪客小額訂單（800 元, `CASH_ON_DELIVERY`）➔ 原價 `800.0` 元、總折扣 `0.0` 元。
 
 > 💡 **卡關求助 / 參考解答**：  
 > 本題完整標準解答與設計思維請參閱 [📖 `solutions/README.md#unit-56-分類樹方法-ctm`](solutions/README.md#unit-56-分類樹方法-ctm) 或獨立原始碼 [`solutions/5.6_ctm/OrderDiscountCtmExerciseTest.java`](solutions/5.6_ctm/OrderDiscountCtmExerciseTest.java)。
@@ -400,14 +445,14 @@ List<DynamicTest> dynamicPairwiseTests() {
 - **多動作聚合斷言 (`assertAll`)**：保證該規則下的所有外顯動作全部被完整驗收。
 
 ### 3. Demo 演示：`PromotionDecisionDemoTest.java`
-開啟 `u05_input/decision/PromotionDecisionDemoTest.java`：
+開啟 `u05_combinatorial/decision/PromotionDecisionDemoTest.java`：
 - 規則 1 (R_1)：滿千且 VIP，無促銷碼 ➔ 僅享 8 折。
 - 規則 2 (R_2)：滿千且有促銷碼，非 VIP ➔ 僅享免運。
 - 規則 3 (R_3)：滿千、VIP、有促銷碼 ➔ 雙重優惠 (8折 + 免運)。
 - 規則 4 (R_4 - 化簡關鍵)：未滿千門檻 ➔ 無論身分與促銷碼，一律原價結帳！
 
 ### 🧪 5.7 課堂動手練習
-開啟 [`PromotionDecisionExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_input/decision/PromotionDecisionExerciseTest.java)：
+開啟 [`PromotionDecisionExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_combinatorial/decision/PromotionDecisionExerciseTest.java)：
 1. **練習 1**：剛好滿 1000 元滿額臨界值測試。
 2. **練習 2**：999.9 元未滿額臨界值測試（驗證即使有促銷碼依然原價結帳）。
 3. **練習 3**：使用 `@CsvSource` 資料驅動驗證 CAR 決策表全規則矩陣！
@@ -429,12 +474,12 @@ List<DynamicTest> dynamicPairwiseTests() {
 - **巢狀狀態階層 (`@Nested`)**：以巢狀類別直接對應狀態機的每個狀態節點。
 
 ### 3. Demo 演示：`StackStateDemoTest.java` 與 `PlayerStateDemoTest.java`
-開啟 `u05_scenario/state/StackStateDemoTest.java`：
+開啟 `u05_behavioral/state/StackStateDemoTest.java`：
 - 空狀態 (WhenNew)：驗證 `isEmpty == true` 與 pop 拋出 `EmptyStackException`。
 - 滿狀態 (WhenFull)：驗證 `isFull == true` 與 push 拋出 `IllegalStateException` (Stack Overflow)。
 
 ### 🧪 5.8 課堂動手練習
-開啟 [`StackStateExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_scenario/state/StackStateExerciseTest.java)：
+開啟 [`StackStateExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_behavioral/state/StackStateExerciseTest.java)：
 1. **練習 1**：驗證 Empty ➔ Non-Empty ➔ Empty 狀態閉環轉移序列 (1-Switch)。
 2. **練習 2**：驗證在空狀態執行 `peek()` 時拋出例外，且物件狀態不變量（依然為空）不被破壞！
 
@@ -450,13 +495,13 @@ List<DynamicTest> dynamicPairwiseTests() {
 - 使用案例測試著重於端到端的使用者業務旅程（Actor Goal），涵蓋**基本流 (Happy Path)**、**替代流 (Alternative Path)** 與 **例外流 (Exception Path)**。
 
 ### 2. Demo 演示：`AtmUseCaseDemoTest.java`
-開啟 `u05_scenario/usecase/AtmUseCaseDemoTest.java`：
+開啟 `u05_behavioral/usecase/AtmUseCaseDemoTest.java`：
 - **基本流 (UC-01 Happy Path)**：正確 PIN 碼 ➔ 提款金額合法且充足 ➔ 吐鈔成功且餘額精確扣減。
 - **替代流 (UC-02 Alt Path)**：提款金額超過單筆上限（20,000 元）➔ 系統拒絕交易並維持帳戶餘額。
 - **例外流 (UC-03 Exception Path)**：提款金額超過帳戶現有餘額 ➔ 系統提示餘額不足並維持帳戶餘額。
 
 ### 🧪 5.9 課堂動手練習
-開啟 [`AtmUseCaseExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_scenario/usecase/AtmUseCaseExerciseTest.java)：
+開啟 [`AtmUseCaseExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_behavioral/usecase/AtmUseCaseExerciseTest.java)：
 - **練習重點**：實作「防盜刷 PIN 碼連續錯誤 3 次鎖卡」之嚴格例外流（UC-04）。
 - 驗證前 2 次錯誤提示剩餘次數，第 3 次精準觸發鎖卡，且鎖卡後即便輸入正確密碼依然拒絕服務！
 
@@ -472,13 +517,13 @@ List<DynamicTest> dynamicPairwiseTests() {
 - 形式化規格書通常只定義「理想與標準的輸入輸出」，但惡意使用者或極端環境常輸入規格書未明定的髒資料。
 - 測試工程師依據過去慘痛的踩坑經驗（直覺、缺陷歷史、安全弱點清單），主動設計「破壞性測試探針」。
 ### 2. Demo 演示：`ErrorGuessingDemoTest.java`
-開啟 `u05_scenario/experience/ErrorGuessingDemoTest.java`：
+開啟 `u05_behavioral/experience/ErrorGuessingDemoTest.java`：
 - **字串繞過**：純空白字元（`"   "`）是否能繞過非空檢驗？
 - **數值溢位**：年齡輸入 `Integer.MAX_VALUE` 是否造成計算崩潰？
 - **安全注入探針**：輸入包含 HTML/XSS 特殊符號（`<script>alert(1)</script>`）是否被妥善過濾？
 
 ### 🧪 5.10 課堂動手練習
-開啟 [`ExploratoryExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_scenario/experience/ExploratoryExerciseTest.java)：
+開啟 [`ExploratoryExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_behavioral/experience/ExploratoryExerciseTest.java)：
 - **練習 1**：針對 Email 格式進行經驗推測（缺少 `@`、結尾無 Domain、雙重 `@`、空白注入）。
 - **練習 2**：輸入 `null` 物件之邊緣崩潰防衛驗證！
 
@@ -500,16 +545,21 @@ List<DynamicTest> dynamicPairwiseTests() {
 - **變質測試 (Metamorphic Testing)**：
   - 即使不知道精確輸出，我們仍能驗證**輸入轉換前後的輸出對稱關係**（如搜尋 `SQA` 的結果集合，必然包含搜尋 `SQA 2026` 的結果集合）。
 
-### 3. Demo 演示：`u05_pbtest`
-開啟 `u05_pbtest/PropertyBasedDemoTest.java` 與 `u05_pbtest/MetamorphicDemoTest.java`：
-- 加法交換律、反轉兩次、排序單調性不變量驗證。
-- 搜尋引擎輸入微擾抗噪變質關係驗證。
+### 3. Demo 演示：`u05_behavioral/pbtest`
+開啟 [`u05_behavioral/pbtest/PropertyBasedDemoTest.java`](../../src/test/java/u05_behavioral/pbtest/PropertyBasedDemoTest.java) 與 [`u05_behavioral/pbtest/MetamorphicDemoTest.java`](../../src/test/java/u05_behavioral/pbtest/MetamorphicDemoTest.java)：
+- **Part 1 (基礎代數與串列不變量)**：加法交換律、加法單位元、反轉兩次可逆、排序單調遞增不變量驗證。
+- **Part 2 (企業商業邏輯不變量實戰)**：
+  - **電商金流守恆 (`OrderDiscount`)**：對任意會員、金額 (`0 ~ 100,000`) 與支付方式，結帳金額必 `>= 0`（防倒貼漏洞）、`<= 原價`，且 `應付金額 + 折抵金額 == 原價`。
+  - **會員等級尊榮單調性 (`OrderDiscount`)**：相同金額與支付方式下，`VIP 應付金額 <= 一般會員 <= 訪客`（防止定價倒掛 Bug）。
+  - **銀行風控不變量 (`LoanCalculator`)**：核貸利率必介於法定 `[2.0%, 5.0%]`，且多貸 100 萬時利率只降不升。
+- **變質測試 (`MetamorphicDemoTest.java`)**：搜尋引擎範圍縮小之子集包含性與前後空白抗擾動性驗證。
 
 ### 🧪 5.11 課堂動手練習
-1. 開啟 [`PropertyBasedExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_pbtest/PropertyBasedExerciseTest.java)：
-   - 實作「乘法交換律」不變量屬性。
-   - 實作「串列排序長度守恆」不變量屬性。
-2. 開啟 [`MetamorphicExerciseTest.java`](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_pbtest/MetamorphicExerciseTest.java)：
+1. 開啟 [`PropertyBasedExerciseTest.java`](../../src/test/java/u05_behavioral/pbtest/PropertyBasedExerciseTest.java)：
+   - **練習 1**：實作「乘法交換律」不變量屬性。
+   - **練習 2**：實作「反轉串列長度守恆」不變量屬性。
+   - **練習 3 (企業邏輯實戰)**：使用 `@IntRange` 與 `@DoubleRange` 驗證銀行房貸「青年首購利率 `<=` 一般申貸利率 且 `>= 2.0%`」不變量！
+2. 開啟 [`MetamorphicExerciseTest.java`](../../src/test/java/u05_behavioral/pbtest/MetamorphicExerciseTest.java)：
    - 實作關鍵字大小寫不敏感（Case-Insensitive）變質關係對稱性驗證！
 
 > 💡 **卡關求助 / 參考解答**：  

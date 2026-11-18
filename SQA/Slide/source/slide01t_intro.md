@@ -26,24 +26,24 @@ footer: 'Ch01 軟體品質導論'
 
 <div class="card-deck">
 
-* > 🧭 從歷史軟體危機汲取教訓，建立現代品質模型防線；軟體品質保證是一門兼顧規格與實踐的系統工程。
+> 🧭 從歷史軟體危機汲取教訓，建立現代品質模型防線；軟體品質保證是一門兼顧規格與實踐的系統工程。
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### 🏛️ 危機歷史與品質維度
-- **1.1 軟體危機歷史與 AI 輪迴**：歷史慘劇與 NATO 根源
-- **1.2 AI 能拯救軟體危機嗎？**：技術債、高錯誤率與典型事件
-- **1.3 軟體的本質與維度**：IEEE 4 要素 ＆ Garvin 5 大觀點
+- [**1.1 軟體危機歷史與 AI 輪迴**](#3)：歷史慘劇與 NATO 根源
+- [**1.2 AI 能拯救軟體危機嗎？**](#13)：技術債、高錯誤率與典型事件
+- [**1.3 軟體的本質與維度**](#19)：IEEE 4 要素 ＆ Garvin 5 大觀點
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### 🛡️ 工程把關與品質模型
-- **1.4 品質工程核心概念**：V&V、品質成本 ＆ 測試左移
-- **1.5 生命週期把關**：V 模型對稱 ＆ CI/CD 6 大門檻
-- **1.6 現代品質模型**：ISO 25010 特性 ＆ 量化指標實戰
-- **1.7 課堂思維激盪**：NASA 介面驗證與精度實務題
+- [**1.4 品質工程核心概念**](#31)：V&V、品質成本 ＆ 測試左移
+- [**1.5 生命週期把關**](#36)：V 模型對稱 ＆ CI/CD 6 大門檻
+- [**1.6 現代品質模型**](#42)：ISO 25010 特性 ＆ 量化指標實戰
+- [**1.7 課堂思維激盪**](#53)：NASA 介面驗證與精度實務題
 
 </div>
 </div>
@@ -1363,6 +1363,72 @@ footer: 'Ch01 軟體品質導論'
       header.innerHTML = "";
       var wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
+    });
+
+    // 3. Auto-link and calibrate section items on the Outline slide (Slide 2)
+    var secByNum = {};
+    sections.forEach(function(s) {
+      var m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) {
+        secByNum[m[1]] = s.id;
+      }
+    });
+    var outlineSlide = document.querySelector("section.outline-slide, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(function(li) {
+        var existingLink = li.querySelector(":scope > a, :scope > strong > a");
+        if (existingLink) {
+          var m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.href = "#" + secByNum[m[1]];
+          }
+          return;
+        }
+        var strong = li.querySelector(":scope > strong, :scope > b");
+        if (strong) {
+          var m = strong.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            var a = document.createElement("a");
+            a.href = "#" + secByNum[m[1]];
+            strong.parentNode.insertBefore(a, strong);
+            a.appendChild(strong);
+          }
+        }
+      });
+    }
+
+    // 4. Auto-clamp hover zoom scale (--zoom-scale) so enlarged images never exceed slide (1280x720)
+    function updateImgZoomScale(img) {
+      var sec = img.closest("section");
+      if (!sec) return;
+      var w = img.offsetWidth;
+      var h = img.offsetHeight;
+      if (!w || !h) return;
+      var x = 0, y = 0, cur = img;
+      while (cur && cur !== sec && sec.contains(cur)) {
+        x += cur.offsetLeft;
+        y += cur.offsetTop;
+        cur = cur.offsetParent;
+      }
+      var secW = sec.offsetWidth || 1280;
+      var secH = sec.offsetHeight || 720;
+      var padSide = 36;
+      var padTop = 30;
+      var isLeftOrigin = img.closest(":is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child");
+      var availW = isLeftOrigin ? (secW - padSide - x) : ((x + w) - padSide);
+      var availH = (y + h) - padTop;
+      var tag = img.tagName ? img.tagName.toLowerCase() : "";
+      var cap = (tag === "pre" || tag === "marp-pre") ? 1.42 : 2.0;
+      var maxS = Math.min(cap, availW / w, availH / h, (secH - 60) / h);
+      if (maxS < 1.0) maxS = 1.0;
+      img.style.setProperty("--zoom-scale", maxS.toFixed(3));
+    }
+    document.querySelectorAll(".card img:not(.emoji), div.content-figure img:not(.emoji), .card pre, .card marp-pre").forEach(function(img) {
+      if (img.dataset.zoomBound) return;
+      img.dataset.zoomBound = "true";
+      img.addEventListener("mouseenter", function() { updateImgZoomScale(img); });
+      img.addEventListener("load", function() { updateImgZoomScale(img); });
+      updateImgZoomScale(img);
     });
   }
 

@@ -30,16 +30,16 @@ footer: 'Ch04 軟體檢視'
 <div>
 
 ### 🧭 檢視概念、規格與設計審查
-- **4.1 軟體檢視概念與前置條件**：
+- [**4.1 軟體檢視概念與前置條件**](#3)：
   - 軟體測試的「冰山比喻」：靜態檢視 vs. 動態執行互補
   - 檢視前置條件與組織品質社群文化
-- **4.2 檢視方法與流程標準**：
+- [**4.2 檢視方法與流程標準**](#8)：
   - IEEE 1028 審查體系：檢視 (Inspection) vs. 走查 (Walkthrough)
   - Fagan 檢視 6 大標準流程與 5 大核心角色分工
-- **4.3 需求與規格檢視 (SRS Review)**：
+- [**4.3 需求與規格檢視 (SRS Review)**](#13)：
   - SRS 8 大核心品質屬性（正反實戰案例對照）
   - 規格書 7 大撰寫準則與雙向追溯 (Bidirectional Traceability)
-- **4.4 軟體設計檢視 (Design Review)**：
+- [**4.4 軟體設計檢視 (Design Review)**](#25)：
   - 系統架構、介面契約與多維度模型檢核（結構 vs. 行為）
   - 設計模型檢驗（DFD、Class Diagram、ERD）與架構防護
 
@@ -47,17 +47,17 @@ footer: 'Ch04 軟體檢視'
 <div>
 
 ### 💻 程式碼防禦、工具與度量
-- **4.5 程式碼檢視與安全漏洞 (Code Review)**：
+- [**4.5 程式碼檢視與安全漏洞 (Code Review)**](#36)：
   - 團隊 Clean Code 審查查核清單與程式錯誤 5 大分類
   - Martin Fowler / Kent Beck 經典程式臭味與重構手法
   - OWASP Top 10 核心資安漏洞防範與防禦實踐
-- **4.6 PMD 靜態程式碼分析工具**：
+- [**4.6 PMD 靜態程式碼分析工具**](#46)：
   - AST 語法樹走訪、8 大核心規則集與氣泡排序 (BubbleSort) 重構示範
   - Maven Plugin 配置 (v3.26.0)、違規壓制機制與 u04 實習導航
-- **4.7 AI 輔助檢視與 DevOps 自動化**：
+- [**4.7 AI 輔助檢視與 DevOps 自動化**](#53)：
   - AI 賦能需求、設計、程式碼三階段靜態檢視與 PR 機器人
   - DevOps CI/CD 流水線檢視整合與階梯式阻斷品質閘門
-- **4.8 檢視成效評估度量**：
+- [**4.8 檢視成效評估度量**](#59)：
   - 缺失偵測效率 (EDE)、檢視速率控制與缺陷移除率 (DRL)
 
 </div>
@@ -1305,7 +1305,7 @@ footer: 'Ch04 軟體檢視'
 - **早期阻斷缺陷 (Left-Shift)**：
   - 提早揪出潛在 NPE、未關閉串流、空 catch 與邏輯瑕疵。
 - **與實習相互呼應**：
-  - 詳見實習手冊：`LabDemo/docs/u04_inspection/pmd.md`。
+  - 詳見實習手冊：[`pmd.md`](../../lab.html?file=LabDemo/docs/u04_inspection/pmd.md)。
 
 </div>
 </div>
@@ -1942,6 +1942,72 @@ footer: 'Ch04 軟體檢視'
       header.innerHTML = "";
       var wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
+    });
+
+    // 3. Auto-link and calibrate section items on the Outline slide (Slide 2)
+    var secByNum = {};
+    sections.forEach(function(s) {
+      var m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) {
+        secByNum[m[1]] = s.id;
+      }
+    });
+    var outlineSlide = document.querySelector("section.outline-slide, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(function(li) {
+        var existingLink = li.querySelector(":scope > a, :scope > strong > a");
+        if (existingLink) {
+          var m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.href = "#" + secByNum[m[1]];
+          }
+          return;
+        }
+        var strong = li.querySelector(":scope > strong, :scope > b");
+        if (strong) {
+          var m = strong.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            var a = document.createElement("a");
+            a.href = "#" + secByNum[m[1]];
+            strong.parentNode.insertBefore(a, strong);
+            a.appendChild(strong);
+          }
+        }
+      });
+    }
+
+    // 4. Auto-clamp hover zoom scale (--zoom-scale) so enlarged images never exceed slide (1280x720)
+    function updateImgZoomScale(img) {
+      var sec = img.closest("section");
+      if (!sec) return;
+      var w = img.offsetWidth;
+      var h = img.offsetHeight;
+      if (!w || !h) return;
+      var x = 0, y = 0, cur = img;
+      while (cur && cur !== sec && sec.contains(cur)) {
+        x += cur.offsetLeft;
+        y += cur.offsetTop;
+        cur = cur.offsetParent;
+      }
+      var secW = sec.offsetWidth || 1280;
+      var secH = sec.offsetHeight || 720;
+      var padSide = 36;
+      var padTop = 30;
+      var isLeftOrigin = img.closest(":is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child");
+      var availW = isLeftOrigin ? (secW - padSide - x) : ((x + w) - padSide);
+      var availH = (y + h) - padTop;
+      var tag = img.tagName ? img.tagName.toLowerCase() : "";
+      var cap = (tag === "pre" || tag === "marp-pre") ? 1.42 : 2.0;
+      var maxS = Math.min(cap, availW / w, availH / h, (secH - 60) / h);
+      if (maxS < 1.0) maxS = 1.0;
+      img.style.setProperty("--zoom-scale", maxS.toFixed(3));
+    }
+    document.querySelectorAll(".card img:not(.emoji), div.content-figure img:not(.emoji), .card pre, .card marp-pre").forEach(function(img) {
+      if (img.dataset.zoomBound) return;
+      img.dataset.zoomBound = "true";
+      img.addEventListener("mouseenter", function() { updateImgZoomScale(img); });
+      img.addEventListener("load", function() { updateImgZoomScale(img); });
+      updateImgZoomScale(img);
     });
   }
 

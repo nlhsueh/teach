@@ -1,4 +1,4 @@
-package u05_input.decision;
+package u05_combinatorial.decision;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

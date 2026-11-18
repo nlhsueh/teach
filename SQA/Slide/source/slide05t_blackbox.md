@@ -21,7 +21,7 @@ footer: 'Ch05 黑箱測試'
 > 錯誤永遠隱藏在角落——掌握邊界與等價，方能以最小成本擊中最多缺陷。
 
 ---
-<!-- id: sqa-ch05-ccq1 -->
+
 <!-- _class: outline-slide -->
 <!-- header: '本章大綱 (Outline)' -->
 
@@ -31,18 +31,18 @@ footer: 'Ch05 黑箱測試'
 <div>
 
 ### 🧭 核心概念與輸入域劃分
-- **5.1 黑箱測試本質與核心思想**：
+- [**5.1 黑箱測試本質與核心思想**](#3)：
   - 黑箱 vs. 白箱思維、窮舉之不可能、Glenford Myers 測試哲學
-- **5.2 單元測試與 JUnit 5 快速入門**：
+- [**5.2 單元測試與 JUnit 5 快速入門**](#8)：
   - 3A 原則、@Test 基礎、內容值等價 vs. 記憶體同一性 (CCQ 1)
   - 🧪 *Lab: CalculatorTest & 基礎斷言操作*
-- **5.3 邊界值分析 (Boundary Value Analysis, BVA)**：
-  - 單一錯誤假設、獨立與最壞情況、@ValueSource 與 assertAll (CCQ 2)
+- [**5.3 邊界值分析 (Boundary Value Analysis, BVA)**](#16)：
+  - 單一錯誤假設、獨立與非獨立、@ValueSource 與 assertAll (CCQ 2)
   - 🧪 *Lab: Triangle 邊界檢查與數值邊界練習*
-- **5.4 等價類分割測試 (Equivalence Partitioning, EP)**：
+- [**5.4 等價類分割測試 (Equivalence Partitioning, EP)**](#27)：
   - 有效/無效類、單一無效原則、assertThrows 與 @CsvSource (CCQ 3)
   - 🧪 *Lab: ParamDemoTest 等價資料驅動與練習*
-- **5.5 全成對組合測試 (Pairwise / All-Pairs)**：
+- [**5.5 全成對組合測試 (Pairwise / All-Pairs)**](#43)：
   - 2-Way 交互作用、AllPairs4J 與 @TestFactory 動態工廠 (CCQ 4)
   - 🧪 *Lab: LoanCalculatorPairwiseTest 動態展開*
 
@@ -50,31 +50,27 @@ footer: 'Ch05 黑箱測試'
 <div>
 
 ### 📐 結構、情境與前沿測試
-- **5.6 案例優化與分類樹方法 (CTM)**：
-  - Daimler-Benz 分類樹、@DisplayName 繁中活規格與 @Nested (CCQ 5)
+- [**5.6 案例優化與分類樹方法 (CTM)**](#54)：
+  - Daimler-Benz 分類樹、@DisplayName 與 @Nested (CCQ 5)
   - 🧪 *Lab: DisplayNameTest 與分類樹規格映射*
-- **5.7 因果圖法與決策表測試 (Decision Table)**：
+- [**5.7 因果圖法與決策表測試 (Decision Table)**](#62)：
   - 布林邏輯網絡、CAR 表化簡、決策表直出 CSV 與多動作斷言 (CCQ 6)
   - 🧪 *Lab: 促銷決策表直出與多重驗收練習*
-- **5.8 狀態轉換測試 (State Transition Testing)**：
-  - 航空訂票狀態機、@BeforeEach 狀態重置與 @Nested 狀態建模 (CCQ 7)
+- [**5.8 狀態轉換測試 (State Transition Testing)**](#72)：
+  - 航空訂票狀態機、狀態重置與 @Nested 狀態建模 (CCQ 7)
   - 🧪 *Lab: StackTest 物件狀態機與例外練習*
-- **5.9 使用案例與情境測試 (Use Case Testing)**：
+- [**5.9 使用案例與情境測試 (Use Case Testing)**](#80)：
   - 基本流、替代流與例外流測試矩陣
   - 🧪 *Lab: ATM 提款交易與連續錯誤鎖卡防衛練習*
-- **5.10 經驗基礎測試：錯誤猜測與探索性測試**：
+- [**5.10 經驗基礎測試：錯誤猜測與探索性測試**](#85)：
   - 缺陷防禦清單、探索性測試 (ET) 與任務段管理 (SBTM)
   - 🧪 *Lab: 破壞性邊界探針與畸形輸入防護練習*
-- **5.11 屬性基礎測試 (PBT) 與 變質測試 (Metamorphic)**：
+- [**5.11 屬性基礎測試 (PBT) 與 變質測試 (Metamorphic)**](#90)：
   - 數學不變量規格 (jqwik)、四大變質關係 (MR) 與 LLM 評測 (CCQ 8)
   - 🧪 *Lab: 隨機測資收縮與搜尋引擎變質對稱性*
 
 </div>
 </div>
-
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1)
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq1.png" width="120"></a>
 
 ---
 
@@ -429,30 +425,6 @@ class CalculatorTest {
 
 <!-- header: '5.2 單元測試與 JUnit 5 快速入門' -->
 
-## 概念核對問答 (CCQ 1)
-
-<div class="ccq-columns">
-<div class="ccq-text">
-
-<!-- id: sqa-ch05-ccq1 -->
-**問題情境**：  
-【是非題】在單元測試斷言機制中，「記憶體同一性 (Reference Identity)」驗證的作用與「內容值等價 (Value Equality)」驗證完全相同，兩者都是在比對兩個物件內部的資料欄位是否相等。
-
-- **A)** 正確 (True)
-- **B)** 錯誤 (False)
-
-</div>
-<div class="ccq-logo">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq1.png" alt="QR Code" /></a>
-
-</div>
-</div>
-
----
-
-<!-- header: '5.2 單元測試與 JUnit 5 快速入門' -->
-
 ## 🧪 課堂實習指引 (LabDemo 5.2: JUnit 基礎操作)
 
 <div class="card-deck">
@@ -464,20 +436,20 @@ class CalculatorTest {
 
 ### 💻 體驗範例程式碼 (Demo Walkthrough)
 - **1. 開啟待測類別與測試檔**：
-  - 待測類別：`u05_junit/Calculator.java`
-  - 示範測試：`u05_junit/CalculatorDemoTest.java`
+  - 待測類別：[`Calculator.java`](../../lab.html?file=LabDemo/src/main/java/u05_junit/Calculator.java)
+  - 示範測試：[`CalculatorDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_junit/CalculatorDemoTest.java)
 - **2. 觀察 3A 結構**：
   - 尋找 Arrange、Act 與 Assert 的三段分工。
 - **3. IDE 一鍵執行**：
   - 點擊 `@Test` 左側的綠色三角形 ▶️ 執行測試，觀察測試運行結果與綠燈。
 - **4. 斷言大全快速檢閱**：
-  - 查閱 `u05_junit/AssertionsDemoTest.java` 的全套斷言寫法。
+  - 查閱 [`AssertionsDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_junit/AssertionsDemoTest.java) 的全套斷言寫法。
 
 </div>
 <div class="card">
 
 ### 🎯 課堂動手練習 (Hands-on Exercise)
-- **開啟練習檔**：`u05_junit/CalculatorExerciseTest.java`
+- **開啟練習檔**：[`CalculatorExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_junit/CalculatorExerciseTest.java)
 - **練習 1：3A 減法測試**：
   - 依提示補全 `exercise1_testSubtract()`，實作 20 - 7 = 13 之斷言。
 - **練習 2：assertAll 負數與零加法**：
@@ -523,6 +495,30 @@ class CalculatorTest {
   - 驗證「私有方法調用次數」而非驗證公開契約輸出，導致重構時測試脆弱易碎。
 
 </div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.2 單元測試與 JUnit 5 快速入門' -->
+
+## 概念核對問答 (CCQ 1)
+
+<div class="ccq-columns">
+<div class="ccq-text">
+
+<!-- id: sqa-ch05-ccq1 -->
+**問題情境**：  
+【是非題】在單元測試斷言機制中，「記憶體同一性 (Reference Identity)」驗證的作用與「內容值等價 (Value Equality)」驗證完全相同，兩者都是在比對兩個物件內部的資料欄位是否相等。
+
+- **A)** 正確 (True)
+- **B)** 錯誤 (False)
+
+</div>
+<div class="ccq-logo">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq1.png" alt="QR Code" /></a>
+
 </div>
 </div>
 
@@ -793,32 +789,6 @@ class CalculatorTest {
 
 <!-- header: '5.3 邊界值分析 (BVA)' -->
 
-## 概念核對問答 (CCQ 2)
-
-<div class="ccq-columns">
-<div class="ccq-text">
-
-<!-- id: sqa-ch05-ccq2 -->
-**問題情境**：  
-【單選題】假設某個受測方法接受 3 個彼此獨立的連續數值輸入參數。若採用「獨立型強固邊界測試 (Independent Robust BVA)」，其設計出的測試案例數量應為多少？
-
-- **A)** 13 個
-- **B)** 19 個
-- **C)** 125 個
-- **D)** 343 個
-
-</div>
-<div class="ccq-logo">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq2" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq2.png" alt="QR Code" /></a>
-
-</div>
-</div>
-
----
-
-<!-- header: '5.3 邊界值分析 (BVA)' -->
-
 ## 🧪 課堂實習指引 (LabDemo 5.3: BVA 邊界實戰)
 
 <div class="card-deck">
@@ -830,7 +800,7 @@ class CalculatorTest {
 
 ### 💻 體驗範例程式碼 (Demo Walkthrough)
 - **1. 邊界測試示範類別**：
-  - 開啟 `u05_input/bva/TriangleBvaDemoTest.java`
+  - 開啟 [`TriangleBvaDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_partition/bva/TriangleBvaDemoTest.java)
   - 觀察 4n+1 獨立型測試：a 邊取 min, min+, nom, max-, max（b, c 維持 nom）。
 - **2. 群組斷言避免 Early Abort**：
   - 觀察 `assertAll(...)` 如何把多個邊界檢驗聚合執行，確保即使第一個邊界出錯，其餘邊界仍被完整檢驗！
@@ -840,10 +810,10 @@ class CalculatorTest {
 
 ### 🎯 課堂動手練習 (Hands-on Exercise)
 - **練習 1：三角形強固邊界與 On-Off-In 三點法**：
-  - 開啟 `u05_input/bva/TriangleBvaExerciseTest.java`；
+  - 開啟 [`TriangleBvaExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_partition/bva/TriangleBvaExerciseTest.java)；
   - 補全 a 的 `min-` (0) 與 `max+` (201) 越界測資，並以 On-Off-In 檢驗兩邊之和臨界！
 - **練習 2：游泳池年齡門檻邊界**：
-  - 開啟 `u05_input/bva/PoolTicketBvaExerciseTest.java`；
+  - 開啟 [`PoolTicketBvaExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_partition/bva/PoolTicketBvaExerciseTest.java)；
   - 規格：免費 (0~3歲)、兒童票 (4~12歲)、全票 (13~64歲)、敬老票 (≥ 65 歲)；
   - 運用 `@CsvSource` 填入交界點數值，並驗證 -1 與 121 歲越界防禦！
 
@@ -885,6 +855,32 @@ class CalculatorTest {
   - 僅注意欄位型態邊界（如 `Integer.MAX_VALUE`），遺漏真實業務邊界（如購物車上限 99 件、檔案上傳 10MB、逾時 30 秒）。
 
 </div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.3 邊界值分析 (BVA)' -->
+
+## 概念核對問答 (CCQ 2)
+
+<div class="ccq-columns">
+<div class="ccq-text">
+
+<!-- id: sqa-ch05-ccq2 -->
+**問題情境**：  
+【單選題】假設某個受測方法接受 3 個彼此獨立的連續數值輸入參數。若採用「獨立型強固邊界測試 (Independent Robust BVA)」，其設計出的測試案例數量應為多少？
+
+- **A)** 13 個
+- **B)** 19 個
+- **C)** 125 個
+- **D)** 343 個
+
+</div>
+<div class="ccq-logo">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq2" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq2.png" alt="QR Code" /></a>
+
 </div>
 </div>
 
@@ -1234,16 +1230,16 @@ class CalculatorTest {
 
 > 💡 以 5.3 **游泳池年齡票價 (`0~120` 歲)** 為例：若把 EP (6 類) 與 4 段區間的強固 BVA (4×7=28 點) 分開死板套用，會產生 **34 個高度重複點**；透過三步 SOP 合體去重，僅需 **14 個精準測試點**！
 
-| 1：劃分等價類 | 2：標記相鄰交界 | 3：統一精準取點 (邊界極值 + 標稱值) | 預期輸出與「拒絕重複」關鍵解析 |
+| 1：劃分等價類 | 2：相鄰交界 | 3：統一取點 (邊界 + 標稱) | 預期輸出與「拒絕重複」關鍵解析 |
 | :--- | :---: | :---: | :--- |
-| **I<sub>1</sub> 無效低界 (`age < 0`)** | `-1` \| `0` | **`-1`** *(BVA 左越界 + I<sub>1</sub> 代表)* | 🚨 `IllegalArgumentException`（1 點兼顧越界與無效類） |
-| **V<sub>1</sub> 免費票 (`0 ≤ age ≤ 3`)** | `0`、`3` | **`0`** (min), **`2`** (nom), **`3`** (max) | `FREE (0 元)` —— 涵蓋 V<sub>1</sub> 雙邊界與標稱值 |
-| **V<sub>2</sub> 兒童票 (`4 ≤ age ≤ 12`)** | `4`、`12` | **`4`** (min), **`8`** (nom), **`12`** (max) | `CHILD (100 元)` —— **`4` 即 V<sub>1</sub> 的 `max+`，免重複測！** |
-| **V<sub>3</sub> 全票 (`13 ≤ age ≤ 64`)** | `13`、`64` | **`13`** (min), **`30`** (nom), **`64`** (max) | `ADULT (250 元)` —— **`13` 即 V<sub>2</sub> 的 `max+`，免重複測！** |
-| **V<sub>4</sub> 敬老票 (`65 ≤ age ≤ 120`)** | `65`、`120` | **`65`** (min), **`80`** (nom), **`120`** (max) | `SENIOR (120 元)` —— **`65` 即 V<sub>3</sub> 的 `max+`，免重複測！** |
-| **I<sub>2</sub> 無效高界 (`age > 120`)** | `120` \| `121` | **`121`** *(BVA 右越界 + I<sub>2</sub> 代表)* | 🚨 `IllegalArgumentException`（1 點兼顧越界與無效類） |
+| **I<sub>1</sub> 無效低界 (`age < 0`)** | `-1` \| `0` | **`-1`** *(左越界+I<sub>1</sub>)* | 🚨 `IllegalArgumentException`（兼顧越界與無效類） |
+| **V<sub>1</sub> 免費票 (`0 ≤ age ≤ 3`)** | `0`, `3` | **`0`**(min), **`2`**(nom), **`3`**(max) | `FREE (0元)` — 涵蓋 V<sub>1</sub> 雙邊界與標稱值 |
+| **V<sub>2</sub> 兒童票 (`4 ≤ age ≤ 12`)** | `4`, `12` | **`4`**(min), **`8`**(nom), **`12`**(max) | `CHILD (100元)` — **`4` 即 V<sub>1</sub> 的 `max+`，免重測** |
+| **V<sub>3</sub> 全票 (`13 ≤ age ≤ 64`)** | `13`, `64` | **`13`**(min), **`30`**(nom), **`64`**(max) | `ADULT (250元)` — **`13` 即 V<sub>2</sub> 的 `max+`，免重測** |
+| **V<sub>4</sub> 敬老票 (`65 ≤ age ≤ 120`)** | `65`, `120` | **`65`**(min), **`80`**(nom), **`120`**(max) | `SENIOR (120元)` — **`65` 即 V<sub>3</sub> 的 `max+`，免重測** |
+| **I<sub>2</sub> 無效高界 (`age > 120`)** | `120` \| `121` | **`121`** *(右越界+I<sub>2</sub>)* | 🚨 `IllegalArgumentException`（兼顧越界與無效類） |
 
-- **為什麼分開做會重複？** 連續分段規格中，「前一段的右越界 (`max+`) 剛好就是後一段的左邊界 (`min`)」（如 `3` 與 `4`、`12` 與 `13`、`64` 與 `65`）。
+- **為何分開做會重複？** 連續分段規格中，「前一段右越界 (`max+`) 剛好就是後一段左邊界 (`min`)」（如 `3/4`、`12/13`、`64/65`）。
 
 ---
 
@@ -1323,6 +1319,41 @@ class CalculatorTest {
 
 <!-- header: '5.4 等價類分割測試 (EP)' -->
 
+## 🧪 課堂實習指引 (LabDemo 5.4: EP 等價類實戰)
+
+<div class="card-deck">
+
+> 💡 等價類實戰重點：使用 @CsvSource 建立多維度測試表格，以 assertThrows 驗證非法輸入的防禦性邏輯。
+
+<div class="two-columns">
+<div class="card">
+
+### 💻 體驗範例程式碼 (Demo Walkthrough)
+- **1. 二元搜尋多維等價分割**：
+  - 開啟 [`BinarySearchEpDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_partition/ep/BinarySearchEpDemoTest.java)
+  - 觀察陣列長度（空、單、多元素）與命中位置（頭、中、尾、不存在）之等價類別劃分。
+- **2. 參數化外部資料驅動**：
+  - 開啟 [`ParamDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_partition/ep/ParamDemoTest.java)
+  - 觀察 `@ValueSource` 與 `@CsvSource` 如何乾淨解耦測試邏輯與資料。
+
+</div>
+<div class="card">
+
+### 🎯 課堂動手練習 (Hands-on Exercise)
+- **練習：密碼格式等價類分割**：
+  - 開啟 [`PasswordValidatorEpExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_partition/ep/PasswordValidatorEpExerciseTest.java)；
+  - 練習 1：驗證長度合格且包含英數字之【有效等價類】；
+  - 練習 2：使用 `assertThrows` 驗證長度小於 8 或大於 20 之【無效等價類例外】；
+  - 練習 3：驗證純字母或純數字之【弱密碼等價類回傳 false】！
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.4 等價類分割測試 (EP)' -->
+
 ## 概念核對問答 (CCQ 3)
 
 <div class="ccq-columns">
@@ -1342,41 +1373,6 @@ class CalculatorTest {
 
 <a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq3" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq3.png" alt="QR Code" /></a>
 
-</div>
-</div>
-
----
-
-<!-- header: '5.4 等價類分割測試 (EP)' -->
-
-## 🧪 課堂實習指引 (LabDemo 5.4: EP 等價類實戰)
-
-<div class="card-deck">
-
-> 💡 等價類實戰重點：使用 @CsvSource 建立多維度測試表格，以 assertThrows 驗證非法輸入的防禦性邏輯。
-
-<div class="two-columns">
-<div class="card">
-
-### 💻 體驗範例程式碼 (Demo Walkthrough)
-- **1. 二元搜尋多維等價分割**：
-  - 開啟 `u05_input/ep/BinarySearchEpDemoTest.java`
-  - 觀察陣列長度（空、單、多元素）與命中位置（頭、中、尾、不存在）之等價類別劃分。
-- **2. 參數化外部資料驅動**：
-  - 開啟 `u05_input/ep/ParamDemoTest.java`
-  - 觀察 `@ValueSource` 與 `@CsvSource` 如何乾淨解耦測試邏輯與資料。
-
-</div>
-<div class="card">
-
-### 🎯 課堂動手練習 (Hands-on Exercise)
-- **練習：密碼格式等價類分割**：
-  - 開啟 `u05_input/ep/PasswordValidatorEpExerciseTest.java`；
-  - 練習 1：驗證長度合格且包含英數字之【有效等價類】；
-  - 練習 2：使用 `assertThrows` 驗證長度小於 8 或大於 20 之【無效等價類例外】；
-  - 練習 3：驗證純字母或純數字之【弱密碼等價類回傳 false】！
-
-</div>
 </div>
 </div>
 
@@ -1671,54 +1667,28 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 <!-- header: '5.5 全成對組合測試 (Pairwise)' -->
 
-## 概念核對問答 (CCQ 4)
-
-<div class="ccq-columns">
-<div class="ccq-text">
-
-<!-- id: sqa-ch05-ccq4 -->
-**問題情境**：  
-【單選題】全成對測試 (Pairwise / All-Pairs Testing) 能夠大幅縮減測試案例數量，其在軟體工程上的核心理論依據是什麼？
-
-- **A)** 軟體系統中的缺陷通常需要至少三個以上的參數交互作用才會觸發
-- **B)** 絕大多數缺陷是由單一變數或任意兩變數之交互作用所引起
-- **C)** 配對測試是白箱測試的一種，可以直接涵蓋所有的程式碼分支路徑
-- **D)** 成對測試可以保證 100% 涵蓋多變數系統的所有笛卡爾積組合
-
-</div>
-<div class="ccq-logo">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq4" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq4.png" alt="QR Code" /></a>
-
-</div>
-</div>
-
----
-
-<!-- header: '5.5 全成對組合測試 (Pairwise)' -->
-
-## 🧪 課堂實習指引 (LabDemo 5.5: `u05_pair` 全成對實戰)
+## 🧪 課堂實習指引 (LabDemo 5.5: 全成對組合測試實戰)
 
 <div class="card-deck">
 
-> 💡 實習目錄：`LabDemo/src/test/java/u05_pair/`（搭配專題手冊 `pairwise_combinatorial.md`）
+> 💡 搭配專題實驗手冊：[`pairwise_combinatorial.md`](../../lab.html?file=LabDemo/docs/u05_utest/pairwise_combinatorial.md)
 
 <div class="two-columns">
 <div class="card">
 
-### 💻 課堂示範體驗 (`u05_pair/` 兩大 Demo)
-- **1. 游泳池成對測試 (`SwimmingPoolPairwiseDemoTest.java`)**：
+### 💻 課堂示範體驗 (兩大 Demo)
+- **1. 游泳池成對測試 ([`SwimmingPoolPairwiseDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_combinatorial/pair/SwimmingPoolPairwiseDemoTest.java))**：
   - **示範 1**：印出 `m1 vs. m2` 貪婪計分表，觀察 **16 個 Pairs** 如何在 6 組內歸零。
   - **示範 2 (策略 A)**：`AllPairs4J` + `@TestFactory` 動態驗證票價不變量 (`50~200`)。
   - **示範 3 (策略 B)**：執行 `generateCsvSourceTemplateForPaste()` 印出含 `TODO` 的 `@CsvSource` 樣板 ➔ 複製貼上並填入 SRS 預期票價執行 `assertEquals`！
-- **2. 房貸利率成對測試 (`LoanCalculatorPairwiseDemoTest.java`)**：
+- **2. 房貸利率成對測試 ([`LoanCalculatorPairwiseDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_combinatorial/pair/LoanCalculatorPairwiseDemoTest.java))**：
   - 觀察 4 維度（3×3×2×2 = **36 組**）如何由 `AllPairs4J` 壓縮為 **9 組**動態執行。
 
 </div>
 <div class="card">
 
 ### 🎯 課堂動手練習 (`LoanCalculatorPairwiseExerciseTest.java`)
-- **開啟練習檔**：`u05_pair/LoanCalculatorPairwiseExerciseTest.java`
+- **開啟練習檔**：[`LoanCalculatorPairwiseExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_combinatorial/pair/LoanCalculatorPairwiseExerciseTest.java)
 - **練習 1：極限優惠保底下限 `2.0%` 精確斷言**：
   - 設計多項優惠累加（年限 25 年 + 金額 2500 萬 + 青年 + 已婚），驗證原始折扣雖低於 2%，但系統精準鎖定保底 **`2.0%`**！
 - **練習 2：自訂 3 因子 `AllPairs4J` 動態測試工廠**：
@@ -1766,6 +1736,32 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
+<!-- header: '5.5 全成對組合測試 (Pairwise)' -->
+
+## 概念核對問答 (CCQ 4)
+
+<div class="ccq-columns">
+<div class="ccq-text">
+
+<!-- id: sqa-ch05-ccq4 -->
+**問題情境**：  
+【單選題】全成對測試 (Pairwise / All-Pairs Testing) 能夠大幅縮減測試案例數量，其在軟體工程上的核心理論依據是什麼？
+
+- **A)** 軟體系統中的缺陷通常需要至少三個以上的參數交互作用才會觸發
+- **B)** 絕大多數缺陷是由單一變數或任意兩變數之交互作用所引起
+- **C)** 配對測試是白箱測試的一種，可以直接涵蓋所有的程式碼分支路徑
+- **D)** 成對測試可以保證 100% 涵蓋多變數系統的所有笛卡爾積組合
+
+</div>
+<div class="ccq-logo">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq4" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq4.png" alt="QR Code" /></a>
+
+</div>
+</div>
+
+---
+
 <!-- _class: lead -->
 <!-- header: '5.6 案例優化與分類樹方法 (CTM)' -->
 
@@ -1776,34 +1772,13 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
+<!-- _class: title-image-slide -->
 <!-- header: '5.6 案例優化與分類樹方法 (CTM)' -->
 
-## 測試案例精實化四大策略
+## 測試案例精實化四大策略 (Test Case Optimization Strategies)
 
-<div class="card-deck">
-
-* > 💡 面對數千個潛在案例，透過工程優化策略進行剪枝，保留最高殺傷力的測試子集。
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### ✂️ 1. 分離例外與 2. 配對組合
-- **分離等效例外**：
-  - 若所有因子的非法輸入皆導向相同的錯誤處理（如拋出 400 錯誤），無需測試所有因子的例外排列組合，只需將例外抽取為獨立集合測試。
-- **2-Way 配對組合**：
-  - 將不相關的因子改以 Pairwise 方式結合，指數級案例瞬間降為多項式級。
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 🎯 3. 邊界鎖定與 4. FMEA 風險優先
-- **鎖定邊界替代隨機**：
-  - 等價區間內部只挑 1 個代表，將精力聚焦於 min, min+, max-, max。
-- **FMEA 失效模式與效應分析 (Failure Mode and Effects Analysis)**：
-  - 依 **嚴重度 (S) × 發生率 (O) × 難檢度 (D)** 計算風險優先數 (RPN)；高風險核心金流採強涵蓋，低風險輔助模組降級為弱涵蓋。
-
-</div>
-</div>
+<div class="image-wrapper">
+  <img src="../../img/ch05/test_optimization_4_strategies.svg" alt="測試案例精實化四大策略縮圖全景" />
 </div>
 
 ---
@@ -1821,13 +1796,13 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ### 🌳 雙層核心架構與設計原理
 - **上層：分類樹 (Classification Tree)**：
-  - **分類 (Classifications)**：將待測輸入域依測試觀點分解為若干互斥維度（例如：身分、金額）。
-  - **類別 (Classes)**：每個維度下劃分出互斥且完整的等價葉節點（如 VIP、一般、訪客）。
+  - **分類 (Classifications)**：將待測輸入域依測試觀點分解為互斥維度（如：會員身分、消費金額、付款方式）。
+  - **類別與子樹 (Classes & Sub-trees)**：每個維度下劃分互斥葉節點（如 VIP/一般/訪客），並針對特定類別再向下展開**階層子樹**（如 `信用卡 ➔ 刷一次 / 刷分期`）。
 - **下層：組合規格表 (Combination Table)**：
-  - 欄位**垂直投影對齊**上方各等價葉節點。
-  - 橫列代表具體的測試案例 (TC<sub>1</sub>, TC<sub>2</sub>, ...)。
+  - 全部 10 個欄位**垂直投影對齊**上方各等價葉節點。
+  - 橫列代表具體的測試案例 (TC<sub>1</sub> ~ TC<sub>4</sub>)。
 - **打點標記 (⚫)**：
-  - 每一列在每個分類維度中**選取一個類別打點**，直觀防漏並組裝出完整測試案例！
+  - 每一列在每個分類維度中**選取一個葉節點打點**，直觀防漏並組裝出完整測試案例！
 
 </div>
 <div class="card" style="text-align: center; display: flex; align-items: center; justify-content: center; padding: 6px;">
@@ -1846,20 +1821,18 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 <div class="card-deck">
 
-> 💡 CTM 不只是把弱涵蓋畫成表，而是結合「**樹狀子分類細分 + 垂直防漏稽核 + 風險混搭覆蓋**」的視覺化工程規格！
+> CTM 不只把弱涵蓋畫成表，而是結合「**樹狀子分類細分 + 垂直防漏稽核 + 風險混搭覆蓋**」的視覺化工程規格！
 
 <div class="two-columns">
 <div class="card">
 
-### 📋 CTM 階層細分與打點矩陣（含信用卡子樹）
-| 案例 | VIP | 一般 | 訪客 | <1K | 1~3K | >3K | 刷卡:一次 | 刷卡:分期 | 行動 | 貨到 | 預期輸出與測試重點 |
+##### 📋 CTM 階層細分與打點矩陣（含信用卡子樹）
+| 案例 | VIP | 一般 | 訪客 | <1K | 1~3K | >3K | 刷一次 | 刷分期 | 行動 | 貨到 | 預期輸出與測試重點 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
 | **TC<sub>1</sub>** | ⚫ | | | | | ⚫ | ⚫ | | | | 8折+折300 (一次付清) |
 | **TC<sub>2</sub>** | ⚫ | | | | | ⚫ | | ⚫ | | | 8折+折300 (**刷卡分期子樹**) |
 | **TC<sub>3</sub>** | | ⚫ | | | ⚫ | | | | ⚫ | | 9折+折100 (行動免測分期) |
 | **TC<sub>4</sub>** | | | ⚫ | ⚫ | | | | | | ⚫ | 原價無折扣 (貨到免測分期) |
-
-- **垂直防漏檢查**：往下掃視全部 10 個葉節點直欄，每一欄皆至少有 1 個 `⚫`，**0 漏測**！
 
 </div>
 <div class="card">
@@ -1880,59 +1853,42 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 <!-- header: '5.6 案例優化與分類樹方法 (CTM)' -->
 
-## 分類樹規格的 JUnit 5 落地：語意化命名與情境分組
+## 分類樹規格的 JUnit 5 落地：語意化命名與多層 `@Nested`
 
 <div class="card-deck">
 
-> 💡 分類樹的工程挑戰：打點規格表具有豐富的業務情境，傳統英數方法名在報表中難以理解與追蹤！
+> 💡 分類樹的工程挑戰：如何將 CTM 的「**樹狀子分類階層**」與「**TC<sub>1</sub> ~ TC<sub>4</sub> 打點業務規格**」1:1 映照至測試程式碼？
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### 🏷️ 語意化顯示名稱 (`@DisplayName`)
 - **測試即活文件 (Living Documentation)**：
-  - 若方法名寫為 `testCheckout1()`，團隊與驗收人員在 CI/CD 報表上無法得知測試意圖。
-- **JUnit 5 解決方案 (DisplayName)**：
-  - 直接在測試標註 `@DisplayName("TC1: VIP會員且滿3000元刷卡 ➔ 享8折與滿額折300")`（如 LabDemo `DisplayNameTest`）；
-  - 亦可配置 `@DisplayNameGeneration` 自動將命名規則轉譯為自然語意句子，使測試報告直接化為業務規格驗收單！
+  - 若方法名只寫 `testCheckout1()`，CI/CD 報表無法反映 CTM 打點組合的業務意圖。
+- **JUnit 5 解決方案 ([`OrderDiscountCtmDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_combinatorial/ctm/OrderDiscountCtmDemoTest.java))**：
+  - 直接標註 `TC1 ~ TC4` 打點規格（如 `@DisplayName("TC1: VIP × >3K × 刷一次 ➔ 8折+折300")`）；
+  - 亦可搭配 `@DisplayNameGeneration` 自動將底線方法名轉為自然語意句子！
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card">
 
-### 🌳 階層化情境分組 (`@Nested`)
-- **同構映射分類樹架構**：
-  - 分類樹的上層維度（如：會員身分）與下層分類（如：消費金額級距），可直接映照至 Java 內部類別階層。
-- **結構化測試報表**：
-  - 外層 `@Nested class VIPMemberTest` 內嵌 `@Nested class Over3000AmountTest`；
-  - 執行測試時，IDE 的測試導覽樹會**自動展現為與 CTM 分類樹完全一致的樹狀結構**，邏輯層次井然有序！
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '5.6 案例優化與分類樹方法 (CTM)' -->
-
-## 概念核對問答 (CCQ 5)
-
-<div class="ccq-columns">
-<div class="ccq-text">
-
-<!-- id: sqa-ch05-ccq5 -->
-**問題情境**：  
-【單選題】關於「正交表測試 (Orthogonal Array Testing, OATS)」與一般「全成對測試 (Pairwise Testing)」的比較，下列敘述何者正確？
-
-- **A)** 正交表由隨機抽樣產生，全成對測試由數學嚴格推導生成
-- **B)** 正交表強調各因子均勻平衡，全成對僅要求任兩者配對出現
-- **C)** 變數個數相同時，正交表與全成對產生之案例清單必完全一致
-- **D)** 正交表僅能處理布林變數，全成對可廣泛支援多值離散參數
+### 🌳 多層巢狀情境分組 (`@Nested`)
+- **1:1 同構映射 CTM 分類樹與子樹 (`TC1 ~ TC4`)**：
+  ```java
+  @Nested class VIPMemberTest {             // VIP 會員
+    @Nested class Over3000AmountTest {      // >3K 金額
+      @Nested class CreditCardSubTreeTest { // 信用卡子樹
+        @Test void testTc1_VipOver3000CreditCardOneTime() { ... }
+        @Test void testTc2_VipOver3000CreditCardInstallment() { ... }
+      }
+    }
+  }
+  @Nested class RegularMemberTest { ... }   // TC3: 一般×1~3K×行動
+  @Nested class GuestMemberTest { ... }     // TC4: 訪客×<1K×貨到
+  ```
+- 執行測試時，IDE 測試導覽樹會**自動展開為與 CTM 分類樹完全一致的多層樹狀結構**！
 
 </div>
-<div class="ccq-logo">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq5" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq5.png" alt="QR Code" /></a>
-
 </div>
 </div>
 
@@ -1944,27 +1900,26 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 <div class="card-deck">
 
-> 💡 分類樹實戰重點：將打點規格矩陣 1:1 轉化為 @DisplayName 繁中語意化規格與 @Nested 階層測試。
+> 💡 分類樹實戰重點：將電商結帳 CTM 打點規格矩陣（含信用卡子樹）1:1 轉化為 `@DisplayName` 與多層 `@Nested` 測試。
 
 <div class="two-columns">
 <div class="card">
 
 ### 💻 體驗範例程式碼 (Demo Walkthrough)
-- **1. 開啟語意化展示類別**：
-  - 開啟 `u05_input/ctm/DisplayNameDemoTest.java`；
-  - 觀察 `@DisplayName` 如何讓測試報告直接呈現為清晰的中文業務說明。
-- **2. 觀察巢狀情境分組**：
-  - 檢視 `@Nested class LeapYearRules`；
-  - 執行測試，觀察 IDE 測試視窗左側的樹狀導覽結構。
+- **1. 開啟 CTM 分類樹示範類別 (`TC1 ~ TC4`)**：
+  - 開啟 [`OrderDiscountCtmDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_combinatorial/ctm/OrderDiscountCtmDemoTest.java)；
+  - 檢視 `VIPMemberTest`（內嵌三層信用卡子樹 `TC1, TC2`）、`RegularMemberTest`（`TC3`）與 `GuestMemberTest`（`TC4`）如何 1:1 映照 p.57 的 CTM 打點表。
+- **2. 觀察多層樹狀測試報表**：
+  - 執行測試後，點開 IDE 左側 **Testing (燒杯圖示 🧪)** 面板（或查看 Console 階層軌跡），觀察與 CTM 分類樹完全一致的多層樹狀結構！
 
 </div>
 <div class="card">
 
 ### 🎯 課堂動手練習 (Hands-on Exercise)
-- **開啟練習檔**：`u05_input/ctm/OrderDiscountCtmExerciseTest.java`
-- **練習：電商結帳折扣 CTM 打點規格轉化**：
-  - 參照投影片中電商結帳（身分 × 金額 × 支付）CTM 打點規格表；
-  - 利用 `@Nested` 分層建立 VIP 與一般顧客情境，驗證 TC<sub>1</sub> ~ TC<sub>3</sub> 的打點組合！
+- **開啟練習檔**：[`OrderDiscountCtmExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_combinatorial/ctm/OrderDiscountCtmExerciseTest.java)
+- **練習：電商結帳折扣 CTM 打點矩陣 (`TC_1 ~ TC_4`)**：
+  - 於 `VipMemberTests` 內層之 `@Nested class CreditCardSubTreeTests` 完成 **TC<sub>1</sub>（刷一次）** 與 **TC<sub>2</sub>（刷分期子樹）**；
+  - 於 `RegularAndGuestTests` 完成 **TC<sub>3</sub>（一般會員行動支付）** 與 **TC<sub>4</sub>（訪客貨到付款）**！
 
 </div>
 </div>
@@ -2003,6 +1958,32 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
   - 每個 Class 只打一點滿足最少案例，忽略了高風險欄位之間的交互組合。
 
 </div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.6 案例優化與分類樹方法 (CTM)' -->
+
+## 概念核對問答 (CCQ 5)
+
+<div class="ccq-columns">
+<div class="ccq-text">
+
+<!-- id: sqa-ch05-ccq5 -->
+**問題情境**：  
+【單選題】關於「正交表測試 (Orthogonal Array Testing, OATS)」與一般「全成對測試 (Pairwise Testing)」的比較，下列敘述何者正確？
+
+- **A)** 正交表由隨機抽樣產生，全成對測試由數學嚴格推導生成
+- **B)** 正交表強調各因子均勻平衡，全成對僅要求任兩者配對出現
+- **C)** 變數個數相同時，正交表與全成對產生之案例清單必完全一致
+- **D)** 正交表僅能處理布林變數，全成對可廣泛支援多值離散參數
+
+</div>
+<div class="ccq-logo">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq5" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq5.png" alt="QR Code" /></a>
+
 </div>
 </div>
 
@@ -2060,30 +2041,35 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 <!-- header: '5.7 因果圖與決策表測試' -->
 
-## 貫穿範例 (1/3)：電商促銷規格與因果圖建模
+## 貫穿範例 (1/4)：電商促銷規格與因子拆解
 
 <div class="card-deck">
 
-> 💡 業務需求：① 滿額且為 VIP 享 8 折；② 滿額且輸入促銷碼享免運；③ 未達任何門檻則原價結帳。
+> 💡 業務需求：① 滿千且 VIP 享 8 折；② 滿千且輸入促銷碼享免運；③ 未獲優惠則原價結帳。
 
 <div class="two-columns">
 <div class="card">
 
-### 📋 規格因子拆解 (Step 1)
-- **原因 (Causes)**：
-  - C<sub>1</sub>：訂單金額 ≥ 1,000 元 (滿額門檻)
-  - C<sub>2</sub>：具備 VIP 會員資格
-  - C<sub>3</sub>：結帳時輸入免運促銷碼
-- **結果 (Effects)**：
-  - E<sub>1</sub>：享有 8 折優惠 (C<sub>1</sub> AND C<sub>2</sub>)
-  - E<sub>2</sub>：享有免運費折抵 (C<sub>1</sub> AND C<sub>3</sub>)
-  - E<sub>3</sub>：原價一般結帳 (NOT (E<sub>1</sub> OR E<sub>2</sub>))
-- **前置約束**：C<sub>1</sub> 為享有任何優惠之必要條件。
+### 📋 Step 1：原因與結果因子拆解
+- **原因節點 (Causes, C<sub>i</sub>)**：
+  - **C<sub>1</sub>**：訂單金額 ≥ 1,000 元 *(滿額必要門檻 Gatekeeper)*
+  - **C<sub>2</sub>**：具備 VIP 會員身分
+  - **C<sub>3</sub>**：結帳時輸入免運促銷碼
+- **結果節點 (Effects, E<sub>j</sub>)**：
+  - **E<sub>1</sub>**：享有 8 折優惠（`C1 AND C2`）
+  - **E<sub>2</sub>**：享有免運費折抵（`C1 AND C3`）
+  - **E<sub>3</sub>**：原價一般結帳（`~(E1 OR E2)`，受 **M 遮蔽約束**）
 
 </div>
-<div class="card" style="text-align: center; display: flex; align-items: center; justify-content: center; padding: 6px;">
+<div class="card">
 
-<img src="../../img/ch05/cause_effect_graph.svg" style="max-height: 385px; width: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);" />
+### 🎯 Step 2：由結果反向追蹤防漏（為何要畫因果圖？）
+- **純靠直覺閱讀文字的盲點**：
+  - 工程師常把「原價結帳 (E<sub>3</sub>)」直接等同於「未滿千 (`C1 = N`)」，因而**漏測了 `C1 = Y, C2 = N, C3 = N`（滿千但一般會員且無促銷碼）**！
+- **因果圖反向展開（De Morgan 定律防漏）**：
+  - 由 `E3 = ~(E1 OR E2)` 往左反向追蹤，強制拆出**兩條獨立路徑**：
+    1. **路徑 A (`C1=Y 且 ~C2 且 ~C3`)** ➔ 導出 **R<sub>4</sub> (`Y, N, N`)**（1 組）
+    2. **路徑 B (`~C1`，即 `C1=N`)** ➔ 導出 **R<sub>5</sub> (`N, -, -`)**（合併 4 組）
 
 </div>
 </div>
@@ -2091,37 +2077,47 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
+<!-- _class: title-image-slide -->
 <!-- header: '5.7 因果圖與決策表測試' -->
 
-## 貫穿範例 (2/3)：導出 CAR 決策表與規則化簡
+## 貫穿範例 (2/4)：電商促銷因果圖與反向追蹤路徑
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/cause_effect_graph.svg" alt="電商促銷因果圖與反向追蹤防漏" />
+</div>
+
+---
+
+<!-- header: '5.7 因果圖與決策表測試' -->
+
+## 貫穿範例 (3/4)：導出 CAR 決策表與規則化簡
 
 <div class="card-deck">
 
-> 💡 初始規則共有 2<sup>3</sup> = 8 種。透過不相關條件 (`-` Don't Care) 化簡，收斂為 4 條精準規則。
+> 💡 初始規則共有 2<sup>3</sup> = 8 種。將 C<sub>1</sub> = N 的 4 種組合化簡為 `R5 (N, -, -)`，精準收斂為 **5 條規則（4 + 1 + 1 + 1 + 1 = 8 組全覆蓋）**！
 
 <div class="two-columns">
 <div class="card">
 
 ### ✂️ 規則展開與化簡邏輯 (Step 3 & 4)
-- **全展開 (2<sup>3</sup> = 8 條規則)**：
-  - 當 C<sub>1</sub> = N（未滿額）時，無論 C<sub>2</sub>, C<sub>3</sub> 為何，皆輸出 E<sub>3</sub>（原價結帳）。
+- **全展開 (2<sup>3</sup> = 8 條真值組合)**：
+  - **C<sub>1</sub> = Y（滿千，共 4 組）**：必須完整測試 `R1 (Y,Y,N)`、`R2 (Y,N,Y)`、`R3 (Y,Y,Y)` 與易被忽略的 **`R4 (Y,N,N)`（滿千但一般會員且無碼 ➔ 原價）**！
+  - **C<sub>1</sub> = N（未滿千，共 4 組）**：無論 C<sub>2</sub>, C<sub>3</sub> 為何皆為原價 E<sub>3</sub>。
 - **不在乎化簡 (Don't Care, `-`)**：
-  - 原本 C<sub>1</sub> = N 的 4 條規則整合成 **1 條規則 (R<sub>4</sub>)**！
-- **效益**：
-  - 杜絕規格模糊、去除冗餘測試、規則無遺漏。
+  - 將 C<sub>1</sub> = N 的 4 條規則合併為 **1 條規則 (R<sub>5</sub>)**，共 **5 條規則**，0 遺漏、0 冗餘！
 
 </div>
 <div class="card">
 
-### 📊 化簡後的 CAR 促銷決策表
-| 條件 / 動作項目 | R<sub>1</sub> | R<sub>2</sub> | R<sub>3</sub> | R<sub>4</sub> |
-| :--- | :---: | :---: | :---: | :---: |
-| C<sub>1</sub>: 訂單金額 ≥ 1,000 元？ | **Y** | **Y** | **Y** | **N** |
-| C<sub>2</sub>: VIP 會員身分？ | **Y** | **N** | **Y** | **-** |
-| C<sub>3</sub>: 輸入免運促銷碼？ | **N** | **Y** | **Y** | **-** |
-| E<sub>1</sub>: 輸出「8 折優惠」 | **X** | | **X** | |
-| E<sub>2</sub>: 輸出「免運費」 | | **X** | **X** | |
-| E<sub>3</sub>: 輸出「原價結帳」 | | | | **X** |
+### 📊 化簡後的 CAR 促銷決策表（共 5 條規則）
+| 條件 / 動作項目 | R<sub>1</sub> | R<sub>2</sub> | R<sub>3</sub> | R<sub>4</sub> | R<sub>5</sub> (合併4組) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| C<sub>1</sub>: 金額 ≥ 1,000？ | **Y** | **Y** | **Y** | **Y** | **N** |
+| C<sub>2</sub>: VIP 身分？ | **Y** | **N** | **Y** | **N** | **-** |
+| C<sub>3</sub>: 免運促銷碼？ | **N** | **Y** | **Y** | **N** | **-** |
+| E<sub>1</sub>: 輸出「8 折優惠」 | **X** | | **X** | | |
+| E<sub>2</sub>: 輸出「免運費」 | | **X** | **X** | | |
+| E<sub>3</sub>: 輸出「原價結帳」 | | | | **X** | **X** |
 
 </div>
 </div>
@@ -2131,20 +2127,21 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 <!-- header: '5.7 因果圖與決策表測試' -->
 
-## 貫穿範例 (3/3)：由決策表直出測試案例
+## 貫穿範例 (4/4)：由決策表直出測試案例
 
 <div class="card-deck">
 
-> 💡 CAR 決策表中的每一條化簡規則 (Rule)，直接 1:1 映射為一組標準黑箱測試案例！
+> 💡 CAR 決策表中的 5 條化簡規則 (R<sub>1</sub> ~ R<sub>5</sub>)，直接 1:1 映射為 5 組標準黑箱測試案例！
 
 | 案例編號 | 對應規則 | 測試輸入參數 (金額, VIP, 促銷碼) | 預期執行動作與輸出斷言 (Expected Output) | 測試設計意圖說明 |
 | :---: | :---: | :--- | :--- | :--- |
-| **TC<sub>1</sub>** | R<sub>1</sub> | `amount = 1200, isVip = true, promo = null` | `discount = 0.8, freeShipping = false` | 驗證滿額 VIP 獨享 8 折 |
-| **TC<sub>2</sub>** | R<sub>2</sub> | `amount = 1200, isVip = false, promo = "SHIP"` | `discount = 1.0, freeShipping = true` | 驗證一般會員滿額促銷碼免運 |
-| **TC<sub>3</sub>** | R<sub>3</sub> | `amount = 1500, isVip = true, promo = "SHIP"` | `discount = 0.8, freeShipping = true` | 驗證雙重優惠同時觸發 |
-| **TC<sub>4</sub>** | R<sub>4</sub> | `amount = 800, isVip = true, promo = "SHIP"` | `discount = 1.0, freeShipping = false` | 驗證未達滿額門檻全部失效 |
+| **TC<sub>1</sub>** | R<sub>1</sub> (`Y,Y,N`) | `amount = 1500, isVip = true, promo = false` | `discount80 = true, freeShip = false, regular = false` | 驗證滿額 VIP 獨享 8 折 |
+| **TC<sub>2</sub>** | R<sub>2</sub> (`Y,N,Y`) | `amount = 1200, isVip = false, promo = true` | `discount80 = false, freeShip = true, regular = false` | 驗證滿額一般會員促銷碼免運 |
+| **TC<sub>3</sub>** | R<sub>3</sub> (`Y,Y,Y`) | `amount = 2000, isVip = true, promo = true` | `discount80 = true, freeShip = true, regular = false` | 驗證雙重優惠同時觸發 |
+| **TC<sub>4</sub>** | R<sub>4</sub> (`Y,N,N`) | `amount = 1200, isVip = false, promo = false` | `discount80 = false, freeShip = false, regular = true` | **驗證滿額但無 VIP 與無碼仍為原價** |
+| **TC<sub>5</sub>** | R<sub>5</sub> (`N,-,-`) | `amount = 800, isVip = true, promo = true` | `discount80 = false, freeShip = false, regular = true` | 驗證未滿千門檻優惠全部失效 (代表4組) |
 
-- **黃金成果**：從模糊的自然語言需求，經由「因果圖 ➔ 決策表 ➔ 測試案例」，保證 **100% 邏輯覆蓋且零冗餘**！
+- **黃金成果**：從模糊的自然語言需求，經由「因果圖反向追蹤 ➔ 5 條決策規則 ➔ 5 組測試案例」，保證 **2<sup>3</sup> = 8 種邏輯組合 100% 覆蓋且零漏測**！
 
 </div>
 
@@ -2162,14 +2159,14 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **條件 (Conditions)** | | | | | | |
 | C<sub>1</sub>: 滿足三角不等式？(a < b+c AND b < a+c AND c < a+b) | **N** | **Y** | **Y** | **Y** | **Y** | **Y** |
-| C_2: a = b？ | **-** | **Y** | **Y** | **N** | **N** | **N** |
-| C_3: b = c？ | **-** | **Y** | **N** | **Y** | **N** | **N** |
-| C_4: a = c？ | **-** | **Y** | **N** | **N** | **Y** | **N** |
+| C<sub>2</sub>: a = b？ | **-** | **Y** | **Y** | **N** | **N** | **N** |
+| C<sub>3</sub>: b = c？ | **-** | **Y** | **N** | **Y** | **N** | **N** |
+| C<sub>4</sub>: a = c？ | **-** | **Y** | **N** | **N** | **Y** | **N** |
 | **動作 (Actions)** | | | | | | |
-| A_1: 輸出「非三角形」 | **X** | | | | | |
-| A_2: 輸出「正三角形」 | | **X** | | | | |
-| A_3: 輸出「等腰三角形」 | | | **X** | **X** | **X** | |
-| A_4: 輸出「不等邊三角形」 | | | | | | **X** |
+| A<sub>1</sub>: 輸出「非三角形」 | **X** | | | | | |
+| A<sub>2</sub>: 輸出「正三角形」 | | **X** | | | | |
+| A<sub>3</sub>: 輸出「等腰三角形」 | | | **X** | **X** | **X** | |
+| A<sub>4</sub>: 輸出「不等邊三角形」 | | | | | | **X** |
 
 </div>
 
@@ -2211,32 +2208,6 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 <!-- header: '5.7 因果圖與決策表測試' -->
 
-## 概念核對問答 (CCQ 6)
-
-<div class="ccq-columns">
-<div class="ccq-text">
-
-<!-- id: sqa-ch05-ccq6 -->
-**問題情境**：  
-【單選題】在軟體測試實務中，下列哪一種受測情境最適合優先採用「決策表測試 (Decision Table Testing)」來設計案例？
-
-- **A)** 系統輸入參數彼此完全獨立，且有連續性數值邊界
-- **B)** 輸入參數具複雜商務邏輯制約，相異條件組合觸發相異系統動作
-- **C)** 系統的輸出僅與目前輸入值有關，與輸入條件的組合邏輯無涉
-- **D)** 系統的運作強烈依賴時間序列與物件歷史狀態的轉移
-
-</div>
-<div class="ccq-logo">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq6" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq6.png" alt="QR Code" /></a>
-
-</div>
-</div>
-
----
-
-<!-- header: '5.7 因果圖與決策表測試' -->
-
 ## 🧪 課堂實習指引 (LabDemo 5.7: 決策表實戰)
 
 <div class="card-deck">
@@ -2248,8 +2219,8 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ### 💻 體驗範例程式碼 (Demo Walkthrough)
 - **1. 開啟促銷決策表測試示範**：
-  - 開啟 `u05_input/decision/PromotionDecisionDemoTest.java`；
-  - 觀察 CAR 決策表化簡後的 4 條規則 (R<sub>1</sub> ~ R<sub>4</sub>) 如何直出為清晰的測試案例。
+  - 開啟 [`PromotionDecisionDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_combinatorial/decision/PromotionDecisionDemoTest.java)；
+  - 觀察 CAR 決策表化簡後的 5 條規則 (R<sub>1</sub> ~ R<sub>5</sub>，含 `R4: 滿千但無資格` 與 `R5: 未滿千化簡規則`) 如何直出為測試案例。
 - **2. 多動作聚合驗證**：
   - 觀察如何用 `assertAll` 同步驗證「8折優惠」、「免運費」與「原價結帳」三項動作，防止動作遮蔽。
 
@@ -2257,13 +2228,13 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 <div class="card">
 
 ### 🎯 課堂動手練習 (Hands-on Exercise)
-- **開啟練習檔**：`u05_input/decision/PromotionDecisionExerciseTest.java`
+- **開啟練習檔**：[`PromotionDecisionExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_combinatorial/decision/PromotionDecisionExerciseTest.java)
 - **練習 1：1000 元滿額臨界值測試**：
   - 驗證剛好滿 1000 元且具 VIP 身分時精準享有 8 折。
 - **練習 2：999.9 元未滿額臨界值測試**：
   - 驗證未達門檻時，即使有促銷碼依然原價結帳。
 - **練習 3：CAR 決策表資料驅動全覆蓋**：
-  - 使用 `@CsvSource` 驗證 R<sub>1</sub> ~ R<sub>4</sub> 全規則動作矩陣！
+  - 使用 `@CsvSource` 驗證 R<sub>1</sub> ~ R<sub>5</sub> 全部 5 條規則動作矩陣！
 
 </div>
 </div>
@@ -2303,6 +2274,32 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
   - 條件超過 4 個時直接憑空寫表，幾乎必定漏掉邊角條件組合。
 
 </div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.7 因果圖與決策表測試' -->
+
+## 概念核對問答 (CCQ 6)
+
+<div class="ccq-columns">
+<div class="ccq-text">
+
+<!-- id: sqa-ch05-ccq6 -->
+**問題情境**：  
+【單選題】在軟體測試實務中，下列哪一種受測情境最適合優先採用「決策表測試 (Decision Table Testing)」來設計案例？
+
+- **A)** 系統輸入參數彼此完全獨立，且有連續性數值邊界
+- **B)** 輸入參數具複雜商務邏輯制約，相異條件組合觸發相異系統動作
+- **C)** 系統的輸出僅與目前輸入值有關，與輸入條件的組合邏輯無涉
+- **D)** 系統的運作強烈依賴時間序列與物件歷史狀態的轉移
+
+</div>
+<div class="ccq-logo">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq6" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq6.png" alt="QR Code" /></a>
+
 </div>
 </div>
 
@@ -2406,6 +2403,130 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 <!-- header: '5.8 狀態轉換測試' -->
 
+## 互動視覺化：勾選測試路徑觀察狀態與轉移覆蓋率
+
+<div class="sm-interactive-grid" id="sm-explorer">
+<div class="sm-control-card">
+<div class="sm-path-list">
+<label class="sm-path-item is-checked"><input type="checkbox" class="sm-cb" value="1" checked /><span class="sm-path-label"><span class="sm-path-title">路徑 1：正常登機 (Happy Path)</span><span class="sm-path-seq">giveInfo ➔ payMoney ➔ print ➔ giveTicket</span></span></label>
+<label class="sm-path-item"><input type="checkbox" class="sm-cb" value="2" /><span class="sm-path-label"><span class="sm-path-title">路徑 2：開票後退票</span><span class="sm-path-seq">giveInfo ➔ payMoney ➔ print ➔ cancel</span></span></label>
+<label class="sm-path-item"><input type="checkbox" class="sm-cb" value="3" /><span class="sm-path-label"><span class="sm-path-title">路徑 3：付款後退款取消</span><span class="sm-path-seq">giveInfo ➔ payMoney ➔ cancel</span></span></label>
+<label class="sm-path-item"><input type="checkbox" class="sm-cb" value="4" /><span class="sm-path-label"><span class="sm-path-title">路徑 4：預約保留後取消</span><span class="sm-path-seq">giveInfo ➔ cancel</span></span></label>
+<label class="sm-path-item"><input type="checkbox" class="sm-cb" value="5" /><span class="sm-path-label"><span class="sm-path-title">路徑 5：逾期未付自動取消</span><span class="sm-path-seq">giveInfo ➔ payTimeExpire</span></span></label>
+</div>
+<div class="sm-btn-row">
+<button type="button" class="sm-btn sm-btn-highlight" data-sm-action="node100">⚡ 100%狀態 / 75%轉移 (1+2+5)</button>
+<button type="button" class="sm-btn" data-sm-action="all">✅ 全選 (100%)</button>
+<button type="button" class="sm-btn" data-sm-action="clear">🔄 清除</button>
+</div>
+<div class="sm-coverage-box">
+<div class="sm-cov-row">
+<div class="sm-cov-header"><span>🟢 狀態覆蓋 (Node Coverage)</span><span id="sm-node-stat">4 / 6 (67%)</span></div>
+<div class="sm-cov-bar-bg"><div id="sm-node-bar" class="sm-cov-bar-fill" style="width: 66.7%; background: #0284c7;"></div></div>
+</div>
+<div class="sm-cov-row">
+<div class="sm-cov-header"><span>🔵 轉移覆蓋 (Edge Coverage)</span><span id="sm-edge-stat">4 / 8 (50%)</span></div>
+<div class="sm-cov-bar-bg"><div id="sm-edge-bar" class="sm-cov-bar-fill" style="width: 50%; background: #f59e0b;"></div></div>
+</div>
+<div id="sm-cov-note" style="font-size: 11.5px; font-weight: 700; color: #0369a1; margin-top: 2px;">💡 點擊勾選上方路徑，即時觀察狀態節點與轉移弧線的覆蓋變化！</div>
+</div>
+</div>
+<div class="sm-canvas-card">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 445">
+<defs>
+<marker id="sm-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" /></marker>
+<marker id="sm-arr-cancel" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#dc2626" /></marker>
+</defs>
+<rect width="940" height="445" fill="#ffffff" rx="10" />
+<g transform="translate(20, 18)">
+<text x="0" y="10" font-family="sans-serif" font-size="14px" font-weight="700" fill="#0b3c5d">航空訂票狀態機覆蓋追蹤 (6 個狀態節點 / 8 條轉移邊弧)</text>
+<line x1="560" y1="6" x2="595" y2="6" stroke="#0284c7" stroke-width="3" marker-end="url(#sm-arr)" />
+<text x="605" y="10" font-family="sans-serif" font-size="12px" font-weight="700" fill="#0369a1">正常流程邊 (4條)</text>
+<line x1="725" y1="6" x2="760" y2="6" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#sm-arr-cancel)" />
+<text x="770" y="10" font-family="sans-serif" font-size="12px" font-weight="700" fill="#b91c1c">取消/逾時邊 (4條)</text>
+</g>
+<g class="sm-edge is-active" data-paths="1,2,3,4,5">
+<circle cx="48" cy="110" r="13" fill="#0b3c5d" />
+<path d="M 62 110 L 138 110" class="sm-line" stroke="#0284c7" stroke-width="2.5" fill="none" marker-end="url(#sm-arr)" />
+<rect x="68" y="86" width="64" height="19" fill="#e0f2fe" rx="4" />
+<text x="100" y="99" font-family="monospace" font-size="12px" font-weight="700" fill="#0369a1" text-anchor="middle">giveInfo</text>
+</g>
+<g class="sm-state is-active" data-state="Made" data-paths="1,2,3,4,5">
+<rect x="142" y="80" width="130" height="60" rx="12" class="sm-main-rect" fill="#eff6ff" stroke="#0284c7" stroke-width="2.4" />
+<text x="207" y="104" font-family="sans-serif" font-size="15px" font-weight="700" fill="#0b3c5d" text-anchor="middle">Made</text>
+<text x="207" y="124" font-family="sans-serif" font-size="12px" fill="#475569" text-anchor="middle">已預約保留</text>
+</g>
+<g class="sm-edge is-active" data-edge="payMoney" data-paths="1,2,3">
+<path d="M 272 110 L 386 110" class="sm-line" stroke="#0284c7" stroke-width="2.5" fill="none" marker-end="url(#sm-arr)" />
+<rect x="292" y="86" width="76" height="19" fill="#e0f2fe" rx="4" />
+<text x="330" y="99" font-family="monospace" font-size="12px" font-weight="700" fill="#0369a1" text-anchor="middle">payMoney</text>
+</g>
+<g class="sm-state is-active" data-state="Paid" data-paths="1,2,3">
+<rect x="390" y="80" width="130" height="60" rx="12" class="sm-main-rect" fill="#eff6ff" stroke="#0284c7" stroke-width="2.4" />
+<text x="455" y="104" font-family="sans-serif" font-size="15px" font-weight="700" fill="#0b3c5d" text-anchor="middle">Paid</text>
+<text x="455" y="124" font-family="sans-serif" font-size="12px" fill="#475569" text-anchor="middle">已完成付款</text>
+</g>
+<g class="sm-edge is-active" data-edge="print" data-paths="1,2">
+<path d="M 520 110 L 636 110" class="sm-line" stroke="#0284c7" stroke-width="2.5" fill="none" marker-end="url(#sm-arr)" />
+<rect x="546" y="86" width="64" height="19" fill="#e0f2fe" rx="4" />
+<text x="578" y="99" font-family="monospace" font-size="12px" font-weight="700" fill="#0369a1" text-anchor="middle">print</text>
+</g>
+<g class="sm-state is-active" data-state="Ticketed" data-paths="1,2">
+<rect x="640" y="80" width="130" height="60" rx="12" class="sm-main-rect" fill="#eff6ff" stroke="#0284c7" stroke-width="2.4" />
+<text x="705" y="104" font-family="sans-serif" font-size="15px" font-weight="700" fill="#0b3c5d" text-anchor="middle">Ticketed</text>
+<text x="705" y="124" font-family="sans-serif" font-size="12px" fill="#475569" text-anchor="middle">已出票完成</text>
+</g>
+<g class="sm-edge is-active" data-edge="giveTicket" data-paths="1">
+<path d="M 770 110 L 836 110 L 836 214" class="sm-line" stroke="#0284c7" stroke-width="2.5" fill="none" marker-end="url(#sm-arr)" />
+<rect x="786" y="150" width="84" height="19" fill="#e0f2fe" rx="4" />
+<text x="828" y="163" font-family="monospace" font-size="12px" font-weight="700" fill="#0369a1" text-anchor="middle">giveTicket</text>
+</g>
+<g class="sm-state is-active" data-state="Used" data-paths="1">
+<rect x="760" y="220" width="152" height="64" rx="14" class="sm-main-rect" fill="#dcfce7" stroke="#15803d" stroke-width="2.6" />
+<rect x="765" y="225" width="142" height="54" rx="10" fill="none" stroke="#15803d" stroke-width="1.3" />
+<text x="836" y="246" font-family="sans-serif" font-size="15px" font-weight="700" fill="#166534" text-anchor="middle">Used (終點)</text>
+<text x="836" y="266" font-family="sans-serif" font-size="12px" fill="#15803d" text-anchor="middle">已登機搭乘</text>
+</g>
+<g class="sm-edge" data-edge="cancel-made" data-paths="4">
+<path d="M 235 140 L 235 275 L 356 275" class="sm-line" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="6 3" fill="none" marker-end="url(#sm-arr-cancel)" />
+<rect x="244" y="252" width="96" height="19" fill="#fee2e2" rx="4" />
+<text x="292" y="265" font-family="monospace" font-size="11.5px" font-weight="700" fill="#b91c1c" text-anchor="middle">cancel (路徑4)</text>
+</g>
+<g class="sm-edge" data-edge="cancel-paid" data-paths="3">
+<path d="M 455 140 L 455 256" class="sm-line" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="6 3" fill="none" marker-end="url(#sm-arr-cancel)" />
+<rect x="462" y="188" width="96" height="19" fill="#fee2e2" rx="4" />
+<text x="510" y="201" font-family="monospace" font-size="11.5px" font-weight="700" fill="#b91c1c" text-anchor="middle">cancel (路徑3)</text>
+</g>
+<g class="sm-edge" data-edge="cancel-ticketed" data-paths="2">
+<path d="M 685 140 L 685 275 L 564 275" class="sm-line" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="6 3" fill="none" marker-end="url(#sm-arr-cancel)" />
+<rect x="576" y="252" width="98" height="19" fill="#fee2e2" rx="4" />
+<text x="625" y="265" font-family="monospace" font-size="11.5px" font-weight="700" fill="#b91c1c" text-anchor="middle">cancel (路徑2)</text>
+</g>
+<g class="sm-state" data-state="CancelledByCustomer" data-paths="2,3,4">
+<rect x="360" y="260" width="200" height="64" rx="14" class="sm-main-rect" fill="#fef2f2" stroke="#dc2626" stroke-width="2.6" />
+<rect x="365" y="265" width="190" height="54" rx="10" fill="none" stroke="#dc2626" stroke-width="1.3" />
+<text x="460" y="286" font-family="sans-serif" font-size="14.5px" font-weight="700" fill="#b91c1c" text-anchor="middle">CancelledByCustomer</text>
+<text x="460" y="306" font-family="sans-serif" font-size="12px" fill="#dc2626" text-anchor="middle">顧客主動退訂 (終點)</text>
+</g>
+<g class="sm-edge" data-edge="expire" data-paths="5">
+<path d="M 180 140 L 180 356" class="sm-line" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="6 3" fill="none" marker-end="url(#sm-arr-cancel)" />
+<rect x="72" y="205" width="102" height="19" fill="#fee2e2" rx="4" />
+<text x="123" y="218" font-family="monospace" font-size="11.5px" font-weight="700" fill="#b91c1c" text-anchor="middle">payTimeExpire</text>
+</g>
+<g class="sm-state" data-state="CancelledNonPay" data-paths="5">
+<rect x="108" y="360" width="198" height="64" rx="14" class="sm-main-rect" fill="#fef2f2" stroke="#dc2626" stroke-width="2.6" />
+<rect x="113" y="365" width="188" height="54" rx="10" fill="none" stroke="#dc2626" stroke-width="1.3" />
+<text x="207" y="386" font-family="sans-serif" font-size="14.5px" font-weight="700" fill="#b91c1c" text-anchor="middle">CancelledNonPay</text>
+<text x="207" y="406" font-family="sans-serif" font-size="12px" fill="#dc2626" text-anchor="middle">逾期未付自動取消 (終點)</text>
+</g>
+</svg>
+</div>
+</div>
+
+---
+
+<!-- header: '5.8 狀態轉換測試' -->
+
 ## 狀態轉換測試的 JUnit 5 落地：巢狀狀態與生命週期隔離
 
 <div class="card-deck">
@@ -2439,32 +2560,6 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 <!-- header: '5.8 狀態轉換測試' -->
 
-## 概念核對問答 (CCQ 7)
-
-<div class="ccq-columns">
-<div class="ccq-text">
-
-<!-- id: sqa-ch05-ccq7 -->
-**問題情境**：  
-【單選題】在狀態測試 (State Testing) 中，關於「狀態覆蓋 (State Coverage)」與「轉移覆蓋 (Transition Coverage)」的強度關係，下列敘述何者正確？
-
-- **A)** 達到狀態覆蓋必定代表同時達到了轉移覆蓋
-- **B)** 轉移覆蓋強度大於狀態覆蓋，涵蓋所有轉移弧線即必涵蓋所有狀態
-- **C)** 兩者互相獨立，沒有任何包含或強弱關係
-- **D)** 狀態測試僅需考慮合法轉移，毋須驗證非法事件之異常狀態反應
-
-</div>
-<div class="ccq-logo">
-
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq7" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq7.png" alt="QR Code" /></a>
-
-</div>
-</div>
-
----
-
-<!-- header: '5.8 狀態轉換測試' -->
-
 ## 🧪 課堂實習指引 (LabDemo 5.8: 狀態轉換實戰)
 
 <div class="card-deck">
@@ -2476,7 +2571,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ### 💻 體驗範例程式碼 (Demo Walkthrough)
 - **1. 開啟狀態機示範類別**：
-  - 開啟 `u05_scenario/state/StackStateDemoTest.java` 與 `PlayerStateDemoTest.java`；
+  - 開啟 [`StackStateDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/state/StackStateDemoTest.java) 與 `PlayerStateDemoTest.java`；
   - 觀察外層 `@DisplayName` 與內層 `@Nested class EmptyStateTests`、`@Nested class FullStateTests` 的狀態隔離。
 - **2. 觀察前置生命週期與例外斷言**：
   - 觀察空堆疊時執行 `pop()` 如何斷言拋出 `EmptyStackException.class`；
@@ -2486,7 +2581,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 <div class="card">
 
 ### 🎯 課堂動手練習 (Hands-on Exercise)
-- **開啟練習檔**：`u05_scenario/state/StackStateExerciseTest.java`
+- **開啟練習檔**：[`StackStateExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/state/StackStateExerciseTest.java)
 - **練習 1：1-Switch 連續轉移序列**：
   - 驗證 Empty ➔ push ➔ Non-Empty ➔ pop ➔ Empty 狀態閉環轉移路徑！
 - **練習 2：空狀態 peek() 例外防護**：
@@ -2529,6 +2624,32 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
   - 忽略 Timeout 自動取消與非同步通知並發到達時的競爭狀態 (Race Condition)。
 
 </div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.8 狀態轉換測試' -->
+
+## 概念核對問答 (CCQ 7)
+
+<div class="ccq-columns">
+<div class="ccq-text">
+
+<!-- id: sqa-ch05-ccq7 -->
+**問題情境**：  
+【單選題】在狀態測試 (State Testing) 中，關於「狀態覆蓋 (State Coverage)」與「轉移覆蓋 (Transition Coverage)」的強度關係，下列敘述何者正確？
+
+- **A)** 達到狀態覆蓋必定代表同時達到了轉移覆蓋
+- **B)** 轉移覆蓋強度大於狀態覆蓋，涵蓋所有轉移弧線即必涵蓋所有狀態
+- **C)** 兩者互相獨立，沒有任何包含或強弱關係
+- **D)** 狀態測試僅需考慮合法轉移，毋須驗證非法事件之異常狀態反應
+
+</div>
+<div class="ccq-logo">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq7" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq7.png" alt="QR Code" /></a>
+
 </div>
 </div>
 
@@ -2613,8 +2734,8 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ### 💻 體驗範例程式碼 (Demo Walkthrough)
 - **1. 開啟 ATM 使用案例示範**：
-  - 待測類別：`u05_scenario/usecase/AtmWithdrawService.java`
-  - 示範測試：`u05_scenario/usecase/AtmUseCaseDemoTest.java`
+  - 待測類別：[`AtmWithdrawService.java`](../../lab.html?file=LabDemo/src/main/java/u05_behavioral/usecase/AtmWithdrawService.java)
+  - 示範測試：[`AtmUseCaseDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/usecase/AtmUseCaseDemoTest.java)
 - **2. 觀察三大情境路徑**：
   - 場景 1 (基本流)：密碼正確、提款 5,000 元 ➔ 成功吐鈔扣款退卡。
   - 場景 2 (替代流)：單筆超額 (30,000 > 20,000) ➔ 提示拒絕 ➔ 重設金額成功。
@@ -2624,7 +2745,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 <div class="card">
 
 ### 🎯 課堂動手練習 (Hands-on Exercise)
-- **開啟練習檔**：`u05_scenario/usecase/AtmUseCaseExerciseTest.java`
+- **開啟練習檔**：[`AtmUseCaseExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/usecase/AtmUseCaseExerciseTest.java)
 - **練習 1：密碼連續輸錯 3 次鎖卡防衛**：
   - 連續輸入 3 次錯誤 PIN 碼，驗證狀態觸發 `CARD_LOCKED` 且卡片被標記鎖定；
   - 鎖卡後即使輸入正確密碼，交易依然必須被拒絕！
@@ -2762,8 +2883,8 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ### 💻 體驗範例程式碼 (Demo Walkthrough)
 - **1. 開啟錯誤猜測示範**：
-  - 待測類別：`u05_scenario/experience/UserProfileService.java`
-  - 示範測試：`u05_scenario/experience/ErrorGuessingDemoTest.java`
+  - 待測類別：[`UserProfileService.java`](../../lab.html?file=LabDemo/src/main/java/u05_behavioral/experience/UserProfileService.java)
+  - 示範測試：[`ErrorGuessingDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/experience/ErrorGuessingDemoTest.java)
 - **2. 觀察四大直覺猜測防禦**：
   - 清單 1 (空白與注入)：純空格 `"   "` 與 XSS `<script>` 探針防護。
   - 清單 2 (整數溢位)：0、負數與 `Integer.MAX_VALUE` 極值。
@@ -2773,7 +2894,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 <div class="card">
 
 ### 🎯 課堂動手練習 (Hands-on Exercise)
-- **開啟練習檔**：`u05_scenario/experience/ExploratoryExerciseTest.java`
+- **開啟練習檔**：[`ExploratoryExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/experience/ExploratoryExerciseTest.java)
 - **練習 1：畸形 Email 格式直覺猜測**：
   - 猜測並測試缺 `@`、缺網域、含空格、格式不合規之 Email 探針；
   - 驗證系統皆拋出 `IllegalArgumentException`！
@@ -2832,6 +2953,17 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
+<!-- _class: title-image-slide -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+
+## 5.11 核心測試觀念與六大技術全景圖 (Concept Thumbnails)
+
+<div class="image-wrapper">
+  <img src="../../img/ch05/pbt_mt_concept_thumbnails.svg" alt="5.11 屬性基礎測試與變質測試六大技術縮圖全景" />
+</div>
+
+---
+
 <!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
 ## 範例測試 (EBT) vs. 屬性測試 (PBT) 典範轉移
@@ -2880,12 +3012,11 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 <div class="content-text">
 
 - **QuickCheck 的誕生與榮譽**：
-  - 瑞典查爾摩斯工學院教授、ACM Fellow。
-  - 2000 年與 Koen Claessen 共同發表 QuickCheck，獲頒 ACM SIGPLAN 最具影響力論文獎。
+  - 瑞典查爾摩斯工學院教授、ACM Fellow。2000 年與 Koen Claessen 共同發表 QuickCheck，獲頒 ACM SIGPLAN 最具影響力論文獎。
 - **測試思維的重大躍遷 (Paradigm Shift)**：
   - 提倡「**Don't write tests, specify properties!**」
   - 人類專注於找出系統應遵守的永恆數學不變量，將繁瑣的測資生成交給電腦。
-- **革命性發明：測資收縮 (Shrinking)**：
+- **測資收縮 (Shrinking)**：
   - 解決了隨機測試「反例過大、無法除錯」的痛點，以演算法秒級自動二分縮減至最小致命測資。
 - **現代 PBT 生態系基石**：
   - 創立 Quviq 並在愛立信、Volvo 驗證；Java `jqwik`、Python `Hypothesis` 皆承襲其設計。
@@ -2911,12 +3042,9 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 <div class="card-deck">
 
-> 💡 初學 PBT 最常問：「如果不寫死答案，那我要驗證什麼？」—— 掌握以下四大模式即可涵蓋 90% 場景！
-
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 🔄 模式 1：往返可逆 (Round-Trip) 與 模式 2：特徵守恆 (Invariants)
 - **① 往返可逆性（去了再回來，必定等於自己）**：
   - **公式**：`inverse(forward(x)) == x`
   - **例子**：不必知道壓縮或加密後的亂碼長怎樣，只要驗證「**壓縮再解壓縮 = 原檔案**」、「**陣列反轉兩次 `reverse(reverse(L))` = 原陣列 `L`**」！
@@ -2927,7 +3055,6 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 </div>
 <div class="card" data-marpit-fragment>
 
-### ⚖️ 模式 3：冪等性 (Idempotence) 與 模式 4：排列對稱 / 代數定律
 - **③ 冪等性（做一次跟重複做十次，結果完全一樣）**：
   - **公式**：`f(f(x)) == f(x)`
   - **例子**：已經排好序的資料再排一次結果不變 `sort(sort(L)) == sort(L)`；字串去除首尾空白做兩次結果不變 `trim(trim(s)) == trim(s)`。
@@ -2986,42 +3113,28 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 > 💡 只需掌握 `@Property`（宣告屬性測試）與 `@ForAll`（自動生成隨機與邊界參數）兩個核心註解！
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
-### 🧩 `jqwik` 核心註解意義
+### 🧩 `jqwik` 核心註解與參數約束
 - **`@Property`（取代 `@Test`）**：
   - 宣告此方法為一條「通用屬性不變量」，由 `jqwik` 引擎自動重複呼叫 **1,000 次**（可設 `tries = 500` 調整次數）。
   - 回傳 `boolean`（若回傳 `false` 即代表屬性被打破，立即觸發 Shrinking！）或內部使用 JUnit `assertEquals`。
-- **`@ForAll`（標註於方法參數前）**：
-  - 指示 `jqwik` 根據參數型別（如 `int`、`String`、`List<Integer>`）自動建立對應的資料生成器與收縮器。
+- **`@ForAll` 與範圍約束 (`@IntRange` / `@DoubleRange`)**：
+  - 標註於方法參數前，指示 `jqwik` 依型別（`int`、`List<Integer>`、`Enum`）自動建立生成器與收縮器，並優先混入 `0, -1, MAX_VALUE, 空串列` 等惡魔邊界！
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card">
 
-### 💻 課堂範例 (`u05_pbtest/PropertyBasedDemoTest.java`)
-```java
-class PropertyBasedDemoTest {
-    // 【模式 4：代數定律】加法交換律 (自動測 1,000 組 int a, b)
-    @Property
-    boolean additionIsCommutative(@ForAll int a, @ForAll int b) {
-        return MathFunctions.add(a, b) == MathFunctions.add(b, a);
-    }
-    // 【模式 1：往返可逆】反轉兩次必恢復原串列
-    @Property
-    boolean reverseTwiceIsOriginal(@ForAll List<Integer> list) {
-        List<Integer> rev2 = MathFunctions.reverse(MathFunctions.reverse(list));
-        return list.equals(rev2);
-    }
-    // 【模式 2：結構與特徵守恆】排序後長度守恆且必為單調遞增
-    @Property
-    boolean sortedListIsMonotonic(@ForAll List<Integer> list) {
-        List<Integer> s = MathFunctions.sort(list);
-        for (int i = 0; i < s.size() - 1; i++)
-            if (s.get(i) > s.get(i + 1)) return false;
-        return s.size() == list.size();
-    }
-}
-```
+### 📋 [`PropertyBasedDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/PropertyBasedDemoTest.java)
+- **示範 1 & 2【代數定律模式】**：
+  - **測試設計**：隨機注入 1,000 組整數 `(a, b)`。
+  - **驗收不變量**：驗證加法交換律 `add(a, b) == add(b, a)` 與單位元性質 `add(a, 0) == a` 恆成立。
+- **示範 3【往返可逆模式】**：
+  - **測試設計**：隨機生成 1,000 組任意長度與內容的整數串列 `L`。
+  - **驗收不變量**：連續反轉兩次 `reverse(reverse(L))`，元素順序與長度恢復為原串列 `L`。
+- **示範 4【結構與特徵守恆模式】**：
+  - **測試設計**：隨機生成 1,000 組亂數串列送入 `sort(L)`。
+  - **驗收不變量**：排完後**元素個數必與原串列相等**，且任意相鄰元素必滿足**前數 ≤ 後數（單調遞增）**！
 
 </div>
 </div>
@@ -3031,42 +3144,105 @@ class PropertyBasedDemoTest {
 
 <!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
-## 變質測試 (Metamorphic Testing)：突破無 Oracle 困境
+## `jqwik` 企業邏輯實戰：金流不變量與「測資收縮」抓漏
 
 <div class="card-deck">
 
-> 💡 當連單一執行的輸出都無法驗證時（如搜尋引擎、AI 模型），改檢驗「兩次執行間的輸入變換與輸出相對關係」！
+> 💡 在企業系統中，PBT 最常被用來抓出「**折扣疊加倒貼漏洞**」與「**滿額門檻定價倒掛 Bug**」（詳見 [`PropertyBasedDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/PropertyBasedDemoTest.java) Part 2 & 3）！
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
-### 🧬 1. 從 PBT 進化到變質測試 (MT)
-- **何時連 PBT 也不夠用？**
-  - 搜尋引擎輸入 `"Java"` 回傳 3,842 筆網頁、或 LLM 生成一段摘要，我們根本不知道「標準答案」是什麼！
-- **變質測試三步執行迴圈 (陳振宇, 1998)**：
-  1. **原始執行 (Source Run)**：輸入基準 `x`（如搜尋 `"Java"`），得到結果 `y = f(x)`。
-  2. **變換執行 (Follow-up Run)**：依領域知識變換輸入為 `x'`（如縮小範圍搜尋 `"Java SQA"`），得到 `y' = f(x')`。
-  3. **變質關係驗收 (MR)**：斷言 **`y' ⊆ y`**（複合關鍵字結果必為單一關鍵字結果的子集）！
+### 🏦 企業商業邏輯的三大不變量 (示範 5~7)
+- **1. 電商金流邊界與守恆 (`OrderDiscount`)**：
+  - 隨機抽樣 1,000 組 `(會員等級, 金額 0~10萬, 付款方式)`；
+  - 斷言：**應付金額必 `>= 0`（防倒貼漏洞）且 `<= 原價`**，且 **`應付 + 折抵 == 原價`（金流守恆）**！
+- **2. 會員等級尊榮單調性 (`OrderDiscount`)**：
+  - 相同金額與支付下，斷言 **`VIP 應付 <= 一般會員 <= 訪客`**（絕不允許 VIP 買得比一般會員還貴！）。
+- **3. 銀行房貸法定保底與額度單調性 (`LoanCalculator`)**：
+  - 核貸利率永遠鎖定在 **`[2.0%, 5.0%]`** 法定範圍內，且**多貸 100 萬時利率只降不升**！
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card">
 
-### 💻 2. 搜尋引擎變質實戰 (`MetamorphicDemoTest.java`)
-```java
-@Test // MR 1 (包含性)：搜尋範圍縮小，結果必為原結果之子集
-void testMetamorphicRelation_inclusion() {
-    List<String> r1 = searchEngine.search("Java");     // 原始輸出 y
-    List<String> r2 = searchEngine.search("Java SQA"); // 變換輸出 y'
-    assertTrue(r1.containsAll(r2), "y' 必須包含於 y 之中！");
-}
+### 📉 測資收縮實戰：抓出滿額斷崖倒掛 (示範 8)
+- **受測商業屬性**：**「多買 100 元商品，結帳應付金額不應反而變少 (`pay(x) <= pay(x + 100)`)」**。
+- **1. 隨機轟炸命中 Bug (`Original Sample`)**：
+  - `jqwik` 在 `100 ~ 50,000` 元間隨機抽中 **`amount = 2,964 元`** 時發現屬性回傳 `false` ❌！
+- **2. 自動二分收縮 (`Shrinking` 6 步精準定位)**：
+  - 引擎自動折半重測，最終印出**最小反例：`Shrunk sample: amount = 2901`**！
+  - **1 秒看穿根因**：因「`> 3,000` 元立減從 100 跳升至 300」，VIP 買 **`2,901` 元需付 `2,220.8` 元**，但多買 100 元湊到 **`3,001` 元卻只要付 `2,100.8` 元**（多買 100 元反而少付 120 元）！
 
-@Test // MR 2 (抗擾動性)：首尾加上無關空白，搜尋結果必須完全一致
-void testMetamorphicRelation_irrelevantPerturbation() {
-    List<String> source    = searchEngine.search("SQA");
-    List<String> perturbed = searchEngine.search("   SQA   ");
-    assertEquals(source, perturbed, "無關空白擾動不應改變搜尋結果！");
-}
-```
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+
+## 什麼是變質測試 (Metamorphic Testing, MT)？
+
+<div class="card-deck">
+
+> 💡 當連單一執行的輸出都無法驗證對錯時（如搜尋引擎、AI 模型），改檢驗「**兩次執行間的輸入變換與輸出相對關係**」！
+
+<div class="two-columns">
+<div class="card">
+
+### 🧬 1. 變質測試的核心思想 (陳振宇, 1998)
+- **無預言機困境 (Test Oracle Problem)**：
+  - 搜尋引擎輸入 `"Java"` 回傳 3,842 筆網頁、或 LLM 生成一段摘要，我們根本不知道「標準答案」是什麼！
+- **核心破局思維**：
+  - 雖然不知道單次輸出 `y = f(x)` 本身對不對，但若我們將輸入 `x` 做有規律的變換得到 `x'`，**兩次輸出 `(y, y')` 之間必定要滿足特定的領域邏輯關係**！
+
+</div>
+<div class="card">
+
+### 🔄 2. 變質測試三步執行迴圈 (3-Step Loop)
+- **Step 1：原始執行 (Source Run)**：
+  - 輸入基準測資 `x`（如搜尋 `"Java"`），獲得原始輸出 `y = f(x)`。
+- **Step 2：衍生執行 (Follow-up Run)**：
+  - 依領域知識對 `x` 施加變換得 `x' = T(x)`（如追加條件搜尋 `"Java SQA"`），獲得衍生輸出 `y' = f(x')`。
+- **Step 3：變質關係驗收 (Metamorphic Relation, MR)**：
+  - 斷言 **`R(y, y')`** 成立（如搜尋條件變嚴格，結果集必為子集 **`y' ⊆ y`**）！
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+
+## 變質測試 (MT) 與 PBT 的差異及搜尋引擎實戰
+
+<div class="card-deck">
+
+> 💡 理解了 MT 的「跨次變換」後，就能一眼看清它與 PBT 的分工定位及搜尋引擎實戰應用！
+
+<div class="two-columns">
+<div class="card">
+
+### ⚖️ MT 與 PBT 的兩大核心差異
+- **1. 單次輸出檢驗 `P(x, y)` vs. 跨次相對關係 `R(y, y')`**：
+  - **PBT** 檢驗單次輸出 `y = f(x)` 是否滿足格式或邊界（如 `0 <= y <= x`、陣列已遞增）。
+  - **MT** 必須執行**至少兩次**，以第一次輸出 `y` 為錨點，檢驗變換輸入後的相對變化 `R(f(x), f(T(x)))`。
+- **2. 從零隨機合成 vs. 真實種子衍生 (Seed Transformation)**：
+  - **PBT** 由框架憑空亂數合成 `int / List`；
+  - **MT** 從**真實世界既有資料 `x`**（街景圖、病歷、查詢）出發，透過加雜訊、旋轉、改寫衍生出 `x'`！
+
+</div>
+<div class="card">
+
+### 💻 搜尋引擎變質實戰 ([`MetamorphicDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/MetamorphicDemoTest.java))
+- **MR 1：範圍縮小之子集包含性 (Inclusion)**：
+  - **原始 (`x`)**：搜 `"Java"` 得 `r1`；**衍生 (`x'`)**：搜 `"Java SQA"` 得 `r2`。
+  - **驗收**：必滿足 **`r2 ⊆ r1` (`r1.containsAll(r2)`)**！
+- **MR 2：無關空白微擾之等價性 (Perturbation)**：
+  - 搜 `"SQA"` 與前後加空白 `"   SQA   "`，兩次結果必完全相等！
+- **🚀 PBT + MT 雙劍合璧**：
+  - 前面在 `@Property` 中比對 `pay(x)` 與 `pay(x + 100)`，正是用 `jqwik` 隨機引擎驅動變質關係！
 
 </div>
 </div>
@@ -3184,23 +3360,33 @@ void testMetamorphicRelation_irrelevantPerturbation() {
 
 <!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
-## 概念核對問答 (CCQ 8)
+## 🧪 課堂實習指引 (LabDemo 5.11: 屬性與變質測試實戰)
 
-<div class="ccq-columns">
-<div class="ccq-text">
+<div class="card-deck">
 
-<!-- id: sqa-ch05-ccq8 -->
-**問題情境**：  
-【是非題】在屬性基礎測試 (Property-Based Testing, PBT) 中，我們不需要手動為每一組測試寫出確切的預期輸出數值，而是定義程式執行時必須永遠維持的「屬性或不變量 (Invariants)」，並交由測試框架隨機生成大量測資來自動尋找反例。
+> 💡 搭配專題實驗手冊：[`jqwik_property_based.md`](../../lab.html?file=LabDemo/docs/u05_utest/jqwik_property_based.md) 與 [`junit.md`](../../lab.html?file=LabDemo/docs/u05_utest/junit.md#511-以性質為基礎的測試-pbt-與變質測試實戰)
 
-- **A)** 正確 (True)
-- **B)** 錯誤 (False)
+<div class="two-columns">
+<div class="card">
+
+### 💻 課堂示範體驗 (兩大 Demo)
+- **1. 屬性基礎測試 ([`PropertyBasedDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/PropertyBasedDemoTest.java))**：
+  - **Part 1 (基礎代數/串列)**：加法交換律、反轉兩次可逆、排序單調遞增。
+  - **Part 2 (企業商業邏輯)**：電商 `OrderDiscount` 金流不倒貼守恆、**VIP 會員尊榮單調性 (`VIP <= 一般 <= 訪客`)**、銀行 `LoanCalculator` 利率保底 2.0%！
+- **2. 變質測試 ([`MetamorphicDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/MetamorphicDemoTest.java))**：
+  - 執行搜尋引擎之「結果包含性 (`Search("Java SQA") ⊆ Search("Java")`)」與「前後空白抗擾動性」變質關係！
 
 </div>
-<div class="ccq-logo">
+<div class="card">
 
-<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq8.png" alt="QR Code" /></a>
+### 🎯 課堂動手練習 (Hands-on Exercise)
+- **練習 1~3：屬性與企業邏輯不變量 ([`PropertyBasedExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/PropertyBasedExerciseTest.java))**：
+  - 補全乘法交換律 (`a * b == b * a`)、反轉串列長度守恆；
+  - **企業邏輯實戰 (練習 3)**：使用 `@DoubleRange` 與 `@IntRange` 驗證銀行房貸「青年首購利率 `<=` 一般申貸利率 且 `>= 2.0%`」！
+- **練習 4：搜尋引擎對稱性變質關係 ([`MetamorphicExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/MetamorphicExerciseTest.java))**：
+  - 實作關鍵字大小寫不敏感之對稱變質關係：`search("software") == search("SOFTWARE")`！
 
+</div>
 </div>
 </div>
 
@@ -3208,30 +3394,34 @@ void testMetamorphicRelation_irrelevantPerturbation() {
 
 <!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
 
-## 🧪 課堂實習指引 (LabDemo 5.11: `u05_pbtest`)
+## 屬性基礎測試 (PBT) 常見問答 (FAQ)：定位與工業界現況
 
 <div class="card-deck">
 
-> 💡 實習目錄：`LabDemo/src/test/java/u05_pbtest/`（搭配專題手冊 `jqwik_property_based.md`）
+> 💡 學完 PBT 與 MT 後最常被問到的實務問題：所有問題都能用嗎？工業界真的常用嗎？
 
 <div class="two-columns">
 <div class="card">
 
-### 💻 課堂示範體驗 (`u05_pbtest/` 兩大 Demo)
-- **1. 屬性基礎測試 (`PropertyBasedDemoTest.java`)**：
-  - 執行 4 個 `@Property` 屬性：加法交換律、單位元、反轉兩次回到自身、排序單調性；
-  - 觀察 `jqwik` 自動產生 **1,000 組**隨機測資與 **Shrinking** 最小反例收縮。
-- **2. 變質測試 (`MetamorphicDemoTest.java`)**：
-  - 執行搜尋引擎之「結果包含性 (`Search("Java SQA") ⊆ Search("Java")`)」與「前後空白抗擾動性」變質關係！
+### 🎯 Q1 & Q2：適用邊界與入門門檻
+- **Q1：所有問題都能用 PBT 嗎？會取代傳統測試嗎？**
+  - **不會取代，最佳黃金比例是「80% EBT + 20% PBT」互補**！
+  - 若需求是**單一業務特例**（如「雙 11 輸入 `NOV11` 送紅包」）或**純離散小組合**（如泳池 12 組），傳統 `@CsvSource` 最直觀；
+  - 當涉及**演算法、解析器、序列化、複雜計價/稅率、狀態機**等具普遍守恆律的核心邏輯時，才是 PBT 發揮百倍威力的主戰場！
+- **Q2：一時想不出完美的數學不變量怎麼辦？**
+  - 先從最保底的 **「防崩潰屬性 (Smoke / No-Crash Property)」** 下手：隨機轟炸合法範圍輸入，斷言絕不拋出未預期 Exception，再逐步加上**上下界 (`0 <= 折扣價 <= 原價`)** 與**單調性**！
 
 </div>
 <div class="card">
 
-### 🎯 課堂動手練習 (Hands-on Exercise)
-- **練習 1：PBT 乘法與長度守恆 (`PropertyBasedExerciseTest.java`)**：
-  - 補全乘法交換律 (`a * b == b * a`) 與反轉後串列長度守恆 (`reversed.size() == list.size()`) 斷言！
-- **練習 2：搜尋引擎對稱性變質關係 (`MetamorphicExerciseTest.java`)**：
-  - 實作關鍵字大小寫不敏感之對稱變質關係：`search("software")` 與 `search("SOFTWARE")` 回傳結果必須完全相等！
+### 💡 Q3 & Q4：工業界採用度與重現性
+- **Q3：PBT 在工業界是常用的嗎？哪些企業在用？**
+  - **在金融支付、雲端基礎設施、車載與編譯器領域已是標配**！
+  - **Amazon AWS (S3 / IAM)**：大規模以 PBT 驗證雲端儲存與權限引擎，曾抓出傳統測試漏掉的 20+ 步深層並發缺陷。
+  - **Volvo 與愛立信 (Ericsson)**：以 QuickCheck 驗證車載控制匯流排 (AUTOSAR) 與 5G 通訊協定。
+  - **Stripe / 現代後端團隊**：Python `Hypothesis`、Java `jqwik`、Rust `proptest` 廣泛用於金流對帳與 API 序列化防呆。
+- **Q4：隨機跑 1,000 次抓到 Bug，下次重跑還能重現嗎？**
+  - **100% 可重現**！`jqwik` 會記錄亂數種子 (`seed`) 並開啟 `SAMPLE_FIRST`，下次執行必優先重跑上次失敗的反例！
 
 </div>
 </div>
@@ -3270,6 +3460,62 @@ void testMetamorphicRelation_irrelevantPerturbation() {
   - 定義出「輸出只要大於 0 就通過」等過度寬鬆的 MR，無法有效抓出潛伏邏輯錯誤。
 - **把 PBT 當無頭蒼蠅隨機測試**：
   - 未針對資料生成器 (`@Provide`) 設定合理的產生分佈與邊界加權，浪費運算資源。
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+
+## 概念核對問答 (CCQ 8)
+
+<div class="ccq-columns">
+<div class="ccq-text">
+
+<!-- id: sqa-ch05-ccq8 -->
+**問題情境**：  
+【是非題】在屬性基礎測試 (Property-Based Testing, PBT) 中，我們不需要手動為每一組測試寫出確切的預期輸出數值，而是定義程式執行時必須永遠維持的「屬性或不變量 (Invariants)」，並交由測試框架隨機生成大量測資來自動尋找反例。
+
+- **A)** 正確 (True)
+- **B)** 錯誤 (False)
+
+</div>
+<div class="ccq-logo">
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq8.png" alt="QR Code" /></a>
+
+</div>
+</div>
+
+---
+
+<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+
+## 課堂動腦挑戰：5 個真實場景，如何設計 PBT 屬性？
+
+<div class="card-deck">
+
+> 💡 請思考以下 5 個真實企業開發場景應採用哪種「不變量 / 變質關係」，**點擊各題即可展開／收合參考簡答**！
+
+<div class="two-columns">
+<div class="card">
+
+- **1. 【JSON 序列化工具】** 自訂 `toJson(Order)` 與 `fromJson(str)`，如何免手寫字串比對驗證千萬種訂單？
+  - 🎯 **【往返可逆 Round-Trip】**：隨機生成任意訂單 `x`，斷言 `fromJson(toJson(x)).equals(x)` 恆成立！
+- **2. 【地址正規化與購物車合併】** `normalizeAddr(s)` 統一空白；`mergeCart(L)` 合併重複商品，如何測？
+  - 🎯 **【冪等性 + 總量守恆】**：① 做兩次等於做一次 `f(f(s)) == f(s)`；② 合併前後購買總數量 `sum(qty)` 必守恆！
+- **3. 【高鐵紅利點數折抵】** 每 100 點折 20 元，最高折抵原票價 50%，如何抓出點數計價漏洞？
+  - 🎯 **【上下界 + 單調性】**：① 實付必滿足 `0.5*p ≤ pay(p,pts) ≤ p`；② 多用點數只降不升 `pay(p,pts+100) ≤ pay(p,pts)`！
+
+</div>
+<div class="card">
+
+- **4. 【稅率演算法效能重構】** 將簡單慢速版 `calcTaxSlow(x)` 重構為複雜快取版 `calcTaxFast(x)`，如何防漏？
+  - 🎯 **【差分預言機 Differential】**：以舊版為 Oracle，隨機轟炸萬組所得 `x`，斷言 `calcTaxFast(x) == calcTaxSlow(x)`！
+- **5. 【銀行跨行轉帳引擎】** `transfer(A, B, amt)` 由 A 扣款轉入 B 並收 15 元手續費進 Bank，如何驗證帳務？
+  - 🎯 **【總資金守恆 Invariant】**：無論轉帳成功或失敗，前後三方總金額必守恆 `A'+B'+Bank' == A+B+Bank` 且餘額 `≥ 0`！
 
 </div>
 </div>
@@ -3479,6 +3725,190 @@ void testMetamorphicRelation_irrelevantPerturbation() {
       var wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
     });
+
+    // 3. Auto-link and calibrate section items on the Outline slide (Slide 2)
+    var secByNum = {};
+    sections.forEach(function(s) {
+      var m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) {
+        secByNum[m[1]] = s.id;
+      }
+    });
+    var outlineSlide = document.querySelector("section.outline-slide, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(function(li) {
+        var existingLink = li.querySelector(":scope > a, :scope > strong > a");
+        if (existingLink) {
+          var m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.href = "#" + secByNum[m[1]];
+          }
+          return;
+        }
+        var strong = li.querySelector(":scope > strong, :scope > b");
+        if (strong) {
+          var m = strong.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            var a = document.createElement("a");
+            a.href = "#" + secByNum[m[1]];
+            strong.parentNode.insertBefore(a, strong);
+            a.appendChild(strong);
+          }
+        }
+      });
+    }
+
+    // 4. Auto-clamp hover zoom scale (--zoom-scale) so enlarged images never exceed slide (1280x720)
+    function updateImgZoomScale(img) {
+      var sec = img.closest("section");
+      if (!sec) return;
+      var w = img.offsetWidth;
+      var h = img.offsetHeight;
+      if (!w || !h) return;
+      var x = 0, y = 0, cur = img;
+      while (cur && cur !== sec && sec.contains(cur)) {
+        x += cur.offsetLeft;
+        y += cur.offsetTop;
+        cur = cur.offsetParent;
+      }
+      var secW = sec.offsetWidth || 1280;
+      var secH = sec.offsetHeight || 720;
+      var padSide = 36;
+      var padTop = 30;
+      var isLeftOrigin = img.closest(":is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child");
+      var availW = isLeftOrigin ? (secW - padSide - x) : ((x + w) - padSide);
+      var availH = (y + h) - padTop;
+      var tag = img.tagName ? img.tagName.toLowerCase() : "";
+      var cap = (tag === "pre" || tag === "marp-pre") ? 1.42 : 2.0;
+      var maxS = Math.min(cap, availW / w, availH / h, (secH - 60) / h);
+      if (maxS < 1.0) maxS = 1.0;
+      img.style.setProperty("--zoom-scale", maxS.toFixed(3));
+    }
+    document.querySelectorAll(".card img:not(.emoji), div.content-figure img:not(.emoji), .card pre, .card marp-pre").forEach(function(img) {
+      if (img.dataset.zoomBound) return;
+      img.dataset.zoomBound = "true";
+      img.addEventListener("mouseenter", function() { updateImgZoomScale(img); });
+      img.addEventListener("load", function() { updateImgZoomScale(img); });
+      updateImgZoomScale(img);
+    });
+
+    // 5. Interactive State Machine Path Explorer (Section 5.8)
+    var smExplorer = document.getElementById("sm-explorer");
+    if (smExplorer && !smExplorer.dataset.smBound) {
+      smExplorer.dataset.smBound = "true";
+      var cbs = Array.from(smExplorer.querySelectorAll(".sm-cb"));
+      var stateNodes = Array.from(smExplorer.querySelectorAll(".sm-state"));
+      var edgeNodes = Array.from(smExplorer.querySelectorAll(".sm-edge"));
+      var nodeStat = document.getElementById("sm-node-stat");
+      var edgeStat = document.getElementById("sm-edge-stat");
+      var nodeBar = document.getElementById("sm-node-bar");
+      var edgeBar = document.getElementById("sm-edge-bar");
+      var covNote = document.getElementById("sm-cov-note");
+
+      function updateSmView() {
+        var activePaths = new Set();
+        cbs.forEach(function(cb) {
+          var item = cb.closest(".sm-path-item");
+          if (cb.checked) {
+            activePaths.add(cb.value);
+            if (item) item.classList.add("is-checked");
+          } else {
+            if (item) item.classList.remove("is-checked");
+          }
+        });
+
+        var coveredStates = 0;
+        stateNodes.forEach(function(el) {
+          var paths = (el.getAttribute("data-paths") || "").split(",");
+          var hit = paths.some(function(p) { return activePaths.has(p.trim()); });
+          el.classList.toggle("is-active", hit);
+          if (hit) coveredStates++;
+        });
+
+        var coveredEdges = 0;
+        edgeNodes.forEach(function(el) {
+          var paths = (el.getAttribute("data-paths") || "").split(",");
+          var hit = paths.some(function(p) { return activePaths.has(p.trim()); });
+          el.classList.toggle("is-active", hit);
+          if (hit) coveredEdges++;
+        });
+
+        var nodePct = Math.round((coveredStates / 6) * 100);
+        var edgePct = Math.round((coveredEdges / 8) * 100);
+        if (nodeStat) nodeStat.textContent = coveredStates + " / 6 (" + nodePct + "%)";
+        if (edgeStat) edgeStat.textContent = coveredEdges + " / 8 (" + edgePct + "%)";
+        if (nodeBar) {
+          nodeBar.style.width = ((coveredStates / 6) * 100).toFixed(1) + "%";
+          nodeBar.style.background = (coveredStates === 6) ? "#16a34a" : "#0284c7";
+        }
+        if (edgeBar) {
+          edgeBar.style.width = ((coveredEdges / 8) * 100).toFixed(1) + "%";
+          edgeBar.style.background = (coveredEdges === 8) ? "#16a34a" : "#f59e0b";
+        }
+        if (covNote) {
+          if (coveredEdges === 8) {
+            covNote.style.color = "#15803d";
+            covNote.textContent = "🎉 已達成 100% 轉移覆蓋（6 個狀態節點 + 8 條轉移弧線全數覆蓋）！";
+          } else if (coveredStates === 6 && coveredEdges < 8) {
+            covNote.style.color = "#b45309";
+            covNote.textContent = "⚠️ 盲點示範：6 個狀態已 100% 覆蓋，但仍有 " + (8 - coveredEdges) + " 條 cancel 轉移邊未測到！";
+          } else if (coveredEdges === 0) {
+            covNote.style.color = "#64748b";
+            covNote.textContent = "👆 請勾選上方任一測試路徑，觀察圖上對應亮起的狀態與轉移邊。";
+          } else {
+            covNote.style.color = "#0369a1";
+            covNote.textContent = "💡 目前已覆蓋 " + coveredStates + " 個狀態、" + coveredEdges + " 條轉移邊，請繼績勾選其餘路徑。";
+          }
+        }
+      }
+
+      cbs.forEach(function(cb) {
+        cb.addEventListener("change", updateSmView);
+      });
+
+      smExplorer.querySelectorAll("[data-sm-action]").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          var act = btn.getAttribute("data-sm-action");
+          if (act === "all") {
+            cbs.forEach(function(cb) { cb.checked = true; });
+          } else if (act === "clear") {
+            cbs.forEach(function(cb) { cb.checked = false; });
+          } else if (act === "node100") {
+            cbs.forEach(function(cb) {
+              cb.checked = (cb.value === "1" || cb.value === "2" || cb.value === "5");
+            });
+          }
+          updateSmView();
+        });
+      });
+
+      updateSmView();
+    }
+
+    // 6. Progressive Enhancement for 5-Question PBT Design Challenge Slide (Section 5.11)
+    if (!navigator.webdriver) {
+      slideSections.forEach(function(sec) {
+        var h2 = sec.querySelector("h2");
+        if (!h2 || h2.textContent.indexOf("5 個真實場景") === -1 || sec.dataset.qaEnhanced) return;
+        sec.dataset.qaEnhanced = "true";
+        sec.querySelectorAll(".card > ul > li").forEach(function(li, idx) {
+          var subUl = li.querySelector(":scope > ul");
+          if (!subUl) return;
+          subUl.classList.add("pbt-ans-sub");
+          var badge = document.createElement("div");
+          badge.className = "pbt-reveal-badge";
+          badge.textContent = "▸ 點擊揭曉簡答 (題 " + (idx + 1) + ")";
+          li.insertBefore(badge, subUl);
+          li.style.cursor = "pointer";
+          li.addEventListener("click", function() {
+            li.classList.toggle("is-revealed");
+            badge.textContent = li.classList.contains("is-revealed")
+              ? "▾ 點擊隱藏簡答 (題 " + (idx + 1) + ")"
+              : "▸ 點擊揭曉簡答 (題 " + (idx + 1) + ")";
+          });
+        });
+      });
+    }
   }
 
   if (document.readyState === "loading") {

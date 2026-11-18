@@ -28,28 +28,28 @@ footer: 'Ch02 錯與除錯'
 
 <div class="card-deck">
 
-* > 🧭 全面掌握缺陷因果鏈、Clean Code 防錯心法與契約防禦工程，打造堅不可摧的軟體體質。
+> 🧭 全面掌握缺陷因果鏈、Clean Code 防錯心法與契約防禦工程，打造堅不可摧的軟體體質。
 
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### 🐛 臭蟲本質與除錯心法
-- **2.1 臭蟲與錯誤**：IEEE 因果鏈、規格缺陷與常見錯誤分類
-- **2.2 整潔程式碼 (Clean Code)**：大師心法、實務規範與防錯迷思
-- **2.3 除錯思維與方法**：科學除錯 5 步驟、命題邏輯與 AI SOP
-- **2.4 除錯工具實務**：條件斷點、例外斷點與動態求值
+- [**2.1 臭蟲與錯誤**](#3)：IEEE 因果鏈、規格缺陷與常見錯誤分類
+- [**2.2 整潔程式碼 (Clean Code)**](#15)：大師心法、實務規範與防錯迷思
+- [**2.3 除錯思維與方法**](#30)：科學除錯 5 步驟、命題邏輯與 AI SOP
+- [**2.4 除錯工具實務**](#41)：條件斷點、例外斷點與動態求值
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### 🛡️ 防禦架構與缺陷管理
-- **2.5 契約式設計 (DbC)**：Meyer 契約三大法則與權責判定
-- **2.6 斷言機制 (Assertions)**：狀態不變量、禁忌與 `-ea` 開關
-- **2.7 例外處理 (Exceptions)**：Throwable 體系、CDR 與反模式
-- **2.8 系統日誌 (Logging)**：SLF4J/Log4j 2、佔位符優化與配置
-- **2.9 缺陷管理 (BTS)**：生命週期、開源/商業工具與企業實務
-- **2.10 綜合練習與實戰**：因果辨析、邏輯排查與 Game 挑戰
+- [**2.5 契約式設計 (DbC)**](#46)：Meyer 契約三大法則與權責判定
+- [**2.6 斷言機制 (Assertions)**](#52)：狀態不變量、禁忌與 `-ea` 開關
+- [**2.7 例外處理 (Exceptions)**](#57)：Throwable 體系、CDR 與反模式
+- [**2.8 系統日誌 (Logging)**](#63)：SLF4J/Log4j 2、佔位符優化與配置
+- [**2.9 缺陷管理 (BTS)**](#74)：生命週期、開源/商業工具與企業實務
+- [**2.10 綜合練習與實戰**](#85)：因果辨析、邏輯排查與 Game 挑戰
 
 </div>
 </div>
@@ -960,7 +960,7 @@ public void processOrder(Order order) {
 - **Call Stack (呼叫堆疊視窗)**：回溯「這個方法是由誰、經過哪些中介層一路呼叫進來的」，釐清因果鏈條
 - **切換 Stack Frame (切換堆疊影格)**：點擊任一呼叫層，編輯器自動切換至該層檔案並還原當時的區域變數
 - **Evaluate Expression (動態運算求值 / Alt+F8)**：在定格狀態下開啟互動視窗，動態執行任意程式碼或呼叫方法
-- 🛠️ **實習銜接**：請參閱 `LabDemo/docs/u01_debug/debug.md` 實戰 BubbleSort、GCD 與泰勒級數除錯
+- 🛠️ **實習銜接**：請參閱 [`debug.md`](../../lab.html?file=LabDemo/docs/u02_debug/debug.md) 實戰 BubbleSort、GCD 與泰勒級數除錯
 
 </div>
 </div>
@@ -2195,6 +2195,72 @@ public class BankAccount {
       header.innerHTML = "";
       var wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
+    });
+
+    // 3. Auto-link and calibrate section items on the Outline slide (Slide 2)
+    var secByNum = {};
+    sections.forEach(function(s) {
+      var m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) {
+        secByNum[m[1]] = s.id;
+      }
+    });
+    var outlineSlide = document.querySelector("section.outline-slide, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(function(li) {
+        var existingLink = li.querySelector(":scope > a, :scope > strong > a");
+        if (existingLink) {
+          var m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.href = "#" + secByNum[m[1]];
+          }
+          return;
+        }
+        var strong = li.querySelector(":scope > strong, :scope > b");
+        if (strong) {
+          var m = strong.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            var a = document.createElement("a");
+            a.href = "#" + secByNum[m[1]];
+            strong.parentNode.insertBefore(a, strong);
+            a.appendChild(strong);
+          }
+        }
+      });
+    }
+
+    // 4. Auto-clamp hover zoom scale (--zoom-scale) so enlarged images never exceed slide (1280x720)
+    function updateImgZoomScale(img) {
+      var sec = img.closest("section");
+      if (!sec) return;
+      var w = img.offsetWidth;
+      var h = img.offsetHeight;
+      if (!w || !h) return;
+      var x = 0, y = 0, cur = img;
+      while (cur && cur !== sec && sec.contains(cur)) {
+        x += cur.offsetLeft;
+        y += cur.offsetTop;
+        cur = cur.offsetParent;
+      }
+      var secW = sec.offsetWidth || 1280;
+      var secH = sec.offsetHeight || 720;
+      var padSide = 36;
+      var padTop = 30;
+      var isLeftOrigin = img.closest(":is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child");
+      var availW = isLeftOrigin ? (secW - padSide - x) : ((x + w) - padSide);
+      var availH = (y + h) - padTop;
+      var tag = img.tagName ? img.tagName.toLowerCase() : "";
+      var cap = (tag === "pre" || tag === "marp-pre") ? 1.42 : 2.0;
+      var maxS = Math.min(cap, availW / w, availH / h, (secH - 60) / h);
+      if (maxS < 1.0) maxS = 1.0;
+      img.style.setProperty("--zoom-scale", maxS.toFixed(3));
+    }
+    document.querySelectorAll(".card img:not(.emoji), div.content-figure img:not(.emoji), .card pre, .card marp-pre").forEach(function(img) {
+      if (img.dataset.zoomBound) return;
+      img.dataset.zoomBound = "true";
+      img.addEventListener("mouseenter", function() { updateImgZoomScale(img); });
+      img.addEventListener("load", function() { updateImgZoomScale(img); });
+      updateImgZoomScale(img);
     });
   }
 

@@ -29,32 +29,32 @@ footer: 'Ch07 整合測試與測試替身'
 <div>
 
 ### 🧩 純 Java 漸進式整合策略
-- **7.1 整合測試與 V 開發模型 (V-Model)**：
+- [**7.1 整合測試與 V 開發模型 (V-Model)**](#3)：
   - 為什麼單元測試全綠燈，組裝起來卻崩潰？六大介面錯誤
   - 純 Java 實戰剖析：`Calculator` 除以零之**前後置契約失配**
   - 建構子依賴注入 (`Constructor Injection`) 與三層架構呼叫鏈
-- **7.2 由下而上整合 (Bottom-Up Integration)**：
+- [**7.2 由下而上整合 (Bottom-Up Integration)**](#7)：
   - 核心哲學、測試驅動程式 (**Test Driver**) 與五步推進流程
   - 純 Java 實戰：`RealPrimeChecker` ➔ `Prime` 真實組裝演練
-- **7.3 由上而下整合 (Top-Down Integration)**：
+- [**7.3 由上而下整合 (Top-Down Integration)**](#10)：
   - 核心哲學、測試存根 (**Test Stub**) 與質數列印三模組推演
   - 純 Java 實戰：手寫 `MockPrimeChecker` Stub 隔離頂層測試
-- **7.4 整合測試策略比較 (Comparison)**：
+- [**7.4 整合測試策略比較 (Comparison)**](#12)：
   - Big Bang、Top-Down、Bottom-Up 與三明治整合 (Sandwich) 評比
 
 </div>
 <div>
 
 ### 🎭 測試替身與 Mockito 實戰
-- **7.5 隔離架構與測試替身原則 (Test Doubles)**：
+- [**7.5 隔離架構與測試替身原則 (Test Doubles)**](#15)：
   - 從 Driver/Stub 到 **5 大替身**（Dummy, Stub, Spy, Mock, Fake）
   - 何時用 Mock vs. 真實物件（以 `Stock Market` 台積電股價為例）
   - 警惕**脆化測試 (Brittle Tests)** 與過度 Mock 三大反模式
-- **7.6 Lab: Mockito 測試驅動與模擬 (`u07_mockito`)**：
+- [**7.6 Lab: Mockito 測試驅動與模擬 (`u07_mockito`)**](#20)：
   - 手寫 Stub 進化至動態 `mock()`、`@Mock` + `@InjectMocks`
   - `mock()` vs. `spy()`（`PrimeSpyTest` 局部修補實戰）
   - `verify()` 抓出 `PrimeTest` 漏測 `isPrime(1)` 之隱藏 Bug！
-- **7.7 課堂實習與綜合練習 (`LabDemo u07_mockito`)**：
+- [**7.7 課堂實習與綜合練習 (`LabDemo u07_mockito`)**](#24)：
   - 質數系統、計算機契約失配與股票市值三大模組動手演練
   - 整合測試與 Mockito 必考觀念題快篩解析
 
@@ -1027,6 +1027,72 @@ verify(mockedList, atMost(5)).add("3");
       header.innerHTML = "";
       var wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
+    });
+
+    // 3. Auto-link and calibrate section items on the Outline slide (Slide 2)
+    var secByNum = {};
+    sections.forEach(function(s) {
+      var m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) {
+        secByNum[m[1]] = s.id;
+      }
+    });
+    var outlineSlide = document.querySelector("section.outline-slide, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(function(li) {
+        var existingLink = li.querySelector(":scope > a, :scope > strong > a");
+        if (existingLink) {
+          var m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.href = "#" + secByNum[m[1]];
+          }
+          return;
+        }
+        var strong = li.querySelector(":scope > strong, :scope > b");
+        if (strong) {
+          var m = strong.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            var a = document.createElement("a");
+            a.href = "#" + secByNum[m[1]];
+            strong.parentNode.insertBefore(a, strong);
+            a.appendChild(strong);
+          }
+        }
+      });
+    }
+
+    // 4. Auto-clamp hover zoom scale (--zoom-scale) so enlarged images never exceed slide (1280x720)
+    function updateImgZoomScale(img) {
+      var sec = img.closest("section");
+      if (!sec) return;
+      var w = img.offsetWidth;
+      var h = img.offsetHeight;
+      if (!w || !h) return;
+      var x = 0, y = 0, cur = img;
+      while (cur && cur !== sec && sec.contains(cur)) {
+        x += cur.offsetLeft;
+        y += cur.offsetTop;
+        cur = cur.offsetParent;
+      }
+      var secW = sec.offsetWidth || 1280;
+      var secH = sec.offsetHeight || 720;
+      var padSide = 36;
+      var padTop = 30;
+      var isLeftOrigin = img.closest(":is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child");
+      var availW = isLeftOrigin ? (secW - padSide - x) : ((x + w) - padSide);
+      var availH = (y + h) - padTop;
+      var tag = img.tagName ? img.tagName.toLowerCase() : "";
+      var cap = (tag === "pre" || tag === "marp-pre") ? 1.42 : 2.0;
+      var maxS = Math.min(cap, availW / w, availH / h, (secH - 60) / h);
+      if (maxS < 1.0) maxS = 1.0;
+      img.style.setProperty("--zoom-scale", maxS.toFixed(3));
+    }
+    document.querySelectorAll(".card img:not(.emoji), div.content-figure img:not(.emoji), .card pre, .card marp-pre").forEach(function(img) {
+      if (img.dataset.zoomBound) return;
+      img.dataset.zoomBound = "true";
+      img.addEventListener("mouseenter", function() { updateImgZoomScale(img); });
+      img.addEventListener("load", function() { updateImgZoomScale(img); });
+      updateImgZoomScale(img);
     });
   }
 

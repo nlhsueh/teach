@@ -165,7 +165,7 @@ void exercise3_testWeakPasswordCombinations(String weakPassword) {
 ---
 
 ## Unit 5.5: 全成對組合測試 (Pairwise)
-📂 實習專案目錄：`src/test/java/u05_pair/`  
+📂 實習專案目錄：`src/test/java/u05_combinatorial/pair/`  
 📂 參考解答檔案：[`5.5_pairwise/LoanCalculatorPairwiseExerciseTest.java`](5.5_pairwise/LoanCalculatorPairwiseExerciseTest.java)
 
 ```java
@@ -198,28 +198,56 @@ List<DynamicTest> exercise2_customPairwiseTests() {
 
 ```java
 @Nested
-@DisplayName("VIP 會員折扣情境")
+@DisplayName("👑 VIP 會員分類樹測試群組 (外層分類)")
 class VipMemberTests {
-    @Test
-    @DisplayName("TC_1: VIP 大額訂單 (>3K) 享 8 折再折 300 元")
-    void testVipLargeOrder() {
-        assertEquals(2900.0, OrderDiscount.calculate(4000.0, MemberLevel.VIP, Payment.LINE_PAY));
+
+    @Nested
+    @DisplayName("💳 信用卡支付子樹：一次付清 vs. 分期付款 (內層子樹)")
+    class CreditCardSubTreeTests {
+
+        @Test
+        @DisplayName("TC_1: VIP 大額訂單 (>3K) 刷卡一次付清 ➔ 享 8 折加滿額立減 300 元")
+        void testVipLargeOrderCreditCardOneTime() {
+            OrderDiscount.DiscountResult result = OrderDiscount.calculateDiscount(
+                    OrderDiscount.MemberType.VIP, 3500.0,
+                    OrderDiscount.PaymentMethod.CREDIT_CARD_ONE_TIME);
+            assertEquals(2500.0, result.finalAmount);
+            assertEquals(1000.0, result.discountAmount);
+        }
+
+        @Test
+        @DisplayName("TC_2: VIP 大額訂單 (>3K) 刷卡分期 (子樹) ➔ 享 8 折加滿額立減 300 元")
+        void testVipLargeOrderCreditCardInstallment() {
+            OrderDiscount.DiscountResult result = OrderDiscount.calculateDiscount(
+                    OrderDiscount.MemberType.VIP, 3500.0,
+                    OrderDiscount.PaymentMethod.CREDIT_CARD_INSTALLMENT);
+            assertEquals(2500.0, result.finalAmount);
+            assertEquals(1000.0, result.discountAmount);
+        }
     }
 }
 
 @Nested
-@DisplayName("一般會員與訪客折扣情境")
+@DisplayName("👤 一般會員與訪客分類樹測試群組 (免測分期子樹)")
 class RegularAndGuestTests {
+
     @Test
-    @DisplayName("TC_2: 一般會員中額訂單 (1K~3K) 享 9 折再折 100 元")
-    void testRegularMediumOrder() {
-        assertEquals(1700.0, OrderDiscount.calculate(2000.0, MemberLevel.REGULAR, Payment.CREDIT_CARD));
+    @DisplayName("TC_3: 一般會員中額訂單 (1K~3K) 行動支付 ➔ 享 9 折加滿額立減 100 元")
+    void testRegularMediumOrderMobilePay() {
+        OrderDiscount.DiscountResult result = OrderDiscount.calculateDiscount(
+                OrderDiscount.MemberType.REGULAR, 2000.0,
+                OrderDiscount.PaymentMethod.MOBILE_PAY);
+        assertEquals(1700.0, result.finalAmount);
     }
 
     @Test
-    @DisplayName("TC_3: 訪客小額訂單 (<1K) 原價無折扣")
-    void testGuestSmallOrder() {
-        assertEquals(500.0, OrderDiscount.calculate(500.0, MemberLevel.GUEST, Payment.CASH));
+    @DisplayName("TC_4: 訪客小額訂單 (<1K) 貨到付款 ➔ 原價無折扣")
+    void testGuestSmallOrderCashOnDelivery() {
+        OrderDiscount.DiscountResult result = OrderDiscount.calculateDiscount(
+                OrderDiscount.MemberType.GUEST, 800.0,
+                OrderDiscount.PaymentMethod.CASH_ON_DELIVERY);
+        assertEquals(800.0, result.finalAmount);
+        assertEquals(0.0, result.discountAmount);
     }
 }
 ```

@@ -1,4 +1,4 @@
-package u05_scenario.experience;
+package u05_behavioral.experience;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

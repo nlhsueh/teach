@@ -1,4 +1,4 @@
-package u05_scenario.state;
+package u05_behavioral.state;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

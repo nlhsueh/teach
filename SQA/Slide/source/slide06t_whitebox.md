@@ -30,29 +30,28 @@ footer: 'Ch06 白箱測試'
 <div>
 
 ### 🧭 涵蓋度階梯與工具插樁
-- **6.1 白箱測試基礎與 JaCoCo 動態插樁**：
+- [**6.1 測試涵蓋度階梯與邏輯覆蓋 (Coverage Criteria)**](#3)：
   - 玻璃盒測試思維、黑箱 vs. 白箱雙軌協同、V-Model 定位
-  - 原始碼插樁 vs. 位元組碼動態插樁 (Java Agent) 與六大計數器 (CCQ 1)
-  - IntelliJ Run with Coverage 與 Maven Quality Gate 自動阻斷
-- **6.2 邏輯測試涵蓋度階梯與實戰案例 (Coverage Criteria)**：
   - 敘述 (SC) ➔ 分支 (BC) ➔ 條件 (CC) ➔ 短路求值黃色鑽石解密 (CCQ 2)
   - 多重條件 (MCC)、路徑爆炸、**MC/DC (DO-178C / ISO 26262)** 推導 (CCQ 3)
   - 🧪 *實戰推演：`Triangle` 死分支之謎、`BinarySearch`、`BMI`、`LoanCalculator`*
-  - 破解「100% 覆蓋率等於高品質」的三大工程迷思
+- [**6.2 JaCoCo 動態插樁與涵蓋度度量 (Instrumentation)**](#24)：
+  - 原始碼插樁 vs. 位元組碼動態插樁 (Java Agent) 與六大計數器 (CCQ 1)
+  - Maven `pom.xml` 生命週期整合與 CI/CD 品質門檻 (`jacoco:check`) 自動阻斷
 
 </div>
 <div>
 
 ### 📐 結構路徑、變異測試與 AI 協同
-- **6.3 基本路徑測試與複雜度度量 (Basis Path)**：
+- [**6.3 基本路徑測試與複雜度度量 (Basis Path)**](#30)：
   - 控制流程圖 (CFG) 四大基本結構與複合條件拆解
   - **McCabe 圈複雜度 V(G)** 三大公式、`computeAverage` 與 `NextDate` 完整推演 (CCQ 4)
   - 迴圈測試 (Loop Testing)、資料流測試 (DU-Path) 與認知複雜度重構 (`CogC` / `WMC`)
-- **6.4 變異測試 (Mutation Testing — 測試你的測試)**：
+- [**6.4 變異測試 (Mutation Testing — 測試你的測試)**](#44)：
   - 兩大理論假設 (CPH / Coupling Effect)、變異算子與 RIPR 模型
   - 變異得分 `MS = K / (M - E)` 與**等價變異體**辨析 (CCQ 5)
   - 🧪 *獵殺實戰：`TriangleMuTest`、`BinarySearch (bs02/bs03)`、`func(X,Y)` 與 PITest*
-- **6.5 AI 輔助白箱測試、符號執行與模糊測試**：
+- [**6.5 AI 輔助白箱測試、符號執行與模糊測試**](#57)：
   - 符號執行 (SMT/Z3)、覆蓋率引導 Fuzzing 與人機協同 SOP (CCQ 6)
 
 </div>
@@ -797,7 +796,7 @@ else return "Overweight";
 
 <div class="card-deck">
 
-> 💡 📄 實習手冊：[whitebox_test.md#lab-3](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-3-loan-calculator-貸款利率計算) ｜ 💻 原始碼：[LoanCalculator.java](../../lab.html?file=LabDemo/src/main/java/u05_pair/LoanCalculator.java) ｜ 🧪 測試：[LoanCalculatorPairwiseExerciseTest.java](../../lab.html?file=LabDemo/src/test/java/u05_pair/LoanCalculatorPairwiseExerciseTest.java)
+> 💡 📄 實習手冊：[whitebox_test.md#lab-3](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-3-loan-calculator-貸款利率計算) ｜ 💻 原始碼：[LoanCalculator.java](../../lab.html?file=LabDemo/src/main/java/u05_combinatorial/pair/LoanCalculator.java) ｜ 🧪 測試：[LoanCalculatorPairwiseExerciseTest.java](../../lab.html?file=LabDemo/src/test/java/u05_combinatorial/pair/LoanCalculatorPairwiseExerciseTest.java)
 
 <div class="two-columns">
 <div class="card">
@@ -1417,7 +1416,7 @@ public String nextDate(int m, int d) {
 
 <!-- header: '6.3 基本路徑測試與複雜度度量' -->
 
-## 程式碼品質與複雜度度量指標 (`u06_wbtesting/metrics.md`)
+## 程式碼品質與複雜度度量指標 ([`metrics.md`](../../lab.html?file=LabDemo/docs/u06_wbtesting/metrics.md))
 
 <div class="card-deck">
 
@@ -2129,7 +2128,7 @@ public class TriangleMuTest {
 - **💻 程式**：
   - [Triangle.java](../../lab.html?file=LabDemo/src/main/java/u06_coverage/Triangle.java)
   - [BinarySearch.java](../../lab.html?file=LabDemo/src/main/java/u06_coverage/BinarySearch.java)
-  - [LoanCalculator.java](../../lab.html?file=LabDemo/src/main/java/u05_pair/LoanCalculator.java)
+  - [LoanCalculator.java](../../lab.html?file=LabDemo/src/main/java/u05_combinatorial/pair/LoanCalculator.java)
 - **🎯 實作任務**：
   - 使用 IDE **Run with Coverage** 檢視紅/黃/綠標記。
   - 解開黃色鑽石，重構消除死碼，補齊測資達到 **100% Branch Coverage**！
@@ -2343,6 +2342,72 @@ public class TriangleMuTest {
       header.innerHTML = "";
       var wrapper = createDropdownWrapper(title);
       header.appendChild(wrapper);
+    });
+
+    // 3. Auto-link and calibrate section items on the Outline slide (Slide 2)
+    var secByNum = {};
+    sections.forEach(function(s) {
+      var m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) {
+        secByNum[m[1]] = s.id;
+      }
+    });
+    var outlineSlide = document.querySelector("section.outline-slide, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(function(li) {
+        var existingLink = li.querySelector(":scope > a, :scope > strong > a");
+        if (existingLink) {
+          var m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.href = "#" + secByNum[m[1]];
+          }
+          return;
+        }
+        var strong = li.querySelector(":scope > strong, :scope > b");
+        if (strong) {
+          var m = strong.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            var a = document.createElement("a");
+            a.href = "#" + secByNum[m[1]];
+            strong.parentNode.insertBefore(a, strong);
+            a.appendChild(strong);
+          }
+        }
+      });
+    }
+
+    // 4. Auto-clamp hover zoom scale (--zoom-scale) so enlarged images never exceed slide (1280x720)
+    function updateImgZoomScale(img) {
+      var sec = img.closest("section");
+      if (!sec) return;
+      var w = img.offsetWidth;
+      var h = img.offsetHeight;
+      if (!w || !h) return;
+      var x = 0, y = 0, cur = img;
+      while (cur && cur !== sec && sec.contains(cur)) {
+        x += cur.offsetLeft;
+        y += cur.offsetTop;
+        cur = cur.offsetParent;
+      }
+      var secW = sec.offsetWidth || 1280;
+      var secH = sec.offsetHeight || 720;
+      var padSide = 36;
+      var padTop = 30;
+      var isLeftOrigin = img.closest(":is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child");
+      var availW = isLeftOrigin ? (secW - padSide - x) : ((x + w) - padSide);
+      var availH = (y + h) - padTop;
+      var tag = img.tagName ? img.tagName.toLowerCase() : "";
+      var cap = (tag === "pre" || tag === "marp-pre") ? 1.42 : 2.0;
+      var maxS = Math.min(cap, availW / w, availH / h, (secH - 60) / h);
+      if (maxS < 1.0) maxS = 1.0;
+      img.style.setProperty("--zoom-scale", maxS.toFixed(3));
+    }
+    document.querySelectorAll(".card img:not(.emoji), div.content-figure img:not(.emoji), .card pre, .card marp-pre").forEach(function(img) {
+      if (img.dataset.zoomBound) return;
+      img.dataset.zoomBound = "true";
+      img.addEventListener("mouseenter", function() { updateImgZoomScale(img); });
+      img.addEventListener("load", function() { updateImgZoomScale(img); });
+      updateImgZoomScale(img);
     });
   }
 

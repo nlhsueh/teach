@@ -174,28 +174,26 @@ section > h3 {
   cursor: zoom-in;
   position: relative;
   z-index: 1;
-  transform-origin: center center;
+  transform-origin: right bottom;
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
 }
 
 :is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child img:not(.emoji) {
-  transform-origin: left center;
-}
-
-:is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child :is(ul, ol) ~ p img:not(.emoji) {
   transform-origin: left bottom;
 }
 
 :is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:last-child img:not(.emoji) {
-  transform-origin: right center;
-}
-
-:is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:last-child :is(ul, ol) ~ p img:not(.emoji) {
   transform-origin: right bottom;
 }
 
+.card:has(img:not(.emoji):hover),
+.card:has(pre:hover) {
+  position: relative;
+  z-index: 1000;
+}
+
 .card img:not(.emoji):hover {
-  transform: scale(2);
+  transform: scale(var(--zoom-scale, 1.55));
   z-index: 9999;
   background: #ffffff;
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.35);
@@ -507,28 +505,152 @@ td {
 
 
 /* ----------------------------------------------------
-   7. Code Blocks & Inlines
+   7. Code Blocks, Inlines & Hyperlinks
    ---------------------------------------------------- */
+:not(pre, marp-pre) > code {
+  display: inline !important;
+  font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
+  font-size: 0.9em;
+  font-weight: 600;
+  background: transparent !important;
+  color: #475569 !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  vertical-align: baseline;
+}
+
+:is(h1, h2, h3, h4) :not(pre, marp-pre) > code {
+  background: transparent !important;
+  color: #0b3c5d !important;
+  border: none !important;
+}
+
+/* Global Hyperlink Styling (Blue + Underline, including [`File.java`](url)) */
+section a:not(.nav-dropdown-item):not(:has(> img)),
+section a:not(.nav-dropdown-item) > code {
+  color: #2563eb !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  text-decoration-thickness: 1.5px !important;
+  text-decoration-color: #60a5fa !important;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+section a:not(.nav-dropdown-item):not(:has(> img)):hover,
+section a:not(.nav-dropdown-item):hover > code {
+  color: #1d4ed8 !important;
+  text-decoration-color: #1d4ed8 !important;
+  background-color: #e0f2fe !important;
+  border-radius: 3px;
+}
+
 pre {
   margin-top: 8px;
   margin-bottom: 8px;
   font-size: 0.88em; /* 對齊第二層清單項目 (約 18px~19px) */
   line-height: 1.45;
-  border-radius: 6px;
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  border-left: 4px solid #0284c7 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
 }
 
-pre code {
-  font-size: 1em; /* 繼承 pre 的 0.88em */
-}
-
-code {
+pre code,
+pre code.hljs,
+.hljs {
   font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
-  font-size: 0.88em;
+  font-size: 1em; /* 繼承 pre 的 0.88em */
+  background: transparent !important;
+  color: #0f172a !important;
+  border: none !important;
+  padding: 0.6em 0.8em !important;
+}
+
+/* GitHub Light Syntax Highlighting Overrides for Gaia */
+.hljs-comment,
+.hljs-quote {
+  color: #64748b !important;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type {
+  color: #cf222e !important;
+  font-weight: 600;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition {
+  color: #15803d !important;
+  background: transparent !important;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-name,
+.hljs-class .hljs-title,
+.hljs-title.class_,
+.hljs-title.function_ {
+  color: #6d28d9 !important;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.hljs-meta,
+.hljs-doctag {
+  color: #b45309 !important;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet {
+  color: #0550ae !important;
+  font-weight: 600;
+}
+
+.hljs-variable,
+.hljs-params,
+.hljs-template-variable,
+.hljs-attribute,
+.hljs-attr {
+  color: #0f172a !important;
 }
 
 .card pre,
 .card pre code {
   font-size: 15px; /* 卡片內程式碼對齊卡片第二層項目大小 */
+}
+
+.card pre {
+  cursor: zoom-in;
+  position: relative;
+  z-index: 1;
+  transform-origin: right bottom;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s ease;
+}
+
+:is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child pre {
+  transform-origin: left bottom;
+}
+
+:is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:last-child pre {
+  transform-origin: right bottom;
+}
+
+.card pre:hover {
+  transform: scale(var(--zoom-scale, 1.38));
+  z-index: 9999;
+  background: #ffffff !important;
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.28);
 }
 
 /* ----------------------------------------------------
@@ -661,13 +783,13 @@ div.content-figure img {
   cursor: zoom-in;
   position: relative;
   z-index: 1;
-  transform-origin: right center;
+  transform-origin: right bottom;
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, background 0.25s ease;
 }
 
 div.content-figure > p > img:not(.emoji):hover,
 div.content-figure > img:not(.emoji):hover {
-  transform: scale(1.8);
+  transform: scale(var(--zoom-scale, 1.55));
   z-index: 9999;
   background: rgba(255, 255, 255, 0.98) !important;
   border-radius: 8px !important;
@@ -952,6 +1074,25 @@ section.outline-slide {
   color: #475569;
 }
 
+/* Outline slide clickable section links */
+.outline-slide a,
+section[id="2"] .card a {
+  color: #0b3c5d;
+  text-decoration: none;
+  border-bottom: 1.5px dashed #328cc1;
+  padding-bottom: 1px;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  border-radius: 3px;
+}
+
+.outline-slide a:hover,
+section[id="2"] .card a:hover {
+  color: #0284c7;
+  background-color: #e0f2fe;
+  border-bottom-style: solid;
+  border-bottom-color: #0284c7;
+}
+
 /* ----------------------------------------------------
    15. Lead Slide (Chapter Title & Transitions)
    ---------------------------------------------------- */
@@ -994,4 +1135,245 @@ section.lead header {
 section.lead footer,
 section.lead::after {
   display: none !important;
+}
+
+/* ----------------------------------------------------
+   16. Interactive State Machine Path Explorer
+   ---------------------------------------------------- */
+.sm-interactive-grid {
+  display: grid;
+  grid-template-columns: 34% 64%;
+  gap: 2%;
+  align-items: stretch;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.sm-control-card {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-top: 4px solid #0284c7;
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.sm-path-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sm-path-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: 7px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.sm-path-item:hover {
+  border-color: #38bdf8;
+  background: #f0f9ff;
+}
+
+.sm-path-item.is-checked {
+  border-color: #0284c7;
+  background: #e0f2fe;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.12);
+}
+
+.sm-path-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: #0284c7;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.sm-path-label {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.sm-path-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.sm-path-seq {
+  font-size: 11.5px;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  color: #475569;
+  margin-top: 2px;
+}
+
+.sm-btn-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.sm-btn {
+  flex: 1;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 5px 6px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #1e293b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.sm-btn:hover {
+  background: #e0f2fe;
+  border-color: #0284c7;
+  color: #0369a1;
+}
+
+.sm-btn.sm-btn-highlight {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+.sm-btn.sm-btn-highlight:hover {
+  background: #fde68a;
+}
+
+.sm-coverage-box {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sm-cov-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sm-cov-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.sm-cov-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.sm-cov-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+.sm-canvas-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-top: 4px solid #0b3c5d;
+  border-radius: 10px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.sm-canvas-card svg {
+  width: 100%;
+  max-height: 455px;
+  height: auto;
+}
+
+.sm-canvas-card .sm-state,
+.sm-canvas-card .sm-edge {
+  opacity: 0.2;
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+.sm-canvas-card .sm-state.is-active,
+.sm-canvas-card .sm-edge.is-active {
+  opacity: 1;
+}
+
+.sm-canvas-card .sm-edge.is-active path.sm-line {
+  stroke-width: 3.4px !important;
+}
+
+.sm-canvas-card .sm-state.is-active rect.sm-main-rect {
+  stroke-width: 3px !important;
+}
+
+@media print {
+  .sm-canvas-card .sm-state,
+  .sm-canvas-card .sm-edge {
+    opacity: 1 !important;
+  }
+}
+
+/* ----------------------------------------------------
+   17. Interactive 5-Question PBT Design Challenge Board
+   ---------------------------------------------------- */
+.pbt-reveal-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0284c7;
+  background: #f0f9ff;
+  border: 1px dashed #38bdf8;
+  border-radius: 5px;
+  transition: all 0.15s ease;
+}
+
+.pbt-reveal-badge:hover {
+  background: #e0f2fe;
+  border-color: #0284c7;
+}
+
+ul.pbt-ans-sub {
+  display: none !important;
+}
+
+li.is-revealed > ul.pbt-ans-sub {
+  display: block !important;
+  background: #ecfdf5;
+  border-left: 3px solid #10b981;
+  padding: 4px 8px 4px 22px !important;
+  border-radius: 4px;
+  margin-top: 4px !important;
+}
+
+li.is-revealed > .pbt-reveal-badge {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
 }

@@ -1,4 +1,4 @@
-package u05_scenario.usecase;
+package u05_behavioral.usecase;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

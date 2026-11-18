@@ -60,9 +60,11 @@ Ch05 知識架構全景：
 
 ## 🧑‍💻 5.2 單元測試與 JUnit 5 快速入門
 
-<!-- [JUnit](https://hackmd.io/@nlhsueh/HJIj6Ea01e) -->
-[JUnit on GitHub](
-https://github.com/nlhsueh/sw-testing24/blob/main/lab/u05_utest/intro_junit.md)
+> 🛠️ **實習專案 (`LabDemo`) 四大黑箱測試套件導覽**（完整手冊請見 [`../../LabDemo/docs/u05_utest/junit.md`](../../LabDemo/docs/u05_utest/junit.md)）：
+> - **`u05_junit/`**：5.2 JUnit 5 基礎語法、3A 原則、斷言與生命週期
+> - **`u05_partition/`**：`bva/` (5.3 邊界值分析)、`ep/` (5.4 等價類分割)
+> - **`u05_combinatorial/`**：`pair/` (5.5 全成對組合測試)、`ctm/` (5.6 分類樹方法)、`decision/` (5.7 因果圖與決策表)
+> - **`u05_behavioral/`**：`state/` (5.8 狀態轉換)、`usecase/` (5.9 使用案例)、`experience/` (5.10 錯誤猜測)、`pbtest/` (5.11 屬性與變質測試)
 
 <!-- id: sqa-ch05-ccq2 -->
 #### 🙋 概念核對問答 (CCQ 1)

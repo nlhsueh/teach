@@ -1,4 +1,4 @@
-package u05_input.bva;
+package u05_partition.bva;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

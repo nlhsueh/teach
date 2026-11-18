@@ -1,4 +1,4 @@
-package u05_pbtest;
+package u05_behavioral.pbtest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

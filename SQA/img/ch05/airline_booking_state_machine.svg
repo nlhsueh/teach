@@ -31,7 +31,7 @@
 
   <!-- Legend Header -->
   <g transform="translate(25, 18)">
-    <text x="0" y="10" font-family="sans-serif" font-size="14px" font-weight="700" fill="#0b3c5d">✈️ 航空訂票系統狀態機模型 (Airline Ticket Booking State Diagram)</text>
+    <text x="0" y="10" font-family="sans-serif" font-size="14px" font-weight="700" fill="#0b3c5d">航空訂票系統狀態機模型 (Airline Ticket Booking State Diagram)</text>
     <circle cx="580" cy="7" r="5" fill="#0b3c5d" />
     <text x="592" y="11" font-family="sans-serif" font-size="11.5px" fill="#455a64">起始節點</text>
     <line x1="660" y1="7" x2="695" y2="7" stroke="#0b3c5d" stroke-width="2" marker-end="url(#arrow)" />
@@ -43,7 +43,7 @@
   <!-- ==================== TOP ROW: HAPPY PATH ==================== -->
 
   <!-- Start Pseudo State -->
-  <circle cx="50" cy="110" r="14" fill="#0b3c5d" filter="url(#shadow)" />
+  <circle cx="50" cy="110" r="14" fill="#0b3c5d" />
 
   <!-- Transition: Start -> Made -->
   <path d="M 64 110 L 140 110" class="trans-arrow" marker-end="url(#arrow)" />
@@ -51,7 +51,7 @@
   <text x="101" y="97" class="label-text">giveInfo</text>
 
   <!-- State 1: Made (Reserved) -->
-  <g filter="url(#shadow)">
+  <g>
     <rect x="142" y="80" width="130" height="60" class="state-box normal-state" />
     <text x="207" y="102" class="state-title" fill="#0b3c5d">Made</text>
     <text x="207" y="122" class="state-sub">已預約保留</text>
@@ -63,7 +63,7 @@
   <text x="332" y="97" class="label-text">payMoney</text>
 
   <!-- State 2: Paid -->
-  <g filter="url(#shadow)">
+  <g>
     <rect x="390" y="80" width="130" height="60" class="state-box normal-state" />
     <text x="455" y="102" class="state-title" fill="#0b3c5d">Paid</text>
     <text x="455" y="122" class="state-sub">已完成付款</text>
@@ -75,7 +75,7 @@
   <text x="580" y="97" class="label-text">print</text>
 
   <!-- State 3: Ticketed (Issued) -->
-  <g filter="url(#shadow)">
+  <g>
     <rect x="640" y="80" width="130" height="60" class="state-box normal-state" />
     <text x="705" y="102" class="state-title" fill="#0b3c5d">Ticketed</text>
     <text x="705" y="122" class="state-sub">已出票完成</text>
@@ -87,20 +87,20 @@
   <text x="828" y="161" class="label-text">giveTicket</text>
 
   <!-- State 4: Used (Final State: Double border) -->
-  <g filter="url(#shadow)">
+  <g>
     <rect x="760" y="220" width="150" height="64" rx="14" class="state-box success-state" />
     <rect x="765" y="225" width="140" height="54" rx="10" fill="none" stroke="#2e7d32" stroke-width="1.2" />
-    <text x="835" y="244" class="state-title" fill="#2e7d32">Used 🏁</text>
+    <text x="835" y="244" class="state-title" fill="#2e7d32">Used</text>
     <text x="835" y="264" class="state-sub" fill="#2e7d32">已登機搭乘 (終止)</text>
   </g>
 
   <!-- ==================== CANCELLATION BRANCHES ==================== -->
 
   <!-- Cancellation State: CancelledByCustomer (Final State) -->
-  <g filter="url(#shadow)">
+  <g>
     <rect x="360" y="260" width="200" height="64" rx="14" class="state-box cancel-state" />
     <rect x="365" y="265" width="190" height="54" rx="10" fill="none" stroke="#d84315" stroke-width="1.2" />
-    <text x="460" y="284" class="state-title" fill="#d84315">CancelledByCustomer ⛔</text>
+    <text x="460" y="284" class="state-title" fill="#d84315">CancelledByCustomer</text>
     <text x="460" y="304" class="state-sub" fill="#c62828">顧客主動取消退訂 (終止)</text>
   </g>
 
@@ -122,10 +122,10 @@
   <!-- ==================== NON-PAY TIMEOUT BRANCH ==================== -->
 
   <!-- Cancellation State: CancelledNonPay (Final State) -->
-  <g filter="url(#shadow)">
+  <g>
     <rect x="110" y="360" width="195" height="64" rx="14" class="state-box cancel-state" />
     <rect x="115" y="365" width="185" height="54" rx="10" fill="none" stroke="#d84315" stroke-width="1.2" />
-    <text x="207" y="384" class="state-title" fill="#d84315">CancelledNonPay ⏱️</text>
+    <text x="207" y="384" class="state-title" fill="#d84315">CancelledNonPay</text>
     <text x="207" y="404" class="state-sub" fill="#c62828">逾期未付款自動取消 (終止)</text>
   </g>
 
@@ -138,7 +138,7 @@
   <g transform="translate(590, 360)">
     <rect width="320" height="64" fill="#f8f9fa" stroke="#cfd8dc" stroke-width="1" rx="8" />
     <text x="15" y="24" font-family="sans-serif" font-size="12px" font-weight="700" fill="#0b3c5d">💡 狀態機核心規格摘要：</text>
-    <text x="15" y="45" font-family="sans-serif" font-size="11.5px" fill="#455a64">• 6 個狀態節點 (包含 3 個終止狀態 🏁/⛔/⏱️)</text>
+    <text x="15" y="45" font-family="sans-serif" font-size="11.5px" fill="#455a64">• 6 個狀態節點 (包含 3 個終止狀態/⛔/⏱️)</text>
     <text x="15" y="60" font-family="sans-serif" font-size="11.5px" fill="#455a64">• 8 條有效轉移弧線 (Edges)，涵蓋正常與例外路徑</text>
   </g>
 </svg>
