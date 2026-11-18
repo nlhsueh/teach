@@ -62,6 +62,7 @@
    * **第 2 頁「本章重點導讀 (Outline)」章節點擊跳轉規範**：每一份投影片第 2 頁的大綱／重點導讀所列出的各章節（如 `5.1 ...`、`5.2 ...`），一律提供可點擊跳轉至該章節起始頁的超連結（`[**X.Y 章節標題**](#目標頁碼)`），並於底部導覽腳本中透過章節編號自動動態校準目標頁碼 `#id`，確保點擊後立即跳轉至對應章節。
    * **全版圖片投影片 (full-image-slide)**：比照 SE / ASE 規範，即便是全版圖片，頁碼（`::after`，右下角深色浮動膠囊）與頂部 Header 導覽（右上角淺色毛玻璃膠囊）均須正常呈現，確保簡報換頁進度與章節跳轉不中斷；僅底部 `footer` 予以隱藏。
    * **圖文分割版面 (`content-figure` / `split73` / `split64` / `.card img`) 圖片滑鼠懸停原地放大 (In-Place Hover Image Zoom)**：在 `div.content-figure`（佔比 34% 圖文欄）、`div.split73`、`div.split64` 與卡片內圖片（排除 `.emoji` 與 `.name-card`）中，因預設圖片區域較小，當滑鼠移至圖片上方（`:hover`）時，圖片須在原位置平滑放大——**右側欄位一律定錨於圖片右下角（`transform-origin: right bottom`）往左上方放大**，左側欄位定錨於左下角（`transform-origin: left bottom`）往右上方放大，並透過 `--zoom-scale` 動態計算最大放大倍率上限（自動限制放大後之寬高絕不超出 `1280×720` 投影片頁面邊界）；移開滑鼠即恢復原狀；且 `<div class="left">`、`</div>`、`<div class="right">` 標籤一律頂格撰寫（0 縮排）。
+   * **行內程式碼 (Inline `` `code` ``) 無背景色渲染規範**：比照 SQA 簡報主題（`sqa-theme.css`），投影片中的行內程式碼（`:not(pre, marp-pre) > code`）一律採用**無背景色、無邊框、零內距**（`background: transparent !important; border: none !important; padding: 0 !important;`），搭配等寬字體（`0.9em`、粗體 `600`、石板灰 `#475569`；標題內為深海軍藍 `#0b3c5d`；超連結內為連結藍 `#2563eb`），消除 Gaia 預設深色膠囊底塊造成的畫面雜亂感。
    * **CCQ 隨堂測驗排版與命題規範**：
      - **禁止重複標題**：投影片頂部已具備 `## 概念核對問答 (CCQ X)`，`<div class="ccq-text">` 內部直接進入題目，嚴禁重複出現 `#### 🙋 **概念核對問答**` 產生冗餘。
      - **選項長度對稱平衡**：所有選項（A, B, C, D）字數應精準提煉且長度相當，**嚴禁標準答案明顯比干擾項長**，避免洩漏線索（Anti-Length Cue Bias）。

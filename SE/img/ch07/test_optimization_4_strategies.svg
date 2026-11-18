@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 510" width="100%" height="100%">
+  <defs>
+    <style>
+      .card-bg { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.8; rx: 12px; }
+      .thumb-blue { fill: #f0f9ff; stroke: #bae6fd; stroke-width: 1.2; rx: 8px; }
+      .thumb-indigo { fill: #eef2ff; stroke: #c7d2fe; stroke-width: 1.2; rx: 8px; }
+      .thumb-emerald { fill: #ecfdf5; stroke: #a7f3d0; stroke-width: 1.2; rx: 8px; }
+      .thumb-amber { fill: #fffbeb; stroke: #fde68a; stroke-width: 1.2; rx: 8px; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; font-size: 16px; font-weight: 800; fill: #0f172a; text-anchor: middle; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; font-size: 12.5px; font-weight: 600; fill: #334155; text-anchor: middle; }
+      .card-formula { font-family: "Fira Code", "Consolas", monospace; font-size: 11.5px; font-weight: 700; text-anchor: middle; }
+      .mini-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; font-size: 11.5px; font-weight: 700; text-anchor: middle; }
+      .code-sm { font-family: "Fira Code", "Consolas", monospace; font-size: 11px; font-weight: 700; text-anchor: middle; }
+    </style>
+    <marker id="arr-b" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+    <marker id="arr-i" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#4f46e5" />
+    </marker>
+    <marker id="arr-a" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+  </defs>
+
+  <!-- ==================== ROW 1 (y=12..246) ==================== -->
+
+  <!-- STRATEGY 1: Single-Fault Isolation (x=20..548) -->
+  <g transform="translate(20, 12)">
+    <rect width="528" height="234" class="card-bg" />
+    <rect width="528" height="6" fill="#0284c7" rx="3" />
+    <rect x="14" y="14" width="500" height="142" class="thumb-blue" />
+
+    <!-- Left box: 3 Isolated Invalid Tests (Kept) -->
+    <rect x="24" y="22" width="246" height="126" fill="#ffffff" stroke="#0284c7" stroke-width="1.5" rx="6" />
+    <text x="147" y="38" class="mini-title" fill="#0369a1">單一無效獨立測 (每參數無效類各測 1 次)</text>
+
+    <!-- Row 1: Invalid A -->
+    <rect x="34" y="46" width="66" height="24" fill="#fee2e2" stroke="#dc2626" rx="4" />
+    <text x="67" y="62" class="code-sm" fill="#b91c1c">無效 A</text>
+    <rect x="106" y="46" width="66" height="24" fill="#dcfce7" stroke="#16a34a" rx="4" />
+    <text x="139" y="62" class="code-sm" fill="#15803d">合法 B</text>
+    <rect x="178" y="46" width="66" height="24" fill="#dcfce7" stroke="#16a34a" rx="4" />
+    <text x="211" y="62" class="code-sm" fill="#15803d">合法 C</text>
+
+    <!-- Row 2: Invalid B -->
+    <rect x="34" y="76" width="66" height="24" fill="#dcfce7" stroke="#16a34a" rx="4" />
+    <text x="67" y="92" class="code-sm" fill="#15803d">合法 A</text>
+    <rect x="106" y="76" width="66" height="24" fill="#fee2e2" stroke="#dc2626" rx="4" />
+    <text x="139" y="92" class="code-sm" fill="#b91c1c">無效 B</text>
+    <rect x="178" y="76" width="66" height="24" fill="#dcfce7" stroke="#16a34a" rx="4" />
+    <text x="211" y="92" class="code-sm" fill="#15803d">合法 C</text>
+
+    <!-- Row 3: Invalid C -->
+    <rect x="34" y="106" width="66" height="24" fill="#dcfce7" stroke="#16a34a" rx="4" />
+    <text x="67" y="122" class="code-sm" fill="#15803d">合法 A</text>
+    <rect x="106" y="106" width="66" height="24" fill="#dcfce7" stroke="#16a34a" rx="4" />
+    <text x="139" y="122" class="code-sm" fill="#15803d">合法 B</text>
+    <rect x="178" y="106" width="66" height="24" fill="#fee2e2" stroke="#dc2626" rx="4" />
+    <text x="211" y="122" class="code-sm" fill="#b91c1c">無效 C</text>
+
+    <!-- Right box: Pruned Redundant / Masked Combinations -->
+    <rect x="282" y="22" width="222" height="126" fill="#fff1f2" stroke="#f43f5e" stroke-dasharray="5 3" stroke-width="1.5" rx="6" />
+    <text x="393" y="38" class="mini-title" fill="#be123c">剪除項目 (避免錯誤遮蔽與膨脹)</text>
+
+    <rect x="294" y="48" width="198" height="40" fill="#ffffff" stroke="#fda4af" rx="5" />
+    <text x="393" y="65" class="code-sm" fill="#be123c">[無效 A] + [無效 B] 同時輸入</text>
+    <text x="393" y="81" font-family="sans-serif" font-size="10.5px" fill="#64748b" text-anchor="middle">A 拋錯即停 (Fail-Fast)，B 被遮蔽測不到</text>
+
+    <rect x="294" y="96" width="198" height="42" fill="#ffffff" stroke="#fda4af" rx="5" />
+    <text x="393" y="113" class="code-sm" fill="#be123c">[無效 A] × 所有合法 B, C 乘積</text>
+    <text x="393" y="129" font-family="sans-serif" font-size="10.5px" fill="#64748b" text-anchor="middle">皆走相同防禦分支，免放進主矩陣重複配</text>
+
+    <!-- Bottom Caption -->
+    <text x="264" y="176" class="card-title">① 分離無效等價類（單一無效原則，防錯誤遮蔽）</text>
+    <text x="264" y="197" class="card-sub">每個參數無效類各獨立測 1 次（0 漏測）；剪除多無效同時輸入與重複乘積</text>
+    <text x="264" y="218" class="card-formula" fill="#be123c">[例外] 若系統需「一次回傳多欄位聚合錯誤清單」，則仍須加測多欄位同時非法！</text>
+  </g>
+
+  <!-- STRATEGY 2: 2-Way Pairwise Compression (x=572..1100) -->
+  <g transform="translate(572, 12)">
+    <rect width="528" height="234" class="card-bg" />
+    <rect width="528" height="6" fill="#4f46e5" rx="3" />
+    <rect x="14" y="14" width="500" height="142" class="thumb-indigo" />
+
+    <!-- Left: Full Cartesian Grid (36 combinations) -->
+    <rect x="26" y="24" width="166" height="122" fill="#ffffff" stroke="#a5b4fc" rx="6" />
+    <text x="109" y="42" class="mini-title" fill="#4338ca">全笛卡爾積 (3×3×2×2)</text>
+    <!-- 6x6 mini grid of dots representing 36 cases -->
+    <g fill="#94a3b8" transform="translate(46, 52)">
+      <rect x="0" y="0" width="16" height="9" rx="2"/><rect x="22" y="0" width="16" height="9" rx="2"/><rect x="44" y="0" width="16" height="9" rx="2"/><rect x="66" y="0" width="16" height="9" rx="2"/><rect x="88" y="0" width="16" height="9" rx="2"/><rect x="110" y="0" width="16" height="9" rx="2"/>
+      <rect x="0" y="13" width="16" height="9" rx="2"/><rect x="22" y="13" width="16" height="9" rx="2"/><rect x="44" y="13" width="16" height="9" rx="2"/><rect x="66" y="13" width="16" height="9" rx="2"/><rect x="88" y="13" width="16" height="9" rx="2"/><rect x="110" y="13" width="16" height="9" rx="2"/>
+      <rect x="0" y="26" width="16" height="9" rx="2"/><rect x="22" y="26" width="16" height="9" rx="2"/><rect x="44" y="26" width="16" height="9" rx="2"/><rect x="66" y="26" width="16" height="9" rx="2"/><rect x="88" y="26" width="16" height="9" rx="2"/><rect x="110" y="26" width="16" height="9" rx="2"/>
+      <rect x="0" y="39" width="16" height="9" rx="2"/><rect x="22" y="39" width="16" height="9" rx="2"/><rect x="44" y="39" width="16" height="9" rx="2"/><rect x="66" y="39" width="16" height="9" rx="2"/><rect x="88" y="39" width="16" height="9" rx="2"/><rect x="110" y="39" width="16" height="9" rx="2"/>
+      <rect x="0" y="52" width="16" height="9" rx="2"/><rect x="22" y="52" width="16" height="9" rx="2"/><rect x="44" y="52" width="16" height="9" rx="2"/><rect x="66" y="52" width="16" height="9" rx="2"/><rect x="88" y="52" width="16" height="9" rx="2"/><rect x="110" y="52" width="16" height="9" rx="2"/>
+      <rect x="0" y="65" width="16" height="9" rx="2"/><rect x="22" y="65" width="16" height="9" rx="2"/><rect x="44" y="65" width="16" height="9" rx="2"/><rect x="66" y="65" width="16" height="9" rx="2"/><rect x="88" y="65" width="16" height="9" rx="2"/><rect x="110" y="65" width="16" height="9" rx="2"/>
+    </g>
+    <text x="109" y="138" class="code-sm" fill="#dc2626">36 組 (指數級爆炸)</text>
+
+    <!-- Middle Arrow: Pairwise Filter -->
+    <path d="M 198 85 L 272 85" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#arr-i)" />
+    <rect x="200" y="56" width="68" height="22" fill="#4f46e5" rx="4" />
+    <text x="234" y="71" font-family="sans-serif" font-size="10.5px" font-weight="700" fill="#ffffff" text-anchor="middle">2-Way 壓縮</text>
+    <text x="234" y="104" font-family="sans-serif" font-size="10.5px" font-weight="700" fill="#4338ca" text-anchor="middle">精簡 -75%</text>
+
+    <!-- Right: Compact 9-case Pairwise Matrix -->
+    <rect x="278" y="24" width="224" height="122" fill="#ffffff" stroke="#4f46e5" stroke-width="1.8" rx="6" />
+    <text x="390" y="42" class="mini-title" fill="#312e81">Pairwise 成對矩陣 (僅限合法類)</text>
+    <g fill="#4f46e5" transform="translate(302, 52)">
+      <rect x="0" y="0" width="52" height="16" rx="3"/><rect x="62" y="0" width="52" height="16" rx="3"/><rect x="124" y="0" width="52" height="16" rx="3"/>
+      <rect x="0" y="22" width="52" height="16" rx="3"/><rect x="62" y="22" width="52" height="16" rx="3"/><rect x="124" y="22" width="52" height="16" rx="3"/>
+      <rect x="0" y="44" width="52" height="16" rx="3"/><rect x="62" y="44" width="52" height="16" rx="3"/><rect x="124" y="44" width="52" height="16" rx="3"/>
+    </g>
+    <text x="390" y="134" class="code-sm" fill="#4f46e5">僅需 9 組 (100% 成對覆蓋)</text>
+
+    <!-- Bottom Caption -->
+    <text x="264" y="176" class="card-title">② 2-Way 配對組合（限合法等價類 Pairwise）</text>
+    <text x="264" y="197" class="card-sub">將通過防禦驗證的合法參數以 Pairwise 結合，指數級瞬間降為對數級</text>
+    <text x="264" y="218" class="card-formula" fill="#4f46e5">O(v^n) 全乘積  ➔  IPO / Greedy 2-Way 精實覆蓋 (捕捉 ~90% 缺陷)</text>
+  </g>
+
+  <!-- ==================== ROW 2 (y=262..496) ==================== -->
+
+  <!-- STRATEGY 3: Boundary-Focused Sampling (x=20..548) -->
+  <g transform="translate(20, 262)">
+    <rect width="528" height="234" class="card-bg" />
+    <rect width="528" height="6" fill="#059669" rx="3" />
+    <rect x="14" y="14" width="500" height="142" class="thumb-emerald" />
+
+    <!-- Number line axis -->
+    <line x1="36" y1="88" x2="492" y2="88" stroke="#0f172a" stroke-width="2.5" />
+    <!-- Valid range bar [0..100] -->
+    <rect x="120" y="80" width="288" height="16" fill="#a7f3d0" stroke="#059669" stroke-width="1.5" />
+
+    <!-- Left Boundary Zoom Zone (-1, 0, 1) -->
+    <circle cx="120" cy="88" r="36" fill="#ffffff" fill-opacity="0.65" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="4 2" />
+    <circle cx="94" cy="88" r="6" fill="#dc2626" />
+    <text x="94" y="72" class="code-sm" fill="#dc2626">-1</text>
+    <text x="94" y="112" font-family="sans-serif" font-size="10px" font-weight="700" fill="#dc2626" text-anchor="middle">min-</text>
+
+    <circle cx="120" cy="88" r="6" fill="#059669" />
+    <text x="120" y="72" class="code-sm" fill="#065f46">0</text>
+    <text x="120" y="112" font-family="sans-serif" font-size="10px" font-weight="700" fill="#065f46" text-anchor="middle">min</text>
+
+    <circle cx="146" cy="88" r="6" fill="#059669" />
+    <text x="146" y="72" class="code-sm" fill="#065f46">1</text>
+    <text x="146" y="112" font-family="sans-serif" font-size="10px" font-weight="700" fill="#065f46" text-anchor="middle">min+</text>
+
+    <!-- Middle Nominal (Only 1 representative, cross out random points) -->
+    <circle cx="215" cy="88" r="4" fill="#cbd5e1" />
+    <line x1="209" y1="82" x2="221" y2="94" stroke="#94a3b8" stroke-width="1.8" />
+    <circle cx="315" cy="88" r="4" fill="#cbd5e1" />
+    <line x1="309" y1="82" x2="321" y2="94" stroke="#94a3b8" stroke-width="1.8" />
+
+    <circle cx="264" cy="88" r="7" fill="#0284c7" />
+    <text x="264" y="70" class="code-sm" fill="#0369a1">50 (nom)</text>
+    <text x="264" y="114" font-family="sans-serif" font-size="10.5px" font-weight="700" fill="#0369a1" text-anchor="middle">區間內僅取 1 代表點</text>
+
+    <!-- Right Boundary Zoom Zone (99, 100, 101) -->
+    <circle cx="408" cy="88" r="36" fill="#ffffff" fill-opacity="0.65" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="4 2" />
+    <circle cx="382" cy="88" r="6" fill="#059669" />
+    <text x="382" y="72" class="code-sm" fill="#065f46">99</text>
+    <text x="382" y="112" font-family="sans-serif" font-size="10px" font-weight="700" fill="#065f46" text-anchor="middle">max-</text>
+
+    <circle cx="408" cy="88" r="6" fill="#059669" />
+    <text x="408" y="72" class="code-sm" fill="#065f46">100</text>
+    <text x="408" y="112" font-family="sans-serif" font-size="10px" font-weight="700" fill="#065f46" text-anchor="middle">max</text>
+
+    <circle cx="434" cy="88" r="6" fill="#dc2626" />
+    <text x="434" y="72" class="code-sm" fill="#dc2626">101</text>
+    <text x="434" y="112" font-family="sans-serif" font-size="10px" font-weight="700" fill="#dc2626" text-anchor="middle">max+</text>
+
+    <text x="264" y="38" class="mini-title" fill="#065f46">拒絕區間內盲目隨機抽樣，火力鎖定交界極值點</text>
+
+    <!-- Bottom Caption -->
+    <text x="264" y="176" class="card-title">③ 鎖定邊界替代隨機（Boundary-Focused Sampling）</text>
+    <text x="264" y="197" class="card-sub">等價區間內部只挑 1 個標稱代表點，將精力聚焦於交界處攔截 Off-by-one 錯誤</text>
+    <text x="264" y="218" class="card-formula" fill="#059669">Focus on: { min-, min, min+, nom (1點), max-, max, max+ }</text>
+  </g>
+
+  <!-- STRATEGY 4: FMEA Risk-Based Prioritization (x=572..1100) -->
+  <g transform="translate(572, 262)">
+    <rect width="528" height="234" class="card-bg" />
+    <rect width="528" height="6" fill="#d97706" rx="3" />
+    <rect x="14" y="14" width="500" height="142" class="thumb-amber" />
+
+    <!-- Left: RPN Formula Box -->
+    <rect x="26" y="26" width="184" height="118" fill="#ffffff" stroke="#f59e0b" stroke-width="1.8" rx="8" />
+    <text x="118" y="46" class="mini-title" fill="#92400e">FMEA 風險優先數 (RPN)</text>
+    <rect x="38" y="56" width="160" height="28" fill="#fef3c7" rx="5" />
+    <text x="118" y="75" class="code-sm" fill="#b45309">RPN = S × O × D</text>
+    <text x="118" y="98" font-family="sans-serif" font-size="11px" font-weight="600" fill="#475569" text-anchor="middle">S: 嚴重度 (Severity)</text>
+    <text x="118" y="115" font-family="sans-serif" font-size="11px" font-weight="600" fill="#475569" text-anchor="middle">O: 發生率 (Occurrence)</text>
+    <text x="118" y="132" font-family="sans-serif" font-size="11px" font-weight="600" fill="#475569" text-anchor="middle">D: 難檢度 (Detection)</text>
+
+    <path d="M 214 85 L 240 85" stroke="#d97706" stroke-width="2.2" marker-end="url(#arr-a)" />
+
+    <!-- Right: Risk-Based Tiered Allocation -->
+    <rect x="244" y="26" width="256" height="54" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6" rx="6" />
+    <text x="372" y="46" class="mini-title" fill="#b91c1c">高 RPN 風險區 (核心金流 / 交易安全)</text>
+    <text x="372" y="67" class="code-sm" fill="#dc2626">➔ 採「強涵蓋 / 決策表 / Pairwise」重兵把關</text>
+
+    <rect x="244" y="90" width="256" height="54" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.6" rx="6" />
+    <text x="372" y="110" class="mini-title" fill="#0369a1">低 RPN 風險區 (輔助設定 / 靜態展示)</text>
+    <text x="372" y="131" class="code-sm" fill="#0284c7">➔ 降級為「弱一般涵蓋 (Weak EP)」節省成本</text>
+
+    <!-- Bottom Caption -->
+    <text x="264" y="176" class="card-title">④ FMEA 失效模式與風險優先分級（Risk-Based Testing）</text>
+    <text x="264" y="197" class="card-sub">依 嚴重度(S) × 發生率(O) × 難檢度(D) 計算 RPN，動態調配測試覆蓋強度</text>
+    <text x="264" y="218" class="card-formula" fill="#b45309">High RPN ➔ Strong Coverage  |  Low RPN ➔ Weak Normal Coverage</text>
+  </g>
+</svg>

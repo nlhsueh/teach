@@ -83,6 +83,8 @@
   - **清單漸進與同步出現規範 (Incremental & Sub-bullet Rules)**：
     - **第一層項目使用 `*`**：觸發漸進點擊揭示步序（Marp Fragment）。
     - **第二層（及以下）縮排子項目使用 `-`**：作為靜態附屬清單，使大標與其說明細節**同時一起出現**，避免演講者逐條重複空按。
+  - **行內程式碼 (Inline `` `code` ``) 無背景色渲染規範**：
+    - 比照 SQA 簡報主題（`sqa-theme.css`），投影片中的行內程式碼（`:not(pre, marp-pre) > code`）一律採用**無背景色、無邊框、零內距**（`background: transparent !important; border: none !important; padding: 0 !important;`），搭配等寬字體（`0.9em`、粗體 `600`、石板灰 `#475569`；標題 `h1..h4` 內為深海軍藍 `#0b3c5d`；超連結 `a > code` 內為連結藍 `#2563eb`），消除 Gaia 預設深色膠囊底塊造成的畫面雜亂感。
   - **版本控制規範**：`Slide/html/` 目錄納入 Git 版本控制追蹤（not gitignore），供 GitHub Pages 線上互動簡報與入口首頁 (`index.html`) 連結使用。
 
 ---

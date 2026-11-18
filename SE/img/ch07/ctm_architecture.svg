@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="100%" height="100%">
+  <defs>
+    <style>
+      .root-node { fill: #0b3c5d; rx: 8px; }
+      .root-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif; fill: #ffffff; font-size: 14px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+      .classif-node { fill: #328cc1; rx: 6px; }
+      .classif-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif; fill: #ffffff; font-size: 12.5px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+      .subclassif-node { fill: #0284c7; rx: 5px; stroke: #bae6fd; stroke-width: 1; }
+      .subclassif-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif; fill: #ffffff; font-size: 11px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+      .class-node { fill: #f0f7fb; stroke: #328cc1; stroke-width: 1.5; rx: 5px; }
+      .parent-class-node { fill: #fffbeb; stroke: #d97706; stroke-width: 1.5; rx: 5px; }
+      .class-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif; fill: #0b3c5d; font-size: 11.5px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+      .parent-class-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif; fill: #b45309; font-size: 11.5px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+      .tree-line { stroke: #64748b; stroke-width: 1.5; fill: none; }
+      .subtree-line { stroke: #d97706; stroke-width: 1.5; fill: none; }
+      .proj-line { stroke: #cbd5e1; stroke-width: 1.2; stroke-dasharray: 3 3; }
+      .table-hdr { fill: #e2e8f0; stroke: #cbd5e1; stroke-width: 1; }
+      .table-row-even { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; }
+      .table-row-odd { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1; }
+      .tc-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 12px; font-weight: 700; fill: #0b3c5d; text-anchor: middle; dominant-baseline: central; }
+      .desc-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif; font-size: 11.5px; fill: #334155; dominant-baseline: central; }
+      .dot-marker { fill: #dc2626; }
+      .dot-sub { fill: #d97706; }
+      .badge-bg { fill: #e0f2fe; stroke: #0284c7; stroke-width: 1; rx: 4px; }
+      .badge-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif; font-size: 11.5px; font-weight: 700; fill: #0b3c5d; dominant-baseline: central; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-opacity="0.1" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="900" height="500" fill="#ffffff" rx="10" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <!-- Top Zone Badge -->
+  <rect x="16" y="12" width="215" height="24" class="badge-bg" />
+  <text x="26" y="24" class="badge-text">🌳 1. 分類樹 (Classification Tree)</text>
+
+  <!-- Tree Root Node -->
+  <g>
+    <rect x="355" y="10" width="190" height="32" class="root-node" />
+    <text x="450" y="26" class="root-text">電商結帳折扣系統</text>
+  </g>
+
+  <!-- Connectors from Root to 3 Classifications -->
+  <path d="M 450 42 L 450 56 M 175 56 L 710 56 M 175 56 L 175 70 M 425 56 L 425 70 M 710 56 L 710 70" class="tree-line" />
+
+  <!-- Classification 1: 會員身分 -->
+  <g>
+    <rect x="105" y="70" width="140" height="26" class="classif-node" />
+    <text x="175" y="83" class="classif-text">分類一：會員身分</text>
+  </g>
+
+  <!-- Classification 2: 消費金額 -->
+  <g>
+    <rect x="355" y="70" width="140" height="26" class="classif-node" />
+    <text x="425" y="83" class="classif-text">分類二：消費金額</text>
+  </g>
+
+  <!-- Classification 3: 付款方式 -->
+  <g>
+    <rect x="640" y="70" width="140" height="26" class="classif-node" />
+    <text x="710" y="83" class="classif-text">分類三：付款方式</text>
+  </g>
+
+  <!-- Branches for Classification 1 (x = 105, 175, 245) -->
+  <path d="M 175 96 L 175 112 M 105 112 L 245 112 M 105 112 L 105 190 M 175 112 L 175 190 M 245 112 L 245 190" class="tree-line" />
+
+  <!-- Branches for Classification 2 (x = 355, 425, 495) -->
+  <path d="M 425 96 L 425 112 M 355 112 L 495 112 M 355 112 L 355 190 M 425 112 L 425 190 M 495 112 L 495 190" class="tree-line" />
+
+  <!-- Branches for Classification 3: 信用卡 (x=620) vs 行動 (x=745) vs 貨到 (x=815) -->
+  <path d="M 710 96 L 710 112 M 620 112 L 815 112 M 620 112 L 620 124 M 745 112 L 745 190 M 815 112 L 815 190" class="tree-line" />
+
+  <!-- Intermediate Class under 付款方式: 信用卡 (with Sub-tree!) -->
+  <rect x="580" y="124" width="80" height="22" class="parent-class-node" />
+  <text x="620" y="135" class="parent-class-text">信用卡 (子樹)</text>
+
+  <!-- Sub-tree under 信用卡 -> 刷一次 (x=585), 刷分期 (x=660) -->
+  <path d="M 620 146 L 620 174 M 585 174 L 660 174 M 585 174 L 585 190 M 660 174 L 660 190" class="subtree-line" />
+
+  <!-- 10 Leaf Nodes at y = 190 (height = 26) -->
+  <!-- 1. VIP (x=105) -->
+  <rect x="75" y="190" width="60" height="26" class="class-node" />
+  <text x="105" y="203" class="class-text">VIP</text>
+  <!-- 2. 一般 (x=175) -->
+  <rect x="145" y="190" width="60" height="26" class="class-node" />
+  <text x="175" y="203" class="class-text">一般</text>
+  <!-- 3. 訪客 (x=245) -->
+  <rect x="215" y="190" width="60" height="26" class="class-node" />
+  <text x="245" y="203" class="class-text">訪客</text>
+
+  <!-- 4. <1K (x=355) -->
+  <rect x="325" y="190" width="60" height="26" class="class-node" />
+  <text x="355" y="203" class="class-text">&lt; 1K</text>
+  <!-- 5. 1~3K (x=425) -->
+  <rect x="395" y="190" width="60" height="26" class="class-node" />
+  <text x="425" y="203" class="class-text">1~3K</text>
+  <!-- 6. >3K (x=495) -->
+  <rect x="465" y="190" width="60" height="26" class="class-node" />
+  <text x="495" y="203" class="class-text">&gt; 3K</text>
+
+  <!-- 7. 刷一次 (x=585) -->
+  <rect x="553" y="190" width="64" height="26" class="parent-class-node" />
+  <text x="585" y="203" class="parent-class-text">刷一次</text>
+  <!-- 8. 刷分期 (x=660) -->
+  <rect x="628" y="190" width="64" height="26" class="parent-class-node" />
+  <text x="660" y="203" class="parent-class-text">刷分期</text>
+  <!-- 9. 行動 (x=745) -->
+  <rect x="715" y="190" width="60" height="26" class="class-node" />
+  <text x="745" y="203" class="class-text">行動</text>
+  <!-- 10. 貨到 (x=815) -->
+  <rect x="785" y="190" width="60" height="26" class="class-node" />
+  <text x="815" y="203" class="class-text">貨到</text>
+
+  <!-- Vertical Projection Guidelines from all 10 Leaf Nodes into Table -->
+  <line x1="105" y1="216" x2="105" y2="442" class="proj-line" />
+  <line x1="175" y1="216" x2="175" y2="442" class="proj-line" />
+  <line x1="245" y1="216" x2="245" y2="442" class="proj-line" />
+  <line x1="355" y1="216" x2="355" y2="442" class="proj-line" />
+  <line x1="425" y1="216" x2="425" y2="442" class="proj-line" />
+  <line x1="495" y1="216" x2="495" y2="442" class="proj-line" />
+  <line x1="585" y1="216" x2="585" y2="442" class="proj-line" />
+  <line x1="660" y1="216" x2="660" y2="442" class="proj-line" />
+  <line x1="745" y1="216" x2="745" y2="442" class="proj-line" />
+  <line x1="815" y1="216" x2="815" y2="442" class="proj-line" />
+
+  <!-- Bottom Zone Badge -->
+  <rect x="16" y="236" width="245" height="24" class="badge-bg" />
+  <text x="26" y="248" class="badge-text">📊 2. 組合規格表 (Combination Table)</text>
+
+  <!-- Table Header Bar (y = 268, height = 28) -->
+  <rect x="16" y="268" width="868" height="28" class="table-hdr" />
+  <text x="46" y="282" class="tc-text">案例</text>
+  <text x="105" y="282" class="class-text">VIP</text>
+  <text x="175" y="282" class="class-text">一般</text>
+  <text x="245" y="282" class="class-text">訪客</text>
+  <text x="355" y="282" class="class-text">&lt; 1K</text>
+  <text x="425" y="282" class="class-text">1~3K</text>
+  <text x="495" y="282" class="class-text">&gt; 3K</text>
+  <text x="585" y="282" class="parent-class-text">刷一次</text>
+  <text x="660" y="282" class="parent-class-text">刷分期</text>
+  <text x="745" y="282" class="class-text">行動</text>
+  <text x="815" y="282" class="class-text">貨到</text>
+
+  <!-- Row 1: TC 1 (VIP + >3K + 刷一次) -->
+  <rect x="16" y="296" width="868" height="36" class="table-row-even" />
+  <text x="46" y="314" class="tc-text">TC 1</text>
+  <circle cx="105" cy="314" r="6.5" class="dot-marker" />
+  <circle cx="495" cy="314" r="6.5" class="dot-marker" />
+  <circle cx="585" cy="314" r="6.5" class="dot-sub" />
+
+  <!-- Row 2: TC 2 (VIP + >3K + 刷分期) -->
+  <rect x="16" y="332" width="868" height="36" class="table-row-odd" />
+  <text x="46" y="350" class="tc-text">TC 2</text>
+  <circle cx="105" cy="350" r="6.5" class="dot-marker" />
+  <circle cx="495" cy="350" r="6.5" class="dot-marker" />
+  <circle cx="660" cy="350" r="6.5" class="dot-sub" />
+
+  <!-- Row 3: TC 3 (一般 + 1~3K + 行動) -->
+  <rect x="16" y="368" width="868" height="36" class="table-row-even" />
+  <text x="46" y="386" class="tc-text">TC 3</text>
+  <circle cx="175" cy="386" r="6.5" class="dot-marker" />
+  <circle cx="425" cy="386" r="6.5" class="dot-marker" />
+  <circle cx="745" cy="386" r="6.5" class="dot-marker" />
+
+  <!-- Row 4: TC 4 (訪客 + <1K + 貨到) -->
+  <rect x="16" y="404" width="868" height="36" class="table-row-odd" />
+  <text x="46" y="422" class="tc-text">TC 4</text>
+  <circle cx="245" cy="422" r="6.5" class="dot-marker" />
+  <circle cx="355" cy="422" r="6.5" class="dot-marker" />
+  <circle cx="815" cy="422" r="6.5" class="dot-marker" />
+
+  <!-- Bottom Legend / Note -->
+  <rect x="16" y="450" width="868" height="36" fill="#ecfdf5" stroke="#a7f3d0" rx="5" />
+  <circle cx="36" cy="468" r="6" class="dot-marker" />
+  <circle cx="54" cy="468" r="6" class="dot-sub" />
+  <text x="70" y="468" class="desc-text" font-weight="700" fill="#065f46">垂直投影對齊 10 個葉節點（含信用卡「刷一次／刷分期」子樹）：往下掃視每一直欄皆有打點，4 組案例達成 0 漏測！</text>
+</svg>

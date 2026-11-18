@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%" height="100%">
+  <defs>
+    <!-- Shadows & Filters -->
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08" />
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.04" />
+    </filter>
+
+    <!-- Gradients -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+
+    <linearGradient id="prd-header" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <linearGradient id="t1-header" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e40af" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+
+    <linearGradient id="t2-header" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6b21a8" />
+      <stop offset="100%" stop-color="#9333ea" />
+    </linearGradient>
+
+    <linearGradient id="t3-header" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065f46" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#9333ea" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-family: 'PingFang SC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; font-weight: 700; font-size: 15px; fill: #ffffff; }
+    .subtitle { font-family: 'PingFang SC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; font-weight: 500; font-size: 12px; fill: #64748b; }
+    .body-text { font-family: 'PingFang SC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; font-weight: 600; font-size: 13px; fill: #1e293b; }
+    .desc-text { font-family: 'PingFang SC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; font-weight: 400; font-size: 12px; fill: #475569; }
+    .tag { font-family: 'PingFang SC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; font-weight: 700; font-size: 11px; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect x="0" y="0" width="960" height="400" rx="16" fill="url(#bg-grad)" stroke="#cbd5e1" stroke-width="1.2" />
+
+  <!-- Diagram Title Header -->
+  <g transform="translate(30, 24)">
+    <rect x="0" y="0" width="8" height="24" rx="4" fill="#1e40af" />
+    <text x="18" y="18" font-family="'PingFang SC', 'Noto Sans TC', sans-serif" font-weight="800" font-size="18" fill="#0f172a">
+      人機協同測試工作流 (AI Co-Design Workflow Pipeline)
+    </text>
+    <text x="470" y="18" font-family="'PingFang SC', 'Noto Sans TC', sans-serif" font-weight="500" font-size="13" fill="#64748b">
+      —— 從規格基準到 AI 盲區對抗審查的三部曲
+    </text>
+  </g>
+
+  <!-- ==================== CARD 1: PRD (Left) ==================== -->
+  <g transform="translate(30, 68)" filter="url(#card-shadow)">
+    <rect x="0" y="0" width="230" height="305" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" />
+    
+    <!-- Header -->
+    <path d="M 0 12 Q 0 0 12 0 L 218 0 Q 230 0 230 12 L 230 46 L 0 46 Z" fill="url(#prd-header)" />
+    <text x="16" y="29" class="title">規格輸入：電商促銷計費 PRD</text>
+
+    <!-- Content -->
+    <g transform="translate(16, 64)">
+      <rect x="0" y="0" width="60" height="20" rx="4" fill="#f1f5f9" />
+      <text x="6" y="14" class="tag" fill="#475569">業務條款</text>
+      <text x="0" y="42" class="body-text">PRD-01: 滿千折百 (無上限)</text>
+      <text x="0" y="66" class="body-text">PRD-02: VIP 全單九折優惠</text>
+      <text x="0" y="90" class="body-text">PRD-03: 生日當月贈 50 元</text>
+      <text x="0" y="114" class="body-text">PRD-04: 滿 800 免運 / 保底 0 元</text>
+      
+      <line x1="0" y1="134" x2="198" y2="134" stroke="#e2e8f0" stroke-width="1" />
+      
+      <text x="0" y="156" class="desc-text" fill="#64748b" font-weight="700">【規格關鍵核心】</text>
+      <text x="0" y="178" class="desc-text" fill="#334155">• 折抵計算順序具高度相依性</text>
+      <text x="0" y="200" class="desc-text" fill="#334155">• 折後低消臨界需精準判定運費</text>
+      <text x="0" y="222" class="desc-text" fill="#334155">• 保底條款防止負數倒貼金額</text>
+    </g>
+  </g>
+
+  <!-- Connectors from PRD -->
+  <!-- Top Branch to Task 1 -->
+  <path d="M 260 150 C 295 150, 305 130, 335 130" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)" />
+  <!-- Bottom Branch to Task 2 -->
+  <path d="M 260 270 C 295 270, 305 290, 335 290" fill="none" stroke="#9333ea" stroke-width="2.5" marker-end="url(#arrow-purple)" />
+
+  <!-- ==================== CARD 2A: Task 1 (Top Center) ==================== -->
+  <g transform="translate(340, 68)" filter="url(#card-shadow)">
+    <rect x="0" y="0" width="260" height="135" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5" />
+    
+    <!-- Header -->
+    <path d="M 0 12 Q 0 0 12 0 L 248 0 Q 260 0 260 12 L 260 42 L 0 42 Z" fill="url(#t1-header)" />
+    <text x="14" y="27" class="title">任務一：人類手動推導基準</text>
+    
+    <!-- Content -->
+    <g transform="translate(14, 58)">
+      <rect x="0" y="0" width="95" height="18" rx="4" fill="#dbeafe" />
+      <text x="6" y="13" class="tag" fill="#1e40af">Ground Truth 基準</text>
+      <text x="0" y="36" class="body-text" fill="#1e40af">【建立客觀事實基準】</text>
+      <text x="0" y="56" class="desc-text">• 親算 TC-01~05 滿千臨界與 VIP 順序</text>
+      <text x="0" y="72" class="desc-text">• 掌握 Test Oracle 唯一可驗證答案</text>
+    </g>
+  </g>
+
+  <!-- ==================== CARD 2B: Task 2 (Bottom Center) ==================== -->
+  <g transform="translate(340, 238)" filter="url(#card-shadow)">
+    <rect x="0" y="0" width="260" height="135" rx="12" fill="#ffffff" stroke="#d8b4fe" stroke-width="1.5" />
+    
+    <!-- Header -->
+    <path d="M 0 12 Q 0 0 12 0 L 248 0 Q 260 0 260 12 L 260 42 L 0 42 Z" fill="url(#t2-header)" />
+    <text x="14" y="27" class="title">任務二：AI 提示詞批量生成</text>
+    
+    <!-- Content -->
+    <g transform="translate(14, 58)">
+      <rect x="0" y="0" width="80" height="18" rx="4" fill="#f3e8ff" />
+      <text x="6" y="13" class="tag" fill="#6b21a8">AI 快速產能</text>
+      <text x="0" y="36" class="body-text" fill="#6b21a8">【3 秒產出漂亮規格表】</text>
+      <text x="0" y="56" class="desc-text">• 善於快速排列組合各類情境</text>
+      <text x="0" y="72" class="desc-text" fill="#b91c1c" font-weight="600">【致命盲區】極易產生幻覺與算式邏輯錯亂</text>
+    </g>
+  </g>
+
+  <!-- Connectors into Task 3 -->
+  <path d="M 600 135 C 635 135, 635 190, 665 190" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,4" />
+  <path d="M 600 305 C 635 305, 635 240, 665 240" fill="none" stroke="#9333ea" stroke-width="2" stroke-dasharray="4,4" />
+  <path d="M 655 215 L 670 215" fill="none" stroke="#059669" stroke-width="3" marker-end="url(#arrow-green)" />
+
+  <!-- ==================== CARD 3: Task 3 (Right) ==================== -->
+  <g transform="translate(675, 68)" filter="url(#card-shadow)">
+    <rect x="0" y="0" width="255" height="305" rx="12" fill="#ffffff" stroke="#86efac" stroke-width="1.8" />
+    
+    <!-- Header -->
+    <path d="M 0 12 Q 0 0 12 0 L 243 0 Q 255 0 255 12 L 255 46 L 0 46 Z" fill="url(#t3-header)" />
+    <text x="14" y="29" class="title">任務三：SQA 人機對抗審查</text>
+    
+    <!-- Content -->
+    <g transform="translate(14, 64)">
+      <rect x="0" y="0" width="105" height="20" rx="4" fill="#d1fae5" />
+      <text x="6" y="14" class="tag" fill="#065f46">行為文氏圖對抗</text>
+
+      <text x="0" y="44" class="body-text" fill="#047857">【揪出四大 AI 常見漏洞】</text>
+      
+      <rect x="0" y="56" width="227" height="32" rx="6" fill="#fef2f2" stroke="#fecaca" />
+      <text x="8" y="71" font-size="11.5" font-weight="700" fill="#991b1b">1. 幻覺規則</text>
+      <text x="8" y="83" font-size="10.5" fill="#7f1d1d">自創「滿萬送千」未授權條款</text>
+
+      <rect x="0" y="94" width="227" height="32" rx="6" fill="#fffbeb" stroke="#fde68a" />
+      <text x="8" y="109" font-size="11.5" font-weight="700" fill="#92400e">2. 運算次序錯誤</text>
+      <text x="8" y="121" font-size="10.5" fill="#78350f">先折 9 折才扣滿千，金額偏差</text>
+
+      <rect x="0" y="132" width="227" height="32" rx="6" fill="#f0f9ff" stroke="#bae6fd" />
+      <text x="8" y="147" font-size="11.5" font-weight="700" fill="#075985">3. 邊界遺漏 (1000/999)</text>
+      <text x="8" y="159" font-size="10.5" fill="#0369a1">滿千門檻是否含 1,000 元邊界</text>
+
+      <rect x="0" y="170" width="227" height="32" rx="6" fill="#f5f3ff" stroke="#ddd6fe" />
+      <text x="8" y="185" font-size="11.5" font-weight="700" fill="#5b21b6">4. 假綠燈模糊斷言</text>
+      <text x="8" y="197" font-size="10.5" fill="#4c1d95">只寫「顯示金額」無數字 Oracle</text>
+
+      <!-- Badge Footer -->
+      <rect x="0" y="212" width="227" height="24" rx="12" fill="#ecfdf5" stroke="#a7f3d0" />
+      <text x="24" y="228" font-size="11.5" font-weight="800" fill="#065f46">★ 達成：100% 規格防禦力！</text>
+    </g>
+  </g>
+</svg>

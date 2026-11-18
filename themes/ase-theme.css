@@ -758,7 +758,7 @@ div.two-columns blockquote li {
 
 div.two-columns blockquote code {
   font-size: 15.5px !important;
-  padding: 2px 5px !important;
+  padding: 0 !important;
 }
 
 /* ==========================================================================
@@ -1209,6 +1209,36 @@ section.outline-slide > ol > li > ol > li {
 /* ==========================================================================
    11. Code Blocks & Inlines
    ========================================================================== */
+:not(pre, marp-pre) > code {
+  display: inline !important;
+  font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
+  font-size: 0.9em;
+  font-weight: 600;
+  background: transparent !important;
+  color: #475569 !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  vertical-align: baseline;
+}
+
+:is(h1, h2, h3, h4) :not(pre, marp-pre) > code {
+  background: transparent !important;
+  color: #0b3c5d !important;
+  border: none !important;
+}
+
+section a:not(.nav-dropdown-item) > code {
+  background: transparent !important;
+  color: #2563eb !important;
+}
+
+section a:not(.nav-dropdown-item):hover > code {
+  color: #1d4ed8 !important;
+  background-color: #e0f2fe !important;
+  border-radius: 3px;
+}
+
 pre {
   margin-top: 8px;
   margin-bottom: 8px;
