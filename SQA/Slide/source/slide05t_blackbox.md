@@ -21,7 +21,7 @@ footer: 'Ch05 黑箱測試'
 > 錯誤永遠隱藏在角落——掌握邊界與等價，方能以最小成本擊中最多缺陷。
 
 ---
-
+<!-- id: sqa-ch05-ccq1 -->
 <!-- _class: outline-slide -->
 <!-- header: '本章大綱 (Outline)' -->
 
@@ -71,6 +71,10 @@ footer: 'Ch05 黑箱測試'
 
 </div>
 </div>
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1)
+
+<a href="https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1" target="_blank"><img src="../../img/ch05/sqa-ch05-ccq1.png" width="120"></a>
 
 ---
 
@@ -2915,7 +2919,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 ### 🔄 模式 1：往返可逆 (Round-Trip) 與 模式 2：特徵守恆 (Invariants)
 - **① 往返可逆性（去了再回來，必定等於自己）**：
   - **公式**：`inverse(forward(x)) == x`
-  - **例子**：不必知道壓縮或加密後的亂碼長怎樣，只要驗證**「壓縮再解壓縮 = 原檔案」**、**「陣列反轉兩次 `reverse(reverse(L))` = 原陣列 `L`」**！
+  - **例子**：不必知道壓縮或加密後的亂碼長怎樣，只要驗證「**壓縮再解壓縮 = 原檔案**」、「**陣列反轉兩次 `reverse(reverse(L))` = 原陣列 `L`**」！
 - **② 結構與特徵守恆（不管怎麼變，核心特徵永遠不變）**：
   - **公式**：`invariant(f(x)) == true`
   - **例子**：對任意亂數陣列排序 `sort(L)`，雖不知排完第 3 個數是多少，但必滿足：**A. 元素總數不變（長度守恆）** 且 **B. 前數永遠 ≤ 後數（單調遞增）**！

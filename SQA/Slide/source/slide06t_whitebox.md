@@ -11,7 +11,7 @@ footer: 'Ch06 白箱測試'
 
 # 軟體品質與測試
 
-### 第 6 章：白箱測試、控制流路徑分析與變異測試 (Mutation Testing)
+### 第 6 章：白箱測試、控制流路徑分析與變異測試
 
 授課教師：薛念林 教授
 
@@ -59,6 +59,7 @@ footer: 'Ch06 白箱測試'
 </div>
 
 ---
+
 <!-- _class: lead -->
 <!-- header: '6.1 測試涵蓋度階梯與邏輯覆蓋' -->
 
@@ -66,6 +67,7 @@ footer: 'Ch06 白箱測試'
 
 > 「從最基礎的敘述涵蓋，一路攀升至波音與 NASA 採用的 MC/DC 航太標準；  
 > 理解每一層涵蓋度的邏輯強度與邊界盲區，建立嚴密的白箱測試防線。」
+
 ---
 
 <!-- header: '6.1 測試涵蓋度階梯 (Coverage Criteria)' -->
@@ -331,7 +333,7 @@ footer: 'Ch06 白箱測試'
 </div>
 <div class="card">
 
-### 💎 破解 JaCoCo「75% 分支涵蓋 (黃色鑽石)」迷思
+### 💎 JaCoCo「75% 分支涵蓋 (黃色鑽石)」迷思
 - **為什麼我測了 `if (A && B)` 的 True 與 False，JaCoCo 卻顯示黃色鑽石 (3/4 = 75%)？**
   - **學術定義**：把整個 `if (A && B)` 當作 1 個決策（2 個分支）。
   - **JaCoCo 實作**：在 **Bytecode 層級**分析！編譯器把 `if (A && B)` 拆成兩個跳轉指令（`IFEQ A` 與 `IFEQ B`），共 **2 × 2 = 4 個位元組碼分支**。
@@ -499,38 +501,58 @@ footer: 'Ch06 白箱測試'
 
 <!-- header: '6.1 測試涵蓋度階梯 (Coverage Criteria)' -->
 
-## MC/DC 實戰推演範例：以 `n + 1` 組測資完勝 `2^n`
+## MC/DC 實戰推演 (1)：真值表與獨立影響對挑選
 
 <div class="card-deck">
 
 > 💡 **實戰演練**：針對飛機自動降落系統決策 `Decision = (A or B) and C`（共 n = 3 個條件，全真值表有 2<sup>3</sup> = 8 列），請找出最少組數（`3 + 1 = 4 組`）的 MC/DC 測試集！
 
-<div class="two-columns-64">
+| 編號 | 條件 `A` | 條件 `B` | 條件 `C` | 決策 `(A \|\| B) && C` | MC/DC 選取狀態與配對角色解析 |
+| :---: | :---: | :---: | :---: | :---: | :--- |
+| #1 | F | F | F | F | 未選（`C = F` 將 `(A \|\| B)` 整組短路遮蔽） |
+| **#2** | **F** | **F** | **T** | **F** | ✅ **入選 (1/4)**：與 **#4** 配對檢驗 `B`；與 **#6** 配對檢驗 `A` |
+| #3 | F | T | F | F | 未選（可用 #5 取代以檢驗 `C`） |
+| **#4** | **F** | **T** | **T** | **T** | ✅ **入選 (2/4)**：基準案例（讓 `B = T` 與 `C = T` 獨立生效） |
+| **#5** | **T** | **F** | **F** | **F** | ✅ **入選 (3/4)**：與 **#6** 配對檢驗 `C` |
+| **#6** | **T** | **F** | **T** | **T** | ✅ **入選 (4/4)**：基準案例（讓 `A = T` 與 `C = T` 獨立生效） |
+| #7 | T | T | F | F | 未選（`A` 與 `B` 同時為 T，單獨翻轉其中一個無法改變 `(A \|\| B)`） |
+| #8 | T | T | T | T | 未選（`A` 與 `B` 同時為 T，互相遮蔽！） |
+
+</div>
+
+---
+
+<!-- header: '6.1 測試涵蓋度階梯 (Coverage Criteria)' -->
+
+## MC/DC 實戰推演 (2)：逐一檢驗三個條件的獨立影響對
+
+<div class="card-deck">
+
+> 💡 驗證從真值表挑出的 **4 組測資 `{#2, #4, #5, #6}`**，是否能讓 `A`、`B`、`C` 各自擁有「固定其他條件、單獨翻轉決策結果」的獨立影響對 (Independence Pairs)！
+
+<div class="two-columns">
 <div class="card">
 
-### 📊 真值表與獨立影響對 (Independence Pairs) 挑選
-
-| 編號 | 條件 `A` | 條件 `B` | 條件 `C` | 決策 `(A \|\| B) && C` | MC/DC 選取與配對角色 |
-| :---: | :---: | :---: | :---: | :---: | :--- |
-| #1 | F | F | F | F | 未選 |
-| **#2** | **F** | **F** | **T** | **F** | ✅ **入選**：與 #4 配對驗 `B`；與 #6 配對驗 `A` |
-| #3 | F | T | F | F | 未選 |
-| **#4** | **F** | **T** | **T** | **T** | ✅ **入選**：基準案例 (讓 `B` 與 `C` 獨立生效) |
-| **#5** | **T** | **F** | **F** | **F** | ✅ **入選**：與 #6 配對驗 `C` |
-| **#6** | **T** | **F** | **T** | **T** | ✅ **入選**：基準案例 (讓 `A` 與 `C` 獨立生效) |
-| #7, #8 | T | T | F / T | F / T | 未選（因為 A, B 同時為 T 會互相遮蔽！） |
+### 🔍 條件 `A` 與條件 `B` 的獨立影響對檢驗
+- **1. 檢驗條件 `A` ➔ 配對 `(#2, #6)`**：
+  - **`#2`**：`(A=F, B=F, C=T)` ➔ `Decision = F`
+  - **`#6`**：`(A=T, B=F, C=T)` ➔ `Decision = T`
+  - **證明**：固定 `B = F` 且 `C = T` 不變，**僅單獨翻轉 `A` (`F ➔ T`)**，總決策即隨之翻轉 (`F ➔ T`)！✅
+- **2. 檢驗條件 `B` ➔ 配對 `(#2, #4)`**：
+  - **`#2`**：`(A=F, B=F, C=T)` ➔ `Decision = F`
+  - **`#4`**：`(A=F, B=T, C=T)` ➔ `Decision = T`
+  - **證明**：固定 `A = F` 且 `C = T` 不變，**僅單獨翻轉 `B` (`F ➔ T`)**，總決策即隨之翻轉 (`F ➔ T`)！✅
 
 </div>
 <div class="card">
 
-### 🔍 逐一檢驗三個條件的獨立影響對
-- **1. 檢驗 `A` ➔ 配對 `(#2, #6)`**：`#2(F,F,T)➔F` vs `#6(T,F,T)➔T`
-  - 固定 `B=F, C=T`，僅 `A` 翻轉，決策隨之翻轉 ✅
-- **2. 檢驗 `B` ➔ 配對 `(#2, #4)`**：`#2(F,F,T)➔F` vs `#4(F,T,T)➔T`
-  - 固定 `A=F, C=T`，僅 `B` 翻轉，決策隨之翻轉 ✅
-- **3. 檢驗 `C` ➔ 配對 `(#5, #6)`**：`#5(T,F,F)➔F` vs `#6(T,F,T)➔T`
-  - 固定 `A=T, B=F`，僅 `C` 翻轉，決策隨之翻轉 ✅
-- 🏆 **結論**：僅需 **`{#2, #4, #5, #6}` 共 4 組 (n+1)**！
+### 🔍 條件 `C` 的獨立影響對檢驗與總結
+- **3. 檢驗條件 `C` ➔ 配對 `(#5, #6)`**：
+  - **`#5`**：`(A=T, B=F, C=F)` ➔ `Decision = F`
+  - **`#6`**：`(A=T, B=F, C=T)` ➔ `Decision = T`
+  - **證明**：固定 `A = T` 且 `B = F` 不變，**僅單獨翻轉 `C` (`F ➔ T`)**，總決策即隨之翻轉 (`F ➔ T`)！✅
+- **🏆 關鍵工程結論**：
+  - 藉由讓 **`#2`** 與 **`#6`** 同時充當兩組配對的共用基準點，原本需要 `2^3 = 8` 組的多重條件測試，**僅需 `n + 1 = 4` 組 `{#2, #4, #5, #6}`** 即 100% 證明三個條件皆能獨立影響決策！
 
 </div>
 </div>
@@ -641,13 +663,14 @@ footer: 'Ch06 白箱測試'
 </div>
 
 ---
+
 <!-- header: '6.1 測試涵蓋度階梯 (Coverage Criteria)' -->
 
 ## 🧪 實戰案例 1：`Triangle.java` 複合條件與「永遠 83% 的死分支」解密
 
 <div class="card-deck">
 
-> 💡 📄 實習手冊：[whitebox_test.md#lab-1](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-1-triangle-三角形測試與覆蓋度分析) ｜ 💻 待測原始碼：[Triangle.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/main/java/u06_coverage/Triangle.java)
+> 💡 📄 實習手冊：[whitebox_test.md#lab-1](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-1-triangle-三角形測試與覆蓋度分析) ｜ 💻 待測原始碼：[Triangle.java](../../lab.html?file=LabDemo/src/main/java/u06_coverage/Triangle.java)
 
 <div class="two-columns">
 <div class="card">
@@ -687,14 +710,16 @@ public static String getTriangleType(int a, int b, int c) {
 </div>
 </div>
 </div>
+
 ---
+
 <!-- header: '6.1 測試涵蓋度階梯 (Coverage Criteria)' -->
 
 ## 🧪 實戰案例 2：`Triangle.java` 達成 100% 分支涵蓋之精簡測資集
 
 <div class="card-deck">
 
-> 💡 📄 實習手冊：[whitebox_test.md#lab-1](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-1-triangle-三角形測試與覆蓋度分析) ｜ 🧪 測試檔：[TriangleCoverageTest.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u06_coverage/TriangleCoverageTest.java)
+> 💡 📄 實習手冊：[whitebox_test.md#lab-1](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-1-triangle-三角形測試與覆蓋度分析) ｜ 🧪 測試檔：[TriangleCoverageTest.java](../../lab.html?file=LabDemo/src/test/java/u06_coverage/TriangleCoverageTest.java)
 
 | 測試類別 | 測試案例 `(a, b, c)` | 觸發之關鍵子條件與短路路徑分析 | 預期輸出結果 |
 | :--- | :---: | :--- | :---: |
@@ -711,14 +736,16 @@ public static String getTriangleType(int a, int b, int c) {
 > 🎯 **實作練習**：在測試類別中加入此 9 筆測資，執行 Run with Coverage 驗證分支涵蓋率達到 100% (22/22)！
 
 </div>
+
 ---
+
 <!-- header: '6.1 測試涵蓋度階梯 (Coverage Criteria)' -->
 
-## 🧪 實戰案例 3：`BinarySearch` 與 `BMI` 白箱測試案例設計 (講義 6.6.1)
+## 🧪 實戰案例 3：`BinarySearch` 與 `BMI` 白箱測試案例設計
 
 <div class="card-deck">
 
-> 💡 📄 實習手冊：[whitebox_test.md#lab-2](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-2-binary-search-二元搜尋) ｜ 💻 原始碼：[BinarySearch.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/main/java/u06_coverage/BinarySearch.java) ｜ 🧪 測試檔：[BinarySearchCoverageTest.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u06_coverage/BinarySearchCoverageTest.java)
+> 💡 📄 [實習手冊](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-2-binary-search-二元搜尋) ｜ 💻 [原始碼](../../lab.html?file=LabDemo/src/main/java/u06_coverage/BinarySearch.java) ｜ 🧪 測試檔：[BinarySearchCoverageTest.java](../../lab.html?file=LabDemo/src/test/java/u06_coverage/BinarySearchCoverageTest.java)
 
 <div class="two-columns">
 <div class="card">
@@ -761,21 +788,25 @@ else return "Overweight";
 </div>
 </div>
 </div>
+
 ---
+
 <!-- header: '6.1 測試涵蓋度階梯 (Coverage Criteria)' -->
 
 ## 🧪 實戰案例 4：`LoanCalculator` 三段式測試覆蓋率演進 (`LabDemo`)
 
 <div class="card-deck">
 
-> 💡 📄 實習手冊：[whitebox_test.md#lab-3](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-3-loan-calculator-貸款利率計算) ｜ 💻 原始碼：[LoanCalculator.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/main/java/u05_pair/LoanCalculator.java) ｜ 🧪 測試：[LoanCalculatorPairwiseExerciseTest.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u05_pair/LoanCalculatorPairwiseExerciseTest.java)
+> 💡 📄 實習手冊：[whitebox_test.md#lab-3](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-3-loan-calculator-貸款利率計算) ｜ 💻 原始碼：[LoanCalculator.java](../../lab.html?file=LabDemo/src/main/java/u05_pair/LoanCalculator.java) ｜ 🧪 測試：[LoanCalculatorPairwiseExerciseTest.java](../../lab.html?file=LabDemo/src/test/java/u05_pair/LoanCalculatorPairwiseExerciseTest.java)
 
 <div class="two-columns">
 <div class="card">
 
 ### 💻 `LoanCalculator.java` 業務邏輯片段
 ```java
-public static double calculateInterestRate(int year, double amount, boolean isYouth, boolean isMarried) {
+public static double calculateInterestRate(
+  int year, double amount, boolean isYouth, boolean isMarried) {
+
     double rate = 5.0; // 基礎基準利率
     if (year > 20) rate -= 1.0;
     else if (year > 10) rate -= 0.5;
@@ -808,14 +839,17 @@ public static double calculateInterestRate(int year, double amount, boolean isYo
 </div>
 </div>
 </div>
+
 ---
+
 <!-- _class: lead -->
 <!-- header: '6.2 JaCoCo 動態插樁與涵蓋度度量' -->
 
-# **6.2 JaCoCo 動態插樁與涵蓋度度量 (JaCoCo Instrumentation)**
+# 6.2 JaCoCo 動態插樁與涵蓋度度量
 
 > 「學會了理論上的敘述、分支與條件覆蓋，該如何在現代 Java 專案中精準度量？  
 > 透過 Bytecode 動態插樁，在不污染原始碼的前提下即時照亮每一行測試足跡。」
+
 ---
 
 <!-- header: '6.2 JaCoCo 動態插樁與涵蓋度度量' -->
@@ -904,13 +938,14 @@ public static double calculateInterestRate(int year, double amount, boolean isYo
 </div>
 
 ---
+
 <!-- header: '6.2 JaCoCo 動態插樁與涵蓋度度量' -->
 
 ## JaCoCo 與 Maven 生命週期整合 (`pom.xml`)
 
 <div class="card-deck">
 
-> 💡 📄 實習手冊：[whitebox_test.md#122](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u06_wbtesting/whitebox_test.md#122-intellij-coverage-工具操作步驟) ｜ ⚙️ 專案配置：[pom.xml](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/pom.xml)
+> 💡 📄 實習手冊：[whitebox_test.md#122](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md#122-intellij-coverage-工具操作步驟) ｜ ⚙️ 專案配置：[pom.xml](../../lab.html?file=LabDemo/pom.xml)
 
 <div class="two-columns">
 <div class="card">
@@ -956,6 +991,7 @@ public static double calculateInterestRate(int year, double amount, boolean isYo
 </div>
 </div>
 </div>
+
 ---
 
 <!-- header: '6.2 JaCoCo 動態插樁與涵蓋度度量' -->
@@ -986,19 +1022,15 @@ public static double calculateInterestRate(int year, double amount, boolean isYo
 ```xml
 <execution>
   <id>jacoco-check</id>
-  <phase>verify</phase>
   <goals><goal>check</goal></goals>
   <configuration>
     <rules><rule>
       <element>PACKAGE</element>
-      <limits>
-        <!-- 要求分支覆蓋率至少達 80% -->
-        <limit>
-          <counter>BRANCH</counter>
-          <value>COVEREDRATIO</value>
-          <minimum>0.80</minimum>
-        </limit>
-      </limits>
+      <limits><limit> <!-- 要求分支覆蓋率至少達 80% -->
+        <counter>BRANCH</counter>
+        <value>COVEREDRATIO</value>
+        <minimum>0.80</minimum>
+      </limit></limits>
     </rule></rules>
   </configuration>
 </execution>
@@ -1055,7 +1087,6 @@ public static double calculateInterestRate(int year, double amount, boolean isYo
 <div class="content-columns">
 <div class="content-text">
 
-### 🧭 基本路徑測試四步驟 ＆ 圈複雜度 `V(G)` 三大公式
 - **Step 1：繪製控制流程圖 (CFG)**：將複合條件（如 `if (A && B)`）**拆解為單一判斷節點**。
 - **Step 2：計算圈複雜度 `V(G)`**（決定線性獨立路徑數上限）：
   1. **區域空間公式**：**`V(G) = R`**（封閉區域數 + 外部無限區域 1）。
@@ -1111,13 +1142,14 @@ public static double calculateInterestRate(int year, double amount, boolean isYo
 </div>
 
 ---
+
 <!-- header: '6.3 基本路徑測試與複雜度度量' -->
 
 ## 實戰案例推演 1：學生成績平均計算 (`computeAverage`)
 
 <div class="card-deck">
 
-> 💡 📄 實習手冊：[metrics.md](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u06_wbtesting/metrics.md) ｜ 💻 原始碼：[GradeAverage.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/main/java/u06_coverage/GradeAverage.java) ｜ 🧪 測試檔：[GradeAverageBasisPathTest.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u06_coverage/GradeAverageBasisPathTest.java)（含複合條件拆解節點 `(1)`～`(12)`，`V(G) = 5 + 1 = 6`）
+> 💡 📄 實習手冊：[metrics.md](../../lab.html?file=LabDemo/docs/u06_wbtesting/metrics.md) ｜ 💻 原始碼：[GradeAverage.java](../../lab.html?file=LabDemo/src/main/java/u06_coverage/GradeAverage.java) ｜ 🧪 測試檔：[GradeAverageBasisPathTest.java](../../lab.html?file=LabDemo/src/test/java/u06_coverage/GradeAverageBasisPathTest.java)（含複合條件拆解節點 `(1)`～`(12)`，`V(G) = 5 + 1 = 6`）
 
 <div class="content-columns">
 <div class="content-text">
@@ -1148,6 +1180,7 @@ public double computeAverage(int[] grade) {
 </div>
 </div>
 </div>
+
 ---
 
 <!-- header: '6.3 基本路徑測試與複雜度度量' -->
@@ -1173,11 +1206,11 @@ public double computeAverage(int[] grade) {
 
 <!-- header: '6.3 基本路徑測試與複雜度度量' -->
 
-## 實戰案例推演 2：`NextDate(m, d)` 隔日計算與圈複雜度剖析 (講義 6.6.2)
+## 實戰案例推演 2：`NextDate(m, d)` 隔日計算與圈複雜度剖析
 
 <div class="card-deck">
 
-> 💡 對照講義 6.6.2 壓軸題：給定非閏年之月份 `m` 與日期 `d`，計算隔天日期 `NextDate(m, d)` 的圈複雜度 `V(G)` 與基本路徑！
+> 💡 給定非閏年之月份 `m` 與日期 `d`，計算隔天日期 `NextDate(m, d)` 的圈複雜度 `V(G)` 與基本路徑！
 
 <div class="two-columns">
 <div class="card">
@@ -1452,18 +1485,19 @@ String getSymbol(int num) {
 </div>
 
 ---
+
 <!-- header: '6.3 基本路徑測試與複雜度度量' -->
 
 ## 🧪 IntelliJ `MetricsReloaded` 複雜度度量實戰 (`LabDemo`)
 
 <div class="card-deck">
 
-> 💡 📄 實習手冊：[metrics.md](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u06_wbtesting/metrics.md) ｜ 🎯 實作任務：在 IntelliJ 安裝 MetricsReloaded 插件，對全專案執行複雜度度量分析！
+> 💡 📄 [實習手冊：](../../lab.html?file=LabDemo/docs/u06_wbtesting/metrics.md) ｜ 🎯 實作任務：在 IntelliJ 安裝 MetricsReloaded 插件，對全專案執行複雜度度量分析！
 
 <div class="two-columns">
 <div class="card">
 
-### 🛠️ 啟動掃描與設定 Complexity Metrics Profile
+##### 🛠️ 啟動掃描與設定 Complexity Metrics Profile
 ![Calculate Metrics](../../LabDemo/docs/img/calculate_metrics.png)
 - **操作步驟**：
   1. `Settings ➔ Plugins ➔ Marketplace` 搜尋安裝 **`MetricsReloaded`**；
@@ -1473,7 +1507,7 @@ String getSymbol(int num) {
 </div>
 <div class="card">
 
-### 📊 報表解讀：一眼揪出專案中的「紅字高危方法」
+##### 📊 報表解讀：一眼揪出專案中的「紅字高危方法」
 ![Complexity Metrics Report](../../LabDemo/docs/img/complexity_metrics.png)
 - **分析與重構指引**：
   - 當方法的 **`v(G) > 10`** 或 **`CogC > 15`** 時會標紅警告；
@@ -1482,6 +1516,7 @@ String getSymbol(int num) {
 </div>
 </div>
 </div>
+
 ---
 
 <!-- _class: lead -->
@@ -1531,7 +1566,7 @@ String getSymbol(int num) {
 
 <div class="card-deck">
 
-> 💡 有人常問：「*真實世界的 Bug 可能很複雜，為什麼變異測試每次只改一個小符號（First-Order Mutant）就能代表真實缺陷？*」這源自軟體測試理論的兩大著名假設（DeMillo et al., 1978；Offutt, 1992）：
+> 💡 「*真實世界的 Bug 可能很複雜，為什麼變異測試每次只改一個小符號（First-Order Mutant）就能代表真實缺陷？*」這源自軟體測試理論的兩大著名假設（DeMillo et al., 1978；Offutt, 1992）：
 
 <div class="two-columns">
 <div class="card">
@@ -1758,12 +1793,12 @@ print X
 
 <div class="card-deck">
 
-> 💡 針對尋找長度為 3 陣列最大值索引之 `p(a)` 與 4 個變異體 `p1 ~ p4`，檢驗 `T = {t1=[1,2,3], t2=[1,2,1], t3=[3,1,2]}` 的獵殺成效！
+> 💡 針對尋找長度為 3 陣列最大值索引之 `p(a)` 與 4 個變異體 `p1 ~ p4`，檢驗 `T` 的獵殺成效！
 
 <div class="two-columns">
 <div class="card">
 
-### 🐍 原程式 `p(a)` 與四個變異體
+##### 🐍 原程式 `p(a)` 與四個變異體
 ```python
 def p(a): # 回傳最大值所在索引 r
     r = 0
@@ -1776,14 +1811,14 @@ def p(a): # 回傳最大值所在索引 r
 # P4: if True: r = i        (固定回傳 2)
 ```
 - **等價與存活分析**：
-  - **`P1` 為等價變異 (E)**：`i=0` 時 `a[0]>a[0]` 為 F，輸出不變。
-  - **`P3` 存活 (Alive)**：補 **`t4=[2,2,1]`**，`P` 得 `0`、`P3` 得 `1` 即可 Kill！
+  - **`P1` 為等價變異**：`i=0` 時 `a[0]>a[0]` 為 F，輸出不變。
+  - **`P3` 存活**：補 **`t4=[2,2,1]`**，`P` 得 `0`、`P3` 得 `1` 即可 Kill！
   - 補前 `MS = 2/(4-1) = 66.7%` ➔ 補後 **`MS = 100%`**！
 
 </div>
 <div class="card">
 
-### 📊 執行結果與獵殺判定矩陣
+##### 📊 執行結果與獵殺判定矩陣
 
 | 測資 `tc` | 原程式 `P` | `P1` (`[0,1,2]`) | `P2` (`i>a[r]`) | `P3` (`>=`) | `P4` (`True`) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -1801,11 +1836,11 @@ def p(a): # 回傳最大值所在索引 r
 
 <!-- header: '6.4 變異測試 (Mutation Testing)' -->
 
-## 課堂壓軸推演 (`ex-mutation-xy`)：五個變異體獵殺矩陣與計分演算法 (講義 6.6.3)
+## 課堂壓軸推演 (`ex-mutation-xy`)：五個變異體獵殺矩陣與計分演算法
 
 <div class="card-deck">
 
-> 💡 對照講義 6.6.3 壓軸題：給定 `func(X, Y)`、5 個變異體 `P1~P5`（皆非等價）與 `T = {t1=(12,1), t2=(6,5), t3=(7,11)}`，計算變異得分！
+> 給定 `func(X, Y)`、5 個變異體 `P1~P5`（皆非等價）與 `T={t1=(12,1), t2=(6,5), t3=(7,11)}`，計算變異得分！
 
 <div class="two-columns">
 <div class="card">
@@ -1842,13 +1877,14 @@ int func(int X, int Y) {
 </div>
 
 ---
+
 <!-- header: '6.4 變異測試 (Mutation Testing)' -->
 
 ## 🧪 LabDemo 實戰 1：`TriangleMuTest.java` 三大突變體獵殺演進
 
 <div class="card-deck">
 
-> 💡 📄 實習手冊：[mutation_test.md#triangle](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u07_mutation/mutation_test.md#triangle) ｜ 💻 待測檔：[Triangle.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/main/java/u06_coverage/Triangle.java) ｜ 🧪 測試檔：[TriangleCoverageTest.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u06_coverage/TriangleCoverageTest.java)
+> 💡 📄 [實習手冊：](../../lab.html?file=LabDemo/docs/u07_mutation/mutation_test.md#triangle) ｜ 💻 [待測檔：](../../lab.html?file=LabDemo/src/main/java/u06_coverage/Triangle.java) ｜ 🧪 [測試檔：](../../lab.html?file=LabDemo/src/test/java/u06_coverage/TriangleCoverageTest.java)
 
 <div class="two-columns">
 <div class="card">
@@ -1888,14 +1924,16 @@ public class TriangleMuTest {
 </div>
 </div>
 </div>
+
 ---
+
 <!-- header: '6.4 變異測試 (Mutation Testing)' -->
 
 ## 🧪 LabDemo 實戰 2：`BinarySearchTest.java` 與 `bs02 / bs03` 迴圈突變解密
 
 <div class="card-deck">
 
-> 💡 📄 實習手冊：[mutation_test.md#binarysearch](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u07_mutation/mutation_test.md#binarysearch) ｜ 💻 待測檔：[BinarySearch.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/main/java/u06_coverage/BinarySearch.java) ｜ 🧪 測試檔：[BinarySearchTest.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u06_mutation/BinarySearchTest.java)
+> 💡 📄 [實習手冊：](../../lab.html?file=LabDemo/docs/u07_mutation/mutation_test.md#binarysearch) ｜ 💻 [待測檔：](../../lab.html?file=LabDemo/src/main/java/u06_coverage/BinarySearch.java) ｜ 🧪 [測試檔：](../../lab.html?file=LabDemo/src/test/java/u06_mutation/BinarySearchTest.java)
 
 <div class="two-columns">
 <div class="card">
@@ -1928,14 +1966,16 @@ public class TriangleMuTest {
 </div>
 </div>
 </div>
+
 ---
+
 <!-- header: '6.4 變異測試 (Mutation Testing)' -->
 
 ## 工業級變異測試神器：PITest (PIT Mutation Testing) 報表與實務
 
 <div class="card-deck">
 
-> 💡 📄 實習手冊：[mutation_test.md#project-mutation4](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u07_mutation/mutation_test.md#project-mutation4) ｜ ⚙️ PITest 會在記憶體中自動注入 Bytecode 變異體並平行驗證 JUnit 斷言！
+> 💡 📄 實習手冊：[mutation_test.md#project-mutation4](../../lab.html?file=LabDemo/docs/u07_mutation/mutation_test.md#project-mutation4) ｜ ⚙️ PITest 會在記憶體中自動注入 Bytecode 變異體並平行驗證 JUnit 斷言！
 
 <div class="content-columns">
 <div class="content-text">
@@ -1961,6 +2001,7 @@ public class TriangleMuTest {
 </div>
 </div>
 </div>
+
 ---
 
 <!-- _class: lead -->
@@ -2071,6 +2112,7 @@ public class TriangleMuTest {
 </div>
 
 ---
+
 <!-- header: '6.5 AI 輔助白箱測試與實習導覽' -->
 
 ## 🧪 課堂實習指引 (LabDemo Unit 06 & Unit 07)
@@ -2083,11 +2125,11 @@ public class TriangleMuTest {
 <div class="card">
 
 ### 🎯 Lab 1：JaCoCo 覆蓋率實戰
-- **📄 手冊**：[whitebox_test.md](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u06_wbtesting/whitebox_test.md)
+- **📄 手冊**：[whitebox_test.md](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md)
 - **💻 程式**：
-  - [Triangle.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/main/java/u06_coverage/Triangle.java)
-  - [BinarySearch.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/main/java/u06_coverage/BinarySearch.java)
-  - [LoanCalculator.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/main/java/u05_pair/LoanCalculator.java)
+  - [Triangle.java](../../lab.html?file=LabDemo/src/main/java/u06_coverage/Triangle.java)
+  - [BinarySearch.java](../../lab.html?file=LabDemo/src/main/java/u06_coverage/BinarySearch.java)
+  - [LoanCalculator.java](../../lab.html?file=LabDemo/src/main/java/u05_pair/LoanCalculator.java)
 - **🎯 實作任務**：
   - 使用 IDE **Run with Coverage** 檢視紅/黃/綠標記。
   - 解開黃色鑽石，重構消除死碼，補齊測資達到 **100% Branch Coverage**！
@@ -2096,9 +2138,9 @@ public class TriangleMuTest {
 <div class="card">
 
 ### 📊 Lab 2：程式碼複雜度度量
-- **📄 手冊**：[metrics.md](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u06_wbtesting/metrics.md)
+- **📄 手冊**：[metrics.md](../../lab.html?file=LabDemo/docs/u06_wbtesting/metrics.md)
 - **💻 程式**：
-  - [GradeAverage.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/main/java/u06_coverage/GradeAverage.java)
+  - [GradeAverage.java](../../lab.html?file=LabDemo/src/main/java/u06_coverage/GradeAverage.java)
 - **🎯 實作任務**：
   - 安裝 **MetricsReloaded** 插件計算 `v(G)`、`CogC` 與 `WMC`。
   - 針對 `computeAverage` 繪製 CFG，找出 6 條獨立路徑並撰寫測試。
@@ -2107,10 +2149,10 @@ public class TriangleMuTest {
 <div class="card">
 
 ### 🧬 Lab 3：PITest 變異測試實戰
-- **📄 手冊**：[mutation_test.md](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/docs/u07_mutation/mutation_test.md)
+- **📄 手冊**：[mutation_test.md](../../lab.html?file=LabDemo/docs/u07_mutation/mutation_test.md)
 - **💻 程式**：
-  - [TriangleMuTest.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u06_mutation/TriangleMuTest.java)
-  - [BinarySearchTest.java](file:///Users/nick-mini-26/oTeach/SQA/LabDemo/src/test/java/u06_mutation/BinarySearchTest.java)
+  - [TriangleMuTest.java](../../lab.html?file=LabDemo/src/test/java/u06_mutation/TriangleMuTest.java)
+  - [BinarySearchTest.java](../../lab.html?file=LabDemo/src/test/java/u06_mutation/BinarySearchTest.java)
 - **🎯 實作任務**：
   - 執行 `TriangleMuTest` 獵殺突變體。
   - 執行 `mvn pitest:mutationCoverage` 產出 HTML 變異報表！
@@ -2118,6 +2160,7 @@ public class TriangleMuTest {
 </div>
 </div>
 </div>
+
 ---
 
 <!-- header: '白箱測試總結與全景指南' -->

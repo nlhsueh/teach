@@ -366,7 +366,7 @@ AI 原生代理人操作 (Antigravity Browser Subagent):
 
 ---
 
-<!-- id: sqa-ch08-ccq1 -->
+<!-- id: sqa-ch08-ccq2 -->
 #### 🙋 **8.3.5 概念核對問答 (CCQ 2)：AI 畫面模擬與無頭瀏覽器技術本質**
 
 在現代 E2E 系統測試架構中，關於無頭瀏覽器 (Headless Browser)、桌面端自動化框架 (Spectron) 與 AI 瀏覽器代理人 (Browser Subagent) 的技術原理，下列敘述何者**最正確**？
@@ -376,7 +376,7 @@ B. Spectron 框架主要用於純 Web 應用的效能壓測，無法直接跨入
 C. Google Antigravity 的 Browser Subagent 結合了視覺語言模型 (VLM) 與 DOM 語意感知，能以人類視覺意圖辨識畫面元素，大幅改善傳統自動化測試因前端 class 或 DOM 結構調整所造成的脆弱定位器 (Brittle Locators) 斷裂問題  
 D. AI 瀏覽器代理人執行測試時必須在實體顯示器上有頭 (Headed) 視窗中逐幀顯示，無法整合至 Linux CI/CD 容器中輸出 WebP 測試錄影工件
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch08-ccq1)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch08-ccq2)
 
 <details>
 <summary>👉 點擊展開查看答案與詳細解析</summary>
@@ -422,6 +422,27 @@ Jakob Nielsen 提出的啟發式檢驗準則，至今仍是 UI/UX 專家檢視�
 
 #### fig-ab-test
 <img src=../../img/ch08/Hk6D9yr4T.png width=450>
+
+<!-- id: sqa-ch08-ccq3 -->
+#### 🙋 **8.4.4 概念核對問答 (CCQ 3)：Nielsen 十大可用性原則情境診斷**
+
+使用者在某網站註冊設定密碼時，系統僅冷冰冰地跳出紅字「❌ 密碼設定強度不足！」，卻沒有說明究竟是「長度未滿 8 碼」、「缺少大寫字母」還是「缺少特殊符號」，導致使用者反覆盲目重試。請問這主要違反了 Jakob Nielsen 十大可用性原則中的哪一項？
+
+A. 原則 3：使用者控制與自由 (User control and freedom)  
+B. 原則 7：彈性與使用效率 (Flexibility and efficiency of use)  
+C. 原則 8：美學與極簡設計 (Aesthetic and minimalist design)  
+D. 原則 9：幫助使用者辨識、診斷並修復錯誤 (Help users recover from errors)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch08-ccq3)
+
+<details>
+<summary>👉 點擊展開查看答案與詳細解析</summary>
+
+**正確答案**：**D**
+
+* **解析**：Nielsen 第 9 條原則強調「錯誤訊息應以淺顯易懂的語言精確指出問題，並建設性地給出解決方法」。僅告知「密碼強度不足」而未指出缺少的條件與修復指引，即違反此原則。
+
+</details>
 
 ---
 
@@ -558,9 +579,34 @@ CPU 使用率與回應時間關聯分析
 > * 🚀 現代程式化壓測：[**Lab 12：k6 現代程式化壓測 (Load as Code) 與高併發效能工程**](../../LabDemo/docs/u10_performance/k6_load_testing.md)
 > * 🖥️ 經典 GUI 壓測：[**Lab 12 補充：Apache JMeter 壓力測試實務**](../../LabDemo/docs/u10_performance/jmeter.md)
 
+<!-- id: sqa-ch08-ccq4 -->
+#### 🙋 **8.5.8 概念核對問答 (CCQ 4)：工作負載指標與壓測執行原則**
+
+在規劃與執行 Web 系統的效能與壓力測試時，關於工作負載指標與測試執行原則，下列哪一項敘述是**最正確**的？
+
+A. 網站的 Hit (請求點擊數) 越高代表獨立造訪人數越多，且壓力測試應與伺服器系統監控分開執行以免干擾數據  
+B. 使用輪廓 (Usage Profile) 是設計工作流量的重要依據，且 `Page View / Session` 越高代表每次進入系統瀏覽越多網頁  
+C. JMeter 中的 Thread (執行緒) 數量是指受測伺服器端是否開啟多工模式，且 JMeter 不具備錄製回放 (Record & Replay) 功能  
+D. 當系統達到飽和點 (Saturation Point) 時，吞吐量 (RPS) 會持續線性暴增，而回應時間則會保持平坦不變
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch08-ccq4)
+
+<details>
+<summary>👉 點擊展開查看答案與詳細解析</summary>
+
+**正確答案**：**B**
+
+* **解析**：
+  * **A 錯誤**：Hit 是載入頁面所引發的所有靜態與動態請求數，Hit 高不代表人數多；且壓力測試必須與系統監控同步進行才能定位瓶頸。
+  * **B 正確**：使用輪廓反映各業務操作佔比；`Page View / Session` 衡量每次會話平均瀏覽頁數。
+  * **C 錯誤**：JMeter Thread 代表壓測端模擬之虛擬使用者數，且內建 HTTP Proxy 錄製回放功能。
+  * **D 錯誤**：到達飽和點後，吞吐量 (RPS) 停滯甚至下降，回應時間則呈指數級急彎飆升。
+
+</details>
+
 ---
 
-## 8.7 相容性測試
+## 8.6 相容性測試
 
 檢驗系統是相容於各種機器（IBM 360, HP 9000）、環境、網路、作業系統（Linux, Window）、資料庫（Oracle, SQL server）、網頁伺服器（Apache, Tomcat）、瀏覽器（IE, Chrome, Firefox）等。注意即使是同一個軟體因為版本不同也很可能是不相容的，例如在 IE6 可以運作的在 IE7 就不一定可以。
 
@@ -615,6 +661,27 @@ CPU 使用率與回應時間關聯分析
 4.  **步驟 4：漏洞分級與品質門檻**：
     *   依據 **CVSS (Common Vulnerability Scoring System)** 評分標準（0.0 ~ 10.0 分）。凡屬於 Critical (> 9.0) 或 High (> 7.0) 漏洞，CI 自動判定失敗，強制禁止發布。
 
+<!-- id: sqa-ch08-ccq5 -->
+#### 🙋 **8.7.4 概念核對問答 (CCQ 5)：DevSecOps 安全測試技術選型**
+
+在 DevSecOps 安全測試流水線中，若團隊希望能自動掃描專案 `pom.xml` 中所引入的第三方開源函式庫（例如檢查是否誤用了含有已知 CVE 高風險漏洞的舊版 `Log4j` 套件），應該優先採用下列哪一種安全測試技術？
+
+A. SAST (Static Application Security Testing，靜態應用安全測試)  
+B. DAST (Dynamic Application Security Testing，動態應用安全測試)  
+C. SCA (Software Composition Analysis，軟體成分分析)  
+D. STRIDE 威脅建模中的 Repudiation (不可否認性檢驗)
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch08-ccq5)
+
+<details>
+<summary>👉 點擊展開查看答案與詳細解析</summary>
+
+**正確答案**：**C**
+
+* **解析**：**SCA (Software Composition Analysis，軟體成分分析)** 專門掃描專案引入的第三方套件並比對 NVD 漏洞資料庫（CVE）；SAST 掃描團隊自寫的原始碼，DAST 則從外部發動動態黑箱攻擊。
+
+</details>
+
 ---
 
 ## 8.8 回復性與彈性測試 (Recoverability & Resilience Testing)
@@ -663,6 +730,27 @@ CPU 使用率與回應時間關聯分析
     *   比對故障期間發生的所有交易資料，確保沒有未完成的髒資料或雙重扣款現象。
 
 > 🛠️ **對應實習手冊**：詳細的 Jazzer 模糊測試與 Resilience4j 混沌故障注入實務，請參考 [**Lab 13：模糊測試與混沌工程故障注入**](../../LabDemo/docs/u10_chaos_fuzzing/chaos_and_fuzzing.md)。
+
+<!-- id: sqa-ch08-ccq6 -->
+#### 🙋 **8.8.4 概念核對問答 (CCQ 6)：RTO、RPO、MTBF 與 MTTR 指標辨析**
+
+某銀行核心轉帳系統在災難復原規格書中規定：「當主機房發生斷電災難時，備援機房必須在 **3 分鐘內**完成切換並恢復對外轉帳服務；且已確認之交易紀錄**不允許遺失任何一筆（0 秒資料遺失）**。」請問這兩項要求依序對應至哪兩個回復性指標？
+
+A. MTBF = 3 分鐘，MTTR = 0 秒  
+B. RPO = 3 分鐘，RTO = 0 秒  
+C. RTO = 3 分鐘，RPO = 0 秒  
+D. MTTR = 3 分鐘，MTBF = 0 秒
+
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch08-ccq6)
+
+<details>
+<summary>👉 點擊展開查看答案與詳細解析</summary>
+
+**正確答案**：**C**
+
+* **解析**：**RTO (Recovery Time Objective，復原時間目標)** 代表業務能容忍的最大停機時間（3 分鐘內恢復服務）；**RPO (Recovery Point Objective，復原點目標)** 代表災難發生時業務能容忍的最大資料遺失量（0 秒零遺失）。
+
+</details>
 
 ---
 

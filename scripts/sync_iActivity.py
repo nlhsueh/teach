@@ -970,8 +970,8 @@ def embed_ccqs_into_slides(course_dir: str, chapters_data: list, base_url: str, 
         current_ch = ch_num_file
 
         for slide in slides:
-            # Skip answer/explanation slides
-            if re.search(r'(?:答案與解析|課堂互動參考解答|互動參考解答|參考解答|參考答案|Answer\s*&?\s*Explanation)', slide, re.IGNORECASE):
+            # Skip answer/explanation and outline slides
+            if re.search(r'(?:答案與解析|課堂互動參考解答|互動參考解答|參考解答|參考答案|Answer\s*&?\s*Explanation|outline-slide|outline-columns|本章重點導讀|本章大綱)', slide, re.IGNORECASE):
                 updated_slides.append(slide)
                 continue
 

@@ -608,7 +608,7 @@
 
   <script>
     // GitHub Repository Configuration
-    const GITHUB_REPO_URL = "https://github.com/nlhsueh/teach_SQA/blob/main/";
+    const GITHUB_REPO_URL = "https://github.com/nlhsueh/teach/blob/main/SQA/";
 
     // Resolve relative path utility
     function resolvePath(baseDir, relativePath) {
@@ -789,19 +789,18 @@
 
         const resolved = resolvePath(baseDir, cleanPath);
 
-        if (cleanPath.endsWith('.md')) {
-          // Markdown document: load within the lab reader
+        if (/\.(md|java|xml|js|py|sql|feature|json|yml|yaml|sh)$/i.test(cleanPath)) {
+          // Markdown or source code document: load within the lab reader
           a.href = `lab.html?file=${encodeURIComponent(resolved)}${hashPart}`;
         } else if (cleanPath.endsWith('.html') || cleanPath.endsWith('.htm')) {
           // Internal HTML page (e.g. index.html): navigate directly
           a.href = `${resolved}${hashPart}`;
         } else {
-          // Source code (.java, .xml, etc.), project configs, or directories:
-          // Direct to GitHub repository viewer so users get full syntax highlighting, tree view, and avoid 404
+          // Directories or binary files: direct to GitHub repository viewer
           const isDir = cleanPath.endsWith('/') || (!cleanPath.split('/').pop().includes('.'));
           const ghBase = isDir
-            ? "https://github.com/nlhsueh/teach_SQA/tree/main/"
-            : "https://github.com/nlhsueh/teach_SQA/blob/main/";
+            ? "https://github.com/nlhsueh/teach/tree/main/SQA/"
+            : "https://github.com/nlhsueh/teach/blob/main/SQA/";
           a.href = `${ghBase}${resolved}${hashPart}`;
           a.target = '_blank';
           a.rel = 'noopener noreferrer';
@@ -865,18 +864,28 @@
         if (!response.ok) {
           throw new Error(`HTTP ${response.status} ${response.statusText}`);
         }
-        const markdown = await response.text();
+        const rawText = await response.text();
+        const extMatch = file.match(/\.([a-zA-Z0-9]+)$/);
+        const ext = extMatch ? extMatch[1].toLowerCase() : 'md';
+        let markdown = rawText;
 
-        // Extract first heading as page title
-        const headingMatch = markdown.match(/^#+\s+(.+)$/m);
-        if (headingMatch) {
-          const title = headingMatch[1].replace(/[*_`]/g, '').trim();
-          pageTitle.textContent = title;
-          document.title = `${title} | SQA 上機實習`;
+        if (ext !== 'md' && ext !== 'markdown') {
+          const fname = file.split('/').pop();
+          pageTitle.textContent = fname;
+          document.title = `${fname} | SQA 原始碼檢視`;
+          markdown = `# 💻 \`${fname}\`\n\n> 📂 檔案路徑：\`${file}\`\n\n\`\`\`${ext}\n${rawText}\n\`\`\``;
         } else {
-          const fallbackTitle = file.split('/').pop().replace('.md', '');
-          pageTitle.textContent = fallbackTitle;
-          document.title = `${fallbackTitle} | SQA 上機實習`;
+          // Extract first heading as page title
+          const headingMatch = markdown.match(/^#+\s+(.+)$/m);
+          if (headingMatch) {
+            const title = headingMatch[1].replace(/[*_`]/g, '').trim();
+            pageTitle.textContent = title;
+            document.title = `${title} | SQA 上機實習`;
+          } else {
+            const fallbackTitle = file.split('/').pop().replace('.md', '');
+            pageTitle.textContent = fallbackTitle;
+            document.title = `${fallbackTitle} | SQA 上機實習`;
+          }
         }
 
         // Configure marked

@@ -756,7 +756,7 @@ double div(double x, double y) {
 | **邊界與極端測資生成** | ⭐ 人腦易疲勞、易遺漏冷門 Unicode/極大值 | ⭐⭐⭐ 秒速生成數千組極端字串、溢位邊界 | **AI 輔助**：批量生成邊界與攻擊 Payload |
 | **測試結果仲裁 (Oracle)** | ⭐⭐⭐ 具備客觀真理的最終仲裁權 | ⭐ 自我印證偏誤，易產生假綠燈斷言 | **人類審查**：審查斷言邏輯並納入 CI 自動化 |
 
-> 🛠️ **實習演練手冊**：參閱 [`LabDemo/docs/u03_principles/test_spec_ai_codesign.md`](../../LabDemo/docs/u03_principles/test_spec_ai_codesign.md)（電商促銷計費規格設計與 AI 生成盲區審查）。
+> 🛠️ **實習演練手冊**：參閱 [`LabDemo/docs/u03_principles/test_spec_ai_codesign.md`](../../lab.html?file=LabDemo/docs/u03_principles/test_spec_ai_codesign.md)（電商促銷計費規格設計與 AI 生成盲區審查）。
 
 ---
 
@@ -1006,7 +1006,7 @@ double div(double x, double y) {
 </div>
 </div>
 
-> 🛠️ **實習沙盒手冊**：參閱 [`LabDemo/docs/u03_principles/test_oracle_metamorphic.md`](../../LabDemo/docs/u03_principles/test_oracle_metamorphic.md)（無標準答案之變質關係斷言沙盒）｜ 更多落地模式於 **第 5 章黑箱測試** 深入展開！
+> 🛠️ **實習沙盒手冊**：參閱 [`LabDemo/docs/u03_principles/test_oracle_metamorphic.md`](../../lab.html?file=LabDemo/docs/u03_principles/test_oracle_metamorphic.md)（無標準答案之變質關係斷言沙盒）｜ 更多落地模式於 **第 5 章黑箱測試** 深入展開！
 
 </div>
 

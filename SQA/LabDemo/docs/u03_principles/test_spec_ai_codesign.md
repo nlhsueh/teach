@@ -4,6 +4,7 @@
 
 ---
 
+<!-- id: sqa-u03-testspeccodesign-ccq1 -->
 ## 🎯 實驗目標 (Objectives)
 
 1. **掌握專業規格化思維**：
@@ -17,7 +18,6 @@
    運用 Prompt Engineering 指示大型語言模型（ChatGPT / Claude / Copilot）批次生成測試案例，並扮演 SQA Reviewer 揪出 AI 的「幻覺規則」、「邊界模糊」與「缺乏有效 Oracle」盲區。
 
 ---
-
 ## 🧭 實驗三大任務邏輯關聯 (Workflow Pipeline)
 
 本實驗設計為一套**層層遞進、人機對抗的 SQA 評審工作流 (Pipeline)**：
@@ -59,10 +59,10 @@
 
 ---
 
+<!-- id: sqa-u03-testspeccodesign-ccq2 -->
 ## ✍️ 任務一：人類工程師專業測試案例設計 (手動設計)
 
 > ⚠️ **請勿直接使用 AI！** 測試工程師的核心價值在於深入理解業務規格。請先研讀示範案例，接著親自動手推導並完成學生挑戰任務表。
-
 ### 1. 📖 規格化範例導引 (TC-01 示範)
 
 | 案例編號 (TC_ID) | 測試目的 / 業務情境 | 關聯條款 | 前置狀態 (Preconditions) | 測試輸入資料 (Inputs) | 操作步驟 (Steps) | 預期輸出結果 (Expected Result / Oracle) |
@@ -152,6 +152,7 @@
 
 ---
 
+<!-- id: sqa-u03-testspeccodesign-ccq3 -->
 ## 🎯 實驗小結與收穫
 
 1. **測試案例不是隨機點擊**：完整的測試案例必須具備前置條件、明確步驟與唯一可驗證的預期結果（Oracle）。

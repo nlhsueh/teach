@@ -4,6 +4,7 @@
 
 ---
 
+<!-- id: sqa-u03-testoraclemetamorphic-ccq1 -->
 ## 🎯 實驗目標 (Objectives)
 
 1. **體會「測試預言機難題 (The Test Oracle Problem)」**：
@@ -14,7 +15,6 @@
    在實際的導航路網系統 (`RoutePlanner`) 中，運用對稱性、比例縮放、三角不等式與獨立抗擾動性等 4 大經典 MR 模式，無需手算答案即可自動抓出隱藏缺陷！
 
 ---
-
 ## 🧩 為什麼 assertEquals 遇到複雜系統會崩潰？
 
 在傳統單元測試教學中，我們總是習慣給定一個簡單輸入，然後手算預期結果：
@@ -60,6 +60,7 @@ assertEquals(25.0, planner.findShortestDistance(graph, "A", "C"));
 * 待測演算法：[`src/main/java/u03_principles/RoutePlanner.java`](../../src/main/java/u03_principles/RoutePlanner.java)
 * 變質測試沙盒：[`src/test/java/u03_principles/OracleSandboxTest.java`](../../src/test/java/u03_principles/OracleSandboxTest.java)
 
+<!-- id: sqa-u03-testoraclemetamorphic-ccq2 -->
 ### 🏛️ 四大經典變質關係模式實戰
 
 #### 1. MR-1：對稱與等價性 (Symmetry Invariance)
@@ -106,7 +107,6 @@ assertEquals(25.0, planner.findShortestDistance(graph, "A", "C"));
   ```
 
 ---
-
 ## 🏃 實驗動手跑 (Run the Lab)
 
 請在終端機執行 Maven 指定測試指令，或在 IDE 中直接執行：

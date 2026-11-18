@@ -203,12 +203,12 @@ assertEquals("done", actualResult);
 
 ---
 
+<!-- id: sqa-u05-junit-ccq1 -->
 ## 🎯 5.3: 邊界值分析 (BVA) 實戰
 
 ### 1. 痛點剖析：臨界測資密集與 Early Abort 陷阱
 - 邊界值分析 (BVA) 會針對邊緣點產生大量測試數值（`min-, min, min+, nom, max-, max, max+`）。
 - 若在同一方法中寫多行常規斷言，一旦第一個 `min-` 斷言失敗，測試會立即拋錯中止，導致後續所有 `max` 邊界檢驗直接被跳過（Early Abort），造成嚴重漏檢！
-
 ### 2. JUnit 5 解決方案
 - **參數化數值注入 (`@ValueSource` / `@CsvSource`)**：一套測試邏輯，自動批次跑遍所有臨界點。
 - **群組聚合斷言 (`assertAll`)**：群組內所有斷言保證全部執行完畢，一次性收集並回報所有邊界失敗！
@@ -388,13 +388,13 @@ List<DynamicTest> dynamicPairwiseTests() {
 
 ---
 
+<!-- id: sqa-u05-junit-ccq2 -->
 ## ⚡ 5.7: 因果圖與決策表實戰
 
 ### 1. 痛點剖析：規則化簡與多動作覆蓋盲區
 - 因果圖法轉出的 CAR 決策表，每一條化簡規則 (Rule) 包含多條件組合。
 - 單一規則常激發多個系統外顯動作（例如：折扣價計算 + 發放贈品 + 標記免運）。
 - 傳統斷言若第一個動作失敗即中止，將導致後續動作檢驗全部漏掉。
-
 ### 2. JUnit 5 解決方案
 - **決策表 1:1 直出 (`@CsvSource`)**：決策表的條件與預期輸出欄位直接對映為 CSV 的行與列。
 - **多動作聚合斷言 (`assertAll`)**：保證該規則下的所有外顯動作全部被完整驗收。
@@ -465,12 +465,12 @@ List<DynamicTest> dynamicPairwiseTests() {
 
 ---
 
+<!-- id: sqa-u05-junit-ccq3 -->
 ## 🕵️ 5.10: 經驗基礎與錯誤推測 (Error Guessing) 實戰
 
 ### 1. 痛點剖析：規格書不會寫的直覺盲區與攻擊向量
 - 形式化規格書通常只定義「理想與標準的輸入輸出」，但惡意使用者或極端環境常輸入規格書未明定的髒資料。
 - 測試工程師依據過去慘痛的踩坑經驗（直覺、缺陷歷史、安全弱點清單），主動設計「破壞性測試探針」。
-
 ### 2. Demo 演示：`ErrorGuessingDemoTest.java`
 開啟 `u05_scenario/experience/ErrorGuessingDemoTest.java`：
 - **字串繞過**：純空白字元（`"   "`）是否能繞過非空檢驗？

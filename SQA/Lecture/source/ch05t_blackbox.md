@@ -12,6 +12,7 @@
 * **【中央】受測系統 (System Under Test, SUT)**：系統內部程式碼、資料結構與演算法細節對測試人員隱藏不透明（黑盒子），聚焦於系統「做什麼 (What)」，而非「如何做 (How)」。
 * **【右側】輸出驗證 (Expected vs. Actual Output)**：比對受測系統實際產出的行為 (Actual Output) 是否完全符合需求規格所定義的預期結果 (Expected Output)。	
 
+<!-- id: sqa-ch05-ccq1 -->
 ### 💡 軟體測試之父：Glenford J. Myers
 
 > 1979 年，美國電腦科學家 **Glenford J. Myers** 出版了軟體工程史上的奠基經典巨著 **《The Art of Software Testing》（軟體測試的藝術）**。
@@ -63,12 +64,12 @@ Ch05 知識架構全景：
 [JUnit on GitHub](
 https://github.com/nlhsueh/sw-testing24/blob/main/lab/u05_utest/intro_junit.md)
 
-<!-- id: sqa-ch05-ccq1 -->
+<!-- id: sqa-ch05-ccq2 -->
 #### 🙋 概念核對問答 (CCQ 1)
 
 * **是非題**：在 JUnit 中，`assertSame(a, b)` 斷言的作用與 `assertEquals(a, b)` 完全相同，都是在驗證兩個物件的內容值是否相等（即比對 `a.equals(b)`）。
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq1)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq2)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -259,7 +260,7 @@ FIG: 三角形程式：非獨立型一般邊界測試
 * [游泳池測試案例](https://docs.google.com/spreadsheets/d/1aE21HM1CCYPJtRBcb2hvYnHtOtqTdbzhQizSfn26hPk/edit?gid=0#gid=0)
 * [三角形測試案例](https://docs.google.com/spreadsheets/d/1fIEwtWf-MoXyBnr1eCET8lsrLSKQgCnYiq6w9WGZOMQ/edit?gid=1805558459#gid=1805558459)
 
-<!-- id: sqa-ch05-ccq2 -->
+<!-- id: sqa-ch05-ccq3 -->
 #### 🙋 概念核對問答 (CCQ 2)
 
 * **單選題**：假設某個受測方法接受 3 個彼此獨立的輸入參數。若採用「獨立型強固邊界測試 (Independent Robust BVA)」，其設計出的測試案例數量應為多少？
@@ -268,7 +269,7 @@ FIG: 三角形程式：非獨立型一般邊界測試
   C) 125  
   D) 343
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq2)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq3)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -483,7 +484,7 @@ FIG: Binary Search 的等價分割測試（*k*: key; *a*: array; *f*: found; *c*
 
 事實上，等價分割是為種觀念，在每個測試活動中都可應用。
 
-<!-- id: sqa-ch05-ccq3 -->
+<!-- id: sqa-ch05-ccq4 -->
 #### 🙋 概念核對問答 (CCQ 3)
 
 * **單選題**：在等價分割測試 (Equivalence Partitioning) 中，「弱 (Weak)」與「強 (Strong)」分類法的主要區別是什麼？
@@ -492,7 +493,7 @@ FIG: Binary Search 的等價分割測試（*k*: key; *a*: array; *f*: found; *c*
   C) 「弱」不需要程式碼規格書，而「強」必須完全依照 SRS  
   D) 「弱」的測試案例數量一定比「強」多
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq3)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq4)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -624,7 +625,7 @@ All pair testing 工具的開發：
 * **Allpairs Generator**, 容易取得，免費, Perl 腳本, 無原生的 Java 版本,Perl 寫成的腳本，需要在系統中安裝 Perl 環境。
 * ACTS (NIST), 容易取得，免費, Java (JAR 檔案), 由美國國家標準與技術研究院 (NIST) 開發的，是 Java 寫成的, 功能強大，支援更高的強度 (t-way)，且為 Java 使用者設計。
 
-<!-- id: sqa-ch05-ccq4 -->
+<!-- id: sqa-ch05-ccq5 -->
 #### 🙋 概念核對問答 (CCQ 4)
 
 * **單選題**：全成對測試 (Pairwise / All-Pairs Testing) 能夠大幅縮減測試案例數量，其在工程上的核心理論依據是什麼？
@@ -633,7 +634,7 @@ All pair testing 工具的開發：
   C) 配對測試是白箱測試的一種，可以直接涵蓋所有的程式碼分支路徑  
   D) 成對測試可以保證 100% 涵蓋多變數系統的所有笛卡爾積組合
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq4)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq5)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -728,7 +729,7 @@ CTM 將測試設計嚴格拆分為「上下兩層」互相呼應的結構：
 2. **利害關係人審查 (Stakeholder Review)**：傳統測試清單充斥細碎數字，業務主管或產品經理（PO）難以檢視；CTM 樹狀結構提供高階語意視圖，大幅降低溝通成本。
 3. **工具鏈支援**：現代測試工具（如 Berner & Mattner 的 CTE XL、TESTONA、OSS 版本的 Classification Tree Editor）均可繪製分類樹並一鍵自動生成 Pairwise 打點矩陣與測試代碼框架。
 
-<!-- id: sqa-ch05-ccq5 -->
+<!-- id: sqa-ch05-ccq6 -->
 #### 🙋 概念核對問答 (CCQ 5)
 
 * **單選題**：關於「正交表測試 (Orthogonal Array Testing, OATS)」與一般「全成對測試 (Pairwise Testing)」的比較，下列敘述何者正確？
@@ -737,7 +738,7 @@ CTM 將測試設計嚴格拆分為「上下兩層」互相呼應的結構：
   C) 只要變數的個數相同，正交表與 Pairwise 產生的測試案例清單必定完全一致  
   D) 正交表測試只能處理二分值（True/False）的變數組合
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq5)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq6)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -901,7 +902,7 @@ CTM 將測試設計嚴格拆分為「上下兩層」互相呼應的結構：
 > 📐 **M_1 = \{30天月份\}, quad M_2 = \{12月以外的 31天月份\}, quad M_3 = \{12月\}, quad M_4 = \{2月\}**
 如此一來，決策表的每一條規則都能回歸為純粹、嚴謹的等價類代號，消除模糊地帶。
 
-<!-- id: sqa-ch05-ccq6 -->
+<!-- id: sqa-ch05-ccq7 -->
 #### 🙋 概念核對問答 (CCQ 6)
 
 * **單選題**：在軟體測試實務中，下列哪一種受測情境最適合優先採用「決策表測試 (Decision Table Testing)」來設計案例？
@@ -910,7 +911,7 @@ CTM 將測試設計嚴格拆分為「上下兩層」互相呼應的結構：
   C) 系統的輸出僅與目前輸入值有關，與輸入條件的組合邏輯無涉  
   D) 系統的運作強烈依賴時間序列與物件歷史狀態的轉移
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq6)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq7)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -1090,7 +1091,7 @@ void testStackLifecycleAndStateTransitions() {
   2. **激發關鍵事件**：執行單一待測方法（如 `pop()` 或非法 `push()`）。
   3. **斷言狀態與動作**：同時驗證「回傳值」與「後續狀態斷言 (`assertTrue(s.isFull())`)」。
 
-<!-- id: sqa-ch05-ccq7 -->
+<!-- id: sqa-ch05-ccq8 -->
 #### 🙋 概念核對問答 (CCQ 7)
 
 * **單選題**：在狀態測試 (State Testing) 中，關於「狀態覆蓋 (State Coverage)」與「轉移覆蓋 (Transition Coverage)」的強度關係，下列敘述何者正確？
@@ -1099,7 +1100,7 @@ void testStackLifecycleAndStateTransitions() {
   C) 兩者互相獨立，沒有任何包含或強弱關係  
   D) 狀態測試不需要考慮無效轉移（即在某狀態下輸入非法事件的反應）
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq7)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -1119,6 +1120,7 @@ void testStackLifecycleAndStateTransitions() {
 
 **屬性基礎測試 (Property-Based Testing, PBT)** 則是另一種典範轉移：它要求我們不去定義「具體的測試資料與預期輸出」，而是定義**「程式碼應該永遠滿足的數學屬性或狀態不變量 (Class/Algorithmic Invariants)」**。接著由測試框架自動生成成千上萬組不同的極端隨機測資，來試圖找出讓這個屬性失敗的反例。
 
+<!-- id: sqa-ch05-ccq9 -->
 ### 💡 屬性基礎測試先驅：John Hughes 與 QuickCheck
 
 > **屬性基礎測試 (PBT)** 最初由瑞典查爾摩斯工學院教授、ACM Fellow **John Hughes** 與 Koen Claessen 於 2000 年共同提出，並發表了劃時代的函式庫 **QuickCheck**（榮獲 ACM SIGPLAN 最具影響力論文獎）。
@@ -1189,6 +1191,7 @@ public class AdditionProperties {
    * 驗證輸入變換與輸出變換之間的特定關係 R(x, x', y, y') 是否恆真成立。
    * **若關係不成立，100% 證明演算法內部邏輯存在缺陷！**
 
+<!-- id: sqa-ch05-ccq10 -->
 #### 🏛️ 四大經典變質關係模式庫 (MR Patterns)
 
 設計高品質變質關係時，可套用以下四大經典模式：
@@ -1239,7 +1242,6 @@ public class RecommendationMetamorphicTest {
 ```
 
 ---
-
 ### 5.8.4 現代 AI 系統評測：差分測試與裁判模型落地
 
 在 LLM 與 AI 應用中，輸出的不確定性（Stochasticity）與開放式自然語言讓傳統單元測試完全失效。現代 SQA 2.0 在黑箱測試中引入了兩大自動化評測技術：
@@ -1263,7 +1265,7 @@ public class RecommendationMetamorphicTest {
 
 ---
 
-<!-- id: sqa-ch05-ccq8 -->
+<!-- id: sqa-ch05-ccq11 -->
 #### 🙋 概念核對問答 (CCQ 8)
 
 在屬性基礎測試 (Property-Based Testing) 中，我們不需要手動為每一組測試寫出確切的預期輸出數值，而是定義程式執行時必須永遠維持的「屬性或不變量」，並交由測試框架隨機生成大量測資來尋找反例。
@@ -1271,7 +1273,7 @@ public class RecommendationMetamorphicTest {
 A) 正確 (True)
 B) 錯誤 (False)
 
-[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq8)
+[課堂互動](https://nlhsueh.github.io/nickedupocket/#/student/sqa-ch05-ccq11)
 
 <details>
 <summary>點擊查看【概念核對問答】答案與解析</summary>
@@ -1321,6 +1323,7 @@ B) 錯誤 (False)
    - 狀態涵蓋度百分百，則事件涵蓋度必定百分百。
    - 對於 Stack 而言，push 是一個事件，full 是一個狀態。
 
+<!-- id: sqa-ch05-ccq12 -->
 ## ✍️ 練習
 ### 5.ex.spec 設計規格
 一個功能模組的「規格」包含該模組的參數、回傳型態、前置條件、後置條件。寫出以下功能的規格，嘗試以正規的方式來描述之。並設計期測試案例。	

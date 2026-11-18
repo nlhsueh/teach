@@ -6,6 +6,7 @@
 
 ---
 
+<!-- id: sqa-u05-readme-ccq1 -->
 ## 🗂️ 快速章節跳轉導覽
 
 - [Unit 5.2：JUnit 5 基礎與 3A 原則解答](#unit-52-junit-5-基礎與-3a-原則)
@@ -20,7 +21,6 @@
 - [Unit 5.11：屬性測試 (PBT) 與變質測試解答](#unit-511-屬性測試-pbt-與變質測試)
 
 ---
-
 ## Unit 5.2: JUnit 5 基礎與 3A 原則
 📂 原始檔案：[`5.2_junit/CalculatorExerciseTest.java`](5.2_junit/CalculatorExerciseTest.java)
 

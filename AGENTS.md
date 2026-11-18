@@ -60,7 +60,7 @@
    * 選項清單一律直接顯示（使用 `-` 符號，不使用 `*` 漸進逐條淡入）。
    * 投影片頂部 Header 導覽一律採用純目錄下拉選單（`nav-dropdown`），預設隱藏，hover/click 時展開。
    * **全版圖片投影片 (full-image-slide)**：比照 SE / ASE 規範，即便是全版圖片，頁碼（`::after`，右下角深色浮動膠囊）與頂部 Header 導覽（右上角淺色毛玻璃膠囊）均須正常呈現，確保簡報換頁進度與章節跳轉不中斷；僅底部 `footer` 予以隱藏。
-   * **分割版面 (`split73` / `split64`) 圖片滑鼠懸停原地放大 (In-Place Hover Image Zoom)**：在 `div.split73` 與 `div.split64` 版型中，當滑鼠移至右側圖片上方（`:hover`）時，圖片直接在原本右側位置原地平滑放大（`transform-origin: right center`），左方的文字依然保留在畫面上（不跳出全螢幕置中遮罩），移開滑鼠即恢復原狀；且 `<div class="left">`、`</div>`、`<div class="right">` 標籤一律頂格撰寫（0 縮排）。
+   * **圖文分割版面 (`content-figure` / `split73` / `split64` / `.card img`) 圖片滑鼠懸停原地放大 (In-Place Hover Image Zoom)**：在 `div.content-figure`（佔比 34% 圖文欄）、`div.split73`、`div.split64` 與卡片內圖片（排除 `.emoji` 與 `.name-card`）中，因預設圖片區域較小，當滑鼠移至圖片上方（`:hover`）時，圖片須在原位置平滑放大（右側欄位定錨於 `transform-origin: right center`，左側欄位定錨於 `left center`），左方的文字依然保留在畫面上（不跳出全螢幕置中遮罩），移開滑鼠即恢復原狀；且 `<div class="left">`、`</div>`、`<div class="right">` 標籤一律頂格撰寫（0 縮排）。
    * **CCQ 隨堂測驗排版與命題規範**：
      - **禁止重複標題**：投影片頂部已具備 `## 概念核對問答 (CCQ X)`，`<div class="ccq-text">` 內部直接進入題目，嚴禁重複出現 `#### 🙋 **概念核對問答**` 產生冗餘。
      - **選項長度對稱平衡**：所有選項（A, B, C, D）字數應精準提煉且長度相當，**嚴禁標準答案明顯比干擾項長**，避免洩漏線索（Anti-Length Cue Bias）。

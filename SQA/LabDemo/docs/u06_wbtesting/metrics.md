@@ -95,7 +95,6 @@ MetricsReloaded 提供的這些指標通常需要**結合起來**看，才能全
 | **方法複雜度不一** | `WMC` 高，但 `OCavg` 低 | 類別有很多簡單方法，但可能有一兩個**極度複雜**的方法。 | 專注於重構那幾個特別複雜的方法。 |
 
 ---
-
 ## 🧪 實作練習範例 (Demo Code)
 * **待測原始碼**：[GradeAverage.java](../../src/main/java/u06_coverage/GradeAverage.java)
 * **基本路徑測試案例**：[GradeAverageBasisPathTest.java](../../src/test/java/u06_coverage/GradeAverageBasisPathTest.java)

@@ -125,6 +125,7 @@ mvn verify
 mvn pmd:check
 ```
 
+<!-- id: sqa-u04-pmd-ccq1 -->
 ##### 🎯 如何只檢查特定類別（例如 BubbleSort）？
 
 一般 Maven 預設會掃描專案內所有來源檔，但我們在 `pom.xml` 中預設將範圍鎖定於 `u04_inspection`。若在日常練習時只想針對特定檔案進行檢查，可透過 `-Dpmd.includes` 參數動態指定：
