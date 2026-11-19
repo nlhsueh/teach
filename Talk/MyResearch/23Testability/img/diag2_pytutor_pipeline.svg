@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 300">
+  <defs>
+    <marker id="arr-navy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-teal2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+
+  <!-- Box 1: Template / Learner UI -->
+  <rect x="14" y="24" width="230" height="250" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2.2"/>
+  <rect x="14" y="24" width="230" height="38" rx="12" fill="#1b365d"/>
+  <rect x="14" y="48" width="230" height="14" fill="#1b365d"/>
+  <text x="129" y="49" text-anchor="middle" font-family="Inter, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">1. Web Template (UI)</text>
+  <rect x="30" y="78" width="198" height="44" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="129" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Python Code Editor</text>
+  <text x="129" y="114" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#64748b">Raw compile error feedback</text>
+  <rect x="30" y="134" width="198" height="54" rx="7" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.6"/>
+  <text x="129" y="155" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0f766e">Testing Mode (OTC + DTC)</text>
+  <text x="129" y="174" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#334155">Custom tests &amp; 3-run history</text>
+  <rect x="30" y="200" width="198" height="54" rx="7" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.6"/>
+  <text x="129" y="221" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#8c1d40">Formal Submit (HTC)</text>
+  <text x="129" y="240" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#334155">Confirm checkbox · −3 pts</text>
+
+  <line x1="244" y1="149" x2="280" y2="149" stroke="#1b365d" stroke-width="2.6" marker-end="url(#arr-navy)"/>
+
+  <!-- Box 2: Django View + Docker Sandbox -->
+  <rect x="286" y="24" width="265" height="250" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2.2"/>
+  <rect x="286" y="24" width="265" height="38" rx="12" fill="#1b365d"/>
+  <rect x="286" y="48" width="265" height="14" fill="#1b365d"/>
+  <text x="418" y="49" text-anchor="middle" font-family="Inter, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">2. Django MVT &amp; Sandbox</text>
+  <rect x="304" y="78" width="229" height="72" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="418" y="102" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#1b365d">View-Control &amp; Auto-Judge</text>
+  <text x="418" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#475569">Routes OTC/DTC vs. HTC runs</text>
+  <text x="418" y="139" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#475569">Enforces time limits &amp; scoring</text>
+
+  <rect x="304" y="166" width="229" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+  <text x="418" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="800" fill="#1d4ed8">Docker Ephemeral Container</text>
+  <text x="418" y="211" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#334155">Dedicated container per run</text>
+  <text x="418" y="229" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#334155">Auto-destroyed in seconds</text>
+  <text x="418" y="246" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="600" fill="#1d4ed8">Isolates infinite loops &amp; threats</text>
+
+  <line x1="551" y1="149" x2="587" y2="149" stroke="#0f766e" stroke-width="2.6" marker-end="url(#arr-teal2)"/>
+
+  <!-- Box 3: Software Testing Module -->
+  <rect x="593" y="24" width="250" height="250" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.2"/>
+  <rect x="593" y="24" width="250" height="38" rx="12" fill="#0f766e"/>
+  <rect x="593" y="48" width="250" height="14" fill="#0f766e"/>
+  <text x="718" y="49" text-anchor="middle" font-family="Inter, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">3. Software-Testing Engine</text>
+  <rect x="611" y="80" width="214" height="50" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="718" y="102" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0f766e">Branch Coverage (bₜ)</text>
+  <text x="718" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Executed decision branches</text>
+
+  <rect x="611" y="142" width="214" height="50" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="718" y="164" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0f766e">Mutation Score (msₜ)</text>
+  <text x="718" y="182" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Fault-detection power of DTC</text>
+
+  <rect x="611" y="204" width="214" height="50" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="718" y="226" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#1b365d">Cyclomatic Complexity</text>
+  <text x="718" y="244" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Expected challenge (chₚ, chₜ)</text>
+
+  <line x1="843" y1="149" x2="879" y2="149" stroke="#1b365d" stroke-width="2.6" marker-end="url(#arr-navy)"/>
+
+  <!-- Box 4: DB & Analytics -->
+  <rect x="885" y="24" width="220" height="250" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2.2"/>
+  <rect x="885" y="24" width="220" height="38" rx="12" fill="#8c1d40"/>
+  <rect x="885" y="48" width="220" height="14" fill="#8c1d40"/>
+  <text x="995" y="49" text-anchor="middle" font-family="Inter, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">4. Logs &amp; SE Indicators</text>
+
+  <rect x="903" y="82" width="184" height="46" rx="8" fill="#ffffff" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="995" y="102" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="800" fill="#8c1d40">Resilience (r)</text>
+  <text x="995" y="119" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Persistence vs. setbacks</text>
+
+  <rect x="903" y="142" width="184" height="46" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="995" y="162" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="800" fill="#1b365d">Prog. Ability (PAI)</text>
+  <text x="995" y="179" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Score normalized by r</text>
+
+  <rect x="903" y="202" width="184" height="52" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="995" y="223" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="800" fill="#0f766e">Test Efficiency (TEI)</text>
+  <text x="995" y="241" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">DTC gain over OTC</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110" width="110" height="110">
+  <rect x="3" y="3" width="104" height="104" rx="14" fill="#fdf2f5" stroke="#e2a8b8" stroke-width="2"/>
+  <!-- Two colliding requirement arrows -->
+  <rect x="14" y="34" width="30" height="24" rx="5" fill="#1b365d"/>
+  <text x="29" y="50" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">R1</text>
+  <rect x="66" y="34" width="30" height="24" rx="5" fill="#8c1d40"/>
+  <text x="81" y="50" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">R2</text>
+  <!-- Lightning bolt / clash in center -->
+  <polygon points="56,24 48,47 55,47 51,68 63,43 56,43" fill="#f59e0b" stroke="#8c1d40" stroke-width="1.4"/>
+  <!-- Shield check below -->
+  <circle cx="55" cy="76" r="8" fill="#0f766e"/>
+  <path d="M 51 76 L 54 79 L 60 73" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="55" y="97" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="800" fill="#8c1d40">CONFLICT CATCH</text>
+</svg>

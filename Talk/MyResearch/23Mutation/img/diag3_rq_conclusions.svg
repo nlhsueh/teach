@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 355" width="1120" height="355">
+  <!-- 3 RQ Conclusion Cards -->
+  <!-- Card 1: RQ1 -->
+  <rect x="14" y="12" width="348" height="252" rx="14" fill="#f0fdfa" stroke="#99d6cd" stroke-width="2"/>
+  <rect x="14" y="12" width="348" height="44" rx="14" fill="#0f766e"/>
+  <rect x="14" y="40" width="348" height="16" fill="#0f766e"/>
+  <text x="188" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">RQ1 · Test Productivity &amp; Quality</text>
+
+  <text x="188" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="38" font-weight="800" fill="#0f766e">152 vs. 18</text>
+  <text x="188" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#1b365d">8.4× More Test Submissions (30.4 vs. 3.6 avg)</text>
+  <line x1="38" y1="138" x2="338" y2="138" stroke="#99d6cd" stroke-width="1.5"/>
+  <text x="38" y="164" font-family="Inter, sans-serif" font-size="13" fill="#334155">• <tspan font-weight="700" fill="#0f172a">25 vs. 8 valid test cases</tspan> (3.1× higher)</text>
+  <text x="38" y="188" font-family="Inter, sans-serif" font-size="13" fill="#334155">• Automated execution frees students to focus</text>
+  <text x="48" y="206" font-family="Inter, sans-serif" font-size="13" fill="#334155">on test design rather than manual tracing</text>
+  <text x="38" y="232" font-family="Inter, sans-serif" font-size="13" fill="#334155">• Huge lead on harder tasks (<tspan font-weight="700" fill="#0f766e">Triangle: 105 vs. 3</tspan>)</text>
+
+  <!-- Card 2: RQ2 -->
+  <rect x="386" y="12" width="348" height="252" rx="14" fill="#fdf2f5" stroke="#e5b4c3" stroke-width="2"/>
+  <rect x="386" y="12" width="348" height="44" rx="14" fill="#8c1d40"/>
+  <rect x="386" y="40" width="348" height="16" fill="#8c1d40"/>
+  <text x="560" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">RQ2 · Fast Feedback &amp; Trial-and-Error</text>
+
+  <text x="560" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="34" font-weight="800" fill="#8c1d40">Rapid Iteration</text>
+  <text x="560" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#1b365d">Higher Invalid Rate Reflects Active Debugging</text>
+  <line x1="410" y1="138" x2="710" y2="138" stroke="#e5b4c3" stroke-width="1.5"/>
+  <text x="410" y="164" font-family="Inter, sans-serif" font-size="13" fill="#334155">• Instant error messages spark rapid fix-retry</text>
+  <text x="420" y="182" font-family="Inter, sans-serif" font-size="13" fill="#334155">cycles, raising invalid attempts but building skill</text>
+  <text x="410" y="208" font-family="Inter, sans-serif" font-size="13" fill="#334155">• Manual control group collapsed near <tspan font-weight="700" fill="#8c1d40">0</tspan> on</text>
+  <text x="420" y="226" font-family="Inter, sans-serif" font-size="13" fill="#334155">Interpolation Search &amp; Triangle benchmarks</text>
+
+  <!-- Card 3: RQ3 -->
+  <rect x="758" y="12" width="348" height="252" rx="14" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="758" y="12" width="348" height="44" rx="14" fill="#1b365d"/>
+  <rect x="758" y="40" width="348" height="16" fill="#1b365d"/>
+  <text x="932" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">RQ3 · Motivation &amp; Satisfaction</text>
+
+  <text x="932" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="38" font-weight="800" fill="#1b365d">4.83 / 5.0</text>
+  <text x="932" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#0f766e">Top Scores in Awareness, Participation &amp; Effect</text>
+  <line x1="782" y1="138" x2="1082" y2="138" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="782" y="164" font-family="Inter, sans-serif" font-size="13" fill="#334155">• Motivation jumped (<tspan font-weight="700" fill="#1b365d">4.50 vs. 3.50</tspan>;</text>
+  <text x="792" y="182" font-family="Inter, sans-serif" font-size="13" fill="#334155">deeper interest <tspan font-weight="700" fill="#1b365d">4.17 vs. 3.00</tspan>)</text>
+  <text x="782" y="208" font-family="Inter, sans-serif" font-size="13" fill="#334155">• Preferred over traditional teaching (<tspan font-weight="700" fill="#0f766e">4.67</tspan>)</text>
+  <text x="782" y="232" font-family="Inter, sans-serif" font-size="13" fill="#334155">• Maintained concentration (<tspan font-weight="700" fill="#1b365d">4.17 vs. 3.50</tspan>)</text>
+
+  <!-- Bottom Core Takeaway Banner -->
+  <rect x="14" y="280" width="1092" height="62" rx="12" fill="#1b365d"/>
+  <text x="560" y="306" text-anchor="middle" font-family="Inter, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">Core Conclusion: Vaccine-Themed Gamification + Automated Mutant Execution Makes Mutation Testing Accessible &amp; Engaging</text>
+  <text x="560" y="328" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">CIB + CVI transforms an intimidating, error-prone manual exercise into a rewarding, scaffolded solo learning journey.</text>
+</svg>

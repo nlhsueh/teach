@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 355" width="1100" height="355">
+  <defs>
+    <filter id="sh3" x="-4%" y="-6%" width="108%" height="114%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1100" height="355" rx="14" fill="#f8fafc"/>
+
+  <!-- Top Synthesis Banner -->
+  <rect x="24" y="16" width="1052" height="54" rx="10" fill="#1b365d" filter="url(#sh3)"/>
+  <text x="550" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="800" fill="#ffffff">Extended UTAUT2 + PLS-SEM Explains 75.4% of Students' Intention to Use Online Judges (R² = 0.754 · Q² = 0.532)</text>
+  <text x="550" y="59" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#cbd5e1">n = 187 FCU Undergraduates · 4 of 12 Hypotheses Supported (H4, H6, H8, H12) · First UTAUT2 Empirical Study on OJ Acceptance</text>
+
+  <!-- RQ1 Box -->
+  <rect x="24" y="86" width="516" height="252" rx="12" fill="#ffffff" stroke="#0f766e" stroke-width="2.2" filter="url(#sh3)"/>
+  <rect x="24" y="86" width="516" height="42" rx="12" fill="#0f766e"/>
+  <rect x="24" y="114" width="516" height="14" fill="#0f766e"/>
+  <text x="44" y="113" font-family="Inter, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">RQ1: What Drives OJ Acceptance?</text>
+
+  <!-- 3 Positive Drivers -->
+  <rect x="42" y="142" width="150" height="82" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="117" y="165" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#0f766e">#1 Hedonic (HM)</text>
+  <text x="117" y="191" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="800" fill="#1b365d">β = 0.400</text>
+  <text x="117" y="211" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#475569">t = 5.008 · p &lt; 0.001</text>
+
+  <rect x="206" y="142" width="150" height="82" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="281" y="165" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#0f766e">#2 Self-Efficacy (SE)</text>
+  <text x="281" y="191" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="800" fill="#1b365d">β = 0.316</text>
+  <text x="281" y="211" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#475569">t = 4.731 · p &lt; 0.001</text>
+
+  <rect x="370" y="142" width="152" height="82" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="446" y="165" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#0f766e">#3 Social Infl. (SI)</text>
+  <text x="446" y="191" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="800" fill="#1b365d">β = 0.245</text>
+  <text x="446" y="211" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#475569">t = 2.391 · p = 0.017</text>
+
+  <rect x="42" y="236" width="480" height="86" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="58" y="259" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#1b365d">Key Takeaway: Engagement &amp; Confidence Beat Utility</text>
+  <text x="58" y="280" font-family="Inter, sans-serif" font-size="12" fill="#334155">• PE, EE, FC &amp; ANX were non-significant (p &gt; 0.05) — missing debuggers &amp;</text>
+  <text x="68" y="298" font-family="Inter, sans-serif" font-size="12" fill="#334155">auto-indent quirks dampened utility, while clear guides curbed anxiety.</text>
+  <text x="58" y="315" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#0f766e">➔ Gamification, troubleshooting confidence &amp; TA/peer support win adoption.</text>
+
+  <!-- RQ2 Box -->
+  <rect x="560" y="86" width="516" height="252" rx="12" fill="#ffffff" stroke="#8c1d40" stroke-width="2.2" filter="url(#sh3)"/>
+  <rect x="560" y="86" width="516" height="42" rx="12" fill="#8c1d40"/>
+  <rect x="560" y="114" width="516" height="14" fill="#8c1d40"/>
+  <text x="580" y="113" font-family="Inter, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">RQ2: Does Academic Major Moderate Acceptance?</text>
+
+  <rect x="578" y="142" width="232" height="82" rx="8" fill="#fdf2f5" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="694" y="165" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="800" fill="#8c1d40">Moderation (H3, H7, H9, H11)</text>
+  <text x="694" y="191" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#8c1d40">0 / 4 Supported</text>
+  <text x="694" y="211" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">p = 0.325 to 0.977 (All NS)</text>
+
+  <rect x="826" y="142" width="232" height="82" rx="8" fill="#eff6ff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="942" y="165" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="800" fill="#1b365d">Direct Effect (H12: MJR → BI)</text>
+  <text x="942" y="191" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#1b365d">Supported (β = -0.098)</text>
+  <text x="942" y="211" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">t = 2.239 · p = 0.026*</text>
+
+  <rect x="578" y="236" width="480" height="86" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="594" y="259" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#8c1d40">Key Takeaway: Universal Psychological Drivers Across Majors</text>
+  <text x="594" y="280" font-family="Inter, sans-serif" font-size="12" fill="#334155">• Enjoyment (HM) and self-confidence (SE) drive both CS and non-CS</text>
+  <text x="604" y="298" font-family="Inter, sans-serif" font-size="12" fill="#334155">students equally — major does NOT alter how factors shape intention.</text>
+  <text x="594" y="315" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1b365d">➔ Non-CS students succeed on OJs when motivated, confident &amp; supported.</text>
+</svg>

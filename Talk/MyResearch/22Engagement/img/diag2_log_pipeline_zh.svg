@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 340" width="980" height="340">
+  <rect width="980" height="340" rx="12" fill="#f8fafc"/>
+
+  <!-- Stage 1 -->
+  <rect x="18" y="18" width="290" height="304" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="18" y="18" width="290" height="36" rx="10" fill="#1b365d"/>
+  <rect x="18" y="42" width="290" height="12" fill="#1b365d"/>
+  <text x="163" y="42" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14" font-weight="800" fill="#ffffff">1. 跨平台學習資料來源</text>
+
+  <rect x="32" y="68" width="262" height="86" rx="7" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="44" y="88" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" font-weight="800" fill="#1b365d">OpenEdu (Open edX) 行為日誌</text>
+  <text x="44" y="107" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#334155">• 影片觀看 (7項)：載入、播放、暫停、</text>
+  <text x="44" y="123" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#334155">  停止、回播、影片數、觀看總時長</text>
+  <text x="44" y="141" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#334155">• 上線天數 (Online_days) 與文件點擊</text>
+
+  <rect x="32" y="164" width="262" height="78" rx="7" fill="#f0fdfa" stroke="#5eead4"/>
+  <text x="44" y="184" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" font-weight="800" fill="#0f766e">自我評量互動外掛模組</text>
+  <text x="44" y="203" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#334155">• Unit_test：單元觀念選擇題測驗</text>
+  <text x="44" y="219" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#334155">• Game_test：StarTrec lite 四血條遊戲</text>
+  <text x="44" y="235" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#334155">• OJ_test：自動批改 Python 程式題</text>
+
+  <rect x="32" y="252" width="262" height="56" rx="7" fill="#fdf2f5" stroke="#fda4af"/>
+  <text x="44" y="272" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" font-weight="800" fill="#8c1d40">逢甲大學 LMS 課程平台</text>
+  <text x="44" y="292" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#334155">• Score：期末開放資料 Python 專題成績</text>
+
+  <!-- Arrow 1->2 -->
+  <path d="M312 170 L346 170" stroke="#1b365d" stroke-width="3.5" stroke-linecap="round"/>
+  <polygon points="344,163 356,170 344,177" fill="#1b365d"/>
+
+  <!-- Stage 2 -->
+  <rect x="360" y="42" width="250" height="256" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+  <rect x="360" y="42" width="250" height="36" rx="10" fill="#0f766e"/>
+  <rect x="360" y="66" width="250" height="12" fill="#0f766e"/>
+  <text x="485" y="66" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14" font-weight="800" fill="#ffffff">2. 資料清理與指標篩選</text>
+
+  <rect x="376" y="94" width="218" height="56" rx="7" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="485" y="116" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="800" fill="#1b365d">315 修課 ➔ 217 有效樣本</text>
+  <text x="485" y="136" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">剔除無系統日誌之非活躍學生</text>
+
+  <rect x="376" y="162" width="218" height="56" rx="7" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="485" y="184" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="800" fill="#0f766e">28 原始指標 ➔ 13 關鍵指標</text>
+  <text x="485" y="204" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">刪除 15 項負荷量未達標之指標</text>
+
+  <rect x="376" y="230" width="218" height="52" rx="7" fill="#f0fdfa" stroke="#99f6e4"/>
+  <text x="485" y="252" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" font-weight="800" fill="#0f766e">5 大構面 · 7 條假設路徑</text>
+  <text x="485" y="270" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11" fill="#334155">延伸自 Sun &amp; Bin (2018) 框架</text>
+
+  <!-- Arrow 2->3 -->
+  <path d="M614 170 L648 170" stroke="#0f766e" stroke-width="3.5" stroke-linecap="round"/>
+  <polygon points="646,163 658,170 646,177" fill="#0f766e"/>
+
+  <!-- Stage 3 -->
+  <rect x="662" y="18" width="300" height="304" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="662" y="18" width="300" height="36" rx="10" fill="#8c1d40"/>
+  <rect x="662" y="42" width="300" height="12" fill="#8c1d40"/>
+  <text x="812" y="42" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14" font-weight="800" fill="#ffffff">3. SmartPLS 3.3.6 統計分析</text>
+
+  <rect x="678" y="68" width="268" height="54" rx="7" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="690" y="89" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" font-weight="800" fill="#1b365d">A. 測量模型信效度檢驗</text>
+  <text x="690" y="109" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">CL、Cronbach α、CR、AVE、區別效度</text>
+
+  <rect x="678" y="132" width="268" height="54" rx="7" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="690" y="153" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" font-weight="800" fill="#1b365d">B. 結構路徑估計 (RQ1)</text>
+  <text x="690" y="173" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">5,000 次拔靴法檢定 · R² = 0.771</text>
+
+  <rect x="678" y="196" width="268" height="54" rx="7" fill="#f0fdfa" stroke="#5eead4"/>
+  <text x="690" y="217" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" font-weight="800" fill="#0f766e">C. 中介效應分析 (RQ2)</text>
+  <text x="690" y="237" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">檢驗自我評量之特定間接效應</text>
+
+  <rect x="678" y="260" width="268" height="48" rx="7" fill="#fdf2f5" stroke="#fda4af"/>
+  <text x="690" y="280" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" font-weight="800" fill="#8c1d40">D. IPMA 重要性—表現矩陣 (RQ3)</text>
+  <text x="690" y="298" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">總效應（重要性）對比 0–100 表現分數</text>
+</svg>

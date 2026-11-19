@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 350" font-family="'Inter',sans-serif">
+  <defs>
+    <marker id="arr-t3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 1 L10 5 L0 9 z" fill="#1b365d"/>
+    </marker>
+  </defs>
+
+  <!-- Title bar -->
+  <rect x="12" y="8" width="1096" height="44" rx="10" fill="#1b365d"/>
+  <text x="560" y="36" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="800">Selective Process-Support Mechanism (RQ3 Theoretical Framework)</text>
+
+  <!-- Two Selectivity Pillars -->
+  <rect x="12" y="66" width="534" height="148" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="32" y="96" fill="#0f766e" font-size="17" font-weight="800">1. Behavioral Selectivity</text>
+  <text x="32" y="128" fill="#1e293b" font-size="15.2" font-weight="600">• Only 22.0% of episodes trigger clarification</text>
+  <text x="32" y="158" fill="#1e293b" font-size="15.2" font-weight="600">• 84.7% target conceptual gaps (not logistics)</text>
+  <text x="32" y="188" fill="#1e293b" font-size="15.2" font-weight="600">• 86.3% activate SRL monitoring in Round 1</text>
+
+  <rect x="574" y="66" width="534" height="148" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <text x="594" y="96" fill="#8c1d40" font-size="17" font-weight="800">2. Effect Selectivity</text>
+  <text x="594" y="128" fill="#0f766e" font-size="15.2" font-weight="700">• Process Support ✓: Shorter remediation (2 vs 4 rds)</text>
+  <text x="594" y="158" fill="#8c1d40" font-size="15.2" font-weight="700">• Outcome Boost ✗: Null coding efficiency (p > 0.05)</text>
+  <text x="594" y="188" fill="#1e293b" font-size="15.2" font-weight="600">• 80% Mastery Gate acts as competence equalizer</text>
+
+  <!-- Bottom Process vs Outcome Flow -->
+  <rect x="12" y="234" width="420" height="102" rx="12" fill="#ffffff" stroke="#0f766e" stroke-width="2.5"/>
+  <rect x="12" y="234" width="420" height="34" rx="12" fill="#0f766e"/>
+  <rect x="12" y="256" width="420" height="12" fill="#0f766e"/>
+  <text x="222" y="257" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Remediation Stage (Step-Level Feedback)</text>
+  <text x="222" y="305" text-anchor="middle" fill="#0f172a" font-size="15.5" font-weight="700">Observable value lives here: faster recovery</text>
+
+  <line x1="432" y1="285" x2="474" y2="285" stroke="#1b365d" stroke-width="3" marker-end="url(#arr-t3)"/>
+
+  <!-- Equalizer Gate -->
+  <rect x="480" y="248" width="160" height="74" rx="37" fill="#1b365d"/>
+  <text x="560" y="291" text-anchor="middle" fill="#ffffff" font-size="15.5" font-weight="800">80% Mastery Gate</text>
+
+  <line x1="640" y1="285" x2="682" y2="285" stroke="#1b365d" stroke-width="3" marker-end="url(#arr-t3)"/>
+
+  <rect x="688" y="234" width="420" height="102" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="688" y="234" width="420" height="34" rx="12" fill="#475569"/>
+  <rect x="688" y="256" width="420" height="12" fill="#475569"/>
+  <text x="898" y="257" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Coding Challenge (Task-Level Transfer)</text>
+  <text x="898" y="305" text-anchor="middle" fill="#475569" font-size="15.5" font-weight="700">97.3% pass ceiling · pathways converge</text>
+</svg>

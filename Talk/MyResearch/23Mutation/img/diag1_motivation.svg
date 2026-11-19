@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 355" width="1080" height="355">
+  <defs>
+    <marker id="arr-navy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L9,5 L0,9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L9,5 L0,9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+
+  <!-- Left Panel: Traditional SE Testing Education -->
+  <rect x="14" y="14" width="490" height="327" rx="14" fill="#fdf2f5" stroke="#e5b4c3" stroke-width="2"/>
+  <rect x="14" y="14" width="490" height="44" rx="14" fill="#8c1d40"/>
+  <rect x="14" y="42" width="490" height="16" fill="#8c1d40"/>
+  <text x="259" y="42" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#ffffff">Traditional Mutation Testing Education</text>
+
+  <rect x="36" y="76" width="446" height="62" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <circle cx="64" cy="107" r="16" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <text x="64" y="113" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#8c1d40">1</text>
+  <text x="92" y="102" font-family="Inter, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">Testing Overlooked in CS Curricula</text>
+  <text x="92" y="123" font-family="Inter, sans-serif" font-size="12.5" fill="#475569">Courses emphasize coding; testing &amp; quality skills lag behind</text>
+
+  <rect x="36" y="152" width="446" height="62" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <circle cx="64" cy="183" r="16" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <text x="64" y="189" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#8c1d40">2</text>
+  <text x="92" y="178" font-family="Inter, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">Tedious Manual Mutant Execution</text>
+  <text x="92" y="199" font-family="Inter, sans-serif" font-size="12.5" fill="#475569">Handwriting tests, tracing outputs &amp; computing scores is slow</text>
+
+  <rect x="36" y="228" width="446" height="62" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <circle cx="64" cy="259" r="16" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <text x="64" y="265" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#8c1d40">3</text>
+  <text x="92" y="254" font-family="Inter, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">Motivation Drop &amp; Classroom Friction</text>
+  <text x="92" y="275" font-family="Inter, sans-serif" font-size="12.5" fill="#475569">2-player games suffer from skill gaps; few testing-focused tools</text>
+
+  <text x="259" y="324" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#8c1d40">Outcome: High Fatigue · Low Engagement · Few Valid Tests</text>
+
+  <!-- Center Arrow -->
+  <line x1="512" y1="178" x2="564" y2="178" stroke="#1b365d" stroke-width="4" marker-end="url(#arr-navy)"/>
+  <rect x="509" y="138" width="60" height="26" rx="13" fill="#1b365d"/>
+  <text x="539" y="155" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#ffffff">CIB</text>
+
+  <!-- Right Panel: CIB Gamified Learning -->
+  <rect x="576" y="14" width="490" height="327" rx="14" fill="#f0fdfa" stroke="#99d6cd" stroke-width="2"/>
+  <rect x="576" y="14" width="490" height="44" rx="14" fill="#0f766e"/>
+  <rect x="576" y="42" width="490" height="16" fill="#0f766e"/>
+  <text x="821" y="42" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#ffffff">Code Immunity Boost (CIB) Gamified Learning</text>
+
+  <rect x="598" y="76" width="446" height="62" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="626" cy="107" r="16" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="626" y="113" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#0f766e">1</text>
+  <text x="654" y="102" font-family="Inter, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">Meaningful Vaccine-Development Mission</text>
+  <text x="654" y="123" font-family="Inter, sans-serif" font-size="12.5" fill="#475569">COVID-19 inspired analogy: Program · Mutant · Test Case</text>
+
+  <rect x="598" y="152" width="446" height="62" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="626" cy="183" r="16" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="626" y="189" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#0f766e">2</text>
+  <text x="654" y="178" font-family="Inter, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">Automated Execution &amp; Instant Feedback</text>
+  <text x="654" y="199" font-family="Inter, sans-serif" font-size="12.5" fill="#475569">CVI mutant pool + Python unittest runner + live Immunity score</text>
+
+  <rect x="598" y="228" width="446" height="62" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="626" cy="259" r="16" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="626" y="265" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#0f766e">3</text>
+  <text x="654" y="254" font-family="Inter, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">Fragility-Calibrated Solo Progression</text>
+  <text x="654" y="275" font-family="Inter, sans-serif" font-size="12.5" fill="#475569">Easy → Difficult levels with Basic/Better goals &amp; dual roles</text>
+
+  <text x="821" y="324" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#0f766e">Outcome: 8.4× Submissions · 3.1× Valid Tests · High Motivation</text>
+</svg>

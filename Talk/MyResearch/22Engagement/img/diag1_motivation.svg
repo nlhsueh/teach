@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="960" height="320">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="960" height="320" rx="12" fill="#f8fafc"/>
+
+  <!-- Left Card: Traditional LMS / Standalone OJ -->
+  <g filter="url(#shadow)">
+    <rect x="24" y="20" width="420" height="280" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="24" y="20" width="420" height="44" rx="12" fill="#8c1d40"/>
+    <rect x="24" y="50" width="420" height="14" fill="#8c1d40"/>
+    <text x="234" y="48" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="800" fill="#ffffff">Traditional LMS &amp; Standalone OJ</text>
+  </g>
+  <g font-family="Inter, sans-serif" font-size="13.5" fill="#334155">
+    <rect x="44" y="82" width="380" height="54" rx="8" fill="#fdf2f5" stroke="#fecdd3"/>
+    <text x="58" y="105" font-weight="700" fill="#8c1d40">✗ Blind to Coding Behavior</text>
+    <text x="58" y="125" font-size="12.5">Standard LMS tracks clicks, not programming effort.</text>
+
+    <rect x="44" y="148" width="380" height="54" rx="8" fill="#fdf2f5" stroke="#fecdd3"/>
+    <text x="58" y="171" font-weight="700" fill="#8c1d40">✗ Scores Without "Why"</text>
+    <text x="58" y="191" font-size="12.5">OJ flags low scores, causing beginners to lose confidence.</text>
+
+    <rect x="44" y="214" width="380" height="66" rx="8" fill="#fff1f2" stroke="#fda4af"/>
+    <text x="58" y="238" font-weight="700" fill="#8c1d40">✗ Missing Causal &amp; Priority Link</text>
+    <text x="58" y="258" font-size="12.5">Unclear which actions (video, docs, tests) truly drive grades.</text>
+  </g>
+
+  <!-- Center Arrow -->
+  <g>
+    <circle cx="480" cy="160" r="24" fill="#1b365d"/>
+    <text x="480" y="167" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="#ffffff">➔</text>
+  </g>
+
+  <!-- Right Card: Our Integrated PLS-SEM + IPMA Approach -->
+  <g filter="url(#shadow)">
+    <rect x="516" y="20" width="420" height="280" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="516" y="20" width="420" height="44" rx="12" fill="#0f766e"/>
+    <rect x="516" y="50" width="420" height="14" fill="#0f766e"/>
+    <text x="726" y="48" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="800" fill="#ffffff">Our Approach: OpenEdu + PLS-SEM + IPMA</text>
+  </g>
+  <g font-family="Inter, sans-serif" font-size="13.5" fill="#334155">
+    <rect x="536" y="82" width="380" height="54" rx="8" fill="#f0fdfa" stroke="#99f6e4"/>
+    <text x="550" y="105" font-weight="700" fill="#0f766e">✓ Fine-Grained Multi-Platform Logs</text>
+    <text x="550" y="125" font-size="12.5">OpenEdu video/doc events + Unit, Game &amp; OJ tests.</text>
+
+    <rect x="536" y="148" width="380" height="54" rx="8" fill="#f0fdfa" stroke="#99f6e4"/>
+    <text x="550" y="171" font-weight="700" fill="#0f766e">✓ Behavioral ➔ Cognitive ➔ Grade Model</text>
+    <text x="550" y="191" font-size="12.5">PLS-SEM tests direct paths &amp; self-assessment mediation.</text>
+
+    <rect x="536" y="214" width="380" height="66" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="550" y="238" font-weight="700" fill="#1b365d">✓ Actionable IPMA Priority Map</text>
+    <text x="550" y="258" font-size="12.5">Ranks high-impact, low-performance targets for instructors.</text>
+  </g>
+</svg>

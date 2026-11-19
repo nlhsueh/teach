@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 355" font-family="'Noto Sans TC','PingFang TC','Inter',sans-serif">
+  <!-- Card 1 -->
+  <rect x="10" y="10" width="352" height="266" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.2"/>
+  <rect x="10" y="10" width="352" height="42" rx="12" fill="#0f766e"/>
+  <rect x="10" y="40" width="352" height="12" fill="#0f766e"/>
+  <text x="186" y="37" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">RQ1 · 補救行為路徑（描述性）</text>
+  <rect x="24" y="68" width="324" height="44" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="186" y="96" text-anchor="middle" fill="#0f766e" font-size="17.5" font-weight="800">78% 純重測 · 86% 首輪求助</text>
+  <text x="26" y="148" fill="#1e293b" font-size="14.8" font-weight="600">• 僅 22.0% 使用澄清；84.7% 為概念題</text>
+  <text x="26" y="186" fill="#1e293b" font-size="14.8" font-weight="600">• 即時 vs 延遲：2 vs 4 輪 (δ = −0.912)</text>
+  <text x="26" y="224" fill="#0f766e" font-size="14.8" font-weight="700">• 「何時問」比「有無問」更關鍵</text>
+
+  <!-- Card 2 -->
+  <rect x="384" y="10" width="352" height="266" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2.2"/>
+  <rect x="384" y="10" width="352" height="42" rx="12" fill="#8c1d40"/>
+  <rect x="384" y="40" width="352" height="12" fill="#8c1d40"/>
+  <text x="560" y="37" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">RQ2 · 後續程式效率（關聯性）</text>
+  <rect x="398" y="68" width="324" height="44" rx="8" fill="#ffffff" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="560" y="96" text-anchor="middle" fill="#8c1d40" font-size="17.5" font-weight="800">穩定無顯著差異（All p > 0.05）</text>
+  <text x="400" y="148" fill="#1e293b" font-size="14.8" font-weight="600">• 97.3% 高通過率天花板效應</text>
+  <text x="400" y="186" fill="#1e293b" font-size="14.8" font-weight="600">• Cliff's δ 全面可忽略 (|δ| ≤ 0.127)</text>
+  <text x="400" y="224" fill="#8c1d40" font-size="14.8" font-weight="700">• MixedLM &amp; 15/30/60 分鐘測試皆一致</text>
+
+  <!-- Card 3 -->
+  <rect x="758" y="10" width="352" height="266" rx="12" fill="#eef2ff" stroke="#1b365d" stroke-width="2.2"/>
+  <rect x="758" y="10" width="352" height="42" rx="12" fill="#1b365d"/>
+  <rect x="758" y="40" width="352" height="12" fill="#1b365d"/>
+  <text x="934" y="37" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">RQ3 · 理論定位與設計（整合）</text>
+  <rect x="772" y="68" width="324" height="44" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="934" y="96" text-anchor="middle" fill="#1b365d" font-size="17.5" font-weight="800">選擇性歷程支持機制</text>
+  <text x="774" y="148" fill="#1e293b" font-size="14.8" font-weight="600">• 價值在縮短補救歷程，非直接加速寫碼</text>
+  <text x="774" y="186" fill="#1e293b" font-size="14.8" font-weight="600">• 80% 精熟門檻均等化進入挑戰的能力</text>
+  <text x="774" y="224" fill="#1b365d" font-size="14.8" font-weight="700">• 設計建議：首輪／連錯 2 次主動提示</text>
+
+  <!-- Bottom Synthesis Strip -->
+  <rect x="10" y="294" width="1100" height="50" rx="10" fill="#1b365d"/>
+  <text x="560" y="325" text-anchor="middle" fill="#ffffff" font-size="16.2" font-weight="800">總結核心啟示：LLM 輔助不是「一體適用的萬靈丹」，而是依學習者時機與情境選擇性啟動的歷程支架</text>
+</svg>

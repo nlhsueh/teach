@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 330" width="1120" height="330">
+  <defs>
+    <marker id="arr-n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-t" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arr-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .phase { font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .box-t { font-size: 14px; font-weight: 700; fill: #0f172a; }
+    .box-s { font-size: 11.8px; fill: #475569; }
+    .lbl { font-size: 11.5px; font-weight: 700; }
+  </style>
+
+  <!-- Phase 1 Background -->
+  <rect x="12" y="10" width="600" height="310" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="32" y="34" class="phase" fill="#1b365d">Phase 1 · During Problem Solving (Proactive Regulation)</text>
+
+  <!-- Phase 2 Background -->
+  <rect x="634" y="10" width="474" height="310" rx="12" fill="#f0fdfa" stroke="#99d6cd" stroke-width="1.5"/>
+  <text x="654" y="34" class="phase" fill="#0f766e">Phase 2 · Post-Completion (Beyond Test Passing)</text>
+
+  <!-- Node 1: Coding & OJ -->
+  <rect x="34" y="76" width="166" height="84" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <text x="117" y="106" text-anchor="middle" class="box-t">Coding &amp; OJ Test</text>
+  <text x="117" y="126" text-anchor="middle" class="box-s">Starts at L0</text>
+  <text x="117" y="144" text-anchor="middle" class="box-s">Submit &amp; Debug</text>
+
+  <!-- Node 2: Stagnation Monitor -->
+  <rect x="242" y="76" width="174" height="84" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+  <text x="329" y="104" text-anchor="middle" class="box-t" fill="#8c1d40">Stagnation Monitor</text>
+  <text x="329" y="124" text-anchor="middle" class="box-s">Repeated errors,</text>
+  <text x="329" y="142" text-anchor="middle" class="box-s">failures &amp; idle time</text>
+
+  <!-- Node 3: Proactive Prompt -->
+  <rect x="454" y="76" width="142" height="84" rx="10" fill="#8c1d40"/>
+  <text x="525" y="106" text-anchor="middle" font-size="13.5" font-weight="700" fill="#ffffff">Proactive Prompt</text>
+  <text x="525" y="126" text-anchor="middle" font-size="11.5" fill="#fecdd3">Reminder Only</text>
+  <text x="525" y="144" text-anchor="middle" font-size="11.5" fill="#ffffff">(No Auto-Solve)</text>
+
+  <!-- Node 4: Learner Agency Decision -->
+  <rect x="190" y="214" width="276" height="78" rx="10" fill="#1b365d"/>
+  <text x="328" y="244" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Learner Agency Decision</text>
+  <text x="328" y="266" text-anchor="middle" font-size="12" fill="#cbd5e1">Stay Autonomous OR Select L1–L4</text>
+
+  <!-- Arrows Phase 1 -->
+  <line x1="200" y1="118" x2="238" y2="118" stroke="#1b365d" stroke-width="2.2" marker-end="url(#arr-n)"/>
+  <line x1="416" y1="118" x2="450" y2="118" stroke="#8c1d40" stroke-width="2.2" marker-end="url(#arr-a)"/>
+  <path d="M 525 160 L 525 253 L 470 253" fill="none" stroke="#8c1d40" stroke-width="2.2" marker-end="url(#arr-a)"/>
+  <path d="M 190 253 L 117 253 L 117 164" fill="none" stroke="#1b365d" stroke-width="2.2" marker-end="url(#arr-n)"/>
+  <text x="154" y="244" text-anchor="middle" class="lbl" fill="#1b365d">Iterate</text>
+
+  <!-- Bridge: AC Reached -->
+  <rect x="656" y="84" width="124" height="68" rx="34" fill="#0f766e"/>
+  <text x="718" y="114" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">AC Reached</text>
+  <text x="718" y="134" text-anchor="middle" font-size="11.5" fill="#ccfbf1">Tests Passed</text>
+
+  <path d="M 117 76 L 117 56 L 718 56 L 718 80" fill="none" stroke="#0f766e" stroke-width="2.4" marker-end="url(#arr-t)"/>
+  <rect x="330" y="44" width="176" height="22" rx="11" fill="#ffffff" stroke="#0f766e" stroke-width="1.4"/>
+  <text x="418" y="59" text-anchor="middle" class="lbl" fill="#0f766e">Successful Submission (AC)</text>
+
+  <!-- Node 5: Concept Checks -->
+  <rect x="822" y="68" width="264" height="94" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+  <text x="954" y="96" text-anchor="middle" class="box-t" fill="#0f766e">1. Concept Checks</text>
+  <text x="954" y="118" text-anchor="middle" class="box-s">Targeted questions based on</text>
+  <text x="954" y="136" text-anchor="middle" class="box-s">problem spec &amp; weak concepts</text>
+  <text x="954" y="152" text-anchor="middle" class="box-s">to expose misconceptions</text>
+
+  <!-- Node 6: Reflection Feedback -->
+  <rect x="822" y="192" width="264" height="100" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <text x="954" y="220" text-anchor="middle" class="box-t" fill="#1b365d">2. Reflection Feedback</text>
+  <text x="954" y="242" text-anchor="middle" class="box-s">Reviews error history &amp; strategy</text>
+  <text x="954" y="260" text-anchor="middle" class="box-s">choices to build stable mastery</text>
+  <text x="954" y="278" text-anchor="middle" class="box-s">and knowledge transfer</text>
+
+  <!-- Arrows Phase 2 -->
+  <line x1="780" y1="118" x2="818" y2="118" stroke="#0f766e" stroke-width="2.2" marker-end="url(#arr-t)"/>
+  <path d="M 718 152 L 718 242 L 818 242" fill="none" stroke="#1b365d" stroke-width="2.2" marker-end="url(#arr-n)"/>
+</svg>

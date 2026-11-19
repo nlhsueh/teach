@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 355" width="1120" height="355">
+  <defs>
+    <marker id="arr-navy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-crimson" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#8c1d40"/>
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+
+  <!-- LEFT PANEL -->
+  <rect x="8" y="8" width="532" height="339" rx="14" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="8" y="8" width="532" height="44" rx="14" fill="#8c1d40"/>
+  <rect x="8" y="34" width="532" height="18" fill="#8c1d40"/>
+  <text x="274" y="36" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="17" font-weight="800" fill="#ffffff">Traditional Evaluation: Single-Version Snapshot</text>
+  <text x="274" y="74" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="12.5" font-weight="600" fill="#64748b">Measures static structure only (v1) — misses whether extensibility is ever used</text>
+
+  <!-- 3 boxes in left panel -->
+  <rect x="28" y="102" width="144" height="122" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8"/>
+  <rect x="28" y="102" width="144" height="28" rx="10" fill="#1b365d"/>
+  <rect x="28" y="118" width="144" height="12" fill="#1b365d"/>
+  <text x="100" y="121" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff">v1 Snapshot</text>
+  <!-- Mini UML -->
+  <rect x="74" y="140" width="52" height="14" rx="2.5" fill="#e2e8f0" stroke="#1b365d" stroke-width="1.3"/>
+  <line x1="100" y1="154" x2="100" y2="164" stroke="#1b365d" stroke-width="1.3"/>
+  <line x1="68" y1="164" x2="132" y2="164" stroke="#1b365d" stroke-width="1.3"/>
+  <rect x="52" y="164" width="32" height="13" rx="2" fill="#ffffff" stroke="#1b365d" stroke-width="1.3"/>
+  <rect x="116" y="164" width="32" height="13" rx="2" fill="#ffffff" stroke="#1b365d" stroke-width="1.3"/>
+  <text x="100" y="196" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Strategy Pattern</text>
+  <text x="100" y="213" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#64748b">Deployed in v1</text>
+
+  <line x1="175" y1="163" x2="198" y2="163" stroke="#8c1d40" stroke-width="2.5" marker-end="url(#arr-crimson)"/>
+
+  <rect x="202" y="102" width="144" height="122" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8"/>
+  <rect x="202" y="102" width="144" height="28" rx="10" fill="#475569"/>
+  <rect x="202" y="118" width="144" height="12" fill="#475569"/>
+  <text x="274" y="121" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff">Static Metrics</text>
+  <text x="274" y="166" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="26" font-weight="800" fill="#475569">📊</text>
+  <text x="274" y="196" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#0f172a">CK / OO Metrics</text>
+  <text x="274" y="213" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#64748b">Looks flexible!</text>
+
+  <line x1="349" y1="163" x2="372" y2="163" stroke="#8c1d40" stroke-width="2.5" marker-end="url(#arr-crimson)"/>
+
+  <rect x="376" y="102" width="144" height="122" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="1.8" stroke-dasharray="5 3"/>
+  <rect x="376" y="102" width="144" height="28" rx="10" fill="#8c1d40"/>
+  <rect x="376" y="118" width="144" height="12" fill="#8c1d40"/>
+  <text x="448" y="121" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff">Assumption</text>
+  <text x="448" y="167" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="26" font-weight="800" fill="#8c1d40">?</text>
+  <text x="448" y="196" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#8c1d40">"Maintainable?"</text>
+  <text x="448" y="213" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#64748b">No evolution proof</text>
+
+  <!-- Left bottom warning pill -->
+  <rect x="28" y="254" width="492" height="68" rx="10" fill="#ffffff" stroke="#fda4af" stroke-width="1.8"/>
+  <text x="274" y="293" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="12.0" font-weight="700" fill="#8c1d40">⚠ Blind Spot: Pattern may remain untouched from v1 to v10 (Over-engineering)</text>
+
+  <!-- RIGHT PANEL -->
+  <rect x="580" y="8" width="532" height="339" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="580" y="8" width="532" height="44" rx="14" fill="#0f766e"/>
+  <rect x="580" y="34" width="532" height="18" fill="#0f766e"/>
+  <text x="846" y="36" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="17" font-weight="800" fill="#ffffff">Our Approach: Software Evolution Utilization</text>
+  <text x="846" y="74" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="12.5" font-weight="600" fill="#64748b">Tracks pattern application context (PAC) across consecutive releases (v1 → v10)</text>
+
+  <!-- Row 1: Less Utilized (Fig 1 intuition) -->
+  <rect x="600" y="92" width="492" height="86" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6"/>
+  <text x="616" y="114" font-family="Inter, -apple-system, sans-serif" font-size="12.5" font-weight="800" fill="#8c1d40">Less Utilized (DoU = 0):</text>
+  <text x="772" y="114" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#475569">Same 2 strategies v1 → v10</text>
+  <!-- v1, v2, vn, v10 boxes unchanged -->
+  <rect x="618" y="126" width="90" height="40" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="663" y="143" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="700" fill="#334155">v1: [S1, S2]</text>
+  <text x="663" y="159" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#64748b">D (Strategy)</text>
+  <line x1="710" y1="146" x2="736" y2="146" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr-navy)"/>
+
+  <rect x="740" y="126" width="90" height="40" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="785" y="143" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="700" fill="#334155">v2: [S1, S2]</text>
+  <text x="785" y="159" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#64748b">Unchanged</text>
+  <line x1="832" y1="146" x2="858" y2="146" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr-navy)"/>
+
+  <rect x="862" y="126" width="90" height="40" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="907" y="143" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="700" fill="#334155">vn: [S1, S2]</text>
+  <text x="907" y="159" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#64748b">Unchanged</text>
+  <line x1="954" y1="146" x2="980" y2="146" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr-navy)"/>
+
+  <rect x="984" y="126" width="94" height="40" rx="6" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.6"/>
+  <text x="1031" y="143" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="800" fill="#8c1d40">v10: [S1, S2]</text>
+  <text x="1031" y="159" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#8c1d40">DoU = 0/9</text>
+
+  <!-- Row 2: Utilized (Fig 2 intuition) -->
+  <rect x="600" y="190" width="492" height="90" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="1.8"/>
+  <text x="616" y="212" font-family="Inter, -apple-system, sans-serif" font-size="12.5" font-weight="800" fill="#0f766e">Truly Utilized (DoU > 0):</text>
+  <text x="772" y="212" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#475569">Remove / Add strategies across versions</text>
+
+  <rect x="618" y="224" width="90" height="44" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="663" y="242" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="700" fill="#1b365d">v1: [S1, S2]</text>
+  <text x="663" y="258" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#0f766e">Initial D</text>
+  <line x1="710" y1="246" x2="736" y2="246" stroke="#0f766e" stroke-width="2.2" marker-end="url(#arr-teal)"/>
+
+  <rect x="740" y="224" width="90" height="44" rx="6" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.8"/>
+  <text x="785" y="242" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="800" fill="#0f766e">v2: [S1]</text>
+  <text x="785" y="258" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#0f766e">− S2 (✓)</text>
+  <line x1="832" y1="246" x2="858" y2="246" stroke="#0f766e" stroke-width="2.2" marker-end="url(#arr-teal)"/>
+
+  <rect x="862" y="224" width="90" height="44" rx="6" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.8"/>
+  <text x="907" y="242" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="800" fill="#0f766e">vn: [S1, S3]</text>
+  <text x="907" y="258" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#0f766e">+ S3 (✓)</text>
+  <line x1="954" y1="246" x2="980" y2="246" stroke="#0f766e" stroke-width="2.2" marker-end="url(#arr-teal)"/>
+
+  <rect x="984" y="224" width="94" height="44" rx="6" fill="#0f766e"/>
+  <text x="1031" y="242" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">v10: [+S4]</text>
+  <text x="1031" y="258" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#ccfbf1">Utilized ✓</text>
+
+  <!-- Right bottom badge -->
+  <rect x="660" y="294" width="372" height="36" rx="18" fill="#1b365d"/>
+  <text x="846" y="317" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">✓ Captures Real Maintenance Contribution</text>
+</svg>

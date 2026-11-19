@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 355" width="1080" height="355">
+  <defs>
+    <marker id="arr-navy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L9,5 L0,9 z" fill="#1b365d"/>
+    </marker>
+  </defs>
+
+  <!-- Left Panel: Traditional -->
+  <rect x="14" y="14" width="490" height="327" rx="14" fill="#fdf2f5" stroke="#e5b4c3" stroke-width="2"/>
+  <rect x="14" y="14" width="490" height="44" rx="14" fill="#8c1d40"/>
+  <rect x="14" y="42" width="490" height="16" fill="#8c1d40"/>
+  <text x="259" y="42" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="17" font-weight="800" fill="#ffffff">傳統變異測試教學困境</text>
+
+  <rect x="36" y="76" width="446" height="62" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <circle cx="64" cy="107" r="16" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <text x="64" y="113" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#8c1d40">1</text>
+  <text x="92" y="102" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">課程偏重程式撰寫、忽略軟體測試</text>
+  <text x="92" y="123" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#475569">學生具開發能力，卻缺乏測試與品質驗證的實戰訓練</text>
+
+  <rect x="36" y="152" width="446" height="62" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <circle cx="64" cy="183" r="16" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <text x="64" y="189" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#8c1d40">2</text>
+  <text x="92" y="178" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">手寫模擬變異體極度繁瑣耗時</text>
+  <text x="92" y="199" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#475569">須人工逐一執行比對輸出並手算變異分數，難以反覆練習</text>
+
+  <rect x="36" y="228" width="446" height="62" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <circle cx="64" cy="259" r="16" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <text x="64" y="265" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#8c1d40">3</text>
+  <text x="92" y="254" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">學習動機低落與現有工具限制</text>
+  <text x="92" y="275" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#475569">雙人對戰遊戲易受程度落差影響，單人模式缺乏難度指標</text>
+
+  <text x="259" y="324" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="700" fill="#8c1d40">結果：高度疲勞 · 失去興趣 · 有效測試案例極少</text>
+
+  <!-- Center Arrow -->
+  <line x1="512" y1="178" x2="564" y2="178" stroke="#1b365d" stroke-width="4" marker-end="url(#arr-navy)"/>
+  <rect x="509" y="138" width="60" height="26" rx="13" fill="#1b365d"/>
+  <text x="539" y="155" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#ffffff">CIB</text>
+
+  <!-- Right Panel: CIB -->
+  <rect x="576" y="14" width="490" height="327" rx="14" fill="#f0fdfa" stroke="#99d6cd" stroke-width="2"/>
+  <rect x="576" y="14" width="490" height="44" rx="14" fill="#0f766e"/>
+  <rect x="576" y="42" width="490" height="16" fill="#0f766e"/>
+  <text x="821" y="42" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="17" font-weight="800" fill="#ffffff">Code Immunity Boost (CIB) 遊戲化學習</text>
+
+  <rect x="598" y="76" width="446" height="62" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="626" cy="107" r="16" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="626" y="113" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#0f766e">1</text>
+  <text x="654" y="102" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">結合疫情背景的「疫苗研發」使命感</text>
+  <text x="654" y="123" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#475569">人體＝程式、疫苗＝變異體、白血球＝測試案例，直覺好懂</text>
+
+  <rect x="598" y="152" width="446" height="62" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="626" cy="183" r="16" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="626" y="189" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#0f766e">2</text>
+  <text x="654" y="178" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">自動化執行與即時回饋循環</text>
+  <text x="654" y="199" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#475569">CVI 變異體生成池 ＋ Python unittest 即時評分與錯誤提示</text>
+
+  <rect x="598" y="228" width="446" height="62" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="626" cy="259" r="16" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="626" y="265" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#0f766e">3</text>
+  <text x="654" y="254" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="700" fill="#0f172a">以脆弱度量化分級的單人漸進關卡</text>
+  <text x="654" y="275" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#475569">四階難度（Easy → Difficult）、基本/進階條件與雙角色扮演</text>
+
+  <text x="821" y="324" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="700" fill="#0f766e">結果：8.4× 測試提交量 · 3.1× 有效案例 · 高度學習動機</text>
+</svg>

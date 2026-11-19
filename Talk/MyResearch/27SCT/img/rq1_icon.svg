@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110" width="110" height="110">
+  <rect x="3" y="3" width="104" height="104" rx="14" fill="#f0fdfa" stroke="#99d6cd" stroke-width="2"/>
+  <!-- Overlapping bell curve (before) -->
+  <path d="M 16 74 Q 36 74 44 46 Q 52 74 72 74" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="3,2"/>
+  <!-- Separated crisp curves (after) -->
+  <path d="M 14 78 Q 28 78 36 42 Q 44 78 58 78" fill="#0f766e" fill-opacity="0.22" stroke="#0f766e" stroke-width="2.6"/>
+  <path d="M 52 78 Q 66 78 74 36 Q 82 78 96 78" fill="#1b365d" fill-opacity="0.22" stroke="#1b365d" stroke-width="2.6"/>
+  <!-- Magnifying lens separating them -->
+  <circle cx="55" cy="40" r="14" fill="#ffffff" fill-opacity="0.7" stroke="#8c1d40" stroke-width="2.8"/>
+  <line x1="65" y1="50" x2="76" y2="61" stroke="#8c1d40" stroke-width="3.5" stroke-linecap="round"/>
+  <text x="55" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="800" fill="#0f766e">UNMASK MASTERY</text>
+</svg>

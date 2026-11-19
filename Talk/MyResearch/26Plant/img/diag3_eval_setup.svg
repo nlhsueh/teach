@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 225" width="1120" height="225">
+  <defs>
+    <marker id="arr-e" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .sh { font-size: 11.5px; font-weight: 800; fill: #ffffff; letter-spacing: 0.04em; text-transform: uppercase; }
+    .sb { font-size: 19px; font-weight: 800; }
+    .st { font-size: 13px; font-weight: 700; fill: #0f172a; }
+    .ss { font-size: 11.5px; fill: #475569; }
+  </style>
+
+  <!-- Box 1: RQ1 Dataset -->
+  <rect x="10" y="12" width="248" height="200" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="10" y="12" width="248" height="30" rx="10" fill="#0f766e"/>
+  <rect x="10" y="32" width="248" height="10" fill="#0f766e"/>
+  <text x="134" y="32" text-anchor="middle" class="sh">1. RQ1 Benchmark</text>
+  <text x="134" y="76" text-anchor="middle" class="sb" fill="#0f766e">5 Systems · 103 IRs</text>
+  <text x="134" y="100" text-anchor="middle" class="st">Expanded ReqElicitGym</text>
+  <text x="134" y="124" text-anchor="middle" class="ss">• Stock, Hospital, Ticket, Vocab</text>
+  <text x="134" y="144" text-anchor="middle" class="ss">• + Food Delivery (19 IRs)</text>
+  <text x="134" y="164" text-anchor="middle" class="ss">• + ISO 25010 NFR Expansion</text>
+  <text x="134" y="190" text-anchor="middle" font-size="11" font-weight="700" fill="#0f766e">9 Requirement Aspects</text>
+
+  <line x1="258" y1="112" x2="288" y2="112" stroke="#1b365d" stroke-width="2.4" marker-end="url(#arr-e)"/>
+
+  <!-- Box 2: RQ2 Dataset -->
+  <rect x="294" y="12" width="248" height="200" rx="10" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="294" y="12" width="248" height="30" rx="10" fill="#8c1d40"/>
+  <rect x="294" y="32" width="248" height="10" fill="#8c1d40"/>
+  <text x="418" y="32" text-anchor="middle" class="sh">2. RQ2 Benchmark</text>
+  <text x="418" y="76" text-anchor="middle" class="sb" fill="#8c1d40">100 Req. Pairs</text>
+  <text x="418" y="100" text-anchor="middle" class="st">CN + Custom Balanced</text>
+  <text x="418" y="124" text-anchor="middle" class="ss">• Hospital Mgmt: 70 pairs</text>
+  <text x="418" y="144" text-anchor="middle" class="ss">  (35 Conflict / 35 Neutral)</text>
+  <text x="418" y="164" text-anchor="middle" class="ss">• Food Delivery: 30 pairs</text>
+  <text x="418" y="190" text-anchor="middle" font-size="11" font-weight="700" fill="#8c1d40">3 Independent Runs (Mean ± Std)</text>
+
+  <line x1="542" y1="112" x2="572" y2="112" stroke="#1b365d" stroke-width="2.4" marker-end="url(#arr-e)"/>
+
+  <!-- Box 3: Controlled Protocol -->
+  <rect x="578" y="12" width="248" height="200" rx="10" fill="#f8fafc" stroke="#1b365d" stroke-width="2"/>
+  <rect x="578" y="12" width="248" height="30" rx="10" fill="#1b365d"/>
+  <rect x="578" y="32" width="248" height="10" fill="#1b365d"/>
+  <text x="702" y="32" text-anchor="middle" class="sh">3. Fair Controls</text>
+  <text x="702" y="76" text-anchor="middle" class="sb" fill="#1b365d">2 LLM Backbones</text>
+  <text x="702" y="100" text-anchor="middle" class="st">GPT-4.1 &amp; Gemini 3 Flash</text>
+  <text x="702" y="124" text-anchor="middle" class="ss">• Temperature = 0, Max r = 20</text>
+  <text x="702" y="144" text-anchor="middle" class="ss">• 0 HITL interventions (automated)</text>
+  <text x="702" y="164" text-anchor="middle" class="ss">• Independent GPT-5.2 Judge</text>
+  <text x="702" y="190" text-anchor="middle" font-size="11" font-weight="700" fill="#1b365d">vs. Single-Agent Baseline</text>
+
+  <line x1="826" y1="112" x2="856" y2="112" stroke="#1b365d" stroke-width="2.4" marker-end="url(#arr-e)"/>
+
+  <!-- Box 4: Metrics -->
+  <rect x="862" y="12" width="248" height="200" rx="10" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="862" y="12" width="248" height="30" rx="10" fill="#1b365d"/>
+  <rect x="862" y="32" width="248" height="10" fill="#1b365d"/>
+  <text x="986" y="32" text-anchor="middle" class="sh">4. Metrics (RQ1–RQ3)</text>
+  <text x="986" y="74" text-anchor="middle" class="st">Quantitative Lenses</text>
+  <text x="880" y="104" class="ss">• <tspan font-weight="700" fill="#0f766e">RQ1:</tspan> Turns, IRE (%), TKQR (%)</text>
+  <text x="880" y="128" class="ss">• <tspan font-weight="700" fill="#8c1d40">RQ2:</tspan> Macro F1 &amp; Conflict</text>
+  <text x="892" y="146" class="ss">Precision / Recall / F1</text>
+  <text x="880" y="170" class="ss">• <tspan font-weight="700" fill="#1b365d">RQ3:</tspan> Tokens, Runtime, US$,</text>
+  <text x="892" y="188" class="ss">IRE Gain/1M Tok., Cost/IR</text>
+</svg>

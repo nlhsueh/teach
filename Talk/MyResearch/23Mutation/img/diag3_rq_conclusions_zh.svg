@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 355" width="1120" height="355">
+  <!-- Card 1: RQ1 -->
+  <rect x="14" y="12" width="348" height="252" rx="14" fill="#f0fdfa" stroke="#99d6cd" stroke-width="2"/>
+  <rect x="14" y="12" width="348" height="44" rx="14" fill="#0f766e"/>
+  <rect x="14" y="40" width="348" height="16" fill="#0f766e"/>
+  <text x="188" y="40" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">RQ1 · 測試案例產量與品質</text>
+
+  <text x="188" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="38" font-weight="800" fill="#0f766e">152 vs. 18</text>
+  <text x="188" y="122" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="700" fill="#1b365d">總提交數達 8.4 倍（均 30.4 vs. 3.6）</text>
+  <line x1="38" y1="138" x2="338" y2="138" stroke="#99d6cd" stroke-width="1.5"/>
+  <text x="38" y="164" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">• <tspan font-weight="700" fill="#0f172a">有效測試案例 25 vs. 8</tspan>（高達 3.1 倍）</text>
+  <text x="38" y="188" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">• 自動化執行讓學生專注設計測試案例，</text>
+  <text x="48" y="206" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">免去繁瑣的人工追蹤與分數手算</text>
+  <text x="38" y="232" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">• 高難度題優勢顯著（<tspan font-weight="700" fill="#0f766e">Triangle: 105 vs. 3</tspan>）</text>
+
+  <!-- Card 2: RQ2 -->
+  <rect x="386" y="12" width="348" height="252" rx="14" fill="#fdf2f5" stroke="#e5b4c3" stroke-width="2"/>
+  <rect x="386" y="12" width="348" height="44" rx="14" fill="#8c1d40"/>
+  <rect x="386" y="40" width="348" height="16" fill="#8c1d40"/>
+  <text x="560" y="40" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">RQ2 · 即時回饋與試錯迭代</text>
+
+  <text x="560" y="98" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="32" font-weight="800" fill="#8c1d40">快速試錯學習</text>
+  <text x="560" y="122" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="700" fill="#1b365d">較高無效比例反映積極除錯互動</text>
+  <line x1="410" y1="138" x2="710" y2="138" stroke="#e5b4c3" stroke-width="1.5"/>
+  <text x="410" y="164" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">• 即時錯誤訊息驅動學生立刻修正重送，</text>
+  <text x="420" y="182" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">雖推升無效提交率，卻促進測試能力成長</text>
+  <text x="410" y="208" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">• 題目變難時，手寫對照組於內插搜尋與</text>
+  <text x="420" y="226" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">三角形題幾乎歸零（<tspan font-weight="700" fill="#8c1d40">接近 0 筆有效提交</tspan>）</text>
+
+  <!-- Card 3: RQ3 -->
+  <rect x="758" y="12" width="348" height="252" rx="14" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="758" y="12" width="348" height="44" rx="14" fill="#1b365d"/>
+  <rect x="758" y="40" width="348" height="16" fill="#1b365d"/>
+  <text x="932" y="40" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">RQ3 · 學習動機、專注與成效</text>
+
+  <text x="932" y="98" text-anchor="middle" font-family="Inter, sans-serif" font-size="38" font-weight="800" fill="#1b365d">4.83 / 5.0</text>
+  <text x="932" y="122" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="700" fill="#0f766e">認知理解、主動參與與學習效果均居冠</text>
+  <line x1="782" y1="138" x2="1082" y2="138" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="782" y="164" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">• 學習喜愛度與深造意願大幅領先</text>
+  <text x="792" y="182" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">（<tspan font-weight="700" fill="#1b365d">4.50 vs. 3.50</tspan>；深入意願 <tspan font-weight="700" fill="#1b365d">4.17 vs. 3.00</tspan>）</text>
+  <text x="782" y="208" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">• 偏好遊戲化勝過傳統教學（<tspan font-weight="700" fill="#0f766e">4.67 / 5.0</tspan>）</text>
+  <text x="782" y="232" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#334155">• 顯著降低分心、維持專注（<tspan font-weight="700" fill="#1b365d">4.17 vs. 3.50</tspan>）</text>
+
+  <!-- Bottom Core Takeaway Banner -->
+  <rect x="14" y="280" width="1092" height="62" rx="12" fill="#1b365d"/>
+  <text x="560" y="306" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">核心結論：結合「疫苗研發敘事」與「自動化變異執行」，讓變異測試教學既有效又充滿樂趣</text>
+  <text x="560" y="328" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#cbd5e1">CIB 系統搭配 CVI 變異體生成器，成功將枯燥繁重的手寫練習轉化為循序漸進的單人闖關學習體驗。</text>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 350">
+  <rect width="1120" height="350" rx="12" fill="#f8fafc"/>
+
+  <!-- Column 1 -->
+  <rect x="22" y="18" width="344" height="314" rx="12" fill="#ffffff" stroke="#0f766e" stroke-width="2.5"/>
+  <rect x="22" y="18" width="344" height="44" rx="10" fill="#0f766e"/>
+  <rect x="22" y="48" width="344" height="14" fill="#0f766e"/>
+  <text x="194" y="46" text-anchor="middle" fill="#ffffff" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="15" font-weight="800">RQ1 · 可重用模式語言設計</text>
+
+  <text x="194" y="102" text-anchor="middle" fill="#0f766e" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="28" font-weight="800">三大模式 ＋ RACE</text>
+  <text x="194" y="126" text-anchor="middle" fill="#64748b" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12.5" font-weight="600">引導（Guidey）· 除錯（Debuggy）· 最佳化（Opti）</text>
+
+  <line x1="46" y1="146" x2="342" y2="146" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="46" y="174" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">✓ 明確定義教學意圖、共通張力、</text>
+  <text x="60" y="194" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">輸出護欄與非線性切換條件</text>
+  <text x="46" y="224" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">✓ 透過 RACE 的 Expectation 欄位</text>
+  <text x="60" y="244" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">將「不給完整程式碼」具體化為規則</text>
+  <rect x="44" y="268" width="300" height="46" rx="8" fill="#f0fdfa" stroke="#99f6e4"/>
+  <text x="194" y="288" text-anchor="middle" fill="#0f766e" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12" font-weight="700">不僅是三組提示詞，更是可遷移、</text>
+  <text x="194" y="305" text-anchor="middle" fill="#0f766e" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12" font-weight="700">可擴充的 AI 助教設計語言</text>
+
+  <!-- Column 2 -->
+  <rect x="388" y="18" width="344" height="314" rx="12" fill="#ffffff" stroke="#8c1d40" stroke-width="2.5"/>
+  <rect x="388" y="18" width="344" height="44" rx="10" fill="#8c1d40"/>
+  <rect x="388" y="48" width="344" height="14" fill="#8c1d40"/>
+  <text x="560" y="46" text-anchor="middle" fill="#ffffff" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="15" font-weight="800">RQ2 · 真實課堂使用行為</text>
+
+  <text x="560" y="102" text-anchor="middle" fill="#8c1d40" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="28" font-weight="800">58.8% · 67.4%</text>
+  <text x="560" y="126" text-anchor="middle" fill="#64748b" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12.5" font-weight="600">Guidey 使用率最高 · 多助教併用比例</text>
+
+  <line x1="412" y1="146" x2="708" y2="146" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="412" y="174" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">✓ 315 位學生 · 86 道題目 · 1,315 次</text>
+  <text x="426" y="194" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">AI 助教輔助嘗試（佔總數 26.4%）</text>
+  <text x="412" y="224" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">⚠ Opti（30.6%）多於出錯後呼叫</text>
+  <text x="426" y="244" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">（23%–24%），鮮少用於通過 AC 後</text>
+  <rect x="410" y="268" width="300" height="46" rx="8" fill="#fdf2f5" stroke="#fecdd3"/>
+  <text x="560" y="288" text-anchor="middle" fill="#8c1d40" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12" font-weight="700">通過 AC 後的程式品質反思需仰賴</text>
+  <text x="560" y="305" text-anchor="middle" fill="#8c1d40" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12" font-weight="700">明確課程誘因或任務狀態閘控</text>
+
+  <!-- Column 3 -->
+  <rect x="754" y="18" width="344" height="314" rx="12" fill="#ffffff" stroke="#1b365d" stroke-width="2.5"/>
+  <rect x="754" y="18" width="344" height="44" rx="10" fill="#1b365d"/>
+  <rect x="754" y="48" width="344" height="14" fill="#1b365d"/>
+  <text x="926" y="46" text-anchor="middle" fill="#ffffff" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="15" font-weight="800">RQ3 · 錯誤特徵與解題成效</text>
+
+  <text x="926" y="102" text-anchor="middle" fill="#1b365d" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="28" font-weight="800">73.9% 通過率</text>
+  <text x="926" y="126" text-anchor="middle" fill="#64748b" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12.5" font-weight="600">即使初始錯誤率高出 3.7–5.7 倍</text>
+
+  <line x1="778" y1="146" x2="1074" y2="146" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="778" y="174" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">✓ 學生主要在遇困時求助（測試階段</text>
+  <text x="792" y="194" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">平均 4.5 次錯誤 vs. 未使用者 0.8 次）</text>
+  <text x="778" y="224" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">✓ Debuggy 群組通過率與未使用者相當</text>
+  <text x="792" y="244" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13">（76.1% vs. 76.7%，事前錯誤高 7.2 倍）</text>
+  <rect x="776" y="268" width="300" height="46" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="926" y="288" text-anchor="middle" fill="#1b365d" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12" font-weight="700">符合鷹架輔助特徵；嚴格因果驗證</text>
+  <text x="926" y="305" text-anchor="middle" fill="#1b365d" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12" font-weight="700">留待後續準實驗對照組研究</text>
+</svg>

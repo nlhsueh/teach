@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 380">
+  <defs>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+
+  <!-- Left Panel -->
+  <rect x="16" y="14" width="522" height="352" rx="14" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2.2"/>
+  <rect x="16" y="14" width="522" height="46" rx="14" fill="#8c1d40"/>
+  <rect x="16" y="44" width="522" height="16" fill="#8c1d40"/>
+  <text x="277" y="44" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="18" font-weight="800" fill="#ffffff">傳統線上評測系統 OJ（僅評量程式碼）</text>
+
+  <rect x="44" y="84" width="136" height="66" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="1.8"/>
+  <text x="112" y="112" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="700" fill="#1b365d">撰寫程式</text>
+  <text x="112" y="132" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#64748b">跳過自我測試</text>
+
+  <line x1="180" y1="117" x2="212" y2="117" stroke="#8c1d40" stroke-width="2.5" marker-end="url(#arr-red)"/>
+
+  <rect x="218" y="84" width="136" height="66" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="1.8"/>
+  <text x="286" y="112" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="700" fill="#8c1d40">盲目提交</text>
+  <text x="286" y="132" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#64748b">僅靠隱藏測資評分</text>
+
+  <line x1="354" y1="117" x2="386" y2="117" stroke="#8c1d40" stroke-width="2.5" marker-end="url(#arr-red)"/>
+
+  <rect x="392" y="84" width="122" height="66" rx="10" fill="#fff1f2" stroke="#8c1d40" stroke-width="1.8"/>
+  <text x="453" y="112" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="700" fill="#8c1d40">通過／失敗</text>
+  <text x="453" y="132" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#64748b">僅看單一分數</text>
+
+  <rect x="44" y="176" width="470" height="168" rx="10" fill="#ffffff" stroke="#fecdd3" stroke-width="1.5"/>
+  <text x="64" y="206" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="800" fill="#8c1d40">教學與評量盲點：</text>
+  <text x="64" y="236" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14" fill="#334155">✗  忽略軟體測試概念與測試案例設計能力之培養</text>
+  <text x="64" y="266" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14" fill="#334155">✗  助長未經檢驗即不斷試錯提交的僥倖習慣</text>
+  <text x="64" y="296" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14" fill="#334155">✗  單靠作業分數無法反映題目複雜度、挫折次數與韌性</text>
+  <text x="64" y="326" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14" fill="#334155">✗  難以關聯測試習慣、影音觀看行為與最終學習成效</text>
+
+  <!-- VS Badge -->
+  <circle cx="560" cy="190" r="22" fill="#1b365d" stroke="#ffffff" stroke-width="3"/>
+  <text x="560" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#ffffff">VS</text>
+
+  <!-- Right Panel -->
+  <rect x="582" y="14" width="522" height="352" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.2"/>
+  <rect x="582" y="14" width="522" height="46" rx="14" fill="#0f766e"/>
+  <rect x="582" y="44" width="522" height="16" fill="#0f766e"/>
+  <text x="843" y="44" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="18" font-weight="800" fill="#ffffff">Pytutor（整合軟體測試之線上評測平台）</text>
+
+  <rect x="610" y="84" width="136" height="66" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="1.8"/>
+  <text x="678" y="112" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="700" fill="#1b365d">程式＋公開測資</text>
+  <text x="678" y="132" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#64748b">OTC 基本驗證</text>
+
+  <line x1="746" y1="117" x2="778" y2="117" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arr-teal)"/>
+
+  <rect x="784" y="84" width="144" height="66" rx="10" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+  <text x="856" y="112" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="800" fill="#0f766e">自訂測資 DTC</text>
+  <text x="856" y="132" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#0f766e">覆蓋率＋突變測試</text>
+
+  <line x1="928" y1="117" x2="958" y2="117" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arr-teal)"/>
+
+  <rect x="964" y="84" width="118" height="66" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="1.8"/>
+  <text x="1023" y="112" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="700" fill="#1b365d">HTC 與紀錄</text>
+  <text x="1023" y="132" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#64748b">量化 r·PAI·TEI</text>
+
+  <rect x="610" y="176" width="472" height="168" rx="10" fill="#ffffff" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="630" y="206" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="800" fill="#0f766e">Pytutor 核心創新設計：</text>
+  <text x="630" y="236" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14" fill="#334155">✓  整合公開測資 (OTC)、自訂測資 (DTC) 與隱藏測資 (HTC)</text>
+  <text x="630" y="266" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14" fill="#334155">✓  採「謹慎原則」（每次正式提交扣 3 分），鼓勵先測再交</text>
+  <text x="630" y="296" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14" fill="#334155">✓  以分支覆蓋率與突變測試評估自訂測資品質（TEI）</text>
+  <text x="630" y="326" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14" fill="#334155">✓  結合韌性 (r) 與迴圈複雜度，精準量化程式能力（PAI）</text>
+</svg>

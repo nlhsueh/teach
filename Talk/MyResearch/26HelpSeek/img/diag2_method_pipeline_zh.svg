@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 260" font-family="'Noto Sans TC','PingFang TC','Inter',sans-serif">
+  <defs>
+    <marker id="arr-nv" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 1 L10 5 L0 9 z" fill="#1b365d"/>
+    </marker>
+  </defs>
+
+  <!-- Step 1 -->
+  <rect x="8" y="14" width="248" height="232" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2"/>
+  <rect x="8" y="14" width="248" height="40" rx="12" fill="#1b365d"/>
+  <rect x="8" y="42" width="248" height="12" fill="#1b365d"/>
+  <text x="132" y="40" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">1. 真實課堂日誌</text>
+  <text x="132" y="88" text-anchor="middle" fill="#0f172a" font-size="15.5" font-weight="700">366 位非資工大一生</text>
+  <text x="132" y="118" text-anchor="middle" fill="#334155" font-size="14.5">43 份程式作業 (Fall 2025)</text>
+  <rect x="28" y="138" width="208" height="36" rx="8" fill="#eef2ff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="132" y="161" text-anchor="middle" fill="#1b365d" font-size="15.5" font-weight="800">732 次補救歷程</text>
+  <text x="132" y="212" text-anchor="middle" fill="#64748b" font-size="13.5" font-weight="600">MCQ 紀錄 + 對話 + 程式快照</text>
+
+  <line x1="256" y1="130" x2="286" y2="130" stroke="#1b365d" stroke-width="2.6" marker-end="url(#arr-nv)"/>
+
+  <!-- Step 2 -->
+  <rect x="292" y="14" width="276" height="232" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="292" y="14" width="276" height="40" rx="12" fill="#0f766e"/>
+  <rect x="292" y="42" width="276" height="12" fill="#0f766e"/>
+  <text x="430" y="40" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">2. 四大行為路徑分類</text>
+  <text x="430" y="74" text-anchor="middle" fill="#0f766e" font-size="12.5" font-weight="700">頻率優先 → 時機次之（互斥完備）</text>
+  <rect x="308" y="86" width="244" height="31" rx="6" fill="#ffffff" stroke="#64748b" stroke-width="1.4"/>
+  <text x="430" y="106" text-anchor="middle" fill="#334155" font-size="13.5" font-weight="700">純重測 (0 次澄清)</text>
+  <rect x="308" y="124" width="244" height="31" rx="6" fill="#ffffff" stroke="#0f766e" stroke-width="1.6"/>
+  <text x="430" y="144" text-anchor="middle" fill="#0f766e" font-size="13.5" font-weight="700">單次即時 (1 次, 輪次 ≤ 1)</text>
+  <rect x="308" y="162" width="244" height="31" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="1.6"/>
+  <text x="430" y="182" text-anchor="middle" fill="#b45309" font-size="13.5" font-weight="700">單次延遲 (1 次, 輪次 > 1)</text>
+  <rect x="308" y="200" width="244" height="31" rx="6" fill="#ffffff" stroke="#8c1d40" stroke-width="1.6"/>
+  <text x="430" y="220" text-anchor="middle" fill="#8c1d40" font-size="13.5" font-weight="700">多次澄清 (≥ 2 次)</text>
+
+  <line x1="568" y1="130" x2="598" y2="130" stroke="#1b365d" stroke-width="2.6" marker-end="url(#arr-nv)"/>
+
+  <!-- Step 3 -->
+  <rect x="604" y="14" width="236" height="232" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2"/>
+  <rect x="604" y="14" width="236" height="40" rx="12" fill="#1b365d"/>
+  <rect x="604" y="42" width="236" height="12" fill="#1b365d"/>
+  <text x="722" y="40" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">3. 規則式功能編碼</text>
+  <text x="722" y="84" text-anchor="middle" fill="#1b365d" font-size="14" font-weight="700">8 級優先規則分類器</text>
+  <text x="622" y="122" fill="#0f766e" font-size="14.5" font-weight="700">• 概念型 Conceptual (84.7%)</text>
+  <text x="622" y="158" fill="#475569" font-size="14.5" font-weight="600">• 系統型 System (11.0%)</text>
+  <text x="622" y="194" fill="#475569" font-size="14.5" font-weight="600">• 流程型 Procedural (4.3%)</text>
+  <text x="722" y="228" text-anchor="middle" fill="#64748b" font-size="12.5">(255 messages)</text>
+
+  <line x1="840" y1="130" x2="870" y2="130" stroke="#1b365d" stroke-width="2.6" marker-end="url(#arr-nv)"/>
+
+  <!-- Step 4 -->
+  <rect x="876" y="14" width="236" height="232" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="876" y="14" width="236" height="40" rx="12" fill="#8c1d40"/>
+  <rect x="876" y="42" width="236" height="12" fill="#8c1d40"/>
+  <text x="994" y="40" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">4. 多角度統計驗證</text>
+  <text x="994" y="88" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="700">RQ1: Cliff's δ + 10k Bootstrap</text>
+  <text x="994" y="126" text-anchor="middle" fill="#8c1d40" font-size="14.5" font-weight="800">RQ2: MixedLM (REML)</text>
+  <text x="994" y="156" text-anchor="middle" fill="#334155" font-size="13.5">隨機截距: student_id</text>
+  <rect x="890" y="182" width="208" height="46" rx="8" fill="#ffffff" stroke="#8c1d40" stroke-width="1.4"/>
+  <text x="994" y="210" text-anchor="middle" fill="#334155" font-size="12.8" font-weight="700">穩健性: 變異分群 &amp; 閒置閾值</text>
+</svg>

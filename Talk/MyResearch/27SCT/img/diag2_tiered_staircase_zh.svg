@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 355" width="1120" height="355">
+  <defs>
+    <marker id="arr-up" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif; }
+    .lvl { font-size: 17px; font-weight: 800; fill: #ffffff; }
+    .tax { font-size: 12.5px; font-weight: 700; }
+    .name { font-size: 14px; font-weight: 700; fill: #0f172a; }
+    .desc { font-size: 12px; fill: #475569; }
+  </style>
+
+  <rect x="20" y="12" width="1080" height="34" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.8" stroke-dasharray="7,4"/>
+  <text x="560" y="34" text-anchor="middle" font-size="14" font-weight="800" fill="#8c1d40">
+    明確回饋邊界（全層級護欄）：嚴禁 AI 直接產出完整可提交之標準答案程式碼
+  </text>
+
+  <!-- L0 -->
+  <rect x="25" y="210" width="198" height="104" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="25" y="210" width="198" height="34" rx="10" fill="#0f766e"/>
+  <rect x="25" y="232" width="198" height="12" fill="#0f766e"/>
+  <text x="42" y="233" class="lvl">L0</text>
+  <text x="208" y="232" text-anchor="end" class="tax" fill="#ccfbf1">AI 稅率：0%</text>
+  <text x="124" y="264" text-anchor="middle" class="name">無 AI 提示</text>
+  <text x="124" y="284" text-anchor="middle" class="desc">自主解題基準，僅依賴</text>
+  <text x="124" y="301" text-anchor="middle" class="desc">題目與 OJ 測資回饋</text>
+
+  <!-- L1 -->
+  <rect x="243" y="176" width="198" height="138" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+  <rect x="243" y="176" width="198" height="34" rx="10" fill="#475569"/>
+  <rect x="243" y="198" width="198" height="12" fill="#475569"/>
+  <text x="260" y="199" class="lvl">L1</text>
+  <text x="426" y="198" text-anchor="end" class="tax" fill="#e2e8f0">AI 稅率：5%</text>
+  <text x="342" y="232" text-anchor="middle" class="name">執行錯誤提示</text>
+  <text x="342" y="255" text-anchor="middle" class="desc">解釋編譯與執行時期</text>
+  <text x="342" y="273" text-anchor="middle" class="desc">錯誤訊息、可能成因</text>
+  <text x="342" y="291" text-anchor="middle" class="desc">與初步檢查方向</text>
+
+  <!-- L2 -->
+  <rect x="461" y="142" width="198" height="172" rx="10" fill="#f1f5f9" stroke="#294c7a" stroke-width="2"/>
+  <rect x="461" y="142" width="198" height="34" rx="10" fill="#294c7a"/>
+  <rect x="461" y="164" width="198" height="12" fill="#294c7a"/>
+  <text x="478" y="165" class="lvl">L2</text>
+  <text x="644" y="164" text-anchor="end" class="tax" fill="#dbeafe">AI 稅率：10%</text>
+  <text x="560" y="202" text-anchor="middle" class="name">邏輯錯誤提示</text>
+  <text x="560" y="228" text-anchor="middle" class="desc">針對 WA / PA 狀態</text>
+  <text x="560" y="247" text-anchor="middle" class="desc">依程式碼與測資覆蓋</text>
+  <text x="560" y="266" text-anchor="middle" class="desc">提供方向性除錯建議</text>
+  <text x="560" y="285" text-anchor="middle" class="desc">（條件、邊界、輸出）</text>
+
+  <!-- L3 -->
+  <rect x="679" y="106" width="198" height="208" rx="10" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="679" y="106" width="198" height="34" rx="10" fill="#1b365d"/>
+  <rect x="679" y="128" width="198" height="12" fill="#1b365d"/>
+  <text x="696" y="129" class="lvl">L3</text>
+  <text x="862" y="128" text-anchor="end" class="tax" fill="#bfdbfe">AI 稅率：15%</text>
+  <text x="778" y="168" text-anchor="middle" class="name">AI 助教對話問答</text>
+  <text x="778" y="196" text-anchor="middle" class="desc">開啟多輪聊天介面，</text>
+  <text x="778" y="216" text-anchor="middle" class="desc">支援題意理解、</text>
+  <text x="778" y="236" text-anchor="middle" class="desc">核心概念釐清與</text>
+  <text x="778" y="256" text-anchor="middle" class="desc">解題策略討論</text>
+
+  <!-- L4 -->
+  <rect x="897" y="68" width="198" height="246" rx="10" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2.2"/>
+  <rect x="897" y="68" width="198" height="34" rx="10" fill="#8c1d40"/>
+  <rect x="897" y="90" width="198" height="12" fill="#8c1d40"/>
+  <text x="914" y="91" class="lvl">L4</text>
+  <text x="1080" y="90" text-anchor="end" class="tax" fill="#fecdd3">AI 稅率：20%</text>
+  <text x="996" y="134" text-anchor="middle" class="name">高強度完整引導</text>
+  <text x="996" y="164" text-anchor="middle" class="desc">提供最高深度鷹架：</text>
+  <text x="996" y="185" text-anchor="middle" class="desc">• 解題流程拆解</text>
+  <text x="996" y="206" text-anchor="middle" class="desc">• 多種策略比較</text>
+  <text x="996" y="227" text-anchor="middle" class="desc">• 虛擬碼層級結構</text>
+  <text x="996" y="268" text-anchor="middle" font-size="12" font-weight="700" fill="#8c1d40">最強補償性學習支持</text>
+
+  <line x1="40" y1="336" x2="1075" y2="336" stroke="#1b365d" stroke-width="2.5" marker-end="url(#arr-up)"/>
+  <text x="560" y="330" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1b365d">
+    漸進式升級：引導深度遞增、評量成本同步上升（AI 稅率採單題「最高使用層級」計算）
+  </text>
+</svg>

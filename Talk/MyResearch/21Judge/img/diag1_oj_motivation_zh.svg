@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 350" width="1100" height="350">
+  <defs>
+    <filter id="sh" x="-4%" y="-6%" width="108%" height="114%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1100" height="350" rx="14" fill="#f8fafc"/>
+
+  <!-- Left Panel -->
+  <rect x="24" y="22" width="490" height="306" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" filter="url(#sh)"/>
+  <rect x="24" y="22" width="490" height="46" rx="12" fill="#1b365d"/>
+  <rect x="24" y="54" width="490" height="14" fill="#1b365d"/>
+  <text x="269" y="51" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="17" font-weight="800" fill="#ffffff">以系統為中心之 OJ 工程（既有研究焦點）</text>
+
+  <rect x="46" y="86" width="446" height="58" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="64" y="111" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="700" fill="#1b365d">1. 自動編譯與嚴格輸出比對</text>
+  <text x="64" y="132" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#475569">即使僅多一個空白字元（" 12" vs "12"），系統仍直接判為錯誤。</text>
+
+  <rect x="46" y="158" width="446" height="58" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="64" y="183" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="700" fill="#1b365d">2. 反覆試誤的高頻提交</text>
+  <text x="64" y="204" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#475569">過去研究指出，學生平均需提交 12 次程式碼才能通過單一題目。</text>
+
+  <rect x="46" y="230" width="446" height="76" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="64" y="255" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="700" fill="#8c1d40">⚠ 遠距程式教學的研究缺口</text>
+  <text x="64" y="276" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#334155">OJ 將學習責任轉移給自主學習的學生；缺乏動機或信心時，</text>
+  <text x="64" y="294" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#334155">學生究竟願不願意接受 OJ 系統，學界尚無實證研究探討。</text>
+
+  <!-- Center GAP -->
+  <circle cx="550" cy="175" r="28" fill="#8c1d40" filter="url(#sh)"/>
+  <text x="550" y="181" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="800" fill="#ffffff">缺口</text>
+
+  <!-- Right Panel -->
+  <rect x="586" y="22" width="490" height="306" rx="12" fill="#ffffff" stroke="#0f766e" stroke-width="2" filter="url(#sh)"/>
+  <rect x="586" y="22" width="490" height="46" rx="12" fill="#0f766e"/>
+  <rect x="586" y="54" width="490" height="14" fill="#0f766e"/>
+  <text x="831" y="51" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="17" font-weight="800" fill="#ffffff">以學習者為中心之接受度建模（本研究）</text>
+
+  <rect x="608" y="86" width="446" height="58" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="626" y="111" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="700" fill="#0f766e">1. 延伸版 UTAUT2 理論架構</text>
+  <text x="626" y="132" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#334155">整合 7 項心理與情境構面及「主修科系」，系統化驗證使用意願。</text>
+
+  <rect x="608" y="158" width="446" height="58" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="626" y="183" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="700" fill="#0f766e">2. PLS-SEM 實證分析（n = 187）</text>
+  <text x="626" y="204" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#334155">逢甲大學 6 週翻轉式資料科學課程，涵蓋資工、電機與跨院學生。</text>
+
+  <rect x="608" y="230" width="446" height="76" rx="8" fill="#1b365d"/>
+  <text x="626" y="255" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">★ 具體可行的 OJ 與課程設計藍圖</text>
+  <text x="626" y="276" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#e2e8f0">精準定位關鍵驅動力（享樂動機、自我效能、社會影響），</text>
+  <text x="626" y="294" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#e2e8f0">同時揭露系統體驗痛點（缺乏除錯資訊、編輯器自動縮排問題）。</text>
+</svg>

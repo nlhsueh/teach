@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 300">
+  <defs>
+    <marker id="arr-navy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-teal2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+
+  <!-- Box 1 -->
+  <rect x="14" y="24" width="230" height="250" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2.2"/>
+  <rect x="14" y="24" width="230" height="38" rx="12" fill="#1b365d"/>
+  <rect x="14" y="48" width="230" height="14" fill="#1b365d"/>
+  <text x="129" y="49" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">1. 網頁模板介面 (Template)</text>
+  <rect x="30" y="78" width="198" height="44" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="129" y="98" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Python 程式編輯器</text>
+  <text x="129" y="114" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#64748b">原貌顯示編譯與語法錯誤</text>
+  <rect x="30" y="134" width="198" height="54" rx="7" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.6"/>
+  <text x="129" y="155" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#0f766e">測試模式 (OTC + DTC)</text>
+  <text x="129" y="174" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#334155">自訂測資與近 3 次歷史紀錄</text>
+  <rect x="30" y="200" width="198" height="54" rx="7" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.6"/>
+  <text x="129" y="221" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#8c1d40">正式提交模式 (HTC)</text>
+  <text x="129" y="240" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#334155">二次確認防誤按 · 每次扣 3 分</text>
+
+  <line x1="244" y1="149" x2="280" y2="149" stroke="#1b365d" stroke-width="2.6" marker-end="url(#arr-navy)"/>
+
+  <!-- Box 2 -->
+  <rect x="286" y="24" width="265" height="250" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2.2"/>
+  <rect x="286" y="24" width="265" height="38" rx="12" fill="#1b365d"/>
+  <rect x="286" y="48" width="265" height="14" fill="#1b365d"/>
+  <text x="418" y="49" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">2. Django 控制與安全沙箱</text>
+  <rect x="304" y="78" width="229" height="72" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="418" y="102" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="700" fill="#1b365d">View-Control 自動評測核心</text>
+  <text x="418" y="122" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#475569">分流執行 OTC/DTC 與 HTC</text>
+  <text x="418" y="139" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#475569">時間限制檢核與即時計分</text>
+
+  <rect x="304" y="166" width="229" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.6"/>
+  <text x="418" y="190" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="800" fill="#1d4ed8">Docker 一次性隔離容器</text>
+  <text x="418" y="211" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">每次提交獨立建立虛擬容器</text>
+  <text x="418" y="229" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">取得輸出後數秒內立即銷毀</text>
+  <text x="418" y="246" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" font-weight="600" fill="#1d4ed8">防範無窮迴圈與惡意程式碼</text>
+
+  <line x1="551" y1="149" x2="587" y2="149" stroke="#0f766e" stroke-width="2.6" marker-end="url(#arr-teal2)"/>
+
+  <!-- Box 3 -->
+  <rect x="593" y="24" width="250" height="250" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.2"/>
+  <rect x="593" y="24" width="250" height="38" rx="12" fill="#0f766e"/>
+  <rect x="593" y="48" width="250" height="14" fill="#0f766e"/>
+  <text x="718" y="49" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">3. 軟體測試分析模組</text>
+  <rect x="611" y="80" width="214" height="50" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="718" y="102" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#0f766e">分支覆蓋率 (bₜ)</text>
+  <text x="718" y="120" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">計算測資涵蓋之程式分支比例</text>
+
+  <rect x="611" y="142" width="214" height="50" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="718" y="164" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#0f766e">突變分數 (msₜ)</text>
+  <text x="718" y="182" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">檢驗自訂測資抓錯（殺死突變體）力</text>
+
+  <rect x="611" y="204" width="214" height="50" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="718" y="226" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#1b365d">迴圈複雜度基準</text>
+  <text x="718" y="244" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">依題目決策數計算預期門檻</text>
+
+  <line x1="843" y1="149" x2="879" y2="149" stroke="#1b365d" stroke-width="2.6" marker-end="url(#arr-navy)"/>
+
+  <!-- Box 4 -->
+  <rect x="885" y="24" width="220" height="250" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2.2"/>
+  <rect x="885" y="24" width="220" height="38" rx="12" fill="#8c1d40"/>
+  <rect x="885" y="48" width="220" height="14" fill="#8c1d40"/>
+  <text x="995" y="49" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">4. 學習歷程與能力指標</text>
+
+  <rect x="903" y="82" width="184" height="46" rx="8" fill="#ffffff" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="995" y="102" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="800" fill="#8c1d40">答題韌性 (r)</text>
+  <text x="995" y="119" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">遭遇錯誤仍持續嘗試之毅力</text>
+
+  <rect x="903" y="142" width="184" height="46" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="995" y="162" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="800" fill="#1b365d">程式能力指標 (PAI)</text>
+  <text x="995" y="179" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">依韌性正規化之寫作效率</text>
+
+  <rect x="903" y="202" width="184" height="52" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="995" y="223" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="800" fill="#0f766e">測試效率指標 (TEI)</text>
+  <text x="995" y="241" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">自訂測資相對公開測資之增益</text>
+</svg>

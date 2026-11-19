@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 350" width="1100" height="350">
+  <defs>
+    <filter id="sh" x="-4%" y="-6%" width="108%" height="114%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1100" height="350" rx="14" fill="#f8fafc"/>
+
+  <!-- Left Panel: System-Centric Focus -->
+  <rect x="24" y="22" width="490" height="306" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" filter="url(#sh)"/>
+  <rect x="24" y="22" width="490" height="46" rx="12" fill="#1b365d"/>
+  <rect x="24" y="54" width="490" height="14" fill="#1b365d"/>
+  <text x="269" y="51" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#ffffff">System-Centric OJ Engineering (Existing Focus)</text>
+
+  <rect x="46" y="86" width="446" height="58" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="64" y="111" font-family="Inter, sans-serif" font-size="14.5" font-weight="700" fill="#1b365d">1. Automated Compilation &amp; Strict I/O Diff</text>
+  <text x="64" y="132" font-family="Inter, sans-serif" font-size="12.5" fill="#475569">Even a single extra space (" 12" vs "12") triggers instant Wrong Answer.</text>
+
+  <rect x="46" y="158" width="446" height="58" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="64" y="183" font-family="Inter, sans-serif" font-size="14.5" font-weight="700" fill="#1b365d">2. Repetitive Trial-and-Error Grading</text>
+  <text x="64" y="204" font-family="Inter, sans-serif" font-size="12.5" fill="#475569">Students average ~12 code submissions before passing a single task.</text>
+
+  <rect x="46" y="230" width="446" height="76" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="64" y="255" font-family="Inter, sans-serif" font-size="14.5" font-weight="700" fill="#8c1d40">⚠ The Blind Spot in Distance Programming</text>
+  <text x="64" y="276" font-family="Inter, sans-serif" font-size="12.5" fill="#334155">OJs shift responsibility onto self-directed learners — who may lack</text>
+  <text x="64" y="294" font-family="Inter, sans-serif" font-size="12.5" fill="#334155">motivation, confidence, or study habits when no TA is beside them.</text>
+
+  <!-- Center VS / Bridge -->
+  <circle cx="550" cy="175" r="28" fill="#8c1d40" filter="url(#sh)"/>
+  <text x="550" y="181" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="800" fill="#ffffff">GAP</text>
+
+  <!-- Right Panel: Learner-Centric Acceptance (This Study) -->
+  <rect x="586" y="22" width="490" height="306" rx="12" fill="#ffffff" stroke="#0f766e" stroke-width="2" filter="url(#sh)"/>
+  <rect x="586" y="22" width="490" height="46" rx="12" fill="#0f766e"/>
+  <rect x="586" y="54" width="490" height="14" fill="#0f766e"/>
+  <text x="831" y="51" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#ffffff">Learner-Centric Acceptance Modeling (Our Study)</text>
+
+  <rect x="608" y="86" width="446" height="58" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="626" y="111" font-family="Inter, sans-serif" font-size="14.5" font-weight="700" fill="#0f766e">1. Extended UTAUT2 Theoretical Lens</text>
+  <text x="626" y="132" font-family="Inter, sans-serif" font-size="12.5" fill="#334155">Tests 7 psychological/contextual factors + Academic Major on Intention.</text>
+
+  <rect x="608" y="158" width="446" height="58" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="626" y="183" font-family="Inter, sans-serif" font-size="14.5" font-weight="700" fill="#0f766e">2. Empirical PLS-SEM Evidence (n = 187)</text>
+  <text x="626" y="204" font-family="Inter, sans-serif" font-size="12.5" fill="#334155">6-week blended FCU Data Science course across CS, EE &amp; non-CS majors.</text>
+
+  <rect x="608" y="230" width="446" height="76" rx="8" fill="#1b365d"/>
+  <text x="626" y="255" font-family="Inter, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">★ Actionable Blueprint for OJ &amp; Course Design</text>
+  <text x="626" y="276" font-family="Inter, sans-serif" font-size="12.5" fill="#e2e8f0">Pinpoints what truly drives adoption (Fun, Self-Efficacy, Social Support)</text>
+  <text x="626" y="294" font-family="Inter, sans-serif" font-size="12.5" fill="#e2e8f0">and exposes UX gaps (missing debugger, strict editor indentation).</text>
+</svg>

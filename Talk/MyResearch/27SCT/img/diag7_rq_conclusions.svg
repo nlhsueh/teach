@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 355" width="1120" height="355">
+  <defs>
+    <marker id="arr-c1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arr-c2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-c3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .rq-pill { font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .card-h { font-size: 14.5px; font-weight: 800; fill: #0f172a; }
+    .metric { font-size: 17px; font-weight: 800; }
+    .sub { font-size: 11.8px; fill: #475569; }
+    .core-t { font-size: 16px; font-weight: 800; fill: #ffffff; }
+    .core-s { font-size: 12px; fill: #cbd5e1; }
+  </style>
+
+  <!-- TOP ROW: 4 RQ Conclusion Pillars -->
+  <!-- RQ1 Card -->
+  <rect x="10" y="10" width="260" height="218" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="24" y="22" width="54" height="24" rx="6" fill="#0f766e"/>
+  <text x="51" y="39" text-anchor="middle" class="rq-pill">RQ1</text>
+  <text x="88" y="39" font-size="13" font-weight="800" fill="#0f766e">Sharper Assessment</text>
+  <text x="140" y="76" text-anchor="middle" class="metric" fill="#0f766e">52.7% ➔ 13.4%</text>
+  <text x="140" y="95" text-anchor="middle" class="sub">Full-score ceiling reduced</text>
+  <line x1="30" y1="108" x2="250" y2="108" stroke="#99d6cd" stroke-width="1"/>
+  <text x="140" y="132" text-anchor="middle" font-size="14" font-weight="800" fill="#0f172a">r : 0.219 ➔ 0.324</text>
+  <text x="140" y="150" text-anchor="middle" class="sub">Stronger concept alignment</text>
+  <text x="140" y="176" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0f766e">IT vs. Non-IT: p = .0270*</text>
+  <text x="140" y="206" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Unmasks true competence</text>
+
+  <!-- RQ2 Card -->
+  <rect x="290" y="10" width="260" height="218" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2"/>
+  <rect x="304" y="22" width="54" height="24" rx="6" fill="#1b365d"/>
+  <text x="331" y="39" text-anchor="middle" class="rq-pill">RQ2</text>
+  <text x="368" y="39" font-size="13" font-weight="800" fill="#1b365d">Tiered Scaffolding</text>
+  <text x="420" y="76" text-anchor="middle" class="metric" fill="#1b365d">21.1% ➔ 80.4%</text>
+  <text x="420" y="95" text-anchor="middle" class="sub">Monotonic AC rise (L1 ➔ L4)</text>
+  <!-- Mini rising bars -->
+  <rect x="330" y="142" width="32" height="14" rx="3" fill="#94a3b8"/>
+  <rect x="374" y="134" width="32" height="22" rx="3" fill="#475569"/>
+  <rect x="418" y="126" width="32" height="30" rx="3" fill="#1b365d"/>
+  <rect x="462" y="110" width="32" height="46" rx="3" fill="#8c1d40"/>
+  <text x="346" y="171" text-anchor="middle" font-size="10.5" font-weight="700" fill="#475569">L1</text>
+  <text x="390" y="171" text-anchor="middle" font-size="10.5" font-weight="700" fill="#475569">L2</text>
+  <text x="434" y="171" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1b365d">L3</text>
+  <text x="478" y="171" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8c1d40">L4</text>
+  <text x="420" y="206" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">L0 baseline: 81.55% AC</text>
+
+  <!-- RQ3 Card -->
+  <rect x="570" y="10" width="260" height="218" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="584" y="22" width="54" height="24" rx="6" fill="#8c1d40"/>
+  <text x="611" y="39" text-anchor="middle" class="rq-pill">RQ3</text>
+  <text x="648" y="39" font-size="13" font-weight="800" fill="#8c1d40">4 Usage Strategies</text>
+  <text x="700" y="76" text-anchor="middle" class="metric" fill="#8c1d40">r = −0.368</text>
+  <text x="700" y="95" text-anchor="middle" class="sub">AI level vs. conceptual score</text>
+  <!-- Mini 2x2 Quadrant pills -->
+  <rect x="586" y="110" width="110" height="32" rx="6" fill="#ffffff" stroke="#0f766e"/>
+  <text x="641" y="124" text-anchor="middle" font-size="10" font-weight="800" fill="#0f766e">High-Eff. 25.0%</text>
+  <text x="641" y="137" text-anchor="middle" font-size="9.5" fill="#64748b">Low Tax · High Out</text>
+
+  <rect x="704" y="110" width="110" height="32" rx="6" fill="#ffffff" stroke="#1b365d"/>
+  <text x="759" y="124" text-anchor="middle" font-size="10" font-weight="800" fill="#1b365d">Boosted 30.4%</text>
+  <text x="759" y="137" text-anchor="middle" font-size="9.5" fill="#64748b">High Tax · High Out</text>
+
+  <rect x="586" y="148" width="110" height="32" rx="6" fill="#ffffff" stroke="#64748b"/>
+  <text x="641" y="162" text-anchor="middle" font-size="10" font-weight="800" fill="#475569">Low-Inv. 25.9%</text>
+  <text x="641" y="175" text-anchor="middle" font-size="9.5" fill="#64748b">Low Tax · Low Out</text>
+
+  <rect x="704" y="148" width="110" height="32" rx="6" fill="#ffffff" stroke="#8c1d40"/>
+  <text x="759" y="162" text-anchor="middle" font-size="10" font-weight="800" fill="#8c1d40">Burdened 18.8%</text>
+  <text x="759" y="175" text-anchor="middle" font-size="9.5" fill="#64748b">High Tax · Low Out</text>
+
+  <text x="700" y="206" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Adaptive cost–benefit trade-offs</text>
+
+  <!-- RQ4 Card -->
+  <rect x="850" y="10" width="260" height="218" rx="12" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="864" y="22" width="54" height="24" rx="6" fill="#1b365d"/>
+  <text x="891" y="39" text-anchor="middle" class="rq-pill">RQ4</text>
+  <text x="928" y="39" font-size="13" font-weight="800" fill="#1b365d">LADI Validity</text>
+  <text x="980" y="76" text-anchor="middle" class="metric" fill="#1b365d">r = −0.383</text>
+  <text x="980" y="95" text-anchor="middle" class="sub">Higher mastery ➔ Lower LADI</text>
+  <line x1="870" y1="108" x2="1090" y2="108" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="980" y="131" text-anchor="middle" font-size="13" font-weight="800" fill="#1b365d">IT: r = −0.509  |  Non-IT: −0.187</text>
+  <text x="980" y="152" text-anchor="middle" font-size="12.5" font-weight="700" fill="#8c1d40">4th-Yr: r = −0.779</text>
+  <text x="980" y="174" text-anchor="middle" class="sub">Bimodal: 32.4% Low · 46.5% High</text>
+  <text x="980" y="206" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Criterion-related dependency index</text>
+
+  <!-- Converging Arrows to Core Takeaway -->
+  <line x1="140" y1="228" x2="140" y2="262" stroke="#0f766e" stroke-width="2.4" marker-end="url(#arr-c1)"/>
+  <line x1="420" y1="228" x2="420" y2="262" stroke="#1b365d" stroke-width="2.4" marker-end="url(#arr-c2)"/>
+  <line x1="700" y1="228" x2="700" y2="262" stroke="#8c1d40" stroke-width="2.4" marker-end="url(#arr-c3)"/>
+  <line x1="980" y1="228" x2="980" y2="262" stroke="#1b365d" stroke-width="2.4" marker-end="url(#arr-c2)"/>
+
+  <!-- BOTTOM BANNER: Overarching Synthesis -->
+  <rect x="10" y="268" width="1100" height="76" rx="12" fill="#1b365d"/>
+  <text x="560" y="298" text-anchor="middle" class="core-t">
+    Core Conclusion: Tiered AI Turns LLM Assistance into a Controllable, Analyzable Instructional Intervention
+  </text>
+  <text x="560" y="324" text-anchor="middle" class="core-s">
+    Key question is NOT "whether to allow AI", but HOW boundaries, AI tax costs, and LADI preserve both learning support and assessment interpretability.
+  </text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 355">
+  <!-- Top Banner -->
+  <rect x="16" y="10" width="1088" height="44" rx="10" fill="#1b365d"/>
+  <text x="560" y="38" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#ffffff">Empirical Synthesis: Pytutor Study on 61 Active Learners × 50 Python Exercises</text>
+
+  <!-- Col 1: RQ1 -->
+  <rect x="16" y="68" width="348" height="214" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.2"/>
+  <rect x="16" y="68" width="348" height="36" rx="12" fill="#0f766e"/>
+  <rect x="16" y="92" width="348" height="12" fill="#0f766e"/>
+  <text x="190" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">RQ1 · Abilities &amp; Behaviors</text>
+  <text x="34" y="132" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="#0f766e">23% Blind · 2.08× Video</text>
+  <text x="34" y="160" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• Low patience: 56% video completion</text>
+  <text x="34" y="184" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• Only 44% wrote DTCs before submit</text>
+  <text x="34" y="208" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• Avg PAI = 121.80, Avg TEI = 1.89</text>
+  <text x="34" y="232" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• 4 types: 11 HPHT, 20 HPLT, 19 LPHT,</text>
+  <text x="46" y="252" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">11 LPLT — coding ≠ testing skill</text>
+
+  <!-- Col 2: RQ2 -->
+  <rect x="386" y="68" width="348" height="214" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2.2"/>
+  <rect x="386" y="68" width="348" height="36" rx="12" fill="#8c1d40"/>
+  <rect x="386" y="92" width="348" height="12" fill="#8c1d40"/>
+  <text x="560" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">RQ2 · Group Differences</text>
+  <text x="404" y="132" font-family="Inter, sans-serif" font-size="21" font-weight="800" fill="#8c1d40">CS ≠ Better Testers (p=.277)</text>
+  <text x="404" y="160" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• CS majors: higher PAI (p = 0.0003*)</text>
+  <text x="404" y="184" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">  &amp; lower r (p = 0.001*), but same TEI</text>
+  <text x="404" y="208" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• Formative: PAI (p=.035*) &amp; TEI (.036*)</text>
+  <text x="404" y="232" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">  both lift scores (21/31 high = HT)</text>
+  <text x="404" y="256" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• Timed Exam: only PAI matters (p=.016*)</text>
+
+  <!-- Col 3: RQ3 -->
+  <rect x="756" y="68" width="348" height="214" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2.2"/>
+  <rect x="756" y="68" width="348" height="36" rx="12" fill="#1b365d"/>
+  <rect x="756" y="92" width="348" height="12" fill="#1b365d"/>
+  <text x="930" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">RQ3 · Correlations &amp; Impact</text>
+  <text x="774" y="132" font-family="Inter, sans-serif" font-size="21" font-weight="800" fill="#1b365d">Videos &amp; Tests Lift Practice</text>
+  <text x="774" y="160" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• r ↔ TEI: +0.50 (debugging drives tests)</text>
+  <text x="774" y="184" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• TEI ↔ Video Completion: +0.33</text>
+  <text x="774" y="208" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• PAI ↔ Video Speed: −0.24 (rushing hurts)</text>
+  <text x="774" y="232" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• PAI ↔ Form./Summ.: +0.35 / +0.38</text>
+  <text x="774" y="256" font-family="Inter, sans-serif" font-size="13.5" fill="#334155">• TEI ↔ Formative: +0.26 (Summ.: +0.07)</text>
+
+  <!-- Bottom Takeaway Bar -->
+  <rect x="16" y="296" width="1088" height="48" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+  <text x="560" y="326" text-anchor="middle" font-family="Inter, sans-serif" font-size="15.5" font-weight="800" fill="#92400e">Core Takeaway: Teach software testing explicitly in introductory programming — to BOTH CS and Non-CS majors!</text>
+</svg>

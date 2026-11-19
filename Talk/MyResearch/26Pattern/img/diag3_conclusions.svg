@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 350">
+  <rect width="1120" height="350" rx="12" fill="#f8fafc"/>
+
+  <!-- Column 1: RQ1 -->
+  <rect x="22" y="18" width="344" height="314" rx="12" fill="#ffffff" stroke="#0f766e" stroke-width="2.5"/>
+  <rect x="22" y="18" width="344" height="44" rx="10" fill="#0f766e"/>
+  <rect x="22" y="48" width="344" height="14" fill="#0f766e"/>
+  <text x="194" y="46" text-anchor="middle" fill="#ffffff" font-family="Inter,sans-serif" font-size="15" font-weight="800">RQ1 · Reusable Pattern Language</text>
+
+  <text x="194" y="102" text-anchor="middle" fill="#0f766e" font-family="Inter,sans-serif" font-size="30" font-weight="800">3 Patterns + RACE</text>
+  <text x="194" y="126" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="12.5" font-weight="600">Guidance · Debugging · Optimization</text>
+
+  <line x1="46" y1="146" x2="342" y2="146" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="46" y="174" fill="#334155" font-family="Inter,sans-serif" font-size="13">✓ Explicit pedagogical intent, forces,</text>
+  <text x="60" y="194" fill="#334155" font-family="Inter,sans-serif" font-size="13">constraints &amp; non-linear transitions</text>
+  <text x="46" y="224" fill="#334155" font-family="Inter,sans-serif" font-size="13">✓ RACE turns guardrails (no full code)</text>
+  <text x="60" y="244" fill="#334155" font-family="Inter,sans-serif" font-size="13">into enforceable Expectation rules</text>
+  <rect x="44" y="268" width="300" height="46" rx="8" fill="#f0fdfa" stroke="#99f6e4"/>
+  <text x="194" y="288" text-anchor="middle" fill="#0f766e" font-family="Inter,sans-serif" font-size="12" font-weight="700">More than 3 prompts: a transferable</text>
+  <text x="194" y="305" text-anchor="middle" fill="#0f766e" font-family="Inter,sans-serif" font-size="12" font-weight="700">design language for AI tutoring</text>
+
+  <!-- Column 2: RQ2 -->
+  <rect x="388" y="18" width="344" height="314" rx="12" fill="#ffffff" stroke="#8c1d40" stroke-width="2.5"/>
+  <rect x="388" y="18" width="344" height="44" rx="10" fill="#8c1d40"/>
+  <rect x="388" y="48" width="344" height="14" fill="#8c1d40"/>
+  <text x="560" y="46" text-anchor="middle" fill="#ffffff" font-family="Inter,sans-serif" font-size="15" font-weight="800">RQ2 · Authentic Course Usage</text>
+
+  <text x="560" y="102" text-anchor="middle" fill="#8c1d40" font-family="Inter,sans-serif" font-size="30" font-weight="800">58.8% · 67.4%</text>
+  <text x="560" y="126" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="12.5" font-weight="600">Guidey Top Used · Multi-Tutor Users</text>
+
+  <line x1="412" y1="146" x2="708" y2="146" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="412" y="174" fill="#334155" font-family="Inter,sans-serif" font-size="13">✓ 315 students · 86 exercises · 1,315</text>
+  <text x="426" y="194" fill="#334155" font-family="Inter,sans-serif" font-size="13">tutor-assisted attempts (26.4%)</text>
+  <text x="412" y="224" fill="#334155" font-family="Inter,sans-serif" font-size="13">⚠ Opti (30.6%) used mostly after errors</text>
+  <text x="426" y="244" fill="#334155" font-family="Inter,sans-serif" font-size="13">(23–24%), rarely after Accepted (AC)</text>
+  <rect x="410" y="268" width="300" height="46" rx="8" fill="#fdf2f5" stroke="#fecdd3"/>
+  <text x="560" y="288" text-anchor="middle" fill="#8c1d40" font-family="Inter,sans-serif" font-size="12" font-weight="700">Post-AC reflection needs explicit</text>
+  <text x="560" y="305" text-anchor="middle" fill="#8c1d40" font-family="Inter,sans-serif" font-size="12" font-weight="700">course incentives or state gating</text>
+
+  <!-- Column 3: RQ3 -->
+  <rect x="754" y="18" width="344" height="314" rx="12" fill="#ffffff" stroke="#1b365d" stroke-width="2.5"/>
+  <rect x="754" y="18" width="344" height="44" rx="10" fill="#1b365d"/>
+  <rect x="754" y="48" width="344" height="14" fill="#1b365d"/>
+  <text x="926" y="46" text-anchor="middle" fill="#ffffff" font-family="Inter,sans-serif" font-size="15" font-weight="800">RQ3 · Errors &amp; Outcomes</text>
+
+  <text x="926" y="102" text-anchor="middle" fill="#1b365d" font-family="Inter,sans-serif" font-size="30" font-weight="800">73.9% AC Rate</text>
+  <text x="926" y="126" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="12.5" font-weight="600">Despite 3.7×–5.7× Higher Errors</text>
+
+  <line x1="778" y1="146" x2="1074" y2="146" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="778" y="174" fill="#334155" font-family="Inter,sans-serif" font-size="13">✓ Tutors mainly used when struggling</text>
+  <text x="792" y="194" fill="#334155" font-family="Inter,sans-serif" font-size="13">(4.5 vs. 0.8 test errors/attempt)</text>
+  <text x="778" y="224" fill="#334155" font-family="Inter,sans-serif" font-size="13">✓ Debuggy matched non-users' AC rate</text>
+  <text x="792" y="244" fill="#334155" font-family="Inter,sans-serif" font-size="13">(76.1% vs. 76.7%) w/ 7.2× prior errors</text>
+  <rect x="776" y="268" width="300" height="46" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="926" y="288" text-anchor="middle" fill="#1b365d" font-family="Inter,sans-serif" font-size="12" font-weight="700">Consistent with scaffolding; causal</text>
+  <text x="926" y="305" text-anchor="middle" fill="#1b365d" font-family="Inter,sans-serif" font-size="12" font-weight="700">effects await controlled experiments</text>
+</svg>

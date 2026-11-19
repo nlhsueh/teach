@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 375">
+  <defs>
+    <marker id="a-navy" markerWidth="11" markerHeight="11" refX="9" refY="5.5" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,1 L10,5.5 L0,10 Z" fill="#1b365d"/>
+    </marker>
+    <marker id="a-crimson" markerWidth="11" markerHeight="11" refX="9" refY="5.5" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,1 L10,5.5 L0,10 Z" fill="#8c1d40"/>
+    </marker>
+    <marker id="a-teal" markerWidth="11" markerHeight="11" refX="9" refY="5.5" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,1 L10,5.5 L0,10 Z" fill="#0f766e"/>
+    </marker>
+  </defs>
+  <rect width="1120" height="375" rx="12" fill="#f8fafc"/>
+
+  <!-- Pattern 1 -->
+  <rect x="30" y="66" width="295" height="164" rx="12" fill="#ffffff" stroke="#0f766e" stroke-width="2.5"/>
+  <rect x="30" y="66" width="295" height="38" rx="10" fill="#0f766e"/>
+  <rect x="30" y="92" width="295" height="12" fill="#0f766e"/>
+  <text x="177" y="91" text-anchor="middle" fill="#ffffff" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="15" font-weight="800">引導模式（Guidey）</text>
+  <text x="48" y="128" fill="#0f766e" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12.5" font-weight="700">狀態：有題目，但尚無解題計畫</text>
+  <text x="48" y="150" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12">• 漸進式小步驟提示與概念說明</text>
+  <text x="48" y="170" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12">• 允許使用虛擬碼（Pseudo-code）</text>
+  <text x="48" y="190" fill="#8c1d40" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12" font-weight="700">• 護欄：嚴禁提供可執行 Python 碼</text>
+  <text x="48" y="214" fill="#64748b" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="11">↻ 迭代：實作提示後再請求下一提示</text>
+
+  <!-- Pattern 2 -->
+  <rect x="412" y="66" width="296" height="164" rx="12" fill="#ffffff" stroke="#8c1d40" stroke-width="2.5"/>
+  <rect x="412" y="66" width="296" height="38" rx="10" fill="#8c1d40"/>
+  <rect x="412" y="92" width="296" height="12" fill="#8c1d40"/>
+  <text x="560" y="91" text-anchor="middle" fill="#ffffff" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="15" font-weight="800">除錯模式（Debuggy）</text>
+  <text x="430" y="128" fill="#8c1d40" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12.5" font-weight="700">狀態：程式執行失敗 / 評測錯誤</text>
+  <text x="430" y="150" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12">• 1. 根因分析（對應錯誤行與訊息）</text>
+  <text x="430" y="170" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12">• 2. 單一精準修正提示</text>
+  <text x="430" y="190" fill="#8c1d40" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12" font-weight="700">• 護欄：不提供完整替代程式碼</text>
+  <text x="430" y="214" fill="#64748b" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="11">⚠ 邊界情境：WA 無 Traceback 訊息</text>
+
+  <!-- Pattern 3 -->
+  <rect x="795" y="66" width="295" height="164" rx="12" fill="#ffffff" stroke="#1b365d" stroke-width="2.5"/>
+  <rect x="795" y="66" width="295" height="38" rx="10" fill="#1b365d"/>
+  <rect x="795" y="92" width="295" height="12" fill="#1b365d"/>
+  <text x="942" y="91" text-anchor="middle" fill="#ffffff" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="15" font-weight="800">最佳化模式（Opti）</text>
+  <text x="813" y="128" fill="#1b365d" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12.5" font-weight="700">狀態：程式已可運作 / 通過 AC</text>
+  <text x="813" y="150" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12">• 1. 程式品質摘要（優缺點）</text>
+  <text x="813" y="170" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12">• 2. 具名最佳實踐建議（Pythonic）</text>
+  <text x="813" y="190" fill="#334155" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12">• 3. 非可執行替代解法提示</text>
+  <text x="813" y="214" fill="#8c1d40" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="11" font-weight="700">• 護欄：不代為完整重寫程式</text>
+
+  <!-- Forward Arrows -->
+  <line x1="325" y1="145" x2="408" y2="145" stroke="#1b365d" stroke-width="3" marker-end="url(#a-navy)"/>
+  <text x="366" y="132" text-anchor="middle" fill="#1b365d" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="11" font-weight="700">程式出錯</text>
+
+  <line x1="708" y1="145" x2="791" y2="145" stroke="#1b365d" stroke-width="3" marker-end="url(#a-navy)"/>
+  <text x="749" y="132" text-anchor="middle" fill="#1b365d" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="11" font-weight="700">通過 AC</text>
+
+  <!-- Return Arrows -->
+  <path d="M560 66 C560 22, 177 22, 177 62" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-dasharray="6,4" marker-end="url(#a-teal)"/>
+  <rect x="278" y="14" width="182" height="22" rx="6" fill="#f0fdfa" stroke="#99f6e4"/>
+  <text x="369" y="29" text-anchor="middle" fill="#0f766e" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="11" font-weight="700">發現觀念缺口 ➔ 返回引導</text>
+
+  <path d="M942 66 C942 22, 585 22, 585 62" fill="none" stroke="#8c1d40" stroke-width="2.2" stroke-dasharray="6,4" marker-end="url(#a-crimson)"/>
+  <rect x="664" y="14" width="196" height="22" rx="6" fill="#fdf2f5" stroke="#fecdd3"/>
+  <text x="762" y="29" text-anchor="middle" fill="#8c1d40" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="11" font-weight="700">重構引入新錯 ➔ 返回除錯</text>
+
+  <!-- Bottom Shared Forces -->
+  <rect x="30" y="254" width="1060" height="104" rx="10" fill="#1b365d"/>
+  <text x="560" y="279" text-anchor="middle" fill="#ffffff" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="13.5" font-weight="800">貫穿三元模式語言的三大共通設計張力（Shared Forces）</text>
+
+  <rect x="48" y="292" width="328" height="52" rx="7" fill="rgba(255,255,255,0.12)"/>
+  <text x="212" y="313" text-anchor="middle" fill="#5eead4" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12" font-weight="800">1. 即時性 vs. 獨立思考</text>
+  <text x="212" y="332" text-anchor="middle" fill="#e2e8f0" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="11">提供具體協助，但不取代學生自身推理</text>
+
+  <rect x="396" y="292" width="328" height="52" rx="7" fill="rgba(255,255,255,0.12)"/>
+  <text x="560" y="313" text-anchor="middle" fill="#fda4af" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12" font-weight="800">2. 具體產出 vs. 盲目複製</text>
+  <text x="560" y="332" text-anchor="middle" fill="#e2e8f0" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="11">允許提示與虛擬碼，嚴禁可直接貼上之程式碼</text>
+
+  <rect x="744" y="292" width="328" height="52" rx="7" fill="rgba(255,255,255,0.12)"/>
+  <text x="908" y="313" text-anchor="middle" fill="#93c5fd" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="12" font-weight="800">3. 單一焦點 vs. 全面覆蓋</text>
+  <text x="908" y="332" text-anchor="middle" fill="#e2e8f0" font-family="Noto Sans TC,PingFang TC,sans-serif" font-size="11">聚焦單一核心難點，依任務狀態彈性切換模式</text>
+</svg>

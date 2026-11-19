@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 335" width="1120" height="335">
+  <defs>
+    <marker id="arr-t3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arr-a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+    <marker id="arr-n3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .hdr { font-size: 14.5px; font-weight: 800; fill: #ffffff; }
+    .role { font-size: 12.5px; font-weight: 800; fill: #ffffff; }
+    .sub { font-size: 11.8px; fill: #475569; }
+  </style>
+
+  <!-- Top Mediator Router -->
+  <rect x="330" y="8" width="460" height="52" rx="10" fill="#1b365d"/>
+  <text x="560" y="31" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">Mediator: Task-Adaptive Mode Selector</text>
+  <text x="560" y="50" text-anchor="middle" font-size="11.5" fill="#cbd5e1">Inspects Draft, Conflict Report &amp; Open Issues (Bounded by Max Rounds r)</text>
+
+  <path d="M 420 60 L 275 88" fill="none" stroke="#0f766e" stroke-width="2.4" marker-end="url(#arr-t3)"/>
+  <path d="M 700 60 L 845 88" fill="none" stroke="#8c1d40" stroke-width="2.4" marker-end="url(#arr-a3)"/>
+
+  <!-- LEFT: Simultaneous-Talk -->
+  <rect x="10" y="92" width="535" height="176" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="10" y="92" width="535" height="36" rx="12" fill="#0f766e"/>
+  <rect x="10" y="118" width="535" height="10" fill="#0f766e"/>
+  <text x="277" y="116" text-anchor="middle" class="hdr">Simultaneous-Talk · Divergent Information Expansion</text>
+
+  <text x="277" y="148" text-anchor="middle" font-size="12" font-weight="700" fill="#0f766e">When: Open Questions &amp; New-Requirement Supplementation (Types 1 &amp; 2)</text>
+
+  <!-- 3 Independent Parallel Boxes -->
+  <rect x="32" y="162" width="146" height="44" rx="8" fill="#1b365d"/>
+  <text x="105" y="189" text-anchor="middle" class="role">Analyst (Scope)</text>
+
+  <rect x="204" y="162" width="146" height="44" rx="8" fill="#0f766e"/>
+  <text x="277" y="189" text-anchor="middle" class="role">Expert (NFRs)</text>
+
+  <rect x="376" y="162" width="146" height="44" rx="8" fill="#3b5b8a"/>
+  <text x="449" y="189" text-anchor="middle" class="role">Modeler (UML)</text>
+
+  <text x="277" y="229" text-anchor="middle" class="sub">Each agent probes <tspan font-weight="700" fill="#0f172a">independently without seeing others' outputs</tspan>.</text>
+  <text x="277" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="#0f766e">Prevents early anchoring &amp; maximizes NFR perspective coverage</text>
+
+  <!-- RIGHT: One-by-One -->
+  <rect x="575" y="92" width="535" height="176" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="575" y="92" width="535" height="36" rx="12" fill="#8c1d40"/>
+  <rect x="575" y="118" width="535" height="10" fill="#8c1d40"/>
+  <text x="842" y="116" text-anchor="middle" class="hdr">One-by-One · Convergent Decision Formation</text>
+
+  <text x="842" y="148" text-anchor="middle" font-size="12" font-weight="700" fill="#8c1d40">When: Requirement Trade-Offs &amp; Conflict Resolution (Types 3 &amp; 4)</text>
+
+  <!-- 3 Sequential Boxes -->
+  <rect x="597" y="162" width="136" height="44" rx="8" fill="#1b365d"/>
+  <text x="665" y="189" text-anchor="middle" class="role">1. Analyst</text>
+
+  <line x1="733" y1="184" x2="769" y2="184" stroke="#8c1d40" stroke-width="2.5" marker-end="url(#arr-a3)"/>
+
+  <rect x="774" y="162" width="136" height="44" rx="8" fill="#8c1d40"/>
+  <text x="842" y="189" text-anchor="middle" class="role">2. Expert</text>
+
+  <line x1="910" y1="184" x2="946" y2="184" stroke="#8c1d40" stroke-width="2.5" marker-end="url(#arr-a3)"/>
+
+  <rect x="951" y="162" width="136" height="44" rx="8" fill="#3b5b8a"/>
+  <text x="1019" y="189" text-anchor="middle" class="role">3. Modeler</text>
+
+  <text x="842" y="229" text-anchor="middle" class="sub">Sequential cross-checking of <tspan font-weight="700" fill="#0f172a">prior arguments, laws &amp; state logic</tspan>.</text>
+  <text x="842" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="#8c1d40">Converges on consistent resolutions &amp; avoids false alarms</text>
+
+  <!-- Bottom Outcomes -->
+  <line x1="277" y1="268" x2="430" y2="292" stroke="#1b365d" stroke-width="2" marker-end="url(#arr-n3)"/>
+  <line x1="842" y1="268" x2="690" y2="292" stroke="#1b365d" stroke-width="2" marker-end="url(#arr-n3)"/>
+
+  <rect x="190" y="286" width="740" height="42" rx="8" fill="#f8fafc" stroke="#1b365d" stroke-width="1.8"/>
+  <text x="560" y="312" text-anchor="middle" font-size="13" font-weight="700" fill="#1b365d">
+    Consensus ➔ Logged in Meeting Minutes (MoM)   |   Deadlock ➔ Escalated to Human-in-the-Loop Judge
+  </text>
+</svg>

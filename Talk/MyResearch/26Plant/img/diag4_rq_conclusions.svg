@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 355" width="1120" height="355">
+  <defs>
+    <marker id="arr-p1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arr-p2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+    <marker id="arr-p3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .pill { font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .met { font-size: 18px; font-weight: 800; }
+    .sub { font-size: 12px; fill: #475569; }
+    .ct { font-size: 16px; font-weight: 800; fill: #ffffff; }
+    .cs { font-size: 12px; fill: #cbd5e1; }
+  </style>
+
+  <!-- RQ1 Pillar -->
+  <rect x="10" y="10" width="352" height="218" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="24" y="22" width="54" height="24" rx="6" fill="#0f766e"/>
+  <text x="51" y="39" text-anchor="middle" class="pill">RQ1</text>
+  <text x="90" y="39" font-size="14" font-weight="800" fill="#0f766e">Implicit Req. Elicitation</text>
+  <text x="186" y="78" text-anchor="middle" class="met" fill="#0f766e">54.28% vs. 16.77%</text>
+  <text x="186" y="97" text-anchor="middle" class="sub">GPT-4.1 IRE (Gemini: 46.79% vs. 18.90%)</text>
+  <line x1="32" y1="112" x2="340" y2="112" stroke="#99d6cd" stroke-width="1"/>
+  <text x="186" y="136" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0f172a">2.5×–3.2× More Implicit IRs</text>
+  <text x="186" y="158" text-anchor="middle" class="sub">Breakthrough on NFRs missed by baseline:</text>
+  <text x="186" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#0f766e">Security 10/12 · Reliability 5/7 · Safety 3/3</text>
+  <text x="186" y="206" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Expert + Modeler break premature convergence</text>
+
+  <!-- RQ2 Pillar -->
+  <rect x="384" y="10" width="352" height="218" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="398" y="22" width="54" height="24" rx="6" fill="#8c1d40"/>
+  <text x="425" y="39" text-anchor="middle" class="pill">RQ2</text>
+  <text x="464" y="39" font-size="14" font-weight="800" fill="#8c1d40">Conflict Identification</text>
+  <text x="560" y="78" text-anchor="middle" class="met" fill="#8c1d40">95.55% – 100.00%</text>
+  <text x="560" y="97" text-anchor="middle" class="sub">Conflict-Class Recall (Baseline: 61.9%–80.0%)</text>
+  <line x1="406" y1="112" x2="714" y2="112" stroke="#e2a8b8" stroke-width="1"/>
+  <text x="560" y="136" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0f172a">Macro F1: 89.46% – 96.66%</text>
+  <text x="560" y="158" text-anchor="middle" class="sub">Lifts Conflict-Class F1 by +6.66 to +20.77 pts</text>
+  <text x="560" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#8c1d40">One-by-One: Analyst ➔ Expert ➔ Modeler</text>
+  <text x="560" y="206" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Catches subtle regulatory &amp; state conflicts</text>
+
+  <!-- RQ3 Pillar -->
+  <rect x="758" y="10" width="352" height="218" rx="12" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="772" y="22" width="54" height="24" rx="6" fill="#1b365d"/>
+  <text x="799" y="39" text-anchor="middle" class="pill">RQ3</text>
+  <text x="838" y="39" font-size="14" font-weight="800" fill="#1b365d">Explicit Cost Trade-Off</text>
+  <text x="934" y="78" text-anchor="middle" class="met" fill="#1b365d">$0.14 – $0.15 / IR</text>
+  <text x="934" y="97" text-anchor="middle" class="sub">US$6.71–$8.14 &amp; ~1 hr per system case</text>
+  <line x1="780" y1="112" x2="1088" y2="112" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="934" y="136" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0f172a">93.4×–248.8× Tokens · 28–37× Time</text>
+  <text x="934" y="158" text-anchor="middle" class="sub">IRE Gain/1M Tok: +9.65% (GPT) / +2.88% (Gem)</text>
+  <text x="934" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#1b365d">High ROI for Compliance-Critical Systems</text>
+  <text x="934" y="206" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Single-agent remains better for rapid drafts</text>
+
+  <!-- Converging Arrows -->
+  <line x1="186" y1="228" x2="186" y2="262" stroke="#0f766e" stroke-width="2.4" marker-end="url(#arr-p1)"/>
+  <line x1="560" y1="228" x2="560" y2="262" stroke="#8c1d40" stroke-width="2.4" marker-end="url(#arr-p2)"/>
+  <line x1="934" y1="228" x2="934" y2="262" stroke="#1b365d" stroke-width="2.4" marker-end="url(#arr-p3)"/>
+
+  <!-- Core Takeaway Banner -->
+  <rect x="10" y="268" width="1100" height="76" rx="12" fill="#1b365d"/>
+  <text x="560" y="298" text-anchor="middle" class="ct">
+    Core Conclusion: PLANT Delivers High-Completeness, High-Recall &amp; Traceable Requirements Engineering
+  </text>
+  <text x="560" y="324" text-anchor="middle" class="cs">
+    Spending ~$7–$8 and ~1 hour upfront to catch 3× more NFRs and ~97–100% conflicts prevents far costlier downstream rework.
+  </text>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 355" width="1100" height="355">
+  <defs>
+    <marker id="arr-p-zh" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-pt-zh" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+  <rect width="1100" height="355" rx="12" fill="#f8fafc"/>
+
+  <!-- Left: Two Prompt Configurations -->
+  <text x="165" y="30" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="800" fill="#1b365d">兩種提示輸入組態（RQ1）</text>
+
+  <rect x="20" y="46" width="290" height="128" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.5"/>
+  <rect x="20" y="46" width="290" height="32" rx="10" fill="#0f766e"/>
+  <rect x="20" y="66" width="290" height="12" fill="#0f766e"/>
+  <text x="165" y="67" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">組態 A：視覺截圖 ＋ 操作腳本</text>
+  <text x="36" y="102" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="600" fill="#0f172a">• 靜態介面截圖（Rapi 轉換連結）</text>
+  <text x="36" y="124" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="600" fill="#0f172a">• 動態 JSON 操作腳本資料</text>
+  <text x="36" y="146" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">（點擊步驟、時間戳記、執行狀態）</text>
+  <text x="36" y="164" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" font-weight="700" fill="#0f766e">★ 擅長偵測逾時（&gt;3000 ms）與錯誤流程</text>
+
+  <rect x="20" y="194" width="290" height="128" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="20" y="194" width="290" height="32" rx="10" fill="#8c1d40"/>
+  <rect x="20" y="214" width="290" height="12" fill="#8c1d40"/>
+  <text x="165" y="215" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">組態 B：僅視覺截圖輸入</text>
+  <text x="36" y="250" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="600" fill="#0f172a">• 僅提供靜態網頁截圖</text>
+  <text x="36" y="272" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" fill="#64748b">• 不附加 JSON 操作腳本</text>
+  <text x="36" y="294" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">（純視覺檢視頁面呈現狀態）</text>
+  <text x="36" y="312" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" font-weight="700" fill="#8c1d40">★ 提示較精簡；靜態版面評估效果相當</text>
+
+  <!-- Arrows -->
+  <line x1="312" y1="110" x2="360" y2="155" stroke="#0f766e" stroke-width="3" marker-end="url(#arr-pt-zh)"/>
+  <line x1="312" y1="258" x2="360" y2="215" stroke="#1b365d" stroke-width="3" marker-end="url(#arr-p-zh)"/>
+
+  <!-- Middle: 5-Component Structured Prompt -->
+  <rect x="368" y="26" width="400" height="306" rx="12" fill="#ffffff" stroke="#1b365d" stroke-width="2.5"/>
+  <rect x="368" y="26" width="400" height="40" rx="12" fill="#1b365d"/>
+  <rect x="368" y="52" width="400" height="14" fill="#1b365d"/>
+  <text x="568" y="51" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="800" fill="#ffffff">五段式結構化 GPT-4 提示架構（附錄 B）</text>
+
+  <rect x="386" y="78" width="364" height="42" rx="7" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="400" y="96" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#1b365d">1. 任務描述與評估情境</text>
+  <text x="400" y="113" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">定義 UX 評估角色、網站互動脈絡與任務目標</text>
+
+  <rect x="386" y="128" width="364" height="42" rx="7" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.2"/>
+  <text x="400" y="146" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#0f766e">2. 使用者操作資料與截圖</text>
+  <text x="400" y="163" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">截圖連結 ＋（可選）JSON 紀錄（起訖時間、狀態）</text>
+
+  <rect x="386" y="178" width="364" height="42" rx="7" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="400" y="196" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#1b365d">3. JSON 資料格式規範</text>
+  <text x="400" y="213" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">說明欄位意義：title、時間戳、logs、cases、screenshots</text>
+
+  <rect x="386" y="228" width="364" height="42" rx="7" fill="#fdf2f5" stroke="#fecdd3" stroke-width="1.2"/>
+  <text x="400" y="246" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#8c1d40">4. Nielsen 啟發式準則（NS01–NS06）</text>
+  <text x="400" y="263" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">逐條注入六項原則的詳細定義與具體介面範例</text>
+
+  <rect x="386" y="278" width="364" height="42" rx="7" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="400" y="296" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#1b365d">5. 評分方法與量表說明</text>
+  <text x="400" y="313" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#475569">以 3 分為基準，依顯著差異上下調整為 1–5 整數分</text>
+
+  <!-- Arrow to Output -->
+  <line x1="770" y1="180" x2="814" y2="180" stroke="#1b365d" stroke-width="3.5" marker-end="url(#arr-p-zh)"/>
+
+  <!-- Right: GPT-4 Dual Output -->
+  <rect x="822" y="56" width="258" height="248" rx="12" fill="#1b365d"/>
+  <text x="951" y="90" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="16" font-weight="800" fill="#ffffff">GPT-4 雙軌評估輸出</text>
+  <text x="951" y="110" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#cbd5e1">（temp = 0.7 · 每情境評估 30 次）</text>
+
+  <rect x="840" y="128" width="222" height="72" rx="8" fill="#ffffff"/>
+  <text x="854" y="152" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="800" fill="#0f766e">量化指標分數</text>
+  <text x="854" y="172" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">各指標 1–5 分評等</text>
+  <text x="854" y="189" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">（NS01–NS06 ➔ TIS 與 AIS）</text>
+
+  <rect x="840" y="214" width="222" height="72" rx="8" fill="#ffffff"/>
+  <text x="854" y="238" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="800" fill="#8c1d40">質性評分說明</text>
+  <text x="854" y="258" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">逐項診斷依據與理由</text>
+  <text x="854" y="275" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">並彙整整體 UX 改善摘要</text>
+</svg>

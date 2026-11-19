@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 350" width="1120" height="350">
+  <!-- Top banner -->
+  <rect x="8" y="6" width="1104" height="40" rx="10" fill="#1b365d"/>
+  <text x="560" y="32" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#ffffff">Empirical Synthesis: 11 Design Patterns · 15 OSS Projects · 296 Evolutions</text>
+
+  <!-- Card 1: RQ1 (Teal) -->
+  <rect x="8" y="60" width="356" height="222" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.2"/>
+  <rect x="24" y="76" width="160" height="24" rx="12" fill="#0f766e"/>
+  <text x="104" y="92" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">RQ1 · PATTERN TYPE</text>
+  <text x="24" y="128" font-family="Inter, -apple-system, sans-serif" font-size="19" font-weight="800" fill="#1b365d">No Significant Difference</text>
+  <rect x="24" y="140" width="324" height="32" rx="7" fill="#ffffff" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="186" y="161" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" font-weight="700" fill="#0f766e">F = 1.569 · p = 0.146 (&gt; 0.05)</text>
+  <text x="26" y="200" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#334155">• Mean DoU &lt; 0.20 across all pattern types</text>
+  <text x="26" y="226" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#334155">• Visitor = 0.000; Prototype ≤ 0.060</text>
+  <text x="26" y="252" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#334155">• Choice driven by developer habit &amp; familiarity</text>
+
+  <!-- Card 2: RQ2 (Crimson) -->
+  <rect x="382" y="60" width="356" height="222" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2.2"/>
+  <rect x="398" y="76" width="160" height="24" rx="12" fill="#8c1d40"/>
+  <text x="478" y="92" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">RQ2 · OSS PROJECT</text>
+  <text x="398" y="128" font-family="Inter, -apple-system, sans-serif" font-size="19" font-weight="800" fill="#8c1d40">Highly Significant Effect</text>
+  <rect x="398" y="140" width="324" height="32" rx="7" fill="#ffffff" stroke="#fecdd3" stroke-width="1.5"/>
+  <text x="560" y="161" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" font-weight="700" fill="#8c1d40">F = 5.704 · p &lt; 0.001 (Scheffé)</text>
+  <text x="400" y="200" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#334155">• FreeMind significantly beats 8 OSS projects</text>
+  <text x="400" y="226" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#334155">• Peak DoU: Observer in JHotDraw (0.350)</text>
+  <text x="400" y="252" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#334155">• MVC GUIs actively utilize Observer &amp; Decorator</text>
+
+  <!-- Card 3: Practical Impact (Navy) -->
+  <rect x="756" y="60" width="356" height="222" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2.2"/>
+  <rect x="772" y="76" width="160" height="24" rx="12" fill="#1b365d"/>
+  <text x="852" y="92" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">PRACTICAL VALUE</text>
+  <text x="772" y="128" font-family="Inter, -apple-system, sans-serif" font-size="19" font-weight="800" fill="#1b365d">Actionable Evolution Insights</text>
+  <rect x="772" y="140" width="324" height="32" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="934" y="161" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1b365d">PUA Automated Diagnostic</text>
+  <text x="774" y="200" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#334155">• Developers: Monitor live pattern utilization</text>
+  <text x="774" y="226" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#334155">• Analysts: Refactor or remove unused patterns</text>
+  <text x="774" y="252" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#334155">• Managers: Spot requirement-planning drift</text>
+
+  <!-- Bottom takeaway bar -->
+  <rect x="8" y="296" width="1104" height="46" rx="10" fill="#eef2ff" stroke="#1b365d" stroke-width="1.8"/>
+  <text x="560" y="325" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="14.5" font-weight="800" fill="#1b365d">💡 Core Takeaway: Deploying a pattern does not guarantee reuse — utilization depends on project domain &amp; disciplined evolution.</text>
+</svg>

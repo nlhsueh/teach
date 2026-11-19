@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 355" width="1100" height="355">
+  <defs>
+    <filter id="sh3z" x="-4%" y="-6%" width="108%" height="114%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1100" height="355" rx="14" fill="#f8fafc"/>
+
+  <!-- Top Synthesis Banner -->
+  <rect x="24" y="16" width="1052" height="54" rx="10" fill="#1b365d" filter="url(#sh3z)"/>
+  <text x="550" y="40" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="16" font-weight="800" fill="#ffffff">延伸 UTAUT2 ＋ PLS-SEM 成功解釋 75.4% 學生線上評測系統使用意願（R² = 0.754 · Q² = 0.532）</text>
+  <text x="550" y="59" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#cbd5e1">逢甲大學 187 位大學生實證 · 12 項假設中 4 項成立（H4, H6, H8, H12）· 首篇探討 OJ 接受度之 UTAUT2 實證研究</text>
+
+  <!-- RQ1 Box -->
+  <rect x="24" y="86" width="516" height="252" rx="12" fill="#ffffff" stroke="#0f766e" stroke-width="2.2" filter="url(#sh3z)"/>
+  <rect x="24" y="86" width="516" height="42" rx="12" fill="#0f766e"/>
+  <rect x="24" y="114" width="516" height="14" fill="#0f766e"/>
+  <text x="44" y="113" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">RQ1：哪些關鍵因素顯著驅動 OJ 系統接受度？</text>
+
+  <!-- 3 Positive Drivers -->
+  <rect x="42" y="142" width="150" height="82" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="117" y="165" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" font-weight="800" fill="#0f766e">#1 享樂動機 (HM)</text>
+  <text x="117" y="191" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="800" fill="#1b365d">β = 0.400</text>
+  <text x="117" y="211" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#475569">t = 5.008 · p &lt; 0.001</text>
+
+  <rect x="206" y="142" width="150" height="82" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="281" y="165" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" font-weight="800" fill="#0f766e">#2 自我效能 (SE)</text>
+  <text x="281" y="191" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="800" fill="#1b365d">β = 0.316</text>
+  <text x="281" y="211" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#475569">t = 4.731 · p &lt; 0.001</text>
+
+  <rect x="370" y="142" width="152" height="82" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="446" y="165" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" font-weight="800" fill="#0f766e">#3 社會影響 (SI)</text>
+  <text x="446" y="191" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="800" fill="#1b365d">β = 0.245</text>
+  <text x="446" y="211" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#475569">t = 2.391 · p = 0.017</text>
+
+  <rect x="42" y="236" width="480" height="86" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="58" y="259" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#1b365d">核心洞見：趣味性與自信心勝過單純工具效率</text>
+  <text x="58" y="280" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">• PE、EE、FC 與 ANX 均不顯著（p &gt; 0.05）— 缺除錯與縮排痛點削弱</text>
+  <text x="68" y="298" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">工具預期，而清楚的除錯指引影片則有效消除了焦慮感。</text>
+  <text x="58" y="315" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" font-weight="600" fill="#0f766e">➔ 遊戲化設計、自主解題信心與師生社群支持，才是採用關鍵。</text>
+
+  <!-- RQ2 Box -->
+  <rect x="560" y="86" width="516" height="252" rx="12" fill="#ffffff" stroke="#8c1d40" stroke-width="2.2" filter="url(#sh3z)"/>
+  <rect x="560" y="86" width="516" height="42" rx="12" fill="#8c1d40"/>
+  <rect x="560" y="114" width="516" height="14" fill="#8c1d40"/>
+  <text x="580" y="113" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">RQ2：主修科系是否調節各因素對使用意願之影響？</text>
+
+  <rect x="578" y="142" width="232" height="82" rx="8" fill="#fdf2f5" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="694" y="165" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" font-weight="800" fill="#8c1d40">調節效果（H3, H7, H9, H11）</text>
+  <text x="694" y="191" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="17" font-weight="800" fill="#8c1d40">0 / 4 項成立</text>
+  <text x="694" y="211" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">p = 0.325 至 0.977（均不顯著）</text>
+
+  <rect x="826" y="142" width="232" height="82" rx="8" fill="#eff6ff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="942" y="165" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" font-weight="800" fill="#1b365d">直接效果（H12：MJR → BI）</text>
+  <text x="942" y="191" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="17" font-weight="800" fill="#1b365d">顯著成立（β = -0.098）</text>
+  <text x="942" y="211" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">t = 2.239 · p = 0.026*</text>
+
+  <rect x="578" y="236" width="480" height="86" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="594" y="259" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#8c1d40">核心洞見：跨越科系藩籬的普適心理驅動力</text>
+  <text x="594" y="280" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">• 學習樂趣（HM）與自信心（SE）對資工與非資工學生同等重要，</text>
+  <text x="604" y="298" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" fill="#334155">主修科系並不改變各因素影響使用意願的機制。</text>
+  <text x="594" y="315" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" font-weight="600" fill="#1b365d">➔ 只要具備自主學習動機、自信與師生支持，跨系學生皆能成功完成 OJ 課程。</text>
+</svg>

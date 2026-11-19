@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 340" width="980" height="340">
+  <rect width="980" height="340" rx="12" fill="#f8fafc"/>
+
+  <!-- Stage 1: Data Sources -->
+  <rect x="18" y="18" width="290" height="304" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="18" y="18" width="290" height="36" rx="10" fill="#1b365d"/>
+  <rect x="18" y="42" width="290" height="12" fill="#1b365d"/>
+  <text x="163" y="42" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="#ffffff">1. Multi-Platform Data Sources</text>
+
+  <rect x="32" y="68" width="262" height="86" rx="7" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="44" y="88" font-family="Inter, sans-serif" font-size="12.5" font-weight="800" fill="#1b365d">OpenEdu (Open edX) .LOG</text>
+  <text x="44" y="107" font-family="Inter, sans-serif" font-size="11.5" fill="#334155">• Video events (7): Load, Play, Pause,</text>
+  <text x="44" y="123" font-family="Inter, sans-serif" font-size="11.5" fill="#334155">  Stop, Seek_back, Count, Watch_time</text>
+  <text x="44" y="141" font-family="Inter, sans-serif" font-size="11.5" fill="#334155">• Online_days &amp; Doc_count (Google Docs)</text>
+
+  <rect x="32" y="164" width="262" height="78" rx="7" fill="#f0fdfa" stroke="#5eead4"/>
+  <text x="44" y="184" font-family="Inter, sans-serif" font-size="12.5" font-weight="800" fill="#0f766e">Self-Assessment Plug-ins</text>
+  <text x="44" y="203" font-family="Inter, sans-serif" font-size="11.5" fill="#334155">• Unit_test: Concept multiple-choice</text>
+  <text x="44" y="219" font-family="Inter, sans-serif" font-size="11.5" fill="#334155">• Game_test: StarTrec lite (4-HP game)</text>
+  <text x="44" y="235" font-family="Inter, sans-serif" font-size="11.5" fill="#334155">• OJ_test: Auto-graded Python coding</text>
+
+  <rect x="32" y="252" width="262" height="56" rx="7" fill="#fdf2f5" stroke="#fda4af"/>
+  <text x="44" y="272" font-family="Inter, sans-serif" font-size="12.5" font-weight="800" fill="#8c1d40">FCU University LMS</text>
+  <text x="44" y="292" font-family="Inter, sans-serif" font-size="11.5" fill="#334155">• Score: Final Open-Data Python Project</text>
+
+  <!-- Arrow 1->2 -->
+  <path d="M312 170 L346 170" stroke="#1b365d" stroke-width="3.5" stroke-linecap="round"/>
+  <polygon points="344,163 356,170 344,177" fill="#1b365d"/>
+
+  <!-- Stage 2: Cleaning & Feature Selection -->
+  <rect x="360" y="42" width="250" height="256" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+  <rect x="360" y="42" width="250" height="36" rx="10" fill="#0f766e"/>
+  <rect x="360" y="66" width="250" height="12" fill="#0f766e"/>
+  <text x="485" y="66" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="#ffffff">2. Filtering &amp; Screening</text>
+
+  <rect x="376" y="94" width="218" height="56" rx="7" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="485" y="116" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="800" fill="#1b365d">315 Enrolled ➔ 217 Active</text>
+  <text x="485" y="136" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Removed inactive learners w/o logs</text>
+
+  <rect x="376" y="162" width="218" height="56" rx="7" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="485" y="184" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="800" fill="#0f766e">28 Raw Logs ➔ 13 Indicators</text>
+  <text x="485" y="204" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Dropped 15 items with low CL</text>
+
+  <rect x="376" y="230" width="218" height="52" rx="7" fill="#f0fdfa" stroke="#99f6e4"/>
+  <text x="485" y="252" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="800" fill="#0f766e">5 Constructs · 7 Paths (H1–H7)</text>
+  <text x="485" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#334155">Adapted from Sun &amp; Bin (2018)</text>
+
+  <!-- Arrow 2->3 -->
+  <path d="M614 170 L648 170" stroke="#0f766e" stroke-width="3.5" stroke-linecap="round"/>
+  <polygon points="646,163 658,170 646,177" fill="#0f766e"/>
+
+  <!-- Stage 3: SmartPLS 3.3.6 Analysis -->
+  <rect x="662" y="18" width="300" height="304" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="662" y="18" width="300" height="36" rx="10" fill="#8c1d40"/>
+  <rect x="662" y="42" width="300" height="12" fill="#8c1d40"/>
+  <text x="812" y="42" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="#ffffff">3. SmartPLS 3.3.6 Analytics</text>
+
+  <rect x="678" y="68" width="268" height="54" rx="7" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="690" y="89" font-family="Inter, sans-serif" font-size="12.5" font-weight="800" fill="#1b365d">A. Measurement Validation</text>
+  <text x="690" y="109" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">CL, Cronbach α, CR, AVE, Fornell-Larcker</text>
+
+  <rect x="678" y="132" width="268" height="54" rx="7" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="690" y="153" font-family="Inter, sans-serif" font-size="12.5" font-weight="800" fill="#1b365d">B. Structural Paths (RQ1)</text>
+  <text x="690" y="173" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">5,000-subsample bootstrapping · R² = 0.771</text>
+
+  <rect x="678" y="196" width="268" height="54" rx="7" fill="#f0fdfa" stroke="#5eead4"/>
+  <text x="690" y="217" font-family="Inter, sans-serif" font-size="12.5" font-weight="800" fill="#0f766e">C. Mediation Analysis (RQ2)</text>
+  <text x="690" y="237" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Specific indirect effects via Self-Assessment</text>
+
+  <rect x="678" y="260" width="268" height="48" rx="7" fill="#fdf2f5" stroke="#fda4af"/>
+  <text x="690" y="280" font-family="Inter, sans-serif" font-size="12.5" font-weight="800" fill="#8c1d40">D. IPMA Priority Map (RQ3)</text>
+  <text x="690" y="298" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Total Effects (Importance) vs. 0–100 Perf.</text>
+</svg>

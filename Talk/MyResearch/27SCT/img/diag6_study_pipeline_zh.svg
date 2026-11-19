@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 225" width="1120" height="225">
+  <defs>
+    <marker id="arr-p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif; }
+    .st-num { font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .st-big { font-size: 20px; font-weight: 800; }
+    .st-t { font-size: 13.5px; font-weight: 700; fill: #0f172a; }
+    .st-s { font-size: 11.8px; fill: #475569; }
+  </style>
+
+  <rect x="10" y="14" width="244" height="196" rx="10" fill="#f8fafc" stroke="#1b365d" stroke-width="2"/>
+  <rect x="10" y="14" width="244" height="30" rx="10" fill="#1b365d"/>
+  <rect x="10" y="34" width="244" height="10" fill="#1b365d"/>
+  <text x="132" y="34" text-anchor="middle" class="st-num">1. 研究參與者</text>
+  <text x="132" y="80" text-anchor="middle" class="st-big" fill="#1b365d">N = 112 位學生</text>
+  <text x="132" y="106" text-anchor="middle" class="st-t">逢甲大學 Python 課程</text>
+  <text x="132" y="131" text-anchor="middle" class="st-s">• 資訊背景：55.36%（62 人）</text>
+  <text x="132" y="151" text-anchor="middle" class="st-s">• 非資訊背景：44.64%（50 人）</text>
+  <text x="132" y="177" text-anchor="middle" class="st-s">114 學年度實證場域</text>
+
+  <line x1="254" y1="112" x2="286" y2="112" stroke="#1b365d" stroke-width="2.5" marker-end="url(#arr-p)"/>
+
+  <rect x="292" y="14" width="244" height="196" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="292" y="14" width="244" height="30" rx="10" fill="#0f766e"/>
+  <rect x="292" y="34" width="244" height="10" fill="#0f766e"/>
+  <text x="414" y="34" text-anchor="middle" class="st-num">2. 平台熟悉期</text>
+  <text x="414" y="80" text-anchor="middle" class="st-big" fill="#0f766e">86 道練習題</text>
+  <text x="414" y="106" text-anchor="middle" class="st-t">日常練習與課後作業</text>
+  <text x="414" y="131" text-anchor="middle" class="st-s">• 全學期持續使用 SCT</text>
+  <text x="414" y="151" text-anchor="middle" class="st-s">• 觀察日常解題歷程</text>
+  <text x="414" y="177" text-anchor="middle" class="st-s">• 熟悉分層 AI 輔助操作</text>
+
+  <line x1="536" y1="112" x2="568" y2="112" stroke="#1b365d" stroke-width="2.5" marker-end="url(#arr-p)"/>
+
+  <rect x="574" y="14" width="244" height="196" rx="10" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="574" y="14" width="244" height="30" rx="10" fill="#8c1d40"/>
+  <rect x="574" y="34" width="244" height="10" fill="#8c1d40"/>
+  <text x="696" y="34" text-anchor="middle" class="st-num">3. 正式評量分析</text>
+  <text x="696" y="80" text-anchor="middle" class="st-big" fill="#8c1d40">3 次 × 3 題 = 9 題</text>
+  <text x="696" y="106" text-anchor="middle" class="st-t">嚴格控管評量環境</text>
+  <text x="696" y="131" text-anchor="middle" class="st-s">• 禁用外部生成式 AI 工具</text>
+  <text x="696" y="151" text-anchor="middle" class="st-s">• 統一透過 SCT 進行 AI 互動</text>
+  <text x="696" y="177" text-anchor="middle" class="st-s">• 同步收錄完整歷程日誌</text>
+
+  <line x1="818" y1="112" x2="850" y2="112" stroke="#1b365d" stroke-width="2.5" marker-end="url(#arr-p)"/>
+
+  <rect x="856" y="14" width="254" height="196" rx="10" fill="#f8fafc" stroke="#1b365d" stroke-width="2"/>
+  <rect x="856" y="14" width="254" height="30" rx="10" fill="#1b365d"/>
+  <rect x="856" y="34" width="254" height="10" fill="#1b365d"/>
+  <text x="983" y="34" text-anchor="middle" class="st-num">4. 多元資料分析</text>
+  <text x="983" y="76" text-anchor="middle" class="st-t">四大核心資料面向</text>
+  <text x="876" y="106" class="st-s">• 原始成績 vs. 分層調整成績</text>
+  <text x="876" y="129" class="st-s">• 獨立概念理解測驗表現</text>
+  <text x="876" y="152" class="st-s">• 升級歷程、AI 稅率與 LADI</text>
+  <text x="876" y="175" class="st-s">• 課後問卷回饋（n = 56）</text>
+</svg>

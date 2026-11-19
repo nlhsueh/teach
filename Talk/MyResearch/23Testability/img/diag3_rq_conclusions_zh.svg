@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 355">
+  <rect x="16" y="10" width="1088" height="44" rx="10" fill="#1b365d"/>
+  <text x="560" y="38" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="17" font-weight="800" fill="#ffffff">實證總結：Pytutor 線上課程 61 位有效學習者 × 50 道 Python 練習題</text>
+
+  <!-- Col 1 -->
+  <rect x="16" y="68" width="348" height="214" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.2"/>
+  <rect x="16" y="68" width="348" height="36" rx="12" fill="#0f766e"/>
+  <rect x="16" y="92" width="348" height="12" fill="#0f766e"/>
+  <text x="190" y="92" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">RQ1 · 能力指標與學習行為</text>
+  <text x="34" y="132" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="21" font-weight="800" fill="#0f766e">23% 盲交 · 2.08 倍速看片</text>
+  <text x="34" y="160" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• 學習耐心偏低：影片完看率僅 56%</text>
+  <text x="34" y="184" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• 僅 44% 題次在提交前自訂 DTC 測資</text>
+  <text x="34" y="208" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• 平均 PAI = 121.80，平均 TEI = 1.89</text>
+  <text x="34" y="232" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• 四類分佈：HPHT 11、HPLT 20、</text>
+  <text x="46" y="254" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">LPHT 19、LPLT 11（會寫 ≠ 會測）</text>
+
+  <!-- Col 2 -->
+  <rect x="386" y="68" width="348" height="214" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2.2"/>
+  <rect x="386" y="68" width="348" height="36" rx="12" fill="#8c1d40"/>
+  <rect x="386" y="92" width="348" height="12" fill="#8c1d40"/>
+  <text x="560" y="92" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">RQ2 · 不同群體能力差異</text>
+  <text x="404" y="132" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="20" font-weight="800" fill="#8c1d40">資訊系測試力未較佳 (p=.277)</text>
+  <text x="404" y="160" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• 資訊系 PAI 顯著較高 (p=.0003*)、</text>
+  <text x="404" y="184" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">  韌性 r 較低 (p=.001*)，但 TEI 無差異</text>
+  <text x="404" y="208" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• 形成性評量：PAI (.035*) 與 TEI (.036*)</text>
+  <text x="404" y="232" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">  均顯著助益（高分組 21/31 為高測試力）</text>
+  <text x="404" y="256" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• 限時期末考：僅 PAI 具顯著優勢 (.016*)</text>
+
+  <!-- Col 3 -->
+  <rect x="756" y="68" width="348" height="214" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2.2"/>
+  <rect x="756" y="68" width="348" height="36" rx="12" fill="#1b365d"/>
+  <rect x="756" y="92" width="348" height="12" fill="#1b365d"/>
+  <text x="930" y="92" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="14.5" font-weight="800" fill="#ffffff">RQ3 · 指標、行為與成效關聯</text>
+  <text x="774" y="132" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="20" font-weight="800" fill="#1b365d">影音投入與測試有助平時表現</text>
+  <text x="774" y="160" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• r ↔ TEI：+0.50（除錯驅動多輪測試）</text>
+  <text x="774" y="184" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• TEI ↔ 影片完看率：+0.33（中度正相關）</text>
+  <text x="774" y="208" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• PAI ↔ 播放倍速：−0.24（快轉易出錯）</text>
+  <text x="774" y="232" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• PAI ↔ 形成／總結成績：+0.35 / +0.38</text>
+  <text x="774" y="256" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" fill="#334155">• TEI ↔ 形成性成績：+0.26（總結 +0.07）</text>
+
+  <!-- Bottom Takeaway Bar -->
+  <rect x="16" y="296" width="1088" height="48" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+  <text x="560" y="326" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15.5" font-weight="800" fill="#92400e">核心啟示：不論是否為資訊相關科系，初階程式課程皆應主動融入軟體測試教學與自訂測資練習！</text>
+</svg>

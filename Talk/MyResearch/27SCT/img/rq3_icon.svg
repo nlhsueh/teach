@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110" width="110" height="110">
+  <rect x="3" y="3" width="104" height="104" rx="14" fill="#fdf2f5" stroke="#e2a8b8" stroke-width="2"/>
+  <!-- Four quadrants -->
+  <rect x="16" y="16" width="37" height="31" rx="4" fill="#0f766e" fill-opacity="0.22"/>
+  <rect x="57" y="16" width="37" height="31" rx="4" fill="#1b365d" fill-opacity="0.22"/>
+  <rect x="16" y="51" width="37" height="31" rx="4" fill="#64748b" fill-opacity="0.16"/>
+  <rect x="57" y="51" width="37" height="31" rx="4" fill="#8c1d40" fill-opacity="0.22"/>
+  <!-- Axes -->
+  <line x1="55" y1="14" x2="55" y2="84" stroke="#334155" stroke-width="1.8" stroke-dasharray="3,2"/>
+  <line x1="14" y1="49" x2="96" y2="49" stroke="#334155" stroke-width="1.8" stroke-dasharray="3,2"/>
+  <!-- Dots -->
+  <circle cx="32" cy="29" r="5" fill="#0f766e"/>
+  <circle cx="76" cy="27" r="6" fill="#1b365d"/>
+  <circle cx="34" cy="67" r="4.5" fill="#64748b"/>
+  <circle cx="75" cy="68" r="5" fill="#8c1d40"/>
+  <text x="55" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="800" fill="#8c1d40">AI TAX STRATEGY</text>
+</svg>

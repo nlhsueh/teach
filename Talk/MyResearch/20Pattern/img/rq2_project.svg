@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="88" height="88">
+  <rect x="2" y="2" width="84" height="84" rx="16" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2.5"/>
+  <!-- Project bar chart comparison -->
+  <line x1="16" y1="62" x2="72" y2="62" stroke="#1b365d" stroke-width="2" stroke-linecap="round"/>
+  <rect x="20" y="22" width="10" height="40" rx="2.5" fill="#0f766e"/>
+  <rect x="34" y="34" width="10" height="28" rx="2.5" fill="#1b365d"/>
+  <rect x="48" y="47" width="10" height="15" rx="2.5" fill="#8c1d40"/>
+  <rect x="62" y="54" width="10" height="8" rx="2.5" fill="#94a3b8"/>
+  <!-- Star above top bar -->
+  <circle cx="25" cy="15" r="4" fill="#8c1d40"/>
+  <text x="44" y="77" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="800" fill="#8c1d40">OSS vs DoU</text>
+</svg>

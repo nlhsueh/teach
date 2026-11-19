@@ -400,6 +400,10 @@
       background: linear-gradient(135deg, #334155 0%, #475569 60%, #64748b 100%);
     }
 
+    .banner-research {
+      background: linear-gradient(135deg, #102442 0%, #1b365d 55%, #8c1d40 100%);
+    }
+
     .card-meta-row {
       display: flex;
       align-items: center;
@@ -487,6 +491,11 @@
       background: #f1f5f9;
     }
 
+    .topic-pill.pill-research {
+      color: #8c1d40;
+      background: #fdf2f5;
+    }
+
     /* Actions */
     .card-actions {
       display: flex;
@@ -553,6 +562,19 @@
     .btn-orange:hover {
       background: linear-gradient(135deg, #431407, #9a3412);
       transform: translateY(-1px);
+    }
+
+    .btn-research {
+      background: linear-gradient(135deg, #1b365d, #8c1d40);
+      color: white;
+      flex: 1;
+      box-shadow: 0 2px 6px rgba(140, 29, 64, 0.25);
+    }
+
+    .btn-research:hover {
+      background: linear-gradient(135deg, #102442, #701532);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(140, 29, 64, 0.35);
     }
 
     .btn-outline {
@@ -662,7 +684,7 @@
     </div>
     <h1>特邀演講與專題講座</h1>
     <p>
-      收錄薛念林教授歷年受邀於國內外大學、研討會與產官學培訓之精選講座教材與線上簡報，涵蓋軟體工程思想史、微服務與 DevOps 實務、程式教育與學習歷程分析等多元領域。
+      收錄薛念林教授歷年受邀於國內外大學、研討會與產官學培訓之精選講座教材、學術研究論文簡報（My Research：SCT、PLANT）與線上互動投影片，涵蓋軟體工程思想史、多代理人需求工程、AI 輔助程式教育與微服務 DevOps 實務。
     </p>
   </header>
 
@@ -695,6 +717,7 @@
       <!-- Category Filter Bar -->
       <div class="filter-bar">
         <button class="filter-btn active" onclick="filterTalks('all', this)">全部講座 (All)</button>
+        <button class="filter-btn" onclick="filterTalks('research', this)">🔬 學術研究 (My Research)</button>
         <button class="filter-btn" onclick="filterTalks('se', this)">軟體工程與思想</button>
         <button class="filter-btn" onclick="filterTalks('edu', this)">程式教育與研究</button>
         <button class="filter-btn" onclick="filterTalks('devops', this)">微服務與 DevOps</button>
@@ -702,6 +725,486 @@
 
       <!-- Talks Grid -->
       <div class="talks-grid" id="talksGrid">
+
+        <!-- Research Card 1: 27SCT (Smart Coding Tutor) -->
+        <article class="talk-card" data-category="research">
+          <div class="card-banner banner-research">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🔬 My Research · 27SCT</span>
+              <span class="card-icon">🎓</span>
+            </div>
+            <h2 class="card-title">分層式 LLM 程式輔助機制（SCT）</h2>
+            <div class="card-subtitle">Tiered LLM Assistance, AI Tax &amp; LADI · 21 頁中英文雙語簡報</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              於 Smart Coding Tutor 平台導入五級分層 AI 助教（L0–L4）與 AI 稅率（0%–20%），並提出層級錨定依賴指標（LADI）。針對 112 位 Python 修課生實證分析顯示，分層機制顯著提升評量鑑別度（滿分集中率由 52.7% 降至 13.4%）並驗證四象限策略與依賴關聯。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-research">Smart Coding Tutor</span>
+              <span class="topic-pill pill-research">AI Tax 分層稅率</span>
+              <span class="topic-pill pill-research">LADI 依賴指標</span>
+              <span class="topic-pill pill-research">中英文雙版本</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="./MyResearch/27SCT/SCT_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
+                  <span>中文簡報</span>
+                  <span>🖥️</span>
+                </a>
+                <a href="./MyResearch/27SCT/SCT_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
+                  <span>English</span>
+                  <span>🖥️</span>
+                </a>
+              </div>
+              <div class="btn-row">
+                <a href="./MyResearch/27SCT/SCT_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
+                  <span>中文 PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/27SCT/SCT_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
+                  <span>EN PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/27SCT/2026%20SCT.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
+                  📄
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Research Card 2: 26Plant (Multi-Agent RE Framework) -->
+        <article class="talk-card" data-category="research">
+          <div class="card-banner banner-research">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🔬 My Research · JISE 2026</span>
+              <span class="card-icon">🤖</span>
+            </div>
+            <h2 class="card-title">多代理人 AI 需求工程框架（PLANT）</h2>
+            <div class="card-subtitle">Multi-Agent Requirements Engineering &amp; Mediation · 20 頁中英文雙語簡報</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              提出 PLANT 六角色多代理人需求工程框架（User、Analyst、Expert、Modeler、Mediator、Documenter），結合任務自適應混合溝通（Simultaneous-Talk / One-by-One）與外部知識庫。實證顯示隱性需求引出率提升 2.5×–3.2×，衝突召回率達 95.55%–100.00%。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-research">Multi-Agent RE</span>
+              <span class="topic-pill pill-research">Hybrid Mediation</span>
+              <span class="topic-pill pill-research">IEEE 29148 SRS</span>
+              <span class="topic-pill pill-research">中英文雙版本</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="./MyResearch/26Plant/Plant_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
+                  <span>中文簡報</span>
+                  <span>🖥️</span>
+                </a>
+                <a href="./MyResearch/26Plant/Plant_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
+                  <span>English</span>
+                  <span>🖥️</span>
+                </a>
+              </div>
+              <div class="btn-row">
+                <a href="./MyResearch/26Plant/Plant_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
+                  <span>中文 PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/26Plant/Plant_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
+                  <span>EN PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/26Plant/2026%20JISE%20Plant.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
+                  📄
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Research Card 3: 26Pattern (AI Tutor Triad Pattern) -->
+        <article class="talk-card" data-category="research">
+          <div class="card-banner banner-research">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🔬 My Research · JISE 2026</span>
+              <span class="card-icon">🧩</span>
+            </div>
+            <h2 class="card-title">AI 助教三元模式（AT-TPL）</h2>
+            <div class="card-subtitle">AI Tutor Triad Pattern: Guidey, Debuggy &amp; Opti · 19 頁中英文雙語簡報</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              提出 AI 助教三元模式語言（AT-TPL），透過 RACE 提示框架將程式學習輔助解構為引導（Guidey）、除錯（Debuggy）與最佳化（Opti）三大專責模式並落實於 Smart Coding Tutor。於 315 位學生與 1,315 次輔助嘗試中，近七成學生併用多助教（67.4%），最終 73.9% 成功通過評測。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-research">Pattern Language</span>
+              <span class="topic-pill pill-research">AI Tutor</span>
+              <span class="topic-pill pill-research">Programming Education</span>
+              <span class="topic-pill pill-research">RACE Prompting</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="./MyResearch/26Pattern/Pattern26_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
+                  <span>中文簡報</span>
+                  <span>🖥️</span>
+                </a>
+                <a href="./MyResearch/26Pattern/Pattern26_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
+                  <span>English</span>
+                  <span>🖥️</span>
+                </a>
+              </div>
+              <div class="btn-row">
+                <a href="./MyResearch/26Pattern/Pattern26_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
+                  <span>中文 PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/26Pattern/Pattern26_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
+                  <span>EN PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/26Pattern/2026%20JISE%20pattern.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
+                  📄
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Research Card 4: 26HelpSeek (Help-Seeking in LLM-Assisted Learning) -->
+        <article class="talk-card" data-category="research">
+          <div class="card-banner banner-research">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🔬 My Research · Electronics 2026</span>
+              <span class="card-icon">🧭</span>
+            </div>
+            <h2 class="card-title">LLM 輔助學習中的求助行為路徑（DialoguEDU）</h2>
+            <div class="card-subtitle">Help-Seeking Pathways &amp; Coding Efficiency · 19 頁中英文雙語簡報</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              分析精熟學習程式課程（DialoguEDU）中 732 次真實補救學習歷程（366 位學生），發現 78.0% 採取純重測而忽略 AI 澄清；及早澄清雖能顯著縮短補救輪數（2 vs. 4 輪，δ = −0.912），但對後續程式編寫效率無顯著差異，據此提出「選擇性歷程支持機制」定位。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-research">LLM 輔助學習</span>
+              <span class="topic-pill pill-research">求助行為路徑</span>
+              <span class="topic-pill pill-research">精熟學習系統</span>
+              <span class="topic-pill pill-research">程式教育實證</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="./MyResearch/26HelpSeek/HelpSeek_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
+                  <span>中文簡報</span>
+                  <span>🖥️</span>
+                </a>
+                <a href="./MyResearch/26HelpSeek/HelpSeek_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
+                  <span>English</span>
+                  <span>🖥️</span>
+                </a>
+              </div>
+              <div class="btn-row">
+                <a href="./MyResearch/26HelpSeek/HelpSeek_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
+                  <span>中文 PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/26HelpSeek/HelpSeek_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
+                  <span>EN PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/26HelpSeek/2026%20Electronics%20Lai.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
+                  📄
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Research Card 5: 24UXtesting (Electronics 2024) -->
+        <article class="talk-card" data-category="research">
+          <div class="card-banner banner-research">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🔬 My Research · Electronics 2024</span>
+              <span class="card-icon">🎨</span>
+            </div>
+            <h2 class="card-title">應用大型語言模型於使用者體驗測試（UX Testing）</h2>
+            <div class="card-subtitle">Applying LLM to UX Testing · 18 頁中英文雙語簡報</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              整合 Rapi 網頁互動錄製工具與 GPT-4 多模態推理能力，將 Nielsen 六大可用性啟發式準則注入結構化提示詞，打造低成本且高一致性的自動化 UX 檢測框架。於九大情境實證中，多模態 GPT-4 評估表現大幅超越人類受試者（F1 0.66 vs. 0.16、精確率 0.84 vs. 0.50）。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-research">LLM-based UX Testing</span>
+              <span class="topic-pill pill-research">Nielsen's Heuristics</span>
+              <span class="topic-pill pill-research">Multimodal Prompting</span>
+              <span class="topic-pill pill-research">Automated HCI Evaluation</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="./MyResearch/24UXtesting/UXtesting_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
+                  <span>中文簡報</span>
+                  <span>🖥️</span>
+                </a>
+                <a href="./MyResearch/24UXtesting/UXtesting_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
+                  <span>English</span>
+                  <span>🖥️</span>
+                </a>
+              </div>
+              <div class="btn-row">
+                <a href="./MyResearch/24UXtesting/UXtesting_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
+                  <span>中文 PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/24UXtesting/UXtesting_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
+                  <span>EN PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/24UXtesting/2024%20Electronics%20UX%20testing.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
+                  📄
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Research Card 6: 23Testability / Pytutor (Electronics 2023) -->
+        <article class="talk-card" data-category="research">
+          <div class="card-banner banner-research">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🔬 My Research · Electronics 2023</span>
+              <span class="card-icon">🧪</span>
+            </div>
+            <h2 class="card-title">線上程式平台與學習者測試能力研究（Pytutor）</h2>
+            <div class="card-subtitle">Online Programming Platform &amp; Testing Ability · 20 頁中英文雙語簡報</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              開發整合軟體測試概念的線上程式評測平台 Pytutor，引導學習者於正式提交前撰寫自訂測試案例（DTC），並結合分支覆蓋率、突變測試與答題韌性量化程式能力（PAI）與測試效率（TEI）。針對 61 位學生與 50 題實證顯示，優異測試能力顯著提升平時成效，凸顯跨科系融入測試教學之必要。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-research">Online Judge (Pytutor)</span>
+              <span class="topic-pill pill-research">軟體測試能力 (TEI)</span>
+              <span class="topic-pill pill-research">突變測試與覆蓋率</span>
+              <span class="topic-pill pill-research">學習行為分析</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="./MyResearch/23Testability/Testability_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
+                  <span>中文簡報</span>
+                  <span>🖥️</span>
+                </a>
+                <a href="./MyResearch/23Testability/Testability_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
+                  <span>English</span>
+                  <span>🖥️</span>
+                </a>
+              </div>
+              <div class="btn-row">
+                <a href="./MyResearch/23Testability/Testability_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
+                  <span>中文 PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/23Testability/Testability_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
+                  <span>EN PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/23Testability/2023%20Electronics%20testing%20ability.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
+                  📄
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Research Card 7: 23Mutation / CIB (IJIET 2023) -->
+        <article class="talk-card" data-category="research">
+          <div class="card-banner banner-research">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🔬 My Research · IJIET 2023</span>
+              <span class="card-icon">🧬</span>
+            </div>
+            <h2 class="card-title">變異測試遊戲化學習系統（Code Immunity Boost）</h2>
+            <div class="card-subtitle">Gamified Learning System for Mutation Testing · 19 頁中英文雙語簡報</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              以「疫苗研發提升人體免疫力」為遊戲敘事，建置變異測試遊戲化學習系統 Code Immunity Boost（CIB）與變異體生成器（CVI），讓學生扮演白血球（測試案例）與疫苗（變異體）進行漸進式闖關。先導實驗顯示實驗組在測試提交量（8.4 倍）與有效測試案例（3.1 倍）皆大幅領先傳統組。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-research">變異測試</span>
+              <span class="topic-pill pill-research">遊戲化教育</span>
+              <span class="topic-pill pill-research">Code Immunity Boost</span>
+              <span class="topic-pill pill-research">軟體測試教學</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="./MyResearch/23Mutation/Mutation_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
+                  <span>中文簡報</span>
+                  <span>🖥️</span>
+                </a>
+                <a href="./MyResearch/23Mutation/Mutation_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
+                  <span>English</span>
+                  <span>🖥️</span>
+                </a>
+              </div>
+              <div class="btn-row">
+                <a href="./MyResearch/23Mutation/Mutation_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
+                  <span>中文 PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/23Mutation/Mutation_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
+                  <span>EN PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/23Mutation/2023%20IJIET%20mutation.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
+                  📄
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Research Card 8: 22Engagement (JITE:Research 2022) -->
+        <article class="talk-card" data-category="research">
+          <div class="card-banner banner-research">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🔬 My Research · JITE 2022</span>
+              <span class="card-icon">📈</span>
+            </div>
+            <h2 class="card-title">線上程式課程行為投入模式與學習成效（PLS-SEM）</h2>
+            <div class="card-subtitle">Behavioral Engagement &amp; Self-Assessment · 19 頁中英文雙語簡報</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              以 217 名 Python 線上混成課程學生之 OpenEdu 日誌為基礎，運用 PLS-SEM 與 IPMA 檢驗行為投入與認知自我評量對期末專題成績的因果影響（R² = 0.771）。證實單純登入或閱讀靜態文件無法直接提分，唯有透過測驗、遊戲化評量與 OJ 實作中介與積極看影片才能顯著帶動成效。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-research">PLS-SEM</span>
+              <span class="topic-pill pill-research">學習行為分析</span>
+              <span class="topic-pill pill-research">程式設計教育</span>
+              <span class="topic-pill pill-research">IPMA 自我評量</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="./MyResearch/22Engagement/Engagement_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
+                  <span>中文簡報</span>
+                  <span>🖥️</span>
+                </a>
+                <a href="./MyResearch/22Engagement/Engagement_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
+                  <span>English</span>
+                  <span>🖥️</span>
+                </a>
+              </div>
+              <div class="btn-row">
+                <a href="./MyResearch/22Engagement/Engagement_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
+                  <span>中文 PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/22Engagement/Engagement_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
+                  <span>EN PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/22Engagement/2022%20JITE.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
+                  📄
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Research Card 9: 21Judge (IEEE Access 2021) -->
+        <article class="talk-card" data-category="research">
+          <div class="card-banner banner-research">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🔬 My Research · IEEE Access 2021</span>
+              <span class="card-icon">⚖️</span>
+            </div>
+            <h2 class="card-title">程式課程中 Online Judge 系統接受度分析（UTAUT2）</h2>
+            <div class="card-subtitle">Students' Acceptance of Online Judge System · 19 頁中英文雙語簡報</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              結合延伸版 UTAUT2 模型與 PLS-SEM，針對 187 位修習翻轉式資料科學課程學生探討影響 OJ 使用意願之關鍵因素。結果顯示享樂動機、自我效能與社會影響最具預測力（R² = 75.4%），且主修科系對各驅動因素無顯著調節效果，展現跨系推廣潛力。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-research">Online Judge</span>
+              <span class="topic-pill pill-research">UTAUT2</span>
+              <span class="topic-pill pill-research">PLS-SEM</span>
+              <span class="topic-pill pill-research">程式設計教育</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="./MyResearch/21Judge/Judge_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
+                  <span>中文簡報</span>
+                  <span>🖥️</span>
+                </a>
+                <a href="./MyResearch/21Judge/Judge_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
+                  <span>English</span>
+                  <span>🖥️</span>
+                </a>
+              </div>
+              <div class="btn-row">
+                <a href="./MyResearch/21Judge/Judge_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
+                  <span>中文 PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/21Judge/Judge_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
+                  <span>EN PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/21Judge/2021%20IEEE%20Access.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
+                  📄
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Research Card 10: 20Pattern (JISE 2020) -->
+        <article class="talk-card" data-category="research">
+          <div class="card-banner banner-research">
+            <div class="card-meta-row">
+              <span class="card-tag tag-open">🔬 My Research · JISE 2020</span>
+              <span class="card-icon">📐</span>
+            </div>
+            <h2 class="card-title">以軟體演化數據分析設計模式之使用度（PUA / DoU）</h2>
+            <div class="card-subtitle">Design Pattern Analysis with Software Evolution Data · 19 頁中英文雙語簡報</div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              提出結合模式應用情境（PAC）、預期使用方式（EPU）與使用程度指標（DoU）的演化分析方法與自動化工具 PUA，跨越 15 個開源專案（296 次版本演化）實證檢驗 11 種 GoF 設計模式。ANOVA 顯示模式間無顯著差異（平均 DoU &lt; 0.20），但專案間具極顯著差異（p &lt; 0.001）。
+            </p>
+            <div class="topics-list">
+              <span class="topic-pill pill-research">設計模式</span>
+              <span class="topic-pill pill-research">軟體演化</span>
+              <span class="topic-pill pill-research">開源實證分析</span>
+              <span class="topic-pill pill-research">軟體品質評估</span>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="./MyResearch/20Pattern/Pattern20_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
+                  <span>中文簡報</span>
+                  <span>🖥️</span>
+                </a>
+                <a href="./MyResearch/20Pattern/Pattern20_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
+                  <span>English</span>
+                  <span>🖥️</span>
+                </a>
+              </div>
+              <div class="btn-row">
+                <a href="./MyResearch/20Pattern/Pattern20_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
+                  <span>中文 PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/20Pattern/Pattern20_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
+                  <span>EN PDF</span>
+                  <span>📥</span>
+                </a>
+                <a href="./MyResearch/20Pattern/2020_JISE_Pattern_Evolution.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
+                  📄
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
 
         <!-- Card 1: SE History & Pioneer Quotes (Local Marp / PDF) -->
         <article class="talk-card" data-category="se">

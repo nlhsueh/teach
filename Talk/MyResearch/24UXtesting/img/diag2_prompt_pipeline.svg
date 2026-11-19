@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 355" width="1100" height="355">
+  <defs>
+    <marker id="arr-p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-pt" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+  <rect width="1100" height="355" rx="12" fill="#f8fafc"/>
+
+  <!-- Left: Two Prompt Configurations -->
+  <text x="165" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#1b365d">Two Input Configurations (RQ1)</text>
+
+  <rect x="20" y="46" width="290" height="128" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.5"/>
+  <rect x="20" y="46" width="290" height="32" rx="10" fill="#0f766e"/>
+  <rect x="20" y="66" width="290" height="12" fill="#0f766e"/>
+  <text x="165" y="67" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">Config A: Visual + Operational Data</text>
+  <text x="36" y="102" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0f172a">• Static UI Screenshots (Rapi links)</text>
+  <text x="36" y="124" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0f172a">• Dynamic JSON Operation Script</text>
+  <text x="36" y="146" font-family="Inter, sans-serif" font-size="12" fill="#334155">(actions, timestamps, status, logs)</text>
+  <text x="36" y="164" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0f766e">★ Captures timing (&gt;3000 ms) &amp; error flows</text>
+
+  <rect x="20" y="194" width="290" height="128" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="20" y="194" width="290" height="32" rx="10" fill="#8c1d40"/>
+  <rect x="20" y="214" width="290" height="12" fill="#8c1d40"/>
+  <text x="165" y="215" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">Config B: Visual Input Only</text>
+  <text x="36" y="250" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0f172a">• Static UI Screenshots ONLY</text>
+  <text x="36" y="272" font-family="Inter, sans-serif" font-size="13" fill="#64748b">• No JSON operation script attached</text>
+  <text x="36" y="294" font-family="Inter, sans-serif" font-size="12" fill="#334155">(pure visual inspection of page states)</text>
+  <text x="36" y="312" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#8c1d40">★ Lighter prompt; strong on static layout</text>
+
+  <!-- Arrows from Configs to Prompt Blueprint -->
+  <line x1="312" y1="110" x2="360" y2="155" stroke="#0f766e" stroke-width="3" marker-end="url(#arr-pt)"/>
+  <line x1="312" y1="258" x2="360" y2="215" stroke="#1b365d" stroke-width="3" marker-end="url(#arr-p)"/>
+
+  <!-- Middle: 5-Component Structured Prompt -->
+  <rect x="368" y="26" width="400" height="306" rx="12" fill="#ffffff" stroke="#1b365d" stroke-width="2.5"/>
+  <rect x="368" y="26" width="400" height="40" rx="12" fill="#1b365d"/>
+  <rect x="368" y="52" width="400" height="14" fill="#1b365d"/>
+  <text x="568" y="51" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#ffffff">5-Part Structured GPT-4 Prompt (Appendix B)</text>
+
+  <rect x="386" y="78" width="364" height="42" rx="7" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="400" y="96" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#1b365d">1. Task Introduction &amp; Context</text>
+  <text x="400" y="113" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Website UX audit role, interaction context &amp; goals</text>
+
+  <rect x="386" y="128" width="364" height="42" rx="7" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.2"/>
+  <text x="400" y="146" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0f766e">2. User Operation Data &amp; Screenshots</text>
+  <text x="400" y="163" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Snapshot URLs + optional JSON logs (start/endTime, status)</text>
+
+  <rect x="386" y="178" width="364" height="42" rx="7" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="400" y="196" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#1b365d">3. JSON Format Specifications</text>
+  <text x="400" y="213" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Field schema: title, timestamps, logs, cases, screenshots</text>
+
+  <rect x="386" y="228" width="364" height="42" rx="7" fill="#fdf2f5" stroke="#fecdd3" stroke-width="1.2"/>
+  <text x="400" y="246" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#8c1d40">4. Nielsen's Heuristics (NS01–NS06)</text>
+  <text x="400" y="263" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Explicit definitions + concrete examples for each heuristic</text>
+
+  <rect x="386" y="278" width="364" height="42" rx="7" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="400" y="296" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#1b365d">5. Evaluation &amp; Scoring Rubric</text>
+  <text x="400" y="313" font-family="Inter, sans-serif" font-size="11.5" fill="#475569">Integer 1–5 scale, adjusted up/down from baseline 3</text>
+
+  <!-- Arrow to Output -->
+  <line x1="770" y1="180" x2="814" y2="180" stroke="#1b365d" stroke-width="3.5" marker-end="url(#arr-p)"/>
+
+  <!-- Right: GPT-4 Dual Output -->
+  <rect x="822" y="56" width="258" height="248" rx="12" fill="#1b365d"/>
+  <text x="951" y="90" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="800" fill="#ffffff">GPT-4 Output</text>
+  <text x="951" y="110" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1">(temp = 0.7 · 30 runs / scenario)</text>
+
+  <rect x="840" y="128" width="222" height="72" rx="8" fill="#ffffff"/>
+  <text x="854" y="152" font-family="Inter, sans-serif" font-size="13.5" font-weight="800" fill="#0f766e">Quantitative Scores</text>
+  <text x="854" y="172" font-family="Inter, sans-serif" font-size="12" fill="#334155">1–5 rating per indicator</text>
+  <text x="854" y="189" font-family="Inter, sans-serif" font-size="12" fill="#334155">(NS01–NS06 ➔ TIS &amp; AIS)</text>
+
+  <rect x="840" y="214" width="222" height="72" rx="8" fill="#ffffff"/>
+  <text x="854" y="238" font-family="Inter, sans-serif" font-size="13.5" font-weight="800" fill="#8c1d40">Qualitative Rationale</text>
+  <text x="854" y="258" font-family="Inter, sans-serif" font-size="12" fill="#334155">Step-by-step justification</text>
+  <text x="854" y="275" font-family="Inter, sans-serif" font-size="12" fill="#334155">&amp; overall UX summary</text>
+</svg>

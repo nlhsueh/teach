@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 355" width="1120" height="355">
+  <defs>
+    <marker id="arr-p1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arr-p2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+    <marker id="arr-p3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif; }
+    .pill { font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .met { font-size: 18px; font-weight: 800; }
+    .sub { font-size: 12px; fill: #475569; }
+    .ct { font-size: 16px; font-weight: 800; fill: #ffffff; }
+    .cs { font-size: 12.2px; fill: #cbd5e1; }
+  </style>
+
+  <!-- RQ1 -->
+  <rect x="10" y="10" width="352" height="218" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="24" y="22" width="54" height="24" rx="6" fill="#0f766e"/>
+  <text x="51" y="39" text-anchor="middle" class="pill">RQ1</text>
+  <text x="90" y="39" font-size="14" font-weight="800" fill="#0f766e">隱性需求引出突破</text>
+  <text x="186" y="78" text-anchor="middle" class="met" fill="#0f766e">54.28% vs. 16.77%</text>
+  <text x="186" y="97" text-anchor="middle" class="sub">GPT-4.1 IRE（Gemini：46.79% vs. 18.90%）</text>
+  <line x1="32" y1="112" x2="340" y2="112" stroke="#99d6cd" stroke-width="1"/>
+  <text x="186" y="136" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0f172a">引出量提升 2.5× – 3.2×</text>
+  <text x="186" y="158" text-anchor="middle" class="sub">徹底突破單一代理人的 NFR 盲區：</text>
+  <text x="186" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#0f766e">資安 10/12 · 可靠度 5/7 · 安全性 3/3</text>
+  <text x="186" y="206" text-anchor="middle" font-size="11.8" font-weight="700" fill="#334155">Expert ＋ Modeler 有效防止過早收斂</text>
+
+  <!-- RQ2 -->
+  <rect x="384" y="10" width="352" height="218" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="398" y="22" width="54" height="24" rx="6" fill="#8c1d40"/>
+  <text x="425" y="39" text-anchor="middle" class="pill">RQ2</text>
+  <text x="464" y="39" font-size="14" font-weight="800" fill="#8c1d40">高召回衝突辨識</text>
+  <text x="560" y="78" text-anchor="middle" class="met" fill="#8c1d40">95.55% – 100.00%</text>
+  <text x="560" y="97" text-anchor="middle" class="sub">衝突類別召回率（基線僅 61.9%–80.0%）</text>
+  <line x1="406" y1="112" x2="714" y2="112" stroke="#e2a8b8" stroke-width="1"/>
+  <text x="560" y="136" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0f172a">Macro F1 達 89.46% – 96.66%</text>
+  <text x="560" y="158" text-anchor="middle" class="sub">衝突類別 F1 大幅拉升 +6.66 至 +20.77%</text>
+  <text x="560" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#8c1d40">One-by-One：Analyst ➔ Expert ➔ Modeler</text>
+  <text x="560" y="206" text-anchor="middle" font-size="11.8" font-weight="700" fill="#334155">精準捕捉法規與生命週期狀態矛盾</text>
+
+  <!-- RQ3 -->
+  <rect x="758" y="10" width="352" height="218" rx="12" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="772" y="22" width="54" height="24" rx="6" fill="#1b365d"/>
+  <text x="799" y="39" text-anchor="middle" class="pill">RQ3</text>
+  <text x="838" y="39" font-size="14" font-weight="800" fill="#1b365d">明確的品質與成本權衡</text>
+  <text x="934" y="78" text-anchor="middle" class="met" fill="#1b365d">US$0.14 – $0.15 / IR</text>
+  <text x="934" y="97" text-anchor="middle" class="sub">單一系統案例約 US$6.71–$8.14、耗時約 1 小時</text>
+  <line x1="780" y1="112" x2="1088" y2="112" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="934" y="136" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0f172a">Token 93–249× · 執行時間 28–37×</text>
+  <text x="934" y="158" text-anchor="middle" class="sub">每百萬 Token IRE 增益：+9.65% / +2.88%</text>
+  <text x="934" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#1b365d">高合規與中大型專案極具投資報酬率</text>
+  <text x="934" y="206" text-anchor="middle" font-size="11.8" font-weight="700" fill="#334155">快速原型與輕量工具則適合單一代理人</text>
+
+  <line x1="186" y1="228" x2="186" y2="262" stroke="#0f766e" stroke-width="2.4" marker-end="url(#arr-p1)"/>
+  <line x1="560" y1="228" x2="560" y2="262" stroke="#8c1d40" stroke-width="2.4" marker-end="url(#arr-p2)"/>
+  <line x1="934" y1="228" x2="934" y2="262" stroke="#1b365d" stroke-width="2.4" marker-end="url(#arr-p3)"/>
+
+  <rect x="10" y="268" width="1100" height="76" rx="12" fill="#1b365d"/>
+  <text x="560" y="298" text-anchor="middle" class="ct">
+    核心結論：PLANT 透過多代理人專業分工與自適應調解，實現高完整度、高召回且可追溯之需求工程
+  </text>
+  <text x="560" y="324" text-anchor="middle" class="cs">
+    在專案初期投入約 1 小時與 US$7–$8 API 成本，即可多發掘 3 倍隱性需求並攔截近 100% 衝突，大幅降低後期返工風險。
+  </text>
+</svg>

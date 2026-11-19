@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 285" width="1080" height="285">
+  <defs>
+    <marker id="arr-n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L9,5 L0,9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-t" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L9,5 L0,9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arr-c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L9,5 L0,9 z" fill="#8c1d40"/>
+    </marker>
+  </defs>
+
+  <!-- Step 1: Original Program -->
+  <rect x="16" y="64" width="170" height="122" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2.2"/>
+  <rect x="16" y="64" width="170" height="32" rx="12" fill="#1b365d"/>
+  <rect x="16" y="84" width="170" height="12" fill="#1b365d"/>
+  <text x="101" y="85" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="800" fill="#ffffff">1. 原始程式 (P)</text>
+  <text x="101" y="122" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12.5" font-weight="600" fill="#1b365d">if a &gt;= b:</text>
+  <text x="101" y="143" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12.5" font-weight="600" fill="#334155">  return a</text>
+  <text x="101" y="172" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" fill="#64748b">正確基準行為</text>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="186" y1="125" x2="238" y2="125" stroke="#1b365d" stroke-width="2.6" marker-end="url(#arr-n)"/>
+  <text x="212" y="114" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11" font-weight="700" fill="#8c1d40">微小</text>
+  <text x="212" y="144" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11" font-weight="700" fill="#8c1d40">變異</text>
+
+  <!-- Step 2: Mutants -->
+  <rect x="242" y="64" width="176" height="122" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2.2"/>
+  <rect x="242" y="64" width="176" height="32" rx="12" fill="#8c1d40"/>
+  <rect x="242" y="84" width="176" height="12" fill="#8c1d40"/>
+  <text x="330" y="85" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="800" fill="#ffffff">2. 變異體集合 (M)</text>
+  <text x="330" y="120" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#8c1d40">m1: if a &gt; b:</text>
+  <text x="330" y="140" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#8c1d40">m2: if a &lt;= b:</text>
+  <text x="330" y="160" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#8c1d40">m3: return b ...</text>
+  <text x="330" y="177" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11" fill="#64748b">極相似但植入錯誤</text>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="418" y1="125" x2="472" y2="125" stroke="#1b365d" stroke-width="2.6" marker-end="url(#arr-n)"/>
+
+  <!-- Step 3: Execute Test Suite -->
+  <rect x="476" y="64" width="196" height="122" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.2"/>
+  <rect x="476" y="64" width="196" height="32" rx="12" fill="#0f766e"/>
+  <rect x="476" y="84" width="196" height="12" fill="#0f766e"/>
+  <text x="574" y="85" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13.5" font-weight="800" fill="#ffffff">3. 執行測試案例 (T)</text>
+  <text x="574" y="122" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="13" font-weight="700" fill="#0f172a">同時測試 P 與各變異體 m</text>
+  <text x="574" y="145" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#334155">比對執行輸出結果：</text>
+  <text x="574" y="165" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#334155">Output(P) vs. Output(m)</text>
+
+  <!-- Branches -->
+  <path d="M672 102 L726 102 L726 64 L768 64" fill="none" stroke="#0f766e" stroke-width="2.6" marker-end="url(#arr-t)"/>
+  <text x="724" y="47" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" font-weight="800" fill="#0f766e">輸出不同</text>
+
+  <path d="M672 148 L726 148 L726 186 L768 186" fill="none" stroke="#8c1d40" stroke-width="2.6" marker-end="url(#arr-c)"/>
+  <text x="724" y="207" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" font-weight="800" fill="#8c1d40">輸出相同</text>
+
+  <!-- Killed Box -->
+  <rect x="772" y="20" width="290" height="88" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.2"/>
+  <text x="917" y="48" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="800" fill="#0f766e">✓ 變異體遭擊殺 (Killed)</text>
+  <text x="917" y="70" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#334155">測試套件成功偵測出程式差異！</text>
+  <text x="917" y="90" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" font-weight="600" fill="#0f766e">自集合移除 → 提升變異分數 (MS)</text>
+
+  <!-- Alive Box -->
+  <rect x="772" y="142" width="290" height="88" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2.2"/>
+  <text x="917" y="170" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="15" font-weight="800" fill="#8c1d40">⚠ 變異體存活 (Alive)</text>
+  <text x="917" y="192" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12.5" fill="#334155">現有測試無法察覺錯誤差異</text>
+  <text x="917" y="212" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="12" font-weight="600" fill="#8c1d40">除等價變異體外 → 須補寫更強測試！</text>
+
+  <!-- Feedback loop -->
+  <path d="M917 230 L917 264 L574 264 L574 190" fill="none" stroke="#1b365d" stroke-width="2.4" stroke-dasharray="6,4" marker-end="url(#arr-n)"/>
+  <rect x="655" y="249" width="205" height="24" rx="12" fill="#1b365d"/>
+  <text x="757" y="265" text-anchor="middle" font-family="Noto Sans TC, PingFang TC, sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">迭代強化測試套件偵錯力</text>
+</svg>
