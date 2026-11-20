@@ -628,23 +628,9 @@ tr:nth-child(even) td {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.split64 .right img:hover,
-.split55 .right img:hover {
-  transform: scale(1.22);
-  transform-origin: right bottom;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
-  position: relative;
-  z-index: 30;
-}
 
-.split64 .left img:hover,
-.split55 .left img:hover {
-  transform: scale(1.22);
-  transform-origin: left bottom;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
-  position: relative;
-  z-index: 30;
-}
+
+
 
 .fig-cap {
   font-size: 0.72em;
@@ -751,6 +737,17 @@ tr:nth-child(even) td {
 .future-pill strong {
   color: var(--navy);
 }
+
+.fig-box { overflow: visible; position: relative; }
+.fig-box img { cursor: zoom-in; }
+.fig-box.is-zoomed { z-index: 45; }
+.fig-box img.is-zoomed {
+  position: relative;
+  z-index: 46;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.30);
+  background: #ffffff;
+}
+
 </style>
 
 <!-- _class: lead -->
@@ -900,7 +897,8 @@ RQ1–RQ4 核心發現全景圖、教學啟示與後續精進規劃。
 | **本研究（SCT）** | **✓** | **✓** | **✓** | **✓** | **✓** | **✓** | **✓** | **Proactive（主動型）** |
 
 <div class="callout">
-<strong>關鍵研究缺口：</strong> 既有研究較少同時區分<strong>輔助強度層級</strong>、追蹤<strong>跨層升級歷程</strong>，並進一步解析 AI 依賴程度與評量鑑別度間的關聯。<span style="font-size: 0.88em; color: #64748b;">（<sup>1</sup> 依 Yan 等人提出之 Adaptive–Proactive–Collaborative–Partner 框架分類 [12]。）</span>
+<strong>關鍵研究缺口：</strong> 既有研究較少同時區分<strong>輔助強度層級</strong>、追蹤<strong>跨層升級歷程</strong>，並解析 AI 依賴程度與評量鑑別度間的關聯。<br>
+<span style="font-size: 0.88em; color: #475569;"><sup>1</sup> <strong>主動性角色定義（Yan 等人框架 [12]）：</strong><strong>Adaptive（適應型）</strong>係被動等待學生主動提問或觸發錯誤後才回應；<strong>Proactive（主動型）</strong>則由系統持續監控學習狀態（如停滯、重複錯誤），於適當時機主動介入提醒或引導反思。</span>
 </div>
 
 ---
@@ -921,7 +919,7 @@ RQ1–RQ4 核心發現全景圖、教學啟示與後續精進規劃。
 
 ## 3.2 主動式學習支持與完成後概念鞏固
 
-借鏡 Yan 等人的**主動式助手（Proactive Assistant）**架構 [12]，SCT 串聯「解題中停滯提醒」與「通過測資後之概念鞏固」。
+借鏡 Yan 等人的<strong>主動式助手（Proactive Assistant）</strong>架構 [12]，SCT 串聯「解題中停滯提醒」與「通過測資後之概念鞏固」。
 
 <div class="fig-box" style="padding: 10px 12px; margin: 8px 0 10px 0;">
 <img src="./img/diag3_proactive_loop_zh.svg" alt="主動式學習支持與完成後概念檢核閉環流程圖" style="max-height: 335px;">
@@ -1081,7 +1079,7 @@ LADI 將分層機制下的 AI 使用行為映射至 **`[0, 10]`** 連續量尺�
 | **分層調整後成績（納入 AI 稅率）** | **73.42** | **62.25** | **2.24** | **`.0270*`（達顯著）** | **`[1.29, 21.05]`** |
 
 <div class="callout">
-<strong>RQ1 發現：</strong> 納入 AI 輔助成本後，不僅降低滿分集中現象，更成功顯現出原本被原始高分所掩蓋的背景與能力差異。
+<strong>RQ1 發現：</strong> 納入 AI 輔助成本後，不僅降低滿分集中現象，更使<strong>資訊背景學生的調整後成績顯著高於非資訊背景學生</strong>（<code>73.42</code> vs. <code>62.25</code>，<code>p = .0270</code>），還原了原本被原始高分所掩蓋的能力與 AI 依賴差異。
 </div>
 
 ---
@@ -1280,4 +1278,44 @@ document.addEventListener('click', (e) => {
   }
   document.querySelectorAll('.nav-dropdown.open').forEach(el => el.classList.remove('open'));
 });
+
+// Dynamic bounded in-place hover zoom (max 2.15x, strictly within 1280x720 safe area)
+document.querySelectorAll('.split64 .fig-box img, .split55 .fig-box img, .split46 .fig-box img, .split73 .fig-box img, .two-col .fig-box img, .three-col .fig-box img').forEach((img) => {
+  const box = img.closest('.fig-box');
+  img.addEventListener('mouseenter', () => {
+    const sec = img.closest('section');
+    if (!sec) return;
+    img.style.transform = '';
+    const sr = sec.getBoundingClientRect();
+    const ir = img.getBoundingClientRect();
+    if (!ir.width || !ir.height) return;
+    const padX = sr.width * (24 / 1280);
+    const padTop = sr.height * (52 / 720);
+    const padBot = sr.height * (22 / 720);
+    const safeL = sr.left + padX;
+    const safeR = sr.right - padX;
+    const safeT = sr.top + padTop;
+    const safeB = sr.bottom - padBot;
+    const maxW = safeR - safeL;
+    const maxH = safeB - safeT;
+    const s = Math.min(2.15, (maxW / ir.width) * 0.98, (maxH / ir.height) * 0.98);
+    if (s <= 1.03) return;
+    const L = Math.max(0, ir.left - safeL);
+    const R = Math.max(0, safeR - ir.right);
+    const T = Math.max(0, ir.top - safeT);
+    const B = Math.max(0, safeB - ir.bottom);
+    const ox = (L + R) > 0 ? (L / (L + R)) * 100 : 50;
+    const oy = (T + B) > 0 ? (T / (T + B)) * 100 : 50;
+    img.style.transformOrigin = ox.toFixed(1) + '% ' + oy.toFixed(1) + '%';
+    img.style.transform = 'scale(' + s.toFixed(3) + ')';
+    img.classList.add('is-zoomed');
+    if (box) box.classList.add('is-zoomed');
+  });
+  img.addEventListener('mouseleave', () => {
+    img.style.transform = '';
+    img.classList.remove('is-zoomed');
+    if (box) box.classList.remove('is-zoomed');
+  });
+});
+
 </script>

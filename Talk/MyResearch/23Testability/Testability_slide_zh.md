@@ -442,21 +442,9 @@ tr:nth-child(even) td { background: #f8fafc; }
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.split64 .left img:hover, .split55 .left img:hover {
-  transform: scale(1.22);
-  transform-origin: left bottom;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
-  position: relative;
-  z-index: 30;
-}
 
-.split64 .right img:hover, .split55 .right img:hover {
-  transform: scale(1.22);
-  transform-origin: right bottom;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
-  position: relative;
-  z-index: 30;
-}
+
+
 
 .fig-cap { font-size: 0.72em; color: var(--slate-500); margin-top: 5px; font-weight: 500; }
 
@@ -524,6 +512,17 @@ tr:nth-child(even) td { background: #f8fafc; }
 }
 
 .future-pill strong { color: var(--navy); }
+
+.fig-box { overflow: visible; position: relative; }
+.fig-box img { cursor: zoom-in; }
+.fig-box.is-zoomed { z-index: 45; }
+.fig-box img.is-zoomed {
+  position: relative;
+  z-index: 46;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.30);
+  background: #ffffff;
+}
+
 </style>
 
 <!-- _class: lead -->
@@ -958,7 +957,7 @@ RQ1–RQ3 實證結論視覺化總結，以及 AI 助教與實驗對照組展望
 </div>
 
 <div class="callout" style="margin-top: 8px;">
-<strong>RQ2c 發現：</strong>在嚴格的 **40 分鐘期末考時間壓力**下，僅**程式能力（PAI, <i>p</i> = 0.016）**呈現顯著差異，TEI 則無差異（<i>p</i> = 0.93）。因作答時間緊迫，學生較難設計高品質 DTC，使寫作熟練度成為勝負關鍵。
+<strong>RQ2c 發現：</strong>在嚴格的 <strong>40 分鐘期末考時間壓力</strong>下，僅<strong>程式能力（PAI, <i>p</i> = 0.016）</strong>呈現顯著差異，TEI 則無差異（<i>p</i> = 0.93）。因作答時間緊迫，學生較難設計高品質 DTC，使寫作熟練度成為勝負關鍵。
 </div>
 
 ---
@@ -1009,7 +1008,7 @@ RQ1–RQ3 實證結論視覺化總結，以及 AI 助教與實驗對照組展望
 ### ⚠️ 三項研究限制
 1. **公開測資基準偏高**：部分題目之原始 <code>TQI<sub>O</sub></code> 已超過 80，使學生自訂 DTC 之提升空間受限，壓縮 `TEI` 變化幅度。
 2. **未正式教授測試方法**：課程僅教導基礎 Python，尚未融入邊界值或等價類等測試理論，故 TEI 反映的是「自然測試敏感度」。
-3. **本機端開發行為盲區**：系統目前無法記錄學生是否在**本機編輯器（IDE）**寫完並測試完畢後，才貼上平台提交。
+3. **本機端開發行為盲區**：系統目前無法記錄學生是否在<strong>本機編輯器（IDE）</strong>寫完並測試完畢後，才貼上平台提交。
 
 </div>
 </div>
@@ -1039,7 +1038,7 @@ RQ1–RQ3 實證結論視覺化總結，以及 AI 助教與實驗對照組展望
 
 ### 3. 設計「需要自訂測資」的練習題
 - 適度控制公開測資覆蓋率（如 <code>TQI<sub>O</sub> < 70</code>），引導學生主動思考遺漏情境並撰寫 DTC。
-- 結合**謹慎原則（扣 3 分）**與即時測試覆蓋回饋，讓「先測再交」內化為開發習慣。
+- 結合<strong>謹慎原則（扣 3 分）</strong>與即時測試覆蓋回饋，讓「先測再交」內化為開發習慣。
 
 </div>
 </div>
@@ -1089,4 +1088,44 @@ document.addEventListener('click', (e) => {
   }
   document.querySelectorAll('.nav-dropdown.open').forEach(el => el.classList.remove('open'));
 });
+
+// Dynamic bounded in-place hover zoom (max 2.15x, strictly within 1280x720 safe area)
+document.querySelectorAll('.split64 .fig-box img, .split55 .fig-box img, .split46 .fig-box img, .split73 .fig-box img, .two-col .fig-box img, .three-col .fig-box img').forEach((img) => {
+  const box = img.closest('.fig-box');
+  img.addEventListener('mouseenter', () => {
+    const sec = img.closest('section');
+    if (!sec) return;
+    img.style.transform = '';
+    const sr = sec.getBoundingClientRect();
+    const ir = img.getBoundingClientRect();
+    if (!ir.width || !ir.height) return;
+    const padX = sr.width * (24 / 1280);
+    const padTop = sr.height * (52 / 720);
+    const padBot = sr.height * (22 / 720);
+    const safeL = sr.left + padX;
+    const safeR = sr.right - padX;
+    const safeT = sr.top + padTop;
+    const safeB = sr.bottom - padBot;
+    const maxW = safeR - safeL;
+    const maxH = safeB - safeT;
+    const s = Math.min(2.15, (maxW / ir.width) * 0.98, (maxH / ir.height) * 0.98);
+    if (s <= 1.03) return;
+    const L = Math.max(0, ir.left - safeL);
+    const R = Math.max(0, safeR - ir.right);
+    const T = Math.max(0, ir.top - safeT);
+    const B = Math.max(0, safeB - ir.bottom);
+    const ox = (L + R) > 0 ? (L / (L + R)) * 100 : 50;
+    const oy = (T + B) > 0 ? (T / (T + B)) * 100 : 50;
+    img.style.transformOrigin = ox.toFixed(1) + '% ' + oy.toFixed(1) + '%';
+    img.style.transform = 'scale(' + s.toFixed(3) + ')';
+    img.classList.add('is-zoomed');
+    if (box) box.classList.add('is-zoomed');
+  });
+  img.addEventListener('mouseleave', () => {
+    img.style.transform = '';
+    img.classList.remove('is-zoomed');
+    if (box) box.classList.remove('is-zoomed');
+  });
+});
+
 </script>

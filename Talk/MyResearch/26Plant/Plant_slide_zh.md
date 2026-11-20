@@ -385,21 +385,9 @@ tr:nth-child(even) td { background: #f8fafc; }
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.split64 .left img:hover, .split55 .left img:hover {
-  transform: scale(1.22);
-  transform-origin: left bottom;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
-  position: relative;
-  z-index: 30;
-}
 
-.split64 .right img:hover, .split55 .right img:hover {
-  transform: scale(1.22);
-  transform-origin: right bottom;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
-  position: relative;
-  z-index: 30;
-}
+
+
 
 .fig-cap { font-size: 0.72em; color: var(--slate-500); margin-top: 5px; font-weight: 500; }
 
@@ -487,6 +475,17 @@ tr:nth-child(even) td { background: #f8fafc; }
 }
 
 .future-pill strong { color: var(--navy); }
+
+.fig-box { overflow: visible; position: relative; }
+.fig-box img { cursor: zoom-in; }
+.fig-box.is-zoomed { z-index: 45; }
+.fig-box img.is-zoomed {
+  position: relative;
+  z-index: 46;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.30);
+  background: #ffffff;
+}
+
 </style>
 
 <!-- _class: lead -->
@@ -735,7 +734,7 @@ RQ1–RQ3 核心發現全景概念圖，以及邁向規格驅動開發（SDD）�
   3. 需求權衡評估（Trade-off）
   4. 需求衝突解決（Conflict Discussion）
 - **達成共識** ➔ 記錄於會議紀錄（`MoM`），驅動草案與 UML 同步更新。
-- **持續僵局／重大商業權衡** ➔ 彙整各方論點與候選方案，交由**人類專家（HITL）**裁決。
+- **持續僵局／重大商業權衡** ➔ 彙整各方論點與候選方案，交由<strong>人類專家（HITL）</strong>裁決。
 
 </div>
 </div>
@@ -774,7 +773,7 @@ PLANT 的核心創新在於由 `Mediator` 依議題目標，在 **Simultaneous-T
 </div>
 
 <div class="callout" style="margin-top: 8px; padding: 7px 14px;">
-<strong>嚴格自動化公平評測：</strong> RQ1 與 RQ2 基準測試皆關閉 HITL（<strong>0 次人工介入</strong>，`temperature = 0`，上限 20 輪），並由獨立之 **GPT-5.2** 擔任 LLM-as-a-Judge 判定語意命中。
+<strong>嚴格自動化公平評測：</strong> RQ1 與 RQ2 基準測試皆關閉 HITL（<strong>0 次人工介入</strong>，<code>temperature = 0</code>，上限 20 輪），並由獨立之 <strong>GPT-5.2</strong> 擔任 LLM-as-a-Judge 判定語意命中。
 </div>
 
 ---
@@ -853,7 +852,7 @@ PLANT 的核心創新在於由 `Mediator` 依議題目標，在 **Simultaneous-T
 | **外送平台**（30 組） | **PLANT** | **GPT-4.1 / Gemini 3** | **95.55 / 96.66** | 95.69 / 93.75 | **95.55 / 100.0** | **95.55 / 96.77** |
 
 <div class="callout">
-<strong>RQ2 發現：</strong> 單一基線過於保守（漏抓 20%–38% 衝突）。PLANT 將**衝突召回率大幅拉升至 95.55%–100.00%**，衝突 F1 提升 **+6.66 至 +20.77 個百分點**，且能區分前後端資料範疇以避免誤報。
+<strong>RQ2 發現：</strong> 單一基線過於保守（漏抓 20%–38% 衝突）。PLANT 將<strong>衝突召回率大幅拉升至 95.55%–100.00%</strong>，衝突 F1 提升 <strong>+6.66 至 +20.77 個百分點</strong>，且能區分前後端資料範疇以避免誤報。
 </div>
 
 ---
@@ -981,4 +980,44 @@ document.addEventListener('click', (e) => {
   }
   document.querySelectorAll('.nav-dropdown.open').forEach(el => el.classList.remove('open'));
 });
+
+// Dynamic bounded in-place hover zoom (max 2.15x, strictly within 1280x720 safe area)
+document.querySelectorAll('.split64 .fig-box img, .split55 .fig-box img, .split46 .fig-box img, .split73 .fig-box img, .two-col .fig-box img, .three-col .fig-box img').forEach((img) => {
+  const box = img.closest('.fig-box');
+  img.addEventListener('mouseenter', () => {
+    const sec = img.closest('section');
+    if (!sec) return;
+    img.style.transform = '';
+    const sr = sec.getBoundingClientRect();
+    const ir = img.getBoundingClientRect();
+    if (!ir.width || !ir.height) return;
+    const padX = sr.width * (24 / 1280);
+    const padTop = sr.height * (52 / 720);
+    const padBot = sr.height * (22 / 720);
+    const safeL = sr.left + padX;
+    const safeR = sr.right - padX;
+    const safeT = sr.top + padTop;
+    const safeB = sr.bottom - padBot;
+    const maxW = safeR - safeL;
+    const maxH = safeB - safeT;
+    const s = Math.min(2.15, (maxW / ir.width) * 0.98, (maxH / ir.height) * 0.98);
+    if (s <= 1.03) return;
+    const L = Math.max(0, ir.left - safeL);
+    const R = Math.max(0, safeR - ir.right);
+    const T = Math.max(0, ir.top - safeT);
+    const B = Math.max(0, safeB - ir.bottom);
+    const ox = (L + R) > 0 ? (L / (L + R)) * 100 : 50;
+    const oy = (T + B) > 0 ? (T / (T + B)) * 100 : 50;
+    img.style.transformOrigin = ox.toFixed(1) + '% ' + oy.toFixed(1) + '%';
+    img.style.transform = 'scale(' + s.toFixed(3) + ')';
+    img.classList.add('is-zoomed');
+    if (box) box.classList.add('is-zoomed');
+  });
+  img.addEventListener('mouseleave', () => {
+    img.style.transform = '';
+    img.classList.remove('is-zoomed');
+    if (box) box.classList.remove('is-zoomed');
+  });
+});
+
 </script>

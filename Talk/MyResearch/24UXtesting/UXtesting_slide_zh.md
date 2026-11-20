@@ -379,21 +379,9 @@ tr:nth-child(even) td { background: #f8fafc; }
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.split64 .left img:hover, .split55 .left img:hover {
-  transform: scale(1.22);
-  transform-origin: left bottom;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
-  position: relative;
-  z-index: 30;
-}
 
-.split64 .right img:hover, .split55 .right img:hover {
-  transform: scale(1.22);
-  transform-origin: right bottom;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
-  position: relative;
-  z-index: 30;
-}
+
+
 
 .fig-cap { font-size: 0.72em; color: var(--slate-500); margin-top: 5px; font-weight: 500; }
 
@@ -484,6 +472,17 @@ tr:nth-child(even) td { background: #f8fafc; }
 }
 
 .future-pill strong { color: var(--navy); }
+
+.fig-box { overflow: visible; position: relative; }
+.fig-box img { cursor: zoom-in; }
+.fig-box.is-zoomed { z-index: 45; }
+.fig-box img.is-zoomed {
+  position: relative;
+  z-index: 46;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.30);
+  background: #ffffff;
+}
+
 </style>
 
 <!-- _class: lead -->
@@ -883,7 +882,7 @@ Rapi + GPT-4 資料流架構、六大 Nielsen 啟發式準則與多模態提示�
 ### 🤝 邁向人機協作的 UX 評估流程
 - **跨越功能測試邊界**：不同於僅關注載入時間的傳統自動化工具，GPT-4 能透過 Nielsen 準則解析介面語意、錯誤提示與認知負荷。
 - **低成本早期把關**：在招募受試者前，先以 Rapi + GPT-4 快速篩出缺少控制項、遺漏錯誤回饋與不一致介面，顯著節省初期測試成本。
-- **人類專家的不可取代性**：人類對空間人體工學（`S04`）、情感共鳴與文化脈絡仍具直覺優勢——最佳實務為**「AI 全面初篩 ＋ 人類專家深度覆核」**。
+- **人類專家的不可取代性**：人類對空間人體工學（`S04`）、情感共鳴與文化脈絡仍具直覺優勢——最佳實務為<strong>「AI 全面初篩 ＋ 人類專家深度覆核」</strong>。
 
 </div>
 <div class="card accent small-text">
@@ -942,4 +941,44 @@ document.addEventListener('click', (e) => {
   }
   document.querySelectorAll('.nav-dropdown.open').forEach(el => el.classList.remove('open'));
 });
+
+// Dynamic bounded in-place hover zoom (max 2.15x, strictly within 1280x720 safe area)
+document.querySelectorAll('.split64 .fig-box img, .split55 .fig-box img, .split46 .fig-box img, .split73 .fig-box img, .two-col .fig-box img, .three-col .fig-box img').forEach((img) => {
+  const box = img.closest('.fig-box');
+  img.addEventListener('mouseenter', () => {
+    const sec = img.closest('section');
+    if (!sec) return;
+    img.style.transform = '';
+    const sr = sec.getBoundingClientRect();
+    const ir = img.getBoundingClientRect();
+    if (!ir.width || !ir.height) return;
+    const padX = sr.width * (24 / 1280);
+    const padTop = sr.height * (52 / 720);
+    const padBot = sr.height * (22 / 720);
+    const safeL = sr.left + padX;
+    const safeR = sr.right - padX;
+    const safeT = sr.top + padTop;
+    const safeB = sr.bottom - padBot;
+    const maxW = safeR - safeL;
+    const maxH = safeB - safeT;
+    const s = Math.min(2.15, (maxW / ir.width) * 0.98, (maxH / ir.height) * 0.98);
+    if (s <= 1.03) return;
+    const L = Math.max(0, ir.left - safeL);
+    const R = Math.max(0, safeR - ir.right);
+    const T = Math.max(0, ir.top - safeT);
+    const B = Math.max(0, safeB - ir.bottom);
+    const ox = (L + R) > 0 ? (L / (L + R)) * 100 : 50;
+    const oy = (T + B) > 0 ? (T / (T + B)) * 100 : 50;
+    img.style.transformOrigin = ox.toFixed(1) + '% ' + oy.toFixed(1) + '%';
+    img.style.transform = 'scale(' + s.toFixed(3) + ')';
+    img.classList.add('is-zoomed');
+    if (box) box.classList.add('is-zoomed');
+  });
+  img.addEventListener('mouseleave', () => {
+    img.style.transform = '';
+    img.classList.remove('is-zoomed');
+    if (box) box.classList.remove('is-zoomed');
+  });
+});
+
 </script>

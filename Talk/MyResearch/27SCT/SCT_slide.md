@@ -663,25 +663,9 @@ tr.highlight-row td {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.split64 .right img:hover,
-.split55 .right img:hover,
-.split46 .right img:hover {
-  transform: scale(1.22);
-  transform-origin: right bottom;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
-  position: relative;
-  z-index: 30;
-}
 
-.split64 .left img:hover,
-.split55 .left img:hover,
-.split46 .left img:hover {
-  transform: scale(1.22);
-  transform-origin: left bottom;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
-  position: relative;
-  z-index: 30;
-}
+
+
 
 .fig-cap {
   font-size: 0.72em;
@@ -788,6 +772,17 @@ tr.highlight-row td {
 .future-pill strong {
   color: var(--navy);
 }
+
+.fig-box { overflow: visible; position: relative; }
+.fig-box img { cursor: zoom-in; }
+.fig-box.is-zoomed { z-index: 45; }
+.fig-box img.is-zoomed {
+  position: relative;
+  z-index: 46;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.30);
+  background: #ffffff;
+}
+
 </style>
 
 <!-- _class: lead -->
@@ -933,7 +928,8 @@ Prior LLM-based programming tutors focus on specific support features, but remai
 | **This Study (SCT)** | **✓** | **✓** | **✓** | **✓** | **✓** | **✓** | **✓** | **Proactive** |
 
 <div class="callout">
-<strong>Key Research Gap:</strong> Existing studies rarely distinguish <strong>assistance intensity</strong>, track <strong>multi-level escalation histories</strong>, or quantify how <strong>AI dependency</strong> relates to assessment discrimination. <span style="font-size: 0.88em; color: #64748b;">(<sup>1</sup> Initiative follows Yan et al.'s Adaptive–Proactive–Collaborative–Partner framework [12].)</span>
+<strong>Key Research Gap:</strong> Existing studies rarely distinguish <strong>assistance intensity</strong>, track <strong>multi-level escalation histories</strong>, or quantify how <strong>AI dependency</strong> relates to assessment discrimination.<br>
+<span style="font-size: 0.88em; color: #475569;"><sup>1</sup> <strong>Initiative Roles (Yan et al. [12]):</strong> <strong>Adaptive</strong> AI responds reactively only after explicit learner requests; <strong>Proactive</strong> AI monitors learner state (e.g., stagnation, repeated errors) and initiates timely prompts or reflection.</span>
 </div>
 
 ---
@@ -1114,7 +1110,7 @@ LADI maps multi-level AI usage onto a continuous **`[0, 10]`** scale, using fina
 | **Tier-Adjusted Score (After AI Tax)** | **73.42** | **62.25** | **2.24** | **`.0270*`** | **`[1.29, 21.05]`** |
 
 <div class="callout">
-<strong>Finding (RQ1):</strong> Incorporating AI assistance cost reduces score clustering and reveals statistically significant competence differences masked by raw scores.
+<strong>Finding (RQ1):</strong> Incorporating AI assistance cost reduces score clustering and reveals that <strong>IT-background students scored significantly higher than non-IT students</strong> after adjustment (<code>73.42</code> vs. <code>62.25</code>, <code>p = .0270</code>), unmasking differences hidden in raw scores.
 </div>
 
 ---
@@ -1312,4 +1308,44 @@ document.addEventListener('click', (e) => {
   }
   document.querySelectorAll('.nav-dropdown.open').forEach(el => el.classList.remove('open'));
 });
+
+// Dynamic bounded in-place hover zoom (max 2.15x, strictly within 1280x720 safe area)
+document.querySelectorAll('.split64 .fig-box img, .split55 .fig-box img, .split46 .fig-box img, .split73 .fig-box img, .two-col .fig-box img, .three-col .fig-box img').forEach((img) => {
+  const box = img.closest('.fig-box');
+  img.addEventListener('mouseenter', () => {
+    const sec = img.closest('section');
+    if (!sec) return;
+    img.style.transform = '';
+    const sr = sec.getBoundingClientRect();
+    const ir = img.getBoundingClientRect();
+    if (!ir.width || !ir.height) return;
+    const padX = sr.width * (24 / 1280);
+    const padTop = sr.height * (52 / 720);
+    const padBot = sr.height * (22 / 720);
+    const safeL = sr.left + padX;
+    const safeR = sr.right - padX;
+    const safeT = sr.top + padTop;
+    const safeB = sr.bottom - padBot;
+    const maxW = safeR - safeL;
+    const maxH = safeB - safeT;
+    const s = Math.min(2.15, (maxW / ir.width) * 0.98, (maxH / ir.height) * 0.98);
+    if (s <= 1.03) return;
+    const L = Math.max(0, ir.left - safeL);
+    const R = Math.max(0, safeR - ir.right);
+    const T = Math.max(0, ir.top - safeT);
+    const B = Math.max(0, safeB - ir.bottom);
+    const ox = (L + R) > 0 ? (L / (L + R)) * 100 : 50;
+    const oy = (T + B) > 0 ? (T / (T + B)) * 100 : 50;
+    img.style.transformOrigin = ox.toFixed(1) + '% ' + oy.toFixed(1) + '%';
+    img.style.transform = 'scale(' + s.toFixed(3) + ')';
+    img.classList.add('is-zoomed');
+    if (box) box.classList.add('is-zoomed');
+  });
+  img.addEventListener('mouseleave', () => {
+    img.style.transform = '';
+    img.classList.remove('is-zoomed');
+    if (box) box.classList.remove('is-zoomed');
+  });
+});
+
 </script>
