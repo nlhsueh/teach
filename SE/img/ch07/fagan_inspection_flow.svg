@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 510" width="100%" height="100%">
+  <defs>
+    <style>
+      .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .font-mono { font-family: "Fira Code", "Consolas", monospace; }
+    </style>
+    <marker id="arr-fagan" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+    <marker id="arr-loop" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#059669" />
+    </marker>
+  </defs>
+
+  <!-- ================= TOP SECTION: 6-STEP FAGAN INSPECTION PIPELINE ================= -->
+  <rect x="15" y="10" width="1130" height="258" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+  <path d="M 15 26 Q 15 10 31 10 L 1129 10 Q 1145 10 1145 26 L 1145 50 L 15 50 Z" fill="#0b3c5d" />
+  <text x="580" y="36" class="font-sans" font-size="16.5" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">FAGAN INSPECTION 6-STEP STANDARD WORKFLOW (IEEE 1028)</text>
+
+  <!-- Step 1: Planning -->
+  <g transform="translate(32, 68)">
+    <rect width="162" height="150" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2" />
+    <rect width="162" height="32" rx="10" fill="#334155" />
+    <text x="81" y="21" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">1. Planning</text>
+    <text x="81" y="58" class="font-sans" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Entry Gate Check</text>
+    <text x="81" y="80" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">Verify entry criteria,</text>
+    <text x="81" y="97" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">assign 5 team roles,</text>
+    <text x="81" y="114" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">&amp; distribute checklists.</text>
+    <text x="81" y="138" class="font-mono" font-size="10.5" font-weight="700" fill="#0369a1" text-anchor="middle">Lead: Moderator</text>
+  </g>
+
+  <line x1="196" y1="143" x2="214" y2="143" stroke="#0284c7" stroke-width="3" marker-end="url(#arr-fagan)" />
+
+  <!-- Step 2: Overview -->
+  <g transform="translate(218, 68)">
+    <rect width="162" height="150" rx="12" fill="#f0f9ff" stroke="#38bdf8" stroke-width="2" />
+    <rect width="162" height="32" rx="10" fill="#0284c7" />
+    <text x="81" y="21" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">2. Overview</text>
+    <text x="81" y="58" class="font-sans" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Context Briefing</text>
+    <text x="81" y="80" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">Author explains domain</text>
+    <text x="81" y="97" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">background, architecture</text>
+    <text x="81" y="114" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">&amp; upstream links.</text>
+    <text x="81" y="138" class="font-mono" font-size="10.5" font-weight="700" fill="#0369a1" text-anchor="middle">Lead: Author</text>
+  </g>
+
+  <line x1="382" y1="143" x2="400" y2="143" stroke="#0284c7" stroke-width="3" marker-end="url(#arr-fagan)" />
+
+  <!-- Step 3: Individual Preparation -->
+  <g transform="translate(404, 68)">
+    <rect width="162" height="150" rx="12" fill="#eef2ff" stroke="#818cf8" stroke-width="2" />
+    <rect width="162" height="32" rx="10" fill="#4f46e5" />
+    <text x="81" y="21" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">3. Preparation</text>
+    <text x="81" y="58" class="font-sans" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Independent Audit</text>
+    <text x="81" y="80" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">Inspectors study artifact</text>
+    <text x="81" y="97" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">against checklists &amp; flag</text>
+    <text x="81" y="114" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">candidate anomalies.</text>
+    <text x="81" y="138" class="font-mono" font-size="10.5" font-weight="700" fill="#4338ca" text-anchor="middle">Rate: ≤ 200-400 LOC/h</text>
+  </g>
+
+  <line x1="568" y1="143" x2="586" y2="143" stroke="#0284c7" stroke-width="3" marker-end="url(#arr-fagan)" />
+
+  <!-- Step 4: Inspection Meeting (Highlighted Core) -->
+  <g transform="translate(590, 68)">
+    <rect width="174" height="150" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2.5" />
+    <rect width="174" height="32" rx="10" fill="#d97706" />
+    <text x="87" y="21" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">4. Review Meeting</text>
+    <text x="87" y="58" class="font-sans" font-size="12.5" font-weight="800" fill="#92400e" text-anchor="middle">Reader Paraphrases</text>
+    <text x="87" y="80" class="font-sans" font-size="11.5" font-weight="600" fill="#78350f" text-anchor="middle">Team logs defects only;</text>
+    <text x="87" y="97" class="font-sans" font-size="11.5" font-weight="800" fill="#dc2626" text-anchor="middle">NO solution debates!</text>
+    <text x="87" y="114" class="font-sans" font-size="11.5" font-weight="600" fill="#78350f" text-anchor="middle">Scribe records all items.</text>
+    <text x="87" y="138" class="font-mono" font-size="10.5" font-weight="700" fill="#b45309" text-anchor="middle">Max Duration: ≤ 2 hrs</text>
+  </g>
+
+  <line x1="766" y1="143" x2="784" y2="143" stroke="#0284c7" stroke-width="3" marker-end="url(#arr-fagan)" />
+
+  <!-- Step 5: Rework -->
+  <g transform="translate(788, 68)">
+    <rect width="156" height="150" rx="12" fill="#fff1f2" stroke="#fb7185" stroke-width="2" />
+    <rect width="156" height="32" rx="10" fill="#e11d48" />
+    <text x="78" y="21" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">5. Rework</text>
+    <text x="78" y="58" class="font-sans" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Defect Resolution</text>
+    <text x="78" y="80" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">Author fixes every</text>
+    <text x="78" y="97" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">logged defect &amp; updates</text>
+    <text x="78" y="114" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">affected spec/code.</text>
+    <text x="78" y="138" class="font-mono" font-size="10.5" font-weight="700" fill="#be123c" text-anchor="middle">Owner: Author</text>
+  </g>
+
+  <line x1="946" y1="143" x2="964" y2="143" stroke="#0284c7" stroke-width="3" marker-end="url(#arr-fagan)" />
+
+  <!-- Step 6: Follow-Up -->
+  <g transform="translate(968, 68)">
+    <rect width="160" height="150" rx="12" fill="#ecfdf5" stroke="#34d399" stroke-width="2" />
+    <rect width="160" height="32" rx="10" fill="#059669" />
+    <text x="80" y="21" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">6. Follow-Up</text>
+    <text x="80" y="58" class="font-sans" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">Exit Gate Sign-Off</text>
+    <text x="80" y="80" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">Moderator verifies fixes</text>
+    <text x="80" y="97" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">(or triggers re-inspection)</text>
+    <text x="80" y="114" class="font-sans" font-size="11.5" font-weight="500" fill="#475569" text-anchor="middle">&amp; approves release.</text>
+    <text x="80" y="138" class="font-mono" font-size="10.5" font-weight="700" fill="#047857" text-anchor="middle">✓ Formal Sign-Off</text>
+  </g>
+
+  <!-- Feedback loop from Follow-Up to Rework if unresolved -->
+  <path d="M 1048 220 L 1048 244 L 866 244 L 866 222" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr-loop)" />
+  <text x="957" y="257" class="font-sans" font-size="11" font-weight="700" fill="#047857" text-anchor="middle">Re-verify if Major Defects Remain</text>
+
+  <!-- ================= BOTTOM SECTION: 5 CORE ROLES & GOLDEN GUARDRAILS ================= -->
+  <rect x="15" y="282" width="1130" height="216" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+  <path d="M 15 298 Q 15 282 31 282 L 1129 282 Q 1145 282 1145 298 L 1145 322 L 15 322 Z" fill="#1e293b" />
+  <text x="580" y="308" class="font-sans" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">5 SPECIALIZED INSPECTION ROLES (PREVENTING AUTHOR BLINDNESS)</text>
+
+  <!-- Role 1: Moderator -->
+  <g transform="translate(32, 338)">
+    <rect width="206" height="142" rx="10" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1.8" />
+    <text x="103" y="26" class="font-sans" font-size="14.5" font-weight="800" fill="#0369a1" text-anchor="middle">1. Moderator (Chair)</text>
+    <line x1="16" y1="36" x2="190" y2="36" stroke="#bae6fd" stroke-width="1.5" />
+    <text x="103" y="60" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">Organizes session, enforces</text>
+    <text x="103" y="78" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">pace (200–400 LOC/hr), cuts</text>
+    <text x="103" y="96" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">off solution arguments, and</text>
+    <text x="103" y="114" class="font-sans" font-size="12" font-weight="700" fill="#0369a1" text-anchor="middle">signs off on final Rework.</text>
+  </g>
+
+  <!-- Role 2: Reader -->
+  <g transform="translate(254, 338)">
+    <rect width="206" height="142" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="2" />
+    <text x="103" y="26" class="font-sans" font-size="14.5" font-weight="800" fill="#b45309" text-anchor="middle">2. Reader (Paraphraser)</text>
+    <line x1="16" y1="36" x2="190" y2="36" stroke="#fde68a" stroke-width="1.5" />
+    <text x="103" y="60" class="font-sans" font-size="12" font-weight="700" fill="#92400e" text-anchor="middle">Never the Author!</text>
+    <text x="103" y="78" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">Paraphrases artifact logic in</text>
+    <text x="103" y="96" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">their own words to expose</text>
+    <text x="103" y="114" class="font-sans" font-size="12" font-weight="700" fill="#b45309" text-anchor="middle">ambiguities &amp; logic gaps.</text>
+  </g>
+
+  <!-- Role 3: Scribe -->
+  <g transform="translate(476, 338)">
+    <rect width="206" height="142" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8" />
+    <text x="103" y="26" class="font-sans" font-size="14.5" font-weight="800" fill="#334155" text-anchor="middle">3. Scribe (Recorder)</text>
+    <line x1="16" y1="36" x2="190" y2="36" stroke="#e2e8f0" stroke-width="1.5" />
+    <text x="103" y="60" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">Records every discovered</text>
+    <text x="103" y="78" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">defect with exact line/section,</text>
+    <text x="103" y="96" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">category, and severity into</text>
+    <text x="103" y="114" class="font-sans" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">the Action Item log.</text>
+  </g>
+
+  <!-- Role 4: Author -->
+  <g transform="translate(698, 338)">
+    <rect width="206" height="142" rx="10" fill="#fff1f2" stroke="#fda4af" stroke-width="1.8" />
+    <text x="103" y="26" class="font-sans" font-size="14.5" font-weight="800" fill="#be123c" text-anchor="middle">4. Author (Creator)</text>
+    <line x1="16" y1="36" x2="190" y2="36" stroke="#fecdd3" stroke-width="1.5" />
+    <text x="103" y="60" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">Delivers Overview, listens</text>
+    <text x="103" y="78" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">non-defensively during the</text>
+    <text x="103" y="96" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">meeting, and executes</text>
+    <text x="103" y="114" class="font-sans" font-size="12" font-weight="700" fill="#be123c" text-anchor="middle">post-meeting Rework.</text>
+  </g>
+
+  <!-- Role 5: Inspectors -->
+  <g transform="translate(920, 338)">
+    <rect width="208" height="142" rx="10" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.8" />
+    <text x="104" y="26" class="font-sans" font-size="14.5" font-weight="800" fill="#047857" text-anchor="middle">5. Inspectors (Peers)</text>
+    <line x1="16" y1="36" x2="192" y2="36" stroke="#a7f3d0" stroke-width="1.5" />
+    <text x="104" y="60" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">Domain, QA &amp; security peers</text>
+    <text x="104" y="78" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">who prepare beforehand &amp;</text>
+    <text x="104" y="96" class="font-sans" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">audit requirements, models,</text>
+    <text x="104" y="114" class="font-sans" font-size="12" font-weight="700" fill="#047857" text-anchor="middle">&amp; code against checklists.</text>
+  </g>
+</svg>

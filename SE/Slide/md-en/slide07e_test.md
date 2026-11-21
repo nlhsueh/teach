@@ -39,16 +39,16 @@ In software engineering, writing code is only half the battle. Delivering a depe
     <h3>Part 1: Foundations, Inspection & Black-Box</h3>
     <ul>
       <li><a href="#3"><b>7.1 Testing Foundations, Principles & Oracles:</b></a> ISTQB 7 principles, V&V, testing levels, testability, test pyramid, behavior Venn diagram, 3W2H landscape, Test Oracle problem, Metamorphic & Differential testing.</li>
-      <li><a href="#34"><b>7.2 Static Software Inspection & Code Review:</b></a> Testing iceberg, IEEE 1028 Inspection vs. Walkthrough, Fagan 6 steps & 5 roles, 5 code fault categories, Clean Code checklist, Code Smells, OWASP Top 10.</li>
-      <li><a href="#43"><b>7.3 Black-Box Testing (BVA & EP):</b></a> Myers's philosophy, BVA formulas (4n+1, 6n+1, 5<sup>n</sup>, 7<sup>n</sup>), Triangle diversity deficit, Weak vs. Strong EP, Binary Search, NextDate December anomaly, Fault Masking, EP+BVA SOP.</li>
+      <li><a href="#32"><b>7.2 Static Software Inspection & Code Review:</b></a> Testing iceberg & IEEE 1028 review spectrum, Fagan 6-step process & 5 roles, full-lifecycle review targets (SRS, Design models, Code), automated static analysis & CI gates.</li>
+      <li><a href="#37"><b>7.3 Black-Box Testing (BVA & EP):</b></a> Myers's philosophy, BVA formulas (4n+1, 6n+1, 5<sup>n</sup>, 7<sup>n</sup>), Triangle diversity deficit, Weak vs. Strong EP, Binary Search, NextDate December anomaly, Fault Masking, EP+BVA SOP.</li>
     </ul>
   </div>
   <div>
     <h3>Part 2: Combinatorial, White-Box & Integration</h3>
     <ul>
-      <li><a href="#61"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
-      <li><a href="#76"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
-      <li><a href="#97"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
+      <li><a href="#55"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
+      <li><a href="#70"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
+      <li><a href="#91"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
     </ul>
   </div>
 </div>
@@ -512,39 +512,7 @@ Dozens of isolated unit tests form the foundation for component and integration 
 💡 難字與專業術語解說：
 - test hierarchy: 測試層級體系（由底層單元測試逐層向上組裝至整合測試、系統測試與驗收測試的結構）
 -->
----
-## Multi-Dimensional Taxonomy (5): Practical Test Pyramid vs. Ice Cream Cone
 
-* **Top Tier — UI / E2E Tests (Smallest Share ~10%):**
-  - Simulates real browser/mobile journeys (Playwright / Cypress); highest realism, but slowest and most brittle.
-* **Middle Tier — Integration / Service Tests (~20%):**
-  - Verifies API contracts, SQL repositories, and message queues (Testcontainers / Pact).
-* **Base Tier — Automated Unit Tests (Largest Share ~70%):**
-  - Thousands of millisecond-fast, deterministic tests (JUnit 5 / Mockito) providing instant developer feedback.
-* **[Anti-Pattern] The Ice Cream Cone (Inverted Pyramid):**
-  - Starving unit tests while relying heavily on manual/UI E2E testing → glacial CI builds and flaky red lights!
-
-<!--
-When teams invert Mike Cohn's Test Pyramid into an Ice Cream Cone—writing almost no unit tests and relying on slow UI automation or manual clicking—their CI pipeline takes hours and breaks constantly.
-
-💡 難字與專業術語解說：
-- Ice Cream Cone anti-pattern: 冰淇淋甜筒反模式（倒金字塔結構，底層單元測試極少、頂層慢速 UI 與人工測試極多的不良測試配比）
--->
----
-<!-- _class: title-image-slide -->
-
-## The Modern Practical Test Pyramid Architecture
-
-<div class="image-wrapper">
-  <img src="../../img/ch07/practical_test_pyramid.svg" alt="Modern Practical Test Pyramid" />
-</div>
-
-<!--
-Compare execution speed and maintenance cost from bottom to top: unit tests run in milliseconds with pinpoint fault localization, while top-level E2E tests validate critical cross-system user journeys.
-
-💡 難字與專業術語解說：
-- fault localization: 錯誤定位（當測試失敗時，能多快且多精確地鎖定是哪一行程式碼或哪個模組出錯的能力）
--->
 ---
 ## Test Case Design: Venn Diagram of Specified, Programmed & Verified Behavior
 
@@ -650,75 +618,171 @@ Using `divide(a, b)` as an example, Test Cases branch by logical partitions whil
 -->
 
 ---
-<!-- _class: title-image-slide -->
+<!-- _class: full-image-slide -->
 
-## The 3W2H Software Testing Landscape Panorama
-
-<div class="image-wrapper">
-  <img src="../../img/ch07/testing_landscape_3w2h.jpg" alt="3W2H Testing Landscape Architecture" />
+<div class="mm-3w2h-stage" id="mm-3w2h-root">
+<div class="mm-root-col">
+<div class="mm-root-card">
+<div class="mm-root-badge">3W2H TAXONOMY</div>
+<div class="mm-root-title">Software Testing Landscape</div>
+<div class="mm-root-sub">5 Core Dimensions of Quality Verification</div>
+<div class="mm-root-actions">
+<button type="button" class="mm-action-btn" id="mm-btn-toggle-all">➕ Expand All</button>
+<button type="button" class="mm-action-btn mm-btn-secondary" id="mm-btn-step">▶ Next Branch (1/5)</button>
+</div>
+</div>
+</div>
+<svg class="mm-fan-svg" viewBox="0 0 48 620" preserveAspectRatio="none">
+<path d="M 0 310 C 24 310, 20 55, 48 55" fill="none" stroke="#3b82f6" stroke-width="2.8" />
+<path d="M 0 310 C 22 310, 22 182, 48 182" fill="none" stroke="#10b981" stroke-width="2.8" />
+<path d="M 0 310 L 48 310" fill="none" stroke="#f59e0b" stroke-width="2.8" />
+<path d="M 0 310 C 22 310, 22 438, 48 438" fill="none" stroke="#8b5cf6" stroke-width="2.8" />
+<path d="M 0 310 C 24 310, 20 565, 48 565" fill="none" stroke="#f43f5e" stroke-width="2.8" />
+</svg>
+<div class="mm-branches-col">
+<div class="mm-branch-row mm-b1 is-collapsed" data-branch-idx="0">
+<div class="mm-dim-node" title="Click to expand / collapse">
+<div class="mm-dim-header">
+<span class="mm-dim-tag">DIMENSION 1</span>
+<span class="mm-toggle-pill">+</span>
+</div>
+<div class="mm-dim-title">1. WHO Tests?</div>
+<div class="mm-dim-sub">Roles, Independence &amp; Alpha/Beta</div>
+</div>
+<div class="mm-leaf-bridge"></div>
+<div class="mm-leaves-grid">
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Developers</div>
+<div class="mm-leaf-desc"><strong>Unit testing &amp; TDD</strong>; white-box branch &amp; contract defense at coding time.</div>
+</div>
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Peers &amp; Dedicated QA</div>
+<div class="mm-leaf-desc">Code inspection, CI automation, load testing &amp; <strong>Alpha Testing</strong> (in-house staging).</div>
+</div>
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Domain Experts &amp; Users</div>
+<div class="mm-leaf-desc">Business <strong>UAT</strong> by Product Owners &amp; <strong>Beta Testing</strong> by customers in the wild.</div>
+</div>
+</div>
+</div>
+<div class="mm-branch-row mm-b2 is-collapsed" data-branch-idx="1">
+<div class="mm-dim-node" title="Click to expand / collapse">
+<div class="mm-dim-header">
+<span class="mm-dim-tag">DIMENSION 2</span>
+<span class="mm-toggle-pill">+</span>
+</div>
+<div class="mm-dim-title">2. WHAT is Tested?</div>
+<div class="mm-dim-sub">Functional, Structural &amp; Quality</div>
+</div>
+<div class="mm-leaf-bridge"></div>
+<div class="mm-leaves-grid">
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Functional Logic (Black-Box)</div>
+<div class="mm-leaf-desc">SRS business rules, <strong>EP partitions</strong>, <strong>BVA boundaries</strong> &amp; decision tables.</div>
+</div>
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Structural Paths (White-Box)</div>
+<div class="mm-leaf-desc">Internal CFG <strong>Statement (SC)</strong>, <strong>Branch (BC)</strong>, Path &amp; avionics <strong>MC/DC</strong> coverage.</div>
+</div>
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Scenario &amp; Non-Functional</div>
+<div class="mm-leaf-desc">End-to-end user journeys, concurrency load/stress &amp; <strong>OWASP security</strong> gates.</div>
+</div>
+</div>
+</div>
+<div class="mm-branch-row mm-b3 is-collapsed" data-branch-idx="2">
+<div class="mm-dim-node" title="Click to expand / collapse">
+<div class="mm-dim-header">
+<span class="mm-dim-tag">DIMENSION 3</span>
+<span class="mm-toggle-pill">+</span>
+</div>
+<div class="mm-dim-title">3. WHY Test?</div>
+<div class="mm-dim-sub">Risk, Contracts &amp; CI Confidence</div>
+</div>
+<div class="mm-leaf-bridge"></div>
+<div class="mm-leaves-grid">
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Risk Mitigation</div>
+<div class="mm-leaf-desc">Drastically reduce production failure probability and business blast radius.</div>
+</div>
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Contract &amp; Invariant Defense</div>
+<div class="mm-leaf-desc">Enforce Design-by-Contract (DbC) preconditions, postconditions &amp; invariants.</div>
+</div>
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Regression Safety Net</div>
+<div class="mm-leaf-desc">Guarantee new refactoring or commits never break existing production features.</div>
+</div>
+</div>
+</div>
+<div class="mm-branch-row mm-b4 is-collapsed" data-branch-idx="3">
+<div class="mm-dim-node" title="Click to expand / collapse">
+<div class="mm-dim-header">
+<span class="mm-dim-tag">DIMENSION 4</span>
+<span class="mm-toggle-pill">+</span>
+</div>
+<div class="mm-dim-title">4. HOW to Execute?</div>
+<div class="mm-dim-sub">Scripted, Exploratory &amp; Fuzzing</div>
+</div>
+<div class="mm-leaf-bridge"></div>
+<div class="mm-leaves-grid">
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Scripted CI/CD Automation</div>
+<div class="mm-leaf-desc">Deterministic <strong>JUnit 5 / Playwright</strong> test suites executed on every Git push.</div>
+</div>
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Exploratory Testing</div>
+<div class="mm-leaf-desc">Simultaneous learning, test design &amp; adversarial probing by domain experts.</div>
+</div>
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Fuzzing &amp; Record/Replay</div>
+<div class="mm-leaf-desc">Random/mutated payload bombardment &amp; capturing real UI interaction traces.</div>
+</div>
+</div>
+</div>
+<div class="mm-branch-row mm-b5 is-collapsed" data-branch-idx="4">
+<div class="mm-dim-node" title="Click to expand / collapse">
+<div class="mm-dim-header">
+<span class="mm-dim-tag">DIMENSION 5</span>
+<span class="mm-toggle-pill">+</span>
+</div>
+<div class="mm-dim-title">5. HOW to Evaluate?</div>
+<div class="mm-dim-sub">Test Oracles &amp; Coverage Metrics</div>
+</div>
+<div class="mm-leaf-bridge"></div>
+<div class="mm-leaves-grid">
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Test Oracle Comparator</div>
+<div class="mm-leaf-desc">Compares Program Under Test (<code>Actual y</code>) against Oracle (<code>Expected y*</code>).</div>
+</div>
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">The Test Oracle Problem</div>
+<div class="mm-leaf-desc">Generative AI, search engines &amp; complex simulations lack a single exact answer.</div>
+</div>
+<div class="mm-leaf-card">
+<div class="mm-leaf-title">Next-Gen AI/MT Oracles</div>
+<div class="mm-leaf-desc">Solved via <strong>Metamorphic Relations (MR)</strong>, <strong>Differential Testing</strong> &amp; <strong>LLM Judge</strong>.</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <!--
-In SQA Section 3.5, we organize the entire software testing universe through the 3W2H Framework: Who, What, Why, How, and How to Evaluate (Test Oracle).
+In SQA Section 3.5, we organize the entire software testing universe through this interactive 3W2H Mind Map:
+1. **Who Tests?** Developers (Unit/TDD), Peers & Dedicated QA (Inspection, CI, in-house Alpha testing), and Domain Experts/Customers (UAT & real-world Beta testing).
+2. **What is Tested?** Functional logic, structural white-box code paths, end-to-end scenarios, and non-functional quality attributes.
+3. **Why Do We Test?** Risk mitigation, contract/invariant defense, and continuous regression safety in CI/CD.
+4. **How Do We Execute?** Scripted CI/CD automation, exploratory probing, random monkey fuzzing, and Record-and-Replay workflows.
+5. **How Do We Evaluate?** Test Oracles (comparing actual vs. expected outcomes) and structural/mutation coverage metrics.
 
 💡 難字與專業術語解說：
 - 3W2H testing taxonomy: 3W2H 測試全景分類法（從 Who、What、Why、How 與 How to Evaluate 五大維度剖析測試體系）
--->
----
-## 3W2H Dimension 1 (Who Tests?) & Dimension 2 (What is Tested?)
-
-<div class="card-deck">
-
-> From developers and QA engineers to beta users, testing spans functional logic, structural paths, scenarios, and non-functional attributes.
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. Who Tests? & Alpha vs. Beta Testing
-- **Developers:** Unit testing, TDD, white-box branch defense.
-- **Peer Reviewers & Dedicated QA:** Code inspection, automated frameworks, non-functional load testing, and **Alpha Testing** (in-house controlled lab/staging).
-- **Domain Experts (PO) & External Users:** Business UAT and **Beta Testing** (real customer hardware & telemetry in the wild).
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 2. What is Tested?
-- **Functional Testing:** Business rules, EP partitions, BVA boundaries.
-- **Structural (White-Box) Testing:** Statement, branch, path, and MC/DC coverage.
-- **Scenario / Workflow Testing:** Cross-module user journeys (`Cart → Checkout → Inventory`).
-- **Non-Functional Testing:** Load, stress, soak endurance, OWASP security, compatibility.
-
-</div>
-</div>
-</div>
-
-<!--
-Dimension 1 distinguishes internal developers/QA (including Alpha testing in controlled environments) from external users (Beta testing in real customer environments). Dimension 2 covers functional, structural, scenario, and non-functional targets.
-
-💡 難字與專業術語解說：
-- Alpha vs. Beta testing: Alpha 內部測試 vs. Beta 外部公測（開發團隊在內部受控環境進行的整合測試 vs. 釋出予外部真實使用者在多樣真實環境中進行的場域公測）
--->
----
-## 3W2H Dimension 3 (Why Test?) & Dimension 4 (How to Execute?)
-
-* **Dimension 3 — Why Do We Test?**
-  - **Risk Mitigation:** Reduce the probability and business blast radius of production failures.
-  - **Contract & Invariant Defense:** Enforce Design-by-Contract (DbC) preconditions, postconditions, and class invariants.
-  - **Regression Safety Net & CI/CD Confidence:** Ensure new commits never break existing features.
-* **Dimension 4 — How Do We Execute Tests?**
-  - **Scripted Automation:** Pre-programmed JUnit / Playwright suites run on every commit.
-  - **Exploratory Testing:** Simultaneous learning, test design, and probing by experienced engineers.
-  - **Monkey / Random Fuzzing:** Bombarding interfaces with random events or mutated byte streams.
-  - **Record & Replay:** Capturing real user UI interaction traces into repeatable E2E scripts.
-
-<!--
-Dimension 3 defines our purpose (risk mitigation, contract defense, regression safety, CI/CD confidence), while Dimension 4 spans scripted automation, exploratory testing, random monkey fuzzing, and Record-and-Replay workflows.
-
-💡 難字與專業術語解說：
+- Alpha vs. Beta testing: Alpha 內部測試 vs. Beta 外部公測（在內部受控環境進行的測試 vs. 釋出予外部真實使用者在真實環境進行的公測）
 - Record & Replay testing: 錄製與回放測試（記錄使用者在介面上的真實點擊與輸入軌跡，自動轉化為可重複執行之自動化測試腳本的技術）
 -->
 ---
-## 3W2H Dimension 5: How to Evaluate & The Test Oracle Problem
+## How to Evaluate: Test Oracles & The Test Oracle Problem
 
 <div class="card-deck">
 
@@ -846,21 +910,20 @@ We now move to Section 7.2: Static Software Inspection and Code Review (integrat
 - static software inspection: 軟體靜態檢視（在不執行程式的前提下，透過結構化團隊審查與靜態分析工具檢驗規格、設計與原始碼的工程實踐）
 -->
 ---
-## The "Testing Iceberg" Metaphor & Static vs. Dynamic Synergy
+## Static Review Essence: The Testing Iceberg & IEEE 1028 Spectrum
 
-<div class="split73">
+<div class="split64">
 <div class="left">
 
 * **Why Dynamic Testing Only Sees the Tip of the Iceberg:**
-  - **Path Coverage Limits:** Dynamic tests only exercise paths triggered by chosen test data; unexercised edge branches remain submerged.
-  - **Fault Masking Effect:** An early runtime exception halts execution, hiding downstream bugs in the same method.
-  - **Concrete Code Example:**
-    ```java
-    for (int i = 1; i < max; i++) { ... } // Starts at index 1?!
-    ```
-    A senior reviewer spots the off-by-one `i = 1` bug (skipping index `0`) in 3 seconds of static inspection, whereas dynamic tests miss it if element `0` doesn't affect the test output!
-* **Complementary Synergy (Not Replacement):**
-  - **Static Inspection** eliminates ~70% of logic, style, and architectural flaws before compilation; **Dynamic Testing** verifies runtime concurrency and integrated behavior.
+  - **Path Coverage & Fault Masking:** Dynamic tests only exercise paths triggered by chosen test data; an early exception masks downstream flaws.
+  - **Concrete Example:** `for (int i = 1; i < max; i++)` (skipping index `0`) is caught in 3 seconds of static review, but missed by dynamic tests if element `0` doesn't alter the test output!
+* **Static vs. Dynamic Synergy & IEEE 1028 Spectrum:**
+  - **Shift-Left ROI:** Static review examines artifacts **without executing code**, removing ~70% of defects before compilation at `1/10` the cost.
+  - **Formal Inspection vs. Walkthrough (IEEE 1028):**
+    - **Inspection:** Rigorous, checklist-driven; chaired by **Moderator**, paraphrased by **Reader**, logged by **Scribe**.
+    - **Walkthrough:** Informal knowledge-sharing led by the **Author**.
+  - **Golden Rule:** *Inspect the artifact, never use defect counts for HR punishment!*
 
 </div>
 <div class="right">
@@ -871,258 +934,66 @@ We now move to Section 7.2: Static Software Inspection and Code Review (integrat
 </div>
 
 <!--
-In dynamic testing, if your test data happens to put the target item at index 2, the test passes with a green light, leaving the skipped index `0` bug submerged beneath the waterline. In static code inspection, an experienced reviewer immediately spots `i = 1`.
+In dynamic testing, if your test data happens to put the target item at index 2, the test passes with a green light, leaving the skipped index `0` bug submerged beneath the waterline. In static review, an experienced peer or static analyzer spots `i = 1` immediately. Moreover, IEEE 1028 distinguishes formal Inspections (led by a Moderator and paraphrased by an independent Reader) from informal Walkthroughs (led by the Author).
 
 💡 難字與專業術語解說：
+- author blindness: 作者盲點／當局者迷（作者因大腦預設自身邏輯正確，自讀文件或程式碼時極難察覺自身筆誤或思維漏洞的現象）
 - collective code ownership: 程式碼集體共有制（透過同儕審查讓團隊多數成員皆理解系統各模組邏輯，避免知識孤島）
 -->
 ---
-## Preconditions for Effective Inspection & IEEE 1028 Review Taxonomy
+<!-- _class: title-image-slide -->
 
-<div class="card-deck">
+## Fagan Inspection Process: 6 Standard Steps & 5 Specialized Roles
 
-> Without objective baselines and psychological safety, reviews degenerate into subjective arguments; IEEE 1028 formalizes **Inspection** vs. **Walkthrough**.
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### Preconditions for Mature Inspection
-- **Engineering Baselines:**
-  - Approved upstream specification (SRS / Design doc) as objective ground truth.
-  - Shared coding standards & structured review checklists.
-  - Frozen build that already compiles cleanly and passes basic unit/linter checks.
-- **Management & Cultural Commitment:**
-  - **Never use defect counts for employee punishment or HR appraisal** (otherwise developers hide bugs!).
-  - Allocate dedicated preparation time before review meetings.
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### IEEE 1028: Inspection vs. Walkthrough
-| Dimension | Formal Inspection | Informal Walkthrough |
-| :--- | :--- | :--- |
-| **Formality** | **Rigorous & Formal** | Informal & Flexible |
-| **Planning** | Pre-assigned roles & checklists | Initiated ad-hoc by author |
-| **Presenter** | Independent **Reader** | **The Author** leads |
-| **Recorder** | Dedicated **Scribe** | Usually the Author |
-| **Leader** | Trained **Moderator** | No formal moderator |
-| **Best For** | Core engines, security, critical specs | Onboarding, early design sharing |
-
-</div>
-</div>
+<div class="image-wrapper">
+  <img src="../../img/ch07/fagan_inspection_flow.svg" alt="Fagan Inspection 6-Step Workflow and 5 Core Roles" />
 </div>
 
 <!--
-Remember the golden rule of inspection culture: *Inspect the artifact, never attack the author.* And notice the key distinction in IEEE 1028: in an Inspection, an independent Reader paraphrases the artifact, whereas in a Walkthrough, the Author leads.
+Michael Fagan (IBM, 1976) formalized Software Inspection into six disciplined steps and five specialized roles. During Step 4 (Review Meeting), the Reader—never the Author—paraphrases the artifact's logic out loud, while the Moderator enforces one iron rule: focus strictly on discovering and logging defects (at an optimal pace of 200–400 LOC/hr), and never waste meeting time debating how to fix them (that belongs in Step 5 Rework).
 
 💡 難字與專業術語解說：
-- author blindness: 作者盲點／當局者迷（程式作者因大腦已預設自身邏輯正確，在自讀程式碼時極難察覺自身筆誤或思維漏洞的現象）
+- Fagan Inspection: 范根檢視法（具備六大標準步驟與五大明確角色分工的正式軟體靜態檢視典範）
+- optimal inspection rate: 最佳檢視速率（實證研究顯示每小時審查 200–400 行程式碼的抓錯率最高，超過 1,000 行會陷入走馬看花的橡皮圖章效應）
 -->
 ---
-## Fagan Inspection (1/2): The 6 Standard Steps (IBM, 1976)
+<!-- _class: title-image-slide -->
 
-<div class="split73">
-<div class="left">
+## What Do We Review? Full-Lifecycle Artifacts & Key Inspection Focus
 
-* **1. Planning:** Select target artifact, assign the 5 roles, and schedule timeline.
-* **2. Overview:** Author briefs the inspection team on background context and domain rules.
-* **3. Individual Preparation:** Reviewers independently study the artifact using checklists and mark candidate defects before the meeting.
-* **4. Inspection Meeting:** The Reader paraphrases code logic line-by-line; the team focuses strictly on **finding and logging defects—never debating solutions in the meeting!**
-* **5. Rework:** Author resolves all logged defect action items after the meeting.
-* **6. Follow-up:** Moderator verifies every fix and formally signs off.
-
-</div>
-<div class="right">
-
-<div class="name-card">
-  <img src="../../img/ch07/michael_fagan.jpg" alt="Michael E. Fagan" />
-  <div class="name-card-caption">
-    <span class="name-card-name">Michael E. Fagan</span>
-    <span class="name-card-cc">Inventor of Fagan Inspection (IBM, 1976)</span>
-  </div>
-</div>
-
-</div>
-</div>
-
----
-## Fagan Inspection (2/2): 5 Core Team Roles & Review Rate Guardrail
-
-<div class="card-deck">
-
-> Clear role separation prevents **Author Blindness** and keeps the meeting focused on defect discovery rather than personal criticism.
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### Moderator, Reader & Scribe
-- **1. Moderator (Chairperson):**
-  - Leads the inspection, enforces the pace, mediates conflicts, and cuts off solution arguments.
-- **2. Reader (Paraphraser):**
-  - A peer (never the Author!) who paraphrases the code's logic out loud—exposing misunderstandings immediately.
-- **3. Scribe (Recorder):**
-  - Logs each defect's location, severity, and category into a structured Action Item list.
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### Author, Reviewers & Rate Limit
-- **4. Author (Owner):**
-  - Presents the Overview, listens quietly during the meeting to explain intent only when asked, and executes Rework.
-- **5. Reviewers / Inspectors:**
-  - Audit architecture, boundary conditions, and security against checklists.
-- **Golden Inspection Rate (`200–400 LOC/hr`):**
-  - Reviewing faster than `400 LOC/hr` causes defect detection rates to plummet!
-
-</div>
-</div>
+<div class="image-wrapper">
+  <img src="../../img/ch07/static_review_targets.svg" alt="Full-Lifecycle Static Review Targets: Requirements, Design Models, and Source Code" />
 </div>
 
 <!--
-During Step 4 (Inspection Meeting), the Reader paraphrases what each block of code does, and the Moderator enforces one iron rule: find and record the defect, do not waste meeting time arguing over how to refactor it (that belongs in Step 5 Rework).
+Static review applies to every software artifact across the entire SDLC—not just source code!
+1. **Requirements & SRS Documents:** We inspect for Correctness, Unambiguity (eliminating vague words), Completeness, Consistency, Verifiability (testable quantitative thresholds), and Bidirectional Traceability (RTM).
+2. **Architecture & Design Models (ADD, UML, DFD, ERD, API Contracts):** We audit Modularity (high cohesion, low coupling), DFD data conservation (no black holes or miracles), Class Diagram & ERD referential integrity, and OpenAPI contract consistency.
+3. **Source Code & Test Suites:** We inspect for data/boundary/control-flow faults, resource leaks, Code Smells (Duplicated Code, God Class, Shotgun Surgery), and OWASP Top 10 security vulnerabilities.
 
 💡 難字與專業術語解說：
-- Fagan Inspection: 范根檢視法（由 IBM Michael Fagan 提出，具備六大標準步驟與五大明確角色分工的正式軟體檢視典範）
--->
----
-## Code Inspection: 5 Major Code Fault Categories & Clean Code Checklist
-
-<div class="card-deck">
-
-> Structured checklists guide reviewers across five common fault domains while enforcing objective Clean Code merge gates.
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 5 Major Fault Categories in Code Inspection
-1. **Data Faults:** Uninitialized variables, array index out-of-bounds, floating-point precision loss.
-2. **Control Flow Faults:** Unreachable dead code, infinite loops, off-by-one boundary comparisons.
-3. **Input / Output (I/O) Faults:** Unclosed file streams or DB connections (resource leaks), unchecked I/O exceptions.
-4. **Interface Faults:** Parameter order/type mismatches, ignored return status codes, violated preconditions.
-5. **Coding Standard Violations:** Layer bypasses, magic numbers, swallowed empty `catch {}` blocks.
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### Team Clean Code Merge Gate Checklist
-- **Intent-Revealing Names & Single Responsibility (SRP):**
-  - Functions `< 20–30 lines` doing one thing well; self-documenting identifiers without cryptic abbreviations.
-- **Flatten Nesting via Guard Clauses:**
-  - Validate preconditions and return early at the top of methods to eliminate deep arrowhead `if-else` pyramids.
-- **Defensive Error Handling & Mandatory Tests:**
-  - Zero silent `catch {}`, zero raw `null` traps, and every PR must include automated unit tests covering boundary cases!
-
-</div>
-</div>
-</div>
-
-<!--
-Pairing these five fault categories with an objective Clean Code Merge Gate Checklist transforms code review into an institutional shield against technical debt.
-
-💡 難字與專業術語解說：
-- guard clause: 衛語句（在函式開頭先行檢查邊界或異常條件並提早 return，以消除深層巢狀 if-else 階梯的重構手法）
--->
----
-## Code Smells Concept & Category 1: Bloaters & Structural Imbalance
-
-<div class="split73">
-<div class="left">
-
-* **What is a Code Smell? (Kent Beck & Martin Fowler):**
-  - Code that compiles and runs today, but exhibits structural decay that inflates maintenance cost and breeds future defects (**Technical Debt**).
-  - **Clean Code** is the health target; **Code Smells** are warning symptoms; **Refactoring** is the prescription that restructures internals without altering external behavior.
-* **Bloaters & Data Structure Smells:**
-  - **Duplicated Code (Public Enemy #1):** Fixing a bug in one copy while forgetting two clones → Fix via *Extract Method* or *Pull Up Method*.
-  - **Long Method & Large Class (God Object):** Monolithic 500-line functions or classes → Fix via *Extract Method / Extract Class* along Single Responsibility boundaries.
-  - **Long Parameter List, Primitive Obsession & Data Clumps:** Passing 8 raw `String/int` fields (city, street, zip) that always travel together → Fix via *Introduce Parameter Object* or domain *Value Objects* (`Money`, `Address`).
-
-</div>
-<div class="right">
-
-<div class="name-card">
-  <img src="../../img/ch07/kent_beck.jpg" alt="Kent Beck" />
-  <div class="name-card-caption">
-    <span class="name-card-name">Kent Beck</span>
-    <span class="name-card-cc">Creator of XP & TDD; Co-originator of "Code Smells"</span>
-  </div>
-</div>
-
-</div>
-</div>
-
-<!--
-Kent Beck and Martin Fowler coined the term Code Smell in *Refactoring*. Bloaters occur when methods, classes, or parameter lists grow so large that they become impossible to understand or test in isolation.
-
-💡 難字與專業術語解說：
+- data conservation (DFD black hole / miracle): 資料守恆（在資料流程圖審查中，只有輸入卻無輸出的程序稱為黑洞 Black Hole；無輸入卻憑空產出資料稱為奇蹟 Miracle）
 - code smell: 程式碼臭味（表面雖能編譯執行，但內部結構腐化、違反設計原則並預示深層維護風險的徵兆）
-- primitive obsession: 基本型別偏執（濫用基本型別 `int/String` 表達具領域規則的金額、電話或座標，而非封裝為領域值物件的臭味）
 -->
 ---
-## Code Smells Category 2: Change Preventers, Couplers & 3 Code Review Myths
+<!-- _class: title-image-slide -->
 
-<div class="card-deck">
+## Automated Static Analysis Toolchain & Two-Stage CI/CD Quality Gate
 
-> Healthy classes maintain low coupling and high cohesion; in Code Review, automated linters guard the floor while human reviewers guard domain architecture.
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### Change Preventers & Couplers
-- **Shotgun Surgery:**
-  - Modifying 1 business rule forces tiny 1-line edits across 10 different classes → Fix via *Move Method / Move Field* to centralize the concept.
-- **Divergent Change:**
-  - 1 God Class is modified whenever DB schema changes, AND whenever report formatting changes → Fix via *Extract Class* per axis of change (SRP).
-- **Feature Envy & Message Chains:**
-  - A method in Class A obsessively calls getters on Class B (`a.getB().getC().getD().calc()`) → Fix via *Move Method* to Class B and *Hide Delegate* (Law of Demeter).
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### Debunking 3 Common Code Review Myths
-1. **Myth 1: "With PMD and AI, human review is obsolete."**
-   - *Truth:* Tools catch syntax and known CVEs (`80%` noise), but **cannot judge real business regulation compliance**!
-2. **Myth 2: "The sole purpose of Code Review is finding bugs."**
-   - *Truth:* Beyond defect removal, Code Review builds **Collective Code Ownership** and mentors junior engineers.
-3. **Myth 3: "Huge 3,000-line PRs show high productivity."**
-   - *Truth:* Reviewing `> 1,000 LOC/hr` triggers the **LGTM Rubber-Stamp Effect**; mandate **atomic PRs (`< 400 LOC`)**!
-
-</div>
-</div>
+<div class="image-wrapper">
+  <img src="../../img/ch07/automated_static_review_pipeline.svg" alt="Modern Automated Static Analysis Toolchain and Two-Stage CI/CD Quality Gate" />
 </div>
 
 <!--
-Make sure you can distinguish Shotgun Surgery (1 change scatters across 10 classes) from Divergent Change (1 class changes for 10 unrelated reasons), and remember why atomic PRs under 400 LOC are critical for avoiding LGTM rubber-stamping.
+Modern software engineering pairs human review with powerful automated static analysis tools that inspect ASTs, bytecode, and dependency graphs without executing the program:
+1. **AST & Code Smell Linters (`PMD`, `Checkstyle`, `ESLint`, `Ruff`):** Catch unused variables, empty `catch {}` blocks, cyclomatic complexity bloat, and style violations in milliseconds.
+2. **Bytecode & Dataflow Bug Finders (`SpotBugs`, `ErrorProne`, `Infer`):** Trace control/data flow to pinpoint null-pointer dereferences, resource leaks, and concurrency races.
+3. **Security SAST & SCA Scanners (`SonarQube`, `Semgrep`, `Snyk`, `OWASP Dependency-Check`):** Detect SQLi/XSS taint paths and vulnerable third-party CVEs.
+4. **AI Review Bots & Model Linters (`GitHub Copilot`, `CodeRabbit`, `Spectral`):** Audit SRS/OpenAPI specs and triage PR diffs—filtering out 80% of mechanical noise in **Stage 1** so human experts in **Stage 2** can focus 100% on domain business logic and system architecture!
 
 💡 難字與專業術語解說：
-- shotgun surgery vs. divergent change: 散彈槍手術 vs. 發散式變更（一項修改波及十幾個類別 vs. 單一類別因十幾種不相關原因而頻繁被修改）
--->
----
-## Security Code Review: OWASP Top 10 & Automated Static Analysis (SAST)
-
-<div class="split73">
-<div class="left">
-
-* **OWASP Top 10 Critical Security Review Targets:**
-  - **A01 Broken Access Control:** Missing ownership/role checks allowing horizontal or vertical privilege escalation.
-  - **A02 Cryptographic Failures:** Plaintext passwords, weak `MD5/SHA1` hashes, or hardcoded API keys in Git commits.
-  - **A03 Injection (SQLi / Command / XSS):** Concatenating untrusted user strings into SQL queries (`"SELECT * FROM users WHERE id = '" + input + "'"`) → **Mandate `PreparedStatement` parameterized queries!**
-  - **A04 Insecure Design & A05 Security Misconfiguration:** Missing threat modeling, default credentials, or calling `e.printStackTrace()` to leak internal stack traces to end users!
-* **Human + SAST Tool Synergy (PMD / SonarQube / Checkmarx):**
-  - **Automated Quality Gates:** Run AST analyzers (PMD) and OWASP Dependency-Check in CI to block PRs with high-severity violations or unpatched CVEs before human review begins.
-
-</div>
-<div class="right">
-
-<img src="../../img/ch07/owasp_top10.png" alt="OWASP Top 10 Security Vulnerabilities" />
-
-</div>
-</div>
-
-<!--
-In security code reviews, any PR that concatenates SQL strings (A03) or dumps `e.printStackTrace()` to end users (A05) must be blocked immediately.
-
-💡 難字與專業術語解說：
-- Static Application Security Testing (SAST): 靜態應用程式安全測試（在編譯或提交階段自動掃描原始碼抽象語法樹，攔截 SQL 注入與資源洩漏等安全漏洞的工具）
+- Abstract Syntax Tree (AST) static analyzer: 抽象語法樹靜態分析器（將原始碼解析為語法樹結構，透過規則匹配自動偵測壞味道與潛在缺陷的工具，如 PMD）
+- SAST vs. SCA: 靜態應用程式安全測試 vs. 軟體組成分析（掃描自寫原始碼之安全弱點 vs. 掃描第三方開源套件是否含有已知 CVE 漏洞）
 -->
 ---
 <!-- _class: lead -->
@@ -3850,11 +3721,97 @@ This final summary ties together every discipline in Chapter 7: from static insp
     });
   }
 
+  // =========================================================================
+  // 4. Interactive Full-Page 3W2H Mind Map Controller
+  // =========================================================================
+  function init3W2HMindMap() {
+    const stage = document.getElementById("mm-3w2h-root");
+    if (!stage || stage.dataset.mmBound) return;
+    stage.dataset.mmBound = "true";
+
+    const rows = Array.from(stage.querySelectorAll(".mm-branch-row"));
+    const btnToggleAll = document.getElementById("mm-btn-toggle-all");
+    const btnStep = document.getElementById("mm-btn-step");
+
+    function syncRowUI() {
+      let expandedCount = 0;
+      let firstCollapsedIdx = -1;
+      rows.forEach((row, idx) => {
+        const isCollapsed = row.classList.contains("is-collapsed");
+        const pill = row.querySelector(".mm-toggle-pill");
+        if (pill) {
+          pill.textContent = isCollapsed ? "+" : "−";
+        }
+        if (!isCollapsed) {
+          expandedCount++;
+        } else if (firstCollapsedIdx === -1) {
+          firstCollapsedIdx = idx;
+        }
+      });
+
+      if (btnToggleAll) {
+        if (expandedCount === rows.length) {
+          btnToggleAll.textContent = "➖ Collapse All";
+        } else {
+          btnToggleAll.textContent = "➕ Expand All";
+        }
+      }
+      if (btnStep) {
+        if (firstCollapsedIdx === -1) {
+          btnStep.textContent = "↺ Reset Branches";
+        } else {
+          btnStep.textContent = "▶ Next Branch (" + (firstCollapsedIdx + 1) + "/" + rows.length + ")";
+        }
+      }
+    }
+
+    rows.forEach(row => {
+      const node = row.querySelector(".mm-dim-node");
+      if (!node) return;
+      node.addEventListener("click", function(e) {
+        e.stopPropagation();
+        row.classList.toggle("is-collapsed");
+        syncRowUI();
+      });
+    });
+
+    if (btnToggleAll) {
+      btnToggleAll.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const allExpanded = rows.every(r => !r.classList.contains("is-collapsed"));
+        rows.forEach(r => {
+          if (allExpanded) {
+            r.classList.add("is-collapsed");
+          } else {
+            r.classList.remove("is-collapsed");
+          }
+        });
+        syncRowUI();
+      });
+    }
+
+    if (btnStep) {
+      btnStep.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const nextRow = rows.find(r => r.classList.contains("is-collapsed"));
+        if (nextRow) {
+          nextRow.classList.remove("is-collapsed");
+        } else {
+          rows.forEach(r => r.classList.add("is-collapsed"));
+        }
+        syncRowUI();
+      });
+    }
+
+    syncRowUI();
+  }
+
   function init() {
     initOutlineLinksAndQuizBlanks();
     initHeaderDropdown();
     initNumberQuickJump();
     initSplitImageHoverZoom();
+    init3W2HMindMap();
   }
 
   if (document.readyState === 'loading') {

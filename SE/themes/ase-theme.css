@@ -2336,4 +2336,310 @@ section.exam-paper::after {
   color: #94a3b8 !important;
 }
 
+/* ==========================================================================
+   16. Interactive Full-Page 3W2H Mind Map (.mm-3w2h-stage)
+   ========================================================================== */
+.mm-3w2h-stage {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 1280px;
+  height: 720px;
+  padding: 28px 34px 24px 34px;
+  box-sizing: border-box;
+  background: #f5f5f5;
+  gap: 0;
+  user-select: none;
+}
+
+/* Left Root Hub */
+.mm-root-col {
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.mm-root-card {
+  width: 220px;
+  background: linear-gradient(135deg, #0b3c5d 0%, #1e293b 100%);
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 18px 16px;
+  box-shadow: 0 12px 28px rgba(11, 60, 93, 0.22);
+  border: 2px solid #38bdf8;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.mm-root-badge {
+  display: inline-block;
+  background: #38bdf8;
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  padding: 3px 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.mm-root-title {
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.mm-root-sub {
+  font-size: 12px;
+  color: #bae6fd;
+  line-height: 1.35;
+  margin-bottom: 14px;
+}
+
+.mm-root-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.mm-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+  border: 1.5px solid #38bdf8;
+  background: #0284c7;
+  color: #ffffff;
+  transition: all 0.18s ease;
+  box-sizing: border-box;
+}
+
+.mm-action-btn:hover {
+  background: #38bdf8;
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+.mm-action-btn.mm-btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(186, 230, 253, 0.5);
+  color: #e0f2fe;
+  font-size: 11.5px;
+}
+
+.mm-action-btn.mm-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+}
+
+/* SVG Bezier Fan between Root and 5 Branches */
+.mm-fan-svg {
+  width: 48px;
+  height: 620px;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+/* Right 5 Branch Rows Container */
+.mm-branches-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 636px;
+  gap: 10px;
+}
+
+.mm-branch-row {
+  display: flex;
+  align-items: center;
+  height: 118px;
+  gap: 0;
+}
+
+/* Level 1 Dimension Node */
+.mm-dim-node {
+  width: 224px;
+  height: 106px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  border: 2px solid #cbd5e1;
+  border-left-width: 6px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.mm-dim-node:hover {
+  transform: translateX(2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+}
+
+.mm-dim-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.mm-dim-tag {
+  font-size: 11.5px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.4px;
+}
+
+.mm-toggle-pill {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.mm-dim-title {
+  font-size: 16.5px;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1.22;
+  margin-bottom: 3px;
+}
+
+.mm-dim-sub {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #64748b;
+  line-height: 1.25;
+}
+
+/* Color themes for the 5 Dimensions */
+.mm-b1 .mm-dim-node { border-left-color: #2563eb; border-color: #93c5fd; }
+.mm-b1 .mm-dim-tag  { background: #dbeafe; color: #1d4ed8; }
+.mm-b1 .mm-toggle-pill { background: #2563eb; color: #ffffff; }
+
+.mm-b2 .mm-dim-node { border-left-color: #059669; border-color: #6ee7b7; }
+.mm-b2 .mm-dim-tag  { background: #d1fae5; color: #047857; }
+.mm-b2 .mm-toggle-pill { background: #059669; color: #ffffff; }
+
+.mm-b3 .mm-dim-node { border-left-color: #d97706; border-color: #fcd34d; }
+.mm-b3 .mm-dim-tag  { background: #fef3c7; color: #b45309; }
+.mm-b3 .mm-toggle-pill { background: #d97706; color: #ffffff; }
+
+.mm-b4 .mm-dim-node { border-left-color: #7c3aed; border-color: #c4b5fd; }
+.mm-b4 .mm-dim-tag  { background: #ede9fe; color: #6d28d9; }
+.mm-b4 .mm-toggle-pill { background: #7c3aed; color: #ffffff; }
+
+.mm-b5 .mm-dim-node { border-left-color: #e11d48; border-color: #fda4af; }
+.mm-b5 .mm-dim-tag  { background: #ffe4e6; color: #be123c; }
+.mm-b5 .mm-toggle-pill { background: #e11d48; color: #ffffff; }
+
+/* Connector & Level 2 Leaf Cards */
+.mm-leaf-bridge {
+  width: 26px;
+  height: 3px;
+  background: #94a3b8;
+  flex-shrink: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform-origin: left center;
+}
+
+.mm-b1 .mm-leaf-bridge { background: #3b82f6; }
+.mm-b2 .mm-leaf-bridge { background: #10b981; }
+.mm-b3 .mm-leaf-bridge { background: #f59e0b; }
+.mm-b4 .mm-leaf-bridge { background: #8b5cf6; }
+.mm-b5 .mm-leaf-bridge { background: #f43f5e; }
+
+.mm-leaves-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  height: 106px;
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: left center;
+}
+
+.mm-leaf-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 9px 12px;
+  box-sizing: border-box;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mm-b1 .mm-leaf-card { border-top: 3.5px solid #2563eb; }
+.mm-b2 .mm-leaf-card { border-top: 3.5px solid #059669; }
+.mm-b3 .mm-leaf-card { border-top: 3.5px solid #d97706; }
+.mm-b4 .mm-leaf-card { border-top: 3.5px solid #7c3aed; }
+.mm-b5 .mm-leaf-card { border-top: 3.5px solid #e11d48; }
+
+.mm-leaf-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4px;
+  line-height: 1.22;
+}
+
+.mm-leaf-desc {
+  font-size: 11.8px;
+  font-weight: 500;
+  color: #475569;
+  line-height: 1.32;
+}
+
+.mm-leaf-desc strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+/* Collapsed State in Interactive HTML Mode */
+.mm-branch-row.is-collapsed .mm-leaf-bridge,
+.mm-branch-row.is-collapsed .mm-leaves-grid {
+  opacity: 0;
+  transform: translateX(-14px) scaleX(0.92);
+  pointer-events: none;
+}
+
+@media print {
+  .mm-branch-row.is-collapsed .mm-leaf-bridge,
+  .mm-branch-row.is-collapsed .mm-leaves-grid {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+  .mm-root-actions {
+    display: none !important;
+  }
+}
+
 

@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 515" width="100%" height="100%">
+  <defs>
+    <style>
+      .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .font-mono { font-family: "Fira Code", "Consolas", monospace; }
+    </style>
+    <marker id="arr-pipe" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+    <marker id="arr-pass" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#059669" />
+    </marker>
+  </defs>
+
+  <!-- ================= TOP SECTION: 4 CATEGORIES OF AUTOMATED STATIC REVIEW TOOLS ================= -->
+  <rect x="15" y="10" width="1150" height="248" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+  <path d="M 15 26 Q 15 10 31 10 L 1149 10 Q 1165 10 1165 26 L 1165 50 L 15 50 Z" fill="#0b3c5d" />
+  <text x="590" y="36" class="font-sans" font-size="16.5" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">MODERN AUTOMATED STATIC ANALYSIS TOOLCHAIN (WITHOUT EXECUTING CODE)</text>
+
+  <!-- Tool Category 1: Style & AST Linters -->
+  <g transform="translate(30, 64)">
+    <rect width="265" height="176" rx="12" fill="#f0f9ff" stroke="#38bdf8" stroke-width="2" />
+    <rect width="265" height="32" rx="10" fill="#0284c7" />
+    <text x="132" y="21" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">1. AST &amp; Code Smell Linters</text>
+    <text x="132" y="54" class="font-mono" font-size="12" font-weight="800" fill="#0369a1" text-anchor="middle">PMD · Checkstyle · ESLint · Ruff</text>
+    <line x1="16" y1="64" x2="249" y2="64" stroke="#bae6fd" stroke-width="1.5" />
+    <text x="16" y="86" class="font-sans" font-size="12" font-weight="600" fill="#334155">• Parses Abstract Syntax Tree (AST)</text>
+    <text x="16" y="106" class="font-sans" font-size="12" font-weight="600" fill="#334155">• Flags unused vars, empty catch {},</text>
+    <text x="16" y="124" class="font-sans" font-size="12" font-weight="600" fill="#334155">  high cyclomatic complexity &amp; clones</text>
+    <text x="16" y="144" class="font-sans" font-size="12" font-weight="600" fill="#334155">• Enforces team naming &amp; formatting</text>
+    <text x="132" y="166" class="font-mono" font-size="11" font-weight="700" fill="#0284c7" text-anchor="middle">Speed: Milliseconds in IDE / CI</text>
+  </g>
+
+  <!-- Tool Category 2: Bytecode & Dataflow Bug Finders -->
+  <g transform="translate(315, 64)">
+    <rect width="265" height="176" rx="12" fill="#eef2ff" stroke="#818cf8" stroke-width="2" />
+    <rect width="265" height="32" rx="10" fill="#4f46e5" />
+    <text x="132" y="21" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">2. Bytecode &amp; Dataflow Analyzers</text>
+    <text x="132" y="54" class="font-mono" font-size="12" font-weight="800" fill="#4338ca" text-anchor="middle">SpotBugs · ErrorProne ·Infer</text>
+    <line x1="16" y1="64" x2="249" y2="64" stroke="#c7d2fe" stroke-width="1.5" />
+    <text x="16" y="86" class="font-sans" font-size="12" font-weight="600" fill="#334155">• Analyzes compiled bytecode &amp; CFG</text>
+    <text x="16" y="106" class="font-sans" font-size="12" font-weight="600" fill="#334155">• Detects NullPointerException paths,</text>
+    <text x="16" y="124" class="font-sans" font-size="12" font-weight="600" fill="#334155">  unclosed I/O streams &amp; data races</text>
+    <text x="16" y="144" class="font-sans" font-size="12" font-weight="600" fill="#334155">• Catches dead stores &amp; type bugs</text>
+    <text x="132" y="166" class="font-mono" font-size="11" font-weight="700" fill="#4f46e5" text-anchor="middle">Target: Runtime Crash Prevention</text>
+  </g>
+
+  <!-- Tool Category 3: Security SAST & Dependency SCA -->
+  <g transform="translate(600, 64)">
+    <rect width="265" height="176" rx="12" fill="#fff1f2" stroke="#fb7185" stroke-width="2" />
+    <rect width="265" height="32" rx="10" fill="#e11d48" />
+    <text x="132" y="21" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">3. Security SAST &amp; SCA Scanners</text>
+    <text x="132" y="54" class="font-mono" font-size="11.5" font-weight="800" fill="#be123c" text-anchor="middle">SonarQube · Semgrep · Snyk · OWASP</text>
+    <line x1="16" y1="64" x2="249" y2="64" stroke="#fecdd3" stroke-width="1.5" />
+    <text x="16" y="86" class="font-sans" font-size="12" font-weight="600" fill="#334155">• SAST taint analysis for OWASP Top 10</text>
+    <text x="16" y="106" class="font-sans" font-size="12" font-weight="600" fill="#334155">  (SQLi, XSS, SSRF, hardcoded keys)</text>
+    <text x="16" y="124" class="font-sans" font-size="12" font-weight="600" fill="#334155">• SCA scans Maven/npm dependency</text>
+    <text x="16" y="144" class="font-sans" font-size="12" font-weight="600" fill="#334155">  trees against NVD CVE databases</text>
+    <text x="132" y="166" class="font-mono" font-size="11" font-weight="700" fill="#e11d48" text-anchor="middle">Target: Zero Vulnerability Leakage</text>
+  </g>
+
+  <!-- Tool Category 4: AI-Assisted Doc, Model & PR Review -->
+  <g transform="translate(885, 64)">
+    <rect width="265" height="176" rx="12" fill="#ecfdf5" stroke="#34d399" stroke-width="2" />
+    <rect width="265" height="32" rx="10" fill="#059669" />
+    <text x="132" y="21" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">4. AI Review Bots &amp; Model Linters</text>
+    <text x="132" y="54" class="font-mono" font-size="11.5" font-weight="800" fill="#047857" text-anchor="middle">Copilot · CodeRabbit · Spectral</text>
+    <line x1="16" y1="64" x2="249" y2="64" stroke="#a7f3d0" stroke-width="1.5" />
+    <text x="16" y="86" class="font-sans" font-size="12" font-weight="600" fill="#334155">• Audits SRS ambiguity &amp; RTM gaps</text>
+    <text x="16" y="106" class="font-sans" font-size="12" font-weight="600" fill="#334155">• Lints OpenAPI/PlantUML contracts</text>
+    <text x="16" y="124" class="font-sans" font-size="12" font-weight="600" fill="#334155">• Summarizes PR diffs &amp; suggests</text>
+    <text x="16" y="144" class="font-sans" font-size="12" font-weight="600" fill="#334155">  missing edge-case unit tests</text>
+    <text x="132" y="166" class="font-mono" font-size="11" font-weight="700" fill="#059669" text-anchor="middle">Target: Semantic &amp; Doc Assist</text>
+  </g>
+
+  <!-- ================= BOTTOM SECTION: 2-STAGE AUTOMATED + HUMAN CI/CD QUALITY GATE ================= -->
+  <rect x="15" y="272" width="1150" height="230" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+  <path d="M 15 288 Q 15 272 31 272 L 1149 272 Q 1165 272 1165 288 L 1165 312 L 15 312 Z" fill="#1e293b" />
+  <text x="590" y="298" class="font-sans" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">TWO-STAGE CI/CD REVIEW PIPELINE: AUTOMATED TOOLS FILTER NOISE → HUMANS GUARD ARCHITECTURE</text>
+
+  <!-- Node 1: Developer Commit / PR -->
+  <g transform="translate(32, 344)">
+    <rect width="165" height="126" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2" />
+    <text x="82" y="34" class="font-sans" font-size="14.5" font-weight="800" fill="#0f172a" text-anchor="middle">Git Commit / PR</text>
+    <text x="82" y="58" class="font-sans" font-size="12" font-weight="600" fill="#475569" text-anchor="middle">Docs, Design Models,</text>
+    <text x="82" y="76" class="font-sans" font-size="12" font-weight="600" fill="#475569" text-anchor="middle">Source Code &amp; Tests</text>
+    <rect x="22" y="92" width="120" height="22" rx="6" fill="#e2e8f0" />
+    <text x="82" y="107" class="font-mono" font-size="11" font-weight="700" fill="#1e293b" text-anchor="middle">Atomic (&lt;400 LOC)</text>
+  </g>
+
+  <line x1="200" y1="407" x2="232" y2="407" stroke="#0284c7" stroke-width="3.5" marker-end="url(#arr-pipe)" />
+
+  <!-- Node 2: Stage 1 Automated Quality Gate -->
+  <g transform="translate(238, 330)">
+    <rect width="340" height="154" rx="12" fill="#f0f9ff" stroke="#0284c7" stroke-width="2.5" />
+    <rect x="14" y="12" width="312" height="28" rx="6" fill="#0284c7" />
+    <text x="170" y="31" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">Stage 1: Automated CI Quality Gate (1st Line)</text>
+    <text x="20" y="62" class="font-sans" font-size="12.5" font-weight="700" fill="#0369a1">• Blocks 80% of mechanical &amp; security noise:</text>
+    <text x="28" y="84" class="font-sans" font-size="12" font-weight="600" fill="#334155">1. AST Linters (PMD / Checkstyle / ESLint)</text>
+    <text x="28" y="104" class="font-sans" font-size="12" font-weight="600" fill="#334155">2. Security SAST &amp; CVE Scan (SonarQube / Snyk)</text>
+    <text x="28" y="124" class="font-sans" font-size="12" font-weight="600" fill="#334155">3. AI PR Bot Diff Triage &amp; Automated Unit Tests</text>
+    <text x="170" y="144" class="font-mono" font-size="11" font-weight="800" fill="#dc2626" text-anchor="middle">Violation → Auto-Reject PR Immediately!</text>
+  </g>
+
+  <line x1="582" y1="407" x2="614" y2="407" stroke="#0284c7" stroke-width="3.5" marker-end="url(#arr-pipe)" />
+
+  <!-- Node 3: Stage 2 Human Expert Review -->
+  <g transform="translate(620, 330)">
+    <rect width="340" height="154" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2.5" />
+    <rect x="14" y="12" width="312" height="28" rx="6" fill="#059669" />
+    <text x="170" y="31" class="font-sans" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">Stage 2: Human Expert Review (2nd Line)</text>
+    <text x="20" y="62" class="font-sans" font-size="12.5" font-weight="700" fill="#047857">• Focuses 100% on high-order engineering judgment:</text>
+    <text x="28" y="84" class="font-sans" font-size="12" font-weight="600" fill="#334155">1. Domain Business Logic &amp; Regulatory Fit</text>
+    <text x="28" y="104" class="font-sans" font-size="12" font-weight="600" fill="#334155">2. Architectural Modularity &amp; Design Trade-Offs</text>
+    <text x="28" y="124" class="font-sans" font-size="12" font-weight="600" fill="#334155">3. Cross-System Invariants &amp; Knowledge Sharing</text>
+    <text x="170" y="144" class="font-mono" font-size="11" font-weight="800" fill="#047857" text-anchor="middle">Builds Collective Code Ownership</text>
+  </g>
+
+  <line x1="964" y1="407" x2="996" y2="407" stroke="#059669" stroke-width="3.5" marker-end="url(#arr-pass)" />
+
+  <!-- Node 4: Approved Merge to Main -->
+  <g transform="translate(1002, 344)">
+    <rect width="144" height="126" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2.2" />
+    <circle cx="72" cy="42" r="18" fill="#16a34a" />
+    <path d="M 64 42 L 70 48 L 81 36" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="72" y="82" class="font-sans" font-size="14" font-weight="800" fill="#14532d" text-anchor="middle">Merge to Main</text>
+    <text x="72" y="102" class="font-sans" font-size="11.5" font-weight="700" fill="#15803d" text-anchor="middle">High-Assurance</text>
+    <text x="72" y="117" class="font-sans" font-size="11.5" font-weight="700" fill="#15803d" text-anchor="middle">Release Artifact</text>
+  </g>
+</svg>

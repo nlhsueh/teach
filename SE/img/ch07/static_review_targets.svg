@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 520" width="100%" height="100%">
+  <defs>
+    <style>
+      .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .font-mono { font-family: "Fira Code", "Consolas", monospace; }
+    </style>
+    <marker id="arr-trace" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#64748b" />
+    </marker>
+  </defs>
+
+  <!-- ================= COLUMN 1: REQUIREMENTS & SRS DOCUMENTS ================= -->
+  <g transform="translate(15, 12)">
+    <rect width="366" height="496" rx="16" fill="#ffffff" stroke="#0284c7" stroke-width="2.5" />
+    <path d="M 0 16 Q 0 0 16 0 L 350 0 Q 366 0 366 16 L 366 76 L 0 76 Z" fill="#0284c7" />
+    <text x="183" y="32" class="font-sans" font-size="18.5" font-weight="800" fill="#ffffff" text-anchor="middle">1. Requirements &amp; SRS Docs</text>
+    <text x="183" y="56" class="font-sans" font-size="13.5" font-weight="600" fill="#e0f2fe" text-anchor="middle">SRS, User Stories, Use Cases &amp; RTM</text>
+
+    <!-- Focus Item 1 -->
+    <g transform="translate(18, 94)">
+      <rect width="330" height="70" rx="10" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#0369a1">✓ Correctness &amp; Unambiguity</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Eliminate vague adjectives (“fast”, “robust”);</text>
+      <text x="14" y="60" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">every requirement has exactly one interpretation.</text>
+    </g>
+
+    <!-- Focus Item 2 -->
+    <g transform="translate(18, 176)">
+      <rect width="330" height="70" rx="10" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#0369a1">✓ Completeness &amp; Consistency</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">All boundary/exception flows defined (no TBD);</text>
+      <text x="14" y="60" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">zero contradictory business rules or terms.</text>
+    </g>
+
+    <!-- Focus Item 3 -->
+    <g transform="translate(18, 258)">
+      <rect width="330" height="70" rx="10" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#0369a1">✓ Verifiability (Testable Oracles)</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Specify quantitative acceptance thresholds</text>
+      <text x="14" y="60" class="font-mono" font-size="11.5" font-weight="700" fill="#0284c7">(e.g., “P95 latency ≤ 200ms under 5,000 RPS”).</text>
+    </g>
+
+    <!-- Focus Item 4 -->
+    <g transform="translate(18, 340)">
+      <rect width="330" height="70" rx="10" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#0369a1">✓ Bidirectional Traceability (RTM)</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Forward to design/tests (no omitted features);</text>
+      <text x="14" y="60" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">backward to business goals (no gold-plating).</text>
+    </g>
+
+    <!-- Bottom Cost Badge -->
+    <rect x="18" y="424" width="330" height="52" rx="10" fill="#0f172a" />
+    <text x="183" y="446" class="font-sans" font-size="13" font-weight="800" fill="#38bdf8" text-anchor="middle">Shift-Left ROI: 1 : 10 : 100 Rule</text>
+    <text x="183" y="465" class="font-sans" font-size="12" font-weight="600" fill="#e2e8f0" text-anchor="middle">Fixing an SRS flaw costs $1 vs. $100+ in Prod!</text>
+  </g>
+
+  <!-- Arrow Col 1 -> Col 2 -->
+  <line x1="383" y1="260" x2="403" y2="260" stroke="#64748b" stroke-width="3" marker-end="url(#arr-trace)" />
+
+  <!-- ================= COLUMN 2: ARCHITECTURE & DESIGN MODELS ================= -->
+  <g transform="translate(407, 12)">
+    <rect width="366" height="496" rx="16" fill="#ffffff" stroke="#059669" stroke-width="2.5" />
+    <path d="M 0 16 Q 0 0 16 0 L 350 0 Q 366 0 366 16 L 366 76 L 0 76 Z" fill="#059669" />
+    <text x="183" y="32" class="font-sans" font-size="18.5" font-weight="800" fill="#ffffff" text-anchor="middle">2. Architecture &amp; Design Models</text>
+    <text x="183" y="56" class="font-sans" font-size="13.5" font-weight="600" fill="#d1fae5" text-anchor="middle">ADD, UML Diagrams, DFD, ERD &amp; API Specs</text>
+
+    <!-- Focus Item 1 -->
+    <g transform="translate(18, 94)">
+      <rect width="330" height="70" rx="10" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#047857">✓ Modularity: Cohesion &amp; Coupling</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Enforce high cohesion, low coupling, SOLID,</text>
+      <text x="14" y="60" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">and zero cyclic dependency tangles.</text>
+    </g>
+
+    <!-- Focus Item 2 -->
+    <g transform="translate(18, 176)">
+      <rect width="330" height="70" rx="10" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#047857">✓ DFD &amp; Sequence Flow Integrity</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Verify data conservation (no “Black Holes”</text>
+      <text x="14" y="60" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">or “Miracles”), timeouts, and deadlock safety.</text>
+    </g>
+
+    <!-- Focus Item 3 -->
+    <g transform="translate(18, 258)">
+      <rect width="330" height="70" rx="10" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#047857">✓ Class Diagram &amp; ERD Schema Audit</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Check multiplicity (1..*, 0..1), PK/FK referential</text>
+      <text x="14" y="60" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">integrity, and 3NF normalization vs. indexes.</text>
+    </g>
+
+    <!-- Focus Item 4 -->
+    <g transform="translate(18, 340)">
+      <rect width="330" height="70" rx="10" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#047857">✓ API Contracts &amp; ADR Trade-Offs</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Audit OpenAPI/Protobuf schemas, error codes,</text>
+      <text x="14" y="60" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">idempotency, &amp; Architecture Decision Records.</text>
+    </g>
+
+    <!-- Bottom Badge -->
+    <rect x="18" y="424" width="330" height="52" rx="10" fill="#064e3b" />
+    <text x="183" y="446" class="font-sans" font-size="13" font-weight="800" fill="#6ee7b7" text-anchor="middle">Prevents Architectural Rework</text>
+    <text x="183" y="465" class="font-sans" font-size="12" font-weight="600" fill="#ecfdf5" text-anchor="middle">Catches interface &amp; schema mismatches before code!</text>
+  </g>
+
+  <!-- Arrow Col 2 -> Col 3 -->
+  <line x1="775" y1="260" x2="795" y2="260" stroke="#64748b" stroke-width="3" marker-end="url(#arr-trace)" />
+
+  <!-- ================= COLUMN 3: SOURCE CODE, TESTS & SECURITY ================= -->
+  <g transform="translate(799, 12)">
+    <rect width="366" height="496" rx="16" fill="#ffffff" stroke="#7c3aed" stroke-width="2.5" />
+    <path d="M 0 16 Q 0 0 16 0 L 350 0 Q 366 0 366 16 L 366 76 L 0 76 Z" fill="#6d28d9" />
+    <text x="183" y="32" class="font-sans" font-size="18.5" font-weight="800" fill="#ffffff" text-anchor="middle">3. Source Code &amp; Test Suites</text>
+    <text x="183" y="56" class="font-sans" font-size="13.5" font-weight="600" fill="#ede9fe" text-anchor="middle">Pull Requests, Unit Tests, Configs &amp; Scripts</text>
+
+    <!-- Focus Item 1 -->
+    <g transform="translate(18, 94)">
+      <rect width="330" height="70" rx="10" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#6d28d9">✓ Logic, Boundary &amp; Data Integrity</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Off-by-one loop bounds, null/uninitialized vars,</text>
+      <text x="14" y="60" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">floating-point precision, &amp; race conditions.</text>
+    </g>
+
+    <!-- Focus Item 2 -->
+    <g transform="translate(18, 176)">
+      <rect width="330" height="70" rx="10" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#6d28d9">✓ Resource Leaks &amp; Exception Safety</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Unclosed DB/file streams (use try-with-resources)</text>
+      <text x="14" y="60" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">and zero swallowed empty catch {} blocks.</text>
+    </g>
+
+    <!-- Focus Item 3 -->
+    <g transform="translate(18, 258)">
+      <rect width="330" height="70" rx="10" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#6d28d9">✓ Clean Code &amp; Code Smell Elimination</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Eliminate Duplicated Code, Long Methods, God</text>
+      <text x="14" y="60" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Classes, Shotgun Surgery, &amp; deep if-else nesting.</text>
+    </g>
+
+    <!-- Focus Item 4 -->
+    <g transform="translate(18, 340)">
+      <rect width="330" height="70" rx="10" fill="#fff1f2" stroke="#fecdd3" stroke-width="1.5" />
+      <text x="14" y="24" class="font-sans" font-size="14" font-weight="800" fill="#be123c">✓ OWASP Security &amp; Test Coverage</text>
+      <text x="14" y="44" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">Block SQLi string concatenation, hardcoded keys,</text>
+      <text x="14" y="60" class="font-sans" font-size="12.5" font-weight="600" fill="#334155">broken access control, &amp; assertion-free tests.</text>
+    </g>
+
+    <!-- Bottom Badge -->
+    <rect x="18" y="424" width="330" height="52" rx="10" fill="#3b0764" />
+    <text x="183" y="446" class="font-sans" font-size="13" font-weight="800" fill="#d8b4fe" text-anchor="middle">Collective Code Ownership</text>
+    <text x="183" y="465" class="font-sans" font-size="12" font-weight="600" fill="#f3e8ff" text-anchor="middle">Atomic PRs (&lt; 400 LOC) prevent LGTM rubber-stamping!</text>
+  </g>
+</svg>
