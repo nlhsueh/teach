@@ -1,5 +1,9 @@
-# 實習 06：屬性基礎測試 (Property-Based Testing with jqwik)
+# 🎲 Lab 05-4 專題：屬性基礎測試 (Property-Based Testing with jqwik)
 
+> 🧭 **所屬分類**：[🔄 Lab 05-4: 狀態、情境、經驗與屬性測試 (`behavioral.md`)](./behavioral.md#511-以性質為基礎的測試-pbt-與變質測試實戰) · [1️⃣ `junit.md`](./junit.md) · [2️⃣ `partition.md`](./partition.md) · [3️⃣ `combinatorial.md`](./combinatorial.md)
+>
+> 📂 **本單元程式碼專屬目錄 (`u05_behavioral/pbtest`)**：[`src/test/java/u05_behavioral/pbtest/`](../../src/test/java/u05_behavioral/pbtest/)
+>
 > 🎯 **實習目標**：
 > 1. 告別傳統手寫 `assertEquals(expected, actual)` 的單點測資思維。
 > 2. 學習定義系統的**「狀態不變量 (Invariants)」與「數學代數性質」**。

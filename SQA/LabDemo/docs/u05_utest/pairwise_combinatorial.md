@@ -1,5 +1,7 @@
 # 全成對組合測試 (Pairwise / All-Pairs Testing) 實戰手冊
 
+> 🧭 **所屬分類**：[🧩 Lab 05-3: 多維組合與邏輯規則測試 (`combinatorial.md`)](./combinatorial.md#55-全成對組合測試-pairwise-實戰) · [1️⃣ `junit.md`](./junit.md) · [2️⃣ `partition.md`](./partition.md) · [4️⃣ `behavioral.md`](./behavioral.md)
+>
 > 📂 **本單元程式碼專屬目錄 (`u05_combinatorial/pair`)**：
 > - **待測主程式**：[`src/main/java/u05_combinatorial/pair/`](../../src/main/java/u05_combinatorial/pair/)（`SwimmingPoolPricing.java`、`LoanCalculator.java`）
 > - **示範與練習測試**：[`src/test/java/u05_combinatorial/pair/`](../../src/test/java/u05_combinatorial/pair/)（`SwimmingPoolPairwiseDemoTest.java`、`LoanCalculatorPairwiseDemoTest.java`、`LoanCalculatorPairwiseExerciseTest.java`）

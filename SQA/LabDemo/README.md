@@ -12,7 +12,7 @@
 | **Unit 02** | **錯與除錯、防禦與日誌** | [除錯指引](./docs/u02_debug/debug.md) · [AI 破壞實驗](./docs/u02_debug/ai_code_break.md) · [斷言防護](./docs/u02_robust/assertion.md) · [例外處理](./docs/u02_robust/exception.md) · [日誌記錄](./docs/u02_robust/logging.md) | `src/main/java/u02_debug/`<br>`src/main/java/u02_robust/`<br>`src/test/java/u02_robust/` |
 | **Unit 03** | **測試原則、規格設計與 Oracle 實驗** | [測試規格與 AI 協同](./docs/u03_principles/test_spec_ai_codesign.md) · [Oracle 變質沙盒](./docs/u03_principles/test_oracle_metamorphic.md) | `src/main/java/u03_principles/`<br>`src/test/java/u03_principles/` |
 | **Unit 04** | **程式碼檢視與靜態分析** | [PMD 靜態分析與規則](./docs/u04_inspection/pmd.md) | `src/main/resources/pmd/ruleset.xml`<br>`src/main/java/u04_inspection/` |
-| **Unit 05** | **單元測試與黑箱測試** | [JUnit 5 核心實務](./docs/u05_utest/junit.md) · [全成對測試 (Pairwise)](./docs/u05_utest/pairwise_combinatorial.md) · [屬性測試](./docs/u05_utest/jqwik_property_based.md) · [解答庫](./docs/u05_utest/solutions/README.md) | `src/test/java/u05_junit/`<br>`src/test/java/u05_partition/`<br>`src/test/java/u05_combinatorial/`<br>`src/test/java/u05_behavioral/` |
+| **Unit 05** | **單元測試與黑箱測試** | [1. JUnit 5 基礎](./docs/u05_utest/junit.md) · [2. 輸入分割 (BVA/EP)](./docs/u05_utest/partition.md) · [3. 組合與規則 (Pairwise/CTM/決策表)](./docs/u05_utest/combinatorial.md) · [4. 行為與屬性 (State/UC/PBT)](./docs/u05_utest/behavioral.md) · [解答庫](./docs/u05_utest/solutions/README.md) | `src/test/java/u05_junit/`<br>`src/test/java/u05_partition/`<br>`src/test/java/u05_combinatorial/`<br>`src/test/java/u05_behavioral/` |
 | **Unit 06** | **白箱覆蓋率與度量分析** | [白箱測試與 JaCoCo 分析](./docs/u06_wbtesting/whitebox_test.md) · [度量分析](./docs/u06_wbtesting/metrics.md) | `src/main/java/u06_coverage/`<br>`src/test/java/u06_coverage/`<br>`pom.xml (JaCoCo Plugin)` |
 | **Unit 07** | **變異測試 (Mutation)** | [變異測試與 PIT 工具](./docs/u07_mutation/mutation_test.md) | `src/main/java/u06_mutation/`<br>`src/test/java/u06_mutation/` |
 | **Unit 08** | **隔離與 Mock 整合測試** | [Mockito 實務](./docs/u08_integration/mokito.md) · [Spring 整合測試](./docs/u08_integration/Spring.md) · [Testcontainers](./docs/u08_integration/testcontainers_spring.md) | `src/main/java/u07_mockito/`<br>`src/test/java/u07_mockito/` |
@@ -35,7 +35,7 @@ LabDemo/
 │   ├── u02_robust/                       # 日誌追蹤、例外處理、斷言防護
 │   ├── u03_principles/                   # 測試規格設計、AI 盲區審查、Oracle 變質沙盒
 │   ├── u04_inspection/                   # 程式碼檢視、PMD 規則
-│   ├── u05_utest/                        # 單元測試、參數化、屬性測試
+│   ├── u05_utest/                        # 四大分類：junit, partition, combinatorial, behavioral
 │   ├── u06_wbtesting/                    # 白箱覆蓋率、JaCoCo
 │   ├── u07_mutation/                     # 變異測試、PIT
 │   ├── u08_integration/                  # Mockito、Spring、Testcontainers
@@ -72,8 +72,11 @@ mvn test
 # 執行 Unit 03 變質測試沙盒
 mvn test -Dtest="u03_principles.**"
 
-# 只執行 Unit 05 單元測試
-mvn test -Dtest="u05_utest.**"
+# 只執行 Unit 05 單元測試（四大類可單獨指定）
+mvn test -Dtest="u05_junit.**"
+mvn test -Dtest="u05_partition.**"
+mvn test -Dtest="u05_combinatorial.**"
+mvn test -Dtest="u05_behavioral.**"
 
 # 只執行 Unit 07 Mockito 隔離測試
 mvn test -Dtest="u07_mockito.**"

@@ -2570,12 +2570,12 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 <div class="card">
 
 ### 💻 體驗範例程式碼 (Demo Walkthrough)
-- **1. 開啟狀態機示範類別**：
+- **1. 航空訂票狀態機（6 狀態 / 8 轉移 / 虛擬時鐘）**：
+  - 開啟 [`AirlineTicketStateDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/state/AirlineTicketStateDemoTest.java)；
+  - 觀察 **5 條全轉移覆蓋路徑**、`Clock.fixed` 快轉 25 小時驗收逾時，以及終止狀態 (`USED`) 拒絕惡意退票防禦。
+- **2. 物件導向堆疊狀態機**：
   - 開啟 [`StackStateDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/state/StackStateDemoTest.java) 與 `PlayerStateDemoTest.java`；
-  - 觀察外層 `@DisplayName` 與內層 `@Nested class EmptyStateTests`、`@Nested class FullStateTests` 的狀態隔離。
-- **2. 觀察前置生命週期與例外斷言**：
-  - 觀察空堆疊時執行 `pop()` 如何斷言拋出 `EmptyStackException.class`；
-  - 觀察推入元素後如何斷言狀態轉移（`assertFalse(stack.isEmpty())`）。
+  - 觀察 `@BeforeEach` 狀態隔離與空／滿狀態例外斷言 (`EmptyStackException` / `IllegalStateException`)。
 
 </div>
 <div class="card">
@@ -3364,7 +3364,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 <div class="card-deck">
 
-> 💡 搭配專題實驗手冊：[`jqwik_property_based.md`](../../lab.html?file=LabDemo/docs/u05_utest/jqwik_property_based.md) 與 [`junit.md`](../../lab.html?file=LabDemo/docs/u05_utest/junit.md#511-以性質為基礎的測試-pbt-與變質測試實戰)
+> 💡 搭配專題實驗手冊：[`jqwik_property_based.md`](../../lab.html?file=LabDemo/docs/u05_utest/jqwik_property_based.md) 與 [`behavioral.md`](../../lab.html?file=LabDemo/docs/u05_utest/behavioral.md#511-以性質為基礎的測試-pbt-與變質測試實戰)
 
 <div class="two-columns">
 <div class="card">
