@@ -783,6 +783,24 @@ tr.highlight-row td {
   background: #ffffff;
 }
 
+
+/* Typography Measure & Letter-Spacing Polish (override Gaia 1.25px default) */
+section {
+  letter-spacing: 0.01em !important;
+}
+section h1, section h2, section h3 {
+  letter-spacing: 0 !important;
+}
+section:not(.lead):not(.closing) > p {
+  max-width: 980px;
+}
+section .callout {
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.54;
+}
+
 </style>
 
 <!-- _class: lead -->
