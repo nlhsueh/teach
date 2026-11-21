@@ -35,19 +35,19 @@ footer: 'Prof. Nien-Lin Hsueh'
 <div>
 <h3>第一部分：設計流程、原則與巨觀設計</h3>
 <ul>
-<li><b>5.1 軟體設計導論、流程與設計規格：</b> 四階段軟體設計流程 (Arch → Interface → OO → Data) 與 SDD / ADR 規格。</li>
-<li><b>5.2 通用軟體設計核心原則：</b> 抽象化、封裝、關注點分離、模組化，以及內聚力與耦合度的層次光譜。</li>
-<li><b>5.3 階段一 — 架構設計 (Architectural Design)：</b> 六大架構模式、外送平台複合合成、ATAM 與 <b>UML 套件圖 / 部屬圖</b>。</li>
-<li><b>5.4 階段二 — 介面與契約規格 (Interface & Contract)：</b> <b>契約式設計 (DbC)</b> 與 <b>UML 組件圖</b> (棒棒糖與插座)。</li>
+<li><a href="#3"><b>5.1 軟體設計導論、流程與設計規格：</b></a> 四階段軟體設計流程 (Arch → Interface → OO → Data) 與 SDD / ADR 規格。</li>
+<li><a href="#8"><b>5.2 通用軟體設計核心原則：</b></a> 抽象化、封裝、關注點分離、模組化，以及內聚力與耦合度的層次光譜。</li>
+<li><a href="#18"><b>5.3 階段一 — 架構設計 (Architectural Design)：</b></a> 六大架構模式、外送平台複合合成、ATAM 與 <b>UML 套件圖 / 部屬圖</b>。</li>
+<li><a href="#48"><b>5.4 階段二 — 介面與契約規格 (Interface & Contract)：</b></a> <b>契約式設計 (DbC)</b> 與 <b>UML 組件圖</b> (棒棒糖與插座)。</li>
 </ul>
 </div>
 <div>
 <h3>第二部分：微觀物件導向、資料設計、AI 與統整</h3>
 <ul>
-<li><b>5.5 階段三 — 組件與物件導向設計 (OO Design)：</b> GoF 23 種設計模式與五大 SOLID 原則之 <b>UML 類別圖</b> 對照。</li>
-<li><b>5.6 階段四 — 資料與持久化設計 (Data Design)：</b> 三層次資料塑模、<b>UML ERD</b>、3NF 正規化、Redis 快取與多模態儲存。</li>
-<li><b>5.7 AI 賦能軟體設計與盲點防護：</b> 橫跨四階段的 AI 設計副駕駛與人機協同防護。</li>
-<li><b>5.8 核心概念統整與參考文獻：</b> 全章多維度總結評量矩陣、經典文獻與研討交流。</li>
+<li><a href="#56"><b>5.5 階段三 — 組件與物件導向設計 (OO Design)：</b></a> GoF 23 種設計模式與五大 SOLID 原則之 <b>UML 類別圖</b> 對照。</li>
+<li><a href="#71"><b>5.6 階段四 — 資料與持久化設計 (Data Design)：</b></a> 三層次資料塑模、<b>UML ERD</b>、3NF 正規化、Redis 快取與多模態儲存。</li>
+<li><a href="#76"><b>5.7 AI 賦能軟體設計與盲點防護：</b></a> 橫跨四階段的 AI 設計副駕駛與人機協同防護。</li>
+<li><a href="#79"><b>5.8 核心概念統整與參考文獻：</b></a> 全章多維度總結評量矩陣、經典文獻與研討交流。</li>
 </ul>
 </div>
 </div>
@@ -2535,6 +2535,44 @@ OrderObserver <|.. FraudAuditObserver
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

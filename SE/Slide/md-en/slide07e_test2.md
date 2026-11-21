@@ -38,17 +38,17 @@ In software engineering, writing code is only half the battle. Delivering a depe
   <div>
     <h3>Part 1: Foundations, Inspection & Black-Box</h3>
     <ul>
-      <li><a href="#4"><b>7.1 Testing Foundations, Principles & Oracles:</b></a> ISTQB 7 principles, V&V, testing levels, testability, test pyramid, behavior Venn diagram, 3W2H landscape, Test Oracle problem, Metamorphic & Differential testing.</li>
-      <li><a href="#37"><b>7.2 Static Software Inspection & Code Review:</b></a> Testing iceberg, IEEE 1028 Inspection vs. Walkthrough, Fagan 6 steps & 5 roles, 5 code fault categories, Clean Code checklist, Code Smells, OWASP Top 10.</li>
-      <li><a href="#46"><b>7.3 Black-Box Testing (BVA & EP):</b></a> Myers's philosophy, BVA formulas (4n+1, 6n+1, 5<sup>n</sup>, 7<sup>n</sup>), Triangle diversity deficit, Weak vs. Strong EP, Binary Search, NextDate December anomaly, Fault Masking, EP+BVA SOP.</li>
+      <li><a href="#3"><b>7.1 Testing Foundations, Principles & Oracles:</b></a> ISTQB 7 principles, V&V, testing levels, testability, test pyramid, behavior Venn diagram, 3W2H landscape, Test Oracle problem, Metamorphic & Differential testing.</li>
+      <li><a href="#34"><b>7.2 Static Software Inspection & Code Review:</b></a> Testing iceberg, IEEE 1028 Inspection vs. Walkthrough, Fagan 6 steps & 5 roles, 5 code fault categories, Clean Code checklist, Code Smells, OWASP Top 10.</li>
+      <li><a href="#43"><b>7.3 Black-Box Testing (BVA & EP):</b></a> Myers's philosophy, BVA formulas (4n+1, 6n+1, 5<sup>n</sup>, 7<sup>n</sup>), Triangle diversity deficit, Weak vs. Strong EP, Binary Search, NextDate December anomaly, Fault Masking, EP+BVA SOP.</li>
     </ul>
   </div>
   <div>
     <h3>Part 2: Combinatorial, White-Box & Integration</h3>
     <ul>
-      <li><a href="#64"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
-      <li><a href="#79"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
-      <li><a href="#100"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
+      <li><a href="#61"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
+      <li><a href="#76"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
+      <li><a href="#97"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
     </ul>
   </div>
 </div>
@@ -3559,6 +3559,44 @@ This final summary ties together every discipline in Chapter 7: from static insp
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

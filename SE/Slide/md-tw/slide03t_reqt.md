@@ -32,18 +32,18 @@ footer: 'Ch 03 · 需求工程'
   <div>
     <h3>第一部分：需求基礎、分類與度量指標</h3>
     <ul>
-      <li><b>3.1 需求工程基礎：</b> 何謂需求工程、延遲修復缺陷的代價曲線、使用者需求 vs. 系統需求。</li>
-      <li><b>3.2 利害關係人與需求分類：</b> 利害關係人多重視角、功能性需求與領域規則。</li>
-      <li><b>3.3 非功能性需求與量化指標：</b> 品質屬性 (FURPS+)、主觀目標轉化為可客觀測試的量化指標。</li>
+      <li><a href="#4"><b>3.1 需求工程基礎：</b></a> 何謂需求工程、延遲修復缺陷的代價曲線、使用者需求 vs. 系統需求。</li>
+      <li><a href="#12"><b>3.2 利害關係人與需求分類：</b></a> 利害關係人多重視角、功能性需求與領域規則。</li>
+      <li><a href="#19"><b>3.3 非功能性需求與量化指標：</b></a> 品質屬性 (FURPS+)、主觀目標轉化為可客觀測試的量化指標。</li>
     </ul>
   </div>
   <div>
     <h3>第二部分：需求擷取、驗證與 AI 賦能</h3>
     <ul>
-      <li><b>3.4 需求擷取與系統建模：</b> 四大擷取步驟、訪談與情境分析、UML 使用案例圖與規格書撰寫。</li>
-      <li><b>3.5 需求驗證與變更管理：</b> 五大驗證支柱（有效性、一致性、完整性等）、追溯矩陣與變更控制。</li>
-      <li><b>3.6 AI 賦能需求工程：</b> 大型語言模型輔助、使用者故事生成、模糊性檢測與人機協同防護。</li>
-      <li><b>3.7 觀念總結與經典文獻：</b> 重點填空測驗、深度思考問題、核心回顧與參考文獻。</li>
+      <li><a href="#31"><b>3.4 需求擷取與系統建模：</b></a> 四大擷取步驟、訪談與情境分析、UML 使用案例圖與規格書撰寫。</li>
+      <li><a href="#53"><b>3.5 需求驗證與變更管理：</b></a> 五大驗證支柱（有效性、一致性、完整性等）、追溯矩陣與變更控制。</li>
+      <li><a href="#60"><b>3.6 AI 賦能需求工程：</b></a> 大型語言模型輔助、使用者故事生成、模糊性檢測與人機協同防護。</li>
+      <li><a href="#69"><b>3.7 觀念總結與經典文獻：</b></a> 重點填空測驗、深度思考問題、核心回顧與參考文獻。</li>
     </ul>
 
 </div>
@@ -2075,6 +2075,44 @@ AI 能提供強大推力，但唯有人類工程師能承擔法律、倫理與�
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

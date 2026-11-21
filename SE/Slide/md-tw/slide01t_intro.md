@@ -37,20 +37,20 @@ footer: 'Ch 01 · 軟體工程導論'
   <div>
     <h3>第一部分：歷史起源與工程本質</h3>
     <ul>
-      <li><b>1.1 軟體改變世界：</b> 從大型主機到普及化 AI，軟體已成人類文明運作的核心中樞。</li>
-      <li><b>1.2 軟體危機與歷史起源：</b> 1968 年 NATO 會議的歷史背景與軟體災難警鐘。</li>
-      <li><b>1.3 何謂軟體？：</b> 超越原始碼的四大支柱（程式、資料、程序、文檔）。</li>
-      <li><b>1.4 何謂工程？：</b> 現實約束 vs. 有限資源的務實權衡天平與工程哲學。</li>
-      <li><b>1.5 何謂軟體工程？：</b> 權威定義、四大核心活動、SWEBOK 與現代工具鏈。</li>
+      <li><a href="#3"><b>1.1 軟體改變世界：</b></a> 從大型主機到普及化 AI，軟體已成人類文明運作的核心中樞。</li>
+      <li><a href="#8"><b>1.2 軟體危機與歷史起源：</b></a> 1968 年 NATO 會議的歷史背景與軟體災難警鐘。</li>
+      <li><a href="#14"><b>1.3 何謂軟體？：</b></a> 超越原始碼的四大支柱（程式、資料、程序、文檔）。</li>
+      <li><a href="#20"><b>1.4 何謂工程？：</b></a> 現實約束 vs. 有限資源的務實權衡天平與工程哲學。</li>
+      <li><a href="#25"><b>1.5 何謂軟體工程？：</b></a> 權威定義、四大核心活動、SWEBOK 與現代工具鏈。</li>
     </ul>
   </div>
   <div>
     <h3>第二部分：品質模型、倫理與 AI 時代</h3>
     <ul>
-      <li><b>1.6 軟體品質模型：</b> ISO/IEC 25010 八大品質特徵與實務運作屬性。</li>
-      <li><b>1.7 專業倫理與黑暗模式：</b> ACM/IEEE 倫理守則、公眾利益與欺騙性 UI 設計。</li>
-      <li><b>1.8 軟體工程中的 AI 角色：</b> 典範轉移、SDLC 生命週期矩陣與工程嚴謹性。</li>
-      <li><b>1.9 觀念總結與回顧：</b> 常見問題 (FAQ)、填空測驗與經典文獻。</li>
+      <li><a href="#42"><b>1.6 軟體品質模型：</b></a> ISO/IEC 25010 八大品質特徵與實務運作屬性。</li>
+      <li><a href="#51"><b>1.7 專業倫理與黑暗模式：</b></a> ACM/IEEE 倫理守則、公眾利益與欺騙性 UI 設計。</li>
+      <li><a href="#61"><b>1.8 軟體工程中的 AI 角色：</b></a> 典範轉移、SDLC 生命週期矩陣與工程嚴謹性。</li>
+      <li><a href="#75"><b>1.9 觀念總結與回顧：</b></a> 常見問題 (FAQ)、填空測驗與經典文獻。</li>
     </ul>
 
 </div>
@@ -2262,6 +2262,44 @@ ACM/IEEE 軟體工程倫理守則；
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

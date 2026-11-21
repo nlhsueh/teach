@@ -37,20 +37,20 @@ footer: 'Ch 02 · 軟體流程與開發方法學 (Software Processes & Methodolo
   <div>
     <h3>第一部分：經典流程與敏捷管理框架</h3>
     <ul>
-      <li><b>2.1 流程與流程模型：</b> 規格制定、設計實作、驗證確認與系統演進四大活動。</li>
-      <li><b>2.2 計畫驅動範式：</b> 瀑布模型、階段閘門、V-模型驗證與確認機制。</li>
-      <li><b>2.3 變革的機制：</b> 增量交付 vs. 疊代精煉的本質差異、打造最小可行產品 (MVP)。</li>
-      <li><b>2.4 思維轉變與敏捷哲學：</b> 敏捷宣言四大價值、十二條原則與調適文化。</li>
-      <li><b>2.5 敏捷專案管理：</b> Scrum 衝刺儀式、團隊角色與產出物、看板拉動系統。</li>
+      <li><a href="#4"><b>2.1 流程與流程模型：</b></a> 規格制定、設計實作、驗證確認與系統演進四大活動。</li>
+      <li><a href="#9"><b>2.2 計畫驅動範式：</b></a> 瀑布模型、階段閘門、V-模型驗證與確認機制。</li>
+      <li><a href="#23"><b>2.3 變革的機制：</b></a> 增量交付 vs. 疊代精煉的本質差異、打造最小可行產品 (MVP)。</li>
+      <li><a href="#36"><b>2.4 思維轉變與敏捷哲學：</b></a> 敏捷宣言四大價值、十二條原則與調適文化。</li>
+      <li><a href="#44"><b>2.5 敏捷專案管理：</b></a> Scrum 衝刺儀式、團隊角色與產出物、看板拉動系統。</li>
     </ul>
   </div>
   <div>
     <h3>第二部分：技術紀律、DevOps 與 AI 前沿</h3>
     <ul>
-      <li><b>2.6 速度背後的隱形成本：</b> 技術債隱喻、技術債四象限、償還策略與重構。</li>
-      <li><b>2.7 卓越技術紀律 (XP)：</b> 極限編程實踐、結對編程、測試驅動開發 (TDD)。</li>
-      <li><b>2.8 系統架構與協同文化 (DevOps)：</b> 打破部門壁壘、CI/CD 自動化部署管道。</li>
-      <li><b>2.9 現代新前沿與觀念總結：</b> AI 規格驅動流程、人機協同迴路、重點測驗與經典文獻。</li>
+      <li><a href="#55"><b>2.6 速度背後的隱形成本：</b></a> 技術債隱喻、技術債四象限、償還策略與重構。</li>
+      <li><a href="#63"><b>2.7 卓越技術紀律 (XP)：</b></a> 極限編程實踐、結對編程、測試驅動開發 (TDD)。</li>
+      <li><a href="#74"><b>2.8 系統架構與協同文化 (DevOps)：</b></a> 打破部門壁壘、CI/CD 自動化部署管道。</li>
+      <li><a href="#82"><b>2.9 現代新前沿與觀念總結：</b></a> AI 規格驅動流程、人機協同迴路、重點測驗與經典文獻。</li>
     </ul>
 
 </div>
@@ -2807,6 +2807,44 @@ Sommerville 的教科書是學術基石；Kent Beck 的《極限編程》與 Mar
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

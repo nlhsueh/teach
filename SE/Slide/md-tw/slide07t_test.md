@@ -36,17 +36,17 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
   <div>
     <h3>第一部分：測試基礎與黑箱規格測試</h3>
     <ul>
-      <li><b>7.1 軟體測試基礎與核心原則：</b> 驗證 (Verification) vs. 確認 (Validation)、Dijkstra 測試真理、七大測試原則、測試金字塔、開發測試各階段。</li>
-      <li><b>7.2 黑箱測試技術：</b> 邊界值分析四大公式 ($4n+1, 6n+1, 5^n, 7^n$)、等價劃分法（弱等價 vs. 強等價）、實戰案例：三角形分類、考卷計分、逢甲泳池票價、二分搜尋法與 nextDate 日期推算。</li>
-      <li><b>7.3 組合測試與行為塑模測試：</b> 結對測試 (All-Pairs / Pairwise)、決策表測試 (Decision Table)、狀態轉移測試與使用案例情境測試。</li>
+      <li><a href="#3"><b>7.1 軟體測試基礎與核心原則：</b></a> 驗證 (Verification) vs. 確認 (Validation)、Dijkstra 測試真理、七大測試原則、測試金字塔、開發測試各階段。</li>
+      <li><a href="#18"><b>7.2 黑箱測試技術：</b></a> 邊界值分析四大公式 ($4n+1, 6n+1, 5^n, 7^n$)、等價劃分法（弱等價 vs. 強等價）、實戰案例：三角形分類、考卷計分、逢甲泳池票價、二分搜尋法與 nextDate 日期推算。</li>
+      <li><a href="#34"><b>7.3 組合測試與行為塑模測試：</b></a> 結對測試 (All-Pairs / Pairwise)、決策表測試 (Decision Table)、狀態轉移測試與使用案例情境測試。</li>
     </ul>
   </div>
   <div>
     <h3>第二部分：白箱結構測試與工程統整</h3>
     <ul>
-      <li><b>7.4 白箱結構測試技術：</b> 涵蓋度包裝階層 (Subsumption)、標準基準程式剖析、敘述、分支與條件涵蓋度、短路求值 (Short-Circuit) 帶來的測試影響。</li>
-      <li><b>7.5 進階結構準則與控制流分析：</b> 複合條件組合 (MCC)、DO-178B/C 航空航太標準 MC/DC 條件獨立性驗證、迴圈路徑爆炸、McCabe 圈複雜度與基本路徑測試。</li>
-      <li><b>7.6 測試綜合分析與反模式剖析：</b> 破除 100% 涵蓋度迷思、全準則基準比較總表、全章核心測驗與工程實務指南。</li>
+      <li><a href="#40"><b>7.4 白箱結構測試技術：</b></a> 涵蓋度包裝階層 (Subsumption)、標準基準程式剖析、敘述、分支與條件涵蓋度、短路求值 (Short-Circuit) 帶來的測試影響。</li>
+      <li><a href="#49"><b>7.5 進階結構準則與控制流分析：</b></a> 複合條件組合 (MCC)、DO-178B/C 航空航太標準 MC/DC 條件獨立性驗證、迴圈路徑爆炸、McCabe 圈複雜度與基本路徑測試。</li>
+      <li><a href="#57"><b>7.6 測試綜合分析與反模式剖析：</b></a> 破除 100% 涵蓋度迷思、全準則基準比較總表、全章核心測驗與工程實務指南。</li>
     </ul>
 
 </div>
@@ -1543,6 +1543,44 @@ MC/DC 只要 3 個 (N + 1)。
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

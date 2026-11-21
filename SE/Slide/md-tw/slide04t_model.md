@@ -34,20 +34,20 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 <div>
 <h3>第一部分：塑模基礎與核心靜態模型</h3>
 <ul>
-<li><b>4.1 系統塑模基礎：</b> 塑模本質、四大核心視角、五大必備圖表與盲人摸象寓言。</li>
-<li><b>4.2 統一塑模語言 (UML)：</b> 1990 年代方法論之戰、三巨頭三位一體分工與 OMG 標準化。</li>
-<li><b>4.3 功能塑模與使用案例：</b> 參與者目標、系統邊界、include/extend 關聯與 AI 提示詞指引。</li>
-<li><b>4.4 結構塑模與領域類別圖：</b> 領域實體、可見度符號、關聯重數、整體與部分及 AI 提示詞。</li>
-<li><b>4.5 互動塑模與循序圖：</b> 訊息傳遞時序、生命線、啟動條、BCE 模式與 AI 提示詞指引。</li>
+<li><a href="#3"><b>4.1 系統塑模基礎：</b></a> 塑模本質、四大核心視角、五大必備圖表與盲人摸象寓言。</li>
+<li><a href="#9"><b>4.2 統一塑模語言 (UML)：</b></a> 1990 年代方法論之戰、三巨頭三位一體分工與 OMG 標準化。</li>
+<li><a href="#17"><b>4.3 功能塑模與使用案例：</b></a> 參與者目標、系統邊界、include/extend 關聯與 AI 提示詞指引。</li>
+<li><a href="#35"><b>4.4 結構塑模與領域類別圖：</b></a> 領域實體、可見度符號、關聯重數、整體與部分及 AI 提示詞。</li>
+<li><a href="#54"><b>4.5 互動塑模與循序圖：</b></a> 訊息傳遞時序、生命線、啟動條、BCE 模式與 AI 提示詞指引。</li>
 </ul>
 </div>
 <div>
 <h3>第二部分：工作流程、行為狀態與文字塑模</h3>
 <ul>
-<li><b>4.6 流程塑模與活動圖：</b> 並行流程、決策分支、分岔/結合、泳道職責與 AI 提示詞。</li>
-<li><b>4.7 行為塑模與有限狀態機：</b> 反應型系統、訂單生命週期狀態機、事件觸發、守衛條件與 AI 提示詞。</li>
-<li><b>4.8 PlantUML 宣告式文字塑模：</b> 架構即代碼 (Code-as-Architecture)、語法速查與多圖管線。</li>
-<li><b>4.9 概念複習與統整：</b> 核心工程原則回顧、填空小測驗與經典文獻。</li>
+<li><a href="#72"><b>4.6 流程塑模與活動圖：</b></a> 並行流程、決策分支、分岔/結合、泳道職責與 AI 提示詞。</li>
+<li><a href="#90"><b>4.7 行為塑模與有限狀態機：</b></a> 反應型系統、訂單生命週期狀態機、事件觸發、守衛條件與 AI 提示詞。</li>
+<li><a href="#110"><b>4.8 PlantUML 宣告式文字塑模：</b></a> 架構即代碼 (Code-as-Architecture)、語法速查與多圖管線。</li>
+<li><a href="#123"><b>4.9 概念複習與統整：</b></a> 核心工程原則回顧、填空小測驗與經典文獻。</li>
 </ul>
 </div>
 </div>
@@ -4922,6 +4922,44 @@ Grady Booch、Jim Rumbaugh 與 Ivar Jacobson 合著的《UML 使用者指南》�
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

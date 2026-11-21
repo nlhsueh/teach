@@ -32,18 +32,18 @@ To summarize this slide, remember this key takeaway: Requirements engineering en
   <div>
     <h3>Part 1: Foundations, Classification & Metrics</h3>
     <ul>
-      <li><b>3.1 Foundations of Requirements Engineering:</b> What is RE, cost curve of late defect fixing, user vs. system requirements.</li>
-      <li><b>3.2 Stakeholders & Requirements Classification:</b> Stakeholder personas, functional requirements, and domain business rules.</li>
-      <li><b>3.3 Non-Functional Requirements & Metrics:</b> Product, organizational, external qualities (FURPS+), and verifiable metrics.</li>
+      <li><a href="#4"><b>3.1 Foundations of Requirements Engineering:</b></a> What is RE, cost curve of late defect fixing, user vs. system requirements.</li>
+      <li><a href="#12"><b>3.2 Stakeholders & Requirements Classification:</b></a> Stakeholder personas, functional requirements, and domain business rules.</li>
+      <li><a href="#19"><b>3.3 Non-Functional Requirements & Metrics:</b></a> Product, organizational, external qualities (FURPS+), and verifiable metrics.</li>
     </ul>
   </div>
   <div>
     <h3>Part 2: Elicitation, Validation & AI Era</h3>
     <ul>
-      <li><b>3.4 Requirements Elicitation & Use Cases:</b> 4-stage elicitation loop, scenarios, UML use case diagrams, and Jacobson specifications.</li>
-      <li><b>3.5 Requirements Validation & Management:</b> 5 validation pillars, requirements reviews, traceability matrix, and RFC change control.</li>
-      <li><b>3.6 AI-Assisted Requirements Engineering:</b> Generative AI copilots, user story refinement, ambiguity detection, human-in-the-loop.</li>
-      <li><b>3.7 Synthesis & Conceptual Recap:</b> Key takeaway review, fill-in-the-blank quiz, discussion questions, and references.</li>
+      <li><a href="#31"><b>3.4 Requirements Elicitation & Use Cases:</b></a> 4-stage elicitation loop, scenarios, UML use case diagrams, and Jacobson specifications.</li>
+      <li><a href="#53"><b>3.5 Requirements Validation & Management:</b></a> 5 validation pillars, requirements reviews, traceability matrix, and RFC change control.</li>
+      <li><a href="#60"><b>3.6 AI-Assisted Requirements Engineering:</b></a> Generative AI copilots, user story refinement, ambiguity detection, human-in-the-loop.</li>
+      <li><a href="#69"><b>3.7 Synthesis & Conceptual Recap:</b></a> Key takeaway review, fill-in-the-blank quiz, discussion questions, and references.</li>
     </ul>
 
 </div>
@@ -2133,6 +2133,44 @@ Thank you for your active participation in Chapter 3!
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

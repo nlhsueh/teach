@@ -35,19 +35,19 @@ To summarize this slide, remember this key takeaway: UX Engineering bridges huma
 <div>
 <h3>Part 1: Foundations, Cognition, Laws & Research</h3>
 <ul>
-<li><b>6.1 Foundations of HCI, UX & Usability:</b> Engelbart's GUI revolution, ISO 9241, Garrett's 5 Planes, and Nielsen's 5 usability dimensions.</li>
-<li><b>6.2 Cognitive Psychology & Mental Models:</b> Don Norman's 7 Stages of Action, the Two Gulfs, Signifiers, Mental Models, and Cognitive Load.</li>
-<li><b>6.3 Quantitative Laws & Visual Perception:</b> Ben Shneiderman's Direct Manipulation, Fitts's Law, Hick's Law, Gestalt grouping, and WCAG a11y.</li>
-<li><b>6.4 Human-Centered Design & User Research:</b> Double Diamond lifecycle, 2×2 Research Matrix, Personas, JTBD, and Customer Journey Maps.</li>
+<li><a href="#3"><b>6.1 Foundations of HCI, UX & Usability:</b></a> Engelbart's GUI revolution, ISO 9241, Garrett's 5 Planes, and Nielsen's 5 usability dimensions.</li>
+<li><a href="#13"><b>6.2 Cognitive Psychology & Mental Models:</b></a> Don Norman's 7 Stages of Action, the Two Gulfs, Signifiers, Mental Models, and Cognitive Load.</li>
+<li><a href="#22"><b>6.3 Quantitative Laws & Visual Perception:</b></a> Ben Shneiderman's Direct Manipulation, Fitts's Law, Hick's Law, Gestalt grouping, and WCAG a11y.</li>
+<li><a href="#29"><b>6.4 Human-Centered Design & User Research:</b></a> Double Diamond lifecycle, 2×2 Research Matrix, Personas, JTBD, and Customer Journey Maps.</li>
 </ul>
 </div>
 <div>
 <h3>Part 2: Architecture, Heuristics, Testing & AI UX</h3>
 <ul>
-<li><b>6.5 Information Architecture & Prototyping:</b> LATCH taxonomy, Card Sorting, Tree Testing, Wireframing, and Brad Frost's Atomic Design.</li>
-<li><b>6.6 Analytical Evaluation (Heuristics):</b> Jakob Nielsen's 10 Usability Heuristics, 0–4 Severity Scale, and Cognitive Walkthroughs.</li>
-<li><b>6.7 Empirical Testing, Metrics & Ethics:</b> Herbert Simon's Think-Aloud protocol, N=5 Poisson curve, SUS 0–100, HEART, and Dark Patterns.</li>
-<li><b>6.8 AI-Augmented UX & Synthesis:</b> AI for UX vs. UX for AI (Microsoft 18 HAI Guidelines), interactive recap quiz, and reference solutions.</li>
+<li><a href="#34"><b>6.5 Information Architecture & Prototyping:</b></a> LATCH taxonomy, Card Sorting, Tree Testing, Wireframing, and Brad Frost's Atomic Design.</li>
+<li><a href="#40"><b>6.6 Analytical Evaluation (Heuristics):</b></a> Jakob Nielsen's 10 Usability Heuristics, 0–4 Severity Scale, and Cognitive Walkthroughs.</li>
+<li><a href="#49"><b>6.7 Empirical Testing, Metrics & Ethics:</b></a> Herbert Simon's Think-Aloud protocol, N=5 Poisson curve, SUS 0–100, HEART, and Dark Patterns.</li>
+<li><a href="#55"><b>6.8 AI-Augmented UX & Synthesis:</b></a> AI for UX vs. UX for AI (Microsoft 18 HAI Guidelines), interactive recap quiz, and reference solutions.</li>
 </ul>
 </div>
 </div>
@@ -2005,6 +2005,44 @@ To summarize this slide, remember this key takeaway: Applying quantitative UX la
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

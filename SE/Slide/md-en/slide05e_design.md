@@ -35,19 +35,19 @@ To summarize this slide, remember this key takeaway: Software design establishes
 <div>
 <h3>Part 1: Process, Principles & Macro Design</h3>
 <ul>
-<li><b>5.1 Software Design Foundations & Process:</b> The 4-stage design process (Arch → Interface → OO → Data) and specifications (SDD & ADRs).</li>
-<li><b>5.2 Universal Design Principles:</b> Abstraction, encapsulation, separation of concerns, modularity, and cohesion & coupling.</li>
-<li><b>5.3 Stage 1 — Architectural Design:</b> 6 classic patterns, Food Delivery synthesis, ATAM, and <b>UML Package & Deployment Diagrams</b>.</li>
-<li><b>5.4 Stage 2 — Interface & Contract Spec:</b> <b>Design by Contract (DbC)</b> and <b>UML Component Diagrams</b> (Lollipop & Socket).</li>
+<li><a href="#3"><b>5.1 Software Design Foundations & Process:</b></a> The 4-stage design process (Arch → Interface → OO → Data) and specifications (SDD & ADRs).</li>
+<li><a href="#8"><b>5.2 Universal Design Principles:</b></a> Abstraction, encapsulation, separation of concerns, modularity, and cohesion & coupling.</li>
+<li><a href="#18"><b>5.3 Stage 1 — Architectural Design:</b></a> 6 classic patterns, Food Delivery synthesis, ATAM, and <b>UML Package & Deployment Diagrams</b>.</li>
+<li><a href="#48"><b>5.4 Stage 2 — Interface & Contract Spec:</b></a> <b>Design by Contract (DbC)</b> and <b>UML Component Diagrams</b> (Lollipop & Socket).</li>
 </ul>
 </div>
 <div>
 <h3>Part 2: Micro OO Design, Data, AI & Synthesis</h3>
 <ul>
-<li><b>5.5 Stage 3 — Component & OO Design:</b> GoF 23 Design Patterns and the 5 SOLID principles via <b>UML Class Diagrams</b>.</li>
-<li><b>5.6 Stage 4 — Data & Persistence Design:</b> 3-level data modeling, <b>UML ERD</b>, 3NF, Redis Geo-caching, and polyglot persistence.</li>
-<li><b>5.7 AI-Augmented Software Design:</b> AI copilots across all 4 design stages and human-in-the-loop blind spot governance.</li>
-<li><b>5.8 Conceptual Synthesis & References:</b> End-to-end curriculum review, self-assessment matrix, and classic literature.</li>
+<li><a href="#56"><b>5.5 Stage 3 — Component & OO Design:</b></a> GoF 23 Design Patterns and the 5 SOLID principles via <b>UML Class Diagrams</b>.</li>
+<li><a href="#71"><b>5.6 Stage 4 — Data & Persistence Design:</b></a> 3-level data modeling, <b>UML ERD</b>, 3NF, Redis Geo-caching, and polyglot persistence.</li>
+<li><a href="#76"><b>5.7 AI-Augmented Software Design:</b></a> AI copilots across all 4 design stages and human-in-the-loop blind spot governance.</li>
+<li><a href="#79"><b>5.8 Conceptual Synthesis & References:</b></a> End-to-end curriculum review, self-assessment matrix, and classic literature.</li>
 </ul>
 </div>
 </div>
@@ -2553,6 +2553,44 @@ The floor is now open for questions, architectural discussions, and project desi
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

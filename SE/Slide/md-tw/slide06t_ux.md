@@ -41,17 +41,17 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
   <div>
     <h3>第一部分：UX 基礎、啟發法則與設計模式</h3>
     <ul>
-      <li><b>6.1 使用者體驗 (UX) 基礎：</b> 什麼是 UX、諾曼門（Norman Doors）、三大不良設計原型、台灣健保快易通 App 改版案例、UI 與 UX 的本質差異、設計思考五大階段。</li>
-      <li><b>6.2 尼爾森 10 大易用性啟發法則：</b> 系統狀態可見度、符合真實世界、使用者控制與自由、一致性與標準、防錯設計、辨識取代回憶、彈性與效率捷徑、簡約美學、協助使用者修復錯誤、說明文件。</li>
-      <li><b>6.3 Tidwell 介面設計模式：</b> 四大架構維度、核心使用者行為模式、資訊架構與內容佈局、尋路與導航逃生機制、資料呈現與電商/平台解構實例。</li>
+      <li><a href="#3"><b>6.1 使用者體驗 (UX) 基礎：</b></a> 什麼是 UX、諾曼門（Norman Doors）、三大不良設計原型、台灣健保快易通 App 改版案例、UI 與 UX 的本質差異、設計思考五大階段。</li>
+      <li><a href="#17"><b>6.2 尼爾森 10 大易用性啟發法則：</b></a> 系統狀態可見度、符合真實世界、使用者控制與自由、一致性與標準、防錯設計、辨識取代回憶、彈性與效率捷徑、簡約美學、協助使用者修復錯誤、說明文件。</li>
+      <li><a href="#61"><b>6.3 Tidwell 介面設計模式：</b></a> 四大架構維度、核心使用者行為模式、資訊架構與內容佈局、尋路與導航逃生機制、資料呈現與電商/平台解構實例。</li>
     </ul>
   </div>
   <div>
     <h3>第二部分：AI 賦能設計、智慧介面與評估</h3>
     <ul>
-      <li><b>6.4 AI 賦能 UX 設計 (AI for UX)：</b> AI 作為設計放大器、RTCF 結構化提示詞工程框架、自動化啟發式稽核、多代理人協同原型打造。</li>
-      <li><b>6.5 為 AI 打造卓越體驗 (UX for AI)：</b> 為機率性非確定性 AI 設計介面、延遲與思考軌跡管理、人類自主掌控權、幻覺防護圍欄、可解釋性 AI (XAI)。</li>
-      <li><b>6.6 易用性評估與工程整合：</b> 尼爾森 0-4 級嚴重度評級、專家啟發式評估 vs. 真人使用者測試、章節回顧測驗與工程總結。</li>
+      <li><a href="#87"><b>6.4 AI 賦能 UX 設計 (AI for UX)：</b></a> AI 作為設計放大器、RTCF 結構化提示詞工程框架、自動化啟發式稽核、多代理人協同原型打造。</li>
+      <li><a href="#93"><b>6.5 為 AI 打造卓越體驗 (UX for AI)：</b></a> 為機率性非確定性 AI 設計介面、延遲與思考軌跡管理、人類自主掌控權、幻覺防護圍欄、可解釋性 AI (XAI)。</li>
+      <li><a href="#105"><b>6.6 易用性評估與工程整合：</b></a> 尼爾森 0-4 級嚴重度評級、專家啟發式評估 vs. 真人使用者測試、章節回顧測驗與工程總結。</li>
     </ul>
 
 </div>
@@ -3168,6 +3168,44 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

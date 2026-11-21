@@ -32,20 +32,20 @@ To summarize this slide, remember this key takeaway: A disciplined process trans
   <div>
     <h3>Part 1: Classic Paradigms & Agile Frameworks</h3>
     <ul>
-      <li><b>2.1 Process & Process Models:</b> Core activities: specification, development, validation, evolution.</li>
-      <li><b>2.2 Plan-Driven Paradigms:</b> Waterfall model, stage gates, and V-Model verification vs. validation.</li>
-      <li><b>2.3 The Mechanics of Change:</b> Incremental delivery vs. iterative refinement, building the MVP.</li>
-      <li><b>2.4 The Agile Mindset:</b> The Agile Manifesto, 4 core values, 12 principles, and embracing change.</li>
-      <li><b>2.5 Agile Project Management:</b> Scrum sprints, ceremonies, roles, artifacts, and Kanban WIP limits.</li>
+      <li><a href="#4"><b>2.1 Process & Process Models:</b></a> Core activities: specification, development, validation, evolution.</li>
+      <li><a href="#9"><b>2.2 Plan-Driven Paradigms:</b></a> Waterfall model, stage gates, and V-Model verification vs. validation.</li>
+      <li><a href="#23"><b>2.3 The Mechanics of Change:</b></a> Incremental delivery vs. iterative refinement, building the MVP.</li>
+      <li><a href="#36"><b>2.4 The Agile Mindset:</b></a> The Agile Manifesto, 4 core values, 12 principles, and embracing change.</li>
+      <li><a href="#44"><b>2.5 Agile Project Management:</b></a> Scrum sprints, ceremonies, roles, artifacts, and Kanban WIP limits.</li>
     </ul>
   </div>
   <div>
     <h3>Part 2: Technical Rigor, DevOps & AI Era</h3>
     <ul>
-      <li><b>2.6 The Cost of Speed — Technical Debt:</b> Debt quadrant, compound interest, and refactoring strategies.</li>
-      <li><b>2.7 Technical Rigor — XP:</b> Extreme Programming, pair programming, TDD, and continuous feedback.</li>
-      <li><b>2.8 Systems & Culture — DevOps:</b> Breaking silos, CI/CD automated deployment pipelines, and observability.</li>
-      <li><b>2.9 The Modern Frontier — AI Spec-Driven:</b> AI spec loops, human-in-the-loop, recap quiz & references.</li>
+      <li><a href="#55"><b>2.6 The Cost of Speed — Technical Debt:</b></a> Debt quadrant, compound interest, and refactoring strategies.</li>
+      <li><a href="#63"><b>2.7 Technical Rigor — XP:</b></a> Extreme Programming, pair programming, TDD, and continuous feedback.</li>
+      <li><a href="#74"><b>2.8 Systems & Culture — DevOps:</b></a> Breaking silos, CI/CD automated deployment pipelines, and observability.</li>
+      <li><a href="#82"><b>2.9 The Modern Frontier — AI Spec-Driven:</b></a> AI spec loops, human-in-the-loop, recap quiz & references.</li>
     </ul>
 
 </div>
@@ -2763,6 +2763,44 @@ To summarize this slide, remember this key takeaway: Great software engineers co
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

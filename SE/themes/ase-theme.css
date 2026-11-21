@@ -1568,6 +1568,27 @@ section.outline-slide > ol > li > ol > li {
   line-height: 1.4 !important;
 }
 
+/* Outline slide clickable section links (SQA style) */
+.outline-slide a,
+.outline a,
+section[id="2"] .outline-columns a {
+  color: #0b3c5d !important;
+  text-decoration: none !important;
+  border-bottom: 1.5px dashed #328cc1 !important;
+  padding-bottom: 1px;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  border-radius: 3px;
+}
+
+.outline-slide a:hover,
+.outline a:hover,
+section[id="2"] .outline-columns a:hover {
+  color: #0284c7 !important;
+  background-color: #e0f2fe !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: #0284c7 !important;
+}
+
 .outline-columns li > ul {
   margin-top: 3px !important;
   margin-bottom: 5px !important;

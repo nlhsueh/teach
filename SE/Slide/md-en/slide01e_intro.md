@@ -37,20 +37,20 @@ In this chapter, we will explore why software is hard to build, why past crises 
   <div>
     <h3>Part 1: Historical Genesis & Foundations</h3>
     <ul>
-      <li><b>1.1 Software Changes the World:</b> From room-sized mainframes to ubiquitous AI and digital infrastructure.</li>
-      <li><b>1.2 The Genesis of SE:</b> The 1968 NATO Conference, software crisis, and catastrophic historical failures.</li>
-      <li><b>1.3 What is Software?:</b> Beyond raw code: programs, data structures, procedures, and documentation.</li>
-      <li><b>1.4 What is Engineering?:</b> Real-world trade-offs: balancing competing constraints under finite resources.</li>
-      <li><b>1.5 What is Software Engineering?:</b> Formal definition, 4 core activities, SWEBOK, and modern toolchains.</li>
+      <li><a href="#3"><b>1.1 Software Changes the World:</b></a> From room-sized mainframes to ubiquitous AI and digital infrastructure.</li>
+      <li><a href="#8"><b>1.2 The Genesis of SE:</b></a> The 1968 NATO Conference, software crisis, and catastrophic historical failures.</li>
+      <li><a href="#14"><b>1.3 What is Software?:</b></a> Beyond raw code: programs, data structures, procedures, and documentation.</li>
+      <li><a href="#20"><b>1.4 What is Engineering?:</b></a> Real-world trade-offs: balancing competing constraints under finite resources.</li>
+      <li><a href="#25"><b>1.5 What is Software Engineering?:</b></a> Formal definition, 4 core activities, SWEBOK, and modern toolchains.</li>
     </ul>
   </div>
   <div>
     <h3>Part 2: Quality, Ethics & Modern AI Era</h3>
     <ul>
-      <li><b>1.6 Software Quality Models:</b> ISO/IEC 25010 product quality characteristics and operational attributes.</li>
-      <li><b>1.7 Professional Ethics & Dark Patterns:</b> ACM/IEEE Code of Ethics, public interest, and deceptive UI design.</li>
-      <li><b>1.8 AI in Software Engineering:</b> Paradigm shifts, SDLC lifecycle impact matrix, and technical engineering rigor.</li>
-      <li><b>1.9 Synthesis & Conceptual Recap:</b> Key takeaway review, FAQ, interactive quiz, and classic references.</li>
+      <li><a href="#42"><b>1.6 Software Quality Models:</b></a> ISO/IEC 25010 product quality characteristics and operational attributes.</li>
+      <li><a href="#51"><b>1.7 Professional Ethics & Dark Patterns:</b></a> ACM/IEEE Code of Ethics, public interest, and deceptive UI design.</li>
+      <li><a href="#61"><b>1.8 AI in Software Engineering:</b></a> Paradigm shifts, SDLC lifecycle impact matrix, and technical engineering rigor.</li>
+      <li><a href="#75"><b>1.9 Synthesis & Conceptual Recap:</b></a> Key takeaway review, FAQ, interactive quiz, and classic references.</li>
     </ul>
 
 </div>
@@ -2449,6 +2449,44 @@ Thank you everyone, and see you in Chapter 2!
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

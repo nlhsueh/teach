@@ -40,17 +40,17 @@ Software engineering is fundamentally a human-centered discipline. In this chapt
   <div>
     <h3>Part 1: Foundations, Heuristics & Patterns</h3>
     <ul>
-      <li><b>6.1 Foundations of User Experience (UX):</b> What is UX, Norman Doors, the 3 bad design archetypes, Taiwan NHI App case study, UI vs. UX distinction, 5-stage Design Thinking.</li>
-      <li><b>6.2 Nielsen's 10 Usability Heuristics:</b> System status visibility, real-world match, user control & freedom, consistency, error prevention, recognition over recall, efficiency accelerators, minimalist aesthetics, error recovery, documentation.</li>
-      <li><b>6.3 Tidwell Interaction & UI Patterns:</b> 4 architectural dimensions, core user behaviors, information architecture & layout, wayfinding & escape hatches, data display & platform teardowns.</li>
+      <li><a href="#3"><b>6.1 Foundations of User Experience (UX):</b></a> What is UX, Norman Doors, the 3 bad design archetypes, Taiwan NHI App case study, UI vs. UX distinction, 5-stage Design Thinking.</li>
+      <li><a href="#17"><b>6.2 Nielsen's 10 Usability Heuristics:</b></a> System status visibility, real-world match, user control & freedom, consistency, error prevention, recognition over recall, efficiency accelerators, minimalist aesthetics, error recovery, documentation.</li>
+      <li><a href="#61"><b>6.3 Tidwell Interaction & UI Patterns:</b></a> 4 architectural dimensions, core user behaviors, information architecture & layout, wayfinding & escape hatches, data display & platform teardowns.</li>
     </ul>
   </div>
   <div>
     <h3>Part 2: AI-Powered UX & Interaction Design</h3>
     <ul>
-      <li><b>6.4 AI for UX (AI4UX):</b> AI as a design amplifier, the RTCF prompt engineering framework (Role-Task-Constraint-Format), automated heuristic audits, multi-agent prototyping.</li>
-      <li><b>6.5 UX for AI (UX4AI):</b> Designing for non-deterministic AI, managing latency & thinking traces, human agency & steerability, hallucination guardrails, explainable AI (XAI).</li>
-      <li><b>6.6 Evaluation & Synthesis:</b> Heuristic severity ratings (0 to 4), heuristic evaluation vs. user testing, chapter recap quiz, and engineering takeaways.</li>
+      <li><a href="#87"><b>6.4 AI for UX (AI4UX):</b></a> AI as a design amplifier, the RTCF prompt engineering framework (Role-Task-Constraint-Format), automated heuristic audits, multi-agent prototyping.</li>
+      <li><a href="#93"><b>6.5 UX for AI (UX4AI):</b></a> Designing for non-deterministic AI, managing latency & thinking traces, human agency & steerability, hallucination guardrails, explainable AI (XAI).</li>
+      <li><a href="#105"><b>6.6 Evaluation & Synthesis:</b></a> Heuristic severity ratings (0 to 4), heuristic evaluation vs. user testing, chapter recap quiz, and engineering takeaways.</li>
     </ul>
 
 </div>
@@ -3206,6 +3206,44 @@ Thank you all, and have fun inspecting the interfaces around you with your new U
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

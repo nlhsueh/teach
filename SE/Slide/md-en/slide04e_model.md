@@ -39,20 +39,20 @@ To summarize this slide, remember this key takeaway: System modeling creates the
 <div>
 <h3>Part 1: Foundations & Core Models</h3>
 <ul>
-<li><b>4.1 Foundations of Modeling:</b> Abstraction, 4 perspectives, 5 essential diagrams, and the elephant parable.</li>
-<li><b>4.2 The UML:</b> The Method Wars, Three Amigos trinity (Jacobson, Rumbaugh, Booch), and OMG standardization.</li>
-<li><b>4.3 Functional & Use Case Models:</b> Actor goals, system boundaries, include vs. extend, and AI prompt guidelines.</li>
-<li><b>4.4 Structural & Class Models:</b> Domain classes, visibility, multiplicity, whole-part coupling, and AI prompt guidelines.</li>
-<li><b>4.5 Interaction & Sequence Diagrams:</b> Chronological messages, lifelines, activations, and AI prompt guidelines.</li>
+<li><a href="#3"><b>4.1 Foundations of Modeling:</b></a> Abstraction, 4 perspectives, 5 essential diagrams, and the elephant parable.</li>
+<li><a href="#9"><b>4.2 The UML:</b></a> The Method Wars, Three Amigos trinity (Jacobson, Rumbaugh, Booch), and OMG standardization.</li>
+<li><a href="#17"><b>4.3 Functional & Use Case Models:</b></a> Actor goals, system boundaries, include vs. extend, and AI prompt guidelines.</li>
+<li><a href="#35"><b>4.4 Structural & Class Models:</b></a> Domain classes, visibility, multiplicity, whole-part coupling, and AI prompt guidelines.</li>
+<li><a href="#54"><b>4.5 Interaction & Sequence Diagrams:</b></a> Chronological messages, lifelines, activations, and AI prompt guidelines.</li>
 </ul>
 </div>
 <div>
 <h3>Part 2: Workflows, Architecture & Synthesis</h3>
 <ul>
-<li><b>4.6 Process & Activity Diagrams:</b> Concurrent workflows, decisions, forks/joins, swimlanes, and AI prompt guidelines.</li>
-<li><b>4.7 Behavioral & State Machines:</b> Reactive systems, event triggers, actions vs. activities, and AI prompt guidelines.</li>
-<li><b>4.8 Text-Based Modeling with PlantUML:</b> Code-as-architecture, syntax quick reference, and multi-diagram pipelines.</li>
-<li><b>4.9 Conceptual Recap & Synthesis:</b> Core principles review, fill-in-the-blank quiz, and references.</li>
+<li><a href="#72"><b>4.6 Process & Activity Diagrams:</b></a> Concurrent workflows, decisions, forks/joins, swimlanes, and AI prompt guidelines.</li>
+<li><a href="#90"><b>4.7 Behavioral & State Machines:</b></a> Reactive systems, event triggers, actions vs. activities, and AI prompt guidelines.</li>
+<li><a href="#110"><b>4.8 Text-Based Modeling with PlantUML:</b></a> Code-as-architecture, syntax quick reference, and multi-diagram pipelines.</li>
+<li><a href="#123"><b>4.9 Conceptual Recap & Synthesis:</b></a> Core principles review, fill-in-the-blank quiz, and references.</li>
 </ul>
 </div>
 </div>
@@ -5145,6 +5145,44 @@ Thank you for your active participation in Chapter 4!
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================

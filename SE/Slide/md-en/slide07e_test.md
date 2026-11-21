@@ -36,17 +36,17 @@ To summarize this slide, remember this key takeaway: Software testing is a disci
   <div>
     <h3>Part 1: Principles & Black-Box Testing</h3>
     <ul>
-      <li><b>7.1 Testing Foundations & Principles:</b> Verification vs. Validation, Dijkstra's axiom, 7 testing principles, testing pyramid, testing stages.</li>
-      <li><b>7.2 Black-Box Testing Techniques:</b> Boundary Value Analysis formulas ($4n+1, 6n+1, 5^n, 7^n$), Equivalence Partitioning (Weak vs. Strong), case studies: Triangle, Exam Scores, FCU Swimming Pool, Binary Search, nextDate.</li>
-      <li><b>7.3 Combinatorial & Behavioral Methods:</b> Pairwise/All-Pairs testing, Decision Table testing, State Transition and Use Case testing.</li>
+      <li><a href="#3"><b>7.1 Testing Foundations & Principles:</b></a> Verification vs. Validation, Dijkstra's axiom, 7 testing principles, testing pyramid, testing stages.</li>
+      <li><a href="#18"><b>7.2 Black-Box Testing Techniques:</b></a> Boundary Value Analysis formulas ($4n+1, 6n+1, 5^n, 7^n$), Equivalence Partitioning (Weak vs. Strong), case studies: Triangle, Exam Scores, FCU Swimming Pool, Binary Search, nextDate.</li>
+      <li><a href="#34"><b>7.3 Combinatorial & Behavioral Methods:</b></a> Pairwise/All-Pairs testing, Decision Table testing, State Transition and Use Case testing.</li>
     </ul>
   </div>
   <div>
     <h3>Part 2: White-Box Structural Testing & Synthesis</h3>
     <ul>
-      <li><b>7.4 White-Box Structural Testing:</b> Subsumption hierarchy, benchmark code analysis, Statement, Branch, and Condition Coverage, short-circuit evaluation.</li>
-      <li><b>7.5 Advanced Criteria & Control Flow:</b> Multiple Condition Coverage, MC/DC in DO-178B/C, loop path explosion, McCabe's Cyclomatic Complexity.</li>
-      <li><b>7.6 Testing Synthesis & Anti-Patterns:</b> The myth of 100% coverage, comprehensive benchmark comparison, recap quiz, and industry best practices.</li>
+      <li><a href="#40"><b>7.4 White-Box Structural Testing:</b></a> Subsumption hierarchy, benchmark code analysis, Statement, Branch, and Condition Coverage, short-circuit evaluation.</li>
+      <li><a href="#49"><b>7.5 Advanced Criteria & Control Flow:</b></a> Multiple Condition Coverage, MC/DC in DO-178B/C, loop path explosion, McCabe's Cyclomatic Complexity.</li>
+      <li><a href="#57"><b>7.6 Testing Synthesis & Anti-Patterns:</b></a> The myth of 100% coverage, comprehensive benchmark comparison, recap quiz, and industry best practices.</li>
     </ul>
 
 </div>
@@ -1558,6 +1558,44 @@ To summarize this slide, remember this key takeaway: Rigorous testing combines s
         header.appendChild(nextLink);
       }
     });
+
+    // Auto-link and calibrate section items on the Outline slide (Slide 2)
+    const secByNum = {};
+    slideSections.forEach(sec => {
+      const h1 = sec.querySelector("h1");
+      if (h1) {
+        const m = (h1.textContent || "").trim().match(/^(\d+\.\d+)\b/);
+        if (m && !secByNum[m[1]]) secByNum[m[1]] = sec.id;
+      }
+    });
+    sections.forEach(s => {
+      const m = s.title.match(/^(\d+\.\d+)\b/);
+      if (m && !secByNum[m[1]]) secByNum[m[1]] = s.id;
+    });
+    const outlineSlide = document.querySelector("section.outline-slide, section.outline, section[id=\"2\"]");
+    if (outlineSlide) {
+      outlineSlide.querySelectorAll("li").forEach(li => {
+        const existingLink = li.querySelector(":scope > a, :scope > strong > a, :scope > b > a");
+        if (existingLink) {
+          const m = existingLink.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            existingLink.setAttribute("href", "#" + secByNum[m[1]]);
+          }
+          return;
+        }
+        const bold = li.querySelector(":scope > b, :scope > strong");
+        if (bold) {
+          const m = bold.textContent.trim().match(/^(\d+\.\d+)\b/);
+          if (m && secByNum[m[1]]) {
+            const a = document.createElement("a");
+            a.setAttribute("href", "#" + secByNum[m[1]]);
+            bold.parentNode.insertBefore(a, bold);
+            a.appendChild(bold);
+          }
+        }
+      });
+    }
+
   }
 
   // =========================================================================
