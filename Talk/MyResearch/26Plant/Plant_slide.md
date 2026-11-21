@@ -561,6 +561,36 @@ section .callout {
   line-height: 1.54;
 }
 
+
+/* Table Breathing Room & Callout Separation */
+section table {
+  margin-top: 12px !important;
+  margin-bottom: 14px !important;
+}
+section table th {
+  padding: 9px 11px !important;
+}
+section table td {
+  padding: 8px 11px !important;
+  line-height: 1.42 !important;
+}
+section .split55 table th,
+section .split64 table th,
+section .split55 table td,
+section .split64 table td {
+  padding: 6px 8px !important;
+}
+section table + .callout,
+section .fig-box + .callout,
+section .two-col + .callout,
+section .three-col + .callout,
+section div + .callout {
+  margin-top: 20px !important;
+}
+section .callout {
+  padding: 12px 18px !important;
+}
+
 </style>
 
 <!-- _class: lead -->
@@ -584,14 +614,11 @@ Supported by the National Science and Technology Council (NSTC), Taiwan R.O.C., 
 </div>
 
 <!--
-Key Takeaway: PLANT is a multi-agent Requirements Engineering framework combining specialized AI roles, external knowledge grounding, and task-adaptive mediation.
-
-Talking Points:
-- Good morning everyone. Today we present PLANT — Platform for muLtiple Agent-based requiremeNt developmenT — developed at Feng Chia University.
-- As AI accelerates downstream coding, upstream Requirements Engineering becomes the true bottleneck; PLANT addresses this by coordinating six specialized agents rather than relying on a single LLM.
-- This work is supported by Taiwan's National Science and Technology Council (NSTC).
-
-Transition: Let's open with a familiar scenario that shows why a solo LLM interviewer often falls short.
+Paper Context & Core Contribution:
+- Published in the Journal of Information Science and Engineering (JISE, 2026) by Nien-Lin Hsueh and Shu-Hsien Liao (Department of Information Engineering and Computer Science, Feng Chia University; NSTC grant NSTC114-2221-E-035-077).
+- Full framework name: PLANT (Platform for muLtiple Agent-based requiremeNt developmenT), an end-to-end multi-agent Requirements Engineering (RE) platform coordinating six specialized LLM roles—User, Analyst, Expert, Modeler, Mediator, and Documenter.
+- Core methodological contributions: (1) Simultaneous Stakeholder Prompting (SSP) for unbiased multi-persona elicitation; (2) external regulatory/standards grounding and PlantUML structural validation; (3) Hybrid-Communication-with-Mediator for task-adaptive switching between Simultaneous-Talk and One-by-One dialogue; and (4) Human-in-the-Loop (HITL) deadlock adjudication feeding into an IEEE 29148-compliant SRS with traceable Design Rationales (DR).
+- Empirical scope: Evaluated across 5 software systems (103 ground-truth implicit requirements) and 100 requirement conflict pairs on GPT-4.1 and Gemini 3 Flash, alongside an explicit quality-cost trade-off analysis.
 -->
 
 ---
@@ -607,14 +634,10 @@ Transition: Let's open with a familiar scenario that shows why a solo LLM interv
 </div>
 
 <!--
-Key Takeaway: A single LLM tends to act like an eager "yes-man" that stops after ~6 turns, whereas PLANT's multi-agent team digs deeper to uncover hidden NFRs and conflicts.
-
-Talking Points:
-- Imagine asking a single LLM to elicit requirements: after about six polite turns covering surface features, it declares "Done!" — leaving privacy, security, and edge cases untouched.
-- PLANT replaces that solo interviewer with a coordinated multi-agent team of specialists who challenge assumptions, cross-check regulations, and log traceable design rationales.
-- That shift from single-pass chatting to structured teamwork is the big idea behind PLANT.
-
-Transition: Here is an overview of what we will cover in today's presentation.
+Behavioral Contrast: Single-Agent Premature Convergence vs. Multi-Agent Depth:
+- In empirical elicitation trials (Table 6), single-agent LLM interviewers terminated early after an average of only 6.20 turns (GPT-4.1) or 6.00 turns (Gemini 3 Flash), despite being permitted up to 20 turns.
+- Root causes identified in the paper: Single-agent LLMs suffer from sycophancy bias and premature convergence (Du et al. [3]), prematurely assuming requirements are complete once surface-level functional features (Interaction and Content) are covered—leaving Security, Safety, Reliability, and Performance largely unexamined.
+- Multi-agent resolution: By distributing elicitation, regulatory auditing, and behavioral modeling across specialized agents coordinated by a Mediator, PLANT sustains 13.00 to 17.00 productive turns, systematically uncovering implicit Non-Functional Requirements (NFRs), surfacing latent conflicts, and recording traceable Meeting Minutes (MoM).
 -->
 
 ---
@@ -686,14 +709,12 @@ Visual synthesis of RQ1–RQ3 conclusions and roadmap for specification-driven d
 </div>
 
 <!--
-Key Takeaway: We present the motivation and RQs, our six-role PLANT architecture and hybrid mediation, empirical results across 103 IRs and 100 conflict pairs, and future directions.
-
-Talking Points:
-- First, we motivate why single-agent LLMs struggle in RE and introduce our three research questions (RQ1 to RQ3).
-- Next, we position PLANT against recent multi-agent RE frameworks and walk through its six roles, four-stage workflow, and hybrid communication mechanism.
-- Finally, we share empirical evaluations on implicit requirement elicitation, conflict detection, and cost-effectiveness, followed by component analysis and validity threats.
-
-Transition: Let's start by unpacking why single-agent LLMs fall short in Requirements Engineering.
+Paper Structural Roadmap:
+- Section 1 (Introduction) frames the critical role of rigorous IEEE 29148 specifications in the AI-Augmented Software Development (AASD) era and defines RQ1 through RQ3.
+- Section 2 (Related Work) reviews LLM applications across elicitation, analysis, and specification, comparing PLANT against representative single- and multi-agent frameworks (Table 1).
+- Section 3 (Approach) details PLANT's six agent roles (Table 2), four-stage iterative workflow (Fig. 2), Simultaneous Stakeholder Prompting (SSP, Fig. 3), external knowledge grounding, and Mediator-guided hybrid communication (Fig. 4).
+- Section 4 (Experimental Evaluation) specifies datasets (Table 3), prompt schemas (Table 4), automated evaluation protocols, quantitative results for RQ1 to RQ3 (Tables 5 to 10), expected component contributions, and threats to validity.
+- Section 5 (Conclusion) synthesizes core findings and outlines future work toward fixed-budget ablations, human SRS evaluation, and Specification-Driven Development (SDD).
 -->
 
 ---
@@ -709,14 +730,10 @@ Transition: Let's start by unpacking why single-agent LLMs fall short in Require
 </div>
 
 <!--
-Key Takeaway: In the AI-assisted software development era, single-agent LLMs overlook critical NFRs and conflicts, making structured multi-agent RE essential for IEEE 29148 quality.
-
-Talking Points:
-- As shown in the diagram, a single LLM conflates stakeholder elicitation, domain auditing, modeling, and specification in one context window, leading to shallow interviews and missed constraints.
-- In the AASD era, faster coding without a rigorous IEEE 29148 SRS only produces fragmented architectures faster — especially when security, privacy, and reliability NFRs are missing.
-- PLANT separates these cognitive responsibilities across specialized agents so critical requirements are systematically audited.
-
-Transition: To rigorously test this approach, we formulated three core research questions.
+Theoretical Motivation in the AASD Era:
+- AI-Augmented Software Development (AASD, Ozkaya [1]) shifts software engineers from manual coders to supervisors and decision makers. However, accelerated AI code generation without a rigorous IEEE 29148 Software Requirements Specification (SRS) amplifies architectural fragmentation and downstream maintenance costs as systems scale.
+- Organizational bottleneck: Traditional RE depends on experienced system analysts conducting multi-round stakeholder meetings to reconcile competing priorities—especially NFRs (security, privacy, performance, reliability, scalability), which are both primary conflict sources and the most frequently overlooked early requirements. Junior-analyst shortages often curtail these iterations.
+- Why LLMs help, yet single agents fail: LLMs encode broad standards knowledge and excel at detail-intensive artifact consolidation, but single-agent virtual interviewers (e.g., Korn et al. [2]) conflate stakeholder elicitation, domain compliance, and modeling within one context window, triggering sycophancy bias and early exit (Du et al. [3]).
 -->
 
 ---
@@ -734,14 +751,11 @@ We empirically quantify **PLANT** on two foundational upstream RE tasks and its 
 </div>
 
 <!--
-Key Takeaway: We empirically evaluate PLANT on implicit requirement discovery (RQ1), conflict identification (RQ2), and computational cost-effectiveness (RQ3).
-
-Talking Points:
-- RQ1 evaluates how effectively PLANT uncovers implicit requirements — especially overlooked non-functional requirements — across five diverse software systems.
-- RQ2 tests whether multi-role deliberation catches hidden requirement conflicts better than a single-agent classifier.
-- RQ3 examines the practical trade-off: given extra tokens, runtime, and API cost, when is multi-agent deliberation genuinely worth the investment?
-
-Transition: Let's compare PLANT with existing LLM and multi-agent RE frameworks in the literature.
+Scope of Empirical Evaluation (RQ1 to RQ3):
+- Although PLANT's complete workflow generates UML diagrams, Meeting Minutes (MoM), Design Rationales, and IEEE 29148 SRS drafts (available in the public repository), the paper's controlled quantitative evaluation focuses rigorously on two foundational upstream RE bottlenecks plus resource economics:
+  - RQ1 (Implicit Requirement Elicitation): Evaluates recall of unstated functional and non-functional requirements (IRE) and early-turn questioning efficiency (TKQR) across 5 diverse domains (103 ground-truth IRs).
+  - RQ2 (Requirement Conflict Identification): Evaluates pairwise classification (Macro F1 and Conflict-class Precision, Recall, F1) across 100 balanced requirement pairs from Hospital Management (70) and Food Delivery (30).
+  - RQ3 (Cost-Effectiveness): Quantifies token consumption, wall-clock runtime, API cost (US$), marginal IRE gain per additional 1M tokens, and unit cost per elicited IR across GPT-4.1 and Gemini 3 Flash to delineate practical deployment boundaries.
 -->
 
 ---
@@ -764,14 +778,11 @@ Existing LLM-based RE frameworks rarely integrate **task-adaptive negotiation** 
 </div>
 
 <!--
-Key Takeaway: Unlike prior frameworks that use static sequential handoffs, PLANT unifies end-to-end RE stages with Mediator-guided dynamic negotiation and traceable Design Rationales.
-
-Talking Points:
-- Looking at Table 1, early systems like LLMREI and RECOVER focus on single-agent interviews, while MAD focuses only on classification debate.
-- Even recent multi-agent platforms like MARE and iReDev rely on fixed sequential pipelines without structured conflict negotiation or rationale traceability.
-- PLANT is the only framework in this comparison that covers all six dimensions, introducing a dedicated Mediator that switches communication modes, escalates deadlocks to humans, and logs Design Rationales.
-
-Transition: Let's look inside the PLANT framework and meet its six specialized agent roles.
+Comparative Positioning in RE Literature (Table 1):
+- Single-stage / single-agent tools: LLMREI [2] (33 simulated interviews, >73% valid requirement extraction via zero-shot/CoT) and RECOVER [7] focus strictly on elicitation; ReqInOne [10] targets single-agent analysis and SRS drafting; formal-logic contradiction detectors (Gärtner & Göhlich [14]) and use-case extractors (Eisenreich et al. [15]) address isolated analysis tasks.
+- Early multi-agent RE systems: Elicitron [8] simulates user personas for elicitation/analysis without negotiation or SRS specification; MAD [9] applies multi-agent debate solely to requirement classification.
+- End-to-end multi-agent peers: MARE [11] assigns elicitation, modeling, validation, and specification roles communicating via a shared workspace; iReDev [12] augments multi-agent refinement with custom domain knowledge graphs.
+- Distinct gap addressed by PLANT: Neither MARE nor iReDev includes a dedicated Mediator that dynamically switches communication topologies per discussion goal, escalates deadlocked trade-offs to Human-in-the-Loop (HITL) review (emphasized by Arora et al. [6]), or structures multi-round negotiation logs into explicit Design Rationales linked to SRS clauses.
 -->
 
 ---
@@ -801,14 +812,13 @@ Transition: Let's look inside the PLANT framework and meet its six specialized a
 </div>
 
 <!--
-Key Takeaway: PLANT coordinates six distinct agents — User, Analyst, Expert, Modeler, Mediator, and Documenter — mirroring a real-world requirements engineering team.
-
-Talking Points:
-- Figure 1 shows how the six roles interact around shared drafts, external knowledge documents, and UML artifacts.
-- User simulates first-person stakeholders, Analyst defines scope and flags conflicts, Expert audits against laws and ISO 25010, and Modeler validates PlantUML diagrams.
-- Crucially, the Mediator orchestrates agendas and communication modes, while the Documenter compiles the final IEEE 29148 SRS linked to traceable Design Rationales.
-
-Transition: Next, let's trace how these six roles collaborate across PLANT's four-stage workflow.
+Six Specialized Agent Profiles & Responsibilities (Fig. 1, Table 2 & Table 4):
+- User (Multiple Stakeholders): Configured via SSP to adopt confirmed stakeholder personas concurrently, outputting structured JSON of first-person usage scenarios, operational pain points, expected features, and concerns.
+- Analyst (Experienced System Analyst): Extracts atomic requirements from stakeholder remarks, partitions In-Scope vs. Out-of-Scope boundaries, identifies pairwise conflicts with rationales, and maintains the evolving requirements draft.
+- Expert (Experienced Domain Expert): Queries PLANT's external Document Library and search tools to audit drafts against domain regulations, personal-data protection laws, payment guidelines, and ISO/IEC 25010 quality attributes, citing specific supporting clauses.
+- Modeler (Experienced Requirement Modeler): Translates requirements into PlantUML use-case, class, and sequence diagrams, invoking a syntax and consistency validation tool to expose missing actors, states, or exception timeouts.
+- Mediator (Experienced Requirement Mediator): Formulates bounded round agendas, selects Simultaneous-Talk vs. One-by-One strategies, evaluates consensus, writes MoM, and triggers HITL escalation on deadlocks.
+- Documenter (Experienced Requirement Documenter): Compiles the converged draft into an IEEE 29148 SRS with acceptance criteria and synthesizes multi-round MoM logs into a traceable Design Rationale document.
 -->
 
 ---
@@ -836,14 +846,11 @@ Transition: Next, let's trace how these six roles collaborate across PLANT's fou
 </div>
 
 <!--
-Key Takeaway: PLANT replaces single-pass SRS generation with a four-stage iterative loop spanning unbiased elicitation, parallel auditing, bounded negotiation, and rationale-linked documentation.
-
-Talking Points:
-- In Stage 1, the User agent runs Simultaneous Stakeholder Prompting (SSP) to gather diverse needs from a rough idea.
-- In Stage 2, Analyst, Expert, and Modeler inspect those needs in parallel — checking scope, regulations, and PlantUML flows.
-- Stage 3 runs up to r bounded negotiation rounds led by the Mediator, recording consensus in Meeting Minutes (MoM) before Stage 4 compiles the IEEE 29148 SRS and Design Rationale.
-
-Transition: Let's zoom in on two key mechanisms in Stages 1 and 2: SSP and external knowledge grounding.
+Four-Stage Iterative Workflow Mechanics (Fig. 2):
+- Stage 1 (Elicitation via SSP): Starting from a human Proposer's rough system idea, PLANT proposes candidate stakeholder personas (confirmed by the human user), and the User agent simulates them concurrently to collect broad initial needs without sequential anchoring.
+- Stage 2 (Parallel Multi-Perspective Analysis, Grounding & Modeling): Analyst structures user requirements, sets scope boundaries, and flags initial conflicts; Expert audits against external regulations/standards; Modeler builds and validates PlantUML models. Analyst consolidates these parallel outputs into a baseline requirements draft and conflict report.
+- Stage 3 (Mediator-Guided Iterative Negotiation): Across at most r bounded rounds, the Mediator extracts open issues and unresolved conflicts, dynamically applies Simultaneous-Talk or One-by-One dialogue, escalates high-impact deadlocks to HITL if needed, logs Meeting Minutes (MoM), and triggers synchronous updates to drafts, conflict reports, and UML models.
+- Stage 4 (Specification & Design Rationale Generation): Upon convergence or reaching round r, Documenter compiles the IEEE 29148 SRS and links each requirement back to originating stakeholder remarks, conflict deliberations, and MoM rulings.
 -->
 
 ---
@@ -872,14 +879,11 @@ Transition: Let's zoom in on two key mechanisms in Stages 1 and 2: SSP and exter
 </div>
 
 <!--
-Key Takeaway: SSP prevents early anchoring during stakeholder brainstorming, while external knowledge retrieval and PlantUML validation ground the team in real standards and exception flows.
-
-Talking Points:
-- Figure 3 illustrates SSP: extending Solo Performance Prompting with Simultaneous-Talk, personas such as Customer, Courier, and Restaurateur generate needs independently before seeing each other's output.
-- Meanwhile, the Expert queries uploaded standards like ISO 29148, ISO 25010, and privacy regulations both initially and on demand during negotiation.
-- The Modeler runs PlantUML syntax and consistency checks to surface missing lifecycle exceptions, such as courier order timeouts and reassignment.
-
-Transition: When these perspectives uncover ambiguities or clashes, how does the Mediator guide resolution?
+Unbiased Elicitation (SSP), Two-Point Knowledge Retrieval & Model Validation (Fig. 3):
+- Simultaneous Stakeholder Prompting (SSP): Extends Solo Performance Prompting (SPP, Wang et al. [19]) with Simultaneous-Talk (Chan et al. [4]). Independent personas (e.g., consumer prioritizing convenience/payments, restaurant owner focusing on peak-hour order control, courier prioritizing routing and earnings transparency) generate requirements concurrently before observing peers, eliminating first-speaker anchoring.
+- Two-point External Knowledge Grounding: Users upload project documents, privacy/payment regulations, ISO/IEC/IEEE 29148 [18], and ISO/IEC 25010 [20] into the Document Library. Expert retrieves passages (1) during initial Stage 2 auditing and (2) on demand during Stage 3 negotiation whenever regulatory or technical feasibility questions arise.
+- Noise & contradiction handling: Expert filters retrieved chunks against the confirmed in-scope boundary and cites explicit constraints; during One-by-One negotiation, Analyst and Modeler cross-examine whether cited constraints clash with functional workflows, escalating unresolved policy conflicts to HITL.
+- Tool-assisted PlantUML validation: Formalizing sequence and use-case diagrams systematically reveals lifecycle omissions—for instance, exposing that courier order acceptance lacks a timeout and automatic reassignment path.
 -->
 
 ---
@@ -910,14 +914,10 @@ Transition: When these perspectives uncover ambiguities or clashes, how does the
 </div>
 
 <!--
-Key Takeaway: The Mediator classifies agenda items into four issue types, resolves consensus into Meeting Minutes within bounded rounds, and escalates deadlocks to human experts (HITL).
-
-Talking Points:
-- At the start of each round (1 to r), the Mediator organizes open items into four categories: Open Questions, New Requirements, Trade-offs, and Conflict Discussions.
-- Resolved items are written into Meeting Minutes (MoM), which automatically trigger updates to both the requirement draft and UML models.
-- If agents reach a deadlock or face a high-impact business trade-off, the Mediator packages the arguments and candidate options for Human-in-the-Loop adjudication.
-
-Transition: A core innovation inside this negotiation loop is how the Mediator dynamically switches communication modes.
+Bounded Agenda Planning & Consensus / HITL Protocol (Fig. 4):
+- Round initialization (1 <= t <= r): The Mediator inspects the current requirements draft, unresolved conflict report, and open issues, organizing them into a four-category agenda: (1) open-question exploration, (2) new-requirement supplementation, (3) requirement trade-off evaluation, and (4) conflict resolution.
+- Consensus evaluation: After participating agents complete their turn on an agenda item, the Mediator checks whether all roles agree on a concrete resolution and no further clarification is requested. Resolved items are recorded in Meeting Minutes (MoM), which directly drive end-of-round updates to the requirements draft, conflict report, and PlantUML diagrams.
+- Deadlock & high-impact escalation: When substantive disagreement persists after deliberation or an issue entails a strategic business trade-off (e.g., strict privacy deletion vs. dispute-audit retention), the Mediator packages competing rationales and candidate options for Human-in-the-Loop adjudication rather than forcing an arbitrary LLM vote.
 -->
 
 ---
@@ -931,14 +931,10 @@ While *Simultaneous-Talk* and *One-by-One* originate from ChatEval [4], PLANT's 
 </div>
 
 <!--
-Key Takeaway: PLANT's Mediator dynamically switches between Simultaneous-Talk for divergent exploration and One-by-One dialogue for convergent conflict resolution.
-
-Talking Points:
-- While Simultaneous-Talk and One-by-One originate from ChatEval, applying only one mode throughout RE causes either anchoring bias or uncoordinated repetition.
-- As shown in the diagram, the Mediator selects Simultaneous-Talk for open questions and new-requirement exploration so Analyst, Expert, and Modeler probe independently without groupthink.
-- For trade-offs and conflict resolution, it switches to One-by-One deliberation so agents directly critique and refine each other's arguments until consensus is reached.
-
-Transition: Now let's move to our empirical evaluation and review the experimental setup and metrics.
+Task-Adaptive Communication Switching (Hybrid-Communication-with-Mediator):
+- Attribution vs. novelty: The paper explicitly notes that Simultaneous-Talk and One-by-One primitives originate from ChatEval (Chan et al. [4]) and are not claimed as new primitives. PLANT's methodological innovation is embedding a dedicated Mediator that dynamically selects and switches between these modes based on the specific RE objective of each agenda item.
+- Divergent Expansion -> Simultaneous-Talk (Issue Types 1 & 2: open questions, new requirements): Analyst, Expert, and Modeler generate probing questions or gap assessments independently within the same turn without viewing peer outputs. This prevents early anchoring, curbs groupthink, and maximizes orthogonal coverage across functional scope, domain compliance, and behavioral states.
+- Convergent Resolution -> One-by-One (Issue Types 3 & 4: trade-offs, conflict resolution): Agents deliberate sequentially (Analyst -> Expert -> Modeler), inspecting preceding arguments to verify whether candidate compromises violate domain laws or state-transition logic until reaching a mutually consistent verdict.
 -->
 
 ---
@@ -969,14 +965,11 @@ Transition: Now let's move to our empirical evaluation and review the experiment
 </div>
 
 <!--
-Key Takeaway: We benchmarked PLANT against a single-agent baseline across 5 systems (103 IRs) and 100 conflict pairs with zero human intervention and an independent GPT-5.2 judge.
-
-Talking Points:
-- To guarantee a strictly automated and fair comparison, HITL was turned off (0 human interventions), temperature was set to 0, and rounds were capped at 20.
-- For RQ1, we measure IRE (recall of unique implicit requirements) and TKQR (an NDCG-style metric rewarding early-turn discovery), judged semantically by an independent GPT-5.2 model.
-- For RQ2, we evaluate Macro F1, Conflict Precision, Recall, and F1 across 70 Hospital Management pairs and 30 Food Delivery pairs on both GPT-4.1 and Gemini 3 Flash.
-
-Transition: Before looking at aggregate scores, let's see a concrete Food Delivery example of multi-angle probing in action.
+Benchmark Design, Baselines & Reproducibility Protocol (Tables 3 & 4):
+- RQ1 Benchmark (103 IRs across 5 systems): Adopts 4 cases from ReqElicitGym [21] (Stock Report, Hospital Management, Ticket Booking, Vocabulary Learning—originally 36 functional IRs covering Interaction, Content, Style) and expands them using ISO/IEC 25010 [20] with 6 NFR categories (Reliability, Compatibility, Flexibility, Performance, Security, Safety) plus a newly constructed 5th multi-stakeholder case, Food Delivery (19 IRs), manually verified for non-overlap.
+- RQ2 Benchmark (100 balanced pairs): Uses all 35 Conflict pairs plus 35 randomly sampled Neutral pairs from the Hospital Management subset of the CN dataset [22] (70 pairs), alongside 30 manually verified balanced pairs (15 Conflict, 15 Neutral) for Food Delivery.
+- Baseline rationale: Compared against a single-agent LLM baseline on identical backbones (GPT-4.1 and Gemini 3 Flash). Peer multi-agent frameworks (MARE, iReDev, MAD) could not be directly executed because MARE/iReDev generate static drafts rather than turn-by-turn ReqElicitGym interviews (and iReDev requires custom domain KGs), while MAD targets requirement type classification without compatible open-source pipelines.
+- Strict automation & metrics: HITL disabled (0 human interventions), temperature = 0, max r = 20 turns (RQ1), 3 independent runs reporting Mean +/- Std (RQ2). An LLM-based oracle simulated user discloses ground-truth IRs only when directly probed; an independent GPT-5.2 LLM-as-a-Judge (following G-Eval [23]) evaluates semantic hits, verified by authors. IRE_t = (E_t / R_t) * 100% measures unique IR recall; TKQR_t applies a 1 / log2(i + 1) logarithmic turn discount to reward early-turn discovery.
 -->
 
 ---
@@ -996,14 +989,13 @@ Under **Simultaneous-Talk**, three agents independently probe the same abnormal-
 </div>
 
 <!--
-Key Takeaway: Under Simultaneous-Talk, Analyst, Expert, and Modeler probe the same abnormal-order scenario from complementary angles, surfacing a hidden privacy requirement.
-
-Talking Points:
-- Look at Table 5: given the exact same abnormal-order scenario, the Analyst asks about customer service availability and the Modeler checks cancellation rules across order lifecycle states.
-- Simultaneously, the Expert asks whether real phone numbers should be hidden in favor of built-in anonymous in-app chat or voice calls.
-- That single Expert question hits a critical security and privacy implicit requirement that was completely absent from the initial problem description.
-
-Transition: How does this multi-angle advantage scale across all 103 implicit requirements in five systems?
+Qualitative Trace of Orthogonal Multi-Angle Probing (Table 5):
+- Scenario: Abnormal order handling in the Food Delivery case under Mediator-selected Simultaneous-Talk.
+- Orthogonal probing in a single turn:
+  - Analyst probes functional exception scope ("all abnormal scenarios vs. specific delays/courier no-shows"), confirming that "contact customer service" must always remain accessible.
+  - Modeler probes lifecycle state constraints ("restricting cancellation by order state"), clarifying state-dependent cancellation tied to refund policies and explicit reason display.
+  - Expert independently probes privacy compliance ("hiding real phone numbers via built-in in-app chat/voice"), directly triggering the oracle stakeholder to reveal a ground-truth Security/Privacy implicit requirement: prohibiting direct exposure of customer and courier phone numbers, favoring anonymous call forwarding with dispute-accessible logs.
+- Diagnostic takeaway: Because agents do not observe each other's draft questions before speaking, functional questioning does not anchor the Expert away from regulatory and privacy auditing.
 -->
 
 ---
@@ -1053,14 +1045,10 @@ Transition: How does this multi-angle advantage scale across all 103 implicit re
 </div>
 
 <!--
-Key Takeaway: PLANT boosts implicit requirement recall by 3.2x on GPT-4.1 (54.28% vs. 16.77%) and 2.5x on Gemini 3 Flash, driven by major breakthroughs in NFR discovery.
-
-Talking Points:
-- Across all five systems, PLANT sustains 13 to 17 productive turns compared to the baseline's premature ~6-turn exit, lifting mean IRE from 16.77% to 54.28% on GPT-4.1 and from 18.90% to 46.79% on Gemini 3 Flash.
-- The left bar chart highlights the NFR breakthrough on GPT-4.1: Security jumps from 2 to 10 out of 12, Safety from 0 to 3, Reliability from 0 to 5, and Performance from 0 to 4.
-- Table 6 confirms that PLANT outperforms the single-agent baseline on every single system case across both LLM backbones.
-
-Transition: Next, let's examine RQ2 — how well does PLANT's One-by-One deliberation detect requirement conflicts?
+Quantitative Analysis of Implicit Requirement Elicitation (Tables 6 & 7):
+- Overall IRE gains: Across all 5 systems, PLANT elevates mean IRE from 16.77% (Std 3.23) to 54.28% (Std 16.78) on GPT-4.1 (54 vs. 17 of 103 IRs; 3.2x gain) and from 18.90% (Std 5.60) to 46.79% (Std 5.44) on Gemini 3 Flash (48 vs. 19 IRs; 2.5x gain). Case-level highlights on GPT-4.1 include Stock Report (82.35% vs. 17.65%) and Food Delivery (63.16% vs. 21.05%).
+- NFR breakthrough (Table 7): Single-agent baselines concentrate on surface Interaction and Content (11/17 hits on GPT-4.1; 13/19 on Gemini 3 Flash) and score 0 on Reliability (0/7), Performance (0/6), and Safety (0/3), with only 2/12 on Security. PLANT (GPT-4.1) uncovers 10/12 Security, 3/3 Safety, 5/7 Reliability, 7/10 Compatibility, and 4/6 Performance (while Style remains 0/10 for PLANT, reflecting its engineering-constraint emphasis).
+- Interaction depth & TKQR nuance: PLANT sustains 17.00 turns (GPT-4.1) and 13.00 turns (Gemini 3 Flash) vs. 6.20 and 6.00 for baselines. PLANT's mean TKQR is slightly lower (54.95% vs. 61.35% on GPT-4.1; 64.87% vs. 70.43% on Gemini 3 Flash) because multi-agent runs invest early turns establishing scope and structural context before uncovering deep NFRs in later turns. The paper notes that IRE is recall-oriented and deeper probing can yield tangential candidates, mitigated in deployment by scope filtering and HITL review.
 -->
 
 ---
@@ -1081,14 +1069,10 @@ Using **One-by-One** deliberation (e.g., *retain complete chat logs* vs. *delete
 </div>
 
 <!--
-Key Takeaway: PLANT raises conflict-class recall to 95.55%–100.00% and improves Conflict F1 by +6.66 to +20.77 points across both datasets and LLM backbones.
-
-Talking Points:
-- Single-agent baselines are overly conservative, missing 20% to 38% of real conflicts — for example, scoring only 61.91% recall on Hospital Management with Gemini 3 Flash.
-- By letting Analyst, Expert, and Modeler cross-check functional rules, privacy obligations, and state transitions one by one, PLANT lifts Conflict Recall to 97.14% on Hospital Management and up to 100.0% on Food Delivery.
-- Importantly, this recall surge preserves strong precision by correctly distinguishing non-conflicting requirements that operate on separate data scopes.
-
-Transition: Impressive quality gains always raise a practical question in RQ3: how much do tokens and runtime cost?
+Quantitative Analysis of Pairwise Conflict Identification (Tables 8 & 9):
+- Deliberation mechanics (Table 8): On a Food Delivery pair pitting "retain complete customer-service conversation records" against "delete chat records and personal contact info after resolution," One-by-One sequential review allows Analyst (contradictory data retention policy), Expert (mutually exclusive personal-data retention vs. deletion obligations), and Modeler (incompatible process/state lifecycle) to converge on Conflict. Conversely, when requirements govern distinct data scopes (e.g., hiding a deleted address from the front-end UI vs. retaining an anonymized hash in backend audit logs), sequential cross-checking prevents false-positive conflict alarms.
+- Hospital Management (70 pairs, Mean +/- Std across 3 runs): Macro F1 jumps from 81.33 +/- 0.00% to 90.91 +/- 1.81% (GPT-4.1) and from 72.52 +/- 0.08% to 89.46 +/- 1.37% (Gemini 3 Flash). Conflict-class Recall surges from 74.29% and 61.91% to 97.14% on both models, lifting Conflict F1 by +11.51 pts (GPT-4.1) and +20.77 pts (Gemini 3 Flash).
+- Food Delivery (30 pairs): Macro F1 rises from 89.90% to 95.55% (GPT-4.1) and from 86.43% to 96.66% (Gemini 3 Flash). Single-agent baselines achieve 100% precision only by being overly conservative—flagging obvious lexical contradictions while missing 20.00% to 26.67% of true conflicts. PLANT raises Conflict Recall to 95.55% (GPT-4.1) and 100.00% (Gemini 3 Flash), lifting Conflict F1 by +6.66 and +12.15 pts.
 -->
 
 ---
@@ -1117,14 +1101,12 @@ Transition: Impressive quality gains always raise a practical question in RQ3: h
 </div>
 
 <!--
-Key Takeaway: PLANT consumes 93x–249x more tokens (~1 hour, US$6.71–$8.14 per system), which is highly cost-effective for compliance-critical projects at ~US$0.14–$0.15 per uncovered IR.
-
-Talking Points:
-- Table 10 lays out the exact trade-off: on GPT-4.1, PLANT averages 3.76M tokens, 3,700 seconds, and $8.14 per system, delivering 9.65% IRE gain per million tokens and $0.1507 per elicited IR.
-- Gemini 3 Flash costs slightly less ($6.71 per system, $0.1399 per IR) but consumes more tokens (9.81M), making GPT-4.1 more token-efficient.
-- In practice, spending ~$7 to $8 and one hour upfront to catch 2.5x to 3.2x more NFRs is far cheaper than late-stage rework, whereas single-agent LLMs remain preferable for rapid sub-minute prototyping.
-
-Transition: Let's also examine what each agent and mechanism contributes to these gains.
+Resource Footprint, Marginal Return & Deployment Economics (Table 10):
+- Per-case resource comparison (averaged over the 5 RQ1 cases):
+  - GPT-4.1: Baseline uses 40.26k tokens, 134s, US$0.1206; PLANT uses 3,761.03k tokens (93.4x), 3,700s (27.6x), and US$8.1368 (67.5x), yielding a marginal IRE gain of 9.65% per additional 1M tokens. Unit cost per elicited IR is 69.65k tokens, 68.51s, and US$0.1507 (vs. 2.37k, 7.85s, US$0.0071 for baseline).
+  - Gemini 3 Flash: Baseline uses 39.43k tokens, 114s, US$0.0688; PLANT uses 9,810.93k tokens (248.8x), 4,173s (36.6x), and US$6.7145 (97.6x), yielding 2.88% IRE gain per additional 1M tokens and US$0.1399 per elicited IR (204.39k tokens, 86.94s).
+- Cross-backbone insight: While Gemini 3 Flash achieves slightly lower total monetary cost ($6.71 vs. $8.14), GPT-4.1 is substantially more token-efficient (3.76M vs. 9.81M tokens; 9.65% vs. 2.88% IRE gain per 1M tokens) and discovers more IRs (54 vs. 48).
+- Practical decision boundary: Because requirements elicitation occurs infrequently at project inception or major releases—and missed NFRs or conflicts are among the costliest post-implementation defects—spending ~1 hour and US$6.71 to $8.14 to uncover 2.5x to 3.2x more implicit requirements is highly economical for medium-to-large, compliance-sensitive, or multi-stakeholder systems. Single-agent LLMs remain preferable for rapid prototyping or sub-minute interactive brainstorming.
 -->
 
 ---
@@ -1154,14 +1136,13 @@ Although a full combinatorial ablation is left for future work, our aspect-level
 </div>
 
 <!--
-Key Takeaway: Aspect-level traces show that Expert drives Security/Safety discovery, Modeler exposes Reliability edge cases, and Mediator prevents anchoring and deadlocks.
-
-Talking Points:
-- While full combinatorial ablation is planned for future work, Table 7 clearly separates component roles: the single-agent baseline (approximating Analyst + User) captures surface interaction and content but scores 0 on Reliability, Performance, and Safety.
-- Adding the Expert directly unlocks Security (9 to 10 of 12), Safety (2 to 3 of 3), and regulatory Compatibility; adding the Modeler uncovers Reliability (2 to 5 of 7) via PlantUML checks.
-- Without the Mediator dynamically switching modes, pure One-by-One risks groupthink while uncoordinated parallel talk leads to redundancy and deadlocks.
-
-Transition: Before concluding, let's candidly review the threats to validity in our study.
+Expected Architectural Contributions & Planned Ablation Design (Section 4.3):
+- Inferring role impact from aspect-level evidence (Table 7) and dialogue traces:
+  - Analyst + User baseline proxy: The single-agent baseline mirrors a solo analyst interviewing a user—capturing primarily Interaction and Content (11/17 GPT-4.1 hits; 13/19 Gemini hits) while scoring 0 on Reliability, Performance, and Safety.
+  - Expert contribution: External regulatory and ISO 25010 auditing directly drives breakthroughs in Security (9 to 10 of 12), Safety (2 to 3 of 3), and regulatory Compatibility (6 to 7 of 10), as well as legal data-retention conflict detection.
+  - Modeler contribution: Formalizing use-case, class, and sequence diagrams via PlantUML validation systematically exposes Reliability requirements (2 to 5 of 7) and state-transition edge cases (e.g., timeout reassignment).
+  - Mediator & Hybrid Communication contribution: Dynamically pairing Simultaneous-Talk (for divergent probing) with One-by-One (for convergent conflict resolution) prevents both the early anchoring of pure sequential brainstorming and the redundant, non-converging chatter of uncoordinated parallel agents.
+- Future controlled ablation: A 4-way ablation (without Mediator, Analyst + User only, without Expert/KB, and One-by-One only) under matched turn and token budgets is prioritized for future work.
 -->
 
 ---
@@ -1193,14 +1174,15 @@ Transition: Before concluding, let's candidly review the threats to validity in 
 </div>
 
 <!--
-Key Takeaway: We identify key internal, construct, and external validity threats — notably budget asymmetry, simulated oracle users, and dataset scale — to guide future validation.
-
-Talking Points:
-- For internal validity, PLANT runs more turns and tokens than the single-agent baseline, so gains reflect both role specialization and deeper interaction; caching live web search snapshots will further improve reproducibility.
-- For construct validity, simulated oracle users may be more cooperative than real clients, and downstream SRS/UML quality was not yet scored quantitatively.
-- For external validity, our 5 systems (103 IRs) and 100 conflict pairs span five domains, and expanding to larger industrial repositories and multi-agent baselines is our next priority.
-
-Transition: Let's wrap up with a visual synthesis of our RQ1 to RQ3 conclusions and our future roadmap.
+Methodological Threats to Validity (Section 4.3):
+- Internal Validity:
+  - Interaction & token budget asymmetry: PLANT runs 13 to 17 turns vs. ~6 turns and consumes 93.4x to 248.8x more tokens; observed IRE gains reflect the combined effect of role specialization and deeper interaction horizons rather than role division alone.
+  - External retrieval reproducibility: Although temperature = 0 and local Document Library files were static, live web search queries can drift over time; caching all external retrieval snapshots will strengthen reproducibility.
+- Construct Validity:
+  - Oracle simulated user & single LLM judge: Following ReqElicitGym [21] and G-Eval [23], RQ1 relies on a simulated user (potentially more cooperative than real stakeholders) and a single GPT-5.2 judge (potential evaluator bias), warranting multi-judge consensus and human-subject interviews.
+  - Recall-only metric & downstream scope: IRE does not penalize false-positive or over-specified candidate requirements (managed in practice via scope filtering and HITL). Additionally, quantitative experiments evaluated upstream elicitation (RQ1) and conflict classification (RQ2) rather than directly scoring downstream SRS quality, hallucination rates, or traceability accuracy.
+- External Validity:
+  - Dataset scale: While the 5 cases (103 IRs) and 100 conflict pairs span finance, healthcare, transportation, education, and e-commerce logistics, larger industrial repositories and task-adapted multi-agent baselines are needed for broader generalization.
 -->
 
 ---
@@ -1218,13 +1200,12 @@ Transition: Let's wrap up with a visual synthesis of our RQ1 to RQ3 conclusions 
 </div>
 
 <!--
-Key Takeaway: PLANT validates that specialized roles and task-adaptive mediation dramatically improve upstream RE completeness and conflict detection at a practical project-inception cost.
-
-Talking Points:
-- The visual synthesis summarizes our three core conclusions: 2.5x to 3.2x higher implicit requirement recall (RQ1), 95.6% to 100% conflict recall (RQ2), and ~$0.14 to $0.15 per IR for high-stakes systems (RQ3).
-- Looking ahead, we focus on three concrete directions: fixed-budget four-way ablations, human practitioner evaluation of SRS and UML artifacts, and feeding PLANT's traceable IEEE 29148 SRS into Specification-Driven Development for automated testing and coding.
-
-Transition: Thank you for your attention — we welcome your questions and discussion.
+Synthesis of Empirical Conclusions & Research Roadmap:
+- Core conclusions across RQ1 to RQ3:
+  - RQ1: Specialized multi-agent probing with external knowledge grounding elevates implicit requirement recall by 2.5x to 3.2x (54.28% on GPT-4.1; 46.79% on Gemini 3 Flash), overcoming single-agent premature termination (~6 turns) and unlocking critical NFRs.
+  - RQ2: Mediator-guided One-by-One deliberation raises Conflict-class Recall to 95.55% to 100.00% and Macro F1 to 89.46% to 96.66%, resolving single-agent conservatism while preserving precision across distinct data scopes.
+  - RQ3: Computational overhead (93.4x to 248.8x tokens; 27.6x to 36.6x runtime; US$6.71 to $8.14 per system) yields ~US$0.14 to $0.15 per uncovered IR, proving practical for high-stakes, compliance-critical inception phases.
+- Three concrete future directions: (1) Controlled fixed-budget ablations and direct comparisons against task-adapted multi-agent baselines; (2) human practitioner evaluation of UML completeness, factual grounding, hallucination rates, and Design Rationale traceability; and (3) feeding PLANT's traceable IEEE 29148 SRS into Specification-Driven Development (SDD, Piskala [24]) for automated test-case and code generation.
 -->
 
 ---
@@ -1246,13 +1227,10 @@ Online Repository & Artifacts: <code>https://dummyjack.github.io/PLANT-Manual/</
 </div>
 
 <!--
-Key Takeaway: Thank the audience, share the public PLANT manual repository, and invite Q&A.
-
-Talking Points:
-- Thank you very much for listening.
-- Our public manual, sample SRS outputs, and artifacts are available at the GitHub Pages link shown here, and we welcome any questions about PLANT's mediation design, evaluation, or future SDD integration.
-
-Transition: Open the floor for Q&A.
+Publication, Artifact Repository & Attribution Summary:
+- Full Citation: Nien-Lin Hsueh and Shu-Hsien Liao, "Enhancing Requirements Engineering Efficiency through a Multi-Agent AI Framework," Journal of Information Science and Engineering (JISE), 2026, Department of Information Engineering and Computer Science, Feng Chia University, Taichung 407, Taiwan.
+- Public Artifacts & Reproducibility Package: Complete system documentation, verbatim agent prompt templates (summarized in Table 4), sample IEEE 29148 SRS outputs, PlantUML diagrams, and Design Rationale logs are openly accessible at https://dummyjack.github.io/PLANT-Manual/.
+- Funding Acknowledgment: Supported by the National Science and Technology Council (NSTC), Taiwan R.O.C., under grant NSTC114-2221-E-035-077.
 -->
 
 <script>

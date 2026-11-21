@@ -549,6 +549,36 @@ section .callout {
   line-height: 1.54;
 }
 
+
+/* Table Breathing Room & Callout Separation */
+section table {
+  margin-top: 12px !important;
+  margin-bottom: 14px !important;
+}
+section table th {
+  padding: 9px 11px !important;
+}
+section table td {
+  padding: 8px 11px !important;
+  line-height: 1.42 !important;
+}
+section .split55 table th,
+section .split64 table th,
+section .split55 table td,
+section .split64 table td {
+  padding: 6px 8px !important;
+}
+section table + .callout,
+section .fig-box + .callout,
+section .two-col + .callout,
+section .three-col + .callout,
+section div + .callout {
+  margin-top: 20px !important;
+}
+section .callout {
+  padding: 12px 18px !important;
+}
+
 </style>
 
 <!-- _class: lead -->
@@ -572,12 +602,12 @@ Published: 10 November 2023 (MDPI Electronics) · Funded by the National Science
 </div>
 
 <!--
-Key Takeaway: We introduce Pytutor, a testing-aware online programming platform, and present an empirical study of novices' programming and testing abilities.
-Talking Points:
-- Hello everyone. Today I am presenting our Electronics 2023 study from Feng Chia University on designing an online programming platform and investigating learners' software-testing ability.
-- We built Pytutor to integrate learner-defined test cases, branch coverage, and mutation testing directly into an automated online judge.
-- Across a 7-week Python course, we examined how CS and Non-CS learners code, test, watch course videos, and perform on formative and summative assessments.
-Transition: Let's begin with an everyday classroom habit that motivated this entire project.
+Bibliographic & Research Overview:
+This article (Hsueh, Lai, & Tseng, Electronics 2023, 12(22), 4596; published 10 November 2023; funded by NSTC grant MOST112-2813-C-035-075-E) presents the design of Pytutor, a testing-aware Online Judge (OJ) platform, and an empirical investigation of novice learners' programming ability, software-testing ability, and online learning behaviors.
+
+Clarification & Scope:
+- Note on Naming (Section 1): Although Pytutor shares a similar name with the well-known code-visualization website Python Tutor (pythontutor.com), the two systems are completely distinct; Pytutor is a full Online Judge system designed around learner-authored Defining Test Cases (DTCs).
+- Core Contribution: Combines software engineering metrics (cyclomatic complexity, branch coverage, mutation testing) with cross-platform behavioral telemetry (Pytutor exercise logs + OpenEdu video logs) across a 7-week Python course enrolling both Computer Science (CS) and Non-CS undergraduates.
 -->
 
 ---
@@ -593,12 +623,11 @@ Transition: Let's begin with an everyday classroom habit that motivated this ent
 </div>
 
 <!--
-Key Takeaway: Traditional online judges foster blind submissions — 23% of exercise attempts are submitted without any testing — whereas Pytutor trains learners to test first.
-Talking Points:
-- Most students using a standard online judge write code, eyeball it, and hit Submit immediately, treating hidden grading tests as a trial-and-error crutch.
-- Even with a penalty in place, our logs revealed that 23% of submissions were sent blindly without running a single open or custom test case.
-- Pytutor flips this mindset by making Defining Test Cases (DTCs), branch coverage, and mutation testing first-class parts of the learning loop.
-Transition: Here is an outline of the six sections we will cover today.
+Empirical Motivation & Central Finding (Table 1):
+This opening contrast highlights a pervasive behavioral flaw documented in Section 4.5.1 (Table 1) of the paper:
+- Blind Submission Rate (23%): Even under a punitive Cautionary Principle that deducts 3 points per formal submission, learners formally submitted 23% of exercise attempts without executing a single Open Test Case (OTC) or Defining Test Case (DTC) beforehand.
+- Under-Utilization of Self-Testing: Learners executed at least one OTC before submission in 59% of exercises, and authored/ran at least one custom DTC in only 44% of exercises, resulting in an average of 1.43 formal submissions per problem.
+- Design Intervention: Conventional OJs evaluate code exclusively via hidden test suites, inadvertently training novices to use the grader as a trial-and-error oracle. Pytutor embeds DTC authoring, branch coverage, and mutation testing directly into the practice loop to cultivate and measure software-testing ability.
 -->
 
 ---
@@ -670,12 +699,14 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for AI-assisted programming e
 </div>
 
 <!--
-Key Takeaway: The presentation moves from motivation and related work to Pytutor's design and SE indicators, empirical RQ1-RQ3 results, and pedagogical takeaways.
-Talking Points:
-- Sections 1 and 2 establish why traditional online judges neglect software testing and where prior empirical studies leave a gap.
-- Section 3 introduces Pytutor's Docker sandbox, three test-case tiers, and our quantitative indicators: Resilience r, PAI, and TEI.
-- Sections 4 through 6 report results from 61 active learners across 50 Python exercises, followed by pedagogical recommendations and future work.
-Transition: Let's start with Section 1 and look closely at the limitations of traditional online judges.
+Paper Structure & Section Mapping:
+The 25-page article is organized into six sections:
+1. Introduction (Section 1): Contrasts competition-oriented vs. educational OJs (Wasik [5]), reviews evidence linking testing to code reliability [7–11], introduces Pytutor, and defines RQ1–RQ3.
+2. Related Work (Section 2): Surveys three threads: importance of software-testing ability [10, 12–15], automated programming assessment platforms [16–24], and test-case quality / testing education systems [13, 25–29].
+3. Methods (Section 3): Details Pytutor's Django MVT architecture (Fig. 1), UI (Figs. 2–3), Docker sandbox security [30–33], learner workflow (Fig. 4), and mathematical definitions of Resilience r, PAI, TQI, TQI+, and TEI (Equations 1–6, Figs. 5–7).
+4. Experiment (Section 4): Describes the 7-week asynchronous OpenEdu + Pytutor course (64 videos, 50 exercises, Fig. 8), participant demographics (69 enrolled, 61 active), data sources, and descriptive statistics (Tables 1–2, Fig. 9).
+5. Discussion (Section 5): Answers RQ1 (four ability quadrants, Fig. 10), RQ2 (CS vs. Non-CS, formative, and summative Mann-Whitney U tests, Figs. 11–16), RQ3 (Spearman correlations, Figs. 17–18), comparison with Yang et al. [11], and study limitations.
+6. Conclusions & Future Work (Section 6): Summarizes pedagogical takeaways and outlines AI virtual tutoring, enhanced web IDE telemetry, and controlled experiments.
 -->
 
 ---
@@ -691,12 +722,10 @@ Transition: Let's start with Section 1 and look closely at the limitations of tr
 </div>
 
 <!--
-Key Takeaway: Traditional educational OJs check code correctness only, missing the pedagogical value of designing test cases to clarify specifications.
-Talking Points:
-- As shown in the comparison diagram, conventional OJs give students a problem statement, accept a code upload, and return a pass-or-fail verdict from hidden tests.
-- Research shows that designing test cases helps novices understand edge cases and write more reliable code, yet standard OJs never measure or reward testing effort.
-- Pytutor bridges this gap by introducing a dedicated Testing Mode and quantifying both programming efficiency and test-suite quality.
-Transition: Guided by this motivation, we formulated three research questions.
+Theoretical Grounding & Pedagogical Rationale:
+- Role of Online Judges: Educational OJs accelerate feedback, reduce grading overhead, improve learning outcomes, and lower dropout rates (Pereira et al. [4]). Wasik [5] distinguishes competition-oriented OJs (leaderboards, limited languages) from educational OJs (broader language support, gamification), while Fu et al. [6] demonstrated real-time learning analytics dashboards (VisOJ) for tracking student error distributions.
+- Why Testing Ability Must Be Cultivated: Empirical studies consistently show that testing strengthens specification comprehension and code reliability: Lemos et al. [7] demonstrated positive impacts of testing education on code reliability; Buffardi & Edwards [8] found strong correlations between early testing quality/quantity and assignment grades; Spacco et al. [9] linked testing habits to improved coding practices; and Fidge & Hogan [10] framed testing ability as "understanding problems" vs. programming ability as "solving problems," noting that novices' testing skills lag substantially behind coding skills.
+- Core Gap: Standard educational OJs only verify submitted code against hidden tests, offering neither practice opportunities nor quantitative evaluation for learner-authored test cases.
 -->
 
 ---
@@ -714,12 +743,11 @@ Using **Pytutor** alongside an asynchronous **OpenEdu** Python course, we invest
 </div>
 
 <!--
-Key Takeaway: We investigate learners' baseline SE abilities and video behaviors (RQ1), differences across majors and score groups (RQ2), and correlations with outcomes (RQ3).
-Talking Points:
-- RQ1 establishes the baseline: how do novices perform on resilience r, PAI, TEI, and OpenEdu video engagement?
-- RQ2 tests a common assumption: do CS majors automatically test better than Non-CS majors, and how do abilities separate high and low scorers in formative versus summative assessments?
-- RQ3 explores how coding ability, testing ability, and video-watching habits correlate with final learning outcomes.
-Transition: Next, let's position Pytutor relative to existing programming platforms and testing studies.
+Operationalization of the Three Research Questions:
+Conducted inside a real 7-week asynchronous Python course combining OpenEdu (video lectures) and Pytutor (coding exercises), the study investigates three progressive questions:
+- RQ1 (Baseline SE Abilities & Online Behaviors): Quantifies learners' distribution across Resilience (r), Programming Ability Index (PAI), Testing Efficiency Index (TEI), four percentile-based ability quadrants (HPHT, HPLT, LPHT, LPLT), submission/testing frequencies, and OpenEdu video engagement (completion rate, playback speed).
+- RQ2 (Group Comparisons Across Major & Assessment Types): Uses non-parametric Mann-Whitney U tests to evaluate whether CS majors (n = 26) differ from Non-CS majors (n = 35) in r, PAI, and TEI, and how these indicators separate median-split high vs. low performers in formative practice (50 exercises) versus summative assessment (40-minute timed exam).
+- RQ3 (Correlational Structure): Applies Spearman's rank correlation across ability indicators, video-watching behaviors, and both formative and summative outcomes to uncover how study habits and testing practices relate to programming achievement.
 -->
 
 ---
@@ -742,12 +770,10 @@ While automated assessment tools accelerate grading and feedback, few combine **
 </div>
 
 <!--
-Key Takeaway: Pytutor is the first educational platform to combine learner-authored DTCs, coverage and mutation metrics, and multi-platform video analytics for both CS and Non-CS novices.
-Talking Points:
-- As summarized in the table, mainstream educational OJs like YOJ, Sakai, Codeflex, and Blockly focus on grading or scaffolding without evaluating learner-authored test suites.
-- Yang et al. (2020) pioneered empirical PAI and TEI evaluation, but their study examined experienced CS students over just three timed tasks without video telemetry.
-- Pytutor extends this line of work to 50 self-paced exercises across both CS and Non-CS novices, integrated with OpenEdu learning logs.
-Transition: Let's move to Section 3 to see how Pytutor is architected under the hood.
+Positioning Pytutor Against Prior Educational Platforms & Studies:
+- Automated Grading & Scaffolding Platforms: Early systems such as YOJ (Sun et al. [16]) and Sakai (Suleman [17]) automated grading and enabled iterative resubmission, leveraging formative feedback (Carless et al. [18], Malmi et al. [19]). Subsequent platforms added timed competition (Codeflex [20]), multi-modality scaffolding including Parsons and Faded Parsons problems (Codespec [21]), visual algorithm animation (Progressive Blockly [22]), and gamification (2TSW [23], Swacha [24], Code Defenders [15]). None evaluate learner-authored test suites via coverage and mutation analysis.
+- Testing-Oriented Assessment Systems: Ala-Mutka [13], Vujosevic-Janicic et al. [25], and Montoya-Dato et al. [26] emphasized that weak test suites misjudge buggy code as correct. Jiang & Deng [27] built an online Selenium script practice tool, Kasahara et al. [28] gamified code quality, and UnitJudge (Garcia-Magarino et al. [29]) used unit tests to localize errors in longer assignments, but did not measure coverage/mutation efficiency of student-designed test inputs.
+- Closest Benchmark (Yang et al., 2020 [11]): Evaluated programming vs. testing ability using coverage and mutation scores, but examined experienced CS undergraduates with prior testing instruction across only 3 timed unit-test assignments and without video/behavioral analytics. Pytutor extends this paradigm to 50 self-paced exercises across CS and Non-CS novices integrated with OpenEdu telemetry.
 -->
 
 ---
@@ -778,12 +804,13 @@ Transition: Let's move to Section 3 to see how Pytutor is architected under the 
 </div>
 
 <!--
-Key Takeaway: Pytutor pairs a Django MVT architecture and ephemeral Docker sandboxes with three test-case tiers and a cautionary -3 point submission rule.
-Talking Points:
-- The pipeline diagram shows how learner code executes inside isolated Docker containers that auto-delete within seconds to guard against infinite loops or unsafe code.
-- We structure testing into three tiers: 2 public Open Test Cases (OTCs), unlimited learner-authored Defining Test Cases (DTCs), and 5 Hidden Test Cases (HTCs) for grading.
-- Pedagogically, we balance the Completion Principle (unlimited resubmissions) with the Cautionary Principle (-3 points per formal submit) to discourage blind trial-and-error.
-Transition: Let's see how this workflow looks from the learner's perspective in Testing Mode.
+System Architecture, Security & Pedagogical Rules (Section 3.1, Figure 1):
+- Django MVT Architecture: Built on Django's Model-View-Template framework for modular extensibility. The Template layer provides a browser-based Python editor and question interface; the View-Control layer invokes the automated assessment engine upon execution/submission; and the Software-Testing module computes branch coverage, mutation scores, and SE indicators (r, PAI, TEI). Design follows Ihantola et al.'s [30] guidelines for usability and safety.
+- Three-Tier Test Case Taxonomy:
+  1. Open Test Cases (OTCs): 2 instructor-provided public examples per exercise allowing basic verification.
+  2. Defining Test Cases (DTCs): Custom inputs authored by learners in Testing Mode; learners must determine expected correctness themselves to probe edge cases.
+  3. Hidden Test Cases (HTCs): 5 predesigned private test cases executed only during Formal Submission to compute scores.
+- Pedagogical Rules & Docker Isolation: The Completion Principle permits unlimited resubmissions until passing all HTCs, while the Cautionary Principle deducts 3 points per formal submission to deter blind guessing. Addressing server security risks [31, 32], every code run spawns a fresh ephemeral Docker container [33] that terminates and self-deletes within seconds, containing infinite loops or malicious scripts.
 -->
 
 ---
@@ -814,12 +841,10 @@ Transition: Let's see how this workflow looks from the learner's perspective in 
 </div>
 
 <!--
-Key Takeaway: Pytutor's Testing Mode displays raw Python error traces, tracks recent test history, and requires explicit confirmation before formal submission.
-Talking Points:
-- Figure 3 shows the Testing Mode interface, where students input custom DTCs, inspect raw Python compilation or runtime errors to practice real debugging, and compare their last three test runs.
-- Figure 4 maps the full workflow: learners iterate freely between OTCs and DTCs until confident, then tick a Confirm Submission checkbox to avoid accidental -3 point deductions.
-- Every testing event and submission attempt is logged seamlessly for downstream SE ability analytics.
-Transition: Now let's look at how we turn those logs into quantitative indicators, starting with Resilience and PAI.
+Interface Structure & Behavioral Logging (Sections 3.1.2 & 3.2, Figures 2–4):
+- Three-Pane Answering Page: Comprises (1) the Question-Information area (title, problem description, and public OTCs, Fig. 2), (2) the Answering area (code editor with Testing Mode vs. Formal Submission Mode), and (3) the Result-Display area (Fig. 3).
+- Testing Mode Pedagogical Features (Figure 3): Displays raw, unmodified Python compiler/runtime error messages so novices learn authentic debugging directly from stack traces rather than sanitized hints. The lower panel allows entering custom DTC inputs and retains a rolling history of the last 3 test runs for side-by-side comparison.
+- Formal Submission Safety Net & Workflow (Figure 4): Learners iterate between coding, OTC checks, and DTC verification (or may bypass testing and submit directly). Formal Submission requires explicitly checking a "Confirm Submission" box to prevent accidental -3 point deductions. Every testing event (code snapshot, test input, output) and formal submission (code, passed HTC count, elapsed time) is logged to the database.
 -->
 
 ---
@@ -862,12 +887,11 @@ Pure assignment scores hide how many setbacks a learner faced. We normalize scor
 </div>
 
 <!--
-Key Takeaway: Programming Ability Index (PAI) normalizes a learner's exercise score by complexity-adjusted resilience r, rewarding high scores achieved with fewer setbacks.
-Talking Points:
-- Raw scores alone cannot tell a student who solved a problem cleanly from one who stumbled through ten failed attempts.
-- We define resilience r = exp(k * (tr - ch_p)), where tr counts setbacks (syntax errors and failed HTC submits) and ch_p is the problem's cyclomatic complexity.
-- As Figure 6 illustrates, dividing score s by r produces PAI: fewer setbacks yield r < 1 and a higher PAI. Across our course, mean PAI reached 121.80, indicating generally efficient problem solving.
-Transition: Next, let's see how we quantify testing ability using TQI and TEI.
+Mathematical Formulation of Resilience (r) & PAI (Sections 3.3.1–3.3.2, Equations 1–3):
+Pure exercise scores fail to distinguish a student who solves a problem cleanly from one who succeeds only after many failed attempts. Extending Xu et al.'s [34] attempt-based proficiency model and Pereira et al.'s [36] resilience construct with McCabe cyclomatic complexity [35], the authors define three linked equations:
+- Equation (1) Resilience: r = exp(k * (tr - ch_p)), with tuning constant k = 0.1 (chosen via Fig. 5 to provide smooth, non-extreme weighting). Here tr is total setback attempts (syntax errors in testing/submissions plus formal submissions failing to pass all HTCs), and ch_p is the program's challenge level (decision count / cyclomatic complexity). At tr = ch_p (the "resilience origin"), r = 1. Values r > 1 indicate high persistence through setbacks; r < 1 indicates solving with fewer setbacks than expected.
+- Equation (3) Base-Adjusted Score: s = base + (100 - base) * p, where base is the minimum score awarded for passing at least one HTC and p is the fraction of HTCs passed.
+- Equation (2) Programming Ability Index: PAI = s / r. At r = 1 ("programming ability origin"), PAI = s. When r < 1 (high efficiency), PAI exceeds s (course mean PAI = 121.80 > 100); when r > 1 (many setbacks), PAI drops below s (Fig. 6). Thus r acts as a dual indicator: persistence on one hand, and inverse coding fluency on the other. Note: unlike Yang et al. [11], code maintainability was omitted because introductory exercises are small.
 -->
 
 ---
@@ -909,12 +933,12 @@ Testing quality combines **branch coverage (<code>b<sub>t</sub></code>)** and **
 </div>
 
 <!--
-Key Takeaway: Testing Efficiency Index (TEI) measures how much a learner's custom DTCs boost branch coverage and mutation killing over baseline OTCs, weighted by test-count efficiency.
-Talking Points:
-- First, Test Quality Index (TQI) takes the geometric mean of branch coverage and mutation score, and TQI+ computes the improvement ratio when adding learner DTCs to baseline OTCs.
-- To ensure writing DTCs is never penalized below doing nothing, learners who use only OTCs get TEI = 1, while DTC authors receive TQI+ * (1 + exp(-k * (te - ch_t))).
-- As shown in Figure 7, achieving strong coverage and mutant killing with concise, targeted test cases yields the highest TEI. However, the course mean was only 1.89.
-Transition: With the metrics defined, let's move to Section 4 and review our 7-week course experiment.
+Mathematical Formulation of TQI, TQI+ & TEI (Section 3.3.3, Equations 4–6):
+Following software-testing literature linking coverage and mutation killing to fault detection [11, 37], testing ability is quantified exclusively from how much a learner's custom DTCs strengthen the baseline OTC suite:
+- Equation (4) Test Quality Index: TQI_t = sqrt(b_t * ms_t), the geometric mean of branch coverage b_t (fraction of code branches executed) and mutation score ms_t (fraction of generated mutants killed), scaled 0–100.
+- Equation (5) Quality Gain Ratio: TQI+ = TQI_OD / TQI_O, comparing the combined OTC + DTC test suite (TQI_OD) against OTC alone (TQI_O).
+- Equation (6) Testing Efficiency Index: If a learner runs only OTCs (te = te_o), TEI = 1 by default (assuming basic testing competence). If the learner authors DTCs (te > te_o), TEI = TQI+ * (1 + exp(-k * (te - ch_t))), where te = total test cases (OTC + DTC), ch_t = expected test count scaling with complexity, and k = 0.1 (Fig. 7).
+- Design Safeguard: Adding "1 +" to the exponential term guarantees that learners willing to write DTCs are never penalized below the baseline TEI = 1 even if their DTCs are numerous or weak. Achieving high TQI+ with concise test sets (te < ch_t, left of the "testing ability origin") yields the highest TEI. Course mean TEI was only 1.89 because many exercises remained at TEI = 1.
 -->
 
 ---
@@ -942,12 +966,11 @@ Transition: With the metrics defined, let's move to Section 4 and review our 7-w
 </div>
 
 <!--
-Key Takeaway: Our 7-week asynchronous Python course analyzed 61 active CS and Non-CS learners across 64 OpenEdu videos and 50 Pytutor exercises.
-Talking Points:
-- The course combined 64 OpenEdu videos across 7 units with 50 Pytutor exercises averaging a cyclomatic complexity of 4.06, supported by five Q&A sessions and MS Teams.
-- Out of 69 enrolled students, 61 active learners (26 CS and 35 Non-CS) completed enough work for full analysis, evaluated via both formative practice scores and a 40-minute summative coding exam.
-- Figure 8 plots baseline OTC TQI across all 50 exercises: while average OTC coverage is high (0.92), several low-TQI exercises urgently require learner-authored DTCs to catch edge cases.
-Transition: Let's examine our first empirical findings for RQ1 on the next slide.
+Experimental Context, Curriculum & Data Sources (Sections 4.1–4.4, Figure 8):
+- Course Structure: A 7-week asynchronous online Python course combining OpenEdu (7 units, 64 prerecorded videos: Units 1–5 cover programming fundamentals, basic structures/operations, logic, and OOP; Units 6–7 cover practical data processing and object design) with Pytutor (50 exercises distributed across Units 1–5 as 1, 9, 13, 18, and 9 problems respectively). Five face-to-face Q&A meetings (following Montoya-Dato et al. [26] on instructor-guided reflection) and a Microsoft Teams channel provided synchronous/asynchronous support.
+- Problem Bank Metrics (Figure 8): Mean cyclomatic complexity = 4.06; each problem includes 2 OTCs and 5 HTCs. Baseline OTCs average 0.92 branch coverage and 0.75 mutation score, though Fig. 8 shows several exercises with very low baseline TQI where learner DTCs are essential to catch faults.
+- Cohort & Filtering: 69 undergraduates enrolled (27 CS, 42 Non-CS; 54 had prior coding experience in some language, 15 had prior Python). Motivations included interest in programming (44), acquiring a second skill (30), online convenience (21), and enrolling with classmates (13). After excluding 8 learners inactive in later weeks, N = 61 active learners (26 CS, 35 Non-CS) entered statistical analysis.
+- Triangulated Measures: Pre-course survey, OpenEdu video event logs (load_video, play_video, seek_video, pause_video, stop_video), Pytutor execution logs, formative score (50-exercise average), and summative score (40-min, 4-question coding exam held 2 weeks after Week 7 release).
 -->
 
 ---
@@ -999,12 +1022,11 @@ Transition: Let's examine our first empirical findings for RQ1 on the next slide
 </div>
 
 <!--
-Key Takeaway: Learners display impatient online habits (2.08x video speed, 56% completion, 23% blind submits), and coding and testing abilities diverge sharply across individuals.
-Talking Points:
-- The top KPI cards highlight impatient study behavior: students watched only 56% of videos at an average 2.08x playback speed, used DTCs in just 44% of exercises, and submitted blindly 23% of the time.
-- In Figure 10, splitting the 61 learners at the 50th percentile into four quadrants reveals a striking split: 39 of 61 learners fall into the mismatched groups — 20 HPLT (high coding, low testing) and 19 LPHT (low coding, high testing).
-- Table 2 confirms solid overall coding (mean PAI 121.80) alongside modest testing efficiency (mean TEI 1.89).
-Transition: Now let's test RQ2a: do CS majors outperform Non-CS majors in both coding and testing?
+Empirical Analysis of RQ1: Engagement & Ability Quadrants (Sections 4.5 & 5.1, Tables 1–2, Figs. 9–10):
+- Engagement Telemetry (Table 1): Despite the -3 point cautionary penalty, learners averaged 1.43 formal submissions per exercise (spending 14.45 min/problem on average), with tr = 3.23 setbacks and te = 3.41 total test cases (executing OTCs 3.96 times and DTCs 2.94 times per question, including reruns). Crucially, 59% ran >= 1 OTC, only 44% ran >= 1 DTC, and 23% submitted blindly with zero testing. On OpenEdu, mean video completion was 56% (median 60%, max 83%) at an average playback speed of 2.08x (median 2.16x, max 2.92x), signaling low learner patience.
+- Proportional Exam Prediction: Given 14.45 min per practice problem, a 40-min, 4-question final exam proportionally predicts ~69% completion; the observed summative mean of 68.04 (median 77.93) closely matches this estimate.
+- Descriptive Distributions (Table 2, Fig. 9): r (mean 1.97, SD 2.82, median 0.99, max 17.53 — strongly right-skewed due to highly persistent outliers); TEI (mean 1.89, SD 0.49, median 1.92, range 1.00–2.99); PAI (mean 121.80, SD 23.64, median 127.55, range 49.18–157.19); Formative (mean 72.66, median 84.08); Summative (mean 68.04, median 77.93).
+- Four Percentile Quadrants (Figure 10): Splitting PAI and TEI at percentile rank 50 (1–50 Low, 51–99 High) yields HPHT = 11, HPLT = 20, LPHT = 19, LPLT = 11. Nearly two-thirds (39/61) exhibit mismatched coding vs. testing profiles.
 -->
 
 ---
@@ -1037,12 +1059,12 @@ Transition: Now let's test RQ2a: do CS majors outperform Non-CS majors in both c
 </div>
 
 <!--
-Key Takeaway: CS majors significantly outperform Non-CS majors in programming ability (p = 0.0003), but show NO significant advantage in testing ability (p = 0.277).
-Talking Points:
-- Look at Figure 11 and the Mann-Whitney U table: 73% of CS majors (19 of 26) fall into the High PAI group, confirming a clear coding advantage over Non-CS peers.
-- Yet on TEI, the difference vanishes completely (p = 0.277): in fact, 54% of Non-CS learners achieved High TEI compared to only 42% of CS majors.
-- Non-CS students also showed higher resilience r (p = 0.001): encountering more errors prompted them to write more DTCs, whereas CS students' confidence often led them to skip testing.
-Transition: Next, let's check how PAI and TEI relate to performance in the 50-exercise formative phase (RQ2b).
+RQ2a Statistical Breakdown: Departmental Background (Section 5.2, Figures 11–12):
+Because indicator distributions violated normality (skewed r and PAI), two-sided Mann-Whitney U tests were used to compare CS (n = 26) and Non-CS (n = 35) learners:
+- Programming Ability (PAI, Fig. 12b): Highly significant advantage for CS majors (p = 0.0003 < 0.05). In Figure 11, 19 of 26 CS students (73%) fall into High PAI (HP), compared with only 12 of 35 Non-CS students (34%), and CS distributions are tighter/more concentrated.
+- Resilience (r, Fig. 12a): Significantly higher among Non-CS majors (p = 0.001 < 0.05). Facing less prior coding fluency, Non-CS students encountered more syntax/logic setbacks yet persisted through repeated iterations.
+- Testing Efficiency (TEI, Fig. 12c): No statistically significant difference (p = 0.277 > 0.05). Counterintuitively, a higher proportion of Non-CS learners achieved High TEI (19/35 = 54%) than CS majors (11/26 = 42%).
+- Behavioral Interpretation: The authors infer that prior coding experience gives CS majors confidence to attain high scores without authoring many DTCs, whereas Non-CS learners proactively write custom DTCs to avoid compilation and grading errors. Consequently, CS enrollment alone does not confer software-testing proficiency.
 -->
 
 ---
@@ -1075,12 +1097,14 @@ Dividing the 61 learners by the formative-assessment median (**84.08**) yields *
 </div>
 
 <!--
-Key Takeaway: In formative practice, BOTH programming ability (p = 0.035) and testing ability (p = 0.036) significantly distinguish high scorers from low scorers.
-Talking Points:
-- Splitting the cohort by the formative median of 84.08 gives 31 high scorers and 30 low scorers.
-- Figure 13 shows that 21 of the 31 high scorers have High TEI — remarkably, 12 of them are LPHT learners who overcame weaker coding fluency through disciplined testing.
-- The boxplots in Figure 14 confirm statistically significant differences for both PAI (p = 0.035) and TEI (p = 0.036), while resilience r is not significant.
-Transition: Does testing ability keep that same advantage during a strict timed final exam? Let's check RQ2c.
+RQ2b Statistical Breakdown: Formative Learning Phase (Section 5.2, Figures 13–14):
+Splitting the 61 active learners at the formative-assessment median (84.08 across 50 Pytutor exercises) produced 31 high-scoring and 30 low-scoring learners:
+- Ability Quadrant Distribution (Figure 13): Among the 31 formative high scorers, 21 (68%) belong to the High Testing Ability (HT) quadrants — specifically 9 HPHT and 12 LPHT learners. Notably, 12 learners with below-median programming fluency (Low PAI) still reached the top half of formative scores by leveraging disciplined DTC testing.
+- Mann-Whitney U Results (Figure 14):
+  - Resilience r (Fig. 14a): p = 0.153 (not significant) — persistence alone does not guarantee high formative scores without effective coding or testing strategies.
+  - PAI (Fig. 14b): p = 0.035 (significant) — higher coding efficiency separates top formative performers.
+  - TEI (Fig. 14c): p = 0.036 (significant) — higher testing efficiency independently and significantly distinguishes high scorers from low scorers during self-paced practice.
+- Pedagogical Insight: In untimed formative learning, strong testing ability acts as a compensatory scaffold that enables novices to catch edge-case defects before incurring formal submission penalties.
 -->
 
 ---
@@ -1113,12 +1137,14 @@ Dividing learners by the summative-exam median (**77.93**; 4 questions in **40 m
 </div>
 
 <!--
-Key Takeaway: Under strict 40-minute final-exam pressure, programming ability (PAI, p = 0.016) is the sole significant differentiator, while TEI shows no effect (p = 0.93).
-Talking Points:
-- Splitting learners at the summative exam median of 77.93 shifts the pattern noticeably: 18 of 31 high achievers are High PAI coders (Figure 15).
-- In Figure 16, PAI remains statistically significant (p = 0.016), whereas TEI drops completely to p = 0.93.
-- The reason is practical: answering four coding questions in 40 minutes leaves little time to craft thorough DTCs, so rapid, low-error coding proficiency dominates timed exams.
-Transition: Let's tie all abilities, video behaviors, and scores together through Spearman correlation analysis in RQ3.
+RQ2c Statistical Breakdown: Timed Summative Exam (Section 5.2, Figures 15–16):
+Splitting the 61 learners at the summative final-exam median (77.93 on a 40-minute, 4-question programming exam held two weeks after Week 7) yields 31 high achievers and 30 low achievers:
+- Ability Quadrant Shift (Figure 15): In the high-score group, High PAI learners dominate (18 HP vs. 13 LP), reversing the low-score group (13 HP vs. 17 LP).
+- Mann-Whitney U Results (Figure 16):
+  - Resilience r (Fig. 16a): p = 0.105 (not significant).
+  - PAI (Fig. 16b): p = 0.016 (statistically significant) — programming proficiency is the sole significant differentiator of exam performance.
+  - TEI (Fig. 16c): p = 0.93 (completely non-significant).
+- Contextual Explanation: Under severe time constraints (~10 minutes per coding problem), learners lack the temporal margin to design comprehensive DTC suites and iterate through coverage/mutation checks. Furthermore, the timed exam emphasizes conceptual mastery and rapid, low-error implementation, giving high-PAI coders a decisive competitive advantage.
 -->
 
 ---
@@ -1152,12 +1178,16 @@ Transition: Let's tie all abilities, video behaviors, and scores together throug
 </div>
 
 <!--
-Key Takeaway: Coding and testing are negatively correlated (PAI vs. TEI = -0.39), while thorough video watching boosts testing (+0.33) and rushing playback hurts coding (-0.24).
-Talking Points:
-- In Figure 17, resilience r correlates positively with TEI (+0.50) because encountering errors drives learners to debug with DTCs, while PAI and TEI correlate negatively (-0.39), reinforcing that coding and testing are distinct skills.
-- Figure 18 links OpenEdu video habits to performance: higher video completion correlates positively with TEI (+0.33), whereas cranking up playback speed correlates negatively with PAI (-0.24).
-- Finally, PAI predicts both formative (+0.35) and summative (+0.38) scores, whereas TEI specifically lifts formative performance (+0.26) rather than timed exams (+0.073).
-Transition: Let's move to Section 5 to compare our findings with prior literature and discuss key limitations.
+RQ3 Correlational Network: Abilities, Video Telemetry & Grades (Section 5.3, Figures 17–18):
+Spearman's rank correlation heatmaps uncover three structural relationships across the 61 learners:
+1. Inter-Indicator Structure (Figure 17):
+   - PAI vs. r = -0.863 (strong negative): Mathematically expected since PAI = s / r, reflecting that fluent coders encounter fewer setbacks.
+   - r vs. TEI = +0.50 (moderate positive): Learners who hit more syntax/logic errors actively engage in multiple rounds of DTC testing to debug their code.
+   - PAI vs. TEI = -0.385 (moderate negative): Confirms that programming fluency and testing diligence are distinct constructs; strong coders often pass introductory exercises without thorough DTC authoring.
+2. OpenEdu Video Behaviors vs. Abilities (Figure 18):
+   - Video Completion vs. TEI = +0.331 (moderate positive): Diligent learners who watch more lecture content also test more thoroughly; completion has near-zero correlation with r (+0.111) and PAI.
+   - Playback Speed vs. PAI = -0.24 (negative), vs. r = +0.203 (positive), vs. TEI = +0.237 (low positive): Rushing videos at high speed impairs conceptual comprehension, raising coding errors (lower PAI, higher r) and forcing compensatory testing (higher TEI).
+3. Outcomes: PAI correlates moderately with both Formative (+0.35) and Summative (+0.38) scores; TEI correlates positively with Formative (+0.26) but not Summative (+0.073); r shows weak negative correlations with both assessments.
 -->
 
 ---
@@ -1184,11 +1214,13 @@ Transition: Let's move to Section 5 to compare our findings with prior literatur
 </div>
 
 <!--
-Key Takeaway: Our findings corroborate Yang et al. (2020) across a much larger 50-exercise novice cohort, while highlighting three concrete study limitations.
-Talking Points:
-- Like Yang et al. (2020), we confirm that strong coders are not automatically strong testers; our contribution extends this insight from 3 timed CS tasks to 50 self-paced exercises across CS and Non-CS novices with video analytics.
-- On the right, we note three limitations: several exercises had baseline OTC TQI above 80, leaving limited room for DTC gains; testing theory was not explicitly taught; and Pytutor cannot observe off-platform local IDE editing.
-Transition: Based on these insights and limitations, what should instructors change in their courses?
+Cross-Study Synthesis & Methodological Limitations (Sections 5.4 & 5.5):
+- Positioning Against Automated Assessment Platforms: Unlike YOJ [16], Sakai [17], and Codeflex [20], Pytutor lets instructors vary difficulty while requiring learners to design DTCs; like Codespec's [21] multi-skill focus, Pytutor allows instructors to seed starter/buggy code to target debugging skills directly.
+- Detailed Comparison with Yang et al. (2020) [11]: Both studies converge on a crucial empirical truth — strong programming skill does not guarantee strong testing ability (nearly half of high-PAI coders exhibit low TEI, while low-PAI learners can excel in TEI). Key extensions: Yang et al. studied experienced CS undergraduates with prior testing training on 3 timed unit-test tasks (Pearson r); Pytutor scales to 50 self-paced exercises across CS and Non-CS novices without prior testing training, adds OpenEdu video telemetry, and applies non-parametric Spearman/Mann-Whitney statistics.
+- Three Explicit Study Limitations (Section 5.5):
+  1. Ceiling Effect on Baseline OTCs: Several exercises had baseline TQI_O > 80, leaving narrow headroom for learner DTCs to raise TQI+ and compressing TEI variance.
+  2. Untaught Testing Methodology: Because formal testing techniques (boundary value analysis, equivalence partitioning) were not taught, TEI captured novices' "natural sensitivity" to test cases rather than trained testing skill.
+  3. Off-Platform IDE Blind Spot: Pytutor cannot observe whether students author and test code locally in an external IDE (e.g., VS Code, PyCharm) before pasting a polished solution into the web editor.
 -->
 
 ---
@@ -1223,12 +1255,11 @@ Our empirical evidence yields three concrete recommendations for CS1 &amp; onlin
 </div>
 
 <!--
-Key Takeaway: Instructors should explicitly teach testing to all majors, micro-segment lecture videos, and design "test-hungry" exercises with modest public OTC coverage.
-Talking Points:
-- First, teach black-box and boundary-value testing to both CS and Non-CS students, since CS majors show no natural testing advantage and strong testing helps weaker coders excel.
-- Second, break long recordings into short, single-concept micro-videos to counter the 56% completion rate and 2.08x speed-watching that hurts coding accuracy.
-- Third, intentionally keep public OTC TQI below 70 and pair the -3 point cautionary rule with instant coverage feedback so students must write DTCs to uncover edge cases.
-Transition: Let's conclude with a visual synthesis of RQ1 through RQ3 and our roadmap for future work.
+Evidence-Based Recommendations for Programming Curricula (Sections 5.1, 5.2, 5.5 & 6):
+Translating the empirical findings from 61 learners across 50 exercises into actionable instructional design yields three concrete interventions:
+1. Embed Software-Testing Instruction for ALL Majors: In the Taiwanese university context studied, CS majors showed no natural TEI advantage over Non-CS peers (p = 0.277), yet strong testing enabled 12 LPHT novices to reach the top half of formative scores. Introductory programming courses (both CS1 and non-major Python) should explicitly teach black-box test design, boundary cases, and equivalence partitioning alongside syntax.
+2. Micro-Segment Video Lectures into Knowledge-Point Clips: Because learners averaged only 56% video completion at 2.08x playback speed — and accelerated viewing correlated negatively with PAI (-0.24) and positively with setbacks r (+0.203) — long recordings should be partitioned into concise, single-concept micro-videos to sustain attention and prevent superficial comprehension.
+3. Engineer "Test-Hungry" Exercises: To eliminate the TQI_O > 80 ceiling effect (Section 5.5), instructors should deliberately calibrate public OTC coverage to remain modest (e.g., TQI_O < 70), pairing the -3 point Cautionary Principle with immediate DTC coverage/mutation feedback so students must write meaningful DTCs to uncover hidden edge cases.
 -->
 
 ---
@@ -1246,11 +1277,13 @@ Transition: Let's conclude with a visual synthesis of RQ1 through RQ3 and our ro
 </div>
 
 <!--
-Key Takeaway: Pytutor reveals that coding and testing are distinct skills shaped by study habits, pointing toward AI Socratic tutoring, richer online IDEs, and controlled experiments.
-Talking Points:
-- The visual synthesis brings all three RQs together: novices rush videos and blind-submit 23% of exercises; CS majors lead in PAI but not TEI; and testing lifts formative scores while coding speed governs timed exams.
-- Moving forward, we plan to integrate a Socratic generative AI assistant to guide edge-case thinking without leaking answers, upgrade the web IDE to capture on-platform editing telemetry, and run controlled experimental studies.
-Transition: Thank you for your attention; let's move to the closing slide for questions.
+Summary of Contributions & Future Research Agenda (Section 6):
+Pytutor demonstrates how an educational Online Judge can move beyond binary HTC pass/fail grading by integrating learner-defined test cases (DTCs), cyclomatic-complexity-adjusted resilience (r) and PAI, and coverage/mutation-based TEI. Across 61 active learners and 50 exercises, the study establishes that (1) novices exhibit impatient online habits (56% video completion at 2.08x speed, 23% blind submits), (2) CS majors surpass Non-CS majors in PAI (p = 0.0003) but not TEI (p = 0.277), and (3) both PAI and TEI drive formative success while PAI alone governs 40-minute timed exams.
+
+Three Future Directions in the Era of AI-Assisted Programming (citing Welsh [38]):
+1. Socratic AI Virtual Teaching Assistant: Leverage generative AI to guide learners toward discovering edge cases and debugging strategies through questioning — explicitly avoiding the pitfall of handing out direct code solutions.
+2. Enhanced Web IDE & Fine-Grained Telemetry: Upgrade Pytutor's in-browser editor so learners prefer coding on-platform rather than in local IDEs, enabling keystroke-level, edit-compile-test behavioral analytics.
+3. Experimental vs. Control Group Validation: Conduct randomized or quasi-experimental controlled trials in future offerings to establish the causal learning gains of testing-integrated OJs over conventional OJs.
 -->
 
 ---
@@ -1272,11 +1305,10 @@ Journal Article: <code>Electronics 2023, 12(22), 4596</code> · <code>https://do
 </div>
 
 <!--
-Key Takeaway: Thank the audience and invite questions on Pytutor, SE ability metrics, and testing-integrated programming education.
-Talking Points:
-- Thank you very much for joining this presentation. You can access the full Electronics 2023 article via the DOI listed on screen.
-- I welcome any questions or suggestions about Pytutor's architecture, PAI and TEI metrics, or classroom deployment.
-Transition: Open the floor for Q&A.
+Reference & Reproducibility Information:
+- Full Citation: Hsueh, N.-L.; Lai, L.-C.; Tseng, W.-H. Design of an Online Programming Platform and a Study on Learners' Testing Ability. Electronics 2023, 12(22), 4596. DOI: https://doi.org/10.3390/electronics12224596 (Open Access, CC BY 4.0).
+- Core Formulas & Figures in Published Article: System architecture & workflow (Figs. 1–4), Resilience r, PAI, TQI, TQI+, and TEI equations (Eqs. 1–6; Figs. 5–7), 50-exercise TQI distribution (Fig. 8), engagement & descriptive statistics (Tables 1–2; Figs. 9–10), Mann-Whitney U group comparisons (Figs. 11–16), and Spearman correlation heatmaps (Figs. 17–18).
+- Funding & Data Availability: Supported by the National Science and Technology Council (NSTC), Taiwan R.O.C., grant MOST112-2813-C-035-075-E. Learner-level logs are available upon request from the corresponding author (nlhsueh@fcu.edu.tw) subject to student privacy protections.
 -->
 
 <script>

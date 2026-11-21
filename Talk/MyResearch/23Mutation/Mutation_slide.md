@@ -582,6 +582,36 @@ section .callout {
   line-height: 1.54;
 }
 
+
+/* Table Breathing Room & Callout Separation */
+section table {
+  margin-top: 12px !important;
+  margin-bottom: 14px !important;
+}
+section table th {
+  padding: 9px 11px !important;
+}
+section table td {
+  padding: 8px 11px !important;
+  line-height: 1.42 !important;
+}
+section .split55 table th,
+section .split64 table th,
+section .split55 table td,
+section .split64 table td {
+  padding: 6px 8px !important;
+}
+section table + .callout,
+section .fig-box + .callout,
+section .two-col + .callout,
+section .three-col + .callout,
+section div + .callout {
+  margin-top: 20px !important;
+}
+section .callout {
+  padding: 12px 18px !important;
+}
+
 </style>
 
 <!-- _class: lead -->
@@ -605,11 +635,11 @@ Published in International Journal of Information and Education Technology (pp. 
 </div>
 
 <!--
-Key Takeaway: We present Code Immunity Boost (CIB) and Code Vaccine Incubator (CVI), a gamified learning platform that transforms mutation testing education into an interactive vaccine-development mission.
-Talking Points:
-- Welcome everyone. This work, published in IJIET 2023 by our team at Feng Chia University, tackles a persistent pain point in software testing courses: teaching mutation testing effectively.
-- Instead of asking students to trace mutants by hand, we turn the workflow into an engaging immune-defense game backed by an automated mutant generator.
-Transition: Let's start with a quick visual contrast of why traditional mutation testing classrooms struggle.
+Paper Context & Contribution:
+- Bibliographic Record: Hsueh, N.-L., Xuan, Z. H., & Daramsenge, B. (2023). "Design and Implementation of Gamified Learning System for Mutation Testing." International Journal of Information and Education Technology (IJIET), 13(7), 1150–1155. DOI: 10.18178/ijiet.2023.13.7.1916. Manuscript received Dec 20, 2022; revised Jan 28, 2023; accepted Feb 12, 2023; supported by MOST grant 110-2221-E-035-031-MY2.
+- Core Research Problem: While mutation testing is a well-established fault-based method for evaluating unit test suite adequacy, university curricula emphasize coding over software quality assurance, leaving students undertrained in systematic test design.
+- Dual Artifacts Built: The paper contributes (1) Code Immunity Boost (CIB), a gamified web-based learning platform modeled on vaccine development and human immunity, and (2) Code Vaccine Incubator (CVI), an automated mutant generator that produces large mutant pools from classic mutation-testing benchmarks to serve as the experimental cornerstone.
+- Author Roles: Nien-Lin Hsueh directed the research design, Zeng Hung Xuan implemented the CIB/CVI software architecture, and Bilegjargal Daramsenge authored the manuscript.
 -->
 
 ---
@@ -625,11 +655,10 @@ Transition: Let's start with a quick visual contrast of why traditional mutation
 </div>
 
 <!--
-Key Takeaway: Manual mutation testing quickly exhausts student motivation, whereas CIB reframes the same rigor as a vaccine-development game.
-Talking Points:
-- On the left, you see the classic classroom reality: students drowning in paper mutant sheets, manually tracing outputs and losing enthusiasm as soon as programs get non-trivial.
-- On the right is Code Immunity Boost: the program becomes a Human Body, mutants become Vaccines, and student-written test cases become Leukocytes hunting those mutants.
-Transition: Here is the roadmap for how we designed, built, and evaluated this system.
+Pedagogical Rationale for the Immune-System Framing:
+- Cognitive Bottleneck of Manual Mutation Testing: Without tool automation, learners must manually inspect each mutant, mentally simulate or hand-trace program execution against candidate test inputs, record outputs, and tally the mutation score. As program branching complexity rises, this clerical overhead rapidly eclipses conceptual learning and extinguishes student motivation.
+- Structural Mapping of the Metaphor: CIB reframes mutation testing as a biological defense cycle. The program under test corresponds to the Human Body, injected faults (mutants) act as weakened Vaccines that stimulate defense training, student-authored test cases serve as Leukocytes that hunt and neutralize mutants, and real production bugs correspond to Pathogens prevented by an upgraded immune system.
+- Instructional Value: Translating abstract fault-injection terminology into a familiar biological narrative lowers the initial conceptual barrier for computer science novices while preserving the exact mathematical rigor of mutation testing.
 -->
 
 ---
@@ -701,11 +730,12 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for Online Judge integration.
 </div>
 
 <!--
-Key Takeaway: Our talk covers six parts, from motivation and mutation testing basics to CIB's architecture, pilot results, and future roadmap.
-Talking Points:
-- First, we explain why software testing education lags in gamification and introduce our three research questions.
-- Next, we walk through CIB's biological metaphor, Octalysis game mechanics, and six-module architecture, followed by our pilot experiment comparing CIB against handwriting.
-Transition: Let's dive into Section 1 to see why gamification is especially needed in software testing.
+Structure of the Paper (Sections I to V):
+- Section I (Introduction): Establishes the imbalance between programming instruction and software testing education, synthesizes findings from Mauricio et al.'s (2018) systematic mapping of 156 SE gamification studies, and positions CIB/CVI relative to Code Defenders.
+- Section II (Background and Related Work): Formalizes the iterative mutant-killing cycle, equivalent mutants, and the Mutation Score (ms) metric (DeMillo et al., 1978), followed by a critical comparison with Code Defenders (Rojas & Fraser, 2016; 2017; Fraser et al., 2019).
+- Section III (Game Design and Tool Implementation): Details the immune-system analogy (Fig. 1), three Octalysis core drives, seven classic benchmark programs (Jia & Harman, 2009), fragility-calibrated four-tier level design (Fig. 2), Python unittest gameplay workflow (Fig. 3, Table I), and the six-module system architecture (Fig. 4).
+- Section IV (Pilot Experiments): Reports a controlled pilot study (N = 10 IECS novices) comparing CIB against manual handwriting across three benchmarks (Tables II to VI; Figs. 5 and 6) using descriptive statistics and an 11-item Likert survey adapted from Barrio et al. (2015).
+- Section V (Conclusion): Synthesizes empirical trade-offs between automated and manual learning and outlines integration with Online Judge systems.
 -->
 
 ---
@@ -721,12 +751,11 @@ Transition: Let's dive into Section 1 to see why gamification is especially need
 </div>
 
 <!--
-Key Takeaway: Software engineering gamification is proven to boost engagement, yet software testing remains severely underrepresented.
-Talking Points:
-- A systematic mapping of 156 SE gamification studies shows strong gains in student participation and knowledge across design and process courses.
-- However, software testing—and mutation testing in particular—still relies heavily on tedious manual exercises where high cognitive overhead kills motivation.
-- As the diagram illustrates, CIB replaces that manual bottleneck with instant automated execution and game feedback.
-Transition: With that motivation in mind, let's look at the three research questions guiding our pilot study.
+Literature Grounding & Research Motivation (Section I):
+- Curriculum Imbalance: Software engineering students receive extensive training in programming, version control, requirements, and architecture, yet software testing and program quality receive disproportionately little pedagogical support (Refs. [1–4]). Competent programmers frequently lack the skills to systematically verify and strengthen their own code.
+- Evidence from SE Gamification (Mauricio et al., 2018 [15]): A systematic mapping study of 156 papers demonstrated that gamification yields four documented benefits in SE education: (1) higher course participation, (2) improved professional knowledge, (3) stronger adoption of SE practices, and (4) enhanced teamwork skills. Common mechanics include leaderboards, points, milestones, levels, paths, progress indicators, competition, and rewards.
+- Domain Underrepresentation: Across the 156 mapped studies, gamification concentrates heavily in software design, software process, and requirements analysis, whereas software testing accounts for a notably small fraction.
+- Pandemic-Era Design Inspiration: Combining the precedent of Code Defenders [16] with public familiarity around vaccination during the COVID-19 pandemic, the authors designed CIB to make fault-based testing both conceptually intuitive and intrinsically motivating.
 -->
 
 ---
@@ -744,12 +773,11 @@ We evaluate **Code Immunity Boost (CIB)** in a pilot study asking *"How do stude
 </div>
 
 <!--
-Key Takeaway: Our pilot study investigates how CIB affects test productivity (RQ1), trial-and-error feedback dynamics (RQ2), and student motivation and learning outcomes (RQ3).
-Talking Points:
-- RQ1 measures whether automated gamification helps novices write more total and valid test cases than paper-based handwriting.
-- RQ2 unpacks an intriguing pattern: why automated learners submit more invalid attempts, and how instant feedback turns those errors into productive iteration.
-- RQ3 evaluates students' Motivation, Attention, and self-reported Learning Performance via a 5-point Likert survey.
-Transition: Before introducing the game, let's briefly review how mutation testing and the Mutation Score work.
+Pilot Study Inquiry Framework (Section IV.A):
+- Guiding Overarching Question: The pilot evaluation is organized around the core empirical question, "How do students learn by using the CIB tool?" Rather than claiming definitive statistical proof from a small sample, the study validates operational feasibility, tool usability, and behavioral learning patterns prior to full-scale classroom deployment.
+- RQ1 (Test Case Productivity & Validity): Operationalized by comparing total submitted test cases and valid (compilable, executable) test cases between the CIB experimental group and the manual handwriting control group across three progressively complex benchmarks (Euclidean GCD, Interpolation Search, Triangle).
+- RQ2 (Feedback Loop & Invalid Submissions): Examines the proportion of uncompilable or failing submissions across groups and tasks. This directly investigates whether rapid automated error messages encourage iterative trial-and-error refinement rather than discouraging students.
+- RQ3 (Affective & Cognitive Perception): Assessed via an 11-item, 5-point Likert questionnaire adapted from Barrio et al. (2015) [21], decomposed into Motivation (Q1-1 to Q1-5*), Attention (Q2-1 to Q2-3), and Learning Outcome/Performance (Q3-1 to Q3-3*), where asterisked items specifically measure CIB relative to traditional instruction.
 -->
 
 ---
@@ -770,12 +798,11 @@ Transition: Before introducing the game, let's briefly review how mutation testi
 </div>
 
 <!--
-Key Takeaway: Mutation testing evaluates test suite strength by injecting small faults (mutants) and measuring the Mutation Score (ms).
-Talking Points:
-- As shown in the cycle diagram, we take an original program, generate slightly modified mutants, and run the student's test suite against both.
-- If a test produces a different output on a mutant, that mutant is "killed"; otherwise it survives.
-- The Mutation Score equals killed mutants divided by all non-equivalent mutants, ranging from 0.0 to 1.0, where higher scores mean stronger fault-detection power.
-Transition: Now let's compare CIB against existing gamified tools, especially Code Defenders.
+Formal Mechanics of Mutation Testing (Section II):
+- Theoretical Foundation: Originally introduced by DeMillo, Lipton, and Sayward (1978) [17], mutation testing evaluates the fault-detection adequacy of a unit test suite by generating syntactically similar program variants (mutants), each injecting a small fault into the original program.
+- Execution & Classification Protocol: The test suite executes against both the original program and every generated mutant. If the outputs match, the test suite failed to expose the injected fault and the mutant remains alive, signaling a coverage gap that requires stronger test cases. If the outputs diverge, the mutant is killed and removed from the active mutant set.
+- Equivalent Mutants (equiv): Some syntactic mutations preserve the exact semantic behavior of the original program for all possible inputs. Because no test case can distinguish an equivalent mutant from the original program, equivalent mutants are excluded from the denominator of the Mutation Score.
+- Formula Definition: ms = killed / (all - equiv), bounded in [0.0, 1.0]. The Mutation Score quantifies the proportion of killable mutants detected by the test suite; values closer to 1.0 denote stronger fault-detection capability and more thorough boundary/logic testing.
 -->
 
 ---
@@ -795,12 +822,11 @@ While **Code Defenders** [16, 18, 19] pioneered gamified mutation testing via 2-
 </div>
 
 <!--
-Key Takeaway: CIB overcomes Code Defenders' peer skill-mismatch problem by offering structured solo progression with fragility-calibrated difficulty levels.
-Talking Points:
-- Code Defenders pioneered two-player Attacker-versus-Defender mutation testing, but in real classrooms a wide skill gap between paired students often frustrates the weaker partner.
-- Its AI mode also lacks an explicit quantitative difficulty index to guide novices smoothly from easy to hard tasks.
-- Our approach pairs CIB with CVI, an automated mutant pool calibrated by mutant fragility, enabling self-paced solo mastery.
-Transition: Let's see how we translated these mechanics into an intuitive immune-system metaphor.
+Comparative Analysis with Code Defenders (Section II.A):
+- Pioneering Precedent: Rojas and Fraser (2016, 2017) and Fraser et al. (2019) [16, 18, 19] developed Code Defenders, a competitive two-player mutation testing game in which an Attacker crafts subtle mutants to survive while a Defender authors unit tests to kill them.
+- Two-Player Classroom Limitation: Because Code Defenders originally required at least two human players per match, wide proficiency gaps between paired students frequently cause the weaker participant to experience frustration and disengagement.
+- Single-Player AI Limitation: Although later versions of Code Defenders added a computer-controlled opponent for solo play, the paper notes that its single-player mode lacks an explicit, quantitative difficulty index and cannot fully replicate the pedagogical balance of well-matched two-player play.
+- CIB + CVI Design Contribution: To resolve both peer mismatch and uncalibrated solo difficulty, CIB operates as a structured solo progression environment backed by CVI (Code Vaccine Incubator). By indexing pre-generated mutant pools via quantitative mutant fragility across four tiers, learners progress at their own pace from simple to subtle faults while still experiencing both test-authoring and mutant-authoring roles.
 -->
 
 ---
@@ -835,12 +861,11 @@ Transition: Let's see how we translated these mechanics into an intuitive immune
 </div>
 
 <!--
-Key Takeaway: CIB maps core mutation testing concepts directly onto an immune-system analogy so novices grasp metrics intuitively.
-Talking Points:
-- In Figure 1, the Human Body represents the program under test, Vaccines represent injected mutants, and Leukocytes represent test cases that detect and neutralize them.
-- Real software bugs act as Pathogens that the strengthened immune system prevents.
-- Crucially, the two formulas map directly to game scores: Immunity equals Mutation Score (ms), and Vaccine Efficacy equals 1 minus fragility.
-Transition: Beyond the metaphor, let's examine the Octalysis gamification drives and benchmark suite behind CIB.
+Biological Analogy & Metric Translation (Section III.A & III.E):
+- Dual-Role Conceptual Model (Fig. 1): Students interact with the program-test-mutant triad from two complementary perspectives. Playing the Vaccine role means authoring mutants that challenge existing test suites to expose weak assertions; playing the Leukocyte role means writing unit tests that detect and eliminate mutants, thereby fortifying the Human Body (program) against real Pathogens (software errors).
+- Immunity Metric: Immunity = Mutation Score (ms) = killed / (all - equiv). In the narrative, higher immunity represents a stronger leukocyte population capable of neutralizing more invading mutants, directly teaching students how test-suite fault detection is quantified.
+- Vaccine Efficacy Metric: Vaccine Efficacy = 1 - fragility. Mutant fragility measures how easily a mutant is killed by a reference set of test cases (higher fragility means easily detected/trivial faults; lower fragility means subtle, hard-to-kill faults). Consequently, a mutant with low fragility yields high Vaccine Efficacy (closer to 1.0), representing a strong "vaccine" that forces test suites to become more rigorous.
+- Pedagogical Coupling: Regardless of which role a student plays, every action requires reasoning about the behavioral boundary between the original program and its mutants.
 -->
 
 ---
@@ -887,12 +912,11 @@ CIB embeds **three core drives from the Octalysis gamification framework** to su
 </div>
 
 <!--
-Key Takeaway: CIB embeds three Octalysis core drives—Epic Meaning, Accomplishment, and Empowerment—across seven classic mutation-testing benchmarks.
-Talking Points:
-- Inspired by the COVID-19 era, Epic Meaning frames testing as a vaccine-development mission rather than a dry homework sheet.
-- Accomplishment uses Immunity progress bars and rankings to motivate students to push past minimum thresholds, while Empowerment lets them play both Leukocyte and Vaccine roles.
-- To power these levels, our Code Vaccine Incubator (CVI) generates mutant pools across seven classic benchmarks, from Triangle and GCD to Binary and Interpolation Search.
-Transition: Let's look at how these benchmarks are organized into progressive difficulty tiers.
+Octalysis Gamification Framework & CVI Benchmark Pool (Section III.B & III.C):
+- Core Drive 1 (Epic Meaning & Calling): Frames the learning environment as a global effort to combat raging pathogens (inspired by the COVID-19 pandemic). Students believe they are contributing to a mission larger than routine homework by developing vaccines (mutants) and training leukocytes (test cases) to reduce program error risk.
+- Core Drive 2 (Development & Accomplishment): Operationalizes measurable mastery through status points (Immunity and Vaccine Efficacy) and visual progress bars. Progress bars exploit the psychological urge to fill incomplete graphics, rewarding incremental gains and reinforcing the formal definitions of ms and fragility simultaneously.
+- Core Drive 3 (Empowerment of Creativity & Feedback): Grants learners agency across both Leukocyte and Vaccine roles. Because unit tests and mutants admit many valid formulations, students combine software engineering knowledge with play experience to iterate creatively on their strategies.
+- Benchmark Programs & CVI [20]: Following standard mutation-testing literature (Jia & Harman, 2009), the authors selected seven classic algorithmic benchmarks (Triangle, Computing the Median, Euclidean GCD, Fibonacci Search, Binary Search, Interpolation Search, and Leap Year) and built the Code Vaccine Incubator (CVI) tool to automatically generate large mutant pools for CIB levels.
 -->
 
 ---
@@ -924,12 +948,10 @@ Transition: Let's look at how these benchmarks are organized into progressive di
 </div>
 
 <!--
-Key Takeaway: CIB calibrates four progressive difficulty tiers using mutant fragility and motivates mastery through dual pass thresholds.
-Talking Points:
-- Figure 2 shows the level selection screen, where cleared stages earn star ranks such as S while locked stages await progression.
-- Instead of arbitrary ordering, levels scale from Easy to Difficult based on quantitative mutant fragility.
-- Each level defines a Basic Condition (such as 50% mutation score) to unlock the next stage, plus a Better Condition (70% to 80%) for stretch-goal bonus points.
-Transition: Let's walk through a concrete round of playing the Leukocyte role inside CIB.
+Fragility-Calibrated Level Progression (Section III.D):
+- Quantitative Difficulty Indexing: Rather than ordering exercises subjectively, CIB uses mutant fragility as the objective standard for calibrating four sequential difficulty tiers: Easy, Medium, Hard, and Difficult. Higher-tier levels contain lower-fragility (harder-to-kill) mutants that demand sharper boundary-value and branch-condition reasoning.
+- Interface Anatomy (Fig. 2): Each level card presents three structured cues: (1) completion status, displaying an earned rank badge (e.g., S rank) for cleared stages or a lock icon for uncleared stages; (2) level metadata including level index, benchmark program name, and difficulty tier; and (3) dual mastery thresholds.
+- Dual-Threshold Scaffolding: Every level enforces a Basic Condition (minimum mutation score, such as ms >= 50%) required to pass and unlock the subsequent level, paired with a Better Condition (stretch target, such as ms >= 70% to 80%) that awards bonus points and encourages students to pursue thorough test coverage rather than stopping at minimal compliance.
 -->
 
 ---
@@ -967,12 +989,11 @@ Transition: Let's walk through a concrete round of playing the Leukocyte role in
 </div>
 
 <!--
-Key Takeaway: Instant mutant-kill feedback lets students iteratively strengthen their Python unittest suite without manual output tracing.
-Talking Points:
-- In Figure 3, the Leukocyte interface displays the original code, the mutants, and a Python unittest editor side by side.
-- Take a 10-mutant level requiring 0.5 Immunity to pass and 0.8 for high points: Round 1 kills only 2 mutants (0.2, Not Pass), Round 2 reaches 0.5 (Pass), and Round 3 kills 8 mutants for 0.8 (High Points).
-- Students immediately see which mutants survived and refine their assertions in seconds.
-Transition: Under the hood, six modular components make this rapid feedback loop possible.
+Python unittest Gameplay & Worked Example (Section III.E, Fig. 3, Table I):
+- Technical Implementation: CIB is built on Python and its standard unittest framework. In the Leukocyte interface (Fig. 3), students view three coordinated panes: (1) the original Python program under test, (2) the set of active mutants for the level, and (3) an interactive code editor for composing unittest test cases.
+- Worked Walkthrough (Table I): Consider a level containing 10 mutants (m1 to m10) with a Basic pass threshold of Immunity >= 0.5 (killing at least 5 mutants) and a Better high-points threshold of Immunity >= 0.8 (killing at least 8 mutants).
+- Round-by-Round Progression: In Round 1, test case t1 kills only m1 and m2 (Immunity = 0.2, Not Pass). Using immediate kill-status feedback, the student expands assertions in Round 2 (t2) to kill m1 and m3 through m6 (Immunity = 0.5, Pass). In Round 3, refined test suite t3 kills m1 through m8 (Immunity = 0.8, Pass with high points).
+- Cognitive Shift: Eliminating manual dry-running lets students allocate their working memory to analyzing logical divergences between the original code and surviving mutants.
 -->
 
 ---
@@ -1002,12 +1023,12 @@ Transition: Under the hood, six modular components make this rapid feedback loop
 </div>
 
 <!--
-Key Takeaway: CIB's architecture connects six dedicated modules to automate code execution, metric computation, and game progression.
-Talking Points:
-- As shown in Figure 4, students submit Python unittest code or mutants via the Code Editor, which sends them to the Code Runner for compilation and execution.
-- Syntax or runtime errors return immediately to the learner, while valid runs pass to the Metrics Computer to compute Mutation Score and Fragility.
-- Finally, the Game Manager evaluates pass thresholds and updates the UI, backed by separate Code and Game Databases.
-Transition: With the system built, let's examine how we designed our pilot experiment to evaluate it.
+Six-Module Software Architecture of CIB (Section III.F, Fig. 4):
+- Code Editor: Browser-based front-end editing environment where students author either Python unittest test cases (Leukocyte role) or custom program mutants (Vaccine role), while viewing level instructions and feedback.
+- Code Runner: Server-side compilation and execution engine that validates and runs user-submitted test cases or mutants. When syntax errors, import issues, or runtime exceptions occur, Code Runner returns immediate Error Messages directly to the user; valid executions forward results to the Metrics Computer.
+- Metrics Computer: Core mutation-testing evaluation engine that executes test suites against the level's mutant pool (or executes reference tests against a student-written mutant) to calculate Mutation Score (for test cases) and Fragility (for mutants).
+- Game Manager: Orchestration layer that retrieves level specifications for the Code Editor UI, translates raw testing metrics into Immunity / Vaccine Efficacy game scores, evaluates Basic and Better pass conditions, and updates level unlock states.
+- Persistent Storage Separation: Code Database stores and manages user-authored test cases and mutants, while Game Database persists level configurations, CVI-generated mutant pools, rankings, and player progression records.
 -->
 
 ---
@@ -1046,12 +1067,11 @@ Before a full-scale classroom deployment, we conducted a **pilot experiment** to
 </div>
 
 <!--
-Key Takeaway: Our pilot study compared CIB against manual handwriting with 10 mutation-testing novices across three progressively harder benchmarks.
-Talking Points:
-- Ten IECS undergraduates at Feng Chia University with zero prior mutation testing exposure were split into an Experimental group using CIB and a Control group using paper handwriting.
-- Both groups worked through Euclidean GCD, Interpolation Search, and Triangle, followed by an 11-item 5-point Likert questionnaire adapted from Barrio.
-- Given the pilot sample size of N = 10, we focus on descriptive statistics, submission distributions, and qualitative classroom observations.
-Transition: Let's look at the first striking result for RQ1: test case submission volume.
+Pilot Experiment Methodology & Controls (Section IV.A & IV.B):
+- Purpose of Pilot Design: Conducted prior to full-scale classroom deployment to evaluate operational feasibility, implementation cost, tool stability, and early impacts on student test-writing behavior and motivation.
+- Participant Profile: N = 10 undergraduate students (3 female, 7 male) from the Department of Information Engineering and Computer Science (IECS) at Feng Chia University. Crucially, none of the 10 participants had any prior formal exposure to mutation testing, controlling for baseline domain knowledge.
+- Experimental vs. Control Protocol: Participants were divided into an Experimental Group using CIB (automated execution, instant error/score feedback, gamified levels) and a Control Group using manual handwriting (designing test cases on paper, manually simulating execution against each mutant, recording outputs, and hand-calculating ms).
+- Evaluated Benchmarks & Survey: Both groups tackled three benchmarks of escalating control-flow complexity: Euclidean GCD, Interpolation Search, and Triangle. Post-task perception was measured via an 11-item, 5-point Likert questionnaire adapted from Barrio et al. (2015) [21]. Because of the small pilot sample (N = 10), the authors appropriately apply descriptive statistics, boxplot distributions, and qualitative classroom observation rather than underpowered inferential tests.
 -->
 
 ---
@@ -1093,12 +1113,11 @@ Transition: Let's look at the first striking result for RQ1: test case submissio
 </div>
 
 <!--
-Key Takeaway: CIB students submitted 8.4 times more total test cases and constructed 3.1 times more valid test cases than the handwriting group.
-Talking Points:
-- Table II and Figure 5 show 152 total submissions in CIB versus only 18 in the Control group, alongside 25 valid test cases versus 8 overall.
-- Notice how the gap explodes with problem complexity: on GCD it is 13 versus 11, on Interpolation Search 34 versus 4, and on Triangle 105 versus just 3.
-- Manual output tracing simply collapses once branching logic grows complex.
-Transition: Next, let's examine RQ2 to understand why CIB also produced more invalid submissions.
+Empirical Analysis of Submission Volume & Complexity Scaling (Section IV.B, Table II, Fig. 5):
+- Overall Productivity Gap: Across all assignments, the Control (handwriting) group submitted 18 test cases total (mean 3.6 per assignment, 18 / 5), whereas the Experimental (CIB) group submitted 152 test cases total (mean 30.4 per assignment, 152 / 5), an 8.4-fold increase.
+- Valid Test Case Output: Filtering out uncompilable or non-executable attempts, the Experimental group still produced 25 valid test cases compared to only 8 in the Control group (3.1x higher valid output).
+- Interaction with Algorithmic Complexity: Disaggregating Table II by benchmark reveals a sharp divergence as control-flow complexity grows. On Euclidean GCD (compact loop logic), submissions were nearly comparable (13 vs. 11). On Interpolation Search (array indexing and arithmetic bounds), CIB led 34 vs. 4. On Triangle (multi-branch conditional classification), CIB surged to 105 submissions while handwriting collapsed to just 3.
+- Mechanistic Explanation: Manual mutation testing requires executing the entire pipeline by hand for every candidate test; once branching and mutant count increase, manual execution time scales prohibitively, whereas CIB decouples test design from execution overhead.
 -->
 
 ---
@@ -1128,12 +1147,11 @@ Transition: Next, let's examine RQ2 to understand why CIB also produced more inv
 </div>
 
 <!--
-Key Takeaway: CIB's higher invalid submission rate reflects healthy, rapid trial-and-error debugging driven by instant error feedback.
-Talking Points:
-- Figure 6 shows that CIB learners submitted more uncompilable or failing attempts alongside their 25 valid tests.
-- Rather than a drawback, this happens because Code Runner immediately surfaces syntax and assertion errors, prompting students to tweak and resubmit rapidly until tests succeed.
-- By contrast, on Search and Triangle, the Control group hit a difficulty cliff where both valid and invalid submissions dropped near zero.
-Transition: Now let's turn to RQ3 and see how students rated Motivation and Attention on the survey.
+Interpretation of Invalid Submissions & Rapid Feedback Loops (Section IV.B, Fig. 6):
+- Defining Invalid Submissions: A submitted test case is classified as invalid if it fails to compile or fails to execute properly (e.g., Python syntax errors or unittest runtime errors).
+- The Apparent Paradox: Although the Experimental group constructed substantially more valid test cases (25 vs. 8), its proportion of invalid submissions was also higher than that of the Control group (Fig. 6).
+- Instant Feedback as Trial-and-Error Catalyst: The authors attribute this pattern directly to CIB's immediate feedback from the Code Runner module. When an error message appears, students rapidly modify and resubmit their code to test hypotheses, even when intermediate patches remain syntactically or logically imperfect. Rather than signaling poorer comprehension, this rapid iteration reflects an active, low-friction trial-and-error learning loop essential to mastering unit test authoring.
+- Control Group Collapse on Harder Tasks: On Interpolation Search and Triangle, the Control group's valid and invalid submissions both dropped close to zero. Without automated feedback, rising problem difficulty halted student attempts altogether instead of triggering iterative debugging.
 -->
 
 ---
@@ -1174,11 +1192,11 @@ Students rated 11 items on a **5-point Likert scale** (`*` = CIB-only questions 
 </div>
 
 <!--
-Key Takeaway: CIB substantially boosted student Motivation and classroom concentration while maintaining high cognitive engagement.
-Talking Points:
-- In Table IV, CIB outscored handwriting on every shared Motivation item, including awareness of mutation testing (4.83 vs. 3.50) and desire to explore further (4.17 vs. 3.00), with 4.67 preferring CIB over traditional teaching.
-- In Table V, both groups reported equally high cognitive thinking on Q2-2 (4.50), but tedious manual calculations hurt the Control group's concentration (Q2-1: 3.50 vs. 4.17).
-Transition: Let's look at self-reported Learning Performance and the qualitative contrast between both groups.
+Survey Analysis of Motivation (Q1) and Attention (Q2) (Section IV.C, Tables III to V):
+- Questionnaire Structure: Adapted from Barrio et al. (2015) [21] on a 5-point Likert scale. Shared items enable direct Control vs. Experimental comparison; asterisked items (Q1-4*, Q1-5*, Q3-3*) were administered only to the Experimental group to evaluate gamified design relative to traditional teaching.
+- Motivation Gains (Table IV): CIB outperformed handwriting on every shared Motivation item: liking the learning method (Q1-1: 4.50 vs. 3.50), awareness of mutation testing (Q1-2: 4.83 vs. 3.50), and desire to explore mutation testing deeper (Q1-3: 4.17 vs. 3.00). The low 3.00 Control score on Q1-3 indicates that manual labor eroded intrinsic interest. Experimental students strongly endorsed level challenge (Q1-4* = 4.33) and preferred CIB over traditional instruction (Q1-5* = 4.67).
+- Nuance in Attention (Table V in Paper): In the published paper's Table V, the Experimental group scored higher on concentration/few distractions (Q2-1: 4.50 vs. 3.50) and active participation (Q2-3: 4.83 vs. 4.50), while Q2-2 ("high-intensity cognitive thinking") was explicitly highlighted as a special case where the Control group scored higher (4.50 vs. 4.17 in the paper's Table V).
+- Pedagogical Interpretation of Q2-2 vs. Q2-1: Manual output comparison forced deep, effortful tracing (high Q2-2), creating a vivid mental impression of how mutants behave; however, that same computational burden severely degraded concentration (Q2-1 = 3.50) and long-term motivation (Q1-3 = 3.00).
 -->
 
 ---
@@ -1216,12 +1234,11 @@ Transition: Let's look at self-reported Learning Performance and the qualitative
 </div>
 
 <!--
-Key Takeaway: Both groups grasped basic concepts, but CIB gave students stronger applied confidence and enthusiasm for harder challenges.
-Talking Points:
-- In Table VI, both groups scored high on conceptual understanding (Q3-1: 4.75 vs. 4.67), showing manual tracing still builds conceptual memory.
-- However, CIB students felt more confident applying mutation testing (Q3-2: 4.33 vs. 4.00) and strongly rated CIB's learning effect above traditional teaching (Q3-3*: 4.83).
-- Qualitatively, Control students asked to reduce the number of mutants due to fatigue, whereas CIB students never complained about volume and actively wanted harder levels.
-Transition: Let's wrap up with a visual summary of our findings and future research directions.
+Learning Outcome (Q3) & Qualitative Classroom Contrast (Section IV.C, Table VI):
+- Conceptual Understanding vs. Applied Capability: On Q3-1 ("I can understand the approach of mutation testing"), both groups reported very high comprehension (Control 4.75 vs. Experimental 4.67). This confirms that manual paper tracing still builds solid conceptual memory of what mutation testing is. However, on Q3-2 ("I can apply the technique of mutation testing"), the Experimental group reported stronger applied confidence (4.33 vs. 4.00) because CIB provided hands-on execution practice with Python unittest.
+- Perceived Instructional Advantage: Experimental participants rated Q3-3* ("better learning effect than traditional teaching method") at 4.83 out of 5.00, the highest-scoring comparative item in the entire survey.
+- Divergent Attitudes Toward Mutant Volume: Qualitative post-experiment feedback revealed a striking contrast. Control group students felt heavily pressured by handwriting effort and explicitly requested reducing the number of mutants to make tracing manageable. Conversely, Experimental group students never viewed the mutant pool as excessive; instead, they expressed heightened enthusiasm for CIB and asked to challenge even more difficult levels.
+- Synthesis of Averages: Across shared items, CIB led in Motivation (4.50 vs. 3.33), Attention (overall average higher), and applied Learning Outcome, demonstrating that automation preserves conceptual rigor while unlocking practical fluency.
 -->
 
 ---
@@ -1239,11 +1256,10 @@ Transition: Let's wrap up with a visual summary of our findings and future resea
 </div>
 
 <!--
-Key Takeaway: CIB successfully makes mutation testing engaging and scalable for novices, paving the way for Online Judge integration and larger cohorts.
-Talking Points:
-- The visual summary captures our three takeaways: 8.4x higher submission activity (RQ1), productive instant-feedback trial-and-error (RQ2), and strong gains in motivation, focus, and applied confidence (RQ3).
-- Looking ahead, we plan to embed CIB and CVI into Online Judge platforms, run larger controlled classroom studies with inferential statistics, and expand beyond Python to Java and C++ while evaluating the Vaccine-authoring role.
-Transition: Thank you for listening—let's move to the closing slide for questions and discussion.
+Synthesis of Contributions, Limitations & Research Roadmap (Section V):
+- Core Empirical Conclusion: CIB successfully demonstrates that gamification paired with automated mutant execution (CVI) resolves the motivational collapse inherent in manual mutation testing education. While manual tracing leaves a conceptual impression, its excessive mechanical difficulty and lack of engagement cause novices to abandon deeper study.
+- Methodological Caveats of the Pilot: Because this work is a pilot study (N = 10, single department, descriptive statistics only), statistical generalization requires larger controlled classroom cohorts with formal hypothesis testing and longitudinal skill-retention assessments. Additionally, the pilot primarily evaluated the Leukocyte (test-writing) workflow; systematic evaluation of the Vaccine (mutant-writing) role remains an open avenue.
+- Future Integration Roadmap: The authors highlight three strategic extensions: (1) integrating CIB and CVI into widely adopted Online Judge (OJ) platforms so students routinely evaluate test quality alongside algorithmic problem solving; (2) conducting full-class controlled experiments with inferential statistics; and (3) extending CVI beyond Python unittest to mainstream curricula such as Java and C++.
 -->
 
 ---
@@ -1265,11 +1281,11 @@ IJIET Vol. 13, No. 7, pp. 1150–1155, July 2023 · DOI: <code>10.18178/ijiet.20
 </div>
 
 <!--
-Key Takeaway: Thank the audience and invite questions on CIB's design, fragility calibration, or classroom deployment.
-Talking Points:
-- Thank you very much for your attention. Feel free to reach out via email or check our IJIET 2023 paper for full details.
-- I would be happy to answer any questions about Code Immunity Boost, our mutant generator CVI, or our plans for Online Judge integration.
-Transition: Open the floor for Q&A.
+Reference & Archival Summary:
+- Citation: Hsueh, N.-L., Xuan, Z. H., & Daramsenge, B. (2023). Design and Implementation of Gamified Learning System for Mutation Testing. International Journal of Information and Education Technology (IJIET), 13(7), 1150–1155. https://doi.org/10.18178/ijiet.2023.13.7.1916
+- Funding & Affiliation: Department of Information Engineering and Computer Science, Feng Chia University, Taichung, Taiwan; supported by the Ministry of Science and Technology (MOST), Taiwan, under grant MOST 110-2221-E-035-031-MY2.
+- Open Access License: Published under Creative Commons Attribution (CC BY 4.0) with no declared conflict of interest.
+- Key Technical Artifacts: Code Immunity Boost (CIB, 6-module Python unittest gamified platform) and Code Vaccine Incubator (CVI, fragility-indexed mutant pool generator across 7 classic mutation-testing benchmarks).
 -->
 
 <script>

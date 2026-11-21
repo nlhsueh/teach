@@ -538,6 +538,36 @@ section .callout {
   line-height: 1.54;
 }
 
+
+/* Table Breathing Room & Callout Separation */
+section table {
+  margin-top: 12px !important;
+  margin-bottom: 14px !important;
+}
+section table th {
+  padding: 9px 11px !important;
+}
+section table td {
+  padding: 8px 11px !important;
+  line-height: 1.42 !important;
+}
+section .split55 table th,
+section .split64 table th,
+section .split55 table td,
+section .split64 table td {
+  padding: 6px 8px !important;
+}
+section table + .callout,
+section .fig-box + .callout,
+section .two-col + .callout,
+section .three-col + .callout,
+section div + .callout {
+  margin-top: 20px !important;
+}
+section .callout {
+  padding: 12px 18px !important;
+}
+
 </style>
 
 <!-- _class: lead -->
@@ -561,11 +591,11 @@ Published: 18 June 2026 · DOI: 10.3390/electronics15122706 · Supported by NSTC
 </div>
 
 <!--
-Key Takeaway: We analyze 732 authentic classroom remediation episodes to uncover how students actually seek LLM conceptual clarification and whether it speeds up subsequent coding.
-Talking Points:
-- Welcome everyone. This study, by Lien-Chi Lai and Nien-Lin Hsueh at Feng Chia University, was published in Electronics in June 2026.
-- Using full interaction logs from 366 students across 43 assignments in our mastery-gated platform, we trace help-seeking from conceptual quiz failure all the way into coding.
-Transition: Let us start with the surprising classroom phenomenon that sparked this investigation.
+Bibliographic & Empirical Scope:
+Published in Electronics (2026, 15, 2706; DOI: 10.3390/electronics15122706; received 18 May 2026, accepted 16 June 2026, published 18 June 2026) by Lien-Chi Lai (corresponding author) and Nien-Lin Hsueh at Feng Chia University, Taichung, Taiwan (supported by NSTC grant NSTC114-2221-E-035-077).
+
+Core Empirical & Theoretical Contribution:
+Using complete, classroom-deployed interaction logs from 732 remediation episodes (366 non-CS first-year undergraduates across 43 programming assignments in Fall 2025), the paper examines (1) how students navigate the conceptual remediation branch of a mastery-gated LLM programming platform (DialoguEDU), (2) whether clarification pathways predict subsequent coding challenge process efficiency, and (3) what theoretical role on-demand LLM clarification plays—proposing the Selective Process-Support Mechanism.
 -->
 
 ---
@@ -581,11 +611,12 @@ Transition: Let us start with the surprising classroom phenomenon that sparked t
 </div>
 
 <!--
-Key Takeaway: Even with a 24/7 AI tutor sitting right beside the quiz, 78% of remediation episodes ignored AI help and repeatedly clicked Retry.
-Talking Points:
-- Look at this contrast: we expected students to embrace instant LLM explanations after failing a conceptual quiz, yet 78.0% simply smashed Retry without asking once.
-- When students did ask early in Round 1, they cleared remediation in half as many rounds, yet—surprisingly—their downstream coding efficiency remained statistically unchanged.
-Transition: Here is the roadmap for how we unpack both findings today.
+Empirical Paradox Framing the Study:
+Although an on-demand LLM conceptual clarification assistant was embedded directly inside the remediation branch immediately following a failed multiple-choice assessment, 78.0% (571 / 732) of remediation episodes involved zero clarification interactions (pure retesting). Only 22.0% (161 / 732) engaged the LLM assistant at least once.
+
+Dual-Level Finding:
+1. Within-Remediation Timing Signal: Among clarifiers, 86.3% initiated clarification in Round 1, and single immediate clarifiers completed remediation in half as many median rounds as single delayed clarifiers (Mdn = 2.0 vs. 4.0; Cliff's δ = −0.912, 95% CI [−0.971, −0.835]), though with important definitional and sample-size caveats (n = 14 for delayed).
+2. Downstream Null Association: Once students passed the 80% conceptual mastery gate and entered the personalized coding challenge, no remediation pathway showed a statistically significant association with coding active time or code snapshots (all MixedLM p > 0.05; all Cliff's |δ| ≤ 0.127). This divergence motivates distinguishing remediation-process support from downstream task-efficiency enhancement.
 -->
 
 ---
@@ -657,12 +688,12 @@ Visual synthesis of RQ1–RQ3 and actionable roadmap for proactive AI tutoring.
 </div>
 
 <!--
-Key Takeaway: We walk through motivation, prior literature, our DialoguEDU mastery system and statistical pipeline, empirical results for RQ1 and RQ2, and our RQ3 theoretical model.
-Talking Points:
-- First, I will explain why technological access does not equal effective help-seeking and position our work within SRL and ITS literature.
-- Next, I will introduce DialoguEDU's two-stage mastery workflow, our four-pathway taxonomy, and our nonparametric plus mixed-effects modeling pipeline.
-- Finally, I will present the empirical results, robustness checks, and our Selective Process-Support Mechanism with concrete design recommendations.
-Transition: Let us begin with the motivation behind studying conceptual remediation logs.
+Paper Architecture & Analytical Flow:
+Section 1 (Introduction) defines core terminology (clarification as operationalized help-seeking; behavioral pathway as episode-level clarification-and-retesting pattern) and poses RQ1 (descriptive), RQ2 (associative), and RQ3 (theoretical integration).
+Section 2 (Related Work) synthesizes remediation and self-regulated learning (SRL), LLMs in programming education, and adaptive help-seeking in intelligent tutoring systems (ITS).
+Section 3 (Materials and Methods) details DialoguEDU's two-stage mastery architecture (Gemini 2.5 Flash, temp = 0.7), UI interaction cost asymmetry, episode inclusion criteria, the 8-step rule-based dialog classifier, the four mutually exclusive pathways, and the statistical pipeline (Cliff's δ with 10,000 stratified bootstrap resamples + REML MixedLM + robustness checks).
+Section 4 (Results) presents RQ1 pathway distributions, timing, functional coding, and round/duration effect sizes, followed by RQ2 ceiling effects, MixedLM estimates, code-variability subgroup checks, and idle-threshold sensitivity analyses.
+Section 5 & 6 (Discussion, Limitations & Conclusions) interpret the 78% help avoidance and RQ2 null result, formalize the Selective Process-Support Mechanism, document eight validity limitations, and outline five future research directions.
 -->
 
 ---
@@ -678,11 +709,15 @@ Transition: Let us begin with the motivation behind studying conceptual remediat
 </div>
 
 <!--
-Key Takeaway: Providing an LLM does not automatically produce adaptive help-seeking, and classroom-scale logs of conceptual remediation remain rare.
-Talking Points:
-- As the diagram illustrates, educators often assume that instant AI access leads to proactive clarification and faster downstream coding.
-- In reality, most LLM-in-CS research focuses on code generation and debugging rather than conceptual assessment remediation, and relies on lab trials or surveys rather than full classroom logs.
-Transition: To bridge both gaps, we formulated three linked research questions.
+Why Technological Accessibility Alone Fails to Guarantee Effective Use:
+In traditional classrooms, students wait for instructors or TAs to resolve conceptual misconceptions. LLMs remove latency by providing immediate, personalized conceptual explanations [1]. However, educational psychology [3, 4] and ITS research [5] consistently demonstrate that making help available does not ensure learners know when or how to use it adaptively.
+
+Two Specific Gaps in Prior Literature:
+1. Domain-Task Gap: Most computing-education research on LLMs studies code generation or debugging assistants [2, 6, 7], leaving conceptual assessment remediation—where students must repair conceptual misconceptions before coding—largely unexamined.
+2. Methodological Gap: Existing studies predominantly rely on controlled lab experiments, surveys, interviews, or short-term usability evaluations [6, 7]. Complete, longitudinal, process-level behavioral logs from authentic classroom deployments—capturing both active help-seeking and silent help avoidance alongside downstream coding traces—remain scarce.
+
+Mastery-Gating Advantage:
+Adopting Bloom's mastery learning architecture [8] (requiring 80% MCQ accuracy before unlocking coding) makes the remediation loop directly observable in naturalistic logs without artificial experimental intrusion.
 -->
 
 ---
@@ -700,12 +735,10 @@ Using full interaction logs from a mastery-gated programming course (`N = 732` e
 </div>
 
 <!--
-Key Takeaway: Our three research questions progress from describing remediation pathways (RQ1), to testing downstream coding efficiency (RQ2), to building a theoretical and design model (RQ3).
-Talking Points:
-- RQ1 is descriptive: across 732 remediation episodes, what behavioral pathways emerge in clarification occurrence, timing, frequency, functional type, rounds, and duration?
-- RQ2 is associative: after controlling for student and assignment differences, do these pathways predict subsequent coding active time or code snapshots?
-- RQ3 is theoretical: integrating both findings, what role does LLM clarification truly play in mastery learning, and how should we redesign AI tutors?
-Transition: Let us briefly position these questions against three streams of prior work.
+Three Interrelated Research Questions & Contributions:
+- RQ1 (Descriptive Contribution): Maps the natural ecology of remediation across N = 732 episodes (366 students, 43 assignments), establishing an empirically derived, mutually exclusive, jointly exhaustive four-pathway taxonomy (Pure Retesting, Single Immediate, Single Delayed, Multiple Clarification) and quantifying clarification occurrence, round timing, frequency, functional message type, remediation rounds (R), and total remediation duration.
+- RQ2 (Analytical Contribution): Tests whether remediation pathways predict subsequent coding challenge process efficiency—operationalized via active time (minutes) and code snapshot count—using dual cross-validation (non-parametric Cliff's δ and REML linear mixed-effect models controlling for student random intercepts and assignment fixed effects), plus code-variability and idle-cutoff robustness checks. Rigorously validating a null result counterbalances hype and overclaiming regarding AI learning tools.
+- RQ3 (Theoretical Integration): Synthesizes RQ1 and RQ2 (without adding separate empirical tests) to define LLM clarification as a Selective Process-Support Mechanism, distinguishing within-remediation process support from downstream task-efficiency gains and showing that clarification timing correlates more strongly with remediation length than clarification occurrence alone.
 -->
 
 ---
@@ -724,12 +757,10 @@ Transition: Let us briefly position these questions against three streams of pri
 </div>
 
 <!--
-Key Takeaway: DialoguEDU's 80% mastery gate makes the entire loop—from quiz failure to help-seeking to downstream coding—directly observable in authentic classroom logs.
-Talking Points:
-- Prior SRL and remediation work notes retesting inertia in multi-retry systems, while ITS studies show that help avoidance is common and timing matters more than volume.
-- Meanwhile, LLM-in-CS studies rarely connect conceptual remediation directly to subsequent coding trajectories.
-- Our dataset of 732 naturalistic episodes across 366 students and 43 assignments links MCQ retries, LLM chats, and code snapshots end-to-end.
-Transition: Next, let us look inside the DialoguEDU system architecture.
+Synthesis of Three Literature Foundations (Section 2):
+1. Remediation & Self-Regulated Learning (SRL): Zimmerman [10] models effective remediation as a cycle of metacognitive monitoring and strategy adjustment, yet Aleven & Koedinger [9] and Roll et al. [5] show that multi-retry digital assessments frequently induce retesting inertia—repeating attempts without reflecting. While immediate feedback outperforms delayed feedback in curbing persistent misconceptions [11], observational studies struggle to disentangle timing effects from baseline learner ability.
+2. LLMs in Programming Education: Prather et al. [1] report high novice acceptance of LLMs alongside stark behavioral divergence (conceptual inquiry vs. passive code completion). VanLehn [12] argues step-level feedback shortens remediation, whereas Koedinger et al. [13] demonstrate an "astonishing regularity" in per-opportunity learning rates across diverse populations and instructional conditions—offering a key theoretical lens for why pathway variations may yield minimal downstream efficiency differences. Unlike pre-authored ITS item banks [14], real-time LLM question generation offers contextual flexibility while leaving generated-item quality evaluation open.
+3. Adaptive Help-Seeking in ITS / AI: Building on Nelson-Le Gall [3], Ryan & Pintrich [4], and Butler & Winne [15], adaptive help-seeking balances avoiding help avoidance and avoiding over-reliance. Corbett & Anderson [16] show feedback timing and type matter more than feedback volume. Recent LLM help-seeking studies [6, 7] rely primarily on small-scale or experimental setups, whereas DialoguEDU provides full-semester naturalistic process logs linking conceptual remediation directly to coding trajectories.
 -->
 
 ---
@@ -757,12 +788,12 @@ Transition: Next, let us look inside the DialoguEDU system architecture.
 </div>
 
 <!--
-Key Takeaway: DialoguEDU enforces an 80% conceptual MCQ mastery gate with error-aware regeneration before unlocking a personalized coding challenge.
-Talking Points:
-- In Figure 1, Stage 1 dynamically generates conceptual MCQs from instructor PDFs using Gemini 2.5 Flash without external RAG.
-- Students scoring below 80% enter the remediation branch, where the system regenerates targeted MCQs based on their errors while offering an on-demand LLM clarification chat that withholds quiz answers.
-- Once they clear 80%, Stage 2 unlocks a personalized coding task tailored to their MCQ misconception history, graded by LLM plus TA verification.
-Transition: Looking at the actual student screens reveals an important usability asymmetry.
+System Implementation & Technical Parameters (Section 3.1):
+DialoguEDU implements a two-stage mastery-gated workflow [8] enforcing conceptual competence before procedural coding:
+- Stage 1 (Conceptual MCQ Assessment): For each assignment, Google's Gemini 2.5 Flash (`gemini-2.5-flash`, `temperature = 0.7`, no custom response-length cap) dynamically extracts key concepts from instructor-uploaded PDF course materials supplied directly in the prompt context (no separate RAG pipeline) to generate configurable MCQ sets.
+- Error-Aware Remediation Loop: Students must attain an instructor-set accuracy threshold (80%) to advance. Failing triggers the remediation branch, where incorrectly answered items from the prior attempt are injected into the generation prompt so the LLM produces new MCQs targeting the student's specific misconceptions.
+- On-Demand Clarification Channel: Throughout remediation, both predefined buttons and free-text inputs route to Gemini 2.5 Flash under a system prompt instructing it to deliver conceptual explanations grounded in the course PDFs without revealing MCQ answers.
+- Stage 2 (Personalized Coding Challenge): Upon passing the MCQ gate, the LLM generates a personalized coding task conditioned on the student's complete MCQ answering record (correct and incorrect items plus accumulated misconceptions; first-attempt passers receive tasks conditioned on their initial MCQ record). Code submissions undergo two-stage evaluation: automated LLM grading followed by manual TA verification. Because one model powers all components, observed patterns may be partly model-dependent.
 -->
 
 ---
@@ -789,11 +820,12 @@ Transition: Looking at the actual student screens reveals an important usability
 </div>
 
 <!--
-Key Takeaway: Clicking Retry carries far lower cognitive and interaction cost than typing a conceptual question, nudging stressed students toward passive retesting.
-Talking Points:
-- Figure 2a shows the MCQ interface with the 80% mastery threshold and marked errors; Figure 2b shows the LLM clarification chat with both quick buttons and a free-text input.
-- We call this Interaction Cost Asymmetry: right after failing a quiz, clicking Retry takes one click and almost no metacognitive effort, whereas formulating a clear question requires effort when learners feel most strained.
-Transition: Let us now examine our dataset, four-pathway taxonomy, and statistical pipeline.
+Interface Design & Behavioral Mechanics (Section 3.1, Fig. 2):
+- MCQ Assessment Interface (Fig. 2a): Displays the 80% target accuracy threshold and explicitly flags incorrectly answered items, providing an immediate visual trigger for entering the remediation branch.
+- LLM Clarification Interface (Fig. 2b): Combines a horizontal row of predefined one-click clarification buttons (e.g., "Explain this concept," "Why was my answer wrong?") with an open free-text input field.
+
+Interaction Cost Asymmetry Mechanism:
+Even with predefined buttons available, the interface establishes a gradient of interaction and cognitive cost: clicking "Retry" to attempt a regenerated MCQ requires minimal effort and zero verbal formulation; clicking a predefined button requires moderate engagement; composing a coherent free-text conceptual question demands substantial metacognitive articulation precisely at the moment of assessment failure when cognitive load peaks. This structural asymmetry helps explain why passive retesting dominates (78.0%) in naturalistic use.
 -->
 
 ---
@@ -821,12 +853,14 @@ Transition: Let us now examine our dataset, four-pathway taxonomy, and statistic
 </div>
 
 <!--
-Key Takeaway: We deterministically classify all 732 remediation episodes into four mutually exclusive pathways and combine Cliff's delta with mixed-effects models.
-Talking Points:
-- Following a frequency-first, timing-second rule with zero exclusions, every episode falls into Pure Retesting, Single Immediate (Round 1), Single Delayed (Round 2+), or Multiple Clarification.
-- For RQ1, we use nonparametric Cliff's delta with 10,000 bootstrap iterations and Romano's effect-size thresholds.
-- For RQ2, we analyze 716 episodes with active coding time using REML MixedLM on log-transformed outcomes, controlling for assignment fixed effects and student random intercepts.
-Transition: Let us turn to our empirical findings, starting with RQ1.
+Data Collection, Classification Rules & Statistical Specification (Sections 3.2–3.8):
+- Participants & Ethics: 366 unique non-CS first-year undergraduates across 43 assignments in Fall 2025 (mean 2.0 remediation episodes/student, range 1–8; N = 732 episodes where `set_number > 1`). De-identified educational log data collected under normal course operation; exempt from IRB review under Taiwan's Human Subjects Research Act.
+- 8-Step Rule-Based Dialog Classifier (Strict Priority Order): (1) Noise/laughter/pure digits -> exclude; (2) exact confirmation buttons -> confirm; (3) topic-generation keywords/buttons -> generate; (4) predefined clarification buttons -> clarification; (5) system-error keywords -> clarification; (6) procedural keywords (threshold, progress) -> clarification; (7) conceptual keywords, question marks, or open-text -> clarification; (8) remainder -> unknown. Non-quiz events inherit the current MCQ set's `retest_round`.
+- Frequency-Then-Timing Pathway Rules (Table 1): Total clarification count is evaluated first (0 -> Pure Retesting; ≥2 -> Multiple Clarification regardless of timing). Only episodes with exactly 1 clarification are split by timing (`retest_round ≤ 1` -> Single Immediate; `retest_round > 1` -> Single Delayed). The Round-1 cutoff is empirically motivated (86.3% of first clarifications occurred in Round 1).
+- Secondary Functional Coding (Table 2): Clarification messages are coded deterministically as System (error/display keywords), Procedural (passing criteria/progress keywords), or Conceptual (default fallback).
+- Statistical Models (Python 3.10, `statsmodels`):
+  * Cliff's δ = [#(x_i > y_j) − #(x_i < y_j)] / (n_x × n_y), with 10,000 stratified percentile bootstrap iterations (`seed = 42`) and Romano et al. [17] thresholds (0.147 / 0.33 / 0.474).
+  * MixedLM (REML): `log(Y) ~ pathway_type (ref: pure_retesting) + assignment_id + (1 | student_id)` fitted on the first coding challenge per student × assignment (`N = 716`, 355 students; excluding 3 episodes not entering coding and 13 episodes with `active_time = 0`). Active time sums inter-snapshot intervals ≤ 30 min [18]. Residual Q–Q and fitted plots showed no severe normality/homoscedasticity violations.
 -->
 
 ---
@@ -864,12 +898,23 @@ Transition: Let us turn to our empirical findings, starting with RQ1.
 </div>
 
 <!--
-Key Takeaway: Help avoidance dominates at 78.0%, yet when students do seek AI clarification, 86.3% decide immediately in Round 1 and 84.7% focus on conceptual understanding.
-Talking Points:
-- Figure 3 shows the stark split across all 732 episodes: 571 are Pure Retesting, while only 161 (22.0%) ever invoke the LLM assistant.
-- Figure 4a reveals that 139 of those 161 clarifiers (86.3%) ask right away in Round 1, meaning the help-seeking decision happens immediately after the first failure.
-- Figure 4b confirms that 84.7% of all 255 messages are Conceptual questions rather than System (11.0%) or Procedural (4.3%) queries.
-Transition: How do these four pathways differ in remediation rounds and duration?
+Detailed RQ1 Behavioral Distributions (Sections 4.1.1–4.1.3):
+1. Four-Pathway Occurrence (N = 732, Fig. 3):
+   - Pure Retesting: 78.0% (n = 571)
+   - Single Immediate Clarification: 13.3% (n = 97)
+   - Multiple Clarification: 6.8% (n = 50; comprising 42 whose first clarification was in Round 1 and 8 whose first clarification was in Round 2+)
+   - Single Delayed Clarification: 1.9% (n = 14)
+   Overall, only 22.0% (n = 161) of remediation episodes included any clarification event.
+
+2. First-Clarification Timing (n = 161, Fig. 4a):
+   - Round 1: 86.3% (n = 139)
+   - Round 2: 9.3% (n = 15)
+   - Round 3: 4.3% (n = 7)
+   - Median first clarification round = 1.0 (IQR = [1.0, 1.0]), showing that help-seeking is an immediate post-failure decision rather than a delayed fallback after repeated retries.
+
+3. Clarification Frequency & Functional Type (255 Total Messages, Fig. 4b):
+   - Frequency among clarifiers: Median = 1.0 (IQR = [1.0, 2.0]); 68.9% (111/161) asked once and 31.1% (50/161) asked ≥2 times (multiple-clarifier median = 2.0, IQR = [2.0, 3.0], max = 8 events).
+   - Functional distribution: Conceptual 84.7% (216/255), System 11.0% (28/255), Procedural 4.3% (11/255). Because Conceptual is the rule-based default category, the authors note it is strictly "conceptual or otherwise unclassified."
 -->
 
 ---
@@ -902,12 +947,18 @@ Transition: How do these four pathways differ in remediation rounds and duration
 </div>
 
 <!--
-Key Takeaway: Single Immediate clarifiers finish in half the rounds of Single Delayed clarifiers (median 2.0 vs. 4.0, Cliff's delta = -0.912), though we interpret this descriptively.
-Talking Points:
-- Comparing Figure 5 and Table 4, overall clarifiers versus pure retesters show a negligible difference in rounds (delta = +0.073) and only a small increase in duration (+0.193, 812s vs. 616s).
-- Multiple clarifiers take longer (1119s vs. 637s, medium delta = +0.432), reflecting deeper conceptual struggle.
-- The largest contrast is Single Immediate vs. Single Delayed (median 2.0 vs. 4.0 rounds, delta = -0.912), but we explicitly caution that this is partly definitional—delayed users by definition ask at Round 2 or later—and rests on n = 14.
-Transition: Now for RQ2: do any of these remediation pathways translate into faster or smoother coding?
+Detailed Remediation Process Metrics (Section 4.1.4, Tables 3 & 4):
+1. Pathway-Level Descriptives (Table 3):
+   - Pure Retesting (n = 571): R Mdn = 2.0 (M = 2.51); Duration Mdn = 616.0 s (M = 851.2 s).
+   - Single Immediate (n = 97): R Mdn = 2.0 (M = 2.25); Duration Mdn = 569.0 s (M = 718.8 s).
+   - Single Delayed (n = 14): R Mdn = 4.0 (M = 4.00); Duration Mdn = 1682.5 s (M = 1922.0 s).
+   - Multiple Clarification (n = 50): R Mdn = 2.5 (M = 3.08); Duration Mdn = 1119.0 s (M = 1399.1 s).
+   Note on Duration Sample Sizes: Duration comparisons use slightly smaller n (e.g., 134 vs. 161 for With Clarif.; 479 vs. 571 for Pure Retesting) because total duration required at least one validly timed MCQ set (positive elapsed time < 3600 s); episodes without valid set durations were excluded listwise from duration analyses while retained for R.
+
+2. Pairwise Cliff's δ Interpretations (Table 4, Fig. 6):
+   - With Clarification vs. Pure Retesting: Negligible in R (δ = +0.073, 95% CI [−0.014, 0.160]), Small in Duration (δ = +0.193, [0.086, 0.299]; Mdn 811.5 s vs. 616.0 s)—an expected time overhead from reading/writing dialogs.
+   - Multiple vs. Non-Multiple: Small in R (δ = +0.231, [0.060, 0.401]) and Medium in Duration (δ = +0.432, [0.246, 0.603]; Mdn 1119.0 s vs. 637.0 s), reflecting deeper unresolved conceptual struggle.
+   - Single Immediate vs. Single Delayed: Large in R (δ = −0.912, [−0.971, −0.835]; Mdn 2.0 vs. 4.0). Three Critical Caveats (Section 5.1): (a) Partly definitional—delayed clarification by construction occurs at Round ≥ 2 while R counts all rounds including pre-clarification retries; (b) potential prior-ability / metacognitive confounding; and (c) small delayed sample (n = 14). Hence interpreted strictly descriptively, not causally.
 -->
 
 ---
@@ -952,12 +1003,16 @@ Transition: Now for RQ2: do any of these remediation pathways translate into fas
 </div>
 
 <!--
-Key Takeaway: Almost everyone passes the coding challenge (97.3% ceiling), and raw differences in coding active time and code snapshots are all negligible.
-Talking Points:
-- 99.6% of remediation episodes (729 of 732) unlocked the coding stage, and 97.3% passed across all pathways, creating a strong pass-rate ceiling.
-- Looking at Figure 7 and Tables 5–6, median active coding time ranges from 15.1 to 22.1 minutes and snapshots from 26.0 to 33.5.
-- Every Cliff's delta versus Pure Retesting falls in the negligible range (0.002 to 0.127), and every 95% bootstrap confidence interval crosses zero.
-Transition: Does this null result still hold once we control for student ability and assignment difficulty?
+Pass-Rate Ceiling & Unadjusted RQ2 Comparisons (Sections 4.2.1–4.2.2, Tables 5 & 6):
+1. Challenge Access & Severe Ceiling Effect:
+   - 99.6% (729 / 732) of remediation episodes accessed the coding challenge (3 did not: 1 Single Delayed, 2 Pure Retesting, yielding n = 13 and n = 569 for snapshot analyses).
+   - Overall AI-assessed pass rate was 97.3% (709 / 729): Pure Retesting 96.8% (551/569), Single Immediate 97.9% (95/97), Single Delayed 100% (13/13), Multiple Clarification 100% (50/50). Because pass rate is virtually saturated across all pathways, it cannot discriminate efficiency differences.
+   - Active-time analyses further excluded 13 episodes (across 11 students) with `active_time = 0` (no recorded coding activity), yielding N = 716 episodes from 355 students.
+
+2. Unadjusted Process Efficiency & Cliff's δ (Tables 5 & 6, Fig. 7):
+   - Active Time (vs. Pure Retesting, n = 559, Mdn = 17.3 min): Single Immediate (n = 96, Mdn = 22.1) δ = +0.118 [0.000, 0.237]; Single Delayed (n = 13, Mdn = 15.1) δ = +0.034 [−0.289, 0.364]; Multiple (n = 48, Mdn = 22.1) δ = +0.127 [−0.047, 0.294].
+   - Code Snapshots (vs. Pure Retesting, n = 569, Mdn = 26.0): Single Immediate (n = 97, Mdn = 33.5) δ = +0.083 [−0.045, 0.210]; Single Delayed (n = 13, Mdn = 29.0) δ = +0.002 [−0.275, 0.291]; Multiple (n = 50, Mdn = 30.5) δ = +0.046 [−0.129, 0.214].
+   - Interpretation: All six estimates fall well below Romano's 0.147 small-effect threshold with CIs spanning zero, providing strong evidence of no practically meaningful unadjusted efficiency gain for well-sampled pathways, while Single Delayed (n = 13) remains statistically underpowered.
 -->
 
 ---
@@ -993,12 +1048,16 @@ Controls for **student random intercept** &amp; **assignment fixed effects** (43
 </div>
 
 <!--
-Key Takeaway: Even after controlling for student random intercepts and all 43 assignment fixed effects in MixedLM, no remediation pathway significantly improves coding efficiency.
-Talking Points:
-- Figure 8 and Table 7 plot log-scale regression coefficients across 716 episodes and 355 students, with Pure Retesting as the reference group.
-- Every single confidence interval spans zero and all p-values exceed 0.05—in fact, the closest estimate (Single Immediate active time, +0.218, p = 0.090) trends toward slightly more time, not less.
-- Single Delayed (n = 13) has wide intervals and remains statistically underpowered and inconclusive.
-Transition: To be thorough, we ran two robustness checks to make sure hidden confounds were not masking a real effect.
+Adjusted Modeling & Geometric-Mean Interpretation (Section 4.2.3, Table 7, Fig. 8):
+To account for repeated episodes nested within students (random intercept `student_id`) and heterogeneity across the 43 tasks (fixed effect `assignment_id`), REML linear mixed-effect models were fitted to natural log-transformed outcomes (`N = 716`, 355 students, reference = Pure Retesting).
+
+Model Fit Diagnostics & Variance Components:
+- `log(Active Time)` model: Group Var = 0.274, Residual Scale = 1.009, Log-Likelihood = −1083.6.
+- `log(Snapshots)` model: Group Var = 0.468, Residual Scale = 0.682, Log-Likelihood = −1019.2.
+Substantial random-intercept variance confirms meaningful between-student differences, validating the mixed-effects specification.
+
+Interpreting the Null Estimates:
+Because outcomes are natural log-transformed, coefficients represent multiplicative effects on the geometric mean. The estimate closest to significance—Single Immediate Clarification on `log(Active Time)` (β = +0.218, 95% CI [−0.034, 0.471], p = 0.090)—corresponds to exp(0.218) ≈ 1.24, or roughly 24% MORE active time relative to Pure Retesting, moving opposite to the hypothesis that clarification speeds up coding. Multiple Clarification coefficients are small and positive (+0.108, p = 0.546; +0.002, p = 0.989), while Single Delayed coefficients are slightly negative (−0.051, p = 0.872; −0.157, p = 0.567) with wide confidence intervals due to n = 13 (inconclusive rather than proven null). For the well-powered Pure Retesting (n = 559) and Single Immediate (n = 96) groups, the data confidently rule out meaningful downstream efficiency gains.
 -->
 
 ---
@@ -1030,12 +1089,15 @@ To verify that external AI copy-pasting or the 30-min idle cutoff did not mask r
 </div>
 
 <!--
-Key Takeaway: Neither external AI copy-pasting nor the 30-minute idle cutoff explains away the null finding—students edited code incrementally and results stayed invariant across cutoffs.
-Talking Points:
-- First, auditing 94,249 consecutive code snapshot pairs showed that 82.8% of edits changed less than 5% of the code, confirming genuine iterative debugging rather than wholesale external pasting.
-- Partitioning into Stable Coding (72.8%) and High Variability (27.2%) subgroups yielded all confidence intervals spanning zero.
-- Second, re-estimating MixedLM with 15-minute and 60-minute idle cutoffs produced virtually identical coefficients, with all p-values above 0.09.
-Transition: Why do 78% of students avoid help, and why does clarification not accelerate downstream coding?
+Sensitivity & Integrity Verification (Section 4.2.4, Table 8):
+1. Code-Variability Subgroup Partition (Testing External AI Copy-Paste Confounding):
+   - Criterion: Any coding episode containing at least one snapshot exhibiting both >50% length reduction and <50% sequence similarity (via Python `difflib.SequenceMatcher`) was classified as High Variability (n = 198, 27.2% snapshot sample; 197 active-time sample); all others formed the Stable group (n = 531, 72.8% snapshot sample; 519 active-time sample).
+   - Stable Subgroup Results: All Cliff's δ estimates for both active time (−0.135 to +0.107) and snapshots (−0.102 to +0.060) remained negligible with 95% CIs spanning zero.
+   - High-Variability Subgroup Results: Active-time estimates reached the small-effect threshold across all three clarification pathways (Single Immediate δ = +0.148 [−0.075, 0.365]; Single Delayed δ = +0.173 [−0.204, 0.584]; Multiple δ = +0.258 [−0.066, 0.568]), meaning clarifiers spent slightly more active time, though every CI still spanned zero and snapshot effects remained negligible (0.082 to 0.145). Whether high variability reflects exploratory refactoring, external AI use, or distinct problem-solving styles cannot be determined from logs alone.
+   - 94,249 Snapshot-Pair Micro-Audit (Section 5.2): 82.8% of consecutive edits altered <5% of code and only 8.1% altered >20%, corroborating authentic incremental debugging rather than wholesale code pasting.
+
+2. Active-Time Idle-Cutoff Sensitivity (15 / 30 / 60 min):
+   - Re-running the MixedLM at 15 min (N = 715) and 60 min (N = 717) vs. 30 min (N = 716) left all substantive conclusions unchanged: Single Immediate `log(Active Time)` β = 0.168 (15 min), 0.218 (30 min), 0.158 (60 min) (all p > 0.09); all other pathway coefficients had p > 0.31.
 -->
 
 ---
@@ -1066,12 +1128,19 @@ Transition: Why do 78% of students avoid help, and why does clarification not ac
 </div>
 
 <!--
-Key Takeaway: Help avoidance stems from overconfidence, cognitive load, and UI friction, while mastery gating equalizes entering competence before coding begins.
-Talking Points:
-- On the left, three drivers explain the 78% avoidance rate: the Illusion of Knowing right after a first error, peak cognitive load when trying to write a question, and low-friction Retry inertia.
-- On the right, five mechanisms explain the RQ2 null result, led by Mastery-Gating Equalization: because every student must clear the 80% MCQ gate first, conceptual gaps are already leveled before coding starts.
-- Ceiling compression (97.3% pass rate), a narrow single-task window, learner heterogeneity, and Koedinger's regularity of learning rates further reinforce this null pattern.
-Transition: Putting RQ1 and RQ2 together leads to our RQ3 theoretical framing and design recommendation.
+Theoretical Mechanisms Explaining Both Core Empirical Findings (Sections 5.1–5.2):
+1. Why 78.0% Default to Pure Retesting (SRL & Help-Avoidance Literature):
+   - Strategic Inertia & Illusion of Knowing [10, 15]: Following an initial failure, students overestimate their conceptual grasp and expect a quick re-read/retry to clear the threshold.
+   - Failure-Point Cognitive Load: Articulating a precise conceptual query requires metacognitive effort precisely when working memory is depleted by error feedback.
+   - Interface-Induced Retesting Inertia: One-click Retry has far lower interaction cost than formulating free-text questions, reinforcing help avoidance [5].
+   - Conversely, early Round-1 clarification (86.3%) aligns with Nelson's metacognitive monitoring framework [19] (rapid error detection and control), while Multiple Clarification (Mdn 1119 s vs. 637 s, δ = 0.432) signals deeper unresolved confusion requiring multi-turn scaffolding.
+
+2. Why RQ2 Yields a Robust Null Result (Five Complementary Explanations):
+   - Mastery-Gating Equalization (Primary Structural Mechanism): Because every learner—regardless of pathway—must pass the identical 80% MCQ threshold before unlocking coding, the remediation branch equalizes entering conceptual competence across pathways. Thus, the RQ2 null is partly an intended structural consequence of mastery learning rather than proof that clarification lacks value.
+   - Ceiling Compression: A 97.3% coding pass rate compresses variance in process-efficiency proxies.
+   - Narrow Observation Window: Measuring only the immediately subsequent task cannot capture delayed cross-assignment transfer.
+   - Individual Processing Heterogeneity: Varying depth of cognitive engagement with identical LLM explanations dilutes group-average effects toward zero.
+   - Learning-Rate Regularity [13] & Step-Level Feedback [12]: Aligns with Koedinger et al.'s invariant per-opportunity learning rate and VanLehn's distinction between immediate step-level remediation support and task-level transfer.
 -->
 
 ---
@@ -1087,12 +1156,16 @@ Transition: Putting RQ1 and RQ2 together leads to our RQ3 theoretical framing an
 </div>
 
 <!--
-Key Takeaway: LLM clarification functions as a Selective Process-Support Mechanism rather than a universal accelerator, motivating proactive system-triggered prompting.
-Talking Points:
-- As this framework shows, LLM clarification helps students who actively engage early clear remediation efficiently, without guaranteeing faster downstream coding once mastery is equalized.
-- Practically, waiting for stressed novices to self-initiate fails 78% of the time.
-- Systems should proactively prompt clarification in Round 1 or after two consecutive failures—lowering the metacognitive entry barrier right when students need it.
-Transition: Before concluding, let us transparently review the limitations and threats to validity.
+Theoretical Framework Formalization (Section 5.3):
+Synthesizing RQ1 and RQ2, the paper proposes that in mastery-gated LLM programming systems [8], on-demand clarification operates as a Selective Process-Support Mechanism rather than a uniform determinant of downstream learning outcomes. The authors explicitly frame this as an empirically grounded hypothesis from observational data requiring experimental validation.
+
+Two Dimensions of "Selectivity":
+1. Behavioral Selectivity: Only 22.0% of remediation episodes invoke clarification, and 84.7% of those inquiries target conceptual confusion rather than procedural or system queries—indicating selective activation for specific cognitive impasses.
+2. Effect Selectivity: Observable correlates concentrate within the remediation process itself (early clarifiers navigating remediation in fewer rounds, subject to the definitional caveat) rather than in downstream coding efficiency (RQ2 null), echoing adaptive learning research [14] showing instructional support is valuable when it helps learners traverse activities more smoothly even when final mastery rates converge.
+
+Process Support vs. Outcome Enhancement & Concrete Design Implication:
+- In SRL terms [10], early clarification reflects active metacognitive monitoring and strategy adjustment, whereas passive retesting reflects unactivated monitoring; in VanLehn's framework [12], clarification delivers step-level misconception feedback.
+- Actionable Redesign (System-Triggered vs. Self-Triggered Prompting): Rather than waiting for strained novices to self-initiate, systems should proactively surface a low-friction prompt in Round 1 or after two consecutive failures (e.g., "You have failed this assessment twice; would you like to ask the AI to clarify the relevant concept?"). Testing whether system-triggered prompting matches or outperforms self-triggered clarification is a direct experimental next step.
 -->
 
 ---
@@ -1127,12 +1200,15 @@ Transition: Before concluding, let us transparently review the limitations and t
 </div>
 
 <!--
-Key Takeaway: Because this is an observational single-course study without a pretest, causal claims, delayed-group power, and cross-context generalization remain bounded.
-Talking Points:
-- First, on causality and sample size: without a prior-ability pretest, self-selection cannot be separated from timing effects, and Single Delayed has only 14 episodes.
-- Second, on measurement: the 97.3% ceiling pushes us to use active time and snapshots, where longer time can sometimes reflect deeper exploration rather than inefficiency; we also observe only the immediate next task.
-- Third, on scope: rule-based coding lacks human IRR, LLM response quality was not scored, and data come from one non-CS university course using Gemini 2.5 Flash.
-Transition: Let us conclude with a visual synthesis of RQ1 through RQ3 and our future research agenda.
+Comprehensive Account of Eight Study Limitations (Section 5.4):
+1. No Prior-Ability or Motivation Covariates: Naturalistic observation without pretest or placement scores prevents separating behavioral pathway effects from pre-existing ability or SRL skill differences; causal inference is therefore precluded.
+2. Severe Sample Imbalance: Pathway sizes range from n = 571 (Pure Retesting) down to n = 14 (Single Delayed; n = 13 in RQ2), producing wide confidence intervals and low statistical power for delayed clarifiers.
+3. Definitional Overlap in Timing Effect: The large Cliff's δ = −0.912 contrast partly reflects constructing Single Delayed at Round ≥ 2 while counting all pre-clarification rounds inside R.
+4. Ceiling Effects & Proxy Validity: The 97.3% coding pass rate forced reliance on active time and snapshot count, which have imperfect ecological validity—more time or snapshots can reflect thorough autonomous exploration rather than inefficiency.
+5. Narrow Single-Task Observation Window: Evaluating only the immediately following coding task misses potential cumulative or delayed transfer across later assignments.
+6. Unmodeled Within-Student Trajectories: Episodes nested within students were modeled via random intercepts rather than longitudinal growth models, leaving semester-long evolution of help-seeking habits unexamined.
+7. Rule-Based Coding Without Human IRR: Deterministic keyword rules guarantee reproducibility but lack human inter-rater reliability; because Conceptual (84.7%) is the fallback default, it may include minor unclassified residuals.
+8. Unanalyzed LLM Response Quality & Single-Context External Validity: The study logged student behavior without scoring LLM explanation accuracy or pedagogical quality, and reflects one university, one non-CS introductory course, and a single model (Gemini 2.5 Flash).
 -->
 
 ---
@@ -1150,11 +1226,17 @@ Transition: Let us conclude with a visual synthesis of RQ1 through RQ3 and our f
 </div>
 
 <!--
-Key Takeaway: Our findings redefine LLM clarification as selective process support and point to randomized proactive-prompting trials, longitudinal tracking, and multi-site audits.
-Talking Points:
-- The visual synthesis connects all three RQs: 78% pure retesting with immediate Round-1 timing (RQ1), robust null effects on downstream coding efficiency (RQ2), and the Selective Process-Support Mechanism calling for system-triggered prompts (RQ3).
-- Next, we plan randomized trials comparing system-triggered versus self-triggered Round-1 prompts with baseline pretests, longitudinal cross-assignment trajectory modeling, and multi-institution replications with LLM response quality audits.
-Transition: Thank you very much for your attention—I would love to hear your questions and feedback.
+Synthesis of Empirical & Theoretical Conclusions (Section 6):
+- RQ1 (Descriptive): In naturalistic mastery-gated remediation (N = 732), 78.0% of episodes rely exclusively on retesting; among the 22.0% using LLM clarification, 86.3% decide in Round 1 and 84.7% ask conceptual questions. Single immediate clarifiers complete remediation in fewer rounds than single delayed clarifiers (Mdn 2.0 vs. 4.0, δ = −0.912, interpreted descriptively due to definitional overlap and n = 14).
+- RQ2 (Associative): Both non-parametric Cliff's δ (all |δ| ≤ 0.127) and REML MixedLM controlling for student and assignment effects (all p > 0.05) converge on a robust null result for downstream coding active time and snapshots, verified across code-variability subgroups and 15/30/60-min idle cutoffs.
+- RQ3 (Theoretical & Practical): Reframing LLM clarification as a Selective Process-Support Mechanism shifts design focus from expecting universal downstream speedups to lowering the metacognitive barrier via proactive Round-1 / post-failure system-triggered prompts.
+
+Five-Point Future Research Roadmap (Section 6):
+1. Randomized controlled trials assigning proactive clarification prompts at fixed remediation points to establish causal efficacy.
+2. Longitudinal multi-assignment tracking to detect delayed conceptual transfer across a full semester.
+3. Inclusion of baseline prior-knowledge covariates (pretests or placement exams) to isolate behavioral effects from ability confounds.
+4. Multi-institution, multi-course, and multi-LLM replications paired with human-validated coding and AI response-quality audits.
+5. Within-student trajectory modeling to examine how novice help-seeking strategies evolve with platform experience.
 -->
 
 ---
@@ -1176,11 +1258,14 @@ Published in <strong>Electronics 2026, 15, 2706</strong> &nbsp;·&nbsp; <code>ht
 </div>
 
 <!--
-Key Takeaway: Thank the audience and invite discussion on DialoguEDU, help-seeking pathways, and proactive AI tutoring design.
-Talking Points:
-- Thank you for listening. Our contact details and Electronics 2026 DOI are listed on the slide.
-- We welcome any questions regarding our mastery-gated workflow, statistical modeling, or proactive prompting design.
-Transition: Open the floor for Q&A.
+Reference & Archival Metadata:
+- Title: Help-Seeking in LLM-Assisted Learning: Behavioral Pathways and Their Limited Association with Subsequent Coding Process Efficiency
+- Authors: Lien-Chi Lai (corresponding author, p1000433@o365.fcu.edu.tw) and Nien-Lin Hsueh (nlhsueh@fcu.edu.tw)
+- Affiliation: Department of Information Engineering and Computer Science, Feng Chia University, Taichung 40724, Taiwan
+- Publication: Electronics 2026, 15, 2706 (Published 18 June 2026; Open Access CC BY)
+- DOI: https://doi.org/10.3390/electronics15122706
+- Funding: National Science and Technology Council (NSTC), Taiwan R.O.C., grant NSTC114-2221-E-035-077
+- Keywords: large language models; programming education; remediation learning; clarification behavior; learning pathway analysis; mastery learning
 -->
 
 <script>

@@ -528,6 +528,36 @@ section .callout {
   line-height: 1.54;
 }
 
+
+/* Table Breathing Room & Callout Separation */
+section table {
+  margin-top: 12px !important;
+  margin-bottom: 14px !important;
+}
+section table th {
+  padding: 9px 11px !important;
+}
+section table td {
+  padding: 8px 11px !important;
+  line-height: 1.42 !important;
+}
+section .split55 table th,
+section .split64 table th,
+section .split55 table td,
+section .split64 table td {
+  padding: 6px 8px !important;
+}
+section table + .callout,
+section .fig-box + .callout,
+section .two-col + .callout,
+section .three-col + .callout,
+section div + .callout {
+  margin-top: 20px !important;
+}
+section .callout {
+  padding: 12px 18px !important;
+}
+
 </style>
 
 <!-- _class: lead -->
@@ -551,12 +581,10 @@ Supported by the Ministry of Science and Technology (MOST), Taiwan, under Grant 
 </div>
 
 <!--
-Key Takeaway: This IEEE Access (2021) study applies an extended UTAUT2 model with PLS-SEM to uncover what genuinely motivates university students to adopt Online Judge systems in programming courses.
-Talking Points:
-- Welcome everyone. Today I am sharing our empirical study with Daramsenge Bilegjargal at Feng Chia University, published in IEEE Access in November 2021.
-- Automated Online Judge systems are everywhere in coding courses, yet we rarely measure how students actually feel about using them.
-- Using survey data from a real blended programming course, we unpack which psychological and usability factors drive adoption.
-Transition: Before diving into the theory, let's start with a familiar classroom frustration that sparked this research.
+Paper Context & Contribution:
+- Bibliographic record: Daramsenge Bilegjargal and Nien-Lin Hsueh, "Understanding Students' Acceptance of Online Judge System in Programming Courses: A Structural Equation Modeling Approach," IEEE Access, Vol. 9, pp. 152606–152615, November 2021 (DOI: 10.1109/ACCESS.2021.3126896; supported by MOST 109-2221-E-035-056).
+- Core problem addressed: Automated Programming Assessment Systems (APAS) and Online Judge (OJ) platforms are widely adopted to scale coding evaluation, yet prior engineering-focused literature rarely investigates the psychological and behavioral determinants of student acceptance in online or blended programming courses.
+- Methodological scope: The study adapts the Unified Theory of Acceptance and Use of Technology 2 (UTAUT2) with educational psychology constructs (Self-Efficacy, Anxiety) and Academic Major moderation, empirically validating the structural model via Partial Least Squares Structural Equation Modeling (PLS-SEM) on survey data from 187 undergraduates at Feng Chia University (FCU).
 -->
 
 ---
@@ -572,12 +600,10 @@ Transition: Before diving into the theory, let's start with a familiar classroom
 </div>
 
 <!--
-Key Takeaway: Despite strict auto-grading frustration, students adopt Online Judges because of fun, self-confidence, and social support rather than sheer efficiency or ease of use.
-Talking Points:
-- Look at the illustration: a student submits code twelve times and gets "Wrong Answer" just for a single extra space before "12".
-- Intuitively, you might expect ease of use or productivity to make or break adoption, yet our statistical model shows neither predicted behavioral intention.
-- Instead, Hedonic Motivation (fun), Self-Efficacy (confidence), and Social Influence (peer and teacher support) won students over across both CS and non-CS majors.
-Transition: Here is the roadmap for how we investigated and verified this surprising result.
+Empirical Paradox & Analytical Framing:
+- Operational strictness of OJ judging: An OJ compiles uploaded source code into an executable, runs it against hidden test suites, and performs exact character-level output comparison against standard solutions. A single extraneous whitespace character (e.g., outputting " 12" instead of "12") triggers a Wrong Answer verdict, and prior OJ studies cited in the paper report an average of ~12 submissions before a program passes.
+- Counterintuitive empirical finding: Under conventional technology acceptance assumptions, utilitarian constructs such as Performance Expectancy (PE) and Effort Expectancy (EE) are expected to dominate adoption in technical tools. However, the PLS-SEM results show that neither PE (p = 0.373) nor EE (p = 0.648) significantly predicts Behavioral Intention (BI).
+- Primary behavioral drivers: Intrinsic enjoyment (Hedonic Motivation, β = 0.400), independent debugging confidence (Self-Efficacy, β = 0.316), and peer/instructor support (Social Influence, β = 0.245) collectively drive acceptance across both Computer Science (IECS) and non-CS majors.
 -->
 
 ---
@@ -649,12 +675,11 @@ Why 8 hypotheses were rejected, actionable design playbook, limitations, and fut
 </div>
 
 <!--
-Key Takeaway: We will walk through six structured parts, from research motivation and our 12-hypothesis UTAUT2 model to PLS-SEM findings and practical design advice.
-Talking Points:
-- First, we establish the research gap and our two core research questions on acceptance drivers and academic major moderation.
-- Next, we adapt UTAUT2 into a 12-hypothesis structural model and test it with 187 undergraduates in a six-week blended Data Science course.
-- Finally, we translate both our significant drivers and our eight rejected hypotheses into concrete takeaways for OJ developers and instructors.
-Transition: Let's begin with Section 1 and why automated grading alone does not guarantee student buy-in.
+Paper Architecture & Analytical Progression:
+- Sections I–II (Motivation & Literature Review): Establishes the research gap between system-centric OJ engineering and learner-centric behavioral modeling, synthesizing prior work on OJ platforms (Edgar, Jutge.org, UNED), UTAUT/UTAUT2 educational applications, and PLS-SEM estimation theory.
+- Section III (Research Model & Hypotheses): Justifies the context-specific pruning of UTAUT2 (removing Price Value, Habit, and Use Behavior) and extension with Self-Efficacy, Anxiety, and Academic Major across 12 formal hypotheses (H1–H12).
+- Section IV (Methodology): Details the 6-week blended FCU Data Science course setting, the 22-item 5-point Likert instrument (n = 187), and the two-stage SmartPLS 3.0 evaluation protocol.
+- Sections V–VIII (Results, Discussion, Limitations & Conclusion): Reports outer measurement validity (Tables 2–4), inner structural path significance (R² = 0.754, Q² = 0.532; Tables 5–7), post-hoc diagnostic explanations for the 8 unsupported hypotheses, practical design implications, and external validity boundaries.
 -->
 
 ---
@@ -670,12 +695,10 @@ Transition: Let's begin with Section 1 and why automated grading alone does not 
 </div>
 
 <!--
-Key Takeaway: Existing Online Judge research focuses heavily on system engineering and grading efficiency, leaving student technology acceptance largely unexplored.
-Talking Points:
-- As shown in the diagram, platforms like Codeforces, UVa, SPOJ, and Edgar dramatically cut grading overhead for instructors.
-- However, a system-centric focus overlooks the learner's perspective: if students feel frustrated or disengaged in a remote course, auto-grading loses its pedagogical value.
-- At the time of this study, no prior empirical work had modeled what drives students to accept an Online Judge in an online programming course.
-Transition: To close this learner-centric gap, we formulated two focused research questions.
+Theoretical Motivation & Research Gap:
+- Limitations of manual assessment: Grading programming assignments manually is labor-intensive and slow, motivating Automated Programming Assessment Systems (APAS) such as Edgar (Mekterovic et al., 2020), which supports multi-language grading (SQL, Java, C, C#), multi-correct MCQs, exam logging, and analytics, alongside competitive OJ platforms like Codeforces, URI Online Judge, UVa, and SPOJ.
+- Pedagogical tension in remote learning: While OJs automate compilation, execution, and test-case verification, deploying them in online or blended courses shifts learning responsibility onto students, who may lack intrinsic motivation or disciplined self-study habits (Lu et al., 2017).
+- Literature gap: Existing OJ research focuses primarily on system architecture, distributed judging scalability (e.g., MetaOJ), or grade correlation, leaving a critical empirical void regarding the latent psychological and contextual factors that govern student acceptance of OJ technology.
 -->
 
 ---
@@ -692,12 +715,10 @@ To bridge this gap, we investigate student acceptance of an OJ system in a blend
 </div>
 
 <!--
-Key Takeaway: Our study asks which factors drive Online Judge behavioral intention (RQ1) and whether academic major moderates those relationships (RQ2).
-Talking Points:
-- RQ1 tests eight candidate predictors — including performance, effort, social influence, facilitating conditions, fun, self-efficacy, anxiety, and major — to see which ones significantly predict behavioral intention.
-- RQ2 asks whether being a Computer Science versus a non-CS major changes the strength of key psychological and usability paths: EE, HM, SE, and ANX.
-- Answering both questions helps universities design OJ courses that work for diverse cohorts, not just CS veterans.
-Transition: Let's briefly position our work against three related research streams.
+Formalization of Research Questions:
+- RQ1 (Direct Acceptance Determinants): Investigates which latent predictors from an extended UTAUT2 framework—Performance Expectancy (PE), Effort Expectancy (EE), Social Influence (SI), Facilitating Conditions (FC), Hedonic Motivation (HM), Self-Efficacy (SE), Anxiety (ANX), and Academic Major (MJR)—exert statistically significant direct effects on students' Behavioral Intention (BI) to use an OJ system.
+- RQ2 (Demographic Moderation by Major): Examines whether Academic Major (MJR: IECS vs. EE vs. Other departments) moderates the structural slopes linking EE, HM, SE, and ANX to BI. Because CS majors typically possess prior IDE exposure and stronger programming identity, testing moderation determines whether OJ acceptance mechanisms operate uniformly or diverge across disciplinary backgrounds.
+- Practical significance: Separating direct baseline differences (RQ1) from slope differences (RQ2) clarifies whether universities need separate OJ systems per major or universal pedagogical scaffolding.
 -->
 
 ---
@@ -717,12 +738,10 @@ Existing OJ studies focus on system engineering or learning outcomes rather than
 </div>
 
 <!--
-Key Takeaway: We bridge three research streams by being the first to pair an extended UTAUT2 model with PLS-SEM for automated online programming assessment.
-Talking Points:
-- Prior OJ studies like Edgar and Jutge.org proved that auto-grading scales well and correlates with grades, but they lacked behavioral acceptance models.
-- UTAUT2 integrates eight classic acceptance theories and has been tested on VR and LMS platforms, yet never on online programming judges with major moderation.
-- PLS-SEM is ideal here because its nonparametric bootstrap handles single-semester samples like our n = 187 without requiring multivariate normality.
-Transition: Next, let's see how we adapted the original UTAUT2 framework to fit an Online Judge classroom.
+Synthesis of Three Literature Streams:
+- Online Judge (OJ) Systems in Education: Petit et al. (2018) documented 10 years of Jutge.org across programming, algorithms, AI, and circuit design at UPC, noting that students viewed tournament features as fun and motivating. Aleman (2011) showed automated assessment outperformed traditional face-to-face instruction in retaining versioning, testing, debugging, and deployment skills. Galan et al. (2019) analyzed 8 years of UNED data, confirming high acceptance after proper training and strong correlation between assignment completion and course grades. However, Pereira et al. (2020) noted that behavioral analysis remains scarce due to limited data granularity.
+- UTAUT / UTAUT2 in EdTech: Venkatesh et al. (2003) unified eight classic models (including TRA, TPB, and TAM) into UTAUT, later adding HM, Price Value, and Habit in UTAUT2 (2012). Subsequent studies validated UTAUT2 in VR (Huang, 2020, n = 56), Google Classroom (Jakkaew & Hemrungrote, 2017), ICT services (Thong et al., 2011, n = 4,777, explaining 50%–66% of BI variance), and UAE e-learning (Salloum et al., 2019, n = 435), yet none tested UTAUT2 with major moderation in online programming OJs.
+- PLS-SEM Rationale: Hair et al. (2011, 2017) and Lin et al. (2019) establish PLS-SEM as a variance-based, nonparametric bootstrap method maximizing explained variance (R²) without multivariate normality assumptions, making it well-suited for exploratory single-semester empirical samples (n = 187).
 -->
 
 ---
@@ -754,12 +773,13 @@ Transition: Next, let's see how we adapted the original UTAUT2 framework to fit 
 </div>
 
 <!--
-Key Takeaway: We tailored UTAUT2 to the university OJ context by keeping five core constructs, removing three non-applicable ones, and adding three coding-specific variables.
-Talking Points:
-- Referring to Figure 1 on the left, we retained Performance Expectancy, Effort Expectancy, Social Influence, Facilitating Conditions, and Hedonic Motivation.
-- We excluded Price Value because university OJs are free, Habit because this is a course-bound tool, and Use Behavior because course usage was mandatory — so Behavioral Intention captures future voluntary adoption such as LeetCode.
-- Crucially, we added Self-Efficacy, Anxiety, and Academic Major to capture the psychological reality of debugging code remotely.
-Transition: Putting these constructs together gives us our proposed research model and 12 hypotheses.
+Context-Driven Adaptation of UTAUT2:
+- Retained constructs (5): PE, EE, SI, FC, and HM are retained from Venkatesh et al. (2012) because they map directly to automated grading utility, workspace usability, institutional/peer encouragement, technical support, and gamified enjoyment.
+- Excluded constructs (3) and theoretical justification:
+  1. Price Value: Omitted because the university-hosted OJ is provided free of charge for educational use, eliminating monetary cost-benefit trade-offs.
+  2. Habit: Omitted because the OJ is a bounded 6-week course instrument rather than an everyday consumer technology.
+  3. Use Behavior: Omitted as an endogenous target because OJ participation was mandatory within the course; instead, Behavioral Intention (BI) serves as the theoretically validated proxy for voluntary post-course adoption (e.g., practicing on open OJ platforms such as LeetCode).
+- Added constructs (3): Self-Efficacy (SE) and Anxiety (ANX), adapted from Venkatesh et al. (2003), capture independent debugging confidence and error-avoidance stress in remote coding; Academic Major (MJR) replaces standard consumer demographics to test disciplinary background effects across IECS, EE, and other departments.
 -->
 
 ---
@@ -793,12 +813,13 @@ Transition: Putting these constructs together gives us our proposed research mod
 </div>
 
 <!--
-Key Takeaway: Our extended UTAUT2 model tests eight direct effects on Behavioral Intention and four moderating effects of Academic Major.
-Talking Points:
-- Figure 2 maps all 12 hypotheses: lighter arrows represent the eight direct paths (H1, H2, H4, H5, H6, H8, H10, H12) toward Behavioral Intention.
-- Note that Anxiety (H10) is hypothesized to have a negative effect, while all other direct drivers are positive.
-- The four darker lines represent Group 2 (H3, H7, H9, H11), testing whether Academic Major moderates Effort Expectancy, Hedonic Motivation, Self-Efficacy, and Anxiety.
-Transition: To make these constructs concrete, let's look at how each one plays out in a real OJ classroom.
+Structural Specification of H1–H12:
+- Group 1 — Direct Effects on Behavioral Intention (8 hypotheses):
+  - Positive utilitarian and social paths: H1 (PE → BI), H2 (EE → BI), H4 (SI → BI), and H5 (FC → BI), grounded in prior e-learning and remote experimentation studies (Almaiah & Alyoussef, 2019; Cheng, 2017; Jakkaew & Hemrungrote, 2017).
+  - Psychological and affective paths: H6 (HM → BI, positive), H8 (SE → BI, positive), and H10 (ANX → BI, negative), reflecting gamified enjoyment, independent problem-solving confidence, and fear of errors or grade visibility.
+  - Direct disciplinary path: H12 (MJR → BI), positing that students pursuing computing careers have stronger baseline intention to continue using open OJ platforms like LeetCode.
+- Group 2 — Moderating Effects of Academic Major (4 hypotheses):
+  - H3 (MJR × EE → BI), H7 (MJR × HM → BI), H9 (MJR × SE → BI), and H11 (MJR × ANX → BI). The darker arrows in Fig. 2 represent interaction terms testing whether prior programming coursework among IECS and EE students alters the sensitivity of BI to usability, enjoyment, self-efficacy, or anxiety.
 -->
 
 ---
@@ -827,12 +848,10 @@ Transition: To make these constructs concrete, let's look at how each one plays 
 </div>
 
 <!--
-Key Takeaway: Each construct reflects a tangible OJ classroom experience, from strict whitespace diffing and 12-try debugging loops to gamified quests and peer mentoring.
-Talking Points:
-- On the left, core UTAUT factors tie directly to daily workflow: instant feedback (PE), OpenEdu SSO login friction (EE), active TA and senior-student help (SI), and strict output matching like " 12" versus "12" (FC).
-- On the right, five of our six course units used gamified unlockable quests (HM), while remote coding tested independent debugging confidence (SE).
-- Students averaged around 12 submissions per problem and saw public rankings, which motivated us to test Anxiety alongside Academic Major.
-Transition: Now let's turn to Section 4 to examine our blended course setup and survey methodology.
+Operational Mapping of Latent Constructs to Classroom Mechanics:
+- PE & EE mechanics: In the FCU workflow, students compress (zip) and upload code to the LMS or write directly in the web workspace integrated via OpenEdu Single Sign-On (SSO). The OJ compiles, executes, and returns verdicts (correct, compiler error, runtime error, wrong answer) plus elapsed time. While instant verification supports iterative code refinement (PE), SSO friction and strict verdict interpretation add cognitive overhead compared to local IDEs (EE).
+- SI & FC mechanics: The IECS department built its own custom OJ and actively mobilized senior students and TAs to support learners via course channels (SI). Because exact string diffing rejects outputs differing by a single leading space (" 12" vs. "12"), explicit onboarding instructions and debugging resources are critical operational prerequisites (FC).
+- HM, SE, ANX & MJR mechanics: Five of the six programming units incorporated gamified progression where students had to pass the current stage to unlock the next (HM). Remote self-study without an instructor physically present heightened reliance on independent troubleshooting confidence (SE). Conversely, averaging ~12 submissions per problem, fearing accidental code loss on misclicks, and viewing always-visible public rankings created potential stress triggers (ANX), whose impact was hypothesized to vary across IECS (career-core), EE (at least one prior coding course), and non-CS majors (MJR).
 -->
 
 ---
@@ -848,12 +867,10 @@ Transition: Now let's turn to Section 4 to examine our blended course setup and 
 </div>
 
 <!--
-Key Takeaway: We collected a 22-item survey from a six-week flipped Data Science course at FCU and analyzed it via a rigorous two-stage PLS-SEM pipeline in SmartPLS 3.0.
-Talking Points:
-- The pipeline diagram walks through our study flow: students practiced weekly on the FCU Online Judge before completing the voluntary 22-item instrument.
-- Stage 1 validates the outer measurement model for reliability, convergent validity, and discriminant validity.
-- Stage 2 runs nonparametric bootstrapping in SmartPLS 3.0 to evaluate structural path significance, R-squared, and Q-squared with strong statistical power at n = 187.
-Transition: Let's inspect who participated in our survey.
+Course Protocol, Measurement Instrument & Analytical Method:
+- Instructional setting: "Foundations and Application of Data Science" (Spring 2021, College of Information and Electrical Engineering, FCU, open university-wide). The 3-credit flipped course comprised three modules (programming, machine learning, applications) and followed a weekly 2-hour online self-learning + 1-hour in-class Q&A format. Students watched lecture videos, completed self-tests, and solved OJ assignments before class; TAs supported online questions via the LMS forum, and instructors addressed unresolved questions in class without repeating video lectures.
+- Timeline & survey design: Students used the OJ during Weeks 1–6; the study spanned Weeks 1–7, with the voluntary survey administered immediately after completing the OJ units. The instrument contained 22 measurement items across the latent constructs (adapted from Henrico et al., 2021; Tamilmani et al., 2021; Venkatesh et al., 2003; Huang, 2020) rated on a 5-point Likert scale (1 = strongly disagree to 5 = strongly agree), plus demographic items.
+- Two-stage SmartPLS 3.0 pipeline: Stage 1 evaluates the reflective outer measurement model (internal consistency, convergent validity, discriminant validity); Stage 2 evaluates the inner structural model via nonparametric bootstrapping (two-tailed t-tests and p-values) and blindfolding (Q²), chosen because PLS-SEM requires no multivariate normality assumption and achieves high statistical power at n = 187.
 -->
 
 ---
@@ -903,12 +920,10 @@ Transition: Let's inspect who participated in our survey.
 </div>
 
 <!--
-Key Takeaway: Out of roughly 300 undergraduates, 187 responded (a 62% response rate), predominantly IECS majors with prior OJ exposure, alongside EE and other-department students.
-Talking Points:
-- Table 1 and the horizontal bars summarize our sample: 83.4% (156 students) were from IECS, 12.3% (23) from Electrical Engineering, and 4.3% (8) from other departments.
-- Juniors made up the largest cohort at 38.5%, and 80.2% of respondents had prior experience with an Online Judge, leaving 19.8% first-time users.
-- Keep this sample composition in mind when we interpret both the major-moderation tests and our study limitations later.
-Transition: With the sample established, let's review the PLS-SEM measurement and structural results in Section 5.
+Sample Composition & Distributional Characteristics (Table 1):
+- Response rate & sampling frame: Out of approximately 300 enrolled undergraduates, 187 completed the voluntary questionnaire (~62% response rate), providing a well-powered sample for PLS-SEM path estimation.
+- Disciplinary skew: IECS majors constituted 83.4% (n = 156), Electrical Engineering (EE) majors 12.3% (n = 23), and students from other departments 4.3% (n = 8). This heavy concentration in computing-adjacent majors is an important contextual factor when interpreting both the direct MJR effect (H12) and the null moderation tests (H3, H7, H9, H11).
+- Gender, academic level & prior exposure: Respondents were predominantly male (80.2%, n = 150; female 19.8%, n = 37) and concentrated in the middle undergraduate years (3rd year 38.5%, n = 72; 2nd year 28.3%, n = 53; 1st year 19.2%, n = 36; 4th year 14.0%, n = 26). Exactly 80.2% (n = 150) had prior OJ experience, while 19.8% (n = 37) were first-time OJ users.
 -->
 
 ---
@@ -944,12 +959,10 @@ Transition: With the sample established, let's review the PLS-SEM measurement an
 </div>
 
 <!--
-Key Takeaway: The outer measurement model passed every reliability and validity benchmark, confirming that our survey items cleanly measure each latent construct.
-Talking Points:
-- Figure 3 displays the SmartPLS outer loadings alongside path estimates, and the summary table confirms every construct exceeded the 0.7 threshold for Composite Loadings, Cronbach's alpha, and Composite Reliability.
-- Average Variance Extracted (AVE) ranged from 0.709 for FC up to 0.929 for HM, well above the 0.50 criterion for convergent validity.
-- Fornell-Larcker checks also confirmed strong discriminant validity, with all diagonal square-root AVE values (0.842 to 0.964) exceeding inter-construct correlations.
-Transition: Now that we trust the measurement instrument, let's look at which factors actually drove Behavioral Intention.
+Psychometric Validation of the Reflective Outer Model (Tables 2–4, Fig. 3):
+- Reflective indicator criteria: Because items within each construct are conceptually interchangeable and correlated, reflective measurement validation was conducted via the PLS algorithm using four benchmarks (Wong, 2013): Cross/Outer Loadings (CL) ≥ 0.70, Cronbach's alpha (α) ≥ 0.70, Composite Reliability (CR) ≥ 0.70, and Average Variance Extracted (AVE) > 0.50.
+- Reliability & convergent validity results: Across all eight multi-item constructs (2–3 retained items each), outer loadings exceeded 0.726 (ranging from 0.810 to 0.965 for displayed items), Cronbach's α ranged from 0.708 (BI) to 0.924 (HM), CR ranged from 0.870 (BI) to 0.963 (HM), and AVE ranged from 0.709 (FC) to 0.929 (HM). These values confirm strong indicator reliability, internal consistency, and convergent validity.
+- Discriminant validity (Fornell-Larcker, Tables 3–4): For every construct, the square root of AVE on the matrix diagonal (0.842 to 0.964) strictly exceeded all off-diagonal inter-construct correlation coefficients, establishing that each latent variable captures a empirically distinct phenomenon.
 -->
 
 ---
@@ -1004,12 +1017,14 @@ Transition: Now that we trust the measurement instrument, let's look at which fa
 </div>
 
 <!--
-Key Takeaway: Our model explains 75.4% of the variance in Behavioral Intention, with Hedonic Motivation, Self-Efficacy, Social Influence, and Academic Major emerging as the four significant direct drivers.
-Talking Points:
-- Look at the top KPI cards: R-squared is 0.754 (substantial explanatory power above 0.67) and Q-squared is 0.532 (strong predictive relevance).
-- For RQ1, Hedonic Motivation is the #1 driver (beta = 0.400, p < 0.001), followed by Self-Efficacy (beta = 0.316, p < 0.001) and Social Influence (beta = 0.245, p = 0.017), with Academic Major showing a smaller direct effect (|beta| = 0.098, p = 0.026).
-- Strikingly, Performance Expectancy, Effort Expectancy, Facilitating Conditions, and Anxiety were all statistically non-significant.
-Transition: Next, let's check RQ2 — did Academic Major moderate any of these relationships?
+Inner Structural Model Evaluation & Direct Path Estimates (Tables 5–6):
+- Global explanatory & predictive power (Table 5): The structural model explains 75.4% of the variance in Behavioral Intention (R² = 0.754), exceeding the 0.67 benchmark for "substantial" explanatory power (Hair et al., 2011; Wong, 2013). Blindfolding yields a cross-validated redundancy value of Q² = 0.532 (> 0), confirming strong out-of-sample predictive relevance.
+- Statistically significant direct predictors (two-tailed bootstrapping, α = 0.05):
+  - H6 (HM → BI): O = 0.400, SD = 0.080, t = 5.008, p = 0.000 (p ≤ 0.01) — strongest overall determinant.
+  - H8 (SE → BI): O = 0.316, SD = 0.067, t = 4.731, p = 0.000 (p ≤ 0.01) — second strongest determinant.
+  - H4 (SI → BI): O = 0.245, SD = 0.102, t = 2.391, p = 0.017 (p ≤ 0.05) — third strongest determinant.
+  - H12 (MJR → BI): O = -0.098, SD = 0.044, t = 2.239, p = 0.026 (p ≤ 0.05) — smaller but significant direct baseline effect (negative coefficient reflects numeric coding order of major categories, with computing majors exhibiting higher baseline intention).
+- Unsupported utilitarian & affective paths: PE (O = 0.066, t = 0.891, p = 0.373), EE (O = -0.035, t = 0.457, p = 0.648), ANX (O = 0.011, t = 0.282, p = 0.778), and FC (O = 0.010, t = 0.098, p = 0.922) failed to reach significance, demonstrating that intrinsic enjoyment, self-confidence, and social support dominate over perceived efficiency or ease of use.
 -->
 
 ---
@@ -1043,12 +1058,14 @@ All four hypothesized moderating effects of **Academic Major (`MJR`)** were stat
 </div>
 
 <!--
-Key Takeaway: Academic Major did not moderate any of the four tested paths, meaning fun and self-confidence drive OJ acceptance equally strongly for both CS and non-CS students.
-Talking Points:
-- Table 7 shows that H3, H7, H9, and H11 all had t-statistics well below 1.96 and p-values ranging from 0.325 to 0.977.
-- In plain terms, whether a student majors in IECS, EE, or another field, enjoyment and debugging confidence boost their intention to use the OJ at virtually the same rate.
-- Although major directly shifts baseline intention (H12, p = 0.026) — likely due to career coding goals — the encouraging takeaway is that non-CS learners can thrive just as well with the right motivation and support.
-Transition: Why were eight of our twelve hypotheses rejected? Let's diagnose the root causes in Section 6.
+Moderation Analysis & Interpretation of Major Effects (Table 7):
+- Non-significant interaction terms: All four hypothesized moderation paths involving Academic Major (MJR) failed to reach the critical threshold (t > 1.96, p < 0.05):
+  - H3 (MJR × EE → BI): O = 0.064, M = 0.060, SD = 0.065, t = 0.985, p = 0.325.
+  - H7 (MJR × HM → BI): O = 0.006, M = -0.013, SD = 0.083, t = 0.067, p = 0.947.
+  - H9 (MJR × SE → BI): O = -0.002, M = 0.016, SD = 0.076, t = 0.029, p = 0.977.
+  - H11 (MJR × ANX → BI): O = 0.060, M = 0.053, SD = 0.065, t = 0.921, p = 0.358.
+- Substantive meaning of null moderation + significant main effect (H12): While academic major shifts the intercept of behavioral intention (H12, p = 0.026)—reflecting greater career-driven need for coding platforms among CS students—the slopes of HM and SE do not differ by major. Fun and troubleshooting confidence elevate OJ acceptance equally for IECS, EE, and non-CS learners.
+- Methodological caveat: Because non-IECS students represented only 16.6% of the sample (23 EE + 8 Other), small subgroup sizes may also limit statistical power to detect subtle interaction effects.
 -->
 
 ---
@@ -1066,12 +1083,11 @@ Turning non-significant paths into **actionable UX and pedagogical diagnostics**
 | **H3, H7, H9, H11** | `p = 0.325–0.977` | CS students compared OJ unfavorably to IDEs; non-CS still faced steep learning; fun &amp; SE mattered universally | Design **universal gamification &amp; scaffolding** for all majors |
 
 <!--
-Key Takeaway: Our eight rejected hypotheses act as a UX diagnostic, revealing missing debugger support, web-editor quirks, and the protective value of onboarding videos.
-Talking Points:
-- Follow-up interviews explained why PE and EE failed to predict adoption: compared to real IDEs, the OJ lacked debugging information, and its web editor's auto-indent on Enter caused frustrating Python syntax errors.
-- Facilitating Conditions (p = 0.922) showed a ceiling effect because clear upfront course guidelines had already removed basic operational barriers.
-- Meanwhile, Anxiety was non-significant (p = 0.778) because short troubleshooting videos kept technical fear low — proving that an inconvenient editor does not automatically make students anxious.
-Transition: Turning these diagnostics into action gives us a clear playbook for both OJ developers and instructors.
+Qualitative Post-Hoc Diagnosis of the Eight Unsupported Hypotheses:
+- Why H1 (PE) and H2 (EE) were rejected: Follow-up student interviews revealed concrete workspace deficiencies. Unlike professional local IDEs, the OJ lacked structured debugging information (suppressing perceived productivity, H1). Furthermore, the web editor automatically inserted indentation upon pressing Enter; students had to manually delete excess indentation or trigger Python compilation/indentation errors (degrading usability, H2).
+- Why H3 (MJR × EE) was rejected: Both groups experienced usability friction for opposing reasons—CS majors judged the OJ inconvenient relative to professional IDEs they already mastered, whereas non-CS students still faced a steep operational learning curve.
+- Why H5 (FC), H10 (ANX), and H11 (MJR × ANX) were rejected: Surprisingly, FC was non-significant (p = 0.922); student interviews indicated a ceiling effect because instructors had proactively reminded students of common pitfalls and embedded clear operational guidelines in the online course. Likewise, pre-recorded troubleshooting guideline videos neutralized technical anxiety across all majors (H10, p = 0.778; H11, p = 0.358). Synthesizing H1, H2, H5, and H10, the authors conclude that students viewed the OJ as neither highly efficient nor convenient, yet experienced no operational difficulty or anxiety using it.
+- Why H7 (MJR × HM) and H9 (MJR × SE) were rejected: Combined with significant H6 and H8, these null interactions demonstrate that enjoyment and independent problem-solving confidence are universal acceptance levers regardless of disciplinary background.
 -->
 
 ---
@@ -1106,12 +1122,16 @@ Transition: Turning these diagnostics into action gives us a clear playbook for 
 </div>
 
 <!--
-Key Takeaway: To boost OJ adoption, developers should pair gamification with IDE-grade debugging and clean editors, while instructors should build self-efficacy and active peer support.
-Talking Points:
-- On the left, for OJ developers: double down on our #1 driver (Hedonic Motivation, beta = 0.400) via staged quests and badges, add structured debugging hints, fix Python auto-indent traps, and add draft auto-save to keep anxiety low.
-- On the right, for instructors: cultivate Self-Efficacy (beta = 0.316) with short troubleshooting videos and scaffolded starter problems, and activate Social Influence (beta = 0.245) through responsive TA forums and senior mentoring.
-- Most importantly, do not write off non-CS students — universal scaffolding and fun tasks bridge the major gap.
-Transition: Before concluding, let's candidly note three limitations and threats to validity.
+Translating Empirical Estimates into System & Pedagogical Design:
+- Recommendations for OJ developers and university policymakers:
+  1. Prioritize gamification (HM, β = 0.400): Expand staged quests, progression locks, and interactive rewards to sustain voluntary engagement in remote courses.
+  2. Embed diagnostic debugging (PE): Provide meaningful compiler/runtime diagnostic feedback rather than bare Wrong Answer verdicts so the workspace approaches IDE utility.
+  3. Eliminate editor friction (EE): Fix language-specific traps (such as Python auto-indent conflicts) and streamline OpenEdu SSO authentication.
+  4. Mitigate latent anxiety triggers (ANX): Although ANX was non-significant in this scaffolded course, the paper stresses that unmitigated anxiety can impair decision-making, self-confidence, and completion in distance programming—warranting draft auto-save and careful design of always-visible public rankings.
+- Recommendations for instructors and course designers:
+  1. Cultivate self-efficacy (SE, β = 0.316): Deploy concise troubleshooting videos and graduated exercises to build independent debugging habits.
+  2. Leverage social support (SI, β = 0.245): Maintain active instructor/TA presence via discussion forums, email, messaging systems, and senior-student peer mentoring, reinforcing both SE and course achievement.
+  3. Support cross-major equity (MJR): Because major does not moderate HM or SE, structured guidance and engaging tasks enable non-CS students to complete OJ programming courses successfully.
 -->
 
 ---
@@ -1143,12 +1163,10 @@ Transition: Before concluding, let's candidly note three limitations and threats
 </div>
 
 <!--
-Key Takeaway: Our findings come from a single campus course with an IECS-heavy, age-homogeneous sample and measure six-week behavioral intention rather than long-term actual usage.
-Talking Points:
-- First, all 187 participants came from one FCU undergraduate course where 83.4% were IECS majors and 80.2% already knew OJs, so generalization to humanities or pure-novice cohorts needs caution.
-- Second, because undergraduates are tightly clustered in age, we could not test UTAUT2's age moderator — a great fit for future MOOC studies.
-- Third, we measured Behavioral Intention after six weeks; triangulating surveys with longitudinal OJ submission logs will capture actual post-course behavior.
-Transition: Let's wrap up with our visual synthesis and future research directions.
+Methodological Boundaries & Validity Considerations:
+- External validity (single-course, CS-heavy sample): All 187 participants were undergraduates enrolled in one Data Science course at a single Taiwanese university (FCU), with 83.4% in IECS and 80.2% possessing prior OJ experience. Generalizing path weights to pure-novice cohorts, non-engineering disciplines, or multi-institutional populations requires further replication.
+- Omitted UTAUT2 demographic moderator (Age): Because traditional undergraduate students share a narrow age band, the study could not test Age—a foundational moderating variable in the original UTAUT2 framework. Recruiting age-diverse learners from Massive Open Online Courses (MOOCs) is explicitly recommended to evaluate age moderation.
+- Construct & temporal scope (BI vs. Use Behavior): Because OJ exercises were mandatory during the 6-week window, actual voluntary Use Behavior was excluded and only cross-sectional Behavioral Intention (BI) was measured. Combining survey instruments with longitudinal OJ submission logs (e.g., voluntary post-course practice on LeetCode) is needed to verify intention-to-behavior translation.
 -->
 
 ---
@@ -1166,11 +1184,10 @@ Transition: Let's wrap up with our visual synthesis and future research directio
 </div>
 
 <!--
-Key Takeaway: Fun, confidence, and social support drive Online Judge acceptance across all majors, pointing toward broader MOOC studies and next-generation gamified debugger OJs.
-Talking Points:
-- The visual synthesis summarizes both research questions: R-squared reaches 0.754, led by HM, SE, and SI (RQ1), with no major-based moderation (RQ2).
-- Looking ahead, we highlight three directions: expanding to multi-university and MOOC cohorts, testing age moderation alongside longitudinal submission logs, and co-designing gamified OJs with built-in debugging hints.
-Transition: Thank you for following along — let's move to the closing slide and open the floor for questions.
+Synthesis of Contributions & Research Agenda:
+- Theoretical synthesis: As the first empirical study combining an extended UTAUT2 model, Academic Major moderation, and PLS-SEM in automated online programming assessment, the model accounts for 75.4% of variance in Behavioral Intention (Q² = 0.532).
+- Core answers to RQ1 & RQ2: Student acceptance is governed primarily by Hedonic Motivation (β = 0.400), Self-Efficacy (β = 0.316), and Social Influence (β = 0.245), with a modest direct baseline effect of Academic Major (|β| = 0.098, p = 0.026) and no moderating effects across majors (H3, H7, H9, H11 all NS).
+- Future research agenda: (1) Extend sampling to multi-university settings and MOOCs to increase demographic and disciplinary diversity; (2) evaluate UTAUT2 age moderation and link BI surveys to longitudinal behavioral submission logs; and (3) co-design next-generation OJ environments that unite deeper gamification with IDE-grade debugging diagnostics and frictionless code editing.
 -->
 
 ---
@@ -1192,12 +1209,10 @@ Published in <strong>IEEE Access</strong>, Vol. 9, pp. 152606–152615 (2021) ·
 </div>
 
 <!--
-Key Takeaway: Thank the audience, share publication and contact details, and invite questions and discussion.
-Talking Points:
-- Thank you very much for your attention!
-- The full paper is available in IEEE Access (Vol. 9, 2021), and feel free to reach out to Daramsenge or me via the email addresses shown here.
-- I would be happy to take any questions about our UTAUT2 model, PLS-SEM analysis, or Online Judge course design.
-Transition: Open the floor for Q&A.
+Archival Citation & Research Provenance:
+- Full citation: D. Bilegjargal and N.-L. Hsueh, "Understanding Students' Acceptance of Online Judge System in Programming Courses: A Structural Equation Modeling Approach," IEEE Access, vol. 9, pp. 152606–152615, Nov. 2021, doi: 10.1109/ACCESS.2021.3126896.
+- Institutional affiliation & funding: Department of Information Engineering and Computer Science, Feng Chia University, Taichung 40724, Taiwan; funded by the Ministry of Science and Technology (MOST), Taiwan, under Grant MOST 109-2221-E-035-056.
+- Instrument availability: The complete 22-item measurement questionnaire (Table 8, Appendix) and full SmartPLS 3.0 diagnostic tables (Tables 1–7) are published in the open-access IEEE Access article under Creative Commons Attribution 4.0 for replication and cross-institutional comparative studies.
 -->
 
 <script>
