@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 500" width="100%" height="100%">
+  <defs>
+    <style>
+      .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .font-mono { font-family: "Fira Code", "Consolas", monospace; }
+    </style>
+    <marker id="arr-up-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+    <marker id="arr-up-amber" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+  </defs>
+
+  <!-- ================= LEFT AXIS: EXECUTION TIME & FLAKINESS ================= -->
+  <g transform="translate(115, 35)">
+    <rect x="-85" y="0" width="170" height="430" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8" />
+    <text x="0" y="34" class="font-sans" font-size="16" font-weight="800" fill="#b91c1c" text-anchor="middle">Slow (Minutes)</text>
+    <text x="0" y="54" class="font-sans" font-size="12.5" font-weight="600" fill="#64748b" text-anchor="middle">Higher Flakiness</text>
+
+    <!-- Upward Arrow -->
+    <line x1="0" y1="350" x2="0" y2="78" stroke="#0284c7" stroke-width="5" marker-end="url(#arr-up-blue)" />
+
+    <rect x="-68" y="182" width="136" height="54" rx="10" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
+    <text x="0" y="205" class="font-sans" font-size="14" font-weight="800" fill="#0369a1" text-anchor="middle">Execution Time</text>
+    <text x="0" y="224" class="font-sans" font-size="12" font-weight="600" fill="#0284c7" text-anchor="middle">&amp; Feedback Delay</text>
+
+    <text x="0" y="388" class="font-sans" font-size="16" font-weight="800" fill="#15803d" text-anchor="middle">Ultra-Fast (ms)</text>
+    <text x="0" y="408" class="font-sans" font-size="12.5" font-weight="600" fill="#64748b" text-anchor="middle">100% Deterministic</text>
+  </g>
+
+  <!-- ================= CENTER 3-TIER PYRAMID ================= -->
+  <!-- TIER 1 (TOP): UI / E2E TESTS (~10%) -->
+  <g transform="translate(550, 30)">
+    <polygon points="0,0 135,130 -135,130" fill="#f59e0b" stroke="#d97706" stroke-width="2.5" stroke-linejoin="round" />
+    <text x="0" y="68" class="font-sans" font-size="17" font-weight="900" fill="#ffffff" text-anchor="middle">UI / E2E</text>
+    <text x="0" y="90" class="font-sans" font-size="14.5" font-weight="800" fill="#fef3c7" text-anchor="middle">(~10% Share)</text>
+    <text x="0" y="112" class="font-mono" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">Playwright / Cypress</text>
+  </g>
+
+  <!-- TIER 2 (MIDDLE): INTEGRATION / SERVICE TESTS (~20%) -->
+  <g transform="translate(550, 174)">
+    <polygon points="-148,0 148,0 235,134 -235,134" fill="#0284c7" stroke="#0369a1" stroke-width="2.5" stroke-linejoin="round" />
+    <text x="0" y="46" class="font-sans" font-size="21" font-weight="900" fill="#ffffff" text-anchor="middle">Integration &amp; Service Tests (~20%)</text>
+    <text x="0" y="76" class="font-sans" font-size="15" font-weight="600" fill="#e0f2fe" text-anchor="middle">Verifies API Contracts, Database Repositories &amp; Message Queues</text>
+    <rect x="-135" y="92" width="270" height="26" rx="13" fill="rgba(15, 23, 42, 0.25)" />
+    <text x="0" y="110" class="font-mono" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">Testcontainers · REST Assured · Pact</text>
+  </g>
+
+  <!-- TIER 3 (BASE): AUTOMATED UNIT TESTS (~70%) -->
+  <g transform="translate(550, 322)">
+    <polygon points="-248,0 248,0 330,142 -330,142" fill="#0f172a" stroke="#1e293b" stroke-width="2.5" stroke-linejoin="round" />
+    <text x="0" y="46" class="font-sans" font-size="23" font-weight="900" fill="#38bdf8" text-anchor="middle">Automated Unit Tests (~70% Foundation)</text>
+    <text x="0" y="76" class="font-sans" font-size="15.5" font-weight="600" fill="#e2e8f0" text-anchor="middle">Thousands of Isolated Class/Method Tests · Millisecond Feedback · Pinpoint Faults</text>
+    <rect x="-150" y="94" width="300" height="28" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="0" y="113" class="font-mono" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">JUnit 5 · Mockito · jqwik · JaCoCo</text>
+  </g>
+
+  <!-- ================= RIGHT AXIS: INTEGRATION SCOPE & MAINTENANCE COST ================= -->
+  <g transform="translate(985, 35)">
+    <rect x="-85" y="0" width="170" height="430" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8" />
+    <text x="0" y="34" class="font-sans" font-size="16" font-weight="800" fill="#b45309" text-anchor="middle">High Cost</text>
+    <text x="0" y="54" class="font-sans" font-size="12.5" font-weight="600" fill="#64748b" text-anchor="middle">Full System Scope</text>
+
+    <!-- Upward Arrow -->
+    <line x1="0" y1="350" x2="0" y2="78" stroke="#d97706" stroke-width="5" marker-end="url(#arr-up-amber)" />
+
+    <rect x="-68" y="182" width="136" height="54" rx="10" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5" />
+    <text x="0" y="205" class="font-sans" font-size="14" font-weight="800" fill="#b45309" text-anchor="middle">Maintenance</text>
+    <text x="0" y="224" class="font-sans" font-size="12" font-weight="600" fill="#d97706" text-anchor="middle">&amp; Integration Scope</text>
+
+    <text x="0" y="388" class="font-sans" font-size="16" font-weight="800" fill="#15803d" text-anchor="middle">Lowest Cost</text>
+    <text x="0" y="408" class="font-sans" font-size="12.5" font-weight="600" fill="#64748b" text-anchor="middle">Isolated Unit Scope</text>
+  </g>
+</svg>

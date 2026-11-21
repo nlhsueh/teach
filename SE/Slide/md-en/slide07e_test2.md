@@ -135,7 +135,7 @@ This visual panorama summarizes the seven ISTQB principles side by side.
 ---
 ## Principle 1: Testing Shows Presence of Defects, Not Absence
 
-<div class="split73">
+<div class="split64">
 <div class="left">
 
 * **Core Meaning (Dijkstra's Axiom):**
@@ -149,7 +149,7 @@ This visual panorama summarizes the seven ISTQB principles side by side.
 </div>
 <div class="right">
 
-<img src="../../img/ch07/istqb_p1_presence_of_defects.png" alt="Principle 1: Testing shows presence of defects" />
+<img class="principle-logo" style="width: 50%; max-width: 50%;" src="../../img/ch07/istqb_p1_presence_of_defects.png" alt="Principle 1: Testing shows presence of defects" />
 
 </div>
 </div>
@@ -178,7 +178,7 @@ Sweeping one room with a flashlight and finding three bugs proves bugs exist in 
 ---
 ## Principle 2: Exhaustive Testing is Impossible
 
-<div class="split73">
+<div class="split64">
 <div class="left">
 
 * **The Reality of Combinatorial Explosion:**
@@ -197,7 +197,7 @@ Sweeping one room with a flashlight and finding three bugs proves bugs exist in 
 </div>
 <div class="right">
 
-<img src="../../img/ch07/istqb_p2_exhaustive_impossible.png" alt="Principle 2: Exhaustive testing is impossible" />
+<img class="principle-logo" style="width: 50%; max-width: 50%;" src="../../img/ch07/istqb_p2_exhaustive_impossible.png" alt="Principle 2: Exhaustive testing is impossible" />
 
 </div>
 </div>
@@ -211,7 +211,7 @@ In `scale(int j)`, across 65,536 16-bit integers, only 18 corner inputs expose t
 ---
 ## Principle 3: Early Testing / Shift-Left (1:10:100 Cost Rule)
 
-<div class="split73">
+<div class="split64">
 <div class="left">
 
 * **Core Meaning:**
@@ -224,7 +224,7 @@ In `scale(int j)`, across 65,536 16-bit integers, only 18 corner inputs expose t
 </div>
 <div class="right">
 
-<img src="../../img/ch07/istqb_p3_early_testing.png" alt="Principle 3: Early testing saves time and money" />
+<img class="principle-logo" style="width: 50%; max-width: 50%;" src="../../img/ch07/istqb_p3_early_testing.png" alt="Principle 3: Early testing saves time and money" />
 
 </div>
 </div>
@@ -253,7 +253,7 @@ This curve illustrates why modern DevSecOps pipelines invest so heavily in stati
 ---
 ## Principle 4: Defects Cluster Together (80/20 Pareto Rule)
 
-<div class="split73">
+<div class="split64">
 <div class="left">
 
 * **Core Meaning (The 80/20 Pareto Principle):**
@@ -266,7 +266,7 @@ This curve illustrates why modern DevSecOps pipelines invest so heavily in stati
 </div>
 <div class="right">
 
-<img src="../../img/ch07/istqb_p4_defect_clustering.png" alt="Principle 4: Defects cluster together" />
+<img class="principle-logo" style="width: 50%; max-width: 50%;" src="../../img/ch07/istqb_p4_defect_clustering.png" alt="Principle 4: Defects cluster together" />
 
 </div>
 </div>
@@ -280,7 +280,7 @@ Principle 4 reminds us that defects never distribute uniformly: when you find te
 ---
 ## Principle 5: Beware of the Pesticide Paradox
 
-<div class="split73">
+<div class="split64">
 <div class="left">
 
 * **Core Meaning:**
@@ -294,7 +294,7 @@ Principle 4 reminds us that defects never distribute uniformly: when you find te
 </div>
 <div class="right">
 
-<img src="../../img/ch07/istqb_p5_pesticide_paradox.png" alt="Principle 5: Pesticide Paradox" />
+<img class="principle-logo" style="width: 50%; max-width: 50%;" src="../../img/ch07/istqb_p5_pesticide_paradox.png" alt="Principle 5: Pesticide Paradox" />
 
 </div>
 </div>
@@ -323,7 +323,7 @@ Bugs adapt around static, predictable traps. Evolving our test cases—and intro
 ---
 ## Principle 6: Testing is Context Dependent & Principle 7: Absence-of-Errors Fallacy
 
-<div class="split73">
+<div class="split64">
 <div class="left">
 
 * **Principle 6 — Testing is Context Dependent:**
@@ -336,7 +336,7 @@ Bugs adapt around static, predictable traps. Evolving our test cases—and intro
 </div>
 <div class="right">
 
-<img src="../../img/ch07/istqb_p7_absence_of_errors.png" alt="Principle 7: Absence-of-errors fallacy" />
+<img class="principle-logo" style="width: 50%; max-width: 50%;" src="../../img/ch07/istqb_p7_absence_of_errors.png" alt="Principle 7: Absence-of-errors fallacy" />
 
 </div>
 </div>
@@ -388,7 +388,7 @@ Verification checks conformance to specifications (*building the product right*)
 ## Visual Comparison: Verification vs. Validation (V&V)
 
 <div class="image-wrapper">
-  <img src="../../img/ch07/verification_vs_validation.jpg" alt="Verification vs Validation Architecture" />
+  <img src="../../img/ch07/verification_vs_validation.svg" alt="Verification vs Validation Architecture" />
 </div>
 
 <!--
@@ -441,7 +441,7 @@ Validation Testing walks the happy path to show the system works, while Defect T
 ## Multi-Dimensional Taxonomy (3): Black-Box vs. White-Box Testing
 
 <div class="image-wrapper">
-  <img src="../../img/ch07/blackbox_vs_whitebox_testing.jpg" alt="Black-Box vs White-Box Testing Comparison" />
+  <img src="../../img/ch07/blackbox_vs_whitebox_testing.svg" alt="Black-Box vs White-Box Testing Comparison" />
 </div>
 
 <!--
@@ -453,21 +453,41 @@ Black-Box Functional Testing derives test cases purely from external specificati
 ---
 ## Multi-Dimensional Taxonomy (4): Three Core Testing Levels
 
-<div class="split73">
-<div class="left">
+<div class="card-deck">
 
-* **1. Unit Testing (Component / Class Level):**
-  - Verifies the smallest testable software unit (a single method or class) in strict isolation from external I/O; executes in milliseconds.
-* **2. Integration Testing (Interface & Contract Level):**
-  - Verifies interface contracts, data serialization, and interaction protocols across cooperating modules, microservices, or databases.
-* **3. System Testing (End-to-End Environment Level):**
-  - Verifies complete end-to-end user journeys and non-functional quality attributes (load, stress, security) in a production-like staging environment.
+> Software testing scales across three levels of granularity—and high **Testability** requires decoupling pure computation from UI and external I/O.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### Three Core Testing Levels
+- **1. Unit Testing (Component / Class Level):**
+  - Verifies a single method or class in strict isolation from external I/O; executes in milliseconds.
+- **2. Integration Testing (Interface & Contract Level):**
+  - Verifies interface contracts, data serialization, and interaction protocols across modules or databases.
+- **3. System Testing (End-to-End Environment Level):**
+  - Verifies complete E2E user journeys and non-functional quality (load, stress, security) in staging.
 
 </div>
-<div class="right">
+<div class="card" data-marpit-fragment>
 
-<img src="../../img/ch07/concept_testing_levels.png" alt="Three Core Testing Levels" />
+### Design for Testability (Decoupling Logic from I/O)
+- Separate core business computation from UI prompts and external I/O so unit tests run automatically in CI:
+```java
+// Low Testability: Tightly coupled to interactive UI (Blocks CI!)
+double divBad(double x, double y) {
+    while (y == 0) y = uiPrompt("Divisor != 0:");
+    return x / y;
+}
 
+// High Testability: Pure function + explicit exception contract
+double divGood(double x, double y) {
+    if (y == 0) throw new IllegalArgumentException("Divisor == 0");
+    return x / y; // Verified in < 1ms via assertThrows!
+}
+```
+
+</div>
 </div>
 </div>
 
@@ -493,60 +513,7 @@ Dozens of isolated unit tests form the foundation for component and integration 
 - test hierarchy: 測試層級體系（由底層單元測試逐層向上組裝至整合測試、系統測試與驗收測試的結構）
 -->
 ---
-## Designing Unit Modules for High Testability
-
-<div class="card-deck">
-
-> "Which `div(x, y)` method has higher **Testability**? Decouple core domain computation from interactive UI and external I/O!"
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### Low Testability: Coupled to Interactive UI
-```java
-double div(double x, double y) {
-    while (y == 0) {
-        // Blocks on interactive UI prompt!
-        y = input("Divisor cannot be 0, re-enter:");
-    }
-    return x / y;
-}
-```
-- **Why Automated Testing Fails Here:**
-  - Cannot run headless in a CI/CD pipeline (blocks waiting for human keyboard input when `y == 0`).
-  - Mixing UI presentation with arithmetic logic violates **Separation of Concerns**.
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### High Testability: Pure Logic + Exception Contract
-```java
-double div(double x, double y) {
-    if (y == 0) {
-        throw new IllegalArgumentException(
-            "Divisor cannot be 0");
-    }
-    return x / y;
-}
-```
-- **Why Automated Testing Thrives Here:**
-  - 100% deterministic and headless: normal division is verified via `assertEquals(2.0, div(6, 3))`, and `y == 0` is verified in 1 ms via `assertThrows(IllegalArgumentException.class, () -> div(6, 0))`!
-
-</div>
-</div>
-</div>
-
-<!--
-By separating pure domain logic from UI/I/O and throwing a well-defined `IllegalArgumentException`, the right-hand implementation achieves 100% automated testability in JUnit 5.
-
-💡 難字與專業術語解說：
-- testability: 可測試性（軟體模組能被自動化測試獨立控制輸入、隔離依賴並觀測輸出的容易程度）
--->
----
 ## Multi-Dimensional Taxonomy (5): Practical Test Pyramid vs. Ice Cream Cone
-
-<div class="split73">
-<div class="left">
 
 * **Top Tier — UI / E2E Tests (Smallest Share ~10%):**
   - Simulates real browser/mobile journeys (Playwright / Cypress); highest realism, but slowest and most brittle.
@@ -556,14 +523,6 @@ By separating pure domain logic from UI/I/O and throwing a well-defined `Illegal
   - Thousands of millisecond-fast, deterministic tests (JUnit 5 / Mockito) providing instant developer feedback.
 * **[Anti-Pattern] The Ice Cream Cone (Inverted Pyramid):**
   - Starving unit tests while relying heavily on manual/UI E2E testing → glacial CI builds and flaky red lights!
-
-</div>
-<div class="right">
-
-<img src="../../img/ch07/concept_ice_cream_cone.png" alt="Ice Cream Cone Anti-Pattern" />
-
-</div>
-</div>
 
 <!--
 When teams invert Mike Cohn's Test Pyramid into an Ice Cream Cone—writing almost no unit tests and relying on slow UI automation or manual clicking—their CI pipeline takes hours and breaks constantly.
@@ -577,7 +536,7 @@ When teams invert Mike Cohn's Test Pyramid into an Ice Cream Cone—writing almo
 ## The Modern Practical Test Pyramid Architecture
 
 <div class="image-wrapper">
-  <img src="../../img/ch07/practical_test_pyramid.png" alt="Modern Practical Test Pyramid" />
+  <img src="../../img/ch07/practical_test_pyramid.svg" alt="Modern Practical Test Pyramid" />
 </div>
 
 <!--
@@ -629,7 +588,7 @@ Pay special attention to Region 6: behavior that exists inside the compiled prog
 ## Visual Model: The Software Behavior Venn Diagram (S, P, T)
 
 <div class="image-wrapper">
-  <img src="../../img/ch07/behavior_venn.png" alt="Software Behavior Venn Diagram" />
+  <img src="../../img/ch07/behavior_venn.svg" alt="Software Behavior Venn Diagram" />
 </div>
 
 <!--
@@ -677,48 +636,19 @@ A Test Case is a complete logical specification comprising five essential compon
 ---
 <!-- _class: title-image-slide -->
 
-## Mindmap & Anatomy: Test Case vs. Test Data Structure
+## Mindmap: Test Case vs. Test Data Structure
 
-<div class="two-columns">
-<div class="card">
-
-<img src="../../img/ch07/testcase_testdata_mindmap.png" style="max-height: 410px; width: 100%; object-fit: contain;" alt="Test Case vs Test Data Mindmap" />
-
-</div>
-<div class="card">
-
-<img src="../../img/ch07/comic_test_case_structure.jpg" style="max-height: 410px; width: 100%; object-fit: contain;" alt="5 Components of a Standard Test Case" />
-
-</div>
+<div class="image-wrapper">
+  <img src="../../img/ch07/testcase_testdata_mindmap.svg" alt="Test Case vs Test Data Mindmap" />
 </div>
 
 <!--
-On the left, using `divide(a, b)` as an example, Test Cases branch by logical partitions while leaf nodes hold concrete Test Data tuples. On the right are the five anatomical components of a standard test case.
+Using `divide(a, b)` as an example, Test Cases branch by logical partitions while leaf nodes hold concrete Test Data tuples.
 
 💡 難字與專業術語解說：
 - parameterized execution: 參數化執行（以同一套測試邏輯骨架自動巡迴注入多組測試資料的機制）
 -->
----
-## Human-AI Collaborative Test Case Generation Matrix (SQA 2.0)
 
-<div class="card-deck">
-
-> Combine **human domain judgment** for specifications and Oracles with **LLM generative speed** for boundary and adversarial payloads.
-
-| Dimension | Human Engineer's Strength | AI (LLM) Assistant's Strength | Human-AI Golden SOP (SQA 2.0) |
-| :--- | :--- | :--- | :--- |
-| **1. Spec & Invariant Definition** | **[High]** Deep grasp of business value, legal rules, and domain edges | **[Low]** Lacks real business context; prone to plausible hallucinations | **Human Leads:** Define preconditions, postconditions, and domain invariants |
-| **2. Boundary & Payload Synthesis** | **[Low]** Fatigues easily; misses obscure Unicode, timezones, overflows | **[High]** Generates thousands of edge strings and overflow payloads in seconds | **AI Assists:** Batch-generate BVA, EP, and adversarial fuzzing inputs |
-| **3. Test Oracle Arbitration** | **[High]** Ultimate authority on ground-truth business correctness | **[Low]** Suffers from self-confirming bias (asserting its own buggy output!) | **Human Audits:** Review every assertion Oracle before merging into CI |
-
-</div>
-
-<!--
-Humans must lead Specification and Invariant Definition and audit Test Oracle Arbitration, while letting AI accelerate Boundary and Payload Synthesis.
-
-💡 難字與專業術語解說：
-- oracle arbitration: 預言機仲裁（由人類專家依據領域規格最終裁定「預期正確輸出應為何值」的審核過程）
--->
 ---
 <!-- _class: title-image-slide -->
 
@@ -771,9 +701,6 @@ Dimension 1 distinguishes internal developers/QA (including Alpha testing in con
 ---
 ## 3W2H Dimension 3 (Why Test?) & Dimension 4 (How to Execute?)
 
-<div class="split73">
-<div class="left">
-
 * **Dimension 3 — Why Do We Test?**
   - **Risk Mitigation:** Reduce the probability and business blast radius of production failures.
   - **Contract & Invariant Defense:** Enforce Design-by-Contract (DbC) preconditions, postconditions, and class invariants.
@@ -784,14 +711,6 @@ Dimension 1 distinguishes internal developers/QA (including Alpha testing in con
   - **Monkey / Random Fuzzing:** Bombarding interfaces with random events or mutated byte streams.
   - **Record & Replay:** Capturing real user UI interaction traces into repeatable E2E scripts.
 
-</div>
-<div class="right">
-
-<img src="../../img/ch07/record_replay_flow.png" alt="Record and Replay Testing Flow" />
-
-</div>
-</div>
-
 <!--
 Dimension 3 defines our purpose (risk mitigation, contract defense, regression safety, CI/CD confidence), while Dimension 4 spans scripted automation, exploratory testing, random monkey fuzzing, and Record-and-Replay workflows.
 
@@ -801,22 +720,31 @@ Dimension 3 defines our purpose (risk mitigation, contract defense, regression s
 ---
 ## 3W2H Dimension 5: How to Evaluate & The Test Oracle Problem
 
-<div class="split64">
-<div class="left">
+<div class="card-deck">
 
-* **What is a Test Oracle?**
-  - The mechanism or ground-truth baseline used to determine whether the Program Under Test (`PUT`) produced the **correct output** for a given input.
-* **Test Oracle Comparator Architecture:**
-  - The same test input is fed to the **Program Under Test (`PUT`)** and the **Test Oracle**; the comparator asserts `Actual == Expected` (`Match → PASS`, `Mismatch → FAIL`).
-* **The Test Oracle Problem in AI & Complex Systems:**
-  - **Traditional Deterministic Software:** `f(x) → y` (e.g., tax calculation) has an exact, reproducible expected value (`assertEquals`).
-  - **AI / LLM / Search Engines:** Non-deterministic sampling (`Temperature > 0`) and open-ended queries have **no single exact answer**, breaking traditional hardcoded `assertEquals`!
+> Every test requires a **Test Oracle** to judge pass or fail—yet in complex simulations, search engines, and generative AI, knowing the single exact answer is impossible.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. What is a Test Oracle?
+- **Ground-Truth Mechanism:**
+  - The baseline authority (SRS formula, reference model, or invariant) used to determine whether the Program Under Test (`PUT`) produced the **correct output** for a given input.
+- **Test Oracle Comparator Architecture:**
+  - The same test input is fed to the **Program Under Test (`PUT`)** (`Actual Output y`) and the **Test Oracle** (`Expected Output y*`).
+  - The comparator asserts `Actual == Expected` (`Match → PASS`, `Mismatch → FAIL`).
 
 </div>
-<div class="right">
+<div class="card" data-marpit-fragment>
 
-<img src="../../img/ch07/test_oracle_comparator.png" alt="Test Oracle Comparator Architecture" />
+### 2. The Test Oracle Problem
+- **Traditional Deterministic Software:**
+  - `f(x) → y` (e.g., tax calculation or sorting) has an exact, reproducible expected value (`assertEquals(expected, actual)`).
+- **AI / LLM & Complex Non-Deterministic Systems:**
+  - Stochastic sampling (`Temperature > 0`), autonomous driving perception, and open-ended natural language queries have **no single exact ground-truth string**.
+  - Traditional hardcoded `assertEquals` completely breaks down!
 
+</div>
 </div>
 </div>
 
@@ -920,7 +848,7 @@ We now move to Section 7.2: Static Software Inspection and Code Review (integrat
 ---
 ## The "Testing Iceberg" Metaphor & Static vs. Dynamic Synergy
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **Why Dynamic Testing Only Sees the Tip of the Iceberg:**
@@ -930,10 +858,9 @@ We now move to Section 7.2: Static Software Inspection and Code Review (integrat
     ```java
     for (int i = 1; i < max; i++) { ... } // Starts at index 1?!
     ```
-    A senior reviewer spots the off-by-one `i = 1` bug (skipping index `0`) in 3 seconds of static inspection, whereas dynamic tests miss it if element `0` happens not to affect the test assertion!
+    A senior reviewer spots the off-by-one `i = 1` bug (skipping index `0`) in 3 seconds of static inspection, whereas dynamic tests miss it if element `0` doesn't affect the test output!
 * **Complementary Synergy (Not Replacement):**
-  - **Static Inspection** eliminates ~70% of logic, style, and architectural flaws before compilation and spreads **Collective Code Ownership**.
-  - **Dynamic Testing** verifies runtime concurrency, memory churn, and integrated system behavior.
+  - **Static Inspection** eliminates ~70% of logic, style, and architectural flaws before compilation; **Dynamic Testing** verifies runtime concurrency and integrated behavior.
 
 </div>
 <div class="right">
@@ -1060,24 +987,32 @@ During Step 4 (Inspection Meeting), the Reader paraphrases what each block of co
 ---
 ## Code Inspection: 5 Major Code Fault Categories & Clean Code Checklist
 
-<div class="split64">
-<div class="left">
+<div class="card-deck">
 
-* **5 Major Fault Categories in Code Inspection:**
-  1. **Data Faults:** Uninitialized variables, array index out-of-bounds, floating-point precision loss, unused assignments.
-  2. **Control Flow Faults:** Unreachable dead code, infinite loops, off-by-one boundary comparisons, deep arrowhead nesting.
-  3. **Input / Output (I/O) Faults:** Unclosed file streams or DB connections (resource leaks), buffer overflows, unchecked I/O exceptions.
-  4. **Interface Faults:** Parameter order/type mismatches, ignored return status codes, violated preconditions.
-  5. **Coding Standard Violations:** Layer bypasses, magic numbers, swallowed empty `catch {}` blocks.
-* **Team Clean Code Merge Gate Checklist:**
-  - **Intent-Revealing Names & SRP:** Functions `< 20–30 lines` doing one thing; flatten nesting with **Guard Clauses**.
-  - **Defensive & Tested:** No silent `catch {}`, no raw `null` traps, and every PR must include automated unit tests covering boundary cases!
+> Structured checklists guide reviewers across five common fault domains while enforcing objective Clean Code merge gates.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 5 Major Fault Categories in Code Inspection
+1. **Data Faults:** Uninitialized variables, array index out-of-bounds, floating-point precision loss.
+2. **Control Flow Faults:** Unreachable dead code, infinite loops, off-by-one boundary comparisons.
+3. **Input / Output (I/O) Faults:** Unclosed file streams or DB connections (resource leaks), unchecked I/O exceptions.
+4. **Interface Faults:** Parameter order/type mismatches, ignored return status codes, violated preconditions.
+5. **Coding Standard Violations:** Layer bypasses, magic numbers, swallowed empty `catch {}` blocks.
 
 </div>
-<div class="right">
+<div class="card" data-marpit-fragment>
 
-<img src="../../img/ch07/code_inspection_categories.jpg" alt="5 Major Code Inspection Categories" />
+### Team Clean Code Merge Gate Checklist
+- **Intent-Revealing Names & Single Responsibility (SRP):**
+  - Functions `< 20–30 lines` doing one thing well; self-documenting identifiers without cryptic abbreviations.
+- **Flatten Nesting via Guard Clauses:**
+  - Validate preconditions and return early at the top of methods to eliminate deep arrowhead `if-else` pyramids.
+- **Defensive Error Handling & Mandatory Tests:**
+  - Zero silent `catch {}`, zero raw `null` traps, and every PR must include automated unit tests covering boundary cases!
 
+</div>
 </div>
 </div>
 
@@ -1164,7 +1099,7 @@ Make sure you can distinguish Shotgun Surgery (1 change scatters across 10 class
 ---
 ## Security Code Review: OWASP Top 10 & Automated Static Analysis (SAST)
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **OWASP Top 10 Critical Security Review Targets:**
@@ -1206,7 +1141,7 @@ We now enter Section 7.3: Black-Box Testing — Boundary Value Analysis (BVA) an
 ---
 ## Black-Box Testing Concept Architecture & Why Exhaustive Testing Fails
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **Three Core Elements of Black-Box Testing:**
@@ -1279,10 +1214,11 @@ In 1979, Glenford J. Myers published *The Art of Software Testing*, shifting the
 - **Relational Operator Off-by-One Traps:**
   - Developers routinely confuse `<` with `<=`, or `>` with `>=`, or miscalculate loop bounds by `± 1`.
 - **Code Comparison:**
-  | Code Written | Defect Nature | Test at `input = 10` |
-  | :--- | :--- | :--- |
-  | `if (input <= 10)` | Correct inclusive bound | Passes |
-  | `if (input < 10)` | Off-by-one bug (`10` excluded!) | **Fails & Exposes Bug!** |
+
+| Code Written | Defect Nature | Test at `input = 10` |
+| :--- | :--- | :--- |
+| `if (input <= 10)` | Correct inclusive bound | Passes |
+| `if (input < 10)` | Off-by-one bug (`10` excluded!) | **Fails & Exposes Bug!** |
 
 </div>
 <div class="card" data-marpit-fragment>
@@ -1490,19 +1426,19 @@ Pairing `@ParameterizedTest` with `assertAll` lets you run dozens of boundary ch
 ---
 ## Equivalence Partitioning (EP): Core Motivation & Weak vs. Strong Coverage
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **Core Principle of Equivalence Partitioning (EP):**
-  - Partition the input/output domain into disjoint **Equivalence Classes** such that every value inside the same partition is processed identically by the software (if one value catches a defect, any other value in that class would catch it too).
-  - **Dual Goals:** Achieve **completeness** (every valid and invalid business partition has a representative) while eliminating **redundancy** (never waste 100 tests inside the same partition).
-* **Weak Coverage vs. Strong Coverage (Single-Fault vs. Multi-Fault):**
-  - **Weak Equivalence Partitioning (Weak EP):**
-    - Based on the **Single Fault Assumption**: every partition of each variable must appear in **at least one test case**.
-    - **Formula:** `Total Test Cases = max(|P1|, |P2|, ..., |Pn|)` (the 4 blue diagonal dots on the right!).
-  - **Strong Equivalence Partitioning (Strong EP):**
-    - Based on the **Multiple Fault Assumption**: tests the full **Cartesian product** of all partitions across variables:
-    - **Formula:** `Total Test Cases = |P1| × |P2| × ... × |Pn|` (all `3 × 4 = 12` grid cells on the right).
+  - Partition the input/output domain into disjoint **Equivalence Classes** where every value in a class is processed identically (if one value catches a bug, any other value in that class catches it too).
+  - **Dual Goals:** Achieve **completeness** (every valid and invalid partition has a representative) while eliminating **redundancy**.
+* **Weak Coverage vs. Strong Coverage:**
+  - **Weak Equivalence Partitioning (Weak EP — Single Fault):**
+    - Every partition of each variable appears in **at least one test case**:
+    - **`Total Test Cases = max(|P1|, |P2|, ..., |Pn|)`** *(4 blue diagonal dots on right)*.
+  - **Strong Equivalence Partitioning (Strong EP — Multiple Fault):**
+    - Tests the full **Cartesian product** across all variables:
+    - **`Total Test Cases = |P1| × |P2| × ... × |Pn|`** *(all `3 × 4 = 12` grid cells)*.
 
 </div>
 <div class="right">
@@ -1888,7 +1824,7 @@ Trace the IPO + Greedy algorithm row by row: by greedily choosing `m1` or `m2` t
 ---
 ## Pairwise Tools (`AllPairs4J`, `PICT`, `ACTS`) & Loan Calculator Case
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **Industrial Automated Pairwise Tools:**
@@ -1902,7 +1838,7 @@ Trace the IPO + Greedy algorithm row by row: by greedily choosing `m1` or `m2` t
 </div>
 <div class="right">
 
-<img src="../../img/ch07/loan_calculator.jpg" alt="Loan Calculator Pairwise Testing Case" />
+<img src="../../img/ch07/loan_calculator.png" alt="Loan Calculator Pairwise Testing Case" />
 
 </div>
 </div>
@@ -1977,7 +1913,7 @@ Strategy A runs 100% automatically to check domain invariants and no-crash smoke
 ---
 ## State Transition Testing: Airline Reservation State Machine
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **How Do You Test Stateful Objects & `void` Mutator Methods?**
@@ -2319,7 +2255,7 @@ Black-box specification testing catches Missing Requirements (Quadrant 2), while
 ---
 ## White-Box Coverage Subsumption Hierarchy & Classic Benchmark Program
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **Classic Double-Decision Benchmark Program:**
@@ -2339,7 +2275,7 @@ Black-box specification testing catches Missing Requirements (Quadrant 2), while
 </div>
 <div class="right">
 
-<img src="../../img/ch07/BJgLrcZVT.png" alt="Control Flow Graph of Benchmark Program" />
+<img src="../../img/ch07/coverage_subsumption_hierarchy.svg" alt="White-Box Coverage Subsumption Hierarchy" />
 
 </div>
 </div>
@@ -2408,12 +2344,14 @@ We use this 6-line benchmark program and its Control Flow Graph on the right to 
 
 ### The CC vs. BC Paradox (`100% CC ≠ 100% BC`)
 - Consider `if (p && q)` under **non-short-circuit** evaluation:
-  | Test Case | Atomic `p` | Atomic `q` | Whole Decision `p && q` |
-  | :---: | :---: | :---: | :---: |
-  | **`t1`** | **`True`** | **`False`** | **`False`** |
-  | **`t2`** | **`False`** | **`True`** | **`False`** |
-  - Atomic condition `p` hits `{T, F}` (100%) and `q` hits `{F, T}` (100%) → **100% Condition Coverage**!
-  - Yet the overall decision `p && q` is **always `False`** → **only 50% Branch Coverage** (the `if`-body never executes)!
+
+| Test Case | Atomic `p` | Atomic `q` | Whole Decision `p && q` |
+| :---: | :---: | :---: | :---: |
+| **`t1`** | **`True`** | **`False`** | **`False`** |
+| **`t2`** | **`False`** | **`True`** | **`False`** |
+
+- Atomic condition `p` hits `{T, F}` (100%) and `q` hits `{F, T}` (100%) → **100% Condition Coverage**!
+- Yet the overall decision `p && q` is **always `False`** → **only 50% Branch Coverage** (the `if`-body never executes)!
 - **Branch/Condition Coverage (B/CC):** Combines both criteria (`100% CC + 100% BC`).
 
 </div>
@@ -2467,11 +2405,14 @@ At the JVM bytecode level, `if (A && B)` compiles into two conditional jump inst
 
 ### `CC100` (Not `BC100`) vs. `BC100` (Not `CC100`)
 - **Suite A (`CC100`, but `b1` always `False` → fails `BC100`):**
+
 | `X` | `Y` | `c1` | `c2` | `b1 (c1&&c2)` | `c3/b2` | `c4/b3` |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | **9** | **1** | F | T | **_F_** | F | F |
 | **12** | **11** | T | F | **_F_** | T | T |
+
 - **Suite B (`BC100`, but `c1` always `True` → fails `CC100`):**
+
 | `X` | `Y` | `c1` | `c2` | `b1 (c1&&c2)` | `c3/b2` | `c4/b3` |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | **13** | **1** | **_T_** | T | **T** | - | F |
@@ -2682,6 +2623,7 @@ return "Scalene";
 ### 2. `BinarySearch` & `LoanCalculator` Progression
 - **`BinarySearch` (`100% BC` in 2 tests):** `search(1, [1,3,5]) → 0` and `search(6, [1,3]) → -1`.
 - **`LoanCalculator` 3-Stage Coverage Evolution:**
+
 | Testing Stage | Design Strategy | Branch Coverage |
 | :--- | :--- | :---: |
 | **1. WeakTest** | 2–3 Happy Path loans | **~65%** |
@@ -2772,7 +2714,7 @@ The correct answer is **B**.
 ---
 ## Mutation Testing ("Who Tests the Tests?"): Core Philosophy & Foundations
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **Core Philosophy — Test the Test Suite (`T`):**
@@ -2939,21 +2881,15 @@ Notice the pattern across both walkthroughs: surviving relational mutants (`>` m
 ---
 ## Industrial Mutation Testing: `BinarySearch` Loop Mutants & PITest Report
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **`BinarySearch` Loop Boundary Mutants (`bs02` & `bs03`):**
   ```java
-  // Original BinarySearch:  while (left <= right)
-  // Mutant bs02 (Off-by-1): while (left < right)   // Dropped == !
-  // Mutant bs03 (Reversed): while (left >= right)  // Flipped <= to >= !
+  // Original: while (left <= right) | bs02: while (left < right) | bs03: while (left >= right)
   ```
-  - **Why `search(1, [0, 1, 2])` Fails to Kill `bs02`:**
-    - `left = 0, right = 2 → mid = 1` hits on iteration 1 without ever converging to `left == right`!
-    - **How to Kill `bs02`:** Search for an element requiring the final `left == right` step: **`search(2, [0, 1, 2])`** or single-element **`search(1, [1])`**!
-  - **Why Single-Element `search(5, [5])` Fails to Kill `bs03`:**
-    - For `[5]`, `left = 0, right = 0`, so `left >= right` is `True`!
-    - **How to Kill `bs03`:** Any multi-element array (`length >= 2`, e.g., `search(1, [0, 1, 2])`) where `0 >= 2` is immediately `False`!
+  - **Kill `bs02` (`left < right` dropped `==`):** Needs a search that converges to the final 1-element window **`left == right`** (e.g., **`search(2, [0, 1, 2])`** or **`search(1, [1])`**)!
+  - **Kill `bs03` (`left >= right` reversed):** Single-element `[5]` (`0 >= 0`) fails to kill it; any array with **`length >= 2`** (e.g., **`search(1, [0, 1, 2])`** where `0 >= 2` is `False`) kills `bs03` immediately!
 * **Industrial Bytecode Mutation with PITest (`pitest-maven`):**
   - Runs `mvn test-compile org.pitest:pitest-maven:mutationCoverage` to mutate JVM bytecode in memory and classify every line as **`KILLED` (green)**, **`SURVIVED` (light red)**, **`NO_COVERAGE` (dark red)**, or **`TIMED_OUT`**.
 
@@ -2990,7 +2926,7 @@ We now arrive at Section 7.6: Integration Testing, Test Doubles, and Mockito in 
 ---
 ## Integration Testing in the V-Model & Pure Java Contract Mismatch Case
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **6 Common Faults Exposed Only During Integration Testing:**
@@ -3081,17 +3017,16 @@ When `Prime` accepts a `PrimeChecker` interface through its constructor, the exa
 ---
 ## Bottom-Up Integration Testing: 5-Step Progression & Pure Java `Prime` Assembly
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **5-Step Bottom-Up Integration Progression (with Test Drivers):**
-  1. **Step 1 (Verify Leaf Modules):** Write Test Drivers `b, c, a` to verify bottom leaf modules **`E, F, G, D`** independently.
-  2. **Step 2..4 (Assemble Subsystems Upward):** Replace fake driver `b` with real module **`B`**, using upper driver `a` to verify the real **`B-E-F`** interaction, then **`B-C`** and **`B-C-D`**.
-  3. **Step 5 (Full System Closure):** Replace `a` with top module **`A`** and verify **`A-B-C-D-E-F-G`**.
+  1. **Step 1 (Leaf Modules):** Use Test Drivers `b, c, a` to verify leaf modules **`E, F, G, D`**.
+  2. **Steps 2..4 (Subsystem Assembly):** Replace driver `b` with real **`B`**, using upper driver `a` to verify **`B-E-F`**, then **`B-C`** and **`B-C-D`**.
+  3. **Step 5 (Full System):** Replace `a` with top module **`A`** to verify **`A-B-C-D-E-F-G`**.
 * **Pure Java Bottom-Up Assembly (`RealPrimeChecker → Prime`, Zero Mocks!):**
-  - *Key Insight:* In JUnit 5, **every `@Test` method is a Test Driver!**
   ```java
-  @Test // Step 1: JUnit @Test acts as Driver for leaf RealPrimeChecker
+  @Test // Step 1: JUnit @Test is the Test Driver for leaf RealPrimeChecker!
   void testLeafRealPrimeCheckerDriver() {
       RealPrimeChecker leaf = new RealPrimeChecker();
       assertTrue(leaf.isPrime(2) && !leaf.isPrime(9));
@@ -3120,29 +3055,24 @@ In Bottom-Up Integration, we test the lowest-level leaf modules first using JUni
 ---
 ## Top-Down Integration Testing: Downward Progression with Test Stubs
 
-<div class="split64">
+<div class="split73">
 <div class="left">
 
 * **Top-Down Integration Philosophy (Using Test Stubs):**
-  - When high-level workflow or UI (`Displayer → Prime → PrimeChecker`) must be validated before bottom-level algorithms or databases are built, plug in lightweight **Test Stubs** returning canned data!
+  - When high-level workflow (`Displayer → Prime → PrimeChecker`) must be verified before lower algorithms exist, plug in lightweight **Test Stubs** returning canned data!
 * **3-Stage Top-Down Progression on Prime Printing:**
-  1. **Stage 1 (Test Top `Displayer` with `Prime` Stub):**
-     ```java
-     int[] allPrime(int n) { return new int[]{2, 3, 5, 7}; } // Stub
-     ```
-  2. **Stage 2 (Plug in Real `Prime`, Inject `StubPrimeChecker` for Leaf):**
+  1. **Stage 1 (Test Top `Displayer` with `Prime` Stub):** `int[] allPrime(int n) { return new int[]{2,3,5,7}; }`
+  2. **Stage 2 (Real `Prime` + `StubPrimeChecker` for Leaf):**
      ```java
      public class StubPrimeChecker implements PrimeChecker {
-         public boolean isPrime(int n) {
-             return (n == 2 || n == 3 || n == 5); // Hardcoded up to 5!
-         }
+         public boolean isPrime(int n) { return (n == 2 || n == 3 || n == 5); }
      }
      @Test void testTopDownPrimeWithStub() {
          Prime prime = new Prime(new StubPrimeChecker());
          assertArrayEquals(new int[]{2, 3, 5}, prime.allPrime(5));
      }
      ```
-  3. **Stage 3:** Finally replace `StubPrimeChecker` with `RealPrimeChecker`!
+  3. **Stage 3:** Replace `StubPrimeChecker` with `RealPrimeChecker`!
 
 </div>
 <div class="right">
@@ -3814,6 +3744,43 @@ This final summary ties together every discipline in Chapter 7: from static insp
       img.addEventListener("mouseenter", function() {
         updateInPlaceScale(img);
       });
+    });
+
+    // Auto-clamp hover zoom scale (--zoom-scale) for code blocks and card images (SQA style)
+    function updateCodeAndCardZoomScale(el) {
+      const sec = el.closest("section");
+      if (!sec) return;
+      const w = el.offsetWidth;
+      const h = el.offsetHeight;
+      if (!w || !h) return;
+      let x = 0, y = 0, cur = el;
+      while (cur && cur !== sec && sec.contains(cur)) {
+        x += cur.offsetLeft;
+        y += cur.offsetTop;
+        cur = cur.offsetParent;
+      }
+      const secW = sec.offsetWidth || 1280;
+      const secH = sec.offsetHeight || 720;
+      const padSide = 36;
+      const padTop = 30;
+      const isLeftOrigin = !!el.closest(":is(.two-columns, .two-columns-64, .two-columns-73, .three-columns) > .card:first-child, div.split64 > div.left, div.split73 > div.left");
+      const availW = isLeftOrigin ? (secW - padSide - x) : ((x + w) - padSide);
+      const tag = el.tagName ? el.tagName.toLowerCase() : "";
+      const isCode = (tag === "pre" || tag === "marp-pre");
+      const cy = y + h / 2;
+      const availH = isCode ? ((y + h) - padTop) : (2 * Math.min(cy - padTop, (secH - 30) - cy));
+      const cap = isCode ? 1.42 : 1.9;
+      let maxS = Math.min(cap, availW / w, availH / h, (secH - 60) / h);
+      if (maxS < 1.0) maxS = 1.0;
+      el.style.setProperty("--zoom-scale", maxS.toFixed(3));
+    }
+
+    document.querySelectorAll(".card img:not(.emoji), div.content-figure img:not(.emoji), .card pre, .card marp-pre, div.split64 > div.left pre, div.split64 > div.left marp-pre, div.split73 > div.left pre, div.split73 > div.left marp-pre").forEach(el => {
+      if (el.dataset.zoomBound) return;
+      el.dataset.zoomBound = "true";
+      el.addEventListener("mouseenter", function() { updateCodeAndCardZoomScale(el); });
+      el.addEventListener("load", function() { updateCodeAndCardZoomScale(el); });
+      updateCodeAndCardZoomScale(el);
     });
 
     const origBadges = document.querySelectorAll(".orig-ui-hover[data-orig-src]");

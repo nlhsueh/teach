@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="100%" height="100%">
+  <defs>
+    <style>
+      .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .font-mono { font-family: "Fira Code", "Consolas", monospace; }
+    </style>
+  </defs>
+
+  <!-- ================= LEFT VENN DIAGRAM (3 CIRCLES: S, P, T) ================= -->
+  <g transform="translate(20, 10)">
+    <!-- Circle S: Specified Behavior (Top-Left, Blue) -->
+    <circle cx="255" cy="195" r="165" fill="rgba(56, 189, 248, 0.28)" stroke="#0284c7" stroke-width="3" />
+    <!-- Circle P: Programmed Behavior (Top-Right, Green) -->
+    <circle cx="445" cy="195" r="165" fill="rgba(16, 185, 129, 0.28)" stroke="#059669" stroke-width="3" />
+    <!-- Circle T: Verified / Tested Behavior (Bottom-Center, Amber) -->
+    <circle cx="350" cy="335" r="165" fill="rgba(245, 158, 11, 0.28)" stroke="#d97706" stroke-width="3" />
+
+    <!-- Outer Circle Headers -->
+    <rect x="65" y="20" width="210" height="36" rx="18" fill="#0284c7" />
+    <text x="170" y="43" class="font-sans" font-size="15.5" font-weight="800" fill="#ffffff" text-anchor="middle">Specified Behavior (S)</text>
+
+    <rect x="425" y="20" width="225" height="36" rx="18" fill="#059669" />
+    <text x="537" y="43" class="font-sans" font-size="15.5" font-weight="800" fill="#ffffff" text-anchor="middle">Programmed Behavior (P)</text>
+
+    <rect x="240" y="468" width="220" height="36" rx="18" fill="#d97706" />
+    <text x="350" y="491" class="font-sans" font-size="15.5" font-weight="800" fill="#ffffff" text-anchor="middle">Verified Behavior (T)</text>
+
+    <!-- Region 2: S \ (P U T) — Top-Left Only -->
+    <text x="175" y="155" class="font-sans" font-size="16" font-weight="900" fill="#0369a1" text-anchor="middle">Region 2</text>
+    <text x="175" y="176" class="font-sans" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="middle">Missing Feature</text>
+    <text x="175" y="194" class="font-mono" font-size="12" font-weight="700" fill="#0369a1" text-anchor="middle">(S \ P)</text>
+
+    <!-- Region 4: (S n P) \ T — Top Center Intersection -->
+    <text x="350" y="128" class="font-sans" font-size="15.5" font-weight="900" fill="#0f172a" text-anchor="middle">Region 4</text>
+    <text x="350" y="148" class="font-sans" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">Coded but</text>
+    <text x="350" y="165" class="font-sans" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">Untested!</text>
+
+    <!-- Region 6: P \ (S U T) — Top-Right Only (HIGH DANGER) -->
+    <rect x="466" y="132" width="124" height="68" rx="10" fill="rgba(254, 226, 226, 0.92)" stroke="#dc2626" stroke-width="2" />
+    <text x="528" y="154" class="font-sans" font-size="16" font-weight="900" fill="#dc2626" text-anchor="middle">Region 6 (!)</text>
+    <text x="528" y="173" class="font-sans" font-size="12.5" font-weight="800" fill="#991b1b" text-anchor="middle">Ghost / Trojan</text>
+    <text x="528" y="190" class="font-sans" font-size="12" font-weight="700" fill="#b91c1c" text-anchor="middle">Untested Extra</text>
+
+    <!-- Region 1: S n P n T — GOLDEN CORE (Center) -->
+    <circle cx="350" cy="242" r="52" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" />
+    <text x="350" y="230" class="font-sans" font-size="16.5" font-weight="900" fill="#0f172a" text-anchor="middle">Region 1</text>
+    <text x="350" y="250" class="font-sans" font-size="13.5" font-weight="800" fill="#15803d" text-anchor="middle">Golden Core</text>
+    <text x="350" y="268" class="font-mono" font-size="12.5" font-weight="800" fill="#0f172a" text-anchor="middle">S ∩ P ∩ T</text>
+
+    <!-- Region 5: (S n T) \ P — Bottom-Left Intersection -->
+    <text x="242" y="292" class="font-sans" font-size="15" font-weight="900" fill="#7c2d12" text-anchor="middle">Region 5</text>
+    <text x="242" y="311" class="font-sans" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle">Failing Spec</text>
+    <text x="242" y="327" class="font-sans" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle">Test (Unbuilt)</text>
+
+    <!-- Region 3: (P n T) \ S — Bottom-Right Intersection -->
+    <text x="458" y="292" class="font-sans" font-size="15" font-weight="900" fill="#065f46" text-anchor="middle">Region 3</text>
+    <text x="458" y="311" class="font-sans" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle">Gold-Plating</text>
+    <text x="458" y="327" class="font-sans" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle">(Unrequested)</text>
+
+    <!-- Region 7: T \ (S U P) — Bottom Center Only -->
+    <text x="350" y="405" class="font-sans" font-size="15.5" font-weight="900" fill="#b45309" text-anchor="middle">Region 7</text>
+    <text x="350" y="425" class="font-sans" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">Orphan / Obsolete Tests (T \ (S ∪ P))</text>
+  </g>
+
+  <!-- ================= RIGHT LEGEND PANEL (KEY REGIONS AT A GLANCE) ================= -->
+  <g transform="translate(680, 28)">
+    <rect width="420" height="464" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+    <path d="M 0 16 Q 0 0 16 0 L 404 0 Q 420 0 420 16 L 420 48 L 0 48 Z" fill="#0f172a" />
+    <text x="210" y="31" class="font-sans" font-size="17" font-weight="800" fill="#ffffff" text-anchor="middle">7 Behavioral Regions Summary</text>
+
+    <!-- Row 1: Region 1 -->
+    <g transform="translate(18, 64)">
+      <rect width="384" height="54" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5" />
+      <text x="14" y="22" class="font-sans" font-size="14" font-weight="800" fill="#15803d">Region 1 (S ∩ P ∩ T) — Golden Core Goal</text>
+      <text x="14" y="42" class="font-sans" font-size="13" font-weight="600" fill="#1e293b">Specified in SRS, coded in P, and verified by T!</text>
+    </g>
+
+    <!-- Row 2: Region 2 & 5 -->
+    <g transform="translate(18, 128)">
+      <rect width="384" height="54" rx="8" fill="#f0f9ff" stroke="#38bdf8" stroke-width="1.5" />
+      <text x="14" y="22" class="font-sans" font-size="14" font-weight="800" fill="#0369a1">Region 2 &amp; 5 (S \ P) — Missing Implementation</text>
+      <text x="14" y="42" class="font-sans" font-size="13" font-weight="600" fill="#1e293b">Promised in SRS specification, but developer omitted it.</text>
+    </g>
+
+    <!-- Row 3: Region 4 -->
+    <g transform="translate(18, 192)">
+      <rect width="384" height="54" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" />
+      <text x="14" y="22" class="font-sans" font-size="14" font-weight="800" fill="#334155">Region 4 ((S ∩ P) \ T) — Coverage Blind Spot</text>
+      <text x="14" y="42" class="font-sans" font-size="13" font-weight="600" fill="#1e293b">Specified and coded, but lacks automated test coverage.</text>
+    </g>
+
+    <!-- Row 4: Region 3 -->
+    <g transform="translate(18, 256)">
+      <rect width="384" height="54" rx="8" fill="#ecfdf5" stroke="#34d399" stroke-width="1.5" />
+      <text x="14" y="22" class="font-sans" font-size="14" font-weight="800" fill="#047857">Region 3 ((P ∩ T) \ S) — Gold-Plating / Spec Drift</text>
+      <text x="14" y="42" class="font-sans" font-size="13" font-weight="600" fill="#1e293b">Extra feature coded and tested, but missing from SRS.</text>
+    </g>
+
+    <!-- Row 5: Region 6 (Danger) -->
+    <g transform="translate(18, 320)">
+      <rect width="384" height="62" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2" />
+      <text x="14" y="23" class="font-sans" font-size="14" font-weight="900" fill="#dc2626">Region 6 (P \ (S ∪ T)) — Highest Security Risk!</text>
+      <text x="14" y="44" class="font-sans" font-size="13" font-weight="700" fill="#991b1b">Undocumented AND untested code (backdoors / bugs)!</text>
+    </g>
+
+    <!-- Row 6: Region 7 -->
+    <g transform="translate(18, 392)">
+      <rect width="384" height="54" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" />
+      <text x="14" y="22" class="font-sans" font-size="14" font-weight="800" fill="#b45309">Region 7 (T \ (S ∪ P)) — Orphan / Obsolete Tests</text>
+      <text x="14" y="42" class="font-sans" font-size="13" font-weight="600" fill="#1e293b">Outdated tests checking removed features (maintenance waste).</text>
+    </g>
+  </g>
+</svg>

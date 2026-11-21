@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="100%" height="100%">
+  <defs>
+    <style>
+      .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .font-mono { font-family: "Fira Code", "Consolas", monospace; }
+      .panel-bb { fill: #ffffff; stroke: #475569; stroke-width: 2.5; rx: 16px; }
+      .panel-wb { fill: #ffffff; stroke: #0284c7; stroke-width: 2.5; rx: 16px; }
+      .pill-bb  { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; rx: 10px; }
+      .pill-wb  { fill: #f0f9ff; stroke: #bae6fd; stroke-width: 1.5; rx: 10px; }
+    </style>
+    <marker id="arr-dark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#334155" />
+    </marker>
+    <marker id="arr-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#16a34a" />
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+  </defs>
+
+  <!-- ================= LEFT PANEL: BLACK-BOX TESTING ================= -->
+  <g transform="translate(20, 15)">
+    <rect width="555" height="510" class="panel-bb" />
+    <!-- Top Header -->
+    <path d="M 0 16 Q 0 0 16 0 L 539 0 Q 555 0 555 16 L 555 82 L 0 82 Z" fill="#1e293b" />
+    <text x="277" y="34" class="font-sans" font-size="23" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1">BLACK-BOX TESTING (Specification-Based)</text>
+    <text x="277" y="64" class="font-sans" font-size="16.5" font-weight="600" fill="#cbd5e1" text-anchor="middle">System treated as an opaque box — verifies external Input → Output behavior</text>
+
+    <!-- Visual Diagram Area -->
+    <rect x="24" y="98" width="507" height="205" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+
+    <!-- Top Spec Badge -->
+    <rect x="190" y="108" width="175" height="28" rx="14" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5" />
+    <text x="277" y="127" class="font-sans" font-size="12.5" font-weight="800" fill="#1e293b" text-anchor="middle">SRS Functional Spec</text>
+
+    <!-- Left: Test Inputs -->
+    <g transform="translate(42, 148)">
+      <rect width="110" height="120" rx="10" fill="#ffffff" stroke="#64748b" stroke-width="2" />
+      <text x="55" y="26" class="font-sans" font-size="13.5" font-weight="800" fill="#1e293b" text-anchor="middle">Test Inputs</text>
+      <rect x="14" y="38" width="82" height="20" rx="4" fill="#f1f5f9" />
+      <text x="55" y="52" class="font-mono" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">EP Partitions</text>
+      <rect x="14" y="64" width="82" height="20" rx="4" fill="#f1f5f9" />
+      <text x="55" y="78" class="font-mono" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">BVA Bounds</text>
+      <rect x="14" y="90" width="82" height="20" rx="4" fill="#f1f5f9" />
+      <text x="55" y="104" class="font-mono" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">Pairwise</text>
+    </g>
+
+    <!-- Arrows into Black Box -->
+    <line x1="156" y1="184" x2="196" y2="184" stroke="#334155" stroke-width="3" marker-end="url(#arr-dark)" />
+    <line x1="156" y1="208" x2="196" y2="208" stroke="#334155" stroke-width="3" marker-end="url(#arr-dark)" />
+    <line x1="156" y1="232" x2="196" y2="232" stroke="#334155" stroke-width="3" marker-end="url(#arr-dark)" />
+
+    <!-- Center: Opaque Black Box -->
+    <g transform="translate(202, 144)">
+      <rect width="150" height="128" rx="14" fill="#0f172a" stroke="#334155" stroke-width="3" />
+      <circle cx="75" cy="48" r="20" fill="#1e293b" stroke="#64748b" stroke-width="2" />
+      <text x="75" y="56" class="font-sans" font-size="22" font-weight="900" fill="#94a3b8" text-anchor="middle">?</text>
+      <text x="75" y="92" class="font-sans" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle">OPAQUE BOX</text>
+      <text x="75" y="111" class="font-sans" font-size="11.5" font-weight="600" fill="#94a3b8" text-anchor="middle">Internal Code Hidden</text>
+    </g>
+
+    <!-- Arrows out of Black Box -->
+    <line x1="356" y1="196" x2="396" y2="196" stroke="#334155" stroke-width="3" marker-end="url(#arr-dark)" />
+    <line x1="356" y1="220" x2="396" y2="220" stroke="#334155" stroke-width="3" marker-end="url(#arr-dark)" />
+
+    <!-- Right: Outputs & Oracle -->
+    <g transform="translate(402, 148)">
+      <rect width="110" height="120" rx="10" fill="#ffffff" stroke="#64748b" stroke-width="2" />
+      <text x="55" y="26" class="font-sans" font-size="13.5" font-weight="800" fill="#1e293b" text-anchor="middle">Outputs</text>
+      <rect x="16" y="42" width="78" height="28" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5" />
+      <text x="55" y="60" class="font-sans" font-size="12" font-weight="800" fill="#15803d" text-anchor="middle">✓ PASS</text>
+      <rect x="16" y="78" width="78" height="28" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5" />
+      <text x="55" y="96" class="font-sans" font-size="12" font-weight="800" fill="#b91c1c" text-anchor="middle">✗ FAIL</text>
+    </g>
+
+    <!-- 3 Key Dimension Pills -->
+    <g transform="translate(24, 320)">
+      <rect width="507" height="50" class="pill-bb" />
+      <text x="18" y="22" class="font-sans" font-size="13.5" font-weight="800" fill="#0f172a">1. Design Basis &amp; Perspective</text>
+      <text x="18" y="41" class="font-sans" font-size="13.5" font-weight="600" fill="#334155">Derived strictly from external SRS requirements, API contracts &amp; user stories</text>
+    </g>
+    <g transform="translate(24, 380)">
+      <rect width="507" height="50" class="pill-bb" />
+      <text x="18" y="22" class="font-sans" font-size="13.5" font-weight="800" fill="#0f172a">2. Representative Techniques</text>
+      <text x="18" y="41" class="font-sans" font-size="13.5" font-weight="600" fill="#334155">Boundary Value (BVA), Equivalence Partitioning (EP), Pairwise, State Machine</text>
+    </g>
+    <g transform="translate(24, 440)">
+      <rect width="507" height="50" class="pill-bb" />
+      <text x="18" y="22" class="font-sans" font-size="13.5" font-weight="800" fill="#0f172a">3. Key Strength &amp; Blind Spot</text>
+      <text x="18" y="41" class="font-sans" font-size="13.5" font-weight="600" fill="#334155">Catches missing spec features (Region 2), but blind to extra dead/trojan code</text>
+    </g>
+  </g>
+
+  <!-- ================= CENTER VS BADGE ================= -->
+  <g transform="translate(600, 270)">
+    <circle cx="0" cy="0" r="24" fill="#0284c7" stroke="#ffffff" stroke-width="3" />
+    <text x="0" y="6" class="font-sans" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">VS</text>
+  </g>
+
+  <!-- ================= RIGHT PANEL: WHITE-BOX TESTING ================= -->
+  <g transform="translate(625, 15)">
+    <rect width="555" height="510" class="panel-wb" />
+    <!-- Top Header -->
+    <path d="M 0 16 Q 0 0 16 0 L 539 0 Q 555 0 555 16 L 555 82 L 0 82 Z" fill="#0284c7" />
+    <text x="277" y="34" class="font-sans" font-size="23" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1">WHITE-BOX TESTING (Structure-Based)</text>
+    <text x="277" y="64" class="font-sans" font-size="16.5" font-weight="600" fill="#e0f2fe" text-anchor="middle">Transparent glass box — exercises internal control-flow branches &amp; paths</text>
+
+    <!-- Visual Diagram Area -->
+    <rect x="24" y="98" width="507" height="205" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+
+    <!-- Left: Path-Targeted Inputs -->
+    <g transform="translate(42, 148)">
+      <rect width="106" height="120" rx="10" fill="#ffffff" stroke="#0284c7" stroke-width="2" />
+      <text x="53" y="28" class="font-sans" font-size="13.5" font-weight="800" fill="#0369a1" text-anchor="middle">Path Inputs</text>
+      <rect x="12" y="44" width="82" height="26" rx="5" fill="#dcfce7" />
+      <text x="53" y="61" class="font-mono" font-size="11.5" font-weight="700" fill="#15803d" text-anchor="middle">x = +10 (T)</text>
+      <rect x="12" y="78" width="82" height="26" rx="5" fill="#fef3c7" />
+      <text x="53" y="95" class="font-mono" font-size="11.5" font-weight="700" fill="#b45309" text-anchor="middle">x = -5  (F)</text>
+    </g>
+
+    <line x1="152" y1="208" x2="188" y2="208" stroke="#0284c7" stroke-width="3" marker-end="url(#arr-cyan)" />
+
+    <!-- Center: Transparent Glass Box with Clean CFG -->
+    <g transform="translate(194, 114)">
+      <rect width="176" height="174" rx="14" fill="rgba(224, 242, 254, 0.55)" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="6 3" />
+      <text x="88" y="20" class="font-sans" font-size="12" font-weight="800" fill="#0369a1" text-anchor="middle">GLASS BOX (Internal CFG)</text>
+
+      <!-- CFG Decision Diamond -->
+      <polygon points="88,32 126,54 88,76 50,54" fill="#ffffff" stroke="#0284c7" stroke-width="2.2" />
+      <text x="88" y="58" class="font-mono" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">x &gt; 0 ?</text>
+
+      <!-- True Branch (Left, Green) -->
+      <path d="M 50 54 L 34 54 L 34 96" fill="none" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arr-green)" />
+      <text x="24" y="48" class="font-mono" font-size="10.5" font-weight="800" fill="#15803d">T</text>
+      <rect x="12" y="100" width="52" height="24" rx="5" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8" />
+      <text x="38" y="116" class="font-mono" font-size="10.5" font-weight="700" fill="#15803d" text-anchor="middle">Branch 1</text>
+
+      <!-- False Branch (Right, Amber) -->
+      <path d="M 126 54 L 142 54 L 142 96" fill="none" stroke="#d97706" stroke-width="2.5" marker-end="url(#arr-amber)" />
+      <text x="146" y="48" class="font-mono" font-size="10.5" font-weight="800" fill="#b45309">F</text>
+      <rect x="112" y="100" width="52" height="24" rx="5" fill="#fef3c7" stroke="#d97706" stroke-width="1.8" />
+      <text x="138" y="116" class="font-mono" font-size="10.5" font-weight="700" fill="#b45309" text-anchor="middle">Branch 2</text>
+
+      <!-- Merge Node at Bottom -->
+      <path d="M 38 124 L 38 148 L 74 148" fill="none" stroke="#16a34a" stroke-width="2.2" />
+      <path d="M 138 124 L 138 148 L 102 148" fill="none" stroke="#d97706" stroke-width="2.2" />
+      <circle cx="88" cy="148" r="11" fill="#0284c7" />
+      <text x="88" y="152" class="font-mono" font-size="10" font-weight="800" fill="#ffffff" text-anchor="middle">Exit</text>
+    </g>
+
+    <line x1="374" y1="208" x2="404" y2="208" stroke="#0284c7" stroke-width="3" marker-end="url(#arr-cyan)" />
+
+    <!-- Right: Structural Coverage Metrics -->
+    <g transform="translate(410, 148)">
+      <rect width="106" height="120" rx="10" fill="#ffffff" stroke="#0284c7" stroke-width="2" />
+      <text x="53" y="26" class="font-sans" font-size="13.5" font-weight="800" fill="#0369a1" text-anchor="middle">Coverage</text>
+      <rect x="12" y="40" width="82" height="22" rx="4" fill="#e0f2fe" />
+      <text x="53" y="55" class="font-mono" font-size="11" font-weight="700" fill="#0369a1" text-anchor="middle">Stmt: 100%</text>
+      <rect x="12" y="68" width="82" height="22" rx="4" fill="#e0f2fe" />
+      <text x="53" y="83" class="font-mono" font-size="11" font-weight="700" fill="#0369a1" text-anchor="middle">Branch: 100%</text>
+      <rect x="12" y="94" width="82" height="18" rx="4" fill="#dcfce7" />
+      <text x="53" y="107" class="font-mono" font-size="10.5" font-weight="800" fill="#15803d" text-anchor="middle">JaCoCo Pass</text>
+    </g>
+
+    <!-- 3 Key Dimension Pills -->
+    <g transform="translate(24, 320)">
+      <rect width="507" height="50" class="pill-wb" />
+      <text x="18" y="22" class="font-sans" font-size="13.5" font-weight="800" fill="#0369a1">1. Design Basis &amp; Perspective</text>
+      <text x="18" y="41" class="font-sans" font-size="13.5" font-weight="600" fill="#334155">Derived from internal source code, AST, Control-Flow (CFG) &amp; Data-Flow graphs</text>
+    </g>
+    <g transform="translate(24, 380)">
+      <rect width="507" height="50" class="pill-wb" />
+      <text x="18" y="22" class="font-sans" font-size="13.5" font-weight="800" fill="#0369a1">2. Representative Coverage Criteria</text>
+      <text x="18" y="41" class="font-sans" font-size="13.5" font-weight="600" fill="#334155">Statement (C0), Branch/Decision (C1), Condition, Basis Path &amp; MC/DC Coverage</text>
+    </g>
+    <g transform="translate(24, 440)">
+      <rect width="507" height="50" class="pill-wb" />
+      <text x="18" y="22" class="font-sans" font-size="13.5" font-weight="800" fill="#0369a1">3. Key Strength &amp; Blind Spot</text>
+      <text x="18" y="41" class="font-sans" font-size="13.5" font-weight="600" fill="#334155">Exposes hidden dead/untested branches (Region 6), but blind to omitted requirements</text>
+    </g>
+  </g>
+</svg>
