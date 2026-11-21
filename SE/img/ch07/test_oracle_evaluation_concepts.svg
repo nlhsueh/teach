@@ -1,0 +1,283 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 510" width="100%" height="100%">
+  <defs>
+    <style>
+      .card-bg { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.8; rx: 12px; }
+      .thumb-bg-blue { fill: #f0f9ff; stroke: #bae6fd; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-amber { fill: #fffbeb; stroke: #fde68a; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-emerald { fill: #ecfdf5; stroke: #a7f3d0; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-indigo { fill: #eef2ff; stroke: #c7d2fe; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-purple { fill: #faf5ff; stroke: #e9d5ff; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-rose { fill: #fff1f2; stroke: #fecdd3; stroke-width: 1.2; rx: 8px; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; font-weight: 800; fill: #0f172a; text-anchor: middle; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 9.8px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .card-formula { font-family: "Fira Code", "Consolas", monospace; font-size: 9px; font-weight: 700; text-anchor: middle; }
+      .mini-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: 700; text-anchor: middle; }
+      .code-text { font-family: "Fira Code", "Consolas", monospace; font-size: 10px; font-weight: 700; text-anchor: middle; }
+    </style>
+    <marker id="arr-b" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+    <marker id="arr-a" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+    <marker id="arr-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="arr-i" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#4f46e5" />
+    </marker>
+    <marker id="arr-p" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#7c3aed" />
+    </marker>
+    <marker id="arr-r" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#e11d48" />
+    </marker>
+  </defs>
+
+  <!-- ==================== ROW 1: ORACLE FOUNDATIONS (y=12..244) ==================== -->
+
+  <!-- CARD 1: Classical Ground-Truth Oracle (x=20) -->
+  <g transform="translate(20, 12)">
+    <rect width="346" height="232" class="card-bg" />
+    <rect width="346" height="6" fill="#0284c7" rx="3" />
+    <rect x="14" y="14" width="318" height="142" class="thumb-bg-blue" />
+
+    <!-- Test Input Box -->
+    <rect x="24" y="58" width="62" height="38" fill="#ffffff" stroke="#0284c7" stroke-width="1.6" rx="5" />
+    <text x="55" y="74" class="mini-label" fill="#0369a1">Test Input</text>
+    <text x="55" y="89" class="code-text" fill="#0284c7">x = [3,1,2]</text>
+
+    <!-- Branch Arrows to PUT and Oracle -->
+    <path d="M 86 68 L 112 44" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arr-b)" />
+    <path d="M 86 86 L 112 110" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arr-b)" />
+
+    <!-- Program Under Test (PUT) -->
+    <rect x="114" y="26" width="94" height="34" fill="#ffffff" stroke="#38bdf8" stroke-width="1.5" rx="5" />
+    <text x="161" y="41" class="mini-label" fill="#0f172a">PUT: sort(x)</text>
+    <text x="161" y="54" class="code-text" fill="#0284c7">Actual: [1,2,3]</text>
+
+    <!-- Ground-Truth Oracle -->
+    <rect x="114" y="94" width="94" height="34" fill="#ffffff" stroke="#38bdf8" stroke-width="1.5" rx="5" />
+    <text x="161" y="109" class="mini-label" fill="#0f172a">Test Oracle</text>
+    <text x="161" y="122" class="code-text" fill="#0284c7">Expected: [1,2,3]</text>
+
+    <!-- Arrows to Comparator -->
+    <path d="M 208 43 L 230 64" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arr-b)" />
+    <path d="M 208 111 L 230 90" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arr-b)" />
+
+    <!-- Comparator & Verdict -->
+    <rect x="232" y="54" width="56" height="46" fill="#0284c7" rx="6" />
+    <text x="260" y="73" font-family="sans-serif" font-size="10px" font-weight="800" fill="#ffffff" text-anchor="middle">ASSERT</text>
+    <text x="260" y="89" font-family="monospace" font-size="11px" font-weight="800" fill="#e0f2fe" text-anchor="middle">y == y*</text>
+
+    <!-- PASS Badge -->
+    <circle cx="308" cy="77" r="14" fill="#16a34a" />
+    <text x="308" y="82" font-family="sans-serif" font-size="12px" font-weight="900" fill="#ffffff" text-anchor="middle">✓</text>
+
+    <text x="173" y="174" class="card-title">1. Classical Ground-Truth Oracle</text>
+    <text x="173" y="190" class="card-sub">Deterministic comparison of program output</text>
+    <text x="173" y="203" class="card-sub">against exact expected value known in advance</text>
+    <text x="173" y="219" class="card-formula" fill="#0284c7">assertEquals(expected, actual) → PASS / FAIL</text>
+  </g>
+
+  <!-- CARD 2: The Test Oracle Problem (x=387) -->
+  <g transform="translate(387, 12)">
+    <rect width="346" height="232" class="card-bg" />
+    <rect width="346" height="6" fill="#d97706" rx="3" />
+    <rect x="14" y="14" width="318" height="142" class="thumb-bg-amber" />
+
+    <!-- Left Box: Complex / Non-deterministic Systems -->
+    <rect x="24" y="24" width="128" height="122" fill="#ffffff" stroke="#fde68a" stroke-width="1.5" rx="6" />
+    <text x="88" y="42" class="mini-label" fill="#b45309">Non-Deterministic SUT</text>
+    <rect x="32" y="52" width="112" height="20" fill="#fef3c7" rx="3" />
+    <text x="88" y="66" class="code-text" fill="#92400e">Autonomous Driving</text>
+    <rect x="32" y="76" width="112" height="20" fill="#fef3c7" rx="3" />
+    <text x="88" y="90" class="code-text" fill="#92400e">Generative LLMs (T&gt;0)</text>
+    <rect x="32" y="100" width="112" height="20" fill="#fef3c7" rx="3" />
+    <text x="88" y="114" class="code-text" fill="#92400e">Search &amp; Simulators</text>
+    <text x="88" y="136" font-family="sans-serif" font-size="9px" font-weight="700" fill="#d97706" text-anchor="middle">No Single Exact Answer!</text>
+
+    <!-- Center Arrow -->
+    <path d="M 158 85 L 186 85" stroke="#d97706" stroke-width="2.2" marker-end="url(#arr-a)" />
+
+    <!-- Right Box: Oracle Breakdown -->
+    <rect x="190" y="24" width="132" height="122" fill="#ffffff" stroke="#f87171" stroke-width="1.5" rx="6" />
+    <text x="256" y="42" class="mini-label" fill="#dc2626">Oracle Intractability</text>
+    <circle cx="256" cy="74" r="20" fill="#fee2e2" stroke="#ef4444" stroke-width="2" />
+    <text x="256" y="82" font-family="sans-serif" font-size="22px" font-weight="900" fill="#dc2626" text-anchor="middle">?</text>
+    <line x1="202" y1="110" x2="310" y2="110" stroke="#f87171" stroke-width="1.5" stroke-dasharray="3,3" />
+    <text x="256" y="124" class="code-text" fill="#b91c1c">Expected y* = ???</text>
+    <text x="256" y="138" font-family="sans-serif" font-size="9.5px" font-weight="700" fill="#dc2626" text-anchor="middle">Hardcoded Assertions Fail</text>
+
+    <text x="173" y="174" class="card-title">2. The Test Oracle Problem</text>
+    <text x="173" y="190" class="card-sub">When expected outputs are unavailable,</text>
+    <text x="173" y="203" class="card-sub">intractable, or non-deterministic across runs</text>
+    <text x="173" y="219" class="card-formula" fill="#d97706">Oracle Intractable: Expected y* is Unknown</text>
+  </g>
+
+  <!-- CARD 3: Implicit & Invariant Oracles (x=754) -->
+  <g transform="translate(754, 12)">
+    <rect width="346" height="232" class="card-bg" />
+    <rect width="346" height="6" fill="#059669" rx="3" />
+    <rect x="14" y="14" width="318" height="142" class="thumb-bg-emerald" />
+
+    <!-- 3 Shield Invariant Cards -->
+    <!-- Card A: Crash-Freedom -->
+    <rect x="24" y="24" width="144" height="54" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.4" rx="5" />
+    <text x="96" y="40" class="mini-label" fill="#047857">1. Crash Freedom</text>
+    <text x="96" y="54" class="code-text" fill="#059669">assertDoesNotThrow()</text>
+    <text x="96" y="68" font-family="sans-serif" font-size="8.5px" font-weight="600" fill="#64748b" text-anchor="middle">Zero unhandled panics/500s</text>
+
+    <!-- Card B: Design-by-Contract -->
+    <rect x="178" y="24" width="144" height="54" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.4" rx="5" />
+    <text x="250" y="40" class="mini-label" fill="#047857">2. Contract Invariants</text>
+    <text x="250" y="54" class="code-text" fill="#059669">Pre(P) → Post(Q)</text>
+    <text x="250" y="68" font-family="sans-serif" font-size="8.5px" font-weight="600" fill="#64748b" text-anchor="middle">Enforce class invariants</text>
+
+    <!-- Card C: Memory & Sanitizers -->
+    <rect x="24" y="86" width="298" height="60" fill="#ffffff" stroke="#059669" stroke-width="1.5" rx="6" />
+    <text x="173" y="103" class="mini-label" fill="#065f46">3. Implicit Safety Sanitizers (ASan / LeakSan)</text>
+    <rect x="34" y="112" width="78" height="22" fill="#d1fae5" rx="3" />
+    <text x="73" y="126" class="code-text" fill="#065f46">No Leaks</text>
+    <rect x="120" y="112" width="94" height="22" fill="#d1fae5" rx="3" />
+    <text x="167" y="126" class="code-text" fill="#065f46">No Deadlocks</text>
+    <rect x="222" y="112" width="90" height="22" fill="#d1fae5" rx="3" />
+    <text x="267" y="126" class="code-text" fill="#065f46">Timeout Safe</text>
+
+    <text x="173" y="174" class="card-title">3. Implicit &amp; Invariant Oracles</text>
+    <text x="173" y="190" class="card-sub">Verify crash-freedom, memory safety,</text>
+    <text x="173" y="203" class="card-sub">and design contracts without manual ground truth</text>
+    <text x="173" y="219" class="card-formula" fill="#059669">assertDoesNotThrow() &amp;&amp; checkInvariants()</text>
+  </g>
+
+  <!-- ==================== ROW 2: MODERN BREAKTHROUGH STRATEGIES (y=262..494) ==================== -->
+
+  <!-- CARD 4: Metamorphic Testing (x=20) -->
+  <g transform="translate(20, 262)">
+    <rect width="346" height="232" class="card-bg" />
+    <rect width="346" height="6" fill="#4f46e5" rx="3" />
+    <rect x="14" y="14" width="318" height="142" class="thumb-bg-indigo" />
+
+    <!-- Source Run -->
+    <rect x="24" y="28" width="82" height="34" fill="#ffffff" stroke="#818cf8" stroke-width="1.5" rx="5" />
+    <text x="65" y="43" class="mini-label" fill="#4338ca">Input x</text>
+    <text x="65" y="56" class="code-text" fill="#4f46e5">query("TSMC")</text>
+
+    <path d="M 106 45 L 142 45" stroke="#4f46e5" stroke-width="1.8" marker-end="url(#arr-i)" />
+
+    <rect x="144" y="28" width="76" height="34" fill="#ffffff" stroke="#818cf8" stroke-width="1.5" rx="5" />
+    <text x="182" y="43" class="mini-label" fill="#4338ca">Output f(x)</text>
+    <text x="182" y="56" class="code-text" fill="#4f46e5">Set S1 (100)</text>
+
+    <!-- Vertical Transformation -->
+    <path d="M 65 62 L 65 96" stroke="#4f46e5" stroke-width="1.8" stroke-dasharray="3,3" marker-end="url(#arr-i)" />
+    <text x="86" y="82" font-family="sans-serif" font-size="9px" font-weight="700" fill="#4f46e5">Transform: T(x)</text>
+
+    <!-- Follow-up Run -->
+    <rect x="24" y="100" width="82" height="34" fill="#ffffff" stroke="#818cf8" stroke-width="1.5" rx="5" />
+    <text x="65" y="115" class="mini-label" fill="#4338ca">Input x'</text>
+    <text x="65" y="128" class="code-text" fill="#4f46e5">"TSMC AND rev"</text>
+
+    <path d="M 106 117 L 142 117" stroke="#4f46e5" stroke-width="1.8" marker-end="url(#arr-i)" />
+
+    <rect x="144" y="100" width="76" height="34" fill="#ffffff" stroke="#818cf8" stroke-width="1.5" rx="5" />
+    <text x="182" y="115" class="mini-label" fill="#4338ca">Output f(x')</text>
+    <text x="182" y="128" class="code-text" fill="#4f46e5">Set S2 (35)</text>
+
+    <!-- MR Verification Gate -->
+    <path d="M 220 45 L 246 68" stroke="#4f46e5" stroke-width="1.8" />
+    <path d="M 220 117 L 246 94" stroke="#4f46e5" stroke-width="1.8" />
+
+    <rect x="242" y="50" width="80" height="62" fill="#4f46e5" rx="6" />
+    <text x="282" y="68" font-family="sans-serif" font-size="10px" font-weight="800" fill="#ffffff" text-anchor="middle">VERIFY MR</text>
+    <text x="282" y="86" font-family="monospace" font-size="11.5px" font-weight="900" fill="#e0e7ff" text-anchor="middle">S2 ⊆ S1</text>
+    <text x="282" y="102" font-family="sans-serif" font-size="9px" font-weight="700" fill="#a5b4fc" text-anchor="middle">Subset Invariant</text>
+
+    <text x="173" y="174" class="card-title">4. Metamorphic Testing (MT)</text>
+    <text x="173" y="190" class="card-sub">Transform inputs and verify cross-run</text>
+    <text x="173" y="203" class="card-sub">metamorphic relations when exact f(x) is unknown</text>
+    <text x="173" y="219" class="card-formula" fill="#4f46e5">MR: f(transform(x)) ℛ f(x) (e.g., S2 ⊆ S1)</text>
+  </g>
+
+  <!-- CARD 5: Differential Testing (x=387) -->
+  <g transform="translate(387, 262)">
+    <rect width="346" height="232" class="card-bg" />
+    <rect width="346" height="6" fill="#7c3aed" rx="3" />
+    <rect x="14" y="14" width="318" height="142" class="thumb-bg-purple" />
+
+    <!-- Shared Input -->
+    <rect x="24" y="66" width="68" height="40" fill="#ffffff" stroke="#7c3aed" stroke-width="1.6" rx="5" />
+    <text x="58" y="82" class="mini-label" fill="#6d28d9">Shared Input</text>
+    <text x="58" y="97" class="code-text" fill="#7c3aed">Payload x</text>
+
+    <path d="M 92 78 L 122 48" stroke="#7c3aed" stroke-width="1.8" marker-end="url(#arr-p)" />
+    <path d="M 92 94 L 122 122" stroke="#7c3aed" stroke-width="1.8" marker-end="url(#arr-p)" />
+
+    <!-- Implementation 1 (GCC / Baseline) -->
+    <rect x="124" y="28" width="94" height="38" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5" rx="5" />
+    <text x="171" y="44" class="mini-label" fill="#5b21b6">Implementation A</text>
+    <text x="171" y="58" class="code-text" fill="#7c3aed">GCC / Engine v1</text>
+
+    <!-- Implementation 2 (Clang / Candidate) -->
+    <rect x="124" y="104" width="94" height="38" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5" rx="5" />
+    <text x="171" y="120" class="mini-label" fill="#5b21b6">Implementation B</text>
+    <text x="171" y="134" class="code-text" fill="#7c3aed">Clang / Engine v2</text>
+
+    <path d="M 218 47 L 246 72" stroke="#7c3aed" stroke-width="1.8" marker-end="url(#arr-p)" />
+    <path d="M 218 123 L 246 98" stroke="#7c3aed" stroke-width="1.8" marker-end="url(#arr-p)" />
+
+    <!-- Diff Comparator -->
+    <rect x="248" y="52" width="74" height="66" fill="#7c3aed" rx="6" />
+    <text x="285" y="72" font-family="sans-serif" font-size="10px" font-weight="800" fill="#ffffff" text-anchor="middle">DIFF COMP</text>
+    <text x="285" y="89" font-family="monospace" font-size="10.5px" font-weight="800" fill="#ede9fe" text-anchor="middle">OutA == OutB</text>
+    <text x="285" y="106" font-family="sans-serif" font-size="9px" font-weight="700" fill="#ddd6fe" text-anchor="middle">Divergence = Bug</text>
+
+    <text x="173" y="174" class="card-title">5. Differential Testing</text>
+    <text x="173" y="190" class="card-sub">Execute multiple independent implementations</text>
+    <text x="173" y="203" class="card-sub">on identical inputs to catch divergence bugs</text>
+    <text x="173" y="219" class="card-formula" fill="#7c3aed">Diff(Impl_A(x), Impl_B(x)) == 0 (Consensus)</text>
+  </g>
+
+  <!-- CARD 6: LLM-as-a-Judge & Guardrails (x=754) -->
+  <g transform="translate(754, 262)">
+    <rect width="346" height="232" class="card-bg" />
+    <rect width="346" height="6" fill="#e11d48" rx="3" />
+    <rect x="14" y="14" width="318" height="142" class="thumb-bg-rose" />
+
+    <!-- Left: Generative AI Output -->
+    <rect x="24" y="32" width="90" height="106" fill="#ffffff" stroke="#fda4af" stroke-width="1.5" rx="5" />
+    <text x="69" y="49" class="mini-label" fill="#9f1239">Generative SUT</text>
+    <rect x="30" y="58" width="78" height="20" fill="#ffe4e6" rx="3" />
+    <text x="69" y="72" class="code-text" fill="#be123c">Prompt x</text>
+    <path d="M 69 78 L 69 88" stroke="#e11d48" stroke-width="1.4" marker-end="url(#arr-r)" />
+    <rect x="30" y="90" width="78" height="20" fill="#ffe4e6" rx="3" />
+    <text x="69" y="104" class="code-text" fill="#be123c">Output y</text>
+    <text x="69" y="128" font-family="sans-serif" font-size="8px" font-weight="700" fill="#e11d48" text-anchor="middle">Open-ended Text</text>
+
+    <path d="M 114 85 L 138 85" stroke="#e11d48" stroke-width="2" marker-end="url(#arr-r)" />
+
+    <!-- Center/Right: Structured Rubric Judge -->
+    <rect x="140" y="24" width="182" height="122" fill="#ffffff" stroke="#e11d48" stroke-width="1.6" rx="6" />
+    <text x="231" y="42" class="mini-label" fill="#9f1239">LLM Judge &amp; Guardrail Pipeline</text>
+
+    <rect x="148" y="50" width="166" height="20" fill="#fff1f2" rx="3" />
+    <text x="156" y="64" font-family="sans-serif" font-size="9px" font-weight="700" fill="#16a34a">✓</text>
+    <text x="236" y="64" font-family="sans-serif" font-size="8.5px" font-weight="700" fill="#9f1239" text-anchor="middle">Faithfulness (RAG Grounding)</text>
+
+    <rect x="148" y="74" width="166" height="20" fill="#fff1f2" rx="3" />
+    <text x="156" y="88" font-family="sans-serif" font-size="9px" font-weight="700" fill="#16a34a">✓</text>
+    <text x="236" y="88" font-family="sans-serif" font-size="8.5px" font-weight="700" fill="#9f1239" text-anchor="middle">Answer Relevance (Intent)</text>
+
+    <rect x="148" y="98" width="166" height="20" fill="#fff1f2" rx="3" />
+    <text x="156" y="112" font-family="sans-serif" font-size="9px" font-weight="700" fill="#16a34a">✓</text>
+    <text x="236" y="112" font-family="sans-serif" font-size="8.5px" font-weight="700" fill="#9f1239" text-anchor="middle">Safety Guardrail (Zero Leak)</text>
+
+    <rect x="156" y="122" width="150" height="18" fill="#e11d48" rx="3" />
+    <text x="231" y="135" font-family="sans-serif" font-size="9.5px" font-weight="800" fill="#ffffff" text-anchor="middle">Rubric Score ≥ 0.85 → PASS</text>
+
+    <text x="173" y="174" class="card-title">6. LLM-as-a-Judge &amp; Guardrails</text>
+    <text x="173" y="190" class="card-sub">Rubric-based semantic quality scoring</text>
+    <text x="173" y="203" class="card-sub">and safety guardrails for generative AI outputs</text>
+    <text x="173" y="219" class="card-formula" fill="#e11d48">Judge(Prompt, Output, Rubrics) ≥ Threshold</text>
+  </g>
+</svg>

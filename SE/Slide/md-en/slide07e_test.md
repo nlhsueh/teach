@@ -39,16 +39,16 @@ In software engineering, writing code is only half the battle. Delivering a depe
     <h3>Part 1: Foundations, Inspection & Black-Box</h3>
     <ul>
       <li><a href="#3"><b>7.1 Testing Foundations, Principles & Oracles:</b></a> ISTQB 7 principles, V&V, testing levels, testability, test pyramid, behavior Venn diagram, 3W2H landscape, Test Oracle problem, Metamorphic & Differential testing.</li>
-      <li><a href="#32"><b>7.2 Static Software Inspection & Code Review:</b></a> Testing iceberg & IEEE 1028 review spectrum, Fagan 6-step process & 5 roles, full-lifecycle review targets (SRS, Design models, Code), automated static analysis & CI gates.</li>
-      <li><a href="#37"><b>7.3 Black-Box Testing (BVA & EP):</b></a> Myers's philosophy, BVA formulas (4n+1, 6n+1, 5<sup>n</sup>, 7<sup>n</sup>), Triangle diversity deficit, Weak vs. Strong EP, Binary Search, NextDate December anomaly, Fault Masking, EP+BVA SOP.</li>
+      <li><a href="#31"><b>7.2 Static Software Inspection & Code Review:</b></a> Testing iceberg & IEEE 1028 review spectrum, Fagan 6-step process & 5 roles, full-lifecycle review targets (SRS, Design models, Code), automated static analysis & CI gates.</li>
+      <li><a href="#36"><b>7.3 Black-Box Testing (BVA & EP):</b></a> Myers's philosophy, BVA formulas (4n+1, 6n+1, 5<sup>n</sup>, 7<sup>n</sup>), Triangle diversity deficit, Weak vs. Strong EP, Binary Search, NextDate December anomaly, Fault Masking, EP+BVA SOP.</li>
     </ul>
   </div>
   <div>
     <h3>Part 2: Combinatorial, White-Box & Integration</h3>
     <ul>
-      <li><a href="#55"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
-      <li><a href="#70"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
-      <li><a href="#91"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
+      <li><a href="#54"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
+      <li><a href="#69"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
+      <li><a href="#90"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
     </ul>
   </div>
 </div>
@@ -860,6 +860,33 @@ Metamorphic Testing checks invariant relations across input transformations, Dif
 - differential testing: 差分測試（將相同測試輸入同時餵給多個獨立實作版本，藉由比對輸出差異來自動揭露異常的技術）
 -->
 ---
+<!-- _class: title-image-slide -->
+
+## Test Oracles & Modern Evaluation Architectures: 6 Core Paradigms
+
+<div class="image-wrapper">
+  <img src="../../img/ch07/test_oracle_evaluation_concepts.svg" alt="6 Core Paradigms of Test Oracles and Modern Evaluation Architectures" />
+</div>
+
+<!--
+This concept map synthesizes the six core pillars of test evaluation covered in How to Evaluate:
+
+Row 1 establishes the baseline dilemma:
+1. Classical Ground-Truth Oracle: comparing actual program output against exact pre-calculated expected results via `assertEquals`.
+2. The Test Oracle Problem: why traditional assertions break down when expected outputs are unavailable, continuous, or stochastic (AI, simulators, search).
+3. Implicit & Invariant Oracles: verifying crash-freedom (`assertDoesNotThrow`), contract invariants, and memory safety without needing manual expected answers.
+
+Row 2 highlights modern breakthrough strategies:
+4. Metamorphic Testing (MT): verifying input-transformation invariants (`f(T(x)) R f(x)`) across multiple test executions.
+5. Differential Testing: feeding identical test inputs into independent implementations to detect divergence bugs.
+6. LLM-as-a-Judge & Guardrails: semantic rubric grading for generative AI outputs across Faithfulness, Relevance, and Safety.
+
+💡 難字與專業術語解說：
+- test evaluation: 測試評估判定（判定程式執行結果為 PASS 還是 FAIL 的決策機制）
+- ground truth: 地面真值／基準事實（判定程式輸出是否正確的標準權威答案）
+- relational invariant: 關聯不變量（輸入經特定轉換後，多次輸出之間必須恆常保持的數學關係）
+-->
+---
 <!-- id: ase-ch07-ccq1 -->
 ## Concept Check Question 1: Testing Principles
 
@@ -1027,7 +1054,7 @@ We now enter Section 7.3: Black-Box Testing — Boundary Value Analysis (BVA) an
 </div>
 <div class="right">
 
-<img src="../../img/ch07/black_box_testing_concept.jpg" alt="Black-Box Testing Concept Architecture" />
+<img src="../../img/ch07/black_box_testing_simple.svg" alt="Black-Box Testing Concept Architecture" />
 
 </div>
 </div>
@@ -1037,39 +1064,6 @@ A trivial two-integer function `int add(int a, int b)` has 2^64 possible input c
 
 💡 難字與專業術語解說：
 - decoupling from implementation: 與實作解耦（黑箱測試僅針對公開 API 契約斷言，因此內部重構演算法時測試程式碼無須修改）
--->
----
-## Father of Software Testing: Glenford J. Myers & The 5 Black-Box Methods
-
-<div class="split73">
-<div class="left">
-
-* **Glenford J. Myers — *The Art of Software Testing* (1979):**
-  - **Revolutionary Definition:** *"Testing is the process of executing a program with the intent of finding errors—not proving that errors do not exist."*
-  - **Foundational Contributions:**
-    1. Systematically formalized **Equivalence Partitioning (EP)**, **Boundary Value Analysis (BVA)**, **Cause-Effect Graphing**, and **Error Guessing**.
-    2. Insisted that every test case must pre-define an **Expected Output (Test Oracle)** so testers don't subconsciously accept wrong outputs.
-    3. Introduced the world-famous **Triangle Classification Problem** (`a, b, c`), showing how even a 3-input specification hides dozens of subtle boundary traps.
-
-</div>
-<div class="right">
-
-<div class="name-card">
-  <img src="../../img/ch07/glenford_myers.jpg" alt="Glenford J. Myers" />
-  <div class="name-card-caption">
-    <span class="name-card-name">Glenford J. Myers</span>
-    <span class="name-card-cc">Author: The Art of Software Testing (1979)</span>
-  </div>
-</div>
-
-</div>
-</div>
-
-<!--
-In 1979, Glenford J. Myers published *The Art of Software Testing*, shifting the psychology of testing from defensive confirmation to scientific defect hunting.
-
-💡 難字與專業術語解說：
-- error guessing: 錯誤猜測法（憑藉工程師過往經驗與直覺，針對極易出錯的空值、特殊字元或負數進行針對性測試的技術）
 -->
 ---
 ## Boundary Value Analysis (BVA): Core Philosophy & Single Fault Assumption
@@ -1154,44 +1148,119 @@ Never apply `4n + 1` mechanically without checking output partition coverage! Ho
 - diversity deficit: 多樣性缺失（因機械式固定名義值 `norm` 導致產生出的測試案例全部落在相同輸出類別、遺漏其他重要業務分支的盲區）
 -->
 ---
-## Independent Robust BVA (`6n + 1`) vs. Worst-Case BVA (`5`<sup>`n`</sup> & `7`<sup>`n`</sup>)
+## Interactive BVA Explorer: 4n+1, 6n+1, 5ⁿ, 7ⁿ Sampling Spaces
 
-<div class="card-deck">
-
-> **Robust BVA (`6n + 1`)** adds invalid out-of-bounds points (`min-, max+`), while **Worst-Case BVA (`5`<sup>`n`</sup>, `7`<sup>`n`</sup>)** drops the Single Fault Assumption via full Cartesian products.
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. Independent Robust BVA (`6n + 1`)
-<div style="text-align: center; margin-bottom: 6px;">
-  <img src="../../img/ch07/robust_bva.png" style="max-height: 185px; object-fit: contain;" alt="Independent Robust BVA (6n + 1)" />
+<div class="bva-interactive-stage">
+<div class="bva-nav-toolbar">
+  <button class="bva-mode-btn is-active" data-bva="norm">1. Normal BVA (4n + 1)</button>
+  <button class="bva-mode-btn" data-bva="robust">2. Robust BVA (6n + 1)</button>
+  <button class="bva-mode-btn" data-bva="worst-norm">3. Worst Normal (5ⁿ)</button>
+  <button class="bva-mode-btn" data-bva="worst-robust">4. Worst Robust (7ⁿ)</button>
 </div>
-
-- Adds **2 invalid out-of-bounds points** per variable: **`min-`** (`min - 1`, e.g., `0`) and **`max+`** (`max + 1`, e.g., `201`) to verify defensive exception handling.
-- **Formula:** **`6n + 1`** (for `n = 3` → **`19` cases**).
-
+<div class="bva-content-grid">
+<div class="bva-svg-container">
+<svg viewBox="0 0 480 480" width="440" height="420" style="display: block; max-width: 100%; max-height: 100%;">
+  <rect x="95" y="95" width="290" height="290" fill="#f8fafc" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,4" rx="8" />
+  <rect x="40" y="40" width="400" height="400" fill="none" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="4,4" rx="10" />
+  <line x1="40" y1="240" x2="440" y2="240" stroke="#94a3b8" stroke-width="1.8" />
+  <line x1="240" y1="40" x2="240" y2="440" stroke="#94a3b8" stroke-width="1.8" />
+  <text x="240" y="26" text-anchor="middle" font-size="12" font-weight="800" fill="#0369a1">x₂ (Variable 2)</text>
+  <text x="460" y="244" text-anchor="start" font-size="12" font-weight="800" fill="#0369a1">x₁</text>
+  <text x="40" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#e11d48">min-</text>
+  <text x="95" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#0284c7">min</text>
+  <text x="150" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#0284c7">min+</text>
+  <text x="240" y="258" text-anchor="middle" font-size="9" font-weight="800" fill="#0f172a">norm</text>
+  <text x="330" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#0284c7">max-</text>
+  <text x="385" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#0284c7">max</text>
+  <text x="440" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#e11d48">max+</text>
+  <text x="232" y="444" text-anchor="end" font-size="9" font-weight="700" fill="#e11d48">min-</text>
+  <text x="232" y="389" text-anchor="end" font-size="9" font-weight="700" fill="#0284c7">min</text>
+  <text x="232" y="334" text-anchor="end" font-size="9" font-weight="700" fill="#0284c7">min+</text>
+  <text x="232" y="154" text-anchor="end" font-size="9" font-weight="700" fill="#0284c7">max-</text>
+  <text x="232" y="99" text-anchor="end" font-size="9" font-weight="700" fill="#0284c7">max</text>
+  <text x="232" y="44" text-anchor="end" font-size="9" font-weight="700" fill="#e11d48">max+</text>
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="150" r="6.5" />
+  <circle class="bva-pt is-robust-bva is-dimmed" data-cat="robust-bva" cx="40" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="440" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="95" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="95" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="95" cy="150" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="95" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="95" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="95" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="95" cy="440" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="150" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="150" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="150" cy="150" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="150" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="150" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="150" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="150" cy="440" r="6.5" />
+  <circle class="bva-pt is-robust-bva is-dimmed" data-cat="robust-bva" cx="240" cy="40" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="240" cy="95" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="240" cy="150" r="6.5" />
+  <circle class="bva-pt is-nom is-active" data-cat="nom" cx="240" cy="240" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="240" cy="330" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="240" cy="385" r="6.5" />
+  <circle class="bva-pt is-robust-bva is-dimmed" data-cat="robust-bva" cx="240" cy="440" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="330" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="330" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="330" cy="150" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="330" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="330" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="330" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="330" cy="440" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="385" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="385" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="385" cy="150" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="385" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="385" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="385" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="385" cy="440" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="150" r="6.5" />
+  <circle class="bva-pt is-robust-bva is-dimmed" data-cat="robust-bva" cx="440" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="440" r="6.5" />
+</svg>
 </div>
-<div class="card" data-marpit-fragment>
-
-### 2. Worst-Case Non-Independent BVA (`5`<sup>`n`</sup> / `7`<sup>`n`</sup>)
-<div style="text-align: center; margin-bottom: 6px;">
-  <img src="../../img/ch07/worst_case_bva.png" style="max-height: 185px; object-fit: contain;" alt="Worst-Case BVA Grid" />
-</div>
-
-- Rejects Single Fault Assumption when variables interact tightly:
-  - **Worst-Case Normal:** **`5`<sup>`n`</sup>** (`n=3 → 125` cases; `n=5 → 3,125`).
-  - **Worst-Case Robust:** **`7`<sup>`n`</sup>** (`n=3 → 343` cases; `n=5 → 16,807`).
-
+<div class="bva-info-card" id="bva-info-box">
+  <div class="bva-info-header">
+    <span class="bva-badge-pill bva-badge-blue" id="bva-mode-badge">Single Fault Assumption</span>
+    <h3 class="bva-title-text" id="bva-mode-title">Normal Boundary Value Analysis</h3>
+  </div>
+  <div class="bva-stats-row">
+    <div class="bva-stat-box">
+      <div class="bva-stat-label">Formula</div>
+      <div class="bva-stat-val" id="bva-stat-formula">4n + 1</div>
+    </div>
+    <div class="bva-stat-box">
+      <div class="bva-stat-label">Active Points (n = 2)</div>
+      <div class="bva-stat-val" id="bva-stat-count">9 Points</div>
+    </div>
+  </div>
+  <ul class="bva-details-list" id="bva-details-list">
+    <li><strong>Minimal Baseline Sampling:</strong> Tests <code>min, min+, max-, max</code> along each axis while anchoring other variables at <code>norm</code>.</li>
+    <li><strong>Defect Target:</strong> Catches over 60% of common relational off-by-one errors (<code>&lt;</code> vs. <code>&lt;=</code>) with strictly linear growth.</li>
+    <li><strong>Point Density:</strong> Lowest point count (<strong>9 points</strong> for 2 variables, 13 for 3).</li>
+  </ul>
 </div>
 </div>
 </div>
 
 <!--
-Compare the two 2D dot diagrams: Independent Robust BVA (`6n + 1`) forms a cross along the nominal axes with `min-` and `max+` tips, whereas Worst-Case BVA (`5^n` and `7^n`) fills the entire Cartesian grid to catch multi-variable boundary collisions.
+The 49 points on this 2D plane represent the entire boundary sampling space for two variables. Under Normal BVA (4n+1), only the 9 cross points along the nominal axes light up (minimal baseline). When selecting Robust BVA (6n+1), the 4 out-of-bounds tips (min-, max+) turn red. Worst-case Normal (5^n) activates all 25 points within the valid blue box. Finally, Worst-case Robust (7^n) illuminates all 49 points across the entire Cartesian product.
 
 💡 難字與專業術語解說：
-- Robust Boundary Value Analysis: 強固邊界值分析（在標準邊界點外，額外加入微幅越界的 `min-` 與 `max+` 非法點以檢驗系統防禦與例外處理能力的測試法）
+- boundary sampling space: 邊界取樣空間（在多變數輸入域中，由各變數極值、名義值與越界值張成之測試點候選集合）
+- single fault assumption: 單一錯誤假設（假設系統失效絕大多數僅由單一變數抵達極值所誘發，因而測試時其餘變數固定在名義中心值）
+- Cartesian product explosion: 笛卡爾乘積爆炸（當捨棄單一錯誤假設時，測試案例數由線性 O(n) 暴增為指數級 O(k^n) 的組合膨脹現象）
 -->
 ---
 ## BVA Panorama Matrix & Key Practical FAQs (Out-On-In & Floating-Point)
@@ -1295,75 +1364,187 @@ Pairing `@ParameterizedTest` with `assertAll` lets you run dozens of boundary ch
 - grouped assertions (`assertAll`): 群組聚合斷言（JUnit 5 以 Lambda 封裝多個斷言，確保所有斷言皆被執行並一次彙整所有失敗結果的機制）
 -->
 ---
-## Equivalence Partitioning (EP): Core Motivation & Weak vs. Strong Coverage
+## Interactive EP Explorer: Weak vs. Strong & Normal vs. Robust Matrix
 
-<div class="split73">
-<div class="left">
+<div class="ep-interactive-stage">
 
-* **Core Principle of Equivalence Partitioning (EP):**
-  - Partition the input/output domain into disjoint **Equivalence Classes** where every value in a class is processed identically (if one value catches a bug, any other value in that class catches it too).
-  - **Dual Goals:** Achieve **completeness** (every valid and invalid partition has a representative) while eliminating **redundancy**.
-* **Weak Coverage vs. Strong Coverage:**
-  - **Weak Equivalence Partitioning (Weak EP — Single Fault):**
-    - Every partition of each variable appears in **at least one test case**:
-    - **`Total Test Cases = max(|P1|, |P2|, ..., |Pn|)`** *(4 blue diagonal dots on right)*.
-  - **Strong Equivalence Partitioning (Strong EP — Multiple Fault):**
-    - Tests the full **Cartesian product** across all variables:
-    - **`Total Test Cases = |P1| × |P2| × ... × |Pn|`** *(all `3 × 4 = 12` grid cells)*.
-
+<div class="ep-nav-toolbar">
+  <button class="ep-mode-btn is-active" data-ep="weak-norm">1. Weak Normal EP</button>
+  <button class="ep-mode-btn" data-ep="strong-norm">2. Strong Normal EP</button>
+  <button class="ep-mode-btn" data-ep="weak-robust">3. Weak Robust EP (Single-Invalid)</button>
+  <button class="ep-mode-btn" data-ep="strong-robust">4. Strong Robust EP</button>
 </div>
-<div class="right">
 
-<img src="../../img/ch07/equivalence_partition.png" alt="Weak vs Strong Equivalence Partitioning Grid" />
+<div class="ep-content-grid">
+
+<div class="ep-matrix-card">
+  <table class="ep-table">
+    <thead>
+      <tr>
+        <th style="width: 22%;">x₁ \ x₂</th>
+        <th style="width: 19%; color: #e11d48;">I₂,₁ (Empty)</th>
+        <th style="width: 20%; color: #059669;">V₂,₁ (Alpha [A-M])</th>
+        <th style="width: 20%; color: #059669;">V₂,₂ (Beta [N-Z])</th>
+        <th style="width: 19%; color: #e11d48;">I₂,₂ (Symbols)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th style="color: #e11d48;">I₁,₁ (&lt; 1)</th>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i11_i21">TC₇</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin is-active-pin" data-pin-id="p_i11_v21">TC₄</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i11_v22">TC₈</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i11_i22">TC₉</span></td>
+      </tr>
+      <tr>
+        <th style="color: #059669;">V₁,₁ (1..10)</th>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v11_i21">TC₆</span></td>
+        <td class="is-valid-zone"><span class="ep-pin is-active-pin" data-pin-id="p_v11_v21">TC₁</span></td>
+        <td class="is-valid-zone"><span class="ep-pin" data-pin-id="p_v11_v22">TC₄</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v11_i22">TC₇</span></td>
+      </tr>
+      <tr>
+        <th style="color: #059669;">V₁,₂ (11..20)</th>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v12_i21">TC₁₀</span></td>
+        <td class="is-valid-zone"><span class="ep-pin" data-pin-id="p_v12_v21">TC₅</span></td>
+        <td class="is-valid-zone"><span class="ep-pin is-active-pin" data-pin-id="p_v12_v22">TC₂</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v12_i22">TC₁₁</span></td>
+      </tr>
+      <tr>
+        <th style="color: #059669;">V₁,₃ (21..30)</th>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v13_i21">TC₁₂</span></td>
+        <td class="is-valid-zone"><span class="ep-pin is-active-pin" data-pin-id="p_v13_v21">TC₃</span></td>
+        <td class="is-valid-zone"><span class="ep-pin" data-pin-id="p_v13_v22">TC₆</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v13_i22">TC₁₃</span></td>
+      </tr>
+      <tr>
+        <th style="color: #e11d48;">I₁,₂ (&gt; 30)</th>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i12_i21">TC₁₄</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i12_v21">TC₅</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i12_v22">TC₁₅</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i12_i22">TC₁₆</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="ep-info-card" id="ep-info-box">
+  <div class="ep-info-header">
+    <span class="ep-badge-pill ep-badge-green" id="ep-mode-badge">Valid Only • Single Fault</span>
+    <h3 class="ep-title-text" id="ep-mode-title">Weak Normal Equivalence Partitioning</h3>
+  </div>
+  
+  <div class="ep-stats-row">
+    <div class="ep-stat-box">
+      <div class="ep-stat-label">Formula</div>
+      <div class="ep-stat-val" id="ep-stat-formula">max(|P₁|, |P₂|)</div>
+    </div>
+    <div class="ep-stat-box">
+      <div class="ep-stat-label">Active Test Cases</div>
+      <div class="ep-stat-val" id="ep-stat-count">3 Cases</div>
+    </div>
+  </div>
+  
+  <ul class="ep-details-list" id="ep-details-list">
+    <li><strong>Minimal Valid Coverage:</strong> Ensures each valid equivalence class of every variable appears in at least one test case.</li>
+    <li><strong>Single Fault Hypothesis:</strong> Assumes functional defects are exposed when an individual partition is exercised with valid peers.</li>
+    <li><strong>Execution Cost:</strong> Most economical baseline (<strong>max(3, 2) = 3 cases</strong>).</li>
+  </ul>
+</div>
 
 </div>
 </div>
 
 <!--
-Under Weak EP (the blue dots), we only need max(3, 4) = 4 test cases to touch every row and every column at least once; under Strong EP, we test all 3 x 4 = 12 Cartesian combinations.
+Equivalence Partitioning spans 4 coverage dimensions. Under Weak Normal EP, only 3 green test cases are needed to cover every valid row and column. Strong Normal expands to all 6 combinations in the green valid zone. Weak Robust introduces the vital Single-Invalid Rule: 4 red test cases test each invalid partition in strict isolation against valid peers (7 cases total), preventing early exceptions from masking secondary defects. Strong Robust tests all 20 cells via brute-force Cartesian multiplication.
 
 💡 難字與專業術語解說：
-- Weak vs. Strong EP: 弱涵蓋 vs. 強涵蓋等價分割（僅要求各變數之每個等價類至少被測一次 vs. 要求所有變數等價類之笛卡爾乘積全組合皆被測試）
+- Equivalence Partitioning (EP): 等價分割法（將輸入或輸出域切割為若干互斥子集合，使集合內任一輸入值對揭露缺陷具有同等效力的黑箱測試技術）
+- single invalid rule: 單一非法值規則（在強固等價分割中，每次測試僅允許單一變數取非法值，其餘變數一律取合法值，防止例外中斷造成缺陷遮蔽）
+- fault masking: 缺陷遮蔽（當一個輸入錯誤引發提前崩潰或例外返回時，下游其他變數潛藏的錯誤無法被執行或驗證的現象）
 -->
 ---
-## EP Case Study 1 (1/2): Binary Search Partition Design
+## EP Case Study 1 (1/3): Binary Search Trace & Partition Dimensions
 
-<div class="card-deck">
+<div class="bs-interactive-stage">
 
-> Partitioning Binary Search (`search(key, sortedArray)`) requires analyzing **array cardinality (`A`)**, **hit/miss outcome (`F`)**, **hit position (`C`)**, and **input validity (`K`)**.
+<div class="bs-trace-card">
+  <div class="bs-top-bar">
+    <div style="display: flex; align-items: center;">
+      <span style="font-size: 13px; font-weight: 800; color: #0b3c5d;">Target Key (k):</span>
+      <input type="number" id="bs-input-k" value="23" class="bs-k-input" style="margin: 0 6px;" />
+      <span style="font-size: 11px; font-weight: 700; color: #64748b; margin-right: 4px;">Presets:</span>
+      <span class="bs-quick-pill" data-k="3">3 (Head)</span>
+      <span class="bs-quick-pill" data-k="15">15 (Mid)</span>
+      <span class="bs-quick-pill" data-k="23">23</span>
+      <span class="bs-quick-pill" data-k="31">31 (Tail)</span>
+      <span class="bs-quick-pill" data-k="8">8 (Miss)</span>
+    </div>
+    <div>
+      <button class="bs-action-btn" id="bs-btn-step">▶ Next Step</button>
+      <button class="bs-action-btn" id="bs-btn-reset" style="background: #64748b; margin-left: 6px;">↺ Reset</button>
+    </div>
+  </div>
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
+  <div class="bs-status-banner">
+    <span id="bs-status-text">Step 0: Initial search range [0..7], mid = floor((0+7)/2) = 3 (arr[3] = 15)</span>
+    <span id="bs-status-tag" style="background: #e0f2fe; color: #0369a1; padding: 1px 8px; border-radius: 4px; font-size: 10.5px; font-weight: 800;">Ready</span>
+  </div>
+
+  <div class="bs-array-container" id="bs-array-container">
+    <div class="bs-array-cell" data-idx="0"><span class="bs-cell-idx">0</span><span class="bs-cell-val">3</span><span class="bs-pointer-pill bs-ptr-low">low</span></div>
+    <div class="bs-array-cell" data-idx="1"><span class="bs-cell-idx">1</span><span class="bs-cell-val">7</span></div>
+    <div class="bs-array-cell" data-idx="2"><span class="bs-cell-idx">2</span><span class="bs-cell-val">11</span></div>
+    <div class="bs-array-cell is-mid" data-idx="3"><span class="bs-cell-idx">3</span><span class="bs-cell-val">15</span><span class="bs-pointer-pill bs-ptr-mid">mid</span></div>
+    <div class="bs-array-cell" data-idx="4"><span class="bs-cell-idx">4</span><span class="bs-cell-val">19</span></div>
+    <div class="bs-array-cell" data-idx="5"><span class="bs-cell-idx">5</span><span class="bs-cell-val">23</span></div>
+    <div class="bs-array-cell" data-idx="6"><span class="bs-cell-idx">6</span><span class="bs-cell-val">27</span></div>
+    <div class="bs-array-cell" data-idx="7"><span class="bs-cell-idx">7</span><span class="bs-cell-val">31</span><span class="bs-pointer-pill bs-ptr-high">high</span></div>
+  </div>
+</div>
+
+<div class="two-columns" style="margin-top: 4px;">
+<div class="card" style="padding: 12px 16px;">
 
 ### 4 Structural Partition Dimensions
-- **1. Array Length Dimension (`A`):**
-  - `a`<sup>`0`</sup>: Empty array (`[]`, length 0)
-  - `a`<sup>`1`</sup>: Single-element array (`[7]`)
-  - `a`<sup>`*`</sup>: Multi-element sorted array (`[7, 9, 11]`)
-- **2. Search Outcome (`F`) & 3. Hit Position (`C`):**
-  - `f`<sup>`t`</sup> (Found): hits head (`c`<sup>`1`</sup>), middle (`c`<sup>`m`</sup>), or tail (`c`<sup>`l`</sup>)
-  - `f`<sup>`f`</sup> (Not Found): target key absent from array
-- **4. Input Validity (`K`):** `k` (valid int) vs. `k!` (invalid type)
+- **1. Array Length (A):**
+  - <code>a⁰</code>: Empty array (<code>[]</code>, length 0)
+  - <code>a¹</code>: Single-element array (<code>[7]</code>)
+  - <code>a*</code>: Multi-element sorted array (<code>[3, 7, 11, ...]</code>)
+- **2. Search Outcome (F) & 3. Hit Position (C):**
+  - <code>fᵗ</code> (Found): hits head (<code>c¹</code>), middle (<code>cᵐ</code>), or tail (<code>cˡ</code>)
+  - <code>fᶠ</code> (Not Found): key absent from array
+- **4. Input Validity (K):** <code>k</code> (valid int) vs. <code>k!</code> (invalid type/null)
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card" style="padding: 12px 16px;">
 
-### Weak Coverage 8 Representative Cases (`R1..R8`)
-- **R<sub>1</sub>:** Single element, found (`k=7, A=[7] → 0`)
-- **R<sub>2</sub>:** Single element, not found (`k=7, A=[8] → -1`)
-- **R<sub>3</sub>:** Multi-element, found at head (`k=7, A=[7,9,11] → 0`)
-- **R<sub>4</sub>:** Multi-element, found at middle (`k=9, A=[7,9,11] → 1`)
-- **R<sub>5</sub>:** Multi-element, found at tail (`k=11, A=[7,9,11] → 2`)
-- **R<sub>6</sub>:** Multi-element, not found (`k=8, A=[7,9,11] → -1`)
-- **R<sub>7</sub>:** Empty array, not found (`k=7, A=[] → -1`)
-- **R<sub>8</sub>:** Invalid input type, throws exception (`k="abc"`)
+### Weak Coverage Strategy (8 Test Cases)
+- **Why Weak Coverage?**
+  - Exercises every partition of all 4 dimensions in at least one test case without Cartesian combinatorial explosion.
+- **Representative Case Distribution:**
+  - <strong>R₁..R₂:</strong> Single-element array (<code>a¹</code>) hit (<code>c¹</code>) & miss (<code>fᶠ</code>).
+  - <strong>R₃..R₅:</strong> Multi-element array (<code>a*</code>) head (<code>c¹</code>), middle (<code>cᵐ</code>), & tail (<code>cˡ</code>) hits.
+  - <strong>R₆..R₇:</strong> Multi-element gap miss (<code>fᶠ</code>) & empty array defense (<code>a⁰</code>).
+  - <strong>R₈:</strong> Invalid input defensive type/null rejection (<code>k!</code>).
 
 </div>
 </div>
+
 </div>
+
+<!--
+Step through the interactive binary search trace at the top by clicking Next Step or typing any target k. On the bottom left, the 4 structural partition dimensions (Array cardinality A, Outcome F, Position C, and Validity K) capture the complete input-output domain. On the bottom right, the Weak Coverage strategy plans 8 representative cases R1..R8 touching every single partition.
+
+💡 難字與專業術語解說：
+- interval halving: 區間折半（二分搜尋每次比對中間元素後，依大小關係排除一半候選區間的核心機制，使時間複雜度降至 O(log N)）
+- array cardinality: 陣列基數／元素個數（依空集合 0、單元素 1 與多元素 * 劃分的等價類）
+-->
 
 ---
-## EP Case Study 1 (2/2): Binary Search Weak Coverage Specification Table
+## EP Case Study 1 (2/3): Binary Search Weak Coverage Specification Table
+
+<div class="table-compact">
 
 | Case | Partition Combination (`A, F, C, K`) | Test Inputs (`k, A`) | Expected Output | Weak Coverage Verification Target |
 | :---: | :--- | :--- | :--- | :--- |
@@ -1376,75 +1557,144 @@ Under Weak EP (the blue dots), we only need max(3, 4) = 4 test cases to touch ev
 | **R<sub>7</sub>** | `a`<sup>`0`</sup> `× f`<sup>`f`</sup> `× k` | `k=7, A=[]` | `index = -1` | Empty array boundary defense (`a`<sup>`0`</sup>`, f`<sup>`f`</sup>) |
 | **R<sub>8</sub>** | `a`<sup>`*`</sup> `× k!` | `k="abc", A=[7, 9]` | Throws `TypeException` | Invalid input defensive rejection (`k!`) |
 
+</div>
+
+<div class="card" style="margin-top: 6px; padding: 8px 14px; border-left: 4px solid #d97706; background: #fffbeb;">
+
+<h3 style="font-size: 14.5px; margin: 0 0 4px 0; color: #b45309;">💡 Critical Reflection &amp; Design Questions</h3>
+
+1. **Question 1 (Strong Coverage &amp; Invalid Isolation):** Why do we choose **Weak Coverage** over Strong Coverage? Does invalid input <code>k!</code> need to cross the **full Cartesian product** (<code>A × F × C</code>)?
+2. **Question 2 (Array Parity &amp; Halving Asymmetry):** Binary search repeatedly halves via integer division <code>mid = (low + high) / 2</code>. Does our 3-way array classification of <code>A</code> (<code>a⁰, a¹, a*</code>) have an off-by-one blind spot?
+
+</div>
+
 <!--
-With just 8 test cases (`R1` to `R8`), we systematically cover every structural and boundary scenario of Binary Search!
+Review the 8 representative test cases R1 to R8 in the specification table above. With just 8 cases, Weak EP systematically tests every valid and invalid partition. Now reflect on the two design questions highlighted in the amber box below before looking at the answers on the next slide.
 
 💡 難字與專業術語解說：
-- array cardinality: 陣列基數／元素個數（在容器型輸入分割中，常細分為空集合 0、單元素 1 與多元素 * 三個等價類）
+- specification table: 規格測試對照表（將等價類組合、具體輸入值、預期輸出與驗證目標整合成結構化矩陣的測試工件）
+- reflection questions: 反思提問（在提出標準答案前引導思考邊界分割與組合爆炸本質的教學提問法）
 -->
+
 ---
-## EP Case Study 2: Domain-Driven Partitioning on `NextDate()` & The December Anomaly
+## EP Case Study 1 (3/3): Answers to Design Questions
 
 <div class="card-deck">
 
-> **Golden Rule of EP:** Only inputs that trigger **identical downstream control-flow and state transitions** belong in the same equivalence class!
+> Effective test partitioning must reflect **runtime control-flow semantics**: respect integer truncation and isolate defensive exceptions.
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card" data-marpit-fragment style="padding: 14px 18px;">
 
-### Version 1 Partitioning & The December Blind Spot
-- **Naive Version 1 Partitions:**
-  - `M`<sub>`1`</sub>: 30-day months `{4, 6, 9, 11}`
-  - `M`<sub>`2`</sub>: 31-day months `{1, 3, 5, 7, 8, 10, 12}` *(Buggy grouping!)*
-  - `M`<sub>`3`</sub>: February `{2}`
-  - `D`<sub>`1`</sub>: `1..27`, `D`<sub>`2`</sub>: `28`, `D`<sub>`3`</sub>: `29`, `D`<sub>`4`</sub>: `30`, `D`<sub>`5`</sub>: `31`
-  - `Y`<sub>`1`</sub>: Leap Year, `Y`<sub>`2`</sub>: Common Year
-- **Why Version 1 Fails Under Weak EP:**
-  - If the tester picks `2024/07/31 → 2024/08/01` to cover `M`<sub>`2`</sub> `× D`<sub>`5`</sub>, Weak EP considers `M`<sub>`2`</sub> "100% covered"—**completely missing `12/31` year-end rollover (`Year + 1, Month = 1`)**!
+### Answer 1: Infeasible Partitions & Single Invalid Rule
+- **Why NOT Strong Coverage?**
+  - **Infeasible Combinations:** Cartesian multiplication produces mathematically impossible tests!
+    - E.g., <code>a⁰ × fᵗ × cᵐ</code> = "Key found at middle of empty array" (impossible!).
+- **Does <code>k!</code> Cross the Full Product (<code>A × F × C</code>)?**
+  - **NO! That violates the Single Invalid Rule!**
+  - When <code>k!</code> is supplied (e.g. <code>null</code> or type error), the method's **entry guard clause throws an exception immediately**:
+    <code>if (key == null) throw new IllegalArgumentException();</code>
+  - **Fault Masking Hazard:** Downstream search logic is **never reached**. Crossing <code>k!</code> with all positions causes huge redundancy and masks actual algorithm defects!
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card" data-marpit-fragment style="padding: 14px 18px;">
 
-### Version 2 Refactored Partitions (Isolating `M`<sub>`4`</sub> December)
-- **Why December Breaks Equivalence with July:**
-  - On `07/31`: `Day = 1, Month = Month + 1`, **`Year` unchanged**.
-  - On `12/31`: `Day = 1`, **`Month = 1` (reset)**, **`Year = Year + 1` (rollover)**!
-- **Refactored Month Partitions (`M`<sub>`1`</sub>`..M`<sub>`4`</sub>):**
-  - **`M`<sub>`1`</sub>**: 30-day months `{4, 6, 9, 11}` *(month rollover only)*
-  - **`M`<sub>`2`</sub>**: Non-Dec 31-day months `{1, 3, 5, 7, 8, 10}` *(month rollover only)*
-  - **`M`<sub>`3`</sub>**: February `{2}` *(leap/common year logic)*
-  - **`M`<sub>`4`</sub>**: **December `{12}` — Dedicated Year-End Rollover Class!**
+### Answer 2: Even vs. Odd Parity Partitioning (aᵒᵈᵈ vs. aᵉᵛᵉⁿ)
+- **Integer Division Truncation (<code>Math.floor</code>):**
+  - Integer formula: <code>mid = (low + high) / 2</code>.
+  - **Odd Length (e.g. N = 7):** Slices **symmetrically** (<code>mid = 3</code> leaves <strong>3 left</strong> and <strong>3 right</strong> elements).
+  - **Even Length (e.g. N = 8):** Slices **asymmetrically** (<code>mid = 3</code> leaves <strong>3 left</strong> but <strong>4 right</strong> elements!).
+- **Hidden Boundary Off-by-One Bugs:**
+  - Flawed midpoint logic (e.g., <code>high = mid</code> vs. <code>high = mid - 1</code>) may pass on odd arrays, yet trigger infinite loops or out-of-bounds on even arrays!
+- **Refined Array Partition <code>A</code>:**
+  - <code>a⁰</code> (empty), <code>a¹</code> (single), <code>aᵒᵈᵈ</code> (odd-length), <code>aᵉᵛᵉⁿ</code> (even-length).
 
 </div>
 </div>
 </div>
 
 <!--
-Because `12/31` executes a completely different state transition (`Month = 1; Year++`), December is not equivalent to other 31-day months. Refactoring December into its own partition `M4` guarantees that even a minimal Weak EP suite tests New Year's Eve rollover!
+These answers reveal two foundational software engineering principles. First, Strong Coverage on interdependent variables creates impossible combinations, while invalid inputs like k! must be tested in strict isolation under the Single Invalid Rule because early exception guards mask all subsequent code. Second, integer division discards remainders, making even-length arrays slice asymmetrically (3 vs 4 elements). Dividing multi-element arrays into odd and even parity classes guarantees catching off-by-one boundary bugs.
 
 💡 難字與專業術語解說：
-- December Anomaly: 十二月跨年異常（在 NextDate 問題中，12 月底觸發年份加一與月份歸一，與一般 31 天月僅月份加一的控制流截然不同，必須獨立為 M4 等價類）
+- integer division truncation: 整數除法向零捨入／截斷（二分搜尋計算中間索引時因捨去小數點導致偶數長度陣列被非對稱切割的現象）
+- parity partitioning: 奇偶同位分割（將容器長度進一步依奇數與偶數切割為獨立等價類，以攔截非對稱折半邊界錯誤）
+- entry guard clause: 前置防禦衛句（函式開頭針對非法參數立即拋出例外並返回的程式碼，會遮蔽後續程式邏輯）
 -->
+
 ---
-## `NextDate()` Refactored Hybrid Test Suite (5 Weak Base + 3 Coupled Supplements)
+## EP Case Study 2 (1/2): `NextDate(Y, M, D)` Partition Discovery
 
-| Case | Strategy Role | Partitions | Input (`Y/M/D`) | Expected | Target Business Rule & Branch Verified |
-| :---: | :---: | :--- | :--- | :--- | :--- |
-| **TC<sub>1</sub>** | **Weak Base (1/5)** | **M<sub>2</sub>×D<sub>1</sub>×Y<sub>2</sub>** | `2023/05/15` | `2023/05/16` | Mid-month increment (`Day + 1`; covers M<sub>2</sub>, D<sub>1</sub>, Y<sub>2</sub>) |
-| **TC<sub>2</sub>** | **Weak Base (2/5)** | **M<sub>3</sub>×D<sub>2</sub>×Y<sub>1</sub>** | `2024/02/28` | `2024/02/29` | Leap Feb 28 increment (`Day + 1`; covers M<sub>3</sub>, D<sub>2</sub>, Y<sub>1</sub>) |
-| **TC<sub>3</sub>** | **Weak Base (3/5)** | M<sub>3</sub>×**D<sub>3</sub>**×Y<sub>1</sub> | `2024/02/29` | `2024/03/01` | Leap Feb 29 month rollover (`Month + 1`; covers D<sub>3</sub>) |
-| **TC<sub>4</sub>** | **Weak Base (4/5)** | **M<sub>1</sub>×D<sub>4</sub>**×Y<sub>2</sub> | `2023/04/30` | `2023/05/01` | 30-day month rollover (`Month + 1`; covers M<sub>1</sub>, D<sub>4</sub>) |
-| **TC<sub>5</sub>** | **Weak Base (5/5)** | **M<sub>4</sub>×D<sub>5</sub>**×Y<sub>2</sub> | `2023/12/31` | `2024/01/01` | **★ Dec 31 Year Rollover (`Year + 1, Month = 1`; M<sub>4</sub>, D<sub>5</sub>)** |
-| **TC<sub>6</sub>** | **Coupled (+1)** | M<sub>2</sub>×D<sub>5</sub>×Y<sub>2</sub> | `2023/07/31` | `2023/08/01` | Non-Dec 31-day rollover (`Month + 1`, Year unchanged) |
-| **TC<sub>7</sub>** | **Coupled (+2)** | M<sub>4</sub>×D<sub>1</sub>×Y<sub>2</sub> | `2023/12/15` | `2023/12/16` | Normal Dec day increment (`Day + 1`, no premature rollover) |
-| **TC<sub>8</sub>** | **Coupled (+3)** | M<sub>3</sub>×D<sub>2</sub>×Y<sub>2</sub> | `2023/02/28` | `2023/03/01` | Common-year Feb 28 rollover to Mar 1 (`M3×D2×Y2`) |
+> **Golden Rule of EP:** Same partition $\iff$ identical state transitions & downstream logic!
+
+<div class="two-columns">
+<div class="left">
+
+- **Year (`Y`):** Input range `1812..2030`
+  * **`Y₁` (Leap Year):** Divisible by 4 (not 100 unless 400; Feb has 29 days)
+  * **`Y₂` (Common Year):** All other valid years (Feb has 28 days)
+- **Month (`M`):** Input range `1..12`
+  * **`M₁` (30-day months):** `{4, 6, 9, 11}` (Apr, Jun, Sep, Nov)
+  * **`M₂` (31-day months):** `{1, 3, 5, 7, 8, 10}` (Jan, Mar, May, Jul, Aug, Oct)
+  * **`M₃` (February):** `{2}` (Subject to leap-year rules)
+  * **`M₄` (December):** `{12}` (★ *Dec 31 rolls Year; not equivalent to July!*)
+
+</div>
+<div class="right">
+
+- **Day (`D`):** Input range `1..31`
+  * **`D₁` (1..27):** Mid-month increment (`Day + 1`, Month/Year unchanged)
+  * **`D₂` (28):** Feb common bound (rolls to Mar 1 in common year)
+  * **`D₃` (29):** Feb leap bound (rolls to Mar 1 in leap year)
+  * **`D₄` (30):** 30-day month rollover (rolls to Day 1, Month + 1)
+  * **`D₅` (31):** 31-day month rollover (rolls to Day 1, Month + 1; Year if Dec)
+
+</div>
+</div>
 
 <!--
-This 8-case Hybrid Coverage table achieves 100% partition coverage in `TC1..TC5` and adds 3 targeted Strong EP cases (`TC6..TC8`) for coupled month-end transitions.
+Guide students through the interactive partition discovery of NextDate(Y, M, D). Listing Year, Month, and Day first allows you to prompt the class on how each domain should be divided. As you advance through the sub-bullets, reveal each partition class: leap vs. common year, month groupings, and the critical discovery of December (M4) triggered by the 12/31 year-rollover edge case!
 
 💡 難字與專業術語解說：
-- hybrid coverage strategy: 混合式涵蓋策略（以弱涵蓋為基底確保所有等價類皆被測試，再針對高度耦合的關鍵業務條件局部疊加強涵蓋的實務做法）
+- state transition divergence: 狀態轉移分歧（相同等價類之輸入在特定邊界觸發截然不同的變數更新，如年份進位與月份歸一，證明原劃分未達等價）
+- domain-driven partitioning: 領域驅動等價分割（依據領域業務規則與日曆曆法物理約束進行的精密黑箱等價類劃分）
 -->
+
+---
+## EP Case Study 2 (2/2): `NextDate()` Weak Coverage Matrix Table
+
+<div class="table-compact">
+
+| Case | Input | M₁ | M₂ | M₃ | M₄ | D₁ | D₂ | D₃ | D₄ | D₅ | Y₁ | Y₂ | Expected Output | Strategy Role & Branch Verified |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- | :--- |
+| **TC₁** | `2023/05/15` | | ● | | | ● | | | | | | ● | `2023/05/16` | **Weak Base (1/5):** Mid-month increment (`Day + 1`; covers M₂, D₁, Y₂) |
+| **TC₂** | `2024/02/28` | | | ● | | | ● | | | | ● | | `2024/02/29` | **Weak Base (2/5):** Leap Feb 28 increment (`Day + 1`; covers M₃, D₂, Y₁) |
+| **TC₃** | `2024/02/29` | | | ● | | | | ● | | | ● | | `2024/03/01` | **Weak Base (3/5):** Leap Feb 29 month rollover (`Month + 1`; covers D₃) |
+| **TC₄** | `2023/04/30` | ● | | | | | | | ● | | | ● | `2023/05/01` | **Weak Base (4/5):** 30-day month rollover (`Month + 1`; covers M₁, D₄) |
+| **TC₅** | `2023/12/31` | | | | ● | | | | | ● | | ● | `2024/01/01` | **Weak Base (5/5):** ★ **Dec 31 Year Rollover (`Year+1, Month=1`; M₄, D₅)** |
+| **TC₆** | `2023/07/31` | | ● | | | | | | | ● | | ● | `2023/08/01` | **Coupled (+1):** Non-Dec 31-day rollover (`Month + 1`, Year unchanged) |
+| **TC₇** | `2023/12/15` | | | | ● | ● | | | | | | ● | `2023/12/16` | **Coupled (+2):** Normal Dec day increment (`Day + 1`, no premature rollover) |
+| **TC₈** | `2023/02/28` | | | ● | | | ● | | | | | ● | `2023/03/01` | **Coupled (+3):** Common-year Feb 28 rollover to Mar 1 (`M₃×D₂×Y₂`) |
+
+</div>
+
+<div class="card" style="margin-top: 6px; padding: 6px 14px; border-left: 4px solid #059669; background: #f0fdf4;">
+
+<h3 style="font-size: 14px; margin: 0 0 2px 0; color: #166534;">🎯 Visualizing 100% Weak Coverage at a Glance</h3>
+- **Vertical Column Inspection:** Look down every column across <code>M₁..M₄</code>, <code>D₁..D₅</code>, and <code>Y₁..Y₂</code>. Notice that <strong>every single column contains at least one dot (●) in TC₁..TC₅</strong>!
+- **Minimal Cost:** Weak Coverage is 100% satisfied with just <strong>5 base test cases</strong> (<code>max(|M|, |D|, |Y|) = 5</code>).
+- **Targeted Robustness:** <code>TC₆..TC₈</code> selectively add coupled boundary combinations without full Cartesian explosion.
+
+</div>
+
+<!--
+This master matrix visualizes Equivalence Partition coverage with utmost clarity. Look down each column: every single equivalence class has at least one dot within the first 5 base test cases (TC1..TC5), confirming 100% Weak Coverage. Cases TC6 to TC8 are precision supplements testing coupled boundary interactions (such as non-December 31st rollover and non-leap February 28th rollover).
+
+💡 難字與專業術語解說：
+- coverage matrix table: 涵蓋矩陣表（以橫列表示測試案例、以直行標示所有等價類別，透過打點視覺化確認各直行皆被測試涵蓋的標準驗證工具）
+- precision supplements: 精準耦合補充案例（在弱涵蓋基線之上，針對高度耦合之邊界業務規則進行定向補充的高效測試策略）
+-->
+
 ---
 ## Single Invalid Rule (Fault Masking) & Integrating EP + BVA 3-Step SOP
 
@@ -1675,25 +1925,158 @@ Empirical research by NIST revealed that 67% to 93% of all multi-variable bugs a
 </div>
 
 ---
-## Step-by-Step IPO + Greedy Trace: Swimming Pool Pricing (16 Pairs in 6 Rows)
+## Step-by-Step Greedy IPO Trace: Swimming Pool Pricing
 
-| Row | Base `(T, D)` | Greedy Score: `m1` vs. `m2` New Uncovered Pairs Eliminated | Winning Test Case | Cumulative Pairs |
-| :---: | :---: | :--- | :---: | :---: |
-| **1** | **(t<sub>1</sub>, d<sub>1</sub>)** | `m1`: **+3** vs. `m2`: **+3** *(All pairs unseen; tie-breaker picks `m1`)* | **(t<sub>1</sub>, d<sub>1</sub>, m<sub>1</sub>)** | `3 / 16` |
-| **2** | **(t<sub>1</sub>, d<sub>2</sub>)** | `m1`: +2 *(t<sub>1</sub>m<sub>1</sub> already covered)* vs. **`m2`: +3** *(t<sub>1</sub>d<sub>2</sub>, t<sub>1</sub>m<sub>2</sub>, d<sub>2</sub>m<sub>2</sub>)* | **(t<sub>1</sub>, d<sub>2</sub>, m<sub>2</sub>)** | `6 / 16` |
-| **3** | **(t<sub>2</sub>, d<sub>1</sub>)** | `m1`: +2 *(d<sub>1</sub>m<sub>1</sub> already covered)* vs. **`m2`: +3** *(t<sub>2</sub>d<sub>1</sub>, t<sub>2</sub>m<sub>2</sub>, d<sub>1</sub>m<sub>2</sub>)* | **(t<sub>2</sub>, d<sub>1</sub>, m<sub>2</sub>)** | `9 / 16` |
-| **4** | **(t<sub>2</sub>, d<sub>2</sub>)** | **`m1`: +3** *(t<sub>2</sub>d<sub>2</sub>, t<sub>2</sub>m<sub>1</sub>, d<sub>2</sub>m<sub>1</sub>)* vs. `m2`: +1 *(only t<sub>2</sub>d<sub>2</sub> is new)* | **(t<sub>2</sub>, d<sub>2</sub>, m<sub>1</sub>)** | `12 / 16` |
-| **5** | **(t<sub>3</sub>, d<sub>1</sub>)** | `m1`: **+2** vs. `m2`: **+2** *(D×M already 100% full; tie picks `m1`)* | **(t<sub>3</sub>, d<sub>1</sub>, m<sub>1</sub>)** | `14 / 16` |
-| **6** | **(t<sub>3</sub>, d<sub>2</sub>)** | `m1`: +1 *(t<sub>3</sub>m<sub>1</sub> seen)* vs. **`m2`: +2** *(completes t<sub>3</sub>d<sub>2</sub>, t<sub>3</sub>m<sub>2</sub>)* | **(t<sub>3</sub>, d<sub>2</sub>, m<sub>2</sub>)** | **`16 / 16` (100%)** |
+<div class="greedy-interactive-stage" id="greedy-explorer">
+<div class="greedy-nav-toolbar">
+  <div class="greedy-step-group">
+    <button class="greedy-step-btn is-active" data-step="1">1. (t₁, d₁)</button>
+    <button class="greedy-step-btn" data-step="2">2. (t₁, d₂)</button>
+    <button class="greedy-step-btn" data-step="3">3. (t₂, d₁)</button>
+    <button class="greedy-step-btn" data-step="4">4. (t₂, d₂)</button>
+    <button class="greedy-step-btn" data-step="5">5. (t₃, d₁)</button>
+    <button class="greedy-step-btn" data-step="6">6. (t₃, d₂)</button>
+  </div>
+  <div style="display: flex; gap: 8px;">
+    <button class="greedy-action-btn" id="greedy-next-btn">Next Step &gt;</button>
+    <button class="greedy-action-btn" id="greedy-reset-btn">Reset</button>
+  </div>
+</div>
+<div class="greedy-content-grid">
+  <div class="greedy-card">
+    <div class="greedy-decision-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+        <span style="font-size: 11.5px; font-weight: 800; color: #0284c7;" id="greedy-step-badge">STEP 1 OF 6</span>
+        <span style="font-size: 11.5px; font-weight: 700; color: #475569;" id="greedy-base-info">Base: (Time = t₁, Day = d₁)</span>
+      </div>
+      <div class="greedy-eval-row">
+        <div class="greedy-eval-item is-winner" id="greedy-eval-m1">
+          <div class="greedy-eval-name">Candidate m₁ (Member)</div>
+          <div class="greedy-eval-score" id="greedy-score-m1">+3 New Pairs</div>
+          <div class="greedy-eval-pairs" id="greedy-pairs-m1">t₁d₁, t₁m₁, d₁m₁</div>
+        </div>
+        <div class="greedy-eval-item" id="greedy-eval-m2">
+          <div class="greedy-eval-name">Candidate m₂ (Non-Member)</div>
+          <div class="greedy-eval-score" id="greedy-score-m2">+3 New Pairs</div>
+          <div class="greedy-eval-pairs" id="greedy-pairs-m2">t₁d₁, t₁m₂, d₁m₂</div>
+        </div>
+      </div>
+      <div class="greedy-winner-banner" id="greedy-winner-banner">
+        <span>[Greedy Winner]: <strong>m₁</strong> (Tie-breaker)</span>
+        <span style="font-family: 'Fira Code', monospace; font-size: 12.5px;">Test Case: (t₁, d₁, m₁)</span>
+      </div>
+    </div>
+    <div class="greedy-table-wrapper">
+      <table class="greedy-table" id="greedy-trace-table">
+        <thead>
+          <tr>
+            <th>Row</th>
+            <th>Base (T, D)</th>
+            <th>Greedy Scores</th>
+            <th>Winning Test Case</th>
+            <th>Cum. Pairs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-row="1" class="is-current">
+            <td><strong>1</strong></td>
+            <td>(t₁, d₁)</td>
+            <td>m₁: +3 vs. m₂: +3</td>
+            <td><strong>(t₁, d₁, m₁)</strong></td>
+            <td><strong>3 / 16</strong></td>
+          </tr>
+          <tr data-row="2" class="is-pending">
+            <td><strong>2</strong></td>
+            <td>(t₁, d₂)</td>
+            <td>m₁: +2 vs. m₂: +3</td>
+            <td>(t₁, d₂, m₂)</td>
+            <td>6 / 16</td>
+          </tr>
+          <tr data-row="3" class="is-pending">
+            <td><strong>3</strong></td>
+            <td>(t₂, d₁)</td>
+            <td>m₁: +2 vs. m₂: +3</td>
+            <td>(t₂, d₁, m₂)</td>
+            <td>9 / 16</td>
+          </tr>
+          <tr data-row="4" class="is-pending">
+            <td><strong>4</strong></td>
+            <td>(t₂, d₂)</td>
+            <td>m₁: +3 vs. m₂: +1</td>
+            <td>(t₂, d₂, m₁)</td>
+            <td>12 / 16</td>
+          </tr>
+          <tr data-row="5" class="is-pending">
+            <td><strong>5</strong></td>
+            <td>(t₃, d₁)</td>
+            <td>m₁: +2 vs. m₂: +2</td>
+            <td>(t₃, d₁, m₁)</td>
+            <td>14 / 16</td>
+          </tr>
+          <tr data-row="6" class="is-pending">
+            <td><strong>6</strong></td>
+            <td>(t₃, d₂)</td>
+            <td>m₁: +1 vs. m₂: +2</td>
+            <td>(t₃, d₂, m₂)</td>
+            <td>16 / 16</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="greedy-card greedy-progress-card">
+    <div>
+      <div class="greedy-prog-header">
+        <span>Pairwise Coverage</span>
+        <span id="greedy-prog-stat">3 / 16 Pairs (19%)</span>
+      </div>
+      <div class="greedy-prog-bar-bg" style="margin-top: 5px;">
+        <div class="greedy-prog-bar-fill" id="greedy-prog-bar" style="width: 18.75%;"></div>
+      </div>
+    </div>
+    <div class="greedy-pairs-section">
+      <div class="greedy-pairs-title">Time × Day (6 Pairs — Base Domain)</div>
+      <div class="greedy-pairs-tags">
+        <span class="greedy-pair-tag is-new" data-pair="t1d1">t₁d₁</span>
+        <span class="greedy-pair-tag" data-pair="t1d2">t₁d₂</span>
+        <span class="greedy-pair-tag" data-pair="t2d1">t₂d₁</span>
+        <span class="greedy-pair-tag" data-pair="t2d2">t₂d₂</span>
+        <span class="greedy-pair-tag" data-pair="t3d1">t₃d₁</span>
+        <span class="greedy-pair-tag" data-pair="t3d2">t₃d₂</span>
+      </div>
+    </div>
+    <div class="greedy-pairs-section">
+      <div class="greedy-pairs-title">Time × Member (6 Pairs)</div>
+      <div class="greedy-pairs-tags">
+        <span class="greedy-pair-tag is-new" data-pair="t1m1">t₁m₁</span>
+        <span class="greedy-pair-tag" data-pair="t1m2">t₁m₂</span>
+        <span class="greedy-pair-tag" data-pair="t2m1">t₂m₁</span>
+        <span class="greedy-pair-tag" data-pair="t2m2">t₂m₂</span>
+        <span class="greedy-pair-tag" data-pair="t3m1">t₃m₁</span>
+        <span class="greedy-pair-tag" data-pair="t3m2">t₃m₂</span>
+      </div>
+    </div>
+    <div class="greedy-pairs-section">
+      <div class="greedy-pairs-title">Day × Member (4 Pairs)</div>
+      <div class="greedy-pairs-tags">
+        <span class="greedy-pair-tag is-new" data-pair="d1m1">d₁m₁</span>
+        <span class="greedy-pair-tag" data-pair="d1m2">d₁m₂</span>
+        <span class="greedy-pair-tag" data-pair="d2m1">d₂m₁</span>
+        <span class="greedy-pair-tag" data-pair="d2m2">d₂m₂</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
 <!--
-Trace the IPO + Greedy algorithm row by row: by greedily choosing `m1` or `m2` to maximize newly covered pairs in each row, all 16 pairs across `T×D`, `T×M`, and `D×M` are 100% covered in 6 rows!
+Trace the IPO + Greedy algorithm step-by-step: clicking each row illustrates how candidate values `m1` and `m2` are scored based on the number of brand-new parameter pairs they cover, progressively completing 100% of all 16 pairs in just 6 rows!
 
 💡 難字與專業術語解說：
 - In-Parameter-Order (IPO): 參數依序擴展演算法（先展開前兩個參數的笛卡爾積，再逐一水平加入新參數欄並以貪婪計分挑選能消除最多未覆蓋成對組合之值的多項式時間啟發式演算法）
 -->
 ---
-## Pairwise Tools (`AllPairs4J`, `PICT`, `ACTS`) & Loan Calculator Case
+## Pairwise Testing Tools & Loan Calculator Case Study
 
 <div class="split73">
 <div class="left">
@@ -1709,7 +2092,7 @@ Trace the IPO + Greedy algorithm row by row: by greedily choosing `m1` or `m2` t
 </div>
 <div class="right">
 
-<img src="../../img/ch07/loan_calculator.png" alt="Loan Calculator Pairwise Testing Case" />
+<img src="../../img/ch07/loan_calculator_en.svg" alt="Loan Calculator Pairwise Testing Case" />
 
 </div>
 </div>
@@ -1721,7 +2104,7 @@ In the Mortgage Loan Calculator case study, 4 parameters with `3 × 3 × 2 × 2`
 - constraint pruning (SAT solver): 約束剪枝（利用布林可滿足性求解器在生成成對測試集時自動排除業務上互斥的非法參數組合，例如 `OS=iOS` 與 `Browser=IE`）
 -->
 ---
-## Pairwise in JUnit 5: `AllPairs4J` + `@TestFactory` & Solving the Oracle Dilemma
+## Pairwise in JUnit 5: AllPairs4J & Test Oracles
 
 <div class="card-deck">
 
@@ -1782,34 +2165,133 @@ Strategy A runs 100% automatically to check domain invariants and no-crash smoke
 - `@TestFactory` (`DynamicTest`): JUnit 5 動態測試工廠（允許在執行期由程式碼迴圈或外部產生器動態建立並回傳多個獨立測試節點的機制）
 -->
 ---
-## State Transition Testing: Airline Reservation State Machine
+## Interactive State Machine: Path & Coverage Explorer
 
-<div class="split73">
-<div class="left">
-
-* **How Do You Test Stateful Objects & `void` Mutator Methods?**
-  - Many OOP methods (e.g., `order.payMoney()`, `stack.push(x)`) return `void`—their correctness depends on **internal state transitions** (`Current State --[Event / Guard]--> Next State`).
-* **Airline Reservation State Machine Analysis:**
-  - **Happy Path (`4` transitions):**
-    - `Init --[giveInfo]--> Made --[payMoney]--> Paid --[print]--> Ticketed --[giveTicket]--> Used (Final)`
-  - **Customer Cancellation Branches (`3` transitions):**
-    - From `Made`, `Paid`, or `Ticketed`, triggering `--[cancel]-->` transitions to **`CancelledByCustomer (Final)`**.
-  - **Payment Timeout Branch (`1` transition):**
-    - From `Made`, `--[payTimeExpire]-->` transitions to **`CancelledNonPay (Final)`**.
-
+<div class="sm-interactive-grid" id="sm-explorer">
+<div class="sm-control-card">
+<div class="sm-path-list">
+<label class="sm-path-item is-checked"><input type="checkbox" class="sm-cb" value="1" checked /><span class="sm-path-label"><span class="sm-path-title">Path 1: Normal Boarding (Happy Path)</span><span class="sm-path-seq">giveInfo ➔ payMoney ➔ print ➔ giveTicket</span></span></label>
+<label class="sm-path-item"><input type="checkbox" class="sm-cb" value="2" /><span class="sm-path-label"><span class="sm-path-title">Path 2: Cancel after Ticketed</span><span class="sm-path-seq">giveInfo ➔ payMoney ➔ print ➔ cancel</span></span></label>
+<label class="sm-path-item"><input type="checkbox" class="sm-cb" value="3" /><span class="sm-path-label"><span class="sm-path-title">Path 3: Refund after Payment</span><span class="sm-path-seq">giveInfo ➔ payMoney ➔ cancel</span></span></label>
+<label class="sm-path-item"><input type="checkbox" class="sm-cb" value="4" /><span class="sm-path-label"><span class="sm-path-title">Path 4: Cancel Reservation</span><span class="sm-path-seq">giveInfo ➔ cancel</span></span></label>
+<label class="sm-path-item"><input type="checkbox" class="sm-cb" value="5" /><span class="sm-path-label"><span class="sm-path-title">Path 5: Non-Payment Timeout</span><span class="sm-path-seq">giveInfo ➔ payTimeExpire</span></span></label>
 </div>
-<div class="right">
-
-<img src="../../img/ch07/airline_booking_state_machine.svg" alt="Airline Booking State Machine Diagram" />
-
+<div class="sm-btn-row">
+<button type="button" class="sm-btn sm-btn-highlight" data-sm-action="node100">[Demo] 100% Node / 75% Edge (1+2+5)</button>
+<button type="button" class="sm-btn" data-sm-action="all">Select All (100%)</button>
+<button type="button" class="sm-btn" data-sm-action="clear">Clear</button>
+</div>
+<div class="sm-coverage-box">
+<div class="sm-cov-row">
+<div class="sm-cov-header"><span>[Node] State Coverage</span><span id="sm-node-stat">4 / 6 (67%)</span></div>
+<div class="sm-cov-bar-bg"><div id="sm-node-bar" class="sm-cov-bar-fill" style="width: 66.7%; background: #0284c7;"></div></div>
+</div>
+<div class="sm-cov-row">
+<div class="sm-cov-header"><span>[Edge] Transition Coverage</span><span id="sm-edge-stat">4 / 8 (50%)</span></div>
+<div class="sm-cov-bar-bg"><div id="sm-edge-bar" class="sm-cov-bar-fill" style="width: 50%; background: #f59e0b;"></div></div>
+</div>
+<div id="sm-cov-note" style="font-size: 11px; font-weight: 700; color: #0369a1; margin-top: 2px;">Hint: Select test paths to observe live state and transition activations!</div>
+</div>
+</div>
+<div class="sm-canvas-card">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 445">
+<defs>
+<marker id="sm-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" /></marker>
+<marker id="sm-arr-cancel" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#dc2626" /></marker>
+</defs>
+<rect width="940" height="445" fill="#ffffff" rx="10" />
+<g transform="translate(20, 18)">
+<text x="0" y="10" font-family="sans-serif" font-size="14px" font-weight="700" fill="#0b3c5d">Airline Reservation State Machine (6 States / 8 Transitions)</text>
+<line x1="560" y1="6" x2="595" y2="6" stroke="#0284c7" stroke-width="3" marker-end="url(#sm-arr)" />
+<text x="605" y="10" font-family="sans-serif" font-size="12px" font-weight="700" fill="#0369a1">Happy Path (4)</text>
+<line x1="710" y1="6" x2="745" y2="6" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 3" marker-end="url(#sm-arr-cancel)" />
+<text x="755" y="10" font-family="sans-serif" font-size="12px" font-weight="700" fill="#dc2626">Cancel / Timeout (4)</text>
+</g>
+<circle cx="48" cy="110" r="14" fill="#0f172a" />
+<text x="48" y="140" font-family="sans-serif" font-size="12px" font-weight="700" fill="#475569" text-anchor="middle">Init</text>
+<g class="sm-edge is-active" data-edge="giveInfo" data-paths="1,2,3,4,5">
+<path d="M 62 110 L 140 110" class="sm-line" stroke="#0284c7" stroke-width="2.5" fill="none" marker-end="url(#sm-arr)" />
+<rect x="66" y="86" width="68" height="19" fill="#e0f2fe" rx="4" />
+<text x="100" y="99" font-family="monospace" font-size="11.5px" font-weight="700" fill="#0369a1" text-anchor="middle">giveInfo</text>
+</g>
+<g class="sm-state is-active" data-state="Made" data-paths="1,2,3,4,5">
+<rect x="144" y="80" width="130" height="60" rx="12" class="sm-main-rect" fill="#eff6ff" stroke="#0284c7" stroke-width="2.4" />
+<text x="209" y="104" font-family="sans-serif" font-size="15px" font-weight="700" fill="#0b3c5d" text-anchor="middle">Made</text>
+<text x="209" y="124" font-family="sans-serif" font-size="11.5px" fill="#475569" text-anchor="middle">Reservation Active</text>
+</g>
+<g class="sm-edge is-active" data-edge="payMoney" data-paths="1,2,3">
+<path d="M 274 110 L 386 110" class="sm-line" stroke="#0284c7" stroke-width="2.5" fill="none" marker-end="url(#sm-arr)" />
+<rect x="294" y="86" width="74" height="19" fill="#e0f2fe" rx="4" />
+<text x="331" y="99" font-family="monospace" font-size="11.5px" font-weight="700" fill="#0369a1" text-anchor="middle">payMoney</text>
+</g>
+<g class="sm-state is-active" data-state="Paid" data-paths="1,2,3">
+<rect x="390" y="80" width="130" height="60" rx="12" class="sm-main-rect" fill="#eff6ff" stroke="#0284c7" stroke-width="2.4" />
+<text x="455" y="104" font-family="sans-serif" font-size="15px" font-weight="700" fill="#0b3c5d" text-anchor="middle">Paid</text>
+<text x="455" y="124" font-family="sans-serif" font-size="11.5px" fill="#475569" text-anchor="middle">Payment Confirmed</text>
+</g>
+<g class="sm-edge is-active" data-edge="print" data-paths="1,2">
+<path d="M 520 110 L 636 110" class="sm-line" stroke="#0284c7" stroke-width="2.5" fill="none" marker-end="url(#sm-arr)" />
+<rect x="546" y="86" width="64" height="19" fill="#e0f2fe" rx="4" />
+<text x="578" y="99" font-family="monospace" font-size="11.5px" font-weight="700" fill="#0369a1" text-anchor="middle">print</text>
+</g>
+<g class="sm-state is-active" data-state="Ticketed" data-paths="1,2">
+<rect x="640" y="80" width="130" height="60" rx="12" class="sm-main-rect" fill="#eff6ff" stroke="#0284c7" stroke-width="2.4" />
+<text x="705" y="104" font-family="sans-serif" font-size="15px" font-weight="700" fill="#0b3c5d" text-anchor="middle">Ticketed</text>
+<text x="705" y="124" font-family="sans-serif" font-size="11.5px" fill="#475569" text-anchor="middle">E-Ticket Issued</text>
+</g>
+<g class="sm-edge is-active" data-edge="giveTicket" data-paths="1">
+<path d="M 770 110 L 836 110 L 836 214" class="sm-line" stroke="#0284c7" stroke-width="2.5" fill="none" marker-end="url(#sm-arr)" />
+<rect x="786" y="150" width="84" height="19" fill="#e0f2fe" rx="4" />
+<text x="828" y="163" font-family="monospace" font-size="11.5px" font-weight="700" fill="#0369a1" text-anchor="middle">giveTicket</text>
+</g>
+<g class="sm-state is-active" data-state="Used" data-paths="1">
+<rect x="760" y="220" width="152" height="64" rx="14" class="sm-main-rect" fill="#dcfce7" stroke="#15803d" stroke-width="2.6" />
+<rect x="765" y="225" width="142" height="54" rx="10" fill="none" stroke="#15803d" stroke-width="1.3" />
+<text x="836" y="246" font-family="sans-serif" font-size="15px" font-weight="700" fill="#166534" text-anchor="middle">Used (Final)</text>
+<text x="836" y="266" font-family="sans-serif" font-size="11.5px" fill="#15803d" text-anchor="middle">Flight Boarded</text>
+</g>
+<g class="sm-edge" data-edge="cancel-made" data-paths="4">
+<path d="M 235 140 L 235 275 L 356 275" class="sm-line" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="6 3" fill="none" marker-end="url(#sm-arr-cancel)" />
+<rect x="244" y="252" width="96" height="19" fill="#fee2e2" rx="4" />
+<text x="292" y="265" font-family="monospace" font-size="11px" font-weight="700" fill="#b91c1c" text-anchor="middle">cancel (Path 4)</text>
+</g>
+<g class="sm-edge" data-edge="cancel-paid" data-paths="3">
+<path d="M 455 140 L 455 256" class="sm-line" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="6 3" fill="none" marker-end="url(#sm-arr-cancel)" />
+<rect x="462" y="188" width="96" height="19" fill="#fee2e2" rx="4" />
+<text x="510" y="201" font-family="monospace" font-size="11px" font-weight="700" fill="#b91c1c" text-anchor="middle">cancel (Path 3)</text>
+</g>
+<g class="sm-edge" data-edge="cancel-ticketed" data-paths="2">
+<path d="M 685 140 L 685 275 L 564 275" class="sm-line" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="6 3" fill="none" marker-end="url(#sm-arr-cancel)" />
+<rect x="576" y="252" width="98" height="19" fill="#fee2e2" rx="4" />
+<text x="625" y="265" font-family="monospace" font-size="11px" font-weight="700" fill="#b91c1c" text-anchor="middle">cancel (Path 2)</text>
+</g>
+<g class="sm-state" data-state="CancelledByCustomer" data-paths="2,3,4">
+<rect x="360" y="260" width="200" height="64" rx="14" class="sm-main-rect" fill="#fef2f2" stroke="#dc2626" stroke-width="2.6" />
+<rect x="365" y="265" width="190" height="54" rx="10" fill="none" stroke="#dc2626" stroke-width="1.3" />
+<text x="460" y="286" font-family="sans-serif" font-size="14px" font-weight="700" fill="#b91c1c" text-anchor="middle">CancelledByCustomer</text>
+<text x="460" y="306" font-family="sans-serif" font-size="11.5px" fill="#dc2626" text-anchor="middle">Customer Cancelled (Final)</text>
+</g>
+<g class="sm-edge" data-edge="expire" data-paths="5">
+<path d="M 180 140 L 180 356" class="sm-line" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="6 3" fill="none" marker-end="url(#sm-arr-cancel)" />
+<rect x="72" y="205" width="102" height="19" fill="#fee2e2" rx="4" />
+<text x="123" y="218" font-family="monospace" font-size="11px" font-weight="700" fill="#b91c1c" text-anchor="middle">payTimeExpire</text>
+</g>
+<g class="sm-state" data-state="CancelledNonPay" data-paths="5">
+<rect x="108" y="360" width="198" height="64" rx="14" class="sm-main-rect" fill="#fef2f2" stroke="#dc2626" stroke-width="2.6" />
+<rect x="113" y="365" width="188" height="54" rx="10" fill="none" stroke="#dc2626" stroke-width="1.3" />
+<text x="207" y="386" font-family="sans-serif" font-size="14px" font-weight="700" fill="#b91c1c" text-anchor="middle">CancelledNonPay</text>
+<text x="207" y="406" font-family="sans-serif" font-size="11.5px" fill="#dc2626" text-anchor="middle">Payment Expired (Final)</text>
+</g>
+</svg>
 </div>
 </div>
 
 <!--
-Look at the Airline Reservation state machine diagram on the right: it has 6 distinct states (nodes) and 8 directed transitions (edges).
+Interact with the 5 test paths to observe the difference between State (Node) Coverage and Transition (Edge) Coverage. Notice that selecting Paths 1+2+5 reaches 100% State Coverage (all 6 state boxes turn green/red), yet misses 2 cancellation edges! Only Transition Coverage guarantees complete test adequacy.
 
 💡 難字與專業術語解說：
-- finite state machine (FSM): 有限狀態機（由有限個狀態節點、觸發事件、防衛條件與狀態轉移弧線組成的行為模型）
+- state transition testing: 狀態轉換測試（依據系統在不同事件與條件下於有限狀態集合間流轉的行為模型設計測試路徑的技術）
+- node coverage vs. edge coverage: 節點覆蓋對比邊覆蓋（節點覆蓋僅要求造訪各狀態，邊覆蓋則要求測試所有可能誘發狀態轉變之事件弧線）
 -->
 ---
 ## State Coverage Criteria (`Node` vs. `0-Switch` / `1-Switch`) & JUnit 5 `@Nested`
@@ -3806,12 +4288,667 @@ This final summary ties together every discipline in Chapter 7: from static insp
     syncRowUI();
   }
 
+// Mock DOM check for syntax
+function initBvaInteractiveExplorer() {
+  const stage = document.querySelector('.bva-interactive-stage');
+  if (!stage) return;
+  const btns = stage.querySelectorAll('.bva-mode-btn');
+  const pts = stage.querySelectorAll('.bva-pt');
+  const badge = stage.querySelector('#bva-mode-badge');
+  const title = stage.querySelector('#bva-mode-title');
+  const formula = stage.querySelector('#bva-stat-formula');
+  const count = stage.querySelector('#bva-stat-count');
+  const details = stage.querySelector('#bva-details-list');
+
+  const configs = {
+    'norm': {
+      badge: 'Single Fault Assumption',
+      badgeClass: 'bva-badge-blue',
+      title: 'Normal Boundary Value Analysis',
+      formula: '4n + 1',
+      count: '9 Points',
+      activeCats: ['nom', 'norm-bva'],
+      details: [
+        '<strong>Minimal Baseline Sampling:</strong> Tests min, min+, max-, max along each axis with norm fixed.',
+        '<strong>Defect Target:</strong> Catches over 60% of common relational off-by-one errors with linear growth.',
+        '<strong>Point Density:</strong> Lowest point count (<strong>9 points</strong> for 2 variables, 13 for 3).'
+      ]
+    },
+    'robust': {
+      badge: 'Robustness Defense',
+      badgeClass: 'bva-badge-red',
+      title: 'Robust Boundary Value Analysis',
+      formula: '6n + 1',
+      count: '13 Points',
+      activeCats: ['nom', 'norm-bva', 'robust-bva'],
+      details: [
+        '<strong>Defensive Bounds Testing:</strong> Adds invalid <code>min-</code> and <code>max+</code> tips to each axis.',
+        '<strong>Defect Target:</strong> Verifies exception handling and input validation against unexpected out-of-range values.',
+        '<strong>Point Density:</strong> Adds 4 out-of-bounds cross points (<strong>13 points</strong> for 2 variables, 19 for 3).'
+      ]
+    },
+    'worst-norm': {
+      badge: 'Multiple Fault Interaction',
+      badgeClass: 'bva-badge-amber',
+      title: 'Worst-Case Normal BVA',
+      formula: '5ⁿ',
+      count: '25 Points',
+      activeCats: ['nom', 'norm-bva', 'worst-norm'],
+      details: [
+        '<strong>Multi-Variable Combinations:</strong> Rejects Single Fault Assumption across all valid boundary values.',
+        '<strong>Defect Target:</strong> Uncovers boundary coupling defects where two variables simultaneously reach extremes.',
+        '<strong>Point Density:</strong> Fills the entire 5×5 valid grid (<strong>25 points</strong> for 2 variables, 125 for 3).'
+      ]
+    },
+    'worst-robust': {
+      badge: 'Full Cartesian Explosion',
+      badgeClass: 'bva-badge-purple',
+      title: 'Worst-Case Robust BVA',
+      formula: '7ⁿ',
+      count: '49 Points',
+      activeCats: ['nom', 'norm-bva', 'robust-bva', 'worst-norm', 'worst-robust'],
+      details: [
+        '<strong>Exhaustive Boundary Grid:</strong> Every valid and invalid boundary point crossed across all variables.',
+        '<strong>Defect Target:</strong> High-reliability avionics and mission-critical controls where multi-faults are fatal.',
+        '<strong>Point Density:</strong> Maximally dense sampling (<strong>49 points</strong> for 2 variables, 343 for 3).'
+      ]
+    }
+  };
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const mode = this.getAttribute('data-bva');
+      const cfg = configs[mode];
+      if (!cfg) return;
+
+      btns.forEach(b => b.classList.remove('is-active'));
+      this.classList.add('is-active');
+
+      pts.forEach(pt => {
+        const cat = pt.getAttribute('data-cat');
+        if (cfg.activeCats.includes(cat)) {
+          pt.classList.add('is-active');
+          pt.classList.remove('is-dimmed');
+        } else {
+          pt.classList.remove('is-active');
+          pt.classList.add('is-dimmed');
+        }
+      });
+
+      if (badge) {
+        badge.textContent = cfg.badge;
+        badge.className = 'bva-badge-pill ' + cfg.badgeClass;
+      }
+      if (title) title.textContent = cfg.title;
+      if (formula) formula.textContent = cfg.formula;
+      if (count) count.textContent = cfg.count;
+      if (details) {
+        details.innerHTML = cfg.details.map(d => `<li>${d}</li>`).join('');
+      }
+    });
+  });
+
+  const activeBtn = stage.querySelector('.bva-mode-btn.is-active') || btns[0];
+  if (activeBtn) activeBtn.click();
+}
+
+function initEpInteractiveExplorer() {
+  const stage = document.querySelector('.ep-interactive-stage');
+  if (!stage) return;
+  const btns = stage.querySelectorAll('.ep-mode-btn');
+  const pins = stage.querySelectorAll('.ep-pin');
+  const badge = stage.querySelector('#ep-mode-badge');
+  const title = stage.querySelector('#ep-mode-title');
+  const formula = stage.querySelector('#ep-stat-formula');
+  const count = stage.querySelector('#ep-stat-count');
+  const details = stage.querySelector('#ep-details-list');
+
+  const configs = {
+    'weak-norm': {
+      badge: 'Valid Only • Single Fault',
+      badgeClass: 'ep-badge-green',
+      title: 'Weak Normal Equivalence Partitioning',
+      formula: 'max(|P₁|, |P₂|)',
+      count: '3 Cases',
+      activePins: ['p_v11_v21', 'p_v12_v22', 'p_v13_v21'],
+      details: [
+        '<strong>Minimal Valid Coverage:</strong> Each valid equivalence class appears in at least one test case.',
+        '<strong>Single Fault Hypothesis:</strong> Assumes functional defects are exposed when an individual partition is exercised.',
+        '<strong>Execution Cost:</strong> Most economical baseline (<strong>max(3, 2) = 3 cases</strong>).'
+      ]
+    },
+    'strong-norm': {
+      badge: 'Valid Only • Multi-Fault Interaction',
+      badgeClass: 'ep-badge-blue',
+      title: 'Strong Normal Equivalence Partitioning',
+      formula: '|P₁| × |P₂|',
+      count: '6 Cases',
+      activePins: ['p_v11_v21', 'p_v11_v22', 'p_v12_v21', 'p_v12_v22', 'p_v13_v21', 'p_v13_v22'],
+      details: [
+        '<strong>Full Valid Cartesian Product:</strong> Tests all combinations of valid equivalence classes.',
+        '<strong>Interaction Defect Target:</strong> Catches multi-parameter coupling issues where two valid values conflict.',
+        '<strong>Execution Cost:</strong> Multiplicative growth across valid inputs (<strong>3 × 2 = 6 cases</strong>).'
+      ]
+    },
+    'weak-robust': {
+      badge: 'Single Invalid Rule • Exception Defense',
+      badgeClass: 'ep-badge-amber',
+      title: 'Weak Robust Equivalence Partitioning',
+      formula: 'max(|P₁|, |P₂) + ∑(Invalid)',
+      count: '7 Cases',
+      activePins: ['p_v11_v21', 'p_v12_v22', 'p_v13_v21', 'p_i11_v21', 'p_i12_v21', 'p_v11_i21', 'p_v11_i22'],
+      details: [
+        '<strong>Single-Invalid Isolation Rule:</strong> Each invalid class tested strictly in isolation against valid peers.',
+        '<strong>Anti-Masking Defense:</strong> Avoids testing two invalid inputs simultaneously, preventing early abort from hiding secondary bugs.',
+        '<strong>Execution Cost:</strong> Linear addition of invalid classes (<strong>3 valid + 4 invalid = 7 cases</strong>).'
+      ]
+    },
+    'strong-robust': {
+      badge: 'Full Cartesian Grid • Extreme Robustness',
+      badgeClass: 'ep-badge-purple',
+      title: 'Strong Robust Equivalence Partitioning',
+      formula: '(|P₁|+2) × (|P₂|+2)',
+      count: '20 Cases',
+      activePins: 'all',
+      details: [
+        '<strong>Exhaustive Partition Grid:</strong> Tests every combination of valid and invalid classes.',
+        '<strong>Multiple Error Defense:</strong> Verifies how system behaves when multiple illegal inputs collide simultaneously.',
+        '<strong>Execution Cost:</strong> Full Cartesian explosion (<strong>5 × 4 = 20 cases</strong>).'
+      ]
+    }
+  };
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const mode = this.getAttribute('data-ep');
+      const cfg = configs[mode];
+      if (!cfg) return;
+
+      btns.forEach(b => b.classList.remove('is-active'));
+      this.classList.add('is-active');
+
+      pins.forEach(pin => {
+        const id = pin.getAttribute('data-pin-id');
+        if (cfg.activePins === 'all' || cfg.activePins.includes(id)) {
+          pin.classList.add('is-active-pin');
+        } else {
+          pin.classList.remove('is-active-pin');
+        }
+      });
+
+      if (badge) {
+        badge.textContent = cfg.badge;
+        badge.className = 'ep-badge-pill ' + cfg.badgeClass;
+      }
+      if (title) title.textContent = cfg.title;
+      if (formula) formula.textContent = cfg.formula;
+      if (count) count.textContent = cfg.count;
+      if (details) {
+        details.innerHTML = cfg.details.map(d => `<li>${d}</li>`).join('');
+      }
+    });
+  });
+
+  const activeBtn = stage.querySelector('.ep-mode-btn.is-active') || btns[0];
+  if (activeBtn) activeBtn.click();
+}
+
+function initBinarySearchInteractive() {
+  const stage = document.querySelector('.bs-interactive-stage');
+  if (!stage) return;
+  const inputK = stage.querySelector('#bs-input-k');
+  const btnStep = stage.querySelector('#bs-btn-step');
+  const btnReset = stage.querySelector('#bs-btn-reset');
+  const statusText = stage.querySelector('#bs-status-text');
+  const statusTag = stage.querySelector('#bs-status-tag');
+  const pills = stage.querySelectorAll('.bs-quick-pill');
+  const cells = stage.querySelectorAll('.bs-array-cell');
+
+  const arr = [3, 7, 11, 15, 19, 23, 27, 31];
+  let target = 23;
+  let steps = [];
+  let currentStepIdx = 0;
+
+  function calculateSteps(k) {
+    let low = 0, high = arr.length - 1;
+    const history = [];
+
+    while (low <= high) {
+      const mid = Math.floor((low + high) / 2);
+      const val = arr[mid];
+      if (val === k) {
+        history.push({
+          low, high, mid,
+          found: true,
+          done: true,
+          tag: 'HIT FOUND',
+          tagBg: '#dcfce7', tagColor: '#15803d',
+          text: 'Found key ' + k + ' at index ' + mid + '! (arr[' + mid + '] == ' + k + ')'
+        });
+        break;
+      } else if (val < k) {
+        history.push({
+          low, high, mid,
+          found: false,
+          done: false,
+          tag: 'ELIMINATE LEFT',
+          tagBg: '#e0f2fe', tagColor: '#0369a1',
+          text: 'arr[' + mid + ']=' + val + ' < ' + k + ' → Eliminate left [0..' + mid + '], set low = ' + (mid + 1)
+        });
+        low = mid + 1;
+      } else {
+        history.push({
+          low, high, mid,
+          found: false,
+          done: false,
+          tag: 'ELIMINATE RIGHT',
+          tagBg: '#fef3c7', tagColor: '#b45309',
+          text: 'arr[' + mid + ']=' + val + ' > ' + k + ' → Eliminate right [' + mid + '..7], set high = ' + (mid - 1)
+        });
+        high = mid - 1;
+      }
+    }
+
+    if (low > high) {
+      history.push({
+        low, high, mid: -1,
+        found: false,
+        done: true,
+        tag: 'NOT FOUND',
+        tagBg: '#ffe4e6', tagColor: '#be123c',
+        text: 'Target ' + k + ' not found in array! low (' + low + ') > high (' + high + ') → return -1'
+      });
+    }
+
+    return history;
+  }
+
+  function renderState() {
+    const s = steps[currentStepIdx];
+    if (!s) return;
+
+    cells.forEach((cell, idx) => {
+      cell.className = 'bs-array-cell';
+      cell.querySelectorAll('.bs-pointer-pill').forEach(p => p.remove());
+
+      if (idx < s.low || idx > s.high) {
+        cell.classList.add('is-eliminated');
+      }
+
+      if (s.found && idx === s.mid) {
+        cell.classList.add('is-found');
+      } else if (idx === s.mid && !s.done) {
+        cell.classList.add('is-mid');
+      }
+
+      // Add pointer pills
+      if (idx === s.low && s.low <= 7 && s.low >= 0) {
+        cell.insertAdjacentHTML('beforeend', '<span class="bs-pointer-pill bs-ptr-low">low</span>');
+      }
+      if (idx === s.mid && s.mid >= 0) {
+        const midBg = s.found ? 'style="background:#16a34a;"' : '';
+        const midText = s.found ? 'hit!' : 'mid';
+        cell.insertAdjacentHTML('beforeend', '<span class="bs-pointer-pill bs-ptr-mid" ' + midBg + '>' + midText + '</span>');
+      }
+      if (idx === s.high && s.high <= 7 && s.high >= 0) {
+        cell.insertAdjacentHTML('beforeend', '<span class="bs-pointer-pill bs-ptr-high">high</span>');
+      }
+    });
+
+    if (statusText) statusText.textContent = 'Step ' + (currentStepIdx + 1) + '/' + steps.length + ': ' + s.text;
+    if (statusTag) {
+      statusTag.textContent = s.tag;
+      statusTag.style.background = s.tagBg;
+      statusTag.style.color = s.tagColor;
+    }
+
+    if (btnStep) {
+      if (s.done) {
+        btnStep.textContent = '↺ Replay';
+      } else {
+        btnStep.textContent = '▶ Next Step (' + (currentStepIdx + 2) + '/' + steps.length + ')';
+      }
+    }
+  }
+
+  function resetSearch() {
+    if (!inputK) return;
+    const val = parseInt(inputK.value, 10);
+    target = isNaN(val) ? 23 : val;
+    steps = calculateSteps(target);
+    currentStepIdx = 0;
+    renderState();
+  }
+
+  pills.forEach(p => {
+    p.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const val = parseInt(this.getAttribute('data-k'), 10);
+      inputK.value = val;
+      resetSearch();
+    });
+  });
+
+  if (inputK) {
+    inputK.addEventListener('change', resetSearch);
+    inputK.addEventListener('input', resetSearch);
+  }
+
+  if (btnStep) {
+    btnStep.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (steps[currentStepIdx] && steps[currentStepIdx].done) {
+        currentStepIdx = 0;
+      } else {
+        currentStepIdx = Math.min(currentStepIdx + 1, steps.length - 1);
+      }
+      renderState();
+    });
+  }
+
+  if (btnReset) {
+    btnReset.addEventListener('click', function(e) {
+      e.stopPropagation();
+      resetSearch();
+    });
+  }
+
+  resetSearch();
+}
+
+function initGreedyIpoExplorer() {
+  const stage = document.getElementById('greedy-explorer');
+  if (!stage || stage.dataset.greedyBound) return;
+  stage.dataset.greedyBound = 'true';
+
+  const stepBtns = Array.from(stage.querySelectorAll('.greedy-step-btn'));
+  const nextBtn = stage.querySelector('#greedy-next-btn');
+  const resetBtn = stage.querySelector('#greedy-reset-btn');
+  const stepBadge = stage.querySelector('#greedy-step-badge');
+  const baseInfo = stage.querySelector('#greedy-base-info');
+  const scoreM1 = stage.querySelector('#greedy-score-m1');
+  const pairsM1 = stage.querySelector('#greedy-pairs-m1');
+  const scoreM2 = stage.querySelector('#greedy-score-m2');
+  const pairsM2 = stage.querySelector('#greedy-pairs-m2');
+  const evalM1 = stage.querySelector('#greedy-eval-m1');
+  const evalM2 = stage.querySelector('#greedy-eval-m2');
+  const winnerBanner = stage.querySelector('#greedy-winner-banner');
+  const tableRows = Array.from(stage.querySelectorAll('#greedy-trace-table tbody tr'));
+  const progStat = stage.querySelector('#greedy-prog-stat');
+  const progBar = stage.querySelector('#greedy-prog-bar');
+  const pairTags = Array.from(stage.querySelectorAll('.greedy-pair-tag'));
+
+  const stepData = [
+    {
+      step: 1,
+      base: '(Time = t₁, Day = d₁)',
+      m1Score: '+3 New Pairs',
+      m1Pairs: 't₁d₁, t₁m₁, d₁m₁',
+      m2Score: '+3 New Pairs',
+      m2Pairs: 't₁d₁, t₁m₂, d₁m₂',
+      winner: 'm₁',
+      reason: 'Tie-breaker',
+      testCase: '(t₁, d₁, m₁)',
+      cumPairs: '3 / 16 Pairs (19%)',
+      pct: 18.75,
+      newPairs: ['t1d1', 't1m1', 'd1m1'],
+      cumPairsList: ['t1d1', 't1m1', 'd1m1']
+    },
+    {
+      step: 2,
+      base: '(Time = t₁, Day = d₂)',
+      m1Score: '+2 (t₁m₁ seen)',
+      m1Pairs: 't₁d₂, d₂m₁',
+      m2Score: '+3 New Pairs',
+      m2Pairs: 't₁d₂, t₁m₂, d₂m₂',
+      winner: 'm₂',
+      reason: 'Higher Score (+3 vs +2)',
+      testCase: '(t₁, d₂, m₂)',
+      cumPairs: '6 / 16 Pairs (38%)',
+      pct: 37.5,
+      newPairs: ['t1d2', 't1m2', 'd2m2'],
+      cumPairsList: ['t1d1', 't1m1', 'd1m1', 't1d2', 't1m2', 'd2m2']
+    },
+    {
+      step: 3,
+      base: '(Time = t₂, Day = d₁)',
+      m1Score: '+2 (d₁m₁ seen)',
+      m1Pairs: 't₂d₁, t₂m₁',
+      m2Score: '+3 New Pairs',
+      m2Pairs: 't₂d₁, t₂m₂, d₁m₂',
+      winner: 'm₂',
+      reason: 'Higher Score (+3 vs +2)',
+      testCase: '(t₂, d₁, m₂)',
+      cumPairs: '9 / 16 Pairs (56%)',
+      pct: 56.25,
+      newPairs: ['t2d1', 't2m2', 'd1m2'],
+      cumPairsList: ['t1d1', 't1m1', 'd1m1', 't1d2', 't1m2', 'd2m2', 't2d1', 't2m2', 'd1m2']
+    },
+    {
+      step: 4,
+      base: '(Time = t₂, Day = d₂)',
+      m1Score: '+3 New Pairs',
+      m1Pairs: 't₂d₂, t₂m₁, d₂m₁',
+      m2Score: '+1 (t₂m₂, d₂m₂ seen)',
+      m2Pairs: 't₂d₂',
+      winner: 'm₁',
+      reason: 'Higher Score (+3 vs +1)',
+      testCase: '(t₂, d₂, m₁)',
+      cumPairs: '12 / 16 Pairs (75%)',
+      pct: 75.0,
+      newPairs: ['t2d2', 't2m1', 'd2m1'],
+      cumPairsList: ['t1d1', 't1m1', 'd1m1', 't1d2', 't1m2', 'd2m2', 't2d1', 't2m2', 'd1m2', 't2d2', 't2m1', 'd2m1']
+    },
+    {
+      step: 5,
+      base: '(Time = t₃, Day = d₁)',
+      m1Score: '+2 (d₁m₁ seen)',
+      m1Pairs: 't₃d₁, t₃m₁',
+      m2Score: '+2 (d₁m₂ seen)',
+      m2Pairs: 't₃d₁, t₃m₂',
+      winner: 'm₁',
+      reason: 'Tie-breaker (D×M full)',
+      testCase: '(t₃, d₁, m₁)',
+      cumPairs: '14 / 16 Pairs (88%)',
+      pct: 87.5,
+      newPairs: ['t3d1', 't3m1'],
+      cumPairsList: ['t1d1', 't1m1', 'd1m1', 't1d2', 't1m2', 'd2m2', 't2d1', 't2m2', 'd1m2', 't2d2', 't2m1', 'd2m1', 't3d1', 't3m1']
+    },
+    {
+      step: 6,
+      base: '(Time = t₃, Day = d₂)',
+      m1Score: '+1 (t₃m₁, d₂m₁ seen)',
+      m1Pairs: 't₃d₂',
+      m2Score: '+2 New Pairs',
+      m2Pairs: 't₃d₂, t₃m₂',
+      winner: 'm₂',
+      reason: 'Higher Score (+2 vs +1)',
+      testCase: '(t₃, d₂, m₂)',
+      cumPairs: '16 / 16 Pairs (100%)',
+      pct: 100.0,
+      newPairs: ['t3d2', 't3m2'],
+      cumPairsList: ['t1d1', 't1m1', 'd1m1', 't1d2', 't1m2', 'd2m2', 't2d1', 't2m2', 'd1m2', 't2d2', 't2m1', 'd2m1', 't3d1', 't3m1', 't3d2', 't3m2']
+    }
+  ];
+
+  let currentStepIdx = 0;
+
+  function renderStep(idx) {
+    currentStepIdx = idx;
+    const d = stepData[idx];
+    if (!d) return;
+
+    stepBtns.forEach((b, i) => b.classList.toggle('is-active', i === idx));
+
+    if (stepBadge) stepBadge.textContent = `STEP ${d.step} OF 6`;
+    if (baseInfo) baseInfo.textContent = `Base: ${d.base}`;
+    if (scoreM1) scoreM1.textContent = d.m1Score;
+    if (pairsM1) pairsM1.textContent = d.m1Pairs;
+    if (scoreM2) scoreM2.textContent = d.m2Score;
+    if (pairsM2) pairsM2.textContent = d.m2Pairs;
+
+    if (evalM1) evalM1.classList.toggle('is-winner', d.winner === 'm₁');
+    if (evalM2) evalM2.classList.toggle('is-winner', d.winner === 'm₂');
+
+    if (winnerBanner) {
+      winnerBanner.innerHTML = `<span>[Greedy Winner]: <strong>${d.winner}</strong> (${d.reason})</span><span style="font-family: 'Fira Code', monospace; font-size: 12.5px;">Test Case: ${d.testCase}</span>`;
+      winnerBanner.style.background = (idx === 5) ? '#16a34a' : '#0284c7';
+    }
+
+    tableRows.forEach((r, i) => {
+      r.className = (i === idx) ? 'is-current' : (i < idx) ? 'is-done' : 'is-pending';
+    });
+
+    if (progStat) progStat.textContent = `${d.cumPairs}`;
+    if (progBar) {
+      progBar.style.width = `${d.pct}%`;
+      progBar.style.background = (idx === 5) ? '#16a34a' : '#0284c7';
+    }
+
+    const cumSet = new Set(d.cumPairsList);
+    const newSet = new Set(d.newPairs);
+
+    pairTags.forEach(tag => {
+      const p = tag.getAttribute('data-pair');
+      if (newSet.has(p)) {
+        tag.className = 'greedy-pair-tag is-covered is-new';
+      } else if (cumSet.has(p)) {
+        tag.className = 'greedy-pair-tag is-covered';
+      } else {
+        tag.className = 'greedy-pair-tag';
+      }
+    });
+  }
+
+  stepBtns.forEach((b, idx) => {
+    b.addEventListener('click', (e) => {
+      e.stopPropagation();
+      renderStep(idx);
+    });
+  });
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      renderStep((currentStepIdx + 1) % 6);
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      renderStep(0);
+    });
+  }
+
+  renderStep(0);
+}
+
+function initSmExplorer() {
+  const smExplorer = document.getElementById("sm-explorer");
+  if (!smExplorer || smExplorer.dataset.smBound) return;
+  smExplorer.dataset.smBound = "true";
+
+  const cbs = Array.from(smExplorer.querySelectorAll(".sm-cb"));
+  const stateNodes = Array.from(smExplorer.querySelectorAll(".sm-state"));
+  const edgeNodes = Array.from(smExplorer.querySelectorAll(".sm-edge"));
+  const nodeStat = document.getElementById("sm-node-stat");
+  const edgeStat = document.getElementById("sm-edge-stat");
+  const nodeBar = document.getElementById("sm-node-bar");
+  const edgeBar = document.getElementById("sm-edge-bar");
+  const covNote = document.getElementById("sm-cov-note");
+
+  function updateSmView() {
+    const activePaths = new Set();
+    cbs.forEach(cb => {
+      const item = cb.closest(".sm-path-item");
+      if (cb.checked) {
+        activePaths.add(cb.value);
+        if (item) item.classList.add("is-checked");
+      } else {
+        if (item) item.classList.remove("is-checked");
+      }
+    });
+
+    let coveredStates = 0;
+    stateNodes.forEach(el => {
+      const paths = (el.getAttribute("data-paths") || "").split(",");
+      const hit = paths.some(p => activePaths.has(p.trim()));
+      el.classList.toggle("is-active", hit);
+      if (hit) coveredStates++;
+    });
+
+    let coveredEdges = 0;
+    edgeNodes.forEach(el => {
+      const paths = (el.getAttribute("data-paths") || "").split(",");
+      const hit = paths.some(p => activePaths.has(p.trim()));
+      el.classList.toggle("is-active", hit);
+      if (hit) coveredEdges++;
+    });
+
+    const nodePct = Math.round((coveredStates / 6) * 100);
+    const edgePct = Math.round((coveredEdges / 8) * 100);
+    if (nodeStat) nodeStat.textContent = `${coveredStates} / 6 (${nodePct}%)`;
+    if (edgeStat) edgeStat.textContent = `${coveredEdges} / 8 (${edgePct}%)`;
+    if (nodeBar) {
+      nodeBar.style.width = `${((coveredStates / 6) * 100).toFixed(1)}%`;
+      nodeBar.style.background = (coveredStates === 6) ? "#16a34a" : "#0284c7";
+    }
+    if (edgeBar) {
+      edgeBar.style.width = `${((coveredEdges / 8) * 100).toFixed(1)}%`;
+      edgeBar.style.background = (coveredEdges === 8) ? "#16a34a" : "#f59e0b";
+    }
+    if (covNote) {
+      if (coveredEdges === 8) {
+        covNote.style.color = "#15803d";
+        covNote.textContent = "[Success] 100% Transition Coverage achieved (all 6 states and 8 transitions covered)!";
+      } else if (coveredStates === 6 && coveredEdges < 8) {
+        covNote.style.color = "#b45309";
+        covNote.textContent = `[Paradox Demo] 100% State coverage reached, but ${8 - coveredEdges} cancellation edges are missed!`;
+      } else if (coveredEdges === 0) {
+        covNote.style.color = "#64748b";
+        covNote.textContent = "[Action] Check test paths above to observe live state and transition activations.";
+      } else {
+        covNote.style.color = "#0369a1";
+        covNote.textContent = `[Status] Covered ${coveredStates} states and ${coveredEdges} transitions. Continue selecting paths.`;
+      }
+    }
+  }
+
+  cbs.forEach(cb => cb.addEventListener("change", updateSmView));
+
+  smExplorer.querySelectorAll("[data-sm-action]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const act = btn.getAttribute("data-sm-action");
+      if (act === "all") {
+        cbs.forEach(cb => { cb.checked = true; });
+      } else if (act === "clear") {
+        cbs.forEach(cb => { cb.checked = false; });
+      } else if (act === "node100") {
+        cbs.forEach(cb => {
+          cb.checked = (cb.value === "1" || cb.value === "2" || cb.value === "5");
+        });
+      }
+      updateSmView();
+    });
+  });
+
+  updateSmView();
+}
+
   function init() {
     initOutlineLinksAndQuizBlanks();
     initHeaderDropdown();
     initNumberQuickJump();
     initSplitImageHoverZoom();
     init3W2HMindMap();
+    initBvaInteractiveExplorer();
+    initEpInteractiveExplorer();
+    initBinarySearchInteractive();
+    initGreedyIpoExplorer();
+    initSmExplorer();
   }
 
   if (document.readyState === 'loading') {
