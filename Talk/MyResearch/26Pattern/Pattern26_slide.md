@@ -547,6 +547,14 @@ Department of Information Engineering and Computer Science, Feng Chia University
 Supported by the National Science and Technology Council (NSTC), Taiwan R.O.C., under grant NSTC 114-2221-E-035-077.
 </div>
 
+<!--
+Key Takeaway: We present AT-TPL, a pattern language that structures LLM programming tutoring into three specialized roles—Guidance, Debugging, and Optimization—inside our Smart Coding Tutor system.
+Talking Points:
+- Welcome everyone. I am Nien-Lin Hsueh from Feng Chia University, presenting joint work with Lien-Chi Lai and Ying-Chang Lu, published in JISE 2026.
+- Our core contribution is translating ad-hoc LLM prompts into a reusable pedagogical pattern language operationalized with RACE prompts.
+Transition: Before diving into the architecture, let us look at the everyday classroom problem that motivated this work.
+-->
+
 ---
 
 ## Opening Hook: "Here's the Full Answer!" ... Wait, What Did You Learn?
@@ -558,6 +566,14 @@ Supported by the National Science and Technology Council (NSTC), Taiwan R.O.C., 
 <div class="callout" style="margin-top: 6px; padding: 9px 16px;">
 <strong>The Core Idea:</strong> A general-purpose LLM dumps copy-paste solutions that bypass student thinking. <strong>AT-TPL</strong> replaces one generic chat with a <strong>triad of specialized AI tutor patterns</strong> — <strong>Guidey</strong>, <strong>Debuggy</strong>, and <strong>Opti</strong> — calibrated to each stage of programming work.
 </div>
+
+<!--
+Key Takeaway: General-purpose LLMs default to dumping full copy-paste solutions, whereas AT-TPL calibrates help to the student's current stage of programming work.
+Talking Points:
+- Look at the contrast in this illustration: on the left, a generic chatbot hands over a complete answer, which solves the homework but short-circuits learning.
+- On the right, AT-TPL splits that single chat into three specialized tutors: Guidey for getting started, Debuggy for diagnosing failures, and Opti for refining working code.
+Transition: Here is how the rest of today's talk is structured.
+-->
 
 ---
 
@@ -627,6 +643,15 @@ Visual synthesis of RQ1–RQ3 conclusions and 3-pillar research roadmap.
 
 </div>
 
+<!--
+Key Takeaway: We move from motivation and related work to the AT-TPL pattern language, our 315-student classroom deployment, and the pedagogical trade-offs we uncovered.
+Talking Points:
+- First, I will frame why general-purpose LLMs fall short and how AT-TPL compares with systems like CodeHelp, CS50 Duck, CodeAid, and Iris.
+- Next, I will walk through Smart Coding Tutor, the RACE prompt framework, and all three patterns in detail.
+- Finally, I will share empirical findings from 1,315 tutor-assisted attempts and discuss key design safeguards.
+Transition: Let us begin with the pedagogical motivation behind AT-TPL.
+-->
+
 ---
 
 ## 1.1 Motivation: Why General-Purpose LLM Tutors Fall Short
@@ -638,6 +663,15 @@ Visual synthesis of RQ1–RQ3 conclusions and 3-pillar research roadmap.
 <div class="callout">
 <strong>Pedagogical Grounding:</strong> Effective tutoring follows <strong>Scaffolding</strong> [5] (enable progress without replacing the learner's work) and <strong>Productive Failure</strong> [6] (help learners organize and refine ideas after initial struggle) — requiring explicit constraints on <em>what</em> and <em>when</em> an LLM replies.
 </div>
+
+<!--
+Key Takeaway: Effective AI tutoring must balance Scaffolding and Productive Failure, which requires explicit constraints on what and when an LLM responds.
+Talking Points:
+- As the diagram shows, an unconstrained LLM treats every prompt the same way, leading to over-assistance and cognitive offloading.
+- Grounded in Scaffolding and Productive Failure, good tutoring helps students move forward without doing the work for them, and helps them refine ideas after initial struggle.
+- That is why we need structured guardrails tailored to each learning state rather than one generic prompt.
+Transition: From this motivation, we formulated three guiding research questions.
+-->
 
 ---
 
@@ -652,6 +686,15 @@ Before testing causal efficacy in controlled trials, we first investigate **what
 * <div class="rq-card"><img src="./img/rq3_outcomes.svg" alt="RQ3 Errors & Outcomes"><div><div class="rq-hook"><span class="rq-tag" style="background:#1b365d;">RQ3</span> Who uses the AI tutors, and do struggling students reach working solutions?</div><div class="rq-q"><strong>How does tutor usage relate to student error frequencies and final Accepted (AC) outcomes</strong> compared with non-assisted attempts?</div></div></div>
 
 </div>
+
+<!--
+Key Takeaway: Before running controlled causal trials, we investigate how to formalize LLM tutoring as a pattern language and how students actually use it in a real course.
+Talking Points:
+- RQ1 asks how to turn ad-hoc prompts into a reusable pattern language specifying intent, forces, RACE guardrails, and state transitions.
+- RQ2 examines which of the three patterns students actually reach for across task states in a 315-student Python course.
+- RQ3 looks at how tutor usage relates to student error frequencies and final Accepted outcomes compared with independent attempts.
+Transition: Let us see how existing AI programming tutors approach these challenges.
+-->
 
 ---
 
@@ -670,6 +713,15 @@ Existing guardrail tutors embed help-to-situation mappings implicitly inside too
 <div class="callout">
 <strong>Key Insight:</strong> Prompt constraints are a <em>design intent rather than an absolute guarantee</em> (e.g., CS50 Duck occasionally leaked fixes [22]), making explicit documentation of forces, consequences, and safeguards essential.
 </div>
+
+<!--
+Key Takeaway: Prior guardrail tutors embed help-to-situation mappings inside tool-specific UIs, while AT-TPL formalizes them across the full start, debug, and post-AC lifecycle.
+Talking Points:
+- Systems like CodeHelp, CS50 tools, CodeAid, and Iris all restrict direct code generation, but they differ widely in granularity—from Iris's strict subtle-hints-only rule to CodeAid's five templates.
+- Unlike most prior tools that stop once code passes, AT-TPL explicitly adds a third post-AC Optimization pattern.
+- Crucially, as CS50 Duck showed, prompt guardrails represent design intent rather than an absolute guarantee, so documenting forces and risks is essential.
+Transition: Now let us examine the Smart Coding Tutor platform where AT-TPL was deployed.
+-->
 
 ---
 
@@ -700,6 +752,15 @@ Existing guardrail tutors embed help-to-situation mappings implicitly inside too
 </div>
 </div>
 
+<!--
+Key Takeaway: Smart Coding Tutor integrates an automated online judge with AI assistants so every tutor call receives rich execution context.
+Talking Points:
+- In Figure 1, students read the assignment, write Python in the editor, and submit to the automated judger with hidden test cases.
+- Because the AI tutors sit inside the same loop, each pattern automatically receives the problem statement, current code, verdict, and error message.
+- Submissions return one of six standard verdicts—from Accepted (AC) down to PA, RE, WA, TLE, and CE—which define the learner's task state.
+Transition: Those task states directly drive how our three patterns connect as a language.
+-->
+
 ---
 
 ## 3.2 AT-TPL as a Pattern Language: Transitions & Shared Forces
@@ -709,6 +770,14 @@ AT-TPL is **not** three isolated prompts — it is an interconnected pattern lan
 <div class="fig-box" style="padding: 8px 10px; margin-top: 4px;">
 <img src="./img/diag2_attpl_transitions.svg" alt="AT-TPL Non-Linear State Transitions and Shared Forces" style="max-height: 395px;">
 </div>
+
+<!--
+Key Takeaway: AT-TPL is an interconnected pattern language where learners move non-linearly across Guidance, Debugging, and Optimization while balancing three shared forces.
+Talking Points:
+- Notice in this diagram that programming is rarely linear: a student may start with Guidey, hit a bug and jump to Debuggy, realize a conceptual gap and return to Guidey, and finally move to Opti after AC.
+- Across all three patterns, we balance the same three forces: timely specificity versus agency, cognitive load versus completeness, and guardrail enforcement versus usability.
+Transition: Next, let us see how we operationalize these three patterns into concrete prompts.
+-->
 
 ---
 
@@ -725,6 +794,15 @@ We operationalize AT-TPL using **RACE** [23] because `Expectation` gives pedagog
 <div class="callout teal">
 <strong>Domain Transferability:</strong> The pattern form and scaffolding stance transfer directly to math or language tutoring; only programming-specific <code>Context</code> & <code>Expectation</code> elements (I/O specs, tracebacks, AC verdict, Python idioms) are domain-bound.
 </div>
+
+<!--
+Key Takeaway: We use the RACE framework because its Expectation component gives pedagogical guardrails an explicit home as strict output rules.
+Talking Points:
+- Table 2 maps Role, Action, Context, and Expectation across all three patterns.
+- Guidey acts as an encouraging educator with no executable code allowed; Debuggy isolates one root cause and one correction hint in a two-part format; Opti reviews working code in a three-part format without rewriting the solution.
+- Notably, the pattern structure and scaffolding stance transfer to other domains like math or writing—only the programming-specific context and expectations change.
+Transition: Let us look closely at each of the three patterns, starting with Guidance.
+-->
 
 ---
 
@@ -761,6 +839,15 @@ We operationalize AT-TPL using **RACE** [23] because `Expectation` gives pedagog
 </div>
 </div>
 
+<!--
+Key Takeaway: The Guidance Pattern (Guidey) helps students form an initial plan via small-step scaffolding while strictly withholding executable Python code.
+Talking Points:
+- Guidey sits at the top-right of the editor for students who understand the problem statement but do not know how to begin.
+- It permits conceptual hints and pseudo-code so learners can take one concrete step and come back only if still stuck.
+- On the right, we document real trade-offs: students may feel lower immediate satisfaction, engage in hint-chaining without coding, or face proficiency gaps where pseudo-code feels either too slow or too abstract.
+Transition: Once students start implementing and hit an error, they transition to our second pattern, Debugging.
+-->
+
 ---
 
 ## 3.5 Pattern 2: Debugging Pattern (`Debuggy`)
@@ -790,6 +877,15 @@ We operationalize AT-TPL using **RACE** [23] because `Expectation` gives pedagog
 </div>
 </div>
 
+<!--
+Key Takeaway: The Debugging Pattern (Debuggy) diagnoses a concrete failure from the traceback in two structured parts while leaving the actual edit to the student.
+Talking Points:
+- Figure 2a shows how Guidey sits at the top-right while Ask Debuggy appears directly beneath the console error output.
+- Debuggy grounds its response in the exact traceback and failing line, returning a concise Root Cause Analysis followed by a targeted Correction Hint without a full replacement program.
+- Its main boundary case is Wrong Answer (WA), where there is no traceback, increasing the risk of incomplete diagnosis; beginners may also rely on Debuggy instead of learning to read tracebacks.
+Transition: Once the code finally passes, our third pattern invites students to reflect on code quality.
+-->
+
 ---
 
 ## 3.6 Pattern 3: Optimization Pattern (`Opti`)
@@ -818,6 +914,15 @@ We operationalize AT-TPL using **RACE** [23] because `Expectation` gives pedagog
 
 </div>
 </div>
+
+<!--
+Key Takeaway: The Optimization Pattern (Opti) promotes readability and Pythonic idioms after AC without rewriting the student's code, though voluntary adoption proved challenging.
+Talking Points:
+- Figure 2b shows Ask Opti inside the submission history tab, designed to deliver a three-part review: a quality summary, one named best practice such as list comprehension, and a non-executable hint.
+- We transparently report a real deployment finding: our deployed prompt drifted slightly between performance in Role/Action and readability in Context, which we corrected in Table 2.
+- Even more revealing, because the UI did not lock Opti until AC, many students clicked it while still failing—which we quantify next.
+Transition: Let us now examine our empirical deployment in a full-semester Python course.
+-->
 
 ---
 
@@ -851,6 +956,15 @@ Deployed in **Fall 2024** university Python course (Taiwan) across engineering, 
 
 </div>
 
+<!--
+Key Takeaway: Across 315 students and 86 exercises, AI tutors were used in 26.4% of attempts, and two-thirds of AI users combined multiple patterns.
+Talking Points:
+- In Fall 2024, students from engineering, business, and social sciences completed 4,982 attempts, of which 1,315 involved AI tutor assistance.
+- The bar chart shows non-exclusive usage across those 1,315 attempts: Guidey led at 58.8% (773 attempts), Debuggy followed at 47.7% (627), and Opti accounted for 30.6% (402).
+- Critically, 67.4% of AI-using students combined more than one pattern, confirming that learners value distinct roles rather than a single generic assistant.
+Transition: Looking deeper at when students invoked each tutor revealed an unexpected mismatch.
+-->
+
 ---
 
 ## 4.2 Usage Contexts: Expected vs. Observed Student Behavior
@@ -881,6 +995,15 @@ Observing *when* students invoked each pattern revealed both expected alignment 
 <div class="callout">
 <strong>Design Takeaway:</strong> Separating patterns conceptually is not enough — supporting post-acceptance code quality requires <strong>state-based UI gating</strong> or <strong>explicit course incentives</strong>.
 </div>
+
+<!--
+Key Takeaway: Debuggy aligned cleanly with testing errors, whereas Opti suffered a striking state mismatch because it was not gated by task state.
+Talking Points:
+- On the left, 37.5% of all attempts hit testing errors, and 30.2% of those invoked Debuggy—right where the pattern was intended to help.
+- On the right, students rarely clicked Opti after achieving AC; instead, they invoked it after 23.1% of submission errors and 24.4% of runtime errors.
+- Because the button was always clickable, struggling students treated Opti as another emergency help button, and once AC appeared, most stopped without reflecting.
+Transition: Next, let us look at how tutor usage relates to student error counts and final acceptance rates.
+-->
 
 ---
 
@@ -923,6 +1046,15 @@ Observing *when* students invoked each pattern revealed both expected alignment 
 </div>
 </div>
 
+<!--
+Key Takeaway: Students sought AI tutors primarily when struggling—showing 3.7 to 5.7 times more errors—yet Debuggy users matched non-users' acceptance rates.
+Talking Points:
+- Overall, 73.9% of tutor-assisted attempts reached Accepted, even though Table 3 shows tutor users averaged 4.5 testing errors versus 0.8 for non-users, and 3.3 submission errors versus 0.6.
+- Zooming in on the 1,869 attempts with testing errors, Debuggy users reached 76.1% AC with only 2.5% stuck in CE or RE, essentially matching non-users at 76.7% despite having 7.2 times more prior test errors.
+- This pattern is consistent with a scaffolding effect, though self-selection means we interpret it descriptively rather than as causal proof.
+Transition: Let us put these findings in course-level context and address methodological honesty.
+-->
+
 ---
 
 ## 4.4 Course-Level Context & Methodological Honesty
@@ -946,6 +1078,15 @@ Observing *when* students invoked each pattern revealed both expected alignment 
 
 </div>
 </div>
+
+<!--
+Key Takeaway: Historical class outcomes improved alongside deployment, but we frame this strictly as observational context rather than causal proof.
+Talking Points:
+- Compared with earlier offerings of the same course, the class average rose from roughly 55 to 75 and the dropout rate fell from about 10% to 2%.
+- Because cohorts, instruction, and assessments also evolved, we report these figures purely as deployment context.
+- Our study is observational by design: understanding what help students actually seek and where guardrails drift is a necessary foundation before running fair controlled trials.
+Transition: Let us synthesize the recurring pedagogical trade-offs we observed across all three patterns.
+-->
 
 ---
 
@@ -977,6 +1118,15 @@ Across all three patterns, one fundamental tension recurs: **making help more co
 </div>
 </div>
 
+<!--
+Key Takeaway: Making AI help more concrete always opens the door to cognitive offloading, so AT-TPL helps educators pinpoint where to place targeted safeguards.
+Talking Points:
+- First, on Specificity versus Agency: AT-TPL exposes exact risk points like hint-chaining in Guidey or skipping tracebacks in Debuggy, enabling safeguards such as hint budgets and explain-before-next-hint checks.
+- Second, on State Gating versus Autonomy: unlocking Opti only after AC eliminates the 23% to 24% error-state misuse, trading off some learner freedom for pedagogical alignment.
+- Third, effects depend on proficiency: beginners benefit most from Debuggy but risk dependency, while advanced learners find Guidey slow yet gain the most from Opti.
+Transition: Let us wrap up with our visual synthesis and three-pillar roadmap for future work.
+-->
+
 ---
 
 ## 6. Conclusion & Future Work
@@ -990,6 +1140,14 @@ Across all three patterns, one fundamental tension recurs: **making help more co
 <div class="future-pill"><strong>🎛️ 2. Adaptive Scaffolding & Fading</strong><br>Adapt hint granularity to learner proficiency, fade support over time, and require self-explanations.</div>
 <div class="future-pill"><strong>🧩 3. Expand the Pattern Language</strong><br>Add Reflection, Test-Case Reasoning, and Code-Reading patterns beyond the core triad.</div>
 </div>
+
+<!--
+Key Takeaway: AT-TPL successfully structures LLM tutoring into reusable patterns validated in authentic classroom use, pointing to three clear directions for future research.
+Talking Points:
+- The visual summary ties together RQ1 through RQ3: a formal RACE-based triad pattern language, 67.4% multi-tutor adoption with an Opti state-gating lesson, and 76.1% AC recovery among heavily struggling Debuggy users.
+- Going forward, we plan quasi-experimental trials against role-only and full-solution baselines, adaptive scaffolding with fading and self-explanation prompts, and expanding the language with Reflection, Test-Case Reasoning, and Code-Reading patterns.
+Transition: Thank you for your attention—I would be happy to take your questions.
+-->
 
 ---
 
@@ -1007,6 +1165,14 @@ AI Tutor Triad Pattern: Structuring Conversational Guidance in Programming Educa
 Department of Information Engineering and Computer Science, Feng Chia University<br>
 <span style="font-size: 0.85em; opacity: 0.88;">Journal of Information Science and Engineering (JISE), 2026 · Grant: NSTC 114-2221-E-035-077</span>
 </div>
+
+<!--
+Key Takeaway: Thank the audience and invite questions on AT-TPL, Smart Coding Tutor, and classroom deployment.
+Talking Points:
+- Thank you very much for listening. Our contact details and JISE 2026 publication information are shown here.
+- I welcome any questions about the RACE prompt design, state gating, or our classroom deployment data.
+Transition: Open the floor for Q&A.
+-->
 
 <script>
 document.addEventListener('click', (e) => {

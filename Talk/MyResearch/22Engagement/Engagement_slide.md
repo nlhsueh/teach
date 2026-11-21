@@ -524,6 +524,14 @@ Department of Information Engineering and Computer Science, Feng Chia University
 Supported by the Ministry of Science and Technology (MOST), Taiwan, under grant MOST 110-2221-E-035-031-MY2 · DOI: 10.28945/5010
 </div>
 
+<!--
+Key Takeaway: This JITE:Research 2022 study uses PLS-SEM and IPMA to uncover how students' behavioral engagement translates into final grades in an online Python programming course.
+Talking Points:
+- Welcome everyone. Our Feng Chia University team analyzed behavioral logs from an award-winning blended Python course to see which online habits actually drive coding achievement.
+- Combining Partial Least Squares Structural Equation Modeling (PLS-SEM) with Importance-Performance Map Analysis (IPMA) lets us move from raw clicks to actionable teaching priorities.
+Transition: Let's open with a familiar classroom puzzle that motivated this entire study.
+-->
+
 ---
 
 ## Opening Hook: "Logged In Every Day!" ... Why Didn't Grades Move?
@@ -535,6 +543,14 @@ Supported by the Ministry of Science and Technology (MOST), Taiwan, under grant 
 <div class="callout" style="margin-top: 6px; padding: 9px 16px;">
 <strong>The Big Idea:</strong> Simply logging in every day (<code>Online_days</code>) or clicking online textbooks (<code>Doc_count</code>) does <strong>not</strong> directly raise coding grades. Only when behavioral activity channels through <strong>cognitive self-assessment</strong> (<code>Unit_test</code>, <code>Game_test</code>, <code>OJ_test</code>) and <strong>active video watching</strong> do grades soar (<strong>R<sup>2</sup> = 77.1%</strong>).
 </div>
+
+<!--
+Key Takeaway: Simply logging in daily or clicking online docs does not directly lift grades; cognitive self-assessment and active video watching are what convert effort into high scores.
+Talking Points:
+- Every online instructor has heard a student say, "I logged in every day and opened the textbook, so why didn't my grade improve?"
+- Our data show that passive activity alone fails directly; only when students engage in cognitive self-assessment (Unit Quiz, Game Test, and Online Judge) plus active video watching does our model explain 77.1% of final grade variance.
+Transition: Here is the six-part roadmap of our presentation.
+-->
 
 ---
 
@@ -604,6 +620,14 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 
 </div>
 
+<!--
+Key Takeaway: We walk through the motivation, literature, blended Python course and PLS-SEM model, empirical results, practical implications, and future roadmap.
+Talking Points:
+- First, we explain why raw LMS click counts and isolated Online Judge scores miss the bigger picture, and introduce RQ1 through RQ3.
+- Then we detail our FCU Python MOOC dataset (N = 217), present direct, mediated, and IPMA findings, and close with concrete recommendations for educators and platform designers.
+Transition: Let's begin with Section 1 on why we need an integrated causal approach.
+-->
+
 ---
 
 ## 1.1 Motivation: Beyond Click Counts and Blind OJ Scores
@@ -627,6 +651,14 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 </div>
 </div>
 
+<!--
+Key Takeaway: Integrating multi-platform behavioral logs with PLS-SEM and IPMA explains 77.1% of final project grade variance across 217 undergraduates.
+Talking Points:
+- Traditional LMS dashboards count clicks without revealing causality, while standalone Online Judge tools grade code without capturing surrounding study habits.
+- By modeling 5 constructs and 13 log indicators from 217 active students in FCU's MOE Award-winning Python course, our framework achieves substantial predictive power (R-squared = 0.771).
+Transition: Let's look at the three specific research questions we set out to answer.
+-->
+
 ---
 
 ## 1.2 Research Questions
@@ -638,6 +670,15 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 * <div class="rq-card accent"><img src="./img/rq3_icon.svg" alt="RQ3 IPMA Priority Drivers"><div><div class="rq-hook">RQ3 · Priority Drivers — Where Should Instructors &amp; Platforms Invest First?</div><div class="rq-q">Which specific constructs and log indicators <strong>most strongly affect students' performance</strong>, and which high-importance activities currently suffer from low performance? <em>(Investigated via Importance-Performance Map Analysis, IPMA)</em></div></div></div>
 
 </div>
+
+<!--
+Key Takeaway: Our three RQs test direct behavioral effects (RQ1), cognitive self-assessment mediation (RQ2), and IPMA improvement priorities (RQ3).
+Talking Points:
+- RQ1 asks which online habits—Online Time, Video Watching, Online Docs, or Self-Assessment—directly raise final coding grades.
+- RQ2 investigates whether cognitive Self-Assessment acts as the crucial mediating bridge between behavioral activity and mastery.
+- RQ3 uses IPMA to pinpoint high-importance yet low-performance activities where instructors and platforms get the biggest return on investment.
+Transition: Next, let's briefly situate our study within prior online programming engagement literature.
+-->
 
 ---
 
@@ -674,6 +715,15 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 <strong>Theoretical Anchor:</strong> We adapt <strong>G. Sun &amp; Bin's (2018)</strong> MOOC behavioral engagement evaluation framework and integrate it with <strong>PLS-SEM</strong> (Hair et al., 2019) to model causal paths without strict normality assumptions.
 </div>
 
+<!--
+Key Takeaway: Prior work shows videos, interactive materials, and IDE logs matter individually, but few studies unite MOOC logs, cognitive mediation, and IPMA in programming.
+Talking Points:
+- Video studies demonstrate that embedded quizzes sustain 71% to 86% engagement and active pausing or seeking correlates with higher CS1 scores.
+- Research on materials and self-assessment confirms that static e-books need embedded quizzes and instant feedback to help beginners self-evaluate and reduce instructor load.
+- Grounded in G. Sun and Bin's MOOC behavioral framework, we apply PLS-SEM to model these relationships jointly without strict normality assumptions.
+Transition: Let's turn to Section 3 to examine our blended Python course and student cohort.
+-->
+
 ---
 
 ## 3.1 Blended Python Course Design & Participants
@@ -704,6 +754,15 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 <strong>Why Open-Data Projects?</strong> Grounding Python tasks in familiar Taiwan government open datasets keeps beginners focused on coding logic rather than abstract domain rules.
 </div>
 
+<!--
+Key Takeaway: Our dataset comes from 217 active undergraduates in FCU's blended Python MOOC evaluated through an authentic Taiwan open-data term project.
+Talking Points:
+- The Spring 2021 Basic Python course combined 2 hours of flexible online learning with 1 hour of in-class discussion, featuring interactive videos, Trinket workshops, flashcards, StarTrec lite Game-test, and an Online Judge.
+- Out of 315 enrolled students, 217 active learners with behavioral logs were retained: 82% CS majors and 18% non-CS majors across engineering and business.
+- Instead of rote exams, the final grade assessed real problem-solving on familiar Taiwan government open datasets.
+Transition: Let's see how we extracted and processed multi-platform logs into our SmartPLS pipeline.
+-->
+
 ---
 
 ## 3.2 Multi-Platform Log Processing & PLS-SEM Pipeline
@@ -715,6 +774,14 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 <div class="callout" style="margin-top: 6px;">
 <strong>Why PLS-SEM (SmartPLS 3.3.6)?</strong> Ideal for exploratory causal models with multiple latent constructs, non-normal log distributions, and moderate sample sizes (N = 217), while enabling <strong>bootstrapped mediation</strong> (5,000 subsamples) and <strong>IPMA</strong>.
 </div>
+
+<!--
+Key Takeaway: We unified behavioral logs from OpenEdu and cognitive plug-ins, then analyzed them in SmartPLS 3.3.6 with 5,000-subsample bootstrapping and IPMA.
+Talking Points:
+- As shown in the pipeline diagram, raw event logs from video interactions, document clicks, and self-assessment tools were cleaned, aggregated per student, and screened for cross-loadings.
+- SmartPLS 3.3.6 is ideally suited here because educational clickstream logs are strongly non-normal and our sample size is moderate (N = 217).
+Transition: Now let's inspect the resulting structural research model and our seven hypotheses.
+-->
 
 ---
 
@@ -745,6 +812,14 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 </div>
 </div>
 
+<!--
+Key Takeaway: Our research model tests seven hypotheses linking three behavioral constructs to Final Grade both directly and via Self-Assessment.
+Talking Points:
+- Look at Figure 1 on the right: Online Time, Video Watching, and Online Document Reading each have a direct path to Final Grade (H1, H3, H5) and an indirect path through Self-Assessment (H2, H4, H6).
+- Finally, H7 tests the direct impact of cognitive Self-Assessment on the final open-data project grade.
+Transition: Let's examine how each of these five constructs is operationalized using 13 retained log indicators.
+-->
+
 ---
 
 ## 3.4 Behavioral & Cognitive Constructs Defined
@@ -760,6 +835,15 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 <div class="callout" style="margin-top: 8px;">
 <strong>Indicator Screening:</strong> 15 of 28 initial log variables had cross-loadings below Hair et al. (2019) thresholds and were pruned; single-item constructs (<code>Online_days</code>, <code>Doc_count</code>, <code>Score</code>) are natively supported in PLS-SEM (CL = 1.000).
 </div>
+
+<!--
+Key Takeaway: After screening 28 raw log variables down to 13 reliable indicators, we capture both fine-grained behavioral actions and three-tier cognitive self-assessment.
+Talking Points:
+- Video Watching captures 7 OpenEdu actions, from loading and total watching time to pauses and backward seeks that signal active review.
+- Online Time (Online_days), Online Doc Reading (Doc_count), and Final Grade (Score) are single-item constructs natively supported in PLS-SEM with loadings of 1.000.
+- Self-Assessment combines three distinct plug-in scores: Unit_test, Game_test, and OJ_test.
+Transition: Let's take a closer look at the Game Test and Online Judge plug-ins that drive cognitive engagement.
+-->
 
 ---
 
@@ -789,6 +873,15 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 
 </div>
 </div>
+
+<!--
+Key Takeaway: Three progressive self-assessment tiers act as a 24/7 TA, escalating from concept checks to gamified challenges and auto-graded coding.
+Talking Points:
+- Figure 3 shows our two custom interactive plug-ins: StarTrec lite Game Test on the left and our automated Python Online Judge on the right.
+- Students start with Unit_test MCQs, advance to Game_test where losing 4 HP forces a restart and peer or doc review, and culminate in OJ_test executable coding tasks.
+- This instant feedback loop turns passive video watching into active debugging and problem-solving.
+Transition: Moving to Section 4, let's verify that our measurement model meets all reliability and validity standards.
+-->
 
 ---
 
@@ -831,6 +924,14 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 </div>
 </div>
 
+<!--
+Key Takeaway: Our measurement model passes all Hair et al. thresholds for internal consistency, convergent validity, and discriminant validity.
+Talking Points:
+- In Table 1, both multi-item constructs show strong reliability: Self-Assessment achieves Cronbach's alpha of 0.824, CR of 0.896, and AVE of 0.743; Video Watching achieves alpha of 0.900, CR of 0.922, and AVE of 0.629.
+- In Table 2, every diagonal square root of AVE exceeds all off-diagonal inter-construct correlations, confirming Fornell-Larcker discriminant validity.
+Transition: With a validated measurement model, let's examine the structural path results for RQ1.
+-->
+
 ---
 
 ## 4.2 <span class="rq-tag">RQ1</span> Structural Model & Direct Effects (H1–H7)
@@ -862,6 +963,15 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 </div>
 </div>
 
+<!--
+Key Takeaway: Self-Assessment is the dominant direct driver of Final Grade (0.819), and Video Watching is the only behavioral mode with a significant direct effect (0.113).
+Talking Points:
+- Table 3 and Figure 6 show that four of seven hypotheses are supported, explaining 77.1% of Final Grade variance.
+- Notice the surprises: neither Online Time (H1, p = 0.163) nor Online Docs (H5, p = 0.561; H6, p = 0.511) directly predicts grades.
+- Meanwhile, Self-Assessment exerts a massive direct effect (0.819, t = 29.505), and Video Watching significantly lifts both Self-Assessment (0.157) and Final Grade directly (0.113).
+Transition: If Online Time does not work directly, how does it matter? Let's check the mediation results for RQ2.
+-->
+
 ---
 
 ## 4.3 <span class="rq-tag">RQ2</span> Mediation Analysis: Self-Assessment as the Bridge
@@ -888,6 +998,15 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 <div class="kpi-label"><strong>Online Docs</strong> show no direct or mediated effect (p = 0.512)—students prefer coding &amp; videos over reading static text.</div>
 </div>
 </div>
+
+<!--
+Key Takeaway: Self-Assessment fully mediates Online Time and partially mediates Video Watching, while Online Documents remain ineffective across both channels.
+Talking Points:
+- Table 5 reports bootstrapped indirect effects across 5,000 subsamples: Online Time has a strong indirect effect through Self-Assessment (0.248, p < 0.001), confirming Full Mediation.
+- Video Watching operates as a Dual Channel, boosting grades both directly (0.113) and indirectly via Self-Assessment (0.128, Partial Mediation).
+- Online Docs show neither direct nor mediated significance (p = 0.512), revealing that novices largely bypass static text in favor of coding and videos.
+Transition: Now let's turn to RQ3 and use IPMA to identify where instructors and platforms should invest first.
+-->
 
 ---
 
@@ -922,6 +1041,15 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 </div>
 </div>
 
+<!--
+Key Takeaway: Construct-level IPMA confirms Self-Assessment as the #1 driver, while Online Time and Video Watching offer strong leverage for improvement.
+Talking Points:
+- In Figure 4 and Table 6, the horizontal axis shows Importance (Total Effect on Final Grade) and the vertical axis shows current Performance on a 0 to 100 scale.
+- Self-Assessment stands far to the right with 0.82 Importance and 62.43 Performance.
+- Online Time (Importance 0.29, Performance 33.43) and Video Watching (0.24, 48.70) sit in the high-leverage zone, whereas Online Docs sit in the bottom-left corner (0.01, 9.19).
+Transition: Let's zoom in one level deeper to the indicator-level IPMA to pinpoint exact actionable targets.
+-->
+
 ---
 
 ## 4.5 <span class="rq-tag">RQ3</span> IPMA at the Indicator Level: Actionable Targets
@@ -950,6 +1078,15 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 </div>
 </div>
 
+<!--
+Key Takeaway: Indicator-level IPMA pinpoints OJ_test and Online_days as the top two improvement targets with the highest return on investment.
+Talking Points:
+- Look at Table 7 and Figure 5: Unit_test (I = 0.36, P = 85.97) and Game_test (I = 0.28, P = 77.00) are established strengths to maintain.
+- By contrast, OJ_test carries very high importance (0.31) but only moderate performance (47.88), and Online_days shows 0.29 importance with low performance (33.43).
+- Helping students overcome OJ coding hurdles and sustain regular study days delivers the largest grade payoff.
+Transition: Let's translate these empirical findings into practical implications and note our study limitations.
+-->
+
 ---
 
 ## 5.1 Practical Implications & Study Limitations
@@ -977,6 +1114,15 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 <div class="future-pill" style="border-left-color: var(--accent);"><strong>⚠️ Limitation 3 · Affective Gap</strong><br>Focused on behavioral &amp; cognitive dimensions; emotional/social engagement not yet captured.</div>
 </div>
 
+<!--
+Key Takeaway: Platforms should scaffold OJ coding and regular practice, instructors should focus on concise videos and interactive docs, and future work should broaden beyond one cohort.
+Talking Points:
+- For developers and policymakers, investing in cognitive self-assessment—especially scaffolded hints for OJ_test—directly addresses our highest-ROI gap.
+- For instructors, short focused videos support review and absent learners, while static Google Docs (Performance 9.19) should be redesigned with embedded code runners and mini-quizzes.
+- We also acknowledge three limitations: a single-university cohort of 217 students, single-item constructs after pruning 15 indicators, and the absence of affective or social logs.
+Transition: Let's summarize our RQ1 to RQ3 takeaways and outline our future research agenda.
+-->
+
 ---
 
 ## 5.2 Conclusion & Future Work
@@ -990,6 +1136,14 @@ Visual synthesis of RQ1–RQ3 findings and roadmap for MOOCs and affective analy
 <div class="future-pill"><strong>🐛 2. Fine-Grained Coding Logs</strong><br>Integrate debugging, testing, and multi-item behavioral logs to enrich construct validity.</div>
 <div class="future-pill"><strong>💬 3. Emotional &amp; Social Dimensions</strong><br>Incorporate affective reactions and peer-interaction analytics alongside behavioral logs.</div>
 </div>
+
+<!--
+Key Takeaway: Behavioral engagement only pays off when channeled into cognitive self-assessment and active video study, guiding three clear next steps for research.
+Talking Points:
+- The visual synthesis pulls everything together: Video Watching is the sole direct behavioral predictor (RQ1), Self-Assessment is the indispensable mediating bridge (RQ2), and OJ_test plus Online_days are the top IPMA targets (RQ3).
+- Going forward, we plan to replicate across wider open MOOC cohorts, capture finer-grained debugging and testing logs, and integrate emotional and peer-interaction analytics.
+Transition: Thank you for your attention—let's move to the closing slide for Q&A.
+-->
 
 ---
 
@@ -1008,6 +1162,14 @@ Exploring the Influence of Students' Modes of Behavioral Engagement in an Online
 Department of Information Engineering and Computer Science, Feng Chia University<br>
 <span style="font-size: 0.85em; opacity: 0.88;">JITE:Research, Vol. 21 (2022), pp. 403–423 · DOI: 10.28945/5010 · MOST 110-2221-E-035-031-MY2</span>
 </div>
+
+<!--
+Key Takeaway: Thank the audience and invite questions about our PLS-SEM methodology, IPMA insights, or blended Python course design.
+Talking Points:
+- Thank you very much for listening. Our contact details and the JITE:Research 2022 DOI are listed here for reference.
+- I welcome any questions on our log pipeline, mediation findings, or how we designed the Game Test and Online Judge plug-ins.
+Transition: Open the floor for Q&A.
+-->
 
 <script>
 document.addEventListener('click', (e) => {

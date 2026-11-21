@@ -549,6 +549,15 @@ Department of Information Engineering and Computer Science, Feng Chia University
 Published: 24 November 2024 · DOI: <code>https://doi.org/10.3390/electronics13234633</code> · Grant: NSTC112-2221-E-035-030-MY2
 </div>
 
+<!--
+Key Takeaway: We present an automated UX testing framework that combines Rapi web interaction recording, Nielsen's usability heuristics, and GPT-4.
+Talking Points:
+- Welcome everyone. Today I am presenting our Electronics 2024 paper from Feng Chia University on applying large language models to user experience testing.
+- Instead of relying solely on costly lab sessions or purely technical web scanners, we pair Rapi operation logs and screenshots with GPT-4 guided by Nielsen's heuristics.
+- Over the next few minutes, we will walk through the tool architecture, our controlled tennis-booking case study, and how GPT-4 compares with 16 human evaluators.
+Transition: Let's start with a surprising finding that captures why we built this tool.
+-->
+
 ---
 
 ## Opening Hook: "Looks Fine to Me!" ... Or Did We Miss 90% of UX Bugs?
@@ -560,6 +569,15 @@ Published: 24 November 2024 · DOI: <code>https://doi.org/10.3390/electronics132
 <div class="callout" style="margin-top: 6px; padding: 9px 16px;">
 <strong>The Big Idea:</strong> Human evaluators naturally adapt to suboptimal interfaces — yielding a surprisingly conservative <strong>Recall of 0.10 (F1 = 0.16)</strong>. Pairing <strong>Rapi interaction logs + screenshots</strong> with <strong>GPT-4</strong> guided by <strong>Nielsen's heuristics</strong> achieves <strong>0.84 Precision</strong> and <strong>0.66 F1</strong>.
 </div>
+
+<!--
+Key Takeaway: Human evaluators naturally adapt to flawed interfaces and miss 90% of injected UX defects, whereas Rapi plus GPT-4 catches them reliably.
+Talking Points:
+- Look at the contrast on screen: when humans test a suboptimal interface, they unconsciously work around missing buttons or awkward flows and say "looks fine to me."
+- In our study, that adaptability led to a remarkably low human recall of 0.10 and an F1 score of 0.16.
+- By feeding Rapi interaction logs and screenshots into GPT-4 with Nielsen's heuristics, our automated inspector reaches 0.84 precision and 0.66 F1.
+Transition: Here is the roadmap for how we designed, tested, and validated this approach.
+-->
 
 ---
 
@@ -629,6 +647,15 @@ Human–AI synergy, study limitations, RQ conclusions synthesis, and future rese
 
 </div>
 
+<!--
+Key Takeaway: The talk progresses from motivation and literature gaps to our Rapi plus GPT-4 tool, a controlled case study, empirical results, and hybrid human-AI implications.
+Talking Points:
+- We begin in Sections 1 and 2 by examining why both manual UX testing and existing automated tools fall short.
+- Sections 3 and 4 introduce our Rapi plus GPT-4 pipeline, six Nielsen heuristics, and the nine controlled stories in our tennis reservation system.
+- Sections 5 and 6 present our RQ1 and RQ2 statistical comparisons against human evaluators, followed by limitations and future directions.
+Transition: Let's dive into Section 1 and look closely at the motivation behind this research.
+-->
+
 ---
 
 ## 1.1 Motivation: Why Traditional & Automated UX Testing Fall Short
@@ -640,6 +667,15 @@ Human–AI synergy, study limitations, RQ conclusions synthesis, and future rese
 <div class="callout">
 <strong>Bridging the Gap:</strong> Multimodal LLMs like <strong>GPT-4</strong> combine visual perception with semantic reasoning — enabling automated tools to inspect not only <em>technical performance</em>, but also <em>cognitive experience, interaction nuances, and Nielsen's usability heuristics</em>.
 </div>
+
+<!--
+Key Takeaway: Multimodal LLMs bridge the gap between expensive manual UX testing and theory-blind technical automation tools.
+Talking Points:
+- As illustrated in the diagram, traditional manual testing captures authentic human perception, but recruiting participants and coding sessions is slow and costly.
+- Existing automated web tools are fast, yet they mostly check technical metrics like page load time or broken HTML while remaining blind to usability heuristics.
+- Multimodal LLMs like GPT-4 can inspect both visual layouts and interaction traces, bringing cognitive and heuristic evaluation into automated testing.
+Transition: With that motivation in mind, let's define our two concrete research questions.
+-->
 
 ---
 
@@ -658,6 +694,15 @@ We build a **GPT-4 + Rapi** automated UX detection tool grounded in **Nielsen's 
 <strong>Goal:</strong> Lower early-stage UX testing cost while maintaining rigorous, consistent, and theory-grounded usability feedback.
 </div>
 
+<!--
+Key Takeaway: We empirically investigate how multimodal prompt inputs affect GPT-4 accuracy (RQ1) and how GPT-4 compares against human evaluators (RQ2).
+Talking Points:
+- First, RQ1 asks whether combining Rapi JSON operation scripts with screenshots improves GPT-4's UX detection compared to screenshots alone.
+- Second, RQ2 asks how an optimized heuristic-guided GPT-4 inspector performs relative to human evaluators on the exact same scenarios.
+- Our overarching goal is to lower early-stage UX testing costs while preserving consistent, theory-grounded usability feedback.
+Transition: Before introducing our tool, let's briefly position this work against existing UX evaluation literature.
+-->
+
 ---
 
 ## 2. Literature Review: Methods, Metrics & the Automation Gap
@@ -675,6 +720,15 @@ UX is inherently **subjective, holistic, dynamic, and context-dependent** [1, 7]
 <div class="callout">
 <strong>Key Research Gap:</strong> Established UX theories — such as <strong>Jakob Nielsen's 10 Heuristics [2]</strong> and <strong>Donald Norman's Design Principles [16]</strong> — have rarely been integrated into automated UX testing frameworks.
 </div>
+
+<!--
+Key Takeaway: Prior automated UX tools focus on performance and technical checks while rarely integrating established usability theories like Nielsen's heuristics.
+Talking Points:
+- UX is subjective, holistic, and context-dependent, which is why manual methods suffer from high labor costs, self-report bias, and observer effects.
+- Previous audits of 10 popular automated web tools found inconsistent results and a lack of grounding in usability theory; ML approaches similarly focus on load time rather than cognition.
+- Our contribution closes this gap by embedding Jakob Nielsen's heuristics directly into a multimodal Rapi plus GPT-4 evaluation pipeline.
+Transition: Let's now look at the four-stage architecture of our proposed tool in Section 3.
+-->
 
 ---
 
@@ -702,6 +756,15 @@ UX is inherently **subjective, holistic, dynamic, and context-dependent** [1, 7]
 </div>
 </div>
 
+<!--
+Key Takeaway: Our pipeline uses Rapi to record web interactions, splits the recording into text logs and screenshot links, and feeds both with Nielsen's heuristics into GPT-4.
+Talking Points:
+- In Figure 1, Stage 1 uses Rapi v4.0.0 to record every click, keystroke, timestamp, status, and page snapshot into a structured JSON operation script.
+- Stage 2 bifurcates the data into a text interaction stream and accessible screenshot links for multimodal consumption.
+- Stages 3 and 4 prompt GPT-4 with six Nielsen heuristics to generate both quantitative 1-to-5 ratings and qualitative explanations for each indicator.
+Transition: Next, let's examine the exact six Nielsen heuristics we embedded into the prompt.
+-->
+
 ---
 
 ## 3.2 Six Adopted Nielsen Usability Heuristics (NS01–NS06)
@@ -717,6 +780,15 @@ We selected **six perception-critical heuristics** from Nielsen [2] and embedded
 | **NS05** | **Recognition rather than recall** | Minimize user memory load by making options visible | Provide accessible `Course Search` and `History Records` functions |
 | **NS06** | **Match between system & real world** | Familiar language and natural, logical presentation | Display course schedules in a familiar **weekly table** (not flat list) |
 
+<!--
+Key Takeaway: Six perception-critical Nielsen heuristics (NS01 to NS06) are translated into concrete, auditable UI rules inside the GPT-4 prompt.
+Talking Points:
+- Rather than giving GPT-4 vague labels, we paired each heuristic with an explicit interface rule, such as requiring a loading indicator whenever execution exceeds 3000 ms for NS01.
+- For NS02 and NS03, we check for clear Cancel and Back exits and plain-language login error diagnostics.
+- For NS04 through NS06, we specify button hierarchy and left-right placement, search and history visibility, and a natural weekly schedule table.
+Transition: Let's see how these rules are combined with dual-modal data in our prompt engineering pipeline.
+-->
+
 ---
 
 ## 3.3 Multimodal Prompt Engineering Pipeline (Dual-Data Strategy)
@@ -728,6 +800,15 @@ We selected **six perception-critical heuristics** from Nielsen [2] and embedded
 <div class="callout" style="margin-top: 6px;">
 <strong>Why Dual-Modal Data Matters:</strong> Screenshots show <em>what users see</em> (static layout, error boxes, loading spinners), whereas Rapi JSON scripts show <em>how users interact</em> (attempts, delays <code>>3000 ms</code>, navigation failures).
 </div>
+
+<!--
+Key Takeaway: Pairing screenshots with Rapi JSON scripts lets GPT-4 see both static visual layout and dynamic interaction behavior.
+Talking Points:
+- Our structured five-part prompt defines the evaluator role, the six heuristic rubrics, the user task context, the multimodal evidence, and the required scoring format.
+- To answer RQ1, we test two prompt configurations: Visual Input Only versus Visual plus Operational Data.
+- Screenshots reveal what users see, such as error boxes or button styling, while JSON logs expose what happened over time, including delays over 3000 ms and repeated attempts.
+Transition: To evaluate this pipeline fairly, we built a controlled case study, which we introduce in Section 4.
+-->
 
 ---
 
@@ -758,6 +839,15 @@ We selected **six perception-critical heuristics** from Nielsen [2] and embedded
 </div>
 </div>
 
+<!--
+Key Takeaway: A tennis course reservation web app provides controlled Expected versus Unexpected A/B pairs across four core user tasks.
+Talking Points:
+- Figure 2 maps the full user journey from homepage and course overview through login verification to reservation confirmation, history viewing, and cancellation.
+- Figure 3 illustrates Story S09: the Expected interface includes a clear Cancel Reservation button, whereas the Unexpected version omits it while keeping everything else identical.
+- This controlled A/B design isolates one usability heuristic violation per story so we can measure detection sensitivity objectively.
+Transition: Let's review all nine stories and how we separate Target from Auxiliary indicators.
+-->
+
 ---
 
 ## 4.2 Nine Evaluation Stories (S01–S09) & TIS / AIS Grouping
@@ -777,6 +867,15 @@ We selected **six perception-critical heuristics** from Nielsen [2] and embedded
 <div class="callout" style="margin-top: 6px; padding: 7px 14px;">
 <strong>TIS vs. AIS Grouping:</strong> <strong>TIS (Target Indicator Score)</strong> measures the exact heuristic modified by the story (e.g., <code>NS05</code> in <code>S06</code>), while <strong>AIS (Auxiliary Indicator Score)</strong> covers the other 5 heuristics to test indirect spillover effects.
 </div>
+
+<!--
+Key Takeaway: Nine stories (S01 to S09) systematically test NS01 through NS06, evaluated via Target Indicator Scores (TIS) and Auxiliary Indicator Scores (AIS).
+Talking Points:
+- Each story flips a single UX element, ranging from login error messages in S01 and weekly table layout in S02 to loading prompts in S07 and cancellation in S09.
+- When analyzing results, TIS focuses strictly on the heuristic deliberately altered in that story, such as NS05 for course search in S06.
+- Meanwhile, AIS tracks the remaining five unchanged heuristics to test whether a defect causes unintended spillover effects in scoring.
+Transition: Now let's move to Section 5 to see how we ran the parallel human and GPT-4 experiments.
+-->
 
 ---
 
@@ -803,6 +902,15 @@ We selected **six perception-critical heuristics** from Nielsen [2] and embedded
 
 </div>
 </div>
+
+<!--
+Key Takeaway: We ran a parallel study comparing 16 human evaluators (54 questionnaires) against 30 GPT-4 runs per scenario using non-parametric statistics.
+Talking Points:
+- Figure 4 shows our parallel workflow: 16 participants with web and software engineering training completed randomized Expected and Unexpected stories in 1-hour sessions, yielding 54 questionnaires across 27 story instances.
+- Their exact Rapi recordings were then fed to GPT-4 at temperature 0.7 for 30 repeated evaluations per scenario under both prompt configurations.
+- Because Likert ratings are ordinal, we used Mann-Whitney U tests with effect size r for TIS sensitivity and Wilcoxon Signed Rank tests for paired AIS-TIS consistency.
+Transition: Let's look first at RQ1: how much do operation scripts help GPT-4?
+-->
 
 ---
 
@@ -851,6 +959,15 @@ We selected **six perception-critical heuristics** from Nielsen [2] and embedded
 </div>
 </div>
 
+<!--
+Key Takeaway: Adding Rapi operation scripts boosts GPT-4 precision by 13 points (0.84 vs. 0.71) and recall by 5 points (0.55 vs. 0.50), especially on dynamic flows.
+Talking Points:
+- In Table 4, Visual plus Operational Data lifts precision from 0.71 to 0.84, recall from 0.50 to 0.55, and F1 from 0.64 to 0.66, while overall accuracy stays comparable.
+- Dynamic scenarios benefit most: login error diagnosis (S01-NS03) reaches a large effect size of r = 0.51, and missing back buttons, loading prompts, and history records (S05, S07, S08) become statistically significant only when operation logs are included.
+- Conversely, for static checks like button color or position, visual-only prompts perform similarly, and S09 is even cleaner without extra log noise.
+Transition: Now let's compare this optimized multimodal GPT-4 setup against our 16 human evaluators for RQ2.
+-->
+
 ---
 
 ## 5.3 RQ2 Results: GPT-4 (Optimized Prompt) vs. Human Evaluators
@@ -894,6 +1011,15 @@ We selected **six perception-critical heuristics** from Nielsen [2] and embedded
 </div>
 </div>
 
+<!--
+Key Takeaway: GPT-4 achieves 4.1x higher F1 (0.66 vs. 0.16) and 5.5x higher recall (0.55 vs. 0.10) than human evaluators, largely due to human adaptability bias.
+Talking Points:
+- Across every metric in Tables 4 and 6, GPT-4 outperforms human evaluators: accuracy 0.63 vs. 0.33, precision 0.84 vs. 0.50, recall 0.55 vs. 0.10, and F1 0.66 vs. 0.16.
+- Why was human recall only 0.10? Participants exhibited user adaptability bias, quietly adjusting to missing features and rating flawed flows conservatively as acceptable.
+- Humans significantly detected only 2 of 10 target pairs (S01-NS01 and S04-NS04) and 0 of 10 unexpected AIS-TIS inconsistencies, compared to 4 of 10 for GPT-4.
+Transition: Let's inspect the full scenario-by-scenario breakdown to see where GPT-4 and humans complement each other.
+-->
+
 ---
 
 ## 5.4 Scenario-Level Sensitivity & AIS–TIS Consistency (Tables 2, 3 & 5)
@@ -914,6 +1040,15 @@ We selected **six perception-critical heuristics** from Nielsen [2] and embedded
 <div class="callout" style="margin-top: 6px; padding: 7px 14px;">
 <strong>Complementary Strengths:</strong> GPT-4 systematically catches <strong>error handling (<code>S01</code>), feature completeness (<code>S05</code>, <code>S06</code>, <code>S08</code>), and loading feedback (<code>S07</code>)</strong>, while human intuition remains sharp on <strong>spatial layout conventions (<code>S04</code>)</strong>.
 </div>
+
+<!--
+Key Takeaway: GPT-4 and human evaluators exhibit complementary strengths across error handling, feature completeness, and spatial layout conventions.
+Talking Points:
+- Scanning the table, GPT-4 with operation scripts reliably flags error diagnosis in S01, missing navigation and search in S05 and S06, loading feedback in S07, and history records in S08.
+- However, look at S04-NS04 (back button position): GPT-4 missed the subtle spatial swap, whereas human evaluators caught it immediately with p = 0.035 and a medium effect size of r = 0.39.
+- Notice also that neither GPT-4 nor humans strongly penalized S02 (table vs. list), suggesting that personal layout preferences can dilute heuristic sensitivity.
+Transition: These complementary patterns lead directly into our discussion of hybrid AI-human workflows and study limitations.
+-->
 
 ---
 
@@ -939,6 +1074,15 @@ We selected **six perception-critical heuristics** from Nielsen [2] and embedded
 </div>
 </div>
 
+<!--
+Key Takeaway: The strongest practical strategy is hybrid UX testing — using Rapi plus GPT-4 for rapid early screening and human experts for spatial, emotional, and cultural judgment.
+Talking Points:
+- On the left, our tool moves automated UX testing beyond speed metrics by offering low-cost early screening for missing controls and broken feedback before recruiting lab users.
+- At the same time, human intuition remains irreplaceable for spatial ergonomics like S04, emotional resonance, and cultural context.
+- On the right, we acknowledge four limitations: our 16-participant sample size, environmental and network noise, inherent UX subjectivity, and potential researcher bias in crafting ground-truth scenarios.
+Transition: Let's wrap up with a visual summary of our conclusions and future research roadmap.
+-->
+
 ---
 
 ## 6.2 Conclusion & Future Work
@@ -952,6 +1096,14 @@ We selected **six perception-critical heuristics** from Nielsen [2] and embedded
 <div class="future-pill"><strong>🔒 2. Multimodal & Ethics</strong><br>Integrate voice/video data with strict privacy boundaries & validation protocols for finance/medical apps.</div>
 <div class="future-pill"><strong>📱 3. Mobile & Platform Rules</strong><br>Extend to mobile platforms with platform-specific heuristics & clear AI–human alignment metrics.</div>
 </div>
+
+<!--
+Key Takeaway: Multimodal heuristic-guided LLMs substantially outperform manual screening on recall and precision, opening three clear avenues for future work.
+Talking Points:
+- The visual synthesis summarizes our two core answers: for RQ1, pairing screenshots with Rapi logs maximizes precision and dynamic defect detection; for RQ2, GPT-4 beats human recall by 5.5x while complementing human spatial intuition.
+- Looking ahead, we highlight three directions: studying AI-human synergy in high-empathy domains like healthcare, adding voice and video inputs with strict privacy safeguards, and extending the framework to mobile platform heuristics.
+Transition: Thank you for following along; let's move to the closing slide for questions and discussion.
+-->
 
 ---
 
@@ -970,6 +1122,14 @@ Department of Information Engineering and Computer Science, Feng Chia University
 Published in <strong>Electronics 2024, 13, 4633</strong> · <code>https://doi.org/10.3390/electronics13234633</code><br>
 <span style="font-size: 0.85em; opacity: 0.85;">Grant: NSTC112-2221-E-035-030-MY2 · Questions & Discussion Welcome!</span>
 </div>
+
+<!--
+Key Takeaway: Thank the audience and invite questions on multimodal LLM-based UX testing and human-AI evaluation workflows.
+Talking Points:
+- Thank you very much for your attention. The full paper, prompt templates, and Likert questionnaire are openly available in Electronics 2024 via the DOI on screen.
+- I would be happy to answer any questions about our Rapi integration, prompt engineering, or statistical findings.
+Transition: Open the floor for Q&A.
+-->
 
 <script>
 document.addEventListener('click', (e) => {

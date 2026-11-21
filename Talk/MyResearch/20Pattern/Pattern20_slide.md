@@ -575,6 +575,15 @@ Department of Information Engineering and Computer Science, Feng Chia University
 Supported by the Ministry of Science and Technology (MOST), Taiwan, under grant MOST 106-2221-E-035-MY2.
 </div>
 
+<!--
+Key Takeaway: This JISE (2020) study evaluates whether deployed GoF design patterns actually pay off across real software releases using formal PAC, EPU, and DoU metrics.
+Talking Points:
+- Hello everyone. Today I will present our paper published in the Journal of Information Science and Engineering in 2020 on analyzing design patterns with software evolution data.
+- Developers routinely invest effort applying Gang-of-Four design patterns for future extensibility, yet we seldom verify whether those patterns are actually exercised over time.
+- We introduce a formal model — PAC, EPU, and Degree of Utilization (DoU) — and test it across 15 open-source Java systems.
+Transition: Let's open with a visual question that captures the heart of this study.
+-->
+
 ---
 
 ## Opening Hook: Architectural Investment... Or Cobwebbed Dust Collector?
@@ -586,6 +595,15 @@ Supported by the Ministry of Science and Technology (MOST), Taiwan, under grant 
 <div class="callout" style="margin-top: 6px; padding: 9px 16px;">
 <strong>The Big Idea:</strong> Developers apply design patterns to make software flexible for future change — yet across <strong>15 open-source projects (296 evolutions)</strong>, most deployed patterns are <strong>rarely or never extended</strong> after initial deployment.
 </div>
+
+<!--
+Key Takeaway: Across 15 open-source projects and 296 version transitions, most deployed design patterns sit largely unused rather than actively supporting software evolution.
+Talking Points:
+- Look at this contrast: we apply design patterns hoping they will act as flexible architectural investments, yet many end up collecting dust with a DoU of zero.
+- In our empirical study spanning 296 version evolutions across 15 real-world Java projects, the majority of deployed patterns were rarely or never extended after initial deployment.
+- That raises a crucial engineering question: does utilization depend on the pattern itself, or on the project and team using it?
+Transition: Here is the six-part outline of how we formalize, automate, and statistically test this question.
+-->
 
 ---
 
@@ -655,6 +673,15 @@ Empirical synthesis of RQ1–RQ2, practical takeaways for teams, and roadmap for
 
 </div>
 
+<!--
+Key Takeaway: We cover six parts, moving from evolutionary motivation and related work to our PAC/EPU formal model, the PUA tool, 15-project results, and ANOVA findings.
+Talking Points:
+- Sections 1 and 2 explain why static snapshots miss pattern value and compare 12 prior pattern-evaluation studies.
+- Section 3 introduces our two-track methodology: classifying quality-improver patterns, defining PAC and EPU, and computing the Degree of Utilization (DoU).
+- Sections 4 through 6 showcase our automated PUA analyzer, a JHotDraw walkthrough, our 15-project dataset, and the ANOVA results answering RQ1 and RQ2.
+Transition: Let's start with Section 1 and why evaluating design patterns requires looking across software versions.
+-->
+
 ---
 
 ## 1.1 Motivation: Why Static Snapshots Miss Pattern Value
@@ -666,6 +693,15 @@ Empirical synthesis of RQ1–RQ2, practical takeaways for teams, and roadmap for
 <div class="callout">
 <strong>Evolutionary Principle:</strong> Most design patterns target <strong>maintainability & extensibility</strong> over time. Over-applied or unused patterns add structural complexity without payoff — so evaluation must span <strong>all consecutive versions</strong>, not a single snapshot.
 </div>
+
+<!--
+Key Takeaway: Because design patterns target long-term maintainability and extensibility, evaluating them from a single static snapshot misses whether their structural overhead ever pays off.
+Talking Points:
+- As the diagram illustrates, a static snapshot can tell you a pattern exists in Version 1, but it cannot tell you whether that pattern ever helped absorb change in Versions 2, 3, or 4.
+- Every pattern introduces extra interfaces, indirection, and complexity; if it is never extended, it becomes unnecessary overhead.
+- Therefore, true pattern evaluation must track structural changes across consecutive software releases.
+Transition: With that evolutionary principle in mind, let's review our four research objectives and two formal research questions.
+-->
 
 ---
 
@@ -687,6 +723,15 @@ We test two core statistical research questions using One-Way ANOVA *(revealed s
 
 </div>
 
+<!--
+Key Takeaway: We build an automated evolutionary analyzer (PUA) and use One-Way ANOVA to test whether pattern utilization depends on pattern type (RQ1) or the OSS project (RQ2).
+Talking Points:
+- The top strip summarizes our four objectives: formalize evolutionary utilization, build the web-based PUA tool, run a 15-project empirical study covering 296 evolutions, and run statistical hypothesis tests.
+- RQ1 asks whether certain design patterns naturally achieve higher DoU than others across nine quality-improver groups covering 11 GoF patterns.
+- RQ2 asks whether DoU differs significantly across the 15 open-source projects, reflecting domain needs and engineering discipline.
+Transition: Before introducing our formal model, let's see how this work extends existing literature.
+-->
+
 ---
 
 ## 2. Background & Related Work (Table 1)
@@ -705,6 +750,15 @@ Existing studies evaluate patterns via static metrics, controlled human experime
 <strong>Pattern Detection Foundation:</strong> We adopt <strong>Tsantalis et al. [28]</strong> (graph-similarity scoring on static class matrices) rather than DP-Miner [6], because it supports modified pattern variants and achieves <strong>100% precision & recall</strong> on JHotDraw.
 </div>
 
+<!--
+Key Takeaway: Prior work examined static OO metrics, controlled human tasks, surveys, and pattern grime, but none automatically quantified evolutionary utilization across releases.
+Talking Points:
+- Table 1 groups 12 representative studies into four streams: static metric quality, controlled maintenance experiments, expert surveys, and code-level grime or defect analysis.
+- Our work adds a fifth dimension: automated evolutionary conformance checking using PAC, EPU, and DoU across 296 version transitions.
+- For pattern detection, we adopt Tsantalis et al.'s graph-similarity algorithm because it handles modified pattern variants and achieved 100% precision and recall on JHotDraw.
+Transition: Now let's dive into Section 3 to see how our two-track evaluation methodology works.
+-->
+
 ---
 
 ## 3.1 Utilization Evaluation Methodology Overview
@@ -716,6 +770,15 @@ Existing studies evaluate patterns via static metrics, controlled human experime
 <div class="callout">
 <strong>Two-Track Design:</strong> <strong>Track A (Theory)</strong> filters quality-improver patterns and defines their <em>Expected Pattern Utilization (EPU)</em> from NFR-intent; <strong>Track B (Practice)</strong> extracts <em>Pattern Application Context (PAC)</em> across versions to measure conformance.
 </div>
+
+<!--
+Key Takeaway: Our evaluation pipeline combines a theory track that defines Expected Pattern Utilization (EPU) with a practice track that extracts Pattern Application Contexts (PAC) across versions.
+Talking Points:
+- Follow the two-track diagram: Track A on the theory side filters quality-improver patterns and derives their EPU rules directly from their non-functional intent.
+- Track B on the practice side mines consecutive source-code releases, detects deployed pattern instances, and extracts each instance's PAC.
+- Comparing consecutive PAC deltas against the theoretical EPU tells us objectively whether a pattern was utilized in that evolution step.
+Transition: Let's look closer at Track A — how we select quality-improver patterns and decompose their intent.
+-->
 
 ---
 
@@ -765,6 +828,15 @@ Resolves boundary conditions and reliability issues (e.g., inconsistency via Obs
 </div>
 </div>
 
+<!--
+Key Takeaway: Not all GoF patterns aim at maintainability; we isolate Quality-Improver patterns and separate their functional structure (FR-intent) from their extensibility structure (NFR-intent).
+Talking Points:
+- Following our four-role taxonomy, we focus specifically on Quality-Improver patterns whose primary purpose is enhancing non-functional qualities like extensibility and maintainability.
+- Look at Figure 4 for the Strategy pattern: its FR-structure simply lets a Context call an algorithm, whereas its NFR-structure adds an abstract Strategy interface.
+- That NFR-intent tells us exactly what counts as utilization: adding or removing ConcreteStrategy classes without modifying Context.
+Transition: Next, let's formalize PAC, EPU, and the utilization predicate mathematically.
+-->
+
 ---
 
 ## 3.3 Formal Model: PAC, EPU & Utilization Predicate
@@ -808,6 +880,15 @@ Resolves boundary conditions and reliability issues (e.g., inconsistency via Obs
 </div>
 </div>
 
+<!--
+Key Takeaway: A pattern is declared utilized between consecutive versions if and only if the structural delta of its Pattern Application Context (PAC) conforms to its Expected Pattern Utilization (EPU).
+Talking Points:
+- PAC captures every participating class and its assigned role in a given version — for example, DataCompression as Context, CompressionTool as Strategy, and RAR and ZIP as ConcreteStrategy.
+- EPU specifies the expected evolutionary operators on key roles; for Strategy, that is adding (+) or removing (-) a ConcreteStrategy.
+- As shown in Figure 5, when version Dj+1 introduces a new 7-zip compression class under CompressionTool, the delta matches EPU(Strategy), so the pattern is formally marked utilized.
+Transition: Once we can judge each transition as utilized or not, how do we summarize an instance's lifetime? That brings us to DoU.
+-->
+
 ---
 
 ## 3.4 Quantifying Evolution: Degree of Utilization (DoU)
@@ -845,6 +926,15 @@ Resolves boundary conditions and reliability issues (e.g., inconsistency via Obs
 
 </div>
 </div>
+
+<!--
+Key Takeaway: Degree of Utilization (DoU) normalizes the number of utilized transitions by the total number of evolution steps a pattern instance survives.
+Talking Points:
+- The formula is straightforward: DoU equals utilized applications divided by pattern evolutions, yielding a score between 0 and 1.
+- Walking through Figure 6 across eight versions: dp1 and dp2 both span seven transitions, achieving 2/7 and 3/7 respectively.
+- Notice dp4, which was removed at V5: we only divide by the two transitions it actually lived through (1/2), whereas dp5 survived five transitions without ever being extended (0/5).
+Transition: Now let's move to Section 4 to see how we automated this entire model in our PUA system.
+-->
 
 ---
 
@@ -890,6 +980,15 @@ Extract `PAC` per version, check consecutive transitions against `EPU`, and outp
 </div>
 </div>
 
+<!--
+Key Takeaway: We implemented Pattern Utilization Analyzer (PUA), a web-based tool integrating Version Control, Tsantalis's Pattern4 detector, and automated PAC/EPU conformance scoring.
+Talking Points:
+- Figure 7 shows PUA's three core modules supporting a four-step workflow: first, harvesting multi-version SourceForge releases into Version Control.
+- Second, running Pattern4 per version to detect 11 GoF quality-improver patterns organized into nine groups across creational, structural, and behavioral categories.
+- Steps 3 and 4 automatically extract PACs, match deltas against EPU rules, and compute DoU at both the instance and project levels.
+Transition: Let's see PUA in action on a classic benchmark — Observer patterns in JHotDraw.
+-->
+
 ---
 
 ## 4.2 Case Study Walkthrough: Observer Pattern in JHotDraw
@@ -934,6 +1033,15 @@ Applying PUA to **JHotDraw** across five consecutive versions (`5.2 → 5.3 → 
 </div>
 </div>
 
+<!--
+Key Takeaway: Even within a single well-engineered system like JHotDraw, individual Observer instances vary dramatically in utilization, ranging from 0% to 75%.
+Talking Points:
+- Figure 8 tracks six Observer instances across five consecutive JHotDraw versions from 5.2 to 6.0b1.
+- Among the four instances deployed at v5.2, dp3 was actively utilized in three of four transitions (75%), while dp2 was never utilized at all (0/4).
+- Similarly, of the two instances added at v5.3, dp5 was used once (1/3) and dp6 never (0/3); across all eight JHotDraw evolutions, Observer reached our dataset's peak DoU of 0.350.
+Transition: Scaling up from JHotDraw, let's review our full 15-project experimental benchmark.
+-->
+
 ---
 
 ## 4.3 Experimental Setup: 15 OSS Projects & 296 Evolutions
@@ -974,6 +1082,15 @@ We evaluated **15 Java open-source systems** from SourceForge spanning diverse d
 <div class="callout teal" style="margin-top: 8px;">
 <strong>Scope:</strong> 3 classic benchmarks (<strong>JHotDraw</strong>, <strong>JUnit</strong>, <strong>FreeMind</strong>) + 12 randomly selected Java OSS projects, evaluated across <strong>9 quality-improver pattern groups (11 GoF patterns)</strong>.
 </div>
+
+<!--
+Key Takeaway: Our empirical benchmark covers 15 real-world Java open-source systems spanning 296 version evolutions and up to 12 years of development history.
+Talking Points:
+- Table 2 lists all 15 SourceForge projects across diverse domains including GUI editors, testing frameworks, machine learning, semantic web, finance, and audio tools.
+- The dataset combines three classic software engineering benchmarks — JHotDraw, JUnit, and FreeMind — with 12 randomly selected Java projects to avoid cherry-picking.
+- Evolution counts range from 8 transitions in JHotDraw up to 38 in Jaxe, totaling 296 version transitions analyzed across nine pattern groups.
+Transition: Let's look at the complete DoU matrix produced across all 15 projects.
+-->
 
 ---
 
@@ -1032,6 +1149,15 @@ We evaluated **15 Java open-source systems** from SourceForge spanning diverse d
 </div>
 </div>
 
+<!--
+Key Takeaway: Overall pattern utilization is strikingly low — average DoU stays below 0.20 across pattern types — though specific project-pattern pairs stand out clearly.
+Talking Points:
+- Table 3 maps every project against all nine pattern groups: blank cells mean the pattern was not deployed, zeros mean deployed but never utilized, and teal cells mark DoU at or above 0.25.
+- The single highest score is 0.350 for Observer in JHotDraw, while FreeMind shines broadly with Decorator, Observer, and State-Strategy all exceeding 0.30.
+- Domain fit is visible too: State-Strategy reaches 0.315 in Weka for ML algorithms, and Composite hits 0.261 in LatexDraw for vector shapes, whereas Jaxe, JEdit, PDFsam, and Pixelitor stay near zero.
+Transition: These patterns in Table 3 lead directly to our formal ANOVA tests in Section 5.
+-->
+
 ---
 
 ## 5.1 RQ1 Analysis: DoU vs. Design Pattern Type
@@ -1070,6 +1196,15 @@ We evaluated **15 Java open-source systems** from SourceForge spanning diverse d
 </div>
 </div>
 
+<!--
+Key Takeaway: One-Way ANOVA for RQ1 shows no statistically significant difference in DoU across design pattern types (F = 1.569, p = 0.146), meaning no pattern is inherently better utilized.
+Talking Points:
+- Figure 9's box plots and Table 4's ANOVA confirm that we fail to reject the null hypothesis (p = 0.146 > 0.05).
+- Mean DoU remains below 0.20 across every pattern group, with Visitor sitting at 0 and Prototype never exceeding 0.060.
+- Why? Prior studies suggest developers often pick familiar patterns out of habit or shy away from structurally complex ones, rather than matching patterns strictly to future change needs.
+Transition: If pattern type does not explain utilization differences, what about the project itself? Let's check RQ2.
+-->
+
 ---
 
 ## 5.2 RQ2 Analysis: DoU vs. Open Source Project
@@ -1106,6 +1241,15 @@ We evaluated **15 Java open-source systems** from SourceForge spanning diverse d
 
 </div>
 </div>
+
+<!--
+Key Takeaway: One-Way ANOVA for RQ2 reveals a highly significant project effect (F = 5.704, p < 0.001), proving that project domain and engineering discipline strongly govern pattern utilization.
+Talking Points:
+- Look at Figure 10 and Table 5: between-project variance is highly significant at p < 0.001, clearly rejecting the null hypothesis.
+- Scheffé post-hoc contrasts in Table 6 show that FreeMind significantly outperforms eight other OSS projects, including Jaxe, Jena, jGnash, jMemorize, JUnit, PDFsam, Pixelitor, and TuxGuitar.
+- This highlights domain synergy: in MVC-heavy GUI applications like JHotDraw and FreeMind, Observer and Decorator align naturally with ongoing view-update evolution.
+Transition: Before concluding, let's examine four validity threats following Yin's case-study framework.
+-->
 
 ---
 
@@ -1144,6 +1288,15 @@ Following Yin's case-study validation template [25], we address four validity di
 </div>
 </div>
 
+<!--
+Key Takeaway: We mitigate construct, internal, external, and reliability threats through validated pattern detection, rigorous ANOVA/Scheffé testing, diverse OSS sampling, and full public reproducibility.
+Talking Points:
+- For Construct Validity, results rely on Tsantalis's detector, which achieved 100% precision and recall on JHotDraw and over 85% precision in independent audits by Aversano et al.
+- For Internal Validity, One-Way ANOVA with Scheffé post-hoc contrasts cleanly separates the non-significant pattern factor (p = 0.146) from the highly significant project factor (p < 0.001).
+- For External and Reliability Validity, we sampled 15 diverse Java projects across 11 quality-improver patterns, and all SourceForge codebases, Pattern4, and raw DoU tables are publicly available for replication.
+Transition: Let's synthesize our empirical takeaways and outline future work in Section 6.
+-->
+
 ---
 
 ## 6. Conclusion & Future Work
@@ -1157,6 +1310,15 @@ Following Yin's case-study validation template [25], we address four validity di
 <div class="future-pill"><strong>🧩 2. Expanded Pattern Catalog</strong><br>Extend detection & EPU definitions beyond 11 GoF patterns to cover more architectural & design patterns.</div>
 <div class="future-pill"><strong>📊 3. Larger OSS Benchmark</strong><br>Validate evolutionary DoU trends across larger modern repositories & industrial codebases.</div>
 </div>
+
+<!--
+Key Takeaway: Pattern utilization depends on the project's domain and design discipline rather than pattern type alone, guiding teams to audit low-DoU patterns and motivating a cloud-scale PUA roadmap.
+Talking Points:
+- The summary diagram ties RQ1 and RQ2 together: mean DoU is universally low (< 0.20), pattern type is non-significant (p = 0.146), and project context is highly significant (p < 0.001).
+- Practically, teams can use DoU to spot unused "dust-collector" patterns for refactoring and double down on patterns that fit their domain evolution.
+- Moving forward, we plan to re-architect PUA as a scalable cloud service, expand EPU rules beyond 11 GoF patterns, and benchmark larger modern industrial repositories.
+Transition: Thank you very much — let's move to the closing slide for questions.
+-->
 
 ---
 
@@ -1175,6 +1337,15 @@ Department of Information Engineering and Computer Science, Feng Chia University
 DOI: <code>10.6688/JISE.202001_36(1).0004</code><br>
 <span style="font-size: 0.85em; opacity: 0.85;">Grant: MOST 106-2221-E-035-MY2 · Questions & Discussion Welcome!</span>
 </div>
+
+<!--
+Key Takeaway: Thank the audience, highlight the JISE 2020 publication and contact details, and open the floor for Q&A.
+Talking Points:
+- Thank you all for your attention!
+- The complete paper is published in the Journal of Information Science and Engineering (Vol. 36, No. 1, 2020), and you can reach me anytime at nlhsueh@fcu.edu.tw.
+- I welcome any questions about our PAC/EPU formalization, the PUA analyzer, or our 15-project empirical findings.
+Transition: Open the floor for Q&A.
+-->
 
 <script>
 document.addEventListener('click', (e) => {

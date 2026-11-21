@@ -823,6 +823,17 @@ Department of Information Engineering and Computer Science, Feng Chia University
 Supported by the National Science and Technology Council (NSTC), Taiwan R.O.C., under grant NSTC114-2221-E-035-077.
 </div>
 
+<!--
+Key Takeaway: We transform LLM programming assistance from an unregulated external aid into a tiered, measurable, and pedagogically sound assessment mechanism.
+
+Talking Points:
+- Good morning everyone. Today we present Smart Coding Tutor (SCT), our work from Feng Chia University on integrating tiered LLM assistance directly into formal programming assessments.
+- Rather than banning AI or leaving it completely unrestricted, our goal is to make AI usage controllable, recordable, and analytically interpretable.
+- This research is supported by Taiwan's National Science and Technology Council (NSTC).
+
+Transition: Let's start with a quick thought experiment that captures the core idea behind our system.
+-->
+
 ---
 
 ## Opening Hook: What If Using AI Came With an "AI Tax"?
@@ -834,6 +845,17 @@ Supported by the National Science and Technology Council (NSTC), Taiwan R.O.C., 
 <div class="callout" style="margin-top: 6px; padding: 9px 16px;">
 <strong>The Big Idea:</strong> Don't close the highway — <strong>put a tollbooth on the AI Express Lane!</strong> Students can still request tiered AI guidance when stuck, while an explicit <strong>AI Tax (0%–20%)</strong> keeps scores fair, transparent, and interpretable.
 </div>
+
+<!--
+Key Takeaway: Applying an explicit "AI Tax" (0% to 20%) lets students keep access to scaffolding while preserving fair and transparent grading.
+
+Talking Points:
+- Imagine a programming exam as a highway: completely banning AI closes the road, while unrestricted AI lets everyone speed to a full score without revealing who actually knows how to drive.
+- Our solution is to put a tollbooth on the AI Express Lane — students can request progressively stronger hints when stuck, but each tier carries an explicit 0% to 20% score adjustment.
+- This turns hidden AI reliance into a visible, fair, and interpretable trade-off.
+
+Transition: Here is the roadmap for how we designed, built, and evaluated this mechanism.
+-->
 
 ---
 
@@ -903,6 +925,17 @@ Key pedagogical implications, limitations, and directions for longitudinal study
 
 </div>
 
+<!--
+Key Takeaway: We cover the assessment dilemma, our five-level AI Tax and LADI methodology, the SCT platform, and empirical findings from 112 students.
+
+Talking Points:
+- We begin with the motivation, four research questions, and how SCT fills gaps in prior LLM tutor literature.
+- Next, we introduce our five-level tiered tutor, proactive support loop, and two new behavioral metrics: EPC and LADI.
+- Finally, we walk through the SCT system architecture and empirical results across 112 Python students and 9 formal assessment tasks.
+
+Transition: Let's dive into why open AI use creates an assessment dilemma in programming education.
+-->
+
 ---
 
 ## 1.1 Motivation: The Assessment Dilemma in AI-Assisted Learning
@@ -914,6 +947,17 @@ Key pedagogical implications, limitations, and directions for longitudinal study
 <div class="callout">
 <strong>Core Design Philosophy:</strong> The goal is <strong>not to prohibit AI</strong>, but to transform AI assistance into a <strong>controllable, tiered, and recordable</strong> instructional intervention that preserves assessment interpretability.
 </div>
+
+<!--
+Key Takeaway: Open AI collapses score discrimination via ceiling effects, whereas tiered AI preserves scaffolding while restoring score interpretability.
+
+Talking Points:
+- As illustrated in the diagram, when students have unrestricted access to external LLMs, both novices and experts can submit working code, masking true conceptual mastery.
+- Conversely, a strict ban removes valuable learning support and is increasingly unrealistic in modern software education.
+- Our philosophy is not to prohibit AI, but to bring it inside the assessment platform as a tiered, logged instructional intervention.
+
+Transition: Guided by this philosophy, we formulated four concrete research questions.
+-->
 
 ---
 
@@ -929,6 +973,17 @@ To evaluate whether **Smart Coding Tutor (SCT)** balances scaffolding with asses
 * <div class="rq-card"><img src="./img/rq4_icon.svg" alt="RQ4 LADI vs Mastery"><div><div class="rq-hook"><span class="rq-tag" style="background:#1b365d;">RQ4</span> Does mastery reduce AI dependency?</div><div class="rq-q">What is the relationship between students' <strong>AI dependency (LADI)</strong> and their conceptual learning outcomes?</div></div></div>
 
 </div>
+
+<!--
+Key Takeaway: Our study evaluates four pillars: assessment discrimination (RQ1), tiered support effectiveness (RQ2), student budgeting strategies (RQ3), and AI dependency versus mastery (RQ4).
+
+Talking Points:
+- RQ1 asks whether attaching an explicit AI tax restores discriminative power and unmasks differences hidden by full-score clustering.
+- RQ2 examines whether escalating from L0 through L4 genuinely rescues stuck learners at each step.
+- RQ3 and RQ4 investigate how students strategically budget their AI tax and whether our dependency index (LADI) correlates with conceptual understanding.
+
+Transition: Before detailing our design, let's see where SCT stands relative to existing LLM programming tutors.
+-->
 
 ---
 
@@ -950,6 +1005,17 @@ Prior LLM-based programming tutors focus on specific support features, but remai
 <span style="font-size: 0.88em; color: #475569;"><sup>1</sup> <strong>Initiative Roles (Yan et al. [12]):</strong> <strong>Adaptive</strong> AI responds reactively only after explicit learner requests; <strong>Proactive</strong> AI monitors learner state (e.g., stagnation, repeated errors) and initiates timely prompts or reflection.</span>
 </div>
 
+<!--
+Key Takeaway: Existing LLM tutors act as add-on aids and lack multi-level intensity control, dependency quantification, and formal assessment integration.
+
+Talking Points:
+- Tools like CodeAid, CodeHelp, and Gipy provide helpful adaptive feedback, while CodeRunner Agent and Owlgorithm introduce proactive reflection inside platforms.
+- However, none of these systems simultaneously combine intensity-tiered scaffolding, escalation tracking, dependency quantification, and formal online-judge grading.
+- SCT bridges all eight dimensions under a proactive assistant paradigm inspired by Yan et al.'s framework.
+
+Transition: Now let's look closely at how SCT structures its five assistance levels and the AI Tax rule.
+-->
+
 ---
 
 ## 3.1 Five-Level Tiered AI Tutor & AI Tax Rate
@@ -964,6 +1030,17 @@ Each problem begins at **L<sub>0</sub>**. Students choose when to escalate, whil
 <strong>AI Tax Rate Rule:</strong> Calculated by the <strong>highest assistance level reached</strong> per problem (rather than call frequency), capturing the maximum external support mobilized and translating it into an observable assessment cost.
 </div>
 
+<!--
+Key Takeaway: Students start every problem autonomously at L0 and may escalate up to L4, paying an AI Tax determined by their highest tier reached.
+
+Talking Points:
+- Every task begins at L0 with zero deduction. As students encounter barriers, they can voluntarily unlock L1 syntax/runtime hints, L2 logic hints, L3 conversational AI Tutor Q&A, or L4 full solution decomposition.
+- Strict prompt boundaries across all tiers prevent the LLM from outputting directly submittable code.
+- Crucially, the AI Tax (0% to 20%) is based on the highest tier reached rather than click frequency, encouraging thoughtful help-seeking without penalizing follow-up questions.
+
+Transition: Beyond reactive tier escalation, SCT also monitors learner stagnation proactively.
+-->
+
 ---
 
 ## 3.2 Proactive Learning Support & Post-Completion Consolidation
@@ -977,6 +1054,17 @@ Inspired by Yan et al.'s **Proactive Assistant** role [12], SCT couples **stagna
 <div class="callout">
 <strong>Key Pedagogical Principle:</strong> Proactive prompts preserve <strong>learner agency</strong> (never auto-solving), while post-completion checks shift learning from <em>passing test cases</em> toward <strong>durable conceptual mastery</strong>.
 </div>
+
+<!--
+Key Takeaway: SCT pairs stagnation-triggered proactive reminders during coding with post-AC conceptual checks to turn passing tests into lasting mastery.
+
+Talking Points:
+- While students code, SCT monitors idle time and repeated errors; when stagnation is detected, it nudges the learner with an optional reminder rather than auto-solving the task.
+- Once a student achieves Accepted (AC), SCT does not stop there — it triggers targeted concept questions and reflection checks based on their error history.
+- This closed loop preserves learner agency while ensuring students actually understand the code they submitted.
+
+Transition: Next, how do we quantify not just the final tier a student reached, but the path they took to get there?
+-->
 
 ---
 
@@ -999,6 +1087,17 @@ Observing only the *final level* cannot distinguish **gradual help-seeking** fro
 <div class="callout" style="margin-top: 8px; padding: 8px 14px;">
 <strong>Two Behavioral Signals:</strong> <code>s / 4</code> captures <strong>initial dependency</strong>; <code>1 − m / (f − s + 1)</code> measures <strong>escalation sparsity</strong> (skipping intermediate tiers increases the dependency leap).
 </div>
+
+<!--
+Key Takeaway: The Escalation Profile Coefficient (EPC) distinguishes gradual help-seeking from abrupt jumping to high-intensity AI support.
+
+Talking Points:
+- Look at the three paths in the figure: all three students end at L4, yet their behaviors are completely different.
+- EPC combines two signals: s / 4 captures initial dependency (starting directly at a high tier), while lambda times (1 minus m / (f minus s + 1)) measures escalation sparsity — skipping intermediate tiers increases the score.
+- With lambda set to 0.3, a gradual climber gets a much lower EPC than someone who immediately jumps to L4.
+
+Transition: We then anchor EPC onto a continuous 0-to-10 scale to form our primary dependency metric, LADI.
+-->
 
 ---
 
@@ -1025,6 +1124,17 @@ LADI maps multi-level AI usage onto a continuous **`[0, 10]`** scale, using fina
 <strong>Analytical Advantage:</strong> Two students both reaching <strong>L<sub>4</sub></strong> are cleanly separated by process trajectory (<code>8.50</code> gradual vs. <code>8.80</code> skip-step vs. <code>10.00</code> immediate), with <code>λ</code> tunable across course contexts.
 </div>
 
+<!--
+Key Takeaway: LADI maps tiered AI usage onto a continuous [0, 10] scale by anchoring on final intensity (2f) and refining within each band using +2 EPC.
+
+Talking Points:
+- Autonomous L0 records receive a LADI of 0, while AI-assisted records are placed into distinct bands via 2f plus 2 EPC.
+- As the scale shows, three students who all finish at L4 are cleanly separated: 8.50 for gradual escalation, 8.80 for skip-step escalation, and 10.00 for jumping straight to L4.
+- This gives instructors and researchers a fine-grained, continuous indicator of AI reliance that can be tuned across courses via lambda.
+
+Transition: Let's see how these pedagogical mechanisms are engineered inside the SCT platform.
+-->
+
 ---
 
 ## 4.1 Smart Coding Tutor (SCT) System Architecture
@@ -1049,6 +1159,17 @@ LADI maps multi-level AI usage onto a continuous **`[0, 10]`** scale, using fina
 
 </div>
 </div>
+
+<!--
+Key Takeaway: SCT tightly integrates an Online Judge core, a Level-Based Prompt Builder, and a Learning State Analyzer in one unified platform.
+
+Talking Points:
+- On the left, the Online Judge core handles assignments, editing, execution, and standard verdicts (AC, PA, WA, RE, TLE, CE).
+- When a student requests help, the Level-Based Prompt Builder packages the problem statement, current code, error logs, and chosen tier (L1 to L4) to enforce strict scaffolding boundaries.
+- Meanwhile, the Learning State Analyzer continuously tracks submissions and errors to drive both the Proactive Hint Trigger and the Concept Question Generator.
+
+Transition: Let's take a quick look at what this looks like from the student's perspective.
+-->
 
 ---
 
@@ -1077,6 +1198,17 @@ LADI maps multi-level AI usage onto a continuous **`[0, 10]`** scale, using fina
 <strong>Multi-Turn Escalation (L<sub>3</sub> & L<sub>4</sub>):</strong> Higher levels unlock a conversational AI Tutor chat supporting follow-up concept Q&A (L<sub>3</sub>) and structured solution decomposition / pseudocode guidance (L<sub>4</sub>), with full interaction logging.
 </div>
 
+<!--
+Key Takeaway: Lower tiers (L1 and L2) deliver structured diagnostic hints and coverage checklists, while higher tiers (L3 and L4) unlock multi-turn conversational guidance.
+
+Talking Points:
+- On the left, the L1 interface focuses purely on interpreting syntax and runtime errors so novices learn to read stack traces.
+- On the right, the L2 interface guides logic debugging with a code-coverage checklist without revealing the fix.
+- When students escalate to L3 or L4, they enter a multi-turn AI Tutor chat for conceptual Q&A or pseudocode structuring, with every interaction logged automatically.
+
+Transition: With the system in place, let's examine our empirical study design and classroom protocol.
+-->
+
 ---
 
 ## 5.1 Empirical Study Design & Context
@@ -1102,6 +1234,17 @@ LADI maps multi-level AI usage onto a continuous **`[0, 10]`** scale, using fina
 
 </div>
 </div>
+
+<!--
+Key Takeaway: We evaluated SCT with 112 Python students across 3 formal assessments (9 tasks) under strict controls prohibiting external AI tools.
+
+Talking Points:
+- All three formal assessments were conducted in-class with external generative AI tools strictly prohibited, ensuring 100% of AI interactions occurred inside SCT.
+- This gave us complete behavioral logs of level switches, prompts, and submission verdicts alongside independent conceptual understanding scores.
+- Each dataset directly maps to our four research questions, from score discrimination to four-quadrant behavioral profiling and LADI validation.
+
+Transition: Let's walk through the empirical findings, starting with RQ1 on assessment discrimination.
+-->
 
 ---
 
@@ -1130,6 +1273,17 @@ LADI maps multi-level AI usage onto a continuous **`[0, 10]`** scale, using fina
 <div class="callout">
 <strong>Finding (RQ1):</strong> Incorporating AI assistance cost reduces score clustering and reveals that <strong>IT-background students scored significantly higher than non-IT students</strong> after adjustment (<code>73.42</code> vs. <code>62.25</code>, <code>p = .0270</code>), unmasking differences hidden in raw scores.
 </div>
+
+<!--
+Key Takeaway: Applying the AI Tax cuts full-score clustering from 52.7% to 13.4% and reveals a statistically significant gap between IT and Non-IT students.
+
+Talking Points:
+- Look at the top KPIs: the correlation between programming and conceptual scores rises from 0.219 to 0.324 — far higher than the 0.136 observed under open AI — while full-score concentration drops sharply from 52.7% to 13.4%.
+- In the table, raw scores show no significant gap between IT and Non-IT students (p = .0818), but after applying the AI Tax, IT majors score significantly higher (73.42 vs. 62.25, p = .0270).
+- Students themselves also recognized this fairness, rating discriminative power at 3.93 out of 5.0.
+
+Transition: Next, let's check RQ2 — do higher tiers actually help stuck students reach Accepted?
+-->
 
 ---
 
@@ -1169,6 +1323,17 @@ Completion ratio = percentage of records accessing a level that reached `AC` **a
 <strong>Finding (RQ2):</strong> 32.39% of valid records stayed at <strong>L<sub>0</sub></strong> (autonomous baseline, 81.55% <code>AC</code>). Among AI-assisted records, completion ratios rose monotonically from <strong>21.05% (L<sub>1</sub>) to 80.41% (L<sub>4</sub>)</strong>, confirming distinct hierarchical and compensatory support effects.
 </div>
 
+<!--
+Key Takeaway: Among AI-assisted records, exact-level completion ratios rise monotonically from 21.05% at L1 to 80.41% at L4, confirming hierarchical scaffolding.
+
+Talking Points:
+- First, 32.39% of all valid records stayed completely autonomous at L0 and achieved an 81.55% AC rate, establishing a strong independent baseline.
+- For students who needed help, completion at the exact tier accessed climbed steadily: 21.05% at L1, 34.88% at L2, 43.64% at L3, and 80.41% at L4.
+- This monotonic progression confirms that each tier provides distinct, compensatory support without immediately giving away answers at lower levels.
+
+Transition: Knowing that higher tiers work, how do students balance the AI Tax against their target score in RQ3?
+-->
+
 ---
 
 ## 5.4 RQ3: Usage Strategies & Four-Quadrant Analysis
@@ -1193,6 +1358,17 @@ Completion ratio = percentage of records accessing a level that reached `AC` **a
 
 </div>
 </div>
+
+<!--
+Key Takeaway: Four-quadrant profiling reveals distinct student budgeting strategies, with AI usage reflecting genuine learning needs (r = -0.368) rather than random clicking.
+
+Talking Points:
+- Splitting students at the medians (AI Tax = 0.125, Score = 80) yields four actionable profiles.
+- Two groups perform strongly: AI-Boosted High Performers (30.36%) effectively convert deep guidance into high scores, while High-Efficiency Users (25.00%) succeed independently at low tax.
+- Crucially, the bottom quadrants flag at-risk learners: 25.89% under-utilize available hints (Low Investment, Low Return), and 18.75% pay high tax yet still struggle to translate hints into working code.
+
+Transition: Turning to RQ4, what does the overall distribution of our LADI dependency index look like?
+-->
 
 ---
 
@@ -1232,6 +1408,17 @@ Rather than clustering around moderate dependency, students clearly **stratified
 <strong>Key Observation:</strong> Nearly <strong>79%</strong> of student records fall in the two extremes — <strong>32.39%</strong> in <code>[0, 2)</code> and <strong>46.54%</strong> in <code>[8, 10]</code> — highlighting polarized needs for external scaffolding under formal assessment pressure.
 </div>
 
+<!--
+Key Takeaway: Student AI dependency is sharply bimodal — nearly 79% of records fall into either the low-dependency [0, 2) or high-dependency [8, 10] extremes.
+
+Talking Points:
+- Rather than forming a bell curve around moderate dependency, student records split into two clear poles: 32.39% in [0, 2) and 46.54% in [8, 10].
+- Middle bands ([2, 4), [4, 6), and [6, 8)) account for only about 21% combined.
+- This polarization shows that under formal assessment pressure, learners either solve tasks independently or escalate all the way to structured guidance once stuck.
+
+Transition: Finally, does higher conceptual mastery actually correspond to lower LADI scores?
+-->
+
 ---
 
 ## 5.6 RQ4: LADI vs. Conceptual Understanding Performance
@@ -1259,6 +1446,17 @@ Rather than clustering around moderate dependency, students clearly **stratified
 </div>
 </div>
 
+<!--
+Key Takeaway: LADI negatively correlates with conceptual understanding overall (r = -0.383), with a much stronger link for IT majors (r = -0.509) and senior students (r = -0.779).
+
+Talking Points:
+- The scatter plot provides preliminary criterion-related validity for LADI: overall, students with stronger conceptual understanding exhibit lower AI dependency (r = -0.383).
+- Breaking this down by background reveals a striking contrast: IT majors show a strong negative correlation (r = -0.509), whereas Non-IT majors show only r = -0.187 because syntax and debugging hurdles persist even when concepts improve.
+- Similarly, the negative relationship strengthens steadily across academic years, peaking at r = -0.779 among fourth-year students.
+
+Transition: Let's synthesize what these findings mean for classroom teaching and acknowledge key limitations.
+-->
+
 ---
 
 ## 5.7 Discussion & Pedagogical Implications
@@ -1282,6 +1480,17 @@ Rather than clustering around moderate dependency, students clearly **stratified
 </div>
 </div>
 
+<!--
+Key Takeaway: Tiered AI with explicit costs restores fairness without bans and enables early risk detection, though proactive timing and causality need further work.
+
+Talking Points:
+- Pedagogically, SCT lets instructors keep AI accessible while using four-quadrant profiles to intervene early for Tax-Burdened (18.75%) and Under-Utilizing (25.89%) students, and to offer targeted syntax coaching for Non-IT novices.
+- Methodologically, our LADI correlation is not yet causal, and student satisfaction with proactive prompt timing averaged only 2.96 out of 5.0, signaling that stagnation thresholds need calibration.
+- We also note that lambda = 0.3 and our tax schedule were validated in a single course and warrant cross-course testing.
+
+Transition: Let's wrap up with a visual summary of our conclusions and our roadmap ahead.
+-->
+
 ---
 
 ## 6. Conclusion & Future Work
@@ -1295,6 +1504,16 @@ Rather than clustering around moderate dependency, students clearly **stratified
 <div class="future-pill"><strong>🔔 2. Smarter Proactive Timing</strong><br>Refine stagnation thresholds & trigger frequency to lift satisfaction above <code>2.96 / 5.0</code>.</div>
 <div class="future-pill"><strong>🎛️ 3. Parameter Calibration</strong><br>Empirically tune <code>λ</code> and AI tax schedules across task difficulties & languages.</div>
 </div>
+
+<!--
+Key Takeaway: Across RQ1 to RQ4, SCT proves that tiered AI scaffolding and LADI can balance learning support with assessment integrity, setting up three clear next steps.
+
+Talking Points:
+- The diagram synthesizes all four findings: restored score discrimination (RQ1), monotonic tiered rescue (RQ2), actionable four-quadrant strategies (RQ3), and a bimodal, mastery-linked LADI index (RQ4).
+- Moving forward, we will run longitudinal cross-course studies to test independent coding transfer, refine proactive stagnation triggers to lift satisfaction above 2.96, and empirically calibrate lambda and tax rates across languages.
+
+Transition: Thank you for listening — we look forward to your questions and feedback.
+-->
 
 ---
 
@@ -1312,6 +1531,16 @@ Application and Analysis of a Tiered LLM-Based Programming Assistance Mechanism 
 Department of Information Engineering and Computer Science, Feng Chia University<br>
 <span style="font-size: 0.85em; opacity: 0.85;">Grant: NSTC114-2221-E-035-077 · Questions & Discussion Welcome!</span>
 </div>
+
+<!--
+Key Takeaway: Thank the audience and invite questions on tiered AI scaffolding, AI Tax calibration, or LADI analytics.
+
+Talking Points:
+- Thank you very much for your attention.
+- Please feel free to reach out to us at Feng Chia University via the emails shown here, and we welcome any questions or discussion on SCT, AI Tax design, or LADI.
+
+Transition: Open the floor for Q&A.
+-->
 
 <script>
 document.addEventListener('click', (e) => {
