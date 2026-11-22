@@ -169,6 +169,8 @@
   - 針對「頂部一句引言 + 下方雙欄卡片」之版型，`.two-columns .card` 內文字體設定為 `17.5px`、標題 `h3` 為 `20.5px`、第一層清單 `li` 為 `17px`（子清單 `15.8px`）、內距 `16px 22px`，避免字體過小導致投影片下半部留白過多。
 * **「先有說明、再有圖」教學順序原則 (Explanation Before Diagram)**：
   - 當一個概念同時包含「文字/表格/卡片解析頁」與「視覺化架構圖頁 (`title-image-slide`)」時，一律**先放說明頁建立觀念框架，下一頁再放視覺化架構圖進行印證**。
+* **👤 學者／大師名片卡 (`.name-card`) 容器規範**：
+  - 凡於投影片右側放置人物肖像或歷史名片卡（`<div class="name-card">`），外層版面一律使用標準 `<div class="content-columns"><div class="content-text">...</div><div class="content-figure">...</div></div>` 結構（確保姓名 `.name-card-name` 與頭銜來源 `.name-card-cc` 呈現精緻白底圓角名片樣式，避免落入一般內文大字排版）。
 * **🔍 分割版面 (`split73` / `split64`) 圖片滑鼠懸停原地放大規範 (In-Place Hover Image Zoom)**：
   - **互動行為**：凡使用 `div.split73` 或 `div.split64` 版型時，當滑鼠移至右側圖片上方（`:hover`），圖片必須**在原本右側位置原地平滑放大**（`transform-origin: right center; transform: scale(...)`），**左方的文字依然保留在畫面上**，嚴禁跳出全螢幕置中遮罩導致圖片位置突變與遮蔽左方文字；移開滑鼠時自動縮回原狀。
   - **HTML 標籤頂格規範**：`<div class="split64">` 與 `<div class="split73">` 內部的 `<div class="left">`、`</div>`、`<div class="right">` **一律頂格撰寫（0 縮排）且與 Markdown 清單之間保留空行**，防止 CommonMark 將 `<div class="right">` 誤吞入 `<li>` 導致排版與放大失效。

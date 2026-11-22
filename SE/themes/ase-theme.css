@@ -1459,6 +1459,7 @@ div.content-figure img {
 }
 
 /* Person Name Card */
+.name-card,
 div.content-figure .name-card {
   background: #ffffff;
   border: 1px solid #cbd5e1;
@@ -1474,6 +1475,7 @@ div.content-figure .name-card {
   margin: 0 auto;
 }
 
+.name-card img,
 div.content-figure .name-card img {
   width: 100% !important;
   max-width: 100% !important;
@@ -1488,6 +1490,7 @@ div.content-figure .name-card img {
   padding: 0 !important;
 }
 
+.name-card img.contain-fit,
 div.content-figure .name-card img.contain-fit {
   object-fit: contain !important;
   padding: 24px !important;
@@ -1495,6 +1498,7 @@ div.content-figure .name-card img.contain-fit {
   background: #ffffff !important;
 }
 
+.name-card-caption,
 div.content-figure .name-card-caption {
   width: 100%;
   padding: 10px 12px 12px 12px;
@@ -1505,8 +1509,10 @@ div.content-figure .name-card-caption {
   gap: 3px;
   box-sizing: border-box;
   border-top: 1px solid #f1f5f9;
+  text-align: center;
 }
 
+.name-card-name,
 div.content-figure .name-card-name {
   font-size: 16px;
   font-weight: 700;
@@ -1514,14 +1520,17 @@ div.content-figure .name-card-name {
   line-height: 1.3;
 }
 
+.name-card-cc,
+.name-card-cc a,
 div.content-figure .name-card-cc,
 div.content-figure .name-card-cc a {
   font-size: 11.5px;
   color: #64748b;
   text-decoration: none;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
+.name-card-cc a:hover,
 div.content-figure .name-card-cc a:hover {
   color: #0284c7;
   text-decoration: underline;

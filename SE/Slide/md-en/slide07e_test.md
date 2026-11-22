@@ -46,9 +46,9 @@ In software engineering, writing code is only half the battle. Delivering a depe
   <div>
     <h3>Part 2: Combinatorial, White-Box & Integration</h3>
     <ul>
-      <li><a href="#62"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
-      <li><a href="#84"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
-      <li><a href="#105"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
+      <li><a href="#64"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
+      <li><a href="#86"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
+      <li><a href="#107"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
     </ul>
   </div>
 </div>
@@ -1813,7 +1813,7 @@ These answers reveal two foundational software engineering principles. First, St
 -->
 
 ---
-## EP Case Study 2 (1/2): `NextDate(Y, M, D)` Partition Discovery
+## EP Case Study 2 (1/3): `NextDate(Y, M, D)` Partition Discovery
 
 > **Golden Rule of EP:** Same partition ↔ identical state transitions & downstream logic!
 
@@ -1851,38 +1851,91 @@ Guide students through the interactive partition discovery of NextDate(Y, M, D).
 -->
 
 ---
-## EP Case Study 2 (2/2): `NextDate()` Weak Coverage Matrix Table
+## EP Case Study 2 (2/3): `NextDate()` Weak Coverage Matrix Table
 
 <div class="table-compact">
 
-| Case | Input | M₁ | M₂ | M₃ | M₄ | D₁ | D₂ | D₃ | D₄ | D₅ | Y₁ | Y₂ | Expected Output | Strategy Role & Branch Verified |
+| Case | Input | M₁ | M₂ | M₃ | M₄ | D₁ | D₂ | D₃ | D₄ | D₅ | Y₁ | Y₂ | Expected Output |Weak Coverage Verification Target (`max(4,5,2) = 5` Cases) |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- | :--- |
-| **TC₁** | `2023/05/15` | | ● | | | ● | | | | | | ● | `2023/05/16` | **Weak Base (1/5):** Mid-month increment (`Day + 1`; covers M₂, D₁, Y₂) |
-| **TC₂** | `2024/02/28` | | | ● | | | ● | | | | ● | | `2024/02/29` | **Weak Base (2/5):** Leap Feb 28 increment (`Day + 1`; covers M₃, D₂, Y₁) |
-| **TC₃** | `2024/02/29` | | | ● | | | | ● | | | ● | | `2024/03/01` | **Weak Base (3/5):** Leap Feb 29 month rollover (`Month + 1`; covers D₃) |
-| **TC₄** | `2023/04/30` | ● | | | | | | | ● | | | ● | `2023/05/01` | **Weak Base (4/5):** 30-day month rollover (`Month + 1`; covers M₁, D₄) |
-| **TC₅** | `2023/12/31` | | | | ● | | | | | ● | | ● | `2024/01/01` | **Weak Base (5/5):** ★ <strong>Dec 31 Year Rollover (`Year+1, Month=1`; M₄, D₅)</strong> |
-| **TC₆** | `2023/07/31` | | ● | | | | | | | ● | | ● | `2023/08/01` | **Coupled (+1):** Non-Dec 31-day rollover (`Month + 1`, Year unchanged) |
-| **TC₇** | `2023/12/15` | | | | ● | ● | | | | | | ● | `2023/12/16` | **Coupled (+2):** Normal Dec day increment (`Day + 1`, no premature rollover) |
-| **TC₈** | `2023/02/28` | | | ● | | | ● | | | | | ● | `2023/03/01` | **Coupled (+3):** Common-year Feb 28 rollover to Mar 1 (`M₃×D₂×Y₂`) |
+| **TC₁** | `2023/05/15` | | ● | | | ● | | | | | | ● | `2023/05/16` | **Weak Base (1/5):** Mid-month increment (`Day + 1`; covers `M₂, D₁, Y₂`) |
+| **TC₂** | `2024/02/28` | | | ● | | | ● | | | | ● | | `2024/02/29` | **Weak Base (2/5):** Leap Feb 28 increment (`Day + 1`; covers `M₃, D₂, Y₁`) |
+| **TC₃** | `2024/02/29` | | | ● | | | | ● | | | ● | | `2024/03/01` | **Weak Base (3/5):** Leap Feb 29 month rollover (`Month + 1`; covers `D₃`) |
+| **TC₄** | `2023/04/30` | ● | | | | | | | ● | | | ● | `2023/05/01` | **Weak Base (4/5):** 30-day month rollover (`Month + 1`; covers `M₁, D₄`) |
+| **TC₅** | `2023/12/31` | | | | ● | | | | | ● | | ● | `2024/01/01` | **Weak Base (5/5):** ★ <strong>Dec 31 Year Rollover (`Year+1, Month=1`; covers `M₄, D₅`)</strong> |
 
 </div>
 
 <div class="card" style="margin-top: 6px; padding: 6px 14px; border-left: 4px solid #059669; background: #f0fdf4;">
-<h3 style="font-size: 14px; margin: 0 0 4px 0; color: #166534;">🎯 Visualizing 100% Weak Coverage at a Glance</h3>
-<ul style="margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.38;">
-<li><strong>Vertical Column Inspection:</strong> Look down every column across <code>M₁..M₄</code>, <code>D₁..D₅</code>, and <code>Y₁..Y₂</code>. Notice that <strong>every single column contains at least one dot (●) in TC₁..TC₅</strong>!</li>
-<li><strong>Minimal Cost:</strong> Weak Coverage is 100% satisfied with just <strong>5 base test cases</strong> (<code>max(|M|, |D|, |Y|) = 5</code>).</li>
-<li><strong>Targeted Robustness:</strong> <code>TC₆..TC₈</code> selectively add coupled boundary combinations without full Cartesian explosion.</li>
+<h3 style="font-size: 14px; margin: 0 0 3px 0; color: #166534;">🎯 100% Weak Coverage Achieved in Just 5 Base Cases (TC₁..TC₅)</h3>
+<ul style="margin: 0; padding-left: 18px; font-size: 13.2px; line-height: 1.35;">
+<li><strong>Vertical Column Inspection:</strong> Every single column across <code>M₁..M₄</code>, <code>D₁..D₅</code>, and <code>Y₁..Y₂</code> contains at least one dot (●) in <code>TC₁..TC₅</code> (<code>max(|M|, |D|, |Y|) = 5</code>)!</li>
 </ul>
 </div>
 
+<div class="card" data-marpit-fragment style="margin-top: 6px; padding: 7px 14px; border-left: 4px solid #d97706; background: #fffbeb;">
+<h3 style="font-size: 14px; margin: 0 0 3px 0; color: #b45309;">💡 Critical Reflection &amp; Design Questions: Is 100% Weak Coverage Enough?</h3>
+<ol style="margin: 0; padding-left: 18px; font-size: 13.2px; line-height: 1.36;">
+<li><strong>Question 1 (February 28 Coupling Blind Spot):</strong> <code>TC₂</code> only tests <code>02/28</code> in a <strong>Leap Year (<code>Y₁</code>)</strong> (<code>→ 02/29</code>). What if we never test <code>02/28</code> in a <strong>Common Year (<code>Y₂</code>)</strong>, or an invalid <code>2023/02/29</code>?</li>
+<li><strong>Question 2 (December &amp; 31-Day Coupling Blind Spots):</strong> <code>D₅ (31)</code> is only tested with <code>M₄ (Dec)</code> in <code>TC₅</code>, and <code>M₄ (Dec)</code> is never tested with a normal day <code>D₁</code>. What bugs could hide here, and why not use full <strong>Strong Coverage (<code>4×5×2 = 40</code> cases)</strong>?</li>
+</ol>
+</div>
+
 <!--
-This master matrix visualizes Equivalence Partition coverage with utmost clarity. Look down each column: every single equivalence class has at least one dot within the first 5 base test cases (TC1..TC5), confirming 100% Weak Coverage. Cases TC6 to TC8 are precision supplements testing coupled boundary interactions (such as non-December 31st rollover and non-leap February 28th rollover).
+This matrix shows how 5 base test cases (TC1..TC5) satisfy 100% Weak Coverage—every column M1..M4, D1..D5, and Y1..Y2 has at least one dot. Next, click to reveal the amber reflection card and ask students: is 5 cases really enough for NextDate? Notice that Feb 28 (D2) was only tested in a Leap Year (2024/02/28 -> 02/29), never in a Common Year (2023/02/28 -> 03/01)! Let's see the solution on the next slide.
 
 💡 難字與專業術語解說：
 - coverage matrix table: 涵蓋矩陣表（以橫列表示測試案例、以直行標示所有等價類別，透過打點視覺化確認各直行皆被測試涵蓋的標準驗證工具）
+- parameter coupling blind spot: 參數耦合盲區（單一分割雖已被弱涵蓋測過，但因未與特定相依參數組合而漏測關鍵業務分支的現象）
+-->
+---
+## EP Case Study 2 (3/3): Answers — Coupled Supplements & Pruning
+
+<div class="card-deck">
+
+> **Weak Coverage (`5` cases)** misses coupled branches, while **Strong Coverage (`40` cases)** generates impossible dates—use **Risk-Driven Coupled Supplements (`+3` cases)**!
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px; line-height: 1.32;">
+
+### Answer 1: The `02/28` & `12/31` Coupling Blind Spots
+- **1. Why `02/28` (`D₂`) MUST Be Tested in Both `Y₁` & `Y₂`:**
+  - `TC₂ (2024/02/28, Y₁)` only verifies **`Day + 1` (`→ 02/29`)**.
+  - Without **`2023/02/28` (`M₃ × D₂ × Y₂ → 03/01`)**, a bug outputting `02/29` in common years goes **100% undetected**!
+- **2. Why `D₅ (31)` & `M₄ (Dec)` Need Decoupled Peers:**
+  - `TC₅ (2023/12/31)` pairs `D₅` only with `M₄`. If code has `if (day == 31) year++` or `if (month == 12) year++`, `TC₁..TC₅` **all pass**!
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px; line-height: 1.32;">
+
+### Answer 2: Why Not Full Strong EP (`40` Cases)?
+- **Infeasible Date Explosion (`4 × 5 × 2 = 40` Cases):**
+  - Full Cartesian product generates **impossible dates**:
+    - `M₃ (Feb) × D₄/D₅ (30/31)` → `Feb 30`, `Feb 31` (Impossible!)
+    - `M₁ (30-day) × D₅ (31)` → `Apr 31 / Jun 31` (Impossible!)
+    - `M₃ (Feb) × D₃ (29) × Y₂ (Common)` → `2023/02/29` (Invalid!)
+- **Optimal Strategy (`5 Base + 3 Coupled = 8 Cases`):**
+  - Keep `TC₁..TC₅` base + add **3 targeted cases (`TC₆..TC₈`)** below!
+
+</div>
+</div>
+</div>
+
+<div class="table-compact" data-marpit-fragment style="margin-top: 4px; font-size: 0.92em;">
+
+| Added Case | Input | M₁ | M₂ | M₃ | M₄ | D₁ | D₂ | D₃ | D₄ | D₅ | Y₁ | Y₂ | Expected Output | Coupled Bug Caught by This Supplement |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- | :--- |
+| **TC₆ (+1)** | `2023/07/31` | | ● | | | | | | | ● | | ● | `2023/08/01` | **31-Day Non-Dec Rollover (`M₂×D₅`):** Catches `if (day==31) year++` bug |
+| **TC₇ (+2)** | `2023/12/15` | | | | ● | ● | | | | | | ● | `2023/12/16` | **Normal Dec Increment (`M₄×D₁`):** Catches `if (month==12) year++` bug |
+| **TC₈ (+3)** | `2023/02/28` | | | ● | | | ● | | | | | ● | `2023/03/01` | **Common-Year Feb 28 (`M₃×D₂×Y₂`):** Catches common-year `02/28 → 02/29` bug |
+
+</div>
+
+<!--
+Here is the complete answer to our two NextDate reflection questions. First, because February 28th behaves completely differently in a leap year (advancing to Feb 29) versus a common year (rolling over to March 1), testing 02/28 only in a leap year leaves the common-year rollover branch completely untested! Similarly, testing Day 31 only in December or testing December only on Day 31 can miss premature year-increment bugs. Second, blindly running full Strong Coverage (40 combinations) wastes effort on impossible combinations like Feb 30, Feb 31, and April 31. Therefore, adding just 3 risk-driven coupled supplements (TC6: 2023/07/31, TC7: 2023/12/15, and TC8: 2023/02/28) achieves strong branch verification in 8 clean cases!
+
+💡 難字與專業術語解說：
 - precision supplements: 精準耦合補充案例（在弱涵蓋基線之上，針對高度耦合之邊界業務規則進行定向補充的高效測試策略）
+- infeasible date pruning: 不可行日期剪枝（排除笛卡爾乘積中如 2 月 30 日、4 月 31 日等違反曆法約束之組合的過程）
 -->
 
 ---
@@ -1924,18 +1977,81 @@ Never put two invalid values in the same test vector—otherwise the first excep
 - Single Invalid Rule: 單一無效原則（設計無效等價類測試案例時，每筆測資僅能包含一個無效輸入，其餘參數皆須維持有效值，以防錯誤遮蔽）
 -->
 ---
-## EP & BVA 3-Step SOP in Action: Swimming Pool Ticket Age (`0–120`)
+## EP & BVA Case Study (1/2): Swimming Pool Spec & 34-Point Trap
 
-> Unifying EP (`6` classes) and BVA across 4 contiguous tiers deduplicates shared seam edges (`3|4`, `12|13`, `64|65`) from 34 redundant points down to **14 exact test points**!
+<div class="split64">
+<div class="left">
 
-| Step 1: Partition | Step 2: Seams | Step 3: Unified Sample Points | Expected Output & Deduplication Insight |
+<div class="card" style="padding: 8px 14px; border-left: 4px solid #0284c7; background: #f0f9ff; font-size: 13.8px; line-height: 1.36;">
+<h3 style="font-size: 14.8px; margin: 0 0 4px 0; color: #0369a1;">1. Problem Specification: <code>calcPoolTicket(int age)</code></h3>
+A municipal swimming pool prices admission by integer <code>age</code> (valid range <code>0..120</code>):<br/>
+• <strong>Valid Tiers (4):</strong> <code>V₁ [0..3]</code> Free (<strong>$0</strong>) ｜ <code>V₂ [4..12]</code> Child (<strong>$100</strong>) ｜ <code>V₃ [13..64]</code> Adult (<strong>$250</strong>) ｜ <code>V₄ [65..120]</code> Senior (<strong>$120</strong>).<br/>
+• <strong>Invalid Zones (2):</strong> <code>I₁ (age &lt; 0)</code> and <code>I₂ (age &gt; 120)</code> throw <code>IllegalArgumentException</code>.
+</div>
+
+<div class="card" data-marpit-fragment style="margin-top: 8px; padding: 8px 14px; border-left: 4px solid #dc2626; background: #fef2f2; font-size: 13.5px; line-height: 1.35;">
+<h3 style="font-size: 14.5px; margin: 0 0 4px 0; color: #991b1b;">2. How Naive Separate EP + BVA Produces 34 Points</h3>
+• <strong>Step A — Naive EP Alone (<code>6</code> pts):</strong> Pick 1 representative from each of the 6 classes: <code>{-5, 2, 8, 30, 80, 130}</code> → <strong>6 points</strong>.<br/>
+• <strong>Step B — Naive 7-pt Robust BVA per Tier (<code>4 × 7 = 28</code> pts):</strong> Apply <code>{min-, min, min+, nom, max-, max, max+}</code> to each of the 4 valid tiers → <strong>28 points</strong>.<br/>
+• <strong>Naive Total = <code>6 + 28 = 34</code> points!</strong>
+</div>
+
+<div class="card" data-marpit-fragment style="margin-top: 8px; padding: 8px 14px; border-left: 4px solid #d97706; background: #fffbeb; font-size: 13.2px; line-height: 1.34;">
+<h3 style="font-size: 14.2px; margin: 0 0 3px 0; color: #b45309;">3. Diagnosis: 3 Sources of Duplicate Waste (20 Redundant Points!)</h3>
+1. <strong>Seam Collisions (<code>-6</code> pts, Orange):</strong> <code>V₁</code>'s <code>{max=3, max+=4}</code> are identical to <code>V₂</code>'s <code>{min-=3, min=4}</code>! Same at <code>12|13</code> and <code>64|65</code>.<br/>
+2. <strong>EP vs. BVA Overlap (<code>-6</code> pts, Yellow ★):</strong> EP nominals <code>{2,8,30,80}</code> &amp; outer invalids <code>{-5/-1, 130/121}</code> duplicate BVA's <code>nom</code> and outer <code>min-/max+</code>.<br/>
+3. <strong>Interior <code>min+/max-</code> (<code>-8</code> pts, Gray):</strong> Under 2-Value BVA, <code>{1,2,5,11,14,63,66,119}</code> are redundant with <code>nom</code>.
+</div>
+
+</div>
+<div class="right">
+
+![Visualizing the Naive 34 Points and 3 Duplicate Traps](../../img/ch07/pool_ep_bva_naive34.svg)
+
+</div>
+</div>
+
+<!--
+Let's walk through the Swimming Pool Ticket Age case study step by step. First, read the specification: integer age 0 to 120 is divided into 4 contiguous valid price tiers (Free 0..3, Child 4..12, Adult 13..64, Senior 65..120) plus 2 outer invalid ranges (<0 and >120). Next, ask how many test cases we get if an engineer mechanically applies EP and 7-point Robust BVA separately: 6 EP classes give 6 points, and 4 valid tiers times 7 BVA points give 28 points, totaling 34 points! Looking at the diagram on the right, we immediately spot 20 redundant points across three categories: orange seam collisions (3|4, 12|13, 64|65 tested twice), yellow EP/BVA nominal overlaps, and gray interior min+/max- points. Let's see how our 3-Step Unified SOP reduces 34 down to 14 exact points on the next slide!
+
+💡 難字與專業術語解說：
+- contiguous piecewise tiers: 連續分段級距（前一個有效區間的上限與下一個有效區間的下限緊密相連、無間隙的分段規格）
+- seam collision: 接縫碰撞／重疊（前一段區間的 `max` 與 `max+` 恰好等於後一段區間的 `min-` 與 `min`，導致分開套用 BVA 時重複測試兩次）
+-->
+---
+## EP & BVA Case Study (2/2): 3-Step Deduplication SOP (`34 → 14` Points)
+
+> Treat **BVA as boundary sampling inside EP** with **2-Value BVA at each seam**: sample **`{min, nom, max}` per valid tier (`4 × 3 = 12`) + `2` outer off-points (`-1, 121`) = `14` exact points**!
+
+<div class="split64">
+<div class="left">
+
+<div class="table-compact" style="font-size: 0.88em;">
+
+| Step 1: EP Class | Step 2: Seam | Step 3: Unified Sample (`14` pts) | Expected Output & Deduplication Method |
 | :--- | :---: | :---: | :--- |
-| <strong>I<sub>1</sub> Invalid (`age < 0`)</strong> | `-1 \| 0` | **`-1`** *(Left Out + I<sub>1</sub>)* | `IllegalArgumentException` (covers BVA `min-` & EP `I1`) |
-| <strong>V<sub>1</sub> Free (`0..3`)</strong> | `0, 3` | **`0`**`(min)`, **`2`**`(nom)`, **`3`**`(max)` | `FREE ($0)` — covers V<sub>1</sub> bounds & nominal |
-| <strong>V<sub>2</sub> Child (`4..12`)</strong> | `4, 12` | **`4`**`(min)`, **`8`**`(nom)`, **`12`**`(max)` | `CHILD ($100)` — **`4` is V<sub>1</sub>'s `max+`, zero duplication!** |
-| <strong>V<sub>3</sub> Adult (`13..64`)</strong> | `13, 64` | **`13`**`(min)`, **`30`**`(nom)`, **`64`**`(max)` | `ADULT ($250)` — **`13` is V<sub>2</sub>'s `max+`, zero duplication!** |
-| <strong>V<sub>4</sub> Senior (`65..120`)</strong> | `65, 120` | **`65`**`(min)`, **`80`**`(nom)`, **`120`**`(max)` | `SENIOR ($120)` — **`65` is V<sub>3</sub>'s `max+`, zero duplication!** |
-| <strong>I<sub>2</sub> Invalid (`age > 120`)</strong> | `120 \| 121` | **`121`** *(Right Out + I<sub>2</sub>)* | `IllegalArgumentException` (covers BVA `max+` & EP `I2`) |
+| <strong>I<sub>1</sub> (`age < 0`)</strong> | `-1 \| 0` | **`-1`** *(1 pt: `min-` & `I₁`)* | `IllegalArgumentException` (merges BVA `min-` & EP `I₁`) |
+| <strong>V<sub>1</sub> (`0..3`)</strong> | `0, 3` | **`0`**, **`2`**, **`3`** *(3 pts: `min,nom,max`)* | `FREE ($0)` — `3` also acts as V<sub>2</sub>'s left off-point `min-`! |
+| <strong>V<sub>2</sub> (`4..12`)</strong> | `4, 12` | **`4`**, **`8`**, **`12`** *(3 pts: `min,nom,max`)* | `CHILD ($100)` — **`4` is V<sub>1</sub>'s `max+`; `12` is V<sub>3</sub>'s `min-`!** |
+| <strong>V<sub>3</sub> (`13..64`)</strong> | `13, 64` | **`13`**, **`30`**, **`64`** *(3 pts: `min,nom,max`)* | `ADULT ($250)` — **`13` is V<sub>2</sub>'s `max+`; `64` is V<sub>4</sub>'s `min-`!** |
+| <strong>V<sub>4</sub> (`65..120`)</strong> | `65, 120` | **`65`**, **`80`**, **`120`** *(3 pts: `min,nom,max`)* | `SENIOR ($120)` — **`65` is V<sub>3</sub>'s `max+`, zero overlap!** |
+| <strong>I<sub>2</sub> (`age > 120`)</strong> | `120 \| 121` | **`121`** *(1 pt: `max+` & `I₂`)* | `IllegalArgumentException` (merges BVA `max+` & EP `I₂`) |
+
+</div>
+
+<div class="card" style="margin-top: 6px; padding: 6px 12px; border-left: 4px solid #059669; background: #f0fdf4; font-size: 12.8px; line-height: 1.35;">
+<strong>3-Step Reduction Method (<code>34 - 20 = 14</code> Exact Test Points):</strong><br/>
+1. <strong>Unify Nominals &amp; Outer Bounds (<code>-6</code> pts):</strong> Each tier's <code>nom</code> (<code>2, 8, 30, 80</code>) serves as its EP representative; outer off-points (<code>-1, 121</code>) represent <code>I₁, I₂</code>.<br/>
+2. <strong>Share Internal Seam Pairs (<code>-6</code> pts) + Apply 2-Value BVA (<code>-8</code> pts):</strong> Every internal seam (<code>3|4</code>, <code>12|13</code>, <code>64|65</code>) is sampled once on each side, yielding <code>4 × 3 + 2 = 14</code> points!
+</div>
+
+</div>
+<div class="right">
+
+![3-Step Unified EP + 2-Value BVA Number Line: 14 Exact Points](../../img/ch07/pool_ep_bva_unified14.svg)
+
+</div>
+</div>
 
 <!--
 By unifying EP and BVA in three steps—sampling `{min, nom, max}` per valid tier plus `-1` and `121` at the outer invalid edges—we achieve 100% EP and 100% BVA coverage in 14 test values with zero duplication.
@@ -3018,8 +3134,8 @@ This interactive practice challenges students to model and test a Bounded Stack 
 ---
 ## Paradigm Shift: Example-Based (EBT) vs. Property-Based Testing (PBT) & John Hughes
 
-<div class="split73">
-<div class="left">
+<div class="content-columns">
+<div class="content-text">
 
 * **Example-Based Testing (EBT) Limits:** Hand-picked inputs (`add(2,3)==5`) suffer from confirmation bias and miss corner overflows (`0, -1, MAX_VALUE`).
 * **Property-Based Testing (John Hughes, QuickCheck 2000):**
@@ -3030,7 +3146,7 @@ This interactive practice challenges students to model and test a Bounded Stack 
     3. **Shrinking:** Automatically binary-searches any failing input down to the **smallest minimal reproducible counterexample**!
 
 </div>
-<div class="right">
+<div class="content-figure">
 
 <div class="name-card">
   <img src="../../img/ch07/john_hughes.jpg" alt="John Hughes" />

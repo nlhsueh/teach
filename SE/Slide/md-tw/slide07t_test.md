@@ -45,9 +45,9 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
   <div>
     <h3>Part 2：組合測試、白箱覆蓋與整合測試</h3>
     <ul>
-      <li><a href="#62"><b>7.4 組合測試、狀態轉換與屬性基礎測試：</b></a>成對組合測試 (Pairwise / All-Pairs) 與 IPO 貪婪演算法追蹤、AllPairs4J、狀態轉換測試、屬性基礎測試（jqwik 與反例縮減 Shrinking）、變質關係 (MR)。</li>
-      <li><a href="#84"><b>7.5 白箱覆蓋率與變異測試：</b></a>規格與程式碼四象限、敘述／分支／條件覆蓋率 (SC/BC/CC)、短路求值與 JaCoCo 黃色菱形、多重條件覆蓋 (MCC)、路徑爆炸、航太級 MC/DC、100% 覆蓋率迷思、變異測試（RIPR 模型、等價變異體、PITest）。</li>
-      <li><a href="#105"><b>7.6 整合測試、測試替身與 Mockito：</b></a>V 模型契約失配、建構子依賴注入 (Constructor DI)、由下而上（驅動模組 Drivers）vs. 由上而下（樁模組 Stubs）vs. 三明治策略、五大測試替身、Mockito（mock, spy, verify）、脆弱測試 (Brittle Tests)。</li>
+      <li><a href="#64"><b>7.4 組合測試、狀態轉換與屬性基礎測試：</b></a>成對組合測試 (Pairwise / All-Pairs) 與 IPO 貪婪演算法追蹤、AllPairs4J、狀態轉換測試、屬性基礎測試（jqwik 與反例縮減 Shrinking）、變質關係 (MR)。</li>
+      <li><a href="#86"><b>7.5 白箱覆蓋率與變異測試：</b></a>規格與程式碼四象限、敘述／分支／條件覆蓋率 (SC/BC/CC)、短路求值與 JaCoCo 黃色菱形、多重條件覆蓋 (MCC)、路徑爆炸、航太級 MC/DC、100% 覆蓋率迷思、變異測試（RIPR 模型、等價變異體、PITest）。</li>
+      <li><a href="#107"><b>7.6 整合測試、測試替身與 Mockito：</b></a>V 模型契約失配、建構子依賴注入 (Constructor DI)、由下而上（驅動模組 Drivers）vs. 由上而下（樁模組 Stubs）vs. 三明治策略、五大測試替身、Mockito（mock, spy, verify）、脆弱測試 (Brittle Tests)。</li>
     </ul>
   </div>
 </div>
@@ -1812,7 +1812,7 @@ void testGradeBoundariesWithoutEarlyAbort() {
 -->
 
 ---
-## EP 實戰案例二 (1/2)：`NextDate(Y, M, D)` 等價分割探索
+## EP 實戰案例二 (1/3)：`NextDate(Y, M, D)` 等價分割探索
 
 > **等價分割黃金法則：** 同一等價分割 ↔ 具備完全相同的狀態轉移與下游處理邏輯！
 
@@ -1850,7 +1850,7 @@ void testGradeBoundariesWithoutEarlyAbort() {
 -->
 
 ---
-## EP 實戰案例二 (2/2)：`NextDate()` 弱涵蓋打點矩陣表
+## EP 實戰案例二 (2/3)：`NextDate()` 弱涵蓋打點矩陣表
 
 <div class="table-compact">
 
@@ -1861,27 +1861,82 @@ void testGradeBoundariesWithoutEarlyAbort() {
 | <strong>TC₃</strong> | `2024/02/29` | | | ● | | | | ● | | | ● | | `2024/03/01` | <strong>弱涵蓋基底 (3/5)：</strong> 閏年 2/29 換月進位（`Month + 1`；涵蓋 D₃） |
 | <strong>TC₄</strong> | `2023/04/30` | ● | | | | | | | ● | | | ● | `2023/05/01` | <strong>弱涵蓋基底 (4/5)：</strong> 30 天小月換月進位（`Month + 1`；涵蓋 M₁, D₄） |
 | **TC₅** | `2023/12/31` | | | | ● | | | | | ● | | ● | `2024/01/01` | **弱涵蓋基底 (5/5)：** ★ <strong>12/31 跨年進位 (`Year+1, Month=1`；M₄, D₅)</strong> |
-| <strong>TC₆</strong> | `2023/07/31` | | ● | | | | | | | ● | | ● | `2023/08/01` | <strong>耦合補強 (+1)：</strong> 非 12 月之 31 天換月（`Month + 1`，年份不變） |
-| <strong>TC₇</strong> | `2023/12/15` | | | | ● | ● | | | | | | ● | `2023/12/16` | <strong>耦合補強 (+2)：</strong> 12 月一般日正常遞增（`Day + 1`，不誤觸跨年） |
-| <strong>TC₈</strong> | `2023/02/28` | | | ● | | | ● | | | | | ● | `2023/03/01` | <strong>耦合補強 (+3)：</strong> 平年 2/28 換月進位至 3/1（`M₃×D₂×Y₂`） |
 
 </div>
 
-<div class="card" style="margin-top: 6px; padding: 6px 14px; border-left: 4px solid #059669; background: #f0fdf4;">
-<h3 style="font-size: 14px; margin: 0 0 4px 0; color: #166534;">一眼看穿 100% 弱涵蓋 (Weak Coverage) 視覺化檢驗</h3>
+<div class="card" style="margin-top: 8px; padding: 6px 14px; border-left: 4px solid #059669; background: #f0fdf4;">
+<h3 style="font-size: 14px; margin: 0 0 3px 0; color: #166534;">一眼看穿 100% 弱涵蓋 (Weak Coverage) 視覺化檢驗</h3>
 <ul style="margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.38;">
-<li><strong>直行垂直檢視：</strong>沿著 <code>M₁..M₄</code>、<code>D₁..D₅</code> 與 <code>Y₁..Y₂</code> 每一行往下看，可以清楚確認<strong>在 TC₁..TC₅ 之中，每一個直行都至少包含一個圓點 (●)</strong>！</li>
+<li><strong>直行垂直檢視：</strong>沿著 <code>M₁..M₄</code>、<code>D₁..D₅</code> 與 <code>Y₁..Y₂</code> 每一行往下看，可以確認在 <code>TC₁..TC₅</code> 之中，<strong>每一個直行都至少包含一個圓點 (●)</strong>！</li>
 <li><strong>極小化成本：</strong>僅需 <strong>5 個基底測試案例</strong> (<code>max(|M|, |D|, |Y|) = 5</code>) 即 100% 滿足弱涵蓋要求。</li>
-<li><strong>精準耦合強固性：</strong><code>TC₆..TC₈</code> 針對高度耦合的邊界組合進行定向補強，無須承受全笛卡爾乘積爆炸。</li>
+</ul>
+</div>
+
+<div class="card" data-marpit-fragment style="margin-top: 8px; padding: 6px 14px; border-left: 4px solid #d97706; background: #fffbeb;">
+<h3 style="font-size: 14px; margin: 0 0 3px 0; color: #92400e;">關鍵反思與測試設計提問（想一想）</h3>
+<ul style="margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.38;">
+<li><strong>提問 1（弱涵蓋的致命盲區）：</strong>雖然 <code>TC₁..TC₅</code> 已達成 100% 弱涵蓋，但這 5 個案例真的夠嗎？例如：<code>02/28</code> (<code>D₂</code>) 在表中只搭配了<strong>閏年 (<code>Y₁</code>)</strong> 測試，卻完全沒測到<strong>平年 (<code>Y₂</code>) 的 <code>02/28</code></strong>！還有哪些被綁死耦合的組合漏測了？（見下一頁）</li>
+<li><strong>提問 2（為何不直接跑強涵蓋）：</strong>既然弱涵蓋會漏掉跨變數互動，為什麼我們不直接執行全笛卡爾乘積 <strong>100% 強涵蓋 (<code>4 × 5 × 2 = 40</code> 個案例)</strong>？（見下一頁）</li>
 </ul>
 </div>
 
 <!--
-這張主控打點矩陣將等價分割涵蓋率極其清晰地視覺化呈現。沿著每一個直行往下檢視：每一個等價類都在前 5 個基底測試案例 (TC1..TC5) 中至少擁有一個打點，證實達成 100% 弱涵蓋。案例 TC6 至 TC8 則是精準耦合補充案例，專門驗證跨變數耦合邊界（例如非 12 月的 31 日換月，以及平年 2 月 28 日換月）。
+這張主控打點矩陣將等價分割涵蓋率極其清晰地視覺化呈現。沿著每一個直行往下檢視：每一個等價類都在前 5 個基底測試案例 (TC1..TC5) 中至少擁有一個打點，證實達成 100% 弱涵蓋。然而在課堂上，請點擊揭示下方的琥珀色反思問題卡片，引導學生深入思考：第一，僅靠這 5 個弱涵蓋案例真的足夠嗎？請學生觀察 D2 (28 日) 只在 TC2 (2024 閏年) 被測試到，平年的 2 月 28 日卻完全沒測！同理，D5 (31 日) 與 M4 (12 月) 在 TC5 中被綁在一起。第二，既然有耦合漏洞，為什麼我們不乾脆直接跑 4 x 5 x 2 = 40 個強涵蓋案例？先讓學生思考討論，下一頁揭曉解答與精準補強矩陣！
 
 難字與專業術語解說：
 - coverage matrix table: 涵蓋矩陣表（以橫列表示測試案例、以直行標示所有等價類別，透過打點視覺化確認各直行皆被測試涵蓋的標準驗證工具）
-- precision supplements: 精準耦合補充案例（在弱涵蓋基線之上，針對高度耦合之邊界業務規則進行定向補充的高效測試策略）
+- coupling blind spot: 耦合盲區（在單一因素弱涵蓋下，特定等價類僅與單一其他變數組合配對，導致另一關鍵分支如平年 2/28 或非 12 月之 31 日完全未被執行到的測試漏洞）
+-->
+
+---
+## EP 實戰案例二 (3/3)：提問解答 — 耦合補強與不可行日期剪枝
+
+<div class="card-deck">
+
+> 5 個弱涵蓋基底上定向加上 <strong>3 個精準耦合補強案例 (<code>TC₆..TC₈</code>)</strong>，僅需 <strong>8 個精實案例</strong>即可攔截所有跨變數進位錯誤並避開幽靈日期陷阱。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px; line-height: 1.32;">
+
+### 解答 1：`02/28` 與 `12/31` 的耦合盲區
+- **平年 vs. 閏年的 `02/28` 分歧 (`M₃ × D₂ × Y`)：**
+  - `TC₂ (2024/02/28)` 僅在**閏年 (`Y₁`)** 測試 (`Day + 1 → 02/29`)。
+  - **平年 (`Y₂`)** 的 `02/28` 須**換月進位 (`→ 03/01`)**！若不補測 `2023/02/28` (`TC₈`)，平年 2 月底換月將是 0% 測試盲區。
+- **解開 `M₄ (12 月)` 與 `D₅ (31 日)` 的綁定：**
+  - `TC₅` 將 `M₄` 與 `D₅` 綁死。須補測**非 12 月 31 日 (`TC₆: 07/31`)** 與 **12 月一般日 (`TC₇: 12/15`)**，攔截 `if (month == 12) year++` 等錯誤！
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px; line-height: 1.32;">
+
+### 解答 2：為何不直接用強涵蓋 (40 個案例)？
+- **組合膨脹與「不存在的幽靈日期」 (`4 × 5 × 2 = 40`)：**
+  - 盲目笛卡爾乘積會產生大量違反曆法約束的**不可行組合 (Infeasible Combinations)**：
+    - `M₃ (2月) × D₄/D₅ (30/31日)` → **`02/30`、`02/31` 不存在！**
+    - `M₁ (小月) × D₅ (31日)` → **`04/31`、`06/31` 不存在！**
+    - `M₃ × D₃ (29日) × Y₂ (平年)` → **`2023/02/29` 無效日期！**
+- **最佳策略 (`5 基底 + 3 耦合 = 8 案例`)：** 保留 `TC₁..TC₅` + 下方 `TC₆..TC₈`。
+
+</div>
+</div>
+
+<div class="table-compact" data-marpit-fragment style="margin-top: 4px; font-size: 0.92em;">
+
+| 補強案例 | 測試輸入 | M₁ | M₂ | M₃ | M₄ | D₁ | D₂ | D₃ | D₄ | D₅ | Y₁ | Y₂ | 預期輸出 | 定向解除之跨變數耦合盲區 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| <strong>TC₆</strong> | `2023/07/31` | | ● | | | | | | | ● | | ● | `2023/08/01` | <strong>耦合補強 (+1)：</strong> 非 12 月之 31 天大月換月進位（`Month + 1`，年份不變） |
+| <strong>TC₇</strong> | `2023/12/15` | | | | ● | ● | | | | | | ● | `2023/12/16` | <strong>耦合補強 (+2)：</strong> 12 月一般日正常遞增（`Day + 1`，不誤觸跨年進位） |
+| <strong>TC₈</strong> | `2023/02/28` | | | ● | | | ● | | | | | ● | `2023/03/01` | <strong>耦合補強 (+3)：</strong> ★ <strong>平年 2/28 換月進位至 3/1 (`M₃ × D₂ × Y₂`)</strong> |
+
+</div>
+
+</div>
+
+<!--
+這一頁完整解答了前一頁的兩個關鍵測試設計提問。第一個解答說明為什麼只測 5 個弱涵蓋案例不夠：因為在 TC2 中，2 月 28 日只測了閏年（走到 2 月 29 日），卻漏掉了平年 2 月 28 日直接換月到 3 月 1 日的重要分支；同時 TC5 把 12 月與 31 日綁在一起，如果工程師寫錯成「只要是 12 月就跨年」或「只要是 31 日就跨年」，5 個基底案例竟然抓不出來！第二個解答則說明為什麼不盲目展開 4 x 5 x 2 = 40 個強涵蓋案例：因為日曆具有嚴格的跨變數物理約束，盲目做笛卡爾乘積會產生 2 月 30 日、4 月 31 日、平年 2 月 29 日等大量不可行的幽靈測試案例。最優雅的工程解法就是底部的表格：在 5 個弱涵蓋基底上，精準補上 TC6 (2023/07/31)、TC7 (2023/12/15) 與 TC8 (2023/02/28) 三個耦合補強案例，以 5 + 3 = 8 個測試案例達到 100% 業務分支防禦！
+
+難字與專業術語解說：
+- coupled supplements: 耦合補強案例（針對弱涵蓋中被綁定於同一測試案例的跨變數條件，刻意拆開進行正交配對以驗證獨立分支的補充測試案例）
+- infeasible pruning: 不可行組合剪枝（在多變數組合測試中，剔除違反領域物理或業務約束而無法在真實世界成立之無效組合的過程）
 -->
 
 ---
@@ -1923,18 +1978,81 @@ void testGradeBoundariesWithoutEarlyAbort() {
 - Single Invalid Rule: 單一無效原則（設計無效等價類測試案例時，每筆測資僅能包含一個無效輸入，其餘參數皆須維持有效值，以防錯誤遮蔽）
 -->
 ---
-## EP 與 BVA 三步驟 SOP 實戰：游泳池票價年齡分級 (`0–120`)
+## EP 與 BVA 整合實戰 (1/2)：游泳池年齡票價規格與 34 點重複陷阱
 
-> 將橫跨 4 個連續票價級距的 EP（`6` 個類別）與 BVA 統一整合，能消除共用接縫邊界（`3|4`、`12|13`、`64|65`）的重複取樣，將 34 個冗餘點精煉至 <strong>14 個精確測試點</strong>！
+<div class="split64">
+<div class="left">
 
-| 步驟 1：等價分割 (EP) | 步驟 2：接縫邊界 | 步驟 3：統一取樣測試點 | 預期輸出與去重洞察 |
+<div class="card" style="padding: 8px 14px; border-left: 4px solid #0284c7; background: #f0f9ff; font-size: 13.8px; line-height: 1.36;">
+<h3 style="font-size: 14.8px; margin: 0 0 4px 0; color: #0369a1;">1. 題目規格說明：<code>calcPoolTicket(int age)</code></h3>
+市立游泳池依據整數年齡 <code>age</code>（合法範圍 <code>0..120</code> 歲）分為四段連續票價級距：<br/>
+• <strong>4 個有效級距：</strong> <code>V₁ [0..3]</code> 免費 (<strong>$0</strong>) ｜ <code>V₂ [4..12]</code> 兒童票 (<strong>$100</strong>) ｜ <code>V₃ [13..64]</code> 全票 (<strong>$250</strong>) ｜ <code>V₄ [65..120]</code> 敬老票 (<strong>$120</strong>)。<br/>
+• <strong>2 個外圍無效區間：</strong> <code>I₁ (age &lt; 0)</code> 與 <code>I₂ (age &gt; 120)</code> 一律拋出 <code>IllegalArgumentException</code>。
+</div>
+
+<div class="card" data-marpit-fragment style="margin-top: 8px; padding: 8px 14px; border-left: 4px solid #dc2626; background: #fef2f2; font-size: 13.5px; line-height: 1.35;">
+<h3 style="font-size: 14.5px; margin: 0 0 4px 0; color: #991b1b;">2. 為何死板分開做 EP + BVA 會算出 34 個測試點？</h3>
+• <strong>第一部分 — 單獨做 EP (<code>6</code> 點)：</strong> 6 個等價類各取 1 個代表值：<code>{-5, 2, 8, 30, 80, 130}</code> → <strong>6 點</strong>。<br/>
+• <strong>第二部分 — 4 個有效區間各做 7 點強固 BVA (<code>4 × 7 = 28</code> 點)：</strong> 每段各自取 <code>{min-, min, min+, nom, max-, max, max+}</code> → <strong>28 點</strong>。<br/>
+• <strong>兩者直接相加 = <code>6 + 28 = 34</code> 個點！</strong>
+</div>
+
+<div class="card" data-marpit-fragment style="margin-top: 8px; padding: 8px 14px; border-left: 4px solid #d97706; background: #fffbeb; font-size: 13.2px; line-height: 1.34;">
+<h3 style="font-size: 14.2px; margin: 0 0 3px 0; color: #b45309;">3. 診斷分析：34 點中包含 3 大類、共 20 個重複／冗餘點！</h3>
+1. <strong>相鄰接縫碰撞重複 (<code>-6</code> 點，橘色框)：</strong> <code>V₁</code> 的右邊界與右越界 <code>{3, 4}</code> 剛好就是 <code>V₂</code> 的左越界與左邊界 <code>{3, 4}</code>！同理 <code>12|13</code>、<code>64|65</code> 各被重複測了兩次。<br/>
+2. <strong>EP 與 BVA 重疊 (<code>-6</code> 點，黃色框 ★)：</strong> EP 的 4 個有效代表值 <code>{2,8,30,80}</code> 與 2 個無效類，和 BVA 的 <code>nom</code> 及外圍 <code>min-/max+</code> 重複。<br/>
+3. <strong>區間內部 <code>min+/max-</code> 冗餘 (<code>-8</code> 點，灰虛線框)：</strong> 改採 2 點 BVA 可省去 8 個內部鄰點。
+</div>
+
+</div>
+<div class="right">
+
+![視覺化拆解 34 個死板測試點與 3 大重複陷阱](../../img/ch07/pool_ep_bva_naive34.svg)
+
+</div>
+</div>
+
+<!--
+我們用兩頁完整講解游泳池年齡票價案例。第一頁先看清楚題目規格：整數年齡 0 到 120 歲分為 4 個連續有效票價級距（免費 0..3、兒童 4..12、全票 13..64、敬老 65..120），外加小於 0 與大於 120 兩個無效區間。接著看為什麼死板分開套用 EP 與 BVA 會算出 34 個點：單獨做 EP 有 6 類共 6 點；再對 4 個有效區間各自套用 7 點強固 BVA (4 x 7 = 28 點)，加起來就是 6 + 28 = 34 點！對照右方圖表可以一眼看出 20 個重複與冗餘點：橘色框是相鄰區間接縫碰撞（3與4、12與13、64與65 被上下兩列重複測了兩次，多出 6 點）、黃色星號框是 EP 代表值與 BVA 中心點及外圍越界點重疊（多出 6 點）、灰色虛線框則是 3 點 BVA 的內部鄰點 min+ 與 max-（多出 8 點）。下一頁我們看如何透過三步驟統一 SOP 縮減為 14 個精確測試點！
+
+難字與專業術語解說：
+- contiguous piecewise tiers: 連續分段級距（前一個有效區間的上限與下一個有效區間的下限緊密相連、無間隙的分段規格）
+- seam collision: 接縫碰撞／重疊（前一段區間的 `max` 與 `max+` 恰好等於後一段區間的 `min-` 與 `min`，導致分開套用 BVA 時重複測試兩次）
+-->
+---
+## EP 與 BVA 整合實戰 (2/2)：三步驟去重縮減法 (`34 → 14` 點)
+
+> 將 <strong>BVA 視為 EP 區間內部的邊界取樣</strong>並於接縫處採用 <strong>2 點 BVA</strong>：每個有效級距取 <strong>`{min, nom, max}` (`4 × 3 = 12` 點) + `2` 個外圍越界點 (`-1, 121`) = `14` 個精確測試點</strong>！
+
+<div class="split64">
+<div class="left">
+
+<div class="table-compact" style="font-size: 0.9em;">
+
+| 步驟 1：EP 類別 | 步驟 2：接縫 | 步驟 3：統一取樣 (`14` 點) | 預期輸出與去重縮減方法 |
 | :--- | :---: | :---: | :--- |
-| <strong>I<sub>1</sub> 無效類 (`age < 0`)</strong> | `-1 \| 0` | <strong>`-1`</strong> *(左越界 + I<sub>1</sub>)* | `IllegalArgumentException`（同時涵蓋 BVA `min-` 與 EP `I1`） |
-| <strong>V<sub>1</sub> 免費票 (`0..3`)</strong> | `0, 3` | <strong>`0`</strong>`(min)`, <strong>`2`</strong>`(nom)`, <strong>`3`</strong>`(max)` | `FREE ($0)` —— 涵蓋 V<sub>1</sub> 雙邊界與名義中心值 |
-| <strong>V<sub>2</sub> 兒童票 (`4..12`)</strong> | `4, 12` | <strong>`4`</strong>`(min)`, <strong>`8`</strong>`(nom)`, <strong>`12`</strong>`(max)` | `CHILD ($100)` —— <strong>`4` 即 V<sub>1</sub> 的 `max+`，零重複取樣！</strong> |
-| <strong>V<sub>3</sub> 全票 (`13..64`)</strong> | `13, 64` | <strong>`13`</strong>`(min)`, <strong>`30`</strong>`(nom)`, <strong>`64`</strong>`(max)` | `ADULT ($250)` —— <strong>`13` 即 V<sub>2</sub> 的 `max+`，零重複取樣！</strong> |
-| <strong>V<sub>4</sub> 敬老票 (`65..120`)</strong> | `65, 120` | <strong>`65`</strong>`(min)`, <strong>`80`</strong>`(nom)`, <strong>`120`</strong>`(max)` | `SENIOR ($120)` —— <strong>`65` 即 V<sub>3</sub> 的 `max+`，零重複取樣！</strong> |
-| <strong>I<sub>2</sub> 無效類 (`age > 120`)</strong> | `120 \| 121` | <strong>`121`</strong> *(右越界 + I<sub>2</sub>)* | `IllegalArgumentException`（同時涵蓋 BVA `max+` 與 EP `I2`） |
+| <strong>I<sub>1</sub> (`age < 0`)</strong> | `-1 \| 0` | <strong>`-1`</strong> *(1 點：`min-` 與 `I₁`)* | `IllegalArgumentException`（合併 BVA `min-` 與 EP `I₁`） |
+| <strong>V<sub>1</sub> (`0..3`)</strong> | `0, 3` | <strong>`0`, `2`, `3`</strong> *(3 點：`min,nom,max`)* | `FREE ($0)` —— `3` 同時自動作為 V<sub>2</sub> 的左越界 `min-`！ |
+| <strong>V<sub>2</sub> (`4..12`)</strong> | `4, 12` | <strong>`4`, `8`, `12`</strong> *(3 點：`min,nom,max`)* | `CHILD ($100)` —— <strong>`4` 即 V<sub>1</sub> 的 `max+`；`12` 即 V<sub>3</sub> 的 `min-`！</strong> |
+| <strong>V<sub>3</sub> (`13..64`)</strong> | `13, 64` | <strong>`13`, `30`, `64`</strong> *(3 點：`min,nom,max`)* | `ADULT ($250)` —— <strong>`13` 即 V<sub>2</sub> 的 `max+`；`64` 即 V<sub>4</sub> 的 `min-`！</strong> |
+| <strong>V<sub>4</sub> (`65..120`)</strong> | `65, 120` | <strong>`65`, `80`, `120`</strong> *(3 點：`min,nom,max`)* | `SENIOR ($120)` —— <strong>`65` 即 V<sub>3</sub> 的 `max+`，零重複取樣！</strong> |
+| <strong>I<sub>2</sub> (`age > 120`)</strong> | `120 \| 121` | <strong>`121`</strong> *(1 點：`max+` 與 `I₂`)* | `IllegalArgumentException`（合併 BVA `max+` 與 EP `I₂`） |
+
+</div>
+
+<div class="card" style="margin-top: 8px; padding: 8px 14px; border-left: 4px solid #059669; background: #f0fdf4; font-size: 13.2px; line-height: 1.38;">
+<strong>三步驟縮減方法總結 (<code>34 - 20 = 14</code> 個精確測試點)：</strong><br/>
+1. <strong>合併名義值與外圍無效點 (<code>-6</code> 點)：</strong> 以各級距的 <code>nom</code> (<code>2, 8, 30, 80</code>) 直接作為 EP 有效類代表；以外圍越界點 (<code>-1, 121</code>) 直接代表無效類 <code>I₁, I₂</code>。<br/>
+2. <strong>共用內部接縫點 (<code>-6</code> 點) + 採用 2 點 BVA (<code>-8</code> 點)：</strong> 三處接縫 (<code>3|4</code>、<code>12|13</code>、<code>64|65</code>) 左右各取一點，總計 <code>4 × 3 + 2 = 14</code> 點！
+</div>
+
+</div>
+<div class="right">
+
+![三步驟統一 EP + 2 點 BVA 數線示意圖：14 個精確測試點](../../img/ch07/pool_ep_bva_unified14.svg)
+
+</div>
+</div>
 
 <!--
 透過三步驟將 EP 與 BVA 統一整合——每個有效級距取樣 `{min, nom, max}`，加上外圍無效邊界的 `-1` 與 `121`——我們僅用 14 個測試值便達成 100% EP 與 100% BVA 涵蓋，且零重複。
@@ -3023,8 +3141,8 @@ class AirlineReservationStateTest {
 ---
 ## 典範轉移：範例基礎測試 (EBT) vs. 屬性基礎測試 (PBT) 與 John Hughes
 
-<div class="split73">
-<div class="left">
+<div class="content-columns">
+<div class="content-text">
 
 * <strong>範例基礎測試 (Example-Based Testing, EBT) 的侷限：</strong> 人工挑選的單點測資（如 `add(2,3)==5`）易受確認偏誤影響，且經常漏掉角落溢位（`0, -1, MAX_VALUE`）。
 * <strong>屬性基礎測試 (John Hughes, QuickCheck 2000)：</strong>
@@ -3035,7 +3153,7 @@ class AirlineReservationStateTest {
     3. <strong>反例自動收縮 (Shrinking)：</strong> 一旦發現失敗測資，自動透過二分搜尋將其收縮至<strong>最小可重現反例 (Minimal Counterexample)</strong>！
 
 </div>
-<div class="right">
+<div class="content-figure">
 
 <div class="name-card">
   <img src="../../img/ch07/john_hughes.jpg" alt="John Hughes" />
