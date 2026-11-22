@@ -85,6 +85,10 @@
     - **第二層（及以下）縮排子項目使用 `-`**：作為靜態附屬清單，使大標與其說明細節**同時一起出現**，避免演講者逐條重複空按。
   - **行內程式碼 (Inline `` `code` ``) 無背景色渲染規範**：
     - 比照 SQA 簡報主題（`sqa-theme.css`），投影片中的行內程式碼（`:not(pre, marp-pre) > code`）一律採用**無背景色、無邊框、零內距**（`background: transparent !important; border: none !important; padding: 0 !important;`），搭配等寬字體（`0.9em`、粗體 `600`、石板灰 `#475569`；標題 `h1..h4` 內為深海軍藍 `#0b3c5d`；超連結 `a > code` 內為連結藍 `#2563eb`），消除 Gaia 預設深色膠囊底塊造成的畫面雜亂感。
+  - **Marp / CommonMark 粗體與行內語法防破版規範（嚴禁印出裸露 `**`）**：
+    - **HTML 區塊內禁混寫 Markdown 語法**：在 `<div class="card">`、`<div class="callout">`、`<h3>`、`<span>` 等 HTML 標籤區塊內，若緊接撰寫內容而未留空行（或縮排達 4 格），CommonMark 會進入純 HTML 區塊模式而不解析 `- ` 清單、`**...**` 或 `` `...` ``。凡在 HTML 容器內部，**一律直接改用原生 HTML `<strong>...</strong>`、`<code>...</code>`、`<ul><li>...</li></ul>`**，或確保 HTML 標籤與 Markdown 段落之間保留完整空行且 0 縮排。
+    - **中文全形標點緊鄰禁令**：在中文句子中，若粗體開頭或結尾包含全形標點（如 `（...）`、`「...」`、`《...》`）且前後緊鄰中文字元（例如 `**「疲軟 Scrum」**一詞`），CommonMark 的 flanking delimiter 規則會判定失效並將 `**` 原樣印出。凡此情境**一律改用 HTML `<strong>...</strong>` 標籤**。
+    - **編譯後必檢 (Post-Compile Verification)**：每次編譯 Marp HTML 後，必須自動掃描 `Slide/html/*.html` 的 `<section>` 內文（排除程式碼註解 `/**`），確認 **0 處裸露 `**`** 方可視為編譯完成。
   - **版本控制規範**：`Slide/html/` 目錄納入 Git 版本控制追蹤（not gitignore），供 GitHub Pages 線上互動簡報與入口首頁 (`index.html`) 連結使用。
 
 ---

@@ -232,7 +232,7 @@ To summarize this slide, remember this key takeaway: Structural models capture t
 <!-- _class: lead -->
 <!-- header: '4.2 The Unified Modeling Language (UML)' -->
 
-# **4.2 The Unified Modeling Language (UML)**
+# <strong>4.2 The Unified Modeling Language (UML)</strong>
 
 > "A standardized visual grammar transformed software engineering from proprietary silos into a global discipline."
 
@@ -280,7 +280,7 @@ To summarize this slide, remember this key takeaway: The 1990s Method Wars fragm
 - **1995 – The Three Amigos Assemble:**
   - Ivar Jacobson joined Rational, bringing his revolutionary **Use Case** methodology (OOSE).
 - **1997 – OMG International Standardization:**
-  - Submitted to the **Object Management Group (OMG)**; unanimously adopted as **UML 1.1** in November 1997.
+  - Submitted to the <strong>Object Management Group (OMG)</strong>; unanimously adopted as **UML 1.1** in November 1997.
 - **2005 – UML 2.0 Major Architecture Overhaul:**
   - Expanded from 9 to 13 (and later 14) diagram types with formal execution metamodels.
 
@@ -361,7 +361,7 @@ To summarize this slide, remember this key takeaway: Grady Booch championed obje
 - **Role & Distinctions:**
   - Lead Researcher, General Electric (GE) Global R&D; Rational Software; IBM.
 - **Pioneered Methodology:**
-  - **Object Modeling Technique (OMT)** and book: *Object-Oriented Modeling and Design*.
+  - <strong>Object Modeling Technique (OMT)</strong> and book: *Object-Oriented Modeling and Design*.
 - **Core Contribution to UML:**
   - Emphasized rigorous **domain analysis**, semantic data modeling, and entity-relationship mapping.
   - Pioneered the synthesis of object structure with David Harel's **Statecharts** to model dynamic reactive systems.
@@ -402,10 +402,10 @@ To summarize this slide, remember this key takeaway: James Rumbaugh established 
 - **Role & Distinctions:**
   - Lead Architect, Ericsson; Founder, Objectory AB; Rational Software; SEMAT Pioneer.
 - **Pioneered Methodology:**
-  - **Object-Oriented Software Engineering (OOSE)**.
+  - <strong>Object-Oriented Software Engineering (OOSE)</strong>.
 - **Core Contribution to UML:**
   - **Inventor of Use Cases (1986):** Revolutionized requirements by anchoring system architecture to measurable user goals.
-  - Introduced the **Boundary–Control–Entity (BCE)** robustness analysis pattern and component-based architecture.
+  - Introduced the <strong>Boundary–Control–Entity (BCE)</strong> robustness analysis pattern and component-based architecture.
 - **Famous Architectural Maxim:**
   > *"A system that has no users has no reason to exist. Model user goals first."*
 
@@ -488,7 +488,7 @@ To summarize this slide, remember this key takeaway: UML harmonizes the user goa
 <div class="ccq-columns">
 <div class="ccq-text">
 
-Which of the "Three Amigos" was specifically renowned for inventing **Use Cases (1986)** to anchor software architecture to tangible user goals?
+Which of the "Three Amigos" was specifically renowned for inventing <strong>Use Cases (1986)</strong> to anchor software architecture to tangible user goals?
 
 - **A.** Grady Booch
 - **B.** James Rumbaugh
@@ -762,7 +762,7 @@ To summarize this slide, remember this key takeaway: Use this nine-point checkli
 | **Preconditions** | Student is matriculated with active status; enrollment registration window is open |
 | **Postconditions** | Student is officially enrolled in course section; seat quota decremented by 1 |
 | **Main Success Scenario** | **1.** Student searches for open course sections by department or course code.<br>**2.** System displays matching course sections, schedules, and remaining seat quotas.<br>**3.** Student selects target section and submits an enrollment request.<br>**4.** System executes `<<include>> Verify Prerequisites` against academic transcript.<br>**5.** System reserves seat, updates enrollment ledger, and generates confirmation notice.<br>**6.** Student views updated schedule and receives confirmation notification. |
-| **Extensions (Alternate)** | **4a. Prerequisite Deficiency:** System displays missing prerequisite courses and halts.<br>**4b. Schedule Conflict:** System alerts student of timeslot overlap with existing class.<br>**5a. Section at Capacity:** System offers `<<extend>> Add to Waitlist` queue. |
+| <strong>Extensions (Alternate)</strong> | **4a. Prerequisite Deficiency:** System displays missing prerequisite courses and halts.<br>**4b. Schedule Conflict:** System alerts student of timeslot overlap with existing class.<br>**5a. Section at Capacity:** System offers `<<extend>> Add to Waitlist` queue. |
 
 <!--
 A use case diagram is like a book cover or table of contents. To understand what really happens, we write a Use Case Specification like the table shown here.
@@ -830,7 +830,7 @@ To summarize this slide, remember this key takeaway: Use include for mandatory s
 <div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **Audit this student's draft diagram:**
-Can you spot the **3 critical modeling mistakes (anti-patterns)**?
+Can you spot the <strong>3 critical modeling mistakes (anti-patterns)</strong>?
 
 - **1. Granularity & Workflow:**
   - What is wrong with connecting `Enter Delivery Address` ➔ `Click Submit Button` ➔ `Place Food Order`?
@@ -1046,7 +1046,7 @@ To summarize this slide, remember this key takeaway: A structured prompt allows 
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Hands-on Experiment: Mutate Requirements & Audit AI Output (4 Mins)**
+  <strong>Hands-on Experiment: Mutate Requirements & Audit AI Output (4 Mins)</strong>
   - **1. Add ONE New Feature to the Use Case Prompt:**
     - *Scheduled Ordering:* Allow `Customer` to pre-order food for future delivery.
     - *Live Chat Support:* Connect `Customer` with `Support Agent` or `Courier`.
@@ -1395,7 +1395,7 @@ To summarize this slide, remember this key takeaway: Reading class diagrams requ
 <div class="ccq-columns">
 <div class="ccq-text">
 
-In our Food Delivery Class Diagram, why is the relationship between `Order` and `OrderItem` modeled as **Composition (◆)**, whereas `Order` and `Courier` is modeled as **Aggregation (◇)**?
+In our Food Delivery Class Diagram, why is the relationship between `Order` and `OrderItem` modeled as <strong>Composition (◆)</strong>, whereas `Order` and `Courier` is modeled as <strong>Aggregation (◇)</strong>?
 
 - **A.** An `OrderItem` can exist independently, but a `Courier` cannot exist without an `Order`.
 - **B.** An `OrderItem` is destroyed with its parent `Order`, whereas a `Courier` maintains an independent lifecycle.
@@ -2332,7 +2332,7 @@ To summarize this slide, remember this key takeaway: Enforcing BCE stereotypes a
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Hands-on Experiment: Mutate Flow & Audit AI Output (4 Mins)**
+  <strong>Hands-on Experiment: Mutate Flow & Audit AI Output (4 Mins)</strong>
   - **1. Add ONE Edge Case to the Checkout Flow:**
     - *Gateway Timeout:* Payment gateway takes >5s to respond (trigger retry or fallback).
     - *Split Payment:* Allow customer to pay with partial Wallet Balance + Credit Card.
@@ -3010,7 +3010,7 @@ To summarize this slide, remember this key takeaway: Prompting AI with explicit 
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Hands-on Experiment: Mutate Process & Audit AI Output (4 Mins)**
+  <strong>Hands-on Experiment: Mutate Process & Audit AI Output (4 Mins)</strong>
   - **1. Add ONE Process Rule to the Activity Prompt:**
     - *Courier Reassignment:* If matched courier declines, re-dispatch to another courier.
     - *Quality Check:* Kitchen inspects food; if burnt, redo cooking before packaging.
@@ -3847,7 +3847,7 @@ To summarize this slide, remember this key takeaway: Prompting AI with explicit 
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Hands-on Experiment: Mutate Lifecycle & Audit AI Output (4 Mins)**
+  <strong>Hands-on Experiment: Mutate Lifecycle & Audit AI Output (4 Mins)</strong>
   - **1. Add ONE Lifecycle Invariant to the State Machine Prompt:**
     - *Driver Reassignment:* If courier abandons delivery, transition back to `ReadyForPickup`.
     - *Customer Reschedule:* Allow postponing delivery while in `Preparing`.

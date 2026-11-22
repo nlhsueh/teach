@@ -8,9 +8,9 @@
       .thumb-bg-emerald { fill: #ecfdf5; stroke: #a7f3d0; stroke-width: 1.2; rx: 8px; }
       .thumb-bg-purple { fill: #faf5ff; stroke: #e9d5ff; stroke-width: 1.2; rx: 8px; }
       .thumb-bg-rose { fill: #fff1f2; stroke: #fecdd3; stroke-width: 1.2; rx: 8px; }
-      .card-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14.5px; font-weight: 800; fill: #0f172a; text-anchor: middle; }
-      .card-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11.5px; font-weight: 600; fill: #475569; text-anchor: middle; }
-      .card-formula { font-family: "Fira Code", "Consolas", monospace; font-size: 11px; font-weight: 700; text-anchor: middle; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: 800; fill: #0f172a; text-anchor: middle; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .card-formula { font-family: "Fira Code", "Consolas", monospace; font-size: 10.5px; font-weight: 700; text-anchor: middle; }
       .mini-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10.5px; font-weight: 700; text-anchor: middle; }
       .code-text { font-family: "Fira Code", "Consolas", monospace; font-size: 10.5px; font-weight: 700; text-anchor: middle; }
     </style>
@@ -68,9 +68,9 @@
     <text x="253" y="116" font-family="sans-serif" font-size="10px" font-weight="700" fill="#ffffff" text-anchor="middle">Universal Invariant</text>
     <text x="253" y="131" font-family="monospace" font-size="9.5px" font-weight="700" fill="#e0f2fe" text-anchor="middle">Invariant(f(x)) == true</text>
 
-    <text x="173" y="178" class="card-title">1. Property-Based Testing (PBT)</text>
-    <text x="173" y="198" class="card-sub">Asserts universal mathematical laws over 1,000+ generated inputs</text>
-    <text x="173" y="218" class="card-formula" fill="#0284c7">@Property + @ForAll (1,000 Random Trials)</text>
+    <text x="173" y="177" class="card-title">1. Property-Based Testing (PBT)</text>
+    <text x="173" y="196" class="card-sub">Verifies universal invariants over 1,000+ inputs</text>
+    <text x="173" y="216" class="card-formula" fill="#0284c7">@Property + @ForAll (1,000 Random Trials)</text>
   </g>
 
   <!-- CARD 2: Round-Trip & Conservation Invariants (x=387..733) -->
@@ -98,9 +98,9 @@
     <path d="M 265 106 C 255 126, 235 126, 222 126" stroke="#4f46e5" stroke-width="2" fill="none" marker-end="url(#arr-i)" />
     <path d="M 128 126 C 110 126, 95 126, 85 108" stroke="#4f46e5" stroke-width="2" fill="none" marker-end="url(#arr-i)" />
 
-    <text x="173" y="178" class="card-title">2. Round-Trip &amp; Structural Conservation</text>
-    <text x="173" y="198" class="card-sub">Encode-then-decode restores x; sorting preserves size &amp; elements</text>
-    <text x="173" y="218" class="card-formula" fill="#4f46e5">decode(encode(x)) == x  |  size(sort(L)) == size(L)</text>
+    <text x="173" y="177" class="card-title">2. Round-Trip &amp; Conservation</text>
+    <text x="173" y="196" class="card-sub">Encode-decode restores x; sort preserves elements</text>
+    <text x="173" y="216" class="card-formula" fill="#4f46e5">decode(encode(x)) == x | size(sort(L)) == size(L)</text>
   </g>
 
   <!-- CARD 3: Test Case Shrinking (x=754..1100) -->
@@ -118,9 +118,9 @@
     <rect x="70" y="120" width="206" height="28" fill="#dc2626" rx="6" />
     <text x="173" y="138" font-family="monospace" font-size="11.5px" font-weight="700" fill="#ffffff" text-anchor="middle">Minimal Seed: amount = 2901</text>
 
-    <text x="173" y="178" class="card-title">3. Automatic Test Case Shrinking</text>
-    <text x="173" y="198" class="card-sub">Automatically binary-shrinks failing inputs to the minimal edge seed</text>
-    <text x="173" y="218" class="card-formula" fill="#b45309">Random Failure → Minimal Counterexample</text>
+    <text x="173" y="177" class="card-title">3. Automatic Test Case Shrinking</text>
+    <text x="173" y="196" class="card-sub">Binary-shrinks failing inputs to minimal edge seed</text>
+    <text x="173" y="216" class="card-formula" fill="#b45309">Random Failure → Minimal Counterexample</text>
   </g>
 
   <!-- ==================== ROW 2: METAMORPHIC & AI TESTING (y=262..496) ==================== -->
@@ -159,9 +159,9 @@
     <rect x="272" y="70" width="54" height="28" fill="#059669" rx="5" />
     <text x="299" y="88" font-family="monospace" font-size="11.5px" font-weight="700" fill="#ffffff" text-anchor="middle">y' ⊆ y</text>
 
-    <text x="173" y="178" class="card-title">4. Metamorphic Testing (MT)</text>
-    <text x="173" y="198" class="card-sub">Executes two runs (x and x' = T(x)) to verify output relation MR(y, y')</text>
-    <text x="173" y="218" class="card-formula" fill="#059669">x' = T(x)  →  Verify MR( f(x), f(x') )</text>
+    <text x="173" y="177" class="card-title">4. Metamorphic Testing (MT)</text>
+    <text x="173" y="196" class="card-sub">Runs x and x'=T(x) to verify output relation MR</text>
+    <text x="173" y="216" class="card-formula" fill="#059669">x' = T(x)  →  Verify MR( f(x), f(x') )</text>
   </g>
 
   <!-- CARD 5: Monotonicity & Symmetry Patterns (x=387..733) -->
@@ -194,9 +194,9 @@
     <text x="250" y="103" class="code-text" fill="#6b21a8">f("sqa") == f("SQA")</text>
     <text x="250" y="132" font-family="sans-serif" font-size="10px" font-weight="700" fill="#7c3aed" text-anchor="middle">Permutation / Case Invariant</text>
 
-    <text x="173" y="178" class="card-title">5. Monotonicity &amp; Symmetry MRs</text>
-    <text x="173" y="198" class="card-sub">VIP never pays more than Guest; permutation/case keeps output invariant</text>
-    <text x="173" y="218" class="card-formula" fill="#7c3aed">pay(VIP) ≤ pay(REG) ≤ pay(GUEST)</text>
+    <text x="173" y="177" class="card-title">5. Monotonicity &amp; Symmetry MRs</text>
+    <text x="173" y="196" class="card-sub">VIP ≤ Regular ≤ Guest; order/case keeps output</text>
+    <text x="173" y="216" class="card-formula" fill="#7c3aed">pay(VIP) ≤ pay(REG) ≤ pay(GUEST)</text>
   </g>
 
   <!-- CARD 6: Differential Testing & LLM-as-a-Judge (x=754..1100) -->
@@ -228,8 +228,8 @@
     <text x="285" y="90" font-family="monospace" font-size="10.5px" font-weight="700" fill="#ffe4e6" text-anchor="middle">Sim ≥ 0.85</text>
     <text x="285" y="106" font-family="sans-serif" font-size="9.5px" font-weight="700" fill="#ffffff" text-anchor="middle">Quality Gate</text>
 
-    <text x="173" y="178" class="card-title">6. Differential Testing &amp; LLM-as-a-Judge</text>
-    <text x="173" y="198" class="card-sub">Cross-model output comparison &amp; rubric-based AI evaluation</text>
-    <text x="173" y="218" class="card-formula" fill="#e11d48">Differential(v1, v2) + Judge Score ≥ 0.90</text>
+    <text x="173" y="177" class="card-title">6. Differential &amp; LLM-as-a-Judge</text>
+    <text x="173" y="196" class="card-sub">Cross-model diff check &amp; rubric AI evaluation</text>
+    <text x="173" y="216" class="card-formula" fill="#e11d48">Differential(v1, v2) + Judge Score ≥ 0.90</text>
   </g>
 </svg>

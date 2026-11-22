@@ -11,7 +11,7 @@ footer: 'Ch 01 · Introduction to Software Engineering'
 
 ### Chapter 1: Introduction to Software Engineering
 
-**Instructor: Professor Nien-Lin Hsueh (with Gemini AI)**  
+<strong>Instructor: Professor Nien-Lin Hsueh (with Gemini AI)</strong>  
 Department of Information Engineering and Computer Science  
 Feng Chia University
 
@@ -253,7 +253,7 @@ This historical turning point was called the **Software Crisis**.
 
 * **October 1968 in Garmisch, Germany:**
   - 50 leading computer scientists and industry managers convened.
-  - Formally established the term **"Software Engineering"**.
+  - Formally established the term <strong>"Software Engineering"</strong>.
 * **The Mission:**
   - Transition software development from an undisciplined, artisanal craft into a **formal engineering discipline**.
   - Establish structured methodologies, rigorous cost estimation, formal verification, and project management.
@@ -427,7 +427,7 @@ Professional software engineering means taking care of all four elements.
 ## The Software Iceberg Trap: Beyond Raw Source Code
 
 * **The Amateur Fallacy:**
-  - Novices and shortsighted managers treat software as merely the visible tip—**Programs (Source Code)**—measuring progress solely by lines of code written.
+  - Novices and shortsighted managers treat software as merely the visible tip—<strong>Programs (Source Code)</strong>—measuring progress solely by lines of code written.
 * **The Hidden Reality (80%+ Below the Surface):**
   - In production systems, over **80% of effort, complexity, and catastrophic failures** reside below the surface in Data, Procedures, and Documentation:
     - *Knight Capital ($440M lost in 45 min):* Core code was fine, but a flawed deployment **procedure** and config **data** caused bankruptcy.
@@ -458,7 +458,7 @@ If you only focus on the tip, your project will hit the hidden mass and capsize.
 
 ## Why the Four Pillars Demand the Software Life Cycle (SDLC)
 
-> **The Core Epiphany:** **Programming** is writing code in an afternoon. **Software Engineering** is governing all four pillars across the entire **Software Life Cycle (SDLC)**.
+> **The Core Epiphany:** **Programming** is writing code in an afternoon. **Software Engineering** is governing all four pillars across the entire <strong>Software Life Cycle (SDLC)</strong>.
 
 * **1. Documentation $\longleft→ Requirements & Architectural Design:**
   - Code only records *how*, but documentation (ADRs, OpenAPI, specs) captures *why*. Without architectural contracts, multi-year team collaboration and system evolution are impossible.
@@ -992,7 +992,7 @@ Tools come and go every few years. But core principles stay relevant for your en
 
 ## The Software Engineering Body of Knowledge (BOK)
 
-* Software Engineering is defined by a structured **Body of Knowledge (BOK)**—a system of proven **engineering heuristics** and principles designed to conquer complexity:
+* Software Engineering is defined by a structured <strong>Body of Knowledge (BOK)</strong>—a system of proven **engineering heuristics** and principles designed to conquer complexity:
   - **Disciplines (Rules of Practice):** Mandatory professional habits and operational protocols (*"Spec before design", "Design before code", Architecture Decision Records, Code reviews*).
   - **Principles (Foundations):** Timeless, enduring engineering truths (*Abstraction, Modularity, Separation of Concerns, Anticipation of Change*).
   - **Methods & Methodologies:** Structured, repeatable process frameworks (*Agile/Scrum, Extreme Programming, TDD, CI/CD pipelines, DevOps*).
@@ -1021,10 +1021,10 @@ Together, these four layers elevate software creation from ad-hoc programming in
 
 * The Body of Knowledge is not abstract theory—it directly anchors each of the **Four Universal Lifecycle Activities**:
 * **1. Specification (Requirements):**
-  - *Disciplines & Principles:* **"Spec before design"**, Abstraction, Separation of Concerns.
+  - *Disciplines & Principles:* <strong>"Spec before design"</strong>, Abstraction, Separation of Concerns.
   - *Heuristics:* **YAGNI** (prevent speculative features), unambiguous acceptance criteria.
 * **2. Design & Implementation:**
-  - *Disciplines & Principles:* **"Design before code"**, Modularity, Information Hiding, ADRs.
+  - *Disciplines & Principles:* <strong>"Design before code"</strong>, Modularity, Information Hiding, ADRs.
   - *Heuristics:* **SOLID principles**, Clean Architecture, GoF patterns, **DRY**, **KISS**.
 * **3. Validation (Testing):**
   - *Disciplines & Principles:* **TDD**, independent verification, mandatory Peer Code Reviews.
@@ -1052,14 +1052,14 @@ This turns computer science theory into daily, practical engineering habits.
 
 > **When engineering principles are ignored, intuition leads to expensive fallacies.**
 
-* **Myth 1: "We're behind schedule—let's add 5 developers to catch up."**
+* <strong>Myth 1: "We're behind schedule—let's add 5 developers to catch up."</strong>
   - *Violates:* **Modularity & Communication Boundaries**.
   - *Reality (Brooks's Law):* Adding manpower to a late project makes it later due to $O(n^2)$ communication overhead.
-* **Myth 2: "Software is digital, so changing requirements late is cheap."**
-  - *Violates:* **"Spec Before Design" & Architectural Coupling**.
+* <strong>Myth 2: "Software is digital, so changing requirements late is cheap."</strong>
+  - *Violates:* <strong>"Spec Before Design" & Architectural Coupling</strong>.
   - *Reality:* Late changes invalidate schemas, API contracts, and tests, costing **up to 100x more**.
-* **Myth 3: "Outsource the coding and we don't need technical management."**
-  - *Violates:* **The Software Iceberg (Data, Procedures, Docs)**.
+* <strong>Myth 3: "Outsource the coding and we don't need technical management."</strong>
+  - *Violates:* <strong>The Software Iceberg (Data, Procedures, Docs)</strong>.
   - *Reality:* Raw code without architectural governance creates unmaintainable software debt.
 
 <!--
@@ -1796,7 +1796,7 @@ Building a demo is fun and easy. But engineering a secure, reliable, long-lastin
 <div class="content-columns">
 <div class="content-text">
 
-> **"Vibe Coding" (popularized by Andrej Karpathy):**  
+> <strong>"Vibe Coding" (popularized by Andrej Karpathy):</strong>  
 > A workflow where developers prompt an AI to generate code, rarely inspecting or understanding the implementation, and "just vibe with whatever runs."
 
 * **The Seductive Appeal of the "Vibe":**
@@ -2003,7 +2003,7 @@ Treat AI like a brilliant, eager intern. Review every single line before merging
 
 * **4. Software Validation (Testing & QA):**
   - **Superpowers ($\oplus$):** Synthesizes comprehensive mock datasets, boundary unit tests, and property-based fuzzing suites.
-  - **Pitfalls & Risks ($\ominus$):** **"Echo-Chamber Testing"**—AI writes tests that merely validate its own flawed assumptions (*"Who tests the tester?"*); unit tests pass on `localhost` but fail under real concurrency.
+  - **Pitfalls & Risks ($\ominus$):** <strong>"Echo-Chamber Testing"</strong>—AI writes tests that merely validate its own flawed assumptions (*"Who tests the tester?"*); unit tests pass on `localhost` but fail under real concurrency.
 * **5. Software Evolution (Maintenance):**
   - **Superpowers ($\oplus$):** Deciphers and explains 10-year-old legacy spaghetti codebases in seconds; automates changelogs, docstrings, and migration scripts.
   - **Pitfalls & Risks ($\ominus$):** Introduces **silent regression bugs** during refactoring; generates articulate, authoritative documentation that describes what the code *should* do, not what it *actually* does.
@@ -2026,7 +2026,7 @@ Always verify tests against real requirements, not against AI assumptions.
 
 ## Engineering Rigor in the AI Era
 
-> **"Never merge code you do not understand and cannot defend."**
+> <strong>"Never merge code you do not understand and cannot defend."</strong>
 
 * **The "Automation Bias" Hazard:**
   - Over-trusting fluent, confident AI outputs without verifying boundary behaviors, race conditions, or edge-case security contracts.

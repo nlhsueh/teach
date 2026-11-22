@@ -336,7 +336,7 @@ section::after {
    4. Blockquotes
    ========================================================================== */
 blockquote {
-  font-family: 'Georgia', 'Songti TC', 'Noto Serif TC', serif;
+  font-family: 'Georgia', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
   font-style: italic;
   background: rgba(2, 132, 199, 0.05);
   border-left: 4px solid #0284c7;
@@ -1635,6 +1635,14 @@ section[id="2"] .outline-columns a:hover {
 :is(h1, h2, h3, h4) :not(pre, marp-pre) > code {
   background: transparent !important;
   color: #0b3c5d !important;
+  border: none !important;
+}
+
+thead th :not(pre, marp-pre) > code,
+thead th code,
+th :not(pre, marp-pre) > code {
+  background: transparent !important;
+  color: #fff8e1 !important;
   border: none !important;
 }
 
@@ -3814,6 +3822,1362 @@ section.exam-paper::after {
     opacity: 1 !important;
   }
 }
+
+/* ==========================================================================
+   18. Interactive Self-Practice Quizzes (Word Bank, Mixed Quiz & Essay)
+   ========================================================================== */
+.sp-quiz-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.sp-bank-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  background: #f0f9ff;
+  border: 1.5px dashed #38bdf8;
+  border-radius: 10px;
+  padding: 8px 14px;
+}
+
+.sp-bank-label {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0369a1;
+  margin-right: 4px;
+}
+
+.sp-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1.5px solid #0284c7;
+  color: #0b3c5d;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(2, 132, 199, 0.12);
+  transition: all 0.15s ease;
+}
+
+.sp-chip:hover {
+  background: #0284c7;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.sp-chip.is-used {
+  opacity: 0.35;
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  color: #64748b;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.sp-q-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sp-q-item {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-left: 5px solid #0284c7;
+  border-radius: 9px;
+  padding: 9px 14px;
+  font-size: 15.5px;
+  line-height: 1.45;
+  color: #1e293b;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.sp-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 145px;
+  padding: 1px 10px;
+  margin: 0 4px;
+  border-radius: 6px;
+  border: 2px dashed #0284c7;
+  background: #f8fafc;
+  color: #0369a1;
+  font-weight: 800;
+  font-size: 14.5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  vertical-align: baseline;
+}
+
+.sp-slot.is-active {
+  background: #e0f2fe;
+  border-style: solid;
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+}
+
+.sp-slot.is-filled {
+  background: #eff6ff;
+  border-style: solid;
+  border-color: #2563eb;
+  color: #1d4ed8;
+}
+
+.sp-slot.is-correct {
+  background: #dcfce7 !important;
+  border: 2px solid #16a34a !important;
+  color: #15803d !important;
+  box-shadow: none !important;
+}
+
+.sp-slot.is-wrong {
+  background: #fee2e2 !important;
+  border: 2px solid #dc2626 !important;
+  color: #b91c1c !important;
+  box-shadow: none !important;
+}
+
+.sp-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 8px 14px;
+  margin-top: 2px;
+}
+
+.sp-btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.sp-btn {
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 800;
+  cursor: pointer;
+  border: 1.5px solid #0284c7;
+  background: #0284c7;
+  color: #ffffff;
+  transition: all 0.15s ease;
+}
+
+.sp-btn:hover {
+  background: #0369a1;
+}
+
+.sp-btn.sp-btn-reset {
+  background: #f8fafc;
+  color: #334155;
+  border-color: #94a3b8;
+}
+
+.sp-btn.sp-btn-reset:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.sp-score-msg {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0b3c5d;
+}
+
+/* Mixed Quiz 2-Column Layout */
+.sp-mixed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+}
+
+.sp-mixed-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sp-mc-card {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-top: 4px solid #0b3c5d;
+  border-radius: 9px;
+  padding: 9px 13px;
+  font-size: 14.4px;
+  line-height: 1.38;
+}
+
+.sp-mc-stem {
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.sp-mc-opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.sp-mc-opt {
+  padding: 5px 9px;
+  border-radius: 6px;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  font-size: 13.2px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+
+.sp-mc-opt:hover {
+  border-color: #38bdf8;
+  background: #f0f9ff;
+}
+
+.sp-mc-opt.is-selected {
+  border-color: #2563eb;
+  background: #dbeafe;
+  color: #1e40af;
+  font-weight: 800;
+}
+
+.sp-mc-opt.is-correct {
+  border-color: #16a34a !important;
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  font-weight: 800;
+}
+
+.sp-mc-opt.is-wrong {
+  border-color: #dc2626 !important;
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+}
+
+/* Free-Text Input Blank (No Word Bank) */
+.sp-input {
+  display: inline-block;
+  min-width: 128px;
+  max-width: 210px;
+  padding: 2px 8px;
+  margin: 0 3px;
+  border-radius: 6px;
+  border: 2px solid #7c3aed;
+  background: #faf5ff;
+  color: #5b21b6;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+  outline: none;
+  transition: all 0.16s ease;
+  vertical-align: baseline;
+}
+
+.sp-input::placeholder {
+  color: #9333ea;
+  font-weight: 600;
+  opacity: 0.72;
+}
+
+.sp-input:focus {
+  border-color: #6d28d9;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.22);
+}
+
+.sp-input.is-correct {
+  border-color: #16a34a !important;
+  background: #dcfce7 !important;
+  color: #15803d !important;
+}
+
+.sp-input.is-wrong {
+  border-color: #dc2626 !important;
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+}
+
+.sp-input-feedback {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.sp-input-feedback.is-correct {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.sp-input-feedback.is-wrong {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Narrative Essay Hero & 2-Column / 3-Column Guided Essay Grid */
+.sp-essay-hero {
+  display: grid;
+  grid-template-columns: 235px 1fr;
+  gap: 14px;
+  align-items: stretch;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.sp-essay-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1.5px solid #bae6fd;
+  border-radius: 12px;
+  padding: 5px;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+}
+
+.sp-essay-visual img {
+  width: 100%;
+  height: auto;
+  max-height: 185px;
+  object-fit: contain;
+}
+
+.sp-prose-spec {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1.5px solid #cbd5e1;
+  border-left: 6px solid #f97316;
+  border-radius: 12px;
+  padding: 9px 15px;
+  font-size: 14.5px;
+  line-height: 1.44;
+  color: #1e293b;
+  margin-bottom: 0;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sp-prose-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #0b3c5d;
+  margin-bottom: 5px;
+  padding-bottom: 4px;
+  border-bottom: 1.5px dashed #cbd5e1;
+}
+
+.sp-prose-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #ffedd5;
+  border: 1px solid #fdba74;
+  color: #c2410c;
+  font-size: 11.8px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.sp-prose-spec p {
+  margin: 0 0 4px 0;
+}
+
+.sp-prose-spec p:last-child {
+  margin-bottom: 0;
+}
+
+.sp-essay-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+  margin-top: 2px;
+}
+
+/* Guided Essay Interactive Reveal Cards */
+.sp-essay-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.sp-essay-card {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-top: 5px solid #0284c7;
+  border-radius: 11px;
+  padding: 9px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+}
+
+.sp-essay-card.card-bva { border-top-color: #059669; }
+.sp-essay-card.card-pbt { border-top-color: #7c3aed; }
+
+.sp-essay-q {
+  font-size: 14.2px;
+  line-height: 1.38;
+  color: #1e293b;
+  margin-bottom: 7px;
+}
+
+.sp-essay-card.is-open .sp-essay-q {
+  font-size: 12.8px;
+  line-height: 1.3;
+  margin-bottom: 5px;
+  color: #475569;
+}
+
+.sp-essay-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: #f0f9ff;
+  border: 1.5px dashed #0284c7;
+  color: #0369a1;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-bottom: 4px;
+  transition: all 0.15s ease;
+}
+
+.sp-essay-toggle:hover {
+  background: #e0f2fe;
+}
+
+.sp-essay-ans {
+  display: none;
+  background: #f8fafc;
+  border-left: 4px solid #10b981;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12.2px;
+  line-height: 1.33;
+  color: #0f172a;
+}
+
+.sp-essay-card.is-open .sp-essay-ans {
+  display: block;
+}
+
+@media print {
+  .sp-essay-ans {
+    display: block !important;
+  }
+}
+
+/* ==========================================================================
+   Quiz, CCQ & Self-Practice Slide Background Tint (Subtle Visual Distinction)
+   ========================================================================== */
+section.quiz-slide,
+section:has(div.ccq-columns),
+section:has(div.sp-quiz-stage),
+section:has(div.sp-essay-hero),
+section:has(div.sp-essay-grid),
+section:has(div.sp-essay-grid-2col),
+section:has(div.stk-lab-grid),
+section:has(div.bvag-stage),
+section:has(div.fdg-stage),
+section:has(div.pbtm-stage),
+section:has(div.word-bank),
+section:has(div.fill-blank-columns),
+section:has(h2[id^="concept-check-question"]),
+section:has(h2[id*="概念核對問題"]),
+section:has(h2[id*="概念核對問答"]) {
+  background-color: #eaf2f8 !important;
+  background-image: linear-gradient(135deg, #eef6fb 0%, #e4eff7 100%) !important;
+  box-shadow: inset 0 6px 0 0 #0284c7;
+}
+
+/* ==========================================================================
+   Interactive PBT & MT Strategy Matching Game (Connect-the-Lines: p82)
+   ========================================================================== */
+.pbtm-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.pbtm-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: 670px 1fr 340px;
+  align-items: center;
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-top: 5px solid #7c3aed;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+  box-sizing: border-box;
+}
+
+.pbtm-col-left,
+.pbtm-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  z-index: 2;
+}
+
+.pbtm-svg-canvas {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pbtm-item-left,
+.pbtm-item-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+  border: 1.8px solid #cbd5e1;
+  border-radius: 9px;
+  padding: 7px 11px;
+  font-size: 13px;
+  line-height: 1.32;
+  color: #0f172a;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+.pbtm-item-left:hover,
+.pbtm-item-right:hover {
+  border-color: #7c3aed;
+  background: #faf5ff;
+}
+
+.pbtm-item-left.is-active {
+  border-color: #7c3aed;
+  background: #f3e8ff;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.22);
+}
+
+.pbtm-item-left.is-paired,
+.pbtm-item-right.is-paired {
+  background: #ffffff;
+  border-width: 2px;
+}
+
+.pbtm-item-left.is-correct,
+.pbtm-item-right.is-correct {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+  color: #14532d !important;
+}
+
+.pbtm-item-left.is-wrong,
+.pbtm-item-right.is-wrong {
+  background: #fee2e2 !important;
+  border-color: #dc2626 !important;
+  color: #7f1d1d !important;
+}
+
+.pbtm-label {
+  font-weight: 800;
+}
+
+.pbtm-sub {
+  display: block;
+  font-size: 11.4px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.pbtm-port {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  border: 2px solid #64748b;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 900;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.pbtm-item-left .pbtm-port {
+  margin-left: 8px;
+}
+
+.pbtm-item-right .pbtm-port {
+  margin-right: 10px;
+}
+
+.pbtm-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 7px 14px;
+}
+
+/* ==========================================================================
+   Interactive EP Partition & BVA Seam Game (FoodExpress: p61)
+   ========================================================================== */
+.fdg-stage {
+  display: grid;
+  grid-template-columns: 540px 1fr;
+  gap: 16px;
+  width: 100%;
+  align-items: stretch;
+  margin-top: 2px;
+}
+
+.fdg-board-card,
+.fdg-ctrl-card {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fdg-board-card {
+  border-top: 5px solid #f97316;
+  gap: 8px;
+}
+
+.fdg-ctrl-card {
+  border-top: 5px solid #0284c7;
+  gap: 7px;
+}
+
+.fdg-board-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0b3c5d;
+  text-align: center;
+}
+
+.fdg-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 11.8px;
+}
+
+.fdg-table th,
+.fdg-table td {
+  border: 1.5px solid #cbd5e1;
+  padding: 5px 4px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.fdg-table thead th {
+  background: #0f172a;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.fdg-table tbody th {
+  background: #f8fafc;
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.fdg-cell {
+  cursor: pointer;
+  background: #f8fafc;
+  transition: all 0.14s ease;
+  height: 36px;
+}
+
+.fdg-cell.is-valid-zone {
+  background: #f0fdf4;
+}
+
+.fdg-cell.is-invalid-zone {
+  background: #fff1f2;
+}
+
+.fdg-cell:hover {
+  background: #e0f2fe;
+}
+
+.fdg-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  border: 2px solid #64748b;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 900;
+  transition: all 0.15s ease;
+}
+
+.fdg-cell.is-selected .fdg-dot {
+  background: #0284c7;
+  border-color: #0b3c5d;
+  transform: scale(1.14);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.22);
+}
+
+.fdg-cell.is-hit .fdg-dot {
+  background: #16a34a !important;
+  border-color: #14532d !important;
+  transform: scale(1.14);
+}
+
+.fdg-cell.is-missed .fdg-dot {
+  background: #fef08a !important;
+  border-color: #d97706 !important;
+  border-style: dashed !important;
+  color: #92400e !important;
+  transform: scale(1.14);
+}
+
+.fdg-cell.is-extra .fdg-dot {
+  background: #ef4444 !important;
+  border-color: #7f1d1d !important;
+  transform: scale(1.14);
+}
+
+.fdg-seam-box {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 9px;
+  padding: 7px 10px;
+}
+
+.fdg-seam-title {
+  font-size: 12.2px;
+  font-weight: 800;
+  color: #0b3c5d;
+  margin-bottom: 5px;
+}
+
+.fdg-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.fdg-seam-chip {
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  font-family: 'Fira Code', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+
+.fdg-seam-chip:hover {
+  border-color: #0284c7;
+  background: #f0f9ff;
+}
+
+.fdg-seam-chip.is-selected {
+  background: #0284c7;
+  border-color: #0b3c5d;
+  color: #ffffff;
+}
+
+.fdg-seam-chip.is-hit {
+  background: #16a34a !important;
+  border-color: #14532d !important;
+  color: #ffffff !important;
+}
+
+.fdg-seam-chip.is-missed {
+  background: #fef08a !important;
+  border-color: #d97706 !important;
+  border-style: dashed !important;
+  color: #92400e !important;
+}
+
+.fdg-seam-chip.is-extra {
+  background: #ef4444 !important;
+  border-color: #7f1d1d !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Interactive BVA 4-Strategy Matrix Dot Game (Loan Amount × Loan Term)
+   ========================================================================== */
+.bvag-stage {
+  display: grid;
+  grid-template-columns: 445px 1fr;
+  gap: 16px;
+  width: 100%;
+  align-items: stretch;
+  margin-top: 2px;
+}
+
+.bvag-board-card,
+.bvag-ctrl-card {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bvag-board-card {
+  border-top: 5px solid #0284c7;
+  align-items: center;
+  justify-content: center;
+}
+
+.bvag-ctrl-card {
+  border-top: 5px solid #059669;
+  gap: 7px;
+}
+
+.bvag-spec-box {
+  background: #f0f9ff;
+  border: 1.5px solid #bae6fd;
+  border-left: 5px solid #0284c7;
+  border-radius: 9px;
+  padding: 8px 12px;
+  font-size: 13.4px;
+  line-height: 1.42;
+  color: #0f172a;
+}
+
+.bvag-mission-box {
+  background: #fffbeb;
+  border: 1.8px solid #fcd34d;
+  border-left: 5px solid #d97706;
+  border-radius: 10px;
+  padding: 9px 13px;
+}
+
+.bvag-round-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.bvag-round-pill {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: #d97706;
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.bvag-stat-pill {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0b3c5d;
+  font-family: 'Fira Code', monospace;
+}
+
+.bvag-target-title {
+  font-size: 17px;
+  font-weight: 900;
+  color: #92400e;
+  margin: 2px 0 3px 0;
+}
+
+.bvag-target-hint {
+  font-size: 12.6px;
+  color: #475569;
+  line-height: 1.35;
+}
+
+.bvag-quick-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.bvag-qbtn {
+  padding: 4px 9px;
+  border-radius: 6px;
+  font-size: 11.8px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+  transition: all 0.14s ease;
+}
+
+.bvag-qbtn:hover {
+  border-color: #0284c7;
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.bvag-action-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 0.8fr;
+  gap: 8px;
+}
+
+.bvag-btn {
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 13.2px;
+  font-weight: 800;
+  cursor: pointer;
+  border: 1.5px solid #0284c7;
+  background: #0284c7;
+  color: #ffffff;
+  transition: all 0.15s ease;
+}
+
+.bvag-btn:hover {
+  background: #0369a1;
+}
+
+.bvag-btn.btn-next {
+  background: #059669;
+  border-color: #059669;
+}
+
+.bvag-btn.btn-next:hover {
+  background: #047857;
+}
+
+.bvag-btn.btn-reset {
+  background: #f8fafc;
+  color: #334155;
+  border-color: #94a3b8;
+}
+
+.bvag-btn.btn-reset:hover {
+  background: #e2e8f0;
+}
+
+.bvag-feedback-box {
+  padding: 8px 11px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  color: #334155;
+  line-height: 1.36;
+}
+
+.bvag-feedback-box.is-win {
+  background: #dcfce7;
+  border-color: #16a34a;
+  color: #15803d;
+}
+
+.bvag-feedback-box.is-err {
+  background: #fef2f2;
+  border-color: #ef4444;
+  color: #b91c1c;
+}
+
+.bvag-pt {
+  fill: #cbd5e1;
+  stroke: #64748b;
+  stroke-width: 1.6px;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+
+.bvag-pt:hover {
+  r: 8.5px;
+  stroke: #0284c7;
+  stroke-width: 2.4px;
+}
+
+.bvag-pt.is-selected {
+  fill: #0284c7 !important;
+  stroke: #0b3c5d !important;
+  stroke-width: 2.2px !important;
+  r: 8px;
+}
+
+.bvag-pt.is-hit {
+  fill: #16a34a !important;
+  stroke: #14532d !important;
+  stroke-width: 2.2px !important;
+  r: 8px;
+}
+
+.bvag-pt.is-missed {
+  fill: #fef08a !important;
+  stroke: #d97706 !important;
+  stroke-width: 2.8px !important;
+  stroke-dasharray: 2 1;
+  r: 8.5px;
+}
+
+.bvag-pt.is-extra {
+  fill: #ef4444 !important;
+  stroke: #7f1d1d !important;
+  stroke-width: 2.2px !important;
+  r: 8px;
+}
+
+/* ==========================================================================
+   Interactive Bounded Stack State Machine Lab (Section 7.4)
+   ========================================================================== */
+.stk-lab-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 16px;
+  width: 100%;
+  align-items: stretch;
+  margin-top: 2px;
+}
+
+.stk-ctrl-card,
+.stk-canvas-card {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 10px 13px;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stk-ctrl-card {
+  border-top: 5px solid #0284c7;
+  gap: 5px;
+}
+
+.stk-canvas-card {
+  border-top: 5px solid #059669;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.stk-canvas-card svg {
+  width: 100%;
+  height: auto;
+  max-height: 295px;
+}
+
+.stk-q-toolbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.stk-q-box {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-left: 4.5px solid #0284c7;
+  border-radius: 9px;
+  padding: 7px 11px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.stk-q-box.q2-box {
+  border-left-color: #7c3aed;
+}
+
+.stk-q-title {
+  font-size: 13.2px;
+  font-weight: 800;
+  color: #0b3c5d;
+  line-height: 1.3;
+}
+
+.stk-q-box.q2-box .stk-q-title {
+  color: #5b21b6;
+}
+
+.stk-q-desc {
+  font-size: 12px;
+  line-height: 1.32;
+  color: #334155;
+}
+
+.stk-switch-btn {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  border: 1.5px dashed #0284c7;
+  background: #f0f9ff;
+  color: #0369a1;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.stk-switch-btn:hover {
+  background: #e0f2fe;
+}
+
+.stk-switch-btn.is-on {
+  border-style: solid;
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.stk-q-box.q2-box .stk-switch-btn {
+  border-color: #7c3aed;
+  background: #faf5ff;
+  color: #6d28d9;
+}
+
+.stk-q-box.q2-box .stk-switch-btn:hover {
+  background: #f3e8ff;
+}
+
+.stk-q-box.q2-box .stk-switch-btn.is-on {
+  border-style: solid;
+  background: #7c3aed;
+  color: #ffffff;
+}
+
+.stk-std-stage {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 235px;
+}
+
+.stk-std-placeholder {
+  width: 100%;
+  height: 235px;
+  border: 2px dashed #94a3b8;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #475569;
+  text-align: center;
+  padding: 12px;
+}
+
+.stk-std-stage.is-revealed .stk-std-placeholder {
+  display: none;
+}
+
+.stk-std-stage:not(.is-revealed) #stk-sm-svg {
+  display: none;
+}
+
+.stk-tc-panel {
+  display: none;
+  background: #faf5ff;
+  border: 1.5px solid #d8b4fe;
+  border-left: 4.5px solid #7c3aed;
+  border-radius: 8px;
+  padding: 6px 11px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #1e293b;
+}
+
+.stk-tc-panel.is-revealed {
+  display: block;
+}
+
+@media print {
+  .stk-std-placeholder {
+    display: none !important;
+  }
+  #stk-sm-svg {
+    display: block !important;
+  }
+  .stk-tc-panel {
+    display: block !important;
+  }
+}
+
+.stk-prompt-box {
+  background: #f0f9ff;
+  border: 1.5px solid #bae6fd;
+  border-radius: 9px;
+  padding: 6px 10px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #0f172a;
+}
+
+.stk-btn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 7px;
+  margin: 3px 0;
+}
+
+.stk-btn {
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  font-family: 'Fira Code', monospace;
+  cursor: pointer;
+  border: 1.5px solid #0284c7;
+  background: #0284c7;
+  color: #ffffff;
+  transition: all 0.14s ease;
+}
+
+.stk-btn:hover {
+  background: #0369a1;
+}
+
+.stk-btn.btn-pop {
+  background: #059669;
+  border-color: #059669;
+}
+
+.stk-btn.btn-pop:hover {
+  background: #047857;
+}
+
+.stk-btn.btn-reset {
+  background: #f8fafc;
+  color: #334155;
+  border-color: #94a3b8;
+  font-family: inherit;
+}
+
+.stk-btn.btn-reset:hover {
+  background: #e2e8f0;
+}
+
+.stk-status-banner {
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  background: #eff6ff;
+  border: 1.5px solid #93c5fd;
+  color: #1e40af;
+  line-height: 1.35;
+}
+
+.stk-status-banner.is-error {
+  background: #fef2f2;
+  border-color: #f87171;
+  color: #b91c1c;
+}
+
+.stk-status-banner.is-ok {
+  background: #f0fdf4;
+  border-color: #86efac;
+  color: #15803d;
+}
+
+.stk-cov-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.stk-cov-pill {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 5px 8px;
+  text-align: center;
+  font-size: 12.2px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.stk-cov-pill strong {
+  display: block;
+  font-size: 14.5px;
+  color: #0b3c5d;
+}
+
+.stk-sm-state.is-current .stk-node-rect {
+  stroke-width: 3.5px !important;
+  filter: drop-shadow(0 0 6px rgba(2, 132, 199, 0.45));
+}
+
+.stk-sm-edge {
+  opacity: 0.35;
+  transition: opacity 0.2s ease;
+}
+
+.stk-sm-edge.is-visited {
+  opacity: 1;
+}
+
+.stk-sm-edge.is-last-fired path {
+  stroke-width: 3.6px !important;
+}
+
+
 
 
 

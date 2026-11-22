@@ -39,16 +39,16 @@ In software engineering, writing code is only half the battle. Delivering a depe
     <h3>Part 1: Foundations, Inspection & Black-Box</h3>
     <ul>
       <li><a href="#3"><b>7.1 Testing Foundations, Principles & Oracles:</b></a> ISTQB 7 principles, V&V, testing levels, testability, test pyramid, behavior Venn diagram, 3W2H landscape, Test Oracle problem, Metamorphic & Differential testing.</li>
-      <li><a href="#31"><b>7.2 Static Software Inspection & Code Review:</b></a> Testing iceberg & IEEE 1028 review spectrum, Fagan 6-step process & 5 roles, full-lifecycle review targets (SRS, Design models, Code), automated static analysis & CI gates.</li>
-      <li><a href="#36"><b>7.3 Black-Box Testing (BVA & EP):</b></a> Myers's philosophy, BVA formulas (4n+1, 6n+1, 5<sup>n</sup>, 7<sup>n</sup>), Triangle diversity deficit, Weak vs. Strong EP, Binary Search, NextDate December anomaly, Fault Masking, EP+BVA SOP.</li>
+      <li><a href="#33"><b>7.2 Static Software Inspection & Code Review:</b></a> Testing iceberg & IEEE 1028 review spectrum, Fagan 6-step process & 5 roles, full-lifecycle review targets (SRS, Design models, Code), automated static analysis & CI gates.</li>
+      <li><a href="#38"><b>7.3 Black-Box Testing (BVA & EP):</b></a> Myers's philosophy, BVA formulas (4n+1, 6n+1, 5<sup>n</sup>, 7<sup>n</sup>), Triangle diversity deficit, Weak vs. Strong EP, Binary Search, NextDate December anomaly, Fault Masking, EP+BVA SOP.</li>
     </ul>
   </div>
   <div>
     <h3>Part 2: Combinatorial, White-Box & Integration</h3>
     <ul>
-      <li><a href="#54"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
-      <li><a href="#69"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
-      <li><a href="#90"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
+      <li><a href="#62"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
+      <li><a href="#83"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
+      <li><a href="#104"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
     </ul>
   </div>
 </div>
@@ -138,13 +138,14 @@ This visual panorama summarizes the seven ISTQB principles side by side.
 <div class="split64">
 <div class="left">
 
-* **Core Meaning (Dijkstra's Axiom):**
-  - Testing proves that **defects are present**, but no matter how many thousands of tests pass, it **can never prove that no defects remain**.
-* **True Objective of Testing:**
-  - Not to prove perfection, but to **reduce the risk of undiscovered defects** in production and provide objective release confidence.
+* **Core Meaning (Dijkstra's 1970 Axiom):**
+  - Testing proves that **defects are present**, but no matter how many thousands of tests pass, it **can never mathematically prove zero defects remain**.
+  - Passing 1,000 unit tests only proves the system worked for those 1,000 specific input states and environment configurations.
+* **True Engineering Objective of Testing:**
+  - Falsification over verification: design **adversarial test cases** aimed at breaking assumptions, reducing residual production risk, and providing quantitative release confidence.
 * **[AI Era Warning] The Fluency Bias Trap:**
-  - AI-generated code often looks syntactically clean and well-formatted, creating an illusion of correctness.
-  - Yet LLM code frequently hides race conditions or subtle boundary bugs—a few green happy-path tests never guarantee defect-free code!
+  - AI-generated code looks syntactically clean and well-formatted, creating a dangerous illusion of correctness.
+  - Yet LLM code frequently hides concurrency race conditions, memory leaks, or subtle off-by-one boundary bugs—green happy-path tests never guarantee defect-free code!
 
 </div>
 <div class="right">
@@ -182,8 +183,8 @@ Sweeping one room with a flashlight and finding three bugs proves bugs exist in 
 <div class="left">
 
 * **The Reality of Combinatorial Explosion:**
-  - A program with 100 boolean conditions has 2<sup>100</sup> ≈ 1.27 × 10<sup>30</sup> logical combinations—impossible to exhaustively execute.
-* **Bugs Lurk in Corners (Why Random Testing Fails):**
+  - A program with 100 boolean flags has 2<sup>100</sup> ≈ 1.27 × 10<sup>30</sup> states; even a 10-field checkout form with 10 choices each yields 10<sup>10</sup> combinations—impossible to exhaustively execute even at 10<sup>9</sup> tests/sec.
+* **Bugs Lurk in Corners (Why Blind Random Testing Fails):**
   ```java
   int scale(int j) {
       j = j - 1; // Bug! Spec required: j = j + 1
@@ -192,7 +193,7 @@ Sweeping one room with a flashlight and finding three bugs proves bugs exist in 
   }
   ```
   - Out of 65,536 16-bit integers, `j - 1` and `j + 1` after integer division `/ 3000` only differ at multiples of `3000` (just **18 corner values**)!
-  - **Blind random hit probability** = `18 / 65536 ≈ 0.027%` → We must use **risk-based boundary sampling**!
+  - **Blind random hit probability** = `18 / 65536 ≈ 0.027%` → Engineering solution: replace brute force with **Equivalence Partitioning (EP), Boundary Value Analysis (BVA), and Pairwise sampling**!
 
 </div>
 <div class="right">
@@ -214,12 +215,14 @@ In `scale(int j)`, across 65,536 16-bit integers, only 18 corner inputs expose t
 <div class="split64">
 <div class="left">
 
-* **Core Meaning:**
-  - Both static and dynamic verification activities must start at the **earliest stages of the SDLC (Requirements & Architecture)** rather than waiting until code completion.
+* **Core Meaning (Shift-Left Verification):**
+  - Both static and dynamic verification must start at the <strong>earliest stages of the SDLC (Requirements & Architecture)</strong>—writing acceptance criteria and reviewing models before a single line of production code is written.
 * **Economic Basis (Boehm's `1 : 10 : 100` Cost Escalation Rule):**
-  - Catching a logical contradiction during SRS requirements review: **\$1**
-  - Catching a bug during developer unit testing: **\$10**
-  - Fixing a post-release production failure & compensating customers: **\$100 to \$1,000+**!
+  - Catching a logical contradiction during SRS requirements review: **\$1** (edit one sentence in the specification).
+  - Catching a bug during developer unit testing / TDD: **\$10** (rewrite local method & re-run CI).
+  - Fixing a post-release production failure: **\$100 to \$1,000+** (emergency hotfix, DB migration, SLA penalties & customer churn)!
+* **Practical Shift-Left Actions:**
+  - Fagan SRS/Design inspections, Test-Driven Development (TDD), and automated static analysis / SAST gates in every pull request.
 
 </div>
 <div class="right">
@@ -241,7 +244,7 @@ Principle 3 is the economic foundation of Shift-Left testing: catching an ambigu
 ## The Economic Case for Shift-Left: Bug Fix Cost Curve
 
 <div class="image-wrapper">
-  <img src="../../img/ch07/bug_cost_curve.png" alt="Bug Cost Curve across SDLC" />
+  <img src="../../img/ch07/bug_cost_curve.svg" alt="Bug Cost Curve across SDLC" />
 </div>
 
 <!--
@@ -256,12 +259,13 @@ This curve illustrates why modern DevSecOps pipelines invest so heavily in stati
 <div class="split64">
 <div class="left">
 
-* **Core Meaning (The 80/20 Pareto Principle):**
-  - A small number of modules (~20%) typically contain the vast majority (~80%) of all discovered defects and operational failures.
-* **Why Do Defects Cluster?**
-  - High cyclomatic and cognitive complexity, legacy technical debt, frequent requirement churn, or fragile third-party integrations.
-* **Engineering Action:**
-  - When a module yields many bugs, never assume *"we found them all"*—concentrate **Mutation Testing** and **Property-Based Testing** on that defect hotspot!
+* **Core Meaning (The 80/20 Pareto Distribution):**
+  - Empirical studies (IBM, NASA, Microsoft) show that **~80% of production defects and crashes cluster inside ~20% of source modules**.
+* **Why Do Defects Cluster in Hotspot Modules?**
+  - High cyclomatic and cognitive complexity (`CC > 15`), legacy "God Classes," frequent requirement churn, shared mutable state, or fragile third-party integrations.
+* **Risk-Based Resource Allocation:**
+  - Never spread testing effort thinly and uniformly across trivial getter/setter classes!
+  - Track **Git commit churn + historical bug density + complexity metrics** to identify hotspots, then focus **Fagan inspection, MC/DC, and PITest Mutation Testing** on those critical 20% modules!
 
 </div>
 <div class="right">
@@ -283,13 +287,13 @@ Principle 4 reminds us that defects never distribute uniformly: when you find te
 <div class="split64">
 <div class="left">
 
-* **Core Meaning:**
-  - Spraying the exact same pesticide crop after crop leaves behind resistant pests; **running the exact same static test suite build after build stops uncovering new defects**.
+* **Core Meaning (Boris Beizer's 1990 Metaphor):**
+  - Spraying the exact same pesticide crop after crop leaves behind resistant super-pests; **running the exact same static test suite build after build stops uncovering new defects**.
+  - Old tests remain valuable as a **regression safety net**, but their defect-discovery rate on evolved business logic drops toward zero.
 * **Engineering Countermeasures:**
-  - Continuously review, refactor, and expand regression suites as features evolve.
-  - Adopt **Property-Based Testing (`jqwik`)** to bombard code with fresh randomized boundary inputs on every run.
+  - Periodically audit test efficacy with **Mutation Testing (PITest)**, retire redundant tests, and add **Property-Based Testing (`jqwik`)** to bombard code with fresh randomized inputs on every run.
 * **[AI Era Warning] Self-Confirming False Green Lights:**
-  - If you ask the same LLM session to write both the implementation code and its unit tests, the LLM copies its own flawed assumptions into the test assertions!
+  - Asking the **same LLM context** to generate both production code and unit tests encodes the same hallucinated edge-case blind spots into the assertions—always use independent spec-driven oracles!
 
 </div>
 <div class="right">
@@ -330,7 +334,7 @@ Bugs adapt around static, predictable traps. Evolving our test cases—and intro
   - **Safety-Critical Avionics / Medical Devices:** Mandates DO-178C Level A, 100% MC/DC structural coverage, formal verification, and Hardware-in-the-Loop (HIL).
   - **Agile E-Commerce Web App:** Prioritizes fast CI/CD unit tests, API contract testing (Pact), high-concurrency load testing, and A/B usability experiments.
 * **Principle 7 — Absence-of-Errors is a Fallacy:**
-  - **"Zero Bugs" ≠ "Successful System":** Finding and fixing 100% of coding defects is useless if the software **fails to solve the customer's actual business problem** or violates domain regulations.
+  - <strong>"Zero Bugs" ≠ "Successful System":</strong> Finding and fixing 100% of coding defects is useless if the software **fails to solve the customer's actual business problem** or violates domain regulations.
   - **[AI Era Warning]:** An LLM can generate code that compiles cleanly and passes 100% of unit tests, yet implements an outdated or illegal business formula!
 
 </div>
@@ -518,7 +522,7 @@ Dozens of isolated unit tests form the foundation for component and integration 
 
 <div class="card-deck">
 
-> High-assurance software strives to align **Specification (S)**, **Implementation (P)**, and **Test Suite (T)** into maximum overlap.
+> High-assurance software strives to align <strong>Specification (S)</strong>, <strong>Implementation (P)</strong>, and <strong>Test Suite (T)</strong> into maximum overlap.
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -628,7 +632,7 @@ Using `divide(a, b)` as an example, Test Cases branch by logical partitions whil
 <div class="mm-root-sub">5 Core Dimensions of Quality Verification</div>
 <div class="mm-root-actions">
 <button type="button" class="mm-action-btn" id="mm-btn-toggle-all">➕ Expand All</button>
-<button type="button" class="mm-action-btn mm-btn-secondary" id="mm-btn-step">▶ Next Branch (1/5)</button>
+<button type="button" class="mm-action-btn mm-btn-secondary" id="mm-btn-step" title="Shortcut: Press 'n' key">▶ Next Branch (1/5) [n]</button>
 </div>
 </div>
 </div>
@@ -782,6 +786,26 @@ In SQA Section 3.5, we organize the entire software testing universe through thi
 - Record & Replay testing: 錄製與回放測試（記錄使用者在介面上的真實點擊與輸入軌跡，自動轉化為可重複執行之自動化測試腳本的技術）
 -->
 ---
+<!-- _class: title-image-slide -->
+
+## 3W2H Deep Dive: Who Tests (Dim 1) & How to Execute (Dim 4)
+
+<div class="image-wrapper">
+  <img src="../../img/ch07/testing_3w2h_dim1_dim4_concepts.svg" alt="3W2H Deep Dive: Dimension 1 Who Tests and Dimension 4 How to Execute" />
+</div>
+
+<!--
+This 6-card architectural comparison zooms in on Dimension 1 (Who Tests?) and Dimension 4 (How to Execute?) from the 3W2H Mind Map:
+- Row 1 compares the three testing roles across the independence spectrum:
+  1. Developers (Unit Testing & TDD): fastest feedback loop and deepest code intimacy, but lowest psychological independence (author bias).
+  2. Peers & Dedicated QA (Code Review, Integration & Alpha Testing): adversarial mindset and controlled in-house staging simulation.
+  3. Customers & End Users (UAT & Beta Testing): real-world business validation and external Beta trials in unpredictable customer environments.
+- Row 2 compares the three execution paradigms:
+  4. Scripted CI/CD Automation: deterministic JUnit 5 / Playwright regression checks executed on every commit.
+  5. Exploratory Testing: time-boxed session charters combining simultaneous learning, test design, and adversarial probing to break the Pesticide Paradox.
+  6. Fuzzing & Record-and-Replay: automated mutated-payload bombardment (AFL++ / Jazzer) and live user-journey capture into replayable scripts.
+-->
+---
 ## How to Evaluate: Test Oracles & The Test Oracle Problem
 
 <div class="card-deck">
@@ -795,7 +819,7 @@ In SQA Section 3.5, we organize the entire software testing universe through thi
 - **Ground-Truth Mechanism:**
   - The baseline authority (SRS formula, reference model, or invariant) used to determine whether the Program Under Test (`PUT`) produced the **correct output** for a given input.
 - **Test Oracle Comparator Architecture:**
-  - The same test input is fed to the **Program Under Test (`PUT`)** (`Actual Output y`) and the **Test Oracle** (`Expected Output y*`).
+  - The same test input is fed to the <strong>Program Under Test (`PUT`)</strong> (`Actual Output y`) and the **Test Oracle** (`Expected Output y*`).
   - The comparator asserts `Actual == Expected` (`Match → PASS`, `Mismatch → FAIL`).
 
 </div>
@@ -830,7 +854,7 @@ Every test requires a Test Oracle that supplies the expected result to compare a
 
 ### 1. Metamorphic Testing (MT)
 - **Verify Input-Output Relations (`x → x'`):**
-  - Even if we don't know the exact output `f(x)`, applying a controlled transformation `x → x'` yields a **Metamorphic Relation (MR)** between `f(x)` and `f(x')` that must hold true!
+  - Even if we don't know the exact output `f(x)`, applying a controlled transformation `x → x'` yields a <strong>Metamorphic Relation (MR)</strong> between `f(x)` and `f(x')` that must hold true!
 - **Concrete Domain Examples:**
   - **Autonomous Driving:** Rotating a pedestrian image by `5°` or adding rain noise must still detect the pedestrian.
   - **Search Engine:** Results for `"TSMC AND revenue"` must be a strict subset (`⊆`) of results for `"TSMC"`.
@@ -923,6 +947,60 @@ Let's pause for Concept Check Question 1 on foundational testing principles.
 The correct answer is **B**.
 -->
 ---
+## 🧩 7.1 Self-Practice: Advanced Foundations, V&V & Oracle Challenge
+
+<div class="sp-quiz-stage" id="sp-quiz-71">
+<div class="sp-mixed-grid">
+<div class="sp-mixed-col">
+<div class="sp-mc-card" data-ans="C">
+<div class="sp-mc-stem">1. [MC — 25 pts] In the 3-Circle Venn Diagram (<code>S</code> = Spec, <code>P</code> = Code, <code>T</code> = Tests), an engineer deletes an untested legacy helper function. Compilation passes and 100% of existing tests pass, yet production crashes on an undocumented legacy API call. Which Venn region was that deleted code in?</div>
+<div class="sp-mc-opts">
+<div class="sp-mc-opt" data-opt="A"><strong>A.</strong> Region 2: <code>(S ∩ P) \ T</code> (Specified &amp; Implemented, Untested)</div>
+<div class="sp-mc-opt" data-opt="B"><strong>B.</strong> Region 4: <code>(S ∩ T) \ P</code> (Specified &amp; Tested, Unimplemented)</div>
+<div class="sp-mc-opt" data-opt="C"><strong>C.</strong> Region 6: <code>P \ (S ∪ T)</code> (Unspecified &amp; Untested Ghost Code)</div>
+<div class="sp-mc-opt" data-opt="D"><strong>D.</strong> Region 7: <code>T \ (S ∪ P)</code> (Obsolete / Hallucinated Test)</div>
+</div>
+</div>
+<div class="sp-mc-card" data-ans="B">
+<div class="sp-mc-stem">2. [MC — 25 pts] An autonomous braking controller passes 100% MC/DC unit tests against its SRS formula, and passes track trials in dry weather. However, the SRS omitted icy-road friction physics, causing a skid in winter. Which statement accurately diagnoses the fault chain and V&amp;V status?</div>
+<div class="sp-mc-opts">
+<div class="sp-mc-opt" data-opt="A"><strong>A.</strong> Verification failed; the icy-road skid is the Fault (Defect), and the missing SRS formula is the Failure</div>
+<div class="sp-mc-opt" data-opt="B"><strong>B.</strong> Verification succeeded but Validation failed; the engineer's omission is the Error, the missing SRS branch is the Fault, and the skid is the Failure</div>
+<div class="sp-mc-opt" data-opt="C"><strong>C.</strong> Both Verification and Validation succeeded; the skid is an unavoidable hardware anomaly outside IEEE 610.12</div>
+<div class="sp-mc-opt" data-opt="D"><strong>D.</strong> Validation succeeded but Verification failed due to the Pesticide Paradox on dry-weather tests</div>
+</div>
+</div>
+</div>
+<div class="sp-mixed-col">
+<div class="sp-bank-bar">
+<span class="sp-bank-label">[Word Bank] Confusable Word Bank (9 chips for 3 slots):</span>
+<span class="sp-chip" data-word="Verification">Verification</span>
+<span class="sp-chip" data-word="Validation">Validation</span>
+<span class="sp-chip" data-word="Pesticide Paradox">Pesticide Paradox</span>
+<span class="sp-chip" data-word="Defect Clustering">Defect Clustering</span>
+<span class="sp-chip" data-word="Absence-of-Errors Fallacy">Absence-of-Errors Fallacy</span>
+<span class="sp-chip" data-word="Metamorphic Relation">Metamorphic Relation</span>
+<span class="sp-chip" data-word="Differential Oracle">Differential Oracle</span>
+<span class="sp-chip" data-word="Fault (Defect / Bug)">Fault (Defect / Bug)</span>
+<span class="sp-chip" data-word="Failure">Failure</span>
+</div>
+<div class="sp-q-item" style="font-size: 13.4px; padding: 7px 11px;"><strong>3. [Word Bank — 30 pts]</strong> Running the same regression suite for two years until it stops catching new bugs exhibits the <span class="sp-slot is-active" data-ans="Pesticide Paradox">[ 1. Click Chip ]</span>, whereas concentrating 80% of defects in 20% of complex modules reflects Pareto <span class="sp-slot" data-ans="Defect Clustering">[ 2. Click Chip ]</span>. Meanwhile, shipping a bug-free product that solves the wrong business workflow commits the <span class="sp-slot" data-ans="Absence-of-Errors Fallacy">[ 3. Click Chip ]</span>.</div>
+<div class="sp-q-item" style="font-size: 13.4px; padding: 7px 11px;"><strong>4. [No Word Bank — Type Exact Term — 20 pts]</strong> In the testing architecture, the mechanism or principle used to judge whether a test execution passed or failed by comparing actual output against expected behavior is called a Test <span class="sp-free-input" data-ans="Oracle|Test Oracle" data-placeholder="Type 1 key term..."></span>.</div>
+</div>
+</div>
+<div class="sp-footer-bar">
+<div class="sp-btn-group">
+<button type="button" class="sp-btn sp-btn-submit">Submit &amp; Check Score</button>
+<button type="button" class="sp-btn sp-btn-reset">↺ Play Again</button>
+</div>
+<div class="sp-score-msg">Hint: Answer 2 MCQs + 3 Word-Bank slots + 1 Free-Text blank, then click Submit!</div>
+</div>
+</div>
+
+<!--
+This upgraded Section 7.1 self-practice combines two deep analytical multiple-choice questions (Venn Diagram Region 6 diagnosis and IEEE 610.12 Error-Fault-Failure + V&V distinction), a 9-chip confusable word bank for three slots (Pesticide Paradox vs. Defect Clustering vs. Absence-of-Errors Fallacy), and a direct free-text input blank testing the foundational term "Oracle" (Test Oracle).
+-->
+---
 <!-- _class: lead -->
 <!-- header: '7.2 Static Inspection & Code Review' -->
 
@@ -955,7 +1033,7 @@ We now move to Section 7.2: Static Software Inspection and Code Review (integrat
 </div>
 <div class="right">
 
-<img src="../../img/ch07/testing_iceberg.jpg" alt="Software Testing Iceberg Metaphor" />
+<img src="../../img/ch07/testing_iceberg_concept.svg" alt="Software Testing Iceberg Metaphor" />
 
 </div>
 </div>
@@ -1045,10 +1123,10 @@ We now enter Section 7.3: Black-Box Testing — Boundary Value Analysis (BVA) an
 * **Three Core Elements of Black-Box Testing:**
   1. **Test Inputs:** Valid inputs, extreme boundary values, and malformed invalid inputs.
   2. **System Under Test (SUT):** Treated as an opaque black box; internal algorithms and data structures remain completely hidden.
-  3. **Output Verification:** Compares actual outputs against expected specification Oracles (**"What"** the system does, decoupled from **"How"** it is coded—zero test breakage during internal refactoring!).
+  3. **Output Verification:** Compares actual outputs against expected specification Oracles (<strong>"What"</strong> the system does, decoupled from <strong>"How"</strong> it is coded—zero test breakage during internal refactoring!).
 * **Why Exhaustive Testing is Mathematically Impossible:**
   - Even a simple 32-bit integer addition `int add(int a, int b)` has 2<sup>32</sup> × 2<sup>32</sup> = 2<sup>64</sup> ≈ 1.84 × 10<sup>19</sup> input pairs.
-  - At **1 billion tests/sec (1 GHz)**, exhaustive testing would take **584 years**!
+  - At <strong>1 billion tests/sec (1 GHz)</strong>, exhaustive testing would take **584 years**!
   - **Mission of Black-Box Engineering:** Select the **smallest representative subset** that captures the **maximum probability of defects**.
 
 </div>
@@ -1090,7 +1168,7 @@ A trivial two-integer function `int add(int a, int b)` has 2^64 possible input c
 
 ### The Single Fault Assumption
 - **Core Premise:**
-  - Failures are rarely caused by simultaneous defects of two or more variables; testing **one variable at its extreme boundaries** while holding all other variables at their **nominal center (`norm`)** catches most bugs.
+  - Failures are rarely caused by simultaneous defects of two or more variables; testing **one variable at its extreme boundaries** while holding all other variables at their <strong>nominal center (`norm`)</strong> catches most bugs.
 - **5 Standard Sampling Points for `[min, max]`:**
   - **`min`** (minimum), **`min+`** (`min + 1`), **`norm`** (nominal midpoint), **`max-`** (`max - 1`), and **`max`** (maximum).
 
@@ -1267,7 +1345,7 @@ The 49 points on this 2D plane represent the entire boundary sampling space for 
 
 <div class="card-deck">
 
-> Choose **`6n + 1` Independent Robust BVA** for standard modules, and apply **3-Point (`Out-On-In`)** sampling and **Business Resolution** for continuous numbers.
+> Choose **`6n + 1` Independent Robust BVA** for standard modules, and apply <strong>3-Point (`Out-On-In`)</strong> sampling and **Business Resolution** for continuous numbers.
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -1362,6 +1440,115 @@ Pairing `@ParameterizedTest` with `assertAll` lets you run dozens of boundary ch
 
 💡 難字與專業術語解說：
 - grouped assertions (`assertAll`): 群組聚合斷言（JUnit 5 以 Lambda 封裝多個斷言，確保所有斷言皆被執行並一次彙整所有失敗結果的機制）
+-->
+---
+## 🧩 BVA Interactive Matrix Game: Mortgage Rate Engine (`Amount × Term`)
+
+<div class="bvag-stage" id="bva-loan-game">
+<div class="bvag-board-card">
+<svg xmlns="http://www.w3.org/2000/svg" id="bvag-svg" viewBox="0 0 490 480" width="430" height="420" style="display: block; max-width: 100%; max-height: 100%;">
+<rect x="95" y="95" width="290" height="290" fill="#f0f9ff" fill-opacity="0.55" stroke="#0284c7" stroke-width="2" stroke-dasharray="6,4" rx="8" />
+<rect x="40" y="40" width="400" height="400" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4,4" rx="10" />
+<line x1="40" y1="240" x2="440" y2="240" stroke="#94a3b8" stroke-width="1.8" />
+<line x1="240" y1="40" x2="240" y2="440" stroke="#94a3b8" stroke-width="1.8" />
+<text x="240" y="20" text-anchor="middle" font-family="sans-serif" font-size="12.5" font-weight="800" fill="#0b3c5d">Y: Loan Term (1 to 30 Years, step = 1 yr)</text>
+<text x="240" y="472" text-anchor="middle" font-family="sans-serif" font-size="12.5" font-weight="800" fill="#0b3c5d">X: Loan Amount (100k to 10,000k NT$, step = 1k)</text>
+<text x="40" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#e11d48">99k</text>
+<text x="95" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">100k</text>
+<text x="150" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">101k</text>
+<text x="256" y="256" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#0f172a">5000k</text>
+<text x="330" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">9999k</text>
+<text x="385" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">10000k</text>
+<text x="444" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#e11d48">10001k</text>
+<text x="231" y="444" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#e11d48">0yr</text>
+<text x="231" y="389" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">1yr</text>
+<text x="231" y="334" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">2yr</text>
+<text x="231" y="233" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#0f172a">15yr</text>
+<text x="231" y="154" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">29yr</text>
+<text x="231" y="99" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">30yr</text>
+<text x="231" y="44" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#e11d48">31yr</text>
+<g id="bvag-dots-layer"></g>
+</svg>
+</div>
+<div class="bvag-ctrl-card">
+<div class="bvag-spec-box">
+<strong>[Problem Specification] Mortgage Interest Rate Calculator:</strong><br/>
+<code>calcRate(amountK, termYears)</code> computes a borrower's annual mortgage rate based on two integer inputs:<br/>
+• <strong>Loan Amount (<code>X</code>)</strong>: Accepted from <strong>NT$ 100k</strong> up to <strong>NT$ 10,000k</strong> (in <code>1k</code> units; nominal center = <code>5000k</code>).<br/>
+• <strong>Loan Term (<code>Y</code>)</strong>: Accepted from <strong>1 year</strong> up to <strong>30 years</strong> (in <code>1 yr</code> units; nominal center = <code>15yr</code>).<br/>
+• Values outside these ranges are rejected. Deduce the boundary points on the 7×7 grid!
+</div>
+<div class="bvag-mission-box">
+<div class="bvag-round-row">
+<span class="bvag-round-pill" id="bvag-round-pill">CHALLENGE 1 OF 4 (RANDOMIZED)</span>
+<span class="bvag-stat-pill" id="bvag-score-pill">Solved: 0 / 4 | Selected: 0 dots</span>
+</div>
+<div class="bvag-target-title" id="bvag-target-title">Target Strategy: Loading...</div>
+<div class="bvag-target-hint">Click individual dots on the left matrix (or use the quick-toggle helpers below) to select the exact test suite required by this strategy, then click <strong>Submit Selection</strong>!</div>
+</div>
+<div class="bvag-quick-bar">
+<span style="font-size: 11.5px; font-weight: 800; color: #475569;">Quick Helpers:</span>
+<button type="button" class="bvag-qbtn" data-qact="valid-axes">± Toggle Valid Axes Cross</button>
+<button type="button" class="bvag-qbtn" data-qact="outer-tips">± Toggle 4 Out-of-Bounds Tips</button>
+<button type="button" class="bvag-qbtn" data-qact="valid-box">± Toggle Inner Valid Box</button>
+<button type="button" class="bvag-qbtn" data-qact="all-grid">± Toggle Entire Grid</button>
+<button type="button" class="bvag-qbtn" data-qact="clear">✕ Clear All</button>
+</div>
+<div class="bvag-action-row">
+<button type="button" class="bvag-btn" id="bvag-btn-submit">Submit Selection</button>
+<button type="button" class="bvag-btn btn-next" id="bvag-btn-next">Next Challenge ➔</button>
+<button type="button" class="bvag-btn btn-reset" id="bvag-btn-reshuffle">↺ Reshuffle 4</button>
+</div>
+<div class="bvag-feedback-box" id="bvag-feedback-msg">Click dots on the matrix (blue = selected) to match the target BVA strategy above!</div>
+</div>
+</div>
+
+<!--
+This interactive 4-round game tests whether students truly understand the geometric sampling differences among the 4 BVA strategies (Independent Normal BVA, Independent Robust BVA, Worst-Case Normal BVA, and Worst-Case Robust BVA) without giving away the `4n+1 / 6n+1 / 5^n / 7^n` formulas. From the Mortgage Rate specification (`Loan Amount` in `[100k, 10000k]` and `Loan Term` in `[1yr, 30yr]`), students deduce the boundary coordinates (`99k, 100k, 101k, 5000k, 9999k, 10000k, 10001k` and `0yr, 1yr, 2yr, 15yr, 29yr, 30yr, 31yr`) and click the exact dots on the 7x7 matrix for each randomly ordered strategy.
+-->
+---
+## Equivalence Partitioning (EP): Core Definition & 4 Coverage Strategies
+
+<div class="card-deck">
+
+> **Core Idea of EP:** Partition the vast input domain `D` into mutually exclusive **Equivalence Classes** where all values in a class trigger the **same execution path**—so testing **one representative** verifies the entire class!
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment>
+
+### 1. Mathematical Properties & Valid vs. Invalid
+- **Two Formal Partition Axioms (`D = E₁ ∪ E₂ ∪ ... ∪ Eₖ`):**
+  1. **Completeness (Union):** Every possible input belongs to at least one partition (`∪ Eᵢ = D`).
+  2. **Disjointness (Mutual Exclusion):** No two partitions overlap (`Eᵢ ∩ Eⱼ = ∅` for `i ≠ j`).
+- **Equal Defect-Detection Hypothesis:**
+  - If one representative value in `Eᵢ` exposes a functional bug, any other value in `Eᵢ` will expose the same bug.
+- **Two Types of Equivalence Classes:**
+  - <strong>Valid Classes (`V`):</strong> Expected normal business rules & branches.
+  - <strong>Invalid Classes (`I`):</strong> Out-of-range, `null`, or malformed inputs that must be rejected defensively.
+
+</div>
+<div class="card" data-marpit-fragment>
+
+### 2. The 2 × 2 EP Strategy Matrix
+- **Dimension A — Fault Assumption (`Weak` vs. `Strong`):**
+  - <strong>Weak EP (`max(|V₁|, |V₂|)`):</strong> *Single Fault Assumption* — covers each partition at least once without full combinations.
+  - <strong>Strong EP (`|V₁| × |V₂|`):</strong> *Multiple Fault Assumption* — tests the full Cartesian product of partitions to catch interaction bugs.
+- **Dimension B — Invalid Input Handling (`Normal` vs. `Robust`):**
+  - <strong>Normal EP:</strong> Tests **Valid classes (`V`) only**.
+  - <strong>Robust EP:</strong> Adds **Invalid classes (`I`)**. In **Weak Robust EP**, we enforce the **Single Invalid Rule** (test only *one* invalid input per test case while keeping all other inputs valid) to prevent **Fault Masking**!
+
+</div>
+</div>
+</div>
+
+<!--
+Before exploring the interactive EP matrix on the next slide, let's establish the formal definition and the 2x2 taxonomy of Equivalence Partitioning (EP).
+First, an equivalence partition divides the input domain into mutually disjoint and collectively exhaustive subsets such that the software behaves identically for every value within the same subset. Thus, selecting a single representative value from the center of a partition is sufficient to represent millions of redundant values.
+Second, combining our Fault Assumption (Weak = Single Fault `max`, Strong = Multi-Fault Cartesian Product) with Invalid Input Handling (Normal = Valid only, Robust = Valid + Invalid) yields the four standard EP strategies: Weak Normal, Strong Normal, Weak Robust (Single-Invalid Rule), and Strong Robust.
+
+💡 難字與專業術語解說：
+- mutually disjoint and collectively exhaustive: 互斥且完全窮盡（各等價類別之間交集為空集合，且所有類別之聯集完整涵蓋整個輸入定義域）
+- equal defect-detection hypothesis: 等效抓錯假設（同一等價分割內的任意兩個輸入值，走過相同的條件分支，具備相同的揭露缺陷能力）
 -->
 ---
 ## Interactive EP Explorer: Weak vs. Strong & Normal vs. Robust Matrix
@@ -1472,12 +1659,12 @@ Equivalence Partitioning spans 4 coverage dimensions. Under Weak Normal EP, only
   <div class="bs-top-bar">
     <div style="display: flex; align-items: center;">
       <span style="font-size: 13px; font-weight: 800; color: #0b3c5d;">Target Key (k):</span>
-      <input type="number" id="bs-input-k" value="23" class="bs-k-input" style="margin: 0 6px;" />
+      <input type="number" id="bs-input-k" value="35" class="bs-k-input" style="margin: 0 6px;" />
       <span style="font-size: 11px; font-weight: 700; color: #64748b; margin-right: 4px;">Presets:</span>
       <span class="bs-quick-pill" data-k="3">3 (Head)</span>
-      <span class="bs-quick-pill" data-k="15">15 (Mid)</span>
-      <span class="bs-quick-pill" data-k="23">23</span>
-      <span class="bs-quick-pill" data-k="31">31 (Tail)</span>
+      <span class="bs-quick-pill" data-k="23">23 (Mid)</span>
+      <span class="bs-quick-pill" data-k="35">35</span>
+      <span class="bs-quick-pill" data-k="43">43 (Tail)</span>
       <span class="bs-quick-pill" data-k="8">8 (Miss)</span>
     </div>
     <div>
@@ -1487,7 +1674,7 @@ Equivalence Partitioning spans 4 coverage dimensions. Under Weak Normal EP, only
   </div>
 
   <div class="bs-status-banner">
-    <span id="bs-status-text">Step 0: Initial search range [0..7], mid = floor((0+7)/2) = 3 (arr[3] = 15)</span>
+    <span id="bs-status-text">Step 0: Initial search range [0..10], mid = floor((0+10)/2) = 5 (arr[5] = 23)</span>
     <span id="bs-status-tag" style="background: #e0f2fe; color: #0369a1; padding: 1px 8px; border-radius: 4px; font-size: 10.5px; font-weight: 800;">Ready</span>
   </div>
 
@@ -1495,11 +1682,14 @@ Equivalence Partitioning spans 4 coverage dimensions. Under Weak Normal EP, only
     <div class="bs-array-cell" data-idx="0"><span class="bs-cell-idx">0</span><span class="bs-cell-val">3</span><span class="bs-pointer-pill bs-ptr-low">low</span></div>
     <div class="bs-array-cell" data-idx="1"><span class="bs-cell-idx">1</span><span class="bs-cell-val">7</span></div>
     <div class="bs-array-cell" data-idx="2"><span class="bs-cell-idx">2</span><span class="bs-cell-val">11</span></div>
-    <div class="bs-array-cell is-mid" data-idx="3"><span class="bs-cell-idx">3</span><span class="bs-cell-val">15</span><span class="bs-pointer-pill bs-ptr-mid">mid</span></div>
+    <div class="bs-array-cell" data-idx="3"><span class="bs-cell-idx">3</span><span class="bs-cell-val">15</span></div>
     <div class="bs-array-cell" data-idx="4"><span class="bs-cell-idx">4</span><span class="bs-cell-val">19</span></div>
-    <div class="bs-array-cell" data-idx="5"><span class="bs-cell-idx">5</span><span class="bs-cell-val">23</span></div>
+    <div class="bs-array-cell is-mid" data-idx="5"><span class="bs-cell-idx">5</span><span class="bs-cell-val">23</span><span class="bs-pointer-pill bs-ptr-mid">mid</span></div>
     <div class="bs-array-cell" data-idx="6"><span class="bs-cell-idx">6</span><span class="bs-cell-val">27</span></div>
-    <div class="bs-array-cell" data-idx="7"><span class="bs-cell-idx">7</span><span class="bs-cell-val">31</span><span class="bs-pointer-pill bs-ptr-high">high</span></div>
+    <div class="bs-array-cell" data-idx="7"><span class="bs-cell-idx">7</span><span class="bs-cell-val">31</span></div>
+    <div class="bs-array-cell" data-idx="8"><span class="bs-cell-idx">8</span><span class="bs-cell-val">35</span></div>
+    <div class="bs-array-cell" data-idx="9"><span class="bs-cell-idx">9</span><span class="bs-cell-val">39</span></div>
+    <div class="bs-array-cell" data-idx="10"><span class="bs-cell-idx">10</span><span class="bs-cell-val">43</span><span class="bs-pointer-pill bs-ptr-high">high</span></div>
   </div>
 </div>
 
@@ -1559,7 +1749,7 @@ Step through the interactive binary search trace at the top by clicking Next Ste
 
 </div>
 
-<div class="card" style="margin-top: 6px; padding: 8px 14px; border-left: 4px solid #d97706; background: #fffbeb;">
+<div class="card" data-marpit-fragment style="margin-top: 6px; padding: 8px 14px; border-left: 4px solid #d97706; background: #fffbeb;">
 
 <h3 style="font-size: 14.5px; margin: 0 0 4px 0; color: #b45309;">💡 Critical Reflection &amp; Design Questions</h3>
 
@@ -1625,7 +1815,7 @@ These answers reveal two foundational software engineering principles. First, St
 ---
 ## EP Case Study 2 (1/2): `NextDate(Y, M, D)` Partition Discovery
 
-> **Golden Rule of EP:** Same partition $\iff$ identical state transitions & downstream logic!
+> **Golden Rule of EP:** Same partition ↔ identical state transitions & downstream logic!
 
 <div class="two-columns">
 <div class="left">
@@ -1671,7 +1861,7 @@ Guide students through the interactive partition discovery of NextDate(Y, M, D).
 | **TC₂** | `2024/02/28` | | | ● | | | ● | | | | ● | | `2024/02/29` | **Weak Base (2/5):** Leap Feb 28 increment (`Day + 1`; covers M₃, D₂, Y₁) |
 | **TC₃** | `2024/02/29` | | | ● | | | | ● | | | ● | | `2024/03/01` | **Weak Base (3/5):** Leap Feb 29 month rollover (`Month + 1`; covers D₃) |
 | **TC₄** | `2023/04/30` | ● | | | | | | | ● | | | ● | `2023/05/01` | **Weak Base (4/5):** 30-day month rollover (`Month + 1`; covers M₁, D₄) |
-| **TC₅** | `2023/12/31` | | | | ● | | | | | ● | | ● | `2024/01/01` | **Weak Base (5/5):** ★ **Dec 31 Year Rollover (`Year+1, Month=1`; M₄, D₅)** |
+| **TC₅** | `2023/12/31` | | | | ● | | | | | ● | | ● | `2024/01/01` | **Weak Base (5/5):** ★ <strong>Dec 31 Year Rollover (`Year+1, Month=1`; M₄, D₅)</strong> |
 | **TC₆** | `2023/07/31` | | ● | | | | | | | ● | | ● | `2023/08/01` | **Coupled (+1):** Non-Dec 31-day rollover (`Month + 1`, Year unchanged) |
 | **TC₇** | `2023/12/15` | | | | ● | ● | | | | | | ● | `2023/12/16` | **Coupled (+2):** Normal Dec day increment (`Day + 1`, no premature rollover) |
 | **TC₈** | `2023/02/28` | | | ● | | | ● | | | | | ● | `2023/03/01` | **Coupled (+3):** Common-year Feb 28 rollover to Mar 1 (`M₃×D₂×Y₂`) |
@@ -1679,12 +1869,12 @@ Guide students through the interactive partition discovery of NextDate(Y, M, D).
 </div>
 
 <div class="card" style="margin-top: 6px; padding: 6px 14px; border-left: 4px solid #059669; background: #f0fdf4;">
-
-<h3 style="font-size: 14px; margin: 0 0 2px 0; color: #166534;">🎯 Visualizing 100% Weak Coverage at a Glance</h3>
-- **Vertical Column Inspection:** Look down every column across <code>M₁..M₄</code>, <code>D₁..D₅</code>, and <code>Y₁..Y₂</code>. Notice that <strong>every single column contains at least one dot (●) in TC₁..TC₅</strong>!
-- **Minimal Cost:** Weak Coverage is 100% satisfied with just <strong>5 base test cases</strong> (<code>max(|M|, |D|, |Y|) = 5</code>).
-- **Targeted Robustness:** <code>TC₆..TC₈</code> selectively add coupled boundary combinations without full Cartesian explosion.
-
+<h3 style="font-size: 14px; margin: 0 0 4px 0; color: #166534;">🎯 Visualizing 100% Weak Coverage at a Glance</h3>
+<ul style="margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.38;">
+<li><strong>Vertical Column Inspection:</strong> Look down every column across <code>M₁..M₄</code>, <code>D₁..D₅</code>, and <code>Y₁..Y₂</code>. Notice that <strong>every single column contains at least one dot (●) in TC₁..TC₅</strong>!</li>
+<li><strong>Minimal Cost:</strong> Weak Coverage is 100% satisfied with just <strong>5 base test cases</strong> (<code>max(|M|, |D|, |Y|) = 5</code>).</li>
+<li><strong>Targeted Robustness:</strong> <code>TC₆..TC₈</code> selectively add coupled boundary combinations without full Cartesian explosion.</li>
+</ul>
 </div>
 
 <!--
@@ -1740,12 +1930,12 @@ Never put two invalid values in the same test vector—otherwise the first excep
 
 | Step 1: Partition | Step 2: Seams | Step 3: Unified Sample Points | Expected Output & Deduplication Insight |
 | :--- | :---: | :---: | :--- |
-| **I<sub>1</sub> Invalid (`age < 0`)** | `-1 \| 0` | **`-1`** *(Left Out + I<sub>1</sub>)* | `IllegalArgumentException` (covers BVA `min-` & EP `I1`) |
-| **V<sub>1</sub> Free (`0..3`)** | `0, 3` | **`0`**`(min)`, **`2`**`(nom)`, **`3`**`(max)` | `FREE ($0)` — covers V<sub>1</sub> bounds & nominal |
-| **V<sub>2</sub> Child (`4..12`)** | `4, 12` | **`4`**`(min)`, **`8`**`(nom)`, **`12`**`(max)` | `CHILD ($100)` — **`4` is V<sub>1</sub>'s `max+`, zero duplication!** |
-| **V<sub>3</sub> Adult (`13..64`)** | `13, 64` | **`13`**`(min)`, **`30`**`(nom)`, **`64`**`(max)` | `ADULT ($250)` — **`13` is V<sub>2</sub>'s `max+`, zero duplication!** |
-| **V<sub>4</sub> Senior (`65..120`)** | `65, 120` | **`65`**`(min)`, **`80`**`(nom)`, **`120`**`(max)` | `SENIOR ($120)` — **`65` is V<sub>3</sub>'s `max+`, zero duplication!** |
-| **I<sub>2</sub> Invalid (`age > 120`)** | `120 \| 121` | **`121`** *(Right Out + I<sub>2</sub>)* | `IllegalArgumentException` (covers BVA `max+` & EP `I2`) |
+| <strong>I<sub>1</sub> Invalid (`age < 0`)</strong> | `-1 \| 0` | **`-1`** *(Left Out + I<sub>1</sub>)* | `IllegalArgumentException` (covers BVA `min-` & EP `I1`) |
+| <strong>V<sub>1</sub> Free (`0..3`)</strong> | `0, 3` | **`0`**`(min)`, **`2`**`(nom)`, **`3`**`(max)` | `FREE ($0)` — covers V<sub>1</sub> bounds & nominal |
+| <strong>V<sub>2</sub> Child (`4..12`)</strong> | `4, 12` | **`4`**`(min)`, **`8`**`(nom)`, **`12`**`(max)` | `CHILD ($100)` — **`4` is V<sub>1</sub>'s `max+`, zero duplication!** |
+| <strong>V<sub>3</sub> Adult (`13..64`)</strong> | `13, 64` | **`13`**`(min)`, **`30`**`(nom)`, **`64`**`(max)` | `ADULT ($250)` — **`13` is V<sub>2</sub>'s `max+`, zero duplication!** |
+| <strong>V<sub>4</sub> Senior (`65..120`)</strong> | `65, 120` | **`65`**`(min)`, **`80`**`(nom)`, **`120`**`(max)` | `SENIOR ($120)` — **`65` is V<sub>3</sub>'s `max+`, zero duplication!** |
+| <strong>I<sub>2</sub> Invalid (`age > 120`)</strong> | `120 \| 121` | **`121`** *(Right Out + I<sub>2</sub>)* | `IllegalArgumentException` (covers BVA `max+` & EP `I2`) |
 
 <!--
 By unifying EP and BVA in three steps—sampling `{min, nom, max}` per valid tier plus `-1` and `121` at the outer invalid edges—we achieve 100% EP and 100% BVA coverage in 14 test values with zero duplication.
@@ -1849,6 +2039,229 @@ Let's check your mastery of the BVA formulas on Concept Check Question 2.
 The correct answer is **B**: `4(4) + 1 = 17` for Normal BVA and `6(4) + 1 = 25` for Robustness BVA.
 -->
 ---
+## 🧩 7.3 Self-Practice (1/2): Advanced BVA Formulas & Geometric Traps
+
+<div class="sp-quiz-stage" id="sp-quiz-73-1">
+<div class="sp-mixed-grid">
+<div class="sp-mixed-col">
+<div class="sp-mc-card" data-ans="B">
+<div class="sp-mc-stem">1. [MC — 25 pts] A flight-control module accepts 3 continuous inputs <code>(roll, pitch, yaw)</code>. An engineer upgrades the test suite from Independent Robust BVA (<code>6n + 1</code>) to Worst-Case Normal BVA (<code>5ⁿ</code>) to detect multi-variable corner coupling. How does the total number of test cases change, and what is traded off?</div>
+<div class="sp-mc-opts">
+<div class="sp-mc-opt" data-opt="A"><strong>A.</strong> Increases from 13 to 125 tests; gains out-of-bounds exception checks</div>
+<div class="sp-mc-opt" data-opt="B"><strong>B.</strong> Increases from 19 to 125 tests; gains multi-variable corner coupling but loses <code>min- / max+</code> out-of-bounds checks</div>
+<div class="sp-mc-opt" data-opt="C"><strong>C.</strong> Increases from 19 to 343 tests; covers both multi-variable corners and invalid bounds</div>
+<div class="sp-mc-opt" data-opt="D"><strong>D.</strong> Increases from 13 to 243 tests; sacrifices the all-<code>norm</code> baseline center point</div>
+</div>
+</div>
+<div class="sp-mc-card" data-ans="C">
+<div class="sp-mc-stem">2. [MC — 25 pts] In the Triangle problem (<code>a, b, c ∈ [1, 200]</code>, <code>norm = 100</code>), why does the 13-case Independent Normal BVA suite exhibit a severe "Diversity Deficit" that misses a defective branch in <code>if (a != b &amp;&amp; b != c &amp;&amp; a != c)</code>?</div>
+<div class="sp-mc-opts">
+<div class="sp-mc-opt" data-opt="A"><strong>A.</strong> Because <code>norm = 100</code> violates the triangle inequality <code>a + b &gt; c</code> at <code>min = 1</code></div>
+<div class="sp-mc-opt" data-opt="B"><strong>B.</strong> Because <code>4n + 1</code> only tests invalid out-of-bounds values like <code>0</code> and <code>201</code></div>
+<div class="sp-mc-opt" data-opt="C"><strong>C.</strong> Because holding two variables at <code>norm = 100</code> forces at least two sides to be equal in every test, generating zero Scalene triangles</div>
+<div class="sp-mc-opt" data-opt="D"><strong>D.</strong> Because <code>5³ = 125</code> Worst-Case BVA is required to generate Equilateral triangles</div>
+</div>
+</div>
+</div>
+<div class="sp-mixed-col">
+<div class="sp-bank-bar">
+<span class="sp-bank-label">[Word Bank] Confusable Formula Bank (9 chips for 3 slots):</span>
+<span class="sp-chip" data-word="4n + 1">4n + 1</span>
+<span class="sp-chip" data-word="6n + 1">6n + 1</span>
+<span class="sp-chip" data-word="5ⁿ">5ⁿ</span>
+<span class="sp-chip" data-word="7ⁿ">7ⁿ</span>
+<span class="sp-chip" data-word="2ⁿ">2ⁿ</span>
+<span class="sp-chip" data-word="n + 1">n + 1</span>
+<span class="sp-chip" data-word="Single Fault Assumption">Single Fault Assumption</span>
+<span class="sp-chip" data-word="Single Invalid Rule">Single Invalid Rule</span>
+<span class="sp-chip" data-word="Cartesian Product">Cartesian Product</span>
+</div>
+<div class="sp-q-item" style="font-size: 13.4px; padding: 7px 11px;"><strong>3. [Word Bank — 30 pts]</strong> Independent Normal BVA (<span class="sp-slot is-active" data-ans="4n + 1">[ 1. Click Chip ]</span>) and Robust BVA (<span class="sp-slot" data-ans="6n + 1">[ 2. Click Chip ]</span>) rely on reliability theory's <span class="sp-slot" data-ans="Single Fault Assumption">[ 3. Click Chip ]</span>, holding all other <code>n - 1</code> variables fixed at <code>norm</code>.</div>
+<div class="sp-q-item" style="font-size: 13.4px; padding: 7px 11px;"><strong>4. [No Word Bank — Type Exact Term — 20 pts]</strong> Because Independent BVA holds two sides of the Triangle at <code>100</code>, it tests Isosceles and Equilateral shapes but completely misses <span class="sp-free-input" data-ans="Scalene|Scalene triangle|Scalene triangles" data-placeholder="Type triangle type..."></span> triangles.</div>
+</div>
+</div>
+<div class="sp-footer-bar">
+<div class="sp-btn-group">
+<button type="button" class="sp-btn sp-btn-submit">Submit &amp; Check Score</button>
+<button type="button" class="sp-btn sp-btn-reset">↺ Play Again</button>
+</div>
+<div class="sp-score-msg">Hint (Part 1/2): Answer 2 MCQs + 3 Formula Chips + 1 Free-Text Term, then click Submit!</div>
+</div>
+</div>
+
+<!--
+Self-Practice 7.3 (Part 1/2) challenges students on BVA mathematical trade-offs (`6n + 1 = 19` vs. `5^3 = 125`), the geometric origin of the Triangle diversity deficit, confusable BVA/combinatorial formulas (`4n+1`, `6n+1`, `5^n`, `7^n`, `2^n`, `n+1`, Single Fault Assumption vs. Single Invalid Rule), and a direct free-text input blank for "Scalene".
+-->
+---
+## 🧩 7.3 Self-Practice (2/2): Equivalence Partitioning, NextDate & JUnit 5
+
+<div class="sp-quiz-stage" id="sp-quiz-73-2">
+<div class="sp-mixed-grid">
+<div class="sp-mixed-col">
+<div class="sp-mc-card" data-ans="C">
+<div class="sp-mc-stem">1. [MC — 25 pts] A loan engine has 3 inputs with Valid classes <code>|V₁|=4, |V₂|=3, |V₃|=2</code> and Invalid classes <code>|I₁|=2, |I₂|=2, |I₃|=1</code>. What is the minimum total number of test cases required to satisfy Weak Valid EP plus the Single Invalid Rule, versus Strong Valid EP plus the Single Invalid Rule?</div>
+<div class="sp-mc-opts">
+<div class="sp-mc-opt" data-opt="A"><strong>A.</strong> Weak + Invalid: 4 tests | Strong + Invalid: 24 tests</div>
+<div class="sp-mc-opt" data-opt="B"><strong>B.</strong> Weak + Invalid: 5 tests | Strong + Invalid: 29 tests</div>
+<div class="sp-mc-opt" data-opt="C"><strong>C.</strong> Weak + Invalid: 9 tests (<code>4 + 5</code>) | Strong + Invalid: 29 tests (<code>24 + 5</code>)</div>
+<div class="sp-mc-opt" data-opt="D"><strong>D.</strong> Weak + Invalid: 9 tests | Strong + Invalid: 120 tests (<code>6 × 5 × 3</code>)</div>
+</div>
+</div>
+<div class="sp-mc-card" data-ans="D">
+<div class="sp-mc-stem">2. [MC — 25 pts] In <code>NextDate(month, day, year)</code>, if an engineer carelessly merges December into the 31-day month partition <code>{1,3,5,7,8,10,12}</code> and picks <code>July (7)</code> as the Weak EP representative for <code>Day = 31</code>, which critical logic branch goes 100% untested?</div>
+<div class="sp-mc-opts">
+<div class="sp-mc-opt" data-opt="A"><strong>A.</strong> The Leap-Year February 29 rollover branch (<code>month + 1, day = 1</code>)</div>
+<div class="sp-mc-opt" data-opt="B"><strong>B.</strong> The 30-day month invalid date rejection branch (e.g., <code>April 31</code>)</div>
+<div class="sp-mc-opt" data-opt="C"><strong>C.</strong> The mid-month normal day increment branch (<code>day = day + 1</code>)</div>
+<div class="sp-mc-opt" data-opt="D"><strong>D.</strong> The New Year rollover branch (<code>year = year + 1; month = 1; day = 1</code>)</div>
+</div>
+</div>
+</div>
+<div class="sp-mixed-col">
+<div class="sp-bank-bar">
+<span class="sp-bank-label">[Word Bank] Confusable EP &amp; JUnit Bank (8 chips for 2 slots):</span>
+<span class="sp-chip" data-word="max(|V₁|, |V₂|, ...)">max(|V₁|, |V₂|, ...)</span>
+<span class="sp-chip" data-word="|V₁| × |V₂| × ...">|V₁| × |V₂| × ...</span>
+<span class="sp-chip" data-word="|V₁| + |V₂| + ...">|V₁| + |V₂| + ...</span>
+<span class="sp-chip" data-word="Single Invalid Rule">Single Invalid Rule</span>
+<span class="sp-chip" data-word="Single Fault Assumption">Single Fault Assumption</span>
+<span class="sp-chip" data-word="assertAll">assertAll</span>
+<span class="sp-chip" data-word="assertThrows">assertThrows</span>
+<span class="sp-chip" data-word="@CsvSource">@CsvSource</span>
+</div>
+<div class="sp-q-item" style="font-size: 13.4px; padding: 7px 11px;"><strong>3. [Word Bank — 25 pts]</strong> Weak Normal EP compresses valid combinations to <span class="sp-slot is-active" data-ans="max(|V₁|, |V₂|, ...)">[ 1. Click Chip ]</span> baseline test cases; in JUnit 5, wrapping multiple boundary checks inside <span class="sp-slot" data-ans="assertAll">[ 2. Click Chip ]</span> prevents the first assertion failure from hiding subsequent boundary bugs.</div>
+<div class="sp-q-item" style="font-size: 13.4px; padding: 7px 11px;"><strong>4. [No Word Bank — Type Exact Term — 25 pts]</strong> When two invalid inputs (<code>age = -5</code> and <code>zip = "bad"</code>) are combined in one test case, the first exception aborts execution before the second check runs—a phenomenon called <span class="sp-free-input" data-ans="Fault Masking|Error Masking|Masking" data-placeholder="Type 2-word term..."></span>.</div>
+</div>
+</div>
+<div class="sp-footer-bar">
+<div class="sp-btn-group">
+<button type="button" class="sp-btn sp-btn-submit">Submit &amp; Check Score</button>
+<button type="button" class="sp-btn sp-btn-reset">↺ Play Again</button>
+</div>
+<div class="sp-score-msg">Hint (Part 2/2): Answer 2 MCQs + 2 Word-Bank Slots + 1 Free-Text Term, then click Submit!</div>
+</div>
+</div>
+
+<!--
+Self-Practice 7.3 (Part 2/2) tests quantitative Weak/Strong EP + Single Invalid Rule calculation (`max(4,3,2) + (2+2+1) = 9` vs. `4*3*2 + 5 = 29`), the NextDate December `M4` partition requirement, confusable EP/JUnit chips (`max` vs. product vs. sum; `assertAll` vs. `assertThrows`), and a direct free-text input blank for "Fault Masking".
+-->
+---
+## 📝 7.3 Essay Case Study: Food Delivery Fee Engine (EP & BVA)
+
+<div class="sp-essay-hero">
+<div class="sp-essay-visual">
+<img src="../../img/ch07/food_delivery_badge.svg" alt="FoodExpress Delivery Fee Engine" />
+</div>
+<div class="sp-prose-spec">
+<div class="sp-prose-header"><span class="sp-prose-badge">Case Narrative</span><span>Business Requirements (Read &amp; Induce Partitions / Boundaries Yourself!)</span></div>
+<p>FoodExpress computes delivery fees via <code>calcFee(subtotal, distanceKm, memberTier, isRainyPeak)</code>. Orders below <strong>NT$ 100</strong> or above <strong>NT$ 10,000</strong> are rejected with an exception. Base delivery fee starts at <strong>NT$ 60</strong>, drops to <strong>NT$ 35</strong> when food subtotal reaches at least <strong>NT$ 300</strong>, and becomes <strong>free (NT$ 0)</strong> at <strong>NT$ 800</strong> or more.</p>
+<p>Delivery distance accepts whole kilometers from <strong>1 km to 15 km</strong> (outside is rejected): the first <strong>3 km</strong> add no surcharge; <strong>4 to 8 km</strong> add <strong>NT$ 10/km</strong> over 3 km; beyond <strong>8 km</strong> charges <strong>NT$ 50 + NT$ 20/km</strong> over 8 km. Rainy peak hours (<code>isRainyPeak = true</code>) add <strong>+NT$ 30</strong>. <code>VIP</code> members (vs. <code>NONE</code>) get base fee waived if subtotal &gt;= 300 plus <strong>20% off</strong> the total; final fee is clamped to <strong>NT$ 0 .. NT$ 250</strong>.</p>
+</div>
+</div>
+
+<div class="sp-essay-grid-2col" id="sp-essay-food-73">
+<div class="sp-essay-card">
+<div class="sp-essay-q">
+<strong>Essay Task 1: Induce Equivalence Partitions (EP)</strong> — Identify all 4 inputs' Valid (<code>V</code>) &amp; Invalid (<code>I</code>) partitions, and derive the minimum test count under <strong>Weak EP + Single Invalid Rule</strong>.
+</div>
+<div class="sp-essay-toggle">[Reveal] Click to Reveal EP Induction &amp; Test Count</div>
+<div class="sp-essay-ans">
+• <code>subtotal</code>: <strong>V₁</strong> [100..299] ($60), <strong>V₂</strong> [300..799] ($35), <strong>V₃</strong> [800..10000] ($0) | <strong>I₁</strong> (&lt;100), <strong>I₂</strong> (&gt;10000)<br/>
+• <code>distanceKm</code>: <strong>D₁</strong> [1..3] (+$0), <strong>D₂</strong> [4..8] (+$10/km), <strong>D₃</strong> [9..15] (+$50+$20/km) | <strong>I₃</strong> (&lt;1), <strong>I₄</strong> (&gt;15)<br/>
+• <code>memberTier</code>: <strong>M₁</strong> {NONE}, <strong>M₂</strong> {VIP} &nbsp;|&nbsp; <code>isRainyPeak</code>: <strong>R₁</strong> {false}, <strong>R₂</strong> {true}<br/>
+• <strong>Total:</strong> <code>max(3,3,2,2) = 3</code> valid base + <code>4</code> isolated invalid (<code>I₁..I₄</code>) = <strong>7 EP test cases</strong>!
+</div>
+</div>
+<div class="sp-essay-card card-bva">
+<div class="sp-essay-q">
+<strong>Essay Task 2: Derive Boundary Value Analysis (BVA) Seams</strong> — List all numerical pricing seams &amp; exact boundary test points for <code>subtotal</code> and <code>distanceKm</code> to catch off-by-one bugs.
+</div>
+<div class="sp-essay-toggle">[Reveal] Click to Reveal BVA Seam Test Points</div>
+<div class="sp-essay-ans">
+• <strong>Subtotal Seams (<code>dist=2, NONE, false</code>):</strong> Min (<code>99</code> throws | <code>100, 101</code> $60) • Tier S→M (<code>299</code> $60 | <code>300</code> $35) • Tier M→L (<code>799</code> $35 | <code>800</code> $0) • Max (<code>10000</code> $0 | <code>10001</code> throws)<br/>
+• <strong>Distance Seams (<code>sub=500, NONE, false</code>):</strong> Sample <strong><code>{0 (throws), 1, 3, 4, 8, 9, 15, 16 (throws)}</code></strong> km across all 3 zone cutoffs!
+</div>
+</div>
+</div>
+
+<!--
+In this Section 7.3 Essay Case Study, the Food Delivery Fee rules are presented as a realistic unstructured business narrative rather than pre-bucketed bullet tiers. Students must read the prose to induce the 4 input variables, their valid/invalid equivalence partitions, and exact BVA seam points before clicking to reveal the structured solutions. We will revisit this exact case study at the end of Section 7.4 to apply Pairwise and Property-Based Testing!
+-->
+---
+## 🧩 7.3 Interactive Matrix Game: FoodExpress EP Partitions & BVA Seams
+
+<div class="fdg-stage" id="fdg-ep-bva-game">
+<div class="fdg-board-card">
+<div class="fdg-board-title">Board A: 5 × 5 EP Partition Matrix (<code>Subtotal</code> Rows × <code>Distance</code> Columns)</div>
+<table class="fdg-table" id="fdg-ep-table">
+<thead>
+<tr>
+<th style="width: 20%;">Subtotal \ Dist</th>
+<th style="width: 16%; color: #fda4af;">I₃: &lt; 1 km<br/>(0 km)</th>
+<th style="width: 16%; color: #86efac;">D₁: 1..3 km<br/>(+$0)</th>
+<th style="width: 16%; color: #86efac;">D₂: 4..8 km<br/>(+$10/km)</th>
+<th style="width: 16%; color: #86efac;">D₃: 9..15 km<br/>(+$50+$20)</th>
+<th style="width: 16%; color: #fda4af;">I₄: &gt; 15 km<br/>(16 km)</th>
+</tr>
+</thead>
+<tbody id="fdg-ep-tbody"></tbody>
+</table>
+<div class="fdg-seam-box">
+<div class="fdg-seam-title">Board B: <code>Subtotal</code> BVA Seam Number Line (Click Exact Boundary Points for Challenge BVA)</div>
+<div class="fdg-chips-wrap" id="fdg-seam-chips">
+<span class="fdg-seam-chip" data-val="50">$50</span>
+<span class="fdg-seam-chip" data-val="99">$99</span>
+<span class="fdg-seam-chip" data-val="100">$100</span>
+<span class="fdg-seam-chip" data-val="101">$101</span>
+<span class="fdg-seam-chip" data-val="200">$200</span>
+<span class="fdg-seam-chip" data-val="299">$299</span>
+<span class="fdg-seam-chip" data-val="300">$300</span>
+<span class="fdg-seam-chip" data-val="301">$301</span>
+<span class="fdg-seam-chip" data-val="500">$500</span>
+<span class="fdg-seam-chip" data-val="799">$799</span>
+<span class="fdg-seam-chip" data-val="800">$800</span>
+<span class="fdg-seam-chip" data-val="801">$801</span>
+<span class="fdg-seam-chip" data-val="5000">$5000</span>
+<span class="fdg-seam-chip" data-val="9999">$9999</span>
+<span class="fdg-seam-chip" data-val="10000">$10000</span>
+<span class="fdg-seam-chip" data-val="10001">$10001</span>
+</div>
+</div>
+</div>
+<div class="fdg-ctrl-card">
+<div class="bvag-spec-box">
+<strong>[Rules Recap] FoodExpress <code>calcFee(subtotal, distanceKm)</code>:</strong><br/>
+• <strong>Subtotal (<code>NT$</code>)</strong>: Valid <code>100..10000</code> (<code>&lt;100</code> or <code>&gt;10000</code> rejected). Tiers: <strong>V₁</strong> <code>100..299</code> ($60), <strong>V₂</strong> <code>300..799</code> ($35), <strong>V₃</strong> <code>800..10000</code> ($0 Free).<br/>
+• <strong>Distance (<code>km</code>)</strong>: Valid <code>1..15</code> (<code>&lt;1</code> or <code>&gt;15</code> rejected). Zones: <strong>D₁</strong> <code>1..3</code> (+$0), <strong>D₂</strong> <code>4..8</code> (+$10/km), <strong>D₃</strong> <code>9..15</code> (+$50+$20/km).
+</div>
+<div class="bvag-mission-box">
+<div class="bvag-round-row">
+<span class="bvag-round-pill" id="fdg-round-pill">CHALLENGE 1 OF 4 (RANDOMIZED)</span>
+<span class="bvag-stat-pill" id="fdg-score-pill">Solved: 0 / 4 | Selected: 0</span>
+</div>
+<div class="bvag-target-title" id="fdg-target-title">Target Strategy: Loading...</div>
+<div class="bvag-target-hint" id="fdg-target-desc">Click cells in Board A (or seam chips in Board B) to construct your test suite, then click <strong>Submit Selection</strong>!</div>
+</div>
+<div class="bvag-quick-bar">
+<span style="font-size: 11.5px; font-weight: 800; color: #475569;">Quick Helpers:</span>
+<button type="button" class="bvag-qbtn" data-fdact="diag3">± 3 Diagonal Valid Cells</button>
+<button type="button" class="bvag-qbtn" data-fdact="valid9">± All 9 Valid Cells</button>
+<button type="button" class="bvag-qbtn" data-fdact="iso4">± 4 Isolated Invalid Cells</button>
+<button type="button" class="bvag-qbtn" data-fdact="clear">✕ Clear All</button>
+</div>
+<div class="bvag-action-row">
+<button type="button" class="bvag-btn" id="fdg-btn-submit">Submit Selection</button>
+<button type="button" class="bvag-btn btn-next" id="fdg-btn-next">Next Challenge ➔</button>
+<button type="button" class="bvag-btn btn-reset" id="fdg-btn-reshuffle">↺ Reshuffle 4</button>
+</div>
+<div class="bvag-feedback-box" id="fdg-feedback-msg">Select cells or boundary chips on the left to match the target challenge!</div>
+</div>
+</div>
+
+<!--
+This interactive 4-challenge game on Slide 61 reinforces Slide 60's FoodExpress fee specification by letting students actively select Equivalence Partitions on the 5x5 matrix (Weak Normal EP, Strong Normal EP, Weak Robust EP with the Single Invalid Rule) and select the exact 2-point On-Off boundary seam values (`99, 100, 299, 300, 799, 800, 10000, 10001`) on the Subtotal number line!
+-->
+---
 <!-- _class: lead -->
 <!-- header: '7.4 Combinatorial, State & PBT' -->
 
@@ -1871,7 +2284,7 @@ We now advance to Section 7.4, integrating SQA Sections 5.5 (All-Pairs / Pairwis
 * **The Combinatorial Explosion Problem:**
   - A configuration screen with `10` parameters, each having `3` possible values, requires **3<sup>10</sup> = 59,049** exhaustive Strong EP test cases!
 * **NIST Empirical Discovery (Kuhn et al.):**
-  - Across aerospace, medical, browser, and database bug repositories, **67% to 93% of all software faults** are triggered by a **single parameter (1-way)** or the **interaction of just 2 parameters (2-way)**!
+  - Across aerospace, medical, browser, and database bug repositories, **67% to 93% of all software faults** are triggered by a <strong>single parameter (1-way)</strong> or the <strong>interaction of just 2 parameters (2-way)</strong>!
   - Faults requiring 3 or more simultaneous parameter values account for `< 10%`.
 * **The All-Pairs (Pairwise) Guarantee & Swimming Pool Example:**
   - **Rule:** Guarantee that **every possible value pair `(v`<sub>`i`</sub>`, v`<sub>`j`</sub>`)` of any two parameters appears together in at least one test case**.
@@ -2087,7 +2500,7 @@ Trace the IPO + Greedy algorithm step-by-step: clicking each row illustrates how
   - **NIST `ACTS`:** Supports higher-strength **`t`-way combinatorial coverage** (`3-way`, `4-way` for safety-critical systems) with SAT constraint solvers.
 * **Mortgage `LoanCalculator` Case Study (`3 × 3 × 2 × 2 = 36` → `9` Cases):**
   - **4 Dimensions:** `LoanYears` (`≤10`, `11..20`, `>20`), `Amount` (`≤5M`, `6M`, `10M`), `IsYouth` (`true/false`), `IsMarried` (`true/false`).
-  - Full Cartesian product = **36 cases** → `AllPairs4J` achieves **100% 2-way coverage in just 9 cases (75% reduction)**!
+  - Full Cartesian product = **36 cases** → `AllPairs4J` achieves <strong>100% 2-way coverage in just 9 cases (75% reduction)</strong>!
 
 </div>
 <div class="right">
@@ -2108,7 +2521,7 @@ In the Mortgage Loan Calculator case study, 4 parameters with `3 × 3 × 2 × 2`
 
 <div class="card-deck">
 
-> `AllPairs4J` only generates **compressed Input Combinations**—use **Strategy A (Dynamic Invariants)** or **Strategy B (2-Stage `@CsvSource` Exact Oracles)** to verify outputs!
+> `AllPairs4J` only generates **compressed Input Combinations**—use <strong>Strategy A (Dynamic Invariants)</strong> or <strong>Strategy B (2-Stage `@CsvSource` Exact Oracles)</strong> to verify outputs!
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -2298,7 +2711,7 @@ Interact with the 5 test paths to observe the difference between State (Node) Co
 
 <div class="card-deck">
 
-> **Transition Coverage (Edge / 0-Switch)** strictly subsumes **State Coverage (Node)**; in JUnit 5, use `@BeforeEach` and `@Nested` classes to mirror state hierarchies cleanly.
+> <strong>Transition Coverage (Edge / 0-Switch)</strong> strictly subsumes <strong>State Coverage (Node)</strong>; in JUnit 5, use `@BeforeEach` and `@Nested` classes to mirror state hierarchies cleanly.
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -2317,25 +2730,26 @@ Interact with the 5 test paths to observe the difference between State (Node) Co
 </div>
 <div class="card" data-marpit-fragment>
 
-### State-Hierarchy Modeling with JUnit 5 `@Nested`
+### Airline Ticket Sequence & State Verification (`@Nested`)
 ```java
-class StackStateTest {
-    Stack<String> stack;
-    @BeforeEach void init() { stack = new Stack<>(); } // State: Empty
+class AirlineReservationStateTest {
+    AirlineTicket ticket;
+    @BeforeEach void init() { ticket = new AirlineTicket(); } // Init
 
-    @Test void emptyStackPopThrows() { // Negative transition defense
-        assertThrows(EmptyStackException.class, () -> stack.pop());
+    @Test void happyPathReachesUsedAndRejectsCancel() { // Path 1 + Guard
+        ticket.giveInfo("TPE-NRT"); // Init -> Made
+        ticket.payMoney(12500);     // Made -> Paid
+        ticket.print();             // Paid -> Ticketed
+        ticket.giveTicket();        // Ticketed -> Used (Final)
+        assertEquals(State.USED, ticket.getState());
+        assertThrows(IllegalStateException.class, () -> ticket.cancel());
     }
 
-    @Nested class AfterPushingElement { // Sub-state: Non-Empty
-        @BeforeEach void pushOne() { stack.push("ItemA"); }
-
-        @Test void isNoLongerEmpty() {
-            assertFalse(stack.isEmpty());
-        }
-        @Test void popReturnsItemAndRestoresEmptyState() { // 1-Switch
-            assertEquals("ItemA", stack.pop());
-            assertTrue(stack.isEmpty());
+    @Nested class WhenReservationMade { // Sub-state: Made
+        @BeforeEach void book() { ticket.giveInfo("TPE-NRT"); }
+        @Test void timeoutTransitionsToCancelledNonPay() { // Path 5
+            ticket.payTimeExpire();
+            assertEquals(State.CANCELLED_NON_PAY, ticket.getState());
         }
     }
 }
@@ -2346,25 +2760,151 @@ class StackStateTest {
 </div>
 
 <!--
-Transition Coverage (0-Switch) is the mandatory minimum baseline for state machine testing, supplemented by 1-Switch (consecutive transition pairs like `push -> pop`) and negative invalid-event tests.
+Transition Coverage (0-Switch) is the mandatory minimum baseline for state machine testing. On the right, we test the Airline Reservation state machine by firing a sequence of events (`giveInfo -> payMoney -> print -> giveTicket`), asserting that the ticket reaches the expected state (`State.USED`), and verifying negative state guards (`cancel()` after boarding throws `IllegalStateException`).
 
 💡 難字與專業術語解說：
 - Transition Coverage (0-Switch): 轉移覆蓋／零階轉換覆蓋（要求狀態機圖上的每一條轉移弧線皆至少被執行過一次，強度嚴格大於狀態節點覆蓋）
 -->
 ---
-<!-- _class: title-image-slide -->
+## 🧩 Interactive Practice: Bounded Stack (`cap = 3`) State Machine
 
-## Property-Based Testing (PBT) & Metamorphic Testing (MT): 6 Core Concepts
-
-<div class="image-wrapper">
-  <img src="../../img/ch07/pbt_mt_concept_thumbnails.svg" alt="6 Core Concepts of Property-Based Testing and Metamorphic Testing" />
+<div class="stk-lab-grid" id="stk-interactive-lab">
+<div class="stk-ctrl-card">
+<div class="stk-prompt-box">
+<strong>Task:</strong> Model a <strong>Bounded Stack (<code>max=3</code>)</strong> &amp; test all transitions:<br/>
+• <strong>Empty (<code>n=0</code>)</strong>: <code>pop()</code> is forbidden!<br/>
+• <strong>Full (<code>n=3</code>)</strong>: <code>push()</code> is forbidden!
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" id="stk-bucket-svg" viewBox="0 0 310 124" width="100%" height="114">
+<rect width="310" height="124" rx="9" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4" />
+<text x="74" y="17" font-family="sans-serif" font-size="11" font-weight="800" fill="#0b3c5d" text-anchor="middle">Physical Stack (cap=3)</text>
+<path d="M 24 24 L 24 114 L 124 114 L 124 24" fill="none" stroke="#334155" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+<g id="stk-slot-3" style="opacity: 0.18;">
+<rect x="30" y="27" width="88" height="24" rx="5" fill="#f97316" stroke="#c2410c" stroke-width="1.4" />
+<text x="74" y="43" font-family="monospace" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">Item #3 (Top)</text>
+</g>
+<g id="stk-slot-2" style="opacity: 0.18;">
+<rect x="30" y="55" width="88" height="24" rx="5" fill="#0284c7" stroke="#0369a1" stroke-width="1.4" />
+<text x="74" y="71" font-family="monospace" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">Item #2</text>
+</g>
+<g id="stk-slot-1" style="opacity: 0.18;">
+<rect x="30" y="83" width="88" height="24" rx="5" fill="#059669" stroke="#047857" stroke-width="1.4" />
+<text x="74" y="99" font-family="monospace" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">Item #1</text>
+</g>
+<rect x="138" y="20" width="162" height="94" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.3" />
+<text x="219" y="38" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#64748b" text-anchor="middle">CURRENT STATE</text>
+<text id="stk-cur-state-txt" x="219" y="61" font-family="monospace" font-size="14.5" font-weight="900" fill="#0284c7" text-anchor="middle">EMPTY (n=0)</text>
+<line x1="148" y1="71" x2="290" y2="71" stroke="#e2e8f0" stroke-width="1.2" />
+<text x="219" y="87" font-family="sans-serif" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">Allowed Events:</text>
+<text id="stk-allowed-txt" x="219" y="103" font-family="monospace" font-size="10" font-weight="800" fill="#0369a1" text-anchor="middle">push() only [pop throws]</text>
+</svg>
+<div class="stk-btn-row">
+<button type="button" class="stk-btn" id="stk-btn-push">+ push()</button>
+<button type="button" class="stk-btn btn-pop" id="stk-btn-pop">- pop()</button>
+<button type="button" class="stk-btn btn-reset" id="stk-btn-reset">↺ Reset</button>
+</div>
+<div class="stk-status-banner" id="stk-status-msg">Ready at <code>Empty (size = 0)</code>. Try clicking <code>- pop()</code> or <code>+ push()</code>!</div>
+<div class="stk-cov-grid">
+<div class="stk-cov-pill">States Visited<strong id="stk-node-cov">1 / 3 (33%)</strong></div>
+<div class="stk-cov-pill">Transitions Fired<strong id="stk-edge-cov">0 / 7 (0%)</strong></div>
+</div>
+</div>
+<div class="stk-canvas-card">
+<div class="stk-q-toolbar">
+<div class="stk-q-box">
+<div class="stk-q-title">Q1. Draw the State Transition Diagram (STD)</div>
+<div class="stk-q-desc">How many states exist for <code>BoundedStack(cap=3)</code>? What are all valid transitions &amp; guard conditions (<code>[n==1]</code>, <code>[n==2]</code>, <code>Empty</code>, <code>Full</code>)?</div>
+<button type="button" class="stk-switch-btn" id="stk-btn-toggle-std">[Switch ON] Show State Transition Diagram (STD)</button>
+</div>
+<div class="stk-q-box q2-box">
+<div class="stk-q-title">Q2. Design Test Cases (100% Transition + Guard)</div>
+<div class="stk-q-desc">Design a test sequence covering <strong>100% of States (3)</strong>, <strong>Valid Transitions (5)</strong>, and <strong>Negative Guard Exceptions (2)</strong>!</div>
+<button type="button" class="stk-switch-btn" id="stk-btn-toggle-tc">[Switch ON] Show Test Cases &amp; Optimal Sequence</button>
+</div>
+</div>
+<div class="stk-std-stage" id="stk-std-stage">
+<div class="stk-std-placeholder">
+<div style="font-size: 16px; font-weight: 800; color: #0b3c5d;">State Transition Diagram (STD) Hidden for Student Practice</div>
+<div style="font-size: 13px; max-width: 580px;">1. Experiment with <code>+ push()</code> and <code>- pop()</code> on the left to observe state changes and boundary exceptions.<br/>2. Sketch your <strong>State Transition Diagram (STD)</strong> &amp; <strong>Test Cases</strong>, then click the <strong>Switch ON</strong> buttons above!</div>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" id="stk-sm-svg" viewBox="0 0 820 275" width="100%" height="100%">
+<defs>
+<marker id="stk-arr-b" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" /></marker>
+<marker id="stk-arr-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#059669" /></marker>
+<marker id="stk-arr-r" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#dc2626" /></marker>
+</defs>
+<rect width="820" height="275" fill="#ffffff" rx="10" />
+<text x="16" y="20" font-family="sans-serif" font-size="13.5" font-weight="800" fill="#0b3c5d">Bounded Stack STD (3 States • 5 Valid Arcs [E1..E5] • 2 Guard Exceptions [G1..G2])</text>
+<circle cx="32" cy="148" r="10" fill="#0f172a" />
+<text x="32" y="172" font-family="sans-serif" font-size="10.5" font-weight="700" fill="#475569" text-anchor="middle">new(3)</text>
+<path d="M 42 148 L 88 148" stroke="#0f172a" stroke-width="2.4" marker-end="url(#stk-arr-b)" />
+<g class="stk-sm-state is-current" id="stk-state-empty" transform="translate(92, 110)">
+<rect width="160" height="76" rx="14" class="stk-node-rect" fill="#eff6ff" stroke="#0284c7" stroke-width="2.4" />
+<text x="80" y="31" font-family="sans-serif" font-size="15.5" font-weight="800" fill="#0b3c5d" text-anchor="middle">1. Empty</text>
+<text x="80" y="50" font-family="monospace" font-size="11.5" font-weight="700" fill="#0369a1" text-anchor="middle">size == 0</text>
+<text x="80" y="66" font-family="sans-serif" font-size="10" font-weight="700" fill="#dc2626" text-anchor="middle">[pop() forbidden]</text>
+</g>
+<g class="stk-sm-state" id="stk-state-partial" transform="translate(346, 110)">
+<rect width="176" height="76" rx="14" class="stk-node-rect" fill="#f0fdf4" stroke="#059669" stroke-width="2.4" />
+<text x="88" y="31" font-family="sans-serif" font-size="15.5" font-weight="800" fill="#065f46" text-anchor="middle">2. Partial</text>
+<text x="88" y="50" font-family="monospace" font-size="11.5" font-weight="700" fill="#047857" text-anchor="middle">0 &lt; size &lt; 3</text>
+<text x="88" y="66" font-family="sans-serif" font-size="10" font-weight="700" fill="#059669" text-anchor="middle">[push &amp; pop allowed]</text>
+</g>
+<g class="stk-sm-state" id="stk-state-full" transform="translate(616, 110)">
+<rect width="164" height="76" rx="14" class="stk-node-rect" fill="#fff7ed" stroke="#ea580c" stroke-width="2.4" />
+<text x="82" y="31" font-family="sans-serif" font-size="15.5" font-weight="800" fill="#9a3412" text-anchor="middle">3. Full</text>
+<text x="82" y="50" font-family="monospace" font-size="11.5" font-weight="700" fill="#c2410c" text-anchor="middle">size == 3 (max)</text>
+<text x="82" y="66" font-family="sans-serif" font-size="10" font-weight="700" fill="#dc2626" text-anchor="middle">[push() forbidden]</text>
+</g>
+<g class="stk-sm-edge" id="stk-edge-e1">
+<path d="M 252 130 Q 299 98, 344 130" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#stk-arr-b)" />
+<rect x="255" y="86" width="88" height="21" rx="5" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1" />
+<text x="299" y="100" font-family="monospace" font-size="10.5" font-weight="800" fill="#0369a1" text-anchor="middle">E1: push()</text>
+</g>
+<g class="stk-sm-edge" id="stk-edge-e2">
+<path d="M 344 168 Q 299 200, 252 168" fill="none" stroke="#059669" stroke-width="2.5" marker-end="url(#stk-arr-g)" />
+<rect x="241" y="191" width="116" height="21" rx="5" fill="#d1fae5" stroke="#34d399" stroke-width="1" />
+<text x="299" y="205" font-family="monospace" font-size="10.5" font-weight="800" fill="#065f46" text-anchor="middle">E2: pop() [n==1]</text>
+</g>
+<g class="stk-sm-edge" id="stk-edge-e3">
+<path d="M 404 110 C 390 52, 478 52, 464 110" fill="none" stroke="#0284c7" stroke-width="2.4" marker-end="url(#stk-arr-b)" />
+<rect x="348" y="34" width="172" height="22" rx="5" fill="#eff6ff" stroke="#7dd3fc" stroke-width="1" />
+<text x="434" y="49" font-family="monospace" font-size="10.5" font-weight="800" fill="#0369a1" text-anchor="middle">E3: push[n=1] / pop[n=2]</text>
+</g>
+<g class="stk-sm-edge" id="stk-edge-e4">
+<path d="M 522 130 Q 569 98, 614 130" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#stk-arr-b)" />
+<rect x="511" y="86" width="116" height="21" rx="5" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1" />
+<text x="569" y="100" font-family="monospace" font-size="10.5" font-weight="800" fill="#0369a1" text-anchor="middle">E4: push() [n==2]</text>
+</g>
+<g class="stk-sm-edge" id="stk-edge-e5">
+<path d="M 614 168 Q 569 200, 522 168" fill="none" stroke="#059669" stroke-width="2.5" marker-end="url(#stk-arr-g)" />
+<rect x="525" y="191" width="88" height="21" rx="5" fill="#d1fae5" stroke="#34d399" stroke-width="1" />
+<text x="569" y="205" font-family="monospace" font-size="10.5" font-weight="800" fill="#065f46" text-anchor="middle">E5: pop()</text>
+</g>
+<g class="stk-sm-edge" id="stk-edge-g1">
+<path d="M 145 186 C 125 246, 215 246, 195 186" fill="none" stroke="#dc2626" stroke-width="2.4" stroke-dasharray="5 3" marker-end="url(#stk-arr-r)" />
+<rect x="74" y="236" width="196" height="22" rx="5" fill="#fee2e2" stroke="#f87171" stroke-width="1.2" />
+<text x="172" y="251" font-family="monospace" font-size="10.5" font-weight="800" fill="#b91c1c" text-anchor="middle">G1: pop() ➔ EmptyStackEx!</text>
+</g>
+<g class="stk-sm-edge" id="stk-edge-g2">
+<path d="M 670 186 C 650 246, 740 246, 720 186" fill="none" stroke="#dc2626" stroke-width="2.4" stroke-dasharray="5 3" marker-end="url(#stk-arr-r)" />
+<rect x="600" y="236" width="196" height="22" rx="5" fill="#fee2e2" stroke="#f87171" stroke-width="1.2" />
+<text x="698" y="251" font-family="monospace" font-size="10.5" font-weight="800" fill="#b91c1c" text-anchor="middle">G2: push() ➔ StackFullEx!</text>
+</g>
+</svg>
+</div>
+<div class="stk-tc-panel" id="stk-tc-panel">
+<strong>• Optimal 8-Step Sequence for 100% Transition + Guard Coverage (7 Arcs):</strong><br/>
+<code>1. pop() [G1: UnderflowEx] ➔ 2. push(A) [E1: 0➔1] ➔ 3. push(B) [E3: 1➔2] ➔ 4. push(C) [E4: 2➔3 Full] ➔ 5. push(D) [G2: OverflowEx] ➔ 6. pop() [E5: 3➔2] ➔ 7. pop() [E3: 2➔1] ➔ 8. pop() [E2: 1➔0 Empty]</code>
+</div>
+</div>
 </div>
 
 <!--
-This visual overview highlights the six core pillars of Property-Based Testing (PBT) and Metamorphic Testing (MT).
-
-💡 難字與專業術語解說：
-- Property-Based Testing (PBT): 屬性基礎測試（宣告系統在所有合法輸入下皆須遵守的通用數學不變量，由框架自動產生千組隨機測資尋找反例）
+This interactive practice challenges students to model and test a Bounded Stack (`capacity = 3`). Notice why a Bounded Stack has 3 distinct states rather than 2:
+1. **Empty (`size == 0`)**: Only `push()` is valid (`E1`); calling `pop()` triggers negative guard transition `G1` (`EmptyStackException`).
+2. **Partial (`0 < size < 3`)**: Both `push()` and `pop()` are valid! When `size == 1`, `push()` loops within Partial (`E3`) while `pop()` returns to Empty (`E2`). When `size == 2`, `push()` transitions to Full (`E4`) while `pop()` loops within Partial (`E3`).
+3. **Full (`size == 3`)**: Only `pop()` is valid (`E5`); calling `push()` triggers negative guard transition `G2` (`StackOverflowException` / `IllegalStateException`).
 -->
 ---
 ## Paradigm Shift: Example-Based (EBT) vs. Property-Based Testing (PBT) & John Hughes
@@ -2401,120 +2941,209 @@ Why is Shrinking the killer feature of Property-Based Testing frameworks like Ja
 - counterexample shrinking: 測資收縮／反例極小化（當隨機大測資觸發錯誤時，PBT 框架自動透過二分搜尋刪減元素與數值，找出能重現該 Bug 之最小最簡反例的演算法）
 -->
 ---
-## 4 Classic PBT Invariant Design Patterns & `jqwik` Syntax
+## 1. Property-Based Testing (PBT): Universal Invariants (`@Property` & `@ForAll`)
 
-<div class="card-deck">
+<div class="split64">
+<div class="left">
 
-> Use `@Property` and `@ForAll` in **`jqwik`** (**J**ava/JUnit 5 + **Quick**Check) to express the four universal invariant patterns.
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1. Round-Trip & 2. Conservation Patterns
-- **① Round-Trip (Invertibility): `decode(encode(x)) == x`**
-  - Compression, encryption, JSON serialization, or reversing a list twice:
-  ```java
-  @Property // Runs 1,000 random lists L automatically!
-  boolean reverseTwiceIsIdentity(@ForAll List<Integer> list) {
-      List<Integer> copy = new ArrayList<>(list);
-      Collections.reverse(copy);
-      Collections.reverse(copy);
-      return copy.equals(list);
-  }
-  ```
-- **② Structural & Feature Conservation: `invariant(f(x))`**
-  - Sorting `sort(L)` preserves `L.size()`, and every adjacent element satisfies `L.get(i) <= L.get(i + 1)`.
+* **Core Methodology:**
+  - Replace hardcoded single-point examples (`assertEquals(5, add(2,3))`) with a **universal invariant `P(x, f(x)) == true`** tested across **1,000+ generated inputs** (`@ForAll`).
+* **Example 1 — Math & Two's-Complement Overflow:**
+  - Property: `Math.abs(x) >= 0` for all `int x` → <strong>Fails on `x = Integer.MIN_VALUE` (`-2147483648`)</strong>, exposing silent integer overflow!
+* **Example 2 — E-Commerce Checkout Floor (`OrderDiscount`):**
+  - Across 1,000 random `(Tier, CartAmount, Coupon, Points)` tuples, **`0 <= finalPay <= originalPrice`** (blocks negative-pay exploits!).
+* **Example 3 — Idempotence (`f(f(x)) == f(x)`):**
+  - Formatting code, normalizing URLs/paths, `String.trim()`, or applying an idempotent `PUT` update twice equals applying it once.
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="right">
 
-### 3. Idempotence & 4. Algebraic Symmetry
-- **③ Idempotence: `f(f(x)) == f(x)`**
-  - Applying an operation twice equals applying it once: `sort(sort(L)) == sort(L)`, `trim(trim(s)) == trim(s)`.
-- **④ Algebraic & Permutation Symmetry:**
-  - In **Triangle Classification**, permuting side order `(a, b, c) → (b, c, a)` must never change the triangle category:
-  ```java
-  @Property
-  boolean trianglePermutationSymmetry(
-      @ForAll @IntRange(min=1, max=200) int a,
-      @ForAll @IntRange(min=1, max=200) int b,
-      @ForAll @IntRange(min=1, max=200) int c) {
-    return Triangle.classify(a, b, c)
-           .equals(Triangle.classify(b, c, a));
-  }
-  ```
+<img src="../../img/ch07/pbt_concept_1_pbt.svg" alt="1. Property-Based Testing Universal Invariants" />
 
-</div>
 </div>
 </div>
 
 <!--
-Mastering these four patterns—Round-Trip, Structural Conservation, Idempotence, and Algebraic Symmetry—allows you to write 5-line `@Property` tests that replace hundreds of brittle hand-written examples.
+In traditional Example-Based Testing (EBT), 3 hand-picked green dots give a false sense of security while missing the boundary cliff in the corner. In Property-Based Testing (PBT), `@ForAll` bombards the function with 1,000 randomized and boundary-weighted inputs against a universal invariant shield.
 
 💡 難字與專業術語解說：
-- idempotence: 冪等性（對同一輸入重複執行多次運算與僅執行一次運算所得結果完全相同的數學性質，即 `f(f(x)) == f(x)`）
+- Property-Based Testing (PBT): 屬性基礎測試（宣告系統在所有合法輸入下皆須遵守的通用數學不變量，由框架自動產生千組隨機測資尋找反例）
+- idempotence: 冪等性（對同一輸入重複執行多次運算與僅執行一次運算所得結果完全相同的性質，即 `f(f(x)) == f(x)`）
 -->
 ---
-## `jqwik` Enterprise Logic: Financial Invariants & Shrinking a Pricing Cliff Bug
+## 2. Round-Trip Invertibility & Structural Conservation Patterns
 
-<div class="card-deck">
+<div class="split64">
+<div class="left">
 
-> In enterprise e-commerce and banking engines, PBT excels at catching **stacked discount negative-payment exploits** and **threshold cliff inversions**!
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 3 Enterprise Financial Invariants
-1. **E-Commerce Payment Conservation (`OrderDiscount`):**
-   - Across 1,000 random `(MemberTier, Amount, PaymentType)` tuples:
-   - **`0 <= finalPay <= originalPrice`** (zero negative-pay exploits!) and **`finalPay + discount == originalPrice`**.
-2. **VIP Tier Monotonicity:**
-   - For identical cart amount and payment method: **`pay(VIP) <= pay(REGULAR) <= pay(GUEST)`** (a VIP must never pay more than a Guest!).
-3. **Mortgage Floor & Amount Monotonicity (`LoanCalculator`):**
-   - Interest rate is always locked in **`[2.0%, 5.0%]`**, and borrowing `+1,000,000` more never increases the interest rate.
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### Shrinking in Action: Catching a `$3,000` Pricing Cliff!
-```java
-@Property // Property: Buying $100 more must never cost less!
-boolean vipCheckoutMonotonic(
-        @ForAll @IntRange(min = 100, max = 50000) int amt) {
-    return OrderDiscount.checkout(Tier.VIP, amt)
-        <= OrderDiscount.checkout(Tier.VIP, amt + 100);
-}
-```
-- **Initial Hit:** `amt = 2964` fails → **Auto-Shrunk (6 steps):** **`amt = 2901`**!
-- **Root Cause:** Crossing `> $3,000` jumped rebate from `$100` to `$300` (`$2,901` paid `$2,220.8`, while `$3,001` paid only `$2,100.8`)!
+* **Core Methodology:**
+  - Verify 1,000 random inputs without pre-computing answers via <strong>Round-Trip Invertibility (`f⁻¹(f(x)) == x`)</strong> or <strong>Structural Conservation (`invariant(f(x))`)</strong>.
+* **Example 1 — Codecs, Crypto & Serialization Round-Trip:**
+  - `decrypt(encrypt(msg, k)) == msg`, `gunzip(gzip(b)) == b`, `Base64.decode(Base64.encode(s)) == s`, or `fromJson(toJson(dto)).equals(dto)`.
+* **Example 2 — List Reversal & Sorting Conservation (`jqwik`):**
+  ```java
+  @Property boolean reverseTwiceRestoresList(@ForAll List<Integer> xs) {
+      List<Integer> copy = new ArrayList<>(xs);
+      Collections.reverse(copy); Collections.reverse(copy);
+      return copy.equals(xs); // 1,000 random lists verified!
+  }
+  ```
+  - **Sorting `Y = sort(L)`:** Must preserve **`Y.size() == L.size()`** (element conservation) AND **`Y[i] <= Y[i+1]`** (monotonic order).
 
 </div>
+<div class="right">
+
+<img src="../../img/ch07/pbt_concept_2_roundtrip.svg" alt="2. Round-Trip and Structural Conservation" />
+
 </div>
 </div>
 
 <!--
-Look at how `jqwik` caught the pricing cliff bug on the right: when `amount = 2964` failed monotonicity, `jqwik` automatically shrank the input down to the exact boundary edge `amount = 2901`, immediately revealing the `$3,000` rebate jump bug!
+Round-Trip testing is the gold standard for serializers, compilers, encryption, and compression engines: you generate 1,000 arbitrary objects `x`, encode them to `y`, decode `y` back, and assert that the result equals `x`.
 
 💡 難字與專業術語解說：
-- monotonicity invariant: 單調性不變量（當輸入沿特定方向遞增時，輸出必須單調不減或單調不增的商業守恆律）
+- round-trip property (invertibility): 往返可逆屬性（將原始資料經正向轉換與逆向還原後，必須百分百等於原始輸入的不變量）
 -->
 ---
-## Metamorphic Testing (MT): 3-Step Loop & 4 Classic MR Patterns
+## 3. Automatic Test Case Shrinking (Minimal Counterexample)
 
-| MR Pattern | Formulation (`x → x'`) | Concrete Engineering Application |
-| :--- | :--- | :--- |
-| **1. Symmetry / Equivalence** | `f(Permute(x)) == f(x)` | **Triangle / Search:** `triangle(a,b,c) == triangle(b,c,a)`; case-insensitive `search("sqa") == search("SQA")`. |
-| **2. Inclusion / Monotonicity** | `f(x') ⊆ f(x)` or `f(x1) ≤ f(x2)` | **Search / Loan:** Narrowed query `search("Java SQA") ⊆ search("Java")`; higher loan amount never increases interest rate. |
-| **3. Scaling Consistency** | `f(k · x) == f(x)` or `k · f(x)` | **Triangle / Shortest Path:** Scaling sides `triangle(ka, kb, kc) == triangle(a,b,c)`; doubling road weights keeps optimal route. |
-| **4. Irrelevant Perturbation** | `f(x + noise) == f(x)` | **Search / Vision / LLM:** Padding whitespace `"  SQA  "` or rotating street photo by `3°` preserves classification. |
+<div class="split64">
+<div class="left">
 
-* **PBT vs. MT:** PBT checks 1 synthetic run `P(x, f(x))`; MT compares **2 runs** (`Source y = f(x)` vs. `Follow-up y' = f(T(x))`) on real seed data (**80% EBT + 20% PBT/MT** golden ratio at AWS, Volvo, Stripe).
+* **Core Methodology:**
+  - When a random input fails (e.g., `amount = 48,752` or a 500-char string), **`jqwik`'s Shrinking Engine** binary-searches down to the **smallest minimal counterexample**!
+* **Example 1 — E-Commerce `$3,000` Pricing Cliff (`OrderDiscount`):**
+  ```java
+  @Property // Buying $100 more must never cost less!
+  boolean vipMonotonic(@ForAll @IntRange(min=100, max=50000) int amt) {
+      return checkout(Tier.VIP, amt) <= checkout(Tier.VIP, amt + 100);
+  }
+  ```
+  - **Random Hit:** `amt = 48,752` fails → **Auto-Shrunk in 6 steps to `amt = 2901`** (crossing `> $3,000` jumped rebate from `$100` to `$300`, making `$3,001` cheaper than `$2,901`!).
+* **Example 2 — String / JSON Parser Crash:**
+  - A 600-character fuzzing crash automatically shrinks to the 2-char minimal trigger `"\\\""`.
+
+</div>
+<div class="right">
+
+<img src="../../img/ch07/pbt_concept_3_shrinking.svg" alt="3. Automatic Test Case Shrinking" />
+
+</div>
+</div>
 
 <!--
-Notice the synergy between PBT and MT: for small discrete parameter combinations (like the 12 combinations of the Swimming Pool), Pairwise + `@CsvSource` is ideal; for huge continuous domains or oracle-free systems (like search engines, autonomous driving, and LLMs), PBT + MT is unmatched.
+Without shrinking, random fuzzing gives developers a 500-element array or an arbitrary number like `48,752` that takes hours to debug. With `jqwik` Shrinking, the framework automatically narrows the failure down to `amount = 2901`, pointing directly at the `$3,000` threshold cliff!
 
 💡 難字與專業術語解說：
-- source run vs. follow-up run: 原始執行 vs. 衍生執行（變質測試中先以基準輸入 `x` 求得 `y`，再以變換後輸入 `x' = T(x)` 求得 `y'` 以比對關係 `R(y, y')` 的兩階段執行）
+- minimal counterexample: 最小反例（能觸發並重現某個軟體缺陷的最簡短、數值最小的輸入組合）
+-->
+---
+## 4. Metamorphic Testing (MT): Solving the Oracle Problem via 2 Runs
+
+<div class="split64">
+<div class="left">
+
+* **Core Methodology:**
+  - When **no exact Oracle exists for a single run `y = f(x)`**, apply a transformation **`x' = T(x)`** and verify the **Metamorphic Relation `MR(f(x), f(x'))`** across **two executions**!
+* **Example 1 — Search Engine Subset Inclusion (`y' ⊆ y`):**
+  - Source run `y = search("Java")` returns `3,842` hits (unknown if exact); narrowed follow-up `y' = search("Java SQA")` MUST return a strict subset (`|y'| <= |y|`, e.g., `128 <= 3,842`).
+* **Example 2 — GPS Navigation Scaling & Subpath Consistency:**
+  - Doubling all road weights (`× 2`) must preserve the exact same optimal route sequence; if `A → B → C` is optimal for `route(A, C)`, then `B → C` must be optimal for `route(B, C)`.
+* **Example 3 — Compiler Optimization Equivalence (`-O0` vs. `-O3`):**
+  - Inserting unreachable dead code into program `P → P'` must produce identical runtime output `exec(compile(P)) == exec(compile(P'))`.
+
+</div>
+<div class="right">
+
+<img src="../../img/ch07/pbt_concept_4_metamorphic.svg" alt="4. Metamorphic Testing Two-Run Flow" />
+
+</div>
+</div>
+
+<!--
+Notice the fundamental difference between PBT and MT: PBT checks a universal property on a single run `P(x, f(x))`, whereas Metamorphic Testing executes **two runs**—a source run `y = f(x)` and a transformed follow-up run `y' = f(T(x))`—and asserts the relational invariant `MR(y, y')`.
+
+💡 難字與專業術語解說：
+- source run vs. follow-up run: 原始執行 vs. 衍生執行（變質測試中先以基準輸入 `x` 求得 `y`，再以變換後輸入 `x' = T(x)` 求得 `y'` 以比對關係 `MR(y, y')` 的兩階段執行）
+-->
+---
+## 5. Domain Monotonicity, Symmetry & Noise-Perturbation MRs
+
+<div class="split64">
+<div class="left">
+
+* **Core Methodology:**
+  - Design Metamorphic Relations around three domain laws: <strong>Monotonicity (directional order)</strong>, <strong>Symmetry (order invariance)</strong>, and **Noise Robustness**.
+* **Example 1 — Commercial Tier & Mortgage Monotonicity:**
+  - **E-Commerce:** **`pay(VIP) <= pay(REGULAR) <= pay(GUEST)`** for any identical cart.
+  - **Mortgage (`LoanCalculator`):** Higher loan amount (`5M → 10M`) or Youth/Married flags must **never increase** interest rate.
+* **Example 2 — Permutation Symmetry (`f(Permute(x)) == f(x)`):**
+  - **Triangle:** `classify(a, b, c).equals(classify(b, c, a))`; SQL `UNION` order invariance.
+* **Example 3 — Irrelevant Noise Perturbation (`f(x + noise) == f(x)`):**
+  - Case/whitespace `search("  sqa ") == search("SQA")`; slight rain noise or `2°` tilt in autonomous driving vision preserves `"Pedestrian"` detection.
+
+</div>
+<div class="right">
+
+<img src="../../img/ch07/pbt_concept_5_monotonicity.svg" alt="5. Monotonicity and Symmetry Metamorphic Relations" />
+
+</div>
+</div>
+
+<!--
+Monotonicity, Symmetry, and Noise Perturbation give QA engineers an inexhaustible supply of automated tests for financial pricing, machine learning, and computer vision without needing manual human labeling for every input!
+
+💡 難字與專業術語解說：
+- monotonicity invariant: 單調性不變量（當輸入沿特定方向遞增或會員等級提升時，輸出必須單調不減或單調不增的商業守恆律）
+-->
+---
+## 6. Differential Testing & LLM-as-a-Judge for AI Systems
+
+<div class="split64">
+<div class="left">
+
+* **Core Methodology:**
+  - Pair **Differential Testing** (comparing multiple independent implementations on identical inputs) with **LLM-as-a-Judge** (rubric-based AI evaluation).
+* **Example 1 — Cross-Implementation Differential Testing:**
+  - **Compilers:** Feed identical C code to `GCC` vs. `Clang`—any divergence flags a bug!
+  - **Shadow Refactoring:** Run live requests through **Legacy v1** and **Refactored v2** in parallel (`assertEquals(v1(x), v2(x))`).
+* **Example 2 — Cross-Model AI Regression (`Baseline v1` vs. `Candidate v2`):**
+  - Feed prompts `x` into `Model A(x)` and `Model B(x)`; flag semantic drops (`Sim < 0.85`).
+* **Example 3 — LLM-as-a-Judge Quality Gate (`Score >= 0.90`):**
+  - Grade RAG/Agent outputs on **Faithfulness** (zero hallucination), **Answer Relevance**, and **Safety Guardrails** (zero prompt injection / PII leak).
+
+</div>
+<div class="right">
+
+<img src="../../img/ch07/pbt_concept_6_differential.svg" alt="6. Differential Testing and LLM-as-a-Judge" />
+
+</div>
+</div>
+
+<!--
+In industrial practice at AWS, Volvo, and Stripe, teams follow the **80/20 Golden Ratio**: 80% Example-Based Testing (BVA/EP/Pairwise) for deterministic business rules, combined with 20% Property-Based, Metamorphic, Differential, and LLM-as-a-Judge testing for complex and AI-driven subsystems.
+
+💡 難字與專業術語解說：
+- differential testing: 差分測試（將相同測試輸入同時餵給多個獨立實作或新舊版本模型，藉由比對輸出差異來自動揭露異常的技術）
+- LLM-as-a-Judge: 大型語言模型裁判（以高階推理模型依據結構化評分規準自動檢驗生成式 AI 輸出之忠實度、相關性與安全性的評測架構）
+-->
+---
+<!-- _class: title-image-slide -->
+
+## Synthesis: 6 Core Pillars of Property-Based & Metamorphic Testing
+
+<div class="image-wrapper">
+  <img src="../../img/ch07/pbt_mt_concept_thumbnails.svg" alt="6 Core Concepts of Property-Based Testing and Metamorphic Testing" />
+</div>
+
+<!--
+This synthesis panorama brings together all six pillars we just explored:
+1. **Property-Based Testing (PBT)** (`@Property` + `@ForAll` 1,000 random trials)
+2. **Round-Trip & Structural Conservation** (`decode(encode(x)) == x`, `size(sort(L)) == size(L)`)
+3. **Automatic Test Case Shrinking** (binary-searching failures down to the minimal counterexample `amount = 2901`)
+4. **Metamorphic Testing (MT)** (verifying 2-run transformation relations `MR(f(x), f(T(x)))`)
+5. **Monotonicity & Symmetry MRs** (`pay(VIP) <= pay(REG) <= pay(GUEST)`, permutation/noise invariance)
+6. **Differential Testing & LLM-as-a-Judge** (cross-version comparison and rubric-based AI quality gates)
 -->
 ---
 <!-- id: ase-ch07-ccq3 -->
@@ -2553,6 +3182,119 @@ Let's review Concept Check Question 3 on Combinatorial Pairwise Testing.
 The correct answer is **B**.
 -->
 ---
+## 📝 7.4 Essay Follow-Up: Food Delivery Fee Engine (Pairwise & PBT)
+
+<div class="sp-essay-hero">
+<div class="sp-essay-visual">
+<img src="../../img/ch07/food_delivery_badge.svg" alt="FoodExpress Delivery Fee Engine" />
+</div>
+<div class="sp-prose-spec">
+<div class="sp-prose-header"><span class="sp-prose-badge">7.4 Follow-Up</span><span>From 36 Strong-EP Combinations to Pairwise &amp; Property-Based Testing</span></div>
+<p>In Section 7.3, we induced <strong>4 valid input factors</strong> from the FoodExpress narrative: <code>subtotal</code> (<strong>3 tiers</strong>: <code>100..299</code>, <code>300..799</code>, <code>800..10000</code>), <code>distanceKm</code> (<strong>3 zones</strong>: <code>1..3</code>, <code>4..8</code>, <code>9..15</code>), <code>memberTier</code> (<strong>2 levels</strong>: <code>NONE, VIP</code>), and <code>isRainyPeak</code> (<strong>2 states</strong>: <code>false, true</code>).</p>
+<p>Full Strong EP requires <strong>3 × 3 × 2 × 2 = 36</strong> valid combinations, whereas Weak EP (<strong>3 tests</strong>) misses 2-way feature interactions (e.g., whether <code>VIP</code> base-fee waiver &amp; 20% discount interact properly with <code>Zone 3</code> distance surcharges and the <strong>NT$ 250 cap</strong>). Now apply <strong>Pairwise (2-way) Testing</strong> and <strong><code>jqwik</code> Property-Based Testing (PBT)</strong>!</p>
+</div>
+</div>
+
+<div class="sp-essay-grid-2col" id="sp-essay-food-74">
+<div class="sp-essay-card">
+<div class="sp-essay-q">
+<strong>Essay Task 1: Pairwise (All-Pairs) Compression &amp; Oracle</strong> — For this <code>3 × 3 × 2 × 2</code> domain, derive the minimum 2-way Pairwise size, construct a 9-row table, and solve the Oracle problem.
+</div>
+<div class="sp-essay-toggle">[Reveal] Click to Reveal Pairwise Design (36 → 9 Tests)</div>
+<div class="sp-essay-ans">
+• <strong>Lower Bound (<code>36 → 9</code> tests, 75% reduction):</strong> Largest pair is <code>subtotal(3) × distanceKm(3) = 9</code> rows.<br/>
+• <strong>9-Row Matrix:</strong> <code>(200,2,NONE,F→$60)</code>, <code>(200,5,VIP,T→$88)</code>, <code>(200,10,NONE,T→$180)</code>, <code>(500,2,VIP,T→$24)</code>, <code>(500,5,NONE,F→$55)</code>, <code>(500,10,VIP,F→$72)</code>, <code>(1200,2,NONE,T→$30)</code>, <code>(1200,5,NONE,T→$50)</code>, <code>(1200,10,VIP,F→$72)</code>.<br/>
+• <strong>2-Stage Oracle:</strong> Generate 9 rows via <code>AllPairs4J</code>, then fill exact fees in JUnit 5 <code>@CsvSource</code>!
+</div>
+</div>
+<div class="sp-essay-card card-pbt">
+<div class="sp-essay-q">
+<strong>Essay Task 2: Property-Based Testing (<code>jqwik</code> Invariants)</strong> — Formulate 3 universal <code>@Property</code> relations across 1,000 random valid orders <code>@ForAll(100..10000) sub, @ForAll(1..15) d, @ForAll m, @ForAll r</code>.
+</div>
+<div class="sp-essay-toggle">[Reveal] Click to Reveal 3 Universal PBT Properties</div>
+<div class="sp-essay-ans">
+• <strong>P1 (Global Clamp):</strong> <code>0 &lt;= calcFee(sub, d, m, r) &lt;= 250</code> for all valid tuples.<br/>
+• <strong>P2 (Subtotal &amp; VIP Monotonicity):</strong> <code>calcFee(sub + 1, d, m, r) &lt;= calcFee(sub, d, m, r)</code> and <code>calcFee(sub, d, VIP, r) &lt;= calcFee(sub, d, NONE, r)</code>.<br/>
+• <strong>P3 (Distance &amp; Surge Non-Decreasing):</strong> <code>calcFee(sub, d + 1, m, r) &gt;= calcFee(sub, d, m, r)</code> and <code>calcFee(sub, d, m, true) &gt;= calcFee(sub, d, m, false)</code>!
+</div>
+</div>
+</div>
+
+<!--
+In Section 7.4, we follow up on the exact same Food Delivery Fee narrative introduced in Section 7.3. Task 1 demonstrates how Pairwise testing compresses the 36 Strong EP combinations (`3 x 3 x 2 x 2`) down to an orthogonal 9-row suite covering 100% of 2-way parameter interactions. Task 2 shows how Property-Based Testing (`jqwik`) verifies 1,000 random orders using universal range clamps and metamorphic monotonicity laws without needing hardcoded oracle outputs.
+-->
+---
+## 🧩 7.4 Interactive Matching Game: FoodExpress PBT & MT Strategies
+
+<div class="pbtm-stage" id="pbt-match-game">
+<div class="pbtm-board" id="pbtm-board">
+<div class="pbtm-col-left" id="pbtm-col-left">
+<div class="pbtm-item-left is-active" data-skey="shrinking" data-color="#0284c7">
+<div style="flex: 1;"><strong>1.</strong> A random test fails at <code>(sub=4852, dist=14, VIP, true)</code>; <code>jqwik</code> binary-searches down to <strong><code>(sub=300, dist=9, VIP, false)</code></strong> to pinpoint the exact off-by-one cliff.</div>
+<span class="pbtm-port" style="border-color: #0284c7; color: #0284c7;">1</span>
+</div>
+<div class="pbtm-item-left" data-skey="roundtrip" data-color="#059669">
+<div style="flex: 1;"><strong>2.</strong> Serializing a FoodExpress receipt to JSON and parsing it back yields the exact fee (<code>fromJson(toJson(r)).fee == r.fee</code>), and applying a <code>VIP</code> coupon twice equals applying it once.</div>
+<span class="pbtm-port" style="border-color: #059669; color: #059669;">2</span>
+</div>
+<div class="pbtm-item-left" data-skey="monotonic" data-color="#d97706">
+<div style="flex: 1;"><strong>3.</strong> Adding food or upgrading to <code>VIP</code> must <strong>never increase</strong> delivery fee (<code>calcFee(sub+50, d, m, r) &lt;= calcFee(sub, d, m, r)</code>), while extra distance never decreases it.</div>
+<span class="pbtm-port" style="border-color: #d97706; color: #d97706;">3</span>
+</div>
+<div class="pbtm-item-left" data-skey="differential" data-color="#7c3aed">
+<div style="flex: 1;"><strong>4.</strong> Feed 1,000 live checkout requests simultaneously into <strong>Legacy Fee Engine v1</strong> and <strong>Refactored Microservice v2</strong>, flagging any mismatch (<code>v1(x) != v2(x)</code>).</div>
+<span class="pbtm-port" style="border-color: #7c3aed; color: #7c3aed;">4</span>
+</div>
+<div class="pbtm-item-left" data-skey="clamp" data-color="#e11d48">
+<div style="flex: 1;"><strong>5.</strong> For any generated <code>@ForAll(100..10000) sub, @ForAll(1..15) d, @ForAll m, @ForAll r</code>, assert that <strong><code>0 &lt;= calcFee(sub, d, m, r) &lt;= 250</code></strong> holds without exception.</div>
+<span class="pbtm-port" style="border-color: #e11d48; color: #e11d48;">5</span>
+</div>
+<div class="pbtm-item-left" data-skey="symmetry" data-color="#0d9488">
+<div style="flex: 1;"><strong>6.</strong> Reordering cart items <code>[Burger, Fries, Cola]</code> vs. <code>[Cola, Burger, Fries]</code> (same subtotal) or adding trailing whitespace to promo codes yields the exact same fee.</div>
+<span class="pbtm-port" style="border-color: #0d9488; color: #0d9488;">6</span>
+</div>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" class="pbtm-svg-canvas" id="pbtm-svg-lines"></svg>
+<div class="pbtm-col-right" id="pbtm-col-right">
+<div class="pbtm-item-right" data-tkey="clamp">
+<span class="pbtm-port">•</span>
+<div style="flex: 1;"><span class="pbtm-label">Universal Range Invariant</span><span class="pbtm-sub">1,000 random <code>@ForAll</code> trials without oracle</span></div>
+</div>
+<div class="pbtm-item-right" data-tkey="roundtrip">
+<span class="pbtm-port">•</span>
+<div style="flex: 1;"><span class="pbtm-label">Round-Trip &amp; Idempotence</span><span class="pbtm-sub"><code>decode(encode(x)) == x</code> &amp; repeat stability</span></div>
+</div>
+<div class="pbtm-item-right" data-tkey="shrinking">
+<span class="pbtm-port">•</span>
+<div style="flex: 1;"><span class="pbtm-label">Automatic Test Case Shrinking</span><span class="pbtm-sub">Isolate minimal failing boundary seed</span></div>
+</div>
+<div class="pbtm-item-right" data-tkey="monotonic">
+<span class="pbtm-port">•</span>
+<div style="flex: 1;"><span class="pbtm-label">Monotonicity Metamorphic (MR)</span><span class="pbtm-sub">Directional 2-run anti-cliff inequality</span></div>
+</div>
+<div class="pbtm-item-right" data-tkey="symmetry">
+<span class="pbtm-port">•</span>
+<div style="flex: 1;"><span class="pbtm-label">Permutation Symmetry (MR)</span><span class="pbtm-sub">Order &amp; irrelevant noise invariance</span></div>
+</div>
+<div class="pbtm-item-right" data-tkey="differential">
+<span class="pbtm-port">•</span>
+<div style="flex: 1;"><span class="pbtm-label">Differential Shadow Testing</span><span class="pbtm-sub">Cross-version consensus oracle</span></div>
+</div>
+</div>
+</div>
+<div class="pbtm-footer">
+<div class="sp-btn-group">
+<button type="button" class="sp-btn" id="pbtm-btn-submit">Submit &amp; Check Score</button>
+<button type="button" class="sp-btn sp-btn-reset" id="pbtm-btn-reset">↺ Shuffle &amp; Play Again</button>
+</div>
+<div class="sp-score-msg" id="pbtm-score-msg">Click a FoodExpress Scenario on the Left (1–6), then click its matching PBT / MT Strategy on the Right to draw a line! (0 / 6 linked)</div>
+</div>
+</div>
+
+<!--
+This interactive Connect-the-Lines matching quiz on Slide 82 reinforces the 6 Property-Based and Metamorphic Testing strategies from Section 7.4 by having students link each strategy on the left (Universal Range Invariant, Round-Trip & Idempotence, Automatic Test Case Shrinking, Monotonicity MR, Permutation Symmetry MR, and Differential Shadow Testing) to its concrete FoodExpress Delivery Fee verification scenario on the right.
+-->
+---
 <!-- _class: lead -->
 <!-- header: '7.5 White-Box & Mutation Testing' -->
 
@@ -2571,7 +3313,7 @@ We now open the glass box in Section 7.5: White-Box Structural Coverage and Muta
 
 <div class="card-deck">
 
-> Software defects hide in the gap between **Specification (S)** and **Implementation (P)**—requiring a hybrid **Black-Box First → White-Box Diagnosis** workflow.
+> Software defects hide in the gap between <strong>Specification (S)</strong> and <strong>Implementation (P)</strong>—requiring a hybrid **Black-Box First → White-Box Diagnosis** workflow.
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -2589,9 +3331,9 @@ We now open the glass box in Section 7.5: White-Box Structural Coverage and Muta
 
 ### Hybrid 3-Step Engineering Strategy
 - **Step 1: Black-Box Baseline First (EP / BVA / Pairwise):**
-  - Derive baseline functional and boundary tests directly from the SRS to catch **Missing Requirements (Quadrant 2)**.
+  - Derive baseline functional and boundary tests directly from the SRS to catch <strong>Missing Requirements (Quadrant 2)</strong>.
 - **Step 2: White-Box Coverage Microscope (JaCoCo):**
-  - Run the black-box suite under bytecode instrumentation and inspect **red (uncovered)** and **yellow (partially covered)** branches (**Quadrant 3 & 4**).
+  - Run the black-box suite under bytecode instrumentation and inspect <strong>red (uncovered)</strong> and <strong>yellow (partially covered)</strong> branches (**Quadrant 3 & 4**).
 - **Step 3: Reverse Supplementation or Dead-Code Removal:**
   - If an uncovered branch is valid domain logic → **add a white-box test case**; if it is mathematically unreachable → **delete the dead code**!
 
@@ -2620,10 +3362,10 @@ Black-box specification testing catches Missing Requirements (Quadrant 2), while
   5:     Y = X
   6: print Y
   ```
-  - Contains **2 Decisions (`D1, D2`)**, **4 Atomic Conditions (`C1..C4`)**, and **4 Control-Flow Paths (`a-c-e`, `a-c-d`, `a-b-e`, `a-b-d`)**.
+  - Contains <strong>2 Decisions (`D1, D2`)</strong>, <strong>4 Atomic Conditions (`C1..C4`)</strong>, and <strong>4 Control-Flow Paths (`a-c-e`, `a-c-d`, `a-b-e`, `a-b-d`)</strong>.
 * **Coverage Subsumption Hierarchy (`A → B` means `100% A` guarantees `100% B`):**
-  - **Path Coverage** → **Multiple Condition (MCC, `2`<sup>`n`</sup>)** → **MC/DC (`n + 1`)** → **Branch/Condition (B/CC)** → **Branch Coverage (BC)** → **Statement Coverage (SC)**.
-  - *Critical Exception:* **Condition Coverage (CC) does NOT subsume Branch Coverage (BC)** (and vice versa under non-short-circuit evaluation)!
+  - **Path Coverage** → <strong>Multiple Condition (MCC, `2`<sup>`n`</sup>)</strong> → <strong>MC/DC (`n + 1`)</strong> → <strong>Branch/Condition (B/CC)</strong> → <strong>Branch Coverage (BC)</strong> → <strong>Statement Coverage (SC)</strong>.
+  - *Critical Exception:* <strong>Condition Coverage (CC) does NOT subsume Branch Coverage (BC)</strong> (and vice versa under non-short-circuit evaluation)!
 
 </div>
 <div class="right">
@@ -2690,7 +3432,7 @@ We use this 6-line benchmark program and its Control Flow Graph on the right to 
 
 <div class="card-deck">
 
-> **Condition Coverage (CC)** requires every atomic boolean condition (`C`<sub>`i`</sub>) to evaluate to both `True` and `False`—which leads to a famous paradox with Branch Coverage and **Short-Circuit Evaluation**!
+> <strong>Condition Coverage (CC)</strong> requires every atomic boolean condition (`C`<sub>`i`</sub>) to evaluate to both `True` and `False`—which leads to a famous paradox with Branch Coverage and **Short-Circuit Evaluation**!
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -2787,7 +3529,7 @@ This concrete walkthrough on `sample-code-01` demonstrates why **Branch/Conditio
 
 <div class="card-deck">
 
-> When `2`<sup>`n`</sup> **MCC** and `4`<sup>`20`</sup> **Path Coverage** explode exponentially, **MC/DC (Modified Condition / Decision Coverage)** achieves rigorous condition independence in just **`n + 1` linear test cases**!
+> When `2`<sup>`n`</sup> **MCC** and `4`<sup>`20`</sup> **Path Coverage** explode exponentially, <strong>MC/DC (Modified Condition / Decision Coverage)</strong> achieves rigorous condition independence in just **`n + 1` linear test cases**!
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -2808,8 +3550,8 @@ This concrete walkthrough on `sample-code-01` demonstrates why **Branch/Conditio
   - Compresses **`2`<sup>`n`</sup>** combinations to **`n + 1` (max `2n`) linear tests**!
 - **Core Requirement — Independence Pairs:**
   - Every condition **`C`<sub>`i`</sub>** must have a test pair `(Test X, Test Y)` where:
-    1. **Only `C`<sub>`i`</sub> flips (`T ↔ F`)** while other conditions stay fixed;
-    2. The overall **Decision outcome also flips (`T ↔ F`)**!
+    1. <strong>Only `C`<sub>`i`</sub> flips (`T ↔ F`)</strong> while other conditions stay fixed;
+    2. The overall <strong>Decision outcome also flips (`T ↔ F`)</strong>!
 
 </div>
 </div>
@@ -2851,11 +3593,11 @@ MC/DC proves that each atomic condition can independently flip the final decisio
 - **1. Condition `A` → Pair `(#2, #6)`:**
   - `#2`: `(A=F, B=F, C=T) → Decision = F`
   - `#6`: `(A=T, B=F, C=T) → Decision = T`
-  - *Proof:* `B=F, C=T` stay fixed; flipping **`A` (`F↔T`)** flips **`Decision` (`F↔T`)**!
+  - *Proof:* `B=F, C=T` stay fixed; flipping <strong>`A` (`F↔T`)</strong> flips <strong>`Decision` (`F↔T`)</strong>!
 - **2. Condition `B` → Pair `(#2, #4)`:**
   - `#2`: `(A=F, B=F, C=T) → Decision = F`
   - `#4`: `(A=F, B=T, C=T) → Decision = T`
-  - *Proof:* `A=F, C=T` stay fixed; flipping **`B` (`F↔T`)** flips **`Decision` (`F↔T`)**!
+  - *Proof:* `A=F, C=T` stay fixed; flipping <strong>`B` (`F↔T`)</strong> flips <strong>`Decision` (`F↔T`)</strong>!
 
 </div>
 <div class="card" data-marpit-fragment>
@@ -2864,9 +3606,9 @@ MC/DC proves that each atomic condition can independently flip the final decisio
 - **3. Condition `C` → Pair `(#5, #6)`:**
   - `#5`: `(A=T, B=F, C=F) → Decision = F`
   - `#6`: `(A=T, B=F, C=T) → Decision = T`
-  - *Proof:* `A=T, B=F` stay fixed; flipping **`C` (`F↔T`)** flips **`Decision` (`F↔T`)**!
+  - *Proof:* `A=T, B=F` stay fixed; flipping <strong>`C` (`F↔T`)</strong> flips <strong>`Decision` (`F↔T`)</strong>!
 - **Engineering Conclusion:**
-  - Instead of `2`<sup>`3`</sup> `= 8` MCC tests, **`{#2, #4, #5, #6}` (`n + 1 = 4` tests)** satisfies 100% DO-178C Level A MC/DC!
+  - Instead of `2`<sup>`3`</sup> `= 8` MCC tests, <strong>`{#2, #4, #5, #6}` (`n + 1 = 4` tests)</strong> satisfies 100% DO-178C Level A MC/DC!
 
 </div>
 </div>
@@ -3035,7 +3777,7 @@ The correct answer is **B**.
 <div class="ccq-columns">
 <div class="ccq-text">
 
-An avionics flight-control module contains a decision with **`n = 4` independent boolean conditions**. Under **DO-178C Level A**, what is the minimum number of test cases required to achieve **100% MC/DC**, compared to **100% Multiple Condition Coverage (MCC)**?
+An avionics flight-control module contains a decision with **`n = 4` independent boolean conditions**. Under **DO-178C Level A**, what is the minimum number of test cases required to achieve **100% MC/DC**, compared to <strong>100% Multiple Condition Coverage (MCC)</strong>?
 
 - **A.** MC/DC requires `n = 4` test cases; MCC requires `2n = 8` test cases.
 - **B.** MC/DC requires `n + 1 = 5` test cases; MCC requires `2`<sup>`n`</sup> `= 16` test cases.
@@ -3057,8 +3799,8 @@ Now let's test your understanding of MC/DC versus Multiple Condition Coverage (M
 
 - **Correct Answer: B**
 - **Explanation:**
-  - **MC/DC (Modified Condition / Decision Coverage)** requires an independence pair for each of the `n` conditions while sharing baseline rows, requiring a minimum of **`n + 1 = 4 + 1 = 5` test cases** (linear growth).
-  - **MCC (Multiple Condition Coverage)** requires testing the entire boolean truth table across all `n` conditions, requiring **`2`<sup>`n`</sup> `= 2`<sup>`4`</sup> `= 16` test cases** (exponential growth).
+  - <strong>MC/DC (Modified Condition / Decision Coverage)</strong> requires an independence pair for each of the `n` conditions while sharing baseline rows, requiring a minimum of **`n + 1 = 4 + 1 = 5` test cases** (linear growth).
+  - <strong>MCC (Multiple Condition Coverage)</strong> requires testing the entire boolean truth table across all `n` conditions, requiring **`2`<sup>`n`</sup> `= 2`<sup>`4`</sup> `= 16` test cases** (exponential growth).
   - *Why others are incorrect:* Option C uses Black-Box Boundary Value Analysis formulas (`4n+1` and `5`<sup>`n`</sup>) rather than boolean condition formulas.
 
 <!--
@@ -3098,7 +3840,7 @@ Mutation Testing injects artificial single-point faults (mutants) into your code
 
 <div class="card-deck">
 
-> Killing a mutant requires traversing the **4-stage RIPR chain**; when computing the **Mutation Score (`MS = K / (M - E)`)**, we must subtract **Equivalent Mutants (`E`)** from the denominator!
+> Killing a mutant requires traversing the **4-stage RIPR chain**; when computing the <strong>Mutation Score (`MS = K / (M - E)`)</strong>, we must subtract <strong>Equivalent Mutants (`E`)</strong> from the denominator!
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -3170,11 +3912,11 @@ def p(a): # Returns index r of max value
 ### Mutant Execution & Hunting Matrix
 | Test Case | Orig `P` | `P1` (`[0,1,2]`) | `P2` (`i>a[r]`) | `P3` (`>=`) | `P4` (`True`) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| **`t1=[1,2,3]`** | `2` | `2` | **`1` (Kill)** | `2` | `2` |
-| **`t2=[1,2,1]`** | `1` | `1` | `1` | `1` | **`2` (Kill)** |
-| **`t3=[3,1,2]`** | `0` | `0` | `0` | `0` | **`2` (Kill)** |
-| **Initial Status** | Base | **Equiv (`E`)** | **Killed** | **Alive!** | **Killed** |
-| **Add `t4=[2,2,1]`** | `0` | `0` | `2` | **`1` (Kill!)** | `2` |
+| **`t1=[1,2,3]`** | `2` | `2` | <strong>`1` (Kill)</strong> | `2` | `2` |
+| **`t2=[1,2,1]`** | `1` | `1` | `1` | `1` | <strong>`2` (Kill)</strong> |
+| **`t3=[3,1,2]`** | `0` | `0` | `0` | `0` | <strong>`2` (Kill)</strong> |
+| **Initial Status** | Base | <strong>Equiv (`E`)</strong> | **Killed** | **Alive!** | **Killed** |
+| **Add `t4=[2,2,1]`** | `0` | `0` | `2` | <strong>`1` (Kill!)</strong> | `2` |
 
 </div>
 </div>
@@ -3215,11 +3957,11 @@ int func(int X, int Y) {
 | Program / Mutant | `t1=(12,1)` | `t2=(6,5)` | `t3=(7,11)` | Status & Remedy |
 | :--- | :---: | :---: | :---: | :--- |
 | **Original `P`** | **`1`** | **`2`** | **`3`** | Baseline |
-| **`P1` (`X>=10`)** | `1` | `2` | `3` | **Alive** → Add **`(10,1)`** |
-| **`P2` (`&&→\|\|`)** | `1` | `2` | **`1` (Kill)** | **Killed by `t3`** |
-| **`P3` (`<2→<=2`)** | `1` | `2` | `3` | **Alive** → Add **`(8,6)`** |
-| **`P4` (`Y>=10`)** | `1` | `2` | `3` | **Alive** → Add **`(7,10)`** |
-| **`P5` (`X=3→4`)** | `1` | `2` | **`4` (Kill)** | **Killed by `t3`** |
+| <strong>`P1` (`X>=10`)</strong> | `1` | `2` | `3` | **Alive** → Add **`(10,1)`** |
+| <strong>`P2` (`&&→\|\|`)</strong> | `1` | `2` | <strong>`1` (Kill)</strong> | **Killed by `t3`** |
+| <strong>`P3` (`<2→<=2`)</strong> | `1` | `2` | `3` | **Alive** → Add **`(8,6)`** |
+| <strong>`P4` (`Y>=10`)</strong> | `1` | `2` | `3` | **Alive** → Add **`(7,10)`** |
+| <strong>`P5` (`X=3→4`)</strong> | `1` | `2` | <strong>`4` (Kill)</strong> | **Killed by `t3`** |
 
 </div>
 </div>
@@ -3244,7 +3986,7 @@ Notice the pattern across both walkthroughs: surviving relational mutants (`>` m
   - **Kill `bs02` (`left < right` dropped `==`):** Needs a search that converges to the final 1-element window **`left == right`** (e.g., **`search(2, [0, 1, 2])`** or **`search(1, [1])`**)!
   - **Kill `bs03` (`left >= right` reversed):** Single-element `[5]` (`0 >= 0`) fails to kill it; any array with **`length >= 2`** (e.g., **`search(1, [0, 1, 2])`** where `0 >= 2` is `False`) kills `bs03` immediately!
 * **Industrial Bytecode Mutation with PITest (`pitest-maven`):**
-  - Runs `mvn test-compile org.pitest:pitest-maven:mutationCoverage` to mutate JVM bytecode in memory and classify every line as **`KILLED` (green)**, **`SURVIVED` (light red)**, **`NO_COVERAGE` (dark red)**, or **`TIMED_OUT`**.
+  - Runs `mvn test-compile org.pitest:pitest-maven:mutationCoverage` to mutate JVM bytecode in memory and classify every line as <strong>`KILLED` (green)</strong>, <strong>`SURVIVED` (light red)</strong>, <strong>`NO_COVERAGE` (dark red)</strong>, or **`TIMED_OUT`**.
 
 </div>
 <div class="right">
@@ -3713,7 +4455,7 @@ Here is Part 2 of our Chapter 7 interactive fill-in-the-blank recap, covering Pa
 - **Static Inspection (7.2):**
   - Drain the testing iceberg early via **Fagan Inspections**, Clean Code checklists, **Code Smell refactoring**, and **OWASP Top 10 / SAST** gates.
 - **Black-Box BVA, EP, Pairwise, State & PBT (7.3–7.4):**
-  - Apply the **3-Step EP + BVA SOP**, **Single Invalid Rule**, **IPO Pairwise (`AllPairs4J`)**, **0-Switch/1-Switch State `@Nested` tests**, and **`jqwik` Property-Based Shrinking**.
+  - Apply the **3-Step EP + BVA SOP**, **Single Invalid Rule**, <strong>IPO Pairwise (`AllPairs4J`)</strong>, **0-Switch/1-Switch State `@Nested` tests**, and **`jqwik` Property-Based Shrinking**.
 
 </div>
 <div class="card" data-marpit-fragment>
@@ -3724,7 +4466,7 @@ Here is Part 2 of our Chapter 7 interactive fill-in-the-blank recap, covering Pa
 - **Mutation Testing (`MS = K / (M - E)`):**
   - *Test the tests* via the **RIPR chain** and **PITest** bytecode mutators to eliminate assertion-free false green lights.
 - **Integration Testing & Test Doubles (7.6):**
-  - Design with **Constructor DI**; combine **Bottom-Up (`@Test` Drivers)** and **Top-Down (`Stubs`)** via **Sandwich Integration**; isolate external APIs with **Mockito (`mock, spy, verify`)** while avoiding **Brittle Over-Mocking**!
+  - Design with **Constructor DI**; combine <strong>Bottom-Up (`@Test` Drivers)</strong> and <strong>Top-Down (`Stubs`)</strong> via **Sandwich Integration**; isolate external APIs with <strong>Mockito (`mock, spy, verify`)</strong> while avoiding **Brittle Over-Mocking**!
 
 </div>
 </div>
@@ -4240,11 +4982,21 @@ This final summary ties together every discipline in Chapter 7: from static insp
       }
       if (btnStep) {
         if (firstCollapsedIdx === -1) {
-          btnStep.textContent = "↺ Reset Branches";
+          btnStep.textContent = "↺ Reset Branches [n]";
         } else {
-          btnStep.textContent = "▶ Next Branch (" + (firstCollapsedIdx + 1) + "/" + rows.length + ")";
+          btnStep.textContent = "▶ Next Branch (" + (firstCollapsedIdx + 1) + "/" + rows.length + ") [n]";
         }
       }
+    }
+
+    function stepNextBranch() {
+      const nextRow = rows.find(r => r.classList.contains("is-collapsed"));
+      if (nextRow) {
+        nextRow.classList.remove("is-collapsed");
+      } else {
+        rows.forEach(r => r.classList.add("is-collapsed"));
+      }
+      syncRowUI();
     }
 
     rows.forEach(row => {
@@ -4275,15 +5027,35 @@ This final summary ties together every discipline in Chapter 7: from static insp
     if (btnStep) {
       btnStep.addEventListener("click", function(e) {
         e.stopPropagation();
-        const nextRow = rows.find(r => r.classList.contains("is-collapsed"));
-        if (nextRow) {
-          nextRow.classList.remove("is-collapsed");
-        } else {
-          rows.forEach(r => r.classList.add("is-collapsed"));
-        }
-        syncRowUI();
+        stepNextBranch();
       });
     }
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key !== "n" && e.key !== "N") return;
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      const activeEl = document.activeElement;
+      if (activeEl && (activeEl.tagName === "INPUT" || activeEl.tagName === "TEXTAREA" || activeEl.isContentEditable)) return;
+
+      const sec = root.closest("section");
+      let isCurrentSlide = false;
+      if (sec) {
+        const hashId = (window.location.hash || "").replace(/^#/, "");
+        if (hashId && sec.id === hashId) {
+          isCurrentSlide = true;
+        } else {
+          const rect = sec.getBoundingClientRect();
+          if (rect.width > 0 && rect.height > 0 && rect.top >= -100 && rect.top < window.innerHeight * 0.6) {
+            isCurrentSlide = true;
+          }
+        }
+      }
+      if (isCurrentSlide) {
+        e.preventDefault();
+        e.stopPropagation();
+        stepNextBranch();
+      }
+    });
 
     syncRowUI();
   }
@@ -4506,13 +5278,14 @@ function initBinarySearchInteractive() {
   const pills = stage.querySelectorAll('.bs-quick-pill');
   const cells = stage.querySelectorAll('.bs-array-cell');
 
-  const arr = [3, 7, 11, 15, 19, 23, 27, 31];
-  let target = 23;
+  const arr = [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43];
+  const maxIdx = arr.length - 1;
+  let target = 35;
   let steps = [];
   let currentStepIdx = 0;
 
   function calculateSteps(k) {
-    let low = 0, high = arr.length - 1;
+    let low = 0, high = maxIdx;
     const history = [];
 
     while (low <= high) {
@@ -4545,7 +5318,7 @@ function initBinarySearchInteractive() {
           done: false,
           tag: 'ELIMINATE RIGHT',
           tagBg: '#fef3c7', tagColor: '#b45309',
-          text: 'arr[' + mid + ']=' + val + ' > ' + k + ' → Eliminate right [' + mid + '..7], set high = ' + (mid - 1)
+          text: 'arr[' + mid + ']=' + val + ' > ' + k + ' → Eliminate right [' + mid + '..' + maxIdx + '], set high = ' + (mid - 1)
         });
         high = mid - 1;
       }
@@ -4584,7 +5357,7 @@ function initBinarySearchInteractive() {
       }
 
       // Add pointer pills
-      if (idx === s.low && s.low <= 7 && s.low >= 0) {
+      if (idx === s.low && s.low <= maxIdx && s.low >= 0) {
         cell.insertAdjacentHTML('beforeend', '<span class="bs-pointer-pill bs-ptr-low">low</span>');
       }
       if (idx === s.mid && s.mid >= 0) {
@@ -4592,7 +5365,7 @@ function initBinarySearchInteractive() {
         const midText = s.found ? 'hit!' : 'mid';
         cell.insertAdjacentHTML('beforeend', '<span class="bs-pointer-pill bs-ptr-mid" ' + midBg + '>' + midText + '</span>');
       }
-      if (idx === s.high && s.high <= 7 && s.high >= 0) {
+      if (idx === s.high && s.high <= maxIdx && s.high >= 0) {
         cell.insertAdjacentHTML('beforeend', '<span class="bs-pointer-pill bs-ptr-high">high</span>');
       }
     });
@@ -4938,6 +5711,1162 @@ function initSmExplorer() {
   updateSmView();
 }
 
+  // =========================================================================
+  // Interactive Self-Practice Quizzes (Word Bank, Mixed Quiz, Free-Text & Essay)
+  // =========================================================================
+  function initSelfPracticeQuizzes() {
+    document.querySelectorAll(".sp-quiz-stage").forEach(stage => {
+      if (stage.dataset.spBound) return;
+      stage.dataset.spBound = "true";
+
+      stage.querySelectorAll(".sp-free-input").forEach(span => {
+        const inp = document.createElement("input");
+        inp.type = "text";
+        inp.className = "sp-input";
+        inp.dataset.ans = span.dataset.ans || "";
+        inp.placeholder = span.dataset.placeholder || "Type key term...";
+        span.replaceWith(inp);
+      });
+
+      const slots = Array.from(stage.querySelectorAll(".sp-slot"));
+      const chips = Array.from(stage.querySelectorAll(".sp-chip"));
+      const inputs = Array.from(stage.querySelectorAll(".sp-input"));
+      const mcCards = Array.from(stage.querySelectorAll(".sp-mc-card"));
+      const btnSubmit = stage.querySelector(".sp-btn-submit");
+      const btnReset = stage.querySelector(".sp-btn-reset");
+      const scoreMsg = stage.querySelector(".sp-score-msg");
+
+      function getActiveSlot() {
+        return stage.querySelector(".sp-slot.is-active") || slots.find(s => !s.dataset.filledWord);
+      }
+
+      function setActiveSlot(targetSlot) {
+        slots.forEach(s => s.classList.remove("is-active"));
+        if (targetSlot) targetSlot.classList.add("is-active");
+      }
+
+      inputs.forEach(inp => {
+        ["click", "keydown", "keyup", "keypress", "input"].forEach(evtName => {
+          inp.addEventListener(evtName, function(e) {
+            e.stopPropagation();
+            if (evtName === "input") {
+              inp.classList.remove("is-correct", "is-wrong");
+              const fb = inp.nextElementSibling;
+              if (fb && fb.classList.contains("sp-input-feedback")) fb.remove();
+            }
+          });
+        });
+      });
+
+      slots.forEach((slot, idx) => {
+        slot.dataset.placeholder = "[ " + (idx + 1) + ". Click Chip ]";
+        slot.addEventListener("click", function(e) {
+          e.stopPropagation();
+          slot.classList.remove("is-correct", "is-wrong");
+          if (slot.dataset.filledWord) {
+            const usedChip = chips.find(c => c.dataset.word === slot.dataset.filledWord && c.classList.contains("is-used"));
+            if (usedChip) usedChip.classList.remove("is-used");
+            delete slot.dataset.filledWord;
+            slot.textContent = slot.dataset.placeholder;
+            slot.classList.remove("is-filled");
+          }
+          setActiveSlot(slot);
+        });
+      });
+
+      chips.forEach(chip => {
+        chip.addEventListener("click", function(e) {
+          e.stopPropagation();
+          if (chip.classList.contains("is-used")) return;
+          const active = getActiveSlot();
+          if (!active) return;
+
+          if (active.dataset.filledWord) {
+            const prevChip = chips.find(c => c.dataset.word === active.dataset.filledWord && c.classList.contains("is-used"));
+            if (prevChip) prevChip.classList.remove("is-used");
+          }
+
+          active.dataset.filledWord = chip.dataset.word;
+          active.textContent = chip.dataset.word;
+          active.classList.add("is-filled");
+          active.classList.remove("is-correct", "is-wrong");
+          chip.classList.add("is-used");
+
+          const nextEmpty = slots.find(s => !s.dataset.filledWord);
+          setActiveSlot(nextEmpty || null);
+        });
+      });
+
+      mcCards.forEach(card => {
+        const opts = Array.from(card.querySelectorAll(".sp-mc-opt"));
+        opts.forEach(opt => {
+          opt.addEventListener("click", function(e) {
+            e.stopPropagation();
+            opts.forEach(o => o.classList.remove("is-selected", "is-correct", "is-wrong"));
+            opt.classList.add("is-selected");
+            card.dataset.selectedOpt = opt.dataset.opt;
+          });
+        });
+      });
+
+      if (btnSubmit) {
+        btnSubmit.addEventListener("click", function(e) {
+          e.stopPropagation();
+          let correctItems = 0;
+          const totalItems = slots.length + mcCards.length + inputs.length;
+
+          slots.forEach(slot => {
+            slot.classList.remove("is-active", "is-correct", "is-wrong");
+            const userWord = slot.dataset.filledWord || "";
+            const expected = slot.dataset.ans || "";
+            if (userWord === expected) {
+              correctItems++;
+              slot.classList.add("is-correct");
+              slot.textContent = "✓ " + expected;
+            } else {
+              slot.classList.add("is-wrong");
+              slot.textContent = (userWord ? ("✗ " + userWord + " → ") : "✗ Ans: ") + expected;
+            }
+          });
+
+          inputs.forEach(inp => {
+            inp.classList.remove("is-correct", "is-wrong");
+            const prevFb = inp.nextElementSibling;
+            if (prevFb && prevFb.classList.contains("sp-input-feedback")) prevFb.remove();
+
+            const rawVal = (inp.value || "").trim();
+            const normVal = rawVal.toLowerCase().replace(/[\s_-]+/g, " ");
+            const acceptedList = (inp.dataset.ans || "").split("|").map(s => s.trim()).filter(Boolean);
+            const primaryAns = acceptedList[0] || "";
+            const isMatch = acceptedList.some(a => a.toLowerCase().replace(/[\s_-]+/g, " ") === normVal);
+
+            const fb = document.createElement("span");
+            fb.className = "sp-input-feedback " + (isMatch ? "is-correct" : "is-wrong");
+            if (isMatch) {
+              correctItems++;
+              inp.classList.add("is-correct");
+              fb.textContent = "✓ Correct!";
+            } else {
+              inp.classList.add("is-wrong");
+              fb.textContent = "✗ Ans: " + primaryAns;
+            }
+            inp.insertAdjacentElement("afterend", fb);
+          });
+
+          mcCards.forEach(card => {
+            const expected = card.dataset.ans;
+            const selected = card.dataset.selectedOpt || "";
+            const opts = Array.from(card.querySelectorAll(".sp-mc-opt"));
+            opts.forEach(o => {
+              o.classList.remove("is-correct", "is-wrong");
+              if (o.dataset.opt === expected) {
+                o.classList.add("is-correct");
+              } else if (o.dataset.opt === selected && selected !== expected) {
+                o.classList.add("is-wrong");
+              }
+            });
+            if (selected === expected) correctItems++;
+          });
+
+          const score = Math.round((correctItems / Math.max(1, totalItems)) * 100);
+          if (scoreMsg) {
+            const badge = score === 100 ? "[Perfect Score!]" : (score >= 60 ? "[Good Effort!]" : "[Review & Try Again!]");
+            scoreMsg.textContent = "Score: " + score + " / 100 (" + correctItems + " / " + totalItems + " Correct) — " + badge;
+          }
+        });
+      }
+
+      if (btnReset) {
+        btnReset.addEventListener("click", function(e) {
+          e.stopPropagation();
+          slots.forEach((slot, idx) => {
+            delete slot.dataset.filledWord;
+            slot.classList.remove("is-filled", "is-correct", "is-wrong", "is-active");
+            slot.textContent = slot.dataset.placeholder || ("[ " + (idx + 1) + ". Click Chip ]");
+          });
+          if (slots[0]) slots[0].classList.add("is-active");
+
+          inputs.forEach(inp => {
+            inp.value = "";
+            inp.classList.remove("is-correct", "is-wrong");
+            const prevFb = inp.nextElementSibling;
+            if (prevFb && prevFb.classList.contains("sp-input-feedback")) prevFb.remove();
+          });
+
+          chips.forEach(c => c.classList.remove("is-used"));
+          const bankBar = stage.querySelector(".sp-bank-bar");
+          if (bankBar && chips.length > 1) {
+            for (let i = chips.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              bankBar.appendChild(chips[j]);
+            }
+          }
+
+          mcCards.forEach(card => {
+            delete card.dataset.selectedOpt;
+            card.querySelectorAll(".sp-mc-opt").forEach(o => o.classList.remove("is-selected", "is-correct", "is-wrong"));
+          });
+
+          if (scoreMsg) {
+            scoreMsg.textContent = "↺ Reset complete! Click a blank or option to play again.";
+          }
+        });
+      }
+    });
+
+    document.querySelectorAll(".sp-essay-card").forEach(card => {
+      if (card.dataset.essayBound) return;
+      card.dataset.essayBound = "true";
+      const toggle = card.querySelector(".sp-essay-toggle");
+      if (toggle) {
+        const origLabel = toggle.textContent;
+        toggle.addEventListener("click", function(e) {
+          e.stopPropagation();
+          const isOpen = card.classList.toggle("is-open");
+          toggle.textContent = isOpen ? "[Hide] Hide Solution" : origLabel;
+        });
+      }
+    });
+  }
+
+  function initStackInteractiveLab() {
+    const lab = document.getElementById("stk-interactive-lab");
+    if (!lab || lab.dataset.stkBound) return;
+    lab.dataset.stkBound = "true";
+
+    let size = 0;
+    const maxCap = 3;
+    const visitedStates = new Set(["empty"]);
+    const visitedEdges = new Set();
+
+    const slot1 = lab.querySelector("#stk-slot-1");
+    const slot2 = lab.querySelector("#stk-slot-2");
+    const slot3 = lab.querySelector("#stk-slot-3");
+    const curStateTxt = lab.querySelector("#stk-cur-state-txt");
+    const allowedTxt = lab.querySelector("#stk-allowed-txt");
+    const statusMsg = lab.querySelector("#stk-status-msg");
+    const nodeCov = lab.querySelector("#stk-node-cov");
+    const edgeCov = lab.querySelector("#stk-edge-cov");
+
+    const stateNodes = {
+      empty: lab.querySelector("#stk-state-empty"),
+      partial: lab.querySelector("#stk-state-partial"),
+      full: lab.querySelector("#stk-state-full")
+    };
+
+    const edgeNodes = {
+      e1: lab.querySelector("#stk-edge-e1"),
+      e2: lab.querySelector("#stk-edge-e2"),
+      e3: lab.querySelector("#stk-edge-e3"),
+      e4: lab.querySelector("#stk-edge-e4"),
+      e5: lab.querySelector("#stk-edge-e5"),
+      g1: lab.querySelector("#stk-edge-g1"),
+      g2: lab.querySelector("#stk-edge-g2")
+    };
+
+    function getStateKey(n) {
+      if (n <= 0) return "empty";
+      if (n >= maxCap) return "full";
+      return "partial";
+    }
+
+    function syncStackUI(lastEdgeKey, msgText, msgType) {
+      if (slot1) slot1.style.opacity = size >= 1 ? "1" : "0.18";
+      if (slot2) slot2.style.opacity = size >= 2 ? "1" : "0.18";
+      if (slot3) slot3.style.opacity = size >= 3 ? "1" : "0.18";
+
+      const stKey = getStateKey(size);
+      visitedStates.add(stKey);
+      if (lastEdgeKey) visitedEdges.add(lastEdgeKey);
+
+      if (curStateTxt) {
+        if (stKey === "empty") {
+          curStateTxt.textContent = "EMPTY (n=0)";
+          curStateTxt.setAttribute("fill", "#0284c7");
+        } else if (stKey === "partial") {
+          curStateTxt.textContent = "PARTIAL (n=" + size + ")";
+          curStateTxt.setAttribute("fill", "#059669");
+        } else {
+          curStateTxt.textContent = "FULL (n=3)";
+          curStateTxt.setAttribute("fill", "#ea580c");
+        }
+      }
+
+      if (allowedTxt) {
+        if (stKey === "empty") {
+          allowedTxt.textContent = "push() only [pop throws]";
+          allowedTxt.setAttribute("fill", "#0369a1");
+        } else if (stKey === "partial") {
+          allowedTxt.textContent = "Both push() & pop() valid";
+          allowedTxt.setAttribute("fill", "#15803d");
+        } else {
+          allowedTxt.textContent = "pop() only [push throws]";
+          allowedTxt.setAttribute("fill", "#c2410c");
+        }
+      }
+
+      Object.keys(stateNodes).forEach(k => {
+        const el = stateNodes[k];
+        if (!el) return;
+        el.classList.toggle("is-current", k === stKey);
+      });
+
+      Object.keys(edgeNodes).forEach(k => {
+        const el = edgeNodes[k];
+        if (!el) return;
+        el.classList.toggle("is-visited", visitedEdges.has(k));
+        el.classList.toggle("is-last-fired", k === lastEdgeKey);
+      });
+
+      if (statusMsg && msgText) {
+        statusMsg.innerHTML = msgText;
+        statusMsg.classList.remove("is-error", "is-ok");
+        if (msgType === "error") statusMsg.classList.add("is-error");
+        if (msgType === "ok") statusMsg.classList.add("is-ok");
+      }
+
+      if (nodeCov) {
+        const nCnt = visitedStates.size;
+        nodeCov.textContent = nCnt + " / 3 (" + Math.round((nCnt / 3) * 100) + "%)";
+      }
+      if (edgeCov) {
+        const eCnt = visitedEdges.size;
+        edgeCov.textContent = eCnt + " / 7 (" + Math.round((eCnt / 7) * 100) + "%)";
+      }
+    }
+
+    const btnPush = lab.querySelector("#stk-btn-push");
+    const btnPop = lab.querySelector("#stk-btn-pop");
+    const btnReset = lab.querySelector("#stk-btn-reset");
+
+    if (btnPush) {
+      btnPush.addEventListener("click", function(e) {
+        e.stopPropagation();
+        if (size === 0) {
+          size = 1;
+          syncStackUI("e1", "[E1 Fired] <code>push()</code>: Stack transitioned <strong>Empty (0) ➔ Partial (1)</strong>.", "ok");
+        } else if (size === 1) {
+          size = 2;
+          syncStackUI("e3", "[E3 Self-Loop] <code>push()</code>: Stack stayed in <strong>Partial (1 ➔ 2)</strong>.", "ok");
+        } else if (size === 2) {
+          size = 3;
+          syncStackUI("e4", "[E4 Fired] <code>push()</code>: Stack reached capacity <strong>Partial (2) ➔ Full (3)</strong>!", "ok");
+        } else {
+          syncStackUI("g2", "[G2 Guard Exception!] <code>push()</code> when <strong>Full (n=3)</strong> throws <code>StackOverflowException</code>!", "error");
+        }
+      });
+    }
+
+    if (btnPop) {
+      btnPop.addEventListener("click", function(e) {
+        e.stopPropagation();
+        if (size === 0) {
+          syncStackUI("g1", "[G1 Guard Exception!] <code>pop()</code> when <strong>Empty (n=0)</strong> throws <code>EmptyStackException</code>!", "error");
+        } else if (size === 1) {
+          size = 0;
+          syncStackUI("e2", "[E2 Fired] <code>pop()</code>: Last item removed <strong>Partial (1) ➔ Empty (0)</strong>.", "ok");
+        } else if (size === 2) {
+          size = 1;
+          syncStackUI("e3", "[E3 Self-Loop] <code>pop()</code>: Stack stayed in <strong>Partial (2 ➔ 1)</strong>.", "ok");
+        } else if (size === 3) {
+          size = 2;
+          syncStackUI("e5", "[E5 Fired] <code>pop()</code>: Stack freed top slot <strong>Full (3) ➔ Partial (2)</strong>.", "ok");
+        }
+      });
+    }
+
+    if (btnReset) {
+      btnReset.addEventListener("click", function(e) {
+        e.stopPropagation();
+        size = 0;
+        visitedStates.clear();
+        visitedStates.add("empty");
+        visitedEdges.clear();
+        syncStackUI(null, "↺ Reset to <code>Empty (size = 0)</code>. Click <code>+ push()</code> or <code>- pop()</code> to test all transitions!", "");
+      });
+    }
+
+    const btnToggleStd = lab.querySelector("#stk-btn-toggle-std");
+    const stdStage = lab.querySelector("#stk-std-stage");
+    if (btnToggleStd && stdStage) {
+      btnToggleStd.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const isRev = stdStage.classList.toggle("is-revealed");
+        btnToggleStd.classList.toggle("is-on", isRev);
+        btnToggleStd.textContent = isRev
+          ? "[Switch OFF] Hide State Transition Diagram (STD)"
+          : "[Switch ON] Show State Transition Diagram (STD)";
+      });
+    }
+
+    const btnToggleTc = lab.querySelector("#stk-btn-toggle-tc");
+    const tcPanel = lab.querySelector("#stk-tc-panel");
+    if (btnToggleTc && tcPanel) {
+      btnToggleTc.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const isRev = tcPanel.classList.toggle("is-revealed");
+        btnToggleTc.classList.toggle("is-on", isRev);
+        btnToggleTc.textContent = isRev
+          ? "[Switch OFF] Hide Test Cases & Optimal Sequence"
+          : "[Switch ON] Show Test Cases & Optimal Sequence";
+      });
+    }
+
+    syncStackUI(null, "Ready at <code>Empty (size = 0)</code>. Try clicking <code>- pop()</code> or <code>+ push()</code>!", "");
+  }
+
+  function initBvaLoanGame() {
+    const game = document.getElementById("bva-loan-game");
+    if (!game || game.dataset.bvaGameBound) return;
+    game.dataset.bvaGameBound = "true";
+
+    const dotsLayer = game.querySelector("#bvag-dots-layer");
+    const roundPill = game.querySelector("#bvag-round-pill");
+    const scorePill = game.querySelector("#bvag-score-pill");
+    const targetTitle = game.querySelector("#bvag-target-title");
+    const feedbackMsg = game.querySelector("#bvag-feedback-msg");
+    const btnSubmit = game.querySelector("#bvag-btn-submit");
+    const btnNext = game.querySelector("#bvag-btn-next");
+    const btnReshuffle = game.querySelector("#bvag-btn-reshuffle");
+
+    const xs = [40, 95, 150, 240, 330, 385, 440];
+    const ys = [40, 95, 150, 240, 330, 385, 440];
+    const xLabels = ["99k", "100k", "101k", "5000k", "9999k", "10000k", "10001k"];
+    const yLabels = ["31yr", "30yr", "29yr", "15yr", "2yr", "1yr", "0yr"];
+
+    const allDots = [];
+    if (dotsLayer) {
+      dotsLayer.innerHTML = "";
+      for (let ix = 0; ix < 7; ix++) {
+        for (let iy = 0; iy < 7; iy++) {
+          const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          c.setAttribute("cx", String(xs[ix]));
+          c.setAttribute("cy", String(ys[iy]));
+          c.setAttribute("r", "6.8");
+          c.setAttribute("class", "bvag-pt");
+          c.dataset.ix = String(ix);
+          c.dataset.iy = String(iy);
+
+          const isValidX = ix >= 1 && ix <= 5;
+          const isValidY = iy >= 1 && iy <= 5;
+          const isAxisX = iy === 3;
+          const isAxisY = ix === 3;
+
+          let cat = "worst-robust";
+          if (ix === 3 && iy === 3) {
+            cat = "nom";
+          } else if ((isAxisX && isValidX) || (isAxisY && isValidY)) {
+            cat = "norm-bva";
+          } else if ((isAxisX && !isValidX) || (isAxisY && !isValidY)) {
+            cat = "robust-bva";
+          } else if (isValidX && isValidY) {
+            cat = "worst-norm";
+          }
+          c.dataset.cat = cat;
+
+          const titleEl = document.createElementNS("http://www.w3.org/2000/svg", "title");
+          titleEl.textContent = "Amount = " + xLabels[ix] + ", Term = " + yLabels[iy];
+          c.appendChild(titleEl);
+
+          c.addEventListener("click", function(e) {
+            e.stopPropagation();
+            c.classList.remove("is-hit", "is-missed", "is-extra");
+            c.classList.toggle("is-selected");
+            updateCounters();
+          });
+
+          dotsLayer.appendChild(c);
+          allDots.push(c);
+        }
+      }
+    }
+
+    const strategies = [
+      {
+        key: "norm",
+        name: "Independent Normal BVA (Single-Fault, Valid Bounds Only)",
+        cats: ["nom", "norm-bva"]
+      },
+      {
+        key: "robust",
+        name: "Independent Robust BVA (Single-Fault, With Out-of-Bounds Defense)",
+        cats: ["nom", "norm-bva", "robust-bva"]
+      },
+      {
+        key: "worst-norm",
+        name: "Worst-Case Normal BVA (Multi-Fault, Valid Bounds Combinations)",
+        cats: ["nom", "norm-bva", "worst-norm"]
+      },
+      {
+        key: "worst-robust",
+        name: "Worst-Case Robust BVA (Multi-Fault, Full Valid & Out-of-Bounds Grid)",
+        cats: ["nom", "norm-bva", "robust-bva", "worst-norm", "worst-robust"]
+      }
+    ];
+
+    let order = [0, 1, 2, 3];
+    let curRoundIdx = 0;
+    const solvedSet = new Set();
+
+    function shuffleOrder() {
+      order = [0, 1, 2, 3];
+      for (let i = order.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const tmp = order[i];
+        order[i] = order[j];
+        order[j] = tmp;
+      }
+      curRoundIdx = 0;
+      solvedSet.clear();
+    }
+
+    function clearSelection() {
+      allDots.forEach(d => {
+        d.classList.remove("is-selected", "is-hit", "is-missed", "is-extra");
+      });
+    }
+
+    function updateCounters() {
+      const selCnt = allDots.filter(d => d.classList.contains("is-selected")).length;
+      if (scorePill) {
+        scorePill.textContent = "Solved: " + solvedSet.size + " / 4 | Selected: " + selCnt + " dots";
+      }
+    }
+
+    function loadRound() {
+      clearSelection();
+      const strat = strategies[order[curRoundIdx]];
+      if (roundPill) {
+        roundPill.textContent = "CHALLENGE " + (curRoundIdx + 1) + " OF 4 (RANDOMIZED)";
+      }
+      if (targetTitle && strat) {
+        targetTitle.textContent = "Target: " + strat.name;
+      }
+      if (feedbackMsg) {
+        feedbackMsg.className = "bvag-feedback-box";
+        feedbackMsg.textContent = "Select the exact boundary test points on the matrix for the target strategy above, then click Submit Selection!";
+      }
+      updateCounters();
+    }
+
+    game.querySelectorAll(".bvag-qbtn").forEach(qbtn => {
+      qbtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const act = qbtn.getAttribute("data-qact");
+        allDots.forEach(d => d.classList.remove("is-hit", "is-missed", "is-extra"));
+
+        if (act === "clear") {
+          clearSelection();
+        } else {
+          let targetDots = [];
+          if (act === "valid-axes") {
+            targetDots = allDots.filter(d => d.dataset.cat === "nom" || d.dataset.cat === "norm-bva");
+          } else if (act === "outer-tips") {
+            targetDots = allDots.filter(d => d.dataset.cat === "robust-bva");
+          } else if (act === "valid-box") {
+            targetDots = allDots.filter(d => ["nom", "norm-bva", "worst-norm"].includes(d.dataset.cat));
+          } else if (act === "all-grid") {
+            targetDots = allDots;
+          }
+          const allAlreadySelected = targetDots.every(d => d.classList.contains("is-selected"));
+          targetDots.forEach(d => {
+            d.classList.toggle("is-selected", !allAlreadySelected);
+          });
+        }
+        updateCounters();
+      });
+    });
+
+    if (btnSubmit) {
+      btnSubmit.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const strat = strategies[order[curRoundIdx]];
+        if (!strat) return;
+
+        let hits = 0, missed = 0, extra = 0, expectedTotal = 0;
+        allDots.forEach(d => {
+          d.classList.remove("is-hit", "is-missed", "is-extra");
+          const shouldSelect = strat.cats.includes(d.dataset.cat);
+          const isSelected = d.classList.contains("is-selected");
+          if (shouldSelect) expectedTotal++;
+
+          if (shouldSelect && isSelected) {
+            hits++;
+            d.classList.add("is-hit");
+          } else if (shouldSelect && !isSelected) {
+            missed++;
+            d.classList.add("is-missed");
+          } else if (!shouldSelect && isSelected) {
+            extra++;
+            d.classList.add("is-extra");
+          }
+        });
+
+        if (missed === 0 && extra === 0) {
+          solvedSet.add(strat.key);
+          updateCounters();
+          if (feedbackMsg) {
+            feedbackMsg.className = "bvag-feedback-box is-win";
+            feedbackMsg.textContent = "[Perfect Match!] All " + expectedTotal + " test points selected accurately! Click 'Next Challenge' for the next strategy.";
+          }
+        } else {
+          updateCounters();
+          if (feedbackMsg) {
+            feedbackMsg.className = "bvag-feedback-box is-err";
+            feedbackMsg.textContent = "[Not Quite] Hit: " + hits + " / " + expectedTotal + " | Missed (yellow dashed): " + missed + " | Extra wrong points (red): " + extra + ". Adjust your dots and re-submit!";
+          }
+        }
+      });
+    }
+
+    if (btnNext) {
+      btnNext.addEventListener("click", function(e) {
+        e.stopPropagation();
+        curRoundIdx = (curRoundIdx + 1) % 4;
+        loadRound();
+      });
+    }
+
+    if (btnReshuffle) {
+      btnReshuffle.addEventListener("click", function(e) {
+        e.stopPropagation();
+        shuffleOrder();
+        loadRound();
+      });
+    }
+
+    shuffleOrder();
+    loadRound();
+  }
+
+  function initFoodEpBvaGame() {
+    const game = document.getElementById("fdg-ep-bva-game");
+    if (!game || game.dataset.fdgBound) return;
+    game.dataset.fdgBound = "true";
+
+    const tbody = game.querySelector("#fdg-ep-tbody");
+    const seamChips = Array.from(game.querySelectorAll(".fdg-seam-chip"));
+    const roundPill = game.querySelector("#fdg-round-pill");
+    const scorePill = game.querySelector("#fdg-score-pill");
+    const targetTitle = game.querySelector("#fdg-target-title");
+    const targetDesc = game.querySelector("#fdg-target-desc");
+    const feedbackMsg = game.querySelector("#fdg-feedback-msg");
+    const btnSubmit = game.querySelector("#fdg-btn-submit");
+    const btnNext = game.querySelector("#fdg-btn-next");
+    const btnReshuffle = game.querySelector("#fdg-btn-reshuffle");
+
+    const rowHeaders = [
+      { label: "I₁: < 100<br/>($50)", valid: false },
+      { label: "V₁: 100..299<br/>(Base $60)", valid: true },
+      { label: "V₂: 300..799<br/>(Base $35)", valid: true },
+      { label: "V₃: 800..10000<br/>(Base $0)", valid: true },
+      { label: "I₂: > 10000<br/>($12000)", valid: false }
+    ];
+
+    const allCells = [];
+    if (tbody) {
+      tbody.innerHTML = "";
+      for (let r = 0; r < 5; r++) {
+        const tr = document.createElement("tr");
+        const th = document.createElement("th");
+        th.innerHTML = rowHeaders[r].label;
+        th.style.color = rowHeaders[r].valid ? "#15803d" : "#be123c";
+        tr.appendChild(th);
+
+        for (let c = 0; c < 5; c++) {
+          const td = document.createElement("td");
+          const isValidR = r >= 1 && r <= 3;
+          const isValidC = c >= 1 && c <= 3;
+          td.className = "fdg-cell " + (isValidR && isValidC ? "is-valid-zone" : "is-invalid-zone");
+          td.dataset.r = String(r);
+          td.dataset.c = String(c);
+
+          const dot = document.createElement("span");
+          dot.className = "fdg-dot";
+          dot.textContent = "•";
+          td.appendChild(dot);
+
+          td.addEventListener("click", function(e) {
+            e.stopPropagation();
+            td.classList.remove("is-hit", "is-missed", "is-extra");
+            td.classList.toggle("is-selected");
+            updateCounters();
+          });
+
+          tr.appendChild(td);
+          allCells.push(td);
+        }
+        tbody.appendChild(tr);
+      }
+    }
+
+    seamChips.forEach(chip => {
+      chip.addEventListener("click", function(e) {
+        e.stopPropagation();
+        chip.classList.remove("is-hit", "is-missed", "is-extra");
+        chip.classList.toggle("is-selected");
+        updateCounters();
+      });
+    });
+
+    const challenges = [
+      {
+        key: "weak-norm",
+        title: "Weak Normal EP (Minimum Valid Partition Coverage)",
+        desc: "On Board A (5×5 Matrix), select a minimal test suite that covers all 3 Valid Subtotal tiers (V₁..V₃) and all 3 Valid Distance zones (D₁..D₃) with zero invalid inputs!"
+      },
+      {
+        key: "weak-robust",
+        title: "Weak Robust EP (Valid Coverage + Single Invalid Rule)",
+        desc: "On Board A (5×5 Matrix), select a minimal Valid Weak EP baseline PLUS isolate each of the 4 Invalid partitions (I₁, I₂, I₃, I₄) strictly one at a time against valid peers (no double-invalid Fault Masking)!"
+      },
+      {
+        key: "strong-norm",
+        title: "Strong Normal EP (Full Valid Cartesian Combinations)",
+        desc: "On Board A (5×5 Matrix), select all valid partition combinations required to test every 2-way interaction between Valid Subtotal tiers and Valid Distance zones!"
+      },
+      {
+        key: "bva-seams",
+        title: "Subtotal 2-Point (On-Off) BVA Seam Sampling",
+        desc: "On Board B (Bottom Number Line), click the exact 8 boundary values (On-Off pairs) across all 4 Subtotal pricing seams (Min 100, Tier 300, Free 800, Max 10000) to catch < vs <= off-by-one bugs!"
+      }
+    ];
+
+    let order = [0, 1, 2, 3];
+    let curIdx = 0;
+    const solvedSet = new Set();
+
+    function shuffleOrder() {
+      order = [0, 1, 2, 3];
+      for (let i = order.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const tmp = order[i];
+        order[i] = order[j];
+        order[j] = tmp;
+      }
+      curIdx = 0;
+      solvedSet.clear();
+    }
+
+    function clearAll() {
+      allCells.forEach(td => td.classList.remove("is-selected", "is-hit", "is-missed", "is-extra"));
+      seamChips.forEach(ch => ch.classList.remove("is-selected", "is-hit", "is-missed", "is-extra"));
+    }
+
+    function updateCounters() {
+      const cellCnt = allCells.filter(td => td.classList.contains("is-selected")).length;
+      const chipCnt = seamChips.filter(ch => ch.classList.contains("is-selected")).length;
+      if (scorePill) {
+        scorePill.textContent = "Solved: " + solvedSet.size + " / 4 | Cells: " + cellCnt + " | Chips: " + chipCnt;
+      }
+    }
+
+    function loadRound() {
+      clearAll();
+      const ch = challenges[order[curIdx]];
+      if (roundPill) roundPill.textContent = "CHALLENGE " + (curIdx + 1) + " OF 4 (RANDOMIZED)";
+      if (targetTitle && ch) targetTitle.textContent = "Target: " + ch.title;
+      if (targetDesc && ch) targetDesc.textContent = ch.desc;
+      if (feedbackMsg) {
+        feedbackMsg.className = "bvag-feedback-box";
+        feedbackMsg.textContent = "Make your selection on Board A or Board B on the left, then click Submit Selection!";
+      }
+      updateCounters();
+    }
+
+    game.querySelectorAll("[data-fdact]").forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const act = btn.getAttribute("data-fdact");
+        allCells.forEach(td => td.classList.remove("is-hit", "is-missed", "is-extra"));
+        seamChips.forEach(ch => ch.classList.remove("is-hit", "is-missed", "is-extra"));
+
+        if (act === "clear") {
+          clearAll();
+        } else {
+          let targets = [];
+          if (act === "diag3") {
+            targets = allCells.filter(td => (td.dataset.r === "1" && td.dataset.c === "1") || (td.dataset.r === "2" && td.dataset.c === "2") || (td.dataset.r === "3" && td.dataset.c === "3"));
+          } else if (act === "valid9") {
+            targets = allCells.filter(td => Number(td.dataset.r) >= 1 && Number(td.dataset.r) <= 3 && Number(td.dataset.c) >= 1 && Number(td.dataset.c) <= 3);
+          } else if (act === "iso4") {
+            targets = allCells.filter(td => (td.dataset.r === "0" && td.dataset.c === "2") || (td.dataset.r === "4" && td.dataset.c === "2") || (td.dataset.r === "2" && td.dataset.c === "0") || (td.dataset.r === "2" && td.dataset.c === "4"));
+          }
+          const allSel = targets.every(t => t.classList.contains("is-selected"));
+          targets.forEach(t => t.classList.toggle("is-selected", !allSel));
+        }
+        updateCounters();
+      });
+    });
+
+    if (btnSubmit) {
+      btnSubmit.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const ch = challenges[order[curIdx]];
+        if (!ch) return;
+
+        allCells.forEach(td => td.classList.remove("is-hit", "is-missed", "is-extra"));
+        seamChips.forEach(c => c.classList.remove("is-hit", "is-missed", "is-extra"));
+
+        const selCells = allCells.filter(td => td.classList.contains("is-selected"));
+
+        if (ch.key === "bva-seams") {
+          const expectedVals = new Set(["99", "100", "299", "300", "799", "800", "10000", "10001"]);
+          let hits = 0, missed = 0, extra = 0;
+          seamChips.forEach(c => {
+            const v = c.getAttribute("data-val");
+            const isSel = c.classList.contains("is-selected");
+            const should = expectedVals.has(v);
+            if (should && isSel) { hits++; c.classList.add("is-hit"); }
+            else if (should && !isSel) { missed++; c.classList.add("is-missed"); }
+            else if (!should && isSel) { extra++; c.classList.add("is-extra"); }
+          });
+
+          if (missed === 0 && extra === 0) {
+            solvedSet.add(ch.key);
+            updateCounters();
+            feedbackMsg.className = "bvag-feedback-box is-win";
+            feedbackMsg.textContent = "[Perfect BVA Seams!] All 8 On-Off boundary points ($99|$100, $299|$300, $799|$800, $10000|$10001) selected!";
+          } else {
+            feedbackMsg.className = "bvag-feedback-box is-err";
+            feedbackMsg.textContent = "[Check Board B] Hit: " + hits + "/8 | Missed (yellow): " + missed + " | Extra interior/non-seam points (red): " + extra + ".";
+          }
+          return;
+        }
+
+        if (ch.key === "strong-norm") {
+          let hits = 0, missed = 0, extra = 0;
+          allCells.forEach(td => {
+            const r = Number(td.dataset.r), c = Number(td.dataset.c);
+            const should = r >= 1 && r <= 3 && c >= 1 && c <= 3;
+            const isSel = td.classList.contains("is-selected");
+            if (should && isSel) { hits++; td.classList.add("is-hit"); }
+            else if (should && !isSel) { missed++; td.classList.add("is-missed"); }
+            else if (!should && isSel) { extra++; td.classList.add("is-extra"); }
+          });
+          if (missed === 0 && extra === 0) {
+            solvedSet.add(ch.key);
+            updateCounters();
+            feedbackMsg.className = "bvag-feedback-box is-win";
+            feedbackMsg.textContent = "[Perfect Strong Normal EP!] All 9 valid Cartesian combinations (3 × 3) selected!";
+          } else {
+            feedbackMsg.className = "bvag-feedback-box is-err";
+            feedbackMsg.textContent = "[Check Board A] Hit: " + hits + "/9 valid cells | Missed (yellow): " + missed + " | Extra invalid cells (red): " + extra + ".";
+          }
+          return;
+        }
+
+        // For Weak Normal EP & Weak Robust EP: check mathematical properties so any valid Latin-square / orthogonal choice is accepted!
+        const coveredVRows = new Set();
+        const coveredVCols = new Set();
+        const coveredInv = { i1: 0, i2: 0, i3: 0, i4: 0 };
+        let validCount = 0;
+        let doubleInvalidCount = 0;
+
+        selCells.forEach(td => {
+          const r = Number(td.dataset.r), c = Number(td.dataset.c);
+          const vR = r >= 1 && r <= 3;
+          const vC = c >= 1 && c <= 3;
+          if (vR && vC) {
+            validCount++;
+            coveredVRows.add(r);
+            coveredVCols.add(c);
+          } else if (!vR && !vC) {
+            doubleInvalidCount++;
+            td.classList.add("is-extra");
+          } else {
+            if (r === 0) coveredInv.i1++;
+            if (r === 4) coveredInv.i2++;
+            if (c === 0) coveredInv.i3++;
+            if (c === 4) coveredInv.i4++;
+          }
+        });
+
+        if (ch.key === "weak-norm") {
+          const totalInv = coveredInv.i1 + coveredInv.i2 + coveredInv.i3 + coveredInv.i4 + doubleInvalidCount;
+          if (validCount === 3 && coveredVRows.size === 3 && coveredVCols.size === 3 && totalInv === 0) {
+            selCells.forEach(td => td.classList.add("is-hit"));
+            solvedSet.add(ch.key);
+            updateCounters();
+            feedbackMsg.className = "bvag-feedback-box is-win";
+            feedbackMsg.textContent = "[Perfect Weak Normal EP!] Exactly 3 valid cells covering all 3 Subtotal tiers (V₁..V₃) & all 3 Distance zones (D₁..D₃)!";
+          } else {
+            selCells.forEach(td => {
+              const r = Number(td.dataset.r), c = Number(td.dataset.c);
+              if (r < 1 || r > 3 || c < 1 || c > 3) td.classList.add("is-extra");
+              else td.classList.add("is-hit");
+            });
+            feedbackMsg.className = "bvag-feedback-box is-err";
+            feedbackMsg.textContent = "[Not Quite] Weak Normal EP requires exactly max(3,3) = 3 valid cells covering V₁,V₂,V₃ and D₁,D₂,D₃ with 0 invalid cells (you picked " + validCount + " valid, " + totalInv + " invalid).";
+          }
+          return;
+        }
+
+        if (ch.key === "weak-robust") {
+          const invOk = coveredInv.i1 === 1 && coveredInv.i2 === 1 && coveredInv.i3 === 1 && coveredInv.i4 === 1 && doubleInvalidCount === 0;
+          const valOk = validCount === 3 && coveredVRows.size === 3 && coveredVCols.size === 3;
+          if (valOk && invOk) {
+            selCells.forEach(td => td.classList.add("is-hit"));
+            solvedSet.add(ch.key);
+            updateCounters();
+            feedbackMsg.className = "bvag-feedback-box is-win";
+            feedbackMsg.textContent = "[Perfect Weak Robust EP!] 3 valid base cells + 4 isolated Single-Invalid cells = 7 total test cases (zero Fault Masking)!";
+          } else {
+            selCells.forEach(td => {
+              const r = Number(td.dataset.r), c = Number(td.dataset.c);
+              if ((r === 0 || r === 4) && (c === 0 || c === 4)) td.classList.add("is-extra");
+              else td.classList.add("is-hit");
+            });
+            feedbackMsg.className = "bvag-feedback-box is-err";
+            feedbackMsg.textContent = "[Check Single-Invalid Rule] Need 3 valid cells (covering V₁..V₃ & D₁..D₃) + 4 isolated invalid cells (one each for I₁, I₂, I₃, I₄ paired with a valid peer; never pick corner double-invalid cells!).";
+          }
+        }
+      });
+    }
+
+    if (btnNext) {
+      btnNext.addEventListener("click", function(e) {
+        e.stopPropagation();
+        curIdx = (curIdx + 1) % 4;
+        loadRound();
+      });
+    }
+
+    if (btnReshuffle) {
+      btnReshuffle.addEventListener("click", function(e) {
+        e.stopPropagation();
+        shuffleOrder();
+        loadRound();
+      });
+    }
+
+    shuffleOrder();
+    loadRound();
+  }
+
+  function initPbtMatchGame() {
+    const stage = document.getElementById("pbt-match-game");
+    if (!stage || stage.dataset.pbtmBound) return;
+    stage.dataset.pbtmBound = "true";
+
+    const board = stage.querySelector("#pbtm-board");
+    const colRight = stage.querySelector("#pbtm-col-right");
+    const svg = stage.querySelector("#pbtm-svg-lines");
+    const leftItems = Array.from(stage.querySelectorAll(".pbtm-item-left"));
+    const rightItems = Array.from(stage.querySelectorAll(".pbtm-item-right"));
+    const btnSubmit = stage.querySelector("#pbtm-btn-submit");
+    const btnReset = stage.querySelector("#pbtm-btn-reset");
+    const scoreMsg = stage.querySelector("#pbtm-score-msg");
+
+    // Map: left sKey -> right DOM element
+    const links = new Map();
+    let activeLeft = leftItems[0] || null;
+    let isSubmitted = false;
+
+    function setActiveLeft(el) {
+      leftItems.forEach(item => item.classList.remove("is-active"));
+      activeLeft = el;
+      if (el) el.classList.add("is-active");
+    }
+
+    function drawLines() {
+      if (!svg || !board) return;
+      const svgRect = svg.getBoundingClientRect();
+      if (svgRect.width === 0 || svgRect.height === 0) return;
+
+      svg.setAttribute("viewBox", "0 0 " + svgRect.width + " " + svgRect.height);
+      svg.innerHTML = "";
+
+      leftItems.forEach((lEl, idx) => {
+        const sKey = lEl.dataset.skey;
+        const color = lEl.dataset.color || "#7c3aed";
+        const rEl = links.get(sKey);
+        if (!rEl) return;
+
+        const lPort = lEl.querySelector(".pbtm-port");
+        const rPort = rEl.querySelector(".pbtm-port");
+        if (!lPort || !rPort) return;
+
+        const lRect = lPort.getBoundingClientRect();
+        const rRect = rPort.getBoundingClientRect();
+
+        const x1 = lRect.left + lRect.width / 2 - svgRect.left;
+        const y1 = lRect.top + lRect.height / 2 - svgRect.top;
+        const x2 = rRect.left + rRect.width / 2 - svgRect.left;
+        const y2 = rRect.top + rRect.height / 2 - svgRect.top;
+        const cx1 = x1 + (x2 - x1) * 0.45;
+        const cx2 = x1 + (x2 - x1) * 0.55;
+
+        let strokeColor = color;
+        let dash = "";
+        if (isSubmitted) {
+          const isOk = rEl.dataset.tkey === sKey;
+          strokeColor = isOk ? "#16a34a" : "#dc2626";
+          if (!isOk) dash = "6 4";
+        }
+
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", "M " + x1 + " " + y1 + " C " + cx1 + " " + y1 + ", " + cx2 + " " + y2 + ", " + x2 + " " + y2);
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", strokeColor);
+        path.setAttribute("stroke-width", "3.2");
+        path.setAttribute("stroke-linecap", "round");
+        if (dash) path.setAttribute("stroke-dasharray", dash);
+        svg.appendChild(path);
+      });
+    }
+
+    function syncVisualStates() {
+      leftItems.forEach((lEl, idx) => {
+        const sKey = lEl.dataset.skey;
+        const color = lEl.dataset.color || "#7c3aed";
+        const paired = links.has(sKey);
+        lEl.classList.toggle("is-paired", paired);
+        lEl.style.borderColor = paired ? color : "";
+        const port = lEl.querySelector(".pbtm-port");
+        if (port) {
+          port.style.background = paired ? color : "#e2e8f0";
+          port.style.color = paired ? "#ffffff" : color;
+          port.style.borderColor = color;
+        }
+      });
+
+      rightItems.forEach(rEl => {
+        let matchedLeft = null;
+        let matchedIdx = -1;
+        leftItems.forEach((lEl, idx) => {
+          if (links.get(lEl.dataset.skey) === rEl) {
+            matchedLeft = lEl;
+            matchedIdx = idx + 1;
+          }
+        });
+        const port = rEl.querySelector(".pbtm-port");
+        if (matchedLeft) {
+          const color = matchedLeft.dataset.color || "#7c3aed";
+          rEl.classList.add("is-paired");
+          rEl.style.borderColor = color;
+          if (port) {
+            port.textContent = String(matchedIdx);
+            port.style.background = color;
+            port.style.borderColor = color;
+            port.style.color = "#ffffff";
+          }
+        } else {
+          rEl.classList.remove("is-paired");
+          rEl.style.borderColor = "";
+          if (port) {
+            port.textContent = "•";
+            port.style.background = "#e2e8f0";
+            port.style.borderColor = "#64748b";
+            port.style.color = "#334155";
+          }
+        }
+      });
+
+      drawLines();
+      if (!isSubmitted && scoreMsg) {
+        scoreMsg.textContent = "Linked: " + links.size + " / 6 pairs. " + (links.size === 6 ? "Ready to click Submit & Check Score!" : "Click a left FoodExpress scenario, then click its matching right PBT/MT strategy!");
+      }
+    }
+
+    leftItems.forEach(lEl => {
+      lEl.addEventListener("click", function(e) {
+        e.stopPropagation();
+        isSubmitted = false;
+        leftItems.forEach(i => i.classList.remove("is-correct", "is-wrong"));
+        rightItems.forEach(i => i.classList.remove("is-correct", "is-wrong"));
+        setActiveLeft(lEl);
+        syncVisualStates();
+      });
+    });
+
+    rightItems.forEach(rEl => {
+      rEl.addEventListener("click", function(e) {
+        e.stopPropagation();
+        if (!activeLeft) setActiveLeft(leftItems[0]);
+        if (!activeLeft) return;
+
+        isSubmitted = false;
+        leftItems.forEach(i => i.classList.remove("is-correct", "is-wrong"));
+        rightItems.forEach(i => i.classList.remove("is-correct", "is-wrong"));
+
+        // If this right item was already linked to another left item, unlink that previous left item
+        leftItems.forEach(lEl => {
+          if (links.get(lEl.dataset.skey) === rEl) {
+            links.delete(lEl.dataset.skey);
+          }
+        });
+
+        links.set(activeLeft.dataset.skey, rEl);
+
+        // Auto-advance activeLeft to next unlinked left item
+        const nextUnlinked = leftItems.find(lEl => !links.has(lEl.dataset.skey));
+        setActiveLeft(nextUnlinked || null);
+        syncVisualStates();
+      });
+    });
+
+    if (btnSubmit) {
+      btnSubmit.addEventListener("click", function(e) {
+        e.stopPropagation();
+        isSubmitted = true;
+        let correctCount = 0;
+
+        leftItems.forEach(lEl => {
+          lEl.classList.remove("is-active", "is-correct", "is-wrong");
+          const sKey = lEl.dataset.skey;
+          const rEl = links.get(sKey);
+          if (rEl && rEl.dataset.tkey === sKey) {
+            correctCount++;
+            lEl.classList.add("is-correct");
+            rEl.classList.add("is-correct");
+          } else {
+            lEl.classList.add("is-wrong");
+            if (rEl) rEl.classList.add("is-wrong");
+          }
+        });
+
+        drawLines();
+        const score = Math.round((correctCount / leftItems.length) * 100);
+        if (scoreMsg) {
+          const badge = score === 100 ? "[Perfect 100! All 6 PBT/MT Strategies Matched!]" : (score >= 60 ? "[Good Effort! Red dashed lines show mismatches]" : "[Review Mismatched Lines & Try Again!]");
+          scoreMsg.textContent = "Score: " + score + " / 100 (" + correctCount + " / 6 Correct) — " + badge;
+        }
+      });
+    }
+
+    function resetAndShuffle() {
+      isSubmitted = false;
+      links.clear();
+      leftItems.forEach(i => i.classList.remove("is-correct", "is-wrong", "is-paired"));
+      rightItems.forEach(i => i.classList.remove("is-correct", "is-wrong", "is-paired"));
+      if (colRight && rightItems.length > 1) {
+        for (let i = rightItems.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          colRight.appendChild(rightItems[j]);
+        }
+      }
+      setActiveLeft(leftItems[0] || null);
+      syncVisualStates();
+      if (scoreMsg) {
+        scoreMsg.textContent = "Click a FoodExpress Scenario on the Left (1–6), then click its matching PBT / MT Strategy on the Right to draw a line! (0 / 6 linked)";
+      }
+    }
+
+    if (btnReset) {
+      btnReset.addEventListener("click", function(e) {
+        e.stopPropagation();
+        resetAndShuffle();
+      });
+    }
+
+    window.addEventListener("resize", drawLines);
+    window.addEventListener("hashchange", function() {
+      setTimeout(drawLines, 120);
+    });
+    syncVisualStates();
+  }
+
   function init() {
     initOutlineLinksAndQuizBlanks();
     initHeaderDropdown();
@@ -4945,10 +6874,15 @@ function initSmExplorer() {
     initSplitImageHoverZoom();
     init3W2HMindMap();
     initBvaInteractiveExplorer();
+    initBvaLoanGame();
+    initFoodEpBvaGame();
+    initPbtMatchGame();
     initEpInteractiveExplorer();
     initBinarySearchInteractive();
     initGreedyIpoExplorer();
     initSmExplorer();
+    initSelfPracticeQuizzes();
+    initStackInteractiveLab();
   }
 
   if (document.readyState === 'loading') {

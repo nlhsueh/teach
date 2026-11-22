@@ -13,7 +13,7 @@ footer: 'Advanced Software Engineering (115-1) · Feng Chia University'
 
 <div style="margin-top: 24px; text-align: center;">
 
-**Graduate Seminar (進階軟體工程)**  
+<strong>Graduate Seminar (進階軟體工程)</strong>  
 Instructor: Prof. Nien-Lin Hsueh (薛念林 教授)  
 Department of Information Engineering and Computer Science · Feng Chia University
 
@@ -48,20 +48,20 @@ Department of Information Engineering and Computer Science · Feng Chia Universi
 ---
 ## Curriculum Roadmap: Five Core Modules
 
-- **Module 1: Foundations (Week 1)** — 1968 Software Crisis to Modern SE.
-- **Module 2: Processes & Requirements (Weeks 2–4)** — Agile, Scrum, DevOps, Spec-Driven AI.
-- **Module 3: Design & Modeling (Weeks 5–9)** — SOLID, Patterns, UML, Architecture, **Midterm**.
-- **Module 4: QA & Testing (Weeks 10–13)** — Black/white box, coverage, quality models.
-- **Module 5: Empirical SE & Capstone (Weeks 14–16)** — Controlled experiments, demos & panels.
+- <strong>Module 1: Foundations (Week 1)</strong> — 1968 Software Crisis to Modern SE.
+- <strong>Module 2: Processes & Requirements (Weeks 2–4)</strong> — Agile, Scrum, DevOps, Spec-Driven AI.
+- <strong>Module 3: Design & Modeling (Weeks 5–9)</strong> — SOLID, Patterns, UML, Architecture, **Midterm**.
+- <strong>Module 4: QA & Testing (Weeks 10–13)</strong> — Black/white box, coverage, quality models.
+- <strong>Module 5: Empirical SE & Capstone (Weeks 14–16)</strong> — Controlled experiments, demos & panels.
 
-> ⚠️ **Week 3 (09/28) & Week 7 (10/26): National Holidays (No class)**
+> ⚠️ <strong>Week 3 (09/28) & Week 7 (10/26): National Holidays (No class)</strong>
 
 ---
 ## Grading Scheme
 
-- **25% — Midterm Exam (Nov. 2nd)**
+- <strong>25% — Midterm Exam (Nov. 2nd)</strong>
   - Part I Evaluation (Core principles & software design)
-- **25% — Final Exam (Dec. 7th)**
+- <strong>25% — Final Exam (Dec. 7th)</strong>
   - Part II Evaluation (Testing, QA models & empirical methods)
 - **20% — Attendance & In-Class Engagement**
   - Active presence, live CCQ polling, discussions & Q&A
@@ -87,7 +87,7 @@ Department of Information Engineering and Computer Science · Feng Chia Universi
   - Similar to paper presentations, but with a **unified theme and strong narrative coherence**.
   - Four panelists present four related papers (*ICSE, FSE, ASE, TSE, TOSEM*).
   - A **Student Moderator** opens with a theme overview, connects the presentations, provides a final synthesis, and leads audience Q&A.
-- **Theme Example: "Security & Trust in Generative AI Code Assistants"**
+- <strong>Theme Example: "Security & Trust in Generative AI Code Assistants"</strong>
   - **Moderator Intro:** Why AI code security matters to enterprise systems.
   - **Panelist 1 (*ICSE*):** Prevalence and taxonomy of CWE flaws in Copilot code.
   - **Panelist 2 (*FSE*):** Automated hallucination detection in generated tests.
@@ -108,7 +108,7 @@ Department of Information Engineering and Computer Science · Feng Chia Universi
 
 ## Track 2: System Prototype & Post-Mortem — Examples
 
-- **System Example: "Smart Food Ordering & Real-Time Delivery Service"**
+- <strong>System Example: "Smart Food Ordering & Real-Time Delivery Service"</strong>
   - **Thin Vertical Slice:**
     - Customer cart & order placement → Real-time kitchen dispatch webhook → Driver location tracking simulation → Order fulfillment status (secondary billing, reviews, and catalog mocked).
   - **Engineering Rigor:**
@@ -122,13 +122,13 @@ Department of Information Engineering and Computer Science · Feng Chia Universi
 ---
 ## Track 3: Empirical SE Experiment — Examples
 
-- **Study Example A: "Benchmarking Open-Source vs. Commercial Coding LLMs"**
+- <strong>Study Example A: "Benchmarking Open-Source vs. Commercial Coding LLMs"</strong>
   - **Objective:** Controlled benchmark evaluating code correctness and security across models.
   - **Research Questions:**
     - $RQ_1$: Do open-source models (e.g., DeepSeek-Coder, Llama-Code) inject higher rates of CWE flaws than GPT-4o on HumanEval-Security?
     - $RQ_2$: How does test-driven iterative prompting affect pass@k accuracy and token costs?
   - **Deliverables:** Curated benchmark datasets, automated evaluation scripts, and replication Docker repo.
-- **Study Example B: "Empirical Evaluation of Automated Program Repair (APR) in CI"**
+- <strong>Study Example B: "Empirical Evaluation of Automated Program Repair (APR) in CI"</strong>
   - **Objective:** Measure real-world patch correctness vs. plausible test-overfitting across APR tools.
   - **Research Questions:**
     - $RQ_1$: What percentage of LLM-generated bug fixes are semantically sound vs. merely overfitting?

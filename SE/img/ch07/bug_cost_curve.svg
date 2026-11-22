@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cost-area" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0.02" />
+    </linearGradient>
+    <filter id="pt-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#991b1b" flood-opacity="0.28" />
+    </filter>
+  </defs>
+
+  <!-- Chart Title -->
+  <text x="580" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="25" font-weight="800" fill="#0b3c5d" text-anchor="middle">Cost of Defect Correction Across SDLC (Shift-Left Economics)</text>
+
+  <!-- Y-Axis Label -->
+  <text x="42" y="255" transform="rotate(-90, 42, 255)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800" fill="#1e293b" text-anchor="middle">Relative Fix Cost (Multiples of 1x)</text>
+
+  <!-- Horizontal & Vertical Grid Lines (x: 110..1030, y: 75..415) -->
+  <!-- y=415 is 0, y=358.3 is 10, y=301.7 is 20, y=245 is 30, y=188.3 is 40, y=131.7 is 50, y=75 is 60 -->
+  <g stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="4 4">
+    <line x1="110" y1="415" x2="1030" y2="415" />
+    <line x1="110" y1="358.3" x2="1030" y2="358.3" />
+    <line x1="110" y1="301.7" x2="1030" y2="301.7" />
+    <line x1="110" y1="245" x2="1030" y2="245" />
+    <line x1="110" y1="188.3" x2="1030" y2="188.3" />
+    <line x1="110" y1="131.7" x2="1030" y2="131.7" />
+    <line x1="110" y1="75" x2="1030" y2="75" />
+    <!-- Vertical Stage Grid Lines: x = 165, 370, 575, 780, 985 -->
+    <line x1="165" y1="75" x2="165" y2="415" />
+    <line x1="370" y1="75" x2="370" y2="415" />
+    <line x1="575" y1="75" x2="575" y2="415" />
+    <line x1="780" y1="75" x2="780" y2="415" />
+    <line x1="985" y1="75" x2="985" y2="415" />
+  </g>
+
+  <!-- Axes -->
+  <line x1="110" y1="70" x2="110" y2="425" stroke="#0f172a" stroke-width="2.4" />
+  <line x1="110" y1="425" x2="1040" y2="425" stroke="#0f172a" stroke-width="2.4" />
+
+  <!-- Y-Axis Ticks & Labels -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#334155" text-anchor="end">
+    <line x1="102" y1="415" x2="110" y2="415" stroke="#0f172a" stroke-width="2" />
+    <text x="96" y="421">0</text>
+    <line x1="102" y1="358.3" x2="110" y2="358.3" stroke="#0f172a" stroke-width="2" />
+    <text x="96" y="364">10</text>
+    <line x1="102" y1="301.7" x2="110" y2="301.7" stroke="#0f172a" stroke-width="2" />
+    <text x="96" y="308">20</text>
+    <line x1="102" y1="245" x2="110" y2="245" stroke="#0f172a" stroke-width="2" />
+    <text x="96" y="251">30</text>
+    <line x1="102" y1="188.3" x2="110" y2="188.3" stroke="#0f172a" stroke-width="2" />
+    <text x="96" y="194">40</text>
+    <line x1="102" y1="131.7" x2="110" y2="131.7" stroke="#0f172a" stroke-width="2" />
+    <text x="96" y="138">50</text>
+    <line x1="102" y1="75" x2="110" y2="75" stroke="#0f172a" stroke-width="2" />
+    <text x="96" y="81">60</text>
+  </g>
+
+  <!-- X-Axis Ticks & Pure English Labels -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="800" fill="#0f172a" text-anchor="middle">
+    <line x1="165" y1="425" x2="165" y2="433" stroke="#0f172a" stroke-width="2" />
+    <text x="165" y="456">Requirements</text>
+    <text x="165" y="476" font-size="13" font-weight="600" fill="#475569">(SRS Review)</text>
+
+    <line x1="370" y1="425" x2="370" y2="433" stroke="#0f172a" stroke-width="2" />
+    <text x="370" y="456">Architecture &amp; Design</text>
+    <text x="370" y="476" font-size="13" font-weight="600" fill="#475569">(Model Inspection)</text>
+
+    <line x1="575" y1="425" x2="575" y2="433" stroke="#0f172a" stroke-width="2" />
+    <text x="575" y="456">Coding &amp; Unit Test</text>
+    <text x="575" y="476" font-size="13" font-weight="600" fill="#475569">(TDD / Static Lint)</text>
+
+    <line x1="780" y1="425" x2="780" y2="433" stroke="#0f172a" stroke-width="2" />
+    <text x="780" y="456">System &amp; QA Testing</text>
+    <text x="780" y="476" font-size="13" font-weight="600" fill="#475569">(Integration / E2E)</text>
+
+    <line x1="985" y1="425" x2="985" y2="433" stroke="#0f172a" stroke-width="2" />
+    <text x="985" y="456">Post-Release</text>
+    <text x="985" y="476" font-size="13" font-weight="600" fill="#dc2626">(Production Incident)</text>
+  </g>
+
+  <!-- Shift-Left Callout Banner inside Chart -->
+  <g transform="translate(155, 105)">
+    <rect x="0" y="0" width="380" height="74" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <text x="190" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15.5" font-weight="800" fill="#0b3c5d" text-anchor="middle">⬅ Shift-Left Sweet Spot (1x – 2x Cost)</text>
+    <text x="190" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#0369a1" text-anchor="middle">Catch ~70% of defects via Static SRS/Design</text>
+    <text x="190" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#0369a1" text-anchor="middle">Inspection &amp; TDD before integration begins!</text>
+  </g>
+
+  <!-- Shaded Area Under Curve -->
+  <!-- Points: (165, 409.3), (370, 403.7), (575, 375.3), (780, 301.7), (985, 92) -->
+  <polygon points="165,415 165,409.3 370,403.7 575,375.3 780,301.7 985,92 985,415" fill="url(#cost-area)" />
+
+  <!-- Exponential Cost Curve Line -->
+  <polyline points="165,409.3 370,403.7 575,375.3 780,301.7 985,92" fill="none" stroke="#dc2626" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Data Points & Cost Multipliers -->
+  <g filter="url(#pt-shadow)">
+    <circle cx="165" cy="409.3" r="9.5" fill="#dc2626" stroke="#ffffff" stroke-width="2.5" />
+    <circle cx="370" cy="403.7" r="9.5" fill="#dc2626" stroke="#ffffff" stroke-width="2.5" />
+    <circle cx="575" cy="375.3" r="9.5" fill="#dc2626" stroke="#ffffff" stroke-width="2.5" />
+    <circle cx="780" cy="301.7" r="9.5" fill="#dc2626" stroke="#ffffff" stroke-width="2.5" />
+    <circle cx="985" cy="92" r="10.5" fill="#b91c1c" stroke="#ffffff" stroke-width="2.5" />
+  </g>
+
+  <!-- Point Labels -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18.5" font-weight="800" fill="#b91c1c" text-anchor="middle">
+    <text x="165" y="391">$1x</text>
+    <text x="370" y="385">$2x</text>
+    <text x="575" y="357">$7x</text>
+    <text x="765" y="283">$20x</text>
+    <text x="985" y="72" font-size="20">$57x – $100x+</text>
+  </g>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 252" width="100%" height="100%">
+  <defs>
+    <style>
+      .card-bg { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.8; rx: 12px; }
+      .thumb-bg-blue { fill: #f0f9ff; stroke: #bae6fd; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-indigo { fill: #eef2ff; stroke: #c7d2fe; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-amber { fill: #fffbeb; stroke: #fde68a; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-emerald { fill: #ecfdf5; stroke: #a7f3d0; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-purple { fill: #faf5ff; stroke: #e9d5ff; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-rose { fill: #fff1f2; stroke: #fecdd3; stroke-width: 1.2; rx: 8px; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: 800; fill: #0f172a; text-anchor: middle; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .card-formula { font-family: "Fira Code", "Consolas", monospace; font-size: 10.5px; font-weight: 700; text-anchor: middle; }
+      .mini-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10.5px; font-weight: 700; text-anchor: middle; }
+      .code-text { font-family: "Fira Code", "Consolas", monospace; font-size: 10.5px; font-weight: 700; text-anchor: middle; }
+    </style>
+    <marker id="arr-b" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+    <marker id="arr-i" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#4f46e5" />
+    </marker>
+    <marker id="arr-a" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+    <marker id="arr-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="arr-r" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#e11d48" />
+    </marker>
+  </defs>
+  <g transform="translate(10, 10)">
+
+    <rect width="346" height="232" class="card-bg" />
+    <rect width="346" height="6" fill="#e11d48" rx="3" />
+    <rect x="14" y="14" width="318" height="142" class="thumb-bg-rose" />
+
+    <rect x="24" y="66" width="68" height="40" fill="#ffffff" stroke="#e11d48" stroke-width="1.8" rx="6" />
+    <text x="58" y="83" class="mini-label" fill="#9f1239">Test Input</text>
+    <text x="58" y="98" class="code-text" fill="#e11d48">Prompt x</text>
+
+    <path d="M 92 78 L 126 48" stroke="#e11d48" stroke-width="1.8" marker-end="url(#arr-r)" />
+    <path d="M 92 94 L 126 122" stroke="#e11d48" stroke-width="1.8" marker-end="url(#arr-r)" />
+
+    <rect x="130" y="28" width="88" height="36" fill="#ffffff" stroke="#fb7185" stroke-width="1.6" rx="6" />
+    <text x="174" y="43" class="mini-label" fill="#881337">Baseline v1</text>
+    <text x="174" y="58" class="code-text" fill="#e11d48">Model A(x)</text>
+
+    <rect x="130" y="106" width="88" height="36" fill="#ffffff" stroke="#fb7185" stroke-width="1.6" rx="6" />
+    <text x="174" y="121" class="mini-label" fill="#881337">Candidate v2</text>
+    <text x="174" y="136" class="code-text" fill="#e11d48">Model B(x)</text>
+
+    <path d="M 218 46 L 246 72" stroke="#e11d48" stroke-width="1.8" marker-end="url(#arr-r)" />
+    <path d="M 218 124 L 246 98" stroke="#e11d48" stroke-width="1.8" marker-end="url(#arr-r)" />
+
+    <rect x="248" y="52" width="74" height="66" fill="#e11d48" rx="8" />
+    <text x="285" y="73" font-family="sans-serif" font-size="10.5px" font-weight="700" fill="#ffffff" text-anchor="middle">Diff / Judge</text>
+    <text x="285" y="90" font-family="monospace" font-size="10.5px" font-weight="700" fill="#ffe4e6" text-anchor="middle">Sim ≥ 0.85</text>
+    <text x="285" y="106" font-family="sans-serif" font-size="9.5px" font-weight="700" fill="#ffffff" text-anchor="middle">Quality Gate</text>
+
+    <text x="173" y="177" class="card-title">6. Differential &amp; LLM-as-a-Judge</text>
+    <text x="173" y="196" class="card-sub">Cross-model diff check &amp; rubric AI evaluation</text>
+    <text x="173" y="216" class="card-formula" fill="#e11d48">Differential(v1, v2) + Judge Score ≥ 0.90</text>
+  
+  </g>
+</svg>

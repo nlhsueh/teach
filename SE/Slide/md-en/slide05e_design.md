@@ -93,8 +93,8 @@ To summarize this slide, remember this key takeaway: Software design is the syst
 ## What is Software Design?
 
 * **From Requirements (What) to Implementation (How):**
-  - **Requirements Engineering (SRS)**: Defines stakeholder problems, use cases, and quality expectations (*what to build*).
-  - **Software Design (SDD)**: Conceptualizes structural decomposition, interface contracts, class hierarchies, and data schemas (*how to build*).
+  - <strong>Requirements Engineering (SRS)</strong>: Defines stakeholder problems, use cases, and quality expectations (*what to build*).
+  - <strong>Software Design (SDD)</strong>: Conceptualizes structural decomposition, interface contracts, class hierarchies, and data schemas (*how to build*).
 * **Core Activities of Software Design:**
   - **Blueprint & Specification Creation**: Establishes architectural models, formal interface contracts, and database schemas so teams can build in parallel.
   - **Trade-off Decision Making**: Balances competing non-functional forces (e.g., latency vs. consistency vs. cloud cost).
@@ -141,28 +141,28 @@ To summarize this slide, remember this key takeaway: Disciplined software design
 ---
 ## The 4 Design Stages & Deliverables (SDD & ADRs)
 
-> **Chapter 5 Master Plan:** We teach the **4 Design Stages Top-Down (5.3 → 5.6)** for clarity, though real projects iterate freely across them!
+> **Chapter 5 Master Plan:** We teach the <strong>4 Design Stages Top-Down (5.3 → 5.6)</strong> for clarity, though real projects iterate freely across them!
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
 ### 1. The 4 Design Stages & Flexible Entry Points
-1. **Stage 1 — Architectural Design (5.3)**: Patterns, ATAM & **Package / Deployment UML**.
-2. **Stage 2 — Interface & Contract Spec (5.4)**: **DbC** (`Pre/Post/Inv`) & **Component UML** (`—○`/`—(`).
-3. **Stage 3 — Component & OO Design (5.5)**: GoF Patterns, **SOLID** & **Class UML**.
-4. **Stage 4 — Data & Persistence Design (5.6)**: 3-Level **ERD**, 3NF, Redis & Polyglot DBs.
+1. <strong>Stage 1 — Architectural Design (5.3)</strong>: Patterns, ATAM & **Package / Deployment UML**.
+2. <strong>Stage 2 — Interface & Contract Spec (5.4)</strong>: **DbC** (`Pre/Post/Inv`) & **Component UML** (`—○`/`—(`).
+3. <strong>Stage 3 — Component & OO Design (5.5)</strong>: GoF Patterns, **SOLID** & **Class UML**.
+4. <strong>Stage 4 — Data & Persistence Design (5.6)</strong>: 3-Level **ERD**, 3NF, Redis & Polyglot DBs.
 - **Not a Rigid Waterfall! Common Entry Points**:
-  - **Architecture-First (`1 → 2 → 3 → 4`)**: High-scale distributed platforms.
-  - **Data-First (`4 → 2 → 3`)**: CRUD/ERP & student projects often lock **Stage 4 ERD tables first**, then build **Stage 2 APIs** & **Stage 3 classes**!
+  - <strong>Architecture-First (`1 → 2 → 3 → 4`)</strong>: High-scale distributed platforms.
+  - <strong>Data-First (`4 → 2 → 3`)</strong>: CRUD/ERP & student projects often lock **Stage 4 ERD tables first**, then build **Stage 2 APIs** & **Stage 3 classes**!
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### 2. Design Deliverables (SDD & ADRs)
-- **Software Design Document (SDD — IEEE 1016)**:
+- <strong>Software Design Document (SDD — IEEE 1016)</strong>:
   - **Enables Parallel Engineering**: Frontend, Backend, DBAs, and QA build and write tests simultaneously against locked specs.
   - **Contents**: Package/Deployment views, Component API contracts (OpenAPI/Protobuf), Class models & DDL schemas.
-- **Architecture Decision Records (ADRs — Michael Nygard)**:
+- <strong>Architecture Decision Records (ADRs — Michael Nygard)</strong>:
   - Lightweight, Git-versioned records (`Title`, `Status`, `Context`, `Decision`, `Consequences`) capturing **why** key trade-offs were chosen—preventing costly *"Architectural Archaeology"*!
 
 </div>
@@ -237,9 +237,9 @@ To summarize this slide, remember this key takeaway: Universal design principles
 
 * **Software Design is Fractal:**
   - The same fundamental principles govern software quality regardless of zoom level:
-    - **System Scale (Macro)**: Microservices partition business domains into decoupled, cohesive services.
-    - **Module Scale (Meso)**: Packages and libraries isolate responsibilities behind public API boundaries.
-    - **Class Scale (Micro)**: Individual classes encapsulate state and maintain a single, cohesive reason to change.
+    - <strong>System Scale (Macro)</strong>: Microservices partition business domains into decoupled, cohesive services.
+    - <strong>Module Scale (Meso)</strong>: Packages and libraries isolate responsibilities behind public API boundaries.
+    - <strong>Class Scale (Micro)</strong>: Individual classes encapsulate state and maintain a single, cohesive reason to change.
 * **Core Tenets Guard Against Complexity:**
   - Computer memory is vast, but human working memory is strictly limited (Miller's Law: 7 ± 2 chunks).
   - Software principles are cognitive tools designed to keep software understandable, testable, and modifiable by human engineering teams.
@@ -306,8 +306,8 @@ To summarize this slide, remember this key takeaway: High cohesion ensures focus
   <img src="../../img/ch05/architecture/cohesion_coupling_uml.svg" style="max-height: 335px; width: auto;" alt="UML Comparison of Bad vs Good Cohesion and Coupling" />
 </div>
 
-* **Bad Design (`OrderManager`)**: Cramming SQL, pricing math, HTML rendering, and SMTP sockets into one class yields **Coincidental Cohesion** and **Tight Concrete Coupling**.
-* **Good Design (`OrderProcessor`)**: Delegating to focused collaborators via injected interfaces achieves **Functional Cohesion** and **Loose Abstract Coupling**.
+* <strong>Bad Design (`OrderManager`)</strong>: Cramming SQL, pricing math, HTML rendering, and SMTP sockets into one class yields **Coincidental Cohesion** and **Tight Concrete Coupling**.
+* <strong>Good Design (`OrderProcessor`)</strong>: Delegating to focused collaborators via injected interfaces achieves **Functional Cohesion** and **Loose Abstract Coupling**.
 
 <!--
 Examine this concrete Java code comparison:
@@ -325,12 +325,12 @@ To summarize this slide, remember this key takeaway: Decomposing bloated monolit
 
 | Level | Cohesion Type | Core Characteristics | Real-World Example | Quality |
 | :--- | :--- | :--- | :--- | :--- |
-| **7** | **Functional** | Performs one single, well-defined domain or math task | `computeSalesTax()`, `sin(x)` | **Ideal (Best)** |
+| **7** | **Functional** | Performs one single, well-defined domain or math task | `computeSalesTax()`, `sin(x)` | <strong>Ideal (Best)</strong> |
 | **6** | **Sequential** | Output of one step serves directly as input to the next | `read() → parse() → validate()` | **Strong** |
 | **5** | **Communicational** | Operations share the same input or output data structure | `updateAddr()` & `printLabel()` | **Acceptable** |
 | **4** | **Procedural** | Grouped by execution order, operating on different data | `checkAuth()` then `auditLog()` | **Moderate** |
-| **3** | **Temporal** | Grouped purely because they execute at the same time | `initStartup()`, `closeAll()` | **Weak (Avoid)** |
-| **2** | **Logical** | Similar tasks selected via an external control flag | `export(int mode)` (PDF/CSV) | **Weak (Avoid)** |
+| **3** | **Temporal** | Grouped purely because they execute at the same time | `initStartup()`, `closeAll()` | <strong>Weak (Avoid)</strong> |
+| **2** | **Logical** | Similar tasks selected via an external control flag | `export(int mode)` (PDF/CSV) | <strong>Weak (Avoid)</strong> |
 | **1** | **Coincidental** | Unrelated catch-all tasks with no meaningful relationship | `CommonUtils`, `MiscHelper` | **Worst** |
 
 <!--
@@ -371,12 +371,12 @@ To summarize this slide, remember this key takeaway: Always design modules towar
 
 | Level | Coupling Type | Coupling Mechanism & Risk | Real-World Example | Quality |
 | :--- | :--- | :--- | :--- | :--- |
-| **1** | **Content (Pathological)**| Reaches directly into private fields/branches of another | Modifying a `private` field via reflection | **Worst (Severe)** |
-| **2** | **Common (Global)** | Multiple modules read/write shared global mutable state | Sharing mutable global flags across threads | **High Risk** |
+| **1** | <strong>Content (Pathological)</strong>| Reaches directly into private fields/branches of another | Modifying a `private` field via reflection | <strong>Worst (Severe)</strong> |
+| **2** | <strong>Common (Global)</strong> | Multiple modules read/write shared global mutable state | Sharing mutable global flags across threads | **High Risk** |
 | **3** | **Control** | Caller dictates callee's internal execution flow via flags | Passing `mode = 3` to select internal branch | **Moderate Risk** |
-| **4** | **Stamp (Data-Struct)** | Passes a whole composite object when only 1 field is needed | Passing entire `Customer` to read `zipCode` | **Acceptable** |
-| **5** | **Data** | Communicates exclusively via needed primitive parameters | `calculateArea(width, height)` | **Best (Direct)** |
-| **6** | **Message / Event** | Communicates asynchronously via events with zero reference | Publishing `OrderPlacedEvent` via EventBus | **Ideal (Loosest)** |
+| **4** | <strong>Stamp (Data-Struct)</strong> | Passes a whole composite object when only 1 field is needed | Passing entire `Customer` to read `zipCode` | **Acceptable** |
+| **5** | **Data** | Communicates exclusively via needed primitive parameters | `calculateArea(width, height)` | <strong>Best (Direct)</strong> |
+| **6** | **Message / Event** | Communicates asynchronously via events with zero reference | Publishing `OrderPlacedEvent` via EventBus | <strong>Ideal (Loosest)</strong> |
 
 <!--
 Now let's examine the classic hierarchy of Coupling, ordered from the most dangerous and tightly coupled to the cleanest and most decoupled.
@@ -471,9 +471,9 @@ To summarize this slide, remember this key takeaway: Stage 1 Architectural Desig
 * **Formal Definition (IEEE 1471 / ISO 42010):**
   > Software architecture is the fundamental organization of a system embodied in its components, their relationships to each other and the environment, and the principles guiding its design and evolution.
 * **The Bridge Role of Architecture:**
-  - **Requirements (What)**: Stakeholder needs, user stories, and constraints.
-  - **Implementation (How)**: Source code, data schemas, and unit tests.
-  - **Architecture (The Bridge)**: Transforms messy requirements into structured sub-systems, communication boundaries, and deployment topology.
+  - <strong>Requirements (What)</strong>: Stakeholder needs, user stories, and constraints.
+  - <strong>Implementation (How)</strong>: Source code, data schemas, and unit tests.
+  - <strong>Architecture (The Bridge)</strong>: Transforms messy requirements into structured sub-systems, communication boundaries, and deployment topology.
 * **Architecture in the Small vs. in the Large:**
   - **In the Small**: Internal design of individual applications (classes, modules, local interfaces).
   - **In the Large**: Enterprise-scale structures (distributed services, cloud platforms, event buses, multi-tier databases).
@@ -621,7 +621,7 @@ To summarize this slide, remember this key takeaway: MVC decouples user interfac
   - Standard enterprise information systems, e-commerce backends, and banking applications requiring clear team boundaries and multi-level security isolation.
 * **Engineering Advantages & Trade-offs:**
   - **Strengths**: High modularity and change isolation—swapping MySQL for DynamoDB in the Persistence layer leaves core Business Logic completely untouched.
-  - **Weaknesses**: Susceptible to the **"Architecture Sinkhole Anti-Pattern"**, where requests merely pass through multiple layers without processing, adding latency and object-mapping overhead.
+  - **Weaknesses**: Susceptible to the <strong>"Architecture Sinkhole Anti-Pattern"</strong>, where requests merely pass through multiple layers without processing, adding latency and object-mapping overhead.
 
 <!--
 Let's analyze the responsibilities and trade-offs of Layered Architecture.
@@ -666,7 +666,7 @@ To summarize this slide, remember this key takeaway: Layered architecture organi
   - Data-intensive environments where multiple specialized tools process the same complex data representation: **IDEs, compilers (shared AST), CAD systems, and AI Blackboard systems**.
 * **Engineering Advantages & Trade-offs:**
   - **Strengths**: Eliminates direct inter-tool coupling; new analysis tools can be plugged into the repository effortlessly without modifying existing subsystems.
-  - **Weaknesses**: The central repository is a **Single Point of Failure (SPOF)** and a major contention bottleneck under heavy concurrent writes; schema evolution affects all connected tools.
+  - **Weaknesses**: The central repository is a <strong>Single Point of Failure (SPOF)</strong> and a major contention bottleneck under heavy concurrent writes; schema evolution affects all connected tools.
 
 <!--
 Let's examine the responsibilities and trade-offs of Repository Architecture.
@@ -790,7 +790,7 @@ To summarize this slide, remember this key takeaway: Pipe-and-filter architectur
 * **When Used & Real-World Scenarios:**
   - Large-scale cloud platforms (e.g., Netflix, Uber, Amazon) with dozens of autonomous engineering teams requiring rapid, independent release cycles and elastic scaling per domain.
 * **Engineering Advantages & Trade-offs:**
-  - **Strengths**: Superior **fault isolation (blast-radius containment)**, independent scaling of bottleneck services, team autonomy, and polyglot technology freedom.
+  - **Strengths**: Superior <strong>fault isolation (blast-radius containment)</strong>, independent scaling of bottleneck services, team autonomy, and polyglot technology freedom.
   - **Weaknesses**: High distributed systems complexity—network latency, eventual consistency (Saga transactions), distributed tracing, and heavy Kubernetes/DevOps operational cost.
 
 <!--
@@ -853,11 +853,11 @@ To summarize this slide, remember this key takeaway: Microservices trade operati
 | Pattern | Food Delivery Subsystem / Zoom Level | Core Engineering Problem Solved |
 | :--- | :--- | :--- |
 | **1. MVC** | **Customer App & Merchant Portal UI** | One `OrderModel` simultaneously updates Live Map View & Progress Bar View |
-| **2. Layered** | **Inside `Order Service` (`Controller → Domain → Repo`)** | Isolates delivery fee & promo pricing rules from PostgreSQL persistence |
-| **3. Repository** | **AI Dispatch Blackboard (`Geo-State Store`)** | Route solver, order batcher & surge pricer share live city map state |
+| **2. Layered** | <strong>Inside `Order Service` (`Controller → Domain → Repo`)</strong> | Isolates delivery fee & promo pricing rules from PostgreSQL persistence |
+| **3. Repository** | <strong>AI Dispatch Blackboard (`Geo-State Store`)</strong> | Route solver, order batcher & surge pricer share live city map state |
 | **4. Client-Server** | **Customer / Merchant / Rider Apps ↔ Cloud** | Centralizes menu pricing, auth & payment verification on secure servers |
-| **5. Pipe-Filter** | **Live Rider GPS Stream (`Denoise → Match → ETA`)** | Processes 100k+ GPS pings/sec through stateless, parallelizable stages |
-| **6. Microservices** | **Backend Domains (`Menu`, `Order`, `Pay`, `Dispatch`)** | Scales GPS dispatch 20x during rainstorms; isolates promo crashes from checkout |
+| **5. Pipe-Filter** | <strong>Live Rider GPS Stream (`Denoise → Match → ETA`)</strong> | Processes 100k+ GPS pings/sec through stateless, parallelizable stages |
+| **6. Microservices** | <strong>Backend Domains (`Menu`, `Order`, `Pay`, `Dispatch`)</strong> | Scales GPS dispatch 20x during rainstorms; isolates promo crashes from checkout |
 
 <!--
 Examine this 6-pattern synthesis table for our Food Delivery Platform case study.
@@ -920,7 +920,7 @@ To summarize this slide, remember this key takeaway: Non-functional quality attr
 
 * **The Inevitable Conflict Matrix (No Silver Bullet):**
   - **Performance vs. Security**: Deep packet inspection, TLS, and fraud checks add latency.
-  - **Availability vs. Consistency (CAP Theorem)**: Strict distributed locks block orders during network partitions.
+  - <strong>Availability vs. Consistency (CAP Theorem)</strong>: Strict distributed locks block orders during network partitions.
   - **Modularity vs. Performance**: Fine-grained layers and microservice RPCs add serialization overhead.
 * **ATAM (Architecture Trade-off Analysis Method — Carnegie Mellon SEI):**
   - Evaluates how architectural decisions satisfy or conflict across **Quality Attribute Scenarios**:
@@ -948,10 +948,10 @@ To summarize this slide, remember this key takeaway: ATAM systematically uncover
 
 | Architectural Decision | Competing Quality Attributes (Trade-off Point) | ATAM Architectural Resolution |
 | :--- | :--- | :--- |
-| **1. Rider GPS Ping Rate**<br>(`1s` vs. `15s` interval) | **Map Accuracy (Usability)** ↔ **Rider Battery & Bandwidth (Efficiency)** | **Adaptive Pinging**: Ping every `2s` near drop-off; throttle to `15s` when waiting at restaurant |
-| **2. Checkout & Dispatch**<br>(`Sync 2PC` vs. `Async Saga`) | **Strict Data Consistency** ↔ **Peak Surge Availability & Latency (CAP)** | **Hybrid Saga**: Sync pre-auth for payment, then async Kafka `OrderPlacedEvent` for dispatch |
-| **3. AI Dispatch Repository**<br>(`Central Store` vs. `Sharded`) | **Global Route Optimality** ↔ **Single Point of Failure Risk (SPOF)** | **Geo-Sharded In-Memory Cluster**: Partition Redis repository by city zone with active replicas |
-| **4. Promo & Fraud Check**<br>(`Deep ML` vs. `Fast Rule`) | **Anti-Fraud Security** ↔ **Checkout Throughput (<200ms Latency)** | **Two-Stage Pipeline**: Fast `<15ms` rule check inline at Gateway; async ML audit post-order |
+| **1. Rider GPS Ping Rate**<br>(`1s` vs. `15s` interval) | <strong>Map Accuracy (Usability)</strong> ↔ <strong>Rider Battery & Bandwidth (Efficiency)</strong> | **Adaptive Pinging**: Ping every `2s` near drop-off; throttle to `15s` when waiting at restaurant |
+| **2. Checkout & Dispatch**<br>(`Sync 2PC` vs. `Async Saga`) | **Strict Data Consistency** ↔ <strong>Peak Surge Availability & Latency (CAP)</strong> | **Hybrid Saga**: Sync pre-auth for payment, then async Kafka `OrderPlacedEvent` for dispatch |
+| **3. AI Dispatch Repository**<br>(`Central Store` vs. `Sharded`) | **Global Route Optimality** ↔ <strong>Single Point of Failure Risk (SPOF)</strong> | **Geo-Sharded In-Memory Cluster**: Partition Redis repository by city zone with active replicas |
+| **4. Promo & Fraud Check**<br>(`Deep ML` vs. `Fast Rule`) | **Anti-Fraud Security** ↔ <strong>Checkout Throughput (<200ms Latency)</strong> | **Two-Stage Pipeline**: Fast `<15ms` rule check inline at Gateway; async ML audit post-order |
 
 <!--
 Let's walk through a real-world ATAM evaluation on our Food Delivery System!
@@ -975,10 +975,10 @@ To summarize this slide, remember this key takeaway: ATAM turns abstract quality
 <div class="card" data-marpit-fragment>
 
 ### Core UML Notations & Rules
-- **Tabbed Folder (`Package`)**: Groups cohesive classes and interfaces into a single namespace (`domain.order`).
-- **Visibility (`+` Public vs. `-` Private)**: `+OrderService` & `+IOrderRepository` are exported; `-SurgePricingPolicy` is hidden inside the package.
-- **Dependency Arrow (`- - ->`)**: Dashed open arrow with `«import»` or `«access»`; changes in the target package may force recompilation of the source package.
-- **Acyclic Dependencies Principle (ADP)**: Package dependency graphs must never form a cycle (`A → B → A` is forbidden).
+- <strong>Tabbed Folder (`Package`)</strong>: Groups cohesive classes and interfaces into a single namespace (`domain.order`).
+- <strong>Visibility (`+` Public vs. `-` Private)</strong>: `+OrderService` & `+IOrderRepository` are exported; `-SurgePricingPolicy` is hidden inside the package.
+- <strong>Dependency Arrow (`- - ->`)</strong>: Dashed open arrow with `«import»` or `«access»`; changes in the target package may force recompilation of the source package.
+- <strong>Acyclic Dependencies Principle (ADP)</strong>: Package dependency graphs must never form a cycle (`A → B → A` is forbidden).
 
 </div>
 <div class="card" data-marpit-fragment>
@@ -1037,15 +1037,15 @@ To summarize this slide, remember this key takeaway: A UML Package Diagram gover
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Hands-On Modeling: Architecting a Chess Game in MVC (4 Mins)**
-  - **Scenario:** Your team is designing a desktop/web **Chess Game** using the **Model-View-Controller (MVC)** architectural pattern.
+  <strong>Hands-On Modeling: Architecting a Chess Game in MVC (4 Mins)</strong>
+  - **Scenario:** Your team is designing a desktop/web **Chess Game** using the <strong>Model-View-Controller (MVC)</strong> architectural pattern.
   - **1. Partition Classes into 3 Cohesive Packages (`package` syntax):**
     - `chess.model`: `+Board`, `+Piece`, `+MoveValidator`, `-BitboardEngine` (pure chess rules & state).
     - `chess.view`: `+BoardCanvasUI`, `+MoveHistoryPanel`, `+SoundEffectPlayer` (UI rendering).
     - `chess.controller`: `+GameController`, `+TurnClockHandler` (user input routing).
   - **2. Draw the Package Diagram in PlantUML ([PlantText](https://www.planttext.com)):**
     - Use `package "chess.model" { ... }` and connect packages via `..> : «import»`.
-    - **Audit Question:** Which direction do the dependency arrows point? Does `chess.model` import `chess.view`? Does your diagram satisfy the **Acyclic Dependencies Principle (ADP)**?
+    - **Audit Question:** Which direction do the dependency arrows point? Does `chess.model` import `chess.view`? Does your diagram satisfy the <strong>Acyclic Dependencies Principle (ADP)</strong>?
 
   </div>
   <div class="discussion-logo">
@@ -1075,10 +1075,10 @@ To summarize this slide, remember this key takeaway: Modeling an MVC Chess Game 
 <div class="card" data-marpit-fragment>
 
 ### Core UML Notations & Rules
-- **3D Node Cube (`«device»` / `«executionEnv»`)**:
+- <strong>3D Node Cube (`«device»` / `«executionEnv»`)</strong>:
   - `«device»`: Physical compute host (Mobile phone, AWS EC2, Load Balancer).
   - `«executionEnvironment»`: Nested runtime container (Kubernetes Pod, Docker, JVM, PostgreSQL Engine).
-- **Artifact (`«artifact»` + 📄 Icon)**: Concrete deployable binary/file (`order-service:v2.4.jar`, `rider-gps.apk`) that `«manifest»` a logical component.
+- <strong>Artifact (`«artifact»` + 📄 Icon)</strong>: Concrete deployable binary/file (`order-service:v2.4.jar`, `rider-gps.apk`) that `«manifest»` a logical component.
 - **Communication Path & Multiplicity**: Solid line labeled with network protocol (`«gRPC / HTTP2»`, `«JDBC / TLS»`) and node cardinality (`[5..20]`).
 
 </div>
@@ -1087,7 +1087,7 @@ To summarize this slide, remember this key takeaway: Modeling an MVC Chess Game 
 ### Food Delivery Design Insights
 - **Exposes High-Availability & Scaling Policies**:
   - `Dispatch Engine Pod [5..20]` scales wider than `Payment Pod [2..6]` to handle 6 PM dinner GPS spikes.
-- **Eliminates Single Points of Failure (SPOF)**:
+- <strong>Eliminates Single Points of Failure (SPOF)</strong>:
   - Shows `RDS PostgreSQL [1 Primary + 2 Replica]`, `Redis ElastiCache [6 Shards]`, and `Kafka [3 Nodes]`.
 - **Makes Network Boundaries Explicit**:
   - External traffic uses `«HTTPS / REST & WSS»`, internal east-west traffic uses `«gRPC»`, and Payment uses `«HTTPS / mTLS»` to `Stripe Cloud`.
@@ -1208,13 +1208,13 @@ To summarize this slide, remember this key takeaway: Stage 2 Interface & Contrac
 <div class="card" data-marpit-fragment>
 
 ### The 3 Pillars of Design by Contract (DbC)
-- **1. Precondition (`requires` — Client Obligation)**:
+- <strong>1. Precondition (`requires` — Client Obligation)</strong>:
   - What must be true *before* invocation (`!cart.isEmpty() && token.isValid()`).
   - *Benefit to Supplier*: No need to litter internal code with redundant defensive checks; if violated, fail fast!
-- **2. Postcondition (`ensures` — Supplier Guarantee)**:
+- <strong>2. Postcondition (`ensures` — Supplier Guarantee)</strong>:
   - What the Supplier guarantees *after* execution (`order.status == CONFIRMED && stock_after == stock_before - qty`).
   - *Benefit to Client*: Guaranteed outcome without inspecting Supplier internals.
-- **3. Class Invariant (`invariant` — Domain Integrity)**:
+- <strong>3. Class Invariant (`invariant` — Domain Integrity)</strong>:
   - Always true before and after any operation (`order.totalAmount >= 0`).
 
 </div>
@@ -1224,8 +1224,8 @@ To summarize this slide, remember this key takeaway: Stage 2 Interface & Contrac
 - **Eliminating Ambiguity Across Teams**:
   - Frontend, Mobile, and Backend teams lock interface specs in the **SDD** on Day 1 to enable **parallel development & contract testing**.
 - **Modern Machine-Readable Contract Formats**:
-  - **REST APIs**: **OpenAPI 3.1 (Swagger)** — specifies endpoints, JSON schemas, status codes (`201`, `400`, `422`), and validation bounds.
-  - **RPC Services**: **Protocol Buffers (`.proto`)** — strongly-typed binary contracts for east-west `gRPC` calls.
+  - **REST APIs**: <strong>OpenAPI 3.1 (Swagger)</strong> — specifies endpoints, JSON schemas, status codes (`201`, `400`, `422`), and validation bounds.
+  - **RPC Services**: <strong>Protocol Buffers (`.proto`)</strong> — strongly-typed binary contracts for east-west `gRPC` calls.
   - **Event Streams**: **AsyncAPI / Apache Avro** — versioned schemas for Kafka `OrderPlacedEvent` payloads + **Idempotency Keys** (`idempotency_key: UUID`) to prevent duplicate payment charging!
 
 </div>
@@ -1270,7 +1270,7 @@ To summarize this slide, remember this key takeaway: Design by Contract turns pa
 ---
 ## Specifying `OrderService` in Code: Javadoc vs. JML
 
-> **From Diagram to Executable Spec:** How do we write `OrderService.placeOrder()` contracts in Java using **Contract Javadoc** and **JML (Java Modeling Language)**?
+> **From Diagram to Executable Spec:** How do we write `OrderService.placeOrder()` contracts in Java using **Contract Javadoc** and <strong>JML (Java Modeling Language)</strong>?
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -1351,7 +1351,7 @@ To summarize this slide, remember this key takeaway: Javadoc and JML translate a
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Pair Challenge: Complete the Javadoc Design Specification for Bubble Sort (4 Mins)**
+  <strong>Pair Challenge: Complete the Javadoc Design Specification for Bubble Sort (4 Mins)</strong>
   - **Task:** Write a complete, mathematically airtight **Javadoc Design Spec** (`@param`, `@pre`, `@post`, `@throws`) for `bubbleSort`:
 ```java
 /**
@@ -1395,11 +1395,11 @@ To summarize this slide, remember this key takeaway: Writing a Javadoc design sp
 <div class="card" data-marpit-fragment>
 
 ### Core UML Notations & DbC Mapping
-- **Component (`«component»` + ⧉ Icon)**: Encapsulated, replaceable unit whose internal classes are hidden behind explicit interfaces.
-- **Provided Interface (`—○` Lollipop / Ball)**: Contract realized by a Supplier component (`IOrderCheckoutAPI` — guarantees DbC **Postconditions**).
-- **Required Interface (`—(` Socket)**: Contract demanded by a Client component (`IPaymentGateway` — must satisfy DbC **Preconditions**).
-- **Assembly Connector (`—(○—` Ball & Socket)**: Mates a required socket to a provided lollipop with zero implementation coupling.
-- **Port (`□`) & Delegation (`- - ->`)**: Boundary endpoint forwarding external calls to internal sub-components.
+- <strong>Component (`«component»` + ⧉ Icon)</strong>: Encapsulated, replaceable unit whose internal classes are hidden behind explicit interfaces.
+- <strong>Provided Interface (`—○` Lollipop / Ball)</strong>: Contract realized by a Supplier component (`IOrderCheckoutAPI` — guarantees DbC **Postconditions**).
+- <strong>Required Interface (`—(` Socket)</strong>: Contract demanded by a Client component (`IPaymentGateway` — must satisfy DbC **Preconditions**).
+- <strong>Assembly Connector (`—(○—` Ball & Socket)</strong>: Mates a required socket to a provided lollipop with zero implementation coupling.
+- <strong>Port (`□`) & Delegation (`- - ->`)</strong>: Boundary endpoint forwarding external calls to internal sub-components.
 
 </div>
 <div class="card" data-marpit-fragment>
@@ -1456,7 +1456,7 @@ To summarize this slide, remember this key takeaway: A UML Component Diagram vis
 <div class="ccq-columns">
   <div class="ccq-text">
 
-In Stage 2 (**Interface & Contract Specification**), how do Bertrand Meyer's **Design by Contract (DbC)** and the **UML Component Diagram** work together when `Order Management` calls `Payment Component` via the `IPaymentGateway` interface?
+In Stage 2 (**Interface & Contract Specification**), how do Bertrand Meyer's <strong>Design by Contract (DbC)</strong> and the **UML Component Diagram** work together when `Order Management` calls `Payment Component` via the `IPaymentGateway` interface?
 
 - **A.** `Order Management` exposes a Lollipop (`—○`) and may freely pass negative order amounts without validation.
 - **B.** Client Socket (`—(`) must satisfy the **Precondition**, while Supplier Lollipop (`—○`) guarantees the **Postcondition**.
@@ -1510,11 +1510,11 @@ To summarize this slide, remember this key takeaway: Stage 3 Detailed OO Design 
 * **What Is a Software Design Pattern?**
   - While **Architectural Patterns** (Section 5.3) define system-wide macro topology, **Design Patterns** provide reusable, proven micro-level solutions to recurring class and object design problems within a specific context.
 * **The Vast Landscape of Design Patterns (e.g., Gang of Four — GoF 23 Patterns):**
-  - **Creational Patterns (5)**: *Factory Method, Abstract Factory, Builder, Singleton, Prototype* (decouple object creation).
-  - **Structural Patterns (7)**: *Adapter, Decorator, Facade, Proxy, Composite, Bridge* (compose classes & interfaces).
-  - **Behavioral Patterns (11)**: *Strategy, Observer, Command, State, Template Method, Iterator* (manage object collaboration).
+  - <strong>Creational Patterns (5)</strong>: *Factory Method, Abstract Factory, Builder, Singleton, Prototype* (decouple object creation).
+  - <strong>Structural Patterns (7)</strong>: *Adapter, Decorator, Facade, Proxy, Composite, Bridge* (compose classes & interfaces).
+  - <strong>Behavioral Patterns (11)</strong>: *Strategy, Observer, Command, State, Template Method, Iterator* (manage object collaboration).
 * **Our Focus Here — The 5 SOLID Design Principles (Robert C. Martin):**
-  - Rather than memorizing 23 GoF patterns by rote, we focus on **SOLID**—the **foundational "first principles"** upon which nearly all GoF patterns are built (e.g., *Strategy* realizes **OCP**; *Adapter* realizes **DIP**)!
+  - Rather than memorizing 23 GoF patterns by rote, we focus on **SOLID**—the <strong>foundational "first principles"</strong> upon which nearly all GoF patterns are built (e.g., *Strategy* realizes **OCP**; *Adapter* realizes **DIP**)!
 
 <!--
 Before diving into individual UML diagrams, let's clarify a fundamental question: What is a Design Pattern, and how does it relate to SOLID?
@@ -1531,11 +1531,11 @@ To summarize this slide, remember this key takeaway: While catalogs like the Gan
 ## Overview: The 5 SOLID Design Principles in UML
 
 * **How SOLID Shapes Class & Interface Topologies:**
-  - **S — Single Responsibility Principle (SRP)**: Partition bloated "God Classes" so each class serves **1 Actor / 1 Reason to Change**.
-  - **O — Open / Closed Principle (OCP)**: Replace rigid concrete dependencies with **polymorphic `«interface»` abstractions** (`- - -|>`).
-  - **L — Liskov Substitution Principle (LSP)**: Ensure every subclass (`───|>`) or realization (`- - -|>`) honors the **behavioral contract** of its base type.
-  - **I — Interface Segregation Principle (ISP)**: Split bloated "Fat Interfaces" into **lean, role-specific `«interface»` contracts**.
-  - **D — Dependency Inversion Principle (DIP)**: Invert dependency arrows **upward** so both high-level policies and low-level details depend on abstractions.
+  - <strong>S — Single Responsibility Principle (SRP)</strong>: Partition bloated "God Classes" so each class serves **1 Actor / 1 Reason to Change**.
+  - <strong>O — Open / Closed Principle (OCP)</strong>: Replace rigid concrete dependencies with **polymorphic `«interface»` abstractions** (`- - -|>`).
+  - <strong>L — Liskov Substitution Principle (LSP)</strong>: Ensure every subclass (`───|>`) or realization (`- - -|>`) honors the **behavioral contract** of its base type.
+  - <strong>I — Interface Segregation Principle (ISP)</strong>: Split bloated "Fat Interfaces" into **lean, role-specific `«interface»` contracts**.
+  - <strong>D — Dependency Inversion Principle (DIP)</strong>: Invert dependency arrows **upward** so both high-level policies and low-level details depend on abstractions.
 
 <!--
 Examine the five SOLID principles from an architectural and UML perspective.
@@ -1620,8 +1620,8 @@ To summarize this slide, remember this key takeaway: SRP splits multi-actor God 
 <div class="card" data-marpit-fragment>
 
 ### ❌ UML Anti-Pattern: Direct Concrete Coupling
-- **Hardwired Fan-Out (`───>`)**: `OrderNotificationService` directly depends on concrete `EmailSender` and `SmsSender` classes via `if / else if` type-switching.
-- **Violation of "Closed for Modification"**:
+- <strong>Hardwired Fan-Out (`───>`)</strong>: `OrderNotificationService` directly depends on concrete `EmailSender` and `SmsSender` classes via `if / else if` type-switching.
+- <strong>Violation of "Closed for Modification"</strong>:
   - Adding `LineNotifySender`, `WhatsApp`, or `Discord` forces engineers to **open and edit** the core `OrderNotificationService` class.
   - Every edit risks breaking existing, production-tested notification channels!
 
@@ -1629,9 +1629,9 @@ To summarize this slide, remember this key takeaway: SRP splits multi-actor God 
 <div class="card" data-marpit-fragment>
 
 ### ✅ UML Refactoring: Polymorphic Interface Pivot
-- **Stable Abstraction (`«interface» INotificationChannel`)**:
+- <strong>Stable Abstraction (`«interface» INotificationChannel`)</strong>:
   - `OrderNotificationService` depends **only** on `INotificationChannel.send(msg)` (**🔒 Closed for Modification**).
-- **Plug-in Realization (`- - -|>`)**:
+- <strong>Plug-in Realization (`- - -|>`)</strong>:
   - `EmailChannel`, `SmsChannel`, and the new `LineNotifyChannel` independently realize `INotificationChannel` (**🔓 Open for Extension**).
 - **Zero-Touch Expansion**: New channels are added as standalone classes with zero impact on core orchestration.
 
@@ -1688,7 +1688,7 @@ To summarize this slide, remember this key takeaway: OCP replaces hardwired conc
 <div class="card" data-marpit-fragment>
 
 ### ✅ UML Refactoring: Behavioral Subtyping
-- **Sibling Realization (`- - -|> IShape`)**:
+- <strong>Sibling Realization (`- - -|> IShape`)</strong>:
   - Eliminate invalid inheritance between `Square` and `Rectangle`.
   - Both classes independently realize the pure contract `«interface» IShape` (`+ getArea(): int`) with immutable dimensions.
 - **Design by Contract (DbC) Rules for LSP**:
@@ -1738,7 +1738,7 @@ To summarize this slide, remember this key takeaway: LSP requires that UML inher
 <div class="card" data-marpit-fragment>
 
 ### ❌ UML Anti-Pattern: The "Fat Interface"
-- **Polluted Contract (`IMultiFunctionDevice`)**: Bundles unrelated capabilities (`printOrderTicket`, `scanInvoicePdf`, `sendVendorFax`) into one monolithic `«interface»`.
+- <strong>Polluted Contract (`IMultiFunctionDevice`)</strong>: Bundles unrelated capabilities (`printOrderTicket`, `scanInvoicePdf`, `sendVendorFax`) into one monolithic `«interface»`.
 - **Two Severe Consequences**:
   - **1. Dummy Stubs & Liskov Violations**: `KitchenThermalPrinter` must implement `scan()` and `fax()` by throwing runtime exceptions.
   - **2. Phantom Recompilation Coupling**: Changing a parameter in `sendVendorFax()` forces `KitchenThermalPrinter` to recompile!
@@ -1749,7 +1749,7 @@ To summarize this slide, remember this key takeaway: LSP requires that UML inher
 ### ✅ UML Refactoring: Role-Specific Interfaces
 - **Granular Role Contracts**:
   - Decompose into `«interface» IPrintable`, `«interface» IScannable`, and `«interface» IFaxable`.
-- **Selective Realization (`- - -|>`)**:
+- <strong>Selective Realization (`- - -|>`)</strong>:
   - `KitchenThermalPrinter` realizes **only** `IPrintable`.
   - `CorporateOfficeMFP` composes capabilities by realizing all three (`IPrintable`, `IScannable`, `IFaxable`).
 - **Result**: Zero unused methods and zero phantom coupling across unrelated clients.
@@ -1796,7 +1796,7 @@ To summarize this slide, remember this key takeaway: ISP decomposes bloated inte
 <div class="card" data-marpit-fragment>
 
 ### ❌ UML Anti-Pattern: Downward Source Dependency
-- **High-Level Bound to Low-Level (`domain ───> infra`)**:
+- <strong>High-Level Bound to Low-Level (`domain ───> infra`)</strong>:
   - `OrderCheckoutService` directly references concrete `MySqlOrderDatabase`.
 - **Why This Cripples Architecture**:
   - **Immobility**: Core business policy cannot be reused with PostgreSQL without editing domain classes.
@@ -1806,11 +1806,11 @@ To summarize this slide, remember this key takeaway: ISP decomposes bloated inte
 <div class="card" data-marpit-fragment>
 
 ### ✅ UML Refactoring: Upward Arrow Inversion
-- **Domain Owns the Interface (`IOrderRepository`)**:
+- <strong>Domain Owns the Interface (`IOrderRepository`)</strong>:
   - `OrderCheckoutService` depends only on `«interface» IOrderRepository` inside `domain.order`.
-- **Infrastructure Realizes Upward (`infra - - -|> domain`)**:
+- <strong>Infrastructure Realizes Upward (`infra - - -|> domain`)</strong>:
   - `PostgresOrderRepo` and `InMemoryMockRepo` point **upward** across the layer boundary to realize `IOrderRepository`.
-- **Constructor Dependency Injection (DI)**: Inject `PostgresOrderRepo` in production and `InMemoryMockRepo` for **1ms isolated unit tests**!
+- <strong>Constructor Dependency Injection (DI)</strong>: Inject `PostgresOrderRepo` in production and `InMemoryMockRepo` for **1ms isolated unit tests**!
 
 </div>
 </div>
@@ -1852,7 +1852,7 @@ To summarize this slide, remember this key takeaway: DIP inverts compile-time UM
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **Web Search & Pair Analysis: The GoF Observer Design Pattern (4 Mins)**
+  <strong>Web Search & Pair Analysis: The GoF Observer Design Pattern (4 Mins)</strong>
   - **1. Search Online:** Look up the **Observer Design Pattern** (e.g., on *Refactoring.Guru* or *GoF Catalog*).
   - **2. Design Motivation (What problem does it solve?):**
     - When one **Subject** changes state (e.g., a Food Delivery `Order` transitions to `READY_FOR_PICKUP`), multiple **Dependents** (`CustomerApp`, `RiderApp`, `MerchantDisplay`) must update automatically—**without hardcoding concrete class calls inside `Order`**!
@@ -1943,19 +1943,19 @@ To summarize this slide, remember this key takeaway: Stage 4 Data & Persistence 
 - **1. Conceptual → 2. Logical ERD → 3. Physical Schema**:
   - Progresses from business concepts to normalized table columns, and finally to DBMS-specific indexes and partitions.
 - **Core UML Data / ERD Notations**:
-  - **`«PK»` (Primary Key)**: Unique immutable identifier (`order_id: UUID`).
-  - **`«FK»` (Foreign Key)**: Referential integrity link (`customer_id` referencing `customers.customer_id`).
+  - <strong>`«PK»` (Primary Key)</strong>: Unique immutable identifier (`order_id: UUID`).
+  - <strong>`«FK»` (Foreign Key)</strong>: Referential integrity link (`customer_id` referencing `customers.customer_id`).
   - **Multiplicity (`1 ── 0..*`, `1 ◆── 1..*`)**: Distinguishes optional associations from lifecycle-bound composition (`Order` ◆── `OrderItem`).
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### 3NF Normalization vs. Physical Optimization
-- **Third Normal Form (3NF — Write Integrity)**:
+- <strong>Third Normal Form (3NF — Write Integrity)</strong>:
   - Every non-key column depends *only* on the Primary Key (e.g., store `restaurant_id` on `orders`, never duplicate restaurant address strings across millions of orders).
   - **Benefit**: Eliminates update anomalies and guarantees single source of truth.
-- **Physical Indexing & Partitioning (Read Speed)**:
-  - **Composite Index (`«idx»`)**: `(customer_id, created_at DESC)` accelerates *"My Order History"* from `800ms` full-table scan to `< 2ms` B-Tree lookup.
+- <strong>Physical Indexing & Partitioning (Read Speed)</strong>:
+  - <strong>Composite Index (`«idx»`)</strong>: `(customer_id, created_at DESC)` accelerates *"My Order History"* from `800ms` full-table scan to `< 2ms` B-Tree lookup.
   - **Table Partitioning**: Partitioning `orders` monthly by `created_at` keeps active working sets small in RAM.
 
 </div>
@@ -1983,22 +1983,22 @@ To summarize this slide, remember this key takeaway: Logical 3NF normalization p
 <div class="card" data-marpit-fragment>
 
 ### Matching Storage Engines to Workloads
-- **1. Relational OLTP (`PostgreSQL` — ACID)**:
+- <strong>1. Relational OLTP (`PostgreSQL` — ACID)</strong>:
   - *Food Delivery Use*: `orders`, `order_items`, `payments`.
   - *Design Rule*: Use `«UQ» idempotency_key` and row-level locking to guarantee zero double-charging.
-- **2. In-Memory Key-Value / Spatial (`Redis` — Ephemeral)**:
+- <strong>2. In-Memory Key-Value / Spatial (`Redis` — Ephemeral)</strong>:
   - *Food Delivery Use*: Live rider GPS (`rider:geo:{city}`) & restaurant menu **Cache-Aside** (`TTL = 5 min`).
   - *Design Rule*: High write/read velocity (`< 5ms`), auto-evicted via `TTL = 30s` if a rider goes offline.
-- **3. Append-Only Event Log (`Kafka` — Stream)**:
+- <strong>3. Append-Only Event Log (`Kafka` — Stream)</strong>:
   - *Food Delivery Use*: High-throughput immutable audit log of domain events partitioned by `order_id`.
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### Managing Consistency: ACID vs. BASE & Outbox
-- **Inside a Single Service (`ACID`)**:
+- <strong>Inside a Single Service (`ACID`)</strong>:
   - Atomicity, Consistency, Isolation, Durability via local SQL transactions.
-- **Across Distributed Services (`BASE` & Saga)**:
+- <strong>Across Distributed Services (`BASE` & Saga)</strong>:
   - *Problem*: How to commit an `Order` in PostgreSQL and publish `OrderPlacedEvent` to Kafka without dual-write data loss?
   - *Solution — **Transactional Outbox Pattern***:
     1. Insert `orders` row AND `outbox_events` row in the **same local ACID transaction**.
@@ -2050,7 +2050,7 @@ To summarize this slide, remember this key takeaway: Data design combines 3-leve
 <div class="ccq-columns">
   <div class="ccq-text">
 
-In Stage 4 (**Data & Persistence Design**), why does a Food Delivery Platform store `orders` and `payments` in **PostgreSQL (Relational OLTP)** while storing 50,000 real-time courier GPS coordinates in **Redis (`GeoHash` + `TTL = 30s`)**?
+In Stage 4 (**Data & Persistence Design**), why does a Food Delivery Platform store `orders` and `payments` in <strong>PostgreSQL (Relational OLTP)</strong> while storing 50,000 real-time courier GPS coordinates in <strong>Redis (`GeoHash` + `TTL = 30s`)</strong>?
 
 - **A.** PostgreSQL lacks primary key support for tables, whereas Redis enforces Third Normal Form (3NF) foreign keys.
 - **B.** Redis archives historical financial ledgers on disk, whereas PostgreSQL evicts all unpaid orders after 30 seconds.
@@ -2100,10 +2100,10 @@ To summarize this slide, remember this key takeaway: AI accelerates all four sta
 * **The "Copilot, Not Autopilot" Paradigm:**
   - AI excels at **generating candidate models, drafting contracts, detecting smells, and writing schemas**; human architects own **context, budget, security, and accountability**.
 * **4 High-Impact Applications Mapped to Our 4 Design Stages:**
-  - **Stage 1 (Arch Design — 5.3)**: Simulating **ATAM failure scenarios** (*"What happens if Redis crashes during dinner surge?"*), drafting **ADRs**, and generating **UML Package/Deployment** PlantUML code.
-  - **Stage 2 (Interface Spec — 5.4)**: Generating **OpenAPI 3.1 / Protobuf** contracts and deriving **DbC Preconditions, Postconditions, and boundary test cases**.
-  - **Stage 3 (OO Design — 5.5)**: Scanning for God Classes / cyclic dependencies and refactoring `switch/case` blocks into **SOLID / GoF Strategy** patterns.
-  - **Stage 4 (Data Design — 5.6)**: Translating domain models into **3NF SQL DDL**, recommending composite **B-Tree indexes**, and spotting `N+1` query bottlenecks.
+  - <strong>Stage 1 (Arch Design — 5.3)</strong>: Simulating **ATAM failure scenarios** (*"What happens if Redis crashes during dinner surge?"*), drafting **ADRs**, and generating **UML Package/Deployment** PlantUML code.
+  - <strong>Stage 2 (Interface Spec — 5.4)</strong>: Generating **OpenAPI 3.1 / Protobuf** contracts and deriving **DbC Preconditions, Postconditions, and boundary test cases**.
+  - <strong>Stage 3 (OO Design — 5.5)</strong>: Scanning for God Classes / cyclic dependencies and refactoring `switch/case` blocks into **SOLID / GoF Strategy** patterns.
+  - <strong>Stage 4 (Data Design — 5.6)</strong>: Translating domain models into **3NF SQL DDL**, recommending composite **B-Tree indexes**, and spotting `N+1` query bottlenecks.
 
 <!--
 Notice how Generative AI acts as a specialized copilot across each of the four design stages we mastered in this chapter:
@@ -2123,7 +2123,7 @@ To summarize this slide, remember this key takeaway: AI supercharges productivit
   - **Context Blindness:** AI is blind to your team's tech-stack familiarity, cloud hosting budgets, and internal security compliance constraints.
   - **Superficial Refactoring:** Renaming variables without resolving fundamental architectural bottlenecks or data coupling.
 * **The Golden Rule of System Architecture:**
-  > **"AI Proposes Trade-offs; Lead Architects Make Decisions!"**  
+  > <strong>"AI Proposes Trade-offs; Lead Architects Make Decisions!"</strong>  
   > Human engineers must evaluate organizational context and bear ultimate responsibility for system viability.
 
 <!--
@@ -2211,11 +2211,11 @@ To summarize this slide, remember this key takeaway: These classic texts documen
 
 | Question | Ans | Core Design Principle / UML Rule & Concise Rationale |
 | :--- | :---: | :--- |
-| **CCQ 1 (Sec 5.2)**<br>*Cohesion & Coupling* | **B** | **Low Cohesion & Content Coupling**: `OrderReportUtils` mixes unrelated tasks (**Logical/Coincidental Cohesion**), while modifying `rawSqlString` directly violates information hiding (**Content Coupling**). Refactor into single-purpose classes communicating via **Data Coupling** (DTOs). |
-| **CCQ 2 (Sec 5.3)**<br>*Macro UML Diagrams* | **C** | **Compile-Time vs. Runtime Topology**: **UML Package Diagrams** organize compile-time source namespaces and acyclic `«import»` rules; **UML Deployment Diagrams** map runtime 3D physical/cloud nodes, execution environments, and deployed `«artifact»` binaries. |
-| **CCQ 3 (Sec 5.4)**<br>*DbC & Component UML* | **B** | **Rights & Obligations Matrix**: The **Caller (Client)** must satisfy the **Precondition** (`qty > 0`), while the **Supplier** guarantees the **Postcondition** (`OrderConfirmation`), exposed as a **Lollipop (`—○`)** wired into the caller's **Socket (`—(`)**. |
-| **CCQ 4 (Sec 5.5)**<br>*SOLID OO Principles* | **A** | **DIP & LSP Violations**: Instantiating `new MySqlOrderDatabase()` inside domain logic violates **DIP** (depend on abstractions); throwing `UnsupportedOperationException` on `refund()` violates **LSP** (subtypes must honor parent postconditions) and **ISP**. |
-| **CCQ 5 (Sec 5.6)**<br>*Data & Polyglot DBs* | **C** | **Workload-Matched Polyglot Persistence**: **PostgreSQL (OLTP)** guarantees **ACID** & 3NF integrity for financial orders/payments, whereas **Redis (`GeoHash` + `TTL = 30s`)** serves 10,000/sec ephemeral courier GPS lookups in **`< 5ms`** without B-Tree lock contention. |
+| <strong>CCQ 1 (Sec 5.2)</strong><br>*Cohesion & Coupling* | **B** | **Low Cohesion & Content Coupling**: `OrderReportUtils` mixes unrelated tasks (**Logical/Coincidental Cohesion**), while modifying `rawSqlString` directly violates information hiding (**Content Coupling**). Refactor into single-purpose classes communicating via **Data Coupling** (DTOs). |
+| <strong>CCQ 2 (Sec 5.3)</strong><br>*Macro UML Diagrams* | **C** | **Compile-Time vs. Runtime Topology**: **UML Package Diagrams** organize compile-time source namespaces and acyclic `«import»` rules; **UML Deployment Diagrams** map runtime 3D physical/cloud nodes, execution environments, and deployed `«artifact»` binaries. |
+| <strong>CCQ 3 (Sec 5.4)</strong><br>*DbC & Component UML* | **B** | **Rights & Obligations Matrix**: The <strong>Caller (Client)</strong> must satisfy the **Precondition** (`qty > 0`), while the **Supplier** guarantees the **Postcondition** (`OrderConfirmation`), exposed as a <strong>Lollipop (`—○`)</strong> wired into the caller's <strong>Socket (`—(`)</strong>. |
+| <strong>CCQ 4 (Sec 5.5)</strong><br>*SOLID OO Principles* | **A** | **DIP & LSP Violations**: Instantiating `new MySqlOrderDatabase()` inside domain logic violates **DIP** (depend on abstractions); throwing `UnsupportedOperationException` on `refund()` violates **LSP** (subtypes must honor parent postconditions) and **ISP**. |
+| <strong>CCQ 5 (Sec 5.6)</strong><br>*Data & Polyglot DBs* | **C** | **Workload-Matched Polyglot Persistence**: <strong>PostgreSQL (OLTP)</strong> guarantees **ACID** & 3NF integrity for financial orders/payments, whereas <strong>Redis (`GeoHash` + `TTL = 30s`)</strong> serves 10,000/sec ephemeral courier GPS lookups in **`< 5ms`** without B-Tree lock contention. |
 
 <!--
 This reference table provides the complete answer key and engineering rationale for all five Concept Check Questions (CCQ 1 through CCQ 5) across Chapter 5.
@@ -2270,7 +2270,7 @@ package "domain.model" {
   - `domain.model`: `BoardState`, `PieceRulesEngine`, `MoveValidator` (pure chess rules & state).
   - `ui.view`: `ChessBoardGUI`, `MoveHistoryPanel` (rendering only).
   - `ui.controller`: `GameController`, `MoveInputHandler` (translates clicks/drags into domain commands).
-- **2. Acyclic Dependency Rule (ADP)**:
+- <strong>2. Acyclic Dependency Rule (ADP)</strong>:
   - Arrows flow strictly **toward `domain.model`**.
   - **Forbidden Import**: `domain.model ..> ui.view` is strictly banned! Because `domain.model` imports nothing from `ui.*`, you can run 10,000 automated JUnit chess tests in 1 second or swap `ChessBoardGUI` for a Web/Mobile UI without touching a single line of chess logic!
 
@@ -2319,7 +2319,7 @@ public static void bubbleSort(int[] arr) { ... }
 <div class="card" data-marpit-fragment>
 
 ### 2. Discussion Answers & Contract Analysis
-- **Q1. Precondition (`@param` / `@throws`)**:
+- <strong>Q1. Precondition (`@param` / `@throws`)</strong>:
   - `arr != null`. If `arr == null`, throw `IllegalArgumentException`. Note that `arr.length <= 1` is valid and returns immediately.
 - **Q2 & Q3. Why "Ordered" Alone Is Broken!**:
   - Suppose a lazy developer implements `bubbleSort(arr)` as:
@@ -2350,10 +2350,10 @@ To summarize this slide, remember this key takeaway: A formal sorting contract r
 <div class="card" data-marpit-fragment>
 
 ### 1. Motivation & UML Class Structure
-- **Design Motivation (The Polling vs. Coupling Dilemma)**:
+- <strong>Design Motivation (The Polling vs. Coupling Dilemma)</strong>:
   - Without Observer, either clients waste CPU polling `getOrderStatus()` every second, OR `OrderService` hardcodes calls to `CustomerApp`, `KitchenDisplay`, and `RiderTracker` (violating **SRP & OCP**).
 - **GoF UML Participants**:
-  - **`Subject` (`OrderEventPublisher`)**: Maintains `List<OrderObserver>` with `+ attach(o)`, `+ detach(o)`, and `+ notifyObservers(event)`.
+  - <strong>`Subject` (`OrderEventPublisher`)</strong>: Maintains `List<OrderObserver>` with `+ attach(o)`, `+ detach(o)`, and `+ notifyObservers(event)`.
   - **`«interface» OrderObserver`**: Declares `+ onOrderStateChanged(OrderEvent e)`.
   - **`ConcreteObservers`**: `CustomerPushObserver`, `KitchenScreenObserver`, `RiderMapObserver` implement `OrderObserver` (`..|>`).
 

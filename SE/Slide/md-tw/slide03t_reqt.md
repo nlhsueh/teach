@@ -61,12 +61,12 @@ footer: 'Ch 03 · 需求工程'
 ---
 ## 本章核心思考問題
 
-* 何謂**需求工程 (Requirements Engineering, RE)**？為何在早期捕捉並修正需求錯誤如此關鍵？
-* **使用者需求 (User Requirements)** 與**系統需求 (System Requirements)** 的本質差異為何？
-* **功能性需求 (Functional)**、**非功能性需求 (Non-Functional)** 與**領域需求 (Domain Requirements)** 如何區分？
-* **需求擷取與分析 (Elicitation & Analysis)** 流程的四大核心活動為何？
+* 何謂<strong>需求工程 (Requirements Engineering, RE)</strong>？為何在早期捕捉並修正需求錯誤如此關鍵？
+* <strong>使用者需求 (User Requirements)</strong> 與<strong>系統需求 (System Requirements)</strong> 的本質差異為何？
+* <strong>功能性需求 (Functional)</strong>、<strong>非功能性需求 (Non-Functional)</strong> 與<strong>領域需求 (Domain Requirements)</strong> 如何區分？
+* <strong>需求擷取與分析 (Elicitation & Analysis)</strong> 流程的四大核心活動為何？
 * 如何將模糊主觀的非功能品質目標，轉化為**可客觀量化與測試的工程指標**？
-* 現代**大型語言模型 (LLM)** 如何加速需求工程流程？人機協同 (Human-in-the-Loop) 的防護機制又該如何落實？
+* 現代<strong>大型語言模型 (LLM)</strong> 如何加速需求工程流程？人機協同 (Human-in-the-Loop) 的防護機制又該如何落實？
 
 <!--
 在深入各單元細節前，請大家在整個課堂學習過程中隨時將這六個核心思考問題放在心中。
@@ -85,7 +85,7 @@ footer: 'Ch 03 · 需求工程'
 <!-- _class: lead -->
 <!-- header: '3.1 需求工程基礎' -->
 
-# **3.1 需求工程基礎 (Foundations of RE)**
+# <strong>3.1 需求工程基礎 (Foundations of RE)</strong>
 
 > "The hardest single part of building a software system is deciding precisely what to build."  
 > 「建構軟體系統最困難的單一工作，就是精確決定到底要打造什麼。」  
@@ -164,7 +164,7 @@ footer: 'Ch 03 · 需求工程'
 * **使用者需求 (User Requirements):**
   - 以自然語言搭配簡明圖表撰寫的高階抽象陳述。
   - 目標受眾：**客戶端主管、系統終端使用者、專案經理與非技術利害關係人。**
-  - 核心焦點：從使用者視角界定系統應提供**什麼 (What)** 服務。
+  - 核心焦點：從使用者視角界定系統應提供<strong>什麼 (What)</strong> 服務。
 * **系統需求 (System Requirements):**
   - 結構化、技術精確的詳細規格，嚴格定義系統功能、服務與運作約束。
   - 目標受眾：**軟體架構師、後端與前端工程師、品質驗證 (QA) 測試人員。**
@@ -264,7 +264,7 @@ footer: 'Ch 03 · 需求工程'
 <!-- _class: lead -->
 <!-- header: '3.2 利害關係人與需求分類' -->
 
-# **3.2 系統利害關係人與需求分類 (Stakeholders & Classification)**
+# <strong>3.2 系統利害關係人與需求分類 (Stakeholders & Classification)</strong>
 
 > "Software systems have many masters. If you fail to identify who has a stake, their unspoken expectations will become your project's failure."  
 > 「軟體系統往往有多位主人。若未能全面辨識誰有利害關係，他們未曾言明的隱藏期望，終將成為專案失敗的致命傷。」
@@ -701,12 +701,12 @@ Uber 平台營運端則需要透過即時動態加價平衡雨天的供需失衡
 
 | 系統特徵 (Property) | 可度量指標範例 (Measurable Metric Examples) |
 |---|---|
-| **運算速度 (Speed)** | 每秒處理交易數 (TPS)；第 95/99 百分位回應延遲；畫面每秒更新率 (FPS) |
-| **儲存容量 (Size)** | 隨機存取記憶體 (RAM) 占用容量；安裝套件快閃儲存空間 (ROM/Disk) |
-| **易用性 (Ease of Use)** | 達到合格操作所需的教育訓練時數；每週進線客服求助工單數 |
-| **可靠度 (Reliability)** | 平均故障間隔時間 (MTBF)；單月無預警當機機率；系統可用性百分比 (4 個 9) |
-| **強韌度 (Robustness)** | 系統崩潰重啟並恢復服務時間 (MTTR)；斷電時資料毀損遺失比率 |
-| **可移植性 (Portability)** | 目標平台相依程式碼比例；支援跨平台作業系統 (Linux/Windows/macOS) 數量 |
+| <strong>運算速度 (Speed)</strong> | 每秒處理交易數 (TPS)；第 95/99 百分位回應延遲；畫面每秒更新率 (FPS) |
+| <strong>儲存容量 (Size)</strong> | 隨機存取記憶體 (RAM) 占用容量；安裝套件快閃儲存空間 (ROM/Disk) |
+| <strong>易用性 (Ease of Use)</strong> | 達到合格操作所需的教育訓練時數；每週進線客服求助工單數 |
+| <strong>可靠度 (Reliability)</strong> | 平均故障間隔時間 (MTBF)；單月無預警當機機率；系統可用性百分比 (4 個 9) |
+| <strong>強韌度 (Robustness)</strong> | 系統崩潰重啟並恢復服務時間 (MTTR)；斷電時資料毀損遺失比率 |
+| <strong>可移植性 (Portability)</strong> | 目標平台相依程式碼比例；支援跨平台作業系統 (Linux/Windows/macOS) 數量 |
 
 <!--
 這張參考矩陣彙整了軟體工程界常用的非功能性度量指標。
@@ -871,7 +871,7 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
 <!-- _class: lead -->
 <!-- header: '3.4 需求擷取與建模' -->
 
-# **3.4 需求擷取與系統建模 (Elicitation & Modeling)**
+# <strong>3.4 需求擷取與系統建模 (Elicitation & Modeling)</strong>
 
 > "Customers do not know what they want until you show it to them — elicitation is a collaborative journey of discovery."  
 > 「客戶往往在看到具體雛形之前，並不真正清楚自己需要什麼——需求擷取是一場共同探索的協同之旅。」
@@ -1001,7 +1001,7 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
   - **封閉式訪談 (Closed Interviews):** 預先擬定標準化題目，特別適用於驗證法規檢核清單與既定事實邊界。
   - **開放式訪談 (Open Interviews):** 不設限的探索性對談，旨在挖掘使用者深層痛點、日常困擾與宏觀願景。
   - **半結構化訪談 (Semi-Structured Interviews):** 業界主流標準，掌握核心議題大綱，並保有隨機深入突發痛點的彈性。
-* **「未言明的隱含假設」陷阱 (The "Unstated Assumptions" Trap):**
+* <strong>「未言明的隱含假設」陷阱 (The "Unstated Assumptions" Trap):</strong>
   - 領域專家常將關鍵專業知識視為理所當然而徹底省略（*「這太基本了，全天下誰不知道每區的營業稅率都不一樣？」*）。
 * **共同應用程式設計工作坊 (Joint Application Design - JAD):**
   - 將不同立場的利害關係人（醫師、護理師、IT、會計）聚集於同一間會議室，由中立引導師主持，數小時內化解跨部門爭端。
@@ -1129,8 +1129,8 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
   - **表單與試算表考古 (Forms & Spreadsheet Archaeology):**
     - 紙本簽呈表單、報帳收據，以及員工私下使用的龐大 Excel 追蹤試算表。
     - *工程經驗黃金法則：員工活頁簿中手動增設的每一個自訂欄位，都代表現行系統未被滿足的一項核心需求！*
-* **「考古陷阱」的防範 (The "Archaeology Trap"):**
-  - 必須嚴格區分**不可或缺的本質商業邏輯**（務必完整保留）與**歷史性技術妥協產物**（應予廢除，絕不可盲目照搬數位化）。
+* <strong>「考古陷阱」的防範 (The "Archaeology Trap"):</strong>
+  - 必須嚴格區分**不可或缺的本質商業邏輯<strong>（務必完整保留）與</strong>歷史性技術妥協產物**（應予廢除，絕不可盲目照搬數位化）。
 
 <!--
 第四項核心技術是文件分析與系統考古。
@@ -1150,11 +1150,11 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
 
 | 技術手法 | 核心優勢 | 主要限制 | 最佳適用時機 |
 |---|---|---|---|
-| **訪談法 (Interviews)** | 挖掘深度大；能建立與客戶的情感信任 | 易受主觀偏見影響；無法捕捉內隱知識 | 專案早期探索廣泛目標與建立人脈 |
-| **工作坊 (JAD)** | 能高效化解立場衝突；快速凝聚共識 | 排程困難；強勢人格容易主導全場 | 多方利害關係人存在嚴重利益矛盾時 |
-| **民族誌 (Ethnography)** | 發現真實操作行為與非正式捷徑 | 極耗費時間與人力；成果較難通用化 | 複雜高壓、高危險的實體工作現場 |
-| **故事與情境 (Stories)** | 具備高度可測性；直接銜接敏捷衝刺待辦 | 容易見樹不見林，遺漏系統整體非功能限制 | 定義使用者面向的增量式功能模組 |
-| **文件考古 (Doc Analysis)** | 客觀中立；精確還原舊系統遺留業務邏輯 | 規格文件經常過時失真；容易照單全收 | 汰換遺留核心系統與高度受監管領域 |
+| <strong>訪談法 (Interviews)</strong> | 挖掘深度大；能建立與客戶的情感信任 | 易受主觀偏見影響；無法捕捉內隱知識 | 專案早期探索廣泛目標與建立人脈 |
+| <strong>工作坊 (JAD)</strong> | 能高效化解立場衝突；快速凝聚共識 | 排程困難；強勢人格容易主導全場 | 多方利害關係人存在嚴重利益矛盾時 |
+| <strong>民族誌 (Ethnography)</strong> | 發現真實操作行為與非正式捷徑 | 極耗費時間與人力；成果較難通用化 | 複雜高壓、高危險的實體工作現場 |
+| <strong>故事與情境 (Stories)</strong> | 具備高度可測性；直接銜接敏捷衝刺待辦 | 容易見樹不見林，遺漏系統整體非功能限制 | 定義使用者面向的增量式功能模組 |
+| <strong>文件考古 (Doc Analysis)</strong> | 客觀中立；精確還原舊系統遺留業務邏輯 | 規格文件經常過時失真；容易照單全收 | 汰換遺留核心系統與高度受監管領域 |
 
 <!--
 這份比較矩陣為需求擷取手法提供了清晰的決策指引。
@@ -1229,7 +1229,7 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
 <div class="ccq-columns">
   <div class="ccq-text">
 
-在需求工程中，當分析急診室或飛航管制等複雜且高壓的運作環境時，為何**民族誌觀察法 (Ethnography / 職場觀察)** 具備無可取代的關鍵價值？
+在需求工程中，當分析急診室或飛航管制等複雜且高壓的運作環境時，為何<strong>民族誌觀察法 (Ethnography / 職場觀察)</strong> 具備無可取代的關鍵價值？
 
 - **A.** 能發掘內隱知識——即使用者已習以為常且視為當然，因而在正式訪談中鮮少主動提及的工作細節與非正式捷徑。
 - **B.** 能自動將利害關係人的自然語言需求，在完全無須人工介入的情況下直接編譯為可執行的驗收測試套件。
@@ -1372,7 +1372,7 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
 <div class="ccq-columns">
   <div class="ccq-text">
 
-軟體工程團隊繪製了一份 UML 使用案例圖，標註使用者與「提領現金」使用案例相連。為何工程師除了使用案例圖外，還必須撰寫詳盡的文字型**使用案例說明書 (Use Case Description)**？
+軟體工程團隊繪製了一份 UML 使用案例圖，標註使用者與「提領現金」使用案例相連。為何工程師除了使用案例圖外，還必須撰寫詳盡的文字型<strong>使用案例說明書 (Use Case Description)</strong>？
 
 - **A.** 圖形僅呈現高階系統範疇；文字說明才能完整定義循序步驟、前置條件、後置條件與例外處理流程。
 - **B.** 現行現代網頁瀏覽器若缺乏伴隨的 Markdown 純文字描述，將完全無法正確渲染 UML 向量圖形。
@@ -1411,7 +1411,7 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
 *挑選 2 類存在利益衝突的群體：*
 - **行動指引：**
   - 挑選 2 類：如通勤乘客、自用釋出車主、身障行動不便者、或市政交通局。
-  - **你的具體產出：** 為各群體歸納 **1 項問卷問不出來的「內隱痛點」**。
+  - **你的具體產出：** 為各群體歸納 <strong>1 項問卷問不出來的「內隱痛點」</strong>。
 
 </div>
 
@@ -1454,7 +1454,7 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
 <!-- _class: lead -->
 <!-- header: '3.5 需求驗證與變更管理' -->
 
-# **3.5 需求驗證與變更管理 (Validation & Change Management)**
+# <strong>3.5 需求驗證與變更管理 (Validation & Change Management)</strong>
 
 > "Change is inevitable. In a living system, requirements management is the art of embracing change without descending into chaos."  
 > 「變更是不可避免的。在一個具生命力的系統中，需求管理是一門擁抱變更卻不致陷入混亂的藝術。」
@@ -1644,7 +1644,7 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
 <!-- _class: lead -->
 <!-- header: '3.6 AI 賦能需求工程' -->
 
-# **3.6 AI 賦能需求工程 (AI-Assisted Requirements Engineering)**
+# <strong>3.6 AI 賦能需求工程 (AI-Assisted Requirements Engineering)</strong>
 
 > "AI is a cognitive amplifier for requirements analysis, but human judgment remains the irreplaceable anchor of accountability."  
 > 「AI 是需求分析的認知放大器，但人類工程師的專業判斷，始終是責任歸屬無可取代的唯一錨點。」
@@ -1664,7 +1664,7 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
 > 善用大型語言模型作為智慧分析副駕駛，架起非正式人類溝通對話通往形式化、可驗證軟體規格的橋樑。
 
 * **生成式 AI 的典範轉移 (Generative AI Paradigm Shift):**
-  - LLM 與生成式 AI 工具在軟體生命週期中扮演**智慧型需求工程副駕駛 (RE Copilot)**。
+  - LLM 與生成式 AI 工具在軟體生命週期中扮演<strong>智慧型需求工程副駕駛 (RE Copilot)</strong>。
   - 成功消弭客戶非正式的日常自然語言，與嚴謹形式化的軟體工程產出物之間的鴻溝。
 * **核心技術賦能 (Key Capabilities):**
   - 從凌亂雜沓的會議紀錄與訪談逐字稿中，快速提煉出結構化規格。
@@ -1690,10 +1690,10 @@ Elon Musk 剛剛提出願景：「Cybercab 必須提供地表最安全的自駕�
 
 * **預訓練領域知識的無形資產 (Pre-Trained Domain Knowledge):**
   - LLM 在數十億標記中完成了預訓練：涵蓋企業案例、產業白皮書、開源專案程式碼與 ISO/IEEE 國際標準。
-  - 模型本身早已具備潛在的**領域本體論 (Domain Ontology)**：
+  - 模型本身早已具備潛在的<strong>領域本體論 (Domain Ontology)</strong>：
     - **在金融領域：** 它早已熟知帳戶需要交易原子性 (ACID)、多因子認證與反洗錢稽核日誌。
     - **在電商與外送領域：** 它深刻理解多方拆帳分潤、地理圍欄 (Geofencing)、尖峰動態加價與訂單取消退款政策。
-* **「即時領域顧問」的工程優勢 (The Instant Domain Advisor):**
+* <strong>「即時領域顧問」的工程優勢 (The Instant Domain Advisor):</strong>
   - **發掘內隱需求：** 能主動提點初階工程師經常遺漏的產業標準極端邊界（如：折價券洗單防弊、冷鏈溫控門檻）。
   - **極速工程鷹架：** 數秒內將口語訪談逐字稿轉化為 Given-When-Then 故事與 UML 候選實體。
 
@@ -1847,7 +1847,7 @@ AI 能提供強大推力，但唯有人類工程師能承擔法律、倫理與�
 <!-- _class: lead -->
 <!-- header: '3.7 課程總結與參考文獻' -->
 
-# **3.7 觀念總結與經典文獻 (Recap & References)**
+# <strong>3.7 觀念總結與經典文獻 (Recap & References)</strong>
 
 > "Requirements are the bridge between human intention and digital reality."  
 > 「需求是連結人類意圖與數位現實的永恆橋樑。」

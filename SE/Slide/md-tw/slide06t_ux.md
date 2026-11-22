@@ -109,7 +109,7 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
   - 看到門把下意識用力拉，門卻紋風不動——瞬間讓人感到**尷尬、丟臉、懷疑自己，甚至惱怒生氣**。
   - Don Norman 指出：**這絕不是使用者的錯，而是糟糕的設計**違背了人類的本能反應！
 * **從一扇門帶出 UX（使用者體驗）的核心價值：**
-  - *「當一扇日常大門還需要貼上『**請用推的 (PUSH)**』字條時，這個設計本身就失敗了。」* —— Don Norman
+  - *「當一扇日常大門還需要貼上『<strong>請用推的 (PUSH)</strong>』字條時，這個設計本身就失敗了。」* —— Don Norman
   - 軟體介面同樣充滿「數位諾曼門」：好的 **UX 設計**讓視覺線索契合人類直覺，讓使用者感到**順暢與被尊重**，而非受挫生氣。
 
 
@@ -177,7 +177,7 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 ---
 ## 不良設計原型 (1)：「夜市擺攤風」的感官超載
 
-> **「夜市擺攤風」(Arngren-Style Overload)：** 將數百項商品、閃爍跑馬燈與衝突連結全部硬塞進單一畫面，毫無視覺階層。
+> <strong>「夜市擺攤風」(Arngren-Style Overload)：</strong> 將數百項商品、閃爍跑馬燈與衝突連結全部硬塞進單一畫面，毫無視覺階層。
 
 <div class="split73">
 <div class="left">
@@ -213,7 +213,7 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 ---
 ## 不良設計原型 (2)：「油漆不用錢」的色彩對比災難
 
-> **「油漆不用錢」原型：** 濫用衝突刺眼的配色、波紋背景與浮雕陰影，徹底摧毀易讀性與專業品牌信賴感。
+> <strong>「油漆不用錢」原型：</strong> 濫用衝突刺眼的配色、波紋背景與浮雕陰影，徹底摧毀易讀性與專業品牌信賴感。
 
 <div class="split73">
 <div class="left">
@@ -249,7 +249,7 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 ---
 ## 不良設計原型 (3)：「不知從何下手」的導覽與行寬失控
 
-> **「不知從何下手」原型：** 滿螢幕充斥著數十個尺寸相同、未分主次的按鈕與超寬文字段落，缺乏明確的行動呼籲 (CTA)。
+> <strong>「不知從何下手」原型：</strong> 滿螢幕充斥著數十個尺寸相同、未分主次的按鈕與超寬文字段落，缺乏明確的行動呼籲 (CTA)。
 
 <div class="split73">
 <div class="left">
@@ -327,11 +327,11 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 ## 案例剖析：工程師後端思維 vs. 使用者心智模型
 
 * **第一版緊急上線為何讓民眾找不到？（以系統實作驅動 UI 的反模式）：**
-  - **遷就後端認證模組（康威定律）：** 因為買口罩需要實名登入，工程師直接把功能掛在已經有登入機制的 **2 號「健康存摺」** 內，完全違背民眾對「存摺＝查就醫紀錄」的認知。
-  - **誤導性的示能線索 (False Signifier)：** **1 號「口罩查詢」** 畫著戴口罩的圖示，吸引無數民眾誤點進入死胡同；頂部紅字跑馬燈看起來像純文字廣告，看不出可以點擊。
+  - **遷就後端認證模組（康威定律）：** 因為買口罩需要實名登入，工程師直接把功能掛在已經有登入機制的 <strong>2 號「健康存摺」</strong> 內，完全違背民眾對「存摺＝查就醫紀錄」的認知。
+  - **誤導性的示能線索 (False Signifier)：** <strong>1 號「口罩查詢」</strong> 畫著戴口罩的圖示，吸引無數民眾誤點進入死胡同；頂部紅字跑馬燈看起來像純文字廣告，看不出可以點擊。
   - **視覺規格不一致：** 圓形、長方形存摺、立體書本混雜，缺乏統一網格與階層。
 * **改版後如何解決問題？（以使用者目標驅動的九宮格重構）：**
-  - **核心任務直接浮出表面：** 將 **「eMask 口罩預購」**、**「History 購買紀錄」** 與 **「Mask Map 口罩地圖」** 三大防疫任務直接獨立拉到最上排第一層。
+  - **核心任務直接浮出表面：** 將 <strong>「eMask 口罩預購」</strong>、<strong>「History 購買紀錄」</strong> 與 <strong>「Mask Map 口罩地圖」</strong> 三大防疫任務直接獨立拉到最上排第一層。
   - **標準化視覺與雙語標籤：** 統一採用圓形圖示與整齊九宮格，並加上中英雙語標示，讓使用者一秒找到目標。
 
 <!--
@@ -358,15 +358,15 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
 <div class="split73">
 <div class="left">
 
-- **缺乏系統思考 (Lack of Systems Thinking)**
+- <strong>缺乏系統思考 (Lack of Systems Thinking)</strong>
   - 只有模組思考；功能疊床架屋、來一個做一個 (Patchwork Construction)
-- **缺乏使用者思考 (Lack of User Thinking)**
+- <strong>缺乏使用者思考 (Lack of User Thinking)</strong>
   - 沉溺於後端架構與資料結構，忽略使用者的核心目標
-- **缺乏同理心思考 (Lack of Empathic Thinking)**
-- **缺乏使用者研究與需求分析 (Lack of User Research)**
-- **沒有設計就施工 (Lack of Prior Design)**
+- <strong>缺乏同理心思考 (Lack of Empathic Thinking)</strong>
+- <strong>缺乏使用者研究與需求分析 (Lack of User Research)</strong>
+- <strong>沒有設計就施工 (Lack of Prior Design)</strong>
   - 跳過互動規劃與原型設計，直接寫程式硬幹
-- **缺乏測試、反饋與迭代修正 (Lack of Testing & Iteration)**
+- <strong>缺乏測試、反饋與迭代修正 (Lack of Testing & Iteration)</strong>
   - 未經完整易用性測試與使用者回饋便直接上線
 
 </div>
@@ -511,8 +511,8 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 
 某醫院重新設計自助報到機，為追求「極簡風 UI」，將 `「確認報到」` 設計成無邊框、無陰影的純灰字標籤。雖觸控螢幕**可以**感應點擊，卻有 **75% 的年長病患卡住**不知按哪裡。依 **Don Norman** 理論，此設計最核心的缺失為何？
 
-- **A.** **缺乏預設用途 (Affordance)**；觸控螢幕硬體底層缺乏感應手指輕觸文字區塊的物理偵測能力。
-- **B.** **缺乏意符 (Signifier)**；系統雖支援點擊，但欠缺邊框、立體陰影或對比色等可感知的視覺線索。
+- **A.** <strong>缺乏預設用途 (Affordance)</strong>；觸控螢幕硬體底層缺乏感應手指輕觸文字區塊的物理偵測能力。
+- **B.** <strong>缺乏意符 (Signifier)</strong>；系統雖支援點擊，但欠缺邊框、立體陰影或對比色等可感知的視覺線索。
 - **C.** **使用者教育訓練不足**；醫院應在自助報到機螢幕旁張貼字體放大的紙本操作步驟說明海報以引導病患。
 - **D.** **後端系統模型延遲**；掛號資料庫的交易查詢架構過於繁瑣，必須導入快取機制以加速畫面渲染回應。
 
@@ -607,7 +607,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 ## NS01: 系統狀態可見度 (Visibility of System Status)
 
 * **啟發原則定義：**
-  > 「系統應在**合理的時間內**，透過**適當的回饋 (Feedback)**，始終**讓使用者明確掌握**當前正在發生什麼事。」
+  > 「系統應在**合理的時間內**，透過<strong>適當的回饋 (Feedback)</strong>，始終**讓使用者明確掌握**當前正在發生什麼事。」
 * **核心互動設計模式：**
   - **即時觸控回饋：** 按鈕點擊時的下沉態、微動效波紋（Ripple Effect），立即向使用者確認「輸入已被系統接收」。
   - **進度透明化：** 顯示具備確切百分比的進度條（%）、結帳步驟指示器（1. 購物車 &rarr; 2. 配送資訊 &rarr; 3. 付款）。
@@ -724,7 +724,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
   - ❌ *「Transaction Exception 403: Acquirer socket connection timed out.」*
   - 使用者陷入焦慮：*「我的信用卡到底刷過了沒？」*
 * **以人為本的日常語言（優良設計）：**
-  - ✅ **安心狀態確認：** 明確告知「**尚未完成扣款 (couldn't complete the charge)**」。
+  - ✅ **安心狀態確認：** 明確告知「<strong>尚未完成扣款 (couldn't complete the charge)</strong>」。
   - ✅ **生活化詞彙：** 以「目前付款通道繁忙」取代網路連線逾時術語。
   - ✅ **清楚下一步：** 提供直覺按鈕（**`重試付款`** 或 **`改用其他信用卡`**）。
 
@@ -831,7 +831,7 @@ UX 則掌管整趟旅程的心理感受：我花了多久才把帳單繳完？�
 ## NS03: 使用者控制與自由度 (User Control & Freedom)
 
 * **啟發原則定義：**
-  > 「使用者常因**誤操作**而誤入非預期的功能狀態，此時需要一個清晰標示的『**緊急出口 (Emergency Exit)**』，讓他們能**迅速脫離該狀態**，而不需經歷冗長的對話流程。」
+  > 「使用者常因**誤操作**而誤入非預期的功能狀態，此時需要一個清晰標示的『<strong>緊急出口 (Emergency Exit)</strong>』，讓他們能**迅速脫離該狀態**，而不需經歷冗長的對話流程。」
 * **必備的工程實踐模式：**
   - **全域復原 / 重做 (Universal Undo / Redo)：** 編輯器、畫布工具及破壞性狀態變更均應全面支援 `Ctrl+Z` / `Cmd+Z`。
   - **清晰的取消出口：** 彈跳視窗（Modals）、檔案上傳與批次處理中，必須提供高對比、易於點擊的「取消 (Cancel)」按鈕。
@@ -1259,7 +1259,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ## NS07: 彈性與使用效率 (Flexibility & Efficiency of Use)
 
 * **啟發原則定義：**
-  > 「**加速器 (Accelerators)**（新手使用者看不見）通常能**大幅加快資深專家的操作速度**，讓系統能**同時兼顧並滿足毫無經驗的生手與熟練的高手**。」
+  > 「**加速器 (Accelerators)<strong>（新手使用者看不見）通常能</strong>大幅加快資深專家的操作速度**，讓系統能**同時兼顧並滿足毫無經驗的生手與熟練的高手**。」
 * **雙軌互動設計哲學 (Dual-Track Interaction)：**
   - **生手路徑 (Novice Path)：** 引導式圖形選單、功能導覽精靈、大按鈕與詳盡的文字解說。
   - **高手加速器 (Expert Accelerators)：** 全域快捷鍵 (`Cmd+K` / `Ctrl+K` 命令面板)、多指觸控手勢、可重用的巨集指令與批次處理。
@@ -1696,7 +1696,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 ---
 ## 雙人實戰討論：日常系統之 NS01–NS10 啟發式體檢 (30 分鐘)
 
-> **課堂任務（⏱️ 30 分鐘）：** 請兩人一組，從下方任選一個熟悉的系統，**製作投影片（含真實截圖標註）**，具體說明該系統有哪些設計 **符合 (✅)**、又有哪些 **違反 (❌)** `NS01–NS10`。
+> **課堂任務（⏱️ 30 分鐘）：** 請兩人一組，從下方任選一個熟悉的系統，<strong>製作投影片（含真實截圖標註）</strong>，具體說明該系統有哪些設計 <strong>符合 (✅)</strong>、又有哪些 <strong>違反 (❌)</strong> `NS01–NS10`。
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -1742,7 +1742,7 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 <!-- _class: lead -->
 <!-- header: '6.3 Tidwell 介面設計模式' -->
 
-# **6.3 Jenifer Tidwell 介面設計模式 (Interaction & UI Patterns)**
+# <strong>6.3 Jenifer Tidwell 介面設計模式 (Interaction & UI Patterns)</strong>
 
 > "Patterns are not off-the-shelf components that you plug into a layout. They are living architectural blueprints rooted in human perception, habit, and behavior."  
 > *(設計模式並非可隨意拼裝的現成零件，而是植根於人類感知、習慣與心理機制的活體架構藍圖。)*  
@@ -1771,20 +1771,20 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 <div class="card" data-marpit-fragment>
 
 ### 1. 為什麼工程團隊需要 UI 模式？
-- **建立跨職能通用語彙 (Shared Vocabulary)**：
+- <strong>建立跨職能通用語彙 (Shared Vocabulary)</strong>：
   - 產品經理、UI 設計師與前後端工程師能精準溝通（如：「這裡採 Two-Panel Split View 還是 One-Window Drilldown？」）。
-- **杜絕重複造輪子 (Proven Solutions)**：
+- <strong>杜絕重複造輪子 (Proven Solutions)</strong>：
   - 成熟的互動問題（如逃生出口、漸進式揭露、分頁）已有最優解，不必盲目冒險。
-- **大幅降低認知負荷 (Cognitive Load)**：
+- <strong>大幅降低認知負荷 (Cognitive Load)</strong>：
   - 吻合使用者的心智模型與習慣，讓軟體操作變得自然「隱形」。
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### 2. Jenifer Tidwell 的模式體系與精選範疇
-- **先驅起源與經典著作：《Designing Interfaces》**：
+- <strong>先驅起源與經典著作：《Designing Interfaces》</strong>：
   - Tidwell 於 **1997 年** 在 MIT 發表《*Common Ground*》人機互動模式目錄（受建築學家 Christopher Alexander 1977 與 GoF 1994 啟發）。
-  - O'Reilly 權威專書《***Designing Interfaces***》歷經 **第 1 版 (2005)**、**第 2 版 (2010)** 至 **第 3 版 (2020**，與 C. Brewer、A. Valencia 合著)，橫跨桌面、Web 與行動裝置。
+  - O'Reilly 權威專書《***Designing Interfaces***》歷經 <strong>第 1 版 (2005)</strong>、<strong>第 2 版 (2010)</strong> 至 **第 3 版 (2020**，與 C. Brewer、A. Valencia 合著)，橫跨桌面、Web 與行動裝置。
 - **涵蓋 100+ 模式 ➔ 濃縮為 4 大架構維度**：
   - 全書涵蓋逾百種模式（表單、導航、畫布、資料網格）；本課程嚴選最具代表性的高影響力模式，歸納為 **4 大核心架構維度** 深入剖析。
 
@@ -1815,18 +1815,18 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 <div class="card" data-marpit-fragment>
 
 ### 維度 1 & 2：行為認知與資訊架構
-- **1. 核心使用者行為模式 (Core Behaviors)**：
+- <strong>1. 核心使用者行為模式 (Core Behaviors)</strong>：
   - 順應人類大腦的試錯探索、即時滿足、延遲抉擇、習慣化與空間記憶機制。
-- **2. 資訊架構與內容佈局 (Content & Layout)**：
+- <strong>2. 資訊架構與內容佈局 (Content & Layout)</strong>：
   - 內容發現三要素（搜尋 / 焦點精選 / 分類瀏覽）、儀表板、漸進式揭露與精靈步驟。
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### 維度 3 & 4：尋路導航與資料呈現
-- **3. 尋路機制與導航設計 (Wayfinding & Navigation)**：
+- <strong>3. 尋路機制與導航設計 (Wayfinding & Navigation)</strong>：
   - 解答「我在哪裡、如何前往、如何離開」、模態對話框與逃生出口黃金法則、三層定位體系。
-- **4. 資料呈現與集合展示 (Data Display & Lists)**：
+- <strong>4. 資料呈現與集合展示 (Data Display & Lists)</strong>：
   - 桌面端雙欄分割 vs. 行動端深入鑽取、縮圖網格、輪播卡片與真實電商平台解構。
 
 </div>
@@ -1855,26 +1855,26 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 <div class="card" data-marpit-fragment>
 
 ### 1. 試錯探索與即時反饋機制
-- **安全探索 (Safe Exploration, TW1.1)**：
+- <strong>安全探索 (Safe Exploration, TW1.1)</strong>：
   - 消除使用者的點擊恐懼！永遠提供零風險的嘗試機會與明確的復原途徑（**Undo 復原**）。
-- **即時滿足 (Instant Gratification, TW1.2)**：
+- <strong>即時滿足 (Instant Gratification, TW1.2)</strong>：
   - 直通主要目標（如電商「再次購買」按鈕），跳過繁複漏斗流程。
-- **中途變更 (Changes in Midstream, TW1.4)**：
+- <strong>中途變更 (Changes in Midstream, TW1.4)</strong>：
   - 允許使用者在流程中途直接調整參數（如高鐵查詢即時切換更早/更晚車次），無須返回重填。
-- **延遲抉擇 (Deferred Choice, TW1.5)**：
-  - 降低首次體驗門檻，非核心資料允許「**稍後再說 (Skip for now)**」。
+- <strong>延遲抉擇 (Deferred Choice, TW1.5)</strong>：
+  - 降低首次體驗門檻，非核心資料允許「<strong>稍後再說 (Skip for now)</strong>」。
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### 2. 認知負荷與記憶輔助機制
-- **增量式建構 (Incremental Construction, TW1.6)**：
+- <strong>增量式建構 (Incremental Construction, TW1.6)</strong>：
   - 一邊撰寫、一邊提供即時動態預覽（如 Overleaf/Markdown Live Preview），減輕工作記憶負荷。
-- **習慣化 (Habituation, TW1.7)**：
+- <strong>習慣化 (Habituation, TW1.7)</strong>：
   - 遵循標準介面慣例（如左側標準導覽列），培養使用者的無意識肌肉記憶。
-- **空間記憶 (Spatial Memory, TW1.9)**：
+- <strong>空間記憶 (Spatial Memory, TW1.9)</strong>：
   - 核心功能位置恆定（如右上角設定齒輪），嚴禁動態隨機漂移！
-- **前瞻記憶 (Prospective Memory, TW1.10)**：
+- <strong>前瞻記憶 (Prospective Memory, TW1.10)</strong>：
   - 透過未讀徽章、未完成標記等視覺提示，輔助使用者記住未來待辦任務。
 
 </div>
@@ -2001,26 +2001,26 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 <div class="card" data-marpit-fragment>
 
 ### 1. 內容發現三要素與空間框架
-- **內容發現三要素 (The Discovery Trifecta, TW2.1)**：
-  - **搜尋 (Search)**：針對目標明確的使用者，提供直接、意圖驅動的文字查詢。
-  - **焦點舞台 (Feature / Center Stage, TW4.2)**：系統主動推薦的核心精選，第一眼抓住眼球。
-  - **分類瀏覽 (Browse)**：針對探索型使用者，提供依類別展開的圖文瀏覽清單。
-- **儀表板 (The Dashboard, TW2.5)**：
+- <strong>內容發現三要素 (The Discovery Trifecta, TW2.1)</strong>：
+  - <strong>搜尋 (Search)</strong>：針對目標明確的使用者，提供直接、意圖驅動的文字查詢。
+  - <strong>焦點舞台 (Feature / Center Stage, TW4.2)</strong>：系統主動推薦的核心精選，第一眼抓住眼球。
+  - <strong>分類瀏覽 (Browse)</strong>：針對探索型使用者，提供依類別展開的圖文瀏覽清單。
+- <strong>儀表板 (The Dashboard, TW2.5)</strong>：
   - 高密度匯總關鍵維運指標，提供一覽無遺的全局掌握力。
-- **替代檢視 (Alternative Views, TW2.9)**：
+- <strong>替代檢視 (Alternative Views, TW2.9)</strong>：
   - 賦予使用者自主權，以偏好的形式消費同一份資料（如：地圖模式 vs. 清單模式）。
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### 2. 時間組織與複雜度控制
-- **漸進式揭露 (Progressive Disclosure)**：
+- <strong>漸進式揭露 (Progressive Disclosure)</strong>：
   - 預設保持介面極簡乾淨；唯有當使用者觸發特定編輯情境時，才揭露進階工具箱。
-- **步驟精靈 (The Wizard, TW2.7)**：
+- <strong>步驟精靈 (The Wizard, TW2.7)</strong>：
   - 將龐大、令人生畏的繁雜流程，拆解為線性、可預測的步驟導航（Step 1 → 2 → 3）。
-- **模組分頁 (Module Tabs, TW4.5)**：
+- <strong>模組分頁 (Module Tabs, TW4.5)</strong>：
   - 適用於**同層級、互斥**的資料切換（如：按主題 / 按月份 / 按頁面）。
-- **手風琴摺疊 (Accordion, TW4.6)**：
+- <strong>手風琴摺疊 (Accordion, TW4.6)</strong>：
   - 適用於**原地向下深入展開層級細節**（如 FAQ 常見問答），不跳離當前頁面。
 
 </div>
@@ -2140,18 +2140,18 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 ---
 ## Section 3：尋路機制與導航設計模式 (Wayfinding & Navigation)
 
-> **核心設計哲學：** 優秀的導航系統解答人類在數位空間的三大終極問題：**「我在哪裡？還剩多少？如何離開？」**
+> **核心設計哲學：** 優秀的導航系統解答人類在數位空間的三大終極問題：<strong>「我在哪裡？還剩多少？如何離開？」</strong>
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
 ### 1. 入口識別與模態逃生黃金法則
-- **明確進入點 (Clear Entry Points, TW3.1)**：
+- <strong>明確進入點 (Clear Entry Points, TW3.1)</strong>：
   - 清晰的第一道起跑線（如首頁顯著的「登入」或行動號召大按鈕），消除觀望猶豫。
-- **身分管理工具 (Sign-in Tools, TW3.9)**：
+- <strong>身分管理工具 (Sign-in Tools, TW3.9)</strong>：
   - 個人檔案、組織切換與登出選單，固定於右上角習慣化位置（Habitual Placement）。
-- **模態視窗的黃金法則 (The Golden Rule of Modals)**：
-  - 當以**強制回應面板 (Modal Panels / Forced Response, TW3.4)** 鎖定使用者專注力時：
+- <strong>模態視窗的黃金法則 (The Golden Rule of Modals)</strong>：
+  - 當以<strong>強制回應面板 (Modal Panels / Forced Response, TW3.4)</strong> 鎖定使用者專注力時：
   - **必須無條件設計逃生出口 (Escape Hatches, TW3.6)！**
   - **右上角的「✕ 關閉按鈕」與「確定送出」按鈕同等重要！** 嚴禁讓使用者陷入無路可退的死胡同。
 
@@ -2159,11 +2159,11 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 <div class="card" data-marpit-fragment>
 
 ### 2. 三層次空間與進度感知定位體系
-- **頂層流程進度 (Progress Indicators, TW3.10)**：
+- <strong>頂層流程進度 (Progress Indicators, TW3.10)</strong>：
   - 針對線性、多步驟的任務流程，以編號節點（1 → 2 → 3 → 4）清楚標示「還剩多少步」。
-- **中層階層定位 (Breadcrumbs, TW3.11)**：
+- <strong>中層階層定位 (Breadcrumbs, TW3.11)</strong>：
   - 針對深層樹狀結構的資訊架構（如：`學年度 > 學院 > 系所 > 課程`），提供可點擊回溯的麵包屑軌跡。
-- **底層長頁面定位 (Annotated Scrollbar, TW3.12)**：
+- <strong>底層長頁面定位 (Annotated Scrollbar, TW3.12)</strong>：
   - 針對超長單頁海量資料（如通訊錄、日誌），在捲軸邊緣標註字母索引或視覺錨點，支援極速滑動跳轉。
 
 </div>
@@ -2268,10 +2268,10 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 <div class="card" data-marpit-fragment>
 
 ### 1. 跨裝置響應式清單架構
-- **桌面寬螢幕：雙欄分割檢視 (Two-Panel Split View, TW7.1)**：
+- <strong>桌面寬螢幕：雙欄分割檢視 (Two-Panel Split View, TW7.1)</strong>：
   - 左側維持長駐清單，右側同步呈現詳細內容（如 Slack、Outlook）。
   - **核心價值**：徹底消除在清單頁與細節頁之間的來回往返跳轉。
-- **行動窄螢幕：單視窗深入鑽取 (One-Window Drilldown, TW7.2)**：
+- <strong>行動窄螢幕：單視窗深入鑽取 (One-Window Drilldown, TW7.2)</strong>：
   - 窄螢幕下清單被詳細內容完全覆蓋替換（如 iOS Mail）。
   - **核心要求**：左上角必須強制配置醒目的返回鍵（Back button）。
 
@@ -2279,11 +2279,11 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 <div class="card" data-marpit-fragment>
 
 ### 2. 空間壓縮與視覺掃描模式
-- **縮圖網格 (Thumbnail Grid, TW7.5)**：
+- <strong>縮圖網格 (Thumbnail Grid, TW7.5)</strong>：
   - 「小而多」的高密度排列（如相簿網格），最適化人眼的高速視覺比對與掃描。
-- **輪播切換 (Carousel, TW7.6)**：
+- <strong>輪播切換 (Carousel, TW7.6)</strong>：
   - 將多張大型圖片或卡片壓縮在單一水平視窗內，必須具備明確的方向性操作線索（左右箭頭與導航圓點）。
-- **分頁控制 (Pagination, TW7.7)**：
+- <strong>分頁控制 (Pagination, TW7.7)</strong>：
   - 將海量資料切分為可控批次，避免單頁記憶體爆量與無限捲動疲勞。
 
 </div>
@@ -2368,11 +2368,11 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 <div class="card" data-marpit-fragment>
 
 ### 1. 三大核心設計承諾 (The 3 Mandates)
-- **建立親近感 (Build Familiarity)**：
+- <strong>建立親近感 (Build Familiarity)</strong>：
   - 善用習慣化 (Habituation) 與通用慣例，讓使用者首次進入系統便能無師自通。
-- **降低認知負荷 (Reduce Cognitive Load)**：
+- <strong>降低認知負荷 (Reduce Cognitive Load)</strong>：
   - 以漸進式揭露、分部精靈與空間記憶，讓畫面在任何瞬間都只呈現關鍵資訊。
-- **賦權使用者 (Empower the User)**：
+- <strong>賦權使用者 (Empower the User)</strong>：
   - 永遠提供逃生出口 (Escape Hatch)、撤銷復原 (Undo) 與多維檢視，讓使用者擁有絕對掌控權。
 
 </div>
@@ -2446,7 +2446,7 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 <!-- _class: lead -->
 <!-- header: '6.4 AI for UX (AI4UX)' -->
 
-# **6.4 AI 賦能 UX 設計：AI for UX (AI4UX)**
+# <strong>6.4 AI 賦能 UX 設計：AI for UX (AI4UX)</strong>
 
 > "AI will not replace UX designers, but UX designers who use AI will replace those who do not."  
 > *(AI 不會取代 UX 設計師，但善用 AI 的 UX 設計師將會取代不用 AI 的人。)*
@@ -2589,7 +2589,7 @@ Format：要求輸出為四欄表格並帶有嚴重度分數。
 <!-- _class: lead -->
 <!-- header: '6.5 UX for AI (UX4AI)' -->
 
-# **6.5 為 AI 打造卓越體驗：UX for AI (UX4AI)**
+# <strong>6.5 為 AI 打造卓越體驗：UX for AI (UX4AI)</strong>
 
 > "The hardest part of building AI products is not training the model—it is designing the interface that makes probabilistic intelligence understandable, steerable, and trustworthy."  
 > *(打造 AI 產品最困難的部分從來不是訓練模型——而是設計出能讓機率性智慧變得好懂、可控且值得信賴的互動介面。)*
@@ -2801,7 +2801,7 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
   - **斜線指令 (Slash Commands)：** 透過鍵盤輸入 `/explain`、`/refactor`、`/fix-tests`，讓高手免於冗長的口語打字。
   - **多模態拖曳輸入：** 支援將螢幕截圖、報表 PDF 或錯誤日誌直接拖入對話框中進行即時分析。
 * **AI + NS10 (可解釋性 AI / Explainable AI - XAI)：**
-  - **「為什麼給出這個答案？」：** 提供情境微提示，說明此回答引用了哪幾篇知識庫文件或哪一條提示詞規範。
+  - <strong>「為什麼給出這個答案？」：</strong> 提供情境微提示，說明此回答引用了哪幾篇知識庫文件或哪一條提示詞規範。
   - **信心指數與模型透明度：** 清楚揭露當前運行的模型版本與預測信心水準評估。
 
 <!--
@@ -2844,7 +2844,7 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 <div class="ccq-columns">
   <div class="ccq-text">
 
-當設計一個具備讀取檔案目錄、修改專案原始碼與執行 Shell 終端機指令的自主 AI 寫程式代理人時，下列哪一項互動設計模式最能完整落實**防錯機制 (NS05)** 與 **使用者自主權 (NS03)**？
+當設計一個具備讀取檔案目錄、修改專案原始碼與執行 Shell 終端機指令的自主 AI 寫程式代理人時，下列哪一項互動設計模式最能完整落實<strong>防錯機制 (NS05)</strong> 與 <strong>使用者自主權 (NS03)</strong>？
 
 - **A.** 允許代理人在背景靜默執行所有檔案刪除與終端機指令，以避免打擾使用者。
 - **B.** 在執行高風險檔案修改或終端機指令前，強制要求人類工程師進行審查確認並提供 Diff 預覽。
@@ -2974,12 +2974,12 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 
 以下為核心概念的標準解答：
 
-* **1.** 一扇裝著拉手但實際上必須用推的才能打開的門，在人機互動界被著名地稱為 **諾曼 (Norman)** 門。
-* **2.** **雅各布 (Jakob's)** 定律指出，使用者絕大部分時間都在別人的網站上，因此預期你的系統遵循通用慣例。
-* **3.** 尼爾森原則中的 **NS05: 防錯設計 (Error Prevention)** 主張，事前防範錯誤發生遠比事後提供優良錯誤訊息更有價值。
+* **1.** 一扇裝著拉手但實際上必須用推的才能打開的門，在人機互動界被著名地稱為 <strong>諾曼 (Norman)</strong> 門。
+* **2.** <strong>雅各布 (Jakob's)</strong> 定律指出，使用者絕大部分時間都在別人的網站上，因此預期你的系統遵循通用慣例。
+* **3.** 尼爾森原則中的 <strong>NS05: 防錯設計 (Error Prevention)</strong> 主張，事前防範錯誤發生遠比事後提供優良錯誤訊息更有價值。
 * **4.** 專為設計師量身定制的結構化提示詞工程框架，包含角色、任務、約束與格式，其英文縮寫為 **RTCF**。
 * **5.** 在 AI 產品介面中，提供串流文字輸出與可折疊思考過程，完美體現了原則 **NS01**：系統狀態可見度。
-* **6.** 在尼爾森嚴重度評級中，會徹底阻斷任務進行、必須在發布前強制修復的缺陷被評為 **4 (災難級)**。
+* **6.** 在尼爾森嚴重度評級中，會徹底阻斷任務進行、必須在發布前強制修復的缺陷被評為 <strong>4 (災難級)</strong>。
 
 <!--
 解答揭曉：

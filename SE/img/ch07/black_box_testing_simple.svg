@@ -1,137 +1,73 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 450" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 460" width="100%" height="100%">
   <defs>
     <style>
-      .title-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: 800; fill: #0f172a; }
-      .label-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 700; }
-      .sub-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 9.5px; font-weight: 600; fill: #475569; }
-      .code-pill { font-family: "Fira Code", monospace; font-size: 10px; font-weight: 700; }
+      .box-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; font-weight: 800; text-anchor: middle; }
+      .box-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .pill-text { font-family: "Fira Code", "Consolas", monospace; font-size: 12px; font-weight: 800; text-anchor: middle; }
     </style>
-    <marker id="arr-blue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7" />
+    <marker id="bb-arr-blue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" />
     </marker>
-    <marker id="arr-green" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669" />
+    <marker id="bb-arr-green" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#059669" />
     </marker>
-    <marker id="arr-slate" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#64748b" />
-    </marker>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08" />
+    <filter id="bb-shadow" x="-6%" y="-6%" width="112%" height="114%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.1" />
     </filter>
   </defs>
 
-  <!-- 1. LEFT CARD: TEST INPUT DOMAIN (x=16..150) -->
-  <g transform="translate(16, 24)">
-    <rect width="134" height="402" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8" filter="url(#shadow)" />
-    <rect width="134" height="6" rx="3" fill="#0284c7" />
-    <text x="67" y="28" class="title-text" fill="#0369a1" text-anchor="middle">Test Inputs (x)</text>
+  <!-- 1. TOP CARD: TEST INPUTS (EP & BVA) -->
+  <g transform="translate(24, 14)" filter="url(#bb-shadow)">
+    <rect width="332" height="108" rx="14" fill="#ffffff" stroke="#0284c7" stroke-width="2.2" />
+    <rect width="332" height="8" rx="4" fill="#0284c7" />
+    <text x="166" y="34" class="box-title" fill="#0b3c5d">1. Test Inputs (x)</text>
+    <text x="166" y="54" class="box-sub">Sampled from Specification Domain</text>
 
-    <!-- Valid Inputs -->
-    <rect x="10" y="44" width="114" height="74" rx="8" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.2" />
-    <text x="20" y="62" class="label-text" fill="#0369a1">1. Valid Inputs</text>
-    <text x="20" y="78" class="sub-text">Nominal equivalence</text>
-    <rect x="20" y="86" width="94" height="22" rx="4" fill="#ffffff" stroke="#7dd3fc" stroke-width="1" />
-    <text x="67" y="101" class="code-pill" fill="#0284c7" text-anchor="middle">age = 25 (User)</text>
+    <!-- 3 Clean Input Pills -->
+    <rect x="16" y="66" width="92" height="28" rx="7" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.4" />
+    <text x="62" y="84" class="pill-text" fill="#0369a1">Valid (EP)</text>
 
-    <!-- Boundary Inputs -->
-    <rect x="10" y="130" width="114" height="88" rx="8" fill="#fefce8" stroke="#fef08a" stroke-width="1.2" />
-    <text x="20" y="148" class="label-text" fill="#b45309">2. Boundaries</text>
-    <text x="20" y="164" class="sub-text">Edge extreme points</text>
-    <rect x="20" y="172" width="94" height="20" rx="4" fill="#ffffff" stroke="#fde047" stroke-width="1" />
-    <text x="67" y="186" class="code-pill" fill="#b45309" text-anchor="middle">min=1, max=100</text>
-    <rect x="20" y="194" width="94" height="18" rx="4" fill="#ffffff" stroke="#fde047" stroke-width="1" />
-    <text x="67" y="207" class="code-pill" fill="#b45309" text-anchor="middle">min+, max-</text>
+    <rect x="120" y="66" width="92" height="28" rx="7" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.4" />
+    <text x="166" y="84" class="pill-text" fill="#b45309">Edge (BVA)</text>
 
-    <!-- Invalid Inputs -->
-    <rect x="10" y="230" width="114" height="88" rx="8" fill="#fff1f2" stroke="#fecdd3" stroke-width="1.2" />
-    <text x="20" y="248" class="label-text" fill="#e11d48">3. Invalid Inputs</text>
-    <text x="20" y="264" class="sub-text">Defensive robustness</text>
-    <rect x="20" y="272" width="94" height="20" rx="4" fill="#ffffff" stroke="#fda4af" stroke-width="1" />
-    <text x="67" y="286" class="code-pill" fill="#e11d48" text-anchor="middle">age = -1, 101</text>
-    <rect x="20" y="294" width="94" height="18" rx="4" fill="#ffffff" stroke="#fda4af" stroke-width="1" />
-    <text x="67" y="307" class="code-pill" fill="#e11d48" text-anchor="middle">null, "abc"</text>
-
-    <!-- Input Badge -->
-    <rect x="10" y="332" width="114" height="54" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2" />
-    <text x="67" y="352" class="label-text" fill="#475569" text-anchor="middle">Sampling Strategy</text>
-    <text x="67" y="372" class="code-pill" fill="#0b3c5d" text-anchor="middle">BVA + EP Focus</text>
+    <rect x="224" y="66" width="92" height="28" rx="7" fill="#ffe4e6" stroke="#f43f5e" stroke-width="1.4" />
+    <text x="270" y="84" class="pill-text" fill="#be123c">Invalid</text>
   </g>
 
-  <!-- Input Arrow into SUT -->
-  <path d="M 152 225 L 186 225" stroke="#0284c7" stroke-width="2.6" marker-end="url(#arr-blue)" />
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 190 124 L 190 156" stroke="#0284c7" stroke-width="3.5" marker-end="url(#bb-arr-blue)" />
 
-  <!-- 2. CENTER: THE OPAQUE BLACK BOX (x=190..350) -->
-  <g transform="translate(190, 80)">
-    <!-- Black Box Cube -->
-    <rect width="160" height="290" rx="14" fill="#0f172a" stroke="#334155" stroke-width="2.5" filter="url(#shadow)" />
-    
-    <!-- Header Accent -->
-    <rect x="14" y="16" width="132" height="26" rx="6" fill="#1e293b" />
-    <text x="80" y="33" class="label-text" fill="#38bdf8" text-anchor="middle">SYSTEM UNDER TEST</text>
+  <!-- 2. MIDDLE CARD: OPAQUE BLACK BOX SUT -->
+  <g transform="translate(24, 162)" filter="url(#bb-shadow)">
+    <rect width="332" height="136" rx="16" fill="#0f172a" stroke="#334155" stroke-width="2.5" />
+    <!-- Lock Icon on Left -->
+    <circle cx="66" cy="68" r="34" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+    <rect x="53" y="64" width="26" height="20" rx="4" fill="#38bdf8" />
+    <path d="M 58 64 L 58 55 C 58 47, 74 47, 74 55 L 74 64" fill="none" stroke="#38bdf8" stroke-width="3" />
+    <text x="66" y="118" font-family="monospace" font-size="11" font-weight="800" fill="#f43f5e" text-anchor="middle">CODE HIDDEN</text>
 
-    <!-- Core Title -->
-    <text x="80" y="72" class="title-text" fill="#ffffff" font-size="18px" text-anchor="middle">"Black Box"</text>
-    
-    <!-- Lock Shield Icon -->
-    <circle cx="80" cy="116" r="28" fill="#1e293b" stroke="#38bdf8" stroke-width="1.8" />
-    <rect x="69" y="108" width="22" height="16" rx="3" fill="#38bdf8" />
-    <path d="M 73 108 L 73 101 C 73 96 87 96 87 101 L 87 108" fill="none" stroke="#38bdf8" stroke-width="2.5" />
-
-    <!-- Implementation Hidden Callout -->
-    <rect x="14" y="160" width="132" height="48" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1" />
-    <text x="80" y="178" class="label-text" fill="#94a3b8" text-anchor="middle">INTERNAL CODE</text>
-    <text x="80" y="196" class="code-pill" fill="#f43f5e" text-anchor="middle">STRUCTURE HIDDEN</text>
-
-    <!-- Contract Principle -->
-    <rect x="14" y="220" width="132" height="52" rx="6" fill="#0284c7" fill-opacity="0.15" stroke="#0284c7" stroke-width="1.2" />
-    <text x="80" y="238" class="label-text" fill="#38bdf8" text-anchor="middle">Focus on WHAT,</text>
-    <text x="80" y="256" class="label-text" fill="#e2e8f0" text-anchor="middle">Not HOW it is coded</text>
+    <!-- Text on Right -->
+    <text x="214" y="44" class="box-title" fill="#ffffff" font-size="18">2. System Under Test</text>
+    <text x="214" y="68" font-family="sans-serif" font-size="14" font-weight="800" fill="#38bdf8" text-anchor="middle">Opaque "Black Box"</text>
+    <rect x="118" y="82" width="192" height="34" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.4" />
+    <text x="214" y="103" class="pill-text" fill="#e2e8f0">Tests WHAT, Not HOW</text>
   </g>
 
-  <!-- Output Arrow from SUT -->
-  <path d="M 352 180 L 388 180" stroke="#059669" stroke-width="2.6" marker-end="url(#arr-green)" />
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 190 300 L 190 332" stroke="#059669" stroke-width="3.5" marker-end="url(#bb-arr-green)" />
 
-  <!-- Specification Oracle Top Arrow -->
-  <path d="M 152 75 L 388 75" stroke="#64748b" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#arr-slate)" />
-  <rect x="230" y="62" width="100" height="22" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
-  <text x="280" y="77" class="code-pill" fill="#475569" text-anchor="middle">Spec Contract</text>
+  <!-- 3. BOTTOM CARD: TEST ORACLE VERIFICATION -->
+  <g transform="translate(24, 338)" filter="url(#bb-shadow)">
+    <rect width="332" height="108" rx="14" fill="#ffffff" stroke="#059669" stroke-width="2.2" />
+    <rect width="332" height="8" rx="4" fill="#059669" />
+    <text x="166" y="34" class="box-title" fill="#065f46">3. Test Oracle Check</text>
+    <text x="166" y="54" class="box-sub">Actual Output (y) == Expected Spec (y*)</text>
 
-  <!-- 3. RIGHT CARD: TEST ORACLE VERIFICATION (x=392..526) -->
-  <g transform="translate(392, 24)">
-    <rect width="134" height="402" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8" filter="url(#shadow)" />
-    <rect width="134" height="6" rx="3" fill="#059669" />
-    <text x="67" y="28" class="title-text" fill="#047857" text-anchor="middle">Verification</text>
+    <!-- Pass vs Fail Badges -->
+    <rect x="28" y="66" width="128" height="28" rx="7" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5" />
+    <text x="92" y="84" class="pill-text" fill="#15803d">✓ Match: PASS</text>
 
-    <!-- Expected Output Box -->
-    <rect x="10" y="44" width="114" height="68" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" />
-    <text x="20" y="62" class="label-text" fill="#334155">Expected Output (y*)</text>
-    <text x="20" y="78" class="sub-text">From Requirements</text>
-    <rect x="20" y="84" width="94" height="20" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="1" />
-    <text x="67" y="98" class="code-pill" fill="#0f172a" text-anchor="middle">"VALID_USER"</text>
-
-    <!-- Actual Output Box -->
-    <rect x="10" y="126" width="114" height="68" rx="8" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="1.2" />
-    <text x="20" y="144" class="label-text" fill="#047857">Actual Output (y)</text>
-    <text x="20" y="160" class="sub-text">Observed from SUT</text>
-    <rect x="20" y="166" width="94" height="20" rx="4" fill="#ffffff" stroke="#86efac" stroke-width="1" />
-    <text x="67" y="180" class="code-pill" fill="#15803d" text-anchor="middle">"VALID_USER"</text>
-
-    <!-- Comparator Oracle -->
-    <rect x="10" y="210" width="114" height="88" rx="8" fill="#f8fafc" stroke="#059669" stroke-width="1.5" />
-    <text x="67" y="230" class="label-text" fill="#047857" text-anchor="middle">TEST ORACLE</text>
-    <line x1="20" y1="240" x2="114" y2="240" stroke="#cbd5e1" stroke-width="1" />
-    <text x="67" y="258" class="code-pill" fill="#0369a1" text-anchor="middle">assert(y* == y)</text>
-    
-    <rect x="18" y="268" width="98" height="22" rx="4" fill="#dcfce7" stroke="#22c55e" stroke-width="1" />
-    <text x="67" y="283" class="code-pill" fill="#15803d" text-anchor="middle">assertEquals()</text>
-
-    <!-- Result Badges -->
-    <rect x="10" y="312" width="114" height="38" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1.2" />
-    <text x="26" y="336" font-family="sans-serif" font-size="14px" font-weight="900" fill="#15803d">✓</text>
-    <text x="46" y="335" class="label-text" fill="#15803d">Match → PASS</text>
-
-    <rect x="10" y="358" width="114" height="38" rx="6" fill="#ffe4e6" stroke="#fca5a5" stroke-width="1.2" />
-    <text x="26" y="382" font-family="sans-serif" font-size="14px" font-weight="900" fill="#e11d48">✗</text>
-    <text x="46" y="381" class="label-text" fill="#e11d48">Diff → BUG!</text>
+    <rect x="176" y="66" width="128" height="28" rx="7" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5" />
+    <text x="240" y="84" class="pill-text" fill="#b91c1c">✗ Diff: FAIL</text>
   </g>
 </svg>

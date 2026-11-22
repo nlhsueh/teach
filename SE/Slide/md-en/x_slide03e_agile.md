@@ -181,9 +181,9 @@ Feng Chia University
 
 * Why did **Agile development methods** emerge to replace traditional plan-driven approaches?
 * What are the four core values of the **Agile Manifesto**?
-* What are the key practices of **Extreme Programming (XP)**?
+* What are the key practices of <strong>Extreme Programming (XP)</strong>?
 * How are requirements captured using **User Stories** and **Task Cards**?
-* What is **Test-Driven Development (TDD)** and why is **Refactoring** critical?
+* What is <strong>Test-Driven Development (TDD)</strong> and why is **Refactoring** critical?
 * How does **Scrum** manage iterative development through roles, artifacts, and sprints?
 
 ---
@@ -593,7 +593,7 @@ Test your understanding of the core concepts in this chapter:
 Here are the completed concepts:
 
 1. The Agile Manifesto values **working software** over comprehensive **documentation**.
-2. In XP, writing automated unit tests *before* writing code is called **test-first (or TDD)** development.
+2. In XP, writing automated unit tests *before* writing code is called <strong>test-first (or TDD)</strong> development.
 3. Code **refactoring** involves continuously restructuring existing code without altering its external behavior.
 4. In Scrum, the **Product** Backlog contains the prioritized list of all features and requirements for the project.
 

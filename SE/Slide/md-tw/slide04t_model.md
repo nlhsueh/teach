@@ -214,7 +214,7 @@ Ian Sommerville 教授將塑模定義為建立抽象模型的過程，每個模�
 <!-- _class: lead -->
 <!-- header: '4.2 統一塑模語言 (UML)' -->
 
-# **4.2 統一塑模語言 (UML)**
+# <strong>4.2 統一塑模語言 (UML)</strong>
 
 > 「標準化的視覺語法，將軟體工程從封閉的方法論孤島，淬煉為全球共通的工程學門。」
 
@@ -255,9 +255,9 @@ Ian Sommerville 教授將塑模定義為建立抽象模型的過程，每個模�
 - **1994 – Rational 展開歷史性大整合：**
   - Jim Rumbaugh 加入 Rational 與 Grady Booch 聯手，融合 Booch 方法與 OMT 為 Unified Method (v0.8)。
 - **1995 – 三巨頭 (The Three Amigos) 合體：**
-  - Ivar Jacobson 加入 Rational，帶入革命性的**使用案例 (Use Case)** 方法論 (OOSE)。
+  - Ivar Jacobson 加入 Rational，帶入革命性的<strong>使用案例 (Use Case)</strong> 方法論 (OOSE)。
 - **1997 – OMG 國際官方標準化：**
-  - 正式提交至**物件管理組織 (OMG)**，於 1997 年 11 月一致通過採納為 **UML 1.1** 國際產業標準。
+  - 正式提交至<strong>物件管理組織 (OMG)</strong>，於 1997 年 11 月一致通過採納為 **UML 1.1** 國際產業標準。
 - **2005 – UML 2.0 重大架構改版：**
   - 擴充至 13 種（後續擴增至 14 種）正式圖表，具備形式化執行元模型 (Metamodels)。
 
@@ -293,9 +293,9 @@ UML 的歷史轉捩點發生在 Rational Software 公司。
 - **角色與學術榮譽：**
   - ACM Fellow、IEEE Fellow、IBM 院士、Rational 共同創辦人兼首席科學家。
 - **開創經典方法論：**
-  - **Booch 方法 (Booch Method)** 與重量級專書：《物件導向分析與設計》。
+  - <strong>Booch 方法 (Booch Method)</strong> 與重量級專書：《物件導向分析與設計》。
 - **對 UML 的核心貢獻：**
-  - 專精於**物件導向實作設計 (Design & Implementation)**，精確定義微觀物件協同與宏觀系統架構。
+  - 專精於<strong>物件導向實作設計 (Design & Implementation)</strong>，精確定義微觀物件協同與宏觀系統架構。
   - 賦予 UML 精準對應至 C++、Java 等 OOP 程式語言的實作直譯能力。
 - **著名軟體工程箴言：**
   > *"良好的架構，是讓未來的重大決策顯得容易且自然的藝術。"*
@@ -332,10 +332,10 @@ Booch 的核心貢獻在於「微觀設計與實作對應」：他確保 UML 上
 - **角色與學術榮譽：**
   - 奇異公司 (GE) 全球研發中心軟體主任研究員、Rational Software、IBM。
 - **開創經典方法論：**
-  - **物件塑模技術 (OMT, Object Modeling Technique)** 與專書：《物件導向塑模與設計》。
+  - <strong>物件塑模技術 (OMT, Object Modeling Technique)</strong> 與專書：《物件導向塑模與設計》。
 - **對 UML 的核心貢獻：**
-  - 強調嚴謹的**領域分析 (Domain Analysis)**、語義資料塑模與實體關聯對應。
-  - 首創將靜態物件結構與 David Harel 的**狀態圖 (Statecharts)** 深度結合，用以塑模動態反應式系統。
+  - 強調嚴謹的<strong>領域分析 (Domain Analysis)</strong>、語義資料塑模與實體關聯對應。
+  - 首創將靜態物件結構與 David Harel 的<strong>狀態圖 (Statecharts)</strong> 深度結合，用以塑模動態反應式系統。
 - **著名軟體工程箴言：**
   > *"如果不透徹理解領域的真實本質，就絕不可能打造出卓越的軟體。"*
 
@@ -371,10 +371,10 @@ Rumbaugh 的天才在於領域分析——精確捕捉真實世界的實體、�
 - **角色與學術榮譽：**
   - 愛立信 (Ericsson) 首席架構師、Objectory AB 創辦人、Rational Software、SEMAT 發起人。
 - **開創經典方法論：**
-  - **物件導向軟體工程 (OOSE)**。
+  - <strong>物件導向軟體工程 (OOSE)</strong>。
 - **對 UML 的核心貢獻：**
   - **使用案例 (Use Cases) 的發明者 (1986)：** 革命性地將系統架構錨定在可衡量的使用者目標之上。
-  - 提出經典的**邊界–控制–實體 (BCE, Boundary–Control–Entity)** 強韌性分析模式與元件化架構。
+  - 提出經典的<strong>邊界–控制–實體 (BCE, Boundary–Control–Entity)</strong> 強韌性分析模式與元件化架構。
 - **著名軟體工程箴言：**
   > *"一個沒有使用者的系統，就沒有任何存在的理由。塑模永遠要先從使用者的目標開始。"*
 
@@ -434,7 +434,7 @@ Jacobson 早年在愛立信研發龐大的電話交換機系統，後來創立 O
 </div>
 </div>
 
-> 📌 **架構整合精髓：** Jacobson 捕捉系統存在的**初衷目的 (Why)**；Rumbaugh 塑模領域存在的**資料本質 (What)**；Booch 設計程式執行的**實作架構 (How)**。
+> 📌 **架構整合精髓：** Jacobson 捕捉系統存在的<strong>初衷目的 (Why)</strong>；Rumbaugh 塑模領域存在的<strong>資料本質 (What)</strong>；Booch 設計程式執行的<strong>實作架構 (How)</strong>。
 
 <!--
 請大家細細體會三巨頭之間天衣無縫的互補之美：
@@ -453,7 +453,7 @@ Grady Booch 規劃軟體架構，回答了這些元件在程式碼中如何高�
 <div class="ccq-columns">
 <div class="ccq-text">
 
-在被尊稱為「UML 三巨頭」的軟體工程大師中，哪一位以於 1986 年發明**使用案例 (Use Cases)**、將軟體架構直接錨定於使用者具體目標而聞名？
+在被尊稱為「UML 三巨頭」的軟體工程大師中，哪一位以於 1986 年發明<strong>使用案例 (Use Cases)</strong>、將軟體架構直接錨定於使用者具體目標而聞名？
 
 - **A.** Grady Booch
 - **B.** James Rumbaugh
@@ -698,12 +698,12 @@ Martin Fowler 則是撰寫《UML 精華 (UML Distilled)》與《重構》的大�
 
 | 欄位名稱 | 規格細節說明 |
 | :--- | :--- |
-| **使用案例代號 / 名稱** | **UC-01：學生選課 (Enroll Student in Course)** |
-| **主要參與者 (Actor)** | 學生 (透過學校單一登入 SSO 驗證身分) |
-| **前置條件 (Preconditions)** | 學生具備有效學籍在學狀態；當前處於選課開放時段內 |
-| **後置條件 (Postconditions)** | 學生正式納入該課程名冊；該課程剩餘修課名額自動扣減 1 |
-| **主要成功路徑 (Main Flow)** | **1.** 學生依學系代碼或開課課號搜尋開放修習的課程清單。<br>**2.** 系統回傳並展示符合條件的班級資訊、上課時間表與剩餘名額。<br>**3.** 學生選定目標課程，向系統提出正式加選請求。<br>**4.** 系統執行 `<<include>> 檢查先修科目資格`，比對學生歷史歷年成績單。<br>**5.** 系統鎖定保留名額，寫入選課交易紀錄，並產生成員確認通知單。<br>**6.** 學生即時檢視個人更新後的課表，並收到選課成功通知信。 |
-| **例外與擴充路徑 (Extensions)** | **4a. 先修科目未通過：** 系統提示未修畢之必要擋修科目代碼，中斷選課流程。<br>**4b. 上課時間衝堂：** 系統發出警告，提示與已選課程時間重疊，放棄本次加選。<br>**5a. 課程名額已滿：** 系統觸發 `<<extend>> 加入候補等候名單` 流程。 |
+| **使用案例代號 / 名稱** | <strong>UC-01：學生選課 (Enroll Student in Course)</strong> |
+| <strong>主要參與者 (Actor)</strong> | 學生 (透過學校單一登入 SSO 驗證身分) |
+| <strong>前置條件 (Preconditions)</strong> | 學生具備有效學籍在學狀態；當前處於選課開放時段內 |
+| <strong>後置條件 (Postconditions)</strong> | 學生正式納入該課程名冊；該課程剩餘修課名額自動扣減 1 |
+| <strong>主要成功路徑 (Main Flow)</strong> | **1.** 學生依學系代碼或開課課號搜尋開放修習的課程清單。<br>**2.** 系統回傳並展示符合條件的班級資訊、上課時間表與剩餘名額。<br>**3.** 學生選定目標課程，向系統提出正式加選請求。<br>**4.** 系統執行 `<<include>> 檢查先修科目資格`，比對學生歷史歷年成績單。<br>**5.** 系統鎖定保留名額，寫入選課交易紀錄，並產生成員確認通知單。<br>**6.** 學生即時檢視個人更新後的課表，並收到選課成功通知信。 |
+| <strong>例外與擴充路徑 (Extensions)</strong> | **4a. 先修科目未通過：** 系統提示未修畢之必要擋修科目代碼，中斷選課流程。<br>**4b. 上課時間衝堂：** 系統發出警告，提示與已選課程時間重疊，放棄本次加選。<br>**5a. 課程名額已滿：** 系統觸發 `<<extend>> 加入候補等候名單` 流程。 |
 
 <!--
 使用案例圖只是一張高階目錄，真正嚴謹的行為合約完整記錄在使用案例規格書中！
@@ -766,7 +766,7 @@ Martin Fowler 則是撰寫《UML 精華 (UML Distilled)》與《重構》的大�
 <div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **審查這份學生繪製的使用案例圖草稿：**
-你能找出圖中潛藏的 **3 大關鍵塑模謬誤（反模式）** 嗎？
+你能找出圖中潛藏的 <strong>3 大關鍵塑模謬誤（反模式）</strong> 嗎？
 
 - **1. 顆粒度與操作流程分解 (Granularity & Workflow)：**
   - 將 `輸入外送地址` ➔ `點擊送出按鈕` ➔ `送出外送訂單` 串聯成流程有何嚴重錯誤？
@@ -978,7 +978,7 @@ UC_AcceptTask -- Courier
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **動手實作實驗：變更業務需求並審核 AI 產出 (4 分鐘)**
+  <strong>動手實作實驗：變更業務需求並審核 AI 產出 (4 分鐘)</strong>
   - **1. 在使用案例提示詞中加入一項新需求功能：**
     - *預約定時下單：* 允許 `顧客` 預約未來特定時段的外送服務。
     - *線上即時客服：* 建立 `顧客` 與 `客服人員` 或 `外送員` 的即時對談。
@@ -1302,7 +1302,7 @@ AI 有沒有掉入把按鈕點擊畫成使用案例的經典反模式陷阱？
 <div class="ccq-columns">
 <div class="ccq-text">
 
-在 UML 類別圖中，若類別 A 與類別 B 之間繪製了一條連線，且在 A 端標示了**實心黑色菱形 (Filled Black Diamond, ◆)** 指向 B，這代表什麼架構意涵？
+在 UML 類別圖中，若類別 A 與類別 B 之間繪製了一條連線，且在 A 端標示了<strong>實心黑色菱形 (Filled Black Diamond, ◆)</strong> 指向 B，這代表什麼架構意涵？
 
 - **A.** 類別 B 繼承了類別 A 的所有公開方法與屬性。
 - **B.** 類別 A 組合 (Composition) 了類別 B；當物件 A 被銷毀時，所屬的物件 B 也將連帶被銷毀。
@@ -1343,7 +1343,7 @@ AI 有沒有掉入把按鈕點擊畫成使用案例的經典反模式陷阱？
 <div class="right" style="font-size: 17px; line-height: 1.4;">
 
 **審查這份學生繪製的棒球比賽類別圖草稿：**
-你能從**封裝、繼承、關係（重數與組合）**中找出重大架構謬誤嗎？
+你能從<strong>封裝、繼承、關係（重數與組合）</strong>中找出重大架構謬誤嗎？
 
 - **1. 整體與部分生命週期（聚合 vs. 組合）：**
   - 為何 `BaseballGame` 與 `Team` 使用實心菱形 (`◆`)？若刪除一場比賽紀錄，球隊會跟著消滅嗎？
@@ -1466,7 +1466,7 @@ BaseballGame 與 Inning (局數) 使用一般關聯且重數標註為 1。然而
 
 **3. 輸入需求敘述 (Requirements Statement)：**
 > 「系統包含 **Customer**（顧客 ID、姓名、Email、電話、外送地址）。
-> **Restaurant**（餐廳 ID、店名、地址）擁有多項 **MenuItem**（餐點 ID、品名、單價、是否在庫）。
+> **Restaurant<strong>（餐廳 ID、店名、地址）擁有多項 </strong>MenuItem**（餐點 ID、品名、單價、是否在庫）。
 > 顧客可建立多筆 **Order**。每筆訂單包含訂單編號、狀態列舉 (OrderStatus: 待處理、製作中、配送中、已送達)、下單時間與總金額。
 > 一筆訂單由一個或多個 **OrderItem**（購買數量、購買當下單價、小計）組成；若訂單被取消刪除，其明細項目必須連帶銷毀。
 > 平台可指派一位 **Courier**（外送員 ID、姓名、電話、交通工具）負責配送訂單。
@@ -1571,15 +1571,15 @@ Order ..> PaymentProcessor : delegates >
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **動手實作實驗：變更架構規則並審核 AI 產出 (4 分鐘)**
+  <strong>動手實作實驗：變更架構規則並審核 AI 產出 (4 分鐘)</strong>
   - **1. 在類別模型提示詞中加入一項新架構規則：**
     - *多店合併結帳：* 允許單一筆訂單跨多家餐廳合併下單結帳。
     - *外送小費與評價：* 增加對外送員的直接打賞與雙向服務評分。
     - *VIP 會員訂閱制：* 導入每月固定扣款的會員免運機制。
   - **2. 要求 AI 重新生成：** 提示 LLM 更新對應的 PlantUML 類別模型代碼。
   - **3. 渲染並嚴格審查：** 貼入 [PlantText](https://www.planttext.com) 渲染並審查：
-    - AI 是否正確維持**複合 (◆)** 與**聚合 (◇)** 的生命週期差異？
-    - **重數 (Multiplicities)** 是否合乎邏輯（跨店訂單需不需要拆分子訂單）？
+    - AI 是否正確維持<strong>複合 (◆)</strong> 與<strong>聚合 (◇)</strong> 的生命週期差異？
+    - <strong>重數 (Multiplicities)</strong> 是否合乎邏輯（跨店訂單需不需要拆分子訂單）？
     - 關鍵欄位是否維持 `- private` 封裝，且未被設計模式過度複雜化？
 
   </div>
@@ -2196,7 +2196,7 @@ end
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **動手實作實驗：變更動態時序並審核 AI 產出 (4 分鐘)**
+  <strong>動手實作實驗：變更動態時序並審核 AI 產出 (4 分鐘)</strong>
   - **1. 在結帳流程中加入一個極端邊界情境 (Edge Case)：**
     - *金流逾時 (Gateway Timeout)：* 外部付款閘道超過 5 秒未回應（觸發重試或補償）。
     - *拆分付款 (Split Payment)：* 允許顧客使用電子錢包點數折抵搭配信用卡差額支付。
@@ -2315,11 +2315,11 @@ UML 活動圖 (Activity Diagram) 正是為工作流程而生。在這一節中�
 
 | 塑模能力 / 核心維度 | 傳統流程圖 (Flowchart) | UML 活動圖 (Activity Diagram) |
 | :--- | :---: | :---: |
-| **循序執行邏輯 (Sequential Logic)** | ✓ | ✓ |
-| **條件分支判定 (Conditional Splits)** | ✓ | ✓ |
-| **平行並行處理 (Parallel / Concurrency)** | ✗ | ✓ |
-| **角色責任劃分 (Swimlanes / Partitions)** | ✗ | ✓ |
-| **資料物件狀態流 (Object Flow & States)** | ✗ | ✓ |
+| <strong>循序執行邏輯 (Sequential Logic)</strong> | ✓ | ✓ |
+| <strong>條件分支判定 (Conditional Splits)</strong> | ✓ | ✓ |
+| <strong>平行並行處理 (Parallel / Concurrency)</strong> | ✗ | ✓ |
+| <strong>角色責任劃分 (Swimlanes / Partitions)</strong> | ✗ | ✓ |
+| <strong>資料物件狀態流 (Object Flow & States)</strong> | ✗ | ✓ |
 
 <!--
 很多人常問：『我們從小就會畫流程圖，為什麼還要學 UML 活動圖？』請看這張比較表。
@@ -2578,7 +2578,7 @@ UML 活動圖五個項目全部支援，這就是為什麼大型企業軟體必�
 <div class="ccq-columns">
 <div class="ccq-text">
 
-在 UML 活動圖中，**分岔/結合 (Fork/Join 同步條)** 與 **決策/合併 (Decision/Merge 菱形)** 的核心差異為何？
+在 UML 活動圖中，<strong>分岔/結合 (Fork/Join 同步條)</strong> 與 <strong>決策/合併 (Decision/Merge 菱形)</strong> 的核心差異為何？
 
 - **A.** Fork/Join 用於將單一流程切分為多條「並行同時執行」的執行緒；Decision/Merge 則依據布林條件由多條路徑中「嚴格選擇其一 (互斥)」執行。
 - **B.** Fork/Join 用於類別繼承；Decision/Merge 用於物件實體化。
@@ -2845,7 +2845,7 @@ stop
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **動手實作實驗：變更流程邏輯並審核 AI 產出 (4 分鐘)**
+  <strong>動手實作實驗：變更流程邏輯並審核 AI 產出 (4 分鐘)</strong>
   - **1. 在活動圖提示詞中加入一條流程規則：**
     - *外送員重新派單：* 若原配對之外送員拒絕接單，系統自動重新搜尋媒合下一位司機。
     - *品管出餐檢驗：* 廚房品檢若發現餐點焦掉，必須重新下鍋製作後方能打包。
@@ -2853,8 +2853,8 @@ stop
   - **2. 要求 AI 重新生成：** 提示 LLM 更新對應的 PlantUML 活動圖代碼。
   - **3. 渲染並嚴格審查：** 貼入 [PlantText](https://www.planttext.com) 渲染並審查：
     - 各項活動步驟是否皆正確坐落於所屬角色的**職責泳道**？
-    - **平行分岔 (Fork) 與匯聚 (Join)** 是否成對匹配，杜絕死結 (Deadlock)？
-    - **決策菱形 (Decision Diamonds)** 是否標註了完整互斥的轉移防護條件？
+    - <strong>平行分岔 (Fork) 與匯聚 (Join)</strong> 是否成對匹配，杜絕死結 (Deadlock)？
+    - <strong>決策菱形 (Decision Diamonds)</strong> 是否標註了完整互斥的轉移防護條件？
 
   </div>
   <div class="discussion-logo">
@@ -3396,7 +3396,7 @@ stop
 <div class="ccq-columns">
 <div class="ccq-text">
 
-在 UML 狀態機圖中，**動作 (Action，如 transition 上的 `/ refund()` 或 `entry /`)** 與 **活動 (Activity，如 `do /`)** 最根本的執行語義差異為何？
+在 UML 狀態機圖中，<strong>動作 (Action，如 transition 上的 `/ refund()` 或 `entry /`)</strong> 與 <strong>活動 (Activity，如 `do /`)</strong> 最根本的執行語義差異為何？
 
 - **A.** Action 是瞬間完成、不可中斷的原子性操作；Activity 是耗時進行的持續運算，且可被外來事件隨時中斷。
 - **B.** Action 只能寫 Python；Activity 只能寫 SQL。
@@ -3649,7 +3649,7 @@ Cancelled -left-> [*]
 <div class="discussion-columns">
   <div class="discussion-text">
 
-  **動手實作實驗：變更生命週期並審核 AI 產出 (4 分鐘)**
+  <strong>動手實作實驗：變更生命週期並審核 AI 產出 (4 分鐘)</strong>
   - **1. 在狀態機提示詞中加入一個生命週期不變量 (Invariant)：**
     - *司機途中棄單：* 若外送員中途車輛故障棄單，訂單狀態退回 `ReadyForPickup` 重新派單。
     - *顧客延期配送：* 允許在 `Preparing` 備餐中申請延後外送指定時段。
@@ -4220,7 +4220,7 @@ PlantUML 的符號設計充滿了象形巧思：
 <div class="ccq-columns">
 <div class="ccq-text">
 
-在軟體架構工程實踐中，相較於傳統以滑鼠手動拖拉圖框的二進位繪圖軟體（如 Visio 或特定商業 CASE 工具），採用 **PlantUML 宣告式文字塑模 (Code-as-Architecture)** 的最核心工程優勢為何？
+在軟體架構工程實踐中，相較於傳統以滑鼠手動拖拉圖框的二進位繪圖軟體（如 Visio 或特定商業 CASE 工具），採用 <strong>PlantUML 宣告式文字塑模 (Code-as-Architecture)</strong> 的最核心工程優勢為何？
 
 - **A.** 能保證自動生成 100% 無 Bug 的 Java 實作程式碼，無需單元測試。
 - **B.** 可以在純文字中編寫，輕鬆納入 Git 進行精確的行級版本控制、Pull Request 審查與 CI/CD 自動編譯。

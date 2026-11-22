@@ -64,7 +64,7 @@ To summarize this slide, remember this key takeaway: Software processes have evo
 ## Focus Questions
 
 * What is the fundamental difference between a **software process activity** and a **lifecycle model** (plan-driven vs. evolutionary)?
-* How do **incremental delivery** and **iterative refinement** combine to build a **Minimum Viable Product (MVP)**?
+* How do **incremental delivery** and **iterative refinement** combine to build a <strong>Minimum Viable Product (MVP)</strong>?
 * Why is **Agile** an overarching cultural mindset rather than a rigid framework, and how do **Scrum** and **Kanban** apply it?
 * How do **XP engineering practices**, **DevOps pipelines**, and **AI spec-driven workflows** guarantee quality and eliminate **Technical Debt**?
 
@@ -212,7 +212,7 @@ To summarize this slide, remember this key takeaway: There is no single best pro
 <!-- _class: lead -->
 <!-- header: '2.2 Plan-Driven Paradigms' -->
 
-# **2.2 Plan-Driven Paradigms (Waterfall & V-Model)**
+# <strong>2.2 Plan-Driven Paradigms (Waterfall & V-Model)</strong>
 
 > "Plan the work, then work the plan."  
 > Predictability, stage-gate discipline, and verification traceability.
@@ -257,7 +257,7 @@ To summarize this slide, remember this key takeaway: Plan-driven models prioriti
 <div class="content-text">
 
 * **Historical Background:**
-  - First described by **Winston W. Royce (1970)** in *"Managing the Development of Large Software Systems"*.
+  - First described by <strong>Winston W. Royce (1970)</strong> in *"Managing the Development of Large Software Systems"*.
   - *Historical Irony:* Presented as a flawed process needing feedback loops!
 * **The 5 Sequential Phases:**
   1. Requirements Analysis & Definition
@@ -585,7 +585,7 @@ Second, what catastrophic failure occurs if you apply rapid, unverified Agile or
 <!-- _class: lead -->
 <!-- header: '2.3 Incremental & Iterative' -->
 
-# **2.3 The Mechanics of Change (Incremental & Iterative)**
+# <strong>2.3 The Mechanics of Change (Incremental & Iterative)</strong>
 
 > "Incremental delivery gives you pieces early; iterative development refines the whole over time.  
 > Together, they build a Minimum Viable Product."
@@ -916,7 +916,7 @@ Work with your group to answer the three questions on screen: How do you slice i
 <!-- _class: lead -->
 <!-- header: '2.4 Agile Philosophy' -->
 
-# **2.4 The Mindset Shift (Agile Philosophy)**
+# <strong>2.4 The Mindset Shift (Agile Philosophy)</strong>
 
 > "Responding to change over following a plan."  
 > — *The Agile Manifesto (2001)*
@@ -1142,7 +1142,7 @@ To summarize this slide, remember this key takeaway: Sustainable engineering pac
 <!-- _class: lead -->
 <!-- header: '2.5 Scrum & Kanban' -->
 
-# **2.5 Agile Project Management (Scrum & Kanban)**
+# <strong>2.5 Agile Project Management (Scrum & Kanban)</strong>
 
 > "Scrum establishes the cadence; Kanban optimizes the flow.  
 > Stop starting, start finishing."  
@@ -1212,7 +1212,7 @@ To summarize this slide, remember this key takeaway: Scrum and Kanban are concre
 * **3 Core Artifacts:**
   - **Product Backlog:** Prioritized single source of truth for all proposed features and fixes.
   - **Sprint Backlog:** Committed subset of items selected for the active sprint.
-  - **Increment:** Usable, tested, and potentially releasable product slice meeting the **Definition of Done (DoD)**.
+  - **Increment:** Usable, tested, and potentially releasable product slice meeting the <strong>Definition of Done (DoD)</strong>.
 
 <!--
 Let's look at Scrum's 3 Roles and 3 Artifacts.
@@ -1290,7 +1290,7 @@ To summarize this slide, remember this key takeaway: The Sprint Retrospective is
 ## The Kanban Framework: Continuous Flow & Pull Systems
 
 * **Origin & Philosophy:**
-  - Derived from the **Toyota Production System (Lean Manufacturing)**.
+  - Derived from the <strong>Toyota Production System (Lean Manufacturing)</strong>.
   - Instead of fixed timeboxes (sprints), Kanban operates on **continuous flow** through a **pull system**.
 * **The 4 Core Practices of Kanban:**
   1. **Visualize the Workflow:** Use a Kanban board with distinct columns (To Do, In Progress, Review, Done) to make all work transparent.
@@ -1485,7 +1485,7 @@ To summarize this slide, remember this key takeaway: Shortcuts taken today becom
 > Shipping code quickly without engineering discipline is like taking out a **financial loan**. It accelerates delivery today, but incurs compounding interest that eventually bankrupts future engineering velocity.
 
 * **Origin of the Metaphor:**
-  - Coined by **Ward Cunningham (1992)**, co-author of the Agile Manifesto and creator of the first Wiki.
+  - Coined by <strong>Ward Cunningham (1992)</strong>, co-author of the Agile Manifesto and creator of the first Wiki.
 * **The Core Paradox of Agile Delivery:**
   - Scrum and Kanban empower teams to demo features sprint after sprint.
   - **The Trap:** Prioritizing *feature speed* while neglecting automated tests and architectural health.
@@ -1523,11 +1523,11 @@ To summarize this slide, remember this key takeaway: Technical debt trades short
 ---
 ## The "Flaccid Scrum" Phenomenon & Architectural Erosion
 
-* **Martin Fowler's Warning: "Flaccid Scrum"**
+* <strong>Martin Fowler's Warning: "Flaccid Scrum"</strong>
   - Adopting the superficial management ceremonies of Scrum (standups, sprints, user stories, Jira boards) while **completely ignoring technical engineering practices**.
   - Teams become "feature factories" that rapidly produce fragile, untested code.
 * **The Consequences of Technical Neglect:**
-  - **Architectural Erosion:** System boundaries blur, modular encapsulation breaks down, turning clean architecture into a **"Big Ball of Mud"**.
+  - **Architectural Erosion:** System boundaries blur, modular encapsulation breaks down, turning clean architecture into a <strong>"Big Ball of Mud"</strong>.
   - **Velocity Collapse:** Sprint velocity drops exponentially over time because developers spend 80% of their day fighting regression defects.
   - **Developer Burnout & Turnover:** High friction, fear of touching code, and morale collapse.
 
@@ -1627,7 +1627,7 @@ To summarize this slide, remember this key takeaway: The interest on technical d
 <div class="ccq-columns">
   <div class="ccq-text">
 
-Martin Fowler coined the term **"Flaccid Scrum"** to describe which critical software engineering failure?
+Martin Fowler coined the term <strong>"Flaccid Scrum"</strong> to describe which critical software engineering failure?
 
 - **A.** Adopting Scrum management ceremonies (daily standups, sprints, story points) while completely neglecting technical engineering practices like TDD, refactoring, and CI.
 - **B.** Refusing to use Jira or commercial issue tracking software in favor of physical sticky notes.
@@ -1690,7 +1690,7 @@ Also, think about Martin Fowler's Technical Debt Quadrant: Is taking on debt to 
 <!-- _class: lead -->
 <!-- header: '2.7 Extreme Programming' -->
 
-# **2.7 Technical Rigor (Extreme Programming)**
+# <strong>2.7 Technical Rigor (Extreme Programming)</strong>
 
 > "Any fool can write code that a computer can understand.  
 > Good programmers write code that humans can understand."  
@@ -1971,7 +1971,7 @@ To summarize this slide, remember this key takeaway: In pair programming, the Na
 <div class="ccq-columns">
   <div class="ccq-text">
 
-In Extreme Programming's Test-Driven Development (TDD), what is the specific objective of the **"Refactor"** step in the Red-Green-Refactor cycle?
+In Extreme Programming's Test-Driven Development (TDD), what is the specific objective of the <strong>"Refactor"</strong> step in the Red-Green-Refactor cycle?
 
 - **A.** Adding new functional capabilities and expanding the module's public API contract.
 - **B.** Improving the internal structure and readability of the code while ensuring all existing automated tests continue to pass.
@@ -2001,7 +2001,7 @@ To summarize this slide, remember this key takeaway: Refactoring cleans up inter
 <!-- _class: lead -->
 <!-- header: '2.8 DevOps' -->
 
-# **2.8 Systems & Culture (DevOps)**
+# <strong>2.8 Systems & Culture (DevOps)</strong>
 
 > "You build it, you run it."  
 > Breaking down the wall of confusion through continuous delivery and shared operational ownership.  
@@ -2043,7 +2043,7 @@ To summarize this slide, remember this key takeaway: DevOps replaces the wall of
 ---
 ## Systems & Culture — DevOps
 
-> A cultural, organizational, and technical movement that bridges the traditional divide between **Development (Dev)** and **Operations (Ops)**, automating the software delivery lifecycle through continuous pipelines, Infrastructure as Code (IaC), and production telemetry.
+> A cultural, organizational, and technical movement that bridges the traditional divide between <strong>Development (Dev)</strong> and <strong>Operations (Ops)</strong>, automating the software delivery lifecycle through continuous pipelines, Infrastructure as Code (IaC), and production telemetry.
 
 * **Breaking the "Wall of Confusion":**
   - **Development Incentives:** Rewarded for change, rapid feature velocity, and new releases.
@@ -2217,7 +2217,7 @@ To summarize this slide, remember this key takeaway: The dividing line between C
 <!-- _class: lead -->
 <!-- header: '2.9 AI Spec-Driven Process' -->
 
-# **2.9 The Modern Frontier (AI Spec-Driven Process)**
+# <strong>2.9 The Modern Frontier (AI Spec-Driven Process)</strong>
 
 > "AI is an amplifier: it amplifies disciplined engineering specifications,  
 > but it equally amplifies careless, chaotic habits."
@@ -2263,7 +2263,7 @@ To summarize this slide, remember this key takeaway: AI tools are amplifiers: th
   - **AI-Augmented Process Model:** Coordinates *autonomous AI agents alongside human architects* in a continuous co-engineering loop.
 * **The SDLC Bottleneck Inversion:**
   - **Implementation is Commoditized:** Writing code, boilerplate, and syntax debugging no longer bottleneck development velocity.
-  - **Value Shifts to the Bookends:** Critical human engineering shifts to **Upstream Intent (Domain Specs & Architecture)** and **Downstream Assurance (Verification & Safety)**.
+  - **Value Shifts to the Bookends:** Critical human engineering shifts to <strong>Upstream Intent (Domain Specs & Architecture)</strong> and <strong>Downstream Assurance (Verification & Safety)</strong>.
 
 <!--
 Now let's examine AI-based software processes from the broader perspective of the entire Software Development Life Cycle.
@@ -2368,11 +2368,11 @@ To summarize this slide, remember this key takeaway: An engineering harness enfo
 ---
 ## The 3-Step Agentic Feedback Loop in Practice
 
-* **Step 1: Formal Specification (Powered by Input Rails)**
+* <strong>Step 1: Formal Specification (Powered by Input Rails)</strong>
   - Human architect writes unambiguous requirements, data schemas, interface contracts, and acceptance test criteria in structured Markdown (`SPEC.md`).
-* **Step 2: Autonomous Agent Execution (Powered by Sandbox Rails)**
+* <strong>Step 2: Autonomous Agent Execution (Powered by Sandbox Rails)</strong>
   - AI agent inspects repository context, formulates a multi-step plan, and implements code inside the safe execution harness.
-* **Step 3: Automated Verification & Self-Healing (Powered by Oracle Rails)**
+* <strong>Step 3: Automated Verification & Self-Healing (Powered by Oracle Rails)</strong>
   - Automated test harness compiles code and executes unit, integration, and security suites.
   - **The Self-Healing Loop:** If any test fails, compiler errors and test traces automatically feed back into the agent harness for autonomous self-repair *before* human code review!
 

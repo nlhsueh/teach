@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 252" width="100%" height="100%">
+  <defs>
+    <style>
+      .card-bg { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.8; rx: 12px; }
+      .thumb-bg-blue { fill: #f0f9ff; stroke: #bae6fd; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-indigo { fill: #eef2ff; stroke: #c7d2fe; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-amber { fill: #fffbeb; stroke: #fde68a; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-emerald { fill: #ecfdf5; stroke: #a7f3d0; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-purple { fill: #faf5ff; stroke: #e9d5ff; stroke-width: 1.2; rx: 8px; }
+      .thumb-bg-rose { fill: #fff1f2; stroke: #fecdd3; stroke-width: 1.2; rx: 8px; }
+      .card-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: 800; fill: #0f172a; text-anchor: middle; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .card-formula { font-family: "Fira Code", "Consolas", monospace; font-size: 10.5px; font-weight: 700; text-anchor: middle; }
+      .mini-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10.5px; font-weight: 700; text-anchor: middle; }
+      .code-text { font-family: "Fira Code", "Consolas", monospace; font-size: 10.5px; font-weight: 700; text-anchor: middle; }
+    </style>
+    <marker id="arr-b" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+    <marker id="arr-i" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#4f46e5" />
+    </marker>
+    <marker id="arr-a" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+    <marker id="arr-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="arr-r" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#e11d48" />
+    </marker>
+  </defs>
+  <g transform="translate(10, 10)">
+
+    <rect width="346" height="232" class="card-bg" />
+    <rect width="346" height="6" fill="#0284c7" rx="3" />
+    <rect x="14" y="14" width="318" height="142" class="thumb-bg-blue" />
+
+    <!-- Left side: Traditional EBT -->
+    <rect x="24" y="24" width="130" height="122" fill="#ffffff" stroke="#bae6fd" rx="6" />
+    <text x="89" y="40" class="mini-label" fill="#64748b">EBT (3 Fixed Points)</text>
+    <circle cx="52" cy="70" r="5" fill="#16a34a" />
+    <circle cx="85" cy="95" r="5" fill="#16a34a" />
+    <circle cx="115" cy="65" r="5" fill="#16a34a" />
+    <circle cx="132" cy="122" r="9" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5" />
+    <text x="132" y="126" class="code-text" fill="#dc2626">!</text>
+    <text x="72" y="136" font-family="sans-serif" font-size="10px" font-weight="700" fill="#dc2626" text-anchor="middle">Misses Edge Cliff</text>
+
+    <path d="M 158 85 L 180 85" stroke="#0284c7" stroke-width="2.2" marker-end="url(#arr-b)" />
+
+    <!-- Right side: PBT (1000 points + Invariant shield) -->
+    <rect x="184" y="24" width="138" height="122" fill="#ffffff" stroke="#0284c7" stroke-width="1.5" rx="6" />
+    <text x="253" y="40" class="mini-label" fill="#0369a1">PBT (@ForAll 1,000x)</text>
+    <circle cx="204" cy="58" r="3.5" fill="#0284c7" />
+    <circle cx="224" cy="64" r="3.5" fill="#0284c7" />
+    <circle cx="248" cy="56" r="3.5" fill="#0284c7" />
+    <circle cx="272" cy="66" r="3.5" fill="#0284c7" />
+    <circle cx="298" cy="58" r="3.5" fill="#0284c7" />
+    <circle cx="212" cy="82" r="3.5" fill="#0284c7" />
+    <circle cx="238" cy="78" r="3.5" fill="#0284c7" />
+    <circle cx="262" cy="84" r="3.5" fill="#0284c7" />
+    <circle cx="288" cy="76" r="3.5" fill="#0284c7" />
+    <circle cx="306" cy="86" r="4.5" fill="#dc2626" />
+    <rect x="194" y="102" width="118" height="34" fill="#0284c7" rx="5" />
+    <text x="253" y="116" font-family="sans-serif" font-size="10px" font-weight="700" fill="#ffffff" text-anchor="middle">Universal Invariant</text>
+    <text x="253" y="131" font-family="monospace" font-size="9.5px" font-weight="700" fill="#e0f2fe" text-anchor="middle">Invariant(f(x)) == true</text>
+
+    <text x="173" y="177" class="card-title">1. Property-Based Testing (PBT)</text>
+    <text x="173" y="196" class="card-sub">Verifies universal invariants over 1,000+ inputs</text>
+    <text x="173" y="216" class="card-formula" fill="#0284c7">@Property + @ForAll (1,000 Random Trials)</text>
+  
+  </g>
+</svg>

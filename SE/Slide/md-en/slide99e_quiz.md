@@ -854,7 +854,7 @@ To summarize this slide, remember this key takeaway: Kniberg's MVP Analogy (Skat
   </div>
 
   <div class="quiz-qbox">
-    The Agile Manifesto states: *&quot;Working software over comprehensive documentation.&quot;* What does this value primarily advocate in practice?
+    The Agile Manifesto states: <em>&quot;Working software over comprehensive documentation.&quot;</em> What does this value primarily advocate in practice?
   </div>
 
   <div class="quiz-grid">
@@ -908,7 +908,7 @@ To summarize this slide, remember this key takeaway: Agile Manifesto Living Soft
   </div>
 
   <div class="quiz-qbox">
-    Agile Principle 8 states: *&quot;Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.&quot;* What is the primary engineering motivation?
+    Agile Principle 8 states: <em>&quot;Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.&quot;</em> What is the primary engineering motivation?
   </div>
 
   <div class="quiz-grid">
@@ -1016,7 +1016,7 @@ To summarize this slide, remember this key takeaway: Kanban WIP Limits & Flow Co
   </div>
 
   <div class="quiz-qbox">
-    In the Scrum framework, what is the primary operational objective of the **Sprint Retrospective** held at the end of each sprint?
+    In the Scrum framework, what is the primary operational objective of the <strong>Sprint Retrospective</strong> held at the end of each sprint?
   </div>
 
   <div class="quiz-grid">
@@ -1124,7 +1124,7 @@ To summarize this slide, remember this key takeaway: Technical Debt Metaphor hig
   </div>
 
   <div class="quiz-qbox">
-    Martin Fowler coined the term **&quot;Flaccid Scrum&quot;** to describe which critical software engineering failure?
+    Martin Fowler coined the term <strong>&quot;Flaccid Scrum&quot;</strong> to describe which critical software engineering failure?
   </div>
 
   <div class="quiz-grid">
@@ -1232,7 +1232,7 @@ To summarize this slide, remember this key takeaway: XP Pair Programming Roles h
   </div>
 
   <div class="quiz-qbox">
-    In Extreme Programming's Test-Driven Development (TDD), what is the specific objective of the **&quot;Refactor&quot;** step in the Red-Green-Refactor cycle?
+    In Extreme Programming's Test-Driven Development (TDD), what is the specific objective of the <strong>&quot;Refactor&quot;</strong> step in the Red-Green-Refactor cycle?
   </div>
 
   <div class="quiz-grid">
@@ -1417,7 +1417,7 @@ To summarize this slide, remember this key takeaway: Reflect critically on each 
   </div>
 
   <div class="quiz-qbox">
-    In requirements engineering, what is the critical operational distinction between **User Requirements** and **System Requirements**?
+    In requirements engineering, what is the critical operational distinction between <strong>User Requirements</strong> and <strong>System Requirements</strong>?
   </div>
 
   <div class="quiz-grid">
@@ -1525,7 +1525,7 @@ To summarize this slide, remember this key takeaway: Domain Requirements (UberEa
   </div>
 
   <div class="quiz-qbox">
-    A client provides an imprecise non-functional goal: *&quot;The order checkout system must be blazing fast and highly reliable.&quot;* Which of the following correctly transforms this vague goal into a **verifiable, testable engineering metric**?
+    A client provides an imprecise non-functional goal: <em>&quot;The order checkout system must be blazing fast and highly reliable.&quot;</em> Which of the following correctly transforms this vague goal into a <strong>verifiable, testable engineering metric</strong>?
   </div>
 
   <div class="quiz-grid">
@@ -1579,7 +1579,7 @@ To summarize this slide, remember this key takeaway: Verifiable & Measurable NFR
   </div>
 
   <div class="quiz-qbox">
-    During a requirements elicitation interview, an executive insists: *&quot;Our clinical software must include a blockchain ledger to record patient vitals.&quot;* What is the most effective engineering interview heuristic to apply?
+    During a requirements elicitation interview, an executive insists: <em>&quot;Our clinical software must include a blockchain ledger to record patient vitals.&quot;</em> What is the most effective engineering interview heuristic to apply?
   </div>
 
   <div class="quiz-grid">
@@ -1633,7 +1633,7 @@ To summarize this slide, remember this key takeaway: Root Cause & The 5 Whys Heu
   </div>
 
   <div class="quiz-qbox">
-    In requirements engineering, why is **Ethnography (workplace observation)** uniquely vital when analyzing complex operational environments such as hospital emergency rooms or air traffic control?
+    In requirements engineering, why is <strong>Ethnography (workplace observation)</strong> uniquely vital when analyzing complex operational environments such as hospital emergency rooms or air traffic control?
   </div>
 
   <div class="quiz-grid">
@@ -1687,7 +1687,7 @@ To summarize this slide, remember this key takeaway: Ethnography & Tacit Knowled
   </div>
 
   <div class="quiz-qbox">
-    A software engineering team creates a UML Use Case Diagram showing an actor connected to the &quot;Withdraw Cash&quot; use case. Why must engineers author a detailed textual **Use Case Description** in addition to the diagram?
+    A software engineering team creates a UML Use Case Diagram showing an actor connected to the &quot;Withdraw Cash&quot; use case. Why must engineers author a detailed textual <strong>Use Case Description</strong> in addition to the diagram?
   </div>
 
   <div class="quiz-grid">

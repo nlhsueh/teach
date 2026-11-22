@@ -75,7 +75,7 @@ In Part 2 (Modules 6.4 to 6.6), we step into the AI era and engineering verifica
 <!-- _class: lead -->
 <!-- header: '6.1 Foundations of User Experience (UX)' -->
 
-# **6.1 Foundations of User Experience (UX)**
+# <strong>6.1 Foundations of User Experience (UX)</strong>
 
 > "Good design is actually a lot harder to notice than poor design, in part because good designs fit our needs so well that the design is invisible."
 > — *Don Norman, The Design of Everyday Things*
@@ -315,8 +315,8 @@ Nearly everyone tapped #1 (Mask Query)! Yet tapping #1 only opened a static link
 ## Case Study Analysis: Backend-Driven vs. User-Centered UX
 
 * **Why the v1 Emergency Design Failed (Implementation-Driven UI):**
-  - **Module Convenience:** Because mask pre-ordering required identity login, engineers stuffed it inside **#2 My Health Bank (`健康存摺`)** where authentication already existed.
-  - **False Signifier Trap:** Icon **#1 (`口罩查詢`)** had a mask illustration and the word "Mask".
+  - **Module Convenience:** Because mask pre-ordering required identity login, engineers stuffed it inside <strong>#2 My Health Bank (`健康存摺`)</strong> where authentication already existed.
+  - **False Signifier Trap:** Icon <strong>#1 (`口罩查詢`)</strong> had a mask illustration and the word "Mask".
   - **Inconsistent Visual Weight:** Icons had random sizes and shapes (circles, rectangles, 3D books) with zero grid alignment.
 * **How the Refactored Version Fixed It (Goal-Directed 3×3 Grid):**
   - **Surface-Level Task Visibility:** Extracted **`eMask 口罩預購`**, **`History 購買紀錄`**, and **`Mask Map 口罩地圖`** as distinct, top-row first-class actions matching citizen goals.
@@ -710,7 +710,7 @@ On the right ("Good Natural Mapping"), the four knobs are positioned in a 2×2 p
   - ❌ *"Transaction Exception 403: Acquirer socket connection timed out."*
   - Leaves customers anxious: *"Was my credit card charged or not?"*
 * **Human-Centered Language (Good):**
-  - ✅ **Reassuring Status:** Clearly confirms **"we couldn't complete the charge"** (no money lost!).
+  - ✅ **Reassuring Status:** Clearly confirms <strong>"we couldn't complete the charge"</strong> (no money lost!).
   - ✅ **Everyday Vocabulary:** Explains that the *"payment channel is currently busy."*
   - ✅ **Actionable Next Steps:** Offers clear choices (**`Retry Payment`** or **`Use Different Card`**).
 
@@ -1731,7 +1731,7 @@ The correct answer is **Option B: NS05 (Error Prevention)**. Rather than waiting
 ---
 ## Pair Discussion: Real-World Heuristic Audit (30 Mins)
 
-> **Mission (⏱️ 30 Mins):** In pairs, choose **one** familiar system below and create a short **slide deck with annotated screenshots** showing which designs **satisfy (✅)** and which **violate (❌)** `NS01–NS10`.
+> **Mission (⏱️ 30 Mins):** In pairs, choose **one** familiar system below and create a short **slide deck with annotated screenshots** showing which designs <strong>satisfy (✅)</strong> and which <strong>violate (❌)</strong> `NS01–NS10`.
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
@@ -1817,7 +1817,7 @@ As Tidwell reminds us, users do not open our software to admire its visual chrom
 ### 2. Jenifer Tidwell's Canon & Curated Scope
 - **Pioneering Origins & Seminal Book (*Designing Interfaces*)**:
   - Pioneered HCI pattern languages at MIT (**1997** *"Common Ground"* catalog), inspired by Christopher Alexander (1977) & GoF (1994).
-  - Authored ***Designing Interfaces*** (O'Reilly): **1st Ed. (2005)**, **2nd Ed. (2010)**, and **3rd Ed. (2020**, with C. Brewer & A. Valencia) across desktop, web, and mobile.
+  - Authored ***Designing Interfaces*** (O'Reilly): <strong>1st Ed. (2005)</strong>, <strong>2nd Ed. (2010)</strong>, and **3rd Ed. (2020**, with C. Brewer & A. Valencia) across desktop, web, and mobile.
 - **Vast Catalog of 100+ Patterns → 4 Core Dimensions**:
   - Encompasses 100+ patterns spanning forms, navigation, canvases, and data grids; we curate the highest-impact patterns into **4 architectural dimensions**.
 
@@ -1848,9 +1848,9 @@ Third, think of the relationship between Nielsen and Tidwell as a two-sided coin
 <div class="card" data-marpit-fragment>
 
 ### Dimensions 1 & 2: Behaviors & Content Structure
-- **1. Core User Behaviors (Human Psychology)**:
+- <strong>1. Core User Behaviors (Human Psychology)</strong>:
   - Designing for how the human brain actually operates: safe exploration, instant gratification, satisficing, habituation, and spatial memory.
-- **2. Organizing Content & Layout (Information Architecture)**:
+- <strong>2. Organizing Content & Layout (Information Architecture)</strong>:
   - The content discovery trifecta (Search / Feature / Browse), dashboards, progressive disclosure, and multi-step wizards.
 
 </div>
@@ -1859,7 +1859,7 @@ Third, think of the relationship between Nielsen and Tidwell as a two-sided coin
 ### Dimensions 3 & 4: Navigation & Data Display
 - **3. Wayfinding & Navigation Mechanisms**:
   - Answering "Where am I, how much is left, and how do I get out?", modal panel rules, escape hatches, and 3-tier orientation.
-- **4. Data Display (Lists, Grids & Tables)**:
+- <strong>4. Data Display (Lists, Grids & Tables)</strong>:
   - Responsive list strategies: Desktop Two-Panel Split View vs. Mobile One-Window Drilldown, thumbnail grids, carousels, and live platform teardowns.
 
 </div>
@@ -1891,26 +1891,26 @@ Dimension 4 tackles Data Display & Lists—helping users browse and compare mass
 <div class="card" data-marpit-fragment>
 
 ### 1. Exploration & Immediate Feedback
-- **Safe Exploration (TW1.1)**:
+- <strong>Safe Exploration (TW1.1)</strong>:
   - Eliminate the fear of clicking! Always provide low-cost trial and an instant, frictionless undo pathway (**Undo Toast**).
-- **Instant Gratification (TW1.2)**:
+- <strong>Instant Gratification (TW1.2)</strong>:
   - Provide a one-click fast-track to the user's primary goal (e.g., e-commerce "Buy Again" button), bypassing multi-step funnels.
-- **Changes in Midstream (TW1.4)**:
+- <strong>Changes in Midstream (TW1.4)</strong>:
   - Allow users to modify query parameters mid-flow (e.g., train schedule "Earlier / Later Trains") without starting over from scratch.
-- **Deferred Choice (TW1.5)**:
+- <strong>Deferred Choice (TW1.5)</strong>:
   - Minimize upfront friction; allow users to skip secondary setup steps (**Skip for now**).
 
 </div>
 <div class="card" data-marpit-fragment>
 
 ### 2. Cognitive Load & Memory Support
-- **Incremental Construction (TW1.6)**:
+- <strong>Incremental Construction (TW1.6)</strong>:
   - Provide instant, real-time live previews as users author content (e.g., Overleaf / Markdown editors) to reduce working memory load.
-- **Habituation (TW1.7)**:
+- <strong>Habituation (TW1.7)</strong>:
   - Adhere to standard conventions (e.g., persistent left sidebar) to build unconscious muscle memory.
-- **Spatial Memory (TW1.9)**:
+- <strong>Spatial Memory (TW1.9)</strong>:
   - Keep critical tools fixed in place (e.g., Settings gear in the top-right corner); never allow core controls to randomly drift!
-- **Prospective Memory (TW1.10)**:
+- <strong>Prospective Memory (TW1.10)</strong>:
   - Use visual badges and counter markers to remind users of future unfinished tasks.
 
 </div>
@@ -2038,13 +2038,13 @@ Beside that sits **Progressive Disclosure** (often implemented as "Show More" dr
 <div class="card" data-marpit-fragment>
 
 ### 1. Discovery Trifecta & Spatial Frameworks
-- **The Content Discovery Trifecta (TW2.1)**:
+- <strong>The Content Discovery Trifecta (TW2.1)</strong>:
   - **Search**: For high-intent users with direct, explicit queries.
-  - **Feature / Center Stage (TW4.2)**: Curated system highlights that command immediate visual focus.
+  - <strong>Feature / Center Stage (TW4.2)</strong>: Curated system highlights that command immediate visual focus.
   - **Browse**: For exploratory users navigating category hierarchies.
-- **The Dashboard (TW2.5)**:
+- <strong>The Dashboard (TW2.5)</strong>:
   - Aggregates critical high-density KPIs in high-contrast visual tiles for rapid scanning.
-- **Alternative Views (TW2.9)**:
+- <strong>Alternative Views (TW2.9)</strong>:
   - Empowers users to toggle between representations of identical data (e.g., spatial Map View vs. linear List View).
 
 </div>
@@ -2053,11 +2053,11 @@ Beside that sits **Progressive Disclosure** (often implemented as "Show More" dr
 ### 2. Temporal Organization & Complexity Control
 - **Progressive Disclosure**:
   - Keep initial screens clean; reveal advanced tools only when the user executes a relevant contextual action.
-- **The Wizard (TW2.7)**:
+- <strong>The Wizard (TW2.7)</strong>:
   - Deconstructs an intimidating, multi-parameter process into a strict, predefined linear flow (Step 1 → 2 → 3).
-- **Module Tabs (TW4.5)**:
+- <strong>Module Tabs (TW4.5)</strong>:
   - Best for **mutually exclusive** datasets at the **same hierarchical level** (swapping global context).
-- **Accordion (TW4.6)**:
+- <strong>Accordion (TW4.6)</strong>:
   - Best for **drilling down into hierarchical details** (e.g., FAQs) without navigating away from the current page.
 
 </div>
@@ -2173,18 +2173,18 @@ On the right, **Responsive Disclosure** shows how a multi-step checkout or confi
 ---
 ## Section 3: Wayfinding & Navigation Mechanisms (Wayfinding & Navigation)
 
-> **Guiding Principle:** An effective navigation system answers the three fundamental questions of digital space: **"Where am I? How much is left? How do I get out?"**
+> **Guiding Principle:** An effective navigation system answers the three fundamental questions of digital space: <strong>"Where am I? How much is left? How do I get out?"</strong>
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
 ### 1. Entry Points & The Golden Rule of Modals
-- **Clear Entry Points (TW3.1)**:
+- <strong>Clear Entry Points (TW3.1)</strong>:
   - An unmistakable starting line (e.g., bold "Get Started" or "Log In" CTAs) that eliminates hesitation.
-- **Sign-in Tools (TW3.9)**:
+- <strong>Sign-in Tools (TW3.9)</strong>:
   - Account profile, organization switches, and logout options anchored persistently in the top-right corner.
 - **The Golden Rule of Modals**:
-  - When forcing users into a **Forced Response Panel (Modal Panels, TW3.4)** to guarantee focus:
+  - When forcing users into a <strong>Forced Response Panel (Modal Panels, TW3.4)</strong> to guarantee focus:
   - **You must explicitly engineer the Escape Hatch (TW3.6)!**
   - **The top-right "✕" close button is just as important as the Submit button.** Never trap users in dead-ends!
 
@@ -2192,11 +2192,11 @@ On the right, **Responsive Disclosure** shows how a multi-step checkout or confi
 <div class="card" data-marpit-fragment>
 
 ### 2. The 3-Tier Orientation & Progress Hierarchy
-- **Top Tier (Process Progress, TW3.10)**:
+- <strong>Top Tier (Process Progress, TW3.10)</strong>:
   - **Progress Indicators**: Numbered stepper nodes (Step 1 → 2 → 3 → 4) answering *"How many steps remain?"* in multi-step flows.
-- **Middle Tier (Architectural Hierarchy, TW3.11)**:
+- <strong>Middle Tier (Architectural Hierarchy, TW3.11)</strong>:
   - **Breadcrumbs**: Clickable hierarchical trails answering *"Where am I in the nested information tree?"*
-- **Bottom Tier (Page-Level Navigation, TW3.12)**:
+- <strong>Bottom Tier (Page-Level Navigation, TW3.12)</strong>:
   - **Annotated Scrollbars**: Visual letter index or markers on the scrollbar answering *"Where am I in this massive list?"*
 
 </div>
@@ -2298,10 +2298,10 @@ Notice the Annotated Scrollbar on the bottom right: every developer who uses VS 
 <div class="card" data-marpit-fragment>
 
 ### 1. Responsive List Architecture Strategies
-- **Desktop Context: Two-Panel Split View (TW7.1)**:
+- <strong>Desktop Context: Two-Panel Split View (TW7.1)</strong>:
   - Keeps the master list persistent on the left while displaying active record details on the right (e.g., Slack, Outlook).
   - **Key Benefit**: Completely eliminates back-and-forth round-trip navigation.
-- **Mobile Context: One-Window Drilldown (TW7.2)**:
+- <strong>Mobile Context: One-Window Drilldown (TW7.2)</strong>:
   - On narrow viewports, the master list is replaced entirely by the detail screen (e.g., iOS Mail).
   - **Mandatory Rule**: A prominent, unambiguous Back navigation button is strictly required.
 
@@ -2309,11 +2309,11 @@ Notice the Annotated Scrollbar on the bottom right: every developer who uses VS 
 <div class="card" data-marpit-fragment>
 
 ### 2. Space Compression & Visual Scanning
-- **Thumbnail Grid (TW7.5)**:
+- <strong>Thumbnail Grid (TW7.5)</strong>:
   - "Small but many" matrix layout (e.g., photo galleries) optimized for rapid human visual scanning and comparison.
-- **Carousel (TW7.6)**:
+- <strong>Carousel (TW7.6)</strong>:
   - Compresses multiple visual assets onto a single horizontal plane; demands clear directional affordances (arrows/dots).
-- **Pagination (TW7.7) & New-Item Row (TW7.10)**:
+- <strong>Pagination (TW7.7) & New-Item Row (TW7.10)</strong>:
   - Partitions massive datasets and provides inline creation at list boundaries.
 
 </div>
@@ -2828,7 +2828,7 @@ On the right (**Guardrail 4**), error prevention also operates proactively at th
   - **Slash Commands:** Quick keyboard triggers (`/explain`, `/refactor`, `/fix-tests`) allowing power users to bypass conversational typing.
   - **Multi-Modal Drag-and-Drop:** Allowing users to drag screenshots, PDF diagrams, and log files directly into the prompt box.
 * **AI + NS10 (Explainable AI - XAI):**
-  - **"Why this answer?":** Contextual tooltips explaining which source documents or prompt instructions triggered the recommendation.
+  - <strong>"Why this answer?":</strong> Contextual tooltips explaining which source documents or prompt instructions triggered the recommendation.
   - **Model Cards & Confidence Meters:** Explicitly disclosing active model versions and estimated prediction confidence.
 
 <!--
@@ -2869,7 +2869,7 @@ Notice how a single well-designed AI input workspace serves both ends of the use
 <div class="ccq-columns">
   <div class="ccq-text">
 
-When designing an autonomous AI coding assistant that can inspect directories, edit source files, and execute shell commands, which design pattern best fulfills **Error Prevention (NS05)** and **User Agency (NS03)**?
+When designing an autonomous AI coding assistant that can inspect directories, edit source files, and execute shell commands, which design pattern best fulfills <strong>Error Prevention (NS05)</strong> and <strong>User Agency (NS03)</strong>?
 
 - **A.** Allowing the agent to execute all file deletions and shell scripts silently in the background without user interruption.
 - **B.** Requiring explicit human-in-the-loop review and confirmation before executing high-risk file modifications or system terminal commands.
@@ -3014,7 +3014,7 @@ Here are the completed principles and technical terms:
 * **3.** Nielsen Heuristic **NS05: Error Prevention** states that preventing mistakes beforehand is vastly superior to displaying polite error messages.
 * **4.** The prompt engineering framework for designers consisting of Role, Task, Constraint, and Format is abbreviated **RTCF**.
 * **5.** In AI interfaces, displaying streaming tokens and collapsible reasoning steps exemplifies heuristic **NS01**: Visibility of System Status.
-* **6.** On Nielsen's severity rating scale, a usability defect that completely blocks task completion and prevents product release is rated as a **4 (Catastrophe)**.
+* **6.** On Nielsen's severity rating scale, a usability defect that completely blocks task completion and prevents product release is rated as a <strong>4 (Catastrophe)</strong>.
 
 <!--
 Here is the complete **Solution Key & Conceptual Synthesis** for our recap challenge!

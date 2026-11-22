@@ -61,12 +61,12 @@ To summarize this slide, remember this key takeaway: This roadmap guides our jou
 ---
 ## Focus Questions
 
-* What is **Requirements Engineering (RE)** and why is fixing requirements errors early so critical?
+* What is <strong>Requirements Engineering (RE)</strong> and why is fixing requirements errors early so critical?
 * What is the fundamental difference between **User Requirements** and **System Requirements**?
 * How do **Functional**, **Non-Functional**, and **Domain Requirements** differ?
 * What are the 4 main stages of the **Requirements Elicitation & Analysis** process?
 * How can non-functional goals be transformed into **verifiable, testable metrics**?
-* How do modern **Large Language Models (LLMs)** enhance the RE process, and what are the human-in-the-loop safeguards?
+* How do modern <strong>Large Language Models (LLMs)</strong> enhance the RE process, and what are the human-in-the-loop safeguards?
 
 <!--
 Before we dive into the details, keep these focus questions in mind throughout our lecture.
@@ -1173,7 +1173,7 @@ To summarize this slide, remember this key takeaway: Analyzing existing forms an
 | Technique | Primary Strengths | Main Limitations | Best Applied When... |
 |---|---|---|---|
 | **Interviews** | High depth; builds personal stakeholder rapport | Vulnerable to bias; misses tacit knowledge | Initial discovery & understanding broad goals |
-| **Workshops (JAD)** | Resolves conflicting priorities; rapid alignment | Scheduling friction; dominant personalities | Multiple stakeholders have competing requirements |
+| <strong>Workshops (JAD)</strong> | Resolves conflicting priorities; rapid alignment | Scheduling friction; dominant personalities | Multiple stakeholders have competing requirements |
 | **Ethnography** | Discovers actual behavior & informal workarounds | Highly time-consuming; non-generalizable | Complex, physical, high-stress work environments |
 | **User Stories & Scenarios** | Testable; directly feeds agile sprint backlogs | Can miss global non-functional constraints | Defining incremental user-facing features |
 | **Doc Analysis** | Highly objective; uncovers legacy business rules | Documents are often outdated or aspirational | Replacing legacy systems & regulated domains |
@@ -1254,7 +1254,7 @@ To summarize this slide, remember this key takeaway: Always probe past superfici
 <div class="ccq-columns">
   <div class="ccq-text">
 
-In requirements engineering, why is **Ethnography (workplace observation)** uniquely vital when analyzing complex operational environments such as hospital emergency rooms or air traffic control?
+In requirements engineering, why is <strong>Ethnography (workplace observation)</strong> uniquely vital when analyzing complex operational environments such as hospital emergency rooms or air traffic control?
 
 - **A.** It uncovers tacit knowledge—ingrained habits, physical workarounds, and unwritten shortcuts that users perform automatically but never mention during interviews.
 - **B.** It automatically compiles natural language requirements directly into executable acceptance test suites without human intervention.

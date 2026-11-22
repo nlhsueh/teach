@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="fd-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0f9ff" />
+      <stop offset="100%" stop-color="#e0f2fe" />
+    </linearGradient>
+    <linearGradient id="fd-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b3c5d" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="fd-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    <filter id="fd-shadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <!-- Outer Rounded Backdrop (Matches slide palette) -->
+  <rect x="6" y="6" width="348" height="308" rx="18" fill="url(#fd-bg)" stroke="#bae6fd" stroke-width="2" />
+
+  <!-- Top Brand Header Pill -->
+  <rect x="20" y="18" width="320" height="54" rx="12" fill="url(#fd-card)" filter="url(#fd-shadow)" />
+  <circle cx="48" cy="45" r="18" fill="#f97316" />
+  <!-- Burger / Cloche Icon inside orange badge -->
+  <path d="M38 47 C38 40, 58 40, 58 47 Z" fill="#ffffff" />
+  <rect x="37" y="49" width="22" height="3.5" rx="1.5" fill="#fde047" />
+  <circle cx="48" cy="38" r="2.2" fill="#ffffff" />
+  <text x="76" y="41" font-family="sans-serif" font-size="15.5" font-weight="800" fill="#ffffff">FoodExpress Fee Engine</text>
+  <text x="76" y="59" font-family="monospace" font-size="11.5" font-weight="700" fill="#bae6fd">calcFee(sub, km, tier, rain)</text>
+
+  <!-- Center Scooter & Map Route Graphic -->
+  <rect x="20" y="84" width="320" height="122" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#fd-shadow)" />
+
+  <!-- Rain Clouds & Drops (Top Right of Card) -->
+  <g transform="translate(245, 92)">
+    <path d="M18 22 H46 A10 10 0 0 0 46 4 A13 13 0 0 0 22 2 A11 11 0 0 0 18 22 Z" fill="#cbd5e1" />
+    <line x1="22" y1="27" x2="19" y2="34" stroke="#0284c7" stroke-width="2" stroke-linecap="round" />
+    <line x1="32" y1="27" x2="29" y2="34" stroke="#0284c7" stroke-width="2" stroke-linecap="round" />
+    <line x1="42" y1="27" x2="39" y2="34" stroke="#0284c7" stroke-width="2" stroke-linecap="round" />
+    <rect x="2" y="37" width="66" height="17" rx="8" fill="#eff6ff" stroke="#38bdf8" stroke-width="1" />
+    <text x="35" y="49" font-family="sans-serif" font-size="10" font-weight="800" fill="#0369a1" text-anchor="middle">Rain Surge</text>
+  </g>
+
+  <!-- Dashed Route Line (1 km .. 15 km) -->
+  <path d="M 45 182 Q 115 150, 180 176 T 310 165" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="5 4" />
+  <circle cx="45" cy="182" r="6" fill="#0284c7" />
+  <text x="45" y="198" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#334155" text-anchor="middle">Store</text>
+  <circle cx="310" cy="165" r="7" fill="#16a34a" />
+  <text x="305" y="185" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#15803d" text-anchor="middle">1..15 km</text>
+
+  <!-- Delivery Scooter Illustration -->
+  <g transform="translate(105, 102)">
+    <!-- Thermal Food Box -->
+    <rect x="8" y="12" width="32" height="28" rx="5" fill="url(#fd-orange)" stroke="#c2410c" stroke-width="1.5" />
+    <text x="24" y="30" font-family="sans-serif" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">HOT</text>
+    <!-- Scooter Body -->
+    <path d="M 12 40 L 58 40 L 68 20 L 76 20 L 66 54 L 16 54 Z" fill="#0284c7" />
+    <path d="M 55 40 L 66 16 L 56 16" fill="none" stroke="#0b3c5d" stroke-width="3.5" stroke-linecap="round" />
+    <!-- Seat -->
+    <rect x="24" y="34" width="22" height="7" rx="3" fill="#1e293b" />
+    <!-- Headlight -->
+    <circle cx="71" cy="21" r="4" fill="#fde047" stroke="#ca8a04" stroke-width="1.2" />
+    <!-- Wheels -->
+    <circle cx="22" cy="56" r="11" fill="#1e293b" />
+    <circle cx="22" cy="56" r="5" fill="#e2e8f0" />
+    <circle cx="64" cy="56" r="11" fill="#1e293b" />
+    <circle cx="64" cy="56" r="5" fill="#e2e8f0" />
+    <!-- Speed lines -->
+    <line x1="-12" y1="26" x2="2" y2="26" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="-18" y1="36" x2="-2" y2="36" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+
+  <!-- 4 Input Factor Badges at Bottom -->
+  <g transform="translate(20, 218)">
+    <!-- Badge 1: Subtotal -->
+    <rect x="0" y="0" width="154" height="40" rx="9" fill="#ffffff" stroke="#f59e0b" stroke-width="1.8" />
+    <rect x="7" y="8" width="26" height="24" rx="6" fill="#fef3c7" />
+    <text x="20" y="25" font-family="sans-serif" font-size="14" font-weight="900" fill="#b45309" text-anchor="middle">$</text>
+    <text x="40" y="17" font-family="sans-serif" font-size="11.5" font-weight="800" fill="#0f172a">1. Subtotal (NT$)</text>
+    <text x="40" y="31" font-family="monospace" font-size="10.5" font-weight="700" fill="#b45309">100 .. 10,000</text>
+
+    <!-- Badge 2: Distance -->
+    <rect x="166" y="0" width="154" height="40" rx="9" fill="#ffffff" stroke="#0284c7" stroke-width="1.8" />
+    <rect x="173" y="8" width="26" height="24" rx="6" fill="#e0f2fe" />
+    <text x="186" y="24" font-family="sans-serif" font-size="11.5" font-weight="900" fill="#0369a1" text-anchor="middle">KM</text>
+    <text x="206" y="17" font-family="sans-serif" font-size="11.5" font-weight="800" fill="#0f172a">2. Distance (km)</text>
+    <text x="206" y="31" font-family="monospace" font-size="10.5" font-weight="700" fill="#0369a1">Zone 1 / 3 / 8 / 15</text>
+
+    <!-- Badge 3: VIP Member -->
+    <rect x="0" y="48" width="154" height="40" rx="9" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.8" />
+    <rect x="7" y="56" width="26" height="24" rx="6" fill="#ede9fe" />
+    <text x="20" y="72" font-family="sans-serif" font-size="11" font-weight="900" fill="#6d28d9" text-anchor="middle">VIP</text>
+    <text x="40" y="65" font-family="sans-serif" font-size="11.5" font-weight="800" fill="#0f172a">3. Member Tier</text>
+    <text x="40" y="79" font-family="monospace" font-size="10.5" font-weight="700" fill="#6d28d9">NONE vs. VIP (-20%)</text>
+
+    <!-- Badge 4: Global Clamp -->
+    <rect x="166" y="48" width="154" height="40" rx="9" fill="#ffffff" stroke="#10b981" stroke-width="1.8" />
+    <rect x="173" y="56" width="26" height="24" rx="6" fill="#d1fae5" />
+    <text x="186" y="72" font-family="sans-serif" font-size="11.5" font-weight="900" fill="#047857" text-anchor="middle">CAP</text>
+    <text x="206" y="65" font-family="sans-serif" font-size="11.5" font-weight="800" fill="#0f172a">4. Fee Clamp</text>
+    <text x="206" y="79" font-family="monospace" font-size="10.5" font-weight="700" fill="#047857">NT$ 0 &lt;= fee &lt;= 250</text>
+  </g>
+</svg>

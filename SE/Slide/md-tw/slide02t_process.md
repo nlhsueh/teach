@@ -135,7 +135,7 @@ footer: 'Ch 02 · 軟體流程與開發方法學 (Software Processes & Methodolo
 ## 軟體開發流程與流程模型 (Process & Process Models)
 
 * **何謂「軟體流程 (Software Process)」？**
-  - 為了**開發、演進並維護**一套軟體系統，所執行的一系列具備結構化的**活動 (Activities)、方法 (Methods)、實踐 (Practices) 與轉換 (Transformations)**。
+  - 為了**開發、演進並維護**一套軟體系統，所執行的一系列具備結構化的<strong>活動 (Activities)、方法 (Methods)、實踐 (Practices) 與轉換 (Transformations)</strong>。
 * **何謂「流程模型 (Process Model)」？**
   - 對軟體流程的高度抽象化表現（簡化藍圖）。
   - 它定義了：**應該產出哪些工件 (Artifacts)？由誰負責 (Roles)？遵循何種先後順序 (Phases)？以及何時進行驗證？**
@@ -225,7 +225,7 @@ footer: 'Ch 02 · 軟體流程與開發方法學 (Software Processes & Methodolo
 <!-- _class: lead -->
 <!-- header: '2.2 計畫驅動範式' -->
 
-# **2.2 計畫驅動範式 (瀑布與 V-模型)**
+# <strong>2.2 計畫驅動範式 (瀑布與 V-模型)</strong>
 
 > "Quality is not an act, it is a habit."  
 > 「品質不是一種偶發的行為，而是一種嚴謹的習慣。」  
@@ -249,7 +249,7 @@ footer: 'Ch 02 · 軟體流程與開發方法學 (Software Processes & Methodolo
   - 開發流程的所有活動都依循**預先詳盡制定的計畫**進行。
   - 主張在撰寫任何實作程式碼之前，**完整凍結並定義所有需求與系統架構**。
 * **里程碑式的進度管理 (Milestone-Driven)：**
-  - 每個階段的結束都必須產出受正式版本控制的**文檔工件 (Formal Documents)**。
+  - 每個階段的結束都必須產出受正式版本控制的<strong>文檔工件 (Formal Documents)</strong>。
   - 必須經過利害關係人與品質團隊的正式評審與簽核 (Sign-off) 方能進入下一階段。
 * **適用範疇的決定性特徵：**
   - 系統需求**明確、穩定且具備強大法規限制**（如 FDA 醫療器材認證、DO-178C 航空電子）。
@@ -271,7 +271,7 @@ footer: 'Ch 02 · 軟體流程與開發方法學 (Software Processes & Methodolo
 <div class="content-text">
 
 * **歷史淵源：**
-  - 由 **Winston W. Royce (1970)** 在《*Managing the Development of Large Software Systems*》中首次提出。
+  - 由 <strong>Winston W. Royce (1970)</strong> 在《*Managing the Development of Large Software Systems*》中首次提出。
   - *歷史反諷：* 原文是用來指出這種單向線性流程充滿極高風險且容易招致失敗，主張必須加入疊代回饋；但業界卻誤將其簡化為單向推進的聖經！
 * **五大嚴格序列推進階段：**
   1. **需求分析與定義 (Requirements Definition)：** 完整凍結使用者需求與功能規格。
@@ -347,9 +347,9 @@ footer: 'Ch 02 · 軟體流程與開發方法學 (Software Processes & Methodolo
 <div class="card" data-marpit-fragment>
 
 ### 致命缺陷與主要限制 (Limitations)
-* **「巨石延遲交付」陷阱：** 客戶直到最後一刻才看到軟體，早期毫無實體可用回饋。
+* <strong>「巨石延遲交付」陷阱：</strong> 客戶直到最後一刻才看到軟體，早期毫無實體可用回饋。
 * **對變更極度脆弱：** 開發後期變更需求代價高昂，極易引發災難性延期。
-* **「大爆炸式」整合地獄：** 模組各自為政開發數月，在最後測試階段爆發無數隱蔽接口衝突。
+* <strong>「大爆炸式」整合地獄：</strong> 模組各自為政開發數月，在最後測試階段爆發無數隱蔽接口衝突。
 
 </div>
 </div>
@@ -606,15 +606,15 @@ D：允許跳過單元測試。
 
 **參考解答與講評要點 (Possible Answers & Debriefing Guide)：**
 
-1. **系統 A（心臟起搏器韌體） → V-Model（或嚴格前置驗證的計畫驅動瀑布模型）**
+1. <strong>系統 A（心臟起搏器韌體） → V-Model（或嚴格前置驗證的計畫驅動瀑布模型）</strong>
    - *核心依據：* 生命安全關鍵（FDA Class III 醫療器材）。需求明確且不可妥協，法規強制要求從需求規格到臨床驗收測試具備 100% 雙向追溯矩陣 (RTM)。
    - *錯誤選型災難：* 若採敏捷/Vibe Coding，任何未經驗證的執行階段 Bug 都可能導致心跳停止，且術後召回韌體需進行高風險開胸手術。
 
-2. **系統 B（校園外賣訂餐平台） → 敏捷調適 / 疊代增量模型 (Agile / MVP)**
+2. <strong>系統 B（校園外賣訂餐平台） → 敏捷調適 / 疊代增量模型 (Agile / MVP)</strong>
    - *核心依據：* 高度市場不確定性、預算有限、迫切需要快速驗證商業假設。三週內先上線滑板型 MVP（如 Line Bot + 人工接單），再逐步自動化。
    - *錯誤選型災難：* 若採瀑布花三個月寫規格書，等系統做出來學生早已放寒假，創業資金燒光直接倒閉。
 
-3. **系統 C（無人駕駛捷運號誌系統） → 經典瀑布模型 + V-模型（嚴密階段閘門合約）**
+3. <strong>系統 C（無人駕駛捷運號誌系統） → 經典瀑布模型 + V-模型（嚴密階段閘門合約）</strong>
    - *核心依據：* 龐大政府採購與跨國機電整合，硬體軌道與車載電腦嚴格鎖定，必須有正式驗收里程碑簽核與責任分工。
 
 <!--
@@ -632,7 +632,7 @@ D：允許跳過單元測試。
 <!-- _class: lead -->
 <!-- header: '2.3 變革的機制' -->
 
-# **2.3 變革的機制 (增量與疊代)**
+# <strong>2.3 變革的機制 (增量與疊代)</strong>
 
 > "Think big, start small, learn fast."  
 > 「宏觀思考，微觀啟動，極速學習。」  
@@ -761,14 +761,14 @@ D：允許跳過單元測試。
 ---
 ## 結合模型 (增量 + 疊代) 與最小可行產品 (MVP)
 
-> 在真實世界的敏捷工程中，我們極少單獨使用純增量或純疊代。我們將兩者**深度結合**，打造**最小可行產品 (Minimum Viable Product · MVP)**。
+> 在真實世界的敏捷工程中，我們極少單獨使用純增量或純疊代。我們將兩者**深度結合**，打造<strong>最小可行產品 (Minimum Viable Product · MVP)</strong>。
 
 * **何謂最小可行產品 (MVP)？**
   - Eric Ries《*精實創業 (The Lean Startup)*》定義：*「能讓團隊以最小心力，換取對客戶最大化『經過驗證的學習 (Validated Learning)』之產品版本。」*
 * **增量與疊代的強大加乘綜效：**
   - **版本間進行疊代深化：** 每次發布都覆蓋端到端價值，從粗胚逐步走向精緻。
   - **功能間進行增量擴充：** 當核心功能獲得市場驗證後，再橫向追加相鄰模組（註冊登入 → 購物結帳 → 推薦系統）。
-* **「從滑板到汽車」的經典隱喻 (Henrik Kniberg)：**
+* <strong>「從滑板到汽車」的經典隱喻 (Henrik Kniberg)：</strong>
   - *不是：* 零件孤島組裝（輪胎 → 底盤 → 車殼 → 汽車）。
   - *而是：* 交通工具能力漸進（滑板 → 滑板車 → 腳踏車 → 摩托車 → 汽車）。
   - **在每一步驟中，客戶都能真正代步出行！**
@@ -972,7 +972,7 @@ D：包含機械零件喪失敏捷資格。
 <!-- _class: lead -->
 <!-- header: '2.4 思維轉變 (敏捷哲學)' -->
 
-# **2.4 思維轉變 (敏捷哲學)**
+# <strong>2.4 思維轉變 (敏捷哲學)</strong>
 
 > "Responding to change over following a plan."  
 > 「回應變更重於遵循計畫。」  
@@ -1023,7 +1023,7 @@ D：包含機械零件喪失敏捷資格。
   - 商業世界進入網際網路時代，需求每週都在變更，六個月的規格凍結期注定讓產品「上線即落後」。
 * **雪鳥會議的歷史歷史創舉 (2001 年 2 月)：**
   - 17 位軟體先驅（包含 Kent Beck, Ward Cunningham, Martin Fowler, Jeff Sutherland, Ken Schwaber 等人）於美國猶他州雪鳥召開會議。
-  - 正式誕生了著名的**《敏捷軟體開發宣言 (Agile Manifesto)》**。
+  - 正式誕生了著名的<strong>《敏捷軟體開發宣言 (Agile Manifesto)》</strong>。
 
 <!--
 請大家體會敏捷誕生的歷史脈絡。
@@ -1039,14 +1039,14 @@ D：包含機械零件喪失敏捷資格。
 
 2001 年《敏捷宣言》確立了四對關鍵的價值取向：
 
-1. **個人與互動 (Individuals and interactions)**  
- → 重於 **流程與工具 (processes and tools)**
-2. **可運行的軟體 (Working software)**  
- → 重於 **詳盡的文檔 (comprehensive documentation)**
-3. **客戶協同合作 (Customer collaboration)**  
- → 重於 **合約協商 (contract negotiation)**
-4. **回應變更 (Responding to change)**  
- → 重於 **遵循計畫 (following a plan)**
+1. <strong>個人與互動 (Individuals and interactions)</strong>  
+ → 重於 <strong>流程與工具 (processes and tools)</strong>
+2. <strong>可運行的軟體 (Working software)</strong>  
+ → 重於 <strong>詳盡的文檔 (comprehensive documentation)</strong>
+3. <strong>客戶協同合作 (Customer collaboration)</strong>  
+ → 重於 <strong>合約協商 (contract negotiation)</strong>
+4. <strong>回應變更 (Responding to change)</strong>  
+ → 重於 <strong>遵循計畫 (following a plan)</strong>
 
 > *「也就是說，儘管右項各具其價值，但我們更重視左項的價值。」*
 
@@ -1201,7 +1201,7 @@ D：強制每天工作 16 小時。
 <!-- _class: lead -->
 <!-- header: '2.5 敏捷專案管理' -->
 
-# **2.5 敏捷專案管理 (Scrum 與看板)**
+# <strong>2.5 敏捷專案管理 (Scrum 與看板)</strong>
 
 > "Scrum establishes the cadence; Kanban optimizes the flow."  
 > 「Scrum 建立了團隊協同的節奏；看板優化了價值交付的流動。」  
@@ -1244,15 +1244,15 @@ D：強制每天工作 16 小時。
 
 ## 敏捷專案管理 — Scrum 與看板 (Agile Project Management)
 
-> 敏捷專案管理框架的核心目的，在於組織團隊協同、確立交付節奏與視覺化追蹤進度。它們規範了**「工作如何被協調」**，但刻意對「程式碼如何被具體實作」保持沉默。
+> 敏捷專案管理框架的核心目的，在於組織團隊協同、確立交付節奏與視覺化追蹤進度。它們規範了<strong>「工作如何被協調」</strong>，但刻意對「程式碼如何被具體實作」保持沉默。
 
 * **兩大主流框架的宏觀對照：**
   - **Scrum 框架（時間盒律動模式）：**
-    - 採用固定時長（通常為 1 至 4 週）的**衝刺 (Sprint)**。
+    - 採用固定時長（通常為 1 至 4 週）的<strong>衝刺 (Sprint)</strong>。
     - 衝刺期間**凍結範疇**，團隊專注於交付承諾的「潛在可發布增量」。
   - **看板框架（連續流動拉動模式）：**
     - **不設定固定衝刺週期**，工作以連續流動 (Continuous Flow) 的方式推進。
-    - 透過嚴格限制**「在製品數量 (WIP Limit)」**，將瓶頸無所遁形地暴露出來。
+    - 透過嚴格限制<strong>「在製品數量 (WIP Limit)」</strong>，將瓶頸無所遁形地暴露出來。
 
 <!--
 請理解敏捷專案管理框架的定位：
@@ -1275,7 +1275,7 @@ Scrum 靠「時間盒」推進：兩週一輪，衝刺開始時承諾範疇，�
 * **三大核心工件 (The 3 Artifacts)：**
   - **產品待辦清單 (Product Backlog)：** 依商業價值排序的全局功能需求清單。
   - **衝刺待辦清單 (Sprint Backlog)：** 本次衝刺承諾完成的任務子集與實作計畫。
-  - **產品增量 (Increment)：** 衝刺結束時產出且**符合「完成定義 (DoD)」**的可用軟體。
+  - **產品增量 (Increment)：** 衝刺結束時產出且<strong>符合「完成定義 (DoD)」</strong>的可用軟體。
 
 <!--
 Scrum 的結構非常嚴謹，由三三四構成：三種角色、三個工件、四大儀式。
@@ -1333,7 +1333,7 @@ Scrum 的結構非常嚴謹，由三三四構成：三種角色、三個工件�
 ## 看板框架：持續流動與拉動系統 (Pull Systems)
 
 * **起源與哲學（源自豐田精益生產體系 Toyota Production System）：**
-  - 強調**「價值流動 (Flow)」**與**「消滅浪費 (Muda)」**。
+  - 強調<strong>「價值流動 (Flow)」</strong>與<strong>「消滅浪費 (Muda)」</strong>。
   - 將不可見的軟體工程知識工作，轉化為物理看板上清晰可見的卡片流動。
 * **看板的四大核心實踐：**
   1. **工作流程視覺化 (Visualize the Workflow)：** 清晰劃分分析、開發、審查、測試與部署各個階段。
@@ -1379,7 +1379,7 @@ WIP 限制迫使團隊暴露隱蔽的流程瓶頸，大幅降低多工切換的�
 
 | 比較維度 | Scrum (時間盒衝刺模式) | 看板 Kanban (連續拉動流動模式) |
 | :--- | :--- | :--- |
-| **節奏機制 (Cadence)** | 固定時長衝刺（1–4 週時間盒） | 連續流動，隨時隨需交付發布 |
+| <strong>節奏機制 (Cadence)</strong> | 固定時長衝刺（1–4 週時間盒） | 連續流動，隨時隨需交付發布 |
 | **發布時機** | 衝刺結束時產出產品增量 | 任何功能只要通過測試即可隨時發布 |
 | **變更規範** | 衝刺期間嚴格**凍結範疇** | 只要不超出 WIP 限制，隨時可調整待辦順序 |
 | **在製品限制** | 透過衝刺待辦清單間接限制工作量 | 每個欄位強制設定明確的 **WIP 數量上限** |
@@ -1478,7 +1478,7 @@ D：重新編譯所有模組。
 <!-- _class: lead -->
 <!-- header: '2.6 速度背後的隱形成本 (技術債)' -->
 
-# **2.6 速度背後的隱形成本 (技術債)**
+# <strong>2.6 速度背後的隱形成本 (技術債)</strong>
 
 > "Shipping first time code is like going into debt.  
 > A little debt accelerates development so long as it is paid back promptly with a rewrite."  
@@ -1527,7 +1527,7 @@ D：重新編譯所有模組。
 > 在缺乏工程紀律的情況下快速交付程式碼，就如同向未來的自己**借取金融貸款**。它或許能加速今天的發布，但其累積的複利利息，終將讓未來的研發速率走向徹底破產。
 
 * **隱喻的起源：**
-  - 由敏捷宣言共同起草人、Wiki 發明者 **Ward Cunningham (1992)** 首次提出。
+  - 由敏捷宣言共同起草人、Wiki 發明者 <strong>Ward Cunningham (1992)</strong> 首次提出。
 * **敏捷交付的核心悖論：**
   - Scrum 與看板賦能團隊每個衝刺展示新功能。
   - **致命陷阱：** 一味追求「功能交付速度」，卻忽視了自動化測試與架構重構。
@@ -1567,7 +1567,7 @@ D：重新編譯所有模組。
 > 「缺乏極限編程 (XP) 技術紀律的 Scrum，就如同給跑車裝上除草機引擎：你擁有華麗的管理儀表板與站立會議，但軟體系統一遇高負載便分崩離析。」  
 > — *Martin Fowler*
 
-* **「疲軟 Scrum」的誘人幻覺：**
+* <strong>「疲軟 Scrum」的誘人幻覺：</strong>
   - 團隊全面導入了 Scrum 的**管理儀式**（衝刺規劃、每日站立會議、燃盡圖、回顧會議）。
   - 卻徹底忽視了底層的**卓越工程實踐**（TDD、結對編程、自動化 CI/CD、持續重構）。
 * **忽視技術紀律的慘痛後果：**
@@ -1680,7 +1680,7 @@ D：筆電保固費用。
 <div class="ccq-columns">
   <div class="ccq-text">
 
-Martin Fowler 提出著名的**「疲軟 Scrum (Flaccid Scrum)」**一詞，是用來針砭軟體工程實務中的哪項重大失衡？
+Martin Fowler 提出著名的<strong>「疲軟 Scrum (Flaccid Scrum)」</strong>一詞，是用來針砭軟體工程實務中的哪項重大失衡？
 
 - **A.** 團隊完全不使用電子看板，堅持只在白板上手繪便簽。
 - **B.** 團隊全面導入了 Scrum 的管理外殼與會議儀式，卻徹底忽視了測試驅動開發 (TDD) 與持續重構等核心工程技術實踐。
@@ -1747,7 +1747,7 @@ D：不用使用者故事格式。
 <!-- _class: lead -->
 <!-- header: '2.7 卓越技術紀律 (極限編程 XP)' -->
 
-# **2.7 卓越技術紀律 (極限編程 XP)**
+# <strong>2.7 卓越技術紀律 (極限編程 XP)</strong>
 
 > "Any fool can write code that a computer can understand.  
 > Good programmers write code that humans can understand."  
@@ -1857,11 +1857,11 @@ XP 的核心哲學就是「壓縮回饋週期」：問題被發現得越早，�
 ---
 ## XP 實踐：測試驅動開發 (Test-Driven Development · TDD)
 
-* **「測試先行 (Test-First)」的心智逆轉：**
+* <strong>「測試先行 (Test-First)」的心智逆轉：</strong>
   - **嚴格鐵律：** 在寫任何一行生產程式碼之前，必須先撰寫一個**必定失敗的自動化單元測試**！
   - 迫使工程師站在**呼叫者與使用者**的視角思考 API 介面與邊界合約，徹底根除過度設計。
 * **紅-綠-重構循環 (The Red-Green-Refactor Cycle)：**
-  1. **RED (紅燈階段)：** 撰寫一個微小的單元測試，執行並確認它必定**失敗 (編譯失敗或斷言失敗)**。*（強制思考函式介面與規格邊界）*
+  1. **RED (紅燈階段)：** 撰寫一個微小的單元測試，執行並確認它必定<strong>失敗 (編譯失敗或斷言失敗)</strong>。*（強制思考函式介面與規格邊界）*
   2. **GREEN (綠燈階段)：** 以最快速、最直覺甚至「骯髒硬編碼」的方式撰寫最少量的程式碼，讓測試儘速**變綠燈通過**。*（追求快速驗證）*
   3. **REFACTOR (重構階段)：** 在全套測試綠燈的保護網下，**重組程式架構、消除重複、提升可讀性**，同時確保所有測試始終維持綠燈！
 * **終極效益：** 產出**具備 100% 回歸防護網的整潔程式碼**，任何時刻修改代碼都有十足信心！
@@ -1928,7 +1928,7 @@ TDD 完全顛覆了這個習慣：你連一行生產代碼都還沒寫，就必�
 ## 結對編程與集體代碼所有權 (Pair Programming)
 
 * **結對編程的雙人協同機制：**
-  - 兩位工程師共享同一個工作站：**駕駛員 (Driver)** 專注撰寫代碼與測試；**領航員 (Navigator)** 專注審視架構盲點、邊界條件與長期設計。
+  - 兩位工程師共享同一個工作站：<strong>駕駛員 (Driver)</strong> 專注撰寫代碼與測試；<strong>領航員 (Navigator)</strong> 專注審視架構盲點、邊界條件與長期設計。
 * **集體代碼所有權 (Collective Ownership)：**
   - 嚴禁單一開發者「佔地為王」私有化模組；團隊中任何成員都有權限在任何時間重構任何代碼。
 * **消除知識孤島與「巴士係數 (Bus Factor)」風險：**
@@ -2045,7 +2045,7 @@ D：刪除代碼請 AI 重寫。
 <!-- _class: lead -->
 <!-- header: '2.8 系統架構與協同文化 (DevOps)' -->
 
-# **2.8 系統架構與協同文化 (DevOps)**
+# <strong>2.8 系統架構與協同文化 (DevOps)</strong>
 
 > "You build it, you run it."  
 > 「誰建造它，誰就得維運它。」  
@@ -2087,14 +2087,14 @@ DevOps 透過自動化流水線與雲端架構代碼化，將敏捷的邊界徹�
 
 ## 系統架構與協同文化 — DevOps
 
-> 一種結合文化哲學、組織架構與技術實踐的變革運動，旨在打破**開發 (Dev)** 與**維運 (Ops)** 之間的傳統壁壘，透過自動化流水線、基礎設施即程式碼 (IaC) 與生產環境遙測數據，徹底貫通軟體交付全生命週期。
+> 一種結合文化哲學、組織架構與技術實踐的變革運動，旨在打破<strong>開發 (Dev)</strong> 與<strong>維運 (Ops)</strong> 之間的傳統壁壘，透過自動化流水線、基礎設施即程式碼 (IaC) 與生產環境遙測數據，徹底貫通軟體交付全生命週期。
 
 * **打破「混亂之牆 (Wall of Confusion)」的利益對立：**
   - **開發團隊的激勵誘因：** 渴望持續擁抱變更、極速推出新功能與頻繁發行。
   - **維運團隊的激勵誘因：** 追求系統 100% 穩定、零當機，對任何變更充滿戒心。
 * **DevOps 的核心融合思維：**
   - **左移思維 (Shift-Left)：** 將系統維運、資訊安全與部署品質前移成為開發者的共同責任。
-  - **「誰建造，誰維運」(You build it, you run it)：** Amazon 技術長 Werner Vogels 提出的經典原則，消滅「將代碼拋過高牆」的推諉惡習。
+  - <strong>「誰建造，誰維運」(You build it, you run it)：</strong> Amazon 技術長 Werner Vogels 提出的經典原則，消滅「將代碼拋過高牆」的推諉惡習。
 
 <!--
 讓我們深入 DevOps 的文化與系統本質。
@@ -2141,7 +2141,7 @@ CI 要求大家「每天至少合併一次」！每次提交，自動化伺服�
 * **持續交付 (Continuous Delivery) vs. 持續部署 (Continuous Deployment)：**
   - **持續交付 (Continuous Delivery)：**
     - 程式碼通過全套自動化測試與環境驗證後，**隨時具備可部署至生產環境的狀態**。
-    - 是否真正發行至線上，保留由業務主管**「人工點擊按鈕審批 (Manual Approval)」**決定。
+    - 是否真正發行至線上，保留由業務主管<strong>「人工點擊按鈕審批 (Manual Approval)」</strong>決定。
   - **持續部署 (Continuous Deployment)：**
     - **完全無人工干預的純全自動化流水線**！
     - 任何一行代碼只要通過全套自動化測試閘門，即刻由自動化腳本直接推播發布至真實生產環境！
@@ -2265,7 +2265,7 @@ D：持續部署不用寫測試。
 <!-- _class: lead -->
 <!-- header: '2.9 AI 規格驅動流程' -->
 
-# **2.9 現代新前沿 (AI 規格驅動流程)**
+# <strong>2.9 現代新前沿 (AI 規格驅動流程)</strong>
 
 > "AI is an amplifier: it amplifies disciplined engineering specifications,  
 > but it equally amplifies careless, chaotic habits."  
@@ -2308,7 +2308,7 @@ D：持續部署不用寫測試。
 
 ## AI 賦能 SDLC：軟體流程模型的典範轉移
 
-> 在 AI 時代，軟體工程的核心不再是敲打語法代碼，而是**協調與編排整個軟體生命週期**。AI 將代碼建構的邊際成本降至接近於零，推動人類工程師的價值全力轉移至**上游 (Upstream)** 的規格定義與**下游 (Downstream)** 的嚴密驗證。
+> 在 AI 時代，軟體工程的核心不再是敲打語法代碼，而是**協調與編排整個軟體生命週期**。AI 將代碼建構的邊際成本降至接近於零，推動人類工程師的價值全力轉移至<strong>上游 (Upstream)</strong> 的規格定義與<strong>下游 (Downstream)</strong> 的嚴密驗證。
 
 * **從「以人為本」邁向「代理人自主 (Agentic)」流程：**
   - **傳統流程模型 (瀑布 / 敏捷 / DevOps)：** 核心在於協調*人類開發者*——透過規格文件、每日站立會議、衝刺看板與同儕審查。
@@ -2334,13 +2334,13 @@ D：持續部署不用寫測試。
 ---
 ## 實體化 AI 流程：工程安全裝備 (The Engineering Harness)
 
-> 在敏捷中，流程紀律依賴人類儀式（站立會議、回顧、結對編程）來維持。但**自主 AI 代理人無法參加會議，也不會感到內疚**。因此，流程紀律必須被**「實體化 (Operationalized)」**為代碼化的防禦防護網——即**工程安全帶 (Engineering Harness)**。
+> 在敏捷中，流程紀律依賴人類儀式（站立會議、回顧、結對編程）來維持。但**自主 AI 代理人無法參加會議，也不會感到內疚**。因此，流程紀律必須被<strong>「實體化 (Operationalized)」</strong>為代碼化的防禦防護網——即<strong>工程安全帶 (Engineering Harness)</strong>。
 
 * **何謂工程安全裝備 (Harness)？**
-  - 包裹在 AI 模型外部的**確定性運作環境、沙盒、輸入導軌 (Input Rails) 與驗證管線 (Verification Pipelines)**。
+  - 包裹在 AI 模型外部的<strong>確定性運作環境、沙盒、輸入導軌 (Input Rails) 與驗證管線 (Verification Pipelines)</strong>。
 * **為什麼單靠 Prompt Engineering 必然失敗？**
-  - 提示詞本質是**隨機性 (Probabilistic)** 的，無法保證 100% 遵守邊界規範。
-  - 唯有透過**確定性 (Deterministic)** 的編譯器、靜態分析器、單元測試與安全沙盒，才能強制確保 AI 代碼具備工業級生產可靠度。
+  - 提示詞本質是<strong>隨機性 (Probabilistic)</strong> 的，無法保證 100% 遵守邊界規範。
+  - 唯有透過<strong>確定性 (Deterministic)</strong> 的編譯器、靜態分析器、單元測試與安全沙盒，才能強制確保 AI 代碼具備工業級生產可靠度。
 
 <!--
 這是一個極度深刻的觀念：如何管控 AI 代理人？
@@ -2420,7 +2420,7 @@ D：持續部署不用寫測試。
   [測試全部通過 All Green] ──> 提交人類同儕審查 (PR Review) ──> 發布部署
 ```
 
-* **人類角色的根本轉變：** 人類工程師不再花費數小時手打 CRUD 樣板程式，而是專注於**第 1 步的「規格精度」**與**最終 PR 合併前的「架構與資安把關」**。
+* **人類角色的根本轉變：** 人類工程師不再花費數小時手打 CRUD 樣板程式，而是專注於<strong>第 1 步的「規格精度」</strong>與<strong>最終 PR 合併前的「架構與資安把關」</strong>。
 
 <!--
 請看這幅實務開發迴路。
@@ -2473,7 +2473,7 @@ AI 代理人開始編程；寫完後自動進入第三步的確定性驗證。
 * **4. 維持嚴格的代理人沙盒邊界 (Maintain Strict Sandbox Boundaries)：**
   - 限制 AI 工具調用與檔案存取權限，落實最小權限原則 (Principle of Least Privilege)。
 
-> **軟體工程師的全新角色定位：** 你不再只是代碼打字員，而是**系統總建築師 (Systems Architect)、規格撰寫者 (Specification Author) 與驗證治理官 (Verification Governor)**。
+> **軟體工程師的全新角色定位：** 你不再只是代碼打字員，而是<strong>系統總建築師 (Systems Architect)、規格撰寫者 (Specification Author) 與驗證治理官 (Verification Governor)</strong>。
 
 <!--
 請大家將這四條黃金法則銘刻在心。

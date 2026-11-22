@@ -305,7 +305,7 @@ To summarize this slide, remember this key takeaway: Maintain a broad base of fa
 
 * **Unit Testing:**
   - Evaluates individual functions, algorithms, or object classes in strict isolation.
-  - Isolates external dependencies (databases, external APIs, filesystem) using **test doubles (mocks, stubs, and fakes)**.
+  - Isolates external dependencies (databases, external APIs, filesystem) using <strong>test doubles (mocks, stubs, and fakes)</strong>.
   - Executed locally by developers and in automated pre-commit hooks.
 * **Component Testing:**
   - Evaluates clusters of cooperating classes that together form a cohesive functional component or subsystem.
@@ -772,7 +772,7 @@ To summarize this slide, remember this key takeaway: Combinatorial and tabular t
   - Testing all combinations (Strong EP / Cartesian Product) across $k$ parameters each with $v$ values requires **$v^k$ test cases**.
   - Example: A web application with 10 dropdowns, each having 3 choices, requires $3^{10} = \mathbf{59,049}$ test cases!
 * **The Empirical Pairwise Principle:**
-  - Studies by the US National Institute of Standards and Technology (NIST) show that **between 67% and 93% of all software defects are triggered by interactions between at most 2 parameters (pairs)**.
+  - Studies by the US National Institute of Standards and Technology (NIST) show that <strong>between 67% and 93% of all software defects are triggered by interactions between at most 2 parameters (pairs)</strong>.
 
 <div style="text-align: center; margin-top: 10px;">
   <img src="../../img/ch07/all_pairs_testing.svg" style="max-height: 220px;" alt="All-Pairs Testing" />
@@ -1056,7 +1056,7 @@ To summarize this slide, remember this key takeaway: Short-circuiting skips righ
 ## Concept Check Question 4: Condition vs. Branch Coverage
 
 Given the decision statement `if (X > 10 && Y == 1)`:
-Which test suite achieves **100% Condition Coverage (CC100)** but completely **FAILS to achieve Branch Coverage (BC100)**?
+Which test suite achieves <strong>100% Condition Coverage (CC100)</strong> but completely <strong>FAILS to achieve Branch Coverage (BC100)</strong>?
 
 - **A.** $T_1: (X = 12, Y = 1)$ and $T_2: (X = 5, Y = 2)$
 - **B.** $T_1: (X = 12, Y = 2)$ and $T_2: (X = 5, Y = 1)$
@@ -1141,7 +1141,7 @@ To summarize this slide, remember this key takeaway: Multiple Condition Combinat
 ## 5. Modified Condition / Decision Coverage (MC/DC)
 
 * **Safety-Critical Standard:**
-  - Mandated by **FAA / RTCA DO-178B/C (Level A)** for commercial aircraft flight control software.
+  - Mandated by <strong>FAA / RTCA DO-178B/C (Level A)</strong> for commercial aircraft flight control software.
 * **The 4 MC/DC Requirements:**
   1. Every decision point has evaluated to **True** and **False** at least once (BC100).
   2. Every condition within a decision has evaluated to **True** and **False** at least once (CC100).
@@ -1164,7 +1164,7 @@ To summarize this slide, remember this key takeaway: MC/DC provides avionics-gra
 ## MC/DC Independence Pair Analysis & Benchmark Suite
 
 * **Independence Pair Concept:**
-  - For condition $c_i$, find two test cases where $c_i$ toggles ($T \left→ F$), all other conditions $c_j$ remain identical, and the **final decision outcome toggles ($T \left→ F$)**.
+  - For condition $c_i$, find two test cases where $c_i$ toggles ($T \left→ F$), all other conditions $c_j$ remain identical, and the <strong>final decision outcome toggles ($T \left→ F$)</strong>.
 * **MC/DC Test Suite for Benchmark Decision 1: `(A > 1 && B == 0)`:**
   | Test ID | Input $(A, B)$ | $c_1: (A > 1)$ | $c_2: (B == 0)$ | Decision Outcome ($b_1$) | Validates Independence Of |
   | :--- | :---: | :---: | :---: | :---: | :--- |
@@ -1325,12 +1325,12 @@ To summarize this slide, remember this key takeaway: High coverage is a necessar
 
 | Coverage Criterion | Target Evaluated | Benchmark Test Cases Needed | Key Strength / Practical Limitation |
 | :--- | :--- | :---: | :--- |
-| **Statement (SC)** | Executable statements | **1 Test:** $(2, 0, 3)$ | Baseline requirement; blind to missing branches & logic defects. |
-| **Branch (BC)** | Decision outcomes ($T/F$) | **2 Tests:** $(3,0,3), (3,1,1)$ | Standard commercial baseline; guarantees 100% Statement Coverage. |
-| **Condition (CC)** | Atomic conditions ($T/F$) | **2 Tests:** $(2,0,3), (1,1,1)$ | Tests condition primitives; does **NOT** guarantee Branch Coverage! |
+| <strong>Statement (SC)</strong> | Executable statements | **1 Test:** $(2, 0, 3)$ | Baseline requirement; blind to missing branches & logic defects. |
+| <strong>Branch (BC)</strong> | Decision outcomes ($T/F$) | **2 Tests:** $(3,0,3), (3,1,1)$ | Standard commercial baseline; guarantees 100% Statement Coverage. |
+| <strong>Condition (CC)</strong> | Atomic conditions ($T/F$) | **2 Tests:** $(2,0,3), (1,1,1)$ | Tests condition primitives; does **NOT** guarantee Branch Coverage! |
 | **MC/DC** | Condition independence | **3 Tests ($N+1$):** $(2,0),(1,0),(2,1)$ | DO-178B/C avionics standard; linear scaling with maximum rigor. |
-| **Multiple Cond (MCC)** | Condition combinations | **4 Tests ($2^N$):** TT, TF, FT, FF | Exhaustive truth table testing; suffers from exponential explosion. |
-| **Path (PC)** | Entry-to-exit paths | **4 Tests** | Complete path execution; suffers from catastrophic loop explosion. |
+| <strong>Multiple Cond (MCC)</strong> | Condition combinations | **4 Tests ($2^N$):** TT, TF, FT, FF | Exhaustive truth table testing; suffers from exponential explosion. |
+| <strong>Path (PC)</strong> | Entry-to-exit paths | **4 Tests** | Complete path execution; suffers from catastrophic loop explosion. |
 
 <!--
 This master comparison table synthesizes all six structural criteria evaluated on our standard benchmark program.
@@ -1369,7 +1369,7 @@ Here are the completed principles and technical terms:
 
 * **1.** The Pareto Principle in software testing states that roughly **80%** of defects cluster in **20%** of modules.
 * **2.** Under the Single Fault Assumption, Independent Normal Boundary Value Analysis requires **$4n + 1$** test cases for $n$ variables.
-* **3.** **All-Pairs (Pairwise)** testing ensures that every pair of parameter values is tested together at least once, preventing combinatorial explosion.
+* **3.** <strong>All-Pairs (Pairwise)</strong> testing ensures that every pair of parameter values is tested together at least once, preventing combinatorial explosion.
 * **4.** Achieving 100% Branch Coverage strictly guarantees 100% **Statement** Coverage ($BC100 \implies SC100$), but does not guarantee Condition Coverage.
 * **5.** The safety-critical standard mandated for commercial flight software that achieves condition independence in $N+1$ tests is **MC/DC**.
 * **6.** Basis Path Testing utilizes McCabe's **Cyclomatic** Complexity to determine the minimum number of independent execution paths.
