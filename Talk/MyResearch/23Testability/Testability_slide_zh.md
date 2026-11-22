@@ -4,7 +4,7 @@ theme: gaia
 size: 16:9
 paginate: true
 html: true
-header: '<div class="hdr-wrap"><span class="hdr-title">Pytutor：線上程式設計平台與學習者測試能力研究</span><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：盲目提交 vs. 自訂測資</a><a href="#3">簡報大綱</a><a href="#4">1. 研究動機與問題</a><a href="#6">2. 文獻回顧與缺口</a><a href="#7">3. Pytutor 與能力指標</a><a href="#11">4. 課程實驗與 RQ1–RQ3</a><a href="#17">5. 比較、限制與教學啟示</a><a href="#19">6. 結論與未來研究</a></div></div></div>'
+header: '<div class="hdr-wrap"><span class="hdr-title">Pytutor：線上程式設計平台與學習者測試能力研究</span><div class="hdr-actions"><a class="lang-btn" href="./Testability_slide.html" title="Switch to English Slides">🌐 EN</a><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：盲目提交 vs. 自訂測資</a><a href="#3">簡報大綱</a><a href="#4">1. 研究動機與問題</a><a href="#6">2. 文獻回顧與缺口</a><a href="#7">3. Pytutor 與能力指標</a><a href="#11">4. 課程實驗與 RQ1–RQ3</a><a href="#17">5. 比較、限制與教學啟示</a><a href="#19">6. 結論與未來研究</a></div></div></div></div>'
 footer: '薛念林（Nien-Lin Hsueh）、Lien-Chi Lai & Wei-Hsiang Tseng · 逢甲大學資訊工程學系 · Electronics 2023'
 ---
 
@@ -569,6 +569,36 @@ section div + .callout {
 }
 section .callout {
   padding: 12px 18px !important;
+}
+
+
+.hdr-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.lang-btn {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.35;
+  transition: background 0.15s ease;
+}
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.26);
+  text-decoration: none !important;
+}
+@media print {
+  .lang-btn, .nav-dropdown { display: none !important; }
 }
 
 </style>
@@ -1353,6 +1383,16 @@ document.querySelectorAll('.split64 .fig-box img, .split55 .fig-box img, .split4
     img.classList.remove('is-zoomed');
     if (box) box.classList.remove('is-zoomed');
   });
+});
+
+
+// Bilingual toggle preserving current slide hash
+document.addEventListener('click', (e) => {
+  const langBtn = e.target.closest('.lang-btn');
+  if (!langBtn) return;
+  e.preventDefault();
+  const target = langBtn.getAttribute('href');
+  if (target) window.location.href = target + (window.location.hash || '');
 });
 
 </script>

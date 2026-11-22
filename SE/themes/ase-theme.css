@@ -4333,14 +4333,337 @@ section:has(div.stk-lab-grid),
 section:has(div.bvag-stage),
 section:has(div.fdg-stage),
 section:has(div.pbtm-stage),
+section:has(div.nsm-stage),
+section:has(div.rtcf-lab-stage),
+section:has(div#pw-loan-table-quiz),
+section:has(div#pw-loan-table-quiz-tw),
+section:has(button.pw-sw-btn),
+section:has(span.quiz-blank),
 section:has(div.word-bank),
 section:has(div.fill-blank-columns),
 section:has(h2[id^="concept-check-question"]),
+section:has(h3[id^="concept-check-question"]),
 section:has(h2[id*="概念核對問題"]),
-section:has(h2[id*="概念核對問答"]) {
+section:has(h3[id*="概念核對問題"]),
+section:has(h2[id*="概念核對問答"]),
+section:has(h3[id*="概念核對問答"]),
+section:has(h2[id^="interactive-activity"]),
+section:has(h2[id^="diagnostic-exercise"]),
+section:has(h2[id^="peer-discussion"]),
+section:has(h2[id^="pair-discussion"]),
+section:has(h2[id^="challenge-whats-wrong"]),
+section:has(h2[id*="fill-in-the-blank"]),
+section:has(h2[id*="填空大挑戰"]),
+section:has(h2[id*="填空小測驗"]),
+section:has(h2[id^="課堂挑戰"]),
+section:has(h2[id^="課堂活動"]),
+section:has(h2[id^="課堂互動討論"]),
+section:has(h2[id^="互動活動"]),
+section:has(h2[id^="雙人實戰討論"]) {
   background-color: #eaf2f8 !important;
   background-image: linear-gradient(135deg, #eef6fb 0%, #e4eff7 100%) !important;
   box-shadow: inset 0 6px 0 0 #0284c7;
+}
+
+/* ==========================================================================
+   Interactive Nielsen Heuristics 2x5 Animated Matching Game (Slide 06 p60)
+   ========================================================================== */
+.nsm-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.nsm-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: 540px 1fr 515px;
+  align-items: stretch;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1.5px solid #cbd5e1;
+  border-top: 5px solid #0284c7;
+  border-radius: 12px;
+  padding: 9px 12px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+  box-sizing: border-box;
+}
+
+.nsm-grid-left,
+.nsm-grid-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(5, 76px);
+  gap: 7px 9px;
+  z-index: 2;
+}
+
+.nsm-svg-canvas {
+  width: 100%;
+  height: 100%;
+  min-height: 408px;
+  pointer-events: none;
+  z-index: 3;
+  overflow: visible;
+}
+
+.nsm-pic-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1.8px solid #cbd5e1;
+  border-radius: 9px;
+  padding: 4px 7px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.nsm-pic-card:hover {
+  border-color: #0284c7;
+  background: #f0f9ff;
+  z-index: 60;
+}
+
+.nsm-pic-card.is-active {
+  border-color: #0284c7;
+  background: #e0f2fe;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25);
+}
+
+.nsm-pic-card.is-paired,
+.nsm-name-card.is-paired {
+  background: #ffffff;
+  border-width: 2px;
+}
+
+.nsm-pic-card.is-correct,
+.nsm-name-card.is-correct {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+}
+
+.nsm-pic-card.is-wrong,
+.nsm-name-card.is-wrong {
+  background: #fee2e2 !important;
+  border-color: #dc2626 !important;
+}
+
+.nsm-thumb-wrap {
+  position: relative;
+  width: 210px;
+  height: 64px;
+  border-radius: 6px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.nsm-thumb-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.nsm-port {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  border: 2px solid #64748b;
+  color: #1e293b;
+  font-size: 11px;
+  font-weight: 900;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.nsm-name-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1.8px solid #cbd5e1;
+  border-radius: 9px;
+  padding: 5px 9px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+
+.nsm-name-card:hover {
+  border-color: #0284c7;
+  background: #f0f9ff;
+}
+
+.nsm-name-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  text-align: left;
+  overflow: hidden;
+}
+
+.nsm-name-title {
+  font-size: 12.6px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.22;
+}
+
+.nsm-name-sub {
+  font-size: 10.8px;
+  font-weight: 600;
+  color: #475569;
+  line-height: 1.2;
+}
+
+.nsm-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 6px 14px;
+}
+
+@keyframes nsmPulseBar {
+  0%, 100% { width: 42px; }
+  50% { width: 118px; }
+}
+@keyframes nsmSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes nsmSlideToast {
+  0%, 15% { transform: translateY(14px); opacity: 0.25; }
+  35%, 85% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0.25; }
+}
+@keyframes nsmBlinkGlow {
+  0%, 100% { opacity: 0.45; transform: scale(0.97); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+@keyframes nsmFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+.nsm-anim-bar { animation: nsmPulseBar 2.6s ease-in-out infinite; }
+.nsm-anim-toast { animation: nsmSlideToast 2.8s ease-in-out infinite; }
+.nsm-anim-glow { animation: nsmBlinkGlow 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.nsm-anim-float { animation: nsmFloat 2.2s ease-in-out infinite; }
+
+/* ==========================================================================
+   Interactive RTCF & Multi-Agent Assembly Lab (Slide 06 Section 6.4)
+   ========================================================================== */
+.rtcf-lab-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.rtcf-lab-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #cbd5e1;
+  border-top: 5px solid #0284c7;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  box-sizing: border-box;
+}
+
+.rtcf-sec-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0b3c5d;
+  letter-spacing: 0.2px;
+  margin-bottom: 1px;
+}
+
+.rtcf-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1.8px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 6px 11px;
+  font-size: 13px;
+  line-height: 1.32;
+  color: #0f172a;
+  transition: all 0.15s ease;
+}
+
+.rtcf-row.is-correct {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+}
+
+.rtcf-row.is-wrong {
+  background: #fee2e2 !important;
+  border-color: #dc2626 !important;
+}
+
+.rtcf-btn-group {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.rtcf-opt-btn {
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1.6px solid #94a3b8;
+  background: #ffffff;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.14s ease;
+  white-space: nowrap;
+}
+
+.rtcf-opt-btn:hover {
+  border-color: #0284c7;
+  background: #f0f9ff;
+  color: #0369a1;
+}
+
+.rtcf-opt-btn.is-selected {
+  background: #0284c7;
+  border-color: #0b3c5d;
+  color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.22);
+}
+
+.rtcf-row.is-correct .rtcf-opt-btn.is-selected {
+  background: #16a34a !important;
+  border-color: #14532d !important;
+  color: #ffffff !important;
+}
+
+.rtcf-row.is-wrong .rtcf-opt-btn.is-selected {
+  background: #dc2626 !important;
+  border-color: #7f1d1d !important;
+  color: #ffffff !important;
 }
 
 /* ==========================================================================
@@ -5201,9 +5524,3 @@ section:has(h2[id*="概念核對問答"]) {
 .stk-sm-edge.is-last-fired path {
   stroke-width: 3.6px !important;
 }
-
-
-
-
-
-

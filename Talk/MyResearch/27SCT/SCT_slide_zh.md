@@ -4,7 +4,7 @@ theme: gaia
 size: 16:9
 paginate: true
 html: true
-header: '<div class="hdr-wrap"><span class="hdr-title">分層式 LLM 程式學習輔助機制之應用與分析（SCT）</span><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：什麼是 AI Tax？</a><a href="#3">簡報大綱</a><a href="#4">1. 研究動機與問題</a><a href="#6">2. 文獻回顧與缺口</a><a href="#7">3. 研究方法與 LADI</a><a href="#11">4. SCT 系統設計</a><a href="#13">5. 實證研究與結果</a><a href="#20">6. 結論與未來研究</a></div></div></div>'
+header: '<div class="hdr-wrap"><span class="hdr-title">分層式 LLM 程式學習輔助機制之應用與分析（SCT）</span><div class="hdr-actions"><a class="lang-btn" href="./SCT_slide.html" title="Switch to English Slides">🌐 EN</a><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：什麼是 AI Tax？</a><a href="#3">簡報大綱</a><a href="#4">1. 研究動機與問題</a><a href="#6">2. 文獻回顧與缺口</a><a href="#7">3. 研究方法與 LADI</a><a href="#11">4. SCT 系統設計</a><a href="#13">5. 實證研究與結果</a><a href="#20">6. 結論與未來研究</a></div></div></div></div>'
 footer: '薛念林（Nien-Lin Hsueh）＆ Ying-Chang Lu · 逢甲大學資訊工程學系 · Smart Coding Tutor (SCT)'
 ---
 
@@ -796,6 +796,36 @@ section .callout {
   padding: 12px 18px !important;
 }
 
+
+.hdr-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.lang-btn {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.35;
+  transition: background 0.15s ease;
+}
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.26);
+  text-decoration: none !important;
+}
+@media print {
+  .lang-btn, .nav-dropdown { display: none !important; }
+}
+
 </style>
 
 <!-- _class: lead -->
@@ -1538,6 +1568,16 @@ document.querySelectorAll('.split64 .fig-box img, .split55 .fig-box img, .split4
     img.classList.remove('is-zoomed');
     if (box) box.classList.remove('is-zoomed');
   });
+});
+
+
+// Bilingual toggle preserving current slide hash
+document.addEventListener('click', (e) => {
+  const langBtn = e.target.closest('.lang-btn');
+  if (!langBtn) return;
+  e.preventDefault();
+  const target = langBtn.getAttribute('href');
+  if (target) window.location.href = target + (window.location.hash || '');
 });
 
 </script>

@@ -121,7 +121,7 @@
 
 ### 5. 投影片小節過渡頁與標題規範 (Slide Section Lead Pages & Headings)
 - **右上角中英文同頁切換按鈕 (`t <-> e` Header Language Switcher)**：
-  - 每一份具備中英文雙語版本的投影片（`slideXXt_*.html` 與 `slideXXe_*.html`），於右上角章節目錄下拉選單（`.header-nav-wrapper`）左方常駐顯示中英切換按鈕（`.header-lang-switch`：中文版顯示 `🌐 EN`，英文版顯示 `🌐 中`）。
+  - 每一份具備中英文雙語版本的投影片（`slideXXt_*.html` 與 `slideXXe_*.html`），於右上角章節目錄下拉選單（`.header-nav-wrapper`）左方常駐顯示中英切換按鈕（`.header-lang-switch`：中文版顯示 `🌐 EN`，英文版顯示 `🌐 繁`）。
   - 點擊後透過相對路徑將檔名中的 `(slide\d+)([et])(_[^/]*\.html)` 進行 `t <-> e` 互換，並完整保留當前頁碼 `#hash`（如 `slide07t_test.html#83` ↔ `slide07e_test.html#83`），同時相容本機伺服器與 GitHub Pages；列印 PDF（`@media print`）時自動隱藏。
 - **第 2 頁「本章大綱／重點導讀 (Outline)」章節點擊跳轉規範**：
   - 每一份章節投影片第 2 頁的大綱頁（`<!-- _class: outline-slide -->`）所列出的各小節項目（如 `1.1 ...`、`1.2 ...`），標題部分一律加上可點擊跳轉至該小節起始頁（Lead Page）的超連結（如 `<li><a href="#目標頁碼"><b>X.Y 小節標題：</b></a>...</li>` 或 `[**X.Y 小節標題**](#目標頁碼)`）。
@@ -193,6 +193,8 @@
 ---
 
 ### 10. 填空測驗與章節回顧規範 (Fill-in-the-Blank Quiz Rules)
+* **🎨 測驗與互動練習頁專屬底色規範 (Quiz & Interactive Slide Background Tint)**：
+  - 所有隨堂測驗（CCQ）、填空挑戰（Fill-in-the-Blank）、互動遊戲（連連看、矩陣點選、狀態機實驗、Pairwise 表格挑戰）與課堂診斷挑戰頁，在 `ase-theme.css` 中一律套用專屬淺藍漸層底色（`background: linear-gradient(135deg, #eef6fb 0%, #e4eff7 100%) !important; box-shadow: inset 0 6px 0 0 #0284c7;`），與一般白灰教學頁建立直覺的視覺區隔。
 * **🧩 標題測驗氛圍 (Quiz Affordance & Title Emoji)**：
   - 章節末尾的填空測驗標題應加入測驗/解謎相關 Emoji（如 `🧩`、`🎯` 或 `📝`），明確建立互動測驗的心理提示。
   - 例如：`## 🧩 核心觀念統整：互動填空小測驗 (Part 1)` / `## 🧩 Conceptual Recap: Fill-in-the-Blank Quiz (Part 1)`。

@@ -43,15 +43,15 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
     <ul>
       <li><a href="#3"><b>6.1 使用者體驗 (UX) 基礎：</b></a> 什麼是 UX、諾曼門（Norman Doors）、三大不良設計原型、台灣健保快易通 App 改版案例、UI 與 UX 的本質差異、設計思考五大階段。</li>
       <li><a href="#17"><b>6.2 尼爾森 10 大易用性啟發法則：</b></a> 系統狀態可見度、符合真實世界、使用者控制與自由、一致性與標準、防錯設計、辨識取代回憶、彈性與效率捷徑、簡約美學、協助使用者修復錯誤、說明文件。</li>
-      <li><a href="#61"><b>6.3 Tidwell 介面設計模式：</b></a> 四大架構維度、核心使用者行為模式、資訊架構與內容佈局、尋路與導航逃生機制、資料呈現與電商/平台解構實例。</li>
+      <li><a href="#62"><b>6.3 Tidwell 介面設計模式：</b></a> 四大架構維度、核心使用者行為模式、資訊架構與內容佈局、尋路與導航逃生機制、資料呈現與電商/平台解構實例。</li>
     </ul>
   </div>
   <div>
     <h3>第二部分：AI 賦能設計、智慧介面與評估</h3>
     <ul>
-      <li><a href="#87"><b>6.4 AI 賦能 UX 設計 (AI for UX)：</b></a> AI 作為設計放大器、RTCF 結構化提示詞工程框架、自動化啟發式稽核、多代理人協同原型打造。</li>
-      <li><a href="#93"><b>6.5 為 AI 打造卓越體驗 (UX for AI)：</b></a> 為機率性非確定性 AI 設計介面、延遲與思考軌跡管理、人類自主掌控權、幻覺防護圍欄、可解釋性 AI (XAI)。</li>
-      <li><a href="#105"><b>6.6 易用性評估與工程整合：</b></a> 尼爾森 0-4 級嚴重度評級、專家啟發式評估 vs. 真人使用者測試、章節回顧測驗與工程總結。</li>
+      <li><a href="#89"><b>6.4 AI 賦能 UX 設計 (AI for UX)：</b></a> AI 作為設計放大器、RTCF 結構化提示詞工程框架、自動化啟發式稽核、多代理人協同原型打造。</li>
+      <li><a href="#96"><b>6.5 為 AI 打造卓越體驗 (UX for AI)：</b></a> 為機率性非確定性 AI 設計介面、延遲與思考軌跡管理、人類自主掌控權、幻覺防護圍欄、可解釋性 AI (XAI)。</li>
+      <li><a href="#109"><b>6.6 易用性評估與工程整合：</b></a> 尼爾森 0-4 級嚴重度評級、專家啟發式評估 vs. 真人使用者測試、章節回顧測驗與工程總結。</li>
     </ul>
 
 </div>
@@ -1694,6 +1694,79 @@ Jakob Nielsen 提出了著名的雅各布定律：你的使用者 99% 的時間�
 - proactive constraint vs. reactive error message: 事前主動防呆約束（NS05）vs. 事後錯誤訊息診斷（NS09）
 -->
 ---
+## 🧩 互動連連看測驗：尼爾森 10 大啟發原則 (2×5 動態介面情境)
+
+<div id="ns-match-game-tw" class="nsm-stage">
+<div class="nsm-board">
+<div class="nsm-grid-left">
+<div class="nsm-pic-card" data-skey="ns1" data-row="0" data-color="#0284c7" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#f8fafc" stroke="#cbd5e1"/><circle cx="32" cy="22" r="8" fill="#16a34a"/><path d="M28 22 l3 3 l6 -6" stroke="#fff" stroke-width="2" fill="none"/><line x1="40" y1="22" x2="95" y2="22" stroke="#16a34a" stroke-width="3"/><circle cx="103" cy="22" r="8" fill="#0284c7" class="nsm-anim-glow"/><line x1="111" y1="22" x2="168" y2="22" stroke="#cbd5e1" stroke-width="3" stroke-dasharray="4 3"/><circle cx="176" cy="22" r="8" fill="#e2e8f0" stroke="#94a3b8"/><rect x="24" y="40" width="160" height="10" rx="5" fill="#e2e8f0"/><rect x="24" y="40" width="90" height="10" rx="5" fill="#0284c7" class="nsm-anim-bar"/></svg></div>
+<span class="nsm-port">1</span>
+</div>
+<div class="nsm-pic-card" data-skey="ns2" data-row="0" data-color="#d97706" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#fffbeb" stroke="#fde68a"/><g class="nsm-anim-float"><path d="M22 18 h18 l5 6 h34 v26 h-57 z" fill="#f59e0b" stroke="#b45309" stroke-width="1.5"/><rect x="27" y="27" width="46" height="18" rx="2" fill="#fef3c7"/></g><g class="nsm-anim-float"><rect x="96" y="14" width="42" height="38" rx="3" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/><polygon points="126,14 138,26 126,26" fill="#fde047"/><line x1="102" y1="26" x2="122" y2="26" stroke="#a16207" stroke-width="2"/><line x1="102" y1="34" x2="130" y2="34" stroke="#a16207" stroke-width="2"/></g><g class="nsm-anim-glow"><circle cx="164" cy="46" r="4" fill="#0369a1"/><circle cx="182" cy="46" r="4" fill="#0369a1"/><path d="M150 18 h8 l6 20 h22 l5 -14 h-24" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></g></svg></div>
+<span class="nsm-port">2</span>
+</div>
+<div class="nsm-pic-card" data-skey="ns3" data-row="1" data-color="#16a34a" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#f8fafc" stroke="#cbd5e1"/><rect x="14" y="11" width="120" height="16" rx="3" fill="#fee2e2" stroke="#fca5a5" stroke-dasharray="3 2"/><line x1="22" y1="19" x2="105" y2="19" stroke="#ef4444" stroke-width="2"/><circle cx="184" cy="19" r="9" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/><path d="M180 15 l8 8 M188 15 l-8 8" stroke="#dc2626" stroke-width="2"/><g class="nsm-anim-toast"><rect x="20" y="34" width="170" height="20" rx="10" fill="#0f172a"/><path d="M42 44 a6 6 0 1 1 4 5" fill="none" stroke="#38bdf8" stroke-width="2.2"/><polygon points="40,40 40,47 47,44" fill="#38bdf8"/><rect x="128" y="37" width="54" height="14" rx="7" fill="#16a34a"/><path d="M145 44 h18 M145 44 l5 -4 M145 44 l5 4" stroke="#fff" stroke-width="2" fill="none"/></g></svg></div>
+<span class="nsm-port">3</span>
+</div>
+<div class="nsm-pic-card" data-skey="ns4" data-row="1" data-color="#7c3aed" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#faf5ff" stroke="#e9d5ff"/><g><rect x="14" y="12" width="54" height="40" rx="4" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/><rect x="14" y="12" width="54" height="9" rx="3" fill="#7c3aed"/><rect x="44" y="39" width="18" height="8" rx="2" fill="#0284c7"/><rect x="22" y="39" width="16" height="8" rx="2" fill="#e2e8f0"/></g><g><rect x="78" y="12" width="54" height="40" rx="4" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/><rect x="78" y="12" width="54" height="9" rx="3" fill="#7c3aed"/><rect x="108" y="39" width="18" height="8" rx="2" fill="#0284c7" class="nsm-anim-glow"/><rect x="86" y="39" width="16" height="8" rx="2" fill="#e2e8f0"/></g><g><rect x="142" y="12" width="54" height="40" rx="4" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/><rect x="142" y="12" width="54" height="9" rx="3" fill="#7c3aed"/><rect x="172" y="39" width="18" height="8" rx="2" fill="#0284c7"/><rect x="150" y="39" width="16" height="8" rx="2" fill="#e2e8f0"/></g></svg></div>
+<span class="nsm-port">4</span>
+</div>
+<div class="nsm-pic-card" data-skey="ns5" data-row="2" data-color="#dc2626" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#fff1f2" stroke="#fecdd3"/><rect x="14" y="10" width="92" height="44" rx="4" fill="#fff" stroke="#64748b" stroke-width="1.5"/><rect x="14" y="10" width="92" height="10" rx="3" fill="#0284c7"/><rect x="22" y="25" width="14" height="10" rx="2" fill="#dcfce7" stroke="#16a34a"/><rect x="42" y="25" width="14" height="10" rx="2" fill="#0284c7" class="nsm-anim-glow"/><rect x="62" y="25" width="14" height="10" rx="2" fill="#f1f5f9"/><line x1="62" y1="25" x2="76" y2="35" stroke="#dc2626" stroke-width="1.8"/><rect x="82" y="25" width="14" height="10" rx="2" fill="#f1f5f9"/><line x1="82" y1="25" x2="96" y2="35" stroke="#dc2626" stroke-width="1.8"/><rect x="118" y="20" width="76" height="24" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-dasharray="3 2"/><circle cx="136" cy="32" r="7" fill="none" stroke="#dc2626" stroke-width="2.2"/><line x1="131" y1="27" x2="141" y2="37" stroke="#dc2626" stroke-width="2.2"/><rect x="150" y="29" width="32" height="6" rx="3" fill="#94a3b8"/></svg></div>
+<span class="nsm-port">5</span>
+</div>
+<div class="nsm-pic-card" data-skey="ns6" data-row="2" data-color="#0d9488" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#f0fdfa" stroke="#99f6e4"/><rect x="14" y="10" width="182" height="14" rx="4" fill="#fff" stroke="#0d9488" stroke-width="1.5"/><polygon points="184,15 190,15 187,20" fill="#0d9488"/><rect x="20" y="14" width="55" height="6" rx="3" fill="#0d9488"/><g class="nsm-anim-float"><rect x="14" y="26" width="182" height="30" rx="5" fill="#fff" stroke="#0d9488" stroke-width="1.5"/><rect x="22" y="31" width="36" height="20" rx="4" fill="#ef4444"/><rect x="66" y="31" width="36" height="20" rx="4" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" class="nsm-anim-glow"/><path d="M80 41 l4 4 l7 -8" stroke="#fff" stroke-width="2.2" fill="none"/><rect x="110" y="31" width="36" height="20" rx="4" fill="#10b981"/><rect x="154" y="31" width="34" height="20" rx="4" fill="#f59e0b"/></g></svg></div>
+<span class="nsm-port">6</span>
+</div>
+<div class="nsm-pic-card" data-skey="ns7" data-row="3" data-color="#2563eb" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#eff6ff" stroke="#bfdbfe"/><g class="nsm-anim-glow"><rect x="20" y="16" width="44" height="32" rx="6" fill="#1e293b" stroke="#0f172a" stroke-width="2"/><rect x="23" y="18" width="38" height="25" rx="4" fill="#334155"/><text x="42" y="36" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="900">⌘</text></g><text x="74" y="37" text-anchor="middle" fill="#64748b" font-size="16" font-weight="900">+</text><g class="nsm-anim-glow"><rect x="84" y="16" width="44" height="32" rx="6" fill="#1e293b" stroke="#0f172a" stroke-width="2"/><rect x="87" y="18" width="38" height="25" rx="4" fill="#334155"/><text x="106" y="36" text-anchor="middle" fill="#facc15" font-size="15" font-weight="900">K</text></g><polygon points="154,12 140,34 153,34 147,52 170,28 156,28" fill="#f59e0b" stroke="#b45309" stroke-width="1.2" class="nsm-anim-float"/><path d="M174 24 l18 0 M178 32 l18 0 M172 40 l18 0" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+<span class="nsm-port">7</span>
+</div>
+<div class="nsm-pic-card" data-skey="ns8" data-row="3" data-color="#4f46e5" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#f8fafc" stroke="#cbd5e1"/><g opacity="0.45"><rect x="12" y="10" width="70" height="44" rx="4" fill="#fee2e2" stroke="#ef4444"/><rect x="16" y="14" width="28" height="12" fill="#f97316"/><rect x="46" y="14" width="32" height="12" fill="#eab308"/><rect x="16" y="29" width="62" height="10" fill="#ec4899"/><rect x="16" y="41" width="40" height="9" fill="#8b5cf6"/><line x1="10" y1="8" x2="84" y2="56" stroke="#dc2626" stroke-width="3"/><line x1="84" y1="8" x2="10" y2="56" stroke="#dc2626" stroke-width="3"/></g><path d="M90 32 h14 l-4 -4 M104 32 l-4 4" stroke="#4f46e5" stroke-width="2.2" fill="none"/><rect x="112" y="10" width="84" height="44" rx="6" fill="#ffffff" stroke="#4f46e5" stroke-width="1.8" class="nsm-anim-glow"/><circle cx="154" cy="24" r="6" fill="#e0e7ff" stroke="#4f46e5" stroke-width="1.5"/><rect x="130" y="35" width="48" height="9" rx="4.5" fill="#f1f5f9" stroke="#94a3b8"/></svg></div>
+<span class="nsm-port">8</span>
+</div>
+<div class="nsm-pic-card" data-skey="ns9" data-row="4" data-color="#e11d48" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#fff1f2" stroke="#fda4af"/><rect x="14" y="12" width="182" height="40" rx="6" fill="#ffffff" stroke="#e11d48" stroke-width="1.8"/><polygon points="34,20 22,42 46,42" fill="#ffe4e6" stroke="#e11d48" stroke-width="1.8"/><line x1="34" y1="27" x2="34" y2="35" stroke="#e11d48" stroke-width="2.2"/><circle cx="34" cy="39" r="1.4" fill="#e11d48"/><rect x="54" y="20" width="66" height="6" rx="3" fill="#e11d48"/><rect x="54" y="31" width="52" height="5" rx="2.5" fill="#64748b"/><rect x="54" y="40" width="42" height="5" rx="2.5" fill="#94a3b8"/><g class="nsm-anim-glow"><rect x="132" y="22" width="54" height="22" rx="6" fill="#16a34a"/><path d="M144 33 l5 5 l10 -10" stroke="#ffffff" stroke-width="2.5" fill="none"/><circle cx="174" cy="33" r="4" fill="#bbf7d0"/></g></svg></div>
+<span class="nsm-port">9</span>
+</div>
+<div class="nsm-pic-card" data-skey="ns10" data-row="4" data-color="#0891b2" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#ecfeff" stroke="#a5f3fc"/><rect x="14" y="22" width="54" height="20" rx="4" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/><circle cx="82" cy="32" r="10" fill="#0891b2" class="nsm-anim-glow"/><text x="82" y="37" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="900">?</text><g class="nsm-anim-float"><polygon points="96,32 106,26 106,38" fill="#0f172a"/><rect x="105" y="10" width="92" height="44" rx="6" fill="#0f172a"/><circle cx="117" cy="21" r="4" fill="#38bdf8"/><rect x="126" y="18" width="58" height="5" rx="2.5" fill="#e2e8f0"/><circle cx="117" cy="32" r="4" fill="#38bdf8"/><rect x="126" y="29" width="50" height="5" rx="2.5" fill="#cbd5e1"/><circle cx="117" cy="43" r="4" fill="#38bdf8"/><rect x="126" y="40" width="42" height="5" rx="2.5" fill="#94a3b8"/></g></svg></div>
+<span class="nsm-port">10</span>
+</div>
+</div>
+<svg class="nsm-svg-canvas" id="nsm-svg-lines-tw"></svg>
+<div class="nsm-grid-right" id="nsm-col-right-tw">
+<div class="nsm-name-card" data-tkey="ns7"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">彈性與使用效率 (Flexibility &amp; Efficiency)</span><span class="nsm-name-sub">提供鍵盤快捷鍵與專家加速捷徑</span></div></div>
+<div class="nsm-name-card" data-tkey="ns1"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">系統狀態可見度 (Visibility of System Status)</span><span class="nsm-name-sub">即時進度條與階段位置視覺回饋</span></div></div>
+<div class="nsm-name-card" data-tkey="ns5"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">防錯設計 (Error Prevention)</span><span class="nsm-name-sub">事前約束選取範圍並禁用非法狀態</span></div></div>
+<div class="nsm-name-card" data-tkey="ns9"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">協助辨識、診斷與修復錯誤 (Error Recovery)</span><span class="nsm-name-sub">白話診斷問題並提供一鍵修復按鈕</span></div></div>
+<div class="nsm-name-card" data-tkey="ns3"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">使用者控制與自由 (User Control &amp; Freedom)</span><span class="nsm-name-sub">提供緊急逃生出口、取消與即時復原 (Undo)</span></div></div>
+<div class="nsm-name-card" data-tkey="ns10"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">說明文件與求助支援 (Help &amp; Documentation)</span><span class="nsm-name-sub">情境式提示泡泡與精簡步驟指引</span></div></div>
+<div class="nsm-name-card" data-tkey="ns2"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">系統與真實世界相符 (Match Real World)</span><span class="nsm-name-sub">採用實體資料夾、便利貼與購物車等自然隱喻</span></div></div>
+<div class="nsm-name-card" data-tkey="ns8"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">美感與簡約設計 (Aesthetic &amp; Minimalist)</span><span class="nsm-name-sub">提升訊噪比，剔除無關彈窗與視覺雜訊</span></div></div>
+<div class="nsm-name-card" data-tkey="ns4"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">一致性與標準 (Consistency &amp; Standards)</span><span class="nsm-name-sub">跨視窗維持統一的導覽列與主按鈕位置慣例</span></div></div>
+<div class="nsm-name-card" data-tkey="ns6"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">辨識優於回憶 (Recognition Rather Than Recall)</span><span class="nsm-name-sub">提供視覺化色票與清單供直接點選免背代碼</span></div></div>
+</div>
+</div>
+<div class="nsm-footer">
+<div class="sp-score-msg" id="nsm-score-msg-tw">請先點選左側動態介面圖示 (1–10)，再點選右側對應的尼爾森原則進行連線！(已連 0 / 10)</div>
+<div class="sp-action-btns">
+<button type="button" class="sp-btn sp-btn-reset" id="nsm-btn-reset-tw">↺ 重新洗牌重試</button>
+<button type="button" class="sp-btn sp-btn-submit" id="nsm-btn-submit-tw">✓ 提交並檢查得分</button>
+</div>
+</div>
+</div>
+
+<!--
+這頁 2x5 互動連連看測驗讓學生透過純視覺化的動態介面示意圖（不含洩題文字）辨識尼爾森十大易用性啟發原則。滑鼠移至左側任一圖示上方時會自動在頁面邊界內平滑放大；點擊「提交並檢查得分」後會顯示總分並標示哪些題號答對（綠線 ✅）、哪些答錯（紅虛線 ❌），但不直接公佈標準答案，讓學生可以反覆調整重試直到滿分！
+-->
+---
 ## 雙人實戰討論：日常系統之 NS01–NS10 啟發式體檢 (30 分鐘)
 
 > **課堂任務（⏱️ 30 分鐘）：** 請兩人一組，從下方任選一個熟悉的系統，<strong>製作投影片（含真實截圖標註）</strong>，具體說明該系統有哪些設計 <strong>符合 (✅)</strong>、又有哪些 <strong>違反 (❌)</strong> `NS01–NS10`。
@@ -2402,6 +2475,79 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - responsive parity: 跨裝置響應式對等性（確保桌面端與行動端雖採用不同空間佈局，但提供對等完整的功能與體驗）
 -->
 ---
+## 🧩 互動連連看測驗：Tidwell 10 大 UI 設計模式 (2×5 動態介面情境)
+
+<div id="tw-match-game-tw" class="nsm-stage">
+<div class="nsm-board">
+<div class="nsm-grid-left">
+<div class="nsm-pic-card" data-skey="tw1" data-row="0" data-color="#0284c7" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#0f172a" stroke="#334155"/><rect x="14" y="10" width="54" height="20" rx="4" fill="#1e293b" stroke="#0284c7"/><polyline points="18,24 27,18 36,22 46,14 56,17 64,12" fill="none" stroke="#38bdf8" stroke-width="2"/><rect x="74" y="10" width="58" height="20" rx="4" fill="#1e293b" stroke="#10b981"/><rect x="81" y="21" width="7" height="6" fill="#34d399"/><rect x="92" y="17" width="7" height="10" fill="#10b981"/><rect x="103" y="14" width="7" height="13" fill="#059669" class="nsm-anim-glow"/><rect x="114" y="18" width="7" height="9" fill="#34d399"/><rect x="138" y="10" width="58" height="20" rx="4" fill="#1e293b" stroke="#f59e0b"/><path d="M154 25 a13 13 0 0 1 26 0" fill="none" stroke="#334155" stroke-width="4.5"/><path d="M154 25 a13 13 0 0 1 21 -9" fill="none" stroke="#f59e0b" stroke-width="4.5"/><rect x="14" y="35" width="88" height="19" rx="4" fill="#1e293b" stroke="#6366f1"/><circle cx="28" cy="44.5" r="5" fill="#818cf8" class="nsm-anim-glow"/><rect x="39" y="40" width="52" height="4" rx="2" fill="#c7d2fe"/><rect x="39" y="47" width="36" height="3" rx="1.5" fill="#64748b"/><rect x="108" y="35" width="88" height="19" rx="4" fill="#1e293b" stroke="#ec4899"/><polyline points="114,49 128,42 142,46 158,39 174,43 188,38" fill="none" stroke="#f472b6" stroke-width="2"/></svg></div>
+<span class="nsm-port">1</span>
+</div>
+<div class="nsm-pic-card" data-skey="tw2" data-row="0" data-color="#d97706" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#fffbeb" stroke="#fde68a"/><rect x="14" y="10" width="44" height="14" rx="4" fill="#d97706"/><rect x="22" y="15" width="28" height="4" rx="2" fill="#fff"/><rect x="61" y="12" width="42" height="12" rx="4" fill="#fef3c7" stroke="#f59e0b"/><rect x="69" y="16" width="26" height="4" rx="2" fill="#b45309"/><rect x="106" y="12" width="42" height="12" rx="4" fill="#fef3c7" stroke="#f59e0b"/><rect x="114" y="16" width="26" height="4" rx="2" fill="#b45309"/><rect x="151" y="12" width="45" height="12" rx="4" fill="#fef3c7" stroke="#f59e0b"/><rect x="159" y="16" width="28" height="4" rx="2" fill="#b45309"/><rect x="14" y="23" width="182" height="31" rx="4" fill="#ffffff" stroke="#d97706" stroke-width="1.8"/><rect x="24" y="30" width="46" height="16" rx="3" fill="#fef3c7" stroke="#f59e0b" class="nsm-anim-glow"/><rect x="78" y="31" width="96" height="5" rx="2.5" fill="#d97706"/><rect x="78" y="40" width="70" height="5" rx="2.5" fill="#cbd5e1"/></svg></div>
+<span class="nsm-port">2</span>
+</div>
+<div class="nsm-pic-card" data-skey="tw3" data-row="1" data-color="#16a34a" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#f0fdf4" stroke="#bbf7d0"/><rect x="14" y="8" width="40" height="21" rx="3" fill="#fff" stroke="#16a34a" stroke-width="1.5"/><circle cx="26" cy="15" r="3" fill="#fde047"/><polygon points="17,26 28,17 37,26" fill="#4ade80"/><polygon points="31,26 42,15 51,26" fill="#16a34a"/><rect x="61" y="8" width="40" height="21" rx="3" fill="#fff" stroke="#16a34a" stroke-width="1.5" class="nsm-anim-glow"/><circle cx="73" cy="15" r="3" fill="#fde047"/><polygon points="64,26 75,17 84,26" fill="#22c55e"/><rect x="108" y="8" width="40" height="21" rx="3" fill="#fff" stroke="#16a34a" stroke-width="1.5"/><polygon points="111,26 123,16 135,26" fill="#16a34a"/><rect x="155" y="8" width="40" height="21" rx="3" fill="#fff" stroke="#16a34a" stroke-width="1.5"/><polygon points="158,26 172,15 186,26" fill="#4ade80"/><rect x="14" y="34" width="40" height="21" rx="3" fill="#fff" stroke="#16a34a" stroke-width="1.5"/><polygon points="17,52 30,41 44,52" fill="#22c55e"/><rect x="61" y="34" width="40" height="21" rx="3" fill="#fff" stroke="#16a34a" stroke-width="1.5"/><polygon points="64,52 78,40 92,52" fill="#16a34a"/><rect x="108" y="34" width="40" height="21" rx="3" fill="#fff" stroke="#16a34a" stroke-width="1.5" class="nsm-anim-glow"/><polygon points="111,52 125,41 139,52" fill="#4ade80"/><rect x="155" y="34" width="40" height="21" rx="3" fill="#fff" stroke="#16a34a" stroke-width="1.5"/><polygon points="158,52 172,41 186,52" fill="#16a34a"/></svg></div>
+<span class="nsm-port">3</span>
+</div>
+<div class="nsm-pic-card" data-skey="tw4" data-row="1" data-color="#7c3aed" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#faf5ff" stroke="#e9d5ff"/><rect x="14" y="8" width="182" height="12" rx="3" fill="#7c3aed"/><polygon points="22,12 28,12 25,17" fill="#fff"/><rect x="34" y="12" width="60" height="4" rx="2" fill="#fff"/><rect x="14" y="20" width="182" height="14" rx="2" fill="#fff" stroke="#7c3aed" stroke-width="1.2" class="nsm-anim-glow"/><rect x="34" y="25" width="96" height="4" rx="2" fill="#9333ea"/><rect x="14" y="36" width="182" height="10" rx="3" fill="#f3e8ff" stroke="#a855f7"/><polygon points="23,39 28,41 23,43" fill="#7c3aed"/><rect x="34" y="39" width="70" height="4" rx="2" fill="#6b21a8"/><rect x="14" y="48" width="182" height="10" rx="3" fill="#f3e8ff" stroke="#a855f7"/><polygon points="23,51 28,53 23,55" fill="#7c3aed"/><rect x="34" y="51" width="64" height="4" rx="2" fill="#6b21a8"/></svg></div>
+<span class="nsm-port">4</span>
+</div>
+<div class="nsm-pic-card" data-skey="tw5" data-row="2" data-color="#0d9488" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#f0fdfa" stroke="#99f6e4"/><circle cx="34" cy="32" r="13" fill="#16a34a"/><path d="M28 32 l4 4 l8 -8" stroke="#fff" stroke-width="2.5" fill="none"/><line x1="47" y1="32" x2="91" y2="32" stroke="#16a34a" stroke-width="3.5"/><circle cx="105" cy="32" r="14" fill="#0d9488" stroke="#115e59" stroke-width="2" class="nsm-anim-glow"/><circle cx="105" cy="32" r="5" fill="#fff"/><line x1="119" y1="32" x2="162" y2="32" stroke="#94a3b8" stroke-width="3" stroke-dasharray="4 3"/><circle cx="176" cy="32" r="13" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/><circle cx="176" cy="32" r="4" fill="#94a3b8"/></svg></div>
+<span class="nsm-port">5</span>
+</div>
+<div class="nsm-pic-card" data-skey="tw6" data-row="2" data-color="#dc2626" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#475569"/><rect x="34" y="10" width="142" height="44" rx="6" fill="#ffffff" stroke="#0f172a" stroke-width="2"/><rect x="46" y="22" width="76" height="6" rx="3" fill="#cbd5e1"/><rect x="46" y="34" width="56" height="6" rx="3" fill="#e2e8f0"/><g class="nsm-anim-glow"><circle cx="160" cy="21" r="9" fill="#dc2626"/><path d="M156 17 l8 8 M164 17 l-8 8" stroke="#fff" stroke-width="2.2"/><rect x="130" y="34" width="36" height="13" rx="3" fill="#fee2e2" stroke="#dc2626"/></g></svg></div>
+<span class="nsm-port">6</span>
+</div>
+<div class="nsm-pic-card" data-skey="tw7" data-row="3" data-color="#2563eb" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#eff6ff" stroke="#bfdbfe"/><g class="nsm-anim-float"><rect x="14" y="20" width="36" height="24" rx="5" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/><path d="M25 34 v-5 l7 -5 l7 5 v5 z" fill="#2563eb"/><path d="M56 26 l7 6 l-7 6" stroke="#2563eb" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="70" y="20" width="46" height="24" rx="5" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/><rect x="78" y="29" width="30" height="6" rx="3" fill="#2563eb"/><path d="M122 26 l7 6 l-7 6" stroke="#2563eb" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="136" y="20" width="60" height="24" rx="5" fill="#2563eb" class="nsm-anim-glow"/><circle cx="150" cy="32" r="4" fill="#fff"/><rect x="158" y="29" width="28" height="6" rx="3" fill="#fff"/></g></svg></div>
+<span class="nsm-port">7</span>
+</div>
+<div class="nsm-pic-card" data-skey="tw8" data-row="3" data-color="#4f46e5" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#eef2ff" stroke="#c7d2fe"/><rect x="14" y="8" width="182" height="9" rx="2" fill="#312e81"/><rect x="14" y="17" width="182" height="9" fill="#ffffff" stroke="#e2e8f0"/><rect x="14" y="26" width="182" height="9" fill="#e0e7ff" stroke="#c7d2fe"/><rect x="14" y="35" width="182" height="9" fill="#ffffff" stroke="#e2e8f0"/><rect x="14" y="44" width="182" height="9" fill="#e0e7ff" stroke="#c7d2fe" class="nsm-anim-glow"/><rect x="22" y="19" width="44" height="4" rx="2" fill="#64748b"/><rect x="92" y="19" width="52" height="4" rx="2" fill="#94a3b8"/><rect x="22" y="28" width="44" height="4" rx="2" fill="#4338ca"/><rect x="92" y="28" width="52" height="4" rx="2" fill="#6366f1"/><rect x="22" y="37" width="44" height="4" rx="2" fill="#64748b"/><rect x="92" y="37" width="52" height="4" rx="2" fill="#94a3b8"/><rect x="22" y="46" width="44" height="4" rx="2" fill="#4338ca"/><rect x="92" y="46" width="52" height="4" rx="2" fill="#6366f1"/></svg></div>
+<span class="nsm-port">8</span>
+</div>
+<div class="nsm-pic-card" data-skey="tw9" data-row="4" data-color="#e11d48" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#fff1f2" stroke="#fda4af"/><rect x="28" y="8" width="52" height="48" rx="7" fill="#fff" stroke="#0f172a" stroke-width="2"/><rect x="34" y="16" width="40" height="7" rx="2" fill="#cbd5e1"/><rect x="34" y="26" width="40" height="8" rx="2" fill="#e11d48" class="nsm-anim-glow"/><rect x="34" y="37" width="40" height="7" rx="2" fill="#cbd5e1"/><path d="M88 26 h28 M110 21 l6 5 l-6 5" stroke="#e11d48" stroke-width="2" fill="none"/><path d="M116 40 h-28 M94 35 l-6 5 l6 5" stroke="#0284c7" stroke-width="2" fill="none"/><rect x="124" y="8" width="52" height="48" rx="7" fill="#fff" stroke="#0f172a" stroke-width="2"/><path d="M136 18 l-5 4 l5 4" stroke="#0284c7" stroke-width="2.2" fill="none"/><rect x="132" y="30" width="36" height="16" rx="3" fill="#ffe4e6" stroke="#e11d48"/></svg></div>
+<span class="nsm-port">9</span>
+</div>
+<div class="nsm-pic-card" data-skey="tw10" data-row="4" data-color="#0891b2" title="點擊進行連線">
+<div class="nsm-thumb-wrap"><svg viewBox="0 0 210 64"><rect x="4" y="4" width="202" height="56" rx="6" fill="#ecfeff" stroke="#a5f3fc"/><circle cx="18" cy="28" r="7" fill="#0891b2"/><path d="M20 24 l-4 4 l4 4" stroke="#fff" stroke-width="2" fill="none"/><rect x="30" y="12" width="34" height="32" rx="4" fill="#cbd5e1"/><g class="nsm-anim-glow"><rect x="70" y="10" width="70" height="36" rx="5" fill="#0891b2" stroke="#0e7490" stroke-width="2"/><circle cx="105" cy="28" r="9" fill="#cffafe"/></g><rect x="146" y="12" width="34" height="32" rx="4" fill="#cbd5e1"/><circle cx="192" cy="28" r="7" fill="#0891b2"/><path d="M190 24 l4 4 l-4 4" stroke="#fff" stroke-width="2" fill="none"/><circle cx="93" cy="53" r="3" fill="#94a3b8"/><circle cx="105" cy="53" r="4" fill="#0891b2"/><circle cx="117" cy="53" r="3" fill="#94a3b8"/></svg></div>
+<span class="nsm-port">10</span>
+</div>
+</div>
+<svg class="nsm-svg-canvas" id="twm-svg-lines-tw"></svg>
+<div class="nsm-grid-right" id="twm-col-right-tw">
+<div class="nsm-name-card" data-tkey="tw8"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">奇偶列斑馬紋表格 (Alternating Row Striping)</span><span class="nsm-name-sub">深淺交錯底色形成水平視覺軌道防看錯行</span></div></div>
+<div class="nsm-name-card" data-tkey="tw4"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">手風琴摺疊面板 (Accordion)</span><span class="nsm-name-sub">垂直堆疊之可展開／收合分類區塊（如 FAQ）</span></div></div>
+<div class="nsm-name-card" data-tkey="tw1"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">儀表板 (Dashboard)</span><span class="nsm-name-sub">單一畫面聚合折線圖、長條圖與儀表盤 KPI</span></div></div>
+<div class="nsm-name-card" data-tkey="tw6"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">逃生出口 (Escape Hatch)</span><span class="nsm-name-sub">彈窗與深層狀態中醒目的「✕」或取消撤離通道</span></div></div>
+<div class="nsm-name-card" data-tkey="tw10"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">輪播切換 (Carousel)</span><span class="nsm-name-sub">具備左右箭頭與圓點導引的水平滑動卡片流</span></div></div>
+<div class="nsm-name-card" data-tkey="tw2"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">模組化分頁籤 (Module Tabs)</span><span class="nsm-name-sub">頂部並排分頁標籤切換共用之單一內容面板</span></div></div>
+<div class="nsm-name-card" data-tkey="tw9"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">單視窗深入鑽取 (One-Window Drilldown)</span><span class="nsm-name-sub">行動端整頁推進明細，搭配左上角明確返回鍵</span></div></div>
+<div class="nsm-name-card" data-tkey="tw5"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">分步精靈與序列地圖 (Wizard &amp; Sequence Map)</span><span class="nsm-name-sub">將複雜任務拆解為有序步驟並標示當前進度</span></div></div>
+<div class="nsm-name-card" data-tkey="tw3"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">縮圖網格 (Thumbnail Grid)</span><span class="nsm-name-sub">二維高密度圖片矩陣排列，利於快速視覺掃描</span></div></div>
+<div class="nsm-name-card" data-tkey="tw7"><span class="nsm-port">•</span><div class="nsm-name-text"><span class="nsm-name-title">麵包屑導航 (Breadcrumbs)</span><span class="nsm-name-sub">顯示階層路徑並支援點擊跳回上層分類</span></div></div>
+</div>
+</div>
+<div class="nsm-footer">
+<div class="sp-score-msg" id="twm-score-msg-tw">請先點選左側模式圖示 (1–10)，再點選右側對應的 Tidwell 設計模式進行連線！(已連 0 / 10)</div>
+<div class="sp-action-btns">
+<button type="button" class="sp-btn sp-btn-reset" id="twm-btn-reset-tw">↺ 重新洗牌重試</button>
+<button type="button" class="sp-btn sp-btn-submit" id="twm-btn-submit-tw">✓ 提交並檢查得分</button>
+</div>
+</div>
+</div>
+
+<!--
+這頁 2x5 互動連連看測驗涵蓋 Jenifer Tidwell 四大架構維度（核心使用者行為、資訊架構佈局、尋路導航、資料呈現）的 10 個代表性設計模式。滑鼠移至左側任一圖示上方時會自動在頁面邊界內平滑放大；點擊「提交並檢查得分」後會顯示總分並標示哪些題號答對（綠線 ✅）、哪些答錯（紅虛線 ❌），但不直接公佈標準答案，讓學生可以反覆調整重試直到滿分！
+-->
+---
 ## 雙人實戰討論 (Part 2)：日常系統之 Tidwell 設計模式解構
 
 > **課堂任務（延續 6.2 討論）：** 請延續你們在 6.2 節選擇的**同一個系統**，**在投影片中補充截圖標註**，分析該系統運用了哪些 **Tidwell 介面設計模式**，並為 6.2 發現的痛點開出「模式重構處方」！
@@ -2584,6 +2730,54 @@ Format：要求輸出為四欄表格並帶有嚴重度分數。
 - closed feedback loop: 閉迴路回饋系統（將輸出結果的檢測誤差自動回傳給輸入端進行自我修正的循環機制）
 - self-correction: 自我修正（AI 代理根據審查回饋自動改寫代碼或調整版面結構的迭代過程）
 - candidate interface: 候選介面方案（在多方案探索階段生成供評估比較之用的原型版本）
+-->
+---
+## 🧩 6.4 自我練習實驗室：RTCF 提示詞工程與多代理人流水線組裝
+
+<div id="rtcf-lab-tw" class="rtcf-lab-stage">
+<div class="rtcf-lab-card">
+<div class="rtcf-sec-title">Part A — 請將下列四段提示詞拆解歸類至正確的 RTCF 結構維度 (Role / Task / Constraints / Format)：</div>
+<div class="rtcf-rows-wrap" id="rtcf-part-a-tw">
+<div class="rtcf-row" data-qid="Q1" data-ans="C">
+<div><strong>#1.</strong> <em>「嚴格依據尼爾森 NS01、NS05 與 NS09 原則評估；目標受眾為 70 歲以上有老花眼之長者（字級 ≥ 18pt、對比 ≥ 4.5:1、375px 手機螢幕）。」</em></div>
+<div class="rtcf-btn-group"><button type="button" class="rtcf-opt-btn" data-val="R">R · 角色定位</button><button type="button" class="rtcf-opt-btn" data-val="T">T · 具體任務</button><button type="button" class="rtcf-opt-btn" data-val="C">C · 邊界約束</button><button type="button" class="rtcf-opt-btn" data-val="F">F · 輸出格式</button></div>
+</div>
+<div class="rtcf-row" data-qid="Q2" data-ans="R">
+<div><strong>#2.</strong> <em>「你是一位具備 10 年醫療數位產品與 WCAG 2.1 AA 無障礙設計經驗的資深 UX 研究員與人因工程專家。」</em></div>
+<div class="rtcf-btn-group"><button type="button" class="rtcf-opt-btn" data-val="R">R · 角色定位</button><button type="button" class="rtcf-opt-btn" data-val="T">T · 具體任務</button><button type="button" class="rtcf-opt-btn" data-val="C">C · 邊界約束</button><button type="button" class="rtcf-opt-btn" data-val="F">F · 輸出格式</button></div>
+</div>
+<div class="rtcf-row" data-qid="Q3" data-ans="F">
+<div><strong>#3.</strong> <em>「請輸出為四欄 Markdown 表格：[違反原則編號 | 畫面痛點位置 | 嚴重度 (0–4) | 具體微文案重構建議]。」</em></div>
+<div class="rtcf-btn-group"><button type="button" class="rtcf-opt-btn" data-val="R">R · 角色定位</button><button type="button" class="rtcf-opt-btn" data-val="T">T · 具體任務</button><button type="button" class="rtcf-opt-btn" data-val="C">C · 邊界約束</button><button type="button" class="rtcf-opt-btn" data-val="F">F · 輸出格式</button></div>
+</div>
+<div class="rtcf-row" data-qid="Q4" data-ans="T">
+<div><strong>#4.</strong> <em>「請檢視附圖的行動端門診預約確認線框圖，執行易用性啟發式稽核並找出所有可能導致長者誤按或卡關的缺陷。」</em></div>
+<div class="rtcf-btn-group"><button type="button" class="rtcf-opt-btn" data-val="R">R · 角色定位</button><button type="button" class="rtcf-opt-btn" data-val="T">T · 具體任務</button><button type="button" class="rtcf-opt-btn" data-val="C">C · 邊界約束</button><button type="button" class="rtcf-opt-btn" data-val="F">F · 輸出格式</button></div>
+</div>
+</div>
+<div class="rtcf-sec-title" style="margin-top:4px;">Part B — 請為下列兩項 AI4UX 協同流水線工作指派正確的專責代理人或守門角色：</div>
+<div class="rtcf-rows-wrap" id="rtcf-part-b-tw">
+<div class="rtcf-row" data-qid="Q5" data-ans="RES">
+<div><strong>#5.</strong> <em>自動爬梳 5,000 筆 App Store 負評與客訴工單，歸納出前三大結帳流失痛點並生成合成人物誌 (Synthetic Personas)。</em></div>
+<div class="rtcf-btn-group"><button type="button" class="rtcf-opt-btn" data-val="RES">UX 研究代理人</button><button type="button" class="rtcf-opt-btn" data-val="SYS">設計系統代理人</button><button type="button" class="rtcf-opt-btn" data-val="DEV">前端實作代理人</button></div>
+</div>
+<div class="rtcf-row" data-qid="Q6" data-ans="HITL">
+<div><strong>#6.</strong> <em>當多代理人迴路自動產出 3 套候選原型與啟發式審查表後，最終負責檢驗同理心、品牌倫理並核准合併上線的終極守門員。</em></div>
+<div class="rtcf-btn-group"><button type="button" class="rtcf-opt-btn" data-val="SYS">設計系統代理人</button><button type="button" class="rtcf-opt-btn" data-val="DEV">前端實作代理人</button><button type="button" class="rtcf-opt-btn" data-val="HITL">HITL 人類工程師</button></div>
+</div>
+</div>
+</div>
+<div class="nsm-footer">
+<div class="sp-score-msg" id="rtcf-score-msg-tw">請為 #1–#6 點選右側對應的 RTCF 維度或角色按鈕，完成後按「提交並檢查得分」！</div>
+<div class="sp-action-btns">
+<button type="button" class="sp-btn sp-btn-reset" id="rtcf-btn-reset-tw">↺ 重設再練一次</button>
+<button type="button" class="sp-btn sp-btn-submit" id="rtcf-btn-submit-tw">✓ 提交並檢查得分</button>
+</div>
+</div>
+</div>
+
+<!--
+這頁 6.4 節自我練習實驗室讓學生實際演練如何將 UX 審查需求結構化拆解為 RTCF（Role 角色、Task 任務、Constraints 約束、Format 格式）四大提示詞要素，並釐清多代理人原型開發流水線與 Human-in-the-Loop 人類工程師的把關職責。
 -->
 ---
 <!-- _class: lead -->
@@ -2871,6 +3065,41 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
 - impact preview: 影響範圍預覽（在執行高風險指令前預先展示將受影響之資料筆數與結構變更）
 -->
 ---
+## 🧩 6.5 互動連連看測驗：UX4AI 六大痛點與安全防護圍欄
+
+<div id="ux4ai-match-game-tw" class="pbtm-stage">
+<div class="pbtm-board">
+<div class="pbtm-col-left" id="ux4ai-col-left-tw">
+<div class="pbtm-item-left" data-skey="u1" data-color="#0284c7"><div><span class="pbtm-label">1. 深度推論延遲與黑盒子焦慮：</span><span class="pbtm-sub">模型需思考 20 秒才輸出，若只顯示靜態轉圈圈會讓使用者誤以為當機斷線</span></div><span class="pbtm-port">1</span></div>
+<div class="pbtm-item-left" data-skey="u2" data-color="#d97706"><div><span class="pbtm-label">2. 上下文範圍不明與機器人身分混淆：</span><span class="pbtm-sub">使用者不清楚 AI 目前究竟讀取了哪些本機檔案，或誤以為正在與真人客服對話</span></div><span class="pbtm-port">2</span></div>
+<div class="pbtm-item-left" data-skey="u3" data-color="#16a34a"><div><span class="pbtm-label">3. 生成偏離軌道與對話分支探索：</span><span class="pbtm-sub">AI 回答方向錯誤開始長篇跳針，或使用者想回頭修改上一句提問展開平行探索</span></div><span class="pbtm-port">3</span></div>
+<div class="pbtm-item-left" data-skey="u4" data-color="#dc2626"><div><span class="pbtm-label">4. 代理人高風險指令與夾帶非預期修改：</span><span class="pbtm-sub">自主代理人企圖執行 <code>DROP TABLE</code> / <code>rm -rf</code>，還順手在第二段程式碼擅自改動系統設定</span></div><span class="pbtm-port">4</span></div>
+<div class="pbtm-item-left" data-skey="u5" data-color="#7c3aed"><div><span class="pbtm-label">5. 空白對話框癱瘓症與專家重複打字疲勞：</span><span class="pbtm-sub">新手面對空白輸入框不知從何問起，而資深工程師則厭倦每次都要打長句觸發重構</span></div><span class="pbtm-port">5</span></div>
+<div class="pbtm-item-left" data-skey="u6" data-color="#0d9488"><div><span class="pbtm-label">6. 模型幻覺真偽難辨與黑箱推薦缺乏依據：</span><span class="pbtm-sub">LLM 以極度自信的語氣編造錯誤事實或 API，使用者無法查證該回答引用自哪份文件</span></div><span class="pbtm-port">6</span></div>
+</div>
+<svg class="pbtm-svg-canvas" id="ux4ai-svg-lines-tw"></svg>
+<div class="pbtm-col-right" id="ux4ai-col-right-tw">
+<div class="pbtm-item-right" data-tkey="u4"><span class="pbtm-port">•</span><div><span class="pbtm-label">HITL 執行前確認閘門、Diff 審核與沙箱隔離</span><span class="pbtm-sub"><code>NS05</code> 高風險操作強制暫停、逐區塊放行與防呆護欄</span></div></div>
+<div class="pbtm-item-right" data-tkey="u1"><span class="pbtm-port">•</span><div><span class="pbtm-label">逐字串流輸出與可折疊思考軌跡面板</span><span class="pbtm-sub"><code>NS01</code> Streaming Tokens 與透明展開內部推論步驟</span></div></div>
+<div class="pbtm-item-right" data-tkey="u5"><span class="pbtm-port">•</span><div><span class="pbtm-label">起始提示詞引導卡與斜線快捷指令</span><span class="pbtm-sub"><code>NS06 &amp; NS07</code> 點選範例卡片免回憶 + <code>/refactor</code> 加速器</span></div></div>
+<div class="pbtm-item-right" data-tkey="u3"><span class="pbtm-port">•</span><div><span class="pbtm-label">即時停止生成按鈕與提示詞分支編輯</span><span class="pbtm-sub"><code>NS03</code> Stop Generation 緊急中斷與 Prompt Branching</span></div></div>
+<div class="pbtm-item-right" data-tkey="u6"><span class="pbtm-port">•</span><div><span class="pbtm-label">RAG 可解釋性溯源引註與模型透明度卡</span><span class="pbtm-sub"><code>NS10</code> 點擊引用標籤定位原始文獻與揭露信心水準 (XAI)</span></div></div>
+<div class="pbtm-item-right" data-tkey="u2"><span class="pbtm-port">•</span><div><span class="pbtm-label">上下文膠囊標籤與坦白 AI 機器人身分</span><span class="pbtm-sub"><code>NS02</code> 明確顯示 <code>@file</code> 掛載範圍並建立對話語境錨定</span></div></div>
+</div>
+</div>
+<div class="pbtm-footer">
+<div class="sp-score-msg" id="ux4ai-score-msg-tw">請先點選左方 UX4AI 風險情境 (1–6)，再點選右方對應的互動設計與安全護欄進行連線！(已連 0 / 6)</div>
+<div class="sp-action-btns">
+<button type="button" class="sp-btn sp-btn-reset" id="ux4ai-btn-reset-tw">↺ 重新洗牌重試</button>
+<button type="button" class="sp-btn sp-btn-submit" id="ux4ai-btn-submit-tw">✓ 提交並檢查得分</button>
+</div>
+</div>
+</div>
+
+<!--
+這頁 6.5 節 6x6 互動連連看測驗統整了為 AI 打造體驗 (UX4AI) 的六大核心挑戰：將左側的非確定性推論延遲、對話失控、代理人誤刪資料、潛藏崩潰、機密外洩與幻覺查證，連向右側對應的 NS01–NS10 互動模式與四層安全防護圍欄。
+-->
+---
 <!-- _class: lead -->
 <!-- header: '6.6 評估與工程整合' -->
 
@@ -3064,7 +3293,7 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
     function createLangSwitchBtn(secId) {
       const btn = document.createElement('a');
       btn.className = 'header-lang-switch';
-      btn.textContent = isEn ? '🌐 中' : '🌐 EN';
+      btn.textContent = isEn ? '🌐 繁' : '🌐 EN';
       btn.title = isEn ? '切換至繁體中文版 (同頁碼)' : 'Switch to English version (same slide)';
       btn.href = '#';
       btn.addEventListener('click', function(e) {
@@ -3453,11 +3682,481 @@ UX for AI 的核心任務就是「信任度校準」：幫助使用者清楚知�
     });
   }
 
+  function bindMatchGameById(gameId, svgId, colRightId, submitId, resetId, scoreId, isZh) {
+    var game = document.getElementById(gameId);
+    if (!game || game.dataset.nsmBound) return;
+    game.dataset.nsmBound = '1';
+    var leftItems = Array.from(game.querySelectorAll('.nsm-pic-card'));
+    var rightItems = Array.from(game.querySelectorAll('.nsm-name-card'));
+    var colRight = game.querySelector('#' + colRightId);
+    var svg = game.querySelector('#' + svgId);
+    var btnSubmit = game.querySelector('#' + submitId);
+    var btnReset = game.querySelector('#' + resetId);
+    var scoreMsg = game.querySelector('#' + scoreId);
+    var activeLeft = leftItems[0] || null;
+    var links = new Map();
+    var isSubmitted = false;
+
+    function setActiveLeft(el) {
+      leftItems.forEach(function(i){ i.classList.remove('is-active'); });
+      activeLeft = el;
+      if (el) el.classList.add('is-active');
+    }
+    setActiveLeft(activeLeft);
+
+    function drawLines() {
+      if (!svg) return;
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      var svgRect = svg.getBoundingClientRect();
+      if (!svgRect.width || !svgRect.height) return;
+      svg.setAttribute('viewBox', '0 0 ' + svgRect.width + ' ' + svgRect.height);
+      links.forEach(function(rEl, sKey){
+        var lEl = leftItems.find(function(i){ return i.dataset.skey === sKey; });
+        if (!lEl || !rEl) return;
+        var lPort = lEl.querySelector('.nsm-port');
+        var rPort = rEl.querySelector('.nsm-port');
+        if (!lPort || !rPort) return;
+        var lRect = lPort.getBoundingClientRect();
+        var rRect = rPort.getBoundingClientRect();
+        var x1 = lRect.left + lRect.width / 2 - svgRect.left;
+        var y1 = lRect.top + lRect.height / 2 - svgRect.top;
+        var x2 = rRect.left + rRect.width / 2 - svgRect.left;
+        var y2 = rRect.top + rRect.height / 2 - svgRect.top;
+        var cx1 = x1 + (x2 - x1) * 0.45;
+        var cx2 = x1 + (x2 - x1) * 0.55;
+        var color = lEl.dataset.color || '#0284c7';
+        var dash = '';
+        if (isSubmitted) {
+          var isOk = rEl.dataset.tkey === sKey;
+          color = isOk ? '#16a34a' : '#dc2626';
+          if (!isOk) dash = '6 4';
+        }
+        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M ' + x1 + ' ' + y1 + ' C ' + cx1 + ' ' + y1 + ', ' + cx2 + ' ' + y2 + ', ' + x2 + ' ' + y2);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', color);
+        path.setAttribute('stroke-width', '2.8');
+        path.setAttribute('stroke-linecap', 'round');
+        if (dash) path.setAttribute('stroke-dasharray', dash);
+        svg.appendChild(path);
+      });
+    }
+
+    function syncVisualStates() {
+      leftItems.forEach(function(lEl){
+        var sKey = lEl.dataset.skey;
+        var color = lEl.dataset.color || '#0284c7';
+        var paired = links.has(sKey);
+        lEl.classList.toggle('is-paired', paired);
+        if (!isSubmitted) lEl.style.borderColor = paired ? color : '';
+        var port = lEl.querySelector('.nsm-port');
+        if (port) {
+          port.style.background = paired ? color : '#e2e8f0';
+          port.style.color = paired ? '#ffffff' : color;
+          port.style.borderColor = color;
+        }
+      });
+      rightItems.forEach(function(rEl){
+        var matchedLeft = null;
+        var matchedIdx = -1;
+        leftItems.forEach(function(lEl, idx){
+          if (links.get(lEl.dataset.skey) === rEl) {
+            matchedLeft = lEl;
+            matchedIdx = idx + 1;
+          }
+        });
+        var port = rEl.querySelector('.nsm-port');
+        if (matchedLeft) {
+          var color = matchedLeft.dataset.color || '#0284c7';
+          rEl.classList.add('is-paired');
+          if (!isSubmitted) rEl.style.borderColor = color;
+          if (port) {
+            port.textContent = String(matchedIdx);
+            port.style.background = color;
+            port.style.borderColor = color;
+            port.style.color = '#ffffff';
+          }
+        } else {
+          rEl.classList.remove('is-paired');
+          rEl.style.borderColor = '';
+          if (port) {
+            port.textContent = '•';
+            port.style.background = '#e2e8f0';
+            port.style.borderColor = '#64748b';
+            port.style.color = '#334155';
+          }
+        }
+      });
+      drawLines();
+      if (!isSubmitted && scoreMsg) {
+        scoreMsg.textContent = isZh
+          ? ('已連線: ' + links.size + ' / 10 組。' + (links.size === 10 ? '已完成全部 10 組連線，請點擊「提交並檢查得分」!' : '請點選左圖 (1–10) 再點選右側對應項目連線!'))
+          : ('Linked: ' + links.size + ' / 10 pairs. ' + (links.size === 10 ? 'All 10 linked — click Submit & Check Score!' : 'Click a left UI scene (1–10), then click its matching item on the right!'));
+      }
+    }
+
+    leftItems.forEach(function(lEl){
+      lEl.addEventListener('mouseleave', function(){
+        lEl.classList.remove('is-just-selected');
+      });
+      lEl.addEventListener('click', function(e){
+        e.stopPropagation();
+        isSubmitted = false;
+        leftItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong', 'is-just-selected'); });
+        rightItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong'); });
+        lEl.classList.add('is-just-selected');
+        setActiveLeft(lEl);
+        syncVisualStates();
+      });
+    });
+
+    rightItems.forEach(function(rEl){
+      rEl.addEventListener('click', function(e){
+        e.stopPropagation();
+        if (!activeLeft) setActiveLeft(leftItems[0]);
+        if (!activeLeft) return;
+        isSubmitted = false;
+        leftItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong'); });
+        rightItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong'); });
+        leftItems.forEach(function(lEl){
+          if (links.get(lEl.dataset.skey) === rEl) links.delete(lEl.dataset.skey);
+        });
+        links.set(activeLeft.dataset.skey, rEl);
+        var nextUnlinked = leftItems.find(function(lEl){ return !links.has(lEl.dataset.skey); });
+        setActiveLeft(nextUnlinked || null);
+        syncVisualStates();
+      });
+    });
+
+    if (btnSubmit) {
+      btnSubmit.addEventListener('click', function(e){
+        e.stopPropagation();
+        isSubmitted = true;
+        var correctList = [];
+        var wrongList = [];
+        leftItems.forEach(function(lEl, idx){
+          lEl.classList.remove('is-active', 'is-correct', 'is-wrong');
+          var rEl = links.get(lEl.dataset.skey);
+          if (rEl && rEl.dataset.tkey === lEl.dataset.skey) {
+            correctList.push('#' + (idx + 1));
+            lEl.classList.add('is-correct');
+            rEl.classList.add('is-correct');
+          } else {
+            wrongList.push('#' + (idx + 1));
+            lEl.classList.add('is-wrong');
+            if (rEl) rEl.classList.add('is-wrong');
+          }
+        });
+        drawLines();
+        var score = Math.round((correctList.length / 10) * 100);
+        if (score === 100) {
+          scoreMsg.textContent = isZh
+            ? '[滿分 100！] 得分: 100 / 100 (10 / 10 全對) — 10 組介面場景全數配對成功！'
+            : '[Perfect 100!] Score: 100 / 100 (10 / 10 Correct) — All 10 UI Scenes Perfectly Matched!';
+        } else {
+          scoreMsg.textContent = isZh
+            ? ('得分: ' + score + ' / 100 | 答對: ' + (correctList.join(', ') || '無') + ' | 待修正: ' + wrongList.join(', ') + ' (可直接點選紅框項目重新連線重試！)')
+            : ('Score: ' + score + ' / 100 | Correct: ' + (correctList.join(', ') || 'None') + ' | Retry: ' + wrongList.join(', ') + ' (Click any red card to re-link!)');
+        }
+      });
+    }
+
+    if (btnReset) {
+      btnReset.addEventListener('click', function(e){
+        e.stopPropagation();
+        isSubmitted = false;
+        links.clear();
+        leftItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong', 'is-paired'); i.style.borderColor = ''; });
+        rightItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong', 'is-paired'); i.style.borderColor = ''; });
+        for (var i = rightItems.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          colRight.appendChild(rightItems[j]);
+        }
+        setActiveLeft(leftItems[0] || null);
+        syncVisualStates();
+      });
+    }
+
+    window.addEventListener('resize', drawLines);
+    window.addEventListener('hashchange', function(){ setTimeout(drawLines, 120); });
+    setTimeout(syncVisualStates, 80);
+  }
+
+  function initRtcfLab(labId, submitId, resetId, scoreId, isZh) {
+    var lab = document.getElementById(labId);
+    if (!lab || lab.dataset.rtcfBound) return;
+    lab.dataset.rtcfBound = '1';
+    var rows = Array.from(lab.querySelectorAll('.rtcf-row'));
+    var btnSubmit = lab.querySelector('#' + submitId);
+    var btnReset = lab.querySelector('#' + resetId);
+    var scoreMsg = lab.querySelector('#' + scoreId);
+
+    rows.forEach(function(row){
+      var btns = Array.from(row.querySelectorAll('.rtcf-opt-btn'));
+      btns.forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.stopPropagation();
+          row.classList.remove('is-correct', 'is-wrong');
+          btns.forEach(function(b){ b.classList.remove('is-selected'); });
+          btn.classList.add('is-selected');
+          row.dataset.sel = btn.dataset.val;
+        });
+      });
+    });
+
+    if (btnSubmit) {
+      btnSubmit.addEventListener('click', function(e){
+        e.stopPropagation();
+        var correctList = [];
+        var wrongList = [];
+        rows.forEach(function(row, idx){
+          row.classList.remove('is-correct', 'is-wrong');
+          var sel = row.dataset.sel || '';
+          if (sel && sel === row.dataset.ans) {
+            correctList.push('#' + (idx + 1));
+            row.classList.add('is-correct');
+          } else {
+            wrongList.push('#' + (idx + 1));
+            row.classList.add('is-wrong');
+          }
+        });
+        var score = Math.round((correctList.length / rows.length) * 100);
+        if (score === 100) {
+          scoreMsg.textContent = isZh
+            ? '[滿分 100！] 得分: 100 / 100 (6 / 6 全對) — RTCF 提示詞工程與多代理人職責全數正確！'
+            : '[Perfect 100!] Score: 100 / 100 (6 / 6 Correct) — All RTCF & Multi-Agent Roles Mastered!';
+        } else {
+          scoreMsg.textContent = isZh
+            ? ('得分: ' + score + ' / 100 | 答對: ' + (correctList.join(', ') || '無') + ' | 待修正: ' + wrongList.join(', ') + ' (請重新點選紅框列之按鈕後再次提交！)')
+            : ('Score: ' + score + ' / 100 | Correct: ' + (correctList.join(', ') || 'None') + ' | Retry: ' + wrongList.join(', ') + ' (Adjust any red row and re-submit!)');
+        }
+      });
+    }
+
+    if (btnReset) {
+      btnReset.addEventListener('click', function(e){
+        e.stopPropagation();
+        rows.forEach(function(row){
+          delete row.dataset.sel;
+          row.classList.remove('is-correct', 'is-wrong');
+          row.querySelectorAll('.rtcf-opt-btn').forEach(function(b){ b.classList.remove('is-selected'); });
+        });
+        scoreMsg.textContent = isZh
+          ? '已重設！請為 #1–#6 點選對應的 RTCF 或代理人按鈕，完成後按「提交並檢查得分」！'
+          : 'Reset complete! Select an option button for each of the 6 items (#1–#6), then click Submit!';
+      });
+    }
+  }
+
+  function initPbtmMatchById(gameId, svgId, colRightId, submitId, resetId, scoreId, isZh) {
+    var game = document.getElementById(gameId);
+    if (!game || game.dataset.pbtmBound) return;
+    game.dataset.pbtmBound = '1';
+    var leftItems = Array.from(game.querySelectorAll('.pbtm-item-left'));
+    var rightItems = Array.from(game.querySelectorAll('.pbtm-item-right'));
+    var colRight = game.querySelector('#' + colRightId);
+    var svg = game.querySelector('#' + svgId);
+    var btnSubmit = game.querySelector('#' + submitId);
+    var btnReset = game.querySelector('#' + resetId);
+    var scoreMsg = game.querySelector('#' + scoreId);
+    var activeLeft = leftItems[0] || null;
+    var links = new Map();
+    var isSubmitted = false;
+
+    function setActiveLeft(el) {
+      leftItems.forEach(function(i){ i.classList.remove('is-active'); });
+      activeLeft = el;
+      if (el) el.classList.add('is-active');
+    }
+    setActiveLeft(activeLeft);
+
+    function drawLines() {
+      if (!svg) return;
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      var svgRect = svg.getBoundingClientRect();
+      if (!svgRect.width || !svgRect.height) return;
+      svg.setAttribute('viewBox', '0 0 ' + svgRect.width + ' ' + svgRect.height);
+      links.forEach(function(rEl, sKey){
+        var lEl = leftItems.find(function(i){ return i.dataset.skey === sKey; });
+        if (!lEl || !rEl) return;
+        var lPort = lEl.querySelector('.pbtm-port');
+        var rPort = rEl.querySelector('.pbtm-port');
+        if (!lPort || !rPort) return;
+        var lRect = lPort.getBoundingClientRect();
+        var rRect = rPort.getBoundingClientRect();
+        var x1 = lRect.left + lRect.width / 2 - svgRect.left;
+        var y1 = lRect.top + lRect.height / 2 - svgRect.top;
+        var x2 = rRect.left + rRect.width / 2 - svgRect.left;
+        var y2 = rRect.top + rRect.height / 2 - svgRect.top;
+        var cx1 = x1 + (x2 - x1) * 0.45;
+        var cx2 = x1 + (x2 - x1) * 0.55;
+        var color = lEl.dataset.color || '#0284c7';
+        var dash = '';
+        if (isSubmitted) {
+          var isOk = rEl.dataset.tkey === sKey;
+          color = isOk ? '#16a34a' : '#dc2626';
+          if (!isOk) dash = '6 4';
+        }
+        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M ' + x1 + ' ' + y1 + ' C ' + cx1 + ' ' + y1 + ', ' + cx2 + ' ' + y2 + ', ' + x2 + ' ' + y2);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', color);
+        path.setAttribute('stroke-width', '3.0');
+        path.setAttribute('stroke-linecap', 'round');
+        if (dash) path.setAttribute('stroke-dasharray', dash);
+        svg.appendChild(path);
+      });
+    }
+
+    function syncVisualStates() {
+      leftItems.forEach(function(lEl){
+        var sKey = lEl.dataset.skey;
+        var color = lEl.dataset.color || '#0284c7';
+        var paired = links.has(sKey);
+        lEl.classList.toggle('is-paired', paired);
+        if (!isSubmitted) lEl.style.borderColor = paired ? color : '';
+        var port = lEl.querySelector('.pbtm-port');
+        if (port) {
+          port.style.background = paired ? color : '#e2e8f0';
+          port.style.color = paired ? '#ffffff' : color;
+          port.style.borderColor = color;
+        }
+      });
+      rightItems.forEach(function(rEl){
+        var matchedLeft = null;
+        var matchedIdx = -1;
+        leftItems.forEach(function(lEl, idx){
+          if (links.get(lEl.dataset.skey) === rEl) {
+            matchedLeft = lEl;
+            matchedIdx = idx + 1;
+          }
+        });
+        var port = rEl.querySelector('.nsm-port, .pbtm-port');
+        if (matchedLeft) {
+          var color = matchedLeft.dataset.color || '#0284c7';
+          rEl.classList.add('is-paired');
+          if (!isSubmitted) rEl.style.borderColor = color;
+          if (port) {
+            port.textContent = String(matchedIdx);
+            port.style.background = color;
+            port.style.borderColor = color;
+            port.style.color = '#ffffff';
+          }
+        } else {
+          rEl.classList.remove('is-paired');
+          rEl.style.borderColor = '';
+          if (port) {
+            port.textContent = '•';
+            port.style.background = '#e2e8f0';
+            port.style.borderColor = '#64748b';
+            port.style.color = '#334155';
+          }
+        }
+      });
+      drawLines();
+      if (!isSubmitted && scoreMsg) {
+        scoreMsg.textContent = isZh
+          ? ('已連線: ' + links.size + ' / 6 組。' + (links.size === 6 ? '已完成全部 6 組連線，請點擊「提交並檢查得分」!' : '請點選左方 UX4AI 風險情境 (1–6)，再點選右方對應的互動設計與防護圍欄!'))
+          : ('Linked: ' + links.size + ' / 6 pairs. ' + (links.size === 6 ? 'All 6 linked — click Submit & Check Score!' : 'Click a left UX4AI scenario (1–6), then click its matching guardrail on the right!'));
+      }
+    }
+
+    leftItems.forEach(function(lEl){
+      lEl.addEventListener('click', function(e){
+        e.stopPropagation();
+        isSubmitted = false;
+        leftItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong'); });
+        rightItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong'); });
+        setActiveLeft(lEl);
+        syncVisualStates();
+      });
+    });
+
+    rightItems.forEach(function(rEl){
+      rEl.addEventListener('click', function(e){
+        e.stopPropagation();
+        if (!activeLeft) setActiveLeft(leftItems[0]);
+        if (!activeLeft) return;
+        isSubmitted = false;
+        leftItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong'); });
+        rightItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong'); });
+        leftItems.forEach(function(lEl){
+          if (links.get(lEl.dataset.skey) === rEl) links.delete(lEl.dataset.skey);
+        });
+        links.set(activeLeft.dataset.skey, rEl);
+        var nextUnlinked = leftItems.find(function(lEl){ return !links.has(lEl.dataset.skey); });
+        setActiveLeft(nextUnlinked || null);
+        syncVisualStates();
+      });
+    });
+
+    if (btnSubmit) {
+      btnSubmit.addEventListener('click', function(e){
+        e.stopPropagation();
+        isSubmitted = true;
+        var correctList = [];
+        var wrongList = [];
+        leftItems.forEach(function(lEl, idx){
+          lEl.classList.remove('is-active', 'is-correct', 'is-wrong');
+          var rEl = links.get(lEl.dataset.skey);
+          if (rEl && rEl.dataset.tkey === lEl.dataset.skey) {
+            correctList.push('#' + (idx + 1));
+            lEl.classList.add('is-correct');
+            rEl.classList.add('is-correct');
+          } else {
+            wrongList.push('#' + (idx + 1));
+            lEl.classList.add('is-wrong');
+            if (rEl) rEl.classList.add('is-wrong');
+          }
+        });
+        drawLines();
+        var score = Math.round((correctList.length / 6) * 100);
+        if (score === 100) {
+          scoreMsg.textContent = isZh
+            ? '[滿分 100！] 得分: 100 / 100 (6 / 6 全對) — UX4AI 六大互動設計與安全護欄全數配對成功！'
+            : '[Perfect 100!] Score: 100 / 100 (6 / 6 Correct) — All 6 UX4AI Patterns & Guardrails Matched!';
+        } else {
+          scoreMsg.textContent = isZh
+            ? ('得分: ' + score + ' / 100 | 答對: ' + (correctList.join(', ') || '無') + ' | 待修正: ' + wrongList.join(', ') + ' (可直接點選紅框項目重新連線重試！)')
+            : ('Score: ' + score + ' / 100 | Correct: ' + (correctList.join(', ') || 'None') + ' | Retry: ' + wrongList.join(', ') + ' (Click any red card to re-link!)');
+        }
+      });
+    }
+
+    if (btnReset) {
+      btnReset.addEventListener('click', function(e){
+        e.stopPropagation();
+        isSubmitted = false;
+        links.clear();
+        leftItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong', 'is-paired'); i.style.borderColor = ''; });
+        rightItems.forEach(function(i){ i.classList.remove('is-correct', 'is-wrong', 'is-paired'); i.style.borderColor = ''; });
+        for (var i = rightItems.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          colRight.appendChild(rightItems[j]);
+        }
+        setActiveLeft(leftItems[0] || null);
+        syncVisualStates();
+      });
+    }
+
+    window.addEventListener('resize', drawLines);
+    window.addEventListener('hashchange', function(){ setTimeout(drawLines, 120); });
+    setTimeout(syncVisualStates, 80);
+  }
+
+  function initNsMatchGame() {
+    bindMatchGameById('ns-match-game-tw', 'nsm-svg-lines-tw', 'nsm-col-right-tw', 'nsm-btn-submit-tw', 'nsm-btn-reset-tw', 'nsm-score-msg-tw', true);
+    bindMatchGameById('tw-match-game-tw', 'twm-svg-lines-tw', 'twm-col-right-tw', 'twm-btn-submit-tw', 'twm-btn-reset-tw', 'twm-score-msg-tw', true);
+    initRtcfLab('rtcf-lab-tw', 'rtcf-btn-submit-tw', 'rtcf-btn-reset-tw', 'rtcf-score-msg-tw', true);
+    initPbtmMatchById('ux4ai-match-game-tw', 'ux4ai-svg-lines-tw', 'ux4ai-col-right-tw', 'ux4ai-btn-submit-tw', 'ux4ai-btn-reset-tw', 'ux4ai-score-msg-tw', true);
+  }
+
   // Initialize all features
   function init() {
     initHeaderDropdown();
     initNumberQuickJump();
     initSplitImageHoverZoom();
+    initNsMatchGame();
   }
 
   if (document.readyState === 'loading') {

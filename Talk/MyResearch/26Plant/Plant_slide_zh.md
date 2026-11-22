@@ -4,7 +4,7 @@ theme: gaia
 size: 16:9
 paginate: true
 html: true
-header: '<div class="hdr-wrap"><span class="hdr-title">PLANT：透過多代理人 AI 框架提升需求工程效率</span><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：單打獨鬥 vs. 團隊協作</a><a href="#3">簡報大綱</a><a href="#4">1. 研究動機與問題</a><a href="#6">2. 文獻回顧與比較</a><a href="#7">3. PLANT 框架設計</a><a href="#12">4. 實證評估與結果</a><a href="#19">5. 結論與未來研究</a></div></div></div>'
+header: '<div class="hdr-wrap"><span class="hdr-title">PLANT：透過多代理人 AI 框架提升需求工程效率</span><div class="hdr-actions"><a class="lang-btn" href="./Plant_slide.html" title="Switch to English Slides">🌐 EN</a><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：單打獨鬥 vs. 團隊協作</a><a href="#3">簡報大綱</a><a href="#4">1. 研究動機與問題</a><a href="#6">2. 文獻回顧與比較</a><a href="#7">3. PLANT 框架設計</a><a href="#12">4. 實證評估與結果</a><a href="#19">5. 結論與未來研究</a></div></div></div></div>'
 footer: '薛念林（Nien-Lin Hsueh）＆ Shu-Hsien Liao · 逢甲大學資訊工程學系 · PLANT 多代理人需求工程框架'
 ---
 
@@ -532,6 +532,36 @@ section div + .callout {
 }
 section .callout {
   padding: 12px 18px !important;
+}
+
+
+.hdr-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.lang-btn {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.35;
+  transition: background 0.15s ease;
+}
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.26);
+  text-decoration: none !important;
+}
+@media print {
+  .lang-btn, .nav-dropdown { display: none !important; }
 }
 
 </style>
@@ -1232,6 +1262,16 @@ document.querySelectorAll('.split64 .fig-box img, .split55 .fig-box img, .split4
     img.classList.remove('is-zoomed');
     if (box) box.classList.remove('is-zoomed');
   });
+});
+
+
+// Bilingual toggle preserving current slide hash
+document.addEventListener('click', (e) => {
+  const langBtn = e.target.closest('.lang-btn');
+  if (!langBtn) return;
+  e.preventDefault();
+  const target = langBtn.getAttribute('href');
+  if (target) window.location.href = target + (window.location.hash || '');
 });
 
 </script>

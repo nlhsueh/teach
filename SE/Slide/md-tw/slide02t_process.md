@@ -2703,7 +2703,7 @@ Sommerville 的教科書是學術基石；Kent Beck 的《極限編程》與 Mar
     function createLangSwitchBtn(secId) {
       const btn = document.createElement('a');
       btn.className = 'header-lang-switch';
-      btn.textContent = isEn ? '🌐 中' : '🌐 EN';
+      btn.textContent = isEn ? '🌐 繁' : '🌐 EN';
       btn.title = isEn ? '切換至繁體中文版 (同頁碼)' : 'Switch to English version (same slide)';
       btn.href = '#';
       btn.addEventListener('click', function(e) {

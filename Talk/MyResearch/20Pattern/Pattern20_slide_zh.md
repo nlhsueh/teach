@@ -4,7 +4,7 @@ theme: gaia
 size: 16:9
 paginate: true
 html: true
-header: '<div class="hdr-wrap"><span class="hdr-title">以軟體演化數據分析設計模式之使用度</span><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：未雨綢繆或積灰塵？</a><a href="#3">簡報大綱</a><a href="#4">1. 研究動機與問題</a><a href="#6">2. 背景與相關研究</a><a href="#7">3. 模式使用度評估方法</a><a href="#11">4. PUA 系統與實證結果</a><a href="#15">5. 統計分析與研究威脅</a><a href="#18">6. 結論與未來研究</a></div></div></div>'
+header: '<div class="hdr-wrap"><span class="hdr-title">以軟體演化數據分析設計模式之使用度</span><div class="hdr-actions"><a class="lang-btn" href="./Pattern20_slide.html" title="Switch to English Slides">🌐 EN</a><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：未雨綢繆或積灰塵？</a><a href="#3">簡報大綱</a><a href="#4">1. 研究動機與問題</a><a href="#6">2. 背景與相關研究</a><a href="#7">3. 模式使用度評估方法</a><a href="#11">4. PUA 系統與實證結果</a><a href="#15">5. 統計分析與研究威脅</a><a href="#18">6. 結論與未來研究</a></div></div></div></div>'
 footer: '薛念林（Nien-Lin Hsueh）· 逢甲大學資訊工程學系 · JISE Vol. 36, pp. 53–73 (2020)'
 ---
 
@@ -580,6 +580,36 @@ section div + .callout {
 }
 section .callout {
   padding: 12px 18px !important;
+}
+
+
+.hdr-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.lang-btn {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.35;
+  transition: background 0.15s ease;
+}
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.26);
+  text-decoration: none !important;
+}
+@media print {
+  .lang-btn, .nav-dropdown { display: none !important; }
 }
 
 </style>
@@ -1413,6 +1443,16 @@ document.querySelectorAll('.split64 .fig-box img, .split55 .fig-box img, .split4
     img.classList.remove('is-zoomed');
     if (box) box.classList.remove('is-zoomed');
   });
+});
+
+
+// Bilingual toggle preserving current slide hash
+document.addEventListener('click', (e) => {
+  const langBtn = e.target.closest('.lang-btn');
+  if (!langBtn) return;
+  e.preventDefault();
+  const target = langBtn.getAttribute('href');
+  if (target) window.location.href = target + (window.location.hash || '');
 });
 
 </script>

@@ -2029,7 +2029,7 @@ Thank you for your active participation in Chapter 3!
     function createLangSwitchBtn(secId) {
       const btn = document.createElement('a');
       btn.className = 'header-lang-switch';
-      btn.textContent = isEn ? '🌐 中' : '🌐 EN';
+      btn.textContent = isEn ? '🌐 繁' : '🌐 EN';
       btn.title = isEn ? '切換至繁體中文版 (同頁碼)' : 'Switch to English version (same slide)';
       btn.href = '#';
       btn.addEventListener('click', function(e) {
