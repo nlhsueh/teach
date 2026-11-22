@@ -1702,7 +1702,7 @@ Equivalence Partitioning spans 4 coverage dimensions. Under Weak Normal EP, only
   - <code>a¹</code>: Single-element array (<code>[7]</code>)
   - <code>a*</code>: Multi-element sorted array (<code>[3, 7, 11, ...]</code>)
 - **2. Search Outcome (F) & 3. Hit Position (C):**
-  - <code>fᵗ</code> (Found): hits head (<code>c¹</code>), middle (<code>cᵐ</code>), or tail (<code>cˡ</code>)
+  - <code>fᵗ</code> (Found): hits head (<code>c¹</code>), middle (<code>cᵐ</code>), or tail (<code>cᵗ</code>)
   - <code>fᶠ</code> (Not Found): key absent from array
 - **4. Input Validity (K):** <code>k</code> (valid int) vs. <code>k!</code> (invalid type/null)
 
@@ -1714,7 +1714,7 @@ Equivalence Partitioning spans 4 coverage dimensions. Under Weak Normal EP, only
   - Exercises every partition of all 4 dimensions in at least one test case without Cartesian combinatorial explosion.
 - **Representative Case Distribution:**
   - <strong>R₁..R₂:</strong> Single-element array (<code>a¹</code>) hit (<code>c¹</code>) & miss (<code>fᶠ</code>).
-  - <strong>R₃..R₅:</strong> Multi-element array (<code>a*</code>) head (<code>c¹</code>), middle (<code>cᵐ</code>), & tail (<code>cˡ</code>) hits.
+  - <strong>R₃..R₅:</strong> Multi-element array (<code>a*</code>) head (<code>c¹</code>), middle (<code>cᵐ</code>), & tail (<code>cᵗ</code>) hits.
   - <strong>R₆..R₇:</strong> Multi-element gap miss (<code>fᶠ</code>) & empty array defense (<code>a⁰</code>).
   - <strong>R₈:</strong> Invalid input defensive type/null rejection (<code>k!</code>).
 
@@ -1742,7 +1742,7 @@ Step through the interactive binary search trace at the top by clicking Next Ste
 | **R<sub>2</sub>** | `a`<sup>`1`</sup> `× f`<sup>`f`</sup> `× k` | `k=7, A=[8]` | `index = -1` | Single-element miss (covers `a`<sup>`1`</sup>`, f`<sup>`f`</sup>) |
 | **R<sub>3</sub>** | `a`<sup>`*`</sup> `× f`<sup>`t`</sup> `× c`<sup>`1`</sup> `× k` | `k=7, A=[7, 9, 11]` | `index = 0` | Multi-element head hit (`a`<sup>`*`</sup>`, c`<sup>`1`</sup>) |
 | **R<sub>4</sub>** | `a`<sup>`*`</sup> `× f`<sup>`t`</sup> `× c`<sup>`m`</sup> `× k` | `k=9, A=[7, 9, 11]` | `index = 1` | Multi-element middle hit (`a`<sup>`*`</sup>`, c`<sup>`m`</sup>) |
-| **R<sub>5</sub>** | `a`<sup>`*`</sup> `× f`<sup>`t`</sup> `× c`<sup>`l`</sup> `× k` | `k=11, A=[7, 9, 11]` | `index = 2` | Multi-element tail hit (`a`<sup>`*`</sup>`, c`<sup>`l`</sup>) |
+| **R<sub>5</sub>** | `a`<sup>`*`</sup> `× f`<sup>`t`</sup> `× c`<sup>`t`</sup> `× k` | `k=11, A=[7, 9, 11]` | `index = 2` | Multi-element tail hit (`a`<sup>`*`</sup>`, c`<sup>`t`</sup>) |
 | **R<sub>6</sub>** | `a`<sup>`*`</sup> `× f`<sup>`f`</sup> `× k` | `k=8, A=[7, 9, 11]` | `index = -1` | Multi-element gap miss (`a`<sup>`*`</sup>`, f`<sup>`f`</sup>) |
 | **R<sub>7</sub>** | `a`<sup>`0`</sup> `× f`<sup>`f`</sup> `× k` | `k=7, A=[]` | `index = -1` | Empty array boundary defense (`a`<sup>`0`</sup>`, f`<sup>`f`</sup>) |
 | **R<sub>8</sub>** | `a`<sup>`*`</sup> `× k!` | `k="abc", A=[7, 9]` | Throws `TypeException` | Invalid input defensive rejection (`k!`) |

@@ -1585,7 +1585,7 @@
 </li>
 <li><strong>2. 搜尋結果 (Outcome, F) 與 3. 命中位置 (Hit Position, C)：</strong>
 <ul>
-<li><code>fᵗ</code> (找到)：命中於頭部 (<code>c¹</code>)、中間 (<code>cᵐ</code>) 或尾部 (<code>cˡ</code>)</li>
+<li><code>fᵗ</code> (找到)：命中於頭部 (<code>c¹</code>)、中間 (<code>cᵐ</code>) 或尾部 (<code>cᵗ</code>)</li>
 <li><code>fᶠ</code> (未找到)：目標鍵值不存在於陣列中</li>
 </ul>
 </li>
@@ -1603,7 +1603,7 @@
 <li><strong>代表性案例分佈：</strong>
 <ul>
 <li><strong>R₁..R₂：</strong>單一元素陣列 (<code>a¹</code>) 的命中 (<code>c¹</code>) 與未命中 (<code>fᶠ</code>)。</li>
-<li><strong>R₃..R₅：</strong>多元素陣列 (<code>a*</code>) 的頭部 (<code>c¹</code>)、中間 (<code>cᵐ</code>) 與尾部 (<code>cˡ</code>) 命中。</li>
+<li><strong>R₃..R₅：</strong>多元素陣列 (<code>a*</code>) 的頭部 (<code>c¹</code>)、中間 (<code>cᵐ</code>) 與尾部 (<code>cᵗ</code>) 命中。</li>
 <li><strong>R₆..R₇：</strong>多元素區間空隙未命中 (<code>fᶠ</code>) 與空陣列防禦 (<code>a⁰</code>)。</li>
 <li><strong>R₈：</strong>非法輸入之型別／空值防禦性拒絕 (<code>k!</code>)。</li>
 </ul>
@@ -1659,10 +1659,10 @@
 </tr>
 <tr>
 <td style="text-align:center"><strong>R<sub>5</sub></strong></td>
-<td style="text-align:left"><code>a</code><sup><code>*</code></sup> <code>× f</code><sup><code>t</code></sup> <code>× c</code><sup><code>l</code></sup> <code>× k</code></td>
+<td style="text-align:left"><code>a</code><sup><code>*</code></sup> <code>× f</code><sup><code>t</code></sup> <code>× c</code><sup><code>t</code></sup> <code>× k</code></td>
 <td style="text-align:left"><code>k=11, A=[7, 9, 11]</code></td>
 <td style="text-align:left"><code>index = 2</code></td>
-<td style="text-align:left">多元素尾部命中（<code>a</code><sup><code>*</code></sup><code>, c</code><sup><code>l</code></sup>）</td>
+<td style="text-align:left">多元素尾部命中（<code>a</code><sup><code>*</code></sup><code>, c</code><sup><code>t</code></sup>）</td>
 </tr>
 <tr>
 <td style="text-align:center"><strong>R<sub>6</sub></strong></td>

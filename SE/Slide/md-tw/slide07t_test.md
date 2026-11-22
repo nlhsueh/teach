@@ -1701,7 +1701,7 @@ void testGradeBoundariesWithoutEarlyAbort() {
   - <code>a¹</code>：單一元素陣列 (<code>[7]</code>)
   - <code>a*</code>：多元素已排序陣列 (<code>[3, 7, 11, ...]</code>)
 - **2. 搜尋結果 (Outcome, F) 與 3. 命中位置 (Hit Position, C)：**
-  - <code>fᵗ</code> (找到)：命中於頭部 (<code>c¹</code>)、中間 (<code>cᵐ</code>) 或尾部 (<code>cˡ</code>)
+  - <code>fᵗ</code> (找到)：命中於頭部 (<code>c¹</code>)、中間 (<code>cᵐ</code>) 或尾部 (<code>cᵗ</code>)
   - <code>fᶠ</code> (未找到)：目標鍵值不存在於陣列中
 - <strong>4. 輸入合法性 (Validity, K)：</strong> <code>k</code>（合法整數）vs. <code>k!</code>（非法型別或 null）
 
@@ -1713,7 +1713,7 @@ void testGradeBoundariesWithoutEarlyAbort() {
   - 在不引發笛卡爾乘積組合爆炸的前提下，確保全部 4 個維度的每一個分割區間至少在一個測試案例中被執行。
 - **代表性案例分佈：**
   - <strong>R₁..R₂：</strong>單一元素陣列 (<code>a¹</code>) 的命中 (<code>c¹</code>) 與未命中 (<code>fᶠ</code>)。
-  - <strong>R₃..R₅：</strong>多元素陣列 (<code>a*</code>) 的頭部 (<code>c¹</code>)、中間 (<code>cᵐ</code>) 與尾部 (<code>cˡ</code>) 命中。
+  - <strong>R₃..R₅：</strong>多元素陣列 (<code>a*</code>) 的頭部 (<code>c¹</code>)、中間 (<code>cᵐ</code>) 與尾部 (<code>cᵗ</code>) 命中。
   - <strong>R₆..R₇：</strong>多元素區間空隙未命中 (<code>fᶠ</code>) 與空陣列防禦 (<code>a⁰</code>)。
   - <strong>R₈：</strong>非法輸入之型別／空值防禦性拒絕 (<code>k!</code>)。
 
@@ -1741,7 +1741,7 @@ void testGradeBoundariesWithoutEarlyAbort() {
 | <strong>R<sub>2</sub></strong> | `a`<sup>`1`</sup> `× f`<sup>`f`</sup> `× k` | `k=7, A=[8]` | `index = -1` | 單一元素未命中（涵蓋 `a`<sup>`1`</sup>`, f`<sup>`f`</sup>） |
 | <strong>R<sub>3</sub></strong> | `a`<sup>`*`</sup> `× f`<sup>`t`</sup> `× c`<sup>`1`</sup> `× k` | `k=7, A=[7, 9, 11]` | `index = 0` | 多元素頭部命中（`a`<sup>`*`</sup>`, c`<sup>`1`</sup>） |
 | <strong>R<sub>4</sub></strong> | `a`<sup>`*`</sup> `× f`<sup>`t`</sup> `× c`<sup>`m`</sup> `× k` | `k=9, A=[7, 9, 11]` | `index = 1` | 多元素中間命中（`a`<sup>`*`</sup>`, c`<sup>`m`</sup>） |
-| <strong>R<sub>5</sub></strong> | `a`<sup>`*`</sup> `× f`<sup>`t`</sup> `× c`<sup>`l`</sup> `× k` | `k=11, A=[7, 9, 11]` | `index = 2` | 多元素尾部命中（`a`<sup>`*`</sup>`, c`<sup>`l`</sup>） |
+| <strong>R<sub>5</sub></strong> | `a`<sup>`*`</sup> `× f`<sup>`t`</sup> `× c`<sup>`t`</sup> `× k` | `k=11, A=[7, 9, 11]` | `index = 2` | 多元素尾部命中（`a`<sup>`*`</sup>`, c`<sup>`t`</sup>） |
 | <strong>R<sub>6</sub></strong> | `a`<sup>`*`</sup> `× f`<sup>`f`</sup> `× k` | `k=8, A=[7, 9, 11]` | `index = -1` | 多元素空隙未命中（`a`<sup>`*`</sup>`, f`<sup>`f`</sup>） |
 | <strong>R<sub>7</sub></strong> | `a`<sup>`0`</sup> `× f`<sup>`f`</sup> `× k` | `k=7, A=[]` | `index = -1` | 空陣列邊界防禦（`a`<sup>`0`</sup>`, f`<sup>`f`</sup>） |
 | <strong>R<sub>8</sub></strong> | `a`<sup>`*`</sup> `× k!` | `k="abc", A=[7, 9]` | 拋出 `TypeException` | 非法輸入防禦性拒絕（`k!`） |

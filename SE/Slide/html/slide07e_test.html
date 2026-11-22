@@ -1586,7 +1586,7 @@ Feng Chia University</p>
 </li>
 <li><strong>2. Search Outcome (F) &amp; 3. Hit Position (C):</strong>
 <ul>
-<li><code>fᵗ</code> (Found): hits head (<code>c¹</code>), middle (<code>cᵐ</code>), or tail (<code>cˡ</code>)</li>
+<li><code>fᵗ</code> (Found): hits head (<code>c¹</code>), middle (<code>cᵐ</code>), or tail (<code>cᵗ</code>)</li>
 <li><code>fᶠ</code> (Not Found): key absent from array</li>
 </ul>
 </li>
@@ -1604,7 +1604,7 @@ Feng Chia University</p>
 <li><strong>Representative Case Distribution:</strong>
 <ul>
 <li><strong>R₁..R₂:</strong> Single-element array (<code>a¹</code>) hit (<code>c¹</code>) &amp; miss (<code>fᶠ</code>).</li>
-<li><strong>R₃..R₅:</strong> Multi-element array (<code>a*</code>) head (<code>c¹</code>), middle (<code>cᵐ</code>), &amp; tail (<code>cˡ</code>) hits.</li>
+<li><strong>R₃..R₅:</strong> Multi-element array (<code>a*</code>) head (<code>c¹</code>), middle (<code>cᵐ</code>), &amp; tail (<code>cᵗ</code>) hits.</li>
 <li><strong>R₆..R₇:</strong> Multi-element gap miss (<code>fᶠ</code>) &amp; empty array defense (<code>a⁰</code>).</li>
 <li><strong>R₈:</strong> Invalid input defensive type/null rejection (<code>k!</code>).</li>
 </ul>
@@ -1660,10 +1660,10 @@ Feng Chia University</p>
 </tr>
 <tr>
 <td style="text-align:center"><strong>R<sub>5</sub></strong></td>
-<td style="text-align:left"><code>a</code><sup><code>*</code></sup> <code>× f</code><sup><code>t</code></sup> <code>× c</code><sup><code>l</code></sup> <code>× k</code></td>
+<td style="text-align:left"><code>a</code><sup><code>*</code></sup> <code>× f</code><sup><code>t</code></sup> <code>× c</code><sup><code>t</code></sup> <code>× k</code></td>
 <td style="text-align:left"><code>k=11, A=[7, 9, 11]</code></td>
 <td style="text-align:left"><code>index = 2</code></td>
-<td style="text-align:left">Multi-element tail hit (<code>a</code><sup><code>*</code></sup><code>, c</code><sup><code>l</code></sup>)</td>
+<td style="text-align:left">Multi-element tail hit (<code>a</code><sup><code>*</code></sup><code>, c</code><sup><code>t</code></sup>)</td>
 </tr>
 <tr>
 <td style="text-align:center"><strong>R<sub>6</sub></strong></td>
