@@ -46,8 +46,8 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
     <h3>Part 2：組合測試、白箱覆蓋與整合測試</h3>
     <ul>
       <li><a href="#62"><b>7.4 組合測試、狀態轉換與屬性基礎測試：</b></a>成對組合測試 (Pairwise / All-Pairs) 與 IPO 貪婪演算法追蹤、AllPairs4J、狀態轉換測試、屬性基礎測試（jqwik 與反例縮減 Shrinking）、變質關係 (MR)。</li>
-      <li><a href="#83"><b>7.5 白箱覆蓋率與變異測試：</b></a>規格與程式碼四象限、敘述／分支／條件覆蓋率 (SC/BC/CC)、短路求值與 JaCoCo 黃色菱形、多重條件覆蓋 (MCC)、路徑爆炸、航太級 MC/DC、100% 覆蓋率迷思、變異測試（RIPR 模型、等價變異體、PITest）。</li>
-      <li><a href="#104"><b>7.6 整合測試、測試替身與 Mockito：</b></a>V 模型契約失配、建構子依賴注入 (Constructor DI)、由下而上（驅動模組 Drivers）vs. 由上而下（樁模組 Stubs）vs. 三明治策略、五大測試替身、Mockito（mock, spy, verify）、脆弱測試 (Brittle Tests)。</li>
+      <li><a href="#84"><b>7.5 白箱覆蓋率與變異測試：</b></a>規格與程式碼四象限、敘述／分支／條件覆蓋率 (SC/BC/CC)、短路求值與 JaCoCo 黃色菱形、多重條件覆蓋 (MCC)、路徑爆炸、航太級 MC/DC、100% 覆蓋率迷思、變異測試（RIPR 模型、等價變異體、PITest）。</li>
+      <li><a href="#105"><b>7.6 整合測試、測試替身與 Mockito：</b></a>V 模型契約失配、建構子依賴注入 (Constructor DI)、由下而上（驅動模組 Drivers）vs. 由上而下（樁模組 Stubs）vs. 三明治策略、五大測試替身、Mockito（mock, spy, verify）、脆弱測試 (Brittle Tests)。</li>
     </ul>
   </div>
 </div>
@@ -2522,6 +2522,115 @@ void testNextDateEquivalencePartitions(
 - constraint pruning (SAT solver): 約束剪枝（利用布林可滿足性求解器在生成成對測試集時自動排除業務上互斥的非法參數組合，例如 `OS=iOS` 與 `Browser=IE`）
 -->
 ---
+## 🧩 Pairwise 解答表：`LoanCalculator` 9 組測試案例（完成 #8 與 #9！）
+
+> <strong>隨堂挑戰：</strong>點擊 `#8` 與 `#9` <strong>右下角 4 個按鈕</strong>切換 `true` ↔ `false` 以補齊所有雙參數配對，完成後按 <strong>Submit</strong>！
+
+<div id="pw-loan-table-quiz-tw">
+<table>
+<thead>
+<tr>
+<th style="width:65px;text-align:center;">案例</th>
+<th style="width:140px;text-align:center;"><code>LoanYears</code> (3)</th>
+<th style="width:120px;text-align:center;"><code>Amount</code> (3)</th>
+<th style="width:130px;text-align:center;"><code>IsYouth</code> (2)</th>
+<th style="width:130px;text-align:center;"><code>IsMarried</code> (2)</th>
+<th style="text-align:left;">已覆蓋之關鍵成對組合 (2-Way Pairs)</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center;"><strong>#1</strong></td><td style="text-align:center;"><code>≤ 10 yr</code> (5)</td><td style="text-align:center;"><code>≤ 5M</code> (4M)</td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>true</code></td><td><code>(≤10, ≤5M)</code>, <code>(≤10, Y=T)</code>, <code>(≤10, M=T)</code>, <code>(≤5M, Y=T)</code>, <code>(≤5M, M=T)</code>, <code>(Y=T, M=T)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#2</strong></td><td style="text-align:center;"><code>≤ 10 yr</code> (5)</td><td style="text-align:center;"><code>6M</code></td><td style="text-align:center;"><code>false</code></td><td style="text-align:center;"><code>false</code></td><td><code>(≤10, 6M)</code>, <code>(≤10, Y=F)</code>, <code>(≤10, M=F)</code>, <code>(6M, Y=F)</code>, <code>(6M, M=F)</code>, <code>(Y=F, M=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#3</strong></td><td style="text-align:center;"><code>≤ 10 yr</code> (5)</td><td style="text-align:center;"><code>10M</code></td><td style="text-align:center;"><code>false</code></td><td style="text-align:center;"><code>true</code></td><td><code>(≤10, 10M)</code>, <code>(10M, Y=F)</code>, <code>(10M, M=T)</code>, <code>(Y=F, M=T)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#4</strong></td><td style="text-align:center;"><code>11..20 yr</code> (15)</td><td style="text-align:center;"><code>≤ 5M</code> (4M)</td><td style="text-align:center;"><code>false</code></td><td style="text-align:center;"><code>true</code></td><td><code>(11..20, ≤5M)</code>, <code>(11..20, Y=F)</code>, <code>(11..20, M=T)</code>, <code>(≤5M, Y=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#5</strong></td><td style="text-align:center;"><code>11..20 yr</code> (15)</td><td style="text-align:center;"><code>6M</code></td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>false</code></td><td><code>(11..20, 6M)</code>, <code>(11..20, Y=T)</code>, <code>(11..20, M=F)</code>, <code>(6M, Y=T)</code>, <code>(Y=T, M=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#6</strong></td><td style="text-align:center;"><code>11..20 yr</code> (15)</td><td style="text-align:center;"><code>10M</code></td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>false</code></td><td><code>(11..20, 10M)</code>, <code>(10M, Y=T)</code>, <code>(10M, M=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#7</strong></td><td style="text-align:center;"><code>&gt; 20 yr</code> (25)</td><td style="text-align:center;"><code>≤ 5M</code> (4M)</td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>false</code></td><td><code>(&gt;20, ≤5M)</code>, <code>(&gt;20, Y=T)</code>, <code>(&gt;20, M=F)</code>, <code>(≤5M, M=F)</code></td></tr>
+<tr style="background:#f0f9ff;"><td style="text-align:center;"><strong>#8</strong></td><td style="text-align:center;"><code>&gt; 20 yr</code> (25)</td><td style="text-align:center;"><code>6M</code></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c8y" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c8m" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td id="pw-clue-8-tw" style="color:#0369a1;font-weight:600;"><code>(&gt;20, 6M)</code> + <em>請觀察 <code>&gt;20</code> 與 <code>6M</code> 還缺哪些配對？</em></td></tr>
+<tr style="background:#f0f9ff;"><td style="text-align:center;"><strong>#9</strong></td><td style="text-align:center;"><code>&gt; 20 yr</code> (25)</td><td style="text-align:center;"><code>10M</code></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c9y" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c9m" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td id="pw-clue-9-tw" style="color:#0369a1;font-weight:600;"><code>(&gt;20, 10M)</code> + <em>協助補齊剩餘的 <code>&gt;20</code> 配對！</em></td></tr>
+</tbody>
+</table>
+<div style="display:flex;align-items:center;gap:12px;margin-top:8px;">
+<button type="button" id="pw-loan-submit-tw" style="padding:5px 16px;border-radius:6px;border:none;background:#0284c7;color:#fff;font-weight:700;font-size:14.5px;cursor:pointer;">Submit 提交驗證</button>
+<button type="button" id="pw-loan-reset-tw" style="padding:5px 12px;border-radius:6px;border:1px solid #94a3b8;background:#fff;color:#334155;font-weight:600;font-size:13.5px;cursor:pointer;">Reset 重設</button>
+<div id="pw-loan-feedback-tw" style="font-size:14.5px;font-weight:600;color:#1e293b;"></div>
+</div>
+</div>
+<script>
+(function(){
+  var root = document.getElementById('pw-loan-table-quiz-tw');
+  if (!root || root.dataset.bound) return;
+  root.dataset.bound = '1';
+  var btns = root.querySelectorAll('.pw-sw-btn');
+  var fb = root.querySelector('#pw-loan-feedback-tw');
+  var clue8 = root.querySelector('#pw-clue-8-tw');
+  var clue9 = root.querySelector('#pw-clue-9-tw');
+  function setVal(b, v) {
+    b.dataset.val = v;
+    b.textContent = v + ' ⇄';
+    b.style.background = v === 'true' ? '#e0f2fe' : '#fef3c7';
+    b.style.borderColor = v === 'true' ? '#0284c7' : '#d97706';
+    b.style.color = v === 'true' ? '#0369a1' : '#b45309';
+  }
+  btns.forEach(function(b){
+    setVal(b, 'true');
+    b.addEventListener('click', function(e){
+      e.stopPropagation();
+      setVal(b, b.dataset.val === 'true' ? 'false' : 'true');
+      fb.textContent = '';
+    });
+  });
+  root.querySelector('#pw-loan-submit-tw').addEventListener('click', function(e){
+    e.stopPropagation();
+    var v = {};
+    btns.forEach(function(b){ v[b.dataset.id] = b.dataset.val; });
+    var missing = [];
+    if (v.c8m !== 'true') missing.push('#8 的 (6M, IsMarried=true)');
+    if (v.c8y !== 'false' && v.c9y !== 'false') missing.push('#8 或 #9 的 (>20 yr, IsYouth=false)');
+    if (v.c8m !== 'true' && v.c9m !== 'true') missing.push('#8 或 #9 的 (>20 yr, IsMarried=true)');
+    var c8mOk = (v.c8m === 'true');
+    var yFalseOk = (v.c8y === 'false' || v.c9y === 'false');
+    btns.forEach(function(b){
+      var ok = true;
+      if (b.dataset.id === 'c8m' && !c8mOk) ok = false;
+      if ((b.dataset.id === 'c8y' || b.dataset.id === 'c9y') && !yFalseOk) ok = false;
+      b.style.background = ok ? '#dcfce7' : '#fee2e2';
+      b.style.borderColor = ok ? '#16a34a' : '#dc2626';
+      b.style.color = ok ? '#15803d' : '#b91c1c';
+    });
+    if (missing.length === 0) {
+      fb.style.color = '#15803d';
+      fb.innerHTML = '✅ <strong>答對了！達成 100% Pairwise 覆蓋（28/28 組配對）！</strong> <code>#8</code> 補齊了 <code>(6M, M=true)</code>，且 <code>(&gt;20, Y=false)</code> 與 <code>(&gt;20, M=true)</code> 皆已涵蓋！';
+      clue8.innerHTML = '✅ <code>(&gt;20, 6M)</code>, <code>(6M, M=T)</code>, <code>(&gt;20, M=T)</code>' + (v.c8y === 'false' ? ', <code>(&gt;20, Y=F)</code>' : '');
+      clue9.innerHTML = '✅ <code>(&gt;20, 10M)</code>' + (v.c9y === 'false' ? ', <code>(&gt;20, Y=F)</code>' : '') + ' — 全部 28 組配對 100% 完成！';
+    } else {
+      fb.style.color = '#b91c1c';
+      fb.innerHTML = '❌ <strong>尚未達成 100% 成對覆蓋！</strong> 仍缺少：<code>' + missing.join('</code>、<code>') + '</code>。';
+    }
+  });
+  root.querySelector('#pw-loan-reset-tw').addEventListener('click', function(e){
+    e.stopPropagation();
+    btns.forEach(function(b){ setVal(b, 'true'); });
+    fb.textContent = '';
+    clue8.innerHTML = '<code>(&gt;20, 6M)</code> + <em>請觀察 <code>&gt;20</code> 與 <code>6M</code> 還缺哪些配對？</em>';
+    clue9.innerHTML = '<code>(&gt;20, 10M)</code> + <em>協助補齊剩餘的 <code>&gt;20</code> 配對！</em>';
+  });
+})();
+</script>
+
+<!--
+讓我們一起透過檢查案例 #7 之後尚未被覆蓋的「雙參數配對」來推導案例 #8 與 #9：
+
+第一步，觀察 `LoanYears × Amount`（`3 × 3 = 9` 組配對）：`≤ 10 yr` 與 `11..20 yr` 皆已分別與三種金額（`≤ 5M`、`6M`、`10M`）配對完畢，唯獨 `> 20 yr` 在案例 #7 僅與 `≤ 5M` 配對過。因此，案例 #8 與 #9 的前兩欄必然是 `(> 20 yr, 6M)` 與 `(> 20 yr, 10M)`！
+
+第二步，針對案例 #8 (`> 20 yr`, `6M`)，檢查 `> 20 yr` 與 `6M` 還缺少什麼布林配對：在案例 #7 中，`> 20 yr` 已配過 `IsYouth = true` 與 `IsMarried = false`，故 `> 20 yr` 還缺 `IsYouth = false` 與 `IsMarried = true`；同時在案例 #2 與 #5 中，`6M` 都只配過 `IsMarried = false`，還沒配過 `IsMarried = true`！因此將 #8 設為 `(> 20 yr, 6M, false, true)` 即可一次補齊這四組缺失配對。
+
+第三步，針對案例 #9 (`> 20 yr`, `10M`)，檢查 `10M × IsYouth`：在案例 #3 與 #6 中，`10M` 都只配過 `IsYouth = false`，從未與 `IsYouth = true` 配對過！因此案例 #9 的 `IsYouth` 必須設為 `true`（而 `IsMarried` 設為 `true` 或 `false` 皆可），如此僅用 9 組測試案例即達成全部 28 個成對組合的 100% 覆蓋。
+
+難字與專業術語解說：
+- pairwise coverage completion: 成對覆蓋完備性（檢驗所有參數兩兩配對組合皆至少在測試表中出現一次的驗證條件）
+-->
+---
 ## JUnit 5 中的 Pairwise 實作：AllPairs4J 與測試預言機策略
 
 <div class="card-deck">
@@ -4553,6 +4662,27 @@ verify(mockChecker, atMost(1)).isPrime(5);     // 至多呼叫 <= 1 次
     const txtPrev = isEn ? 'Previous Section' : '上一章節';
     const txtNext = isEn ? 'Next Section' : '下一章節';
 
+    function createLangSwitchBtn(secId) {
+      const btn = document.createElement('a');
+      btn.className = 'header-lang-switch';
+      btn.textContent = isEn ? '🌐 中' : '🌐 EN';
+      btn.title = isEn ? '切換至繁體中文版 (同頁碼)' : 'Switch to English version (same slide)';
+      btn.href = '#';
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const loc = window.location;
+        const hash = loc.hash || ('#' + (secId || '1'));
+        const swappedPath = loc.pathname.replace(/(slide\d+)([et])(_[^/]*\.html)$/i, function(_, p1, lang, p3) {
+          return p1 + (lang.toLowerCase() === 't' ? 'e' : 't') + p3;
+        });
+        if (swappedPath !== loc.pathname) {
+          window.location.href = swappedPath + (loc.search || '') + hash;
+        }
+      });
+      return btn;
+    }
+
     function createDropdownWrapper(currentTitle) {
       const wrapper = document.createElement('span');
       wrapper.className = 'header-nav-wrapper';
@@ -4641,6 +4771,7 @@ verify(mockChecker, atMost(1)).isPrime(5);     // 至多呼叫 <= 1 次
       if (!title) return;
       
       header.innerHTML = '';
+      header.appendChild(createLangSwitchBtn(sec.id));
       if (prevLink) {
         prevLink.className = 'header-nav-arrow';
         prevLink.title = txtPrev;

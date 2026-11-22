@@ -1926,6 +1926,27 @@ To summarize this slide, remember this key takeaway: Active self-quizzing builds
     const txtNext = isEn ? 'Next Section' : '下一章節';
 
     // Helper to create the dropdown DOM
+    function createLangSwitchBtn(secId) {
+      const btn = document.createElement('a');
+      btn.className = 'header-lang-switch';
+      btn.textContent = isEn ? '🌐 中' : '🌐 EN';
+      btn.title = isEn ? '切換至繁體中文版 (同頁碼)' : 'Switch to English version (same slide)';
+      btn.href = '#';
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const loc = window.location;
+        const hash = loc.hash || ('#' + (secId || '1'));
+        const swappedPath = loc.pathname.replace(/(slide\d+)([et])(_[^/]*\.html)$/i, function(_, p1, lang, p3) {
+          return p1 + (lang.toLowerCase() === 't' ? 'e' : 't') + p3;
+        });
+        if (swappedPath !== loc.pathname) {
+          window.location.href = swappedPath + (loc.search || '') + hash;
+        }
+      });
+      return btn;
+    }
+
     function createDropdownWrapper(currentTitle) {
       const wrapper = document.createElement('span');
       wrapper.className = 'header-nav-wrapper';
@@ -2016,6 +2037,7 @@ To summarize this slide, remember this key takeaway: Active self-quizzing builds
       if (!title) return;
       
       header.innerHTML = '';
+      header.appendChild(createLangSwitchBtn(sec.id));
       if (prevLink) {
         prevLink.className = 'header-nav-arrow';
         prevLink.title = txtPrev;

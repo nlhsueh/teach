@@ -120,6 +120,9 @@
 ---
 
 ### 5. 投影片小節過渡頁與標題規範 (Slide Section Lead Pages & Headings)
+- **右上角中英文同頁切換按鈕 (`t <-> e` Header Language Switcher)**：
+  - 每一份具備中英文雙語版本的投影片（`slideXXt_*.html` 與 `slideXXe_*.html`），於右上角章節目錄下拉選單（`.header-nav-wrapper`）左方常駐顯示中英切換按鈕（`.header-lang-switch`：中文版顯示 `🌐 EN`，英文版顯示 `🌐 中`）。
+  - 點擊後透過相對路徑將檔名中的 `(slide\d+)([et])(_[^/]*\.html)` 進行 `t <-> e` 互換，並完整保留當前頁碼 `#hash`（如 `slide07t_test.html#83` ↔ `slide07e_test.html#83`），同時相容本機伺服器與 GitHub Pages；列印 PDF（`@media print`）時自動隱藏。
 - **第 2 頁「本章大綱／重點導讀 (Outline)」章節點擊跳轉規範**：
   - 每一份章節投影片第 2 頁的大綱頁（`<!-- _class: outline-slide -->`）所列出的各小節項目（如 `1.1 ...`、`1.2 ...`），標題部分一律加上可點擊跳轉至該小節起始頁（Lead Page）的超連結（如 `<li><a href="#目標頁碼"><b>X.Y 小節標題：</b></a>...</li>` 或 `[**X.Y 小節標題**](#目標頁碼)`）。
   - 投影片底部 `<script>` 必須包含動態校準與自動綁定機制：自動掃描各小節過渡頁（`section.lead h1` 或 `header`）的小節編號 `X.Y`，動態將大綱頁上對應項目的 `href` 更新為精確的 `#頁碼`（若大綱項目尚未包裹 `<a>` 亦自動為 `<b>` / `<strong>` 包裹超連結），確保增刪投影片時 HTML 與 PDF 的章節跳轉連結皆 100% 準確。

@@ -47,8 +47,8 @@ In software engineering, writing code is only half the battle. Delivering a depe
     <h3>Part 2: Combinatorial, White-Box & Integration</h3>
     <ul>
       <li><a href="#62"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
-      <li><a href="#83"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
-      <li><a href="#104"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
+      <li><a href="#84"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
+      <li><a href="#105"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
     </ul>
   </div>
 </div>
@@ -2517,6 +2517,115 @@ In the Mortgage Loan Calculator case study, 4 parameters with `3 × 3 × 2 × 2`
 - constraint pruning (SAT solver): 約束剪枝（利用布林可滿足性求解器在生成成對測試集時自動排除業務上互斥的非法參數組合，例如 `OS=iOS` 與 `Browser=IE`）
 -->
 ---
+## 🧩 Pairwise Solution Table: `LoanCalculator` (Complete Cases #8 & #9!)
+
+> **Challenge:** Click the **bottom-right 4 cells** (`true` ↔ `false`) in `#8` and `#9` to cover all remaining 2-way pairs, then click **Submit**!
+
+<div id="pw-loan-table-quiz">
+<table>
+<thead>
+<tr>
+<th style="width:65px;text-align:center;">Case</th>
+<th style="width:140px;text-align:center;"><code>LoanYears</code> (3)</th>
+<th style="width:120px;text-align:center;"><code>Amount</code> (3)</th>
+<th style="width:130px;text-align:center;"><code>IsYouth</code> (2)</th>
+<th style="width:130px;text-align:center;"><code>IsMarried</code> (2)</th>
+<th style="text-align:left;">Key 2-Way Pairs Covered</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center;"><strong>#1</strong></td><td style="text-align:center;"><code>≤ 10 yr</code> (5)</td><td style="text-align:center;"><code>≤ 5M</code> (4M)</td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>true</code></td><td><code>(≤10, ≤5M)</code>, <code>(≤10, Y=T)</code>, <code>(≤10, M=T)</code>, <code>(≤5M, Y=T)</code>, <code>(≤5M, M=T)</code>, <code>(Y=T, M=T)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#2</strong></td><td style="text-align:center;"><code>≤ 10 yr</code> (5)</td><td style="text-align:center;"><code>6M</code></td><td style="text-align:center;"><code>false</code></td><td style="text-align:center;"><code>false</code></td><td><code>(≤10, 6M)</code>, <code>(≤10, Y=F)</code>, <code>(≤10, M=F)</code>, <code>(6M, Y=F)</code>, <code>(6M, M=F)</code>, <code>(Y=F, M=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#3</strong></td><td style="text-align:center;"><code>≤ 10 yr</code> (5)</td><td style="text-align:center;"><code>10M</code></td><td style="text-align:center;"><code>false</code></td><td style="text-align:center;"><code>true</code></td><td><code>(≤10, 10M)</code>, <code>(10M, Y=F)</code>, <code>(10M, M=T)</code>, <code>(Y=F, M=T)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#4</strong></td><td style="text-align:center;"><code>11..20 yr</code> (15)</td><td style="text-align:center;"><code>≤ 5M</code> (4M)</td><td style="text-align:center;"><code>false</code></td><td style="text-align:center;"><code>true</code></td><td><code>(11..20, ≤5M)</code>, <code>(11..20, Y=F)</code>, <code>(11..20, M=T)</code>, <code>(≤5M, Y=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#5</strong></td><td style="text-align:center;"><code>11..20 yr</code> (15)</td><td style="text-align:center;"><code>6M</code></td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>false</code></td><td><code>(11..20, 6M)</code>, <code>(11..20, Y=T)</code>, <code>(11..20, M=F)</code>, <code>(6M, Y=T)</code>, <code>(Y=T, M=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#6</strong></td><td style="text-align:center;"><code>11..20 yr</code> (15)</td><td style="text-align:center;"><code>10M</code></td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>false</code></td><td><code>(11..20, 10M)</code>, <code>(10M, Y=T)</code>, <code>(10M, M=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#7</strong></td><td style="text-align:center;"><code>&gt; 20 yr</code> (25)</td><td style="text-align:center;"><code>≤ 5M</code> (4M)</td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>false</code></td><td><code>(&gt;20, ≤5M)</code>, <code>(&gt;20, Y=T)</code>, <code>(&gt;20, M=F)</code>, <code>(≤5M, M=F)</code></td></tr>
+<tr style="background:#f0f9ff;"><td style="text-align:center;"><strong>#8</strong></td><td style="text-align:center;"><code>&gt; 20 yr</code> (25)</td><td style="text-align:center;"><code>6M</code></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c8y" data-expected="false" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c8m" data-expected="true" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td id="pw-clue-8" style="color:#0369a1;font-weight:600;"><code>(&gt;20, 6M)</code> + <em>Which pairs are missing for <code>&gt;20</code> &amp; <code>6M</code>?</em></td></tr>
+<tr style="background:#f0f9ff;"><td style="text-align:center;"><strong>#9</strong></td><td style="text-align:center;"><code>&gt; 20 yr</code> (25)</td><td style="text-align:center;"><code>10M</code></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c9y" data-expected="any" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c9m" data-expected="any" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td id="pw-clue-9" style="color:#0369a1;font-weight:600;"><code>(&gt;20, 10M)</code> + <em>Helps cover remaining <code>&gt;20</code> pairs!</em></td></tr>
+</tbody>
+</table>
+<div style="display:flex;align-items:center;gap:12px;margin-top:8px;">
+<button type="button" id="pw-loan-submit" style="padding:5px 16px;border-radius:6px;border:none;background:#0284c7;color:#fff;font-weight:700;font-size:14.5px;cursor:pointer;">Submit Answer</button>
+<button type="button" id="pw-loan-reset" style="padding:5px 12px;border-radius:6px;border:1px solid #94a3b8;background:#fff;color:#334155;font-weight:600;font-size:13.5px;cursor:pointer;">Reset</button>
+<div id="pw-loan-feedback" style="font-size:14.5px;font-weight:600;color:#1e293b;"></div>
+</div>
+</div>
+<script>
+(function(){
+  var root = document.getElementById('pw-loan-table-quiz');
+  if (!root || root.dataset.bound) return;
+  root.dataset.bound = '1';
+  var btns = root.querySelectorAll('.pw-sw-btn');
+  var fb = root.querySelector('#pw-loan-feedback');
+  var clue8 = root.querySelector('#pw-clue-8');
+  var clue9 = root.querySelector('#pw-clue-9');
+  function setVal(b, v) {
+    b.dataset.val = v;
+    b.textContent = v + ' ⇄';
+    b.style.background = v === 'true' ? '#e0f2fe' : '#fef3c7';
+    b.style.borderColor = v === 'true' ? '#0284c7' : '#d97706';
+    b.style.color = v === 'true' ? '#0369a1' : '#b45309';
+  }
+  btns.forEach(function(b){
+    setVal(b, 'true');
+    b.addEventListener('click', function(e){
+      e.stopPropagation();
+      setVal(b, b.dataset.val === 'true' ? 'false' : 'true');
+      fb.textContent = '';
+    });
+  });
+  root.querySelector('#pw-loan-submit').addEventListener('click', function(e){
+    e.stopPropagation();
+    var v = {};
+    btns.forEach(function(b){ v[b.dataset.id] = b.dataset.val; });
+    var missing = [];
+    if (v.c8m !== 'true') missing.push('(6M, IsMarried=true) in #8');
+    if (v.c8y !== 'false' && v.c9y !== 'false') missing.push('(>20 yr, IsYouth=false) in #8 or #9');
+    if (v.c8m !== 'true' && v.c9m !== 'true') missing.push('(>20 yr, IsMarried=true) in #8 or #9');
+    var c8mOk = (v.c8m === 'true');
+    var yFalseOk = (v.c8y === 'false' || v.c9y === 'false');
+    btns.forEach(function(b){
+      var ok = true;
+      if (b.dataset.id === 'c8m' && !c8mOk) ok = false;
+      if ((b.dataset.id === 'c8y' || b.dataset.id === 'c9y') && !yFalseOk) ok = false;
+      b.style.background = ok ? '#dcfce7' : '#fee2e2';
+      b.style.borderColor = ok ? '#16a34a' : '#dc2626';
+      b.style.color = ok ? '#15803d' : '#b91c1c';
+    });
+    if (missing.length === 0) {
+      fb.style.color = '#15803d';
+      fb.innerHTML = '✅ <strong>100% Pairwise Coverage (28/28 pairs)!</strong> <code>#8</code> covers <code>(6M, M=true)</code>, and <code>(&gt;20, Y=false)</code> &amp; <code>(&gt;20, M=true)</code> are covered!';
+      clue8.innerHTML = '✅ <code>(&gt;20, 6M)</code>, <code>(6M, M=T)</code>, <code>(&gt;20, M=T)</code>' + (v.c8y === 'false' ? ', <code>(&gt;20, Y=F)</code>' : '');
+      clue9.innerHTML = '✅ <code>(&gt;20, 10M)</code>' + (v.c9y === 'false' ? ', <code>(&gt;20, Y=F)</code>' : '') + ' — All 28 pairs complete!';
+    } else {
+      fb.style.color = '#b91c1c';
+      fb.innerHTML = '❌ <strong>Incomplete 2-Way Coverage!</strong> Still missing: <code>' + missing.join('</code>, <code>') + '</code>.';
+    }
+  });
+  root.querySelector('#pw-loan-reset').addEventListener('click', function(e){
+    e.stopPropagation();
+    btns.forEach(function(b){ setVal(b, 'true'); });
+    fb.textContent = '';
+    clue8.innerHTML = '<code>(&gt;20, 6M)</code> + <em>Which pairs are missing for <code>&gt;20</code> &amp; <code>6M</code>?</em>';
+    clue9.innerHTML = '<code>(&gt;20, 10M)</code> + <em>Helps cover remaining <code>&gt;20</code> pairs!</em>';
+  });
+})();
+</script>
+
+<!--
+Let us solve Cases #8 and #9 together by checking the uncovered 2-way pairs after Case #7:
+
+First, look at the `LoanYears × Amount` (`3 × 3 = 9`) grid: `≤ 10 yr` and `11..20 yr` have each been paired with all three amounts (`≤ 5M`, `6M`, `10M`), whereas `> 20 yr` has only been paired with `≤ 5M` in Case #7. Therefore, Cases #8 and #9 MUST cover `(> 20 yr, 6M)` and `(> 20 yr, 10M)`!
+
+Second, for Case #8 (`> 20 yr`, `6M`), inspect what `> 20 yr` and `6M` still need: in Case #7, `> 20 yr` already paired with `IsYouth = true` and `IsMarried = false`, so `> 20 yr` still needs `IsYouth = false` and `IsMarried = true`. Furthermore, in Cases #2 and #5, `6M` only paired with `IsMarried = false`, so `6M` also requires `IsMarried = true`! Setting `#8 = (> 20 yr, 6M, false, true)` covers all four missing pairs at once.
+
+Third, for Case #9 (`> 20 yr`, `10M`), inspect `10M × IsYouth`: in Cases #3 and #6, `10M` only paired with `IsYouth = false` and never with `IsYouth = true`! Thus Case #9 must set `IsYouth = true` (and `IsMarried = true` or `false`), achieving 100% coverage of all 28 parameter pairs in just 9 test cases.
+
+💡 難字與專業術語解說：
+- pairwise coverage completion: 成對覆蓋完備性（檢驗所有參數兩兩配對組合皆至少在測試表中出現一次的驗證條件）
+-->
+---
 ## Pairwise in JUnit 5: AllPairs4J & Test Oracles
 
 <div class="card-deck">
@@ -4549,6 +4658,27 @@ This final summary ties together every discipline in Chapter 7: from static insp
     const txtPrev = isEn ? 'Previous Section' : '上一章節';
     const txtNext = isEn ? 'Next Section' : '下一章節';
 
+    function createLangSwitchBtn(secId) {
+      const btn = document.createElement('a');
+      btn.className = 'header-lang-switch';
+      btn.textContent = isEn ? '🌐 中' : '🌐 EN';
+      btn.title = isEn ? '切換至繁體中文版 (同頁碼)' : 'Switch to English version (same slide)';
+      btn.href = '#';
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const loc = window.location;
+        const hash = loc.hash || ('#' + (secId || '1'));
+        const swappedPath = loc.pathname.replace(/(slide\d+)([et])(_[^/]*\.html)$/i, function(_, p1, lang, p3) {
+          return p1 + (lang.toLowerCase() === 't' ? 'e' : 't') + p3;
+        });
+        if (swappedPath !== loc.pathname) {
+          window.location.href = swappedPath + (loc.search || '') + hash;
+        }
+      });
+      return btn;
+    }
+
     function createDropdownWrapper(currentTitle) {
       const wrapper = document.createElement('span');
       wrapper.className = 'header-nav-wrapper';
@@ -4637,6 +4767,7 @@ This final summary ties together every discipline in Chapter 7: from static insp
       if (!title) return;
       
       header.innerHTML = '';
+      header.appendChild(createLangSwitchBtn(sec.id));
       if (prevLink) {
         prevLink.className = 'header-nav-arrow';
         prevLink.title = txtPrev;
