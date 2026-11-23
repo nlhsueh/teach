@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 220" width="1100" height="220">
+  <defs>
+    <marker id="arr-t" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif; }
+    .lh { font-size: 15px; font-weight: 800; fill: #ffffff; }
+    .lt { font-size: 13.5px; font-weight: 800; }
+    .ls { font-size: 12px; fill: #475569; }
+  </style>
+
+  <!-- Tier 1: Dashboard -->
+  <rect x="16" y="16" width="320" height="186" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="16" y="16" width="320" height="38" rx="12" fill="#0f766e"/>
+  <rect x="16" y="40" width="320" height="14" fill="#0f766e"/>
+  <text x="176" y="41" text-anchor="middle" class="lh">Layer 1 · Dashboard 儀表板</text>
+  <text x="34" y="84" class="lt" fill="#0f766e">最方便 · 零技術門檻</text>
+  <text x="34" y="110" class="ls">• 教師即時檢視課程整體統計資訊</text>
+  <text x="34" y="132" class="ls">• 觀看進度、作答率、討論熱度一目了然</text>
+  <text x="34" y="164" class="ls" fill="#0f766e">適用對象：所有授課教師日常監控</text>
+
+  <line x1="336" y1="109" x2="382" y2="109" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arr-t)"/>
+
+  <!-- Tier 2: Table-formatted Data -->
+  <rect x="390" y="16" width="320" height="186" rx="12" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="390" y="16" width="320" height="38" rx="12" fill="#1b365d"/>
+  <rect x="390" y="40" width="320" height="14" fill="#1b365d"/>
+  <text x="550" y="41" text-anchor="middle" class="lh">Layer 2 · 去識別化表格資料</text>
+  <text x="408" y="84" class="lt" fill="#1b365d">兼顧便利與彈性 · 需 Excel 能力</text>
+  <text x="408" y="110" class="ls">• 結構化彙整之 CSV／Excel 學習報表</text>
+  <text x="408" y="132" class="ls">• 支援成績關聯、退選比較與分組統計</text>
+  <text x="408" y="164" class="ls" fill="#1b365d">適用對象：教學實踐研究與成效分析</text>
+
+  <line x1="710" y1="109" x2="756" y2="109" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arr-t)"/>
+
+  <!-- Tier 3: Raw JSON Log Data -->
+  <rect x="764" y="16" width="320" height="186" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="764" y="16" width="320" height="38" rx="12" fill="#8c1d40"/>
+  <rect x="764" y="40" width="320" height="14" fill="#8c1d40"/>
+  <text x="924" y="41" text-anchor="middle" class="lh">Layer 3 · 去識別化 JSON Log</text>
+  <text x="782" y="84" class="lt" fill="#8c1d40">最細緻完整 · 需程式分析能力</text>
+  <text x="782" y="110" class="ls">• 記錄每次 play / pause / seek / check</text>
+  <text x="782" y="132" class="ls">• 支援機器學習預警、觀看與除錯模式探勘</text>
+  <text x="782" y="164" class="ls" fill="#8c1d40">適用對象：教育資料探勘（EDM）研究</text>
+</svg>

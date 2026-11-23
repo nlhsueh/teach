@@ -1123,16 +1123,18 @@
         id: 'talk22-nknu',
         year: '2022',
         typeLabel: '特邀演講',
-        venue: '高師大 2022 · Google Slides',
+        venue: '高師大 2022/12/08',
         icon: '📊',
         theme: 'keynote',
         title: '程式教育的線上學習與其歷程分析',
-        subtitle: 'talk22 國立高雄師範大學（高師大）特邀演講',
-        desc: '探討大專院校程式設計教學在線上學習環境中的數位轉型實務，深入分析學生在線上評測與自主編程練習中的行為軌跡、卡關瓶頸數據與教學介入成效研究。',
+        subtitle: '國立高雄師範大學（高師大）特邀演講 · 15 頁互動簡報',
+        desc: '回顧 Python 程式課程 MOOC 四階段演進、九大互動組件與 Online Judge 實踐，並以 OpenEdu 細粒度學習日誌展示影片觀看 9 模式早期預警（Self-paced F1 = 0.95）、互動活動力（OJ 40%）、成績關聯與挫折退選分析。',
         tags: ['特邀演講', '程式教育'],
         actions: [
-          { label: '開啟 Google 簡報', icon: '↗', href: 'https://docs.google.com/presentation/d/1OmQfpitxy9FwxKGbPKoip8wm-ddddMrLvLdOZvDinNY/edit?usp=sharing', cls: 'btn-green', row: 1 },
-          { label: '', icon: '📋', copy: 'https://docs.google.com/presentation/d/1OmQfpitxy9FwxKGbPKoip8wm-ddddMrLvLdOZvDinNY/edit?usp=sharing', copyMsg: '已複製 Google 簡報連結！', cls: 'btn-outline btn-icon-only', row: 1, title: '複製連結' }
+          { label: '線上簡報', icon: '🖥️', href: './Talk2022/NKNU22/nknu22_slide.html', cls: 'btn-green', row: 1 },
+          { label: 'PDF', icon: '📥', href: './Talk2022/NKNU22/nknu22_slide.pdf', cls: 'btn-outline', row: 1 },
+          { label: 'MD', icon: '📄', href: './Talk2022/NKNU22/nknu22_slide.md', cls: 'btn-outline btn-icon-only', row: 1, title: '檢視 Markdown 源碼' },
+          { label: '原版', icon: '↗', href: 'https://docs.google.com/presentation/d/1OmQfpitxy9FwxKGbPKoip8wm-ddddMrLvLdOZvDinNY/edit?usp=sharing', cls: 'btn-outline', row: 2, title: '開啟原版 Google Slides' }
         ]
       },
       {
@@ -1152,22 +1154,6 @@
           { label: '中文 PDF', icon: '📥', href: './MyResearch/21Judge/Judge_slide_zh.pdf', cls: 'btn-outline', row: 2 },
           { label: 'EN PDF', icon: '📥', href: './MyResearch/21Judge/Judge_slide.pdf', cls: 'btn-outline', row: 2 },
           { label: '', icon: '📄', href: './MyResearch/21Judge/2021%20IEEE%20Access.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
-        ]
-      },
-      {
-        id: 'devops-moe',
-        year: '2021',
-        typeLabel: '開源計畫',
-        venue: '教育部雲端軟體人才培育',
-        icon: '🚀',
-        theme: 'devops',
-        title: '微服務 DevOps 開源軟體工具計畫',
-        subtitle: '教育部雲端軟體人才培育 · 實務教材與開源工具平台',
-        desc: '整合 Docker 容器化、Kubernetes 叢集部署、CI/CD 自動化管線與微服務架構實務，提供完整開放之教學模組與實作範例。',
-        tags: ['特邀演講', '軟體工程', 'DevOps'],
-        actions: [
-          { label: '前往教材分享區', icon: '↗', href: 'https://reurl.cc/Ggd6jd', cls: 'btn-orange', row: 1 },
-          { label: '', icon: '📋', copy: 'https://reurl.cc/Ggd6jd', copyMsg: '已複製教材分享區短網址！', cls: 'btn-outline btn-icon-only', row: 1, title: '複製短網址' }
         ]
       },
       {
@@ -1192,7 +1178,7 @@
     ];
 
     const ALL_YEARS = ['all', '2026', '2024', '2023', '2022', '2021', '2020'];
-    const ALL_TAGS = ['特邀演講', '論文簡報', 'AI & LLM', '程式教育', '軟體工程', '軟體測試', 'UX 測試', '教學工程', 'DevOps'];
+    const ALL_TAGS = ['特邀演講', '論文簡報', 'AI & LLM', '程式教育', '軟體工程', '軟體測試', 'UX 測試', '教學工程'];
 
     let state = {
       year: 'all',
