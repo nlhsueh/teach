@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>特邀演講與專題講座 | Talks & Keynotes Portal</title>
-  <meta name="description" content="薛念林教授 · 特邀演講與專題講座專屬門戶，收錄軟體工程思想史、程式教育學習歷程分析、微服務 DevOps 等多項演講教材與線上簡報">
+  <title>特邀演講與專題講座 | Talks &amp; Keynotes Portal</title>
+  <meta name="description" content="薛念林教授 · 特邀演講與學術論文簡報門戶，支援年份與多主題標籤交叉篩選及 Grid／List 顯示切換">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -17,30 +17,28 @@
       --primary-dark: #0f172a;
       --accent: #4f46e5;
       --accent-light: #6366f1;
-      --gold: #f59e0b;
+      --research: #8c1d40;
+      --teal: #047857;
+      --orange: #c2410c;
       --surface: #ffffff;
       --background: #f8fafc;
       --text-main: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --radius: 16px;
-      --radius-sm: 10px;
+      --radius: 14px;
+      --radius-sm: 9px;
       --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 10px -2px rgba(15, 23, 42, 0.08);
+      --shadow-xl: 0 18px 28px -8px rgba(15, 23, 42, 0.12);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Plus Jakarta Sans', 'Noto Sans TC', system-ui, -apple-system, sans-serif;
       background-color: var(--background);
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: 1.55;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -48,13 +46,13 @@
 
     /* Top Navbar */
     .navbar {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 50;
-      padding: 14px 28px;
+      padding: 13px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -82,23 +80,10 @@
       box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
     }
 
-    .brand-title {
-      font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: -0.01em;
-    }
+    .brand-title { font-weight: 700; font-size: 1.04rem; letter-spacing: -0.01em; }
 
-    .nav-right {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
+    .nav-right { display: flex; gap: 12px; align-items: center; }
+    .nav-links { display: flex; gap: 8px; align-items: center; }
 
     .nav-link {
       text-decoration: none;
@@ -110,10 +95,7 @@
       transition: all 0.2s ease;
     }
 
-    .nav-link:hover {
-      color: var(--text-main);
-      background: #f1f5f9;
-    }
+    .nav-link:hover { color: var(--text-main); background: #f1f5f9; }
 
     .btn-lockout {
       display: none;
@@ -130,16 +112,13 @@
       transition: all 0.2s ease;
     }
 
-    .btn-lockout:hover {
-      background: #fee2e2;
-      transform: translateY(-1px);
-    }
+    .btn-lockout:hover { background: #fee2e2; transform: translateY(-1px); }
 
     /* Hero */
     .hero {
-      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 52%, #312e81 100%);
       color: white;
-      padding: 60px 24px 72px 24px;
+      padding: 46px 24px 62px 24px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -160,37 +139,36 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
+      padding: 5px 15px;
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 9999px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 0.03em;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       backdrop-filter: blur(8px);
     }
 
     .hero h1 {
-      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      font-size: clamp(1.75rem, 3.6vw, 2.45rem);
       font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       line-height: 1.25;
     }
 
     .hero p {
-      font-size: 1.08rem;
+      font-size: 0.98rem;
       color: #cbd5e1;
-      max-width: 760px;
+      max-width: 740px;
       margin: 0 auto;
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
     /* Main Container */
     .container {
-      max-width: 1140px;
-      margin: -36px auto 70px auto;
+      max-width: 1180px;
+      margin: -34px auto 64px auto;
       padding: 0 24px;
       position: relative;
       z-index: 10;
@@ -198,169 +176,276 @@
       width: 100%;
     }
 
-    /* Gate Card (Locked View) */
+    /* Gate Card */
     .gate-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow-xl);
-      padding: 46px 36px;
-      max-width: 520px;
+      padding: 44px 36px;
+      max-width: 500px;
       margin: 0 auto;
       text-align: center;
     }
 
     .lock-icon-wrapper {
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 20px auto;
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 18px auto;
       border-radius: 50%;
       background: #eef2ff;
       border: 2px solid #e0e7ff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.2rem;
-      box-shadow: 0 8px 16px rgba(79, 70, 229, 0.12);
+      font-size: 2rem;
     }
 
-    .gate-title {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
+    .gate-title { font-size: 1.42rem; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+    .gate-desc { font-size: 0.93rem; color: var(--text-muted); max-width: 420px; margin: 0 auto 24px auto; }
 
-    .gate-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      max-width: 440px;
-      margin: 0 auto 26px auto;
-      line-height: 1.6;
-    }
-
-    .auth-form {
-      max-width: 400px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+    .auth-form { max-width: 380px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
 
     .passcode-input {
       width: 100%;
-      padding: 14px 18px;
-      font-size: 1.05rem;
+      padding: 13px 16px;
+      font-size: 1.04rem;
       border: 2px solid #cbd5e1;
       border-radius: var(--radius-sm);
       outline: none;
-      transition: all 0.2s ease;
       letter-spacing: 0.1em;
       text-align: center;
       font-weight: 600;
+      transition: all 0.2s ease;
     }
 
-    .passcode-input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
-    }
+    .passcode-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15); }
 
     .btn-unlock {
-      padding: 14px 20px;
+      padding: 13px 20px;
       background: linear-gradient(135deg, #1e1b4b, #4338ca);
       color: white;
       border: none;
       border-radius: var(--radius-sm);
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: all 0.2s ease;
       box-shadow: 0 4px 12px rgba(49, 46, 129, 0.25);
+      transition: all 0.2s ease;
     }
 
-    .btn-unlock:hover {
-      background: linear-gradient(135deg, #0f172a, #3730a3);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(49, 46, 129, 0.35);
-    }
+    .btn-unlock:hover { background: linear-gradient(135deg, #0f172a, #3730a3); transform: translateY(-1px); }
 
-    .error-msg {
-      color: #ef4444;
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-top: 4px;
-      display: none;
-    }
-
-    .shake {
-      animation: shakeAnim 0.4s ease-in-out;
-    }
-
+    .error-msg { color: #ef4444; font-size: 0.88rem; font-weight: 600; display: none; }
+    .shake { animation: shakeAnim 0.4s ease-in-out; }
     @keyframes shakeAnim {
       0%, 100% { transform: translateX(0); }
       20%, 60% { transform: translateX(-8px); }
       40%, 80% { transform: translateX(8px); }
     }
 
-    /* Unlocked Content Wrapper */
-    .unlocked-view {
-      display: none;
-    }
+    /* Unlocked Wrapper */
+    .unlocked-view { display: none; }
 
-    /* Filter Bar */
-    .filter-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 30px;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      padding: 10px 16px;
-      border-radius: 9999px;
+    /* Control Panel (Search + View Toggle + Year + Multi-Tag) */
+    .control-panel {
+      background: var(--surface);
       border: 1px solid var(--border);
+      border-radius: var(--radius);
       box-shadow: var(--shadow-md);
-      max-width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .filter-btn {
-      border: none;
-      background: transparent;
-      padding: 8px 18px;
-      border-radius: 9999px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      cursor: pointer;
+    .toolbar-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 240px;
+      max-width: 440px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 9px 14px 9px 36px;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      background: #f8fafc;
       transition: all 0.2s ease;
     }
 
-    .filter-btn:hover {
-      color: var(--text-main);
+    .search-box input:focus {
+      background: #ffffff;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .result-meta {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-muted);
       background: #f1f5f9;
+      padding: 5px 11px;
+      border-radius: 999px;
     }
 
-    .filter-btn.active {
-      background: linear-gradient(135deg, #1e1b4b, #4338ca);
-      color: white;
-      box-shadow: 0 2px 8px rgba(49, 46, 129, 0.3);
+    .btn-reset {
+      display: none;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid #fca5a5;
+      background: #fef2f2;
+      color: #b91c1c;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
     }
 
-    /* Talks Grid */
-    .talks-grid {
+    .btn-reset.visible { display: inline-flex; }
+    .btn-reset:hover { background: #fee2e2; }
+
+    /* View Mode Switcher (Grid / List) */
+    .view-toggle {
+      display: inline-flex;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .view-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 7px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .view-btn:hover { color: var(--text-main); }
+    .view-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12);
+    }
+
+    /* Filter Rows (Year & Multi-Tag) */
+    .filter-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding-top: 8px;
+      border-top: 1px dashed #e2e8f0;
+    }
+
+    .filter-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      min-width: 72px;
+      flex-shrink: 0;
+    }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .chip {
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 0.81rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .chip:hover { border-color: var(--accent); color: var(--accent); background: #eef2ff; }
+
+    .chip.active-year {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .chip.active-tag {
+      background: linear-gradient(135deg, #1b365d, #4f46e5);
+      border-color: transparent;
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+    }
+
+    .chip .cnt {
+      font-size: 0.72rem;
+      opacity: 0.72;
+      font-weight: 600;
+    }
+
+    /* ==================== GRID MODE ==================== */
+    .talks-container.grid-view {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 26px;
+      gap: 22px;
     }
 
-    .talk-card {
+    .talks-container.grid-view .talk-item {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -368,233 +453,305 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
+      transition: all 0.22s ease;
     }
 
-    .talk-card:hover {
-      transform: translateY(-5px);
+    .talks-container.grid-view .talk-item:hover {
+      transform: translateY(-4px);
       box-shadow: var(--shadow-xl);
       border-color: #cbd5e1;
     }
 
     .card-banner {
-      padding: 22px 24px 18px 24px;
+      padding: 18px 20px 15px 20px;
       color: white;
-      position: relative;
     }
 
-    .banner-se {
-      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%);
-    }
-
-    .banner-edu {
-      background: linear-gradient(135deg, #064e3b 0%, #047857 60%, #10b981 100%);
-    }
-
-    .banner-devops {
-      background: linear-gradient(135deg, #7c2d12 0%, #c2410c 60%, #ea580c 100%);
-    }
-
-    .banner-future {
-      background: linear-gradient(135deg, #334155 0%, #475569 60%, #64748b 100%);
-    }
-
-    .banner-research {
-      background: linear-gradient(135deg, #102442 0%, #1b365d 55%, #8c1d40 100%);
-    }
+    .banner-keynote { background: linear-gradient(135deg, #064e3b 0%, #047857 58%, #0f766e 100%); }
+    .banner-research { background: linear-gradient(135deg, #102442 0%, #1b365d 55%, #8c1d40 100%); }
+    .banner-devops { background: linear-gradient(135deg, #7c2d12 0%, #c2410c 60%, #ea580c 100%); }
 
     .card-meta-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      gap: 8px;
     }
 
-    .card-tag {
-      font-size: 0.76rem;
+    .meta-badges { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+
+    .badge-pill {
+      font-size: 0.74rem;
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 9999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      letter-spacing: 0.02em;
-    }
-
-    .tag-open {
+      padding: 3px 9px;
+      border-radius: 999px;
       background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.28);
     }
 
-    .card-icon {
-      font-size: 1.8rem;
+    .badge-year {
+      background: rgba(15, 23, 42, 0.35);
+      border-color: rgba(255, 255, 255, 0.35);
     }
 
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: 800;
-      line-height: 1.35;
-      margin-bottom: 6px;
-      letter-spacing: -0.01em;
-    }
+    .card-icon { font-size: 1.55rem; }
 
-    .card-subtitle {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.85);
-      font-weight: 500;
-    }
+    .card-title { font-size: 1.15rem; font-weight: 800; line-height: 1.32; margin-bottom: 4px; }
+    .card-subtitle { font-size: 0.82rem; color: rgba(255, 255, 255, 0.86); font-weight: 500; }
 
     .card-body {
-      padding: 22px 24px;
+      padding: 18px 20px;
       display: flex;
       flex-direction: column;
       flex: 1;
-      gap: 16px;
+      gap: 13px;
     }
 
-    .card-desc {
-      font-size: 0.92rem;
-      color: #475569;
-      line-height: 1.6;
-      flex: 1;
-    }
+    .card-desc { font-size: 0.88rem; color: #475569; line-height: 1.56; flex: 1; }
 
-    .topics-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
+    .topics-list { display: flex; flex-wrap: wrap; gap: 5px; }
 
     .topic-pill {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 600;
-      color: #4338ca;
-      background: #eef2ff;
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 6px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.15s ease;
     }
 
-    .topic-pill.pill-green {
-      color: #065f46;
-      background: #ecfdf5;
+    .pill-research { color: #8c1d40; background: #fdf2f5; }
+    .pill-green { color: #065f46; background: #ecfdf5; }
+    .pill-orange { color: #9a3412; background: #fff7ed; }
+    .pill-blue { color: #1e40af; background: #eff6ff; }
+
+    .topic-pill:hover { filter: brightness(0.94); transform: translateY(-1px); }
+    .topic-pill.tag-selected {
+      background: #1e1b4b;
+      color: #ffffff;
     }
 
-    .topic-pill.pill-orange {
-      color: #9a3412;
-      background: #fff7ed;
-    }
-
-    .topic-pill.pill-gray {
-      color: #334155;
-      background: #f1f5f9;
-    }
-
-    .topic-pill.pill-research {
-      color: #8c1d40;
-      background: #fdf2f5;
-    }
-
-    /* Actions */
     .card-actions {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
       margin-top: auto;
-      padding-top: 14px;
+      padding-top: 12px;
       border-top: 1px solid #f1f5f9;
     }
 
-    .btn-row {
-      display: flex;
-      gap: 8px;
-    }
+    .btn-row { display: flex; gap: 7px; }
 
     .btn-action {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 10px 14px;
-      border-radius: var(--radius-sm);
-      font-size: 0.88rem;
+      gap: 5px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.83rem;
       font-weight: 700;
       text-decoration: none;
-      transition: all 0.2s ease;
       cursor: pointer;
       border: 1px solid transparent;
+      transition: all 0.16s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary { background: linear-gradient(135deg, #1e1b4b, #4338ca); color: white; flex: 1; }
+    .btn-primary:hover { background: linear-gradient(135deg, #0f172a, #3730a3); }
+
+    .btn-green { background: linear-gradient(135deg, #064e3b, #047857); color: white; flex: 1; }
+    .btn-green:hover { background: linear-gradient(135deg, #022c22, #065f46); }
+
+    .btn-orange { background: linear-gradient(135deg, #7c2d12, #c2410c); color: white; flex: 1; }
+    .btn-orange:hover { background: linear-gradient(135deg, #431407, #9a3412); }
+
+    .btn-research { background: linear-gradient(135deg, #1b365d, #8c1d40); color: white; flex: 1; }
+    .btn-research:hover { background: linear-gradient(135deg, #102442, #701532); }
+
+    .btn-outline { background: #ffffff; color: var(--text-main); border-color: var(--border); }
+    .btn-outline:hover { background: #f8fafc; border-color: #cbd5e1; color: var(--accent); }
+    .btn-icon-only { padding: 8px 10px; }
+
+    /* ==================== LIST MODE ==================== */
+    .talks-container.list-view {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .talks-container.list-view .talk-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--research);
+      border-radius: 11px;
+      padding: 13px 18px;
+      display: grid;
+      grid-template-columns: 74px minmax(260px, 1.45fr) minmax(180px, 0.9fr) auto;
+      align-items: center;
+      gap: 14px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.16s ease;
+    }
+
+    .talks-container.list-view .talk-item[data-theme="keynote"] { border-left-color: var(--teal); }
+    .talks-container.list-view .talk-item[data-theme="devops"] { border-left-color: var(--orange); }
+
+    .talks-container.list-view .talk-item:hover {
+      border-color: #cbd5e1;
+      border-left-color: var(--accent);
+      box-shadow: var(--shadow-md);
+      background: #fcfdff;
+    }
+
+    .list-year-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+    }
+
+    .list-year-badge {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: #eef2ff;
+      padding: 3px 10px;
+      border-radius: 7px;
+      width: 100%;
       text-align: center;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, #1e1b4b, #4338ca);
-      color: white;
-      flex: 1;
-      box-shadow: 0 2px 6px rgba(49, 46, 129, 0.25);
+    .list-type-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
     }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #0f172a, #3730a3);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(49, 46, 129, 0.35);
-    }
-
-    .btn-green {
-      background: linear-gradient(135deg, #064e3b, #047857);
-      color: white;
-      flex: 1;
-      box-shadow: 0 2px 6px rgba(4, 120, 87, 0.25);
-    }
-
-    .btn-green:hover {
-      background: linear-gradient(135deg, #022c22, #065f46);
-      transform: translateY(-1px);
-    }
-
-    .btn-orange {
-      background: linear-gradient(135deg, #7c2d12, #c2410c);
-      color: white;
-      flex: 1;
-      box-shadow: 0 2px 6px rgba(194, 65, 12, 0.25);
-    }
-
-    .btn-orange:hover {
-      background: linear-gradient(135deg, #431407, #9a3412);
-      transform: translateY(-1px);
-    }
-
-    .btn-research {
-      background: linear-gradient(135deg, #1b365d, #8c1d40);
-      color: white;
-      flex: 1;
-      box-shadow: 0 2px 6px rgba(140, 29, 64, 0.25);
-    }
-
-    .btn-research:hover {
-      background: linear-gradient(135deg, #102442, #701532);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(140, 29, 64, 0.35);
-    }
-
-    .btn-outline {
-      background: #ffffff;
+    .list-main-col { min-width: 0; }
+    .list-title {
+      font-size: 0.98rem;
+      font-weight: 800;
       color: var(--text-main);
-      border-color: var(--border);
+      line-height: 1.3;
+      margin-bottom: 3px;
     }
 
-    .btn-outline:hover {
+    .list-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .list-actions-col {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .list-actions-col .btn-action {
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      flex: none;
+    }
+
+    /* Empty State */
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: 48px 20px;
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      border-radius: var(--radius);
+      color: var(--text-muted);
+    }
+
+    .empty-state.visible { display: block; }
+
+    /* ==================== SUBTLE DRAFTS SECTION ==================== */
+    .drafts-section {
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px dashed #cbd5e1;
+    }
+
+    .drafts-details {
       background: #f8fafc;
-      border-color: #cbd5e1;
-      color: var(--accent);
+      border: 1px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 10px 16px;
+      color: #64748b;
+      transition: all 0.2s ease;
     }
 
-    .btn-icon-only {
-      padding: 10px 12px;
-      font-size: 0.95rem;
+    .drafts-details:hover {
+      border-color: #94a3b8;
+      background: #f1f5f9;
     }
 
-    /* Toast Notification */
+    .drafts-summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: #64748b;
+      user-select: none;
+    }
+
+    .drafts-summary::-webkit-details-marker { display: none; }
+
+    .drafts-list {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .draft-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.84rem;
+      padding: 6px 10px;
+      border-radius: 7px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+    }
+
+    .draft-title { font-weight: 700; color: #475569; }
+    .draft-path { font-size: 0.76rem; color: #94a3b8; margin-left: 6px; font-family: monospace; }
+
+    .draft-links { display: flex; gap: 6px; }
+    .draft-link {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #475569;
+      text-decoration: none;
+      padding: 3px 9px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+    }
+    .draft-link:hover { color: var(--primary); border-color: #94a3b8; background: #eef2ff; }
+
+    /* Toast */
     .toast {
       position: fixed;
       bottom: 24px;
@@ -609,47 +766,44 @@
       box-shadow: var(--shadow-xl);
       z-index: 120;
       opacity: 0;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
     /* Footer */
     footer {
       background: #ffffff;
       border-top: 1px solid var(--border);
-      padding: 30px 24px;
+      padding: 26px 24px;
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       margin-top: auto;
     }
 
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
+    footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+    @media (max-width: 960px) {
+      .talks-container.list-view .talk-item {
+        grid-template-columns: 68px 1fr;
+        gap: 10px;
+      }
+      .talks-container.list-view .topics-list,
+      .talks-container.list-view .list-actions-col {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+      }
     }
 
     @media (max-width: 768px) {
-      .navbar {
-        padding: 12px 18px;
-      }
-      .nav-links {
-        display: none;
-      }
-      .container {
-        padding: 0 16px;
-      }
-      .talks-grid {
-        grid-template-columns: 1fr;
-      }
+      .navbar { padding: 12px 18px; }
+      .nav-links { display: none; }
+      .container { padding: 0 14px; }
+      .talks-container.grid-view { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -684,23 +838,20 @@
     </div>
     <h1>特邀演講與專題講座</h1>
     <p>
-      收錄薛念林教授歷年受邀於國內外大學、研討會與產官學培訓之精選講座教材、學術研究論文簡報（My Research：SCT、PLANT）與線上互動投影片，涵蓋軟體工程思想史、多代理人需求工程、AI 輔助程式教育與微服務 DevOps 實務。
+      收錄薛念林教授特邀專題演講（Talk2026 等）與歷年學術研究論文雙語簡報（MyResearch），支援依<strong>年份</strong>與<strong>多主題標籤</strong>快速交叉檢索，並可即時切換 Grid／List 檢視模式。
     </p>
   </header>
 
   <!-- Main Container -->
   <main class="container">
 
-    <!-- Locked View (Enter Passcode) -->
+    <!-- Locked View -->
     <div class="gate-card" id="lockedView">
-      <div class="lock-icon-wrapper">
-        <span>🔒</span>
-      </div>
+      <div class="lock-icon-wrapper"><span>🔒</span></div>
       <h2 class="gate-title">請輸入講座專區通行密碼</h2>
       <p class="gate-desc">
-        《特邀演講與專題講座》為特邀專題講座與研討會教材專區。請輸入專用密碼以解鎖講座專區與所有線上投影片、講義資源。
+        《特邀演講與專題講座》為特邀專題講座與研討會教材專區。請輸入專用密碼以解鎖所有線上投影片與論文簡報資源。
       </p>
-
       <form class="auth-form" id="passcodeForm" onsubmit="handleUnlock(event)">
         <input type="password" id="passcodeInput" class="passcode-input" placeholder="請輸入通行密碼" autocomplete="off" autofocus />
         <button type="submit" class="btn-unlock">
@@ -711,680 +862,74 @@
       </form>
     </div>
 
-    <!-- Unlocked View (Category Filter + Talks Grid) -->
+    <!-- Unlocked View -->
     <div class="unlocked-view" id="unlockedView">
 
-      <!-- Category Filter Bar -->
-      <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterTalks('all', this)">全部講座 (All)</button>
-        <button class="filter-btn" onclick="filterTalks('research', this)">🔬 學術研究 (My Research)</button>
-        <button class="filter-btn" onclick="filterTalks('se', this)">軟體工程與思想</button>
-        <button class="filter-btn" onclick="filterTalks('edu', this)">程式教育與研究</button>
-        <button class="filter-btn" onclick="filterTalks('devops', this)">微服務與 DevOps</button>
+      <!-- Control Panel: Search + View Mode + Year + Multi-Tag -->
+      <section class="control-panel" aria-label="簡報篩選與檢視控制列">
+        <div class="toolbar-top">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="搜尋演講標題、系統名稱（SCT、PLANT、NickPocket）、關鍵字…" oninput="renderTalks()" />
+          </div>
+          <div class="toolbar-right">
+            <span class="result-meta" id="resultMeta">顯示 0 / 0 筆</span>
+            <button class="btn-reset" id="btnReset" onclick="resetFilters()">↺ 重設篩選</button>
+            <div class="view-toggle" role="group" aria-label="切換顯示模式">
+              <button class="view-btn active" id="btnGridView" onclick="setViewMode('grid')">▦ Grid</button>
+              <button class="view-btn" id="btnListView" onclick="setViewMode('list')">☰ List</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <span class="filter-label">📅 年份</span>
+          <div class="chip-group" id="yearChips"></div>
+        </div>
+
+        <div class="filter-row">
+          <span class="filter-label">🏷️ 主題標籤</span>
+          <div class="chip-group" id="tagChips"></div>
+        </div>
+      </section>
+
+      <!-- Main Talks Grid / List -->
+      <div class="talks-container grid-view" id="talksContainer"></div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState">
+        <p style="font-size: 1.05rem; font-weight: 700; color: #334155; margin-bottom: 6px;">找不到符合條件的演講或簡報</p>
+        <p style="font-size: 0.88rem; margin-bottom: 14px;">請嘗試減少複選的主題標籤，或切換回「全部年份」。</p>
+        <button class="chip active-year" onclick="resetFilters()">↺ 顯示全部簡報</button>
       </div>
 
-      <!-- Talks Grid -->
-      <div class="talks-grid" id="talksGrid">
+      <!-- Subtle Drafts Section (draft/) -->
+      <section class="drafts-section" aria-label="草稿與整理中簡報">
+        <details class="drafts-details">
+          <summary class="drafts-summary">
+            <span>📝 草稿與整理中簡報（draft/ · 1 份）</span>
+            <span style="font-size: 0.76rem; color: #94a3b8;">點擊展開 ▾</span>
+          </summary>
+          <div class="drafts-list">
+            <div class="draft-row">
+              <div>
+                <span class="draft-title">🏛️ 格言裡的軟體工程（SE History &amp; Pioneer Quotes · 93 頁）</span>
+                <span class="draft-path">./draft/SE_history/</span>
+              </div>
+              <div class="draft-links">
+                <a href="./draft/SE_history/SE_history.html" target="_blank" rel="noopener" class="draft-link">線上簡報 🖥️</a>
+                <a href="./draft/SE_history/SE_history.pdf" target="_blank" rel="noopener" class="draft-link">PDF 📥</a>
+                <a href="./draft/SE_history/SE_history.md" target="_blank" rel="noopener" class="draft-link">MD 📄</a>
+              </div>
+            </div>
+          </div>
+        </details>
+      </section>
 
-        <!-- Keynote Card: NKNU 2026 (AI and Education) -->
-        <article class="talk-card" data-category="edu">
-          <div class="card-banner banner-edu">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🎤 特邀演講 · 2026/11/24</span>
-              <span class="card-icon">🤖</span>
-            </div>
-            <h2 class="card-title">AI and Education（AI 時代的教育與工程實踐）</h2>
-            <div class="card-subtitle">國立高雄師範大學（高師大）專題演講 · 互動中樞簡報</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              以「計程車司機 Vibe Coding」破題與現場互動問卷切入，串聯 NickPocket 個人百寶箱、5 篇程式教育與軟體工程研究簡報（Pytutor、AT-TPL、SCT、UX Testing、PLANT）、Courseware Design 雙語互動教材工程，並收斂於 Harness Engineering（駕馭 AI 框架）。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-green">高師大特邀演講</span>
-              <span class="topic-pill pill-green">NickPocket</span>
-              <span class="topic-pill pill-green">Courseware Design</span>
-              <span class="topic-pill pill-green">Harness Engineering</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./Talk2026/NKNU26/nknu26_slide.html" target="_blank" rel="noopener" class="btn-action btn-green" title="開啟互動中樞 HTML 簡報">
-                  <span>線上簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./Talk2026/NKNU26/nknu26_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" title="下載高師大演講簡報 PDF">
-                  <span>下載 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./Talk2026/NKNU26/nknu26_slide.md" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視簡報 Markdown 源碼">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Research Card 1: 27SCT (Smart Coding Tutor) -->
-        <article class="talk-card" data-category="research">
-          <div class="card-banner banner-research">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🔬 My Research · 27SCT</span>
-              <span class="card-icon">🎓</span>
-            </div>
-            <h2 class="card-title">分層式 LLM 程式輔助機制（SCT）</h2>
-            <div class="card-subtitle">Tiered LLM Assistance, AI Tax &amp; LADI · 21 頁中英文雙語簡報</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              於 Smart Coding Tutor 平台導入五級分層 AI 助教（L0–L4）與 AI 稅率（0%–20%），並提出層級錨定依賴指標（LADI）。針對 112 位 Python 修課生實證分析顯示，分層機制顯著提升評量鑑別度（滿分集中率由 52.7% 降至 13.4%）並驗證四象限策略與依賴關聯。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-research">Smart Coding Tutor</span>
-              <span class="topic-pill pill-research">AI Tax 分層稅率</span>
-              <span class="topic-pill pill-research">LADI 依賴指標</span>
-              <span class="topic-pill pill-research">中英文雙版本</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./MyResearch/27SCT/SCT_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
-                  <span>中文簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./MyResearch/27SCT/SCT_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
-                  <span>English</span>
-                  <span>🖥️</span>
-                </a>
-              </div>
-              <div class="btn-row">
-                <a href="./MyResearch/27SCT/SCT_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
-                  <span>中文 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/27SCT/SCT_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
-                  <span>EN PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/27SCT/2026%20SCT.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Research Card 2: 26Plant (Multi-Agent RE Framework) -->
-        <article class="talk-card" data-category="research">
-          <div class="card-banner banner-research">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🔬 My Research · JISE 2026</span>
-              <span class="card-icon">🤖</span>
-            </div>
-            <h2 class="card-title">多代理人 AI 需求工程框架（PLANT）</h2>
-            <div class="card-subtitle">Multi-Agent Requirements Engineering &amp; Mediation · 20 頁中英文雙語簡報</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              提出 PLANT 六角色多代理人需求工程框架（User、Analyst、Expert、Modeler、Mediator、Documenter），結合任務自適應混合溝通（Simultaneous-Talk / One-by-One）與外部知識庫。實證顯示隱性需求引出率提升 2.5×–3.2×，衝突召回率達 95.55%–100.00%。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-research">Multi-Agent RE</span>
-              <span class="topic-pill pill-research">Hybrid Mediation</span>
-              <span class="topic-pill pill-research">IEEE 29148 SRS</span>
-              <span class="topic-pill pill-research">中英文雙版本</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./MyResearch/26Plant/Plant_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
-                  <span>中文簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./MyResearch/26Plant/Plant_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
-                  <span>English</span>
-                  <span>🖥️</span>
-                </a>
-              </div>
-              <div class="btn-row">
-                <a href="./MyResearch/26Plant/Plant_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
-                  <span>中文 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/26Plant/Plant_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
-                  <span>EN PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/26Plant/2026%20JISE%20Plant.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Research Card 3: 26Pattern (AI Tutor Triad Pattern) -->
-        <article class="talk-card" data-category="research">
-          <div class="card-banner banner-research">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🔬 My Research · JISE 2026</span>
-              <span class="card-icon">🧩</span>
-            </div>
-            <h2 class="card-title">AI 助教三元模式（AT-TPL）</h2>
-            <div class="card-subtitle">AI Tutor Triad Pattern: Guidey, Debuggy &amp; Opti · 19 頁中英文雙語簡報</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              提出 AI 助教三元模式語言（AT-TPL），透過 RACE 提示框架將程式學習輔助解構為引導（Guidey）、除錯（Debuggy）與最佳化（Opti）三大專責模式並落實於 Smart Coding Tutor。於 315 位學生與 1,315 次輔助嘗試中，近七成學生併用多助教（67.4%），最終 73.9% 成功通過評測。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-research">Pattern Language</span>
-              <span class="topic-pill pill-research">AI Tutor</span>
-              <span class="topic-pill pill-research">Programming Education</span>
-              <span class="topic-pill pill-research">RACE Prompting</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./MyResearch/26Pattern/Pattern26_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
-                  <span>中文簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./MyResearch/26Pattern/Pattern26_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
-                  <span>English</span>
-                  <span>🖥️</span>
-                </a>
-              </div>
-              <div class="btn-row">
-                <a href="./MyResearch/26Pattern/Pattern26_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
-                  <span>中文 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/26Pattern/Pattern26_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
-                  <span>EN PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/26Pattern/2026%20JISE%20pattern.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Research Card 4: 26HelpSeek (Help-Seeking in LLM-Assisted Learning) -->
-        <article class="talk-card" data-category="research">
-          <div class="card-banner banner-research">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🔬 My Research · Electronics 2026</span>
-              <span class="card-icon">🧭</span>
-            </div>
-            <h2 class="card-title">LLM 輔助學習中的求助行為路徑（DialoguEDU）</h2>
-            <div class="card-subtitle">Help-Seeking Pathways &amp; Coding Efficiency · 19 頁中英文雙語簡報</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              分析精熟學習程式課程（DialoguEDU）中 732 次真實補救學習歷程（366 位學生），發現 78.0% 採取純重測而忽略 AI 澄清；及早澄清雖能顯著縮短補救輪數（2 vs. 4 輪，δ = −0.912），但對後續程式編寫效率無顯著差異，據此提出「選擇性歷程支持機制」定位。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-research">LLM 輔助學習</span>
-              <span class="topic-pill pill-research">求助行為路徑</span>
-              <span class="topic-pill pill-research">精熟學習系統</span>
-              <span class="topic-pill pill-research">程式教育實證</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./MyResearch/26HelpSeek/HelpSeek_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
-                  <span>中文簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./MyResearch/26HelpSeek/HelpSeek_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
-                  <span>English</span>
-                  <span>🖥️</span>
-                </a>
-              </div>
-              <div class="btn-row">
-                <a href="./MyResearch/26HelpSeek/HelpSeek_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
-                  <span>中文 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/26HelpSeek/HelpSeek_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
-                  <span>EN PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/26HelpSeek/2026%20Electronics%20Lai.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Research Card 5: 24UXtesting (Electronics 2024) -->
-        <article class="talk-card" data-category="research">
-          <div class="card-banner banner-research">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🔬 My Research · Electronics 2024</span>
-              <span class="card-icon">🎨</span>
-            </div>
-            <h2 class="card-title">應用大型語言模型於使用者體驗測試（UX Testing）</h2>
-            <div class="card-subtitle">Applying LLM to UX Testing · 18 頁中英文雙語簡報</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              整合 Rapi 網頁互動錄製工具與 GPT-4 多模態推理能力，將 Nielsen 六大可用性啟發式準則注入結構化提示詞，打造低成本且高一致性的自動化 UX 檢測框架。於九大情境實證中，多模態 GPT-4 評估表現大幅超越人類受試者（F1 0.66 vs. 0.16、精確率 0.84 vs. 0.50）。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-research">LLM-based UX Testing</span>
-              <span class="topic-pill pill-research">Nielsen's Heuristics</span>
-              <span class="topic-pill pill-research">Multimodal Prompting</span>
-              <span class="topic-pill pill-research">Automated HCI Evaluation</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./MyResearch/24UXtesting/UXtesting_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
-                  <span>中文簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./MyResearch/24UXtesting/UXtesting_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
-                  <span>English</span>
-                  <span>🖥️</span>
-                </a>
-              </div>
-              <div class="btn-row">
-                <a href="./MyResearch/24UXtesting/UXtesting_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
-                  <span>中文 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/24UXtesting/UXtesting_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
-                  <span>EN PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/24UXtesting/2024%20Electronics%20UX%20testing.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Research Card 6: 23Testability / Pytutor (Electronics 2023) -->
-        <article class="talk-card" data-category="research">
-          <div class="card-banner banner-research">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🔬 My Research · Electronics 2023</span>
-              <span class="card-icon">🧪</span>
-            </div>
-            <h2 class="card-title">線上程式平台與學習者測試能力研究（Pytutor）</h2>
-            <div class="card-subtitle">Online Programming Platform &amp; Testing Ability · 20 頁中英文雙語簡報</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              開發整合軟體測試概念的線上程式評測平台 Pytutor，引導學習者於正式提交前撰寫自訂測試案例（DTC），並結合分支覆蓋率、突變測試與答題韌性量化程式能力（PAI）與測試效率（TEI）。針對 61 位學生與 50 題實證顯示，優異測試能力顯著提升平時成效，凸顯跨科系融入測試教學之必要。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-research">Online Judge (Pytutor)</span>
-              <span class="topic-pill pill-research">軟體測試能力 (TEI)</span>
-              <span class="topic-pill pill-research">突變測試與覆蓋率</span>
-              <span class="topic-pill pill-research">學習行為分析</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./MyResearch/23Testability/Testability_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
-                  <span>中文簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./MyResearch/23Testability/Testability_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
-                  <span>English</span>
-                  <span>🖥️</span>
-                </a>
-              </div>
-              <div class="btn-row">
-                <a href="./MyResearch/23Testability/Testability_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
-                  <span>中文 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/23Testability/Testability_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
-                  <span>EN PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/23Testability/2023%20Electronics%20testing%20ability.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Research Card 7: 23Mutation / CIB (IJIET 2023) -->
-        <article class="talk-card" data-category="research">
-          <div class="card-banner banner-research">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🔬 My Research · IJIET 2023</span>
-              <span class="card-icon">🧬</span>
-            </div>
-            <h2 class="card-title">變異測試遊戲化學習系統（Code Immunity Boost）</h2>
-            <div class="card-subtitle">Gamified Learning System for Mutation Testing · 19 頁中英文雙語簡報</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              以「疫苗研發提升人體免疫力」為遊戲敘事，建置變異測試遊戲化學習系統 Code Immunity Boost（CIB）與變異體生成器（CVI），讓學生扮演白血球（測試案例）與疫苗（變異體）進行漸進式闖關。先導實驗顯示實驗組在測試提交量（8.4 倍）與有效測試案例（3.1 倍）皆大幅領先傳統組。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-research">變異測試</span>
-              <span class="topic-pill pill-research">遊戲化教育</span>
-              <span class="topic-pill pill-research">Code Immunity Boost</span>
-              <span class="topic-pill pill-research">軟體測試教學</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./MyResearch/23Mutation/Mutation_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
-                  <span>中文簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./MyResearch/23Mutation/Mutation_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
-                  <span>English</span>
-                  <span>🖥️</span>
-                </a>
-              </div>
-              <div class="btn-row">
-                <a href="./MyResearch/23Mutation/Mutation_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
-                  <span>中文 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/23Mutation/Mutation_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
-                  <span>EN PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/23Mutation/2023%20IJIET%20mutation.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Research Card 8: 22Engagement (JITE:Research 2022) -->
-        <article class="talk-card" data-category="research">
-          <div class="card-banner banner-research">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🔬 My Research · JITE 2022</span>
-              <span class="card-icon">📈</span>
-            </div>
-            <h2 class="card-title">線上程式課程行為投入模式與學習成效（PLS-SEM）</h2>
-            <div class="card-subtitle">Behavioral Engagement &amp; Self-Assessment · 19 頁中英文雙語簡報</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              以 217 名 Python 線上混成課程學生之 OpenEdu 日誌為基礎，運用 PLS-SEM 與 IPMA 檢驗行為投入與認知自我評量對期末專題成績的因果影響（R² = 0.771）。證實單純登入或閱讀靜態文件無法直接提分，唯有透過測驗、遊戲化評量與 OJ 實作中介與積極看影片才能顯著帶動成效。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-research">PLS-SEM</span>
-              <span class="topic-pill pill-research">學習行為分析</span>
-              <span class="topic-pill pill-research">程式設計教育</span>
-              <span class="topic-pill pill-research">IPMA 自我評量</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./MyResearch/22Engagement/Engagement_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
-                  <span>中文簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./MyResearch/22Engagement/Engagement_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
-                  <span>English</span>
-                  <span>🖥️</span>
-                </a>
-              </div>
-              <div class="btn-row">
-                <a href="./MyResearch/22Engagement/Engagement_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
-                  <span>中文 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/22Engagement/Engagement_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
-                  <span>EN PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/22Engagement/2022%20JITE.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Research Card 9: 21Judge (IEEE Access 2021) -->
-        <article class="talk-card" data-category="research">
-          <div class="card-banner banner-research">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🔬 My Research · IEEE Access 2021</span>
-              <span class="card-icon">⚖️</span>
-            </div>
-            <h2 class="card-title">程式課程中 Online Judge 系統接受度分析（UTAUT2）</h2>
-            <div class="card-subtitle">Students' Acceptance of Online Judge System · 19 頁中英文雙語簡報</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              結合延伸版 UTAUT2 模型與 PLS-SEM，針對 187 位修習翻轉式資料科學課程學生探討影響 OJ 使用意願之關鍵因素。結果顯示享樂動機、自我效能與社會影響最具預測力（R² = 75.4%），且主修科系對各驅動因素無顯著調節效果，展現跨系推廣潛力。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-research">Online Judge</span>
-              <span class="topic-pill pill-research">UTAUT2</span>
-              <span class="topic-pill pill-research">PLS-SEM</span>
-              <span class="topic-pill pill-research">程式設計教育</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./MyResearch/21Judge/Judge_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
-                  <span>中文簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./MyResearch/21Judge/Judge_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
-                  <span>English</span>
-                  <span>🖥️</span>
-                </a>
-              </div>
-              <div class="btn-row">
-                <a href="./MyResearch/21Judge/Judge_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
-                  <span>中文 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/21Judge/Judge_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
-                  <span>EN PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/21Judge/2021%20IEEE%20Access.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Research Card 10: 20Pattern (JISE 2020) -->
-        <article class="talk-card" data-category="research">
-          <div class="card-banner banner-research">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🔬 My Research · JISE 2020</span>
-              <span class="card-icon">📐</span>
-            </div>
-            <h2 class="card-title">以軟體演化數據分析設計模式之使用度（PUA / DoU）</h2>
-            <div class="card-subtitle">Design Pattern Analysis with Software Evolution Data · 19 頁中英文雙語簡報</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              提出結合模式應用情境（PAC）、預期使用方式（EPU）與使用程度指標（DoU）的演化分析方法與自動化工具 PUA，跨越 15 個開源專案（296 次版本演化）實證檢驗 11 種 GoF 設計模式。ANOVA 顯示模式間無顯著差異（平均 DoU &lt; 0.20），但專案間具極顯著差異（p &lt; 0.001）。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-research">設計模式</span>
-              <span class="topic-pill pill-research">軟體演化</span>
-              <span class="topic-pill pill-research">開源實證分析</span>
-              <span class="topic-pill pill-research">軟體品質評估</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./MyResearch/20Pattern/Pattern20_slide_zh.html" target="_blank" rel="noopener" class="btn-action btn-research" title="開啟繁體中文互動簡報">
-                  <span>中文簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./MyResearch/20Pattern/Pattern20_slide.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="Open English Interactive Slides">
-                  <span>English</span>
-                  <span>🖥️</span>
-                </a>
-              </div>
-              <div class="btn-row">
-                <a href="./MyResearch/20Pattern/Pattern20_slide_zh.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="下載中文版簡報 PDF">
-                  <span>中文 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/20Pattern/Pattern20_slide.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" style="flex: 1;" title="Download English Slides PDF">
-                  <span>EN PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./MyResearch/20Pattern/2020_JISE_Pattern_Evolution.pdf" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視論文原文 PDF">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 1: SE History & Pioneer Quotes (Local Marp / PDF) -->
-        <article class="talk-card" data-category="se">
-          <div class="card-banner banner-se">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🏛️ 軟體工程思想史</span>
-              <span class="card-icon">🏛️</span>
-            </div>
-            <h2 class="card-title">格言裡的軟體工程</h2>
-            <div class="card-subtitle">SE History & Pioneer Quotes · 18 位大師與重大歷史現場</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              穿越半世紀 18 位傳奇先驅（Hopper、Dijkstra、Brooks、Jobs、Gates、Hinton、Musk、Altman、Huang 等）的經典格言與四格美式漫畫，深入剖析 Therac-25、阿波羅登月、愛國者飛彈等歷史關鍵現場與現代震撼啟示。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill">18 位傳奇先驅</span>
-              <span class="topic-pill">四格美式漫畫</span>
-              <span class="topic-pill">重大歷史案例剖析</span>
-              <span class="topic-pill">93 頁全彩簡報</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="./SE_history/SE_history.html" target="_blank" rel="noopener" class="btn-action btn-primary" title="開啟 Marp 線上互動全螢幕簡報">
-                  <span>線上簡報</span>
-                  <span>🖥️</span>
-                </a>
-                <a href="./SE_history/SE_history.pdf" target="_blank" rel="noopener" class="btn-action btn-outline" title="下載 93 頁高清講義 PDF">
-                  <span>下載 PDF</span>
-                  <span>📥</span>
-                </a>
-                <a href="./SE_history/SE_history.md" target="_blank" rel="noopener" class="btn-action btn-outline btn-icon-only" title="檢視講稿 Markdown 源碼">
-                  📄
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 2: Computing Education & Analytics (Google Slides) -->
-        <article class="talk-card" data-category="edu">
-          <div class="card-banner banner-edu">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">🌐 線上簡報 · Google Slides</span>
-              <span class="card-icon">📊</span>
-            </div>
-            <h2 class="card-title">程式教育的線上學習與其歷程分析</h2>
-            <div class="card-subtitle">talk22 國立高雄師範大學 (高師大) 特邀演講</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              探討大專院校程式設計教學在線上學習環境中的數位轉型實務，深入分析學生在線上評測與自主編程練習中的行為軌跡、卡關瓶頸數據與教學介入成效研究。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-green">高師大特邀講座</span>
-              <span class="topic-pill pill-green">程式教育數位學習</span>
-              <span class="topic-pill pill-green">學習歷程行為分析</span>
-              <span class="topic-pill pill-green">Google Slides</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="https://docs.google.com/presentation/d/1OmQfpitxy9FwxKGbPKoip8wm-ddddMrLvLdOZvDinNY/edit?usp=sharing"
-                  target="_blank" rel="noopener" class="btn-action btn-green" title="在新視窗開啟 Google 簡報">
-                  <span>開啟 Google 簡報</span>
-                  <span>↗</span>
-                </a>
-                <button onclick="copyToClipboard('https://docs.google.com/presentation/d/1OmQfpitxy9FwxKGbPKoip8wm-ddddMrLvLdOZvDinNY/edit?usp=sharing', '已複製 Google 簡報連結！')"
-                  class="btn-action btn-outline btn-icon-only" title="複製簡報連結">
-                  📋
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 3: Microservices & DevOps (Google Sites) -->
-        <article class="talk-card" data-category="devops">
-          <div class="card-banner banner-devops">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">☁️ 開源計畫 · 教材分享區</span>
-              <span class="card-icon">🚀</span>
-            </div>
-            <h2 class="card-title">微服務 DevOps 開源軟體工具計畫</h2>
-            <div class="card-subtitle">教育部雲端軟體人才培育 · 實務教材與開源工具平台</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              教育部雲端軟體與微服務開發培育計畫專屬教材庫，整合 Docker 容器化、Kubernetes 叢集部署、CI/CD 自動化管線與微服務架構實務，提供完整開放之教學模組與實作範例。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-orange">微服務架構 (Microservices)</span>
-              <span class="topic-pill pill-orange">DevOps 自動化管線</span>
-              <span class="topic-pill pill-orange">開源軟體實務</span>
-              <span class="topic-pill pill-orange">教材分享專區</span>
-            </div>
-            <div class="card-actions">
-              <div class="btn-row">
-                <a href="https://reurl.cc/Ggd6jd" target="_blank" rel="noopener" class="btn-action btn-orange" title="前往教材分享區網站">
-                  <span>前往教材分享區</span>
-                  <span>↗</span>
-                </a>
-                <button onclick="copyToClipboard('https://reurl.cc/Ggd6jd', '已複製教材分享區短網址！')"
-                  class="btn-action btn-outline btn-icon-only" title="複製分享連結">
-                  📋
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 4: Upcoming / Future Talks -->
-        <article class="talk-card" data-category="se">
-          <div class="card-banner banner-future">
-            <div class="card-meta-row">
-              <span class="card-tag tag-open">⏳ 持續收錄中 · Future Talks</span>
-              <span class="card-icon">💡</span>
-            </div>
-            <h2 class="card-title">更多主題演講與實務工作坊</h2>
-            <div class="card-subtitle">AI 時代軟體工程 · 規格驅動開發 · 敏捷實踐</div>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">
-              持續梳理並收錄涵蓋「AI 規格驅動流程與 Harness Engineering」、「大語言模型時代的軟體工程師修煉」、「現代前端架構演進」等專題演講投影片與影音紀錄。
-            </p>
-            <div class="topics-list">
-              <span class="topic-pill pill-gray">AI 規格驅動流程</span>
-              <span class="topic-pill pill-gray">Harness Engineering</span>
-              <span class="topic-pill pill-gray">工作坊專題</span>
-            </div>
-            <div class="card-actions">
-              <button class="btn-action btn-outline" style="cursor: default; opacity: 0.75;">
-                <span>內容整理中 · 敬請期待</span>
-              </button>
-            </div>
-          </div>
-        </article>
-
-      </div>
     </div>
   </main>
 
-  <!-- Toast Notification -->
+  <!-- Toast -->
   <div class="toast" id="toast">
     <span>✅</span>
     <span id="toastMsg">已複製連結！</span>
@@ -1401,21 +946,271 @@
   <script>
     const AUTH_KEY = 'talk_auth_passed';
     const VALID_PASSCODE = 'nick007';
+    const VIEW_KEY = 'talk_view_mode';
 
+    // ==================== DATA SOURCE ====================
+    const TALKS = [
+      {
+        id: 'nknu26',
+        year: '2026',
+        typeLabel: '特邀演講',
+        venue: '高師大 2026/11/24',
+        icon: '🤖',
+        theme: 'keynote',
+        title: 'AI and Education（AI 時代的教育與工程實踐）',
+        subtitle: '國立高雄師範大學專題演講 · 互動中樞簡報（串聯 5 篇論文與實作）',
+        desc: '以「計程車司機 Vibe Coding」破題與現場互動問卷切入，串聯 NickPocket 個人百寶箱、5 篇程式教育與軟體工程研究簡報（Pytutor、AT-TPL、SCT、UX Testing、PLANT）、Courseware Design 雙語互動教材工程，並收斂於 Harness Engineering。',
+        tags: ['特邀演講', 'AI & LLM', '程式教育', '軟體工程', '教學工程'],
+        actions: [
+          { label: '線上簡報', icon: '🖥️', href: './Talk2026/NKNU26/nknu26_slide.html', cls: 'btn-green', row: 1 },
+          { label: 'PDF', icon: '📥', href: './Talk2026/NKNU26/nknu26_slide.pdf', cls: 'btn-outline', row: 1 },
+          { label: 'MD', icon: '📄', href: './Talk2026/NKNU26/nknu26_slide.md', cls: 'btn-outline btn-icon-only', row: 1, title: '檢視 Markdown 源碼' }
+        ]
+      },
+      {
+        id: '27sct',
+        year: '2026',
+        typeLabel: '論文簡報',
+        venue: 'MyResearch · 27SCT',
+        icon: '🎓',
+        theme: 'research',
+        title: '分層式 LLM 程式輔助機制（SCT）',
+        subtitle: 'Tiered LLM Assistance, AI Tax & LADI · 21 頁中英文雙語簡報',
+        desc: '於 Smart Coding Tutor 平台導入五級分層 AI 助教（L0–L4）與 AI 稅率（0%–20%），並提出層級錨定依賴指標（LADI）。針對 112 位 Python 修課生實證顯示，滿分集中率由 52.7% 降至 13.4%。',
+        tags: ['論文簡報', 'AI & LLM', '程式教育'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/27SCT/SCT_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/27SCT/SCT_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/27SCT/SCT_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/27SCT/SCT_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/27SCT/2026%20SCT.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '26plant',
+        year: '2026',
+        typeLabel: '論文簡報',
+        venue: 'JISE 2026 · 26Plant',
+        icon: '🏗️',
+        theme: 'research',
+        title: '多代理人 AI 需求工程框架（PLANT）',
+        subtitle: 'Multi-Agent Requirements Engineering & Mediation · 20 頁雙語簡報',
+        desc: '提出 PLANT 六角色多代理人需求工程框架（User、Analyst、Expert、Modeler、Mediator、Documenter），結合混合溝通與外部知識庫。隱性需求引出率提升 2.5×–3.2×，衝突召回率達 95.55%–100%。',
+        tags: ['論文簡報', 'AI & LLM', '軟體工程'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/26Plant/Plant_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/26Plant/Plant_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/26Plant/Plant_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/26Plant/Plant_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/26Plant/2026%20JISE%20Plant.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '26pattern',
+        year: '2026',
+        typeLabel: '論文簡報',
+        venue: 'JISE 2026 · 26Pattern',
+        icon: '🧩',
+        theme: 'research',
+        title: 'AI 助教三元模式（AT-TPL）',
+        subtitle: 'AI Tutor Triad Pattern: Guidey, Debuggy & Opti · 19 頁雙語簡報',
+        desc: '提出 AI 助教三元模式語言（AT-TPL），透過 RACE 提示框架解構為引導（Guidey）、除錯（Debuggy）與最佳化（Opti）並落實於 Smart Coding Tutor。315 位學生中 67.4% 併用多助教，73.9% 成功通過評測。',
+        tags: ['論文簡報', 'AI & LLM', '程式教育'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/26Pattern/Pattern26_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/26Pattern/Pattern26_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/26Pattern/Pattern26_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/26Pattern/Pattern26_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/26Pattern/2026%20JISE%20pattern.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '26helpseek',
+        year: '2026',
+        typeLabel: '論文簡報',
+        venue: 'Electronics 2026 · 26HelpSeek',
+        icon: '🧭',
+        theme: 'research',
+        title: 'LLM 輔助學習中的求助行為路徑（DialoguEDU）',
+        subtitle: 'Help-Seeking Pathways & Coding Efficiency · 19 頁雙語簡報',
+        desc: '分析 DialoguEDU 精熟學習中 732 次真實補救歷程（366 位學生），發現 78.0% 採取純重測；及早 AI 澄清顯著縮短補救輪數（2 vs. 4 輪），據此提出「選擇性歷程支持機制」定位。',
+        tags: ['論文簡報', 'AI & LLM', '程式教育'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/26HelpSeek/HelpSeek_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/26HelpSeek/HelpSeek_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/26HelpSeek/HelpSeek_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/26HelpSeek/HelpSeek_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/26HelpSeek/2026%20Electronics%20Lai.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '24uxtesting',
+        year: '2024',
+        typeLabel: '論文簡報',
+        venue: 'Electronics 2024 · 24UXtesting',
+        icon: '🎨',
+        theme: 'research',
+        title: '應用大型語言模型於使用者體驗測試（UX Testing）',
+        subtitle: 'Applying LLM to UX Testing · 18 頁雙語簡報',
+        desc: '整合 Rapi 網頁互動錄製工具與 GPT-4 多模態推理能力，注入 Nielsen 六大啟發式準則打造自動化 UX 檢測框架。九大情境實證顯示 GPT-4 評估大幅超越人類受試者（F1 0.66 vs. 0.16）。',
+        tags: ['論文簡報', 'AI & LLM', '軟體工程', 'UX 測試'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/24UXtesting/UXtesting_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/24UXtesting/UXtesting_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/24UXtesting/UXtesting_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/24UXtesting/UXtesting_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/24UXtesting/2024%20Electronics%20UX%20testing.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '23testability',
+        year: '2023',
+        typeLabel: '論文簡報',
+        venue: 'Electronics 2023 · 23Testability',
+        icon: '🧪',
+        theme: 'research',
+        title: '線上程式平台與學習者測試能力研究（Pytutor）',
+        subtitle: 'Online Programming Platform & Testing Ability · 20 頁雙語簡報',
+        desc: '開發整合軟體測試概念的線上程式評測平台 Pytutor，引導學習者於正式提交前撰寫自訂測試案例（DTC），結合分支覆蓋率與突變測試量化程式能力（PAI）與測試效率（TEI）。',
+        tags: ['論文簡報', '程式教育', '軟體測試'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/23Testability/Testability_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/23Testability/Testability_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/23Testability/Testability_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/23Testability/Testability_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/23Testability/2023%20Electronics%20testing%20ability.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '23mutation',
+        year: '2023',
+        typeLabel: '論文簡報',
+        venue: 'IJIET 2023 · 23Mutation',
+        icon: '🧬',
+        theme: 'research',
+        title: '變異測試遊戲化學習系統（Code Immunity Boost）',
+        subtitle: 'Gamified Learning System for Mutation Testing · 19 頁雙語簡報',
+        desc: '以「疫苗研發提升免疫力」為敘事建置變異測試遊戲化系統 Code Immunity Boost（CIB）與變異體生成器（CVI）。實驗組在測試提交量（8.4×）與有效測試案例（3.1×）皆大幅領先傳統組。',
+        tags: ['論文簡報', '程式教育', '軟體測試'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/23Mutation/Mutation_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/23Mutation/Mutation_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/23Mutation/Mutation_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/23Mutation/Mutation_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/23Mutation/2023%20IJIET%20mutation.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '22engagement',
+        year: '2022',
+        typeLabel: '論文簡報',
+        venue: 'JITE 2022 · 22Engagement',
+        icon: '📈',
+        theme: 'research',
+        title: '線上程式課程行為投入模式與學習成效（PLS-SEM）',
+        subtitle: 'Behavioral Engagement & Self-Assessment · 19 頁雙語簡報',
+        desc: '以 217 名 Python 混成課程學生之 OpenEdu 日誌為基礎，運用 PLS-SEM 與 IPMA 檢驗行為投入與自我評量對期末成績的影響（R² = 0.771），證實須透過測驗、遊戲化與 OJ 實作中介帶動成效。',
+        tags: ['論文簡報', '程式教育'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/22Engagement/Engagement_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/22Engagement/Engagement_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/22Engagement/Engagement_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/22Engagement/Engagement_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/22Engagement/2022%20JITE.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: 'talk22-nknu',
+        year: '2022',
+        typeLabel: '特邀演講',
+        venue: '高師大 2022 · Google Slides',
+        icon: '📊',
+        theme: 'keynote',
+        title: '程式教育的線上學習與其歷程分析',
+        subtitle: 'talk22 國立高雄師範大學（高師大）特邀演講',
+        desc: '探討大專院校程式設計教學在線上學習環境中的數位轉型實務，深入分析學生在線上評測與自主編程練習中的行為軌跡、卡關瓶頸數據與教學介入成效研究。',
+        tags: ['特邀演講', '程式教育'],
+        actions: [
+          { label: '開啟 Google 簡報', icon: '↗', href: 'https://docs.google.com/presentation/d/1OmQfpitxy9FwxKGbPKoip8wm-ddddMrLvLdOZvDinNY/edit?usp=sharing', cls: 'btn-green', row: 1 },
+          { label: '', icon: '📋', copy: 'https://docs.google.com/presentation/d/1OmQfpitxy9FwxKGbPKoip8wm-ddddMrLvLdOZvDinNY/edit?usp=sharing', copyMsg: '已複製 Google 簡報連結！', cls: 'btn-outline btn-icon-only', row: 1, title: '複製連結' }
+        ]
+      },
+      {
+        id: '21judge',
+        year: '2021',
+        typeLabel: '論文簡報',
+        venue: 'IEEE Access 2021 · 21Judge',
+        icon: '⚖️',
+        theme: 'research',
+        title: '程式課程中 Online Judge 系統接受度分析（UTAUT2）',
+        subtitle: 'Students\' Acceptance of Online Judge System · 19 頁雙語簡報',
+        desc: '結合延伸版 UTAUT2 模型與 PLS-SEM，針對 187 位修習翻轉式資料科學課程學生探討影響 OJ 使用意願之關鍵因素，證實享樂動機、自我效能與社會影響最具預測力（R² = 75.4%）。',
+        tags: ['論文簡報', '程式教育'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/21Judge/Judge_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/21Judge/Judge_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/21Judge/Judge_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/21Judge/Judge_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/21Judge/2021%20IEEE%20Access.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: 'devops-moe',
+        year: '2021',
+        typeLabel: '開源計畫',
+        venue: '教育部雲端軟體人才培育',
+        icon: '🚀',
+        theme: 'devops',
+        title: '微服務 DevOps 開源軟體工具計畫',
+        subtitle: '教育部雲端軟體人才培育 · 實務教材與開源工具平台',
+        desc: '整合 Docker 容器化、Kubernetes 叢集部署、CI/CD 自動化管線與微服務架構實務，提供完整開放之教學模組與實作範例。',
+        tags: ['特邀演講', '軟體工程', 'DevOps'],
+        actions: [
+          { label: '前往教材分享區', icon: '↗', href: 'https://reurl.cc/Ggd6jd', cls: 'btn-orange', row: 1 },
+          { label: '', icon: '📋', copy: 'https://reurl.cc/Ggd6jd', copyMsg: '已複製教材分享區短網址！', cls: 'btn-outline btn-icon-only', row: 1, title: '複製短網址' }
+        ]
+      },
+      {
+        id: '20pattern',
+        year: '2020',
+        typeLabel: '論文簡報',
+        venue: 'JISE 2020 · 20Pattern',
+        icon: '📐',
+        theme: 'research',
+        title: '以軟體演化數據分析設計模式之使用度（PUA / DoU）',
+        subtitle: 'Design Pattern Analysis with Software Evolution Data · 19 頁雙語簡報',
+        desc: '提出自動化模式使用度分析方法（PUA）與使用度指標（DoU），針對 15 個開源 Java 專案共 296 次演化實證分析設計模式在軟體演進中的實際遵循率與擴充效益。',
+        tags: ['論文簡報', '軟體工程'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/20Pattern/Pattern20_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/20Pattern/Pattern20_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/20Pattern/Pattern20_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/20Pattern/Pattern20_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/20Pattern/2020_JISE_Pattern_Evolution.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      }
+    ];
+
+    const ALL_YEARS = ['all', '2026', '2024', '2023', '2022', '2021', '2020'];
+    const ALL_TAGS = ['特邀演講', '論文簡報', 'AI & LLM', '程式教育', '軟體工程', '軟體測試', 'UX 測試', '教學工程', 'DevOps'];
+
+    let state = {
+      year: 'all',
+      tags: new Set(),
+      view: localStorage.getItem(VIEW_KEY) || 'grid'
+    };
+
+    // ==================== AUTH ====================
     function checkAuthStatus() {
       const isAuth = sessionStorage.getItem(AUTH_KEY) === 'true';
-      const lockedView = document.getElementById('lockedView');
-      const unlockedView = document.getElementById('unlockedView');
-      const btnLockout = document.getElementById('btnLockout');
-
+      document.getElementById('lockedView').style.display = isAuth ? 'none' : 'block';
+      document.getElementById('unlockedView').style.display = isAuth ? 'block' : 'none';
+      document.getElementById('btnLockout').style.display = isAuth ? 'inline-flex' : 'none';
       if (isAuth) {
-        lockedView.style.display = 'none';
-        unlockedView.style.display = 'block';
-        btnLockout.style.display = 'inline-flex';
+        initControls();
+        setViewMode(state.view, false);
+        renderTalks();
       } else {
-        lockedView.style.display = 'block';
-        unlockedView.style.display = 'none';
-        btnLockout.style.display = 'none';
         const input = document.getElementById('passcodeInput');
         if (input) setTimeout(() => input.focus(), 150);
       }
@@ -1425,9 +1220,7 @@
       if (e) e.preventDefault();
       const input = document.getElementById('passcodeInput');
       const errorMsg = document.getElementById('errorMsg');
-      const val = (input.value || '').trim();
-
-      if (val.toLowerCase() === VALID_PASSCODE.toLowerCase()) {
+      if ((input.value || '').trim().toLowerCase() === VALID_PASSCODE.toLowerCase()) {
         sessionStorage.setItem(AUTH_KEY, 'true');
         errorMsg.style.display = 'none';
         checkAuthStatus();
@@ -1446,53 +1239,186 @@
       showToast('🔒 講座專區已重新上鎖');
     }
 
-    // Category Filter
-    function filterTalks(category, btn) {
-      const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const cards = document.querySelectorAll('.talk-card');
-      cards.forEach(card => {
-        const cardCat = card.getAttribute('data-category');
-        if (category === 'all' || cardCat === category) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+    // ==================== FILTERS & VIEW ====================
+    function initControls() {
+      renderYearChips();
+      renderTagChips();
     }
 
-    // Clipboard Copy
+    function renderYearChips() {
+      const wrap = document.getElementById('yearChips');
+      wrap.innerHTML = ALL_YEARS.map(y => {
+        const count = y === 'all' ? TALKS.length : TALKS.filter(t => t.year === y).length;
+        const active = state.year === y ? ' active-year' : '';
+        const label = y === 'all' ? '全部年份' : y;
+        return `<button class="chip${active}" onclick="selectYear('${y}')">${label} <span class="cnt">(${count})</span></button>`;
+      }).join('');
+    }
+
+    function renderTagChips() {
+      const wrap = document.getElementById('tagChips');
+      wrap.innerHTML = ALL_TAGS.map(tag => {
+        const count = TALKS.filter(t => t.tags.includes(tag)).length;
+        const active = state.tags.has(tag) ? ' active-tag' : '';
+        return `<button class="chip${active}" onclick="toggleTag('${tag}')">${tag} <span class="cnt">(${count})</span></button>`;
+      }).join('');
+    }
+
+    function selectYear(y) {
+      state.year = (state.year === y && y !== 'all') ? 'all' : y;
+      renderYearChips();
+      renderTalks();
+    }
+
+    function toggleTag(tag) {
+      if (state.tags.has(tag)) state.tags.delete(tag);
+      else state.tags.add(tag);
+      renderTagChips();
+      renderTalks();
+    }
+
+    function resetFilters() {
+      state.year = 'all';
+      state.tags.clear();
+      document.getElementById('searchInput').value = '';
+      renderYearChips();
+      renderTagChips();
+      renderTalks();
+    }
+
+    function setViewMode(mode, save = true) {
+      state.view = mode;
+      if (save) localStorage.setItem(VIEW_KEY, mode);
+      const container = document.getElementById('talksContainer');
+      container.classList.toggle('grid-view', mode === 'grid');
+      container.classList.toggle('list-view', mode === 'list');
+      document.getElementById('btnGridView').classList.toggle('active', mode === 'grid');
+      document.getElementById('btnListView').classList.toggle('active', mode === 'list');
+      renderTalks();
+    }
+
+    function pillClass(theme, tag) {
+      if (state.tags.has(tag)) return 'topic-pill tag-selected';
+      if (theme === 'keynote') return 'topic-pill pill-green';
+      if (theme === 'devops') return 'topic-pill pill-orange';
+      return 'topic-pill pill-research';
+    }
+
+    function renderActionButton(a) {
+      if (a.copy) {
+        return `<button class="btn-action ${a.cls}" title="${a.title || ''}" onclick="copyToClipboard('${a.copy}', '${a.copyMsg || ''}')">${a.label ? `<span>${a.label}</span>` : ''}<span>${a.icon}</span></button>`;
+      }
+      return `<a href="${a.href}" target="_blank" rel="noopener" class="btn-action ${a.cls}" title="${a.title || a.label}">${a.label ? `<span>${a.label}</span>` : ''}<span>${a.icon}</span></a>`;
+    }
+
+    function renderTalks() {
+      const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+      const filtered = TALKS.filter(t => {
+        if (state.year !== 'all' && t.year !== state.year) return false;
+        for (const tag of state.tags) {
+          if (!t.tags.includes(tag)) return false;
+        }
+        if (q) {
+          const hay = `${t.title} ${t.subtitle} ${t.desc} ${t.venue} ${t.year} ${t.tags.join(' ')}`.toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('resultMeta').textContent = `顯示 ${filtered.length} / ${TALKS.length} 筆`;
+      const hasFilter = state.year !== 'all' || state.tags.size > 0 || q.length > 0;
+      document.getElementById('btnReset').classList.toggle('visible', hasFilter);
+
+      const container = document.getElementById('talksContainer');
+      const empty = document.getElementById('emptyState');
+
+      if (filtered.length === 0) {
+        container.innerHTML = '';
+        empty.classList.add('visible');
+        return;
+      }
+      empty.classList.remove('visible');
+
+      if (state.view === 'list') {
+        container.innerHTML = filtered.map(t => {
+          const tagsHtml = t.tags.map(tag =>
+            `<span class="${pillClass(t.theme, tag)}" onclick="toggleTag('${tag}')" title="點擊篩選「${tag}」">${tag}</span>`
+          ).join('');
+          const actionsHtml = t.actions.map(renderActionButton).join('');
+          return `
+            <article class="talk-item" data-theme="${t.theme}">
+              <div class="list-year-col">
+                <span class="list-year-badge">${t.year}</span>
+                <span class="list-type-label">${t.typeLabel}</span>
+              </div>
+              <div class="list-main-col">
+                <div class="list-title">${t.icon} ${t.title}</div>
+                <div class="list-sub" title="${t.subtitle}">${t.venue} · ${t.subtitle}</div>
+              </div>
+              <div class="topics-list">${tagsHtml}</div>
+              <div class="list-actions-col">${actionsHtml}</div>
+            </article>
+          `;
+        }).join('');
+      } else {
+        container.innerHTML = filtered.map(t => {
+          const bannerCls = t.theme === 'keynote' ? 'banner-keynote' : (t.theme === 'devops' ? 'banner-devops' : 'banner-research');
+          const tagsHtml = t.tags.map(tag =>
+            `<span class="${pillClass(t.theme, tag)}" onclick="toggleTag('${tag}')" title="點擊篩選「${tag}」">${tag}</span>`
+          ).join('');
+          const row1 = t.actions.filter(a => a.row === 1).map(renderActionButton).join('');
+          const row2 = t.actions.filter(a => a.row === 2).map(renderActionButton).join('');
+          return `
+            <article class="talk-item" data-theme="${t.theme}">
+              <div class="card-banner ${bannerCls}">
+                <div class="card-meta-row">
+                  <div class="meta-badges">
+                    <span class="badge-pill badge-year">${t.year}</span>
+                    <span class="badge-pill">${t.venue}</span>
+                  </div>
+                  <span class="card-icon">${t.icon}</span>
+                </div>
+                <h2 class="card-title">${t.title}</h2>
+                <div class="card-subtitle">${t.subtitle}</div>
+              </div>
+              <div class="card-body">
+                <p class="card-desc">${t.desc}</p>
+                <div class="topics-list">${tagsHtml}</div>
+                <div class="card-actions">
+                  <div class="btn-row">${row1}</div>
+                  ${row2 ? `<div class="btn-row">${row2}</div>` : ''}
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+    }
+
+    // ==================== UTILITIES ====================
     function copyToClipboard(text, msg) {
       navigator.clipboard.writeText(text).then(() => {
         showToast(msg || '已複製到剪貼簿！');
       }).catch(() => {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        document.body.appendChild(textarea);
-        textarea.select();
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
         document.execCommand('copy');
-        document.body.removeChild(textarea);
+        document.body.removeChild(ta);
         showToast(msg || '已複製到剪貼簿！');
       });
     }
 
-    // Toast Notification
     function showToast(msg) {
       const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toastMsg');
-      toastMsg.textContent = msg;
+      document.getElementById('toastMsg').textContent = msg;
       toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2600);
+      setTimeout(() => toast.classList.remove('show'), 2500);
     }
 
-    // Initialize UI on page load
     document.addEventListener('DOMContentLoaded', checkAuthStatus);
   </script>
-
 </body>
 
 </html>
