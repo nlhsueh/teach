@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 350" width="1120" height="350">
+  <defs>
+    <marker id="arr-n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-t" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arr-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif; }
+    .pt { font-size: 14.5px; font-weight: 800; fill: #ffffff; }
+    .ct { font-size: 13.5px; font-weight: 800; }
+    .cs { font-size: 11.8px; fill: #475569; }
+  </style>
+
+  <!-- Outer Harness Frame -->
+  <rect x="14" y="10" width="1092" height="330" rx="16" fill="#f8fafc" stroke="#1b365d" stroke-width="2.2" stroke-dasharray="8,4"/>
+  <rect x="330" y="0" width="460" height="30" rx="15" fill="#1b365d"/>
+  <text x="560" y="20" text-anchor="middle" font-size="13.5" font-weight="800" fill="#ffffff">HARNESS ENGINEERING（駕馭 AI 的系統化馬具框架）</text>
+
+  <!-- Center Core: LLM Engine -->
+  <rect x="415" y="118" width="290" height="106" rx="14" fill="#1b365d"/>
+  <text x="560" y="156" text-anchor="middle" font-size="17" font-weight="800" fill="#ffffff">LLM / AI Agent 核心引擎</text>
+  <text x="560" y="182" text-anchor="middle" font-size="12.5" fill="#cbd5e1">強大推理與生成能力（駿馬）</text>
+  <text x="560" y="204" text-anchor="middle" font-size="11.5" fill="#93c5fd">單靠 Prompt 難以穩定，須靠 Harness 駕馭</text>
+
+  <!-- Pillar 1: Top Left (Rules & Guardrails) -->
+  <rect x="36" y="48" width="320" height="114" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <text x="196" y="76" text-anchor="middle" class="ct" fill="#8c1d40">1. 規範與護欄（Rules &amp; Guardrails）</text>
+  <text x="54" y="102" class="cs">• 專案規範檔（AGENTS.md）固化品質底線</text>
+  <text x="54" y="122" class="cs">• 明確回饋邊界（如 SCT 禁止直接給解答）</text>
+  <text x="54" y="142" class="cs">• 格式與排版防破版硬性約束</text>
+
+  <!-- Pillar 2: Top Right (Context & Skills) -->
+  <rect x="764" y="48" width="320" height="114" rx="12" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <text x="924" y="76" text-anchor="middle" class="ct" fill="#1b365d">2. 上下文與技能（Context &amp; Skills）</text>
+  <text x="782" y="102" class="cs">• 結構化提示與角色分工（如 PLANT / AT-TPL）</text>
+  <text x="782" y="122" class="cs">• 外部領域知識庫（法規、ISO 標準、課程文件）</text>
+  <text x="782" y="142" class="cs">• 可重複調用之 Skills 與 SOP 工作流</text>
+
+  <!-- Pillar 3: Bottom Left (Tools & Verification Loop) -->
+  <rect x="36" y="196" width="320" height="118" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="196" y="224" text-anchor="middle" class="ct" fill="#0f766e">3. 工具與自動驗證（Verification Loop）</text>
+  <text x="54" y="250" class="cs">• 編譯器、單元測試、突變測試（OJ / CIB）</text>
+  <text x="54" y="270" class="cs">• 模型語法檢查（PlantUML）與視覺截圖複檢</text>
+  <text x="54" y="290" class="cs">• 用「可驗證回饋」取代人工盲目抽查</text>
+
+  <!-- Pillar 4: Bottom Right (Human-in-the-Loop) -->
+  <rect x="764" y="196" width="320" height="118" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="924" y="224" text-anchor="middle" class="ct" fill="#b45309">4. 人機協作檢查點（Human-in-the-Loop）</text>
+  <text x="782" y="250" class="cs">• 高風險權衡與僵局升級交由人類裁決</text>
+  <text x="782" y="270" class="cs">• 保留學習者主導權（Agency）與設計理由追溯</text>
+  <text x="782" y="290" class="cs">• 工程師／教師升級為「系統架構與監督者」</text>
+
+  <!-- Connectors to Center -->
+  <line x1="356" y1="114" x2="411" y2="148" stroke="#8c1d40" stroke-width="2.2" marker-end="url(#arr-a)"/>
+  <line x1="764" y1="114" x2="709" y2="148" stroke="#1b365d" stroke-width="2.2" marker-end="url(#arr-n)"/>
+  <line x1="356" y1="248" x2="411" y2="202" stroke="#0f766e" stroke-width="2.2" marker-end="url(#arr-t)"/>
+  <line x1="764" y1="248" x2="709" y2="202" stroke="#1b365d" stroke-width="2.2" marker-end="url(#arr-n)"/>
+
+  <!-- Bottom Result Pill -->
+  <rect x="386" y="254" width="348" height="58" rx="10" fill="#0f766e"/>
+  <text x="560" y="279" text-anchor="middle" font-size="13.5" font-weight="800" fill="#ffffff">產出：可控、可驗證、可重現的 AI 系統</text>
+  <text x="560" y="300" text-anchor="middle" font-size="11.5" fill="#ccfbf1">從「碰運氣寫 Prompt」進化為「系統化工程設計」</text>
+  <line x1="560" y1="224" x2="560" y2="250" stroke="#0f766e" stroke-width="2.4" marker-end="url(#arr-t)"/>
+</svg>

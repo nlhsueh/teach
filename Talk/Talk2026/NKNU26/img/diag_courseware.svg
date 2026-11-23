@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 430" width="540" height="430">
+  <defs>
+    <marker id="arr-n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-t" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arr-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif; }
+    .hdr { font-size: 13.5px; font-weight: 800; fill: #ffffff; }
+    .sub { font-size: 11.5px; fill: #475569; }
+    .tag { font-size: 11px; font-weight: 700; }
+  </style>
+
+  <!-- Layer 1: Unified Spec & Style -->
+  <rect x="18" y="10" width="504" height="72" rx="10" fill="#1b365d"/>
+  <text x="270" y="38" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">1. 一致性設計規格（AGENTS.md ＋ 共用主題庫）</text>
+  <text x="270" y="62" text-anchor="middle" font-size="12" fill="#cbd5e1">Markdown 單一源碼 · 防破版規則 · 統一視覺色票與版面元件</text>
+
+  <line x1="270" y1="82" x2="270" y2="108" stroke="#1b365d" stroke-width="2.4" marker-end="url(#arr-n)"/>
+
+  <!-- Layer 2: AI-Guided Rich Content Generation -->
+  <rect x="18" y="114" width="504" height="90" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="18" y="114" width="504" height="30" rx="10" fill="#0f766e"/>
+  <rect x="18" y="134" width="504" height="10" fill="#0f766e"/>
+  <text x="270" y="134" text-anchor="middle" class="hdr">2. AI 引導教材生成與多媒體豐富化</text>
+
+  <rect x="36" y="156" width="224" height="36" rx="7" fill="#ffffff" stroke="#99d6cd"/>
+  <text x="148" y="179" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0f766e">生動概念圖與漫畫插畫</text>
+
+  <rect x="280" y="156" width="224" height="36" rx="7" fill="#ffffff" stroke="#99d6cd"/>
+  <text x="392" y="179" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0f766e">互動式元件與懸停放大</text>
+
+  <line x1="270" y1="204" x2="270" y2="230" stroke="#0f766e" stroke-width="2.4" marker-end="url(#arr-t)"/>
+
+  <!-- Layer 3: Bilingual Sync -->
+  <rect x="18" y="236" width="504" height="72" rx="10" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <text x="270" y="264" text-anchor="middle" font-size="14" font-weight="800" fill="#1b365d">3. 中英文雙語同步教材（繁 ⇄ EN）</text>
+  <text x="270" y="289" text-anchor="middle" class="sub">雙版本同步維護 · 保留頁碼 Hash 實現「同頁一鍵切換」</text>
+
+  <line x1="270" y1="308" x2="270" y2="334" stroke="#8c1d40" stroke-width="2.4" marker-end="url(#arr-a)"/>
+
+  <!-- Layer 4: Assessment & Ecosystem Integration -->
+  <rect x="18" y="340" width="504" height="80" rx="10" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="18" y="340" width="504" height="28" rx="10" fill="#8c1d40"/>
+  <rect x="18" y="358" width="504" height="10" fill="#8c1d40"/>
+  <text x="270" y="359" text-anchor="middle" class="hdr">4. 多元測驗與教學平台生態整合</text>
+
+  <rect x="32" y="378" width="144" height="32" rx="6" fill="#ffffff" stroke="#e2a8b8"/>
+  <text x="104" y="399" text-anchor="middle" class="tag" fill="#8c1d40">即時自我測驗</text>
+
+  <rect x="198" y="378" width="144" height="32" rx="6" fill="#ffffff" stroke="#e2a8b8"/>
+  <text x="270" y="399" text-anchor="middle" class="tag" fill="#8c1d40">CCQ / 遊戲化</text>
+
+  <rect x="364" y="378" width="144" height="32" rx="6" fill="#ffffff" stroke="#e2a8b8"/>
+  <text x="436" y="399" text-anchor="middle" class="tag" fill="#8c1d40">iLearn 整合</text>
+</svg>
