@@ -4,7 +4,7 @@ theme: gaia
 size: 16:9
 paginate: true
 html: true
-header: '<div class="hdr-wrap"><span class="hdr-title">AI and Education · 國立高雄師範大學專題演講（2026/11/24）</span><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：計程車司機的 AI 震撼</a><a href="#3">現場互動：你用 AI 做什麼？</a><a href="#4">演講主軸目錄</a><a href="#5">NickPocket 個人百寶箱</a><a href="#6">Courseware Design 教材工程</a><a href="#7">Harness Engineering</a><a href="#8">結語與資源入口</a></div></div></div>'
+header: '<div class="hdr-wrap"><span class="hdr-title">AI and Education · 國立高雄師範大學專題演講（2026/11/24）</span><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：計程車司機的 AI 震撼</a><a href="#3">現場互動：你用 AI 做什麼？</a><a href="#4">演講主軸目錄</a><a href="#5">五篇研究脈絡總覽</a><a href="#6">NickPocket 個人百寶箱</a><a href="#7">Courseware Design 教材工程</a><a href="#8">Vibe Coding 實戰循環</a><a href="#9">Harness Engineering</a><a href="#10">結語與資源入口</a></div></div></div>'
 footer: '薛念林教授（Nien-Lin Hsueh）· 逢甲大學資訊工程學系 · 高師大專題演講 2026/11/24'
 ---
 
@@ -429,6 +429,43 @@ section.closing p { color: #e2e8f0; }
   color: var(--accent);
 }
 
+/* Minimalist Centered Question Slide (Slide 3) */
+section.question-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 64px 72px 52px 72px;
+}
+
+section.question-slide .big-q {
+  font-size: 2.35em;
+  line-height: 1.35;
+  margin: 0;
+}
+
+section.question-slide ul {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0 0;
+}
+
+section.question-slide li {
+  margin: 0;
+  padding: 0;
+}
+
+section.question-slide img.qr-clean {
+  width: 240px;
+  height: 240px;
+  display: block;
+  margin: 0 auto;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
 /* NickPocket 6-module grid */
 .np-grid {
   display: grid;
@@ -577,44 +614,17 @@ AI 用得好真的不是要懂什麼艱深的工具或專有名詞，而是**能
 
 ---
 
-## 現場互動大問號：你用 AI 做過什麼事？
-
-<div class="split64">
-<div class="left">
+<!-- _class: question-slide -->
 
 <div class="big-q">
-❓ 大家用 AI 做了什麼事？<br>
+大家用 AI 做了什麼事？<br>
 <span>（寫作業除外！）</span>
 </div>
 
-<div class="card small-text" style="margin-bottom: 12px;">
-
-### 💭 想想看你的真實日常應用
-- **生活與工作自動化**：記帳、旅遊規劃、行程整理、信件草擬？
-- **個人知識與學習**：英語閱讀、Podcast 摘要、筆記串接（NotebookLM / Obsidian）？
-- **打造專屬小工具**：Vibe Coding 寫一個只給自己用的 App 或腳本？
-
-</div>
-
-<div class="callout" style="margin-top: 10px; max-width: 100%;">
-<strong>問卷連結：</strong> <a href="https://forms.gle/5wdGkgk71ZF6qZkY8" target="_blank" rel="noopener">https://forms.gle/5wdGkgk71ZF6qZkY8</a><br>
-掃描右側 QR Code 即時填寫，看看現場師生最有趣的 AI 實戰點子！
-</div>
-
-</div>
-<div class="right">
-
-<div class="qr-card">
-<img src="./img/qr_survey.png" alt="現場問卷 QR Code">
-<div style="font-size: 0.88em; font-weight: 800; color: #1b365d;">📱 掃描填寫現場互動問卷</div>
-<div style="font-size: 0.72em; color: #64748b; margin-top: 4px;">forms.gle/5wdGkgk71ZF6qZkY8</div>
-</div>
-
-</div>
-</div>
+* <a href="https://forms.gle/5wdGkgk71ZF6qZkY8" target="_blank" rel="noopener" title="開啟現場互動問卷"><img src="./img/qr_survey.png" alt="現場問卷 QR Code" class="qr-clean"></a>
 
 <!--
-本頁作為演講破題後的即時互動暖身活動（Google Forms 連結：https://forms.gle/5wdGkgk71ZF6qZkY8）。刻意加上「作業除外」的限制條件，目的是區分「被動應付課業（把 AI 當代寫工具）」與「主動解決真實問題（把 AI 當生產力槓桿）」兩種截然不同的使用心態。收集到的現場回覆可作為後續切入「AI ➔ Good or Bad?」、NickPocket 個人百寶箱以及「AI Tax（評估 AI 依賴度）」等議題的真實課堂素材。
+本頁刻意採用極簡置中構圖，先拋出核心大問題「大家用 AI 做了什麼事？（寫作業除外！）」，給予現場聽眾思考空間；按下一步後再無邊框淡入 Google Forms QR Code（https://forms.gle/5wdGkgk71ZF6qZkY8）邀請掃碼作答。加上「寫作業除外」的限制條件，目的是區分「被動應付課業（把 AI 當代寫工具）」與「主動解決真實問題（把 AI 當生產力槓桿）」兩種截然不同的使用心態。
 -->
 
 ---
@@ -626,7 +636,7 @@ AI 用得好真的不是要懂什麼艱深的工具或專有名詞，而是**能
 <div class="hub-card teal">
 <div class="hub-title">⚖️ 1. AI ➔ Good or Bad?</div>
 <div class="hub-links">
-<a class="hub-link" href="#5"><span>🧰 NickPocket：個人專屬 AI 百寶箱實作</span><span class="hub-badge">本簡報 #5</span></a>
+<a class="hub-link" href="#6"><span>🧰 NickPocket：個人專屬 AI 百寶箱實作</span><span class="hub-badge">本簡報 #6</span></a>
 <a class="hub-link" href="https://nick-pocket.web.app/" target="_blank" rel="noopener"><span>🌐 NickPocket 線上系統直接展示</span><span class="hub-badge">Web App ↗</span></a>
 </div>
 </div>
@@ -645,15 +655,17 @@ AI 用得好真的不是要懂什麼艱深的工具或專有名詞，而是**能
 <div class="hub-links">
 <a class="hub-link" href="../../MyResearch/24UXtesting/UXtesting_slide_zh.html" target="_blank" rel="noopener"><span>🎨 User Experience and AI（LLM UX Testing）</span><span class="hub-badge">2024 簡報 ↗</span></a>
 <a class="hub-link" href="../../MyResearch/26Plant/Plant_slide_zh.html" target="_blank" rel="noopener"><span>🤖 Requirement Engineering &amp; Multi-Agents（PLANT）</span><span class="hub-badge">2026 簡報 ↗</span></a>
+<a class="hub-link" href="#5"><span>🗺️ 五篇核心論文研究脈絡總覽圖</span><span class="hub-badge">本簡報 #5</span></a>
 </div>
 </div>
 
 <div class="hub-card amber">
-<div class="hub-title">🏫 4. AI ➔ Teaching（教學與教材工程）</div>
+<div class="hub-title">🏫 4. AI ➔ Teaching（教學與開發實踐）</div>
 <div class="hub-links">
 <a class="hub-link" href="https://nlhsueh.github.io/nickedupocket/" target="_blank" rel="noopener"><span>🎯 NickPocketEdu 互動隨堂題庫平台</span><span class="hub-badge">Web App ↗</span></a>
-<a class="hub-link" href="#6"><span>📚 Courseware Design（AI 教材工程）</span><span class="hub-badge">本簡報 #6</span></a>
-<a class="hub-link" href="#7"><span>🐴 Harness Engineering（駕馭 AI 框架）</span><span class="hub-badge">本簡報 #7</span></a>
+<a class="hub-link" href="#7"><span>📚 Courseware Design（AI 教材工程）</span><span class="hub-badge">本簡報 #7</span></a>
+<a class="hub-link" href="#8"><span>☕ Vibe Coding 實戰循環（喝咖啡寫程式）</span><span class="hub-badge">本簡報 #8</span></a>
+<a class="hub-link" href="#9"><span>🐴 Harness Engineering（駕馭 AI 框架）</span><span class="hub-badge">本簡報 #9</span></a>
 </div>
 </div>
 
@@ -664,52 +676,37 @@ AI 用得好真的不是要懂什麼艱深的工具或專有名詞，而是**能
 1. AI ➔ Good or Bad?：透過自建個人工具 NickPocket 展示 AI 賦能的正向價值，同時反思依賴風險。
 2. AI ➔ Programming：串聯逢甲團隊四年演進脈絡——從強調學生自寫測試的 Pytutor（Electronics 2023），進化到三元角色分工的 AI 助教模式 AT-TPL（JISE 2026），再到以「AI 稅率（0%–20%）」與「LADI 依賴指標」兼顧學習鷹架與評量鑑別度的 Smart Coding Tutor（SCT）。
 3. AI ➔ Software Engineering：展示 LLM 如何深入傳統軟體工程上游與下游——包括結合 Rapi 錄製與 Nielsen 啟發式準則的多模態 UX 自動檢測（Electronics 2024），以及六角色多代理人需求工程平台 PLANT（JISE 2026）。
-4. AI ➔ Teaching：聚焦第一線教師如何將 AI 系統化導入教學，涵蓋 NickPocketEdu 互動題庫、雙語互動教材工程（Courseware Design）與 Harness Engineering 設計思維。
+4. AI ➔ Teaching：聚焦第一線教師如何將 AI 系統化導入教學，涵蓋 NickPocketEdu 互動題庫、雙語互動教材工程（Courseware Design）、Vibe Coding 實戰循環與 Harness Engineering 設計思維。
+-->
+
+---
+
+## 研究脈絡總覽：五篇核心論文的動機與結論
+
+<div class="fig-box" style="padding: 8px 10px; margin-top: 4px;">
+<img src="./img/diag_research_roadmap.svg" alt="五篇核心論文研究脈絡與演進示意圖" style="max-height: 465px;">
+</div>
+
+<!--
+本頁將今日演講所串聯之五篇逢甲研究團隊核心論文濃縮為雙主軸演進圖，方便聽眾先掌握全局再點擊進入個別論文細節：
+主軸一（AI ➔ Programming，由「測」到「教」再到「控」）：（1）Pytutor（Electronics 2023）針對傳統 Online Judge 僅重視輸出對錯、忽略測試能力的痛點，引導學生於提交前自寫測試案例（DTC），實證顯著提升平時成效；（2）AT-TPL（JISE 2026）針對單一 AI 助教角色混雜且易直接給答案的問題，提出 Guidey（引導）、Debuggy（除錯）、Opti（優化）三元分工模式，實證顯示 67.4% 學生併用多助教並達 73.9% 通過率；（3）SCT（2026）直面 AI 造成作業滿分膨脹與評量失真，設計五級分層輔助、0%–20% AI 稅與 LADI 依賴指標，將滿分集中率由 52.7% 有效降至 13.4%。
+主軸二（AI ➔ Software Engineering，上游需求 × 下游體驗）：（4）PLANT（JISE 2026）解決單一 LLM 易漏隱性需求與衝突調解不足之限制，以六角色多代理人混合調解與外部知識庫達成隱性需求 2.5–3.2× 與衝突召回 96–100%；（5）LLM UX Testing（Electronics 2024）解決人工易用性測試高成本與主觀問題，結合 Rapi 錄製與多模態 GPT-4 啟發式檢測，F1 達 0.66 大幅超越人類受試者（0.16）。五篇研究最終共同匯聚於「角色分工 × 分層邊界 × 自動驗證」之 AI 駕馭核心理念。
 -->
 
 ---
 
 ## AI ➔ Good or Bad? 實作案例：NickPocket 個人百寶箱
 
-以 AI 協作打造的**個人專屬 PWA 行動工具箱**，將日常思考、財務、英語學習與研究管理整合於同一介面，回應「用 AI 解決真實生活問題」的理念：
+以 AI 協作打造的**個人專屬 PWA 行動工具箱**，以 `NickPocket` 為核心向外延伸 **8 大生活與研究模組**（點擊下方心智圖直接開啟線上系統 ↗）：
 
-<div class="np-grid">
-<div class="np-item">
-<div class="np-name">📝 Musings（隨筆與日記）</div>
-即時記錄生活靈感與反思，支援分類檢索，甚至可一鍵打包匯出成 <strong>ePub 電子書</strong>收藏。
-</div>
-<div class="np-item navy">
-<div class="np-name">📈 Investment（投資配置）</div>
-整合銀行現金與投資部位，追蹤保守／穩健／積極配置比例、定期定額（DCA）與 ROI 損益。
-</div>
-<div class="np-item accent">
-<div class="np-name">📖 Nick English（英語學習）</div>
-一鍵抓取今日網路文章、建立個人單字本（文章／日記來源），並內建互動式 <strong>Quiz Game</strong> 複習。
-</div>
-<div class="np-item navy">
-<div class="np-name">🔬 Research（研究脈絡）</div>
-集中收納學術靈感、文獻摘錄與研究構想，隨時跨裝置補充與查閱。
-</div>
-<div class="np-item accent">
-<div class="np-name">📦 Inventory（物品盤點）</div>
-記錄個人設備與生活物品清單，避免重複購買並掌握資產狀態。
-</div>
-<div class="np-item">
-<div class="np-name">💰 Ledger（日常記帳）</div>
-輕量化行動記帳模組，快速記錄日常收支並掌握財務流向。
-</div>
-</div>
-
-<div style="display: flex; align-items: center; justify-content: space-between; margin-top: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 18px;">
-<div style="font-size: 0.84em; color: #334155;">
-<strong>核心啟示：</strong> 過去需數月團隊開發的個人整合軟體，現在透過 AI 協作即可快速實現為跨平台 PWA（支援 Google 登入與雲端同步）。<br>
-<a href="https://nick-pocket.web.app/" target="_blank" rel="noopener" class="cta-btn" style="margin-top: 8px;">🌐 開啟 NickPocket 線上系統（nick-pocket.web.app）↗</a>
-</div>
-<img src="./img/qr_nickpocket.png" alt="NickPocket QR Code" style="width: 86px; height: 86px; border-radius: 6px; border: 1px solid #cbd5e1;">
+<div class="fig-box" style="padding: 8px 12px; margin-top: 8px;">
+<a href="https://nick-pocket.web.app/" target="_blank" rel="noopener" title="點擊開啟 NickPocket 線上系統（nick-pocket.web.app）" style="display: block;">
+<img src="./img/diag_nickpocket_mindmap.svg" alt="NickPocket 八大功能心智圖（點擊開啟線上系統）" style="max-height: 450px; cursor: pointer;">
+</a>
 </div>
 
 <!--
-NickPocket（https://nick-pocket.web.app/）是講者透過 AI 輔助開發建置之個人行動工具箱（Progressive Web App, PWA），整合 Google 身分驗證與雲端即時資料庫，包含六大日常功能模組：Musings（生活隨筆並支援 ePub 電子書匯出）、Investment（資產配置與定期定額 ROI 追蹤）、Nick English（每日文章抓取、單字本與測驗遊戲）、Research（研究構想筆記）、Inventory（個人物品盤點）與 Ledger（日常記帳）。在「AI ➔ Good or Bad?」的脈絡下，NickPocket 作為正向案例展示「個人化微軟體（Personal Software）」時代的來臨——軟體不再只服務大眾市場，個人與教師也能低成本打造高度契合自身工作流的專屬系統。
+NickPocket（https://nick-pocket.web.app/）是講者透過 AI 輔助開發建置之個人行動工具箱（Progressive Web App, PWA），整合 Google 身分驗證與雲端即時資料庫，以中心向外延伸八大日常與研究模組：左側涵蓋 Musings（生活隨筆並支援 ePub 電子書匯出）、Bullet Journal（子彈筆記與每日任務目標排程）、Body Rhythm（身心節律與作息健康追蹤）、Nick English（每日文章抓取、單字本與 Quiz Game）；右側涵蓋 Research（研究脈絡與文獻筆記）、Investment（資產配置與定期定額 ROI 追蹤）、Ledger（輕量日常記帳）與 Inventory（個人物品盤點）。在「AI ➔ Good or Bad?」的脈絡下，NickPocket 作為正向案例展示「個人化微軟體（Personal Software）」時代的來臨，個人與教師皆能低成本打造高度契合自身工作流的專屬系統。
 -->
 
 ---
@@ -723,7 +720,7 @@ NickPocket（https://nick-pocket.web.app/）是講者透過 AI 輔助開發建�
 - **一致性的風格**：跨課程（SE、UX、SQA、Python、Talk）共用主題與排版規格，消除版面雜亂。
 - **引導教材生成，豐富內容**：
   - 結合 AI 產出**生動的圖片與概念示意圖**，將抽象理論視覺化。
-  - 打造**互動式教材**（圖片懸停邊界放大、章節下拉導覽、點擊回饋）。
+  - 打造**互動式教材**（實例：<a href="https://nlhsueh.github.io/teach/SE/Slide/html/slide06e_ux.html?transition=fade#60" target="_blank" rel="noopener">Nielsen 啟發式複習 ↗</a>、<a href="https://nlhsueh.github.io/teach/SE/Slide/html/slide07e_test.html?transition=fade#42" target="_blank" rel="noopener">BVA 邊界值教學 ↗</a>）。
 - **中英文雙語同步**：
   - 同步維護**中英文雙語教材**，支援 **`🌐 繁` ⇄ `🌐 EN` 逐頁同頁切換**。
 - **多元測驗與平台整合**：
@@ -746,6 +743,40 @@ NickPocket（https://nick-pocket.web.app/）是講者透過 AI 輔助開發建�
 
 <!--
 Courseware Design（教材工程）將軟體工程的「單一源碼（Single Source of Truth）」、「版本控制（Git + GitHub Pages）」與「自動化建置管線」導入大學教學教材製作（門戶網址：https://nlhsueh.github.io/teach/）。四大核心設計分別為：（1）以 AGENTS.md 與跨課程 CSS 主題庫確保所有課程簡報與講義具一致視覺規範；（2）透過 AI 輔助生成概念向量圖（SVG）、情境漫畫與互動增強腳本（如不超出投影片邊界的動態懸停放大）；（3）維護完全對齊的中英文雙語 Markdown 簡報，並透過 URL Hash 保留機制達成同頁一鍵語系切換（🌐 繁 ⇄ 🌐 EN）；（4）透過自動化腳本（如 sync_iActivity.py）解析簡報與講義中的隨堂概念測驗（CCQ）與遊戲化活動，自動產出 QR Code 並同步至 NickEduPocket 與學校 iLearn 系統，形成教學與評量閉環。
+-->
+
+---
+
+## AI ➔ Workflow：Vibe Coding 實戰循環
+
+<div class="fig-box" style="padding: 4px 10px; margin-top: 2px; border: 1px solid #e2e8f0;">
+<img src="./img/vibe_coding_loop.jpg" alt="Vibe Coding 五步驟循環卡通示意圖" style="max-height: 365px;">
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 10px; font-size: 0.72em; text-align: center;">
+<div style="background: #f8fafc; border: 1px solid #cbd5e1; border-top: 3px solid #1b365d; border-radius: 8px; padding: 6px 6px;">
+<strong style="color: #1b365d;">① 準備環境</strong><br>工作區、工具與規範就定位
+</div>
+<div style="background: #fffbeb; border: 1px solid #fde68a; border-top: 3px solid #d97706; border-radius: 8px; padding: 6px 6px;">
+<strong style="color: #b45309;">② 下達指令</strong><br>描述目標、規格與驗收條件
+</div>
+<div style="background: #f0fdfa; border: 1px solid #99f6e4; border-top: 3px solid #0f766e; border-radius: 8px; padding: 6px 6px;">
+<strong style="color: #0f766e;">③ Agents 開工</strong><br>多代理人併發實作與測試
+</div>
+<div style="background: #fdf2f5; border: 1px solid #fbcfe8; border-top: 3px solid #8c1d40; border-radius: 8px; padding: 6px 6px;">
+<strong style="color: #8c1d40;">④ 喝咖啡滑手機</strong><br>釋放雙手，等待進度完成
+</div>
+<div style="background: #eff6ff; border: 1px solid #bfdbfe; border-top: 3px solid #2563eb; border-radius: 8px; padding: 6px 6px;">
+<strong style="color: #1d4ed8;">⑤ 驗收再微調 ↻</strong><br>檢視成果並回饋進入下一輪
+</div>
+</div>
+
+<div class="callout" style="margin-top: 10px; padding: 8px 16px; font-size: 0.82em;">
+<strong>關鍵提問：</strong> 「喝咖啡滑手機」之所以能安心放手、不必擔心 AI 亂寫或跑版，全靠第一步與第五步背後的工程基礎 ➔ <strong>Harness Engineering</strong>！
+</div>
+
+<!--
+本頁以輕鬆的卡通循環描繪 AI 時代的「Vibe Coding」實作工作流：開發者／教師的角色從逐行手寫程式碼，轉變為高層次的「任務規劃與驗收循環」：（1）準備好開發環境、檔案結構與專案規則；（2）以自然語言清楚下達需求指令與驗收標準；（3）交由 AI Agents 自主併發撰寫程式、產生圖表與執行測試；（4）人類得以暫時脫離繁瑣細節（喝杯咖啡、滑手機處理其他事務）；（5）回來檢視產出成果、提出修正回饋，再次回到步驟（2）形成快速迭代閉環。本頁在結構上作為承先啟後的橋樑，點出一個核心工程問題：若缺乏明確規則、自動驗證與邊界控管，第（4）步放手只會換來失控的程式碼；正因如此，才引出下一頁的「Harness Engineering（駕馭 AI 的系統化馬具框架）」。
 -->
 
 ---

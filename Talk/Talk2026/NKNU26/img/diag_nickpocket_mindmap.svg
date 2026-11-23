@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 410" width="1120" height="410">
+  <defs>
+    <linearGradient id="hubGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#102442"/>
+      <stop offset="60%" stop-color="#1b365d"/>
+      <stop offset="100%" stop-color="#8c1d40"/>
+    </linearGradient>
+    <filter id="softShadow" x="-8%" y="-8%" width="116%" height="120%">
+      <feDropShadow dx="0" dy="2.5" stdDeviation="3.5" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif; }
+    .nt { font-size: 14.5px; font-weight: 800; }
+    .ns { font-size: 11.8px; fill: #475569; }
+    .num { font-size: 11.5px; font-weight: 800; fill: #ffffff; }
+  </style>
+
+  <!-- ==================== ORGANIC MIND-MAP BRANCHES (4 LEFT, 4 RIGHT) ==================== -->
+  <!-- Left 1: Musings -->
+  <path d="M 472 174 C 420 174, 415 54, 360 54" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="360" cy="54" r="4.2" fill="#0f766e"/>
+
+  <!-- Left 2: Bullet Journal -->
+  <path d="M 462 195 C 415 195, 410 154, 360 154" fill="none" stroke="#1b365d" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="360" cy="154" r="4.2" fill="#1b365d"/>
+
+  <!-- Left 3: Body Rhythm -->
+  <path d="M 462 215 C 415 215, 410 256, 360 256" fill="none" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="360" cy="256" r="4.2" fill="#d97706"/>
+
+  <!-- Left 4: Nick English -->
+  <path d="M 472 236 C 420 236, 415 356, 360 356" fill="none" stroke="#8c1d40" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="360" cy="356" r="4.2" fill="#8c1d40"/>
+
+  <!-- Right 1: Research -->
+  <path d="M 648 174 C 700 174, 705 54, 760 54" fill="none" stroke="#1b365d" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="760" cy="54" r="4.2" fill="#1b365d"/>
+
+  <!-- Right 2: Investment -->
+  <path d="M 658 195 C 705 195, 710 154, 760 154" fill="none" stroke="#8c1d40" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="760" cy="154" r="4.2" fill="#8c1d40"/>
+
+  <!-- Right 3: Ledger -->
+  <path d="M 658 215 C 705 215, 710 256, 760 256" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="760" cy="256" r="4.2" fill="#0f766e"/>
+
+  <!-- Right 4: Inventory -->
+  <path d="M 648 236 C 700 236, 705 356, 760 356" fill="none" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="760" cy="356" r="4.2" fill="#d97706"/>
+
+  <!-- ==================== CENTER HUB NODE ==================== -->
+  <circle cx="560" cy="205" r="106" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="6,5"/>
+  <circle cx="560" cy="205" r="92" fill="url(#hubGrad)" filter="url(#softShadow)"/>
+  <text x="560" y="190" text-anchor="middle" font-size="22" font-weight="900" fill="#ffffff">NickPocket</text>
+  <line x1="504" y1="203" x2="616" y2="203" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+  <text x="560" y="224" text-anchor="middle" font-size="13" font-weight="700" fill="#f8fafc">個人專屬 PWA 百寶箱</text>
+  <text x="560" y="244" text-anchor="middle" font-size="11" fill="#cbd5e1">8 大生活與研究模組</text>
+
+  <!-- ==================== LEFT 4 NODES ==================== -->
+  <!-- 01 Musings -->
+  <g filter="url(#softShadow)">
+    <rect x="18" y="14" width="336" height="80" rx="11" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.9"/>
+    <rect x="344" y="14" width="10" height="80" rx="5" fill="#0f766e"/>
+    <circle cx="44" cy="40" r="13" fill="#0f766e"/>
+    <text x="44" y="44" text-anchor="middle" class="num">01</text>
+    <text x="66" y="45" class="nt" fill="#0f766e">Musings（隨筆與日記）</text>
+    <text x="32" y="72" class="ns">記錄生活靈感與反思 · 一鍵匯出 ePub 電子書</text>
+  </g>
+
+  <!-- 02 Bullet Journal -->
+  <g filter="url(#softShadow)">
+    <rect x="18" y="114" width="336" height="80" rx="11" fill="#eff6ff" stroke="#1b365d" stroke-width="1.9"/>
+    <rect x="344" y="114" width="10" height="80" rx="5" fill="#1b365d"/>
+    <circle cx="44" cy="140" r="13" fill="#1b365d"/>
+    <text x="44" y="144" text-anchor="middle" class="num">02</text>
+    <text x="66" y="145" class="nt" fill="#1b365d">Bullet Journal（子彈筆記）</text>
+    <text x="32" y="172" class="ns">每日待辦、任務追蹤、事件記錄與目標排程</text>
+  </g>
+
+  <!-- 03 Body Rhythm -->
+  <g filter="url(#softShadow)">
+    <rect x="18" y="216" width="336" height="80" rx="11" fill="#fffbeb" stroke="#d97706" stroke-width="1.9"/>
+    <rect x="344" y="216" width="10" height="80" rx="5" fill="#d97706"/>
+    <circle cx="44" cy="242" r="13" fill="#d97706"/>
+    <text x="44" y="246" text-anchor="middle" class="num">03</text>
+    <text x="66" y="247" class="nt" fill="#b45309">Body Rhythm（身心節律）</text>
+    <text x="32" y="274" class="ns">記錄作息、體能狀態與日常健康節奏曲線</text>
+  </g>
+
+  <!-- 04 Nick English -->
+  <g filter="url(#softShadow)">
+    <rect x="18" y="316" width="336" height="80" rx="11" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.9"/>
+    <rect x="344" y="316" width="10" height="80" rx="5" fill="#8c1d40"/>
+    <circle cx="44" cy="342" r="13" fill="#8c1d40"/>
+    <text x="44" y="346" text-anchor="middle" class="num">04</text>
+    <text x="66" y="347" class="nt" fill="#8c1d40">Nick English（英語學習）</text>
+    <text x="32" y="374" class="ns">每日文章抓取、個人單字本與 Quiz Game</text>
+  </g>
+
+  <!-- ==================== RIGHT 4 NODES ==================== -->
+  <!-- 05 Research -->
+  <g filter="url(#softShadow)">
+    <rect x="766" y="14" width="336" height="80" rx="11" fill="#eff6ff" stroke="#1b365d" stroke-width="1.9"/>
+    <rect x="766" y="14" width="10" height="80" rx="5" fill="#1b365d"/>
+    <circle cx="800" cy="40" r="13" fill="#1b365d"/>
+    <text x="800" y="44" text-anchor="middle" class="num">05</text>
+    <text x="822" y="45" class="nt" fill="#1b365d">Research（研究脈絡）</text>
+    <text x="788" y="72" class="ns">收納學術靈感、文獻摘錄與跨裝置研究構想</text>
+  </g>
+
+  <!-- 06 Investment -->
+  <g filter="url(#softShadow)">
+    <rect x="766" y="114" width="336" height="80" rx="11" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.9"/>
+    <rect x="766" y="114" width="10" height="80" rx="5" fill="#8c1d40"/>
+    <circle cx="800" cy="140" r="13" fill="#8c1d40"/>
+    <text x="800" y="144" text-anchor="middle" class="num">06</text>
+    <text x="822" y="145" class="nt" fill="#8c1d40">Investment（投資配置）</text>
+    <text x="788" y="172" class="ns">整合銀行現金與投資 · 定期定額（DCA）與 ROI</text>
+  </g>
+
+  <!-- 07 Ledger -->
+  <g filter="url(#softShadow)">
+    <rect x="766" y="216" width="336" height="80" rx="11" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.9"/>
+    <rect x="766" y="216" width="10" height="80" rx="5" fill="#0f766e"/>
+    <circle cx="800" cy="242" r="13" fill="#0f766e"/>
+    <text x="800" y="246" text-anchor="middle" class="num">07</text>
+    <text x="822" y="247" class="nt" fill="#0f766e">Ledger（日常記帳）</text>
+    <text x="788" y="274" class="ns">輕量化行動記帳模組，快速掌握收支流向</text>
+  </g>
+
+  <!-- 08 Inventory -->
+  <g filter="url(#softShadow)">
+    <rect x="766" y="316" width="336" height="80" rx="11" fill="#fffbeb" stroke="#d97706" stroke-width="1.9"/>
+    <rect x="766" y="316" width="10" height="80" rx="5" fill="#d97706"/>
+    <circle cx="800" cy="342" r="13" fill="#d97706"/>
+    <text x="800" y="346" text-anchor="middle" class="num">08</text>
+    <text x="822" y="347" class="nt" fill="#b45309">Inventory（物品盤點）</text>
+    <text x="788" y="374" class="ns">記錄個人設備與生活物品清單，掌握資產狀態</text>
+  </g>
+</svg>

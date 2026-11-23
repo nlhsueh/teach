@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 450" width="1120" height="450">
+  <defs>
+    <marker id="arr-n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Noto Sans TC', 'PingFang TC', -apple-system, sans-serif; }
+    .track { font-size: 13.5px; font-weight: 800; fill: #ffffff; }
+    .ptitle { font-size: 14.5px; font-weight: 800; }
+    .yr { font-size: 11px; font-weight: 800; fill: #ffffff; }
+    .lbl { font-size: 11.5px; font-weight: 800; }
+    .txt { font-size: 11.8px; fill: #334155; }
+  </style>
+
+  <!-- ==================== TRACK A: AI -> PROGRAMMING (3 PAPERS) ==================== -->
+  <rect x="12" y="8" width="1096" height="196" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.6"/>
+  <rect x="24" y="18" width="388" height="28" rx="14" fill="#1b365d"/>
+  <text x="218" y="37" text-anchor="middle" class="track">主軸一 · AI ➔ Programming（從「測」到「教」再到「控」）</text>
+
+  <!-- Paper 1: Pytutor (2023) -->
+  <rect x="26" y="58" width="322" height="132" rx="11" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="26" y="58" width="322" height="32" rx="11" fill="#eff6ff"/>
+  <rect x="26" y="78" width="322" height="12" fill="#eff6ff"/>
+  <text x="40" y="79" class="ptitle" fill="#1b365d">1. Pytutor（測試能力）</text>
+  <rect x="288" y="64" width="48" height="20" rx="10" fill="#1b365d"/>
+  <text x="312" y="78" text-anchor="middle" class="yr">2023</text>
+  <text x="40" y="114" class="lbl" fill="#64748b">動機</text>
+  <text x="74" y="114" class="txt">OJ 只測對錯，忽略學生撰寫測試能力</text>
+  <line x1="40" y1="128" x2="334" y2="128" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="40" y="150" class="lbl" fill="#0f766e">結論</text>
+  <text x="74" y="150" class="txt">提交前自寫測試（DTC）顯著提升</text>
+  <text x="74" y="170" class="txt">平時表現，凸顯測試教學價值</text>
+
+  <line x1="348" y1="124" x2="392" y2="124" stroke="#1b365d" stroke-width="2.6" marker-end="url(#arr-n)"/>
+
+  <!-- Paper 2: AT-TPL (2026) -->
+  <rect x="399" y="58" width="322" height="132" rx="11" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="399" y="58" width="322" height="32" rx="11" fill="#eff6ff"/>
+  <rect x="399" y="78" width="322" height="12" fill="#eff6ff"/>
+  <text x="413" y="79" class="ptitle" fill="#1b365d">2. AT-TPL（AI 助教三元模式）</text>
+  <rect x="661" y="64" width="48" height="20" rx="10" fill="#1b365d"/>
+  <text x="685" y="78" text-anchor="middle" class="yr">2026</text>
+  <text x="413" y="114" class="lbl" fill="#64748b">動機</text>
+  <text x="447" y="114" class="txt">單一 AI 角色混雜，易流於直接給解</text>
+  <line x1="413" y1="128" x2="707" y2="128" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="413" y="150" class="lbl" fill="#0f766e">結論</text>
+  <text x="447" y="150" class="txt">引導／除錯／優化分工，67.4% 併用</text>
+  <text x="447" y="170" class="txt">多助教，73.9% 成功通過評測</text>
+
+  <line x1="721" y1="124" x2="765" y2="124" stroke="#1b365d" stroke-width="2.6" marker-end="url(#arr-n)"/>
+
+  <!-- Paper 3: SCT (2026) -->
+  <rect x="772" y="58" width="322" height="132" rx="11" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="772" y="58" width="322" height="32" rx="11" fill="#eff6ff"/>
+  <rect x="772" y="78" width="322" height="12" fill="#eff6ff"/>
+  <text x="786" y="79" class="ptitle" fill="#1b365d">3. SCT（AI 稅與 LADI 依賴指標）</text>
+  <rect x="1034" y="64" width="48" height="20" rx="10" fill="#1b365d"/>
+  <text x="1058" y="78" text-anchor="middle" class="yr">2026</text>
+  <text x="786" y="114" class="lbl" fill="#64748b">動機</text>
+  <text x="820" y="114" class="txt">AI 輔助造成作業滿分膨脹、失鑑別度</text>
+  <line x1="786" y1="128" x2="1080" y2="128" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="786" y="150" class="lbl" fill="#0f766e">結論</text>
+  <text x="820" y="150" class="txt">五級分層＋AI 稅（0–20%），滿分</text>
+  <text x="820" y="170" class="txt">集中率由 52.7% 大幅降至 13.4%</text>
+
+  <!-- ==================== TRACK B: AI -> SOFTWARE ENGINEERING (2 PAPERS) ==================== -->
+  <rect x="12" y="218" width="1096" height="172" rx="14" fill="#fdf8f9" stroke="#e2a8b8" stroke-width="1.6"/>
+  <rect x="24" y="228" width="420" height="28" rx="14" fill="#8c1d40"/>
+  <text x="234" y="247" text-anchor="middle" class="track">主軸二 · AI ➔ Software Engineering（上游需求 × 下游體驗）</text>
+
+  <!-- Paper 4: PLANT (2026) -->
+  <rect x="26" y="266" width="504" height="110" rx="11" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="26" y="266" width="504" height="30" rx="11" fill="#fdf2f5"/>
+  <rect x="26" y="284" width="504" height="12" fill="#fdf2f5"/>
+  <text x="42" y="286" class="ptitle" fill="#8c1d40">4. PLANT（多代理人需求工程框架 · 開發上游）</text>
+  <rect x="468" y="271" width="48" height="20" rx="10" fill="#8c1d40"/>
+  <text x="492" y="285" text-anchor="middle" class="yr">2026</text>
+  <text x="42" y="319" class="lbl" fill="#64748b">動機</text>
+  <text x="78" y="319" class="txt">單一 LLM 易遺漏隱性需求，且難以調解多方利害人衝突</text>
+  <line x1="42" y1="333" x2="514" y2="333" stroke="#f1e4e8" stroke-width="1"/>
+  <text x="42" y="357" class="lbl" fill="#0f766e">結論</text>
+  <text x="78" y="357" class="txt">六角色混合調解＋知識庫，隱性需求 2.5–3.2×、衝突召回 96–100%</text>
+
+  <line x1="530" y1="321" x2="582" y2="321" stroke="#8c1d40" stroke-width="2.6" marker-end="url(#arr-a)"/>
+
+  <!-- Paper 5: LLM UX Testing (2024) -->
+  <rect x="590" y="266" width="504" height="110" rx="11" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="590" y="266" width="504" height="30" rx="11" fill="#fdf2f5"/>
+  <rect x="590" y="284" width="504" height="12" fill="#fdf2f5"/>
+  <text x="606" y="286" class="ptitle" fill="#8c1d40">5. LLM UX Testing（多模態體驗檢測 · 驗證下游）</text>
+  <rect x="1032" y="271" width="48" height="20" rx="10" fill="#8c1d40"/>
+  <text x="1056" y="285" text-anchor="middle" class="yr">2024</text>
+  <text x="606" y="319" class="lbl" fill="#64748b">動機</text>
+  <text x="642" y="319" class="txt">傳統人工 UX 易用性測試成本高、主觀且難以重複規模化</text>
+  <line x1="606" y1="333" x2="1078" y2="333" stroke="#f1e4e8" stroke-width="1"/>
+  <text x="606" y="357" class="lbl" fill="#0f766e">結論</text>
+  <text x="642" y="357" class="txt">Rapi 錄製＋多模態 GPT-4 啟發式檢測，F1 大幅超越人類（0.66 vs. 0.16）</text>
+
+  <!-- ==================== CONVERGING SYNTHESIS BAR ==================== -->
+  <rect x="12" y="402" width="1096" height="40" rx="10" fill="#0f766e"/>
+  <text x="560" y="427" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">貫穿五篇研究的共同核心：不放任 AI 盲目代勞，而是透過「角色分工 × 分層邊界 × 自動驗證」駕馭 AI</text>
+</svg>
