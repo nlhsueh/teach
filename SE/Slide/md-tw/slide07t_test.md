@@ -6291,9 +6291,9 @@ function initGreedyIpoExplorer() {
     {
       step: 1,
       base: '(Time = t₁, Day = d₁)',
-      m1得分: '+3 New Pairs',
+      m1Score: '+3 New Pairs',
       m1Pairs: 't₁d₁, t₁m₁, d₁m₁',
-      m2得分: '+3 New Pairs',
+      m2Score: '+3 New Pairs',
       m2Pairs: 't₁d₁, t₁m₂, d₁m₂',
       winner: 'm₁',
       reason: 'Tie-breaker',
@@ -6306,9 +6306,9 @@ function initGreedyIpoExplorer() {
     {
       step: 2,
       base: '(Time = t₁, Day = d₂)',
-      m1得分: '+2 (t₁m₁ seen)',
+      m1Score: '+2 (t₁m₁ seen)',
       m1Pairs: 't₁d₂, d₂m₁',
-      m2得分: '+3 New Pairs',
+      m2Score: '+3 New Pairs',
       m2Pairs: 't₁d₂, t₁m₂, d₂m₂',
       winner: 'm₂',
       reason: 'Higher Score (+3 vs +2)',
@@ -6321,9 +6321,9 @@ function initGreedyIpoExplorer() {
     {
       step: 3,
       base: '(Time = t₂, Day = d₁)',
-      m1得分: '+2 (d₁m₁ seen)',
+      m1Score: '+2 (d₁m₁ seen)',
       m1Pairs: 't₂d₁, t₂m₁',
-      m2得分: '+3 New Pairs',
+      m2Score: '+3 New Pairs',
       m2Pairs: 't₂d₁, t₂m₂, d₁m₂',
       winner: 'm₂',
       reason: 'Higher Score (+3 vs +2)',
@@ -6336,9 +6336,9 @@ function initGreedyIpoExplorer() {
     {
       step: 4,
       base: '(Time = t₂, Day = d₂)',
-      m1得分: '+3 New Pairs',
+      m1Score: '+3 New Pairs',
       m1Pairs: 't₂d₂, t₂m₁, d₂m₁',
-      m2得分: '+1 (t₂m₂, d₂m₂ seen)',
+      m2Score: '+1 (t₂m₂, d₂m₂ seen)',
       m2Pairs: 't₂d₂',
       winner: 'm₁',
       reason: 'Higher Score (+3 vs +1)',
@@ -6351,9 +6351,9 @@ function initGreedyIpoExplorer() {
     {
       step: 5,
       base: '(Time = t₃, Day = d₁)',
-      m1得分: '+2 (d₁m₁ seen)',
+      m1Score: '+2 (d₁m₁ seen)',
       m1Pairs: 't₃d₁, t₃m₁',
-      m2得分: '+2 (d₁m₂ seen)',
+      m2Score: '+2 (d₁m₂ seen)',
       m2Pairs: 't₃d₁, t₃m₂',
       winner: 'm₁',
       reason: 'Tie-breaker (D×M full)',
@@ -6366,9 +6366,9 @@ function initGreedyIpoExplorer() {
     {
       step: 6,
       base: '(Time = t₃, Day = d₂)',
-      m1得分: '+1 (t₃m₁, d₂m₁ seen)',
+      m1Score: '+1 (t₃m₁, d₂m₁ seen)',
       m1Pairs: 't₃d₂',
-      m2得分: '+2 New Pairs',
+      m2Score: '+2 New Pairs',
       m2Pairs: 't₃d₂, t₃m₂',
       winner: 'm₂',
       reason: 'Higher Score (+2 vs +1)',
@@ -6954,7 +6954,7 @@ function initSmExplorer() {
     if (!game || game.dataset.bvaGameBound) return;
     game.dataset.bvaGameBound = "true";
 
-    const 點Layer = game.querySelector("#bvag-dots-layer");
+    const dotsLayer = game.querySelector("#bvag-dots-layer");
     const roundPill = game.querySelector("#bvag-round-pill");
     const scorePill = game.querySelector("#bvag-score-pill");
     const targetTitle = game.querySelector("#bvag-target-title");
@@ -6970,7 +6970,7 @@ function initSmExplorer() {
 
     const allDots = [];
     if (dotsLayer) {
-      點Layer.innerHTML = "";
+      dotsLayer.innerHTML = "";
       for (let ix = 0; ix < 7; ix++) {
         for (let iy = 0; iy < 7; iy++) {
           const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -7009,7 +7009,7 @@ function initSmExplorer() {
             updateCounters();
           });
 
-          點Layer.appendChild(c);
+          dotsLayer.appendChild(c);
           allDots.push(c);
         }
       }
@@ -7028,12 +7028,12 @@ function initSmExplorer() {
       },
       {
         key: "worst-norm",
-        name: "最壞情況一般邊界值分析 (Worst-Case Normal) (Multi-Fault, Valid Bounds Combinations)",
+        name: "最壞情況一般邊界值分析 (Worst-Case Normal BVA — 多重錯誤假設、合法邊界組合)",
         cats: ["nom", "norm-bva", "worst-norm"]
       },
       {
         key: "worst-robust",
-        name: "最壞情況強固邊界值分析 (Worst-Case Robust) (Multi-Fault, Full Valid & Out-of-Bounds Grid)",
+        name: "最壞情況強固邊界值分析 (Worst-Case Robust BVA — 多重錯誤假設、完整合法與越界網格)",
         cats: ["nom", "norm-bva", "robust-bva", "worst-norm", "worst-robust"]
       }
     ];
@@ -7147,7 +7147,7 @@ function initSmExplorer() {
           updateCounters();
           if (feedbackMsg) {
             feedbackMsg.className = "bvag-feedback-box is-err";
-            feedbackMsg.textContent = "[尚未完全命中] 命中: " + hits + " / " + expectedTotal + " | 漏選 (黃色虛線): " + missed + " | 多選／錯選 (紅色): " + extra + ". Adjust your 點 and re-submit!";
+            feedbackMsg.textContent = "[尚未完全命中] 命中: " + hits + " / " + expectedTotal + " | 漏選 (黃色虛線): " + missed + " | 多選／錯選 (紅色): " + extra + "。請調整選取的測試點後重新送出！";
           }
         }
       });
