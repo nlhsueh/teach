@@ -4,7 +4,7 @@ theme: gaia
 size: 16:9
 paginate: true
 html: true
-header: '<div class="hdr-wrap"><span class="hdr-title">AI Tutor Triad Pattern: Structuring Conversational Guidance in Programming Education</span><div class="hdr-actions"><a class="lang-btn" href="./Pattern26_slide_zh.html" title="切換至繁體中文簡報">🌐 繁</a><div class="nav-dropdown"><button class="nav-btn">Sections ▾</button><div class="nav-menu"><a href="#2">Opening Hook: Full Code vs. Triad</a><a href="#3">Outline</a><a href="#4">1. Introduction & RQs</a><a href="#6">2. Related Work</a><a href="#7">3. SCT & AT-TPL Design</a><a href="#13">4. Empirical Study</a><a href="#17">5. Discussion & Trade-Offs</a><a href="#18">6. Conclusion & Future Work</a></div></div></div></div>'
+header: '<div class="hdr-wrap"><span class="hdr-title">AI Tutor Triad Pattern: Structuring Conversational Guidance in Programming Education</span><div class="hdr-actions"><a class="lang-btn" href="./Pattern26_slide_zh.html" title="切換至繁體中文簡報">🌐 繁</a><div class="nav-dropdown"><button class="nav-btn">Sections ▾</button><div class="nav-menu"><a href="#2">Opening Hook: Full Code vs. Triad</a><a href="#3">Outline</a><a href="#4">1. Introduction & RQs</a><a href="#6">2. Related Work</a><a href="#7">3. SCT & AT-TPL Design</a><a href="#14">4. Empirical Study</a><a href="#18">5. Discussion & Trade-Offs</a><a href="#19">6. Conclusion & Future Work</a></div></div></div></div>'
 footer: 'Nien-Lin Hsueh, Lien-Chi Lai & Ying-Chang Lu · Feng Chia University · JISE 2026'
 ---
 
@@ -678,7 +678,7 @@ System design, shared forces, non-linear transitions, RACE prompts, and all 3 pa
 <div class="outline-num">4</div>
 <div class="outline-body">
 
-[**Empirical Course Deployment**](#13)
+[**Empirical Course Deployment**](#14)
 315 students, 86 Python exercises, 1,315 tutor-assisted attempts, error & AC analysis.
 
 </div>
@@ -688,7 +688,7 @@ System design, shared forces, non-linear transitions, RACE prompts, and all 3 pa
 <div class="outline-num">5</div>
 <div class="outline-body">
 
-[**Discussion & Pedagogical Trade-Offs**](#17)
+[**Discussion & Pedagogical Trade-Offs**](#18)
 Specificity vs. cognitive offloading, state gating, and proficiency effects.
 
 </div>
@@ -698,7 +698,7 @@ Specificity vs. cognitive offloading, state gating, and proficiency effects.
 <div class="outline-num">6</div>
 <div class="outline-body">
 
-[**Conclusion & Future Work**](#18)
+[**Conclusion & Future Work**](#19)
 Visual synthesis of RQ1–RQ3 conclusions and 3-pillar research roadmap.
 
 </div>
@@ -860,7 +860,65 @@ Although the canonical workflow progresses from Guidance (problem without plan, 
 
 ---
 
-## 3.3 Implementing Patterns via the RACE Prompt Framework (Table 2)
+## 3.3 The RACE Prompt Framework: Structuring AI Tutors
+
+**RACE** [23] decomposes LLM instructions into four structured prompt engineering slots:
+
+<div class="two-col small-text" style="gap: 10px 16px; margin-top: 4px; font-size: 0.78em;">
+
+<div class="card" style="padding: 9px 14px;">
+
+### 🎭 **R** — Role
+Defines the AI's **persona, expertise, and pedagogical stance**.
+- *In AT-TPL*: Anchors an educator who withholds full answers or a debugging specialist.
+
+</div>
+
+<div class="card teal" style="padding: 9px 14px;">
+
+### 🎯 **A** — Action
+Specifies the exact **single task or verb** the AI must perform.
+- *In AT-TPL*: Limits help to hints only, isolating one root cause, or one quality issue.
+
+</div>
+
+<div class="card" style="padding: 9px 14px;">
+
+### 🧩 **C** — Context
+Provides **background, artifacts, and the learner's task state**.
+- *In AT-TPL*: Supplies problem & I/O specs, failing code + tracebacks, or working AC code.
+
+</div>
+
+<div class="card accent" style="padding: 9px 14px;">
+
+### 🛡️ **E** — Expectation
+Sets strict **output format, length, style, and guardrail rules**.
+- *In AT-TPL*: Enforces **no executable code**, no greetings, and 2- or 3-part responses.
+
+</div>
+
+</div>
+
+<div class="callout teal" style="margin-top: 10px; padding: 8px 14px; font-size: 0.8em;">
+<strong>Why RACE?</strong> AT-TPL is framework-agnostic, yet RACE is chosen because <code>Role / Action / Context</code> map directly to tutor, help type, and learner state, while <code>Expectation</code> gives <strong>pedagogical guardrails</strong> explicit output rules.
+</div>
+
+<!--
+Definition & Rationale of the RACE Prompt Framework (Section 3.2):
+Prompt engineering is essential for controlling LLM behavior in human-computer interaction. This study adopts RACE [23] (Role, Action, Context, Expectation), a general four-component prompt structure not specific to education:
+- Role: Defines the AI's persona, domain expertise, and pedagogical stance (e.g., an educator encouraging independent reasoning vs. a debugging specialist).
+- Action: Specifies the exact task or verb the AI must execute, narrowing scope to a single form of help so open-ended phrasing does not invite full solutions.
+- Context: Supplies necessary background, learner artifacts, and execution state (problem + I/O rules without code; failing code + traceback; or a working program).
+- Expectation: Constrains output format, length, style, and explicit pedagogical rules (e.g., withholding executable Python code, omitting greetings, enforcing structured output sections).
+
+Framework Independence vs. Practical Fit:
+The authors note that AT-TPL does not depend exclusively on RACE—any prompt framework providing an explicit slot for output constraints can implement the patterns. RACE was chosen specifically because (1) Role, Action, and Context align naturally with the tutor persona, assistance type, and learner situation defined in each pattern, and (2) Expectation operationalizes pedagogical guardrails as unambiguous output rules.
+-->
+
+---
+
+## 3.3 (Cont.) Implementing Patterns via RACE (Table 2)
 
 We operationalize AT-TPL using **RACE** [23] because `Expectation` gives pedagogical guardrails an explicit home as output rules:
 

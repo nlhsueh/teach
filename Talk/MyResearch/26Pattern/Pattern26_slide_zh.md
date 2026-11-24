@@ -4,7 +4,7 @@ theme: gaia
 size: 16:9
 paginate: true
 html: true
-header: '<div class="hdr-wrap"><span class="hdr-title">AI 助教三元模式：結構化程式設計教育中的對話式引導</span><div class="hdr-actions"><a class="lang-btn" href="./Pattern26_slide.html" title="Switch to English Slides">🌐 EN</a><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：直接給答案 vs. 三元引導</a><a href="#3">簡報大綱</a><a href="#4">1. 研究動機與問題</a><a href="#6">2. 文獻回顧與比較</a><a href="#7">3. SCT 與 AT-TPL 模式設計</a><a href="#13">4. 實證研究與分析</a><a href="#17">5. 討論與教學權衡</a><a href="#18">6. 結論與未來研究</a></div></div></div></div>'
+header: '<div class="hdr-wrap"><span class="hdr-title">AI 助教三元模式：結構化程式設計教育中的對話式引導</span><div class="hdr-actions"><a class="lang-btn" href="./Pattern26_slide.html" title="Switch to English Slides">🌐 EN</a><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">破題：直接給答案 vs. 三元引導</a><a href="#3">簡報大綱</a><a href="#4">1. 研究動機與問題</a><a href="#6">2. 文獻回顧與比較</a><a href="#7">3. SCT 與 AT-TPL 模式設計</a><a href="#14">4. 實證研究與分析</a><a href="#18">5. 討論與教學權衡</a><a href="#19">6. 結論與未來研究</a></div></div></div></div>'
 footer: '薛念林（Nien-Lin Hsueh）、Lien-Chi Lai ＆ Ying-Chang Lu · 逢甲大學資訊工程學系 · JISE 2026'
 ---
 
@@ -630,7 +630,7 @@ section .callout {
 <div class="outline-num">4</div>
 <div class="outline-body">
 
-[**真實課堂實證研究**](#13)
+[**真實課堂實證研究**](#14)
 315 位學生、86 道 Python 題目、1,315 次助教輔助嘗試之使用與成效分析。
 
 </div>
@@ -640,7 +640,7 @@ section .callout {
 <div class="outline-num">5</div>
 <div class="outline-body">
 
-[**討論與教學權衡**](#17)
+[**討論與教學權衡**](#18)
 具體協助 vs. 認知外包、狀態閘控 vs. 學習自主、以及程度差異效應。
 
 </div>
@@ -650,7 +650,7 @@ section .callout {
 <div class="outline-num">6</div>
 <div class="outline-body">
 
-[**結論與未來研究方向**](#18)
+[**結論與未來研究方向**](#19)
 RQ1–RQ3 結論視覺化總結與三大未來研究藍圖。
 
 </div>
@@ -811,7 +811,65 @@ AT-TPL 並非三組彼此獨立的提示詞，而是遵循 Alexander 模式語�
 
 ---
 
-## 3.3 以 RACE 框架落實模式規範（表 2）
+## 3.3 RACE 提示詞框架：結構化設計 AI 助教
+
+**RACE** [23] 是一個通用型四元件提示工程（Prompt Engineering）框架，將與 LLM 互動的指令系統化拆解為四大結構化槽位：
+
+<div class="two-col small-text" style="gap: 14px 18px; margin-top: 6px;">
+
+<div class="card">
+
+### 🎭 **R** — Role（角色定位）
+定義 AI 的**人設（Persona）、領域專長與教學立場**。
+- *教學應用*：鎖定「不代寫解答的教育者」或「專精診斷的除錯工程師」。
+
+</div>
+
+<div class="card teal">
+
+### 🎯 **A** — Action（核心行動）
+明確指定 AI 必須執行的**單一任務或動作動詞**。
+- *教學應用*：限定「僅給觀念提示」或「僅定位單一根因」，避免發散吐出全解。
+
+</div>
+
+<div class="card">
+
+### 🧩 **C** — Context（任務脈絡）
+提供**背景資訊、必要工件或學習者當下狀態**。
+- *教學應用*：注入題目規格、I/O 規則、學生程式碼與錯誤訊息（Traceback）。
+
+</div>
+
+<div class="card accent">
+
+### 🛡️ **E** — Expectation（輸出預期與護欄）
+設定最終輸出的**格式、長度、風格與硬性禁令規則**。
+- *教學應用*：**嚴禁輸出可執行程式碼**、省略寒暄、強制兩段或三段式回饋。
+
+</div>
+
+</div>
+
+<div class="callout teal" style="margin-top: 12px;">
+<strong>為何 AT-TPL 選用 RACE？</strong> 模式語言本身不綁定特定框架，但 RACE 的 <code>Role / Action / Context</code> 精準對應助教角色、協助類型與學習者狀態，且 <code>Expectation</code> 讓<strong>教學護欄（如不給解答）</strong>有明確的輸出規則落點！
+</div>
+
+<!--
+RACE 提示工程框架的定義與教學適配性（論文 Section 3.2）：
+提示工程（Prompt Engineering）是人機互動中精準控制大型語言模型（LLM）行為的關鍵技術。本研究採用由四個元件組成的通用提示框架 RACE [23]（Role、Action、Context、Expectation）來定義與實作 SCT 中的三位 AI 助教：
+1. Role（角色）：界定 AI 的人設、專業背景與視角，不僅決定知識深度，更設定教學立場（例如堅持保留解答、引導學生獨立思考）。
+2. Action（行動）：明確指定 AI 必須執行的核心任務動詞，將協助範圍聚焦於單一明確行動，防止開放式任務誘發 LLM 直接生成完整程式。
+3. Context（脈絡）：提供完整背景、必要資訊或學習歷程狀態（例如尚未寫碼的題目規格、執行失敗的程式碼與 Traceback、或已通過評測之程式碼）。
+4. Expectation（預期）：明確約束最終回覆的格式、篇幅、語氣與硬性規則。
+
+為何不綁定框架卻選用 RACE：
+論文特別強調，AT-TPL 模式語言在概念上並不依賴特定提示語法——任何能提供明確「輸出限制欄位」的框架皆可實作。選用 RACE 的核心原因有二：（1）Role、Action、Context 與模式語言中的「助教角色、協助類型、學習者情境」形成一對一自然對映；（2）Expectation 為教學護欄（例如禁止輸出可執行 Python 程式碼）提供了清楚、可檢驗的規則承載位置。
+-->
+
+---
+
+## 3.3 (續) 以 RACE 框架落實模式規範（表 2）
 
 我們採用 **RACE** [23] 框架實作提示詞，因 `Expectation` 能將教學護欄明確轉化為輸出規則：
 
