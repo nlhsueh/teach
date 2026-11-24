@@ -46,8 +46,8 @@ footer: '薛念林 教授 · 逢甲大學資訊工程學系'
     <h3>Part 2：組合測試、白箱覆蓋與整合測試</h3>
     <ul>
       <li><a href="#64"><b>7.4 組合測試、狀態轉換與屬性基礎測試：</b></a>成對組合測試 (Pairwise / All-Pairs) 與 IPO 貪婪演算法追蹤、AllPairs4J、狀態轉換測試、屬性基礎測試（jqwik 與反例縮減 Shrinking）、變質關係 (MR)。</li>
-      <li><a href="#86"><b>7.5 白箱覆蓋率與變異測試：</b></a>規格與程式碼四象限、敘述／分支／條件覆蓋率 (SC/BC/CC)、短路求值與 JaCoCo 黃色菱形、多重條件覆蓋 (MCC)、路徑爆炸、航太級 MC/DC、100% 覆蓋率迷思、變異測試（RIPR 模型、等價變異體、PITest）。</li>
-      <li><a href="#107"><b>7.6 整合測試、測試替身與 Mockito：</b></a>V 模型契約失配、建構子依賴注入 (Constructor DI)、由下而上（驅動模組 Drivers）vs. 由上而下（樁模組 Stubs）vs. 三明治策略、五大測試替身、Mockito（mock, spy, verify）、脆弱測試 (Brittle Tests)。</li>
+      <li><a href="#86"><b>7.5 白箱覆蓋率、基本路徑與變異測試：</b></a>規格與程式碼四象限、敘述／分支／條件覆蓋率 (SC/BC/CC)、短路求值與 JaCoCo 黃色菱形、多重條件覆蓋 (MCC)、路徑爆炸、航太級 MC/DC、McCabe 圈複雜度 V(G) 與基本路徑測試、迴圈／資料流與認知複雜度 (CogC)、變異測試（RIPR 模型、等價變異體、PITest）。</li>
+      <li><a href="#113"><b>7.6 整合測試、測試替身與 Mockito：</b></a>V 模型契約失配、建構子依賴注入 (Constructor DI)、由下而上（驅動模組 Drivers）vs. 由上而下（樁模組 Stubs）vs. 三明治策略、五大測試替身、Mockito（mock, spy, verify）、脆弱測試 (Brittle Tests)。</li>
     </ul>
   </div>
 </div>
@@ -3614,6 +3614,117 @@ class AirlineReservationStateTest {
 - subsumption hierarchy: 涵蓋包含階層（若覆蓋準則 A 嚴格包含準則 B，代表任何達到 100% A 的測試集必然同時達到 100% B）
 -->
 ---
+## 互動式白箱涵蓋度動態探索器：SC、BC、CC、B/CC、MC/DC 與 Path
+
+<div class="wbc-interactive-stage" id="wbc-explorer">
+<div class="wbc-nav-toolbar">
+  <button type="button" class="wbc-mode-btn is-active" data-wbc="sc">1. 敘述涵蓋 (SC100)</button>
+  <button type="button" class="wbc-mode-btn" data-wbc="bc">2. 分支涵蓋 (BC100)</button>
+  <button type="button" class="wbc-mode-btn" data-wbc="cc">3. CC100 悖論 (BC=50%)</button>
+  <button type="button" class="wbc-mode-btn" data-wbc="bcc">4. 分支/條件 (B/CC100)</button>
+  <button type="button" class="wbc-mode-btn" data-wbc="mcdc">5. 航太級 MC/DC (n+1)</button>
+  <button type="button" class="wbc-mode-btn" data-wbc="path">6. 路徑涵蓋 (Path100)</button>
+</div>
+
+<div class="wbc-content-grid">
+<div class="wbc-left-card">
+  <div class="wbc-code-cfg-row">
+    <div class="wbc-code-panel">
+      <div class="wbc-code-line" data-line="1"><span>1: input A, B, X</span><span class="wbc-cond-chip" id="wbc-l1-tag">入口</span></div>
+      <div class="wbc-code-line" data-line="2"><span>2: if (A&gt;1) and (B==0)</span><span><span class="wbc-cond-chip" id="wbc-c1-chip">C1:--</span><span class="wbc-cond-chip" id="wbc-c2-chip">C2:--</span></span></div>
+      <div class="wbc-code-line" data-line="3"><span>3: &nbsp;&nbsp;&nbsp;&nbsp;Y = A</span><span class="wbc-cond-chip" id="wbc-ec-chip">邊 c</span></div>
+      <div class="wbc-code-line" data-line="4"><span>4: if (A==2) or (X&gt;1)</span><span><span class="wbc-cond-chip" id="wbc-c3-chip">C3:--</span><span class="wbc-cond-chip" id="wbc-c4-chip">C4:--</span></span></div>
+      <div class="wbc-code-line" data-line="5"><span>5: &nbsp;&nbsp;&nbsp;&nbsp;Y = X</span><span class="wbc-cond-chip" id="wbc-ee-chip">邊 e</span></div>
+      <div class="wbc-code-line" data-line="6"><span>6: print Y</span><span class="wbc-cond-chip" id="wbc-l6-tag">出口</span></div>
+    </div>
+    <div class="wbc-cfg-panel">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 205" width="100%" height="100%">
+<defs>
+<marker id="wbc-arr-on" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#16a34a"/></marker>
+<marker id="wbc-arr-off" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#cbd5e1"/></marker>
+</defs>
+<path id="wbc-edge-a" d="M 115 6 L 115 24" stroke="#16a34a" stroke-width="2.6" fill="none" marker-end="url(#wbc-arr-on)"/>
+<text x="123" y="18" font-size="9.5" font-weight="800" fill="#0f172a">a</text>
+<polygon id="wbc-node-d1" points="115,25 168,45 115,65 62,45" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
+<text x="115" y="48" font-size="9.5" font-weight="800" fill="#0b3c5d" text-anchor="middle">D1: C1 ∧ C2</text>
+<path id="wbc-edge-c" d="M 168 45 L 195 45 L 195 75 L 115 103" stroke="#cbd5e1" stroke-width="2.4" fill="none" marker-end="url(#wbc-arr-off)"/>
+<rect x="166" y="54" width="54" height="22" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4" id="wbc-node-l3"/>
+<text x="193" y="68" font-size="9" font-weight="800" fill="#166534" text-anchor="middle">L3: Y=A</text>
+<text x="180" y="39" font-size="9" font-weight="800" fill="#15803d">c (T)</text>
+<path id="wbc-edge-b" d="M 62 45 L 36 45 L 36 86 L 115 103" stroke="#cbd5e1" stroke-width="2.4" fill="none" marker-end="url(#wbc-arr-off)"/>
+<text x="26" y="68" font-size="9" font-weight="800" fill="#be123c">b (F)</text>
+<polygon id="wbc-node-d2" points="115,105 168,125 115,145 62,125" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
+<text x="115" y="128" font-size="9.5" font-weight="800" fill="#0b3c5d" text-anchor="middle">D2: C3 ∨ C4</text>
+<path id="wbc-edge-e" d="M 168 125 L 195 125 L 195 155 L 115 182" stroke="#cbd5e1" stroke-width="2.4" fill="none" marker-end="url(#wbc-arr-off)"/>
+<rect x="166" y="134" width="54" height="22" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4" id="wbc-node-l5"/>
+<text x="193" y="148" font-size="9" font-weight="800" fill="#166534" text-anchor="middle">L5: Y=X</text>
+<text x="180" y="119" font-size="9" font-weight="800" fill="#15803d">e (T)</text>
+<path id="wbc-edge-d" d="M 62 125 L 36 125 L 36 166 L 115 182" stroke="#cbd5e1" stroke-width="2.4" fill="none" marker-end="url(#wbc-arr-off)"/>
+<text x="26" y="148" font-size="9" font-weight="800" fill="#be123c">d (F)</text>
+<rect x="78" y="182" width="74" height="19" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+<text x="115" y="195" font-size="9.5" font-weight="800" fill="#0369a1" text-anchor="middle">L6: print Y</text>
+</svg>
+    </div>
+  </div>
+
+  <div class="wbc-tc-section">
+    <div class="wbc-tc-header">
+      <span>點擊上方預設準則或手動點選下方測試向量 <code>(A, B, X)</code> 觀察動態變化：</span>
+      <span id="wbc-active-tc-count" style="color: #0284c7;">已啟用：1 筆測資</span>
+    </div>
+    <div class="wbc-tc-grid">
+      <div class="wbc-tc-pill is-active" data-tc="t1"><span>t₁(2, 0, 3)</span><span class="wbc-tc-tag">a-c-e</span></div>
+      <div class="wbc-tc-pill" data-tc="t2"><span>t₂(1, 1, 1)</span><span class="wbc-tc-tag">a-b-d</span></div>
+      <div class="wbc-tc-pill" data-tc="t3"><span>t₃(2, 1, 1)</span><span class="wbc-tc-tag">a-b-e</span></div>
+      <div class="wbc-tc-pill" data-tc="t4"><span>t₄(1, 0, 2)</span><span class="wbc-tc-tag">a-b-e</span></div>
+      <div class="wbc-tc-pill" data-tc="t5"><span>t₅(3, 0, 1)</span><span class="wbc-tc-tag">a-c-d</span></div>
+      <div class="wbc-tc-pill" data-tc="t6"><span>t₆(3, 1, 1)</span><span class="wbc-tc-tag">a-b-d</span></div>
+    </div>
+  </div>
+
+  <div class="wbc-meters-box">
+    <div class="wbc-meter-row"><span>1. 敘述涵蓋 (SC)</span><div class="wbc-bar-bg"><div class="wbc-bar-fill" id="wbc-bar-sc"></div></div><span class="wbc-meter-val" id="wbc-val-sc">6/6 (100%)</span></div>
+    <div class="wbc-meter-row"><span>2. 分支涵蓋 (BC)</span><div class="wbc-bar-bg"><div class="wbc-bar-fill" id="wbc-bar-bc"></div></div><span class="wbc-meter-val" id="wbc-val-bc">2/4 (50%)</span></div>
+    <div class="wbc-meter-row"><span>3. 條件涵蓋 (CC)</span><div class="wbc-bar-bg"><div class="wbc-bar-fill" id="wbc-bar-cc"></div></div><span class="wbc-meter-val" id="wbc-val-cc">4/8 (50%)</span></div>
+    <div class="wbc-meter-row"><span>4. MC/DC 獨立配對</span><div class="wbc-bar-bg"><div class="wbc-bar-fill" id="wbc-bar-mcdc"></div></div><span class="wbc-meter-val" id="wbc-val-mcdc">0/4 (0%)</span></div>
+    <div class="wbc-meter-row"><span>5. 路徑涵蓋 (Path)</span><div class="wbc-bar-bg"><div class="wbc-bar-fill" id="wbc-bar-path"></div></div><span class="wbc-meter-val" id="wbc-val-path">1/4 (25%)</span></div>
+  </div>
+</div>
+
+<div class="wbc-right-card">
+  <div>
+    <span class="ep-badge-pill ep-badge-green" id="wbc-mode-badge">最薄弱基線 • 僅需 1 筆測資</span>
+    <h3 class="ep-title-text" id="wbc-mode-title" style="font-size: 17px; margin-top: 2px;">1. 敘述涵蓋度 (Statement Coverage, SC = 100%)</h3>
+  </div>
+  <div class="ep-stats-row" style="margin: 6px 0;">
+    <div class="ep-stat-box" style="padding: 6px 10px;">
+      <div class="ep-stat-label">涵蓋準則目標</div>
+      <div class="ep-stat-val" id="wbc-stat-formula" style="font-size: 16px;">每行指令皆執行過</div>
+    </div>
+    <div class="ep-stat-box" style="padding: 6px 10px;">
+      <div class="ep-stat-label">已涵蓋路徑</div>
+      <div class="ep-stat-val" id="wbc-stat-paths" style="font-size: 16px;">a-c-e (1/4)</div>
+    </div>
+  </div>
+  <ul class="ep-details-list" id="wbc-details-list" style="font-size: 12.6px; line-height: 1.42; flex: 1;">
+    <li><strong>僅憑 1 筆測資達成 100% SC：</strong> <code>t₁(2, 0, 3)</code> 使 <code>D1=True</code>（執行第 3 行）且 <code>D2=True</code>（執行第 5 行），6 行程式碼全數亮綠燈！</li>
+    <li><strong>為何 SC100 極度脆弱：</strong> 控制流圖上的 False 分支邊 <code>b</code> 與邊 <code>d</code> 完全未被測試（<strong>BC 僅 50%</strong>）。</li>
+    <li><strong>隱藏缺陷遮蔽盲區：</strong> 若第 3 行有 Bug（如誤寫 <code>Y = 999</code>），沿路徑 <code>a-c-e</code> 走到第 5 行時會立刻被 <code>Y = X</code> 覆寫而漏抓！</li>
+  </ul>
+  <div id="wbc-diag-banner" style="padding: 7px 10px; border-radius: 8px; background: #fffbeb; border: 1.4px solid #f59e0b; color: #92400e; font-size: 11.8px; font-weight: 700; line-height: 1.35;">
+    💡 互動診斷提示：點擊上方「2. 分支涵蓋 (BC100)」或「3. CC100 悖論」按鈕，即時觀察條件涵蓋與分支涵蓋的分歧！
+  </div>
+</div>
+</div>
+</div>
+
+<!--
+這座互動式白箱涵蓋度探索器（比照第 47 頁的黑箱互動模式）讓學生能一鍵切換 6 種結構化涵蓋度準則（敘述 SC、分支 BC、條件 CC 悖論、分支/條件 B/CC、航太級 MC/DC 與全路徑 Path），或手動點選個別測試案例 `t1..t6`，即時觀察左側程式碼行顏色、控制流圖（CFG）分支邊 `a..e`、原子條件真假值標籤 `C1..C4` 以及下方五條涵蓋度進度條的連動變化。
+
+難字與專業術語解說：
+- Control Flow Graph (CFG) edge activation: 控制流圖邊激活（當測試案例實際走過決策節點的 True 或 False 分支時，將對應控制流邊點亮標記為已涵蓋的動態追蹤機制）
+-->
+---
 ## 1. 敘述涵蓋度 (SC) 與 2. 分支／決策涵蓋度 (BC)
 
 <div class="card-deck">
@@ -3968,6 +4079,279 @@ return "Scalene";
 - infeasible branch / path: 不可行分支／死路徑（因前後條件矛盾或數學遞移律限制，在任何輸入下皆不可能被觸發的邏輯分支）
 -->
 ---
+## 基本路徑測試 (McCabe, 1976)：四步 SOP 與複合條件拆解
+
+<div class="card-deck">
+
+> **Thomas J. McCabe (1976)** 將圖論引入軟體工程：以**圈複雜度 `V(G)`** 精確定義控制流程圖中「**線性獨立基本路徑基底**」的數量上限，保證達成 **100% 敘述與分支涵蓋**！
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px; line-height: 1.33;">
+
+### McCabe 基本路徑測試四步驟標準流程
+1. **步驟 1 — 繪製控制流程圖 (CFG)：**
+   - 將所有複合布林條件（如 `if (A && B)`）**拆解為獨立的單一二元判定節點**！
+2. **步驟 2 — 計算圈複雜度 `V(G)`（三種等價公式）：**
+   - **平面區域公式：** **`V(G) = R`**（封閉區域數 + 外部無限區域 `1`）
+   - **歐拉邊點公式：** **`V(G) = E - N + 2`**（`E` 為有向邊數，`N` 為節點數）
+   - **判定節點公式：** **`V(G) = P + 1`**（`P` 為二元判定節點數；無分支時 `V(G) = 1`）
+3. **步驟 3 — 導出 `V(G)` 條線性獨立基本路徑：**
+   - 每一條新路徑都必須**至少走過一條先前未走過的新邊**。
+4. **步驟 4 — 設計測資並排查不可行路徑 (Infeasible Paths)：**
+   - 求解各路徑輸入條件；若路徑前後邏輯矛盾則併入其他可行路徑驗證。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px; line-height: 1.33;">
+
+### 四大 CFG 基本構件與複合條件拆解法則
+| 結構類型 | CFG 節點與邊特徵 | 對 `V(G)` 貢獻 (`+P`) |
+| :--- | :--- | :---: |
+| **1. 循序 (Sequence)** | 連續無分支指令合併為 1 個基本區塊節點 | **`+ 0`** |
+| **2. 雙向選擇 (`if-else`)** | 1 個二元判定節點（分出 True / False 兩條邊） | **`+ 1`** |
+| **3. 迴圈 (`while / for`)** | 1 個迴圈條件判定節點 + 迴圈體回邊 | **`+ 1`** |
+| **4. 多向選擇 (`switch`)** | 含 `k` 個 `case`（不含 `default`）等同 `k` 次判斷 | **`+ k`** |
+
+- **為何 `if (A && B)` 必須拆成 2 個判定節點？**
+  - 在短路求值下，`A && B` 具備 **3 條不同出口路徑**（`A=F` 直接跳過、`A=T & B=F`、`A=T & B=T`）。含 `m` 個邏輯算子（`&&`, `||`）的判斷式須拆為 **`m + 1` 個判定節點**！
+
+</div>
+</div>
+</div>
+
+<!--
+Thomas McCabe 於 1976 年提出的基本路徑測試（Basis Path Testing）運用圖論解決了一個核心工程問題：「最少需要幾條線性獨立路徑，才能 100% 涵蓋程式中所有的敘述句與所有的條件分支？」只要在繪製控制流程圖（CFG）時將複合條件（`&&`、`||`）拆解為單一二元判定節點，並透過三種等價公式 `V(G) = R = E - N + 2 = P + 1` 算出圈複雜度，就能直接鎖定獨立路徑基底的精確上限！
+
+難字與專業術語解說：
+- Cyclomatic Complexity `V(G)`: 圈複雜度／循環複雜度（McCabe 提出的圖論度量指標，量化程式控制流圖中線性獨立路徑的數量上限）
+- linearly independent path: 線性獨立路徑（在控制流圖中，與先前已選路徑相比至少包含一條全新未走過之有向邊的控制流路徑）
+-->
+---
+## 互動式基本路徑與圈複雜度實驗室：`computeAverage(grade[])`
+
+<div class="bpt-interactive-stage" id="bpt-explorer">
+<div class="bpt-toolbar-wrap">
+  <div class="bpt-toolbar-row">
+    <span class="bpt-row-label">步驟 2：V(G) = 6</span>
+    <button type="button" class="bpt-btn is-active" data-bpt="vg-r">① 區域法：V(G) = R = 6</button>
+    <button type="button" class="bpt-btn" data-bpt="vg-en">② 邊點法：E(16) - N(12) + 2 = 6</button>
+    <button type="button" class="bpt-btn" data-bpt="vg-p">③ 判定點法：P(5) + 1 = 6</button>
+  </div>
+  <div class="bpt-toolbar-row">
+    <span class="bpt-row-label">步驟 3–4：6 條路徑</span>
+    <button type="button" class="bpt-btn is-infeasible" data-bpt="p1">Path 1 (不可行!)</button>
+    <button type="button" class="bpt-btn" data-bpt="p2">Path 2 (空輸入)</button>
+    <button type="button" class="bpt-btn" data-bpt="p3">Path 3 (滿50筆)</button>
+    <button type="button" class="bpt-btn" data-bpt="p4">Path 4 (&lt;下限)</button>
+    <button type="button" class="bpt-btn" data-bpt="p5">Path 5 (&gt;上限)</button>
+    <button type="button" class="bpt-btn" data-bpt="p6">Path 6 (正常平均)</button>
+  </div>
+</div>
+
+<div class="bpt-content-grid">
+<div class="bpt-left-card">
+  <div class="bpt-code-cfg-split">
+    <div class="bpt-code-box">
+      <div class="bpt-code-line" data-bnode="1"><span>sum=0,max=100,min=10,valid=0,i=0;</span><span class="bpt-node-badge">(1)</span></div>
+      <div class="bpt-code-line" data-bnode="2"><span>while (grade[i] != -999</span><span class="bpt-node-badge is-pred">P1 (2)</span></div>
+      <div class="bpt-code-line" data-bnode="3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp; i &lt; 50) {</span><span class="bpt-node-badge is-pred">P2 (3)</span></div>
+      <div class="bpt-code-line" data-bnode="4"><span>&nbsp;&nbsp;if (grade[i] &gt;= min</span><span class="bpt-node-badge is-pred">P3 (4)</span></div>
+      <div class="bpt-code-line" data-bnode="5"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp; grade[i] &lt;= max) {</span><span class="bpt-node-badge is-pred">P4 (5)</span></div>
+      <div class="bpt-code-line" data-bnode="6"><span>&nbsp;&nbsp;&nbsp;&nbsp;sum += grade[i]; valid++;</span><span class="bpt-node-badge">(6)</span></div>
+      <div class="bpt-code-line" data-bnode="7"><span>&nbsp;&nbsp;} else print("成績範圍錯誤");</span><span class="bpt-node-badge">(7)</span></div>
+      <div class="bpt-code-line" data-bnode="8"><span>&nbsp;&nbsp;i++; }</span><span class="bpt-node-badge">(8)</span></div>
+      <div class="bpt-code-line" data-bnode="9"><span>if (valid &gt; 0)</span><span class="bpt-node-badge is-pred">P5 (9)</span></div>
+      <div class="bpt-code-line" data-bnode="10"><span>&nbsp;&nbsp;avg = (double) sum / valid;</span><span class="bpt-node-badge">(10)</span></div>
+      <div class="bpt-code-line" data-bnode="11"><span>else avg = -999.0;</span><span class="bpt-node-badge">(11)</span></div>
+      <div class="bpt-code-line" data-bnode="12"><span>return avg;</span><span class="bpt-node-badge">(12)</span></div>
+    </div>
+  <div class="bpt-cfg-box">
+<svg xmlns="http://www.w3.org/2000/svg" id="bpt-cfg-svg" viewBox="0 0 285 340" width="100%" height="100%">
+<defs>
+<marker id="bpt-arr-def" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#94a3b8"/></marker>
+<marker id="bpt-arr-act" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#16a34a"/></marker>
+<marker id="bpt-arr-new" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#ea580c"/></marker>
+<marker id="bpt-arr-inf" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#e11d48"/></marker>
+</defs>
+<g id="bpt-regions-layer">
+<circle cx="128" cy="96" r="10.5" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/><text x="128" y="100" font-size="9" font-weight="900" fill="#1d4ed8" text-anchor="middle">R₁</text>
+<circle cx="62" cy="186" r="10.5" fill="#dcfce7" stroke="#16a34a" stroke-width="1.4"/><text x="62" y="190" font-size="9" font-weight="900" fill="#15803d" text-anchor="middle">R₂</text>
+<circle cx="151" cy="197" r="10.5" fill="#fef3c7" stroke="#d97706" stroke-width="1.4"/><text x="151" y="201" font-size="9" font-weight="900" fill="#b45309" text-anchor="middle">R₃</text>
+<circle cx="184" cy="240" r="10.5" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.4"/><text x="184" y="244" font-size="9" font-weight="900" fill="#6d28d9" text-anchor="middle">R₄</text>
+<circle cx="238" cy="175" r="10.5" fill="#ffedd5" stroke="#ea580c" stroke-width="1.4"/><text x="238" y="179" font-size="9" font-weight="900" fill="#c2410c" text-anchor="middle">R₅</text>
+<rect x="6" y="6" width="52" height="20" rx="5" fill="#ffe4e6" stroke="#e11d48" stroke-width="1.4"/><text x="32" y="19" font-size="9" font-weight="900" fill="#be123c" text-anchor="middle">R₆(外部)</text>
+</g>
+<g id="bpt-edges-layer">
+<path id="bpt-e-1-2" data-bedge="1-2" d="M 168 30 L 168 48" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-2-3" data-bedge="2-3" d="M 168 74 L 168 96" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-2-9" data-bedge="2-9" d="M 154 62 L 73 118" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-3-9" data-bedge="3-9" d="M 154 110 L 76 127" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-3-4" data-bedge="3-4" d="M 168 122 L 168 144" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-4-5" data-bedge="4-5" d="M 168 170 L 168 194" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-4-7" data-bedge="4-7" d="M 155 162 L 122 252" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-5-7" data-bedge="5-7" d="M 157 214 L 127 254" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-5-6" data-bedge="5-6" d="M 179 214 L 212 254" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-6-8" data-bedge="6-8" d="M 212 276 L 180 307" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-7-8" data-bedge="7-8" d="M 126 276 L 156 307" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-8-2" data-bedge="8-2" d="M 182 315 C 282 310, 282 62, 184 61" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-9-11" data-bedge="9-11" d="M 52 142 L 32 174" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-9-10" data-bedge="9-10" d="M 70 142 L 92 174" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-11-12" data-bedge="11-12" d="M 32 198 L 53 230" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-10-12" data-bedge="10-12" d="M 92 198 L 71 230" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+</g>
+<g id="bpt-nodes-layer">
+<circle data-bcfgnode="1" cx="168" cy="18" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="168" y="22" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">1</text>
+<circle data-bcfgnode="2" data-ispred="1" cx="168" cy="61" r="13" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="168" y="65" font-size="10" font-weight="900" fill="#92400e" text-anchor="middle">2</text>
+<circle data-bcfgnode="3" data-ispred="1" cx="168" cy="109" r="13" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="168" y="113" font-size="10" font-weight="900" fill="#92400e" text-anchor="middle">3</text>
+<circle data-bcfgnode="4" data-ispred="1" cx="168" cy="157" r="13" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="168" y="161" font-size="10" font-weight="900" fill="#92400e" text-anchor="middle">4</text>
+<circle data-bcfgnode="5" data-ispred="1" cx="168" cy="207" r="13" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="168" y="211" font-size="10" font-weight="900" fill="#92400e" text-anchor="middle">5</text>
+<circle data-bcfgnode="6" cx="218" cy="265" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="218" y="269" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">6</text>
+<circle data-bcfgnode="7" cx="118" cy="265" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="118" y="269" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">7</text>
+<circle data-bcfgnode="8" cx="168" cy="315" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="168" y="319" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">8</text>
+<circle data-bcfgnode="9" data-ispred="1" cx="62" cy="131" r="13" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="62" y="135" font-size="10" font-weight="900" fill="#92400e" text-anchor="middle">9</text>
+<circle data-bcfgnode="10" cx="96" cy="186" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="96" y="190" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">10</text>
+<circle data-bcfgnode="11" cx="28" cy="186" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="28" y="190" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">11</text>
+<circle data-bcfgnode="12" cx="62" cy="242" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="62" y="246" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">12</text>
+</g>
+</svg>
+    </div>
+  </div>
+
+  <div class="wbc-meters-box" style="padding: 5px 10px;">
+    <div class="wbc-meter-row">
+      <span>累積 CFG 邊涵蓋</span>
+      <div class="wbc-bar-bg"><div class="wbc-bar-fill" id="bpt-bar-edges" style="width: 100%; background: #0284c7;"></div></div>
+      <span class="wbc-meter-val" id="bpt-val-edges">16/16 (100%)</span>
+    </div>
+  </div>
+</div>
+
+<div class="bpt-right-card">
+  <div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+      <span class="ep-badge-pill ep-badge-blue" id="bpt-mode-badge">方法 1：平面區域空間公式</span>
+      <span style="font-size: 12px; font-weight: 900; color: #0b3c5d; font-family: 'Fira Code', monospace;" id="bpt-formula-pill">V(G) = R = 5 + 1 = 6</span>
+    </div>
+    <h3 class="ep-title-text" id="bpt-mode-title" style="font-size: 16px; margin-bottom: 4px;">平面區域計算：5 個封閉區域 + 1 個外部無限區域 = 6</h3>
+    <div id="bpt-dynamic-desc" style="font-size: 12px; color: #334155; line-height: 1.38; background: #f8fafc; border: 1.2px solid #cbd5e1; border-radius: 8px; padding: 6px 10px; margin-bottom: 6px;">
+      • <strong>5 個內部封閉區域：</strong> <code>R₁(2-3-9)</code>、<code>R₂(9-11-12-10)</code>、<code>R₃(4-5-7)</code>、<code>R₄(5-6-8-7)</code> 與 <code>R₅(2-3-4-5-6-8-2 迴圈)</code>。<br/>
+      • <strong>+ 1 個外部無限區域 (<code>R₆</code>)</strong> ➔ <strong>圈複雜度 <code>V(G) = 6</code>（最多 6 條線性獨立路徑）</strong>！
+    </div>
+  </div>
+
+  <div style="flex: 1; overflow: hidden;">
+    <div style="font-size: 11px; font-weight: 800; color: #0b3c5d; margin-bottom: 3px;">6 條線性獨立基本路徑表（點擊任一列或上方按鈕動態追蹤 CFG 軌跡）：</div>
+    <table class="bpt-path-table">
+      <thead>
+        <tr>
+          <th style="width: 12%;">路徑</th>
+          <th style="width: 32%;">CFG 節點走向序列</th>
+          <th style="width: 18%;">新增獨立邊</th>
+          <th style="width: 38%;">測試輸入 <code>grade[]</code> 與預期輸出</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bpt-path-row is-infeasible-row" data-prow="p1">
+          <td><strong>Path 1</strong></td>
+          <td><code>1➔2➔9➔10➔12</code></td>
+          <td><strong style="color:#e11d48;">不可行路徑!</strong></td>
+          <td><strong style="color:#be123c;">矛盾：</strong><code>valid==0</code> 無法走 <code>9➔10</code></td>
+        </tr>
+        <tr class="bpt-path-row" data-prow="p2">
+          <td><strong>Path 2</strong></td>
+          <td><code>1➔2➔9➔11➔12</code></td>
+          <td><code>2➔9, 9➔11</code></td>
+          <td><code>{-999}</code> ➔ <strong><code>-999.0</code></strong>（首筆即終止符）</td>
+        </tr>
+        <tr class="bpt-path-row" data-prow="p3">
+          <td><strong>Path 3</strong></td>
+          <td><code>1➔2➔3➔9➔10➔12</code></td>
+          <td><code>2➔3, 3➔9</code></td>
+          <td><code>51 筆成績 (80×50, 90)</code> ➔ <strong><code>80.0</code></strong></td>
+        </tr>
+        <tr class="bpt-path-row" data-prow="p4">
+          <td><strong>Path 4</strong></td>
+          <td><code>1➔2➔3➔4➔7➔8➔2..</code></td>
+          <td><code>3➔4, 4➔7</code></td>
+          <td><code>{5, -999}</code>（<code>&lt; 下限 10</code>）➔ <strong><code>-999.0</code></strong></td>
+        </tr>
+        <tr class="bpt-path-row" data-prow="p5">
+          <td><strong>Path 5</strong></td>
+          <td><code>1➔2➔3➔4➔5➔7➔8..</code></td>
+          <td><code>4➔5, 5➔7</code></td>
+          <td><code>{105, -999}</code>（<code>&gt; 上限 100</code>）➔ <strong><code>-999.0</code></strong></td>
+        </tr>
+        <tr class="bpt-path-row" data-prow="p6">
+          <td><strong>Path 6</strong></td>
+          <td><code>1➔2➔3➔4➔5➔6➔8..10</code></td>
+          <td><code>5➔6, 9➔10</code></td>
+          <td><code>{80, 90, -999}</code> ➔ <strong><code>85.0</code></strong>（含 <code>9➔10</code>）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="bpt-bottom-tip" style="padding: 6px 10px; border-radius: 7px; background: #eff6ff; border: 1.4px solid #38bdf8; color: #0369a1; font-size: 11.4px; font-weight: 700; line-height: 1.33;">
+    💡 點擊上方 <strong>① 區域法</strong>、<strong>② 邊點法 (E-N+2)</strong> 或 <strong>③ 判定點法 (P+1)</strong> 檢視 V(G)=6 推導，再點擊 <strong>Path 1..Path 6</strong> 動態追蹤各路徑！
+  </div>
+</div>
+</div>
+</div>
+
+<!--
+這座互動式基本路徑與圈複雜度實驗室將 SQA 第 6.3 節完整動態化！點擊上方第一排的 ① 區域法（`V(G) = R = 6`）、② 邊點法（`V(G) = E - N + 2 = 16 - 12 + 2 = 6`）或 ③ 判定點法（`V(G) = P + 1 = 5 + 1 = 6`），左側 CFG 會即時高亮顯示 6 個平面區域 `R1..R6`、16 條邊與 12 個節點、或是 5 個黃色二元判定節點 `(2), (3), (4), (5), (9)`。點擊第二排的 `Path 1` 至 `Path 6`（或直接點擊右方表格任一列），左側程式碼與 CFG 會動態描繪該路徑走過的軌跡，並以亮橘色標出該路徑「新引入的線性獨立邊」，同時清楚展示為何 `Path 1 (1 -> 2 -> 9 -> 10 -> 12)` 屬於前後矛盾的不可行路徑（未進入迴圈時 `valid == 0`，不可能走進 `valid > 0` 的節點 10）！
+-->
+---
+## 結構化迴圈測試 (7 點法)、資料流測試 (`DU-Pairs`) 與認知複雜度 (`CogC`)
+
+<div class="card-deck">
+
+> 結合 **Beizer 7 點迴圈邊界測試**、**資料流 `def-use` 生命週期異常分析**與 SonarQube **認知複雜度 (`CogC`)**，全方位強化白箱結構品質！
+
+<div class="three-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 14px;">
+
+### 1. 結構化迴圈測試 (Loop Testing)
+- **簡單迴圈 7 點測試法（上限 `n` 次）：**
+  1. **跳過迴圈（`0` 次）**
+  2. **執行 `1` 次** 與 **執行 `2` 次**
+  3. **典型中間次數 `m` 次**（`m < n`）
+  4. **`n - 1` 次 (In)**、**`n` 次 (On)**、**`n + 1` 次 (Off)**
+- **Beizer 巢狀迴圈由內而外降維法：**
+  - 避免 `7² = 49` / `7³ = 343` 指數爆炸！
+  - 先將外層固定為最小值 (`1` 次) 完整測試**最內層迴圈**；再將內層固定為典型值 `m` 次向外測試外層。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 14px;">
+
+### 2. 資料流測試 (`DU-Pairs`)
+- 追蹤變數從**定義點 (`def`)** 沿無重定義路徑到達**計算使用 (`c-use`)** 或**判定使用 (`p-use`)** 的配對。
+- **三大資料流生命週期異常：**
+  - **`k → u` (`ur`, 未定義先讀)：** 未初始化即讀取或 Use-After-Free（**嚴重錯誤！**）。
+  - **`d → d` (`dd`, 連續重複賦值)：** 連續賦值兩次卻未讀取（第一次為死碼或漏寫運算）。
+  - **`d → k` (`dk`, 無效賦值)：** 賦值後直到離開作用域皆未使用（Unused Variable）。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 14px;">
+
+### 3. 複雜度指標：`V(G)` vs. `CogC`
+| 度量指標 | 警戒門檻 | 架構問題與重構對策 |
+| :--- | :---: | :--- |
+| **`V(G)`** (圈複雜度) | **`<= 10`** | 分支過多難測試 → **提煉方法 (Extract Method)** |
+| **`CogC`** (認知複雜度) | **`<= 15`** | 深層波動拳巢狀（`for` → `for` → `if` 計 `+1+2+3 = 6` 分，而平坦 `switch` 僅 `+1` 分）→ **衛語句 (Guard Clauses)** 提早返回！ |
+| **`WMC`** (類別加權總和) | **`<= 30–40`** | **上帝類別 (God Class)** → **拆分類別 (Extract Class)** |
+
+</div>
+</div>
+</div>
+
+<!--
+這一頁完整統整了 SQA 第 6.3 節後半部的三大進階白箱技術：（1）Boris Beizer 的 7 點簡單迴圈測試與由內而外巢狀迴圈降維策略；（2）資料流測試（`def`、`c-use`、`p-use` 與三大生命週期異常 `ur`、`dd`、`dk`）；以及（3）程式碼複雜度度量指標（`V(G) <= 10`、對深層巢狀加重計罰的 SonarQube 認知複雜度 `CogC <= 15`，以及類別加權方法複雜度 `WMC <= 30-40`）。
+
+難字與專業術語解說：
+- Definition-Use Pair (DU-Pair): 定義-使用配對（變數在某節點被賦值定義 `def` 後，沿著無重定義路徑到達被讀取計算 `c-use` 或條件判斷 `p-use` 的配對關係）
+- Cognitive Complexity (`CogC`): 認知複雜度（SonarQube 提出之改良指標，對深層巢狀結構施加遞增權重懲罰，貼合人類大腦閱讀程式碼的心智負荷）
+-->
+---
 <!-- id: ase-ch07-ccq4 -->
 ## 概念核對問答 (CCQ 4)：條件涵蓋度 vs. 分支涵蓋度
 
@@ -4112,6 +4496,203 @@ RIPR 模型（可達 Reachability、感染 Infection、傳播 Propagation、揭�
 難字與專業術語解說：
 - RIPR Model: RIPR 故障傳播模型（測試案例殺死變異體必經的可達、狀態感染、結果傳播與斷言揭露四階段）
 - Equivalent Mutant: 等價變異體（語法雖然被修改，但在所有可能輸入下之執行結果皆與原程式完全一致、永遠無法被任何測試殺死的變異體）
+-->
+---
+## 互動式變異測試實驗室：動態模擬 RIPR 傳播與獵殺變異體 (`MS = K/(M-E)`)
+
+<div class="mut-interactive-stage" id="mut-explorer">
+<div class="mut-nav-toolbar">
+  <button type="button" class="mut-mode-btn is-active" data-mut="s1">1. 脆弱測試集 (t₁, t₂) → MS=40%</button>
+  <button type="button" class="mut-mode-btn" data-mut="s2">2. +邊界 t₃(10,1) → 獵殺 P₁ (60%)</button>
+  <button type="button" class="mut-mode-btn" data-mut="s3">3. +邊界 t₄(8,6) → 獵殺 P₃ (80%)</button>
+  <button type="button" class="mut-mode-btn" data-mut="s4">4. +邊界 t₅(7,10) → 100% 全殲！</button>
+  <button type="button" class="mut-mode-btn" data-mut="s5">5. 為何等價變異體 P₆ 須扣除 (M-E)</button>
+</div>
+
+<div class="mut-content-grid">
+<div class="mut-left-card">
+  <div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+      <span style="font-size: 12px; font-weight: 800; color: #0b3c5d;">目標程式 <code>func(X, Y)</code> 與植入之 6 隻變異體（點擊任一列檢視 RIPR 狀態）：</span>
+      <span style="font-size: 10.5px; font-weight: 700; color: #64748b;">M=6, E=1 ➔ 可殺數=5</span>
+    </div>
+    <table class="mut-code-table">
+      <thead>
+        <tr>
+          <th style="width: 14%;">編號</th>
+          <th style="width: 44%;">原程式 vs. 植入之變異語法</th>
+          <th style="width: 20%;">變異算子</th>
+          <th style="width: 22%;">即時存活狀態</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="mut-row is-focused" data-mid="P1">
+          <td><strong>P₁</strong> (L2)</td>
+          <td><code>X &gt; 10</code> ➔ <strong style="color:#b45309;"><code>X &gt;= 10</code></strong></td>
+          <td>ROR (關係邊界)</td>
+          <td><span class="mut-status-pill is-alive" id="mut-st-P1">SURVIVED</span></td>
+        </tr>
+        <tr class="mut-row" data-mid="P2">
+          <td><strong>P₂</strong> (L2)</td>
+          <td><code>&amp;&amp; (Y==1)</code> ➔ <strong style="color:#0284c7;"><code>|| (Y==1)</code></strong></td>
+          <td>COR (邏輯算子)</td>
+          <td><span class="mut-status-pill is-killed" id="mut-st-P2">KILLED (t₂)</span></td>
+        </tr>
+        <tr class="mut-row" data-mid="P3">
+          <td><strong>P₃</strong> (L4)</td>
+          <td><code>(X-Y) &lt; 2</code> ➔ <strong style="color:#b45309;"><code>(X-Y) &lt;= 2</code></strong></td>
+          <td>ROR (關係邊界)</td>
+          <td><span class="mut-status-pill is-alive" id="mut-st-P3">SURVIVED</span></td>
+        </tr>
+        <tr class="mut-row" data-mid="P4">
+          <td><strong>P₄</strong> (L6)</td>
+          <td><code>Y &gt; 10</code> ➔ <strong style="color:#b45309;"><code>Y &gt;= 10</code></strong></td>
+          <td>ROR (關係邊界)</td>
+          <td><span class="mut-status-pill is-alive" id="mut-st-P4">SURVIVED</span></td>
+        </tr>
+        <tr class="mut-row" data-mid="P5">
+          <td><strong>P₅</strong> (L7)</td>
+          <td><code>X = 3;</code> ➔ <strong style="color:#0284c7;"><code>X = 4;</code></strong></td>
+          <td>AOR / 常數替換</td>
+          <td><span class="mut-status-pill is-killed" id="mut-st-P5">KILLED (t₂)</span></td>
+        </tr>
+        <tr class="mut-row" data-mid="P6">
+          <td><strong>P₆</strong> (L4)</td>
+          <td><code>(X-Y) &lt; 2</code> ➔ <strong style="color:#6b21a8;"><code>(X-Y) &lt;= 1</code></strong></td>
+          <td>等價變異體 (E)</td>
+          <td><span class="mut-status-pill is-equiv" id="mut-st-P6">EQUIVALENT</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wbc-tc-section">
+    <div class="wbc-tc-header">
+      <span>點選開關測試集 <code>T</code> 中的測試案例（即時觀察變異體被獵殺過程！）：</span>
+      <span id="mut-active-tc-label" style="color: #0284c7;">已啟用：2 / 5 筆測資</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;">
+      <div class="wbc-tc-pill is-active" data-mtc="t1"><span>t₁(12,1)</span></div>
+      <div class="wbc-tc-pill is-active" data-mtc="t2"><span>t₂(7,11)</span></div>
+      <div class="wbc-tc-pill" data-mtc="t3"><span>t₃(10,1)</span></div>
+      <div class="wbc-tc-pill" data-mtc="t4"><span>t₄(8,6)</span></div>
+      <div class="wbc-tc-pill" data-mtc="t5"><span>t₅(7,10)</span></div>
+    </div>
+  </div>
+
+  <div class="wbc-meters-box" style="padding: 6px 10px;">
+    <div class="wbc-meter-row">
+      <span>敘述覆蓋 (SC)</span>
+      <div class="wbc-bar-bg"><div class="wbc-bar-fill" id="mut-bar-sc" style="width: 100%; background: #16a34a;"></div></div>
+      <span class="wbc-meter-val" id="mut-val-sc">100% (8/8)</span>
+    </div>
+    <div class="wbc-meter-row">
+      <span>變異分數 (MS)</span>
+      <div class="wbc-bar-bg"><div class="wbc-bar-fill" id="mut-bar-ms" style="width: 40%; background: #f59e0b;"></div></div>
+      <span class="wbc-meter-val" id="mut-val-ms">40% (2/5)</span>
+    </div>
+  </div>
+</div>
+
+<div class="mut-right-card">
+  <div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+      <span class="ep-badge-pill ep-badge-amber" id="mut-mode-badge">100% 敘述涵蓋度 ≠ 高品質測試！</span>
+      <span style="font-size: 11.5px; font-weight: 800; color: #0f172a; font-family: 'Fira Code', monospace;" id="mut-score-formula">MS = 2 / (6 - 1) = 40%</span>
+    </div>
+    <table class="mut-matrix-table">
+      <thead>
+        <tr>
+          <th>程式 \ 測資</th>
+          <th>t₁(12,1)</th>
+          <th>t₂(7,11)</th>
+          <th>t₃(10,1)</th>
+          <th>t₄(8,6)</th>
+          <th>t₅(7,10)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>原程式 <code>P</code></th>
+          <td><strong>1</strong></td>
+          <td><strong>3</strong></td>
+          <td><strong>2</strong></td>
+          <td><strong>8</strong></td>
+          <td><strong>2</strong></td>
+        </tr>
+        <tr data-mrow="P1">
+          <th>P₁ (<code>X&gt;=10</code>)</th>
+          <td data-mcell="P1-t1">1</td>
+          <td data-mcell="P1-t2">3</td>
+          <td data-mcell="P1-t3">1 (Kill!)</td>
+          <td data-mcell="P1-t4">8</td>
+          <td data-mcell="P1-t5">2</td>
+        </tr>
+        <tr data-mrow="P2">
+          <th>P₂ (<code>&amp;&amp;➔||</code>)</th>
+          <td data-mcell="P2-t1">1</td>
+          <td data-mcell="P2-t2">1 (Kill!)</td>
+          <td data-mcell="P2-t3">1 (Kill!)</td>
+          <td data-mcell="P2-t4">8</td>
+          <td data-mcell="P2-t5">2</td>
+        </tr>
+        <tr data-mrow="P3">
+          <th>P₃ (<code>&lt;=2</code>)</th>
+          <td data-mcell="P3-t1">1</td>
+          <td data-mcell="P3-t2">3</td>
+          <td data-mcell="P3-t3">2</td>
+          <td data-mcell="P3-t4">2 (Kill!)</td>
+          <td data-mcell="P3-t5">2</td>
+        </tr>
+        <tr data-mrow="P4">
+          <th>P₄ (<code>Y&gt;=10</code>)</th>
+          <td data-mcell="P4-t1">1</td>
+          <td data-mcell="P4-t2">3</td>
+          <td data-mcell="P4-t3">2</td>
+          <td data-mcell="P4-t4">8</td>
+          <td data-mcell="P4-t5">3 (Kill!)</td>
+        </tr>
+        <tr data-mrow="P5">
+          <th>P₅ (<code>X=4</code>)</th>
+          <td data-mcell="P5-t1">1</td>
+          <td data-mcell="P5-t2">4 (Kill!)</td>
+          <td data-mcell="P5-t3">2</td>
+          <td data-mcell="P5-t4">8</td>
+          <td data-mcell="P5-t5">2</td>
+        </tr>
+        <tr data-mrow="P6">
+          <th>P₆ (等價 <code>E</code>)</th>
+          <td data-mcell="P6-t1">1 (==P)</td>
+          <td data-mcell="P6-t2">3 (==P)</td>
+          <td data-mcell="P6-t3">2 (==P)</td>
+          <td data-mcell="P6-t4">8 (==P)</td>
+          <td data-mcell="P6-t5">2 (==P)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <div style="font-size: 11.5px; font-weight: 800; color: #0b3c5d; margin-bottom: 3px;" id="mut-ripr-header">
+      當前聚焦變異體 <code>P₁ (X &gt;= 10)</code> 之 RIPR 四階段傳播鏈診斷：
+    </div>
+    <div class="mut-ripr-chain">
+      <div class="mut-ripr-step is-pass" id="mut-ripr-r"><span class="mut-ripr-title">1. 可達 Reach</span><span class="mut-ripr-sub" id="mut-ripr-r-txt">✓ 已執行第 2 行</span></div>
+      <div class="mut-ripr-step is-fail" id="mut-ripr-i"><span class="mut-ripr-title">2. 感染 Infect</span><span class="mut-ripr-sub" id="mut-ripr-i-txt">✗ 需邊界 X==10!</span></div>
+      <div class="mut-ripr-step is-fail" id="mut-ripr-p"><span class="mut-ripr-title">3. 傳播 Prop</span><span class="mut-ripr-sub" id="mut-ripr-p-txt">✗ 狀態未產生分歧</span></div>
+      <div class="mut-ripr-step is-fail" id="mut-ripr-rev"><span class="mut-ripr-title">4. 揭露 Reveal</span><span class="mut-ripr-sub" id="mut-ripr-rev-txt">✗ P(t)==P₁(t)</span></div>
+    </div>
+  </div>
+
+  <div id="mut-diag-box" style="padding: 7px 10px; border-radius: 8px; background: #fffbeb; border: 1.4px solid #f59e0b; color: #92400e; font-size: 11.6px; font-weight: 700; line-height: 1.35;">
+    💡 <strong>為何 100% 敘述涵蓋度仍讓 P₁, P₃, P₄ 存活：</strong> <code>t₁(12,1)</code> 與 <code>t₂(7,11)</code> 雖執行了每一行，卻未踩在精確邊界點（<code>X=10</code>、<code>X-Y=2</code>、<code>Y=10</code>），導致<strong>階段 2（狀態感染 Infection）</strong>未觸發！請點擊上方按鈕 2、3、4 注入邊界測資獵殺！
+  </div>
+</div>
+</div>
+</div>
+
+<!--
+這座互動式變異測試實驗室動態詮釋了「獵殺變異體 (Kill Mutant)」與 RIPR 四階段模型：即便 `t1(12,1)` 與 `t2(7,11)` 已經達成 100% 敘述涵蓋度（SC = 100%），3 隻關係邊界變異體 `P1 (X>=10)`、`P3 (X-Y<=2)` 與 `P4 (Y>=10)` 依然全部存活（變異分數 MS 僅 40%），因為 RIPR 的第二階段「狀態感染 (Infection)」根本未被觸發！當學生依序點擊上方按鈕 2、3、4 注入精確的 BVA 邊界點測資 `t3(10,1)`、`t4(8,6)` 與 `t5(7,10)` 時，即可親眼看到 RIPR 四階段全數亮起綠燈並將變異體逐一擊殺（MS 推進至 100%）；點擊按鈕 5 則能清楚看到等價變異體 `P6` 為何永遠無法在整數域上被感染，因此必須在公式 `MS = K / (M - E)` 中從分母扣除。
 -->
 ---
 ## 變異測試實戰推演 1：陣列最大值索引 `p(a)` (`ex_mutation_test`)
@@ -7120,6 +7701,761 @@ function initSmExplorer() {
     syncVisualStates();
   }
 
+  function initWbcInteractiveExplorer() {
+    const stage = document.getElementById("wbc-explorer");
+    if (!stage || stage.dataset.wbcBound) return;
+    stage.dataset.wbcBound = "true";
+
+    const modeBtns = Array.from(stage.querySelectorAll(".wbc-mode-btn"));
+    const tcPills = Array.from(stage.querySelectorAll(".wbc-tc-pill"));
+    const codeLines = Array.from(stage.querySelectorAll(".wbc-code-line"));
+
+    const tcs = {
+      t1: { A: 2, B: 0, X: 3, c1: true,  c2: true,  d1: true,  c3: true,  c4: true,  d2: true,  path: "a-c-e", edges: ["a", "c", "e"], lines: [1, 2, 3, 4, 5, 6] },
+      t2: { A: 1, B: 1, X: 1, c1: false, c2: false, d1: false, c3: false, c4: false, d2: false, path: "a-b-d", edges: ["a", "b", "d"], lines: [1, 2, 4, 6] },
+      t3: { A: 2, B: 1, X: 1, c1: true,  c2: false, d1: false, c3: true,  c4: false, d2: true,  path: "a-b-e", edges: ["a", "b", "e"], lines: [1, 2, 4, 5, 6] },
+      t4: { A: 1, B: 0, X: 2, c1: false, c2: true,  d1: false, c3: false, c4: true,  d2: true,  path: "a-b-e", edges: ["a", "b", "e"], lines: [1, 2, 4, 5, 6] },
+      t5: { A: 3, B: 0, X: 1, c1: true,  c2: true,  d1: true,  c3: false, c4: false, d2: false, path: "a-c-d", edges: ["a", "c", "d"], lines: [1, 2, 3, 4, 6] },
+      t6: { A: 3, B: 1, X: 1, c1: true,  c2: false, d1: false, c3: false, c4: false, d2: false, path: "a-b-d", edges: ["a", "b", "d"], lines: [1, 2, 4, 6] }
+    };
+
+    const modeConfigs = {
+      sc: {
+        activeTcs: ["t1"],
+        badge: "最薄弱基線 • 僅需 1 筆測資",
+        badgeClass: "ep-badge-green",
+        title: "1. 敘述涵蓋度 (Statement Coverage, SC = 100%)",
+        formula: "每行指令皆執行過",
+        details: [
+          "<strong>僅憑 1 筆測資達成 100% SC：</strong> <code>t₁(2, 0, 3)</code> 使 <code>D1=True</code>（執行第 3 行）且 <code>D2=True</code>（執行第 5 行），6 行程式碼全數亮綠燈！",
+          "<strong>為何 SC100 極度脆弱：</strong> 控制流圖上的 False 分支邊 <code>b</code> 與邊 <code>d</code> 完全未被測試（<strong>BC 僅 50%</strong>）。",
+          "<strong>隱藏缺陷遮蔽盲區：</strong> 若第 3 行有 Bug（如誤寫 <code>Y = 999</code>），沿路徑 <code>a-c-e</code> 走到第 5 行時會立刻被 <code>Y = X</code> 覆寫而漏抓！"
+        ],
+        tip: "💡 互動診斷提示：點擊上方「2. 分支涵蓋 (BC100)」或「3. CC100 悖論」按鈕，即時觀察條件涵蓋與分支涵蓋的分歧！"
+      },
+      bc: {
+        activeTcs: ["t1", "t6"],
+        badge: "每個決策皆走過 T 與 F • 2 筆測資",
+        badgeClass: "ep-badge-blue",
+        title: "2. 分支／決策涵蓋度 (Branch Coverage, BC = 100%)",
+        formula: "D1∈{T,F} 且 D2∈{T,F}",
+        details: [
+          "<strong>5 條 CFG 控制流邊全數點亮：</strong> <code>t₁(2,0,3)</code> 走 True 分支邊 <code>c, e</code>；<code>t₆(3,1,1)</code> 走 False 分支邊 <code>b, d</code> → <strong>達成 100% 分支涵蓋度</strong>！",
+          "<strong>包含保證 (Subsumption)：</strong> <code>100% BC</code> 必然保證達成 <code>100% SC</code>（6 行全綠）。",
+          "<strong>殘留的原子條件盲區：</strong> 請看左側第 2 行的 <code>C1 (A&gt;1)</code> 標籤——在 <code>t₁(A=2)</code> 與 <code>t₆(A=3)</code> 中，<code>C1</code> <strong>恆為 True</strong>（從未測過 False → <strong>CC 僅 88%</strong>）！"
+        ],
+        tip: "💡 關鍵發現：100% 分支涵蓋度並不能保證 100% 條件涵蓋度！請接著點擊「3. CC100 悖論」。"
+      },
+      cc: {
+        activeTcs: ["t3", "t4"],
+        badge: "著名覆蓋率悖論 • 100% CC ≠ 100% BC",
+        badgeClass: "ep-badge-amber",
+        title: "3. 條件涵蓋度悖論 (CC = 100%，但 BC 僅 50%！)",
+        formula: "每個原子條件 Cᵢ 皆經歷 {T, F}",
+        details: [
+          "<strong>100% 原子條件涵蓋度：</strong> 在 <code>t₃(2,1,1)</code> 與 <code>t₄(1,0,2)</code> 下，所有原子條件 <code>C1..C4</code> 皆經歷過 <code>True</code> 與 <code>False</code>（4 個標籤全亮綠燈 <code>T/F</code>）！",
+          "<strong>為何分支涵蓋度崩跌至 50%：</strong> 在 <code>t₃</code> 中 <code>D1 = T ∧ F = False</code>；在 <code>t₄</code> 中 <code>D1 = F ∧ T = False</code>！且 <code>D2</code> 恆為 <code>True</code>！",
+          "<strong>致命後果：</strong> 控制流邊 <code>c</code>（第 3 行 <code>Y = A</code>）與邊 <code>d</code> <strong>完全未被執行</strong>（敘述涵蓋度 SC 掉到 83%，第 3 行亮紅燈）！"
+        ],
+        tip: "⚠️ 悖論實證：100% 條件涵蓋度竟然連第 3 行的 if 內部區塊都沒進去過！"
+      },
+      bcc: {
+        activeTcs: ["t1", "t2"],
+        badge: "複合涵蓋準則 • 2 筆測資",
+        badgeClass: "ep-badge-blue",
+        title: "4. 分支／條件複合涵蓋度 (B/CC = 100%)",
+        formula: "100% BC + 100% CC",
+        details: [
+          "<strong>同時滿足雙準則：</strong> 以 <code>t₁(2,0,3)</code>（全 True）搭配 <code>t₂(1,1,1)</code>（全 False），僅用 2 筆測資即同時達成 <strong>100% SC + 100% BC + 100% CC</strong>！",
+          "<strong>為何 B/CC 仍被航太級 MC/DC 判定為 0%：</strong> 從 <code>t₁</code> 到 <code>t₂</code>，<code>C1</code> 與 <code>C2</code> 是<strong>同時一起翻轉</strong>的（<code>T,T ↔ F,F</code>）。",
+          "<strong>耦合遮蔽風險：</strong> 當兩個條件同時改變時，無法證明究竟是哪一個條件獨立促成決策 <code>D1</code> 或 <code>D2</code> 翻轉！"
+        ],
+        tip: "💡 為何波音與 NASA 不接受 B/CC：同時翻轉多個條件無法隔離單一條件瑕疵。請點擊「5. 航太級 MC/DC」！"
+      },
+      mcdc: {
+        activeTcs: ["t1", "t3", "t4", "t5"],
+        badge: "DO-178C Level A • n + 1 線性測資",
+        badgeClass: "ep-badge-purple",
+        title: "5. 航太級 MC/DC（100% 獨立影響配對證明）",
+        formula: "固定其餘條件、單獨翻轉 Cᵢ",
+        details: [
+          "<strong>決策 D1 (<code>C1 ∧ C2</code>) 之獨立影響配對：</strong><br/>• <strong>C1 配對 <code>(t₁, t₄)</code>：</strong> 固定 <code>C2=T</code>，單獨翻轉 <code>C1 (T↔F)</code> 使 <code>D1 (T↔F)</code> 翻轉！<br/>• <strong>C2 配對 <code>(t₁, t₃)</code>：</strong> 固定 <code>C1=T</code>，單獨翻轉 <code>C2 (T↔F)</code> 使 <code>D1 (T↔F)</code> 翻轉！",
+          "<strong>決策 D2 (<code>C3 ∨ C4</code>) 之獨立影響配對：</strong><br/>• <strong>C3 配對 <code>(t₃, t₅)</code>：</strong> 固定 <code>C4=F</code>，單獨翻轉 <code>C3 (T↔F)</code> 使 <code>D2 (T↔F)</code> 翻轉！<br/>• <strong>C4 配對 <code>(t₄, t₅)</code>：</strong> 固定 <code>C3=F</code>，單獨翻轉 <code>C4 (T↔F)</code> 使 <code>D2 (T↔F)</code> 翻轉！"
+        ],
+        tip: "✅ 達成 100% MC/DC：C₁..C₄ 每一個原子條件皆擁有嚴格的獨立影響配對 (Independence Pair)！"
+      },
+      path: {
+        activeTcs: ["t1", "t2", "t3", "t5"],
+        badge: "窮舉 4 條控制流路徑 • 100% 路徑涵蓋",
+        badgeClass: "ep-badge-green",
+        title: "6. 路徑涵蓋度 (All-Path Coverage, 4 / 4 條路徑 = 100%)",
+        formula: "涵蓋 {a-c-e, a-b-d, a-b-e, a-c-d}",
+        details: [
+          "<strong>走遍所有決策組合路徑：</strong><br/>• <code>t₁(2,0,3)</code> → <code>a-c-e</code> (T, T) &nbsp;｜&nbsp; <code>t₂(1,1,1)</code> → <code>a-b-d</code> (F, F)<br/>• <code>t₃(2,1,1)</code> → <code>a-b-e</code> (F, T) &nbsp;｜&nbsp; <code>t₅(3,0,1)</code> → <code>a-c-d</code> (T, F)",
+          "<strong>跨決策交互檢驗：</strong> 路徑 <code>a-c-d</code> (<code>t₅</code>) 確保第 3 行設定的 <code>Y = A</code> 能不被第 5 行覆寫而一路傳遞至第 6 行輸出！",
+          "<strong>迴圈路徑爆炸警告：</strong> 無迴圈雙菱形僅有 <code>2² = 4</code> 條路徑，但一旦包含 20 次迭代迴圈將暴增至 <code>4²⁰ ≈ 1.1 兆</code>條路徑！"
+        ],
+        tip: "🏆 4 條路徑全數走完！（若再勾選 t₄ 即可同時達成五大指標全部 100%！）歡迎手動點擊左側 t₁..t₆ 實驗！"
+      }
+    };
+
+    function evaluateCustomSelection(activeKeys) {
+      const linesHit = new Set();
+      const edgesHit = new Set();
+      const pathsHit = new Set();
+      const condVals = { c1: new Set(), c2: new Set(), c3: new Set(), c4: new Set() };
+      const activeList = activeKeys.map(k => tcs[k]).filter(Boolean);
+
+      activeList.forEach(tc => {
+        tc.lines.forEach(l => linesHit.add(l));
+        tc.edges.forEach(e => edgesHit.add(e));
+        pathsHit.add(tc.path);
+        condVals.c1.add(tc.c1);
+        condVals.c2.add(tc.c2);
+        condVals.c3.add(tc.c3);
+        condVals.c4.add(tc.c4);
+      });
+
+      let mcdcC1 = false, mcdcC2 = false, mcdcC3 = false, mcdcC4 = false;
+      for (let i = 0; i < activeList.length; i++) {
+        for (let j = i + 1; j < activeList.length; j++) {
+          const u = activeList[i], v = activeList[j];
+          if (u.c1 !== v.c1 && u.c2 === v.c2 && u.d1 !== v.d1) mcdcC1 = true;
+          if (u.c2 !== v.c2 && u.c1 === v.c1 && u.d1 !== v.d1) mcdcC2 = true;
+          if (u.c3 !== v.c3 && u.c4 === v.c4 && u.d2 !== v.d2) mcdcC3 = true;
+          if (u.c4 !== v.c4 && u.c3 === v.c3 && u.d2 !== v.d2) mcdcC4 = true;
+        }
+      }
+      const mcdcCount = (mcdcC1 ? 1 : 0) + (mcdcC2 ? 1 : 0) + (mcdcC3 ? 1 : 0) + (mcdcC4 ? 1 : 0);
+
+      codeLines.forEach(lineEl => {
+        const ln = Number(lineEl.getAttribute("data-line"));
+        lineEl.classList.remove("is-hit", "is-partial", "is-miss");
+        if (linesHit.has(ln)) {
+          if (ln === 2 && !(edgesHit.has("b") && edgesHit.has("c"))) lineEl.classList.add("is-partial");
+          else if (ln === 4 && !(edgesHit.has("d") && edgesHit.has("e"))) lineEl.classList.add("is-partial");
+          else lineEl.classList.add("is-hit");
+        } else {
+          lineEl.classList.add("is-miss");
+        }
+      });
+
+      function updateChip(id, label, setObj) {
+        const el = stage.querySelector("#" + id);
+        if (!el) return;
+        const hasT = setObj.has(true), hasF = setObj.has(false);
+        el.className = "wbc-cond-chip " + (hasT && hasF ? "is-both" : (hasT || hasF ? "is-partial" : ""));
+        el.textContent = label + ":" + (hasT && hasF ? "T/F" : (hasT ? "T" : (hasF ? "F" : "--")));
+      }
+      updateChip("wbc-c1-chip", "C1", condVals.c1);
+      updateChip("wbc-c2-chip", "C2", condVals.c2);
+      updateChip("wbc-c3-chip", "C3", condVals.c3);
+      updateChip("wbc-c4-chip", "C4", condVals.c4);
+
+      ["a", "b", "c", "d", "e"].forEach(eName => {
+        const pathEl = stage.querySelector("#wbc-edge-" + eName);
+        if (!pathEl) return;
+        const hit = edgesHit.has(eName);
+        pathEl.setAttribute("stroke", hit ? (eName === "b" || eName === "d" ? "#e11d48" : "#16a34a") : "#cbd5e1");
+        pathEl.setAttribute("stroke-width", hit ? "3" : "2.2");
+        pathEl.setAttribute("marker-end", hit ? "url(#wbc-arr-on)" : "url(#wbc-arr-off)");
+      });
+
+      const l3Node = stage.querySelector("#wbc-node-l3");
+      const l5Node = stage.querySelector("#wbc-node-l5");
+      if (l3Node) l3Node.setAttribute("fill", linesHit.has(3) ? "#dcfce7" : "#f8fafc");
+      if (l5Node) l5Node.setAttribute("fill", linesHit.has(5) ? "#dcfce7" : "#f8fafc");
+
+      const scCnt = linesHit.size;
+      const bcCnt = (edgesHit.has("b") ? 1 : 0) + (edgesHit.has("c") ? 1 : 0) + (edgesHit.has("d") ? 1 : 0) + (edgesHit.has("e") ? 1 : 0);
+      const ccCnt = condVals.c1.size + condVals.c2.size + condVals.c3.size + condVals.c4.size;
+      const pathCnt = pathsHit.size;
+
+      function setMeter(idSuffix, cnt, total) {
+        const pct = Math.round((cnt / total) * 100);
+        const bar = stage.querySelector("#wbc-bar-" + idSuffix);
+        const val = stage.querySelector("#wbc-val-" + idSuffix);
+        if (bar) {
+          bar.style.width = pct + "%";
+          bar.style.background = pct === 100 ? "#16a34a" : (pct >= 50 ? "#0284c7" : "#f59e0b");
+        }
+        if (val) val.textContent = cnt + "/" + total + " (" + pct + "%)";
+      }
+
+      setMeter("sc", scCnt, 6);
+      setMeter("bc", bcCnt, 4);
+      setMeter("cc", ccCnt, 8);
+      setMeter("mcdc", mcdcCount, 4);
+      setMeter("path", pathCnt, 4);
+
+      const cntLabel = stage.querySelector("#wbc-active-tc-count");
+      if (cntLabel) cntLabel.textContent = "已啟用：" + activeKeys.length + " 筆測資";
+      const pathsBox = stage.querySelector("#wbc-stat-paths");
+      if (pathsBox) pathsBox.textContent = (pathsHit.size ? Array.from(pathsHit).join(", ") : "無") + " (" + pathCnt + "/4)";
+    }
+
+    function applyPreset(modeKey) {
+      const cfg = modeConfigs[modeKey];
+      if (!cfg) return;
+      modeBtns.forEach(b => b.classList.toggle("is-active", b.getAttribute("data-wbc") === modeKey));
+      tcPills.forEach(p => p.classList.toggle("is-active", cfg.activeTcs.includes(p.getAttribute("data-tc"))));
+
+      const badge = stage.querySelector("#wbc-mode-badge");
+      const title = stage.querySelector("#wbc-mode-title");
+      const formula = stage.querySelector("#wbc-stat-formula");
+      const details = stage.querySelector("#wbc-details-list");
+      const tip = stage.querySelector("#wbc-diag-banner");
+
+      if (badge) {
+        badge.textContent = cfg.badge;
+        badge.className = "ep-badge-pill " + cfg.badgeClass;
+      }
+      if (title) title.textContent = cfg.title;
+      if (formula) formula.textContent = cfg.formula;
+      if (details) details.innerHTML = cfg.details.map(d => "<li>" + d + "</li>").join("");
+      if (tip) tip.textContent = cfg.tip;
+
+      evaluateCustomSelection(cfg.activeTcs);
+    }
+
+    modeBtns.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        applyPreset(this.getAttribute("data-wbc"));
+      });
+    });
+
+    tcPills.forEach(pill => {
+      pill.addEventListener("click", function(e) {
+        e.stopPropagation();
+        this.classList.toggle("is-active");
+        const activeKeys = tcPills.filter(p => p.classList.contains("is-active")).map(p => p.getAttribute("data-tc"));
+        evaluateCustomSelection(activeKeys);
+      });
+    });
+
+    applyPreset("sc");
+  }
+
+  function initMutInteractiveExplorer() {
+    const stage = document.getElementById("mut-explorer");
+    if (!stage || stage.dataset.mutBound) return;
+    stage.dataset.mutBound = "true";
+
+    const modeBtns = Array.from(stage.querySelectorAll(".mut-mode-btn"));
+    const tcPills = Array.from(stage.querySelectorAll("[data-mtc]"));
+    const mutRows = Array.from(stage.querySelectorAll(".mut-row"));
+
+    let focusedMutant = "P1";
+
+    const killsMap = {
+      P1: ["t3"],
+      P2: ["t2", "t3"],
+      P3: ["t4"],
+      P4: ["t5"],
+      P5: ["t2"],
+      P6: []
+    };
+
+    const riprInfo = {
+      P1: {
+        name: "P₁ (第 2 行: X > 10 ➔ X >= 10)",
+        reach: "✓ 已執行第 2 行",
+        infectPass: "✓ t₃(10,1): 10>10(F) ≠ 10>=10(T)!",
+        infectFail: "✗ 需精確邊界 X==10 且 Y==1!",
+        propPass: "✓ X 變為 1 (原程式 P 為 2)",
+        propFail: "✗ 分支走向與原程式相同",
+        revPass: "✓ assertEquals(2, 1) 失敗 ➔ 殺死!",
+        revFail: "✗ P(t) == P₁(t) (變異體存活)"
+      },
+      P2: {
+        name: "P₂ (第 2 行: && ➔ ||)",
+        reach: "✓ 已執行第 2 行",
+        infectPass: "✓ 單邊為真時觸發 || 分支分歧!",
+        infectFail: "✗ 需一真一假觸發邏輯分歧!",
+        propPass: "✓ 誤入第 3 行將 X 改為 1",
+        propFail: "✗ 分支走向與原程式相同",
+        revPass: "✓ assertEquals(3, 1) 失敗 ➔ 殺死!",
+        revFail: "✗ P(t) == P₂(t) (變異體存活)"
+      },
+      P3: {
+        name: "P₃ (第 4 行: (X-Y) < 2 ➔ (X-Y) <= 2)",
+        reach: "✓ D1 為假時抵達第 4 行",
+        infectPass: "✓ t₄(8,6): (8-6)<2(F) ≠ (8-6)<=2(T)!",
+        infectFail: "✗ 需精確邊界 (X - Y) == 2!",
+        propPass: "✓ X 被改寫為 2 (原程式 P 為 8)",
+        propFail: "✗ 分支走向與原程式相同",
+        revPass: "✓ assertEquals(8, 2) 失敗 ➔ 殺死!",
+        revFail: "✗ P(t) == P₃(t) (變異體存活)"
+      },
+      P4: {
+        name: "P₄ (第 6 行: Y > 10 ➔ Y >= 10)",
+        reach: "✓ 已執行第 6 行",
+        infectPass: "✓ t₅(7,10): 10>10(F) ≠ 10>=10(T)!",
+        infectFail: "✗ 需精確邊界 Y == 10!",
+        propPass: "✓ X 被改寫為 3 (原程式 P 為 2)",
+        propFail: "✗ 分支走向與原程式相同",
+        revPass: "✓ assertEquals(2, 3) 失敗 ➔ 殺死!",
+        revFail: "✗ P(t) == P₄(t) (變異體存活)"
+      },
+      P5: {
+        name: "P₅ (第 7 行: X = 3 ➔ X = 4)",
+        reach: "✓ 當 Y > 10 (t₂) 時抵達第 7 行",
+        infectPass: "✓ t₂(7,11): 將 X 設為 4 而非 3!",
+        infectFail: "✗ 未進入第 7 行 (需 Y > 10)",
+        propPass: "✓ 最終回傳 4 (原程式 P 為 3)",
+        propFail: "✗ 狀態差異未傳播",
+        revPass: "✓ assertEquals(3, 4) 失敗 ➔ 殺死!",
+        revFail: "✗ P(t) == P₅(t) (變異體存活)"
+      },
+      P6: {
+        name: "P₆ (第 4 行: (X-Y) < 2 ➔ (X-Y) <= 1) [等價變異體]",
+        reach: "✓ 已執行第 4 行",
+        infectPass: "",
+        infectFail: "✗ 整數域上 (X-Y)<2 ≡ (X-Y)<=1 恆等價!",
+        propPass: "",
+        propFail: "✗ 永遠不可能產生狀態分歧",
+        revPass: "",
+        revFail: "★ 必須從分母扣除 E=1 (M - E)!"
+      }
+    };
+
+    const presetConfigs = {
+      s1: {
+        tcs: ["t1", "t2"],
+        focus: "P1",
+        badge: "100% 敘述涵蓋度 ≠ 高品質測試 (MS = 40%)",
+        badgeClass: "ep-badge-amber",
+        diag: "💡 <strong>為何 100% 敘述涵蓋度仍讓 P₁, P₃, P₄ 存活：</strong> <code>t₁(12,1)</code> 與 <code>t₂(7,11)</code> 雖執行了每一行，卻未踩在精確邊界點（<code>X=10</code>、<code>X-Y=2</code>、<code>Y=10</code>），導致<strong>階段 2（狀態感染 Infection）</strong>未觸發！"
+      },
+      s2: {
+        tcs: ["t1", "t2", "t3"],
+        focus: "P1",
+        badge: "注入 BVA 邊界點 t₃(10,1) 獵殺 P₁ (MS: 40% ➔ 60%)",
+        badgeClass: "ep-badge-blue",
+        diag: "🎯 <strong>精準獵殺 P₁ (<code>X &gt; 10 ➔ X &gt;= 10</code>)：</strong> 補上邊界值 <code>t₃(10, 1)</code> 後，成功觸發<strong>階段 2 感染</strong>（原程式 <code>10&gt;10</code> 為假回傳 <code>2</code>，P₁ <code>10&gt;=10</code> 為真回傳 <code>1</code> ➔ <strong>斷言失敗擊殺！</strong>）。"
+      },
+      s3: {
+        tcs: ["t1", "t2", "t3", "t4"],
+        focus: "P3",
+        badge: "注入 BVA 邊界點 t₄(8,6) 獵殺 P₃ (MS: 60% ➔ 80%)",
+        badgeClass: "ep-badge-blue",
+        diag: "🎯 <strong>精準獵殺 P₃ (<code>(X-Y) &lt; 2 ➔ (X-Y) &lt;= 2</code>)：</strong> 補上滿足 <code>X - Y == 2</code> 的邊界測資 <code>t₄(8, 6)</code>，使第 4 行發生狀態感染（原程式回傳 <code>8</code>，P₃ 誤入第 5 行回傳 <code>2</code> ➔ <strong>擊殺！</strong>）。"
+      },
+      s4: {
+        tcs: ["t1", "t2", "t3", "t4", "t5"],
+        focus: "P4",
+        badge: "5 隻可殺變異體全數殲滅！(MS = 5/5 = 100%)",
+        badgeClass: "ep-badge-green",
+        diag: "🏆 <strong>達成 100% 變異分數！</strong> 補上 <code>t₅(7, 10)</code>（精確踩在 <code>Y == 10</code> 邊界）一舉擊殺 <code>P₄</code>！這證明了<strong>黑箱 BVA 邊界點正是獵殺白箱關係變異體 (ROR) 的數學利器</strong>！"
+      },
+      s5: {
+        tcs: ["t1", "t2", "t3", "t4", "t5"],
+        focus: "P6",
+        badge: "等價變異體 P₆ (E = 1) • 必須從分母 (M - E) 扣除",
+        badgeClass: "ep-badge-purple",
+        diag: "🧬 <strong>為何 P₆ 永遠殺不死：</strong> 對整數 <code>X, Y</code> 而言，<code>(X - Y) &lt; 2</code> 與 <code>(X - Y) &lt;= 1</code> 在數學上 100% 等價！RIPR 階段 2（感染）永遠不可能發生，故須從分母扣除 <code>E = 1</code>：<code>MS = 5 / (6 - 1) = 100%</code>。"
+      }
+    };
+
+    function updateMutView() {
+      const activeTcs = tcPills.filter(p => p.classList.contains("is-active")).map(p => p.getAttribute("data-mtc"));
+      const activeSet = new Set(activeTcs);
+
+      let killedCount = 0;
+      ["P1", "P2", "P3", "P4", "P5"].forEach(mid => {
+        const killers = killsMap[mid].filter(t => activeSet.has(t));
+        const isKilled = killers.length > 0;
+        if (isKilled) killedCount++;
+        const stEl = stage.querySelector("#mut-st-" + mid);
+        if (stEl) {
+          stEl.className = "mut-status-pill " + (isKilled ? "is-killed" : "is-alive");
+          stEl.textContent = isKilled ? ("KILLED (" + killers[0] + ")") : "SURVIVED";
+        }
+      });
+
+      ["P1", "P2", "P3", "P4", "P5", "P6"].forEach(mid => {
+        ["t1", "t2", "t3", "t4", "t5"].forEach(tid => {
+          const cell = stage.querySelector('[data-mcell="' + mid + '-' + tid + '"]');
+          if (!cell) return;
+          cell.classList.remove("is-kill-cell", "is-survive-cell", "is-dim-cell");
+          if (!activeSet.has(tid)) {
+            cell.classList.add("is-dim-cell");
+          } else if (killsMap[mid] && killsMap[mid].includes(tid)) {
+            cell.classList.add("is-kill-cell");
+          } else {
+            cell.classList.add("is-survive-cell");
+          }
+        });
+      });
+
+      mutRows.forEach(r => r.classList.toggle("is-focused", r.getAttribute("data-mid") === focusedMutant));
+
+      const rInfo = riprInfo[focusedMutant];
+      const fKillers = (killsMap[focusedMutant] || []).filter(t => activeSet.has(t));
+      const fKilled = fKillers.length > 0;
+      const rHeader = stage.querySelector("#mut-ripr-header");
+      if (rHeader && rInfo) {
+        rHeader.innerHTML = "當前聚焦變異體 <code>" + rInfo.name + "</code> 之 RIPR 四階段傳播鏈診斷：";
+      }
+
+      const stepR = stage.querySelector("#mut-ripr-r");
+      const stepI = stage.querySelector("#mut-ripr-i");
+      const stepP = stage.querySelector("#mut-ripr-p");
+      const stepRev = stage.querySelector("#mut-ripr-rev");
+      const txtR = stage.querySelector("#mut-ripr-r-txt");
+      const txtI = stage.querySelector("#mut-ripr-i-txt");
+      const txtP = stage.querySelector("#mut-ripr-p-txt");
+      const txtRev = stage.querySelector("#mut-ripr-rev-txt");
+
+      if (rInfo) {
+        const hasAnyTest = activeTcs.length > 0;
+        if (stepR) stepR.className = "mut-ripr-step " + (hasAnyTest ? "is-pass" : "is-fail");
+        if (txtR) txtR.textContent = hasAnyTest ? rInfo.reach : "✗ 未啟用任何測資";
+
+        if (stepI) stepI.className = "mut-ripr-step " + (fKilled ? "is-pass" : "is-fail");
+        if (txtI) txtI.textContent = fKilled ? rInfo.infectPass : rInfo.infectFail;
+
+        if (stepP) stepP.className = "mut-ripr-step " + (fKilled ? "is-pass" : "is-fail");
+        if (txtP) txtP.textContent = fKilled ? rInfo.propPass : rInfo.propFail;
+
+        if (stepRev) stepRev.className = "mut-ripr-step " + (fKilled ? "is-pass" : "is-fail");
+        if (txtRev) txtRev.textContent = fKilled ? rInfo.revPass : rInfo.revFail;
+      }
+
+      const msPct = Math.round((killedCount / 5) * 100);
+      const barMs = stage.querySelector("#mut-bar-ms");
+      const valMs = stage.querySelector("#mut-val-ms");
+      const formulaEl = stage.querySelector("#mut-score-formula");
+      const tcLabel = stage.querySelector("#mut-active-tc-label");
+
+      if (barMs) {
+        barMs.style.width = msPct + "%";
+        barMs.style.background = msPct === 100 ? "#16a34a" : (msPct >= 60 ? "#0284c7" : "#f59e0b");
+      }
+      if (valMs) valMs.textContent = msPct + "% (" + killedCount + "/5)";
+      if (formulaEl) formulaEl.textContent = "MS = " + killedCount + " / (6 - 1) = " + msPct + "%";
+      if (tcLabel) tcLabel.textContent = "已啟用：" + activeTcs.length + " / 5 筆測資";
+
+      const scPct = activeTcs.length === 0 ? 0 : (activeSet.has("t1") && activeSet.has("t2") ? 100 : 75);
+      const barSc = stage.querySelector("#mut-bar-sc");
+      const valSc = stage.querySelector("#mut-val-sc");
+      if (barSc) barSc.style.width = scPct + "%";
+      if (valSc) valSc.textContent = scPct + "% (" + (scPct === 100 ? "8/8" : (scPct === 75 ? "6/8" : "0/8")) + ")";
+    }
+
+    function applyMutPreset(key) {
+      const cfg = presetConfigs[key];
+      if (!cfg) return;
+      modeBtns.forEach(b => b.classList.toggle("is-active", b.getAttribute("data-mut") === key));
+      tcPills.forEach(p => p.classList.toggle("is-active", cfg.tcs.includes(p.getAttribute("data-mtc"))));
+      focusedMutant = cfg.focus;
+
+      const badge = stage.querySelector("#mut-mode-badge");
+      const diag = stage.querySelector("#mut-diag-box");
+      if (badge) {
+        badge.textContent = cfg.badge;
+        badge.className = "ep-badge-pill " + cfg.badgeClass;
+      }
+      if (diag) diag.innerHTML = cfg.diag;
+
+      updateMutView();
+    }
+
+    modeBtns.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        applyMutPreset(this.getAttribute("data-mut"));
+      });
+    });
+
+    tcPills.forEach(pill => {
+      pill.addEventListener("click", function(e) {
+        e.stopPropagation();
+        this.classList.toggle("is-active");
+        updateMutView();
+      });
+    });
+
+    mutRows.forEach(row => {
+      row.addEventListener("click", function(e) {
+        e.stopPropagation();
+        focusedMutant = this.getAttribute("data-mid") || "P1";
+        updateMutView();
+      });
+    });
+
+    applyMutPreset("s1");
+  }
+
+  function initBptInteractiveExplorer() {
+    const stage = document.getElementById("bpt-explorer");
+    if (!stage || stage.dataset.bptBound) return;
+    stage.dataset.bptBound = "true";
+
+    const btns = Array.from(stage.querySelectorAll(".bpt-btn"));
+    const codeLines = Array.from(stage.querySelectorAll(".bpt-code-line"));
+    const cfgEdges = Array.from(stage.querySelectorAll("[data-bedge]"));
+    const cfgNodes = Array.from(stage.querySelectorAll("[data-bcfgnode]"));
+    const pathRows = Array.from(stage.querySelectorAll(".bpt-path-row"));
+    const regionsLayer = stage.querySelector("#bpt-regions-layer");
+
+    const modeData = {
+      "vg-r": {
+        type: "vg",
+        showRegions: true,
+        predGlow: false,
+        allEdges: false,
+        badge: "方法 1：平面區域空間公式",
+        badgeClass: "ep-badge-blue",
+        formula: "V(G) = R = 5 + 1 = 6",
+        title: "平面區域計算：5 個封閉區域 + 1 個外部無限區域 = 6",
+        desc: "• <strong>5 個內部封閉區域：</strong> <code>R₁(2-3-9)</code>、<code>R₂(9-11-12-10)</code>、<code>R₃(4-5-7)</code>、<code>R₄(5-6-8-7)</code> 與 <code>R₅(2-3-4-5-6-8-2 迴圈)</code>。<br/>• <strong>+ 1 個外部無限區域 (<code>R₆</code>)</strong> ➔ <strong>圈複雜度 <code>V(G) = 6</code>（最多 6 條線性獨立路徑）</strong>！",
+        tip: "💡請看 CFG 圖上的 6 個彩色區域標籤 R₁..R₆！接著點擊上方「② 邊點法」或「③ 判定點法」。"
+      },
+      "vg-en": {
+        type: "vg",
+        showRegions: false,
+        predGlow: false,
+        allEdges: true,
+        badge: "方法 2：歐拉圖論邊點公式",
+        badgeClass: "ep-badge-green",
+        formula: "V(G) = E - N + 2 = 16 - 12 + 2 = 6",
+        title: "歐拉邊點計算：16 條有向邊 (E) - 12 個節點 (N) + 2 = 6",
+        desc: "• <strong>有向邊數 (<code>E = 16</code>)：</strong> 連接所有判斷與基本區塊的箭頭總數（左側 CFG 16 條邊全亮綠燈）。<br/>• <strong>節點總數 (<code>N = 12</code>)：</strong> 節點 <code>(1)..(12)</code> ➔ <strong><code>V(G) = 16 - 12 + 2 = 6</code></strong>（適用於任何單一入口／出口之控制流圖）！",
+        tip: "💡左側 16 條有向邊與 12 個節點已全數點亮！可清楚驗證 E - N + 2 = 6 與平面區域數完全相等。"
+      },
+      "vg-p": {
+        type: "vg",
+        showRegions: false,
+        predGlow: true,
+        allEdges: false,
+        badge: "方法 3：拆解後之二元判定節點公式",
+        badgeClass: "ep-badge-amber",
+        formula: "V(G) = P + 1 = 5 + 1 = 6",
+        title: "二元判定節點計算：5 個拆解後之單一條件判定點 + 1 = 6",
+        desc: "• <strong>複合條件拆解：</strong> <code>while (A &amp;&amp; B)</code> 拆為 <code>P1(2)</code> 與 <code>P2(3)</code>；<code>if (C &amp;&amp; D)</code> 拆為 <code>P3(4)</code> 與 <code>P4(5)</code>；外加 <code>if (valid&gt;0)</code> 為 <code>P5(9)</code>。<br/>• <strong>二元判定節點總數 <code>P = 5</code></strong> ➔ <strong><code>V(G) = P + 1 = 5 + 1 = 6</code></strong>！",
+        tip: "💡請看程式碼與 CFG 中發光的 5 個琥珀色判定節點 (2, 3, 4, 5, 9)！接著請點擊第二排 Path 1..Path 6！"
+      },
+      "p1": {
+        type: "path",
+        infeasible: true,
+        nodes: [1, 2, 9, 10, 12],
+        edges: ["1-2", "2-9", "9-10", "10-12"],
+        newEdges: ["9-10", "10-12"],
+        cumEdges: 4,
+        badge: "Path 1 / 6 • 不可行基準路徑 (Infeasible)！",
+        badgeClass: "ep-badge-purple",
+        formula: "1 ➔ 2(F) ➔ 9(T) ➔ 10 ➔ 12",
+        title: "Path 1：數學與資料流矛盾之不可行路徑 (Infeasible Path)！",
+        desc: "• <strong>為何 Path 1 不可行：</strong> 若在節點 <code>(2)</code> 首筆即遇到 <code>-999</code> 跳出迴圈，有效筆數 <strong><code>valid</code> 必為 <code>0</code></strong>。<br/>• 因此到了節點 <code>(9) if (valid &gt; 0)</code> 時<strong>絕對不可能為 True 進入節點 <code>(10)</code></strong>！邊 <code>9➔10➔12</code> 須併入 Path 6 測試。",
+        tip: "⚠️ 白箱核心洞察：圖論拓撲雖允許 1➔2➔9➔10➔12，但變數資料流語意使其成為不可行死路徑！"
+      },
+      "p2": {
+        type: "path",
+        infeasible: false,
+        nodes: [1, 2, 9, 11, 12],
+        edges: ["1-2", "2-9", "9-11", "11-12"],
+        newEdges: ["1-2", "2-9", "9-11", "11-12"],
+        cumEdges: 4,
+        badge: "Path 2 / 6 • 可行最短基準路徑",
+        badgeClass: "ep-badge-green",
+        formula: "1 ➔ 2(F) ➔ 9(F) ➔ 11 ➔ 12",
+        title: "Path 2：首筆即終止符跳出 (grade = {-999} ➔ avg = -999.0)",
+        desc: "• <strong>新增線性獨立邊（亮橘色）：</strong> <code>1➔2</code>、<code>2➔9 (False)</code>、<code>9➔11 (False)</code>、<code>11➔12</code>。<br/>• <strong>測試案例：</strong> <code>grade = {-999}</code>（0 筆有效成績，<code>valid == 0</code> 於節點 9 走 False 分支進入節點 11 回傳 <code>-999.0</code>）。",
+        tip: "✅ Path 2 涵蓋了 4 / 16 條 CFG 邊。請接著點擊 Path 3 測試 while 的第二個條件節點 (3)！"
+      },
+      "p3": {
+        type: "path",
+        infeasible: false,
+        nodes: [1, 2, 3, 9, 10, 12],
+        edges: ["1-2", "2-3", "3-9", "9-10", "10-12"],
+        newEdges: ["2-3", "3-9"],
+        cumEdges: 8,
+        badge: "Path 3 / 6 • 迴圈容量上限邊界",
+        badgeClass: "ep-badge-blue",
+        formula: "1 ➔ 2(T) ➔ 3(F) ➔ 9 ➔ 10 ➔ 12",
+        title: "Path 3：觸發 50 筆人數容量上限 (i == 50 於節點 3 跳出迴圈)",
+        desc: "• <strong>新增線性獨立邊（亮橘色）：</strong> <code>2➔3 (True)</code> 與 <code>3➔9 (False: 滿 50 筆後 i &lt; 50 不成立跳出)</code>。<br/>• <strong>測試案例：</strong> 輸入 <code>51</code> 筆有效成績（如 50 個 <code>80</code> 後接 <code>90</code>）➔ 第 51 筆於節點 3 跳出並進入節點 10 算出平均 <code>80.0</code>！",
+        tip: "✅ Path 3 證明了為何 while(A && B) 必須拆為節點 2 與節點 3！累積邊涵蓋：8 / 16 (50%)。"
+      },
+      "p4": {
+        type: "path",
+        infeasible: false,
+        nodes: [1, 2, 3, 4, 7, 8, 9, 11, 12],
+        edges: ["1-2", "2-3", "3-4", "4-7", "7-8", "8-2", "2-9", "9-11", "11-12"],
+        newEdges: ["3-4", "4-7", "7-8", "8-2"],
+        cumEdges: 12,
+        badge: "Path 4 / 6 • 成績低於下限 (< 10)",
+        badgeClass: "ep-badge-amber",
+        formula: "1➔2➔3➔4(F)➔7➔8➔2➔9➔11➔12",
+        title: "Path 4：成績低於下限錯誤分支 (grade = {5, -999} ➔ 節點 7)",
+        desc: "• <strong>新增線性獨立邊（亮橘色）：</strong> <code>3➔4 (True)</code>、<code>4➔7 (False: grade &lt; min)</code>、<code>7➔8</code> 與迴圈回邊 <code>8➔2</code>。<br/>• <strong>測試案例：</strong> <code>grade = {5, -999}</code>（成績 <code>5 &lt; 10</code> 於判定節點 4 短路跳至節點 7 印出範圍錯誤，回傳 <code>-999.0</code>）。",
+        tip: "✅ Path 4 驗證了 if(grade>=min && grade<=max) 的第一條短路 False 出口！累積邊涵蓋：12 / 16 (75%)。"
+      },
+      "p5": {
+        type: "path",
+        infeasible: false,
+        nodes: [1, 2, 3, 4, 5, 7, 8, 9, 11, 12],
+        edges: ["1-2", "2-3", "3-4", "4-5", "5-7", "7-8", "8-2", "2-9", "9-11", "11-12"],
+        newEdges: ["4-5", "5-7"],
+        cumEdges: 14,
+        badge: "Path 5 / 6 • 成績高於上限 (> 100)",
+        badgeClass: "ep-badge-amber",
+        formula: "1➔2➔3➔4(T)➔5(F)➔7➔8➔2..",
+        title: "Path 5：成績高於上限錯誤分支 (grade = {105, -999} ➔ 節點 5 至 7)",
+        desc: "• <strong>新增線性獨立邊（亮橘色）：</strong> <code>4➔5 (True: &gt;= 10)</code> 與 <code>5➔7 (False: 105 &lt;= 100 不成立)</code>。<br/>• <strong>測試案例：</strong> <code>grade = {105, -999}</code>（通過節點 4 下限檢查，但於節點 5 上限檢查失敗進入節點 7）。",
+        tip: "✅ Path 5 驗證了複合範圍判斷的第二段分支 (4➔5➔7)！累積邊涵蓋：14 / 16 (88%)。"
+      },
+      "p6": {
+        type: "path",
+        infeasible: false,
+        nodes: [1, 2, 3, 4, 5, 6, 8, 9, 10, 12],
+        edges: ["1-2", "2-3", "3-4", "4-5", "5-6", "6-8", "8-2", "2-9", "9-10", "10-12"],
+        newEdges: ["5-6", "6-8", "9-10", "10-12"],
+        cumEdges: 16,
+        badge: "Path 6 / 6 • 正常累加與平均計算 (100% 完整涵蓋！)",
+        badgeClass: "ep-badge-green",
+        formula: "1➔2➔3➔4➔5➔6➔8➔2➔9(T)➔10➔12",
+        title: "Path 6：有效成績累加與平均輸出 (grade = {80, 90, -999} ➔ 85.0)",
+        desc: "• <strong>新增線性獨立邊（亮橘色）：</strong> <code>5➔6 (True)</code>、<code>6➔8</code>，並一併驗證可行的 <code>9➔10 (valid &gt; 0)</code> 與 <code>10➔12</code>！<br/>• <strong>測試案例：</strong> <code>grade = {80, 90, -999}</code>（成功累加 <code>valid = 2</code>，進入節點 10 算出正確平均 <code>85.0</code>）。",
+        tip: "🏆 16 / 16 條 CFG 邊與 12 / 12 個節點全數涵蓋（100% SC + 100% BC + 100% 拆解條件涵蓋）！"
+      }
+    };
+
+    function renderBptMode(key) {
+      const d = modeData[key];
+      if (!d) return;
+
+      btns.forEach(b => b.classList.toggle("is-active", b.getAttribute("data-bpt") === key));
+      pathRows.forEach(r => r.classList.toggle("is-selected", r.getAttribute("data-prow") === key));
+
+      if (regionsLayer) {
+        regionsLayer.style.opacity = d.showRegions ? "1" : "0.15";
+      }
+
+      const predNodes = new Set([2, 3, 4, 5, 9]);
+      const activeNodes = new Set(d.nodes || []);
+      const activeEdges = new Set(d.edges || []);
+      const newEdges = new Set(d.newEdges || []);
+
+      codeLines.forEach(line => {
+        const n = Number(line.getAttribute("data-bnode"));
+        line.classList.remove("is-pred-glow", "is-path-hit", "is-new-edge");
+        if (d.type === "vg") {
+          if (d.predGlow && predNodes.has(n)) line.classList.add("is-pred-glow");
+          else if (d.allEdges) line.classList.add("is-path-hit");
+        } else {
+          if (activeNodes.has(n)) {
+            line.classList.add(d.infeasible ? "is-new-edge" : "is-path-hit");
+          }
+        }
+      });
+
+      cfgNodes.forEach(c => {
+        const n = Number(c.getAttribute("data-bcfgnode"));
+        const isPred = predNodes.has(n);
+        if (d.type === "vg") {
+          if (d.predGlow && isPred) {
+            c.setAttribute("fill", "#fde047");
+            c.setAttribute("stroke", "#b45309");
+            c.setAttribute("stroke-width", "3");
+          } else if (d.allEdges) {
+            c.setAttribute("fill", "#dcfce7");
+            c.setAttribute("stroke", "#16a34a");
+            c.setAttribute("stroke-width", "2.4");
+          } else {
+            c.setAttribute("fill", isPred ? "#fef3c7" : "#f1f5f9");
+            c.setAttribute("stroke", isPred ? "#d97706" : "#475569");
+            c.setAttribute("stroke-width", isPred ? "2" : "1.8");
+          }
+        } else {
+          if (activeNodes.has(n)) {
+            c.setAttribute("fill", d.infeasible ? "#ffe4e6" : "#dcfce7");
+            c.setAttribute("stroke", d.infeasible ? "#e11d48" : "#16a34a");
+            c.setAttribute("stroke-width", "2.8");
+          } else {
+            c.setAttribute("fill", "#f8fafc");
+            c.setAttribute("stroke", "#cbd5e1");
+            c.setAttribute("stroke-width", "1.5");
+          }
+        }
+      });
+
+      cfgEdges.forEach(eEl => {
+        const eid = eEl.getAttribute("data-bedge");
+        eEl.removeAttribute("stroke-dasharray");
+        if (d.type === "vg") {
+          if (d.allEdges) {
+            eEl.setAttribute("stroke", "#16a34a");
+            eEl.setAttribute("stroke-width", "2.6");
+            eEl.setAttribute("marker-end", "url(#bpt-arr-act)");
+          } else {
+            eEl.setAttribute("stroke", "#64748b");
+            eEl.setAttribute("stroke-width", "2");
+            eEl.setAttribute("marker-end", "url(#bpt-arr-def)");
+          }
+        } else {
+          if (newEdges.has(eid)) {
+            eEl.setAttribute("stroke", d.infeasible ? "#e11d48" : "#ea580c");
+            eEl.setAttribute("stroke-width", "3.4");
+            if (d.infeasible) eEl.setAttribute("stroke-dasharray", "5,3");
+            eEl.setAttribute("marker-end", d.infeasible ? "url(#bpt-arr-inf)" : "url(#bpt-arr-new)");
+          } else if (activeEdges.has(eid)) {
+            eEl.setAttribute("stroke", d.infeasible ? "#f43f5e" : "#16a34a");
+            eEl.setAttribute("stroke-width", "2.8");
+            eEl.setAttribute("marker-end", d.infeasible ? "url(#bpt-arr-inf)" : "url(#bpt-arr-act)");
+          } else {
+            eEl.setAttribute("stroke", "#cbd5e1");
+            eEl.setAttribute("stroke-width", "1.6");
+            eEl.setAttribute("marker-end", "url(#bpt-arr-def)");
+          }
+        }
+      });
+
+      const badge = stage.querySelector("#bpt-mode-badge");
+      const formula = stage.querySelector("#bpt-formula-pill");
+      const title = stage.querySelector("#bpt-mode-title");
+      const desc = stage.querySelector("#bpt-dynamic-desc");
+      const tip = stage.querySelector("#bpt-bottom-tip");
+      const barEdges = stage.querySelector("#bpt-bar-edges");
+      const valEdges = stage.querySelector("#bpt-val-edges");
+
+      if (badge) {
+        badge.textContent = d.badge;
+        badge.className = "ep-badge-pill " + d.badgeClass;
+      }
+      if (formula) formula.textContent = d.formula;
+      if (title) title.textContent = d.title;
+      if (desc) desc.innerHTML = d.desc;
+      if (tip) tip.innerHTML = d.tip;
+
+      const edgeCnt = d.type === "vg" ? 16 : d.cumEdges;
+      const pct = Math.round((edgeCnt / 16) * 100);
+      if (barEdges) {
+        barEdges.style.width = pct + "%";
+        barEdges.style.background = d.infeasible ? "#e11d48" : (pct === 100 ? "#16a34a" : "#0284c7");
+      }
+      if (valEdges) valEdges.textContent = edgeCnt + "/16 (" + pct + "%)";
+    }
+
+    btns.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        renderBptMode(this.getAttribute("data-bpt"));
+      });
+    });
+
+    pathRows.forEach(row => {
+      row.addEventListener("click", function(e) {
+        e.stopPropagation();
+        renderBptMode(this.getAttribute("data-prow"));
+      });
+    });
+
+    renderBptMode("vg-r");
+  }
+
   function init() {
     initOutlineLinksAndQuizBlanks();
     initHeaderDropdown();
@@ -7136,6 +8472,9 @@ function initSmExplorer() {
     initSmExplorer();
     initSelfPracticeQuizzes();
     initStackInteractiveLab();
+    initWbcInteractiveExplorer();
+    initMutInteractiveExplorer();
+    initBptInteractiveExplorer();
   }
 
   if (document.readyState === 'loading') {

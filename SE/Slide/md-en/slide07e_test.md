@@ -47,8 +47,8 @@ In software engineering, writing code is only half the battle. Delivering a depe
     <h3>Part 2: Combinatorial, White-Box & Integration</h3>
     <ul>
       <li><a href="#64"><b>7.4 Combinatorial, State & Property-Based Testing:</b></a> Pairwise (All-Pairs) & IPO greedy trace, AllPairs4J, State Transition testing, Property-Based Testing (jqwik & Shrinking), Metamorphic Relations (MR).</li>
-      <li><a href="#86"><b>7.5 White-Box Coverage & Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit & JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, 100% coverage myths, Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
-      <li><a href="#107"><b>7.6 Integration Testing, Test Doubles & Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
+      <li><a href="#86"><b>7.5 White-Box Coverage, Basis Path &amp; Mutation Testing:</b></a> Spec-vs-Code 4 quadrants, SC/BC/CC, Short-Circuit &amp; JaCoCo yellow diamond, MCC, Path explosion, Avionics MC/DC, McCabe Cyclomatic Complexity V(G) &amp; Basis Path Testing, Loop/Data-Flow &amp; Cognitive Complexity (CogC), Mutation Testing (RIPR, Equivalent Mutants, PITest).</li>
+      <li><a href="#113"><b>7.6 Integration Testing, Test Doubles &amp; Mockito:</b></a> V-Model contract mismatch, Constructor DI, Bottom-Up (Drivers) vs. Top-Down (Stubs) vs. Sandwich, 5 Test Doubles, Mockito (mock, spy, verify), Brittle Tests.</li>
     </ul>
   </div>
 </div>
@@ -3607,6 +3607,117 @@ We use this 6-line benchmark program and its Control Flow Graph on the right to 
 - subsumption hierarchy: 涵蓋包含階層（若覆蓋準則 A 嚴格包含準則 B，代表任何達到 100% A 的測試集必然同時達到 100% B）
 -->
 ---
+## Interactive White-Box Coverage Explorer: SC, BC, CC, MC/DC & Path
+
+<div class="wbc-interactive-stage" id="wbc-explorer">
+<div class="wbc-nav-toolbar">
+  <button type="button" class="wbc-mode-btn is-active" data-wbc="sc">1. Statement (SC100)</button>
+  <button type="button" class="wbc-mode-btn" data-wbc="bc">2. Branch (BC100)</button>
+  <button type="button" class="wbc-mode-btn" data-wbc="cc">3. CC100 Paradox (BC=50%)</button>
+  <button type="button" class="wbc-mode-btn" data-wbc="bcc">4. Branch/Cond (B/CC100)</button>
+  <button type="button" class="wbc-mode-btn" data-wbc="mcdc">5. Avionics MC/DC (n+1)</button>
+  <button type="button" class="wbc-mode-btn" data-wbc="path">6. All-Path (100%)</button>
+</div>
+
+<div class="wbc-content-grid">
+<div class="wbc-left-card">
+  <div class="wbc-code-cfg-row">
+    <div class="wbc-code-panel">
+      <div class="wbc-code-line" data-line="1"><span>1: input A, B, X</span><span class="wbc-cond-chip" id="wbc-l1-tag">Entry</span></div>
+      <div class="wbc-code-line" data-line="2"><span>2: if (A&gt;1) and (B==0)</span><span><span class="wbc-cond-chip" id="wbc-c1-chip">C1:--</span><span class="wbc-cond-chip" id="wbc-c2-chip">C2:--</span></span></div>
+      <div class="wbc-code-line" data-line="3"><span>3: &nbsp;&nbsp;&nbsp;&nbsp;Y = A</span><span class="wbc-cond-chip" id="wbc-ec-chip">Edge c</span></div>
+      <div class="wbc-code-line" data-line="4"><span>4: if (A==2) or (X&gt;1)</span><span><span class="wbc-cond-chip" id="wbc-c3-chip">C3:--</span><span class="wbc-cond-chip" id="wbc-c4-chip">C4:--</span></span></div>
+      <div class="wbc-code-line" data-line="5"><span>5: &nbsp;&nbsp;&nbsp;&nbsp;Y = X</span><span class="wbc-cond-chip" id="wbc-ee-chip">Edge e</span></div>
+      <div class="wbc-code-line" data-line="6"><span>6: print Y</span><span class="wbc-cond-chip" id="wbc-l6-tag">Exit</span></div>
+    </div>
+    <div class="wbc-cfg-panel">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 205" width="100%" height="100%">
+<defs>
+<marker id="wbc-arr-on" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#16a34a"/></marker>
+<marker id="wbc-arr-off" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#cbd5e1"/></marker>
+</defs>
+<path id="wbc-edge-a" d="M 115 6 L 115 24" stroke="#16a34a" stroke-width="2.6" fill="none" marker-end="url(#wbc-arr-on)"/>
+<text x="123" y="18" font-size="9.5" font-weight="800" fill="#0f172a">a</text>
+<polygon id="wbc-node-d1" points="115,25 168,45 115,65 62,45" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
+<text x="115" y="48" font-size="9.5" font-weight="800" fill="#0b3c5d" text-anchor="middle">D1: C1 ∧ C2</text>
+<path id="wbc-edge-c" d="M 168 45 L 195 45 L 195 75 L 115 103" stroke="#cbd5e1" stroke-width="2.4" fill="none" marker-end="url(#wbc-arr-off)"/>
+<rect x="166" y="54" width="54" height="22" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4" id="wbc-node-l3"/>
+<text x="193" y="68" font-size="9" font-weight="800" fill="#166534" text-anchor="middle">L3: Y=A</text>
+<text x="180" y="39" font-size="9" font-weight="800" fill="#15803d">c (T)</text>
+<path id="wbc-edge-b" d="M 62 45 L 36 45 L 36 86 L 115 103" stroke="#cbd5e1" stroke-width="2.4" fill="none" marker-end="url(#wbc-arr-off)"/>
+<text x="26" y="68" font-size="9" font-weight="800" fill="#be123c">b (F)</text>
+<polygon id="wbc-node-d2" points="115,105 168,125 115,145 62,125" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
+<text x="115" y="128" font-size="9.5" font-weight="800" fill="#0b3c5d" text-anchor="middle">D2: C3 ∨ C4</text>
+<path id="wbc-edge-e" d="M 168 125 L 195 125 L 195 155 L 115 182" stroke="#cbd5e1" stroke-width="2.4" fill="none" marker-end="url(#wbc-arr-off)"/>
+<rect x="166" y="134" width="54" height="22" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4" id="wbc-node-l5"/>
+<text x="193" y="148" font-size="9" font-weight="800" fill="#166534" text-anchor="middle">L5: Y=X</text>
+<text x="180" y="119" font-size="9" font-weight="800" fill="#15803d">e (T)</text>
+<path id="wbc-edge-d" d="M 62 125 L 36 125 L 36 166 L 115 182" stroke="#cbd5e1" stroke-width="2.4" fill="none" marker-end="url(#wbc-arr-off)"/>
+<text x="26" y="148" font-size="9" font-weight="800" fill="#be123c">d (F)</text>
+<rect x="78" y="182" width="74" height="19" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+<text x="115" y="195" font-size="9.5" font-weight="800" fill="#0369a1" text-anchor="middle">L6: print Y</text>
+</svg>
+    </div>
+  </div>
+
+  <div class="wbc-tc-section">
+    <div class="wbc-tc-header">
+      <span>Click Presets Above or Toggle Individual Test Vectors <code>(A, B, X)</code> Below:</span>
+      <span id="wbc-active-tc-count" style="color: #0284c7;">Active: 1 Test</span>
+    </div>
+    <div class="wbc-tc-grid">
+      <div class="wbc-tc-pill is-active" data-tc="t1"><span>t₁(2, 0, 3)</span><span class="wbc-tc-tag">a-c-e</span></div>
+      <div class="wbc-tc-pill" data-tc="t2"><span>t₂(1, 1, 1)</span><span class="wbc-tc-tag">a-b-d</span></div>
+      <div class="wbc-tc-pill" data-tc="t3"><span>t₃(2, 1, 1)</span><span class="wbc-tc-tag">a-b-e</span></div>
+      <div class="wbc-tc-pill" data-tc="t4"><span>t₄(1, 0, 2)</span><span class="wbc-tc-tag">a-b-e</span></div>
+      <div class="wbc-tc-pill" data-tc="t5"><span>t₅(3, 0, 1)</span><span class="wbc-tc-tag">a-c-d</span></div>
+      <div class="wbc-tc-pill" data-tc="t6"><span>t₆(3, 1, 1)</span><span class="wbc-tc-tag">a-b-d</span></div>
+    </div>
+  </div>
+
+  <div class="wbc-meters-box">
+    <div class="wbc-meter-row"><span>1. Statement (SC)</span><div class="wbc-bar-bg"><div class="wbc-bar-fill" id="wbc-bar-sc"></div></div><span class="wbc-meter-val" id="wbc-val-sc">6/6 (100%)</span></div>
+    <div class="wbc-meter-row"><span>2. Branch (BC)</span><div class="wbc-bar-bg"><div class="wbc-bar-fill" id="wbc-bar-bc"></div></div><span class="wbc-meter-val" id="wbc-val-bc">2/4 (50%)</span></div>
+    <div class="wbc-meter-row"><span>3. Condition (CC)</span><div class="wbc-bar-bg"><div class="wbc-bar-fill" id="wbc-bar-cc"></div></div><span class="wbc-meter-val" id="wbc-val-cc">4/8 (50%)</span></div>
+    <div class="wbc-meter-row"><span>4. MC/DC Pairs</span><div class="wbc-bar-bg"><div class="wbc-bar-fill" id="wbc-bar-mcdc"></div></div><span class="wbc-meter-val" id="wbc-val-mcdc">0/4 (0%)</span></div>
+    <div class="wbc-meter-row"><span>5. Path Coverage</span><div class="wbc-bar-bg"><div class="wbc-bar-fill" id="wbc-bar-path"></div></div><span class="wbc-meter-val" id="wbc-val-path">1/4 (25%)</span></div>
+  </div>
+</div>
+
+<div class="wbc-right-card">
+  <div>
+    <span class="ep-badge-pill ep-badge-green" id="wbc-mode-badge">Weakest Baseline • 1 Test Case</span>
+    <h3 class="ep-title-text" id="wbc-mode-title" style="font-size: 17px; margin-top: 2px;">1. Statement Coverage (SC = 100%)</h3>
+  </div>
+  <div class="ep-stats-row" style="margin: 6px 0;">
+    <div class="ep-stat-box" style="padding: 6px 10px;">
+      <div class="ep-stat-label">Criterion Target</div>
+      <div class="ep-stat-val" id="wbc-stat-formula" style="font-size: 16px;">Every Line Executed</div>
+    </div>
+    <div class="ep-stat-box" style="padding: 6px 10px;">
+      <div class="ep-stat-label">Active Paths</div>
+      <div class="ep-stat-val" id="wbc-stat-paths" style="font-size: 16px;">a-c-e (1/4)</div>
+    </div>
+  </div>
+  <ul class="ep-details-list" id="wbc-details-list" style="font-size: 12.6px; line-height: 1.42; flex: 1;">
+    <li><strong>How 1 Test Hits 100% SC:</strong> <code>t₁(2, 0, 3)</code> makes <code>D1=True</code> (runs Line 3) and <code>D2=True</code> (runs Line 5), turning all 6 lines green!</li>
+    <li><strong>Why SC100 Is Dangerously Weak:</strong> Edges <code>b</code> and <code>d</code> (the <code>False</code> branches) remain completely untested (<strong>BC = 50%</strong>).</li>
+    <li><strong>Hidden Bug Blind Spot:</strong> If Line 3 had a bug (<code>Y = 999</code>), Line 5 immediately overwrites <code>Y = X</code> along path <code>a-c-e</code>, masking the defect!</li>
+  </ul>
+  <div id="wbc-diag-banner" style="padding: 7px 10px; border-radius: 8px; background: #fffbeb; border: 1.4px solid #f59e0b; color: #92400e; font-size: 11.8px; font-weight: 700; line-height: 1.35;">
+    💡 Diagnostic Tip: Click "2. Branch (BC100)" or "3. CC100 Paradox" above to see how Condition and Branch coverage diverge!
+  </div>
+</div>
+</div>
+</div>
+
+<!--
+This interactive White-Box Coverage Explorer lets students click through all 6 structural coverage criteria (Statement SC, Branch BC, Condition CC Paradox, Branch/Condition B/CC, Avionics MC/DC, and All-Path Coverage) or manually toggle individual test vectors `t1..t6` to watch the code lines, CFG edges (`a, b, c, d, e`), atomic condition truth badges (`C1..C4`), and live coverage progress bars update in real time.
+
+💡 難字與專業術語解說：
+- Control Flow Graph (CFG) edge activation: 控制流圖邊激活（當測試案例實際走過決策節點的 True 或 False 分支時，將對應控制流邊點亮標記為已涵蓋的動態追蹤機制）
+-->
+---
 ## 1. Statement Coverage (SC) & 2. Branch / Decision Coverage (BC)
 
 <div class="card-deck">
@@ -3961,6 +4072,279 @@ Look at how Stage 1 (Weak Happy Path), Stage 2 (Black-Box Pairwise), and Stage 3
 - infeasible branch / path: 不可行分支／死路徑（因前後條件矛盾或數學遞移律限制，在任何輸入下皆不可能被觸發的邏輯分支）
 -->
 ---
+## Basis Path Testing (McCabe, 1976): 4-Step SOP & CFG Rules
+
+<div class="card-deck">
+
+> **Thomas J. McCabe (1976)** applied graph theory to testing: **Cyclomatic Complexity `V(G)`** defines the exact size of the **Linearly Independent Basis Path Set** for **100% Statement & Branch Coverage**!
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px; line-height: 1.33;">
+
+### McCabe's 4-Step Basis Path Testing SOP
+1. **Step 1 — Draw the Control Flow Graph (CFG):**
+   - Decompose every compound boolean expression (`if (A && B)`) into **separate binary predicate nodes**!
+2. **Step 2 — Compute Cyclomatic Complexity `V(G)`:**
+   - **`V(G) = R`** (enclosed planar regions + `1` outer region)
+   - **`V(G) = E - N + 2`** (`E`: edges, `N`: nodes)
+   - **`V(G) = P + 1`** (`P`: binary predicate nodes; `V(G) = 1` if `P = 0`)
+3. **Step 3 — Derive `V(G)` Independent Basis Paths:**
+   - Each new path must traverse **at least one new unvisited edge**.
+4. **Step 4 — Design Test Cases & Prune Infeasible Paths:**
+   - Solve input constraints for each path; merge infeasible paths.
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px; line-height: 1.33;">
+
+### 4 CFG Primitives & Compound Condition Rule
+| Construct | CFG Structure | `V(G)` Delta (`+P`) |
+| :--- | :--- | :---: |
+| **1. Sequence** | Merge consecutive statements into 1 basic block | **`+ 0`** |
+| **2. `if-else`** | 1 binary predicate node (`True` / `False` edges) | **`+ 1`** |
+| **3. `while / for`** | 1 loop predicate node + back-edge from body | **`+ 1`** |
+| **4. `switch (k)`** | `k` cases (excluding `default`) = `k` predicates | **`+ k`** |
+
+- **Why `if (A && B)` MUST Split into 2 Predicate Nodes:**
+  - Under short-circuit evaluation, `A && B` has **3 distinct exits** (`A=F`, `A=T & B=F`, `A=T & B=T`). A condition with `m` logical operators (`&&`, `||`) splits into **`m + 1` predicate nodes**!
+
+</div>
+</div>
+</div>
+
+<!--
+Thomas McCabe's Basis Path Testing uses Graph Theory to answer a critical engineering question: "What is the minimum number of linearly independent paths needed to guarantee 100% statement and 100% branch coverage?" By decomposing compound conditions (`&&`, `||`) into single binary predicate nodes and computing Cyclomatic Complexity `V(G) = R = E - N + 2 = P + 1`, we obtain the exact upper bound of independent basis paths!
+
+💡 難字與專業術語解說：
+- Cyclomatic Complexity `V(G)`: 圈複雜度／循環複雜度（McCabe 提出的圖論度量指標，量化程式控制流圖中線性獨立路徑的數量上限）
+- linearly independent path: 線性獨立路徑（在控制流圖中，與先前已選路徑相比至少包含一條全新未走過之有向邊的控制流路徑）
+-->
+---
+## Interactive Basis Path & V(G) Lab: `computeAverage(grade[])`
+
+<div class="bpt-interactive-stage" id="bpt-explorer">
+<div class="bpt-toolbar-wrap">
+  <div class="bpt-toolbar-row">
+    <span class="bpt-row-label">Step 2: V(G) = 6</span>
+    <button type="button" class="bpt-btn is-active" data-bpt="vg-r">① Regions: V(G) = R = 6</button>
+    <button type="button" class="bpt-btn" data-bpt="vg-en">② Euler: E(16) - N(12) + 2 = 6</button>
+    <button type="button" class="bpt-btn" data-bpt="vg-p">③ Predicates: P(5) + 1 = 6</button>
+  </div>
+  <div class="bpt-toolbar-row">
+    <span class="bpt-row-label">Step 3–4: 6 Paths</span>
+    <button type="button" class="bpt-btn is-infeasible" data-bpt="p1">Path 1 (Infeasible!)</button>
+    <button type="button" class="bpt-btn" data-bpt="p2">Path 2 (Empty)</button>
+    <button type="button" class="bpt-btn" data-bpt="p3">Path 3 (50 Cap)</button>
+    <button type="button" class="bpt-btn" data-bpt="p4">Path 4 (&lt;min)</button>
+    <button type="button" class="bpt-btn" data-bpt="p5">Path 5 (&gt;max)</button>
+    <button type="button" class="bpt-btn" data-bpt="p6">Path 6 (Valid Avg)</button>
+  </div>
+</div>
+
+<div class="bpt-content-grid">
+<div class="bpt-left-card">
+  <div class="bpt-code-cfg-split">
+    <div class="bpt-code-box">
+      <div class="bpt-code-line" data-bnode="1"><span>sum=0,max=100,min=10,valid=0,i=0;</span><span class="bpt-node-badge">(1)</span></div>
+      <div class="bpt-code-line" data-bnode="2"><span>while (grade[i] != -999</span><span class="bpt-node-badge is-pred">P1 (2)</span></div>
+      <div class="bpt-code-line" data-bnode="3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp; i &lt; 50) {</span><span class="bpt-node-badge is-pred">P2 (3)</span></div>
+      <div class="bpt-code-line" data-bnode="4"><span>&nbsp;&nbsp;if (grade[i] &gt;= min</span><span class="bpt-node-badge is-pred">P3 (4)</span></div>
+      <div class="bpt-code-line" data-bnode="5"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp; grade[i] &lt;= max) {</span><span class="bpt-node-badge is-pred">P4 (5)</span></div>
+      <div class="bpt-code-line" data-bnode="6"><span>&nbsp;&nbsp;&nbsp;&nbsp;sum += grade[i]; valid++;</span><span class="bpt-node-badge">(6)</span></div>
+      <div class="bpt-code-line" data-bnode="7"><span>&nbsp;&nbsp;} else print("Out of range");</span><span class="bpt-node-badge">(7)</span></div>
+      <div class="bpt-code-line" data-bnode="8"><span>&nbsp;&nbsp;i++; }</span><span class="bpt-node-badge">(8)</span></div>
+      <div class="bpt-code-line" data-bnode="9"><span>if (valid &gt; 0)</span><span class="bpt-node-badge is-pred">P5 (9)</span></div>
+      <div class="bpt-code-line" data-bnode="10"><span>&nbsp;&nbsp;avg = (double) sum / valid;</span><span class="bpt-node-badge">(10)</span></div>
+      <div class="bpt-code-line" data-bnode="11"><span>else avg = -999.0;</span><span class="bpt-node-badge">(11)</span></div>
+      <div class="bpt-code-line" data-bnode="12"><span>return avg;</span><span class="bpt-node-badge">(12)</span></div>
+    </div>
+  <div class="bpt-cfg-box">
+<svg xmlns="http://www.w3.org/2000/svg" id="bpt-cfg-svg" viewBox="0 0 285 340" width="100%" height="100%">
+<defs>
+<marker id="bpt-arr-def" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#94a3b8"/></marker>
+<marker id="bpt-arr-act" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#16a34a"/></marker>
+<marker id="bpt-arr-new" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#ea580c"/></marker>
+<marker id="bpt-arr-inf" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#e11d48"/></marker>
+</defs>
+<g id="bpt-regions-layer">
+<circle cx="128" cy="96" r="10.5" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/><text x="128" y="100" font-size="9" font-weight="900" fill="#1d4ed8" text-anchor="middle">R₁</text>
+<circle cx="62" cy="186" r="10.5" fill="#dcfce7" stroke="#16a34a" stroke-width="1.4"/><text x="62" y="190" font-size="9" font-weight="900" fill="#15803d" text-anchor="middle">R₂</text>
+<circle cx="151" cy="197" r="10.5" fill="#fef3c7" stroke="#d97706" stroke-width="1.4"/><text x="151" y="201" font-size="9" font-weight="900" fill="#b45309" text-anchor="middle">R₃</text>
+<circle cx="184" cy="240" r="10.5" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.4"/><text x="184" y="244" font-size="9" font-weight="900" fill="#6d28d9" text-anchor="middle">R₄</text>
+<circle cx="238" cy="175" r="10.5" fill="#ffedd5" stroke="#ea580c" stroke-width="1.4"/><text x="238" y="179" font-size="9" font-weight="900" fill="#c2410c" text-anchor="middle">R₅</text>
+<rect x="6" y="6" width="52" height="20" rx="5" fill="#ffe4e6" stroke="#e11d48" stroke-width="1.4"/><text x="32" y="19" font-size="9" font-weight="900" fill="#be123c" text-anchor="middle">R₆(Outer)</text>
+</g>
+<g id="bpt-edges-layer">
+<path id="bpt-e-1-2" data-bedge="1-2" d="M 168 30 L 168 48" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-2-3" data-bedge="2-3" d="M 168 74 L 168 96" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-2-9" data-bedge="2-9" d="M 154 62 L 73 118" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-3-9" data-bedge="3-9" d="M 154 110 L 76 127" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-3-4" data-bedge="3-4" d="M 168 122 L 168 144" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-4-5" data-bedge="4-5" d="M 168 170 L 168 194" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-4-7" data-bedge="4-7" d="M 155 162 L 122 252" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-5-7" data-bedge="5-7" d="M 157 214 L 127 254" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-5-6" data-bedge="5-6" d="M 179 214 L 212 254" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-6-8" data-bedge="6-8" d="M 212 276 L 180 307" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-7-8" data-bedge="7-8" d="M 126 276 L 156 307" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-8-2" data-bedge="8-2" d="M 182 315 C 282 310, 282 62, 184 61" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-9-11" data-bedge="9-11" d="M 52 142 L 32 174" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-9-10" data-bedge="9-10" d="M 70 142 L 92 174" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-11-12" data-bedge="11-12" d="M 32 198 L 53 230" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+<path id="bpt-e-10-12" data-bedge="10-12" d="M 92 198 L 71 230" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#bpt-arr-def)"/>
+</g>
+<g id="bpt-nodes-layer">
+<circle data-bcfgnode="1" cx="168" cy="18" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="168" y="22" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">1</text>
+<circle data-bcfgnode="2" data-ispred="1" cx="168" cy="61" r="13" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="168" y="65" font-size="10" font-weight="900" fill="#92400e" text-anchor="middle">2</text>
+<circle data-bcfgnode="3" data-ispred="1" cx="168" cy="109" r="13" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="168" y="113" font-size="10" font-weight="900" fill="#92400e" text-anchor="middle">3</text>
+<circle data-bcfgnode="4" data-ispred="1" cx="168" cy="157" r="13" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="168" y="161" font-size="10" font-weight="900" fill="#92400e" text-anchor="middle">4</text>
+<circle data-bcfgnode="5" data-ispred="1" cx="168" cy="207" r="13" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="168" y="211" font-size="10" font-weight="900" fill="#92400e" text-anchor="middle">5</text>
+<circle data-bcfgnode="6" cx="218" cy="265" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="218" y="269" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">6</text>
+<circle data-bcfgnode="7" cx="118" cy="265" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="118" y="269" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">7</text>
+<circle data-bcfgnode="8" cx="168" cy="315" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="168" y="319" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">8</text>
+<circle data-bcfgnode="9" data-ispred="1" cx="62" cy="131" r="13" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="62" y="135" font-size="10" font-weight="900" fill="#92400e" text-anchor="middle">9</text>
+<circle data-bcfgnode="10" cx="96" cy="186" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="96" y="190" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">10</text>
+<circle data-bcfgnode="11" cx="28" cy="186" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="28" y="190" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">11</text>
+<circle data-bcfgnode="12" cx="62" cy="242" r="12" fill="#f1f5f9" stroke="#475569" stroke-width="1.8"/><text x="62" y="246" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">12</text>
+</g>
+</svg>
+    </div>
+  </div>
+
+  <div class="wbc-meters-box" style="padding: 5px 10px;">
+    <div class="wbc-meter-row">
+      <span>Cumulative CFG Edges</span>
+      <div class="wbc-bar-bg"><div class="wbc-bar-fill" id="bpt-bar-edges" style="width: 100%; background: #0284c7;"></div></div>
+      <span class="wbc-meter-val" id="bpt-val-edges">16/16 (100%)</span>
+    </div>
+  </div>
+</div>
+
+<div class="bpt-right-card">
+  <div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+      <span class="ep-badge-pill ep-badge-blue" id="bpt-mode-badge">Method 1: Planar Regions Formula</span>
+      <span style="font-size: 12px; font-weight: 900; color: #0b3c5d; font-family: 'Fira Code', monospace;" id="bpt-formula-pill">V(G) = R = 5 + 1 = 6</span>
+    </div>
+    <h3 class="ep-title-text" id="bpt-mode-title" style="font-size: 16px; margin-bottom: 4px;">Planar Regions: 5 Enclosed Regions + 1 Outer Region = 6</h3>
+    <div id="bpt-dynamic-desc" style="font-size: 12px; color: #334155; line-height: 1.38; background: #f8fafc; border: 1.2px solid #cbd5e1; border-radius: 8px; padding: 6px 10px; margin-bottom: 6px;">
+      • <strong>5 Enclosed Regions:</strong> <code>R₁(2-3-9)</code>, <code>R₂(9-11-12-10)</code>, <code>R₃(4-5-7)</code>, <code>R₄(5-6-8-7)</code>, and <code>R₅(2-3-4-5-6-8-2 loop)</code>.<br/>
+      • <strong>+ 1 Outer Infinite Region (<code>R₆</code>)</strong> surrounding the graph ➔ <strong><code>V(G) = 6</code> independent paths</strong>!
+    </div>
+  </div>
+
+  <div style="flex: 1; overflow: hidden;">
+    <div style="font-size: 11px; font-weight: 800; color: #0b3c5d; margin-bottom: 3px;">6 Linearly Independent Basis Paths (Click Any Row or Top Button to Trace):</div>
+    <table class="bpt-path-table">
+      <thead>
+        <tr>
+          <th style="width: 12%;">Path</th>
+          <th style="width: 32%;">CFG Node Sequence</th>
+          <th style="width: 18%;">New Edge(s)</th>
+          <th style="width: 38%;">Test Input <code>grade[]</code> &amp; Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bpt-path-row is-infeasible-row" data-prow="p1">
+          <td><strong>Path 1</strong></td>
+          <td><code>1➔2➔9➔10➔12</code></td>
+          <td><strong style="color:#e11d48;">Infeasible!</strong></td>
+          <td><strong style="color:#be123c;">Contradiction:</strong> <code>valid==0</code> can't hit 10</td>
+        </tr>
+        <tr class="bpt-path-row" data-prow="p2">
+          <td><strong>Path 2</strong></td>
+          <td><code>1➔2➔9➔11➔12</code></td>
+          <td><code>2➔9, 9➔11</code></td>
+          <td><code>{-999}</code> ➔ <strong><code>-999.0</code></strong> (Sentinel)</td>
+        </tr>
+        <tr class="bpt-path-row" data-prow="p3">
+          <td><strong>Path 3</strong></td>
+          <td><code>1➔2➔3➔9➔10➔12</code></td>
+          <td><code>2➔3, 3➔9</code></td>
+          <td><code>51 scores (80×50, 90)</code> ➔ <strong><code>80.0</code></strong></td>
+        </tr>
+        <tr class="bpt-path-row" data-prow="p4">
+          <td><strong>Path 4</strong></td>
+          <td><code>1➔2➔3➔4➔7➔8➔2..</code></td>
+          <td><code>3➔4, 4➔7</code></td>
+          <td><code>{5, -999}</code> (<code>&lt; min 10</code>) ➔ <strong><code>-999.0</code></strong></td>
+        </tr>
+        <tr class="bpt-path-row" data-prow="p5">
+          <td><strong>Path 5</strong></td>
+          <td><code>1➔2➔3➔4➔5➔7➔8..</code></td>
+          <td><code>4➔5, 5➔7</code></td>
+          <td><code>{105, -999}</code> (<code>&gt; max 100</code>) ➔ <strong><code>-999.0</code></strong></td>
+        </tr>
+        <tr class="bpt-path-row" data-prow="p6">
+          <td><strong>Path 6</strong></td>
+          <td><code>1➔2➔3➔4➔5➔6➔8..10</code></td>
+          <td><code>5➔6, 9➔10</code></td>
+          <td><code>{80, 90, -999}</code> ➔ <strong><code>85.0</code></strong> (Hits 10!)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="bpt-bottom-tip" style="padding: 6px 10px; border-radius: 7px; background: #eff6ff; border: 1.4px solid #38bdf8; color: #0369a1; font-size: 11.4px; font-weight: 700; line-height: 1.33;">
+    💡 Click <strong>① Regions</strong>, <strong>② Euler (E-N+2)</strong>, or <strong>③ Predicates (P+1)</strong> to see why V(G)=6, then click <strong>Path 1..Path 6</strong> to trace each basis path!
+  </div>
+</div>
+</div>
+</div>
+
+<!--
+This interactive Basis Path & Cyclomatic Complexity Simulator brings SQA Section 6.3 to life! In the top row, clicking ① Regions (`V(G) = R = 6`), ② Euler's Formula (`V(G) = E - N + 2 = 16 - 12 + 2 = 6`), or ③ Predicate Nodes (`V(G) = P + 1 = 5 + 1 = 6`) dynamically highlights the 6 planar regions `R1..R6`, the 16 edges & 12 nodes, or the 5 yellow decomposed predicate nodes `(2), (3), (4), (5), (9)`. In the second row, clicking `Path 1` through `Path 6` dynamically traces the exact node-and-edge trajectory on the CFG, highlights the newly introduced independent edge in bright orange, and reveals why `Path 1 (1 -> 2 -> 9 -> 10 -> 12)` is mathematically infeasible (`valid == 0` cannot enter `valid > 0` at node 10)!
+-->
+---
+## Loop Testing (7-Point & Nested), Data-Flow (`DU-Pairs`) & Cognitive Complexity (`CogC`)
+
+<div class="card-deck">
+
+> Complement control-flow basis paths with **Beizer's 7-Point Loop Testing**, **Data-Flow `def-use` anomaly detection**, and SonarQube's **Cognitive Complexity (`CogC`)**!
+
+<div class="three-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 14px;">
+
+### 1. Loop Testing (Simple & Nested)
+- **7-Point Simple Loop (`max = n`):**
+  1. **`0` iterations** (skip loop)
+  2. **`1` iteration** & **`2` iterations**
+  3. **`m` typical iterations** (`m < n`)
+  4. **`n - 1` (In)**, **`n` (On)**, **`n + 1` (Off)**
+- **Beizer's Nested Loop Strategy (Inside-Out):**
+  - Avoid `7² = 49` / `7³ = 343` explosion!
+  - Hold outer loops at minimum (`1`) while testing the **innermost loop**; then test outer loops holding inner loops at typical `m`.
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 14px;">
+
+### 2. Data-Flow Testing (`DU-Pairs`)
+- Tracks variable lifecycle from **Definition (`def`)** to **Computational Use (`c-use`)** or **Predicate Use (`p-use`)** along **Def-Clear Paths**.
+- **3 Classic Lifecycle Anomalies:**
+  - **`k → u` (`ur`, Undefined Read):** Reading before initialization or Use-After-Free (**Critical Bug!**).
+  - **`d → d` (`dd`, Double Def):** Overwriting twice without reading (missing logic or dead assignment).
+  - **`d → k` (`dk`, Dead Store):** Assigned but never used before scope exit.
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 14px;">
+
+### 3. Complexity Metrics: `V(G)` vs. `CogC`
+| Metric | Threshold | Architectural Danger |
+| :--- | :---: | :--- |
+| **`V(G)`** (McCabe) | **`<= 10`** | Too many branches → **Extract Method** |
+| **`CogC`** (Cognitive) | **`<= 15`** | Deep nesting (`for` → `for` → `if` scores `+1+2+3 = 6` vs. `switch`'s `+1`) → **Guard Clauses**! |
+| **`WMC`** (Class Sum) | **`<= 30–40`** | **God Class** (violates SRP) → **Extract Class** |
+
+</div>
+</div>
+</div>
+
+<!--
+This slide synthesizes the three advanced white-box pillars from SQA Section 6.3: (1) Boris Beizer's 7-point simple loop and inside-out nested loop testing strategies; (2) Data-Flow Testing (`def`, `c-use`, `p-use`, and the 3 static data-flow anomalies `dd`, `ur`, `dk`); and (3) Code Complexity Metrics (`V(G) <= 10`, SonarQube Cognitive Complexity `CogC <= 15` which penalizes deep arrow nesting, and Class `WMC <= 30-40`).
+
+💡 難字與專業術語解說：
+- Definition-Use Pair (DU-Pair): 定義-使用配對（變數在某節點被賦值定義 `def` 後，沿著無重定義路徑到達被讀取計算 `c-use` 或條件判斷 `p-use` 的配對關係）
+- Cognitive Complexity (`CogC`): 認知複雜度（SonarQube 提出之改良指標，對深層巢狀結構施加遞增權重懲罰，貼合人類大腦閱讀程式碼的心智負荷）
+-->
+---
 <!-- id: ase-ch07-ccq4 -->
 ## Concept Check Question 4: Condition vs. Branch Coverage
 
@@ -4105,6 +4489,203 @@ The RIPR Model (Reachability, Infection, Propagation, Revealability) explains wh
 💡 難字與專業術語解說：
 - RIPR Model: RIPR 故障傳播模型（測試案例殺死變異體必經的可達、狀態感染、結果傳播與斷言揭露四階段）
 - Equivalent Mutant: 等價變異體（語法雖然被修改，但在所有可能輸入下之執行結果皆與原程式完全一致、永遠無法被任何測試殺死的變異體）
+-->
+---
+## Interactive Mutation Testing Lab: Live RIPR & Killing Mutants
+
+<div class="mut-interactive-stage" id="mut-explorer">
+<div class="mut-nav-toolbar">
+  <button type="button" class="mut-mode-btn is-active" data-mut="s1">1. Weak Suite (t₁, t₂) → MS=40%</button>
+  <button type="button" class="mut-mode-btn" data-mut="s2">2. +Boundary t₃(10,1) → Kill P₁ (60%)</button>
+  <button type="button" class="mut-mode-btn" data-mut="s3">3. +Boundary t₄(8,6) → Kill P₃ (80%)</button>
+  <button type="button" class="mut-mode-btn" data-mut="s4">4. +Boundary t₅(7,10) → 100% MS!</button>
+  <button type="button" class="mut-mode-btn" data-mut="s5">5. Why Equivalent P₆ Is Excluded (M-E)</button>
+</div>
+
+<div class="mut-content-grid">
+<div class="mut-left-card">
+  <div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+      <span style="font-size: 12px; font-weight: 800; color: #0b3c5d;">Target Code <code>func(X, Y)</code> &amp; 6 Injected Mutants (Click Any Row to Inspect RIPR):</span>
+      <span style="font-size: 10.5px; font-weight: 700; color: #64748b;">M=6, E=1 ➔ Killable=5</span>
+    </div>
+    <table class="mut-code-table">
+      <thead>
+        <tr>
+          <th style="width: 14%;">ID</th>
+          <th style="width: 44%;">Original vs. Mutated Code</th>
+          <th style="width: 20%;">Operator</th>
+          <th style="width: 22%;">Live Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="mut-row is-focused" data-mid="P1">
+          <td><strong>P₁</strong> (L2)</td>
+          <td><code>X &gt; 10</code> ➔ <strong style="color:#b45309;"><code>X &gt;= 10</code></strong></td>
+          <td>ROR (Boundary)</td>
+          <td><span class="mut-status-pill is-alive" id="mut-st-P1">SURVIVED</span></td>
+        </tr>
+        <tr class="mut-row" data-mid="P2">
+          <td><strong>P₂</strong> (L2)</td>
+          <td><code>&amp;&amp; (Y==1)</code> ➔ <strong style="color:#0284c7;"><code>|| (Y==1)</code></strong></td>
+          <td>COR (Logic)</td>
+          <td><span class="mut-status-pill is-killed" id="mut-st-P2">KILLED (t₂)</span></td>
+        </tr>
+        <tr class="mut-row" data-mid="P3">
+          <td><strong>P₃</strong> (L4)</td>
+          <td><code>(X-Y) &lt; 2</code> ➔ <strong style="color:#b45309;"><code>(X-Y) &lt;= 2</code></strong></td>
+          <td>ROR (Boundary)</td>
+          <td><span class="mut-status-pill is-alive" id="mut-st-P3">SURVIVED</span></td>
+        </tr>
+        <tr class="mut-row" data-mid="P4">
+          <td><strong>P₄</strong> (L6)</td>
+          <td><code>Y &gt; 10</code> ➔ <strong style="color:#b45309;"><code>Y &gt;= 10</code></strong></td>
+          <td>ROR (Boundary)</td>
+          <td><span class="mut-status-pill is-alive" id="mut-st-P4">SURVIVED</span></td>
+        </tr>
+        <tr class="mut-row" data-mid="P5">
+          <td><strong>P₅</strong> (L7)</td>
+          <td><code>X = 3;</code> ➔ <strong style="color:#0284c7;"><code>X = 4;</code></strong></td>
+          <td>AOR / Const</td>
+          <td><span class="mut-status-pill is-killed" id="mut-st-P5">KILLED (t₂)</span></td>
+        </tr>
+        <tr class="mut-row" data-mid="P6">
+          <td><strong>P₆</strong> (L4)</td>
+          <td><code>(X-Y) &lt; 2</code> ➔ <strong style="color:#6b21a8;"><code>(X-Y) &lt;= 1</code></strong></td>
+          <td>Equivalent (E)</td>
+          <td><span class="mut-status-pill is-equiv" id="mut-st-P6">EQUIVALENT</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wbc-tc-section">
+    <div class="wbc-tc-header">
+      <span>Toggle Test Cases in Suite <code>T</code> (Watch Mutants Die in Real Time!):</span>
+      <span id="mut-active-tc-label" style="color: #0284c7;">Active: 2 / 5 Tests</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;">
+      <div class="wbc-tc-pill is-active" data-mtc="t1"><span>t₁(12,1)</span></div>
+      <div class="wbc-tc-pill is-active" data-mtc="t2"><span>t₂(7,11)</span></div>
+      <div class="wbc-tc-pill" data-mtc="t3"><span>t₃(10,1)</span></div>
+      <div class="wbc-tc-pill" data-mtc="t4"><span>t₄(8,6)</span></div>
+      <div class="wbc-tc-pill" data-mtc="t5"><span>t₅(7,10)</span></div>
+    </div>
+  </div>
+
+  <div class="wbc-meters-box" style="padding: 6px 10px;">
+    <div class="wbc-meter-row">
+      <span>Stmt Cov (SC)</span>
+      <div class="wbc-bar-bg"><div class="wbc-bar-fill" id="mut-bar-sc" style="width: 100%; background: #16a34a;"></div></div>
+      <span class="wbc-meter-val" id="mut-val-sc">100% (8/8)</span>
+    </div>
+    <div class="wbc-meter-row">
+      <span>Mutation Score</span>
+      <div class="wbc-bar-bg"><div class="wbc-bar-fill" id="mut-bar-ms" style="width: 40%; background: #f59e0b;"></div></div>
+      <span class="wbc-meter-val" id="mut-val-ms">40% (2/5)</span>
+    </div>
+  </div>
+</div>
+
+<div class="mut-right-card">
+  <div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+      <span class="ep-badge-pill ep-badge-amber" id="mut-mode-badge">100% Statement Coverage ≠ High Quality!</span>
+      <span style="font-size: 11.5px; font-weight: 800; color: #0f172a; font-family: 'Fira Code', monospace;" id="mut-score-formula">MS = 2 / (6 - 1) = 40%</span>
+    </div>
+    <table class="mut-matrix-table">
+      <thead>
+        <tr>
+          <th>Prog \ Test</th>
+          <th>t₁(12,1)</th>
+          <th>t₂(7,11)</th>
+          <th>t₃(10,1)</th>
+          <th>t₄(8,6)</th>
+          <th>t₅(7,10)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Orig <code>P</code></th>
+          <td><strong>1</strong></td>
+          <td><strong>3</strong></td>
+          <td><strong>2</strong></td>
+          <td><strong>8</strong></td>
+          <td><strong>2</strong></td>
+        </tr>
+        <tr data-mrow="P1">
+          <th>P₁ (<code>X&gt;=10</code>)</th>
+          <td data-mcell="P1-t1">1</td>
+          <td data-mcell="P1-t2">3</td>
+          <td data-mcell="P1-t3">1 (Kill!)</td>
+          <td data-mcell="P1-t4">8</td>
+          <td data-mcell="P1-t5">2</td>
+        </tr>
+        <tr data-mrow="P2">
+          <th>P₂ (<code>&amp;&amp;➔||</code>)</th>
+          <td data-mcell="P2-t1">1</td>
+          <td data-mcell="P2-t2">1 (Kill!)</td>
+          <td data-mcell="P2-t3">1 (Kill!)</td>
+          <td data-mcell="P2-t4">8</td>
+          <td data-mcell="P2-t5">2</td>
+        </tr>
+        <tr data-mrow="P3">
+          <th>P₃ (<code>&lt;=2</code>)</th>
+          <td data-mcell="P3-t1">1</td>
+          <td data-mcell="P3-t2">3</td>
+          <td data-mcell="P3-t3">2</td>
+          <td data-mcell="P3-t4">2 (Kill!)</td>
+          <td data-mcell="P3-t5">2</td>
+        </tr>
+        <tr data-mrow="P4">
+          <th>P₄ (<code>Y&gt;=10</code>)</th>
+          <td data-mcell="P4-t1">1</td>
+          <td data-mcell="P4-t2">3</td>
+          <td data-mcell="P4-t3">2</td>
+          <td data-mcell="P4-t4">8</td>
+          <td data-mcell="P4-t5">3 (Kill!)</td>
+        </tr>
+        <tr data-mrow="P5">
+          <th>P₅ (<code>X=4</code>)</th>
+          <td data-mcell="P5-t1">1</td>
+          <td data-mcell="P5-t2">4 (Kill!)</td>
+          <td data-mcell="P5-t3">2</td>
+          <td data-mcell="P5-t4">8</td>
+          <td data-mcell="P5-t5">2</td>
+        </tr>
+        <tr data-mrow="P6">
+          <th>P₆ (Equiv <code>E</code>)</th>
+          <td data-mcell="P6-t1">1 (==P)</td>
+          <td data-mcell="P6-t2">3 (==P)</td>
+          <td data-mcell="P6-t3">2 (==P)</td>
+          <td data-mcell="P6-t4">8 (==P)</td>
+          <td data-mcell="P6-t5">2 (==P)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <div style="font-size: 11.5px; font-weight: 800; color: #0b3c5d; margin-bottom: 3px;" id="mut-ripr-header">
+      RIPR 4-Stage Chain Diagnosis for Focused Mutant <code>P₁ (X &gt;= 10)</code>:
+    </div>
+    <div class="mut-ripr-chain">
+      <div class="mut-ripr-step is-pass" id="mut-ripr-r"><span class="mut-ripr-title">1. Reachability</span><span class="mut-ripr-sub" id="mut-ripr-r-txt">✓ Line 2 Reached</span></div>
+      <div class="mut-ripr-step is-fail" id="mut-ripr-i"><span class="mut-ripr-title">2. Infection</span><span class="mut-ripr-sub" id="mut-ripr-i-txt">✗ Need X==10!</span></div>
+      <div class="mut-ripr-step is-fail" id="mut-ripr-p"><span class="mut-ripr-title">3. Propagation</span><span class="mut-ripr-sub" id="mut-ripr-p-txt">✗ State Same</span></div>
+      <div class="mut-ripr-step is-fail" id="mut-ripr-rev"><span class="mut-ripr-title">4. Revealability</span><span class="mut-ripr-sub" id="mut-ripr-rev-txt">✗ P(t)==P₁(t)</span></div>
+    </div>
+  </div>
+
+  <div id="mut-diag-box" style="padding: 7px 10px; border-radius: 8px; background: #fffbeb; border: 1.4px solid #f59e0b; color: #92400e; font-size: 11.6px; font-weight: 700; line-height: 1.35;">
+    💡 <strong>Why P₁, P₃, P₄ Survive at 100% SC:</strong> <code>t₁(12,1)</code> and <code>t₂(7,11)</code> execute every line, but never test exact boundary seams (<code>X=10</code>, <code>X-Y=2</code>, <code>Y=10</code>) so <strong>Stage 2 (Infection)</strong> never triggers! Click Preset 2, 3, 4 above!
+  </div>
+</div>
+</div>
+</div>
+
+<!--
+This interactive Mutation Testing Simulator lets students experience how "Killing a Mutant" works dynamically. Even when `t1(12,1)` and `t2(7,11)` achieve 100% Statement Coverage, 3 boundary mutants (`P1: X>=10`, `P3: X-Y<=2`, `P4: Y>=10`) survive (`MS = 40%`) because Stage 2 (Infection) in the RIPR chain is never triggered! Clicking Presets 2, 3, and 4 injects exact BVA on-point tests `t3(10,1)`, `t4(8,6)`, and `t5(7,10)`, lighting up the RIPR chain and driving Mutation Score to 100%, while Preset 5 demonstrates why Equivalent Mutant `P6` (`X-Y <= 1` on integers) can never be infected and must be subtracted from `M - E`.
 -->
 ---
 ## Mutation Walkthrough 1: Array Max Index `p(a)` (`ex_mutation_test`)
@@ -7114,6 +7695,773 @@ function initSmExplorer() {
     syncVisualStates();
   }
 
+  function initWbcInteractiveExplorer() {
+    const stage = document.getElementById("wbc-explorer");
+    if (!stage || stage.dataset.wbcBound) return;
+    stage.dataset.wbcBound = "true";
+
+    const modeBtns = Array.from(stage.querySelectorAll(".wbc-mode-btn"));
+    const tcPills = Array.from(stage.querySelectorAll(".wbc-tc-pill"));
+    const codeLines = Array.from(stage.querySelectorAll(".wbc-code-line"));
+
+    const tcs = {
+      t1: { A: 2, B: 0, X: 3, c1: true,  c2: true,  d1: true,  c3: true,  c4: true,  d2: true,  path: "a-c-e", edges: ["a", "c", "e"], lines: [1, 2, 3, 4, 5, 6] },
+      t2: { A: 1, B: 1, X: 1, c1: false, c2: false, d1: false, c3: false, c4: false, d2: false, path: "a-b-d", edges: ["a", "b", "d"], lines: [1, 2, 4, 6] },
+      t3: { A: 2, B: 1, X: 1, c1: true,  c2: false, d1: false, c3: true,  c4: false, d2: true,  path: "a-b-e", edges: ["a", "b", "e"], lines: [1, 2, 4, 5, 6] },
+      t4: { A: 1, B: 0, X: 2, c1: false, c2: true,  d1: false, c3: false, c4: true,  d2: true,  path: "a-b-e", edges: ["a", "b", "e"], lines: [1, 2, 4, 5, 6] },
+      t5: { A: 3, B: 0, X: 1, c1: true,  c2: true,  d1: true,  c3: false, c4: false, d2: false, path: "a-c-d", edges: ["a", "c", "d"], lines: [1, 2, 3, 4, 6] },
+      t6: { A: 3, B: 1, X: 1, c1: true,  c2: false, d1: false, c3: false, c4: false, d2: false, path: "a-b-d", edges: ["a", "b", "d"], lines: [1, 2, 4, 6] }
+    };
+
+    const modeConfigs = {
+      sc: {
+        activeTcs: ["t1"],
+        badge: "Weakest Baseline • 1 Test Case",
+        badgeClass: "ep-badge-green",
+        title: "1. Statement Coverage (SC = 100%)",
+        formula: "Every Line Executed",
+        details: [
+          "<strong>How 1 Test Hits 100% SC:</strong> <code>t₁(2, 0, 3)</code> makes <code>D1=True</code> (runs Line 3) and <code>D2=True</code> (runs Line 5), turning all 6 lines green!",
+          "<strong>Why SC100 Is Dangerously Weak:</strong> Edges <code>b</code> and <code>d</code> (the <code>False</code> branches) remain completely untested (<strong>BC = 50%</strong>).",
+          "<strong>Hidden Bug Blind Spot:</strong> If Line 3 had a bug (<code>Y = 999</code>), Line 5 immediately overwrites <code>Y = X</code> along path <code>a-c-e</code>, masking the defect!"
+        ],
+        tip: "💡 Diagnostic Tip: Click '2. Branch (BC100)' or '3. CC100 Paradox' above to see how Condition and Branch coverage diverge!"
+      },
+      bc: {
+        activeTcs: ["t1", "t6"],
+        badge: "Every Decision T & F • 2 Test Cases",
+        badgeClass: "ep-badge-blue",
+        title: "2. Branch / Decision Coverage (BC = 100%)",
+        formula: "D1∈{T,F} & D2∈{T,F}",
+        details: [
+          "<strong>All 5 CFG Edges Covered:</strong> <code>t₁(2,0,3)</code> takes <code>True</code> edges <code>c, e</code>; <code>t₆(3,1,1)</code> takes <code>False</code> edges <code>b, d</code> → <strong>100% Branch Coverage</strong>!",
+          "<strong>Subsumption Guarantee:</strong> <code>100% BC</code> strictly guarantees <code>100% SC</code> (all 6 lines executed).",
+          "<strong>Remaining Atomic Blind Spot:</strong> Look at <code>C1 (A&gt;1)</code>: in both <code>t₁(A=2)</code> and <code>t₆(A=3)</code>, <code>C1</code> is <strong>always True</strong> (never tested False → <strong>CC = 88%</strong>)!"
+        ],
+        tip: "💡 Notice: 100% Branch Coverage does NOT guarantee 100% Condition Coverage! Click '3. CC100 Paradox' next."
+      },
+      cc: {
+        activeTcs: ["t3", "t4"],
+        badge: "Famous Paradox • 100% CC ≠ 100% BC",
+        badgeClass: "ep-badge-amber",
+        title: "3. Condition Coverage Paradox (CC=100%, BC=50%!)",
+        formula: "Each Cᵢ Hits {T, F}",
+        details: [
+          "<strong>100% Atomic Condition Coverage:</strong> Across <code>t₃(2,1,1)</code> and <code>t₄(1,0,2)</code>, every atomic condition <code>C1..C4</code> evaluates to both <code>True</code> and <code>False</code> (all 4 badges turn green <code>T/F</code>)!",
+          "<strong>Why Branch Coverage Fails (50%):</strong> In <code>t₃</code>, <code>D1 = T ∧ F = False</code>; in <code>t₄</code>, <code>D1 = F ∧ T = False</code>! And <code>D2</code> is always <code>True</code>!",
+          "<strong>Catastrophic Consequence:</strong> Edge <code>c</code> (Line 3 <code>Y = A</code>) and Edge <code>d</code> are <strong>NEVER executed</strong> (Statement Coverage drops to 83%)!"
+        ],
+        tip: "⚠️ Paradox Exposed: 100% Condition Coverage can completely miss an entire if-block (Line 3 is red)!"
+      },
+      bcc: {
+        activeTcs: ["t1", "t2"],
+        badge: "Combined Criterion • 2 Test Cases",
+        badgeClass: "ep-badge-blue",
+        title: "4. Branch / Condition Coverage (B/CC = 100%)",
+        formula: "100% BC + 100% CC",
+        details: [
+          "<strong>Simultaneous Satisfaction:</strong> Pairing <code>t₁(2,0,3)</code> (all T) with <code>t₂(1,1,1)</code> (all F) achieves <strong>100% SC + 100% BC + 100% CC</strong> in just 2 tests!",
+          "<strong>Why B/CC Still Fails Avionics MC/DC (0%):</strong> Between <code>t₁</code> and <code>t₂</code>, <code>C1</code> and <code>C2</code> flip <em>at the same time</em> (<code>T,T ↔ F,F</code>).",
+          "<strong>Masking Risk:</strong> Because two conditions change together, we cannot prove which condition independently caused Decision <code>D1</code> or <code>D2</code> to flip!"
+        ],
+        tip: "💡 Why Avionics Rejects B/CC: Changing all inputs at once cannot isolate individual condition bugs. Click '5. Avionics MC/DC'!"
+      },
+      mcdc: {
+        activeTcs: ["t1", "t3", "t4", "t5"],
+        badge: "DO-178C Level A • n + 1 Linear Tests",
+        badgeClass: "ep-badge-purple",
+        title: "5. Avionics MC/DC (100% Independence Pairs)",
+        formula: "Single-Condition Flip",
+        details: [
+          "<strong>Proving Condition Independence in D1 (<code>C1 ∧ C2</code>):</strong><br/>• <strong>C1 Pair <code>(t₁, t₄)</code>:</strong> <code>C2=T</code> fixed; flipping <code>C1 (T↔F)</code> flips <code>D1 (T↔F)</code>!<br/>• <strong>C2 Pair <code>(t₁, t₃)</code>:</strong> <code>C1=T</code> fixed; flipping <code>C2 (T↔F)</code> flips <code>D1 (T↔F)</code>!",
+          "<strong>Proving Condition Independence in D2 (<code>C3 ∨ C4</code>):</strong><br/>• <strong>C3 Pair <code>(t₃, t₅)</code>:</strong> <code>C4=F</code> fixed; flipping <code>C3 (T↔F)</code> flips <code>D2 (T↔F)</code>!<br/>• <strong>C4 Pair <code>(t₄, t₅)</code>:</strong> <code>C3=F</code> fixed; flipping <code>C4 (T↔F)</code> flips <code>D2 (T↔F)</code>!"
+        ],
+        tip: "✅ 100% MC/DC Achieved: Every condition C₁..C₄ has a verified Independence Pair where holding peers fixed flips the decision!"
+      },
+      path: {
+        activeTcs: ["t1", "t2", "t3", "t5"],
+        badge: "All 4 Control-Flow Paths • 100% Full Suite",
+        badgeClass: "ep-badge-green",
+        title: "6. All-Path Coverage (4 / 4 CFG Paths = 100%)",
+        formula: "All 4 Paths {a-c-e, a-b-d, a-b-e, a-c-d}",
+        details: [
+          "<strong>Complete CFG Path Traversal:</strong><br/>• <code>t₁(2,0,3)</code> → <code>a-c-e</code> (T, T) &nbsp;｜&nbsp; <code>t₂(1,1,1)</code> → <code>a-b-d</code> (F, F)<br/>• <code>t₃(2,1,1)</code> → <code>a-b-e</code> (F, T) &nbsp;｜&nbsp; <code>t₅(3,0,1)</code> → <code>a-c-d</code> (T, F)",
+          "<strong>Cross-Decision Interaction:</strong> Path <code>a-c-d</code> (<code>t₅</code>) proves Line 3 (<code>Y = A</code>) reaches Line 6 without being overwritten by Line 5!",
+          "<strong>Loop Warning:</strong> Feasible for acyclic diamonds (<code>2² = 4</code> paths), but explodes to <code>4²⁰ ≈ 1.1 trillion</code> paths inside a 20-iteration loop!"
+        ],
+        tip: "🏆 All 5 Coverage Meters at 100% ( when combined with t₄ for MC/DC )! Try toggling individual t₁..t₆ pills on the left!"
+      }
+    };
+
+    function evaluateCustomSelection(activeKeys) {
+      const linesHit = new Set();
+      const edgesHit = new Set();
+      const pathsHit = new Set();
+      const condVals = { c1: new Set(), c2: new Set(), c3: new Set(), c4: new Set() };
+      const activeList = activeKeys.map(k => tcs[k]).filter(Boolean);
+
+      activeList.forEach(tc => {
+        tc.lines.forEach(l => linesHit.add(l));
+        tc.edges.forEach(e => edgesHit.add(e));
+        pathsHit.add(tc.path);
+        condVals.c1.add(tc.c1);
+        condVals.c2.add(tc.c2);
+        condVals.c3.add(tc.c3);
+        condVals.c4.add(tc.c4);
+      });
+
+      // Check MC/DC independence pairs among activeList
+      let mcdcC1 = false, mcdcC2 = false, mcdcC3 = false, mcdcC4 = false;
+      for (let i = 0; i < activeList.length; i++) {
+        for (let j = i + 1; j < activeList.length; j++) {
+          const u = activeList[i], v = activeList[j];
+          if (u.c1 !== v.c1 && u.c2 === v.c2 && u.d1 !== v.d1) mcdcC1 = true;
+          if (u.c2 !== v.c2 && u.c1 === v.c1 && u.d1 !== v.d1) mcdcC2 = true;
+          if (u.c3 !== v.c3 && u.c4 === v.c4 && u.d2 !== v.d2) mcdcC3 = true;
+          if (u.c4 !== v.c4 && u.c3 === v.c3 && u.d2 !== v.d2) mcdcC4 = true;
+        }
+      }
+      const mcdcCount = (mcdcC1 ? 1 : 0) + (mcdcC2 ? 1 : 0) + (mcdcC3 ? 1 : 0) + (mcdcC4 ? 1 : 0);
+
+      // Update code lines
+      codeLines.forEach(lineEl => {
+        const ln = Number(lineEl.getAttribute("data-line"));
+        lineEl.classList.remove("is-hit", "is-partial", "is-miss");
+        if (linesHit.has(ln)) {
+          if (ln === 2 && !(edgesHit.has("b") && edgesHit.has("c"))) lineEl.classList.add("is-partial");
+          else if (ln === 4 && !(edgesHit.has("d") && edgesHit.has("e"))) lineEl.classList.add("is-partial");
+          else lineEl.classList.add("is-hit");
+        } else {
+          lineEl.classList.add("is-miss");
+        }
+      });
+
+      // Update condition chips
+      function updateChip(id, label, setObj) {
+        const el = stage.querySelector("#" + id);
+        if (!el) return;
+        const hasT = setObj.has(true), hasF = setObj.has(false);
+        el.className = "wbc-cond-chip " + (hasT && hasF ? "is-both" : (hasT || hasF ? "is-partial" : ""));
+        el.textContent = label + ":" + (hasT && hasF ? "T/F" : (hasT ? "T" : (hasF ? "F" : "--")));
+      }
+      updateChip("wbc-c1-chip", "C1", condVals.c1);
+      updateChip("wbc-c2-chip", "C2", condVals.c2);
+      updateChip("wbc-c3-chip", "C3", condVals.c3);
+      updateChip("wbc-c4-chip", "C4", condVals.c4);
+
+      // Update CFG SVG edges
+      ["a", "b", "c", "d", "e"].forEach(eName => {
+        const pathEl = stage.querySelector("#wbc-edge-" + eName);
+        if (!pathEl) return;
+        const hit = edgesHit.has(eName);
+        pathEl.setAttribute("stroke", hit ? (eName === "b" || eName === "d" ? "#e11d48" : "#16a34a") : "#cbd5e1");
+        pathEl.setAttribute("stroke-width", hit ? "3" : "2.2");
+        pathEl.setAttribute("marker-end", hit ? "url(#wbc-arr-on)" : "url(#wbc-arr-off)");
+      });
+
+      const l3Node = stage.querySelector("#wbc-node-l3");
+      const l5Node = stage.querySelector("#wbc-node-l5");
+      if (l3Node) l3Node.setAttribute("fill", linesHit.has(3) ? "#dcfce7" : "#f8fafc");
+      if (l5Node) l5Node.setAttribute("fill", linesHit.has(5) ? "#dcfce7" : "#f8fafc");
+
+      // Meters
+      const scCnt = linesHit.size;
+      const bcCnt = (edgesHit.has("b") ? 1 : 0) + (edgesHit.has("c") ? 1 : 0) + (edgesHit.has("d") ? 1 : 0) + (edgesHit.has("e") ? 1 : 0);
+      const ccCnt = condVals.c1.size + condVals.c2.size + condVals.c3.size + condVals.c4.size;
+      const pathCnt = pathsHit.size;
+
+      function setMeter(idSuffix, cnt, total) {
+        const pct = Math.round((cnt / total) * 100);
+        const bar = stage.querySelector("#wbc-bar-" + idSuffix);
+        const val = stage.querySelector("#wbc-val-" + idSuffix);
+        if (bar) {
+          bar.style.width = pct + "%";
+          bar.style.background = pct === 100 ? "#16a34a" : (pct >= 50 ? "#0284c7" : "#f59e0b");
+        }
+        if (val) val.textContent = cnt + "/" + total + " (" + pct + "%)";
+      }
+
+      setMeter("sc", scCnt, 6);
+      setMeter("bc", bcCnt, 4);
+      setMeter("cc", ccCnt, 8);
+      setMeter("mcdc", mcdcCount, 4);
+      setMeter("path", pathCnt, 4);
+
+      const cntLabel = stage.querySelector("#wbc-active-tc-count");
+      if (cntLabel) cntLabel.textContent = "Active: " + activeKeys.length + " Test" + (activeKeys.length === 1 ? "" : "s");
+      const pathsBox = stage.querySelector("#wbc-stat-paths");
+      if (pathsBox) pathsBox.textContent = (pathsHit.size ? Array.from(pathsHit).join(", ") : "None") + " (" + pathCnt + "/4)";
+    }
+
+    function applyPreset(modeKey) {
+      const cfg = modeConfigs[modeKey];
+      if (!cfg) return;
+      modeBtns.forEach(b => b.classList.toggle("is-active", b.getAttribute("data-wbc") === modeKey));
+      tcPills.forEach(p => p.classList.toggle("is-active", cfg.activeTcs.includes(p.getAttribute("data-tc"))));
+
+      const badge = stage.querySelector("#wbc-mode-badge");
+      const title = stage.querySelector("#wbc-mode-title");
+      const formula = stage.querySelector("#wbc-stat-formula");
+      const details = stage.querySelector("#wbc-details-list");
+      const tip = stage.querySelector("#wbc-diag-banner");
+
+      if (badge) {
+        badge.textContent = cfg.badge;
+        badge.className = "ep-badge-pill " + cfg.badgeClass;
+      }
+      if (title) title.textContent = cfg.title;
+      if (formula) formula.textContent = cfg.formula;
+      if (details) details.innerHTML = cfg.details.map(d => "<li>" + d + "</li>").join("");
+      if (tip) tip.textContent = cfg.tip;
+
+      evaluateCustomSelection(cfg.activeTcs);
+    }
+
+    modeBtns.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        applyPreset(this.getAttribute("data-wbc"));
+      });
+    });
+
+    tcPills.forEach(pill => {
+      pill.addEventListener("click", function(e) {
+        e.stopPropagation();
+        this.classList.toggle("is-active");
+        const activeKeys = tcPills.filter(p => p.classList.contains("is-active")).map(p => p.getAttribute("data-tc"));
+        evaluateCustomSelection(activeKeys);
+      });
+    });
+
+    applyPreset("sc");
+  }
+
+  function initMutInteractiveExplorer() {
+    const stage = document.getElementById("mut-explorer");
+    if (!stage || stage.dataset.mutBound) return;
+    stage.dataset.mutBound = "true";
+
+    const modeBtns = Array.from(stage.querySelectorAll(".mut-mode-btn"));
+    const tcPills = Array.from(stage.querySelectorAll("[data-mtc]"));
+    const mutRows = Array.from(stage.querySelectorAll(".mut-row"));
+
+    let focusedMutant = "P1";
+
+    const killsMap = {
+      P1: ["t3"],
+      P2: ["t2", "t3"],
+      P3: ["t4"],
+      P4: ["t5"],
+      P5: ["t2"],
+      P6: [] // Equivalent
+    };
+
+    const riprInfo = {
+      P1: {
+        name: "P₁ (Line 2: X > 10 ➔ X >= 10)",
+        reach: "✓ Line 2 Always Reached",
+        infectPass: "✓ t₃(10,1): 10>10(F) ≠ 10>=10(T)!",
+        infectFail: "✗ Need Exact Seam X==10 & Y==1!",
+        propPass: "✓ X becomes 1 (vs P's X=2)",
+        propFail: "✗ Branch Outcome Identical",
+        revPass: "✓ assertEquals(2, 1) FAILS ➔ KILLED!",
+        revFail: "✗ P(t) == P₁(t) (Mutant Survives)"
+      },
+      P2: {
+        name: "P₂ (Line 2: && ➔ ||)",
+        reach: "✓ Line 2 Always Reached",
+        infectPass: "✓ t₂(7,11): (F && F)=F ≠ (F || F)... wait: t₂(7,11) or t₃(10,1)!",
+        infectFail: "✗ Need C1≠C2 (one T, one F)!",
+        propPass: "✓ Enters Line 3 (X=1) erroneously",
+        propFail: "✗ Branch Outcome Identical",
+        revPass: "✓ assertEquals(3, 1) FAILS ➔ KILLED!",
+        revFail: "✗ P(t) == P₂(t) (Mutant Survives)"
+      },
+      P3: {
+        name: "P₃ (Line 4: (X-Y) < 2 ➔ (X-Y) <= 2)",
+        reach: "✓ Line 4 Reached when D1=False",
+        infectPass: "✓ t₄(8,6): (8-6)<2(F) ≠ (8-6)<=2(T)!",
+        infectFail: "✗ Need Exact Seam (X - Y) == 2!",
+        propPass: "✓ X overwritten to 2 (vs P's X=8)",
+        propFail: "✗ Branch Outcome Identical",
+        revPass: "✓ assertEquals(8, 2) FAILS ➔ KILLED!",
+        revFail: "✗ P(t) == P₃(t) (Mutant Survives)"
+      },
+      P4: {
+        name: "P₄ (Line 6: Y > 10 ➔ Y >= 10)",
+        reach: "✓ Line 6 Always Reached",
+        infectPass: "✓ t₅(7,10): 10>10(F) ≠ 10>=10(T)!",
+        infectFail: "✗ Need Exact Seam Y == 10!",
+        propPass: "✓ X overwritten to 3 (vs P's X=2)",
+        propFail: "✗ Branch Outcome Identical",
+        revPass: "✓ assertEquals(2, 3) FAILS ➔ KILLED!",
+        revFail: "✗ P(t) == P₄(t) (Mutant Survives)"
+      },
+      P5: {
+        name: "P₅ (Line 7: X = 3 ➔ X = 4)",
+        reach: "✓ Reached when Y > 10 (t₂)",
+        infectPass: "✓ t₂(7,11): assigns X=4 instead of 3!",
+        infectFail: "✗ Line 7 Not Reached (Need Y > 10)",
+        propPass: "✓ Return value is 4 (vs P's 3)",
+        propFail: "✗ Not Propagated",
+        revPass: "✓ assertEquals(3, 4) FAILS ➔ KILLED!",
+        revFail: "✗ P(t) == P₅(t) (Mutant Survives)"
+      },
+      P6: {
+        name: "P₆ (Line 4: (X-Y) < 2 ➔ (X-Y) <= 1) [EQUIVALENT]",
+        reach: "✓ Line 4 Reached",
+        infectPass: "",
+        infectFail: "✗ IMPOSSIBLE on ints: (X-Y)<2 ≡ (X-Y)<=1!",
+        propPass: "",
+        propFail: "✗ Zero State Divergence Ever",
+        revPass: "",
+        revFail: "★ Subtract E=1 from Denominator (M - E)!"
+      }
+    };
+
+    // Fix P2 note for t2(7,11): wait, in func(X,Y), why does t2(7,11) or t1 kill P2? Wait: in Slide 98, P2 is && -> || on Line 2 `if ((X>10) && (Y==1))` or `X>10 || Y>10`? Let's make sure the explanation is crystal clear!
+    riprInfo.P2.infectPass = "✓ Killed when one side is T & one is F (or via COR branch divergence)!";
+
+    const presetConfigs = {
+      s1: {
+        tcs: ["t1", "t2"],
+        focus: "P1",
+        badge: "100% Statement Coverage ≠ High Quality (MS = 40%)",
+        badgeClass: "ep-badge-amber",
+        diag: "💡 <strong>Why P₁, P₃, P₄ Survive at 100% SC:</strong> <code>t₁(12,1)</code> and <code>t₂(7,11)</code> execute every line, but never hit exact BVA boundaries (<code>X=10</code>, <code>X-Y=2</code>, <code>Y=10</code>) so <strong>Stage 2 (Infection)</strong> fails!"
+      },
+      s2: {
+        tcs: ["t1", "t2", "t3"],
+        focus: "P1",
+        badge: "BVA On-Point t₃(10,1) Kills P₁ (MS: 40% ➔ 60%)",
+        badgeClass: "ep-badge-blue",
+        diag: "🎯 <strong>Hunting P₁ (<code>X &gt; 10 ➔ X &gt;= 10</code>):</strong> Injecting exact boundary <code>t₃(10, 1)</code> triggers <strong>Infection</strong> (<code>10&gt;10</code> is False in P, but <code>10&gt;=10</code> is True in P₁), returning <code>1 != 2</code> (<strong>KILLED!</strong>)."
+      },
+      s3: {
+        tcs: ["t1", "t2", "t3", "t4"],
+        focus: "P3",
+        badge: "BVA On-Point t₄(8,6) Kills P₃ (MS: 60% ➔ 80%)",
+        badgeClass: "ep-badge-blue",
+        diag: "🎯 <strong>Hunting P₃ (<code>(X-Y) &lt; 2 ➔ (X-Y) &lt;= 2</code>):</strong> Injecting <code>t₄(8, 6)</code> where <code>X - Y == 2</code> infects Line 4 (P skips Line 5 and returns <code>8</code>; P₃ enters Line 5 and returns <code>2</code> ➔ <strong>KILLED!</strong>)."
+      },
+      s4: {
+        tcs: ["t1", "t2", "t3", "t4", "t5"],
+        focus: "P4",
+        badge: "All 5 Killable Mutants Destroyed! (MS = 5/5 = 100%)",
+        badgeClass: "ep-badge-green",
+        diag: "🏆 <strong>100% Mutation Score Achieved!</strong> Adding <code>t₅(7, 10)</code> (where <code>Y == 10</code>) infects and kills <code>P₄</code>! Notice how <strong>BVA On-Points</strong> are the exact mathematical weapon that kills ROR boundary mutants!"
+      },
+      s5: {
+        tcs: ["t1", "t2", "t3", "t4", "t5"],
+        focus: "P6",
+        badge: "Equivalent Mutant P₆ (E = 1) • Subtract from (M - E)",
+        badgeClass: "ep-badge-purple",
+        diag: "🧬 <strong>Why P₆ Can NEVER Be Killed:</strong> For integers <code>X, Y</code>, <code>(X - Y) &lt; 2</code> is mathematically identical to <code>(X - Y) &lt;= 1</code>! Stage 2 (Infection) is impossible, so we subtract <code>E = 1</code>: <code>MS = 5 / (6 - 1) = 100%</code>."
+      }
+    };
+
+    function updateMutView() {
+      const activeTcs = tcPills.filter(p => p.classList.contains("is-active")).map(p => p.getAttribute("data-mtc"));
+      const activeSet = new Set(activeTcs);
+
+      let killedCount = 0;
+      ["P1", "P2", "P3", "P4", "P5"].forEach(mid => {
+        const killers = killsMap[mid].filter(t => activeSet.has(t));
+        const isKilled = killers.length > 0;
+        if (isKilled) killedCount++;
+        const stEl = stage.querySelector("#mut-st-" + mid);
+        if (stEl) {
+          stEl.className = "mut-status-pill " + (isKilled ? "is-killed" : "is-alive");
+          stEl.textContent = isKilled ? ("KILLED (" + killers[0].replace("t", "t") + ")") : "SURVIVED";
+        }
+      });
+
+      // Matrix cells highlight
+      ["P1", "P2", "P3", "P4", "P5", "P6"].forEach(mid => {
+        ["t1", "t2", "t3", "t4", "t5"].forEach(tid => {
+          const cell = stage.querySelector('[data-mcell="' + mid + '-' + tid + '"]');
+          if (!cell) return;
+          cell.classList.remove("is-kill-cell", "is-survive-cell", "is-dim-cell");
+          if (!activeSet.has(tid)) {
+            cell.classList.add("is-dim-cell");
+          } else if (killsMap[mid] && killsMap[mid].includes(tid)) {
+            cell.classList.add("is-kill-cell");
+          } else {
+            cell.classList.add("is-survive-cell");
+          }
+        });
+      });
+
+      // Focused row highlight
+      mutRows.forEach(r => r.classList.toggle("is-focused", r.getAttribute("data-mid") === focusedMutant));
+
+      // Update RIPR chain for focusedMutant
+      const rInfo = riprInfo[focusedMutant];
+      const fKillers = (killsMap[focusedMutant] || []).filter(t => activeSet.has(t));
+      const fKilled = fKillers.length > 0;
+      const rHeader = stage.querySelector("#mut-ripr-header");
+      if (rHeader && rInfo) {
+        rHeader.innerHTML = "RIPR 4-Stage Chain Diagnosis for Focused Mutant <code>" + rInfo.name + "</code>:";
+      }
+
+      const stepR = stage.querySelector("#mut-ripr-r");
+      const stepI = stage.querySelector("#mut-ripr-i");
+      const stepP = stage.querySelector("#mut-ripr-p");
+      const stepRev = stage.querySelector("#mut-ripr-rev");
+      const txtR = stage.querySelector("#mut-ripr-r-txt");
+      const txtI = stage.querySelector("#mut-ripr-i-txt");
+      const txtP = stage.querySelector("#mut-ripr-p-txt");
+      const txtRev = stage.querySelector("#mut-ripr-rev-txt");
+
+      if (rInfo) {
+        const hasAnyTest = activeTcs.length > 0;
+        if (stepR) stepR.className = "mut-ripr-step " + (hasAnyTest ? "is-pass" : "is-fail");
+        if (txtR) txtR.textContent = hasAnyTest ? rInfo.reach : "✗ No Active Tests";
+
+        if (stepI) stepI.className = "mut-ripr-step " + (fKilled ? "is-pass" : "is-fail");
+        if (txtI) txtI.textContent = fKilled ? rInfo.infectPass : rInfo.infectFail;
+
+        if (stepP) stepP.className = "mut-ripr-step " + (fKilled ? "is-pass" : "is-fail");
+        if (txtP) txtP.textContent = fKilled ? rInfo.propPass : rInfo.propFail;
+
+        if (stepRev) stepRev.className = "mut-ripr-step " + (fKilled ? "is-pass" : "is-fail");
+        if (txtRev) txtRev.textContent = fKilled ? rInfo.revPass : rInfo.revFail;
+      }
+
+      // Update meters & score formula
+      const msPct = Math.round((killedCount / 5) * 100);
+      const barMs = stage.querySelector("#mut-bar-ms");
+      const valMs = stage.querySelector("#mut-val-ms");
+      const formulaEl = stage.querySelector("#mut-score-formula");
+      const tcLabel = stage.querySelector("#mut-active-tc-label");
+
+      if (barMs) {
+        barMs.style.width = msPct + "%";
+        barMs.style.background = msPct === 100 ? "#16a34a" : (msPct >= 60 ? "#0284c7" : "#f59e0b");
+      }
+      if (valMs) valMs.textContent = msPct + "% (" + killedCount + "/5)";
+      if (formulaEl) formulaEl.textContent = "MS = " + killedCount + " / (6 - 1) = " + msPct + "%";
+      if (tcLabel) tcLabel.textContent = "Active: " + activeTcs.length + " / 5 Tests";
+
+      const scPct = activeTcs.length === 0 ? 0 : (activeSet.has("t1") && activeSet.has("t2") ? 100 : 75);
+      const barSc = stage.querySelector("#mut-bar-sc");
+      const valSc = stage.querySelector("#mut-val-sc");
+      if (barSc) barSc.style.width = scPct + "%";
+      if (valSc) valSc.textContent = scPct + "% (" + (scPct === 100 ? "8/8" : (scPct === 75 ? "6/8" : "0/8")) + ")";
+    }
+
+    function applyMutPreset(key) {
+      const cfg = presetConfigs[key];
+      if (!cfg) return;
+      modeBtns.forEach(b => b.classList.toggle("is-active", b.getAttribute("data-mut") === key));
+      tcPills.forEach(p => p.classList.toggle("is-active", cfg.tcs.includes(p.getAttribute("data-mtc"))));
+      focusedMutant = cfg.focus;
+
+      const badge = stage.querySelector("#mut-mode-badge");
+      const diag = stage.querySelector("#mut-diag-box");
+      if (badge) {
+        badge.textContent = cfg.badge;
+        badge.className = "ep-badge-pill " + cfg.badgeClass;
+      }
+      if (diag) diag.innerHTML = cfg.diag;
+
+      updateMutView();
+    }
+
+    modeBtns.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        applyMutPreset(this.getAttribute("data-mut"));
+      });
+    });
+
+    tcPills.forEach(pill => {
+      pill.addEventListener("click", function(e) {
+        e.stopPropagation();
+        this.classList.toggle("is-active");
+        updateMutView();
+      });
+    });
+
+    mutRows.forEach(row => {
+      row.addEventListener("click", function(e) {
+        e.stopPropagation();
+        focusedMutant = this.getAttribute("data-mid") || "P1";
+        updateMutView();
+      });
+    });
+
+    applyMutPreset("s1");
+  }
+
+  function initBptInteractiveExplorer() {
+    const stage = document.getElementById("bpt-explorer");
+    if (!stage || stage.dataset.bptBound) return;
+    stage.dataset.bptBound = "true";
+
+    const btns = Array.from(stage.querySelectorAll(".bpt-btn"));
+    const codeLines = Array.from(stage.querySelectorAll(".bpt-code-line"));
+    const cfgEdges = Array.from(stage.querySelectorAll("[data-bedge]"));
+    const cfgNodes = Array.from(stage.querySelectorAll("[data-bcfgnode]"));
+    const pathRows = Array.from(stage.querySelectorAll(".bpt-path-row"));
+    const regionsLayer = stage.querySelector("#bpt-regions-layer");
+
+    const modeData = {
+      "vg-r": {
+        type: "vg",
+        showRegions: true,
+        predGlow: false,
+        allEdges: false,
+        badge: "Method 1: Planar Regions Formula",
+        badgeClass: "ep-badge-blue",
+        formula: "V(G) = R = 5 + 1 = 6",
+        title: "Planar Regions: 5 Enclosed Regions + 1 Outer Region = 6",
+        desc: "• <strong>5 Enclosed Regions:</strong> <code>R₁(2-3-9)</code>, <code>R₂(9-11-12-10)</code>, <code>R₃(4-5-7)</code>, <code>R₄(5-6-8-7)</code>, and <code>R₅(2-3-4-5-6-8-2 loop)</code>.<br/>• <strong>+ 1 Outer Infinite Region (<code>R₆</code>)</strong> surrounding the planar CFG ➔ <strong><code>V(G) = 6</code> independent basis paths</strong>!",
+        tip: "💡Look at the 6 colored region badges R₁..R₆ on the CFG! Next, click ② Euler or ③ Predicates."
+      },
+      "vg-en": {
+        type: "vg",
+        showRegions: false,
+        predGlow: false,
+        allEdges: true,
+        badge: "Method 2: Euler's Graph Formula",
+        badgeClass: "ep-badge-green",
+        formula: "V(G) = E - N + 2 = 16 - 12 + 2 = 6",
+        title: "Euler Edge-Node Count: 16 Directed Edges - 12 Nodes + 2 = 6",
+        desc: "• <strong>Directed Edges (<code>E = 16</code>):</strong> Every arrow connecting basic blocks &amp; decisions (all 16 edges lit in green).<br/>• <strong>CFG Nodes (<code>N = 12</code>):</strong> Nodes <code>(1)..(12)</code> ➔ <strong><code>V(G) = 16 - 12 + 2 = 6</code></strong> (works on any single-entry/exit CFG)!",
+        tip: "💡All 16 directed edges and 12 nodes are highlighted! Notice how E - N + 2 equals the exact number of regions (6)."
+      },
+      "vg-p": {
+        type: "vg",
+        showRegions: false,
+        predGlow: true,
+        allEdges: false,
+        badge: "Method 3: Decomposed Predicate Nodes",
+        badgeClass: "ep-badge-amber",
+        formula: "V(G) = P + 1 = 5 + 1 = 6",
+        title: "Binary Predicate Nodes: 5 Decomposed Conditions + 1 = 6",
+        desc: "• <strong>Compound Condition Decomposition:</strong> <code>while (A &amp;&amp; B)</code> splits into <code>P1(2)</code> &amp; <code>P2(3)</code>; <code>if (C &amp;&amp; D)</code> splits into <code>P3(4)</code> &amp; <code>P4(5)</code>; plus <code>if (valid&gt;0)</code> as <code>P5(9)</code>.<br/>• <strong>Total Binary Predicates <code>P = 5</code></strong> ➔ <strong><code>V(G) = P + 1 = 5 + 1 = 6</code></strong>!",
+        tip: "💡Look at the 5 glowing amber predicate nodes (2, 3, 4, 5, 9) in both the code and CFG! Now click Path 1..Path 6!"
+      },
+      "p1": {
+        type: "path",
+        infeasible: true,
+        nodes: [1, 2, 9, 10, 12],
+        edges: ["1-2", "2-9", "9-10", "10-12"],
+        newEdges: ["9-10", "10-12"],
+        cumEdges: 4,
+        badge: "Path 1 of 6 • Infeasible Baseline!",
+        badgeClass: "ep-badge-purple",
+        formula: "1 ➔ 2(F) ➔ 9(T) ➔ 10 ➔ 12",
+        title: "Path 1: Mathematically Infeasible Path (Data-Flow Contradiction!)",
+        desc: "• <strong>Why Path 1 Is Infeasible:</strong> Exiting at Node <code>(2)</code> immediately (<code>grade[0] == -999</code>) leaves <strong><code>valid == 0</code></strong>.<br/>• Therefore, Predicate <code>(9) if (valid &gt; 0)</code> <strong>cannot evaluate to True</strong> to enter Node <code>(10)</code>! We test <code>9➔10➔12</code> inside Path 6 instead.",
+        tip: "⚠️ Key White-Box Insight: Graph topology allows 1➔2➔9➔10➔12, but data-flow semantics make it infeasible!"
+      },
+      "p2": {
+        type: "path",
+        infeasible: false,
+        nodes: [1, 2, 9, 11, 12],
+        edges: ["1-2", "2-9", "9-11", "11-12"],
+        newEdges: ["1-2", "2-9", "9-11", "11-12"],
+        cumEdges: 4,
+        badge: "Path 2 of 6 • Feasible Baseline",
+        badgeClass: "ep-badge-green",
+        formula: "1 ➔ 2(F) ➔ 9(F) ➔ 11 ➔ 12",
+        title: "Path 2: Immediate Sentinel Exit (grade = {-999} ➔ avg = -999.0)",
+        desc: "• <strong>New Independent Edges (Orange):</strong> <code>1➔2</code>, <code>2➔9 (False)</code>, <code>9➔11 (False)</code>, <code>11➔12</code>.<br/>• <strong>Test Case:</strong> <code>grade = {-999}</code> (0 valid scores, <code>valid == 0</code> takes false branch at Node 9 to Node 11).",
+        tip: "✅ Path 2 covers 4 / 16 CFG edges. Click Path 3 next to test the second while-loop condition (3)!"
+      },
+      "p3": {
+        type: "path",
+        infeasible: false,
+        nodes: [1, 2, 3, 9, 10, 12],
+        edges: ["1-2", "2-3", "3-9", "9-10", "10-12"],
+        newEdges: ["2-3", "3-9"],
+        cumEdges: 8,
+        badge: "Path 3 of 6 • Loop Capacity Boundary",
+        badgeClass: "ep-badge-blue",
+        formula: "1 ➔ 2(T) ➔ 3(F) ➔ 9 ➔ 10 ➔ 12",
+        title: "Path 3: Loop Capacity Limit Reached (i == 50 Exits at Node 3)",
+        desc: "• <strong>New Independent Edges (Orange):</strong> <code>2➔3 (True)</code> and <code>3➔9 (False: i &lt; 50 fails after 50 scores)</code>.<br/>• <strong>Test Case:</strong> Array with <code>51</code> valid scores (e.g., fifty <code>80</code>s followed by <code>90</code>) ➔ exits at Node 3 on the 51st element!",
+        tip: "✅ Path 3 proves why while(A && B) must be split into Node 2 and Node 3! Cumulative edges: 8 / 16."
+      },
+      "p4": {
+        type: "path",
+        infeasible: false,
+        nodes: [1, 2, 3, 4, 7, 8, 9, 11, 12],
+        edges: ["1-2", "2-3", "3-4", "4-7", "7-8", "8-2", "2-9", "9-11", "11-12"],
+        newEdges: ["3-4", "4-7", "7-8", "8-2"],
+        cumEdges: 12,
+        badge: "Path 4 of 6 • Below Minimum Grade (< 10)",
+        badgeClass: "ep-badge-amber",
+        formula: "1➔2➔3➔4(F)➔7➔8➔2➔9➔11➔12",
+        title: "Path 4: Out-of-Range Low Score (grade = {5, -999} ➔ Node 7)",
+        desc: "• <strong>New Independent Edges (Orange):</strong> <code>3➔4 (True)</code>, <code>4➔7 (False: grade &lt; min)</code>, <code>7➔8</code>, and loop back-edge <code>8➔2</code>.<br/>• <strong>Test Case:</strong> <code>grade = {5, -999}</code> (score <code>5 &lt; 10</code> fails Predicate 4, prints error at Node 7, returns <code>-999.0</code>).",
+        tip: "✅ Path 4 exercises the first short-circuit exit of if(grade>=min && grade<=max)! Cumulative edges: 12 / 16."
+      },
+      "p5": {
+        type: "path",
+        infeasible: false,
+        nodes: [1, 2, 3, 4, 5, 7, 8, 9, 11, 12],
+        edges: ["1-2", "2-3", "3-4", "4-5", "5-7", "7-8", "8-2", "2-9", "9-11", "11-12"],
+        newEdges: ["4-5", "5-7"],
+        cumEdges: 14,
+        badge: "Path 5 of 6 • Above Maximum Grade (> 100)",
+        badgeClass: "ep-badge-amber",
+        formula: "1➔2➔3➔4(T)➔5(F)➔7➔8➔2..",
+        title: "Path 5: Out-of-Range High Score (grade = {105, -999} ➔ Node 5 to 7)",
+        desc: "• <strong>New Independent Edges (Orange):</strong> <code>4➔5 (True: &gt;= 10)</code> and <code>5➔7 (False: 105 &lt;= 100 fails)</code>.<br/>• <strong>Test Case:</strong> <code>grade = {105, -999}</code> (passes Predicate 4, fails Predicate 5, routes to Node 7 error message).",
+        tip: "✅ Path 5 exercises the second half of the compound range check (4➔5➔7)! Cumulative edges: 14 / 16."
+      },
+      "p6": {
+        type: "path",
+        infeasible: false,
+        nodes: [1, 2, 3, 4, 5, 6, 8, 9, 10, 12],
+        edges: ["1-2", "2-3", "3-4", "4-5", "5-6", "6-8", "8-2", "2-9", "9-10", "10-12"],
+        newEdges: ["5-6", "6-8", "9-10", "10-12"],
+        cumEdges: 16,
+        badge: "Path 6 of 6 • Valid Accumulation & Average (100% CFG!)",
+        badgeClass: "ep-badge-green",
+        formula: "1➔2➔3➔4➔5➔6➔8➔2➔9(T)➔10➔12",
+        title: "Path 6: Valid Grade Accumulation & Average (grade = {80, 90, -999} ➔ 85.0)",
+        desc: "• <strong>New Independent Edges (Orange):</strong> <code>5➔6 (True)</code>, <code>6➔8</code>, plus feasible <code>9➔10 (valid &gt; 0)</code> and <code>10➔12</code>!<br/>• <strong>Test Case:</strong> <code>grade = {80, 90, -999}</code> (accumulates <code>valid = 2</code>, enters Node 10, returns <code>85.0</code>).",
+        tip: "🏆 All 16 / 16 CFG Edges & 12 / 12 Nodes (100% SC + 100% BC + 100% Decomposed CC) Achieved!"
+      }
+    };
+
+    function renderBptMode(key) {
+      const d = modeData[key];
+      if (!d) return;
+
+      btns.forEach(b => b.classList.toggle("is-active", b.getAttribute("data-bpt") === key));
+      pathRows.forEach(r => r.classList.toggle("is-selected", r.getAttribute("data-prow") === key));
+
+      if (regionsLayer) {
+        regionsLayer.style.opacity = d.showRegions ? "1" : "0.15";
+      }
+
+      const predNodes = new Set([2, 3, 4, 5, 9]);
+      const activeNodes = new Set(d.nodes || []);
+      const activeEdges = new Set(d.edges || []);
+      const newEdges = new Set(d.newEdges || []);
+
+      codeLines.forEach(line => {
+        const n = Number(line.getAttribute("data-bnode"));
+        line.classList.remove("is-pred-glow", "is-path-hit", "is-new-edge");
+        if (d.type === "vg") {
+          if (d.predGlow && predNodes.has(n)) line.classList.add("is-pred-glow");
+          else if (d.allEdges) line.classList.add("is-path-hit");
+        } else {
+          if (activeNodes.has(n)) {
+            line.classList.add(d.infeasible ? "is-new-edge" : "is-path-hit");
+          }
+        }
+      });
+
+      cfgNodes.forEach(c => {
+        const n = Number(c.getAttribute("data-bcfgnode"));
+        const isPred = predNodes.has(n);
+        if (d.type === "vg") {
+          if (d.predGlow && isPred) {
+            c.setAttribute("fill", "#fde047");
+            c.setAttribute("stroke", "#b45309");
+            c.setAttribute("stroke-width", "3");
+          } else if (d.allEdges) {
+            c.setAttribute("fill", "#dcfce7");
+            c.setAttribute("stroke", "#16a34a");
+            c.setAttribute("stroke-width", "2.4");
+          } else {
+            c.setAttribute("fill", isPred ? "#fef3c7" : "#f1f5f9");
+            c.setAttribute("stroke", isPred ? "#d97706" : "#475569");
+            c.setAttribute("stroke-width", isPred ? "2" : "1.8");
+          }
+        } else {
+          if (activeNodes.has(n)) {
+            c.setAttribute("fill", d.infeasible ? "#ffe4e6" : "#dcfce7");
+            c.setAttribute("stroke", d.infeasible ? "#e11d48" : "#16a34a");
+            c.setAttribute("stroke-width", "2.8");
+          } else {
+            c.setAttribute("fill", "#f8fafc");
+            c.setAttribute("stroke", "#cbd5e1");
+            c.setAttribute("stroke-width", "1.5");
+          }
+        }
+      });
+
+      cfgEdges.forEach(eEl => {
+        const eid = eEl.getAttribute("data-bedge");
+        eEl.removeAttribute("stroke-dasharray");
+        if (d.type === "vg") {
+          if (d.allEdges) {
+            eEl.setAttribute("stroke", "#16a34a");
+            eEl.setAttribute("stroke-width", "2.6");
+            eEl.setAttribute("marker-end", "url(#bpt-arr-act)");
+          } else {
+            eEl.setAttribute("stroke", "#64748b");
+            eEl.setAttribute("stroke-width", "2");
+            eEl.setAttribute("marker-end", "url(#bpt-arr-def)");
+          }
+        } else {
+          if (newEdges.has(eid)) {
+            eEl.setAttribute("stroke", d.infeasible ? "#e11d48" : "#ea580c");
+            eEl.setAttribute("stroke-width", "3.4");
+            if (d.infeasible) eEl.setAttribute("stroke-dasharray", "5,3");
+            eEl.setAttribute("marker-end", d.infeasible ? "url(#bpt-arr-inf)" : "url(#bpt-arr-new)");
+          } else if (activeEdges.has(eid)) {
+            eEl.setAttribute("stroke", d.infeasible ? "#f43f5e" : "#16a34a");
+            eEl.setAttribute("stroke-width", "2.8");
+            eEl.setAttribute("marker-end", d.infeasible ? "url(#bpt-arr-inf)" : "url(#bpt-arr-act)");
+          } else {
+            eEl.setAttribute("stroke", "#cbd5e1");
+            eEl.setAttribute("stroke-width", "1.6");
+            eEl.setAttribute("marker-end", "url(#bpt-arr-def)");
+          }
+        }
+      });
+
+      const badge = stage.querySelector("#bpt-mode-badge");
+      const formula = stage.querySelector("#bpt-formula-pill");
+      const title = stage.querySelector("#bpt-mode-title");
+      const desc = stage.querySelector("#bpt-dynamic-desc");
+      const tip = stage.querySelector("#bpt-bottom-tip");
+      const barEdges = stage.querySelector("#bpt-bar-edges");
+      const valEdges = stage.querySelector("#bpt-val-edges");
+
+      if (badge) {
+        badge.textContent = d.badge;
+        badge.className = "ep-badge-pill " + d.badgeClass;
+      }
+      if (formula) formula.textContent = d.formula;
+      if (title) title.textContent = d.title;
+      if (desc) desc.innerHTML = d.desc;
+      if (tip) tip.innerHTML = d.tip;
+
+      const edgeCnt = d.type === "vg" ? 16 : d.cumEdges;
+      const pct = Math.round((edgeCnt / 16) * 100);
+      if (barEdges) {
+        barEdges.style.width = pct + "%";
+        barEdges.style.background = d.infeasible ? "#e11d48" : (pct === 100 ? "#16a34a" : "#0284c7");
+      }
+      if (valEdges) valEdges.textContent = edgeCnt + "/16 (" + pct + "%)";
+    }
+
+    btns.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        renderBptMode(this.getAttribute("data-bpt"));
+      });
+    });
+
+    pathRows.forEach(row => {
+      row.addEventListener("click", function(e) {
+        e.stopPropagation();
+        renderBptMode(this.getAttribute("data-prow"));
+      });
+    });
+
+    renderBptMode("vg-r");
+  }
+
   function init() {
     initOutlineLinksAndQuizBlanks();
     initHeaderDropdown();
@@ -7130,6 +8478,9 @@ function initSmExplorer() {
     initSmExplorer();
     initSelfPracticeQuizzes();
     initStackInteractiveLab();
+    initWbcInteractiveExplorer();
+    initMutInteractiveExplorer();
+    initBptInteractiveExplorer();
   }
 
   if (document.readyState === 'loading') {
