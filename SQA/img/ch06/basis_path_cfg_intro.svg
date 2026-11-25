@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440" width="440" height="440">
+  <defs>
+    <marker id="arr-s" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/>
+    </marker>
+    <marker id="arr-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arr-r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#e11d48"/>
+    </marker>
+  </defs>
+
+  <!-- Outer Card -->
+  <rect x="0" y="0" width="440" height="440" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="440" height="38" rx="14" fill="#0b3c5d"/>
+  <rect x="0" y="24" width="440" height="14" fill="#0b3c5d"/>
+  <text x="220" y="24" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="13.5" font-weight="800" fill="#ffffff" text-anchor="middle">控制流程圖 (CFG) 與圈複雜度 V(G) 對照</text>
+
+  <!-- Left Panel: Sequence -->
+  <rect x="16" y="52" width="166" height="316" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="99" y="75" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="13" font-weight="800" fill="#0b3c5d" text-anchor="middle">循序結構 (Sequence)</text>
+  <rect x="36" y="83" width="126" height="22" rx="6" fill="#e0f2fe"/>
+  <text x="99" y="98" font-family="Fira Code, Consolas, monospace" font-size="11.5" font-weight="800" fill="#0369a1" text-anchor="middle">V(G) = 1</text>
+
+  <!-- Sequence Nodes -->
+  <circle cx="99" cy="138" r="20" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
+  <text x="99" y="143" font-family="Fira Code, Consolas, monospace" font-size="13" font-weight="800" fill="#0b3c5d" text-anchor="middle">1</text>
+  <line x1="99" y1="158" x2="99" y2="194" stroke="#475569" stroke-width="2.2" marker-end="url(#arr-s)"/>
+
+  <circle cx="99" cy="218" r="20" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
+  <text x="99" y="223" font-family="Fira Code, Consolas, monospace" font-size="13" font-weight="800" fill="#0b3c5d" text-anchor="middle">2</text>
+  <line x1="99" y1="238" x2="99" y2="274" stroke="#475569" stroke-width="2.2" marker-end="url(#arr-s)"/>
+
+  <circle cx="99" cy="298" r="20" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+  <text x="99" y="303" font-family="Fira Code, Consolas, monospace" font-size="13" font-weight="800" fill="#334155" text-anchor="middle">3</text>
+
+  <!-- Sequence Metrics -->
+  <text x="99" y="339" font-family="Fira Code, Consolas, monospace" font-size="10.5" font-weight="700" fill="#475569" text-anchor="middle">N=3, E=2, P=0</text>
+  <text x="99" y="356" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="10.5" font-weight="700" fill="#0284c7" text-anchor="middle">R = 1 (僅外部區域)</text>
+
+  <!-- Right Panel: Branch -->
+  <rect x="196" y="52" width="228" height="316" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="310" y="75" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="13" font-weight="800" fill="#0b3c5d" text-anchor="middle">分支結構 (if-else)</text>
+  <rect x="247" y="83" width="126" height="22" rx="6" fill="#fef3c7"/>
+  <text x="310" y="98" font-family="Fira Code, Consolas, monospace" font-size="11.5" font-weight="800" fill="#b45309" text-anchor="middle">V(G) = 2</text>
+
+  <!-- External Region R2 tag -->
+  <rect x="206" y="114" width="60" height="20" rx="5" fill="#ffe4e6" stroke="#e11d48" stroke-width="1.2"/>
+  <text x="236" y="128" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="9.5" font-weight="800" fill="#be123c" text-anchor="middle">R₂ (外部)</text>
+
+  <!-- Predicate Diamond Node 1 -->
+  <polygon points="340,114 374,140 340,166 306,140" fill="#fef3c7" stroke="#d97706" stroke-width="2.2"/>
+  <text x="340" y="144" font-family="Fira Code, Consolas, monospace" font-size="11.5" font-weight="800" fill="#92400e" text-anchor="middle">P1</text>
+
+  <!-- False branch (left) -->
+  <path d="M 306 140 L 252 140 L 252 194" stroke="#e11d48" stroke-width="2.2" fill="none" marker-end="url(#arr-r)"/>
+  <text x="240" y="172" font-family="Fira Code, Consolas, monospace" font-size="11" font-weight="800" fill="#be123c" text-anchor="middle">F</text>
+
+  <!-- True branch (down) -->
+  <line x1="340" y1="166" x2="340" y2="194" stroke="#16a34a" stroke-width="2.2" marker-end="url(#arr-g)"/>
+  <text x="353" y="183" font-family="Fira Code, Consolas, monospace" font-size="11" font-weight="800" fill="#15803d" text-anchor="middle">T</text>
+
+  <!-- Internal Region R1 badge -->
+  <circle cx="296" cy="218" r="13" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="296" y="222" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="10.5" font-weight="900" fill="#1d4ed8" text-anchor="middle">R₁</text>
+
+  <!-- Left & Right branch nodes -->
+  <circle cx="252" cy="218" r="19" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+  <text x="252" y="223" font-family="Fira Code, Consolas, monospace" font-size="12.5" font-weight="800" fill="#9f1239" text-anchor="middle">2</text>
+
+  <circle cx="340" cy="218" r="19" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="340" y="223" font-family="Fira Code, Consolas, monospace" font-size="12.5" font-weight="800" fill="#166534" text-anchor="middle">3</text>
+
+  <!-- Merge arrows into Node 4 -->
+  <path d="M 252 237 L 252 298 L 316 298" stroke="#475569" stroke-width="2.2" fill="none" marker-end="url(#arr-s)"/>
+  <line x1="340" y1="237" x2="340" y2="275" stroke="#475569" stroke-width="2.2" marker-end="url(#arr-s)"/>
+
+  <!-- Exit Node 4 -->
+  <circle cx="340" cy="298" r="19" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+  <text x="340" y="303" font-family="Fira Code, Consolas, monospace" font-size="12.5" font-weight="800" fill="#334155" text-anchor="middle">4</text>
+
+  <!-- Branch Metrics -->
+  <text x="310" y="339" font-family="Fira Code, Consolas, monospace" font-size="10.5" font-weight="700" fill="#475569" text-anchor="middle">N=4, E=4, P=1</text>
+  <text x="310" y="356" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="10.5" font-weight="700" fill="#b45309" text-anchor="middle">R = 2 (R₁ 封閉 + R₂ 外部)</text>
+
+  <!-- Bottom Formula Strip -->
+  <rect x="16" y="382" width="408" height="44" rx="9" fill="#0f2742"/>
+  <text x="220" y="401" font-family="Fira Code, Consolas, monospace" font-size="12" font-weight="800" fill="#38bdf8" text-anchor="middle">V(G) = R  =  E - N + 2  =  P + 1</text>
+  <text x="220" y="418" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="10.5" font-weight="600" fill="#e2e8f0" text-anchor="middle">三種等價公式皆指向同一「線性獨立基本路徑數上限」</text>
+</svg>

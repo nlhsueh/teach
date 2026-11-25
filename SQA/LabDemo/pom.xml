@@ -205,15 +205,19 @@
                 </dependencies>
                 <configuration>
                     <targetClasses>
+                        <param>u06_mutation.Triangle</param>
+                        <param>u06_mutation.BinarySearch</param>
                         <param>u06_coverage.*</param>
-                        <param>u06_mutation.*</param>
-                        <param>demo.mutant.*</param>
                     </targetClasses>
+                    <excludedClasses>
+                        <param>u06_mutation.mutant.*</param>
+                    </excludedClasses>
                     <targetTests>
-                        <param>u06_coverage.*Test</param>
                         <param>u06_mutation.*Test</param>
+                        <param>u06_coverage.*Test</param>
                     </targetTests>
-                    <mutators>STRONGER</mutators>
+                    <mutators>DEFAULTS</mutators>
+                    <timestampedReports>false</timestampedReports>
                     <outputFormats>
                         <param>HTML</param>
                     </outputFormats>

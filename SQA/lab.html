@@ -609,6 +609,7 @@
   <script>
     // GitHub Repository Configuration
     const GITHUB_REPO_URL = "https://github.com/nlhsueh/teach/blob/main/SQA/";
+    const GITHUB_RAW_URL = "https://raw.githubusercontent.com/nlhsueh/teach/main/SQA/";
 
     // Resolve relative path utility
     function resolvePath(baseDir, relativePath) {
@@ -840,8 +841,9 @@
                 <a href="lab.html?file=LabDemo/docs/u05_utest/partition.md">🛠️ Lab 05-2 · 輸入分割：BVA 與 EP (u05_partition)</a>
                 <a href="lab.html?file=LabDemo/docs/u05_utest/combinatorial.md">🛠️ Lab 05-3 · 組合與規則：Pairwise / CTM / 決策表 (u05_combinatorial)</a>
                 <a href="lab.html?file=LabDemo/docs/u05_utest/behavioral.md">🛠️ Lab 05-4 · 行為、經驗與屬性測試 (u05_behavioral)</a>
-                <a href="lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md">🛠️ Lab 07 · 白箱測試與涵蓋率分析</a>
-                <a href="lab.html?file=LabDemo/docs/u07_mutation/mutation_test.md">🛠️ Lab 07/08 · PITest 變異測試</a>
+                <a href="lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md">🛠️ Lab 06-1 · 白箱測試與涵蓋率分析</a>
+                <a href="lab.html?file=LabDemo/docs/u06_wbtesting/metrics.md">🛠️ Lab 06-2 · 程式碼複雜度度量 (MetricsReloaded)</a>
+                <a href="lab.html?file=LabDemo/docs/u07_mutation/mutation_test.md">🛠️ Lab 06-3 · PITest 變異測試</a>
                 <a href="lab.html?file=LabDemo/docs/u08_integration/testcontainers_spring.md">🛠️ Lab 09/10 · Testcontainers 整合測試</a>
                 <a href="lab.html?file=LabDemo/docs/u09_cucumber_bdd/pact_and_playwright.md">🛠️ Lab 11~13 · BDD 與契約測試</a>
                 <a href="lab.html?file=LabDemo/docs/u10_performance/k6_load_testing.md">🛠️ Lab 14 · k6 現代高併發壓測</a>
@@ -860,8 +862,19 @@
       const lastSlash = file.lastIndexOf('/');
       const baseDir = lastSlash !== -1 ? file.substring(0, lastSlash + 1) : '';
 
+      let loadedFromGithubFallback = false;
       try {
-        const response = await fetch(file);
+        let response;
+        try {
+          response = await fetch(file);
+        } catch (localErr) {
+          if (window.location.protocol === 'file:') {
+            response = await fetch(`${GITHUB_RAW_URL}${file}`);
+            loadedFromGithubFallback = true;
+          } else {
+            throw localErr;
+          }
+        }
         if (!response.ok) {
           throw new Error(`HTTP ${response.status} ${response.statusText}`);
         }
@@ -896,7 +909,10 @@
         });
 
         // Render HTML
-        contentArea.innerHTML = marked.parse(markdown);
+        const fallbackBanner = loadedFromGithubFallback
+          ? `<div style="background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid #2563eb;color:#1e3a8a;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:18px;">🌐 <strong>本機 <code>file://</code> 預覽模式：</strong>瀏覽器安全限制無法直接讀取本機檔案，已自動從 GitHub 載入最新已推送版本（若要預覽本機尚未推送的修改，請於 <code>SQA/</code> 目錄執行 <code>python3 -m http.server 8000</code> 並開啟 <code>http://localhost:8000</code>）。</div>`
+          : '';
+        contentArea.innerHTML = fallbackBanner + marked.parse(markdown);
 
         // Highlight code blocks
         contentArea.querySelectorAll('pre code').forEach((block) => {
@@ -954,11 +970,16 @@
       } catch (error) {
         console.error("載入 Markdown 失敗:", error);
         pageTitle.textContent = "無法載入講義檔案";
+        const isFileProto = window.location.protocol === 'file:';
+        const fileHint = isFileProto
+          ? `<p style="color:#b45309;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;font-size:13px;max-width:560px;margin:12px auto;">💡 偵測到您正以本機 <code>file://</code> 開啟頁面，瀏覽器會阻擋 <code>fetch()</code> 讀取本機檔案（且 GitHub 備援載入失敗或檔案尚未推送）。請在終端機執行 <code>python3 -m http.server 8000</code> 後改開 <code>http://localhost:8000</code> 預覽！</p>`
+          : '';
         contentArea.innerHTML = `
           <div class="state-container">
             <h2 style="color: #dc2626;">❌ 載入實習講義失敗</h2>
             <p style="margin: 10px 0;">無法讀取檔案路徑：<code>${file}</code></p>
             <p style="color: #64748b; font-size: 14px;">原因：${error.message}</p>
+            ${fileHint}
             <div style="margin-top: 20px;">
               <a href="index.html" class="btn-back" style="display: inline-block;">⬅️ 返回 SQA 課程入口</a>
             </div>

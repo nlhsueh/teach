@@ -129,12 +129,195 @@
       z-index: 10;
     }
 
+    /* View Toolbar (Grid / List Switcher) */
+    .view-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .view-toolbar-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .view-toolbar-count {
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 2px 9px;
+      border-radius: 999px;
+    }
+
+    .view-toggle {
+      display: inline-flex;
+      align-items: center;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .view-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.16s ease;
+      white-space: nowrap;
+    }
+
+    .view-btn:hover {
+      color: var(--text-main);
+    }
+
+    .view-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+    }
+
     /* Modules Grid */
     .modules-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 22px;
       justify-content: center;
+    }
+
+    /* Modules List View */
+    .modules-grid.list-view {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modules-grid.list-view .module-card {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      padding: 16px 22px;
+      gap: 20px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .modules-grid.list-view .module-card:hover {
+      transform: translateY(-1px);
+    }
+
+    .modules-grid.list-view .card-top {
+      margin-bottom: 0;
+      align-items: flex-start;
+      text-align: left;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .modules-grid.list-view .card-tag {
+      text-align: left;
+      margin-bottom: 3px;
+    }
+
+    .modules-grid.list-view .module-card h2 {
+      font-size: 17.5px;
+      text-align: left;
+      margin-bottom: 4px;
+    }
+
+    .modules-grid.list-view .module-card p {
+      font-size: 13.5px;
+      text-align: left;
+    }
+
+    .modules-grid.list-view .card-actions {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      width: auto;
+      flex-shrink: 0;
+    }
+
+    .modules-grid.list-view .card-actions .btn {
+      padding: 8px 12px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .modules-grid.list-view .dropdown {
+      width: auto;
+    }
+
+    .modules-grid.list-view .dropdown-btn {
+      width: auto;
+      padding-right: 30px;
+    }
+
+    .modules-grid.list-view .dropdown-arrow {
+      right: 10px;
+    }
+
+    .modules-grid.list-view .dropdown-menu {
+      left: auto;
+      right: 0;
+      width: 310px;
+    }
+
+    @media (max-width: 900px) {
+      .modules-grid.list-view .module-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+      }
+
+      .modules-grid.list-view .card-actions {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .modules-grid.list-view .dropdown-menu {
+        left: 0;
+        right: auto;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .view-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .view-toggle {
+        justify-content: center;
+      }
+
+      .view-btn {
+        flex: 1;
+        justify-content: center;
+      }
     }
 
     @keyframes cardFadeInUp {
@@ -574,8 +757,26 @@
   </header>
 
   <div class="container">
+    <!-- View Toolbar -->
+    <div class="view-toolbar">
+      <div class="view-toolbar-title">
+        <span>📚 課程單元與實習資源</span>
+        <span class="view-toolbar-count">共 9 個單元</span>
+      </div>
+      <div class="view-toggle" role="group" aria-label="切換顯示模式">
+        <button type="button" class="view-btn active" id="btnGridView" data-view="grid" aria-pressed="true">
+          <span>▦</span>
+          <span>Grid 格狀</span>
+        </button>
+        <button type="button" class="view-btn" id="btnListView" data-view="list" aria-pressed="false">
+          <span>☰</span>
+          <span>List 清單</span>
+        </button>
+      </div>
+    </div>
+
     <!-- Modules Grid -->
-    <div class="modules-grid">
+    <div class="modules-grid" id="modulesContainer">
 
       <!-- Unit 01 -->
       <div class="module-card">
@@ -1072,8 +1273,40 @@
   </div>
 
   <script>
-    // Initialize Lab Dropdown Menus
+    // Initialize Grid / List View Switcher & Lab Dropdown Menus
     document.addEventListener('DOMContentLoaded', () => {
+      const modulesContainer = document.getElementById('modulesContainer');
+      const btnGrid = document.getElementById('btnGridView');
+      const btnList = document.getElementById('btnListView');
+
+      function setViewMode(mode) {
+        const isList = mode === 'list';
+        if (modulesContainer) {
+          modulesContainer.classList.toggle('list-view', isList);
+        }
+        if (btnGrid) {
+          btnGrid.classList.toggle('active', !isList);
+          btnGrid.setAttribute('aria-pressed', String(!isList));
+        }
+        if (btnList) {
+          btnList.classList.toggle('active', isList);
+          btnList.setAttribute('aria-pressed', String(isList));
+        }
+        try {
+          localStorage.setItem('sqa_index_view_mode', isList ? 'list' : 'grid');
+        } catch (err) {}
+      }
+
+      if (btnGrid) btnGrid.addEventListener('click', () => setViewMode('grid'));
+      if (btnList) btnList.addEventListener('click', () => setViewMode('list'));
+
+      try {
+        const savedMode = localStorage.getItem('sqa_index_view_mode');
+        if (savedMode === 'list' || savedMode === 'grid') {
+          setViewMode(savedMode);
+        }
+      } catch (err) {}
+
       const dropdowns = document.querySelectorAll('.dropdown');
 
       dropdowns.forEach(dropdown => {

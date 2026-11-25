@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 470" width="460" height="470">
+  <defs>
+    <marker id="arr-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/>
+    </marker>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7"/>
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#e11d48"/>
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="460" height="470" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Title Bar -->
+  <rect x="0" y="0" width="460" height="38" rx="14" fill="#0b3c5d"/>
+  <rect x="0" y="24" width="460" height="14" fill="#0b3c5d"/>
+  <text x="230" y="24" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle">變異測試運作架構 (Test the Tests)</text>
+
+  <!-- Original Program P -->
+  <rect x="30" y="54" width="160" height="58" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="110" y="76" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="13.5" font-weight="800" fill="#1e3a8a" text-anchor="middle">原程式 P</text>
+  <text x="110" y="96" font-family="Fira Code, Consolas, monospace" font-size="11.5" font-weight="700" fill="#0369a1" text-anchor="middle">if (a &gt;= 2) ...</text>
+
+  <!-- Test Suite T -->
+  <rect x="270" y="54" width="160" height="58" rx="10" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="350" y="76" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="13.5" font-weight="800" fill="#166534" text-anchor="middle">測試套件 T</text>
+  <text x="350" y="96" font-family="Fira Code, Consolas, monospace" font-size="11.5" font-weight="700" fill="#15803d" text-anchor="middle">{ t₁, t₂, ... }</text>
+
+  <!-- Arrow from P to Mutators -->
+  <path d="M 110 112 L 110 142" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arr-slate)"/>
+  <rect x="118" y="117" width="128" height="20" rx="5" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+  <text x="182" y="131" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="10.5" font-weight="800" fill="#92400e" text-anchor="middle">植入微小變異算子</text>
+
+  <!-- Mutants Box -->
+  <rect x="22" y="146" width="224" height="92" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6" stroke-dasharray="5,3"/>
+  <text x="134" y="164" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="11.5" font-weight="800" fill="#475569" text-anchor="middle">人造變異體群 (Mutants)</text>
+
+  <rect x="32" y="174" width="64" height="54" rx="7" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+  <text x="64" y="194" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="12.5" font-weight="800" fill="#92400e" text-anchor="middle">P₁</text>
+  <text x="64" y="213" font-family="Fira Code, Consolas, monospace" font-size="10.5" font-weight="700" fill="#b45309" text-anchor="middle">a &gt; 2</text>
+
+  <rect x="102" y="174" width="64" height="54" rx="7" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+  <text x="134" y="194" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="12.5" font-weight="800" fill="#92400e" text-anchor="middle">P₂</text>
+  <text x="134" y="213" font-family="Fira Code, Consolas, monospace" font-size="10.5" font-weight="700" fill="#b45309" text-anchor="middle">&amp;&amp; → ||</text>
+
+  <rect x="172" y="174" width="64" height="54" rx="7" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+  <text x="204" y="194" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="12.5" font-weight="800" fill="#92400e" text-anchor="middle">P₃</text>
+  <text x="204" y="213" font-family="Fira Code, Consolas, monospace" font-size="10.5" font-weight="700" fill="#b45309" text-anchor="middle">+ → -</text>
+
+  <!-- Execution Engine Box -->
+  <rect x="270" y="158" width="160" height="68" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="350" y="184" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="13" font-weight="800" fill="#0b3c5d" text-anchor="middle">比對輸出結果</text>
+  <text x="350" y="207" font-family="Fira Code, Consolas, monospace" font-size="12" font-weight="800" fill="#0369a1" text-anchor="middle">P(t) vs. Pᵢ(t)</text>
+
+  <!-- Arrows into Execution Engine -->
+  <path d="M 350 112 L 350 154" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#arr-blue)"/>
+  <path d="M 246 192 L 266 192" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arr-slate)"/>
+
+  <!-- Decision Diamond / Split -->
+  <path d="M 350 226 L 350 256 L 125 256 L 125 282" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arr-green)"/>
+  <path d="M 350 226 L 350 282" stroke="#e11d48" stroke-width="2.2" fill="none" marker-end="url(#arr-red)"/>
+
+  <!-- Branch Labels -->
+  <rect x="148" y="244" width="104" height="22" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="200" y="259" font-family="Fira Code, Consolas, monospace" font-size="11" font-weight="800" fill="#15803d" text-anchor="middle">P(t) ≠ Pᵢ(t)</text>
+
+  <rect x="358" y="244" width="90" height="22" rx="6" fill="#ffe4e6" stroke="#e11d48" stroke-width="1.2"/>
+  <text x="403" y="259" font-family="Fira Code, Consolas, monospace" font-size="11" font-weight="800" fill="#be123c" text-anchor="middle">P(t) == Pᵢ(t)</text>
+
+  <!-- Killed Card -->
+  <rect x="26" y="288" width="194" height="96" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="123" y="313" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="14" font-weight="800" fill="#15803d" text-anchor="middle">已刪除變異體 (KILLED)</text>
+  <text x="123" y="336" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="11.5" font-weight="600" fill="#166534" text-anchor="middle">測試亮紅燈，成功攔截缺陷！</text>
+  <text x="123" y="356" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="11.5" font-weight="700" fill="#065f46" text-anchor="middle">代表測試集 T 具備抓錯能力</text>
+  <rect x="64" y="364" width="118" height="14" rx="4" fill="#16a34a"/>
+  <text x="123" y="374" font-family="Fira Code, Consolas, monospace" font-size="9.5" font-weight="800" fill="#ffffff" text-anchor="middle">MS Score UP</text>
+
+  <!-- Survived Card -->
+  <rect x="242" y="288" width="194" height="96" rx="10" fill="#ffe4e6" stroke="#e11d48" stroke-width="2"/>
+  <text x="339" y="313" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="14" font-weight="800" fill="#be123c" text-anchor="middle">存活變異體 (SURVIVED)</text>
+  <text x="339" y="336" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="11.5" font-weight="600" fill="#9f1239" text-anchor="middle">測試全綠燈，竟未發現突變！</text>
+  <text x="339" y="356" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="11.5" font-weight="700" fill="#881337" text-anchor="middle">警訊：測資或斷言太薄弱</text>
+  <rect x="275" y="364" width="128" height="14" rx="4" fill="#e11d48"/>
+  <text x="339" y="374" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="9.5" font-weight="800" fill="#ffffff" text-anchor="middle">需補強測試案例 T</text>
+
+  <!-- Feedback Loop from Survived to T -->
+  <path d="M 339 384 L 339 412 L 444 412 L 444 83 L 434 83" stroke="#d97706" stroke-width="2.2" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-amber)"/>
+
+  <!-- Bottom Formula Banner -->
+  <rect x="26" y="424" width="408" height="34" rx="8" fill="#0f2742"/>
+  <text x="230" y="446" font-family="PingFang TC, Noto Sans TC, sans-serif" font-size="12.5" font-weight="800" fill="#e0f2fe" text-anchor="middle">品質指標：變異分數  MS = Killed / (Total − Equivalent)</text>
+</svg>

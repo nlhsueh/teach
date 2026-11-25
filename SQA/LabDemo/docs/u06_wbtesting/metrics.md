@@ -7,7 +7,7 @@ Install `Cyclomatic Complexity` metric to your Intellij
 * Intellij >> Settings >> Plugins >> Marketplace >> search `MetricsReloaded`
   * Install
   * Restart
-  * Choolse a file, package or whole project
+  * Choose a file, package or whole project
     * On the project, right click the mouse, choose "Analyze" >> "Calculate metrics"
     * Select the "Complexity metrics"
     * Click "Analyze"
@@ -20,10 +20,7 @@ Install `Cyclomatic Complexity` metric to your Intellij
 
 ## Metrics
 
-
-好的，MetricsReloaded 是一個用於測量和分析程式碼指標的 IntelliJ 外掛。您提到的這些指標在軟體工程中都非常重要，它們幫助開發人員評估程式碼的品質、可維護性和可測試性。
-
-以下是對您提到的五個指標的詳細介紹：
+`MetricsReloaded` 是一個用於測量和分析程式碼複雜度指標的 IntelliJ 外掛，協助開發人員量化程式碼的可維護性與可測試性。以下介紹五大核心指標：
 
 ---
 
@@ -54,7 +51,7 @@ Install `Cyclomatic Complexity` metric to your Intellij
 | 定義 | 類別中**所有方法複雜度的平均值**。 |
 | :--- | :--- |
 | **白話計算方法** | 將 `WMC` 的值，除以類別中**方法的總數量**：`OCavg = WMC / 類別中的方法總數` |
-| **隱含的意義** | **數值越大 ➔ 類別中的**_**平均方法**_**越複雜**。 |
+| **隱含的意義** | **數值越大 ➔ 類別中的「平均方法」越複雜**。 |
 | **與 WMC 的區別** | `WMC` 關注**類別的總體大小**，`OCavg` 關注**類別中每個方法的複雜度平均水準**。如果 `WMC` 很高但 `OCavg` 很低，表示類別有很多**簡單**的方法。如果兩者都高，則表示類別有很多**複雜**的方法。 |
 
 > **簡單來說：** `OCavg` 告訴你這個類別的每個方法平均來說有多「燒腦」。
@@ -75,9 +72,7 @@ Install `Cyclomatic Complexity` metric to your Intellij
 | :--- | :--- |
 | **白話計算方法** | 計算類別、方法或檔案中**非空白且非註釋**的程式碼行。 |
 | **隱含的意義** | **數值越大 ➔ 類別或方法越長**。 |
-| **建議值** |
-    * **高 LOC** 的類別或方法通常與**高 WMC** 和**高 v(G)** 同時出現，表示程式碼**過長、難以掌握**。
-    * **方法**的 LOC 應保持簡短（例如不超過 50 行），以符合「方法應該只做一件事」的原則。 |
+| **建議值** | 高 `LOC` 常與高 `WMC`、`v(G)` 同時出現，表示程式碼過長難以掌握；單一方法的 `LOC` 建議控制在 **50 行以內**，符合單一職責原則。 |
 
 > **簡單來說：** `LOC` 衡量程式碼的物理長度。長的方法或類別很難一眼看清全貌。
 
@@ -96,13 +91,8 @@ MetricsReloaded 提供的這些指標通常需要**結合起來**看，才能全
 
 ---
 ## 🧪 實作練習範例 (Demo Code)
-* **待測原始碼**：[GradeAverage.java](../../src/main/java/u06_coverage/GradeAverage.java)
-* **基本路徑測試案例**：[GradeAverageBasisPathTest.java](../../src/test/java/u06_coverage/GradeAverageBasisPathTest.java)
+* **課堂範例（基本路徑）**：[GradeAverage.java](../../src/main/java/u06_coverage/GradeAverage.java) ＆ [GradeAverageBasisPathTest.java](../../src/test/java/u06_coverage/GradeAverageBasisPathTest.java)
+* **Lab 2 複雜度度量與重構練習**：[ShippingFeeCalculator.java](../../src/main/java/u06_coverage/ShippingFeeCalculator.java) ＆ [ShippingFeeBasisPathTest.java](../../src/test/java/u06_coverage/ShippingFeeBasisPathTest.java)
 * **練習目標**：
-  1. 對 `GradeAverage.java` 繪製控制流程圖 (CFG)，計算 McCabe 圈複雜度 `V(G) = P + 1 = 6`。
-  2. 執行 `MetricsReloaded` 插件，檢視 `computeAverage` 方法的 `v(G)` 與 `CogC` 數值。
-  3. 執行 `GradeAverageBasisPathTest` 驗證 6 條獨立路徑的測試覆蓋率！
-
-這些指標是您維護高品質程式碼庫的強大工具。
-
-您想讓我針對其中一個指標，例如 **Cognitive Complexity (CogC)**，提供更多關於如何降低它的技巧嗎？
+  1. 執行 `MetricsReloaded` 插件，比較 `ShippingFeeCalculator` 中 `calculateFeeNested`（深層巢狀）與 `calculateFeeRefactored`（衛語句重構）的 `v(G)` 與 `CogC` 差異。
+  2. 針對 `calculateFeeNested` 繪製控制流程圖 (CFG)，導出線性獨立基本路徑並檢驗 `ShippingFeeBasisPathTest` 的分支覆蓋率！
