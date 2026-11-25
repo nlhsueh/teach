@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 220" width="1100" height="220">
+  <defs>
+    <marker id="arr-t" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .lh { font-size: 14.5px; font-weight: 800; fill: #ffffff; }
+    .lt { font-size: 13px; font-weight: 800; }
+    .ls { font-size: 11.6px; fill: #475569; }
+  </style>
+
+  <!-- Tier 1: Dashboard -->
+  <rect x="16" y="16" width="320" height="186" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="16" y="16" width="320" height="38" rx="12" fill="#0f766e"/>
+  <rect x="16" y="40" width="320" height="14" fill="#0f766e"/>
+  <text x="176" y="41" text-anchor="middle" class="lh">Layer 1 · Visual Dashboard</text>
+  <text x="34" y="84" class="lt" fill="#0f766e">Most Convenient · Zero Coding</text>
+  <text x="34" y="110" class="ls">• Instant course-level summary stats</text>
+  <text x="34" y="132" class="ls">• Watch progress, quiz &amp; forum heat</text>
+  <text x="34" y="164" class="ls" fill="#0f766e">Best for: daily instructor monitoring</text>
+
+  <line x1="336" y1="109" x2="382" y2="109" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arr-t)"/>
+
+  <!-- Tier 2: Table-formatted Data -->
+  <rect x="390" y="16" width="320" height="186" rx="12" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="390" y="16" width="320" height="38" rx="12" fill="#1b365d"/>
+  <rect x="390" y="40" width="320" height="14" fill="#1b365d"/>
+  <text x="550" y="41" text-anchor="middle" class="lh">Layer 2 · De-Identified Tables</text>
+  <text x="408" y="84" class="lt" fill="#1b365d">Flexible &amp; Accessible · Excel Skill</text>
+  <text x="408" y="110" class="ls">• Structured CSV / Excel learner tables</text>
+  <text x="408" y="132" class="ls">• Grade correlation &amp; cohort comparison</text>
+  <text x="408" y="164" class="ls" fill="#1b365d">Best for: teaching practice research</text>
+
+  <line x1="710" y1="109" x2="756" y2="109" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arr-t)"/>
+
+  <!-- Tier 3: Raw JSON Log Data -->
+  <rect x="764" y="16" width="320" height="186" rx="12" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="764" y="16" width="320" height="38" rx="12" fill="#8c1d40"/>
+  <rect x="764" y="40" width="320" height="14" fill="#8c1d40"/>
+  <text x="924" y="41" text-anchor="middle" class="lh">Layer 3 · De-Identified JSON Logs</text>
+  <text x="782" y="84" class="lt" fill="#8c1d40">Most Detailed · CS / Python Skill</text>
+  <text x="782" y="110" class="ls">• Captures play / pause / seek / check</text>
+  <text x="782" y="132" class="ls">• Powers ML early warning &amp; EDM</text>
+  <text x="782" y="164" class="ls" fill="#8c1d40">Best for: educational data mining</text>
+</svg>

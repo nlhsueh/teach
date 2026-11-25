@@ -4,7 +4,7 @@ theme: gaia
 size: 16:9
 paginate: true
 html: true
-header: '<div class="hdr-wrap"><span class="hdr-title">程式教育的線上學習與其歷程分析 · 國立高雄師範大學特邀演講（2022/12/08）</span><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">演講大綱目錄</a><a href="#3">背景：Learn At Home</a><a href="#4">MOOC 四階段演進</a><a href="#5">MOOC 課程與單元架構</a><a href="#6">不只是影片：學習組件調查</a><a href="#7">評量核心與 Online Judge</a><a href="#8">參與度提升與學生回饋</a><a href="#9">學習分析：More than Dashboard</a><a href="#10">案例一：9 種影片觀看模式</a><a href="#11">案例一：及格預測模型成效</a><a href="#12">案例二：互動模組與活動力</a><a href="#13">案例二：除錯與成績關聯</a><a href="#14">案例二：挫折度與退選分析</a><a href="#15">結語與教學啟示</a></div></div></div>'
+header: '<div class="hdr-wrap"><span class="hdr-title">程式教育的線上學習與其歷程分析 · 國立高雄師範大學特邀演講（2022/12/08）</span><div class="hdr-actions"><a class="lang-btn" href="./nknu22_slide_en.html" title="Switch to English Slides">🌐 EN</a><div class="nav-dropdown"><button class="nav-btn">章節導覽 ▾</button><div class="nav-menu"><a href="#2">演講大綱目錄</a><a href="#3">背景：Learn At Home</a><a href="#4">MOOC 四階段演進</a><a href="#5">MOOC 課程與單元架構</a><a href="#6">不只是影片：學習組件調查</a><a href="#7">評量核心與 Online Judge</a><a href="#8">參與度提升與學生回饋</a><a href="#9">學習分析：More than Dashboard</a><a href="#10">案例一：9 種影片觀看模式</a><a href="#11">案例一：及格預測模型成效</a><a href="#12">案例二：互動模組與活動力</a><a href="#13">案例二：除錯與成績關聯</a><a href="#14">案例二：挫折度與退選分析</a><a href="#15">結語與教學啟示</a></div></div></div></div>'
 footer: '薛念林教授（Nien-Lin Hsueh）· 逢甲大學資訊工程學系 · 高師大特邀演講 2022/12/08'
 ---
 
@@ -57,6 +57,23 @@ header {
 
 .hdr-wrap { width: 100%; display: flex; justify-content: space-between; align-items: center; }
 .hdr-title { opacity: 0.94; }
+.hdr-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+.lang-btn:hover { background: rgba(255, 255, 255, 0.26); }
 
 .nav-dropdown {
   position: relative;
@@ -108,7 +125,7 @@ header {
 
 .nav-menu a:hover { background: var(--slate-100); color: var(--navy); }
 
-@media print { .nav-dropdown { display: none !important; } }
+@media print { .lang-btn, .nav-dropdown { display: none !important; } }
 
 footer {
   position: absolute;
@@ -903,6 +920,12 @@ tr:nth-child(even) td { background: #f8fafc; }
 <script>
 (function() {
   document.addEventListener('click', function(e) {
+    var lang = e.target.closest('.lang-btn');
+    if (lang) {
+      e.preventDefault();
+      window.location.href = lang.getAttribute('href').split('#')[0] + (window.location.hash || '');
+      return;
+    }
     var btn = e.target.closest('.nav-btn');
     if (btn) {
       e.preventDefault();
