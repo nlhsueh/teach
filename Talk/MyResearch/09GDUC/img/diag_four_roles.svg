@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 390" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <filter id="sh2" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1120" height="390" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="560" y="34" text-anchor="middle" font-size="18" font-weight="800" fill="#1b365d">Four Design Pattern Roles Mapped to Goal-Driven Object Design (Table 5 Synthesis)</text>
+
+  <!-- Role 1 -->
+  <g filter="url(#sh2)">
+    <rect x="24" y="54" width="256" height="270" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+    <rect x="24" y="54" width="256" height="44" rx="10" fill="#1b365d"/>
+    <rect x="24" y="84" width="256" height="14" fill="#1b365d"/>
+    <text x="152" y="81" text-anchor="middle" font-size="14.5" font-weight="800" fill="#ffffff">1. Activity-Facilitator</text>
+  </g>
+  <text x="152" y="118" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1b365d">Activity View · Basic Goal Realization</text>
+  <rect x="38" y="130" width="228" height="52" rx="6" fill="#f1f5f9"/>
+  <text x="48" y="149" font-size="11.5" font-weight="700" fill="#0f172a">Context &amp; Problem:</text>
+  <text x="48" y="167" font-size="11" fill="#334155">AM exists; how to refine AM -> DM</text>
+  <text x="48" y="179" font-size="11" fill="#334155">to realize Original Goal (OG)?</text>
+  <rect x="38" y="190" width="228" height="52" rx="6" fill="#eef2ff"/>
+  <text x="48" y="209" font-size="11.5" font-weight="700" fill="#1b365d">Post-Condition:</text>
+  <text x="48" y="227" font-size="11" fill="#334155">Structured DM realizes OG via</text>
+  <text x="48" y="239" font-size="11" fill="#334155">decomposition, allocation, control.</text>
+  <text x="152" y="266" text-anchor="middle" font-size="11.5" font-weight="700" fill="#475569">GoF Examples:</text>
+  <text x="152" y="284" text-anchor="middle" font-size="11" fill="#1b365d">Facade, Proxy, Adapter, Command</text>
+  <text x="152" y="308" text-anchor="middle" font-size="11" font-weight="600" fill="#0f766e">Case: Facade -> Subsystems</text>
+
+  <!-- Role 2 -->
+  <g filter="url(#sh2)">
+    <rect x="296" y="54" width="256" height="270" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+    <rect x="296" y="54" width="256" height="44" rx="10" fill="#0f766e"/>
+    <rect x="296" y="84" width="256" height="14" fill="#0f766e"/>
+    <text x="424" y="81" text-anchor="middle" font-size="14.5" font-weight="800" fill="#ffffff">2. Quality-Improver</text>
+  </g>
+  <text x="424" y="118" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f766e">Requirement View · Ext. Goal Enhance</text>
+  <rect x="310" y="130" width="228" height="52" rx="6" fill="#f0fdfa"/>
+  <text x="320" y="149" font-size="11.5" font-weight="700" fill="#0f172a">Context &amp; Problem:</text>
+  <text x="320" y="167" font-size="11" fill="#334155">DM realizes OG; how to extend</text>
+  <text x="320" y="179" font-size="11" fill="#334155">DM to enhance soft Ext. Goal (EG)?</text>
+  <rect x="310" y="190" width="228" height="52" rx="6" fill="#ccfbf1"/>
+  <text x="320" y="209" font-size="11.5" font-weight="700" fill="#0f766e">Post-Condition:</text>
+  <text x="320" y="227" font-size="11" fill="#334155">DM' realizes OG AND enhances EG</text>
+  <text x="320" y="239" font-size="11" fill="#334155">(FR-struct match + NFR compatible).</text>
+  <text x="424" y="266" text-anchor="middle" font-size="11.5" font-weight="700" fill="#475569">GoF Examples:</text>
+  <text x="424" y="284" text-anchor="middle" font-size="11" fill="#0f766e">Abstract Factory, Strategy, Bridge</text>
+  <text x="424" y="308" text-anchor="middle" font-size="11" font-weight="600" fill="#0f766e">Case: Abstract Factory -> Reusable</text>
+
+  <!-- Role 3 -->
+  <g filter="url(#sh2)">
+    <rect x="568" y="54" width="256" height="270" rx="10" fill="#ffffff" stroke="#b45309" stroke-width="2"/>
+    <rect x="568" y="54" width="256" height="44" rx="10" fill="#b45309"/>
+    <rect x="568" y="84" width="256" height="14" fill="#b45309"/>
+    <text x="696" y="81" text-anchor="middle" font-size="14.5" font-weight="800" fill="#ffffff">3. Problem-Solver</text>
+  </g>
+  <text x="696" y="118" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b45309">Problem View · Goal Recovery</text>
+  <rect x="582" y="130" width="228" height="52" rx="6" fill="#fffbeb"/>
+  <text x="592" y="149" font-size="11.5" font-weight="700" fill="#0f172a">Context &amp; Problem:</text>
+  <text x="592" y="167" font-size="11" fill="#334155">DM faces boundary exceptions</text>
+  <text x="592" y="179" font-size="11" fill="#334155">(inconsistency, failure) halting goal.</text>
+  <rect x="582" y="190" width="228" height="52" rx="6" fill="#fef3c7"/>
+  <text x="592" y="209" font-size="11.5" font-weight="700" fill="#b45309">Post-Condition:</text>
+  <text x="592" y="227" font-size="11" fill="#334155">DM' eliminates exception and</text>
+  <text x="592" y="239" font-size="11" fill="#334155">recovers OG / EG achievement.</text>
+  <text x="696" y="266" text-anchor="middle" font-size="11.5" font-weight="700" fill="#475569">GoF Examples:</text>
+  <text x="696" y="284" text-anchor="middle" font-size="11" fill="#b45309">Observer, Singleton, Flyweight</text>
+  <text x="696" y="308" text-anchor="middle" font-size="11" font-weight="600" fill="#b45309">Case: Observer -> DateFormat sync</text>
+
+  <!-- Role 4 -->
+  <g filter="url(#sh2)">
+    <rect x="840" y="54" width="256" height="270" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+    <rect x="840" y="54" width="256" height="44" rx="10" fill="#8c1d40"/>
+    <rect x="840" y="84" width="256" height="14" fill="#8c1d40"/>
+    <text x="968" y="81" text-anchor="middle" font-size="14.5" font-weight="800" fill="#ffffff">4. Conflict-Resolver</text>
+  </g>
+  <text x="968" y="118" text-anchor="middle" font-size="11.5" font-weight="700" fill="#8c1d40">Tradeoff View · Conflict Resolution</text>
+  <rect x="854" y="130" width="228" height="52" rx="6" fill="#fdf2f5"/>
+  <text x="864" y="149" font-size="11.5" font-weight="700" fill="#0f172a">Context &amp; Problem:</text>
+  <text x="864" y="167" font-size="11" fill="#334155">DM1 enhances EG1 (impairs EG2);</text>
+  <text x="864" y="179" font-size="11" fill="#334155">DM2 enhances EG2 (impairs EG1).</text>
+  <rect x="854" y="190" width="228" height="52" rx="6" fill="#ffe4e6"/>
+  <text x="864" y="209" font-size="11.5" font-weight="700" fill="#8c1d40">Post-Condition:</text>
+  <text x="864" y="227" font-size="11" fill="#334155">Compromise model DM' balances</text>
+  <text x="864" y="239" font-size="11" fill="#334155">and enhances both EG1 and EG2.</text>
+  <text x="968" y="266" text-anchor="middle" font-size="11.5" font-weight="700" fill="#475569">GoF Examples:</text>
+  <text x="968" y="284" text-anchor="middle" font-size="11" fill="#8c1d40">Proxy, Decorator</text>
+  <text x="968" y="308" text-anchor="middle" font-size="11" font-weight="600" fill="#8c1d40">Case: Proxy -> Simplicity vs. Perf.</text>
+
+  <!-- Bottom Note -->
+  <rect x="24" y="338" width="1072" height="36" rx="8" fill="#102442"/>
+  <text x="560" y="361" text-anchor="middle" font-size="13" font-weight="700" fill="#f8fafc">Multi-Role Property: One pattern can play multiple roles across iterations (e.g., Observer = Activity-Facilitator + Quality-Improver + Problem-Solver)</text>
+</svg>

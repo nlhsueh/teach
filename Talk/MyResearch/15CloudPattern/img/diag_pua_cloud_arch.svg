@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 350" width="960" height="350">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arrTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+  <rect width="960" height="350" fill="#ffffff" rx="10"/>
+
+  <!-- SourceForge -->
+  <rect x="18" y="95" width="128" height="145" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="82" y="132" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#1b365d">OSS Repos</text>
+  <text x="82" y="152" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#475569">(SourceForge)</text>
+  <line x1="34" y1="168" x2="130" y2="168" stroke="#cbd5e1"/>
+  <text x="82" y="188" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">10 Java OSS</text>
+  <text x="82" y="205" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">8 - 34 Versions</text>
+  <text x="82" y="222" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">3 MB - 75.5 MB</text>
+
+  <line x1="146" y1="168" x2="180" y2="168" stroke="#1b365d" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- Cloud Container -->
+  <rect x="188" y="18" width="590" height="314" rx="12" fill="#f8fafc" stroke="#1b365d" stroke-width="2" stroke-dasharray="6,4"/>
+  <rect x="206" y="8" width="295" height="24" rx="5" fill="#1b365d"/>
+  <text x="353" y="24" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">PUA Cloud Service (Hadoop 19-Node Cluster)</text>
+
+  <!-- HDFS -->
+  <rect x="208" y="48" width="118" height="264" rx="8" fill="#eff6ff" stroke="#1b365d" stroke-width="1.8"/>
+  <text x="267" y="76" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800" fill="#1b365d">HDFS</text>
+  <text x="267" y="96" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Distributed Storage</text>
+  <rect x="220" y="112" width="94" height="36" rx="5" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="267" y="134" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#1e3a8a">NameNode</text>
+  <rect x="220" y="160" width="94" height="42" rx="5" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="267" y="179" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#1e3a8a">DataNodes</text>
+  <text x="267" y="194" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#64748b">(Replicated)</text>
+  <rect x="220" y="216" width="94" height="80" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="267" y="238" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#334155">Splits by</text>
+  <text x="267" y="255" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">Project +</text>
+  <text x="267" y="272" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">Version Vi</text>
+
+  <line x1="326" y1="168" x2="352" y2="168" stroke="#1b365d" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Map Phase -->
+  <rect x="358" y="48" width="188" height="264" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.8"/>
+  <rect x="358" y="48" width="188" height="30" rx="8" fill="#0f766e"/>
+  <rect x="358" y="68" width="188" height="10" fill="#0f766e"/>
+  <text x="452" y="68" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">MAP: PAC Modeler</text>
+
+  <rect x="372" y="92" width="160" height="52" rx="6" fill="#ffffff" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="452" y="112" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">Pattern4 Detector</text>
+  <text x="452" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Parallel per Version Vi</text>
+
+  <rect x="372" y="156" width="160" height="52" rx="6" fill="#ffffff" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="452" y="176" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">PAC XML Generator</text>
+  <text x="452" y="194" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">&lt;Project, (Vi, PACi)&gt;</text>
+
+  <rect x="372" y="224" width="160" height="72" rx="6" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="452" y="246" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#0f766e">Shuffle &amp; Sort</text>
+  <text x="452" y="264" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#134e4a">Group by ProjectName</text>
+  <text x="452" y="281" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#134e4a">Order V1, V2, ..., Vn</text>
+
+  <line x1="546" y1="168" x2="572" y2="168" stroke="#0f766e" stroke-width="2" marker-end="url(#arrTeal)"/>
+
+  <!-- Reduce Phase -->
+  <rect x="578" y="48" width="184" height="264" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.8"/>
+  <rect x="578" y="48" width="184" height="30" rx="8" fill="#8c1d40"/>
+  <rect x="578" y="68" width="184" height="10" fill="#8c1d40"/>
+  <text x="670" y="68" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">REDUCE: PAE Analyzer</text>
+
+  <rect x="592" y="92" width="156" height="62" rx="6" fill="#ffffff" stroke="#8c1d40" stroke-width="1.2"/>
+  <text x="670" y="112" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">Pairwise Diff</text>
+  <text x="670" y="129" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">(Vi, PACi) vs (Vi+1, PACi+1)</text>
+  <text x="670" y="145" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#8c1d40">Verify PAE Conformance</text>
+
+  <rect x="592" y="168" width="156" height="58" rx="6" fill="#ffffff" stroke="#8c1d40" stroke-width="1.2"/>
+  <text x="670" y="189" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">Evolution Manager</text>
+  <text x="670" y="207" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Store History &amp; Compute DoU</text>
+
+  <rect x="592" y="240" width="156" height="56" rx="6" fill="#1b365d"/>
+  <text x="670" y="263" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">Up to 11.28x</text>
+  <text x="670" y="281" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#cbd5e1">Speedup (Jena, 13 nodes)</text>
+
+  <!-- Arrow to Client -->
+  <line x1="778" y1="168" x2="808" y2="168" stroke="#1b365d" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- SaaS Client -->
+  <rect x="816" y="95" width="128" height="145" rx="8" fill="#1b365d"/>
+  <text x="880" y="132" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">SaaS Portal</text>
+  <text x="880" y="152" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#cbd5e1">Developers &amp; QA</text>
+  <line x1="832" y1="168" x2="928" y2="168" stroke="#475569"/>
+  <text x="880" y="188" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#f8fafc">On-Demand</text>
+  <text x="880" y="205" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#f8fafc">DoU Reports</text>
+  <text x="880" y="222" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#93c5fd">Evolution Audit</text>
+</svg>

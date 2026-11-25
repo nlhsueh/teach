@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 260" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <marker id="arr-d1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-d2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+
+  <rect width="920" height="260" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Top: Two-Pass Embedding -->
+  <text x="24" y="28" fill="#1b365d" font-size="13" font-weight="800">TWO-PASS EMBEDDING PER PLANE (OVERFLOW-FREE)</text>
+
+  <rect x="20" y="40" width="248" height="74" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="144" y="64" text-anchor="middle" fill="#8c1d40" font-size="12.5" font-weight="700">Pass 1: Near-Boundary Blocks</text>
+  <text x="144" y="83" text-anchor="middle" fill="#334155" font-size="11">1 &lt;= b &lt;= 254, min=1 or max=254</text>
+  <text x="144" y="100" text-anchor="middle" fill="#64748b" font-size="10.5">Embed msg; if hits 0/255 -> record FB</text>
+
+  <line x1="268" y1="77" x2="306" y2="77" stroke="#1b365d" stroke-width="2" marker-end="url(#arr-d1)"/>
+
+  <rect x="310" y="40" width="276" height="74" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="448" y="64" text-anchor="middle" fill="#1b365d" font-size="12.5" font-weight="700">Pass 2: Safe Interior Blocks</text>
+  <text x="448" y="83" text-anchor="middle" fill="#334155" font-size="11">2 &lt;= b0, b1, b2 &lt;= 253 (cannot hit 0/255)</text>
+  <text x="448" y="100" text-anchor="middle" fill="#64748b" font-size="10.5">Embed Overhead (#FBs, IFBs, Prev Key) + Msg</text>
+
+  <line x1="586" y1="77" x2="624" y2="77" stroke="#1b365d" stroke-width="2" marker-end="url(#arr-d1)"/>
+
+  <rect x="628" y="40" width="272" height="74" rx="8" fill="#1b365d"/>
+  <text x="764" y="68" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="700">Multi-Plane Chaining</text>
+  <text x="764" y="88" text-anchor="middle" fill="#cbd5e1" font-size="11">Repeat planes until payload done;</text>
+  <text x="764" y="103" text-anchor="middle" fill="#93c5fd" font-size="10.5">Send only Last Plane's Key of Four (19b)</text>
+
+  <!-- Bottom: Reverse Stack Extraction -->
+  <text x="24" y="146" fill="#0f766e" font-size="13" font-weight="800">TWO-PASS REVERSE STACK EXTRACTION</text>
+
+  <rect x="20" y="158" width="262" height="78" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="151" y="182" text-anchor="middle" fill="#0f766e" font-size="12.5" font-weight="700">Step A: Scan Non-Boundary (1..254)</text>
+  <text x="151" y="201" text-anchor="middle" fill="#334155" font-size="11">Skip 0/255 blocks initially (BB vs. FB)</text>
+  <text x="151" y="218" text-anchor="middle" fill="#64748b" font-size="10.5">Split into List-1 (edge) &amp; List-2 (overhead+msg)</text>
+
+  <line x1="282" y1="197" x2="318" y2="197" stroke="#0f766e" stroke-width="2" marker-end="url(#arr-d2)"/>
+
+  <rect x="322" y="158" width="272" height="78" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="458" y="182" text-anchor="middle" fill="#0f766e" font-size="12.5" font-weight="700">Step B: Decode Overhead &amp; FBs</text>
+  <text x="458" y="201" text-anchor="middle" fill="#334155" font-size="11">Identify FBs vs. true BBs using IFBs</text>
+  <text x="458" y="218" text-anchor="middle" fill="#64748b" font-size="10.5">Extract List-3 from FBs; merge List-1+3 -> List-4</text>
+
+  <line x1="594" y1="197" x2="630" y2="197" stroke="#0f766e" stroke-width="2" marker-end="url(#arr-d2)"/>
+
+  <rect x="634" y="158" width="266" height="78" rx="8" fill="#0f766e"/>
+  <text x="767" y="184" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="700">Step C: LIFO Stack Unwinding</text>
+  <text x="767" y="203" text-anchor="middle" fill="#ccfbf1" font-size="11">Push List-2'' then List-4; follow Prev Key</text>
+  <text x="767" y="220" text-anchor="middle" fill="#ccfbf1" font-size="10.5">Pop all planes -> Original Image + Full Msg</text>
+</svg>

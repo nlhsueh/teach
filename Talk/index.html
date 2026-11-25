@@ -511,6 +511,49 @@
 
     .card-desc { font-size: 0.88rem; color: #475569; line-height: 1.56; flex: 1; }
 
+    /* Citation Box (Grid View Only) */
+    .citation-box {
+      position: relative;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #94a3b8;
+      border-radius: 7px;
+      padding: 8px 34px 8px 11px;
+      font-size: 0.74rem;
+      line-height: 1.48;
+      color: #475569;
+    }
+
+    .citation-label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #64748b;
+      margin-bottom: 2px;
+    }
+
+    .btn-copy-cite {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #475569;
+      border-radius: 5px;
+      padding: 2px 5px;
+      font-size: 0.72rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-copy-cite:hover {
+      background: #eef2ff;
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
     .topics-list { display: flex; flex-wrap: wrap; gap: 5px; }
 
     .topic-pill {
@@ -1166,7 +1209,7 @@
         title: '以軟體演化數據分析設計模式之使用度（PUA / DoU）',
         subtitle: 'Design Pattern Analysis with Software Evolution Data · 19 頁雙語簡報',
         desc: '提出自動化模式使用度分析方法（PUA）與使用度指標（DoU），針對 15 個開源 Java 專案共 296 次演化實證分析設計模式在軟體演進中的實際遵循率與擴充效益。',
-        tags: ['論文簡報', '軟體工程'],
+        tags: ['論文簡報', '軟體工程', '設計模式'],
         actions: [
           { label: '中文簡報', icon: '🖥️', href: './MyResearch/20Pattern/Pattern20_slide_zh.html', cls: 'btn-research', row: 1 },
           { label: 'English', icon: '🖥️', href: './MyResearch/20Pattern/Pattern20_slide.html', cls: 'btn-primary', row: 1 },
@@ -1174,11 +1217,372 @@
           { label: 'EN PDF', icon: '📥', href: './MyResearch/20Pattern/Pattern20_slide.pdf', cls: 'btn-outline', row: 2 },
           { label: '', icon: '📄', href: './MyResearch/20Pattern/2020_JISE_Pattern_Evolution.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
         ]
+      },
+      {
+        id: '15cloudpattern',
+        year: '2015',
+        typeLabel: '論文簡報',
+        venue: 'JISE 2015 · 15CloudPattern',
+        icon: '☁️',
+        theme: 'research',
+        title: '雲端化設計模式演化使用度評估服務（Cloud PUA）',
+        subtitle: 'A Cloud Service Implementation for Evaluating Design Pattern in Software Evolution · 15 頁雙語簡報',
+        desc: '運用 Apache Hadoop（HDFS 與 MapReduce）將設計模式演化使用度分析工具 PUA 雲端化為 SaaS 服務，於 19 節點叢集評估 10 個 Java 開源專案並達成最高 11.28 倍效能加速。',
+        tags: ['論文簡報', '軟體工程', '設計模式'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/15CloudPattern/CloudPattern_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/15CloudPattern/CloudPattern_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/15CloudPattern/CloudPattern_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/15CloudPattern/CloudPattern_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/15CloudPattern/2015%20JISE.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '14mda',
+        year: '2014',
+        typeLabel: '論文簡報',
+        venue: 'CSI 2014 · 14MDA',
+        icon: '🔗',
+        theme: 'research',
+        title: '基於 MDA 與 UML Profile 之資源連結視覺化塑模',
+        subtitle: 'MDA-based Visual Modeling Approach for Resources Link Relationships Using UML Profile · 15 頁雙語簡報',
+        desc: '提出基於 OMG MDA 的視覺化資源連結塑模方法，形式化定義 XLink-CIM 與具 OCL 驗證之 XLinkUML Profile，並透過 XSLT 驅動的 U2XLink 轉碼器自動生成 XLink Schema 與 OWL-L 語意本體。',
+        tags: ['論文簡報', '軟體工程'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/14MDA/MDA_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/14MDA/MDA_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/14MDA/MDA_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/14MDA/MDA_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/14MDA/2014%20CSI.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '12atemes',
+        year: '2012',
+        typeLabel: '論文簡報',
+        venue: 'JSS 2012 · 12ATEMES',
+        icon: '⚙️',
+        theme: 'research',
+        title: '多核心嵌入式軟體自動化測試環境（ATEMES）',
+        subtitle: 'Automatic Testing Environment for Multi-Core Embedded Software · 15 頁雙語簡報',
+        desc: '建構主機—目標端多核心嵌入式自動化交叉測試環境 ATEMES，於 ARM11 MPCore 四核心平台驗證複合型別 C/C++ 單元測試、多回合 GCOV 覆蓋率、即時多核心監控與 Intel TBB 最佳化。',
+        tags: ['論文簡報', '軟體工程', '軟體測試'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/12ATEMES/ATEMES_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/12ATEMES/ATEMES_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/12ATEMES/ATEMES_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/12ATEMES/ATEMES_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/12ATEMES/2012%20JSS.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '11psp',
+        year: '2011',
+        typeLabel: '論文簡報',
+        venue: 'IST 2011 · 11PSP',
+        icon: '📋',
+        theme: 'research',
+        title: '評估 PSP 訓練紀律化軟體開發成效（Plan–Track–Review）',
+        subtitle: 'Assessing PSP Effect in Training Disciplined Software Development · 15 頁雙語簡報',
+        desc: '提出 Plan–Track–Review 三階段 PSP 成效評估模型，將九項關鍵度量對應至軟體工程價值，並以 16 位研究生 160 份作業驗證缺陷控管顯著改善與跨階段延續效應。',
+        tags: ['論文簡報', '軟體工程', '流程改善', '程式教育'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/11PSP/PSP_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/11PSP/PSP_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/11PSP/PSP_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/11PSP/PSP_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/11PSP/2011%20IST.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '09threecircular',
+        year: '2009',
+        typeLabel: '論文簡報',
+        venue: 'Fund. Inf. 2009 · 09ThreeCircular',
+        icon: '🔐',
+        theme: 'research',
+        title: '基於三環像素差值擴張之可逆式資訊隱藏',
+        subtitle: 'Reversible Data Hiding Based on Three-Circular-Pixel Difference Expansion · 15 頁雙語簡報',
+        desc: '透過三環像素區塊共用最大中心像素同步擴張兩組差值，將單層藏量上限由 Tian 的 0.50 bpp 提升至 0.67 bpp 並顯著降低影像失真。',
+        tags: ['論文簡報', '資訊隱藏'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/09ThreeCircular/ThreeCircular_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/09ThreeCircular/ThreeCircular_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/09ThreeCircular/ThreeCircular_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/09ThreeCircular/ThreeCircular_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/09ThreeCircular/2009%20FI%20three%20circular.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '09gduc',
+        year: '2009',
+        typeLabel: '論文簡報',
+        venue: 'SoSyM 2009 · 09GDUC',
+        icon: '🎯',
+        theme: 'research',
+        title: '目標驅動與設計模式導向之物件導向設計（GDUC）',
+        subtitle: 'Object-Oriented Design: A Goal-Driven and Pattern-Based Approach · 15 頁雙語簡報',
+        desc: '從活動促成者、品質改進者、問題解決者與衝突協調者四大角色剖析設計模式，整合至六活動目標驅動 UML 迭代流程，以會議排程系統展示需求實現與設計衝突化解。',
+        tags: ['論文簡報', '軟體工程', '設計模式', '需求工程'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/09GDUC/GDUC_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/09GDUC/GDUC_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/09GDUC/GDUC_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/09GDUC/GDUC_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/09GDUC/2009_SoSym_GDUC_Pattern.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '08patternquality',
+        year: '2008',
+        typeLabel: '論文簡報',
+        venue: 'JSS 2008 · 08PatternQuality',
+        icon: '📏',
+        theme: 'research',
+        title: '設計模式品質之量化評估方法（QIE / PVS）',
+        subtitle: 'A Quantitative Approach for Evaluating the Quality of Design Patterns · 15 頁雙語簡報',
+        desc: '結合角色基礎 UML 後設模型、QMOOD 品質模型與自動化模型轉換提出品質改善效能指標（QIE）與 PVS 驗證工具，量化驗證 Mediator 降耦合效益（−0.72）並揭示 Decorator 實為複雜度改進者。',
+        tags: ['論文簡報', '軟體工程', '設計模式'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/08PatternQuality/PatternQuality_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/08PatternQuality/PatternQuality_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/08PatternQuality/PatternQuality_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/08PatternQuality/PatternQuality_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/08PatternQuality/2008%20JSS%20pattern.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '08umlprocess',
+        year: '2008',
+        typeLabel: '論文簡報',
+        venue: 'IST 2008 · 08UMLProcess',
+        icon: '🔄',
+        theme: 'research',
+        title: '結合 UML 與軟體模擬進行流程定義、驗證與確認（PMP）',
+        subtitle: 'Applying UML and Software Simulation for Process Definition, Verification, and Validation · 15 頁雙語簡報',
+        desc: '提出嵌入 CMMI 目標之 UML 流程模型擴充組（PMP），結合 OCL 自動化合規驗證與 SimSE 先導前互動模擬確認，成功應用於逢甲資處流程改善與教育訓練。',
+        tags: ['論文簡報', '軟體工程', '流程改善'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/08UMLProcess/UMLProcess_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/08UMLProcess/UMLProcess_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/08UMLProcess/UMLProcess_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/08UMLProcess/UMLProcess_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/08UMLProcess/2008%20IST%20PMP.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '08adaptivehiding',
+        year: '2008',
+        typeLabel: '論文簡報',
+        venue: 'Fund. Inf. 2008 · 08AdaptiveHiding',
+        icon: '🔐',
+        theme: 'research',
+        title: '影像中自適應二進位資料藏入方法（DEM）',
+        subtitle: 'Adaptively Embedding Binary Data in an Image · 15 頁雙語簡報',
+        desc: '透過雙區段變動長度基本訊息目錄（DEM）分解二進位訊息，並以最近鄰模數調整將單像素失真限制於 ±⌊n/2⌋ 內，於非整數藏量（如 1.5 bpp 達 49.89 dB）大幅超越簡單 LSB 與 OPAP。',
+        tags: ['論文簡報', '資訊隱藏'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/08AdaptiveHiding/AdaptiveHiding_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/08AdaptiveHiding/AdaptiveHiding_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/08AdaptiveHiding/AdaptiveHiding_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/08AdaptiveHiding/AdaptiveHiding_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/08AdaptiveHiding/2008%20FI%20adaptive.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '08losslesspr',
+        year: '2008',
+        typeLabel: '論文簡報',
+        venue: 'Pattern Recognition 2008 · 08LosslessPR',
+        icon: '🔐',
+        theme: 'research',
+        title: '基於三像素區塊差值之無失真資料隱藏方法',
+        subtitle: 'A Lossless Data Hiding Scheme Based on Three-Pixel Block Differences · 15 頁雙語簡報',
+        desc: '結合自適應 6 種三像素區塊差值直方圖平移、雙階段新生邊界（FB）管理與中心像素單一修改機制，達成平均 2.08 bpp（PSNR ≥ 30 dB 達 1.39 bpp）之高容量無失真隱藏。',
+        tags: ['論文簡報', '資訊隱藏'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/08LosslessPR/LosslessPR_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/08LosslessPR/LosslessPR_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/08LosslessPR/LosslessPR_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/08LosslessPR/LosslessPR_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/08LosslessPR/2008%20PR%20lossless.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '08highperfhiding',
+        year: '2008',
+        typeLabel: '論文簡報',
+        venue: 'Fund. Inf. 2008 · 08HighPerfHiding',
+        icon: '🔐',
+        theme: 'research',
+        title: '高效能可逆式影像資料隱藏（蛇形掃描與差值平移）',
+        subtitle: 'High-Performance Reversible Data Hiding · 15 頁雙語簡報',
+        desc: '利用非重疊兩像素區塊差值直方圖平移，結合奇偶交替蛇形掃描、交替差值方向與自含式新飽和區塊（FSB）索引串鏈，在 PSNR ≥ 30 dB 下達成平均 1.13 bpp 與線性 O(N) 100% 無失真還原。',
+        tags: ['論文簡報', '資訊隱藏'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/08HighPerfHiding/HighPerfHiding_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/08HighPerfHiding/HighPerfHiding_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/08HighPerfHiding/HighPerfHiding_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/08HighPerfHiding/HighPerfHiding_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/08HighPerfHiding/2008%20FI%20high%20performance.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '07datawarehouse',
+        year: '2007',
+        typeLabel: '論文簡報',
+        venue: 'Information Sciences 2007 · 07DW',
+        icon: '🗄️',
+        theme: 'research',
+        title: '資料倉儲實體化檢視表高效選取演算法（MPL）',
+        subtitle: 'Efficient Approaches for Materialized Views Selection in a Data Warehouse · 15 頁雙語簡報',
+        desc: '結合二元向量晶格位元查詢改寫、單位空間增益／損失指標與中點候選剪枝演算法（MPL 與 MPL-CV），在空間與維護限制下減少 47.4%–57.1% 搜尋迴圈並降低 25.5% 總成本。',
+        tags: ['論文簡報', '模糊與智慧系統'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/07DataWarehouse/DataWarehouse_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/07DataWarehouse/DataWarehouse_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/07DataWarehouse/DataWarehouse_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/07DataWarehouse/DataWarehouse_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/07DataWarehouse/2007%20IS%20data%20warehouse.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '07imagehiding',
+        year: '2007',
+        typeLabel: '論文簡報',
+        venue: 'IEICE 2007 · 07ImageHiding',
+        icon: '🖼️',
+        theme: 'research',
+        title: '相鄰像素差值平移之可逆式影像資訊隱藏',
+        subtitle: 'Hiding Data Reversibly in an Image via Increasing Differences between Two Neighboring Pixels · 15 頁雙語簡報',
+        desc: '利用自然影像相鄰像素差值直方圖之尖銳峰值進行平移藏入並搭配極簡自足式額外資訊設計，在 PSNR ≥ 30 dB 下於 Lena 達成 0.96 bpp 高藏量與 100% 無失真還原。',
+        tags: ['論文簡報', '資訊隱藏'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/07ImageHiding/ImageHiding_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/07ImageHiding/ImageHiding_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/07ImageHiding/ImageHiding_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/07ImageHiding/ImageHiding_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/07ImageHiding/2007%20IEIEC.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '06spi',
+        year: '2006',
+        typeLabel: '論文簡報',
+        venue: 'JSES 2006 · 06SPI',
+        icon: '🏛️',
+        theme: 'research',
+        title: '逢甲大學 CMMI 軟體流程改善實務經驗報告（SPI）',
+        subtitle: 'Software Process Improvement at Feng Chia University: An Experience Report · 15 頁雙語簡報',
+        desc: '記錄逢甲大學資訊處歷時兩年達成 CMMI-SW/SS v1.1 成熟度第三級之六項流程改善經驗，並詳述其如何反向帶動資工系測試小組、專題實作與 SE2004 課程革新。',
+        tags: ['論文簡報', '軟體工程', '流程改善'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/06SPI/SPI_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/06SPI/SPI_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/06SPI/SPI_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/06SPI/SPI_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/06SPI/2006_JSES_SPI.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '05timetabling',
+        year: '2005',
+        typeLabel: '論文簡報',
+        venue: 'IJIS 2005 · 05Timetabling',
+        icon: '📅',
+        theme: 'research',
+        title: '基於任務導向概念塑模之大學排課專家系統（TBCG）',
+        subtitle: 'University Timetabling through Conceptual Modeling · 15 頁雙語簡報',
+        desc: '提出以任務導向概念圖（TBCG）與六層黑板架構自動將大學排課規格轉換為可執行 CLIPS 專家系統與 Oracle 資料庫，實現規格層級維護與硬／軟限制鬆弛，並於中央大學資工系實證部署。',
+        tags: ['論文簡報', '軟體工程', '模糊與智慧系統'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/05Timetabling/Timetabling_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/05Timetabling/Timetabling_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/05Timetabling/Timetabling_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/05Timetabling/Timetabling_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/05Timetabling/2005%20IJIS.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '05its',
+        year: '2005',
+        typeLabel: '論文簡報',
+        venue: 'IJFS 2005 · 05ITS',
+        icon: '🚗',
+        theme: 'research',
+        title: '智慧型運輸系統之演化式代理人（Evolutionary Agents）',
+        subtitle: 'Evolutionary Agents for Intelligent Transport Systems · 15 頁雙語簡報',
+        desc: '整合 GDUC 模糊軟目標、OWL／RuleML 本體論推論、Sugeno 模糊控制與 SOM 導引之基因重構五狀態演化循環，建構智慧型運輸系統即時旅館推薦多代理人原型（≤ 422 ms 收斂）。',
+        tags: ['論文簡報', '模糊與智慧系統'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/05ITS/ITS_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/05ITS/ITS_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/05ITS/ITS_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/05ITS/ITS_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/05ITS/2005%20IJFS-2.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '01goalreq',
+        year: '2001',
+        typeLabel: '論文簡報',
+        venue: 'IST 2001 · 01GoalReq',
+        icon: '🧭',
+        theme: 'research',
+        title: '以目標架構化需求規格與衝突化解（FOOM）',
+        subtitle: 'Structuring Requirement Specifications with Goals · 15 頁雙語簡報',
+        desc: '整合目標導向使用案例、非功能性目標互動分析與目標階層回溯演算法，先挑選無衝突穩定核心並以模糊物件導向模型（FOOM）塑模，再透過預防、妥協與競爭策略漸進化解需求衝突。',
+        tags: ['論文簡報', '軟體工程', '需求工程', '模糊與智慧系統'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/01GoalReq/GoalReq_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/01GoalReq/GoalReq_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/01GoalReq/GoalReq_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/01GoalReq/GoalReq_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/01GoalReq/2001%20IST.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '01fuzzyoo',
+        year: '2001',
+        typeLabel: '論文簡報',
+        venue: 'IJIS 2001 · 01FuzzyOO',
+        icon: '🔮',
+        theme: 'research',
+        title: '模糊邏輯延伸至物件導向塑模之綜述研究',
+        subtitle: 'A Note on Current Approaches to Extending Fuzzy Logic to Object-Oriented Modeling · 15 頁雙語簡報',
+        desc: '歸納物件導向塑模中的五類核心模糊性，並系統綜述 41 篇結合模糊集合理論與物件導向技術於資料庫管理系統、軟體塑模（模糊需求與模糊 OOM）及 AI 知識表示三大領域之代表方法。',
+        tags: ['論文簡報', '軟體工程', '模糊與智慧系統'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/01FuzzyOO/FuzzyOO_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/01FuzzyOO/FuzzyOO_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/01FuzzyOO/FuzzyOO_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/01FuzzyOO/FuzzyOO_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/01FuzzyOO/2001%20IJIS.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
+      },
+      {
+        id: '99goalusecase',
+        year: '1999',
+        typeLabel: '論文簡報',
+        venue: 'IEEE Software 1999 · 99GoalUseCase',
+        icon: '⭐',
+        theme: 'research',
+        title: '目標導向使用案例需求分析（GDUC · IEEE Software）',
+        subtitle: 'Analyzing User Requirements by Use Cases: A Goal-Driven Approach · 15 頁雙語簡報',
+        desc: '提出目標導向使用案例（GDUC）方法，透過能力、視角與內容三面向目標分類系統化推導原始與延伸使用案例，並建立三步驟矩陣與形式化公式評估使用案例與系統層級之需求互動。',
+        tags: ['論文簡報', '軟體工程', '需求工程'],
+        actions: [
+          { label: '中文簡報', icon: '🖥️', href: './MyResearch/99GoalUseCase/GoalUseCase_slide_zh.html', cls: 'btn-research', row: 1 },
+          { label: 'English', icon: '🖥️', href: './MyResearch/99GoalUseCase/GoalUseCase_slide.html', cls: 'btn-primary', row: 1 },
+          { label: '中文 PDF', icon: '📥', href: './MyResearch/99GoalUseCase/GoalUseCase_slide_zh.pdf', cls: 'btn-outline', row: 2 },
+          { label: 'EN PDF', icon: '📥', href: './MyResearch/99GoalUseCase/GoalUseCase_slide.pdf', cls: 'btn-outline', row: 2 },
+          { label: '', icon: '📄', href: './MyResearch/99GoalUseCase/1999%20Software.pdf', cls: 'btn-outline btn-icon-only', row: 2, title: '論文原文 PDF' }
+        ]
       }
     ];
 
-    const ALL_YEARS = ['all', '2026', '2024', '2023', '2022', '2021', '2020'];
-    const ALL_TAGS = ['特邀演講', '論文簡報', 'AI & LLM', '程式教育', '軟體工程', '軟體測試', 'UX 測試', '教學工程'];
+    const ALL_YEARS = ['all', '2026', '2024', '2023', '2022', '2021', '2020', '2015', '2014', '2012', '2011', '2009', '2008', '2007', '2006', '2005', '2001', '1999'];
+    const ALL_TAGS = ['特邀演講', '論文簡報', 'AI & LLM', '程式教育', '軟體工程', '設計模式', '需求工程', '流程改善', '軟體測試', 'UX 測試', '資訊隱藏', '模糊與智慧系統', '教學工程'];
 
     let state = {
       year: 'all',
@@ -1297,6 +1701,43 @@
       return `<a href="${a.href}" target="_blank" rel="noopener" class="btn-action ${a.cls}" title="${a.title || a.label}">${a.label ? `<span>${a.label}</span>` : ''}<span>${a.icon}</span></a>`;
     }
 
+    const CITATIONS = {
+      '27sct': 'Nien-Lin Hsueh et al., "Tiered LLM Assistance, AI Tax, and LADI in Smart Coding Tutor," Feng Chia University, 2026.',
+      '26plant': 'Nien-Lin Hsueh and Shu-Hsien Liao, "Enhancing Requirements Engineering Efficiency through a Multi-Agent AI Framework," Accepted by Journal of Information Science and Engineering, 2026-11. (SCIE)',
+      '26pattern': 'Nien-Lin Hsueh, Lien-Chi Lai and Ying-Chang Lu, "AI Tutor Triad Pattern: Structuring Conversational Guidance in Programming Education," Accepted by Journal of Information Science and Engineering, Vol. 42, No. 6, 2026-11. (SCIE)',
+      '26helpseek': 'Lien-Chi Lai and Nien-Lin Hsueh, "Help-Seeking in LLM-Assisted Learning: Behavioral Pathways and Their Limited Association with Subsequent Coding Process Efficiency," Electronics, 15(12), 2026-06. (SCIE)',
+      '24uxtesting': 'Nien-Lin Hsueh, Hsuen-Jen Lin and Lien-Chi Lai, "Applying Large Language Model to User Experience Testing," Electronics, 13(23):4633, 2024-11. (SCIE)',
+      '23testability': 'Nien-Lin Hsueh, Lien-Chi Lai and Wei-Hsiang Tseng, "Design of an Online Programming Platform and a Study on Learners\' Testing Ability," Electronics, 12(22):4597, 2023-10. (SSCI)',
+      '23mutation': 'Nien-Lin Hsueh, Zeng Hung Xuan and Daramsenge Bilegjargal, "Design and Implementation of Gamified Learning System for Mutation Testing," International Journal of Information and Education Technology (IJIET), 10.18178/IJIET, 2023-07. (EI)',
+      '22engagement': 'Nien-Lin Hsueh, Daramsenge Bilegjargal and Lien-Chi Lai, "Exploring the influence of students\' modes of behavioral engagement in an online programming course using the partial least squares structural equation modeling approach," Journal of Information Technology Education: Research, Vol. 21, pp. 403-423, 2022-08. (EI)',
+      '21judge': 'Daramsenge Bilegjargal and Nien-Lin Hsueh, "Understanding Students\' Acceptance of Online Judge System in Programming Courses: A Structural Equation Modelling Approach," IEEE Access, Vol. 9, pp. 152606-152615, 2021-11. (SCIE)',
+      '20pattern': 'Nien-Lin Hsueh, "Design Pattern Analysis with Software Evolution Data," Journal of Information Science and Engineering, 36(1):53-73, 2020-01. (SCIE)',
+      '15cloudpattern': 'Der-Hong Ting, Nien-Lin Hsueh*, Chao-Tung Yang and Chin-Hung Chang, "A Cloud Service Implementation for Evaluating Design Pattern in Software Evolution," Journal of Information Science and Engineering, Vol. 31, No. 3, pp. 1051-1070, 2015-04. (SCIE)',
+      '14mda': 'I-Ching Hsu*, Der-Hong Ting and Nien-Lin Hsueh, "MDA-based visual modeling approach for resources link relationships using UML profile," Computer Standards & Interfaces, 36(3):648-656, 2014-03. (SCIE)',
+      '12atemes': 'Chorng-Shiuh Koong, Chihhsiong Shih, Pao-Ann Hsiung, Hung-Jui Lai, Chih-Hung Chang, William C. Chu, Nien-Lin Hsueh and Chao-Tung Yang, "Automatic testing environment for multi-core embedded software—ATEMES," Journal of Systems and Software, Vol. 85, Issue 1, pp. 43-60, 2012-01. (SCIE, EI)',
+      '11psp': 'Wen-Hsiang Shen, Nien-Lin Hsueh and Wei-Mann Lee, "Assessing PSP effect in training disciplined software development: A Plan-Track-Review model," Information and Software Technology, 53(2):137-148, 2011-02. (SCIE, EI)',
+      '09threecircular': 'C.-C. Lin, S.-P. Yang and Nien-Lin Hsueh, "Reversible Data Hiding Based on Three-Circular Pixel Difference Expansion," Fundamenta Informaticae, 91(3-4):581-595, 2009-05. (SCIE, EI)',
+      '09gduc': 'Nien-Lin Hsueh, Jong-Yih Kuo and Ching-Chiuan Lin, "Object-Oriented Design: A Goal-Driven and Pattern-Based Approach," Software and Systems Modeling, 8(1):67-84, 2009-02. (SCIE)',
+      '08patternquality': 'Nien-Lin Hsueh, P.-H. Chu and William Chu, "A Quantitative Approach for Evaluating the Quality of Design Patterns," Journal of Systems and Software, Vol. 81, pp. 1430-1439, 2008-05. (SCIE, EI)',
+      '08umlprocess': 'Nien-Lin Hsueh, W.-H. Shen, Z.-W. Yang and D.-L. Yang, "Applying UML and Software Simulation for Process Definition, Verification and Validation," Information and Software Technology, Vol. 50, pp. 897-911, 2008-05. (SCIE, EI)',
+      '08adaptivehiding': 'Ching-Chiuan Lin, Nien-Lin Hsueh and W.-H. Shen, "Adaptively Embedding Binary Data in an Image," Fundamenta Informaticae, 84(3-4):391-402, 2008-05. (SCIE, EI)',
+      '08losslesspr': 'Ching-Chiuan Lin and Nien-Lin Hsueh, "A lossless data hiding scheme based on three-pixel block differences," Pattern Recognition, Vol. 41, pp. 1415-1425, 2008-01. (SCIE, EI)',
+      '08highperfhiding': 'Ching-Chiuan Lin, Nien-Lin Hsueh and W.-H. Shen, "High-Performance Reversible Data Hiding," Fundamenta Informaticae, 82(1-2):155-169, 2008-01. (SCIE, EI)',
+      '07imagehiding': 'Ching-Chiuan Lin and Nien-Lin Hsueh, "Hiding Data Reversibly in an Image via Increasing Differences between Two Neighboring Pixels," IEICE Transactions on Information and Systems, E90-D(12):2053-2059, 2007-12. (SCIE, EI)',
+      '07datawarehouse': 'Ming-Chuan Hung, Man-Lin Huang, Don-Lin Yang and Nien-Lin Hsueh, "Efficient approaches for materialized views selection in a data warehouse," Information Sciences, 177(6):1333-1348, 2007-03. (SCIE, EI)',
+      '06spi': 'Nien-Lin Hsueh, Don-Lin Yang, Lu-Mei Wang and Peng-Hua Chu, "Software Process Improvement at Feng Chia University - An Experience Report," Journal of Software Engineering Studies, 1(1):30-37, 2006-09.',
+      '05timetabling': 'J. Lee, S.-P. Ma, L.-F. Lai, N.-L. Hsueh and Y.-Y. Fanjiang, "University timetabling through conceptual modeling," International Journal of Intelligent Systems, 20(11):1137-1160, 2005-11. (SCIE, EI)',
+      '05its': 'Jong-Yih Kuo, S.-J. Lee, C.-L. Wu, N.-L. Hsueh and J. Lee, "Evolutionary Agents for Intelligent Transport Systems," International Journal of Fuzzy Systems, 7(2):85-93, 2005-08. (EI)',
+      '01fuzzyoo': 'J. Lee, J.-Y. Kuo and N.-L. Xue, "A Note on Current Approaches to Extending Fuzzy Logic to Object-Oriented Modeling," International Journal of Intelligent Systems, 16(7):807-820, 2001-06. (SSCI, ECONLIT)',
+      '01goalreq': 'J. Lee, N.-L. Hsueh and J.-Y. Kuo, "Structuring Requirements Specifications with Goals," Information and Software Technology, 43:121-135, 2001-03. (SSCI, ECONLIT)',
+      '99goalusecase': 'J. Lee and N.-L. Hsueh, "Analyzing User Requirements by Use Cases: A Goal-Driven Approach," IEEE Software, 16(4):92-101, 1999-09. (SCIE, EI)'
+    };
+
+    function copyCitation(id) {
+      const text = CITATIONS[id];
+      if (text) copyToClipboard(text, '已複製論文引用格式（Citation）！');
+    }
+
     function renderTalks() {
       const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
       const filtered = TALKS.filter(t => {
@@ -1305,7 +1746,8 @@
           if (!t.tags.includes(tag)) return false;
         }
         if (q) {
-          const hay = `${t.title} ${t.subtitle} ${t.desc} ${t.venue} ${t.year} ${t.tags.join(' ')}`.toLowerCase();
+          const cite = CITATIONS[t.id] || '';
+          const hay = `${t.title} ${t.subtitle} ${t.desc} ${t.venue} ${t.year} ${t.tags.join(' ')} ${cite}`.toLowerCase();
           if (!hay.includes(q)) return false;
         }
         return true;
@@ -1354,6 +1796,13 @@
           ).join('');
           const row1 = t.actions.filter(a => a.row === 1).map(renderActionButton).join('');
           const row2 = t.actions.filter(a => a.row === 2).map(renderActionButton).join('');
+          const cite = CITATIONS[t.id];
+          const citeHtml = cite ? `
+            <div class="citation-box">
+              <span class="citation-label">📚 Citation</span>
+              <button class="btn-copy-cite" onclick="copyCitation('${t.id}')" title="複製引用格式">📋</button>
+              <span>${cite}</span>
+            </div>` : '';
           return `
             <article class="talk-item" data-theme="${t.theme}">
               <div class="card-banner ${bannerCls}">
@@ -1369,6 +1818,7 @@
               </div>
               <div class="card-body">
                 <p class="card-desc">${t.desc}</p>
+                ${citeHtml}
                 <div class="topics-list">${tagsHtml}</div>
                 <div class="card-actions">
                   <div class="btn-row">${row1}</div>

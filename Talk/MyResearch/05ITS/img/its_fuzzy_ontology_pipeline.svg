@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 340" width="940" height="340">
+  <defs>
+    <marker id="ai" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+  </defs>
+  <rect width="940" height="340" rx="12" fill="#f8fafc"/>
+
+  <!-- Step 1: Fuzzy User Goals -->
+  <rect x="20" y="26" width="206" height="288" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="1.8"/>
+  <rect x="20" y="26" width="206" height="38" rx="10" fill="#1b365d"/>
+  <rect x="20" y="52" width="206" height="12" fill="#1b365d"/>
+  <text x="123" y="50" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">1. GDUC Fuzzy Goals</text>
+
+  <text x="34" y="88" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">Soft Goals (Elastic):</text>
+  <rect x="34" y="96" width="178" height="44" rx="5" fill="#f0fdfa" stroke="#99f6e4"/>
+  <text x="42" y="114" font-family="JetBrains Mono, monospace" font-size="10.2" fill="#1e293b">G1: Pref(Snack) HIGH</text>
+  <text x="42" y="131" font-family="JetBrains Mono, monospace" font-size="10.2" fill="#1e293b">G2: Qual(Hotel) HIGH</text>
+
+  <text x="34" y="164" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#8c1d40">Rigid Goal (mu = 1.0):</text>
+  <rect x="34" y="172" width="178" height="32" rx="5" fill="#fdf2f5" stroke="#fecdd3"/>
+  <text x="42" y="192" font-family="JetBrains Mono, monospace" font-size="10.2" fill="#1e293b">G3: MaxPrice IS Mmax</text>
+
+  <text x="34" y="228" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#1b365d">Zadeh Test-Score:</text>
+  <text x="34" y="248" font-family="Inter, Arial, sans-serif" font-size="11" fill="#475569">G =&gt; R(P) IS A</text>
+  <text x="34" y="266" font-family="Inter, Arial, sans-serif" font-size="11" fill="#475569">Pi_R(p) = mu_A</text>
+  <text x="34" y="294" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#64748b">State transition &lt;b, g, a&gt;</text>
+
+  <line x1="226" y1="170" x2="246" y2="170" stroke="#1b365d" stroke-width="2" marker-end="url(#ai)"/>
+
+  <!-- Step 2: OWL Ontology Refinement -->
+  <rect x="250" y="26" width="206" height="288" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="1.8"/>
+  <rect x="250" y="26" width="206" height="38" rx="10" fill="#0f766e"/>
+  <rect x="250" y="52" width="206" height="12" fill="#0f766e"/>
+  <text x="353" y="50" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">2. OWL + RuleML</text>
+
+  <text x="264" y="88" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">Issue-Specific Ontology:</text>
+  <rect x="308" y="98" width="90" height="26" rx="5" fill="#1b365d"/>
+  <text x="353" y="115" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">Quality</text>
+
+  <line x1="330" y1="124" x2="288" y2="154" stroke="#0f766e" stroke-width="1.5"/>
+  <line x1="353" y1="124" x2="353" y2="154" stroke="#0f766e" stroke-width="1.5"/>
+  <line x1="376" y1="124" x2="418" y2="154" stroke="#0f766e" stroke-width="1.5"/>
+
+  <text x="294" y="143" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#8c1d40">0.8</text>
+  <text x="357" y="143" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#8c1d40">0.7</text>
+  <text x="405" y="143" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#8c1d40">0.9</text>
+
+  <rect x="260" y="156" width="58" height="24" rx="4" fill="#f0fdfa" stroke="#0f766e"/>
+  <text x="289" y="172" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#0f766e">Facilities</text>
+
+  <rect x="324" y="156" width="58" height="24" rx="4" fill="#f0fdfa" stroke="#0f766e"/>
+  <text x="353" y="172" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#0f766e">Space</text>
+
+  <rect x="388" y="156" width="58" height="24" rx="4" fill="#f0fdfa" stroke="#0f766e"/>
+  <text x="417" y="172" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#0f766e">Services</text>
+
+  <line x1="264" y1="196" x2="442" y2="196" stroke="#e2e8f0"/>
+  <text x="264" y="214" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#1b365d">Refined Sub-Goals:</text>
+  <text x="264" y="234" font-family="JetBrains Mono, monospace" font-size="10" fill="#334155">G21: Equipments HIGH</text>
+  <text x="264" y="252" font-family="JetBrains Mono, monospace" font-size="10" fill="#334155">G22: Space(Hotel) HIGH</text>
+  <text x="264" y="270" font-family="JetBrains Mono, monospace" font-size="10" fill="#334155">G23: Service(Hotel) HIGH</text>
+  <text x="264" y="296" font-family="Inter, Arial, sans-serif" font-size="10.2" fill="#64748b">Similarity = product of weights</text>
+
+  <line x1="456" y1="170" x2="476" y2="170" stroke="#1b365d" stroke-width="2" marker-end="url(#ai)"/>
+
+  <!-- Step 3: Sugeno Fuzzy Inference -->
+  <rect x="480" y="26" width="206" height="288" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="1.8"/>
+  <rect x="480" y="26" width="206" height="38" rx="10" fill="#1b365d"/>
+  <rect x="480" y="52" width="206" height="12" fill="#1b365d"/>
+  <text x="583" y="50" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">3. Sugeno Inference</text>
+
+  <text x="494" y="88" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#1b365d">9 Heuristic Rules (HR1-9):</text>
+  <rect x="494" y="98" width="178" height="66" rx="5" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="502" y="116" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">Max(Budget): Poor/Norm/Rich</text>
+  <text x="502" y="134" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">Min(Budget): Low/Avg/High</text>
+  <text x="502" y="152" font-family="Inter, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#8c1d40">=&gt; Hotel Class DH (VS..VL)</text>
+
+  <text x="494" y="188" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#0f766e">Min Firing &amp; Defuzzification:</text>
+  <rect x="494" y="198" width="178" height="46" rx="5" fill="#f0fdfa" stroke="#99f6e4"/>
+  <text x="583" y="218" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#1b365d">z0 = (a1*c1 + a2*c2)</text>
+  <text x="583" y="235" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#1b365d">     / (a1 + a2)</text>
+
+  <text x="494" y="272" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Outputs demand degree DH</text>
+  <text x="494" y="290" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">to filter candidate hotels.</text>
+
+  <line x1="686" y1="170" x2="706" y2="170" stroke="#1b365d" stroke-width="2" marker-end="url(#ai)"/>
+
+  <!-- Step 4: GA + SOM Evolution -->
+  <rect x="710" y="26" width="210" height="288" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="1.8"/>
+  <rect x="710" y="26" width="210" height="38" rx="10" fill="#8c1d40"/>
+  <rect x="710" y="52" width="210" height="12" fill="#8c1d40"/>
+  <text x="815" y="50" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">4. GA + SOM Evolution</text>
+
+  <text x="724" y="88" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#8c1d40">Binary Chromosome:</text>
+  <rect x="724" y="96" width="44" height="28" rx="4" fill="#1b365d"/>
+  <text x="746" y="114" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#ffffff">001</text>
+  <rect x="772" y="96" width="66" height="28" rx="4" fill="#0f766e"/>
+  <text x="805" y="114" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#ffffff">001|002|003</text>
+  <rect x="842" y="96" width="66" height="28" rx="4" fill="#8c1d40"/>
+  <text x="875" y="114" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#ffffff">001|002|003</text>
+  <text x="746" y="138" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9.5" fill="#1b365d">Hotel</text>
+  <text x="805" y="138" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9.5" fill="#0f766e">3 Snacks</text>
+  <text x="875" y="138" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9.5" fill="#8c1d40">3 Sceneries</text>
+
+  <text x="724" y="166" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#1b365d">Weighted Distance Fitness:</text>
+  <rect x="724" y="174" width="182" height="36" rx="5" fill="#fdf2f5" stroke="#fecdd3"/>
+  <text x="815" y="196" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="700" fill="#8c1d40">Sum(wi*d(H,Sci)+wj*d(H,Snj))</text>
+
+  <text x="724" y="232" font-family="Inter, Arial, sans-serif" font-size="10.8" fill="#334155">- SOM Selection</text>
+  <text x="724" y="250" font-family="Inter, Arial, sans-serif" font-size="10.8" fill="#334155">- Inter &amp; Intra Crossover</text>
+  <text x="724" y="268" font-family="Inter, Arial, sans-serif" font-size="10.8" fill="#334155">- Mutation rate = 0.01</text>
+  <text x="724" y="286" font-family="Inter, Arial, sans-serif" font-size="10.8" fill="#334155">- Stop: 95% stable or 100 gen</text>
+</svg>

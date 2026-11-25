@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 360" width="860" height="360">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-acc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+  <rect width="860" height="360" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Column headers -->
+  <rect x="24" y="18" width="230" height="34" rx="6" fill="#1b365d"/>
+  <text x="139" y="40" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#ffffff">Root Causes of Conflicts</text>
+
+  <rect x="315" y="18" width="230" height="34" rx="6" fill="#8c1d40"/>
+  <text x="430" y="40" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#ffffff">Resolution Strategies</text>
+
+  <rect x="606" y="18" width="230" height="34" rx="6" fill="#0f766e"/>
+  <text x="721" y="40" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#ffffff">Model-Level Mechanisms</text>
+
+  <!-- Left column: 3 Roots -->
+  <rect x="24" y="74" width="230" height="74" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <text x="139" y="99" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1b365d">1. Competing Resources</text>
+  <text x="139" y="119" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#475569">Mutually exclusive resources</text>
+  <text x="139" y="135" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">e.g., Library books (Patron vs. Lib)</text>
+
+  <rect x="24" y="168" width="230" height="74" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <text x="139" y="193" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1b365d">2. Divergent Expectations</text>
+  <text x="139" y="213" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#475569">Opposite views on common interest</text>
+  <text x="139" y="229" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">e.g., Privacy vs. PrefKnown</text>
+
+  <rect x="24" y="262" width="230" height="74" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <text x="139" y="287" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1b365d">3. Use-Case Side Effects</text>
+  <text x="139" y="307" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#475569">Unintended impairment via UC</text>
+  <text x="139" y="323" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">e.g., Convenience vs. Performance</text>
+
+  <!-- Middle column: 3 Strategies -->
+  <rect x="315" y="74" width="230" height="74" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <text x="430" y="99" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#8c1d40">A. Prevention</text>
+  <text x="430" y="119" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#334155">Avoid conflict occurrence</text>
+  <text x="430" y="135" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">Arbitrator / Alternative UC</text>
+
+  <rect x="315" y="168" width="230" height="74" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <text x="430" y="193" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#8c1d40">B. Compromise</text>
+  <text x="430" y="213" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#334155">Mutual concessions via OO split</text>
+  <text x="430" y="229" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">Disjoint Class Specialization</text>
+
+  <rect x="315" y="262" width="230" height="74" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <text x="430" y="287" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#8c1d40">C. Competition</text>
+  <text x="430" y="307" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#334155">Satisfy dominant goal only</text>
+  <text x="430" y="323" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">Compare P(G) and I_G2(G1)</text>
+
+  <!-- Right column: Model-Level Mechanisms -->
+  <rect x="606" y="74" width="230" height="74" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="721" y="97" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">Resource Arbitrator / Alt UC</text>
+  <text x="721" y="116" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">Exclude conflicting ranges</text>
+  <text x="721" y="132" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#475569">No meeting cancellation needed</text>
+
+  <rect x="606" y="168" width="230" height="74" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="721" y="191" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">Subclass Partitioning</text>
+  <text x="721" y="210" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">Meeting -> Professional / Private</text>
+  <text x="721" y="226" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#475569">Participant -> Privileged / NonPriv</text>
+
+  <rect x="606" y="262" width="230" height="74" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="721" y="285" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">AHP + Impairment Matrix</text>
+  <text x="721" y="304" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">If P(G1)&gt;P(G2) and I2(1)&gt;I1(2)</text>
+  <text x="721" y="320" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#475569">Select G1; else fallback to B</text>
+
+  <!-- Arrows -->
+  <line x1="254" y1="100" x2="311" y2="100" stroke="#1b365d" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="254" y1="125" x2="311" y2="188" stroke="#1b365d" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+  <line x1="254" y1="205" x2="311" y2="205" stroke="#1b365d" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="254" y1="286" x2="311" y2="132" stroke="#1b365d" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+  <line x1="254" y1="304" x2="311" y2="304" stroke="#1b365d" stroke-width="2" marker-end="url(#arr)"/>
+
+  <line x1="545" y1="111" x2="602" y2="111" stroke="#0f766e" stroke-width="2" marker-end="url(#arr-teal)"/>
+  <line x1="545" y1="205" x2="602" y2="205" stroke="#0f766e" stroke-width="2" marker-end="url(#arr-teal)"/>
+  <line x1="545" y1="299" x2="602" y2="299" stroke="#0f766e" stroke-width="2" marker-end="url(#arr-teal)"/>
+</svg>

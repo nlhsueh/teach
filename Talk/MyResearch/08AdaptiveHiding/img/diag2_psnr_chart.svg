@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 410" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect x="0" y="0" width="980" height="410" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="490" y="30" text-anchor="middle" fill="#1b365d" font-size="16" font-weight="800">PSNR vs. Embedding Capacity on Lena (512 x 512, Avg. of 100 Random Messages)</text>
+
+  <!-- Legend -->
+  <g transform="translate(260, 44)">
+    <line x1="0" y1="8" x2="26" y2="8" stroke="#0f766e" stroke-width="3.2"/>
+    <circle cx="13" cy="8" r="4.5" fill="#0f766e"/>
+    <text x="34" y="12" fill="#0f172a" font-size="12.5" font-weight="700">Proposed Adaptive DEM</text>
+
+    <line x1="210" y1="8" x2="236" y2="8" stroke="#1b365d" stroke-width="2.6" stroke-dasharray="6,3"/>
+    <rect x="219" y="4" width="8" height="8" fill="#1b365d"/>
+    <text x="244" y="12" fill="#334155" font-size="12.5" font-weight="600">OPAP [9]</text>
+
+    <line x1="335" y1="8" x2="361" y2="8" stroke="#8c1d40" stroke-width="2.4" stroke-dasharray="2,3"/>
+    <polygon points="348,3 353,12 343,12" fill="#8c1d40"/>
+    <text x="369" y="12" fill="#334155" font-size="12.5" font-weight="600">Simple LSB</text>
+  </g>
+
+  <!-- Plot Area: x from 85 to 930 (width 845), y from 75 to 345 (height 270) -->
+  <!-- Y axis: 30 dB (y=345) to 54 dB (y=75) => 11.25 px per dB -->
+  <!-- Horizontal Gridlines -->
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="85" y1="345" x2="930" y2="345"/>
+    <line x1="85" y1="300" x2="930" y2="300"/>
+    <line x1="85" y1="255" x2="930" y2="255"/>
+    <line x1="85" y1="210" x2="930" y2="210"/>
+    <line x1="85" y1="165" x2="930" y2="165"/>
+    <line x1="85" y1="120" x2="930" y2="120"/>
+    <line x1="85" y1="75" x2="930" y2="75"/>
+  </g>
+
+  <!-- Axes -->
+  <line x1="85" y1="75" x2="85" y2="345" stroke="#475569" stroke-width="1.8"/>
+  <line x1="85" y1="345" x2="930" y2="345" stroke="#475569" stroke-width="1.8"/>
+
+  <!-- Y labels -->
+  <g fill="#475569" font-size="11.5" text-anchor="end">
+    <text x="76" y="349">30</text>
+    <text x="76" y="304">34</text>
+    <text x="76" y="259">38</text>
+    <text x="76" y="214">42</text>
+    <text x="76" y="169">46</text>
+    <text x="76" y="124">50</text>
+    <text x="76" y="79">54</text>
+  </g>
+  <text x="26" y="215" text-anchor="middle" fill="#1b365d" font-size="13" font-weight="700" transform="rotate(-90, 26, 215)">PSNR (dB)</text>
+
+  <!-- X positions for 10 capacities: 1.0, 1.5, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.625, 3.875 -->
+  <!-- Evenly spaced indices 0..9: x = 115 + i * 88 -->
+  <g fill="#475569" font-size="11.5" text-anchor="middle">
+    <text x="115" y="366">1.0</text>
+    <text x="203" y="366">1.5</text>
+    <text x="291" y="366">2.0</text>
+    <text x="379" y="366">2.25</text>
+    <text x="467" y="366">2.5</text>
+    <text x="555" y="366">2.75</text>
+    <text x="643" y="366">3.0</text>
+    <text x="731" y="366">3.25</text>
+    <text x="819" y="366">3.625</text>
+    <text x="907" y="366">3.875</text>
+  </g>
+  <text x="507" y="394" text-anchor="middle" fill="#1b365d" font-size="13" font-weight="700">Embedding Capacity (bits per pixel, bpp)</text>
+
+  <!-- Y formula: y = 345 - (psnr - 30) * 11.25 -->
+  <!-- Simple LSB: 51.14(107.2), 46.37(160.8), 44.15(185.8), 41.60(214.5), 40.01(232.4), 38.84(245.5), 37.92(255.9), 35.44(283.8), 33.25(308.4), 32.23(319.9) -->
+  <polyline fill="none" stroke="#8c1d40" stroke-width="2.4" stroke-dasharray="3,3"
+    points="115,107.2 203,160.8 291,185.8 379,214.5 467,232.4 555,245.5 643,255.9 731,283.8 819,308.4 907,319.9"/>
+
+  <!-- OPAP: 51.14(107.2), 48.13(141.0), 46.37(160.8), 44.15(185.8), 42.69(202.2), 41.60(214.5), 40.73(224.3), 38.35(251.1), 36.23(274.9), 35.23(286.1) -->
+  <polyline fill="none" stroke="#1b365d" stroke-width="2.6" stroke-dasharray="6,3"
+    points="115,107.2 203,141.0 291,160.8 379,185.8 467,202.2 555,214.5 643,224.3 731,251.1 819,274.9 907,286.1"/>
+
+  <!-- Proposed: 51.66(101.3), 49.89(121.2), 46.37(160.8), 45.12(174.9), 43.12(197.4), 42.11(208.8), 40.73(224.3), 38.84(245.5), 36.68(269.8), 35.42(284.0) -->
+  <polyline fill="none" stroke="#0f766e" stroke-width="3.2"
+    points="115,101.3 203,121.2 291,160.8 379,174.9 467,197.4 555,208.8 643,224.3 731,245.5 819,269.8 907,284.0"/>
+
+  <!-- Data Points -->
+  <g fill="#0f766e">
+    <circle cx="115" cy="101.3" r="4.5"/>
+    <circle cx="203" cy="121.2" r="5.5" stroke="#ffffff" stroke-width="1.5"/>
+    <circle cx="291" cy="160.8" r="4.5"/>
+    <circle cx="379" cy="174.9" r="5.5" stroke="#ffffff" stroke-width="1.5"/>
+    <circle cx="467" cy="197.4" r="4.5"/>
+    <circle cx="555" cy="208.8" r="4.5"/>
+    <circle cx="643" cy="224.3" r="4.5"/>
+    <circle cx="731" cy="245.5" r="4.5"/>
+    <circle cx="819" cy="269.8" r="4.5"/>
+    <circle cx="907" cy="284.0" r="4.5"/>
+  </g>
+
+  <!-- Callout annotations for biggest gains -->
+  <rect x="198" y="82" width="175" height="28" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="285" y="100" text-anchor="middle" fill="#0f766e" font-size="11.5" font-weight="800">1.5 bpp: +1.76 dB vs OPAP</text>
+  <line x1="230" y1="110" x2="208" y2="119" stroke="#0f766e" stroke-width="1.4"/>
+
+  <rect x="388" y="133" width="180" height="28" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="478" y="151" text-anchor="middle" fill="#0f766e" font-size="11.5" font-weight="800">2.25 bpp: +0.97 dB vs OPAP</text>
+  <line x1="418" y1="161" x2="384" y2="173" stroke="#0f766e" stroke-width="1.4"/>
+
+  <rect x="655" y="180" width="248" height="38" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="779" y="197" text-anchor="middle" fill="#1b365d" font-size="11" font-weight="700">Exact Integer k=2, 3 (n=4, 8):</text>
+  <text x="779" y="211" text-anchor="middle" fill="#475569" font-size="10.5">Matches OPAP; beats OPAP everywhere else</text>
+</svg>

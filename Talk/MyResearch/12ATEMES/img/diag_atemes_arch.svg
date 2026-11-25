@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arrTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arrAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+  </defs>
+  <rect width="960" height="360" fill="#ffffff" rx="10"/>
+
+  <!-- Host Side Container -->
+  <rect x="18" y="18" width="600" height="250" rx="10" fill="#f8fafc" stroke="#1b365d" stroke-width="2"/>
+  <rect x="18" y="18" width="600" height="32" rx="10" fill="#1b365d"/>
+  <rect x="18" y="40" width="600" height="10" fill="#1b365d"/>
+  <text x="318" y="39" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Host-Side Workstation (x86 / Ubuntu Linux / Java GUI + C/C++)</text>
+
+  <!-- PRPM -->
+  <rect x="34" y="66" width="176" height="184" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.8"/>
+  <rect x="34" y="66" width="176" height="26" rx="8" fill="#294c7a"/>
+  <rect x="34" y="82" width="176" height="10" fill="#294c7a"/>
+  <text x="122" y="84" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">1. PRPM (Pre-Process)</text>
+  <text x="122" y="112" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#0f172a">CodeParser</text>
+  <text x="122" y="128" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Parse C/C++ signatures</text>
+  <text x="122" y="152" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#0f172a">TestData &amp; Case Gen</text>
+  <text x="122" y="168" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Primitive / Struct / Obj / Arr</text>
+  <text x="122" y="192" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#0f172a">InstrumentCodeEditor</text>
+  <text x="122" y="208" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">TBB Timer + Mutex + CPU</text>
+  <text x="122" y="236" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#1b365d">Zero Manual Test Coding</text>
+
+  <!-- HSATM -->
+  <rect x="230" y="66" width="176" height="184" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.8"/>
+  <rect x="230" y="66" width="176" height="26" rx="8" fill="#0f766e"/>
+  <rect x="230" y="82" width="176" height="10" fill="#0f766e"/>
+  <text x="318" y="84" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">2. HSATM (Host-Side)</text>
+  <text x="318" y="114" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#0f172a">TestDriverGenerator</text>
+  <text x="318" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">CppUnit XML Driver</text>
+  <text x="318" y="156" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Auto Cross-Compiler</text>
+  <text x="318" y="172" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">GCC + GCOV (.gcno)</text>
+  <text x="318" y="198" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Upload &amp; Sync</text>
+  <text x="318" y="214" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Deploy Binary + Inputs</text>
+
+  <!-- POPM -->
+  <rect x="426" y="66" width="176" height="184" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.8"/>
+  <rect x="426" y="66" width="176" height="26" rx="8" fill="#8c1d40"/>
+  <rect x="426" y="82" width="176" height="10" fill="#8c1d40"/>
+  <text x="514" y="84" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">4. POPM (Post-Process)</text>
+  <text x="514" y="114" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#0f172a">TestLogAnalyzer</text>
+  <text x="514" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Cumulative Line/Branch Cov</text>
+  <text x="514" y="156" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#0f172a">JFreeChart Visuals</text>
+  <text x="514" y="172" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Live CPU Util &amp; Pie Charts</text>
+  <text x="514" y="198" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#8c1d40">Feedback Loop</text>
+  <text x="514" y="214" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Trigger Next Round -&gt; PRPM</text>
+
+  <!-- Internal Host Arrows -->
+  <line x1="210" y1="154" x2="226" y2="154" stroke="#1b365d" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M 514 250 L 514 260 L 122 260 L 122 252" fill="none" stroke="#8c1d40" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrAcc)"/>
+
+  <!-- Cross-Testing Arrows Host <-> Target -->
+  <line x1="618" y1="112" x2="684" y2="112" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arrTeal)"/>
+  <text x="651" y="102" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#0f766e">Deploy Bin</text>
+
+  <line x1="684" y1="192" x2="618" y2="192" stroke="#8c1d40" stroke-width="2.5" marker-end="url(#arrAcc)"/>
+  <text x="651" y="210" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#8c1d40">Runtime Logs</text>
+
+  <!-- Target Side Container -->
+  <rect x="692" y="18" width="250" height="250" rx="10" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="692" y="18" width="250" height="32" rx="10" fill="#8c1d40"/>
+  <rect x="692" y="40" width="250" height="10" fill="#8c1d40"/>
+  <text x="817" y="39" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff">Target Embedded Platform</text>
+
+  <rect x="708" y="66" width="218" height="184" rx="8" fill="#ffffff" stroke="#8c1d40" stroke-width="1.6"/>
+  <text x="817" y="88" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#8c1d40">3. TSATM (Target-Side)</text>
+  <text x="817" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#1b365d">ARM11 MPCore (4 CPUs)</text>
+  <text x="817" y="124" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Embedded Linux Kernel 2.6.24</text>
+  <line x1="724" y1="136" x2="910" y2="136" stroke="#e2e8f0"/>
+  <text x="817" y="156" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#0f172a">- TargetSideTestController</text>
+  <text x="817" y="176" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#0f172a">- Performance Profiler (CPU)</text>
+  <text x="817" y="196" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#0f172a">- Coverage Profiler (.gcda)</text>
+  <text x="817" y="216" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#0f172a">- Intel TBB Pipeline Runner</text>
+  <text x="817" y="238" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#0f766e">Low Target Overhead</text>
+
+  <!-- 5-Layer Stack Strip -->
+  <rect x="18" y="284" width="924" height="60" rx="8" fill="#102442"/>
+  <text x="480" y="306" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">ATEMES 5-Layer Software Architecture</text>
+  <text x="480" y="328" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#cbd5e1">L5: Host GUI (Java)  |  L4: ATEMES Modules (C/C++ &amp; Java)  |  L3: Libraries (CppUnit, GCOV, JFreeChart)  |  L2: Linux OS  |  L1: x86 &amp; ARM11 MPCore</text>
+</svg>

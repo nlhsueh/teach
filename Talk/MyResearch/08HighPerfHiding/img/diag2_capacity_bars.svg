@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 400" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect x="0" y="0" width="980" height="400" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <text x="490" y="30" text-anchor="middle" fill="#1b365d" font-size="16" font-weight="800">Payload vs. Pure Payload Capacity at PSNR &gt;= 30 dB (512 x 512 Grayscale Images)</text>
+
+  <!-- Legend -->
+  <g transform="translate(260, 44)">
+    <rect x="0" y="2" width="16" height="12" rx="2" fill="#1b365d"/>
+    <text x="24" y="12" fill="#0f172a" font-size="12" font-weight="700">Total Payload (Avg: 1.13 bpp)</text>
+
+    <rect x="235" y="2" width="16" height="12" rx="2" fill="#0f766e"/>
+    <text x="259" y="12" fill="#0f172a" font-size="12" font-weight="700">Pure Payload (Avg: 1.06 bpp)</text>
+  </g>
+
+  <!-- Horizontal bars: x from 125 to 845 (720 px for 720,000 bits => 1 px = 1,000 bits) -->
+  <!-- Gridlines -->
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="125" y1="74" x2="125" y2="352"/>
+    <line x1="225" y1="74" x2="225" y2="352"/>
+    <line x1="325" y1="74" x2="325" y2="352"/>
+    <line x1="425" y1="74" x2="425" y2="352"/>
+    <line x1="525" y1="74" x2="525" y2="352"/>
+    <line x1="625" y1="74" x2="625" y2="352"/>
+    <line x1="725" y1="74" x2="725" y2="352"/>
+    <line x1="825" y1="74" x2="825" y2="352"/>
+  </g>
+
+  <!-- X axis labels -->
+  <g fill="#475569" font-size="11" text-anchor="middle">
+    <text x="125" y="370">0</text>
+    <text x="225" y="370">100k</text>
+    <text x="325" y="370">200k</text>
+    <text x="425" y="370">300k</text>
+    <text x="525" y="370">400k</text>
+    <text x="625" y="370">500k</text>
+    <text x="725" y="370">600k</text>
+    <text x="825" y="370">700k</text>
+  </g>
+  <text x="475" y="390" text-anchor="middle" fill="#1b365d" font-size="12.5" font-weight="700">Capacity (bits) — 262,144 bits = 1.00 bpp</text>
+
+  <!-- 1.0 bpp reference line at x = 125 + 262.1 = 387.1 -->
+  <line x1="387" y1="70" x2="387" y2="352" stroke="#8c1d40" stroke-width="1.6" stroke-dasharray="5,3"/>
+  <text x="392" y="84" fill="#8c1d40" font-size="10.5" font-weight="700">1.0 bpp (262k bits)</text>
+
+  <!-- Row helper: y = 82 + idx * 33 -->
+  <!-- 0: Baboon (135.8k / 134.8k, 30.2 dB) -->
+  <text x="116" y="99" text-anchor="end" fill="#0f172a" font-size="12" font-weight="700">Baboon</text>
+  <rect x="125" y="83" width="135.8" height="11" rx="2" fill="#1b365d"/>
+  <rect x="125" y="95" width="134.8" height="11" rx="2" fill="#0f766e"/>
+  <text x="268" y="99" fill="#334155" font-size="11" font-weight="600">135,844 / 134,831 (30.2 dB)</text>
+
+  <!-- 1: Lena (232.0k / 231.3k, 30.2 dB) -->
+  <text x="116" y="132" text-anchor="end" fill="#0f172a" font-size="12" font-weight="700">Lena</text>
+  <rect x="125" y="116" width="232.0" height="11" rx="2" fill="#1b365d"/>
+  <rect x="125" y="128" width="231.3" height="11" rx="2" fill="#0f766e"/>
+  <text x="364" y="132" fill="#334155" font-size="11" font-weight="600">231,971 / 231,264 (30.2 dB)</text>
+
+  <!-- 2: GoldHill (234.2k / 233.5k, 30.1 dB) -->
+  <text x="116" y="165" text-anchor="end" fill="#0f172a" font-size="12" font-weight="700">GoldHill</text>
+  <rect x="125" y="149" width="234.2" height="11" rx="2" fill="#1b365d"/>
+  <rect x="125" y="161" width="233.5" height="11" rx="2" fill="#0f766e"/>
+  <text x="366" y="165" fill="#334155" font-size="11" font-weight="600">234,160 / 233,457 (30.1 dB)</text>
+
+  <!-- 3: Boat (242.3k / 241.6k, 30.1 dB) -->
+  <text x="116" y="198" text-anchor="end" fill="#0f172a" font-size="12" font-weight="700">Boat</text>
+  <rect x="125" y="182" width="242.3" height="11" rx="2" fill="#1b365d"/>
+  <rect x="125" y="194" width="241.6" height="11" rx="2" fill="#0f766e"/>
+  <text x="374" y="198" fill="#334155" font-size="11" font-weight="600">242,301 / 241,594 (30.1 dB)</text>
+
+  <!-- 4: Tiffany (262.5k / 261.8k, 30.2 dB) -->
+  <text x="116" y="231" text-anchor="end" fill="#0f172a" font-size="12" font-weight="700">Tiffany</text>
+  <rect x="125" y="215" width="262.5" height="11" rx="2" fill="#1b365d"/>
+  <rect x="125" y="227" width="261.8" height="11" rx="2" fill="#0f766e"/>
+  <text x="395" y="231" fill="#334155" font-size="11" font-weight="600">262,514 / 261,841 (30.2 dB)</text>
+
+  <!-- 5: Pepper (268.0k / 238.1k, 30.2 dB) -->
+  <text x="116" y="264" text-anchor="end" fill="#0f172a" font-size="12" font-weight="700">Pepper</text>
+  <rect x="125" y="248" width="268.0" height="11" rx="2" fill="#1b365d"/>
+  <rect x="125" y="260" width="238.1" height="11" rx="2" fill="#0f766e"/>
+  <text x="400" y="264" fill="#334155" font-size="11" font-weight="600">268,042 / 238,065 (30.2 dB, more FSBs)</text>
+
+  <!-- 6: Airplane (289.9k / 289.2k, 30.1 dB) -->
+  <text x="116" y="297" text-anchor="end" fill="#0f172a" font-size="12" font-weight="700">Airplane</text>
+  <rect x="125" y="281" width="289.9" height="11" rx="2" fill="#1b365d"/>
+  <rect x="125" y="293" width="289.2" height="11" rx="2" fill="#0f766e"/>
+  <text x="422" y="297" fill="#0f766e" font-size="11" font-weight="700">289,877 / 289,174 (1.10 bpp, 30.1 dB)</text>
+
+  <!-- 7: Gradient (699.8k / 583.8k, 30.4 dB) -->
+  <text x="116" y="330" text-anchor="end" fill="#8c1d40" font-size="12" font-weight="800">Gradient</text>
+  <rect x="125" y="314" width="699.8" height="11" rx="2" fill="#8c1d40"/>
+  <rect x="125" y="326" width="583.8" height="11" rx="2" fill="#0f766e"/>
+  <text x="832" y="330" fill="#8c1d40" font-size="11" font-weight="800">699,813 / 583,845</text>
+  <text x="832" y="344" fill="#475569" font-size="10.2">(Ni et al. = 0 bits!)</text>
+</svg>

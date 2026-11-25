@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 280" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <marker id="arr-n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-t" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="280" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Top Row: Embedding Pipeline -->
+  <text x="24" y="30" fill="#1b365d" font-size="13" font-weight="800">EMBEDDING PIPELINE</text>
+
+  <rect x="20" y="42" width="150" height="72" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="95" y="68" text-anchor="middle" fill="#1b365d" font-size="12.5" font-weight="700">1. TCP Transform</text>
+  <text x="95" y="88" text-anchor="middle" fill="#475569" font-size="11">[a, b, c] -> (x, y, z)</text>
+  <text x="95" y="103" text-anchor="middle" fill="#64748b" font-size="10.5">y = max(a, b, c)</text>
+
+  <line x1="170" y1="78" x2="196" y2="78" stroke="#1b365d" stroke-width="2" marker-end="url(#arr-n)"/>
+
+  <rect x="200" y="42" width="166" height="72" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="283" y="68" text-anchor="middle" fill="#1b365d" font-size="12.5" font-weight="700">2. Classify &amp; Expand</text>
+  <text x="283" y="88" text-anchor="middle" fill="#475569" font-size="11">EN (h &lt;= T) vs. CN</text>
+  <text x="283" y="103" text-anchor="middle" fill="#64748b" font-size="10.5">4 expansion cases</text>
+
+  <line x1="366" y1="78" x2="392" y2="78" stroke="#1b365d" stroke-width="2" marker-end="url(#arr-n)"/>
+
+  <rect x="396" y="42" width="176" height="72" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="484" y="68" text-anchor="middle" fill="#8c1d40" font-size="12.5" font-weight="700">3. JBIG Compress</text>
+  <text x="484" y="88" text-anchor="middle" fill="#475569" font-size="11">Map L (2N/3) + LSBs C</text>
+  <text x="484" y="103" text-anchor="middle" fill="#64748b" font-size="10.5">-> LC* (overhead)</text>
+
+  <line x1="572" y1="78" x2="598" y2="78" stroke="#1b365d" stroke-width="2" marker-end="url(#arr-n)"/>
+
+  <rect x="602" y="42" width="172" height="72" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="688" y="68" text-anchor="middle" fill="#1b365d" font-size="12.5" font-weight="700">4. Pack &amp; Embed S</text>
+  <text x="688" y="88" text-anchor="middle" fill="#475569" font-size="11">|LC*| + |C| + LC* + U</text>
+  <text x="688" y="103" text-anchor="middle" fill="#64748b" font-size="10.5">Eq. (1)-(2) into x', z'</text>
+
+  <line x1="774" y1="78" x2="800" y2="78" stroke="#1b365d" stroke-width="2" marker-end="url(#arr-n)"/>
+
+  <rect x="804" y="42" width="136" height="72" rx="8" fill="#1b365d"/>
+  <text x="872" y="73" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">Stego-Image</text>
+  <text x="872" y="94" text-anchor="middle" fill="#cbd5e1" font-size="11">Inverse TCP map</text>
+
+  <!-- Connector down -->
+  <path d="M 872 114 L 872 142 L 95 142 L 95 166" fill="none" stroke="#0f766e" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arr-t)"/>
+
+  <!-- Bottom Row: Extraction Pipeline -->
+  <text x="24" y="160" fill="#0f766e" font-size="13" font-weight="800">EXTRACTION &amp; LOSSLESS RESTORATION</text>
+
+  <rect x="20" y="172" width="172" height="76" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="106" y="198" text-anchor="middle" fill="#0f766e" font-size="12.5" font-weight="700">1. Blind Extraction</text>
+  <text x="106" y="218" text-anchor="middle" fill="#475569" font-size="11">TCP scan -> Eq. (3)-(4)</text>
+  <text x="106" y="234" text-anchor="middle" fill="#64748b" font-size="10.5">Read LSBs of h''1, h''2</text>
+
+  <line x1="192" y1="210" x2="224" y2="210" stroke="#0f766e" stroke-width="2" marker-end="url(#arr-t)"/>
+
+  <rect x="228" y="172" width="196" height="76" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="326" y="198" text-anchor="middle" fill="#0f766e" font-size="12.5" font-weight="700">2. Parse &amp; Decompress</text>
+  <text x="326" y="218" text-anchor="middle" fill="#475569" font-size="11">Read 16b |LC*|, 17b |C|</text>
+  <text x="326" y="234" text-anchor="middle" fill="#64748b" font-size="10.5">Recover L, C &amp; Message U</text>
+
+  <line x1="424" y1="210" x2="456" y2="210" stroke="#0f766e" stroke-width="2" marker-end="url(#arr-t)"/>
+
+  <rect x="460" y="172" width="212" height="76" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="566" y="198" text-anchor="middle" fill="#0f766e" font-size="12.5" font-weight="700">3. Restore TCP Blocks</text>
+  <text x="566" y="218" text-anchor="middle" fill="#475569" font-size="11">If e=1: divide h'' by 2</text>
+  <text x="566" y="234" text-anchor="middle" fill="#64748b" font-size="10.5">If e=0: restore LSB via C</text>
+
+  <line x1="672" y1="210" x2="704" y2="210" stroke="#0f766e" stroke-width="2" marker-end="url(#arr-t)"/>
+
+  <rect x="708" y="172" width="232" height="76" rx="8" fill="#0f766e"/>
+  <text x="824" y="203" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">Exact Cover Image + U</text>
+  <text x="824" y="224" text-anchor="middle" fill="#ccfbf1" font-size="11">100% Bit-Exact Lossless Recovery</text>
+</svg>

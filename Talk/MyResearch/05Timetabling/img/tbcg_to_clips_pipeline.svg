@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 340" width="940" height="340">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+  </defs>
+  <rect width="940" height="340" rx="12" fill="#f8fafc"/>
+
+  <!-- Left: 4 TBCG Views -->
+  <text x="145" y="32" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#1b365d">TBCG Task Specification (4 Views)</text>
+
+  <rect x="24" y="48" width="242" height="58" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.8"/>
+  <text x="38" y="70" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1b365d">1. Domain Model (DM)</text>
+  <text x="38" y="90" font-family="Inter, Arial, sans-serif" font-size="11" fill="#475569">Concepts, attributes, cardinalities</text>
+
+  <rect x="24" y="118" width="242" height="58" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.8"/>
+  <text x="38" y="140" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">2. State Model (SM)</text>
+  <text x="38" y="160" font-family="Inter, Arial, sans-serif" font-size="11" fill="#475569">Constraint overlays, hierarchy C0..Cn</text>
+
+  <rect x="24" y="188" width="242" height="58" rx="8" fill="#ffffff" stroke="#8c1d40" stroke-width="1.8"/>
+  <text x="38" y="210" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#8c1d40">3. Functional Model (FM)</text>
+  <text x="38" y="230" font-family="Inter, Arial, sans-serif" font-size="11" fill="#475569">Preconditions, protections, postcond.</text>
+
+  <rect x="24" y="258" width="242" height="58" rx="8" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+  <text x="38" y="280" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#334155">4. Behavior Model (BM)</text>
+  <text x="38" y="300" font-family="Inter, Arial, sans-serif" font-size="11" fill="#475569">TSE operators + Transition Demons</text>
+
+  <!-- Center: Blackboard Knowledge Sources -->
+  <rect x="336" y="48" width="214" height="268" rx="10" fill="#1b365d"/>
+  <text x="443" y="76" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#ffffff">Blackboard System</text>
+  <text x="443" y="94" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#bae6fd">5 Knowledge Sources</text>
+
+  <rect x="352" y="108" width="182" height="32" rx="5" fill="#294c7a"/>
+  <text x="443" y="129" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Task Partition KS</text>
+
+  <rect x="352" y="148" width="182" height="32" rx="5" fill="#294c7a"/>
+  <text x="443" y="169" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Database Construction KS</text>
+
+  <rect x="352" y="188" width="182" height="32" rx="5" fill="#294c7a"/>
+  <text x="443" y="209" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Rule Extraction KS</text>
+
+  <rect x="352" y="228" width="182" height="32" rx="5" fill="#294c7a"/>
+  <text x="443" y="249" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">UI Info Extraction KS</text>
+
+  <rect x="352" y="268" width="182" height="32" rx="5" fill="#8c1d40"/>
+  <text x="443" y="289" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">KB Synthesis KS</text>
+
+  <!-- Arrows Left to Center -->
+  <line x1="266" y1="77" x2="332" y2="124" stroke="#1b365d" stroke-width="1.8" marker-end="url(#ar)"/>
+  <line x1="266" y1="147" x2="332" y2="164" stroke="#1b365d" stroke-width="1.8" marker-end="url(#ar)"/>
+  <line x1="266" y1="217" x2="332" y2="204" stroke="#1b365d" stroke-width="1.8" marker-end="url(#ar)"/>
+  <line x1="266" y1="287" x2="332" y2="244" stroke="#1b365d" stroke-width="1.8" marker-end="url(#ar)"/>
+
+  <!-- Right: Generated Executable Artifacts -->
+  <text x="768" y="32" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f766e">Generated Executable Artifacts</text>
+
+  <rect x="618" y="48" width="298" height="76" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="1.8"/>
+  <text x="632" y="70" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f766e">CLIPS deftemplate + Oracle DB</text>
+  <text x="632" y="90" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#334155">Course(id, state, name, session,</text>
+  <text x="632" y="106" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#334155">  ..., {meeting}, {location})</text>
+
+  <rect x="618" y="138" width="298" height="84" rx="8" fill="#ffffff" stroke="#8c1d40" stroke-width="1.8"/>
+  <text x="632" y="160" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#8c1d40">CLIPS Knowledge Base (defmodule)</text>
+  <text x="632" y="180" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Test + Repair defrules per constraint</text>
+  <text x="632" y="196" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- High-salience protection invariants</text>
+  <text x="632" y="212" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- focus stack for TSE subtask control</text>
+
+  <rect x="618" y="236" width="298" height="80" rx="8" fill="#ffffff" stroke="#1b365d" stroke-width="1.8"/>
+  <text x="632" y="258" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1b365d">Java Front-End UI + JDBC/ODBC</text>
+  <text x="632" y="278" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Extracted forms &amp; interaction flow</text>
+  <text x="632" y="296" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Multi-department network DB access</text>
+
+  <!-- Arrows Center to Right -->
+  <line x1="550" y1="164" x2="614" y2="86" stroke="#1b365d" stroke-width="1.8" marker-end="url(#ar)"/>
+  <line x1="550" y1="204" x2="614" y2="180" stroke="#1b365d" stroke-width="1.8" marker-end="url(#ar)"/>
+  <line x1="550" y1="284" x2="614" y2="195" stroke="#1b365d" stroke-width="1.8" marker-end="url(#ar)"/>
+  <line x1="550" y1="244" x2="614" y2="276" stroke="#1b365d" stroke-width="1.8" marker-end="url(#ar)"/>
+</svg>

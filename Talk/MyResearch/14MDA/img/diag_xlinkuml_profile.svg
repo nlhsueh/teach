@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360">
+  <rect width="960" height="360" fill="#ffffff" rx="10"/>
+
+  <!-- Column 1: Resource Architecture -->
+  <rect x="18" y="20" width="295" height="320" rx="8" fill="#f8fafc" stroke="#1b365d" stroke-width="2"/>
+  <rect x="18" y="20" width="295" height="34" rx="8" fill="#1b365d"/>
+  <rect x="18" y="44" width="295" height="10" fill="#1b365d"/>
+  <text x="165" y="42" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">1. Resource Architecture</text>
+
+  <rect x="36" y="70" width="259" height="46" rx="6" fill="#eff6ff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="165" y="89" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="#1b365d">&lt;&lt;resource&gt;&gt; (extends Class)</text>
+  <text x="165" y="107" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">Tags: label, title, role (URI-addressed)</text>
+
+  <rect x="36" y="132" width="122" height="54" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="97" y="154" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#1e3a8a">&lt;&lt;localResource&gt;&gt;</text>
+  <text x="97" y="173" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Embedded in link</text>
+
+  <rect x="173" y="132" width="122" height="54" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="234" y="154" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#1e3a8a">&lt;&lt;locator&gt;&gt;</text>
+  <text x="234" y="173" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Remote URI target</text>
+
+  <rect x="36" y="204" width="259" height="46" rx="6" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="165" y="223" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#334155">&lt;&lt;entity&gt;&gt; (extends Component)</text>
+  <text x="165" y="241" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#475569">Persistent physical file / Web service</text>
+
+  <rect x="36" y="266" width="259" height="56" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="165" y="286" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#1b365d">Formal CIM Tuple (Def. 1)</text>
+  <text x="165" y="306" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#0f172a">WR = &lt;Rid, Uid, A_WR&gt;</text>
+
+  <!-- Column 2: Arc Architecture + OCL -->
+  <rect x="332" y="20" width="305" height="320" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="332" y="20" width="305" height="34" rx="8" fill="#0f766e"/>
+  <rect x="332" y="44" width="305" height="10" fill="#0f766e"/>
+  <text x="484" y="42" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">2. Arc Architecture &amp; OCL Rules</text>
+
+  <rect x="348" y="70" width="273" height="56" rx="6" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="484" y="89" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#0f766e">&lt;&lt;arc&gt;&gt; (AssociationClass)</text>
+  <text x="484" y="106" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">Tags: showBehavior, actuateBehavior,</text>
+  <text x="484" y="120" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">arcrole, from (start), to (end)</text>
+
+  <rect x="348" y="140" width="273" height="54" rx="6" fill="#ffffff" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="360" y="159" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#0f766e">&lt;&lt;outbound&gt;&gt;  Local -&gt; Remote</text>
+  <text x="360" y="178" font-family="JetBrains Mono, monospace" font-size="10" fill="#334155">OCL: from(localResource) &amp; to(locator)</text>
+
+  <rect x="348" y="204" width="273" height="54" rx="6" fill="#ffffff" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="360" y="223" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#0f766e">&lt;&lt;inbound&gt;&gt;   Remote -&gt; Local</text>
+  <text x="360" y="242" font-family="JetBrains Mono, monospace" font-size="10" fill="#334155">OCL: from(locator) &amp; to(localResource)</text>
+
+  <rect x="348" y="268" width="273" height="54" rx="6" fill="#ffffff" stroke="#99f6e4" stroke-width="1.5"/>
+  <text x="360" y="287" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#0f766e">&lt;&lt;thirdParty&gt;&gt; Remote -&gt; Remote</text>
+  <text x="360" y="306" font-family="JetBrains Mono, monospace" font-size="10" fill="#334155">OCL: from(locator) &amp; to(locator)</text>
+
+  <!-- Column 3: Link Architecture -->
+  <rect x="656" y="20" width="286" height="320" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="656" y="20" width="286" height="34" rx="8" fill="#8c1d40"/>
+  <rect x="656" y="44" width="286" height="10" fill="#8c1d40"/>
+  <text x="799" y="42" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">3. Link &amp; Document Architecture</text>
+
+  <rect x="674" y="70" width="250" height="44" rx="6" fill="#ffffff" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="799" y="89" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#8c1d40">&lt;&lt;XMLDocument&gt;&gt; (Artifact)</text>
+  <text x="799" y="106" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Root host for created/embedded links</text>
+
+  <rect x="674" y="128" width="250" height="54" rx="6" fill="#ffffff" stroke="#fda4af" stroke-width="1.5"/>
+  <text x="799" y="148" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#8c1d40">&lt;&lt;extendedLink&gt;&gt; (Artifact)</text>
+  <text x="799" y="167" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">Composed of title + arcs + N resources</text>
+
+  <rect x="674" y="196" width="250" height="54" rx="6" fill="#ffffff" stroke="#fda4af" stroke-width="1.5"/>
+  <text x="799" y="216" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#8c1d40">&lt;&lt;simpleLink&gt;&gt; (Artifact)</text>
+  <text x="799" y="235" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">Subclass of &lt;&lt;hyperlink&gt;&gt; (1-to-1 out)</text>
+
+  <rect x="674" y="264" width="250" height="58" rx="6" fill="#8c1d40"/>
+  <text x="799" y="286" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700" fill="#ffffff">&lt;&lt;linkbase&gt;&gt; (Artifact)</text>
+  <text x="799" y="306" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#ffe4e6">External repository of extendedLinks</text>
+</svg>

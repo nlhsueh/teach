@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" width="920" height="340">
+  <rect width="920" height="340" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+  <text x="460" y="28" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#1b365d">Table 3 Empirical Results: Evolution Generations &amp; Execution Time across 13 Scenarios</text>
+  <text x="460" y="46" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">Mutation rate = 0.01 · Stopping rule: 95% population fitness convergence or max 100 generations</text>
+
+  <!-- Legend -->
+  <rect x="640" y="56" width="12" height="12" rx="2" fill="#1b365d"/>
+  <text x="658" y="66" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">Execution Time (ms)</text>
+  <circle cx="804" cy="62" r="5" fill="#8c1d40"/>
+  <text x="815" y="66" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">Generations</text>
+
+  <!-- Axes -->
+  <line x1="68" y1="80" x2="68" y2="275" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="68" y1="275" x2="862" y2="275" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="862" y1="80" x2="862" y2="275" stroke="#94a3b8" stroke-width="1.2"/>
+
+  <!-- Horizontal Gridlines (Left Y: 0..450ms; Right Y: 0..36 gen) -->
+  <g stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1">
+    <line x1="68" y1="231.7" x2="862" y2="231.7"/>
+    <line x1="68" y1="188.3" x2="862" y2="188.3"/>
+    <line x1="68" y1="145.0" x2="862" y2="145.0"/>
+    <line x1="68" y1="101.7" x2="862" y2="101.7"/>
+  </g>
+
+  <!-- Left Y labels (ms) -->
+  <g font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#1b365d" text-anchor="end">
+    <text x="60" y="279">0</text>
+    <text x="60" y="235">100</text>
+    <text x="60" y="192">200</text>
+    <text x="60" y="149">300</text>
+    <text x="60" y="105">400</text>
+  </g>
+  <text x="20" y="178" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#1b365d" transform="rotate(-90 20 178)">Time (ms)</text>
+
+  <!-- Right Y labels (Gen) -->
+  <g font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#8c1d40" text-anchor="start">
+    <text x="870" y="279">0</text>
+    <text x="870" y="235">8</text>
+    <text x="870" y="192">16</text>
+    <text x="870" y="149">24</text>
+    <text x="870" y="105">32</text>
+  </g>
+  <text x="904" y="178" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#8c1d40" transform="rotate(90 904 178)">Generations</text>
+
+  <!-- Bars for Time (ms): y = 275 - (ms / 450) * 195 -->
+  <!-- 13 scenarios, spacing = 60px, center x = 100 + i*60 -->
+  <g fill="#1b365d" opacity="0.86">
+    <rect x="84" y="207.4" width="32" height="67.6" rx="3"/>   <!-- 156ms -->
+    <rect x="144" y="159.7" width="32" height="115.3" rx="3"/> <!-- 266ms -->
+    <rect x="204" y="220.8" width="32" height="54.2" rx="3"/>  <!-- 125ms -->
+    <rect x="264" y="126.4" width="32" height="148.6" rx="3"/> <!-- 343ms -->
+    <rect x="324" y="187.0" width="32" height="88.0" rx="3"/>  <!-- 203ms -->
+    <rect x="384" y="200.5" width="32" height="74.5" rx="3"/>  <!-- 172ms -->
+    <rect x="444" y="159.7" width="32" height="115.3" rx="3"/> <!-- 266ms -->
+    <rect x="504" y="220.8" width="32" height="54.2" rx="3"/>  <!-- 125ms -->
+    <rect x="564" y="132.9" width="32" height="142.1" rx="3"/> <!-- 328ms -->
+    <rect x="624" y="166.7" width="32" height="108.3" rx="3"/> <!-- 250ms -->
+    <rect x="684" y="268.1" width="32" height="6.9" rx="3" fill="#0f766e"/> <!-- 16ms (reported in Table 3) -->
+    <rect x="744" y="92.1" width="32" height="182.9" rx="3"/>  <!-- 422ms -->
+    <rect x="804" y="146.3" width="32" height="128.7" rx="3"/> <!-- 297ms -->
+  </g>
+
+  <!-- Polyline for Generations: y = 275 - (gen / 36) * 195 -->
+  <polyline fill="none" stroke="#8c1d40" stroke-width="2.2"
+    points="100,253.3 160,215.4 220,258.8 280,188.3 340,237.1 400,247.9 460,215.4 520,258.8 580,193.8 640,215.4 700,107.1 760,150.4 820,193.8"/>
+  <g fill="#8c1d40">
+    <circle cx="100" cy="253.3" r="4"/>
+    <circle cx="160" cy="215.4" r="4"/>
+    <circle cx="220" cy="258.8" r="4"/>
+    <circle cx="280" cy="188.3" r="4"/>
+    <circle cx="340" cy="237.1" r="4"/>
+    <circle cx="400" cy="247.9" r="4"/>
+    <circle cx="460" cy="215.4" r="4"/>
+    <circle cx="520" cy="258.8" r="4"/>
+    <circle cx="580" cy="193.8" r="4"/>
+    <circle cx="640" cy="215.4" r="4"/>
+    <circle cx="700" cy="107.1" r="4"/>
+    <circle cx="760" cy="150.4" r="4"/>
+    <circle cx="820" cy="193.8" r="4"/>
+  </g>
+
+  <!-- X-axis labels (Snack/Scenery) -->
+  <g font-family="Inter, Arial, sans-serif" font-size="9.5" fill="#334155" text-anchor="middle">
+    <text x="100" y="292">100/75</text>
+    <text x="160" y="292">100/88</text>
+    <text x="220" y="292">103/12</text>
+    <text x="280" y="292">115/75</text>
+    <text x="340" y="292">128/78</text>
+    <text x="400" y="292">131/15</text>
+    <text x="460" y="292">140/85</text>
+    <text x="520" y="292">146/77</text>
+    <text x="580" y="292">191/79</text>
+    <text x="640" y="292">228/79</text>
+    <text x="700" y="292">256/78</text>
+    <text x="760" y="292">256/86</text>
+    <text x="820" y="292">292/77</text>
+  </g>
+  <text x="460" y="318" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#475569">Test Case Scale: Number of Snack Places / Scenic Spots (All converge in &lt;= 31 gen, max 422 ms)</text>
+</svg>

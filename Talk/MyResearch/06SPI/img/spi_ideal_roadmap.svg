@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <filter id="sh" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="960" height="360" rx="12" fill="#f8fafc"/>
+
+  <!-- Top Timeline Bar -->
+  <rect x="28" y="20" width="904" height="44" rx="8" fill="#1b365d"/>
+  <text x="48" y="47" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#ffffff">FCU OIT CMMI-SW/SS v1.1 Improvement Journey (IDEAL Model)</text>
+  <rect x="650" y="29" width="264" height="26" rx="13" fill="#8c1d40"/>
+  <text x="782" y="46" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">Mar 29, 2004  --&gt;  Jan 2006 (ML3)</text>
+
+  <!-- 5 Stage Boxes -->
+  <!-- Stage 1 -->
+  <g filter="url(#sh)">
+    <rect x="28" y="90" width="164" height="236" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <rect x="28" y="90" width="164" height="36" rx="10" fill="#1b365d"/>
+    <rect x="28" y="114" width="164" height="12" fill="#1b365d"/>
+    <text x="110" y="113" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff">1. Initiating</text>
+    <text x="42" y="148" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#1b365d">Business Drivers</text>
+    <text x="42" y="168" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Vision &amp; Mission</text>
+    <text x="42" y="186" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- 5 Core Values</text>
+    <text x="42" y="204" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Need-driven SPI</text>
+    <line x1="42" y1="220" x2="178" y2="220" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="42" y="238" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#8c1d40">5 Objectives:</text>
+    <text x="42" y="256" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">On-time, Quality,</text>
+    <text x="42" y="272" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Consistent UI, Fit,</text>
+    <text x="42" y="288" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Low MTTR / High MTBF</text>
+  </g>
+  <line x1="192" y1="208" x2="210" y2="208" stroke="#1b365d" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Stage 2 -->
+  <g filter="url(#sh)">
+    <rect x="213" y="90" width="164" height="236" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <rect x="213" y="90" width="164" height="36" rx="10" fill="#0f766e"/>
+    <rect x="213" y="114" width="164" height="12" fill="#0f766e"/>
+    <text x="295" y="113" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff">2. Role Training</text>
+    <text x="227" y="148" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">Targeted Knowledge</text>
+    <text x="227" y="168" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- EPG: CMMI &amp; PSP</text>
+    <text x="227" y="186" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Engineers: RE, OO,</text>
+    <text x="235" y="201" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">Testing, Tools</text>
+    <text x="227" y="219" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Leaders: PMP &amp; FP</text>
+    <line x1="227" y1="234" x2="363" y2="234" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="227" y="252" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#8c1d40">Lesson 2.1:</text>
+    <text x="227" y="270" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Train EPG on CMMI;</text>
+    <text x="227" y="286" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">train staff on actual</text>
+    <text x="227" y="302" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">process practice.</text>
+  </g>
+  <line x1="377" y1="208" x2="395" y2="208" stroke="#1b365d" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Stage 3 -->
+  <g filter="url(#sh)">
+    <rect x="398" y="90" width="164" height="236" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <rect x="398" y="90" width="164" height="36" rx="10" fill="#1b365d"/>
+    <rect x="398" y="114" width="164" height="12" fill="#1b365d"/>
+    <text x="480" y="113" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff">3. 9 Handbooks</text>
+    <text x="412" y="148" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#1b365d">Standard Schema</text>
+    <text x="412" y="168" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- 8-Field Practice</text>
+    <text x="412" y="186" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Combined Plans</text>
+    <text x="412" y="204" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Excel Templates</text>
+    <text x="412" y="222" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Versioned PAL</text>
+    <line x1="412" y1="234" x2="548" y2="234" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="412" y="252" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#8c1d40">Lessons 2.2 - 2.3:</text>
+    <text x="412" y="270" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Unified format +</text>
+    <text x="412" y="286" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">parameterized plans</text>
+    <text x="412" y="302" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">cut small-org effort.</text>
+  </g>
+  <line x1="562" y1="208" x2="580" y2="208" stroke="#1b365d" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Stage 4 -->
+  <g filter="url(#sh)">
+    <rect x="583" y="90" width="164" height="236" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <rect x="583" y="90" width="164" height="36" rx="10" fill="#0f766e"/>
+    <rect x="583" y="114" width="164" height="12" fill="#0f766e"/>
+    <text x="665" y="113" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff">4. Tailoring &amp; Tools</text>
+    <text x="597" y="148" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">Fit to Reality</text>
+    <text x="597" y="168" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- 130+ Maint. Systems</text>
+    <text x="597" y="186" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Semester Maint. Plan</text>
+    <text x="597" y="204" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- DFD+OOA / OOD</text>
+    <text x="597" y="222" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- 8 In-House Tools</text>
+    <line x1="597" y1="234" x2="733" y2="234" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="597" y="252" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#8c1d40">Lessons 2.4 - 2.6:</text>
+    <text x="597" y="270" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Dedicated maintenance</text>
+    <text x="597" y="286" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">plan, hybrid method,</text>
+    <text x="597" y="302" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">custom process tools.</text>
+  </g>
+  <line x1="747" y1="208" x2="765" y2="208" stroke="#1b365d" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Stage 5 -->
+  <g filter="url(#sh)">
+    <rect x="768" y="90" width="164" height="236" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <rect x="768" y="90" width="164" height="36" rx="10" fill="#8c1d40"/>
+    <rect x="768" y="114" width="164" height="12" fill="#8c1d40"/>
+    <text x="850" y="113" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff">5. ML3 &amp; Sustain</text>
+    <text x="782" y="148" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#8c1d40">Annual Evaluation</text>
+    <text x="782" y="168" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- CMMI + ISO 9001</text>
+    <text x="782" y="186" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Agile Maintenance</text>
+    <text x="782" y="204" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Auto-Testing Tools</text>
+    <text x="782" y="222" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- OIT-IECS Synergy</text>
+    <line x1="782" y1="234" x2="918" y2="234" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="782" y="252" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#1b365d">3 Success Factors:</text>
+    <text x="782" y="270" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">1. Full Mgmt Support</text>
+    <text x="782" y="286" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">2. Learning Culture</text>
+    <text x="782" y="302" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">3. Weekly EPG Consensus</text>
+  </g>
+</svg>

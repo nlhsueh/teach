@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 340" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arr-acc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1120" height="340" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Stage 1 -->
+  <rect x="20" y="34" width="185" height="128" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="20" y="34" width="185" height="30" rx="10" fill="#1b365d"/>
+  <rect x="20" y="52" width="185" height="12" fill="#1b365d"/>
+  <text x="112" y="54" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">1. Capacity &amp; DEM</text>
+  <text x="112" y="84" text-anchor="middle" fill="#0f172a" font-size="12.5" font-weight="600">C = #(M) / N bpp</text>
+  <text x="112" y="105" text-anchor="middle" fill="#334155" font-size="11.5">Find n (n &gt;= 3) with</text>
+  <text x="112" y="123" text-anchor="middle" fill="#1b365d" font-size="11.5" font-weight="700">EC_n &lt;= C &lt; EC_{n+1}</text>
+  <text x="112" y="146" text-anchor="middle" fill="#64748b" font-size="11">Dominant bit t in {0, 1}</text>
+
+  <!-- Arrow 1->2 -->
+  <line x1="205" y1="98" x2="239" y2="98" stroke="#1b365d" stroke-width="2.2" marker-end="url(#arr)"/>
+
+  <!-- Stage 2 -->
+  <rect x="245" y="20" width="235" height="156" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="245" y="20" width="235" height="30" rx="10" fill="#8c1d40"/>
+  <rect x="245" y="38" width="235" height="12" fill="#8c1d40"/>
+  <text x="362" y="40" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">2. Two-Segment Split</text>
+  <rect x="260" y="62" width="205" height="44" rx="6" fill="#fdf2f5" stroke="#f43f5e" stroke-width="1"/>
+  <text x="362" y="80" text-anchor="middle" fill="#8c1d40" font-size="12" font-weight="700">Segment 1: M'_n (minimized)</text>
+  <text x="362" y="98" text-anchor="middle" fill="#334155" font-size="11">Uses DEM_t(n), size |M'_n| ~ N*ER_n</text>
+  <rect x="260" y="116" width="205" height="48" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="1"/>
+  <text x="362" y="135" text-anchor="middle" fill="#0f766e" font-size="12" font-weight="700">Segment 2: M''_{n-1} (maximized)</text>
+  <text x="362" y="153" text-anchor="middle" fill="#334155" font-size="11">Uses DEM_t(n-1), |M'_n|+|M''_{n-1}| &lt;= N</text>
+
+  <!-- Arrow 2->3 -->
+  <line x1="480" y1="98" x2="514" y2="98" stroke="#1b365d" stroke-width="2.2" marker-end="url(#arr)"/>
+
+  <!-- Stage 3 -->
+  <rect x="520" y="20" width="270" height="156" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+  <rect x="520" y="20" width="270" height="30" rx="10" fill="#0f766e"/>
+  <rect x="520" y="38" width="270" height="12" fill="#0f766e"/>
+  <text x="655" y="40" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">3. Nearest-Value Embedding</text>
+  <text x="655" y="72" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="700">Eq. (2): b'_i = b_i - (b_i mod n) + u - 1</text>
+  <text x="655" y="96" text-anchor="middle" fill="#0f766e" font-size="12" font-weight="700">Eq. (3): Shift by +/- n if |b'_i - b_i| &gt; n/2</text>
+  <rect x="536" y="112" width="238" height="50" rx="6" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1"/>
+  <text x="655" y="132" text-anchor="middle" fill="#0f172a" font-size="11.5" font-weight="600">Bounded Distortion Guarantee:</text>
+  <text x="655" y="151" text-anchor="middle" fill="#0f766e" font-size="12" font-weight="700">|b''_i - b_i| &lt;= floor(n / 2)</text>
+
+  <!-- Arrow 3->4 -->
+  <line x1="790" y1="98" x2="824" y2="98" stroke="#0f766e" stroke-width="2.2" marker-end="url(#arr-teal)"/>
+
+  <!-- Stage 4 -->
+  <rect x="830" y="34" width="270" height="128" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="830" y="34" width="270" height="30" rx="10" fill="#1b365d"/>
+  <rect x="830" y="52" width="270" height="12" fill="#1b365d"/>
+  <text x="965" y="54" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">4. O(1) Modulo Extraction</text>
+  <text x="965" y="84" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">u' = b''_i mod n   (if i &lt; |M'_n|)</text>
+  <text x="965" y="106" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">u' = b''_i mod (n-1)  (otherwise)</text>
+  <text x="965" y="129" text-anchor="middle" fill="#1b365d" font-size="11.5" font-weight="700">Lookup m_{u'+1} in DEM &amp; trim pad</text>
+  <text x="965" y="149" text-anchor="middle" fill="#64748b" font-size="11">Needs: n, |M'_n|, |M''_{n-1}|, #(M), DEMs</text>
+
+  <!-- Bottom comparison strip -->
+  <rect x="20" y="202" width="1080" height="118" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="42" y="228" fill="#1b365d" font-size="13.5" font-weight="800">Why Adaptive DEM Outperforms Fixed-k LSB &amp; OPAP</text>
+
+  <rect x="42" y="242" width="320" height="62" rx="7" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="56" y="263" fill="#8c1d40" font-size="12" font-weight="700">Fixed-k LSB / OPAP (q = 2^k)</text>
+  <text x="56" y="281" fill="#334155" font-size="11">Forced to jump from 2^1=2 to 2^2=4 to 2^3=8.</text>
+  <text x="56" y="296" fill="#334155" font-size="11">Non-integer bpp mixes k and k+1 abruptly.</text>
+
+  <rect x="380" y="242" width="335" height="62" rx="7" fill="#f0fdfa" stroke="#0f766e" stroke-width="1"/>
+  <text x="394" y="263" fill="#0f766e" font-size="12" font-weight="700">Adaptive DEM (Any Integer n &gt;= 3)</text>
+  <text x="394" y="281" fill="#334155" font-size="11">Intermediate alphabets n = 3, 5, 6, 7, 9, 10...</text>
+  <text x="394" y="296" fill="#334155" font-size="11">Variable-length prefix-free sub-messages.</text>
+
+  <rect x="733" y="242" width="347" height="62" rx="7" fill="#eff6ff" stroke="#1b365d" stroke-width="1"/>
+  <text x="747" y="263" fill="#1b365d" font-size="12" font-weight="700">Result: Fine-Grained Minimal Distortion</text>
+  <text x="747" y="281" fill="#334155" font-size="11">At 1.5 bpp (n=3): max pixel shift is +/-1 only</text>
+  <text x="747" y="296" fill="#1b365d" font-size="11" font-weight="700">+1.76 dB over OPAP &amp; +3.52 dB over LSB!</text>
+</svg>

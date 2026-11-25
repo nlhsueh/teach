@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 350" width="940" height="350">
+  <rect width="940" height="350" rx="12" fill="#f8fafc"/>
+
+  <!-- Header Banner -->
+  <rect x="24" y="18" width="892" height="44" rx="8" fill="#1b365d"/>
+  <text x="44" y="45" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#ffffff">NCU CSIE Course Timetabling Scope &amp; Constraint Hierarchy</text>
+  <text x="896" y="45" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#bae6fd">19 Faculty · 550+ Students · 42 Subjects · 40 Slots · 6 Rooms</text>
+
+  <!-- Left Column: Hard Constraints C0 -->
+  <rect x="24" y="78" width="446" height="252" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="24" y="78" width="446" height="38" rx="10" fill="#8c1d40"/>
+  <rect x="24" y="104" width="446" height="12" fill="#8c1d40"/>
+  <text x="42" y="102" font-family="Inter, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">Hard Constraints (Level C0: Mandatory)</text>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="12" fill="#1e293b">
+    <rect x="40" y="128" width="414" height="34" rx="5" fill="#fdf2f5"/>
+    <text x="52" y="149"><tspan font-weight="700" fill="#8c1d40">H1.</tspan> Instructor cannot teach two courses at the same time</text>
+
+    <rect x="40" y="168" width="414" height="34" rx="5" fill="#f8fafc"/>
+    <text x="52" y="189"><tspan font-weight="700" fill="#8c1d40">H2.</tspan> Required courses of the same class cannot overlap</text>
+
+    <rect x="40" y="208" width="414" height="34" rx="5" fill="#fdf2f5"/>
+    <text x="52" y="229"><tspan font-weight="700" fill="#8c1d40">H3.</tspan> Only one course per classroom at any time slot</text>
+
+    <rect x="40" y="248" width="414" height="34" rx="5" fill="#f8fafc"/>
+    <text x="52" y="269"><tspan font-weight="700" fill="#8c1d40">H4.</tspan> Only available classroom time slots can be scheduled</text>
+
+    <rect x="40" y="288" width="414" height="34" rx="5" fill="#fdf2f5"/>
+    <text x="52" y="309"><tspan font-weight="700" fill="#8c1d40">H5.</tspan> Registered students must not exceed room capacity</text>
+  </g>
+
+  <!-- Right Column Top: Soft Constraints -->
+  <rect x="490" y="78" width="426" height="142" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+  <rect x="490" y="78" width="426" height="38" rx="10" fill="#0f766e"/>
+  <rect x="490" y="104" width="426" height="12" fill="#0f766e"/>
+  <text x="508" y="102" font-family="Inter, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">Soft Constraints (Relaxable Levels C1..Cn)</text>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="12" fill="#1e293b">
+    <rect x="506" y="128" width="394" height="38" rx="5" fill="#f0fdfa"/>
+    <text x="518" y="145"><tspan font-weight="700" fill="#0f766e">S6.</tspan> Prefer instructor preference-set slots and avoid</text>
+    <text x="542" y="160">exclusion-set slots as much as possible</text>
+
+    <rect x="506" y="172" width="394" height="38" rx="5" fill="#f0fdfa"/>
+    <text x="518" y="189"><tspan font-weight="700" fill="#0f766e">S7.</tspan> Avoid 3+ continual slots: best 3-credit policy is</text>
+    <text x="542" y="204">2 continual slots + 1 isolated slot on another day</text>
+  </g>
+
+  <!-- Right Column Bottom: 3 Stakeholders -->
+  <rect x="490" y="232" width="426" height="98" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="508" y="254" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1b365d">Three Stakeholders &amp; Aligned Objectives</text>
+
+  <rect x="506" y="264" width="124" height="54" rx="6" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="568" y="283" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#1b365d">Instructor</text>
+  <text x="568" y="299" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">Preferred time</text>
+  <text x="568" y="312" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">frames honored</text>
+
+  <rect x="640" y="264" width="126" height="54" rx="6" fill="#f0fdfa" stroke="#99f6e4"/>
+  <text x="703" y="283" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f766e">Administrator</text>
+  <text x="703" y="299" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">Feasible slots &amp;</text>
+  <text x="703" y="312" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">max constraints</text>
+
+  <rect x="776" y="264" width="124" height="54" rx="6" fill="#fdf2f5" stroke="#fecdd3"/>
+  <text x="838" y="283" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#8c1d40">Student</text>
+  <text x="838" y="299" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">Courses as</text>
+  <text x="838" y="312" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#334155">disjoint as possible</text>
+</svg>

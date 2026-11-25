@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 360" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="ah-acc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+    <marker id="ah-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1060" height="360" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Left Panel: Block Difference Histogram Shifting -->
+  <rect x="18" y="18" width="535" height="324" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="285" y="44" text-anchor="middle" fill="#1b365d" font-size="14.5" font-weight="800">Block Difference Histogram Shifting: G(x) with u &lt; v</text>
+
+  <!-- Histogram Axes -->
+  <line x1="60" y1="255" x2="520" y2="255" stroke="#475569" stroke-width="1.8"/>
+  <line x1="60" y1="78" x2="60" y2="255" stroke="#475569" stroke-width="1.8"/>
+  <text x="36" y="168" text-anchor="middle" fill="#475569" font-size="11.5" font-weight="600" transform="rotate(-90, 36, 168)">Block Count g(x)</text>
+  <text x="290" y="294" text-anchor="middle" fill="#475569" font-size="11.5" font-weight="600">Block Difference d_i = |b_{2i} - b_{2i+1}|</text>
+
+  <!-- Bars -->
+  <!-- d=0 -->
+  <rect x="80" y="145" width="36" height="110" rx="3" fill="#94a3b8"/>
+  <text x="98" y="272" text-anchor="middle" fill="#334155" font-size="11.5" font-weight="600">0</text>
+  <!-- d=u (peak) -->
+  <rect x="132" y="92" width="38" height="163" rx="3" fill="#0f766e"/>
+  <text x="151" y="272" text-anchor="middle" fill="#0f766e" font-size="12" font-weight="800">u</text>
+  <text x="151" y="84" text-anchor="middle" fill="#0f766e" font-size="11" font-weight="700">Max g(u)</text>
+  <!-- d=u+1 (vacated after shift) -->
+  <rect x="186" y="138" width="36" height="117" rx="3" fill="#cbd5e1" stroke="#8c1d40" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="204" y="272" text-anchor="middle" fill="#8c1d40" font-size="11.5" font-weight="700">u+1</text>
+  <!-- d=u+2 -->
+  <rect x="240" y="168" width="36" height="87" rx="3" fill="#1b365d" opacity="0.82"/>
+  <text x="258" y="272" text-anchor="middle" fill="#334155" font-size="11.5">u+2</text>
+  <!-- d=u+3 -->
+  <rect x="294" y="198" width="36" height="57" rx="3" fill="#1b365d" opacity="0.68"/>
+  <text x="312" y="272" text-anchor="middle" fill="#334155" font-size="11.5">u+3</text>
+  <!-- d=... -->
+  <rect x="348" y="224" width="36" height="31" rx="3" fill="#1b365d" opacity="0.54"/>
+  <text x="366" y="272" text-anchor="middle" fill="#334155" font-size="11.5">...</text>
+  <!-- d=v (zero/min) -->
+  <rect x="415" y="250" width="36" height="5" rx="2" fill="#8c1d40"/>
+  <text x="433" y="272" text-anchor="middle" fill="#8c1d40" font-size="12" font-weight="800">v</text>
+  <text x="433" y="242" text-anchor="middle" fill="#8c1d40" font-size="11" font-weight="700">g(v) = 0</text>
+
+  <!-- Shift arrow -->
+  <path d="M 204 128 Q 318 96 424 220" fill="none" stroke="#1b365d" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#ah)"/>
+  <rect x="255" y="102" width="186" height="24" rx="5" fill="#eff6ff" stroke="#1b365d" stroke-width="1"/>
+  <text x="348" y="118" text-anchor="middle" fill="#1b365d" font-size="11" font-weight="700">Shift u &lt; d_i &lt; v right (+1)</text>
+
+  <!-- Embed arrow -->
+  <path d="M 164 114 Q 186 114 196 132" fill="none" stroke="#0f766e" stroke-width="2.4" marker-end="url(#ah-teal)"/>
+  <text x="204" y="156" text-anchor="middle" fill="#8c1d40" font-size="10.5" font-weight="700">bit "1"</text>
+  <text x="151" y="176" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="700">bit "0"</text>
+  <text x="151" y="191" text-anchor="middle" fill="#ffffff" font-size="10">stays</text>
+
+  <rect x="38" y="304" width="495" height="28" rx="6" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1"/>
+  <text x="285" y="322" text-anchor="middle" fill="#0f766e" font-size="11.5" font-weight="700">Natural images are smooth: peak g(u) near d=0..2 is huge, and g(v)=0 for v &gt; 130</text>
+
+  <!-- Right Panel: Alternating DD + Serpentine + SB/FSB -->
+  <rect x="572" y="18" width="470" height="324" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="807" y="44" text-anchor="middle" fill="#1b365d" font-size="14.5" font-weight="800">Multi-Iteration Control &amp; Boundary Safety</text>
+
+  <!-- Box 1: Alternating DD -->
+  <rect x="592" y="62" width="430" height="84" rx="8" fill="#eff6ff" stroke="#1b365d" stroke-width="1.2"/>
+  <text x="608" y="83" fill="#1b365d" font-size="12.5" font-weight="800">1. Alternating Direction (DD) &amp; Serpentine Scan</text>
+  <text x="608" y="103" fill="#0f172a" font-size="11.5"><tspan font-weight="700">Odd iter (1, 3, ...):</tspan> Horizontal serpentine, DD = down (min pixel - 1)</text>
+  <text x="608" y="122" fill="#0f172a" font-size="11.5"><tspan font-weight="700">Even iter (2, 4, ...):</tspan> Vertical serpentine, DD = up (max pixel + 1)</text>
+  <text x="608" y="139" fill="#475569" font-size="10.8">Balances drift &amp; prevents cumulative overflow/underflow!</text>
+
+  <!-- Box 2: SB vs FSB -->
+  <rect x="592" y="158" width="430" height="84" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.2"/>
+  <text x="608" y="179" fill="#8c1d40" font-size="12.5" font-weight="800">2. Zero-Loss Boundary Handling (SB vs. FSB)</text>
+  <text x="608" y="199" fill="#0f172a" font-size="11.5"><tspan font-weight="700">SB (Saturation Block):</tspan> pixel at 0 (down) or 255 (up) -&gt; skip</text>
+  <text x="608" y="218" fill="#0f172a" font-size="11.5"><tspan font-weight="700">FSB (Fresh SB):</tspan> shifts into 0 or 255 -&gt; record 17-bit index</text>
+  <text x="608" y="235" fill="#475569" font-size="10.8">No full location map needed; overhead is only hundreds of bits!</text>
+
+  <!-- Box 3: Self-Contained Overhead Chain -->
+  <rect x="592" y="254" width="430" height="74" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.2"/>
+  <text x="608" y="275" fill="#0f766e" font-size="12.5" font-weight="800">3. Self-Chained Reverse Extraction (LIFO Stack)</text>
+  <text x="608" y="295" fill="#0f172a" font-size="11.5">Iter k embeds (S_k, INDs_k, u_{k-1}, v_{k-1}, DD_{k-1}) + MSG_k</text>
+  <text x="608" y="314" fill="#0f766e" font-size="11.5" font-weight="700">Receiver only needs final (u_n, v_n, DD_n, n) -&gt; Exact Recovery</text>
+</svg>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <marker id="arr-navy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="320" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Left Panel: Tian's 2-Pixel DE -->
+  <rect x="20" y="18" width="405" height="284" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="20" y="18" width="405" height="36" rx="10" fill="#8c1d40"/>
+  <rect x="20" y="42" width="405" height="12" fill="#8c1d40"/>
+  <text x="222" y="42" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">Tian (2003): 2-Pixel Pair DE</text>
+
+  <!-- Pair 1 -->
+  <rect x="44" y="76" width="66" height="40" rx="6" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="77" y="101" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">24</text>
+  <rect x="122" y="76" width="66" height="40" rx="6" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="155" y="101" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">28</text>
+  <text x="116" y="70" text-anchor="middle" fill="#64748b" font-size="11" font-weight="600">Pair 1 (h = 4)</text>
+
+  <!-- Pair 2 -->
+  <rect x="234" y="76" width="66" height="40" rx="6" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="267" y="101" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">28</text>
+  <rect x="312" y="76" width="66" height="40" rx="6" fill="#fdf2f5" stroke="#8c1d40" stroke-width="1.5"/>
+  <text x="345" y="101" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">26</text>
+  <text x="306" y="70" text-anchor="middle" fill="#64748b" font-size="11" font-weight="600">Pair 2 (h = 2)</text>
+
+  <!-- Down arrows -->
+  <line x1="116" y1="122" x2="116" y2="152" stroke="#8c1d40" stroke-width="2" marker-end="url(#arr-accent)"/>
+  <line x1="306" y1="122" x2="306" y2="152" stroke="#8c1d40" stroke-width="2" marker-end="url(#arr-accent)"/>
+  <text x="211" y="142" text-anchor="middle" fill="#8c1d40" font-size="11.5" font-weight="700">Expand 2 differences</text>
+
+  <!-- Expanded Pair 1 & 2 -->
+  <rect x="44" y="160" width="66" height="40" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="77" y="185" text-anchor="middle" fill="#991b1b" font-size="15" font-weight="700">22 (-2)</text>
+  <rect x="122" y="160" width="66" height="40" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="155" y="185" text-anchor="middle" fill="#991b1b" font-size="15" font-weight="700">30 (+2)</text>
+
+  <rect x="234" y="160" width="66" height="40" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="267" y="185" text-anchor="middle" fill="#991b1b" font-size="15" font-weight="700">29 (+1)</text>
+  <rect x="312" y="160" width="66" height="40" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="345" y="185" text-anchor="middle" fill="#991b1b" font-size="15" font-weight="700">25 (-1)</text>
+
+  <!-- Summary metrics -->
+  <rect x="38" y="216" width="369" height="72" rx="8" fill="#fdf2f5" stroke="#fecdd3" stroke-width="1"/>
+  <text x="52" y="236" fill="#8c1d40" font-size="12.5" font-weight="700">Max Single-Layer Capacity: 0.50 bpp (N/2 pairs)</text>
+  <text x="52" y="256" fill="#334155" font-size="12">Pixels modified for 2 bits: up to 4 pixels</text>
+  <text x="52" y="275" fill="#334155" font-size="12">Squared error sum: (-2)^2 + 2^2 + 1^2 + (-1)^2 = 10</text>
+
+  <!-- Right Panel: Proposed TCP 3-Pixel DE -->
+  <rect x="455" y="18" width="405" height="284" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="1.8"/>
+  <rect x="455" y="18" width="405" height="36" rx="10" fill="#0f766e"/>
+  <rect x="455" y="42" width="405" height="12" fill="#0f766e"/>
+  <text x="657" y="42" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">Proposed TCP Scheme: 3-Pixel Shared Peak</text>
+
+  <!-- TCP Block Before -->
+  <rect x="520" y="76" width="76" height="40" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="558" y="101" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">24 (x)</text>
+  <rect x="619" y="70" width="76" height="46" rx="6" fill="#1b365d" stroke="#1b365d" stroke-width="1.5"/>
+  <text x="657" y="98" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">28 (y)</text>
+  <rect x="718" y="76" width="76" height="40" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="756" y="101" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">26 (z)</text>
+  <text x="657" y="65" text-anchor="middle" fill="#1b365d" font-size="11" font-weight="700">Shared largest pixel y (h1 = 4, h2 = 2)</text>
+
+  <!-- Down arrow -->
+  <line x1="657" y1="122" x2="657" y2="152" stroke="#0f766e" stroke-width="2" marker-end="url(#arr-teal)"/>
+  <text x="755" y="142" text-anchor="middle" fill="#0f766e" font-size="11.5" font-weight="700">Raise y once -> both h1, h2 grow!</text>
+
+  <!-- TCP Block After -->
+  <rect x="520" y="160" width="76" height="40" rx="6" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="558" y="185" text-anchor="middle" fill="#115e59" font-size="15" font-weight="700">22 (-2)</text>
+  <rect x="619" y="160" width="76" height="40" rx="6" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="657" y="185" text-anchor="middle" fill="#115e59" font-size="15" font-weight="700">30 (+2)</text>
+  <rect x="718" y="160" width="76" height="40" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="756" y="185" text-anchor="middle" fill="#166534" font-size="15" font-weight="700">26 (0)</text>
+
+  <!-- Summary metrics -->
+  <rect x="473" y="216" width="369" height="72" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1"/>
+  <text x="487" y="236" fill="#0f766e" font-size="12.5" font-weight="700">Max Single-Layer Capacity: 0.67 bpp (2N/3 pairs)</text>
+  <text x="487" y="256" fill="#334155" font-size="12">Pixels modified for 2 bits: at most 3 pixels (z unchanged!)</text>
+  <text x="487" y="275" fill="#334155" font-size="12">Squared error sum: (-2)^2 + 2^2 + 0^2 = 8 (Lower MSE)</text>
+</svg>

@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 390" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <filter id="sh" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1120" height="390" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="560" y="34" text-anchor="middle" font-size="18" font-weight="800" fill="#1b365d">Plan-Track-Review Assessment Model: 3 Stages, 9 PSP Metrics &amp; Engineering Values</text>
+
+  <!-- Stage 1: Plan -->
+  <g filter="url(#sh)">
+    <rect x="28" y="54" width="320" height="274" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+    <rect x="28" y="54" width="320" height="44" rx="10" fill="#1b365d"/>
+    <rect x="28" y="84" width="320" height="14" fill="#1b365d"/>
+    <text x="188" y="82" text-anchor="middle" font-size="15.5" font-weight="800" fill="#ffffff">Stage 1: PLAN (Plan-Organize)</text>
+  </g>
+  <text x="188" y="118" text-anchor="middle" font-size="12" font-weight="600" fill="#475569">PSP0 -> PSP1 · Estimation &amp; Scheduling</text>
+
+  <rect x="46" y="132" width="284" height="50" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="60" y="153" font-size="13.5" font-weight="800" fill="#1b365d">Entry: SEA</text>
+  <text x="150" y="153" font-size="12" fill="#334155">Size Estimation Accuracy</text>
+  <text x="60" y="172" font-size="11.5" fill="#64748b">Value: Measurability · Target: -> 0</text>
+
+  <rect x="46" y="192" width="284" height="50" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="60" y="213" font-size="13.5" font-weight="800" fill="#1b365d">Interm.: TEA</text>
+  <text x="160" y="213" font-size="12" fill="#334155">Time Estimation Accuracy</text>
+  <text x="60" y="232" font-size="11.5" fill="#64748b">Value: Predictability · Target: -> 0</text>
+
+  <rect x="46" y="252" width="284" height="54" rx="6" fill="#eef2ff" stroke="#1b365d" stroke-width="1.3"/>
+  <text x="60" y="274" font-size="13.5" font-weight="800" fill="#1b365d">Exit: APR</text>
+  <text x="145" y="274" font-size="12" fill="#334155">Actual / Planned Time Ratio</text>
+  <text x="60" y="294" font-size="11.5" fill="#475569">Value: Deadline Control · Target: &lt; 1</text>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="352" y1="192" x2="394" y2="192" stroke="#1b365d" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- Stage 2: Track -->
+  <g filter="url(#sh)">
+    <rect x="400" y="54" width="320" height="274" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+    <rect x="400" y="54" width="320" height="44" rx="10" fill="#0f766e"/>
+    <rect x="400" y="84" width="320" height="14" fill="#0f766e"/>
+    <text x="560" y="82" text-anchor="middle" font-size="15.5" font-weight="800" fill="#ffffff">Stage 2: TRACK (Track-Manage)</text>
+  </g>
+  <text x="560" y="118" text-anchor="middle" font-size="12" font-weight="600" fill="#0f766e">PSP1 -> PSP2 · Defect Control (CMM L2 eq.)</text>
+
+  <rect x="418" y="132" width="284" height="50" rx="6" fill="#f0fdfa" stroke="#99f6e4"/>
+  <text x="432" y="153" font-size="13.5" font-weight="800" fill="#0f766e">Entry: DEA</text>
+  <text x="524" y="153" font-size="12" fill="#334155">Defect Estimation Accuracy</text>
+  <text x="432" y="172" font-size="11.5" fill="#475569">Value: Traceability · Target: -> 0 (p=.010*)</text>
+
+  <rect x="418" y="192" width="284" height="50" rx="6" fill="#f0fdfa" stroke="#99f6e4"/>
+  <text x="432" y="213" font-size="13.5" font-weight="800" fill="#0f766e">Interm.: DRR</text>
+  <text x="532" y="213" font-size="12" fill="#334155">Compile/Test Defect Rate</text>
+  <text x="432" y="232" font-size="11.5" fill="#475569">Value: Controllability · Target: Down (p&lt;.001)</text>
+
+  <rect x="418" y="252" width="284" height="54" rx="6" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.3"/>
+  <text x="432" y="274" font-size="13.5" font-weight="800" fill="#0f766e">Exit: YLD</text>
+  <text x="518" y="274" font-size="12" fill="#334155">Pre-Compile Defect Yield</text>
+  <text x="432" y="294" font-size="11.5" fill="#134e4a">Value: Manageability · Target: Up (p&lt;.001)</text>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="724" y1="192" x2="766" y2="192" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arr-teal)"/>
+
+  <!-- Stage 3: Review -->
+  <g filter="url(#sh)">
+    <rect x="772" y="54" width="320" height="274" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+    <rect x="772" y="54" width="320" height="44" rx="10" fill="#8c1d40"/>
+    <rect x="772" y="84" width="320" height="14" fill="#8c1d40"/>
+    <text x="932" y="82" text-anchor="middle" font-size="15.5" font-weight="800" fill="#ffffff">Stage 3: REVIEW (Review-Optimize)</text>
+  </g>
+  <text x="932" y="118" text-anchor="middle" font-size="12" font-weight="600" fill="#8c1d40">PSP2 -> PSP3 · Quality &amp; Efficiency (CMM L5 eq.)</text>
+
+  <rect x="790" y="132" width="284" height="50" rx="6" fill="#fdf2f5" stroke="#fecdd3"/>
+  <text x="804" y="153" font-size="13.5" font-weight="800" fill="#8c1d40">Entry: DDS</text>
+  <text x="896" y="153" font-size="12" fill="#334155">Total Defect Density (/KLOC)</text>
+  <text x="804" y="172" font-size="11.5" fill="#475569">Value: Reliability · Target: Down (p=.015*)</text>
+
+  <rect x="790" y="192" width="284" height="50" rx="6" fill="#fdf2f5" stroke="#fecdd3"/>
+  <text x="804" y="213" font-size="13.5" font-weight="800" fill="#8c1d40">Interm.: LPH</text>
+  <text x="902" y="213" font-size="12" fill="#334155">Productivity (LOC / Hour)</text>
+  <text x="804" y="232" font-size="11.5" fill="#475569">Value: Efficiency · Target: Up (MIF=1.57)</text>
+
+  <rect x="790" y="252" width="284" height="54" rx="6" fill="#ffe4e6" stroke="#8c1d40" stroke-width="1.3"/>
+  <text x="804" y="274" font-size="13.5" font-weight="800" fill="#8c1d40">Exit: AFR</text>
+  <text x="888" y="274" font-size="12" fill="#334155">Appraisal / Failure Ratio</text>
+  <text x="804" y="294" font-size="11.5" fill="#881337">Value: Risk Mgmt · Target: &gt; 2 (MIF=1.21)</text>
+
+  <!-- Bottom Carry-over Banner -->
+  <rect x="28" y="340" width="1064" height="36" rx="8" fill="#102442"/>
+  <text x="560" y="363" text-anchor="middle" font-size="13" font-weight="700" fill="#f8fafc">Cross-Stage Carry-Over Findings (Regression): Plan (SEA, APR) -> DRR (R2=0.130)  |  Track (DEA, DRR, YLD) -> DDS (R2=0.949), LPH (R2=0.319), AFR (R2=0.332)</text>
+</svg>

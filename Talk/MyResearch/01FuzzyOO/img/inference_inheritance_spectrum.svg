@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" width="880" height="320">
+  <rect width="880" height="320" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="440" y="32" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#1b365d">Mathematical Foundations of Fuzzy Classification &amp; Inheritance across Surveyed OOMs</text>
+
+  <!-- 4 horizontal rows -->
+  <!-- Row 1 -->
+  <rect x="24" y="52" width="195" height="54" rx="8" fill="#1b365d"/>
+  <text x="121" y="76" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Possibility Theory</text>
+  <text x="121" y="94" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#cbd5e1">Dubois &amp; Prade; Pasi &amp; Yager</text>
+  <rect x="234" y="52" width="622" height="54" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="250" y="75" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Allowed vs. Typical Ranges &amp; Prioritized Conjunction</text>
+  <text x="250" y="94" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#475569">Class inclusion via fuzzy range inclusion; Typical / Normal / Atypical inheritance &amp; typical-value overriding</text>
+
+  <!-- Row 2 -->
+  <rect x="24" y="118" width="195" height="54" rx="8" fill="#8c1d40"/>
+  <text x="121" y="142" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Similarity &amp; Inclusion</text>
+  <text x="121" y="160" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#fecdd3">George; Yazici; Lee (FOOM)</text>
+  <rect x="234" y="118" width="622" height="54" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="250" y="141" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Distance-Wise Similarity &amp; Perceptual Compatibility</text>
+  <text x="250" y="160" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#475569">Computes ISA/AKO degrees in [0,1] from attribute similarities, relevance weights, and static/dynamic properties</text>
+
+  <!-- Row 3 -->
+  <rect x="24" y="184" width="195" height="54" rx="8" fill="#0f766e"/>
+  <text x="121" y="208" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Fuzzy Types &amp; Predicates</text>
+  <text x="121" y="226" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#ccfbf1">Marin et al.; Cross et al.</text>
+  <rect x="234" y="184" width="622" height="54" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="250" y="207" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Structural + Behavioral Fuzzy Sets &amp; Predicate-Defined Types</text>
+  <text x="250" y="226" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#475569">Instantiation via alpha-cut of attributes; inheritance with/without vagueness propagation; 3 crisp/fuzzy instance cases</text>
+
+  <!-- Row 4 -->
+  <rect x="24" y="250" width="195" height="54" rx="8" fill="#334155"/>
+  <text x="121" y="274" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Linguistic &amp; Neural</text>
+  <text x="121" y="292" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#cbd5e1">Pedrycz; Graham; Akiyama</text>
+  <rect x="234" y="250" width="622" height="54" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="250" y="273" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Computing with Words, Generalized Modus Ponens &amp; Fuzzy NNs</text>
+  <text x="250" y="292" font-family="Inter, Arial, sans-serif" font-size="11.5" fill="#475569">Derives unknown attributes via AKO + defuzzification; aggregates attribute matching via FNN; fuzzy virtual objects</text>
+</svg>

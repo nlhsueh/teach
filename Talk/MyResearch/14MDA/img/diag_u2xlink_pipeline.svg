@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="960" height="330">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arrTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arrAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8c1d40"/>
+    </marker>
+  </defs>
+  <rect width="960" height="330" fill="#ffffff" rx="10"/>
+
+  <!-- Stage 1: CIM -->
+  <rect x="18" y="48" width="150" height="210" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <rect x="18" y="48" width="150" height="30" rx="8" fill="#475569"/>
+  <rect x="18" y="68" width="150" height="10" fill="#475569"/>
+  <text x="93" y="68" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">1. XLink-CIM</text>
+  <text x="93" y="106" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">Formal Tuples</text>
+  <text x="93" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Resource (WR)</text>
+  <text x="93" y="150" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Extended Link</text>
+  <text x="93" y="170" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Simple Link</text>
+  <text x="93" y="190" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">- Linkbase (LB)</text>
+  <text x="93" y="232" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#64748b">Computation Indep.</text>
+
+  <line x1="168" y1="152" x2="198" y2="152" stroke="#1b365d" stroke-width="2.2" marker-end="url(#arr)"/>
+
+  <!-- Stage 2: PIM -->
+  <rect x="206" y="48" width="172" height="210" rx="8" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="206" y="48" width="172" height="30" rx="8" fill="#1b365d"/>
+  <rect x="206" y="68" width="172" height="10" fill="#1b365d"/>
+  <text x="292" y="68" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">2. XLinkUML PIM</text>
+  <text x="292" y="106" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#1b365d">StarUML Visual Editor</text>
+  <text x="292" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">14 Stereotypes + Tags</text>
+  <text x="292" y="150" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">OCL Arc Invariants</text>
+  <text x="292" y="170" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">e.g., Semester Plan</text>
+  <rect x="226" y="192" width="132" height="32" rx="5" fill="#ffffff" stroke="#1b365d"/>
+  <text x="292" y="212" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#1b365d">Export XMI 2.1</text>
+  <text x="292" y="244" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1b365d">Platform Independent</text>
+
+  <line x1="378" y1="152" x2="416" y2="152" stroke="#1b365d" stroke-width="2.2" marker-end="url(#arr)"/>
+  <text x="397" y="142" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#1b365d">XMI</text>
+
+  <!-- Stage 3: U2XLink Transcoder -->
+  <rect x="424" y="24" width="268" height="270" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <rect x="424" y="24" width="268" height="32" rx="10" fill="#0f766e"/>
+  <rect x="424" y="46" width="268" height="10" fill="#0f766e"/>
+  <text x="558" y="45" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#ffffff">3. U2XLink Transcoder</text>
+
+  <rect x="442" y="72" width="232" height="72" rx="6" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="558" y="94" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#0f766e">Transcoding Engine</text>
+  <text x="558" y="114" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#334155">Apache Xalan XSLT Processor</text>
+  <text x="558" y="132" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#64748b">Parses XMI -&gt; Applies Templates</text>
+
+  <rect x="442" y="160" width="232" height="116" rx="6" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="558" y="182" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#1b365d">Extensible Style Sheet Base</text>
+  <rect x="456" y="194" width="204" height="26" rx="4" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="558" y="211" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#1e3a8a">XMI2XLink.xsl</text>
+  <rect x="456" y="226" width="204" height="26" rx="4" fill="#fdf2f5" stroke="#fda4af"/>
+  <text x="558" y="243" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#8c1d40">XMI2OWL-L.xsl</text>
+  <text x="558" y="268" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#0f766e">+ Plug-in new XSLT for new domains</text>
+
+  <!-- Arrows to PSM outputs -->
+  <line x1="692" y1="108" x2="736" y2="95" stroke="#0f766e" stroke-width="2.2" marker-end="url(#arrTeal)"/>
+  <line x1="692" y1="210" x2="736" y2="225" stroke="#8c1d40" stroke-width="2.2" marker-end="url(#arrAcc)"/>
+
+  <!-- Stage 4: PSM Outputs -->
+  <rect x="744" y="42" width="198" height="104" rx="8" fill="#eff6ff" stroke="#1b365d" stroke-width="2"/>
+  <rect x="744" y="42" width="198" height="28" rx="8" fill="#1b365d"/>
+  <rect x="744" y="60" width="198" height="10" fill="#1b365d"/>
+  <text x="843" y="61" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">PSM A: XLink Schema</text>
+  <text x="843" y="92" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#0f172a">W3C XLink XML Document</text>
+  <text x="843" y="112" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Out-of-line Linkbases &amp;</text>
+  <text x="843" y="128" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Extended Link Traversal</text>
+
+  <rect x="744" y="172" width="198" height="104" rx="8" fill="#fdf2f5" stroke="#8c1d40" stroke-width="2"/>
+  <rect x="744" y="172" width="198" height="28" rx="8" fill="#8c1d40"/>
+  <rect x="744" y="190" width="198" height="10" fill="#8c1d40"/>
+  <text x="843" y="191" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">PSM B: OWL-L Ontology</text>
+  <text x="843" y="222" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#0f172a">Semantic Web XML / OWL</text>
+  <text x="843" y="242" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Computer-Interpretable</text>
+  <text x="843" y="258" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#475569">Link Profile &amp; Link Model</text>
+
+  <!-- Bottom Legend -->
+  <text x="480" y="316" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#475569">OMG MDA 4-Layer Alignment: MOF (M3) -&gt; UML + XLinkUML Profile (M2) -&gt; Custom Model (M1) -&gt; Generated XML/OWL-L Instances (M0)</text>
+</svg>

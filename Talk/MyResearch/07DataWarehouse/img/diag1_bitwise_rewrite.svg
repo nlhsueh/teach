@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 300" width="1080" height="300">
+  <defs>
+    <marker id="arr-dw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <marker id="arr-ok" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1080" height="300" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Left: User Query -->
+  <rect x="26" y="84" width="210" height="132" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="2.5"/>
+  <rect x="26" y="84" width="210" height="34" rx="10" fill="#1b365d"/>
+  <rect x="26" y="106" width="210" height="12" fill="#1b365d"/>
+  <text x="131" y="106" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">User Query View</text>
+  <text x="131" y="152" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="22" font-weight="700" fill="#1b365d">S (0 1 0)</text>
+  <text x="131" y="182" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#475569">Bit positions: [P, S, C]</text>
+  <text x="131" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#64748b">0=absent, 1=present</text>
+
+  <!-- Arrow to Center -->
+  <line x1="236" y1="150" x2="290" y2="150" stroke="#1b365d" stroke-width="2.5" marker-end="url(#arr-dw)"/>
+
+  <!-- Center: Bitwise AND Tests -->
+  <rect x="298" y="28" width="446" height="244" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="521" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#1b365d">Bitwise AND Check Against Materialized Set mv</text>
+  <text x="521" y="73" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#64748b">Condition: (Query AND MV) == Query  =&gt;  MV can answer Query</text>
+
+  <!-- Row 1: MATCH -->
+  <rect x="318" y="88" width="406" height="50" rx="7" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <text x="334" y="118" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#0f766e">S(010) AND PS(110) = (010)</text>
+  <rect x="626" y="99" width="84" height="26" rx="13" fill="#0f766e"/>
+  <text x="668" y="116" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">MATCH</text>
+
+  <!-- Row 2: NO -->
+  <rect x="318" y="148" width="406" height="48" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="334" y="177" font-family="JetBrains Mono, monospace" font-size="15" fill="#475569">S(010) AND PC(101) = (000)</text>
+  <rect x="626" y="159" width="84" height="26" rx="13" fill="#e2e8f0"/>
+  <text x="668" y="176" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#64748b">NO</text>
+
+  <!-- Row 3: NO -->
+  <rect x="318" y="206" width="406" height="48" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="334" y="235" font-family="JetBrains Mono, monospace" font-size="15" fill="#475569">S(010) AND  C(001) = (000)</text>
+  <rect x="626" y="217" width="84" height="26" rx="13" fill="#e2e8f0"/>
+  <text x="668" y="234" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#64748b">NO</text>
+
+  <!-- Arrow to Right -->
+  <line x1="744" y1="113" x2="796" y2="113" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arr-ok)"/>
+
+  <!-- Right: Rewrite Result -->
+  <rect x="804" y="54" width="250" height="192" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="2.5"/>
+  <rect x="804" y="54" width="250" height="34" rx="10" fill="#0f766e"/>
+  <rect x="804" y="76" width="250" height="12" fill="#0f766e"/>
+  <text x="929" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">Fast Query Rewrite</text>
+  <text x="929" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Selected View: PS (0.8M)</text>
+  <text x="822" y="152" font-family="Inter, sans-serif" font-size="12" fill="#334155">- Avoids scanning PSC (6M)</text>
+  <text x="822" y="174" font-family="Inter, sans-serif" font-size="12" fill="#334155">- Multiple matches? Pick</text>
+  <text x="832" y="192" font-family="Inter, sans-serif" font-size="12" fill="#334155">smallest view size S_i</text>
+  <text x="822" y="220" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#8c1d40">- O(1) bit-op dependency check</text>
+</svg>

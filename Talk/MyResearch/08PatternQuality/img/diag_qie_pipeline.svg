@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 360" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1b365d"/>
+    </marker>
+    <filter id="sh3" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1120" height="360" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="560" y="34" text-anchor="middle" font-size="18" font-weight="800" fill="#1b365d">Quantitative Pattern Verification Pipeline (Pattern Verification System, PVS)</text>
+
+  <!-- Step 1 -->
+  <g filter="url(#sh3)">
+    <rect x="24" y="58" width="230" height="218" rx="10" fill="#ffffff" stroke="#1b365d" stroke-width="2"/>
+    <rect x="24" y="58" width="230" height="40" rx="10" fill="#1b365d"/>
+    <rect x="24" y="84" width="230" height="14" fill="#1b365d"/>
+    <text x="139" y="83" text-anchor="middle" font-size="13.5" font-weight="800" fill="#ffffff">Step 1: Intent &amp; Focus</text>
+  </g>
+  <text x="139" y="120" text-anchor="middle" font-size="12" font-weight="700" fill="#1b365d">Separate Intent</text>
+  <text x="139" y="140" text-anchor="middle" font-size="11.5" fill="#334155">FR-Intent (IF) vs. NFR-Intent (IN)</text>
+  <rect x="38" y="156" width="202" height="52" rx="6" fill="#f1f5f9"/>
+  <text x="139" y="176" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f172a">Quality Focus Q(dp):</text>
+  <text x="139" y="196" text-anchor="middle" font-size="11.5" fill="#8c1d40">&lt;Property P in U2, Constraint C&gt;</text>
+  <text x="139" y="232" text-anchor="middle" font-size="11" fill="#475569">Map P to OO Metric u in U3</text>
+  <text x="139" y="250" text-anchor="middle" font-size="11" font-weight="600" fill="#0f766e">e.g., Mediator: &lt;coupling, dec&gt; -&gt; COF</text>
+
+  <line x1="256" y1="168" x2="290" y2="168" stroke="#1b365d" stroke-width="2.2" marker-end="url(#a3)"/>
+
+  <!-- Step 2 -->
+  <g filter="url(#sh3)">
+    <rect x="296" y="58" width="230" height="218" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+    <rect x="296" y="58" width="230" height="40" rx="10" fill="#0f766e"/>
+    <rect x="296" y="84" width="230" height="14" fill="#0f766e"/>
+    <text x="411" y="83" text-anchor="middle" font-size="13.5" font-weight="800" fill="#ffffff">Step 2: Metamodels &amp; T</text>
+  </g>
+  <text x="411" y="120" text-anchor="middle" font-size="12" font-weight="700" fill="#0f766e">UML Profile + Rational Rose</text>
+  <text x="411" y="140" text-anchor="middle" font-size="11.5" fill="#334155">Build Role-Based SF &amp; SN</text>
+  <rect x="310" y="156" width="202" height="60" rx="6" fill="#f0fdfa"/>
+  <text x="411" y="174" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f766e">Transformation T (SF -&gt; SN):</text>
+  <text x="411" y="191" text-anchor="middle" font-size="10.8" fill="#334155">&lt;&lt;removed&gt;&gt;, &lt;&lt;new&gt;&gt;,</text>
+  <text x="411" y="206" text-anchor="middle" font-size="10.8" fill="#334155">&lt;&lt;unmodified&gt;&gt;, &lt;&lt;modified&gt;&gt;</text>
+  <text x="411" y="238" text-anchor="middle" font-size="11" fill="#475569">Export SF, SN, T as XMI</text>
+  <text x="411" y="255" text-anchor="middle" font-size="11" font-weight="600" fill="#1b365d">Import directly into PVS</text>
+
+  <line x1="528" y1="168" x2="562" y2="168" stroke="#1b365d" stroke-width="2.2" marker-end="url(#a3)"/>
+
+  <!-- Step 3 -->
+  <g filter="url(#sh3)">
+    <rect x="568" y="58" width="238" height="218" rx="10" fill="#ffffff" stroke="#b45309" stroke-width="2"/>
+    <rect x="568" y="58" width="238" height="40" rx="10" fill="#b45309"/>
+    <rect x="568" y="84" width="238" height="14" fill="#b45309"/>
+    <text x="687" y="83" text-anchor="middle" font-size="13.5" font-weight="800" fill="#ffffff">Step 3: Sampling &amp; QIE</text>
+  </g>
+  <text x="687" y="120" text-anchor="middle" font-size="12" font-weight="700" fill="#b45309">Instantiate &amp; Transform</text>
+  <text x="687" y="140" text-anchor="middle" font-size="11.5" fill="#334155">Generate N random sF in SF</text>
+  <text x="687" y="157" text-anchor="middle" font-size="11.5" fill="#334155">Apply T: sN = T(sF) in SN</text>
+  <rect x="582" y="170" width="210" height="52" rx="6" fill="#fffbeb"/>
+  <text x="687" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#92400e">Relative Metric Delta:</text>
+  <text x="687" y="210" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f172a">QIE = AVG[(u(sN)-u(sF)) / u(sF)]</text>
+  <text x="687" y="244" text-anchor="middle" font-size="11" fill="#475569">Mediator (N=20, 3-10 Colleagues):</text>
+  <text x="687" y="261" text-anchor="middle" font-size="11.5" font-weight="700" fill="#8c1d40">QIE_coupling = -0.72 (-72%)</text>
+
+  <line x1="808" y1="168" x2="842" y2="168" stroke="#1b365d" stroke-width="2.2" marker-end="url(#a3)"/>
+
+  <!-- Step 4 -->
+  <g filter="url(#sh3)">
+    <rect x="848" y="58" width="248" height="218" rx="10" fill="#ffffff" stroke="#8c1d40" stroke-width="2"/>
+    <rect x="848" y="58" width="248" height="40" rx="10" fill="#8c1d40"/>
+    <rect x="848" y="84" width="248" height="14" fill="#8c1d40"/>
+    <text x="972" y="83" text-anchor="middle" font-size="13.5" font-weight="800" fill="#ffffff">Step 4: Verdict (P*-Improver)</text>
+  </g>
+  <text x="972" y="120" text-anchor="middle" font-size="12" font-weight="700" fill="#8c1d40">Consistency Validation</text>
+  <rect x="862" y="132" width="220" height="62" rx="6" fill="#fdf2f5"/>
+  <text x="872" y="150" font-size="11" fill="#334155">1. QIE &gt; 0 if C = "increased"</text>
+  <text x="872" y="167" font-size="11" fill="#334155">2. QIE &lt; 0 if C = "decreased"</text>
+  <text x="872" y="184" font-size="11" fill="#334155">3. QIE = 0 if C = "maintained"</text>
+  <rect x="862" y="202" width="220" height="58" rx="6" fill="#102442"/>
+  <text x="972" y="222" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">Well-Designed P*-Improver:</text>
+  <text x="972" y="240" text-anchor="middle" font-size="10.8" fill="#bae6fd">P-Improver(dp) AND</text>
+  <text x="972" y="254" text-anchor="middle" font-size="10.8" fill="#bae6fd">d(IF, SN) = satisfied</text>
+
+  <!-- Bottom Banner -->
+  <rect x="24" y="298" width="1072" height="40" rx="8" fill="#1b365d"/>
+  <text x="560" y="323" text-anchor="middle" font-size="13" font-weight="700" fill="#f8fafc">Dual Utility: (1) Pattern Developers verify intent-structure consistency  |  (2) Pattern Users compare |QIE_P| to select optimal patterns</text>
+</svg>
