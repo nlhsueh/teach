@@ -6164,3 +6164,228 @@ section:has(h2[id^="雙人實戰討論"]) {
   background: #ffe4e6 !important;
   outline: 1.8px solid #e11d48;
 }
+
+/* ==========================================================================
+   Interactive Pairwise Alternating/Interleaving Explorer (.alt-interactive-stage)
+   ========================================================================== */
+section:has(div.alt-interactive-stage) {
+  background-color: #eaf2f8 !important;
+  background-image: linear-gradient(135deg, #eef6fb 0%, #e4eff7 100%) !important;
+  box-shadow: inset 0 6px 0 0 #0284c7;
+  padding: 36px 40px 32px 40px;
+}
+
+section:has(div.alt-interactive-stage) h2 {
+  font-size: 27px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+}
+
+.alt-interactive-stage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  user-select: none;
+  gap: 10px;
+}
+
+.alt-nav-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.alt-step-group {
+  display: flex;
+  gap: 5px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.alt-step-btn {
+  background: #ffffff;
+  color: #475569;
+  border: 1.5px solid #cbd5e1;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 11.8px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+
+.alt-step-btn:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.alt-step-btn.is-active {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(2, 132, 199, 0.3);
+}
+
+.alt-content-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 16px;
+  height: 444px;
+  box-sizing: border-box;
+}
+
+.alt-card {
+  background: #ffffff;
+  border: 1.8px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 444px;
+  max-height: 444px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+.alt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 13.5px !important;
+  text-align: center;
+  margin: 0 !important;
+}
+
+.alt-table th {
+  background: #0f2742 !important;
+  color: #ffffff !important;
+  padding: 6px 6px !important;
+  font-size: 12.5px !important;
+  font-weight: 800;
+  border: 1px solid #1e3a5f !important;
+}
+
+.alt-table th.is-col-active {
+  background: #0284c7 !important;
+}
+
+.alt-table td {
+  padding: 6px 6px !important;
+  border: 1px solid #cbd5e1 !important;
+  font-size: 13.5px !important;
+  font-weight: 700;
+  color: #1e293b;
+  height: 36px;
+  transition: all 0.2s ease;
+}
+
+.alt-table td.alt-row-num {
+  background: #f1f5f9 !important;
+  color: #475569;
+  font-weight: 800;
+  width: 44px;
+}
+
+.alt-table tr.is-buffer-row td {
+  background: #f8fafc !important;
+  border-top: 1.5px dashed #94a3b8 !important;
+  border-bottom: 1.5px dashed #94a3b8 !important;
+  color: #94a3b8;
+}
+
+.alt-table td.is-new-col {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+  font-weight: 900;
+}
+
+.alt-table td.is-swapped {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 1.8px #f59e0b;
+}
+
+.alt-table td.is-patched {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 1.8px #16a34a;
+}
+
+.alt-legend-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #475569;
+  padding-top: 6px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.alt-legend-dot {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  margin-right: 4px;
+  vertical-align: -1px;
+}
+
+.alt-kpi-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.alt-kpi-box {
+  background: #f8fafc;
+  border: 1.2px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.alt-kpi-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.alt-kpi-val {
+  font-size: 18px;
+  font-weight: 900;
+  color: #0b3c5d;
+  font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+.alt-guide-list {
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.44;
+  margin: 0 !important;
+  padding-left: 18px !important;
+}
+
+.alt-guide-list li {
+  margin-bottom: 5px !important;
+  line-height: 1.42 !important;
+}
+
+.alt-mnemonic-box {
+  background: #f0f9ff;
+  border: 1.4px solid #bae6fd;
+  border-left: 4px solid #0284c7;
+  border-radius: 8px;
+  padding: 8px 11px;
+  font-size: 12px;
+  line-height: 1.42;
+  color: #0c4a6e;
+}

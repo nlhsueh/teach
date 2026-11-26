@@ -2423,6 +2423,88 @@ void testNextDateEquivalencePartitions(
 - 2-way interaction fault: 雙因子交互作用缺陷（當且僅當兩個特定輸入參數同時取特定值時才會觸發的軟體錯誤）
 -->
 ---
+## 互動式手推設計：交錯法 (Alternating Method) 6 步建構全成對表
+
+<div class="alt-interactive-stage" id="alt-pairwise-explorer">
+<div class="alt-nav-toolbar">
+  <div class="alt-step-group">
+    <button type="button" class="alt-step-btn is-active" data-alt-step="1">1. 排 W (留空列)</button>
+    <button type="button" class="alt-step-btn" data-alt-step="2">2. 交錯填 X</button>
+    <button type="button" class="alt-step-btn" data-alt-step="3">3. 填 Y (列4-5調)</button>
+    <button type="button" class="alt-step-btn" data-alt-step="4">4. 填 Z (列7-8調)</button>
+    <button type="button" class="alt-step-btn" data-alt-step="5">5. 填 P (列1-2調)</button>
+    <button type="button" class="alt-step-btn" data-alt-step="6">6. 填 Q (補空列)</button>
+  </div>
+  <div style="display: flex; gap: 6px;">
+    <button type="button" class="greedy-action-btn" id="alt-next-btn">下一步 &gt;</button>
+    <button type="button" class="greedy-action-btn" id="alt-reset-btn">重置</button>
+  </div>
+</div>
+<div class="alt-content-grid">
+  <div class="alt-card">
+    <table class="alt-table" id="alt-matrix-table">
+      <thead>
+        <tr>
+          <th>列</th>
+          <th data-col="0" class="is-col-active">W (3)</th>
+          <th data-col="1">X (2)</th>
+          <th data-col="2">Y (2)</th>
+          <th data-col="3">Z (2)</th>
+          <th data-col="4">P (2)</th>
+          <th data-col="5">Q (2)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-r="1"><td class="alt-row-num">1</td><td class="is-new-col">w1</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="2"><td class="alt-row-num">2</td><td class="is-new-col">w1</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="3" class="is-buffer-row"><td class="alt-row-num">3</td><td>(預留)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="4"><td class="alt-row-num">4</td><td class="is-new-col">w2</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="5"><td class="alt-row-num">5</td><td class="is-new-col">w2</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="6" class="is-buffer-row"><td class="alt-row-num">6</td><td>(預留)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="7"><td class="alt-row-num">7</td><td class="is-new-col">w3</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="8"><td class="alt-row-num">8</td><td class="is-new-col">w3</td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="alt-legend-row">
+      <span><span class="alt-legend-dot" style="background:#bae6fd;border:1px solid #0284c7;"></span>本步新增欄位</span>
+      <span><span class="alt-legend-dot" style="background:#fde68a;border:1px solid #d97706;"></span>交錯對調 (⇄)</span>
+      <span><span class="alt-legend-dot" style="background:#bbf7d0;border:1px solid #16a34a;"></span>空列補洞 (列3,6)</span>
+    </div>
+  </div>
+  <div class="alt-card">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1.5px solid #e2e8f0;padding-bottom:8px;margin-bottom:10px;">
+        <span class="ep-badge-pill ep-badge-blue" id="alt-step-badge" style="margin:0;">步驟 1 / 6</span>
+        <span style="font-size:12px;font-weight:800;color:#475569;" id="alt-scope-label">變數：W(3)</span>
+      </div>
+      <h3 class="ep-title-text" id="alt-step-title" style="font-size:16.5px;margin-bottom:8px;">依取值數降冪排列，填寫 W 並預留空列</h3>
+      <div class="alt-kpi-row" style="margin-bottom:10px;">
+        <div class="alt-kpi-box">
+          <div class="alt-kpi-label">目前啟用測試列數</div>
+          <div class="alt-kpi-val" id="alt-kpi-rows">6 列</div>
+        </div>
+        <div class="alt-kpi-box">
+          <div class="alt-kpi-label">對照全乘積 (壓縮率)</div>
+          <div class="alt-kpi-val" id="alt-kpi-comp">3 組</div>
+        </div>
+      </div>
+      <ul class="alt-guide-list" id="alt-guide-list">
+        <li><strong>最多值放最左：</strong>先將具備最多可能值的變數 <code>W (w1, w2, w3)</code> 放最左欄，其餘變數依取值數由大到小向右排列。</li>
+        <li><strong>依下一欄倍數重複：</strong>因下一個變數 <code>X</code> 有 2 種取值，故每個 <code>w</code> 重複寫 2 列（列 1–2、4–5、7–8）。</li>
+        <li><strong>預留緩衝空列：</strong>刻意保留<strong>列 3 與列 6</strong> 為空白列，留待後續變數無法靠對調補齊時用來補洞！</li>
+      </ul>
+    </div>
+    <div class="alt-mnemonic-box" id="alt-mnemonic-box">
+      <strong>交錯法核心口訣：</strong>最多值放最左、組間預留空列；新增欄位依序輪流對調（<code>Y</code> 調列 4–5 ➔ <code>Z</code> 調列 7–8 ➔ <code>P</code> 調列 1–2），輪滿後再用預留空列 <code>3, 6</code> 補齊缺口！
+    </div>
+  </div>
+</div>
+</div>
+
+<!--
+交錯法（Alternating / Interleaving Method）是全成對組合測試（Pairwise Testing）最直覺的手工設計技術。在進入 NP-Hard 與電腦貪婪演算法前，本頁以 6 個變數 W(3) × X(2) × Y(2) × Z(2) × P(2) × Q(2)（全乘積高達 96 組）為例，透過 6 步互動引導展示如何以「最多值放最左 + 組間預留緩衝空列 + 輪流對調區塊」僅用 8 列即完成 100% 全成對覆蓋（縮減 91.7%）。
+-->
+---
 ## 為何最小成對組合屬於 NP-Hard？貪婪啟發式演算法解析
 
 <div class="card-deck">
@@ -6265,6 +6347,116 @@ function initBinarySearchInteractive() {
   resetSearch();
 }
 
+function initAltPairwiseExplorer() {
+  const stage = document.getElementById('alt-pairwise-explorer');
+  if (!stage || stage.dataset.altBound) return;
+  stage.dataset.altBound = 'true';
+
+  const altBtns = Array.from(stage.querySelectorAll('.alt-step-btn'));
+  const altNext = stage.querySelector('#alt-next-btn');
+  const altReset = stage.querySelector('#alt-reset-btn');
+  const altBadge = stage.querySelector('#alt-step-badge');
+  const altScope = stage.querySelector('#alt-scope-label');
+  const altTitle = stage.querySelector('#alt-step-title');
+  const altKpiRows = stage.querySelector('#alt-kpi-rows');
+  const altKpiComp = stage.querySelector('#alt-kpi-comp');
+  const altGuide = stage.querySelector('#alt-guide-list');
+  const altThs = Array.from(stage.querySelectorAll('#alt-matrix-table thead th[data-col]'));
+  const altTrs = Array.from(stage.querySelectorAll('#alt-matrix-table tbody tr'));
+
+  const altData = [
+    {
+      step: 1, scope: '變數：W(3)', title: '依取值數降冪排列，填寫 W 並預留空列', rows: '6 列', comp: '3 組 (基底)', activeCol: 0,
+      grid: [['w1','','','','',''],['w1','','','','',''],['(預留)','','','','',''],['w2','','','','',''],['w2','','','','',''],['(預留)','','','','',''],['w3','','','','',''],['w3','','','','','']],
+      swaps: [], patches: [],
+      bullets: [
+        '<strong>最多值放最左：</strong>先將具備最多可能值的變數 <code>W (w1, w2, w3)</code> 放最左欄，其餘變數依取值數由大到小向右排列。',
+        '<strong>依下一欄倍數重複：</strong>因下一個變數 <code>X</code> 有 2 種取值，故每個 <code>w</code> 重複寫 2 列（列 1–2、4–5、7–8）。',
+        '<strong>預留緩衝空列：</strong>刻意保留<strong>列 3 與列 6</strong> 為空白列，留待後續變數無法靠對調補齊時用來補洞！'
+      ]
+    },
+    {
+      step: 2, scope: '變數：W(3) × X(2)', title: '交錯填入第二變數 X (x1, x2)', rows: '6 列', comp: '6 / 6 (100%)', activeCol: 1,
+      grid: [['w1','x1','','','',''],['w1','x2','','','',''],['(預留)','','','','',''],['w2','x1','','','',''],['w2','x2','','','',''],['(預留)','','','','',''],['w3','x1','','','',''],['w3','x2','','','','']],
+      swaps: [], patches: [],
+      bullets: [
+        '<strong>交錯配對：</strong>在每一組 <code>w</code> 區段內依序填入 <code>x1, x2</code>。',
+        '<strong>達成 W × X 全覆蓋：</strong>6 列剛好完整覆蓋 <code>(w1..w3) × (x1, x2)</code> 全部 6 組配對！'
+      ]
+    },
+    {
+      step: 3, scope: '變數：W(3) × X(2) × Y(2)', title: '填入 Y 並在「列 4–5」交錯對調 (y2, y1)', rows: '6 列', comp: '12 ➔ 6 (-50%)', activeCol: 2,
+      grid: [['w1','x1','y1','','',''],['w1','x2','y2','','',''],['(預留)','','','','',''],['w2','x1','y2 ⇄','','',''],['w2','x2','y1 ⇄','','',''],['(預留)','','','','',''],['w3','x1','y1','','',''],['w3','x2','y2','','','']],
+      swaps: ['3-2','4-2'], patches: [],
+      bullets: [
+        '<strong>為何不能全填 y1, y2？</strong>若三組全填 <code>y1, y2</code>，則 <code>x1</code> 永遠只配 <code>y1</code>、<code>x2</code> 永遠只配 <code>y2</code>，漏掉 <code>(x1,y2)</code> 與 <code>(x2,y1)</code>！',
+        '<strong>列 4–5 對調破局：</strong>將列 4–5 改為 <code>y2, y1</code>，立刻補齊 <code>X × Y</code> 與 <code>W × Y</code> 全部成對組合！'
+      ]
+    },
+    {
+      step: 4, scope: '變數：W × X × Y × Z', title: '填入 Z 並在「列 7–8」交錯對調 (z2, z1)', rows: '6 列', comp: '24 ➔ 6 (-75%)', activeCol: 3,
+      grid: [['w1','x1','y1','z1','',''],['w1','x2','y2','z2','',''],['(預留)','','','','',''],['w2','x1','y2','z1','',''],['w2','x2','y1','z2','',''],['(預留)','','','','',''],['w3','x1','y1','z2 ⇄','',''],['w3','x2','y2','z1 ⇄','','']],
+      swaps: ['6-3','7-3'], patches: [],
+      bullets: [
+        '<strong>錯開對調區塊：</strong><code>Y</code> 已在列 4–5 對調，因此 <code>Z</code> 改在<strong>列 7–8 對調為 <code>z2, z1</code></strong>。',
+        '<strong>零增列達成 4 變數全成對：</strong>透過不同區塊錯開對調，<code>Z</code> 與 <code>W, X, Y</code> 所有兩兩配對一次補齊，仍只需 <strong>6 列</strong>（原全乘積 24 組）！'
+      ]
+    },
+    {
+      step: 5, scope: '變數：W × X × Y × Z × P', title: '填入 P 並在「列 1–2」交錯對調 (p2, p1)', rows: '6 列', comp: '48 ➔ 6 (-88%)', activeCol: 4,
+      grid: [['w1','x1','y1','z1','p2 ⇄',''],['w1','x2','y2','z2','p1 ⇄',''],['(預留)','','','','',''],['w2','x1','y2','z1','p1',''],['w2','x2','y1','z2','p2',''],['(預留)','','','','',''],['w3','x1','y1','z2','p1',''],['w3','x2','y2','z1','p2','']],
+      swaps: ['0-4','1-4'], patches: [],
+      bullets: [
+        '<strong>輪轉至最後一個區塊：</strong>列 4–5 與列 7–8 已被 <code>Y, Z</code> 使用，故 <code>P</code> 改在<strong>列 1–2 對調為 <code>p2, p1</code></strong>。',
+        '<strong>極限壓縮 88%：</strong>5 個變數全乘積需 <code>3×2⁴ = 48</code> 組，交錯法至今仍僅需 <strong>6 列</strong>即達成 100% 2-Way 覆蓋！'
+      ]
+    },
+    {
+      step: 6, scope: '變數：W × X × Y × Z × P × Q', title: '填入 Q 並啟用預留空列 (列 3, 列 6) 補齊缺口！', rows: '8 列', comp: '96 ➔ 8 (-92%)', activeCol: 5,
+      grid: [['w1','x1','y1','z1','p2','q1'],['w1','x2','y2','z2','p1','q2'],['*','x2','*','*','*','q1'],['w2','x1','y2','z1','p1','q1'],['w2','x2','y1','z2','p2','q2'],['*','x1','*','*','*','q2'],['w3','x1','y1','z2','p1','q1'],['w3','x2','y2','z1','p2','q2']],
+      swaps: [], patches: ['2-1','2-5','5-1','5-5'],
+      bullets: [
+        '<strong>3 個對調位皆滿：</strong>加入第 6 變數 <code>Q</code> 時，若直接填 <code>q1, q2</code>，<code>X × Q</code> 會缺少 <code>(x2, q1)</code> 與 <code>(x1, q2)</code>。',
+        '<strong>預留空列派上用場：</strong>啟用 Step 1 預留的<strong>列 3 填入 (x2, q1)</strong>、<strong>列 6 填入 (x1, q2)</strong>（<code>*</code> 格可填任意合法值），僅用 <strong>8 列</strong>取代 <strong>96 組</strong>全乘積！'
+      ]
+    }
+  ];
+  let altCur = 0;
+
+  function renderAlt(idx) {
+    altCur = idx;
+    const d = altData[idx];
+    if (!d) return;
+    altBtns.forEach((b, i) => b.classList.toggle('is-active', i === idx));
+    if (altBadge) altBadge.textContent = `步驟 ${d.step} / 6`;
+    if (altScope) altScope.textContent = d.scope;
+    if (altTitle) altTitle.textContent = d.title;
+    if (altKpiRows) altKpiRows.textContent = d.rows;
+    if (altKpiComp) altKpiComp.textContent = d.comp;
+    if (altGuide) altGuide.innerHTML = d.bullets.map(b => `<li>${b}</li>`).join('');
+    altThs.forEach((th, c) => th.classList.toggle('is-col-active', c === d.activeCol));
+    const swapSet = new Set(d.swaps);
+    const patchSet = new Set(d.patches);
+    altTrs.forEach((tr, r) => {
+      const tds = tr.querySelectorAll('td');
+      for (let c = 0; c < 6; c++) {
+        const td = tds[c + 1];
+        if (!td) continue;
+        td.textContent = d.grid[r][c];
+        td.className = '';
+        const key = `${r}-${c}`;
+        if (patchSet.has(key)) td.className = 'is-patched';
+        else if (swapSet.has(key)) td.className = 'is-swapped';
+        else if (c === d.activeCol && d.grid[r][c] && d.grid[r][c] !== '(預留)' && d.grid[r][c] !== '*') td.className = 'is-new-col';
+      }
+    });
+  }
+  altBtns.forEach((b, idx) => b.addEventListener('click', e => { e.stopPropagation(); renderAlt(idx); }));
+  if (altNext) altNext.addEventListener('click', e => { e.stopPropagation(); renderAlt((altCur + 1) % 6); });
+  if (altReset) altReset.addEventListener('click', e => { e.stopPropagation(); renderAlt(0); });
+  renderAlt(0);
+}
+
 function initGreedyIpoExplorer() {
   const stage = document.getElementById('greedy-explorer');
   if (!stage || stage.dataset.greedyBound) return;
@@ -8468,6 +8660,7 @@ function initSmExplorer() {
     initPbtMatchGame();
     initEpInteractiveExplorer();
     initBinarySearchInteractive();
+    initAltPairwiseExplorer();
     initGreedyIpoExplorer();
     initSmExplorer();
     initSelfPracticeQuizzes();

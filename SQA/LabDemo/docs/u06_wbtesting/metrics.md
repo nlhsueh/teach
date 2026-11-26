@@ -119,7 +119,7 @@
 ## 🧪 四、課堂實作練習（LabDemo）
 
 - **課堂範例（基本路徑）**：[GradeAverage.java](../../src/main/java/u06_coverage/GradeAverage.java) ＆ [GradeAverageBasisPathTest.java](../../src/test/java/u06_coverage/GradeAverageBasisPathTest.java)
-- **Lab 2 複雜度度量與重構練習**：[ShippingFeeCalculator.java](../../src/main/java/u06_coverage/ShippingFeeCalculator.java) ＆ [ShippingFeeBasisPathTest.java](../../src/test/java/u06_coverage/ShippingFeeBasisPathTest.java)
+- **Lab 2 複雜度度量與重構練習**：[ShippingFeeCalculator.java](../../src/main/java/u06_coverage/ShippingFeeCalculator.java) ＆ [ShippingFeeBasisPathExerciseTest.java](../../src/test/java/u06_coverage/ShippingFeeBasisPathExerciseTest.java)（僅含 Path 1–2，其餘基本路徑待補齊）
 - **實作任務**：
   1. 使用 `MetricsReloaded` 或 **Antigravity AI** 產生完整五大指標報表，比較 `ShippingFeeCalculator` 中 `calculateFeeNested`（深層巢狀）與 `calculateFeeRefactored`（衛語句重構）的 `v(G)`、`CogC`、`WMC`、`OCavg` 與 `LOC` 差異。
-  2. 針對 `calculateFeeNested` 繪製控制流程圖（CFG），導出線性獨立基本路徑，並執行 `mvn test -Dtest=ShippingFeeBasisPathTest` 驗證全部基本路徑測試通過。
+  2. 針對 `calculateFeeNested` 繪製控制流程圖（CFG），導出線性獨立基本路徑，補齊 [ShippingFeeBasisPathExerciseTest.java](../../src/test/java/u06_coverage/ShippingFeeBasisPathExerciseTest.java) 中的 `TODO` 測試並執行 `mvn clean test -Dtest=ShippingFeeBasisPathExerciseTest jacoco:report` 驗證達到 100% 分支覆蓋。

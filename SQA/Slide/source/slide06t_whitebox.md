@@ -974,7 +974,7 @@ public static String getTriangleType(int a, int b, int c) {
 
 <div class="card-deck">
 
-> 💡 📄 [實習手冊](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-2-binary-search-二元搜尋) ｜ 💻 [待測原始碼](../../lab.html?file=LabDemo/src/main/java/u06_coverage/BinarySearch.java) ｜ 🧪 [測試檔](../../lab.html?file=LabDemo/src/test/java/u06_coverage/BinarySearchCoverageTest.java)
+> 💡 📄 [實習手冊](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-2-binary-search-二元搜尋) ｜ 💻 [待測原始碼](../../lab.html?file=LabDemo/src/main/java/u06_coverage/BinarySearch.java) ｜ 🧪 [練習測試檔](../../lab.html?file=LabDemo/src/test/java/u06_coverage/BinarySearchCoverageExerciseTest.java)
 
 <div class="two-columns">
 <div class="card">
@@ -1026,7 +1026,7 @@ else return "Overweight";
 
 <div class="card-deck">
 
-> 💡 📄 [實習手冊](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-3-loan-calculator-貸款利率計算) ｜ 💻 [待測原始碼](../../lab.html?file=LabDemo/src/main/java/u05_combinatorial/pair/LoanCalculator.java) ｜ 🧪 [測試檔](../../lab.html?file=LabDemo/src/test/java/u05_combinatorial/pair/LoanCalculatorPairwiseExerciseTest.java)
+> 💡 📄 [實習手冊](../../lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md#lab-3-loan-calculator-貸款利率計算) ｜ 💻 [待測原始碼](../../lab.html?file=LabDemo/src/main/java/u05_combinatorial/pair/LoanCalculator.java) ｜ 🧪 [練習測試檔](../../lab.html?file=LabDemo/src/test/java/u06_coverage/LoanCalculatorCoverageExerciseTest.java)
 
 <div class="two-columns">
 <div class="card">
@@ -2047,11 +2047,11 @@ String getSymbol(int num) {
 
 <!-- header: '6.4 變異測試 (Mutation Testing)' -->
 
-## 實例剖析：`getMax(x, y)` 為何 100% 覆蓋仍會漏抓 Bug？
+## 實例剖析：`getMax(x, y)` 
 
 <div class="card-deck">
 
-> 💡 先從一個只有 6 行的程式看「單點微小突變」如何像照妖鏡一樣，立刻揪出鬆散測試案例的盲點！
+> 💡 `(1,1)` 不夠，`(5,2)` 才能看出差異，kill mutant!
 
 <div class="two-columns">
 <div class="card">
@@ -2113,7 +2113,7 @@ int getMax(int x, int y) {    int getMax2(int x, int y) {
 
 <div class="card-deck">
 
-> 💡 「*看過上述單一算子突變後，你可能會問：真實世界的 Bug 往往很複雜，為什麼每次只改一個小符號（First-Order Mutant）就夠？*」這源自兩大經典假設（DeMillo et al., 1978；Offutt, 1992）：
+> 💡 「真實世界的 Bug 往往很複雜，為什麼每次只改一個小符號（First-Order Mutant）就夠？」這源自兩大經典假設（DeMillo et al., 1978；Offutt, 1992）：
 
 <div class="two-columns">
 <div class="card">
@@ -2925,7 +2925,7 @@ public class TriangleMuTest {
 - **📄 手冊**：[metrics.md](../../lab.html?file=LabDemo/docs/u06_wbtesting/metrics.md)
 - **💻 程式**：
   - [ShippingFeeCalculator.java](../../lab.html?file=LabDemo/src/main/java/u06_coverage/ShippingFeeCalculator.java)
-  - [ShippingFeeBasisPathTest.java](../../lab.html?file=LabDemo/src/test/java/u06_coverage/ShippingFeeBasisPathTest.java)
+  - [ShippingFeeBasisPathExerciseTest.java](../../lab.html?file=LabDemo/src/test/java/u06_coverage/ShippingFeeBasisPathExerciseTest.java)
 - **🎯 實作任務**：
   - 用 **MetricsReloaded** 比較巢狀版與衛語句重構版的 `v(G)` 與 `CogC`。
   - 繪製運費計算 CFG，補齊基本路徑測試並驗證等價重構！

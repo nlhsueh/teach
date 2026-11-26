@@ -2422,6 +2422,88 @@ Empirical research by NIST revealed that 67% to 93% of all multi-variable bugs a
 - 2-way interaction fault: 雙因子交互作用缺陷（當且僅當兩個特定輸入參數同時取特定值時才會觸發的軟體錯誤）
 -->
 ---
+## Interactive Hand-Design: Alternating Method (6-Step Pairwise Construction)
+
+<div class="alt-interactive-stage" id="alt-pairwise-explorer">
+<div class="alt-nav-toolbar">
+  <div class="alt-step-group">
+    <button type="button" class="alt-step-btn is-active" data-alt-step="1">1. Fill W (Gaps)</button>
+    <button type="button" class="alt-step-btn" data-alt-step="2">2. Interleave X</button>
+    <button type="button" class="alt-step-btn" data-alt-step="3">3. Y (Swap R4-5)</button>
+    <button type="button" class="alt-step-btn" data-alt-step="4">4. Z (Swap R7-8)</button>
+    <button type="button" class="alt-step-btn" data-alt-step="5">5. P (Swap R1-2)</button>
+    <button type="button" class="alt-step-btn" data-alt-step="6">6. Q (Patch R3,6)</button>
+  </div>
+  <div style="display: flex; gap: 6px;">
+    <button type="button" class="greedy-action-btn" id="alt-next-btn">Next &gt;</button>
+    <button type="button" class="greedy-action-btn" id="alt-reset-btn">Reset</button>
+  </div>
+</div>
+<div class="alt-content-grid">
+  <div class="alt-card">
+    <table class="alt-table" id="alt-matrix-table">
+      <thead>
+        <tr>
+          <th>Row</th>
+          <th data-col="0" class="is-col-active">W (3)</th>
+          <th data-col="1">X (2)</th>
+          <th data-col="2">Y (2)</th>
+          <th data-col="3">Z (2)</th>
+          <th data-col="4">P (2)</th>
+          <th data-col="5">Q (2)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-r="1"><td class="alt-row-num">1</td><td class="is-new-col">w1</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="2"><td class="alt-row-num">2</td><td class="is-new-col">w1</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="3" class="is-buffer-row"><td class="alt-row-num">3</td><td>(gap)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="4"><td class="alt-row-num">4</td><td class="is-new-col">w2</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="5"><td class="alt-row-num">5</td><td class="is-new-col">w2</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="6" class="is-buffer-row"><td class="alt-row-num">6</td><td>(gap)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="7"><td class="alt-row-num">7</td><td class="is-new-col">w3</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr data-r="8"><td class="alt-row-num">8</td><td class="is-new-col">w3</td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="alt-legend-row">
+      <span><span class="alt-legend-dot" style="background:#bae6fd;border:1px solid #0284c7;"></span>New Column</span>
+      <span><span class="alt-legend-dot" style="background:#fde68a;border:1px solid #d97706;"></span>Alternating Swap (⇄)</span>
+      <span><span class="alt-legend-dot" style="background:#bbf7d0;border:1px solid #16a34a;"></span>Buffer Patch (Rows 3, 6)</span>
+    </div>
+  </div>
+  <div class="alt-card">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1.5px solid #e2e8f0;padding-bottom:8px;margin-bottom:10px;">
+        <span class="ep-badge-pill ep-badge-blue" id="alt-step-badge" style="margin:0;">STEP 1 / 6</span>
+        <span style="font-size:12px;font-weight:800;color:#475569;" id="alt-scope-label">Params: W(3)</span>
+      </div>
+      <h3 class="ep-title-text" id="alt-step-title" style="font-size:16.5px;margin-bottom:8px;">Sort Descending, Fill W &amp; Reserve Buffer Rows</h3>
+      <div class="alt-kpi-row" style="margin-bottom:10px;">
+        <div class="alt-kpi-box">
+          <div class="alt-kpi-label">Active Test Rows</div>
+          <div class="alt-kpi-val" id="alt-kpi-rows">6 rows</div>
+        </div>
+        <div class="alt-kpi-box">
+          <div class="alt-kpi-label">vs. Full Cartesian</div>
+          <div class="alt-kpi-val" id="alt-kpi-comp">3 base</div>
+        </div>
+      </div>
+      <ul class="alt-guide-list" id="alt-guide-list">
+        <li><strong>Largest Domain First:</strong> Place the parameter with the most values <code>W (w1, w2, w3)</code> on the far left; sort remaining parameters descending to the right.</li>
+        <li><strong>Repeat by Next Domain Size:</strong> Since <code>X</code> has 2 values, repeat each <code>w</code> twice (Rows 1-2, 4-5, 7-8).</li>
+        <li><strong>Reserve Buffer Rows:</strong> Leave <strong>Rows 3 and 6</strong> blank as spare slots for patching uncovered pairs when later parameters are added!</li>
+      </ul>
+    </div>
+    <div class="alt-mnemonic-box" id="alt-mnemonic-box">
+      <strong>Alternating Rule:</strong> Largest domain leftmost + reserve gap rows; rotate swap blocks per new column (<code>Y</code> swaps R4-5 ➔ <code>Z</code> swaps R7-8 ➔ <code>P</code> swaps R1-2), then patch gaps using buffer rows <code>3 &amp; 6</code>!
+    </div>
+  </div>
+</div>
+</div>
+
+<!--
+The Alternating (Interleaving) Method provides an intuitive manual construction technique for Pairwise Testing prior to introducing NP-Hard Set Cover and Greedy IPO algorithms. Across 6 parameters W(3) × X(2) × Y(2) × Z(2) × P(2) × Q(2) (96 full combinations), rotating swap blocks and activating reserved buffer rows achieves 100% 2-way coverage in just 8 rows (91.7% reduction).
+-->
+---
 ## Why Minimum Pairwise is NP-Hard & Greedy Heuristic Algorithms
 
 <div class="card-deck">
@@ -6259,6 +6341,116 @@ function initBinarySearchInteractive() {
   resetSearch();
 }
 
+function initAltPairwiseExplorer() {
+  const stage = document.getElementById('alt-pairwise-explorer');
+  if (!stage || stage.dataset.altBound) return;
+  stage.dataset.altBound = 'true';
+
+  const altBtns = Array.from(stage.querySelectorAll('.alt-step-btn'));
+  const altNext = stage.querySelector('#alt-next-btn');
+  const altReset = stage.querySelector('#alt-reset-btn');
+  const altBadge = stage.querySelector('#alt-step-badge');
+  const altScope = stage.querySelector('#alt-scope-label');
+  const altTitle = stage.querySelector('#alt-step-title');
+  const altKpiRows = stage.querySelector('#alt-kpi-rows');
+  const altKpiComp = stage.querySelector('#alt-kpi-comp');
+  const altGuide = stage.querySelector('#alt-guide-list');
+  const altThs = Array.from(stage.querySelectorAll('#alt-matrix-table thead th[data-col]'));
+  const altTrs = Array.from(stage.querySelectorAll('#alt-matrix-table tbody tr'));
+
+  const altData = [
+    {
+      step: 1, scope: 'Params: W(3)', title: 'Sort Descending, Fill W & Reserve Buffer Rows', rows: '6 rows', comp: '3 base', activeCol: 0,
+      grid: [['w1','','','','',''],['w1','','','','',''],['(gap)','','','','',''],['w2','','','','',''],['w2','','','','',''],['(gap)','','','','',''],['w3','','','','',''],['w3','','','','','']],
+      swaps: [], patches: [],
+      bullets: [
+        '<strong>Largest Domain First:</strong> Place <code>W (w1, w2, w3)</code> leftmost and sort remaining parameters by cardinality descending.',
+        '<strong>Repeat by Next Domain Size:</strong> Since <code>X</code> has 2 values, repeat each <code>w</code> twice (Rows 1-2, 4-5, 7-8).',
+        '<strong>Reserve Buffer Rows:</strong> Leave <strong>Rows 3 and 6</strong> blank for patching missing pairs when later columns arrive!'
+      ]
+    },
+    {
+      step: 2, scope: 'Params: W(3) × X(2)', title: 'Interleave Second Parameter X (x1, x2)', rows: '6 rows', comp: '6 / 6 (100%)', activeCol: 1,
+      grid: [['w1','x1','','','',''],['w1','x2','','','',''],['(gap)','','','','',''],['w2','x1','','','',''],['w2','x2','','','',''],['(gap)','','','','',''],['w3','x1','','','',''],['w3','x2','','','','']],
+      swaps: [], patches: [],
+      bullets: [
+        '<strong>Interleaving Pairs:</strong> Alternate <code>x1, x2</code> across each <code>w</code> block.',
+        '<strong>Complete W × X Coverage:</strong> All 6 pairs of <code>(w1..w3) × (x1, x2)</code> are covered in 6 rows!'
+      ]
+    },
+    {
+      step: 3, scope: 'Params: W(3) × X(2) × Y(2)', title: 'Add Y and Swap Block Rows 4-5 (y2, y1)', rows: '6 rows', comp: '12 ➔ 6 (-50%)', activeCol: 2,
+      grid: [['w1','x1','y1','','',''],['w1','x2','y2','','',''],['(gap)','','','','',''],['w2','x1','y2 ⇄','','',''],['w2','x2','y1 ⇄','','',''],['(gap)','','','','',''],['w3','x1','y1','','',''],['w3','x2','y2','','','']],
+      swaps: ['3-2','4-2'], patches: [],
+      bullets: [
+        '<strong>Why Not Plain y1, y2?</strong> Without swapping, <code>x1</code> only ever pairs with <code>y1</code> and <code>x2</code> with <code>y2</code>!',
+        '<strong>Swap Rows 4-5:</strong> Flipping Row 4-5 to <code>y2, y1</code> immediately covers all <code>W × Y</code> and <code>X × Y</code> pairs.'
+      ]
+    },
+    {
+      step: 4, scope: 'Params: W × X × Y × Z', title: 'Add Z and Swap Block Rows 7-8 (z2, z1)', rows: '6 rows', comp: '24 ➔ 6 (-75%)', activeCol: 3,
+      grid: [['w1','x1','y1','z1','',''],['w1','x2','y2','z2','',''],['(gap)','','','','',''],['w2','x1','y2','z1','',''],['w2','x2','y1','z2','',''],['(gap)','','','','',''],['w3','x1','y1','z2 ⇄','',''],['w3','x2','y2','z1 ⇄','','']],
+      swaps: ['6-3','7-3'], patches: [],
+      bullets: [
+        '<strong>Rotate Swap Block:</strong> Since <code>Y</code> swapped Rows 4-5, <code>Z</code> swaps <strong>Rows 7-8 (z2, z1)</strong>.',
+        '<strong>Zero Extra Rows:</strong> All 2-way pairs across 4 parameters are covered in still just <strong>6 rows</strong> (vs. 24 full combinations)!'
+      ]
+    },
+    {
+      step: 5, scope: 'Params: W × X × Y × Z × P', title: 'Add P and Swap Block Rows 1-2 (p2, p1)', rows: '6 rows', comp: '48 ➔ 6 (-88%)', activeCol: 4,
+      grid: [['w1','x1','y1','z1','p2 ⇄',''],['w1','x2','y2','z2','p1 ⇄',''],['(gap)','','','','',''],['w2','x1','y2','z1','p1',''],['w2','x2','y1','z2','p2',''],['(gap)','','','','',''],['w3','x1','y1','z2','p1',''],['w3','x2','y2','z1','p2','']],
+      swaps: ['0-4','1-4'], patches: [],
+      bullets: [
+        '<strong>Final Unused Block:</strong> Rotate the swap to <strong>Rows 1-2 (p2, p1)</strong>.',
+        '<strong>88% Compression:</strong> All 2-way pairs across 5 parameters (48 full combinations) fit into just <strong>6 rows</strong>!'
+      ]
+    },
+    {
+      step: 6, scope: 'Params: W × X × Y × Z × P × Q', title: 'Add Q & Patch Missing Pairs via Buffer Rows 3, 6', rows: '8 rows', comp: '96 ➔ 8 (-92%)', activeCol: 5,
+      grid: [['w1','x1','y1','z1','p2','q1'],['w1','x2','y2','z2','p1','q2'],['*','x2','*','*','*','q1'],['w2','x1','y2','z1','p1','q1'],['w2','x2','y1','z2','p2','q2'],['*','x1','*','*','*','q2'],['w3','x1','y1','z2','p1','q1'],['w3','x2','y2','z1','p2','q2']],
+      swaps: [], patches: ['2-1','2-5','5-1','5-5'],
+      bullets: [
+        '<strong>All 3 Swap Slots Used:</strong> Adding 6th parameter <code>Q</code> leaves <code>(x2, q1)</code> and <code>(x1, q2)</code> uncovered.',
+        '<strong>Buffer Rows Activate:</strong> Fill reserved <strong>Row 3 with (x2, q1)</strong> and <strong>Row 6 with (x1, q2)</strong> (<code>*</code> = any valid value) — <strong>8 rows</strong> replace <strong>96</strong>!'
+      ]
+    }
+  ];
+  let altCur = 0;
+
+  function renderAlt(idx) {
+    altCur = idx;
+    const d = altData[idx];
+    if (!d) return;
+    altBtns.forEach((b, i) => b.classList.toggle('is-active', i === idx));
+    if (altBadge) altBadge.textContent = `STEP ${d.step} / 6`;
+    if (altScope) altScope.textContent = d.scope;
+    if (altTitle) altTitle.textContent = d.title;
+    if (altKpiRows) altKpiRows.textContent = d.rows;
+    if (altKpiComp) altKpiComp.textContent = d.comp;
+    if (altGuide) altGuide.innerHTML = d.bullets.map(b => `<li>${b}</li>`).join('');
+    altThs.forEach((th, c) => th.classList.toggle('is-col-active', c === d.activeCol));
+    const swapSet = new Set(d.swaps);
+    const patchSet = new Set(d.patches);
+    altTrs.forEach((tr, r) => {
+      const tds = tr.querySelectorAll('td');
+      for (let c = 0; c < 6; c++) {
+        const td = tds[c + 1];
+        if (!td) continue;
+        td.textContent = d.grid[r][c];
+        td.className = '';
+        const key = `${r}-${c}`;
+        if (patchSet.has(key)) td.className = 'is-patched';
+        else if (swapSet.has(key)) td.className = 'is-swapped';
+        else if (c === d.activeCol && d.grid[r][c] && d.grid[r][c] !== '(gap)' && d.grid[r][c] !== '*') td.className = 'is-new-col';
+      }
+    });
+  }
+  altBtns.forEach((b, idx) => b.addEventListener('click', e => { e.stopPropagation(); renderAlt(idx); }));
+  if (altNext) altNext.addEventListener('click', e => { e.stopPropagation(); renderAlt((altCur + 1) % 6); });
+  if (altReset) altReset.addEventListener('click', e => { e.stopPropagation(); renderAlt(0); });
+  renderAlt(0);
+}
+
 function initGreedyIpoExplorer() {
   const stage = document.getElementById('greedy-explorer');
   if (!stage || stage.dataset.greedyBound) return;
@@ -8474,6 +8666,7 @@ function initSmExplorer() {
     initPbtMatchGame();
     initEpInteractiveExplorer();
     initBinarySearchInteractive();
+    initAltPairwiseExplorer();
     initGreedyIpoExplorer();
     initSmExplorer();
     initSelfPracticeQuizzes();

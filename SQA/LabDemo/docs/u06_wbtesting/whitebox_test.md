@@ -48,7 +48,9 @@
 
 實務開發中，通常在 **寫程式當下使用 IntelliJ IDEA 即時查看行內覆蓋顏色**，而在 **提交前或 CI 管線使用 Maven CLI 產出完整 JaCoCo HTML 報告**。
 
-### 2.1 方法 A：使用 IntelliJ IDEA 執行（開發階段即時回饋）
+### 2.1 方法 A：使用 IntelliJ IDEA 內建工具執行（免設 JaCoCo，開發階段即時回饋）
+
+> **✅ 免配置開箱即用**：IntelliJ IDEA（包含免費的 Community Edition）**不需要在 `pom.xml` 設定 JaCoCo**，預設就內建自家的 **IntelliJ IDEA Coverage Runner**，可直接檢視覆蓋率！
 
 1. 在 IntelliJ IDEA 開啟 `LabDemo` 專案，找到目標測試類別（例如 [TriangleCoverageTest.java](../../src/test/java/u06_coverage/TriangleCoverageTest.java)）。
 2. 在測試類別名稱或方法左側點擊執行圖示，選擇 **Run 'TriangleCoverageTest' with Coverage**（或在編輯器按右鍵 ➔ **More Run/Debug ➔ Run with Coverage**）。
@@ -59,8 +61,18 @@
      - 🟥 **紅色**：該行完全未被執行。
      - 🟨 **黃色**：該行有執行，但部分條件分支未走完（點擊黃色色條可展開各分支命中次數）。
 
-> **💡 建議切換為 JaCoCo Coverage Runner（與 Maven 口徑一致）**：  
-> IntelliJ 預設使用自家的 *IntelliJ IDEA* runner。若希望 IDE 與 Maven 報告的分支計數完全一致，請點擊右上角執行設定 ➔ **Edit Configurations... ➔ Modify options ➔ Code Coverage ➔ Choose coverage runner**，將引擎改為 **JaCoCo**。
+> **💡 進階設定 — 切換為 JaCoCo Runner（讓 IDE 與 Maven 口徑一致）**：  
+> IntelliJ 預設使用自家的 *IntelliJ IDEA* runner。若希望 IDE 與 Maven CI 報告的分支計數完全一致，請點擊右上角執行設定 ➔ **Edit Configurations... ➔ Modify options ➔ Code Coverage ➔ Choose coverage runner**，將引擎改為 **JaCoCo**。
+
+#### ⚖️ 既然 IntelliJ 預設就能看 Coverage，為何實務仍需搭配 JaCoCo？
+
+| 比較項目 | IntelliJ 內建 Coverage Runner | Maven + JaCoCo (`jacoco-maven-plugin`) |
+| :--- | :--- | :--- |
+| **環境需求** | 零配置，IntelliJ 開箱即用 | 需於 `pom.xml` 加入 JaCoCo 外掛 |
+| **即時互動性** | 寫測試當下秒看編輯器側邊欄色條（最適合本機開發） | 需執行 Maven 指令後開瀏覽器看報告 |
+| **CI/CD 與命令列** | ❌ 無法在 GitHub Actions / 終端機執行 | ✅ 支援 `mvn verify` 與品質門檻 `jacoco:check` |
+| **跨編輯器口徑統一** | 僅限 IntelliJ，且分支追蹤設定不同時數字可能略有差異 | ✅ 不限 IDE（VS Code / Antigravity / IntelliJ 一致） |
+| **報告輸出與分享** | 需手動匯出 | ✅ 自動產出離線 `index.html`（含黃色菱形）與 `jacoco.xml`（串接 SonarQube／Codecov） |
 
 ---
 
@@ -155,18 +167,19 @@ LabDemo/target/site/jacoco/index.html
 4. 補充測試案例，嘗試將 **Branch Coverage 提升至 100%**。
 5. **思考題**：若發現某個條件（例如 `a == b && b == c && a == c` 中的第三項）無論如何都無法讓黃色菱形變綠，請分析原因（是否屬於邏輯冗餘／不可達分支），並說明如何重構消除。
 
-### 📋 Lab 2：Binary Search 二元搜尋覆蓋率實戰
-1. 開啟 [BinarySearch.java](../../src/main/java/u06_coverage/BinarySearch.java) 與 [BinarySearchCoverageTest.java](../../src/test/java/u06_coverage/BinarySearchCoverageTest.java)。
-2. 使用 IntelliJ **Run with Coverage**（或 `mvn clean test -Dtest=BinarySearchCoverageTest jacoco:report`）檢視 `while` 迴圈與 `if / else if / else` 各分支覆蓋狀態。
-3. 逐步補充測資（如命中中間、向左搜尋、向右搜尋、目標不存在、空陣列），直到 **Line 與 Branch 覆蓋率雙雙達到 100%**。
+### 📋 Lab 2：Binary Search 二元搜尋覆蓋率實戰（Exercise）
+1. 開啟 [BinarySearch.java](../../src/main/java/u06_coverage/BinarySearch.java) 與練習檔 [BinarySearchCoverageExerciseTest.java](../../src/test/java/u06_coverage/BinarySearchCoverageExerciseTest.java)（目前僅提供 1 組中間命中測資，屬於部分覆蓋）。
+2. 使用 IntelliJ **Run with Coverage**（或 `mvn clean test -Dtest=BinarySearchCoverageExerciseTest jacoco:report`）檢視 `while` 迴圈與 `if / else if / else` 各分支的紅／黃色未覆蓋區。
+3. 依 `TODO` 提示逐步補充測資（向左搜尋、向右搜尋、目標不存在／空陣列），直到 **Line 與 Branch 覆蓋率雙雙達到 100%**。
 
-### 📋 Lab 3：Loan Calculator 多測試集覆蓋率效益對照
+### 📋 Lab 3：Loan Calculator 多測試集覆蓋率效益對照（Exercise）
 針對 [LoanCalculator.java](../../src/main/java/u05_combinatorial/pair/LoanCalculator.java) 的貸款利率規則（基礎 5%、年限 >10 折 0.5% / >20 折 1%、金額 >500 萬每多 100 萬折 0.1%、青年折 1%、已婚折 0.5%、最低下限 2%）：
-1. 分別建立三組測試案例集：
+1. 開啟練習檔 [LoanCalculatorCoverageExerciseTest.java](../../src/test/java/u06_coverage/LoanCalculatorCoverageExerciseTest.java)（目前僅提供 1 組無優惠基準測資，屬於部分覆蓋），先執行 `mvn clean test -Dtest=LoanCalculatorCoverageExerciseTest jacoco:report` 觀察初始覆蓋率。
+2. 依 `TODO` 逐步補齊測資，並比較三組測試集的覆蓋效益：
    - **集合 A**：滿足 Weak Coverage（SC 100%）。
    - **集合 B**：滿足 All-Pairs（全成對組合）。
-   - **集合 C**：滿足 Strong / Branch 100%。
-2. 透過 JaCoCo 報告比較三組測試集的 **案例數** 與 **實際 Branch Coverage %**，分析成本與覆蓋效益。
+   - **集合 C**：滿足 Strong / Branch 100%（含 `rate < 2.0` 保底分支）。
+3. 透過 JaCoCo 報告記錄三組測試集的 **案例數** 與 **實際 Branch Coverage %**，分析成本與覆蓋效益。
 
 ### 📋 Lab 4：AI 輔助覆蓋率「補彈」與 Oracle 審查
 1. 挑選 Lab 1～Lab 3 中 JaCoCo 回報仍有**紅行或黃色菱形**的方法，將程式碼與 JaCoCo 的未覆蓋提示（例如 `Line 16: 1 of 6 branches missed`）貼給 AI：
