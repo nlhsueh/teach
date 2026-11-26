@@ -529,9 +529,398 @@
       transform: translateY(-1px);
     }
 
+    /* Lab Portal Homepage */
+    .layout-container.is-portal {
+      grid-template-columns: 1fr;
+      max-width: 1200px;
+    }
+
+    .portal-hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%);
+      color: #ffffff;
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .portal-hero h1 {
+      color: #ffffff !important;
+      border: none !important;
+      padding: 0 !important;
+      margin: 0 0 8px 0 !important;
+      font-size: 26px !important;
+    }
+
+    .portal-hero p {
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 0 18px 0;
+      font-size: 14.5px;
+    }
+
+    .portal-search-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .portal-search-input {
+      flex: 1;
+      min-width: 240px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.96);
+      color: #0f172a;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .portal-search-input:focus {
+      border-color: #fde047;
+      box-shadow: 0 0 0 3px rgba(253, 224, 71, 0.3);
+    }
+
+    .portal-stat-badge {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .portal-unit-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .portal-unit-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: all 0.15s ease;
+    }
+
+    .portal-unit-pill:hover {
+      background: #dbeafe;
+      border-color: #60a5fa;
+      color: #1e40af;
+    }
+
+    .portal-units-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: 860px) {
+      .portal-units-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .portal-unit-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-top: 4px solid #0284c7;
+      border-radius: 12px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      scroll-margin-top: 84px;
+    }
+
+    .portal-unit-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .portal-unit-tag {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #0369a1;
+      background: #e0f2fe;
+      padding: 2px 9px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .portal-unit-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+
+    .portal-doc-list {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .portal-doc-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 11px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      color: #1e293b !important;
+      text-decoration: none !important;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+
+    .portal-doc-link:hover {
+      background: #eff6ff;
+      border-color: #93c5fd;
+      color: #1e40af !important;
+      transform: translateX(2px);
+    }
+
+    .portal-doc-path {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #64748b;
+      flex-shrink: 0;
+    }
+
+    /* Sidebar Related Labs Box */
+    .sidebar-related-box {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1.5px solid #e2e8f0;
+    }
+
+    .sidebar-home-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 7px 10px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      background: #eff6ff;
+      border: 1.2px solid #93c5fd;
+      color: #1e40af;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .sidebar-home-btn:hover {
+      background: #dbeafe;
+      border-color: #3b82f6;
+    }
+
+    .related-unit-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0369a1;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .related-lab-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .related-lab-link {
+      display: block;
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      line-height: 1.35;
+      color: #334155;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+    }
+
+    .related-lab-link:hover {
+      background: #f1f5f9;
+      color: #1e40af;
+    }
+
+    .related-lab-link.is-current {
+      background: #dbeafe;
+      border-color: #93c5fd;
+      color: #1e3a8a;
+      font-weight: 700;
+    }
+
+    /* Bottom Related Labs & Prev/Next Card */
+    .doc-nav-footer {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 2px solid #e2e8f0;
+    }
+
+    .doc-related-panel {
+      background: #f8fafc;
+      border: 1.2px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+
+    .doc-related-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .doc-related-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .doc-related-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #0369a1 !important;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: all 0.15s ease;
+    }
+
+    .doc-related-chip:hover {
+      background: #e0f2fe;
+      border-color: #38bdf8;
+    }
+
+    .doc-related-chip.is-current {
+      background: #1e40af;
+      border-color: #1e40af;
+      color: #ffffff !important;
+    }
+
+    .doc-prev-next {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 720px) {
+      .doc-prev-next {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .doc-nav-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 9px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #0f172a !important;
+      text-decoration: none !important;
+      transition: all 0.15s ease;
+    }
+
+    .doc-nav-btn:hover {
+      border-color: #60a5fa;
+      background: #eff6ff;
+    }
+
+    .doc-nav-btn.is-center {
+      align-items: center;
+      background: #eff6ff;
+      border-color: #93c5fd;
+      color: #1e40af !important;
+      font-weight: 700;
+      font-size: 13.5px;
+      white-space: nowrap;
+    }
+
+    .doc-nav-btn.is-right {
+      text-align: right;
+      align-items: flex-end;
+    }
+
+    .doc-nav-dir {
+      font-size: 11.5px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .doc-nav-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #1e3a8a;
+    }
+
+    .btn-lab-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #93c5fd;
+      padding: 6px 13px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .btn-lab-home:hover {
+      background: #dbeafe;
+      border-color: #3b82f6;
+    }
+
     @media print {
       .top-navbar,
       .toc-sidebar,
+      .doc-nav-footer,
       .btn-copy {
         display: none !important;
       }
@@ -555,7 +944,11 @@
     <div class="nav-left">
       <a href="index.html" class="btn-back">
         <span>⬅️</span>
-        <span>返回 SQA 課程入口</span>
+        <span>SQA 課程入口</span>
+      </a>
+      <a href="lab.html" class="btn-lab-home" id="btnLabHome">
+        <span>🧪</span>
+        <span>Lab 總覽首頁</span>
       </a>
       <div class="breadcrumb-info">
         <span id="pageTitle" class="breadcrumb-title">載入中...</span>
@@ -596,6 +989,11 @@
 
     <!-- Table of Contents Sidebar -->
     <aside class="toc-sidebar" id="tocSidebar">
+      <div class="sidebar-related-box" id="sidebarRelatedBox" style="display:none;">
+        <a href="lab.html" class="sidebar-home-btn">🧪 返回 Lab 總覽首頁</a>
+        <div class="related-unit-label" id="sidebarUnitLabel">📂 本單元相關實習</div>
+        <ul class="related-lab-list" id="sidebarRelatedList"></ul>
+      </div>
       <div class="toc-title">
         <span>📑</span>
         <span>章節目錄 (TOC)</span>
@@ -610,6 +1008,291 @@
     // GitHub Repository Configuration
     const GITHUB_REPO_URL = "https://github.com/nlhsueh/teach/blob/main/SQA/";
     const GITHUB_RAW_URL = "https://raw.githubusercontent.com/nlhsueh/teach/main/SQA/";
+
+    // Complete SQA Lab Catalog (Single Source of Truth for Portal Homepage & Related Lab Navigation)
+    const LAB_CATALOG = [
+      {
+        id: "unit-01",
+        tag: "Unit 01",
+        title: "開發環境、Antigravity 與 Maven",
+        prefixes: ["u01_intro", "LabDemo/README.md"],
+        docs: [
+          { title: "LabDemo 專案總覽與快速啟動指南", file: "LabDemo/README.md" },
+          { title: "Google Antigravity IDE 與 Java Maven 實務指南", file: "LabDemo/docs/u01_intro/antigravity.md" },
+          { title: "Maven 與 pom.xml 完整指南", file: "LabDemo/docs/u01_intro/maven.md" }
+        ]
+      },
+      {
+        id: "unit-02",
+        tag: "Unit 02",
+        title: "防禦性程式設計與科學除錯",
+        prefixes: ["u02_robust", "u02_debug"],
+        docs: [
+          { title: "日誌追蹤實務 (Logging)", file: "LabDemo/docs/u02_robust/logging.md" },
+          { title: "防禦性程式設計與斷言 (Assertion)", file: "LabDemo/docs/u02_robust/assertion.md" },
+          { title: "例外處理實務 (Exception Handling)", file: "LabDemo/docs/u02_robust/exception.md" },
+          { title: "除錯實務與科學假設檢驗 (Debug Lab)", file: "LabDemo/docs/u02_debug/debug.md" },
+          { title: "AI 程式碼破壞實驗 (AI Code Attack)", file: "LabDemo/docs/u02_debug/ai_code_break.md" }
+        ]
+      },
+      {
+        id: "unit-03",
+        tag: "Unit 03",
+        title: "測試原則、規格與 Test Oracle",
+        prefixes: ["u03_principles"],
+        docs: [
+          { title: "實驗 3-1：測試規格設計與 AI 盲區評審", file: "LabDemo/docs/u03_principles/test_spec_ai_codesign.md" },
+          { title: "實驗 3-2：Test Oracle 破局與變質測試沙盒", file: "LabDemo/docs/u03_principles/test_oracle_metamorphic.md" }
+        ]
+      },
+      {
+        id: "unit-04",
+        tag: "Unit 04",
+        title: "靜態檢視與 PMD 程式碼分析",
+        prefixes: ["u04_inspection"],
+        docs: [
+          { title: "PMD 靜態程式碼分析實作", file: "LabDemo/docs/u04_inspection/pmd.md" },
+          { title: "PMD Java 規則參考手冊 (Java Rules)", file: "LabDemo/docs/u04_inspection/javarules.md" }
+        ]
+      },
+      {
+        id: "unit-05",
+        tag: "Unit 05",
+        title: "黑箱測試與 JUnit 5 單元測試",
+        prefixes: ["u05_utest", "u05_junit", "u05_partition", "u05_combinatorial", "u05_behavioral"],
+        docs: [
+          { title: "Lab 05-1：JUnit 5 基礎與測試架構", file: "LabDemo/docs/u05_utest/junit.md" },
+          { title: "Lab 05-2：輸入分割測試 — BVA 與 EP", file: "LabDemo/docs/u05_utest/partition.md" },
+          { title: "Lab 05-3：多維組合與規則 — Pairwise / CTM / 決策表", file: "LabDemo/docs/u05_utest/combinatorial.md" },
+          { title: "專題：全成對組合測試 (Pairwise / AllPairs4J)", file: "LabDemo/docs/u05_utest/pairwise_combinatorial.md" },
+          { title: "Lab 05-4：狀態、情境、經驗與屬性測試", file: "LabDemo/docs/u05_utest/behavioral.md" },
+          { title: "專題：屬性基礎測試 (PBT with jqwik)", file: "LabDemo/docs/u05_utest/jqwik_property_based.md" },
+          { title: "Lab 05 練習題完整參考解答庫", file: "LabDemo/docs/u05_utest/solutions/README.md" }
+        ]
+      },
+      {
+        id: "unit-06",
+        tag: "Unit 06",
+        title: "白箱覆蓋率、複雜度與變異測試",
+        prefixes: ["u06_wbtesting", "u06_coverage", "u06_mutation", "u07_mutation"],
+        docs: [
+          { title: "Lab 06-1：JaCoCo 白箱覆蓋率設置與報告判讀", file: "LabDemo/docs/u06_wbtesting/whitebox_test.md" },
+          { title: "Lab 06-2：程式碼複雜度指標 (Code Metrics)", file: "LabDemo/docs/u06_wbtesting/metrics.md" },
+          { title: "Lab 06-3：PITest 變異測試實戰手冊", file: "LabDemo/docs/u07_mutation/mutation_test.md" }
+        ]
+      },
+      {
+        id: "unit-07",
+        tag: "Unit 07",
+        title: "整合測試、Mockito 與 Testcontainers",
+        prefixes: ["u08_integration", "u07_mockito"],
+        docs: [
+          { title: "實習 09：整合測試與 Mockito 測試替身", file: "LabDemo/docs/u08_integration/mokito.md" },
+          { title: "實習 10：Testcontainers 容器化整合測試", file: "LabDemo/docs/u08_integration/testcontainers_spring.md" },
+          { title: "Spring 整合測試補充範例", file: "LabDemo/docs/u08_integration/Spring.md" }
+        ]
+      },
+      {
+        id: "unit-08",
+        tag: "Unit 08",
+        title: "BDD、契約測試與端對端自動化",
+        prefixes: ["u09_cucumber_bdd", "u08_cucumber", "u09_web"],
+        docs: [
+          { title: "實習 11：微服務契約測試 (Pact) 與 Playwright E2E", file: "LabDemo/docs/u09_cucumber_bdd/pact_and_playwright.md" },
+          { title: "BDD 行為驅動開發導論 (intro_BDD)", file: "LabDemo/docs/u09_cucumber_bdd/intro_BDD.md" },
+          { title: "Cucumber BDD 實作 (BMI Cucumber)", file: "LabDemo/docs/u09_cucumber_bdd/bmi_cucumber.md" },
+          { title: "Selenium Web 端對端測試 (BMI Selenium)", file: "LabDemo/docs/u09_cucumber_bdd/bmi_selenium.md" }
+        ]
+      },
+      {
+        id: "unit-09",
+        tag: "Unit 09",
+        title: "效能壓測、模糊測試與混沌工程",
+        prefixes: ["u10_performance", "u10_chaos_fuzzing"],
+        docs: [
+          { title: "實習 12：k6 現代程式化高併發壓測", file: "LabDemo/docs/u10_performance/k6_load_testing.md" },
+          { title: "實習補充：Apache JMeter 壓力測試實務", file: "LabDemo/docs/u10_performance/jmeter.md" },
+          { title: "實習 13：模糊測試 (Jazzer) 與混沌工程", file: "LabDemo/docs/u10_chaos_fuzzing/chaos_and_fuzzing.md" }
+        ]
+      },
+      {
+        id: "unit-10",
+        tag: "Unit 10",
+        title: "DevOps CI/CD 與 IDE 附錄",
+        prefixes: ["u11_devops", "uxx_backup"],
+        docs: [
+          { title: "實習 14：GitHub Actions CI/CD 品質門檻", file: "LabDemo/docs/u11_devops/github_actions_quality_gate.md" },
+          { title: "Git 版本控制實務情境 (using_git)", file: "LabDemo/docs/u11_devops/using_git.md" },
+          { title: "附錄：IntelliJ IDEA 專案設定指南", file: "LabDemo/docs/uxx_backup/Intellij.md" },
+          { title: "附錄：開發環境與 IDE 總覽", file: "LabDemo/docs/uxx_backup/README.md" }
+        ]
+      }
+    ];
+
+    function getFlatLabList() {
+      const list = [];
+      LAB_CATALOG.forEach(unit => {
+        unit.docs.forEach(doc => list.push({ ...doc, unit }));
+      });
+      return list;
+    }
+
+    function findUnitForFile(file) {
+      if (!file) return null;
+      for (const unit of LAB_CATALOG) {
+        if (unit.docs.some(d => d.file === file)) return unit;
+      }
+      for (const unit of LAB_CATALOG) {
+        if (unit.prefixes.some(p => file.includes(p))) return unit;
+      }
+      return null;
+    }
+
+    function renderLabPortal() {
+      const layout = document.querySelector('.layout-container');
+      layout.classList.add('is-portal');
+      document.getElementById('tocSidebar').style.display = 'none';
+      const pageTitle = document.getElementById('pageTitle');
+      const filePathDisplay = document.getElementById('filePathDisplay');
+      const githubLink = document.getElementById('githubLink');
+      const contentArea = document.getElementById('contentArea');
+
+      const allDocs = getFlatLabList();
+      pageTitle.textContent = "SQA 上機實習 (Lab) 總覽首頁";
+      filePathDisplay.textContent = `(${LAB_CATALOG.length} 個單元 · 共 ${allDocs.length} 份文件)`;
+      document.title = "SQA 上機實習 (Lab) 總覽首頁";
+      githubLink.href = "https://github.com/nlhsueh/teach/tree/main/SQA/LabDemo/docs";
+
+      const pillsHtml = LAB_CATALOG.map(u =>
+        `<a class="portal-unit-pill" href="#${u.id}">${u.tag} · ${u.title}</a>`
+      ).join('');
+
+      const cardsHtml = LAB_CATALOG.map(u => {
+        const itemsHtml = u.docs.map(d => {
+          const shortName = d.file.split('/').pop();
+          return `
+            <li data-search="${(u.tag + ' ' + u.title + ' ' + d.title + ' ' + d.file).toLowerCase()}">
+              <a class="portal-doc-link" href="lab.html?file=${encodeURIComponent(d.file)}">
+                <span>📄 ${d.title}</span>
+                <span class="portal-doc-path">${shortName}</span>
+              </a>
+            </li>
+          `;
+        }).join('');
+        return `
+          <section class="portal-unit-card" id="${u.id}">
+            <div class="portal-unit-header">
+              <h2 class="portal-unit-title">${u.title}</h2>
+              <span class="portal-unit-tag">${u.tag} (${u.docs.length})</span>
+            </div>
+            <ul class="portal-doc-list">${itemsHtml}</ul>
+          </section>
+        `;
+      }).join('');
+
+      contentArea.innerHTML = `
+        <div class="portal-hero">
+          <h1>🧪 SQA 上機實習 (Lab) 總覽首頁</h1>
+          <p>收錄全學期 <code>LabDemo</code> 實習手冊、工具配置指南、程式碼度量與 CI/CD 實作文件。點選任一文件即可開啟互動閱讀器與同單元快速切換。</p>
+          <div class="portal-search-row">
+            <input type="search" id="portalSearchInput" class="portal-search-input" placeholder="🔍 輸入關鍵字即時篩選（例如：JaCoCo、PITest、JUnit、Pairwise、Metrics、k6）..." />
+            <span class="portal-stat-badge" id="portalStatBadge">共 ${LAB_CATALOG.length} 個單元 / ${allDocs.length} 份實習文件</span>
+          </div>
+        </div>
+        <div class="portal-unit-pills">${pillsHtml}</div>
+        <div class="portal-units-grid" id="portalUnitsGrid">${cardsHtml}</div>
+      `;
+
+      const searchInput = document.getElementById('portalSearchInput');
+      const statBadge = document.getElementById('portalStatBadge');
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          const q = searchInput.value.trim().toLowerCase();
+          let visibleDocs = 0;
+          let visibleUnits = 0;
+          document.querySelectorAll('.portal-unit-card').forEach(card => {
+            let cardVisible = 0;
+            card.querySelectorAll('li[data-search]').forEach(li => {
+              const hit = !q || li.dataset.search.includes(q);
+              li.style.display = hit ? '' : 'none';
+              if (hit) { cardVisible++; visibleDocs++; }
+            });
+            card.style.display = cardVisible > 0 ? '' : 'none';
+            if (cardVisible > 0) visibleUnits++;
+          });
+          if (statBadge) {
+            statBadge.textContent = q
+              ? `篩選結果：${visibleUnits} 個單元 / ${visibleDocs} 份文件`
+              : `共 ${LAB_CATALOG.length} 個單元 / ${allDocs.length} 份實習文件`;
+          }
+        });
+      }
+    }
+
+    function renderRelatedNavigation(currentFile) {
+      const unit = findUnitForFile(currentFile);
+      const sidebarBox = document.getElementById('sidebarRelatedBox');
+      const sidebarLabel = document.getElementById('sidebarUnitLabel');
+      const sidebarList = document.getElementById('sidebarRelatedList');
+
+      if (sidebarBox) {
+        sidebarBox.style.display = 'block';
+        if (unit) {
+          sidebarLabel.textContent = `📂 ${unit.tag} · ${unit.title}`;
+          sidebarList.innerHTML = unit.docs.map(d => {
+            const isCur = d.file === currentFile;
+            return `<li><a class="related-lab-link${isCur ? ' is-current' : ''}" href="lab.html?file=${encodeURIComponent(d.file)}">${isCur ? '▶ ' : '• '}${d.title}</a></li>`;
+          }).join('');
+        } else {
+          sidebarLabel.textContent = '📂 常用實習單元';
+          sidebarList.innerHTML = LAB_CATALOG.slice(0, 6).map(u =>
+            `<li><a class="related-lab-link" href="lab.html#${u.id}">• ${u.tag} · ${u.title}</a></li>`
+          ).join('');
+        }
+      }
+
+      // Append Bottom Related Labs & Prev/Next Footer Card inside contentArea
+      const contentArea = document.getElementById('contentArea');
+      if (!contentArea) return;
+      const flat = getFlatLabList();
+      const idx = flat.findIndex(d => d.file === currentFile);
+      const prevDoc = idx > 0 ? flat[idx - 1] : null;
+      const nextDoc = idx >= 0 && idx < flat.length - 1 ? flat[idx + 1] : null;
+
+      let relatedHtml = '';
+      if (unit) {
+        const chips = unit.docs.map(d => {
+          const isCur = d.file === currentFile;
+          return `<a class="doc-related-chip${isCur ? ' is-current' : ''}" href="lab.html?file=${encodeURIComponent(d.file)}">${isCur ? '📍 ' : '📄 '}${d.title}</a>`;
+        }).join('');
+        relatedHtml = `
+          <div class="doc-related-panel">
+            <div class="doc-related-title">🔗 本單元相關實習文件（${unit.tag} · ${unit.title}）</div>
+            <div class="doc-related-chips">${chips}</div>
+          </div>
+        `;
+      }
+
+      const prevHtml = prevDoc
+        ? `<a class="doc-nav-btn" href="lab.html?file=${encodeURIComponent(prevDoc.file)}"><span class="doc-nav-dir">⬅️ 上一篇實習 (${prevDoc.unit.tag})</span><span class="doc-nav-name">${prevDoc.title}</span></a>`
+        : `<a class="doc-nav-btn" href="index.html"><span class="doc-nav-dir">🏠 課程總入口</span><span class="doc-nav-name">返回 SQA 課程首頁</span></a>`;
+
+      const nextHtml = nextDoc
+        ? `<a class="doc-nav-btn is-right" href="lab.html?file=${encodeURIComponent(nextDoc.file)}"><span class="doc-nav-dir">下一篇實習 (${nextDoc.unit.tag}) ➡️</span><span class="doc-nav-name">${nextDoc.title}</span></a>`
+        : `<a class="doc-nav-btn is-right" href="index.html"><span class="doc-nav-dir">🏠 課程總入口</span><span class="doc-nav-name">返回 SQA 課程首頁</span></a>`;
+
+      const footer = document.createElement('div');
+      footer.className = 'doc-nav-footer';
+      footer.innerHTML = `
+        ${relatedHtml}
+        <div class="doc-prev-next">
+          ${prevHtml}
+          <a class="doc-nav-btn is-center" href="lab.html">🧪 返回 Lab 總覽首頁</a>
+          ${nextHtml}
+        </div>
+      `;
+      contentArea.appendChild(footer);
+    }
 
     // Resolve relative path utility
     function resolvePath(baseDir, relativePath) {
@@ -819,39 +1502,7 @@
       const githubLink = document.getElementById('githubLink');
 
       if (!file) {
-        pageTitle.textContent = "未指定實習講義檔案";
-        contentArea.innerHTML = `
-          <div class="state-container">
-            <h2>⚠️ 請指定要瀏覽的實習檔案</h2>
-            <p style="margin-top: 8px;">網址需包含 <code>?file=LabDemo/docs/...</code> 參數。</p>
-            <div class="lab-directory-card">
-              <h3>💡 常見上機實習快速導引：</h3>
-              <div class="lab-directory-list">
-                <a href="lab.html?file=LabDemo/docs/u01_intro/antigravity.md">🛠️ Lab 01 · Antigravity IDE 實務指南</a>
-                <a href="lab.html?file=LabDemo/docs/u01_intro/maven.md">🛠️ Lab 01 · Maven 與 pom.xml 指南</a>
-                <a href="lab.html?file=LabDemo/docs/u02_robust/logging.md">🛠️ Lab 02 · 日誌追蹤實務 (Logging)</a>
-                <a href="lab.html?file=LabDemo/docs/u02_robust/assertion.md">🛠️ Lab 02 · 斷言防護 (Assertion)</a>
-                <a href="lab.html?file=LabDemo/docs/u02_robust/exception.md">🛠️ Lab 02 · 例外處理實務 (Exception)</a>
-                <a href="lab.html?file=LabDemo/docs/u02_debug/debug.md">🛠️ Lab 02 · 除錯實務與科學假設檢驗</a>
-                <a href="lab.html?file=LabDemo/docs/u02_debug/ai_code_break.md">🛠️ Lab 02 · AI 程式碼破壞實驗</a>
-                <a href="lab.html?file=LabDemo/docs/u03_principles/test_spec_ai_codesign.md">🛠️ Lab 03 · 測試規格設計與 AI 盲區審查</a>
-                <a href="lab.html?file=LabDemo/docs/u03_principles/test_oracle_metamorphic.md">🛠️ Lab 03 · Test Oracle 變質測試沙盒</a>
-                <a href="lab.html?file=LabDemo/docs/u04_inspection/pmd.md">🛠️ Lab 04 · PMD 靜態程式碼分析</a>
-                <a href="lab.html?file=LabDemo/docs/u05_utest/junit.md">🛠️ Lab 05-1 · JUnit 5 基礎與架構 (u05_junit)</a>
-                <a href="lab.html?file=LabDemo/docs/u05_utest/partition.md">🛠️ Lab 05-2 · 輸入分割：BVA 與 EP (u05_partition)</a>
-                <a href="lab.html?file=LabDemo/docs/u05_utest/combinatorial.md">🛠️ Lab 05-3 · 組合與規則：Pairwise / CTM / 決策表 (u05_combinatorial)</a>
-                <a href="lab.html?file=LabDemo/docs/u05_utest/behavioral.md">🛠️ Lab 05-4 · 行為、經驗與屬性測試 (u05_behavioral)</a>
-                <a href="lab.html?file=LabDemo/docs/u06_wbtesting/whitebox_test.md">🛠️ Lab 06-1 · 白箱測試與涵蓋率分析</a>
-                <a href="lab.html?file=LabDemo/docs/u06_wbtesting/metrics.md">🛠️ Lab 06-2 · 程式碼複雜度度量 (MetricsReloaded)</a>
-                <a href="lab.html?file=LabDemo/docs/u07_mutation/mutation_test.md">🛠️ Lab 06-3 · PITest 變異測試</a>
-                <a href="lab.html?file=LabDemo/docs/u08_integration/testcontainers_spring.md">🛠️ Lab 09/10 · Testcontainers 整合測試</a>
-                <a href="lab.html?file=LabDemo/docs/u09_cucumber_bdd/pact_and_playwright.md">🛠️ Lab 11~13 · BDD 與契約測試</a>
-                <a href="lab.html?file=LabDemo/docs/u10_performance/k6_load_testing.md">🛠️ Lab 14 · k6 現代高併發壓測</a>
-              </div>
-            </div>
-          </div>
-        `;
-        document.getElementById('tocSidebar').style.display = 'none';
+        renderLabPortal();
         return;
       }
 
@@ -957,6 +1608,7 @@
         fixRelativePaths(baseDir);
         enhanceCodeBlocks();
         buildTOC();
+        renderRelatedNavigation(file);
 
         // Scroll to hash if present in URL
         if (window.location.hash) {

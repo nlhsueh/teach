@@ -1,166 +1,14 @@
-# White Box Testing Lab (白箱測試與覆蓋度分析實作手冊)
+# White Box Testing Lab（JaCoCo 覆蓋率工具設置與報告判讀實作手冊）
 
-本實驗手冊引導學生進行**白箱測試（結構化測試）**與**覆蓋度分析（Code Coverage）**的實作。內容包含傳統白箱測試的工具使用、基本覆蓋度分析、複雜度指標度量，以及在 2026 AI 時代如何人機協同進行高效率的白箱測試「補彈（覆蓋度提升）」。
-
----
-
-# PART 1: 傳統白箱測試 (Traditional White Box Testing)
-
-## 📖 1.1 教學與核心觀念 (Tutorial)
-
-### 1.1.1 什麼是白箱測試？
-白箱測試（White Box Testing）又稱結構測試或邏輯驅動測試。測試人員在完全了解程式內部邏輯、控制流與程式碼結構的前提下，設計測試案例來驗證程式碼的執行路徑是否符合預期。其核心指標是**程式碼覆蓋率 (Code Coverage)**，用以量化「程式碼被測試了多少」。
-
-### 1.1.2 常見的覆蓋度指標
-1.  **敘述涵蓋度 (Statement Coverage, SC)**：程式中每一條可執行指令敘述至少被執行一次。最弱的白箱指標。
-2.  **分支涵蓋度 (Branch Coverage, BC)**：又稱決策涵蓋度 (Decision Coverage)。確保程式中每個判斷（如 `if` 語句）的 True 和 False 分支都至少被執行一次。
-3.  **條件涵蓋度 (Condition Coverage, CC)**：使程式中每個判斷內部的每一個個別布林條件（如 `A` 和 `B`）的 True 和 False 都至少執行過一次。
-4.  **修改條件/決策涵蓋度 (MC/DC)**：航空級軟體（如 DO-178B）的覆蓋率標準。要求每個個別條件都能獨立影響整個決策的輸出結果，所需測資數呈線性關係 (n+1 到 2n)。
-
-### 1.1.3 實務工具 (IntelliJ vs. JaCoCo) 的分支定義差異
-在學術上，`if (A && B)` 是一個單一的分支決策點。但在實務工具中：
-*   **JaCoCo** 是在 **Bytecode（位元組碼）** 層級進行分析的。
-*   Java 編譯器為了實現**短路求值 (Short-circuit evaluation)**，會將 `&&` 與 `||` 拆解為多個跳轉指令。
-*   因此，在 JaCoCo 報告中，一個 `if (A && B)` 會被計為 **4 個位元組碼分支**（`A` 的 T/F，與 `B` 的 T/F）。
-*   若你的測試案例只涵蓋了 `A=False`（短路）與 `A=True, B=True`，JaCoCo 會回報僅有 75% 的分支覆蓋度（4 個分支中只覆蓋了 3 個），並在 IDE 中顯示**黃色鑽石 (Yellow Diamond)**，提示有未覆蓋的分支。
+本實驗手冊聚焦於 **JaCoCo 程式碼覆蓋率（Code Coverage）** 的實務操作，涵蓋 `pom.xml` 外掛設定、**IntelliJ IDEA** 與 **Maven CLI** 執行流程、**JaCoCo HTML 報告判讀**，以及課堂實作與 AI 輔助補彈練習。（白箱測試覆蓋率理論與公式請參閱第六章投影片。）
 
 ---
 
-## 💻 1.2 範例展示與操作 (Demo)
+## ⚙️ PART 1：JaCoCo 環境設置 (`pom.xml`)
 
-### 1.2.1 課堂基本案例分析
-針對以下課堂程式片段：
-```java
-// 輸入 A, B, X
-if (A > 1 && B == 0) {
-    Y = A;
-}
-if (A == 2 || X > 1) {
-    Y = X;
-}
-// 輸出 Y
-```
+本課程 `LabDemo` 專案已於根目錄的 [pom.xml](../../pom.xml) 預先配置 `jacoco-maven-plugin`，不需額外安裝本機執行檔即可直接透過 Maven 產生覆蓋率報告。
 
-#### 測試案例設計分析表：
-*   **敘述涵蓋度 (SC 100%)**：只需設計一組測資 `(A=2, B=0, X=3)`，此時兩個 `if` 條件皆成立，所有敘述皆會執行。
-*   **缺陷**：若工程師將 `A > 1 && B == 0` 誤寫為 `A > 1 || B == 0`，上述測資 `(2,0,3)` 執行結果依然正確，無法找出 Bug。這證明了 **SC 100% 依然非常薄弱**。
-
-### 1.2.2 IntelliJ Coverage 工具操作步驟
-1.  開啟 `LabDemo` 專案。
-2.  在測試檔案上按右鍵，選擇 **Run 'xxxTest' with Coverage**。
-3.  在 IDE 右側的 Coverage 視窗中，可檢視 Class、Method、Line、Branch 的覆蓋率。
-4.  在程式碼編輯器左側的側邊欄中：
-    *   **綠色**：表示該行已被完全執行。
-    *   **紅色**：表示該行未被執行。
-    *   **黃色（黃色鑽石）**：表示分支未被完全執行（部分覆蓋）。
-
----
-
-## 🧪 1.3 實作練習 (Lab)
-
-### 📋 Lab 1: Triangle 三角形測試與覆蓋度分析
-1.  開啟待測檔案 [Triangle.java](../../src/main/java/u06_coverage/Triangle.java)。
-2.  在 `src/test/java/u06_coverage/` 目錄下檢視或執行測試類別 [TriangleCoverageTest.java](../../src/test/java/u06_coverage/TriangleCoverageTest.java)。
-3.  使用 IntelliJ 的 **Run with Coverage** 檢驗測試涵蓋度：
-    *   說明 Class、Method、Line、Branch 涵蓋率的實質意義。
-    *   實務工具（IntelliJ/JaCoCo）中顯示的 Branch 覆蓋率，和講義中學術定義的「條件涵蓋度」與「分支涵蓋度」有何差異？
-4.  補充測試案例，直到達到 **Branch Coverage 100%**。
-5.  若發現某些分支無論如何都無法達到 100% 覆蓋，請分析其原因（是否為等價邏輯或死碼），並嘗試改善。
-
-### 📋 Lab 2: Binary Search 二元搜尋
-1.  開啟待測檔案 [BinarySearch.java](../../src/main/java/u06_coverage/BinarySearch.java)。
-2.  在 `src/test/java/u06_coverage/` 目錄下檢視或執行測試類別 [BinarySearchCoverageTest.java](../../src/test/java/u06_coverage/BinarySearchCoverageTest.java)。
-3.  設計測試案例，並使用 Coverage 工具檢驗。逐步添加測資直到 **Line 與 Branch 覆蓋率達到 100%**。
-
-### 📋 Lab 3: Loan Calculator 貸款利率計算
-考慮以下貸款利率計算規則：
-> 基礎利率為 5%。
-> *   貸款年限超過 10 年折扣 0.5%，超過 20 年折扣 1%。
-> *   若貸款金額超過 500 萬，每多 100 萬減少 0.1%。
-> *   若申請者為青年則減少 1%。
-> *   若已婚則再減少 0.5%。
-> *   利率最低為 2%。
-
-1.  開啟待測檔案 [LoanCalculator.java](../../src/main/java/u05_combinatorial/pair/LoanCalculator.java)。
-2.  分別設計三個測試案例集：
-    *   **集合 A**：滿足 Weak Coverage (SC100)。
-    *   **集合 B**：滿足 All-Pair Coverage（全成對測試）。
-    *   **集合 C**：滿足 Strong Coverage (BC100)。
-3.  執行並記錄這三個測試案例集在 IntelliJ/JaCoCo 中所得到的實際 Branch Coverage，並分析其效益差異。
-
----
-
-# PART 2: AI 輔助白箱測試 (AI-Assisted White Box Testing)
-
-## 📖 2.1 教學與核心觀念 (AI-Assisted Tutorial)
-
-在大型系統中，為了提升幾趴的覆蓋率，工程師往往要花費數小時去追蹤複雜的控制流與輸入參數關係。AI 在此處能扮演強大的「補彈助手」：
-1.  **控制流反推輸入**：當 JaCoCo 指出某個深層的分支（例如紅色或黃色區塊）未被覆蓋時，可將該方法程式碼交給 AI，並詢問：「要執行到第 X 行的 `else` 分支，輸入參數應滿足什麼條件？」
-2.  **變異測試與等價變異體識別**：當 PIT 變異測試框架回報有 Mutant 存活時，AI 能協助比對變異後程式碼與原程式碼的語意，判斷其是否為「等價變異體 (Equivalent Mutant)」。
-
-> [!IMPORTANT]
-> **安全防線（Oracle 審查）**：
-> AI 生成測試案例時，只會根據目前的程式碼「合理化現有行為」。如果原始程式碼有錯誤邏輯，AI 寫出來的 Assert 預期值也會是錯的。工程師必須手動校對斷言的正確性。
-
----
-
-## 💻 2.2 AI 輔助範例展示 (AI-Assisted Demo)
-
-### 2.2.1 案例背景
-我們有一段成績計算程式碼，覆蓋率工具回報第 8 行的 `else` 分支未執行：
-```java
-1: public double computeAverage(int[] grade) {
-2:     int sum = 0, valid = 0, index = 0;
-3:     while (index < grade.length) {
-4:         if (grade[index] >= 0 && grade[index] <= 100) {
-5:             sum += grade[index];
-6:             valid++;
-7:         } else {
-8:             System.out.println("成績範圍錯誤"); // 未覆蓋！
-9:         }
-10:        index++;
-11:    }
-12:    return valid > 0 ? (double) sum / valid : -1;
-13: }
-```
-
-### 2.2.2 AI 補彈 Prompt 範本
-我們向 AI 送出以下 Prompt：
-> **Prompt**：
-> 「你是單元測試與白箱測試專家。以下是我的待測 Java 程式碼，目前測試覆蓋度工具回報**第 8 行的 else 分支**未執行。請幫我分析控制流，並寫出一個 JUnit 5 測試方法，提供精確的輸入參數以觸發第 8 行的分支。
-> 
-> [貼上 computeAverage 程式碼]」
-
-### 2.2.3 AI 回傳的單元測試
-AI 成功分析出只要 `grade` 陣列中包含小於 0 或大於 100 的數值即可觸發：
-```java
-@Test
-@DisplayName("測試非 0-100 成績以觸發異常分支")
-void testInvalidGradeTriggersElseBranch() {
-    double result = computeAverage(new int[]{90, -5, 80}); // 包含負數
-    assertEquals(85.0, result); // 90+80 / 2 = 85.0
-}
-```
-
----
-
-## 🧪 2.3 AI 輔助實作練習 (AI-Assisted Lab)
-
-### 📋 Lab 4: AI 輔助覆蓋度補彈實戰
-1.  執行 [LoanCalculator.java](../../src/main/java/u05_combinatorial/pair/LoanCalculator.java) 的測試套件。
-2.  若發現分支覆蓋率未達 100%（例如利率下限 2% 的防禦分支未執行，或特定複合條件短路分支未覆蓋）：
-    *   **不要手動推導輸入**。請撰寫一個結構化的 **AI Prompt**，將程式碼與未覆蓋的分支資訊提供給 AI，請它產出能觸發該分支的測試案例。
-    *   **審查與驗證**：將 AI 產出的測試案例加入測試套件，確認覆蓋率是否成功提升至 100%。人工檢查 AI 生成的斷言是否符合貸款規格書（而非盲目合理化錯誤）。
-    *   **繳交要求**：提交你所撰寫的 **AI Prompt**、**AI 生成的原始測試碼**，以及**你審查後修正的最終測試碼**。
-
----
-
-# 🛠️ 附錄：JaCoCo Maven 配置與生命週期指引
-
-<!-- id: sqa-u06-whiteboxtest-ccq1 -->
-## ⚙️ A. POM.xml 設定 (`jacoco-maven-plugin`)
-
-若要自動化產生覆蓋度 HTML 報告，請在專案的 `pom.xml` 中加入以下插件配置：
+### 1.1 `pom.xml` 標準設定
 
 ```xml
 <plugin>
@@ -184,20 +32,145 @@ void testInvalidGradeTriggersElseBranch() {
     </executions>
 </plugin>
 ```
-### 執行步驟：
-1.  在專案根目錄下，開啟終端機執行：
-    ```bash
-    mvn clean test verify
-    ```
-2.  建置成功後，開啟 `target/site/jacoco/index.html` 即可檢視精美的覆蓋度報告。
+
+### 1.2 核心 Execution 與進階設定說明
+
+| 設定項目 | 綁定生命週期 | 實務作用與產出 |
+| :--- | :--- | :--- |
+| **`prepare-agent`** | `initialize`（預設） | 在測試執行前自動注入 JaCoCo Java Agent 探針（Bytecode Instrumentation），將執行軌跡記錄至 `target/jacoco.exec`。 |
+| **`report`** | `verify` | 讀取 `target/jacoco.exec` 與編譯後的 `.class` 檔，自動轉換為可視化的 HTML／XML／CSV 覆蓋率報告（輸出至 `target/site/jacoco/`）。 |
+| **`check`（選用）** | `verify` | 可於 CI/CD 設置品質閘門（Quality Gate），例如規定 `BRANCH` 覆蓋率低於 `80%` 即讓 Build 失敗。 |
+| **`<excludes>`（選用）** | 全域 `<configuration>` | 排除 DTO、設定檔或自動生成碼（如 `**/dto/**`），避免稀釋核心商業邏輯的覆蓋率統計。 |
 
 ---
 
-## 🔄 B. Maven 核心生命週期說明
+## 🚀 PART 2：如何執行覆蓋率測試（IntelliJ vs. Maven）
 
-*   **clean**：清理先前建置產生的所有檔案（如整個 `target` 目錄）。
-*   **compile**：將專案的 `.java` 原始碼編譯成 `.class` 位元組碼。
-*   **test**：使用 JUnit 測試框架執行所有單元測試。
-*   **package**：將編譯後的 class 檔案打包成發布格式（如 `.jar`）。
-*   **verify**：執行整合測試與品質檢查。由於我們的 JaCoCo `report` 綁定在 `verify` 階段，因此在此階段會產出覆蓋度報告。
-*   **install**：將打包好的 JAR 檔安裝至本地 Maven 本地倉庫中，供其他專案引用。
+實務開發中，通常在 **寫程式當下使用 IntelliJ IDEA 即時查看行內覆蓋顏色**，而在 **提交前或 CI 管線使用 Maven CLI 產出完整 JaCoCo HTML 報告**。
+
+### 2.1 方法 A：使用 IntelliJ IDEA 執行（開發階段即時回饋）
+
+1. 在 IntelliJ IDEA 開啟 `LabDemo` 專案，找到目標測試類別（例如 [TriangleCoverageTest.java](../../src/test/java/u06_coverage/TriangleCoverageTest.java)）。
+2. 在測試類別名稱或方法左側點擊執行圖示，選擇 **Run 'TriangleCoverageTest' with Coverage**（或在編輯器按右鍵 ➔ **More Run/Debug ➔ Run with Coverage**）。
+3. 執行完成後，觀察兩個區域：
+   - **右側 Coverage 工具視窗**：即時列出各 Package 與 Class 的 `Class %`、`Method %`、`Line %`、`Branch %`。
+   - **編輯器左側邊欄（Gutter）色條**：
+     - 🟩 **綠色**：該行已完全執行。
+     - 🟥 **紅色**：該行完全未被執行。
+     - 🟨 **黃色**：該行有執行，但部分條件分支未走完（點擊黃色色條可展開各分支命中次數）。
+
+> **💡 建議切換為 JaCoCo Coverage Runner（與 Maven 口徑一致）**：  
+> IntelliJ 預設使用自家的 *IntelliJ IDEA* runner。若希望 IDE 與 Maven 報告的分支計數完全一致，請點擊右上角執行設定 ➔ **Edit Configurations... ➔ Modify options ➔ Code Coverage ➔ Choose coverage runner**，將引擎改為 **JaCoCo**。
+
+---
+
+### 2.2 方法 B：使用 Maven CLI 執行（產出完整 JaCoCo 報告）
+
+請在終端機切換至 `LabDemo/` 目錄後，依需求選擇以下指令：
+
+#### 1. 課堂最常用：只跑「單一測試類別」並立即產出報告（最快）
+```bash
+mvn clean test -Dtest=TriangleCoverageTest jacoco:report
+```
+
+#### 2. 執行整個 `u06_coverage` 單元測試套件並產出報告
+```bash
+mvn clean test -Dtest="u06_coverage.*Test" jacoco:report
+```
+
+#### 3. 執行完整建置生命週期（自動在 `verify` 階段產出報告）
+```bash
+mvn clean verify
+```
+
+#### Maven 常用生命週期與指令對照
+
+| 指令／階段 | 說明 |
+| :--- | :--- |
+| **`clean`** | 清除舊的 `target/` 目錄（包含舊的 `jacoco.exec`，避免殘留前一次測試的覆蓋紀錄造成誤判）。 |
+| **`test`** | 編譯並以 JUnit 5 執行單元測試（`LabDemo/pom.xml` 已預設排除需瀏覽器的 `u08_cucumber` 與 `u09_web`），同時透過 `prepare-agent` 寫入 `target/jacoco.exec`。 |
+| **`jacoco:report`** | 立即根據 `target/jacoco.exec` 產出 HTML 報告至 `target/site/jacoco/index.html`，不需跑完後續 `package`／`verify`。 |
+| **`verify`** | 依序執行 `compile ➔ test ➔ package ➔ verify`，並自動觸發 `pom.xml` 中綁定於 `verify` 的 JaCoCo `report` 與 PMD 檢查。 |
+
+---
+
+## 📊 PART 3：如何判讀 JaCoCo HTML 報告
+
+Maven 執行完成後，使用瀏覽器開啟以下檔案即可檢視互動式報告：
+
+```text
+LabDemo/target/site/jacoco/index.html
+```
+
+報告採四層下鑽結構：**專案總覽 (`Packages`) ➔ 套件 (`Classes`) ➔ 類別 (`Methods`) ➔ 原始碼逐行標註**。
+
+### 3.1 總覽表格欄位判讀
+
+| 報告欄位 | 英文原名 | 判讀重點 |
+| :--- | :--- | :--- |
+| **Element** | 元素名稱 | 套件、類別或方法名稱，點擊可逐層往下展開至原始碼。 |
+| **Missed Instructions / Cov.** | 未覆蓋位元組碼指令 | 最細粒度的覆蓋率（對應近似敘述涵蓋度）；長條圖**紅色＝未覆蓋、綠色＝已覆蓋**。 |
+| **Missed Branches / Cov.** | 未覆蓋分支數與比例 | **白箱測試最關鍵指標**，統計所有 `if`、`else`、`switch`、三元運算子及 `&&`／`||` 的位元組碼分支。 |
+| **Missed / Cxty** | 圈複雜度 (Cyclomatic Complexity) | 顯示該方法的 McCabe 圈複雜度 `v(G)`，以及尚未覆蓋到的獨立路徑數。 |
+| **Missed / Lines** | 行覆蓋率 (Line Coverage) | 原始碼中被執行到的可執行行數比例。 |
+| **Missed / Methods & Classes** | 方法／類別覆蓋率 | 至少被呼叫過一次的方法與類別數量（注意：工具類別的預設建構子若未測會顯示 Missed）。 |
+
+### 3.2 原始碼逐行色塊與「菱形」標記判讀
+
+點進某個類別（例如 `u06_coverage ➔ Triangle ➔ getTriangleType(...)`）後，每一行原始碼左側與背景會有三種標記：
+
+| 標記與顏色 | 狀態意義 | 實務處理動作 |
+| :--- | :--- | :--- |
+| 🟩 **綠底＋綠菱形** | **完全覆蓋 (Fully Covered)**：該行所有指令與所有條件分支皆已執行。 | 確認斷言（Oracle）是否嚴謹，可進一步用 PITest 檢驗變異分數。 |
+| 🟥 **紅底＋紅菱形** | **完全未覆蓋 (Not Covered)**：該行完全沒有被任何測試案例執行到。 | 立即補寫測試案例觸發該條路徑，或檢查是否為無效死碼（Dead Code）。 |
+| 🟨 **黃底＋黃色菱形** | **部分覆蓋 (Partly Covered)**：該行有執行，但尚有部分分支未走到。 | **將滑鼠懸停在黃色菱形上**，JaCoCo 會提示例如 `2 of 6 branches missed`，據此反推缺少的真假組合！ |
+
+#### 實戰截圖範例：`Triangle.java` JaCoCo 逐行覆蓋率報告
+
+![Triangle.java JaCoCo 覆蓋率報告](img/jacoco_triangle_report.jpg)
+
+- **第 14 行與第 24 行（🟩 綠菱形）**：所有子條件的 True／False 分支皆已 100% 覆蓋。
+- **第 19 行（🟨 黃色菱形）**：`if (a == b && b == c && a == c)` 顯示黃色菱形，因為當 `a == b` 與 `b == c` 皆為 True 時，依等號遞移律 `a == c` 恆為 True（False 分支為不可達之冗餘死分支）。
+- **第 10 行（🟥 紅底）**：靜態工具類別 `Triangle` 未建立物件實例，因此編譯器自動產生的預設建構子顯示未覆蓋。
+
+### 3.3 實務必知：為何 `if (A && B)` 在 JaCoCo 顯示 4 個分支？
+
+- **JaCoCo 是在 JVM Bytecode（位元組碼）層級統計分支**，而非單純看原始碼有幾個 `if`。
+- Java 編譯器為了實現**短路求值（Short-circuit Evaluation）**，會將複合條件 `if (A && B)` 拆成兩個條件跳轉指令：
+  1. 判斷 `A` 為 True 或 False（2 個分支；若 `A=false` 直接短路跳出）。
+  2. 判斷 `B` 為 True 或 False（2 個分支）。
+- 因此，若你的測試只測了 `(A=false)` 與 `(A=true, B=true)`，JaCoCo 會回報 **Branch Coverage = 75%（1 of 4 branches missed）** 並標示**黃色菱形**——你必須補上 `(A=true, B=false)` 才能把黃色菱形消滅成綠色！
+
+---
+
+## 🧪 PART 4：課堂實作練習 (Hands-on Labs)
+
+### 📋 Lab 1：Triangle 三角形覆蓋率分析與「消滅黃色菱形」
+1. 開啟待測程式 [Triangle.java](../../src/main/java/u06_coverage/Triangle.java) 與測試類別 [TriangleCoverageTest.java](../../src/test/java/u06_coverage/TriangleCoverageTest.java)。
+2. 執行以下指令產生初始報告並開啟 `target/site/jacoco/index.html`：
+   ```bash
+   mvn clean test -Dtest=TriangleCoverageTest jacoco:report
+   ```
+3. 點進 `u06_coverage ➔ Triangle`，記錄初始的 **Instructions**、**Branches** 與 **Lines** 覆蓋率，並將滑鼠移到所有**黃色菱形**上觀察缺少哪些分支。
+4. 補充測試案例，嘗試將 **Branch Coverage 提升至 100%**。
+5. **思考題**：若發現某個條件（例如 `a == b && b == c && a == c` 中的第三項）無論如何都無法讓黃色菱形變綠，請分析原因（是否屬於邏輯冗餘／不可達分支），並說明如何重構消除。
+
+### 📋 Lab 2：Binary Search 二元搜尋覆蓋率實戰
+1. 開啟 [BinarySearch.java](../../src/main/java/u06_coverage/BinarySearch.java) 與 [BinarySearchCoverageTest.java](../../src/test/java/u06_coverage/BinarySearchCoverageTest.java)。
+2. 使用 IntelliJ **Run with Coverage**（或 `mvn clean test -Dtest=BinarySearchCoverageTest jacoco:report`）檢視 `while` 迴圈與 `if / else if / else` 各分支覆蓋狀態。
+3. 逐步補充測資（如命中中間、向左搜尋、向右搜尋、目標不存在、空陣列），直到 **Line 與 Branch 覆蓋率雙雙達到 100%**。
+
+### 📋 Lab 3：Loan Calculator 多測試集覆蓋率效益對照
+針對 [LoanCalculator.java](../../src/main/java/u05_combinatorial/pair/LoanCalculator.java) 的貸款利率規則（基礎 5%、年限 >10 折 0.5% / >20 折 1%、金額 >500 萬每多 100 萬折 0.1%、青年折 1%、已婚折 0.5%、最低下限 2%）：
+1. 分別建立三組測試案例集：
+   - **集合 A**：滿足 Weak Coverage（SC 100%）。
+   - **集合 B**：滿足 All-Pairs（全成對組合）。
+   - **集合 C**：滿足 Strong / Branch 100%。
+2. 透過 JaCoCo 報告比較三組測試集的 **案例數** 與 **實際 Branch Coverage %**，分析成本與覆蓋效益。
+
+### 📋 Lab 4：AI 輔助覆蓋率「補彈」與 Oracle 審查
+1. 挑選 Lab 1～Lab 3 中 JaCoCo 回報仍有**紅行或黃色菱形**的方法，將程式碼與 JaCoCo 的未覆蓋提示（例如 `Line 16: 1 of 6 branches missed`）貼給 AI：
+   > **Prompt 範本**：  
+   > 「你是 Java 單元測試與白箱測試專家。以下程式碼經 JaCoCo 檢測後，第 X 行顯示 `1 of 4 branches missed`（黃色菱形）。請分析哪一個短路條件分支未被覆蓋，並撰寫對應的 JUnit 5 測試方法。」
+2. 將 AI 產出的測試加入專案，重新執行 `mvn clean test -Dtest=你的測試類 jacoco:report` 確認黃色菱形是否轉綠。
+3. **安全防線（Oracle 審查）**：AI 只會合理化現有程式碼行為；務必人工核對 `assertEquals` 預期結果是否符合業務規格書，並提交你的 **Prompt、AI 原始輸出與人工審查後的最終測試碼**。

@@ -1179,7 +1179,7 @@ public static double calculateInterestRate(
 <div class="two-columns">
 <div class="card">
 
-### 📄 `pom.xml` 插件綁定機制
+### 📄 `pom.xml` 外掛綁定機制
 ```xml
 <plugin>
   <groupId>org.jacoco</groupId>
@@ -1887,21 +1887,21 @@ String getSymbol(int num) {
 
 <!-- header: '6.3 基本路徑測試與複雜度度量' -->
 
-## 🧪 IntelliJ `MetricsReloaded` 複雜度度量實戰 (`LabDemo`)
+## 🧪 程式碼複雜度度量實戰 (`MetricsReloaded` / Antigravity)
 
 <div class="card-deck">
 
-> 💡 📄 [實習手冊](../../lab.html?file=LabDemo/docs/u06_wbtesting/metrics.md) ｜ 🎯 實作任務：在 IntelliJ 安裝 MetricsReloaded 插件，對全專案執行複雜度度量分析！
+> 💡 📄 [實習手冊](../../lab.html?file=LabDemo/docs/u06_wbtesting/metrics.md) ｜ 🎯 實作任務：使用 `MetricsReloaded` 或 Antigravity AI 對專案執行五大複雜度指標度量分析！
 
 <div class="two-columns">
 <div class="card">
 
-##### 🛠️ 啟動掃描與設定 Complexity Metrics Profile
+##### 🛠️ 啟動掃描與選擇 Complexity Metrics Profile
 ![Calculate Metrics](../../LabDemo/docs/img/calculate_metrics.png)
 - **操作步驟**：
-  1. `Settings ➔ Plugins ➔ Marketplace` 搜尋安裝 **`MetricsReloaded`**；
-  2. 在專案按右鍵 `Analyze ➔ Calculate Metrics`；
-  3. 勾選 **`v(G)`、`CogC`、`WMC`、`OCavg`**。
+  1. 在 IntelliJ 專案上按右鍵 `Analyze ➔ Calculate Metrics`；
+  2. 勾選 **`v(G)`、`CogC`、`WMC`、`OCavg`、`LOC`** 開始分析；
+  3. 亦可直接請 **Antigravity** 計算全部 5 項指標並產出 Markdown／HTML 複雜度報告。
 
 </div>
 <div class="card">

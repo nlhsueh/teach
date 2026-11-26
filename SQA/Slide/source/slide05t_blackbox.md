@@ -678,6 +678,120 @@ class CalculatorTest {
 
 <!-- header: '5.3 邊界值分析 (BVA)' -->
 
+## 互動式 BVA 探索器：4n+1、6n+1、5ⁿ、7ⁿ 取樣空間
+
+<div class="bva-interactive-stage">
+<div class="bva-nav-toolbar">
+  <button class="bva-mode-btn is-active" data-bva="norm">1. 一般 BVA (4n + 1)</button>
+  <button class="bva-mode-btn" data-bva="robust">2. 強固 BVA (6n + 1)</button>
+  <button class="bva-mode-btn" data-bva="worst-norm">3. 最壞情況一般 (5ⁿ)</button>
+  <button class="bva-mode-btn" data-bva="worst-robust">4. 最壞情況強固 (7ⁿ)</button>
+</div>
+<div class="bva-content-grid">
+<div class="bva-svg-container">
+<svg viewBox="0 0 480 480" width="440" height="420" style="display: block; max-width: 100%; max-height: 100%;">
+  <rect x="95" y="95" width="290" height="290" fill="#f8fafc" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,4" rx="8" />
+  <rect x="40" y="40" width="400" height="400" fill="none" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="4,4" rx="10" />
+  <line x1="40" y1="240" x2="440" y2="240" stroke="#94a3b8" stroke-width="1.8" />
+  <line x1="240" y1="40" x2="240" y2="440" stroke="#94a3b8" stroke-width="1.8" />
+  <text x="240" y="26" text-anchor="middle" font-size="12" font-weight="800" fill="#0369a1">x₂ (變數 2)</text>
+  <text x="460" y="244" text-anchor="start" font-size="12" font-weight="800" fill="#0369a1">x₁</text>
+  <text x="40" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#e11d48">min-</text>
+  <text x="95" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#0284c7">min</text>
+  <text x="150" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#0284c7">min+</text>
+  <text x="240" y="258" text-anchor="middle" font-size="9" font-weight="800" fill="#0f172a">norm</text>
+  <text x="330" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#0284c7">max-</text>
+  <text x="385" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#0284c7">max</text>
+  <text x="440" y="258" text-anchor="middle" font-size="9" font-weight="700" fill="#e11d48">max+</text>
+  <text x="232" y="444" text-anchor="end" font-size="9" font-weight="700" fill="#e11d48">min-</text>
+  <text x="232" y="389" text-anchor="end" font-size="9" font-weight="700" fill="#0284c7">min</text>
+  <text x="232" y="334" text-anchor="end" font-size="9" font-weight="700" fill="#0284c7">min+</text>
+  <text x="232" y="154" text-anchor="end" font-size="9" font-weight="700" fill="#0284c7">max-</text>
+  <text x="232" y="99" text-anchor="end" font-size="9" font-weight="700" fill="#0284c7">max</text>
+  <text x="232" y="44" text-anchor="end" font-size="9" font-weight="700" fill="#e11d48">max+</text>
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="150" r="6.5" />
+  <circle class="bva-pt is-robust-bva is-dimmed" data-cat="robust-bva" cx="40" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="40" cy="440" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="95" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="95" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="95" cy="150" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="95" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="95" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="95" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="95" cy="440" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="150" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="150" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="150" cy="150" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="150" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="150" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="150" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="150" cy="440" r="6.5" />
+  <circle class="bva-pt is-robust-bva is-dimmed" data-cat="robust-bva" cx="240" cy="40" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="240" cy="95" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="240" cy="150" r="6.5" />
+  <circle class="bva-pt is-nom is-active" data-cat="nom" cx="240" cy="240" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="240" cy="330" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="240" cy="385" r="6.5" />
+  <circle class="bva-pt is-robust-bva is-dimmed" data-cat="robust-bva" cx="240" cy="440" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="330" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="330" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="330" cy="150" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="330" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="330" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="330" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="330" cy="440" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="385" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="385" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="385" cy="150" r="6.5" />
+  <circle class="bva-pt is-norm-bva is-active" data-cat="norm-bva" cx="385" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="385" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-norm is-dimmed" data-cat="worst-norm" cx="385" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="385" cy="440" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="40" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="95" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="150" r="6.5" />
+  <circle class="bva-pt is-robust-bva is-dimmed" data-cat="robust-bva" cx="440" cy="240" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="330" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="385" r="6.5" />
+  <circle class="bva-pt is-worst-robust is-dimmed" data-cat="worst-robust" cx="440" cy="440" r="6.5" />
+</svg>
+</div>
+<div class="bva-info-card" id="bva-info-box">
+  <div class="bva-info-header">
+    <span class="bva-badge-pill bva-badge-blue" id="bva-mode-badge">單一錯誤假設 (Single Fault)</span>
+    <h3 class="bva-title-text" id="bva-mode-title">一般邊界值分析 (Normal BVA)</h3>
+  </div>
+  <div class="bva-stats-row">
+    <div class="bva-stat-box">
+      <div class="bva-stat-label">計算公式</div>
+      <div class="bva-stat-val" id="bva-stat-formula">4n + 1</div>
+    </div>
+    <div class="bva-stat-box">
+      <div class="bva-stat-label">啟用測試點 (n = 2)</div>
+      <div class="bva-stat-val" id="bva-stat-count">9 點</div>
+    </div>
+  </div>
+  <ul class="bva-details-list" id="bva-details-list">
+    <li><strong>最小基線取樣：</strong>沿各軸測試 <code>min, min+, max-, max</code>，同時將其餘變數錨定於 <code>norm</code>。</li>
+    <li><strong>缺陷攔截目標：</strong>以嚴格線性成長成本，捕捉超過 60% 的常見關係運算子差一錯誤 (<code>&lt;</code> vs. <code>&lt;=</code>)。</li>
+    <li><strong>取樣點密度：</strong>最低點數需求（2 變數僅需 <strong>9 點</strong>，3 變數為 13 點）。</li>
+  </ul>
+</div>
+</div>
+</div>
+
+<!--
+二維平面上的這 49 個點代表雙變數完整的邊界取樣空間。在一般 BVA (4n+1) 下，僅點亮沿著各名義軸交會的 9 個十字基準點（最小基線）。切換至強固 BVA (6n+1) 時，外圍 4 個越界端點 (min-, max+) 會亮起紅燈。最壞情況一般測試 (5^n) 會啟用藍色合法框內的全部 25 個點。最後，最壞情況強固測試 (7^n) 則會點亮完整笛卡爾乘積的全部 49 個點。
+-->
+
+---
+
+<!-- header: '5.3 邊界值分析 (BVA)' -->
+
 ## 邊界值測試方法全景總結
 
 <div class="card-deck">
@@ -784,6 +898,75 @@ class CalculatorTest {
 </div>
 </div>
 </div>
+
+---
+
+<!-- header: '5.3 邊界值分析 (BVA)' -->
+
+## 🧩 BVA 互動矩陣遊戲：房貸利率試算引擎 (`Amount × Term`)
+
+<div class="bvag-stage" id="bva-loan-game">
+<div class="bvag-board-card">
+<svg xmlns="http://www.w3.org/2000/svg" id="bvag-svg" viewBox="0 0 490 480" width="430" height="420" style="display: block; max-width: 100%; max-height: 100%;">
+<rect x="95" y="95" width="290" height="290" fill="#f0f9ff" fill-opacity="0.55" stroke="#0284c7" stroke-width="2" stroke-dasharray="6,4" rx="8" />
+<rect x="40" y="40" width="400" height="400" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4,4" rx="10" />
+<line x1="40" y1="240" x2="440" y2="240" stroke="#94a3b8" stroke-width="1.8" />
+<line x1="240" y1="40" x2="240" y2="440" stroke="#94a3b8" stroke-width="1.8" />
+<text x="240" y="20" text-anchor="middle" font-family="sans-serif" font-size="12.5" font-weight="800" fill="#0b3c5d">Y: 貸款年限 (1 至 30 年, 刻度 = 1 yr)</text>
+<text x="240" y="472" text-anchor="middle" font-family="sans-serif" font-size="12.5" font-weight="800" fill="#0b3c5d">X: 貸款金額 (100k 至 10,000k NT$, 刻度 = 1k)</text>
+<text x="40" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#e11d48">99k</text>
+<text x="95" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">100k</text>
+<text x="150" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">101k</text>
+<text x="256" y="256" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#0f172a">5000k</text>
+<text x="330" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">9999k</text>
+<text x="385" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">10000k</text>
+<text x="444" y="258" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="800" fill="#e11d48">10001k</text>
+<text x="231" y="444" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#e11d48">0yr</text>
+<text x="231" y="389" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">1yr</text>
+<text x="231" y="334" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">2yr</text>
+<text x="231" y="233" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#0f172a">15yr</text>
+<text x="231" y="154" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">29yr</text>
+<text x="231" y="99" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#0284c7">30yr</text>
+<text x="231" y="44" text-anchor="end" font-family="monospace" font-size="9.5" font-weight="800" fill="#e11d48">31yr</text>
+<g id="bvag-dots-layer"></g>
+</svg>
+</div>
+<div class="bvag-ctrl-card">
+<div class="bvag-spec-box">
+<strong>[問題規格] 房貸利率試算器 (Mortgage Interest Rate Calculator)：</strong><br/>
+<code>calcRate(amountK, termYears)</code> 依據兩個整數輸入計算借款人的房貸年利率：<br/>
+• <strong>貸款金額 (<code>X</code>)</strong>：接受範圍從 <strong>NT$ 100k</strong> 至 <strong>NT$ 10,000k</strong>（以 <code>1k</code> 為單位；名義中心值 = <code>5000k</code>）。<br/>
+• <strong>貸款年限 (<code>Y</code>)</strong>：接受範圍從 <strong>1 年</strong> 至 <strong>30 年</strong>（以 <code>1 yr</code> 為單位；名義中心值 = <code>15yr</code>）。<br/>
+• 超出上述範圍的數值將被拒絕。請在左側 7×7 網格上推導並點選對應的邊界測試點！
+</div>
+<div class="bvag-mission-box">
+<div class="bvag-round-row">
+<span class="bvag-round-pill" id="bvag-round-pill">挑戰 1 / 4（隨機排序）</span>
+<span class="bvag-stat-pill" id="bvag-score-pill">已過關: 0 / 4 | 已選取: 0 點</span>
+</div>
+<div class="bvag-target-title" id="bvag-target-title">目標策略：載入中...</div>
+<div class="bvag-target-hint">請點擊左側矩陣上的測試點（或使用下方的快速切換輔助按鈕），選出該策略要求的精確測試點集合，接著點擊 <strong>送出答案 (Submit Selection)</strong>！</div>
+</div>
+<div class="bvag-quick-bar">
+<span style="font-size: 11.5px; font-weight: 800; color: #475569;">快速輔助：</span>
+<button type="button" class="bvag-qbtn" data-qact="valid-axes">± 切換合法十字軸</button>
+<button type="button" class="bvag-qbtn" data-qact="outer-tips">± 切換 4 個越界端點</button>
+<button type="button" class="bvag-qbtn" data-qact="valid-box">± 切換內部合法方框</button>
+<button type="button" class="bvag-qbtn" data-qact="all-grid">± 切換全部網格</button>
+<button type="button" class="bvag-qbtn" data-qact="clear">✕ 全部清除</button>
+</div>
+<div class="bvag-action-row">
+<button type="button" class="bvag-btn" id="bvag-btn-submit">送出答案 (Submit Selection)</button>
+<button type="button" class="bvag-btn btn-next" id="bvag-btn-next">下一關挑戰 ➔</button>
+<button type="button" class="bvag-btn btn-reset" id="bvag-btn-reshuffle">↺ 重新洗牌 4 關</button>
+</div>
+<div class="bvag-feedback-box" id="bvag-feedback-msg">請點擊矩陣上的圓點（藍色 = 已選取）以符合上方指定的 BVA 測試策略！</div>
+</div>
+</div>
+
+<!--
+這項四回合互動遊戲能在不直接提示 4n+1 / 6n+1 / 5^n / 7^n 公式的情況下，檢驗學生是否真正理解四種 BVA 策略（獨立型一般 BVA、獨立型強固 BVA、最壞情況一般 BVA 與最壞情況強固 BVA）在幾何取樣上的差異。學生需從房貸利率規格推導出邊界座標，並在 7x7 矩陣中為隨機出題的策略點選出精確的測試點組合。
+-->
 
 ---
 
@@ -962,55 +1145,256 @@ class CalculatorTest {
 
 <!-- header: '5.4 等價類分割測試 (EP)' -->
 
-## Binary Search 實戰等價劃分案例
+## 互動式 EP 探索器：弱涵蓋 vs. 強涵蓋 & 一般 vs. 強固矩陣
 
-<div class="card-deck">
+<div class="ep-interactive-stage">
 
-* > 💡 二元搜尋的等價分割不僅看輸入 Key，更必須深入考量陣列長度與命中位置的等價關係。
+<div class="ep-nav-toolbar">
+  <button class="ep-mode-btn is-active" data-ep="weak-norm">1. 弱一般 EP (Weak Normal)</button>
+  <button class="ep-mode-btn" data-ep="strong-norm">2. 強一般 EP (Strong Normal)</button>
+  <button class="ep-mode-btn" data-ep="weak-robust">3. 弱強固 EP (單一無效原則)</button>
+  <button class="ep-mode-btn" data-ep="strong-robust">4. 強強固 EP (Strong Robust)</button>
+</div>
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="ep-content-grid">
 
-### 📋 結構化等價劃分設計
-- **陣列長度維度 (A)**：
-  - a<sup>0</sup>：空陣列 (長度 0)
-  - a<sup>1</sup>：單一元素陣列
-  - a<sup>*</sup>：多元素陣列（可再細分奇數與偶數）
-- **搜尋結果與位置維度 (F, C)**：
-  - f<sup>t</sup> 找到：命中於頭部 (c<sup>1</sup>)、中間 (c<sup>m</sup>)、尾部 (c<sup>l</sup>)
-  - f<sup>f</sup> 未找到：元素不存在於陣列中
-- **輸入合法性維度 (K)**：
-  - k：合法整數；k!：非整數例外
+<div class="ep-matrix-card">
+  <table class="ep-table">
+    <thead>
+      <tr>
+        <th style="width: 22%;">x₁ \ x₂</th>
+        <th style="width: 19%; color: #e11d48;">I₂,₁ (空字串)</th>
+        <th style="width: 20%; color: #059669;">V₂,₁ (Alpha [A-M])</th>
+        <th style="width: 20%; color: #059669;">V₂,₂ (Beta [N-Z])</th>
+        <th style="width: 19%; color: #e11d48;">I₂,₂ (特殊符號)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th style="color: #e11d48;">I₁,₁ (&lt; 1)</th>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i11_i21">TC₇</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin is-active-pin" data-pin-id="p_i11_v21">TC₄</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i11_v22">TC₈</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i11_i22">TC₉</span></td>
+      </tr>
+      <tr>
+        <th style="color: #059669;">V₁,₁ (1..10)</th>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v11_i21">TC₆</span></td>
+        <td class="is-valid-zone"><span class="ep-pin is-active-pin" data-pin-id="p_v11_v21">TC₁</span></td>
+        <td class="is-valid-zone"><span class="ep-pin" data-pin-id="p_v11_v22">TC₄</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v11_i22">TC₇</span></td>
+      </tr>
+      <tr>
+        <th style="color: #059669;">V₁,₂ (11..20)</th>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v12_i21">TC₁₀</span></td>
+        <td class="is-valid-zone"><span class="ep-pin" data-pin-id="p_v12_v21">TC₅</span></td>
+        <td class="is-valid-zone"><span class="ep-pin is-active-pin" data-pin-id="p_v12_v22">TC₂</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v12_i22">TC₁₁</span></td>
+      </tr>
+      <tr>
+        <th style="color: #059669;">V₁,₃ (21..30)</th>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v13_i21">TC₁₂</span></td>
+        <td class="is-valid-zone"><span class="ep-pin is-active-pin" data-pin-id="p_v13_v21">TC₃</span></td>
+        <td class="is-valid-zone"><span class="ep-pin" data-pin-id="p_v13_v22">TC₆</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_v13_i22">TC₁₃</span></td>
+      </tr>
+      <tr>
+        <th style="color: #e11d48;">I₁,₂ (&gt; 30)</th>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i12_i21">TC₁₄</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i12_v21">TC₅</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i12_v22">TC₁₅</span></td>
+        <td class="is-invalid-zone"><span class="ep-pin is-invalid-pin" data-pin-id="p_i12_i22">TC₁₆</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="ep-info-card" id="ep-info-box">
+  <div class="ep-info-header">
+    <span class="ep-badge-pill ep-badge-green" id="ep-mode-badge">僅合法值 • 單一錯誤假設</span>
+    <h3 class="ep-title-text" id="ep-mode-title">弱一般等價分割 (Weak Normal EP)</h3>
+  </div>
+  
+  <div class="ep-stats-row">
+    <div class="ep-stat-box">
+      <div class="ep-stat-label">計算公式</div>
+      <div class="ep-stat-val" id="ep-stat-formula">max(|P₁|, |P₂|)</div>
+    </div>
+    <div class="ep-stat-box">
+      <div class="ep-stat-label">啟用測試案例</div>
+      <div class="ep-stat-val" id="ep-stat-count">3 個案例</div>
+    </div>
+  </div>
+  
+  <ul class="ep-details-list" id="ep-details-list">
+    <li><strong>最小有效涵蓋：</strong>確保每個變數的每一個有效等價類，至少在一個測試案例中出現。</li>
+    <li><strong>單一錯誤假設：</strong>假設當單一分割區間搭配其他變數的有效值執行時，即可揭露功能性缺陷。</li>
+    <li><strong>執行成本：</strong>最經濟精簡的基準線（<strong>max(3, 2) = 3 個案例</strong>）。</li>
+  </ul>
+</div>
 
 </div>
-<div class="card" data-marpit-fragment>
+</div>
 
-### 🎯 弱涵蓋 8 大代表案例
-- R<sub>1</sub>: 單元素，有找到 (k=7, A=[7])
-- R<sub>2</sub>: 單元素，沒找到 (k=7, A=[8])
-- R<sub>3</sub>: 多元素，命中頭部 (k=7, A=[7, 9, 11])
-- R<sub>4</sub>: 多元素，命中中間 (k=9, A=[7, 9, 11])
-- R<sub>5</sub>: 多元素，命中尾部 (k=11, A=[7, 9, 11])
-- R<sub>6</sub>: 多元素，沒找到 (k=8, A=[7, 9, 11])
-- R<sub>7</sub>: 空陣列，沒找到 (k=7, A=[])
-- R<sub>8</sub>: 非法輸入，拋出例外 (k="abc")
+<!--
+等價分割法涵蓋四種維度策略。在弱一般 EP (Weak Normal) 下，只需 3 個綠色測試案例即可涵蓋每一個有效橫列與直行。強一般 EP (Strong Normal) 則擴展至綠色有效區內的全部 6 種組合。弱強固 EP (Weak Robust) 引入了極為關鍵的「單一無效原則」：4 個紅色測試案例各自在搭配有效同儕值的嚴格隔離條件下測試每一個無效分割（共 7 個案例），防止早期例外中斷遮蔽了次要缺陷。強強固 EP (Strong Robust) 則以暴力笛卡爾乘積測試全部 20 個儲存格。
+-->
 
 ---
 
 <!-- header: '5.4 等價類分割測試 (EP)' -->
 
-## Binary Search 弱涵蓋測試案例規格表
+## EP 實戰案例一 (1/3)：二元搜尋互動追蹤與等價分割維度
 
-| 案例編號 | 涵蓋類別組合 (A, F, C, K) | 測試輸入 (Inputs) | 預期輸出 (Expected Output) | 弱涵蓋驗證目標 (Coverage Target) |
+<div class="bs-interactive-stage">
+
+<div class="bs-trace-card">
+  <div class="bs-top-bar">
+    <div style="display: flex; align-items: center;">
+      <span style="font-size: 13px; font-weight: 800; color: #0b3c5d;">目標搜尋值 (k)：</span>
+      <input type="number" id="bs-input-k" value="35" class="bs-k-input" style="margin: 0 6px;" />
+      <span style="font-size: 11px; font-weight: 700; color: #64748b; margin-right: 4px;">快速預設值：</span>
+      <span class="bs-quick-pill" data-k="3">3 (頭部)</span>
+      <span class="bs-quick-pill" data-k="23">23 (中間)</span>
+      <span class="bs-quick-pill" data-k="35">35</span>
+      <span class="bs-quick-pill" data-k="43">43 (尾部)</span>
+      <span class="bs-quick-pill" data-k="8">8 (未命中)</span>
+    </div>
+    <div>
+      <button class="bs-action-btn" id="bs-btn-step">▶ 下一步</button>
+      <button class="bs-action-btn" id="bs-btn-reset" style="background: #64748b; margin-left: 6px;">↺ 重置</button>
+    </div>
+  </div>
+
+  <div class="bs-status-banner">
+    <span id="bs-status-text">步驟 0：初始搜尋範圍 [0..10]，mid = floor((0+10)/2) = 5 (arr[5] = 23)</span>
+    <span id="bs-status-tag" style="background: #e0f2fe; color: #0369a1; padding: 1px 8px; border-radius: 4px; font-size: 10.5px; font-weight: 800;">就緒</span>
+  </div>
+
+  <div class="bs-array-container" id="bs-array-container">
+    <div class="bs-array-cell" data-idx="0"><span class="bs-cell-idx">0</span><span class="bs-cell-val">3</span><span class="bs-pointer-pill bs-ptr-low">low</span></div>
+    <div class="bs-array-cell" data-idx="1"><span class="bs-cell-idx">1</span><span class="bs-cell-val">7</span></div>
+    <div class="bs-array-cell" data-idx="2"><span class="bs-cell-idx">2</span><span class="bs-cell-val">11</span></div>
+    <div class="bs-array-cell" data-idx="3"><span class="bs-cell-idx">3</span><span class="bs-cell-val">15</span></div>
+    <div class="bs-array-cell" data-idx="4"><span class="bs-cell-idx">4</span><span class="bs-cell-val">19</span></div>
+    <div class="bs-array-cell is-mid" data-idx="5"><span class="bs-cell-idx">5</span><span class="bs-cell-val">23</span><span class="bs-pointer-pill bs-ptr-mid">mid</span></div>
+    <div class="bs-array-cell" data-idx="6"><span class="bs-cell-idx">6</span><span class="bs-cell-val">27</span></div>
+    <div class="bs-array-cell" data-idx="7"><span class="bs-cell-idx">7</span><span class="bs-cell-val">31</span></div>
+    <div class="bs-array-cell" data-idx="8"><span class="bs-cell-idx">8</span><span class="bs-cell-val">35</span></div>
+    <div class="bs-array-cell" data-idx="9"><span class="bs-cell-idx">9</span><span class="bs-cell-val">39</span></div>
+    <div class="bs-array-cell" data-idx="10"><span class="bs-cell-idx">10</span><span class="bs-cell-val">43</span><span class="bs-pointer-pill bs-ptr-high">high</span></div>
+  </div>
+</div>
+
+<div class="two-columns" style="margin-top: 4px;">
+<div class="card" style="padding: 12px 16px;">
+
+### 四大結構化等價分割維度
+- **1. 陣列長度 (Array Length, A)：**
+  - <code>a⁰</code>：空陣列（<code>[]</code>，長度為 0）
+  - <code>a¹</code>：單一元素陣列 (<code>[7]</code>)
+  - <code>a*</code>：多元素已排序陣列 (<code>[3, 7, 11, ...]</code>)
+- **2. 搜尋結果 (Outcome, F) 與 3. 命中位置 (Hit Position, C)：**
+  - <code>fᵗ</code> (找到)：命中於頭部 (<code>c¹</code>)、中間 (<code>cᵐ</code>) 或尾部 (<code>cˡ</code>)
+  - <code>fᶠ</code> (未找到)：目標鍵值不存在於陣列中
+- <strong>4. 輸入合法性 (Validity, K)：</strong> <code>k</code>（合法整數）vs. <code>k!</code>（非法型別或 null）
+
+</div>
+<div class="card" style="padding: 12px 16px;">
+
+### 弱涵蓋策略（8 個代表性測試案例）
+- **為何採用弱涵蓋 (Weak Coverage)？**
+  - 在不引發笛卡爾乘積組合爆炸的前提下，確保全部 4 個維度的每一個分割區間至少在一個測試案例中被執行。
+- **代表性案例分佈：**
+  - <strong>R₁..R₂：</strong>單一元素陣列 (<code>a¹</code>) 的命中 (<code>c¹</code>) 與未命中 (<code>fᶠ</code>)。
+  - <strong>R₃..R₅：</strong>多元素陣列 (<code>a*</code>) 的頭部 (<code>c¹</code>)、中間 (<code>cᵐ</code>) 與尾部 (<code>cˡ</code>) 命中。
+  - <strong>R₆..R₇：</strong>多元素區間空隙未命中 (<code>fᶠ</code>) 與空陣列防禦 (<code>a⁰</code>)。
+  - <strong>R₈：</strong>非法輸入之型別／空值防禦性拒絕 (<code>k!</code>)。
+
+</div>
+</div>
+
+</div>
+
+<!--
+點擊上方互動區「下一步」或輸入任意目標值 k，即可逐步追蹤二元搜尋的折半過程。左下方列出的 4 大結構化分割維度（陣列基數 A、搜尋結果 F、命中位置 C 與輸入合法性 K）完整描繪了輸入與輸出定義域；右下方則透過弱涵蓋策略規劃出 R1..R8 共 8 個代表性測試案例，涵蓋每一個分割區間。
+-->
+
+---
+
+<!-- header: '5.4 等價類分割測試 (EP)' -->
+
+## EP 實戰案例一 (2/3)：二元搜尋弱涵蓋測試規格表
+
+<div class="table-compact">
+
+| 案例編號 | 涵蓋類別組合 (`A, F, C, K`) | 測試輸入 (`k, A`) | 預期輸出 | 弱涵蓋驗證目標 |
 | :---: | :--- | :--- | :--- | :--- |
-| **R<sub>1</sub>** | a<sup>1</sup> × f<sup>t</sup> × c<sup>1</sup> × k | k=7, A=[7] | `index = 0` (命中) | 單元素有找到（同時涵蓋 a<sup>1</sup>, f<sup>t</sup>, c<sup>1</sup>） |
-| **R<sub>2</sub>** | a<sup>1</sup> × f<sup>f</sup> × k | k=7, A=[8] | `index = -1` (未找到) | 單元素沒找到（涵蓋 a<sup>1</sup>, f<sup>f</sup>） |
-| **R<sub>3</sub>** | a<sup>*</sup> × f<sup>t</sup> × c<sup>1</sup> × k | k=7, A=[7, 9, 11] | `index = 0` (命中頭部) | 多元素命中頭部（涵蓋 a<sup>*</sup>, c<sup>1</sup>） |
-| **R<sub>4</sub>** | a<sup>*</sup> × f<sup>t</sup> × c<sup>m</sup> × k | k=9, A=[7, 9, 11] | `index = 1` (命中中間) | 多元素命中中間（涵蓋 a<sup>*</sup>, c<sup>m</sup>） |
-| **R<sub>5</sub>** | a<sup>*</sup> × f<sup>t</sup> × c<sup>l</sup> × k | k=11, A=[7, 9, 11] | `index = 2` (命中尾部) | 多元素命中尾部（涵蓋 a<sup>*</sup>, c<sup>l</sup>） |
-| **R<sub>6</sub>** | a<sup>*</sup> × f<sup>f</sup> × k | k=8, A=[7, 9, 11] | `index = -1` (未找到) | 多元素區間穿透未找到（涵蓋 a<sup>*</sup>, f<sup>f</sup>） |
-| **R<sub>7</sub>** | a<sup>0</sup> × f<sup>f</sup> × k | k=7, A=[] | `index = -1` (未找到) | 空陣列極限防禦（涵蓋邊界 a<sup>0</sup>, f<sup>f</sup>） |
-| **R<sub>8</sub>** | a<sup>*</sup> × k! | k="abc", A=[7, 9] | 拋出 `TypeException` | 非法輸入強固性（涵蓋無效等價類 k!） |
+| **R<sub>1</sub>** | a<sup>1</sup> × f<sup>t</sup> × c<sup>1</sup> × k | `k=7, A=[7]` | `index = 0` | 單元素命中（涵蓋 a<sup>1</sup>, f<sup>t</sup>, c<sup>1</sup>） |
+| **R<sub>2</sub>** | a<sup>1</sup> × f<sup>f</sup> × k | `k=7, A=[8]` | `index = -1` | 單元素未命中（涵蓋 a<sup>1</sup>, f<sup>f</sup>） |
+| **R<sub>3</sub>** | a<sup>*</sup> × f<sup>t</sup> × c<sup>1</sup> × k | `k=7, A=[7, 9, 11]` | `index = 0` | 多元素頭部命中（涵蓋 a<sup>*</sup>, c<sup>1</sup>） |
+| **R<sub>4</sub>** | a<sup>*</sup> × f<sup>t</sup> × c<sup>m</sup> × k | `k=9, A=[7, 9, 11]` | `index = 1` | 多元素中間命中（涵蓋 a<sup>*</sup>, c<sup>m</sup>） |
+| **R<sub>5</sub>** | a<sup>*</sup> × f<sup>t</sup> × c<sup>l</sup> × k | `k=11, A=[7, 9, 11]` | `index = 2` | 多元素尾部命中（涵蓋 a<sup>*</sup>, c<sup>l</sup>） |
+| **R<sub>6</sub>** | a<sup>*</sup> × f<sup>f</sup> × k | `k=8, A=[7, 9, 11]` | `index = -1` | 多元素區間空隙未命中（涵蓋 a<sup>*</sup>, f<sup>f</sup>） |
+| **R<sub>7</sub>** | a<sup>0</sup> × f<sup>f</sup> × k | `k=7, A=[]` | `index = -1` | 空陣列邊界防禦（涵蓋 a<sup>0</sup>, f<sup>f</sup>） |
+| **R<sub>8</sub>** | a<sup>*</sup> × k! | `k="abc", A=[7, 9]` | 拋出 `TypeException` | 非法輸入防禦性拒絕（涵蓋無效等價類 k!） |
+
+</div>
+
+<div class="card" data-marpit-fragment style="margin-top: 8px; padding: 8px 14px; border-left: 4px solid #d97706; background: #fffbeb;">
+
+<h3 style="font-size: 14.5px; margin: 0 0 4px 0; color: #b45309;">關鍵反思與測試設計提問</h3>
+
+1. <strong>問題 1（強涵蓋與無效輸入隔離）：</strong> 為何我們選擇<strong>弱涵蓋 (Weak Coverage)</strong> 而非強涵蓋？無效輸入 <code>k!</code> 是否需要與<strong>完整笛卡爾乘積</strong> (<code>A × F × C</code>) 進行交叉組合？
+2. <strong>問題 2（陣列奇偶性與折半不對稱性）：</strong> 二元搜尋透過整數除法 <code>mid = (low + high) / 2</code> 反覆折半。我們將陣列長度 <code>A</code> 分為三類 (<code>a⁰, a¹, a*</code>) 是否存在差一錯誤 (off-by-one) 盲區？
+
+</div>
+
+<!--
+請檢視上方規格表中的 8 個代表性測試案例 R1 至 R8。僅用 8 個案例，弱等價分割便系統化地測試了每一個有效與無效分割區間。在翻到下一頁看解答前，先思考下方琥珀色方框中的兩個設計提問。
+-->
+
+---
+
+<!-- header: '5.4 等價類分割測試 (EP)' -->
+
+## EP 實戰案例一 (3/3)：二元搜尋測試設計提問深度解答
+
+<div class="card-deck">
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 14px 18px;">
+
+### 解答 1：不可行分割組合與單一無效原則
+- **為何不採用強涵蓋 (Strong Coverage)？**
+  - **不可行組合 (Infeasible Combinations)：** 笛卡爾乘積會產生數學與邏輯上不可能存在的測試組合！
+    - 例如：<code>a⁰ × fᵗ × cᵐ</code> =「在空陣列的中間位置找到目標值」（完全矛盾不可能！）。
+- **無效輸入 <code>k!</code> 需要與完整乘積 (<code>A × F × C</code>) 交叉嗎？**
+  - **絕對不用！那會違反單一無效原則 (Single Invalid Rule)！**
+  - 當傳入 <code>k!</code>（如 <code>null</code> 或型別錯誤）時，方法的<strong>前置防禦衛句 (entry guard clause) 會立即拋出例外</strong>：
+    <code>if (key == null) throw new IllegalArgumentException();</code>
+  - **缺陷遮蔽風險 (Fault Masking Hazard)：** 下游搜尋邏輯**根本不會被執行到**。將 <code>k!</code> 與所有位置交叉只會製造龐大冗餘，並遮蔽真正的演算法缺陷！
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 14px 18px;">
+
+### 解答 2：奇偶同位分割 (Even vs. Odd Parity, aᵒᵈᵈ vs. aᵉᵛᵉⁿ)
+- **整數除法截斷效應 (<code>Math.floor</code>)：**
+  - 整數折半公式：<code>mid = (low + high) / 2</code>。
+  - <strong>奇數長度（如 N = 7）：</strong> <strong>對稱切割</strong>（<code>mid = 3</code>，左半部剩 <strong>3 個元素</strong>、右半部剩 <strong>3 個元素</strong>）。
+  - <strong>偶數長度（如 N = 8）：</strong> <strong>非對稱切割</strong>（<code>mid = 3</code>，左半部剩 <strong>3 個元素</strong>，但右半部有 <strong>4 個元素</strong>！）。
+- **隱藏的邊界差一錯誤 (Off-by-One Bugs)：**
+  - 有瑕疵的中點更新邏輯（如誤寫 <code>high = mid</code> vs. <code>high = mid - 1</code>）在奇數陣列上可能僥倖通過，卻會在偶數陣列上觸發無窮迴圈或陣列越界！
+- **精煉後的陣列長度分割 <code>A</code>：**
+  - <code>a⁰</code>（空陣列）、<code>a¹</code>（單元素）、<code>aᵒᵈᵈ</code>（奇數長度）、<code>aᵉᵛᵉⁿ</code>（偶數長度）。
+
+</div>
+</div>
+</div>
+
+<!--
+這兩個解答揭示了兩項核心軟體工程原則。第一，對彼此相依的維度進行強涵蓋會產生不可能存在的組合；同時，像 k! 這類無效輸入必須在「單一無效原則」下嚴格隔離測試，因為前置例外衛句會直接中斷並遮蔽後續所有程式碼。第二，整數除法會捨去餘數，導致偶數長度陣列發生非對稱切割（左 3 右 4）。將多元素陣列進一步細分為奇數與偶數兩個等價類，能確保攔截折半邊界上的差一錯誤。
+-->
 
 ---
 
@@ -1093,153 +1477,249 @@ class CalculatorTest {
 
 <!-- header: '5.4 等價類分割測試 (EP)' -->
 
-## 迭代修正：重構 NextDate() 等價類劃分
+## EP 實戰案例二 (1/3)：`NextDate(Y, M, D)` 等價分割探索
+
+> **等價分割黃金法則：** 同一等價分割 ↔ 具備完全相同的狀態轉移與下游處理邏輯！
+
+<div class="two-columns">
+<div class="left">
+
+- **年份 (`Year, Y`)：** 輸入範圍 `1812..2030`
+  * <strong>`Y₁`（閏年 Leap Year）：</strong> 可被 4 整除（逢百不閏，逢 400 閏；2 月有 29 天）
+  * <strong>`Y₂`（平年 Common Year）：</strong> 其他所有合法年份（2 月有 28 天）
+- **月份 (`Month, M`)：** 輸入範圍 `1..12`
+  * <strong>`M₁`（30 天小月）：</strong> `{4, 6, 9, 11}`（4、6、9、11 月）
+  * <strong>`M₂`（31 天大月）：</strong> `{1, 3, 5, 7, 8, 10}`（1、3、5、7、8、10 月）
+  * <strong>`M₃`（二月 February）：</strong> `{2}`（受閏平年規則制約）
+  * <strong>`M₄`（十二月 December）：</strong> `{12}`（★ *12/31 會觸發年份進位，與 7 月絕不等價！*）
+
+</div>
+<div class="right">
+
+- **日期 (`Day, D`)：** 輸入範圍 `1..31`
+  * <strong>`D₁` (`1..27`)：</strong> 月中一般遞增（`Day + 1`，月份與年份不變）
+  * <strong>`D₂` (`28`)：</strong> 平年 2 月底邊界（平年進位至 3 月 1 日）
+  * <strong>`D₃` (`29`)：</strong> 閏年 2 月底邊界（閏年進位至 3 月 1 日）
+  * <strong>`D₄` (`30`)：</strong> 30 天小月月底換月（進位至 `Day = 1, Month + 1`）
+  * <strong>`D₅` (`31`)：</strong> 31 天大月月底換月（進位至 `Day = 1, Month + 1`；若為 12 月則跨年）
+
+</div>
+</div>
+
+<!--
+引導學生逐步探索 NextDate(Y, M, D) 的等價分割。先列出年、月、日三大變數，詢問學生該如何劃分定義域；接著點擊逐步揭示子項目：閏年 vs. 平年、大小月分群，以及最關鍵的發現——由 12/31 跨年邊界所催生出的獨立等價類「12 月 (M4)」。
+-->
+
+---
+
+<!-- header: '5.4 等價類分割測試 (EP)' -->
+
+## EP 實戰案例二：`NextDate()` 弱涵蓋打點矩陣表
+
+<div class="table-compact">
+
+| 案例 | 測試輸入 | M<sub>1</sub> | M<sub>2</sub> | M<sub>3</sub> | M<sub>4</sub> | D<sub>1</sub> | D<sub>2</sub> | D<sub>3</sub> | D<sub>4</sub> | D<sub>5</sub> | Y<sub>1</sub> | Y<sub>2</sub> | 預期輸出 | 策略定位與驗證之業務分支 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **TC<sub>1</sub>** | `2023/05/15` | | ● | | | ● | | | | | | ● | `2023/05/16` | **弱涵蓋基底 (1/5)：** 月中一般遞增（`Day + 1`；涵蓋 M<sub>2</sub>, D<sub>1</sub>, Y<sub>2</sub>） |
+| **TC<sub>2</sub>** | `2024/02/28` | | | ● | | | ● | | | | ● | | `2024/02/29` | **弱涵蓋基底 (2/5)：** 閏年 2/28 遞增（`Day + 1`；涵蓋 M<sub>3</sub>, D<sub>2</sub>, Y<sub>1</sub>） |
+| **TC<sub>3</sub>** | `2024/02/29` | | | ● | | | | ● | | | ● | | `2024/03/01` | **弱涵蓋基底 (3/5)：** 閏年 2/29 換月進位（`Month + 1`；涵蓋 D<sub>3</sub>） |
+| **TC<sub>4</sub>** | `2023/04/30` | ● | | | | | | | ● | | | ● | `2023/05/01` | **弱涵蓋基底 (4/5)：** 30 天小月換月進位（`Month + 1`；涵蓋 M<sub>1</sub>, D<sub>4</sub>） |
+| **TC<sub>5</sub>** | `2023/12/31` | | | | ● | | | | | ● | | ● | `2024/01/01` | **弱涵蓋基底 (5/5)：** ★ **12/31 跨年進位 (`Year+1, Month=1`；M<sub>4</sub>, D<sub>5</sub>)** |
+
+</div>
+
+<div class="card" style="margin-top: 8px; padding: 6px 14px; border-left: 4px solid #059669; background: #f0fdf4;">
+<h3 style="font-size: 14px; margin: 0 0 3px 0; color: #166534;">一眼看穿 100% 弱涵蓋 (Weak Coverage) 視覺化檢驗</h3>
+<ul style="margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.38;">
+<li><strong>直行垂直檢視：</strong>沿著 <code>M₁..M₄</code>、<code>D₁..D₅</code> 與 <code>Y₁..Y₂</code> 每一行往下看，可以確認在 <code>TC₁..TC₅</code> 之中，<strong>每一個直行都至少包含一個圓點 (●)</strong>！</li>
+<li><strong>極小化成本：</strong>僅需 <strong>5 個基底測試案例</strong> (<code>max(|M|, |D|, |Y|) = 5</code>) 即 100% 滿足弱涵蓋要求。</li>
+</ul>
+</div>
+
+<div class="card" data-marpit-fragment style="margin-top: 8px; padding: 6px 14px; border-left: 4px solid #d97706; background: #fffbeb;">
+<h3 style="font-size: 14px; margin: 0 0 3px 0; color: #92400e;">關鍵反思與測試設計提問（想一想）</h3>
+<ul style="margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.38;">
+<li><strong>提問 1（弱涵蓋的致命盲區）：</strong>雖然 <code>TC₁..TC₅</code> 已達成 100% 弱涵蓋，但這 5 個案例真的夠嗎？例如：<code>02/28</code> (<code>D₂</code>) 在表中只搭配了<strong>閏年 (<code>Y₁</code>)</strong> 測試，卻完全沒測到<strong>平年 (<code>Y₂</code>) 的 <code>02/28</code></strong>！還有哪些被綁死耦合的組合漏測了？（見下一頁）</li>
+<li><strong>提問 2（為何不直接跑強涵蓋）：</strong>既然弱涵蓋會漏掉跨變數互動，為什麼我們不直接執行全笛卡爾乘積 <strong>100% 強涵蓋 (<code>4 × 5 × 2 = 40</code> 個案例)</strong>？（見下一頁）</li>
+</ul>
+</div>
+
+<!--
+這張打點矩陣將等價分割涵蓋率極其清晰地視覺化呈現。沿著每一個直行往下檢視：每一個等價類都在前 5 個基底測試案例 (TC1..TC5) 中至少擁有一個打點，證實達成 100% 弱涵蓋。然而在課堂上，可先引導學生思考下方琥珀色反思問題卡片：D2 (28 日) 只在 TC2 (2024 閏年) 被測試到，平年的 2 月 28 日卻完全沒測；同理，D5 (31 日) 與 M4 (12 月) 在 TC5 中被綁在一起。下一頁揭曉解答與耦合補強矩陣。
+-->
+
+---
+
+<!-- header: '5.4 等價類分割測試 (EP)' -->
+
+## `NextDate()` 提問解答：耦合補強與不可行日期剪枝
 
 <div class="card-deck">
 
-> 💡 等價類分割黃金法則：**只有後續處理邏輯與狀態轉移完全同構的群組，才能被視為同一等價類！**
+> 5 個弱涵蓋基底上定向加上 **3 個精準耦合補強案例 (`TC₆..TC₈`)**，僅需 **8 個精實案例**即可攔截所有跨變數進位錯誤並避開幽靈日期陷阱。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px; line-height: 1.32;">
+
+### 解答 1：`02/28` 與 `12/31` 的耦合盲區
+- **平年 vs. 閏年的 `02/28` 分歧 (`M₃ × D₂ × Y`)：**
+  - `TC₂ (2024/02/28)` 僅在**閏年 (`Y₁`)** 測試 (`Day + 1 ➔ 02/29`)。
+  - **平年 (`Y₂`)** 的 `02/28` 須**換月進位 (`➔ 03/01`)**！若不補測 `2023/02/28` (`TC₈`)，平年 2 月底換月將是 0% 測試盲區。
+- **解開 `M₄ (12 月)` 與 `D₅ (31 日)` 的綁定：**
+  - `TC₅` 將 `M₄` 與 `D₅` 綁死。須補測**非 12 月 31 日 (`TC₆: 07/31`)** 與 **12 月一般日 (`TC₇: 12/15`)**，攔截 `if (month == 12) year++` 等錯誤！
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px; line-height: 1.32;">
+
+### 解答 2：為何不直接用強涵蓋 (40 個案例)？
+- **組合膨脹與「不存在的幽靈日期」 (`4 × 5 × 2 = 40`)：**
+  - 盲目笛卡爾乘積會產生大量違反曆法約束的**不可行組合 (Infeasible Combinations)**：
+    - `M₃ (2月) × D₄/D₅ (30/31日)` ➔ **`02/30`、`02/31` 不存在！**
+    - `M₁ (小月) × D₅ (31日)` ➔ **`04/31`、`06/31` 不存在！**
+    - `M₃ × D₃ (29日) × Y₂ (平年)` ➔ **`2023/02/29` 無效日期！**
+- **最佳策略 (`5 基底 + 3 耦合 = 8 案例`)：** 保留 `TC₁..TC₅` + 下方 `TC₆..TC₈`。
+
+</div>
+</div>
+
+<div class="table-compact" data-marpit-fragment style="margin-top: 4px; font-size: 0.92em;">
+
+| 補強案例 | 測試輸入 | M<sub>1</sub> | M<sub>2</sub> | M<sub>3</sub> | M<sub>4</sub> | D<sub>1</sub> | D<sub>2</sub> | D<sub>3</sub> | D<sub>4</sub> | D<sub>5</sub> | Y<sub>1</sub> | Y<sub>2</sub> | 預期輸出 | 定向解除之跨變數耦合盲區 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **TC<sub>6</sub>** | `2023/07/31` | | ● | | | | | | | ● | | ● | `2023/08/01` | **耦合補強 (+1)：** 非 12 月之 31 天大月換月進位（`Month + 1`，年份不變） |
+| **TC<sub>7</sub>** | `2023/12/15` | | | | ● | ● | | | | | | ● | `2023/12/16` | **耦合補強 (+2)：** 12 月一般日正常遞增（`Day + 1`，不誤觸跨年進位） |
+| **TC<sub>8</sub>** | `2023/02/28` | | | ● | | | ● | | | | | ● | `2023/03/01` | **耦合補強 (+3)：** ★ **平年 2/28 換月進位至 3/1 (`M₃ × D₂ × Y₂`)** |
+
+</div>
+
+</div>
+
+<!--
+這一頁完整解答了前一頁的兩個關鍵測試設計提問。第一，只測 5 個弱涵蓋案例不夠：因為 TC2 中 2/28 只測了閏年，漏掉平年 2/28 直接換月到 3/1 的分支；同時 TC5 把 12 月與 31 日綁在一起，無法區分「只要是 12 月就跨年」或「只要是 31 日就跨年」的實作錯誤。第二，日曆具有嚴格的跨變數物理約束，盲目展開 4 x 5 x 2 = 40 個強涵蓋案例會產生大量不存在的幽靈日期。因此在 5 個弱涵蓋基底上精準補上 TC6、TC7 與 TC8 三個耦合補強案例，以 5 + 3 = 8 個測試案例即可達到完整業務分支防禦。
+-->
+
+---
+
+<!-- header: '5.4 等價類分割測試 (EP)' -->
+
+## 單一無效原則（缺陷遮蔽）與整合 EP + BVA 三步驟 SOP
+
+<div class="card-deck">
+
+> 積極合併<strong>有效等價類</strong>以極小化測試案例數，但對<strong>無效等價類</strong>則嚴格隔離（每例僅測一個無效值）；將 <strong>BVA 視為 EP 區間內部的邊界特化取樣</strong>。
 
 <div class="two-columns">
 <div class="card" data-marpit-fragment>
 
-### 🔄 月份等價類演進對比
-- **第一版 (未考慮跨年，存在盲區)**：
-  - M<sub>1</sub>: 30 天月 (4, 6, 9, 11)
-  - M<sub>2</sub>: 31 天月 (1, 3, 5, 7, 8, 10, 12) ❌ *(12月混入)*
-  - M<sub>3</sub>: 二月 (特殊處理)
-- **第二版 (獨立 12 月跨年類別)**：
-  - **M<sub>1</sub>**: 30 天月 (4, 6, 9, 11) —— 換月不跨年
-  - **M<sub>2</sub>**: 非 12 月之 31 天月 (1, 3, 5, 7, 8, 10) —— 換月不跨年
-  - **M<sub>4</sub>**: **十二月 (12) —— 獨佔跨年業務邏輯！** ✅
-  - **M<sub>3</sub>**: 二月 (2) —— 閏平年跳動
+### 單一無效原則與缺陷遮蔽 (Fault Masking)
+- **為何絕不能在同一個測試案例中放入多個無效輸入？**
+  - **缺陷遮蔽效應 (Fault Masking Effect)：** 防禦性程式碼會依序檢查前置條件 (`if (pwdTooShort) throw ...; if (badEmail) throw ...;`)。
+  - 若在同一個測試案例中**同時**傳入過短密碼與錯誤信箱，密碼檢查會先行拋出例外中斷，進而**遮蔽了信箱驗證器內部的任何 Bug**！
+- **黃金準則：**
+  - **有效等價類 (Valid Classes)：** 在單一測試案例中盡量打包涵蓋多個有效分割。
+  - **無效等價類 (Invalid Classes)：** **每次嚴格只測試一個無效分割**，其餘所有輸入皆維持有效值！
 
 </div>
 <div class="card" data-marpit-fragment>
 
-### 🎯 軟體工程深刻啟示
-- **等價分割不是「生活日曆常識分類」**：
-  - 日曆常識上 12 月確實是 31 天月；
-  - 但軟體工程上，**程式碼控制流程相異就是不同等價類**！
-- **測試設計反向修補需求漏洞**：
-  - 為等價類設計具體測試資料時，能反向逼迫團隊發現被遺漏的業務邊界（如跨年、跨世紀、千禧蟲 Y2K）。
-  - 將 12 月獨立為 M<sub>4</sub> 後，**測試案例集強迫必須包含跨年測試案例**！
+### 三步驟整合 EP + BVA 標準作業程序（零重複）
+- <strong>破除迷思：</strong> 邊界點（如 `0` 或 `100`）只是等價分割區間的幾何邊緣——<strong>絕不要把邊界切為獨立的等價分割</strong>！
+- **三步驟統一取樣 SOP：**
+  1. <strong>步驟 1（以 EP 劃分區間）：</strong> 辨識所有有效類 (`V`) 與無效類 (`I`)。
+  2. <strong>步驟 2（標記相鄰接縫邊界）：</strong> 定位相鄰類別間的接縫邊緣（注意 `V1` 的 `max+` 恰好等於 `V2` 的 `min`！）。
+  3. <strong>步驟 3（取樣邊界點 + 各有效類 1 個名義值）：</strong> 為每個有效類選取 `{min, nom, max}`，並為外圍無效類各選取 `1` 個緊鄰越界點。
 
 </div>
 </div>
 </div>
+
+<!--
+切勿在同一個測試向量中放入兩個無效值——否則第一個例外檢查就會短路返回，進而遮蔽後續驗證邏輯中的缺陷。同時將 BVA 視為 EP 區間內部的邊界特化取樣，避免將邊界錯切為獨立 Partition。
+-->
 
 ---
 
 <!-- header: '5.4 等價類分割測試 (EP)' -->
 
-## NextDate() 重構後測試資料規格表（混合式涵蓋：5 組弱涵蓋基底 + 3 組耦合補強）
+## EP 與 BVA 整合實戰 (1/2)：游泳池年齡票價規格與 34 點重複陷阱
 
-> 💡 採用「混合式涵蓋 (Hybrid Coverage)」：先以 **5 組弱涵蓋**確保所有等價類至少出現一次，再針對月底與閏平年之**輸出行為分支補齊 3 組局部強涵蓋**！
+<div class="split64">
+<div class="left">
 
-| 案例編號 | 涵蓋策略定位 | 涵蓋類別組合 | 測試輸入 (Y, M, D) | 預期輸出 | 驗證之業務規則與輸出行為分支 |
-| :---: | :---: | :--- | :--- | :--- | :--- |
-| **TC<sub>1</sub>** | **弱涵蓋基底 (1/5)** | **M<sub>2</sub>** × **D<sub>1</sub>** × **Y<sub>2</sub>** | `2023/05/15` | `2023/05/16` | 一般月中遞增 (`Day + 1`，涵蓋 M<sub>2</sub>, D<sub>1</sub>, Y<sub>2</sub>) |
-| **TC<sub>2</sub>** | **弱涵蓋基底 (2/5)** | **M<sub>3</sub>** × **D<sub>2</sub>** × **Y<sub>1</sub>** | `2024/02/28` | `2024/02/29` | 閏年 2/28 未跳月 (`Day + 1`，涵蓋 M<sub>3</sub>, D<sub>2</sub>, Y<sub>1</sub>) |
-| **TC<sub>3</sub>** | **弱涵蓋基底 (3/5)** | M<sub>3</sub> × **D<sub>3</sub>** × Y<sub>1</sub> | `2024/02/29` | `2024/03/01` | 閏年 2/29 月底跳月 (`Month + 1`，涵蓋 D<sub>3</sub>) |
-| **TC<sub>4</sub>** | **弱涵蓋基底 (4/5)** | **M<sub>1</sub>** × **D<sub>4</sub>** × Y<sub>2</sub> | `2023/04/30` | `2023/05/01` | 30 天月月底換月 (`Month + 1`，涵蓋 M<sub>1</sub>, D<sub>4</sub>) |
-| **TC<sub>5</sub>** | **弱涵蓋基底 (5/5)** | **M<sub>4</sub>** × **D<sub>5</sub>** × Y<sub>2</sub> | `2023/12/31` | `2024/01/01` | **★ 12/31 跨年重置 (`Year + 1`，涵蓋 M<sub>4</sub>, D<sub>5</sub>)** |
-| **TC<sub>6</sub>** | **局部強涵蓋補強 (+1)** | M<sub>2</sub> × D<sub>5</sub> × Y<sub>2</sub> | `2023/07/31` | `2023/08/01` | 補強 M<sub>2</sub>×D<sub>5</sub>：31 天月(非12月)月底換月不跨年 |
-| **TC<sub>7</sub>** | **局部強涵蓋補強 (+2)** | M<sub>4</sub> × D<sub>1</sub> × Y<sub>2</sub> | `2023/12/15` | `2023/12/16` | 補強 M<sub>4</sub>×D<sub>1</sub>：12 月一般日正常遞增不誤跨年 |
-| **TC<sub>8</sub>** | **局部強涵蓋補強 (+3)** | M<sub>3</sub> × D<sub>2</sub> × Y<sub>2</sub> | `2023/02/28` | `2023/03/01` | 補強 M<sub>3</sub>×D<sub>2</sub>×Y<sub>2</sub>：平年 2/28 月底直接跳 3/1 |
+<div class="card" style="padding: 8px 14px; border-left: 4px solid #0284c7; background: #f0f9ff; font-size: 13.8px; line-height: 1.36;">
+<h3 style="font-size: 14.8px; margin: 0 0 4px 0; color: #0369a1;">1. 題目規格說明：<code>calcPoolTicket(int age)</code></h3>
+市立游泳池依據整數年齡 <code>age</code>（合法範圍 <code>0..120</code> 歲）分為四段連續票價級距：<br/>
+• <strong>4 個有效級距：</strong> <code>V₁ [0..3]</code> 免費 (<strong>$0</strong>) ｜ <code>V₂ [4..12]</code> 兒童票 (<strong>$100</strong>) ｜ <code>V₃ [13..64]</code> 全票 (<strong>$250</strong>) ｜ <code>V₄ [65..120]</code> 敬老票 (<strong>$120</strong>)。<br/>
+• <strong>2 個外圍無效區間：</strong> <code>I₁ (age &lt; 0)</code> 與 <code>I₂ (age &gt; 120)</code> 一律拋出 <code>IllegalArgumentException</code>。
+</div>
+
+<div class="card" data-marpit-fragment style="margin-top: 8px; padding: 8px 14px; border-left: 4px solid #dc2626; background: #fef2f2; font-size: 13.5px; line-height: 1.35;">
+<h3 style="font-size: 14.5px; margin: 0 0 4px 0; color: #991b1b;">2. 為何死板分開做 EP + BVA 會算出 34 個測試點？</h3>
+• <strong>第一部分 — 單獨做 EP (<code>6</code> 點)：</strong> 6 個等價類各取 1 個代表值：<code>{-5, 2, 8, 30, 80, 130}</code> ➔ <strong>6 點</strong>。<br/>
+• <strong>第二部分 — 4 個有效區間各做 7 點強固 BVA (<code>4 × 7 = 28</code> 點)：</strong> 每段各自取 <code>{min-, min, min+, nom, max-, max, max+}</code> ➔ <strong>28 點</strong>。<br/>
+• <strong>兩者直接相加 = <code>6 + 28 = 34</code> 個點！</strong>
+</div>
+
+<div class="card" data-marpit-fragment style="margin-top: 8px; padding: 8px 14px; border-left: 4px solid #d97706; background: #fffbeb; font-size: 13.2px; line-height: 1.34;">
+<h3 style="font-size: 14.2px; margin: 0 0 3px 0; color: #b45309;">3. 診斷分析：34 點中包含 3 大類、共 20 個重複／冗餘點！</h3>
+1. <strong>相鄰接縫碰撞重複 (<code>-6</code> 點，橘色框)：</strong> <code>V₁</code> 的右邊界與右越界 <code>{3, 4}</code> 剛好就是 <code>V₂</code> 的左越界與左邊界 <code>{3, 4}</code>！同理 <code>12|13</code>、<code>64|65</code> 各被重複測了兩次。<br/>
+2. <strong>EP 與 BVA 重疊 (<code>-6</code> 點，黃色框 ★)：</strong> EP 的 4 個有效代表值 <code>{2,8,30,80}</code> 與 2 個無效類，和 BVA 的 <code>nom</code> 及外圍 <code>min-/max+</code> 重複。<br/>
+3. <strong>區間內部 <code>min+/max-</code> 冗餘 (<code>-8</code> 點，灰虛線框)：</strong> 改採 2 點 BVA 可省去 8 個內部鄰點。
+</div>
+
+</div>
+<div class="right">
+
+![視覺化拆解 34 個死板測試點與 3 大重複陷阱](../../img/ch05/pool_ep_bva_naive34.svg)
+
+</div>
+</div>
+
+<!--
+透過兩頁完整講解游泳池年齡票價案例。第一頁先看題目規格：整數年齡 0 到 120 歲分為 4 個連續有效票價級距（免費 0..3、兒童 4..12、全票 13..64、敬老 65..120），外加小於 0 與大於 120 兩個無效區間。若死板分開做 EP (6 點) 與 4 段 7 點強固 BVA (28 點)，會產生 34 個點，其中包含接縫碰撞 (-6)、EP 與 BVA 重疊 (-6) 與內部鄰點冗餘 (-8) 共 20 個重複點。
+-->
 
 ---
 
 <!-- header: '5.4 等價類分割測試 (EP)' -->
 
-## 實務關鍵法則：單一無效原則與錯誤遮蔽 (Fault Masking)
+## EP 與 BVA 整合實戰 (2/2)：三步驟去重縮減法 (`34 ➔ 14` 點)
 
-<div class="card-deck">
+> 將 <strong>BVA 視為 EP 區間內部的邊界取樣</strong>並於接縫處採用 <strong>2 點 BVA</strong>：每個有效級距取 <strong>`{min, nom, max}` (`4 × 3 = 12` 點) + `2` 個外圍越界點 (`-1, 121`) = `14` 個精確測試點</strong>！
 
-> 💡 設計無效等價類測試案例時的鐵律：**每次測試只允許包含一個無效等價類，其餘欄位必須全部合法！**
+<div class="split64">
+<div class="left">
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="table-compact" style="font-size: 0.9em;">
 
-### 🎭 為什麼禁止多個無效值同時輸入？
-- **錯誤遮蔽效應 (Fault Masking Effect)**：
-  - 現代軟體通常採取「防禦性早退 (Early Exit)」或短路評估。
-  - 當系統遇到第一個非法欄位時，往往立即中斷執行或拋出例外，不再檢查後續欄位。
-- **後果：缺陷被遮蔽隱藏**：
-  - 若「密碼過短」與「信箱格式錯誤」同時輸入，程式在檢查密碼時拋錯中斷，後面的「信箱驗證 Bug」就永遠無法被觸發！
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 📐 有效類 vs. 無效類測試策略對比
-- **有效等價類 (Valid Classes) —— 盡量合併**：
-  - 目標是驗證系統的正常運作路徑。
-  - 每個測試案例應盡可能**涵蓋多個尚未測試的有效等價類**，以最小案例數獲得最高覆蓋。
-- **無效等價類 (Invalid Classes) —— 嚴格隔離**：
-  - 目標是驗證各別錯誤防護與例外處理邏輯。
-  - 每個測試案例**只能包含一個無效等價類**，其餘輸入條件一律設為已知合法值（單一缺陷原則）。
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '5.4 等價類分割測試 (EP)' -->
-
-## EP 與 BVA 整合規劃：邊界不是獨立 Partition
-
-<div class="card-deck">
-
-> 💡 測試架構迷思破解：BVA 不是獨立於 EP 之外的測試，而是「等價類在取樣時的邊界特化策略」。
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 🧭 觀念釐清：邊界絕非獨立 Partition
-- **等價類 (Partition) 的嚴格定義**：
-  - 代表「**具相同商務語意與系統處理邏輯的集合**」（例如：0 ≤ score ≤ 100 是合法成績）。
-- **邊界的幾何本質**：
-  - 邊界（0 與 100）只是等價類集合的「幾何邊緣」，並非另一種業務狀態，**絕不可單獨切成獨立 Partition**。
-- **為什麼要在邊界取樣？**
-  - 等價假設在邊界容易失效（工程師最常犯 `<=` 誤寫成 `<` 的 Off-by-one 符號錯誤）。
-  - BVA 的本質是**取代 EP 在區間內隨機抓值的盲目性**！
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 🛠️ 兩者合體規劃三步 SOP (拒絕重複)
-- **Step 1: 劃分等價類 (EP)**：
-  - 依業務規格完整識別有效類（Valid）與無效類（Invalid）。
-- **Step 2: 標記交接邊界 (Boundaries)**：
-  - 找出相鄰等價類的交接處（如 0, 100）。
-- **Step 3: 統一精準取點 (Integrated Sampling)**：
-  - 每個連續等價類**僅取兩類點**，合而為一：
-    1. **邊界極值 (BVA On/Off-Points)**：如 -1, 0, 100, 101（攔截運算子漏洞）。
-    2. **標稱典型值 (EP Nominal Point)**：如 50（驗證常規核心業務路徑）。
-  - **綜效**：以最少案例**同時 100% 滿足 EP 與 BVA**！
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '5.4 等價類分割測試 (EP)' -->
-
-## EP & BVA 三步合體 SOP 實戰：游泳池年齡票價（避免重複）
-
-> 💡 以 5.3 **游泳池年齡票價 (`0~120` 歲)** 為例：若把 EP (6 類) 與 4 段區間的強固 BVA (4×7=28 點) 分開死板套用，會產生 **34 個高度重複點**；透過三步 SOP 合體去重，僅需 **14 個精準測試點**！
-
-| 1：劃分等價類 | 2：相鄰交界 | 3：統一取點 (邊界 + 標稱) | 預期輸出與「拒絕重複」關鍵解析 |
+| 步驟 1：EP 類別 | 步驟 2：接縫 | 步驟 3：統一取樣 (`14` 點) | 預期輸出與去重縮減方法 |
 | :--- | :---: | :---: | :--- |
-| **I<sub>1</sub> 無效低界 (`age < 0`)** | `-1` \| `0` | **`-1`** *(左越界+I<sub>1</sub>)* | 🚨 `IllegalArgumentException`（兼顧越界與無效類） |
-| **V<sub>1</sub> 免費票 (`0 ≤ age ≤ 3`)** | `0`, `3` | **`0`**(min), **`2`**(nom), **`3`**(max) | `FREE (0元)` — 涵蓋 V<sub>1</sub> 雙邊界與標稱值 |
-| **V<sub>2</sub> 兒童票 (`4 ≤ age ≤ 12`)** | `4`, `12` | **`4`**(min), **`8`**(nom), **`12`**(max) | `CHILD (100元)` — **`4` 即 V<sub>1</sub> 的 `max+`，免重測** |
-| **V<sub>3</sub> 全票 (`13 ≤ age ≤ 64`)** | `13`, `64` | **`13`**(min), **`30`**(nom), **`64`**(max) | `ADULT (250元)` — **`13` 即 V<sub>2</sub> 的 `max+`，免重測** |
-| **V<sub>4</sub> 敬老票 (`65 ≤ age ≤ 120`)** | `65`, `120` | **`65`**(min), **`80`**(nom), **`120`**(max) | `SENIOR (120元)` — **`65` 即 V<sub>3</sub> 的 `max+`，免重測** |
-| **I<sub>2</sub> 無效高界 (`age > 120`)** | `120` \| `121` | **`121`** *(右越界+I<sub>2</sub>)* | 🚨 `IllegalArgumentException`（兼顧越界與無效類） |
+| <strong>I<sub>1</sub> (`age < 0`)</strong> | `-1 \| 0` | <strong>`-1`</strong> *(1 點：`min-` 與 `I₁`)* | `IllegalArgumentException`（合併 BVA `min-` 與 EP `I₁`） |
+| <strong>V<sub>1</sub> (`0..3`)</strong> | `0, 3` | <strong>`0`, `2`, `3`</strong> *(3 點：`min,nom,max`)* | `FREE ($0)` —— `3` 同時自動作為 V<sub>2</sub> 的左越界 `min-`！ |
+| <strong>V<sub>2</sub> (`4..12`)</strong> | `4, 12` | <strong>`4`, `8`, `12`</strong> *(3 點：`min,nom,max`)* | `CHILD ($100)` —— <strong>`4` 即 V<sub>1</sub> 的 `max+`；`12` 即 V<sub>3</sub> 的 `min-`！</strong> |
+| <strong>V<sub>3</sub> (`13..64`)</strong> | `13, 64` | <strong>`13`, `30`, `64`</strong> *(3 點：`min,nom,max`)* | `ADULT ($250)` —— <strong>`13` 即 V<sub>2</sub> 的 `max+`；`64` 即 V<sub>4</sub> 的 `min-`！</strong> |
+| <strong>V<sub>4</sub> (`65..120`)</strong> | `65, 120` | <strong>`65`, `80`, `120`</strong> *(3 點：`min,nom,max`)* | `SENIOR ($120)` —— <strong>`65` 即 V<sub>3</sub> 的 `max+`，零重複取樣！</strong> |
+| <strong>I<sub>2</sub> (`age > 120`)</strong> | `120 \| 121` | <strong>`121`</strong> *(1 點：`max+` 與 `I₂`)* | `IllegalArgumentException`（合併 BVA `max+` 與 EP `I₂`） |
 
-- **為何分開做會重複？** 連續分段規格中，「前一段右越界 (`max+`) 剛好就是後一段左邊界 (`min`)」（如 `3/4`、`12/13`、`64/65`）。
+</div>
+
+<div class="card" style="margin-top: 8px; padding: 8px 14px; border-left: 4px solid #059669; background: #f0fdf4; font-size: 13.2px; line-height: 1.38;">
+<strong>三步驟縮減方法總結 (<code>34 - 20 = 14</code> 個精確測試點)：</strong><br/>
+1. <strong>合併名義值與外圍無效點 (<code>-6</code> 點)：</strong> 以各級距的 <code>nom</code> (<code>2, 8, 30, 80</code>) 直接作為 EP 有效類代表；以外圍越界點 (<code>-1, 121</code>) 直接代表無效類 <code>I₁, I₂</code>。<br/>
+2. <strong>共用內部接縫點 (<code>-6</code> 點) + 採用 2 點 BVA (<code>-8</code> 點)：</strong> 三處接縫 (<code>3|4</code>、<code>12|13</code>、<code>64|65</code>) 左右各取一點，總計 <code>4 × 3 + 2 = 14</code> 點！
+</div>
+
+</div>
+<div class="right">
+
+![三步驟統一 EP + 2 點 BVA 數線示意圖：14 個精確測試點](../../img/ch05/pool_ep_bva_unified14.svg)
+
+</div>
+</div>
+
+<!--
+透過三步驟將 EP 與 BVA 統一整合：每個有效級距取樣 {min, nom, max}，加上外圍無效邊界的 -1 與 121，僅用 14 個測試值便達成 100% EP 與 100% BVA 涵蓋且零重複。
+-->
 
 ---
 
@@ -1314,6 +1794,84 @@ class CalculatorTest {
 </div>
 </div>
 </div>
+
+---
+
+<!-- header: '5.4 等價類分割測試 (EP)' -->
+
+## 🧩 EP & BVA 互動矩陣遊戲：FoodExpress 外送運費引擎挑戰
+
+<div class="fdg-stage" id="fdg-ep-bva-game">
+<div class="fdg-board-card">
+<div class="fdg-board-title">面板 A：5 × 5 EP 等價分割矩陣（<code>Subtotal</code> 小計橫列 × <code>Distance</code> 距離直行）</div>
+<table class="fdg-table" id="fdg-ep-table">
+<thead>
+<tr>
+<th style="width: 20%;">小計 \ 距離</th>
+<th style="width: 16%; color: #fda4af;">I₃: &lt; 1 km<br/>(0 km)</th>
+<th style="width: 16%; color: #86efac;">D₁: 1..3 km<br/>(+$0)</th>
+<th style="width: 16%; color: #86efac;">D₂: 4..8 km<br/>(+$10/km)</th>
+<th style="width: 16%; color: #86efac;">D₃: 9..15 km<br/>(+$50+$20)</th>
+<th style="width: 16%; color: #fda4af;">I₄: &gt; 15 km<br/>(16 km)</th>
+</tr>
+</thead>
+<tbody id="fdg-ep-tbody"></tbody>
+</table>
+<div class="fdg-seam-box">
+<div class="fdg-seam-title">面板 B：<code>Subtotal</code> 小計 BVA 接縫數線（在 BVA 挑戰中點選精確的邊界測試點）</div>
+<div class="fdg-chips-wrap" id="fdg-seam-chips">
+<span class="fdg-seam-chip" data-val="50">$50</span>
+<span class="fdg-seam-chip" data-val="99">$99</span>
+<span class="fdg-seam-chip" data-val="100">$100</span>
+<span class="fdg-seam-chip" data-val="101">$101</span>
+<span class="fdg-seam-chip" data-val="200">$200</span>
+<span class="fdg-seam-chip" data-val="299">$299</span>
+<span class="fdg-seam-chip" data-val="300">$300</span>
+<span class="fdg-seam-chip" data-val="301">$301</span>
+<span class="fdg-seam-chip" data-val="500">$500</span>
+<span class="fdg-seam-chip" data-val="799">$799</span>
+<span class="fdg-seam-chip" data-val="800">$800</span>
+<span class="fdg-seam-chip" data-val="801">$801</span>
+<span class="fdg-seam-chip" data-val="5000">$5000</span>
+<span class="fdg-seam-chip" data-val="9999">$9999</span>
+<span class="fdg-seam-chip" data-val="10000">$10000</span>
+<span class="fdg-seam-chip" data-val="10001">$10001</span>
+</div>
+</div>
+</div>
+<div class="fdg-ctrl-card">
+<div class="bvag-spec-box">
+<strong>[規則回顧] FoodExpress <code>calcFee(subtotal, distanceKm)</code>：</strong><br/>
+• <strong>餐點小計 (<code>NT$</code>)</strong>：合法範圍 <code>100..10000</code>（<code>&lt;100</code> 或 <code>&gt;10000</code> 拒絕）。級距：<strong>V₁</strong> <code>100..299</code> ($60)、<strong>V₂</strong> <code>300..799</code> ($35)、<strong>V₃</strong> <code>800..10000</code> ($0 免基本費)。<br/>
+• <strong>外送距離 (<code>km</code>)</strong>：合法範圍 <code>1..15</code>（<code>&lt;1</code> 或 <code>&gt;15</code> 拒絕）。里程區：<strong>D₁</strong> <code>1..3</code> (+$0)、<strong>D₂</strong> <code>4..8</code> (+$10/km)、<strong>D₃</strong> <code>9..15</code> (+$50+$20/km)。
+</div>
+<div class="bvag-mission-box">
+<div class="bvag-round-row">
+<span class="bvag-round-pill" id="fdg-round-pill">挑戰 1 / 4（隨機排序）</span>
+<span class="bvag-stat-pill" id="fdg-score-pill">已過關: 0 / 4 | 已選取: 0</span>
+</div>
+<div class="bvag-target-title" id="fdg-target-title">目標策略：載入中...</div>
+<div class="bvag-target-hint" id="fdg-target-desc">請點擊面板 A 的矩陣儲存格（或面板 B 的接縫數值標籤）以建構測試套件，完成後點擊 <strong>送出答案 (Submit Selection)</strong>！</div>
+</div>
+<div class="bvag-quick-bar">
+<span style="font-size: 11.5px; font-weight: 800; color: #475569;">快速輔助：</span>
+<button type="button" class="bvag-qbtn" data-fdact="diag3">± 3 個對角線有效格</button>
+<button type="button" class="bvag-qbtn" data-fdact="valid9">± 全部 9 個有效格</button>
+<button type="button" class="bvag-qbtn" data-fdact="iso4">± 4 個隔離無效格</button>
+<button type="button" class="bvag-qbtn" data-fdact="clear">✕ 全部清除</button>
+</div>
+<div class="bvag-action-row">
+<button type="button" class="bvag-btn" id="fdg-btn-submit">送出答案 (Submit Selection)</button>
+<button type="button" class="bvag-btn btn-next" id="fdg-btn-next">下一關挑戰 ➔</button>
+<button type="button" class="bvag-btn btn-reset" id="fdg-btn-reshuffle">↺ 重新洗牌 4 關</button>
+</div>
+<div class="bvag-feedback-box" id="fdg-feedback-msg">請在左側選取儲存格或邊界數值標籤，以符合目標挑戰要求！</div>
+</div>
+</div>
+
+<!--
+這項四關卡互動遊戲結合了等價分割與邊界值分析實戰：讓學生在 5x5 矩陣上親手選取等價分割組合（弱一般 EP、強一般 EP、遵循單一無效原則的弱強固 EP），並在小計數線上選取精確的二點法 On-Off 邊界接縫值（99, 100, 299, 300, 799, 800, 10000, 10001）。系統會針對弱涵蓋自動檢查拉丁方陣正交覆蓋性質，任何合法的弱涵蓋組合都會被判定通過。
+-->
 
 ---
 
@@ -1498,40 +2056,153 @@ class CalculatorTest {
 
 <!-- header: '5.5 全成對組合測試 (Pairwise)' -->
 
-## 演算法步進圖解：以「游泳池收費系統」逐步推導
+## 互動式演算法步進追蹤：Greedy IPO 逐步推導（游泳池收費系統）
 
-<div class="card-deck">
-
-> 💡 將游泳池 3 個參數代入「IPO 基底展開 + Greedy 貪婪計分」，看每一輪如何依條件選出最佳組合！
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 1️⃣ 步驟一：母集合 U (16 個 Pairs) 與選取條件
-- **待覆蓋母集合 U = 6 + 6 + 4 = 16 個 Pairs**：
-  - **T × D (6 組)**：(t<sub>1</sub>..t<sub>3</sub>) × (d<sub>1</sub>, d<sub>2</sub>)
-  - **T × M (6 組)**：(t<sub>1</sub>..t<sub>3</sub>) × (m<sub>1</sub>, m<sub>2</sub>)
-  - **D × M (4 組)**：(d<sub>1</sub>, d<sub>2</sub>) × (m<sub>1</sub>, m<sub>2</sub>)
-- **每一輪的兩大選擇條件 (IPO + Greedy)**：
-  1. **前兩欄 `(T, D)` 依序展開基底**：先列出取值最多的 `T × D` 共 **6 組必備配對** `(t1,d1) ➔ (t1,d2) ➔ ... ➔ (t3,d2)`。
-  2. **第三欄 `M` 貪婪計分 PK**：比較填入 `m1` 與 `m2` 誰能**消去更多「尚未出現過的 Pair」**（高分勝出；平手時依序先選 `m1`）。
-
+<div class="greedy-interactive-stage" id="greedy-explorer">
+<div class="greedy-nav-toolbar">
+  <div class="greedy-step-group">
+    <button class="greedy-step-btn is-active" data-step="1">1. (t₁, d₁)</button>
+    <button class="greedy-step-btn" data-step="2">2. (t₁, d₂)</button>
+    <button class="greedy-step-btn" data-step="3">3. (t₂, d₁)</button>
+    <button class="greedy-step-btn" data-step="4">4. (t₂, d₂)</button>
+    <button class="greedy-step-btn" data-step="5">5. (t₃, d₁)</button>
+    <button class="greedy-step-btn" data-step="6">6. (t₃, d₂)</button>
+  </div>
+  <div style="display: flex; gap: 8px;">
+    <button class="greedy-action-btn" id="greedy-next-btn">下一步 &gt;</button>
+    <button class="greedy-action-btn" id="greedy-reset-btn">重置</button>
+  </div>
 </div>
-<div class="card" data-marpit-fragment>
+<div class="greedy-content-grid">
+  <div class="greedy-card">
+    <div class="greedy-decision-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+        <span style="font-size: 11.5px; font-weight: 800; color: #0284c7;" id="greedy-step-badge">步驟 1 / 6</span>
+        <span style="font-size: 11.5px; font-weight: 700; color: #475569;" id="greedy-base-info">基底：(Time = t₁, Day = d₁)</span>
+      </div>
+      <div class="greedy-eval-row">
+        <div class="greedy-eval-item is-winner" id="greedy-eval-m1">
+          <div class="greedy-eval-name">候選值 m₁ (會員 Member)</div>
+          <div class="greedy-eval-score" id="greedy-score-m1">+3 個新配對</div>
+          <div class="greedy-eval-pairs" id="greedy-pairs-m1">t₁d₁, t₁m₁, d₁m₁</div>
+        </div>
+        <div class="greedy-eval-item" id="greedy-eval-m2">
+          <div class="greedy-eval-name">候選值 m₂ (非會員 Non-Member)</div>
+          <div class="greedy-eval-score" id="greedy-score-m2">+3 個新配對</div>
+          <div class="greedy-eval-pairs" id="greedy-pairs-m2">t₁d₁, t₁m₂, d₁m₂</div>
+        </div>
+      </div>
+      <div class="greedy-winner-banner" id="greedy-winner-banner">
+        <span>[貪婪勝出者]：<strong>m₁</strong> (同分平手決勝)</span>
+        <span style="font-family: 'Fira Code', monospace; font-size: 12.5px;">測試案例：(t₁, d₁, m₁)</span>
+      </div>
+    </div>
+    <div class="greedy-table-wrapper">
+      <table class="greedy-table" id="greedy-trace-table">
+        <thead>
+          <tr>
+            <th>列號</th>
+            <th>基底 (T, D)</th>
+            <th>貪婪計分比對</th>
+            <th>勝出測試案例</th>
+            <th>累計覆蓋配對</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-row="1" class="is-current">
+            <td><strong>1</strong></td>
+            <td>(t₁, d₁)</td>
+            <td>m₁: +3 vs. m₂: +3</td>
+            <td><strong>(t₁, d₁, m₁)</strong></td>
+            <td><strong>3 / 16</strong></td>
+          </tr>
+          <tr data-row="2" class="is-pending">
+            <td><strong>2</strong></td>
+            <td>(t₁, d₂)</td>
+            <td>m₁: +2 vs. m₂: +3</td>
+            <td>(t₁, d₂, m₂)</td>
+            <td>6 / 16</td>
+          </tr>
+          <tr data-row="3" class="is-pending">
+            <td><strong>3</strong></td>
+            <td>(t₂, d₁)</td>
+            <td>m₁: +2 vs. m₂: +3</td>
+            <td>(t₂, d₁, m₂)</td>
+            <td>9 / 16</td>
+          </tr>
+          <tr data-row="4" class="is-pending">
+            <td><strong>4</strong></td>
+            <td>(t₂, d₂)</td>
+            <td>m₁: +3 vs. m₂: +1</td>
+            <td>(t₂, d₂, m₁)</td>
+            <td>12 / 16</td>
+          </tr>
+          <tr data-row="5" class="is-pending">
+            <td><strong>5</strong></td>
+            <td>(t₃, d₁)</td>
+            <td>m₁: +2 vs. m₂: +2</td>
+            <td>(t₃, d₁, m₁)</td>
+            <td>14 / 16</td>
+          </tr>
+          <tr data-row="6" class="is-pending">
+            <td><strong>6</strong></td>
+            <td>(t₃, d₂)</td>
+            <td>m₁: +1 vs. m₂: +2</td>
+            <td>(t₃, d₂, m₂)</td>
+            <td>16 / 16</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="greedy-card greedy-progress-card">
+    <div>
+      <div class="greedy-prog-header">
+        <span>成對覆蓋率 (Pairwise Coverage)</span>
+        <span id="greedy-prog-stat">3 / 16 Pairs (19%)</span>
+      </div>
+      <div class="greedy-prog-bar-bg" style="margin-top: 5px;">
+        <div class="greedy-prog-bar-fill" id="greedy-prog-bar" style="width: 18.75%;"></div>
+      </div>
+    </div>
+    <div class="greedy-pairs-section">
+      <div class="greedy-pairs-title">Time × Day (6 組配對 — 基底值域)</div>
+      <div class="greedy-pairs-tags">
+        <span class="greedy-pair-tag is-new" data-pair="t1d1">t₁d₁</span>
+        <span class="greedy-pair-tag" data-pair="t1d2">t₁d₂</span>
+        <span class="greedy-pair-tag" data-pair="t2d1">t₂d₁</span>
+        <span class="greedy-pair-tag" data-pair="t2d2">t₂d₂</span>
+        <span class="greedy-pair-tag" data-pair="t3d1">t₃d₁</span>
+        <span class="greedy-pair-tag" data-pair="t3d2">t₃d₂</span>
+      </div>
+    </div>
+    <div class="greedy-pairs-section">
+      <div class="greedy-pairs-title">Time × Member (6 組配對)</div>
+      <div class="greedy-pairs-tags">
+        <span class="greedy-pair-tag is-new" data-pair="t1m1">t₁m₁</span>
+        <span class="greedy-pair-tag" data-pair="t1m2">t₁m₂</span>
+        <span class="greedy-pair-tag" data-pair="t2m1">t₂m₁</span>
+        <span class="greedy-pair-tag" data-pair="t2m2">t₂m₂</span>
+        <span class="greedy-pair-tag" data-pair="t3m1">t₃m₁</span>
+        <span class="greedy-pair-tag" data-pair="t3m2">t₃m₂</span>
+      </div>
+    </div>
+    <div class="greedy-pairs-section">
+      <div class="greedy-pairs-title">Day × Member (4 組配對)</div>
+      <div class="greedy-pairs-tags">
+        <span class="greedy-pair-tag is-new" data-pair="d1m1">d₁m₁</span>
+        <span class="greedy-pair-tag" data-pair="d1m2">d₁m₂</span>
+        <span class="greedy-pair-tag" data-pair="d2m1">d₂m₁</span>
+        <span class="greedy-pair-tag" data-pair="d2m2">d₂m₂</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
-### 2️⃣ 步驟二：逐輪 `m1` vs. `m2` 貪婪計分決策表
-| 輪次 | 基底 (T,D) | 候選 `m1` vs. `m2` 新消去 Pair 數比較 | 勝出案例 | 累計 |
-| :---: | :---: | :--- | :---: | :---: |
-| **1** | **(t<sub>1</sub>, d<sub>1</sub>)** | `m1`: **+3** vs `m2`: **+3** *(全未出現，平手先選 m<sub>1</sub>)* | **(t<sub>1</sub>, d<sub>1</sub>, m<sub>1</sub>)** | 3/16 |
-| **2** | **(t<sub>1</sub>, d<sub>2</sub>)** | `m1`: +2 *(t<sub>1</sub>m<sub>1</sub>已重複)* vs **`m2`: +3** *(t<sub>1</sub>d<sub>2</sub>, t<sub>1</sub>m<sub>2</sub>, d<sub>2</sub>m<sub>2</sub>)* | **(t<sub>1</sub>, d<sub>2</sub>, m<sub>2</sub>)** | 6/16 |
-| **3** | **(t<sub>2</sub>, d<sub>1</sub>)** | `m1`: +2 *(d<sub>1</sub>m<sub>1</sub>已重複)* vs **`m2`: +3** *(t<sub>2</sub>d<sub>1</sub>, t<sub>2</sub>m<sub>2</sub>, d<sub>1</sub>m<sub>2</sub>)* | **(t<sub>2</sub>, d<sub>1</sub>, m<sub>2</sub>)** | 9/16 |
-| **4** | **(t<sub>2</sub>, d<sub>2</sub>)** | **`m1`: +3** *(t<sub>2</sub>d<sub>2</sub>, t<sub>2</sub>m<sub>1</sub>, d<sub>2</sub>m<sub>1</sub>)* vs `m2`: +1 *(僅 t<sub>2</sub>d<sub>2</sub>)* | **(t<sub>2</sub>, d<sub>2</sub>, m<sub>1</sub>)** | 12/16 |
-| **5** | **(t<sub>3</sub>, d<sub>1</sub>)** | `m1`: **+2** vs `m2`: **+2** *(D×M已滿，平手先選 m<sub>1</sub>)* | **(t<sub>3</sub>, d<sub>1</sub>, m<sub>1</sub>)** | 14/16 |
-| **6** | **(t<sub>3</sub>, d<sub>2</sub>)** | `m1`: +1 *(t<sub>3</sub>m<sub>1</sub>已重複)* vs **`m2`: +2** *(補齊 t<sub>3</sub>d<sub>2</sub>, t<sub>3</sub>m<sub>2</sub>)* | **(t<sub>3</sub>, d<sub>2</sub>, m<sub>2</sub>)** | **16/16** ✅ |
-
-</div>
-</div>
-</div>
+<!--
+逐步追蹤 IPO + Greedy 演算法：點擊每一列可觀察系統如何根據候選值 m1 與 m2 所能覆蓋的「全新參數配對數」進行計分，並在短短 6 列內逐步達成全部 16 個成對組合的 100% 覆蓋。
+-->
 
 ---
 
@@ -1565,6 +2236,52 @@ class CalculatorTest {
 </div>
 </div>
 </div>
+
+---
+
+<!-- header: '5.5 全成對組合測試 (Pairwise)' -->
+
+## 🧩 Pairwise 互動挑戰：`LoanCalculator` 9 組測試案例（完成 #8 與 #9！）
+
+> <strong>隨堂挑戰：</strong>點擊 `#8` 與 `#9` <strong>右下角 4 個按鈕</strong>切換 `true` ↔ `false` 以補齊所有雙參數配對，完成後按 <strong>Submit</strong>！
+
+<div id="pw-loan-table-quiz-tw">
+<table>
+<thead>
+<tr>
+<th style="width:65px;text-align:center;">案例</th>
+<th style="width:140px;text-align:center;"><code>LoanYears</code> (3)</th>
+<th style="width:120px;text-align:center;"><code>Amount</code> (3)</th>
+<th style="width:130px;text-align:center;"><code>IsYouth</code> (2)</th>
+<th style="width:130px;text-align:center;"><code>IsMarried</code> (2)</th>
+<th style="text-align:left;">已覆蓋之關鍵成對組合 (2-Way Pairs)</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center;"><strong>#1</strong></td><td style="text-align:center;"><code>≤ 10 yr</code> (5)</td><td style="text-align:center;"><code>≤ 5M</code> (4M)</td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>true</code></td><td><code>(≤10, ≤5M)</code>, <code>(≤10, Y=T)</code>, <code>(≤10, M=T)</code>, <code>(≤5M, Y=T)</code>, <code>(≤5M, M=T)</code>, <code>(Y=T, M=T)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#2</strong></td><td style="text-align:center;"><code>≤ 10 yr</code> (5)</td><td style="text-align:center;"><code>6M</code></td><td style="text-align:center;"><code>false</code></td><td style="text-align:center;"><code>false</code></td><td><code>(≤10, 6M)</code>, <code>(≤10, Y=F)</code>, <code>(≤10, M=F)</code>, <code>(6M, Y=F)</code>, <code>(6M, M=F)</code>, <code>(Y=F, M=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#3</strong></td><td style="text-align:center;"><code>≤ 10 yr</code> (5)</td><td style="text-align:center;"><code>10M</code></td><td style="text-align:center;"><code>false</code></td><td style="text-align:center;"><code>true</code></td><td><code>(≤10, 10M)</code>, <code>(10M, Y=F)</code>, <code>(10M, M=T)</code>, <code>(Y=F, M=T)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#4</strong></td><td style="text-align:center;"><code>11..20 yr</code> (15)</td><td style="text-align:center;"><code>≤ 5M</code> (4M)</td><td style="text-align:center;"><code>false</code></td><td style="text-align:center;"><code>true</code></td><td><code>(11..20, ≤5M)</code>, <code>(11..20, Y=F)</code>, <code>(11..20, M=T)</code>, <code>(≤5M, Y=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#5</strong></td><td style="text-align:center;"><code>11..20 yr</code> (15)</td><td style="text-align:center;"><code>6M</code></td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>false</code></td><td><code>(11..20, 6M)</code>, <code>(11..20, Y=T)</code>, <code>(11..20, M=F)</code>, <code>(6M, Y=T)</code>, <code>(Y=T, M=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#6</strong></td><td style="text-align:center;"><code>11..20 yr</code> (15)</td><td style="text-align:center;"><code>10M</code></td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>false</code></td><td><code>(11..20, 10M)</code>, <code>(10M, Y=T)</code>, <code>(10M, M=F)</code></td></tr>
+<tr><td style="text-align:center;"><strong>#7</strong></td><td style="text-align:center;"><code>&gt; 20 yr</code> (25)</td><td style="text-align:center;"><code>≤ 5M</code> (4M)</td><td style="text-align:center;"><code>true</code></td><td style="text-align:center;"><code>false</code></td><td><code>(&gt;20, ≤5M)</code>, <code>(&gt;20, Y=T)</code>, <code>(&gt;20, M=F)</code>, <code>(≤5M, M=F)</code></td></tr>
+<tr style="background:#f0f9ff;"><td style="text-align:center;"><strong>#8</strong></td><td style="text-align:center;"><code>&gt; 20 yr</code> (25)</td><td style="text-align:center;"><code>6M</code></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c8y" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c8m" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td id="pw-clue-8-tw" style="color:#0369a1;font-weight:600;"><code>(&gt;20, 6M)</code> + <em>請觀察 <code>&gt;20</code> 與 <code>6M</code> 還缺哪些配對？</em></td></tr>
+<tr style="background:#f0f9ff;"><td style="text-align:center;"><strong>#9</strong></td><td style="text-align:center;"><code>&gt; 20 yr</code> (25)</td><td style="text-align:center;"><code>10M</code></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c9y" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td style="text-align:center;"><button type="button" class="pw-sw-btn" data-id="c9m" style="min-width:86px;padding:2px 10px;border-radius:6px;border:2px solid #0284c7;background:#e0f2fe;color:#0369a1;font-family:monospace;font-weight:700;font-size:15px;cursor:pointer;">true ⇄</button></td><td id="pw-clue-9-tw" style="color:#0369a1;font-weight:600;"><code>(&gt;20, 10M)</code> + <em>協助補齊剩餘的 <code>&gt;20</code> 配對！</em></td></tr>
+</tbody>
+</table>
+<div style="display:flex;align-items:center;gap:12px;margin-top:8px;">
+<button type="button" id="pw-loan-submit-tw" style="padding:5px 16px;border-radius:6px;border:none;background:#0284c7;color:#fff;font-weight:700;font-size:14.5px;cursor:pointer;">Submit 提交驗證</button>
+<button type="button" id="pw-loan-reset-tw" style="padding:5px 12px;border-radius:6px;border:1px solid #94a3b8;background:#fff;color:#334155;font-weight:600;font-size:13.5px;cursor:pointer;">Reset 重設</button>
+<div id="pw-loan-feedback-tw" style="font-size:14.5px;font-weight:600;color:#1e293b;"></div>
+</div>
+</div>
+
+<!--
+透過檢查案例 #7 之後尚未被覆蓋的雙參數配對來推導案例 #8 與 #9：
+1. LoanYears × Amount (9 組配對)：>20 yr 尚未配過 6M 與 10M，因此 #8、#9 前兩欄分別是 (>20 yr, 6M) 與 (>20 yr, 10M)。
+2. 針對 #8 (>20 yr, 6M)：6M 在 #2 與 #5 都只配過 IsMarried=false，因此 #8 必須設 IsMarried=true，才能補齊 (6M, M=true) 與 (>20, M=true)。
+3. 針對 #8 或 #9：>20 yr 在 #7 只配過 IsYouth=true，因此 #8 或 #9 至少需有一列將 IsYouth 設為 false，即可在 9 組案例內達成 28/28 (100%) 成對覆蓋。
+-->
 
 ---
 
@@ -3711,20 +4428,22 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
       }
     });
 
-    // 2. Enhance each header element across all slides
-    slideSections.forEach(function(sec) {
-      var header = sec.querySelector("header");
-      if (!header || header.dataset.navEnhanced) return;
-      header.dataset.navEnhanced = "true";
-      
-      var title = header.textContent.trim();
-      title = title.replace(/^[◄◀]\s*/, "").replace(/\s*[►▶]$/, "").trim();
-      if (!title) return;
-      
-      header.innerHTML = "";
-      var wrapper = createDropdownWrapper(title);
-      header.appendChild(wrapper);
-    });
+    // 2. Enhance each header element across all slides (skip hidden dropdown DOM during headless PDF print)
+    if (!navigator.webdriver) {
+      slideSections.forEach(function(sec) {
+        var header = sec.querySelector("header");
+        if (!header || header.dataset.navEnhanced) return;
+        header.dataset.navEnhanced = "true";
+        
+        var title = header.textContent.trim();
+        title = title.replace(/^[◄◀]\s*/, "").replace(/\s*[►▶]$/, "").trim();
+        if (!title) return;
+        
+        header.innerHTML = "";
+        var wrapper = createDropdownWrapper(title);
+        header.appendChild(wrapper);
+      });
+    }
 
     // 3. Auto-link and calibrate section items on the Outline slide (Slide 2)
     var secByNum = {};
@@ -3784,7 +4503,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
       if (maxS < 1.0) maxS = 1.0;
       img.style.setProperty("--zoom-scale", maxS.toFixed(3));
     }
-    document.querySelectorAll(".card img:not(.emoji), div.content-figure img:not(.emoji), .card pre, .card marp-pre").forEach(function(img) {
+    document.querySelectorAll(".card img:not(.emoji), div.content-figure img:not(.emoji), div.split64 img:not(.emoji), div.split46 img:not(.emoji), div.split55 img:not(.emoji), .card pre, .card marp-pre").forEach(function(img) {
       if (img.dataset.zoomBound) return;
       img.dataset.zoomBound = "true";
       img.addEventListener("mouseenter", function() { updateImgZoomScale(img); });
@@ -3908,6 +4627,850 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
           });
         });
       });
+    }
+    // 7. Interactive BVA Point Explorer (Section 5.3) - skip during PDF print (initial HTML already rendered)
+    var bvaStage = !navigator.webdriver && document.querySelector(".bva-interactive-stage");
+    if (bvaStage && !bvaStage.dataset.bvaBound) {
+      bvaStage.dataset.bvaBound = "true";
+      var bvaBtns = bvaStage.querySelectorAll(".bva-mode-btn");
+      var bvaPts = bvaStage.querySelectorAll(".bva-pt");
+      var bvaBadge = bvaStage.querySelector("#bva-mode-badge");
+      var bvaTitle = bvaStage.querySelector("#bva-mode-title");
+      var bvaFormula = bvaStage.querySelector("#bva-stat-formula");
+      var bvaCount = bvaStage.querySelector("#bva-stat-count");
+      var bvaDetails = bvaStage.querySelector("#bva-details-list");
+
+      var bvaConfigs = {
+        "norm": {
+          badge: "單一錯誤假設 (Single Fault)",
+          badgeClass: "bva-badge-blue",
+          title: "一般邊界值分析 (Normal BVA)",
+          formula: "4n + 1",
+          count: "9 個測試點",
+          activeCats: ["nom", "norm-bva"],
+          details: [
+            "<strong>最小基線取樣：</strong>固定其他變數為名義中心值 <code>norm</code>，沿各軸測試 <code>min, min+, max-, max</code>。",
+            "<strong>抓錯目標：</strong>以線性成本攔截超過 60% 的關係運算子差一錯誤 (Off-by-One)。",
+            "<strong>取樣密度：</strong>測試點數最精簡（雙變數僅需 <strong>9 點</strong>，三變數 13 點）。"
+          ]
+        },
+        "robust": {
+          badge: "強固邊界防禦 (Robustness)",
+          badgeClass: "bva-badge-red",
+          title: "強固邊界值分析 (Robust BVA)",
+          formula: "6n + 1",
+          count: "13 個測試點",
+          activeCats: ["nom", "norm-bva", "robust-bva"],
+          details: [
+            "<strong>防禦性越界測試：</strong>在各軸兩端外加無效越界點 <code>min-</code> 與 <code>max+</code>。",
+            "<strong>抓錯目標：</strong>驗證系統對超出範圍之非法輸入的例外處理與防禦能力。",
+            "<strong>取樣密度：</strong>外加 4 個軸向越界端點（雙變數共 <strong>13 點</strong>，三變數 19 點）。"
+          ]
+        },
+        "worst-norm": {
+          badge: "多重錯誤耦合 (Multi-Fault)",
+          badgeClass: "bva-badge-amber",
+          title: "最壞情況一般邊界值分析 (Worst-Case Normal)",
+          formula: "5ⁿ",
+          count: "25 個測試點",
+          activeCats: ["nom", "norm-bva", "worst-norm"],
+          details: [
+            "<strong>多變數組合：</strong>揚棄單一錯誤假設，測試所有合法邊界值的完整笛卡爾乘積。",
+            "<strong>抓錯目標：</strong>揪出兩個以上變數同時處於極端邊界時才觸發的耦合缺陷。",
+            "<strong>取樣密度：</strong>填滿內部 5×5 合法網格（雙變數 <strong>25 點</strong>，三變數 125 點）。"
+          ]
+        },
+        "worst-robust": {
+          badge: "完全笛卡爾乘積 (Full Cartesian)",
+          badgeClass: "bva-badge-purple",
+          title: "最壞情況強固邊界值分析 (Worst-Case Robust)",
+          formula: "7ⁿ",
+          count: "49 個測試點",
+          activeCats: ["nom", "norm-bva", "robust-bva", "worst-norm", "worst-robust"],
+          details: [
+            "<strong>窮舉邊界網格：</strong>將所有變數的合法邊界與非法越界點做完全笛卡爾交集。",
+            "<strong>抓錯目標：</strong>適用於航太與車規安全關鍵系統，防範多重越界同時發生的致命失效。",
+            "<strong>取樣密度：</strong>最高密度取樣（雙變數 <strong>49 點</strong>，三變數 343 點）。"
+          ]
+        }
+      };
+
+      bvaBtns.forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          var cfg = bvaConfigs[this.getAttribute("data-bva")];
+          if (!cfg) return;
+          bvaBtns.forEach(function(b) { b.classList.remove("is-active"); });
+          this.classList.add("is-active");
+          bvaPts.forEach(function(pt) {
+            var cat = pt.getAttribute("data-cat");
+            var on = cfg.activeCats.indexOf(cat) !== -1;
+            pt.classList.toggle("is-active", on);
+            pt.classList.toggle("is-dimmed", !on);
+          });
+          if (bvaBadge) {
+            bvaBadge.textContent = cfg.badge;
+            bvaBadge.className = "bva-badge-pill " + cfg.badgeClass;
+          }
+          if (bvaTitle) bvaTitle.textContent = cfg.title;
+          if (bvaFormula) bvaFormula.textContent = cfg.formula;
+          if (bvaCount) bvaCount.textContent = cfg.count;
+          if (bvaDetails) {
+            bvaDetails.innerHTML = cfg.details.map(function(d) { return "<li>" + d + "</li>"; }).join("");
+          }
+        });
+      });
+      var bvaInit = bvaStage.querySelector(".bva-mode-btn.is-active") || bvaBtns[0];
+      if (bvaInit) bvaInit.click();
+    }
+
+    // 8. Interactive BVA 4-Strategy Matrix Dot Game (Section 5.3)
+    var bvaGame = document.getElementById("bva-loan-game");
+    if (bvaGame && !bvaGame.dataset.bvaGameBound) {
+      bvaGame.dataset.bvaGameBound = "true";
+      var dotsLayer = bvaGame.querySelector("#bvag-dots-layer");
+      var roundPill = bvaGame.querySelector("#bvag-round-pill");
+      var scorePill = bvaGame.querySelector("#bvag-score-pill");
+      var targetTitle = bvaGame.querySelector("#bvag-target-title");
+      var feedbackMsg = bvaGame.querySelector("#bvag-feedback-msg");
+      var btnSubmit = bvaGame.querySelector("#bvag-btn-submit");
+      var btnNext = bvaGame.querySelector("#bvag-btn-next");
+      var btnReshuffle = bvaGame.querySelector("#bvag-btn-reshuffle");
+
+      var xs = [40, 95, 150, 240, 330, 385, 440];
+      var ys = [40, 95, 150, 240, 330, 385, 440];
+      var xLabels = ["99k", "100k", "101k", "5000k", "9999k", "10000k", "10001k"];
+      var yLabels = ["31yr", "30yr", "29yr", "15yr", "2yr", "1yr", "0yr"];
+
+      var allDots = [];
+      if (dotsLayer) {
+        dotsLayer.innerHTML = "";
+        for (var ix = 0; ix < 7; ix++) {
+          for (var iy = 0; iy < 7; iy++) {
+            (function(px, py) {
+              var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+              c.setAttribute("cx", String(xs[px]));
+              c.setAttribute("cy", String(ys[py]));
+              c.setAttribute("r", "6.8");
+              c.setAttribute("class", "bvag-pt");
+              c.dataset.ix = String(px);
+              c.dataset.iy = String(py);
+              var isValidX = px >= 1 && px <= 5;
+              var isValidY = py >= 1 && py <= 5;
+              var isAxisX = py === 3;
+              var isAxisY = px === 3;
+              var cat = "worst-robust";
+              if (px === 3 && py === 3) cat = "nom";
+              else if ((isAxisX && isValidX) || (isAxisY && isValidY)) cat = "norm-bva";
+              else if ((isAxisX && !isValidX) || (isAxisY && !isValidY)) cat = "robust-bva";
+              else if (isValidX && isValidY) cat = "worst-norm";
+              c.dataset.cat = cat;
+              var titleEl = document.createElementNS("http://www.w3.org/2000/svg", "title");
+              titleEl.textContent = "Amount = " + xLabels[px] + ", Term = " + yLabels[py];
+              c.appendChild(titleEl);
+              c.addEventListener("click", function(e) {
+                e.stopPropagation();
+                c.classList.remove("is-hit", "is-missed", "is-extra");
+                c.classList.toggle("is-selected");
+                updateBvaGameCounters();
+              });
+              dotsLayer.appendChild(c);
+              allDots.push(c);
+            })(ix, iy);
+          }
+        }
+      }
+
+      var bvaStrategies = [
+        { key: "norm", name: "獨立一般邊界值分析 (Independent Normal BVA — 單一錯誤假設、僅測合法邊界)", cats: ["nom", "norm-bva"] },
+        { key: "robust", name: "獨立強固邊界值分析 (Independent Robust BVA — 單一錯誤假設、含越界防禦)", cats: ["nom", "norm-bva", "robust-bva"] },
+        { key: "worst-norm", name: "最壞情況一般邊界值分析 (Worst-Case Normal BVA — 多重錯誤假設、合法邊界組合)", cats: ["nom", "norm-bva", "worst-norm"] },
+        { key: "worst-robust", name: "最壞情況強固邊界值分析 (Worst-Case Robust BVA — 多重錯誤假設、完整合法與越界網格)", cats: ["nom", "norm-bva", "robust-bva", "worst-norm", "worst-robust"] }
+      ];
+      var bvaOrder = [0, 1, 2, 3];
+      var bvaRoundIdx = 0;
+      var bvaSolved = new Set();
+
+      function shuffleBvaOrder() {
+        bvaOrder = [0, 1, 2, 3];
+        for (var i = bvaOrder.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = bvaOrder[i]; bvaOrder[i] = bvaOrder[j]; bvaOrder[j] = tmp;
+        }
+        bvaRoundIdx = 0;
+        bvaSolved.clear();
+      }
+      function clearBvaSelection() {
+        allDots.forEach(function(d) { d.classList.remove("is-selected", "is-hit", "is-missed", "is-extra"); });
+      }
+      function updateBvaGameCounters() {
+        var selCnt = allDots.filter(function(d) { return d.classList.contains("is-selected"); }).length;
+        if (scorePill) scorePill.textContent = "已過關: " + bvaSolved.size + " / 4 | 已選取: " + selCnt + " 點";
+      }
+      function loadBvaRound() {
+        clearBvaSelection();
+        var strat = bvaStrategies[bvaOrder[bvaRoundIdx]];
+        if (roundPill) roundPill.textContent = "挑戰關卡 " + (bvaRoundIdx + 1) + " / 4（隨機排序）";
+        if (targetTitle && strat) targetTitle.textContent = "目標策略：" + strat.name;
+        if (feedbackMsg) {
+          feedbackMsg.className = "bvag-feedback-box";
+          feedbackMsg.textContent = "請在左方矩陣點選符合上方目標策略的所有邊界測試點，完成後點擊「送出答案」！";
+        }
+        updateBvaGameCounters();
+      }
+
+      bvaGame.querySelectorAll(".bvag-qbtn").forEach(function(qbtn) {
+        qbtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          var act = qbtn.getAttribute("data-qact");
+          allDots.forEach(function(d) { d.classList.remove("is-hit", "is-missed", "is-extra"); });
+          if (act === "clear") {
+            clearBvaSelection();
+          } else {
+            var targetDots = [];
+            if (act === "valid-axes") targetDots = allDots.filter(function(d) { return d.dataset.cat === "nom" || d.dataset.cat === "norm-bva"; });
+            else if (act === "outer-tips") targetDots = allDots.filter(function(d) { return d.dataset.cat === "robust-bva"; });
+            else if (act === "valid-box") targetDots = allDots.filter(function(d) { return ["nom", "norm-bva", "worst-norm"].indexOf(d.dataset.cat) !== -1; });
+            else if (act === "all-grid") targetDots = allDots;
+            var allSel = targetDots.every(function(d) { return d.classList.contains("is-selected"); });
+            targetDots.forEach(function(d) { d.classList.toggle("is-selected", !allSel); });
+          }
+          updateBvaGameCounters();
+        });
+      });
+
+      if (btnSubmit) {
+        btnSubmit.addEventListener("click", function(e) {
+          e.stopPropagation();
+          var strat = bvaStrategies[bvaOrder[bvaRoundIdx]];
+          if (!strat) return;
+          var hits = 0, missed = 0, extra = 0, expectedTotal = 0;
+          allDots.forEach(function(d) {
+            d.classList.remove("is-hit", "is-missed", "is-extra");
+            var shouldSelect = strat.cats.indexOf(d.dataset.cat) !== -1;
+            var isSelected = d.classList.contains("is-selected");
+            if (shouldSelect) expectedTotal++;
+            if (shouldSelect && isSelected) { hits++; d.classList.add("is-hit"); }
+            else if (shouldSelect && !isSelected) { missed++; d.classList.add("is-missed"); }
+            else if (!shouldSelect && isSelected) { extra++; d.classList.add("is-extra"); }
+          });
+          if (missed === 0 && extra === 0) {
+            bvaSolved.add(strat.key);
+            updateBvaGameCounters();
+            if (feedbackMsg) {
+              feedbackMsg.className = "bvag-feedback-box is-win";
+              feedbackMsg.textContent = "[完全正確！] 精準命中全部 " + expectedTotal + " 個邊界測試點！請點擊「下一關挑戰」繼續。";
+            }
+          } else {
+            updateBvaGameCounters();
+            if (feedbackMsg) {
+              feedbackMsg.className = "bvag-feedback-box is-err";
+              feedbackMsg.textContent = "[尚未完全命中] 命中: " + hits + " / " + expectedTotal + " | 漏選 (黃色虛線): " + missed + " | 多選 (紅色): " + extra + "。請調整後重新送出！";
+            }
+          }
+        });
+      }
+      if (btnNext) {
+        btnNext.addEventListener("click", function(e) {
+          e.stopPropagation();
+          bvaRoundIdx = (bvaRoundIdx + 1) % 4;
+          loadBvaRound();
+        });
+      }
+      if (btnReshuffle) {
+        btnReshuffle.addEventListener("click", function(e) {
+          e.stopPropagation();
+          shuffleBvaOrder();
+          loadBvaRound();
+        });
+      }
+      shuffleBvaOrder();
+      loadBvaRound();
+    }
+
+    // 9. Interactive EP Matrix Explorer (Section 5.4) - skip during PDF print (initial HTML already rendered)
+    var epStage = !navigator.webdriver && document.querySelector(".ep-interactive-stage");
+    if (epStage && !epStage.dataset.epBound) {
+      epStage.dataset.epBound = "true";
+      var epBtns = epStage.querySelectorAll(".ep-mode-btn");
+      var epPins = epStage.querySelectorAll(".ep-pin");
+      var epBadge = epStage.querySelector("#ep-mode-badge");
+      var epTitle = epStage.querySelector("#ep-mode-title");
+      var epFormula = epStage.querySelector("#ep-stat-formula");
+      var epCount = epStage.querySelector("#ep-stat-count");
+      var epDetails = epStage.querySelector("#ep-details-list");
+
+      var epConfigs = {
+        "weak-norm": {
+          badge: "僅合法類 • 單一錯誤假設",
+          badgeClass: "ep-badge-green",
+          title: "弱一般等價分割 (Weak Normal EP)",
+          formula: "max(|P₁|, |P₂|)",
+          count: "3 個案例",
+          activePins: ["p_v11_v21", "p_v12_v22", "p_v13_v21"],
+          details: [
+            "<strong>最小合法覆蓋：</strong>確保每個變數的每一個合法等價類皆至少在一個測試案例中出現。",
+            "<strong>單一錯誤假設：</strong>假設功能缺陷由單一分割區獨立觸發，無須窮舉跨變數乘積。",
+            "<strong>測試成本：</strong>最經濟之測試基線（<strong>max(3, 2) = 3 個案例</strong>）。"
+          ]
+        },
+        "strong-norm": {
+          badge: "僅合法類 • 多重錯誤耦合",
+          badgeClass: "ep-badge-blue",
+          title: "強一般等價分割 (Strong Normal EP)",
+          formula: "|P₁| × |P₂|",
+          count: "6 個案例",
+          activePins: ["p_v11_v21", "p_v11_v22", "p_v12_v21", "p_v12_v22", "p_v13_v21", "p_v13_v22"],
+          details: [
+            "<strong>合法類完全笛卡爾乘積：</strong>測試所有合法等價類別之間的全部排列組合。",
+            "<strong>抓錯目標：</strong>攔截不同參數之合法類別相互衝突或耦合時的互動錯誤。",
+            "<strong>測試成本：</strong>隨合法分割數呈乘法增長（<strong>3 × 2 = 6 個案例</strong>）。"
+          ]
+        },
+        "weak-robust": {
+          badge: "單一無效原則 • 例外防禦",
+          badgeClass: "ep-badge-amber",
+          title: "弱強固等價分割 (Weak Robust EP)",
+          formula: "max(|P₁|, |P₂|) + ∑(Invalid)",
+          count: "7 個案例",
+          activePins: ["p_v11_v21", "p_v12_v22", "p_v13_v21", "p_i11_v21", "p_i12_v21", "p_v11_i21", "p_v11_i22"],
+          details: [
+            "<strong>單一無效隔離原則：</strong>每次僅測試一個非法類別，其餘變數一律保持合法值。",
+            "<strong>防範缺陷遮蔽：</strong>嚴禁同時放入兩個非法值，避免第一個例外中斷而遮蔽後續錯誤。",
+            "<strong>測試成本：</strong>線性外加獨立非法案例（<strong>3 合法 + 4 非法 = 7 個案例</strong>）。"
+          ]
+        },
+        "strong-robust": {
+          badge: "完全乘積網格 • 極限強固",
+          badgeClass: "ep-badge-purple",
+          title: "強強固等價分割 (Strong Robust EP)",
+          formula: "(|P₁|+2) × (|P₂|+2)",
+          count: "20 個案例",
+          activePins: "all",
+          details: [
+            "<strong>全分割窮舉網格：</strong>測試所有合法與非法等價類別的笛卡爾乘積組合。",
+            "<strong>多重錯誤防禦：</strong>驗證多個非法輸入同時碰撞時的複合錯誤處理行為。",
+            "<strong>測試成本：</strong>笛卡爾乘積爆炸（<strong>5 × 4 = 20 個案例</strong>）。"
+          ]
+        }
+      };
+
+      epBtns.forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          var cfg = epConfigs[this.getAttribute("data-ep")];
+          if (!cfg) return;
+          epBtns.forEach(function(b) { b.classList.remove("is-active"); });
+          this.classList.add("is-active");
+          epPins.forEach(function(pin) {
+            var id = pin.getAttribute("data-pin-id");
+            var on = cfg.activePins === "all" || cfg.activePins.indexOf(id) !== -1;
+            pin.classList.toggle("is-active-pin", on);
+          });
+          if (epBadge) {
+            epBadge.textContent = cfg.badge;
+            epBadge.className = "ep-badge-pill " + cfg.badgeClass;
+          }
+          if (epTitle) epTitle.textContent = cfg.title;
+          if (epFormula) epFormula.textContent = cfg.formula;
+          if (epCount) epCount.textContent = cfg.count;
+          if (epDetails) {
+            epDetails.innerHTML = cfg.details.map(function(d) { return "<li>" + d + "</li>"; }).join("");
+          }
+        });
+      });
+      var epInit = epStage.querySelector(".ep-mode-btn.is-active") || epBtns[0];
+      if (epInit) epInit.click();
+    }
+
+    // 10. Interactive Binary Search Visualizer (Section 5.4) - skip during PDF print (initial HTML already rendered)
+    var bsStage = !navigator.webdriver && document.querySelector(".bs-interactive-stage");
+    if (bsStage && !bsStage.dataset.bsBound) {
+      bsStage.dataset.bsBound = "true";
+      var inputK = bsStage.querySelector("#bs-input-k");
+      var btnStep = bsStage.querySelector("#bs-btn-step");
+      var btnReset = bsStage.querySelector("#bs-btn-reset");
+      var statusText = bsStage.querySelector("#bs-status-text");
+      var statusTag = bsStage.querySelector("#bs-status-tag");
+      var pills = bsStage.querySelectorAll(".bs-quick-pill");
+      var cells = bsStage.querySelectorAll(".bs-array-cell");
+
+      var bsArr = [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43];
+      var bsMax = bsArr.length - 1;
+      var bsSteps = [];
+      var bsStepIdx = 0;
+
+      function calcBsSteps(k) {
+        var low = 0, high = bsMax, hist = [];
+        while (low <= high) {
+          var mid = Math.floor((low + high) / 2);
+          var val = bsArr[mid];
+          if (val === k) {
+            hist.push({ low: low, high: high, mid: mid, found: true, done: true, tag: "HIT FOUND", tagBg: "#dcfce7", tagColor: "#15803d", text: "成功命中目標值 " + k + "，位於索引 " + mid + "! (arr[" + mid + "] == " + k + ")" });
+            break;
+          } else if (val < k) {
+            hist.push({ low: low, high: high, mid: mid, found: false, done: false, tag: "排除左半部", tagBg: "#e0f2fe", tagColor: "#0369a1", text: "arr[" + mid + "]=" + val + " < " + k + " ➔ 排除左半部 [0.." + mid + "]，更新 low = " + (mid + 1) });
+            low = mid + 1;
+          } else {
+            hist.push({ low: low, high: high, mid: mid, found: false, done: false, tag: "排除右半部", tagBg: "#fef3c7", tagColor: "#b45309", text: "arr[" + mid + "]=" + val + " > " + k + " ➔ 排除右半部 [" + mid + ".." + bsMax + "]，更新 high = " + (mid - 1) });
+            high = mid - 1;
+          }
+        }
+        if (low > high) {
+          hist.push({ low: low, high: high, mid: -1, found: false, done: true, tag: "NOT FOUND", tagBg: "#ffe4e6", tagColor: "#be123c", text: "目標值 " + k + " 不在陣列中！low (" + low + ") > high (" + high + ") ➔ 回傳 -1" });
+        }
+        return hist;
+      }
+
+      function renderBs() {
+        var s = bsSteps[bsStepIdx];
+        if (!s) return;
+        cells.forEach(function(cell, idx) {
+          cell.className = "bs-array-cell";
+          cell.querySelectorAll(".bs-pointer-pill").forEach(function(p) { p.remove(); });
+          if (idx < s.low || idx > s.high) cell.classList.add("is-eliminated");
+          if (s.found && idx === s.mid) cell.classList.add("is-found");
+          else if (idx === s.mid && !s.done) cell.classList.add("is-mid");
+          if (idx === s.low && s.low <= bsMax && s.low >= 0) cell.insertAdjacentHTML("beforeend", '<span class="bs-pointer-pill bs-ptr-low">low</span>');
+          if (idx === s.mid && s.mid >= 0) {
+            var midBg = s.found ? 'style="background:#16a34a;"' : "";
+            var midText = s.found ? "hit!" : "mid";
+            cell.insertAdjacentHTML("beforeend", '<span class="bs-pointer-pill bs-ptr-mid" ' + midBg + ">" + midText + "</span>");
+          }
+          if (idx === s.high && s.high <= bsMax && s.high >= 0) cell.insertAdjacentHTML("beforeend", '<span class="bs-pointer-pill bs-ptr-high">high</span>');
+        });
+        if (statusText) statusText.textContent = "步驟 " + (bsStepIdx + 1) + "/" + bsSteps.length + "：" + s.text;
+        if (statusTag) {
+          statusTag.textContent = s.tag;
+          statusTag.style.background = s.tagBg;
+          statusTag.style.color = s.tagColor;
+        }
+        if (btnStep) {
+          btnStep.textContent = s.done ? "↺ 重新播放" : "▶ 下一步 (" + (bsStepIdx + 2) + "/" + bsSteps.length + ")";
+        }
+      }
+
+      function resetBs() {
+        if (!inputK) return;
+        var v = parseInt(inputK.value, 10);
+        bsSteps = calcBsSteps(isNaN(v) ? 23 : v);
+        bsStepIdx = 0;
+        renderBs();
+      }
+      pills.forEach(function(p) {
+        p.addEventListener("click", function(e) {
+          e.stopPropagation();
+          inputK.value = parseInt(this.getAttribute("data-k"), 10);
+          resetBs();
+        });
+      });
+      if (inputK) {
+        inputK.addEventListener("change", resetBs);
+        inputK.addEventListener("input", resetBs);
+      }
+      if (btnStep) {
+        btnStep.addEventListener("click", function(e) {
+          e.stopPropagation();
+          if (bsSteps[bsStepIdx] && bsSteps[bsStepIdx].done) bsStepIdx = 0;
+          else bsStepIdx = Math.min(bsStepIdx + 1, bsSteps.length - 1);
+          renderBs();
+        });
+      }
+      if (btnReset) {
+        btnReset.addEventListener("click", function(e) {
+          e.stopPropagation();
+          resetBs();
+        });
+      }
+      resetBs();
+    }
+
+    // 11. Interactive FoodExpress EP & BVA Matrix Game (Section 5.4)
+    var fdgGame = document.getElementById("fdg-ep-bva-game");
+    if (fdgGame && !fdgGame.dataset.fdgBound) {
+      fdgGame.dataset.fdgBound = "true";
+      var fdgTbody = fdgGame.querySelector("#fdg-ep-tbody");
+      var seamChips = Array.from(fdgGame.querySelectorAll(".fdg-seam-chip"));
+      var fdgRoundPill = fdgGame.querySelector("#fdg-round-pill");
+      var fdgScorePill = fdgGame.querySelector("#fdg-score-pill");
+      var fdgTargetTitle = fdgGame.querySelector("#fdg-target-title");
+      var fdgTargetDesc = fdgGame.querySelector("#fdg-target-desc");
+      var fdgFeedback = fdgGame.querySelector("#fdg-feedback-msg");
+      var fdgSubmit = fdgGame.querySelector("#fdg-btn-submit");
+      var fdgNext = fdgGame.querySelector("#fdg-btn-next");
+      var fdgReshuffle = fdgGame.querySelector("#fdg-btn-reshuffle");
+
+      var rowHeaders = [
+        { label: "I₁: &lt; 100<br/>($50)", valid: false },
+        { label: "V₁: 100..299<br/>(基本費 $60)", valid: true },
+        { label: "V₂: 300..799<br/>(基本費 $35)", valid: true },
+        { label: "V₃: 800..10000<br/>(免基本費 $0)", valid: true },
+        { label: "I₂: &gt; 10000<br/>($12000)", valid: false }
+      ];
+      var allCells = [];
+      if (fdgTbody) {
+        fdgTbody.innerHTML = "";
+        for (var r = 0; r < 5; r++) {
+          var tr = document.createElement("tr");
+          var th = document.createElement("th");
+          th.innerHTML = rowHeaders[r].label;
+          th.style.color = rowHeaders[r].valid ? "#15803d" : "#be123c";
+          tr.appendChild(th);
+          for (var c = 0; c < 5; c++) {
+            (function(rr, cc) {
+              var td = document.createElement("td");
+              var isVR = rr >= 1 && rr <= 3;
+              var isVC = cc >= 1 && cc <= 3;
+              td.className = "fdg-cell " + (isVR && isVC ? "is-valid-zone" : "is-invalid-zone");
+              td.dataset.r = String(rr);
+              td.dataset.c = String(cc);
+              var dot = document.createElement("span");
+              dot.className = "fdg-dot";
+              dot.textContent = "•";
+              td.appendChild(dot);
+              td.addEventListener("click", function(e) {
+                e.stopPropagation();
+                td.classList.remove("is-hit", "is-missed", "is-extra");
+                td.classList.toggle("is-selected");
+                updateFdgCounters();
+              });
+              tr.appendChild(td);
+              allCells.push(td);
+            })(r, c);
+          }
+          fdgTbody.appendChild(tr);
+        }
+      }
+
+      seamChips.forEach(function(chip) {
+        chip.addEventListener("click", function(e) {
+          e.stopPropagation();
+          chip.classList.remove("is-hit", "is-missed", "is-extra");
+          chip.classList.toggle("is-selected");
+          updateFdgCounters();
+        });
+      });
+
+      var fdgChallenges = [
+        { key: "weak-norm", title: "弱一般等價分割 (Weak Normal EP — 最小合法分割覆蓋)", desc: "請在面板 A (5×5 矩陣) 點選最少數量的合法格子，使 V₁..V₃ 三種金額級距與 D₁..D₃ 三種距離區間皆至少被覆蓋一次（不含任何非法輸入）！" },
+        { key: "weak-robust", title: "弱強固等價分割 (Weak Robust EP — 合法基線 + 單一無效原則)", desc: "請在面板 A 點選最小合法 Weak EP 基線，並遵循「單一無效原則」為 4 個非法類別 (I₁..I₄) 各選 1 個與合法值配對的獨立測試格（嚴禁選取角落雙重非法格）！" },
+        { key: "strong-norm", title: "強一般等價分割 (Strong Normal EP — 合法分割完全笛卡爾乘積)", desc: "請在面板 A 點選所有合法訂單金額 (V₁..V₃) 與合法外送距離 (D₁..D₃) 的完整笛卡爾乘積組合！" },
+        { key: "bva-seams", title: "訂單金額 (Subtotal) 雙點 (On-Off) 邊界接縫取樣", desc: "請在下方面板 B 數線點選訂單金額 4 個計費接縫（最低 100、減免 300、免運 800、上限 10000）的 8 個 On-Off 精確邊界值！" }
+      ];
+      var fdgOrder = [0, 1, 2, 3];
+      var fdgIdx = 0;
+      var fdgSolved = new Set();
+
+      function shuffleFdg() {
+        fdgOrder = [0, 1, 2, 3];
+        for (var i = fdgOrder.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = fdgOrder[i]; fdgOrder[i] = fdgOrder[j]; fdgOrder[j] = tmp;
+        }
+        fdgIdx = 0;
+        fdgSolved.clear();
+      }
+      function clearFdg() {
+        allCells.forEach(function(td) { td.classList.remove("is-selected", "is-hit", "is-missed", "is-extra"); });
+        seamChips.forEach(function(ch) { ch.classList.remove("is-selected", "is-hit", "is-missed", "is-extra"); });
+      }
+      function updateFdgCounters() {
+        var cellCnt = allCells.filter(function(td) { return td.classList.contains("is-selected"); }).length;
+        var chipCnt = seamChips.filter(function(ch) { return ch.classList.contains("is-selected"); }).length;
+        if (fdgScorePill) fdgScorePill.textContent = "已過關: " + fdgSolved.size + " / 4 | 矩陣格: " + cellCnt + " | 接縫值: " + chipCnt;
+      }
+      function loadFdgRound() {
+        clearFdg();
+        var ch = fdgChallenges[fdgOrder[fdgIdx]];
+        if (fdgRoundPill) fdgRoundPill.textContent = "挑戰關卡 " + (fdgIdx + 1) + " / 4（隨機排序）";
+        if (fdgTargetTitle && ch) fdgTargetTitle.textContent = "目標策略：" + ch.title;
+        if (fdgTargetDesc && ch) fdgTargetDesc.textContent = ch.desc;
+        if (fdgFeedback) {
+          fdgFeedback.className = "bvag-feedback-box";
+          fdgFeedback.textContent = "請在左方面板 A 或面板 B 點選測試點，完成後點擊「送出答案」！";
+        }
+        updateFdgCounters();
+      }
+
+      fdgGame.querySelectorAll("[data-fdact]").forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          var act = btn.getAttribute("data-fdact");
+          allCells.forEach(function(td) { td.classList.remove("is-hit", "is-missed", "is-extra"); });
+          seamChips.forEach(function(ch) { ch.classList.remove("is-hit", "is-missed", "is-extra"); });
+          if (act === "clear") {
+            clearFdg();
+          } else {
+            var targets = [];
+            if (act === "diag3") targets = allCells.filter(function(td) { return (td.dataset.r === "1" && td.dataset.c === "1") || (td.dataset.r === "2" && td.dataset.c === "2") || (td.dataset.r === "3" && td.dataset.c === "3"); });
+            else if (act === "valid9") targets = allCells.filter(function(td) { return Number(td.dataset.r) >= 1 && Number(td.dataset.r) <= 3 && Number(td.dataset.c) >= 1 && Number(td.dataset.c) <= 3; });
+            else if (act === "iso4") targets = allCells.filter(function(td) { return (td.dataset.r === "0" && td.dataset.c === "2") || (td.dataset.r === "4" && td.dataset.c === "2") || (td.dataset.r === "2" && td.dataset.c === "0") || (td.dataset.r === "2" && td.dataset.c === "4"); });
+            var allSel = targets.every(function(t) { return t.classList.contains("is-selected"); });
+            targets.forEach(function(t) { t.classList.toggle("is-selected", !allSel); });
+          }
+          updateFdgCounters();
+        });
+      });
+
+      if (fdgSubmit) {
+        fdgSubmit.addEventListener("click", function(e) {
+          e.stopPropagation();
+          var ch = fdgChallenges[fdgOrder[fdgIdx]];
+          if (!ch) return;
+          allCells.forEach(function(td) { td.classList.remove("is-hit", "is-missed", "is-extra"); });
+          seamChips.forEach(function(c) { c.classList.remove("is-hit", "is-missed", "is-extra"); });
+          var selCells = allCells.filter(function(td) { return td.classList.contains("is-selected"); });
+
+          if (ch.key === "bva-seams") {
+            var expectedVals = new Set(["99", "100", "299", "300", "799", "800", "10000", "10001"]);
+            var hits = 0, missed = 0, extra = 0;
+            seamChips.forEach(function(c) {
+              var isSel = c.classList.contains("is-selected");
+              var should = expectedVals.has(c.getAttribute("data-val"));
+              if (should && isSel) { hits++; c.classList.add("is-hit"); }
+              else if (should && !isSel) { missed++; c.classList.add("is-missed"); }
+              else if (!should && isSel) { extra++; c.classList.add("is-extra"); }
+            });
+            if (missed === 0 && extra === 0) {
+              fdgSolved.add(ch.key); updateFdgCounters();
+              fdgFeedback.className = "bvag-feedback-box is-win";
+              fdgFeedback.textContent = "[BVA 接縫完全正確！] 精準選出全部 8 個 On-Off 邊界點 ($99|$100, $299|$300, $799|$800, $10000|$10001)！";
+            } else {
+              fdgFeedback.className = "bvag-feedback-box is-err";
+              fdgFeedback.textContent = "[請檢查面板 B] 命中: " + hits + "/8 | 漏選 (黃色): " + missed + " | 多選非邊界點 (紅色): " + extra + "。";
+            }
+            return;
+          }
+
+          if (ch.key === "strong-norm") {
+            var sHits = 0, sMissed = 0, sExtra = 0;
+            allCells.forEach(function(td) {
+              var rr = Number(td.dataset.r), cc = Number(td.dataset.c);
+              var should = rr >= 1 && rr <= 3 && cc >= 1 && cc <= 3;
+              var isSel = td.classList.contains("is-selected");
+              if (should && isSel) { sHits++; td.classList.add("is-hit"); }
+              else if (should && !isSel) { sMissed++; td.classList.add("is-missed"); }
+              else if (!should && isSel) { sExtra++; td.classList.add("is-extra"); }
+            });
+            if (sMissed === 0 && sExtra === 0) {
+              fdgSolved.add(ch.key); updateFdgCounters();
+              fdgFeedback.className = "bvag-feedback-box is-win";
+              fdgFeedback.textContent = "[Strong Normal EP 完全正確！] 精準選出全部 9 個 (3 × 3) 合法笛卡爾組合！";
+            } else {
+              fdgFeedback.className = "bvag-feedback-box is-err";
+              fdgFeedback.textContent = "[請檢查面板 A] 命中: " + sHits + "/9 合法格 | 漏選 (黃色): " + sMissed + " | 多選非法格 (紅色): " + sExtra + "。";
+            }
+            return;
+          }
+
+          var coveredVRows = new Set(), coveredVCols = new Set();
+          var coveredInv = { i1: 0, i2: 0, i3: 0, i4: 0 };
+          var validCount = 0, doubleInv = 0;
+          selCells.forEach(function(td) {
+            var rr = Number(td.dataset.r), cc = Number(td.dataset.c);
+            var vR = rr >= 1 && rr <= 3, vC = cc >= 1 && cc <= 3;
+            if (vR && vC) { validCount++; coveredVRows.add(rr); coveredVCols.add(cc); }
+            else if (!vR && !vC) { doubleInv++; td.classList.add("is-extra"); }
+            else {
+              if (rr === 0) coveredInv.i1++;
+              if (rr === 4) coveredInv.i2++;
+              if (cc === 0) coveredInv.i3++;
+              if (cc === 4) coveredInv.i4++;
+            }
+          });
+
+          if (ch.key === "weak-norm") {
+            var totalInv = coveredInv.i1 + coveredInv.i2 + coveredInv.i3 + coveredInv.i4 + doubleInv;
+            if (validCount === 3 && coveredVRows.size === 3 && coveredVCols.size === 3 && totalInv === 0) {
+              selCells.forEach(function(td) { td.classList.add("is-hit"); });
+              fdgSolved.add(ch.key); updateFdgCounters();
+              fdgFeedback.className = "bvag-feedback-box is-win";
+              fdgFeedback.textContent = "[Weak Normal EP 完全正確！] 僅用 3 個合法案例即 100% 涵蓋 V₁..V₃ 與 D₁..D₃！";
+            } else {
+              selCells.forEach(function(td) {
+                var rr = Number(td.dataset.r), cc = Number(td.dataset.c);
+                td.classList.add((rr < 1 || rr > 3 || cc < 1 || cc > 3) ? "is-extra" : "is-hit");
+              });
+              fdgFeedback.className = "bvag-feedback-box is-err";
+              fdgFeedback.textContent = "[尚未命中] Weak Normal EP 需恰好選取 max(3,3) = 3 個涵蓋 V₁..V₃ 與 D₁..D₃ 的合法格且 0 個非法格（您選了 " + validCount + " 合法、" + totalInv + " 非法）。";
+            }
+            return;
+          }
+
+          if (ch.key === "weak-robust") {
+            var invOk = coveredInv.i1 === 1 && coveredInv.i2 === 1 && coveredInv.i3 === 1 && coveredInv.i4 === 1 && doubleInv === 0;
+            var valOk = validCount === 3 && coveredVRows.size === 3 && coveredVCols.size === 3;
+            if (valOk && invOk) {
+              selCells.forEach(function(td) { td.classList.add("is-hit"); });
+              fdgSolved.add(ch.key); updateFdgCounters();
+              fdgFeedback.className = "bvag-feedback-box is-win";
+              fdgFeedback.textContent = "[Weak Robust EP 完全正確！] 3 個合法基線格 + 4 個單一無效隔離格 = 共 7 個測試案例（零缺陷遮蔽）！";
+            } else {
+              selCells.forEach(function(td) {
+                var rr = Number(td.dataset.r), cc = Number(td.dataset.c);
+                td.classList.add(((rr === 0 || rr === 4) && (cc === 0 || cc === 4)) ? "is-extra" : "is-hit");
+              });
+              fdgFeedback.className = "bvag-feedback-box is-err";
+              fdgFeedback.textContent = "[請檢查單一無效原則] 需選取 3 個合法基線格（涵蓋 V₁..V₃ 與 D₁..D₃）+ 4 個單一非法隔離格（I₁..I₄ 各一格且另一維度必須為合法值；嚴禁選取四個角落的雙重非法格）！";
+            }
+          }
+        });
+      }
+      if (fdgNext) {
+        fdgNext.addEventListener("click", function(e) {
+          e.stopPropagation();
+          fdgIdx = (fdgIdx + 1) % 4;
+          loadFdgRound();
+        });
+      }
+      if (fdgReshuffle) {
+        fdgReshuffle.addEventListener("click", function(e) {
+          e.stopPropagation();
+          shuffleFdg();
+          loadFdgRound();
+        });
+      }
+      shuffleFdg();
+      loadFdgRound();
+    }
+
+    // 12. Interactive Greedy IPO Explorer (Section 5.5) - skip during PDF print (initial HTML already rendered)
+    var greedyStage = !navigator.webdriver && document.getElementById("greedy-explorer");
+    if (greedyStage && !greedyStage.dataset.greedyBound) {
+      greedyStage.dataset.greedyBound = "true";
+      var gBtns = Array.from(greedyStage.querySelectorAll(".greedy-step-btn"));
+      var gNext = greedyStage.querySelector("#greedy-next-btn");
+      var gReset = greedyStage.querySelector("#greedy-reset-btn");
+      var gBadge = greedyStage.querySelector("#greedy-step-badge");
+      var gBase = greedyStage.querySelector("#greedy-base-info");
+      var gScoreM1 = greedyStage.querySelector("#greedy-score-m1");
+      var gPairsM1 = greedyStage.querySelector("#greedy-pairs-m1");
+      var gScoreM2 = greedyStage.querySelector("#greedy-score-m2");
+      var gPairsM2 = greedyStage.querySelector("#greedy-pairs-m2");
+      var gEvalM1 = greedyStage.querySelector("#greedy-eval-m1");
+      var gEvalM2 = greedyStage.querySelector("#greedy-eval-m2");
+      var gBanner = greedyStage.querySelector("#greedy-winner-banner");
+      var gRows = Array.from(greedyStage.querySelectorAll("#greedy-trace-table tbody tr"));
+      var gProgStat = greedyStage.querySelector("#greedy-prog-stat");
+      var gProgBar = greedyStage.querySelector("#greedy-prog-bar");
+      var gTags = Array.from(greedyStage.querySelectorAll(".greedy-pair-tag"));
+
+      var gSteps = [
+        { step: 1, base: "(Time = t₁, Day = d₁)", m1Score: "+3 個新配對", m1Pairs: "t₁d₁, t₁m₁, d₁m₁", m2Score: "+3 個新配對", m2Pairs: "t₁d₁, t₁m₂, d₁m₂", winner: "m₁", reason: "同分平手決勝", testCase: "(t₁, d₁, m₁)", cumPairs: "3 / 16 Pairs (19%)", pct: 18.75, newPairs: ["t1d1", "t1m1", "d1m1"], cumPairsList: ["t1d1", "t1m1", "d1m1"] },
+        { step: 2, base: "(Time = t₁, Day = d₂)", m1Score: "+2 (t₁m₁ 已覆蓋)", m1Pairs: "t₁d₂, d₂m₁", m2Score: "+3 個新配對", m2Pairs: "t₁d₂, t₁m₂, d₂m₂", winner: "m₂", reason: "高分勝出 (+3 vs +2)", testCase: "(t₁, d₂, m₂)", cumPairs: "6 / 16 Pairs (38%)", pct: 37.5, newPairs: ["t1d2", "t1m2", "d2m2"], cumPairsList: ["t1d1", "t1m1", "d1m1", "t1d2", "t1m2", "d2m2"] },
+        { step: 3, base: "(Time = t₂, Day = d₁)", m1Score: "+2 (d₁m₁ 已覆蓋)", m1Pairs: "t₂d₁, t₂m₁", m2Score: "+3 個新配對", m2Pairs: "t₂d₁, t₂m₂, d₁m₂", winner: "m₂", reason: "高分勝出 (+3 vs +2)", testCase: "(t₂, d₁, m₂)", cumPairs: "9 / 16 Pairs (56%)", pct: 56.25, newPairs: ["t2d1", "t2m2", "d1m2"], cumPairsList: ["t1d1", "t1m1", "d1m1", "t1d2", "t1m2", "d2m2", "t2d1", "t2m2", "d1m2"] },
+        { step: 4, base: "(Time = t₂, Day = d₂)", m1Score: "+3 個新配對", m1Pairs: "t₂d₂, t₂m₁, d₂m₁", m2Score: "+1 (t₂m₂, d₂m₂ 已覆蓋)", m2Pairs: "t₂d₂", winner: "m₁", reason: "高分勝出 (+3 vs +1)", testCase: "(t₂, d₂, m₁)", cumPairs: "12 / 16 Pairs (75%)", pct: 75.0, newPairs: ["t2d2", "t2m1", "d2m1"], cumPairsList: ["t1d1", "t1m1", "d1m1", "t1d2", "t1m2", "d2m2", "t2d1", "t2m2", "d1m2", "t2d2", "t2m1", "d2m1"] },
+        { step: 5, base: "(Time = t₃, Day = d₁)", m1Score: "+2 (d₁m₁ 已覆蓋)", m1Pairs: "t₃d₁, t₃m₁", m2Score: "+2 (d₁m₂ 已覆蓋)", m2Pairs: "t₃d₁, t₃m₂", winner: "m₁", reason: "平手決勝 (D×M 已滿)", testCase: "(t₃, d₁, m₁)", cumPairs: "14 / 16 Pairs (88%)", pct: 87.5, newPairs: ["t3d1", "t3m1"], cumPairsList: ["t1d1", "t1m1", "d1m1", "t1d2", "t1m2", "d2m2", "t2d1", "t2m2", "d1m2", "t2d2", "t2m1", "d2m1", "t3d1", "t3m1"] },
+        { step: 6, base: "(Time = t₃, Day = d₂)", m1Score: "+1 (t₃m₁, d₂m₁ 已覆蓋)", m1Pairs: "t₃d₂", m2Score: "+2 個新配對", m2Pairs: "t₃d₂, t₃m₂", winner: "m₂", reason: "高分勝出 (+2 vs +1)", testCase: "(t₃, d₂, m₂)", cumPairs: "16 / 16 Pairs (100%)", pct: 100.0, newPairs: ["t3d2", "t3m2"], cumPairsList: ["t1d1", "t1m1", "d1m1", "t1d2", "t1m2", "d2m2", "t2d1", "t2m2", "d1m2", "t2d2", "t2m1", "d2m1", "t3d1", "t3m1", "t3d2", "t3m2"] }
+      ];
+      var gCur = 0;
+
+      function renderGreedy(idx) {
+        gCur = idx;
+        var d = gSteps[idx];
+        if (!d) return;
+        gBtns.forEach(function(b, i) { b.classList.toggle("is-active", i === idx); });
+        if (gBadge) gBadge.textContent = "步驟 " + d.step + " / 6";
+        if (gBase) gBase.textContent = "基底：" + d.base;
+        if (gScoreM1) gScoreM1.textContent = d.m1Score;
+        if (gPairsM1) gPairsM1.textContent = d.m1Pairs;
+        if (gScoreM2) gScoreM2.textContent = d.m2Score;
+        if (gPairsM2) gPairsM2.textContent = d.m2Pairs;
+        if (gEvalM1) gEvalM1.classList.toggle("is-winner", d.winner === "m₁");
+        if (gEvalM2) gEvalM2.classList.toggle("is-winner", d.winner === "m₂");
+        if (gBanner) {
+          gBanner.innerHTML = '<span>[貪婪勝出者]：<strong>' + d.winner + "</strong> (" + d.reason + ')</span><span style="font-family: \'Fira Code\', monospace; font-size: 12.5px;">測試案例：' + d.testCase + "</span>";
+          gBanner.style.background = (idx === 5) ? "#16a34a" : "#0284c7";
+        }
+        gRows.forEach(function(r, i) {
+          r.className = (i === idx) ? "is-current" : (i < idx) ? "is-done" : "is-pending";
+        });
+        if (gProgStat) gProgStat.textContent = d.cumPairs;
+        if (gProgBar) {
+          gProgBar.style.width = d.pct + "%";
+          gProgBar.style.background = (idx === 5) ? "#16a34a" : "#0284c7";
+        }
+        var cumSet = new Set(d.cumPairsList);
+        var newSet = new Set(d.newPairs);
+        gTags.forEach(function(tag) {
+          var p = tag.getAttribute("data-pair");
+          if (newSet.has(p)) tag.className = "greedy-pair-tag is-covered is-new";
+          else if (cumSet.has(p)) tag.className = "greedy-pair-tag is-covered";
+          else tag.className = "greedy-pair-tag";
+        });
+      }
+      gBtns.forEach(function(b, idx) {
+        b.addEventListener("click", function(e) { e.stopPropagation(); renderGreedy(idx); });
+      });
+      if (gNext) gNext.addEventListener("click", function(e) { e.stopPropagation(); renderGreedy((gCur + 1) % 6); });
+      if (gReset) gReset.addEventListener("click", function(e) { e.stopPropagation(); renderGreedy(0); });
+      renderGreedy(0);
+    }
+
+    // 13. Interactive Pairwise LoanCalculator Quiz (Section 5.5) - skip during PDF print (initial HTML already rendered)
+    var pwRoot = !navigator.webdriver && document.getElementById("pw-loan-table-quiz-tw");
+    if (pwRoot && !pwRoot.dataset.bound) {
+      pwRoot.dataset.bound = "1";
+      var pwBtns = pwRoot.querySelectorAll(".pw-sw-btn");
+      var pwFb = pwRoot.querySelector("#pw-loan-feedback-tw");
+      var pwClue8 = pwRoot.querySelector("#pw-clue-8-tw");
+      var pwClue9 = pwRoot.querySelector("#pw-clue-9-tw");
+      function setPwVal(b, v) {
+        b.dataset.val = v;
+        b.textContent = v + " ⇄";
+        b.style.background = v === "true" ? "#e0f2fe" : "#fef3c7";
+        b.style.borderColor = v === "true" ? "#0284c7" : "#d97706";
+        b.style.color = v === "true" ? "#0369a1" : "#b45309";
+      }
+      pwBtns.forEach(function(b) {
+        setPwVal(b, "true");
+        b.addEventListener("click", function(e) {
+          e.stopPropagation();
+          setPwVal(b, b.dataset.val === "true" ? "false" : "true");
+          if (pwFb) pwFb.textContent = "";
+        });
+      });
+      var pwSubmit = pwRoot.querySelector("#pw-loan-submit-tw");
+      if (pwSubmit) {
+        pwSubmit.addEventListener("click", function(e) {
+          e.stopPropagation();
+          var v = {};
+          pwBtns.forEach(function(b) { v[b.dataset.id] = b.dataset.val; });
+          var missing = [];
+          if (v.c8m !== "true") missing.push("#8 的 (6M, IsMarried=true)");
+          if (v.c8y !== "false" && v.c9y !== "false") missing.push("#8 或 #9 的 (>20 yr, IsYouth=false)");
+          if (v.c8m !== "true" && v.c9m !== "true") missing.push("#8 或 #9 的 (>20 yr, IsMarried=true)");
+          var c8mOk = (v.c8m === "true");
+          var yFalseOk = (v.c8y === "false" || v.c9y === "false");
+          pwBtns.forEach(function(b) {
+            var ok = true;
+            if (b.dataset.id === "c8m" && !c8mOk) ok = false;
+            if ((b.dataset.id === "c8y" || b.dataset.id === "c9y") && !yFalseOk) ok = false;
+            b.style.background = ok ? "#dcfce7" : "#fee2e2";
+            b.style.borderColor = ok ? "#16a34a" : "#dc2626";
+            b.style.color = ok ? "#15803d" : "#b91c1c";
+          });
+          if (missing.length === 0) {
+            pwFb.style.color = "#15803d";
+            pwFb.innerHTML = "[✓] <strong>答對了！達成 100% Pairwise 覆蓋（28/28 組配對）！</strong> <code>#8</code> 補齊了 <code>(6M, M=true)</code>，且 <code>(&gt;20, Y=false)</code> 與 <code>(&gt;20, M=true)</code> 皆已涵蓋！";
+            pwClue8.innerHTML = "[✓] <code>(&gt;20, 6M)</code>, <code>(6M, M=T)</code>, <code>(&gt;20, M=T)</code>" + (v.c8y === "false" ? ", <code>(&gt;20, Y=F)</code>" : "");
+            pwClue9.innerHTML = "[✓] <code>(&gt;20, 10M)</code>" + (v.c9y === "false" ? ", <code>(&gt;20, Y=F)</code>" : "") + " — 全部 28 組配對 100% 完成！";
+          } else {
+            pwFb.style.color = "#b91c1c";
+            pwFb.innerHTML = "[✗] <strong>尚未達成 100% 成對覆蓋！</strong> 仍缺少：<code>" + missing.join("</code>、<code>") + "</code>。";
+          }
+        });
+      }
+      var pwReset = pwRoot.querySelector("#pw-loan-reset-tw");
+      if (pwReset) {
+        pwReset.addEventListener("click", function(e) {
+          e.stopPropagation();
+          pwBtns.forEach(function(b) { setPwVal(b, "true"); });
+          if (pwFb) pwFb.textContent = "";
+          if (pwClue8) pwClue8.innerHTML = "<code>(&gt;20, 6M)</code> + <em>請觀察 <code>&gt;20</code> 與 <code>6M</code> 還缺哪些配對？</em>";
+          if (pwClue9) pwClue9.innerHTML = "<code>(&gt;20, 10M)</code> + <em>協助補齊剩餘的 <code>&gt;20</code> 配對！</em>";
+        });
+      }
     }
   }
 

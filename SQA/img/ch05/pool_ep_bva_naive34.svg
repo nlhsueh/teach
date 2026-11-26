@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" width="600" height="440" font-family="'Inter', 'Noto Sans TC', -apple-system, sans-serif">
+  <!-- Background matching slide #f5f5f5 -->
+  <rect x="0" y="0" width="600" height="440" fill="#f5f5f5" rx="10" />
+
+  <!-- Outer Card -->
+  <rect x="10" y="8" width="580" height="424" rx="12" fill="#ffffff" stroke="#fca5a5" stroke-width="2" />
+  <rect x="10" y="8" width="580" height="36" rx="12" fill="#fef2f2" />
+  <rect x="10" y="32" width="580" height="12" fill="#fef2f2" />
+  <text x="26" y="31" font-size="14" font-weight="800" fill="#991b1b">Visualizing the Naive 34 Points &amp; Their 3 Duplicate Traps</text>
+
+  <!-- Section A: Naive EP (6 Points) -->
+  <text x="24" y="64" font-size="12.5" font-weight="800" fill="#1e293b">1. Naive EP Alone: 6 Equivalence Classes → 6 Representative Points</text>
+  <g transform="translate(24, 72)">
+    <rect x="0" y="0" width="84" height="34" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="42" y="14" font-size="10.5" font-weight="800" fill="#991b1b" text-anchor="middle">I₁ (&lt; 0)</text>
+    <text x="42" y="28" font-size="11" font-weight="800" fill="#dc2626" text-anchor="middle">age = -5</text>
+
+    <rect x="92" y="0" width="84" height="34" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="134" y="14" font-size="10.5" font-weight="800" fill="#075985" text-anchor="middle">V₁ (0..3)</text>
+    <text x="134" y="28" font-size="11" font-weight="800" fill="#0284c7" text-anchor="middle">age = 2</text>
+
+    <rect x="184" y="0" width="84" height="34" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="226" y="14" font-size="10.5" font-weight="800" fill="#166534" text-anchor="middle">V₂ (4..12)</text>
+    <text x="226" y="28" font-size="11" font-weight="800" fill="#16a34a" text-anchor="middle">age = 8</text>
+
+    <rect x="276" y="0" width="84" height="34" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="318" y="14" font-size="10.5" font-weight="800" fill="#92400e" text-anchor="middle">V₃ (13..64)</text>
+    <text x="318" y="28" font-size="11" font-weight="800" fill="#d97706" text-anchor="middle">age = 30</text>
+
+    <rect x="368" y="0" width="84" height="34" rx="6" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="410" y="14" font-size="10.5" font-weight="800" fill="#5b21b6" text-anchor="middle">V₄ (65..120)</text>
+    <text x="410" y="28" font-size="11" font-weight="800" fill="#7c3aed" text-anchor="middle">age = 80</text>
+
+    <rect x="460" y="0" width="90" height="34" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="505" y="14" font-size="10.5" font-weight="800" fill="#991b1b" text-anchor="middle">I₂ (&gt; 120)</text>
+    <text x="505" y="28" font-size="11" font-weight="800" fill="#dc2626" text-anchor="middle">age = 130</text>
+  </g>
+
+  <!-- Section B: Naive 7-Point Robust BVA per Valid Tier (4 x 7 = 28 Points) -->
+  <text x="24" y="130" font-size="12.5" font-weight="800" fill="#1e293b">2. Naive 7-Point Robust BVA per Valid Tier: 4 Tiers × 7 Points = 28 Points</text>
+
+  <!-- Column Headers -->
+  <g transform="translate(24, 138)">
+    <text x="45" y="14" font-size="10.5" font-weight="800" fill="#475569" text-anchor="middle">Valid Tier</text>
+    <text x="122" y="14" font-size="10.5" font-weight="800" fill="#b91c1c" text-anchor="middle">min-</text>
+    <text x="182" y="14" font-size="10.5" font-weight="800" fill="#0369a1" text-anchor="middle">min</text>
+    <text x="242" y="14" font-size="10.5" font-weight="800" fill="#64748b" text-anchor="middle">min+</text>
+    <text x="302" y="14" font-size="10.5" font-weight="800" fill="#a16207" text-anchor="middle">nom</text>
+    <text x="362" y="14" font-size="10.5" font-weight="800" fill="#64748b" text-anchor="middle">max-</text>
+    <text x="422" y="14" font-size="10.5" font-weight="800" fill="#0369a1" text-anchor="middle">max</text>
+    <text x="482" y="14" font-size="10.5" font-weight="800" fill="#b91c1c" text-anchor="middle">max+</text>
+    <text x="534" y="14" font-size="10.5" font-weight="800" fill="#475569" text-anchor="middle">Count</text>
+  </g>
+
+  <!-- Row V1 -->
+  <g transform="translate(24, 158)">
+    <rect x="0" y="0" width="90" height="30" rx="5" fill="#0284c7"/>
+    <text x="45" y="19" font-size="11.5" font-weight="800" fill="#ffffff" text-anchor="middle">V₁ [0..3]</text>
+
+    <rect x="96" y="0" width="52" height="30" rx="5" fill="#fee2e2" stroke="#ef4444" stroke-width="1.4"/>
+    <text x="122" y="19" font-size="12" font-weight="800" fill="#b91c1c" text-anchor="middle">-1</text>
+
+    <rect x="156" y="0" width="52" height="30" rx="5" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.4"/>
+    <text x="182" y="19" font-size="12" font-weight="800" fill="#0369a1" text-anchor="middle">0</text>
+
+    <rect x="216" y="0" width="52" height="30" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="3,2"/>
+    <text x="242" y="19" font-size="11.5" font-weight="700" fill="#64748b" text-anchor="middle">1</text>
+
+    <rect x="276" y="0" width="52" height="30" rx="5" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="302" y="19" font-size="12" font-weight="800" fill="#854d0e" text-anchor="middle">2 ★</text>
+
+    <rect x="336" y="0" width="52" height="30" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="3,2"/>
+    <text x="362" y="19" font-size="11.5" font-weight="700" fill="#64748b" text-anchor="middle">2</text>
+
+    <rect x="396" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="422" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">3</text>
+
+    <rect x="456" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="482" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">4</text>
+
+    <text x="534" y="19" font-size="11.5" font-weight="800" fill="#334155" text-anchor="middle">7 pts</text>
+  </g>
+
+  <!-- Row V2 -->
+  <g transform="translate(24, 198)">
+    <rect x="0" y="0" width="90" height="30" rx="5" fill="#16a34a"/>
+    <text x="45" y="19" font-size="11.5" font-weight="800" fill="#ffffff" text-anchor="middle">V₂ [4..12]</text>
+
+    <rect x="96" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="122" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">3</text>
+
+    <rect x="156" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="182" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">4</text>
+
+    <rect x="216" y="0" width="52" height="30" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="3,2"/>
+    <text x="242" y="19" font-size="11.5" font-weight="700" fill="#64748b" text-anchor="middle">5</text>
+
+    <rect x="276" y="0" width="52" height="30" rx="5" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="302" y="19" font-size="12" font-weight="800" fill="#854d0e" text-anchor="middle">8 ★</text>
+
+    <rect x="336" y="0" width="52" height="30" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="3,2"/>
+    <text x="362" y="19" font-size="11.5" font-weight="700" fill="#64748b" text-anchor="middle">11</text>
+
+    <rect x="396" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="422" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">12</text>
+
+    <rect x="456" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="482" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">13</text>
+
+    <text x="534" y="19" font-size="11.5" font-weight="800" fill="#334155" text-anchor="middle">7 pts</text>
+  </g>
+
+  <!-- Row V3 -->
+  <g transform="translate(24, 238)">
+    <rect x="0" y="0" width="90" height="30" rx="5" fill="#d97706"/>
+    <text x="45" y="19" font-size="11.5" font-weight="800" fill="#ffffff" text-anchor="middle">V₃ [13..64]</text>
+
+    <rect x="96" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="122" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">12</text>
+
+    <rect x="156" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="182" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">13</text>
+
+    <rect x="216" y="0" width="52" height="30" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="3,2"/>
+    <text x="242" y="19" font-size="11.5" font-weight="700" fill="#64748b" text-anchor="middle">14</text>
+
+    <rect x="276" y="0" width="52" height="30" rx="5" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="302" y="19" font-size="12" font-weight="800" fill="#854d0e" text-anchor="middle">30 ★</text>
+
+    <rect x="336" y="0" width="52" height="30" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="3,2"/>
+    <text x="362" y="19" font-size="11.5" font-weight="700" fill="#64748b" text-anchor="middle">63</text>
+
+    <rect x="396" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="422" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">64</text>
+
+    <rect x="456" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="482" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">65</text>
+
+    <text x="534" y="19" font-size="11.5" font-weight="800" fill="#334155" text-anchor="middle">7 pts</text>
+  </g>
+
+  <!-- Row V4 -->
+  <g transform="translate(24, 278)">
+    <rect x="0" y="0" width="90" height="30" rx="5" fill="#7c3aed"/>
+    <text x="45" y="19" font-size="11.5" font-weight="800" fill="#ffffff" text-anchor="middle">V₄ [65..120]</text>
+
+    <rect x="96" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="122" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">64</text>
+
+    <rect x="156" y="0" width="52" height="30" rx="5" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="182" y="19" font-size="12" font-weight="800" fill="#c2410c" text-anchor="middle">65</text>
+
+    <rect x="216" y="0" width="52" height="30" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="3,2"/>
+    <text x="242" y="19" font-size="11.5" font-weight="700" fill="#64748b" text-anchor="middle">66</text>
+
+    <rect x="276" y="0" width="52" height="30" rx="5" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="302" y="19" font-size="12" font-weight="800" fill="#854d0e" text-anchor="middle">80 ★</text>
+
+    <rect x="336" y="0" width="52" height="30" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="3,2"/>
+    <text x="362" y="19" font-size="11.5" font-weight="700" fill="#64748b" text-anchor="middle">119</text>
+
+    <rect x="396" y="0" width="52" height="30" rx="5" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.4"/>
+    <text x="422" y="19" font-size="12" font-weight="800" fill="#0369a1" text-anchor="middle">120</text>
+
+    <rect x="456" y="0" width="52" height="30" rx="5" fill="#fee2e2" stroke="#ef4444" stroke-width="1.4"/>
+    <text x="482" y="19" font-size="12" font-weight="800" fill="#b91c1c" text-anchor="middle">121</text>
+
+    <text x="534" y="19" font-size="11.5" font-weight="800" fill="#334155" text-anchor="middle">7 pts</text>
+  </g>
+
+  <!-- Diagonal arrows highlighting seam collisions -->
+  <path d="M 446 188 L 146 198" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="3,2"/>
+  <path d="M 506 188 L 206 198" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="3,2"/>
+  <path d="M 446 228 L 146 238" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="3,2"/>
+  <path d="M 506 228 L 206 238" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="3,2"/>
+  <path d="M 446 268 L 146 278" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="3,2"/>
+  <path d="M 506 268 L 206 278" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="3,2"/>
+
+  <!-- Bottom Legend / 3 Overlap Categories -->
+  <rect x="24" y="320" width="552" height="100" rx="8" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="36" y="341" font-size="12" font-weight="800" fill="#9a3412">Where Are the 20 Duplicate / Redundant Points in 6 + 28 = 34?</text>
+  <text x="36" y="362" font-size="10.8" font-weight="700" fill="#c2410c">• Orange (Seam Collision, -6 pts): V₁{3,4} == V₂{3,4}; V₂{12,13} == V₃{12,13}; V₃{64,65} == V₄{64,65}</text>
+  <text x="36" y="383" font-size="10.8" font-weight="700" fill="#854d0e">• Yellow ★ (EP &amp; BVA Overlap, -6 pts): EP {2,8,30,80} &amp; {-5,130} duplicate BVA nom &amp; min-/max+</text>
+  <text x="36" y="404" font-size="10.8" font-weight="700" fill="#475569">• Gray Dashed (Interior min+/max-, -8 pts): 2-Value BVA drops {1,2,5,11,14,63,66,119} → 14 pts!</text>
+</svg>
