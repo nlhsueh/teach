@@ -2008,18 +2008,49 @@ Because users satisfice, Tidwell identifies twelve behavioral patterns that supp
 - prospective memory: 前瞻性記憶（「記得未來要去某處做某事」的記憶能力，極易受外部干擾而遺忘）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Section 1 Taxonomy: 12 Core User Behavior Patterns (`TW1.1–TW1.12`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell003.png" alt="Section 1: General Patterns Overview" />
+> **Herbert Simon's Satisficing Principle:** Users do not exhaustively calculate optimal routes—they pick the first **"good enough"** cue and muddle through by trial and error.
+
+<div class="tw-tax-grid-12">
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW1.1 SAFE EXPLORATION</div><div class="tw-tax-title">Safe Exploration</div><div class="tw-tax-sub">Prevent fear of getting lost via Undo &amp; backtracks.</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW1.2 INSTANT GRATIFICATION</div><div class="tw-tax-title">Instant Gratification</div><div class="tw-tax-sub">Deliver immediate task success within seconds.</div></div>
+  <div class="tw-tax-chip is-amber"><div class="tw-tax-code">TW1.3 SATISFICING</div><div class="tw-tax-title">Satisficing</div><div class="tw-tax-sub">"Good enough" beats optimal; make cues obvious.</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW1.4 MIDSTREAM CHANGES</div><div class="tw-tax-title">Changes in Midstream</div><div class="tw-tax-sub">Let users tweak parameters or goals mid-flow.</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW1.5 DEFERRED CHOICE</div><div class="tw-tax-title">Deferred Choice</div><div class="tw-tax-sub">Skip non-essential upfront registration walls.</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW1.6 INCREMENTAL BUILD</div><div class="tw-tax-title">Incremental Construction</div><div class="tw-tax-sub">Build and tweak iteratively with live feedback.</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW1.7 HABITUATION</div><div class="tw-tax-title">Habituation</div><div class="tw-tax-sub">Honor platform conventions &amp; muscle memory.</div></div>
+  <div class="tw-tax-chip is-amber"><div class="tw-tax-code">TW1.8 MICROBREAKS</div><div class="tw-tax-title">Microbreaks</div><div class="tw-tax-sub">Support fragmented attention &amp; quick 60s sessions.</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW1.9 SPATIAL MEMORY</div><div class="tw-tax-title">Spatial Memory</div><div class="tw-tax-sub">Keep tools anchored in fixed spatial positions.</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW1.10 PROSPECTIVE MEMORY</div><div class="tw-tax-title">Prospective Memory</div><div class="tw-tax-sub">Externalize future tasks via badges, drafts &amp; pins.</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW1.11 STREAMLINED REPEAT</div><div class="tw-tax-title">Streamlined Repetition</div><div class="tw-tax-sub">Automate repetitive bulk steps into 1 macro action.</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW1.12 KEYBOARD ONLY</div><div class="tw-tax-title">Keyboard Only</div><div class="tw-tax-sub">Full keyboard shortcuts &amp; tab order for power users.</div></div>
+</div>
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### Satisficing (`TW1.3`) & Microbreaks (`TW1.8`)
+- **Satisficing (*Satisfy + Suffice*):** Reading dense manuals has high cognitive cost; users click the first plausible action cue and rely on `Undo` if wrong.
+- **Microbreaks:** Users check apps during 30-second elevator rides; preserve session state, scroll position, and unsaved drafts automatically.
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### Streamlined Repetition (`TW1.11`) & Keyboard Only (`TW1.12`)
+- **Streamlined Repetition:** Never force users to repeat a 5-click sequence 50 times—provide **Find & Replace All** or multi-select batch actions.
+- **Keyboard Only:** High-frequency data entry (ERP, IDE, POS) demands complete `Tab` traversal and hotkeys without touching the mouse.
+
+</div>
 </div>
 
 <!--
-Look at this illustration of Satisficing versus Optimal Rationality.
+Look at the complete 12-pattern taxonomy of Section 1: Core User Behaviors (TW1.1 through TW1.12).
 
-On the left, the engineer's mental model assumes the user stands at a crossroads, calmly reading a five-hundred-page specification manual to calculate the optimal route. On the right is what actually happens in production: the user sprints straight through the bushes toward the first glowing sign that looks remotely related to their goal, relying on Undo if they hit a dead end.
-
-Whenever you find yourself saying, "Why didn't the user read the three-paragraph instruction at the top of the modal?", remember this diagram. Users scan for action cues and satisfice.
+Beyond the eight patterns introduced on the previous slide, pay special attention to the four highlighted behavioral patterns here:
+1. **Satisficing (TW1.3)**: Coined by Herbert Simon (1956), users rarely read instructions to find the mathematically optimal path; they click the first option that looks "good enough" and rely on trial and error.
+2. **Microbreaks (TW1.8)**: Modern users interact with software in fragmented 30-to-60-second bursts—your architecture must auto-preserve scroll positions and drafts across interruptions.
+3. **Streamlined Repetition (TW1.11)** and **Keyboard Only (TW1.12)**: Empower expert users to execute repetitive operations in batch or entirely via keyboard shortcuts without mouse friction.
 
 💡 難字與專業術語解說：
 - optimal rationality: 最佳理性模型（假設決策者具備無限時間與算力去評估所有可能選項的理想化假設）
@@ -2027,16 +2058,39 @@ Whenever you find yourself saying, "Why didn't the user read the three-paragraph
 - action cue: 行動視覺線索（畫面中引導點擊或操作的按鈕、連結與高對比圖示）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Safe Exploration (`TW1.1`) & Instant Gratification (`TW1.2`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell004.png" alt="Safe Exploration & Instant Gratification" />
+> **Lowering Initial Friction:** Remove the fear of making mistakes with a one-click **Undo Toast**, and fast-track returning users directly to their goal via **Buy Again**.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 14.5px;">
+
+### 1. `TW1.1` Safe Exploration (Non-Destructive Undo)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_004_safe_undo.png" alt="TW1.1 Safe Exploration Undo Toast" />
+</div>
+
+- **Let Users Act Without Fear:** Instead of popping up an annoying *"Are you sure?"* confirmation dialog on every click, execute immediately and surface a transient **`Item archived. [Undo]`** toast bar.
+- **Heuristic Synergy:** Directly implements Nielsen's **NS01 (System Status)** and **NS03 (User Control & Freedom)**.
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 14.5px;">
+
+### 2. `TW1.2` Instant Gratification (Fast-Track Goal)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_004_buy_again.png" alt="TW1.2 Instant Gratification Buy Again" />
+</div>
+
+- **Bypass Multi-Step Funnels:** For recurring tasks (e.g., reordering consumables), surface a prominent **`Buy Again`** module with one-tap cart icons (`$619`, `$520`) right on the account home screen.
+- **Zero Blank-Slate Paralysis:** Reward the user within the first 3 seconds of opening the application.
+
+</div>
 </div>
 
 <!--
-This architectural diagram maps out how Safe Exploration, Instant Gratification, and Deferred Choices work together during the first sixty seconds of user onboarding.
+This slide contrasts two foundational behavioral patterns in production mobile apps: Safe Exploration (TW1.1) and Instant Gratification (TW1.2).
 
-If a new user opens your graphic design tool or cloud IDE and is immediately blocked by a mandatory ten-field registration wall, credit card prompt, and project configuration wizard, they bounce. Instead, if you let them jump straight onto an interactive canvas (Safe Exploration), apply a one-click starter template that renders a live result in two seconds (Instant Gratification), and only ask them to name their project or create an account when they click "Save & Share" (Deferred Choices), activation rates skyrocket.
+On the left, when a user archives or deletes an item, showing a non-blocking toast notification with an immediate "Undo" button lets users explore and organize rapidly without fear of irreversible data loss. On the right, an e-commerce app surfaces a "Buy Again" shelf with one-click cart buttons for previously purchased items, delivering Instant Gratification without forcing the user back through a five-step search-and-filter funnel.
 
 💡 難字與專業術語解說：
 - onboarding: 新手引導與初次上手體驗（使用者首次接觸產品直到成功完成核心價值的過程）
@@ -2044,18 +2098,39 @@ If a new user opens your graphic design tool or cloud IDE and is immediately blo
 - activation rate: 產品啟用轉換率（新使用者成功完成首次核心價值體驗的指標比例）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Changes in Midstream (`TW1.4`) & Deferred Choice (`TW1.5`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell005.png" alt="Changes in Midstream & Deferred Choice" />
+> **Fluid Decision Making:** Never trap users in rigid one-way tunnels—let them adjust parameters in-place without starting over, and defer non-critical form fields.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 14.5px;">
+
+### 1. `TW1.4` Changes in Midstream (In-Place Tweaking)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_005_thsr_midstream.png" alt="TW1.4 Changes in Midstream THSR Timetable" />
+</div>
+
+- **No Forced Funnel Restarts:** In the THSR timetable (`Taipei → Taichung, 17:00`), if trains are full, the top-right **`← Earlier trains | Later trains →`** buttons shift the query window in-place!
+- **Preserves Context:** Eliminates clicking `Back`, re-selecting stations, and re-entering dates from scratch.
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 14.5px;">
+
+### 2. `TW1.5` Deferred Choice (`Skip for now`)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_005_skip_deferred.png" alt="TW1.5 Deferred Choice Skip for Now" />
+</div>
+
+- **Minimize Upfront Friction:** During initial onboarding (*Profile Setup*), provide an explicit **`Skip for now`** button in the top-right corner so users can experience core product value first.
+- **Progressive Profiling:** Request optional profile details (`Full Name`, avatar) only when the user is ready to save or checkout.
+
+</div>
 </div>
 
 <!--
-Here we see Incremental Construction and Habituation in action.
+Here we see Changes in Midstream (TW1.4) and Deferred Choice (TW1.5) in real-world user interfaces.
 
-Incremental Construction is why modern code editors, document processors, and query builders provide live previews and hot-reloading. Humans cannot hold a complex finished artifact entirely in their head before typing; they sketch a rough draft, see how it looks, and iteratively refine it.
-
-Meanwhile, Habituation explains why breaking platform conventions is so dangerous. Once a user has pressed `Cmd+S` to save or swiped right to go back ten thousand times, that action moves from conscious prefrontal cortex processing to automatic basal ganglia muscle memory. If your web app overrides `Cmd+S` to "Send & Publish Unfinished Draft to All Clients," your users' own muscle memory becomes a weapon against them.
+On the left is the Taiwan High Speed Rail timetable search: once a user queries 17:00 trains from Taipei to Taichung, they can click "Earlier trains" or "Later trains" right inside the results header to adjust their time window without restarting the search form. On the right is Deferred Choice in mobile onboarding: providing a clear "Skip for now" button on the Profile Setup screen prevents registration-wall drop-off and lets users try the app immediately.
 
 💡 難字與專業術語解說：
 - hot-reloading: 熱重載／即時預覽更新（修改局部內容或代碼後無須重啟即刻呈現視覺結果）
@@ -2063,18 +2138,31 @@ Meanwhile, Habituation explains why breaking platform conventions is so dangerou
 - basal ganglia: 基底核（大腦中負責習慣化動作與程序性運動記憶的深層神經結構）
 -->
 ---
-<!-- _class: full-image-slide -->
+## `TW1.6` Incremental Construction: Iterative Workspace & Live Feedback
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell006.png" alt="TW1.6 Incremental Construction" />
+<div class="split64">
+<div class="left">
+
+* **Core Cognitive Problem — Working Memory Overload:**
+  - Humans cannot hold a complex, finished artifact (a 10-page LaTeX paper, a multi-table SQL query, or a vector illustration) entirely in working memory before typing.
+  - Traditional batch workflows (*Write 500 lines → Compile → Debug obscure errors*) break creative flow.
+* **The `TW1.6` Closed-Loop Architecture (Overleaf / LaTeX IDE):**
+  1. **Left Pane — Authoring Workspace:** Construct one small modular block at a time (`\documentclass{IEEEtran}`, `\section{...}`) with syntax highlighting.
+  2. **Right Pane — Responsive Live Feedback:** Instant compilation renders the camera-ready PDF (`TCSE template`) side-by-side in real time.
+  3. **Psychological Payoff:** Tightens Norman's *Gulf of Execution & Evaluation* into a sub-second visual feedback loop!
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_006_overleaf.png" alt="TW1.6 Incremental Construction in Overleaf LaTeX Editor" />
+
+</div>
 </div>
 
 <!--
-This diagram illustrates Prospective Memory—one of the most fragile aspects of human cognition.
+This slide examines TW1.6 Incremental Construction using Overleaf's split-screen LaTeX environment (editing a Taiwan Conference on Software Engineering camera-ready template).
 
-Retrospective memory is remembering the past ("What did I eat yesterday?"). Prospective memory is remembering to perform an intended action in the future ("When I finish reviewing this pull request, I need to update the deployment config"). As soon as a Slack notification pops up or a colleague walks by, prospective memory evaporates.
-
-Great interfaces externalize prospective memory directly into the workspace: letting users star an email, leave an inline `// TODO` comment, pin a tab, or save a half-written draft visibly in the sidebar so the interface remembers on their behalf.
+On the left is the source code Workspace where the author constructs one small section or equation at a time; on the right is the Live Feedback pane that recompiles and renders the formatted two-column PDF immediately. By pairing an incremental workspace with instant visual feedback, complex creative tasks become low-stress, iterative refinement loops.
 
 💡 難字與專業術語解說：
 - retrospective memory: 回溯性記憶（對過去已發生事件、知識或經驗的記憶提取）
@@ -2082,18 +2170,34 @@ Great interfaces externalize prospective memory directly into the workspace: let
 - intended action: 預期計畫行動（使用者打算在未來某個時間點或條件下執行的待辦動作）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Designing for Human Memory: Habituation (`TW1.7`), Spatial (`TW1.9`) & Prospective (`TW1.10`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell007.png" alt="Habituation, Prospective Memory & Spatial Memory" />
+<div class="split55">
+<div class="left">
+
+* **1. `TW1.7` Habituation (Procedural Muscle Memory):**
+  - Anchoring standard navigation (`Dashboard`, `Projects`, `Analytics`, `Reports`) in a persistent left sidebar builds unconscious muscle memory.
+  - **Danger:** Changing standard gestures or shortcut meanings (`Cmd+S`) turns user habits into accidental errors!
+* **2. `TW1.9` Spatial Memory (Visuospatial Stability):**
+  - Users remember *where* tools live geometrically (e.g., the **Settings Gear `⚙️`** fixed in the top-right corner).
+  - **Golden Rule:** Never dynamically reorder or relocate core toolbar icons based on usage frequency!
+* **3. `TW1.10` Prospective Memory ("Remembering to Remember"):**
+  - Biological prospective memory evaporates the moment an interruption occurs.
+  - Externalize unfinished future tasks directly into the UI using visual counters like **`Saved Items (3)`**!
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_007_memory_dashboard.png" alt="Habituation, Spatial Memory, and Prospective Memory in a SaaS Dashboard" />
+
+</div>
 </div>
 
 <!--
-Now let's examine how these behavioral truths crystallize into concrete UI patterns.
-
-Every modern authoring tool—from VS Code and Figma to Notion and Canva—relies on the **Safe Editing Trifecta**: Preview, Undo, and Autosave. Notice how each pillar neutralizes a specific psychological barrier: Live Preview eliminates the fear of the unknown before an action; Multi-level Undo eliminates the fear of human error after an action; and Cloud Autosave eliminates the fear of catastrophic hardware or network failure.
-
-Beside that sits **Progressive Disclosure** (often implemented as "Show More" drawers, collapsible advanced panels, or tiered settings). Notice the golden engineering rule: display the 20% of controls that handle 80% of daily workflows upfront, and tuck the remaining 80% of edge-case parameters behind an on-demand expansion toggle. You satisfy both novices who need simplicity and power users who need granular control.
+Look at how a modern SaaS analytics dashboard harmonizes three distinct human memory systems on a single screen:
+1. **Habituation (TW1.7)** on the left sidebar: standardized vertical navigation lets users switch views via unconscious muscle memory.
+2. **Spatial Memory (TW1.9)** in the top-right corner: keeping the Settings gear fixed in its expected spatial location eliminates visual search time.
+3. **Prospective Memory (TW1.10)** on the red badge `Saved Items (3)`: externalizing unfinished tasks into a persistent visual marker so the user never forgets pending work after an interruption.
 
 💡 難字與專業術語解說：
 - trifecta: 黃金三要素、三連勝組合（三個相輔相成缺一不可的核心機制）
@@ -2147,18 +2251,46 @@ When all parameters—margins, color profiles, bleed settings, PostScript flags,
 - visual noise: 視覺雜訊（畫面中干擾注意力集中於主要任務的多餘線條、文字與控制項）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Section 2 Taxonomy: 11 Content & Layout Patterns (`TW2.1–TW4.7`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell008.png" alt="Section 2: Organizing Content & Layout Overview" />
+> **Macro-to-Micro Spatial Hierarchy:** Establish a predictable global page skeleton first (`TW2.1–TW4.2`), then partition dense inner content into modular containers (`TW4.4–TW4.7`).
+
+<div class="tw-tax-grid-12">
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW2.1 DISCOVERY TRIFECTA</div><div class="tw-tax-title">Feature / Search / Browse</div><div class="tw-tax-sub">The 3-pillar gateway for content discovery.</div></div>
+  <div class="tw-tax-chip is-amber"><div class="tw-tax-code">TW2.2 MOBILE DIRECT</div><div class="tw-tax-title">Mobile Direct Access</div><div class="tw-tax-sub">Open directly into core utility without splash walls.</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW2.5 DASHBOARD</div><div class="tw-tax-title">The Dashboard</div><div class="tw-tax-sub">High-density vital KPIs on a single screen.</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW2.7 WIZARD</div><div class="tw-tax-title">The Wizard</div><div class="tw-tax-sub">Deconstruct complex tasks into linear steps.</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW2.9 ALTERNATIVE VIEW</div><div class="tw-tax-title">Alternative Views</div><div class="tw-tax-sub">Same underlying data, user-chosen format.</div></div>
+  <div class="tw-tax-chip is-amber"><div class="tw-tax-code">TW2.10 MANY WORKSPACES</div><div class="tw-tax-title">Many Workspaces</div><div class="tw-tax-sub">Multi-pane / multi-tab parallel environments.</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW4.1 VISUAL FRAMEWORK</div><div class="tw-tax-title">Visual Framework</div><div class="tw-tax-sub">Consistent global grid, header &amp; design tokens.</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW4.2 CENTER STAGE</div><div class="tw-tax-title">Center Stage</div><div class="tw-tax-sub">Dominant central canvas for the primary task.</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW4.4 TITLED SECTION</div><div class="tw-tax-title">Titled Sections</div><div class="tw-tax-sub">Clear typographic headings for rapid scanning.</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW4.5 MODULE TABS</div><div class="tw-tax-title">Module Tabs</div><div class="tw-tax-sub">1-of-N mutually exclusive peer view switching.</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW4.6 ACCORDION</div><div class="tw-tax-title">Accordion</div><div class="tw-tax-sub">M-of-N vertical expansion of nested details.</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW4.7 COLLAPSIBLE PANEL</div><div class="tw-tax-title">Collapsible Panels</div><div class="tw-tax-sub">Hide secondary drawers &amp; advanced toolbars.</div></div>
+</div>
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### Macro Spatial Frameworks (`TW2.2`, `TW2.10`, `TW4.1`, `TW4.2`)
+- **Direct Access (`TW2.2`) & Center Stage (`TW4.2`):** Launch straight into the primary workspace and allocate **> 70% of viewport area** to the core task.
+- **Visual Framework (`TW4.1`):** Enforce a unified 12-column grid, typography scale, and color tokens so all pages feel like one cohesive product.
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### Micro Information Chunking (`TW4.4`, `TW4.5/4.6`, `TW4.7`)
+- **Pre-Attentive Scanning (`TW4.4`):** Within 200 ms, the human visual cortex scans bold headings and whitespace boundaries before reading a single sentence.
+- **Collapsible Panels (`TW4.7`):** Let users dock or collapse secondary inspector sidebars to maximize their central working canvas.
+
+</div>
 </div>
 
 <!--
-Now let's move to Section 2: Organizing Content & Page Layout—Macro-to-Micro Spatial Architecture.
+Now let's review the complete 11-pattern matrix of Section 2: Organizing Content & Page Layout (TW2.1 through TW4.7).
 
-When a user opens a new screen, they do not read top-to-bottom like a novel. Within the first two hundred milliseconds, their visual cortex performs pre-attentive processing, scanning the page's macro geometry—whitespace, contrast blocks, alignment, and scale—to deduce what is most important and where to start.
-
-Let's examine four classic spatial architectures from Tidwell's catalog. First, **Two-Panel Split View (Master-Detail)**: keeping a selectable list on the left and rendering the selected item's details immediately on the right, which eliminates tedious back-and-forth page reloads. Second, **One-Window Drilldown**: ideal for mobile screens or step-by-step system settings where horizontal space is tight, replacing the entire viewport as the user drills deeper down a hierarchy. Third, **Visual Framework**: maintaining consistent headers, sidebars, typography, and color tokens across every view so the application feels like a single coherent building. And fourth, **Alternative Views**: allowing the exact same underlying data model to be toggled instantly between a Table, a Kanban Board, and a Calendar view.
+When a user opens a new screen, their visual cortex performs pre-attentive processing within 200 milliseconds—scanning whitespace, contrast blocks, Titled Sections (TW4.4), and the Center Stage (TW4.2) within a consistent Visual Framework (TW4.1). Meanwhile, patterns like Mobile Direct Access (TW2.2) and Many Workspaces (TW2.10) adapt macro page geometry from smartphone utility apps to multi-pane desktop IDEs.
 
 💡 難字與專業術語解說：
 - pre-attentive processing: 前注意力視覺處理（人類視覺皮層在 200 毫秒內無意識快速掃描色彩、大小與空間結構的生理機制）
@@ -2169,16 +2301,35 @@ Let's examine four classic spatial architectures from Tidwell's catalog. First, 
 - visual framework: 視覺框架系統（跨頁面維持一致的導覽列、網格與字體色彩規範）
 -->
 ---
-<!-- _class: full-image-slide -->
+## `TW2.1` Content Discovery Deconstructed: Search, Feature & Browse
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell009.png" alt="Content Discovery Deconstructed" />
+<div class="split64">
+<div class="left">
+
+* **Why Every Major Platform Combines All 3 Discovery Modes:**
+  - Users arrive at a home screen (Foodpanda, Netflix, Airbnb, App Store) with three distinct psychological states of intent:
+  1. **Search (Top Bar — Direct Intent-Driven Querying):**
+     - For **"Hunters"** who already know the exact shop or dish (`"Search for shops & restaurants"`).
+     - Demands high top-of-screen visibility and instant autocomplete.
+  2. **Feature / Center Stage (`TW4.2` — System-Curated Highlights):**
+     - For **"Undecided Users"** seeking immediate inspiration (`"Your Restaurants"` / `"Up to 25% off"` promotional hero cards).
+     - Uses large, high-appetizing imagery to trigger **Instant Gratification (`TW1.2`)**.
+  3. **Browse (Bottom Grid — Exploratory Category Navigation):**
+     - For **"Grazers"** exploring by domain taxonomy (`"Cuisines"`: *Snacks, Japanese, Taiwanese, Burgers*).
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_009_foodpanda.png" alt="TW2.1 Content Discovery Trifecta in Foodpanda Mobile App" />
+
+</div>
 </div>
 
 <!--
-This diagram contrasts the four macro page architectures side by side.
-
-Notice the crucial engineering trade-off between **Two-Panel Split View** and **One-Window Drilldown**. On a 27-inch desktop monitor, a Two-Panel Split View (like macOS Finder, Outlook, or VS Code's file explorer + editor) is unbeatable because it prevents "pogo-sticking"—jumping into an item, realizing it's the wrong one, clicking Back, and clicking the next item. However, on a 6-inch smartphone screen, squeezing two panels side by side crushes both into unreadable columns; there, responsive design automatically adapts the Master-Detail pattern into a One-Window Drilldown!
+Look at this live UI teardown of the Content Discovery Trifecta (TW2.1) on the Foodpanda delivery app, alongside its structural wireframe:
+1. At the top is **Search** (`Search for shops & restaurants`) for high-intent users with a specific target in mind.
+2. In the center is **Feature / Center Stage (TW4.2)** (`Your Restaurants` curated highlights with delivery time and photo cards) for users looking for personalized recommendations.
+3. At the bottom is **Browse** (`Cuisines`: Snacks, Japanese, Taiwanese, Burgers) for exploratory users navigating by category hierarchy.
 
 💡 難字與專業術語解說：
 - viewport: 視埠／可視視窗區域（螢幕上實際可用於渲染畫面內容的矩形顯示區域）
@@ -2186,18 +2337,39 @@ Notice the crucial engineering trade-off between **Two-Panel Split View** and **
 - spatial hierarchy: 空間層級結構（透過區塊位置、面積大小與縮排距離傳達資訊主從關係）
 -->
 ---
-<!-- _class: full-image-slide -->
+## The Dashboard (`TW2.5`) & Alternative Views (`TW2.9`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell010.png" alt="The Dashboard & Alternative Views" />
+> **Matching Representation to Task:** Aggregate multi-dimensional telemetry into a single glanceable **Dashboard**, and empower users to switch **Alternative Views** of the same dataset.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. `TW2.5` The Dashboard (At-a-Glance Telemetry)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_010_dashboard.png" alt="TW2.5 Executive KPI Dashboard" />
+</div>
+
+- **Single-Screen Situation Awareness:** Consolidates critical metrics (`50K`, `33%`, `16K`, trend lines, bar charts, treemaps) on one non-scrolling canvas.
+- **Design Rules:** Prioritize scannability, group related widgets via **Titled Sections (`TW4.4`)**, and avoid decorative chart junk.
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. `TW2.9` Alternative Views (Map vs. List Toggle)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_010_altviews.png" alt="TW2.9 Alternative Views Map vs List" />
+</div>
+
+- **One Data Model, Multiple Mental Models:** In mobile restaurant discovery, a floating toggle button lets users flip between a **Spatial Map View** (proximity & geography) and a **Linear List View** (ratings, hours & photos).
+- **MVC Decoupling:** The underlying JSON payload stays identical; only the presentation view changes!
+
+</div>
 </div>
 
 <!--
-How do we organize multiple sections of content within a single workspace without overwhelming the screen? Tidwell gives us four workhorse container patterns: **Module Tabs**, **Accordion**, **Collapsible Panels**, and **Movable / Floating Panels**.
+This slide contrasts two essential data-organization patterns: The Dashboard (TW2.5) and Alternative Views (TW2.9).
 
-Notice the subtle but vital architectural distinction between **Module Tabs** and an **Accordion**:
-- **Module Tabs** are **mutually exclusive (`1-of-N`)**: only one tab's content pane is visible at any moment, and all panes share the exact same fixed spatial footprint. Use tabs when categories are distinct peers and the user never needs to compare two tabs side by side.
-- **Accordions** stack vertically and can allow **multiple panels to remain open simultaneously (`M-of-N`)**. This makes Accordions ideal for FAQ pages, multi-section inspector sidebars (like Figma or CSS dev tools), or stacked mobile forms where users want to keep two sections expanded at once.
+On the left, a Power BI executive dashboard presents high-level KPIs, trend lines, and category breakdowns at a single glance without forcing vertical scrolling. On the right, a mobile restaurant finder implements Alternative Views (TW2.9): clicking the floating toggle button in the bottom-right corner switches the exact same search results between a spatial Map View (for checking geographic proximity) and a linear List View (for comparing ratings, prices, and food photos).
 
 💡 難字與專業術語解說：
 - module tabs: 模組化分頁籤（共用同一顯示區域、每次僅呈現單一作用中分頁內容的切換組件）
@@ -2207,16 +2379,39 @@ Notice the subtle but vital architectural distinction between **Module Tabs** an
 - floating palette: 浮動工具面板（可自由拖曳位置、懸浮於主畫布之上的專業工具列）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Temporal Complexity Control: Progressive Disclosure & Wizards (`TW2.7`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell011.png" alt="Temporal Organization: Progressive Disclosure & Wizards" />
+> **Guiding Users Through Time:** Never dump 100% of controls onto the initial screen—reveal advanced tools contextually via **Progressive Disclosure**, or sequence complex tasks into a **Wizard**.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. Progressive Disclosure (On-Demand Toolbars)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_011_disclosure.png" alt="Progressive Disclosure Toolbar Expansion" />
+</div>
+
+- **The 80/20 Pareto UI Rule:** Keep the initial presentation toolbar clean (showing only core slide layout actions).
+- **Contextual Expansion:** Only when the user clicks into text editing (**`編輯`**) does the second-tier formatting toolbar (font family, size, `B / I / U`, alignment, lists) unfold!
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. `TW2.7` The Wizard (Linear Step Decomposition)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_011_wizard.png" alt="TW2.7 Import Users Multi-Step Wizard" />
+</div>
+
+- **Divide and Conquer Intimidating Tasks:** Batch user provisioning (*Import Users*) is broken into 4 sequential checkpoints: **`1. Select File → 2. Entity Mapping → 3. Data Mapping → 4. Summary`**.
+- **Reduces Error Rates:** Validates each step (`Step 2 of 4`) before unlocking `Next >`.
+
+</div>
 </div>
 
 <!--
-Look closely at this visual comparison of Module Tabs, Accordions, Collapsible Panels, and Floating Palettes.
+How do we prevent complex features from overwhelming the user? By organizing complexity across time!
 
-A common rookie mistake in enterprise web apps is nesting Module Tabs inside another row of Module Tabs ("double-decked tabs"). When you stack two or three rows of tabs on top of each other, users lose track of which top tab owns which bottom tab. Whenever your hierarchy goes deeper than one level of tabs, switch to a left-hand vertical navigation tree combined with a content pane, or use Collapsible Panels within the page.
+On the left is Progressive Disclosure: when viewing a slide deck, the toolbar displays only high-level slide actions (`Background`, `Layout`, `Theme`, `Transition`). The moment the user clicks inside a text box to edit (`編輯`), the toolbar dynamically expands to reveal granular typography controls (`Arial`, `14pt`, `B`, `I`, `U`, alignment). On the right is The Wizard (TW2.7): deconstructing a complex enterprise CSV user-import workflow into four calm, linear steps (`Select File -> Entity Mapping -> Data Mapping -> Summary`).
 
 💡 難字與專業術語解說：
 - double-decked tabs: 雙層堆疊分頁籤（在分頁籤下方又嵌套另一排分頁籤的反模式，極易造成階層混淆）
@@ -2224,18 +2419,41 @@ A common rookie mistake in enterprise web apps is nesting Module Tabs inside ano
 - workspace customization: 工作區自訂化（允許進階使用者依個人工作流自由停靠或分離面板）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Modular Content Grouping: `TW4.5` Module Tabs vs. `TW4.6` Accordion
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell012.png" alt="TW4.5 Module Tabs vs. TW4.6 Accordion" />
+> **Architectural Decision Rule:** Use **Module Tabs** to swap mutually exclusive peer views (`1-of-N`), and use an **Accordion** to expand hierarchical details in-place (`M-of-N`).
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. `TW4.5` Module Tabs (`1-of-N` Context Swap)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_012_tabs.png" alt="TW4.5 Module Tabs Browse Site" />
+</div>
+
+- **Best For — Peer Categories at the Same Level:** Switching between **`TOPICS | ARCHIVES | PAGES`** swaps the entire content pane within a fixed spatial footprint.
+- **Constraint:** Users can only view **1 tab at a time**; never use tabs if users must compare two panes side-by-side (and never stack *double-decked tabs*!).
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. `TW4.6` Accordion (`M-of-N` In-Place Drilldown)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_012_accordion.png" alt="TW4.6 Accordion FAQ and Collapsible Sections" />
+</div>
+
+- **Best For — Drilling into Hierarchical Details:** Ideal for **`FAQ 常見問答`** (`最新產品`, `手機操作`) and multi-section inspector panels (`Section 1..4`).
+- **Preserves Page Context:** Expands answers vertically in-place without leaving the page, allowing multiple sections to stay open simultaneously.
+
+</div>
 </div>
 
 <!--
-Let's examine two more essential layout patterns: **Right/Left Alignment** in forms, and **Responsive Disclosure**.
+Frontend engineers frequently ask: "Should I use Module Tabs (TW4.5) or an Accordion (TW4.6) here?"
 
-Look at the form alignment rules on the left. Have you ever filled out a wide desktop form where the text labels were left-aligned on the far left edge of the screen, and the input boxes were 400 pixels away on the right? Your eyes have to play ping-pong across a massive white gap, causing you to type values into the wrong row! Tidwell highlights two superior patterns: **Top-Aligned Labels** (placed directly above each input field, allowing a single vertical eye fixation for the fastest completion time) or **Right-Aligned Labels** (which hug the left edge of the input boxes tightly so label and field form a clean visual spine).
-
-On the right, **Responsive Disclosure** shows how a multi-step checkout or configuration flow reveals the next logical section dynamically only after the current step is validated, keeping the screen calm and focused.
+Look at the structural comparison:
+- **Module Tabs (TW4.5)** on the left (`TOPICS | ARCHIVES | PAGES`) are for distinct, mutually exclusive views of data at the exact same hierarchical level (`1-of-N` context swapping inside a fixed box).
+- **Accordion (TW4.6)** on the right (`FAQ 常見問答` and `Section 1..4`) is for drilling down into hierarchical details within the exact same view—expanding and collapsing vertical sections in-place without navigating away from the page.
 
 💡 難字與專業術語解說：
 - eye fixation: 視覺凝視點（眼球在閱讀掃描過程中短暫停留聚焦以擷取資訊的座標點）
@@ -2286,20 +2504,54 @@ Notice the jagged red zig-zag saccades when labels are far from their fields, ve
 - scan path: 視覺掃描路徑（眼球在檢視畫面時依序停留與移動所構成的軌跡）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Section 3 Architecture: The 7-Stage Wayfinding & Navigation Trail
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell013.png" alt="Section 3: Wayfinding & Navigation Trail" />
+> **Urban Wayfinding in Software (Kevin Lynch):** Guide users seamlessly from the front door (`TW3.1`), through deep hierarchies (`TW3.11`) and modal sub-tasks (`TW3.4`), to safe exits (`TW3.6`).
+
+<div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 8px 12px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(15,23,42,0.05);">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 148" width="100%" height="135">
+<path d="M 30 88 C 110 88, 125 38, 185 38 C 255 38, 270 106, 335 106 C 405 106, 420 42, 485 42 C 555 42, 570 106, 635 106 C 705 106, 720 38, 785 38 C 855 38, 870 106, 935 106 L 1090 106" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round"/>
+<circle cx="80" cy="70" r="14" fill="#ffffff" stroke="#2563eb" stroke-width="4"/><text x="80" y="74" font-size="11" font-weight="900" fill="#1d4ed8" text-anchor="middle">1</text>
+<rect x="14" y="8" width="142" height="44" rx="6" fill="#eff6ff" stroke="#93c5fd"/><text x="85" y="25" font-size="11.5" font-weight="900" fill="#1e3a8a" text-anchor="middle">Entry Points (TW3.1)</text><text x="85" y="42" font-size="10" fill="#475569" text-anchor="middle">Obvious starting lines</text>
+<circle cx="215" cy="52" r="14" fill="#ffffff" stroke="#2563eb" stroke-width="4"/><text x="215" y="56" font-size="11" font-weight="900" fill="#1d4ed8" text-anchor="middle">2</text>
+<rect x="145" y="76" width="145" height="44" rx="6" fill="#eff6ff" stroke="#93c5fd"/><text x="217" y="93" font-size="11.5" font-weight="900" fill="#1e3a8a" text-anchor="middle">Sign-in Tools (TW3.9)</text><text x="217" y="110" font-size="10" fill="#475569" text-anchor="middle">Top-right identity hub</text>
+<circle cx="350" cy="102" r="14" fill="#ffffff" stroke="#0d9488" stroke-width="4"/><text x="350" y="106" font-size="11" font-weight="900" fill="#0f766e" text-anchor="middle">3</text>
+<rect x="285" y="16" width="145" height="44" rx="6" fill="#f0fdfa" stroke="#5eead4"/><text x="357" y="33" font-size="11.5" font-weight="900" fill="#115e59" text-anchor="middle">Breadcrumbs (TW3.11)</text><text x="357" y="50" font-size="10" fill="#475569" text-anchor="middle">The hierarchical trail home</text>
+<circle cx="495" cy="44" r="14" fill="#ffffff" stroke="#0d9488" stroke-width="4"/><text x="495" y="48" font-size="11" font-weight="900" fill="#0f766e" text-anchor="middle">4</text>
+<rect x="422" y="76" width="156" height="44" rx="6" fill="#f0fdfa" stroke="#5eead4"/><text x="500" y="93" font-size="11.5" font-weight="900" fill="#115e59" text-anchor="middle">Progress Steps (TW3.10)</text><text x="500" y="110" font-size="10" fill="#475569" text-anchor="middle">"How many steps left?"</text>
+<circle cx="645" cy="102" r="14" fill="#ffffff" stroke="#d97706" stroke-width="4"/><text x="645" y="106" font-size="11" font-weight="900" fill="#b45309" text-anchor="middle">5</text>
+<rect x="578" y="16" width="146" height="44" rx="6" fill="#fffbeb" stroke="#fcd34d"/><text x="651" y="33" font-size="11.5" font-weight="900" fill="#92400e" text-anchor="middle">Modal Panels (TW3.4)</text><text x="651" y="50" font-size="10" fill="#475569" text-anchor="middle">Focused, isolated tasks</text>
+<circle cx="790" cy="40" r="14" fill="#ffffff" stroke="#e11d48" stroke-width="4"/><text x="790" y="44" font-size="11" font-weight="900" fill="#be123c" text-anchor="middle">6</text>
+<rect x="720" y="76" width="152" height="44" rx="6" fill="#fff1f2" stroke="#fda4af"/><text x="796" y="93" font-size="11.5" font-weight="900" fill="#9f1239" text-anchor="middle">Escape Hatches (TW3.6)</text><text x="796" y="110" font-size="10" fill="#475569" text-anchor="middle">Mandatory emergency exit</text>
+<circle cx="950" cy="106" r="14" fill="#ffffff" stroke="#7c3aed" stroke-width="4"/><text x="950" y="110" font-size="11" font-weight="900" fill="#6d28d9" text-anchor="middle">7</text>
+<rect x="915" y="20" width="192" height="44" rx="6" fill="#faf5ff" stroke="#d8b4fe"/><text x="1011" y="37" font-size="11.5" font-weight="900" fill="#581c87" text-anchor="middle">Annotated Scrollbar (TW3.12)</text><text x="1011" y="54" font-size="10" fill="#475569" text-anchor="middle">Spatial context in long lists</text>
+</svg>
+</div>
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### Phase A: Gateways & Orientation (`TW3.1`, `TW3.9`, `TW3.11`, `TW3.10`)
+- **Clear Entry (`TW3.1`) & Identity (`TW3.9`):** Establish an unmistakable starting line on launch while anchoring profile & sign-out tools in the top-right corner.
+- **Hierarchy (`TW3.11`) & Process (`TW3.10`):** Use **Breadcrumbs** to map structural depth (*Where am I?*) and **Progress Indicators** to map temporal workflow (*Are we there yet?*).
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### Phase B: Task Isolation, Exits & Minimap (`TW3.4`, `TW3.6`, `TW3.12`)
+- **Modals (`TW3.4`) Pair Strictly with Escape Hatches (`TW3.6`):** Whenever you isolate focus in a modal dialog or deep wizard, provide a zero-penalty emergency exit (`✕`, `Cancel`, `ESC`).
+- **Annotated Scrollbars (`TW3.12`):** Turn passive scroll tracks into spatial minimaps (A–Z jumps, IDE search/error ticks, timeline scrubbers).
+
+</div>
 </div>
 
 <!--
-Now we enter Section 3: Wayfinding & Navigation—Preventing Spatial Disorientation.
+Now we trace the 7-stage Wayfinding & Navigation Trail in Section 3 (TW3.1 through TW3.12).
 
-Wayfinding is a term borrowed from urban architecture and environmental design (pioneered by Kevin Lynch). When you walk into an unfamiliar international airport, you immediately ask four questions: *Where am I? Where can I go? How do I get there? And how do I get back?* Users ask those exact same four questions inside your software.
-
-Look at Tidwell's first two navigation patterns:
-1. **Clear Entry Points**: Do not drop new or returning users into a dense, intimidating cockpit of fifty tiny menus. Present a calm, task-oriented gateway—for example, three prominent cards saying *"Create New Project"*, *"Open Recent File"*, or *"Explore Templates"*.
-2. **Escape Hatch**: Whenever a user enters a deep wizard, a full-screen preview, a modal dialog, or an error state, provide an unmistakable, zero-penalty button (`Cancel`, `Close X`, or the top-left app logo) that teleports them safely back to a known home state.
+Wayfinding—borrowed from urban planner Kevin Lynch—ensures users never suffer spatial disorientation inside software:
+1. **Entry Points (TW3.1)** and **Sign-in Tools (TW3.9)** welcome users at the front door and anchor their identity.
+2. **Breadcrumbs (TW3.11)** and **Progress Indicators (TW3.10)** orient users across deep tree hierarchies and multi-step flows.
+3. **Modal Panels (TW3.4)** isolate critical tasks, **Escape Hatches (TW3.6)** guarantee an emergency exit back to safety, and **Annotated Scrollbars (TW3.12)** preserve spatial context inside massive single-page lists.
 
 💡 難字與專業術語解說：
 - clear entry points: 清晰入口點（在首頁或空白狀態提供少數幾個任務導向的明確起點，引導使用者順利起步）
@@ -2308,16 +2560,32 @@ Look at Tidwell's first two navigation patterns:
 - task-oriented gateway: 任務導向入口（以使用者想完成的具體目標而非系統底層資料表來組織的首頁入口）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Wayfinding Gateways: Clear Entry Points (`TW3.1`) & Sign-in Tools (`TW3.9`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell014.png" alt="Clear Entry Points & Sign-in Tools" />
+<div class="split55">
+<div class="left">
+
+* **1. `TW3.1` Clear Entry Points (Eliminating First-Launch Paralysis):**
+  - Never drop new or returning users into an intimidating cockpit of 50 tiny links.
+  - **Prezi Landing Page Anatomy:**
+    - **Top Global Actions:** High-contrast **`Log in`** and **`Get started`** buttons in the header bar.
+    - **Role-Based Task Gateways:** Two prominent cards below the hero headline (**`For Business`** vs. **`For Students / Educators`**) funnel different user personas down tailored paths immediately!
+* **2. `TW3.9` Sign-in Tools (Habitual Top-Right Identity Hub):**
+  - **GitHub Profile Menu:** Consolidates `Signed in as nlhsueh`, `Your profile`, `Your repositories`, `Your organizations`, `Settings`, and `Sign out` inside a single persistent **top-right avatar dropdown**.
+  - Exploits **Habituation (`TW1.7`)** and **Spatial Memory (`TW1.9`)** across all web apps.
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_014_entry_signin.png" alt="TW3.1 Clear Entry Points in Prezi and TW3.9 Sign-in Tools in GitHub" />
+
+</div>
 </div>
 
 <!--
-This diagram illustrates Clear Entry Points and Escape Hatches in practice.
+This slide examines TW3.1 Clear Entry Points and TW3.9 Sign-in Tools in production web applications.
 
-Think about why modern IDEs and creative suites show a "Welcome Screen" with clear task entry points when you launch them with no file open, rather than an empty gray screen surrounded by two hundred disabled toolbar icons. And notice how every checkout flow or modal overlay needs an obvious Escape Hatch so users never feel trapped in a one-way tunnel.
+On the Prezi landing page, notice how Clear Entry Points (TW3.1) guide both returning users (`Log in` / `Get started` in the top-right header) and new visitors (distinct, high-contrast gateway cards for `For Business` and `For Students`). Overlaid on the bottom-right is GitHub's Sign-in Tools dropdown (TW3.9): anchoring identity, repositories, settings, and `Sign out` in the habitual top-right corner where every web user's muscle memory expects it.
 
 💡 難字與專業術語解說：
 - welcome screen: 歡迎起始畫面（軟體啟動時提供最近檔案、範本與快速入門導引的任務入口頁）
@@ -2325,19 +2593,33 @@ Think about why modern IDEs and creative suites show a "Welcome Screen" with cle
 - one-way tunnel: 單向死胡同（缺乏返回鍵或取消出口、強迫使用者只能一路按到底的壓迫式流程）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Golden Rule of Modals: Forced Response (`TW3.4`) & Escape Hatch (`TW3.6`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell015.png" alt="The Golden Rule of Modals" />
+<div class="split55">
+<div class="left">
+
+* **Why Modal Panels (`TW3.4`) Are High-Risk UI Components:**
+  - A **Forced Response Panel (Modal)** dims the background canvas and locks out all other navigation to command 100% user focus (e.g., authentication popups, destructive delete confirmations).
+* **The Golden Engineering Rule (`TW3.4` + `TW3.6`):**
+  - Whenever you force a user into a **`TW3.4` Modal Panel**, you **MUST explicitly engineer a `TW3.6` Escape Hatch** to prevent them from feeling trapped!
+  - **The top-right `"✕"` close icon is just as important as the `"Submit / LOGIN"` button.**
+* **4 Mandatory Escape Hatch Mechanics (See Tree Diagram):**
+  1. Visible **top-right `"✕"`** button + explicit **`Cancel`** button.
+  2. Keyboard **`ESC` key** and **backdrop-click** dismissal.
+  3. **Safe Parent Return:** Clicking `"✕"` at any deep node in the hierarchy tree (dashed blue arrows) teleports the user cleanly back to their exact prior state without data loss!
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_015_modal_escape.png" alt="The Golden Rule of Modals: TW3.4 Forced Response Panel and TW3.6 Escape Hatch" />
+
+</div>
 </div>
 
 <!--
-Next in Wayfinding, let's examine four orientation and跳转 (jump) patterns: **Breadcrumbs**, **Modal Dialogs**, **Sequence Map**, and **Annotated Scrollbar**.
+Memorize the Golden Rule of Modals illustrated here: if you force a user into a Forced Response Panel (TW3.4 Modal Dialog) to guarantee focus, you must explicitly engineer an Escape Hatch (TW3.6) so they never feel trapped in a dead end.
 
-- **Breadcrumbs** (`Home > Electronics > Audio > Headphones`) show the user's exact hierarchical ancestry—not their chronological browser history! Each segment is clickable, letting the user jump two or three levels up the hierarchy in a single click.
-- **Modal Dialogs** intentionally interrupt the main workflow and dim the background. Because modals are disruptive, reserve them strictly for critical confirmations (like destructive actions) or short, self-contained sub-tasks.
-- **Sequence Map (Step Indicator)** turns a multi-step wizard (`1. Cart → 2. Shipping → 3. Payment → 4. Review`) into a visual progress roadmap, showing completed steps, current position, and remaining effort.
-- **Annotated Scrollbar** turns a passive scrollbar track into a high-density spatial minimap—marking search hits, compiler errors, Git diff changes, or timeline chapters right along the scroll track.
+In the login modal on the left, the top-right "✕" button (circled in blue) is every bit as critical as the "LOGIN" button. And as the navigation tree on the right shows with dashed blue return arrows, triggering an Escape Hatch from any deep sub-task node must return the user safely to their previous parent node without corrupting their state.
 
 💡 難字與專業術語解說：
 - breadcrumbs: 麵包屑導覽列（源自童話糖果屋，顯示當前頁面在網站階層結構中從根節點到當前位置的路徑）
@@ -2346,16 +2628,34 @@ Next in Wayfinding, let's examine four orientation and跳转 (jump) patterns: **
 - annotated scrollbar: 標註型捲軸（在捲軸軌道上疊加搜尋命中點、錯誤位置或日期刻度標記的空間視覺化組件）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Answering "Where Am I?": 3-Tier Spatial & Progress Orientation
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell016.png" alt="Answering: Where am I, and how much is left?" />
+<div class="split55">
+<div class="left">
+
+* **1. Top Tier — The Process (`TW3.10` Progress Indicators):**
+  - **Question Answered:** *"Which step am I on, and how much effort is left?"*
+  - **Mechanism:** Numbered stepper (`① ── ② ── 3 - - 4`) in linear checkout or onboarding wizards; completed steps are solid blue, remaining steps are muted gray.
+* **2. Middle Tier — The Hierarchy (`TW3.11` Breadcrumbs):**
+  - **Question Answered:** *"Where am I inside this deep, nested information tree?"*
+  - **Mechanism:** FCU Course System trail **`112-2 > 資電學院 > 資訊系 > 1122 Web程式設計(資訊二合)[1325] > H02`**—every ancestor node is a one-click shortcut upward!
+* **3. Bottom Tier — The Page (`TW3.12` Annotated Scrollbar):**
+  - **Question Answered:** *"Where am I inside this massive single-page dataset?"*
+  - **Mechanism:** Alphabetical **`A..Z` index gutter** (`M` highlighted) along a 10,000-contact list (or date/error ticks in IDEs) for instant spatial scrubbing.
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_016_three_tiers.png" alt="3-Tier Orientation: TW3.10 Progress Indicators, TW3.11 Breadcrumbs, and TW3.12 Annotated Scrollbar" />
+
+</div>
 </div>
 
 <!--
-Look at how these four wayfinding patterns appear in real software interfaces.
-
-Notice the Annotated Scrollbar on the bottom right: every developer who uses VS Code, IntelliJ, or Chrome DevTools relies on those colored tick marks in the scrollbar gutter—yellow ticks for search matches, red ticks for syntax errors, green and blue bars for Git additions and modifications—and Google Photos uses a date-annotated scrollbar so you can scrub directly to "October 2021" across fifty thousand photos in one second.
+Look at how these three wayfinding patterns form a complete 3-Tier Orientation Hierarchy answering "Where am I, and how much is left?":
+1. **Top Tier — The Process (TW3.10 Progress Indicators)**: The `1 -> 2 -> 3 -> 4` stepper shows temporal progress inside a linear, multi-step workflow.
+2. **Middle Tier — The Hierarchy (TW3.11 Breadcrumbs)**: The FCU course system path (`112-2 > College of IEE > CSIE > Web Programming > H02`) reveals structural ancestry inside a deep information tree.
+3. **Bottom Tier — The Page (TW3.12 Annotated Scrollbar)**: The `A..Z` alphabetical index bar along the right edge of a massive contact list provides page-level spatial context and one-tap jumping.
 
 💡 難字與專業術語解說：
 - scrollbar gutter: 捲軸溝槽軌道（視窗右側供捲軸滑塊移動與顯示標記的垂直長條區域）
@@ -2408,16 +2708,42 @@ Look at the visual comparison between a **Thumbnail Grid** and a **Carousel**:
 - banner blindness: 橫幅廣告盲視（使用者下意識忽略外觀或行為類似動態輪播廣告區塊的認知現象）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Section 4 Taxonomy: 6 Data Display & Collection Patterns (`TW7.1–TW7.10`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell017.png" alt="Section 4: Data Display (Lists) Overview" />
+> **Matching List Architecture to Device & Task:** Choose between side-by-side master-detail views, mobile drilldowns, 2D visual grids, horizontal carousels, pagination, and inline creation rows.
+
+<div class="tw-tax-grid-6">
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW7.1 TWO-PANEL SELECTOR</div><div class="tw-tax-title">Two-Panel Split View</div><div class="tw-tax-sub">Master list on left, live details on right (Desktop).</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW7.2 ONE-WINDOW DRILLDOWN</div><div class="tw-tax-title">One-Window Drilldown</div><div class="tw-tax-sub">Full-screen list-to-detail transition with Back button (Mobile).</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW7.5 THUMBNAIL GRID</div><div class="tw-tax-title">Thumbnail Grid</div><div class="tw-tax-sub">"Small but many" 2D matrix for visual-first scanning.</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW7.6 CAROUSEL</div><div class="tw-tax-title">Carousel</div><div class="tw-tax-sub">Horizontal space-saving strip with arrow/dot affordances.</div></div>
+  <div class="tw-tax-chip is-amber"><div class="tw-tax-code">TW7.7 PAGINATION</div><div class="tw-tax-title">Pagination</div><div class="tw-tax-sub">Partition massive tables into addressable numbered pages.</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW7.10 NEW-ITEM ROW</div><div class="tw-tax-title">New-Item Row</div><div class="tw-tax-sub">Inline `+ Add item` creation slot at the end of a list/table.</div></div>
+</div>
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### `TW7.7` Pagination vs. Infinite Scroll vs. "Load More"
+- **Pagination (`< 1 2 3 ... >`):** Best for **goal-driven hunting** (admin tables, search results); gives dataset scale, preserves footer access, and supports bookmarking *"Page 4"*.
+- **Infinite Scroll:** Best for **casual grazing** (social feeds), but causes the **"Footer Trap"** and loses spatial addressability.
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### `TW7.10` New-Item Row (Frictionless Inline Creation)
+- **Eliminate Modal Popups for Simple List Entries:** Place a dedicated **`[ + Add new row... ]`** slot directly at the bottom (or top) of a to-do list, spreadsheet, or database table.
+- **Pairs with `TW1.12` Keyboard Only:** Pressing `Enter` commits the row and auto-focuses the next inline creation slot!
+
+</div>
 </div>
 
 <!--
-This diagram compares Thumbnail Grids and Carousels side by side.
+Here is the complete 6-pattern taxonomy for Section 4: Data Display & Lists (TW7.1 through TW7.10).
 
-Notice how Netflix, Spotify, and App Stores combine both patterns thoughtfully: they use horizontal Carousels to showcase several distinct curated categories ("Continue Watching", "Trending Now", "Award-Winning Dramas") within a single viewport, and once you click into a specific genre or search result, they switch to a full 2D Thumbnail Grid for deep browsing.
+In addition to Two-Panel Split View (TW7.1), One-Window Drilldown (TW7.2), Thumbnail Grid (TW7.5), and Carousel (TW7.6)—which we inspect with live UI screenshots on the next two slides—pay close attention to Pagination (TW7.7) and New-Item Row (TW7.10):
+- **Pagination (TW7.7)** partitions massive datasets into addressable pages so users can hunt for specific records without falling into the "footer trap" of infinite scroll.
+- **New-Item Row (TW7.10)** places an inline `+ Add item` input row right at the boundary of a list or table (like Notion, Trello, or Airtable), eliminating the friction of popping open a separate modal dialog just to add one item.
 
 💡 難字與專業術語解說：
 - curated category: 策展精選分類（經編輯或演算法挑選主題後呈現的內容集合）
@@ -2425,21 +2751,39 @@ Notice how Netflix, Spotify, and App Stores combine both patterns thoughtfully: 
 - deep browsing: 深度探索瀏覽（使用者已有明確類別目標、需要大面積快速掃描大量項目的瀏覽模式）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Responsive List Architecture: Split View (`TW7.1`) vs. Drilldown (`TW7.2`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell018.png" alt="Desktop Split View vs. Mobile Drilldown" />
+> **Responsive Parity Across Viewports:** Persist the master list alongside details on wide desktop monitors (`TW7.1`), and degrade gracefully to full-screen drilldown with a mandatory **`Back`** button on mobile (`TW7.2`).
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. Desktop Context: `TW7.1` Two-Panel Split View
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_018_slack_split.png" alt="TW7.1 Desktop Two-Panel Split View in Slack" />
+</div>
+
+- **Master-Detail Persistence (Slack Desktop):** The left sidebar persists channels & DMs (`#marketing` highlighted) while the right pane renders the live conversation thread.
+- **Eliminates "Pogo-Sticking":** Users switch between 10 channels in 10 clicks without a single Back-button round trip!
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. Mobile Context: `TW7.2` One-Window Drilldown
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_018_ios_drilldown.png" alt="TW7.2 Mobile One-Window Drilldown in iOS Mail" />
+</div>
+
+- **Full-Viewport Replacement (iOS Mail):** On narrow screens, tapping an email in `Ecommerce (3)` replaces the list entirely with the message detail view (`1 of 50`).
+- **Two Mandatory Controls:** A prominent top-left **`< Back`** button (blue arrow) plus top-right **`▲ / ▼`** prev/next steppers!
+
+</div>
 </div>
 
 <!--
-When data is text-heavy, multi-attribute, and quantitative—such as financial transactions, server logs, or issue trackers—Thumbnail Grids waste space. That's where **Alternating Row Striping** and **Pagination vs. Infinite Scroll** come in.
+Look at how the exact same Master-Detail information architecture adapts across desktop and mobile viewports:
 
-In wide data tables, a user's eye has to travel horizontally from the item name in Column 1 all the way to the action button in Column 8. Without visual guidance, the eye easily slips up or down one row. **Alternating Row Striping (Zebra Striping)** uses subtle, low-contrast background shading on every even row to create horizontal visual rails—though modern tables also pair this with subtle row-hover highlighting.
-
-On the right, compare the three ways to load large lists:
-1. **Pagination (`Page 1, 2, 3...`)**: Gives users a predictable sense of dataset scale, preserves access to the page footer, and lets someone bookmark or return to *"Page 4, middle row"*. Best for enterprise tables, search results, and admin dashboards.
-2. **Infinite Scroll**: Continuously appends content as the user scrolls down. Great for social media feeds where users are casually browsing, but terrible if a user wants to find a specific item again or reach links in the website footer!
-3. **"Load More" Button**: Often the goldilocks compromise for e-commerce—giving users explicit control over when to fetch the next batch of 24 items without trapping the footer.
+On the left, **Slack on Desktop** uses **TW7.1 Two-Panel Split View**: wide screen real estate allows the channel list (`#marketing`) to stay pinned on the left while message details render on the right, completely eliminating back-and-forth "pogo-sticking." On the right, **iOS Mail on Mobile** uses **TW7.2 One-Window Drilldown**: because a smartphone screen is too narrow for two side-by-side columns, tapping a row replaces the entire viewport with the detail view—making the top-left `Back` button (and the `1 of 50` up/down arrows) strictly mandatory!
 
 💡 難字與專業術語解說：
 - alternating row striping (zebra striping): 奇偶列斑馬紋底色（在寬表格中以極淡的深淺交錯背景色形成水平視覺軌道，防止跨欄看錯行）
@@ -2448,16 +2792,39 @@ On the right, compare the three ways to load large lists:
 - footer trap: 頁尾陷阱（因無限捲動不斷在底部塞入新內容，導致使用者永遠無法觸及頁面底部的版權與聯絡資訊列）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Visual Collection Scanning: Thumbnail Grid (`TW7.5`) vs. Carousel (`TW7.6`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell019.png" alt="Thumbnail Grid & Carousel" />
+> **2D Parallel Comparison vs. 1D Vertical Compression:** Use a **Thumbnail Grid** when users need rapid multi-item visual comparison, and a **Carousel** when showcasing curated highlights in tight vertical space.
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. `TW7.5` Thumbnail Grid ("Small but Many" Matrix)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_019_thumbnail_grid.png" alt="TW7.5 Thumbnail Grid in Windows Pictures Explorer" />
+</div>
+
+- **High-Speed Visual Scanning:** Lays out dozens of visual assets (Windows `Pictures` gallery, e-commerce products, video cards) in an aligned 2D matrix.
+- **Parallel Evaluation:** Exploits human pre-attentive vision so users can compare 30+ items simultaneously on one screen.
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. `TW7.6` Carousel (Horizontal Space Compression)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_019_carousel.png" alt="TW7.6 Horizontal Carousel with Directional Affordances" />
+</div>
+
+- **Single-Row Footprint:** Folds multiple large hero banners (`COMPUTER SYSTEM | INFORMATION SECURITY | CLOUD COMPUTING`) onto a single horizontal plane.
+- **Mandatory Affordances:** Must display unmistakable **`<` / `>` directional arrows** (circled in blue), pagination dots, or card-edge peeking—and avoid fast auto-rotation!
+
+</div>
 </div>
 
 <!--
-Look at this side-by-side comparison of Zebra-Striped Tables, Pagination, and Infinite Scroll.
+This slide compares two classic visual collection patterns: Thumbnail Grid (TW7.5) and Carousel (TW7.6).
 
-Every time you design a list view in a software project, ask yourself: *"Is my user grazing an endless entertainment stream, or are they hunting for a specific record to compare and act upon?"* If they are grazing, Infinite Scroll reduces click friction. If they are hunting, sorting, and comparing, Pagination (or a virtualized table with an annotated scrollbar) gives them spatial control and addressability.
+On the left, the Windows File Explorer `Pictures` view demonstrates **TW7.5 Thumbnail Grid**: using a "small but many" 2D matrix so the human eye can scan and compare dozens of images in parallel. On the right, a web portal header demonstrates **TW7.6 Carousel**: compressing multiple large visual banners (`COMPUTER SYSTEM`, `INFORMATION SECURITY`, `CLOUD COMPUTING`) into a single horizontal strip. Notice the blue circle highlighting the right `>` arrow—a carousel must always provide clear directional signifiers so users know more items exist off-screen!
 
 💡 難字與專業術語解說：
 - grazing vs. hunting: 漫遊瀏覽 vs. 目標狩獵（資訊尋求行為的兩種典型模式：消遣式隨意滑動 vs. 精準查找特定紀錄）

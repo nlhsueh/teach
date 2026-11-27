@@ -6389,3 +6389,117 @@ section:has(div.alt-interactive-stage) h2 {
   line-height: 1.42;
   color: #0c4a6e;
 }
+
+/* ==========================================================================
+   Tidwell 6.3 Pattern Cards, Cropped UI Figures & Taxonomy Grids
+   ========================================================================== */
+.tw-fig-box {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.tw-fig-box img {
+  max-height: 195px !important;
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto !important;
+}
+
+.tw-fig-box.is-short img {
+  max-height: 162px !important;
+}
+
+.tw-fig-box.is-tall img {
+  max-height: 365px !important;
+}
+
+.tw-tax-grid-12 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.tw-tax-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-bottom: 8px;
+}
+
+.tw-tax-chip {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1.4px solid #cbd5e1;
+  border-left: 4px solid #0284c7;
+  border-radius: 8px;
+  padding: 4.5px 9px;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+}
+
+.tw-tax-chip.is-amber {
+  border-left-color: #d97706;
+}
+
+.tw-tax-chip.is-emerald {
+  border-left-color: #059669;
+}
+
+.tw-tax-chip.is-purple {
+  border-left-color: #7c3aed;
+}
+
+.tw-tax-code {
+  font-size: 10.5px;
+  font-weight: 900;
+  color: #0284c7;
+  font-family: 'Fira Code', monospace;
+  letter-spacing: 0.02em;
+}
+
+.tw-tax-chip.is-amber .tw-tax-code { color: #b45309; }
+.tw-tax-chip.is-emerald .tw-tax-code { color: #047857; }
+.tw-tax-chip.is-purple .tw-tax-code { color: #6d28d9; }
+
+.tw-tax-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-top: 1px;
+}
+
+.tw-tax-sub {
+  font-size: 10.5px;
+  color: #475569;
+  line-height: 1.24;
+  margin-top: 1.5px;
+}
+
+.tw-tax-grid-12 + .two-columns .card,
+.tw-tax-grid-6 + .two-columns .card {
+  padding: 8px 14px !important;
+}
+
+.tw-tax-grid-12 + .two-columns .card h3,
+.tw-tax-grid-6 + .two-columns .card h3 {
+  font-size: 16.5px !important;
+  margin-bottom: 5px !important;
+  padding-bottom: 4px !important;
+}
+
+.tw-tax-grid-12 + .two-columns .card li,
+.tw-tax-grid-6 + .two-columns .card li {
+  font-size: 13.8px !important;
+  line-height: 1.32 !important;
+  margin-bottom: 4px !important;
+}

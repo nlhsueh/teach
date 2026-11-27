@@ -1972,17 +1972,48 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - prospective memory: 前瞻性記憶（「記得未來要去某處做某事」的記憶能力，極易受外部干擾而遺忘）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Section 1 全景圖：12 大核心使用者行為模式 (`TW1.1–TW1.12`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell003.png" alt="Section 1: General Patterns Overview" />
+> **Herbert Simon 滿意決策原則 (Satisficing)：** 真實使用者不會窮舉計算全局最佳路徑，而是直接點擊第一個看似「**夠好 (Good Enough)**」的線索並邊試邊走！
+
+<div class="tw-tax-grid-12">
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW1.1 SAFE EXPLORATION</div><div class="tw-tax-title">安全探索</div><div class="tw-tax-sub">提供無痛 Undo 與返回，消除迷航恐懼。</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW1.2 INSTANT GRATIFICATION</div><div class="tw-tax-title">即時滿足</div><div class="tw-tax-sub">進入系統數秒內即刻完成核心任務。</div></div>
+  <div class="tw-tax-chip is-amber"><div class="tw-tax-code">TW1.3 SATISFICING</div><div class="tw-tax-title">滿意決策</div><div class="tw-tax-sub">「夠好」勝過完美；讓首要行動線索極致醒目。</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW1.4 MIDSTREAM CHANGES</div><div class="tw-tax-title">中途變更</div><div class="tw-tax-sub">允許在流程中途直接微調參數而不必重來。</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW1.5 DEFERRED CHOICE</div><div class="tw-tax-title">延遲抉擇</div><div class="tw-tax-sub">跳過前期非必要註冊牆（稍後再填）。</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW1.6 INCREMENTAL BUILD</div><div class="tw-tax-title">增量式建構</div><div class="tw-tax-sub">邊做邊改搭配即時預覽回饋，減輕記憶負擔。</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW1.7 HABITUATION</div><div class="tw-tax-title">習慣化</div><div class="tw-tax-sub">遵循跨平台標準慣例，建立無意識肌肉記憶。</div></div>
+  <div class="tw-tax-chip is-amber"><div class="tw-tax-code">TW1.8 MICROBREAKS</div><div class="tw-tax-title">微休息與碎片注意力</div><div class="tw-tax-sub">支援 60 秒碎片化操作並自動保存捲動與草稿。</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW1.9 SPATIAL MEMORY</div><div class="tw-tax-title">空間記憶</div><div class="tw-tax-sub">核心工具位置恆定錨定，嚴禁動態隨機漂移。</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW1.10 PROSPECTIVE MEMORY</div><div class="tw-tax-title">前瞻記憶</div><div class="tw-tax-sub">以徽章、釘選與草稿外化「未來待辦事項」。</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW1.11 STREAMLINED REPEAT</div><div class="tw-tax-title">精簡重複操作</div><div class="tw-tax-sub">將繁瑣重複步驟自動化為一鍵批次操作。</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW1.12 KEYBOARD ONLY</div><div class="tw-tax-title">純鍵盤操作</div><div class="tw-tax-sub">為高階專業用戶提供完整 Tab 動線與快捷鍵。</div></div>
+</div>
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### 滿意決策 (`TW1.3`) 與碎片化微休息 (`TW1.8`)
+- **滿意決策 (*Satisfy + Suffice*)：** 閱讀冗長說明書的認知成本過高，使用者會直接點擊第一個看似合理的按鈕，若走錯再靠 `Undo` 退回。
+- **微休息 (Microbreaks)：** 現代人在搭電梯、等車的 30 秒碎片時間操作 App，系統必須自動保留瀏覽進度與未送出草稿。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### 精簡重複 (`TW1.11`) 與純鍵盤流 (`TW1.12`)
+- **精簡重複操作：** 絕不強迫使用者將 5 次點擊重複執行 50 遍——應提供**全部取代 (Replace All)**、多選批次處理或格式複製刷。
+- **純鍵盤操作：** 高頻資料登錄系統（ERP、IDE、醫療掛號）必須支援純鍵盤 `Tab` 跳欄與快捷鍵，免除滑鼠往返摩擦。
+
+</div>
 </div>
 
 <!--
-請看 Section 1 的 12 個通用行為模式總覽卡片：
-從 Safe Exploration、Instant Gratification、Satisficing、Changes in Midstream，一路涵蓋到 Habituation、Spatial Memory 與 Keyboard Only。
-
-每一個模式背後，都對應著人機互動與認知心理學的深刻實證定律。
+請看 Section 1 的 12 個通用行為模式完整全景矩陣（TW1.1 至 TW1.12）：
+除了前一頁介紹的八大模式外，請特別注意這裡標示出的四項關鍵行為模式：
+1. **滿意決策 (Satisficing, TW1.3)**：諾貝爾獎得主 Herbert Simon 指出，人類面對介面時不會像電腦一樣窮舉所有選項找最佳解，而是看到第一個「夠好」的按鈕就點下去試誤。
+2. **微休息 (Microbreaks, TW1.8)**：迎合現代人注意力破碎化的特性，隨時保存工作狀態。
+3. **精簡重複操作 (Streamlined Repetition, TW1.11)** 與 **純鍵盤操作 (Keyboard Only, TW1.12)**：為高頻率專家使用者消除機械式重複點擊與滑鼠切換成本。
 
 💡 難字與專業術語解說：
 - optimal rationality: 最佳理性模型（假設決策者具備無限時間與算力去評估所有可能選項的理想化假設）
@@ -1990,18 +2021,41 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - action cue: 行動視覺線索（畫面中引導點擊或操作的按鈕、連結與高對比圖示）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 核心行為實戰：安全探索 (`TW1.1`) 與即時滿足 (`TW1.2`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell004.png" alt="Safe Exploration & Instant Gratification" />
+> **消除初次點擊阻力：** 以非阻斷式 **Undo 吐司通知**消除誤觸恐懼，並透過首頁 **Buy Again（再次購買）** 讓老顧客一秒直達目標！
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. `TW1.1` 安全探索 (Safe Exploration)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_004_safe_undo.png" alt="TW1.1 安全探索 Undo 吐司通知" />
+</div>
+
+- **讓使用者無懼點擊：** 封存郵件或移除項目時，不彈出煩人的「您確定嗎？」確認框，而是立即執行並於底部浮現 **`Item archived. [Undo]`** 復原列。
+- **與尼爾森原則共鳴：** 完美結合 **NS01（系統狀態可見性）** 與 **NS03（使用者控制與自由）**。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. `TW1.2` 即時滿足 (Instant Gratification)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_004_buy_again.png" alt="TW1.2 即時滿足 再次購買捷徑" />
+</div>
+
+- **跳過漫長轉換漏斗：** 針對使用者回購率高的日常消耗品，在個人首頁直接提供 **`Buy Again（再次購買）`** 專區與一鍵購物車按鈕（`$619`、`$520`）。
+- **三秒內創造成功體驗：** 省去「搜尋 → 篩選 → 選規格 → 加購物車」的繁瑣步驟。
+
+</div>
 </div>
 
 <!--
 請看這兩組生動的實戰案例：
 
-左側是 Safe Exploration：當使用者封存郵件或刪除項目時，畫面上彈出一個帶有「Undo」操作的吐司通知（Toast Notification）。這正是尼爾森原則中的使用者控制與自由（NS03）與防錯（NS05）的極致體現！
+左側是 Safe Exploration（TW1.1 安全探索）：當使用者封存郵件或刪除項目時，畫面上彈出一個帶有「Undo」操作的吐司通知（Toast Notification）。這正是尼爾森原則中的系統狀態可見性（NS01）與使用者控制與自由（NS03）的極致體現！
 
-右側是 Instant Gratification：在電商 App 中，針對顧客買過的日常消耗品，直接提供「Buy Again（再次購買）」捷徑，省去搜尋、選規格、加購物車的漫長漏斗。
+右側是 Instant Gratification（TW1.2 即時滿足）：在電商 App 中，針對顧客買過的日常消耗品，直接提供「Buy Again（再次購買）」捷徑與一鍵加購物車按鈕，省去搜尋、選規格、加購物車的漫長漏斗。
 
 💡 難字與專業術語解說：
 - onboarding: 新手引導與初次上手體驗（使用者首次接觸產品直到成功完成核心價值的過程）
@@ -2009,18 +2063,41 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - activation rate: 產品啟用轉換率（新使用者成功完成首次核心價值體驗的指標比例）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 尊重使用者決策節奏：中途變更 (`TW1.4`) 與延遲抉擇 (`TW1.5`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell005.png" alt="Changes in Midstream & Deferred Choice" />
+> **彈性決策動線：** 絕不把使用者鎖死在單向隧道中——允許在結果頁原地微調條件而不必重頭來過，並將非核心表單欄位延後填寫。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. `TW1.4` 中途變更 (Changes in Midstream)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_005_thsr_midstream.png" alt="TW1.4 中途變更 台灣高鐵時刻表查詢" />
+</div>
+
+- **拒絕打掉重練：** 在高鐵時刻表查詢（`Taipei → Taichung, 17:00`）結果頁中，若班次客滿，右上角直接提供 **`← Earlier trains | Later trains →`** 即時微調時間窗！
+- **完整保留上下文：** 免除使用者按上一頁、重選起訖站與重填日期的挫折感。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. `TW1.5` 延遲抉擇 (Deferred Choice)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_005_skip_deferred.png" alt="TW1.5 延遲抉擇 Skip for now" />
+</div>
+
+- **極小化前期摩擦成本：** 在初次個人資料設定（*Profile Setup*）畫面右上角，明確提供 **`Skip for now（稍後再填）`**，先讓使用者進門體驗核心功能。
+- **漸進式資料收集：** 待使用者真正要結帳、儲存或發布時，再引導補齊次要欄位。
+
+</div>
 </div>
 
 <!--
 請看這兩個人性化設計案例：
 
-上方是台灣高鐵時刻表查詢：當你查出 17:00 的班次後，如果發現客滿，右上角直接提供「更早車次 (Earlier trains)」與「更晚車次 (Later trains)」快捷鍵！使用者不需要重新按上一頁、重新選站名、重新填時間。這就是 Changes in Midstream。
+左欄是台灣高鐵時刻表查詢：當你查出 17:00 的班次後，如果發現客滿，右上角直接提供「更早車次 (Earlier trains)」與「更晚車次 (Later trains)」快捷鍵！使用者不需要重新按上一頁、重新選站名、重新填時間。這就是 Changes in Midstream（TW1.4）。
 
-下方是 Deferred Choice：在初次註冊流程中，除了輸入姓名密碼，右上角明確提供「Skip for now（稍後再填）」。先讓使用者進門體驗核心價值，而不是用十道個人資料問題把顧客嚇跑。
+右欄是 Deferred Choice（TW1.5）：在初次註冊流程中，除了輸入姓名密碼，右上角明確提供「Skip for now（稍後再填）」。先讓使用者進門體驗核心價值，而不是用十道個人資料問題把顧客嚇跑。
 
 💡 難字與專業術語解說：
 - hot-reloading: 熱重載／即時預覽更新（修改局部內容或代碼後無須重啟即刻呈現視覺結果）
@@ -2028,14 +2105,29 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - basal ganglia: 基底核（大腦中負責習慣化動作與程序性運動記憶的深層神經結構）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 增量式建構 (`TW1.6`)：雙欄即時預覽與低認知負荷創作
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell006.png" alt="TW1.6 Incremental Construction" />
+<div class="split64">
+<div class="left">
+
+* **核心認知痛點——人類工作記憶容量極限：**
+  - 人類無法在動手打字前，就在大腦工作記憶中完整構思出一篇 10 頁 LaTeX 論文、複雜 SQL 查詢或大型網頁排版。
+  - 傳統批次模式（*盲寫 500 行代碼 → 編譯 → 面對滿屏報錯*）會嚴重打斷心流。
+* **`TW1.6` 增量式建構閉迴路架構（以 Overleaf 為例）：**
+  1. **左側工作區 (Authoring Workspace)：** 每次只專注建構與微調一小段模組化語法（`\documentclass{IEEEtran}`、章節段落或表格）。
+  2. **右側即時回饋 (Live Feedback)：** 系統高頻率自動編譯並同步渲染出台灣軟體工程研討會（`TCSE template`）雙欄完稿 PDF。
+  3. **工程效益：** 將 Norman 的「執行與評估鴻溝」收斂為毫秒級的「建構 → 微調 → 視覺印證」正向迴路！
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_006_overleaf.png" alt="TW1.6 增量式建構 Overleaf LaTeX 線上編輯器" />
+
+</div>
 </div>
 
 <!--
-請看這張 Incremental Construction（增量式建構）的代表作：Overleaf / LaTeX 論文線上編輯器。
+請看這張 Incremental Construction（TW1.6 增量式建構）的代表作：Overleaf / LaTeX 論文線上編輯器。
 
 左側是原始碼工作區（Workspace），右側是即時編譯預覽（Live Feedback）。使用者每修改一段文字或一個公式，右側便以響應式回饋即時印證。這大幅降低了人類工作記憶的負擔，讓複雜的創造性任務變得可控且愉悅。
 
@@ -2045,18 +2137,35 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - intended action: 預期計畫行動（使用者打算在未來某個時間點或條件下執行的待辦動作）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 順應人類記憶機制：習慣化 (`TW1.7`)、空間記憶 (`TW1.9`) 與前瞻記憶 (`TW1.10`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell007.png" alt="Habituation, Prospective Memory & Spatial Memory" />
+<div class="split55">
+<div class="left">
+
+* **1. `TW1.7` 習慣化 (Habituation —— 程序性肌肉記憶)：**
+  - 將核心導覽列（`Dashboard`、`Projects`、`Analytics`、`Reports`）固定於符合業界慣例的左側邊欄，培養無意識的反射操作。
+  - **設計禁忌：** 切勿擅自篡改標準快捷鍵（如 `Cmd+S`）或通用手勢，否則使用者的肌肉記憶會變成誤觸陷阱！
+* **2. `TW1.9` 空間記憶 (Spatial Memory —— 幾何位置恆定)：**
+  - 人腦極擅長記住功能的「相對空間座標」（例如右上角恆定放置**設定齒輪 `⚙️`**）。
+  - **黃金準則：** 嚴禁根據使用頻率動態洗牌或隨機搬移工具列圖示的位置！
+* **3. `TW1.10` 前瞻記憶 (Prospective Memory —— 外部視覺提醒)：**
+  - 「記得未來要回來處理某事」的前瞻記憶極易被訊息打斷而遺忘。
+  - 透過側邊欄紅底數字徽章 **`Saved Items (3)`** 將待辦狀態外化至畫面上，替使用者的大腦記住未完成任務！
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_007_memory_dashboard.png" alt="融合習慣化、空間記憶與前瞻記憶的企業儀表板" />
+
+</div>
 </div>
 
 <!--
 請看現代儀表板如何巧妙融合三大記憶機制：
 
-左側是 Habituation（習慣化）：標準的側邊欄導覽，讓使用者憑肌肉記憶就能盲按；
-側邊欄上的紅底數字標籤「Saved Items (3)」是 Prospective Memory（前瞻記憶）：提醒你還有 3 件儲存的項目尚未處理；
-右上角的設定齒輪則是 Spatial Memory（空間記憶）：永遠固定在右上角，讓大腦不需要耗費視覺搜尋成本。
+左側是 Habituation（TW1.7 習慣化）：標準的側邊欄導覽，讓使用者憑肌肉記憶就能盲按；
+側邊欄上的紅底數字標籤「Saved Items (3)」是 Prospective Memory（TW1.10 前瞻記憶）：提醒你還有 3 件儲存的項目尚未處理；
+右上角的設定齒輪則是 Spatial Memory（TW1.9 空間記憶）：永遠固定在右上角，讓大腦不需要耗費視覺搜尋成本。
 
 💡 難字與專業術語解說：
 - trifecta: 黃金三要素、三連勝組合（三個相輔相成缺一不可的核心機制）
@@ -2114,15 +2223,45 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - visual noise: 視覺雜訊（畫面中干擾注意力集中於主要任務的多餘線條、文字與控制項）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Section 2 全景圖：11 大資訊架構與內容佈局模式 (`TW2.1–TW4.7`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell008.png" alt="Section 2: Organizing Content & Layout Overview" />
+> **從巨觀骨架到微觀容器：** 先確立跨頁面一致的全局視覺框架（`TW2.1–TW4.2`），再將高密度局部資訊收納進模組化容器（`TW4.4–TW4.7`）。
+
+<div class="tw-tax-grid-12">
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW2.1 DISCOVERY TRIFECTA</div><div class="tw-tax-title">內容發現三要素</div><div class="tw-tax-sub">精選 Feature / 搜尋 Search / 瀏覽 Browse。</div></div>
+  <div class="tw-tax-chip is-amber"><div class="tw-tax-code">TW2.2 MOBILE DIRECT</div><div class="tw-tax-title">行動端直達體驗</div><div class="tw-tax-sub">開門見山直入核心工具，免除冗長啟動牆。</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW2.5 DASHBOARD</div><div class="tw-tax-title">高密度儀表板</div><div class="tw-tax-sub">於單一畫面匯總核心 KPI 與即時趨勢圖表。</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW2.7 WIZARD</div><div class="tw-tax-title">步驟精靈向導</div><div class="tw-tax-sub">將龐大複雜流程拆解為線性引導關卡。</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW2.9 ALTERNATIVE VIEW</div><div class="tw-tax-title">替代檢視模式</div><div class="tw-tax-sub">同一份底層資料，自由切換地圖或清單格式。</div></div>
+  <div class="tw-tax-chip is-amber"><div class="tw-tax-code">TW2.10 MANY WORKSPACES</div><div class="tw-tax-title">多工作區並存</div><div class="tw-tax-sub">支援多視窗、多分割面板同步對照作業。</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW4.1 VISUAL FRAMEWORK</div><div class="tw-tax-title">全局視覺框架</div><div class="tw-tax-sub">跨頁面維持一致的導覽列、網格與色彩規範。</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW4.2 CENTER STAGE</div><div class="tw-tax-title">焦點中心舞台</div><div class="tw-tax-sub">將最大畫面比例留給首要核心任務畫布。</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW4.4 TITLED SECTION</div><div class="tw-tax-title">標題分段區塊</div><div class="tw-tax-sub">以清晰的字體階層與留白加速視覺掃描。</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW4.5 MODULE TABS</div><div class="tw-tax-title">模組分頁籤</div><div class="tw-tax-sub">1-of-N 同層級互斥內容的快速上下文切換。</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW4.6 ACCORDION</div><div class="tw-tax-title">手風琴摺疊面板</div><div class="tw-tax-sub">M-of-N 於同一頁面原地向下展開階層細節。</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW4.7 COLLAPSIBLE PANEL</div><div class="tw-tax-title">可收合側邊面板</div><div class="tw-tax-sub">平時隱藏次要工具抽屜，保持主畫布極簡。</div></div>
+</div>
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### 巨觀空間框架 (`TW2.2`, `TW2.10`, `TW4.1`, `TW4.2`)
+- **行動直達 (`TW2.2`) 與焦點舞台 (`TW4.2`)：** 打開 App 即刻進入核心工作區（如相機、地圖或主動態牆），並將 **> 70% 螢幕面積**保留給首要任務。
+- **視覺框架 (`TW4.1`)：** 透過統一的 12 欄網格、字級階層與 Design Tokens，確保數十個子頁面擁有渾然一體的品牌秩序。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### 微觀資訊分塊 (`TW4.4`, `TW4.5/4.6`, `TW4.7`)
+- **前注意力掃描 (`TW4.4 標題分段`)：** 人眼視覺皮層在 200 毫秒內會先掃描粗體小標與區塊邊界，絕不會像讀小說般逐字從頭讀到尾。
+- **可收合面板 (`TW4.7`)：** 允許使用者將次要屬性面板隨時收合，把寶貴螢幕空間還給主畫布。
+
+</div>
 </div>
 
 <!--
-請看 Section 2 的模式矩陣：
-涵蓋了 Feature/Search/Browse、Dashboard、Wizard、Alternative Views、Visual Framework、Center Stage、Tabs 與 Accordion 等 11 個經典版面組織模式。
+請看 Section 2 的 11 個資訊架構與版面組織模式全景圖（TW2.1 至 TW4.7）：
+涵蓋了從巨觀首頁架構（Feature/Search/Browse、Mobile Direct Access、Dashboard、Many Workspaces、Visual Framework、Center Stage）到微觀容器與流程控制（Wizard、Alternative Views、Titled Section、Module Tabs、Accordion 與 Collapsible Panel）。
 
 💡 難字與專業術語解說：
 - pre-attentive processing: 前注意力視覺處理（人類視覺皮層在 200 毫秒內無意識快速掃描色彩、大小與空間結構的生理機制）
@@ -2133,17 +2272,35 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - visual framework: 視覺框架系統（跨頁面維持一致的導覽列、網格與字體色彩規範）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 內容發現三要素解構 (`TW2.1`)：搜尋、焦點精選與分類瀏覽
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell009.png" alt="Content Discovery Deconstructed" />
+<div class="split64">
+<div class="left">
+
+* **為何所有頂尖數位平台首頁皆由這三塊拼圖組成？**
+  - 使用者打開外送（Foodpanda）、影音（Netflix）或電商首頁時，腦中存在三種截然不同的探索意圖：
+  1. **Search（頂部搜尋框 —— 高意圖精準狩獵）：**
+     - 服務**目標明確的狩獵型用戶**（如直接輸入「`Search for shops & restaurants`」找特定店家）。
+     - 必須置於頂部視覺黃金區並支援即時自動補全。
+  2. **Feature / Center Stage（`TW4.2` 中央焦點舞台 —— 系統主動策展）：**
+     - 服務**需要靈感推薦的猶豫型用戶**（如「`Your Restaurants`」精選熱門餐廳與限時折扣大卡）。
+     - 以高誘惑力視覺大圖觸發**即時滿足 (`TW1.2`)**。
+  3. **Browse（底部類別網格 —— 結構化分類漫遊）：**
+     - 服務**隨意逛逛的探索型用戶**（如「`Cuisines`」依*小吃、日式、台式、漢堡*分類導覽）。
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_009_foodpanda.png" alt="TW2.1 Foodpanda 外送 App 的內容發現三要素解構" />
+
+</div>
 </div>
 
 <!--
-請看這張在 Foodpanda 外送 App 上的內容發現解構實例：
+請看這張在 Foodpanda 外送 App 上的內容發現三要素（TW2.1）解構實例與左側結構線框圖：
 
 頂部是 Search（意圖驅動的直接查詢框）；
-中間是 Feature（系統主動精選推薦的焦點餐廳，Center Stage）；
+中間是 Feature（系統主動精選推薦的焦點餐廳，結合 TW4.2 Center Stage）；
 底部是 Browse（依料理類別如小吃、日式、台式、漢堡進行探索分類導航）。
 
 無論是淘寶、Netflix、Spotify 還是外送平台，全世界最成功的數位產品首頁，骨子裡全都在運用這套「搜尋 + 精選 + 瀏覽」的黃金三要素！
@@ -2154,17 +2311,40 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - spatial hierarchy: 空間層級結構（透過區塊位置、面積大小與縮排距離傳達資訊主從關係）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 資訊密度與檢視自主權：儀表板 (`TW2.5`) 與替代檢視 (`TW2.9`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell010.png" alt="The Dashboard & Alternative Views" />
+> **讓資料呈現適配任務情境：** 以高密度**儀表板**提供一覽無遺的全局態勢感知，並透過**替代檢視**賦予使用者自由切換資料視角的自主權。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. `TW2.5` 儀表板 (The Dashboard)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_010_dashboard.png" alt="TW2.5 Power BI 高密度營運儀表板" />
+</div>
+
+- **單一畫面全局掌握 (At-a-Glance)：** 將核心 KPI（`50K`、`33%`、`16K`、趨勢折線圖、長條圖與矩形樹圖）濃縮於不需捲動的單一視窗內。
+- **設計要領：** 極致強化視覺掃描性（Scannability）、善用對比色塊區隔異常值，並剔除無意義的裝飾噪音。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. `TW2.9` 替代檢視 (Alternative Views)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_010_altviews.png" alt="TW2.9 餐廳搜尋之地圖與清單替代檢視切換" />
+</div>
+
+- **同一份資料、多元心智視角：** 在行動端餐廳探索頁右下角提供浮動切換鈕，讓使用者在**空間地圖視圖 (Spatial Map)** 與**線性清單視圖 (Linear List)** 間一鍵切換。
+- **前後端解耦典範：** 後端回傳的 JSON 資料完全相同，由前端視使用者偏好動態轉換渲染視圖！
+
+</div>
 </div>
 
 <!--
 請看這兩大經典版面模式：
 
-左側是 The Dashboard（儀表板）：將龐大的營收、成長率、裝置比例以高密度、高對比的圖表集中展示，提供最高效率的視覺掃描；
-右側是 Alternative Views（替代檢視）：在餐廳探索頁中，右下角提供一個藍色切換鈕，讓使用者可以在「空間地圖視圖 (Spatial Map)」與「線性清單視圖 (Linear List)」之間無痛切換，滿足不同情境下的檢視偏好。
+左側是 The Dashboard（TW2.5 儀表板）：將龐大的營收、成長率、市場佔有率以高密度、高對比的圖表集中展示於單一畫面，提供最高效率的視覺掃描；
+右側是 Alternative Views（TW2.9 替代檢視）：在餐廳探索頁中，右下角提供一個藍色圈選的切換鈕，讓使用者可以在「空間地圖視圖（看距離方位）」與「線性清單視圖（看評分、營業時間與菜色照片）」之間無痛切換，滿足不同情境下的檢視偏好。
 
 💡 難字與專業術語解說：
 - module tabs: 模組化分頁籤（共用同一顯示區域、每次僅呈現單一作用中分頁內容的切換組件）
@@ -2174,17 +2354,40 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - floating palette: 浮動工具面板（可自由拖曳位置、懸浮於主畫布之上的專業工具列）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 時間維度的複雜度控制：漸進式揭露與步驟精靈 (`TW2.7`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell011.png" alt="Temporal Organization: Progressive Disclosure & Wizards" />
+> **沿著時間軸釋放複雜度：** 絕不在第一眼把所有進階控制項全部倒在畫面上——依操作情境**漸進式揭露**工具列，或將繁複流程拆解為**步驟精靈**。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. 漸進式揭露 (Progressive Disclosure)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_011_disclosure.png" alt="漸進式揭露：點擊編輯後展開進階字型工具列" />
+</div>
+
+- **80/20 柏拉圖介面法則：** 初始工具列保持極簡清爽（僅呈現「背景、版面配置、主題、轉場效果」等投影片級別按鈕）。
+- **情境觸發展開：** 唯有當使用者點選文字框進入<strong>「編輯」</strong>動作時，才動態展開完整的字型、字級、`B / I / U` 與段落對齊工具列！
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. `TW2.7` 步驟精靈 (The Wizard)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_011_wizard.png" alt="TW2.7 Import Users 四步驟匯入精靈" />
+</div>
+
+- **化繁為簡的線性引導：** 將令人生畏的「批次匯入使用者 (*Import Users*)」拆解為 4 個明確關卡：**`1. Select File → 2. Entity Mapping → 3. Data Mapping → 4. Summary`**。
+- **降低填表錯誤率：** 每一步驟（如 `Step 2 of 4` 欄位對應）獨立驗證通過後才進入 `Next >`，大幅減輕心理壓迫感。
+
+</div>
 </div>
 
 <!--
-請看時間維度的資訊組織模式：
+請看時間維度的兩大資訊組織模式：
 
-左側是 Progressive Disclosure（漸進式揭露）：平常工具列只顯示基本的粗體、斜體與對齊；當使用者點擊進階編輯時，才展開第二層完整的字型與段落面板，防止初始介面過度雜亂；
-右側是 The Wizard（精靈步驟）：在進行大量使用者匯入時，將「選檔案 → 欄位對應 → 資料檢驗 → 總結」拆解為嚴格的線性向導，步步為營。
+左側是 Progressive Disclosure（漸進式揭露）：平常工具列只顯示投影片層級的「背景、版面配置、主題、轉場效果」；當使用者點擊文字進入「編輯」狀態時，才展開第二層完整的字型、粗體、斜體與段落對齊面板，防止初始介面過度雜亂；
+右側是 The Wizard（TW2.7 步驟精靈）：在進行大量使用者匯入（Import Users）時，將「選取檔案 → 實體欄位對應 → 資料型別檢驗 → 匯入總結」拆解為嚴格的線性向導，步步為營。
 
 💡 難字與專業術語解說：
 - double-decked tabs: 雙層堆疊分頁籤（在分頁籤下方又嵌套另一排分頁籤的反模式，極易造成階層混淆）
@@ -2192,17 +2395,40 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - workspace customization: 工作區自訂化（允許進階使用者依個人工作流自由停靠或分離面板）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 模組化容器對決：模組分頁 (`TW4.5`) vs. 手風琴摺疊 (`TW4.6`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell012.png" alt="TW4.5 Module Tabs vs. TW4.6 Accordion" />
+> **前端架構選型鐵律：** 同層級互斥視圖的切換用 **Module Tabs (`1-of-N`)**；同一視圖內原地向下展開階層細節用 **Accordion (`M-of-N`)**。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. `TW4.5` 模組分頁 (Module Tabs)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_012_tabs.png" alt="TW4.5 Module Tabs 模組分頁切換" />
+</div>
+
+- **適用情境 —— 同層級且互斥的平輩分類 (`1-of-N`)：** 如網站導覽區塊中的 **`TOPICS | ARCHIVES | PAGES`**，切換分頁會替換整個固定容器的內容上下文。
+- **工程限制：** 同一時間僅能看一個分頁；若使用者需要「上下同時比對兩個區塊」，或層級超過一層（禁堆疊雙層 Tabs！），應改用手風琴。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. `TW4.6` 手風琴摺疊 (Accordion)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_012_accordion.png" alt="TW4.6 Accordion FAQ 常見問答與手風琴面板" />
+</div>
+
+- **適用情境 —— 原地深入展開階層細節 (`M-of-N`)：** 最常用於 **`FAQ 常見問答`**（`最新產品`、`手機操作`）與多區塊屬性設定面板（`Section 1..4`）。
+- **保持頁面脈絡不中斷：** 點擊標題即在原地垂直推開詳細說明，不跳離當前頁面，且可允許同時展開多個小節進行對照。
+
+</div>
 </div>
 
 <!--
-這是前端工程師最常面臨的抉擇：到底該用分頁 (Tabs) 還是手風琴 (Accordion)？
+這是前端工程師最常面臨的容器選型抉擇：到底該用分頁 (Module Tabs, TW4.5) 還是手風琴 (Accordion, TW4.6)？
 
-左側的 Module Tabs（模組分頁）：最適合在「同一個階層下，存在互斥檢視」的情境（如文章列表中的「主題 / 封存 / 頁面」），切換時會替換掉整個內容上下文；
-右側的 Accordion（手風琴摺疊）：最適合在「完全相同的視圖中，展開階層細節」（如常見問答 FAQ），讓使用者在不跳離當前頁面的前提下原地展開深度資訊。
+請看左欄的 Module Tabs（TW4.5 模組分頁）：最適合在「同一個階層下，存在互斥檢視（1-of-N）」的情境（如 Browse Site 中的「TOPICS / ARCHIVES / PAGES」），切換時會替換掉整個內容面板的上下文；
+請看右欄的 Accordion（TW4.6 手風琴摺疊）：最適合在「完全相同的視圖中，原地展開階層細節（M-of-N）」（如 FAQ 常見問答與 Section 1..4），讓使用者在不跳離當前頁面的前提下原地展開深度資訊。
 
 💡 難字與專業術語解說：
 - eye fixation: 視覺凝視點（眼球在閱讀掃描過程中短暫停留聚焦以擷取資訊的座標點）
@@ -2257,17 +2483,50 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - scan path: 視覺掃描路徑（眼球在檢視畫面時依序停留與移動所構成的軌跡）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Section 3 全景圖：數位空間尋路與導航 7 大關卡 (`TW3.1–TW3.12`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell013.png" alt="Section 3: Wayfinding & Navigation Trail" />
+> **數位空間的都市尋路學 (Kevin Lynch)：** 從清晰的大門入口（`TW3.1`）出發，穿越深層樹狀結構（`TW3.11`）與模態任務（`TW3.4`），並隨時配備安全逃生艙（`TW3.6`）。
+
+<div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 8px 12px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(15,23,42,0.05);">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 148" width="100%" height="135">
+<path d="M 30 88 C 110 88, 125 38, 185 38 C 255 38, 270 106, 335 106 C 405 106, 420 42, 485 42 C 555 42, 570 106, 635 106 C 705 106, 720 38, 785 38 C 855 38, 870 106, 935 106 L 1090 106" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round"/>
+<circle cx="80" cy="70" r="14" fill="#ffffff" stroke="#2563eb" stroke-width="4"/><text x="80" y="74" font-size="11" font-weight="900" fill="#1d4ed8" text-anchor="middle">1</text>
+<rect x="14" y="8" width="142" height="44" rx="6" fill="#eff6ff" stroke="#93c5fd"/><text x="85" y="25" font-size="11.5" font-weight="900" fill="#1e3a8a" text-anchor="middle">明確進入點 (TW3.1)</text><text x="85" y="42" font-size="10" fill="#475569" text-anchor="middle">清晰醒目的第一道起跑線</text>
+<circle cx="215" cy="52" r="14" fill="#ffffff" stroke="#2563eb" stroke-width="4"/><text x="215" y="56" font-size="11" font-weight="900" fill="#1d4ed8" text-anchor="middle">2</text>
+<rect x="145" y="76" width="145" height="44" rx="6" fill="#eff6ff" stroke="#93c5fd"/><text x="217" y="93" font-size="11.5" font-weight="900" fill="#1e3a8a" text-anchor="middle">登入工具 (TW3.9)</text><text x="217" y="110" font-size="10" fill="#475569" text-anchor="middle">右上角恆定身分管理樞紐</text>
+<circle cx="350" cy="102" r="14" fill="#ffffff" stroke="#0d9488" stroke-width="4"/><text x="350" y="106" font-size="11" font-weight="900" fill="#0f766e" text-anchor="middle">3</text>
+<rect x="285" y="16" width="145" height="44" rx="6" fill="#f0fdfa" stroke="#5eead4"/><text x="357" y="33" font-size="11.5" font-weight="900" fill="#115e59" text-anchor="middle">麵包屑導覽 (TW3.11)</text><text x="357" y="50" font-size="10" fill="#475569" text-anchor="middle">深層階層的回溯返家軌跡</text>
+<circle cx="495" cy="44" r="14" fill="#ffffff" stroke="#0d9488" stroke-width="4"/><text x="495" y="48" font-size="11" font-weight="900" fill="#0f766e" text-anchor="middle">4</text>
+<rect x="422" y="76" width="156" height="44" rx="6" fill="#f0fdfa" stroke="#5eead4"/><text x="500" y="93" font-size="11.5" font-weight="900" fill="#115e59" text-anchor="middle">進度指示器 (TW3.10)</text><text x="500" y="110" font-size="10" fill="#475569" text-anchor="middle">解答「流程還剩幾步？」</text>
+<circle cx="645" cy="102" r="14" fill="#ffffff" stroke="#d97706" stroke-width="4"/><text x="645" y="106" font-size="11" font-weight="900" fill="#b45309" text-anchor="middle">5</text>
+<rect x="578" y="16" width="146" height="44" rx="6" fill="#fffbeb" stroke="#fcd34d"/><text x="651" y="33" font-size="11.5" font-weight="900" fill="#92400e" text-anchor="middle">模態面板 (TW3.4)</text><text x="651" y="50" font-size="10" fill="#475569" text-anchor="middle">強制聚焦的獨立短任務</text>
+<circle cx="790" cy="40" r="14" fill="#ffffff" stroke="#e11d48" stroke-width="4"/><text x="790" y="44" font-size="11" font-weight="900" fill="#be123c" text-anchor="middle">6</text>
+<rect x="720" y="76" width="152" height="44" rx="6" fill="#fff1f2" stroke="#fda4af"/><text x="796" y="93" font-size="11.5" font-weight="900" fill="#9f1239" text-anchor="middle">逃生出口 (TW3.6)</text><text x="796" y="110" font-size="10" fill="#475569" text-anchor="middle">無條件安全撤退的緊急出口</text>
+<circle cx="950" cy="106" r="14" fill="#ffffff" stroke="#7c3aed" stroke-width="4"/><text x="950" y="110" font-size="11" font-weight="900" fill="#6d28d9" text-anchor="middle">7</text>
+<rect x="915" y="20" width="192" height="44" rx="6" fill="#faf5ff" stroke="#d8b4fe"/><text x="1011" y="37" font-size="11.5" font-weight="900" fill="#581c87" text-anchor="middle">標註型捲軸 (TW3.12)</text><text x="1011" y="54" font-size="10" fill="#475569" text-anchor="middle">超長單頁清單的空間錨點</text>
+</svg>
+</div>
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### 階段 A：起點入口與空間定位 (`TW3.1`, `TW3.9`, `TW3.11`, `TW3.10`)
+- **入口 (`TW3.1`) 與身分 (`TW3.9`)：** 首頁提供毫不遲疑的任務起跑線，並將帳號、組織與登出選單恆定收納於右上角。
+- **階層 (`TW3.11`) 與進度 (`TW3.10`)：** 以**麵包屑**標示樹狀深度（*我在哪一層？*），以**進度球**標示線性流程（*還剩多少步？*）。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### 階段 B：任務隔離、緊急撤退與微縮導航 (`TW3.4`, `TW3.6`, `TW3.12`)
+- **模態面板 (`TW3.4`) 必配逃生出口 (`TW3.6`)：** 凡彈出鎖定背景的強制回應視窗，必須同步設計一鍵安全撤退的緊急出口（`✕`、`取消`、`ESC`）。
+- **標註型捲軸 (`TW3.12`)：** 將被動捲軸升級為高密度空間雷達（如通訊錄 `A–Z` 索引、IDE 語法錯誤紅點與 Git 修改色塊）。
+
+</div>
 </div>
 
 <!--
-請看 Section 3 的尋路路徑圖：
-從起點的 Entry Points 與 Sign-in Tools，經過局部的 Modal Panels 與 Escape Hatches，一路貫穿到 Breadcrumbs、Progress Indicators 與 Annotated Scrollbar。
-
-這條路徑串聯了使用者在整個軟體旅程中的每一步位置感知。
+請看 Section 3 的尋路與導航 7 大關卡路徑圖（TW3.1 至 TW3.12）：
+從起點的 Entry Points（TW3.1）與 Sign-in Tools（TW3.9），經過階層定位的 Breadcrumbs（TW3.11）與流程定位的 Progress Indicators（TW3.10），再進入局部聚焦的 Modal Panels（TW3.4）與必備的 Escape Hatches（TW3.6），最後延伸至超長頁面的 Annotated Scrollbar（TW3.12）。這條路徑串聯了使用者在整個軟體旅程中的每一步空間位置感知。
 
 💡 難字與專業術語解說：
 - clear entry points: 清晰入口點（在首頁或空白狀態提供少數幾個任務導向的明確起點，引導使用者順利起步）
@@ -2276,17 +2535,33 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - task-oriented gateway: 任務導向入口（以使用者想完成的具體目標而非系統底層資料表來組織的首頁入口）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 尋路起點與身分錨點：明確進入點 (`TW3.1`) 與登入工具 (`TW3.9`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell014.png" alt="Clear Entry Points & Sign-in Tools" />
+<div class="split55">
+<div class="left">
+
+* **1. `TW3.1` 明確進入點 (Clear Entry Points —— 消除首頁觀望癱瘓)：**
+  - 切忌讓新用戶一打開系統就面對 50 個密密麻麻的小連結而不知所措。
+  - **Prezi 首頁導航解構：**
+    - **頂部全局入口：** 右上角高對比標示 **`Log in`** 與藍底 **`Get started`** 主行動號召（CTA）。
+    - **角色導向分流閘門：** 主視覺下方提供清晰的大型入口卡片（左：**`For Business`** 企業團隊；右：**`For Students`** 師生教育），讓不同身分的訪客在 2 秒內找到專屬起點！
+* **2. `TW3.9` 登入與身分管理工具 (Sign-in Tools —— 右上角習慣化樞紐)：**
+  - **GitHub 右上角頭像下拉選單：** 將 `Signed in as nlhsueh`、個人檔案、儲存庫、組織、設定（`Settings`）與登出（`Sign out`）集中收納於**右上角固定位置**。
+  - 完美結合**習慣化 (`TW1.7`)** 與**空間記憶 (`TW1.9`)**！
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_014_entry_signin.png" alt="TW3.1 Prezi 明確進入點與 TW3.9 GitHub 登入身分管理工具" />
+
+</div>
 </div>
 
 <!--
 請看這兩個人性化導航案例：
 
-上方是 Prezi 首頁：頂部有極為醒目的「Log in」與「Get started」按鈕，主視覺下方有清晰的大按鈕，提供明確的入口（TW3.1 Entry Points）；
-右下方是 GitHub / 現代 Web 應用：點擊右上角頭像，展開的下拉選單將個人檔案、儲存庫、組織、設定與 Sign out 集中管理（TW3.9 Sign-in Tools），完全吻合使用者的習慣化肌肉記憶。
+上方背景是 Prezi 首頁：頂部有極為醒目的「Log in」與「Get started」按鈕，主視覺下方更有依角色分流的大型入口按鈕（「For Business」與「For Students」），提供毫不猶豫的明確入口（TW3.1 Clear Entry Points）；
+右下方是 GitHub 的帳號選單：點擊右上角頭像，展開的下拉選單將個人檔案、儲存庫、組織、設定與 Sign out 集中管理（TW3.9 Sign-in Tools），完全吻合使用者的習慣化肌肉記憶。
 
 💡 難字與專業術語解說：
 - welcome screen: 歡迎起始畫面（軟體啟動時提供最近檔案、範本與快速入門導引的任務入口頁）
@@ -2294,10 +2569,27 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - one-way tunnel: 單向死胡同（缺乏返回鍵或取消出口、強迫使用者只能一路按到底的壓迫式流程）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 模態視窗的黃金法則：強制回應面板 (`TW3.4`) 與逃生出口 (`TW3.6`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell015.png" alt="The Golden Rule of Modals: Forced Response Panel & Escape Hatch" />
+<div class="split55">
+<div class="left">
+
+* **為何模態面板 (`TW3.4` Modal Panels) 是高風險雙面刃？**
+  - **強制回應面板 (`TW3.4`)** 會以半透明黑幕鎖死背景畫面、強制打斷使用者心流，僅適用於高關注度的獨立短任務（如登入驗證、不可逆刪除確認）。
+* **模態視窗的黃金工程鐵律 (`TW3.4` + `TW3.6`)：**
+  - 只要你使用 **`TW3.4` 強制回應面板** 鎖住使用者注意力，就**必須無條件在架構上顯式設計 `TW3.6` 逃生出口 (Escape Hatch)**！
+  - **右上角的「`✕` 關閉鈕」與底部的「`LOGIN / 送出`」按鈕同等重要！**
+* **逃生出口 4 大必備實作規格（見右側樹狀回溯圖）：**
+  1. 視覺極度清晰的**右上角「`✕`」按鈕**與明確的「**取消 (Cancel)**」按鈕。
+  2. 同步綁定鍵盤 **`ESC` 鍵**與**點擊灰色背景遮罩 (Backdrop)** 關閉。
+  3. **無損返回父節點：** 從樹狀結構任一深層節點觸發逃生出口（藍色虛線箭頭），必須安全退回觸發前的原始狀態，嚴禁遺失已填資料！
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_015_modal_escape.png" alt="模態視窗黃金法則：TW3.4 強制回應面板與 TW3.6 逃生出口樹狀回溯圖" />
+
+</div>
 </div>
 
 <!--
@@ -2305,7 +2597,7 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 
 如果你為了強制使用者集中注意力，而使用「Forced Response Panel (TW3.4)」彈出一個阻斷背景的登入或輸入視窗，那麼你必須在架構上顯式設計「Escape Hatch (TW3.6 逃生出口)」！
 
-看右側的樹狀架構圖：彈跳視窗可以從樹狀結構的任何節點觸發，但點擊右上角的「X」或者按鍵盤「ESC」，必須能夠無條件安全返回先前的節點。右上角的「X」與底部的「登入」按鈕同等重要！
+看右側的樹狀架構圖：彈跳視窗或深層子流程可以從樹狀結構的任何節點觸發，但點擊右上角藍圈標出的「✕」或者按鍵盤「ESC」，必須能夠沿著藍色虛線箭頭無條件安全返回先前的父節點。右上角的「✕」與底部的「LOGIN」按鈕同等重要！
 
 💡 難字與專業術語解說：
 - breadcrumbs: 麵包屑導覽列（源自童話糖果屋，顯示當前頁面在網站階層結構中從根節點到當前位置的路徑）
@@ -2314,18 +2606,35 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - annotated scrollbar: 標註型捲軸（在捲軸軌道上疊加搜尋命中點、錯誤位置或日期刻度標記的空間視覺化組件）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 解答「我在哪裡、還剩多少」：三層次空間與進度定位體系
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell016.png" alt="Answering: Where am I, and how much is left?" />
+<div class="split55">
+<div class="left">
+
+* **1. 頂層 (Top Tier —— 流程進度 `TW3.10` Progress Indicators)：**
+  - **解答核心問題：** *「我現在走到第幾步？距離完成還剩多少步驟？」*
+  - **實作機制：** 線性多步驟流程中的編號節點（`① ── ② ── 3 - - 4`），已完成與當前步驟以亮藍實心標示，未達步驟以淺灰虛線預告。
+* **2. 中層 (Middle Tier —— 階層樹定位 `TW3.11` Breadcrumbs)：**
+  - **解答核心問題：** *「我身處整座深層資訊架構樹的哪一個分支？」*
+  - **實作機制：** 逢甲大學課程系統麵包屑 **`112-2 > 資電學院 > 資訊系 > 1122 Web程式設計(資訊二合)[1325] > H02`**，每一層父節點皆可一鍵點擊向上跳轉！
+* **3. 底層 (Bottom Tier —— 單頁長清單定位 `TW3.12` Annotated Scrollbar)：**
+  - **解答核心問題：** *「我在這份萬人通訊錄或萬行日誌的哪個區段？」*
+  - **實作機制：** 通訊錄右側邊緣的 **`A..Z` 字母標註捲軸**（藍底高亮 `M`），支援按住快速滑動檢索（Scrubbing）。
+
+</div>
+<div class="right">
+
+<img src="../../img/ch06/tidwell/crop_016_three_tiers.png" alt="三層次定位體系：TW3.10 進度指示器、TW3.11 麵包屑導覽、TW3.12 標註型捲軸" />
+
+</div>
 </div>
 
 <!--
-請看這張生動的三層定位對照圖：
+請看這張生動的三層次空間與進度定位對照圖：
 
-頂層 (Top Tier - The Process)：進度指示器（TW3.10 Progress Indicators），用在多步驟購物結帳或註冊向導中，回答「流程還剩幾步」；
-中層 (Middle Tier - The Hierarchy)：逢甲大學課程系統中的麵包屑記錄（TW3.11 Breadcrumbs），清晰展示「112-2 > 資電學院 > 資訊系 > Web程式設計」，回答「我在整座資訊樹的哪一層」；
-底層 (Bottom Tier - The Page)：通訊錄側邊的字母捲軸（TW3.12 Annotated Scrollbar），回答「我在這份萬人名單的哪個英文字母段落」。
+1. 頂層 (Top Tier - The Process)：進度指示器（TW3.10 Progress Indicators），用在多步驟購物結帳或匯入向導中，回答「線性流程還剩幾步」；
+2. 中層 (Middle Tier - The Hierarchy)：逢甲大學課程系統中的麵包屑軌跡（TW3.11 Breadcrumbs），清晰展示「112-2 > 資電學院 > 資訊系 > Web程式設計 > H02」，回答「我在整座樹狀資訊架構的哪一層」；
+3. 底層 (Bottom Tier - The Page)：通訊錄側邊的 A-Z 字母標註捲軸（TW3.12 Annotated Scrollbar），回答「我在這份單頁萬人名單的哪個字母段落」。
 
 💡 難字與專業術語解說：
 - scrollbar gutter: 捲軸溝槽軌道（視窗右側供捲軸滑塊移動與顯示標記的垂直長條區域）
@@ -2378,17 +2687,41 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - banner blindness: 橫幅廣告盲視（使用者下意識忽略外觀或行為類似動態輪播廣告區塊的認知現象）
 -->
 ---
-<!-- _class: full-image-slide -->
+## Section 4 全景圖：6 大資料呈現與集合展示模式 (`TW7.1–TW7.10`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell017.png" alt="Section 4: Data Display (Lists) Overview" />
+> **依裝置寬度與查找意圖選型：** 靈活搭配桌面雙欄分割、行動單視窗鑽取、二維縮圖網格、橫向輪播、可尋址分頁與列尾行內新增。
+
+<div class="tw-tax-grid-6">
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW7.1 TWO-PANEL SELECTOR</div><div class="tw-tax-title">雙欄主從分割檢視</div><div class="tw-tax-sub">左清單常駐、右細節即時連動（桌面寬螢幕首選）。</div></div>
+  <div class="tw-tax-chip"><div class="tw-tax-code">TW7.2 ONE-WINDOW DRILLDOWN</div><div class="tw-tax-title">單視窗深入鑽取</div><div class="tw-tax-sub">點擊後整頁切換至詳情並強制配返回鍵（行動端首選）。</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW7.5 THUMBNAIL GRID</div><div class="tw-tax-title">縮圖網格佈局</div><div class="tw-tax-sub">「小而多」二維矩陣排列，極大化平行視覺掃描速度。</div></div>
+  <div class="tw-tax-chip is-emerald"><div class="tw-tax-code">TW7.6 CAROUSEL</div><div class="tw-tax-title">橫向輪播組件</div><div class="tw-tax-sub">於有限垂直高度內水平折疊多張大圖，需明確箭頭指意。</div></div>
+  <div class="tw-tax-chip is-amber"><div class="tw-tax-code">TW7.7 PAGINATION</div><div class="tw-tax-title">分頁導覽控制</div><div class="tw-tax-sub">將海量資料切分為可精確尋址的頁碼批次。</div></div>
+  <div class="tw-tax-chip is-purple"><div class="tw-tax-code">TW7.10 NEW-ITEM ROW</div><div class="tw-tax-title">列尾行內新增列</div><div class="tw-tax-sub">於清單或表格末端直接提供 `+ 新增項目` 行內輸入槽。</div></div>
+</div>
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### `TW7.7` 分頁 (Pagination) vs. 無限捲動 (Infinite Scroll)
+- **分頁導覽 (`< 1 2 3 ... >`)：** 最適合**目標狩獵型查詢 (Hunting)**（如後台訂單表、搜尋結果），具備明確總量感、位置可尋址性（記得住「第 4 頁中間」），且不會遮蔽頁尾。
+- **無限捲動：** 適合**消遣漫遊 (Grazing)**（社群動態牆），但會造成永遠滑不到底部的<strong>「頁尾陷阱 (Footer Trap)」</strong>。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 8px 14px; font-size: 13.8px;">
+
+### `TW7.10` 列尾行內新增 (New-Item Row)
+- **消除新增單一項目的彈窗摩擦：** 在待辦清單、試算表或資料庫表格最底部直接放置一列 **`[ + 新增一列... ]`** 空白輸入槽（如 Notion、Trello、Airtable）。
+- **搭配純鍵盤流 (`TW1.12`)：** 輸入完畢按 `Enter` 即刻寫入並自動聚焦下一空白列，達成極速連續建檔！
+
+</div>
 </div>
 
 <!--
-請看 Section 4 的資料呈現模式卡片：
-涵蓋了 Two-Panel Selector、One Window Drilldown、Thumbnail Grid、Carousel、Pagination 與 New-Item Row。
-
-這組模式專門處理現代軟體中最常見的陣列、列表與集合資料結構。
+請看 Section 4 的 6 大資料呈現與集合展示模式全景矩陣（TW7.1 至 TW7.10）：
+除了下一頁即將透過真實截圖深入對照的 Two-Panel Split View（TW7.1）、One-Window Drilldown（TW7.2）、Thumbnail Grid（TW7.5）與 Carousel（TW7.6）之外，請特別注意 Pagination（TW7.7）與 New-Item Row（TW7.10）：
+- **Pagination（TW7.7 分頁控制）**：為目標導向的資料表提供精確的頁碼尋址能力，避免無限捲動（Infinite Scroll）造成的頁尾陷阱。
+- **New-Item Row（TW7.10 列尾行內新增列）**：在清單末端直接提供行內新增輸入槽，省去每次新增一筆小資料都要彈出模態對話框的點擊成本。
 
 💡 難字與專業術語解說：
 - curated category: 策展精選分類（經編輯或演算法挑選主題後呈現的內容集合）
@@ -2396,17 +2729,40 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - deep browsing: 深度探索瀏覽（使用者已有明確類別目標、需要大面積快速掃描大量項目的瀏覽模式）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 跨裝置清單架構：桌面雙欄分割 (`TW7.1`) vs. 行動單視窗鑽取 (`TW7.2`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell018.png" alt="Desktop Split View vs. Mobile Drilldown" />
+> **跨螢幕響應式對等原則：** 在桌面寬螢幕維持「左清單常駐、右細節連動 (`TW7.1`)」，在行動窄螢幕則自動轉換為「整頁深入鑽取 + 強制返回鍵 (`TW7.2`)」。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. 桌面寬螢幕：`TW7.1` 雙欄分割檢視 (Split View)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_018_slack_split.png" alt="TW7.1 Slack 桌面端雙欄主從分割檢視" />
+</div>
+
+- **主從清單同步常駐（以 Slack 桌面版為例）：** 左側頻道與私訊清單（`#marketing`）恆定保留，右側同步渲染完整對話內容與檔案預覽。
+- **徹底根除「跳跳虎式往返 (Pogo-Sticking)」：** 連續檢視 10 個頻道只需左側點擊 10 次，零返回鍵等待成本！
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. 行動窄螢幕：`TW7.2` 單視窗深入鑽取 (Drilldown)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_018_ios_drilldown.png" alt="TW7.2 iOS Mail 行動端單視窗深入鑽取與返回鍵" />
+</div>
+
+- **整頁視埠覆蓋切換（以 iOS Mail 為例）：** 手機螢幕寬度不足以並排雙欄，點擊 `Ecommerce (3)` 清單中的信件後，整頁推進替換為信件內文（`1 of 50`）。
+- **兩大強制導航組件：** 左上角必須配置醒目的 **`< Back` 返回鍵**（藍色箭頭所指），右上角搭配 **`▲ / ▼`** 上一封／下一封快捷鍵！
+
+</div>
 </div>
 
 <!--
-請看這張極具啟發性的跨裝置對照實例：
+請看這張極具啟發性的跨裝置響應式清單對照實例：
 
-左側是桌面端 Slack：採用 Two-Panel Split View（TW7.1），左側頻道與私訊清單恆定存在，右側為對話內容。使用者在切換頻道時不需要重新載入頁面；
-右側是行動端 iOS Mail：採用 One-Window Drilldown（TW7.2），點擊郵件後整頁推進顯示信件細節，左上角提供明確的「Back」返回按鈕，同時頂部還提供上下箭頭（1 of 50）讓使用者直接換信。
+左欄是桌面端 Slack：採用 Two-Panel Split View（TW7.1 雙欄主從分割檢視），左側頻道與私訊清單恆定存在，右側為對話內容。使用者在快速切換頻道時完全不需要按返回鍵或重新載入頁面；
+右欄是行動端 iOS Mail：採用 One-Window Drilldown（TW7.2 單視窗深入鑽取），點擊郵件後整頁推進顯示信件細節，左上角強制提供明確的「Back」返回按鈕（藍色箭頭處），同時頂部右側還提供上下箭頭（1 of 50）讓使用者在詳情頁內直接換信。
 
 💡 難字與專業術語解說：
 - alternating row striping (zebra striping): 奇偶列斑馬紋底色（在寬表格中以極淡的深淺交錯背景色形成水平視覺軌道，防止跨欄看錯行）
@@ -2415,17 +2771,40 @@ Tidwell 將龐大的介面模式歸納為環環相扣的四大維度：
 - footer trap: 頁尾陷阱（因無限捲動不斷在底部塞入新內容，導致使用者永遠無法觸及頁面底部的版權與聯絡資訊列）
 -->
 ---
-<!-- _class: full-image-slide -->
+## 視覺集合與空間壓縮：縮圖網格 (`TW7.5`) vs. 輪播切換 (`TW7.6`)
 
-<div class="centered-image">
-  <img src="../../img/ch06/tidwell/tidwell019.png" alt="Thumbnail Grid & Carousel" />
+> **二維平行掃描 vs. 一維空間折疊：** 需要快速比對大量視覺物件時採用**縮圖網格 (`TW7.5`)**；在有限垂直高度內展示少數焦點大圖時採用**輪播切換 (`TW7.6`)**。
+
+<div class="two-columns">
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 1. `TW7.5` 縮圖網格 (Thumbnail Grid —— 小而多矩陣)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_019_thumbnail_grid.png" alt="TW7.5 Windows 相簿縮圖網格佈局" />
+</div>
+
+- **極大化人眼平行掃描速率：** 將數十張圖片或商品卡（如 Windows `Pictures` 檔案總管）以整齊的二維矩陣排列。
+- **平行視覺比對：** 善用人類前注意力視覺皮層，讓使用者在 1 秒內同時掃描與比較 40 張照片的構圖與色調。
+
+</div>
+<div class="card" data-marpit-fragment style="padding: 10px 16px;">
+
+### 2. `TW7.6` 輪播切換 (Carousel —— 水平空間壓縮)
+<div class="tw-fig-box is-short">
+  <img src="../../img/ch06/tidwell/crop_019_carousel.png" alt="TW7.6 網站首頁橫向輪播與方向箭頭指意" />
+</div>
+
+- **單一水平帶空間折疊：** 在極為有限的垂直高度內，將三大主題橫幅（`COMPUTER SYSTEM | INFORMATION SECURITY | CLOUD COMPUTING`）壓縮於同一水平軌道。
+- **必備方向性指意 (Signifiers)：** 必須提供清晰醒目的**左右箭頭 `<` / `>`**（右側藍圈標示處）、頁碼圓點或邊緣露頭提示，並避免過快自動輪播干擾閱讀！
+
+</div>
 </div>
 
 <!--
-請看視覺密度與空間壓縮的兩種模式：
+請看視覺密度與空間壓縮的兩種經典集合模式：
 
-上方是 Windows 相簿的 Thumbnail Grid（TW7.5 縮圖網格）：採用「小而多」的密集矩陣排列，讓人眼在 1 秒鐘內掃描數十張圖片；
-下方是網站首頁的 Carousel（TW7.6 輪播橫幅）：在有限的螢幕高度內，將電腦系統、資訊安全、雲端運算三大主題橫向摺疊。請注意右側藍圈標出的箭頭指示符——輪播必須具備清晰的前進與後退操作線索！
+左欄是 Windows 相簿的 Thumbnail Grid（TW7.5 縮圖網格）：採用「小而多」的密集二維矩陣排列，讓人眼在 1 秒鐘內平行掃描數十張圖片；
+右欄是網站首頁的 Carousel（TW7.6 輪播橫幅）：在有限的螢幕垂直高度內，將電腦系統、資訊安全、雲端運算三大主題橫向摺疊。請特別注意右側藍圈標出的「>」箭頭指示符——輪播組件必須具備清晰的前進與後退操作線索！
 
 💡 難字與專業術語解說：
 - grazing vs. hunting: 漫遊瀏覽 vs. 目標狩獵（資訊尋求行為的兩種典型模式：消遣式隨意滑動 vs. 精準查找特定紀錄）
