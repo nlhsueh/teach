@@ -15,7 +15,7 @@
 | **Unit 05** | **單元測試與黑箱測試** | [1. JUnit 5 基礎](./docs/u05_utest/junit.md) · [2. 輸入分割 (BVA/EP)](./docs/u05_utest/partition.md) · [3. 組合與規則 (Pairwise/CTM/決策表)](./docs/u05_utest/combinatorial.md) · [4. 行為與屬性 (State/UC/PBT)](./docs/u05_utest/behavioral.md) · [解答庫](./docs/u05_utest/solutions/README.md) | `src/test/java/u05_junit/`<br>`src/test/java/u05_partition/`<br>`src/test/java/u05_combinatorial/`<br>`src/test/java/u05_behavioral/` |
 | **Unit 06** | **白箱覆蓋率與度量分析** | [白箱測試與 JaCoCo 分析](./docs/u06_wbtesting/whitebox_test.md) · [度量分析](./docs/u06_wbtesting/metrics.md) | `src/main/java/u06_coverage/`<br>`src/test/java/u06_coverage/`<br>`pom.xml (JaCoCo Plugin)` |
 | **Unit 07** | **變異測試 (Mutation)** | [變異測試與 PIT 工具](./docs/u07_mutation/mutation_test.md) | `src/main/java/u06_mutation/`<br>`src/test/java/u06_mutation/` |
-| **Unit 08** | **隔離與 Mock 整合測試** | [Mockito 實務](./docs/u08_integration/mokito.md) · [Spring 整合測試](./docs/u08_integration/Spring.md) · [Testcontainers](./docs/u08_integration/testcontainers_spring.md) | `src/main/java/u07_mockito/`<br>`src/test/java/u07_mockito/` |
+| **Unit 08** | **隔離與容器化整合測試** | [Mockito 實務](./docs/u08_integration/mokito.md) · [Testcontainers 容器化測試](./docs/u08_integration/testcontainers.md) | `src/main/java/u07_mockito/`<br>`src/test/java/u07_mockito/`<br>`src/main/java/u07_testcontainers/`<br>`src/test/java/u07_testcontainers/` |
 | **Unit 09** | **行為驅動開發 (BDD) 與 Web 測試** | [BDD 導論](./docs/u09_cucumber_bdd/intro_BDD.md) · [Cucumber 實務](./docs/u09_cucumber_bdd/bmi_cucumber.md) · [Selenium 測試](./docs/u09_cucumber_bdd/bmi_selenium.md) · [契約與 E2E 測試](./docs/u09_cucumber_bdd/pact_and_playwright.md) | `src/test/resources/features/`<br>`src/test/java/u08_cucumber/`<br>`src/test/java/u09_web/` |
 | **Unit 10** | **負載與混沌測試** | [K6 負載測試](./docs/u10_performance/k6_load_testing.md) · [JMeter 壓力測試](./docs/u10_performance/jmeter.md) · [混沌工程與模糊測試](./docs/u10_chaos_fuzzing/chaos_and_fuzzing.md) | `docs/u10_performance/`<br>`docs/u10_chaos_fuzzing/` |
 | **Unit 11** | **DevOps 與品質門檻** | [Git 流程](./docs/u11_devops/using_git.md) · [GitHub Actions 品質門檻](./docs/u11_devops/github_actions_quality_gate.md) | `docs/u11_devops/` |
@@ -38,7 +38,7 @@ LabDemo/
 │   ├── u05_utest/                        # 四大分類：junit, partition, combinatorial, behavioral
 │   ├── u06_wbtesting/                    # 白箱覆蓋率、JaCoCo
 │   ├── u07_mutation/                     # 變異測試、PIT
-│   ├── u08_integration/                  # Mockito、Spring、Testcontainers
+│   ├── u08_integration/                  # Mockito、Testcontainers (純 Java JDBC)
 │   ├── u09_cucumber_bdd/                 # Cucumber BDD、Selenium、Pact
 │   ├── u10_performance/                  # K6、JMeter 壓測
 │   ├── u10_chaos_fuzzing/                # 混沌工程、Fuzzing

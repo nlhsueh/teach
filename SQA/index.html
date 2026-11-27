@@ -121,6 +121,31 @@
       color: #1e3a8a;
     }
 
+    .hero-btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14.5px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1.5px solid rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-btn-ghost:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      background: rgba(255, 255, 255, 0.28);
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+
     .container {
       max-width: 1080px;
       margin: -24px auto 0 auto;
@@ -749,7 +774,7 @@
     <h1>軟體測試與品質保證 (SQA)</h1>
     <p>涵蓋缺陷因果鏈、Clean Code 防錯、黑白箱測試、變異測試、隔離架構到微服務契約與混沌工程</p>
     <div class="hero-actions" style="display:flex;justify-content:center;flex-wrap:wrap;gap:12px;">
-      <a href="lab.html" class="hero-btn-download" style="background:rgba(255,255,255,0.16);border-color:rgba(255,255,255,0.45);">
+      <a href="lab.html" class="hero-btn-ghost">
         <span>🧪</span>
         <span>上機實習 (Lab) 總覽首頁</span>
       </a>
@@ -1064,7 +1089,7 @@
         <div class="card-top">
           <div class="card-tag">Unit 07 · 投影片已更新</div>
           <h2>整合測試與 Test Double 替身架構</h2>
-          <p>Spring Boot 三層架構整合、Test Double 五大替身（Dummy, Stub, Spy, Mock, Fake）、Mockito 行為驗證與 Testcontainers 容器化資料庫實戰。</p>
+          <p>由下而上／由上而下／三明治整合策略、Test Double 五大替身（Dummy, Stub, Spy, Mock, Fake）、Mockito 行為驗證與 Testcontainers 容器化資料庫實戰。</p>
         </div>
         <div class="card-actions">
           <a href="Slide/html/slide07t_integration.html?transition=fade" class="btn btn-primary" target="_blank">
@@ -1076,21 +1101,14 @@
           </a>
           <div class="dropdown">
             <button class="btn btn-lab dropdown-btn" type="button" aria-haspopup="true" aria-expanded="false">
-              <span>🛠️ 上機實習 (3 個主題)</span>
+              <span>🛠️ 上機實習 (2 個主題)</span>
               <span class="dropdown-arrow">▼</span>
             </button>
             <div class="dropdown-menu">
               <div class="dropdown-header">
                 <span>Unit 07 實習主題</span>
-                <span class="tag">替身與整合</span>
+                <span class="tag">替身與容器整合</span>
               </div>
-              <a href="lab.html?file=LabDemo/docs/u08_integration/testcontainers_spring.md" class="dropdown-item" target="_blank">
-                <span class="item-icon">🐳</span>
-                <div class="item-text">
-                  <div class="item-title">Testcontainers 容器化整合測試</div>
-                  <div class="item-desc">真實 Docker 測試容器與 Spring Boot 整合</div>
-                </div>
-              </a>
               <a href="lab.html?file=LabDemo/docs/u08_integration/mokito.md" class="dropdown-item" target="_blank">
                 <span class="item-icon">🎭</span>
                 <div class="item-text">
@@ -1098,11 +1116,11 @@
                   <div class="item-desc">Mock, Stub, Spy 行為驗證與隔離替身</div>
                 </div>
               </a>
-              <a href="lab.html?file=LabDemo/docs/u08_integration/Spring.md" class="dropdown-item" target="_blank">
-                <span class="item-icon">🍃</span>
+              <a href="lab.html?file=LabDemo/docs/u08_integration/testcontainers.md" class="dropdown-item" target="_blank">
+                <span class="item-icon">🐳</span>
                 <div class="item-text">
-                  <div class="item-title">Spring 整合測試範例</div>
-                  <div class="item-desc">三層架構整合測試與依賴注入驗證</div>
+                  <div class="item-title">Testcontainers 容器化資料庫實戰</div>
+                  <div class="item-desc">純 Java JDBC + 真實 Docker PostgreSQL 整合測試</div>
                 </div>
               </a>
             </div>

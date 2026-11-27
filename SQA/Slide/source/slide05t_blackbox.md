@@ -3747,17 +3747,17 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 ---
 
 <!-- _class: lead -->
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
 
-# **5.11 屬性基礎測試 (PBT) 與變質測試 (MT)**
+# **5.11 屬性基礎測試 (PBT) 與測資收縮**
 
 > 「不再人工苦思特定測資，  
-> 而是宣告系統永不妥協的數學不變量與變質關係。」
+> 而是宣告系統永不妥協的通用屬性與變質關係。」
 
 ---
 
 <!-- _class: title-image-slide -->
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
 
 ## 5.11 核心測試觀念與六大技術全景圖 (Concept Thumbnails)
 
@@ -3767,35 +3767,35 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
 
 ## 範例測試 (EBT) vs. 屬性測試 (PBT) 典範轉移
 
 <div class="card-deck">
 
-* > 💡 從 Example-Based 走向 Property-Based：讓框架自動產生萬組極端隨機測資，尋找致命反例。
+> 💡 從 Example-Based 走向 Property-Based：由人類定義「規則不變量」，交由框架轟炸海量測資並自動收縮最小反例。
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### 📝 傳統範例測試 (Example-Based)
 - **手動設計單點特例**：
   - 工程師手挑輸入 `add(2, 3)`，斷言輸出必為 `5`。
 - **三大致命瓶頸**：
-  - **1. 思維偏見**：開發者潛意識只挑「自己覺得會過」的正常數字。
-  - **2. 邊界遺漏**：極易漏掉 `0`、`-1`、`Integer.MAX_VALUE` 溢位、空集合或特殊字元。
-  - **3. 維護沉重**：手寫幾十組相似測資，卻仍只覆蓋輸入空間的滄海一粟。
+  - **1. 思維偏見**：潛意識只挑「自己覺得會過」的正常數字。
+  - **2. 邊界遺漏**：易漏掉 `0`、`-1`、`MAX_VALUE` 溢位或空集合。
+  - **3. 無預言機困境 (Oracle Problem)**：面對搜尋引擎或 AI 模型，根本無法手寫單一標準答案。
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### 🎲 屬性基礎測試 (Property-Based, PBT)
-- **改為宣告「通用不變量 (Invariant)」**：
-  - 不管輸入何值，永遠滿足「交換律 `a + b == b + a`」或「反轉兩次等於自身」。
-- **PBT 框架三大自動化引擎**：
-  - **1. 屬性 (`@Property`)**：由人類定義永恆成立的邏輯規則。
-  - **2. 生成器 (`@ForAll`)**：自動轟炸 **1,000 組**隨機與極端邊界值。
-  - **3. 測資收縮 (`Shrinking`)**：一旦抓到 Bug，自動二分化簡為**最小可重現反例**！
+- **宣告「通用屬性 (Property)」**：
+  - 單次屬性如「反轉兩次等於自身」，或跨次關係屬性（即**變質測試 Metamorphic Testing, MT**，如「搜尋加條件，結果必為子集」）。
+- **PBT 框架三大引擎（以 Java `jqwik` 為例）**：
+  - **1. 屬性 (`@Property`)**：定義永遠不可打破的業務／數學規則。
+  - **2. 生成器 (`@ForAll`)**：自動轟炸 **1,000 組**隨機與惡魔邊界值。
+  - **3. 測資收縮 (`Shrinking`)**：抓到 Bug 後自動二分縮減為**最小反例**！
 
 </div>
 </div>
@@ -3803,7 +3803,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
 
 ## 屬性基礎測試 (PBT) 先驅：John Hughes
 
@@ -3818,11 +3818,11 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
   - 瑞典查爾摩斯工學院教授、ACM Fellow。2000 年與 Koen Claessen 共同發表 QuickCheck，獲頒 ACM SIGPLAN 最具影響力論文獎。
 - **測試思維的重大躍遷 (Paradigm Shift)**：
   - 提倡「**Don't write tests, specify properties!**」
-  - 人類專注於找出系統應遵守的永恆數學不變量，將繁瑣的測資生成交給電腦。
+  - 人類專注於找出系統應遵守的永恆不變量，將繁瑣測資生成交給電腦。
 - **測資收縮 (Shrinking)**：
-  - 解決了隨機測試「反例過大、無法除錯」的痛點，以演算法秒級自動二分縮減至最小致命測資。
+  - 解決隨機測試「反例過大、無法除錯」的痛點，秒級二分縮減至最小致命測資。
 - **現代 PBT 生態系基石**：
-  - 創立 Quviq 並在愛立信、Volvo 驗證；Java `jqwik`、Python `Hypothesis` 皆承襲其設計。
+  - Java `jqwik`（JUnit 5 + QuickCheck）、Python `Hypothesis`、Rust `proptest` 皆承襲其設計。
 
 </div>
 <div class="content-figure">
@@ -3839,31 +3839,35 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
 
-## 四大經典屬性設計模式：如何找出系統的「不變量」？
+## 五大通用屬性設計模式：單次不變量 ➔ 跨次變質關係 (MT)
 
 <div class="card-deck">
 
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
+> 💡 **變質測試 (Metamorphic Testing, MT，陳振宇 1998)** 本質上即為 PBT 的「跨次關係屬性」—— 當單次輸出無標準答案時，改檢驗輸入變換前後的相對關係 `R(f(x), f(T(x)))`！
 
-- **① 往返可逆性（去了再回來，必定等於自己）**：
-  - **公式**：`inverse(forward(x)) == x`
-  - **例子**：不必知道壓縮或加密後的亂碼長怎樣，只要驗證「**壓縮再解壓縮 = 原檔案**」、「**陣列反轉兩次 `reverse(reverse(L))` = 原陣列 `L`**」！
-- **② 結構與特徵守恆（不管怎麼變，核心特徵永遠不變）**：
-  - **公式**：`invariant(f(x)) == true`
-  - **例子**：對任意亂數陣列排序 `sort(L)`，雖不知排完第 3 個數是多少，但必滿足：**A. 元素總數不變（長度守恆）** 且 **B. 前數永遠 ≤ 後數（單調遞增）**！
+<div class="two-columns">
+<div class="card">
+
+### 📐 單次輸出屬性 `P(x, f(x))`
+- **① 往返可逆 (Round-Trip)**：`inverse(forward(x)) == x`
+  - 壓縮再解壓縮還原原檔；`reverse(reverse(L)) == L`。
+- **② 結構與上下界守恆 (Invariant)**：`invariant(f(x))`
+  - `sort(L)` 長度不變且單調遞增；電商結帳 `0 ≤ 實付 ≤ 原價` 且 `實付 + 折抵 == 原價`；房貸利率必鎖定 `[2.0%, 5.0%]`。
+- **③ 冪等性 (Idempotence)**：`f(f(x)) == f(x)`
+  - `sort(sort(L)) == sort(L)`、`trim(trim(s)) == trim(s)`。
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card">
 
-- **③ 冪等性（做一次跟重複做十次，結果完全一樣）**：
-  - **公式**：`f(f(x)) == f(x)`
-  - **例子**：已經排好序的資料再排一次結果不變 `sort(sort(L)) == sort(L)`；字串去除首尾空白做兩次結果不變 `trim(trim(s)) == trim(s)`。
-- **④ 代數與排列對稱性 (Symmetry & Algebraic — 以 5.3 節「三角形」為例)**：
-  - **公式**：`f(a, b, c) == f(b, c, a) == f(c, a, b)`
-  - **三角形對稱不變量**：隨機丟入任意三邊 `(a, b, c)`，雖不知它是哪種三角形，但**將三邊順序對調，分類結果必定相同**！（若程式只寫 `a+b<=c` 卻漏寫 `b+c<=a`，隨機測對稱性 0.1 秒即抓出 `triangle(2,3,6) != triangle(6,2,3)`！）
+### 🧬 跨次變質關係 `R(f(x), f(T(x)))` (MT)
+- **④ 對稱與抗擾動 (Symmetry / Perturbation)**：`f(T(x)) == f(x)`
+  - **三角形**：三邊順序對調 `triangle(a,b,c) == triangle(b,c,a)`、同乘 `k` 倍分類不變。
+  - **搜尋引擎**：前後加空白 `Search("  SQA  ") == Search("SQA")`、大小寫不敏感。
+- **⑤ 包含與單調性 (Inclusion / Monotonicity)**：`x₁ ≤ x₂ ➔ f(x₁) ≤ f(x₂)`
+  - **搜尋引擎**：條件變嚴格結果必為子集 `Search("Java SQA") ⊆ Search("Java")`。
+  - **電商 / 房貸**：`VIP 應付 ≤ 一般 ≤ 訪客`；多貸 100 萬利率只降不升。
 
 </div>
 </div>
@@ -3871,248 +3875,39 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
 
-## 為什麼叫 `jqwik`？什麼是「測資收縮 (Shrinking)」？
-
-<div class="card-deck">
-
-> 💡 隨機測試最怕「生出一坨超長亂碼報錯，人類根本無法除錯」—— **測資收縮**正是解決此痛點的殺手鐧！
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 🏷️ 1. 為什麼框架叫做 `jqwik`？
-- **命名由來（發音同 *"J-Quick"*）**：
-  - **`J`** (**J**ava / **J**Unit 5) + **`qwik`** (致敬 John Hughes 的 **Quick**Check) = **`jqwik`**！
-  - 它是專為 **JUnit 5 Platform** 打造的原生屬性測試引擎，直接與 JUnit 5 共用執行器。
-- **隨機 + 邊界混合轟炸 (`@ForAll`)**：
-  - 標註 `@Property` 的測試方法預設會自動執行 **1,000 次**；
-  - `jqwik` 不只生隨機數，還會優先塞入 **`0, 1, -1, Integer.MAX_VALUE, 空串列`** 等惡魔邊界值！
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 📉 2. 什麼是「測資收縮」？為什麼要縮小？
-- **為什麼要縮小？**：
-  - 假設程式在 **`x >= 100`（滿百元折扣）時有 Bug**；`jqwik` 隨機抽中 **`x = 800`** 抓到錯誤，但若直接報 `800`，工程師看不出為何是 `800` 出錯！
-- **如何自動折半縮小（像玩終極密碼，每次切一半重測）**：
-  - 抓到 `800` 失敗 ❌ 後，引擎不急著報錯，自動在背景反覆折半重跑：
-  - 試 `400` (失敗 ❌) ➔ 試 `200` (失敗 ❌) ➔ 試 `100` (失敗 ❌) ➔ 試 `50` (通過 ✅，代表臨界點在 51~100) ➔ 試到 `99` (通過 ✅)！
-  - **最終報表直接印出最小反例：`x = 100`**（若陣列 `[42, -999, 8531]` 因負數崩潰，也會自動刪光雜訊並縮成 **`[-1]`**），讓工程師 1 秒看穿 Bug 根因！
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
-
-## `jqwik` 語法實戰：將四大屬性模式寫成單元測試
+## `jqwik` 實戰：企業商業屬性與技術選型判斷
 
 <div class="card-deck">
 
-> 💡 只需掌握 `@Property`（宣告屬性測試）與 `@ForAll`（自動生成隨機與邊界參數）兩個核心註解！
+> 💡 掌握 `@Property`（預設跑 1,000 次 + 混入 `0, -1, MAX_VALUE` 惡魔邊界）與 `@ForAll` 即可將商業鐵律化為自動化守門員！
 
 <div class="two-columns">
 <div class="card">
 
-### 🧩 `jqwik` 核心註解與參數約束
-- **`@Property`（取代 `@Test`）**：
-  - 宣告此方法為一條「通用屬性不變量」，由 `jqwik` 引擎自動重複呼叫 **1,000 次**（可設 `tries = 500` 調整次數）。
-  - 回傳 `boolean`（若回傳 `false` 即代表屬性被打破，立即觸發 Shrinking！）或內部使用 JUnit `assertEquals`。
-- **`@ForAll` 與範圍約束 (`@IntRange` / `@DoubleRange`)**：
-  - 標註於方法參數前，指示 `jqwik` 依型別（`int`、`List<Integer>`、`Enum`）自動建立生成器與收縮器，並優先混入 `0, -1, MAX_VALUE, 空串列` 等惡魔邊界！
+### 💻 [`PropertyBasedDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/PropertyBasedDemoTest.java) 核心範例
+```java
+@Property // 企業不變量 + 變質單調性：多貸 100 萬利率只降不升，且保底 2.0%
+boolean loanRateMonotonic(
+    @ForAll @IntRange(min = 1, max = 40) int years,
+    @ForAll @DoubleRange(min = 1e5, max = 5e7) double amount) {
+  double rBase = LoanCalculator.calculateInterestRate(years, amount, false, false);
+  double rMore = LoanCalculator.calculateInterestRate(years, amount + 1e6, true, false);
+  return rMore <= rBase && rBase >= 2.0 && rBase <= 5.0;
+}
+```
+- **電商 `OrderDiscount`**：驗證金流守恆、會員等級單調性，並用 **Shrinking** 抓出滿額斷崖倒掛！
+- **搜尋 `MetamorphicDemoTest`**：驗證子集包含與空白抗擾動。
 
 </div>
 <div class="card">
 
-### 📋 [`PropertyBasedDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/PropertyBasedDemoTest.java)
-- **示範 1 & 2【代數定律模式】**：
-  - **測試設計**：隨機注入 1,000 組整數 `(a, b)`。
-  - **驗收不變量**：驗證加法交換律 `add(a, b) == add(b, a)` 與單位元性質 `add(a, 0) == a` 恆成立。
-- **示範 3【往返可逆模式】**：
-  - **測試設計**：隨機生成 1,000 組任意長度與內容的整數串列 `L`。
-  - **驗收不變量**：連續反轉兩次 `reverse(reverse(L))`，元素順序與長度恢復為原串列 `L`。
-- **示範 4【結構與特徵守恆模式】**：
-  - **測試設計**：隨機生成 1,000 組亂數串列送入 `sort(L)`。
-  - **驗收不變量**：排完後**元素個數必與原串列相等**，且任意相鄰元素必滿足**前數 ≤ 後數（單調遞增）**！
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
-
-## `jqwik` 企業邏輯實戰：金流不變量與「測資收縮」抓漏
-
-<div class="card-deck">
-
-> 💡 在企業系統中，PBT 最常被用來抓出「**折扣疊加倒貼漏洞**」與「**滿額門檻定價倒掛 Bug**」（詳見 [`PropertyBasedDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/PropertyBasedDemoTest.java) Part 2 & 3）！
-
-<div class="two-columns">
-<div class="card">
-
-### 🏦 企業商業邏輯的三大不變量 (示範 5~7)
-- **1. 電商金流邊界與守恆 (`OrderDiscount`)**：
-  - 隨機抽樣 1,000 組 `(會員等級, 金額 0~10萬, 付款方式)`；
-  - 斷言：**應付金額必 `>= 0`（防倒貼漏洞）且 `<= 原價`**，且 **`應付 + 折抵 == 原價`（金流守恆）**！
-- **2. 會員等級尊榮單調性 (`OrderDiscount`)**：
-  - 相同金額與支付下，斷言 **`VIP 應付 <= 一般會員 <= 訪客`**（絕不允許 VIP 買得比一般會員還貴！）。
-- **3. 銀行房貸法定保底與額度單調性 (`LoanCalculator`)**：
-  - 核貸利率永遠鎖定在 **`[2.0%, 5.0%]`** 法定範圍內，且**多貸 100 萬時利率只降不升**！
-
-</div>
-<div class="card">
-
-### 📉 測資收縮實戰：抓出滿額斷崖倒掛 (示範 8)
-- **受測商業屬性**：**「多買 100 元商品，結帳應付金額不應反而變少 (`pay(x) <= pay(x + 100)`)」**。
-- **1. 隨機轟炸命中 Bug (`Original Sample`)**：
-  - `jqwik` 在 `100 ~ 50,000` 元間隨機抽中 **`amount = 2,964 元`** 時發現屬性回傳 `false` ❌！
-- **2. 自動二分收縮 (`Shrinking` 6 步精準定位)**：
-  - 引擎自動折半重測，最終印出**最小反例：`Shrunk sample: amount = 2901`**！
-  - **1 秒看穿根因**：因「`> 3,000` 元立減從 100 跳升至 300」，VIP 買 **`2,901` 元需付 `2,220.8` 元**，但多買 100 元湊到 **`3,001` 元卻只要付 `2,100.8` 元**（多買 100 元反而少付 120 元）！
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
-
-## 什麼是變質測試 (Metamorphic Testing, MT)？
-
-<div class="card-deck">
-
-> 💡 當連單一執行的輸出都無法驗證對錯時（如搜尋引擎、AI 模型），改檢驗「**兩次執行間的輸入變換與輸出相對關係**」！
-
-<div class="two-columns">
-<div class="card">
-
-### 🧬 1. 變質測試的核心思想 (陳振宇, 1998)
-- **無預言機困境 (Test Oracle Problem)**：
-  - 搜尋引擎輸入 `"Java"` 回傳 3,842 筆網頁、或 LLM 生成一段摘要，我們根本不知道「標準答案」是什麼！
-- **核心破局思維**：
-  - 雖然不知道單次輸出 `y = f(x)` 本身對不對，但若我們將輸入 `x` 做有規律的變換得到 `x'`，**兩次輸出 `(y, y')` 之間必定要滿足特定的領域邏輯關係**！
-
-</div>
-<div class="card">
-
-### 🔄 2. 變質測試三步執行迴圈 (3-Step Loop)
-- **Step 1：原始執行 (Source Run)**：
-  - 輸入基準測資 `x`（如搜尋 `"Java"`），獲得原始輸出 `y = f(x)`。
-- **Step 2：衍生執行 (Follow-up Run)**：
-  - 依領域知識對 `x` 施加變換得 `x' = T(x)`（如追加條件搜尋 `"Java SQA"`），獲得衍生輸出 `y' = f(x')`。
-- **Step 3：變質關係驗收 (Metamorphic Relation, MR)**：
-  - 斷言 **`R(y, y')`** 成立（如搜尋條件變嚴格，結果集必為子集 **`y' ⊆ y`**）！
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
-
-## 變質測試 (MT) 與 PBT 的差異及搜尋引擎實戰
-
-<div class="card-deck">
-
-> 💡 理解了 MT 的「跨次變換」後，就能一眼看清它與 PBT 的分工定位及搜尋引擎實戰應用！
-
-<div class="two-columns">
-<div class="card">
-
-### ⚖️ MT 與 PBT 的兩大核心差異
-- **1. 單次輸出檢驗 `P(x, y)` vs. 跨次相對關係 `R(y, y')`**：
-  - **PBT** 檢驗單次輸出 `y = f(x)` 是否滿足格式或邊界（如 `0 <= y <= x`、陣列已遞增）。
-  - **MT** 必須執行**至少兩次**，以第一次輸出 `y` 為錨點，檢驗變換輸入後的相對變化 `R(f(x), f(T(x)))`。
-- **2. 從零隨機合成 vs. 真實種子衍生 (Seed Transformation)**：
-  - **PBT** 由框架憑空亂數合成 `int / List`；
-  - **MT** 從**真實世界既有資料 `x`**（街景圖、病歷、查詢）出發，透過加雜訊、旋轉、改寫衍生出 `x'`！
-
-</div>
-<div class="card">
-
-### 💻 搜尋引擎變質實戰 ([`MetamorphicDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/MetamorphicDemoTest.java))
-- **MR 1：範圍縮小之子集包含性 (Inclusion)**：
-  - **原始 (`x`)**：搜 `"Java"` 得 `r1`；**衍生 (`x'`)**：搜 `"Java SQA"` 得 `r2`。
-  - **驗收**：必滿足 **`r2 ⊆ r1` (`r1.containsAll(r2)`)**！
-- **MR 2：無關空白微擾之等價性 (Perturbation)**：
-  - 搜 `"SQA"` 與前後加空白 `"   SQA   "`，兩次結果必完全相等！
-- **🚀 PBT + MT 雙劍合璧**：
-  - 前面在 `@Property` 中比對 `pay(x)` 與 `pay(x + 100)`，正是用 `jqwik` 隨機引擎驅動變質關係！
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
-
-## 四大經典變質關係模式庫 (MR Patterns)
-
-<div class="card-deck">
-
-> 💡 頂尖 QA 如何設計 MR？掌握四大不變量思維，即可通殺 90% 以上複雜系統与 AI 黑箱。
-
-| 模式類別 | 變質關係定義 (MR Formulation) | 實戰工程案例 |
-| :--- | :--- | :--- |
-| **1. 對稱與等價性<br>(Symmetry / Invariance)** | f(Transform(x)) == f(x) | **三角形 / 搜尋引擎**：三邊順序對調 `triangle(a,b,c) == triangle(b,c,a)`；關鍵字大小寫 `Search("sqa") == Search("SQA")` 結果相同。 |
-| **2. 包含與單調性<br>(Inclusion / Monotonicity)** | 若 x<sub>1</sub> ≤ x<sub>2</sub> ➔ f(x<sub>1</sub>) ≤ f(x<sub>2</sub>) 或 f(x<sub>1</sub>) ⊆ f(x<sub>2</sub>) | **游泳池 / 房貸 / 搜尋**：會員票價必 ≤ 非會員票價；貸款金額增加則利率單調遞減；複合關鍵字結果為子集。 |
-| **3. 比例縮放一致性<br>(Scaling Consistency)** | f(k × x) == f(x) 或 k × f(x) | **三角形 / 導航路徑**：合法三角形三邊同乘 k 倍 `triangle(ka, kb, kc) == triangle(a,b,c)` 分類不變；路網權重同乘 2 倍最佳路徑不變。 |
-| **4. 獨立抗擾動性<br>(Irrelevant Perturbation)** | f(x + noise) == f(x) | **搜尋引擎 / LLM**：關鍵字前後加上無關空格 `"  SQA  "` 搜尋結果不變；語句結尾加標點情緒評分不逆轉。 |
-
-</div>
-
----
-
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
-
-## 貫穿本章回顧：把「三角形、游泳池、房貸」變成 PBT / MT！
-
-<div class="card-deck">
-
-> 💡 同一個系統，從 5.3~5.5 的「指定答案測資」切換到 5.11 的「屬性與變質關係」，視野如何升級？
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 🔄 前面範例的 PBT / MT 寫法
-- **1. 三角形 (`Triangle`) —— 對稱與比例縮放**：
-  ```java
-  @Property // 排列對稱性：三邊任意對調，分類結果必相同
-  boolean triangleSymmetry(@ForAll int a, @ForAll int b, @ForAll int c) {
-      return Triangle.getTriangleType(a, b, c)
-             .equals(Triangle.getTriangleType(b, c, a));
-  }
-  ```
-- **2. 游泳池 (`SwimmingPool`) 與房貸 (`LoanCalculator`) —— 優惠單調性**：
-  ```java
-  @Property // 優惠單調性：多貸 100 萬或具青年身分，利率只會更低或持平！
-  boolean loanRateMonotonic(@ForAll @IntRange(min=1, max=40) int yr,
-                            @ForAll @DoubleRange(min=1e5, max=5e7) double amt) {
-      double rBase = LoanCalculator.calculateInterestRate(yr, amt, false, false);
-      double rMore = LoanCalculator.calculateInterestRate(yr, amt + 1e6, true, false);
-      return rMore <= rBase && rMore >= 2.0; // 單調遞減且保底 2.0%
-  }
-  ```
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### 🧭 工程師的關鍵判斷：何時用 Pairwise？何時用 PBT？
+### 🧭 關鍵判斷：何時用 Pairwise？何時用 PBT？
 - **📌 純離散小組合（如游泳池 3×2×2 = 12 種）➔ 首選 Pairwise**：
-  - 整個輸入空間只有 12 種組合時，用 Pairwise（6 組）搭配 `@CsvSource` 就能 100% 精確測完。
-  - 若硬用 `jqwik` 跑 1,000 次，只是把相同的 12 種組合重複跑 80 遍，**殺雞用牛刀**！
-- **📌 連續大範圍數值或無 Oracle（如三角形邊長、房貸金額、搜尋引擎）➔ 首選 PBT / MT**：
-  - 當輸入是 `int`（42 億種）、`double` 金額或任意字串陣列時，傳統表格只能測幾個點；
-  - 用 **PBT + MT** 才能以萬組隨機極值轟炸，抓出整數溢位與單調性反轉等深層 Bug！
+  - 用 Pairwise（6 組）搭配 `@CsvSource` 就能精確覆蓋；硬跑 `jqwik` 1,000 次只是把 12 組重跑 80 遍，**殺雞用牛刀**！
+- **📌 連續大範圍數值或無 Oracle（金額、演算法、搜尋、AI）➔ 首選 PBT**：
+  - 輸入空間達數十億或無固定答案時，透過隨機極值轟炸 + 跨次變質關係，才能抓出溢位、倒掛與邊界斷崖 Bug！
 
 </div>
 </div>
@@ -4120,27 +3915,109 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
+
+## 互動視覺化實驗室：`jqwik` 測資收縮 (Shrinking) — 規格缺陷 vs. 程式寫錯
+
+<div class="shrink-interactive-stage" id="shrink-explorer">
+<div class="shrink-toolbar">
+  <div class="shrink-toolbar-group">
+    <button type="button" class="shrink-btn is-active" data-shrink-mode="spec">📌 模式 A：規格缺陷 (OrderDiscount 滿額斷崖)</button>
+    <button type="button" class="shrink-btn" data-shrink-mode="code">🐛 模式 B：程式寫錯 (JDK BinarySearch 整數溢位)</button>
+    <button type="button" class="shrink-btn" id="shrink-rand-btn">🎲 隨機抽樣反例</button>
+  </div>
+  <div class="shrink-toolbar-group">
+    <button type="button" class="shrink-btn is-primary" id="shrink-step-btn">⏭️ 單步二分收縮</button>
+    <button type="button" class="shrink-btn is-accent" id="shrink-auto-btn">⏩ 自動收縮至最小反例</button>
+    <button type="button" class="shrink-btn" id="shrink-reset-btn">↺ 重設</button>
+  </div>
+</div>
+
+<div class="shrink-grid">
+  <div class="shrink-panel">
+    <div class="shrink-panel-title">
+      <span id="shrink-prop-title">📉 二分收縮歷程（屬性：<code>pay(x + 100) ≥ pay(x)</code>）</span>
+      <span class="shrink-badge" id="shrink-status-badge">目前最小反例：2964</span>
+    </div>
+    <div class="shrink-axis-wrap">
+      <div class="shrink-axis-label">
+        <span>安全下界 low = <strong id="shrink-low-val">2800</strong> (✅)</span>
+        <span style="color:#dc2626;" id="shrink-zone-label">💥 斷崖區間 [2901, 3000]</span>
+        <span>上界 = <strong id="shrink-max-val">3010</strong></span>
+      </div>
+      <div class="shrink-axis-track">
+        <div class="shrink-bug-zone" id="shrink-bug-zone" style="left:48.1%;width:47.1%;"></div>
+        <div class="shrink-marker is-best" id="shrink-best-marker" style="left:78.1%;" title="目前最小反例"></div>
+        <div class="shrink-marker is-probe" id="shrink-probe-marker" style="left:78.1%;" title="本步探測值"></div>
+      </div>
+    </div>
+    <div class="shrink-table-wrap" id="shrink-table-wrap">
+    <table class="shrink-table">
+      <thead id="shrink-thead">
+        <tr><th>步驟</th><th>探測金額 x</th><th>pay(x)</th><th>pay(x+100)</th><th>差額 Δ</th><th>結果與收縮決策</th></tr>
+      </thead>
+      <tbody id="shrink-tbody">
+        <tr class="is-fail"><td>#0 命中</td><td>2964</td><td>2271.2</td><td>2151.2</td><td>-120.0</td><td>❌ 屬性打破！啟動收縮</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="shrink-banner" id="shrink-banner">👆 點擊「⏭️ 單步二分收縮」或切換「模式 B」比較規格缺陷與程式寫錯如何被 Shrinking 定位！</div>
+  </div>
+
+  <div class="shrink-panel">
+    <div class="shrink-panel-title">
+      <span id="shrink-case-title">💻 LabDemo 實例：<code>OrderDiscount</code> 示範 8</span>
+      <span id="shrink-case-sub" style="font-size:11px;color:#64748b;font-weight:700;">VIP 8折 · 滿千折100 · &gt;3000折300</span>
+    </div>
+    <div class="shrink-kpi-pair">
+      <div class="shrink-kpi">
+        <div class="k-lbl">原始隨機反例 (Original)</div>
+        <div class="k-val" id="shrink-orig-val">2964 元</div>
+      </div>
+      <div class="shrink-kpi is-danger">
+        <div class="k-lbl">收縮後最小反例 (Shrunk)</div>
+        <div class="k-val" id="shrink-min-val">待收縮...</div>
+      </div>
+    </div>
+    <div class="shrink-code-box" id="shrink-code-box">@Property(tries = 1000)
+boolean spendMoreShouldNotPayLess(
+    @ForAll @IntRange(min=100, max=50000) int amount) {
+  double p1 = OrderDiscount.calculateDiscount(
+      VIP, amount, CREDIT_CARD_ONE_TIME).finalAmount;
+  double p2 = OrderDiscount.calculateDiscount(
+      VIP, amount + 100, CREDIT_CARD_ONE_TIME).finalAmount;
+  return p2 &gt;= p1; // 💥 2901 付 2220.8 vs. 3001 付 2100.8
+}</div>
+    <div class="alt-mnemonic-box" id="shrink-diag-box">
+      <strong>⚠️ 課堂思辨：這是「規格缺陷 (Spec Flaw)」，而非程式寫錯！</strong><br/>
+      程式 100% 忠實實作了「滿 3000 折 300」，傳統 EBT 全綠燈；但 PBT 將測試從 <strong>Verification 升維至 Validation</strong>，揪出階梯斷崖（<code>2901</code>）逼團隊與 PM 檢討規格！
+    </div>
+  </div>
+</div>
+</div>
+
+---
+
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
 
 ## 現代 AI 與 LLM 評測實務：差分與裁判模型落地
 
 <div class="card-deck">
 
-> 💡 SQA 2.0 評測工具鏈：結合理論觀念，在 CI/CD Pipeline 落地自動化品質門檻。
+> 💡 SQA 2.0 評測工具鏈：將「跨次變質關係」與「差分屬性」延伸至 LLM，在 CI/CD 建立自動化品質門檻。
 
 <div class="two-columns">
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### ⚖️ 多模型差分實務 (Differential)
 - **跨版本與跨模型交叉打靶**：
   - 將 1,000 組邊界 Prompt 同時送入 **新版 Model vs. 舊版 Model**。
-  - 計算語意嵌入距離 (Cosine Similarity)。
-  - 若相似度小於 0.85，自動標記為潛在回歸缺陷 (Regression Drift)。
+  - 計算語意嵌入距離 (Cosine Similarity)；若小於 0.85，自動標記為回歸缺陷 (Regression Drift)。
 - **工具鏈整合**：
   - 使用 **Promptfoo** / **DeepEval** 跑自動化矩陣差分比對。
 
 </div>
-<div class="card" data-marpit-fragment>
+<div class="card">
 
 ### 🧑‍⚖️ LLM-as-a-Judge 規準落地
 - **JSON Schema 結構化評分輸出**：
@@ -4153,7 +4030,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
   }
   ```
 - **CI/CD Quality Gate 阻斷門檻**：
-  - 於 GitHub Actions 中設定：忠實度 < 0.90 或安全違規率 > 0% 即判定 Build Failed！
+  - 於 GitHub Actions 設定：忠實度 < 0.90 或安全違規率 > 0% 即 Build Failed！
 
 </div>
 </div>
@@ -4161,9 +4038,9 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
 
-## 🧪 課堂實習指引 (LabDemo 5.11: 屬性與變質測試實戰)
+## 🧪 課堂實習指引 (LabDemo 5.11: PBT 與變質屬性實戰)
 
 <div class="card-deck">
 
@@ -4172,22 +4049,22 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 <div class="two-columns">
 <div class="card">
 
-### 💻 課堂示範體驗 (兩大 Demo)
-- **1. 屬性基礎測試 ([`PropertyBasedDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/PropertyBasedDemoTest.java))**：
-  - **Part 1 (基礎代數/串列)**：加法交換律、反轉兩次可逆、排序單調遞增。
-  - **Part 2 (企業商業邏輯)**：電商 `OrderDiscount` 金流不倒貼守恆、**VIP 會員尊榮單調性 (`VIP <= 一般 <= 訪客`)**、銀行 `LoanCalculator` 利率保底 2.0%！
-- **2. 變質測試 ([`MetamorphicDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/MetamorphicDemoTest.java))**：
-  - 執行搜尋引擎之「結果包含性 (`Search("Java SQA") ⊆ Search("Java")`)」與「前後空白抗擾動性」變質關係！
+### 💻 課堂示範體驗 (Demo)
+- **1. 企業屬性與 Shrinking ([`PropertyBasedDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/PropertyBasedDemoTest.java))**：
+  - 基礎代數/串列（示範 1~4）、企業金流守恆與房貸單調性（示範 5~7）；
+  - **示範 8**：取消 `@Disabled` 註解，親眼觀察 `jqwik` 收縮出最小反例 `amount = 2901`！
+- **2. 搜尋引擎變質屬性 ([`MetamorphicDemoTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/MetamorphicDemoTest.java))**：
+  - 驗證結果子集包含性 `Search("Java SQA") ⊆ Search("Java")` 與前後空白抗擾動性。
 
 </div>
 <div class="card">
 
 ### 🎯 課堂動手練習 (Hands-on Exercise)
-- **練習 1~3：屬性與企業邏輯不變量 ([`PropertyBasedExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/PropertyBasedExerciseTest.java))**：
-  - 補全乘法交換律 (`a * b == b * a`)、反轉串列長度守恆；
-  - **企業邏輯實戰 (練習 3)**：使用 `@DoubleRange` 與 `@IntRange` 驗證銀行房貸「青年首購利率 `<=` 一般申貸利率 且 `>= 2.0%`」！
-- **練習 4：搜尋引擎對稱性變質關係 ([`MetamorphicExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/MetamorphicExerciseTest.java))**：
-  - 實作關鍵字大小寫不敏感之對稱變質關係：`search("software") == search("SOFTWARE")`！
+- **練習 1~3：屬性與企業不變量 ([`PropertyBasedExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/PropertyBasedExerciseTest.java))**：
+  - 補全乘法交換律、反轉串列長度守恆；
+  - **企業邏輯實戰 (練習 3)**：以 `@IntRange` / `@DoubleRange` 驗證青年首購房貸利率 `≤` 一般利率且 `≥ 2.0%`！
+- **練習 4：搜尋對稱變質屬性 ([`MetamorphicExerciseTest.java`](../../lab.html?file=LabDemo/src/test/java/u05_behavioral/pbtest/MetamorphicExerciseTest.java))**：
+  - 實作關鍵字大小寫不敏感之對稱屬性：`search("software") == search("SOFTWARE")`！
 
 </div>
 </div>
@@ -4195,36 +4072,33 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
 
-## 屬性基礎測試 (PBT) 常見問答 (FAQ)：定位與工業界現況
+## 實務 FAQ 與常見反模式避坑指南
 
 <div class="card-deck">
 
-> 💡 學完 PBT 與 MT 後最常被問到的實務問題：所有問題都能用嗎？工業界真的常用嗎？
+> 💡 工業界採用現況（AWS、Volvo、Stripe）與導入 PBT 時最容易踩的三大反模式。
 
 <div class="two-columns">
 <div class="card">
 
-### 🎯 Q1 & Q2：適用邊界與入門門檻
-- **Q1：所有問題都能用 PBT 嗎？會取代傳統測試嗎？**
-  - **不會取代，最佳黃金比例是「80% EBT + 20% PBT」互補**！
-  - 若需求是**單一業務特例**（如「雙 11 輸入 `NOV11` 送紅包」）或**純離散小組合**（如泳池 12 組），傳統 `@CsvSource` 最直觀；
-  - 當涉及**演算法、解析器、序列化、複雜計價/稅率、狀態機**等具普遍守恆律的核心邏輯時，才是 PBT 發揮百倍威力的主戰場！
-- **Q2：一時想不出完美的數學不變量怎麼辦？**
-  - 先從最保底的 **「防崩潰屬性 (Smoke / No-Crash Property)」** 下手：隨機轟炸合法範圍輸入，斷言絕不拋出未預期 Exception，再逐步加上**上下界 (`0 <= 折扣價 <= 原價`)** 與**單調性**！
+### 💡 實務常見問答 (FAQ)
+- **會取代傳統測試嗎？**：最佳比例為 **「80% EBT + 20% PBT」互補**；特例規格用 EBT，核心演算法／計價／狀態機用 PBT。
+- **想不出完美不變量？**：先從**防崩潰屬性 (No-Crash)** 下手，再逐步加上上下界與單調性。
+- **工業界真的常用嗎？**：**AWS (S3/IAM)**、**Volvo / Ericsson**、**Stripe** 皆以 PBT 作為金融對帳與協定驗證標配。
+- **隨機抓到 Bug 能重現嗎？**：**100% 可重現**！`jqwik` 會記錄亂數種子 (`seed`)，下次執行優先重跑上次失敗反例！
 
 </div>
 <div class="card">
 
-### 💡 Q3 & Q4：工業界採用度與重現性
-- **Q3：PBT 在工業界是常用的嗎？哪些企業在用？**
-  - **在金融支付、雲端基礎設施、車載與編譯器領域已是標配**！
-  - **Amazon AWS (S3 / IAM)**：大規模以 PBT 驗證雲端儲存與權限引擎，曾抓出傳統測試漏掉的 20+ 步深層並發缺陷。
-  - **Volvo 與愛立信 (Ericsson)**：以 QuickCheck 驗證車載控制匯流排 (AUTOSAR) 與 5G 通訊協定。
-  - **Stripe / 現代後端團隊**：Python `Hypothesis`、Java `jqwik`、Rust `proptest` 廣泛用於金流對帳與 API 序列化防呆。
-- **Q4：隨機跑 1,000 次抓到 Bug，下次重跑還能重現嗎？**
-  - **100% 可重現**！`jqwik` 會記錄亂數種子 (`seed`) 並開啟 `SAMPLE_FIRST`，下次執行必優先重跑上次失敗的反例！
+### ⚠️ 三大常見反模式 (Anti-Patterns)
+- **1. 在屬性斷言中把業務邏輯重寫一遍**：
+  - 測試碼複製了一份與待測程式相同的演算法，導致兩邊同時藏有相同 Bug。
+- **2. 屬性／變質關係過於寬鬆 (Weak Property)**：
+  - 只斷言「輸出大於 0 就通過」，無法有效攔截潛伏的邏輯錯誤。
+- **3. 把 PBT 當無頭蒼蠅隨機轟炸**：
+  - 未針對 `@IntRange` / `@Provide` 設定合理分佈與邊界加權，浪費運算資源或重複測試無效輸入。
 
 </div>
 </div>
@@ -4232,45 +4106,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
-
-## 屬性測試 (PBT) 與變質測試 (MT) 最佳實務 (Best Practices)
-
-<div class="card-deck">
-
-> 💡 擺脫單一答案的預言機枷鎖；用數學不變量約束隨機性，用變形關係評測複雜 AI。
-
-<div class="two-columns">
-<div class="card" data-marpit-fragment>
-
-### 🎯 黃金法則：四大多態模式與變形關係
-- **熟練套用四大通用屬性模式**：
-  - **往返可逆 (Round-trip)**：`deserialize(serialize(x)) == x`
-  - **冪等性 (Idempotence)**：`format(format(x)) == format(x)`
-  - **差分預言機 (Differential)**：`optimized(x) == naive(x)`
-  - **結構不變量 (Invariants)**：`filtered.size() <= original.size()`
-- **設計嚴謹的變形關係 (MR)**：
-  - 在無法預知 f(x) 絕對值時，透過輸入變換檢驗輸出的領域邏輯（如翻轉對稱、子集單調性）。
-- **依賴 Shrinking 快速定位最小失敗案例**。
-
-</div>
-<div class="card" data-marpit-fragment>
-
-### ⚠️ 常見反模式 (Anti-Patterns)
-- **在屬性斷言中把業務邏輯重寫一遍**：
-  - 測試程式碼複製了一份和待測程式碼一模一樣的演算法，導致兩邊同時存在相同 Bug。
-- **變形關係過於寬鬆 (Weak MR)**：
-  - 定義出「輸出只要大於 0 就通過」等過度寬鬆的 MR，無法有效抓出潛伏邏輯錯誤。
-- **把 PBT 當無頭蒼蠅隨機測試**：
-  - 未針對資料生成器 (`@Provide`) 設定合理的產生分佈與邊界加權，浪費運算資源。
-
-</div>
-</div>
-</div>
-
----
-
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
 
 ## 概念核對問答 (CCQ 8)
 
@@ -4294,7 +4130,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 
 ---
 
-<!-- header: '5.11 屬性基礎測試 (PBT) 與變質測試 (MT)' -->
+<!-- header: '5.11 屬性基礎測試 (PBT) 與測資收縮' -->
 
 ## 課堂動腦挑戰：5 個真實場景，如何設計 PBT 屬性？
 
@@ -4359,8 +4195,7 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
 | **狀態轉換測試** | 生命週期與事件路徑爆炸 | **0-Switch 全轉換為底線**；矩陣空白格全面覆蓋負向異常 | 訂單流轉、遊戲角色、通訊協定、ATM 機台 |
 | **使用案例測試** | 端到端業務完整性 | **基本流先走通**；每條擴充案例只串接一個支流或異常流 | 使用者結帳旅程、提款與轉帳流程、審核工作流 |
 | **經驗基礎測試** | 形式化規範外的漏網之魚 | **SBTM 時間盒探索**；將團隊歷史缺陷沉澱為防禦清單 | 發布前驗收、競品探索、極端異常探索 |
-| **屬性測試 (PBT)** | 固定測資的思維死角 | **放棄固定答案**，檢驗往返可逆、冪等性與結構不變量 | 編解碼、排序演算法、資料結構、複雜計算核心 |
-| **變形測試 (MT)** | 缺乏預言機 (Oracle Problem) | **透過輸入轉換**，驗證輸出之間的必要領域/數學關係 | 搜尋引擎、機器學習/AI 評測、影像處理、編譯器 |
+| **屬性測試 (PBT / 含變質關係 MT)** | 固定測資死角與無預言機困境 | **放棄單點答案**，以不變量、跨次變質關係與 Shrinking 自動收縮最小反例 | 編解碼、排序、複雜計價、搜尋引擎與 AI 評測 |
 
 </div>
 
@@ -5693,6 +5528,246 @@ void testExactOracle(TimeSlot t, DayType d, boolean m, int expected) {
           if (pwClue9) pwClue9.innerHTML = "<code>(&gt;20, 10M)</code> + <em>協助補齊剩餘的 <code>&gt;20</code> 配對！</em>";
         });
       }
+    }
+
+    // 14. Interactive Shrinking Lab (Section 5.11 - Spec Flaw vs. Code Bug)
+    var shrinkRoot = document.getElementById("shrink-explorer");
+    if (shrinkRoot && !shrinkRoot.dataset.bound) {
+      shrinkRoot.dataset.bound = "1";
+      var modeBtns = Array.from(shrinkRoot.querySelectorAll("[data-shrink-mode]"));
+      var randBtn = document.getElementById("shrink-rand-btn");
+      var stepBtn = document.getElementById("shrink-step-btn");
+      var autoBtn = document.getElementById("shrink-auto-btn");
+      var resetBtn = document.getElementById("shrink-reset-btn");
+      var propTitle = document.getElementById("shrink-prop-title");
+      var statusBadge = document.getElementById("shrink-status-badge");
+      var lowValEl = document.getElementById("shrink-low-val");
+      var zoneLabel = document.getElementById("shrink-zone-label");
+      var maxValEl = document.getElementById("shrink-max-val");
+      var bugZone = document.getElementById("shrink-bug-zone");
+      var bestMarker = document.getElementById("shrink-best-marker");
+      var probeMarker = document.getElementById("shrink-probe-marker");
+      var thead = document.getElementById("shrink-thead");
+      var tbody = document.getElementById("shrink-tbody");
+      var tableWrap = document.getElementById("shrink-table-wrap");
+      var banner = document.getElementById("shrink-banner");
+      var caseTitle = document.getElementById("shrink-case-title");
+      var caseSub = document.getElementById("shrink-case-sub");
+      var origValEl = document.getElementById("shrink-orig-val");
+      var minValEl = document.getElementById("shrink-min-val");
+      var codeBox = document.getElementById("shrink-code-box");
+      var diagBox = document.getElementById("shrink-diag-box");
+
+      var MODES = {
+        spec: {
+          axisMin: 2800, axisMax: 3010, initLow: 2800, defaultOrig: 2964,
+          bugLeft: "48.1%", bugWidth: "47.1%", autoMs: 380, unit: " 元",
+          propHtml: '📉 二分收縮歷程（屬性：<code>pay(x + 100) ≥ pay(x)</code>）',
+          zoneText: "💥 斷崖區間 [2901, 3000]",
+          maxText: "3010",
+          theadHtml: "<tr><th>步驟</th><th>探測金額 x</th><th>pay(x)</th><th>pay(x+100)</th><th>差額 Δ</th><th>結果與收縮決策</th></tr>",
+          caseTitleHtml: '💻 LabDemo 實例：<code>OrderDiscount</code> 示範 8',
+          caseSubText: "VIP 8折 · 滿千折100 · >3000折300",
+          codeText: '@Property(tries = 1000)\nboolean spendMoreShouldNotPayLess(\n    @ForAll @IntRange(min=100, max=50000) int amount) {\n  double p1 = OrderDiscount.calculateDiscount(\n      VIP, amount, CREDIT_CARD_ONE_TIME).finalAmount;\n  double p2 = OrderDiscount.calculateDiscount(\n      VIP, amount + 100, CREDIT_CARD_ONE_TIME).finalAmount;\n  return p2 >= p1; // 💥 2901 付 2220.8 vs. 3001 付 2100.8\n}',
+          diagHtml: '<strong>⚠️ 課堂思辨：這是「規格缺陷 (Spec Flaw)」，而非程式寫錯！</strong><br/>程式 100% 忠實實作了「滿 3000 折 300」，傳統 EBT 全綠燈；但 PBT 將測試從 <strong>Verification 升維至 Validation</strong>，揪出階梯斷崖（<code>2901</code>）逼團隊與 PM 檢討規格！',
+          randomOrig: function() { return 2915 + Math.floor(Math.random() * 85); },
+          evalX: function(x) {
+            var p1 = Math.max(0, x * 0.8 - (x > 3000 ? 300 : (x >= 1000 ? 100 : 0)));
+            var x2 = x + 100;
+            var p2 = Math.max(0, x2 * 0.8 - (x2 > 3000 ? 300 : (x2 >= 1000 ? 100 : 0)));
+            var diff = p2 - p1;
+            return {
+              fail: p2 < p1,
+              cols: [String(x), p1.toFixed(1), p2.toFixed(1), (diff >= 0 ? "+" : "") + diff.toFixed(1)]
+            };
+          },
+          doneBanner: function(s) {
+            return "🎉 共 " + s.step + " 步收縮完成！Shrunk sample: amount = " + s.bestFail +
+              "（規格斷崖：2901 付 2220.8 vs. 3001 付 2100.8，非程式 Bug，須與 PM 確認規格！）";
+          }
+        },
+        code: {
+          axisMin: 0, axisMax: 2147483647, initLow: 0, defaultOrig: 1800000000,
+          bugLeft: "50.0%", bugWidth: "50.0%", autoMs: 110, unit: "",
+          propHtml: '📉 二分收縮歷程（屬性：<code>mid(n, n) == n</code> 且 <code>≥ 0</code>）',
+          zoneText: "💥 32-bit 溢位區間 [2³⁰, 2³¹-1]",
+          maxText: "2,147,483,647",
+          theadHtml: "<tr><th>步驟</th><th>探測值 n</th><th>預期 mid</th><th>(n+n)/2 實測</th><th>狀態</th><th>收縮決策</th></tr>",
+          caseTitleHtml: '🐛 經典實例：JDK <code>BinarySearch</code> 溢位',
+          caseSubText: "Java JDK 潛伏 9 年之真實 Code Bug",
+          codeText: '@Property(tries = 1000)\nboolean midPointMustNeverOverflow(\n    @ForAll @IntRange(min=0, max=Integer.MAX_VALUE) int n) {\n  // 🐛 錯誤寫法：int mid = (low + high) / 2;\n  // ✅ 正確修復：int mid = low + (high - low) / 2;\n  int mid = BrokenBinarySearch.buggyMid(n, n);\n  return mid == n; // 💥 n >= 2^30 時 n+n 溢位變負數！\n}',
+          diagHtml: '<strong>🐛 這是「規格完全正確、但程式寫錯 (Code Bug)」！</strong><br/>規格「兩相同數之平均等於自己」毫無疑問；Shrinking 自動從 18 億收縮至 <strong><code>1,073,741,824 (2³⁰)</code></strong>，1 秒看穿 <code>2×2³⁰</code> 突破 <code>Integer.MAX_VALUE</code> 溢位！',
+          randomOrig: function() { return 1200000000 + Math.floor(Math.random() * 900000000); },
+          evalX: function(n) {
+            var sum32 = (n + n) | 0;
+            var mid = sum32 < 0 ? Math.ceil(sum32 / 2) : Math.floor(sum32 / 2);
+            var fail = mid !== n;
+            return {
+              fail: fail,
+              cols: [n.toLocaleString(), n.toLocaleString(), mid.toLocaleString(), fail ? "溢位❌" : "正常✅"]
+            };
+          },
+          doneBanner: function(s) {
+            return "🎉 共 " + s.step + " 步收縮完成！Shrunk sample: n = " + s.bestFail.toLocaleString() +
+              " (即 2³⁰) — 1 秒定位 32-bit 整數溢位 Code Bug，改用 low + (high - low) / 2 即修！";
+          }
+        }
+      };
+
+      var shState = { mode: "spec", orig: 2964, low: 2800, bestFail: 2964, step: 0, done: false, rows: [], timer: null };
+
+      function pctOnAxis(v, cfg) {
+        var clamped = Math.max(cfg.axisMin, Math.min(cfg.axisMax, v));
+        return (((clamped - cfg.axisMin) / (cfg.axisMax - cfg.axisMin)) * 100).toFixed(1) + "%";
+      }
+
+      function renderShrink() {
+        var cfg = MODES[shState.mode];
+        if (origValEl) origValEl.textContent = shState.orig.toLocaleString() + cfg.unit;
+        if (lowValEl) lowValEl.textContent = shState.low.toLocaleString();
+        if (bestMarker) bestMarker.style.left = pctOnAxis(shState.bestFail, cfg);
+        var lastRow = shState.rows[shState.rows.length - 1];
+        if (probeMarker && lastRow) probeMarker.style.left = pctOnAxis(lastRow.x, cfg);
+        if (minValEl) {
+          minValEl.textContent = shState.done
+            ? (shState.bestFail.toLocaleString() + cfg.unit + " 🎯")
+            : (shState.bestFail.toLocaleString() + cfg.unit);
+        }
+        if (statusBadge) {
+          statusBadge.textContent = shState.done
+            ? ("✅ 最小反例：" + shState.bestFail.toLocaleString())
+            : ("目前最小反例：" + shState.bestFail.toLocaleString());
+          statusBadge.classList.toggle("is-done", shState.done);
+        }
+        if (tbody) {
+          tbody.innerHTML = shState.rows.map(function(r) {
+            var cls = r.isMinimal ? "is-minimal" : (r.fail ? "is-fail" : "is-pass");
+            return '<tr class="' + cls + '"><td>' + r.label + "</td><td>" + r.cols[0] + "</td><td>" +
+              r.cols[1] + "</td><td>" + r.cols[2] + "</td><td>" + r.cols[3] + "</td><td>" + r.note + "</td></tr>";
+          }).join("");
+          if (tableWrap) tableWrap.scrollTop = tableWrap.scrollHeight;
+        }
+        if (stepBtn) stepBtn.disabled = shState.done;
+        if (autoBtn) autoBtn.disabled = shState.done;
+        if (banner) {
+          banner.classList.toggle("is-done", shState.done);
+          if (shState.done) {
+            banner.textContent = cfg.doneBanner(shState);
+          } else if (shState.step === 0) {
+            banner.textContent = "👆 已從隨機範圍抽中反例 " + shState.orig.toLocaleString() + "，點擊「⏭️ 單步」或「⏩ 自動收縮」觀察二分定位！";
+          } else {
+            banner.textContent = "🔎 第 " + shState.step + " 步：搜尋區間縮小為 (" + shState.low.toLocaleString() + ", " + shState.bestFail.toLocaleString() + "]，剩餘跨度 " + (shState.bestFail - shState.low).toLocaleString() + "！";
+          }
+        }
+      }
+
+      function initShrink(modeName, startVal) {
+        if (shState.timer) { clearInterval(shState.timer); shState.timer = null; }
+        var cfg = MODES[modeName];
+        var orig = (typeof startVal === "number") ? startVal : cfg.defaultOrig;
+        var res = cfg.evalX(orig);
+        shState = {
+          mode: modeName,
+          orig: orig,
+          low: cfg.initLow,
+          bestFail: orig,
+          step: 0,
+          done: false,
+          timer: null,
+          rows: [{
+            label: "#0 命中",
+            x: orig,
+            cols: res.cols,
+            fail: true,
+            isMinimal: false,
+            note: "❌ 屬性打破！啟動收縮"
+          }]
+        };
+        modeBtns.forEach(function(b) {
+          b.classList.toggle("is-active", b.getAttribute("data-shrink-mode") === modeName);
+        });
+        if (propTitle) propTitle.innerHTML = cfg.propHtml;
+        if (zoneLabel) zoneLabel.textContent = cfg.zoneText;
+        if (maxValEl) maxValEl.textContent = cfg.maxText;
+        if (bugZone) { bugZone.style.left = cfg.bugLeft; bugZone.style.width = cfg.bugWidth; }
+        if (thead) thead.innerHTML = cfg.theadHtml;
+        if (caseTitle) caseTitle.innerHTML = cfg.caseTitleHtml;
+        if (caseSub) caseSub.textContent = cfg.caseSubText;
+        if (codeBox) codeBox.textContent = cfg.codeText;
+        if (diagBox) diagBox.innerHTML = cfg.diagHtml;
+        renderShrink();
+      }
+
+      function doShrinkStep() {
+        if (shState.done) return;
+        var cfg = MODES[shState.mode];
+        shState.step++;
+        var mid = Math.floor(shState.low + (shState.bestFail - shState.low) / 2);
+        var res = cfg.evalX(mid);
+        var note;
+        if (res.fail) {
+          shState.bestFail = mid;
+          note = "❌ 仍失敗 ➔ 鎖定 " + mid.toLocaleString();
+        } else {
+          shState.low = mid;
+          note = "✅ 通過 ➔ 提高下界 " + mid.toLocaleString();
+        }
+        var doneNow = (shState.bestFail - shState.low) <= 1;
+        if (doneNow) {
+          shState.done = true;
+          note = "🎯 鎖定最小反例=" + shState.bestFail.toLocaleString();
+        }
+        shState.rows.push({
+          label: "#" + shState.step,
+          x: mid,
+          cols: res.cols,
+          fail: res.fail,
+          isMinimal: doneNow,
+          note: note
+        });
+        renderShrink();
+      }
+
+      modeBtns.forEach(function(b) {
+        b.addEventListener("click", function(e) {
+          e.stopPropagation();
+          initShrink(b.getAttribute("data-shrink-mode"));
+        });
+      });
+      if (randBtn) {
+        randBtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          initShrink(shState.mode, MODES[shState.mode].randomOrig());
+        });
+      }
+      if (stepBtn) {
+        stepBtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          doShrinkStep();
+        });
+      }
+      if (autoBtn) {
+        autoBtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          if (shState.timer) clearInterval(shState.timer);
+          var ms = MODES[shState.mode].autoMs;
+          shState.timer = setInterval(function() {
+            if (shState.done) {
+              clearInterval(shState.timer);
+              shState.timer = null;
+              return;
+            }
+            doShrinkStep();
+          }, ms);
+        });
+      }
+      if (resetBtn) {
+        resetBtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          initShrink(shState.mode, shState.orig);
+        });
+      }
+      initShrink("spec", 2964);
     }
   }
 

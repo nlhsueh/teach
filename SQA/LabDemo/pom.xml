@@ -19,6 +19,8 @@
         <log4j2.version>2.23.1</log4j2.version>
         <selenium.version>4.23.0</selenium.version>
         <pitest.version>1.16.1</pitest.version>
+        <testcontainers.version>1.20.4</testcontainers.version>
+        <postgresql.version>42.7.4</postgresql.version>
         <maven.build.dir>${project.basedir}/target</maven.build.dir>
         <pmd.includes>**/u04_inspection/**</pmd.includes>
     </properties>
@@ -129,6 +131,31 @@
             <groupId>io.github.pavelicii</groupId>
             <artifactId>allpairs4j</artifactId>
             <version>2.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- PostgreSQL JDBC Driver & Testcontainers (Pure Java Integration Testing) -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>${testcontainers.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${testcontainers.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${testcontainers.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
